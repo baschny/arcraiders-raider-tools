@@ -1,0 +1,360 @@
+@use '../../../shared/styles/variables' as *;
+@use 'sass:color';
+
+.schedule-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: $spacing-xl;
+}
+
+.header-row {
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-xl;
+  margin-bottom: $spacing-lg;
+}
+
+.current-time-display {
+  flex-shrink: 0;
+  
+  .time {
+    font-size: 32px;
+    font-weight: 700;
+    color: $text-primary;
+    font-family: $font-heading;
+    letter-spacing: 1px;
+  }
+
+  .timezone {
+    font-size: $font-md;
+    color: $text-secondary;
+    margin-top: $spacing-xs;
+  }
+}
+
+.event-legend {
+  flex: 1;
+  display: flex;
+  align-items: center;
+
+  .legend-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-sm;
+    width: 100%;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    border-radius: $radius-sm;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+    background: transparent;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.05);
+      transform: translateY(-2px);
+    }
+
+    &.legend-highlighted,
+    &.legend-pinned {
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateY(-2px);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    &.legend-pinned {
+      background: rgba(255, 255, 255, 0.12);
+    }
+  }
+
+  .legend-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    border-radius: $radius-sm;
+    border: 1.5px solid transparent;
+    transition: all 0.15s ease;
+  }
+
+  .legend-item.major .legend-icon-wrapper {
+    border-color: rgba(255, 215, 0, 0.4);
+    background: rgba(255, 215, 0, 0.05);
+  }
+
+  .legend-item.minor .legend-icon-wrapper {
+    border-color: rgba(79, 195, 247, 0.4);
+    background: rgba(79, 195, 247, 0.05);
+  }
+
+  .legend-item.major.legend-highlighted .legend-icon-wrapper,
+  .legend-item.major.legend-pinned .legend-icon-wrapper {
+    border-color: rgba(255, 215, 0, 0.8);
+    background: rgba(255, 215, 0, 0.15);
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
+  }
+
+  .legend-item.minor.legend-highlighted .legend-icon-wrapper,
+  .legend-item.minor.legend-pinned .legend-icon-wrapper {
+    border-color: rgba(79, 195, 247, 0.8);
+    background: rgba(79, 195, 247, 0.15);
+    box-shadow: 0 0 8px rgba(79, 195, 247, 0.3);
+  }
+
+  .legend-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  .legend-name {
+    font-size: 14px;
+    color: $text-primary;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+}
+
+.schedule-scroll {
+  flex: 1;
+  overflow: auto;
+}
+
+.schedule-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: max-content;
+}
+
+.schedule-header {
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  background: $bg-primary;
+  z-index: 10;
+  padding: $spacing-sm 0;
+  margin-bottom: $spacing-sm;
+}
+
+.map-label-header {
+  width: 200px;
+  flex-shrink: 0;
+  text-align: center;
+  font-size: $font-md;
+  color: $text-secondary;
+  font-weight: 600;
+  padding: $spacing-xs;
+  position: sticky;
+  left: 0;
+  background: $bg-primary;
+  z-index: 20;
+}
+
+.hours-container {
+  flex: 1;
+  display: flex;
+  min-width: 1200px;
+}
+
+.hour-label {
+  flex: 1;
+  text-align: center;
+  font-size: $font-sm;
+  color: $text-secondary;
+  font-weight: 500;
+  padding: $spacing-xs;
+}
+
+.map-row {
+  display: flex;
+  align-items: stretch;
+  position: relative;
+}
+
+.map-label {
+  width: 200px;
+  height: 90px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-sm $spacing-md;
+  background: $bg-secondary;
+  border: $border-width-thin solid $border-default;
+  border-radius: $radius-sm;
+  font-size: $font-md;
+  font-weight: 600;
+  color: $text-primary;
+  font-family: $font-heading;
+  text-transform: uppercase;
+  position: sticky;
+  left: 0;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  z-index: 5;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+  }
+
+  .map-name-text {
+    position: relative;
+    z-index: 2;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  }
+
+  &[data-map="dam-battleground"] {
+    background-image: url('/images/maps/dam-battleground.webp');
+  }
+
+  &[data-map="buried-city"] {
+    background-image: url('/images/maps/buried-city.webp');
+  }
+
+  &[data-map="the-spaceport"] {
+    background-image: url('/images/maps/the-spaceport.webp');
+  }
+
+  &[data-map="blue-gate"] {
+    background-image: url('/images/maps/blue-gate.webp');
+  }
+
+  &[data-map="stella-montis"] {
+    background-image: url('/images/maps/stella-montis.webp');
+  }
+}
+
+.cells-container {
+  flex: 1;
+  display: flex;
+  position: relative;
+  min-width: 1200px;
+  height: 90px;
+}
+
+.hour-cell {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  
+  &.with-separator::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.15);
+    z-index: 2;
+  }
+}
+
+.cell-half {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: $bg-secondary;
+  border: $border-width-thin solid $border-default;
+  transition: all 0.15s ease;
+  cursor: pointer;
+  
+  // Divider between major and minor halves
+  &.major-half {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+  
+  &.minor-half {
+    border-top: none; // Remove default top border to avoid double border with major half
+  }
+  
+  &.major-half.has-event {
+    background: rgba(255, 215, 0, 0.05);
+    border-color: rgba(255, 215, 0, 0.4);
+    border-width: 1.5px;
+    border-bottom-width: 1px;
+  }
+  
+  &.minor-half.has-event {
+    background: rgba(79, 195, 247, 0.05);
+    border-color: rgba(79, 195, 247, 0.4);
+    border-width: 1.5px;
+    border-top: 1.5px solid rgba(79, 195, 247, 0.4); // Add colored top border for minor events
+  }
+  
+  &.no-event {
+    opacity: 0.6;
+    cursor: default;
+    
+    &:hover {
+      background: $bg-secondary;
+    }
+  }
+  
+  &.has-event:hover {
+    background: $bg-tertiary;
+    transform: scale(1.02);
+    z-index: 3;
+  }
+  
+  // Current hour styling
+  &.current-hour.has-event {
+    &.major-half {
+      background: rgba(255, 215, 0, 0.3);
+    }
+    
+    &.minor-half {
+      background: rgba(79, 195, 247, 0.3);
+    }
+  }
+  
+  &.highlighted {
+    z-index: 4;
+    
+    &.major-half {
+      background: rgba(255, 215, 0, 0.2);
+      border-color: rgba(255, 215, 0, 0.8);
+      box-shadow: 0 0 12px rgba(255, 215, 0, 0.4);
+    }
+    
+    &.minor-half {
+      background: rgba(79, 195, 247, 0.2);
+      border-color: rgba(79, 195, 247, 0.8);
+      box-shadow: 0 0 12px rgba(79, 195, 247, 0.4);
+    }
+    
+    .event-icon {
+      transform: scale(1.15);
+      filter: brightness(1.3);
+    }
+  }
+}
+
+.event-icon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  transition: all 0.15s ease;
+  pointer-events: none;
+}
+
