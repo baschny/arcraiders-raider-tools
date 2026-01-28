@@ -3,7 +3,7 @@
 # Script to generate consolidated item data from arcraiders-data repository
 
 SOURCE_DIR="../arcraiders-data/items"
-DEST_DIR="./public"
+DEST_DIR="./public/data"
 OUTPUT_FILE="$DEST_DIR/items-loot-helper.json"
 
 echo "Generating consolidated item data..."

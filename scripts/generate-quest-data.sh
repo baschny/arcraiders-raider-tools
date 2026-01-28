@@ -6,7 +6,7 @@ set -e
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 QUESTS_DIR="$SCRIPT_DIR/../../arcraiders-data/quests"
-OUTPUT_FILE="$SCRIPT_DIR/../public/quests/quest-data.json"
+OUTPUT_FILE="$SCRIPT_DIR/../public/data/quests/quest-data.json"
 
 echo "Generating quest data from $QUESTS_DIR..."
 
@@ -39,4 +39,4 @@ echo "  Total quests: $QUEST_COUNT"
 echo "  Blueprint quests: $BLUEPRINT_COUNT"
 echo "  Blueprint quest IDs: $BLUEPRINT_IDS"
 echo ""
-echo "Quest data is ready in public/quests/quest-data.json"
+echo "Quest data is ready in public/data/quests/quest-data.json"

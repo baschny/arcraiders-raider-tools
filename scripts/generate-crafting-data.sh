@@ -4,7 +4,7 @@
 # This script copies the latest item JSON files into the public data directory
 
 SOURCE_DIR="../arcraiders-data/items"
-TARGET_FILE="public/craft-calculator/items.json"
+TARGET_FILE="public/data/craft-calculator/items.json"
 
 if [ ! -d "$SOURCE_DIR" ]; then
   echo "Error: Source directory '$SOURCE_DIR' not found."

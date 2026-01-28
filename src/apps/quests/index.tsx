@@ -12,7 +12,7 @@ export function QuestsApp() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch('/quests/quest-data.json')
+    fetch('/data/quests/quest-data.json')
       .then((response) => {
         if (!response.ok) {
           throw new Error('Failed to load quest data');

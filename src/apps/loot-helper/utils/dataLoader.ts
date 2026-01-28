@@ -67,7 +67,7 @@ function consolidateWeaponTiers(items: Item[]): Item[] {
 }
 
 export async function loadAllItems(): Promise<ItemsMap> {
-  const response = await fetch('/items-loot-helper.json');
+  const response = await fetch('/data/items-loot-helper.json');
   if (!response.ok) {
     throw new Error('Failed to load items');
   }
