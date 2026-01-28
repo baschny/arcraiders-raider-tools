@@ -78,6 +78,27 @@
         margin: 0;
       }
     }
+
+    .video-link {
+      display: inline-flex;
+      align-items: center;
+      gap: $spacing-xs;
+      color: $text-accent;
+      text-decoration: none;
+      transition: $transition-default;
+      padding: $spacing-xs $spacing-sm;
+      border-radius: $radius-sm;
+      margin-left: -$spacing-sm;
+
+      &:hover {
+        color: lighten($text-accent, 10%);
+        background: rgba($text-accent, 0.1);
+      }
+
+      svg {
+        flex-shrink: 0;
+      }
+    }
   }
 
   &-example {

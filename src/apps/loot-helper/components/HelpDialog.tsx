@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Youtube } from 'lucide-react';
 
 interface HelpDialogProps {
   onClose: () => void;
@@ -26,6 +27,16 @@ export function HelpDialog({ onClose }: HelpDialogProps) {
           <button className="help-dialog-close" onClick={onClose}>&times;</button>
         </div>
         <div className="help-dialog-content">
+          <section>
+            <h3>Video Tutorial</h3>
+            <p>
+              <a href="https://youtu.be/wePdXVwQ4pk" target="_blank" rel="noopener noreferrer" className="video-link">
+                <Youtube size={20} />
+                Watch a quick walkthrough: How to Use the Looting Helper
+              </a>
+            </p>
+          </section>
+
           <section>
             <h3>1. Set Your Crafting Goals</h3>
             <p>Use the search bar to find and add items you want to regularly craft. This builds your master list of requirements.</p>
