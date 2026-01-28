@@ -1,0 +1,147 @@
+{
+  "raider_hatch_key": {
+    "id": "raider_hatch_key",
+    "name": { "en": "Raider Hatch Key" },
+    "type": "Key",
+    "rarity": "Rare",
+    "recipe": {
+      "advanced_electrical_components": 1,
+      "sensor": 3
+    }
+  },
+  "heavy_shield": {
+    "id": "heavy_shield",
+    "name": { "en": "Heavy Shield" },
+    "type": "Shield",
+    "rarity": "Epic",
+    "recipe": {
+      "power_rod": 1,
+      "voltage_converter": 2
+    },
+    "recyclesInto": {
+      "arc_circuitry": 2,
+      "voltage_converter": 1
+    },
+    "salvagesInto": {
+      "arc_alloy": 4
+    }
+  },
+  "power_rod": {
+    "id": "power_rod",
+    "name": { "en": "Power Rod" },
+    "type": "Refined Material",
+    "rarity": "Epic",
+    "recipe": {
+      "advanced_electrical_components": 2,
+      "arc_circuitry": 2
+    },
+    "recyclesInto": {
+      "advanced_electrical_components": 1,
+      "arc_circuitry": 1
+    },
+    "salvagesInto": {
+      "advanced_electrical_components": 1
+    }
+  },
+  "voltage_converter": {
+    "id": "voltage_converter",
+    "name": { "en": "Voltage Converter" },
+    "type": "Topside Material",
+    "rarity": "Rare",
+    "recyclesInto": {
+      "wires": 1,
+      "rubber_parts": 1
+    },
+    "salvagesInto": {
+      "rubber_parts": 2
+    }
+  },
+  "advanced_electrical_components": {
+    "id": "advanced_electrical_components",
+    "name": { "en": "Advanced Electrical Components" },
+    "type": "Refined Material",
+    "rarity": "Rare",
+    "recipe": {
+      "wires": 3,
+      "electrical_components": 2,
+      "sensor": 1
+    },
+    "recyclesInto": {
+      "electrical_components": 1,
+      "wires": 1
+    },
+    "salvagesInto": {
+      "electrical_components": 1
+    }
+  },
+  "arc_circuitry": {
+    "id": "arc_circuitry",
+    "name": { "en": "ARC Circuitry" },
+    "type": "Topside Material",
+    "rarity": "Rare"
+  },
+  "sensor": {
+    "id": "sensor",
+    "name": { "en": "Sensor" },
+    "type": "Topside Material",
+    "rarity": "Rare"
+  },
+  "broken_handheld_radio": {
+    "id": "broken_handheld_radio",
+    "name": { "en": "Broken Handheld Radio" },
+    "type": "Recyclable",
+    "rarity": "Uncommon",
+    "salvagesInto": {
+      "sensor": 2
+    }
+  },
+  "broken_taser": {
+    "id": "broken_taser",
+    "name": { "en": "Broken Taser" },
+    "type": "Recyclable",
+    "rarity": "Rare",
+    "recyclesInto": {
+      "battery": 2,
+      "wires": 2
+    },
+    "salvagesInto": {
+      "battery": 2
+    }
+  },
+  "wires": {
+    "id": "wires",
+    "name": { "en": "Wires" },
+    "type": "Topside Material",
+    "rarity": "Uncommon",
+    "recyclesInto": {
+      "rubber_parts": 3
+    },
+    "salvagesInto": {
+      "rubber_parts": 1
+    }
+  },
+  "electrical_components": {
+    "id": "electrical_components",
+    "name": { "en": "Electrical Components" },
+    "type": "Basic Material",
+    "rarity": "Common"
+  },
+  "battery": {
+    "id": "battery",
+    "name": { "en": "Battery" },
+    "type": "Basic Material",
+    "rarity": "Common"
+  },
+  "rubber_parts": {
+    "id": "rubber_parts",
+    "name": { "en": "Rubber Parts" },
+    "type": "Basic Material",
+    "rarity": "Common"
+  },
+  "arc_alloy": {
+    "id": "arc_alloy",
+    "name": { "en": "ARC Alloy" },
+    "type": "Basic Material",
+    "rarity": "Common"
+  }
+}

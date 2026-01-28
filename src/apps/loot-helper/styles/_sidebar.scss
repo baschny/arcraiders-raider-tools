@@ -1,0 +1,478 @@
+@use 'variables' as *;
+
+.sidebar {
+  width: $sidebar-width;
+  background: $bg-secondary;
+  border-right: $border-width-default solid $border-default;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+
+  &-header {
+    padding: $spacing-lg;
+    border-bottom: $border-width-thin solid $border-default;
+
+    h2 {
+      font-size: $font-xl;
+      margin: 0 0 $spacing-md 0;
+      color: $text-primary;
+    }
+  }
+
+  &-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: $spacing-lg;
+  }
+
+  &-section {
+    margin-bottom: $spacing-xl;
+
+    &-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: $spacing-sm;
+      gap: $spacing-sm;
+    }
+
+    &-title {
+      @include section-title;
+    }
+
+    &-actions {
+      display: flex;
+      gap: $spacing-xs;
+      align-items: center;
+    }
+
+    &-action {
+      padding: 3px 8px;
+      background: $bg-tertiary;
+      border: $border-width-thin solid $border-light;
+      border-radius: $radius-sm;
+      color: $text-primary;
+      font-size: 10px;
+      cursor: pointer;
+      transition: $transition-default;
+      white-space: nowrap;
+
+      &:hover:not(:disabled) {
+        background: $bg-quaternary;
+        border-color: $text-accent;
+      }
+
+      &:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+    }
+
+    &-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      background: $bg-tertiary;
+      border: $border-width-thin solid $border-light;
+      border-radius: 50%;
+      color: $text-secondary;
+      cursor: pointer;
+      transition: $transition-default;
+
+      &:hover {
+        background: $bg-quaternary;
+        border-color: $text-accent;
+        color: $text-primary;
+      }
+
+      &:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+    }
+
+    &-count {
+      min-width: 24px;
+      height: 24px;
+      padding: 0 $spacing-xs;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: $bg-tertiary;
+      border: $border-width-thin solid $border-light;
+      border-radius: $radius-md;
+      font-size: $font-sm;
+      color: $text-primary;
+    }
+  }
+}
+
+.search-box {
+  position: relative;
+  margin-bottom: $spacing-lg;
+
+  .search-box-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $spacing-xs;
+
+    label {
+      margin-bottom: 0;
+    }
+  }
+
+  .help-icon-button {
+    background: $bg-tertiary;
+    border: $border-width-thin solid $border-light;
+    color: $text-secondary;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    cursor: pointer;
+    transition: $transition-default;
+    padding: 0;
+    line-height: 1;
+
+    &:hover {
+      background: $bg-quaternary;
+      border-color: $text-accent;
+      color: $text-primary;
+    }
+  }
+
+  label {
+    display: block;
+    margin-bottom: $spacing-xs;
+    text-transform: uppercase;
+  }
+
+  input {
+    width: 100%;
+    padding: $spacing-sm $spacing-md;
+    background: $bg-tertiary;
+    border: $border-width-thin solid $border-light;
+    border-radius: $radius-sm;
+    color: $text-primary;
+    font-size: $font-md;
+    transition: $transition-default;
+
+    &:focus {
+      outline: none;
+      border-color: $text-accent;
+      background: $bg-dark;
+    }
+
+    &::placeholder {
+      color: $text-tertiary;
+    }
+  }
+}
+
+.autocomplete-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 300px;
+  overflow-y: auto;
+  background: $bg-tertiary;
+  border: $border-width-thin solid $border-light;
+  border-radius: $radius-sm;
+  box-shadow: $shadow-default;
+  z-index: 100;
+  margin-top: $spacing-xs;
+
+  &-item {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    padding: $spacing-sm $spacing-md;
+    cursor: pointer;
+    border-bottom: $border-width-thin solid $border-default;
+    transition: $transition-default;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover {
+      background: $bg-quaternary;
+    }
+
+    &-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: $radius-sm;
+      object-fit: contain;
+      border-width: 2px;
+      border-style: solid;
+      background-size: cover;
+      background-position: left center;
+      overflow: hidden;
+
+      &.rarity-common {
+        background-image: url('/images/rarities/common_bg.png');
+      }
+
+      &.rarity-uncommon {
+        background-image: url('/images/rarities/uncommon_bg.png');
+      }
+
+      &.rarity-rare {
+        background-image: url('/images/rarities/rare_bg.png');
+      }
+
+      &.rarity-epic {
+        background-image: url('/images/rarities/epic_bg.png');
+      }
+
+      &.rarity-legendary {
+        background-image: url('/images/rarities/legendary_bg.png');
+      }
+    }
+
+    &-name {
+      @include urbanist-title;
+      flex: 1;
+      font-size: 13px;
+      color: $text-primary;
+    }
+
+    &-add {
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: $text-accent;
+      color: $bg-primary;
+      border-radius: $radius-sm;
+      font-size: $font-lg;
+      font-weight: bold;
+      transition: $transition-default;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+
+.goal-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+
+  &-item {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    padding: $spacing-sm;
+    background: $bg-tertiary;
+    border-radius: $radius-sm;
+    border: $border-width-thin solid $border-light;
+    transition: $transition-default;
+    cursor: move;
+
+    &.stash {
+      cursor: pointer;
+
+      .goal-items-list-item-content {
+        cursor: pointer;
+      }
+    }
+
+    &.disabled {
+      opacity: 0.4;
+      background: $bg-dark;
+
+      .goal-items-list-item-content {
+        cursor: pointer;
+      }
+    }
+
+    &.dragging {
+      opacity: 0.5;
+      border-color: $text-accent;
+    }
+
+    &.drop-target {
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: -5px;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: #4caf50;
+        border-radius: 2px;
+        box-shadow: 0 0 8px rgba(76, 175, 80, 0.6);
+        z-index: 10;
+      }
+    }
+
+    &:hover:not(.dragging) {
+      border-color: $border-lighter;
+    }
+
+    &-content {
+      display: flex;
+      align-items: center;
+      gap: $spacing-sm;
+      flex: 1;
+      cursor: pointer;
+      user-select: none;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+
+    &-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: $radius-sm;
+      object-fit: contain;
+      border-width: 2px;
+      border-style: solid;
+      background-size: cover;
+      background-position: left center;
+      overflow: hidden;
+
+      &.rarity-common {
+        background-image: url('/images/rarities/common_bg.png');
+      }
+
+      &.rarity-uncommon {
+        background-image: url('/images/rarities/uncommon_bg.png');
+      }
+
+      &.rarity-rare {
+        background-image: url('/images/rarities/rare_bg.png');
+      }
+
+      &.rarity-epic {
+        background-image: url('/images/rarities/epic_bg.png');
+      }
+
+      &.rarity-legendary {
+        background-image: url('/images/rarities/legendary_bg.png');
+      }
+    }
+
+    &-name {
+      @include urbanist-title;
+      flex: 1;
+      font-size: 13px;
+      color: $text-primary;
+    }
+
+    &-remove {
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      color: $text-secondary;
+      border: none;
+      cursor: pointer;
+      font-size: $font-lg;
+      transition: $transition-default;
+
+      &:hover {
+        color: #e53935;
+        transform: scale(1.2);
+      }
+    }
+
+    &-actions {
+      display: flex;
+      align-items: center;
+      gap: $spacing-xs;
+    }
+
+    &-disable {
+      padding: 3px 8px;
+      background: $bg-tertiary;
+      border: $border-width-thin solid $border-light;
+      border-radius: $radius-sm;
+      color: $text-primary;
+      font-size: 10px;
+      cursor: pointer;
+      transition: $transition-default;
+      white-space: nowrap;
+
+      &:hover {
+        background: $bg-quaternary;
+        border-color: $text-accent;
+      }
+    }
+  }
+
+  &-empty {
+    font-size: $font-sm;
+    color: $text-tertiary;
+    text-align: center;
+    padding: $spacing-lg;
+  }
+}
+
+.combine-toggle {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-md 0;
+
+  label {
+    font-size: $font-md;
+    color: $text-primary;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  input[type='checkbox'] {
+    width: 40px;
+    height: 20px;
+    appearance: none;
+    background: $bg-tertiary;
+    border: $border-width-thin solid $border-light;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+    transition: $transition-default;
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: $text-secondary;
+      left: 2px;
+      top: 1px;
+      transition: $transition-default;
+    }
+
+    &:checked {
+      background: $text-accent;
+      border-color: $text-accent;
+
+      &::before {
+        left: 22px;
+        background: white;
+      }
+    }
+  }
+}

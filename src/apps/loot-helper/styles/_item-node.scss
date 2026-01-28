@@ -1,0 +1,167 @@
+@use 'variables' as *;
+
+.item-node {
+  width: $node-width;
+  min-height: $node-height;
+  background: $bg-secondary;
+  border-radius: $radius-md;
+  padding: $spacing-sm;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-xs;
+  box-shadow: $shadow-node;
+  transition: $transition-default;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: $shadow-hover;
+  }
+
+  &-icon-wrapper {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    border-radius: $radius-sm;
+    overflow: hidden;
+    border-width: $border-width-thick;
+    border-style: solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $bg-dark;
+  }
+
+  &-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &-quantity {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background: $bg-primary;
+    color: $text-primary;
+    font-size: $font-sm;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: $radius-sm;
+    border: $border-width-thin solid $border-light;
+    box-shadow: $shadow-default;
+  }
+
+  // Position badge absolutely within the outer .item-node container
+  position: relative;
+
+  &-method {
+    position: absolute;
+    left: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 12px;
+    box-shadow: $shadow-default;
+    border: $border-width-thin solid $border-light;
+
+    &.salvage {
+      background: #4fc3f7;
+      color: $bg-primary;
+    }
+
+    &.recycle {
+      background: #ffa726;
+      color: $bg-primary;
+    }
+  }
+
+  &-name {
+    font-size: $font-sm;
+    color: $text-primary;
+    text-align: center;
+    line-height: 1.2;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  &-type {
+    font-size: $font-xs;
+    color: $text-tertiary;
+    text-align: center;
+  }
+
+  // Goal item variant
+  &.goal-item {
+    border: 2px solid $status-highlight;
+    background: linear-gradient(135deg, $bg-secondary 0%, $bg-tertiary 100%);
+  }
+
+  // Highlighted state (when part of clicked node's tree)
+  &.highlighted {
+    box-shadow: 0 0 20px rgba(79, 195, 247, 0.6), $shadow-node;
+    border: 2px solid $status-highlight;
+    transform: scale(1.05);
+    z-index: 10;
+    opacity: 1;
+  }
+
+  // Dimmed state (when not part of clicked node's tree)
+  &.dimmed {
+    opacity: 0.3;
+  }
+
+  // Rarity colors for border
+  &.rarity-common .item-node-icon-wrapper {
+    border-color: $rarity-common;
+  }
+
+  &.rarity-uncommon .item-node-icon-wrapper {
+    border-color: $rarity-uncommon;
+  }
+
+  &.rarity-rare .item-node-icon-wrapper {
+    border-color: $rarity-rare;
+  }
+
+  &.rarity-epic .item-node-icon-wrapper {
+    border-color: $rarity-epic;
+  }
+
+  &.rarity-legendary .item-node-icon-wrapper {
+    border-color: $rarity-legendary;
+  }
+}
+
+// Apply rarity colors to autocomplete and goal list icons
+.autocomplete-dropdown-item-icon,
+.goal-items-list-item-icon {
+  &.rarity-common {
+    border-color: $rarity-common;
+  }
+
+  &.rarity-uncommon {
+    border-color: $rarity-uncommon;
+  }
+
+  &.rarity-rare {
+    border-color: $rarity-rare;
+  }
+
+  &.rarity-epic {
+    border-color: $rarity-epic;
+  }
+
+  &.rarity-legendary {
+    border-color: $rarity-legendary;
+  }
+}

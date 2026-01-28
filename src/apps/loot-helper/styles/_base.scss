@@ -1,0 +1,167 @@
+@use 'variables' as *;
+@use 'sass:color';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: $bg-primary;
+  color: $text-primary;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-heading;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.react-flow {
+  background: $bg-primary;
+}
+
+/* Header */
+.app-header {
+  flex-shrink: 0;
+  background: $bg-secondary;
+  padding: $spacing-md $spacing-xl;
+  border-bottom: $border-width-default solid $border-default;
+  box-shadow: $shadow-header;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  h1 {
+    font-size: 30px;
+    font-weight: 700;
+    color: $text-primary;
+    margin: 0;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .brand-name {
+    font-weight: 700;
+    color: $text-primary;
+  }
+
+  .app-name {
+    font-weight: 400;
+    color: $text-secondary;
+    position: relative;
+    padding-left: 12px;
+
+    &::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: $text-secondary;
+    }
+  }
+}
+
+/* Footer */
+.app-footer {
+  flex-shrink: 0;
+  background: $bg-secondary;
+  padding: $spacing-md $spacing-xl;
+  border-top: $border-width-default solid $border-default;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: $spacing-xl;
+  flex-wrap: wrap;
+}
+
+.footer-text {
+  margin: 0;
+  font-size: $font-md;
+  color: $text-secondary;
+  flex: 1;
+  min-width: 300px;
+
+  a {
+    color: $text-accent;
+    text-decoration: none;
+    transition: $transition-default;
+
+    &:hover {
+      color: color.adjust($text-accent, $lightness: 10%);
+      text-decoration: underline;
+    }
+  }
+}
+
+.footer-discord {
+  display: flex;
+  gap: $spacing-md;
+  align-items: center;
+}
+
+.discord-link {
+  display: flex;
+  align-items: center;
+  gap: $gap-xs;
+  padding: $spacing-xs $spacing-md;
+  background: $bg-tertiary;
+  border: $border-width-thin solid $border-light;
+  border-radius: $radius-sm;
+  color: #5865f2;
+  text-decoration: none;
+  font-size: $font-sm;
+  transition: $transition-default;
+  white-space: nowrap;
+
+  svg {
+    flex-shrink: 0;
+  }
+
+  &:hover {
+    background: $bg-quaternary;
+    border-color: #5865f2;
+    color: color.adjust(#5865f2, $lightness: 10%);
+    text-decoration: none;
+  }
+}
+
+/* Main content area */
+.main-content {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  padding: 0 !important; // Override shared layout padding
+}
+
+/* Main content area (right side) */
+.main-content-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #1a1a1a;
+}
+
+.empty-state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: #888;
+  font-size: 16px;
+  padding: $spacing-xl;
+  text-align: center;
+}

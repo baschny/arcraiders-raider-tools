@@ -13,6 +13,7 @@
     "test:watch": "vitest",
     "generate:quests": "./scripts/generate-quest-data.sh",
     "generate:items": "./scripts/generate-item-data.sh",
+    "generate:items-loot-helper": "./scripts/generate-item-data-loot-helper.sh",
     "generate:crafting": "./scripts/generate-crafting-data.sh"
   },
   "dependencies": {

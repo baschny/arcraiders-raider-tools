@@ -17,7 +17,7 @@ export async function loadItems(): Promise<ItemDatabase> {
 
   loadingPromise = (async () => {
     try {
-      const response = await fetch('/items.json');
+      const response = await fetch('/craft-calculator/items.json');
       if (!response.ok) {
         throw new Error('Failed to load items database');
       }

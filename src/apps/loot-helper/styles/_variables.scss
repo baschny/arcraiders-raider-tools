@@ -1,0 +1,106 @@
+// Colors - Background
+$bg-primary: #1a1a1a;
+$bg-secondary: #2c2c2c;
+$bg-tertiary: #3c3c3c;
+$bg-quaternary: #4c4c4c;
+$bg-dark: #1f1f1f;
+
+// Colors - Borders
+$border-default: #444;
+$border-light: #555;
+$border-lighter: #777;
+
+// Colors - Text
+$text-primary: #e0e0e0;
+$text-secondary: #888;
+$text-tertiary: #666;
+$text-accent: #4fc3f7;
+$text-light: #b0bec5;
+
+// Colors - Rarity
+$rarity-common: #888888;
+$rarity-uncommon: #4caf50;
+$rarity-rare: #2196f3;
+$rarity-epic: #9c27b0;
+$rarity-legendary: #ffd700;
+
+// Colors - Status
+$status-available: #ffd700;
+$status-completed: #4caf50;
+$status-highlight: #4fc3f7;
+
+// Colors - Special Actions
+$action-gold: oklch(85% .22 85); // Gold/yellow for salvage, recycle, and goal badges
+
+// Spacing
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 12px;
+$spacing-lg: 16px;
+$spacing-xl: 24px;
+
+// Gaps
+$gap-xs: 6px;
+$gap-sm: 8px;
+$gap-md: 12px;
+
+// Node dimensions
+$node-width: 140px;
+$node-height: 120px;
+
+// Border widths
+$border-width-default: 2px;
+$border-width-thick: 3px;
+$border-width-thin: 1px;
+
+// Border radius
+$radius-sm: 4px;
+$radius-md: 8px;
+$radius-lg: 12px;
+$radius-circle: 50%;
+
+// Font sizes
+$font-xs: 9px;
+$font-sm: 10px;
+$font-base: 11px;
+$font-md: 12px;
+$font-lg: 14px;
+$font-xl: 16px;
+$font-2xl: 18px;
+$font-3xl: 22px;
+
+// Shadows
+$shadow-default: 0 4px 12px rgba(0, 0, 0, 0.3);
+$shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.7);
+$shadow-header: 0 2px 8px rgba(0, 0, 0, 0.3);
+$shadow-node: 0 6px 16px rgba(0, 0, 0, 0.5);
+
+// Transitions
+$transition-default: all 0.2s ease;
+
+// Fonts
+$font-heading: 'Urbanist', sans-serif;
+
+// Mixin for Urbanist title styling
+@mixin urbanist-title {
+  font-family: $font-heading;
+  font-weight: bold;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+}
+
+// Mixin for section titles
+@mixin section-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: $text-light;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+// Sidebar
+$sidebar-width: 300px;
+
+// Edge styles
+$edge-width-default: 2;
+$edge-width-active: 2.5;

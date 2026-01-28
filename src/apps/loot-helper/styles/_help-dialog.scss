@@ -1,0 +1,128 @@
+@use 'variables' as *;
+
+.help-dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.help-dialog {
+  background: $bg-secondary;
+  border: $border-width-default solid $border-default;
+  border-radius: $radius-lg;
+  width: 90%;
+  max-width: 600px;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  animation: dialog-appear 0.3s ease-out;
+
+  &-header {
+    padding: $spacing-lg $spacing-xl;
+    border-bottom: $border-width-thin solid $border-default;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h2 {
+      margin: 0;
+      font-size: $font-xl;
+      color: $text-primary;
+      @include urbanist-title;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+  }
+
+  &-close {
+    background: transparent;
+    border: none;
+    color: $text-tertiary;
+    font-size: 28px;
+    cursor: pointer;
+    line-height: 1;
+    transition: $transition-default;
+
+    &:hover {
+      color: $text-primary;
+      transform: scale(1.1);
+    }
+  }
+
+  &-content {
+    padding: $spacing-xl;
+    overflow-y: auto;
+    color: $text-secondary;
+    line-height: 1.6;
+
+    section {
+      margin-bottom: $spacing-xl;
+
+      h3 {
+        color: $text-primary;
+        font-size: $font-lg;
+        margin-top: 0;
+        margin-bottom: $spacing-sm;
+      }
+
+      p {
+        margin: 0;
+      }
+    }
+  }
+
+  &-example {
+    background: $bg-tertiary;
+    padding: $spacing-lg;
+    border-radius: $radius-md;
+    border-left: 4px solid $text-accent;
+    margin-bottom: $spacing-xl;
+
+    h3 {
+      color: $text-primary;
+      font-size: $font-md;
+      margin-top: 0;
+      margin-bottom: $spacing-xs;
+    }
+
+    p {
+      margin: 0;
+      font-style: italic;
+      font-size: $font-sm;
+    }
+  }
+
+  &-note {
+    background: rgba($text-accent, 0.1);
+    padding: $spacing-md;
+    border-radius: $radius-md;
+    margin-bottom: $spacing-xl;
+    border: 1px dashed rgba($text-accent, 0.3);
+
+    p {
+      margin: 0;
+      font-size: $font-sm;
+      color: $text-light;
+    }
+  }
+}
+
+@keyframes dialog-appear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
