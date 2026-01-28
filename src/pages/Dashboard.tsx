@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Calendar, Calculator, ListTodo, Package } from 'lucide-react';
+import { trackNavigation } from '../shared/utils/analytics';
 
 const TOOLS = [
   {
@@ -83,6 +84,7 @@ export function Dashboard() {
               e.currentTarget.style.background = '#2c2c2c';
               e.currentTarget.style.transform = 'translateY(0)';
             }}
+            onClick={() => trackNavigation(tool.name, 'dashboard')}
           >
             <tool.icon
               size={48}

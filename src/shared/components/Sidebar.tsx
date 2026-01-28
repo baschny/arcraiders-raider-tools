@@ -9,6 +9,7 @@ import {
   ChevronLeft,
   ChevronRight 
 } from 'lucide-react';
+import { trackNavigation } from '../utils/analytics';
 
 const NAV_ITEMS = [
   { path: '/', icon: Home, label: 'Home' },
@@ -60,6 +61,7 @@ export function Sidebar() {
                 to={item.path}
                 className={({ isActive }) => (isActive ? 'active' : '')}
                 title={collapsed ? item.label : undefined}
+                onClick={() => trackNavigation(item.label, 'sidebar')}
               >
                 <item.icon size={20} />
                 {!collapsed && <span className="sidebar-nav-text">{item.label}</span>}

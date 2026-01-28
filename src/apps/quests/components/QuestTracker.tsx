@@ -15,6 +15,7 @@ import { MapNode } from './MapNode';
 import { Sidebar } from './Sidebar';
 import { ConfirmDialog } from './ConfirmDialog';
 import { STORAGE_KEY } from '../data/static-data';
+import { trackQuestMark } from '../../../shared/utils/analytics';
 
 const VIEWPORT_STORAGE_KEY = 'raider-tools:quest-tracker-viewport';
 import {
@@ -153,6 +154,8 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
                   const newSet = new Set(current);
                   newSet.delete(questId);
                   dependents.forEach((id) => newSet.delete(id));
+                  // Track quest unmarking
+                  trackQuestMark(quest.name, questId, false);
                   return newSet;
                 });
                 setConfirmDialog((prev) => ({ ...prev, isOpen: false }));
@@ -163,6 +166,8 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
             // No dependents, just uncomplete
             const newSet = new Set(prev);
             newSet.delete(questId);
+            // Track quest unmarking
+            trackQuestMark(quest.name, questId, false);
             return newSet;
           }
         } else {
@@ -193,6 +198,8 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
                   const newSet = new Set(current);
                   incompleteAll.forEach((id) => newSet.add(id));
                   newSet.add(questId);
+                  // Track quest marking
+                  trackQuestMark(quest.name, questId, true);
                   return newSet;
                 });
                 setConfirmDialog((prev) => ({ ...prev, isOpen: false }));
@@ -203,6 +210,8 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
             // All prerequisites complete, just complete this quest
             const newSet = new Set(prev);
             newSet.add(questId);
+            // Track quest marking
+            trackQuestMark(quest.name, questId, true);
             return newSet;
           }
         }

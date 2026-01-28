@@ -4,6 +4,7 @@ import type { Item, ItemsMap } from '../types/item';
 import { getRarityClass } from '../utils/dataLoader';
 import { ItemIconWithInfo } from './ItemIconWithInfo';
 import { HelpDialog } from './HelpDialog';
+import { trackLootHelperAddGoal } from '../../../shared/utils/analytics';
 
 interface SidebarProps {
   itemsMap: ItemsMap;
@@ -82,6 +83,11 @@ export function Sidebar({
   }, [searchTerm, itemsMap]);
 
   const handleAddItem = (itemId: string) => {
+    const item = itemsMap[itemId];
+    if (item) {
+      // Track the goal item addition
+      trackLootHelperAddGoal(item.name.en, itemId);
+    }
     onAddGoalItem(itemId);
     setSearchTerm('');
     setShowDropdown(false);

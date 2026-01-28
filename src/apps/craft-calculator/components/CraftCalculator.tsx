@@ -5,6 +5,7 @@ import { calculateCrafting } from '../utils/calculations';
 import { CraftingResults } from './CraftingResults';
 import { ItemSearch } from './ItemSearch';
 import { loadItems, getItem } from '../utils/itemData';
+import { trackCraftCalculatorItemSelection } from '../../../shared/utils/analytics';
 
 interface RequiredItemWithName extends RequiredItem {
   name?: string;
@@ -32,6 +33,9 @@ export function CraftCalculator() {
     setSelectedItem(item);
     setCraftedStackSize((item.stackSize as StackSize) || 1);
     setCraftedInStash(0);
+
+    // Track the item selection
+    trackCraftCalculatorItemSelection(item.name, item.id);
 
     if (item.recipe) {
       const materials = Object.entries(item.recipe).map(([materialId, amount]) => {
