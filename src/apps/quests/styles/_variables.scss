@@ -1,0 +1,113 @@
+// Colors - Background
+$bg-primary: #1a1a1a;
+$bg-secondary: #2c2c2c;
+$bg-tertiary: #3c3c3c;
+$bg-quaternary: #4c4c4c;
+$bg-dark: #1f1f1f;
+
+// Colors - Borders
+$border-default: #444;
+$border-light: #555;
+$border-lighter: #777;
+
+// Colors - Text
+$text-primary: #e0e0e0;
+$text-secondary: #888;
+$text-tertiary: #666;
+$text-accent: #4fc3f7;
+$text-light: #b0bec5;
+
+// Colors - Trader
+$trader-celeste-start: #7b1fa2;
+$trader-celeste-end: #9c27b0;
+$trader-shani-start: #f57c00;
+$trader-shani-end: #ff9800;
+$trader-lance-start: #388e3c;
+$trader-lance-end: #4caf50;
+$trader-tianwen-start: #c62828;
+$trader-tianwen-end: #e53935;
+$trader-apollo-start: #0277bd;
+$trader-apollo-end: #0288d1;
+$trader-map-start: #455a64;
+$trader-map-end: #607d8b;
+
+// Colors - Status
+$status-available: #ffd700;
+$status-completed: #4caf50;
+$status-completed-dark: #2e7d4e;
+$status-completed-bg: #1b4d2b;
+$status-locked: #888;
+$status-highlight: #4fc3f7;
+
+// Colors - Map Node
+$map-node-bg-start: #263238;
+$map-node-bg-end: #37474f;
+$map-node-completed-start: #1b5e20;
+$map-node-completed-end: #2e7d32;
+$map-node-text: #90caf9;
+$map-node-text-completed: #a8d5a8;
+
+// Colors - Blueprint Badge
+$blueprint-bg-start: #1a3a52;
+$blueprint-bg-end: #0d2738;
+$blueprint-border: #2d5a7b;
+$blueprint-text: #7cb3e0;
+$blueprint-grid: rgba(100, 150, 200, 0.15);
+
+// Spacing
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 12px;
+$spacing-lg: 16px;
+$spacing-xl: 24px;
+
+// Gaps
+$gap-xs: 6px;
+$gap-sm: 8px;
+$gap-md: 12px;
+
+// Node dimensions
+$node-width: 280px;
+$node-height: 140px;
+$map-node-height: 110px;
+$trader-icon-size: 50px;
+
+// Border widths
+$border-width-default: 2px;
+$border-width-thick: 3px;
+$border-width-thin: 1px;
+
+// Border radius
+$radius-sm: 4px;
+$radius-md: 8px;
+$radius-lg: 12px;
+$radius-circle: 50%;
+
+// Font sizes
+$font-xs: 9px;
+$font-sm: 10px;
+$font-base: 11px;
+$font-md: 12px;
+$font-lg: 14px;
+$font-xl: 16px;
+$font-2xl: 18px;
+$font-3xl: 22px;
+
+// Shadows
+$shadow-default: 0 4px 12px rgba(0, 0, 0, 0.3);
+$shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.7);
+$shadow-available: 0 0 20px rgba(255, 215, 0, 0.3);
+$shadow-header: 0 2px 8px rgba(0, 0, 0, 0.3);
+$shadow-map-node: 0 6px 16px rgba(0, 0, 0, 0.5);
+$shadow-badge: 0 2px 4px rgba(0, 0, 0, 0.4);
+
+// Transitions
+$transition-default: all 0.2s ease;
+$transition-highlight: 2s ease-in-out;
+
+// Sidebar
+$sidebar-width: 250px;
+
+// Edge styles
+$edge-width-default: 2;
+$edge-width-active: 2.5;

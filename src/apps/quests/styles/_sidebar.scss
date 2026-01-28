@@ -1,0 +1,136 @@
+@use 'variables' as *;
+
+/* Sidebar Stats */
+.sidebar-stats {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px $spacing-lg;
+  background: $bg-primary;
+  border-bottom: $border-width-thin solid $border-default;
+}
+
+.sidebar-stat-item {
+  display: flex;
+  align-items: center;
+  gap: $gap-xs;
+}
+
+.sidebar-stat-value {
+  font-size: $font-xl;
+  font-weight: bold;
+  color: $text-accent;
+}
+
+.sidebar-stat-icon {
+  font-size: $font-xl;
+}
+
+/* Available quests sidebar */
+.available-sidebar {
+  width: $sidebar-width;
+  background: $bg-secondary;
+  border-left: $border-width-default solid $border-default;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  order: 2; /* Position on the right */
+}
+
+.available-sidebar-header {
+  padding: $spacing-md $spacing-lg;
+  background: $bg-dark;
+  border-bottom: $border-width-thin solid $border-default;
+  font-weight: bold;
+  color: $text-accent;
+  font-size: $font-lg;
+  letter-spacing: 0.5px;
+}
+
+.sidebar-search {
+  padding: $spacing-sm;
+  background: $bg-dark;
+  border-bottom: $border-width-thin solid $border-default;
+}
+
+.search-input {
+  width: 100%;
+  padding: $spacing-sm $spacing-md;
+  background: $bg-secondary;
+  border: $border-width-thin solid $border-default;
+  border-radius: $radius-sm;
+  color: $text-primary;
+  font-size: $font-lg;
+  outline: none;
+  transition: $transition-default;
+
+  &:focus {
+    border-color: $text-accent;
+    box-shadow: 0 0 0 2px rgba(79, 195, 247, 0.1);
+  }
+
+  &::placeholder {
+    color: $text-tertiary;
+  }
+}
+
+.available-quests-list {
+  overflow-y: auto;
+  padding: $spacing-sm;
+  max-height: 300px;
+}
+
+.search-results-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: $spacing-sm;
+}
+
+.available-quest-item {
+  padding: 10px $spacing-md;
+  margin-bottom: $gap-xs;
+  background: $bg-tertiary;
+  border: $border-width-thin solid $border-light;
+  border-left: 3px solid $status-available;
+  border-radius: $radius-sm;
+  cursor: pointer;
+  transition: $transition-default;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &:hover {
+    background: $bg-quaternary;
+    border-color: $status-available;
+    transform: translateX(2px);
+  }
+
+  &.completed {
+    border-left-color: $status-completed;
+    background: rgba(76, 175, 80, 0.1);
+
+    .available-quest-name {
+      color: $text-secondary;
+    }
+  }
+}
+
+.available-quest-name {
+  font-size: $font-lg;
+  font-weight: 500;
+  color: $text-primary;
+  line-height: 1.3;
+}
+
+.no-available-quests {
+  padding: 20px;
+  text-align: center;
+  color: $text-secondary;
+  font-style: italic;
+}
+
+.map-check {
+  color: $status-completed;
+  font-size: 18px;
+  font-weight: bold;
+  margin-left: auto;
+}

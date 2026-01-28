@@ -1,0 +1,1199 @@
+[
+  {
+    "id": "12_cold_storage",
+    "name": "Cold Storage",
+    "trader": "Celeste",
+    "map": [
+      "stella_montis"
+    ],
+    "previousQuestIds": [
+      "12_in_my_image"
+    ],
+    "nextQuestIds": [
+      "12_snap_and_salvage"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "12_in_my_image",
+    "name": "In My Image",
+    "trader": "Lance",
+    "map": [
+      "stella_montis"
+    ],
+    "previousQuestIds": [
+      "map_stella_montis",
+      "ss5"
+    ],
+    "nextQuestIds": [
+      "12_cold_storage"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "12_snap_and_salvage",
+    "name": "Snap and Salvage",
+    "trader": "Tian Wen",
+    "map": [
+      "stella_montis"
+    ],
+    "previousQuestIds": [
+      "12_cold_storage"
+    ],
+    "nextQuestIds": [
+      "with_a_view"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "a_toxic_trail",
+    "name": "A Toxic Trail",
+    "trader": "Shani",
+    "map": [
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "ss10x14"
+    ],
+    "nextQuestIds": [
+      "ss10x17"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "bombing_run",
+    "name": "Bombing Run",
+    "trader": "Shani",
+    "map": [],
+    "previousQuestIds": [
+      "combat_recon"
+    ],
+    "nextQuestIds": [],
+    "hasBlueprint": false
+  },
+  {
+    "id": "combat_recon",
+    "name": "Combat Recon",
+    "trader": "Shani",
+    "map": [
+      "buried_city"
+    ],
+    "previousQuestIds": [
+      "ss10x5"
+    ],
+    "nextQuestIds": [
+      "bombing_run"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "deciphering_the_data",
+    "name": "Deciphering the Data",
+    "trader": "Shani",
+    "map": [
+      "the_spaceport"
+    ],
+    "previousQuestIds": [
+      "paving_the_way"
+    ],
+    "nextQuestIds": [
+      "groundbreaking"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "groundbreaking",
+    "name": "Groundbreaking",
+    "trader": "Apollo",
+    "map": [
+      "the_blue_gate"
+    ],
+    "previousQuestIds": [
+      "deciphering_the_data"
+    ],
+    "nextQuestIds": [
+      "on_deaf_ears"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "movie_night",
+    "name": "Movie Night",
+    "trader": "Apollo",
+    "map": [
+      "stella_montis"
+    ],
+    "previousQuestIds": [
+      "the_league"
+    ],
+    "nextQuestIds": [],
+    "hasBlueprint": false
+  },
+  {
+    "id": "on_deaf_ears",
+    "name": "On Deaf Ears",
+    "trader": "Lance",
+    "map": [
+      "stella_montis"
+    ],
+    "previousQuestIds": [
+      "groundbreaking"
+    ],
+    "nextQuestIds": [
+      "on_the_map"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "on_the_map",
+    "name": "On The Map",
+    "trader": "Shani",
+    "map": [
+      "the_blue_gate"
+    ],
+    "previousQuestIds": [],
+    "nextQuestIds": [],
+    "hasBlueprint": false
+  },
+  {
+    "id": "on_the_map",
+    "name": "On The Map",
+    "trader": "Lance",
+    "map": [
+      "the_spaceport"
+    ],
+    "previousQuestIds": [
+      "on_deaf_ears"
+    ],
+    "nextQuestIds": [],
+    "hasBlueprint": false
+  },
+  {
+    "id": "paving_the_way",
+    "name": "Paving the Way",
+    "trader": "Apollo",
+    "map": [
+      "dam_battlegrounds",
+      "the_blue_gate",
+      "buried_city"
+    ],
+    "previousQuestIds": [
+      "ss10x5"
+    ],
+    "nextQuestIds": [
+      "deciphering_the_data"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss1",
+    "name": "Picking Up The Pieces",
+    "trader": "Shani",
+    "map": [],
+    "previousQuestIds": [
+      "map_dam_battleground"
+    ],
+    "nextQuestIds": [
+      "ss2",
+      "ss3"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss10",
+    "name": "A Better Use",
+    "trader": "Tian Wen",
+    "map": [
+      "buried_city",
+      "the_spaceport",
+      "the_blue_gate",
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "ss7"
+    ],
+    "nextQuestIds": [
+      "ss10a"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss10a",
+    "name": "Greasing Her Palms",
+    "trader": "Celeste",
+    "map": [
+      "dam_battlegrounds",
+      "the_spaceport",
+      "buried_city"
+    ],
+    "previousQuestIds": [
+      "ss10"
+    ],
+    "nextQuestIds": [
+      "ss10b",
+      "ss10c"
+    ],
+    "hasBlueprint": true
+  },
+  {
+    "id": "ss10b",
+    "name": "Dormant Barons",
+    "trader": "Shani",
+    "map": [
+      "the_spaceport",
+      "dam_battlegrounds",
+      "the_blue_gate"
+    ],
+    "previousQuestIds": [
+      "ss10a",
+      "ss9"
+    ],
+    "nextQuestIds": [
+      "ss10d",
+      "ss10e"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss10c",
+    "name": "Doctor's Orders",
+    "trader": "Celeste",
+    "map": [],
+    "previousQuestIds": [
+      "ss10a"
+    ],
+    "nextQuestIds": [
+      "ss10f"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss10d",
+    "name": "Mixed Signals",
+    "trader": "Tian Wen",
+    "map": [
+      "buried_city",
+      "the_spaceport",
+      "the_blue_gate",
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "ss10b"
+    ],
+    "nextQuestIds": [],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss10e",
+    "name": "What We Left Behind",
+    "trader": "Tian Wen",
+    "map": [
+      "buried_city",
+      "the_spaceport",
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "ss10b"
+    ],
+    "nextQuestIds": [
+      "ss10h"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss10f",
+    "name": "Medical Merchandise",
+    "trader": "Lance",
+    "map": [
+      "dam_battlegrounds",
+      "the_spaceport",
+      "buried_city"
+    ],
+    "previousQuestIds": [
+      "ss10c"
+    ],
+    "nextQuestIds": [
+      "ss10g"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss10g",
+    "name": "A Reveal in Ruins",
+    "trader": "Lance",
+    "map": [
+      "buried_city"
+    ],
+    "previousQuestIds": [
+      "ss10f"
+    ],
+    "nextQuestIds": [
+      "ss10k"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss10h",
+    "name": "Broken Monument",
+    "trader": "Tian Wen",
+    "map": [
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "ss10e"
+    ],
+    "nextQuestIds": [
+      "ss10i",
+      "ss10j"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss10i",
+    "name": "Marked for Death",
+    "trader": "Tian Wen",
+    "map": [
+      "buried_city"
+    ],
+    "previousQuestIds": [
+      "ss10h"
+    ],
+    "nextQuestIds": [
+      "ss10l"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss10j",
+    "name": "Straight Record",
+    "trader": "Celeste",
+    "map": [
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "ss10h"
+    ],
+    "nextQuestIds": [
+      "ss10o"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss10k",
+    "name": "A Lay of the Land",
+    "trader": "Shani",
+    "map": [
+      "the_spaceport"
+    ],
+    "previousQuestIds": [
+      "ss10g"
+    ],
+    "nextQuestIds": [
+      "ss10s"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss10l",
+    "name": "Market Correction",
+    "trader": "Tian Wen",
+    "map": [
+      "buried_city"
+    ],
+    "previousQuestIds": [
+      "ss10i"
+    ],
+    "nextQuestIds": [
+      "ss10m"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss10m",
+    "name": "Eyes on the Prize",
+    "trader": "Tian Wen",
+    "map": [
+      "buried_city"
+    ],
+    "previousQuestIds": [
+      "ss10l"
+    ],
+    "nextQuestIds": [
+      "ss10n"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss10n",
+    "name": "Industrial Espionage",
+    "trader": "Tian Wen",
+    "map": [
+      "buried_city"
+    ],
+    "previousQuestIds": [
+      "ss10m"
+    ],
+    "nextQuestIds": [
+      "ss10q"
+    ],
+    "hasBlueprint": true
+  },
+  {
+    "id": "ss10o",
+    "name": "Keeping the Memory",
+    "trader": "Celeste",
+    "map": [
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "ss10j"
+    ],
+    "nextQuestIds": [
+      "ss10p"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss10p",
+    "name": "Echoes of Victory Ridge",
+    "trader": "Celeste",
+    "map": [
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "ss10o"
+    ],
+    "nextQuestIds": [
+      "ss10q"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss10q",
+    "name": "Unexpected Initiative",
+    "trader": "Tian Wen",
+    "map": [
+      "buried_city"
+    ],
+    "previousQuestIds": [
+      "ss10p",
+      "ss10n"
+    ],
+    "nextQuestIds": [
+      "ss10r"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss10r",
+    "name": "A Symbol of Unification",
+    "trader": "Celeste",
+    "map": [
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "ss10q"
+    ],
+    "nextQuestIds": [
+      "ss10t",
+      "ss10u",
+      "ss10v"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss10s",
+    "name": "Eyes in the Sky",
+    "trader": "Shani",
+    "map": [
+      "buried_city",
+      "the_spaceport",
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "ss10k"
+    ],
+    "nextQuestIds": [
+      "ss10w",
+      "ss10x",
+      "ss10y"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss10t",
+    "name": "Celeste's Journals",
+    "trader": "Celeste",
+    "map": [
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "ss10r"
+    ],
+    "nextQuestIds": [
+      "ss10w"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss10u",
+    "name": "The Major's Footlocker",
+    "trader": "Tian Wen",
+    "map": [
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "ss10r"
+    ],
+    "nextQuestIds": [],
+    "hasBlueprint": true
+  },
+  {
+    "id": "ss10v",
+    "name": "Out of the Shadows",
+    "trader": "Shani",
+    "map": [
+      "buried_city",
+      "the_spaceport",
+      "the_blue_gate",
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "ss10r"
+    ],
+    "nextQuestIds": [],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss10w",
+    "name": "Back on Top",
+    "trader": "Tian Wen",
+    "map": [
+      "the_blue_gate",
+      "dam_battlegrounds",
+      "buried_city",
+      "the_spaceport"
+    ],
+    "previousQuestIds": [
+      "ss10t",
+      "ss10s"
+    ],
+    "nextQuestIds": [
+      "ss10z"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss10x",
+    "name": "A Balanced Harvest",
+    "trader": "Celeste",
+    "map": [
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "ss10s"
+    ],
+    "nextQuestIds": [
+      "ss10x2"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss10x10",
+    "name": "Power Out",
+    "trader": "Celeste",
+    "map": [
+      "the_spaceport"
+    ],
+    "previousQuestIds": [
+      "ss10x9"
+    ],
+    "nextQuestIds": [
+      "ss10x11"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss10x11",
+    "name": "Flickering Threat",
+    "trader": "Celeste",
+    "map": [
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "ss10x10"
+    ],
+    "nextQuestIds": [
+      "ss10x12"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss10x12",
+    "name": "Bees!",
+    "trader": "Celeste",
+    "map": [
+      "the_blue_gate"
+    ],
+    "previousQuestIds": [
+      "ss10x11"
+    ],
+    "nextQuestIds": [
+      "ss10x13"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss10x13",
+    "name": "Espresso",
+    "trader": "Apollo",
+    "map": [
+      "buried_city"
+    ],
+    "previousQuestIds": [
+      "ss10x12"
+    ],
+    "nextQuestIds": [
+      "ss10x14"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss10x14",
+    "name": "Life of a Pharmacist",
+    "trader": "Lance",
+    "map": [
+      "buried_city"
+    ],
+    "previousQuestIds": [
+      "ss10x13"
+    ],
+    "nextQuestIds": [
+      "ss10x15",
+      "a_toxic_trail"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss10x15",
+    "name": "Tribute to Toledo",
+    "trader": "Celeste",
+    "map": [],
+    "previousQuestIds": [
+      "ss10x14"
+    ],
+    "nextQuestIds": [
+      "ss10x16"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss10x16",
+    "name": "Digging Up Dirt",
+    "trader": "Celeste",
+    "map": [
+      "buried_city"
+    ],
+    "previousQuestIds": [
+      "ss10x15"
+    ],
+    "nextQuestIds": [
+      "ss10x17",
+      "ss10x18"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss10x17",
+    "name": "Turnabout",
+    "trader": "Celeste",
+    "map": [
+      "the_spaceport"
+    ],
+    "previousQuestIds": [
+      "ss10x16"
+    ],
+    "nextQuestIds": [],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss10x18",
+    "name": "Building a Library",
+    "trader": "Apollo",
+    "map": [
+      "buried_city"
+    ],
+    "previousQuestIds": [
+      "ss10x16"
+    ],
+    "nextQuestIds": [
+      "ss10x19"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss10x19",
+    "name": "A New Type of Plant",
+    "trader": "Lance",
+    "map": [],
+    "previousQuestIds": [
+      "ss10x18"
+    ],
+    "nextQuestIds": [
+      "ss10x20"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss10x2",
+    "name": "Untended Garden",
+    "trader": "Celeste",
+    "map": [
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "ss10x"
+    ],
+    "nextQuestIds": [
+      "ss10x3"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss10x20",
+    "name": "Armored Transports",
+    "trader": "Tian Wen",
+    "map": [
+      "the_blue_gate"
+    ],
+    "previousQuestIds": [
+      "ss10x19",
+      "ss11bx"
+    ],
+    "nextQuestIds": [],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss10x3",
+    "name": "The Root of the Matter",
+    "trader": "Celeste",
+    "map": [
+      "buried_city"
+    ],
+    "previousQuestIds": [
+      "ss10x2"
+    ],
+    "nextQuestIds": [
+      "ss10x4"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss10x4",
+    "name": "Water Troubles",
+    "trader": "Celeste",
+    "map": [
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "ss10x3",
+      "ss10y"
+    ],
+    "nextQuestIds": [
+      "ss10x5",
+      "ss10x6"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss10x5",
+    "name": "Into the Fray",
+    "trader": "Shani",
+    "map": [],
+    "previousQuestIds": [
+      "ss10x4",
+      "ss11b2"
+    ],
+    "nextQuestIds": [
+      "paving_the_way",
+      "combat_recon"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss10x6",
+    "name": "Source of the Contamination",
+    "trader": "Celeste",
+    "map": [
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "ss10x4"
+    ],
+    "nextQuestIds": [
+      "ss10x7"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss10x7",
+    "name": "Switching the Supply",
+    "trader": "Celeste",
+    "map": [
+      "the_spaceport"
+    ],
+    "previousQuestIds": [
+      "ss10x6"
+    ],
+    "nextQuestIds": [
+      "ss10x8"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss10x8",
+    "name": "A Warm Place to Rest",
+    "trader": "Apollo",
+    "map": [
+      "buried_city"
+    ],
+    "previousQuestIds": [
+      "ss10x7"
+    ],
+    "nextQuestIds": [
+      "ss10x9"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss10x9",
+    "name": "Prescriptions of the Past",
+    "trader": "Lance",
+    "map": [
+      "the_spaceport"
+    ],
+    "previousQuestIds": [
+      "ss10x8"
+    ],
+    "nextQuestIds": [
+      "ss10x10"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss10y",
+    "name": "After Rain Comes",
+    "trader": "Celeste",
+    "map": [
+      "buried_city"
+    ],
+    "previousQuestIds": [
+      "ss10s"
+    ],
+    "nextQuestIds": [
+      "ss10x4"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss10z",
+    "name": "Our Presence Up There",
+    "trader": "Shani",
+    "map": [
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "ss10w"
+    ],
+    "nextQuestIds": [
+      "ss11b"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss11",
+    "name": "A First Foothold",
+    "trader": "Shani",
+    "map": [
+      "the_blue_gate"
+    ],
+    "previousQuestIds": [
+      "map_blue_gate"
+    ],
+    "nextQuestIds": [
+      "ss11a"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss11a",
+    "name": "Reduced to Rubble",
+    "trader": "Shani",
+    "map": [
+      "the_blue_gate"
+    ],
+    "previousQuestIds": [
+      "ss11"
+    ],
+    "nextQuestIds": [
+      "ss11bx"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss11b",
+    "name": "Lost in Transmission",
+    "trader": "Shani",
+    "map": [
+      "the_spaceport"
+    ],
+    "previousQuestIds": [
+      "ss10z"
+    ],
+    "nextQuestIds": [
+      "ss11b2"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss11b2",
+    "name": "Communication Hideout",
+    "trader": "Shani",
+    "map": [
+      "buried_city"
+    ],
+    "previousQuestIds": [
+      "ss11b"
+    ],
+    "nextQuestIds": [
+      "ss10x5"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss11bx",
+    "name": "With a Trace",
+    "trader": "Shani",
+    "map": [
+      "the_blue_gate"
+    ],
+    "previousQuestIds": [
+      "ss11a"
+    ],
+    "nextQuestIds": [],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss2",
+    "name": "Clearer Skies",
+    "trader": "Shani",
+    "map": [],
+    "previousQuestIds": [
+      "ss1"
+    ],
+    "nextQuestIds": [
+      "ss4"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss3",
+    "name": "Trash Into Treasure",
+    "trader": "Shani",
+    "map": [],
+    "previousQuestIds": [
+      "ss1"
+    ],
+    "nextQuestIds": [
+      "ss4"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss4",
+    "name": "Off The Radar",
+    "trader": "Shani",
+    "map": [
+      "buried_city",
+      "the_spaceport",
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "ss2",
+      "ss3"
+    ],
+    "nextQuestIds": [
+      "ss5"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss5",
+    "name": "A Bad Feeling",
+    "trader": "Celeste",
+    "map": [],
+    "previousQuestIds": [
+      "ss4"
+    ],
+    "nextQuestIds": [
+      "ss5a",
+      "ss7",
+      "ss8",
+      "12_in_my_image"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss5a",
+    "name": "Hatch Repairs",
+    "trader": "Shani",
+    "map": [],
+    "previousQuestIds": [
+      "ss5"
+    ],
+    "nextQuestIds": [
+      "ss6"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss6",
+    "name": "Down To Earth",
+    "trader": "Shani",
+    "map": [
+      "buried_city",
+      "the_spaceport",
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "ss5a"
+    ],
+    "nextQuestIds": [
+      "ss9"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss7",
+    "name": "The Right Tool",
+    "trader": "Tian Wen",
+    "map": [],
+    "previousQuestIds": [
+      "ss5"
+    ],
+    "nextQuestIds": [
+      "ss10"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss8",
+    "name": "Safe Passage",
+    "trader": "Apollo",
+    "map": [],
+    "previousQuestIds": [
+      "ss5"
+    ],
+    "nextQuestIds": [
+      "ss8a"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss8a",
+    "name": "What Goes Around",
+    "trader": "Apollo",
+    "map": [],
+    "previousQuestIds": [
+      "ss8"
+    ],
+    "nextQuestIds": [
+      "ss8b"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "ss8b",
+    "name": "Sparks Fly",
+    "trader": "Apollo",
+    "map": [],
+    "previousQuestIds": [
+      "ss8a"
+    ],
+    "nextQuestIds": [
+      "the_league"
+    ],
+    "hasBlueprint": true
+  },
+  {
+    "id": "ss9",
+    "name": "The Trifecta",
+    "trader": "Shani",
+    "map": [
+      "buried_city",
+      "the_spaceport",
+      "the_blue_gate",
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "ss6"
+    ],
+    "nextQuestIds": [],
+    "hasBlueprint": false
+  },
+  {
+    "id": "the_clean_dream",
+    "name": "The Clean Dream",
+    "trader": "Apollo",
+    "map": [
+      "the_spaceport",
+      "the_blue_gate"
+    ],
+    "previousQuestIds": [
+      "ss11bx"
+    ],
+    "nextQuestIds": [],
+    "hasBlueprint": false
+  },
+  {
+    "id": "the_league",
+    "name": "The League",
+    "trader": "Apollo",
+    "map": [
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "ss8b"
+    ],
+    "nextQuestIds": [
+      "movie_night"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "the_stench_of_corruption",
+    "name": "The Stench of Corruption",
+    "trader": "Shani",
+    "map": [
+      "the_spaceport"
+    ],
+    "previousQuestIds": [
+      "a_toxic_trail"
+    ],
+    "nextQuestIds": [],
+    "hasBlueprint": false
+  },
+  {
+    "id": "with_a_view",
+    "name": "With A View",
+    "trader": "Shani",
+    "map": [
+      "stella_montis"
+    ],
+    "previousQuestIds": [
+      "12_snap_and_salvage"
+    ],
+    "nextQuestIds": [],
+    "hasBlueprint": false
+  }
+]

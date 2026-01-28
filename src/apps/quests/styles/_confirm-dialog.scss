@@ -1,0 +1,178 @@
+@use 'variables' as *;
+@use 'sass:color';
+
+// Confirm Dialog styles
+.confirm-dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.15s ease-out;
+}
+
+.confirm-dialog {
+  background: $bg-secondary;
+  border: 2px solid $border-light;
+  border-radius: $radius-lg;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  min-width: 400px;
+  max-width: 500px;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  animation: slideUp 0.2s ease-out;
+}
+
+.confirm-dialog-header {
+  padding: $spacing-lg $spacing-xl;
+  border-bottom: 1px solid $border-default;
+}
+
+.confirm-dialog-title {
+  margin: 0;
+  font-family: 'Urbanist', sans-serif;
+  font-size: $font-xl;
+  font-weight: 600;
+  color: $text-primary;
+}
+
+.confirm-dialog-content {
+  padding: $spacing-xl;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.confirm-dialog-message {
+  margin: 0 0 $spacing-lg 0;
+  font-size: $font-md;
+  line-height: 1.5;
+  color: $text-light;
+}
+
+.confirm-dialog-quest-list {
+  background: $bg-primary;
+  border: 1px solid $border-default;
+  border-radius: $radius-md;
+  padding: $spacing-md;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.confirm-dialog-quest-item {
+  padding: $spacing-sm;
+  margin-bottom: $spacing-xs;
+  background: $bg-tertiary;
+  border-radius: $radius-sm;
+  font-size: $font-sm;
+  color: $text-primary;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.confirm-dialog-quest-more {
+  padding: $spacing-sm;
+  margin-top: $spacing-sm;
+  font-size: $font-sm;
+  color: $text-secondary;
+  font-style: italic;
+  text-align: center;
+}
+
+.confirm-dialog-actions {
+  padding: $spacing-lg $spacing-xl;
+  border-top: 1px solid $border-default;
+  display: flex;
+  gap: $spacing-md;
+  justify-content: flex-end;
+}
+
+.confirm-dialog-button {
+  padding: $spacing-md $spacing-xl;
+  border-radius: $radius-md;
+  font-size: $font-md;
+  font-weight: 500;
+  cursor: pointer;
+  transition: $transition-default;
+  border: none;
+  min-width: 90px;
+  
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(79, 195, 247, 0.3);
+  }
+  
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+.confirm-dialog-button-cancel {
+  background: $bg-tertiary;
+  color: $text-primary;
+  border: 1px solid $border-light;
+  
+  &:hover {
+    background: $bg-quaternary;
+    border-color: $border-lighter;
+  }
+}
+
+.confirm-dialog-button-confirm {
+  background: linear-gradient(135deg, $trader-apollo-start, $trader-apollo-end);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  
+  &:hover {
+    background: linear-gradient(135deg, color.adjust($trader-apollo-start, $lightness: 5%), color.adjust($trader-apollo-end, $lightness: 5%));
+    box-shadow: 0 4px 12px rgba(2, 119, 189, 0.3);
+  }
+}
+
+// Animations
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Scrollbar styling for quest list
+.confirm-dialog-quest-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.confirm-dialog-quest-list::-webkit-scrollbar-track {
+  background: $bg-dark;
+  border-radius: $radius-sm;
+}
+
+.confirm-dialog-quest-list::-webkit-scrollbar-thumb {
+  background: $border-light;
+  border-radius: $radius-sm;
+  
+  &:hover {
+    background: $border-lighter;
+  }
+}

@@ -1,0 +1,56 @@
+@use 'variables' as *;
+
+/* Map Node Styles */
+.map-node {
+  border-radius: $radius-lg;
+  background: linear-gradient(135deg, $map-node-bg-start, $map-node-bg-end);
+  border: $border-width-default solid transparent;
+  min-width: $node-width;
+  box-shadow: $shadow-map-node;
+  transition: $transition-default;
+  overflow: hidden;
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: $shadow-hover;
+  }
+
+  &.completed {
+    opacity: 0.7;
+    background: linear-gradient(135deg, $map-node-completed-start, $map-node-completed-end);
+
+    .map-node-image {
+      opacity: 0.4;
+    }
+
+    .map-node-name {
+      color: $map-node-text-completed;
+    }
+  }
+}
+
+.map-node-image {
+  width: 100%;
+  height: 80px;
+  object-fit: cover;
+  opacity: 0.6;
+}
+
+.map-node-content {
+  padding: $spacing-sm $spacing-md;
+  text-align: center;
+}
+
+.map-node-name {
+  font-family: 'Urbanist', sans-serif;
+  font-size: $font-lg;
+  font-weight: bold;
+  color: $map-node-text;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.map-node-status {
+  font-size: $font-base;
+  color: $text-light;
+  margin-top: $spacing-xs;
+}

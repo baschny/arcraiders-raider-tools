@@ -1,0 +1,68 @@
+@use 'variables' as *;
+
+/* React Flow Controls */
+.react-flow__controls {
+  background: $bg-secondary;
+  border: $border-width-thin solid $border-default;
+  border-radius: $radius-md;
+}
+
+.react-flow__controls-button {
+  background: $bg-secondary;
+  border-bottom: $border-width-thin solid $border-default;
+  color: $text-primary;
+
+  &:hover {
+    background: $bg-tertiary;
+  }
+}
+
+/* Hide handles */
+.react-flow__handle {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Edge styles */
+.react-flow__edge-path {
+  stroke: $border-light;
+  stroke-width: $edge-width-default;
+}
+
+.react-flow__edge.completed .react-flow__edge-path {
+  stroke: $status-completed-dark;
+  stroke-width: $edge-width-active;
+}
+
+.react-flow__edge.available .react-flow__edge-path {
+  stroke: $status-locked;
+  stroke-width: $edge-width-active;
+}
+
+/* Arrow markers */
+.react-flow__arrowhead path,
+.react-flow__arrowhead polyline,
+.react-flow__arrowhead polygon {
+  fill: $border-light !important;
+  stroke: $border-light !important;
+}
+
+.react-flow__edge.completed .react-flow__arrowhead path,
+.react-flow__edge.completed .react-flow__arrowhead polyline,
+.react-flow__edge.completed .react-flow__arrowhead polygon {
+  fill: $status-completed-dark !important;
+  stroke: $status-completed-dark !important;
+}
+
+.react-flow__edge.available .react-flow__arrowhead path,
+.react-flow__edge.available .react-flow__arrowhead polyline,
+.react-flow__edge.available .react-flow__arrowhead polygon {
+  fill: $status-locked !important;
+  stroke: $status-locked !important;
+}
+
+/* Force arrow marker visibility */
+marker polyline {
+  fill: inherit !important;
+  stroke: inherit !important;
+}

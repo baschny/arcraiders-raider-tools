@@ -1,0 +1,200 @@
+@use 'variables' as *;
+
+/* Custom Quest Node Styles */
+.quest-node {
+  padding: $spacing-lg;
+  border-radius: $radius-md;
+  background: $bg-secondary;
+  border: $border-width-default solid $border-default;
+  width: $node-width;
+  max-width: $node-width;
+  box-shadow: $shadow-default;
+  transition: $transition-default;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &.available {
+    border-color: $status-available;
+    border-width: $border-width-thick;
+    box-shadow: $shadow-available;
+  }
+
+  &.completed {
+    background: $status-completed-bg;
+    border-color: $status-completed-dark;
+    border-width: $border-width-thick;
+    opacity: 0.85;
+
+    .quest-name {
+      color: $map-node-text-completed;
+    }
+  }
+
+  &.highlighted {
+    animation: highlightPulse $transition-highlight;
+  }
+}
+
+/* Highlight animation for focused nodes */
+@keyframes highlightPulse {
+  0%, 100% {
+    box-shadow: $shadow-default;
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(79, 195, 247, 0.8), 0 0 60px rgba(79, 195, 247, 0.4);
+  }
+}
+
+.quest-node-header {
+  display: flex;
+  align-items: flex-start;
+  gap: $gap-md;
+  margin-bottom: $spacing-md;
+  padding-bottom: 10px;
+  border-bottom: $border-width-thin solid $border-default;
+}
+
+.trader-icon {
+  width: $trader-icon-size;
+  height: $trader-icon-size;
+  border-radius: $radius-circle;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: $font-3xl;
+  color: white;
+  flex-shrink: 0;
+  overflow: hidden;
+  border: $border-width-thin solid rgba(255, 255, 255, 0.1);
+
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: $radius-circle;
+    object-fit: cover;
+  }
+}
+
+.trader-celeste {
+  background: linear-gradient(135deg, $trader-celeste-start, $trader-celeste-end);
+}
+
+.trader-shani {
+  background: linear-gradient(135deg, $trader-shani-start, $trader-shani-end);
+}
+
+.trader-lance {
+  background: linear-gradient(135deg, $trader-lance-start, $trader-lance-end);
+}
+
+.trader-tianwen {
+  background: linear-gradient(135deg, $trader-tianwen-start, $trader-tianwen-end);
+}
+
+.trader-apollo {
+  background: linear-gradient(135deg, $trader-apollo-start, $trader-apollo-end);
+}
+
+.trader-map {
+  background: linear-gradient(135deg, $trader-map-start, $trader-map-end);
+}
+
+.quest-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.quest-name {
+  font-family: 'Urbanist', sans-serif;
+  font-size: $font-2xl;
+  font-weight: bold;
+  color: $text-primary;
+  line-height: 1.4;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.quest-map-info {
+  font-size: $font-sm;
+  font-weight: bold;
+  color: $text-secondary;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+  letter-spacing: 0.5px;
+}
+
+.quest-node-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  gap: $gap-sm;
+}
+
+.quest-status {
+  display: flex;
+  align-items: center;
+  gap: $gap-xs;
+  font-size: $font-md;
+  color: $text-secondary;
+}
+
+.status-icon {
+  font-size: $font-xl;
+}
+
+.quest-actions {
+  display: flex;
+  gap: $gap-xs;
+}
+
+.quest-action-btn {
+  background: $bg-tertiary;
+  border: $border-width-thin solid $border-light;
+  border-radius: $radius-sm;
+  padding: $spacing-xs $spacing-sm;
+  font-size: $font-base;
+  color: $text-primary;
+  cursor: pointer;
+  text-decoration: none;
+  transition: $transition-default;
+
+  &:hover {
+    background: $bg-quaternary;
+    border-color: $border-lighter;
+  }
+}
+
+.blueprint-badge {
+  position: absolute;
+  top: $spacing-sm;
+  right: $spacing-sm;
+  background: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 4px,
+      $blueprint-grid 4px,
+      $blueprint-grid 5px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 4px,
+      $blueprint-grid 4px,
+      $blueprint-grid 5px
+    ),
+    linear-gradient(135deg, $blueprint-bg-start, $blueprint-bg-end);
+  border: $border-width-thin solid $blueprint-border;
+  border-radius: 3px;
+  padding: 3px $gap-xs;
+  font-size: $font-xs;
+  font-weight: bold;
+  color: $blueprint-text;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+  box-shadow: $shadow-badge, inset 0 1px 1px rgba(100, 150, 200, 0.1);
+  letter-spacing: 0.5px;
+}

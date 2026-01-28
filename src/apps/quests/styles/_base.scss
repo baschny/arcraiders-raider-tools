@@ -1,0 +1,48 @@
+@use 'variables' as *;
+@use 'sass:color';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: $bg-primary;
+  color: $text-primary;
+}
+
+.react-flow {
+  background: $bg-primary;
+}
+
+/* Override main-content padding for full-screen quest tracker */
+.main-content:has(.quest-tracker-wrapper) {
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Wrapper to fill parent without padding */
+.quest-tracker-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Main content area */
+.quest-tracker-container {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+/* Graph container */
+.graph-container {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  order: 1; /* Position on the left */
+}
