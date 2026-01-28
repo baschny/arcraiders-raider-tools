@@ -11,6 +11,7 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
+    "generate": "npm run generate:quests && npm run generate:items && npm run generate:items-loot-helper && npm run generate:crafting",
     "generate:quests": "./scripts/generate-quest-data.sh",
     "generate:items": "./scripts/generate-item-data.sh",
     "generate:items-loot-helper": "./scripts/generate-item-data-loot-helper.sh",

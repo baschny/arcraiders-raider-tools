@@ -2678,7 +2678,7 @@
     "rarity": "Uncommon",
     "value": 640,
     "weightKg": 2,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "plastic_parts": 3,
       "rubber_parts": 3
@@ -2710,7 +2710,7 @@
     "rarity": "Rare",
     "value": 2000,
     "weightKg": 3,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "electrical_components": 1,
       "magnet": 1
@@ -2766,7 +2766,7 @@
     "rarity": "Epic",
     "value": 5000,
     "weightKg": 5,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "advanced_electrical_components": 1,
       "processor": 1
@@ -2822,7 +2822,7 @@
     "rarity": "Epic",
     "value": 5000,
     "weightKg": 5,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "advanced_electrical_components": 1,
       "processor": 1
@@ -3350,11 +3350,11 @@
     "weightKg": 0.25,
     "stackSize": 5,
     "recyclesInto": {
-      "arc_alloy": 3
+      "arc_alloy": 2
     },
     "recipe": null,
     "salvagesInto": {
-      "arc_alloy": 2
+      "arc_alloy": 1
     },
     "upgradeCost": null,
     "tier": null,
@@ -6881,7 +6881,7 @@
     },
     "type": "Assault Rifle",
     "rarity": "Common",
-    "value": 840,
+    "value": 2000,
     "weightKg": 7,
     "stackSize": null,
     "recyclesInto": {
@@ -7442,7 +7442,7 @@
     "rarity": "Uncommon",
     "value": 640,
     "weightKg": 1,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "plastic_parts": 3,
       "rubber_parts": 3
@@ -7474,7 +7474,7 @@
     "rarity": "Rare",
     "value": 2000,
     "weightKg": 2,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "electrical_components": 1,
       "magnet": 1
@@ -7506,7 +7506,7 @@
     "rarity": "Epic",
     "value": 5000,
     "weightKg": 3,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "advanced_electrical_components": 1,
       "processor": 1
@@ -7521,6 +7521,30 @@
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/looting_mk3_cautious.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "looting_mk3_safekeeper",
+    "name": {
+      "en": "Looting Mk. 3 (Safekeeper)"
+    },
+    "description": {
+      "en": "A looting augment focused on protecting your gathered items. Provides increased carry capacity with built-in security features."
+    },
+    "type": "Augment",
+    "rarity": "Epic",
+    "value": 5000,
+    "weightKg": 3,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -7568,8 +7592,8 @@
       "processor": 1
     },
     "recipe": {
-      "advanced_mechanical_components": 2,
-      "processor": 2
+      "advanced_electrical_components": 2,
+      "processor": 3
     },
     "salvagesInto": {
       "electrical_components": 2
@@ -12266,7 +12290,7 @@
     "rarity": "Uncommon",
     "value": 640,
     "weightKg": 2,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "plastic_parts": 3,
       "rubber_parts": 3
@@ -12298,7 +12322,7 @@
     "rarity": "Rare",
     "value": 2000,
     "weightKg": 2,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "electrical_components": 1,
       "magnet": 1
@@ -12354,7 +12378,7 @@
     "rarity": "Epic",
     "value": 5000,
     "weightKg": 5,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "advanced_electrical_components": 1,
       "processor": 1
@@ -12410,7 +12434,7 @@
     "rarity": "Epic",
     "value": 5000,
     "weightKg": 4,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "advanced_electrical_components": 1,
       "processor": 1
@@ -12425,6 +12449,30 @@
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_healing.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "tactical_mk3_revival",
+    "name": {
+      "en": "Tactical Mk. 3 (Revival)"
+    },
+    "description": {
+      "en": "A revival-focused augment designed for team support. Enhances revival capabilities and provides bonuses when reviving or being revived."
+    },
+    "type": "Augment",
+    "rarity": "Epic",
+    "value": 5000,
+    "weightKg": 4,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -12702,7 +12750,7 @@
     },
     "type": "Assault Rifle",
     "rarity": "Epic",
-    "value": 22000,
+    "value": 27000,
     "weightKg": 11,
     "stackSize": null,
     "recyclesInto": {
@@ -13954,7 +14002,7 @@
     "weightKg": 0.25,
     "stackSize": 15,
     "recyclesInto": {
-      "rubber_parts": 3
+      "rubber_parts": 2
     },
     "recipe": null,
     "salvagesInto": {

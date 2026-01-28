@@ -29,8 +29,8 @@
     "stackSize": 5,
     "imageFilename": "https://cdn.arctracker.io/items/advanced_electrical_components.png",
     "recipe": {
-      "wires": 3,
-      "electrical_components": 2
+      "electrical_components": 2,
+      "wires": 3
     }
   },
   "advanced_mechanical_components": {
@@ -39,8 +39,8 @@
     "stackSize": 5,
     "imageFilename": "https://cdn.arctracker.io/items/advanced_mechanical_components.png",
     "recipe": {
-      "steel_spring": 2,
-      "mechanical_components": 2
+      "mechanical_components": 2,
+      "steel_spring": 2
     }
   },
   "agave": {
@@ -70,18 +70,8 @@
     "stackSize": 1,
     "imageFilename": "https://cdn.arctracker.io/items/angled_grip_i.png",
     "recipe": {
-      "plastic_parts": 6,
-      "duct_tape": 1
-    }
-  },
-  "angled_grip_ii": {
-    "id": "angled_grip_ii",
-    "name": "Angled Grip II",
-    "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/angled_grip_ii.png",
-    "recipe": {
-      "mechanical_components": 2,
-      "duct_tape": 3
+      "duct_tape": 1,
+      "plastic_parts": 6
     }
   },
   "angled_grip_ii_blueprint": {
@@ -91,14 +81,14 @@
     "imageFilename": "https://cdn.arctracker.io/items/angled_grip_ii.png",
     "recipe": null
   },
-  "angled_grip_iii": {
-    "id": "angled_grip_iii",
-    "name": "Angled Grip III",
+  "angled_grip_ii": {
+    "id": "angled_grip_ii",
+    "name": "Angled Grip II",
     "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/angled_grip_iii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/angled_grip_ii.png",
     "recipe": {
-      "mod_components": 2,
-      "duct_tape": 5
+      "duct_tape": 3,
+      "mechanical_components": 2
     }
   },
   "angled_grip_iii_blueprint": {
@@ -107,6 +97,16 @@
     "stackSize": 1,
     "imageFilename": "https://cdn.arctracker.io/items/angled_grip_iii.png",
     "recipe": null
+  },
+  "angled_grip_iii": {
+    "id": "angled_grip_iii",
+    "name": "Angled Grip III",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/angled_grip_iii.png",
+    "recipe": {
+      "duct_tape": 5,
+      "mod_components": 2
+    }
   },
   "antiseptic": {
     "id": "antiseptic",
@@ -163,23 +163,23 @@
     "imageFilename": "https://cdn.arctracker.io/items/anvil_splitter.png",
     "recipe": null
   },
-  "aphelion": {
-    "id": "aphelion",
-    "name": "Aphelion",
-    "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/aphelion.png",
-    "recipe": {
-      "magnetic_accelerator": 3,
-      "complex_gun_parts": 3,
-      "matriarch_reactor": 1
-    }
-  },
   "aphelion_blueprint": {
     "id": "aphelion_blueprint",
     "name": "Aphelion Blueprint",
     "stackSize": 1,
     "imageFilename": "https://cdn.arctracker.io/items/aphelion.png",
     "recipe": null
+  },
+  "aphelion": {
+    "id": "aphelion",
+    "name": "Aphelion",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/aphelion.png",
+    "recipe": {
+      "complex_gun_parts": 3,
+      "magnetic_accelerator": 3,
+      "matriarch_reactor": 1
+    }
   },
   "apricot": {
     "id": "apricot",
@@ -316,6 +316,13 @@
       "fabric": 5
     }
   },
+  "barricade_kit_blueprint": {
+    "id": "barricade_kit_blueprint",
+    "name": "Barricade Kit Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/barricade_kit.png",
+    "recipe": null
+  },
   "barricade_kit": {
     "id": "barricade_kit",
     "name": "Barricade Kit",
@@ -324,13 +331,6 @@
     "recipe": {
       "mechanical_components": 1
     }
-  },
-  "barricade_kit_blueprint": {
-    "id": "barricade_kit_blueprint",
-    "name": "Barricade Kit Blueprint",
-    "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/barricade_kit.png",
-    "recipe": null
   },
   "bastion_cell": {
     "id": "bastion_cell",
@@ -360,8 +360,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/bettina.png",
     "recipe": {
       "advanced_mechanical_components": 3,
-      "heavy_gun_parts": 3,
-      "canister": 3
+      "canister": 3,
+      "heavy_gun_parts": 3
     }
   },
   "bettina_ii": {
@@ -402,13 +402,6 @@
       "rubber_parts": 4
     }
   },
-  "blaze_grenade": {
-    "id": "blaze_grenade",
-    "name": "Blaze Grenade",
-    "stackSize": 5,
-    "imageFilename": "https://cdn.arctracker.io/items/blaze_grenade.png",
-    "recipe": null
-  },
   "blaze_grenade_blueprint": {
     "id": "blaze_grenade_blueprint",
     "name": "Blaze Grenade Blueprint",
@@ -424,6 +417,16 @@
     "recipe": {
       "blaze_grenade": 1,
       "wires": 1
+    }
+  },
+  "blaze_grenade": {
+    "id": "blaze_grenade",
+    "name": "Blaze Grenade",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/blaze_grenade.png",
+    "recipe": {
+      "explosive_compound": 1,
+      "oil": 2
     }
   },
   "bloated_tuna_can": {
@@ -461,19 +464,21 @@
     "imageFilename": "https://cdn.arctracker.io/items/blue_gate_village_key.png",
     "recipe": null
   },
-  "blue_light_stick": {
-    "id": "blue_light_stick",
-    "name": "Blue Light Stick",
-    "stackSize": 5,
-    "imageFilename": "https://cdn.arctracker.io/items/blue_light_stick.png",
-    "recipe": null
-  },
   "blue_light_stick_blueprint": {
     "id": "blue_light_stick_blueprint",
     "name": "Blue Light Stick Blueprint",
     "stackSize": 1,
     "imageFilename": "https://cdn.arctracker.io/items/blue_light_stick_blueprint.png",
     "recipe": null
+  },
+  "blue_light_stick": {
+    "id": "blue_light_stick",
+    "name": "Blue Light Stick",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/blue_light_stick.png",
+    "recipe": {
+      "chemicals": 3
+    }
   },
   "blue_radio_renegade_color": {
     "id": "blue_radio_renegade_color",
@@ -495,9 +500,9 @@
     "stackSize": 1,
     "imageFilename": "https://cdn.arctracker.io/items/bobcat.png",
     "recipe": {
-      "magnetic_accelerator": 1,
+      "exodus_modules": 2,
       "light_gun_parts": 3,
-      "exodus_modules": 2
+      "magnetic_accelerator": 1
     }
   },
   "bobcat_ii": {
@@ -740,16 +745,6 @@
       "magnet": 3
     }
   },
-  "combat_mk3_aggressive": {
-    "id": "combat_mk3_aggressive",
-    "name": "Combat Mk. 3 (Aggressive)",
-    "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/combat_mk3_aggressive.png",
-    "recipe": {
-      "advanced_electrical_components": 2,
-      "processor": 3
-    }
-  },
   "combat_mk3_aggressive_blueprint": {
     "id": "combat_mk3_aggressive_blueprint",
     "name": "Combat Mk. 3 (Aggressive) Blueprint",
@@ -757,11 +752,11 @@
     "imageFilename": "https://cdn.arctracker.io/items/combat_mk3_aggressive.png",
     "recipe": null
   },
-  "combat_mk3_flanking": {
-    "id": "combat_mk3_flanking",
-    "name": "Combat Mk. 3 (Flanking)",
+  "combat_mk3_aggressive": {
+    "id": "combat_mk3_aggressive",
+    "name": "Combat Mk. 3 (Aggressive)",
     "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/combat_mk3_flanking.png",
+    "imageFilename": "https://cdn.arctracker.io/items/combat_mk3_aggressive.png",
     "recipe": {
       "advanced_electrical_components": 2,
       "processor": 3
@@ -774,6 +769,16 @@
     "imageFilename": "https://cdn.arctracker.io/items/combat_mk3_flanking.png",
     "recipe": null
   },
+  "combat_mk3_flanking": {
+    "id": "combat_mk3_flanking",
+    "name": "Combat Mk. 3 (Flanking)",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/combat_mk3_flanking.png",
+    "recipe": {
+      "advanced_electrical_components": 2,
+      "processor": 3
+    }
+  },
   "compensator_i": {
     "id": "compensator_i",
     "name": "Compensator I",
@@ -783,6 +788,13 @@
       "metal_parts": 6,
       "wires": 1
     }
+  },
+  "compensator_ii_blueprint": {
+    "id": "compensator_ii_blueprint",
+    "name": "Compensator II Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/compensator_ii_blueprint.png",
+    "recipe": null
   },
   "compensator_ii": {
     "id": "compensator_ii",
@@ -794,11 +806,11 @@
       "wires": 4
     }
   },
-  "compensator_ii_blueprint": {
-    "id": "compensator_ii_blueprint",
-    "name": "Compensator II Blueprint",
+  "compensator_iii_blueprint": {
+    "id": "compensator_iii_blueprint",
+    "name": "Compensator III Blueprint",
     "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/compensator_ii_blueprint.png",
+    "imageFilename": "https://cdn.arctracker.io/items/compensator_iii.png",
     "recipe": null
   },
   "compensator_iii": {
@@ -811,11 +823,11 @@
       "wires": 8
     }
   },
-  "compensator_iii_blueprint": {
-    "id": "compensator_iii_blueprint",
-    "name": "Compensator III Blueprint",
+  "complex_gun_parts_blueprint": {
+    "id": "complex_gun_parts_blueprint",
+    "name": "Complex Gun Parts Blueprint",
     "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/compensator_iii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/complex_gun_parts_blueprint.png",
     "recipe": null
   },
   "complex_gun_parts": {
@@ -824,17 +836,10 @@
     "stackSize": 3,
     "imageFilename": "https://cdn.arctracker.io/items/complex_gun_parts.png",
     "recipe": {
+      "heavy_gun_parts": 2,
       "light_gun_parts": 2,
-      "medium_gun_parts": 2,
-      "heavy_gun_parts": 2
+      "medium_gun_parts": 2
     }
-  },
-  "complex_gun_parts_blueprint": {
-    "id": "complex_gun_parts_blueprint",
-    "name": "Complex Gun Parts Blueprint",
-    "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/complex_gun_parts_blueprint.png",
-    "recipe": null
   },
   "coolant": {
     "id": "coolant",
@@ -985,16 +990,6 @@
     "imageFilename": "https://cdn.arctracker.io/items/dart_board.png",
     "recipe": null
   },
-  "deadline": {
-    "id": "deadline",
-    "name": "Deadline",
-    "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/deadline.png",
-    "recipe": {
-      "explosive_compound": 3,
-      "arc_circuitry": 2
-    }
-  },
   "deadline_blueprint": {
     "id": "deadline_blueprint",
     "name": "Deadline Blueprint",
@@ -1002,14 +997,14 @@
     "imageFilename": "https://cdn.arctracker.io/items/deadline.png",
     "recipe": null
   },
-  "defibrillator": {
-    "id": "defibrillator",
-    "name": "Defibrillator",
-    "stackSize": 3,
-    "imageFilename": "https://cdn.arctracker.io/items/defibrillator.png",
+  "deadline": {
+    "id": "deadline",
+    "name": "Deadline",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/deadline.png",
     "recipe": {
-      "plastic_parts": 9,
-      "moss": 1
+      "arc_circuitry": 2,
+      "explosive_compound": 3
     }
   },
   "defibrillator_blueprint": {
@@ -1018,6 +1013,16 @@
     "stackSize": 1,
     "imageFilename": "https://cdn.arctracker.io/items/defibrillator.png",
     "recipe": null
+  },
+  "defibrillator": {
+    "id": "defibrillator",
+    "name": "Defibrillator",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/defibrillator.png",
+    "recipe": {
+      "moss": 1,
+      "plastic_parts": 9
+    }
   },
   "deflated_football": {
     "id": "deflated_football",
@@ -1107,23 +1112,23 @@
       "battery": 2
     }
   },
-  "equalizer": {
-    "id": "equalizer",
-    "name": "Equalizer",
-    "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/equalizer.png",
-    "recipe": {
-      "magnetic_accelerator": 3,
-      "complex_gun_parts": 3,
-      "queen_reactor": 1
-    }
-  },
   "equalizer_blueprint": {
     "id": "equalizer_blueprint",
     "name": "Equalizer Blueprint",
     "stackSize": 1,
     "imageFilename": "https://cdn.arctracker.io/items/equalizer.png",
     "recipe": null
+  },
+  "equalizer": {
+    "id": "equalizer",
+    "name": "Equalizer",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/equalizer.png",
+    "recipe": {
+      "complex_gun_parts": 3,
+      "magnetic_accelerator": 3,
+      "queen_reactor": 1
+    }
   },
   "esr_analyzer": {
     "id": "esr_analyzer",
@@ -1170,6 +1175,13 @@
       "oil": 2
     }
   },
+  "explosive_mine_blueprint": {
+    "id": "explosive_mine_blueprint",
+    "name": "Explosive Mine Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/explosive_mine.png",
+    "recipe": null
+  },
   "explosive_mine": {
     "id": "explosive_mine",
     "name": "Explosive Mine",
@@ -1180,11 +1192,11 @@
       "sensors": 1
     }
   },
-  "explosive_mine_blueprint": {
-    "id": "explosive_mine_blueprint",
-    "name": "Explosive Mine Blueprint",
+  "extended_barrel_blueprint": {
+    "id": "extended_barrel_blueprint",
+    "name": "Extended Barrel Blueprint",
     "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/explosive_mine.png",
+    "imageFilename": "https://cdn.arctracker.io/items/extended_barrel.png",
     "recipe": null
   },
   "extended_barrel": {
@@ -1197,13 +1209,6 @@
       "wires": 8
     }
   },
-  "extended_barrel_blueprint": {
-    "id": "extended_barrel_blueprint",
-    "name": "Extended Barrel Blueprint",
-    "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/extended_barrel.png",
-    "recipe": null
-  },
   "extended_light_mag_i": {
     "id": "extended_light_mag_i",
     "name": "Extended Light Mag I",
@@ -1213,6 +1218,13 @@
       "plastic_parts": 6,
       "steel_spring": 1
     }
+  },
+  "extended_light_mag_ii_blueprint": {
+    "id": "extended_light_mag_ii_blueprint",
+    "name": "Extended Light Mag II Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/extended_light_mag_ii.png",
+    "recipe": null
   },
   "extended_light_mag_ii": {
     "id": "extended_light_mag_ii",
@@ -1224,11 +1236,11 @@
       "steel_spring": 3
     }
   },
-  "extended_light_mag_ii_blueprint": {
-    "id": "extended_light_mag_ii_blueprint",
-    "name": "Extended Light Mag II Blueprint",
+  "extended_light_mag_iii_blueprint": {
+    "id": "extended_light_mag_iii_blueprint",
+    "name": "Extended Light Mag III Blueprint",
     "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/extended_light_mag_ii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/extended_light_mag_iii.png",
     "recipe": null
   },
   "extended_light_mag_iii": {
@@ -1241,13 +1253,6 @@
       "steel_spring": 5
     }
   },
-  "extended_light_mag_iii_blueprint": {
-    "id": "extended_light_mag_iii_blueprint",
-    "name": "Extended Light Mag III Blueprint",
-    "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/extended_light_mag_iii.png",
-    "recipe": null
-  },
   "extended_medium_mag_i": {
     "id": "extended_medium_mag_i",
     "name": "Extended Medium Mag I",
@@ -1257,6 +1262,13 @@
       "plastic_parts": 6,
       "steel_spring": 1
     }
+  },
+  "extended_medium_mag_ii_blueprint": {
+    "id": "extended_medium_mag_ii_blueprint",
+    "name": "Extended Medium Mag II Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/extended_medium_mag_ii_blueprint.png",
+    "recipe": null
   },
   "extended_medium_mag_ii": {
     "id": "extended_medium_mag_ii",
@@ -1268,11 +1280,11 @@
       "steel_spring": 3
     }
   },
-  "extended_medium_mag_ii_blueprint": {
-    "id": "extended_medium_mag_ii_blueprint",
-    "name": "Extended Medium Mag II Blueprint",
+  "extended_medium_mag_iii_blueprint": {
+    "id": "extended_medium_mag_iii_blueprint",
+    "name": "Extended Medium Mag III Blueprint",
     "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/extended_medium_mag_ii_blueprint.png",
+    "imageFilename": "https://cdn.arctracker.io/items/extended_medium_mag_iii.png",
     "recipe": null
   },
   "extended_medium_mag_iii": {
@@ -1285,29 +1297,15 @@
       "steel_spring": 5
     }
   },
-  "extended_medium_mag_iii_blueprint": {
-    "id": "extended_medium_mag_iii_blueprint",
-    "name": "Extended Medium Mag III Blueprint",
-    "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/extended_medium_mag_iii.png",
-    "recipe": null
-  },
   "extended_shotgun_mag_i": {
     "id": "extended_shotgun_mag_i",
-    "name": "Extended Shotgun Mag I",
+    "name": " Extended Shotgun Mag I",
     "stackSize": 1,
     "imageFilename": "https://cdn.arctracker.io/items/extended_shotgun_mag_i.png",
     "recipe": {
       "plastic_parts": 6,
       "steel_spring": 1
     }
-  },
-  "extended_shotgun_mag_ii": {
-    "id": "extended_shotgun_mag_ii",
-    "name": "Extended Shotgun Mag II",
-    "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/extended_shotgun_mag_ii.png",
-    "recipe": null
   },
   "extended_shotgun_mag_ii_blueprint": {
     "id": "extended_shotgun_mag_ii_blueprint",
@@ -1316,16 +1314,26 @@
     "imageFilename": "https://cdn.arctracker.io/items/extended_shotgun_mag_ii.png",
     "recipe": null
   },
-  "extended_shotgun_mag_iii": {
-    "id": "extended_shotgun_mag_iii",
-    "name": "Extended Shotgun Mag III",
+  "extended_shotgun_mag_ii": {
+    "id": "extended_shotgun_mag_ii",
+    "name": "Extended Shotgun Mag II",
     "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/extended_shotgun_mag_iii.png",
-    "recipe": null
+    "imageFilename": "https://cdn.arctracker.io/items/extended_shotgun_mag_ii.png",
+    "recipe": {
+      "mechanical_components": 2,
+      "steel_spring": 3
+    }
   },
   "extended_shotgun_mag_iii_blueprint": {
     "id": "extended_shotgun_mag_iii_blueprint",
     "name": "Extended Shotgun Mag III Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/extended_shotgun_mag_iii.png",
+    "recipe": null
+  },
+  "extended_shotgun_mag_iii": {
+    "id": "extended_shotgun_mag_iii",
+    "name": "Extended Shotgun Mag III",
     "stackSize": 1,
     "imageFilename": "https://cdn.arctracker.io/items/extended_shotgun_mag_iii.png",
     "recipe": null
@@ -1409,9 +1417,16 @@
     "stackSize": 5,
     "imageFilename": "https://cdn.arctracker.io/items/firecracker.png",
     "recipe": {
-      "plastic_parts": 4,
-      "chemicals": 2
+      "chemicals": 2,
+      "plastic_parts": 4
     }
+  },
+  "fireworks_box_blueprint": {
+    "id": "fireworks_box_blueprint",
+    "name": "Fireworks Box Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/fireworks_box.png",
+    "recipe": null
   },
   "fireworks_box": {
     "id": "fireworks_box",
@@ -1422,13 +1437,6 @@
       "explosive_compound": 1,
       "pop_trigger": 3
     }
-  },
-  "fireworks_box_blueprint": {
-    "id": "fireworks_box_blueprint",
-    "name": "Fireworks Box Blueprint",
-    "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/fireworks_box.png",
-    "recipe": null
   },
   "first_wave_compass": {
     "id": "first_wave_compass",
@@ -1456,7 +1464,10 @@
     "name": "Flame Spray",
     "stackSize": 1,
     "imageFilename": "https://cdn.arctracker.io/items/flame_spray.png",
-    "recipe": null
+    "recipe": {
+      "air_freshener": 1,
+      "fireball_burner": 1
+    }
   },
   "flow_controller": {
     "id": "flow_controller",
@@ -1506,8 +1517,8 @@
     "stackSize": 5,
     "imageFilename": "https://cdn.arctracker.io/items/fruit_mix.png",
     "recipe": {
-      "lemon": 1,
       "apricot": 1,
+      "lemon": 1,
       "prickly_pear": 1
     }
   },
@@ -1525,16 +1536,6 @@
     "imageFilename": "https://cdn.arctracker.io/items/garlic_press.png",
     "recipe": null
   },
-  "gas_grenade": {
-    "id": "gas_grenade",
-    "name": "Gas Grenade",
-    "stackSize": 3,
-    "imageFilename": "https://cdn.arctracker.io/items/gas_grenade.png",
-    "recipe": {
-      "chemicals": 4,
-      "rubber_parts": 2
-    }
-  },
   "gas_grenade_trap": {
     "id": "gas_grenade_trap",
     "name": "Gas Grenade Trap",
@@ -1545,11 +1546,11 @@
       "wires": 1
     }
   },
-  "gas_mine": {
-    "id": "gas_mine",
-    "name": "Gas Mine",
+  "gas_grenade": {
+    "id": "gas_grenade",
+    "name": "Gas Grenade",
     "stackSize": 3,
-    "imageFilename": "https://cdn.arctracker.io/items/gas_mine.png",
+    "imageFilename": "https://cdn.arctracker.io/items/gas_grenade.png",
     "recipe": {
       "chemicals": 4,
       "rubber_parts": 2
@@ -1561,6 +1562,16 @@
     "stackSize": 1,
     "imageFilename": "https://cdn.arctracker.io/items/gas_mine.png",
     "recipe": null
+  },
+  "gas_mine": {
+    "id": "gas_mine",
+    "name": "Gas Mine",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/gas_mine.png",
+    "recipe": {
+      "chemicals": 4,
+      "rubber_parts": 2
+    }
   },
   "geiger_counter": {
     "id": "geiger_counter",
@@ -1576,6 +1587,13 @@
     "imageFilename": "https://cdn.arctracker.io/items/great_mullein.png",
     "recipe": null
   },
+  "green_light_stick_blueprint": {
+    "id": "green_light_stick_blueprint",
+    "name": "Green Light Stick Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/green_light_stick.png",
+    "recipe": null
+  },
   "green_light_stick": {
     "id": "green_light_stick",
     "name": "Green Light Stick",
@@ -1584,13 +1602,6 @@
     "recipe": {
       "chemicals": 3
     }
-  },
-  "green_light_stick_blueprint": {
-    "id": "green_light_stick_blueprint",
-    "name": "Green Light Stick Blueprint",
-    "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/green_light_stick.png",
-    "recipe": null
   },
   "hairpin_i": {
     "id": "hairpin_i",
@@ -1636,8 +1647,8 @@
     "stackSize": 40,
     "imageFilename": "https://cdn.arctracker.io/items/heavy_ammo.png",
     "recipe": {
-      "metal_parts": 3,
-      "chemicals": 2
+      "chemicals": 2,
+      "metal_parts": 3
     }
   },
   "heavy_fuze_grenade": {
@@ -1646,9 +1657,16 @@
     "stackSize": 3,
     "imageFilename": "https://cdn.arctracker.io/items/heavy_fuze_grenade.png",
     "recipe": {
-      "explosive_compound": 1,
-      "canister": 2
+      "canister": 2,
+      "explosive_compound": 1
     }
+  },
+  "heavy_gun_parts_blueprint": {
+    "id": "heavy_gun_parts_blueprint",
+    "name": "Heavy Gun Parts Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/heavy_gun_parts.png",
+    "recipe": null
   },
   "heavy_gun_parts": {
     "id": "heavy_gun_parts",
@@ -1658,13 +1676,6 @@
     "recipe": {
       "simple_gun_parts": 4
     }
-  },
-  "heavy_gun_parts_blueprint": {
-    "id": "heavy_gun_parts_blueprint",
-    "name": "Heavy Gun Parts Blueprint",
-    "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/heavy_gun_parts.png",
-    "recipe": null
   },
   "heavy_shield": {
     "id": "heavy_shield",
@@ -1686,22 +1697,22 @@
       "great_mullein": 1
     }
   },
-  "horizontal_grip": {
-    "id": "horizontal_grip",
-    "name": "Horizontal Grip",
-    "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/horizontal_grip.png",
-    "recipe": {
-      "mod_components": 2,
-      "duct_tape": 5
-    }
-  },
   "horizontal_grip_blueprint": {
     "id": "horizontal_grip_blueprint",
     "name": "Horizontal Grip Blueprint",
     "stackSize": 1,
     "imageFilename": "https://cdn.arctracker.io/items/horizontal_grip.png",
     "recipe": null
+  },
+  "horizontal_grip": {
+    "id": "horizontal_grip",
+    "name": "Horizontal Grip",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/horizontal_grip.png",
+    "recipe": {
+      "duct_tape": 5,
+      "mod_components": 2
+    }
   },
   "hornet_driver": {
     "id": "hornet_driver",
@@ -1730,9 +1741,9 @@
     "stackSize": 1,
     "imageFilename": "https://cdn.arctracker.io/items/hullcracker.png",
     "recipe": {
-      "magnetic_accelerator": 1,
+      "exodus_modules": 1,
       "heavy_gun_parts": 3,
-      "exodus_modules": 1
+      "magnetic_accelerator": 1
     }
   },
   "hullcracker_ii": {
@@ -1843,22 +1854,22 @@
     "imageFilename": "https://cdn.arctracker.io/items/ion_sputter.png",
     "recipe": null
   },
-  "jolt_mine": {
-    "id": "jolt_mine",
-    "name": "Jolt Mine",
-    "stackSize": 3,
-    "imageFilename": "https://cdn.arctracker.io/items/jolt_mine.png",
-    "recipe": {
-      "electrical_components": 1,
-      "battery": 1
-    }
-  },
   "jolt_mine_blueprint": {
     "id": "jolt_mine_blueprint",
     "name": "Jolt Mine Blueprint",
     "stackSize": 1,
     "imageFilename": "https://cdn.arctracker.io/items/jolt_mine.png",
     "recipe": null
+  },
+  "jolt_mine": {
+    "id": "jolt_mine",
+    "name": "Jolt Mine",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/jolt_mine.png",
+    "recipe": {
+      "battery": 1,
+      "electrical_components": 1
+    }
   },
   "junior_outfit": {
     "id": "junior_outfit",
@@ -1867,23 +1878,23 @@
     "imageFilename": null,
     "recipe": null
   },
-  "jupiter": {
-    "id": "jupiter",
-    "name": "Jupiter",
-    "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/jupiter.png",
-    "recipe": {
-      "magnetic_accelerator": 3,
-      "complex_gun_parts": 3,
-      "queen_reactor": 1
-    }
-  },
   "jupiter_blueprint": {
     "id": "jupiter_blueprint",
     "name": "Jupiter Blueprint",
     "stackSize": 1,
     "imageFilename": "https://cdn.arctracker.io/items/jupiter.png",
     "recipe": null
+  },
+  "jupiter": {
+    "id": "jupiter",
+    "name": "Jupiter",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/jupiter.png",
+    "recipe": {
+      "complex_gun_parts": 3,
+      "magnetic_accelerator": 3,
+      "queen_reactor": 1
+    }
   },
   "kettle_i": {
     "id": "kettle_i",
@@ -1914,6 +1925,13 @@
     "name": "Kettle IV",
     "stackSize": 1,
     "imageFilename": "https://cdn.arctracker.io/items/kettle.png",
+    "recipe": null
+  },
+  "kinetic_converter_blueprint": {
+    "id": "kinetic_converter_blueprint",
+    "name": "Kinetic Converter Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/kinetic_converter.png",
     "recipe": null
   },
   "kinetic_converter": {
@@ -1974,8 +1992,8 @@
     "stackSize": 100,
     "imageFilename": "https://cdn.arctracker.io/items/light_ammo.png",
     "recipe": {
-      "metal_parts": 3,
-      "chemicals": 2
+      "chemicals": 2,
+      "metal_parts": 3
     }
   },
   "light_bulb": {
@@ -1983,6 +2001,13 @@
     "name": "Light Bulb",
     "stackSize": 3,
     "imageFilename": "https://cdn.arctracker.io/items/light_bulb.png",
+    "recipe": null
+  },
+  "light_gun_parts_blueprint": {
+    "id": "light_gun_parts_blueprint",
+    "name": "Light Gun Parts Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/light_gun_parts_blueprint.png",
     "recipe": null
   },
   "light_gun_parts": {
@@ -1993,13 +2018,6 @@
     "recipe": {
       "simple_gun_parts": 4
     }
-  },
-  "light_gun_parts_blueprint": {
-    "id": "light_gun_parts_blueprint",
-    "name": "Light Gun Parts Blueprint",
-    "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/light_gun_parts_blueprint.png",
-    "recipe": null
   },
   "light_impact_grenade": {
     "id": "light_impact_grenade",
@@ -2021,22 +2039,22 @@
       "plastic_parts": 4
     }
   },
-  "lightweight_stock": {
-    "id": "lightweight_stock",
-    "name": "Lightweight Stock",
-    "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/lightweight_stock.png",
-    "recipe": {
-      "mod_components": 2,
-      "duct_tape": 5
-    }
-  },
   "lightweight_stock_blueprint": {
     "id": "lightweight_stock_blueprint",
     "name": "Lightweight Stock Blueprint",
     "stackSize": 1,
     "imageFilename": "https://cdn.arctracker.io/items/lightweight_stock_blueprint.png",
     "recipe": null
+  },
+  "lightweight_stock": {
+    "id": "lightweight_stock",
+    "name": "Lightweight Stock",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/lightweight_stock.png",
+    "recipe": {
+      "duct_tape": 5,
+      "mod_components": 2
+    }
   },
   "lil_smoke_grenade": {
     "id": "lil_smoke_grenade",
@@ -2078,15 +2096,12 @@
       "processor": 3
     }
   },
-  "looting_mk3_survivor": {
-    "id": "looting_mk3_survivor",
-    "name": "Looting Mk. 3 (Survivor)",
+  "looting_mk3_safekeeper": {
+    "id": "looting_mk3_safekeeper",
+    "name": "Looting Mk. 3 (Safekeeper)",
     "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/looting_mk3_survivor.png",
-    "recipe": {
-      "advanced_mechanical_components": 2,
-      "processor": 2
-    }
+    "imageFilename": null,
+    "recipe": null
   },
   "looting_mk3_survivor_blueprint": {
     "id": "looting_mk3_survivor_blueprint",
@@ -2095,14 +2110,14 @@
     "imageFilename": "https://cdn.arctracker.io/items/looting_mk3_survivor_blueprint.png",
     "recipe": null
   },
-  "lure_grenade": {
-    "id": "lure_grenade",
-    "name": "Lure Grenade",
+  "looting_mk3_survivor": {
+    "id": "looting_mk3_survivor",
+    "name": "Looting Mk. 3 (Survivor)",
     "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/lure_grenade.png",
+    "imageFilename": "https://cdn.arctracker.io/items/looting_mk3_survivor.png",
     "recipe": {
-      "speaker_component": 1,
-      "electrical_components": 1
+      "advanced_electrical_components": 2,
+      "processor": 3
     }
   },
   "lure_grenade_blueprint": {
@@ -2120,6 +2135,16 @@
     "recipe": {
       "lure_grenade": 1,
       "wires": 1
+    }
+  },
+  "lure_grenade": {
+    "id": "lure_grenade",
+    "name": "Lure Grenade",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/lure_grenade.png",
+    "recipe": {
+      "electrical_components": 1,
+      "speaker_component": 1
     }
   },
   "magnet": {
@@ -2176,9 +2201,16 @@
     "stackSize": 80,
     "imageFilename": "https://cdn.arctracker.io/items/medium_ammo.png",
     "recipe": {
-      "metal_parts": 3,
-      "chemicals": 2
+      "chemicals": 2,
+      "metal_parts": 3
     }
+  },
+  "medium_gun_parts_blueprint": {
+    "id": "medium_gun_parts_blueprint",
+    "name": "Medium Gun Parts Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/medium_gun_parts_blueprint.png",
+    "recipe": null
   },
   "medium_gun_parts": {
     "id": "medium_gun_parts",
@@ -2188,13 +2220,6 @@
     "recipe": {
       "simple_gun_parts": 4
     }
-  },
-  "medium_gun_parts_blueprint": {
-    "id": "medium_gun_parts_blueprint",
-    "name": "Medium Gun Parts Blueprint",
-    "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/medium_gun_parts_blueprint.png",
-    "recipe": null
   },
   "medium_shield": {
     "id": "medium_shield",
@@ -2240,8 +2265,8 @@
     "stackSize": 5,
     "imageFilename": "https://cdn.arctracker.io/items/mod_components.png",
     "recipe": {
-      "steel_spring": 2,
-      "mechanical_components": 2
+      "mechanical_components": 2,
+      "steel_spring": 2
     }
   },
   "moss": {
@@ -2289,6 +2314,13 @@
       "wires": 1
     }
   },
+  "muzzle_brake_ii_blueprint": {
+    "id": "muzzle_brake_ii_blueprint",
+    "name": "Muzzle Brake II Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/muzzle_brake_ii.png",
+    "recipe": null
+  },
   "muzzle_brake_ii": {
     "id": "muzzle_brake_ii",
     "name": "Muzzle Brake II",
@@ -2299,11 +2331,11 @@
       "wires": 4
     }
   },
-  "muzzle_brake_ii_blueprint": {
-    "id": "muzzle_brake_ii_blueprint",
-    "name": "Muzzle Brake II Blueprint",
+  "muzzle_brake_iii_blueprint": {
+    "id": "muzzle_brake_iii_blueprint",
+    "name": "Muzzle Brake III Blueprint",
     "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/muzzle_brake_ii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/muzzle_brake_iii.png",
     "recipe": null
   },
   "muzzle_brake_iii": {
@@ -2316,19 +2348,15 @@
       "wires": 8
     }
   },
-  "muzzle_brake_iii_blueprint": {
-    "id": "muzzle_brake_iii_blueprint",
-    "name": "Muzzle Brake III Blueprint",
-    "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/muzzle_brake_iii.png",
-    "recipe": null
-  },
   "noisemaker": {
     "id": "noisemaker",
     "name": "Noisemaker",
     "stackSize": 3,
     "imageFilename": "https://cdn.arctracker.io/items/noisemaker.png",
-    "recipe": null
+    "recipe": {
+      "plastic_parts": 2,
+      "speaker_component": 1
+    }
   },
   "number_plate": {
     "id": "number_plate",
@@ -2390,19 +2418,22 @@
     "imageFilename": "https://cdn.arctracker.io/items/osprey.png",
     "recipe": null
   },
-  "padded_stock": {
-    "id": "padded_stock",
-    "name": "Padded Stock",
-    "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/padded_stock.png",
-    "recipe": null
-  },
   "padded_stock_blueprint": {
     "id": "padded_stock_blueprint",
     "name": "Padded Stock Blueprint",
     "stackSize": 1,
     "imageFilename": "https://cdn.arctracker.io/items/padded_stock.png",
     "recipe": null
+  },
+  "padded_stock": {
+    "id": "padded_stock",
+    "name": "Padded Stock",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/padded_stock.png",
+    "recipe": {
+      "duct_tape": 5,
+      "mod_components": 2
+    }
   },
   "painted_box": {
     "id": "painted_box",
@@ -2522,13 +2553,6 @@
     "imageFilename": "https://cdn.arctracker.io/items/projector.png",
     "recipe": null
   },
-  "pulse_mine": {
-    "id": "pulse_mine",
-    "name": "Pulse Mine",
-    "stackSize": 3,
-    "imageFilename": "https://cdn.arctracker.io/items/pulse_mine.png",
-    "recipe": null
-  },
   "pulse_mine_blueprint": {
     "id": "pulse_mine_blueprint",
     "name": "Pulse Mine Blueprint",
@@ -2536,18 +2560,21 @@
     "imageFilename": "https://cdn.arctracker.io/items/pulse_mine.png",
     "recipe": null
   },
+  "pulse_mine": {
+    "id": "pulse_mine",
+    "name": "Pulse Mine",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/pulse_mine.png",
+    "recipe": {
+      "crude_explosives": 1,
+      "wires": 1
+    }
+  },
   "queen_reactor": {
     "id": "queen_reactor",
     "name": "Queen Reactor",
     "stackSize": 1,
     "imageFilename": "https://cdn.arctracker.io/items/queen_part.png",
-    "recipe": null
-  },
-  "radio": {
-    "id": "radio",
-    "name": "Radio",
-    "stackSize": 3,
-    "imageFilename": "https://cdn.arctracker.io/items/radio.png",
     "recipe": null
   },
   "radio_relay": {
@@ -2562,6 +2589,13 @@
     "name": "Radio Renegade",
     "stackSize": 1,
     "imageFilename": "https://cdn.arctracker.io/items/radio_renegade.png",
+    "recipe": null
+  },
+  "radio": {
+    "id": "radio",
+    "name": "Radio",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/radio.png",
     "recipe": null
   },
   "raider_hatch_key": {
@@ -2619,6 +2653,13 @@
     "imageFilename": "https://cdn.arctracker.io/items/red_coral_jewelry.png",
     "recipe": null
   },
+  "red_light_stick_blueprint": {
+    "id": "red_light_stick_blueprint",
+    "name": "Red Light Stick Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/red_light_stick.png",
+    "recipe": null
+  },
   "red_light_stick": {
     "id": "red_light_stick",
     "name": "Red Light Stick",
@@ -2628,18 +2669,18 @@
       "chemicals": 3
     }
   },
-  "red_light_stick_blueprint": {
-    "id": "red_light_stick_blueprint",
-    "name": "Red Light Stick Blueprint",
-    "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/red_light_stick.png",
-    "recipe": null
-  },
   "remote_control": {
     "id": "remote_control",
     "name": "Remote Control",
     "stackSize": 3,
     "imageFilename": "https://cdn.arctracker.io/items/remote_control.png",
+    "recipe": null
+  },
+  "remote_raider_flare_blueprint": {
+    "id": "remote_raider_flare_blueprint",
+    "name": "Remote Raider Flare Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/remote_raider_flare.png",
     "recipe": null
   },
   "remote_raider_flare": {
@@ -2651,13 +2692,6 @@
       "chemicals": 2,
       "rubber_parts": 4
     }
-  },
-  "remote_raider_flare_blueprint": {
-    "id": "remote_raider_flare_blueprint",
-    "name": "Remote Raider Flare Blueprint",
-    "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/remote_raider_flare.png",
-    "recipe": null
   },
   "renegade_i": {
     "id": "renegade_i",
@@ -2859,22 +2893,22 @@
     "imageFilename": "https://cdn.arctracker.io/items/sample_cleaner.png",
     "recipe": null
   },
-  "seeker_grenade": {
-    "id": "seeker_grenade",
-    "name": "Seeker Grenade",
-    "stackSize": 5,
-    "imageFilename": "https://cdn.arctracker.io/items/seeker_grenade.png",
-    "recipe": {
-      "crude_explosives": 1,
-      "arc_alloy": 2
-    }
-  },
   "seeker_grenade_blueprint": {
     "id": "seeker_grenade_blueprint",
     "name": "Seeker Grenade Blueprint",
     "stackSize": 1,
     "imageFilename": "https://cdn.arctracker.io/items/seeker_grenade.png",
     "recipe": null
+  },
+  "seeker_grenade": {
+    "id": "seeker_grenade",
+    "name": "Seeker Grenade",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/seeker_grenade.png",
+    "recipe": {
+      "arc_alloy": 2,
+      "crude_explosives": 1
+    }
   },
   "sensors": {
     "id": "sensors",
@@ -2903,8 +2937,8 @@
     "stackSize": 5,
     "imageFilename": "https://cdn.arctracker.io/items/shield_recharger.png",
     "recipe": {
-      "rubber_parts": 5,
-      "arc_powercell": 1
+      "arc_powercell": 1,
+      "rubber_parts": 5
     }
   },
   "shotgun_ammo": {
@@ -2913,8 +2947,8 @@
     "stackSize": 20,
     "imageFilename": "https://cdn.arctracker.io/items/shotgun_ammo.png",
     "recipe": {
-      "metal_parts": 3,
-      "chemicals": 2
+      "chemicals": 2,
+      "metal_parts": 3
     }
   },
   "shotgun_choke_i": {
@@ -2927,6 +2961,13 @@
       "wires": 1
     }
   },
+  "shotgun_choke_ii_blueprint": {
+    "id": "shotgun_choke_ii_blueprint",
+    "name": "Shotgun Choke II Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/shotgun_choke_ii.png",
+    "recipe": null
+  },
   "shotgun_choke_ii": {
     "id": "shotgun_choke_ii",
     "name": "Shotgun Choke II",
@@ -2937,11 +2978,11 @@
       "wires": 4
     }
   },
-  "shotgun_choke_ii_blueprint": {
-    "id": "shotgun_choke_ii_blueprint",
-    "name": "Shotgun Choke II Blueprint",
+  "shotgun_choke_iii_blueprint": {
+    "id": "shotgun_choke_iii_blueprint",
+    "name": "Shotgun Choke III Blueprint",
     "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/shotgun_choke_ii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/shotgun_choke_iii.png",
     "recipe": null
   },
   "shotgun_choke_iii": {
@@ -2954,11 +2995,11 @@
       "wires": 8
     }
   },
-  "shotgun_choke_iii_blueprint": {
-    "id": "shotgun_choke_iii_blueprint",
-    "name": "Shotgun Choke III Blueprint",
+  "shotgun_silencer_blueprint": {
+    "id": "shotgun_silencer_blueprint",
+    "name": "Shotgun Silencer Blueprint",
     "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/shotgun_choke_iii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/shotgun_silencer.png",
     "recipe": null
   },
   "shotgun_silencer": {
@@ -2971,11 +3012,11 @@
       "wires": 8
     }
   },
-  "shotgun_silencer_blueprint": {
-    "id": "shotgun_silencer_blueprint",
-    "name": "Shotgun Silencer Blueprint",
+  "showstopper_blueprint": {
+    "id": "showstopper_blueprint",
+    "name": "Showstopper Blueprint",
     "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/shotgun_silencer.png",
+    "imageFilename": "https://cdn.arctracker.io/items/showstopper.png",
     "recipe": null
   },
   "showstopper": {
@@ -2987,13 +3028,6 @@
       "advanced_electrical_components": 1,
       "voltage_converter": 1
     }
-  },
-  "showstopper_blueprint": {
-    "id": "showstopper_blueprint",
-    "name": "Showstopper Blueprint",
-    "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/showstopper.png",
-    "recipe": null
   },
   "shrapnel_grenade": {
     "id": "shrapnel_grenade",
@@ -3019,13 +3053,6 @@
     "imageFilename": "https://cdn.arctracker.io/items/signal_amplifier.png",
     "recipe": null
   },
-  "silencer_i": {
-    "id": "silencer_i",
-    "name": "Silencer I",
-    "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/silencer_i.png",
-    "recipe": null
-  },
   "silencer_i_blueprint": {
     "id": "silencer_i_blueprint",
     "name": "Silencer I Blueprint",
@@ -3033,18 +3060,38 @@
     "imageFilename": "https://cdn.arctracker.io/items/silencer_i.png",
     "recipe": null
   },
-  "silencer_ii": {
-    "id": "silencer_ii",
-    "name": "Silencer II",
+  "silencer_i": {
+    "id": "silencer_i",
+    "name": "Silencer I",
     "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/silencer_ii.png",
-    "recipe": null
+    "imageFilename": "https://cdn.arctracker.io/items/silencer_i.png",
+    "recipe": {
+      "mechanical_components": 2,
+      "wires": 4
+    }
   },
   "silencer_ii_blueprint": {
     "id": "silencer_ii_blueprint",
     "name": "Silencer II Blueprint",
     "stackSize": 1,
     "imageFilename": "https://cdn.arctracker.io/items/silencer_ii.png",
+    "recipe": null
+  },
+  "silencer_ii": {
+    "id": "silencer_ii",
+    "name": "Silencer II",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/silencer_ii.png",
+    "recipe": {
+      "mod_components": 2,
+      "wires": 8
+    }
+  },
+  "silencer_iii_blueprint": {
+    "id": "silencer_iii_blueprint",
+    "name": "Silencer III Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/silencer_iii.png",
     "recipe": null
   },
   "silencer_iii": {
@@ -3068,16 +3115,6 @@
     "imageFilename": "https://cdn.arctracker.io/items/simple_gun_parts.png",
     "recipe": null
   },
-  "smoke_grenade": {
-    "id": "smoke_grenade",
-    "name": "Smoke Grenade",
-    "stackSize": 3,
-    "imageFilename": "https://cdn.arctracker.io/items/smoke_grenade.png",
-    "recipe": {
-      "chemicals": 14,
-      "canister": 1
-    }
-  },
   "smoke_grenade_blueprint": {
     "id": "smoke_grenade_blueprint",
     "name": "Smoke Grenade Blueprint",
@@ -3095,6 +3132,16 @@
       "wires": 1
     }
   },
+  "smoke_grenade": {
+    "id": "smoke_grenade",
+    "name": "Smoke Grenade",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/smoke_grenade.png",
+    "recipe": {
+      "canister": 1,
+      "chemicals": 14
+    }
+  },
   "snap_blast_grenade": {
     "id": "snap_blast_grenade",
     "name": "Snap Blast Grenade",
@@ -3105,23 +3152,23 @@
       "magnet": 1
     }
   },
-  "snap_hook": {
-    "id": "snap_hook",
-    "name": "Snap Hook",
-    "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/snap_hook.png",
-    "recipe": {
-      "power_rod": 2,
-      "rope": 3,
-      "exodus_modules": 1
-    }
-  },
   "snap_hook_blueprint": {
     "id": "snap_hook_blueprint",
     "name": "Snap Hook Blueprint",
     "stackSize": 1,
     "imageFilename": "https://cdn.arctracker.io/items/snap_hook.png",
     "recipe": null
+  },
+  "snap_hook": {
+    "id": "snap_hook",
+    "name": "Snap Hook",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/snap_hook.png",
+    "recipe": {
+      "exodus_modules": 1,
+      "power_rod": 2,
+      "rope": 3
+    }
   },
   "snitch_scanner": {
     "id": "snitch_scanner",
@@ -3206,18 +3253,8 @@
     "stackSize": 1,
     "imageFilename": "https://cdn.arctracker.io/items/stable_stock_i.png",
     "recipe": {
-      "rubber_parts": 6,
-      "duct_tape": 1
-    }
-  },
-  "stable_stock_ii": {
-    "id": "stable_stock_ii",
-    "name": "Stable Stock II",
-    "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/stable_stock_ii.png",
-    "recipe": {
-      "mechanical_components": 2,
-      "duct_tape": 3
+      "duct_tape": 1,
+      "rubber_parts": 6
     }
   },
   "stable_stock_ii_blueprint": {
@@ -3227,14 +3264,14 @@
     "imageFilename": "https://cdn.arctracker.io/items/stable_stock_ii.png",
     "recipe": null
   },
-  "stable_stock_iii": {
-    "id": "stable_stock_iii",
-    "name": "Stable Stock III",
+  "stable_stock_ii": {
+    "id": "stable_stock_ii",
+    "name": "Stable Stock II",
     "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/stable_stock_iii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/stable_stock_ii.png",
     "recipe": {
-      "mod_components": 2,
-      "duct_tape": 5
+      "duct_tape": 3,
+      "mechanical_components": 2
     }
   },
   "stable_stock_iii_blueprint": {
@@ -3243,6 +3280,16 @@
     "stackSize": 1,
     "imageFilename": "https://cdn.arctracker.io/items/stable_stock_iii.png",
     "recipe": null
+  },
+  "stable_stock_iii": {
+    "id": "stable_stock_iii",
+    "name": "Stable Stock III",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/stable_stock_iii.png",
+    "recipe": {
+      "duct_tape": 5,
+      "mod_components": 2
+    }
   },
   "statuette": {
     "id": "statuette",
@@ -3333,8 +3380,8 @@
     "stackSize": 5,
     "imageFilename": "https://cdn.arctracker.io/items/surge_shield_recharger.png",
     "recipe": {
-      "electrical_components": 1,
-      "advanced_arc_powercell": 1
+      "advanced_arc_powercell": 1,
+      "electrical_components": 1
     }
   },
   "surveyor_vault": {
@@ -3378,6 +3425,13 @@
       "magnet": 3
     }
   },
+  "tactical_mk3_defensive_blueprint": {
+    "id": "tactical_mk3_defensive_blueprint",
+    "name": "Tactical Mk. 3 (Defensive) Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_defensive.png",
+    "recipe": null
+  },
   "tactical_mk3_defensive": {
     "id": "tactical_mk3_defensive",
     "name": "Tactical Mk. 3 (Defensive)",
@@ -3388,11 +3442,11 @@
       "processor": 3
     }
   },
-  "tactical_mk3_defensive_blueprint": {
-    "id": "tactical_mk3_defensive_blueprint",
-    "name": "Tactical Mk. 3 (Defensive) Blueprint",
+  "tactical_mk3_healing_blueprint": {
+    "id": "tactical_mk3_healing_blueprint",
+    "name": "Tactical Mk. 3 (Healing) Blueprint",
     "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_defensive.png",
+    "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_healing_blueprint.png",
     "recipe": null
   },
   "tactical_mk3_healing": {
@@ -3400,13 +3454,23 @@
     "name": "Tactical Mk. 3 (Healing)",
     "stackSize": 1,
     "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_healing.png",
+    "recipe": {
+      "advanced_electrical_components": 2,
+      "processor": 3
+    }
+  },
+  "tactical_mk3_revival": {
+    "id": "tactical_mk3_revival",
+    "name": "Tactical Mk. 3 (Revival)",
+    "stackSize": 1,
+    "imageFilename": null,
     "recipe": null
   },
-  "tactical_mk3_healing_blueprint": {
-    "id": "tactical_mk3_healing_blueprint",
-    "name": "Tactical Mk. 3 (Healing) Blueprint",
+  "tagging_grenade_blueprint": {
+    "id": "tagging_grenade_blueprint",
+    "name": "Tagging Grenade Blueprint",
     "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_healing_blueprint.png",
+    "imageFilename": "https://cdn.arctracker.io/items/tagging_grenade.png",
     "recipe": null
   },
   "tagging_grenade": {
@@ -3418,13 +3482,6 @@
       "electrical_components": 1,
       "sensors": 1
     }
-  },
-  "tagging_grenade_blueprint": {
-    "id": "tagging_grenade_blueprint",
-    "name": "Tagging Grenade Blueprint",
-    "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/tagging_grenade.png",
-    "recipe": null
   },
   "tattered_arc_lining": {
     "id": "tattered_arc_lining",
@@ -3560,21 +3617,28 @@
     "imageFilename": "https://cdn.arctracker.io/items/torrente.png",
     "recipe": null
   },
+  "trailblazer_blueprint": {
+    "id": "trailblazer_blueprint",
+    "name": "Trailblazer Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/trailblazer.png",
+    "recipe": null
+  },
   "trailblazer": {
     "id": "trailblazer",
     "name": "Trailblazer",
     "stackSize": 3,
     "imageFilename": "https://cdn.arctracker.io/items/trailblazer.png",
     "recipe": {
-      "synthesized_fuel": 1,
-      "explosive_compound": 1
+      "explosive_compound": 1,
+      "synthesized_fuel": 1
     }
   },
-  "trailblazer_blueprint": {
-    "id": "trailblazer_blueprint",
-    "name": "Trailblazer Blueprint",
+  "trigger_nade_blueprint": {
+    "id": "trigger_nade_blueprint",
+    "name": "Trigger Nade Blueprint",
     "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/trailblazer.png",
+    "imageFilename": "https://cdn.arctracker.io/items/trigger_nade_blueprint.png",
     "recipe": null
   },
   "trigger_nade": {
@@ -3586,13 +3650,6 @@
       "crude_explosives": 2,
       "processor": 1
     }
-  },
-  "trigger_nade_blueprint": {
-    "id": "trigger_nade_blueprint",
-    "name": "Trigger Nade Blueprint",
-    "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/trigger_nade_blueprint.png",
-    "recipe": null
   },
   "turbo_pump": {
     "id": "turbo_pump",
@@ -3629,8 +3686,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/venator.png",
     "recipe": {
       "advanced_mechanical_components": 2,
-      "medium_gun_parts": 3,
-      "magnet": 5
+      "magnet": 5,
+      "medium_gun_parts": 3
     }
   },
   "venator_ii": {
@@ -3660,18 +3717,8 @@
     "stackSize": 1,
     "imageFilename": "https://cdn.arctracker.io/items/vertical_grip_i.png",
     "recipe": {
-      "plastic_parts": 6,
-      "duct_tape": 1
-    }
-  },
-  "vertical_grip_ii": {
-    "id": "vertical_grip_ii",
-    "name": "Vertical Grip II",
-    "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/vertical_grip_ii.png",
-    "recipe": {
-      "mechanical_components": 2,
-      "duct_tape": 3
+      "duct_tape": 1,
+      "plastic_parts": 6
     }
   },
   "vertical_grip_ii_blueprint": {
@@ -3681,14 +3728,14 @@
     "imageFilename": "https://cdn.arctracker.io/items/vertical_grip_ii.png",
     "recipe": null
   },
-  "vertical_grip_iii": {
-    "id": "vertical_grip_iii",
-    "name": "Vertical Grip III",
+  "vertical_grip_ii": {
+    "id": "vertical_grip_ii",
+    "name": "Vertical Grip II",
     "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/vertical_grip_iii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/vertical_grip_ii.png",
     "recipe": {
-      "mod_components": 2,
-      "duct_tape": 5
+      "duct_tape": 3,
+      "mechanical_components": 2
     }
   },
   "vertical_grip_iii_blueprint": {
@@ -3698,11 +3745,28 @@
     "imageFilename": "https://cdn.arctracker.io/items/vertical_grip_iii_blueprint.png",
     "recipe": null
   },
+  "vertical_grip_iii": {
+    "id": "vertical_grip_iii",
+    "name": "Vertical Grip III",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/vertical_grip_iii.png",
+    "recipe": {
+      "duct_tape": 5,
+      "mod_components": 2
+    }
+  },
   "very_comfortable_pillow": {
     "id": "very_comfortable_pillow",
     "name": "Very Comfortable Pillow",
     "stackSize": 3,
     "imageFilename": "https://cdn.arctracker.io/items/very_comfortable_pillow.png",
+    "recipe": null
+  },
+  "vita_shot_blueprint": {
+    "id": "vita_shot_blueprint",
+    "name": "Vita Shot Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/vita_shot.png",
     "recipe": null
   },
   "vita_shot": {
@@ -3715,11 +3779,11 @@
       "syringe": 1
     }
   },
-  "vita_shot_blueprint": {
-    "id": "vita_shot_blueprint",
-    "name": "Vita Shot Blueprint",
+  "vita_spray_blueprint": {
+    "id": "vita_spray_blueprint",
+    "name": "Vita Spray Blueprint",
     "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/vita_shot.png",
+    "imageFilename": "https://cdn.arctracker.io/items/vita_spray.png",
     "recipe": null
   },
   "vita_spray": {
@@ -3731,13 +3795,6 @@
       "antiseptic": 3,
       "canister": 1
     }
-  },
-  "vita_spray_blueprint": {
-    "id": "vita_spray_blueprint",
-    "name": "Vita Spray Blueprint",
-    "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/vita_spray.png",
-    "recipe": null
   },
   "volcanic_rock": {
     "id": "volcanic_rock",
@@ -3766,9 +3823,9 @@
     "stackSize": 1,
     "imageFilename": "https://cdn.arctracker.io/items/vulcano.png",
     "recipe": {
-      "magnetic_accelerator": 1,
+      "exodus_modules": 1,
       "heavy_gun_parts": 3,
-      "exodus_modules": 1
+      "magnetic_accelerator": 1
     }
   },
   "vulcano_ii": {
@@ -3820,16 +3877,6 @@
     "imageFilename": "https://cdn.arctracker.io/items/wires.png",
     "recipe": null
   },
-  "wolfpack": {
-    "id": "wolfpack",
-    "name": "Wolfpack",
-    "stackSize": 1,
-    "imageFilename": "https://cdn.arctracker.io/items/wolfpack.png",
-    "recipe": {
-      "explosive_compound": 3,
-      "arc_motion_core": 2
-    }
-  },
   "wolfpack_blueprint": {
     "id": "wolfpack_blueprint",
     "name": "Wolfpack Blueprint",
@@ -3837,12 +3884,15 @@
     "imageFilename": "https://cdn.arctracker.io/items/wolfpack_blueprint.png",
     "recipe": null
   },
-  "yellow_light_stick": {
-    "id": "yellow_light_stick",
-    "name": "Yellow Light Stick",
-    "stackSize": 5,
-    "imageFilename": "https://cdn.arctracker.io/items/yellow_light_stick.png",
-    "recipe": null
+  "wolfpack": {
+    "id": "wolfpack",
+    "name": "Wolfpack",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/wolfpack.png",
+    "recipe": {
+      "arc_motion_core": 2,
+      "explosive_compound": 3
+    }
   },
   "yellow_light_stick_blueprint": {
     "id": "yellow_light_stick_blueprint",
@@ -3851,14 +3901,23 @@
     "imageFilename": "https://cdn.arctracker.io/items/yellow_light_stick.png",
     "recipe": null
   },
+  "yellow_light_stick": {
+    "id": "yellow_light_stick",
+    "name": "Yellow Light Stick",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/yellow_light_stick.png",
+    "recipe": {
+      "chemicals": 3
+    }
+  },
   "zipline": {
     "id": "zipline",
     "name": "Zipline",
     "stackSize": 1,
     "imageFilename": "https://cdn.arctracker.io/items/zipline.png",
     "recipe": {
-      "rope": 1,
-      "mechanical_components": 1
+      "mechanical_components": 1,
+      "rope": 1
     }
   }
 }
