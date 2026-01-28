@@ -1,4 +1,5 @@
 @use 'variables' as *;
+@use 'sass:color';
 
 .help-dialog-overlay {
   position: fixed;
@@ -91,7 +92,7 @@
       margin-left: -$spacing-sm;
 
       &:hover {
-        color: lighten($text-accent, 10%);
+        color: color.adjust($text-accent, $lightness: 10%);
         background: rgba($text-accent, 0.1);
       }
 
