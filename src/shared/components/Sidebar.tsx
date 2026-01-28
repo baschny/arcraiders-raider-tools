@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { 
   Home, 
   Calendar, 
@@ -18,8 +18,26 @@ const NAV_ITEMS = [
   { path: '/loot-helper', icon: Package, label: 'Looting Helper' },
 ];
 
+const SIDEBAR_STORAGE_KEY = 'raider-tools:sidebar-collapsed';
+
 export function Sidebar() {
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(() => {
+    try {
+      const saved = localStorage.getItem(SIDEBAR_STORAGE_KEY);
+      return saved ? JSON.parse(saved) : false;
+    } catch (e) {
+      console.error('Failed to load sidebar state:', e);
+      return false;
+    }
+  });
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(SIDEBAR_STORAGE_KEY, JSON.stringify(collapsed));
+    } catch (e) {
+      console.error('Failed to save sidebar state:', e);
+    }
+  }, [collapsed]);
 
   return (
     <div className={`app-sidebar ${collapsed ? 'collapsed' : ''}`}>

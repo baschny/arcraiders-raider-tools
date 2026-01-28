@@ -5,6 +5,7 @@ import ReactFlow, {
   useNodesState,
   useEdgesState,
   MarkerType,
+  type Viewport,
 } from 'reactflow';
 import type { Node, Edge, ReactFlowInstance } from 'reactflow';
 import dagre from 'dagre';
@@ -14,6 +15,8 @@ import { MapNode } from './MapNode';
 import { Sidebar } from './Sidebar';
 import { ConfirmDialog } from './ConfirmDialog';
 import { STORAGE_KEY } from '../data/static-data';
+
+const VIEWPORT_STORAGE_KEY = 'raider-tools:quest-tracker-viewport';
 import {
   isQuestAvailable,
   getAllDependents,
@@ -38,6 +41,19 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
     return new Set();
   };
 
+  // Load viewport from localStorage
+  const loadViewport = (): Viewport | undefined => {
+    try {
+      const saved = localStorage.getItem(VIEWPORT_STORAGE_KEY);
+      if (saved) {
+        return JSON.parse(saved);
+      }
+    } catch (e) {
+      console.error('Failed to load viewport:', e);
+    }
+    return undefined;
+  };
+
   const [completedQuests, setCompletedQuests] = useState(loadCompletedQuests);
   const [searchQuery, setSearchQuery] = useState('');
   const [highlightedQuestId, setHighlightedQuestId] = useState<string | null>(
@@ -45,6 +61,7 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
   );
   const [reactFlowInstance, setReactFlowInstance] =
     useState<ReactFlowInstance | null>(null);
+  const [viewport, setViewport] = useState<Viewport>(loadViewport() || { x: 0, y: 0, zoom: 0.5 });
 
   // Confirmation dialog state
   const [confirmDialog, setConfirmDialog] = useState<{
@@ -74,6 +91,23 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
       console.error('Failed to save quest progress:', e);
     }
   }, [completedQuests]);
+
+  // Save viewport to localStorage whenever it changes
+  useEffect(() => {
+    try {
+      localStorage.setItem(VIEWPORT_STORAGE_KEY, JSON.stringify(viewport));
+    } catch (e) {
+      console.error('Failed to save viewport:', e);
+    }
+  }, [viewport]);
+
+  // Handle viewport changes
+  const onMoveEnd = useCallback((
+    _event: MouseEvent | TouchEvent | null,
+    newViewport: Viewport
+  ) => {
+    setViewport(newViewport);
+  }, []);
 
   // Node types registration
   const nodeTypes = useMemo(
@@ -422,16 +456,17 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
             onEdgesChange={onEdgesChange}
             onNodeClick={onNodeClick}
             onInit={setReactFlowInstance}
+            onMoveEnd={onMoveEnd}
             nodeTypes={nodeTypes}
             defaultEdgeOptions={{
               type: 'default',
               markerEnd: { type: MarkerType.ArrowClosed },
             }}
             translateExtent={bounds}
-            fitView
+            fitView={!loadViewport()}
             minZoom={0.3}
             maxZoom={1.5}
-            defaultViewport={{ x: 0, y: 0, zoom: 0.5 }}
+            defaultViewport={viewport}
             nodesDraggable={false}
             nodesConnectable={false}
           >
