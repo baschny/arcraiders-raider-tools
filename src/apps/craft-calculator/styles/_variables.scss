@@ -1,0 +1,25 @@
+// Calculator-specific variables
+// (Uses shared variables from ../../../shared/styles/variables for fonts, spacing, colors)
+
+// Colors - Graph Bars (specific to craft calculator)
+$bar-saves: rgba(76, 175, 80, 0.4);
+$bar-saves-optimal: #4caf50;
+$bar-uses-more: rgba(229, 57, 53, 0.4);
+$bar-uses-more-optimal: rgba(229, 57, 53, 0.6);
+$bar-same: rgba(79, 195, 247, 0.3);
+$bar-same-optimal: rgba(79, 195, 247, 0.5);
+
+// Calculator-specific colors
+$bg-card: #2a2a2a;
+$bg-input: #222;
+$border-focus: #4fc3f7;
+$text-muted: #666;
+$text-success: #4caf50;
+$text-warning: #ff9800;
+$text-error: #e53935;
+
+// Layout dimensions specific to calculator
+$calculator-min-width: 450px;
+$sidebar-min-width: 500px;
+$container-max-width: 1600px;
+$layout-breakpoint: $calculator-min-width + $sidebar-min-width + 24px + (24px * 2);

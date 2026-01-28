@@ -1,0 +1,18 @@
+@use 'variables' as calc;
+@use 'calculator';
+@use 'item-search';
+@use 'graph';
+
+// Container layout specific to craft calculator
+.container {
+  display: flex;
+  gap: 24px;
+  padding: 24px;
+  max-width: calc.$container-max-width;
+  margin: 0 auto;
+  width: 100%;
+
+  @media (max-width: calc.$layout-breakpoint) {
+    flex-direction: column;
+  }
+}

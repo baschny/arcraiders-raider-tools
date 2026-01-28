@@ -1,0 +1,151 @@
+@use '../../../shared/styles/variables' as *;
+@use 'variables' as calc;
+
+.bar-saves {
+  background-color: calc.$bar-saves;
+}
+
+.bar-saves-optimal {
+  background-color: calc.$bar-saves-optimal;
+}
+
+.bar-uses-more {
+  background-color: calc.$bar-uses-more;
+}
+
+.bar-uses-more-optimal {
+  background-color: calc.$bar-uses-more-optimal;
+}
+
+.bar-same {
+  background-color: calc.$bar-same;
+}
+
+.bar-same-optimal {
+  background-color: calc.$bar-same-optimal;
+}
+
+.stash-graph {
+  padding: $spacing-lg;
+  background: linear-gradient(135deg, rgba(79, 195, 247, 0.05), rgba(79, 195, 247, 0.02));
+  border-radius: $radius-md;
+  border: 1px solid rgba(79, 195, 247, 0.2);
+
+  .graph-title {
+    font-size: $font-md;
+    font-weight: 600;
+    color: $text-accent;
+    margin-bottom: $spacing-md;
+  }
+
+  .graph-container {
+    position: relative;
+    display: flex;
+    gap: $spacing-md;
+    padding: $spacing-md;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: $radius-md;
+    margin-bottom: $spacing-md;
+  }
+
+  .graph-bars {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 140px;
+    position: relative;
+  }
+
+  .graph-bar-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 0;
+  }
+
+  .graph-bar {
+    width: 100%;
+    border-radius: $radius-sm $radius-sm 0 0;
+    transition: $transition-default;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    cursor: pointer;
+
+    &.optimal {
+      box-shadow: 0 0 8px rgba(76, 175, 80, 0.6);
+      border: 1px solid calc.$text-success;
+    }
+
+    &:hover {
+      opacity: 0.8;
+      transform: translateY(-2px);
+    }
+
+    .bar-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: white;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+      line-height: 1;
+
+      &.optimal-label {
+        font-size: 16px;
+      }
+    }
+  }
+
+  .graph-x-label {
+    font-size: 10px;
+    color: $text-secondary;
+    white-space: nowrap;
+    height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: $spacing-xs;
+  }
+
+  .graph-y-axis {
+    width: 50px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: $spacing-xs 0;
+
+    .y-label {
+      font-size: 10px;
+      color: $text-secondary;
+      text-align: right;
+    }
+  }
+
+  .graph-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-md;
+    font-size: $font-sm;
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: $spacing-xs;
+
+      .legend-color {
+        width: 16px;
+        height: 16px;
+        border-radius: $radius-sm;
+        flex-shrink: 0;
+      }
+
+      span {
+        color: $text-secondary;
+        white-space: nowrap;
+      }
+    }
+  }
+}

@@ -1,0 +1,314 @@
+@use '../../../shared/styles/variables' as *;
+@use 'variables' as calc;
+
+.calculator {
+  flex: 0 1 auto;
+  min-width: calc.$calculator-min-width;
+
+  @media (max-width: calc.$layout-breakpoint) {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .selected-item-display {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+    padding: $spacing-lg;
+    background: linear-gradient(135deg, rgba(79, 195, 247, 0.08), rgba(79, 195, 247, 0.03));
+    border-radius: $radius-md;
+    margin-bottom: $spacing-md;
+    border: 1px solid rgba(79, 195, 247, 0.2);
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 100%;
+      background: $text-accent;
+      border-radius: $radius-sm 0 0 $radius-sm;
+    }
+
+    .selected-item-image {
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: $radius-md;
+      padding: $spacing-sm;
+      border: 1px solid rgba(79, 195, 247, 0.3);
+    }
+
+    h3 {
+      color: $text-primary;
+      margin: 0;
+      font-weight: 600;
+    }
+
+    p {
+      margin: $spacing-xs 0 0 0;
+    }
+  }
+
+
+  .card-title {
+    font-weight: 600;
+    margin-bottom: $spacing-md;
+    color: $text-accent;
+  }
+
+  .form-group {
+    margin-bottom: $spacing-md;
+
+    label {
+      display: block;
+      margin-bottom: $spacing-xs;
+      font-weight: 500;
+      color: $text-primary;
+      font-size: $font-sm;
+    }
+
+    input, select {
+      width: 100%;
+      padding: $spacing-sm $spacing-md;
+      background: calc.$bg-input;
+      border: 2px solid $border-default;
+      border-radius: $radius-sm;
+      color: $text-primary;
+      font-size: $font-sm;
+
+      &:focus {
+        border-color: calc.$border-focus;
+      }
+
+      &::placeholder {
+        color: calc.$text-muted;
+      }
+    }
+
+    input[type="number"] {
+      &::-webkit-inner-spin-button,
+      &::-webkit-outer-spin-button {
+        opacity: 1;
+      }
+    }
+  }
+
+  .required-item {
+    background: $bg-tertiary;
+    padding: $spacing-md;
+    border-radius: $radius-sm;
+    margin-bottom: $spacing-sm;
+    position: relative;
+    display: flex;
+    gap: $spacing-md;
+    align-items: center;
+
+    .item-header {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .item-header {
+      display: flex;
+      align-items: center;
+      gap: $spacing-sm;
+
+      h4 {
+        color: $text-primary;
+        font-weight: 500;
+        margin: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      img {
+        flex-shrink: 0;
+      }
+    }
+  }
+}
+
+.input-with-label {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+  flex-shrink: 0;
+
+  label {
+    font-size: 11px;
+    color: $text-secondary;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  input,
+  select {
+    width: 90px;
+    padding: $spacing-xs $spacing-sm;
+    font-size: $font-sm;
+    background: calc.$bg-input;
+    border: 2px solid $border-default;
+    border-radius: $radius-sm;
+    color: $text-primary;
+
+    &:focus {
+      border-color: calc.$border-focus;
+    }
+
+    &::placeholder {
+      color: calc.$text-muted;
+    }
+  }
+
+  input[type="number"] {
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      opacity: 1;
+    }
+  }
+}
+
+.results-sidebar {
+  flex: 1;
+  min-width: calc.$sidebar-min-width;
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  max-height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+
+  @media (max-width: calc.$layout-breakpoint) {
+    min-width: 0;
+    position: static;
+    width: 100%;
+    margin-top: $spacing-lg;
+    overflow-y: initial;
+  }
+}
+
+.results {
+  .result-section {
+    margin-bottom: $spacing-lg;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    h3 {
+      color: $text-accent;
+      margin-bottom: $spacing-md;
+    }
+  }
+
+  .stats-grid {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+    margin-bottom: $spacing-lg;
+  }
+
+  .stat-card {
+    background: linear-gradient(135deg, rgba(79, 195, 247, 0.05), rgba(79, 195, 247, 0.02));
+    padding: $spacing-md;
+    border-radius: $radius-md;
+    border: 1px solid rgba(79, 195, 247, 0.2);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 100%;
+      background: $text-accent;
+    }
+
+    .stat-label {
+      color: $text-secondary;
+      font-size: $font-sm;
+      margin-bottom: $spacing-xs;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 500;
+    }
+
+    .stat-value {
+      font-size: $font-xl;
+      font-weight: 700;
+      
+      &.positive {
+        color: calc.$text-success;
+        text-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+      }
+
+      &.negative {
+        color: calc.$text-error;
+        text-shadow: 0 0 10px rgba(229, 57, 53, 0.3);
+      }
+
+      &.neutral {
+        color: $text-primary;
+      }
+    }
+
+    .stat-detail {
+      color: calc.$text-muted;
+      font-size: $font-sm;
+      margin-top: $spacing-xs;
+    }
+  }
+
+}
+
+.recommendation {
+  background: linear-gradient(135deg, rgba(79, 195, 247, 0.15), rgba(79, 195, 247, 0.08));
+  border: 2px solid $text-accent;
+  padding: $spacing-lg;
+  border-radius: $radius-lg;
+  box-shadow: 0 4px 12px rgba(79, 195, 247, 0.2);
+
+  h3 {
+    color: $text-accent;
+    margin-bottom: $spacing-md;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+  }
+
+  .recommendation-text {
+    font-size: $font-sm;
+    line-height: 1.6;
+    color: $text-primary;
+    
+    strong {
+      color: $text-accent;
+      font-weight: 600;
+    }
+  }
+}
+
+.card {
+  background: calc.$bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  box-shadow: $shadow-default;
+
+  & + & {
+    margin-top: $spacing-md;
+  }
+}
+

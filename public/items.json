@@ -1,0 +1,3864 @@
+{
+  "acoustic_guitar": {
+    "id": "acoustic_guitar",
+    "name": "Acoustic Guitar",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/acoustic_guitar.png",
+    "recipe": null
+  },
+  "adrenaline_shot": {
+    "id": "adrenaline_shot",
+    "name": "Adrenaline Shot",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/adrenaline_shot.png",
+    "recipe": {
+      "chemicals": 3,
+      "plastic_parts": 3
+    }
+  },
+  "advanced_arc_powercell": {
+    "id": "advanced_arc_powercell",
+    "name": "Advanced ARC Powercell",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/advanced_arc_powercell.png",
+    "recipe": null
+  },
+  "advanced_electrical_components": {
+    "id": "advanced_electrical_components",
+    "name": "Advanced Electrical Components",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/advanced_electrical_components.png",
+    "recipe": {
+      "wires": 3,
+      "electrical_components": 2
+    }
+  },
+  "advanced_mechanical_components": {
+    "id": "advanced_mechanical_components",
+    "name": "Advanced Mechanical Components",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/advanced_mechanical_components.png",
+    "recipe": {
+      "steel_spring": 2,
+      "mechanical_components": 2
+    }
+  },
+  "agave": {
+    "id": "agave",
+    "name": "Agave",
+    "stackSize": 10,
+    "imageFilename": "https://cdn.arctracker.io/items/agave.png",
+    "recipe": null
+  },
+  "air_freshener": {
+    "id": "air_freshener",
+    "name": "Air Freshener",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/air_freshener.png",
+    "recipe": null
+  },
+  "alarm_clock": {
+    "id": "alarm_clock",
+    "name": "Alarm Clock",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/alarm_clock.png",
+    "recipe": null
+  },
+  "angled_grip_i": {
+    "id": "angled_grip_i",
+    "name": "Angled Grip I",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/angled_grip_i.png",
+    "recipe": {
+      "plastic_parts": 6,
+      "duct_tape": 1
+    }
+  },
+  "angled_grip_ii": {
+    "id": "angled_grip_ii",
+    "name": "Angled Grip II",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/angled_grip_ii.png",
+    "recipe": {
+      "mechanical_components": 2,
+      "duct_tape": 3
+    }
+  },
+  "angled_grip_ii_blueprint": {
+    "id": "angled_grip_ii_blueprint",
+    "name": "Angled Grip II Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/angled_grip_ii.png",
+    "recipe": null
+  },
+  "angled_grip_iii": {
+    "id": "angled_grip_iii",
+    "name": "Angled Grip III",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/angled_grip_iii.png",
+    "recipe": {
+      "mod_components": 2,
+      "duct_tape": 5
+    }
+  },
+  "angled_grip_iii_blueprint": {
+    "id": "angled_grip_iii_blueprint",
+    "name": "Angled Grip III Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/angled_grip_iii.png",
+    "recipe": null
+  },
+  "antiseptic": {
+    "id": "antiseptic",
+    "name": "Antiseptic",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/antiseptic.png",
+    "recipe": {
+      "chemicals": 10,
+      "great_mullein": 2
+    }
+  },
+  "anvil_blueprint": {
+    "id": "anvil_blueprint",
+    "name": "Anvil Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/anvil_blueprint.png",
+    "recipe": null
+  },
+  "anvil_i": {
+    "id": "anvil_i",
+    "name": "Anvil I",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/anvil.png",
+    "recipe": {
+      "mechanical_components": 5,
+      "simple_gun_parts": 6
+    }
+  },
+  "anvil_ii": {
+    "id": "anvil_ii",
+    "name": "Anvil II",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/anvil.png",
+    "recipe": null
+  },
+  "anvil_iii": {
+    "id": "anvil_iii",
+    "name": "Anvil III",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/anvil.png",
+    "recipe": null
+  },
+  "anvil_iv": {
+    "id": "anvil_iv",
+    "name": "Anvil IV",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/anvil.png",
+    "recipe": null
+  },
+  "anvil_splitter": {
+    "id": "anvil_splitter",
+    "name": "Anvil Splitter",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/anvil_splitter.png",
+    "recipe": null
+  },
+  "aphelion": {
+    "id": "aphelion",
+    "name": "Aphelion",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/aphelion.png",
+    "recipe": {
+      "magnetic_accelerator": 3,
+      "complex_gun_parts": 3,
+      "matriarch_reactor": 1
+    }
+  },
+  "aphelion_blueprint": {
+    "id": "aphelion_blueprint",
+    "name": "Aphelion Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/aphelion.png",
+    "recipe": null
+  },
+  "apricot": {
+    "id": "apricot",
+    "name": "Apricot",
+    "stackSize": 10,
+    "imageFilename": "https://cdn.arctracker.io/items/apricot.png",
+    "recipe": null
+  },
+  "arc_alloy": {
+    "id": "arc_alloy",
+    "name": "ARC Alloy",
+    "stackSize": 15,
+    "imageFilename": "https://cdn.arctracker.io/items/arc_alloy.png",
+    "recipe": null
+  },
+  "arc_circuitry": {
+    "id": "arc_circuitry",
+    "name": "ARC Circuitry",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/arc_circuitry.png",
+    "recipe": {
+      "arc_alloy": 8
+    }
+  },
+  "arc_coolant": {
+    "id": "arc_coolant",
+    "name": "ARC Coolant",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/arc_coolant.png",
+    "recipe": null
+  },
+  "arc_flex_rubber": {
+    "id": "arc_flex_rubber",
+    "name": "ARC Flex Rubber",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/arc_flex_rubber.png",
+    "recipe": null
+  },
+  "arc_motion_core": {
+    "id": "arc_motion_core",
+    "name": "ARC Motion Core",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/arc_motion_core.png",
+    "recipe": {
+      "arc_alloy": 8
+    }
+  },
+  "arc_performance_steel": {
+    "id": "arc_performance_steel",
+    "name": "ARC Performance Steel",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/arc_performance_steel.png",
+    "recipe": null
+  },
+  "arc_powercell": {
+    "id": "arc_powercell",
+    "name": "ARC Powercell",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/arc_powercell.png",
+    "recipe": null
+  },
+  "arc_synthetic_resin": {
+    "id": "arc_synthetic_resin",
+    "name": "ARC Synthetic Resin",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/arc_synthetic_resin.png",
+    "recipe": null
+  },
+  "arc_thermo_lining": {
+    "id": "arc_thermo_lining",
+    "name": "ARC Thermo Lining",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/arc_thermo_lining.png",
+    "recipe": null
+  },
+  "arpeggio_i": {
+    "id": "arpeggio_i",
+    "name": "Arpeggio I",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/arpeggio.png",
+    "recipe": {
+      "mechanical_components": 6,
+      "simple_gun_parts": 6
+    }
+  },
+  "arpeggio_ii": {
+    "id": "arpeggio_ii",
+    "name": "Arpeggio II",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/arpeggio.png",
+    "recipe": null
+  },
+  "arpeggio_iii": {
+    "id": "arpeggio_iii",
+    "name": "Arpeggio III",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/arpeggio.png",
+    "recipe": null
+  },
+  "arpeggio_iv": {
+    "id": "arpeggio_iv",
+    "name": "Arpeggio IV",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/arpeggio.png",
+    "recipe": null
+  },
+  "assorted_seeds": {
+    "id": "assorted_seeds",
+    "name": "Assorted Seeds",
+    "stackSize": 100,
+    "imageFilename": "https://cdn.arctracker.io/items/assorted_seeds.png",
+    "recipe": null
+  },
+  "backpack_black_hiker_color": {
+    "id": "backpack_black_hiker_color",
+    "name": "Backpack (Black Hiker Color)",
+    "stackSize": 1,
+    "imageFilename": null,
+    "recipe": null
+  },
+  "banana": {
+    "id": "banana",
+    "name": "Banana",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/banana.png",
+    "recipe": null
+  },
+  "bandage": {
+    "id": "bandage",
+    "name": "Bandage",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/bandage.png",
+    "recipe": {
+      "fabric": 5
+    }
+  },
+  "barricade_kit": {
+    "id": "barricade_kit",
+    "name": "Barricade Kit",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/barricade_kit.png",
+    "recipe": {
+      "mechanical_components": 1
+    }
+  },
+  "barricade_kit_blueprint": {
+    "id": "barricade_kit_blueprint",
+    "name": "Barricade Kit Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/barricade_kit.png",
+    "recipe": null
+  },
+  "bastion_cell": {
+    "id": "bastion_cell",
+    "name": "Bastion Cell",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/bastion_cell.png",
+    "recipe": null
+  },
+  "battery": {
+    "id": "battery",
+    "name": "Battery",
+    "stackSize": 15,
+    "imageFilename": "https://cdn.arctracker.io/items/battery.png",
+    "recipe": null
+  },
+  "bettina_blueprint": {
+    "id": "bettina_blueprint",
+    "name": "Bettina Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/bettina_blueprint.png",
+    "recipe": null
+  },
+  "bettina_i": {
+    "id": "bettina_i",
+    "name": "Bettina I",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/bettina.png",
+    "recipe": {
+      "advanced_mechanical_components": 3,
+      "heavy_gun_parts": 3,
+      "canister": 3
+    }
+  },
+  "bettina_ii": {
+    "id": "bettina_ii",
+    "name": "Bettina II",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/bettina.png",
+    "recipe": null
+  },
+  "bettina_iii": {
+    "id": "bettina_iii",
+    "name": "Bettina III",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/bettina.png",
+    "recipe": null
+  },
+  "bettina_iv": {
+    "id": "bettina_iv",
+    "name": "Bettina IV",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/bettina.png",
+    "recipe": null
+  },
+  "bicycle_pump": {
+    "id": "bicycle_pump",
+    "name": "Bicycle Pump",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/bicycle_pump.png",
+    "recipe": null
+  },
+  "binoculars": {
+    "id": "binoculars",
+    "name": "Binoculars",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/binoculars.png",
+    "recipe": {
+      "plastic_parts": 8,
+      "rubber_parts": 4
+    }
+  },
+  "blaze_grenade": {
+    "id": "blaze_grenade",
+    "name": "Blaze Grenade",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/blaze_grenade.png",
+    "recipe": null
+  },
+  "blaze_grenade_blueprint": {
+    "id": "blaze_grenade_blueprint",
+    "name": "Blaze Grenade Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/blaze_grenade.png",
+    "recipe": null
+  },
+  "blaze_grenade_trap": {
+    "id": "blaze_grenade_trap",
+    "name": "Blaze Grenade Trap",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/blaze_grenade_trap.png",
+    "recipe": {
+      "blaze_grenade": 1,
+      "wires": 1
+    }
+  },
+  "bloated_tuna_can": {
+    "id": "bloated_tuna_can",
+    "name": "Bloated Tuna Can",
+    "stackSize": 15,
+    "imageFilename": "https://cdn.arctracker.io/items/bloated_tuna_can.png",
+    "recipe": null
+  },
+  "blue_gate_cellar_key": {
+    "id": "blue_gate_cellar_key",
+    "name": "Blue Gate Cellar Key",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/blue_gate_cellar_key.png",
+    "recipe": null
+  },
+  "blue_gate_communication_tower_key": {
+    "id": "blue_gate_communication_tower_key",
+    "name": "Blue Gate Communication Tower Key",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/blue_gate_communication_tower_key.png",
+    "recipe": null
+  },
+  "blue_gate_confiscation_room_key": {
+    "id": "blue_gate_confiscation_room_key",
+    "name": "Blue Gate Confiscation Room Key",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/blue_gate_confiscation_room_key.png",
+    "recipe": null
+  },
+  "blue_gate_village_key": {
+    "id": "blue_gate_village_key",
+    "name": "Blue Gate Village Key",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/blue_gate_village_key.png",
+    "recipe": null
+  },
+  "blue_light_stick": {
+    "id": "blue_light_stick",
+    "name": "Blue Light Stick",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/blue_light_stick.png",
+    "recipe": null
+  },
+  "blue_light_stick_blueprint": {
+    "id": "blue_light_stick_blueprint",
+    "name": "Blue Light Stick Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/blue_light_stick_blueprint.png",
+    "recipe": null
+  },
+  "blue_radio_renegade_color": {
+    "id": "blue_radio_renegade_color",
+    "name": "Blue (Radio Renegade Color)",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/blue_radio_renegade_color.png",
+    "recipe": null
+  },
+  "bobcat_blueprint": {
+    "id": "bobcat_blueprint",
+    "name": "Bobcat Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/bobcat.png",
+    "recipe": null
+  },
+  "bobcat_i": {
+    "id": "bobcat_i",
+    "name": "Bobcat I",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/bobcat.png",
+    "recipe": {
+      "magnetic_accelerator": 1,
+      "light_gun_parts": 3,
+      "exodus_modules": 2
+    }
+  },
+  "bobcat_ii": {
+    "id": "bobcat_ii",
+    "name": "Bobcat II",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/bobcat.png",
+    "recipe": null
+  },
+  "bobcat_iii": {
+    "id": "bobcat_iii",
+    "name": "Bobcat III",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/bobcat.png",
+    "recipe": null
+  },
+  "bobcat_iv": {
+    "id": "bobcat_iv",
+    "name": "Bobcat IV",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/bobcat.png",
+    "recipe": null
+  },
+  "bombardier_cell": {
+    "id": "bombardier_cell",
+    "name": "Bombardier Cell",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/bombardier_cell.png",
+    "recipe": null
+  },
+  "breathtaking_snow_globe": {
+    "id": "breathtaking_snow_globe",
+    "name": "Breathtaking Snow Globe",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/breathtaking_snow_globe.png",
+    "recipe": null
+  },
+  "broken_flashlight": {
+    "id": "broken_flashlight",
+    "name": "Broken Flashlight",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/broken_flashlight.png",
+    "recipe": null
+  },
+  "broken_guidance_system": {
+    "id": "broken_guidance_system",
+    "name": "Broken Guidance System",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/broken_guidance_system.png",
+    "recipe": null
+  },
+  "broken_handheld_radio": {
+    "id": "broken_handheld_radio",
+    "name": "Broken Handheld Radio",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/broken_handheld_radio.png",
+    "recipe": null
+  },
+  "broken_taser": {
+    "id": "broken_taser",
+    "name": "Broken Taser",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/broken_taser.png",
+    "recipe": null
+  },
+  "burgerboy": {
+    "id": "burgerboy",
+    "name": "Burgerboy",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/burgerboy.png",
+    "recipe": null
+  },
+  "buried_city_hospital_key": {
+    "id": "buried_city_hospital_key",
+    "name": "Buried City Hospital Key",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/buried_city_hospital_key.png",
+    "recipe": null
+  },
+  "buried_city_jkv_employee_access_card": {
+    "id": "buried_city_jkv_employee_access_card",
+    "name": "Buried City JKV Employee Access Card",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/buried_city_jkv_employee_access_card.png",
+    "recipe": null
+  },
+  "buried_city_residential_master_key": {
+    "id": "buried_city_residential_master_key",
+    "name": "Buried City Residential Master Key",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/buried_city_residential_master_key.png",
+    "recipe": null
+  },
+  "buried_city_town_hall_key": {
+    "id": "buried_city_town_hall_key",
+    "name": "Buried City Town Hall Key",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/buried_city_town_hall_key.png",
+    "recipe": null
+  },
+  "burletta_blueprint": {
+    "id": "burletta_blueprint",
+    "name": "Burletta Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/burletta.png",
+    "recipe": null
+  },
+  "burletta_i": {
+    "id": "burletta_i",
+    "name": "Burletta I",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/burletta.png",
+    "recipe": {
+      "mechanical_components": 3,
+      "simple_gun_parts": 3
+    }
+  },
+  "burletta_ii": {
+    "id": "burletta_ii",
+    "name": "Burletta II",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/burletta.png",
+    "recipe": null
+  },
+  "burletta_iii": {
+    "id": "burletta_iii",
+    "name": "Burletta III",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/burletta.png",
+    "recipe": null
+  },
+  "burletta_iv": {
+    "id": "burletta_iv",
+    "name": "Burletta IV",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/burletta.png",
+    "recipe": null
+  },
+  "burned_arc_circuitry": {
+    "id": "burned_arc_circuitry",
+    "name": "Burned Arc Circuitry",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/burned_arc_circuitry.png",
+    "recipe": null
+  },
+  "burnt_out_candles": {
+    "id": "burnt_out_candles",
+    "name": "Burnt-Out Candles",
+    "stackSize": 15,
+    "imageFilename": "https://cdn.arctracker.io/items/burnt_out_candles.png",
+    "recipe": null
+  },
+  "camera_lens": {
+    "id": "camera_lens",
+    "name": "Camera Lens",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/camera_lens.png",
+    "recipe": null
+  },
+  "candle_holder": {
+    "id": "candle_holder",
+    "name": "Candle Holder",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/candle_holder.png",
+    "recipe": null
+  },
+  "candleberries": {
+    "id": "candleberries",
+    "name": "Candleberries",
+    "stackSize": 10,
+    "imageFilename": "https://cdn.arctracker.io/items/candleberries.png",
+    "recipe": null
+  },
+  "canister": {
+    "id": "canister",
+    "name": "Canister",
+    "stackSize": 15,
+    "imageFilename": "https://cdn.arctracker.io/items/canister.png",
+    "recipe": null
+  },
+  "cans_backpack_attachment": {
+    "id": "cans_backpack_attachment",
+    "name": "Cans Backpack Attachment",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/cans.png",
+    "recipe": null
+  },
+  "cat_bed": {
+    "id": "cat_bed",
+    "name": "Cat Bed",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/cat_bed.png",
+    "recipe": null
+  },
+  "celeste_journal": {
+    "id": "celeste_journal",
+    "name": "Celeste's Journal",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/celestes_journal.png",
+    "recipe": null
+  },
+  "cheer": {
+    "id": "cheer",
+    "name": "Cheer",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/cheer.png",
+    "recipe": null
+  },
+  "chemicals": {
+    "id": "chemicals",
+    "name": "Chemicals",
+    "stackSize": 50,
+    "imageFilename": "https://cdn.arctracker.io/items/chemicals.png",
+    "recipe": null
+  },
+  "coffee_pot": {
+    "id": "coffee_pot",
+    "name": "Coffee Pot",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/coffee_pot.png",
+    "recipe": null
+  },
+  "combat_mk1": {
+    "id": "combat_mk1",
+    "name": "Combat Mk. 1",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/combat_i.png",
+    "recipe": {
+      "plastic_parts": 6,
+      "rubber_parts": 6
+    }
+  },
+  "combat_mk2": {
+    "id": "combat_mk2",
+    "name": "Combat Mk. 2",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/combat_i.png",
+    "recipe": {
+      "electrical_components": 2,
+      "magnet": 3
+    }
+  },
+  "combat_mk3_aggressive": {
+    "id": "combat_mk3_aggressive",
+    "name": "Combat Mk. 3 (Aggressive)",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/combat_mk3_aggressive.png",
+    "recipe": {
+      "advanced_electrical_components": 2,
+      "processor": 3
+    }
+  },
+  "combat_mk3_aggressive_blueprint": {
+    "id": "combat_mk3_aggressive_blueprint",
+    "name": "Combat Mk. 3 (Aggressive) Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/combat_mk3_aggressive.png",
+    "recipe": null
+  },
+  "combat_mk3_flanking": {
+    "id": "combat_mk3_flanking",
+    "name": "Combat Mk. 3 (Flanking)",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/combat_mk3_flanking.png",
+    "recipe": {
+      "advanced_electrical_components": 2,
+      "processor": 3
+    }
+  },
+  "combat_mk3_flanking_blueprint": {
+    "id": "combat_mk3_flanking_blueprint",
+    "name": "Combat Mk. 3 (Flanking) Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/combat_mk3_flanking.png",
+    "recipe": null
+  },
+  "compensator_i": {
+    "id": "compensator_i",
+    "name": "Compensator I",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/compensator_i.png",
+    "recipe": {
+      "metal_parts": 6,
+      "wires": 1
+    }
+  },
+  "compensator_ii": {
+    "id": "compensator_ii",
+    "name": "Compensator II",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/compensator_ii.png",
+    "recipe": {
+      "mechanical_components": 2,
+      "wires": 4
+    }
+  },
+  "compensator_ii_blueprint": {
+    "id": "compensator_ii_blueprint",
+    "name": "Compensator II Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/compensator_ii_blueprint.png",
+    "recipe": null
+  },
+  "compensator_iii": {
+    "id": "compensator_iii",
+    "name": "Compensator III",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/compensator_ii.png",
+    "recipe": {
+      "mod_components": 2,
+      "wires": 8
+    }
+  },
+  "compensator_iii_blueprint": {
+    "id": "compensator_iii_blueprint",
+    "name": "Compensator III Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/compensator_iii.png",
+    "recipe": null
+  },
+  "complex_gun_parts": {
+    "id": "complex_gun_parts",
+    "name": "Complex Gun Parts",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/complex_gun_parts.png",
+    "recipe": {
+      "light_gun_parts": 2,
+      "medium_gun_parts": 2,
+      "heavy_gun_parts": 2
+    }
+  },
+  "complex_gun_parts_blueprint": {
+    "id": "complex_gun_parts_blueprint",
+    "name": "Complex Gun Parts Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/complex_gun_parts_blueprint.png",
+    "recipe": null
+  },
+  "coolant": {
+    "id": "coolant",
+    "name": "Coolant",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/coolant.png",
+    "recipe": null
+  },
+  "cooling_coil": {
+    "id": "cooling_coil",
+    "name": "Cooling Coil",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/cooling_coil.png",
+    "recipe": null
+  },
+  "cooling_fan": {
+    "id": "cooling_fan",
+    "name": "Cooling Fan",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/cooling_fan.png",
+    "recipe": null
+  },
+  "cracked_bioscanner": {
+    "id": "cracked_bioscanner",
+    "name": "Cracked Bioscanner",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/cracked_bioscanner.png",
+    "recipe": null
+  },
+  "crude_explosives": {
+    "id": "crude_explosives",
+    "name": "Crude Explosives",
+    "stackSize": 10,
+    "imageFilename": "https://cdn.arctracker.io/items/crude_explosives.png",
+    "recipe": {
+      "chemicals": 6
+    }
+  },
+  "crumpled_plastic_bottle": {
+    "id": "crumpled_plastic_bottle",
+    "name": "Crumpled Plastic Bottle",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/crumpled_plastic_bottle.png",
+    "recipe": null
+  },
+  "dam_control_tower_key": {
+    "id": "dam_control_tower_key",
+    "name": "Dam Control Tower Key",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/dam_control_tower_key.png",
+    "recipe": null
+  },
+  "dam_staff_room_key": {
+    "id": "dam_staff_room_key",
+    "name": "Dam Staff Room Key",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/dam_staff_room_key.png",
+    "recipe": null
+  },
+  "dam_surveillance_key": {
+    "id": "dam_surveillance_key",
+    "name": "Dam Surveillance Key",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/dam_surveillance_key.png",
+    "recipe": null
+  },
+  "dam_testing_annex_key": {
+    "id": "dam_testing_annex_key",
+    "name": "Dam Testing Annex Key",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/dam_testing_annex_key.png",
+    "recipe": null
+  },
+  "dam_utility_key": {
+    "id": "dam_utility_key",
+    "name": "Dam Utility Key",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/dam_utility_key.png",
+    "recipe": null
+  },
+  "damaged_arc_motion_core": {
+    "id": "damaged_arc_motion_core",
+    "name": "Damaged ARC Motion Core",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/damaged_arc_motion_core.png",
+    "recipe": null
+  },
+  "damaged_arc_powercell": {
+    "id": "damaged_arc_powercell",
+    "name": "Damaged ARC Powercell",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/damaged_arc_powercell.png",
+    "recipe": null
+  },
+  "damaged_fireball_burner": {
+    "id": "damaged_fireball_burner",
+    "name": "Damaged Fireball Burner",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/damaged_fireball_burner.png",
+    "recipe": null
+  },
+  "damaged_heat_sink": {
+    "id": "damaged_heat_sink",
+    "name": "Damaged Heat Sink",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/damaged_heat_sink.png",
+    "recipe": null
+  },
+  "damaged_hornet_driver": {
+    "id": "damaged_hornet_driver",
+    "name": "Damaged Hornet Driver",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/damaged_hornet_driver.png",
+    "recipe": null
+  },
+  "damaged_rocketeer_driver": {
+    "id": "damaged_rocketeer_driver",
+    "name": "Damaged Rocketeer Driver",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/damaged_rocketeer_driver.png",
+    "recipe": null
+  },
+  "damaged_snitch_scanner": {
+    "id": "damaged_snitch_scanner",
+    "name": "Damaged Snitch Scanner",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/damaged_snitch_scanner.png",
+    "recipe": null
+  },
+  "damaged_tick_pod": {
+    "id": "damaged_tick_pod",
+    "name": "Damaged Tick Pod",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/damaged_tick_pod.png",
+    "recipe": null
+  },
+  "damaged_wasp_driver": {
+    "id": "damaged_wasp_driver",
+    "name": "Damaged Wasp Driver",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/damaged_wasp_driver.png",
+    "recipe": null
+  },
+  "dart_board": {
+    "id": "dart_board",
+    "name": "Dart Board",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/dart_board.png",
+    "recipe": null
+  },
+  "deadline": {
+    "id": "deadline",
+    "name": "Deadline",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/deadline.png",
+    "recipe": {
+      "explosive_compound": 3,
+      "arc_circuitry": 2
+    }
+  },
+  "deadline_blueprint": {
+    "id": "deadline_blueprint",
+    "name": "Deadline Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/deadline.png",
+    "recipe": null
+  },
+  "defibrillator": {
+    "id": "defibrillator",
+    "name": "Defibrillator",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/defibrillator.png",
+    "recipe": {
+      "plastic_parts": 9,
+      "moss": 1
+    }
+  },
+  "defibrillator_blueprint": {
+    "id": "defibrillator_blueprint",
+    "name": "Defibrillator Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/defibrillator.png",
+    "recipe": null
+  },
+  "deflated_football": {
+    "id": "deflated_football",
+    "name": "Deflated Football",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/deflated_football.png",
+    "recipe": null
+  },
+  "degraded_arc_rubber": {
+    "id": "degraded_arc_rubber",
+    "name": "Degraded ARC Rubber",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/degraded_arc_rubber.png",
+    "recipe": null
+  },
+  "diving_goggles": {
+    "id": "diving_goggles",
+    "name": "Diving Goggles",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/diving_goggles.png",
+    "recipe": null
+  },
+  "dog_collar": {
+    "id": "dog_collar",
+    "name": "Dog Collar",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/dog_collar.png",
+    "recipe": null
+  },
+  "door_blocker": {
+    "id": "door_blocker",
+    "name": "Door Blocker",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/door_blocker.png",
+    "recipe": {
+      "metal_parts": 3,
+      "rubber_parts": 3
+    }
+  },
+  "dried_out_arc_resin": {
+    "id": "dried_out_arc_resin",
+    "name": "Dried-Out ARC Resin",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/dried_out_arc_resin.png",
+    "recipe": null
+  },
+  "duct_tape": {
+    "id": "duct_tape",
+    "name": "Duct Tape",
+    "stackSize": 15,
+    "imageFilename": "https://cdn.arctracker.io/items/duct_tape.png",
+    "recipe": null
+  },
+  "durable_cloth": {
+    "id": "durable_cloth",
+    "name": "Durable Cloth",
+    "stackSize": 10,
+    "imageFilename": "https://cdn.arctracker.io/items/durable_cloth.png",
+    "recipe": {
+      "fabric": 14
+    }
+  },
+  "electrical_components": {
+    "id": "electrical_components",
+    "name": "Electrical Components",
+    "stackSize": 10,
+    "imageFilename": "https://cdn.arctracker.io/items/electrical_components.png",
+    "recipe": {
+      "plastic_parts": 8,
+      "rubber_parts": 4
+    }
+  },
+  "empty_wine_bottle": {
+    "id": "empty_wine_bottle",
+    "name": "Empty Wine Bottle",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/empty_wine_bottle.png",
+    "recipe": null
+  },
+  "energy_clip": {
+    "id": "energy_clip",
+    "name": "Energy Clip",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/energy_clip.png",
+    "recipe": {
+      "advanced_arc_powercell": 1,
+      "battery": 2
+    }
+  },
+  "equalizer": {
+    "id": "equalizer",
+    "name": "Equalizer",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/equalizer.png",
+    "recipe": {
+      "magnetic_accelerator": 3,
+      "complex_gun_parts": 3,
+      "queen_reactor": 1
+    }
+  },
+  "equalizer_blueprint": {
+    "id": "equalizer_blueprint",
+    "name": "Equalizer Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/equalizer.png",
+    "recipe": null
+  },
+  "esr_analyzer": {
+    "id": "esr_analyzer",
+    "name": "ESR Analyzer",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/esr_analyzer.png",
+    "recipe": null
+  },
+  "exodus_modules": {
+    "id": "exodus_modules",
+    "name": "Exodus Modules",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/exodus_modules.png",
+    "recipe": null
+  },
+  "experimental_seed_sample": {
+    "id": "experimental_seed_sample",
+    "name": "Experimental Seed Sample",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/experimental_seed_sample.png",
+    "recipe": null
+  },
+  "expired_pasta": {
+    "id": "expired_pasta",
+    "name": "Expired Pasta",
+    "stackSize": 15,
+    "imageFilename": "https://cdn.arctracker.io/items/expired_pasta.png",
+    "recipe": null
+  },
+  "expired_respirator": {
+    "id": "expired_respirator",
+    "name": "Expired Respirator",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/expired_respirator.png",
+    "recipe": null
+  },
+  "explosive_compound": {
+    "id": "explosive_compound",
+    "name": "Explosive Compound",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/explosive_compound.png",
+    "recipe": {
+      "crude_explosives": 2,
+      "oil": 2
+    }
+  },
+  "explosive_mine": {
+    "id": "explosive_mine",
+    "name": "Explosive Mine",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/explosive_mine.png",
+    "recipe": {
+      "explosive_compound": 1,
+      "sensors": 1
+    }
+  },
+  "explosive_mine_blueprint": {
+    "id": "explosive_mine_blueprint",
+    "name": "Explosive Mine Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/explosive_mine.png",
+    "recipe": null
+  },
+  "extended_barrel": {
+    "id": "extended_barrel",
+    "name": "Extended Barrel",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/extended_barrel.png",
+    "recipe": {
+      "mod_components": 2,
+      "wires": 8
+    }
+  },
+  "extended_barrel_blueprint": {
+    "id": "extended_barrel_blueprint",
+    "name": "Extended Barrel Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/extended_barrel.png",
+    "recipe": null
+  },
+  "extended_light_mag_i": {
+    "id": "extended_light_mag_i",
+    "name": "Extended Light Mag I",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/extended_light_mag_i.png",
+    "recipe": {
+      "plastic_parts": 6,
+      "steel_spring": 1
+    }
+  },
+  "extended_light_mag_ii": {
+    "id": "extended_light_mag_ii",
+    "name": "Extended Light Mag II",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/extended_light_mag_ii.png",
+    "recipe": {
+      "mechanical_components": 2,
+      "steel_spring": 3
+    }
+  },
+  "extended_light_mag_ii_blueprint": {
+    "id": "extended_light_mag_ii_blueprint",
+    "name": "Extended Light Mag II Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/extended_light_mag_ii.png",
+    "recipe": null
+  },
+  "extended_light_mag_iii": {
+    "id": "extended_light_mag_iii",
+    "name": "Extended Light Mag III",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/extended_light_mag_iii.png",
+    "recipe": {
+      "mod_components": 2,
+      "steel_spring": 5
+    }
+  },
+  "extended_light_mag_iii_blueprint": {
+    "id": "extended_light_mag_iii_blueprint",
+    "name": "Extended Light Mag III Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/extended_light_mag_iii.png",
+    "recipe": null
+  },
+  "extended_medium_mag_i": {
+    "id": "extended_medium_mag_i",
+    "name": "Extended Medium Mag I",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/extended_medium_mag_i.png",
+    "recipe": {
+      "plastic_parts": 6,
+      "steel_spring": 1
+    }
+  },
+  "extended_medium_mag_ii": {
+    "id": "extended_medium_mag_ii",
+    "name": "Extended Medium Mag II",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/extended_medium_mag_ii.png",
+    "recipe": {
+      "mechanical_components": 2,
+      "steel_spring": 3
+    }
+  },
+  "extended_medium_mag_ii_blueprint": {
+    "id": "extended_medium_mag_ii_blueprint",
+    "name": "Extended Medium Mag II Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/extended_medium_mag_ii_blueprint.png",
+    "recipe": null
+  },
+  "extended_medium_mag_iii": {
+    "id": "extended_medium_mag_iii",
+    "name": "Extended Medium Mag III",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/extended_medium_mag_iii.png",
+    "recipe": {
+      "mod_components": 2,
+      "steel_spring": 5
+    }
+  },
+  "extended_medium_mag_iii_blueprint": {
+    "id": "extended_medium_mag_iii_blueprint",
+    "name": "Extended Medium Mag III Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/extended_medium_mag_iii.png",
+    "recipe": null
+  },
+  "extended_shotgun_mag_i": {
+    "id": "extended_shotgun_mag_i",
+    "name": "Extended Shotgun Mag I",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/extended_shotgun_mag_i.png",
+    "recipe": {
+      "plastic_parts": 6,
+      "steel_spring": 1
+    }
+  },
+  "extended_shotgun_mag_ii": {
+    "id": "extended_shotgun_mag_ii",
+    "name": "Extended Shotgun Mag II",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/extended_shotgun_mag_ii.png",
+    "recipe": null
+  },
+  "extended_shotgun_mag_ii_blueprint": {
+    "id": "extended_shotgun_mag_ii_blueprint",
+    "name": "Extended Shotgun Mag II Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/extended_shotgun_mag_ii.png",
+    "recipe": null
+  },
+  "extended_shotgun_mag_iii": {
+    "id": "extended_shotgun_mag_iii",
+    "name": "Extended Shotgun Mag III",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/extended_shotgun_mag_iii.png",
+    "recipe": null
+  },
+  "extended_shotgun_mag_iii_blueprint": {
+    "id": "extended_shotgun_mag_iii_blueprint",
+    "name": "Extended Shotgun Mag III Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/extended_shotgun_mag_iii.png",
+    "recipe": null
+  },
+  "fabric": {
+    "id": "fabric",
+    "name": "Fabric",
+    "stackSize": 50,
+    "imageFilename": "https://cdn.arctracker.io/items/fabric.png",
+    "recipe": null
+  },
+  "faded_photograph": {
+    "id": "faded_photograph",
+    "name": "Faded Photograph",
+    "stackSize": 15,
+    "imageFilename": "https://cdn.arctracker.io/items/faded_photograph.png",
+    "recipe": null
+  },
+  "ferro_i": {
+    "id": "ferro_i",
+    "name": "Ferro I",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/ferro.png",
+    "recipe": {
+      "metal_parts": 5,
+      "rubber_parts": 2
+    }
+  },
+  "ferro_ii": {
+    "id": "ferro_ii",
+    "name": "Ferro II",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/ferro.png",
+    "recipe": null
+  },
+  "ferro_iii": {
+    "id": "ferro_iii",
+    "name": "Ferro III",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/ferro.png",
+    "recipe": null
+  },
+  "ferro_iv": {
+    "id": "ferro_iv",
+    "name": "Ferro IV",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/ferro.png",
+    "recipe": null
+  },
+  "fertilizer": {
+    "id": "fertilizer",
+    "name": "Fertilizer",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/fertilizer.png",
+    "recipe": null
+  },
+  "film_reel": {
+    "id": "film_reel",
+    "name": "Film Reel",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/film_reel.png",
+    "recipe": null
+  },
+  "fine_wristwatch": {
+    "id": "fine_wristwatch",
+    "name": "Fine Wristwatch",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/fine_wristwatch.png",
+    "recipe": null
+  },
+  "fireball_burner": {
+    "id": "fireball_burner",
+    "name": "Fireball Burner",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/fireball_burner.png",
+    "recipe": null
+  },
+  "firecracker": {
+    "id": "firecracker",
+    "name": "Firecracker",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/firecracker.png",
+    "recipe": {
+      "plastic_parts": 4,
+      "chemicals": 2
+    }
+  },
+  "fireworks_box": {
+    "id": "fireworks_box",
+    "name": "Fireworks Box",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/fireworks_box.png",
+    "recipe": {
+      "explosive_compound": 1,
+      "pop_trigger": 3
+    }
+  },
+  "fireworks_box_blueprint": {
+    "id": "fireworks_box_blueprint",
+    "name": "Fireworks Box Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/fireworks_box.png",
+    "recipe": null
+  },
+  "first_wave_compass": {
+    "id": "first_wave_compass",
+    "name": "First Wave Compass",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/first_wave_compass.png",
+    "recipe": null
+  },
+  "first_wave_rations": {
+    "id": "first_wave_rations",
+    "name": "First Wave Rations",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/first_wave_rations.png",
+    "recipe": null
+  },
+  "first_wave_tape": {
+    "id": "first_wave_tape",
+    "name": "First Wave Tape",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/first_wave_tape.png",
+    "recipe": null
+  },
+  "flame_spray": {
+    "id": "flame_spray",
+    "name": "Flame Spray",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/flame_spray.png",
+    "recipe": null
+  },
+  "flow_controller": {
+    "id": "flow_controller",
+    "name": "Flow Controller",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/flow_controller.png",
+    "recipe": null
+  },
+  "flushing_terminal_key": {
+    "id": "flushing_terminal_key",
+    "name": "Flushing Terminal Key",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/flushing_terminal_key.png",
+    "recipe": null
+  },
+  "fossilized_lightning": {
+    "id": "fossilized_lightning",
+    "name": "Fossilized Lightning",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/fossilized_lightning.png",
+    "recipe": null
+  },
+  "free_loadout_augment": {
+    "id": "free_loadout_augment",
+    "name": "Free Loadout Augment",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/free_loadout_augment.png",
+    "recipe": null
+  },
+  "frequency_modulation_box": {
+    "id": "frequency_modulation_box",
+    "name": "Frequency Modulation Box",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/frequency_modulation_box.png",
+    "recipe": null
+  },
+  "fried_motherboard": {
+    "id": "fried_motherboard",
+    "name": "Fried Motherboard",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/fried_motherboard.png",
+    "recipe": null
+  },
+  "fruit_mix": {
+    "id": "fruit_mix",
+    "name": "Fruit Mix",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/fruit_mix.png",
+    "recipe": {
+      "lemon": 1,
+      "apricot": 1,
+      "prickly_pear": 1
+    }
+  },
+  "frying_pan": {
+    "id": "frying_pan",
+    "name": "Frying Pan",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/frying_pan.png",
+    "recipe": null
+  },
+  "garlic_press": {
+    "id": "garlic_press",
+    "name": "Garlic Press",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/garlic_press.png",
+    "recipe": null
+  },
+  "gas_grenade": {
+    "id": "gas_grenade",
+    "name": "Gas Grenade",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/gas_grenade.png",
+    "recipe": {
+      "chemicals": 4,
+      "rubber_parts": 2
+    }
+  },
+  "gas_grenade_trap": {
+    "id": "gas_grenade_trap",
+    "name": "Gas Grenade Trap",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/gas_grenade_trap.png",
+    "recipe": {
+      "gas_grenade": 1,
+      "wires": 1
+    }
+  },
+  "gas_mine": {
+    "id": "gas_mine",
+    "name": "Gas Mine",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/gas_mine.png",
+    "recipe": {
+      "chemicals": 4,
+      "rubber_parts": 2
+    }
+  },
+  "gas_mine_blueprint": {
+    "id": "gas_mine_blueprint",
+    "name": "Gas Mine Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/gas_mine.png",
+    "recipe": null
+  },
+  "geiger_counter": {
+    "id": "geiger_counter",
+    "name": "Geiger Counter",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/geiger_counter.png",
+    "recipe": null
+  },
+  "great_mullein": {
+    "id": "great_mullein",
+    "name": "Great Mullein",
+    "stackSize": 15,
+    "imageFilename": "https://cdn.arctracker.io/items/great_mullein.png",
+    "recipe": null
+  },
+  "green_light_stick": {
+    "id": "green_light_stick",
+    "name": "Green Light Stick",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/green_light_stick.png",
+    "recipe": {
+      "chemicals": 3
+    }
+  },
+  "green_light_stick_blueprint": {
+    "id": "green_light_stick_blueprint",
+    "name": "Green Light Stick Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/green_light_stick.png",
+    "recipe": null
+  },
+  "hairpin_i": {
+    "id": "hairpin_i",
+    "name": "Hairpin I",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/hairpin_i.png",
+    "recipe": {
+      "metal_parts": 2,
+      "plastic_parts": 5
+    }
+  },
+  "hairpin_ii": {
+    "id": "hairpin_ii",
+    "name": "Hairpin II",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/hairpin_i.png",
+    "recipe": null
+  },
+  "hairpin_iii": {
+    "id": "hairpin_iii",
+    "name": "Hairpin III",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/hairpin_i.png",
+    "recipe": null
+  },
+  "hairpin_iv": {
+    "id": "hairpin_iv",
+    "name": "Hairpin IV",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/hairpin_i.png",
+    "recipe": null
+  },
+  "headphones": {
+    "id": "headphones",
+    "name": "Headphones",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/headphones.png",
+    "recipe": null
+  },
+  "heavy_ammo": {
+    "id": "heavy_ammo",
+    "name": "Heavy Ammo",
+    "stackSize": 40,
+    "imageFilename": "https://cdn.arctracker.io/items/heavy_ammo.png",
+    "recipe": {
+      "metal_parts": 3,
+      "chemicals": 2
+    }
+  },
+  "heavy_fuze_grenade": {
+    "id": "heavy_fuze_grenade",
+    "name": "Heavy Fuze Grenade",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/heavy_fuze_grenade.png",
+    "recipe": {
+      "explosive_compound": 1,
+      "canister": 2
+    }
+  },
+  "heavy_gun_parts": {
+    "id": "heavy_gun_parts",
+    "name": "Heavy Gun Parts",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/heavy_gun_parts.png",
+    "recipe": {
+      "simple_gun_parts": 4
+    }
+  },
+  "heavy_gun_parts_blueprint": {
+    "id": "heavy_gun_parts_blueprint",
+    "name": "Heavy Gun Parts Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/heavy_gun_parts.png",
+    "recipe": null
+  },
+  "heavy_shield": {
+    "id": "heavy_shield",
+    "name": "Heavy Shield",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/heavy_shield.png",
+    "recipe": {
+      "power_rod": 1,
+      "voltage_converter": 2
+    }
+  },
+  "herbal_bandage": {
+    "id": "herbal_bandage",
+    "name": "Herbal Bandage",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/herbal_bandage.png",
+    "recipe": {
+      "durable_cloth": 1,
+      "great_mullein": 1
+    }
+  },
+  "horizontal_grip": {
+    "id": "horizontal_grip",
+    "name": "Horizontal Grip",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/horizontal_grip.png",
+    "recipe": {
+      "mod_components": 2,
+      "duct_tape": 5
+    }
+  },
+  "horizontal_grip_blueprint": {
+    "id": "horizontal_grip_blueprint",
+    "name": "Horizontal Grip Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/horizontal_grip.png",
+    "recipe": null
+  },
+  "hornet_driver": {
+    "id": "hornet_driver",
+    "name": "Hornet Driver",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/hornet_driver.png",
+    "recipe": null
+  },
+  "household_cleaner": {
+    "id": "household_cleaner",
+    "name": "Household Cleaner",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/household_cleaner.png",
+    "recipe": null
+  },
+  "hullcracker_blueprint": {
+    "id": "hullcracker_blueprint",
+    "name": "Hullcracker Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/hullcracker.png",
+    "recipe": null
+  },
+  "hullcracker_i": {
+    "id": "hullcracker_i",
+    "name": "Hullcracker I",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/hullcracker.png",
+    "recipe": {
+      "magnetic_accelerator": 1,
+      "heavy_gun_parts": 3,
+      "exodus_modules": 1
+    }
+  },
+  "hullcracker_ii": {
+    "id": "hullcracker_ii",
+    "name": "Hullcracker II",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/hullcracker.png",
+    "recipe": null
+  },
+  "hullcracker_iii": {
+    "id": "hullcracker_iii",
+    "name": "Hullcracker III",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/hullcracker.png",
+    "recipe": null
+  },
+  "hullcracker_iv": {
+    "id": "hullcracker_iv",
+    "name": "Hullcracker IV",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/hullcracker.png",
+    "recipe": null
+  },
+  "humidifier": {
+    "id": "humidifier",
+    "name": "Humidifier",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/humidifier.png",
+    "recipe": null
+  },
+  "ice_cream_scooper": {
+    "id": "ice_cream_scooper",
+    "name": "Ice Cream Scooper",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/ice_cream_scooper.png",
+    "recipe": null
+  },
+  "il_toro_blueprint": {
+    "id": "il_toro_blueprint",
+    "name": "Il Toro Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/il_toro.png",
+    "recipe": null
+  },
+  "il_toro_i": {
+    "id": "il_toro_i",
+    "name": "Il Toro I",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/il_toro.png",
+    "recipe": {
+      "mechanical_components": 5,
+      "simple_gun_parts": 6
+    }
+  },
+  "il_toro_ii": {
+    "id": "il_toro_ii",
+    "name": "Il Toro II",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/il_toro.png",
+    "recipe": null
+  },
+  "il_toro_iii": {
+    "id": "il_toro_iii",
+    "name": "Il Toro III",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/il_toro.png",
+    "recipe": null
+  },
+  "il_toro_iv": {
+    "id": "il_toro_iv",
+    "name": "Il Toro IV",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/il_toro.png",
+    "recipe": null
+  },
+  "impure_arc_coolant": {
+    "id": "impure_arc_coolant",
+    "name": "Impure ARC Coolant",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/impure_arc_coolant.png",
+    "recipe": null
+  },
+  "industrial_battery": {
+    "id": "industrial_battery",
+    "name": "Industrial Battery",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/industrial_battery.png",
+    "recipe": null
+  },
+  "industrial_charger": {
+    "id": "industrial_charger",
+    "name": "Industrial Charger",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/industrial_charger.png",
+    "recipe": null
+  },
+  "industrial_magnet": {
+    "id": "industrial_magnet",
+    "name": "Industrial Magnet",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/industrial_magnet.png",
+    "recipe": null
+  },
+  "ion_sputter": {
+    "id": "ion_sputter",
+    "name": "Ion Sputter",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/ion_sputter.png",
+    "recipe": null
+  },
+  "jolt_mine": {
+    "id": "jolt_mine",
+    "name": "Jolt Mine",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/jolt_mine.png",
+    "recipe": {
+      "electrical_components": 1,
+      "battery": 1
+    }
+  },
+  "jolt_mine_blueprint": {
+    "id": "jolt_mine_blueprint",
+    "name": "Jolt Mine Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/jolt_mine.png",
+    "recipe": null
+  },
+  "junior_outfit": {
+    "id": "junior_outfit",
+    "name": "Junior Outfit",
+    "stackSize": 1,
+    "imageFilename": null,
+    "recipe": null
+  },
+  "jupiter": {
+    "id": "jupiter",
+    "name": "Jupiter",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/jupiter.png",
+    "recipe": {
+      "magnetic_accelerator": 3,
+      "complex_gun_parts": 3,
+      "queen_reactor": 1
+    }
+  },
+  "jupiter_blueprint": {
+    "id": "jupiter_blueprint",
+    "name": "Jupiter Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/jupiter.png",
+    "recipe": null
+  },
+  "kettle_i": {
+    "id": "kettle_i",
+    "name": "Kettle I",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/kettle.png",
+    "recipe": {
+      "metal_parts": 6,
+      "rubber_parts": 8
+    }
+  },
+  "kettle_ii": {
+    "id": "kettle_ii",
+    "name": "Kettle II",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/kettle.png",
+    "recipe": null
+  },
+  "kettle_iii": {
+    "id": "kettle_iii",
+    "name": "Kettle III",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/kettle.png",
+    "recipe": null
+  },
+  "kettle_iv": {
+    "id": "kettle_iv",
+    "name": "Kettle IV",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/kettle.png",
+    "recipe": null
+  },
+  "kinetic_converter": {
+    "id": "kinetic_converter",
+    "name": "Kinetic Converter",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/kinetic_converter.png",
+    "recipe": null
+  },
+  "laboratory_reagents": {
+    "id": "laboratory_reagents",
+    "name": "Laboratory Reagents",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/laboratory_reagents.png",
+    "recipe": null
+  },
+  "lances_mixtape_5th_edition": {
+    "id": "lances_mixtape_5th_edition",
+    "name": "Lance's Mixtape (5th Edition)",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/lances_mixtape_5th_edition.png",
+    "recipe": null
+  },
+  "launcher_ammo": {
+    "id": "launcher_ammo",
+    "name": "Launcher Ammo",
+    "stackSize": 24,
+    "imageFilename": "https://cdn.arctracker.io/items/launcher_ammo.png",
+    "recipe": {
+      "arc_motion_core": 1,
+      "crude_explosives": 2
+    }
+  },
+  "leaper_pulse_unit": {
+    "id": "leaper_pulse_unit",
+    "name": "Leaper Pulse Unit",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/leaper_pulse_unit.png",
+    "recipe": null
+  },
+  "lemon": {
+    "id": "lemon",
+    "name": "Lemon",
+    "stackSize": 10,
+    "imageFilename": "https://cdn.arctracker.io/items/lemon.png",
+    "recipe": null
+  },
+  "lidar_scanner": {
+    "id": "lidar_scanner",
+    "name": "Lidar Scanner",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/lidar_scanner.png",
+    "recipe": null
+  },
+  "light_ammo": {
+    "id": "light_ammo",
+    "name": "Light Ammo",
+    "stackSize": 100,
+    "imageFilename": "https://cdn.arctracker.io/items/light_ammo.png",
+    "recipe": {
+      "metal_parts": 3,
+      "chemicals": 2
+    }
+  },
+  "light_bulb": {
+    "id": "light_bulb",
+    "name": "Light Bulb",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/light_bulb.png",
+    "recipe": null
+  },
+  "light_gun_parts": {
+    "id": "light_gun_parts",
+    "name": "Light Gun Parts",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/light_gun_parts.png",
+    "recipe": {
+      "simple_gun_parts": 4
+    }
+  },
+  "light_gun_parts_blueprint": {
+    "id": "light_gun_parts_blueprint",
+    "name": "Light Gun Parts Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/light_gun_parts_blueprint.png",
+    "recipe": null
+  },
+  "light_impact_grenade": {
+    "id": "light_impact_grenade",
+    "name": "Light Impact Grenade",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/light_impact_grenade.png",
+    "recipe": {
+      "chemicals": 3,
+      "plastic_parts": 2
+    }
+  },
+  "light_shield": {
+    "id": "light_shield",
+    "name": "Light Shield",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/light_shield.png",
+    "recipe": {
+      "arc_alloy": 2,
+      "plastic_parts": 4
+    }
+  },
+  "lightweight_stock": {
+    "id": "lightweight_stock",
+    "name": "Lightweight Stock",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/lightweight_stock.png",
+    "recipe": {
+      "mod_components": 2,
+      "duct_tape": 5
+    }
+  },
+  "lightweight_stock_blueprint": {
+    "id": "lightweight_stock_blueprint",
+    "name": "Lightweight Stock Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/lightweight_stock_blueprint.png",
+    "recipe": null
+  },
+  "lil_smoke_grenade": {
+    "id": "lil_smoke_grenade",
+    "name": "Li'l Smoke Grenade",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/lil_smoke_grenade.png",
+    "recipe": {
+      "chemicals": 5,
+      "plastic_parts": 1
+    }
+  },
+  "looting_mk1": {
+    "id": "looting_mk1",
+    "name": "Looting Mk. 1",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/looting_mk1.png",
+    "recipe": {
+      "plastic_parts": 6,
+      "rubber_parts": 6
+    }
+  },
+  "looting_mk2": {
+    "id": "looting_mk2",
+    "name": "Looting Mk. 2",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/looting_mk2.png",
+    "recipe": {
+      "electrical_components": 2,
+      "magnet": 3
+    }
+  },
+  "looting_mk3_cautious": {
+    "id": "looting_mk3_cautious",
+    "name": "Looting Mk. 3 (Cautious)",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/looting_mk3_cautious.png",
+    "recipe": {
+      "advanced_electrical_components": 2,
+      "processor": 3
+    }
+  },
+  "looting_mk3_survivor": {
+    "id": "looting_mk3_survivor",
+    "name": "Looting Mk. 3 (Survivor)",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/looting_mk3_survivor.png",
+    "recipe": {
+      "advanced_mechanical_components": 2,
+      "processor": 2
+    }
+  },
+  "looting_mk3_survivor_blueprint": {
+    "id": "looting_mk3_survivor_blueprint",
+    "name": "Looting Mk. 3 (Survivor) Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/looting_mk3_survivor_blueprint.png",
+    "recipe": null
+  },
+  "lure_grenade": {
+    "id": "lure_grenade",
+    "name": "Lure Grenade",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/lure_grenade.png",
+    "recipe": {
+      "speaker_component": 1,
+      "electrical_components": 1
+    }
+  },
+  "lure_grenade_blueprint": {
+    "id": "lure_grenade_blueprint",
+    "name": "Lure Grenade Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/lure_grenade.png",
+    "recipe": null
+  },
+  "lure_grenade_trap": {
+    "id": "lure_grenade_trap",
+    "name": "Lure Grenade Trap",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/lure_grenade_trap.png",
+    "recipe": {
+      "lure_grenade": 1,
+      "wires": 1
+    }
+  },
+  "magnet": {
+    "id": "magnet",
+    "name": "Magnet",
+    "stackSize": 15,
+    "imageFilename": "https://cdn.arctracker.io/items/magnet.png",
+    "recipe": null
+  },
+  "magnetic_accelerator": {
+    "id": "magnetic_accelerator",
+    "name": "Magnetic Accelerator",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/magnetic_accelerator.png",
+    "recipe": {
+      "advanced_mechanical_components": 2,
+      "arc_motion_core": 2
+    }
+  },
+  "magnetron": {
+    "id": "magnetron",
+    "name": "Magnetron",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/magnetron.png",
+    "recipe": null
+  },
+  "major_aivas_patch": {
+    "id": "major_aivas_patch",
+    "name": "Major Aiva's Patch",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/major_aivas_patch.png",
+    "recipe": null
+  },
+  "matriarch_reactor": {
+    "id": "matriarch_reactor",
+    "name": "Matriarch Reactor",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/matriarch_reactor.png",
+    "recipe": null
+  },
+  "mechanical_components": {
+    "id": "mechanical_components",
+    "name": "Mechanical Components",
+    "stackSize": 10,
+    "imageFilename": "https://cdn.arctracker.io/items/mechanical_components.png",
+    "recipe": {
+      "metal_parts": 7,
+      "rubber_parts": 3
+    }
+  },
+  "medium_ammo": {
+    "id": "medium_ammo",
+    "name": "Medium Ammo",
+    "stackSize": 80,
+    "imageFilename": "https://cdn.arctracker.io/items/medium_ammo.png",
+    "recipe": {
+      "metal_parts": 3,
+      "chemicals": 2
+    }
+  },
+  "medium_gun_parts": {
+    "id": "medium_gun_parts",
+    "name": "Medium Gun Parts",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/medium_gun_parts.png",
+    "recipe": {
+      "simple_gun_parts": 4
+    }
+  },
+  "medium_gun_parts_blueprint": {
+    "id": "medium_gun_parts_blueprint",
+    "name": "Medium Gun Parts Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/medium_gun_parts_blueprint.png",
+    "recipe": null
+  },
+  "medium_shield": {
+    "id": "medium_shield",
+    "name": "Medium Shield",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/medium_shield.png",
+    "recipe": {
+      "arc_circuitry": 1,
+      "battery": 4
+    }
+  },
+  "metal_brackets": {
+    "id": "metal_brackets",
+    "name": "Metal Brackets",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/metal_brackets.png",
+    "recipe": null
+  },
+  "metal_parts": {
+    "id": "metal_parts",
+    "name": "Metal Parts",
+    "stackSize": 50,
+    "imageFilename": "https://cdn.arctracker.io/items/metal_parts.png",
+    "recipe": null
+  },
+  "microscope": {
+    "id": "microscope",
+    "name": "Microscope",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/microscope.png",
+    "recipe": null
+  },
+  "mini_centrifuge": {
+    "id": "mini_centrifuge",
+    "name": "Mini Centrifuge",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/mini_centrifuge.png",
+    "recipe": null
+  },
+  "mod_components": {
+    "id": "mod_components",
+    "name": "Mod Components",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/mod_components.png",
+    "recipe": {
+      "steel_spring": 2,
+      "mechanical_components": 2
+    }
+  },
+  "moss": {
+    "id": "moss",
+    "name": "Moss",
+    "stackSize": 10,
+    "imageFilename": "https://cdn.arctracker.io/items/moss.png",
+    "recipe": null
+  },
+  "motor": {
+    "id": "motor",
+    "name": "Motor",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/motor.png",
+    "recipe": null
+  },
+  "mushroom": {
+    "id": "mushroom",
+    "name": "Mushroom",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/mushroom.png",
+    "recipe": null
+  },
+  "music_album": {
+    "id": "music_album",
+    "name": "Music Album",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/music_album.png",
+    "recipe": null
+  },
+  "music_box": {
+    "id": "music_box",
+    "name": "Music Box",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/music_box.png",
+    "recipe": null
+  },
+  "muzzle_brake_i": {
+    "id": "muzzle_brake_i",
+    "name": "Muzzle Brake I",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/muzzle_brake_i.png",
+    "recipe": {
+      "metal_parts": 6,
+      "wires": 1
+    }
+  },
+  "muzzle_brake_ii": {
+    "id": "muzzle_brake_ii",
+    "name": "Muzzle Brake II",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/muzzle_brake_ii.png",
+    "recipe": {
+      "mechanical_components": 2,
+      "wires": 4
+    }
+  },
+  "muzzle_brake_ii_blueprint": {
+    "id": "muzzle_brake_ii_blueprint",
+    "name": "Muzzle Brake II Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/muzzle_brake_ii.png",
+    "recipe": null
+  },
+  "muzzle_brake_iii": {
+    "id": "muzzle_brake_iii",
+    "name": "Muzzle Brake III",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/muzzle_brake_iii.png",
+    "recipe": {
+      "mod_components": 2,
+      "wires": 8
+    }
+  },
+  "muzzle_brake_iii_blueprint": {
+    "id": "muzzle_brake_iii_blueprint",
+    "name": "Muzzle Brake III Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/muzzle_brake_iii.png",
+    "recipe": null
+  },
+  "noisemaker": {
+    "id": "noisemaker",
+    "name": "Noisemaker",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/noisemaker.png",
+    "recipe": null
+  },
+  "number_plate": {
+    "id": "number_plate",
+    "name": "Number Plate",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/number_plate.png",
+    "recipe": null
+  },
+  "oil": {
+    "id": "oil",
+    "name": "Oil",
+    "stackSize": 15,
+    "imageFilename": "https://cdn.arctracker.io/items/oil.png",
+    "recipe": null
+  },
+  "olives": {
+    "id": "olives",
+    "name": "Olives",
+    "stackSize": 10,
+    "imageFilename": "https://cdn.arctracker.io/items/olives.png",
+    "recipe": null
+  },
+  "osprey_blueprint": {
+    "id": "osprey_blueprint",
+    "name": "Osprey Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/osprey_blueprint.png",
+    "recipe": null
+  },
+  "osprey_i": {
+    "id": "osprey_i",
+    "name": "Osprey I",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/osprey.png",
+    "recipe": {
+      "advanced_mechanical_components": 2,
+      "medium_gun_parts": 3,
+      "wires": 7
+    }
+  },
+  "osprey_ii": {
+    "id": "osprey_ii",
+    "name": "Osprey II",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/osprey.png",
+    "recipe": null
+  },
+  "osprey_iii": {
+    "id": "osprey_iii",
+    "name": "Osprey III",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/osprey.png",
+    "recipe": null
+  },
+  "osprey_iv": {
+    "id": "osprey_iv",
+    "name": "Osprey IV",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/osprey.png",
+    "recipe": null
+  },
+  "padded_stock": {
+    "id": "padded_stock",
+    "name": "Padded Stock",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/padded_stock.png",
+    "recipe": null
+  },
+  "padded_stock_blueprint": {
+    "id": "padded_stock_blueprint",
+    "name": "Padded Stock Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/padded_stock.png",
+    "recipe": null
+  },
+  "painted_box": {
+    "id": "painted_box",
+    "name": "Painted Box",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/painted_box.png",
+    "recipe": null
+  },
+  "patrol_car_key": {
+    "id": "patrol_car_key",
+    "name": "Patrol Car Key",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/patrol_car_key.png",
+    "recipe": null
+  },
+  "photoelectric_cloak": {
+    "id": "photoelectric_cloak",
+    "name": "Photoelectric Cloak",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/photoelectric_cloak.png",
+    "recipe": {
+      "advanced_electrical_components": 2,
+      "speaker_component": 4
+    }
+  },
+  "plastic_parts": {
+    "id": "plastic_parts",
+    "name": "Plastic Parts",
+    "stackSize": 50,
+    "imageFilename": "https://cdn.arctracker.io/items/plastic_parts.png",
+    "recipe": null
+  },
+  "playing_cards": {
+    "id": "playing_cards",
+    "name": "Playing Cards",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/playing_cards.png",
+    "recipe": null
+  },
+  "polluted_air_filter": {
+    "id": "polluted_air_filter",
+    "name": "Polluted Air Filter",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/polluted_air_filter.png",
+    "recipe": null
+  },
+  "pop_trigger": {
+    "id": "pop_trigger",
+    "name": "Pop Trigger",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/pop_trigger.png",
+    "recipe": null
+  },
+  "portable_tv": {
+    "id": "portable_tv",
+    "name": "Portable TV",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/portable_tv.png",
+    "recipe": null
+  },
+  "poster_of_natural_wonders": {
+    "id": "poster_of_natural_wonders",
+    "name": "Poster of Natural Wonders",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/poster_of_natural_wonders.png",
+    "recipe": null
+  },
+  "pottery": {
+    "id": "pottery",
+    "name": "Pottery",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/pottery.png",
+    "recipe": null
+  },
+  "power_bank": {
+    "id": "power_bank",
+    "name": "Power Bank",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/power_bank.png",
+    "recipe": null
+  },
+  "power_cable": {
+    "id": "power_cable",
+    "name": "Power Cable",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/power_cable.png",
+    "recipe": null
+  },
+  "power_rod": {
+    "id": "power_rod",
+    "name": "Power Rod",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/power_rod.png",
+    "recipe": {
+      "advanced_electrical_components": 2,
+      "arc_circuitry": 2
+    }
+  },
+  "prickly_pear": {
+    "id": "prickly_pear",
+    "name": "Prickly Pear",
+    "stackSize": 10,
+    "imageFilename": "https://cdn.arctracker.io/items/prickly_pear.png",
+    "recipe": null
+  },
+  "processor": {
+    "id": "processor",
+    "name": "Processor",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/processor.png",
+    "recipe": null
+  },
+  "projector": {
+    "id": "projector",
+    "name": "Projector",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/projector.png",
+    "recipe": null
+  },
+  "pulse_mine": {
+    "id": "pulse_mine",
+    "name": "Pulse Mine",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/pulse_mine.png",
+    "recipe": null
+  },
+  "pulse_mine_blueprint": {
+    "id": "pulse_mine_blueprint",
+    "name": "Pulse Mine Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/pulse_mine.png",
+    "recipe": null
+  },
+  "queen_reactor": {
+    "id": "queen_reactor",
+    "name": "Queen Reactor",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/queen_part.png",
+    "recipe": null
+  },
+  "radio": {
+    "id": "radio",
+    "name": "Radio",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/radio.png",
+    "recipe": null
+  },
+  "radio_relay": {
+    "id": "radio_relay",
+    "name": "Radio Relay",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/radio_relay.png",
+    "recipe": null
+  },
+  "radio_renegade": {
+    "id": "radio_renegade",
+    "name": "Radio Renegade",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/radio_renegade.png",
+    "recipe": null
+  },
+  "raider_hatch_key": {
+    "id": "raider_hatch_key",
+    "name": "Raider Hatch Key",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/raider_hatch_key.png",
+    "recipe": {
+      "advanced_electrical_components": 1,
+      "sensors": 3
+    }
+  },
+  "rattler_i": {
+    "id": "rattler_i",
+    "name": "Rattler I",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/rattler.png",
+    "recipe": {
+      "metal_parts": 16,
+      "rubber_parts": 12
+    }
+  },
+  "rattler_ii": {
+    "id": "rattler_ii",
+    "name": "Rattler II",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/rattler.png",
+    "recipe": null
+  },
+  "rattler_iii": {
+    "id": "rattler_iii",
+    "name": "Rattler III",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/rattler.png",
+    "recipe": null
+  },
+  "rattler_iv": {
+    "id": "rattler_iv",
+    "name": "Rattler IV",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/rattler.png",
+    "recipe": null
+  },
+  "recorder": {
+    "id": "recorder",
+    "name": "Recorder",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/recorder.png",
+    "recipe": null
+  },
+  "red_coral_jewelry": {
+    "id": "red_coral_jewelry",
+    "name": "Red Coral Jewelry",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/red_coral_jewelry.png",
+    "recipe": null
+  },
+  "red_light_stick": {
+    "id": "red_light_stick",
+    "name": "Red Light Stick",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/red_light_stick.png",
+    "recipe": {
+      "chemicals": 3
+    }
+  },
+  "red_light_stick_blueprint": {
+    "id": "red_light_stick_blueprint",
+    "name": "Red Light Stick Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/red_light_stick.png",
+    "recipe": null
+  },
+  "remote_control": {
+    "id": "remote_control",
+    "name": "Remote Control",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/remote_control.png",
+    "recipe": null
+  },
+  "remote_raider_flare": {
+    "id": "remote_raider_flare",
+    "name": "Remote Raider Flare",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/remote_raider_flare.png",
+    "recipe": {
+      "chemicals": 2,
+      "rubber_parts": 4
+    }
+  },
+  "remote_raider_flare_blueprint": {
+    "id": "remote_raider_flare_blueprint",
+    "name": "Remote Raider Flare Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/remote_raider_flare.png",
+    "recipe": null
+  },
+  "renegade_i": {
+    "id": "renegade_i",
+    "name": "Renegade I",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/renegade.png",
+    "recipe": {
+      "advanced_mechanical_components": 2,
+      "medium_gun_parts": 3,
+      "oil": 5
+    }
+  },
+  "renegade_ii": {
+    "id": "renegade_ii",
+    "name": "Renegade II",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/renegade.png",
+    "recipe": null
+  },
+  "renegade_iii": {
+    "id": "renegade_iii",
+    "name": "Renegade III",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/renegade.png",
+    "recipe": null
+  },
+  "renegade_iv": {
+    "id": "renegade_iv",
+    "name": "Renegade IV",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/renegade.png",
+    "recipe": null
+  },
+  "resin": {
+    "id": "resin",
+    "name": "Resin",
+    "stackSize": 10,
+    "imageFilename": "https://cdn.arctracker.io/items/resin.png",
+    "recipe": null
+  },
+  "ripped_safety_vest": {
+    "id": "ripped_safety_vest",
+    "name": "Ripped Safety Vest",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/ripped_safety_vest.png",
+    "recipe": null
+  },
+  "rocket_thruster": {
+    "id": "rocket_thruster",
+    "name": "Rocket Thruster",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/rocket_thruster.png",
+    "recipe": null
+  },
+  "rocketeer_driver": {
+    "id": "rocketeer_driver",
+    "name": "Rocketeer Driver",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/rocketeer_driver.png",
+    "recipe": null
+  },
+  "roots": {
+    "id": "roots",
+    "name": "Roots",
+    "stackSize": 10,
+    "imageFilename": "https://cdn.arctracker.io/items/roots.png",
+    "recipe": null
+  },
+  "rope": {
+    "id": "rope",
+    "name": "Rope",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/rope.png",
+    "recipe": null
+  },
+  "rosary": {
+    "id": "rosary",
+    "name": "Rosary",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/rosary.png",
+    "recipe": null
+  },
+  "rotary_encoder": {
+    "id": "rotary_encoder",
+    "name": "Rotary Encoder",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/rotary_encoder.png",
+    "recipe": null
+  },
+  "rubber_duck": {
+    "id": "rubber_duck",
+    "name": "Rubber Duck",
+    "stackSize": 15,
+    "imageFilename": "https://cdn.arctracker.io/items/rubber_duck.png",
+    "recipe": null
+  },
+  "rubber_pad": {
+    "id": "rubber_pad",
+    "name": "Rubber Pad",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/rubber_pad.png",
+    "recipe": null
+  },
+  "rubber_parts": {
+    "id": "rubber_parts",
+    "name": "Rubber Parts",
+    "stackSize": 50,
+    "imageFilename": "https://cdn.arctracker.io/items/rubber_parts.png",
+    "recipe": null
+  },
+  "ruined_accordion": {
+    "id": "ruined_accordion",
+    "name": "Ruined Accordion",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/ruined_accordion.png",
+    "recipe": null
+  },
+  "ruined_augment": {
+    "id": "ruined_augment",
+    "name": "Ruined Augment",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/ruined_augment.png",
+    "recipe": null
+  },
+  "ruined_baton": {
+    "id": "ruined_baton",
+    "name": "Ruined Baton",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/ruined_baton.png",
+    "recipe": null
+  },
+  "ruined_handcuffs": {
+    "id": "ruined_handcuffs",
+    "name": "Ruined Handcuffs",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/ruined_handcuffs.png",
+    "recipe": null
+  },
+  "ruined_parachute": {
+    "id": "ruined_parachute",
+    "name": "Ruined Parachute",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/ruined_parachute.png",
+    "recipe": null
+  },
+  "ruined_riot_shield": {
+    "id": "ruined_riot_shield",
+    "name": "Ruined Riot Shield",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/ruined_riot_shield.png",
+    "recipe": null
+  },
+  "ruined_tactical_vest": {
+    "id": "ruined_tactical_vest",
+    "name": "Ruined Tactical Vest",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/ruined_tactical_vest.png",
+    "recipe": null
+  },
+  "rusted_bolts": {
+    "id": "rusted_bolts",
+    "name": "Rusted Bolts",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/rusted_bolts.png",
+    "recipe": null
+  },
+  "rusted_gear": {
+    "id": "rusted_gear",
+    "name": "Rusted Gear",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/rusted_gear.png",
+    "recipe": null
+  },
+  "rusted_shut_medical_kit": {
+    "id": "rusted_shut_medical_kit",
+    "name": "Rusted Shut Medical Kit",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/rusted_shut_medical_kit.png",
+    "recipe": null
+  },
+  "rusted_tools": {
+    "id": "rusted_tools",
+    "name": "Rusted Tools",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/rusted_tools.png",
+    "recipe": null
+  },
+  "rusty_arc_steel": {
+    "id": "rusty_arc_steel",
+    "name": "Rusty ARC Steel",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/rusty_arc_steel.png",
+    "recipe": null
+  },
+  "sample_cleaner": {
+    "id": "sample_cleaner",
+    "name": "Sample Cleaner",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/sample_cleaner.png",
+    "recipe": null
+  },
+  "seeker_grenade": {
+    "id": "seeker_grenade",
+    "name": "Seeker Grenade",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/seeker_grenade.png",
+    "recipe": {
+      "crude_explosives": 1,
+      "arc_alloy": 2
+    }
+  },
+  "seeker_grenade_blueprint": {
+    "id": "seeker_grenade_blueprint",
+    "name": "Seeker Grenade Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/seeker_grenade.png",
+    "recipe": null
+  },
+  "sensors": {
+    "id": "sensors",
+    "name": "Sensors",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/sensors.png",
+    "recipe": null
+  },
+  "sentinel_firing_core": {
+    "id": "sentinel_firing_core",
+    "name": "Sentinel Firing Core",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/sentinel_firing_core.png",
+    "recipe": null
+  },
+  "shaker": {
+    "id": "shaker",
+    "name": "Shaker",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/shaker.png",
+    "recipe": null
+  },
+  "shield_recharger": {
+    "id": "shield_recharger",
+    "name": "Shield Recharger",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/shield_recharger.png",
+    "recipe": {
+      "rubber_parts": 5,
+      "arc_powercell": 1
+    }
+  },
+  "shotgun_ammo": {
+    "id": "shotgun_ammo",
+    "name": "Shotgun Ammo",
+    "stackSize": 20,
+    "imageFilename": "https://cdn.arctracker.io/items/shotgun_ammo.png",
+    "recipe": {
+      "metal_parts": 3,
+      "chemicals": 2
+    }
+  },
+  "shotgun_choke_i": {
+    "id": "shotgun_choke_i",
+    "name": "Shotgun Choke I",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/shotgun_choke_i.png",
+    "recipe": {
+      "metal_parts": 6,
+      "wires": 1
+    }
+  },
+  "shotgun_choke_ii": {
+    "id": "shotgun_choke_ii",
+    "name": "Shotgun Choke II",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/shotgun_choke_ii.png",
+    "recipe": {
+      "mechanical_components": 2,
+      "wires": 4
+    }
+  },
+  "shotgun_choke_ii_blueprint": {
+    "id": "shotgun_choke_ii_blueprint",
+    "name": "Shotgun Choke II Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/shotgun_choke_ii.png",
+    "recipe": null
+  },
+  "shotgun_choke_iii": {
+    "id": "shotgun_choke_iii",
+    "name": "Shotgun Choke III",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/shotgun_choke_iii.png",
+    "recipe": {
+      "mod_components": 2,
+      "wires": 8
+    }
+  },
+  "shotgun_choke_iii_blueprint": {
+    "id": "shotgun_choke_iii_blueprint",
+    "name": "Shotgun Choke III Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/shotgun_choke_iii.png",
+    "recipe": null
+  },
+  "shotgun_silencer": {
+    "id": "shotgun_silencer",
+    "name": "Shotgun Silencer",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/shotgun_silencer.png",
+    "recipe": {
+      "mod_components": 2,
+      "wires": 8
+    }
+  },
+  "shotgun_silencer_blueprint": {
+    "id": "shotgun_silencer_blueprint",
+    "name": "Shotgun Silencer Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/shotgun_silencer.png",
+    "recipe": null
+  },
+  "showstopper": {
+    "id": "showstopper",
+    "name": "Showstopper",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/showstopper.png",
+    "recipe": {
+      "advanced_electrical_components": 1,
+      "voltage_converter": 1
+    }
+  },
+  "showstopper_blueprint": {
+    "id": "showstopper_blueprint",
+    "name": "Showstopper Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/showstopper.png",
+    "recipe": null
+  },
+  "shrapnel_grenade": {
+    "id": "shrapnel_grenade",
+    "name": "Shrapnel Grenade",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/shrapnel_grenade.png",
+    "recipe": {
+      "crude_explosives": 1,
+      "steel_spring": 2
+    }
+  },
+  "shredder_gyro": {
+    "id": "shredder_gyro",
+    "name": "Shredder Gyro",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/shredder_gyro.png",
+    "recipe": null
+  },
+  "signal_amplifier": {
+    "id": "signal_amplifier",
+    "name": "Signal Amplifier",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/signal_amplifier.png",
+    "recipe": null
+  },
+  "silencer_i": {
+    "id": "silencer_i",
+    "name": "Silencer I",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/silencer_i.png",
+    "recipe": null
+  },
+  "silencer_i_blueprint": {
+    "id": "silencer_i_blueprint",
+    "name": "Silencer I Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/silencer_i.png",
+    "recipe": null
+  },
+  "silencer_ii": {
+    "id": "silencer_ii",
+    "name": "Silencer II",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/silencer_ii.png",
+    "recipe": null
+  },
+  "silencer_ii_blueprint": {
+    "id": "silencer_ii_blueprint",
+    "name": "Silencer II Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/silencer_ii.png",
+    "recipe": null
+  },
+  "silencer_iii": {
+    "id": "silencer_iii",
+    "name": "Silencer III",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/silencer_iii.png",
+    "recipe": null
+  },
+  "silver_teaspoon_set": {
+    "id": "silver_teaspoon_set",
+    "name": "Silver Teaspoon Set",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/silver_teaspoon_set.png",
+    "recipe": null
+  },
+  "simple_gun_parts": {
+    "id": "simple_gun_parts",
+    "name": "Simple Gun Parts",
+    "stackSize": 10,
+    "imageFilename": "https://cdn.arctracker.io/items/simple_gun_parts.png",
+    "recipe": null
+  },
+  "smoke_grenade": {
+    "id": "smoke_grenade",
+    "name": "Smoke Grenade",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/smoke_grenade.png",
+    "recipe": {
+      "chemicals": 14,
+      "canister": 1
+    }
+  },
+  "smoke_grenade_blueprint": {
+    "id": "smoke_grenade_blueprint",
+    "name": "Smoke Grenade Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/smoke_grenade.png",
+    "recipe": null
+  },
+  "smoke_grenade_trap": {
+    "id": "smoke_grenade_trap",
+    "name": "Smoke Grenade Trap",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/smoke_grenade_trap.png",
+    "recipe": {
+      "smoke_grenade": 1,
+      "wires": 1
+    }
+  },
+  "snap_blast_grenade": {
+    "id": "snap_blast_grenade",
+    "name": "Snap Blast Grenade",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/snap_blast_grenade.png",
+    "recipe": {
+      "crude_explosives": 2,
+      "magnet": 1
+    }
+  },
+  "snap_hook": {
+    "id": "snap_hook",
+    "name": "Snap Hook",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/snap_hook.png",
+    "recipe": {
+      "power_rod": 2,
+      "rope": 3,
+      "exodus_modules": 1
+    }
+  },
+  "snap_hook_blueprint": {
+    "id": "snap_hook_blueprint",
+    "name": "Snap Hook Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/snap_hook.png",
+    "recipe": null
+  },
+  "snitch_scanner": {
+    "id": "snitch_scanner",
+    "name": "Snitch Scanner",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/snitch_scanner.png",
+    "recipe": null
+  },
+  "snowball": {
+    "id": "snowball",
+    "name": "Snowball",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/snowball.png",
+    "recipe": null
+  },
+  "spaceport_container_storage_key": {
+    "id": "spaceport_container_storage_key",
+    "name": "Spaceport Container Storage Key",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/spaceport_control_tower_key.png",
+    "recipe": null
+  },
+  "spaceport_control_tower_key": {
+    "id": "spaceport_control_tower_key",
+    "name": "Spaceport Control Tower Key",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/spaceport_control_tower_key.png",
+    "recipe": null
+  },
+  "spaceport_trench_tower_key": {
+    "id": "spaceport_trench_tower_key",
+    "name": "Spaceport Trench Tower Key",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/spaceport_trench_tower_key.png",
+    "recipe": null
+  },
+  "spaceport_warehouse_key": {
+    "id": "spaceport_warehouse_key",
+    "name": "Spaceport Warehouse Key",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/spaceport_trench_tower_key.png",
+    "recipe": null
+  },
+  "speaker_component": {
+    "id": "speaker_component",
+    "name": "Speaker Component",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/speaker_component.png",
+    "recipe": null
+  },
+  "spectrometer": {
+    "id": "spectrometer",
+    "name": "Spectrometer",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/spectrometer.png",
+    "recipe": null
+  },
+  "spectrum_analyzer": {
+    "id": "spectrum_analyzer",
+    "name": "Spectrum Analyzer",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/spectrum_analyzer.png",
+    "recipe": null
+  },
+  "spotter_relay": {
+    "id": "spotter_relay",
+    "name": "Spotter Relay",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/spotter_relay.png",
+    "recipe": null
+  },
+  "spring_cushion": {
+    "id": "spring_cushion",
+    "name": "Spring Cushion",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/spring_cushion.png",
+    "recipe": null
+  },
+  "stable_stock_i": {
+    "id": "stable_stock_i",
+    "name": "Stable Stock I",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/stable_stock_i.png",
+    "recipe": {
+      "rubber_parts": 6,
+      "duct_tape": 1
+    }
+  },
+  "stable_stock_ii": {
+    "id": "stable_stock_ii",
+    "name": "Stable Stock II",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/stable_stock_ii.png",
+    "recipe": {
+      "mechanical_components": 2,
+      "duct_tape": 3
+    }
+  },
+  "stable_stock_ii_blueprint": {
+    "id": "stable_stock_ii_blueprint",
+    "name": "Stable Stock II Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/stable_stock_ii.png",
+    "recipe": null
+  },
+  "stable_stock_iii": {
+    "id": "stable_stock_iii",
+    "name": "Stable Stock III",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/stable_stock_iii.png",
+    "recipe": {
+      "mod_components": 2,
+      "duct_tape": 5
+    }
+  },
+  "stable_stock_iii_blueprint": {
+    "id": "stable_stock_iii_blueprint",
+    "name": "Stable Stock III Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/stable_stock_iii.png",
+    "recipe": null
+  },
+  "statuette": {
+    "id": "statuette",
+    "name": "Statuette",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/statuette.png",
+    "recipe": null
+  },
+  "steel_spring": {
+    "id": "steel_spring",
+    "name": "Steel Spring",
+    "stackSize": 15,
+    "imageFilename": "https://cdn.arctracker.io/items/steel_spring.png",
+    "recipe": null
+  },
+  "stella_montis_archives_key": {
+    "id": "stella_montis_archives_key",
+    "name": "Stella Montis Archives Key",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/stella_montis_archives_key.png",
+    "recipe": null
+  },
+  "stella_montis_assembly_admin_key": {
+    "id": "stella_montis_assembly_admin_key",
+    "name": "Stella Montis Assembly Admin Key",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/stella_montis_assembly_admin_key.png",
+    "recipe": null
+  },
+  "stella_montis_medical_storage_key": {
+    "id": "stella_montis_medical_storage_key",
+    "name": "Stella Montis Medical Storage Key",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/stella_montis_medical_storage_key.png",
+    "recipe": null
+  },
+  "stella_montis_security_checkpoint_key": {
+    "id": "stella_montis_security_checkpoint_key",
+    "name": "Stella Montis Security Checkpoint Key",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/stella_montis_security_checkpoint_key.png",
+    "recipe": null
+  },
+  "sterilized_bandage": {
+    "id": "sterilized_bandage",
+    "name": "Sterilized Bandage",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/sterilized_bandage.png",
+    "recipe": {
+      "antiseptic": 1,
+      "durable_cloth": 2
+    }
+  },
+  "stitcher_i": {
+    "id": "stitcher_i",
+    "name": "Stitcher I",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/stitcher.png",
+    "recipe": {
+      "metal_parts": 8,
+      "rubber_parts": 4
+    }
+  },
+  "stitcher_ii": {
+    "id": "stitcher_ii",
+    "name": "Stitcher II",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/stitcher.png",
+    "recipe": null
+  },
+  "stitcher_iii": {
+    "id": "stitcher_iii",
+    "name": "Stitcher III",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/stitcher.png",
+    "recipe": null
+  },
+  "stitcher_iv": {
+    "id": "stitcher_iv",
+    "name": "Stitcher IV",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/stitcher.png",
+    "recipe": null
+  },
+  "surge_shield_recharger": {
+    "id": "surge_shield_recharger",
+    "name": "Surge Shield Recharger",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/surge_shield_recharger.png",
+    "recipe": {
+      "electrical_components": 1,
+      "advanced_arc_powercell": 1
+    }
+  },
+  "surveyor_vault": {
+    "id": "surveyor_vault",
+    "name": "Surveyor Vault",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/surveyor_vault.png",
+    "recipe": null
+  },
+  "synthesized_fuel": {
+    "id": "synthesized_fuel",
+    "name": "Synthesized Fuel",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/synthesized_fuel.png",
+    "recipe": null
+  },
+  "syringe": {
+    "id": "syringe",
+    "name": "Syringe",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/syringe.png",
+    "recipe": null
+  },
+  "tactical_mk1": {
+    "id": "tactical_mk1",
+    "name": "Tactical Mk. 1",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/tactical_i.png",
+    "recipe": {
+      "plastic_parts": 6,
+      "rubber_parts": 6
+    }
+  },
+  "tactical_mk2": {
+    "id": "tactical_mk2",
+    "name": "Tactical Mk. 2",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/tactical_i.png",
+    "recipe": {
+      "electrical_components": 2,
+      "magnet": 3
+    }
+  },
+  "tactical_mk3_defensive": {
+    "id": "tactical_mk3_defensive",
+    "name": "Tactical Mk. 3 (Defensive)",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_defensive.png",
+    "recipe": {
+      "advanced_electrical_components": 2,
+      "processor": 3
+    }
+  },
+  "tactical_mk3_defensive_blueprint": {
+    "id": "tactical_mk3_defensive_blueprint",
+    "name": "Tactical Mk. 3 (Defensive) Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_defensive.png",
+    "recipe": null
+  },
+  "tactical_mk3_healing": {
+    "id": "tactical_mk3_healing",
+    "name": "Tactical Mk. 3 (Healing)",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_healing.png",
+    "recipe": null
+  },
+  "tactical_mk3_healing_blueprint": {
+    "id": "tactical_mk3_healing_blueprint",
+    "name": "Tactical Mk. 3 (Healing) Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_healing_blueprint.png",
+    "recipe": null
+  },
+  "tagging_grenade": {
+    "id": "tagging_grenade",
+    "name": "Tagging Grenade",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/tagging_grenade.png",
+    "recipe": {
+      "electrical_components": 1,
+      "sensors": 1
+    }
+  },
+  "tagging_grenade_blueprint": {
+    "id": "tagging_grenade_blueprint",
+    "name": "Tagging Grenade Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/tagging_grenade.png",
+    "recipe": null
+  },
+  "tattered_arc_lining": {
+    "id": "tattered_arc_lining",
+    "name": "Tattered Arc Lining",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/tattered_arc_lining.png",
+    "recipe": null
+  },
+  "tattered_clothes": {
+    "id": "tattered_clothes",
+    "name": "Tattered Clothes",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/tattered_clothes.png",
+    "recipe": null
+  },
+  "telemetry_transceiver": {
+    "id": "telemetry_transceiver",
+    "name": "Telemetry Transceiver",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/telemetry_transceiver.png",
+    "recipe": null
+  },
+  "tempest_blueprint": {
+    "id": "tempest_blueprint",
+    "name": "Tempest Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/tempest.png",
+    "recipe": null
+  },
+  "tempest_i": {
+    "id": "tempest_i",
+    "name": "Tempest I",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/tempest.png",
+    "recipe": {
+      "exodus_modules": 2,
+      "magnetic_accelerator": 1,
+      "medium_gun_parts": 3
+    }
+  },
+  "tempest_ii": {
+    "id": "tempest_ii",
+    "name": "Tempest II",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/tempest.png",
+    "recipe": null
+  },
+  "tempest_iii": {
+    "id": "tempest_iii",
+    "name": "Tempest III",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/tempest.png",
+    "recipe": null
+  },
+  "tempest_iv": {
+    "id": "tempest_iv",
+    "name": "Tempest IV",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/tempest.png",
+    "recipe": null
+  },
+  "thermostat": {
+    "id": "thermostat",
+    "name": "Thermostat",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/thermostat.png",
+    "recipe": null
+  },
+  "tick_pod": {
+    "id": "tick_pod",
+    "name": "Tick Pod",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/tick_pod.png",
+    "recipe": null
+  },
+  "toaster": {
+    "id": "toaster",
+    "name": "Toaster",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/toaster.png",
+    "recipe": null
+  },
+  "torn_blanket": {
+    "id": "torn_blanket",
+    "name": "Torn Blanket",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/torn_blanket.png",
+    "recipe": null
+  },
+  "torn_book": {
+    "id": "torn_book",
+    "name": "Torn Book",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/torn_book.png",
+    "recipe": null
+  },
+  "torrente_blueprint": {
+    "id": "torrente_blueprint",
+    "name": "Torrente Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/torrente.png",
+    "recipe": null
+  },
+  "torrente_i": {
+    "id": "torrente_i",
+    "name": "Torrente I",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/torrente.png",
+    "recipe": {
+      "advanced_mechanical_components": 2,
+      "medium_gun_parts": 3,
+      "steel_spring": 6
+    }
+  },
+  "torrente_ii": {
+    "id": "torrente_ii",
+    "name": "Torrente II",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/torrente.png",
+    "recipe": null
+  },
+  "torrente_iii": {
+    "id": "torrente_iii",
+    "name": "Torrente III",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/torrente.png",
+    "recipe": null
+  },
+  "torrente_iv": {
+    "id": "torrente_iv",
+    "name": "Torrente IV",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/torrente.png",
+    "recipe": null
+  },
+  "trailblazer": {
+    "id": "trailblazer",
+    "name": "Trailblazer",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/trailblazer.png",
+    "recipe": {
+      "synthesized_fuel": 1,
+      "explosive_compound": 1
+    }
+  },
+  "trailblazer_blueprint": {
+    "id": "trailblazer_blueprint",
+    "name": "Trailblazer Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/trailblazer.png",
+    "recipe": null
+  },
+  "trigger_nade": {
+    "id": "trigger_nade",
+    "name": "Trigger 'Nade",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/trigger_nade.png",
+    "recipe": {
+      "crude_explosives": 2,
+      "processor": 1
+    }
+  },
+  "trigger_nade_blueprint": {
+    "id": "trigger_nade_blueprint",
+    "name": "Trigger Nade Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/trigger_nade_blueprint.png",
+    "recipe": null
+  },
+  "turbo_pump": {
+    "id": "turbo_pump",
+    "name": "Turbo Pump",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/turbo_pump.png",
+    "recipe": null
+  },
+  "unusable_weapon": {
+    "id": "unusable_weapon",
+    "name": "Unusable Weapon",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/unusable_weapon.png",
+    "recipe": null
+  },
+  "vase": {
+    "id": "vase",
+    "name": "Vase",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/vase.png",
+    "recipe": null
+  },
+  "venator_blueprint": {
+    "id": "venator_blueprint",
+    "name": "Venator Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/venator.png",
+    "recipe": null
+  },
+  "venator_i": {
+    "id": "venator_i",
+    "name": "Venator I",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/venator.png",
+    "recipe": {
+      "advanced_mechanical_components": 2,
+      "medium_gun_parts": 3,
+      "magnet": 5
+    }
+  },
+  "venator_ii": {
+    "id": "venator_ii",
+    "name": "Venator II",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/venator.png",
+    "recipe": null
+  },
+  "venator_iii": {
+    "id": "venator_iii",
+    "name": "Venator III",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/venator.png",
+    "recipe": null
+  },
+  "venator_iv": {
+    "id": "venator_iv",
+    "name": "Venator IV",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/venator.png",
+    "recipe": null
+  },
+  "vertical_grip_i": {
+    "id": "vertical_grip_i",
+    "name": "Vertical Grip I",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/vertical_grip_i.png",
+    "recipe": {
+      "plastic_parts": 6,
+      "duct_tape": 1
+    }
+  },
+  "vertical_grip_ii": {
+    "id": "vertical_grip_ii",
+    "name": "Vertical Grip II",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/vertical_grip_ii.png",
+    "recipe": {
+      "mechanical_components": 2,
+      "duct_tape": 3
+    }
+  },
+  "vertical_grip_ii_blueprint": {
+    "id": "vertical_grip_ii_blueprint",
+    "name": "Vertical Grip II Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/vertical_grip_ii.png",
+    "recipe": null
+  },
+  "vertical_grip_iii": {
+    "id": "vertical_grip_iii",
+    "name": "Vertical Grip III",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/vertical_grip_iii.png",
+    "recipe": {
+      "mod_components": 2,
+      "duct_tape": 5
+    }
+  },
+  "vertical_grip_iii_blueprint": {
+    "id": "vertical_grip_iii_blueprint",
+    "name": "Vertical Grip III Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/vertical_grip_iii_blueprint.png",
+    "recipe": null
+  },
+  "very_comfortable_pillow": {
+    "id": "very_comfortable_pillow",
+    "name": "Very Comfortable Pillow",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/very_comfortable_pillow.png",
+    "recipe": null
+  },
+  "vita_shot": {
+    "id": "vita_shot",
+    "name": "Vita Shot",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/vita_shot.png",
+    "recipe": {
+      "antiseptic": 2,
+      "syringe": 1
+    }
+  },
+  "vita_shot_blueprint": {
+    "id": "vita_shot_blueprint",
+    "name": "Vita Shot Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/vita_shot.png",
+    "recipe": null
+  },
+  "vita_spray": {
+    "id": "vita_spray",
+    "name": "Vita Spray",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/vita_spray.png",
+    "recipe": {
+      "antiseptic": 3,
+      "canister": 1
+    }
+  },
+  "vita_spray_blueprint": {
+    "id": "vita_spray_blueprint",
+    "name": "Vita Spray Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/vita_spray.png",
+    "recipe": null
+  },
+  "volcanic_rock": {
+    "id": "volcanic_rock",
+    "name": "Volcanic Rock",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/volcanic_rock.png",
+    "recipe": null
+  },
+  "voltage_converter": {
+    "id": "voltage_converter",
+    "name": "Voltage Converter",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/voltage_converter.png",
+    "recipe": null
+  },
+  "vulcano_blueprint": {
+    "id": "vulcano_blueprint",
+    "name": "Vulcano Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/vulcano.png",
+    "recipe": null
+  },
+  "vulcano_i": {
+    "id": "vulcano_i",
+    "name": "Vulcano I",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/vulcano.png",
+    "recipe": {
+      "magnetic_accelerator": 1,
+      "heavy_gun_parts": 3,
+      "exodus_modules": 1
+    }
+  },
+  "vulcano_ii": {
+    "id": "vulcano_ii",
+    "name": "Vulcano II",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/vulcano.png",
+    "recipe": null
+  },
+  "vulcano_iii": {
+    "id": "vulcano_iii",
+    "name": "Vulcano III",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/vulcano.png",
+    "recipe": null
+  },
+  "vulcano_iv": {
+    "id": "vulcano_iv",
+    "name": "Vulcano IV",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/vulcano.png",
+    "recipe": null
+  },
+  "wasp_driver": {
+    "id": "wasp_driver",
+    "name": "Wasp Driver",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/wasp_driver.png",
+    "recipe": null
+  },
+  "water_filter": {
+    "id": "water_filter",
+    "name": "Water Filter",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/water_filter.png",
+    "recipe": null
+  },
+  "water_pump": {
+    "id": "water_pump",
+    "name": "Water Pump",
+    "stackSize": 3,
+    "imageFilename": "https://cdn.arctracker.io/items/water_pump.png",
+    "recipe": null
+  },
+  "wires": {
+    "id": "wires",
+    "name": "Wires",
+    "stackSize": 15,
+    "imageFilename": "https://cdn.arctracker.io/items/wires.png",
+    "recipe": null
+  },
+  "wolfpack": {
+    "id": "wolfpack",
+    "name": "Wolfpack",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/wolfpack.png",
+    "recipe": {
+      "explosive_compound": 3,
+      "arc_motion_core": 2
+    }
+  },
+  "wolfpack_blueprint": {
+    "id": "wolfpack_blueprint",
+    "name": "Wolfpack Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/wolfpack_blueprint.png",
+    "recipe": null
+  },
+  "yellow_light_stick": {
+    "id": "yellow_light_stick",
+    "name": "Yellow Light Stick",
+    "stackSize": 5,
+    "imageFilename": "https://cdn.arctracker.io/items/yellow_light_stick.png",
+    "recipe": null
+  },
+  "yellow_light_stick_blueprint": {
+    "id": "yellow_light_stick_blueprint",
+    "name": "Yellow Light Stick Blueprint",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/yellow_light_stick.png",
+    "recipe": null
+  },
+  "zipline": {
+    "id": "zipline",
+    "name": "Zipline",
+    "stackSize": 1,
+    "imageFilename": "https://cdn.arctracker.io/items/zipline.png",
+    "recipe": {
+      "rope": 1,
+      "mechanical_components": 1
+    }
+  }
+}
