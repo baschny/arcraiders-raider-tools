@@ -364,6 +364,27 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
     []
   );
 
+  // Reset all quests
+  const handleResetAll = useCallback(() => {
+    const completedQuestsList = actualQuests
+      .filter((q) => completedQuests.has(q.id))
+      .map((q) => q.name);
+
+    if (completedQuestsList.length === 0) return;
+
+    setConfirmDialog({
+      isOpen: true,
+      title: 'Reset All Quests?',
+      message: `Do you want to reset all ${completedQuestsList.length} completed quest(s)?`,
+      questList: completedQuestsList.slice(0, 5),
+      showMore: completedQuestsList.length > 5 ? completedQuestsList.length - 5 : 0,
+      onConfirm: () => {
+        setCompletedQuests(new Set());
+        setConfirmDialog((prev) => ({ ...prev, isOpen: false }));
+      },
+    });
+  }, [actualQuests, completedQuests]);
+
   // Focus on a specific quest
   const focusOnQuest = useCallback(
     (questId: string) => {
@@ -455,6 +476,7 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
           onSearchKeyDown={handleSearchKeyDown}
           onQuestClick={focusOnQuest}
           onMapToggle={toggleQuest}
+          onResetAll={handleResetAll}
         />
 
         <div className="graph-container">

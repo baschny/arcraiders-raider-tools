@@ -15,6 +15,7 @@ interface SidebarProps {
   onSearchKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   onQuestClick: (questId: string) => void;
   onMapToggle: (mapId: string) => void;
+  onResetAll: () => void;
 }
 
 export function Sidebar({
@@ -28,6 +29,7 @@ export function Sidebar({
   onSearchKeyDown,
   onQuestClick,
   onMapToggle,
+  onResetAll,
 }: SidebarProps) {
   return (
     <div className="available-sidebar">
@@ -67,7 +69,16 @@ export function Sidebar({
       </div>
 
       <div className="available-sidebar-header">
-        ⭐ Available Quests ({availableQuests.length})
+        <span>⭐ Available</span>
+        {completedCount > 0 && (
+          <button
+            className="reset-all-button"
+            onClick={onResetAll}
+            title="Reset all completed quests"
+          >
+            Reset all
+          </button>
+        )}
       </div>
 
       <div className="available-quests-list">

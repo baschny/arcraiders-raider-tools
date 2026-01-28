@@ -44,6 +44,31 @@
   color: $text-accent;
   font-size: $font-lg;
   letter-spacing: 0.5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.reset-all-button {
+  padding: 4px 10px;
+  background: rgba(255, 82, 82, 0.2);
+  border: 1px solid rgba(255, 82, 82, 0.5);
+  border-radius: $radius-sm;
+  color: #ff5252;
+  font-size: $font-md;
+  font-weight: 500;
+  cursor: pointer;
+  transition: $transition-default;
+
+  &:hover {
+    background: rgba(255, 82, 82, 0.3);
+    border-color: #ff5252;
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
 }
 
 .sidebar-search {
