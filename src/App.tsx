@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Layout } from './shared/components/Layout';
 import { Dashboard } from './pages/Dashboard';
+import { NotFound } from './pages/NotFound';
 import { ScheduleApp } from './apps/schedule';
 import { CraftCalculatorApp } from './apps/craft-calculator';
 import { QuestsApp } from './apps/quests';
@@ -16,6 +17,7 @@ function App() {
           <Route path="craft-calculator" element={<CraftCalculatorApp />} />
           <Route path="quests" element={<QuestsApp />} />
           <Route path="loot-helper" element={<LootHelperApp />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>
