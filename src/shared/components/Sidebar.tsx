@@ -11,7 +11,7 @@ import {
 } from 'lucide-react';
 
 const NAV_ITEMS = [
-  { path: '/', icon: Home, label: 'Dashboard' },
+  { path: '/', icon: Home, label: 'Home' },
   { path: '/schedule', icon: Calendar, label: 'Event Schedule' },
   { path: '/craft-calculator', icon: Calculator, label: 'Craft Calculator' },
   { path: '/quests', icon: ListTodo, label: 'Quest Tracker' },

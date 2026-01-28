@@ -28,6 +28,26 @@
     .sidebar-toggle-text {
       display: none;
     }
+
+    .sidebar-header {
+      padding: $spacing-sm;
+      justify-content: center;
+    }
+
+    .sidebar-nav {
+      padding: $spacing-sm;
+    }
+
+    .sidebar-nav-item a {
+      padding: $spacing-sm;
+      justify-content: center;
+      gap: 0;
+
+      svg {
+        width: 18px;
+        height: 18px;
+      }
+    }
   }
 }
 
@@ -121,7 +141,12 @@
 .main-content {
   flex: 1;
   overflow: auto;
-  padding: $spacing-xl;
+  padding: 0;
+
+  // Apply padding only to content that needs it
+  &.padded {
+    padding: $content-padding;
+  }
 }
 
 /* Loading & Error states */

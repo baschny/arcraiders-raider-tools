@@ -81,6 +81,7 @@ $font-heading: 'Urbanist', sans-serif;
 $sidebar-width: 280px;
 $sidebar-collapsed-width: 60px;
 $header-height: 60px;
+$content-padding: $spacing-xl; // Standard padding for page content
 
 // Mixin for Urbanist title styling
 @mixin urbanist-title {

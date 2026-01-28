@@ -6,13 +6,13 @@ const TOOLS = [
     path: '/schedule',
     icon: Calendar,
     name: 'Event Schedule',
-    description: 'Visualize the ARC Raiders map events schedule to plan your raids.',
+    description: 'Visualize the ARC Raiders map events schedule in a better overview to plan your raids.',
   },
   {
     path: '/craft-calculator',
     icon: Calculator,
     name: 'Craft Calculator',
-    description: 'Calculate crafting requirements and material needs.',
+    description: 'Calculate how many items to craft to squeeze the most space out of your stash.',
   },
   {
     path: '/quests',
@@ -30,7 +30,7 @@ const TOOLS = [
 
 export function Dashboard() {
   return (
-    <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+    <div className="content-container">
       <div style={{ marginBottom: '32px' }}>
         <h2
           style={{
@@ -46,7 +46,8 @@ export function Dashboard() {
           Raider Tools
         </h2>
         <p style={{ fontSize: '14px', color: '#888', lineHeight: '1.6' }}>
-          Welcome to the unified ARC Raiders tools collection. Choose a tool below to get started.
+          Welcome to my personal ARC Raiders tools collection. I created these for my own usage.<br/>
+            If they be helpful for other people, please let me know. Choose a tool below to get started.
         </p>
       </div>
 

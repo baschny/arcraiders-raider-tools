@@ -3,12 +3,14 @@ import { ChevronDown } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
 
 const TOOLS = [
-  { path: '/', name: 'Dashboard' },
+  { path: '/', name: 'Raider Tools' },
   { path: '/schedule', name: 'Event Schedule' },
   { path: '/craft-calculator', name: 'Craft Calculator' },
   { path: '/quests', name: 'Quest Tracker' },
   { path: '/loot-helper', name: 'Looting Helper' },
 ];
+
+const TOOLS_FOR_SWITCHER = TOOLS.filter((tool) => tool.path !== '/');
 
 export function Header() {
   const navigate = useNavigate();
@@ -42,7 +44,7 @@ export function Header() {
       </h1>
       <div style={{ position: 'relative' }} ref={dropdownRef}>
         <button className="tool-switcher" onClick={() => setIsOpen(!isOpen)}>
-          Switch Tool <ChevronDown size={16} />
+          <span>Switch Tool</span> <ChevronDown size={16} />
         </button>
         {isOpen && (
           <div
@@ -59,7 +61,7 @@ export function Header() {
               zIndex: 1000,
             }}
           >
-            {TOOLS.map((tool) => (
+            {TOOLS_FOR_SWITCHER.map((tool) => (
               <button
                 key={tool.path}
                 onClick={() => handleToolSelect(tool.path)}

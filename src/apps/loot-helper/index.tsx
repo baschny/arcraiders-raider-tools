@@ -269,7 +269,7 @@ export function LootHelperApp() {
   }
 
   return (
-    <div className="main-content">
+    <div className="loot-helper-container">
       <Sidebar
         itemsMap={itemsMap}
         goalItemIds={goalItemIds}

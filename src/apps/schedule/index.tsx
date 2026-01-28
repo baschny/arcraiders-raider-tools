@@ -28,5 +28,9 @@ export function ScheduleApp() {
   if (error) return <ErrorDisplay message={error} />;
   if (!data) return <ErrorDisplay message="No data available" />;
 
-  return <Schedule data={data} />;
+  return (
+    <div className="content-container">
+      <Schedule data={data} />
+    </div>
+  );
 }
