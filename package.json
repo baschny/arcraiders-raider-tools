@@ -11,11 +11,12 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "generate": "npm run generate:quests && npm run generate:items && npm run generate:items-loot-helper && npm run generate:crafting",
+    "generate": "npm run generate:quests && npm run generate:items && npm run generate:items-loot-helper && npm run generate:craftingt && npm run generate:schedule",
     "generate:quests": "./scripts/generate-quest-data.sh",
     "generate:items": "./scripts/generate-item-data.sh",
     "generate:items-loot-helper": "./scripts/generate-item-data-loot-helper.sh",
-    "generate:crafting": "./scripts/generate-crafting-data.sh"
+    "generate:crafting": "./scripts/generate-crafting-data.sh",
+    "generate:schedule": "/bin/cp -f ../arcraiders-data/map-events/map-events.json public/data/schedule/map-events.json"
   },
   "dependencies": {
     "dagre": "^0.8.5",
