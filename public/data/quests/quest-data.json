@@ -137,7 +137,7 @@
       "stella_montis"
     ],
     "previousQuestIds": [
-      "the_league"
+      "with_a_view"
     ],
     "nextQuestIds": [],
     "hasBlueprint": false
@@ -1197,7 +1197,9 @@
     "previousQuestIds": [
       "12_snap_and_salvage"
     ],
-    "nextQuestIds": [],
+    "nextQuestIds": [
+      "movie_night"
+    ],
     "hasBlueprint": false
   }
 ]
