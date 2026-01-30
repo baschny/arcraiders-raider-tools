@@ -79,7 +79,7 @@
       border: 2px solid $border-default;
       border-radius: $radius-sm;
       color: $text-primary;
-      font-size: $font-sm;
+      font-size: $font-md;
 
       &:focus {
         border-color: calc.$border-focus;
@@ -153,7 +153,7 @@
   select {
     width: 90px;
     padding: $spacing-xs $spacing-sm;
-    font-size: $font-sm;
+    font-size: $font-md;
     background: calc.$bg-input;
     border: 2px solid $border-default;
     border-radius: $radius-sm;
@@ -290,7 +290,7 @@
   }
 
   .recommendation-text {
-    font-size: $font-sm;
+    font-size: $font-lg;
     line-height: 1.6;
     color: $text-primary;
     
