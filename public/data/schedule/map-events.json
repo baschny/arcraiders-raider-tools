@@ -440,6 +440,7 @@
         "13": "harvester",
         "15": "lush-blooms",
         "16": "matriarch",
+        "19": "harvester",
         "21": "lush-blooms",
         "22": "matriarch"
       }
@@ -476,15 +477,12 @@
         "1": "launch-tower-loot",
         "3": "matriarch",
         "6": "harvester",
-        "7": "launch-tower-loot",
         "9": "matriarch",
         "12": "harvester",
         "13": "launch-tower-loot",
         "15": "matriarch",
         "18": "harvester",
-        "19": "matriarch",
-        "21": "matriarch",
-        "23": "harvester"
+        "21": "matriarch"
       }
     },
     "blue-gate": {
@@ -494,8 +492,7 @@
         "9": "electromagnetic-storm",
         "13": "locked-gate",
         "17": "night-raid",
-        "21": "locked-gate",
-        "22": "night-raid"
+        "21": "locked-gate"
       },
       "minor": {
         "2": "matriarch",
