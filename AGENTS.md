@@ -133,6 +133,24 @@ Located in `src/shared/components/`:
 
 Use these components instead of creating app-specific versions.
 
+### Icons
+
+**Icon Library**: This project uses [lucide-react](https://lucide.dev/icons/) for all icons.
+
+**Usage**:
+- Import icons from `lucide-react`:
+  ```tsx
+  import { Search, Filter, ChevronDown } from 'lucide-react';
+  ```
+- When adding new icons, always check lucide-react first
+- Lucide provides a comprehensive set of consistent, open-source icons
+- Avoid using custom SVGs or other icon libraries unless absolutely necessary
+
+**Finding Icons**:
+- Browse available icons at https://lucide.dev/icons/
+- Search by keyword to find appropriate icons
+- All icons follow the same naming convention (PascalCase)
+
 ## Development Workflow
 
 ### Setup
