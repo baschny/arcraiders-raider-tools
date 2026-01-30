@@ -32,6 +32,7 @@ export interface Item {
   isWeapon?: boolean | null;
   recipe?: ItemRecipe;
   upgradeCost?: ItemRecipe;
+  craftQuantity?: number;
 }
 
 export interface ItemDatabase {

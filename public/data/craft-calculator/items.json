@@ -7,7 +7,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/acoustic_guitar.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "adrenaline_shot": {
     "id": "adrenaline_shot",
@@ -20,7 +21,8 @@
       "chemicals": 3,
       "plastic_parts": 3
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "advanced_arc_powercell": {
     "id": "advanced_arc_powercell",
@@ -30,7 +32,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/advanced_arc_powercell.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "advanced_electrical_components": {
     "id": "advanced_electrical_components",
@@ -43,7 +46,8 @@
       "electrical_components": 2,
       "wires": 3
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "advanced_mechanical_components": {
     "id": "advanced_mechanical_components",
@@ -56,7 +60,8 @@
       "mechanical_components": 2,
       "steel_spring": 2
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "agave": {
     "id": "agave",
@@ -66,7 +71,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/agave.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "air_freshener": {
     "id": "air_freshener",
@@ -76,7 +82,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/air_freshener.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "alarm_clock": {
     "id": "alarm_clock",
@@ -86,7 +93,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/alarm_clock.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "angled_grip_i": {
     "id": "angled_grip_i",
@@ -99,7 +107,8 @@
       "duct_tape": 1,
       "plastic_parts": 6
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "angled_grip_ii_blueprint": {
     "id": "angled_grip_ii_blueprint",
@@ -109,7 +118,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/angled_grip_ii.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "angled_grip_ii": {
     "id": "angled_grip_ii",
@@ -122,7 +132,8 @@
       "duct_tape": 3,
       "mechanical_components": 2
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "angled_grip_iii_blueprint": {
     "id": "angled_grip_iii_blueprint",
@@ -132,7 +143,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/angled_grip_iii.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "angled_grip_iii": {
     "id": "angled_grip_iii",
@@ -145,7 +157,8 @@
       "duct_tape": 5,
       "mod_components": 2
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "antiseptic": {
     "id": "antiseptic",
@@ -158,7 +171,8 @@
       "chemicals": 10,
       "great_mullein": 2
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "anvil_blueprint": {
     "id": "anvil_blueprint",
@@ -168,7 +182,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/anvil_blueprint.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "anvil_i": {
     "id": "anvil_i",
@@ -181,7 +196,8 @@
       "mechanical_components": 5,
       "simple_gun_parts": 6
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "anvil_ii": {
     "id": "anvil_ii",
@@ -194,7 +210,8 @@
     "upgradeCost": {
       "mechanical_components": 3,
       "simple_gun_parts": 1
-    }
+    },
+    "craftQuantity": 1
   },
   "anvil_iii": {
     "id": "anvil_iii",
@@ -207,7 +224,8 @@
     "upgradeCost": {
       "heavy_gun_parts": 1,
       "mechanical_components": 4
-    }
+    },
+    "craftQuantity": 1
   },
   "anvil_iv": {
     "id": "anvil_iv",
@@ -220,7 +238,8 @@
     "upgradeCost": {
       "heavy_gun_parts": 1,
       "mechanical_components": 4
-    }
+    },
+    "craftQuantity": 1
   },
   "anvil_splitter": {
     "id": "anvil_splitter",
@@ -230,7 +249,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/anvil_splitter.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "aphelion_blueprint": {
     "id": "aphelion_blueprint",
@@ -240,7 +260,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/aphelion.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "aphelion": {
     "id": "aphelion",
@@ -254,7 +275,8 @@
       "magnetic_accelerator": 3,
       "matriarch_reactor": 1
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "apricot": {
     "id": "apricot",
@@ -264,7 +286,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/apricot.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "arc_alloy": {
     "id": "arc_alloy",
@@ -274,7 +297,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/arc_alloy.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "arc_circuitry": {
     "id": "arc_circuitry",
@@ -286,7 +310,8 @@
     "recipe": {
       "arc_alloy": 8
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "arc_coolant": {
     "id": "arc_coolant",
@@ -296,7 +321,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/arc_coolant.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "arc_flex_rubber": {
     "id": "arc_flex_rubber",
@@ -306,7 +332,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/arc_flex_rubber.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "arc_motion_core": {
     "id": "arc_motion_core",
@@ -318,7 +345,8 @@
     "recipe": {
       "arc_alloy": 8
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "arc_performance_steel": {
     "id": "arc_performance_steel",
@@ -328,7 +356,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/arc_performance_steel.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "arc_powercell": {
     "id": "arc_powercell",
@@ -338,7 +367,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/arc_powercell.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "arc_synthetic_resin": {
     "id": "arc_synthetic_resin",
@@ -348,7 +378,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/arc_synthetic_resin.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "arc_thermo_lining": {
     "id": "arc_thermo_lining",
@@ -358,7 +389,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/arc_thermo_lining.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "arpeggio_i": {
     "id": "arpeggio_i",
@@ -371,7 +403,8 @@
       "mechanical_components": 6,
       "simple_gun_parts": 6
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "arpeggio_ii": {
     "id": "arpeggio_ii",
@@ -384,7 +417,8 @@
     "upgradeCost": {
       "mechanical_components": 4,
       "simple_gun_parts": 1
-    }
+    },
+    "craftQuantity": 1
   },
   "arpeggio_iii": {
     "id": "arpeggio_iii",
@@ -397,7 +431,8 @@
     "upgradeCost": {
       "mechanical_components": 5,
       "medium_gun_parts": 1
-    }
+    },
+    "craftQuantity": 1
   },
   "arpeggio_iv": {
     "id": "arpeggio_iv",
@@ -410,7 +445,8 @@
     "upgradeCost": {
       "mechanical_components": 5,
       "medium_gun_parts": 1
-    }
+    },
+    "craftQuantity": 1
   },
   "assorted_seeds": {
     "id": "assorted_seeds",
@@ -420,7 +456,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/assorted_seeds.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "backpack_black_hiker_color": {
     "id": "backpack_black_hiker_color",
@@ -430,7 +467,8 @@
     "imageFilename": null,
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "banana": {
     "id": "banana",
@@ -440,7 +478,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/banana.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "bandage": {
     "id": "bandage",
@@ -452,7 +491,8 @@
     "recipe": {
       "fabric": 5
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "barricade_kit_blueprint": {
     "id": "barricade_kit_blueprint",
@@ -462,7 +502,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/barricade_kit.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "barricade_kit": {
     "id": "barricade_kit",
@@ -474,7 +515,8 @@
     "recipe": {
       "mechanical_components": 1
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "bastion_cell": {
     "id": "bastion_cell",
@@ -484,7 +526,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/bastion_cell.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "battery": {
     "id": "battery",
@@ -494,7 +537,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/battery.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "bettina_blueprint": {
     "id": "bettina_blueprint",
@@ -504,7 +548,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/bettina_blueprint.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "bettina_i": {
     "id": "bettina_i",
@@ -518,7 +563,8 @@
       "canister": 3,
       "heavy_gun_parts": 3
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "bettina_ii": {
     "id": "bettina_ii",
@@ -531,7 +577,8 @@
     "upgradeCost": {
       "advanced_mechanical_components": 1,
       "heavy_gun_parts": 2
-    }
+    },
+    "craftQuantity": 1
   },
   "bettina_iii": {
     "id": "bettina_iii",
@@ -544,7 +591,8 @@
     "upgradeCost": {
       "advanced_mechanical_components": 1,
       "heavy_gun_parts": 2
-    }
+    },
+    "craftQuantity": 1
   },
   "bettina_iv": {
     "id": "bettina_iv",
@@ -557,7 +605,8 @@
     "upgradeCost": {
       "advanced_mechanical_components": 2,
       "heavy_gun_parts": 2
-    }
+    },
+    "craftQuantity": 1
   },
   "bicycle_pump": {
     "id": "bicycle_pump",
@@ -567,7 +616,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/bicycle_pump.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "binoculars": {
     "id": "binoculars",
@@ -580,7 +630,8 @@
       "plastic_parts": 8,
       "rubber_parts": 4
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "blaze_grenade_blueprint": {
     "id": "blaze_grenade_blueprint",
@@ -590,7 +641,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/blaze_grenade.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "blaze_grenade_trap": {
     "id": "blaze_grenade_trap",
@@ -603,7 +655,8 @@
       "blaze_grenade": 1,
       "wires": 1
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "blaze_grenade": {
     "id": "blaze_grenade",
@@ -616,7 +669,8 @@
       "explosive_compound": 1,
       "oil": 2
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "bloated_tuna_can": {
     "id": "bloated_tuna_can",
@@ -626,7 +680,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/bloated_tuna_can.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "blue_gate_cellar_key": {
     "id": "blue_gate_cellar_key",
@@ -636,7 +691,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/blue_gate_cellar_key.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "blue_gate_communication_tower_key": {
     "id": "blue_gate_communication_tower_key",
@@ -646,7 +702,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/blue_gate_communication_tower_key.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "blue_gate_confiscation_room_key": {
     "id": "blue_gate_confiscation_room_key",
@@ -656,7 +713,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/blue_gate_confiscation_room_key.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "blue_gate_village_key": {
     "id": "blue_gate_village_key",
@@ -666,7 +724,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/blue_gate_village_key.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "blue_light_stick_blueprint": {
     "id": "blue_light_stick_blueprint",
@@ -676,7 +735,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/blue_light_stick_blueprint.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "blue_light_stick": {
     "id": "blue_light_stick",
@@ -688,7 +748,8 @@
     "recipe": {
       "chemicals": 3
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "blue_radio_renegade_color": {
     "id": "blue_radio_renegade_color",
@@ -698,7 +759,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/blue_radio_renegade_color.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "bobcat_blueprint": {
     "id": "bobcat_blueprint",
@@ -708,7 +770,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/bobcat.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "bobcat_i": {
     "id": "bobcat_i",
@@ -722,7 +785,8 @@
       "light_gun_parts": 3,
       "magnetic_accelerator": 1
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "bobcat_ii": {
     "id": "bobcat_ii",
@@ -735,7 +799,8 @@
     "upgradeCost": {
       "advanced_mechanical_components": 2,
       "light_gun_parts": 1
-    }
+    },
+    "craftQuantity": 1
   },
   "bobcat_iii": {
     "id": "bobcat_iii",
@@ -748,7 +813,8 @@
     "upgradeCost": {
       "advanced_mechanical_components": 2,
       "light_gun_parts": 3
-    }
+    },
+    "craftQuantity": 1
   },
   "bobcat_iv": {
     "id": "bobcat_iv",
@@ -761,7 +827,8 @@
     "upgradeCost": {
       "advanced_mechanical_components": 2,
       "light_gun_parts": 3
-    }
+    },
+    "craftQuantity": 1
   },
   "bombardier_cell": {
     "id": "bombardier_cell",
@@ -771,7 +838,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/bombardier_cell.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "breathtaking_snow_globe": {
     "id": "breathtaking_snow_globe",
@@ -781,7 +849,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/breathtaking_snow_globe.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "broken_flashlight": {
     "id": "broken_flashlight",
@@ -791,7 +860,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/broken_flashlight.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "broken_guidance_system": {
     "id": "broken_guidance_system",
@@ -801,7 +871,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/broken_guidance_system.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "broken_handheld_radio": {
     "id": "broken_handheld_radio",
@@ -811,7 +882,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/broken_handheld_radio.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "broken_taser": {
     "id": "broken_taser",
@@ -821,7 +893,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/broken_taser.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "burgerboy": {
     "id": "burgerboy",
@@ -831,7 +904,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/burgerboy.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "buried_city_hospital_key": {
     "id": "buried_city_hospital_key",
@@ -841,7 +915,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/buried_city_hospital_key.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "buried_city_jkv_employee_access_card": {
     "id": "buried_city_jkv_employee_access_card",
@@ -851,7 +926,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/buried_city_jkv_employee_access_card.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "buried_city_residential_master_key": {
     "id": "buried_city_residential_master_key",
@@ -861,7 +937,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/buried_city_residential_master_key.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "buried_city_town_hall_key": {
     "id": "buried_city_town_hall_key",
@@ -871,7 +948,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/buried_city_town_hall_key.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "burletta_blueprint": {
     "id": "burletta_blueprint",
@@ -881,7 +959,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/burletta.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "burletta_i": {
     "id": "burletta_i",
@@ -894,7 +973,8 @@
       "mechanical_components": 3,
       "simple_gun_parts": 3
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "burletta_ii": {
     "id": "burletta_ii",
@@ -907,7 +987,8 @@
     "upgradeCost": {
       "mechanical_components": 3,
       "simple_gun_parts": 1
-    }
+    },
+    "craftQuantity": 1
   },
   "burletta_iii": {
     "id": "burletta_iii",
@@ -920,7 +1001,8 @@
     "upgradeCost": {
       "mechanical_components": 3,
       "simple_gun_parts": 1
-    }
+    },
+    "craftQuantity": 1
   },
   "burletta_iv": {
     "id": "burletta_iv",
@@ -933,7 +1015,8 @@
     "upgradeCost": {
       "light_gun_parts": 1,
       "mechanical_components": 4
-    }
+    },
+    "craftQuantity": 1
   },
   "burned_arc_circuitry": {
     "id": "burned_arc_circuitry",
@@ -943,7 +1026,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/burned_arc_circuitry.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "burnt_out_candles": {
     "id": "burnt_out_candles",
@@ -953,7 +1037,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/burnt_out_candles.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "camera_lens": {
     "id": "camera_lens",
@@ -963,7 +1048,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/camera_lens.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "candle_holder": {
     "id": "candle_holder",
@@ -973,7 +1059,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/candle_holder.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "candleberries": {
     "id": "candleberries",
@@ -983,7 +1070,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/candleberries.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "canister": {
     "id": "canister",
@@ -993,7 +1081,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/canister.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "cans_backpack_attachment": {
     "id": "cans_backpack_attachment",
@@ -1003,7 +1092,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/cans.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "cat_bed": {
     "id": "cat_bed",
@@ -1013,7 +1103,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/cat_bed.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "celeste_journal": {
     "id": "celeste_journal",
@@ -1023,7 +1114,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/celestes_journal.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "cheer": {
     "id": "cheer",
@@ -1033,7 +1125,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/cheer.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "chemicals": {
     "id": "chemicals",
@@ -1043,7 +1136,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/chemicals.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "coffee_pot": {
     "id": "coffee_pot",
@@ -1053,7 +1147,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/coffee_pot.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "combat_mk1": {
     "id": "combat_mk1",
@@ -1066,7 +1161,8 @@
       "plastic_parts": 6,
       "rubber_parts": 6
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "combat_mk2": {
     "id": "combat_mk2",
@@ -1079,7 +1175,8 @@
       "electrical_components": 2,
       "magnet": 3
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "combat_mk3_aggressive_blueprint": {
     "id": "combat_mk3_aggressive_blueprint",
@@ -1089,7 +1186,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/combat_mk3_aggressive.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "combat_mk3_aggressive": {
     "id": "combat_mk3_aggressive",
@@ -1102,7 +1200,8 @@
       "advanced_electrical_components": 2,
       "processor": 3
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "combat_mk3_flanking_blueprint": {
     "id": "combat_mk3_flanking_blueprint",
@@ -1112,7 +1211,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/combat_mk3_flanking.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "combat_mk3_flanking": {
     "id": "combat_mk3_flanking",
@@ -1125,7 +1225,8 @@
       "advanced_electrical_components": 2,
       "processor": 3
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "compensator_i": {
     "id": "compensator_i",
@@ -1138,7 +1239,8 @@
       "metal_parts": 6,
       "wires": 1
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "compensator_ii_blueprint": {
     "id": "compensator_ii_blueprint",
@@ -1148,7 +1250,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/compensator_ii_blueprint.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "compensator_ii": {
     "id": "compensator_ii",
@@ -1161,7 +1264,8 @@
       "mechanical_components": 2,
       "wires": 4
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "compensator_iii_blueprint": {
     "id": "compensator_iii_blueprint",
@@ -1171,7 +1275,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/compensator_iii.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "compensator_iii": {
     "id": "compensator_iii",
@@ -1184,7 +1289,8 @@
       "mod_components": 2,
       "wires": 8
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "complex_gun_parts_blueprint": {
     "id": "complex_gun_parts_blueprint",
@@ -1194,7 +1300,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/complex_gun_parts_blueprint.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "complex_gun_parts": {
     "id": "complex_gun_parts",
@@ -1208,7 +1315,8 @@
       "light_gun_parts": 2,
       "medium_gun_parts": 2
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "coolant": {
     "id": "coolant",
@@ -1218,7 +1326,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/coolant.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "cooling_coil": {
     "id": "cooling_coil",
@@ -1228,7 +1337,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/cooling_coil.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "cooling_fan": {
     "id": "cooling_fan",
@@ -1238,7 +1348,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/cooling_fan.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "cracked_bioscanner": {
     "id": "cracked_bioscanner",
@@ -1248,7 +1359,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/cracked_bioscanner.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "crude_explosives": {
     "id": "crude_explosives",
@@ -1260,7 +1372,8 @@
     "recipe": {
       "chemicals": 6
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "crumpled_plastic_bottle": {
     "id": "crumpled_plastic_bottle",
@@ -1270,7 +1383,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/crumpled_plastic_bottle.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "dam_control_tower_key": {
     "id": "dam_control_tower_key",
@@ -1280,7 +1394,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/dam_control_tower_key.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "dam_staff_room_key": {
     "id": "dam_staff_room_key",
@@ -1290,7 +1405,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/dam_staff_room_key.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "dam_surveillance_key": {
     "id": "dam_surveillance_key",
@@ -1300,7 +1416,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/dam_surveillance_key.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "dam_testing_annex_key": {
     "id": "dam_testing_annex_key",
@@ -1310,7 +1427,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/dam_testing_annex_key.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "dam_utility_key": {
     "id": "dam_utility_key",
@@ -1320,7 +1438,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/dam_utility_key.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "damaged_arc_motion_core": {
     "id": "damaged_arc_motion_core",
@@ -1330,7 +1449,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/damaged_arc_motion_core.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "damaged_arc_powercell": {
     "id": "damaged_arc_powercell",
@@ -1340,7 +1460,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/damaged_arc_powercell.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "damaged_fireball_burner": {
     "id": "damaged_fireball_burner",
@@ -1350,7 +1471,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/damaged_fireball_burner.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "damaged_heat_sink": {
     "id": "damaged_heat_sink",
@@ -1360,7 +1482,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/damaged_heat_sink.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "damaged_hornet_driver": {
     "id": "damaged_hornet_driver",
@@ -1370,7 +1493,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/damaged_hornet_driver.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "damaged_rocketeer_driver": {
     "id": "damaged_rocketeer_driver",
@@ -1380,7 +1504,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/damaged_rocketeer_driver.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "damaged_snitch_scanner": {
     "id": "damaged_snitch_scanner",
@@ -1390,7 +1515,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/damaged_snitch_scanner.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "damaged_tick_pod": {
     "id": "damaged_tick_pod",
@@ -1400,7 +1526,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/damaged_tick_pod.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "damaged_wasp_driver": {
     "id": "damaged_wasp_driver",
@@ -1410,7 +1537,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/damaged_wasp_driver.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "dart_board": {
     "id": "dart_board",
@@ -1420,7 +1548,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/dart_board.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "deadline_blueprint": {
     "id": "deadline_blueprint",
@@ -1430,7 +1559,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/deadline.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "deadline": {
     "id": "deadline",
@@ -1443,7 +1573,8 @@
       "arc_circuitry": 2,
       "explosive_compound": 3
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "defibrillator_blueprint": {
     "id": "defibrillator_blueprint",
@@ -1453,7 +1584,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/defibrillator.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "defibrillator": {
     "id": "defibrillator",
@@ -1466,7 +1598,8 @@
       "moss": 1,
       "plastic_parts": 9
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "deflated_football": {
     "id": "deflated_football",
@@ -1476,7 +1609,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/deflated_football.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "degraded_arc_rubber": {
     "id": "degraded_arc_rubber",
@@ -1486,7 +1620,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/degraded_arc_rubber.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "diving_goggles": {
     "id": "diving_goggles",
@@ -1496,7 +1631,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/diving_goggles.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "dog_collar": {
     "id": "dog_collar",
@@ -1506,7 +1642,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/dog_collar.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "door_blocker": {
     "id": "door_blocker",
@@ -1519,7 +1656,8 @@
       "metal_parts": 3,
       "rubber_parts": 3
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "dried_out_arc_resin": {
     "id": "dried_out_arc_resin",
@@ -1529,7 +1667,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/dried_out_arc_resin.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "duct_tape": {
     "id": "duct_tape",
@@ -1539,7 +1678,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/duct_tape.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "durable_cloth": {
     "id": "durable_cloth",
@@ -1551,7 +1691,8 @@
     "recipe": {
       "fabric": 14
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "electrical_components": {
     "id": "electrical_components",
@@ -1564,7 +1705,8 @@
       "plastic_parts": 8,
       "rubber_parts": 4
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "empty_wine_bottle": {
     "id": "empty_wine_bottle",
@@ -1574,7 +1716,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/empty_wine_bottle.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "energy_clip": {
     "id": "energy_clip",
@@ -1587,7 +1730,8 @@
       "advanced_arc_powercell": 1,
       "battery": 2
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 5
   },
   "equalizer_blueprint": {
     "id": "equalizer_blueprint",
@@ -1597,7 +1741,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/equalizer.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "equalizer": {
     "id": "equalizer",
@@ -1611,7 +1756,8 @@
       "magnetic_accelerator": 3,
       "queen_reactor": 1
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "esr_analyzer": {
     "id": "esr_analyzer",
@@ -1621,7 +1767,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/esr_analyzer.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "exodus_modules": {
     "id": "exodus_modules",
@@ -1631,7 +1778,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/exodus_modules.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "experimental_seed_sample": {
     "id": "experimental_seed_sample",
@@ -1641,7 +1789,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/experimental_seed_sample.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "expired_pasta": {
     "id": "expired_pasta",
@@ -1651,7 +1800,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/expired_pasta.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "expired_respirator": {
     "id": "expired_respirator",
@@ -1661,7 +1811,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/expired_respirator.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "explosive_compound": {
     "id": "explosive_compound",
@@ -1674,7 +1825,8 @@
       "crude_explosives": 2,
       "oil": 2
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "explosive_mine_blueprint": {
     "id": "explosive_mine_blueprint",
@@ -1684,7 +1836,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/explosive_mine.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "explosive_mine": {
     "id": "explosive_mine",
@@ -1697,7 +1850,8 @@
       "explosive_compound": 1,
       "sensors": 1
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "extended_barrel_blueprint": {
     "id": "extended_barrel_blueprint",
@@ -1707,7 +1861,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/extended_barrel.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "extended_barrel": {
     "id": "extended_barrel",
@@ -1720,7 +1875,8 @@
       "mod_components": 2,
       "wires": 8
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "extended_light_mag_i": {
     "id": "extended_light_mag_i",
@@ -1733,7 +1889,8 @@
       "plastic_parts": 6,
       "steel_spring": 1
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "extended_light_mag_ii_blueprint": {
     "id": "extended_light_mag_ii_blueprint",
@@ -1743,7 +1900,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/extended_light_mag_ii.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "extended_light_mag_ii": {
     "id": "extended_light_mag_ii",
@@ -1756,7 +1914,8 @@
       "mechanical_components": 2,
       "steel_spring": 3
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "extended_light_mag_iii_blueprint": {
     "id": "extended_light_mag_iii_blueprint",
@@ -1766,7 +1925,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/extended_light_mag_iii.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "extended_light_mag_iii": {
     "id": "extended_light_mag_iii",
@@ -1779,7 +1939,8 @@
       "mod_components": 2,
       "steel_spring": 5
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "extended_medium_mag_i": {
     "id": "extended_medium_mag_i",
@@ -1792,7 +1953,8 @@
       "plastic_parts": 6,
       "steel_spring": 1
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "extended_medium_mag_ii_blueprint": {
     "id": "extended_medium_mag_ii_blueprint",
@@ -1802,7 +1964,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/extended_medium_mag_ii_blueprint.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "extended_medium_mag_ii": {
     "id": "extended_medium_mag_ii",
@@ -1815,7 +1978,8 @@
       "mechanical_components": 2,
       "steel_spring": 3
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "extended_medium_mag_iii_blueprint": {
     "id": "extended_medium_mag_iii_blueprint",
@@ -1825,7 +1989,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/extended_medium_mag_iii.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "extended_medium_mag_iii": {
     "id": "extended_medium_mag_iii",
@@ -1838,7 +2003,8 @@
       "mod_components": 2,
       "steel_spring": 5
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "extended_shotgun_mag_i": {
     "id": "extended_shotgun_mag_i",
@@ -1851,7 +2017,8 @@
       "plastic_parts": 6,
       "steel_spring": 1
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "extended_shotgun_mag_ii_blueprint": {
     "id": "extended_shotgun_mag_ii_blueprint",
@@ -1861,7 +2028,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/extended_shotgun_mag_ii.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "extended_shotgun_mag_ii": {
     "id": "extended_shotgun_mag_ii",
@@ -1874,7 +2042,8 @@
       "mechanical_components": 2,
       "steel_spring": 3
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "extended_shotgun_mag_iii_blueprint": {
     "id": "extended_shotgun_mag_iii_blueprint",
@@ -1884,7 +2053,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/extended_shotgun_mag_iii.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "extended_shotgun_mag_iii": {
     "id": "extended_shotgun_mag_iii",
@@ -1897,7 +2067,8 @@
     "upgradeCost": {
       "mod_components": 2,
       "steel_spring": 5
-    }
+    },
+    "craftQuantity": 1
   },
   "fabric": {
     "id": "fabric",
@@ -1907,7 +2078,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/fabric.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "faded_photograph": {
     "id": "faded_photograph",
@@ -1917,7 +2089,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/faded_photograph.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "ferro_i": {
     "id": "ferro_i",
@@ -1930,7 +2103,8 @@
       "metal_parts": 5,
       "rubber_parts": 2
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "ferro_ii": {
     "id": "ferro_ii",
@@ -1942,7 +2116,8 @@
     "recipe": null,
     "upgradeCost": {
       "metal_parts": 7
-    }
+    },
+    "craftQuantity": 1
   },
   "ferro_iii": {
     "id": "ferro_iii",
@@ -1955,7 +2130,8 @@
     "upgradeCost": {
       "metal_parts": 9,
       "simple_gun_parts": 1
-    }
+    },
+    "craftQuantity": 1
   },
   "ferro_iv": {
     "id": "ferro_iv",
@@ -1968,7 +2144,8 @@
     "upgradeCost": {
       "mechanical_components": 1,
       "simple_gun_parts": 1
-    }
+    },
+    "craftQuantity": 1
   },
   "fertilizer": {
     "id": "fertilizer",
@@ -1978,7 +2155,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/fertilizer.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "film_reel": {
     "id": "film_reel",
@@ -1988,7 +2166,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/film_reel.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "fine_wristwatch": {
     "id": "fine_wristwatch",
@@ -1998,7 +2177,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/fine_wristwatch.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "fireball_burner": {
     "id": "fireball_burner",
@@ -2008,7 +2188,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/fireball_burner.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "firecracker": {
     "id": "firecracker",
@@ -2021,7 +2202,8 @@
       "chemicals": 2,
       "plastic_parts": 4
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "fireworks_box_blueprint": {
     "id": "fireworks_box_blueprint",
@@ -2031,7 +2213,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/fireworks_box.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "fireworks_box": {
     "id": "fireworks_box",
@@ -2044,7 +2227,8 @@
       "explosive_compound": 1,
       "pop_trigger": 3
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "first_wave_compass": {
     "id": "first_wave_compass",
@@ -2054,7 +2238,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/first_wave_compass.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "first_wave_rations": {
     "id": "first_wave_rations",
@@ -2064,7 +2249,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/first_wave_rations.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "first_wave_tape": {
     "id": "first_wave_tape",
@@ -2074,7 +2260,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/first_wave_tape.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "flame_spray": {
     "id": "flame_spray",
@@ -2087,7 +2274,8 @@
       "air_freshener": 1,
       "fireball_burner": 1
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "flow_controller": {
     "id": "flow_controller",
@@ -2097,7 +2285,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/flow_controller.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "flushing_terminal_key": {
     "id": "flushing_terminal_key",
@@ -2107,7 +2296,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/flushing_terminal_key.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "fossilized_lightning": {
     "id": "fossilized_lightning",
@@ -2117,7 +2307,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/fossilized_lightning.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "free_loadout_augment": {
     "id": "free_loadout_augment",
@@ -2127,7 +2318,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/free_loadout_augment.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "frequency_modulation_box": {
     "id": "frequency_modulation_box",
@@ -2137,7 +2329,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/frequency_modulation_box.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "fried_motherboard": {
     "id": "fried_motherboard",
@@ -2147,7 +2340,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/fried_motherboard.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "fruit_mix": {
     "id": "fruit_mix",
@@ -2161,7 +2355,8 @@
       "lemon": 1,
       "prickly_pear": 1
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "frying_pan": {
     "id": "frying_pan",
@@ -2171,7 +2366,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/frying_pan.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "garlic_press": {
     "id": "garlic_press",
@@ -2181,7 +2377,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/garlic_press.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "gas_grenade_trap": {
     "id": "gas_grenade_trap",
@@ -2194,7 +2391,8 @@
       "gas_grenade": 1,
       "wires": 1
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "gas_grenade": {
     "id": "gas_grenade",
@@ -2207,7 +2405,8 @@
       "chemicals": 4,
       "rubber_parts": 2
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "gas_mine_blueprint": {
     "id": "gas_mine_blueprint",
@@ -2217,7 +2416,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/gas_mine.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "gas_mine": {
     "id": "gas_mine",
@@ -2230,7 +2430,8 @@
       "chemicals": 4,
       "rubber_parts": 2
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "geiger_counter": {
     "id": "geiger_counter",
@@ -2240,7 +2441,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/geiger_counter.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "great_mullein": {
     "id": "great_mullein",
@@ -2250,7 +2452,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/great_mullein.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "green_light_stick_blueprint": {
     "id": "green_light_stick_blueprint",
@@ -2260,7 +2463,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/green_light_stick.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "green_light_stick": {
     "id": "green_light_stick",
@@ -2272,7 +2476,8 @@
     "recipe": {
       "chemicals": 3
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "hairpin_i": {
     "id": "hairpin_i",
@@ -2285,7 +2490,8 @@
       "metal_parts": 2,
       "plastic_parts": 5
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "hairpin_ii": {
     "id": "hairpin_ii",
@@ -2297,7 +2503,8 @@
     "recipe": null,
     "upgradeCost": {
       "metal_parts": 8
-    }
+    },
+    "craftQuantity": 1
   },
   "hairpin_iii": {
     "id": "hairpin_iii",
@@ -2310,7 +2517,8 @@
     "upgradeCost": {
       "metal_parts": 9,
       "simple_gun_parts": 1
-    }
+    },
+    "craftQuantity": 1
   },
   "hairpin_iv": {
     "id": "hairpin_iv",
@@ -2323,7 +2531,8 @@
     "upgradeCost": {
       "mechanical_components": 1,
       "simple_gun_parts": 1
-    }
+    },
+    "craftQuantity": 1
   },
   "headphones": {
     "id": "headphones",
@@ -2333,7 +2542,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/headphones.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "heavy_ammo": {
     "id": "heavy_ammo",
@@ -2346,7 +2556,8 @@
       "chemicals": 2,
       "metal_parts": 3
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 10
   },
   "heavy_fuze_grenade": {
     "id": "heavy_fuze_grenade",
@@ -2359,7 +2570,8 @@
       "canister": 2,
       "explosive_compound": 1
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "heavy_gun_parts_blueprint": {
     "id": "heavy_gun_parts_blueprint",
@@ -2369,7 +2581,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/heavy_gun_parts.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "heavy_gun_parts": {
     "id": "heavy_gun_parts",
@@ -2381,7 +2594,8 @@
     "recipe": {
       "simple_gun_parts": 4
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "heavy_shield": {
     "id": "heavy_shield",
@@ -2394,7 +2608,8 @@
       "power_rod": 1,
       "voltage_converter": 2
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "herbal_bandage": {
     "id": "herbal_bandage",
@@ -2407,7 +2622,8 @@
       "durable_cloth": 1,
       "great_mullein": 1
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "horizontal_grip_blueprint": {
     "id": "horizontal_grip_blueprint",
@@ -2417,7 +2633,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/horizontal_grip.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "horizontal_grip": {
     "id": "horizontal_grip",
@@ -2430,7 +2647,8 @@
       "duct_tape": 5,
       "mod_components": 2
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "hornet_driver": {
     "id": "hornet_driver",
@@ -2440,7 +2658,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/hornet_driver.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "household_cleaner": {
     "id": "household_cleaner",
@@ -2450,7 +2669,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/household_cleaner.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "hullcracker_blueprint": {
     "id": "hullcracker_blueprint",
@@ -2460,7 +2680,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/hullcracker.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "hullcracker_i": {
     "id": "hullcracker_i",
@@ -2474,7 +2695,8 @@
       "heavy_gun_parts": 3,
       "magnetic_accelerator": 1
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "hullcracker_ii": {
     "id": "hullcracker_ii",
@@ -2487,7 +2709,8 @@
     "upgradeCost": {
       "advanced_mechanical_components": 1,
       "heavy_gun_parts": 2
-    }
+    },
+    "craftQuantity": 1
   },
   "hullcracker_iii": {
     "id": "hullcracker_iii",
@@ -2500,7 +2723,8 @@
     "upgradeCost": {
       "advanced_mechanical_components": 2,
       "heavy_gun_parts": 1
-    }
+    },
+    "craftQuantity": 1
   },
   "hullcracker_iv": {
     "id": "hullcracker_iv",
@@ -2513,7 +2737,8 @@
     "upgradeCost": {
       "advanced_mechanical_components": 2,
       "heavy_gun_parts": 3
-    }
+    },
+    "craftQuantity": 1
   },
   "humidifier": {
     "id": "humidifier",
@@ -2523,7 +2748,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/humidifier.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "ice_cream_scooper": {
     "id": "ice_cream_scooper",
@@ -2533,7 +2759,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/ice_cream_scooper.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "il_toro_blueprint": {
     "id": "il_toro_blueprint",
@@ -2543,7 +2770,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/il_toro.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "il_toro_i": {
     "id": "il_toro_i",
@@ -2556,7 +2784,8 @@
       "mechanical_components": 5,
       "simple_gun_parts": 6
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "il_toro_ii": {
     "id": "il_toro_ii",
@@ -2569,7 +2798,8 @@
     "upgradeCost": {
       "mechanical_components": 3,
       "simple_gun_parts": 1
-    }
+    },
+    "craftQuantity": 1
   },
   "il_toro_iii": {
     "id": "il_toro_iii",
@@ -2582,7 +2812,8 @@
     "upgradeCost": {
       "heavy_gun_parts": 1,
       "mechanical_components": 4
-    }
+    },
+    "craftQuantity": 1
   },
   "il_toro_iv": {
     "id": "il_toro_iv",
@@ -2595,7 +2826,8 @@
     "upgradeCost": {
       "heavy_gun_parts": 1,
       "mechanical_components": 4
-    }
+    },
+    "craftQuantity": 1
   },
   "impure_arc_coolant": {
     "id": "impure_arc_coolant",
@@ -2605,7 +2837,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/impure_arc_coolant.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "industrial_battery": {
     "id": "industrial_battery",
@@ -2615,7 +2848,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/industrial_battery.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "industrial_charger": {
     "id": "industrial_charger",
@@ -2625,7 +2859,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/industrial_charger.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "industrial_magnet": {
     "id": "industrial_magnet",
@@ -2635,7 +2870,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/industrial_magnet.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "ion_sputter": {
     "id": "ion_sputter",
@@ -2645,7 +2881,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/ion_sputter.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "jolt_mine_blueprint": {
     "id": "jolt_mine_blueprint",
@@ -2655,7 +2892,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/jolt_mine.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "jolt_mine": {
     "id": "jolt_mine",
@@ -2668,7 +2906,8 @@
       "battery": 1,
       "electrical_components": 1
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "junior_outfit": {
     "id": "junior_outfit",
@@ -2678,7 +2917,8 @@
     "imageFilename": null,
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "jupiter_blueprint": {
     "id": "jupiter_blueprint",
@@ -2688,7 +2928,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/jupiter.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "jupiter": {
     "id": "jupiter",
@@ -2702,7 +2943,8 @@
       "magnetic_accelerator": 3,
       "queen_reactor": 1
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "kettle_i": {
     "id": "kettle_i",
@@ -2715,7 +2957,8 @@
       "metal_parts": 6,
       "rubber_parts": 8
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "kettle_ii": {
     "id": "kettle_ii",
@@ -2725,7 +2968,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/kettle.png",
     "isWeapon": true,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "kettle_iii": {
     "id": "kettle_iii",
@@ -2735,7 +2979,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/kettle.png",
     "isWeapon": true,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "kettle_iv": {
     "id": "kettle_iv",
@@ -2745,7 +2990,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/kettle.png",
     "isWeapon": true,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "kinetic_converter_blueprint": {
     "id": "kinetic_converter_blueprint",
@@ -2755,7 +3001,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/kinetic_converter.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "kinetic_converter": {
     "id": "kinetic_converter",
@@ -2765,7 +3012,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/kinetic_converter.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "laboratory_reagents": {
     "id": "laboratory_reagents",
@@ -2775,7 +3023,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/laboratory_reagents.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "lances_mixtape_5th_edition": {
     "id": "lances_mixtape_5th_edition",
@@ -2785,7 +3034,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/lances_mixtape_5th_edition.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "launcher_ammo": {
     "id": "launcher_ammo",
@@ -2798,7 +3048,8 @@
       "arc_motion_core": 1,
       "crude_explosives": 2
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 6
   },
   "leaper_pulse_unit": {
     "id": "leaper_pulse_unit",
@@ -2808,7 +3059,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/leaper_pulse_unit.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "lemon": {
     "id": "lemon",
@@ -2818,7 +3070,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/lemon.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "lidar_scanner": {
     "id": "lidar_scanner",
@@ -2828,7 +3081,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/lidar_scanner.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "light_ammo": {
     "id": "light_ammo",
@@ -2841,7 +3095,8 @@
       "chemicals": 2,
       "metal_parts": 3
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 25
   },
   "light_bulb": {
     "id": "light_bulb",
@@ -2851,7 +3106,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/light_bulb.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "light_gun_parts_blueprint": {
     "id": "light_gun_parts_blueprint",
@@ -2861,7 +3117,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/light_gun_parts_blueprint.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "light_gun_parts": {
     "id": "light_gun_parts",
@@ -2873,7 +3130,8 @@
     "recipe": {
       "simple_gun_parts": 4
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "light_impact_grenade": {
     "id": "light_impact_grenade",
@@ -2886,7 +3144,8 @@
       "chemicals": 3,
       "plastic_parts": 2
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "light_shield": {
     "id": "light_shield",
@@ -2899,7 +3158,8 @@
       "arc_alloy": 2,
       "plastic_parts": 4
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "lightweight_stock_blueprint": {
     "id": "lightweight_stock_blueprint",
@@ -2909,7 +3169,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/lightweight_stock_blueprint.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "lightweight_stock": {
     "id": "lightweight_stock",
@@ -2922,7 +3183,8 @@
       "duct_tape": 5,
       "mod_components": 2
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "lil_smoke_grenade": {
     "id": "lil_smoke_grenade",
@@ -2935,7 +3197,8 @@
       "chemicals": 5,
       "plastic_parts": 1
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "looting_mk1": {
     "id": "looting_mk1",
@@ -2948,7 +3211,8 @@
       "plastic_parts": 6,
       "rubber_parts": 6
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "looting_mk2": {
     "id": "looting_mk2",
@@ -2961,7 +3225,8 @@
       "electrical_components": 2,
       "magnet": 3
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "looting_mk3_cautious": {
     "id": "looting_mk3_cautious",
@@ -2974,7 +3239,8 @@
       "advanced_electrical_components": 2,
       "processor": 3
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "looting_mk3_safekeeper": {
     "id": "looting_mk3_safekeeper",
@@ -2984,7 +3250,8 @@
     "imageFilename": null,
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "looting_mk3_survivor_blueprint": {
     "id": "looting_mk3_survivor_blueprint",
@@ -2994,7 +3261,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/looting_mk3_survivor_blueprint.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "looting_mk3_survivor": {
     "id": "looting_mk3_survivor",
@@ -3007,7 +3275,8 @@
       "advanced_electrical_components": 2,
       "processor": 3
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "lure_grenade_blueprint": {
     "id": "lure_grenade_blueprint",
@@ -3017,7 +3286,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/lure_grenade.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "lure_grenade_trap": {
     "id": "lure_grenade_trap",
@@ -3030,7 +3300,8 @@
       "lure_grenade": 1,
       "wires": 1
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "lure_grenade": {
     "id": "lure_grenade",
@@ -3043,7 +3314,8 @@
       "electrical_components": 1,
       "speaker_component": 1
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "magnet": {
     "id": "magnet",
@@ -3053,7 +3325,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/magnet.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "magnetic_accelerator": {
     "id": "magnetic_accelerator",
@@ -3066,7 +3339,8 @@
       "advanced_mechanical_components": 2,
       "arc_motion_core": 2
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "magnetron": {
     "id": "magnetron",
@@ -3076,7 +3350,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/magnetron.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "major_aivas_patch": {
     "id": "major_aivas_patch",
@@ -3086,7 +3361,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/major_aivas_patch.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "matriarch_reactor": {
     "id": "matriarch_reactor",
@@ -3096,7 +3372,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/matriarch_reactor.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "mechanical_components": {
     "id": "mechanical_components",
@@ -3109,7 +3386,8 @@
       "metal_parts": 7,
       "rubber_parts": 3
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "medium_ammo": {
     "id": "medium_ammo",
@@ -3122,7 +3400,8 @@
       "chemicals": 2,
       "metal_parts": 3
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 20
   },
   "medium_gun_parts_blueprint": {
     "id": "medium_gun_parts_blueprint",
@@ -3132,7 +3411,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/medium_gun_parts_blueprint.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "medium_gun_parts": {
     "id": "medium_gun_parts",
@@ -3144,7 +3424,8 @@
     "recipe": {
       "simple_gun_parts": 4
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "medium_shield": {
     "id": "medium_shield",
@@ -3157,7 +3438,8 @@
       "arc_circuitry": 1,
       "battery": 4
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "metal_brackets": {
     "id": "metal_brackets",
@@ -3167,7 +3449,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/metal_brackets.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "metal_parts": {
     "id": "metal_parts",
@@ -3177,7 +3460,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/metal_parts.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "microscope": {
     "id": "microscope",
@@ -3187,7 +3471,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/microscope.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "mini_centrifuge": {
     "id": "mini_centrifuge",
@@ -3197,7 +3482,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/mini_centrifuge.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "mod_components": {
     "id": "mod_components",
@@ -3210,7 +3496,8 @@
       "mechanical_components": 2,
       "steel_spring": 2
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "moss": {
     "id": "moss",
@@ -3220,7 +3507,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/moss.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "motor": {
     "id": "motor",
@@ -3230,7 +3518,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/motor.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "mushroom": {
     "id": "mushroom",
@@ -3240,7 +3529,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/mushroom.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "music_album": {
     "id": "music_album",
@@ -3250,7 +3540,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/music_album.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "music_box": {
     "id": "music_box",
@@ -3260,7 +3551,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/music_box.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "muzzle_brake_i": {
     "id": "muzzle_brake_i",
@@ -3273,7 +3565,8 @@
       "metal_parts": 6,
       "wires": 1
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "muzzle_brake_ii_blueprint": {
     "id": "muzzle_brake_ii_blueprint",
@@ -3283,7 +3576,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/muzzle_brake_ii.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "muzzle_brake_ii": {
     "id": "muzzle_brake_ii",
@@ -3296,7 +3590,8 @@
       "mechanical_components": 2,
       "wires": 4
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "muzzle_brake_iii_blueprint": {
     "id": "muzzle_brake_iii_blueprint",
@@ -3306,7 +3601,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/muzzle_brake_iii.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "muzzle_brake_iii": {
     "id": "muzzle_brake_iii",
@@ -3319,7 +3615,8 @@
       "mod_components": 2,
       "wires": 8
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "noisemaker": {
     "id": "noisemaker",
@@ -3332,7 +3629,8 @@
       "plastic_parts": 2,
       "speaker_component": 1
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "number_plate": {
     "id": "number_plate",
@@ -3342,7 +3640,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/number_plate.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "oil": {
     "id": "oil",
@@ -3352,7 +3651,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/oil.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "olives": {
     "id": "olives",
@@ -3362,7 +3662,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/olives.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "osprey_blueprint": {
     "id": "osprey_blueprint",
@@ -3372,7 +3673,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/osprey_blueprint.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "osprey_i": {
     "id": "osprey_i",
@@ -3386,7 +3688,8 @@
       "medium_gun_parts": 3,
       "wires": 7
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "osprey_ii": {
     "id": "osprey_ii",
@@ -3399,7 +3702,8 @@
     "upgradeCost": {
       "advanced_mechanical_components": 1,
       "medium_gun_parts": 2
-    }
+    },
+    "craftQuantity": 1
   },
   "osprey_iii": {
     "id": "osprey_iii",
@@ -3412,7 +3716,8 @@
     "upgradeCost": {
       "advanced_mechanical_components": 1,
       "medium_gun_parts": 2
-    }
+    },
+    "craftQuantity": 1
   },
   "osprey_iv": {
     "id": "osprey_iv",
@@ -3425,7 +3730,8 @@
     "upgradeCost": {
       "advanced_mechanical_components": 2,
       "medium_gun_parts": 2
-    }
+    },
+    "craftQuantity": 1
   },
   "padded_stock_blueprint": {
     "id": "padded_stock_blueprint",
@@ -3435,7 +3741,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/padded_stock.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "padded_stock": {
     "id": "padded_stock",
@@ -3448,7 +3755,8 @@
       "duct_tape": 5,
       "mod_components": 2
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "painted_box": {
     "id": "painted_box",
@@ -3458,7 +3766,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/painted_box.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "patrol_car_key": {
     "id": "patrol_car_key",
@@ -3468,7 +3777,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/patrol_car_key.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "photoelectric_cloak": {
     "id": "photoelectric_cloak",
@@ -3481,7 +3791,8 @@
       "advanced_electrical_components": 2,
       "speaker_component": 4
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "plastic_parts": {
     "id": "plastic_parts",
@@ -3491,7 +3802,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/plastic_parts.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "playing_cards": {
     "id": "playing_cards",
@@ -3501,7 +3813,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/playing_cards.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "polluted_air_filter": {
     "id": "polluted_air_filter",
@@ -3511,7 +3824,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/polluted_air_filter.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "pop_trigger": {
     "id": "pop_trigger",
@@ -3521,7 +3835,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/pop_trigger.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "portable_tv": {
     "id": "portable_tv",
@@ -3531,7 +3846,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/portable_tv.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "poster_of_natural_wonders": {
     "id": "poster_of_natural_wonders",
@@ -3541,7 +3857,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/poster_of_natural_wonders.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "pottery": {
     "id": "pottery",
@@ -3551,7 +3868,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/pottery.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "power_bank": {
     "id": "power_bank",
@@ -3561,7 +3879,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/power_bank.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "power_cable": {
     "id": "power_cable",
@@ -3571,7 +3890,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/power_cable.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "power_rod": {
     "id": "power_rod",
@@ -3584,7 +3904,8 @@
       "advanced_electrical_components": 2,
       "arc_circuitry": 2
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "prickly_pear": {
     "id": "prickly_pear",
@@ -3594,7 +3915,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/prickly_pear.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "processor": {
     "id": "processor",
@@ -3604,7 +3926,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/processor.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "projector": {
     "id": "projector",
@@ -3614,7 +3937,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/projector.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "pulse_mine_blueprint": {
     "id": "pulse_mine_blueprint",
@@ -3624,7 +3948,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/pulse_mine.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "pulse_mine": {
     "id": "pulse_mine",
@@ -3637,7 +3962,8 @@
       "crude_explosives": 1,
       "wires": 1
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "queen_reactor": {
     "id": "queen_reactor",
@@ -3647,7 +3973,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/queen_part.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "radio_relay": {
     "id": "radio_relay",
@@ -3657,7 +3984,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/radio_relay.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "radio_renegade": {
     "id": "radio_renegade",
@@ -3667,7 +3995,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/radio_renegade.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "radio": {
     "id": "radio",
@@ -3677,7 +4006,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/radio.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "raider_hatch_key": {
     "id": "raider_hatch_key",
@@ -3690,7 +4020,8 @@
       "advanced_electrical_components": 1,
       "sensors": 3
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "rattler_i": {
     "id": "rattler_i",
@@ -3703,7 +4034,8 @@
       "metal_parts": 16,
       "rubber_parts": 12
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "rattler_ii": {
     "id": "rattler_ii",
@@ -3715,7 +4047,8 @@
     "recipe": null,
     "upgradeCost": {
       "mechanical_components": 2
-    }
+    },
+    "craftQuantity": 1
   },
   "rattler_iii": {
     "id": "rattler_iii",
@@ -3728,7 +4061,8 @@
     "upgradeCost": {
       "mechanical_components": 2,
       "simple_gun_parts": 1
-    }
+    },
+    "craftQuantity": 1
   },
   "rattler_iv": {
     "id": "rattler_iv",
@@ -3741,7 +4075,8 @@
     "upgradeCost": {
       "mechanical_components": 3,
       "simple_gun_parts": 1
-    }
+    },
+    "craftQuantity": 1
   },
   "recorder": {
     "id": "recorder",
@@ -3751,7 +4086,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/recorder.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "red_coral_jewelry": {
     "id": "red_coral_jewelry",
@@ -3761,7 +4097,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/red_coral_jewelry.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "red_light_stick_blueprint": {
     "id": "red_light_stick_blueprint",
@@ -3771,7 +4108,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/red_light_stick.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "red_light_stick": {
     "id": "red_light_stick",
@@ -3783,7 +4121,8 @@
     "recipe": {
       "chemicals": 3
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "remote_control": {
     "id": "remote_control",
@@ -3793,7 +4132,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/remote_control.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "remote_raider_flare_blueprint": {
     "id": "remote_raider_flare_blueprint",
@@ -3803,7 +4143,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/remote_raider_flare.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "remote_raider_flare": {
     "id": "remote_raider_flare",
@@ -3816,7 +4157,8 @@
       "chemicals": 2,
       "rubber_parts": 4
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "renegade_i": {
     "id": "renegade_i",
@@ -3830,7 +4172,8 @@
       "medium_gun_parts": 3,
       "oil": 5
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "renegade_ii": {
     "id": "renegade_ii",
@@ -3843,7 +4186,8 @@
     "upgradeCost": {
       "advanced_mechanical_components": 1,
       "medium_gun_parts": 2
-    }
+    },
+    "craftQuantity": 1
   },
   "renegade_iii": {
     "id": "renegade_iii",
@@ -3856,7 +4200,8 @@
     "upgradeCost": {
       "advanced_mechanical_components": 1,
       "medium_gun_parts": 2
-    }
+    },
+    "craftQuantity": 1
   },
   "renegade_iv": {
     "id": "renegade_iv",
@@ -3869,7 +4214,8 @@
     "upgradeCost": {
       "advanced_mechanical_components": 2,
       "medium_gun_parts": 2
-    }
+    },
+    "craftQuantity": 1
   },
   "resin": {
     "id": "resin",
@@ -3879,7 +4225,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/resin.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "ripped_safety_vest": {
     "id": "ripped_safety_vest",
@@ -3889,7 +4236,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/ripped_safety_vest.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "rocket_thruster": {
     "id": "rocket_thruster",
@@ -3899,7 +4247,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/rocket_thruster.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "rocketeer_driver": {
     "id": "rocketeer_driver",
@@ -3909,7 +4258,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/rocketeer_driver.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "roots": {
     "id": "roots",
@@ -3919,7 +4269,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/roots.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "rope": {
     "id": "rope",
@@ -3929,7 +4280,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/rope.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "rosary": {
     "id": "rosary",
@@ -3939,7 +4291,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/rosary.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "rotary_encoder": {
     "id": "rotary_encoder",
@@ -3949,7 +4302,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/rotary_encoder.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "rubber_duck": {
     "id": "rubber_duck",
@@ -3959,7 +4313,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/rubber_duck.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "rubber_pad": {
     "id": "rubber_pad",
@@ -3969,7 +4324,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/rubber_pad.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "rubber_parts": {
     "id": "rubber_parts",
@@ -3979,7 +4335,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/rubber_parts.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "ruined_accordion": {
     "id": "ruined_accordion",
@@ -3989,7 +4346,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/ruined_accordion.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "ruined_augment": {
     "id": "ruined_augment",
@@ -3999,7 +4357,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/ruined_augment.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "ruined_baton": {
     "id": "ruined_baton",
@@ -4009,7 +4368,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/ruined_baton.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "ruined_handcuffs": {
     "id": "ruined_handcuffs",
@@ -4019,7 +4379,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/ruined_handcuffs.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "ruined_parachute": {
     "id": "ruined_parachute",
@@ -4029,7 +4390,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/ruined_parachute.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "ruined_riot_shield": {
     "id": "ruined_riot_shield",
@@ -4039,7 +4401,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/ruined_riot_shield.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "ruined_tactical_vest": {
     "id": "ruined_tactical_vest",
@@ -4049,7 +4412,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/ruined_tactical_vest.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "rusted_bolts": {
     "id": "rusted_bolts",
@@ -4059,7 +4423,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/rusted_bolts.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "rusted_gear": {
     "id": "rusted_gear",
@@ -4069,7 +4434,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/rusted_gear.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "rusted_shut_medical_kit": {
     "id": "rusted_shut_medical_kit",
@@ -4079,7 +4445,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/rusted_shut_medical_kit.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "rusted_tools": {
     "id": "rusted_tools",
@@ -4089,7 +4456,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/rusted_tools.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "rusty_arc_steel": {
     "id": "rusty_arc_steel",
@@ -4099,7 +4467,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/rusty_arc_steel.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "sample_cleaner": {
     "id": "sample_cleaner",
@@ -4109,7 +4478,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/sample_cleaner.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "seeker_grenade_blueprint": {
     "id": "seeker_grenade_blueprint",
@@ -4119,7 +4489,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/seeker_grenade.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "seeker_grenade": {
     "id": "seeker_grenade",
@@ -4132,7 +4503,8 @@
       "arc_alloy": 2,
       "crude_explosives": 1
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "sensors": {
     "id": "sensors",
@@ -4142,7 +4514,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/sensors.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "sentinel_firing_core": {
     "id": "sentinel_firing_core",
@@ -4152,7 +4525,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/sentinel_firing_core.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "shaker": {
     "id": "shaker",
@@ -4162,7 +4536,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/shaker.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "shield_recharger": {
     "id": "shield_recharger",
@@ -4175,7 +4550,8 @@
       "arc_powercell": 1,
       "rubber_parts": 5
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "shotgun_ammo": {
     "id": "shotgun_ammo",
@@ -4188,7 +4564,8 @@
       "chemicals": 2,
       "metal_parts": 3
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 5
   },
   "shotgun_choke_i": {
     "id": "shotgun_choke_i",
@@ -4201,7 +4578,8 @@
       "metal_parts": 6,
       "wires": 1
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "shotgun_choke_ii_blueprint": {
     "id": "shotgun_choke_ii_blueprint",
@@ -4211,7 +4589,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/shotgun_choke_ii.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "shotgun_choke_ii": {
     "id": "shotgun_choke_ii",
@@ -4224,7 +4603,8 @@
       "mechanical_components": 2,
       "wires": 4
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "shotgun_choke_iii_blueprint": {
     "id": "shotgun_choke_iii_blueprint",
@@ -4234,7 +4614,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/shotgun_choke_iii.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "shotgun_choke_iii": {
     "id": "shotgun_choke_iii",
@@ -4247,7 +4628,8 @@
       "mod_components": 2,
       "wires": 8
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "shotgun_silencer_blueprint": {
     "id": "shotgun_silencer_blueprint",
@@ -4257,7 +4639,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/shotgun_silencer.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "shotgun_silencer": {
     "id": "shotgun_silencer",
@@ -4270,7 +4653,8 @@
       "mod_components": 2,
       "wires": 8
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "showstopper_blueprint": {
     "id": "showstopper_blueprint",
@@ -4280,7 +4664,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/showstopper.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "showstopper": {
     "id": "showstopper",
@@ -4293,7 +4678,8 @@
       "advanced_electrical_components": 1,
       "voltage_converter": 1
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "shrapnel_grenade": {
     "id": "shrapnel_grenade",
@@ -4306,7 +4692,8 @@
       "crude_explosives": 1,
       "steel_spring": 2
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "shredder_gyro": {
     "id": "shredder_gyro",
@@ -4316,7 +4703,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/shredder_gyro.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "signal_amplifier": {
     "id": "signal_amplifier",
@@ -4326,7 +4714,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/signal_amplifier.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "silencer_i_blueprint": {
     "id": "silencer_i_blueprint",
@@ -4336,7 +4725,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/silencer_i.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "silencer_i": {
     "id": "silencer_i",
@@ -4349,7 +4739,8 @@
       "mechanical_components": 2,
       "wires": 4
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "silencer_ii_blueprint": {
     "id": "silencer_ii_blueprint",
@@ -4359,7 +4750,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/silencer_ii.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "silencer_ii": {
     "id": "silencer_ii",
@@ -4372,7 +4764,8 @@
       "mod_components": 2,
       "wires": 8
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "silencer_iii_blueprint": {
     "id": "silencer_iii_blueprint",
@@ -4382,7 +4775,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/silencer_iii.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "silencer_iii": {
     "id": "silencer_iii",
@@ -4392,7 +4786,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/silencer_iii.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "silver_teaspoon_set": {
     "id": "silver_teaspoon_set",
@@ -4402,7 +4797,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/silver_teaspoon_set.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "simple_gun_parts": {
     "id": "simple_gun_parts",
@@ -4412,7 +4808,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/simple_gun_parts.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "smoke_grenade_blueprint": {
     "id": "smoke_grenade_blueprint",
@@ -4422,7 +4819,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/smoke_grenade.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "smoke_grenade_trap": {
     "id": "smoke_grenade_trap",
@@ -4435,7 +4833,8 @@
       "smoke_grenade": 1,
       "wires": 1
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "smoke_grenade": {
     "id": "smoke_grenade",
@@ -4448,7 +4847,8 @@
       "canister": 1,
       "chemicals": 14
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "snap_blast_grenade": {
     "id": "snap_blast_grenade",
@@ -4461,7 +4861,8 @@
       "crude_explosives": 2,
       "magnet": 1
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "snap_hook_blueprint": {
     "id": "snap_hook_blueprint",
@@ -4471,7 +4872,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/snap_hook.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "snap_hook": {
     "id": "snap_hook",
@@ -4485,7 +4887,8 @@
       "power_rod": 2,
       "rope": 3
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "snitch_scanner": {
     "id": "snitch_scanner",
@@ -4495,7 +4898,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/snitch_scanner.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "snowball": {
     "id": "snowball",
@@ -4505,7 +4909,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/snowball.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "spaceport_container_storage_key": {
     "id": "spaceport_container_storage_key",
@@ -4515,7 +4920,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/spaceport_control_tower_key.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "spaceport_control_tower_key": {
     "id": "spaceport_control_tower_key",
@@ -4525,7 +4931,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/spaceport_control_tower_key.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "spaceport_trench_tower_key": {
     "id": "spaceport_trench_tower_key",
@@ -4535,7 +4942,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/spaceport_trench_tower_key.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "spaceport_warehouse_key": {
     "id": "spaceport_warehouse_key",
@@ -4545,7 +4953,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/spaceport_trench_tower_key.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "speaker_component": {
     "id": "speaker_component",
@@ -4555,7 +4964,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/speaker_component.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "spectrometer": {
     "id": "spectrometer",
@@ -4565,7 +4975,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/spectrometer.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "spectrum_analyzer": {
     "id": "spectrum_analyzer",
@@ -4575,7 +4986,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/spectrum_analyzer.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "spotter_relay": {
     "id": "spotter_relay",
@@ -4585,7 +4997,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/spotter_relay.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "spring_cushion": {
     "id": "spring_cushion",
@@ -4595,7 +5008,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/spring_cushion.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "stable_stock_i": {
     "id": "stable_stock_i",
@@ -4608,7 +5022,8 @@
       "duct_tape": 1,
       "rubber_parts": 6
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "stable_stock_ii_blueprint": {
     "id": "stable_stock_ii_blueprint",
@@ -4618,7 +5033,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/stable_stock_ii.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "stable_stock_ii": {
     "id": "stable_stock_ii",
@@ -4631,7 +5047,8 @@
       "duct_tape": 3,
       "mechanical_components": 2
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "stable_stock_iii_blueprint": {
     "id": "stable_stock_iii_blueprint",
@@ -4641,7 +5058,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/stable_stock_iii.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "stable_stock_iii": {
     "id": "stable_stock_iii",
@@ -4654,7 +5072,8 @@
       "duct_tape": 5,
       "mod_components": 2
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "statuette": {
     "id": "statuette",
@@ -4664,7 +5083,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/statuette.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "steel_spring": {
     "id": "steel_spring",
@@ -4674,7 +5094,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/steel_spring.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "stella_montis_archives_key": {
     "id": "stella_montis_archives_key",
@@ -4684,7 +5105,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/stella_montis_archives_key.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "stella_montis_assembly_admin_key": {
     "id": "stella_montis_assembly_admin_key",
@@ -4694,7 +5116,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/stella_montis_assembly_admin_key.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "stella_montis_medical_storage_key": {
     "id": "stella_montis_medical_storage_key",
@@ -4704,7 +5127,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/stella_montis_medical_storage_key.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "stella_montis_security_checkpoint_key": {
     "id": "stella_montis_security_checkpoint_key",
@@ -4714,7 +5138,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/stella_montis_security_checkpoint_key.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "sterilized_bandage": {
     "id": "sterilized_bandage",
@@ -4727,7 +5152,8 @@
       "antiseptic": 1,
       "durable_cloth": 2
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "stitcher_i": {
     "id": "stitcher_i",
@@ -4740,7 +5166,8 @@
       "metal_parts": 8,
       "rubber_parts": 4
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "stitcher_ii": {
     "id": "stitcher_ii",
@@ -4753,7 +5180,8 @@
     "upgradeCost": {
       "metal_parts": 8,
       "rubber_parts": 12
-    }
+    },
+    "craftQuantity": 1
   },
   "stitcher_iii": {
     "id": "stitcher_iii",
@@ -4766,7 +5194,8 @@
     "upgradeCost": {
       "metal_parts": 10,
       "simple_gun_parts": 1
-    }
+    },
+    "craftQuantity": 1
   },
   "stitcher_iv": {
     "id": "stitcher_iv",
@@ -4779,7 +5208,8 @@
     "upgradeCost": {
       "mechanical_components": 3,
       "simple_gun_parts": 1
-    }
+    },
+    "craftQuantity": 1
   },
   "surge_shield_recharger": {
     "id": "surge_shield_recharger",
@@ -4792,7 +5222,8 @@
       "advanced_arc_powercell": 1,
       "electrical_components": 1
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "surveyor_vault": {
     "id": "surveyor_vault",
@@ -4802,7 +5233,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/surveyor_vault.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "synthesized_fuel": {
     "id": "synthesized_fuel",
@@ -4812,7 +5244,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/synthesized_fuel.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "syringe": {
     "id": "syringe",
@@ -4822,7 +5255,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/syringe.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "tactical_mk1": {
     "id": "tactical_mk1",
@@ -4835,7 +5269,8 @@
       "plastic_parts": 6,
       "rubber_parts": 6
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "tactical_mk2": {
     "id": "tactical_mk2",
@@ -4848,7 +5283,8 @@
       "electrical_components": 2,
       "magnet": 3
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "tactical_mk3_defensive_blueprint": {
     "id": "tactical_mk3_defensive_blueprint",
@@ -4858,7 +5294,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_defensive.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "tactical_mk3_defensive": {
     "id": "tactical_mk3_defensive",
@@ -4871,7 +5308,8 @@
       "advanced_electrical_components": 2,
       "processor": 3
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "tactical_mk3_healing_blueprint": {
     "id": "tactical_mk3_healing_blueprint",
@@ -4881,7 +5319,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_healing_blueprint.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "tactical_mk3_healing": {
     "id": "tactical_mk3_healing",
@@ -4894,7 +5333,8 @@
       "advanced_electrical_components": 2,
       "processor": 3
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "tactical_mk3_revival": {
     "id": "tactical_mk3_revival",
@@ -4904,7 +5344,8 @@
     "imageFilename": null,
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "tagging_grenade_blueprint": {
     "id": "tagging_grenade_blueprint",
@@ -4914,7 +5355,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/tagging_grenade.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "tagging_grenade": {
     "id": "tagging_grenade",
@@ -4927,7 +5369,8 @@
       "electrical_components": 1,
       "sensors": 1
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "tattered_arc_lining": {
     "id": "tattered_arc_lining",
@@ -4937,7 +5380,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/tattered_arc_lining.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "tattered_clothes": {
     "id": "tattered_clothes",
@@ -4947,7 +5391,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/tattered_clothes.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "telemetry_transceiver": {
     "id": "telemetry_transceiver",
@@ -4957,7 +5402,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/telemetry_transceiver.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "tempest_blueprint": {
     "id": "tempest_blueprint",
@@ -4967,7 +5413,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/tempest.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "tempest_i": {
     "id": "tempest_i",
@@ -4981,7 +5428,8 @@
       "magnetic_accelerator": 1,
       "medium_gun_parts": 3
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "tempest_ii": {
     "id": "tempest_ii",
@@ -4994,7 +5442,8 @@
     "upgradeCost": {
       "advanced_mechanical_components": 2,
       "medium_gun_parts": 3
-    }
+    },
+    "craftQuantity": 1
   },
   "tempest_iii": {
     "id": "tempest_iii",
@@ -5007,7 +5456,8 @@
     "upgradeCost": {
       "advanced_mechanical_components": 4,
       "medium_gun_parts": 4
-    }
+    },
+    "craftQuantity": 1
   },
   "tempest_iv": {
     "id": "tempest_iv",
@@ -5020,7 +5470,8 @@
     "upgradeCost": {
       "advanced_mechanical_components": 2,
       "medium_gun_parts": 3
-    }
+    },
+    "craftQuantity": 1
   },
   "thermostat": {
     "id": "thermostat",
@@ -5030,7 +5481,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/thermostat.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "tick_pod": {
     "id": "tick_pod",
@@ -5040,7 +5492,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/tick_pod.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "toaster": {
     "id": "toaster",
@@ -5050,7 +5503,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/toaster.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "torn_blanket": {
     "id": "torn_blanket",
@@ -5060,7 +5514,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/torn_blanket.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "torn_book": {
     "id": "torn_book",
@@ -5070,7 +5525,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/torn_book.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "torrente_blueprint": {
     "id": "torrente_blueprint",
@@ -5080,7 +5536,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/torrente.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "torrente_i": {
     "id": "torrente_i",
@@ -5094,7 +5551,8 @@
       "medium_gun_parts": 3,
       "steel_spring": 6
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "torrente_ii": {
     "id": "torrente_ii",
@@ -5107,7 +5565,8 @@
     "upgradeCost": {
       "advanced_mechanical_components": 1,
       "medium_gun_parts": 2
-    }
+    },
+    "craftQuantity": 1
   },
   "torrente_iii": {
     "id": "torrente_iii",
@@ -5120,7 +5579,8 @@
     "upgradeCost": {
       "advanced_mechanical_components": 1,
       "medium_gun_parts": 2
-    }
+    },
+    "craftQuantity": 1
   },
   "torrente_iv": {
     "id": "torrente_iv",
@@ -5133,7 +5593,8 @@
     "upgradeCost": {
       "advanced_mechanical_components": 2,
       "medium_gun_parts": 2
-    }
+    },
+    "craftQuantity": 1
   },
   "trailblazer_blueprint": {
     "id": "trailblazer_blueprint",
@@ -5143,7 +5604,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/trailblazer.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "trailblazer": {
     "id": "trailblazer",
@@ -5156,7 +5618,8 @@
       "explosive_compound": 1,
       "synthesized_fuel": 1
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "trigger_nade_blueprint": {
     "id": "trigger_nade_blueprint",
@@ -5166,7 +5629,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/trigger_nade_blueprint.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "trigger_nade": {
     "id": "trigger_nade",
@@ -5179,7 +5643,8 @@
       "crude_explosives": 2,
       "processor": 1
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "turbo_pump": {
     "id": "turbo_pump",
@@ -5189,7 +5654,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/turbo_pump.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "unusable_weapon": {
     "id": "unusable_weapon",
@@ -5199,7 +5665,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/unusable_weapon.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "vase": {
     "id": "vase",
@@ -5209,7 +5676,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/vase.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "venator_blueprint": {
     "id": "venator_blueprint",
@@ -5219,7 +5687,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/venator.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "venator_i": {
     "id": "venator_i",
@@ -5233,7 +5702,8 @@
       "magnet": 5,
       "medium_gun_parts": 3
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "venator_ii": {
     "id": "venator_ii",
@@ -5246,7 +5716,8 @@
     "upgradeCost": {
       "advanced_mechanical_components": 1,
       "medium_gun_parts": 2
-    }
+    },
+    "craftQuantity": 1
   },
   "venator_iii": {
     "id": "venator_iii",
@@ -5259,7 +5730,8 @@
     "upgradeCost": {
       "advanced_mechanical_components": 1,
       "medium_gun_parts": 2
-    }
+    },
+    "craftQuantity": 1
   },
   "venator_iv": {
     "id": "venator_iv",
@@ -5272,7 +5744,8 @@
     "upgradeCost": {
       "advanced_mechanical_components": 2,
       "medium_gun_parts": 2
-    }
+    },
+    "craftQuantity": 1
   },
   "vertical_grip_i": {
     "id": "vertical_grip_i",
@@ -5285,7 +5758,8 @@
       "duct_tape": 1,
       "plastic_parts": 6
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "vertical_grip_ii_blueprint": {
     "id": "vertical_grip_ii_blueprint",
@@ -5295,7 +5769,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/vertical_grip_ii.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "vertical_grip_ii": {
     "id": "vertical_grip_ii",
@@ -5308,7 +5783,8 @@
       "duct_tape": 3,
       "mechanical_components": 2
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "vertical_grip_iii_blueprint": {
     "id": "vertical_grip_iii_blueprint",
@@ -5318,7 +5794,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/vertical_grip_iii_blueprint.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "vertical_grip_iii": {
     "id": "vertical_grip_iii",
@@ -5331,7 +5808,8 @@
       "duct_tape": 5,
       "mod_components": 2
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "very_comfortable_pillow": {
     "id": "very_comfortable_pillow",
@@ -5341,7 +5819,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/very_comfortable_pillow.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "vita_shot_blueprint": {
     "id": "vita_shot_blueprint",
@@ -5351,7 +5830,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/vita_shot.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "vita_shot": {
     "id": "vita_shot",
@@ -5364,7 +5844,8 @@
       "antiseptic": 2,
       "syringe": 1
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "vita_spray_blueprint": {
     "id": "vita_spray_blueprint",
@@ -5374,7 +5855,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/vita_spray.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "vita_spray": {
     "id": "vita_spray",
@@ -5387,7 +5869,8 @@
       "antiseptic": 3,
       "canister": 1
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "volcanic_rock": {
     "id": "volcanic_rock",
@@ -5397,7 +5880,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/volcanic_rock.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "voltage_converter": {
     "id": "voltage_converter",
@@ -5407,7 +5891,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/voltage_converter.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "vulcano_blueprint": {
     "id": "vulcano_blueprint",
@@ -5417,7 +5902,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/vulcano.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "vulcano_i": {
     "id": "vulcano_i",
@@ -5431,7 +5917,8 @@
       "heavy_gun_parts": 3,
       "magnetic_accelerator": 1
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "vulcano_ii": {
     "id": "vulcano_ii",
@@ -5444,7 +5931,8 @@
     "upgradeCost": {
       "advanced_mechanical_components": 1,
       "heavy_gun_parts": 2
-    }
+    },
+    "craftQuantity": 1
   },
   "vulcano_iii": {
     "id": "vulcano_iii",
@@ -5457,7 +5945,8 @@
     "upgradeCost": {
       "advanced_mechanical_components": 2,
       "heavy_gun_parts": 1
-    }
+    },
+    "craftQuantity": 1
   },
   "vulcano_iv": {
     "id": "vulcano_iv",
@@ -5470,7 +5959,8 @@
     "upgradeCost": {
       "advanced_mechanical_components": 2,
       "heavy_gun_parts": 3
-    }
+    },
+    "craftQuantity": 1
   },
   "wasp_driver": {
     "id": "wasp_driver",
@@ -5480,7 +5970,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/wasp_driver.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "water_filter": {
     "id": "water_filter",
@@ -5490,7 +5981,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/water_filter.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "water_pump": {
     "id": "water_pump",
@@ -5500,7 +5992,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/water_pump.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "wires": {
     "id": "wires",
@@ -5510,7 +6003,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/wires.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "wolfpack_blueprint": {
     "id": "wolfpack_blueprint",
@@ -5520,7 +6014,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/wolfpack_blueprint.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "wolfpack": {
     "id": "wolfpack",
@@ -5533,7 +6028,8 @@
       "arc_motion_core": 2,
       "explosive_compound": 3
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "yellow_light_stick_blueprint": {
     "id": "yellow_light_stick_blueprint",
@@ -5543,7 +6039,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/yellow_light_stick.png",
     "isWeapon": null,
     "recipe": null,
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "yellow_light_stick": {
     "id": "yellow_light_stick",
@@ -5555,7 +6052,8 @@
     "recipe": {
       "chemicals": 3
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "zipline": {
     "id": "zipline",
@@ -5568,6 +6066,7 @@
       "mechanical_components": 1,
       "rope": 1
     },
-    "upgradeCost": null
+    "upgradeCost": null,
+    "craftQuantity": 1
   }
 }

@@ -19,6 +19,7 @@ export function CraftingResults({ result, profitPerItem }: CraftingResultsProps)
           currentSlots={result.currentStash.totalSlots}
           optimalAmount={result.optimalCraftAmount}
           minCraftForReduction={result.minCraftForReduction}
+          craftQuantity={result.craftQuantity}
         />
       </div>
 
@@ -34,14 +35,20 @@ export function CraftingResults({ result, profitPerItem }: CraftingResultsProps)
                   <>
                     {' '}
                     However, if you craft at least{' '}
-                    <strong>{result.minCraftForReduction} items</strong>, you will start saving
-                    space.
+                    <strong>
+                      {result.minCraftForReduction} {result.minCraftForReduction === 1 ? 'time' : 'times'}
+                      {result.craftQuantity > 1 && ` (${result.minCraftForReduction * result.craftQuantity} items)`}
+                    </strong>, you will start saving space.
                   </>
                 )}
               </>
             ) : result.optimalCraftAmount === result.maxCraftable ? (
               <>
-                <strong>Craft all {result.maxCraftable} items.</strong> This will{' '}
+                <strong>
+                  Craft all {result.maxCraftable} {result.maxCraftable === 1 ? 'time' : 'times'}
+                  {result.craftQuantity > 1 && ` (${result.maxCraftable * result.craftQuantity} items)`}.
+                </strong>{' '}
+                This will{' '}
                 {result.optimalSpaceChange < 0 ? (
                   <>
                     <span style={{ color: '#4caf50' }}>
@@ -63,7 +70,10 @@ export function CraftingResults({ result, profitPerItem }: CraftingResultsProps)
               </>
             ) : (
               <>
-                <strong>Craft exactly {result.optimalCraftAmount} items.</strong>{' '}
+                <strong>
+                  Craft exactly {result.optimalCraftAmount} {result.optimalCraftAmount === 1 ? 'time' : 'times'}
+                  {result.craftQuantity > 1 && ` (${result.optimalCraftAmount * result.craftQuantity} items)`}.
+                </strong>{' '}
                 {result.optimalSpaceChange < 0 ? (
                   <>
                     This will minimize stash usage to {result.optimalStash.totalSlots} slots (

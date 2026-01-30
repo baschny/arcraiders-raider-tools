@@ -20,12 +20,13 @@ function calculateStashSpace(
   craftedStackSize: number,
   craftedIncomplete: number,
   requiredItems: RequiredItem[],
-  craftCount: number
+  craftCount: number,
+  craftQuantity: number
 ): StashCalculation {
   const items: StashCalculation['items'] = [];
 
   // Calculate crafted item space
-  const totalCrafted = craftedIncomplete + craftCount;
+  const totalCrafted = craftedIncomplete + (craftCount * craftQuantity);
   if (totalCrafted > 0) {
     const fullStacks = Math.floor(totalCrafted / craftedStackSize);
     const remainder = totalCrafted % craftedStackSize;
@@ -93,7 +94,8 @@ function findOptimalCraftAmount(
       recipe.craftedItem.stackSize,
       recipe.craftedItem.incompleteStackSize,
       recipe.requiredItems,
-      craftAmount
+      craftAmount,
+      recipe.craftedItem.craftQuantity
     );
 
     // If we find a better minimum, or the same minimum with a higher craft amount, update it
@@ -113,7 +115,8 @@ function findOptimalCraftAmount(
         recipe.craftedItem.stackSize,
         recipe.craftedItem.incompleteStackSize,
         recipe.requiredItems,
-        toFillStack
+        toFillStack,
+        recipe.craftedItem.craftQuantity
       );
 
       if (slotsAfterFill <= currentSlots) {
@@ -139,7 +142,8 @@ function findMinCraftForReduction(
       recipe.craftedItem.stackSize,
       recipe.craftedItem.incompleteStackSize,
       recipe.requiredItems,
-      craftAmount
+      craftAmount,
+      recipe.craftedItem.craftQuantity
     );
 
     if (stash.totalSlots < currentSlots) {
@@ -161,7 +165,8 @@ export function calculateCrafting(recipe: CraftingRecipe): CraftingResult {
     recipe.craftedItem.stackSize,
     recipe.craftedItem.incompleteStackSize,
     recipe.requiredItems,
-    0
+    0,
+    recipe.craftedItem.craftQuantity
   );
 
   // Stash after crafting max
@@ -169,7 +174,8 @@ export function calculateCrafting(recipe: CraftingRecipe): CraftingResult {
     recipe.craftedItem.stackSize,
     recipe.craftedItem.incompleteStackSize,
     recipe.requiredItems,
-    maxCraftable
+    maxCraftable,
+    recipe.craftedItem.craftQuantity
   );
 
   // Find optimal craft amount
@@ -179,7 +185,8 @@ export function calculateCrafting(recipe: CraftingRecipe): CraftingResult {
     recipe.craftedItem.stackSize,
     recipe.craftedItem.incompleteStackSize,
     recipe.requiredItems,
-    optimal.amount
+    optimal.amount,
+    recipe.craftedItem.craftQuantity
   );
 
   // Find minimum craft amount for reduction
@@ -192,7 +199,8 @@ export function calculateCrafting(recipe: CraftingRecipe): CraftingResult {
       recipe.craftedItem.stackSize,
       recipe.craftedItem.incompleteStackSize,
       recipe.requiredItems,
-      i
+      i,
+      recipe.craftedItem.craftQuantity
     );
     allDataPoints.push({ amount: i, slots: stash.totalSlots });
   }
@@ -210,9 +218,11 @@ export function calculateCrafting(recipe: CraftingRecipe): CraftingResult {
       recipe.craftedItem.stackSize,
       recipe.craftedItem.incompleteStackSize,
       recipe.requiredItems,
-      minCraft.amount
+      minCraft.amount,
+      recipe.craftedItem.craftQuantity
     ) : null,
     amountToCraft: optimal.amount,
     allDataPoints,
+    craftQuantity: recipe.craftedItem.craftQuantity,
   };
 }

@@ -5,6 +5,7 @@ interface StashSpaceGraphProps {
   currentSlots: number;
   optimalAmount: number;
   minCraftForReduction: number | null;
+  craftQuantity: number;
 }
 
 export function StashSpaceGraph({
@@ -12,6 +13,7 @@ export function StashSpaceGraph({
   currentSlots,
   optimalAmount,
   minCraftForReduction,
+  craftQuantity,
 }: StashSpaceGraphProps) {
   if (dataPoints.length === 0) return null;
 
@@ -53,7 +55,7 @@ export function StashSpaceGraph({
                   style={{
                     height: `${barHeight}px`,
                   }}
-                  title={`Craft ${point.amount}: ${point.slots} slots (${point.slots - currentSlots >= 0 ? '+' : ''}${point.slots - currentSlots})`}
+                  title={`Craft ${point.amount} ${point.amount === 1 ? 'time' : 'times'}${craftQuantity > 1 ? ` (${point.amount * craftQuantity} items)` : ''}: ${point.slots} slots (${point.slots - currentSlots >= 0 ? '+' : ''}${point.slots - currentSlots})`}
                 >
                   {isOptimal && <div className="bar-label optimal-label">★</div>}
                 </div>

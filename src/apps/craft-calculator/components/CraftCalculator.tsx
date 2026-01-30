@@ -76,6 +76,7 @@ export function CraftCalculator() {
     craftedItem: {
       stackSize: craftedStackSize,
       incompleteStackSize: craftedIncomplete,
+      craftQuantity: selectedItem?.craftQuantity ?? 1,
     },
     requiredItems,
   };
@@ -259,7 +260,8 @@ export function CraftCalculator() {
           }
           return sum;
         }, 0);
-        const returnValue = selectedItem.value;
+        const craftQuantity = selectedItem.craftQuantity ?? 1;
+        const returnValue = selectedItem.value * craftQuantity;
         const profit = returnValue - totalInvestment;
         const hasAllValues = requiredItems.every(item => item.value != null);
 
@@ -291,7 +293,9 @@ export function CraftCalculator() {
               </div>
               
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span style={{ color: '#888', fontSize: '14px' }}>Return (Crafted Item):</span>
+                <span style={{ color: '#888', fontSize: '14px' }}>
+                  Return ({craftQuantity > 1 ? `${craftQuantity}x Crafted Items` : 'Crafted Item'}):
+                </span>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '16px' }}>
                   <img src="/images/icon-coin.webp" alt="coin" style={{ width: '18px', height: '18px' }} />
                   <span style={{ fontWeight: 'bold' }}>{formatValue(returnValue)}</span>

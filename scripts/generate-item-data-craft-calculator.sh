@@ -33,7 +33,8 @@ jq -n '
         imageFilename: $item.imageFilename,
         isWeapon: $item.isWeapon,
         recipe: $item.recipe,
-        upgradeCost: $item.upgradeCost
+        upgradeCost: $item.upgradeCost,
+        craftQuantity: ($item.craftQuantity // 1)
       }
     }
   )

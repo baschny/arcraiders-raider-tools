@@ -11,6 +11,7 @@ export interface RequiredItem {
 export interface CraftedItem {
   stackSize: StackSize;
   incompleteStackSize: number;
+  craftQuantity: number;
 }
 
 export interface CraftingRecipe {
@@ -46,4 +47,5 @@ export interface CraftingResult {
   minCraftStash: StashCalculation | null;
   amountToCraft: number;
   allDataPoints: CraftingDataPoint[];
+  craftQuantity: number;
 }
