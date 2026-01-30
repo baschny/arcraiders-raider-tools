@@ -31,8 +31,9 @@ jq -n '
         stackSize: ($item.stackSize // 1),
         value: $item.value,
         imageFilename: $item.imageFilename,
-        recipe: $item.recipe
-      } 
+        recipe: $item.recipe,
+        upgradeCost: $item.upgradeCost
+      }
     }
   )
 ' "$SOURCE_DIR"/*.json > "$TARGET_FILE"
