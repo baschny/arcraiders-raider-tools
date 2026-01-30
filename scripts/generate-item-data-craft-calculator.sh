@@ -31,6 +31,7 @@ jq -n '
         stackSize: ($item.stackSize // 1),
         value: $item.value,
         imageFilename: $item.imageFilename,
+        isWeapon: $item.isWeapon,
         recipe: $item.recipe,
         upgradeCost: $item.upgradeCost
       }

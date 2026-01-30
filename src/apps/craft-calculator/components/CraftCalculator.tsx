@@ -6,6 +6,9 @@ import { CraftingResults } from './CraftingResults';
 import { ItemSearch } from './ItemSearch';
 import { loadItems, getItem } from '../utils/itemData';
 import { trackCraftCalculatorItemSelection } from '../../../shared/utils/analytics';
+import { isCraftableItem, calculateTotalMaterials, getUpgradeBreakdown } from '../utils/weaponTiers';
+import type { UpgradeBreakdown } from '../utils/weaponTiers';
+import { UpgradeBreakdown as UpgradeBreakdownComponent } from './UpgradeBreakdown';
 
 interface RequiredItemWithName extends RequiredItem {
   name?: string;
@@ -24,6 +27,7 @@ export function CraftCalculator() {
   const [craftedInStash, setCraftedInStash] = useState(0);
   const craftedIncomplete = craftedInStash % craftedStackSize;
   const [requiredItems, setRequiredItems] = useState<RequiredItemWithName[]>([]);
+  const [upgradeBreakdown, setUpgradeBreakdown] = useState<UpgradeBreakdown[]>([]);
 
   useEffect(() => {
     loadItems()
@@ -42,22 +46,28 @@ export function CraftCalculator() {
     // Track the item selection
     trackCraftCalculatorItemSelection(item.name, item.id);
 
-    if (item.recipe) {
-      const materials = Object.entries(item.recipe).map(([materialId, amount]) => {
-        const materialItem = getItem(materialId);
-        return {
-          id: materialId,
-          stackSize: (materialItem?.stackSize as StackSize) || 1,
-          amountRequired: amount,
-          amountPossessed: 0,
-          incompleteStackSize: 0,
-          name: materialItem?.name || materialId,
-          imageUrl: materialItem?.imageFilename,
-          value: materialItem?.value,
-        };
-      });
-      setRequiredItems(materials);
-    }
+    // Get total materials (either direct recipe or calculated from upgrades)
+    const totalMaterials = calculateTotalMaterials(item);
+    
+    // Get upgrade breakdown for tooltip (if applicable)
+    const breakdown = getUpgradeBreakdown(item);
+    setUpgradeBreakdown(breakdown);
+
+    // Map materials to required items
+    const materials = Object.entries(totalMaterials).map(([materialId, amount]) => {
+      const materialItem = getItem(materialId);
+      return {
+        id: materialId,
+        stackSize: (materialItem?.stackSize as StackSize) || 1,
+        amountRequired: amount,
+        amountPossessed: 0,
+        incompleteStackSize: 0,
+        name: materialItem?.name || materialId,
+        imageUrl: materialItem?.imageFilename,
+        value: materialItem?.value,
+      };
+    });
+    setRequiredItems(materials);
   };
 
 
@@ -109,7 +119,7 @@ export function CraftCalculator() {
           <ItemSearch
             onSelect={handleItemSelect}
             placeholder="Type item name..."
-            filter={(item) => !!item.recipe && Object.keys(item.recipe).length > 0}
+            filter={isCraftableItem}
           />
         </div>
       </div>
@@ -174,7 +184,10 @@ export function CraftCalculator() {
 
       {selectedItem && (
         <div className="card">
-          <h2 className="card-title">Required Items</h2>
+          <div className="card-title-with-info">
+            <h2 className="card-title">Required Items</h2>
+            <UpgradeBreakdownComponent breakdown={upgradeBreakdown} />
+          </div>
           {requiredItems.map((item, index) => (
             <div key={item.id} className="required-item">
               <div className="item-header">

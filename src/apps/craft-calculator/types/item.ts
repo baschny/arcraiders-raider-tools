@@ -29,7 +29,9 @@ export interface Item {
   stackSize: number;
   value?: number | null;
   imageFilename?: string;
+  isWeapon?: boolean | null;
   recipe?: ItemRecipe;
+  upgradeCost?: ItemRecipe;
 }
 
 export interface ItemDatabase {

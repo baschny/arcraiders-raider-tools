@@ -1,0 +1,134 @@
+@use '../../../shared/styles/variables' as *;
+
+$action-gold: oklch(85% .22 85);
+
+.card-title-with-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-md;
+
+  .card-title {
+    margin-bottom: 0;
+  }
+}
+
+.upgrade-breakdown-container {
+  position: relative;
+  display: inline-block;
+
+  .info-icon {
+    background: none;
+    border: none;
+    padding: $spacing-sm;
+    cursor: pointer;
+    line-height: 1;
+    color: $action-gold;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      transform: scale(1.15);
+      filter: brightness(1.2);
+    }
+
+    &:focus {
+      outline: 2px solid $action-gold;
+      outline-offset: 2px;
+      border-radius: $radius-sm;
+    }
+  }
+
+  .upgrade-breakdown-tooltip {
+    position: absolute;
+    top: 0;
+    left: calc(100% + $spacing-sm);
+    background: $bg-secondary;
+    border: 1px solid rgba(79, 195, 247, 0.3);
+    border-radius: $radius-md;
+    padding: $spacing-lg;
+    min-width: 500px;
+    max-width: 650px;
+    z-index: 1000;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+
+    h4 {
+      margin: 0 0 $spacing-lg 0;
+      color: $text-accent;
+      font-size: $font-xl;
+      font-weight: 600;
+      border-bottom: 1px solid rgba(79, 195, 247, 0.2);
+      padding-bottom: $spacing-sm;
+    }
+
+    .breakdown-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: $font-lg;
+
+      thead {
+        th {
+          padding: $spacing-sm $spacing-md;
+          text-align: center;
+          color: $text-accent;
+          font-weight: 600;
+          border-bottom: 1px solid rgba(79, 195, 247, 0.2);
+          font-size: $font-lg;
+
+          &:first-child {
+            text-align: left;
+          }
+
+          &.total-column {
+            color: $action-gold;
+            border-left: 1px solid rgba(79, 195, 247, 0.2);
+          }
+        }
+      }
+
+      tbody {
+        tr {
+          &:hover {
+            background: rgba(79, 195, 247, 0.05);
+          }
+
+          td {
+            padding: $spacing-sm $spacing-md;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+            &.material-cell {
+              display: flex;
+              align-items: center;
+              gap: $spacing-sm;
+              color: $text-primary;
+
+              .material-icon {
+                width: 24px;
+                height: 24px;
+                object-fit: contain;
+                background: rgba(0, 0, 0, 0.3);
+                border-radius: $radius-sm;
+                padding: 2px;
+                flex-shrink: 0;
+              }
+            }
+
+            &.amount-cell {
+              text-align: center;
+              color: $text-secondary;
+              font-weight: 500;
+            }
+
+            &.total-cell {
+              color: $action-gold;
+              font-weight: 600;
+              border-left: 1px solid rgba(79, 195, 247, 0.2);
+            }
+          }
+        }
+      }
+    }
+  }
+}
