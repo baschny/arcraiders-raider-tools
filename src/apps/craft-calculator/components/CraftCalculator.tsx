@@ -84,8 +84,8 @@ export function CraftCalculator() {
   const result = calculateCrafting(recipe);
   const canCalculate = requiredItems.some((item) => item.amountPossessed > 0);
 
-  // Calculate profit per item if all values are available
-  const profitPerItem = (() => {
+  // Calculate profit per craft operation (not per item)
+  const profitPerCraft = (() => {
     if (!selectedItem?.value || requiredItems.length === 0) return null;
     const hasAllValues = requiredItems.every(item => item.value != null);
     if (!hasAllValues) return null;
@@ -97,7 +97,10 @@ export function CraftCalculator() {
       return sum;
     }, 0);
     
-    return selectedItem.value - totalInvestment;
+    const craftQuantity = selectedItem.craftQuantity ?? 1;
+    const returnValue = selectedItem.value * craftQuantity;
+    
+    return returnValue - totalInvestment;
   })();
 
   if (loading) {
@@ -319,7 +322,7 @@ export function CraftCalculator() {
 
       {canCalculate && (
         <div className="results-sidebar">
-          <CraftingResults result={result} profitPerItem={profitPerItem} />
+          <CraftingResults result={result} profitPerCraft={profitPerCraft} />
         </div>
       )}
     </>

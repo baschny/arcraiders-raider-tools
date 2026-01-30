@@ -3,14 +3,14 @@ import { StashSpaceGraph } from './StashSpaceGraph';
 
 interface CraftingResultsProps {
   result: CraftingResult;
-  profitPerItem: number | null;
+  profitPerCraft: number | null;
 }
 
 const formatValue = (value: number): string => {
   return value.toLocaleString('en-US');
 };
 
-export function CraftingResults({ result, profitPerItem }: CraftingResultsProps) {
+export function CraftingResults({ result, profitPerCraft }: CraftingResultsProps) {
   return (
     <>
       <div className="card">
@@ -97,8 +97,8 @@ export function CraftingResults({ result, profitPerItem }: CraftingResultsProps)
                 )}
               </>
             )}
-            {profitPerItem != null && result.optimalCraftAmount > 0 && (() => {
-              const totalValueChange = profitPerItem * result.optimalCraftAmount;
+            {profitPerCraft != null && result.optimalCraftAmount > 0 && (() => {
+              const totalValueChange = profitPerCraft * result.optimalCraftAmount;
               let valueColor: string;
               let valueText: string;
               
@@ -119,8 +119,8 @@ export function CraftingResults({ result, profitPerItem }: CraftingResultsProps)
               return (
                 <div style={{ marginTop: '12px', paddingTop: '12px', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
                   Your stash value will {valueText}{' '}
-                  <span style={{ color: valueColor, fontWeight: 'bold', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
-                    <img src="/images/icon-coin.webp" alt="coin" style={{ width: '18px', height: '18px' }} />
+                  <span style={{ color: valueColor, fontWeight: 'bold' }}>
+                    <img src="/images/icon-coin.webp" alt="coin" style={{ width: '18px', height: '18px', verticalAlign: 'middle', marginRight: '4px' }} />
                     {formatValue(Math.abs(totalValueChange))}
                   </span>.
                 </div>
