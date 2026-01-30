@@ -29,6 +29,7 @@ jq -n '
         id: $item.id,
         name: $item.name.en,
         stackSize: ($item.stackSize // 1),
+        value: $item.value,
         imageFilename: $item.imageFilename,
         recipe: $item.recipe
       } 

@@ -27,6 +27,7 @@ export interface Item {
   id: string;
   name: string;
   stackSize: number;
+  value?: number | null;
   imageFilename?: string;
   recipe?: ItemRecipe;
 }

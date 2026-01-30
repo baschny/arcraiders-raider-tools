@@ -10,7 +10,12 @@ import { trackCraftCalculatorItemSelection } from '../../../shared/utils/analyti
 interface RequiredItemWithName extends RequiredItem {
   name?: string;
   imageUrl?: string;
+  value?: number | null;
 }
+
+const formatValue = (value: number): string => {
+  return value.toLocaleString('en-US');
+};
 
 export function CraftCalculator() {
   const [loading, setLoading] = useState(true);
@@ -48,6 +53,7 @@ export function CraftCalculator() {
           incompleteStackSize: 0,
           name: materialItem?.name || materialId,
           imageUrl: materialItem?.imageFilename,
+          value: materialItem?.value,
         };
       });
       setRequiredItems(materials);
@@ -66,6 +72,22 @@ export function CraftCalculator() {
 
   const result = calculateCrafting(recipe);
   const canCalculate = requiredItems.some((item) => item.amountPossessed > 0);
+
+  // Calculate profit per item if all values are available
+  const profitPerItem = (() => {
+    if (!selectedItem?.value || requiredItems.length === 0) return null;
+    const hasAllValues = requiredItems.every(item => item.value != null);
+    if (!hasAllValues) return null;
+    
+    const totalInvestment = requiredItems.reduce((sum, item) => {
+      if (item.value != null) {
+        return sum + (item.value * item.amountRequired);
+      }
+      return sum;
+    }, 0);
+    
+    return selectedItem.value - totalInvestment;
+  })();
 
   if (loading) {
     return (
@@ -109,6 +131,12 @@ export function CraftCalculator() {
                 <p style={{ color: '#888', fontSize: '14px', margin: '4px 0 0 0' }}>
                   Stack Size: {selectedItem.stackSize}
                 </p>
+                {selectedItem.value != null && (
+                  <p style={{ color: '#888', fontSize: '14px', margin: '4px 0 0 0', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                    <img src="/images/icon-coin.webp" alt="coin" style={{ width: '18px', height: '18px' }} />
+                    {formatValue(selectedItem.value)}
+                  </p>
+                )}
                 <button
                   onClick={() => {
                     setSelectedItem(null);
@@ -164,10 +192,26 @@ export function CraftCalculator() {
                     }}
                   />
                 )}
-                <h4>
-                  <span style={{ color: '#4fc3f7', marginRight: '6px' }}>{item.amountRequired}x</span>
-                  {item.name || `Item ${index + 1}`}
-                </h4>
+                <div style={{ flex: 1 }}>
+                  <h3 style={{ margin: 0 }}>
+                    <span style={{ color: '#4fc3f7', marginRight: '6px' }}>{item.amountRequired}x</span>
+                    {item.name || `Item ${index + 1}`}
+                  </h3>
+                  {item.value != null && (
+                    <p style={{ color: '#888', fontSize: '14px', margin: '4px 0 0 0', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                      <span style={{ color: '#4fc3f7' }}>{item.amountRequired}x</span>
+                      <img src="/images/icon-coin.webp" alt="coin" style={{ width: '18px', height: '18px' }} />
+                      {formatValue(item.value)}
+                      {item.amountRequired > 1 && (
+                        <>
+                          <span style={{ marginLeft: '4px' }}>=</span>
+                          <img src="/images/icon-coin.webp" alt="coin" style={{ width: '18px', height: '18px' }} />
+                          {formatValue(item.value * item.amountRequired)}
+                        </>
+                      )}
+                    </p>
+                  )}
+                </div>
               </div>
               <div className="input-with-label">
                 <label>In Stash</label>
@@ -194,11 +238,71 @@ export function CraftCalculator() {
           ))}
         </div>
       )}
+
+      {selectedItem && selectedItem.value != null && requiredItems.length > 0 && (() => {
+        const totalInvestment = requiredItems.reduce((sum, item) => {
+          if (item.value != null) {
+            return sum + (item.value * item.amountRequired);
+          }
+          return sum;
+        }, 0);
+        const returnValue = selectedItem.value;
+        const profit = returnValue - totalInvestment;
+        const hasAllValues = requiredItems.every(item => item.value != null);
+
+        if (!hasAllValues) return null;
+
+        let profitColor: string;
+        let profitLabel: string;
+        if (profit > 0) {
+          profitColor = '#4caf50'; // green
+          profitLabel = 'Profit';
+        } else if (profit < 0) {
+          profitColor = '#f44336'; // red
+          profitLabel = 'Deficit';
+        } else {
+          profitColor = '#ff9800'; // orange
+          profitLabel = 'Break Even';
+        }
+
+        return (
+          <div className="card">
+            <h2 className="card-title">Crafting Economics</h2>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <span style={{ color: '#888', fontSize: '14px' }}>Investment (Materials):</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '16px' }}>
+                  <img src="/images/icon-coin.webp" alt="coin" style={{ width: '18px', height: '18px' }} />
+                  <span style={{ fontWeight: 'bold' }}>{formatValue(totalInvestment)}</span>
+                </div>
+              </div>
+              
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <span style={{ color: '#888', fontSize: '14px' }}>Return (Crafted Item):</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '16px' }}>
+                  <img src="/images/icon-coin.webp" alt="coin" style={{ width: '18px', height: '18px' }} />
+                  <span style={{ fontWeight: 'bold' }}>{formatValue(returnValue)}</span>
+                </div>
+              </div>
+
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '12px', marginTop: '4px' }}>
+                <span style={{ color: '#888', fontSize: '14px' }}>{profitLabel}:</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '18px' }}>
+                  <img src="/images/icon-coin.webp" alt="coin" style={{ width: '18px', height: '18px' }} />
+                  <span style={{ fontWeight: 'bold', color: profitColor }}>
+                    {profit > 0 ? '+' : ''}{formatValue(profit)}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      })()}
       </div>
 
       {canCalculate && (
         <div className="results-sidebar">
-          <CraftingResults result={result} />
+          <CraftingResults result={result} profitPerItem={profitPerItem} />
         </div>
       )}
     </>
