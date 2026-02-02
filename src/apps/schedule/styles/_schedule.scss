@@ -317,13 +317,15 @@
   }
   
   // Current hour styling
-  &.current-hour.has-event {
-    &.major-half {
-      background: rgba(255, 215, 0, 0.3);
+  &.current-hour {
+    background: rgba(34, 197, 94, 0.2);
+    
+    &.major-half.has-event {
+      background: color.mix(rgba(34, 197, 94, 0.2), rgba(255, 215, 0, 0.15));
     }
     
-    &.minor-half {
-      background: rgba(79, 195, 247, 0.3);
+    &.minor-half.has-event {
+      background: color.mix(rgba(34, 197, 94, 0.2), rgba(79, 195, 247, 0.15));
     }
   }
   
