@@ -423,7 +423,6 @@
   "schedule": {
     "dam-battleground": {
       "major": {
-        "2": "night-raid",
         "6": "electromagnetic-storm",
         "10": "night-raid",
         "14": "electromagnetic-storm",
@@ -431,9 +430,6 @@
         "22": "electromagnetic-storm"
       },
       "minor": {
-        "1": "harvester",
-        "3": "lush-blooms",
-        "4": "matriarch",
         "7": "harvester",
         "9": "lush-blooms",
         "10": "matriarch",
@@ -447,7 +443,6 @@
     },
     "buried-city": {
       "major": {
-        "3": "night-raid",
         "7": "night-raid",
         "11": "night-raid",
         "15": "night-raid",
@@ -455,8 +450,6 @@
         "23": "night-raid"
       },
       "minor": {
-        "0": "bird-city",
-        "4": "lush-blooms",
         "8": "bird-city",
         "12": "lush-blooms",
         "16": "bird-city",
@@ -465,17 +458,12 @@
     },
     "the-spaceport": {
       "major": {
-        "0": "electromagnetic-storm",
-        "4": "night-raid",
         "8": "electromagnetic-storm",
         "12": "night-raid",
         "16": "electromagnetic-storm",
         "20": "night-raid"
       },
       "minor": {
-        "0": "harvester",
-        "1": "launch-tower-loot",
-        "3": "matriarch",
         "6": "harvester",
         "9": "matriarch",
         "12": "harvester",
@@ -487,7 +475,6 @@
     },
     "blue-gate": {
       "major": {
-        "1": "night-raid",
         "5": "locked-gate",
         "9": "electromagnetic-storm",
         "13": "locked-gate",
@@ -495,7 +482,6 @@
         "21": "locked-gate"
       },
       "minor": {
-        "2": "matriarch",
         "5": "harvester",
         "7": "lush-blooms",
         "8": "matriarch",
@@ -509,7 +495,6 @@
     },
     "stella-montis": {
       "major": {
-        "2": "night-raid",
         "6": "night-raid",
         "10": "night-raid",
         "14": "night-raid",
