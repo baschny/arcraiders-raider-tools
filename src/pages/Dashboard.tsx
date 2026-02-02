@@ -47,8 +47,9 @@ export function Dashboard() {
           Raider Tools
         </h2>
         <p style={{ fontSize: '14px', color: '#888', lineHeight: '1.6' }}>
-          Welcome to my personal ARC Raiders tools collection. I created these for my own usage.<br/>
-            If they be helpful for other people, please let me know. Choose a tool below to get started.
+            Welcome! This is my personal collection of ARC Raiders tools.
+            These started as private projects to help me out in-game, but I figured they were too useful not to share.
+            If they help you out, let me know! Pick a tool below and dive in.
         </p>
       </div>
 
