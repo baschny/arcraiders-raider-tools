@@ -1,0 +1,9 @@
+# AWS CDK generated artifacts
+/cdk.out/
+
+# Node
+/node_modules/
+/.cache/
+
+# Files
+*~
