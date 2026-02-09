@@ -441,7 +441,7 @@
         "15": "prospecting-probes",
         "16": "matriarch",
         "19": "harvester",
-        "21": "uncovered-caches",
+        "21": "husk-graveyard",
         "22": "matriarch"
       }
     },
@@ -460,8 +460,7 @@
         "8": "bird-city",
         "12": "prospecting-probes",
         "16": "bird-city",
-        "20": "husk-graveyard",
-        "22": "bird-city"
+        "20": "husk-graveyard"
       }
     },
     "the-spaceport": {
@@ -493,7 +492,7 @@
         "9": "electromagnetic-storm",
         "13": "locked-gate",
         "17": "night-raid",
-        "21": "night-raid"
+        "21": "locked-gate"
       },
       "minor": {
         "2": "matriarch",
