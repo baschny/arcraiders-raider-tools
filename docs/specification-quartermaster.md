@@ -17,6 +17,9 @@ The Raider Tools application is built using:
 
 All planner calculations are performed entirely client-side.
 
+Item data is not manually curated inside the application.  
+It is imported and normalized through an external preprocessing step defined in this specification.
+
 ---
 
 ## 1.2 Purpose
@@ -63,60 +66,172 @@ The system must:
 
 Curated JSON files derived from the arctracker GitHub source.
 
-Approximately 500 items.
+Approximately 500 items before import filtering.
+
+Raw source data is not used directly by the application.  
+It is first processed by the import pipeline defined in section 3.
 
 All static data is loaded at application startup and stored in memory.
 
-Items with the following original `type` values are excluded from import and do not exist in the planner dataset:
+---
+
+## 2.1.2 Final Item Schema (Post-Import)
+
+After import normalization, each item inside the application has the following schema:
+
+```ts
+type BenchId =
+  | "equipment_bench"
+  | "explosives_bench"
+  | "med_station"
+  | "refiner"
+  | "utility_bench"
+  | "weapon_bench"
+  | "workbench"
+
+interface PlannerItem {
+  id: string
+  name: string
+  description: string
+  icon: string
+  rarity: "Common" | "Uncommon" | "Rare" | "Epic" | "Legendary"
+
+  // Original source classification (preserved)
+  type: string
+
+  // Normalized planner fields
+  category: string
+  subCategory?: string
+
+  craftBench?: BenchId
+  stationLevelRequired: 1 | 2 | 3
+  blueprintLocked: boolean
+
+  recipe?: Record<string, number>
+  recyclesInto?: Record<string, number>
+  salvagesInto?: Record<string, number>
+
+  stackSize: number
+  value?: number
+  weight?: number
+  foundIn?: string[]
+}
+```
+
+Items excluded during import (see section 3) do not exist in this dataset.
+
+---
+
+## 2.1.3 Default Assumptions
+
+After import:
+
+- `stackSize` is always defined.
+- `stationLevelRequired` is always defined.
+- `blueprintLocked` is always defined.
+- `craftBench` is either:
+  - a single valid BenchId, or
+  - undefined (non-craftable item).
+- No item has `craftBench = "in_raid"` inside the planner dataset.
+
+---
+
+# 3. ITEM IMPORT & NORMALIZATION PROCESS
+
+The import process is an external preprocessing step that converts raw source JSON files into the final PlannerItem dataset.
+
+The application assumes this process has already been executed.
+
+This process must be deterministic.
+
+---
+
+## 3.1 Import Filtering Rules
+
+### 3.1.1 Excluded by Type
+
+Items with original `type`:
 
 - Blueprint
 - Outfit
 - Backpack Charm
 
+are excluded from import.
+
+They do not exist inside the planner.
+
 ---
 
-## 2.1.2 Item Schema
+### 3.1.2 In-Raid Only Crafting
 
-Each item JSON file contains:
+If an item has:
 
-```ts
-{
-  id: string,
-  name: string,
-  description: string,
-  icon: string,
-  rarity: "Common" | "Uncommon" | "Rare" | "Epic" | "Legendary",
-  type: string,
-
-  craftBench?: BenchId,
-  stationLevelRequired?: 1 | 2 | 3,
-  blueprintLocked?: boolean,
-
-  recipe?: Record<string, number>,
-  recyclesInto?: Record<string, number>,
-  salvagesInto?: Record<string, number>,
-
-  stackSize?: 1 | 3 | 5 | 15 | 50,
-  value?: number,
-  weight?: number,
-  foundIn?: string[],
-  categories?: string[],
-  isWeapon?: boolean
-}
+```
+craftBench = "in_raid"
 ```
 
-### 2.1.2.1 Normalized Planner Fields
+and no additional craftBench values,
 
-During static dataset import, the planner derives:
+the item must be excluded from import.
 
-- `category: string`
-- `subCategory?: string`
+Rationale:
+- These items can only be crafted inside a raid.
+- The planner supports hideout crafting only.
+- After import, no item in the planner dataset represents in-raid-only crafting.
+
+---
+
+## 3.2 craftBench Normalization
+
+Source data may contain:
+
+- A single string value
+- An array of values
+
+Examples:
+
+```
+"craftBench": "equipment_bench"
+"craftBench": ["equipment_bench", "workbench"]
+"craftBench": ["workbench", "med_station", "in_raid"]
+```
+
+### 3.2.1 Normalization Algorithm
+
+1. If `craftBench` is a single string:
+  - If value = `"in_raid"`:
+    - Exclude item (see 3.1.2).
+  - Otherwise:
+    - Keep as-is.
+
+2. If `craftBench` is an array:
+  - Remove `"workbench"` from the array.
+  - Remove `"in_raid"` from the array.
+  - Preserve original array order.
+  - After removal:
+    - If exactly one bench remains:
+      - Use that bench.
+    - If multiple benches remain:
+      - Use the first remaining bench (deterministic).
+    - If no benches remain:
+      - Exclude the item (it was effectively in-raid-only or workbench-only placeholder).
+
+Result:
+- Inside the planner dataset, `craftBench` is always a single BenchId.
+- `"in_raid"` never appears in the planner dataset.
+
+---
+
+## 3.3 Category & SubCategory Mapping
 
 The original `type` field is preserved unchanged.
 
-### 2.1.2.2 Category Mapping Rules
+During import, derive:
 
-1. Weapon Mapping
+- `category`
+- `subCategory`
+
+### 3.3.1 Weapon Mapping
 
 If:
 
@@ -131,7 +246,9 @@ category = "Weapon"
 subCategory = original type
 ```
 
-2. Quick Use Mapping
+---
+
+### 3.3.2 Quick Use Mapping
 
 If:
 
@@ -143,15 +260,19 @@ Then:
 
 ```
 category = "Quick Use"
-subCategory depends on craftBench:
-    explosives_bench  => "Explosive"
-    med_station       => "Medicinal"
-    utility_bench     => "Utility"
 ```
 
-If no craftBench matches, subCategory remains undefined.
+SubCategory depends on normalized craftBench:
 
-3. Direct Mapping
+- explosives_bench  => "Explosive"
+- med_station       => "Medicinal"
+- utility_bench     => "Utility"
+
+If no mapping applies, subCategory remains undefined.
+
+---
+
+### 3.3.3 Direct Mapping
 
 For all other items:
 
@@ -162,39 +283,23 @@ subCategory = undefined
 
 ---
 
-## 2.1.3 Default Assumptions
+## 3.4 Default Field Completion
 
-- If `stackSize` is missing -> assume `1`.
-- If `stationLevelRequired` is missing -> treat as level `1`.
-- If `blueprintLocked` is missing -> treat as `false`.
-- All items lootable topside unless specified otherwise.
+During import:
 
----
+- If `stackSize` missing -> set to `1`
+- If `stationLevelRequired` missing -> set to `1`
+- If `blueprintLocked` missing -> set to `false`
 
-# 2.2 Bench Identifiers
-
-Allowed values:
-
-```
-equipment_bench
-explosives_bench
-med_station
-refiner
-utility_bench
-weapon_bench
-workbench
-in_raid
-```
-
-Items with `craftBench = "in_raid"` are excluded from crafting logic.
+After import, all fields are explicitly defined.
 
 ---
 
-# 2.3 Dynamic API Endpoints
+# 4. DYNAMIC API ENDPOINTS
 
 ---
 
-## 2.3.1 Stash Endpoint
+## 4.1 Stash Endpoint
 
 ### Endpoint
 
@@ -202,58 +307,36 @@ Items with `craftBench = "in_raid"` are excluded from crafting logic.
 GET /api/v2/user/stash
 ```
 
-### Parameters
-
-- `page`
-- `per_page` (max 100)
-
-### Response Structure
-
-```json
-{
-  "data": {
-    "items": [
-      {
-        "itemId": "string",
-        "name": "string",
-        "quantity": number,
-        "slotIndex": number
-      }
-    ]
-  }
-}
-```
-
 ### Normalization Rules
 
 - Aggregate by `itemId`.
 - Ignore `slotIndex`.
-- Store only total quantities per item.
+- Store total quantities per item.
 - Persist locally with timestamp.
 - Fetch all pages until empty or fewer than `per_page` results.
 
 If an `itemId` does not exist in the static dataset:
 
-- Display as:
-  ```
-  Unknown Item (itemId)
-  ```
-- Show quantity.
-- Exclude from:
-  - Craft logic
-  - Recycling logic
-  - Loot suggestion logic
-  - Reservation logic
+Display:
 
-### Trigger
+```
+Unknown Item (itemId)
+```
 
-Manual button:
+Exclude from:
+
+- Craft logic
+- Recycling logic
+- Loot suggestion logic
+- Reservation logic
+
+Trigger:
 
 **Sync Inventory**
 
 ---
 
-## 2.3.2 Hideout Endpoint
+## 4.2 Hideout Endpoint
 
 ### Endpoint
 
@@ -261,24 +344,18 @@ Manual button:
 GET /api/v2/user/hideout
 ```
 
-### Current State
-
-Not working.
-
-### Fallback Rule
+Fallback:
 
 Assume all benches level 3.
 
-### Future Behavior
+If bench level insufficient:
 
-When functional:
-
-- Map benchId -> level (1..3).
-- If an item requires a higher level than available, mark it as Uncraftable.
+- Mark item as Uncraftable.
+- Do not expand recursively.
 
 ---
 
-## 2.3.3 Backpack / Loadout Endpoint
+## 4.3 Backpack / Loadout Endpoint
 
 ### Endpoint
 
@@ -286,79 +363,35 @@ When functional:
 GET /api/v2/user/loadout
 ```
 
-### Relevant Fields
-
-```json
-{
-  "data": {
-    "loadout": {
-      "backpack": [...],
-      "safePocket": [...]
-    }
-  }
-}
-```
-
-Each item:
-
-```
-itemId
-quantity
-slotIndex
-durabilityPercent
-```
-
-### Normalization
+Normalization:
 
 - Aggregate by itemId.
 - Ignore slotIndex.
 - Ignore durabilityPercent.
 
-If an `itemId` does not exist in the static dataset:
+Unknown items:
 
-- Display as:
-  ```
-  Unknown Item (itemId)
-  ```
-- Exclude from planner logic.
+Display as:
 
-### Trigger
+```
+Unknown Item (itemId)
+```
 
-Manual button:
+Excluded from planner logic.
+
+Trigger:
 
 **Sync Loadout**
 
 ---
 
-## 2.3.4 Blueprint API
-
-Not available.
-
-Stub implementation:
-
-```
-isBlueprintUnlocked(itemId) => true
-```
-
-If future API indicates blueprint locked:
-
-- Mark item as Uncraftable.
-- Do not expand recursively.
-- Display warning indicator.
+# 5. HARD STRATEGY CONSTRAINTS
 
 ---
 
-# 3. HARD STRATEGY CONSTRAINTS
+## 5.1 Recycling Restrictions
 
----
-
-## 3.1 Recycling Restrictions
-
-### 3.1.1 Non-Recyclable Categories
-
-Items belonging to loadout categories must never be recycled automatically.
-
-Loadout categories (based on normalized `category`):
+### 5.1.1 Non-Recyclable Categories
 
 - Weapon
 - Ammunition
@@ -367,20 +400,7 @@ Loadout categories (based on normalized `category`):
 - Quick Use
 - Shield
 
-### 3.1.2 Recyclable Categories
-
-Allowed for recycling:
-
-- Nature
-- Recyclable
-- Refined Material
-- Topside Material
-- Basic Material
-- Misc
-- Trinket
-- Special
-
-### 3.1.3 Rule
+Rule:
 
 ```
 if item.category in loadoutCategories:
@@ -389,478 +409,204 @@ if item.category in loadoutCategories:
 
 ---
 
-## 3.2 Value Is Irrelevant
+## 5.2 Value Is Irrelevant
 
-- No optimization based on sell value.
-- No value-based ranking.
-- No opportunity-cost analysis.
+- No value optimization.
+- No ranking by sell price.
 
 ---
 
-## 3.3 Strategy Priority
-
-For missing requirements:
+## 5.3 Strategy Priority
 
 1. Use stash
 2. Craft (recursive)
-3. Recycle (allowed categories only)
-4. Buy (informational only)
-5. Loot (fallback)
+3. Recycle
+4. Buy (informational)
+5. Loot
 
 ---
 
-## 3.4 Rarity
-
-Rarity does not influence recycling or crafting decisions.
+# 6. CORE PLANNER LOGIC
 
 ---
 
-# 4. CORE PLANNER LOGIC
-
----
-
-## 4.1 Aggregation of Loadouts
-
-### 4.1.1 Loadout Behavior
-
-- Each loadout has enable toggle.
-- Each item inside loadout has enable toggle.
-
-### 4.1.2 Aggregation Rule
+## 6.1 Aggregation of Loadouts
 
 ```
-required[itemId] = sum of quantities across all active + enabled loadout items
+required[itemId] = sum of quantities across all active loadout items
 ```
 
-Each item appears once globally.
+Deterministic ordering by itemId.
 
 ---
 
-## 4.2 Craft Expansion
+## 6.2 Craft Expansion
 
-### 4.2.1 Recursive DAG Expansion
+### 6.2.1 Recursive Expansion
 
-- Expand recipe graph recursively.
-- Exclude craftBench = in_raid.
-- Assume blueprint unlocked (unless explicitly locked).
-- Assume bench level 3 (unless hideout data overrides).
-- Aggregate identical intermediate requirements.
-- Traverse dependencies in sorted ascending `itemId` order.
-- Deterministic ordering guaranteed for identical inputs.
+- Expand recipe graph only.
+- Dependencies sorted ascending by itemId.
+- Deterministic traversal.
 
-### 4.2.2 Stop Conditions
+---
 
-Stop expansion at:
+### 6.2.2 Cycle Detection
 
-- Non-craftable items.
-- Items without recipe.
-- Items marked Uncraftable.
-- Items with craftBench = in_raid.
+#### 6.2.2.1 Scope
 
-#### 4.2.2.1 Cycle Definition
+- Applies only to `recipe` graph.
+- `recyclesInto` and `salvagesInto` excluded.
 
-- Cycle detection applies to the **recipe dependency graph only**.
-- `recyclesInto` and `salvagesInto` are not part of craft expansion edges.
-- A cycle exists if a dependency chain re-visits an item already present in the current recursion stack.
+#### 6.2.2.2 Algorithm
 
-#### 4.2.2.2 Detection Algorithm (Deterministic)
+Maintain:
 
-During recursive expansion:
+- `visiting` set
+- `stack` list
 
-- Maintain:
-  - `visiting`: set of itemIds in the current recursion stack
-  - `stack`: ordered list of itemIds representing the current expansion path
-- When expanding item `X`, for each dependency `Y`:
-  - If `Y` is not in `visiting`, expand recursively.
-  - If `Y` is already in `visiting`, a cycle is detected.
+If expanding `X` and encountering `Y` in `visiting`:
 
-Traversal of dependencies must occur in sorted ascending `itemId` order to guarantee deterministic cycle detection and diagnostics.
+Cycle detected.
 
-#### 4.2.2.3 Handling Rule (Cut Closing Edge)
-
-On detecting a cycle via dependency `X -> Y` where `Y` is already in the recursion stack:
+#### 6.2.2.3 Handling
 
 - Always cut the edge that closes the cycle.
-- Do not expand `Y` from `X`.
-- Mark `Y` as:
-  ```
-  Uncraftable (Cycle)
-  ```
-- Continue expanding other dependencies of `X` (if any).
-- Continue traversal deterministically.
+- Do not expand that dependency.
+- Mark item as:
 
-#### 4.2.2.4 Diagnostics
+```
+Uncraftable (Cycle)
+```
 
-When a cycle is detected:
+- Continue other branches.
 
-- Store a deterministic diagnostic path:
-  - The current `stack` plus the repeated `Y` at the end.
-- Example diagnostic format:
-  ```
-  A -> B -> C -> A
-  ```
-- Diagnostics are stored for display in debugging or developer tooling.
-- Diagnostics do not alter computation beyond the defined edge cut.
+#### 6.2.2.4 Diagnostics
+
+Store:
+
+```
+A -> B -> C -> A
+```
+
+Deterministic path based on traversal order.
 
 ---
 
-## 4.2.3 Uncraftable State
+## 6.3 Uncraftable State
 
-An item is marked:
+Triggers:
 
-```
-Uncraftable
-```
-
-If:
-
-- Blueprint locked.
-- Bench level insufficient.
-- Craft cycle detected (recipe graph), as defined in 4.2.2.
+- Blueprint locked
+- Bench level insufficient
+- Craft cycle detected
 
 Behavior:
 
-- Still selectable in loadouts.
-- Still included in aggregation.
-- Still included in deficit calculation.
-- Does NOT expand recursively.
-- Display warning icon overlay.
-- Tooltip:
-  - “Uncraftable (Blueprint or Bench restriction)”
-  - or “Uncraftable (Cycle)”
-- Listed in Blocking Overview.
+- Still selectable
+- Included in deficit
+- Not expanded
+- Warning icon
+- Tooltip variant:
+  - "Uncraftable (Blueprint or Bench restriction)"
+  - "Uncraftable (Cycle)"
 
 ---
 
-## 4.3 Reservation Phase
+## 6.4 Reservation Phase
 
-### 4.3.1 Reservation Order
+Priority:
 
-1. Final loadout items.
-2. Intermediate craft outputs.
-3. Base materials.
-
-Within each tier: sort by itemId (deterministic).
-
-### 4.3.2 Computation
+1. Final loadout items
+2. Intermediate craft outputs
+3. Base materials
 
 ```
-reserved[itemId]
 availableForRecycle[itemId] = have[itemId] - reserved[itemId]
 ```
 
-Only `availableForRecycle` eligible for recycling.
+---
+
+## 6.5 Recycling Phase
+
+- Allowed categories only
+- Only from availableForRecycle
+- Only if yields missing material
+- Never recycle loadout categories
+
+Salvage not used in craft computation.
 
 ---
 
-## 4.4 Recycling Phase
-
-Rules:
-
-- Only allowed categories.
-- Only from availableForRecycle.
-- Only if yields a currently missing material.
-- Never recycle loadout categories.
-
-Salvage is not used in crafting computation.
-
----
-
-## 4.5 Material Deficit
-
-After stash usage + reservation + recycling:
+## 6.6 Material Deficit
 
 ```
 deficit[itemId] > 0
 ```
 
-Drives:
-
-- Loot suggestions
-- Buy suggestions
+Drives loot and buy suggestions.
 
 ---
 
-## 4.6 Loot Suggestions
-
-### 4.6.1 Unified List
-
-Flat alphabetical grid.
-
-Include items where:
-
-- itemId itself is missing
-- recyclesInto yields missing material
-- recipe produces missing material
-- salvagesInto yields missing material (UI advisory only)
-
----
-
-## 4.7 Salvage vs Recycle Decision
+## 6.7 Salvage vs Recycle
 
 Salvage:
 
-- Is NEVER used in crafting computation.
-- Is NEVER used in reservation.
-- Is NEVER used in deficit resolution.
-- Is UI advisory only in "In Raid".
+- UI advisory only
+- Never part of calculation
+- Always yields less than recycle
 
-Salvaging always produces less material than Recycling.
+Badges:
 
-For each loot suggestion:
-
-If salvage yields cover all required outputs:
-
-Badge:
 - CAN SALVAGE
-
-If salvage omits required outputs available in recycle:
-
-Badge:
 - BRING HOME
 
 ---
 
-# 5. USER INTERFACE STRUCTURE
+# 7. USER INTERFACE
 
 ---
 
-## 5.1 Primary Tabs
+## 7.1 Tabs
 
 1. Plan
 2. In Raid
 3. Back Home
 4. Craft
 
-Persistent left sidebar:
-Loadouts list (enable/disable).
-
 ---
 
-## 5.2 Workflow Indicator
-
-Displayed:
-
-```
-Plan -> In Raid -> Back Home -> Craft -> Sync Inventory
-```
-
----
-
-# 6. PLAN TAB
-
----
-
-## 6.1 Aggregated Summary Table
-
-Columns:
-
-- Item
-- Required
-- Have
-- Missing
-- Notes
-
-Expandable rows show:
-
-- Recipe
-- Bench + level
-- Recycling sources
-- Uncraftable warning (if applicable)
-- Salvage notes (informational only)
-
----
-
-## 6.2 Blocking Overview
-
-Lists:
+## 7.2 Blocking Overview
 
 - Missing non-craftables
 - Missing base materials
 - Bench blockers
 - Blueprint blockers
 - Craft cycle blockers
-- Uncraftable items
 
 ---
 
-# 7. IN RAID TAB
+# 8. ASSUMPTIONS
+
+- Import process deterministic.
+- No item with craftBench = "in_raid" exists post-import.
+- Cycle detection applies to recipe graph only.
+- Salvage never affects totals.
 
 ---
 
-## 7.1 Loot Suggestions Grid
+# 9. OPEN QUESTIONS
 
-Alphabetical.
-
-Icon grid.
-
-Tile shows:
-
-- Icon
-- Rarity border
-- Badge: CAN SALVAGE or BRING HOME
-
----
-
-## 7.2 Hover Detail
-
-Displays:
-
-- Icon
-- Name
-- Category
-- SubCategory (if present)
-- Description
-- Properties
-- Recycles Into
-- Salvages Into
-- Crafting Recipe
-- Required For
-- Material Impact Trace
-- Uncraftable warning if applicable
-
----
-
-# 8. BACK HOME TAB
-
----
-
-## 8.1 Trigger
-
-**Sync Loadout**
-
----
-
-## 8.2 Layout
-
-- Backpack grid (4 columns)
-- Safe Pocket grid
-
-No durability badge.
-
-No action buttons.
-
-Unknown items displayed as:
-
-```
-Unknown Item (itemId)
-```
-
-Excluded from planner logic.
-
----
-
-## 8.3 Hover Detail
-
-Same as In Raid.
-
-Shows:
-
-- Item info
-- Why needed
-- Classification badge:
-
-  - Required
-  - Useful Material
-  - Not Needed
-  - Uncraftable (if applicable)
-
----
-
-# 9. CRAFT TAB
-
----
-
-## 9.1 Bench Order
-
-1. Refiner
-2. Weapon Bench
-3. Explosives Bench
-4. Med Station
-5. Utility Bench
-6. Equipment Bench
-7. Workbench
-
----
-
-## 9.2 Craft Aggregation
-
-- Expand full DAG.
-- Aggregate identical intermediates.
-- Compute total quantities.
-- Respect Uncraftable state.
-- Deterministic ordering.
-
----
-
-## 9.3 Bench Sections
-
-Columns:
-
-- Item
-- Craft Times
-- Total Output
-- Inputs Needed
-- Inputs Missing
-
-Uncraftable items:
-
-- Display warning icon.
-- Still shown in table.
-- Not expanded further.
-
-Refiner appears first.
-
----
-
-## 9.4 Reminder
-
-After crafting:
-
-User must press:
-
-**Sync Inventory**
-
----
-
-# 10. USER WORKFLOW LOOP
-
-Plan  
--> In Raid  
--> Back Home  
--> Craft  
--> Sync Inventory  
--> Plan
-
----
-
-# 11. ASSUMPTIONS
-
-- Static dataset accurate.
-- All type mappings correctly normalized to category/subCategory.
-- stackSize available or default 1.
-- Bench level fallback = 3.
-- Blueprint stub returns true unless overridden.
-- Salvage always yields less material than recycle.
-- Cycle detection applied only to recipe graph.
-- All items lootable topside unless specified otherwise.
-
----
-
-# 12. OPEN QUESTIONS
-
-1. Craft cycle detection handling (Specified: detect recipe cycles via DFS recursion stack; traverse dependencies in sorted itemId order; cut closing edge; mark Uncraftable (Cycle); store deterministic cycle path).
+1. Craft cycle detection handling (Specified).
 2. Buy suggestion ranking logic.
-3. Multiple craft benches per item (if possible).
-4. Whether to show reserved vs available stash quantities visually.
-5. Worst-case performance for DAG expansion.
+3. Multiple craft benches per item (Specified via import normalization).
+4. Reserved vs available stash visualization.
+5. Worst-case performance of DAG expansion.
 
 ---
 
-# 13. EXPLICIT NON-GOALS
+# 10. EXPLICIT NON-GOALS
 
 - No automated execution.
-- No value-based optimization.
-- No rarity protection logic.
+- No server-side planner.
+- No economic optimization.
 - No drop probability modeling.
-- No server-side planning engine.
