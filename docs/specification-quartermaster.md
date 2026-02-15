@@ -37,6 +37,7 @@ The system must:
 - Compute global material requirements.
 - Expand crafting dependencies recursively.
 - Detect and handle craft cycles deterministically.
+- Maintain a prioritized reservation system with traceable reasons.
 - Reserve required materials before recycling.
 - Suggest lootable items.
 - Provide workbench-grouped crafting instructions.
@@ -130,8 +131,8 @@ After import:
 - `stationLevelRequired` is always defined.
 - `blueprintLocked` is always defined.
 - `craftBench` is either:
-  - a single valid BenchId, or
-  - undefined (non-craftable item).
+    - a single valid BenchId, or
+    - undefined (non-craftable item).
 - No item has `craftBench = "in_raid"` inside the planner dataset.
 
 ---
@@ -199,22 +200,22 @@ Examples:
 ### 3.2.1 Normalization Algorithm
 
 1. If `craftBench` is a single string:
-  - If value = `"in_raid"`:
-    - Exclude item (see 3.1.2).
-  - Otherwise:
-    - Keep as-is.
+    - If value = `"in_raid"`:
+        - Exclude item (see 3.1.2).
+    - Otherwise:
+        - Keep as-is.
 
 2. If `craftBench` is an array:
-  - Remove `"workbench"` from the array.
-  - Remove `"in_raid"` from the array.
-  - Preserve original array order.
-  - After removal:
-    - If exactly one bench remains:
-      - Use that bench.
-    - If multiple benches remain:
-      - Use the first remaining bench (deterministic).
-    - If no benches remain:
-      - Exclude the item.
+    - Remove `"workbench"` from the array.
+    - Remove `"in_raid"` from the array.
+    - Preserve original array order.
+    - After removal:
+        - If exactly one bench remains:
+            - Use that bench.
+        - If multiple benches remain:
+            - Use the first remaining bench (deterministic).
+        - If no benches remain:
+            - Exclude the item.
 
 Result:
 - Inside the planner dataset, `craftBench` is always a single BenchId.
@@ -508,22 +509,108 @@ Behavior:
 - Not expanded
 - Warning icon
 - Tooltip variant:
-  - "Uncraftable (Blueprint or Bench restriction)"
-  - "Uncraftable (Cycle)"
+    - "Uncraftable (Blueprint or Bench restriction)"
+    - "Uncraftable (Cycle)"
 
 ---
 
-## 6.4 Reservation Phase
+## 6.4 Reservation System
 
-Priority:
+### 6.4.1 Reservation Reason Types and Priority
 
-1. Final loadout items
-2. Intermediate craft outputs
-3. Base materials
+Reservation reasons are grouped into priority tiers:
+
+1. Project / Expedition / Tasks (future) — highest priority
+2. Hideout upgrades (future)
+3. Crafting for active loadouts (current feature) — lowest priority
+
+Reservation allocation is processed in strict priority order.
+
+Within each tier, reasons are sorted deterministically by:
+
+1. reasonType (fixed tier order)
+2. referenceId (ascending string)
+3. itemId (ascending, if needed)
+
+---
+
+### 6.4.2 Reservation Data Structure
+
+For each `itemId`:
 
 ```
-availableForRecycle[itemId] = have[itemId] - reserved[itemId]
+reservation[itemId] = {
+  total: number,
+  reasons: Array<{
+    reasonType: "project" | "hideout" | "craft",
+    referenceId: string,
+    requestedQty: number,
+    allocatedQty: number,
+    shortfall: number
+  }>
+}
 ```
+
+---
+
+### 6.4.3 Allocation Algorithm
+
+For each `itemId`:
+
+```
+have = stash[itemId]
+remaining = have
+
+for reason in reasonsSortedByPriority:
+  allocated = min(reason.requestedQty, remaining)
+  reason.allocatedQty = allocated
+  reason.shortfall = reason.requestedQty - allocated
+  remaining -= allocated
+
+reservedTotal = sum(reason.allocatedQty)
+availableForRecycle = have - reservedTotal
+availableForCrafting = have - sum(allocatedQty of project + hideout tiers)
+```
+
+Properties:
+
+- Project and hideout reservations lock inventory before crafting.
+- Crafting reservations apply only to remaining inventory.
+- All calculations deterministic.
+
+---
+
+### 6.4.4 Reservation Visualization
+
+Plan table columns:
+
+| Item | Have | Reserved | Available | Required | Missing |
+
+Definitions:
+
+- Have = total stash quantity
+- Reserved = sum of allocatedQty across all tiers
+- Available = have - reserved
+- Required = total required for crafting
+- Missing = deficit after stash usage and reservation
+
+Clicking a row expands:
+
+- Reserved total
+- Grouped by priority tier
+- For each reason:
+    - referenceId
+    - requestedQty
+    - allocatedQty
+    - shortfall (if > 0)
+
+Example:
+
+Locked (Projects/Hideout):
+- Project Phase 3 — requested 20, allocated 20
+
+Reserved (Crafting):
+- Craft: Renegade I x1 — requested 28, allocated 10 (shortfall 18)
 
 ---
 
@@ -546,7 +633,7 @@ deficit[itemId] > 0
 
 Drives loot suggestions.
 
-Buying is excluded from v1.
+Buying excluded from v1.
 
 ---
 
@@ -595,6 +682,7 @@ Badges:
 - Cycle detection applies to recipe graph only.
 - Salvage never affects totals.
 - Buying excluded from v1.
+- Reservation tiers processed in strict priority order.
 
 ---
 
@@ -603,24 +691,26 @@ Badges:
 1. Craft cycle detection handling (Specified).
 2. Buying from traders (Future feature).
 3. Multiple craft benches per item (Specified via import normalization).
-4. Reserved vs available stash visualization.
-5. Worst-case performance of DAG expansion.
+4. Worst-case performance of DAG expansion.
 
 ---
 
 # 10. FUTURE FEATURES
 
-The following features are explicitly excluded from v1 but planned for later releases:
-
 ## 10.1 Buying from Traders
 
-- Show informational suggestion that a missing item could be bought.
+- Informational suggestion only.
 - No price optimization.
-- No daily limit tracking (API not available).
-- No integration with stash automation.
-- Pure advisory feature.
+- No daily limit tracking.
+- Advisory-only feature.
 
-## 10.2 Additional Enhancements (Placeholder)
+## 10.2 Additional Reservation Layers
+
+- Expanded project tracking.
+- Expedition resource locking.
+- Multi-phase hideout upgrades.
+
+## 10.3 Additional Enhancements
 
 - Advanced deficit impact visualization.
 - Performance optimization for large DAGs.
