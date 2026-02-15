@@ -908,24 +908,248 @@ This structure is the single canonical output of the planner computation engine.
 
 # 7. USER INTERFACE
 
+This section defines all UI structure and behavior for the Quartermaster – Loadout, Loot & Craft Planner module.
+
+All UI components must render strictly from the canonical planner result structures defined in section 6.8.
+
+The UI must not implement hidden logic that diverges from planner computation.
+
 ---
 
-## 7.1 Tabs
+## 7.1 Global Structure
+
+### 7.1.1 Module Entry
+
+Sidebar label:
+
+```
+Quartermaster
+```
+
+Page header:
+
+```
+Quartermaster – Loadout, Loot & Craft Planner
+```
+
+URL slug:
+
+```
+/quartermaster
+```
+
+---
+
+### 7.1.2 Primary Tabs
+
+The module contains four primary tabs:
 
 1. Plan
 2. In Raid
 3. Back Home
 4. Craft
 
+Tabs are always visible at top level.
+
 ---
 
-## 7.2 Blocking Overview
+### 7.1.3 Workflow Indicator
 
-- Missing non-craftables
-- Missing base materials
-- Bench blockers
-- Blueprint blockers
-- Craft cycle blockers
+A visible non-blocking lifecycle indicator must be displayed:
+
+```
+Plan → In Raid → Back Home → Craft → Sync Inventory
+```
+
+Current tab highlighted.
+
+---
+
+### 7.1.4 Loadout Sidebar
+
+Persistent left sidebar (visible in all tabs except mobile collapse):
+
+- List of loadouts
+- Toggle (enabled/disabled)
+- Quick status indicator:
+    - Complete
+    - Missing
+    - Uncraftable
+
+Loadouts serve only as requirement aggregators.
+
+---
+
+## 7.2 Plan Tab
+
+### 7.2.1 Summary Table (Primary View)
+
+Columns:
+
+| Item | Required | Have | Reserved | Available | Missing | Status |
+
+Status derives from:
+
+- Owned
+- Craftable
+- Uncraftable (Blueprint/Bench)
+- Uncraftable (Cycle)
+- Missing Materials
+
+Rows sorted by `itemId` ascending.
+
+---
+
+### 7.2.2 Row Expansion
+
+Clicking a row expands:
+
+- Reservation breakdown (section 6.4.4)
+- Recipe (if craftable)
+- Recycling sources
+- Salvage information
+- Deficit reasoning trace
+
+---
+
+### 7.2.3 Unknown Items
+
+Displayed as:
+
+```
+Unknown Item (itemId)
+```
+
+Marked visually and excluded from logic.
+
+---
+
+## 7.3 In Raid Tab
+
+### 7.3.1 Loot Suggestions Grid
+
+- Alphabetical by itemId
+- Compact icon grid
+- Rarity border
+- Badge:
+
+    - CAN SALVAGE
+    - BRING HOME
+
+---
+
+### 7.3.2 Hover / Click Detail
+
+Display:
+
+- Icon
+- Name
+- Categories
+- Description
+- Weight
+- Stack Size
+- Found In
+- Recycles Into
+- Salvages Into
+- Crafting Recipe
+- Reason Trace:
+    - Required for (final items)
+    - Produces needed materials
+
+Badge logic strictly follows section 6.7.
+
+---
+
+## 7.4 Back Home Tab
+
+### 7.4.1 Sync Button
+
+Button:
+
+```
+Sync Loadout
+```
+
+Displays backpack + safePocket content.
+
+---
+
+### 7.4.2 Layout
+
+Backpack grid:
+- 4 columns
+- Icon + rarity border
+- Quantity badge
+
+Safe Pocket grid:
+- Separate section
+
+No durability display.
+No action buttons.
+No in-app interaction.
+
+---
+
+### 7.4.3 Hover Detail
+
+Same as In Raid.
+
+Classification badge:
+
+- Required
+- Useful Material
+- Not Needed
+
+---
+
+## 7.5 Craft Tab
+
+### 7.5.1 Ambiguity Notice
+
+There is a contradiction between:
+
+- Section 6.8.4 bench ordering (equipment_bench first)
+- Earlier design discussions specifying Refiner must appear first
+
+Current canonical ordering remains defined in section 6.8.4.
+
+Resolution required before altering behavior.
+
+---
+
+### 7.5.2 Craft Plan Display
+
+Grouped by BenchId.
+
+Bench grouping follows canonical ordering in section 6.8.4.
+
+Within each bench:
+
+Columns:
+
+| Item | Craft Times | Total Output | Inputs Needed | Inputs Missing |
+
+---
+
+### 7.5.3 Aggregation Rule
+
+Intermediate materials aggregated across all loadouts.
+
+Example:
+
+If two final items require same intermediate:
+
+Display single aggregated craft step.
+
+---
+
+### 7.5.4 Reminder
+
+Display persistent reminder:
+
+```
+After crafting in-game, press Sync Inventory to refresh stash state.
+```
 
 ---
 
