@@ -33,6 +33,7 @@ The system must:
 - Aggregate multiple loadouts.
 - Compute global material requirements.
 - Expand crafting dependencies recursively.
+- Detect and handle craft cycles deterministically.
 - Reserve required materials before recycling.
 - Suggest lootable items.
 - Provide workbench-grouped crafting instructions.
@@ -444,7 +445,8 @@ Each item appears once globally.
 - Assume blueprint unlocked (unless explicitly locked).
 - Assume bench level 3 (unless hideout data overrides).
 - Aggregate identical intermediate requirements.
-- Deterministic ordering by itemId.
+- Traverse dependencies in sorted ascending `itemId` order.
+- Deterministic ordering guaranteed for identical inputs.
 
 ### 4.2.2 Stop Conditions
 
@@ -454,7 +456,51 @@ Stop expansion at:
 - Items without recipe.
 - Items marked Uncraftable.
 - Items with craftBench = in_raid.
-- Cycle detection trigger.
+
+#### 4.2.2.1 Cycle Definition
+
+- Cycle detection applies to the **recipe dependency graph only**.
+- `recyclesInto` and `salvagesInto` are not part of craft expansion edges.
+- A cycle exists if a dependency chain re-visits an item already present in the current recursion stack.
+
+#### 4.2.2.2 Detection Algorithm (Deterministic)
+
+During recursive expansion:
+
+- Maintain:
+  - `visiting`: set of itemIds in the current recursion stack
+  - `stack`: ordered list of itemIds representing the current expansion path
+- When expanding item `X`, for each dependency `Y`:
+  - If `Y` is not in `visiting`, expand recursively.
+  - If `Y` is already in `visiting`, a cycle is detected.
+
+Traversal of dependencies must occur in sorted ascending `itemId` order to guarantee deterministic cycle detection and diagnostics.
+
+#### 4.2.2.3 Handling Rule (Cut Closing Edge)
+
+On detecting a cycle via dependency `X -> Y` where `Y` is already in the recursion stack:
+
+- Always cut the edge that closes the cycle.
+- Do not expand `Y` from `X`.
+- Mark `Y` as:
+  ```
+  Uncraftable (Cycle)
+  ```
+- Continue expanding other dependencies of `X` (if any).
+- Continue traversal deterministically.
+
+#### 4.2.2.4 Diagnostics
+
+When a cycle is detected:
+
+- Store a deterministic diagnostic path:
+  - The current `stack` plus the repeated `Y` at the end.
+- Example diagnostic format:
+  ```
+  A -> B -> C -> A
+  ```
+- Diagnostics are stored for display in debugging or developer tooling.
+- Diagnostics do not alter computation beyond the defined edge cut.
 
 ---
 
@@ -470,6 +516,7 @@ If:
 
 - Blueprint locked.
 - Bench level insufficient.
+- Craft cycle detected (recipe graph), as defined in 4.2.2.
 
 Behavior:
 
@@ -478,7 +525,9 @@ Behavior:
 - Still included in deficit calculation.
 - Does NOT expand recursively.
 - Display warning icon overlay.
-- Tooltip: "Uncraftable (Blueprint or Bench restriction)"
+- Tooltip:
+  - “Uncraftable (Blueprint or Bench restriction)”
+  - or “Uncraftable (Cycle)”
 - Listed in Blocking Overview.
 
 ---
@@ -630,6 +679,7 @@ Lists:
 - Missing base materials
 - Bench blockers
 - Blueprint blockers
+- Craft cycle blockers
 - Uncraftable items
 
 ---
@@ -792,13 +842,14 @@ Plan
 - Bench level fallback = 3.
 - Blueprint stub returns true unless overridden.
 - Salvage always yields less material than recycle.
+- Cycle detection applied only to recipe graph.
 - All items lootable topside unless specified otherwise.
 
 ---
 
 # 12. OPEN QUESTIONS
 
-1. Craft cycle detection handling.
+1. Craft cycle detection handling (Specified: detect recipe cycles via DFS recursion stack; traverse dependencies in sorted itemId order; cut closing edge; mark Uncraftable (Cycle); store deterministic cycle path).
 2. Buy suggestion ranking logic.
 3. Multiple craft benches per item (if possible).
 4. Whether to show reserved vs available stash quantities visually.
