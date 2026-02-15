@@ -74,6 +74,16 @@ It is first processed by the import pipeline defined in section 3.
 
 All static data is loaded at application startup and stored in memory.
 
+Pre-import fixture location (source-format files):
+
+```
+docs/sample/items/*.json
+```
+
+Each file contains a single item in source format, including multilingual fields and metadata.
+
+The importer must cope with this schema and iterate over all files at this location.
+
 ---
 
 ## 2.1.2 Final Item Schema (Post-Import)
@@ -724,3 +734,183 @@ Badges:
 - No server-side planner.
 - No economic optimization.
 - No drop probability modeling.
+
+---
+
+# 12. TESTING & VALIDATION
+
+This section defines required test coverage and canonical scenario definitions for deterministic verification of planner behavior.
+
+## 12.1 Fixture Source and Test Input Stage
+
+Canonical fixture source (pre-import source-format files):
+
+```
+docs/sample/items/*.json
+```
+
+Tests must derive the post-import `PlannerItem` dataset by executing the import pipeline specified in section 3.
+
+Test suite layers:
+
+1. Importer tests:
+- Input: pre-import source files from `docs/sample/items/*.json`
+- Output: post-import normalized dataset
+- Validate: filtering, normalization, mapping determinism
+
+2. Planner tests:
+- Input: post-import normalized dataset produced by importer
+- Validate: planner logic determinism and correctness against scenarios below
+
+Tests must not rely on JSON key ordering, file system iteration ordering, or runtime object iteration ordering.
+
+---
+
+## 12.2 Determinism Requirements
+
+All tests must assume:
+
+- Dependency traversal sorted by itemId.
+- Reservation ordering deterministic (section 6.4.1).
+- No reliance on JSON key order.
+- Identical inputs produce identical outputs for:
+    - craft plan
+    - recycling decisions
+    - reservation breakdown
+    - loot suggestion list and ordering
+
+---
+
+## 12.3 Canonical Test Scenarios
+
+### 12.3.1 Import Normalization
+
+Goal: verify deterministic import behavior.
+
+Given fixture items covering:
+
+- `stackSize` missing
+- `stackSize` present
+- `craftBench` string
+- `craftBench` array including `"workbench"`
+- `craftBench` array including `"in_raid"`
+- `craftBench` string `"in_raid"` only
+- `type` values that trigger mapping rules (Weapon via `isWeapon`, Quick Use, direct mapping)
+
+Expect:
+
+- `stackSize` missing -> `1`
+- `stationLevelRequired` missing -> `1`
+- `blueprintLocked` missing -> `false`
+- `craftBench` arrays normalized per section 3.2.1
+- in-raid-only crafting items excluded per section 3.1.2
+- category/subCategory mapping per section 3.3
+
+### 12.3.2 Craft Expansion (Baseline)
+
+Goal: verify recursive requirements expansion and stop conditions.
+
+Given:
+
+- a loadout with at least one craftable item that expands into:
+    - multiple inputs
+    - multiple levels of depth
+- items with:
+    - missing recipe (non-craftable)
+    - recipe = {} (non-craftable)
+    - craftBench undefined (non-craftable item)
+
+Expect:
+
+- required totals aggregated deterministically
+- recursion stops at non-craftables
+- consistent derived intermediate totals
+
+### 12.3.3 Cycle Detection
+
+Goal: verify cycle edge-cut behavior and diagnostics.
+
+Given a minimal recipe cycle fixture (e.g., `A -> B -> C -> A`):
+
+Expect:
+
+- cycle detected when encountering item already in `visiting`
+- always cut the edge that closes the cycle
+- mark item as `Uncraftable (Cycle)` per section 6.2.2.3
+- record deterministic cycle path diagnostic per section 6.2.2.4
+- continue expansion for non-cyclic branches
+
+### 12.3.4 Recycling to Cover Deficits
+
+Goal: verify recycling only applies when it reduces deficits and respects reservation.
+
+Given:
+
+- stash contains recyclable items with `recyclesInto` yielding needed materials
+- stash also contains items in non-recyclable categories
+- reservation allocations produce both reserved and available quantities
+
+Expect:
+
+- only `availableForRecycle` used
+- never recycle non-recyclable categories
+- only recycle items whose yields match currently missing materials
+- deterministic selection when multiple sources yield the same missing material
+
+### 12.3.5 Loot Suggestions Membership
+
+Goal: verify In-Raid suggestion inclusion rules.
+
+Given deficits where:
+
+- some items are missing directly
+- some items are not missing but recycle into missing materials
+- some items are craft outputs that are missing
+- some items salvage into missing materials
+
+Expect:
+
+- suggestion list includes items meeting any inclusion condition
+- ordering deterministic (sorted by itemId)
+
+### 12.3.6 Salvage Badge Decision
+
+Goal: verify CAN SALVAGE vs BRING HOME badge behavior.
+
+Given:
+
+- a suggested item with both `salvagesInto` and `recyclesInto`
+- current deficits where:
+    - salvage yields cover all relevant deficits contributed by the item (CAN SALVAGE), and
+    - salvage misses deficits that recycle would cover (BRING HOME)
+
+Expect:
+
+- badge assigned correctly
+- badge decision deterministic
+
+### 12.3.7 Unknown Item Handling (API)
+
+Goal: verify unknown `itemId` from API is displayed but excluded from planner logic.
+
+Given API stash/loadout response containing an unknown `itemId`:
+
+Expect:
+
+- UI label `Unknown Item (itemId)`
+- excluded from craft, recycle, loot suggestion, reservation logic per section 4.1 / 4.3
+
+### 12.3.8 Reservation Priority Locking (Future Compatibility)
+
+Goal: verify reservation system supports priority tiers and deterministic breakdown (even if future tiers are not yet populated by UI).
+
+Given:
+
+- multiple reservation reasons across tiers for the same `itemId`
+- insufficient stash quantity to satisfy all requestedQty
+
+Expect:
+
+- higher tiers allocate first
+- correct `allocatedQty` and `shortfall` per reason
+- consistent `reservedTotal`, `availableForRecycle`, and `availableForCrafting`
