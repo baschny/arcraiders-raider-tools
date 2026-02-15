@@ -60,9 +60,9 @@ The system must:
 
 ---
 
-# 2.1 Static Dataset (Client-Side)
+## 2.1 Static Dataset (Client-Side)
 
-## 2.1.1 Source
+### 2.1.1 Source
 
 Curated JSON files derived from the arctracker GitHub source.
 
@@ -214,7 +214,7 @@ Examples:
     - If multiple benches remain:
       - Use the first remaining bench (deterministic).
     - If no benches remain:
-      - Exclude the item (it was effectively in-raid-only or workbench-only placeholder).
+      - Exclude the item.
 
 Result:
 - Inside the planner dataset, `craftBench` is always a single BenchId.
@@ -416,13 +416,14 @@ if item.category in loadoutCategories:
 
 ---
 
-## 5.3 Strategy Priority
+## 5.3 Strategy Priority (v1)
 
 1. Use stash
 2. Craft (recursive)
 3. Recycle
-4. Buy (informational)
-5. Loot
+4. Loot (fallback)
+
+Buying from traders is intentionally excluded from v1 due to limited availability, daily purchase limits, and lack of API state.
 
 ---
 
@@ -543,7 +544,9 @@ Salvage not used in craft computation.
 deficit[itemId] > 0
 ```
 
-Drives loot and buy suggestions.
+Drives loot suggestions.
+
+Buying is excluded from v1.
 
 ---
 
@@ -591,20 +594,41 @@ Badges:
 - No item with craftBench = "in_raid" exists post-import.
 - Cycle detection applies to recipe graph only.
 - Salvage never affects totals.
+- Buying excluded from v1.
 
 ---
 
 # 9. OPEN QUESTIONS
 
 1. Craft cycle detection handling (Specified).
-2. Buy suggestion ranking logic.
+2. Buying from traders (Future feature).
 3. Multiple craft benches per item (Specified via import normalization).
 4. Reserved vs available stash visualization.
 5. Worst-case performance of DAG expansion.
 
 ---
 
-# 10. EXPLICIT NON-GOALS
+# 10. FUTURE FEATURES
+
+The following features are explicitly excluded from v1 but planned for later releases:
+
+## 10.1 Buying from Traders
+
+- Show informational suggestion that a missing item could be bought.
+- No price optimization.
+- No daily limit tracking (API not available).
+- No integration with stash automation.
+- Pure advisory feature.
+
+## 10.2 Additional Enhancements (Placeholder)
+
+- Advanced deficit impact visualization.
+- Performance optimization for large DAGs.
+- Optional economic overlays (if policy changes).
+
+---
+
+# 11. EXPLICIT NON-GOALS
 
 - No automated execution.
 - No server-side planner.
