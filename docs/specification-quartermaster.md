@@ -92,40 +92,40 @@ After import normalization, each item inside the application has the following s
 
 ```ts
 type BenchId =
-  | "equipment_bench"
-  | "explosives_bench"
-  | "med_station"
-  | "refiner"
-  | "utility_bench"
-  | "weapon_bench"
-  | "workbench"
+    | "equipment_bench"
+    | "explosives_bench"
+    | "med_station"
+    | "refiner"
+    | "utility_bench"
+    | "weapon_bench"
+    | "workbench"
 
 interface PlannerItem {
-  id: string
-  name: string
-  description: string
-  icon: string
-  rarity: "Common" | "Uncommon" | "Rare" | "Epic" | "Legendary"
+    id: string
+    name: string
+    description: string
+    icon: string
+    rarity: "Common" | "Uncommon" | "Rare" | "Epic" | "Legendary"
 
-  // Original source classification (preserved)
-  type: string
+    // Original source classification (preserved)
+    type: string
 
-  // Normalized planner fields
-  category: string
-  subCategory?: string
+    // Normalized planner fields
+    category: string
+    subCategory?: string
 
-  craftBench?: BenchId
-  stationLevelRequired: 1 | 2 | 3
-  blueprintLocked: boolean
+    craftBench?: BenchId
+    stationLevelRequired: 1 | 2 | 3
+    blueprintLocked: boolean
 
-  recipe?: Record<string, number>
-  recyclesInto?: Record<string, number>
-  salvagesInto?: Record<string, number>
+    recipe?: Record<string, number>
+    recyclesInto?: Record<string, number>
+    salvagesInto?: Record<string, number>
 
-  stackSize: number
-  value?: number
-  weight?: number
-  foundIn?: string[]
+    stackSize: number
+    value?: number
+    weight?: number
+    foundIn?: string[]
 }
 ```
 
@@ -141,8 +141,8 @@ After import:
 - `stationLevelRequired` is always defined.
 - `blueprintLocked` is always defined.
 - `craftBench` is either:
-  - a single valid BenchId, or
-  - undefined (non-craftable item).
+    - a single valid BenchId, or
+    - undefined (non-craftable item).
 - No item has `craftBench = "in_raid"` inside the planner dataset.
 
 ---
@@ -519,8 +519,8 @@ Behavior:
 - Not expanded
 - Warning icon
 - Tooltip variant:
-  - "Uncraftable (Blueprint or Bench restriction)"
-  - "Uncraftable (Cycle)"
+    - "Uncraftable (Blueprint or Bench restriction)"
+    - "Uncraftable (Cycle)"
 
 ---
 
@@ -609,10 +609,10 @@ Clicking a row expands:
 - Reserved total
 - Grouped by priority tier
 - For each reason:
-  - referenceId
-  - requestedQty
-  - allocatedQty
-  - shortfall (if > 0)
+    - referenceId
+    - requestedQty
+    - allocatedQty
+    - shortfall (if > 0)
 
 Example:
 
@@ -641,8 +641,8 @@ Precomputation:
 
 - Build a set `usedAsIngredient[itemId] = true` if the item appears as a key in any `recipe` field of any item in the dataset.
 - Define recycling preference:
-  - If `usedAsIngredient[itemId] === false` → `prefer_recycle`
-  - If `usedAsIngredient[itemId] === true` → `avoid_recycle`
+    - If `usedAsIngredient[itemId] === false` → `prefer_recycle`
+    - If `usedAsIngredient[itemId] === true` → `avoid_recycle`
 
 Inputs:
 
@@ -660,31 +660,31 @@ Algorithm:
 1. Loop until no more applicable recycling actions exist.
 
 2. Build candidate list:
-  - For each `srcItemId` with `availableForRecycle > 0` and `recyclesInto` defined:
-    - usefulMaterials = { m | deficit[m] > 0 AND recyclesInto[m] > 0 }
-    - if usefulMaterials is empty: exclude candidate
+    - For each `srcItemId` with `availableForRecycle > 0` and `recyclesInto` defined:
+        - usefulMaterials = { m | deficit[m] > 0 AND recyclesInto[m] > 0 }
+        - if usefulMaterials is empty: exclude candidate
 
 3. For each candidate, compute per-1-unit impact:
-  - coverageCount = |usefulMaterials|
-  - effectiveYield = sum over m in usefulMaterials of min(deficit[m], recyclesInto[m])
+    - coverageCount = |usefulMaterials|
+    - effectiveYield = sum over m in usefulMaterials of min(deficit[m], recyclesInto[m])
 
 4. Select best candidate using deterministic comparator:
-  1) Prefer `prefer_recycle` over `avoid_recycle`
-  2) Higher effectiveYield
-  3) Higher coverageCount
-  4) Lower srcItemId (ascending lexicographic)
+    1) Prefer `prefer_recycle` over `avoid_recycle`
+    2) Higher effectiveYield
+    3) Higher coverageCount
+    4) Lower srcItemId (ascending lexicographic)
 
 5. Recycle units greedily:
-  - maxUnits = availableForRecycle[srcItemId]
-  - For each m in usefulMaterials:
-    neededUnitsForM = ceil(deficit[m] / recyclesInto[m])
-    unitsTarget = min(maxUnits, max over m in usefulMaterials of neededUnitsForM)
-  - Apply recycling unit-by-unit from 1..unitsTarget:
-    - if the current unit would not reduce any deficit (all usefulMaterials now have deficit <= 0): stop early
-    - for each m in recyclesInto:
-      deficit[m] = max(0, deficit[m] - recyclesInto[m])
-  - Record action in recyclePlan with total units applied and computed yields.
-  - availableForRecycle[srcItemId] -= unitsApplied
+    - maxUnits = availableForRecycle[srcItemId]
+    - For each m in usefulMaterials:
+      neededUnitsForM = ceil(deficit[m] / recyclesInto[m])
+      unitsTarget = min(maxUnits, max over m in usefulMaterials of neededUnitsForM)
+    - Apply recycling unit-by-unit from 1..unitsTarget:
+        - if the current unit would not reduce any deficit (all usefulMaterials now have deficit <= 0): stop early
+        - for each m in recyclesInto:
+          deficit[m] = max(0, deficit[m] - recyclesInto[m])
+    - Record action in recyclePlan with total units applied and computed yields.
+    - availableForRecycle[srcItemId] -= unitsApplied
 
 6. Continue loop.
 
@@ -725,6 +725,187 @@ Badges:
 
 ---
 
+## 6.8 Planner Output Data Model (Canonical)
+
+This section defines the canonical data structures produced by the planner computation layer.  
+The UI must render strictly from these structures.  
+All structures must be deterministic and stable for identical inputs.
+
+### 6.8.1 Core Types
+
+```ts
+type ItemId = string
+type Qty = number
+type ReasonType = "project" | "hideout" | "craft"
+```
+
+---
+
+### 6.8.2 Plan Table
+
+```ts
+interface PlanRow {
+  itemId: ItemId
+  have: Qty
+  reserved: Qty
+  available: Qty
+  required: Qty
+  missing: Qty
+
+  isUnknownItem: boolean
+  isUncraftable: boolean
+  uncraftableReason?: "blueprint_or_bench" | "cycle"
+}
+```
+
+Plan rows must be ordered deterministically by `itemId` ascending.
+
+---
+
+### 6.8.3 Reservation Breakdown
+
+```ts
+interface ReservationBreakdown {
+  itemId: ItemId
+  totalReserved: Qty
+  tiers: Array<{
+    reasonType: ReasonType
+    reasons: Array<{
+      referenceId: string
+      requestedQty: Qty
+      allocatedQty: Qty
+      shortfall: Qty
+    }>
+  }>
+}
+```
+
+Tier ordering must follow section 6.4.1.  
+Reasons inside each tier must follow deterministic ordering rules defined in section 6.4.1.
+
+---
+
+### 6.8.4 Craft Plan
+
+```ts
+interface CraftStep {
+  benchId: BenchId
+  itemId: ItemId
+  qty: Qty
+  stationLevelRequired: 1 | 2 | 3
+  blueprintLocked: boolean
+  isUncraftable: boolean
+  uncraftableReason?: "blueprint_or_bench" | "cycle"
+}
+
+interface CraftPlan {
+  steps: CraftStep[]
+}
+```
+
+Ordering rules:
+
+1. Bench grouping in fixed bench order:
+    - equipment_bench
+    - explosives_bench
+    - med_station
+    - refiner
+    - utility_bench
+    - weapon_bench
+    - workbench
+2. Within each bench group: `itemId` ascending.
+
+---
+
+### 6.8.5 Recycling Plan
+
+```ts
+interface RecycleAction {
+  srcItemId: ItemId
+  qtyToRecycle: Qty
+  yields: Record<string, Qty>
+}
+
+interface RecyclePlan {
+  actions: RecycleAction[]
+}
+```
+
+`actions` must be ordered exactly in the sequence they were selected by the recycling algorithm loop (section 6.5.1).
+
+---
+
+### 6.8.6 Loot Suggestions
+
+```ts
+type LootReason =
+  | "missing_direct"
+  | "recycle_yields_missing"
+  | "craft_output_missing"
+  | "salvage_yields_missing"
+
+type LootBadge = "CAN_SALVAGE" | "BRING_HOME"
+
+interface LootSuggestion {
+  itemId: ItemId
+  reasons: LootReason[]
+  badge: LootBadge
+}
+
+interface LootSuggestionList {
+  items: LootSuggestion[]
+}
+```
+
+`items` must be ordered deterministically by `itemId` ascending.  
+`reasons` must be ordered deterministically by fixed enum order.
+
+---
+
+### 6.8.7 Blockers and Diagnostics
+
+```ts
+interface CycleDiagnostic {
+  itemId: ItemId
+  path: string[]
+}
+
+interface BlockerSummary {
+  missingNonCraftables: ItemId[]
+  missingBaseMaterials: ItemId[]
+  benchBlockers: ItemId[]
+  blueprintBlockers: ItemId[]
+  craftCycleBlockers: ItemId[]
+  cycleDiagnostics: CycleDiagnostic[]
+}
+```
+
+All arrays must be ordered deterministically by `itemId` ascending.
+
+---
+
+### 6.8.8 Top-Level Planner Result
+
+```ts
+interface PlannerResult {
+  required: Record<ItemId, Qty>
+  deficit: Record<ItemId, Qty>
+
+  planRows: PlanRow[]
+  reservations: ReservationBreakdown[]
+
+  craftPlan: CraftPlan
+  recyclePlan: RecyclePlan
+  lootSuggestions: LootSuggestionList
+
+  blockers: BlockerSummary
+}
+```
+
+This structure is the single canonical output of the planner computation engine.
+
+---
+
 # 7. USER INTERFACE
 
 ---
@@ -761,10 +942,7 @@ Badges:
 
 # 9. OPEN QUESTIONS
 
-1. Craft cycle detection handling (Specified).
-2. Buying from traders (Future feature).
-3. Multiple craft benches per item (Specified via import normalization).
-4. Worst-case performance of DAG expansion.
+- None
 
 ---
 
@@ -836,12 +1014,13 @@ All tests must assume:
 - Dependency traversal sorted by itemId.
 - Reservation ordering deterministic (section 6.4.1).
 - Recycling comparator fully specified (section 6.5.1).
+- Output structures follow canonical shapes (section 6.8).
 - No reliance on JSON key order.
 - Identical inputs produce identical outputs for:
-  - craft plan
-  - recycling decisions
-  - reservation breakdown
-  - loot suggestion list and ordering
+    - craft plan
+    - recycling decisions
+    - reservation breakdown
+    - loot suggestion list and ordering
 
 ---
 
@@ -877,12 +1056,12 @@ Goal: verify recursive requirements expansion and stop conditions.
 Given:
 
 - a loadout with at least one craftable item that expands into:
-  - multiple inputs
-  - multiple levels of depth
+    - multiple inputs
+    - multiple levels of depth
 - items with:
-  - missing recipe (non-craftable)
-  - recipe = {} (non-craftable)
-  - craftBench undefined (non-craftable item)
+    - missing recipe (non-craftable)
+    - recipe = {} (non-craftable)
+    - craftBench undefined (non-craftable item)
 
 Expect:
 
@@ -948,8 +1127,8 @@ Given:
 
 - a suggested item with both `salvagesInto` and `recyclesInto`
 - current deficits where:
-  - salvage yields cover all relevant deficits contributed by the item (CAN SALVAGE), and
-  - salvage misses deficits that recycle would cover (BRING HOME)
+    - salvage yields cover all relevant deficits contributed by the item (CAN SALVAGE), and
+    - salvage misses deficits that recycle would cover (BRING HOME)
 
 Expect:
 
