@@ -66,6 +66,12 @@ Approximately 500 items.
 
 All static data is loaded at application startup and stored in memory.
 
+Items with the following original `type` values are excluded from import and do not exist in the planner dataset:
+
+- Blueprint
+- Outfit
+- Backpack Charm
+
 ---
 
 ## 2.1.2 Item Schema
@@ -93,8 +99,64 @@ Each item JSON file contains:
   value?: number,
   weight?: number,
   foundIn?: string[],
-  categories?: string[]
+  categories?: string[],
+  isWeapon?: boolean
 }
+```
+
+### 2.1.2.1 Normalized Planner Fields
+
+During static dataset import, the planner derives:
+
+- `category: string`
+- `subCategory?: string`
+
+The original `type` field is preserved unchanged.
+
+### 2.1.2.2 Category Mapping Rules
+
+1. Weapon Mapping
+
+If:
+
+```
+isWeapon === true
+```
+
+Then:
+
+```
+category = "Weapon"
+subCategory = original type
+```
+
+2. Quick Use Mapping
+
+If:
+
+```
+type === "Quick Use"
+```
+
+Then:
+
+```
+category = "Quick Use"
+subCategory depends on craftBench:
+    explosives_bench  => "Explosive"
+    med_station       => "Medicinal"
+    utility_bench     => "Utility"
+```
+
+If no craftBench matches, subCategory remains undefined.
+
+3. Direct Mapping
+
+For all other items:
+
+```
+category = type
+subCategory = undefined
 ```
 
 ---
@@ -104,6 +166,7 @@ Each item JSON file contains:
 - If `stackSize` is missing -> assume `1`.
 - If `stationLevelRequired` is missing -> treat as level `1`.
 - If `blueprintLocked` is missing -> treat as `false`.
+- All items lootable topside unless specified otherwise.
 
 ---
 
@@ -168,6 +231,19 @@ GET /api/v2/user/stash
 - Persist locally with timestamp.
 - Fetch all pages until empty or fewer than `per_page` results.
 
+If an `itemId` does not exist in the static dataset:
+
+- Display as:
+  ```
+  Unknown Item (itemId)
+  ```
+- Show quantity.
+- Exclude from:
+  - Craft logic
+  - Recycling logic
+  - Loot suggestion logic
+  - Reservation logic
+
 ### Trigger
 
 Manual button:
@@ -192,9 +268,12 @@ Not working.
 
 Assume all benches level 3.
 
-### Future
+### Future Behavior
 
-Map benchId -> level (1..3).
+When functional:
+
+- Map benchId -> level (1..3).
+- If an item requires a higher level than available, mark it as Uncraftable.
 
 ---
 
@@ -234,6 +313,14 @@ durabilityPercent
 - Ignore slotIndex.
 - Ignore durabilityPercent.
 
+If an `itemId` does not exist in the static dataset:
+
+- Display as:
+  ```
+  Unknown Item (itemId)
+  ```
+- Exclude from planner logic.
+
 ### Trigger
 
 Manual button:
@@ -252,7 +339,11 @@ Stub implementation:
 isBlueprintUnlocked(itemId) => true
 ```
 
-Future integration required.
+If future API indicates blueprint locked:
+
+- Mark item as Uncraftable.
+- Do not expand recursively.
+- Display warning indicator.
 
 ---
 
@@ -264,29 +355,34 @@ Future integration required.
 
 ### 3.1.1 Non-Recyclable Categories
 
-Items belonging to loadout categories must never be recycled or salvaged automatically.
+Items belonging to loadout categories must never be recycled automatically.
 
-Non-recyclable categories:
+Loadout categories (based on normalized `category`):
 
-- Weapons
-- Augments
-- Weapon Mods
-- Shields
+- Weapon
+- Ammunition
+- Augment
+- Modification
 - Quick Use
+- Shield
 
 ### 3.1.2 Recyclable Categories
 
-Allowed:
+Allowed for recycling:
 
 - Nature
 - Recyclable
 - Refined Material
-- Topside Materials
+- Topside Material
+- Basic Material
+- Misc
+- Trinket
+- Special
 
 ### 3.1.3 Rule
 
 ```
-if item.type in loadout_categories:
+if item.category in loadoutCategories:
     item cannot be recycled
 ```
 
@@ -345,8 +441,10 @@ Each item appears once globally.
 
 - Expand recipe graph recursively.
 - Exclude craftBench = in_raid.
-- Assume blueprint unlocked.
-- Assume bench level 3.
+- Assume blueprint unlocked (unless explicitly locked).
+- Assume bench level 3 (unless hideout data overrides).
+- Aggregate identical intermediate requirements.
+- Deterministic ordering by itemId.
 
 ### 4.2.2 Stop Conditions
 
@@ -354,8 +452,34 @@ Stop expansion at:
 
 - Non-craftable items.
 - Items without recipe.
-- Items blocked by blueprint (future).
-- Items blocked by bench level (future).
+- Items marked Uncraftable.
+- Items with craftBench = in_raid.
+- Cycle detection trigger.
+
+---
+
+## 4.2.3 Uncraftable State
+
+An item is marked:
+
+```
+Uncraftable
+```
+
+If:
+
+- Blueprint locked.
+- Bench level insufficient.
+
+Behavior:
+
+- Still selectable in loadouts.
+- Still included in aggregation.
+- Still included in deficit calculation.
+- Does NOT expand recursively.
+- Display warning icon overlay.
+- Tooltip: "Uncraftable (Blueprint or Bench restriction)"
+- Listed in Blocking Overview.
 
 ---
 
@@ -387,6 +511,7 @@ Rules:
 - Only allowed categories.
 - Only from availableForRecycle.
 - Only if yields a currently missing material.
+- Never recycle loadout categories.
 
 Salvage is not used in crafting computation.
 
@@ -418,11 +543,20 @@ Include items where:
 - itemId itself is missing
 - recyclesInto yields missing material
 - recipe produces missing material
-- salvagesInto yields missing material
+- salvagesInto yields missing material (UI advisory only)
 
 ---
 
 ## 4.7 Salvage vs Recycle Decision
+
+Salvage:
+
+- Is NEVER used in crafting computation.
+- Is NEVER used in reservation.
+- Is NEVER used in deficit resolution.
+- Is UI advisory only in "In Raid".
+
+Salvaging always produces less material than Recycling.
 
 For each loot suggestion:
 
@@ -483,7 +617,8 @@ Expandable rows show:
 - Recipe
 - Bench + level
 - Recycling sources
-- Salvage notes
+- Uncraftable warning (if applicable)
+- Salvage notes (informational only)
 
 ---
 
@@ -493,8 +628,9 @@ Lists:
 
 - Missing non-craftables
 - Missing base materials
-- Bench blockers (future)
-- Blueprint blockers (future)
+- Bench blockers
+- Blueprint blockers
+- Uncraftable items
 
 ---
 
@@ -522,7 +658,8 @@ Displays:
 
 - Icon
 - Name
-- Categories
+- Category
+- SubCategory (if present)
 - Description
 - Properties
 - Recycles Into
@@ -530,6 +667,7 @@ Displays:
 - Crafting Recipe
 - Required For
 - Material Impact Trace
+- Uncraftable warning if applicable
 
 ---
 
@@ -552,6 +690,14 @@ No durability badge.
 
 No action buttons.
 
+Unknown items displayed as:
+
+```
+Unknown Item (itemId)
+```
+
+Excluded from planner logic.
+
 ---
 
 ## 8.3 Hover Detail
@@ -564,9 +710,10 @@ Shows:
 - Why needed
 - Classification badge:
 
-    - Required
-    - Useful Material
-    - Not Needed
+  - Required
+  - Useful Material
+  - Not Needed
+  - Uncraftable (if applicable)
 
 ---
 
@@ -591,6 +738,8 @@ Shows:
 - Expand full DAG.
 - Aggregate identical intermediates.
 - Compute total quantities.
+- Respect Uncraftable state.
+- Deterministic ordering.
 
 ---
 
@@ -603,6 +752,12 @@ Columns:
 - Total Output
 - Inputs Needed
 - Inputs Missing
+
+Uncraftable items:
+
+- Display warning icon.
+- Still shown in table.
+- Not expanded further.
 
 Refiner appears first.
 
@@ -632,24 +787,22 @@ Plan
 # 11. ASSUMPTIONS
 
 - Static dataset accurate.
-- All types mapped correctly.
+- All type mappings correctly normalized to category/subCategory.
 - stackSize available or default 1.
 - Bench level fallback = 3.
-- Blueprint stub returns true.
+- Blueprint stub returns true unless overridden.
+- Salvage always yields less material than recycle.
 - All items lootable topside unless specified otherwise.
 
 ---
 
 # 12. OPEN QUESTIONS
 
-1. Final authoritative mapping of type -> recyclable vs non-recyclable.
-2. Craft cycle detection handling.
-3. Buy suggestion ranking logic.
-4. Multiple craft benches per item (if possible).
-5. Whether to show reserved vs available stash quantities visually.
-6. Worst-case performance for DAG expansion.
-7. Handling unknown items returned by API.
-8. Hideout sync trigger behavior.
+1. Craft cycle detection handling.
+2. Buy suggestion ranking logic.
+3. Multiple craft benches per item (if possible).
+4. Whether to show reserved vs available stash quantities visually.
+5. Worst-case performance for DAG expansion.
 
 ---
 
@@ -660,5 +813,3 @@ Plan
 - No rarity protection logic.
 - No drop probability modeling.
 - No server-side planning engine.
-
----
