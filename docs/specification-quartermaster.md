@@ -141,8 +141,8 @@ After import:
 - `stationLevelRequired` is always defined.
 - `blueprintLocked` is always defined.
 - `craftBench` is either:
-    - a single valid BenchId, or
-    - undefined (non-craftable item).
+  - a single valid BenchId, or
+  - undefined (non-craftable item).
 - No item has `craftBench = "in_raid"` inside the planner dataset.
 
 ---
@@ -519,8 +519,8 @@ Behavior:
 - Not expanded
 - Warning icon
 - Tooltip variant:
-    - "Uncraftable (Blueprint or Bench restriction)"
-    - "Uncraftable (Cycle)"
+  - "Uncraftable (Blueprint or Bench restriction)"
+  - "Uncraftable (Cycle)"
 
 ---
 
@@ -609,10 +609,10 @@ Clicking a row expands:
 - Reserved total
 - Grouped by priority tier
 - For each reason:
-    - referenceId
-    - requestedQty
-    - allocatedQty
-    - shortfall (if > 0)
+  - referenceId
+  - requestedQty
+  - allocatedQty
+  - shortfall (if > 0)
 
 Example:
 
@@ -632,6 +632,69 @@ Reserved (Crafting):
 - Never recycle loadout categories
 
 Salvage not used in craft computation.
+
+### 6.5.1 Recycling Selection Algorithm (Deterministic)
+
+Goal: reduce current material deficits by recycling eligible items, using only quantities that remain after reservation locking.
+
+Precomputation:
+
+- Build a set `usedAsIngredient[itemId] = true` if the item appears as a key in any `recipe` field of any item in the dataset.
+- Define recycling preference:
+  - If `usedAsIngredient[itemId] === false` → `prefer_recycle`
+  - If `usedAsIngredient[itemId] === true` → `avoid_recycle`
+
+Inputs:
+
+- `deficit[itemId]` (post stash usage and craft expansion)
+- `availableForRecycle[srcItemId]` from section 6.4.3
+- each item's `recyclesInto` map
+
+Output:
+
+- `recyclePlan: Array<{ srcItemId, qtyToRecycle, yields: Record<string, number> }>`
+- updated `deficit` map (never below zero)
+
+Algorithm:
+
+1. Loop until no more applicable recycling actions exist.
+
+2. Build candidate list:
+  - For each `srcItemId` with `availableForRecycle > 0` and `recyclesInto` defined:
+    - usefulMaterials = { m | deficit[m] > 0 AND recyclesInto[m] > 0 }
+    - if usefulMaterials is empty: exclude candidate
+
+3. For each candidate, compute per-1-unit impact:
+  - coverageCount = |usefulMaterials|
+  - effectiveYield = sum over m in usefulMaterials of min(deficit[m], recyclesInto[m])
+
+4. Select best candidate using deterministic comparator:
+  1) Prefer `prefer_recycle` over `avoid_recycle`
+  2) Higher effectiveYield
+  3) Higher coverageCount
+  4) Lower srcItemId (ascending lexicographic)
+
+5. Recycle units greedily:
+  - maxUnits = availableForRecycle[srcItemId]
+  - For each m in usefulMaterials:
+    neededUnitsForM = ceil(deficit[m] / recyclesInto[m])
+    unitsTarget = min(maxUnits, max over m in usefulMaterials of neededUnitsForM)
+  - Apply recycling unit-by-unit from 1..unitsTarget:
+    - if the current unit would not reduce any deficit (all usefulMaterials now have deficit <= 0): stop early
+    - for each m in recyclesInto:
+      deficit[m] = max(0, deficit[m] - recyclesInto[m])
+  - Record action in recyclePlan with total units applied and computed yields.
+  - availableForRecycle[srcItemId] -= unitsApplied
+
+6. Continue loop.
+
+Properties:
+
+- Never recycles non-recyclable categories (section 5.1.1).
+- Never uses reserved quantities (section 6.4.3).
+- Only recycles when it reduces at least one positive deficit.
+- Items usable as crafting ingredients are deprioritized but not forbidden.
+- Deterministic for identical inputs (no reliance on object key order or iteration order).
 
 ---
 
@@ -772,12 +835,13 @@ All tests must assume:
 
 - Dependency traversal sorted by itemId.
 - Reservation ordering deterministic (section 6.4.1).
+- Recycling comparator fully specified (section 6.5.1).
 - No reliance on JSON key order.
 - Identical inputs produce identical outputs for:
-    - craft plan
-    - recycling decisions
-    - reservation breakdown
-    - loot suggestion list and ordering
+  - craft plan
+  - recycling decisions
+  - reservation breakdown
+  - loot suggestion list and ordering
 
 ---
 
@@ -813,12 +877,12 @@ Goal: verify recursive requirements expansion and stop conditions.
 Given:
 
 - a loadout with at least one craftable item that expands into:
-    - multiple inputs
-    - multiple levels of depth
+  - multiple inputs
+  - multiple levels of depth
 - items with:
-    - missing recipe (non-craftable)
-    - recipe = {} (non-craftable)
-    - craftBench undefined (non-craftable item)
+  - missing recipe (non-craftable)
+  - recipe = {} (non-craftable)
+  - craftBench undefined (non-craftable item)
 
 Expect:
 
@@ -842,19 +906,22 @@ Expect:
 
 ### 12.3.4 Recycling to Cover Deficits
 
-Goal: verify recycling only applies when it reduces deficits and respects reservation.
+Goal: verify recycling only applies when it reduces deficits, respects reservation, and preserves crafting ingredients.
 
 Given:
 
 - stash contains recyclable items with `recyclesInto` yielding needed materials
 - stash also contains items in non-recyclable categories
 - reservation allocations produce both reserved and available quantities
+- at least two recyclable items can reduce the same deficit
+- one candidate is used as a crafting ingredient elsewhere and the other is not
 
 Expect:
 
 - only `availableForRecycle` used
 - never recycle non-recyclable categories
 - only recycle items whose yields match currently missing materials
+- items not used as crafting ingredients are preferred over items that are
 - deterministic selection when multiple sources yield the same missing material
 
 ### 12.3.5 Loot Suggestions Membership
@@ -881,8 +948,8 @@ Given:
 
 - a suggested item with both `salvagesInto` and `recyclesInto`
 - current deficits where:
-    - salvage yields cover all relevant deficits contributed by the item (CAN SALVAGE), and
-    - salvage misses deficits that recycle would cover (BRING HOME)
+  - salvage yields cover all relevant deficits contributed by the item (CAN SALVAGE), and
+  - salvage misses deficits that recycle would cover (BRING HOME)
 
 Expect:
 
