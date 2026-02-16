@@ -206,16 +206,16 @@ Source data may contain:
 Normalization algorithm:
 
 1. If string:
-    - If `"in_raid"` → exclude.
+    - If `"in_raid"` -> exclude.
     - Otherwise keep.
 
 2. If array:
     - Remove `"workbench"`.
     - Remove `"in_raid"`.
     - Preserve original order.
-    - If one remains → use it.
-    - If multiple remain → use first.
-    - If none remain → exclude.
+    - If one remains -> use it.
+    - If multiple remain -> use first.
+    - If none remain -> exclude.
 
 After normalization, `craftBench` is always a single BenchId.
 
@@ -246,9 +246,9 @@ category = "Quick Use"
 
 SubCategory:
 
-- explosives_bench → "Explosive"
-- med_station → "Medicinal"
-- utility_bench → "Utility"
+- explosives_bench -> "Explosive"
+- med_station -> "Medicinal"
+- utility_bench -> "Utility"
 
 ### 3.3.3 Direct Mapping
 
@@ -265,9 +265,9 @@ subCategory = undefined
 
 During import:
 
-- Missing `stackSize` → 1
-- Missing `stationLevelRequired` → 1
-- Missing `blueprintLocked` → false
+- Missing `stackSize` -> 1
+- Missing `stationLevelRequired` -> 1
+- Missing `blueprintLocked` -> false
 
 ---
 
@@ -575,6 +575,37 @@ Per item:
 
 ---
 
+### 6.4.5 Current (v1) Reservation Reason Generation
+
+In v1, only the "craft" tier is actively populated.
+
+For v1:
+
+- reasonType is always: `craft`
+- referenceId must be derived deterministically from the loadout and target item.
+
+Generation rules:
+
+1. For each enabled loadout L:
+    - Define `loadoutRef = "loadout:" + L.id` (or stable identifier).
+2. For each enabled item entry E inside loadout L:
+    - If E.itemId is known and included in `required`:
+        - Create a reservation reason for that itemId with:
+            - reasonType = "craft"
+            - referenceId = loadoutRef + ":" + E.itemId
+            - requestedQty = E.quantity (as configured in loadout)
+3. Reservation reasons for intermediate crafting ingredients are not created explicitly; intermediate needs are represented through:
+    - craft expansion totals
+    - deficit computation
+    - recyclePlan selection
+4. Future tiers (project/hideout) remain empty in v1.
+
+Note:
+- This means reservation breakdown in v1 is primarily a traceable explanation of final loadout targets.
+- Intermediate ingredient locking is enforced by recycling eligibility rules in section 6.5.1 (KEEP precedence), not by creating additional reservation reasons.
+
+---
+
 ## 6.5 Recycling Phase
 
 Recycling reduces deficits after stash usage and craft expansion.
@@ -597,6 +628,22 @@ An item may be recycled only if:
     - Higher reservation tiers
 
 KEEP precedence over RECYCLE.
+
+Definition: "Intermediate craft"
+
+An itemId is considered required for intermediate craft if and only if:
+
+- It appears as an ingredient key in the expanded recipe requirements graph for any required final loadout item (post cycle-cutting), regardless of whether the intermediate itself is currently missing.
+
+This definition is deterministic and computed from:
+
+- `required` (final items from loadouts)
+- recipe graph expansion (section 6.2), with cycle handling applied
+
+Implication:
+
+- If an item can be an ingredient in the current plan, it is protected from recycling (KEEP precedence).
+- RecyclePlan must only include items not protected by this rule.
 
 ---
 
@@ -650,6 +697,50 @@ After stash usage, craft expansion, reservation, recycling:
 deficit[itemId] = max(0, required[itemId] - usableQuantity[itemId])
 ```
 
+Definition: usableQuantity
+
+For v1, usableQuantity must be computed deterministically as:
+
+1. Start from stash quantities:
+
+```
+have[itemId] = stashTotals[itemId] (0 if absent)
+```
+
+2. Apply reservation allocation:
+
+```
+reservedTotal[itemId] = sum of allocatedQty across all reservation reasons for itemId
+available[itemId] = have[itemId] - reservedTotal[itemId]
+```
+
+3. Determine usable quantity for satisfying required final loadout items:
+
+```
+usableQuantity[itemId] = have[itemId]
+```
+
+Rationale:
+
+- v1 reservation reasons (section 6.4.5) represent the same final loadout requirements that `required` represents.
+- Therefore, the reservation breakdown is explanatory (traceability) and must not reduce the ability to satisfy the same requirement set.
+- The locking that matters for plan correctness is enforced by recycling eligibility rules (section 6.5.1) and availableForRecycle.
+
+Constraints:
+
+- `availableForRecycle` must always use `available[itemId]` (have minus reserved) to avoid recycling reserved quantities.
+- `deficit` is computed against `have[itemId]` for v1, not against `available[itemId]`, to prevent double-counting the same requirement as both "required" and "reserved".
+
+Future compatibility:
+
+- When higher tiers (project/hideout) become active, usableQuantity must be updated to subtract higher-tier allocations only:
+
+```
+usableQuantity[itemId] = have[itemId] - allocatedQty(project + hideout tiers)
+```
+
+This change is future behavior and not active in v1.
+
 Drives:
 
 - Loot suggestions
@@ -668,6 +759,15 @@ Include item if:
 - SalvagesInto yields missing material
 
 Sorted by itemId ascending.
+
+Clarification: "Recipe produces missing material"
+
+An item is included under "Recipe produces missing material" if and only if:
+
+- The item itself is a craftable output (has `recipe` and `craftBench` defined), and
+- Its own itemId has `deficit[itemId] > 0`
+
+This avoids inverse or transitive interpretations that would explode the suggestion list.
 
 ---
 
@@ -695,7 +795,209 @@ Deterministic comparison.
 
 All UI renders from these structures.
 
-(Structures remain unchanged from previous canonical definitions: PlanRow, ReservationBreakdown, CraftPlan, RecyclePlan, LootSuggestionList, BlockerSummary, PlannerResult.)
+All structures must be deterministic and stable for identical inputs.
+
+### 6.8.1 Core Types
+
+```ts
+type ItemId = string
+type Qty = number
+type ReasonType = "project" | "hideout" | "craft"
+
+type UncraftableReason =
+  | "blueprint_or_bench"
+  | "cycle"
+
+type LootReason =
+  | "missing_direct"
+  | "recycle_yields_missing"
+  | "craft_output_missing"
+  | "salvage_yields_missing"
+
+type LootBadge =
+  | "CAN_SALVAGE"
+  | "BRING_HOME"
+```
+
+---
+
+### 6.8.2 Plan Table
+
+```ts
+interface PlanRow {
+  itemId: ItemId
+  have: Qty
+  reserved: Qty
+  available: Qty
+  required: Qty
+  missing: Qty
+
+  isUnknownItem: boolean
+  isUncraftable: boolean
+  uncraftableReason?: UncraftableReason
+}
+```
+
+Ordering:
+
+- `planRows` ordered by itemId ascending.
+
+Notes:
+
+- `reserved` and `available` are derived from reservation allocation (section 6.4.3).
+- In v1, `reserved` is traceability-only and must not reduce `have` for deficit calculation (section 6.6).
+
+---
+
+### 6.8.3 Reservation Breakdown
+
+```ts
+interface ReservationBreakdown {
+  itemId: ItemId
+  totalReserved: Qty
+  tiers: Array<{
+    reasonType: ReasonType
+    reasons: Array<{
+      referenceId: string
+      requestedQty: Qty
+      allocatedQty: Qty
+      shortfall: Qty
+    }>
+  }>
+}
+```
+
+Ordering:
+
+- `tiers` in fixed tier order (section 6.4.1).
+- `reasons` ordered by referenceId ascending.
+
+---
+
+### 6.8.4 Craft Plan
+
+```ts
+interface CraftStep {
+  benchId: BenchId
+  itemId: ItemId
+  qty: Qty
+  stationLevelRequired: 1 | 2 | 3
+  blueprintLocked: boolean
+  isUncraftable: boolean
+  uncraftableReason?: UncraftableReason
+}
+
+interface CraftPlan {
+  steps: CraftStep[]
+}
+```
+
+Ordering:
+
+1. Group by benchId using canonical bench order (section 6.9).
+2. Within each bench group: itemId ascending.
+
+---
+
+### 6.8.5 Recycling Plan
+
+```ts
+interface RecycleAction {
+  srcItemId: ItemId
+  qtyToRecycle: Qty
+  yields: Record<ItemId, Qty>
+}
+
+interface RecyclePlan {
+  actions: RecycleAction[]
+}
+```
+
+Ordering:
+
+- `actions` ordered exactly by selection sequence of the recycling loop (section 6.5.2).
+
+---
+
+### 6.8.6 Loot Suggestions
+
+```ts
+interface LootSuggestion {
+  itemId: ItemId
+  reasons: LootReason[]
+  badge: LootBadge
+
+  // Optional UI helper:
+  impactedTargetsCount?: number
+}
+
+interface LootSuggestionList {
+  items: LootSuggestion[]
+}
+```
+
+Ordering:
+
+- `items` ordered by itemId ascending.
+- `reasons` ordered by fixed enum order as listed in 6.8.1.
+
+---
+
+### 6.8.7 Blockers and Diagnostics
+
+```ts
+interface CycleDiagnostic {
+  itemId: ItemId
+  path: ItemId[]
+}
+
+interface BlockerSummary {
+  missingNonCraftables: ItemId[]
+  missingBaseMaterials: ItemId[]
+  benchBlockers: ItemId[]
+  blueprintBlockers: ItemId[]
+  craftCycleBlockers: ItemId[]
+  cycleDiagnostics: CycleDiagnostic[]
+}
+```
+
+Ordering:
+
+- All arrays ordered by itemId ascending.
+- `cycleDiagnostics` ordered by itemId ascending.
+
+---
+
+### 6.8.8 Top-Level Planner Result
+
+```ts
+interface PlannerResult {
+  required: Record<ItemId, Qty>
+  deficit: Record<ItemId, Qty>
+
+  planRows: PlanRow[]
+  reservations: ReservationBreakdown[]
+
+  craftPlan: CraftPlan
+  recyclePlan: RecyclePlan
+  lootSuggestions: LootSuggestionList
+
+  blockers: BlockerSummary
+
+  // Metadata for UI header row:
+  activeLoadoutsCount: number
+  totalMissingItemsCount: number
+  totalRecycleActionsCount: number
+  totalCraftStepsCount: number
+}
+```
+
+Notes:
+
+- `totalMissingItemsCount` is the count of itemIds with `deficit[itemId] > 0`.
+- `totalRecycleActionsCount` is `recyclePlan.actions.length`.
+- `totalCraftStepsCount` is `craftPlan.steps.length`.
+- These counts must be computed deterministically from the same planner result.
 
 ---
 
@@ -759,6 +1061,41 @@ Displays:
 - Last Sync Loadout timestamp
 
 No planner logic executed here; purely derived from PlannerResult and API timestamps.
+
+---
+
+### 7.1.3 Stored Loadouts Persistence (v1)
+
+Stored loadouts are persisted client-side.
+
+Persistence mechanism:
+
+- localStorage
+
+Required properties:
+
+- Deterministic serialization order
+- Backwards-compatible migration strategy (future)
+
+Minimum stored schema:
+
+```ts
+interface StoredLoadout {
+  id: string
+  name: string
+  isEnabled: boolean
+  items: Array<{
+    itemId: string
+    quantity: number
+    isEnabled: boolean
+  }>
+}
+```
+
+Ordering rules:
+
+- Stored loadouts list ordered by `name` ascending for display.
+- Loadout items are stored in insertion order but rendered grouped (section 7.4.2).
 
 ---
 
@@ -846,6 +1183,10 @@ Precedence:
 
 KEEP > RECYCLE > DISCARD
 
+Clarification:
+
+- If an item is required for any future craft (final or intermediate), it must be KEEP and must not be marked RECYCLE.
+
 ---
 
 ### 7.3.3 Hover Detail
@@ -883,7 +1224,7 @@ Behavior:
 - Typing filters instantly.
 - Enter adds item.
 - Default quantity = 1.
-- If already exists → increase quantity.
+- If already exists -> increase quantity.
 
 Loadout item list grouped automatically:
 
@@ -1165,7 +1506,7 @@ Given deficits where:
 
 - some items are missing directly
 - some items are not missing but recycle into missing materials
-- some items are craft outputs that are missing
+- some craft outputs are missing
 - some items salvage into missing materials
 
 Expect:
