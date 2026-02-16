@@ -8,11 +8,13 @@
   }
 
   &__item {
+    position: relative;
     cursor: pointer;
     transition: $transition-default;
+    z-index: 1;
 
     &:hover {
-      transform: scale(1.05);
+      z-index: 100;
     }
   }
 
@@ -46,5 +48,83 @@
     color: $text-primary;
     padding: 1px 4px;
     border-radius: 2px;
+  }
+
+  // Hover detail tooltip (spec 7.5.2)
+  &__hover-detail {
+    position: absolute;
+    z-index: 1000;
+    top: 100%;
+    left: 0;
+    margin-top: $spacing-xs;
+    
+    min-width: 250px;
+    max-width: 350px;
+    
+    background: $bg-secondary;
+    border: 1px solid $border-default;
+    border-radius: 4px;
+    padding: $spacing-sm;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    
+    font-size: $font-xs;
+    color: $text-primary;
+    text-align: left;
+    
+    pointer-events: none;
+  }
+
+  &__hover-header {
+    margin-bottom: $spacing-sm;
+    padding-bottom: $spacing-xs;
+    border-bottom: 1px solid $border-default;
+    font-size: $font-sm;
+  }
+
+  &__hover-section {
+    margin-bottom: $spacing-sm;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__hover-label {
+    font-weight: 600;
+    margin-bottom: $spacing-xs;
+    color: $text-secondary;
+  }
+
+  &__hover-value {
+    margin-left: $spacing-xs;
+    color: $text-primary;
+  }
+
+  &__hover-list {
+    margin: 0;
+    padding-left: $spacing-md;
+    list-style: disc;
+    color: $text-primary;
+
+    li {
+      margin: 2px 0;
+    }
+  }
+
+  &__hover-subsection {
+    margin-top: $spacing-xs;
+    margin-left: $spacing-xs;
+  }
+
+  &__hover-sublabel {
+    font-weight: 500;
+    font-size: $font-xs;
+    color: $text-secondary;
+    margin-bottom: 2px;
+  }
+
+  &__hover-needed {
+    color: $text-accent;
+    font-weight: 500;
   }
 }

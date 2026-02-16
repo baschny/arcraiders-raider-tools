@@ -223,6 +223,7 @@ export function QuartermasterApp() {
           <InRaidView
             itemsMap={itemsMap}
             lootSuggestions={plannerResult.lootSuggestions}
+            plannerResult={plannerResult}
           />
         );
 
