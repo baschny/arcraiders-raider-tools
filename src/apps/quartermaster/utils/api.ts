@@ -1,110 +1,97 @@
 /**
  * API Utilities for Quartermaster
+ * Wraps shared arctrackerApi service
  * See specification sections 4.1, 4.2, 4.3
  */
 
 import type { StashItem, CurrentLoadoutItem } from '../types/planner';
 import type { BenchId } from '../types/item';
+import type { CachedStash, CachedLoadout, ApiError } from '../../../shared/types/arctracker';
+import {
+  syncStashAllPages,
+  syncLoadout,
+  getStash,
+  getLoadout,
+} from '../../../shared/services/arctrackerApi';
 
-// API base URL - should be configured via environment variable
-const API_BASE_URL = import.meta.env.VITE_ARCTRACKER_API_URL || 'https://api.arctracker.io';
+// Re-export for convenience
+export { syncStashAllPages, syncLoadout, getStash, getLoadout };
+export type { CachedStash, CachedLoadout, ApiError };
 
-interface ApiResponse<T> {
-  data: T;
-  error?: string;
-}
-
-interface StashApiItem {
-  itemId: string;
-  quantity: number;
-  slotIndex?: number;
-}
-
-interface LoadoutApiItem {
-  itemId: string;
-  quantity: number;
-  slotIndex?: number;
-  durability?: number;
+/**
+ * Check if an error is an ApiError
+ */
+export function isApiError(error: unknown): error is ApiError {
+  return (
+    typeof error === 'object' &&
+    error !== null &&
+    'message' in error &&
+    'isRetryable' in error
+  );
 }
 
 /**
- * Fetch stash items from API
- * Aggregates by itemId, ignores slotIndex
+ * Aggregate stash items by itemId from cached stash
  */
-export async function fetchStash(): Promise<StashItem[]> {
-  try {
-    const response = await fetch(`${API_BASE_URL}/api/v2/user/stash`, {
-      credentials: 'include',
-    });
-
-    if (!response.ok) {
-      if (response.status === 429) {
-        throw new Error('Rate limited. Please try again later.');
-      }
-      throw new Error(`Failed to fetch stash: ${response.status}`);
-    }
-
-    const data: ApiResponse<StashApiItem[]> = await response.json();
-    
-    // Aggregate by itemId
-    const aggregated = new Map<string, number>();
-    for (const item of data.data) {
-      const current = aggregated.get(item.itemId) ?? 0;
-      aggregated.set(item.itemId, current + item.quantity);
-    }
-
-    return Array.from(aggregated.entries()).map(([itemId, quantity]) => ({
-      itemId,
-      quantity,
-    }));
-  } catch (error) {
-    console.error('Failed to fetch stash:', error);
-    throw error;
+export function aggregateStashItems(cachedStash: CachedStash): StashItem[] {
+  const aggregated = new Map<string, number>();
+  
+  for (const item of cachedStash.items) {
+    const current = aggregated.get(item.itemId) ?? 0;
+    aggregated.set(item.itemId, current + item.quantity);
   }
+
+  return Array.from(aggregated.entries())
+    .map(([itemId, quantity]) => ({ itemId, quantity }))
+    .sort((a, b) => a.itemId.localeCompare(b.itemId));
 }
 
 /**
- * Fetch current loadout from API
- * Aggregates by itemId, ignores slotIndex and durability
+ * Aggregate loadout items by itemId from cached loadout
+ * Ignores durability, extracts items from all loadout slots
  */
-export async function fetchCurrentLoadout(): Promise<CurrentLoadoutItem[]> {
-  try {
-    const response = await fetch(`${API_BASE_URL}/api/v2/user/loadout`, {
-      credentials: 'include',
-    });
+export function aggregateLoadoutItems(cachedLoadout: CachedLoadout): CurrentLoadoutItem[] {
+  const aggregated = new Map<string, number>();
+  const loadout = cachedLoadout.loadout;
 
-    if (!response.ok) {
-      if (response.status === 429) {
-        throw new Error('Rate limited. Please try again later.');
-      }
-      throw new Error(`Failed to fetch loadout: ${response.status}`);
+  // Helper to add item
+  const addItem = (itemId: string | null, quantity: number) => {
+    if (itemId && quantity > 0) {
+      const current = aggregated.get(itemId) ?? 0;
+      aggregated.set(itemId, current + quantity);
     }
+  };
 
-    const data: ApiResponse<LoadoutApiItem[]> = await response.json();
-    
-    // Aggregate by itemId
-    const aggregated = new Map<string, number>();
-    for (const item of data.data) {
-      const current = aggregated.get(item.itemId) ?? 0;
-      aggregated.set(item.itemId, current + item.quantity);
-    }
+  // Process single slots
+  if (loadout.augment?.itemId) addItem(loadout.augment.itemId, loadout.augment.quantity);
+  if (loadout.shield?.itemId) addItem(loadout.shield.itemId, loadout.shield.quantity);
+  if (loadout.weapon1?.itemId) addItem(loadout.weapon1.itemId, loadout.weapon1.quantity);
+  if (loadout.weapon2?.itemId) addItem(loadout.weapon2.itemId, loadout.weapon2.quantity);
 
-    return Array.from(aggregated.entries()).map(([itemId, quantity]) => ({
-      itemId,
-      quantity,
-    }));
-  } catch (error) {
-    console.error('Failed to fetch loadout:', error);
-    throw error;
+  // Process array slots
+  for (const slot of loadout.backpack ?? []) {
+    addItem(slot.itemId, slot.quantity);
   }
+  for (const slot of loadout.quickItems ?? []) {
+    addItem(slot.itemId, slot.quantity);
+  }
+  for (const slot of loadout.safePocket ?? []) {
+    addItem(slot.itemId, slot.quantity);
+  }
+  for (const slot of loadout.augmentedSlots ?? []) {
+    addItem(slot.itemId, slot.quantity);
+  }
+
+  return Array.from(aggregated.entries())
+    .map(([itemId, quantity]) => ({ itemId, quantity }))
+    .sort((a, b) => a.itemId.localeCompare(b.itemId));
 }
 
 /**
- * Fetch hideout bench levels from API
- * Falls back to level 3 for all benches if API unavailable
+ * Get bench levels (v1: all at level 3)
+ * See specification section 4.4
  */
-export async function fetchBenchLevels(): Promise<Record<BenchId, number>> {
-  // v1: API not available, return level 3 for all benches
+export function getBenchLevels(): Record<BenchId, number> {
   return {
     equipment_bench: 3,
     explosives_bench: 3,
@@ -114,19 +101,4 @@ export async function fetchBenchLevels(): Promise<Record<BenchId, number>> {
     weapon_bench: 3,
     workbench: 3,
   };
-}
-
-/**
- * Check if we're authenticated with the API
- */
-export async function checkApiAuth(): Promise<boolean> {
-  try {
-    const response = await fetch(`${API_BASE_URL}/api/v2/user/stash`, {
-      credentials: 'include',
-      method: 'HEAD',
-    });
-    return response.ok;
-  } catch {
-    return false;
-  }
 }

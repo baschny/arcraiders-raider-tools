@@ -21,10 +21,22 @@ import {
   renameLoadout,
 } from './utils/storage';
 import { computePlan, createEmptyResult } from './utils/planner';
-import { fetchStash, fetchCurrentLoadout } from './utils/api';
+import {
+  syncStashAllPages,
+  syncLoadout,
+  getStash,
+  getLoadout,
+  aggregateStashItems,
+  aggregateLoadoutItems,
+  isApiError,
+  type CachedStash,
+  type CachedLoadout,
+} from './utils/api';
+import { useAuth } from '../../shared/context/AuthContext';
 
 import { Sidebar, type ViewId } from './components/Sidebar';
 import { GlobalHeader } from './components/GlobalHeader';
+import { AuthGate } from './components/AuthGate';
 import { StashView } from './components/views/StashView';
 import { CurrentLoadoutView } from './components/views/CurrentLoadoutView';
 import { LoadoutsView } from './components/views/LoadoutsView';
@@ -34,38 +46,64 @@ import { CraftingView } from './components/views/CraftingView';
 import './styles/main.scss';
 
 export function QuartermasterApp() {
+  const { revalidate } = useAuth();
+
   // Core state
   const [itemsMap, setItemsMap] = useState<ItemsMap | null>(null);
   const [loadouts, setLoadouts] = useState<StoredLoadout[]>([]);
   const [stashItems, setStashItems] = useState<StashItem[]>([]);
   const [currentLoadout, setCurrentLoadout] = useState<CurrentLoadoutItem[]>([]);
   
-  // Timestamps for sync
-  const [stashTimestamp, setStashTimestamp] = useState<Date | null>(null);
-  const [loadoutTimestamp, setLoadoutTimestamp] = useState<Date | null>(null);
+  // Cached data for timestamps (section 3.4)
+  const [cachedStash, setCachedStash] = useState<CachedStash | null>(null);
+  const [cachedLoadout, setCachedLoadout] = useState<CachedLoadout | null>(null);
 
   // UI state
   const [activeView, setActiveView] = useState<ViewId>('loadouts');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [syncError, setSyncError] = useState<string | null>(null);
   const [isSyncingStash, setIsSyncingStash] = useState(false);
   const [isSyncingLoadout, setIsSyncingLoadout] = useState(false);
 
-  // Load items on mount
+  // Load items and cached data on mount
   useEffect(() => {
-    loadAllItems()
-      .then((items) => {
+    async function initialize() {
+      try {
+        // Load static items first
+        const items = await loadAllItems();
         setItemsMap(items);
-        // Load stored loadouts after items are loaded
+        
+        // Load stored loadouts
         const stored = loadStoredLoadouts(items);
         setLoadouts(stored);
+
+        // Load cached stash from IndexedDB (per spec 4.2.2)
+        const stash = await getStash();
+        if (stash) {
+          setCachedStash(stash);
+          const aggregated = aggregateStashItems(stash);
+          const knownItems = aggregated.filter(i => items[i.itemId]);
+          setStashItems(knownItems);
+        }
+
+        // Load cached loadout from IndexedDB (per spec 4.3.2)
+        const loadout = await getLoadout();
+        if (loadout) {
+          setCachedLoadout(loadout);
+          const aggregated = aggregateLoadoutItems(loadout);
+          const knownItems = aggregated.filter(i => items[i.itemId]);
+          setCurrentLoadout(knownItems);
+        }
+
         setLoading(false);
-      })
-      .catch((err) => {
-        console.error('Failed to load items:', err);
-        setError(err.message);
+      } catch (err) {
+        console.error('Failed to initialize:', err);
+        setError(err instanceof Error ? err.message : 'Unknown error');
         setLoading(false);
-      });
+      }
+    }
+    initialize();
   }, []);
 
   // Compute planner result whenever inputs change
@@ -138,68 +176,101 @@ export function QuartermasterApp() {
     saveStoredLoadouts(updated);
   }, [loadouts]);
 
-  // Sync callbacks
+  /**
+   * Handle API errors per spec section 4.2.3 / 4.3.3
+   */
+  const handleApiError = useCallback((err: unknown, operation: string) => {
+    if (isApiError(err)) {
+      if (err.status === 401) {
+        // Prompt re-auth
+        setSyncError('Session expired. Please log in again.');
+        revalidate();
+      } else if (err.status === 429 || err.isRetryable) {
+        // Show warning for rate limit or retryable errors
+        setSyncError(`Rate limited. Please wait a moment and try again.`);
+      } else {
+        // Other errors
+        setSyncError(`${operation} failed: ${err.message}`);
+      }
+    } else {
+      setSyncError(`${operation} failed: ${err instanceof Error ? err.message : 'Unknown error'}`);
+    }
+    // Do NOT clear cache on failure (per spec 4.2.3)
+  }, [revalidate]);
+
+  // Sync callbacks using shared arctrackerApi service (spec 4.2.1, 4.3.1)
   const handleSyncStash = useCallback(async () => {
     setIsSyncingStash(true);
+    setSyncError(null);
     try {
-      const items = await fetchStash();
-      // Filter to only known items
+      const stash = await syncStashAllPages();
+      setCachedStash(stash);
+      
+      // Filter to only known items (per spec 4.2.2)
+      const aggregated = aggregateStashItems(stash);
       const knownItems = itemsMap 
-        ? items.filter(i => itemsMap[i.itemId])
-        : items;
+        ? aggregated.filter(i => itemsMap[i.itemId])
+        : aggregated;
       setStashItems(knownItems);
-      setStashTimestamp(new Date());
     } catch (err) {
       console.error('Failed to sync stash:', err);
-      // Keep existing state on error
+      handleApiError(err, 'Sync inventory');
     } finally {
       setIsSyncingStash(false);
     }
-  }, [itemsMap]);
+  }, [itemsMap, handleApiError]);
 
   const handleSyncLoadout = useCallback(async () => {
     setIsSyncingLoadout(true);
+    setSyncError(null);
     try {
-      const items = await fetchCurrentLoadout();
-      // Filter to only known items
+      const loadout = await syncLoadout();
+      setCachedLoadout(loadout);
+      
+      // Filter to only known items (per spec 4.3.2)
+      const aggregated = aggregateLoadoutItems(loadout);
       const knownItems = itemsMap 
-        ? items.filter(i => itemsMap[i.itemId])
-        : items;
+        ? aggregated.filter(i => itemsMap[i.itemId])
+        : aggregated;
       setCurrentLoadout(knownItems);
-      setLoadoutTimestamp(new Date());
     } catch (err) {
       console.error('Failed to sync loadout:', err);
-      // Keep existing state on error
+      handleApiError(err, 'Sync loadout');
     } finally {
       setIsSyncingLoadout(false);
     }
-  }, [itemsMap]);
+  }, [itemsMap, handleApiError]);
 
   // Render content based on active view
+  // Views requiring stash/loadout are wrapped in AuthGate (per spec section 3.2)
   const renderContent = () => {
     if (!itemsMap) return null;
 
     switch (activeView) {
       case 'stash':
         return (
-          <StashView
-            itemsMap={itemsMap}
-            stashItems={stashItems}
-            plannerResult={plannerResult}
-            onSyncStash={handleSyncStash}
-            isSyncing={isSyncingStash}
-          />
+          <AuthGate>
+            <StashView
+              itemsMap={itemsMap}
+              stashItems={stashItems}
+              plannerResult={plannerResult}
+              onSyncStash={handleSyncStash}
+              isSyncing={isSyncingStash}
+            />
+          </AuthGate>
         );
 
       case 'current-loadout':
         return (
-          <CurrentLoadoutView
-            itemsMap={itemsMap}
-            currentLoadout={currentLoadout}
-            plannerResult={plannerResult}
-            onSyncLoadout={handleSyncLoadout}
-            isSyncing={isSyncingLoadout}
-          />
+          <AuthGate>
+            <CurrentLoadoutView
+              itemsMap={itemsMap}
+              currentLoadout={currentLoadout}
+              plannerResult={plannerResult}
+              onSyncLoadout={handleSyncLoadout}
+              isSyncing={isSyncingLoadout}
+            />
+          </AuthGate>
         );
 
       case 'loadouts':
@@ -220,22 +291,26 @@ export function QuartermasterApp() {
 
       case 'in-raid':
         return (
-          <InRaidView
-            itemsMap={itemsMap}
-            lootSuggestions={plannerResult.lootSuggestions}
-            plannerResult={plannerResult}
-          />
+          <AuthGate>
+            <InRaidView
+              itemsMap={itemsMap}
+              lootSuggestions={plannerResult.lootSuggestions}
+              plannerResult={plannerResult}
+            />
+          </AuthGate>
         );
 
       case 'crafting':
         return (
-          <CraftingView
-            itemsMap={itemsMap}
-            craftPlan={plannerResult.craftPlan}
-            recyclePlan={plannerResult.recyclePlan}
-            onSyncStash={handleSyncStash}
-            isSyncing={isSyncingStash}
-          />
+          <AuthGate>
+            <CraftingView
+              itemsMap={itemsMap}
+              craftPlan={plannerResult.craftPlan}
+              recyclePlan={plannerResult.recyclePlan}
+              onSyncStash={handleSyncStash}
+              isSyncing={isSyncingStash}
+            />
+          </AuthGate>
         );
 
       default:
@@ -268,9 +343,20 @@ export function QuartermasterApp() {
         <div className="quartermaster-main">
           <GlobalHeader
             plannerResult={plannerResult}
-            stashTimestamp={stashTimestamp}
-            loadoutTimestamp={loadoutTimestamp}
+            stashSyncedAt={cachedStash?.syncedAt ?? null}
+            loadoutSyncedAt={cachedLoadout?.syncedAt ?? null}
           />
+          {syncError && (
+            <div className="qm-sync-error">
+              {syncError}
+              <button 
+                className="qm-sync-error__dismiss" 
+                onClick={() => setSyncError(null)}
+              >
+                ×
+              </button>
+            </div>
+          )}
           <div className="quartermaster-content">
             {renderContent()}
           </div>

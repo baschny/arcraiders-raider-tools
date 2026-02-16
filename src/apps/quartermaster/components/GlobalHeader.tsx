@@ -7,19 +7,28 @@ import type { PlannerResult } from '../types/planner';
 
 interface GlobalHeaderProps {
   plannerResult: PlannerResult;
-  stashTimestamp: Date | null;
-  loadoutTimestamp: Date | null;
+  stashSyncedAt: string | null;
+  loadoutSyncedAt: string | null;
 }
 
-function formatTimestamp(date: Date | null): string {
-  if (!date) return 'Never';
-  return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+/**
+ * Format ISO timestamp for display
+ * Uses CachedStash.syncedAt / CachedLoadout.syncedAt per spec section 3.4
+ */
+function formatTimestamp(isoString: string | null): string {
+  if (!isoString) return 'Never';
+  try {
+    const date = new Date(isoString);
+    return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  } catch {
+    return 'Invalid';
+  }
 }
 
 export function GlobalHeader({
   plannerResult,
-  stashTimestamp,
-  loadoutTimestamp,
+  stashSyncedAt,
+  loadoutSyncedAt,
 }: GlobalHeaderProps) {
   const {
     activeLoadoutsCount,
@@ -58,10 +67,10 @@ export function GlobalHeader({
 
       <div className="qm-global-header__timestamps">
         <div className="qm-global-header__timestamp">
-          Stash: <span>{formatTimestamp(stashTimestamp)}</span>
+          Stash: <span>{formatTimestamp(stashSyncedAt)}</span>
         </div>
         <div className="qm-global-header__timestamp">
-          Loadout: <span>{formatTimestamp(loadoutTimestamp)}</span>
+          Loadout: <span>{formatTimestamp(loadoutSyncedAt)}</span>
         </div>
       </div>
     </div>

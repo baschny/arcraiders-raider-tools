@@ -160,3 +160,80 @@
   height: 100%;
   color: $status-missing;
 }
+
+// Sync error banner
+.qm-sync-error {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-sm $spacing-md;
+  background: color.adjust($status-missing, $alpha: -0.85);
+  border-bottom: 1px solid $status-missing;
+  color: $status-missing;
+  font-size: $font-sm;
+
+  &__dismiss {
+    background: none;
+    border: none;
+    color: $status-missing;
+    font-size: $font-lg;
+    cursor: pointer;
+    padding: 0 $spacing-xs;
+    line-height: 1;
+
+    &:hover {
+      color: $text-primary;
+    }
+  }
+}
+
+// Auth gate
+.qm-auth-gate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: $spacing-xl;
+
+  &__loading,
+  &__login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: $spacing-md;
+    max-width: 400px;
+
+    svg {
+      color: $text-secondary;
+      opacity: 0.7;
+    }
+
+    h3 {
+      color: $text-primary;
+      font-size: $font-lg;
+      margin: 0;
+    }
+
+    p {
+      color: $text-secondary;
+      margin: 0;
+      line-height: 1.5;
+    }
+  }
+
+  &__loading p {
+    color: $text-secondary;
+    font-size: $font-sm;
+  }
+}
+
+// Spin animation for loading indicators
+@keyframes qm-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin {
+  animation: qm-spin 1s linear infinite;
+}
