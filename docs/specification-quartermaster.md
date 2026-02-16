@@ -32,6 +32,34 @@ URL slug:
 
 /quartermaster
 
+### Integration (Raider Tools)
+
+The Quartermaster module must be embedded as a Raider Tools “app” under:
+
+```
+src/apps/quartermaster/
+```
+
+Integration must follow the existing pattern used by:
+
+```
+src/apps/loot-helper/
+```
+
+This includes:
+
+- App registration inside Raider Tools.
+- Route registration under `/quartermaster`.
+- Sidebar integration using the same mechanism as loot-helper.
+
+Quartermaster must follow the same global styling system as Raider Tools, including:
+
+- Shared font definitions.
+- Shared base color palette.
+- Shared spacing and layout conventions.
+
+Quartermaster-specific styles must be scoped to the app container and must not leak globally, following the loot-helper CSS approach.
+
 ---
 
 ## 1.2 Purpose
@@ -78,16 +106,17 @@ The system must:
 
 ### 2.1.1 Source
 
-Curated JSON files derived from the arctracker GitHub source.
+Raw source data is provided by the arctracker.io data repository checked out locally at:
 
-Approximately 500 items before import filtering.
+```
+../arcraiders-data/items/
+```
 
-Raw source data is not used directly by the application.  
-It is first processed by the import pipeline defined in section 3.
+This path is relative to the Raider Tools repository root.
 
-All static data is loaded at application startup and stored in memory.
+These files are in source format and are the input to the import pipeline defined in section 3.
 
-Pre-import fixture location (source-format files):
+For testing purposes, canonical fixture source (pre-import source-format files) is:
 
 ```
 docs/sample/items/*.json
@@ -95,13 +124,13 @@ docs/sample/items/*.json
 
 Each file contains a single item in source format, including multilingual fields and metadata.
 
-The importer must cope with this schema and iterate over all files at this location.
+The importer must cope with this schema and iterate over all files at this location deterministically.
 
 ---
 
-## 2.1.2 Final Item Schema (Post-Import)
+## 2.1.2 Final Item Schema (Post-Import, In-Memory Representation)
 
-After import normalization, each item inside the application has the following schema:
+After import normalization and load into the application, each item inside the application has the following schema:
 
 ```ts
 type BenchId =
@@ -160,11 +189,91 @@ After import:
 
 ---
 
+## 2.1.4 Aggregated Dataset File (Production Output)
+
+The CLI import tool (section 3.5) generates a single aggregated dataset file at:
+
+```
+public/data/quartermaster/items.json
+```
+
+This file must:
+
+- Be generated locally before committing.
+- Be committed to git.
+- Be deterministic for identical input sources.
+
+Format:
+
+```json
+{
+  "version": 1,
+  "items": {
+    "heavy_ammo": {
+      "name": "...",
+      "description": "...",
+      "icon": "...",
+      "rarity": "Uncommon",
+      "type": "...",
+      "category": "...",
+      "subCategory": "...",
+      "craftBench": "workbench",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 10,
+      "recipe": { "chemicals": 2, "metal_parts": 3 },
+      "recyclesInto": {},
+      "salvagesInto": {},
+      "stackSize": 999,
+      "value": 0,
+      "weight": 0,
+      "foundIn": []
+    }
+  }
+}
+```
+
+Properties:
+
+- Top-level keys fixed: `version`, `items`.
+- `items` is a map keyed by `itemId` (ASCII).
+- Items are sorted by `itemId` ascending (ASCII).
+- Within each item object, keys must be written in fixed canonical order:
+    1. name
+    2. description
+    3. icon
+    4. rarity
+    5. type
+    6. category
+    7. subCategory (if present)
+    8. craftBench (if present)
+    9. stationLevelRequired
+    10. blueprintLocked
+    11. craftQuantity
+    12. recipe (if present)
+    13. recyclesInto (if present)
+    14. salvagesInto (if present)
+    15. stackSize
+    16. value (if present)
+    17. weight (if present)
+    18. foundIn (if present)
+
+- `recipe`, `recyclesInto`, and `salvagesInto` maps must have keys sorted ASCII ascending.
+
+Application load behavior:
+
+- At application startup, Quartermaster loads:
+    - `/data/quartermaster/items.json`
+- For each entry in `items` map:
+    - Reconstruct in-memory `PlannerItem` with:
+        - `id = itemId` (map key)
+- No runtime fetching from arctracker.io.
+
+---
+
 # 3. ITEM IMPORT & NORMALIZATION PROCESS
 
-The import process is an external preprocessing step that converts raw source JSON files into the final PlannerItem dataset.
-
-The application assumes this process has already been executed.
+The import process is an external preprocessing step that converts raw source JSON files into the final aggregated dataset defined in section 2.1.4.
 
 This process must be deterministic.
 
@@ -273,6 +382,63 @@ During import:
 - Missing `stationLevelRequired` -> 1
 - Missing `blueprintLocked` -> false
 - Missing `craftQuantity` -> 1
+
+---
+
+## 3.5 CLI Import Tool (Node)
+
+### 3.5.1 Purpose
+
+Provide a Node.js CLI tool to import and normalize items from:
+
+```
+../arcraiders-data/items/
+```
+
+The CLI must generate the aggregated dataset file:
+
+```
+public/data/quartermaster/items.json
+```
+
+The CLI must be run locally before committing.
+
+The generated file must be committed to git.
+
+### 3.5.2 package.json Integration
+
+The CLI must be integrated following existing Raider Tools conventions, similar to:
+
+```
+"generate:items-loot-helper": "./scripts/generate-item-data-loot-helper.sh",
+```
+
+Quartermaster must define an analogous script, for example:
+
+```
+"generate:items-quartermaster": "./scripts/generate-item-data-quartermaster.sh",
+```
+
+The shell script may invoke a Node.js script responsible for the import and normalization logic.
+
+### 3.5.3 Deterministic Behavior
+
+The CLI must:
+
+- Read all JSON files from `../arcraiders-data/items/`.
+- Sort filenames ASCII ascending before processing.
+- Parse each file.
+- Apply filtering and normalization rules from sections 3.1–3.4.
+- Aggregate into the final JSON structure defined in section 2.1.4.
+- Sort items by itemId ASCII ascending.
+- Sort nested maps (`recipe`, `recyclesInto`, `salvagesInto`) by key ASCII ascending.
+- Write JSON with stable key ordering and stable formatting.
+
+Failure behavior:
+
+- Invalid JSON -> exit non-zero.
+- Missing source directory -> exit non-zero.
+- Write failure -> exit non-zero.
 
 ---
 
@@ -396,7 +562,9 @@ This chapter defines all deterministic computation rules used to derive the cano
 
 All algorithms must be deterministic and independent of object iteration order.
 
-ItemIds are ASCII and all "ascending itemId" comparisons are ASCII lexicographic ascending.
+ItemIds are ASCII and all ascending comparisons are ASCII lexicographic ascending.
+
+Maximum recipe expansion depth is 6.
 
 ---
 
