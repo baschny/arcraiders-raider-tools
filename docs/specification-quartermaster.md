@@ -54,9 +54,17 @@ This includes:
 
 Quartermaster must follow the same global styling system as Raider Tools, including:
 
-- Shared font definitions.
 - Shared base color palette.
 - Shared spacing and layout conventions.
+
+Quartermaster uses custom font size definitions larger than shared defaults:
+
+- Extra small: 11px
+- Small: 12px
+- Base: 13px
+- Medium: 14px
+- Large: 16px
+- Extra large: 18px
 
 Quartermaster-specific styles must be scoped to the app container and must not leak globally, following the loot-helper CSS approach.
 
@@ -1668,6 +1676,18 @@ All views that display items must use this component.
 - Inside container: item image centered and contained.
 - Below container: item name label (always visible).
 - Quantity overlay is always visible, even if quantity is `1`.
+
+Icon size variants:
+
+- Small: 60px × 60px
+- Medium (default): 84px × 84px
+- Large: 108px × 108px
+
+Overlay styling:
+
+- Quantity overlay: positioned bottom-right, font-size 13px, padding 3px 6px.
+- Badge overlays: positioned top-left, font-size 11px, padding 3px 6px.
+- Image padding inside container: 6px.
 
 ---
 
