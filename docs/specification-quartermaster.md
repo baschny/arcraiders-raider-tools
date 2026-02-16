@@ -129,6 +129,8 @@ interface PlannerItem {
     stationLevelRequired: 1 | 2 | 3
     blueprintLocked: boolean
 
+    craftQuantity: number
+
     recipe?: Record<string, number>
     recyclesInto?: Record<string, number>
     salvagesInto?: Record<string, number>
@@ -153,6 +155,8 @@ After import:
 - `blueprintLocked` is always defined.
 - `craftBench` is either a valid BenchId or undefined.
 - No item has `craftBench = "in_raid"` inside the planner dataset.
+- `craftQuantity` is always defined.
+- Default `craftQuantity` is `1` if missing in source.
 
 ---
 
@@ -268,6 +272,7 @@ During import:
 - Missing `stackSize` -> 1
 - Missing `stationLevelRequired` -> 1
 - Missing `blueprintLocked` -> false
+- Missing `craftQuantity` -> 1
 
 ---
 
@@ -288,13 +293,7 @@ Rules:
 - Persist timestamp.
 - Fetch all pages.
 
-Unknown item:
-
-```
-Unknown Item (itemId)
-```
-
-Excluded from planner logic.
+Unknown `itemId` entries returned by the API are ignored and not displayed anywhere in the module.
 
 Trigger: Sync Inventory
 
@@ -323,7 +322,7 @@ GET /api/v2/user/loadout
 
 Aggregate by itemId. Ignore slotIndex and durability.
 
-Unknown items displayed but excluded from logic.
+Unknown `itemId` entries are ignored and not displayed anywhere in the module.
 
 Trigger: Sync Loadout
 
@@ -409,6 +408,10 @@ Ordering:
 Craft expansion operates exclusively on the `recipe` graph.
 
 `recyclesInto` and `salvagesInto` are not part of recursive expansion.
+
+For any craftable item `X`, `craftQuantity[X]` defines the output units per craft action.
+
+Planner must never plan fractional craft actions.
 
 ---
 
@@ -649,43 +652,80 @@ Implication:
 
 ### 6.5.2 Recycling Algorithm (Deterministic)
 
-Inputs:
+Step-by-step:
 
-- deficit map
-- availableForRecycle map
-- recyclesInto data
+Build candidate list:
 
-Steps:
+For each `srcItemId` in lexicographic ascending order:
 
-1. Build candidate list:
-    - availableForRecycle > 0
-    - recyclesInto defined
-    - yields at least one material with deficit > 0
+- If `availableForRecycle[srcItemId] <= 0` -> skip
+- If `recyclesInto` undefined -> skip
 
-2. Compute impact metrics per 1 unit:
-    - coverageCount
-    - effectiveYield
+Compute:
 
-3. Select candidate using comparator:
+```
+usefulMaterials = {
+  m | deficit[m] > 0 AND recyclesInto[srcItemId][m] > 0
+}
+```
 
-    1) Prefer items not used as crafting ingredients
-    2) Higher effectiveYield
-    3) Higher coverageCount
-    4) Lower itemId
+If `usefulMaterials` is empty -> exclude candidate.
 
-4. Apply recycling unit-by-unit until:
-    - No deficits reduced
-    - availableForRecycle exhausted
+Score each candidate based on current deficits (per 1 recycled unit):
 
-5. Record recyclePlan action.
+```
+coverageCount = |usefulMaterials|
 
-Loop until no applicable candidates remain.
+effectiveYield =
+  sum over m in usefulMaterials of
+    min(deficit[m], recyclesInto[srcItemId][m])
+```
 
-Properties:
+Choose the best candidate deterministically using this comparator:
 
-- Deterministic
-- No recycling of reserved quantities
-- No recycling of loadout categories
+1. Higher `effectiveYield`
+2. Higher `coverageCount`
+3. Lower `srcItemId` (lexicographic ascending)
+
+Recycle greedily:
+
+Let:
+
+```
+maxUnits = availableForRecycle[srcItemId]
+```
+
+Determine:
+
+```
+unitsNeeded =
+  min(
+    maxUnits,
+    max over m in usefulMaterials of
+      ceil(deficit[m] / recyclesInto[srcItemId][m])
+  )
+```
+
+Apply recycling unit-by-unit up to `unitsNeeded`:
+
+After each unit:
+
+- Update deficits.
+- If the candidate no longer reduces any deficit, stop early.
+
+Record action:
+
+- Subtract units from `availableForRecycle[srcItemId]`.
+- Record `RecycleAction` with total units applied and resulting yields.
+
+Repeat from candidate rebuild step until no candidates remain.
+
+Determinism guarantees:
+
+- Candidate scoring is pure given current state.
+- Comparator is fully specified.
+- All `srcItemId` iterations sorted ascending.
+- Updates applied in strict loop order.
 
 ---
 
@@ -773,19 +813,34 @@ This avoids inverse or transitive interpretations that would explode the suggest
 
 ### 6.7.1 Salvage vs Recycle Badge
 
-For each suggestion:
+For each suggested item `S`:
 
-If salvage yields cover all relevant missing outputs:
-
-```
-CAN SALVAGE
-```
-
-Else:
+Define:
 
 ```
-BRING HOME
+neededMaterials = { m | deficit[m] > 0 }
+
+salvageUseful =
+  { m in neededMaterials | salvagesInto[S][m] > 0 }
+
+recycleUseful =
+  { m in neededMaterials | recyclesInto[S][m] > 0 }
 ```
+
+Badge assignment:
+
+- If `(recycleUseful \ salvageUseful)` is non-empty:
+    ```
+    BRING_HOME
+    ```
+- Else if `salvageUseful` is non-empty:
+    ```
+    CAN_SALVAGE
+    ```
+- Else:
+    ```
+    BRING_HOME
+    ```
 
 Deterministic comparison.
 
@@ -832,7 +887,6 @@ interface PlanRow {
   required: Qty
   missing: Qty
 
-  isUnknownItem: boolean
   isUncraftable: boolean
   uncraftableReason?: UncraftableReason
 }
@@ -846,6 +900,7 @@ Notes:
 
 - `reserved` and `available` are derived from reservation allocation (section 6.4.3).
 - In v1, `reserved` is traceability-only and must not reduce `have` for deficit calculation (section 6.6).
+- Unknown items are never emitted.
 
 ---
 
@@ -892,6 +947,12 @@ interface CraftPlan {
 }
 ```
 
+Definitions:
+
+- `qty` is total output units planned.
+- `qty` must always be a multiple of `craftQuantity[itemId]`.
+- `craftTimes = qty / craftQuantity[itemId]` (integer, derived for UI).
+
 Ordering:
 
 1. Group by benchId using canonical bench order (section 6.9).
@@ -927,7 +988,6 @@ interface LootSuggestion {
   reasons: LootReason[]
   badge: LootBadge
 
-  // Optional UI helper:
   impactedTargetsCount?: number
 }
 
@@ -984,7 +1044,6 @@ interface PlannerResult {
 
   blockers: BlockerSummary
 
-  // Metadata for UI header row:
   activeLoadoutsCount: number
   totalMissingItemsCount: number
   totalRecycleActionsCount: number
@@ -1245,6 +1304,14 @@ Per item controls:
 - Enable/Disable
 - Remove
 
+Quantity rules:
+
+- For items with `recipe` and `craftBench` defined:
+    - Quantity must always be a multiple of `craftQuantity`.
+    - Step size in UI must equal `craftQuantity`.
+- For non-craftable items:
+    - Step size is 1.
+
 ---
 
 ## 7.5 In Raid View
@@ -1311,6 +1378,11 @@ Within each bench: sorted by itemId.
 Columns:
 
 | Item | Craft Times | Total Output | Inputs Needed | Inputs Missing |
+
+Definitions:
+
+- Total Output = `CraftStep.qty`
+- Craft Times = `CraftStep.qty / craftQuantity[itemId]` (integer)
 
 ---
 
@@ -1408,7 +1480,7 @@ All tests must assume:
 
 - Dependency traversal sorted by itemId.
 - Reservation ordering deterministic (section 6.4.1).
-- Recycling comparator fully specified (section 6.5.1).
+- Recycling comparator fully specified (section 6.5.2).
 - Output structures follow canonical shapes (section 6.8).
 - No reliance on JSON key order.
 - Identical inputs produce identical outputs for:
@@ -1434,13 +1506,17 @@ Given fixture items covering:
 - `craftBench` array including `"in_raid"`
 - `craftBench` string `"in_raid"` only
 - `type` values that trigger mapping rules (Weapon via `isWeapon`, Quick Use, direct mapping)
+- `craftQuantity` missing
+- `craftQuantity` present (e.g., heavy_ammo with craftQuantity = 10)
 
 Expect:
 
 - `stackSize` missing -> `1`
 - `stationLevelRequired` missing -> `1`
 - `blueprintLocked` missing -> `false`
-- `craftBench` arrays normalized per section 3.2.1
+- `craftQuantity` missing -> `1`
+- `craftQuantity` present preserved
+- `craftBench` arrays normalized per section 3.2
 - in-raid-only crafting items excluded per section 3.1.2
 - category/subCategory mapping per section 3.3
 
@@ -1488,15 +1564,14 @@ Given:
 - stash also contains items in non-recyclable categories
 - reservation allocations produce both reserved and available quantities
 - at least two recyclable items can reduce the same deficit
-- one candidate is used as a crafting ingredient elsewhere and the other is not
 
 Expect:
 
 - only `availableForRecycle` used
 - never recycle non-recyclable categories
 - only recycle items whose yields match currently missing materials
-- items not used as crafting ingredients are preferred over items that are
-- deterministic selection when multiple sources yield the same missing material
+- deterministic selection based on effectiveYield, coverageCount, srcItemId
+- protected intermediate crafting ingredients never appear in RecyclePlan
 
 ### 12.3.5 Loot Suggestions Membership
 
@@ -1522,28 +1597,28 @@ Given:
 
 - a suggested item with both `salvagesInto` and `recyclesInto`
 - current deficits where:
-    - salvage yields cover all relevant deficits contributed by the item (CAN SALVAGE), and
-    - salvage misses deficits that recycle would cover (BRING HOME)
+    - salvage yields all needed materials covered by recycle (CAN SALVAGE), and
+    - recycle yields at least one needed material not yielded by salvage (BRING HOME)
 
 Expect:
 
-- badge assigned correctly
+- badge assigned correctly per section 6.7.1
 - badge decision deterministic
 
 ### 12.3.7 Unknown Item Handling (API)
 
-Goal: verify unknown `itemId` from API is displayed but excluded from planner logic.
+Goal: verify unknown `itemId` from API is ignored.
 
 Given API stash/loadout response containing an unknown `itemId`:
 
 Expect:
 
-- UI label `Unknown Item (itemId)`
-- excluded from craft, recycle, loot suggestion, reservation logic per section 4.1 / 4.3
+- unknown item is not displayed in any UI view
+- unknown item does not appear in any planner output structure
 
 ### 12.3.8 Reservation Priority Locking (Future Compatibility)
 
-Goal: verify reservation system supports priority tiers and deterministic breakdown (even if future tiers are not yet populated by UI).
+Goal: verify reservation system supports priority tiers and deterministic breakdown.
 
 Given:
 
@@ -1554,4 +1629,7 @@ Expect:
 
 - higher tiers allocate first
 - correct `allocatedQty` and `shortfall` per reason
-- consistent `reservedTotal`, `availableForRecycle`, and `availableForCrafting`
+- `reservedTotal = sum(allocatedQty)`
+- `availableForRecycle = have - reservedTotal`
+- `availableForCrafting = have - sum(allocatedQty of higher tiers)`
+- deterministic ordering of tiers and reasons
