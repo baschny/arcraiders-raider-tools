@@ -46,10 +46,10 @@ export interface RaiderToolsArcRelayStackProps extends cdk.StackProps {
     arcAppKeySecretName: string;
 
     /**
-     * Allowed SPA origin for CORS.
-     * @example "https://raider-tools.app"
+     * Allowed SPA origins for CORS.
+     * @example ["https://raider-tools.app", "http://localhost:5173"]
      */
-    allowedOrigin: string;
+    allowedOrigins: string[];
 }
 
 /**
@@ -103,7 +103,7 @@ export class RaiderToolsArcRelayStack extends cdk.Stack {
             timeout: cdk.Duration.seconds(10),
             environment: {
                 ARC_APP_KEY_SECRET_ARN: arcAppKeySecret.secretArn,
-                ALLOWED_ORIGIN: props.allowedOrigin,
+                ALLOWED_ORIGINS: props.allowedOrigins.join(","),
                 // Add explicit allowlist mapping here (also enforce in code)
                 // e.g. ARC_ALLOWED_PATHS: "/api/v2/user/profile,/api/v2/user/..."
             },
@@ -124,7 +124,7 @@ export class RaiderToolsArcRelayStack extends cdk.Stack {
         const httpApi = new apigwv2.HttpApi(this, "ArcRelayHttpApi", {
             apiName: "raider-tools-arc-relay",
             corsPreflight: {
-                allowOrigins: [props.allowedOrigin],
+                allowOrigins: props.allowedOrigins,
                 allowMethods: [
                     apigwv2.CorsHttpMethod.GET,
                     apigwv2.CorsHttpMethod.POST,

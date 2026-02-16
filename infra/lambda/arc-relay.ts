@@ -23,7 +23,10 @@ let cachedAppKey: string | null = null;
 const ARC_BASE = "https://arctracker.io/api";
 
 export async function handler(event: APIGatewayProxyEventV2): Promise<APIGatewayProxyResultV2> {
-    const allowedOrigin = process.env.ALLOWED_ORIGIN ?? "https://raider-tools.app";
+    const allowedOriginsStr = process.env.ALLOWED_ORIGINS ?? "https://raider-tools.app";
+    const allowedOrigins = allowedOriginsStr.split(",").map(o => o.trim());
+    const requestOrigin = event.headers?.origin || event.headers?.Origin || "";
+    const allowedOrigin = allowedOrigins.includes(requestOrigin) ? requestOrigin : allowedOrigins[0];
 
     try {
         const path = event.rawPath || "";

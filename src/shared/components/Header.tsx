@@ -1,6 +1,7 @@
 import { useNavigate, useLocation } from 'react-router-dom';
 import { ChevronDown } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
+import { LoginButton } from './LoginButton';
 
 const TOOLS = [
   { path: '/', name: 'Raider Tools' },
@@ -43,10 +44,11 @@ export function Header() {
         <span className="brand-name">ARC Raiders</span>
         <span className="app-name">{currentTool.name}</span>
       </h1>
-      <div style={{ position: 'relative' }} ref={dropdownRef}>
-        <button className="tool-switcher" onClick={() => setIsOpen(!isOpen)}>
-          <span>Switch Tool</span> <ChevronDown size={16} />
-        </button>
+      <div className="header-actions">
+        <div style={{ position: 'relative' }} ref={dropdownRef}>
+          <button className="tool-switcher" onClick={() => setIsOpen(!isOpen)}>
+            <span>Switch Tool</span> <ChevronDown size={16} />
+          </button>
         {isOpen && (
           <div
             style={{
@@ -94,6 +96,8 @@ export function Header() {
             ))}
           </div>
         )}
+        </div>
+        <LoginButton />
       </div>
     </div>
   );

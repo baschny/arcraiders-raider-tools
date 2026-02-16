@@ -19,5 +19,5 @@ new RaiderToolsArcRelayStack(app, "RaiderToolsArcRelayStack", {
     apiDomainName: "api.raider-tools.app",
     hostedZoneId: "Z10215333596U4U11HK5Q",
     arcAppKeySecretName: "arctracker/appKey",
-    allowedOrigin: "https://raider-tools.app",
+    allowedOrigins: ["https://raider-tools.app", "http://localhost:5173"],
 });

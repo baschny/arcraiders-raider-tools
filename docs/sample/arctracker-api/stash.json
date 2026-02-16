@@ -1,0 +1,626 @@
+{
+  "data": {
+    "items": [
+      {
+        "itemId": "hullcracker_i",
+        "name": "Hullcracker I",
+        "quantity": 1,
+        "slotIndex": 0
+      },
+      {
+        "itemId": "photoelectric_cloak",
+        "name": "Photoelectric Cloak",
+        "quantity": 1,
+        "slotIndex": 1
+      },
+      {
+        "itemId": "exodus_modules",
+        "name": "Exodus Modules",
+        "quantity": 3,
+        "slotIndex": 2
+      },
+      {
+        "itemId": "wires",
+        "name": "Wires",
+        "quantity": 1,
+        "slotIndex": 3
+      },
+      {
+        "itemId": "heavy_gun_parts",
+        "name": "Heavy Gun Parts",
+        "quantity": 5,
+        "slotIndex": 4
+      },
+      {
+        "itemId": "plastic_parts",
+        "name": "Plastic Parts",
+        "quantity": 50,
+        "slotIndex": 5
+      },
+      {
+        "itemId": "trailblazer",
+        "name": "Trailblazer",
+        "quantity": 2,
+        "slotIndex": 7
+      },
+      {
+        "itemId": "steel_spring",
+        "name": "Steel Spring",
+        "quantity": 6,
+        "slotIndex": 8
+      },
+      {
+        "itemId": "fabric",
+        "name": "Fabric",
+        "quantity": 50,
+        "slotIndex": 9
+      },
+      {
+        "itemId": "simple_gun_parts",
+        "name": "Simple Gun Parts",
+        "quantity": 10,
+        "slotIndex": 10
+      },
+      {
+        "itemId": "plastic_parts",
+        "name": "Plastic Parts",
+        "quantity": 50,
+        "slotIndex": 11
+      },
+      {
+        "itemId": "simple_gun_parts",
+        "name": "Simple Gun Parts",
+        "quantity": 10,
+        "slotIndex": 12
+      },
+      {
+        "itemId": "mod_components",
+        "name": "Mod Components",
+        "quantity": 5,
+        "slotIndex": 13
+      },
+      {
+        "itemId": "osprey_iv",
+        "name": "Osprey IV",
+        "quantity": 1,
+        "slotIndex": 14
+      },
+      {
+        "itemId": "deadline",
+        "name": "Deadline",
+        "quantity": 1,
+        "slotIndex": 15
+      },
+      {
+        "itemId": "shield_recharger",
+        "name": "Shield Recharger",
+        "quantity": 3,
+        "slotIndex": 16
+      },
+      {
+        "itemId": "bettina_iv",
+        "name": "Bettina IV",
+        "quantity": 1,
+        "slotIndex": 17
+      },
+      {
+        "itemId": "rubber_parts",
+        "name": "Rubber Parts",
+        "quantity": 50,
+        "slotIndex": 18
+      },
+      {
+        "itemId": "arc_circuitry",
+        "name": "ARC Circuitry",
+        "quantity": 5,
+        "slotIndex": 19
+      },
+      {
+        "itemId": "extended_light_mag_ii",
+        "name": "Extended Light Mag II",
+        "quantity": 1,
+        "slotIndex": 20
+      },
+      {
+        "itemId": "looting_mk2",
+        "name": "Looting Mk. 2",
+        "quantity": 1,
+        "slotIndex": 21
+      },
+      {
+        "itemId": "electrical_components",
+        "name": "Electrical Components",
+        "quantity": 10,
+        "slotIndex": 22
+      },
+      {
+        "itemId": "plastic_parts",
+        "name": "Plastic Parts",
+        "quantity": 50,
+        "slotIndex": 23
+      },
+      {
+        "itemId": "trigger_nade",
+        "name": "Trigger 'Nade",
+        "quantity": 3,
+        "slotIndex": 24
+      },
+      {
+        "itemId": "spaceport_warehouse_key",
+        "name": "Spaceport Warehouse Key",
+        "quantity": 1,
+        "slotIndex": 25
+      },
+      {
+        "itemId": "vita_spray",
+        "name": "Vita Spray",
+        "quantity": 1,
+        "slotIndex": 26
+      },
+      {
+        "itemId": "torrente_iii",
+        "name": "Torrente III",
+        "quantity": 1,
+        "slotIndex": 27
+      },
+      {
+        "itemId": "rubber_parts",
+        "name": "Rubber Parts",
+        "quantity": 50,
+        "slotIndex": 28
+      },
+      {
+        "itemId": "defibrillator",
+        "name": "Defibrillator",
+        "quantity": 3,
+        "slotIndex": 29
+      },
+      {
+        "itemId": "stitcher_iv",
+        "name": "Stitcher IV",
+        "quantity": 1,
+        "slotIndex": 30
+      },
+      {
+        "itemId": "heavy_gun_parts",
+        "name": "Heavy Gun Parts",
+        "quantity": 5,
+        "slotIndex": 31
+      },
+      {
+        "itemId": "rubber_parts",
+        "name": "Rubber Parts",
+        "quantity": 50,
+        "slotIndex": 32
+      },
+      {
+        "itemId": "heavy_gun_parts",
+        "name": "Heavy Gun Parts",
+        "quantity": 5,
+        "slotIndex": 33
+      },
+      {
+        "itemId": "steel_spring",
+        "name": "Steel Spring",
+        "quantity": 15,
+        "slotIndex": 34
+      },
+      {
+        "itemId": "burletta_i",
+        "name": "Burletta I",
+        "quantity": 1,
+        "slotIndex": 35
+      },
+      {
+        "itemId": "defibrillator",
+        "name": "Defibrillator",
+        "quantity": 3,
+        "slotIndex": 36
+      },
+      {
+        "itemId": "heavy_gun_parts",
+        "name": "Heavy Gun Parts",
+        "quantity": 2,
+        "slotIndex": 37
+      },
+      {
+        "itemId": "complex_gun_parts",
+        "name": "Complex Gun Parts",
+        "quantity": 3,
+        "slotIndex": 38
+      },
+      {
+        "itemId": "recorder",
+        "name": "Recorder",
+        "quantity": 1,
+        "slotIndex": 39
+      },
+      {
+        "itemId": "photoelectric_cloak",
+        "name": "Photoelectric Cloak",
+        "quantity": 1,
+        "slotIndex": 40
+      },
+      {
+        "itemId": "plastic_parts",
+        "name": "Plastic Parts",
+        "quantity": 50,
+        "slotIndex": 41
+      },
+      {
+        "itemId": "plastic_parts",
+        "name": "Plastic Parts",
+        "quantity": 50,
+        "slotIndex": 42
+      },
+      {
+        "itemId": "adrenaline_shot",
+        "name": "Adrenaline Shot",
+        "quantity": 5,
+        "slotIndex": 43
+      },
+      {
+        "itemId": "snitch_scanner",
+        "name": "Snitch Scanner",
+        "quantity": 3,
+        "slotIndex": 44
+      },
+      {
+        "itemId": "raider_hatch_key",
+        "name": "Raider Hatch Key",
+        "quantity": 1,
+        "slotIndex": 45
+      },
+      {
+        "itemId": "trigger_nade",
+        "name": "Trigger 'Nade",
+        "quantity": 2,
+        "slotIndex": 46
+      },
+      {
+        "itemId": "il_toro_i",
+        "name": "Il Toro I",
+        "quantity": 1,
+        "slotIndex": 47
+      },
+      {
+        "itemId": "light_gun_parts",
+        "name": "Light Gun Parts",
+        "quantity": 5,
+        "slotIndex": 48
+      },
+      {
+        "itemId": "shredder_gyro",
+        "name": "Shredder Gyro",
+        "quantity": 3,
+        "slotIndex": 49
+      },
+      {
+        "itemId": "spaceport_control_tower_key",
+        "name": "Spaceport Control Tower Key",
+        "quantity": 1,
+        "slotIndex": 50
+      },
+      {
+        "itemId": "plastic_parts",
+        "name": "Plastic Parts",
+        "quantity": 50,
+        "slotIndex": 51
+      },
+      {
+        "itemId": "shredder_gyro",
+        "name": "Shredder Gyro",
+        "quantity": 1,
+        "slotIndex": 52
+      },
+      {
+        "itemId": "plastic_parts",
+        "name": "Plastic Parts",
+        "quantity": 50,
+        "slotIndex": 53
+      },
+      {
+        "itemId": "dam_staff_room_key",
+        "name": "Dam Staff Room Key",
+        "quantity": 1,
+        "slotIndex": 54
+      },
+      {
+        "itemId": "raider_hatch_key",
+        "name": "Raider Hatch Key",
+        "quantity": 1,
+        "slotIndex": 55
+      },
+      {
+        "itemId": "vulcano_ii",
+        "name": "Vulcano II",
+        "quantity": 1,
+        "slotIndex": 56
+      },
+      {
+        "itemId": "advanced_arc_powercell",
+        "name": "Advanced ARC Powercell",
+        "quantity": 5,
+        "slotIndex": 57
+      },
+      {
+        "itemId": "simple_gun_parts",
+        "name": "Simple Gun Parts",
+        "quantity": 10,
+        "slotIndex": 58
+      },
+      {
+        "itemId": "chemicals",
+        "name": "Chemicals",
+        "quantity": 50,
+        "slotIndex": 59
+      },
+      {
+        "itemId": "fireworks_box",
+        "name": "Fireworks Box",
+        "quantity": 1,
+        "slotIndex": 60
+      },
+      {
+        "itemId": "battery",
+        "name": "Battery",
+        "quantity": 15,
+        "slotIndex": 61
+      },
+      {
+        "itemId": "shaker",
+        "name": "Shaker",
+        "quantity": 1,
+        "slotIndex": 62
+      },
+      {
+        "itemId": "plastic_parts",
+        "name": "Plastic Parts",
+        "quantity": 13,
+        "slotIndex": 63
+      },
+      {
+        "itemId": "il_toro_iv",
+        "name": "Il Toro IV",
+        "quantity": 1,
+        "slotIndex": 64
+      },
+      {
+        "itemId": "surge_shield_recharger",
+        "name": "Surge Shield Recharger",
+        "quantity": 1,
+        "slotIndex": 65
+      },
+      {
+        "itemId": "advanced_electrical_components",
+        "name": "Advanced Electrical Components",
+        "quantity": 4,
+        "slotIndex": 66
+      },
+      {
+        "itemId": "blue_gate_village_key",
+        "name": "Blue Gate Village Key",
+        "quantity": 1,
+        "slotIndex": 67
+      },
+      {
+        "itemId": "anvil_iv",
+        "name": "Anvil IV",
+        "quantity": 1,
+        "slotIndex": 68
+      },
+      {
+        "itemId": "fabric",
+        "name": "Fabric",
+        "quantity": 50,
+        "slotIndex": 69
+      },
+      {
+        "itemId": "stella_montis_medical_storage_key",
+        "name": "Stella Montis Medical Storage Key",
+        "quantity": 1,
+        "slotIndex": 70
+      },
+      {
+        "itemId": "fireworks_box",
+        "name": "Fireworks Box",
+        "quantity": 1,
+        "slotIndex": 71
+      },
+      {
+        "itemId": "processor",
+        "name": "Processor",
+        "quantity": 5,
+        "slotIndex": 72
+      },
+      {
+        "itemId": "zipline",
+        "name": "Zipline",
+        "quantity": 2,
+        "slotIndex": 73
+      },
+      {
+        "itemId": "sensors",
+        "name": "Sensors",
+        "quantity": 5,
+        "slotIndex": 74
+      },
+      {
+        "itemId": "deadline",
+        "name": "Deadline",
+        "quantity": 1,
+        "slotIndex": 75
+      },
+      {
+        "itemId": "voltage_converter",
+        "name": "Voltage Converter",
+        "quantity": 5,
+        "slotIndex": 76
+      },
+      {
+        "itemId": "durable_cloth",
+        "name": "Durable Cloth",
+        "quantity": 4,
+        "slotIndex": 77
+      },
+      {
+        "itemId": "sterilized_bandage",
+        "name": "Sterilized Bandage",
+        "quantity": 3,
+        "slotIndex": 78
+      },
+      {
+        "itemId": "showstopper",
+        "name": "Showstopper",
+        "quantity": 5,
+        "slotIndex": 79
+      },
+      {
+        "itemId": "medium_gun_parts",
+        "name": "Medium Gun Parts",
+        "quantity": 5,
+        "slotIndex": 80
+      },
+      {
+        "itemId": "chemicals",
+        "name": "Chemicals",
+        "quantity": 50,
+        "slotIndex": 81
+      },
+      {
+        "itemId": "assorted_seeds",
+        "name": "Assorted Seeds",
+        "quantity": 50,
+        "slotIndex": 82
+      },
+      {
+        "itemId": "equalizer",
+        "name": "Equalizer",
+        "quantity": 1,
+        "slotIndex": 83
+      },
+      {
+        "itemId": "vulcano_iv",
+        "name": "Vulcano IV",
+        "quantity": 1,
+        "slotIndex": 84
+      },
+      {
+        "itemId": "anvil_iv",
+        "name": "Anvil IV",
+        "quantity": 1,
+        "slotIndex": 85
+      },
+      {
+        "itemId": "dam_testing_annex_key",
+        "name": "Dam Testing Annex Key",
+        "quantity": 1,
+        "slotIndex": 86
+      },
+      {
+        "itemId": "power_rod",
+        "name": "Power Rod",
+        "quantity": 3,
+        "slotIndex": 87
+      },
+      {
+        "itemId": "metal_parts",
+        "name": "Metal Parts",
+        "quantity": 50,
+        "slotIndex": 88
+      },
+      {
+        "itemId": "simple_gun_parts",
+        "name": "Simple Gun Parts",
+        "quantity": 8,
+        "slotIndex": 90
+      },
+      {
+        "itemId": "fireworks_box",
+        "name": "Fireworks Box",
+        "quantity": 1,
+        "slotIndex": 91
+      },
+      {
+        "itemId": "steel_spring",
+        "name": "Steel Spring",
+        "quantity": 15,
+        "slotIndex": 92
+      },
+      {
+        "itemId": "mod_components",
+        "name": "Mod Components",
+        "quantity": 5,
+        "slotIndex": 93
+      },
+      {
+        "itemId": "battery",
+        "name": "Battery",
+        "quantity": 8,
+        "slotIndex": 94
+      },
+      {
+        "itemId": "exodus_modules",
+        "name": "Exodus Modules",
+        "quantity": 3,
+        "slotIndex": 95
+      },
+      {
+        "itemId": "advanced_arc_powercell",
+        "name": "Advanced ARC Powercell",
+        "quantity": 5,
+        "slotIndex": 96
+      },
+      {
+        "itemId": "osprey_iii",
+        "name": "Osprey III",
+        "quantity": 1,
+        "slotIndex": 97
+      },
+      {
+        "itemId": "bobcat_iv",
+        "name": "Bobcat IV",
+        "quantity": 1,
+        "slotIndex": 98
+      },
+      {
+        "itemId": "rubber_parts",
+        "name": "Rubber Parts",
+        "quantity": 50,
+        "slotIndex": 99
+      },
+      {
+        "itemId": "electrical_components",
+        "name": "Electrical Components",
+        "quantity": 10,
+        "slotIndex": 100
+      },
+      {
+        "itemId": "advanced_arc_powercell",
+        "name": "Advanced ARC Powercell",
+        "quantity": 3,
+        "slotIndex": 101
+      }
+    ],
+    "currencies": {
+      "credits": 2713504,
+      "cred": 511,
+      "raiderTokens": 1820,
+      "xp": 4372112
+    },
+    "slots": {
+      "used": 275,
+      "max": 292
+    },
+    "pagination": {
+      "page": 1,
+      "perPage": 100,
+      "total": 275,
+      "totalPages": 3
+    },
+    "syncedAt": "2026-02-16T10:31:18.461Z"
+  },
+  "meta": {
+    "requestId": "295371d6-41c5-4037-bb4f-7505a70e75ba"
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "data": {
+    "loadout": {
+      "augment": {
+        "itemId": "tactical_mk3_defensive",
+        "name": "Tactical Mk. 3 (Defensive)",
+        "quantity": 1,
+        "slotIndex": 0,
+        "durabilityPercent": 100
+      },
+      "shield": {
+        "itemId": "medium_shield",
+        "name": "Medium Shield",
+        "quantity": 1,
+        "slotIndex": 3,
+        "durabilityPercent": 100
+      },
+      "weapon1": {
+        "itemId": "anvil_iv",
+        "name": "Anvil IV",
+        "quantity": 1,
+        "slotIndex": 1,
+        "durabilityPercent": 68.31620000000001,
+        "attachments": [
+          {
+            "itemId": "extended_barrel",
+            "name": "Extended Barrel",
+            "quantity": 1,
+            "slotIndex": 0,
+            "durabilityPercent": 100
+          },
+          {
+            "itemId": null,
+            "name": null,
+            "quantity": 1,
+            "slotIndex": 1,
+            "durabilityPercent": 100
+          }
+        ]
+      },
+      "weapon2": {
+        "itemId": null,
+        "name": null,
+        "quantity": 1,
+        "slotIndex": 2,
+        "durabilityPercent": 100
+      },
+      "backpack": [
+        {
+          "itemId": "vita_spray",
+          "name": "Vita Spray",
+          "quantity": 1,
+          "slotIndex": 3,
+          "durabilityPercent": 100
+        },
+        {
+          "itemId": "zipline",
+          "name": "Zipline",
+          "quantity": 3,
+          "slotIndex": 7,
+          "durabilityPercent": 100
+        },
+        {
+          "itemId": "heavy_ammo",
+          "name": "Heavy Ammo",
+          "quantity": 40,
+          "slotIndex": 16,
+          "durabilityPercent": 100
+        },
+        {
+          "itemId": "heavy_ammo",
+          "name": "Heavy Ammo",
+          "quantity": 40,
+          "slotIndex": 17,
+          "durabilityPercent": 100
+        },
+        {
+          "itemId": "heavy_ammo",
+          "name": "Heavy Ammo",
+          "quantity": 5,
+          "slotIndex": 18,
+          "durabilityPercent": 100
+        }
+      ],
+      "quickItems": [
+        {
+          "itemId": "herbal_bandage",
+          "name": "Herbal Bandage",
+          "quantity": 5,
+          "slotIndex": 0,
+          "durabilityPercent": 100
+        },
+        {
+          "itemId": "shield_recharger",
+          "name": "Shield Recharger",
+          "quantity": 5,
+          "slotIndex": 1,
+          "durabilityPercent": 100
+        },
+        {
+          "itemId": "smoke_grenade",
+          "name": "Smoke Grenade",
+          "quantity": 2,
+          "slotIndex": 2,
+          "durabilityPercent": 100
+        },
+        {
+          "itemId": "adrenaline_shot",
+          "name": "Adrenaline Shot",
+          "quantity": 5,
+          "slotIndex": 3,
+          "durabilityPercent": 100
+        },
+        {
+          "itemId": "seeker_grenade",
+          "name": "Seeker Grenade",
+          "quantity": 5,
+          "slotIndex": 4,
+          "durabilityPercent": 100
+        }
+      ],
+      "safePocket": [],
+      "augmentedSlots": [],
+      "slotCounts": {
+        "backpack": 20,
+        "quickItems": 5,
+        "safePocket": 1,
+        "augmentedSlots": 0
+      }
+    },
+    "syncedAt": "2026-02-16T10:31:18.461Z"
+  },
+  "meta": {
+    "requestId": "1a4f82c6-a8d4-40af-a7c6-db8e34462ea1"
+  }
+}

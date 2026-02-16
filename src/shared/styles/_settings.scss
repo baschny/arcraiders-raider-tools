@@ -1,0 +1,305 @@
+@use 'variables' as *;
+@use 'sass:color';
+
+.settings-page {
+  max-width: 600px;
+}
+
+.settings-title {
+  @include urbanist-title;
+  font-size: $font-3xl;
+  color: $text-primary;
+  margin-bottom: $spacing-xl;
+}
+
+.settings-section {
+  background: $bg-secondary;
+  border: $border-width-thin solid $border-default;
+  border-radius: $radius-md;
+  padding: $spacing-xl;
+  margin-bottom: $spacing-xl;
+}
+
+.settings-section-title {
+  @include section-title;
+  margin-bottom: $spacing-lg;
+}
+
+.settings-info {
+  margin-bottom: $spacing-lg;
+
+  p {
+    font-size: $font-md;
+    color: $text-secondary;
+    line-height: 1.6;
+  }
+
+  a {
+    color: $text-accent;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.settings-steps {
+  background: $bg-tertiary;
+  border-radius: $radius-sm;
+  padding: $spacing-lg;
+  margin-bottom: $spacing-xl;
+
+  h4 {
+    font-size: $font-md;
+    font-weight: 600;
+    color: $text-primary;
+    margin-bottom: $spacing-md;
+  }
+
+  ol {
+    margin: 0;
+    padding-left: $spacing-xl;
+
+    li {
+      font-size: $font-md;
+      color: $text-secondary;
+      margin-bottom: $spacing-sm;
+      line-height: 1.5;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  a {
+    color: $text-accent;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.settings-form {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.settings-label {
+  font-size: $font-md;
+  font-weight: 600;
+  color: $text-primary;
+}
+
+.token-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.token-input {
+  flex: 1;
+  background: $bg-tertiary;
+  border: $border-width-thin solid $border-light;
+  border-radius: $radius-sm;
+  padding: $spacing-md $spacing-lg;
+  padding-right: 48px;
+  font-size: $font-md;
+  font-family: 'Courier New', monospace;
+  color: $text-primary;
+  transition: $transition-default;
+
+  &:focus {
+    outline: none;
+    border-color: $text-accent;
+    box-shadow: 0 0 0 2px rgba($text-accent, 0.2);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  &::placeholder {
+    color: $text-tertiary;
+  }
+}
+
+.token-toggle {
+  position: absolute;
+  right: $spacing-md;
+  background: transparent;
+  border: none;
+  color: $text-secondary;
+  cursor: pointer;
+  padding: $spacing-xs;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: $transition-default;
+
+  &:hover {
+    color: $text-primary;
+  }
+}
+
+.settings-message {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-md;
+  border-radius: $radius-sm;
+  font-size: $font-md;
+
+  &--error {
+    background: rgba(#f44336, 0.15);
+    color: #f44336;
+    border: $border-width-thin solid rgba(#f44336, 0.3);
+  }
+
+  &--success {
+    background: rgba($status-completed, 0.15);
+    color: $status-completed;
+    border: $border-width-thin solid rgba($status-completed, 0.3);
+  }
+}
+
+.settings-actions {
+  display: flex;
+  gap: $spacing-md;
+  margin-top: $spacing-sm;
+}
+
+.settings-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+  padding: $spacing-md $spacing-xl;
+  border-radius: $radius-sm;
+  font-size: $font-md;
+  font-weight: 600;
+  cursor: pointer;
+  transition: $transition-default;
+  border: $border-width-thin solid transparent;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  &--primary {
+    background: $text-accent;
+    color: $bg-primary;
+    border-color: $text-accent;
+
+    &:hover:not(:disabled) {
+      background: color.adjust($text-accent, $lightness: 10%);
+      border-color: color.adjust($text-accent, $lightness: 10%);
+    }
+  }
+
+  &--danger {
+    background: transparent;
+    color: #f44336;
+    border-color: #f44336;
+
+    &:hover:not(:disabled) {
+      background: rgba(#f44336, 0.1);
+    }
+  }
+}
+
+.settings-account-info {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.account-detail {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+}
+
+.account-label {
+  font-size: $font-md;
+  color: $text-secondary;
+  min-width: 100px;
+}
+
+.account-value {
+  font-size: $font-md;
+  color: $text-primary;
+  font-weight: 600;
+}
+
+// Header login button styles
+.login-button {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs;
+  background: $bg-tertiary;
+  border: $border-width-thin solid $border-light;
+  border-radius: $radius-sm;
+  color: $text-primary;
+  padding: $spacing-sm $spacing-md;
+  font-size: $font-md;
+  cursor: pointer;
+  transition: $transition-default;
+
+  &:hover:not(:disabled) {
+    background: $bg-quaternary;
+    border-color: $border-lighter;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+
+  &--authenticated {
+    color: $text-accent;
+    border-color: rgba($text-accent, 0.3);
+
+    &:hover:not(:disabled) {
+      border-color: $text-accent;
+      background: rgba($text-accent, 0.1);
+    }
+  }
+
+  &--loading {
+    padding: $spacing-sm $spacing-lg;
+  }
+}
+
+// Header actions container
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+}
+
+// Spin animation for loaders
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
