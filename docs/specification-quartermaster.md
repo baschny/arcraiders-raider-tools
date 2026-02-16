@@ -295,6 +295,8 @@ Rules:
 
 Unknown `itemId` entries returned by the API are ignored and not displayed anywhere in the module.
 
+On fetch errors, keep last known synced inventory state and timestamp.
+
 Trigger: Sync Inventory
 
 ---
@@ -312,6 +314,13 @@ If insufficient level:
 - Mark Uncraftable
 - Do not expand
 
+Clarification (v1):
+
+- The arctracker.io API for bench levels is not available yet.
+- In v1, the planner assumes every bench is at level 3 (which includes also levels 1 and 2).
+- `stationLevelRequired` refers to hideout bench levels.
+- Future API integration may provide per-bench unlocked levels; this is not active in v1.
+
 ---
 
 ## 4.3 Backpack / Loadout Endpoint
@@ -323,6 +332,8 @@ GET /api/v2/user/loadout
 Aggregate by itemId. Ignore slotIndex and durability.
 
 Unknown `itemId` entries are ignored and not displayed anywhere in the module.
+
+On fetch errors, keep last known synced loadout state and timestamp.
 
 Trigger: Sync Loadout
 
@@ -377,6 +388,8 @@ This chapter defines all deterministic computation rules used to derive the cano
 
 All algorithms must be deterministic and independent of object iteration order.
 
+ItemIds are ASCII and all "ascending itemId" comparisons are ASCII lexicographic ascending.
+
 ---
 
 ## 6.1 Aggregation of Loadouts
@@ -401,6 +414,12 @@ Ordering:
 
 - Deterministic by itemId ascending.
 
+Clarification (v1 batching constraint):
+
+- Loadouts must only request quantities that are valid multiples of `craftQuantity` for the relevant items.
+- Therefore, the planner does not need to ceil or normalize fractional requested quantities.
+- This batching constraint currently applies only to Ammunition items that have `craftQuantity > 1` and these are end products in loadouts (not used as further crafting ingredients).
+
 ---
 
 ## 6.2 Craft Expansion
@@ -412,6 +431,8 @@ Craft expansion operates exclusively on the `recipe` graph.
 For any craftable item `X`, `craftQuantity[X]` defines the output units per craft action.
 
 Planner must never plan fractional craft actions.
+
+Maximum recipe expansion depth is 6.
 
 ---
 
@@ -428,6 +449,7 @@ Stop expansion when:
 - `craftBench` undefined
 - Item marked uncraftable
 - Cycle detected
+- Depth limit reached
 
 ---
 
@@ -636,16 +658,17 @@ Definition: "Intermediate craft"
 
 An itemId is considered required for intermediate craft if and only if:
 
-- It appears as an ingredient key in the expanded recipe requirements graph for any required final loadout item (post cycle-cutting), regardless of whether the intermediate itself is currently missing.
+- It appears as an ingredient key in the expanded recipe requirements graph for any required final loadout item (post cycle-cutting and within depth limit), where the required final loadout item is missing after stash usage, regardless of whether the intermediate itself is currently missing.
 
 This definition is deterministic and computed from:
 
 - `required` (final items from loadouts)
-- recipe graph expansion (section 6.2), with cycle handling applied
+- stash usage (which determines which required final items are missing)
+- recipe graph expansion (section 6.2), with cycle handling applied and depth limit applied
 
 Implication:
 
-- If an item can be an ingredient in the current plan, it is protected from recycling (KEEP precedence).
+- If an item can be an ingredient in the current plan for missing required final outputs, it is protected from recycling (KEEP precedence).
 - RecyclePlan must only include items not protected by this rule.
 
 ---
@@ -953,6 +976,14 @@ Definitions:
 - `qty` must always be a multiple of `craftQuantity[itemId]`.
 - `craftTimes = qty / craftQuantity[itemId]` (integer, derived for UI).
 
+Craft plan generation (v1):
+
+- Craft plan generation is based on missing required final loadout items (after stash usage) and operates by crafting missing final outputs first.
+- For each missing required final output that is craftable, plan crafts to cover the missing quantity in multiples of `craftQuantity`.
+- Recursively plan intermediate crafts using depth-first expansion of `recipe` (section 6.2), within the maximum depth.
+- This process uses the recipe graph exclusively and does not treat recycle/salvage outputs as craft dependencies.
+- The craft plan must remain deterministic for identical inputs.
+
 Ordering:
 
 1. Group by benchId using canonical bench order (section 6.9).
@@ -1000,6 +1031,16 @@ Ordering:
 
 - `items` ordered by itemId ascending.
 - `reasons` ordered by fixed enum order as listed in 6.8.1.
+
+Definition: impactedTargetsCount (optional UI helper)
+
+- impactedTargetsCount is the number of final missing itemIds whose deficit would be reduced by acquiring the suggested item, based on:
+    - missing directly (if the suggestion itemId itself is missing), or
+    - via `recyclesInto` yields covering deficits, or
+    - via `salvagesInto` yields covering deficits, or
+    - being itself a missing craft output.
+- impactedTargetsCount must be computed deterministically from the current deficits and the suggestion's own mappings.
+- impactedTargetsCount must not require transitive graph expansion.
 
 ---
 
@@ -1140,6 +1181,7 @@ Minimum stored schema:
 
 ```ts
 interface StoredLoadout {
+  schemaVersion: number
   id: string
   name: string
   isEnabled: boolean
@@ -1155,6 +1197,12 @@ Ordering rules:
 
 - Stored loadouts list ordered by `name` ascending for display.
 - Loadout items are stored in insertion order but rendered grouped (section 7.4.2).
+
+Migration strategy (v1):
+
+- If `schemaVersion` is missing, treat as version 1 and set `schemaVersion = 1` on next save.
+- If a stored loadout item references an unknown itemId, drop that entry deterministically during load.
+- If loadout data is invalid or cannot be parsed, ignore it and keep other loadouts.
 
 ---
 
@@ -1172,6 +1220,10 @@ Displays only actual stash items (no synthetic rows).
     - Category
     - Rarity
     - Show Only Recyclable (based on RecyclePlan)
+
+On rate limits:
+
+- Back off and warn the user.
 
 ### 7.2.2 Table
 
@@ -1347,6 +1399,10 @@ Displays:
 
 - Sync Inventory button
 
+On rate limits:
+
+- Back off and warn the user.
+
 ---
 
 ### 7.6.2 Section 1: Recycle First
@@ -1433,6 +1489,7 @@ None.
 - Advanced deficit impact visualization.
 - Performance optimization for large DAGs.
 - Optional economic overlays (if policy changes).
+- Optional stash size optimization (considering `stackSize` for each item).
 
 ---
 
@@ -1539,6 +1596,7 @@ Expect:
 - required totals aggregated deterministically
 - recursion stops at non-craftables
 - consistent derived intermediate totals
+- recursion stops when depth limit reached
 
 ### 12.3.3 Cycle Detection
 
