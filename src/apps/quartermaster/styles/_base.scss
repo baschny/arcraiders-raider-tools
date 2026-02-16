@@ -1,0 +1,162 @@
+@use 'sass:color';
+@use 'variables' as *;
+
+.quartermaster-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: $bg-primary;
+  color: $text-primary;
+  font-size: $font-base;
+}
+
+.quartermaster-layout {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.quartermaster-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.quartermaster-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: $spacing-lg;
+}
+
+// Common table styles
+.qm-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: $font-base;
+
+  th, td {
+    padding: $spacing-sm $spacing-md;
+    text-align: left;
+    border-bottom: 1px solid $border-default;
+  }
+
+  th {
+    background: $bg-secondary;
+    color: $text-secondary;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: $font-sm;
+    letter-spacing: 0.5px;
+  }
+
+  tr:hover {
+    background: $bg-secondary;
+  }
+}
+
+// Common button styles
+.qm-button {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs;
+  padding: $spacing-sm $spacing-md;
+  background: $bg-tertiary;
+  border: 1px solid $border-light;
+  border-radius: $radius-sm;
+  color: $text-primary;
+  font-size: $font-sm;
+  cursor: pointer;
+  transition: $transition-default;
+
+  &:hover {
+    background: $bg-secondary;
+    border-color: $text-accent;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &--primary {
+    background: $text-accent;
+    border-color: $text-accent;
+    color: $bg-primary;
+
+    &:hover {
+      background: color.adjust($text-accent, $lightness: 10%);
+    }
+  }
+
+  &--small {
+    padding: $spacing-xs $spacing-sm;
+    font-size: 10px;
+  }
+}
+
+// Common input styles
+.qm-input {
+  padding: $spacing-sm $spacing-md;
+  background: $bg-secondary;
+  border: 1px solid $border-default;
+  border-radius: $radius-sm;
+  color: $text-primary;
+  font-size: $font-sm;
+  transition: $transition-default;
+
+  &:focus {
+    outline: none;
+    border-color: $text-accent;
+  }
+
+  &::placeholder {
+    color: $text-secondary;
+  }
+}
+
+// Section title
+.qm-section-title {
+  font-size: $font-lg;
+  font-weight: 600;
+  color: $text-secondary;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: $spacing-md;
+  padding-bottom: $spacing-sm;
+  border-bottom: 1px solid $border-default;
+}
+
+// Empty state
+.qm-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-xl * 2;
+  color: $text-secondary;
+  text-align: center;
+  
+  svg {
+    margin-bottom: $spacing-md;
+    opacity: 0.5;
+  }
+}
+
+// Loading spinner
+.qm-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: $text-secondary;
+}
+
+// Error display
+.qm-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: $status-missing;
+}

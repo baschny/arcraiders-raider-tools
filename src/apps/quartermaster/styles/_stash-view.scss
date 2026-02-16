@@ -1,0 +1,71 @@
+@use 'variables' as *;
+
+.stash-view {
+  &__controls {
+    display: flex;
+    gap: $spacing-md;
+    margin-bottom: $spacing-lg;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  &__search {
+    flex: 1;
+    min-width: 200px;
+  }
+
+  &__filters {
+    display: flex;
+    gap: $spacing-sm;
+  }
+
+  &__filter {
+    min-width: 120px;
+  }
+
+  &__value {
+    margin-left: auto;
+    font-size: $font-sm;
+    color: $text-secondary;
+
+    span {
+      color: $text-primary;
+      font-weight: 600;
+    }
+  }
+
+  &__indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    padding: 3px 8px;
+    border-radius: 2px;
+    margin-right: 4px;
+
+    &--crafting {
+      background: rgba($text-accent, 0.2);
+      color: $text-accent;
+    }
+
+    &--reserved {
+      background: rgba($badge-keep, 0.2);
+      color: $badge-keep;
+    }
+
+    &--recycle {
+      background: rgba($badge-recycle, 0.2);
+      color: $badge-recycle;
+    }
+
+    &--missing {
+      background: rgba($status-missing, 0.2);
+      color: $status-missing;
+    }
+
+    &--uncraftable {
+      background: rgba($status-uncraftable, 0.2);
+      color: $status-uncraftable;
+    }
+  }
+}

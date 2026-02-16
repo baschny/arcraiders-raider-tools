@@ -1,0 +1,50 @@
+@use 'variables' as *;
+
+.in-raid-view {
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: $spacing-md;
+  }
+
+  &__item {
+    cursor: pointer;
+    transition: $transition-default;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__badge {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    font-size: 7px;
+    font-weight: 600;
+    padding: 1px 3px;
+    border-radius: 2px;
+    text-transform: uppercase;
+
+    &--salvage {
+      background: $badge-salvage;
+      color: white;
+    }
+
+    &--bring-home {
+      background: $badge-bring-home;
+      color: white;
+    }
+  }
+
+  &__impact-count {
+    position: absolute;
+    bottom: 2px;
+    left: 2px;
+    font-size: 9px;
+    background: rgba(0, 0, 0, 0.75);
+    color: $text-primary;
+    padding: 1px 4px;
+    border-radius: 2px;
+  }
+}

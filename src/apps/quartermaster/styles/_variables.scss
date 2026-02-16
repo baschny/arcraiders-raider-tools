@@ -1,0 +1,65 @@
+@use 'sass:color';
+
+// Import shared variables
+@use '../../../shared/styles/variables' as shared;
+
+// Re-export shared variables for convenience
+$bg-primary: shared.$bg-primary;
+$bg-secondary: shared.$bg-secondary;
+$bg-tertiary: shared.$bg-tertiary;
+$bg-dark: shared.$bg-dark;
+
+$border-default: shared.$border-default;
+$border-light: shared.$border-light;
+
+$text-primary: shared.$text-primary;
+$text-secondary: shared.$text-secondary;
+$text-accent: shared.$text-accent;
+
+$spacing-xs: shared.$spacing-xs;
+$spacing-sm: shared.$spacing-sm;
+$spacing-md: shared.$spacing-md;
+$spacing-lg: shared.$spacing-lg;
+$spacing-xl: shared.$spacing-xl;
+
+$radius-sm: shared.$radius-sm;
+$radius-md: shared.$radius-md;
+
+$shadow-default: shared.$shadow-default;
+$transition-default: shared.$transition-default;
+
+// Quartermaster uses larger fonts than shared defaults
+$font-xs: 11px;
+$font-sm: 12px;
+$font-base: 13px;
+$font-md: 14px;
+$font-lg: 16px;
+$font-xl: 18px;
+
+// Quartermaster-specific colors
+$qm-sidebar-width: 200px;
+$qm-header-height: 48px;
+
+// Rarity colors (matching spec 7.7.3)
+$rarity-common-border: #9e9e9e;
+$rarity-uncommon-border: #4caf50;
+$rarity-rare-border: #2196f3;
+$rarity-epic-border: #9c27b0;
+$rarity-legendary-border: #ff9800;
+
+// Badge colors
+$badge-keep: #4caf50;
+$badge-recycle: #ff9800;
+$badge-discard: #757575;
+$badge-salvage: #2196f3;
+$badge-bring-home: #ff9800;
+
+// Status colors
+$status-missing: #f44336;
+$status-uncraftable: #ff5722;
+$status-available: #4caf50;
+
+// Item icon sizes (+50% from original)
+$item-icon-sm: 60px;
+$item-icon-md: 84px;
+$item-icon-lg: 108px;

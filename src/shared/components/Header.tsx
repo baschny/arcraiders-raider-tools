@@ -8,6 +8,7 @@ const TOOLS = [
   { path: '/craft-calculator', name: 'Craft Calculator' },
   { path: '/quests', name: 'Quest Tracker' },
   { path: '/loot-helper', name: 'Looting Helper' },
+  { path: '/quartermaster', name: 'Quartermaster' },
 ];
 
 const TOOLS_FOR_SWITCHER = TOOLS.filter((tool) => tool.path !== '/');

@@ -1,0 +1,154 @@
+@use 'variables' as *;
+
+.item-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-xs;
+
+  &__container {
+    position: relative;
+    width: $item-icon-md;
+    height: $item-icon-md;
+    border-radius: $radius-sm;
+    border: 1px solid $border-default;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 6px;
+  }
+
+  &__quantity {
+    position: absolute;
+    bottom: 3px;
+    right: 3px;
+    background: rgba(0, 0, 0, 0.75);
+    color: $text-primary;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 3px 6px;
+    border-radius: 3px;
+    min-width: 22px;
+    text-align: center;
+  }
+
+  &__badges {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  &__badge {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 6px;
+    border-radius: 3px;
+    text-transform: uppercase;
+
+    &--keep {
+      background: $badge-keep;
+      color: white;
+    }
+
+    &--recycle {
+      background: $badge-recycle;
+      color: white;
+    }
+
+    &--discard {
+      background: $badge-discard;
+      color: white;
+    }
+
+    &--salvage {
+      background: $badge-salvage;
+      color: white;
+    }
+
+    &--bring-home {
+      background: $badge-bring-home;
+      color: white;
+    }
+
+    &--missing {
+      background: $status-missing;
+      color: white;
+    }
+
+    &--uncraftable {
+      background: $status-uncraftable;
+      color: white;
+    }
+  }
+
+  &__name {
+    font-size: 13px;
+    color: $text-primary;
+    text-align: center;
+    max-width: $item-icon-md + 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  // Size variants
+  &--sm {
+    .item-icon__container {
+      width: $item-icon-sm;
+      height: $item-icon-sm;
+    }
+    .item-icon__name {
+      max-width: $item-icon-sm + 24px;
+      font-size: 12px;
+    }
+    .item-icon__quantity {
+      font-size: 12px;
+    }
+  }
+
+  &--lg {
+    .item-icon__container {
+      width: $item-icon-lg;
+      height: $item-icon-lg;
+    }
+    .item-icon__name {
+      max-width: $item-icon-lg + 36px;
+      font-size: 13px;
+    }
+  }
+
+  // Rarity variants (spec 7.7.3)
+  &.rarity-common .item-icon__container {
+    border-color: $rarity-common-border;
+    background-image: url('/images/rarities/common_bg.png');
+  }
+
+  &.rarity-uncommon .item-icon__container {
+    border-color: $rarity-uncommon-border;
+    background-image: url('/images/rarities/uncommon_bg.png');
+  }
+
+  &.rarity-rare .item-icon__container {
+    border-color: $rarity-rare-border;
+    background-image: url('/images/rarities/rare_bg.png');
+  }
+
+  &.rarity-epic .item-icon__container {
+    border-color: $rarity-epic-border;
+    background-image: url('/images/rarities/epic_bg.png');
+  }
+
+  &.rarity-legendary .item-icon__container {
+    border-color: $rarity-legendary-border;
+    background-image: url('/images/rarities/legendary_bg.png');
+  }
+}

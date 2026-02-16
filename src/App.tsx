@@ -6,6 +6,7 @@ import { ScheduleApp } from './apps/schedule';
 import { CraftCalculatorApp } from './apps/craft-calculator';
 import { QuestsApp } from './apps/quests';
 import { LootHelperApp } from './apps/loot-helper';
+import { QuartermasterApp } from './apps/quartermaster';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="craft-calculator" element={<CraftCalculatorApp />} />
           <Route path="quests" element={<QuestsApp />} />
           <Route path="loot-helper" element={<LootHelperApp />} />
+          <Route path="quartermaster" element={<QuartermasterApp />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

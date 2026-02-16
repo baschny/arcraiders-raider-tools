@@ -1,0 +1,45 @@
+@use 'variables' as *;
+
+.qm-sidebar {
+  width: $qm-sidebar-width;
+  background: $bg-secondary;
+  border-right: 1px solid $border-default;
+  display: flex;
+  flex-direction: column;
+
+  &__nav {
+    flex: 1;
+    padding: $spacing-md 0;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    padding: $spacing-md $spacing-lg;
+    color: $text-secondary;
+    cursor: pointer;
+    transition: $transition-default;
+    border-left: 3px solid transparent;
+
+    &:hover {
+      background: $bg-tertiary;
+      color: $text-primary;
+    }
+
+    &--active {
+      background: $bg-tertiary;
+      color: $text-accent;
+      border-left-color: $text-accent;
+    }
+
+    svg {
+      flex-shrink: 0;
+    }
+
+    span {
+      font-size: $font-base;
+      font-weight: 500;
+    }
+  }
+}
