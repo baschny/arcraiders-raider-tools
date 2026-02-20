@@ -900,15 +900,22 @@ For v1:
 Generation rules:
 
 1. For each enabled loadout L:
-    - Define `loadoutRef = "loadout:" + L.id`
+    - Define `loadoutRef = "loadout:" + L.id` (or stable identifier).
 2. For each enabled item entry E inside loadout L:
     - If E.itemId is known and included in `required`:
         - Create a reservation reason for that itemId with:
             - reasonType = "craft"
             - referenceId = loadoutRef + ":" + E.itemId
-            - requestedQty = E.quantity
-3. Reservation reasons for intermediate crafting ingredients are not created explicitly.
-4. Future tiers remain empty in v1.
+            - requestedQty = E.quantity (as configured in loadout)
+3. Reservation reasons for intermediate crafting ingredients are not created explicitly; intermediate needs are represented through:
+    - craft expansion totals
+    - deficit computation
+    - recyclePlan selection
+4. Future tiers (project/hideout) remain empty in v1.
+
+Note:
+- This means reservation breakdown in v1 is primarily a traceable explanation of final loadout targets.
+- Intermediate ingredient locking is enforced by recycling eligibility rules in section 6.5.1 (KEEP precedence), not by creating additional reservation reasons.
 
 ---
 
@@ -942,6 +949,17 @@ Definition: "Intermediate craft"
 An itemId is considered required for intermediate craft if and only if:
 
 - It appears as an ingredient key in the expanded recipe requirements graph for any required final loadout item (post cycle-cutting and within depth limit), where the required final loadout item is missing after stash usage, regardless of whether the intermediate itself is currently missing.
+
+This definition is deterministic and computed from:
+
+- `required` (final items from loadouts)
+- stash usage (which determines which required final items are missing)
+- recipe graph expansion (section 6.2), with cycle handling applied and depth limit applied
+
+Implication:
+
+- If an item can be an ingredient in the current plan for missing required final outputs, it is protected from recycling (KEEP precedence).
+- RecyclePlan must only include items not protected by this rule.
 
 ---
 
@@ -980,7 +998,7 @@ Choose the best candidate deterministically using this comparator:
 
 1. Higher `effectiveYield`
 2. Higher `coverageCount`
-3. Lower `srcItemId`
+3. Lower `srcItemId` (lexicographic ascending)
 
 Recycle greedily:
 
@@ -1001,9 +1019,26 @@ unitsNeeded =
   )
 ```
 
-Apply recycling unit-by-unit up to `unitsNeeded`.
+Apply recycling unit-by-unit up to `unitsNeeded`:
 
-Record action and repeat until no candidates remain.
+After each unit:
+
+- Update deficits.
+- If the candidate no longer reduces any deficit, stop early.
+
+Record action:
+
+- Subtract units from `availableForRecycle[srcItemId]`.
+- Record `RecycleAction` with total units applied and resulting yields.
+
+Repeat from candidate rebuild step until no candidates remain.
+
+Determinism guarantees:
+
+- Candidate scoring is pure given current state.
+- Comparator is fully specified.
+- All `srcItemId` iterations sorted ascending.
+- Updates applied in strict loop order.
 
 ---
 
@@ -1015,15 +1050,55 @@ After stash usage, craft expansion, reservation, recycling:
 deficit[itemId] = max(0, required[itemId] - usableQuantity[itemId])
 ```
 
-usableQuantity (v1):
+Definition: usableQuantity
+
+For v1, usableQuantity must be computed deterministically as:
+
+1. Start from stash quantities:
+
+```
+have[itemId] = stashTotals[itemId] (0 if absent)
+```
+
+2. Apply reservation allocation:
+
+```
+reservedTotal[itemId] = sum of allocatedQty across all reservation reasons for itemId
+available[itemId] = have[itemId] - reservedTotal[itemId]
+```
+
+3. Determine usable quantity for satisfying required final loadout items:
 
 ```
 usableQuantity[itemId] = have[itemId]
 ```
 
-Reservation affects recycling eligibility but not deficit computation in v1.
+Rationale:
 
-Future compatibility rules remain unchanged.
+- v1 reservation reasons (section 6.4.5) represent the same final loadout requirements that `required` represents.
+- Therefore, the reservation breakdown is explanatory (traceability) and must not reduce the ability to satisfy the same requirement set.
+- The locking that matters for plan correctness is enforced by recycling eligibility rules (section 6.5.1) and availableForRecycle.
+
+Constraints:
+
+- `availableForRecycle` must always use `available[itemId]` (have minus reserved) to avoid recycling reserved quantities.
+- `deficit` is computed against `have[itemId]` for v1, not against `available[itemId]`, to prevent double-counting the same requirement as both "required" and "reserved".
+
+Future compatibility:
+
+- When higher tiers (project/hideout) become active, usableQuantity must be updated to subtract higher-tier allocations only:
+
+```
+usableQuantity[itemId] = have[itemId] - allocatedQty(project + hideout tiers)
+```
+
+This change is future behavior and not active in v1.
+
+Drives:
+
+- Loot suggestions
+- Craft plan
+- Status indicators
 
 ---
 
@@ -1038,25 +1113,281 @@ Include item if:
 
 Sorted by itemId ascending.
 
-Clarification remains unchanged.
+Clarification: "Recipe produces missing material"
+
+An item is included under "Recipe produces missing material" if and only if:
+
+- The item itself is a craftable output (has `recipe` and `craftBench` defined), and
+- Its own itemId has `deficit[itemId] > 0`
+
+This avoids inverse or transitive interpretations that would explode the suggestion list.
+
+---
+
+### 6.7.1 Salvage vs Recycle Badge
+
+For each suggested item `S`:
+
+Define:
+
+```
+neededMaterials = { m | deficit[m] > 0 }
+
+salvageUseful =
+  { m in neededMaterials | salvagesInto[S][m] > 0 }
+
+recycleUseful =
+  { m in neededMaterials | recyclesInto[S][m] > 0 }
+```
+
+Badge assignment:
+
+- If `(recycleUseful \ salvageUseful)` is non-empty:
+    ```
+    BRING_HOME
+    ```
+- Else if `salvageUseful` is non-empty:
+    ```
+    CAN_SALVAGE
+    ```
+- Else:
+    ```
+    BRING_HOME
+    ```
+
+Deterministic comparison.
 
 ---
 
 ## 6.8 Canonical Output Structures
 
-(UNCHANGED — all interfaces preserved exactly as previously defined.)
+All UI renders from these structures.
 
-All structures remain identical to previous specification, including:
+All structures must be deterministic and stable for identical inputs.
 
-- PlanRow
-- ReservationBreakdown
-- CraftPlan
-- RecyclePlan
-- LootSuggestion
-- BlockerSummary
-- PlannerResult
+### 6.8.1 Core Types
 
-Definitions, ordering rules, and determinism constraints remain unchanged.
+```ts
+type ItemId = string
+type Qty = number
+type ReasonType = "project" | "hideout" | "craft"
+
+type UncraftableReason =
+  | "blueprint_or_bench"
+  | "cycle"
+
+type LootReason =
+  | "missing_direct"
+  | "recycle_yields_missing"
+  | "craft_output_missing"
+  | "salvage_yields_missing"
+
+type LootBadge =
+  | "CAN_SALVAGE"
+  | "BRING_HOME"
+```
+
+---
+
+### 6.8.2 Plan Table
+
+```ts
+interface PlanRow {
+  itemId: ItemId
+  have: Qty
+  reserved: Qty
+  available: Qty
+  required: Qty
+  missing: Qty
+
+  isUncraftable: boolean
+  uncraftableReason?: UncraftableReason
+}
+```
+
+Ordering:
+
+- `planRows` ordered by itemId ascending.
+
+Notes:
+
+- `reserved` and `available` are derived from reservation allocation (section 6.4.3).
+- In v1, `reserved` is traceability-only and must not reduce `have` for deficit calculation (section 6.6).
+- Unknown items are never emitted.
+
+---
+
+### 6.8.3 Reservation Breakdown
+
+```ts
+interface ReservationBreakdown {
+  itemId: ItemId
+  totalReserved: Qty
+  tiers: Array<{
+    reasonType: ReasonType
+    reasons: Array<{
+      referenceId: string
+      requestedQty: Qty
+      allocatedQty: Qty
+      shortfall: Qty
+    }>
+  }>
+}
+```
+
+Ordering:
+
+- `tiers` in fixed tier order (section 6.4.1).
+- `reasons` ordered by referenceId ascending.
+
+---
+
+### 6.8.4 Craft Plan
+
+```ts
+interface CraftStep {
+  benchId: BenchId
+  itemId: ItemId
+  qty: Qty
+  stationLevelRequired: 1 | 2 | 3
+  blueprintLocked: boolean
+  isUncraftable: boolean
+  uncraftableReason?: UncraftableReason
+}
+
+interface CraftPlan {
+  steps: CraftStep[]
+}
+```
+
+Definitions:
+
+- `qty` is total output units planned.
+- `qty` must always be a multiple of `craftQuantity[itemId]`.
+- `craftTimes = qty / craftQuantity[itemId]` (integer, derived for UI).
+
+Craft plan generation (v1):
+
+- Craft plan generation is based on missing required final loadout items (after stash usage) and operates by crafting missing final outputs first.
+- For each missing required final output that is craftable, plan crafts to cover the missing quantity in multiples of `craftQuantity`.
+- Recursively plan intermediate crafts using depth-first expansion of `recipe` (section 6.2), within the maximum depth.
+- This process uses the recipe graph exclusively and does not treat recycle/salvage outputs as craft dependencies.
+- The craft plan must remain deterministic for identical inputs.
+
+Ordering:
+
+1. Group by benchId using canonical bench order (section 6.9).
+2. Within each bench group: itemId ascending.
+
+---
+
+### 6.8.5 Recycling Plan
+
+```ts
+interface RecycleAction {
+  srcItemId: ItemId
+  qtyToRecycle: Qty
+  yields: Record<ItemId, Qty>
+}
+
+interface RecyclePlan {
+  actions: RecycleAction[]
+}
+```
+
+Ordering:
+
+- `actions` ordered exactly by selection sequence of the recycling loop (section 6.5.2).
+
+---
+
+### 6.8.6 Loot Suggestions
+
+```ts
+interface LootSuggestion {
+  itemId: ItemId
+  reasons: LootReason[]
+  badge: LootBadge
+
+  impactedTargetsCount?: number
+}
+
+interface LootSuggestionList {
+  items: LootSuggestion[]
+}
+```
+
+Ordering:
+
+- `items` ordered by itemId ascending.
+- `reasons` ordered by fixed enum order as listed in 6.8.1.
+
+Definition: impactedTargetsCount (optional UI helper)
+
+- impactedTargetsCount is the number of final missing itemIds whose deficit would be reduced by acquiring the suggested item, based on:
+    - missing directly (if the suggestion itemId itself is missing), or
+    - via `recyclesInto` yields covering deficits, or
+    - via `salvagesInto` yields covering deficits, or
+    - being itself a missing craft output.
+- impactedTargetsCount must be computed deterministically from the current deficits and the suggestion's own mappings.
+- impactedTargetsCount must not require transitive graph expansion.
+
+---
+
+### 6.8.7 Blockers and Diagnostics
+
+```ts
+interface CycleDiagnostic {
+  itemId: ItemId
+  path: ItemId[]
+}
+
+interface BlockerSummary {
+  missingNonCraftables: ItemId[]
+  missingBaseMaterials: ItemId[]
+  benchBlockers: ItemId[]
+  blueprintBlockers: ItemId[]
+  craftCycleBlockers: ItemId[]
+  cycleDiagnostics: CycleDiagnostic[]
+}
+```
+
+Ordering:
+
+- All arrays ordered by itemId ascending.
+- `cycleDiagnostics` ordered by itemId ascending.
+
+---
+
+### 6.8.8 Top-Level Planner Result
+
+```ts
+interface PlannerResult {
+  required: Record<ItemId, Qty>
+  deficit: Record<ItemId, Qty>
+
+  planRows: PlanRow[]
+  reservations: ReservationBreakdown[]
+
+  craftPlan: CraftPlan
+  recyclePlan: RecyclePlan
+  lootSuggestions: LootSuggestionList
+
+  blockers: BlockerSummary
+
+  activeLoadoutsCount: number
+  totalMissingItemsCount: number
+  totalRecycleActionsCount: number
+  totalCraftStepsCount: number
+}
+```
+
+Notes:
+
+- `totalMissingItemsCount` is the count of itemIds with `deficit[itemId] > 0`.
+- `totalRecycleActionsCount` is `recyclePlan.actions.length`.
+- `totalCraftStepsCount` is `craftPlan.steps.length`.
+- These counts must be computed deterministically from the same planner result.
 
 ---
 
@@ -1072,36 +1403,56 @@ Canonical bench order:
 6. weapon_bench
 7. workbench
 
+All craftPlan grouping must follow this order.
+
 ---
 
 # 7. USER INTERFACE
 
+The module uses:
+
+- Persistent left sidebar
+- Main content area
+- Global header row
+
 All UI renders from canonical planner output structures.
-
-Authentication gating applies to all views requiring stash or loadout data.
-
-If not authenticated:
-
-- Display login prompt linking to `/settings/profile`.
-
-If authenticated but no cached data:
-
-- Display empty state with Sync button.
-
-Global header timestamps:
-
-- Inventory timestamp from `CachedStash.syncedAt`
-- Loadout timestamp from `CachedLoadout.syncedAt`
 
 ---
 
 ## 7.1 Global Layout
 
-(Unchanged layout rules.)
+### 7.1.1 Structure
+
+Left Sidebar Navigation:
+
+- Stash
+- Current Loadout
+- Loadouts
+- In Raid
+- Crafting
+
+Main Content Area: context-dependent.
 
 ---
 
-## 7.1.3 Stored Loadouts Persistence (v1)
+### 7.1.2 Global Header Row
+
+Visible regardless of selected sidebar item.
+
+Displays:
+
+- Active Loadouts count
+- Total Missing Items count
+- Total Recycle Actions
+- Total Craft Steps
+- Last Sync Inventory timestamp
+- Last Sync Loadout timestamp
+
+No planner logic executed here; purely derived from PlannerResult and API timestamps.
+
+---
+
+### 7.1.3 Stored Loadouts Persistence (v1)
 
 Stored loadouts are persisted client-side.
 
@@ -1111,11 +1462,43 @@ Persistence mechanism:
 
 Authentication token storage is managed by shared AuthContext and not by Quartermaster.
 
-Loadout storage rules remain unchanged.
+Required properties:
+
+- Deterministic serialization order
+- Backwards-compatible migration strategy (future)
+
+Minimum stored schema:
+
+```ts
+interface StoredLoadout {
+  schemaVersion: number
+  id: string
+  name: string
+  isEnabled: boolean
+  items: Array<{
+    itemId: string
+    quantity: number
+    isEnabled: boolean
+  }>
+}
+```
+
+Ordering rules:
+
+- Stored loadouts list ordered by `name` ascending for display.
+- Loadout items are stored in insertion order but rendered grouped (section 7.4.2).
+
+Migration strategy (v1):
+
+- If `schemaVersion` is missing, treat as version 1 and set `schemaVersion = 1` on next save.
+- If a stored loadout item references an unknown itemId, drop that entry deterministically during load.
+- If loadout data is invalid or cannot be parsed, ignore it and keep other loadouts.
 
 ---
 
 ## 7.2 Stash View
+
+Read-only inventory view.
 
 Sync Inventory button:
 
@@ -1125,47 +1508,392 @@ Error handling:
 
 - Handle `ApiError` per section 4.2.3.
 
-All other rules unchanged.
+Displays only actual stash items (no synthetic rows).
+
+### 7.2.1 Controls
+
+- Sync Inventory button
+- Filters:
+    - Search (as-you-type)
+    - Category
+    - Rarity
+    - Show Only Recyclable (based on RecyclePlan)
+
+On rate limits:
+
+- Back off and warn the user.
+
+### 7.2.2 Table
+
+Columns:
+
+| Icon | Item | Quantity | Reserved | Available | Required | Missing | Indicators |
+
+The "Icon" column uses the reusable Item Icon Component defined in section 7.7.
+
+Indicators:
+
+- 🔧 Required for Crafting
+- 🔒 Reserved (Project/Hideout)
+- 🔄 To Recycle
+- ⚠ Missing
+- 🚫 Uncraftable
+
+### 7.2.3 Expand Row
+
+Shows:
+
+- Reservation breakdown
+- Recipe
+- Recycling sources
+- Salvage info
+- Used in loadout items
+
+### 7.2.4 Value Display
+
+Total stash value displayed at top (informational only).
 
 ---
 
 ## 7.3 Current Loadout View
 
+Displays dynamic API loadout.
+
 Sync Loadout button:
 
 - Calls `syncLoadout()`.
 
-All other rules unchanged.
+### 7.3.1 Layout
+
+Grid emulating in-game layout.
+
+Each slot renders the Item Icon Component defined in section 7.7.
+
+Row 1:
+- Augment
+- Shield
+
+Row 2:
+- Weapon1
+- Weapon2
+
+Backpack:
+- 4 column grid
+
+Quick Items
+
+Augmented Slots
+
+Safe Pocket
+
+---
+
+### 7.3.2 Advisory Badge
+
+Per item:
+
+- KEEP (Required or Reserved)
+- RECYCLE (Only if in RecyclePlan and not required)
+- DISCARD (Not required, not recyclable)
+
+Precedence:
+
+KEEP > RECYCLE > DISCARD
+
+Clarification:
+
+- If an item is required for any future craft (final or intermediate), it must be KEEP and must not be marked RECYCLE.
+
+Badges are rendered via the Item Icon Component overlay system (section 7.7).
+
+---
+
+### 7.3.3 Hover Detail
+
+Shows:
+
+- Item info
+- Required for
+- Produces needed materials
+- Reservation reason
 
 ---
 
 ## 7.4 Loadouts View
 
-(Unchanged.)
+### 7.4.1 Sidebar
+
+- List of loadouts
+- Enable/Disable toggle
+- Status indicator
+- Create Loadout button
+
+---
+
+### 7.4.2 Editor
+
+Top:
+
+```
+Add Item [autocomplete as-you-type input]
+```
+
+Behavior:
+
+- Typing filters instantly.
+- Enter adds item.
+- Default quantity = 1.
+- If already exists -> increase quantity.
+
+Loadout item list grouped automatically:
+
+- Augment
+- Shield
+- Weapon(s)
+- Weapon Modifications
+- Ammunition
+- Quick Use
+
+Mapping derived from PlannerItem.category.
+
+User cannot change grouping.
+
+Each loadout item row renders the Item Icon Component defined in section 7.7.
+
+Per item controls:
+
+- Quantity
+- Enable/Disable
+- Remove
+
+Quantity rules:
+
+- For items with `recipe` and `craftBench` defined:
+    - Quantity must always be a multiple of `craftQuantity`.
+    - Step size in UI must equal `craftQuantity`.
+- For non-craftable items:
+    - Step size is 1.
 
 ---
 
 ## 7.5 In Raid View
 
-(Unchanged.)
+### 7.5.1 Loot Grid
+
+Alphabetical by itemId.
+
+Each grid cell renders the Item Icon Component defined in section 7.7.
+
+Icon + rarity border.
+
+Badge:
+
+- CAN SALVAGE
+- BRING HOME
+
+Item name is always shown below the icon, even in this grid view.
+
+Quantity is always displayed, even if it is "1".
+
+Optional small count: number of impacted targets.
+
+---
+
+### 7.5.2 Hover Detail
+
+Displays:
+
+- Required for (final loadout items)
+- Produces needed materials for (final loadout items)
+- Recycling vs salvage comparison
 
 ---
 
 ## 7.6 Crafting View
 
-Sync Inventory button:
+### 7.6.1 Controls
+
+- Sync Inventory button
 
 - Calls `syncStashAllPages()`.
 
-All error handling per section 4.2.3.
+On rate limits:
 
-All planning logic unchanged.
+- Back off and warn the user.
+
+---
+
+### 7.6.2 Section 1: Recycle First
+
+List of RecyclePlan actions.
+
+Columns:
+
+| Item | Qty to Recycle | Yields |
+
+The "Item" column uses the Item Icon Component defined in section 7.7.
+
+---
+
+### 7.6.3 Section 2: Craft Plan
+
+Grouped by BenchId.
+
+Bench order:
+
+1. refiner
+2. equipment_bench
+3. explosives_bench
+4. med_station
+5. utility_bench
+6. weapon_bench
+7. workbench
+
+Within each bench: sorted by itemId.
+
+Columns:
+
+| Item | Craft Times | Total Output | Inputs Needed | Inputs Missing |
+
+The "Item" column uses the Item Icon Component defined in section 7.7.
+
+Definitions:
+
+- Total Output = `CraftStep.qty`
+- Craft Times = `CraftStep.qty / craftQuantity[itemId]` (integer)
+
+---
+
+### 7.6.4 Iterative Workflow
+
+After performing recycle or craft in game:
+
+User must press Sync Inventory to refresh state.
+
+Craft view recalculates dynamically.
 
 ---
 
 ## 7.7 Item Icon Component (Reusable)
 
-(Unchanged.)
+### 7.7.1 Purpose
+
+A single canonical component for displaying items consistently across the module.
+
+All views that display items must use this component.
+
+---
+
+### 7.7.2 Visual Structure
+
+- Container: square box.
+- `border-radius: 4px`.
+- Border: 1px solid.
+- Border color depends on rarity.
+- Background image depends on rarity.
+- Inside container: item image centered and contained.
+- Below container: item name label (always visible).
+- Quantity overlay is always visible, even if quantity is `1`.
+
+Icon size variants:
+
+- Small: 60px × 60px
+- Medium (default): 84px × 84px
+- Large: 108px × 108px
+
+Overlay styling:
+
+- Quantity overlay: positioned bottom-right, font-size 13px, padding 3px 6px.
+- Badge overlays: positioned top-left, font-size 11px, padding 3px 6px.
+- Image padding inside container: 6px.
+
+---
+
+### 7.7.3 Rarity Styling
+
+Mapping from `PlannerItem.rarity` to CSS classes:
+
+- `Common` -> `.rarity-common`
+- `Uncommon` -> `.rarity-uncommon`
+- `Rare` -> `.rarity-rare`
+- `Epic` -> `.rarity-epic`
+- `Legendary` -> `.rarity-legendary`
+
+SCSS definition:
+
+```scss
+&.rarity-common {
+  border-color: #9e9e9e;
+  background-image: url('/images/rarities/common_bg.png');
+}
+&.rarity-uncommon {
+  border-color: #4caf50;
+  background-image: url('/images/rarities/uncommon_bg.png');
+}
+&.rarity-rare {
+  border-color: #2196f3;
+  background-image: url('/images/rarities/rare_bg.png');
+}
+&.rarity-epic {
+  border-color: #9c27b0;
+  background-image: url('/images/rarities/epic_bg.png');
+}
+&.rarity-legendary {
+  border-color: #ff9800;
+  background-image: url('/images/rarities/legendary_bg.png');
+}
+```
+
+---
+
+### 7.7.4 Overlays
+
+The component supports:
+
+- Quantity overlay (numeric label).
+- Additional informational badges.
+
+Quantity overlay:
+
+- Always visible.
+- Displays integer quantity.
+- Position is fixed and consistent across all usages.
+
+Badges:
+
+- Rendered as small overlay elements within the icon container.
+- Used for KEEP / RECYCLE / DISCARD / Missing / Uncraftable indicators.
+- Badge precedence:
+    - KEEP > RECYCLE > DISCARD
+    - Missing and Uncraftable indicators are always shown in addition to advisory badge when applicable.
+- Badge rendering order must be deterministic.
+
+---
+
+### 7.7.5 Data Contract
+
+```ts
+interface ItemIconProps {
+  itemId: string
+  name: string
+  icon: string
+  rarity: "Common" | "Uncommon" | "Rare" | "Epic" | "Legendary"
+
+  quantity: number
+
+  badges?: Array<{
+    key: string
+    label?: string
+    icon?: string
+    priority: number
+  }>
+}
+```
+
+Rules:
+
+- `quantity` is required and must be rendered even if `1`.
+- `badges` must be sorted deterministically by `priority` ascending before rendering.
 
 ---
 
@@ -1190,19 +1918,40 @@ None.
 
 # 10. FUTURE FEATURES
 
-(Unchanged.)
+## 10.1 Buying from Traders
+
+- Informational suggestion only.
+- No price optimization.
+- No daily limit tracking.
+- Advisory-only feature.
+
+## 10.2 Additional Reservation Layers
+
+- Expanded project tracking.
+- Expedition resource locking.
+- Multi-phase hideout upgrades.
+
+## 10.3 Additional Enhancements
+
+- Advanced deficit impact visualization.
+- Performance optimization for large DAGs.
+- Optional economic overlays (if policy changes).
+- Optional stash size optimization (considering `stackSize` for each item).
 
 ---
 
 # 11. EXPLICIT NON-GOALS
 
-(Unchanged.)
+- No automated execution.
+- No server-side planner.
+- No economic optimization.
+- No drop probability modeling.
 
 ---
 
 # 12. TESTING & VALIDATION
 
-All previous testing rules remain unchanged.
+This section defines required test coverage and canonical scenario definitions for deterministic verification of planner behavior.
 
 Additional API-related requirements:
 
@@ -1212,5 +1961,188 @@ Additional API-related requirements:
 - Verify unknown API itemIds are ignored.
 - Verify 401 triggers auth reset behavior.
 
-All other canonical test scenarios remain unchanged.
+## 12.1 Fixture Source and Test Input Stage
+
+Canonical fixture source (pre-import source-format files):
+
 ```
+docs/sample/items/*.json
+```
+
+Tests must derive the post-import `PlannerItem` dataset by executing the import pipeline specified in section 3.
+
+Test suite layers:
+
+1. Importer tests:
+- Input: pre-import source files from `docs/sample/items/*.json`
+- Output: post-import normalized dataset
+- Validate: filtering, normalization, mapping determinism
+
+2. Planner tests:
+- Input: post-import normalized dataset produced by importer
+- Validate: planner logic determinism and correctness against scenarios below
+
+Tests must not rely on JSON key ordering, file system iteration ordering, or runtime object iteration ordering.
+
+---
+
+## 12.2 Determinism Requirements
+
+All tests must assume:
+
+- Dependency traversal sorted by itemId.
+- Reservation ordering deterministic (section 6.4.1).
+- Recycling comparator fully specified (section 6.5.2).
+- Output structures follow canonical shapes (section 6.8).
+- No reliance on JSON key order.
+- Identical inputs produce identical outputs for:
+    - craft plan
+    - recycling decisions
+    - reservation breakdown
+    - loot suggestion list and ordering
+
+---
+
+## 12.3 Canonical Test Scenarios
+
+### 12.3.1 Import Normalization
+
+Goal: verify deterministic import behavior.
+
+Given fixture items covering:
+
+- `stackSize` missing
+- `stackSize` present
+- `craftBench` string
+- `craftBench` array including `"workbench"`
+- `craftBench` array including `"in_raid"`
+- `craftBench` string `"in_raid"` only
+- `type` values that trigger mapping rules (Weapon via `isWeapon`, Quick Use, direct mapping)
+- `craftQuantity` missing
+- `craftQuantity` present (e.g., heavy_ammo with craftQuantity = 10)
+
+Expect:
+
+- `stackSize` missing -> `1`
+- `stationLevelRequired` missing -> `1`
+- `blueprintLocked` missing -> `false`
+- `craftQuantity` missing -> `1`
+- `craftQuantity` present preserved
+- `craftBench` arrays normalized per section 3.2
+- in-raid-only crafting items excluded per section 3.1.2
+- category/subCategory mapping per section 3.3
+
+### 12.3.2 Craft Expansion (Baseline)
+
+Goal: verify recursive requirements expansion and stop conditions.
+
+Given:
+
+- a loadout with at least one craftable item that expands into:
+    - multiple inputs
+    - multiple levels of depth
+- items with:
+    - missing recipe (non-craftable)
+    - recipe = {} (non-craftable)
+    - craftBench undefined (non-craftable item)
+
+Expect:
+
+- required totals aggregated deterministically
+- recursion stops at non-craftables
+- consistent derived intermediate totals
+- recursion stops when depth limit reached
+
+### 12.3.3 Cycle Detection
+
+Goal: verify cycle edge-cut behavior and diagnostics.
+
+Given a minimal recipe cycle fixture (e.g., `A -> B -> C -> A`):
+
+Expect:
+
+- cycle detected when encountering item already in `visiting`
+- always cut the edge that closes the cycle
+- mark item as `Uncraftable (Cycle)` per section 6.2.2.3
+- record deterministic cycle path diagnostic per section 6.2.2.4
+- continue expansion for non-cyclic branches
+
+### 12.3.4 Recycling to Cover Deficits
+
+Goal: verify recycling only applies when it reduces deficits, respects reservation, and preserves crafting ingredients.
+
+Given:
+
+- stash contains recyclable items with `recyclesInto` yielding needed materials
+- stash also contains items in non-recyclable categories
+- reservation allocations produce both reserved and available quantities
+- at least two recyclable items can reduce the same deficit
+
+Expect:
+
+- only `availableForRecycle` used
+- never recycle non-recyclable categories
+- only recycle items whose yields match currently missing materials
+- deterministic selection based on effectiveYield, coverageCount, srcItemId
+- protected intermediate crafting ingredients never appear in RecyclePlan
+
+### 12.3.5 Loot Suggestions Membership
+
+Goal: verify In-Raid suggestion inclusion rules.
+
+Given deficits where:
+
+- some items are missing directly
+- some items are not missing but recycle into missing materials
+- some craft outputs are missing
+- some items salvage into missing materials
+
+Expect:
+
+- suggestion list includes items meeting any inclusion condition
+- ordering deterministic (sorted by itemId)
+
+### 12.3.6 Salvage Badge Decision
+
+Goal: verify CAN SALVAGE vs BRING HOME badge behavior.
+
+Given:
+
+- a suggested item with both `salvagesInto` and `recyclesInto`
+- current deficits where:
+    - salvage yields all needed materials covered by recycle (CAN SALVAGE), and
+    - recycle yields at least one needed material not yielded by salvage (BRING HOME)
+
+Expect:
+
+- badge assigned correctly per section 6.7.1
+- badge decision deterministic
+
+### 12.3.7 Unknown Item Handling (API)
+
+Goal: verify unknown `itemId` from API is ignored.
+
+Given API stash/loadout response containing an unknown `itemId`:
+
+Expect:
+
+- unknown item is not displayed in any UI view
+- unknown item does not appear in any planner output structure
+
+### 12.3.8 Reservation Priority Locking (Future Compatibility)
+
+Goal: verify reservation system supports priority tiers and deterministic breakdown.
+
+Given:
+
+- multiple reservation reasons across tiers for the same `itemId`
+- insufficient stash quantity to satisfy all requestedQty
+
+Expect:
+
+- higher tiers allocate first
+- correct `allocatedQty` and `shortfall` per reason
+- `reservedTotal = sum(allocatedQty)`
+- `availableForRecycle = have - reservedTotal`
+- `availableForCrafting = have - sum(allocatedQty of higher tiers)`
+- deterministic ordering of tiers and reasons
