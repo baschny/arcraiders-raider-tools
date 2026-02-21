@@ -8,7 +8,7 @@ import type { ItemRarity } from '../types/item';
 export interface ItemIconBadge {
   key: string;
   label?: string;
-  type: 'keep' | 'recycle' | 'discard' | 'salvage' | 'bring-home' | 'missing' | 'uncraftable';
+  type: 'keep' | 'recycle' | 'discard' | 'salvage' | 'bring-home' | 'missing' | 'uncraftable' | 'have' | 'can-craft';
   priority: number;
 }
 

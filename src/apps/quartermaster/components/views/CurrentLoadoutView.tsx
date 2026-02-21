@@ -5,7 +5,7 @@
 
 import { RefreshCw, Backpack } from 'lucide-react';
 import type { ItemsMap } from '../../types/item';
-import type { CurrentLoadoutItem, PlannerResult, AdvisoryBadge } from '../../types/planner';
+import type { CurrentLoadoutItem, PlannerResult, LoadoutBadge } from '../../types/planner';
 import { ItemIcon, type ItemIconBadge } from '../ItemIcon';
 
 interface CurrentLoadoutViewProps {
@@ -17,29 +17,18 @@ interface CurrentLoadoutViewProps {
 }
 
 /**
- * Determine advisory badge for an item (spec 7.3.2)
- * KEEP > RECYCLE > DISCARD
+ * Determine loadout badge for an item (CR-MOD-7)
+ * HAVE / CAN_CRAFT / MISSING
  */
-function getAdvisoryBadge(
+function getLoadoutBadge(
   itemId: string,
-  plannerResult: PlannerResult
-): AdvisoryBadge {
-  // Check if required for loadout or intermediate craft
-  const isRequired = itemId in plannerResult.required;
+  plannerResult: PlannerResult,
+): LoadoutBadge {
   const planRow = plannerResult.planRows.find(r => r.itemId === itemId);
-  const isReserved = (planRow?.reserved ?? 0) > 0;
+  if (planRow) return planRow.badge;
 
-  if (isRequired || isReserved) {
-    return 'KEEP';
-  }
-
-  // Check if in recycle plan
-  const toRecycle = plannerResult.recyclePlan.actions.some(a => a.srcItemId === itemId);
-  if (toRecycle) {
-    return 'RECYCLE';
-  }
-
-  return 'DISCARD';
+  // Item not in plan rows → not required, treat as HAVE
+  return 'HAVE';
 }
 
 export function CurrentLoadoutView({
@@ -91,15 +80,15 @@ export function CurrentLoadoutView({
               const item = itemsMap[loadoutItem.itemId];
               if (!item) return null;
 
-              const badge = getAdvisoryBadge(loadoutItem.itemId, plannerResult);
+              const badge = getLoadoutBadge(loadoutItem.itemId, plannerResult);
               const badges: ItemIconBadge[] = [];
 
-              if (badge === 'KEEP') {
-                badges.push({ key: 'advisory', type: 'keep', priority: 1 });
-              } else if (badge === 'RECYCLE') {
-                badges.push({ key: 'advisory', type: 'recycle', priority: 1 });
+              if (badge === 'HAVE') {
+                badges.push({ key: 'badge', label: 'Have', type: 'have', priority: 1 });
+              } else if (badge === 'CAN_CRAFT') {
+                badges.push({ key: 'badge', label: 'Craft', type: 'can-craft', priority: 1 });
               } else {
-                badges.push({ key: 'advisory', type: 'discard', priority: 1 });
+                badges.push({ key: 'badge', label: 'Missing', type: 'missing', priority: 1 });
               }
 
               return (

@@ -34,10 +34,6 @@ export function StashView({
     return new Set(plannerResult.recyclePlan.actions.map(a => a.srcItemId));
   }, [plannerResult.recyclePlan]);
 
-  const requiredItemIds = useMemo(() => {
-    return new Set(Object.keys(plannerResult.required));
-  }, [plannerResult.required]);
-
   // Get unique categories from stash items
   const categories = useMemo(() => {
     const cats = new Set<string>();
@@ -182,11 +178,9 @@ export function StashView({
               <th style={{ width: 60 }}>Icon</th>
               <th>Item</th>
               <th style={{ width: 80 }}>Quantity</th>
-              <th style={{ width: 80 }}>Reserved</th>
-              <th style={{ width: 80 }}>Available</th>
               <th style={{ width: 80 }}>Required</th>
               <th style={{ width: 80 }}>Missing</th>
-              <th>Indicators</th>
+              <th>Status</th>
             </tr>
           </thead>
           <tbody>
@@ -195,7 +189,6 @@ export function StashView({
               if (!item) return null;
               
               const planRow = getPlanRow(stashItem.itemId);
-              const isRequired = requiredItemIds.has(stashItem.itemId);
               const toRecycle = recycleItemIds.has(stashItem.itemId);
 
               return (
@@ -213,26 +206,21 @@ export function StashView({
                   </td>
                   <td>{item.name}</td>
                   <td>{stashItem.quantity}</td>
-                  <td>{planRow?.reserved ?? 0}</td>
-                  <td>{planRow?.available ?? stashItem.quantity}</td>
                   <td>{planRow?.required ?? 0}</td>
                   <td style={{ color: (planRow?.missing ?? 0) > 0 ? '#f44336' : 'inherit' }}>
                     {planRow?.missing ?? 0}
                   </td>
                   <td>
-                    {isRequired && (
-                      <span className="stash-view__indicator stash-view__indicator--crafting">
-                        🔧 Crafting
+                    {planRow && (
+                      <span className={`stash-view__indicator stash-view__indicator--${planRow.badge.toLowerCase().replace('_', '-')}`}>
+                        {planRow.badge === 'HAVE' && '✓ Have'}
+                        {planRow.badge === 'CAN_CRAFT' && '🔧 Can Craft'}
+                        {planRow.badge === 'MISSING' && '⚠ Missing'}
                       </span>
                     )}
                     {toRecycle && (
                       <span className="stash-view__indicator stash-view__indicator--recycle">
                         🔄 Recycle
-                      </span>
-                    )}
-                    {(planRow?.missing ?? 0) > 0 && (
-                      <span className="stash-view__indicator stash-view__indicator--missing">
-                        ⚠ Missing
                       </span>
                     )}
                     {planRow?.isUncraftable && (

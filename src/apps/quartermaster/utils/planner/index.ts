@@ -1,17 +1,17 @@
 /**
  * Quartermaster Planner
- * Main orchestration of all planner algorithms
- * See specification section 6
+ * Main orchestration – Greedy depth≤2 model
+ * See CR-MOD-6
  */
 
 import type { ItemsMap, BenchId } from '../../types/item';
 import type { StoredLoadout } from '../../types/loadout';
 import type { PlannerResult, StashItem, ItemId, Qty } from '../../types/planner';
+import { BENCH_ORDER } from '../../types/item';
 
-import { aggregateRequired, generateReservationReasons, allocateReservations, getActiveLoadoutsCount } from './aggregation';
-import { expandCraftRequirements, sortCraftSteps } from './craftExpansion';
-import { computeRecyclePlan, getReservedTotals } from './recycling';
-import { calculateDeficits, buildPlanRows, getMissingItemsCount, buildBlockerSummary } from './deficit';
+import { aggregateRequired, getActiveLoadoutsCount } from './aggregation';
+import { runGreedyPlanner } from './greedyPlanner';
+import { buildPlanRows, getMissingItemsCount, buildBlockerSummary } from './deficit';
 import { generateLootSuggestions } from './lootSuggestions';
 
 /**
@@ -39,6 +39,18 @@ function stashToRecord(stashItems: StashItem[]): Record<ItemId, Qty> {
 }
 
 /**
+ * Sort craft steps by bench order then itemId
+ */
+function sortCraftSteps(steps: PlannerResult['craftPlan']['steps']): PlannerResult['craftPlan']['steps'] {
+  return [...steps].sort((a, b) => {
+    const benchA = BENCH_ORDER.indexOf(a.benchId);
+    const benchB = BENCH_ORDER.indexOf(b.benchId);
+    if (benchA !== benchB) return benchA - benchB;
+    return a.itemId.localeCompare(b.itemId);
+  });
+}
+
+/**
  * Main planner computation
  * Takes all inputs and produces deterministic PlannerResult
  */
@@ -48,58 +60,44 @@ export function computePlan(
   stashItems: StashItem[],
   benchLevels: Record<BenchId, number> = DEFAULT_BENCH_LEVELS
 ): PlannerResult {
-  // Convert stash to record format
   const stash = stashToRecord(stashItems);
 
-  // Step 1: Aggregate required items from loadouts (section 6.1)
+  // Step 1: Aggregate required from enabled loadouts
   const required = aggregateRequired(loadouts);
 
-  // Step 2: Expand craft requirements with cycle detection (sections 6.2, 6.3)
-  const expansionState = expandCraftRequirements(required, itemsMap, benchLevels);
+  // Step 2: Compute deficit (CR-MOD-6.2)
+  const deficit: Record<ItemId, Qty> = {};
+  for (const [itemId, req] of Object.entries(required)) {
+    const d = Math.max(0, req - (stash[itemId] ?? 0));
+    if (d > 0) deficit[itemId] = d;
+  }
 
-  // Step 3: Generate reservation reasons (section 6.4)
-  const reasonsMap = generateReservationReasons(loadouts);
-  const reservations = allocateReservations(stash, reasonsMap);
-  const reserved = getReservedTotals(reservations);
+  // Step 3: Run greedy planner (CR-MOD-6.4)
+  const greedyResult = runGreedyPlanner(itemsMap, required, stash, benchLevels);
 
-  // Step 4: Calculate deficits (section 6.6)
-  const deficits = calculateDeficits(expansionState.totalRequired, stash);
+  // Step 4: Build sorted craft plan (fully satisfiable only in Craft UI)
+  const craftPlan = { steps: sortCraftSteps(greedyResult.craftSteps) };
+  const recyclePlan = { actions: greedyResult.recycleActions };
 
-  // Step 5: Compute recycle plan (section 6.5)
-  const requiredFinalItems = new Set(Object.keys(required));
-  const recyclePlan = computeRecyclePlan(
-    itemsMap,
-    stash,
-    reserved,
-    deficits,
-    expansionState.intermediateItems,
-    requiredFinalItems
-  );
+  // Step 5: Generate loot suggestions (CR-MOD-6.5)
+  // Merge top-level deficits with remaining ingredient deficits from greedy planner
+  const lootDeficits: Record<ItemId, Qty> = { ...deficit };
+  for (const [itemId, qty] of Object.entries(greedyResult.remainingDeficits)) {
+    lootDeficits[itemId] = Math.max(lootDeficits[itemId] ?? 0, qty);
+  }
+  const lootSuggestions = generateLootSuggestions(itemsMap, lootDeficits, required);
 
-  // Step 6: Generate loot suggestions (section 6.7)
-  const lootSuggestions = generateLootSuggestions(itemsMap, deficits);
+  // Step 6: Build plan rows with badges
+  const planRows = buildPlanRows(itemsMap, required, stash, greedyResult);
 
-  // Step 7: Build plan rows for display
-  const planRows = buildPlanRows(itemsMap, expansionState.totalRequired, stash, reserved, expansionState);
+  // Step 7: Build blocker summary
+  const blockers = buildBlockerSummary(itemsMap, deficit, greedyResult);
 
-  // Step 8: Build craft plan
-  const craftSteps = sortCraftSteps(expansionState.craftSteps);
-  const craftPlan = { steps: craftSteps };
-
-  // Step 9: Build blocker summary
-  const blockerData = buildBlockerSummary(itemsMap, deficits, expansionState);
-  const blockers = {
-    ...blockerData,
-    cycleDiagnostics: expansionState.cycleDiagnostics.sort((a, b) => a.itemId.localeCompare(b.itemId)),
-  };
-
-  // Build final result
   return {
     required,
-    deficit: deficits,
+    deficit,
 
     planRows,
-    reservations,
 
     craftPlan,
     recyclePlan,
@@ -107,8 +105,10 @@ export function computePlan(
 
     blockers,
 
+    satisfiableTargets: greedyResult.satisfiableTargets,
+
     activeLoadoutsCount: getActiveLoadoutsCount(loadouts),
-    totalMissingItemsCount: getMissingItemsCount(deficits),
+    totalMissingItemsCount: getMissingItemsCount(deficit),
     totalRecycleActionsCount: recyclePlan.actions.length,
     totalCraftStepsCount: craftPlan.steps.length,
   };
@@ -123,24 +123,20 @@ export function createEmptyResult(): PlannerResult {
     required: {},
     deficit: {},
     planRows: [],
-    reservations: [],
     craftPlan: { steps: [] },
     recyclePlan: { actions: [] },
     lootSuggestions: { items: [] },
     blockers: {
-      missingNonCraftables: [],
       missingBaseMaterials: [],
       benchBlockers: [],
       blueprintBlockers: [],
       craftCycleBlockers: [],
       cycleDiagnostics: [],
     },
+    satisfiableTargets: new Set(),
     activeLoadoutsCount: 0,
     totalMissingItemsCount: 0,
     totalRecycleActionsCount: 0,
     totalCraftStepsCount: 0,
   };
 }
-
-// Re-export types and utilities for convenience
-export type { ExpansionState } from './craftExpansion';

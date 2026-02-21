@@ -1,69 +1,81 @@
 /**
- * Deficit Calculation
- * See specification section 6.6
+ * Deficit & Plan Row Computation
+ * See CR-MOD-6.2, CR-MOD-7
  */
 
 import type { ItemsMap } from '../../types/item';
-import type { ItemId, Qty, PlanRow, UncraftableReason } from '../../types/planner';
-import type { ExpansionState } from './craftExpansion';
+import type { ItemId, Qty, PlanRow, LoadoutBadge, UncraftableReason, BlockerSummary } from '../../types/planner';
+import type { GreedyPlanResult } from './greedyPlanner';
 
 /**
- * Calculate deficits for all required items
- * deficit[itemId] = max(0, required[itemId] - have[itemId])
+ * Compute ingredient demands from craft steps.
+ * For each craft step, derive how many of each ingredient are needed.
  */
-export function calculateDeficits(
-  totalRequired: Record<ItemId, Qty>,
-  stash: Record<ItemId, Qty>
+function computeIngredientDemands(
+  itemsMap: ItemsMap,
+  craftSteps: GreedyPlanResult['craftSteps'],
 ): Record<ItemId, Qty> {
-  const deficits: Record<ItemId, Qty> = {};
+  const demands: Record<ItemId, Qty> = {};
 
-  for (const [itemId, required] of Object.entries(totalRequired)) {
-    const have = stash[itemId] ?? 0;
-    const deficit = Math.max(0, required - have);
-    if (deficit > 0) {
-      deficits[itemId] = deficit;
+  for (const step of craftSteps) {
+    const item = itemsMap[step.itemId];
+    if (!item?.recipe) continue;
+
+    const craftTimes = Math.ceil(step.qty / item.craftQuantity);
+    for (const [ingId, qtyPerCraft] of Object.entries(item.recipe)) {
+      demands[ingId] = (demands[ingId] ?? 0) + qtyPerCraft * craftTimes;
     }
   }
 
-  return deficits;
+  return demands;
 }
 
 /**
- * Build plan rows for display
- * Combines stash, reservation, and requirement data
+ * Build plan rows with HAVE / CAN_CRAFT / MISSING badges.
+ * Includes both loadout-required items AND crafting ingredients.
  */
 export function buildPlanRows(
   itemsMap: ItemsMap,
-  totalRequired: Record<ItemId, Qty>,
+  required: Record<ItemId, Qty>,
   stash: Record<ItemId, Qty>,
-  reserved: Record<ItemId, Qty>,
-  expansionState: ExpansionState
+  greedyResult: GreedyPlanResult,
 ): PlanRow[] {
-  const rows: PlanRow[] = [];
+  // Merge loadout requirements with ingredient demands from craft plan
+  const ingredientDemands = computeIngredientDemands(itemsMap, greedyResult.craftSteps);
+  const totalRequired: Record<ItemId, Qty> = { ...required };
+  for (const [itemId, qty] of Object.entries(ingredientDemands)) {
+    totalRequired[itemId] = (totalRequired[itemId] ?? 0) + qty;
+  }
 
-  // Get all unique itemIds from required
+  const rows: PlanRow[] = [];
   const itemIds = Object.keys(totalRequired).sort();
 
   for (const itemId of itemIds) {
-    // Skip unknown items
-    if (!itemsMap[itemId]) {
-      continue;
-    }
+    if (!itemsMap[itemId]) continue;
 
     const have = stash[itemId] ?? 0;
-    const reservedQty = reserved[itemId] ?? 0;
-    const available = Math.max(0, have - reservedQty);
-    const required = totalRequired[itemId] ?? 0;
-    const missing = Math.max(0, required - have);
+    const req = totalRequired[itemId] ?? 0;
+    const missing = Math.max(0, req - have);
 
-    // Determine uncraftable status
+    // Determine badge (CR-MOD-7)
+    let badge: LoadoutBadge;
+    if (have >= req) {
+      badge = 'HAVE';
+    } else if (greedyResult.satisfiableTargets.has(itemId)) {
+      badge = 'CAN_CRAFT';
+    } else {
+      badge = 'MISSING';
+    }
+
+    // Uncraftable status
     let isUncraftable = false;
     let uncraftableReason: UncraftableReason | undefined;
 
-    if (expansionState.cycleBlockers.has(itemId)) {
+    const isCycleBlocked = greedyResult.cycleDiagnostics.some(d => d.itemId === itemId);
+    if (isCycleBlocked) {
       isUncraftable = true;
       uncraftableReason = 'cycle';
-    } else if (expansionState.blueprintBlockers.has(itemId) || expansionState.benchBlockers.has(itemId)) {
+    } else if (greedyResult.blueprintBlockers.has(itemId) || greedyResult.benchBlockers.has(itemId)) {
       isUncraftable = true;
       uncraftableReason = 'blueprint_or_bench';
     }
@@ -71,16 +83,14 @@ export function buildPlanRows(
     rows.push({
       itemId,
       have,
-      reserved: reservedQty,
-      available,
-      required,
+      required: req,
       missing,
+      badge,
       isUncraftable,
       uncraftableReason,
     });
   }
 
-  // Sort by itemId (ASCII ascending)
   return rows.sort((a, b) => a.itemId.localeCompare(b.itemId));
 }
 
@@ -92,26 +102,18 @@ export function getMissingItemsCount(deficits: Record<ItemId, Qty>): number {
 }
 
 /**
- * Build blocker summary from expansion state
+ * Build blocker summary from greedy planner result
  */
 export function buildBlockerSummary(
   itemsMap: ItemsMap,
   deficits: Record<ItemId, Qty>,
-  expansionState: ExpansionState
-): {
-  missingNonCraftables: ItemId[];
-  missingBaseMaterials: ItemId[];
-  benchBlockers: ItemId[];
-  blueprintBlockers: ItemId[];
-  craftCycleBlockers: ItemId[];
-} {
-  const missingNonCraftables: ItemId[] = [];
+  greedyResult: GreedyPlanResult,
+): BlockerSummary {
   const missingBaseMaterials: ItemId[] = [];
 
-  // Items with deficit that have no recipe (base materials)
   for (const itemId of Object.keys(deficits).sort()) {
     if (deficits[itemId] <= 0) continue;
-    
+
     const item = itemsMap[itemId];
     if (!item) continue;
 
@@ -123,11 +125,13 @@ export function buildBlockerSummary(
     }
   }
 
+  const cycleIds = new Set(greedyResult.cycleDiagnostics.map(d => d.itemId));
+
   return {
-    missingNonCraftables,
     missingBaseMaterials,
-    benchBlockers: Array.from(expansionState.benchBlockers).sort(),
-    blueprintBlockers: Array.from(expansionState.blueprintBlockers).sort(),
-    craftCycleBlockers: Array.from(expansionState.cycleBlockers).sort(),
+    benchBlockers: Array.from(greedyResult.benchBlockers).sort(),
+    blueprintBlockers: Array.from(greedyResult.blueprintBlockers).sort(),
+    craftCycleBlockers: Array.from(cycleIds).sort(),
+    cycleDiagnostics: greedyResult.cycleDiagnostics.sort((a, b) => a.itemId.localeCompare(b.itemId)),
   };
 }

@@ -76,7 +76,3 @@ export const NON_RECYCLABLE_CATEGORIES = new Set([
   'Shield',
 ]);
 
-/**
- * Maximum recipe expansion depth (section 6.2)
- */
-export const MAX_EXPANSION_DEPTH = 6;

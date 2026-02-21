@@ -8,48 +8,29 @@ import type { BenchId } from './item';
 // Core types (section 6.8.1)
 export type ItemId = string;
 export type Qty = number;
-export type ReasonType = 'project' | 'hideout' | 'craft';
 
 export type UncraftableReason = 'blueprint_or_bench' | 'cycle';
 
 export type LootReason =
   | 'missing_direct'
   | 'recycle_yields_missing'
-  | 'craft_output_missing'
   | 'salvage_yields_missing';
 
 export type LootBadge = 'CAN_SALVAGE' | 'BRING_HOME';
+
+// Loadout badge for Current Loadout / Stash views (CR-MOD-7)
+export type LoadoutBadge = 'HAVE' | 'CAN_CRAFT' | 'MISSING';
 
 // Plan Table (section 6.8.2)
 export interface PlanRow {
   itemId: ItemId;
   have: Qty;
-  reserved: Qty;
-  available: Qty;
   required: Qty;
   missing: Qty;
+  badge: LoadoutBadge;
 
   isUncraftable: boolean;
   uncraftableReason?: UncraftableReason;
-}
-
-// Reservation Breakdown (section 6.8.3)
-export interface ReservationReason {
-  referenceId: string;
-  requestedQty: Qty;
-  allocatedQty: Qty;
-  shortfall: Qty;
-}
-
-export interface ReservationTier {
-  reasonType: ReasonType;
-  reasons: ReservationReason[];
-}
-
-export interface ReservationBreakdown {
-  itemId: ItemId;
-  totalReserved: Qty;
-  tiers: ReservationTier[];
 }
 
 // Craft Plan (section 6.8.4)
@@ -59,8 +40,7 @@ export interface CraftStep {
   qty: Qty;
   stationLevelRequired: 1 | 2 | 3;
   blueprintLocked: boolean;
-  isUncraftable: boolean;
-  uncraftableReason?: UncraftableReason;
+  isFullySatisfiable: boolean;
 }
 
 export interface CraftPlan {
@@ -93,11 +73,9 @@ export interface LootSuggestionList {
 // Blockers and Diagnostics (section 6.8.7)
 export interface CycleDiagnostic {
   itemId: ItemId;
-  path: ItemId[];
 }
 
 export interface BlockerSummary {
-  missingNonCraftables: ItemId[];
   missingBaseMaterials: ItemId[];
   benchBlockers: ItemId[];
   blueprintBlockers: ItemId[];
@@ -111,13 +89,15 @@ export interface PlannerResult {
   deficit: Record<ItemId, Qty>;
 
   planRows: PlanRow[];
-  reservations: ReservationBreakdown[];
 
   craftPlan: CraftPlan;
   recyclePlan: RecyclePlan;
   lootSuggestions: LootSuggestionList;
 
   blockers: BlockerSummary;
+
+  /** Set of fully satisfiable target itemIds */
+  satisfiableTargets: Set<ItemId>;
 
   activeLoadoutsCount: number;
   totalMissingItemsCount: number;

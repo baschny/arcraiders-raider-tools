@@ -1,103 +1,111 @@
 /**
  * Loot Suggestions
- * See specification section 6.7
+ * See CR-MOD-6.5
  */
 
 import type { ItemsMap } from '../../types/item';
 import type { ItemId, Qty, LootSuggestion, LootReason, LootBadge, LootSuggestionList } from '../../types/planner';
+import { LOADOUT_CATEGORY_ORDER } from '../../types/loadout';
+
+const LOADOUT_CATEGORIES = new Set<string>(LOADOUT_CATEGORY_ORDER);
 
 /**
- * Fixed enum order for reasons (section 6.8.1)
+ * Fixed enum order for reasons
  */
 const REASON_ORDER: LootReason[] = [
   'missing_direct',
   'recycle_yields_missing',
-  'craft_output_missing',
   'salvage_yields_missing',
 ];
 
 /**
- * Determine loot badge based on recycle vs salvage yields
- * See specification section 6.7.1
+ * Compute the set of items appearing as recipe ingredients or recipe outputs
+ */
+function computeRecipeRelevantSet(itemsMap: ItemsMap): Set<ItemId> {
+  const relevant = new Set<ItemId>();
+
+  for (const [itemId, item] of Object.entries(itemsMap)) {
+    if (item.recipe && Object.keys(item.recipe).length > 0 && item.craftBench) {
+      // Item is a recipe output
+      relevant.add(itemId);
+      // Its ingredients are recipe-relevant
+      for (const ingId of Object.keys(item.recipe)) {
+        relevant.add(ingId);
+      }
+    }
+  }
+
+  return relevant;
+}
+
+/**
+ * Check if an item is crafting-relevant (CR-ADD-6.X)
+ * Not in loadout categories AND (in recipeRelevantSet OR recycles into recipeRelevantSet)
+ */
+function isCraftingRelevant(
+  itemId: ItemId,
+  item: { category: string; recyclesInto?: Record<string, number> },
+  recipeRelevantSet: Set<ItemId>,
+): boolean {
+  if (LOADOUT_CATEGORIES.has(item.category)) return false;
+  if (recipeRelevantSet.has(itemId)) return true;
+  if (item.recyclesInto) {
+    for (const yieldId of Object.keys(item.recyclesInto)) {
+      if (recipeRelevantSet.has(yieldId)) return true;
+    }
+  }
+  return false;
+}
+
+/**
+ * Determine loot badge (CR-MOD-6.5)
+ * Salvage yields missing → CAN_SALVAGE, otherwise BRING_HOME
  */
 function determineBadge(
   item: { recyclesInto?: Record<string, number>; salvagesInto?: Record<string, number> },
-  deficits: Record<ItemId, Qty>
+  neededMaterials: Set<ItemId>,
 ): LootBadge {
-  const neededMaterials = new Set(
-    Object.keys(deficits).filter(matId => deficits[matId] > 0)
-  );
-
   const recycleUseful = new Set<string>();
   const salvageUseful = new Set<string>();
 
-  // Find materials this item yields that are needed
   if (item.recyclesInto) {
-    for (const [matId, yield_] of Object.entries(item.recyclesInto)) {
-      if (yield_ > 0 && neededMaterials.has(matId)) {
-        recycleUseful.add(matId);
-      }
+    for (const [matId, qty] of Object.entries(item.recyclesInto)) {
+      if (qty > 0 && neededMaterials.has(matId)) recycleUseful.add(matId);
     }
   }
-
   if (item.salvagesInto) {
-    for (const [matId, yield_] of Object.entries(item.salvagesInto)) {
-      if (yield_ > 0 && neededMaterials.has(matId)) {
-        salvageUseful.add(matId);
-      }
+    for (const [matId, qty] of Object.entries(item.salvagesInto)) {
+      if (qty > 0 && neededMaterials.has(matId)) salvageUseful.add(matId);
     }
   }
 
-  // recycleUseful \ salvageUseful (recycle yields something salvage doesn't)
-  const recycleExclusive = new Set(
-    [...recycleUseful].filter(m => !salvageUseful.has(m))
-  );
-
-  // If recycle yields unique needed materials, BRING_HOME
-  if (recycleExclusive.size > 0) {
-    return 'BRING_HOME';
-  }
-
-  // If salvage yields needed materials, CAN_SALVAGE
-  if (salvageUseful.size > 0) {
-    return 'CAN_SALVAGE';
-  }
-
-  // Default to BRING_HOME
+  // If recycle yields something salvage doesn't → BRING_HOME
+  const recycleExclusive = [...recycleUseful].filter(m => !salvageUseful.has(m));
+  if (recycleExclusive.length > 0) return 'BRING_HOME';
+  if (salvageUseful.size > 0) return 'CAN_SALVAGE';
   return 'BRING_HOME';
 }
 
 /**
  * Calculate impacted targets count
- * Number of final missing itemIds whose deficit would be reduced
  */
 function calculateImpactedTargets(
   itemId: ItemId,
-  item: { recyclesInto?: Record<string, number>; salvagesInto?: Record<string, number>; recipe?: Record<string, number>; craftBench?: string },
-  deficits: Record<ItemId, Qty>
+  item: { recyclesInto?: Record<string, number>; salvagesInto?: Record<string, number> },
+  deficits: Record<ItemId, Qty>,
 ): number {
   const impacted = new Set<ItemId>();
 
-  // Missing directly
-  if (deficits[itemId] > 0) {
-    impacted.add(itemId);
-  }
+  if (deficits[itemId] > 0) impacted.add(itemId);
 
-  // Via recyclesInto
   if (item.recyclesInto) {
-    for (const [matId, yield_] of Object.entries(item.recyclesInto)) {
-      if (yield_ > 0 && deficits[matId] > 0) {
-        impacted.add(matId);
-      }
+    for (const [matId, qty] of Object.entries(item.recyclesInto)) {
+      if (qty > 0 && deficits[matId] > 0) impacted.add(matId);
     }
   }
-
-  // Via salvagesInto
   if (item.salvagesInto) {
-    for (const [matId, yield_] of Object.entries(item.salvagesInto)) {
-      if (yield_ > 0 && deficits[matId] > 0) {
-        impacted.add(matId);
-      }
+    for (const [matId, qty] of Object.entries(item.salvagesInto)) {
+      if (qty > 0 && deficits[matId] > 0) impacted.add(matId);
     }
   }
 
@@ -106,100 +114,78 @@ function calculateImpactedTargets(
 
 /**
  * Generate loot suggestions based on deficits
- * See specification section 6.7
+ * Only crafting-relevant items, excluding loadout categories (CR-MOD-6.5)
  */
 export function generateLootSuggestions(
   itemsMap: ItemsMap,
-  deficits: Record<ItemId, Qty>
+  deficits: Record<ItemId, Qty>,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  _requiredFinal: Record<ItemId, Qty>,
 ): LootSuggestionList {
+  const recipeRelevantSet = computeRecipeRelevantSet(itemsMap);
+  const neededMaterials = new Set(
+    Object.keys(deficits).filter(matId => deficits[matId] > 0),
+  );
+
   const suggestions: LootSuggestion[] = [];
-  const addedItems = new Set<ItemId>();
 
-  // Helper to add a suggestion
   const addSuggestion = (itemId: ItemId, reason: LootReason) => {
-    if (!itemsMap[itemId]) return;
-
     let suggestion = suggestions.find(s => s.itemId === itemId);
     if (!suggestion) {
-      suggestion = {
-        itemId,
-        reasons: [],
-        badge: 'BRING_HOME', // Will be determined later
-      };
+      suggestion = { itemId, reasons: [], badge: 'BRING_HOME' };
       suggestions.push(suggestion);
-      addedItems.add(itemId);
     }
     if (!suggestion.reasons.includes(reason)) {
       suggestion.reasons.push(reason);
     }
   };
 
-  // 1. Items missing directly
-  for (const itemId of Object.keys(deficits).sort()) {
-    if (deficits[itemId] > 0 && itemsMap[itemId]) {
-      addSuggestion(itemId, 'missing_direct');
-    }
-  }
-
-  // 2-4. Check all items for recycle/craft/salvage yields
   const allItemIds = Object.keys(itemsMap).sort();
-  const neededMaterials = new Set(
-    Object.keys(deficits).filter(matId => deficits[matId] > 0)
-  );
 
   for (const itemId of allItemIds) {
     const item = itemsMap[itemId];
 
-    // RecyclesInto yields missing material
-    if (item.recyclesInto) {
-      for (const [matId, yield_] of Object.entries(item.recyclesInto)) {
-        if (yield_ > 0 && neededMaterials.has(matId)) {
-          addSuggestion(itemId, 'recycle_yields_missing');
-          break;
-        }
-      }
+    // Skip loadout category items entirely
+    if (LOADOUT_CATEGORIES.has(item.category)) continue;
+
+    // Skip non-crafting-relevant items
+    if (!isCraftingRelevant(itemId, item, recipeRelevantSet)) continue;
+
+    // Direct missing material → BRING_HOME
+    if (deficits[itemId] > 0) {
+      addSuggestion(itemId, 'missing_direct');
     }
 
-    // Recipe produces missing material (item itself is craftable and missing)
-    // Per spec clarification: item is a craftable output AND has deficit > 0
-    if (item.recipe && Object.keys(item.recipe).length > 0 && item.craftBench) {
-      if (deficits[itemId] > 0) {
-        addSuggestion(itemId, 'craft_output_missing');
-      }
-    }
-
-    // SalvagesInto yields missing material
+    // Salvage yields missing material → CAN_SALVAGE
     if (item.salvagesInto) {
-      for (const [matId, yield_] of Object.entries(item.salvagesInto)) {
-        if (yield_ > 0 && neededMaterials.has(matId)) {
+      for (const [matId, qty] of Object.entries(item.salvagesInto)) {
+        if (qty > 0 && neededMaterials.has(matId)) {
           addSuggestion(itemId, 'salvage_yields_missing');
           break;
         }
       }
     }
+
+    // Recycle yields missing material → BRING_HOME
+    if (item.recyclesInto) {
+      for (const [matId, qty] of Object.entries(item.recyclesInto)) {
+        if (qty > 0 && neededMaterials.has(matId)) {
+          addSuggestion(itemId, 'recycle_yields_missing');
+          break;
+        }
+      }
+    }
   }
 
-  // Determine badges and impacted counts
+  // Finalize: sort reasons, determine badge, calculate impacts
   for (const suggestion of suggestions) {
     const item = itemsMap[suggestion.itemId];
-    
-    // Sort reasons by fixed enum order
-    suggestion.reasons.sort((a, b) => 
-      REASON_ORDER.indexOf(a) - REASON_ORDER.indexOf(b)
-    );
-
-    // Determine badge
-    suggestion.badge = determineBadge(item, deficits);
-
-    // Calculate impacted targets
-    suggestion.impactedTargetsCount = calculateImpactedTargets(
-      suggestion.itemId,
-      item,
-      deficits
-    );
+    suggestion.reasons.sort((a, b) => REASON_ORDER.indexOf(a) - REASON_ORDER.indexOf(b));
+    suggestion.badge = determineBadge(item, neededMaterials);
+    suggestion.impactedTargetsCount = calculateImpactedTargets(suggestion.itemId, item, deficits);
   }
 
-  // Sort by itemId (ASCII ascending)
+  // Sort by itemId ascending (deterministic)
   suggestions.sort((a, b) => a.itemId.localeCompare(b.itemId));
 
   return { items: suggestions };

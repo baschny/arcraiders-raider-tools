@@ -34,14 +34,17 @@ export function CraftingView({
   onSyncStash,
   isSyncing,
 }: CraftingViewProps) {
+  // Filter to fully satisfiable targets only (CR-ADD-6.X)
+  const satisfiableSteps = craftPlan.steps.filter(step => step.isFullySatisfiable);
+
   // Group craft steps by bench
   const stepsByBench = BENCH_ORDER.reduce((acc, benchId) => {
-    acc[benchId] = craftPlan.steps.filter(step => step.benchId === benchId);
+    acc[benchId] = satisfiableSteps.filter(step => step.benchId === benchId);
     return acc;
   }, {} as Record<BenchId, typeof craftPlan.steps>);
 
   const hasRecycleActions = recyclePlan.actions.length > 0;
-  const hasCraftSteps = craftPlan.steps.length > 0;
+  const hasCraftSteps = satisfiableSteps.length > 0;
 
   return (
     <div className="crafting-view">
@@ -144,7 +147,7 @@ export function CraftingView({
                       const craftTimes = Math.ceil(step.qty / item.craftQuantity);
 
                       return (
-                        <tr key={step.itemId} style={{ opacity: step.isUncraftable ? 0.5 : 1 }}>
+                        <tr key={step.itemId}>
                           <td>
                             <ItemIcon
                               itemId={item.id}
@@ -156,14 +159,7 @@ export function CraftingView({
                               showName={false}
                             />
                           </td>
-                          <td>
-                            {item.name}
-                            {step.isUncraftable && (
-                              <span style={{ color: '#ff5722', marginLeft: 8, fontSize: 10 }}>
-                                ({step.uncraftableReason === 'cycle' ? 'Cycle' : 'Blueprint/Bench'})
-                              </span>
-                            )}
-                          </td>
+                          <td>{item.name}</td>
                           <td>{craftTimes}</td>
                           <td>{step.qty}</td>
                           <td>
