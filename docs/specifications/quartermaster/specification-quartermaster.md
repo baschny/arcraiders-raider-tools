@@ -975,6 +975,8 @@ Main Content Area: context-dependent.
 
 ### 7.1.2 Global Header Row
 
+Visible regardless of selected sidebar item.
+
 Displays:
 
 - Active Loadouts count
@@ -984,13 +986,24 @@ Displays:
 - Last Sync Inventory timestamp
 - Last Sync Loadout timestamp
 
+No planner logic executed here; purely derived from PlannerResult and API timestamps.
+
 ---
 
 ### 7.1.3 Stored Loadouts Persistence (v1)
 
-Stored loadouts persisted in localStorage.
+Stored loadouts are persisted client-side.
 
-Schema:
+Persistence mechanism:
+
+- localStorage
+
+Required properties:
+
+- Deterministic serialization order
+- Backwards-compatible migration strategy (future)
+
+Minimum stored schema:
 
 ```ts
 interface StoredLoadout {
@@ -1006,10 +1019,16 @@ interface StoredLoadout {
 }
 ```
 
-Ordering:
+Ordering rules:
 
-- Loadouts sorted by `name` ascending.
-- Loadout items stored in insertion order.
+- Stored loadouts list ordered by `name` ascending for display.
+- Loadout items are stored in insertion order but rendered grouped (section 7.4.2).
+
+Migration strategy (v1):
+
+- If `schemaVersion` is missing, treat as version 1 and set `schemaVersion = 1` on next save.
+- If a stored loadout item references an unknown itemId, drop that entry deterministically during load.
+- If loadout data is invalid or cannot be parsed, ignore it and keep other loadouts.
 
 ---
 
@@ -1017,19 +1036,50 @@ Ordering:
 
 Read-only inventory view.
 
-Sync Inventory button calls `syncStashAllPages()`.
+Displays only actual stash items (no synthetic rows).
 
-Displays only actual stash items.
+### 7.2.1 Controls
+
+- Sync Inventory button
+- Filters:
+    - Search (as-you-type)
+    - Category
+    - Rarity
+    - Show Only Recyclable (based on RecyclePlan)
+
+On rate limits:
+
+- Back off and warn the user.
+
+### 7.2.2 Table
 
 Columns:
 
-| Icon | Item | Quantity | Required | Missing | Indicators |
+| Icon | Item | Quantity | Reserved | Available | Required | Missing | Indicators |
+
+The "Icon" column uses the reusable Item Icon Component defined in section 7.7.
 
 Indicators:
 
-- HAVE
-- CAN_CRAFT
-- MISSING
+- 🔧 Required for Crafting
+- 🔒 Reserved (Project/Hideout)
+- 🔄 To Recycle
+- ⚠ Missing
+- 🚫 Uncraftable
+
+### 7.2.3 Expand Row
+
+Shows:
+
+- Reservation breakdown
+- Recipe
+- Recycling sources
+- Salvage info
+- Used in loadout items
+
+### 7.2.4 Value Display
+
+Total stash value displayed at top (informational only).
 
 ---
 
@@ -1037,64 +1087,335 @@ Indicators:
 
 Displays dynamic API loadout.
 
-Per item badges:
+### 7.3.1 Layout
 
-- HAVE (stash sufficient)
-- CAN_CRAFT (locally reachable)
-- MISSING (not locally reachable)
+Grid emulating in-game layout.
+
+Each slot renders the Item Icon Component defined in section 7.7.
+
+Row 1:
+- Augment
+- Shield
+
+Row 2:
+- Weapon1
+- Weapon2
+
+Backpack:
+- 4 column grid
+
+Quick Items
+
+Augmented Slots
+
+Safe Pocket
+
+---
+
+### 7.3.2 Advisory Badge
+
+Per item:
+
+- KEEP (Required or Reserved)
+- RECYCLE (Only if in RecyclePlan and not required)
+- DISCARD (Not required, not recyclable)
 
 Precedence:
 
-HAVE > CAN_CRAFT > MISSING
+KEEP > RECYCLE > DISCARD
+
+Clarification:
+
+- If an item is required for any future craft (final or intermediate), it must be KEEP and must not be marked RECYCLE.
+
+Badges are rendered via the Item Icon Component overlay system (section 7.7).
+
+---
+
+### 7.3.3 Hover Detail
+
+Shows:
+
+- Item info
+- Required for
+- Produces needed materials
+- Reservation reason
 
 ---
 
 ## 7.4 Loadouts View
 
-Editor prevents adding items that are not craftable due to blueprint or bench restriction.
+### 7.4.1 Sidebar
 
-Items grouped by category.
+- List of loadouts
+- Enable/Disable toggle
+- Status indicator
+- Create Loadout button
+
+---
+
+### 7.4.2 Editor
+
+Top:
+
+```
+Add Item [autocomplete as-you-type input]
+```
+
+Behavior:
+
+- Typing filters instantly.
+- Enter adds item.
+- Default quantity = 1.
+- If already exists -> increase quantity.
+
+Loadout item list grouped automatically:
+
+- Augment
+- Shield
+- Weapon(s)
+- Weapon Modifications
+- Ammunition
+- Quick Use
+
+Mapping derived from PlannerItem.category.
+
+User cannot change grouping.
+
+Each loadout item row renders the Item Icon Component defined in section 7.7.
+
+Per item controls:
+
+- Quantity
+- Enable/Disable
+- Remove
 
 Quantity rules:
 
-- For craftable items: step size = craftQuantity.
-- For non-craftable items: step size = 1.
+- For items with `recipe` and `craftBench` defined:
+    - Quantity must always be a multiple of `craftQuantity`.
+    - Step size in UI must equal `craftQuantity`.
+- For non-craftable items:
+    - Step size is 1.
 
 ---
 
 ## 7.5 In Raid View
 
-Loot suggestions grid:
+### 7.5.1 Loot Grid
 
-- Only crafting-relevant items.
-- Excludes loadout category items.
+Alphabetical by itemId.
 
-Badges:
+Each grid cell renders the Item Icon Component defined in section 7.7.
 
-- SALVAGE
-- BRING_HOME
+Icon + rarity border.
 
-Item name and quantity always visible.
+Badge:
+
+- CAN SALVAGE
+- BRING HOME
+
+Item name is always shown below the icon, even in this grid view.
+
+Quantity is always displayed, even if it is "1".
+
+Optional small count: number of impacted targets.
+
+---
+
+### 7.5.2 Hover Detail
+
+Displays:
+
+- Required for (final loadout items)
+- Produces needed materials for (final loadout items)
+- Recycling vs salvage comparison
 
 ---
 
 ## 7.6 Crafting View
 
-Section 1: Recycle First
+### 7.6.1 Controls
 
-Displays aggregated RecyclePlan.
+- Sync Inventory button
 
-Section 2: Craft Plan
+On rate limits:
 
-Grouped by BenchId in canonical order.
+- Back off and warn the user.
 
-Displays only fully satisfiable targets.
+---
+
+### 7.6.2 Section 1: Recycle First
+
+List of RecyclePlan actions.
+
+Columns:
+
+| Item | Qty to Recycle | Yields |
+
+The "Item" column uses the Item Icon Component defined in section 7.7.
+
+---
+
+### 7.6.3 Section 2: Craft Plan
+
+Grouped by BenchId.
+
+Bench order:
+
+1. refiner
+2. equipment_bench
+3. explosives_bench
+4. med_station
+5. utility_bench
+6. weapon_bench
+7. workbench
+
+Within each bench: sorted by itemId.
+
+Columns:
+
+| Item | Craft Times | Total Output | Inputs Needed | Inputs Missing |
+
+The "Item" column uses the Item Icon Component defined in section 7.7.
+
+Definitions:
+
+- Total Output = `CraftStep.qty`
+- Craft Times = `CraftStep.qty / craftQuantity[itemId]` (integer)
+
+---
+
+### 7.6.4 Iterative Workflow
+
+After performing recycle or craft in game:
+
+User must press Sync Inventory to refresh state.
+
+Craft view recalculates dynamically.
 
 ---
 
 ## 7.7 Item Icon Component (Reusable)
 
-Unchanged component definition.
+### 7.7.1 Purpose
+
+A single canonical component for displaying items consistently across the module.
+
+All views that display items must use this component.
+
+---
+
+### 7.7.2 Visual Structure
+
+- Container: square box.
+- `border-radius: 4px`.
+- Border: 1px solid.
+- Border color depends on rarity.
+- Background image depends on rarity.
+- Inside container: item image centered and contained.
+- Below container: item name label (always visible).
+- Quantity overlay is always visible, even if quantity is `1`.
+
+Icon size variants:
+
+- Small: 60px × 60px
+- Medium (default): 84px × 84px
+- Large: 108px × 108px
+
+Overlay styling:
+
+- Quantity overlay: positioned bottom-right, font-size 13px, padding 3px 6px.
+- Badge overlays: positioned top-left, font-size 11px, padding 3px 6px.
+- Image padding inside container: 6px.
+
+---
+
+### 7.7.3 Rarity Styling
+
+Mapping from `PlannerItem.rarity` to CSS classes:
+
+- `Common` -> `.rarity-common`
+- `Uncommon` -> `.rarity-uncommon`
+- `Rare` -> `.rarity-rare`
+- `Epic` -> `.rarity-epic`
+- `Legendary` -> `.rarity-legendary`
+
+SCSS definition:
+
+```scss
+&.rarity-common {
+  border-color: #9e9e9e;
+  background-image: url('/images/rarities/common_bg.png');
+}
+&.rarity-uncommon {
+  border-color: #4caf50;
+  background-image: url('/images/rarities/uncommon_bg.png');
+}
+&.rarity-rare {
+  border-color: #2196f3;
+  background-image: url('/images/rarities/rare_bg.png');
+}
+&.rarity-epic {
+  border-color: #9c27b0;
+  background-image: url('/images/rarities/epic_bg.png');
+}
+&.rarity-legendary {
+  border-color: #ff9800;
+  background-image: url('/images/rarities/legendary_bg.png');
+}
+```
+
+---
+
+### 7.7.4 Overlays
+
+The component supports:
+
+- Quantity overlay (numeric label).
+- Additional informational badges.
+
+Quantity overlay:
+
+- Always visible.
+- Displays integer quantity.
+- Position is fixed and consistent across all usages.
+
+Badges:
+
+- Rendered as small overlay elements within the icon container.
+- Used for KEEP / RECYCLE / DISCARD / Missing / Uncraftable indicators.
+- Badge precedence:
+    - KEEP > RECYCLE > DISCARD
+    - Missing and Uncraftable indicators are always shown in addition to advisory badge when applicable.
+- Badge rendering order must be deterministic.
+
+---
+
+### 7.7.5 Data Contract
+
+```ts
+interface ItemIconProps {
+  itemId: string
+  name: string
+  icon: string
+  rarity: "Common" | "Uncommon" | "Rare" | "Epic" | "Legendary"
+
+  quantity: number
+
+  badges?: Array<{
+    key: string
+    label?: string
+    icon?: string
+    priority: number
+  }>
+}
+```
+
+Rules:
+
+- `quantity` is required and must be rendered even if `1`.
+- `badges` must be sorted deterministically by `priority` ascending before rendering.
 
 ---
 
