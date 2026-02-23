@@ -433,16 +433,16 @@
       },
       "minor": {
         "1": "harvester",
-        "3": "prospecting-probes",
+        "3": "uncovered-caches",
         "4": "matriarch",
         "7": "harvester",
-        "9": "lush-blooms",
+        "9": "uncovered-caches",
         "10": "matriarch",
         "13": "harvester",
-        "15": "prospecting-probes",
+        "15": "uncovered-caches",
         "16": "matriarch",
         "19": "harvester",
-        "21": "lush-blooms",
+        "21": "uncovered-caches",
         "22": "matriarch"
       }
     },
@@ -458,30 +458,27 @@
       "minor": {
         "0": "bird-city",
         "2": "bird-city",
-        "4": "prospecting-probes",
+        "4": "uncovered-caches",
         "6": "bird-city",
         "8": "bird-city",
         "10": "bird-city",
-        "12": "prospecting-probes",
+        "12": "uncovered-caches",
         "14": "bird-city",
         "16": "bird-city",
         "18": "bird-city",
-        "20": "prospecting-probes",
+        "20": "uncovered-caches",
         "22": "bird-city"
       }
     },
     "the-spaceport": {
       "major": {
-        "0": "hidden-bunker",
-        "1": "night-raid",
+        "0": "electromagnetic-storm",
         "4": "hidden-bunker",
         "5": "cold-snap",
-        "8": "hidden-bunker",
-        "9": "electromagnetic-storm",
+        "8": "night-raid",
         "12": "hidden-bunker",
         "13": "cold-snap",
-        "16": "hidden-bunker",
-        "17": "night-raid",
+        "16": "electromagnetic-storm",
         "20": "hidden-bunker",
         "21": "cold-snap"
       },
@@ -508,17 +505,17 @@
         "13": "locked-gate",
         "16": "cold-snap",
         "17": "electromagnetic-storm",
-        "20": "locked-gate"
+        "21": "locked-gate"
       },
       "minor": {
         "2": "matriarch",
         "5": "harvester",
-        "7": "prospecting-probes",
+        "7": "uncovered-caches",
         "8": "matriarch",
         "11": "harvester",
         "14": "matriarch",
         "17": "harvester",
-        "19": "lush-blooms",
+        "19": "uncovered-caches",
         "20": "matriarch",
         "23": "harvester"
       }
