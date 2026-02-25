@@ -96,6 +96,28 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "alien_duck": {
+    "id": "alien_duck",
+    "name": "Alien Duck",
+    "stackSize": 15,
+    "value": 1000,
+    "imageFilename": "https://cdn.arctracker.io/items/alien_duck.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "ancient_fort_security_code": {
+    "id": "ancient_fort_security_code",
+    "name": "Ancient Fort Security Code",
+    "stackSize": 1,
+    "value": 100,
+    "imageFilename": "https://cdn.arctracker.io/items/security_code.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "angled_grip_i": {
     "id": "angled_grip_i",
     "name": "Angled Grip I",
@@ -459,28 +481,6 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "backpack_black_hiker_color": {
-    "id": "backpack_black_hiker_color",
-    "name": "Backpack (Black Hiker Color)",
-    "stackSize": 1,
-    "value": null,
-    "imageFilename": null,
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "banana": {
-    "id": "banana",
-    "name": "Banana",
-    "stackSize": 1,
-    "value": null,
-    "imageFilename": "https://cdn.arctracker.io/items/banana.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
   "bandage": {
     "id": "bandage",
     "name": "Bandage",
@@ -522,7 +522,7 @@
     "id": "bastion_cell",
     "name": "Bastion Cell",
     "stackSize": 3,
-    "value": 5000,
+    "value": 3000,
     "imageFilename": "https://cdn.arctracker.io/items/bastion_cell.png",
     "isWeapon": null,
     "recipe": null,
@@ -598,7 +598,7 @@
     "id": "bettina_iv",
     "name": "Bettina IV",
     "stackSize": 1,
-    "value": 17000,
+    "value": 18000,
     "imageFilename": "https://cdn.arctracker.io/items/bettina.png",
     "isWeapon": true,
     "recipe": null,
@@ -751,17 +751,6 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "blue_radio_renegade_color": {
-    "id": "blue_radio_renegade_color",
-    "name": "Blue (Radio Renegade Color)",
-    "stackSize": 1,
-    "value": null,
-    "imageFilename": "https://cdn.arctracker.io/items/blue_radio_renegade_color.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
   "bobcat_blueprint": {
     "id": "bobcat_blueprint",
     "name": "Bobcat Blueprint",
@@ -834,7 +823,7 @@
     "id": "bombardier_cell",
     "name": "Bombardier Cell",
     "stackSize": 3,
-    "value": 5000,
+    "value": 3000,
     "imageFilename": "https://cdn.arctracker.io/items/bombardier_cell.png",
     "isWeapon": null,
     "recipe": null,
@@ -896,17 +885,6 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "burgerboy": {
-    "id": "burgerboy",
-    "name": "Burgerboy",
-    "stackSize": 1,
-    "value": null,
-    "imageFilename": "https://cdn.arctracker.io/items/burgerboy.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
   "buried_city_hospital_key": {
     "id": "buried_city_hospital_key",
     "name": "Buried City Hospital Key",
@@ -955,7 +933,7 @@
     "id": "burletta_blueprint",
     "name": "Burletta Blueprint",
     "stackSize": 1,
-    "value": null,
+    "value": 5000,
     "imageFilename": "https://cdn.arctracker.io/items/burletta.png",
     "isWeapon": null,
     "recipe": null,
@@ -1021,7 +999,7 @@
   "burned_arc_circuitry": {
     "id": "burned_arc_circuitry",
     "name": "Burned Arc Circuitry",
-    "stackSize": 5,
+    "stackSize": 3,
     "value": 640,
     "imageFilename": "https://cdn.arctracker.io/items/burned_arc_circuitry.png",
     "isWeapon": null,
@@ -1084,17 +1062,6 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "cans_backpack_attachment": {
-    "id": "cans_backpack_attachment",
-    "name": "Cans Backpack Attachment",
-    "stackSize": 1,
-    "value": null,
-    "imageFilename": "https://cdn.arctracker.io/items/cans.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
   "cat_bed": {
     "id": "cat_bed",
     "name": "Cat Bed",
@@ -1112,17 +1079,6 @@
     "stackSize": 1,
     "value": null,
     "imageFilename": "https://cdn.arctracker.io/items/celestes_journal.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "cheer": {
-    "id": "cheer",
-    "name": "Cheer",
-    "stackSize": 1,
-    "value": null,
-    "imageFilename": "https://cdn.arctracker.io/items/cheer.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -1225,6 +1181,17 @@
       "advanced_electrical_components": 2,
       "processor": 3
     },
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "comet_igniter": {
+    "id": "comet_igniter",
+    "name": "Comet Igniter",
+    "stackSize": 3,
+    "value": 1000,
+    "imageFilename": "https://cdn.arctracker.io/items/comet_igniter.png",
+    "isWeapon": null,
+    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -1397,6 +1364,17 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "dam_controlled_access_zone_key": {
+    "id": "dam_controlled_access_zone_key",
+    "name": "Dam Controlled Access Zone Key",
+    "stackSize": 1,
+    "value": 100,
+    "imageFilename": null,
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "dam_staff_room_key": {
     "id": "dam_staff_room_key",
     "name": "Dam Staff Room Key",
@@ -1500,7 +1478,7 @@
     "id": "damaged_rocketeer_driver",
     "name": "Damaged Rocketeer Driver",
     "stackSize": 3,
-    "value": 2000,
+    "value": 1000,
     "imageFilename": "https://cdn.arctracker.io/items/damaged_rocketeer_driver.png",
     "isWeapon": null,
     "recipe": null,
@@ -1566,11 +1544,12 @@
     "id": "deadline",
     "name": "Deadline",
     "stackSize": 1,
-    "value": 5000,
+    "value": 6000,
     "imageFilename": "https://cdn.arctracker.io/items/deadline.png",
     "isWeapon": null,
     "recipe": {
       "arc_circuitry": 2,
+      "comet_igniter": 1,
       "explosive_compound": 3
     },
     "upgradeCost": null,
@@ -1645,6 +1624,17 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "doodly_duck": {
+    "id": "doodly_duck",
+    "name": "Doodly Duck",
+    "stackSize": 15,
+    "value": 3000,
+    "imageFilename": "https://cdn.arctracker.io/items/doodly_duck.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "door_blocker": {
     "id": "door_blocker",
     "name": "Door Blocker",
@@ -1691,6 +1681,17 @@
     "recipe": {
       "fabric": 14
     },
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "dusty_film_reel": {
+    "id": "dusty_film_reel",
+    "name": "Dusty Film Reel",
+    "stackSize": 1,
+    "value": 0,
+    "imageFilename": null,
+    "isWeapon": null,
+    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -1756,6 +1757,17 @@
       "magnetic_accelerator": 3,
       "queen_reactor": 1
     },
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "espresso_machine_parts": {
+    "id": "espresso_machine_parts",
+    "name": "Espresso Machine Parts",
+    "stackSize": 1,
+    "value": 0,
+    "imageFilename": "https://cdn.arctracker.io/items/espresso_machine_parts.png",
+    "isWeapon": null,
+    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -2008,7 +2020,7 @@
   },
   "extended_shotgun_mag_i": {
     "id": "extended_shotgun_mag_i",
-    "name": " Extended Shotgun Mag I",
+    "name": "Extended Shotgun Mag I",
     "stackSize": 1,
     "value": 640,
     "imageFilename": "https://cdn.arctracker.io/items/extended_shotgun_mag_i.png",
@@ -2063,11 +2075,11 @@
     "value": 5000,
     "imageFilename": "https://cdn.arctracker.io/items/extended_shotgun_mag_iii.png",
     "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": {
+    "recipe": {
       "mod_components": 2,
       "steel_spring": 5
     },
+    "upgradeCost": null,
     "craftQuantity": 1
   },
   "fabric": {
@@ -2087,6 +2099,17 @@
     "stackSize": 15,
     "value": 640,
     "imageFilename": "https://cdn.arctracker.io/items/faded_photograph.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "familiar_duck": {
+    "id": "familiar_duck",
+    "name": "Familiar Duck",
+    "stackSize": 15,
+    "value": 7000,
+    "imageFilename": "https://cdn.arctracker.io/items/familiar_duck.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -2205,6 +2228,17 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "firefly_burner": {
+    "id": "firefly_burner",
+    "name": "Firefly Burner",
+    "stackSize": 3,
+    "value": 1000,
+    "imageFilename": "https://cdn.arctracker.io/items/firefly_burner.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "fireworks_box_blueprint": {
     "id": "fireworks_box_blueprint",
     "name": "Fireworks Box Blueprint",
@@ -2267,13 +2301,24 @@
     "id": "flame_spray",
     "name": "Flame Spray",
     "stackSize": 1,
-    "value": 640,
+    "value": 2000,
     "imageFilename": "https://cdn.arctracker.io/items/flame_spray.png",
     "isWeapon": null,
     "recipe": {
       "air_freshener": 1,
       "fireball_burner": 1
     },
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "flashy_duck": {
+    "id": "flashy_duck",
+    "name": "Flashy Duck",
+    "stackSize": 15,
+    "value": 3000,
+    "imageFilename": "https://cdn.arctracker.io/items/flashy_duck.png",
+    "isWeapon": null,
+    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -2302,7 +2347,7 @@
   "fossilized_lightning": {
     "id": "fossilized_lightning",
     "name": "Fossilized Lightning",
-    "stackSize": 3,
+    "stackSize": 1,
     "value": 4000,
     "imageFilename": "https://cdn.arctracker.io/items/fossilized_lightning.png",
     "isWeapon": null,
@@ -2439,6 +2484,17 @@
     "stackSize": 3,
     "value": 3500,
     "imageFilename": "https://cdn.arctracker.io/items/geiger_counter.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "gentle_duck": {
+    "id": "gentle_duck",
+    "name": "Gentle Duck",
+    "stackSize": 15,
+    "value": 1000,
+    "imageFilename": "https://cdn.arctracker.io/items/gentle_duck.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -2643,10 +2699,7 @@
     "value": 7000,
     "imageFilename": "https://cdn.arctracker.io/items/horizontal_grip.png",
     "isWeapon": null,
-    "recipe": {
-      "duct_tape": 5,
-      "mod_components": 2
-    },
+    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -2654,7 +2707,7 @@
     "id": "hornet_driver",
     "name": "Hornet Driver",
     "stackSize": 3,
-    "value": 2000,
+    "value": 1000,
     "imageFilename": "https://cdn.arctracker.io/items/hornet_driver.png",
     "isWeapon": null,
     "recipe": null,
@@ -2909,17 +2962,6 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "junior_outfit": {
-    "id": "junior_outfit",
-    "name": "Junior Outfit",
-    "stackSize": 1,
-    "value": null,
-    "imageFilename": null,
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
   "jupiter_blueprint": {
     "id": "jupiter_blueprint",
     "name": "Jupiter Blueprint",
@@ -2968,7 +3010,10 @@
     "imageFilename": "https://cdn.arctracker.io/items/kettle.png",
     "isWeapon": true,
     "recipe": null,
-    "upgradeCost": null,
+    "upgradeCost": {
+      "metal_parts": 8,
+      "plastic_parts": 10
+    },
     "craftQuantity": 1
   },
   "kettle_iii": {
@@ -2979,7 +3024,10 @@
     "imageFilename": "https://cdn.arctracker.io/items/kettle.png",
     "isWeapon": true,
     "recipe": null,
-    "upgradeCost": null,
+    "upgradeCost": {
+      "metal_parts": 10,
+      "simple_gun_parts": 1
+    },
     "craftQuantity": 1
   },
   "kettle_iv": {
@@ -2990,7 +3038,10 @@
     "imageFilename": "https://cdn.arctracker.io/items/kettle.png",
     "isWeapon": true,
     "recipe": null,
-    "upgradeCost": null,
+    "upgradeCost": {
+      "mechanical_components": 3,
+      "simple_gun_parts": 1
+    },
     "craftQuantity": 1
   },
   "kinetic_converter_blueprint": {
@@ -3018,7 +3069,7 @@
   "laboratory_reagents": {
     "id": "laboratory_reagents",
     "name": "Laboratory Reagents",
-    "stackSize": 1,
+    "stackSize": 3,
     "value": 2000,
     "imageFilename": "https://cdn.arctracker.io/items/laboratory_reagents.png",
     "isWeapon": null,
@@ -3055,7 +3106,7 @@
     "id": "leaper_pulse_unit",
     "name": "Leaper Pulse Unit",
     "stackSize": 3,
-    "value": 5000,
+    "value": 3000,
     "imageFilename": "https://cdn.arctracker.io/items/leaper_pulse_unit.png",
     "isWeapon": null,
     "recipe": null,
@@ -3068,6 +3119,17 @@
     "stackSize": 10,
     "value": 640,
     "imageFilename": "https://cdn.arctracker.io/items/lemon.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "library_book": {
+    "id": "library_book",
+    "name": "Book",
+    "stackSize": 1,
+    "value": 0,
+    "imageFilename": null,
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -3242,14 +3304,28 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "looting_mk3_safekeeper_blueprint": {
+    "id": "looting_mk3_safekeeper_blueprint",
+    "name": "Looting Mk. 3 (Safekeeper) Blueprint",
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/looting_mk3_safekeeper.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "looting_mk3_safekeeper": {
     "id": "looting_mk3_safekeeper",
     "name": "Looting Mk. 3 (Safekeeper)",
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": null,
+    "imageFilename": "https://cdn.arctracker.io/items/looting_mk3_safekeeper.png",
     "isWeapon": null,
-    "recipe": null,
+    "recipe": {
+      "advanced_electrical_components": 2,
+      "processor": 3
+    },
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -3306,7 +3382,7 @@
   "lure_grenade": {
     "id": "lure_grenade",
     "name": "Lure Grenade",
-    "stackSize": 1,
+    "stackSize": 3,
     "value": 1000,
     "imageFilename": "https://cdn.arctracker.io/items/lure_grenade.png",
     "isWeapon": null,
@@ -3353,6 +3429,17 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "major_aivas_mementos": {
+    "id": "major_aivas_mementos",
+    "name": "Major Aiva's Mementos",
+    "stackSize": 1,
+    "value": 0,
+    "imageFilename": "https://cdn.arctracker.io/items/major_aivas_mementos.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "major_aivas_patch": {
     "id": "major_aivas_patch",
     "name": "Major Aiva's Patch",
@@ -3368,7 +3455,7 @@
     "id": "matriarch_reactor",
     "name": "Matriarch Reactor",
     "stackSize": 1,
-    "value": 13000,
+    "value": 11000,
     "imageFilename": "https://cdn.arctracker.io/items/matriarch_reactor.png",
     "isWeapon": null,
     "recipe": null,
@@ -3499,6 +3586,17 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "moisture_meter": {
+    "id": "moisture_meter",
+    "name": "Moisture Meter",
+    "stackSize": 1,
+    "value": null,
+    "imageFilename": "https://cdn.arctracker.io/items/moisture_meter.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "moss": {
     "id": "moss",
     "name": "Moss",
@@ -3513,7 +3611,7 @@
   "motor": {
     "id": "motor",
     "name": "Motor",
-    "stackSize": 1,
+    "stackSize": 3,
     "value": 2000,
     "imageFilename": "https://cdn.arctracker.io/items/motor.png",
     "isWeapon": null,
@@ -3524,7 +3622,7 @@
   "mushroom": {
     "id": "mushroom",
     "name": "Mushroom",
-    "stackSize": 1,
+    "stackSize": 10,
     "value": 1000,
     "imageFilename": "https://cdn.arctracker.io/items/mushroom.png",
     "isWeapon": null,
@@ -3643,12 +3741,34 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "nutrient_meter": {
+    "id": "nutrient_meter",
+    "name": "Nutrient Meter",
+    "stackSize": 1,
+    "value": null,
+    "imageFilename": "https://cdn.arctracker.io/items/nutrient_meter.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "oil": {
     "id": "oil",
     "name": "Oil",
     "stackSize": 15,
     "value": 300,
     "imageFilename": "https://cdn.arctracker.io/items/oil.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "old_world_books": {
+    "id": "old_world_books",
+    "name": "Old World Books",
+    "stackSize": 1,
+    "value": 0,
+    "imageFilename": "https://cdn.arctracker.io/items/old_world_books.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -3794,6 +3914,17 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "pilgrims_peak_security_code": {
+    "id": "pilgrims_peak_security_code",
+    "name": "Pilgrim's Peak Security Code",
+    "stackSize": 1,
+    "value": 100,
+    "imageFilename": "https://cdn.arctracker.io/items/security_code.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "plastic_parts": {
     "id": "plastic_parts",
     "name": "Plastic Parts",
@@ -3844,6 +3975,17 @@
     "stackSize": 1,
     "value": 2000,
     "imageFilename": "https://cdn.arctracker.io/items/portable_tv.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "possibly_toxic_plant": {
+    "id": "possibly_toxic_plant",
+    "name": "Possibly Toxic Plant",
+    "stackSize": 1,
+    "value": 0,
+    "imageFilename": "https://cdn.arctracker.io/items/possibly_toxic_plant.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -3929,6 +4071,17 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "project_heartwood_blueprints": {
+    "id": "project_heartwood_blueprints",
+    "name": "Project Heartwood Blueprints",
+    "stackSize": 1,
+    "value": 0,
+    "imageFilename": null,
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "projector": {
     "id": "projector",
     "name": "Projector",
@@ -3969,7 +4122,7 @@
     "id": "queen_reactor",
     "name": "Queen Reactor",
     "stackSize": 1,
-    "value": 13000,
+    "value": 11000,
     "imageFilename": "https://cdn.arctracker.io/items/queen_part.png",
     "isWeapon": null,
     "recipe": null,
@@ -3982,17 +4135,6 @@
     "stackSize": 3,
     "value": 3000,
     "imageFilename": "https://cdn.arctracker.io/items/radio_relay.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "radio_renegade": {
-    "id": "radio_renegade",
-    "name": "Radio Renegade",
-    "stackSize": 1,
-    "value": null,
-    "imageFilename": "https://cdn.arctracker.io/items/radio_renegade.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -4023,6 +4165,17 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "raiders_refuge_security_code": {
+    "id": "raiders_refuge_security_code",
+    "name": "Raider's Refuge Security Code",
+    "stackSize": 1,
+    "value": 100,
+    "imageFilename": "https://cdn.arctracker.io/items/security_code.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "rattler_i": {
     "id": "rattler_i",
     "name": "Rattler I",
@@ -4046,7 +4199,8 @@
     "isWeapon": true,
     "recipe": null,
     "upgradeCost": {
-      "mechanical_components": 2
+      "metal_parts": 10,
+      "rubber_parts": 10
     },
     "craftQuantity": 1
   },
@@ -4059,7 +4213,7 @@
     "isWeapon": true,
     "recipe": null,
     "upgradeCost": {
-      "mechanical_components": 2,
+      "mechanical_components": 3,
       "simple_gun_parts": 1
     },
     "craftQuantity": 1
@@ -4121,6 +4275,17 @@
     "recipe": {
       "chemicals": 3
     },
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "reinforced_reception_security_code": {
+    "id": "reinforced_reception_security_code",
+    "name": "Reinforced Reception Security Code",
+    "stackSize": 1,
+    "value": 100,
+    "imageFilename": "https://cdn.arctracker.io/items/security_code.png",
+    "isWeapon": null,
+    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -4254,7 +4419,7 @@
     "id": "rocketeer_driver",
     "name": "Rocketeer Driver",
     "stackSize": 3,
-    "value": 5000,
+    "value": 3000,
     "imageFilename": "https://cdn.arctracker.io/items/rocketeer_driver.png",
     "isWeapon": null,
     "recipe": null,
@@ -4451,7 +4616,7 @@
   "rusted_tools": {
     "id": "rusted_tools",
     "name": "Rusted Tools",
-    "stackSize": 1,
+    "stackSize": 3,
     "value": 1000,
     "imageFilename": "https://cdn.arctracker.io/items/rusted_tools.png",
     "isWeapon": null,
@@ -4521,7 +4686,7 @@
     "id": "sentinel_firing_core",
     "name": "Sentinel Firing Core",
     "stackSize": 3,
-    "value": 3000,
+    "value": 2000,
     "imageFilename": "https://cdn.arctracker.io/items/sentinel_firing_core.png",
     "isWeapon": null,
     "recipe": null,
@@ -4535,7 +4700,10 @@
     "value": 1000,
     "imageFilename": "https://cdn.arctracker.io/items/shaker.png",
     "isWeapon": null,
-    "recipe": null,
+    "recipe": {
+      "assorted_seeds": 7,
+      "canister": 1
+    },
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -4671,11 +4839,12 @@
     "id": "showstopper",
     "name": "Showstopper",
     "stackSize": 5,
-    "value": 2200,
+    "value": 2100,
     "imageFilename": "https://cdn.arctracker.io/items/showstopper.png",
     "isWeapon": null,
     "recipe": {
-      "advanced_electrical_components": 1,
+      "electrical_components": 1,
+      "hornet_driver": 1,
       "voltage_converter": 1
     },
     "upgradeCost": null,
@@ -4699,7 +4868,7 @@
     "id": "shredder_gyro",
     "name": "Shredder Gyro",
     "stackSize": 3,
-    "value": 3000,
+    "value": 2000,
     "imageFilename": "https://cdn.arctracker.io/items/shredder_gyro.png",
     "isWeapon": null,
     "recipe": null,
@@ -4839,7 +5008,7 @@
   "smoke_grenade": {
     "id": "smoke_grenade",
     "name": "Smoke Grenade",
-    "stackSize": 3,
+    "stackSize": 5,
     "value": 1000,
     "imageFilename": "https://cdn.arctracker.io/items/smoke_grenade.png",
     "isWeapon": null,
@@ -4894,7 +5063,7 @@
     "id": "snitch_scanner",
     "name": "Snitch Scanner",
     "stackSize": 3,
-    "value": 2000,
+    "value": 1000,
     "imageFilename": "https://cdn.arctracker.io/items/snitch_scanner.png",
     "isWeapon": null,
     "recipe": null,
@@ -4981,7 +5150,7 @@
   "spectrum_analyzer": {
     "id": "spectrum_analyzer",
     "name": "Spectrum Analyzer",
-    "stackSize": 1,
+    "stackSize": 3,
     "value": 3500,
     "imageFilename": "https://cdn.arctracker.io/items/spectrum_analyzer.png",
     "isWeapon": null,
@@ -4993,7 +5162,7 @@
     "id": "spotter_relay",
     "name": "Spotter Relay",
     "stackSize": 3,
-    "value": 2000,
+    "value": 1000,
     "imageFilename": "https://cdn.arctracker.io/items/spotter_relay.png",
     "isWeapon": null,
     "recipe": null,
@@ -5020,7 +5189,7 @@
     "isWeapon": null,
     "recipe": {
       "duct_tape": 1,
-      "rubber_parts": 6
+      "rubber_parts": 7
     },
     "upgradeCost": null,
     "craftQuantity": 1
@@ -5072,6 +5241,17 @@
       "duct_tape": 5,
       "mod_components": 2
     },
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "stack_of_movie_tapes": {
+    "id": "stack_of_movie_tapes",
+    "name": "Stack of Movie Tapes",
+    "stackSize": 1,
+    "value": 0,
+    "imageFilename": "https://cdn.arctracker.io/items/stack_of_movie_tapes.png",
+    "isWeapon": null,
+    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -5229,7 +5409,7 @@
     "id": "surveyor_vault",
     "name": "Surveyor Vault",
     "stackSize": 3,
-    "value": 2000,
+    "value": 1000,
     "imageFilename": "https://cdn.arctracker.io/items/surveyor_vault.png",
     "isWeapon": null,
     "recipe": null,
@@ -5336,14 +5516,28 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "tactical_mk3_revival_blueprint": {
+    "id": "tactical_mk3_revival_blueprint",
+    "name": "Tactical Mk. 3 (Revival) Blueprint",
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_revival.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "tactical_mk3_revival": {
     "id": "tactical_mk3_revival",
     "name": "Tactical Mk. 3 (Revival)",
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": null,
+    "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_revival.png",
     "isWeapon": null,
-    "recipe": null,
+    "recipe": {
+      "advanced_electrical_components": 2,
+      "processor": 3
+    },
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -5386,7 +5580,7 @@
   "tattered_clothes": {
     "id": "tattered_clothes",
     "name": "Tattered Clothes",
-    "stackSize": 1,
+    "stackSize": 3,
     "value": 640,
     "imageFilename": "https://cdn.arctracker.io/items/tattered_clothes.png",
     "isWeapon": null,
@@ -5441,7 +5635,7 @@
     "recipe": null,
     "upgradeCost": {
       "advanced_mechanical_components": 2,
-      "medium_gun_parts": 3
+      "medium_gun_parts": 1
     },
     "craftQuantity": 1
   },
@@ -5454,8 +5648,8 @@
     "isWeapon": true,
     "recipe": null,
     "upgradeCost": {
-      "advanced_mechanical_components": 4,
-      "medium_gun_parts": 4
+      "advanced_mechanical_components": 2,
+      "medium_gun_parts": 3
     },
     "craftQuantity": 1
   },
@@ -5586,7 +5780,7 @@
     "id": "torrente_iv",
     "name": "Torrente IV",
     "stackSize": 1,
-    "value": 16000,
+    "value": 17000,
     "imageFilename": "https://cdn.arctracker.io/items/torrente.png",
     "isWeapon": true,
     "recipe": null,
@@ -5611,11 +5805,12 @@
     "id": "trailblazer",
     "name": "Trailblazer",
     "stackSize": 3,
-    "value": 1600,
+    "value": 2200,
     "imageFilename": "https://cdn.arctracker.io/items/trailblazer.png",
     "isWeapon": null,
     "recipe": {
-      "explosive_compound": 1,
+      "crude_explosives": 2,
+      "firefly_burner": 1,
       "synthesized_fuel": 1
     },
     "upgradeCost": null,
@@ -5646,6 +5841,17 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "tropical_duck": {
+    "id": "tropical_duck",
+    "name": "Tropical Duck",
+    "stackSize": 15,
+    "value": 1000,
+    "imageFilename": "https://cdn.arctracker.io/items/tropical_duck.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "turbo_pump": {
     "id": "turbo_pump",
     "name": "Turbo Pump",
@@ -5660,7 +5866,7 @@
   "unusable_weapon": {
     "id": "unusable_weapon",
     "name": "Unusable Weapon",
-    "stackSize": 1,
+    "stackSize": 3,
     "value": 2000,
     "imageFilename": "https://cdn.arctracker.io/items/unusable_weapon.png",
     "isWeapon": null,
@@ -5862,12 +6068,13 @@
     "id": "vita_spray",
     "name": "Vita Spray",
     "stackSize": 1,
-    "value": 3000,
+    "value": 3400,
     "imageFilename": "https://cdn.arctracker.io/items/vita_spray.png",
     "isWeapon": null,
     "recipe": {
       "antiseptic": 3,
-      "canister": 1
+      "canister": 1,
+      "tick_pod": 1
     },
     "upgradeCost": null,
     "craftQuantity": 1
@@ -5966,7 +6173,7 @@
     "id": "wasp_driver",
     "name": "Wasp Driver",
     "stackSize": 3,
-    "value": 1000,
+    "value": 640,
     "imageFilename": "https://cdn.arctracker.io/items/wasp_driver.png",
     "isWeapon": null,
     "recipe": null,
@@ -6021,12 +6228,13 @@
     "id": "wolfpack",
     "name": "Wolfpack",
     "stackSize": 1,
-    "value": 5000,
+    "value": 6000,
     "imageFilename": "https://cdn.arctracker.io/items/wolfpack.png",
     "isWeapon": null,
     "recipe": {
       "arc_motion_core": 2,
-      "explosive_compound": 3
+      "explosive_compound": 1,
+      "rocketeer_driver": 1
     },
     "upgradeCost": null,
     "craftQuantity": 1
@@ -6058,7 +6266,7 @@
   "zipline": {
     "id": "zipline",
     "name": "Zipline",
-    "stackSize": 1,
+    "stackSize": 3,
     "value": 1000,
     "imageFilename": "https://cdn.arctracker.io/items/zipline.png",
     "isWeapon": null,

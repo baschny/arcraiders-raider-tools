@@ -234,6 +234,54 @@
     ]
   },
   {
+    "id": "alien_duck",
+    "name": {
+      "en": "Alien Duck"
+    },
+    "description": {
+      "en": "A long, long way from home. Can be thrown to create noise."
+    },
+    "type": "Trinket",
+    "rarity": "Uncommon",
+    "value": 1000,
+    "weightKg": 0.3,
+    "stackSize": 15,
+    "recyclesInto": {},
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/alien_duck.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "ancient_fort_security_code",
+    "name": {
+      "en": "Ancient Fort Security Code"
+    },
+    "description": {
+      "en": "One of four security codes needed to unlock the Locked Gate on Blue Gate. Found at Ancient Fort."
+    },
+    "type": "Key",
+    "rarity": "Common",
+    "value": 100,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/security_code.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "angled_grip_i",
     "name": {
       "en": "Angled Grip I"
@@ -858,7 +906,7 @@
     "value": 270,
     "weightKg": 0.5,
     "stackSize": 5,
-    "recyclesInto": {},
+    "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
     "upgradeCost": null,
@@ -1066,7 +1114,7 @@
     "value": 100,
     "weightKg": 0.05,
     "stackSize": 100,
-    "recyclesInto": {},
+    "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
     "upgradeCost": null,
@@ -1075,54 +1123,6 @@
     "isWeapon": null,
     "foundIn": [
       "Nature"
-    ]
-  },
-  {
-    "id": "backpack_black_hiker_color",
-    "name": {
-      "en": "Backpack (Black Hiker Color)"
-    },
-    "description": {
-      "en": "Cosmetic Backpack"
-    },
-    "type": "Cosmetic",
-    "rarity": "Common",
-    "value": null,
-    "weightKg": null,
-    "stackSize": null,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": null,
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "banana",
-    "name": {
-      "en": "Banana"
-    },
-    "description": {
-      "en": "A new cosmetic will be added to your collection."
-    },
-    "type": "Backpack Charm",
-    "rarity": "Common",
-    "value": null,
-    "weightKg": null,
-    "stackSize": null,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/banana.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
     ]
   },
   {
@@ -1219,16 +1219,16 @@
     },
     "type": "Recyclable",
     "rarity": "Epic",
-    "value": 5000,
+    "value": 3000,
     "weightKg": 1,
     "stackSize": 3,
     "recyclesInto": {
-      "advanced_mechanical_components": 2,
-      "arc_alloy": 2
+      "advanced_mechanical_components": 1,
+      "arc_alloy": 3
     },
     "recipe": null,
     "salvagesInto": {
-      "advanced_mechanical_components": 2
+      "advanced_mechanical_components": 1
     },
     "upgradeCost": null,
     "tier": null,
@@ -1398,7 +1398,7 @@
     },
     "type": "Assault Rifle",
     "rarity": "Epic",
-    "value": 17000,
+    "value": 18000,
     "weightKg": 11,
     "stackSize": null,
     "recyclesInto": {
@@ -1461,7 +1461,7 @@
     "rarity": "Common",
     "value": 640,
     "weightKg": 0.5,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "plastic_parts": 4,
       "rubber_parts": 2
@@ -1598,7 +1598,7 @@
       "en": "A key to the cellar in Blue Gate."
     },
     "type": "Key",
-    "rarity": "Uncommon",
+    "rarity": "Rare",
     "value": 100,
     "weightKg": 0.25,
     "stackSize": 1,
@@ -1649,7 +1649,7 @@
     "rarity": "Epic",
     "value": 100,
     "weightKg": 0.25,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -1734,30 +1734,6 @@
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/blue_light_stick.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "blue_radio_renegade_color",
-    "name": {
-      "en": "Blue (Radio Renegade Color)"
-    },
-    "description": {
-      "en": "A new cosmetic variant will be added to your collection."
-    },
-    "type": "Cosmetic",
-    "rarity": "Common",
-    "value": null,
-    "weightKg": null,
-    "stackSize": null,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/blue_radio_renegade_color.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -1903,7 +1879,7 @@
     },
     "recipe": null,
     "salvagesInto": {
-      "light_gun_parts": 5
+      "light_gun_parts": 4
     },
     "upgradeCost": {
       "advanced_mechanical_components": 2,
@@ -1926,15 +1902,17 @@
     },
     "type": "Recyclable",
     "rarity": "Epic",
-    "value": 5000,
+    "value": 3000,
     "weightKg": 1,
     "stackSize": 3,
     "recyclesInto": {
-      "advanced_mechanical_components": 2,
-      "arc_alloy": 2
+      "advanced_mechanical_components": 1,
+      "arc_alloy": 3
     },
     "recipe": null,
-    "salvagesInto": null,
+    "salvagesInto": {
+      "advanced_mechanical_components": 1
+    },
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/bombardier_cell.png",
@@ -2085,30 +2063,6 @@
     ]
   },
   {
-    "id": "burgerboy",
-    "name": {
-      "en": "Burgerboy"
-    },
-    "description": {
-      "en": "A new cosmetic will be added to your collection."
-    },
-    "type": "Backpack Charm",
-    "rarity": "Common",
-    "value": null,
-    "weightKg": null,
-    "stackSize": null,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/burgerboy.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
     "id": "buried_city_hospital_key",
     "name": {
       "en": "Buried City Hospital Key"
@@ -2193,7 +2147,7 @@
     "value": 100,
     "weightKg": 0.25,
     "stackSize": 1,
-    "recyclesInto": {},
+    "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
     "upgradeCost": null,
@@ -2214,7 +2168,7 @@
     },
     "type": "Blueprint",
     "rarity": "Legendary",
-    "value": null,
+    "value": 5000,
     "weightKg": null,
     "stackSize": null,
     "recyclesInto": null,
@@ -2343,7 +2297,7 @@
     },
     "recipe": null,
     "salvagesInto": {
-      "simple_gun_parts": 3
+      "simple_gun_parts": 4
     },
     "upgradeCost": {
       "light_gun_parts": 1,
@@ -2368,7 +2322,7 @@
     "rarity": "Uncommon",
     "value": 640,
     "weightKg": 1,
-    "stackSize": 5,
+    "stackSize": 3,
     "recyclesInto": {
       "arc_alloy": 2
     },
@@ -2520,30 +2474,6 @@
     ]
   },
   {
-    "id": "cans_backpack_attachment",
-    "name": {
-      "en": "Cans Backpack Attachment"
-    },
-    "description": {
-      "en": "Cosmetic Backpack Attachment"
-    },
-    "type": "Cosmetic",
-    "rarity": "Common",
-    "value": null,
-    "weightKg": null,
-    "stackSize": null,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/cans.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
     "id": "cat_bed",
     "name": {
       "en": "Cat Bed"
@@ -2556,7 +2486,7 @@
     "value": 1000,
     "weightKg": 0.5,
     "stackSize": 3,
-    "recyclesInto": {},
+    "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
     "upgradeCost": null,
@@ -2580,37 +2510,13 @@
     "rarity": "Common",
     "value": null,
     "weightKg": 0.25,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/celestes_journal.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "cheer",
-    "name": {
-      "en": "Cheer"
-    },
-    "description": {
-      "en": "A new cosmetic will be added to your collection."
-    },
-    "type": "Cosmetic",
-    "rarity": "Common",
-    "value": null,
-    "weightKg": null,
-    "stackSize": null,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/cheer.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -2655,7 +2561,7 @@
     "value": 1000,
     "weightKg": 0.3,
     "stackSize": 3,
-    "recyclesInto": {},
+    "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
     "upgradeCost": null,
@@ -2843,6 +2749,35 @@
     ]
   },
   {
+    "id": "comet_igniter",
+    "name": {
+      "en": "Comet Igniter"
+    },
+    "description": {
+      "en": "Can be recycled into crafting materials."
+    },
+    "type": "Recyclable",
+    "rarity": "Rare",
+    "value": 1000,
+    "weightKg": 1,
+    "stackSize": 3,
+    "recyclesInto": {
+      "arc_alloy": 2,
+      "crude_explosives": 2
+    },
+    "recipe": null,
+    "salvagesInto": {
+      "crude_explosives": 2
+    },
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/comet_igniter.png",
+    "isWeapon": null,
+    "foundIn": [
+      "ARC"
+    ]
+  },
+  {
     "id": "compensator_i",
     "name": {
       "en": "Compensator I"
@@ -2962,7 +2897,7 @@
       "en": "Moderately reduces per-shot dispersion. Compatible with: Arpeggio, Ferro, Renegade, Anvil, Stitcher"
     },
     "type": "Modification",
-    "rarity": "Uncommon",
+    "rarity": "Rare",
     "value": 5000,
     "weightKg": 0.75,
     "stackSize": null,
@@ -2975,7 +2910,7 @@
       "wires": 8
     },
     "salvagesInto": {
-      "mechanical_components": 1
+      "mechanical_components": 2
     },
     "upgradeCost": null,
     "tier": null,
@@ -3228,13 +3163,37 @@
     "rarity": "Epic",
     "value": 100,
     "weightKg": 0.25,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/dam_control_tower_key.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "dam_controlled_access_zone_key",
+    "name": {
+      "en": "Dam Controlled Access Zone Key"
+    },
+    "description": {
+      "en": "Unlocks a door to the Controlled Access Zone on Dam Battlegrounds."
+    },
+    "type": "Key",
+    "rarity": "Epic",
+    "value": 100,
+    "weightKg": 0.25,
+    "stackSize": null,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -3276,7 +3235,7 @@
     "rarity": "Uncommon",
     "value": 100,
     "weightKg": 0.25,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -3300,7 +3259,7 @@
     "rarity": "Rare",
     "value": 100,
     "weightKg": 0.25,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -3487,7 +3446,7 @@
     },
     "type": "Recyclable",
     "rarity": "Common",
-    "value": 2000,
+    "value": 1000,
     "weightKg": 0.25,
     "stackSize": 3,
     "recyclesInto": {
@@ -3644,7 +3603,7 @@
     },
     "type": "Quick Use",
     "rarity": "Epic",
-    "value": 5000,
+    "value": 6000,
     "weightKg": 1,
     "stackSize": 1,
     "recyclesInto": {
@@ -3653,6 +3612,7 @@
     },
     "recipe": {
       "arc_circuitry": 2,
+      "comet_igniter": 1,
       "explosive_compound": 3
     },
     "salvagesInto": {
@@ -3837,6 +3797,30 @@
     ]
   },
   {
+    "id": "doodly_duck",
+    "name": {
+      "en": "Doodly Duck"
+    },
+    "description": {
+      "en": "Everything is a canvas to a creative child. Can be thrown to create noise."
+    },
+    "type": "Trinket",
+    "rarity": "Rare",
+    "value": 3000,
+    "weightKg": 0.3,
+    "stackSize": 15,
+    "recyclesInto": {},
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/doodly_duck.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "door_blocker",
     "name": {
       "en": "Door Blocker"
@@ -3953,6 +3937,30 @@
     "foundIn": [
       "Medical",
       "Commercial"
+    ]
+  },
+  {
+    "id": "dusty_film_reel",
+    "name": {
+      "en": "Dusty Film Reel"
+    },
+    "description": {
+      "en": "An old film reel covered in dust. Might have been something worth watching."
+    },
+    "type": "Trinket",
+    "rarity": "Common",
+    "value": 0,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
     ]
   },
   {
@@ -4097,6 +4105,30 @@
     ]
   },
   {
+    "id": "espresso_machine_parts",
+    "name": {
+      "en": "Espresso Machine Parts"
+    },
+    "description": {
+      "en": null
+    },
+    "type": "Trinket",
+    "rarity": "Common",
+    "value": 0,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/espresso_machine_parts.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "esr_analyzer",
     "name": {
       "en": "ESR Analyzer"
@@ -4108,7 +4140,7 @@
     "rarity": "Common",
     "value": null,
     "weightKg": 0.25,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -4161,7 +4193,7 @@
     "rarity": "Common",
     "value": null,
     "weightKg": 0.25,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -4297,7 +4329,7 @@
     "weightKg": 0.5,
     "stackSize": 3,
     "recyclesInto": {
-      "oil": 2,
+      "oil": 1,
       "sensors": 1
     },
     "recipe": {
@@ -4660,7 +4692,7 @@
   {
     "id": "extended_shotgun_mag_i",
     "name": {
-      "en": " Extended Shotgun Mag I"
+      "en": "Extended Shotgun Mag I"
     },
     "description": {
       "en": "Slightly extends the ammo capacity of shotguns. Compatible with: Il Toro, Vulcano"
@@ -4785,14 +4817,14 @@
       "mod_components": 1,
       "steel_spring": 2
     },
-    "recipe": null,
-    "salvagesInto": {
-      "mechanical_components": 2
-    },
-    "upgradeCost": {
+    "recipe": {
       "mod_components": 2,
       "steel_spring": 5
     },
+    "salvagesInto": {
+      "mechanical_components": 2
+    },
+    "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/extended_shotgun_mag_iii.png",
     "isWeapon": null,
@@ -4813,7 +4845,7 @@
     "value": 50,
     "weightKg": 0.1,
     "stackSize": 50,
-    "recyclesInto": {},
+    "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
     "upgradeCost": null,
@@ -4839,7 +4871,7 @@
     "value": 640,
     "weightKg": 0.3,
     "stackSize": 15,
-    "recyclesInto": {},
+    "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
     "upgradeCost": null,
@@ -4848,6 +4880,30 @@
     "isWeapon": null,
     "foundIn": [
       "Residential"
+    ]
+  },
+  {
+    "id": "familiar_duck",
+    "name": {
+      "en": "Familiar Duck"
+    },
+    "description": {
+      "en": "Unlike the real one, this one fits in your pack. Can be thrown to create noise."
+    },
+    "type": "Trinket",
+    "rarity": "Epic",
+    "value": 7000,
+    "weightKg": 0.3,
+    "stackSize": 15,
+    "recyclesInto": {},
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/familiar_duck.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
     ]
   },
   {
@@ -4901,7 +4957,7 @@
     },
     "recipe": null,
     "salvagesInto": {
-      "metal_parts": 2
+      "metal_parts": 4
     },
     "upgradeCost": {
       "metal_parts": 7
@@ -5018,7 +5074,7 @@
     "value": 2000,
     "weightKg": 0.2,
     "stackSize": 3,
-    "recyclesInto": {},
+    "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
     "upgradeCost": null,
@@ -5070,7 +5126,7 @@
     "stackSize": 3,
     "recyclesInto": {
       "arc_alloy": 1,
-      "chemicals": 1
+      "crude_explosives": 1
     },
     "recipe": null,
     "salvagesInto": {
@@ -5113,6 +5169,35 @@
     "isWeapon": null,
     "foundIn": [
       "Unknown"
+    ]
+  },
+  {
+    "id": "firefly_burner",
+    "name": {
+      "en": "Firefly Burner"
+    },
+    "description": {
+      "en": "Can be recycled into crafting materials."
+    },
+    "type": "Recyclable",
+    "rarity": "Rare",
+    "value": 1000,
+    "weightKg": 0.75,
+    "stackSize": 3,
+    "recyclesInto": {
+      "arc_alloy": 2,
+      "crude_explosives": 2
+    },
+    "recipe": null,
+    "salvagesInto": {
+      "crude_explosives": 2
+    },
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/firefly_burner.png",
+    "isWeapon": null,
+    "foundIn": [
+      "ARC"
     ]
   },
   {
@@ -5182,7 +5267,7 @@
     "rarity": "Common",
     "value": null,
     "weightKg": 0.25,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -5206,7 +5291,7 @@
     "rarity": "Common",
     "value": null,
     "weightKg": 0.25,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -5230,7 +5315,7 @@
     "rarity": "Common",
     "value": null,
     "weightKg": 0.25,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -5252,9 +5337,9 @@
     },
     "type": "Quick Use",
     "rarity": "Uncommon",
-    "value": 640,
+    "value": 2000,
     "weightKg": 1,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "canister": 1,
       "fireball_burner": 1
@@ -5269,6 +5354,30 @@
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/flame_spray.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "flashy_duck",
+    "name": {
+      "en": "Flashy Duck"
+    },
+    "description": {
+      "en": "Lovingly hand-painted by someone of great talent—clearly. Any guesses who? Can be thrown to create noise."
+    },
+    "type": "Trinket",
+    "rarity": "Rare",
+    "value": 3000,
+    "weightKg": 0.3,
+    "stackSize": 15,
+    "recyclesInto": {},
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/flashy_duck.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -5339,7 +5448,7 @@
     "rarity": "Epic",
     "value": 4000,
     "weightKg": 0.25,
-    "stackSize": 3,
+    "stackSize": 1,
     "recyclesInto": {
       "explosive_compound": 3
     },
@@ -5367,7 +5476,7 @@
     "rarity": "Common",
     "value": 100,
     "weightKg": 1,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -5664,6 +5773,30 @@
     "isWeapon": null,
     "foundIn": [
       "Exodus"
+    ]
+  },
+  {
+    "id": "gentle_duck",
+    "name": {
+      "en": "Gentle Duck"
+    },
+    "description": {
+      "en": "Udderly adorable. Can be thrown to create noise."
+    },
+    "type": "Trinket",
+    "rarity": "Uncommon",
+    "value": 1000,
+    "weightKg": 0.3,
+    "stackSize": 15,
+    "recyclesInto": {},
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/gentle_duck.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
     ]
   },
   {
@@ -6031,7 +6164,7 @@
     "rarity": "Epic",
     "value": 5500,
     "weightKg": 9,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "arc_circuitry": 2,
       "voltage_converter": 1
@@ -6124,10 +6257,7 @@
       "duct_tape": 2,
       "mod_components": 1
     },
-    "recipe": {
-      "duct_tape": 5,
-      "mod_components": 2
-    },
+    "recipe": null,
     "salvagesInto": {
       "mechanical_components": 2
     },
@@ -6149,16 +6279,16 @@
     },
     "type": "Recyclable",
     "rarity": "Rare",
-    "value": 2000,
+    "value": 1000,
     "weightKg": 0.75,
     "stackSize": 3,
     "recyclesInto": {
-      "arc_alloy": 2,
-      "electrical_components": 2
+      "arc_alloy": 1,
+      "electrical_components": 1
     },
     "recipe": null,
     "salvagesInto": {
-      "electrical_components": 2
+      "electrical_components": 1
     },
     "upgradeCost": null,
     "tier": null,
@@ -6759,30 +6889,6 @@
     ]
   },
   {
-    "id": "junior_outfit",
-    "name": {
-      "en": "Junior Outfit"
-    },
-    "description": {
-      "en": "Cosmetic Outfit"
-    },
-    "type": "Cosmetic",
-    "rarity": "Common",
-    "value": null,
-    "weightKg": null,
-    "stackSize": null,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": null,
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
     "id": "jupiter_blueprint",
     "name": {
       "en": "Jupiter Blueprint"
@@ -6892,7 +6998,10 @@
     "salvagesInto": {
       "metal_parts": 6
     },
-    "upgradeCost": null,
+    "upgradeCost": {
+      "metal_parts": 8,
+      "plastic_parts": 10
+    },
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/kettle.png",
     "isWeapon": true,
@@ -6921,7 +7030,10 @@
     "salvagesInto": {
       "simple_gun_parts": 1
     },
-    "upgradeCost": null,
+    "upgradeCost": {
+      "metal_parts": 10,
+      "simple_gun_parts": 1
+    },
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/kettle.png",
     "isWeapon": true,
@@ -6950,7 +7062,10 @@
     "salvagesInto": {
       "simple_gun_parts": 2
     },
-    "upgradeCost": null,
+    "upgradeCost": {
+      "mechanical_components": 3,
+      "simple_gun_parts": 1
+    },
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/kettle.png",
     "isWeapon": true,
@@ -7023,7 +7138,7 @@
     "rarity": "Rare",
     "value": 2000,
     "weightKg": 3,
-    "stackSize": null,
+    "stackSize": 3,
     "recyclesInto": {
       "chemicals": 16,
       "crude_explosives": 3
@@ -7102,11 +7217,11 @@
     },
     "type": "Recyclable",
     "rarity": "Epic",
-    "value": 5000,
+    "value": 3000,
     "weightKg": 1,
     "stackSize": 3,
     "recyclesInto": {
-      "advanced_mechanical_components": 2,
+      "advanced_mechanical_components": 1,
       "arc_alloy": 3
     },
     "recipe": null,
@@ -7150,6 +7265,30 @@
     ]
   },
   {
+    "id": "library_book",
+    "name": {
+      "en": "Book"
+    },
+    "description": {
+      "en": null
+    },
+    "type": "Trinket",
+    "rarity": "Common",
+    "value": 0,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "lidar_scanner",
     "name": {
       "en": "Lidar Scanner"
@@ -7161,7 +7300,7 @@
     "rarity": "Common",
     "value": null,
     "weightKg": 0.25,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -7323,7 +7462,7 @@
     "rarity": "Uncommon",
     "value": 640,
     "weightKg": 5,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "plastic_parts": 4
     },
@@ -7527,24 +7666,56 @@
     ]
   },
   {
-    "id": "looting_mk3_safekeeper",
+    "id": "looting_mk3_safekeeper_blueprint",
     "name": {
-      "en": "Looting Mk. 3 (Safekeeper)"
+      "en": "Looting Mk. 3 (Safekeeper) Blueprint"
     },
     "description": {
-      "en": "A looting augment focused on protecting your gathered items. Provides increased carry capacity with built-in security features."
+      "en": "A looting augment that trades weight and utility for increased looting potential. A Safe Pocket that allows any items to be stored."
     },
-    "type": "Augment",
-    "rarity": "Epic",
+    "type": "Blueprint",
+    "rarity": "Legendary",
     "value": 5000,
-    "weightKg": 3,
-    "stackSize": 1,
+    "weightKg": 0,
+    "stackSize": null,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": null,
+    "imageFilename": "https://cdn.arctracker.io/items/looting_mk3_safekeeper.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "looting_mk3_safekeeper",
+    "name": {
+      "en": "Looting Mk. 3 (Safekeeper)"
+    },
+    "description": {
+      "en": "A looting augment that trades weight and utility for increased looting potential. A Safe Pocket that allows any items to be stored."
+    },
+    "type": "Augment",
+    "rarity": "Epic",
+    "value": 5000,
+    "weightKg": 5,
+    "stackSize": 1,
+    "recyclesInto": {
+      "advanced_electrical_components": 1,
+      "processor": 1
+    },
+    "recipe": {
+      "advanced_electrical_components": 2,
+      "processor": 3
+    },
+    "salvagesInto": {
+      "electrical_components": 2
+    },
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/looting_mk3_safekeeper.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -7669,7 +7840,7 @@
     "rarity": "Uncommon",
     "value": 1000,
     "weightKg": 0.4,
-    "stackSize": null,
+    "stackSize": 3,
     "recyclesInto": {
       "speaker_component": 1
     },
@@ -7778,6 +7949,30 @@
     ]
   },
   {
+    "id": "major_aivas_mementos",
+    "name": {
+      "en": "Major Aiva's Mementos"
+    },
+    "description": {
+      "en": null
+    },
+    "type": "Trinket",
+    "rarity": "Common",
+    "value": 0,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/major_aivas_mementos.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "major_aivas_patch",
     "name": {
       "en": "Major Aiva's Patch"
@@ -7789,7 +7984,7 @@
     "rarity": "Common",
     "value": null,
     "weightKg": 0.25,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -7811,7 +8006,7 @@
     },
     "type": "Recyclable",
     "rarity": "Legendary",
-    "value": 13000,
+    "value": 11000,
     "weightKg": 10,
     "stackSize": 1,
     "recyclesInto": {
@@ -7820,7 +8015,7 @@
     },
     "recipe": null,
     "salvagesInto": {
-      "power_rod": 1
+      "magnetic_accelerator": 1
     },
     "upgradeCost": null,
     "tier": null,
@@ -7956,7 +8151,7 @@
     "rarity": "Rare",
     "value": 2000,
     "weightKg": 7,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "arc_circuitry": 1
     },
@@ -7964,7 +8159,9 @@
       "arc_circuitry": 1,
       "battery": 4
     },
-    "salvagesInto": null,
+    "salvagesInto": {
+      "arc_alloy": 2
+    },
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/medium_shield.png",
@@ -8015,7 +8212,7 @@
     "value": 75,
     "weightKg": 0.1,
     "stackSize": 50,
-    "recyclesInto": {},
+    "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
     "upgradeCost": null,
@@ -8120,6 +8317,30 @@
     ]
   },
   {
+    "id": "moisture_meter",
+    "name": {
+      "en": "Moisture Meter"
+    },
+    "description": {
+      "en": "A quest item that must be delivered to Tian Wen to complete the Unexpected Initiative quest."
+    },
+    "type": "Trinket",
+    "rarity": "Common",
+    "value": null,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/moisture_meter.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "moss",
     "name": {
       "en": "Moss"
@@ -8159,7 +8380,7 @@
     "rarity": "Rare",
     "value": 2000,
     "weightKg": 3,
-    "stackSize": null,
+    "stackSize": 3,
     "recyclesInto": {
       "mechanical_components": 2,
       "oil": 2
@@ -8188,8 +8409,8 @@
     "rarity": "Uncommon",
     "value": 1000,
     "weightKg": 0.2,
-    "stackSize": null,
-    "recyclesInto": {},
+    "stackSize": 10,
+    "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
     "upgradeCost": null,
@@ -8213,7 +8434,7 @@
     "value": 3000,
     "weightKg": 0.3,
     "stackSize": 3,
-    "recyclesInto": {},
+    "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
     "upgradeCost": null,
@@ -8238,7 +8459,7 @@
     "value": 5000,
     "weightKg": 0.4,
     "stackSize": 3,
-    "recyclesInto": {},
+    "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
     "upgradeCost": null,
@@ -8454,6 +8675,30 @@
     ]
   },
   {
+    "id": "nutrient_meter",
+    "name": {
+      "en": "Nutrient Meter"
+    },
+    "description": {
+      "en": "A quest item that must be delivered to Tian Wen to complete the Unexpected Initiative quest."
+    },
+    "type": "Trinket",
+    "rarity": "Common",
+    "value": null,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/nutrient_meter.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "oil",
     "name": {
       "en": "Oil"
@@ -8479,6 +8724,30 @@
     "isWeapon": null,
     "foundIn": [
       "Mechanical"
+    ]
+  },
+  {
+    "id": "old_world_books",
+    "name": {
+      "en": "Old World Books"
+    },
+    "description": {
+      "en": "The past survives in fragments, often dull or ordinary, yet priceless to the right person."
+    },
+    "type": "Trinket",
+    "rarity": "Common",
+    "value": 0,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/old_world_books.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
     ]
   },
   {
@@ -8778,7 +9047,7 @@
     "rarity": "Epic",
     "value": 5000,
     "weightKg": 1,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "advanced_electrical_components": 1,
       "speaker_component": 1
@@ -8799,6 +9068,30 @@
     ]
   },
   {
+    "id": "pilgrims_peak_security_code",
+    "name": {
+      "en": "Pilgrim's Peak Security Code"
+    },
+    "description": {
+      "en": "One of four security codes needed to unlock the Locked Gate on Blue Gate. Found at Pilgrim's Peak."
+    },
+    "type": "Key",
+    "rarity": "Common",
+    "value": 100,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/security_code.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "plastic_parts",
     "name": {
       "en": "Plastic Parts"
@@ -8811,7 +9104,7 @@
     "value": 60,
     "weightKg": 0.1,
     "stackSize": 50,
-    "recyclesInto": {},
+    "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
     "upgradeCost": null,
@@ -8934,6 +9227,30 @@
     "isWeapon": null,
     "foundIn": [
       "Residential"
+    ]
+  },
+  {
+    "id": "possibly_toxic_plant",
+    "name": {
+      "en": "Possibly Toxic Plant"
+    },
+    "description": {
+      "en": null
+    },
+    "type": "Trinket",
+    "rarity": "Common",
+    "value": 0,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/possibly_toxic_plant.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
     ]
   },
   {
@@ -9137,6 +9454,30 @@
     ]
   },
   {
+    "id": "project_heartwood_blueprints",
+    "name": {
+      "en": "Project Heartwood Blueprints"
+    },
+    "description": {
+      "en": "Faded blueprints for something called Project Heartwood. Whatever it was, it never got built."
+    },
+    "type": "Trinket",
+    "rarity": "Common",
+    "value": 0,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "projector",
     "name": {
       "en": "Projector"
@@ -9230,9 +9571,9 @@
     },
     "type": "Recyclable",
     "rarity": "Legendary",
-    "value": 13000,
+    "value": 11000,
     "weightKg": 10,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "magnetic_accelerator": 1,
       "power_rod": 1
@@ -9279,30 +9620,6 @@
     ]
   },
   {
-    "id": "radio_renegade",
-    "name": {
-      "en": "Radio Renegade"
-    },
-    "description": {
-      "en": "A new cosmetic will be added to your collection."
-    },
-    "type": "Outfit",
-    "rarity": "Common",
-    "value": null,
-    "weightKg": null,
-    "stackSize": null,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/radio_renegade.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
     "id": "radio",
     "name": {
       "en": "Radio"
@@ -9345,7 +9662,7 @@
     "value": 2000,
     "weightKg": 0.01,
     "stackSize": 1,
-    "recyclesInto": {},
+    "recyclesInto": null,
     "recipe": {
       "advanced_electrical_components": 1,
       "sensors": 3
@@ -9354,6 +9671,30 @@
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/raider_hatch_key.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "raiders_refuge_security_code",
+    "name": {
+      "en": "Raider's Refuge Security Code"
+    },
+    "description": {
+      "en": "One of four security codes needed to unlock the Locked Gate on Blue Gate. Found at Raider's Refuge."
+    },
+    "type": "Key",
+    "rarity": "Common",
+    "value": 100,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/security_code.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -9411,7 +9752,8 @@
       "metal_parts": 8
     },
     "upgradeCost": {
-      "mechanical_components": 2
+      "metal_parts": 10,
+      "rubber_parts": 10
     },
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/rattler.png",
@@ -9442,7 +9784,7 @@
       "metal_parts": 12
     },
     "upgradeCost": {
-      "mechanical_components": 2,
+      "mechanical_components": 3,
       "simple_gun_parts": 1
     },
     "tier": null,
@@ -9496,7 +9838,7 @@
     "rarity": "Uncommon",
     "value": 1000,
     "weightKg": 0.2,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "plastic_parts": 10
     },
@@ -9587,6 +9929,30 @@
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/red_light_stick.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "reinforced_reception_security_code",
+    "name": {
+      "en": "Reinforced Reception Security Code"
+    },
+    "description": {
+      "en": "One of four security codes needed to unlock the Locked Gate on Blue Gate. Found at Reinforced Reception."
+    },
+    "type": "Key",
+    "rarity": "Common",
+    "value": 100,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/security_code.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -9898,16 +10264,16 @@
     },
     "type": "Recyclable",
     "rarity": "Epic",
-    "value": 5000,
+    "value": 3000,
     "weightKg": 1,
     "stackSize": 3,
     "recyclesInto": {
-      "advanced_electrical_components": 2,
+      "advanced_electrical_components": 1,
       "arc_alloy": 3
     },
     "recipe": null,
     "salvagesInto": {
-      "arc_circuitry": 2
+      "arc_circuitry": 1
     },
     "upgradeCost": null,
     "tier": null,
@@ -10041,7 +10407,7 @@
     "value": 1000,
     "weightKg": 0.3,
     "stackSize": 15,
-    "recyclesInto": {},
+    "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
     "upgradeCost": null,
@@ -10070,7 +10436,7 @@
     },
     "recipe": null,
     "salvagesInto": {
-      "rubber_parts": 9
+      "rubber_parts": 12
     },
     "upgradeCost": null,
     "tier": null,
@@ -10093,7 +10459,7 @@
     "value": 50,
     "weightKg": 0.1,
     "stackSize": 50,
-    "recyclesInto": {},
+    "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
     "upgradeCost": null,
@@ -10153,7 +10519,9 @@
       "rubber_parts": 2
     },
     "recipe": null,
-    "salvagesInto": null,
+    "salvagesInto": {
+      "plastic_parts": 3
+    },
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/ruined_augment.png",
@@ -10404,7 +10772,7 @@
     "rarity": "Rare",
     "value": 1000,
     "weightKg": 2,
-    "stackSize": null,
+    "stackSize": 3,
     "recyclesInto": {
       "metal_parts": 8,
       "steel_spring": 1
@@ -10573,12 +10941,12 @@
     },
     "type": "Recyclable",
     "rarity": "Rare",
-    "value": 3000,
+    "value": 2000,
     "weightKg": 1,
     "stackSize": 3,
     "recyclesInto": {
       "arc_alloy": 2,
-      "mechanical_components": 3
+      "mechanical_components": 2
     },
     "recipe": null,
     "salvagesInto": {
@@ -10608,7 +10976,10 @@
     "recyclesInto": {
       "plastic_parts": 10
     },
-    "recipe": null,
+    "recipe": {
+      "assorted_seeds": 7,
+      "canister": 1
+    },
     "salvagesInto": {
       "plastic_parts": 4
     },
@@ -10911,19 +11282,20 @@
     },
     "type": "Quick Use",
     "rarity": "Rare",
-    "value": 2200,
+    "value": 2100,
     "weightKg": 0.4,
     "stackSize": 5,
     "recyclesInto": {
-      "battery": 2,
-      "electrical_components": 1
+      "electrical_components": 1,
+      "voltage_converter": 1
     },
     "recipe": {
-      "advanced_electrical_components": 1,
+      "electrical_components": 1,
+      "hornet_driver": 1,
       "voltage_converter": 1
     },
     "salvagesInto": {
-      "battery": 2
+      "electrical_components": 1
     },
     "upgradeCost": null,
     "tier": null,
@@ -10975,12 +11347,12 @@
     },
     "type": "Recyclable",
     "rarity": "Rare",
-    "value": 3000,
+    "value": 2000,
     "weightKg": 1,
     "stackSize": 3,
     "recyclesInto": {
-      "arc_alloy": 3,
-      "mechanical_components": 3
+      "arc_alloy": 2,
+      "mechanical_components": 2
     },
     "recipe": null,
     "salvagesInto": {
@@ -11178,7 +11550,7 @@
     },
     "recipe": null,
     "salvagesInto": {
-      "mod_components": 2
+      "mod_components": 1
     },
     "upgradeCost": null,
     "tier": null,
@@ -11306,7 +11678,7 @@
     "rarity": "Rare",
     "value": 1000,
     "weightKg": 0.2,
-    "stackSize": 3,
+    "stackSize": 5,
     "recyclesInto": {
       "canister": 1,
       "chemicals": 2
@@ -11394,7 +11766,7 @@
     "rarity": "Legendary",
     "value": 14000,
     "weightKg": 5,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "power_rod": 1,
       "rope": 3
@@ -11425,16 +11797,16 @@
     },
     "type": "Recyclable",
     "rarity": "Uncommon",
-    "value": 2000,
+    "value": 1000,
     "weightKg": 0.75,
     "stackSize": 3,
     "recyclesInto": {
       "arc_alloy": 1,
-      "electrical_components": 2
+      "electrical_components": 1
     },
     "recipe": null,
     "salvagesInto": {
-      "electrical_components": 2
+      "electrical_components": 1
     },
     "upgradeCost": null,
     "tier": null,
@@ -11457,7 +11829,7 @@
     "value": 10,
     "weightKg": 0.4,
     "stackSize": 5,
-    "recyclesInto": {},
+    "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
     "upgradeCost": null,
@@ -11504,7 +11876,7 @@
     "rarity": "Rare",
     "value": 100,
     "weightKg": 0.25,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -11528,7 +11900,7 @@
     "rarity": "Uncommon",
     "value": 100,
     "weightKg": 0.25,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -11552,7 +11924,7 @@
     "rarity": "Uncommon",
     "value": 100,
     "weightKg": 0.25,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -11634,7 +12006,7 @@
     "rarity": "Epic",
     "value": 3500,
     "weightKg": 1.5,
-    "stackSize": null,
+    "stackSize": 3,
     "recyclesInto": {
       "exodus_modules": 1,
       "sensors": 1
@@ -11661,15 +12033,17 @@
     },
     "type": "Recyclable",
     "rarity": "Uncommon",
-    "value": 2000,
+    "value": 1000,
     "weightKg": 1,
     "stackSize": 3,
     "recyclesInto": {
       "arc_alloy": 1,
-      "electrical_components": 2
+      "electrical_components": 1
     },
     "recipe": null,
-    "salvagesInto": null,
+    "salvagesInto": {
+      "electrical_components": 1
+    },
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/spotter_relay.png",
@@ -11726,7 +12100,7 @@
     },
     "recipe": {
       "duct_tape": 1,
-      "rubber_parts": 6
+      "rubber_parts": 7
     },
     "salvagesInto": {
       "rubber_parts": 3
@@ -11846,6 +12220,30 @@
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/stable_stock_iii.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "stack_of_movie_tapes",
+    "name": {
+      "en": "Stack of Movie Tapes"
+    },
+    "description": {
+      "en": null
+    },
+    "type": "Trinket",
+    "rarity": "Common",
+    "value": 0,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/stack_of_movie_tapes.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -12105,7 +12503,7 @@
       "en": "Full automatic SMG. Deals good damage, but has quite a low fire-rate and can be hard to control."
     },
     "type": "SMG",
-    "rarity": "Uncommon",
+    "rarity": "Common",
     "value": 3000,
     "weightKg": 5,
     "stackSize": null,
@@ -12137,7 +12535,7 @@
       "en": "Full automatic SMG. Deals good damage, but has quite a low fire-rate and can be hard to control."
     },
     "type": "SMG",
-    "rarity": "Uncommon",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 5,
     "stackSize": null,
@@ -12201,16 +12599,16 @@
     },
     "type": "Recyclable",
     "rarity": "Rare",
-    "value": 2000,
+    "value": 1000,
     "weightKg": 1,
     "stackSize": 3,
     "recyclesInto": {
-      "arc_alloy": 2,
-      "mechanical_components": 2
+      "arc_alloy": 1,
+      "mechanical_components": 1
     },
     "recipe": null,
     "salvagesInto": {
-      "mechanical_components": 2
+      "mechanical_components": 1
     },
     "upgradeCost": null,
     "tier": null,
@@ -12234,8 +12632,8 @@
     "weightKg": 0.5,
     "stackSize": 5,
     "recyclesInto": {
-      "oil": 1,
-      "plastic_parts": 1
+      "chemicals": 1,
+      "oil": 1
     },
     "recipe": null,
     "salvagesInto": {
@@ -12455,24 +12853,56 @@
     ]
   },
   {
-    "id": "tactical_mk3_revival",
+    "id": "tactical_mk3_revival_blueprint",
     "name": {
-      "en": "Tactical Mk. 3 (Revival)"
+      "en": "Tactical Mk. 3 (Revival) Blueprint"
     },
     "description": {
-      "en": "A revival-focused augment designed for team support. Enhances revival capabilities and provides bonuses when reviving or being revived."
+      "en": "A revival-focused augment designed for team support. Restores 1 health every 5 seconds. When damage is taken, the effect is paused for 30 seconds. Includes an integrated Defibrillator with infinite uses and a 240-second cooldown."
     },
-    "type": "Augment",
-    "rarity": "Epic",
+    "type": "Blueprint",
+    "rarity": "Legendary",
     "value": 5000,
-    "weightKg": 4,
-    "stackSize": 1,
+    "weightKg": 0,
+    "stackSize": null,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": null,
+    "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_revival.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "tactical_mk3_revival",
+    "name": {
+      "en": "Tactical Mk. 3 (Revival)"
+    },
+    "description": {
+      "en": "A revival-focused augment designed for team support. Restores 1 health every 5 seconds. When damage is taken, the effect is paused for 30 seconds. Includes an integrated Defibrillator with infinite uses and a 240-second cooldown."
+    },
+    "type": "Augment",
+    "rarity": "Epic",
+    "value": 5000,
+    "weightKg": 3,
+    "stackSize": 1,
+    "recyclesInto": {
+      "advanced_electrical_components": 1,
+      "processor": 1
+    },
+    "recipe": {
+      "advanced_electrical_components": 2,
+      "processor": 3
+    },
+    "salvagesInto": {
+      "electrical_components": 2
+    },
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_revival.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -12574,7 +13004,7 @@
     "rarity": "Uncommon",
     "value": 640,
     "weightKg": null,
-    "stackSize": null,
+    "stackSize": 3,
     "recyclesInto": {
       "fabric": 11
     },
@@ -12699,7 +13129,7 @@
     },
     "upgradeCost": {
       "advanced_mechanical_components": 2,
-      "medium_gun_parts": 3
+      "medium_gun_parts": 1
     },
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/tempest.png",
@@ -12730,8 +13160,8 @@
       "medium_gun_parts": 4
     },
     "upgradeCost": {
-      "advanced_mechanical_components": 4,
-      "medium_gun_parts": 4
+      "advanced_mechanical_components": 2,
+      "medium_gun_parts": 3
     },
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/tempest.png",
@@ -13044,7 +13474,7 @@
     },
     "type": "LMG",
     "rarity": "Rare",
-    "value": 16000,
+    "value": 17000,
     "weightKg": 12,
     "stackSize": null,
     "recyclesInto": {
@@ -13100,18 +13530,19 @@
     },
     "type": "Quick Use",
     "rarity": "Rare",
-    "value": 1600,
+    "value": 2200,
     "weightKg": 1,
     "stackSize": 3,
     "recyclesInto": {
       "crude_explosives": 2
     },
     "recipe": {
-      "explosive_compound": 1,
+      "crude_explosives": 2,
+      "firefly_burner": 1,
       "synthesized_fuel": 1
     },
     "salvagesInto": {
-      "crude_explosives": 1
+      "crude_explosives": 2
     },
     "upgradeCost": null,
     "tier": null,
@@ -13178,6 +13609,30 @@
     ]
   },
   {
+    "id": "tropical_duck",
+    "name": {
+      "en": "Tropical Duck"
+    },
+    "description": {
+      "en": "It quietly dreams of taking to the skies with its brethren. Can be thrown to create noise."
+    },
+    "type": "Trinket",
+    "rarity": "Uncommon",
+    "value": 1000,
+    "weightKg": 0.3,
+    "stackSize": 15,
+    "recyclesInto": {},
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/tropical_duck.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "turbo_pump",
     "name": {
       "en": "Turbo Pump"
@@ -13218,7 +13673,7 @@
     "rarity": "Rare",
     "value": 2000,
     "weightKg": 3,
-    "stackSize": null,
+    "stackSize": 3,
     "recyclesInto": {
       "metal_parts": 4,
       "simple_gun_parts": 5
@@ -13672,16 +14127,17 @@
     },
     "type": "Quick Use",
     "rarity": "Epic",
-    "value": 3000,
+    "value": 3400,
     "weightKg": 1,
     "stackSize": 1,
     "recyclesInto": {
       "antiseptic": 1,
-      "canister": 2
+      "canister": 1
     },
     "recipe": {
       "antiseptic": 3,
-      "canister": 1
+      "canister": 1,
+      "tick_pod": 1
     },
     "salvagesInto": {
       "antiseptic": 1
@@ -13910,7 +14366,7 @@
     },
     "type": "Recyclable",
     "rarity": "Rare",
-    "value": 1000,
+    "value": 640,
     "weightKg": 0.6,
     "stackSize": 3,
     "recyclesInto": {
@@ -13919,7 +14375,7 @@
     },
     "recipe": null,
     "salvagesInto": {
-      "electrical_components": 1
+      "arc_alloy": 2
     },
     "upgradeCost": null,
     "tier": null,
@@ -14051,7 +14507,7 @@
     },
     "type": "Quick Use",
     "rarity": "Epic",
-    "value": 5000,
+    "value": 6000,
     "weightKg": 1,
     "stackSize": 1,
     "recyclesInto": {
@@ -14060,7 +14516,8 @@
     },
     "recipe": {
       "arc_motion_core": 2,
-      "explosive_compound": 3
+      "explosive_compound": 1,
+      "rocketeer_driver": 1
     },
     "salvagesInto": {
       "explosive_compound": 2
@@ -14139,7 +14596,7 @@
     "rarity": "Rare",
     "value": 1000,
     "weightKg": 0.4,
-    "stackSize": null,
+    "stackSize": 3,
     "recyclesInto": {
       "metal_parts": 1,
       "rope": 1
