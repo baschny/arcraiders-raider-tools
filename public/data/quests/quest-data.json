@@ -2,7 +2,7 @@
   {
     "id": "12_cold_storage",
     "name": "Cold Storage",
-    "trader": "Celeste",
+    "trader": "Shani",
     "map": [
       "stella_montis"
     ],
@@ -41,7 +41,23 @@
       "12_cold_storage"
     ],
     "nextQuestIds": [
+      "on_deaf_ears",
       "with_a_view"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "a_dead_end",
+    "name": "A Dead End",
+    "trader": "Shani",
+    "map": [
+      "the_blue_gate"
+    ],
+    "previousQuestIds": [
+      "groundbreaking"
+    ],
+    "nextQuestIds": [
+      "a_rising_tide"
     ],
     "hasBlueprint": false
   },
@@ -59,6 +75,20 @@
     "hasBlueprint": false
   },
   {
+    "id": "a_rising_tide",
+    "name": "A Rising Tide",
+    "trader": "Celeste",
+    "map": [
+      "buried_city",
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "a_dead_end"
+    ],
+    "nextQuestIds": [],
+    "hasBlueprint": false
+  },
+  {
     "id": "a_toxic_trail",
     "name": "A Toxic Trail",
     "trader": "Shani",
@@ -69,7 +99,7 @@
       "ss10x14"
     ],
     "nextQuestIds": [
-      "ss10x17"
+      "the_stench_of_corruption"
     ],
     "hasBlueprint": false
   },
@@ -92,7 +122,8 @@
       "buried_city"
     ],
     "previousQuestIds": [
-      "ss10x5"
+      "ss10x5",
+      "ss10v"
     ],
     "nextQuestIds": [
       "bombing_run"
@@ -101,7 +132,7 @@
   },
   {
     "id": "deciphering_the_data",
-    "name": "Deciphering the Data",
+    "name": "Deciphering The Data",
     "trader": "Shani",
     "map": [
       "the_spaceport"
@@ -125,17 +156,29 @@
       "deciphering_the_data"
     ],
     "nextQuestIds": [
-      "on_deaf_ears"
+      "worth_your_salt",
+      "a_dead_end"
     ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "keeping_an_eye_out",
+    "name": "Keeping an Eye Out",
+    "trader": "Celeste",
+    "map": [
+      "the_blue_gate"
+    ],
+    "previousQuestIds": [
+      "the_clean_dream"
+    ],
+    "nextQuestIds": [],
     "hasBlueprint": false
   },
   {
     "id": "movie_night",
     "name": "Movie Night",
     "trader": "Apollo",
-    "map": [
-      "stella_montis"
-    ],
+    "map": [],
     "previousQuestIds": [
       "with_a_view"
     ],
@@ -150,7 +193,8 @@
       "stella_montis"
     ],
     "previousQuestIds": [
-      "groundbreaking"
+      "worth_your_salt",
+      "12_snap_and_salvage"
     ],
     "nextQuestIds": [
       "on_the_map"
@@ -175,9 +219,9 @@
     "name": "Paving the Way",
     "trader": "Apollo",
     "map": [
-      "dam_battlegrounds",
       "the_blue_gate",
-      "buried_city"
+      "buried_city",
+      "dam_battlegrounds"
     ],
     "previousQuestIds": [
       "ss10x5"
@@ -191,7 +235,11 @@
     "id": "ss1",
     "name": "Picking Up The Pieces",
     "trader": "Shani",
-    "map": [],
+    "map": [
+      "the_spaceport",
+      "buried_city",
+      "dam_battlegrounds"
+    ],
     "previousQuestIds": [
       "map_dam_battleground"
     ],
@@ -224,9 +272,9 @@
     "name": "Greasing Her Palms",
     "trader": "Celeste",
     "map": [
-      "dam_battlegrounds",
+      "buried_city",
       "the_spaceport",
-      "buried_city"
+      "dam_battlegrounds"
     ],
     "previousQuestIds": [
       "ss10"
@@ -243,8 +291,8 @@
     "trader": "Shani",
     "map": [
       "the_spaceport",
-      "dam_battlegrounds",
-      "the_blue_gate"
+      "the_blue_gate",
+      "dam_battlegrounds"
     ],
     "previousQuestIds": [
       "ss10a",
@@ -259,7 +307,7 @@
   {
     "id": "ss10c",
     "name": "Doctor's Orders",
-    "trader": "Celeste",
+    "trader": "Lance",
     "map": [],
     "previousQuestIds": [
       "ss10a"
@@ -272,7 +320,7 @@
   {
     "id": "ss10d",
     "name": "Mixed Signals",
-    "trader": "Tian Wen",
+    "trader": "Shani",
     "map": [
       "buried_city",
       "the_spaceport",
@@ -307,9 +355,9 @@
     "name": "Medical Merchandise",
     "trader": "Lance",
     "map": [
-      "dam_battlegrounds",
+      "buried_city",
       "the_spaceport",
-      "buried_city"
+      "dam_battlegrounds"
     ],
     "previousQuestIds": [
       "ss10c"
@@ -478,8 +526,8 @@
       "buried_city"
     ],
     "previousQuestIds": [
-      "ss10p",
-      "ss10n"
+      "ss10n",
+      "ss10p"
     ],
     "nextQuestIds": [
       "ss10r"
@@ -497,8 +545,8 @@
       "ss10q"
     ],
     "nextQuestIds": [
-      "ss10t",
       "ss10u",
+      "ss10t",
       "ss10v"
     ],
     "hasBlueprint": false
@@ -516,15 +564,15 @@
       "ss10k"
     ],
     "nextQuestIds": [
-      "ss10w",
+      "ss10y",
       "ss10x",
-      "ss10y"
+      "ss10w"
     ],
     "hasBlueprint": false
   },
   {
     "id": "ss10t",
-    "name": "Celeste's Journals",
+    "name": "Celeste’s Journals",
     "trader": "Celeste",
     "map": [
       "dam_battlegrounds"
@@ -539,7 +587,7 @@
   },
   {
     "id": "ss10u",
-    "name": "The Major's Footlocker",
+    "name": "The Major’s Footlocker",
     "trader": "Tian Wen",
     "map": [
       "dam_battlegrounds"
@@ -547,7 +595,9 @@
     "previousQuestIds": [
       "ss10r"
     ],
-    "nextQuestIds": [],
+    "nextQuestIds": [
+      "ss10w"
+    ],
     "hasBlueprint": true
   },
   {
@@ -561,9 +611,12 @@
       "dam_battlegrounds"
     ],
     "previousQuestIds": [
-      "ss10r"
+      "ss10r",
+      "ss8b"
     ],
-    "nextQuestIds": [],
+    "nextQuestIds": [
+      "combat_recon"
+    ],
     "hasBlueprint": false
   },
   {
@@ -571,14 +624,15 @@
     "name": "Back on Top",
     "trader": "Tian Wen",
     "map": [
-      "the_blue_gate",
-      "dam_battlegrounds",
       "buried_city",
-      "the_spaceport"
+      "the_spaceport",
+      "the_blue_gate",
+      "dam_battlegrounds"
     ],
     "previousQuestIds": [
-      "ss10t",
-      "ss10s"
+      "ss10u",
+      "ss10s",
+      "ss10t"
     ],
     "nextQuestIds": [
       "ss10z"
@@ -671,8 +725,8 @@
       "ss10x13"
     ],
     "nextQuestIds": [
-      "ss10x15",
-      "a_toxic_trail"
+      "a_toxic_trail",
+      "ss10x15"
     ],
     "hasBlueprint": false
   },
@@ -737,7 +791,9 @@
     "id": "ss10x19",
     "name": "A New Type of Plant",
     "trader": "Lance",
-    "map": [],
+    "map": [
+      "dam_battlegrounds"
+    ],
     "previousQuestIds": [
       "ss10x18"
     ],
@@ -769,8 +825,8 @@
       "the_blue_gate"
     ],
     "previousQuestIds": [
-      "ss10x19",
-      "ss11bx"
+      "ss11bx",
+      "ss10x19"
     ],
     "nextQuestIds": [],
     "hasBlueprint": false
@@ -798,8 +854,8 @@
       "dam_battlegrounds"
     ],
     "previousQuestIds": [
-      "ss10x3",
-      "ss10y"
+      "ss10y",
+      "ss10x3"
     ],
     "nextQuestIds": [
       "ss10x5",
@@ -811,14 +867,19 @@
     "id": "ss10x5",
     "name": "Into the Fray",
     "trader": "Shani",
-    "map": [],
+    "map": [
+      "buried_city",
+      "the_spaceport",
+      "the_blue_gate",
+      "dam_battlegrounds"
+    ],
     "previousQuestIds": [
       "ss10x4",
       "ss11b2"
     ],
     "nextQuestIds": [
-      "paving_the_way",
-      "combat_recon"
+      "combat_recon",
+      "paving_the_way"
     ],
     "hasBlueprint": false
   },
@@ -854,7 +915,7 @@
   },
   {
     "id": "ss10x8",
-    "name": "A Warm Place to Rest",
+    "name": "A Warm Place To Rest",
     "trader": "Apollo",
     "map": [
       "buried_city"
@@ -899,7 +960,7 @@
   },
   {
     "id": "ss10z",
-    "name": "Our Presence Up There",
+    "name": "Our Presence up There",
     "trader": "Shani",
     "map": [
       "dam_battlegrounds"
@@ -915,7 +976,7 @@
   {
     "id": "ss11",
     "name": "A First Foothold",
-    "trader": "Shani",
+    "trader": "Apollo",
     "map": [
       "the_blue_gate"
     ],
@@ -974,7 +1035,7 @@
   },
   {
     "id": "ss11bx",
-    "name": "With a Trace",
+    "name": "With A Trace",
     "trader": "Shani",
     "map": [
       "the_blue_gate"
@@ -982,7 +1043,10 @@
     "previousQuestIds": [
       "ss11a"
     ],
-    "nextQuestIds": [],
+    "nextQuestIds": [
+      "ss10x20",
+      "the_clean_dream"
+    ],
     "hasBlueprint": false
   },
   {
@@ -1038,10 +1102,10 @@
       "ss4"
     ],
     "nextQuestIds": [
-      "ss5a",
-      "ss7",
+      "12_in_my_image",
       "ss8",
-      "12_in_my_image"
+      "ss7",
+      "ss5a"
     ],
     "hasBlueprint": false
   },
@@ -1060,7 +1124,7 @@
   },
   {
     "id": "ss6",
-    "name": "Down To Earth",
+    "name": "Down to Earth",
     "trader": "Shani",
     "map": [
       "buried_city",
@@ -1123,7 +1187,8 @@
       "ss8a"
     ],
     "nextQuestIds": [
-      "the_league"
+      "the_league",
+      "ss10v"
     ],
     "hasBlueprint": true
   },
@@ -1140,6 +1205,21 @@
     "previousQuestIds": [
       "ss6"
     ],
+    "nextQuestIds": [
+      "ss10b"
+    ],
+    "hasBlueprint": false
+  },
+  {
+    "id": "stable_housing",
+    "name": "Stable Housing",
+    "trader": "Tian Wen",
+    "map": [
+      "stella_montis"
+    ],
+    "previousQuestIds": [
+      "with_a_view"
+    ],
     "nextQuestIds": [],
     "hasBlueprint": false
   },
@@ -1155,6 +1235,7 @@
       "ss11bx"
     ],
     "nextQuestIds": [
+      "keeping_an_eye_out",
       "a_prime_specimen"
     ],
     "hasBlueprint": false
@@ -1169,9 +1250,7 @@
     "previousQuestIds": [
       "ss8b"
     ],
-    "nextQuestIds": [
-      "movie_night"
-    ],
+    "nextQuestIds": [],
     "hasBlueprint": false
   },
   {
@@ -1189,7 +1268,7 @@
   },
   {
     "id": "with_a_view",
-    "name": "With A View",
+    "name": "With a View",
     "trader": "Shani",
     "map": [
       "stella_montis"
@@ -1198,8 +1277,24 @@
       "12_snap_and_salvage"
     ],
     "nextQuestIds": [
+      "stable_housing",
       "movie_night"
     ],
     "hasBlueprint": false
+  },
+  {
+    "id": "worth_your_salt",
+    "name": "Worth Your Salt",
+    "trader": "Celeste",
+    "map": [
+      "the_spaceport"
+    ],
+    "previousQuestIds": [
+      "groundbreaking"
+    ],
+    "nextQuestIds": [
+      "on_deaf_ears"
+    ],
+    "hasBlueprint": true
   }
 ]
