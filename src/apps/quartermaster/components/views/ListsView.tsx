@@ -1,0 +1,404 @@
+/**
+ * Lists View Component
+ * See specification section 7.4 / CR-006, CR-007
+ */
+
+import { useState, useMemo } from 'react';
+import { Plus, Trash2, Eye, EyeOff, List } from 'lucide-react';
+import type { ItemsMap } from '../../types/item';
+import type { StoredList } from '../../types/list';
+import { ItemIcon } from '../ItemIcon';
+import { searchItems } from '../../utils/dataLoader';
+
+interface ListsViewProps {
+  itemsMap: ItemsMap;
+  lists: StoredList[];
+  onCreateList: (name: string) => void;
+  onDeleteList: (id: string) => void;
+  onToggleList: (id: string) => void;
+  onRenameList: (id: string, name: string) => void;
+  onAddItem: (listId: string, itemId: string, quantity: number) => void;
+  onRemoveItem: (listId: string, itemId: string) => void;
+  onUpdateQuantity: (listId: string, itemId: string, quantity: number) => void;
+  onToggleItem: (listId: string, itemId: string) => void;
+  onReorderLists: (reorderedLists: StoredList[]) => void;
+  onReorderItems: (listId: string, reorderedItemIds: string[]) => void;
+}
+
+export function ListsView({
+  itemsMap,
+  lists,
+  onCreateList,
+  onDeleteList,
+  onToggleList,
+  onRenameList,
+  onAddItem,
+  onRemoveItem,
+  onUpdateQuantity,
+  onToggleItem,
+  onReorderLists,
+  onReorderItems,
+}: ListsViewProps) {
+  const [selectedListId, setSelectedListId] = useState<string | null>(
+    lists.length > 0 ? lists[0].id : null
+  );
+  const [newListName, setNewListName] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [showSuggestions, setShowSuggestions] = useState(false);
+
+  // List DnD state
+  const [draggedListId, setDraggedListId] = useState<string | null>(null);
+  const [dropTargetListId, setDropTargetListId] = useState<string | null>(null);
+
+  // Item DnD state
+  const [draggedItemId, setDraggedItemId] = useState<string | null>(null);
+  const [dropTargetItemId, setDropTargetItemId] = useState<string | null>(null);
+
+  const selectedList = lists.find(l => l.id === selectedListId);
+
+  // Search results for autocomplete
+  const searchResults = useMemo(() => {
+    if (!searchQuery.trim()) return [];
+    return searchItems(itemsMap, searchQuery).slice(0, 10);
+  }, [itemsMap, searchQuery]);
+
+  // --- Handlers ---
+
+  const handleCreateList = () => {
+    if (!newListName.trim()) return;
+    onCreateList(newListName.trim());
+    setNewListName('');
+  };
+
+  const handleAddItem = (itemId: string) => {
+    if (!selectedListId) return;
+    const item = itemsMap[itemId];
+    const quantity = item?.craftQuantity ?? 1;
+    onAddItem(selectedListId, itemId, quantity);
+    setSearchQuery('');
+    setShowSuggestions(false);
+  };
+
+  const handleQuantityChange = (itemId: string, delta: number) => {
+    if (!selectedListId || !selectedList) return;
+    const listItem = selectedList.items.find(i => i.itemId === itemId);
+    if (!listItem) return;
+
+    const item = itemsMap[itemId];
+    const step = item?.craftQuantity ?? 1;
+    const newQty = Math.max(step, listItem.quantity + delta * step);
+    onUpdateQuantity(selectedListId, itemId, newQty);
+  };
+
+  // --- List DnD handlers ---
+
+  const handleListDragStart = (e: React.DragEvent, listId: string) => {
+    setDraggedListId(listId);
+    e.dataTransfer.effectAllowed = 'move';
+  };
+
+  const handleListDragOver = (e: React.DragEvent, targetListId: string) => {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+    if (draggedListId && draggedListId !== targetListId) {
+      setDropTargetListId(targetListId);
+    }
+  };
+
+  const handleListDragLeave = () => {
+    setDropTargetListId(null);
+  };
+
+  const handleListDrop = (e: React.DragEvent, targetListId: string) => {
+    e.preventDefault();
+    if (!draggedListId || draggedListId === targetListId) {
+      setDraggedListId(null);
+      return;
+    }
+
+    const fromIndex = lists.findIndex(l => l.id === draggedListId);
+    const toIndex = lists.findIndex(l => l.id === targetListId);
+
+    if (fromIndex === -1 || toIndex === -1) {
+      setDraggedListId(null);
+      return;
+    }
+
+    const reordered = [...lists];
+    reordered.splice(fromIndex, 1);
+    reordered.splice(toIndex, 0, lists[fromIndex]);
+
+    onReorderLists(reordered);
+    setDraggedListId(null);
+    setDropTargetListId(null);
+  };
+
+  const handleListDragEnd = () => {
+    setDraggedListId(null);
+    setDropTargetListId(null);
+  };
+
+  // --- Item DnD handlers ---
+
+  const handleItemDragStart = (e: React.DragEvent, itemId: string) => {
+    setDraggedItemId(itemId);
+    e.dataTransfer.effectAllowed = 'move';
+  };
+
+  const handleItemDragOver = (e: React.DragEvent, targetItemId: string) => {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+    if (draggedItemId && draggedItemId !== targetItemId) {
+      setDropTargetItemId(targetItemId);
+    }
+  };
+
+  const handleItemDragLeave = () => {
+    setDropTargetItemId(null);
+  };
+
+  const handleItemDrop = (e: React.DragEvent, targetItemId: string) => {
+    e.preventDefault();
+    if (!draggedItemId || !selectedList || !selectedListId || draggedItemId === targetItemId) {
+      setDraggedItemId(null);
+      return;
+    }
+
+    const itemIds = selectedList.items.map(i => i.itemId);
+    const fromIndex = itemIds.indexOf(draggedItemId);
+    const toIndex = itemIds.indexOf(targetItemId);
+
+    if (fromIndex === -1 || toIndex === -1) {
+      setDraggedItemId(null);
+      return;
+    }
+
+    const reordered = [...itemIds];
+    reordered.splice(fromIndex, 1);
+    reordered.splice(toIndex, 0, draggedItemId);
+
+    onReorderItems(selectedListId, reordered);
+    setDraggedItemId(null);
+    setDropTargetItemId(null);
+  };
+
+  const handleItemDragEnd = () => {
+    setDraggedItemId(null);
+    setDropTargetItemId(null);
+  };
+
+  return (
+    <div className="lists-view">
+      {/* List Panel */}
+      <div className="lists-view__list">
+        <div className="lists-view__list-header">
+          <span className="lists-view__list-title">Lists</span>
+        </div>
+
+        <div className="lists-view__items">
+          {lists.map(list => (
+            <div
+              key={list.id}
+              draggable
+              className={[
+                'lists-view__item',
+                list.id === selectedListId ? 'lists-view__item--active' : '',
+                !list.isEnabled ? 'lists-view__item--disabled' : '',
+                list.id === dropTargetListId ? 'lists-view__item--drop-target' : '',
+              ].filter(Boolean).join(' ')}
+              onClick={() => setSelectedListId(list.id)}
+              onDragStart={(e) => handleListDragStart(e, list.id)}
+              onDragOver={(e) => handleListDragOver(e, list.id)}
+              onDragLeave={handleListDragLeave}
+              onDrop={(e) => handleListDrop(e, list.id)}
+              onDragEnd={handleListDragEnd}
+            >
+              <span className="lists-view__item-name">{list.name}</span>
+              <span
+                className="lists-view__item-toggle"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onToggleList(list.id);
+                }}
+              >
+                {list.isEnabled ? <Eye size={14} /> : <EyeOff size={14} />}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        <div style={{ marginTop: 'auto', paddingTop: 12, borderTop: '1px solid #444' }}>
+          <input
+            type="text"
+            className="qm-input"
+            placeholder="New list name..."
+            value={newListName}
+            onChange={(e) => setNewListName(e.target.value)}
+            onKeyDown={(e) => e.key === 'Enter' && handleCreateList()}
+            style={{ width: '100%', marginBottom: 8 }}
+          />
+          <button
+            className="qm-button qm-button--primary"
+            onClick={handleCreateList}
+            disabled={!newListName.trim()}
+            style={{ width: '100%' }}
+          >
+            <Plus size={14} /> Create List
+          </button>
+        </div>
+      </div>
+
+      {/* List Editor */}
+      <div className="lists-view__editor">
+        {selectedList ? (
+          <>
+            <div className="lists-view__editor-header">
+              <input
+                type="text"
+                className="qm-input"
+                value={selectedList.name}
+                onChange={(e) => onRenameList(selectedList.id, e.target.value)}
+                style={{ fontSize: 14, fontWeight: 600 }}
+              />
+              <button
+                className="qm-button"
+                onClick={() => {
+                  onDeleteList(selectedList.id);
+                  setSelectedListId(lists.find(l => l.id !== selectedList.id)?.id ?? null);
+                }}
+              >
+                <Trash2 size={14} /> Delete
+              </button>
+            </div>
+
+            {/* Add Item */}
+            <div className="lists-view__add-item" style={{ position: 'relative' }}>
+              <input
+                type="text"
+                className="qm-input"
+                placeholder="Search items to add..."
+                value={searchQuery}
+                onChange={(e) => {
+                  setSearchQuery(e.target.value);
+                  setShowSuggestions(true);
+                }}
+                onFocus={() => setShowSuggestions(true)}
+              />
+              {showSuggestions && searchResults.length > 0 && (
+                <div style={{
+                  position: 'absolute',
+                  top: '100%',
+                  left: 0,
+                  right: 0,
+                  background: '#2c2c2c',
+                  border: '1px solid #444',
+                  borderRadius: 4,
+                  maxHeight: 200,
+                  overflowY: 'auto',
+                  zIndex: 100,
+                }}>
+                  {searchResults.map(item => (
+                    <div
+                      key={item.id}
+                      onClick={() => handleAddItem(item.id)}
+                      style={{
+                        padding: '8px 12px',
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 8,
+                      }}
+                      onMouseEnter={(e) => (e.currentTarget.style.background = '#3c3c3c')}
+                      onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
+                    >
+                      <img src={item.icon} alt="" style={{ width: 24, height: 24 }} />
+                      <span style={{ fontSize: 11 }}>{item.name}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Items – in user-defined order, no category grouping (CR-007) */}
+            <div className="lists-view__item-list">
+              {selectedList.items.map(listItem => {
+                const item = itemsMap[listItem.itemId];
+                if (!item) return null;
+
+                return (
+                  <div
+                    key={listItem.itemId}
+                    draggable
+                    className={[
+                      'lists-view__list-item',
+                      !listItem.isEnabled ? 'lists-view__list-item--disabled' : '',
+                      listItem.itemId === dropTargetItemId ? 'lists-view__list-item--drop-target' : '',
+                    ].filter(Boolean).join(' ')}
+                    onDragStart={(e) => handleItemDragStart(e, listItem.itemId)}
+                    onDragOver={(e) => handleItemDragOver(e, listItem.itemId)}
+                    onDragLeave={handleItemDragLeave}
+                    onDrop={(e) => handleItemDrop(e, listItem.itemId)}
+                    onDragEnd={handleItemDragEnd}
+                  >
+                    <ItemIcon
+                      itemId={item.id}
+                      name={item.name}
+                      icon={item.icon}
+                      rarity={item.rarity}
+                      quantity={listItem.quantity}
+                      size="sm"
+                      showName={false}
+                    />
+                    <div className="lists-view__item-controls">
+                      <button
+                        className="qm-button qm-button--small"
+                        onClick={() => handleQuantityChange(listItem.itemId, -1)}
+                      >
+                        -
+                      </button>
+                      <input
+                        type="number"
+                        className="qm-input lists-view__qty-input"
+                        value={listItem.quantity}
+                        onChange={(e) => {
+                          const val = parseInt(e.target.value, 10);
+                          if (!isNaN(val) && val > 0) {
+                            onUpdateQuantity(selectedList.id, listItem.itemId, val);
+                          }
+                        }}
+                        min={1}
+                      />
+                      <button
+                        className="qm-button qm-button--small"
+                        onClick={() => handleQuantityChange(listItem.itemId, 1)}
+                      >
+                        +
+                      </button>
+                      <button
+                        className="qm-button qm-button--small"
+                        onClick={() => onToggleItem(selectedList.id, listItem.itemId)}
+                      >
+                        {listItem.isEnabled ? <Eye size={12} /> : <EyeOff size={12} />}
+                      </button>
+                      <button
+                        className="qm-button qm-button--small"
+                        onClick={() => onRemoveItem(selectedList.id, listItem.itemId)}
+                      >
+                        <Trash2 size={12} />
+                      </button>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </>
+        ) : (
+          <div className="qm-empty-state">
+            <List size={48} />
+            <p>Select or create a list to edit.</p>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}

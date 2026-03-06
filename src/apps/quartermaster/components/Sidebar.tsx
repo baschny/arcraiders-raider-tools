@@ -5,7 +5,7 @@
 
 import { Package, Backpack, List, Target, Hammer } from 'lucide-react';
 
-export type ViewId = 'stash' | 'current-loadout' | 'loadouts' | 'in-raid' | 'crafting';
+export type ViewId = 'stash' | 'current-loadout' | 'lists' | 'in-raid' | 'crafting';
 
 interface SidebarProps {
   activeView: ViewId;
@@ -15,7 +15,7 @@ interface SidebarProps {
 const NAV_ITEMS: { id: ViewId; label: string; icon: React.ReactNode }[] = [
   { id: 'stash', label: 'Stash', icon: <Package size={18} /> },
   { id: 'current-loadout', label: 'Current Loadout', icon: <Backpack size={18} /> },
-  { id: 'loadouts', label: 'Loadouts', icon: <List size={18} /> },
+  { id: 'lists', label: 'Lists', icon: <List size={18} /> },
   { id: 'in-raid', label: 'In Raid', icon: <Target size={18} /> },
   { id: 'crafting', label: 'Crafting', icon: <Hammer size={18} /> },
 ];

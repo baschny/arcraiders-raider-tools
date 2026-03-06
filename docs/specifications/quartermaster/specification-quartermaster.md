@@ -76,19 +76,19 @@ The purpose of this module is to support the full gameplay lifecycle of ARC Raid
 
 - Stash inspection
 - Dynamic loadout inspection
-- Static loadout planning
+- Goal list planning
 - Loot suggestion guidance
 - Craft execution planning
 
 The system must:
 
-- Aggregate multiple loadouts.
+- Aggregate multiple lists.
 - Compute global material requirements.
 - Provide deterministic and meaningful crafting and recycling suggestions.
 - Limit crafting depth to practical real-world gameplay expectations.
 - Avoid unnecessary or confusing steps.
 - Reserve required materials before recycling.
-- Suggest lootable crafting materials relevant to active loadouts.
+- Suggest lootable crafting materials relevant to active lists.
 - Provide workbench-grouped crafting instructions.
 - Operate deterministically.
 
@@ -586,11 +586,9 @@ getLoadout()
 
 Planner loadout aggregation rules:
 
-- Aggregate by `itemId`.
-- Ignore durability.
-- Ignore slotIndex for planning purposes.
-- Use slot arrays inside `CachedLoadout.loadout`.
-- Unknown `itemId` must be ignored.
+- Loadout data is **not used as planner targets**.
+- Loadout data is used only for the **Current Loadout View**.
+- Planner logic must ignore `CachedLoadout` when computing `requiredFinal`.
 
 Timestamp for header:
 
@@ -611,8 +609,7 @@ For v1:
 - Assume all benches are level 3.
 - `stationLevelRequired` refers to hideout bench levels.
 - Bench restriction logic remains in planner but assumes level 3.
-- Loadout editor must prevent adding items that are not craftable due to blueprint or bench restrictions.
-- If such an item exists in a loadout, it is excluded from planning calculations and marked with a warning in the UI.
+- If such an item exists in a list but cannot be crafted due to blueprint or bench restrictions, it is excluded from planning calculations and marked with a warning in the UI.
 
 Future API support may provide per-bench unlocked levels.
 
@@ -624,7 +621,7 @@ Future API support may provide per-bench unlocked levels.
 
 ## 5.1 Recycling Restrictions
 
-Non-recyclable categories (loadout categories):
+Non-recyclable categories:
 
 - Weapon
 - Ammunition
@@ -655,8 +652,8 @@ if item.category in nonRecyclableCategories:
 
 Additionally:
 
-- Loadout category items are excluded from loot suggestions.
-- Loadout category items are never recycled by the planner.
+- Items in `nonRecyclableCategories` are excluded from loot suggestions.
+- Items in `nonRecyclableCategories` are never recycled by the planner.
 
 ---
 
@@ -676,8 +673,10 @@ Missing `value` is treated as `0` for ordering.
 
 Planning order for missing final targets:
 
-1. Sort by `value` descending.
-2. If equal, sort by `itemId` ascending (ASCII).
+1. List order (top to bottom in the Lists UI).
+2. Item order within the list (top to bottom).
+3. `value` descending.
+4. `itemId` ascending (ASCII).
 
 Planning model is greedy and deterministic.
 
@@ -701,17 +700,17 @@ Constraints:
 
 ---
 
-## 6.1 Aggregation of Loadouts
+## 6.1 Aggregation of Lists
 
-### 6.1.1 Loadout Selection
+### 6.1.1 List Selection
 
-Only loadouts marked as enabled are considered.
+Only lists marked as enabled are considered.
 
-Within each loadout, only items marked as enabled are considered.
+Within each list, only items marked as enabled are considered.
 
-Loadouts are always aggregated globally.
+Lists are always aggregated globally.
 
-All active loadouts are added together, and the stash must contain all required items from all active loadouts.
+All active lists are added together, and the stash must contain all required items from all active lists.
 
 ---
 
@@ -720,18 +719,21 @@ All active loadouts are added together, and the stash must contain all required 
 For each itemId:
 
 ```
-requiredFinal[itemId] = sum(quantity across all active + enabled loadout items)
+requiredFinal[itemId] = sum(quantity across all active + enabled list items)
 ```
+
+Duplicate itemIds across lists must sum quantities.
 
 Ordering:
 
-- Deterministic by itemId ascending for aggregation.
-- Planning order determined later by section 5.3.
+- Deterministic by list order (top → bottom).
+- Within lists by item order (top → bottom).
+- Final tie-breakers follow section 5.3.
 
 If an item cannot be crafted due to blueprint or bench restriction:
 
-- It must not be allowed in the loadout editor.
-- If present due to inconsistent state, it is excluded from `requiredFinal` and marked with a warning.
+- It remains a target but may become unreachable in planner results.
+- The UI must display a warning indicator.
 
 ---
 
@@ -769,7 +771,7 @@ Define:
 
 An item is crafting-relevant if:
 
-- `item.category` is not in loadout categories, AND
+- `item.category` is not in `nonRecyclableCategories`, AND
 - (`item.id` in `recipeRelevantSet` OR
   item.recyclesInto yields any material in `recipeRelevantSet`)
 
@@ -795,7 +797,7 @@ Maintain:
 
 An item must never be recycled if:
 
-1. It belongs to loadout categories.
+1. It belongs to `nonRecyclableCategories`.
 2. It appears in `requiredFinal`.
 3. It is a Level-1 ingredient for any target with `missingFinal > 0`.
 4. It is a Level-2 ingredient currently required to craft a Level-1 ingredient for the current target.
@@ -924,7 +926,7 @@ Determine missing needed materials:
 
 Generate suggestions only for crafting-relevant items.
 
-Exclude all loadout category items.
+Exclude all items in `nonRecyclableCategories`.
 
 ### Suggestion Types
 
@@ -965,7 +967,7 @@ Left Sidebar Navigation:
 
 - Stash
 - Current Loadout
-- Loadouts
+- Lists
 - In Raid
 - Crafting
 
@@ -979,7 +981,7 @@ Visible regardless of selected sidebar item.
 
 Displays:
 
-- Active Loadouts count
+- Active Lists count
 - Total Missing Items count
 - Total Recycle Actions
 - Total Craft Steps
@@ -990,9 +992,9 @@ No planner logic executed here; purely derived from PlannerResult and API timest
 
 ---
 
-### 7.1.3 Stored Loadouts Persistence (v1)
+## 7.1.3 Stored Lists Persistence (v1)
 
-Stored loadouts are persisted client-side.
+Stored lists are persisted client-side.
 
 Persistence mechanism:
 
@@ -1001,13 +1003,11 @@ Persistence mechanism:
 Required properties:
 
 - Deterministic serialization order
-- Backwards-compatible migration strategy (future)
 
-Minimum stored schema:
+Stored schema:
 
 ```ts
-interface StoredLoadout {
-  schemaVersion: number
+interface StoredList {
   id: string
   name: string
   isEnabled: boolean
@@ -1021,14 +1021,8 @@ interface StoredLoadout {
 
 Ordering rules:
 
-- Stored loadouts list ordered by `name` ascending for display.
-- Loadout items are stored in insertion order but rendered grouped (section 7.4.2).
-
-Migration strategy (v1):
-
-- If `schemaVersion` is missing, treat as version 1 and set `schemaVersion = 1` on next save.
-- If a stored loadout item references an unknown itemId, drop that entry deterministically during load.
-- If loadout data is invalid or cannot be parsed, ignore it and keep other loadouts.
+- Stored lists ordered by UI order (top → bottom).
+- List items ordered by UI order (top → bottom).
 
 ---
 
@@ -1075,7 +1069,7 @@ Shows:
 - Recipe
 - Recycling sources
 - Salvage info
-- Used in loadout items
+- Used in lists
 
 ### 7.2.4 Value Display
 
@@ -1143,14 +1137,15 @@ Shows:
 
 ---
 
-## 7.4 Loadouts View
+## 7.4 Lists View
 
 ### 7.4.1 Sidebar
 
-- List of loadouts
+- List of lists
 - Enable/Disable toggle
 - Status indicator
-- Create Loadout button
+- Create List button
+- Drag-and-drop reorder lists
 
 ---
 
@@ -1169,34 +1164,16 @@ Behavior:
 - Default quantity = 1.
 - If already exists -> increase quantity.
 
-Loadout item list grouped automatically:
+Items are rendered strictly in manual order.
 
-- Augment
-- Shield
-- Weapon(s)
-- Weapon Modifications
-- Ammunition
-- Quick Use
-
-Mapping derived from PlannerItem.category.
-
-User cannot change grouping.
-
-Each loadout item row renders the Item Icon Component defined in section 7.7.
+Each list item row renders the Item Icon Component defined in section 7.7.
 
 Per item controls:
 
 - Quantity
 - Enable/Disable
 - Remove
-
-Quantity rules:
-
-- For items with `recipe` and `craftBench` defined:
-    - Quantity must always be a multiple of `craftQuantity`.
-    - Step size in UI must equal `craftQuantity`.
-- For non-craftable items:
-    - Step size is 1.
+- Drag-and-drop reorder
 
 ---
 
@@ -1227,8 +1204,8 @@ Optional small count: number of impacted targets.
 
 Displays:
 
-- Required for (final loadout items)
-- Produces needed materials for (final loadout items)
+- Required for (final list items)
+- Produces needed materials for (final list items)
 - Recycling vs salvage comparison
 
 ---
@@ -1480,7 +1457,7 @@ Tests must verify:
 - Salvage suggestions appear only as in-raid hint.
 - Value-based ordering deterministic.
 - Unknown API itemIds ignored.
-- Blueprint/bench restrictions enforced at loadout level.
+- Blueprint/bench restrictions enforced at list level.
 
 Canonical scenarios:
 
@@ -1491,5 +1468,5 @@ Canonical scenarios:
 5. Depth limit prevents deeper craft.
 6. CraftQuantity oversupply.
 7. No recycle chaining.
-8. Exclusion of loadout categories from loot suggestions.
-9. Deterministic target ordering by value then itemId.
+8. Exclusion of nonRecyclableCategories from loot suggestions.
+9. Deterministic target ordering by list order, item order, value, then itemId.

@@ -99,7 +99,7 @@ export interface PlannerResult {
   /** Set of fully satisfiable target itemIds */
   satisfiableTargets: Set<ItemId>;
 
-  activeLoadoutsCount: number;
+  activeListsCount: number;
   totalMissingItemsCount: number;
   totalRecycleActionsCount: number;
   totalCraftStepsCount: number;

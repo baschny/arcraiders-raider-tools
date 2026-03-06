@@ -1,27 +1,26 @@
 /**
  * Storage Utilities for Quartermaster
- * Handles localStorage persistence for loadouts
- * See specification section 7.1.3
+ * Handles localStorage persistence for lists
+ * See specification section 7.1.3 / CR-002
  */
 
-import type { StoredLoadout } from '../types/loadout';
+import type { StoredList } from '../types/list';
 import type { ItemsMap } from '../types/item';
-import { LOADOUT_SCHEMA_VERSION } from '../types/loadout';
 
-const STORAGE_KEY = 'quartermaster_loadouts';
+const STORAGE_KEY = 'quartermaster_lists';
 
 /**
- * Generate a unique ID for a new loadout
+ * Generate a unique ID for a new list
  */
-export function generateLoadoutId(): string {
-  return `loadout_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`;
+export function generateListId(): string {
+  return `list_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`;
 }
 
 /**
- * Load all stored loadouts from localStorage
- * Applies migration and validation rules from spec
+ * Load all stored lists from localStorage
+ * Validates item IDs against known items; preserves array order (= priority)
  */
-export function loadStoredLoadouts(itemsMap: ItemsMap): StoredLoadout[] {
+export function loadStoredLists(itemsMap: ItemsMap): StoredList[] {
   try {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (!stored) {
@@ -33,31 +32,25 @@ export function loadStoredLoadouts(itemsMap: ItemsMap): StoredLoadout[] {
       return [];
     }
 
-    // Process each loadout with migration and validation
-    const loadouts: StoredLoadout[] = [];
-    
+    const lists: StoredList[] = [];
+
     for (const raw of parsed) {
       if (!raw || typeof raw !== 'object') {
         continue;
       }
 
-      // Migration: set schemaVersion if missing
-      const schemaVersion = raw.schemaVersion ?? 1;
-
-      // Validate required fields
       if (!raw.id || !raw.name) {
         continue;
       }
 
       // Filter out unknown item IDs
       const validItems = Array.isArray(raw.items)
-        ? raw.items.filter((item: { itemId?: string }) => 
+        ? raw.items.filter((item: { itemId?: string }) =>
             item?.itemId && itemsMap[item.itemId]
           )
         : [];
 
-      loadouts.push({
-        schemaVersion,
+      lists.push({
         id: raw.id,
         name: raw.name,
         isEnabled: raw.isEnabled ?? true,
@@ -69,42 +62,32 @@ export function loadStoredLoadouts(itemsMap: ItemsMap): StoredLoadout[] {
       });
     }
 
-    // Sort by name ascending for display (spec 7.1.3)
-    return loadouts.sort((a, b) => a.name.localeCompare(b.name));
+    // Preserve stored order – order IS the priority
+    return lists;
   } catch {
-    console.error('Failed to load stored loadouts');
+    console.error('Failed to load stored lists');
     return [];
   }
 }
 
 /**
- * Save loadouts to localStorage
- * Maintains deterministic serialization order
+ * Save lists to localStorage
+ * Array order is preserved as-is (order = priority)
  */
-export function saveStoredLoadouts(loadouts: StoredLoadout[]): void {
+export function saveStoredLists(lists: StoredList[]): void {
   try {
-    // Sort by name for deterministic order
-    const sorted = [...loadouts].sort((a, b) => a.name.localeCompare(b.name));
-    
-    // Ensure schemaVersion is set
-    const withSchema = sorted.map(loadout => ({
-      ...loadout,
-      schemaVersion: loadout.schemaVersion ?? LOADOUT_SCHEMA_VERSION,
-    }));
-
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(withSchema));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(lists));
   } catch {
-    console.error('Failed to save loadouts');
+    console.error('Failed to save lists');
   }
 }
 
 /**
- * Create a new empty loadout
+ * Create a new empty list
  */
-export function createNewLoadout(name: string): StoredLoadout {
+export function createNewList(name: string): StoredList {
   return {
-    schemaVersion: LOADOUT_SCHEMA_VERSION,
-    id: generateLoadoutId(),
+    id: generateListId(),
     name,
     isEnabled: true,
     items: [],
@@ -112,87 +95,99 @@ export function createNewLoadout(name: string): StoredLoadout {
 }
 
 /**
- * Add or update an item in a loadout
- * If item exists, increases quantity; otherwise adds new item
+ * Add or update an item in a list
+ * If item exists, increases quantity; otherwise appends new item
  */
-export function addItemToLoadout(
-  loadout: StoredLoadout,
+export function addItemToList(
+  list: StoredList,
   itemId: string,
   quantity: number = 1
-): StoredLoadout {
-  const existingIndex = loadout.items.findIndex(item => item.itemId === itemId);
-  
+): StoredList {
+  const existingIndex = list.items.findIndex(item => item.itemId === itemId);
+
   if (existingIndex >= 0) {
-    // Increase quantity
-    const newItems = [...loadout.items];
+    const newItems = [...list.items];
     newItems[existingIndex] = {
       ...newItems[existingIndex],
       quantity: newItems[existingIndex].quantity + quantity,
     };
-    return { ...loadout, items: newItems };
+    return { ...list, items: newItems };
   }
 
-  // Add new item
   return {
-    ...loadout,
-    items: [...loadout.items, { itemId, quantity, isEnabled: true }],
+    ...list,
+    items: [...list.items, { itemId, quantity, isEnabled: true }],
   };
 }
 
 /**
- * Remove an item from a loadout
+ * Remove an item from a list
  */
-export function removeItemFromLoadout(
-  loadout: StoredLoadout,
+export function removeItemFromList(
+  list: StoredList,
   itemId: string
-): StoredLoadout {
+): StoredList {
   return {
-    ...loadout,
-    items: loadout.items.filter(item => item.itemId !== itemId),
+    ...list,
+    items: list.items.filter(item => item.itemId !== itemId),
   };
 }
 
 /**
- * Update item quantity in a loadout
+ * Update item quantity in a list
  */
 export function updateItemQuantity(
-  loadout: StoredLoadout,
+  list: StoredList,
   itemId: string,
   quantity: number
-): StoredLoadout {
+): StoredList {
   return {
-    ...loadout,
-    items: loadout.items.map(item =>
+    ...list,
+    items: list.items.map(item =>
       item.itemId === itemId ? { ...item, quantity } : item
     ),
   };
 }
 
 /**
- * Toggle item enabled state in a loadout
+ * Toggle item enabled state in a list
  */
 export function toggleItemEnabled(
-  loadout: StoredLoadout,
+  list: StoredList,
   itemId: string
-): StoredLoadout {
+): StoredList {
   return {
-    ...loadout,
-    items: loadout.items.map(item =>
+    ...list,
+    items: list.items.map(item =>
       item.itemId === itemId ? { ...item, isEnabled: !item.isEnabled } : item
     ),
   };
 }
 
 /**
- * Toggle loadout enabled state
+ * Toggle list enabled state
  */
-export function toggleLoadoutEnabled(loadout: StoredLoadout): StoredLoadout {
-  return { ...loadout, isEnabled: !loadout.isEnabled };
+export function toggleListEnabled(list: StoredList): StoredList {
+  return { ...list, isEnabled: !list.isEnabled };
 }
 
 /**
- * Rename a loadout
+ * Rename a list
  */
-export function renameLoadout(loadout: StoredLoadout, newName: string): StoredLoadout {
-  return { ...loadout, name: newName };
+export function renameList(list: StoredList, newName: string): StoredList {
+  return { ...list, name: newName };
+}
+
+/**
+ * Reorder items within a list using new item ID order
+ */
+export function reorderListItems(
+  list: StoredList,
+  reorderedItemIds: string[]
+): StoredList {
+  const itemMap = Object.fromEntries(list.items.map(i => [i.itemId, i]));
+  return {
+    ...list,
+    items: reorderedItemIds.map(id => itemMap[id]).filter(Boolean) as StoredList['items'],
+  };
 }

@@ -11,8 +11,8 @@
 
 import type { ItemsMap, BenchId } from '../../types/item';
 import type { ItemId, Qty, CraftStep, RecycleAction, CycleDiagnostic, UncraftableReason } from '../../types/planner';
+import type { TargetPriority } from './aggregation';
 import { NON_RECYCLABLE_CATEGORIES } from '../../types/item';
-import { LOADOUT_CATEGORY_ORDER } from '../../types/loadout';
 
 // ---------------------------------------------------------------------------
 // Public result
@@ -64,8 +64,6 @@ interface PlannerState {
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
-
-const LOADOUT_CATEGORIES = new Set<string>(LOADOUT_CATEGORY_ORDER);
 
 function getAvail(state: PlannerState, itemId: ItemId): Qty {
   return state.avail[itemId] ?? 0;
@@ -395,15 +393,17 @@ function phaseC(
  * Run the greedy planner for all missing targets.
  *
  * @param itemsMap       – Item database
- * @param requiredFinal  – Aggregated required items from loadouts
+ * @param requiredFinal  – Aggregated required items from lists
  * @param stash          – Current stash quantities
  * @param benchLevels    – Current bench levels
+ * @param targetPriority – Priority metadata from list aggregation
  */
 export function runGreedyPlanner(
   itemsMap: ItemsMap,
   requiredFinal: Record<ItemId, Qty>,
   stash: Record<ItemId, Qty>,
   benchLevels: Record<BenchId, number>,
+  targetPriority: Record<ItemId, TargetPriority> = {},
 ): GreedyPlanResult {
   // Compute missingFinal (CR-MOD-6.2)
   const missingFinal: Record<ItemId, Qty> = {};
@@ -414,8 +414,12 @@ export function runGreedyPlanner(
     }
   }
 
-  // Sort missing targets: value desc, itemId asc (CR-MOD-5.3)
+  // Sort missing targets: listIndex ASC, itemIndex ASC, value DESC, itemId ASC (CR-004)
   const sortedTargets = Object.keys(missingFinal).sort((a, b) => {
+    const prioA = targetPriority[a] ?? { listIndex: Infinity, itemIndex: Infinity };
+    const prioB = targetPriority[b] ?? { listIndex: Infinity, itemIndex: Infinity };
+    if (prioA.listIndex !== prioB.listIndex) return prioA.listIndex - prioB.listIndex;
+    if (prioA.itemIndex !== prioB.itemIndex) return prioA.itemIndex - prioB.itemIndex;
     const valA = itemsMap[a]?.value ?? 0;
     const valB = itemsMap[b]?.value ?? 0;
     if (valB !== valA) return valB - valA;
@@ -437,10 +441,10 @@ export function runGreedyPlanner(
     benchBlockers: new Set(),
   };
 
-  // Protect all loadout-category items and required final items from recycling
+  // Protect all non-recyclable-category items and required final items from recycling (CR-005, CR-009)
   for (const itemId of Object.keys(stash)) {
     const item = itemsMap[itemId];
-    if (item && LOADOUT_CATEGORIES.has(item.category)) {
+    if (item && NON_RECYCLABLE_CATEGORIES.has(item.category)) {
       state.protectedFromRecycle.add(itemId);
     }
   }

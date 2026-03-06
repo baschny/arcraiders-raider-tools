@@ -6,19 +6,20 @@
 
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import type { ItemsMap } from './types/item';
-import type { StoredLoadout } from './types/loadout';
+import type { StoredList } from './types/list';
 import type { StashItem, CurrentLoadoutItem, PlannerResult } from './types/planner';
 import { loadAllItems } from './utils/dataLoader';
-import { 
-  loadStoredLoadouts, 
-  saveStoredLoadouts, 
-  createNewLoadout,
-  addItemToLoadout,
-  removeItemFromLoadout,
+import {
+  loadStoredLists,
+  saveStoredLists,
+  createNewList,
+  addItemToList,
+  removeItemFromList,
   updateItemQuantity,
   toggleItemEnabled,
-  toggleLoadoutEnabled,
-  renameLoadout,
+  toggleListEnabled,
+  renameList,
+  reorderListItems,
 } from './utils/storage';
 import { computePlan, createEmptyResult } from './utils/planner';
 import {
@@ -39,7 +40,7 @@ import { GlobalHeader } from './components/GlobalHeader';
 import { AuthGate } from './components/AuthGate';
 import { StashView } from './components/views/StashView';
 import { CurrentLoadoutView } from './components/views/CurrentLoadoutView';
-import { LoadoutsView } from './components/views/LoadoutsView';
+import { ListsView } from './components/views/ListsView';
 import { InRaidView } from './components/views/InRaidView';
 import { CraftingView } from './components/views/CraftingView';
 
@@ -50,7 +51,7 @@ export function QuartermasterApp() {
 
   // Core state
   const [itemsMap, setItemsMap] = useState<ItemsMap | null>(null);
-  const [loadouts, setLoadouts] = useState<StoredLoadout[]>([]);
+  const [lists, setLists] = useState<StoredList[]>([]);
   const [stashItems, setStashItems] = useState<StashItem[]>([]);
   const [currentLoadout, setCurrentLoadout] = useState<CurrentLoadoutItem[]>([]);
   
@@ -59,7 +60,7 @@ export function QuartermasterApp() {
   const [cachedLoadout, setCachedLoadout] = useState<CachedLoadout | null>(null);
 
   // UI state
-  const [activeView, setActiveView] = useState<ViewId>('loadouts');
+  const [activeView, setActiveView] = useState<ViewId>('lists');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [syncError, setSyncError] = useState<string | null>(null);
@@ -74,9 +75,9 @@ export function QuartermasterApp() {
         const items = await loadAllItems();
         setItemsMap(items);
         
-        // Load stored loadouts
-        const stored = loadStoredLoadouts(items);
-        setLoadouts(stored);
+        // Load stored lists
+        const stored = loadStoredLists(items);
+        setLists(stored);
 
         // Load cached stash from IndexedDB (per spec 4.2.2)
         const stash = await getStash();
@@ -111,70 +112,83 @@ export function QuartermasterApp() {
     if (!itemsMap) {
       return createEmptyResult();
     }
-    return computePlan(itemsMap, loadouts, stashItems);
-  }, [itemsMap, loadouts, stashItems]);
+    return computePlan(itemsMap, lists, stashItems);
+  }, [itemsMap, lists, stashItems]);
 
-  // Loadout management callbacks
-  const handleCreateLoadout = useCallback((name: string) => {
-    const newLoadout = createNewLoadout(name);
-    const updated = [...loadouts, newLoadout];
-    setLoadouts(updated);
-    saveStoredLoadouts(updated);
-  }, [loadouts]);
+  // List management callbacks
+  const handleCreateList = useCallback((name: string) => {
+    const newList = createNewList(name);
+    const updated = [...lists, newList];
+    setLists(updated);
+    saveStoredLists(updated);
+  }, [lists]);
 
-  const handleDeleteLoadout = useCallback((id: string) => {
-    const updated = loadouts.filter(l => l.id !== id);
-    setLoadouts(updated);
-    saveStoredLoadouts(updated);
-  }, [loadouts]);
+  const handleDeleteList = useCallback((id: string) => {
+    const updated = lists.filter(l => l.id !== id);
+    setLists(updated);
+    saveStoredLists(updated);
+  }, [lists]);
 
-  const handleToggleLoadout = useCallback((id: string) => {
-    const updated = loadouts.map(l => 
-      l.id === id ? toggleLoadoutEnabled(l) : l
+  const handleToggleList = useCallback((id: string) => {
+    const updated = lists.map(l =>
+      l.id === id ? toggleListEnabled(l) : l
     );
-    setLoadouts(updated);
-    saveStoredLoadouts(updated);
-  }, [loadouts]);
+    setLists(updated);
+    saveStoredLists(updated);
+  }, [lists]);
 
-  const handleRenameLoadout = useCallback((id: string, name: string) => {
-    const updated = loadouts.map(l => 
-      l.id === id ? renameLoadout(l, name) : l
+  const handleRenameList = useCallback((id: string, name: string) => {
+    const updated = lists.map(l =>
+      l.id === id ? renameList(l, name) : l
     );
-    setLoadouts(updated);
-    saveStoredLoadouts(updated);
-  }, [loadouts]);
+    setLists(updated);
+    saveStoredLists(updated);
+  }, [lists]);
 
-  const handleAddItem = useCallback((loadoutId: string, itemId: string, quantity: number) => {
-    const updated = loadouts.map(l => 
-      l.id === loadoutId ? addItemToLoadout(l, itemId, quantity) : l
+  const handleAddItem = useCallback((listId: string, itemId: string, quantity: number) => {
+    const updated = lists.map(l =>
+      l.id === listId ? addItemToList(l, itemId, quantity) : l
     );
-    setLoadouts(updated);
-    saveStoredLoadouts(updated);
-  }, [loadouts]);
+    setLists(updated);
+    saveStoredLists(updated);
+  }, [lists]);
 
-  const handleRemoveItem = useCallback((loadoutId: string, itemId: string) => {
-    const updated = loadouts.map(l => 
-      l.id === loadoutId ? removeItemFromLoadout(l, itemId) : l
+  const handleRemoveItem = useCallback((listId: string, itemId: string) => {
+    const updated = lists.map(l =>
+      l.id === listId ? removeItemFromList(l, itemId) : l
     );
-    setLoadouts(updated);
-    saveStoredLoadouts(updated);
-  }, [loadouts]);
+    setLists(updated);
+    saveStoredLists(updated);
+  }, [lists]);
 
-  const handleUpdateQuantity = useCallback((loadoutId: string, itemId: string, quantity: number) => {
-    const updated = loadouts.map(l => 
-      l.id === loadoutId ? updateItemQuantity(l, itemId, quantity) : l
+  const handleUpdateQuantity = useCallback((listId: string, itemId: string, quantity: number) => {
+    const updated = lists.map(l =>
+      l.id === listId ? updateItemQuantity(l, itemId, quantity) : l
     );
-    setLoadouts(updated);
-    saveStoredLoadouts(updated);
-  }, [loadouts]);
+    setLists(updated);
+    saveStoredLists(updated);
+  }, [lists]);
 
-  const handleToggleItem = useCallback((loadoutId: string, itemId: string) => {
-    const updated = loadouts.map(l => 
-      l.id === loadoutId ? toggleItemEnabled(l, itemId) : l
+  const handleToggleItem = useCallback((listId: string, itemId: string) => {
+    const updated = lists.map(l =>
+      l.id === listId ? toggleItemEnabled(l, itemId) : l
     );
-    setLoadouts(updated);
-    saveStoredLoadouts(updated);
-  }, [loadouts]);
+    setLists(updated);
+    saveStoredLists(updated);
+  }, [lists]);
+
+  const handleReorderLists = useCallback((reorderedLists: StoredList[]) => {
+    setLists(reorderedLists);
+    saveStoredLists(reorderedLists);
+  }, []);
+
+  const handleReorderItems = useCallback((listId: string, reorderedItemIds: string[]) => {
+    const updated = lists.map(l =>
+      l.id === listId ? reorderListItems(l, reorderedItemIds) : l
+    );
+    setLists(updated);
+    saveStoredLists(updated);
+  }, [lists]);
 
   /**
    * Handle API errors per spec section 4.2.3 / 4.3.3
@@ -273,19 +287,21 @@ export function QuartermasterApp() {
           </AuthGate>
         );
 
-      case 'loadouts':
+      case 'lists':
         return (
-          <LoadoutsView
+          <ListsView
             itemsMap={itemsMap}
-            loadouts={loadouts}
-            onCreateLoadout={handleCreateLoadout}
-            onDeleteLoadout={handleDeleteLoadout}
-            onToggleLoadout={handleToggleLoadout}
-            onRenameLoadout={handleRenameLoadout}
+            lists={lists}
+            onCreateList={handleCreateList}
+            onDeleteList={handleDeleteList}
+            onToggleList={handleToggleList}
+            onRenameList={handleRenameList}
             onAddItem={handleAddItem}
             onRemoveItem={handleRemoveItem}
             onUpdateQuantity={handleUpdateQuantity}
             onToggleItem={handleToggleItem}
+            onReorderLists={handleReorderLists}
+            onReorderItems={handleReorderItems}
           />
         );
 

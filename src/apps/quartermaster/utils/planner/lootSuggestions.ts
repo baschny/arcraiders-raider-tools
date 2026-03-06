@@ -5,9 +5,7 @@
 
 import type { ItemsMap } from '../../types/item';
 import type { ItemId, Qty, LootSuggestion, LootReason, LootBadge, LootSuggestionList } from '../../types/planner';
-import { LOADOUT_CATEGORY_ORDER } from '../../types/loadout';
-
-const LOADOUT_CATEGORIES = new Set<string>(LOADOUT_CATEGORY_ORDER);
+import { NON_RECYCLABLE_CATEGORIES } from '../../types/item';
 
 /**
  * Fixed enum order for reasons
@@ -47,7 +45,7 @@ function isCraftingRelevant(
   item: { category: string; recyclesInto?: Record<string, number> },
   recipeRelevantSet: Set<ItemId>,
 ): boolean {
-  if (LOADOUT_CATEGORIES.has(item.category)) return false;
+  if (NON_RECYCLABLE_CATEGORIES.has(item.category)) return false;
   if (recipeRelevantSet.has(itemId)) return true;
   if (item.recyclesInto) {
     for (const yieldId of Object.keys(item.recyclesInto)) {
@@ -145,8 +143,8 @@ export function generateLootSuggestions(
   for (const itemId of allItemIds) {
     const item = itemsMap[itemId];
 
-    // Skip loadout category items entirely
-    if (LOADOUT_CATEGORIES.has(item.category)) continue;
+    // Skip non-recyclable category items entirely (CR-005)
+    if (NON_RECYCLABLE_CATEGORIES.has(item.category)) continue;
 
     // Skip non-crafting-relevant items
     if (!isCraftingRelevant(itemId, item, recipeRelevantSet)) continue;

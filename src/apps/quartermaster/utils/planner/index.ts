@@ -5,11 +5,11 @@
  */
 
 import type { ItemsMap, BenchId } from '../../types/item';
-import type { StoredLoadout } from '../../types/loadout';
+import type { StoredList } from '../../types/list';
 import type { PlannerResult, StashItem, ItemId, Qty } from '../../types/planner';
 import { BENCH_ORDER } from '../../types/item';
 
-import { aggregateRequired, getActiveLoadoutsCount } from './aggregation';
+import { aggregateRequired, getActiveListsCount } from './aggregation';
 import { runGreedyPlanner } from './greedyPlanner';
 import { buildPlanRows, getMissingItemsCount, buildBlockerSummary } from './deficit';
 import { generateLootSuggestions } from './lootSuggestions';
@@ -56,14 +56,14 @@ function sortCraftSteps(steps: PlannerResult['craftPlan']['steps']): PlannerResu
  */
 export function computePlan(
   itemsMap: ItemsMap,
-  loadouts: StoredLoadout[],
+  lists: StoredList[],
   stashItems: StashItem[],
   benchLevels: Record<BenchId, number> = DEFAULT_BENCH_LEVELS
 ): PlannerResult {
   const stash = stashToRecord(stashItems);
 
-  // Step 1: Aggregate required from enabled loadouts
-  const required = aggregateRequired(loadouts);
+  // Step 1: Aggregate required from enabled lists (CR-001)
+  const { required, targetPriority } = aggregateRequired(lists);
 
   // Step 2: Compute deficit (CR-MOD-6.2)
   const deficit: Record<ItemId, Qty> = {};
@@ -72,8 +72,8 @@ export function computePlan(
     if (d > 0) deficit[itemId] = d;
   }
 
-  // Step 3: Run greedy planner (CR-MOD-6.4)
-  const greedyResult = runGreedyPlanner(itemsMap, required, stash, benchLevels);
+  // Step 3: Run greedy planner with priority ordering (CR-004)
+  const greedyResult = runGreedyPlanner(itemsMap, required, stash, benchLevels, targetPriority);
 
   // Step 4: Build sorted craft plan (fully satisfiable only in Craft UI)
   const craftPlan = { steps: sortCraftSteps(greedyResult.craftSteps) };
@@ -107,7 +107,7 @@ export function computePlan(
 
     satisfiableTargets: greedyResult.satisfiableTargets,
 
-    activeLoadoutsCount: getActiveLoadoutsCount(loadouts),
+    activeListsCount: getActiveListsCount(lists),
     totalMissingItemsCount: getMissingItemsCount(deficit),
     totalRecycleActionsCount: recyclePlan.actions.length,
     totalCraftStepsCount: craftPlan.steps.length,
@@ -134,7 +134,7 @@ export function createEmptyResult(): PlannerResult {
       cycleDiagnostics: [],
     },
     satisfiableTargets: new Set(),
-    activeLoadoutsCount: 0,
+    activeListsCount: 0,
     totalMissingItemsCount: 0,
     totalRecycleActionsCount: 0,
     totalCraftStepsCount: 0,
