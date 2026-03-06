@@ -85,10 +85,12 @@ The system must:
 - Aggregate multiple lists.
 - Compute global material requirements.
 - Provide deterministic and meaningful crafting and recycling suggestions.
+- Provide deterministic and meaningful loot suggestions for both crafting support materials and loot-only final targets.
 - Limit crafting depth to practical real-world gameplay expectations.
 - Avoid unnecessary or confusing steps.
 - Reserve required materials before recycling.
 - Suggest lootable crafting materials relevant to active lists.
+- Suggest missing loot-only final targets relevant to active lists.
 - Provide workbench-grouped crafting instructions.
 - Operate deterministically.
 
@@ -104,7 +106,7 @@ The system must:
 - No in-app execution of actions.
 - Advisory-only behavior.
 - Deterministic results for identical inputs.
-- Practical, real-world planning model aligned with how players actually craft and recycle in-game.
+- Practical, real-world planning model aligned with how players actually craft, recycle, and loot in-game.
 - Crafting depth limited to at most two levels.
 - Recycling limited to a single transformation hop (no chaining).
 
@@ -652,8 +654,9 @@ if item.category in nonRecyclableCategories:
 
 Additionally:
 
-- Items in `nonRecyclableCategories` are excluded from loot suggestions.
+- Items in `nonRecyclableCategories` are excluded from loot suggestions only as recycle-based or salvage-based acquisition candidates.
 - Items in `nonRecyclableCategories` are never recycled by the planner.
+- If an item in `nonRecyclableCategories` is itself a missing final target, it may still appear in the In Raid view as a direct bring-home target.
 
 ---
 
@@ -735,6 +738,16 @@ If an item cannot be crafted due to blueprint or bench restriction:
 - It remains a target but may become unreachable in planner results.
 - The UI must display a warning indicator.
 
+Each `requiredFinal[itemId]` entry retains provenance of all contributing lists.
+
+For each required item, planner output must be able to derive:
+
+- which list names contributed to that item,
+- total required quantity across lists,
+- per-list contribution quantity.
+
+This provenance is used by the UI for explanatory detail, especially in the In Raid view.
+
 ---
 
 ## 6.2 Stash Totals and Missing Final Items
@@ -776,6 +789,22 @@ An item is crafting-relevant if:
   item.recyclesInto yields any material in `recipeRelevantSet`)
 
 Salvage is not considered for crafting-relevance.
+
+### 6.3.4 Loot-Only Final Targets
+
+A final target item is a loot-only final target if all of the following are true:
+
+- `missingFinal[itemId] > 0`
+- the item is present in `requiredFinal`
+- the item is not locally craftable into itself within planner rules
+- the item must therefore be obtained directly from raid loot
+
+Clarifications:
+
+- An item may be a loot-only final target even if it has `recyclesInto` or `salvagesInto`.
+- Recycling and salvage outputs do not make the item craftable.
+- Loot-only final targets are primary acquisition targets and must be surfaced in the In Raid view.
+- Loot-only final targets are independent from crafting-relevance and are not filtered out by section 6.3.3.
 
 ---
 
@@ -915,35 +944,53 @@ If a recipe cycle is encountered within depth-2 traversal:
 
 ---
 
-## 6.5 Loot Suggestions (Crafting Materials Only)
+## 6.5 In-Raid Acquisition Suggestions
 
 After local planning completes:
 
-Determine missing needed materials:
+Determine in-raid acquisition candidates from two independent sources:
 
-- Missing direct inputs (Level-1)
-- Missing Level-2 inputs
+1. Direct loot targets:
+    - Any item with `missingFinal[itemId] > 0` that remains required as a final target and is not satisfiable through local crafting under planner rules.
+    - These items are suggested because the player must bring them home directly from raid.
 
-Generate suggestions only for crafting-relevant items.
+2. Craft-support materials:
+    - Missing direct inputs (Level-1)
+    - Missing Level-2 inputs
 
-Exclude all items in `nonRecyclableCategories`.
+Suggestion generation rules:
+
+- Include direct loot targets regardless of whether they are crafting-relevant.
+- Include craft-support materials only for crafting-relevant items.
+- Exclude items in `nonRecyclableCategories` only as recycle-based or salvage-based acquisition candidates, not as direct final-target bring-home suggestions.
+- Salvage is in-raid only and may be recommended to save backpack space.
 
 ### Suggestion Types
 
-1. **BRING_HOME (direct material)**
+1. **BRING_HOME (final target)**
+    - Item is a missing loot-only final target.
+    - Quantity relevance is based on `missingFinal[itemId]`.
+
+2. **BRING_HOME (direct material)**
     - ItemId directly in missing needed materials set.
 
-2. **SALVAGE (in-raid)**
+3. **SALVAGE (in-raid)**
     - `salvagesInto` yields missing needed materials.
 
-3. **BRING_HOME (recycle yields)**
+4. **BRING_HOME (recycle yields)**
     - `recyclesInto` yields missing needed materials.
-
-Salvage is in-raid only and may be recommended to save backpack space.
 
 Deterministic ordering:
 
-- Sorted by itemId ascending.
+1. Missing final targets first.
+2. Then craft-support suggestions.
+3. Within each group sorted by itemId ascending.
+
+If an item matches multiple suggestion types:
+
+- The item appears only once in the In Raid view.
+- The hover detail must explain all applicable reasons.
+- If the item is both a missing final target and a craft-support candidate, final-target reason takes precedence for top-level categorization.
 
 ---
 
@@ -1055,11 +1102,16 @@ The "Icon" column uses the reusable Item Icon Component defined in section 7.7.
 
 Indicators:
 
+- 🎯 Direct Target
 - 🔧 Required for Crafting
 - 🔒 Reserved (Project/Hideout)
 - 🔄 To Recycle
 - ⚠ Missing
 - 🚫 Uncraftable
+
+Indicator meaning:
+
+- 🎯 Direct Target means the item itself is a missing final target from at least one active list and should be brought home directly if encountered in raid.
 
 ### 7.2.3 Expand Row
 
@@ -1181,7 +1233,12 @@ Per item controls:
 
 ### 7.5.1 Loot Grid
 
-Alphabetical by itemId.
+Alphabetical by itemId within each suggestion group.
+
+The In Raid view must display both:
+
+- missing loot-only final targets that should be brought home directly, and
+- items relevant to missing crafting materials via direct use, salvage, or recycling.
 
 Each grid cell renders the Item Icon Component defined in section 7.7.
 
@@ -1191,6 +1248,12 @@ Badge:
 
 - CAN SALVAGE
 - BRING HOME
+
+Badge meaning:
+
+- BRING HOME may mean either:
+    - this item is itself a missing final target, or
+    - this item contributes to missing crafting requirements.
 
 Item name is always shown below the icon, even in this grid view.
 
@@ -1204,9 +1267,15 @@ Optional small count: number of impacted targets.
 
 Displays:
 
+- Missing as final target for active list(s), including list name(s)
+- Required quantity vs stash quantity vs missing quantity
 - Required for (final list items)
 - Produces needed materials for (final list items)
 - Recycling vs salvage comparison
+
+If an item is itself a missing final target, the hover detail must show the contributing list names from section 6.1.2 provenance, for example a list such as "Bench X progression".
+
+If an item matches multiple reasons for inclusion in the In Raid view, the hover detail must explain all applicable reasons deterministically.
 
 ---
 
@@ -1361,10 +1430,11 @@ Quantity overlay:
 Badges:
 
 - Rendered as small overlay elements within the icon container.
-- Used for KEEP / RECYCLE / DISCARD / Missing / Uncraftable indicators.
+- Used for KEEP / RECYCLE / DISCARD / Missing / Uncraftable / Direct Target indicators.
 - Badge precedence:
     - KEEP > RECYCLE > DISCARD
     - Missing and Uncraftable indicators are always shown in addition to advisory badge when applicable.
+    - Direct Target indicator is always shown when applicable and must not be hidden by advisory badge.
 - Badge rendering order must be deterministic.
 
 ---
@@ -1408,6 +1478,7 @@ Rules:
 - API calls proxied via shared arctrackerApi service.
 - Authentication handled by shared AuthContext.
 - No cycles expected; guardrail exists.
+- Missing final targets may be either craftable targets or loot-only final targets.
 
 ---
 
@@ -1453,11 +1524,13 @@ Tests must verify:
 - Depth limit respected.
 - No recycle chaining.
 - CraftQuantity oversupply behavior.
-- Loadout categories excluded from recycling and loot suggestions.
+- Loadout categories excluded from recycling and from recycle-based or salvage-based loot suggestions.
+- Missing final targets that are not locally craftable appear in the In Raid view as direct bring-home targets.
 - Salvage suggestions appear only as in-raid hint.
 - Value-based ordering deterministic.
 - Unknown API itemIds ignored.
 - Blueprint/bench restrictions enforced at list level.
+- List provenance for direct final targets is preserved and surfaced in hover detail.
 
 Canonical scenarios:
 
@@ -1468,5 +1541,6 @@ Canonical scenarios:
 5. Depth limit prevents deeper craft.
 6. CraftQuantity oversupply.
 7. No recycle chaining.
-8. Exclusion of nonRecyclableCategories from loot suggestions.
+8. Exclusion of nonRecyclableCategories from recycle-based and salvage-based loot suggestions.
 9. Deterministic target ordering by list order, item order, value, then itemId.
+10. Missing loot-only final target appears in In Raid with contributing list names.

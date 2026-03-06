@@ -66,7 +66,7 @@ export function CraftingView({
           <table className="qm-table">
             <thead>
               <tr>
-                <th style={{ width: 60 }}>Item</th>
+                <th style={{ width: 80 }}>Item</th>
                 <th>Name</th>
                 <th style={{ width: 100 }}>Qty to Recycle</th>
                 <th>Yields</th>
@@ -132,7 +132,7 @@ export function CraftingView({
                 <table className="qm-table">
                   <thead>
                     <tr>
-                      <th style={{ width: 60 }}>Item</th>
+                      <th style={{ width: 80 }}>Item</th>
                       <th>Name</th>
                       <th style={{ width: 100 }}>Craft Times</th>
                       <th style={{ width: 100 }}>Total Output</th>

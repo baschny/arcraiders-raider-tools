@@ -13,6 +13,7 @@ import { aggregateRequired, getActiveListsCount } from './aggregation';
 import { runGreedyPlanner } from './greedyPlanner';
 import { buildPlanRows, getMissingItemsCount, buildBlockerSummary } from './deficit';
 import { generateLootSuggestions } from './lootSuggestions';
+import { generateInRaidSuggestions } from './inRaidSuggestions';
 
 /**
  * Default bench levels (all at max per spec v1)
@@ -62,8 +63,8 @@ export function computePlan(
 ): PlannerResult {
   const stash = stashToRecord(stashItems);
 
-  // Step 1: Aggregate required from enabled lists (CR-001)
-  const { required, targetPriority } = aggregateRequired(lists);
+  // Step 1: Aggregate required from enabled lists (CR-001, CR-003)
+  const { required, targetPriority, requiredSourcesByItemId } = aggregateRequired(lists);
 
   // Step 2: Compute deficit (CR-MOD-6.2)
   const deficit: Record<ItemId, Qty> = {};
@@ -87,6 +88,15 @@ export function computePlan(
   }
   const lootSuggestions = generateLootSuggestions(itemsMap, lootDeficits, required);
 
+  // Step 5b: Generate In-Raid acquisition suggestions (CR-005)
+  const inRaidSuggestions = generateInRaidSuggestions(
+    itemsMap,
+    lootDeficits,
+    required,
+    greedyResult.satisfiableTargets,
+    requiredSourcesByItemId,
+  );
+
   // Step 6: Build plan rows with badges
   const planRows = buildPlanRows(itemsMap, required, stash, greedyResult);
 
@@ -102,6 +112,9 @@ export function computePlan(
     craftPlan,
     recyclePlan,
     lootSuggestions,
+    inRaidSuggestions,
+
+    requiredSourcesByItemId,
 
     blockers,
 
@@ -126,6 +139,8 @@ export function createEmptyResult(): PlannerResult {
     craftPlan: { steps: [] },
     recyclePlan: { actions: [] },
     lootSuggestions: { items: [] },
+    inRaidSuggestions: { items: [] },
+    requiredSourcesByItemId: {},
     blockers: {
       missingBaseMaterials: [],
       benchBlockers: [],

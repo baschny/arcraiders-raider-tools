@@ -175,7 +175,7 @@ export function StashView({
         <table className="qm-table">
           <thead>
             <tr>
-              <th style={{ width: 60 }}>Icon</th>
+              <th style={{ width: 80 }}>Icon</th>
               <th>Item</th>
               <th style={{ width: 80 }}>Quantity</th>
               <th style={{ width: 80 }}>Required</th>
@@ -216,6 +216,11 @@ export function StashView({
                         {planRow.badge === 'HAVE' && '✓ Have'}
                         {planRow.badge === 'CAN_CRAFT' && '🔧 Can Craft'}
                         {planRow.badge === 'MISSING' && '⚠ Missing'}
+                      </span>
+                    )}
+                    {(planRow?.missing ?? 0) > 0 && !plannerResult.satisfiableTargets.has(stashItem.itemId) && (plannerResult.required[stashItem.itemId] ?? 0) > 0 && (
+                      <span className="stash-view__indicator stash-view__indicator--direct-target">
+                        🎯 Direct Target
                       </span>
                     )}
                     {toRecycle && (

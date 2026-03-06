@@ -18,6 +18,27 @@ export type LootReason =
 
 export type LootBadge = 'CAN_SALVAGE' | 'BRING_HOME';
 
+// In-Raid acquisition types (CR-005)
+export type InRaidReason =
+  | 'BRING_HOME_FINAL_TARGET'
+  | 'BRING_HOME_DIRECT_MATERIAL'
+  | 'SALVAGE_FOR_MATERIAL'
+  | 'BRING_HOME_FOR_RECYCLE_YIELD';
+
+export interface RequiredSource {
+  listId: string;
+  listName: string;
+  quantity: number;
+}
+
+export interface InRaidSuggestion {
+  itemId: ItemId;
+  reasons: InRaidReason[];
+  badge: LootBadge;
+  impactedTargetItemIds: string[];
+  listSources?: RequiredSource[];
+}
+
 // Loadout badge for Current Loadout / Stash views (CR-MOD-7)
 export type LoadoutBadge = 'HAVE' | 'CAN_CRAFT' | 'MISSING';
 
@@ -58,7 +79,7 @@ export interface RecyclePlan {
   actions: RecycleAction[];
 }
 
-// Loot Suggestions (section 6.8.6)
+// Loot Suggestions (section 6.8.6) - legacy
 export interface LootSuggestion {
   itemId: ItemId;
   reasons: LootReason[];
@@ -68,6 +89,11 @@ export interface LootSuggestion {
 
 export interface LootSuggestionList {
   items: LootSuggestion[];
+}
+
+// In-Raid Suggestion List (CR-005)
+export interface InRaidSuggestionList {
+  items: InRaidSuggestion[];
 }
 
 // Blockers and Diagnostics (section 6.8.7)
@@ -93,6 +119,10 @@ export interface PlannerResult {
   craftPlan: CraftPlan;
   recyclePlan: RecyclePlan;
   lootSuggestions: LootSuggestionList;
+  inRaidSuggestions: InRaidSuggestionList;
+
+  /** Per-item list provenance (CR-003) */
+  requiredSourcesByItemId: Record<ItemId, RequiredSource[]>;
 
   blockers: BlockerSummary;
 

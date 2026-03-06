@@ -4,7 +4,7 @@
  */
 
 import type { StoredList } from '../../types/list';
-import type { ItemId, Qty } from '../../types/planner';
+import type { ItemId, Qty, RequiredSource } from '../../types/planner';
 
 export interface TargetPriority {
   listIndex: number;
@@ -14,6 +14,7 @@ export interface TargetPriority {
 export interface AggregationResult {
   required: Record<ItemId, Qty>;
   targetPriority: Record<ItemId, TargetPriority>;
+  requiredSourcesByItemId: Record<ItemId, RequiredSource[]>;
 }
 
 /**
@@ -24,6 +25,7 @@ export interface AggregationResult {
 export function aggregateRequired(lists: StoredList[]): AggregationResult {
   const required: Record<ItemId, Qty> = {};
   const targetPriority: Record<ItemId, TargetPriority> = {};
+  const requiredSourcesByItemId: Record<ItemId, RequiredSource[]> = {};
 
   for (let listIndex = 0; listIndex < lists.length; listIndex++) {
     const list = lists[listIndex];
@@ -39,10 +41,25 @@ export function aggregateRequired(lists: StoredList[]): AggregationResult {
       if (!targetPriority[item.itemId]) {
         targetPriority[item.itemId] = { listIndex, itemIndex };
       }
+
+      // Track list provenance (CR-003)
+      if (!requiredSourcesByItemId[item.itemId]) {
+        requiredSourcesByItemId[item.itemId] = [];
+      }
+      const existingSource = requiredSourcesByItemId[item.itemId].find(s => s.listId === list.id);
+      if (existingSource) {
+        existingSource.quantity += item.quantity;
+      } else {
+        requiredSourcesByItemId[item.itemId].push({
+          listId: list.id,
+          listName: list.name,
+          quantity: item.quantity,
+        });
+      }
     }
   }
 
-  return { required, targetPriority };
+  return { required, targetPriority, requiredSourcesByItemId };
 }
 
 /**
