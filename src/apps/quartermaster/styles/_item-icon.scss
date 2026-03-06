@@ -88,16 +88,34 @@
       background: $status-uncraftable;
       color: white;
     }
+
+    &--direct-target {
+      background: $badge-direct-target;
+      color: white;
+    }
   }
 
   &__name {
-    font-size: 13px;
+    font-size: $font-sm;
     color: $text-primary;
     text-align: center;
     max-width: $item-icon-md + 30px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+
+    // In raid view: allow multiline word-wrap
+    .in-raid-view & {
+      white-space: normal;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      line-height: 1.3;
+      max-width: $item-icon-md + 30px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
   }
 
   // Size variants
@@ -108,10 +126,10 @@
     }
     .item-icon__name {
       max-width: $item-icon-sm + 24px;
-      font-size: 12px;
+      font-size: $font-xs;
     }
     .item-icon__quantity {
-      font-size: 12px;
+      font-size: $font-xs;
     }
   }
 

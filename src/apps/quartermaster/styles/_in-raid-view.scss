@@ -3,8 +3,8 @@
 .in-raid-view {
   &__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-    gap: $spacing-md;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: $spacing-lg;
   }
 
   &__item {
@@ -18,24 +18,22 @@
     }
   }
 
-  &__badge {
-    position: absolute;
-    top: 2px;
-    right: 2px;
-    font-size: 7px;
-    font-weight: 600;
-    padding: 1px 3px;
-    border-radius: 2px;
-    text-transform: uppercase;
+  &__action-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+
+    &--target {
+      color: #e53935;
+    }
 
     &--salvage {
-      background: $badge-salvage;
-      color: white;
+      color: #4caf50;
     }
 
     &--bring-home {
-      background: $badge-bring-home;
-      color: white;
+      color: #ff9800;
     }
   }
 

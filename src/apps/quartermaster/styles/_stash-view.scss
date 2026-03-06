@@ -67,5 +67,10 @@
       background: rgba($status-uncraftable, 0.2);
       color: $status-uncraftable;
     }
+
+    &--direct-target {
+      background: rgba($badge-direct-target, 0.2);
+      color: $badge-direct-target;
+    }
   }
 }
