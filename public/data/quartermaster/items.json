@@ -153,6 +153,27 @@
         "Nature"
       ]
     },
+    "agave_juice": {
+      "name": "Agave Juice",
+      "description": "A concoction that temporarily increases stamina regeneration, at a small initial cost to health.",
+      "icon": "https://cdn.arctracker.io/items/agave_juice.png",
+      "rarity": "Common",
+      "type": "Quick Use",
+      "category": "Quick Use",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "recipe": {
+        "agave": 1,
+        "empty_wine_bottle": 1
+      },
+      "salvagesInto": {
+        "empty_wine_bottle": 1
+      },
+      "stackSize": 5,
+      "value": 1800,
+      "weight": 0.2
+    },
     "air_freshener": {
       "name": "Air Freshener",
       "description": "May be worth a few coins.",
@@ -495,6 +516,32 @@
         "Nature"
       ]
     },
+    "arc_alloy": {
+      "name": "ARC Alloy",
+      "description": "Obtained from ARC enemies or activities, or by recycling certain ARC parts. Used to craft components. Used to craft: Light Shield, ARC Motion Core, ARC Circuitry",
+      "icon": "https://cdn.arctracker.io/items/arc_alloy.png",
+      "rarity": "Uncommon",
+      "type": "Topside Material",
+      "category": "Topside Material",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "recipe": {
+        "wasp_driver": 1
+      },
+      "recyclesInto": {
+        "metal_parts": 2
+      },
+      "salvagesInto": {
+        "metal_parts": 1
+      },
+      "stackSize": 15,
+      "value": 200,
+      "weight": 0.25,
+      "foundIn": [
+        "ARC"
+      ]
+    },
     "arc_circuitry": {
       "name": "ARC Circuitry",
       "description": "Obtained from ARC enemies or activities. Used to craft components. Can be recycled into ARC Alloy. Used to craft: Medium Shield, Power Rod",
@@ -614,6 +661,32 @@
       "stackSize": 3,
       "value": 1000,
       "weight": 1,
+      "foundIn": [
+        "ARC"
+      ]
+    },
+    "arc_powercell": {
+      "name": "ARC Powercell",
+      "description": "Valuable resource that drops from all ARC enemies. Used to craft: Shield Recharger Can be used to repair shields.",
+      "icon": "https://cdn.arctracker.io/items/arc_powercell.png",
+      "rarity": "Common",
+      "type": "Topside Material",
+      "category": "Topside Material",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "recipe": {
+        "advanced_arc_powercell": 1
+      },
+      "recyclesInto": {
+        "arc_alloy": 1
+      },
+      "salvagesInto": {
+        "metal_parts": 1
+      },
+      "stackSize": 5,
+      "value": 270,
+      "weight": 0.5,
       "foundIn": [
         "ARC"
       ]
@@ -760,6 +833,26 @@
       "value": 15000,
       "weight": 7
     },
+    "assorted_seeds": {
+      "name": "Assorted Seeds",
+      "description": "A handful of seeds. Celeste might be looking for these.",
+      "icon": "https://cdn.arctracker.io/items/assorted_seeds.png",
+      "rarity": "Common",
+      "type": "Nature",
+      "category": "Nature",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "recipe": {
+        "agave": 1
+      },
+      "stackSize": 100,
+      "value": 100,
+      "weight": 0.05,
+      "foundIn": [
+        "Nature"
+      ]
+    },
     "bandage": {
       "name": "Bandage",
       "description": "A medical item that gradually restores health over time.",
@@ -832,6 +925,33 @@
       "weight": 1,
       "foundIn": [
         "ARC"
+      ]
+    },
+    "battery": {
+      "name": "Battery",
+      "description": "Used to craft a wide range of items. Can be recycled into scrap metal. Used to craft: Energy Clip, Medium Shield, Jolt Mine",
+      "icon": "https://cdn.arctracker.io/items/battery.png",
+      "rarity": "Uncommon",
+      "type": "Topside Material",
+      "category": "Topside Material",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "recipe": {
+        "jolt_mine": 1
+      },
+      "recyclesInto": {
+        "metal_parts": 2
+      },
+      "salvagesInto": {
+        "metal_parts": 1
+      },
+      "stackSize": 15,
+      "value": 250,
+      "weight": 0.25,
+      "foundIn": [
+        "Technological",
+        "Electrical"
       ]
     },
     "bettina_i": {
@@ -1008,6 +1128,24 @@
       "stackSize": 5,
       "value": 1600,
       "weight": 0.2
+    },
+    "blaze_grenade_trap": {
+      "name": "Blaze Grenade Trap",
+      "description": "A laser trip wire that detonates a Blaze Grenade.",
+      "icon": "https://cdn.arctracker.io/items/blaze_grenade_trap.png",
+      "rarity": "Rare",
+      "type": "Quick Use",
+      "category": "Quick Use",
+      "stationLevelRequired": 1,
+      "blueprintLocked": true,
+      "craftQuantity": 1,
+      "recipe": {
+        "blaze_grenade": 1,
+        "wires": 1
+      },
+      "stackSize": 3,
+      "value": 1000,
+      "weight": 0.3
     },
     "bloated_tuna_can": {
       "name": "Bloated Tuna Can",
@@ -1602,6 +1740,32 @@
         "Nature"
       ]
     },
+    "canister": {
+      "name": "Canister",
+      "description": "Used to craft a wide range of items. Can be recycled into plastic. Used to craft: Bettina, Vita Spray, Heavy Fuze Grenade, Smoke Grenade",
+      "icon": "https://cdn.arctracker.io/items/canister.png",
+      "rarity": "Uncommon",
+      "type": "Topside Material",
+      "category": "Topside Material",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "recipe": {
+        "bicycle_pump": 1
+      },
+      "recyclesInto": {
+        "plastic_parts": 3
+      },
+      "salvagesInto": {
+        "plastic_parts": 1
+      },
+      "stackSize": 15,
+      "value": 300,
+      "weight": 0.25,
+      "foundIn": [
+        "Commercial"
+      ]
+    },
     "cat_bed": {
       "name": "Cat Bed",
       "description": "At least a tiny bit more comfortable than your face.",
@@ -1632,6 +1796,28 @@
       "craftQuantity": 1,
       "stackSize": 1,
       "weight": 0.25
+    },
+    "chemicals": {
+      "name": "Chemicals",
+      "description": "Used to craft medical supplies, explosives, and utility items. Used to craft: Heavy Ammo, Medium Ammo, Shotgun Ammo, Light Ammo, Light Impact Grenade",
+      "icon": "https://cdn.arctracker.io/items/chemicals.png",
+      "rarity": "Common",
+      "type": "Basic Material",
+      "category": "Basic Material",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "recipe": {
+        "gas_grenade": 1
+      },
+      "stackSize": 50,
+      "value": 50,
+      "weight": 0.15,
+      "foundIn": [
+        "Medical",
+        "Residential",
+        "Mechanical"
+      ]
     },
     "coffee_pot": {
       "name": "Coffee Pot",
@@ -2642,6 +2828,24 @@
         "Electrical"
       ]
     },
+    "empty_wine_bottle": {
+      "name": "Empty Wine Bottle",
+      "description": "Yes, it really is empty.",
+      "icon": "https://cdn.arctracker.io/items/empty_wine_bottle.png",
+      "rarity": "Common",
+      "type": "Trinket",
+      "category": "Trinket",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "stackSize": 5,
+      "value": 1000,
+      "weight": 0.2,
+      "foundIn": [
+        "Residential",
+        "Commercial"
+      ]
+    },
     "energy_clip": {
       "name": "Energy Clip",
       "description": "Compatible with: Equalizer, Jupiter",
@@ -2715,6 +2919,33 @@
       "craftQuantity": 1,
       "stackSize": 1,
       "weight": 0.25
+    },
+    "exodus_modules": {
+      "name": "Exodus Modules",
+      "description": "Used to craft a wide range of items. Used to craft: Tempest, Vulcano, Hullcracker, Bobcat, Snap Hook",
+      "icon": "https://cdn.arctracker.io/items/exodus_modules.png",
+      "rarity": "Epic",
+      "type": "Topside Material",
+      "category": "Topside Material",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "recipe": {
+        "ion_sputter": 1
+      },
+      "recyclesInto": {
+        "magnet": 2,
+        "processor": 2
+      },
+      "salvagesInto": {
+        "processor": 2
+      },
+      "stackSize": 3,
+      "value": 2750,
+      "weight": 1,
+      "foundIn": [
+        "Exodus"
+      ]
     },
     "experimental_seed_sample": {
       "name": "Experimental Seed Sample",
@@ -3084,6 +3315,31 @@
       "value": 5000,
       "weight": 0.75
     },
+    "fabric": {
+      "name": "Fabric",
+      "description": "Used to craft medical supplies and shields. Can be used to slowly restore small amounts of health.",
+      "icon": "https://cdn.arctracker.io/items/fabric.png",
+      "rarity": "Common",
+      "type": "Basic Material",
+      "category": "Basic Material",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "recipe": {
+        "tattered_clothes": 1
+      },
+      "salvagesInto": {
+        "bandage": 1
+      },
+      "stackSize": 50,
+      "value": 50,
+      "weight": 0.1,
+      "foundIn": [
+        "Commercial",
+        "Medical",
+        "Residential"
+      ]
+    },
     "faded_photograph": {
       "name": "Faded Photograph",
       "description": "A snapshot of the world before, faded by sunlight and time.",
@@ -3270,6 +3526,33 @@
         "Commercial"
       ]
     },
+    "fireball_burner": {
+      "name": "Fireball Burner",
+      "description": "Can be recycled into ARC Alloy. Can be thrown to create small fires.",
+      "icon": "https://cdn.arctracker.io/items/fireball_burner.png",
+      "rarity": "Uncommon",
+      "type": "Recyclable",
+      "category": "Recyclable",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "recipe": {
+        "flame_spray": 1
+      },
+      "recyclesInto": {
+        "arc_alloy": 1,
+        "crude_explosives": 1
+      },
+      "salvagesInto": {
+        "arc_alloy": 1
+      },
+      "stackSize": 3,
+      "value": 640,
+      "weight": 0.5,
+      "foundIn": [
+        "ARC"
+      ]
+    },
     "firecracker": {
       "name": "Firecracker",
       "description": "A device that sparks and pops in a pleasant manner.",
@@ -3384,6 +3667,31 @@
       "craftQuantity": 1,
       "stackSize": 1,
       "weight": 0.25
+    },
+    "flame_spray": {
+      "name": "Flame Spray",
+      "description": "A classic makeshift weapon, sure to leave scorch marks.",
+      "icon": "https://cdn.arctracker.io/items/flame_spray.png",
+      "rarity": "Uncommon",
+      "type": "Quick Use",
+      "category": "Quick Use",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "recipe": {
+        "air_freshener": 1,
+        "fireball_burner": 1
+      },
+      "recyclesInto": {
+        "canister": 1,
+        "fireball_burner": 1
+      },
+      "salvagesInto": {
+        "fireball_burner": 1
+      },
+      "stackSize": 1,
+      "value": 2000,
+      "weight": 1
     },
     "flashy_duck": {
       "name": "Flashy Duck",
@@ -3522,6 +3830,25 @@
         "Technological"
       ]
     },
+    "fruit_mix": {
+      "name": "Fruit Mix",
+      "description": "A food item that moderately increases both health and stamina.",
+      "icon": "https://cdn.arctracker.io/items/fruit_mix.png",
+      "rarity": "Uncommon",
+      "type": "Quick Use",
+      "category": "Quick Use",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "recipe": {
+        "apricot": 1,
+        "lemon": 1,
+        "prickly_pear": 1
+      },
+      "stackSize": 5,
+      "value": 1800,
+      "weight": 0.3
+    },
     "frying_pan": {
       "name": "Frying Pan",
       "description": "Can be recycled into crafting materials.",
@@ -3595,6 +3922,24 @@
       "stackSize": 3,
       "value": 270,
       "weight": 0.2
+    },
+    "gas_grenade_trap": {
+      "name": "Gas Grenade Trap",
+      "description": "A laser trip wire that detonates a Gas Grenade.",
+      "icon": "https://cdn.arctracker.io/items/gas_grenade_trap.png",
+      "rarity": "Common",
+      "type": "Quick Use",
+      "category": "Quick Use",
+      "stationLevelRequired": 1,
+      "blueprintLocked": true,
+      "craftQuantity": 1,
+      "recipe": {
+        "gas_grenade": 1,
+        "wires": 1
+      },
+      "stackSize": 3,
+      "value": 300,
+      "weight": 0.25
     },
     "gas_mine": {
       "name": "Gas Mine",
@@ -5016,6 +5361,50 @@
       "value": 1000,
       "weight": 0.4
     },
+    "lure_grenade_trap": {
+      "name": "Lure Grenade Trap",
+      "description": "A laser trip wire that detonates a Lure Grenade.",
+      "icon": "https://cdn.arctracker.io/items/lure_grenade_trap.png",
+      "rarity": "Uncommon",
+      "type": "Quick Use",
+      "category": "Quick Use",
+      "stationLevelRequired": 1,
+      "blueprintLocked": true,
+      "craftQuantity": 1,
+      "recipe": {
+        "lure_grenade": 1,
+        "wires": 1
+      },
+      "stackSize": 3,
+      "value": 1000,
+      "weight": 0.25
+    },
+    "magnet": {
+      "name": "Magnet",
+      "description": "Used to craft a wide range of items. Can be recycled into crafting materials.",
+      "icon": "https://cdn.arctracker.io/items/magnet.png",
+      "rarity": "Uncommon",
+      "type": "Topside Material",
+      "category": "Topside Material",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "recipe": {
+        "industrial_magnet": 1
+      },
+      "recyclesInto": {
+        "metal_parts": 2
+      },
+      "salvagesInto": {
+        "metal_parts": 1
+      },
+      "stackSize": 15,
+      "value": 300,
+      "weight": 0.25,
+      "foundIn": [
+        "Exodus"
+      ]
+    },
     "magnetic_accelerator": {
       "name": "Magnetic Accelerator",
       "description": "Used to craft advanced weapons. Used to craft: Tempest, Equalizer, Vulcano, Jupiter, Hullcracker",
@@ -5240,6 +5629,29 @@
       "foundIn": [
         "Mechanical",
         "Electrical"
+      ]
+    },
+    "metal_parts": {
+      "name": "Metal Parts",
+      "description": "Used to craft a wide range of items.",
+      "icon": "https://cdn.arctracker.io/items/metal_parts.png",
+      "rarity": "Common",
+      "type": "Basic Material",
+      "category": "Basic Material",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "recipe": {
+        "damaged_tick_pod": 1
+      },
+      "stackSize": 50,
+      "value": 75,
+      "weight": 0.1,
+      "foundIn": [
+        "Mechanical",
+        "Industrial",
+        "Electrical",
+        "Technological"
       ]
     },
     "microscope": {
@@ -5510,6 +5922,30 @@
       "value": 5000,
       "weight": 0.75
     },
+    "noisemaker": {
+      "name": "Noisemaker",
+      "description": "A deployable proximity sensor that sounds an alarm when enemy raiders are detected.",
+      "icon": "https://cdn.arctracker.io/items/noisemaker.png",
+      "rarity": "Common",
+      "type": "Quick Use",
+      "category": "Quick Use",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "recipe": {
+        "plastic_parts": 2,
+        "speaker_component": 1
+      },
+      "recyclesInto": {
+        "speaker_component": 1
+      },
+      "salvagesInto": {
+        "speaker_component": 1
+      },
+      "stackSize": 3,
+      "value": 640,
+      "weight": 0.3
+    },
     "number_plate": {
       "name": "Number Plate",
       "description": "Can be recycled into metal parts.",
@@ -5545,6 +5981,32 @@
       "craftQuantity": 1,
       "stackSize": 1,
       "weight": 0.25
+    },
+    "oil": {
+      "name": "Oil",
+      "description": "Used to craft weapons and explosives. Can be recycled into chemicals. Used to craft: Renegade, Explosive Compound, Blaze Grenade",
+      "icon": "https://cdn.arctracker.io/items/oil.png",
+      "rarity": "Uncommon",
+      "type": "Topside Material",
+      "category": "Topside Material",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "recipe": {
+        "motor": 1
+      },
+      "recyclesInto": {
+        "chemicals": 3
+      },
+      "salvagesInto": {
+        "chemicals": 1
+      },
+      "stackSize": 15,
+      "value": 300,
+      "weight": 0.25,
+      "foundIn": [
+        "Mechanical"
+      ]
     },
     "old_world_books": {
       "name": "Old World Books",
@@ -5780,6 +6242,28 @@
       "stackSize": 1,
       "value": 100,
       "weight": 0.25
+    },
+    "plastic_parts": {
+      "name": "Plastic Parts",
+      "description": "Used to craft a wide range of items. Used to craft: Hairpin, Light Shield, Looting Mk. 1, Light Impact Grenade, Extended Shotgun Mag I",
+      "icon": "https://cdn.arctracker.io/items/plastic_parts.png",
+      "rarity": "Common",
+      "type": "Basic Material",
+      "category": "Basic Material",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "recipe": {
+        "surge_shield_recharger": 1
+      },
+      "stackSize": 50,
+      "value": 60,
+      "weight": 0.1,
+      "foundIn": [
+        "Commercial",
+        "Residential",
+        "Technological"
+      ]
     },
     "playing_cards": {
       "name": "Playing Cards",
@@ -6022,6 +6506,33 @@
       "weight": 0.2,
       "foundIn": [
         "Nature"
+      ]
+    },
+    "processor": {
+      "name": "Processor",
+      "description": "Used in crafting. Used to craft: Tactical Mk. 3 (Defensive), Combat Mk. 3 (Flanking), Combat Mk. 3 (Aggressive), Looting Mk. 3 (Cautious), Tactical Mk. 3 (Healing)",
+      "icon": "https://cdn.arctracker.io/items/processor.png",
+      "rarity": "Rare",
+      "type": "Topside Material",
+      "category": "Topside Material",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "recipe": {
+        "projector": 1
+      },
+      "recyclesInto": {
+        "plastic_parts": 1,
+        "wires": 1
+      },
+      "salvagesInto": {
+        "plastic_parts": 2
+      },
+      "stackSize": 5,
+      "value": 500,
+      "weight": 0.2,
+      "foundIn": [
+        "Technological"
       ]
     },
     "project_heartwood_blueprints": {
@@ -6626,6 +7137,33 @@
         "Nature"
       ]
     },
+    "rope": {
+      "name": "Rope",
+      "description": "Used in crafting. Used to craft: Zipline, Snap Hook",
+      "icon": "https://cdn.arctracker.io/items/rope.png",
+      "rarity": "Rare",
+      "type": "Topside Material",
+      "category": "Topside Material",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "recipe": {
+        "zipline": 1
+      },
+      "recyclesInto": {
+        "fabric": 5
+      },
+      "salvagesInto": {
+        "fabric": 2
+      },
+      "stackSize": 5,
+      "value": 500,
+      "weight": 0.3,
+      "foundIn": [
+        "Residential",
+        "Commercial"
+      ]
+    },
     "rosary": {
       "name": "Rosary",
       "description": "May be worth a few coins.",
@@ -6702,6 +7240,28 @@
       "value": 1000,
       "weight": 2,
       "foundIn": [
+        "Electrical"
+      ]
+    },
+    "rubber_parts": {
+      "name": "Rubber Parts",
+      "description": "Scrap rubber pieces for crafting. Used to craft: Ferro, Kettle, Looting Mk. 1, Shield Recharger, Stitcher",
+      "icon": "https://cdn.arctracker.io/items/rubber_parts.png",
+      "rarity": "Common",
+      "type": "Basic Material",
+      "category": "Basic Material",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "recipe": {
+        "rubber_pad": 1
+      },
+      "stackSize": 50,
+      "value": 50,
+      "weight": 0.1,
+      "foundIn": [
+        "Mechanical",
+        "Industrial",
         "Electrical"
       ]
     },
@@ -7040,6 +7600,34 @@
       "value": 640,
       "weight": 0.2
     },
+    "sensors": {
+      "name": "Sensors",
+      "description": "Used in crafting. Used to craft: Wolfpack, Explosive Mine, Raider Hatch Key, Tagging Grenade",
+      "icon": "https://cdn.arctracker.io/items/sensors.png",
+      "rarity": "Rare",
+      "type": "Topside Material",
+      "category": "Topside Material",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "recipe": {
+        "broken_handheld_radio": 1
+      },
+      "recyclesInto": {
+        "metal_parts": 1,
+        "wires": 1
+      },
+      "salvagesInto": {
+        "wires": 1
+      },
+      "stackSize": 5,
+      "value": 500,
+      "weight": 0.3,
+      "foundIn": [
+        "Security",
+        "Technological"
+      ]
+    },
     "sentinel_firing_core": {
       "name": "Sentinel Firing Core",
       "description": "Can be recycled into crafting materials.",
@@ -7062,6 +7650,33 @@
       "weight": 1,
       "foundIn": [
         "ARC"
+      ]
+    },
+    "shaker": {
+      "name": "Shaker",
+      "description": "A rhythmic instrument used to attract ARC's attention, and impress other Raiders.",
+      "icon": "https://cdn.arctracker.io/items/shaker.png",
+      "rarity": "Uncommon",
+      "type": "Quick Use",
+      "category": "Quick Use",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "recipe": {
+        "assorted_seeds": 7,
+        "canister": 1
+      },
+      "recyclesInto": {
+        "plastic_parts": 10
+      },
+      "salvagesInto": {
+        "plastic_parts": 4
+      },
+      "stackSize": 1,
+      "value": 1000,
+      "weight": 0.2,
+      "foundIn": [
+        "Residential"
       ]
     },
     "shield_recharger": {
@@ -7407,6 +8022,33 @@
         "Commercial"
       ]
     },
+    "simple_gun_parts": {
+      "name": "Simple Gun Parts",
+      "description": "Used to craft weapons. Used to craft: Il Toro, Burletta, Anvil, Arpeggio, Heavy Gun Parts",
+      "icon": "https://cdn.arctracker.io/items/simple_gun_parts.png",
+      "rarity": "Uncommon",
+      "type": "Topside Material",
+      "category": "Topside Material",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "recipe": {
+        "il_toro_ii": 1
+      },
+      "recyclesInto": {
+        "metal_parts": 2
+      },
+      "salvagesInto": {
+        "metal_parts": 1
+      },
+      "stackSize": 10,
+      "value": 330,
+      "weight": 0.3,
+      "foundIn": [
+        "Raider",
+        "Security"
+      ]
+    },
     "smoke_grenade": {
       "name": "Smoke Grenade",
       "description": "A grenade that creates a lingering smoke cloud on impact, blocking visibility from ARC and other Raiders.",
@@ -7433,6 +8075,24 @@
       "stackSize": 5,
       "value": 1000,
       "weight": 0.2
+    },
+    "smoke_grenade_trap": {
+      "name": "Smoke Grenade Trap",
+      "description": "A laser trip wire that detonates a Smoke Grenade.",
+      "icon": "https://cdn.arctracker.io/items/smoke_grenade_trap.png",
+      "rarity": "Rare",
+      "type": "Quick Use",
+      "category": "Quick Use",
+      "stationLevelRequired": 1,
+      "blueprintLocked": true,
+      "craftQuantity": 1,
+      "recipe": {
+        "smoke_grenade": 1,
+        "wires": 1
+      },
+      "stackSize": 3,
+      "value": 640,
+      "weight": 0.3
     },
     "snap_blast_grenade": {
       "name": "Snap Blast Grenade",
@@ -7585,6 +8245,33 @@
       "stackSize": 1,
       "value": 100,
       "weight": 0.25
+    },
+    "speaker_component": {
+      "name": "Speaker Component",
+      "description": "Used in crafting. Used to craft: Lure Grenade, Photoelectric Cloak",
+      "icon": "https://cdn.arctracker.io/items/speaker_component.png",
+      "rarity": "Rare",
+      "type": "Topside Material",
+      "category": "Topside Material",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "recipe": {
+        "noisemaker": 1
+      },
+      "recyclesInto": {
+        "plastic_parts": 2,
+        "rubber_parts": 3
+      },
+      "salvagesInto": {
+        "plastic_parts": 2
+      },
+      "stackSize": 5,
+      "value": 500,
+      "weight": 0.3,
+      "foundIn": [
+        "Commercial"
+      ]
     },
     "spectrometer": {
       "name": "Spectrometer",
@@ -7790,6 +8477,32 @@
       "foundIn": [
         "Old World",
         "Residential"
+      ]
+    },
+    "steel_spring": {
+      "name": "Steel Spring",
+      "description": "Used to craft a wide range of items. Can be recycled into crafting materials. Used to craft: Extended Shotgun Mag I, Extended Medium Mag I, Extended Light Mag I, Torrente, Extended Medium Mag II",
+      "icon": "https://cdn.arctracker.io/items/steel_spring.png",
+      "rarity": "Uncommon",
+      "type": "Topside Material",
+      "category": "Topside Material",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "recipe": {
+        "cooling_coil": 1
+      },
+      "recyclesInto": {
+        "metal_parts": 2
+      },
+      "salvagesInto": {
+        "metal_parts": 1
+      },
+      "stackSize": 15,
+      "value": 300,
+      "weight": 0.25,
+      "foundIn": [
+        "Industrial"
       ]
     },
     "stella_montis_archives_key": {
@@ -8019,6 +8732,60 @@
       "weight": 1,
       "foundIn": [
         "ARC"
+      ]
+    },
+    "synthesized_fuel": {
+      "name": "Synthesized Fuel",
+      "description": "A canister of synthetic fuel blend.",
+      "icon": "https://cdn.arctracker.io/items/synthesized_fuel.png",
+      "rarity": "Rare",
+      "type": "Topside Material",
+      "category": "Topside Material",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "recipe": {
+        "rocket_thruster": 1
+      },
+      "recyclesInto": {
+        "chemicals": 1,
+        "oil": 1
+      },
+      "salvagesInto": {
+        "oil": 1
+      },
+      "stackSize": 5,
+      "value": 700,
+      "weight": 0.5,
+      "foundIn": [
+        "Exodus"
+      ]
+    },
+    "syringe": {
+      "name": "Syringe",
+      "description": "Used to craft medical supplies. Can be recycled into plastic. Used to craft: Vita Shot",
+      "icon": "https://cdn.arctracker.io/items/syringe.png",
+      "rarity": "Rare",
+      "type": "Topside Material",
+      "category": "Topside Material",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "recipe": {
+        "rusted_shut_medical_kit": 1
+      },
+      "recyclesInto": {
+        "chemicals": 2,
+        "plastic_parts": 3
+      },
+      "salvagesInto": {
+        "plastic_parts": 2
+      },
+      "stackSize": 5,
+      "value": 500,
+      "weight": 0.3,
+      "foundIn": [
+        "Medical"
       ]
     },
     "tactical_mk1": {
@@ -8955,6 +9722,33 @@
         "Nature"
       ]
     },
+    "voltage_converter": {
+      "name": "Voltage Converter",
+      "description": "Used in crafting. Used to craft: Heavy Shield, Showstopper",
+      "icon": "https://cdn.arctracker.io/items/voltage_converter.png",
+      "rarity": "Rare",
+      "type": "Topside Material",
+      "category": "Topside Material",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "recipe": {
+        "signal_amplifier": 1
+      },
+      "recyclesInto": {
+        "rubber_parts": 1,
+        "wires": 1
+      },
+      "salvagesInto": {
+        "rubber_parts": 2
+      },
+      "stackSize": 5,
+      "value": 500,
+      "weight": 0.3,
+      "foundIn": [
+        "Electrical"
+      ]
+    },
     "vulcano_i": {
       "name": "Vulcano I",
       "description": "Semi-automatic shotgun with good bullet spread but sharp falloff",
@@ -9123,6 +9917,33 @@
       "foundIn": [
         "Mechanical",
         "Industrial"
+      ]
+    },
+    "wires": {
+      "name": "Wires",
+      "description": "Used to craft a wide range of items. Can be recycled into crafting materials. Used to craft: Blaze Grenade Trap, Smoke Grenade Trap, Lure Grenade Trap, Gas Grenade Trap, Muzzle Brake I",
+      "icon": "https://cdn.arctracker.io/items/wires.png",
+      "rarity": "Uncommon",
+      "type": "Topside Material",
+      "category": "Topside Material",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "recipe": {
+        "power_cable": 1
+      },
+      "recyclesInto": {
+        "rubber_parts": 2
+      },
+      "salvagesInto": {
+        "rubber_parts": 1
+      },
+      "stackSize": 15,
+      "value": 200,
+      "weight": 0.25,
+      "foundIn": [
+        "Electrical",
+        "Technological"
       ]
     },
     "wolfpack": {

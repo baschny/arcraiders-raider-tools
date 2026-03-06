@@ -109,6 +109,7 @@ The system must:
 - Practical, real-world planning model aligned with how players actually craft, recycle, and loot in-game.
 - Crafting depth limited to at most two levels.
 - Recycling limited to a single transformation hop (no chaining).
+- Pre-alpha compatibility policy: until further notice, the application does not require backward compatibility or migration support for evolving client-side data structures, internal planner data structures, or persisted pre-release state.
 
 ---
 
@@ -197,7 +198,8 @@ After import:
 - `stationLevelRequired` is always defined.
 - `blueprintLocked` is always defined.
 - `craftBench` is either a valid BenchId or undefined.
-- No item has `craftBench = "in_raid"` inside the planner dataset.
+- Items with source `craftBench = "in_raid"` may exist in the planner dataset.
+- No item retains `craftBench = "in_raid"` after normalization.
 - `craftQuantity` is always defined.
 - Default `craftQuantity` is `1` if missing in source.
 
@@ -253,34 +255,34 @@ Properties:
 - `items` is a map keyed by `itemId` (ASCII).
 - Items are sorted by `itemId` ascending (ASCII).
 - Within each item object, keys must be written in fixed canonical order:
-    1. name
-    2. description
-    3. icon
-    4. rarity
-    5. type
-    6. category
-    7. subCategory (if present)
-    8. craftBench (if present)
-    9. stationLevelRequired
-    10. blueprintLocked
-    11. craftQuantity
-    12. recipe (if present)
-    13. recyclesInto (if present)
-    14. salvagesInto (if present)
-    15. stackSize
-    16. value (if present)
-    17. weight (if present)
-    18. foundIn (if present)
+  1. name
+  2. description
+  3. icon
+  4. rarity
+  5. type
+  6. category
+  7. subCategory (if present)
+  8. craftBench (if present)
+  9. stationLevelRequired
+  10. blueprintLocked
+  11. craftQuantity
+  12. recipe (if present)
+  13. recyclesInto (if present)
+  14. salvagesInto (if present)
+  15. stackSize
+  16. value (if present)
+  17. weight (if present)
+  18. foundIn (if present)
 
 - `recipe`, `recyclesInto`, and `salvagesInto` maps must have keys sorted ASCII ascending.
 
 Application load behavior:
 
 - At application startup, Quartermaster loads:
-    - `/data/quartermaster/items.json`
+  - `/data/quartermaster/items.json`
 - For each entry in `items` map:
-    - Reconstruct in-memory `PlannerItem` with:
-        - `id = itemId` (map key)
+  - Reconstruct in-memory `PlannerItem` with:
+    - `id = itemId` (map key)
 - No runtime fetching from arctracker.io.
 
 ---
@@ -317,9 +319,21 @@ craftBench = "in_raid"
 
 and no additional craftBench values,
 
-the item must be excluded from import.
+the item must not be excluded from import.
 
-After import, no item represents in-raid-only crafting.
+Instead:
+
+- the item remains in the imported dataset
+- its normalized `craftBench` becomes `undefined`
+
+Rationale:
+
+- these items may appear in stash
+- these items may be used as recipe inputs
+- these items may be relevant for loot suggestions and planner calculations
+- `in_raid` indicates absence of a hideout bench craft location, not absence from the planner dataset
+
+After import, no item retains `craftBench = "in_raid"`.
 
 ---
 
@@ -333,18 +347,18 @@ Source data may contain:
 Normalization algorithm:
 
 1. If string:
-    - If `"in_raid"` -> exclude.
-    - Otherwise keep.
+  - If `"in_raid"` -> normalize to `undefined`.
+  - Otherwise keep.
 
 2. If array:
-    - Remove `"workbench"`.
-    - Remove `"in_raid"`.
-    - Preserve original order.
-    - If one remains -> use it.
-    - If multiple remain -> use first.
-    - If none remain -> exclude.
+  - Remove `"workbench"`.
+  - Remove `"in_raid"`.
+  - Preserve original order.
+  - If one remains -> use it.
+  - If multiple remain -> use first.
+  - If none remain -> use `undefined`.
 
-After normalization, `craftBench` is always a single BenchId.
+After normalization, `craftBench` is either a single BenchId or undefined.
 
 ---
 
@@ -493,20 +507,20 @@ Authentication flow is defined globally and not re-implemented in Quartermaster.
 Quartermaster must:
 
 - Use `useAuth()` to access:
-    - `isAuthenticated`
-    - `isValidating`
-    - `username`
+  - `isAuthenticated`
+  - `isValidating`
+  - `username`
 - Not implement its own token storage.
 - Not access `localStorage` directly for tokens.
 
 Behavior:
 
 - If `isValidating === true`:
-    - Show loading state.
-    - Do not execute planner logic.
+  - Show loading state.
+  - Do not execute planner logic.
 - If `isAuthenticated === false`:
-    - Display message prompting user to log in.
-    - Provide navigation to `/settings/profile`.
+  - Display message prompting user to log in.
+  - Provide navigation to `/settings/profile`.
 
 Logout behavior:
 
@@ -547,10 +561,10 @@ Planner stash input rules:
 - Use `CachedStash.items`.
 - Unknown `itemId` not present in static dataset must be ignored.
 - If sync fails:
-    - Previously cached stash remains available.
-    - No cache clearing occurs.
+  - Previously cached stash remains available.
+  - No cache clearing occurs.
 - Timestamp for header:
-    - Use `CachedStash.syncedAt`.
+  - Use `CachedStash.syncedAt`.
 
 ### 4.2.3 Error Handling
 
@@ -559,11 +573,11 @@ Sync methods may throw `ApiError`.
 Behavior:
 
 - `status === 401`:
-    - Prompt user to re-authenticate.
+  - Prompt user to re-authenticate.
 - `status === 429` or `isRetryable === true`:
-    - Show warning.
+  - Show warning.
 - Other errors:
-    - Show error message.
+  - Show error message.
 - Quartermaster must not clear existing cache on failure.
 
 ---
@@ -874,9 +888,9 @@ If not all inputs available, proceed to Phase B.
 If direct inputs missing:
 
 - Select recyclable sources S satisfying:
-    - `recycleEligible[S] > 0`
-    - `S` not protected
-    - `recyclesInto[S]` yields missing direct input
+  - `recycleEligible[S] > 0`
+  - `S` not protected
+  - `recyclesInto[S]` yields missing direct input
 
 Selection comparator (deterministic):
 
@@ -951,12 +965,12 @@ After local planning completes:
 Determine in-raid acquisition candidates from two independent sources:
 
 1. Direct loot targets:
-    - Any item with `missingFinal[itemId] > 0` that remains required as a final target and is not satisfiable through local crafting under planner rules.
-    - These items are suggested because the player must bring them home directly from raid.
+  - Any item with `missingFinal[itemId] > 0` that remains required as a final target and is not satisfiable through local crafting under planner rules.
+  - These items are suggested because the player must bring them home directly from raid.
 
 2. Craft-support materials:
-    - Missing direct inputs (Level-1)
-    - Missing Level-2 inputs
+  - Missing direct inputs (Level-1)
+  - Missing Level-2 inputs
 
 Suggestion generation rules:
 
@@ -968,17 +982,17 @@ Suggestion generation rules:
 ### Suggestion Types
 
 1. **BRING_HOME (final target)**
-    - Item is a missing loot-only final target.
-    - Quantity relevance is based on `missingFinal[itemId]`.
+  - Item is a missing loot-only final target.
+  - Quantity relevance is based on `missingFinal[itemId]`.
 
 2. **BRING_HOME (direct material)**
-    - ItemId directly in missing needed materials set.
+  - ItemId directly in missing needed materials set.
 
 3. **SALVAGE (in-raid)**
-    - `salvagesInto` yields missing needed materials.
+  - `salvagesInto` yields missing needed materials.
 
 4. **BRING_HOME (recycle yields)**
-    - `recyclesInto` yields missing needed materials.
+  - `recyclesInto` yields missing needed materials.
 
 Deterministic ordering:
 
@@ -1073,6 +1087,26 @@ Ordering rules:
 
 ---
 
+## 7.1.4 Pre-Alpha Persistence and Compatibility Policy
+
+Quartermaster is currently in a pre-alpha state.
+
+Until further notice:
+
+- No data migration is required for persisted client-side structures.
+- No backward compatibility is required for older localStorage schemas.
+- No backward compatibility is required for intermediate pre-release planner result structures.
+- No compatibility guarantees are required for pre-release internal data contracts.
+- When structures change, existing local client data may be discarded, overwritten, or reinitialized.
+- Simplicity and forward iteration are preferred over migration logic during pre-alpha.
+
+Clarification:
+
+- This policy applies only until a later production/stable phase explicitly changes this requirement in the specification.
+- When the application approaches stable release, compatibility and migration requirements will be specified separately.
+
+---
+
 ## 7.2 Stash View
 
 Read-only inventory view.
@@ -1083,10 +1117,10 @@ Displays only actual stash items (no synthetic rows).
 
 - Sync Inventory button
 - Filters:
-    - Search (as-you-type)
-    - Category
-    - Rarity
-    - Show Only Recyclable (based on RecyclePlan)
+  - Search (as-you-type)
+  - Category
+  - Rarity
+  - Show Only Recyclable (based on RecyclePlan)
 
 On rate limits:
 
@@ -1252,8 +1286,8 @@ Badge:
 Badge meaning:
 
 - BRING HOME may mean either:
-    - this item is itself a missing final target, or
-    - this item contributes to missing crafting requirements.
+  - this item is itself a missing final target, or
+  - this item contributes to missing crafting requirements.
 
 Item name is always shown below the icon, even in this grid view.
 
@@ -1432,9 +1466,9 @@ Badges:
 - Rendered as small overlay elements within the icon container.
 - Used for KEEP / RECYCLE / DISCARD / Missing / Uncraftable / Direct Target indicators.
 - Badge precedence:
-    - KEEP > RECYCLE > DISCARD
-    - Missing and Uncraftable indicators are always shown in addition to advisory badge when applicable.
-    - Direct Target indicator is always shown when applicable and must not be hidden by advisory badge.
+  - KEEP > RECYCLE > DISCARD
+  - Missing and Uncraftable indicators are always shown in addition to advisory badge when applicable.
+  - Direct Target indicator is always shown when applicable and must not be hidden by advisory badge.
 - Badge rendering order must be deterministic.
 
 ---
@@ -1469,7 +1503,8 @@ Rules:
 # 8. ASSUMPTIONS
 
 - Import deterministic.
-- No in_raid craftBench remains.
+- Items with source `craftBench = "in_raid"` remain in the dataset after normalization.
+- No imported item retains `craftBench = "in_raid"` after normalization.
 - Salvage advisory only (in-raid).
 - Buying excluded v1.
 - Recycling single hop only.
@@ -1479,6 +1514,7 @@ Rules:
 - Authentication handled by shared AuthContext.
 - No cycles expected; guardrail exists.
 - Missing final targets may be either craftable targets or loot-only final targets.
+- Pre-alpha phase: backward compatibility and migration of persisted local data are intentionally out of scope until production/stable requirements are introduced.
 
 ---
 
@@ -1513,6 +1549,8 @@ Future expansion possible.
 - No economic optimization.
 - No deep crafting trees beyond depth 2.
 - No recycle chaining.
+- No backward compatibility guarantees for pre-alpha client-side data structures or persisted local state.
+- No migration framework for pre-alpha schema changes.
 
 ---
 
@@ -1526,6 +1564,8 @@ Tests must verify:
 - CraftQuantity oversupply behavior.
 - Loadout categories excluded from recycling and from recycle-based or salvage-based loot suggestions.
 - Missing final targets that are not locally craftable appear in the In Raid view as direct bring-home targets.
+- Items with source `craftBench = "in_raid"` are included in the imported dataset with normalized `craftBench = undefined`.
+- Stash items present in API/cache and in the imported dataset are rendered correctly, including basic components such as Metal Parts and ARC Powercell.
 - Salvage suggestions appear only as in-raid hint.
 - Value-based ordering deterministic.
 - Unknown API itemIds ignored.
@@ -1544,3 +1584,4 @@ Canonical scenarios:
 8. Exclusion of nonRecyclableCategories from recycle-based and salvage-based loot suggestions.
 9. Deterministic target ordering by list order, item order, value, then itemId.
 10. Missing loot-only final target appears in In Raid with contributing list names.
+11. Source item with `craftBench = "in_raid"` is preserved in dataset and appears in stash when present in API/cache.

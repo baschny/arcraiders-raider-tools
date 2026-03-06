@@ -89,7 +89,7 @@ const VALID_BENCH_IDS = new Set<string>([
  * Normalize craftBench field (section 3.2)
  * Returns undefined if item should be excluded, or a valid BenchId
  */
-function normalizeCraftBench(craftBench: string | string[] | undefined): BenchId | undefined | 'EXCLUDE' {
+function normalizeCraftBench(craftBench: string | string[] | undefined): BenchId | undefined {
   if (craftBench === undefined) {
     return undefined;
   }
@@ -97,7 +97,7 @@ function normalizeCraftBench(craftBench: string | string[] | undefined): BenchId
   // If string
   if (typeof craftBench === 'string') {
     if (craftBench === 'in_raid') {
-      return 'EXCLUDE'; // In-raid only, exclude
+      return undefined; // Found in raid only, no crafting bench
     }
     if (VALID_BENCH_IDS.has(craftBench)) {
       return craftBench as BenchId;
@@ -105,25 +105,10 @@ function normalizeCraftBench(craftBench: string | string[] | undefined): BenchId
     return undefined;
   }
 
-  // If array
+  // If array: filter out "in_raid" and "workbench", pick first valid bench
   if (Array.isArray(craftBench)) {
-    // Remove "workbench" and "in_raid", preserve order
     const filtered = craftBench.filter(b => b !== 'workbench' && b !== 'in_raid');
-    
-    if (filtered.length === 0) {
-      // Check if there was only "in_raid" (no other benches)
-      const hasOnlyInRaid = craftBench.includes('in_raid') && 
-        craftBench.filter(b => b !== 'in_raid').every(b => b === 'workbench');
-      if (hasOnlyInRaid || craftBench.every(b => b === 'workbench' || b === 'in_raid')) {
-        // If only in_raid (and maybe workbench), exclude
-        if (craftBench.includes('in_raid') && filtered.length === 0) {
-          return 'EXCLUDE';
-        }
-      }
-      return undefined;
-    }
 
-    // Return first valid bench
     for (const bench of filtered) {
       if (VALID_BENCH_IDS.has(bench)) {
         return bench as BenchId;
@@ -207,14 +192,9 @@ function processItem(source: SourceItem): { id: string; item: PlannerItem } | un
 
   // 3.2 Normalize craftBench
   const craftBench = normalizeCraftBench(source.craftBench);
-  
-  // 3.1.2 Exclude in-raid only
-  if (craftBench === 'EXCLUDE') {
-    return undefined;
-  }
 
   // 3.3 Category mapping
-  const { category, subCategory } = mapCategory(source, craftBench as BenchId | undefined);
+  const { category, subCategory } = mapCategory(source, craftBench);
 
   // 3.4 Default field completion
   const stackSize = source.stackSize ?? 1;
