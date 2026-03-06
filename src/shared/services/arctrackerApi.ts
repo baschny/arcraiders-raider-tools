@@ -27,7 +27,7 @@ const API_BASE = 'https://api.raider-tools.app/arctracker';
 const LOCALE = 'en';
 const TIMEOUT_MS = 10000;
 const MAX_RETRIES = 1;
-const STASH_PER_PAGE = 100;
+const STASH_PER_PAGE = 500;
 
 /**
  * Create an API error object.
