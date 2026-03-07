@@ -79,6 +79,7 @@ The purpose of this module is to support the full gameplay lifecycle of ARC Raid
 - Goal list planning
 - Loot suggestion guidance
 - Craft execution planning
+- Hideout/workbench progression planning
 
 The system must:
 
@@ -86,6 +87,10 @@ The system must:
 - Compute global material requirements.
 - Provide deterministic and meaningful crafting and recycling suggestions.
 - Provide deterministic and meaningful loot suggestions for both crafting support materials and loot-only final targets.
+- Generate deterministic hideout upgrade lists based on the user's current hideout module levels.
+- Allow generated hideout upgrade lists to participate in normal planner aggregation.
+- Support loot acquisition planning for hideout upgrade materials.
+- Keep generated hideout list composition read-only while preserving per-list and per-item enable/disable control.
 - Limit crafting depth to practical real-world gameplay expectations.
 - Avoid unnecessary or confusing steps.
 - Reserve required materials before recycling.
@@ -106,7 +111,7 @@ The system must:
 - No in-app execution of actions.
 - Advisory-only behavior.
 - Deterministic results for identical inputs.
-- Practical, real-world planning model aligned with how players actually craft, recycle, and loot in-game.
+- Practical, real-world planning model aligned with how players actually craft, recycle, loot, and progress hideout benches in-game.
 - Crafting depth limited to at most two levels.
 - Recycling limited to a single transformation hop (no chaining).
 - Pre-alpha compatibility policy: until further notice, the application does not require backward compatibility or migration support for evolving client-side data structures, internal planner data structures, or persisted pre-release state.
@@ -287,6 +292,73 @@ Application load behavior:
 
 ---
 
+## 2.1.5 Hideout Upgrade Definitions Source
+
+Raw source data for hideout upgrade requirements is provided by the arctracker.io data repository checked out locally at:
+
+```
+../arcraiders-data/hideout/
+```
+
+This path is relative to the Raider Tools repository root.
+
+Each file represents a hideout module and its level requirements.
+
+Quartermaster must import this data into a local static dataset for client-side use.
+
+The generated local dataset file is:
+
+```
+public/data/quartermaster/hideout.json
+```
+
+This file must:
+
+- Be generated locally before committing.
+- Be committed to git.
+- Be deterministic for identical input sources.
+
+Only fields required by Quartermaster need to be included.
+
+In-memory shape:
+
+```ts
+interface HideoutRequirementItem {
+  itemId: string
+  quantity: number
+}
+
+interface HideoutLevelDefinition {
+  level: number
+  requirementItemIds: HideoutRequirementItem[]
+}
+
+interface HideoutModuleDefinition {
+  id: string
+  name: string
+  maxLevel: number
+  levels: HideoutLevelDefinition[]
+}
+```
+
+Import rules:
+
+- Read all files from `../arcraiders-data/hideout/`.
+- Sort filenames ASCII ascending.
+- Exclude `stash.json`.
+- Sort modules by `id` ASCII ascending.
+- Sort `requirementItemIds` by `itemId` ASCII ascending.
+
+The `stash` module must be excluded from generated hideout-upgrade lists because it upgrades via Coins and is not represented as item requirements for Quartermaster planning.
+
+Application load behavior:
+
+- At application startup, Quartermaster loads:
+  - `/data/quartermaster/hideout.json`
+- No runtime fetching from arctracker.io for hideout definitions.
+
+---
+
 # 3. ITEM IMPORT & NORMALIZATION PROCESS
 
 The import process is an external preprocessing step that converts raw source JSON files into the final aggregated dataset defined in section 2.1.4.
@@ -423,15 +495,22 @@ Provide a Node.js CLI tool to import and normalize items from:
 ../arcraiders-data/items/
 ```
 
-The CLI must generate the aggregated dataset file:
+and hideout definitions from:
+
+```
+../arcraiders-data/hideout/
+```
+
+The CLI must generate the aggregated dataset files:
 
 ```
 public/data/quartermaster/items.json
+public/data/quartermaster/hideout.json
 ```
 
 The CLI must be run locally before committing.
 
-The generated file must be committed to git.
+The generated files must be committed to git.
 
 ### 3.5.2 package.json Integration
 
@@ -441,13 +520,21 @@ The CLI must be integrated following existing Raider Tools conventions, similar 
 "generate:items-loot-helper": "./scripts/generate-item-data-loot-helper.sh",
 ```
 
-Quartermaster must define an analogous script, for example:
+Quartermaster must define analogous generation script support, for example:
 
 ```
 "generate:items-quartermaster": "./scripts/generate-item-data-quartermaster.sh",
+"generate:hideout-quartermaster": "./scripts/generate-hideout-data-quartermaster.sh",
 ```
 
 The shell script may invoke a Node.js script responsible for the import and normalization logic.
+
+Hideout generation may be implemented either:
+
+- as part of the same Quartermaster generator command, or
+- as a dedicated script
+
+Both generated files must still be deterministic and committed to git.
 
 ### 3.5.3 Deterministic Behavior
 
@@ -460,6 +547,17 @@ The CLI must:
 - Aggregate into the final JSON structure defined in section 2.1.4.
 - Sort items by itemId ASCII ascending.
 - Sort nested maps (`recipe`, `recyclesInto`, `salvagesInto`) by key ASCII ascending.
+- Write JSON with stable key ordering and stable formatting.
+
+For hideout data, the CLI must:
+
+- Read all JSON files from `../arcraiders-data/hideout/`.
+- Sort filenames ASCII ascending before processing.
+- Parse each file.
+- Exclude `stash.json`.
+- Copy or normalize only fields required by Quartermaster.
+- Sort modules by `id` ASCII ascending.
+- Sort `requirementItemIds` by `itemId` ASCII ascending.
 - Write JSON with stable key ordering and stable formatting.
 
 Failure behavior:
@@ -616,18 +714,104 @@ Same rules as section 4.2.3.
 
 ---
 
-## 4.4 Hideout Bench Levels (v1)
+## 4.4 Hideout Bench Levels
 
-The hideout endpoint is available through shared API but bench levels are not yet exposed.
+Quartermaster uses the user hideout state from the hideout API to determine actual bench craftability.
 
-For v1:
+Bench level source:
 
-- Assume all benches are level 3.
-- `stationLevelRequired` refers to hideout bench levels.
-- Bench restriction logic remains in planner but assumes level 3.
-- If such an item exists in a list but cannot be crafted due to blueprint or bench restrictions, it is excluded from planning calculations and marked with a warning in the UI.
+- If cached hideout state exists and is valid:
+  - use the user's actual bench levels
+- If hideout state is unavailable, missing, or invalid:
+  - fall back to assuming all benches are level 3
 
-Future API support may provide per-bench unlocked levels.
+Meaning of `stationLevelRequired`:
+
+- `stationLevelRequired` refers to the minimum required level of the item's `craftBench`
+
+An item is bench-eligible only if:
+
+- `craftBench` is defined
+- the corresponding bench exists in the user's hideout state or is assumed available under fallback mode
+- user bench level is `>= stationLevelRequired`
+
+Clarifications:
+
+- This bench-level check affects local craft planning.
+- This bench-level check does not remove the item from stash view.
+- This bench-level check does not remove the item from static datasets.
+- Generated hideout upgrade lists continue to use actual cached hideout state only and do not use fallback mode.
+
+If an item cannot be crafted due to blueprint restriction or insufficient hideout bench level:
+
+- it remains a target but may become unreachable in planner results
+- the UI must display a warning indicator
+
+If fallback mode is active because hideout state is unavailable:
+
+- planner may treat the item as craftable under assumed bench level 3
+
+---
+
+## 4.5 Hideout Progression Integration
+
+Quartermaster integrates with the user hideout endpoint through the shared Raider Tools API layer.
+
+### 4.5.1 Sync Operation
+
+The Lists view must provide a **Sync Hideouts** button.
+
+This button must call the shared API method for:
+
+```text
+/api/v2/user/hideout
+```
+
+The returned hideout state must be cached locally, analogous to stash and loadout caching.
+
+### 4.5.2 Cached Data Usage
+
+Quartermaster reads cached hideout state from local cache.
+
+Hideout cache must contain at least:
+
+- module id
+- currentLevel
+- maxLevel
+- syncedAt timestamp
+
+Hideout state is considered usable for bench craftability if:
+
+- cache exists
+- it has module ids and current levels for relevant benches
+- the data is not structurally invalid
+
+If sync fails:
+
+- previously cached hideout state remains available
+- no cache clearing occurs
+
+### 4.5.3 Generation Dependency
+
+Generated hideout upgrade lists are derived from:
+
+- imported hideout definitions from `/data/quartermaster/hideout.json`
+- cached user hideout state
+
+If no cached hideout state exists:
+
+- no generated hideout upgrade lists are shown
+- Lists view must display a hint prompting the user to use **Sync Hideouts**
+
+If cached hideout state is unavailable, missing, or invalid:
+
+- generated hideout upgrade lists must not be synthesized from fallback bench level assumptions
+
+### 4.5.4 Exclusions
+
+The `stash` module must not generate upgrade lists.
+
+Unknown hideout modules not present in the imported static dataset must be ignored.
 
 ---
 
@@ -747,10 +931,14 @@ Ordering:
 - Within lists by item order (top → bottom).
 - Final tie-breakers follow section 5.3.
 
-If an item cannot be crafted due to blueprint or bench restriction:
+If an item cannot be crafted due to blueprint restriction or insufficient hideout bench level:
 
-- It remains a target but may become unreachable in planner results.
-- The UI must display a warning indicator.
+- it remains a target but may become unreachable in planner results
+- the UI must display a warning indicator
+
+If fallback mode is active because hideout state is unavailable:
+
+- planner may treat the item as craftable under assumed bench level 3
 
 Each `requiredFinal[itemId]` entry retains provenance of all contributing lists.
 
@@ -761,6 +949,50 @@ For each required item, planner output must be able to derive:
 - per-list contribution quantity.
 
 This provenance is used by the UI for explanatory detail, especially in the In Raid view.
+
+---
+
+### 6.1.3 Generated Hideout Upgrade Lists
+
+Quartermaster supports two list sources:
+
+- user-authored lists
+- generated hideout upgrade lists
+
+Generated hideout upgrade lists are derived on demand from cached hideout state and imported hideout definitions.
+
+Generation rules:
+
+For each imported hideout module:
+
+- determine `currentLevel`
+- for each target level where `targetLevel > currentLevel` and `targetLevel <= maxLevel`, generate one list
+- list items are exactly the `requirementItemIds` for that target level only
+- requirements are not cumulative across intermediate levels
+
+Display naming:
+
+- `<Bench Name> to Level <N> (Next)` for `targetLevel = currentLevel + 1`
+- `<Bench Name> to Level <N>` for higher future levels
+
+Behavior:
+
+- generated lists participate in planner aggregation exactly like user-authored lists
+- generated lists may be enabled or disabled individually
+- generated list items may be enabled or disabled individually
+- generated list names and item composition are read-only
+- generated lists are not manually reorderable
+
+Persistence:
+
+- generated lists themselves are not stored as materialized lists
+- only user toggle state is persisted
+- persisted toggle state must be keyed deterministically by generated list identity and item identity
+
+Lifecycle:
+
+- if a generated list no longer exists after hideout sync, persisted toggle state for that list and its items must be removed
+- if a future level becomes the new next level after hideout sync, its generated label updates accordingly
 
 ---
 
@@ -820,6 +1052,23 @@ Clarifications:
 - Loot-only final targets are primary acquisition targets and must be surfaced in the In Raid view.
 - Loot-only final targets are independent from crafting-relevance and are not filtered out by section 6.3.3.
 
+### 6.3.5 Craftability Predicate
+
+An item is locally craftable only if all of the following are true:
+
+- item has a defined `recipe`
+- item is not blocked by `blueprintLocked`
+- item has a defined `craftBench`
+- the required bench is available to the planner
+- the available bench level is greater than or equal to `stationLevelRequired`
+
+Bench availability source:
+
+- actual cached hideout state, if available and valid
+- otherwise fallback assumption: all benches level 3
+
+Items with normalized `craftBench = undefined` are not bench-craftable.
+
 ---
 
 ## 6.4 Local Planning Algorithm (Greedy, Depth ≤ 2)
@@ -833,6 +1082,24 @@ Maintain:
 - Items produced by recycling are NOT eligible for recycling again in the same run.
 - `plannedRecycleActions[]`
 - `plannedCraftSteps[]`
+
+Planner must also derive a bench-level map:
+
+```ts
+type BenchLevels = Record<BenchId, number>
+```
+
+Source of `BenchLevels`:
+
+- from cached hideout modules when valid
+- otherwise synthesized fallback:
+  - `equipment_bench: 3`
+  - `explosives_bench: 3`
+  - `med_station: 3`
+  - `refiner: 3`
+  - `utility_bench: 3`
+  - `weapon_bench: 3`
+  - `workbench: 3`
 
 ---
 
@@ -873,7 +1140,7 @@ Let `needT = missingFinal[T]`.
 
 #### Phase A – Direct Craft (Level 1)
 
-If T is craftable:
+If T is locally craftable according to section 6.3.5:
 
 - Compute `outT` via 6.4.3.
 - If all direct inputs are available in `avail`, consume them and add `outT` to `avail[T]`.
@@ -912,7 +1179,7 @@ Return to Phase A.
 
 For each missing direct input I of T (sorted by itemId ascending):
 
-If I is craftable:
+If I is locally craftable according to section 6.3.5:
 
 - Compute required output via 6.4.3.
 - Attempt to craft I using its direct inputs only (no deeper than Level 2).
@@ -1055,7 +1322,7 @@ No planner logic executed here; purely derived from PlannerResult and API timest
 
 ## 7.1.3 Stored Lists Persistence (v1)
 
-Stored lists are persisted client-side.
+Stored user-authored lists are persisted client-side.
 
 Persistence mechanism:
 
@@ -1085,6 +1352,15 @@ Ordering rules:
 - Stored lists ordered by UI order (top → bottom).
 - List items ordered by UI order (top → bottom).
 
+Generated hideout upgrade lists are not fully persisted.
+
+For generated hideout upgrade lists, only toggle state is persisted:
+
+- list enabled/disabled state
+- item enabled/disabled state
+
+Persisted toggle state for generated lists may be discarded when the derived list identity no longer exists.
+
 ---
 
 ## 7.1.4 Pre-Alpha Persistence and Compatibility Policy
@@ -1104,6 +1380,27 @@ Clarification:
 
 - This policy applies only until a later production/stable phase explicitly changes this requirement in the specification.
 - When the application approaches stable release, compatibility and migration requirements will be specified separately.
+
+---
+
+## 7.1.5 Generated Hideout List Toggle Persistence
+
+Generated hideout upgrade lists are not stored as full materialized lists.
+
+Only user toggle state is persisted:
+
+- list enabled/disabled
+- item enabled/disabled
+
+Persistence key must uniquely identify:
+
+```text
+moduleId + targetLevel + itemId
+```
+
+Lifecycle rule:
+
+- If a generated list disappears due to hideout progression, persisted toggle state for that list and its items must be removed.
 
 ---
 
@@ -1146,6 +1443,7 @@ Indicators:
 Indicator meaning:
 
 - 🎯 Direct Target means the item itself is a missing final target from at least one active list and should be brought home directly if encountered in raid.
+- 🚫 Uncraftable means the item is not locally craftable because of blueprint restriction, missing craft bench, or insufficient bench level.
 
 ### 7.2.3 Expand Row
 
@@ -1227,11 +1525,24 @@ Shows:
 
 ### 7.4.1 Sidebar
 
-- List of lists
+- User Lists group
+- Hideout Upgrade Lists group
 - Enable/Disable toggle
 - Status indicator
 - Create List button
 - Drag-and-drop reorder lists
+- Sync Hideouts button
+
+Generated hideout upgrade lists must appear only when hideout cache exists.
+
+Ordering rules for generated hideout upgrade lists:
+
+1. All `(Next)` lists
+2. Remaining future levels
+3. Bench name ascending
+4. Target level ascending
+
+If no cached hideout state exists, the Hideout Upgrade Lists group shows no generated lists and displays a hint prompting the user to use **Sync Hideouts**.
 
 ---
 
@@ -1243,7 +1554,7 @@ Top:
 Add Item [autocomplete as-you-type input]
 ```
 
-Behavior:
+Behavior for user-authored lists:
 
 - Typing filters instantly.
 - Enter adds item.
@@ -1254,12 +1565,26 @@ Items are rendered strictly in manual order.
 
 Each list item row renders the Item Icon Component defined in section 7.7.
 
-Per item controls:
+Per item controls for user-authored lists:
 
 - Quantity
 - Enable/Disable
 - Remove
 - Drag-and-drop reorder
+
+For generated hideout upgrade lists, allowed actions are:
+
+- Enable/Disable list
+- Enable/Disable individual item rows
+
+For generated hideout upgrade lists, disallowed actions are:
+
+- Rename list
+- Add item
+- Remove item
+- Change quantity
+- Drag-and-drop reorder
+- Manual list reordering
 
 ---
 
@@ -1363,6 +1688,11 @@ Definitions:
 
 - Total Output = `CraftStep.qty`
 - Craft Times = `CraftStep.qty / craftQuantity[itemId]` (integer)
+
+Craft plan must include only items that are:
+
+- fully satisfiable
+- locally craftable under current bench-level rules or fallback mode
 
 ---
 
@@ -1515,6 +1845,13 @@ Rules:
 - No cycles expected; guardrail exists.
 - Missing final targets may be either craftable targets or loot-only final targets.
 - Pre-alpha phase: backward compatibility and migration of persisted local data are intentionally out of scope until production/stable requirements are introduced.
+- Actual hideout bench levels are used for craftability when hideout cache is available and valid.
+- Planner falls back to assuming all benches level 3 if hideout state is unavailable or invalid.
+- Generated hideout upgrade lists are derived dynamically from imported hideout definitions and cached hideout API state.
+- Generated hideout upgrade lists include only direct requirements for the specific target level, not cumulative requirements.
+- The `stash` hideout module is excluded from generated upgrade lists.
+- Persisted toggle state for obsolete generated lists may be removed automatically after hideout sync.
+- Generated hideout upgrade lists require valid hideout cache and are not synthesized from fallback bench assumptions.
 
 ---
 
@@ -1571,6 +1908,23 @@ Tests must verify:
 - Unknown API itemIds ignored.
 - Blueprint/bench restrictions enforced at list level.
 - List provenance for direct final targets is preserved and surfaced in hover detail.
+- Hideout definitions are imported deterministically.
+- `stash.json` is excluded from generated hideout lists.
+- One generated hideout list exists for each not-yet-reached target level.
+- Generated list naming marks the next target level correctly.
+- Generated list items contain only the requirements for that exact level.
+- Generated hideout lists participate in planner aggregation like manual lists.
+- List-level and item-level toggles for generated lists persist correctly.
+- Obsolete toggle state is removed when generated lists disappear after hideout sync.
+- No generated hideout lists are shown when no cached hideout state exists.
+- Lists view shows a hint to use Sync Hideouts when hideout cache is absent.
+- Generated list ordering is deterministic.
+- Item is craftable when bench level meets `stationLevelRequired`.
+- Item is not craftable when bench level is below `stationLevelRequired`.
+- Intermediate ingredient blocked by insufficient bench level prevents final target from being locally reachable.
+- Fallback mode with missing hideout cache assumes all benches at level 3 for craftability checks.
+- Malformed or invalid hideout cache also triggers fallback mode for craftability checks.
+- Generated hideout lists still use actual hideout data and do not rely on fallback mode.
 
 Canonical scenarios:
 
@@ -1585,3 +1939,9 @@ Canonical scenarios:
 9. Deterministic target ordering by list order, item order, value, then itemId.
 10. Missing loot-only final target appears in In Raid with contributing list names.
 11. Source item with `craftBench = "in_raid"` is preserved in dataset and appears in stash when present in API/cache.
+12. Current hideout level 1 generates target level 2 as `(Next)` and higher levels as future generated lists.
+13. After hideout sync from level 1 to level 2, old level-2 generated list disappears, level 3 becomes `(Next)`, and obsolete toggle state is removed.
+14. Disabling one generated hideout item excludes it from `requiredFinal`.
+15. Enabling multiple generated hideout levels accumulates their requirements normally.
+16. Craft blocked by insufficient bench level while valid hideout cache exists.
+17. Craft allowed under fallback mode when hideout cache is unavailable and assumed bench level 3 applies.

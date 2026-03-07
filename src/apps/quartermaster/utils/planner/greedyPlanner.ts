@@ -79,20 +79,24 @@ function addAvail(state: PlannerState, itemId: ItemId, qty: Qty): void {
 
 /**
  * Check if an item can be crafted (has recipe, bench, not blueprint-locked, bench level OK)
+ * See specification CR-006: formal craftability predicate
  */
 function canCraft(
   item: { recipe?: Record<string, number>; craftBench?: BenchId; blueprintLocked: boolean; stationLevelRequired: 1 | 2 | 3 },
   benchLevels: Record<BenchId, number>,
 ): { ok: boolean; reason?: UncraftableReason } {
-  if (!item.recipe || Object.keys(item.recipe).length === 0 || !item.craftBench) {
+  if (!item.recipe || Object.keys(item.recipe).length === 0) {
     return { ok: false };
   }
+  if (!item.craftBench) {
+    return { ok: false, reason: 'missing_bench' };
+  }
   if (item.blueprintLocked) {
-    return { ok: false, reason: 'blueprint_or_bench' };
+    return { ok: false, reason: 'blueprint_locked' };
   }
   const currentLevel = benchLevels[item.craftBench] ?? 3;
   if (currentLevel < item.stationLevelRequired) {
-    return { ok: false, reason: 'blueprint_or_bench' };
+    return { ok: false, reason: 'insufficient_bench_level' };
   }
   return { ok: true };
 }
@@ -260,12 +264,10 @@ function phaseA(
   const { ok, reason } = canCraft(item, state.benchLevels);
 
   if (!ok) {
-    if (reason === 'blueprint_or_bench') {
-      if (item.blueprintLocked) {
-        state.blueprintBlockers.add(targetId);
-      } else {
-        state.benchBlockers.add(targetId);
-      }
+    if (reason === 'blueprint_locked') {
+      state.blueprintBlockers.add(targetId);
+    } else if (reason === 'insufficient_bench_level' || reason === 'missing_bench') {
+      state.benchBlockers.add(targetId);
     }
     return null; // Cannot craft
   }
@@ -323,12 +325,10 @@ function phaseC(
 
     const { ok, reason } = canCraft(ingItem, state.benchLevels);
     if (!ok) {
-      if (reason === 'blueprint_or_bench') {
-        if (ingItem.blueprintLocked) {
-          state.blueprintBlockers.add(ingId);
-        } else {
-          state.benchBlockers.add(ingId);
-        }
+      if (reason === 'blueprint_locked') {
+        state.blueprintBlockers.add(ingId);
+      } else if (reason === 'insufficient_bench_level' || reason === 'missing_bench') {
+        state.benchBlockers.add(ingId);
       }
       missingSub[ingId] = (missingSub[ingId] ?? 0) + ingDeficit;
       continue;

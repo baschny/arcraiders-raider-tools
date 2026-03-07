@@ -2,625 +2,2060 @@
   "data": {
     "items": [
       {
-        "itemId": "hullcracker_i",
-        "name": "Hullcracker I",
+        "itemId": "combat_mk1",
+        "name": "Combat Mk. 1",
         "quantity": 1,
-        "slotIndex": 0
-      },
-      {
-        "itemId": "photoelectric_cloak",
-        "name": "Photoelectric Cloak",
-        "quantity": 1,
-        "slotIndex": 1
-      },
-      {
-        "itemId": "exodus_modules",
-        "name": "Exodus Modules",
-        "quantity": 3,
-        "slotIndex": 2
-      },
-      {
-        "itemId": "wires",
-        "name": "Wires",
-        "quantity": 1,
-        "slotIndex": 3
-      },
-      {
-        "itemId": "heavy_gun_parts",
-        "name": "Heavy Gun Parts",
-        "quantity": 5,
-        "slotIndex": 4
-      },
-      {
-        "itemId": "plastic_parts",
-        "name": "Plastic Parts",
-        "quantity": 50,
-        "slotIndex": 5
-      },
-      {
-        "itemId": "trailblazer",
-        "name": "Trailblazer",
-        "quantity": 2,
-        "slotIndex": 7
-      },
-      {
-        "itemId": "steel_spring",
-        "name": "Steel Spring",
-        "quantity": 6,
-        "slotIndex": 8
-      },
-      {
-        "itemId": "fabric",
-        "name": "Fabric",
-        "quantity": 50,
-        "slotIndex": 9
-      },
-      {
-        "itemId": "simple_gun_parts",
-        "name": "Simple Gun Parts",
-        "quantity": 10,
-        "slotIndex": 10
-      },
-      {
-        "itemId": "plastic_parts",
-        "name": "Plastic Parts",
-        "quantity": 50,
-        "slotIndex": 11
-      },
-      {
-        "itemId": "simple_gun_parts",
-        "name": "Simple Gun Parts",
-        "quantity": 10,
-        "slotIndex": 12
-      },
-      {
-        "itemId": "mod_components",
-        "name": "Mod Components",
-        "quantity": 5,
-        "slotIndex": 13
-      },
-      {
-        "itemId": "osprey_iv",
-        "name": "Osprey IV",
-        "quantity": 1,
-        "slotIndex": 14
-      },
-      {
-        "itemId": "deadline",
-        "name": "Deadline",
-        "quantity": 1,
-        "slotIndex": 15
-      },
-      {
-        "itemId": "shield_recharger",
-        "name": "Shield Recharger",
-        "quantity": 3,
-        "slotIndex": 16
-      },
-      {
-        "itemId": "bettina_iv",
-        "name": "Bettina IV",
-        "quantity": 1,
-        "slotIndex": 17
-      },
-      {
-        "itemId": "rubber_parts",
-        "name": "Rubber Parts",
-        "quantity": 50,
-        "slotIndex": 18
-      },
-      {
-        "itemId": "arc_circuitry",
-        "name": "ARC Circuitry",
-        "quantity": 5,
-        "slotIndex": 19
-      },
-      {
-        "itemId": "extended_light_mag_ii",
-        "name": "Extended Light Mag II",
-        "quantity": 1,
-        "slotIndex": 20
-      },
-      {
-        "itemId": "looting_mk2",
-        "name": "Looting Mk. 2",
-        "quantity": 1,
-        "slotIndex": 21
-      },
-      {
-        "itemId": "electrical_components",
-        "name": "Electrical Components",
-        "quantity": 10,
-        "slotIndex": 22
-      },
-      {
-        "itemId": "plastic_parts",
-        "name": "Plastic Parts",
-        "quantity": 50,
-        "slotIndex": 23
-      },
-      {
-        "itemId": "trigger_nade",
-        "name": "Trigger 'Nade",
-        "quantity": 3,
-        "slotIndex": 24
-      },
-      {
-        "itemId": "spaceport_warehouse_key",
-        "name": "Spaceport Warehouse Key",
-        "quantity": 1,
-        "slotIndex": 25
-      },
-      {
-        "itemId": "vita_spray",
-        "name": "Vita Spray",
-        "quantity": 1,
-        "slotIndex": 26
-      },
-      {
-        "itemId": "torrente_iii",
-        "name": "Torrente III",
-        "quantity": 1,
-        "slotIndex": 27
-      },
-      {
-        "itemId": "rubber_parts",
-        "name": "Rubber Parts",
-        "quantity": 50,
-        "slotIndex": 28
+        "slotIndex": 0,
+        "durabilityPercent": 100
       },
       {
         "itemId": "defibrillator",
         "name": "Defibrillator",
         "quantity": 3,
-        "slotIndex": 29
-      },
-      {
-        "itemId": "stitcher_iv",
-        "name": "Stitcher IV",
-        "quantity": 1,
-        "slotIndex": 30
-      },
-      {
-        "itemId": "heavy_gun_parts",
-        "name": "Heavy Gun Parts",
-        "quantity": 5,
-        "slotIndex": 31
-      },
-      {
-        "itemId": "rubber_parts",
-        "name": "Rubber Parts",
-        "quantity": 50,
-        "slotIndex": 32
-      },
-      {
-        "itemId": "heavy_gun_parts",
-        "name": "Heavy Gun Parts",
-        "quantity": 5,
-        "slotIndex": 33
-      },
-      {
-        "itemId": "steel_spring",
-        "name": "Steel Spring",
-        "quantity": 15,
-        "slotIndex": 34
-      },
-      {
-        "itemId": "burletta_i",
-        "name": "Burletta I",
-        "quantity": 1,
-        "slotIndex": 35
-      },
-      {
-        "itemId": "defibrillator",
-        "name": "Defibrillator",
-        "quantity": 3,
-        "slotIndex": 36
-      },
-      {
-        "itemId": "heavy_gun_parts",
-        "name": "Heavy Gun Parts",
-        "quantity": 2,
-        "slotIndex": 37
-      },
-      {
-        "itemId": "complex_gun_parts",
-        "name": "Complex Gun Parts",
-        "quantity": 3,
-        "slotIndex": 38
-      },
-      {
-        "itemId": "recorder",
-        "name": "Recorder",
-        "quantity": 1,
-        "slotIndex": 39
-      },
-      {
-        "itemId": "photoelectric_cloak",
-        "name": "Photoelectric Cloak",
-        "quantity": 1,
-        "slotIndex": 40
-      },
-      {
-        "itemId": "plastic_parts",
-        "name": "Plastic Parts",
-        "quantity": 50,
-        "slotIndex": 41
-      },
-      {
-        "itemId": "plastic_parts",
-        "name": "Plastic Parts",
-        "quantity": 50,
-        "slotIndex": 42
-      },
-      {
-        "itemId": "adrenaline_shot",
-        "name": "Adrenaline Shot",
-        "quantity": 5,
-        "slotIndex": 43
-      },
-      {
-        "itemId": "snitch_scanner",
-        "name": "Snitch Scanner",
-        "quantity": 3,
-        "slotIndex": 44
-      },
-      {
-        "itemId": "raider_hatch_key",
-        "name": "Raider Hatch Key",
-        "quantity": 1,
-        "slotIndex": 45
-      },
-      {
-        "itemId": "trigger_nade",
-        "name": "Trigger 'Nade",
-        "quantity": 2,
-        "slotIndex": 46
-      },
-      {
-        "itemId": "il_toro_i",
-        "name": "Il Toro I",
-        "quantity": 1,
-        "slotIndex": 47
-      },
-      {
-        "itemId": "light_gun_parts",
-        "name": "Light Gun Parts",
-        "quantity": 5,
-        "slotIndex": 48
-      },
-      {
-        "itemId": "shredder_gyro",
-        "name": "Shredder Gyro",
-        "quantity": 3,
-        "slotIndex": 49
-      },
-      {
-        "itemId": "spaceport_control_tower_key",
-        "name": "Spaceport Control Tower Key",
-        "quantity": 1,
-        "slotIndex": 50
-      },
-      {
-        "itemId": "plastic_parts",
-        "name": "Plastic Parts",
-        "quantity": 50,
-        "slotIndex": 51
-      },
-      {
-        "itemId": "shredder_gyro",
-        "name": "Shredder Gyro",
-        "quantity": 1,
-        "slotIndex": 52
-      },
-      {
-        "itemId": "plastic_parts",
-        "name": "Plastic Parts",
-        "quantity": 50,
-        "slotIndex": 53
-      },
-      {
-        "itemId": "dam_staff_room_key",
-        "name": "Dam Staff Room Key",
-        "quantity": 1,
-        "slotIndex": 54
-      },
-      {
-        "itemId": "raider_hatch_key",
-        "name": "Raider Hatch Key",
-        "quantity": 1,
-        "slotIndex": 55
-      },
-      {
-        "itemId": "vulcano_ii",
-        "name": "Vulcano II",
-        "quantity": 1,
-        "slotIndex": 56
-      },
-      {
-        "itemId": "advanced_arc_powercell",
-        "name": "Advanced ARC Powercell",
-        "quantity": 5,
-        "slotIndex": 57
-      },
-      {
-        "itemId": "simple_gun_parts",
-        "name": "Simple Gun Parts",
-        "quantity": 10,
-        "slotIndex": 58
-      },
-      {
-        "itemId": "chemicals",
-        "name": "Chemicals",
-        "quantity": 50,
-        "slotIndex": 59
-      },
-      {
-        "itemId": "fireworks_box",
-        "name": "Fireworks Box",
-        "quantity": 1,
-        "slotIndex": 60
-      },
-      {
-        "itemId": "battery",
-        "name": "Battery",
-        "quantity": 15,
-        "slotIndex": 61
-      },
-      {
-        "itemId": "shaker",
-        "name": "Shaker",
-        "quantity": 1,
-        "slotIndex": 62
-      },
-      {
-        "itemId": "plastic_parts",
-        "name": "Plastic Parts",
-        "quantity": 13,
-        "slotIndex": 63
-      },
-      {
-        "itemId": "il_toro_iv",
-        "name": "Il Toro IV",
-        "quantity": 1,
-        "slotIndex": 64
-      },
-      {
-        "itemId": "surge_shield_recharger",
-        "name": "Surge Shield Recharger",
-        "quantity": 1,
-        "slotIndex": 65
-      },
-      {
-        "itemId": "advanced_electrical_components",
-        "name": "Advanced Electrical Components",
-        "quantity": 4,
-        "slotIndex": 66
-      },
-      {
-        "itemId": "blue_gate_village_key",
-        "name": "Blue Gate Village Key",
-        "quantity": 1,
-        "slotIndex": 67
-      },
-      {
-        "itemId": "anvil_iv",
-        "name": "Anvil IV",
-        "quantity": 1,
-        "slotIndex": 68
+        "slotIndex": 1,
+        "durabilityPercent": 100
       },
       {
         "itemId": "fabric",
         "name": "Fabric",
         "quantity": 50,
-        "slotIndex": 69
+        "slotIndex": 2,
+        "durabilityPercent": 100
       },
       {
-        "itemId": "stella_montis_medical_storage_key",
-        "name": "Stella Montis Medical Storage Key",
-        "quantity": 1,
-        "slotIndex": 70
+        "itemId": "great_mullein",
+        "name": "Great Mullein",
+        "quantity": 15,
+        "slotIndex": 3,
+        "durabilityPercent": 100
       },
       {
-        "itemId": "fireworks_box",
-        "name": "Fireworks Box",
-        "quantity": 1,
-        "slotIndex": 71
-      },
-      {
-        "itemId": "processor",
-        "name": "Processor",
+        "itemId": "explosive_compound",
+        "name": "Explosive Compound",
         "quantity": 5,
-        "slotIndex": 72
-      },
-      {
-        "itemId": "zipline",
-        "name": "Zipline",
-        "quantity": 2,
-        "slotIndex": 73
-      },
-      {
-        "itemId": "sensors",
-        "name": "Sensors",
-        "quantity": 5,
-        "slotIndex": 74
-      },
-      {
-        "itemId": "deadline",
-        "name": "Deadline",
-        "quantity": 1,
-        "slotIndex": 75
-      },
-      {
-        "itemId": "voltage_converter",
-        "name": "Voltage Converter",
-        "quantity": 5,
-        "slotIndex": 76
+        "slotIndex": 4,
+        "durabilityPercent": 100
       },
       {
         "itemId": "durable_cloth",
         "name": "Durable Cloth",
         "quantity": 4,
-        "slotIndex": 77
+        "slotIndex": 5,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "fabric",
+        "name": "Fabric",
+        "quantity": 50,
+        "slotIndex": 6,
+        "durabilityPercent": 100
       },
       {
         "itemId": "sterilized_bandage",
         "name": "Sterilized Bandage",
         "quantity": 3,
-        "slotIndex": 78
+        "slotIndex": 7,
+        "durabilityPercent": 100
       },
       {
-        "itemId": "showstopper",
-        "name": "Showstopper",
-        "quantity": 5,
-        "slotIndex": 79
+        "itemId": "fabric",
+        "name": "Fabric",
+        "quantity": 50,
+        "slotIndex": 8,
+        "durabilityPercent": 100
       },
       {
-        "itemId": "medium_gun_parts",
-        "name": "Medium Gun Parts",
-        "quantity": 5,
-        "slotIndex": 80
+        "itemId": "rusted_bolts",
+        "name": "Rusted Bolts",
+        "quantity": 1,
+        "slotIndex": 9,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "extended_medium_mag_ii",
+        "name": "Extended Medium Mag II",
+        "quantity": 1,
+        "slotIndex": 10,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "crude_explosives",
+        "name": "Crude Explosives",
+        "quantity": 10,
+        "slotIndex": 11,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "plastic_parts",
+        "name": "Plastic Parts",
+        "quantity": 50,
+        "slotIndex": 12,
+        "durabilityPercent": 100
       },
       {
         "itemId": "chemicals",
         "name": "Chemicals",
         "quantity": 50,
-        "slotIndex": 81
+        "slotIndex": 13,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "rattler_iii",
+        "name": "Rattler III",
+        "quantity": 1,
+        "slotIndex": 14,
+        "durabilityPercent": 100,
+        "attachments": [
+          {
+            "itemId": null,
+            "name": null,
+            "quantity": 1,
+            "slotIndex": 0,
+            "durabilityPercent": 100
+          },
+          {
+            "itemId": null,
+            "name": null,
+            "quantity": 1,
+            "slotIndex": 1,
+            "durabilityPercent": 100
+          },
+          {
+            "itemId": null,
+            "name": null,
+            "quantity": 1,
+            "slotIndex": 2,
+            "durabilityPercent": 100
+          }
+        ]
+      },
+      {
+        "itemId": "tactical_mk1",
+        "name": "Tactical Mk. 1",
+        "quantity": 1,
+        "slotIndex": 15,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "shield_recharger",
+        "name": "Shield Recharger",
+        "quantity": 5,
+        "slotIndex": 16,
+        "durabilityPercent": 100
       },
       {
         "itemId": "assorted_seeds",
         "name": "Assorted Seeds",
+        "quantity": 83,
+        "slotIndex": 17,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "assorted_seeds",
+        "name": "Assorted Seeds",
+        "quantity": 100,
+        "slotIndex": 18,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "fabric",
+        "name": "Fabric",
         "quantity": 50,
-        "slotIndex": 82
+        "slotIndex": 19,
+        "durabilityPercent": 100
       },
       {
-        "itemId": "equalizer",
-        "name": "Equalizer",
+        "itemId": "bandage",
+        "name": "Bandage",
+        "quantity": 5,
+        "slotIndex": 20,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "stitcher_iii",
+        "name": "Stitcher III",
         "quantity": 1,
-        "slotIndex": 83
+        "slotIndex": 21,
+        "durabilityPercent": 74.3618,
+        "attachments": [
+          {
+            "itemId": "extended_barrel",
+            "name": "Extended Barrel",
+            "quantity": 1,
+            "slotIndex": 0,
+            "durabilityPercent": 100
+          },
+          {
+            "itemId": null,
+            "name": null,
+            "quantity": 1,
+            "slotIndex": 1,
+            "durabilityPercent": 100
+          },
+          {
+            "itemId": "extended_light_mag_i",
+            "name": "Extended Light Mag I",
+            "quantity": 1,
+            "slotIndex": 2,
+            "durabilityPercent": 100
+          },
+          {
+            "itemId": "padded_stock",
+            "name": "Padded Stock",
+            "quantity": 1,
+            "slotIndex": 3,
+            "durabilityPercent": 100
+          }
+        ]
       },
       {
-        "itemId": "vulcano_iv",
-        "name": "Vulcano IV",
+        "itemId": "dam_controlled_access_zone_key",
+        "name": "Dam Controlled Access Zone Key",
         "quantity": 1,
-        "slotIndex": 84
+        "slotIndex": 22,
+        "durabilityPercent": 100
       },
       {
-        "itemId": "anvil_iv",
-        "name": "Anvil IV",
+        "itemId": "renegade_iii",
+        "name": "Renegade III",
         "quantity": 1,
-        "slotIndex": 85
+        "slotIndex": 23,
+        "durabilityPercent": 100,
+        "attachments": [
+          {
+            "itemId": null,
+            "name": null,
+            "quantity": 1,
+            "slotIndex": 0,
+            "durabilityPercent": 100
+          },
+          {
+            "itemId": null,
+            "name": null,
+            "quantity": 1,
+            "slotIndex": 1,
+            "durabilityPercent": 100
+          },
+          {
+            "itemId": null,
+            "name": null,
+            "quantity": 1,
+            "slotIndex": 2,
+            "durabilityPercent": 100
+          }
+        ]
       },
       {
-        "itemId": "dam_testing_annex_key",
-        "name": "Dam Testing Annex Key",
+        "itemId": "green_light_stick",
+        "name": "Green Light Stick",
+        "quantity": 5,
+        "slotIndex": 24,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "plastic_parts",
+        "name": "Plastic Parts",
+        "quantity": 50,
+        "slotIndex": 25,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "recorder",
+        "name": "Recorder",
         "quantity": 1,
-        "slotIndex": 86
-      },
-      {
-        "itemId": "power_rod",
-        "name": "Power Rod",
-        "quantity": 3,
-        "slotIndex": 87
+        "slotIndex": 26,
+        "durabilityPercent": 100
       },
       {
         "itemId": "metal_parts",
         "name": "Metal Parts",
         "quantity": 50,
-        "slotIndex": 88
+        "slotIndex": 27,
+        "durabilityPercent": 100
       },
       {
         "itemId": "simple_gun_parts",
         "name": "Simple Gun Parts",
-        "quantity": 8,
-        "slotIndex": 90
+        "quantity": 10,
+        "slotIndex": 28,
+        "durabilityPercent": 100
       },
       {
-        "itemId": "fireworks_box",
-        "name": "Fireworks Box",
+        "itemId": "raider_hatch_key",
+        "name": "Raider Hatch Key",
         "quantity": 1,
-        "slotIndex": 91
+        "slotIndex": 29,
+        "durabilityPercent": 100
       },
       {
-        "itemId": "steel_spring",
-        "name": "Steel Spring",
-        "quantity": 15,
-        "slotIndex": 92
-      },
-      {
-        "itemId": "mod_components",
-        "name": "Mod Components",
+        "itemId": "rope",
+        "name": "Rope",
         "quantity": 5,
-        "slotIndex": 93
+        "slotIndex": 30,
+        "durabilityPercent": 100
       },
       {
-        "itemId": "battery",
-        "name": "Battery",
-        "quantity": 8,
-        "slotIndex": 94
+        "itemId": "fabric",
+        "name": "Fabric",
+        "quantity": 50,
+        "slotIndex": 31,
+        "durabilityPercent": 100
       },
       {
-        "itemId": "exodus_modules",
-        "name": "Exodus Modules",
+        "itemId": "deflated_football",
+        "name": "Deflated Football",
+        "quantity": 1,
+        "slotIndex": 32,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "arc_circuitry",
+        "name": "ARC Circuitry",
+        "quantity": 5,
+        "slotIndex": 33,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "fabric",
+        "name": "Fabric",
+        "quantity": 20,
+        "slotIndex": 34,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "heavy_ammo",
+        "name": "Heavy Ammo",
+        "quantity": 40,
+        "slotIndex": 35,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "rattler_i",
+        "name": "Rattler I",
+        "quantity": 1,
+        "slotIndex": 36,
+        "durabilityPercent": 99.3409,
+        "attachments": [
+          {
+            "itemId": null,
+            "name": null,
+            "quantity": 1,
+            "slotIndex": 0,
+            "durabilityPercent": 100
+          },
+          {
+            "itemId": null,
+            "name": null,
+            "quantity": 1,
+            "slotIndex": 1,
+            "durabilityPercent": 100
+          },
+          {
+            "itemId": null,
+            "name": null,
+            "quantity": 1,
+            "slotIndex": 2,
+            "durabilityPercent": 100
+          }
+        ]
+      },
+      {
+        "itemId": "breathtaking_snow_globe",
+        "name": "Breathtaking Snow Globe",
+        "quantity": 1,
+        "slotIndex": 37,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "magnet",
+        "name": "Magnet",
+        "quantity": 10,
+        "slotIndex": 38,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "wires",
+        "name": "Wires",
+        "quantity": 5,
+        "slotIndex": 39,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "rattler_i",
+        "name": "Rattler I",
+        "quantity": 1,
+        "slotIndex": 40,
+        "durabilityPercent": 92.0898,
+        "attachments": [
+          {
+            "itemId": null,
+            "name": null,
+            "quantity": 1,
+            "slotIndex": 0,
+            "durabilityPercent": 100
+          },
+          {
+            "itemId": null,
+            "name": null,
+            "quantity": 1,
+            "slotIndex": 1,
+            "durabilityPercent": 100
+          },
+          {
+            "itemId": null,
+            "name": null,
+            "quantity": 1,
+            "slotIndex": 2,
+            "durabilityPercent": 100
+          }
+        ]
+      },
+      {
+        "itemId": "remote_raider_flare",
+        "name": "Remote Raider Flare",
+        "quantity": 2,
+        "slotIndex": 41,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "surge_shield_recharger",
+        "name": "Surge Shield Recharger",
+        "quantity": 5,
+        "slotIndex": 42,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "rusted_gear",
+        "name": "Rusted Gear",
         "quantity": 3,
-        "slotIndex": 95
+        "slotIndex": 43,
+        "durabilityPercent": 100
       },
       {
-        "itemId": "advanced_arc_powercell",
-        "name": "Advanced ARC Powercell",
+        "itemId": "fabric",
+        "name": "Fabric",
+        "quantity": 50,
+        "slotIndex": 44,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "olives",
+        "name": "Olives",
+        "quantity": 2,
+        "slotIndex": 45,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "water_pump",
+        "name": "Water Pump",
+        "quantity": 3,
+        "slotIndex": 46,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "light_ammo",
+        "name": "Light Ammo",
+        "quantity": 100,
+        "slotIndex": 47,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "cat_bed",
+        "name": "Cat Bed",
+        "quantity": 1,
+        "slotIndex": 48,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "antiseptic",
+        "name": "Antiseptic",
         "quantity": 5,
-        "slotIndex": 96
+        "slotIndex": 49,
+        "durabilityPercent": 100
       },
       {
-        "itemId": "osprey_iii",
-        "name": "Osprey III",
-        "quantity": 1,
-        "slotIndex": 97
+        "itemId": "rubber_parts",
+        "name": "Rubber Parts",
+        "quantity": 35,
+        "slotIndex": 50,
+        "durabilityPercent": 100
       },
       {
-        "itemId": "bobcat_iv",
-        "name": "Bobcat IV",
+        "itemId": "sterilized_bandage",
+        "name": "Sterilized Bandage",
+        "quantity": 3,
+        "slotIndex": 51,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "power_cable",
+        "name": "Power Cable",
         "quantity": 1,
-        "slotIndex": 98
+        "slotIndex": 52,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "arc_thermo_lining",
+        "name": "ARC Thermo Lining",
+        "quantity": 2,
+        "slotIndex": 53,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "rattler_i",
+        "name": "Rattler I",
+        "quantity": 1,
+        "slotIndex": 54,
+        "durabilityPercent": 96.2646,
+        "attachments": [
+          {
+            "itemId": null,
+            "name": null,
+            "quantity": 1,
+            "slotIndex": 0,
+            "durabilityPercent": 100
+          },
+          {
+            "itemId": null,
+            "name": null,
+            "quantity": 1,
+            "slotIndex": 1,
+            "durabilityPercent": 100
+          },
+          {
+            "itemId": null,
+            "name": null,
+            "quantity": 1,
+            "slotIndex": 2,
+            "durabilityPercent": 100
+          }
+        ]
+      },
+      {
+        "itemId": "chemicals",
+        "name": "Chemicals",
+        "quantity": 50,
+        "slotIndex": 55,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "magnetic_accelerator",
+        "name": "Magnetic Accelerator",
+        "quantity": 2,
+        "slotIndex": 56,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "cracked_bioscanner",
+        "name": "Cracked Bioscanner",
+        "quantity": 2,
+        "slotIndex": 57,
+        "durabilityPercent": 100
       },
       {
         "itemId": "rubber_parts",
         "name": "Rubber Parts",
         "quantity": 50,
-        "slotIndex": 99
+        "slotIndex": 58,
+        "durabilityPercent": 100
       },
       {
-        "itemId": "electrical_components",
-        "name": "Electrical Components",
+        "itemId": "arc_performance_steel",
+        "name": "ARC Performance Steel",
+        "quantity": 3,
+        "slotIndex": 59,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "crude_explosives",
+        "name": "Crude Explosives",
         "quantity": 10,
-        "slotIndex": 100
+        "slotIndex": 60,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "battery",
+        "name": "Battery",
+        "quantity": 9,
+        "slotIndex": 61,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "looting_mk2",
+        "name": "Looting Mk. 2",
+        "quantity": 1,
+        "slotIndex": 62,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "plastic_parts",
+        "name": "Plastic Parts",
+        "quantity": 50,
+        "slotIndex": 63,
+        "durabilityPercent": 100
       },
       {
         "itemId": "advanced_arc_powercell",
         "name": "Advanced ARC Powercell",
+        "quantity": 5,
+        "slotIndex": 64,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "medium_gun_parts",
+        "name": "Medium Gun Parts",
         "quantity": 3,
-        "slotIndex": 101
+        "slotIndex": 65,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "rubber_parts",
+        "name": "Rubber Parts",
+        "quantity": 4,
+        "slotIndex": 66,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "blaze_grenade",
+        "name": "Blaze Grenade",
+        "quantity": 5,
+        "slotIndex": 67,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "complex_gun_parts",
+        "name": "Complex Gun Parts",
+        "quantity": 3,
+        "slotIndex": 68,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "light_shield",
+        "name": "Light Shield",
+        "quantity": 1,
+        "slotIndex": 69,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "ferro_iv",
+        "name": "Ferro IV",
+        "quantity": 1,
+        "slotIndex": 70,
+        "durabilityPercent": 100,
+        "attachments": [
+          {
+            "itemId": null,
+            "name": null,
+            "quantity": 1,
+            "slotIndex": 0,
+            "durabilityPercent": 100
+          },
+          {
+            "itemId": null,
+            "name": null,
+            "quantity": 1,
+            "slotIndex": 1,
+            "durabilityPercent": 100
+          },
+          {
+            "itemId": null,
+            "name": null,
+            "quantity": 1,
+            "slotIndex": 2,
+            "durabilityPercent": 100
+          }
+        ]
+      },
+      {
+        "itemId": "rubber_parts",
+        "name": "Rubber Parts",
+        "quantity": 50,
+        "slotIndex": 71,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "steel_spring",
+        "name": "Steel Spring",
+        "quantity": 15,
+        "slotIndex": 72,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "alarm_clock",
+        "name": "Alarm Clock",
+        "quantity": 1,
+        "slotIndex": 73,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "arc_alloy",
+        "name": "ARC Alloy",
+        "quantity": 15,
+        "slotIndex": 74,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "plastic_parts",
+        "name": "Plastic Parts",
+        "quantity": 50,
+        "slotIndex": 75,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "rubber_parts",
+        "name": "Rubber Parts",
+        "quantity": 50,
+        "slotIndex": 76,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "light_gun_parts",
+        "name": "Light Gun Parts",
+        "quantity": 3,
+        "slotIndex": 77,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "crude_explosives",
+        "name": "Crude Explosives",
+        "quantity": 10,
+        "slotIndex": 78,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "crude_explosives",
+        "name": "Crude Explosives",
+        "quantity": 10,
+        "slotIndex": 79,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "plastic_parts",
+        "name": "Plastic Parts",
+        "quantity": 50,
+        "slotIndex": 80,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "broken_guidance_system",
+        "name": "Broken Guidance System",
+        "quantity": 1,
+        "slotIndex": 81,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "explosive_compound",
+        "name": "Explosive Compound",
+        "quantity": 5,
+        "slotIndex": 82,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "industrial_magnet",
+        "name": "Industrial Magnet",
+        "quantity": 3,
+        "slotIndex": 83,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "exodus_modules",
+        "name": "Exodus Modules",
+        "quantity": 3,
+        "slotIndex": 84,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "assorted_seeds",
+        "name": "Assorted Seeds",
+        "quantity": 100,
+        "slotIndex": 85,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "fabric",
+        "name": "Fabric",
+        "quantity": 50,
+        "slotIndex": 86,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "sterilized_bandage",
+        "name": "Sterilized Bandage",
+        "quantity": 3,
+        "slotIndex": 87,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "lemon",
+        "name": "Lemon",
+        "quantity": 3,
+        "slotIndex": 88,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "lil_smoke_grenade",
+        "name": "Li'l Smoke Grenade",
+        "quantity": 5,
+        "slotIndex": 89,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "oil",
+        "name": "Oil",
+        "quantity": 15,
+        "slotIndex": 90,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "snitch_scanner",
+        "name": "Snitch Scanner",
+        "quantity": 3,
+        "slotIndex": 91,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "speaker_component",
+        "name": "Speaker Component",
+        "quantity": 4,
+        "slotIndex": 92,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "arc_alloy",
+        "name": "ARC Alloy",
+        "quantity": 15,
+        "slotIndex": 93,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "light_ammo",
+        "name": "Light Ammo",
+        "quantity": 19,
+        "slotIndex": 94,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "advanced_mechanical_components",
+        "name": "Advanced Mechanical Components",
+        "quantity": 4,
+        "slotIndex": 95,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "metal_parts",
+        "name": "Metal Parts",
+        "quantity": 23,
+        "slotIndex": 96,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "wasp_driver",
+        "name": "Wasp Driver",
+        "quantity": 3,
+        "slotIndex": 97,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "rusted_shut_medical_kit",
+        "name": "Rusted Shut Medical Kit",
+        "quantity": 2,
+        "slotIndex": 98,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "arc_powercell",
+        "name": "ARC Powercell",
+        "quantity": 5,
+        "slotIndex": 99,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "fabric",
+        "name": "Fabric",
+        "quantity": 50,
+        "slotIndex": 100,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "arc_alloy",
+        "name": "ARC Alloy",
+        "quantity": 15,
+        "slotIndex": 101,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "chemicals",
+        "name": "Chemicals",
+        "quantity": 44,
+        "slotIndex": 102,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "medium_ammo",
+        "name": "Medium Ammo",
+        "quantity": 27,
+        "slotIndex": 103,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "laboratory_reagents",
+        "name": "Laboratory Reagents",
+        "quantity": 2,
+        "slotIndex": 104,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "industrial_battery",
+        "name": "Industrial Battery",
+        "quantity": 2,
+        "slotIndex": 105,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "synthesized_fuel",
+        "name": "Synthesized Fuel",
+        "quantity": 3,
+        "slotIndex": 106,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "arc_powercell",
+        "name": "ARC Powercell",
+        "quantity": 5,
+        "slotIndex": 107,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "snap_blast_grenade",
+        "name": "Snap Blast Grenade",
+        "quantity": 3,
+        "slotIndex": 108,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "explosive_compound",
+        "name": "Explosive Compound",
+        "quantity": 3,
+        "slotIndex": 109,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "great_mullein",
+        "name": "Great Mullein",
+        "quantity": 11,
+        "slotIndex": 110,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "chemicals",
+        "name": "Chemicals",
+        "quantity": 44,
+        "slotIndex": 111,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "firefly_burner",
+        "name": "Firefly Burner",
+        "quantity": 3,
+        "slotIndex": 112,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "rusted_bolts",
+        "name": "Rusted Bolts",
+        "quantity": 3,
+        "slotIndex": 113,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "canister",
+        "name": "Canister",
+        "quantity": 2,
+        "slotIndex": 114,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "rusted_tools",
+        "name": "Rusted Tools",
+        "quantity": 3,
+        "slotIndex": 115,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "pop_trigger",
+        "name": "Pop Trigger",
+        "quantity": 2,
+        "slotIndex": 116,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "barricade_kit",
+        "name": "Barricade Kit",
+        "quantity": 3,
+        "slotIndex": 117,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "advanced_arc_powercell",
+        "name": "Advanced ARC Powercell",
+        "quantity": 4,
+        "slotIndex": 118,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "medium_ammo",
+        "name": "Medium Ammo",
+        "quantity": 16,
+        "slotIndex": 119,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "arc_powercell",
+        "name": "ARC Powercell",
+        "quantity": 4,
+        "slotIndex": 120,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "fabric",
+        "name": "Fabric",
+        "quantity": 50,
+        "slotIndex": 121,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "simple_gun_parts",
+        "name": "Simple Gun Parts",
+        "quantity": 6,
+        "slotIndex": 122,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "simple_gun_parts",
+        "name": "Simple Gun Parts",
+        "quantity": 3,
+        "slotIndex": 123,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "adrenaline_shot",
+        "name": "Adrenaline Shot",
+        "quantity": 5,
+        "slotIndex": 124,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "ion_sputter",
+        "name": "Ion Sputter",
+        "quantity": 1,
+        "slotIndex": 125,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "stitcher_i",
+        "name": "Stitcher I",
+        "quantity": 1,
+        "slotIndex": 126,
+        "durabilityPercent": 88.97080000000001,
+        "attachments": [
+          {
+            "itemId": null,
+            "name": null,
+            "quantity": 1,
+            "slotIndex": 0,
+            "durabilityPercent": 100
+          },
+          {
+            "itemId": null,
+            "name": null,
+            "quantity": 1,
+            "slotIndex": 1,
+            "durabilityPercent": 100
+          },
+          {
+            "itemId": null,
+            "name": null,
+            "quantity": 1,
+            "slotIndex": 2,
+            "durabilityPercent": 100
+          },
+          {
+            "itemId": null,
+            "name": null,
+            "quantity": 1,
+            "slotIndex": 3,
+            "durabilityPercent": 100
+          }
+        ]
+      },
+      {
+        "itemId": "oil",
+        "name": "Oil",
+        "quantity": 9,
+        "slotIndex": 127,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "steel_spring",
+        "name": "Steel Spring",
+        "quantity": 15,
+        "slotIndex": 128,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "crude_explosives",
+        "name": "Crude Explosives",
+        "quantity": 10,
+        "slotIndex": 129,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "arc_powercell",
+        "name": "ARC Powercell",
+        "quantity": 5,
+        "slotIndex": 130,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "light_ammo",
+        "name": "Light Ammo",
+        "quantity": 20,
+        "slotIndex": 131,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "wolfpack",
+        "name": "Wolfpack",
+        "quantity": 1,
+        "slotIndex": 132,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "fireball_burner",
+        "name": "Fireball Burner",
+        "quantity": 3,
+        "slotIndex": 133,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "shotgun_ammo",
+        "name": "Shotgun Ammo",
+        "quantity": 6,
+        "slotIndex": 134,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "arc_powercell",
+        "name": "ARC Powercell",
+        "quantity": 4,
+        "slotIndex": 135,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "renegade_ii",
+        "name": "Renegade II",
+        "quantity": 1,
+        "slotIndex": 136,
+        "durabilityPercent": 100,
+        "attachments": [
+          {
+            "itemId": null,
+            "name": null,
+            "quantity": 1,
+            "slotIndex": 0,
+            "durabilityPercent": 100
+          },
+          {
+            "itemId": null,
+            "name": null,
+            "quantity": 1,
+            "slotIndex": 1,
+            "durabilityPercent": 100
+          },
+          {
+            "itemId": null,
+            "name": null,
+            "quantity": 1,
+            "slotIndex": 2,
+            "durabilityPercent": 100
+          }
+        ]
+      },
+      {
+        "itemId": "trailblazer",
+        "name": "Trailblazer",
+        "quantity": 3,
+        "slotIndex": 137,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "red_light_stick",
+        "name": "Red Light Stick",
+        "quantity": 5,
+        "slotIndex": 138,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "very_comfortable_pillow",
+        "name": "Very Comfortable Pillow",
+        "quantity": 1,
+        "slotIndex": 139,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "advanced_electrical_components",
+        "name": "Advanced Electrical Components",
+        "quantity": 5,
+        "slotIndex": 140,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "rope",
+        "name": "Rope",
+        "quantity": 5,
+        "slotIndex": 141,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "duct_tape",
+        "name": "Duct Tape",
+        "quantity": 4,
+        "slotIndex": 142,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "il_toro_ii",
+        "name": "Il Toro II",
+        "quantity": 1,
+        "slotIndex": 143,
+        "durabilityPercent": 68.0001,
+        "attachments": [
+          {
+            "itemId": null,
+            "name": null,
+            "quantity": 1,
+            "slotIndex": 0,
+            "durabilityPercent": 100
+          },
+          {
+            "itemId": null,
+            "name": null,
+            "quantity": 1,
+            "slotIndex": 1,
+            "durabilityPercent": 100
+          },
+          {
+            "itemId": null,
+            "name": null,
+            "quantity": 1,
+            "slotIndex": 2,
+            "durabilityPercent": 100
+          },
+          {
+            "itemId": null,
+            "name": null,
+            "quantity": 1,
+            "slotIndex": 3,
+            "durabilityPercent": 100
+          }
+        ]
+      },
+      {
+        "itemId": "arc_motion_core",
+        "name": "ARC Motion Core",
+        "quantity": 5,
+        "slotIndex": 144,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "snap_blast_grenade",
+        "name": "Snap Blast Grenade",
+        "quantity": 3,
+        "slotIndex": 145,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "rubber_parts",
+        "name": "Rubber Parts",
+        "quantity": 50,
+        "slotIndex": 146,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "heavy_ammo",
+        "name": "Heavy Ammo",
+        "quantity": 40,
+        "slotIndex": 147,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "mod_components",
+        "name": "Mod Components",
+        "quantity": 4,
+        "slotIndex": 148,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "heavy_ammo",
+        "name": "Heavy Ammo",
+        "quantity": 14,
+        "slotIndex": 149,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "raider_hatch_key",
+        "name": "Raider Hatch Key",
+        "quantity": 1,
+        "slotIndex": 150,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "metal_parts",
+        "name": "Metal Parts",
+        "quantity": 50,
+        "slotIndex": 151,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "lil_smoke_grenade",
+        "name": "Li'l Smoke Grenade",
+        "quantity": 5,
+        "slotIndex": 152,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "binoculars",
+        "name": "Binoculars",
+        "quantity": 1,
+        "slotIndex": 153,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "arc_circuitry",
+        "name": "ARC Circuitry",
+        "quantity": 5,
+        "slotIndex": 154,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "syringe",
+        "name": "Syringe",
+        "quantity": 1,
+        "slotIndex": 155,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "lure_grenade",
+        "name": "Lure Grenade",
+        "quantity": 1,
+        "slotIndex": 156,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "rope",
+        "name": "Rope",
+        "quantity": 4,
+        "slotIndex": 157,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "ruined_riot_shield",
+        "name": "Ruined Riot Shield",
+        "quantity": 2,
+        "slotIndex": 158,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "lil_smoke_grenade",
+        "name": "Li'l Smoke Grenade",
+        "quantity": 2,
+        "slotIndex": 159,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "bandage",
+        "name": "Bandage",
+        "quantity": 3,
+        "slotIndex": 160,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "showstopper",
+        "name": "Showstopper",
+        "quantity": 3,
+        "slotIndex": 161,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "herbal_bandage",
+        "name": "Herbal Bandage",
+        "quantity": 5,
+        "slotIndex": 162,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "sterilized_bandage",
+        "name": "Sterilized Bandage",
+        "quantity": 3,
+        "slotIndex": 163,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "dam_surveillance_key",
+        "name": "Dam Surveillance Key",
+        "quantity": 1,
+        "slotIndex": 164,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "light_impact_grenade",
+        "name": "Light Impact Grenade",
+        "quantity": 5,
+        "slotIndex": 165,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "metal_parts",
+        "name": "Metal Parts",
+        "quantity": 50,
+        "slotIndex": 166,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "plastic_parts",
+        "name": "Plastic Parts",
+        "quantity": 50,
+        "slotIndex": 167,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "renegade_ii",
+        "name": "Renegade II",
+        "quantity": 1,
+        "slotIndex": 168,
+        "durabilityPercent": 100,
+        "attachments": [
+          {
+            "itemId": null,
+            "name": null,
+            "quantity": 1,
+            "slotIndex": 0,
+            "durabilityPercent": 100
+          },
+          {
+            "itemId": null,
+            "name": null,
+            "quantity": 1,
+            "slotIndex": 1,
+            "durabilityPercent": 100
+          },
+          {
+            "itemId": null,
+            "name": null,
+            "quantity": 1,
+            "slotIndex": 2,
+            "durabilityPercent": 100
+          }
+        ]
+      },
+      {
+        "itemId": "complex_gun_parts",
+        "name": "Complex Gun Parts",
+        "quantity": 1,
+        "slotIndex": 169,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "spotter_relay",
+        "name": "Spotter Relay",
+        "quantity": 2,
+        "slotIndex": 170,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "steel_spring",
+        "name": "Steel Spring",
+        "quantity": 12,
+        "slotIndex": 171,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "anvil_i",
+        "name": "Anvil I",
+        "quantity": 1,
+        "slotIndex": 172,
+        "durabilityPercent": 62.3347,
+        "attachments": [
+          {
+            "itemId": null,
+            "name": null,
+            "quantity": 1,
+            "slotIndex": 0,
+            "durabilityPercent": 100
+          },
+          {
+            "itemId": null,
+            "name": null,
+            "quantity": 1,
+            "slotIndex": 1,
+            "durabilityPercent": 100
+          }
+        ]
+      },
+      {
+        "itemId": "cooling_coil",
+        "name": "Cooling Coil",
+        "quantity": 1,
+        "slotIndex": 173,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "metal_parts",
+        "name": "Metal Parts",
+        "quantity": 36,
+        "slotIndex": 174,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "rubber_parts",
+        "name": "Rubber Parts",
+        "quantity": 50,
+        "slotIndex": 175,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "arc_powercell",
+        "name": "ARC Powercell",
+        "quantity": 5,
+        "slotIndex": 176,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "apricot",
+        "name": "Apricot",
+        "quantity": 4,
+        "slotIndex": 177,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "great_mullein",
+        "name": "Great Mullein",
+        "quantity": 15,
+        "slotIndex": 178,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "exodus_modules",
+        "name": "Exodus Modules",
+        "quantity": 2,
+        "slotIndex": 179,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "fabric",
+        "name": "Fabric",
+        "quantity": 50,
+        "slotIndex": 180,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "assorted_seeds",
+        "name": "Assorted Seeds",
+        "quantity": 100,
+        "slotIndex": 181,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "breathtaking_snow_globe",
+        "name": "Breathtaking Snow Globe",
+        "quantity": 1,
+        "slotIndex": 182,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "synthesized_fuel",
+        "name": "Synthesized Fuel",
+        "quantity": 5,
+        "slotIndex": 183,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "arc_powercell",
+        "name": "ARC Powercell",
+        "quantity": 5,
+        "slotIndex": 184,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "fabric",
+        "name": "Fabric",
+        "quantity": 50,
+        "slotIndex": 185,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "looting_mk1",
+        "name": "Looting Mk. 1",
+        "quantity": 1,
+        "slotIndex": 186,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "arc_circuitry",
+        "name": "ARC Circuitry",
+        "quantity": 5,
+        "slotIndex": 187,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "blaze_grenade",
+        "name": "Blaze Grenade",
+        "quantity": 4,
+        "slotIndex": 188,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "metal_parts",
+        "name": "Metal Parts",
+        "quantity": 50,
+        "slotIndex": 189,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "antiseptic",
+        "name": "Antiseptic",
+        "quantity": 1,
+        "slotIndex": 190,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "arc_powercell",
+        "name": "ARC Powercell",
+        "quantity": 5,
+        "slotIndex": 191,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "firefly_burner",
+        "name": "Firefly Burner",
+        "quantity": 1,
+        "slotIndex": 192,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "portable_tv",
+        "name": "Portable TV",
+        "quantity": 1,
+        "slotIndex": 193,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "processor",
+        "name": "Processor",
+        "quantity": 1,
+        "slotIndex": 194,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "power_bank",
+        "name": "Power Bank",
+        "quantity": 1,
+        "slotIndex": 195,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "herbal_bandage",
+        "name": "Herbal Bandage",
+        "quantity": 2,
+        "slotIndex": 196,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "snitch_scanner",
+        "name": "Snitch Scanner",
+        "quantity": 3,
+        "slotIndex": 197,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "seeker_grenade",
+        "name": "Seeker Grenade",
+        "quantity": 1,
+        "slotIndex": 198,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "arc_powercell",
+        "name": "ARC Powercell",
+        "quantity": 5,
+        "slotIndex": 199,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "agave",
+        "name": "Agave",
+        "quantity": 1,
+        "slotIndex": 200,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "arc_motion_core",
+        "name": "ARC Motion Core",
+        "quantity": 5,
+        "slotIndex": 201,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "electrical_components",
+        "name": "Electrical Components",
+        "quantity": 1,
+        "slotIndex": 202,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "herbal_bandage",
+        "name": "Herbal Bandage",
+        "quantity": 5,
+        "slotIndex": 203,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "surge_shield_recharger",
+        "name": "Surge Shield Recharger",
+        "quantity": 1,
+        "slotIndex": 204,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "metal_parts",
+        "name": "Metal Parts",
+        "quantity": 50,
+        "slotIndex": 205,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "simple_gun_parts",
+        "name": "Simple Gun Parts",
+        "quantity": 10,
+        "slotIndex": 206,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "camera_lens",
+        "name": "Camera Lens",
+        "quantity": 3,
+        "slotIndex": 207,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "launcher_ammo",
+        "name": "Launcher Ammo",
+        "quantity": 8,
+        "slotIndex": 208,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "tactical_mk2",
+        "name": "Tactical Mk. 2",
+        "quantity": 1,
+        "slotIndex": 209,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "smoke_grenade",
+        "name": "Smoke Grenade",
+        "quantity": 5,
+        "slotIndex": 210,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "raider_hatch_key",
+        "name": "Raider Hatch Key",
+        "quantity": 1,
+        "slotIndex": 211,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "vita_shot",
+        "name": "Vita Shot",
+        "quantity": 1,
+        "slotIndex": 212,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "tactical_mk3_revival",
+        "name": "Tactical Mk. 3 (Revival)",
+        "quantity": 1,
+        "slotIndex": 213,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "plastic_parts",
+        "name": "Plastic Parts",
+        "quantity": 1,
+        "slotIndex": 214,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "shrapnel_grenade",
+        "name": "Shrapnel Grenade",
+        "quantity": 3,
+        "slotIndex": 215,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "heavy_fuze_grenade",
+        "name": "Heavy Fuze Grenade",
+        "quantity": 3,
+        "slotIndex": 216,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "snap_blast_grenade",
+        "name": "Snap Blast Grenade",
+        "quantity": 3,
+        "slotIndex": 217,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "binoculars",
+        "name": "Binoculars",
+        "quantity": 1,
+        "slotIndex": 218,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "noisemaker",
+        "name": "Noisemaker",
+        "quantity": 2,
+        "slotIndex": 219,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "trigger_nade",
+        "name": "Trigger 'Nade",
+        "quantity": 3,
+        "slotIndex": 220,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "trigger_nade",
+        "name": "Trigger 'Nade",
+        "quantity": 3,
+        "slotIndex": 221,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "surveyor_vault",
+        "name": "Surveyor Vault",
+        "quantity": 2,
+        "slotIndex": 222,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "arc_motion_core",
+        "name": "ARC Motion Core",
+        "quantity": 3,
+        "slotIndex": 223,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "hornet_driver",
+        "name": "Hornet Driver",
+        "quantity": 2,
+        "slotIndex": 224,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "crude_explosives",
+        "name": "Crude Explosives",
+        "quantity": 4,
+        "slotIndex": 225,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "damaged_heat_sink",
+        "name": "Damaged Heat Sink",
+        "quantity": 1,
+        "slotIndex": 226,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "sensors",
+        "name": "Sensors",
+        "quantity": 2,
+        "slotIndex": 232,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "heavy_gun_parts",
+        "name": "Heavy Gun Parts",
+        "quantity": 3,
+        "slotIndex": 233,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "ruined_accordion",
+        "name": "Ruined Accordion",
+        "quantity": 2,
+        "slotIndex": 234,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "motor",
+        "name": "Motor",
+        "quantity": 2,
+        "slotIndex": 235,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "chemicals",
+        "name": "Chemicals",
+        "quantity": 30,
+        "slotIndex": 236,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "burletta_i",
+        "name": "Burletta I",
+        "quantity": 1,
+        "slotIndex": 238,
+        "durabilityPercent": 62.0001,
+        "attachments": [
+          {
+            "itemId": null,
+            "name": null,
+            "quantity": 1,
+            "slotIndex": 0,
+            "durabilityPercent": 100
+          },
+          {
+            "itemId": null,
+            "name": null,
+            "quantity": 1,
+            "slotIndex": 1,
+            "durabilityPercent": 100
+          }
+        ]
+      },
+      {
+        "itemId": "crude_explosives",
+        "name": "Crude Explosives",
+        "quantity": 10,
+        "slotIndex": 239,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "looting_mk1",
+        "name": "Looting Mk. 1",
+        "quantity": 1,
+        "slotIndex": 240,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "defibrillator",
+        "name": "Defibrillator",
+        "quantity": 3,
+        "slotIndex": 242,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "arc_powercell",
+        "name": "ARC Powercell",
+        "quantity": 5,
+        "slotIndex": 243,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "fabric",
+        "name": "Fabric",
+        "quantity": 50,
+        "slotIndex": 244,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "rocketeer_driver",
+        "name": "Rocketeer Driver",
+        "quantity": 1,
+        "slotIndex": 245,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "plastic_parts",
+        "name": "Plastic Parts",
+        "quantity": 46,
+        "slotIndex": 246,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "looting_mk1",
+        "name": "Looting Mk. 1",
+        "quantity": 1,
+        "slotIndex": 247,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "chemicals",
+        "name": "Chemicals",
+        "quantity": 50,
+        "slotIndex": 248,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "bandage",
+        "name": "Bandage",
+        "quantity": 5,
+        "slotIndex": 249,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "fabric",
+        "name": "Fabric",
+        "quantity": 50,
+        "slotIndex": 250,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "fireball_burner",
+        "name": "Fireball Burner",
+        "quantity": 1,
+        "slotIndex": 251,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "looting_mk1",
+        "name": "Looting Mk. 1",
+        "quantity": 1,
+        "slotIndex": 252,
+        "durabilityPercent": 100
+      },
+      {
+        "itemId": "fine_wristwatch",
+        "name": "Fine Wristwatch",
+        "quantity": 2,
+        "slotIndex": 253,
+        "durabilityPercent": 100
       }
     ],
     "currencies": {
-      "credits": 2713504,
-      "cred": 511,
-      "raiderTokens": 1820,
-      "xp": 4372112
+      "credits": 56016,
+      "cred": 390,
+      "raiderTokens": 2180,
+      "xp": 446678
     },
     "slots": {
-      "used": 275,
-      "max": 292
+      "used": 247,
+      "max": 256
     },
     "pagination": {
       "page": 1,
-      "perPage": 100,
-      "total": 275,
-      "totalPages": 3
+      "perPage": 500,
+      "total": 247,
+      "totalPages": 1
     },
-    "syncedAt": "2026-02-16T10:31:18.461Z"
+    "syncedAt": "2026-03-06T18:28:08.967Z"
   },
   "meta": {
-    "requestId": "295371d6-41c5-4037-bb4f-7505a70e75ba"
+    "requestId": "86600c50-8fa9-450e-9797-5898fd2bc4a3"
   }
 }

@@ -9,6 +9,7 @@ import type {
   CachedProfile,
   CachedStash,
   CachedLoadout,
+  CachedHideout,
   CacheMeta,
   CacheKey,
 } from '../types/arctracker';
@@ -17,7 +18,7 @@ const DB_NAME = 'raiderToolsCache';
 const DB_VERSION = 1;
 const STORE_NAME = 'arctracker';
 
-type CacheValue = CachedProfile | CachedStash | CachedLoadout | CacheMeta;
+type CacheValue = CachedProfile | CachedStash | CachedLoadout | CachedHideout | CacheMeta;
 
 let dbPromise: Promise<IDBPDatabase> | null = null;
 
@@ -108,4 +109,11 @@ export async function getCachedStash(): Promise<CachedStash | undefined> {
  */
 export async function getCachedLoadout(): Promise<CachedLoadout | undefined> {
   return cacheGet<CachedLoadout>('loadout');
+}
+
+/**
+ * Get cached hideout data.
+ */
+export async function getCachedHideout(): Promise<CachedHideout | undefined> {
+  return cacheGet<CachedHideout>('hideout');
 }

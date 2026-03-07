@@ -227,6 +227,88 @@ function processItem(source: SourceItem): { id: string; item: PlannerItem } | un
   return { id: source.id, item };
 }
 
+// ---------------------------------------------------------------------------
+// Hideout import (CR-002, CR-003)
+// ---------------------------------------------------------------------------
+
+interface HideoutSourceLevel {
+  level: number;
+  requirementItemIds: { itemId: string; quantity: number }[];
+}
+
+interface HideoutSource {
+  id: string;
+  name: { en: string; [key: string]: string };
+  maxLevel: number;
+  levels: HideoutSourceLevel[];
+}
+
+interface HideoutModuleOutput {
+  id: string;
+  name: string;
+  maxLevel: number;
+  levels: {
+    level: number;
+    requirementItemIds: { itemId: string; quantity: number }[];
+  }[];
+}
+
+function generateHideoutData(scriptDir: string): void {
+  const sourceDir = path.resolve(scriptDir, '../../arcraiders-data/hideout');
+  const destFile = path.resolve(scriptDir, '../public/data/quartermaster/hideout.json');
+
+  if (!fs.existsSync(sourceDir)) {
+    console.error(`Error: Hideout source directory does not exist: ${sourceDir}`);
+    process.exit(1);
+  }
+
+  // Read and sort filenames ASCII ascending, exclude stash.json
+  const files = fs.readdirSync(sourceDir)
+    .filter(f => f.endsWith('.json') && f !== 'stash.json')
+    .sort();
+
+  console.log(`Processing ${files.length} hideout files from ${sourceDir}...`);
+
+  const modules: HideoutModuleOutput[] = [];
+
+  for (const file of files) {
+    const filePath = path.join(sourceDir, file);
+
+    try {
+      const content = fs.readFileSync(filePath, 'utf-8');
+      const source: HideoutSource = JSON.parse(content);
+
+      modules.push({
+        id: source.id,
+        name: source.name.en,
+        maxLevel: source.maxLevel,
+        levels: source.levels.map(level => ({
+          level: level.level,
+          requirementItemIds: [...level.requirementItemIds]
+            .sort((a, b) => a.itemId.localeCompare(b.itemId)),
+        })),
+      });
+    } catch (err) {
+      console.error(`Error processing hideout file ${file}:`, err);
+      process.exit(1);
+    }
+  }
+
+  // Sort modules by id ASCII ascending
+  modules.sort((a, b) => a.id.localeCompare(b.id));
+
+  // Ensure output directory exists
+  const destDir = path.dirname(destFile);
+  if (!fs.existsSync(destDir)) {
+    fs.mkdirSync(destDir, { recursive: true });
+  }
+
+  fs.writeFileSync(destFile, JSON.stringify(modules, null, 2) + '\n');
+
+  console.log(`Done! Generated ${destFile}`);
+  console.log(`  Modules: ${modules.length}`);
+}
+
 /**
  * Main import function
  */
@@ -293,6 +375,9 @@ function main(): void {
   console.log(`Done! Generated ${destFile}`);
   console.log(`  Processed: ${processedCount} items`);
   console.log(`  Excluded: ${excludedCount} items`);
+
+  // Generate hideout data (CR-002)
+  generateHideoutData(scriptDir);
 }
 
 main();

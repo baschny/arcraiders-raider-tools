@@ -9,7 +9,7 @@ import type { BenchId } from './item';
 export type ItemId = string;
 export type Qty = number;
 
-export type UncraftableReason = 'blueprint_or_bench' | 'cycle';
+export type UncraftableReason = 'blueprint_locked' | 'insufficient_bench_level' | 'missing_bench' | 'cycle';
 
 export type LootReason =
   | 'missing_direct'

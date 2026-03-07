@@ -53,6 +53,7 @@ export function loadStoredLists(itemsMap: ItemsMap): StoredList[] {
       lists.push({
         id: raw.id,
         name: raw.name,
+        type: (raw.type as 'user' | 'hideout') ?? 'user',
         isEnabled: raw.isEnabled ?? true,
         items: validItems.map((item: { itemId: string; quantity?: number; isEnabled?: boolean }) => ({
           itemId: item.itemId,
@@ -89,6 +90,7 @@ export function createNewList(name: string): StoredList {
   return {
     id: generateListId(),
     name,
+    type: 'user',
     isEnabled: true,
     items: [],
   };

@@ -230,7 +230,10 @@ export function StashView({
                     )}
                     {planRow?.isUncraftable && (
                       <span className="stash-view__indicator stash-view__indicator--uncraftable">
-                        🚫 Uncraftable
+                        {planRow.uncraftableReason === 'blueprint_locked' && '🔒 Blueprint Locked'}
+                        {planRow.uncraftableReason === 'insufficient_bench_level' && '🚫 Bench Level Too Low'}
+                        {planRow.uncraftableReason === 'missing_bench' && '🚫 No Craft Bench'}
+                        {planRow.uncraftableReason === 'cycle' && '🚫 Craft Cycle'}
                       </span>
                     )}
                   </td>

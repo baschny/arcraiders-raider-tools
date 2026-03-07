@@ -1,1 +1,68 @@
-{"error":{"code":"internal_error","message":"Internal server error"},"meta":{"requestId":"a66396e8-2236-44b8-bb94-c179e02eae72"}}
+{
+  "data": {
+    "modules": [
+      {
+        "id": "equipment_bench",
+        "name": "Gear Bench",
+        "currentLevel": 2,
+        "maxLevel": 3
+      },
+      {
+        "id": "explosives_bench",
+        "name": "Explosives Station",
+        "currentLevel": 2,
+        "maxLevel": 3
+      },
+      {
+        "id": "med_station",
+        "name": "Medical Lab",
+        "currentLevel": 2,
+        "maxLevel": 3
+      },
+      {
+        "id": "refiner",
+        "name": "Refiner",
+        "currentLevel": 2,
+        "maxLevel": 3
+      },
+      {
+        "id": "scrappy",
+        "name": "Scrappy",
+        "currentLevel": 3,
+        "maxLevel": 5
+      },
+      {
+        "id": "stash",
+        "name": "Stash",
+        "currentLevel": 8,
+        "maxLevel": 10
+      },
+      {
+        "id": "utility_bench",
+        "name": "Utility Station",
+        "currentLevel": 1,
+        "maxLevel": 3
+      },
+      {
+        "id": "weapon_bench",
+        "name": "Gunsmith",
+        "currentLevel": 2,
+        "maxLevel": 3
+      },
+      {
+        "id": "workbench",
+        "name": "Workbench",
+        "currentLevel": 1,
+        "maxLevel": 0
+      }
+    ],
+    "summary": {
+      "totalModules": 9,
+      "totalLevels": 23,
+      "maxTotalLevels": 33
+    }
+  },
+  "meta": {
+    "requestId": "6865a246-fac4-4b0b-bc62-cf164437b3a5"
+  }
+}
