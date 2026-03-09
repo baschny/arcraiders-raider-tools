@@ -34,6 +34,14 @@
     }
   }
 
+  &__need {
+    font-weight: 600;
+
+    &--missing {
+      color: $status-missing;
+    }
+  }
+
   &__indicator {
     display: inline-flex;
     align-items: center;
@@ -56,6 +64,11 @@
     &--recycle {
       background: rgba($badge-recycle, 0.2);
       color: $badge-recycle;
+    }
+
+    &--have {
+      background: rgba($status-available, 0.2);
+      color: $status-available;
     }
 
     &--missing {

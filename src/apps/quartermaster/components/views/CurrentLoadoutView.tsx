@@ -5,39 +5,34 @@
 
 import { RefreshCw, Backpack } from 'lucide-react';
 import type { ItemsMap } from '../../types/item';
-import type { CurrentLoadoutItem, PlannerResult, LoadoutBadge } from '../../types/planner';
-import { ItemIcon, type ItemIconBadge } from '../ItemIcon';
+import type { CurrentLoadoutItem, PlannerResult } from '../../types/planner';
+import type { ItemInsightsMap } from '../../utils/itemInsights';
+import { ItemIcon } from '../ItemIcon';
 
 interface CurrentLoadoutViewProps {
   itemsMap: ItemsMap;
   currentLoadout: CurrentLoadoutItem[];
   plannerResult: PlannerResult;
+  itemInsights: ItemInsightsMap;
+  getOwnedQuantity: (itemId: string) => number | null;
   onSyncLoadout: () => void;
   isSyncing: boolean;
-}
-
-/**
- * Determine loadout badge for an item (CR-MOD-7)
- * HAVE / CAN_CRAFT / MISSING
- */
-function getLoadoutBadge(
-  itemId: string,
-  plannerResult: PlannerResult,
-): LoadoutBadge {
-  const planRow = plannerResult.planRows.find(r => r.itemId === itemId);
-  if (planRow) return planRow.badge;
-
-  // Item not in plan rows → not required, treat as HAVE
-  return 'HAVE';
 }
 
 export function CurrentLoadoutView({
   itemsMap,
   currentLoadout,
   plannerResult,
+  itemInsights,
+  getOwnedQuantity,
   onSyncLoadout,
   isSyncing,
 }: CurrentLoadoutViewProps) {
+  const tooltipContext = {
+    itemsMap,
+    plannerResult,
+    itemInsights,
+  };
   if (currentLoadout.length === 0) {
     return (
       <div className="current-loadout-view">
@@ -80,17 +75,6 @@ export function CurrentLoadoutView({
               const item = itemsMap[loadoutItem.itemId];
               if (!item) return null;
 
-              const badge = getLoadoutBadge(loadoutItem.itemId, plannerResult);
-              const badges: ItemIconBadge[] = [];
-
-              if (badge === 'HAVE') {
-                badges.push({ key: 'badge', label: 'Have', type: 'have', priority: 1 });
-              } else if (badge === 'CAN_CRAFT') {
-                badges.push({ key: 'badge', label: 'Craft', type: 'can-craft', priority: 1 });
-              } else {
-                badges.push({ key: 'badge', label: 'Missing', type: 'missing', priority: 1 });
-              }
-
               return (
                 <div key={`${loadoutItem.itemId}-${idx}`} className="current-loadout-view__slot">
                   <ItemIcon
@@ -98,9 +82,9 @@ export function CurrentLoadoutView({
                     name={item.name}
                     icon={item.icon}
                     rarity={item.rarity}
-                    quantity={loadoutItem.quantity}
-                    badges={badges}
+                    quantity={getOwnedQuantity(item.id)}
                     size="sm"
+                    tooltipContext={tooltipContext}
                   />
                 </div>
               );

@@ -1,0 +1,425 @@
+@use 'variables' as *;
+
+.qm-item-tooltip {
+  position: fixed;
+  z-index: 120000;
+  width: min(430px, calc(100vw - 24px));
+  min-width: 300px;
+  background: $bg-secondary;
+  border: 1px solid $border-default;
+  border-radius: $radius-md;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.65);
+  padding: $spacing-md;
+  overflow-y: auto;
+  overflow-x: hidden;
+  animation: qm-item-tooltip-fade-in 0.12s ease-out;
+
+  @keyframes qm-item-tooltip-fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  &__have-pill {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(0, 0, 0, 0.85);
+    color: #fff;
+    border-radius: 3px;
+    padding: 3px 6px;
+    min-width: 28px;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+
+    svg {
+      color: #fff;
+      flex-shrink: 0;
+    }
+  }
+
+  &__have-pill-value {
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1;
+
+    &--unknown {
+      color: #a6a6a6;
+      font-weight: 500;
+    }
+  }
+
+  &__header {
+    position: relative;
+    display: flex;
+    gap: $spacing-md;
+    margin-bottom: $spacing-md;
+    padding-bottom: $spacing-md;
+    border-bottom: 1px solid $border-default;
+  }
+
+  &__icon {
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+    border-radius: $radius-sm;
+    border: 2px solid transparent;
+    object-fit: contain;
+    padding: 4px;
+    background-size: cover;
+    background-position: left center;
+
+    &.rarity-common {
+      border-color: $rarity-common-border;
+      background-image: url('/images/rarities/common_bg.png');
+    }
+    &.rarity-uncommon {
+      border-color: $rarity-uncommon-border;
+      background-image: url('/images/rarities/uncommon_bg.png');
+    }
+    &.rarity-rare {
+      border-color: $rarity-rare-border;
+      background-image: url('/images/rarities/rare_bg.png');
+    }
+    &.rarity-epic {
+      border-color: $rarity-epic-border;
+      background-image: url('/images/rarities/epic_bg.png');
+    }
+    &.rarity-legendary {
+      border-color: $rarity-legendary-border;
+      background-image: url('/images/rarities/legendary_bg.png');
+    }
+  }
+
+  &__title {
+    flex: 1;
+    min-width: 0;
+    padding-right: 74px;
+
+    h3 {
+      margin: 0 0 $spacing-sm;
+      font-size: 1.18rem;
+      color: $text-primary;
+      line-height: 1.25;
+      word-break: break-word;
+    }
+  }
+
+  &__badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  &__badge {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 3px 8px;
+    border-radius: 999px;
+
+    &--type {
+      background: rgba(255, 255, 255, 0.1);
+      color: $text-secondary;
+    }
+
+    &--rarity {
+      &.rarity-common {
+        background: rgba($rarity-common-border, 0.2);
+        color: $rarity-common-border;
+      }
+      &.rarity-uncommon {
+        background: rgba($rarity-uncommon-border, 0.2);
+        color: $rarity-uncommon-border;
+      }
+      &.rarity-rare {
+        background: rgba($rarity-rare-border, 0.2);
+        color: $rarity-rare-border;
+      }
+      &.rarity-epic {
+        background: rgba($rarity-epic-border, 0.2);
+        color: $rarity-epic-border;
+      }
+      &.rarity-legendary {
+        background: rgba($rarity-legendary-border, 0.2);
+        color: $rarity-legendary-border;
+      }
+    }
+  }
+
+  &__description {
+    margin-bottom: $spacing-md;
+    padding-bottom: $spacing-md;
+    border-bottom: 1px solid $border-default;
+    color: $text-secondary;
+    line-height: 1.45;
+    font-style: italic;
+  }
+
+  &__stats {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+    margin-bottom: $spacing-md;
+    padding-bottom: $spacing-md;
+    border-bottom: 1px solid $border-default;
+  }
+
+  &__stat {
+    display: flex;
+    align-items: flex-start;
+    gap: $spacing-sm;
+    font-size: 13px;
+
+    svg {
+      color: $text-accent;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+  }
+
+  &__stat-label {
+    color: $text-secondary;
+    min-width: 96px;
+  }
+
+  &__stat-value {
+    color: $text-primary;
+    font-weight: 600;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+
+    &--unknown {
+      color: #a6a6a6;
+      font-weight: 500;
+    }
+
+    &--locations {
+      font-weight: 500;
+    }
+  }
+
+  &__location {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 999px;
+    padding: 2px 8px;
+  }
+
+  &__location-icon {
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+  }
+
+  &__section {
+    margin-bottom: $spacing-md;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    h4 {
+      margin: 0 0 $spacing-sm;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      color: $text-secondary;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+  }
+
+  &__status-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  &__status-item {
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: $radius-sm;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 7px 8px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+
+    &--multiline {
+      align-items: flex-start;
+    }
+  }
+
+  &__status-main {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: $text-primary;
+
+    &--single-row {
+      width: 100%;
+      gap: 5px;
+      line-height: 1.25;
+    }
+  }
+
+  &__status-sub {
+    flex-basis: 100%;
+    color: $text-secondary;
+    font-size: 12px;
+    line-height: 1.35;
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  &__status-arrow {
+    color: $text-secondary;
+    font-size: 12px;
+  }
+
+  &__status-chain {
+    color: $text-primary;
+    word-break: break-word;
+    white-space: normal;
+  }
+
+  &__status-badge {
+    border-radius: 999px;
+    padding: 2px 8px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+
+    &--complete {
+      background: rgba($status-available, 0.2);
+      color: $status-available;
+    }
+
+    &--missing {
+      background: rgba($status-missing, 0.2);
+      color: $status-missing;
+    }
+  }
+
+  &__mode-badge {
+    border-radius: 999px;
+    padding: 2px 7px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+
+    &--recycle {
+      background: rgba($badge-recycle, 0.2);
+      color: $badge-recycle;
+    }
+
+    &--salvage {
+      background: rgba($badge-salvage, 0.2);
+      color: $badge-salvage;
+    }
+  }
+
+  &__materials {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  &__material {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-sm;
+    border-radius: $radius-sm;
+    padding: 5px 7px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid transparent;
+
+    &--needed {
+      border-color: rgba($text-accent, 0.55);
+      background: rgba($text-accent, 0.12);
+    }
+  }
+
+  &__material-main {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    min-width: 0;
+
+    span {
+      line-height: 1.2;
+      word-break: break-word;
+    }
+  }
+
+  &__material-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    padding: 1px;
+    flex-shrink: 0;
+    background-size: cover;
+    background-position: left center;
+
+    &.rarity-common {
+      border-color: $rarity-common-border;
+      background-image: url('/images/rarities/common_bg.png');
+    }
+    &.rarity-uncommon {
+      border-color: $rarity-uncommon-border;
+      background-image: url('/images/rarities/uncommon_bg.png');
+    }
+    &.rarity-rare {
+      border-color: $rarity-rare-border;
+      background-image: url('/images/rarities/rare_bg.png');
+    }
+    &.rarity-epic {
+      border-color: $rarity-epic-border;
+      background-image: url('/images/rarities/epic_bg.png');
+    }
+    &.rarity-legendary {
+      border-color: $rarity-legendary-border;
+      background-image: url('/images/rarities/legendary_bg.png');
+    }
+  }
+
+  &__needed-flag {
+    display: inline-flex;
+    align-items: center;
+    color: $text-accent;
+  }
+
+  &__material-quantity {
+    color: $text-primary;
+    font-weight: 700;
+    font-size: 12px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.12);
+    padding: 2px 7px;
+    flex-shrink: 0;
+  }
+}

@@ -2,22 +2,118 @@
  * In Raid View Component
  * See specification section 7.5, change-04 CR-008/CR-009
  */
-
-import { useState, useMemo } from 'react';
-import { Target, Inbox, Wrench } from 'lucide-react';
+import { useMemo } from 'react';
+import { Target, Inbox, Wrench, Recycle } from 'lucide-react';
 import type { ItemsMap } from '../../types/item';
 import type { InRaidSuggestion, PlannerResult } from '../../types/planner';
+import type { ItemInsightsMap } from '../../utils/itemInsights';
 import { ItemIcon } from '../ItemIcon';
 
 interface InRaidViewProps {
   itemsMap: ItemsMap;
   plannerResult: PlannerResult;
+  itemInsights: ItemInsightsMap;
+  getOwnedQuantity: (itemId: string) => number | null;
 }
 
-export function InRaidView({ itemsMap, plannerResult }: InRaidViewProps) {
-  const [hoveredItemId, setHoveredItemId] = useState<string | null>(null);
+export function InRaidView({
+  itemsMap,
+  plannerResult,
+  itemInsights,
+  getOwnedQuantity,
+}: InRaidViewProps) {
 
   const suggestions = plannerResult.inRaidSuggestions.items;
+  const tooltipContext = {
+    itemsMap,
+    plannerResult,
+    itemInsights,
+  };
+
+  type ActionKind = 'keep' | 'recycle' | 'salvage';
+
+  const resolveActionKind = (suggestion: InRaidSuggestion): ActionKind => {
+    if (suggestion.reasons.includes('BRING_HOME_FINAL_TARGET')) return 'keep';
+    if (suggestion.badge === 'CAN_SALVAGE') return 'salvage';
+    if (suggestion.reasons.includes('BRING_HOME_FOR_RECYCLE_YIELD')) return 'recycle';
+    return 'keep';
+  };
+
+  const getKeepBreakdown = (itemId: string, suggestion: InRaidSuggestion) => {
+    const totals = new Map<string, { listName: string; quantity: number }>();
+    const listSources = suggestion.listSources?.length
+      ? suggestion.listSources
+      : (itemInsights[itemId]?.finalListNeeds ?? []).map((need) => ({
+          listId: need.listId,
+          listName: need.listName,
+          quantity: need.quantity,
+        }));
+
+    for (const source of listSources) {
+      const existing = totals.get(source.listName);
+      if (existing) {
+        existing.quantity += source.quantity;
+      } else {
+        totals.set(source.listName, { listName: source.listName, quantity: source.quantity });
+      }
+    }
+
+    return Array.from(totals.values()).sort((a, b) => a.listName.localeCompare(b.listName));
+  };
+
+  const renderActionTooltip = (actionKind: ActionKind, suggestion: InRaidSuggestion) => {
+    const item = itemsMap[suggestion.itemId];
+    if (!item) return null;
+
+    if (actionKind === 'keep') {
+      const keepBreakdown = getKeepBreakdown(item.id, suggestion);
+      return (
+        <div className="in-raid-view__icon-tooltip">
+          <div className="in-raid-view__icon-tooltip-title">Keep</div>
+          <div className="in-raid-view__icon-tooltip-subtitle">Needed for Lists</div>
+          {keepBreakdown.length > 0 ? (
+            <ul className="in-raid-view__icon-tooltip-list">
+              {keepBreakdown.map((source) => (
+                <li key={source.listName}>
+                  <span>{source.listName}</span>
+                  <span>{source.quantity}×</span>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <div className="in-raid-view__icon-tooltip-empty">No list breakdown available</div>
+          )}
+        </div>
+      );
+    }
+
+    const yields =
+      actionKind === 'salvage'
+        ? item.salvagesInto
+        : item.recyclesInto;
+    const yieldEntries = Object.entries(yields ?? {}).sort(([a], [b]) => a.localeCompare(b));
+
+    return (
+      <div className="in-raid-view__icon-tooltip">
+        <div className="in-raid-view__icon-tooltip-title">
+          {actionKind === 'salvage' ? 'Salvage' : 'Recycle'}
+        </div>
+        <div className="in-raid-view__icon-tooltip-subtitle">Yields</div>
+        {yieldEntries.length > 0 ? (
+          <ul className="in-raid-view__icon-tooltip-list">
+            {yieldEntries.map(([yieldId, quantity]) => (
+              <li key={yieldId}>
+                <span className="qm-item-name">{itemsMap[yieldId]?.name ?? yieldId}</span>
+                <span>{quantity}×</span>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <div className="in-raid-view__icon-tooltip-empty">No yields available</div>
+        )}
+      </div>
+    );
+  };
 
   // Split into groups: direct targets first, then craft-support (CR-006)
   const { directTargets, craftSupport } = useMemo(() => {
@@ -33,131 +129,6 @@ export function InRaidView({ itemsMap, plannerResult }: InRaidViewProps) {
     return { directTargets: direct, craftSupport: support };
   }, [suggestions]);
 
-  // Render hover detail tooltip (spec 7.5.2, CR-009)
-  const renderHoverDetail = (suggestion: InRaidSuggestion) => {
-    const item = itemsMap[suggestion.itemId];
-    if (!item) return null;
-
-    const isFinalTarget = suggestion.reasons.includes('BRING_HOME_FINAL_TARGET');
-    const deficit = plannerResult.deficit[suggestion.itemId] ?? 0;
-    const required = plannerResult.required[suggestion.itemId] ?? 0;
-
-    // Find stash quantity from required - deficit
-    const stashQty = required > 0 ? required - deficit : 0;
-
-    return (
-      <div className="in-raid-view__hover-detail">
-        <div className="in-raid-view__hover-header">
-          <strong>{item.name}</strong>
-        </div>
-
-        {/* Final target: show list provenance and quantity context */}
-        {isFinalTarget && (
-          <div className="in-raid-view__hover-section">
-            <div className="in-raid-view__hover-label">Missing as final target:</div>
-            {required > 0 && (
-              <div className="in-raid-view__hover-value">
-                Required: {required} · Stash: {stashQty} · Missing: {deficit}
-              </div>
-            )}
-            {suggestion.listSources && suggestion.listSources.length > 0 && (
-              <ul className="in-raid-view__hover-list">
-                {suggestion.listSources.map(source => (
-                  <li key={source.listId}>
-                    {source.listName} ({source.quantity}×)
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        )}
-
-        {/* Craft-support: show impacted targets */}
-        {suggestion.impactedTargetItemIds.length > 0 && !isFinalTarget && (
-          <div className="in-raid-view__hover-section">
-            <div className="in-raid-view__hover-label">Produces needed materials for:</div>
-            <ul className="in-raid-view__hover-list">
-              {suggestion.impactedTargetItemIds.map(targetId => {
-                const targetItem = itemsMap[targetId];
-                return targetItem ? (
-                  <li key={targetId}>{targetItem.name}</li>
-                ) : null;
-              })}
-            </ul>
-          </div>
-        )}
-
-        {/* Direct material deficit (non-final-target) */}
-        {deficit > 0 && !isFinalTarget && suggestion.reasons.includes('BRING_HOME_DIRECT_MATERIAL') && (
-          <div className="in-raid-view__hover-section">
-            <div className="in-raid-view__hover-label">Needed as crafting material:</div>
-            <div className="in-raid-view__hover-value">Missing: {deficit}</div>
-          </div>
-        )}
-
-        {/* Recycling vs salvage comparison */}
-        {(item.recyclesInto || item.salvagesInto) && (
-          <div className="in-raid-view__hover-section">
-            <div className="in-raid-view__hover-label">Recycling vs Salvage:</div>
-
-            {item.recyclesInto && Object.keys(item.recyclesInto).length > 0 && (
-              <div className="in-raid-view__hover-subsection">
-                <div className="in-raid-view__hover-sublabel">Recycle yields:</div>
-                <ul className="in-raid-view__hover-list">
-                  {Object.entries(item.recyclesInto).map(([yieldId, qty]) => {
-                    const yieldItem = itemsMap[yieldId];
-                    const isNeeded = (plannerResult.deficit[yieldId] ?? 0) > 0;
-                    return yieldItem ? (
-                      <li key={yieldId} className={isNeeded ? 'in-raid-view__hover-needed' : ''}>
-                        {qty}× {yieldItem.name}
-                        {isNeeded && ' (needed)'}
-                      </li>
-                    ) : null;
-                  })}
-                </ul>
-              </div>
-            )}
-
-            {item.salvagesInto && Object.keys(item.salvagesInto).length > 0 && (
-              <div className="in-raid-view__hover-subsection">
-                <div className="in-raid-view__hover-sublabel">Salvage yields:</div>
-                <ul className="in-raid-view__hover-list">
-                  {Object.entries(item.salvagesInto).map(([yieldId, qty]) => {
-                    const yieldItem = itemsMap[yieldId];
-                    const isNeeded = (plannerResult.deficit[yieldId] ?? 0) > 0;
-                    return yieldItem ? (
-                      <li key={yieldId} className={isNeeded ? 'in-raid-view__hover-needed' : ''}>
-                        {qty}× {yieldItem.name}
-                        {isNeeded && ' (needed)'}
-                      </li>
-                    ) : null;
-                  })}
-                </ul>
-              </div>
-            )}
-
-            {(!item.recyclesInto || Object.keys(item.recyclesInto).length === 0) &&
-             (!item.salvagesInto || Object.keys(item.salvagesInto).length === 0) && (
-              <div className="in-raid-view__hover-value">No yields available</div>
-            )}
-          </div>
-        )}
-
-        {/* Multi-reason explanation */}
-        {suggestion.reasons.length > 1 && (
-          <div className="in-raid-view__hover-section">
-            <div className="in-raid-view__hover-label">Reasons:</div>
-            <ul className="in-raid-view__hover-list">
-              {suggestion.reasons.map(reason => (
-                <li key={reason}>{formatReason(reason)}</li>
-              ))}
-            </ul>
-          </div>
-        )}
-      </div>
-    );
-  };
-
   const renderSuggestionGrid = (items: InRaidSuggestion[]) => (
     <div className="in-raid-view__grid">
       {items.map(suggestion => {
@@ -166,39 +137,41 @@ export function InRaidView({ itemsMap, plannerResult }: InRaidViewProps) {
 
         const isFinalTarget = suggestion.reasons.includes('BRING_HOME_FINAL_TARGET');
         const deficit = plannerResult.deficit[suggestion.itemId] ?? 0;
-
-        // Determine action icon and color class
-        let ActionIconComponent: typeof Inbox | typeof Wrench;
-        let actionClass: string;
-        if (isFinalTarget) {
-          ActionIconComponent = Inbox;
-          actionClass = 'in-raid-view__action-icon--target';
-        } else if (suggestion.badge === 'CAN_SALVAGE') {
-          ActionIconComponent = Wrench;
-          actionClass = 'in-raid-view__action-icon--salvage';
-        } else {
-          ActionIconComponent = Inbox;
-          actionClass = 'in-raid-view__action-icon--bring-home';
-        }
+        const required = plannerResult.required[suggestion.itemId] ?? 0;
+        const actionKind = resolveActionKind(suggestion);
 
         return (
           <div
             key={suggestion.itemId}
-            className="in-raid-view__item"
-            onMouseEnter={() => setHoveredItemId(suggestion.itemId)}
-            onMouseLeave={() => setHoveredItemId(null)}
+            className="in-raid-view__item-card"
           >
-            <ItemIcon
-              itemId={item.id}
-              name={item.name}
-              icon={item.icon}
-              rarity={item.rarity}
-              quantity={isFinalTarget ? deficit : (suggestion.impactedTargetItemIds.length || 1)}
-            />
-            <div className={`in-raid-view__action-icon ${actionClass}`}>
-              <ActionIconComponent size={16} strokeWidth={2} />
+            <div className="in-raid-view__item-main">
+              <ItemIcon
+                itemId={item.id}
+                name={item.name}
+                icon={item.icon}
+                rarity={item.rarity}
+                quantity={getOwnedQuantity(item.id)}
+                tooltipContext={tooltipContext}
+              />
+              <div className="in-raid-view__action-stack">
+                <div className="in-raid-view__action-wrapper">
+                  <div className={`in-raid-view__action-icon in-raid-view__action-icon--${actionKind}`}>
+                    {actionKind === 'keep' && <Inbox size={16} strokeWidth={2} />}
+                    {actionKind === 'recycle' && <Recycle size={16} strokeWidth={2} />}
+                    {actionKind === 'salvage' && <Wrench size={16} strokeWidth={2} />}
+                  </div>
+                  {renderActionTooltip(actionKind, suggestion)}
+                </div>
+
+                {isFinalTarget && required > 0 && (
+                  <div className="in-raid-view__missing-wrapper">
+                    <div className="in-raid-view__missing-circle">{deficit}</div>
+                    <div className="in-raid-view__mini-tooltip">{`${deficit}/${required} Missing`}</div>
+                  </div>
+                )}
+              </div>
             </div>
-            {hoveredItemId === suggestion.itemId && renderHoverDetail(suggestion)}
           </div>
         );
       })}
@@ -219,28 +192,18 @@ export function InRaidView({ itemsMap, plannerResult }: InRaidViewProps) {
   return (
     <div className="in-raid-view">
       {directTargets.length > 0 && (
-        <>
+        <section className="in-raid-view__section">
           <h3 className="qm-section-title">Direct Targets – Bring Home</h3>
           {renderSuggestionGrid(directTargets)}
-        </>
+        </section>
       )}
 
       {craftSupport.length > 0 && (
-        <>
+        <section className="in-raid-view__section">
           <h3 className="qm-section-title">Crafting Materials</h3>
           {renderSuggestionGrid(craftSupport)}
-        </>
+        </section>
       )}
     </div>
   );
-}
-
-function formatReason(reason: string): string {
-  switch (reason) {
-    case 'BRING_HOME_FINAL_TARGET': return 'Direct target from your lists';
-    case 'BRING_HOME_DIRECT_MATERIAL': return 'Needed as crafting material';
-    case 'SALVAGE_FOR_MATERIAL': return 'Can be salvaged for needed materials';
-    case 'BRING_HOME_FOR_RECYCLE_YIELD': return 'Can be recycled for needed materials';
-    default: return reason;
-  }
 }

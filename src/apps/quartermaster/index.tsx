@@ -46,6 +46,7 @@ import {
   type CachedLoadout,
   type CachedHideout,
 } from './utils/api';
+import { buildItemInsights, type ItemInsightsMap } from './utils/itemInsights';
 import { useAuth } from '../../shared/context/AuthContext';
 
 import { Sidebar, type ViewId } from './components/Sidebar';
@@ -169,6 +170,30 @@ export function QuartermasterApp() {
     }
     return computePlan(itemsMap, allLists, stashItems, benchLevels);
   }, [itemsMap, allLists, stashItems, benchLevels]);
+
+  const hasOwnedQuantities = cachedStash !== null && cachedLoadout !== null;
+  const ownedQuantityByItemId = useMemo(() => {
+    if (!hasOwnedQuantities) return {};
+
+    const totals: Record<string, number> = {};
+    for (const item of stashItems) {
+      totals[item.itemId] = (totals[item.itemId] ?? 0) + item.quantity;
+    }
+    for (const item of currentLoadout) {
+      totals[item.itemId] = (totals[item.itemId] ?? 0) + item.quantity;
+    }
+    return totals;
+  }, [currentLoadout, hasOwnedQuantities, stashItems]);
+
+  const getOwnedQuantity = useCallback((itemId: string): number | null => {
+    if (!hasOwnedQuantities) return null;
+    return ownedQuantityByItemId[itemId] ?? 0;
+  }, [hasOwnedQuantities, ownedQuantityByItemId]);
+
+  const itemInsights: ItemInsightsMap = useMemo(() => {
+    if (!itemsMap) return {};
+    return buildItemInsights(itemsMap, plannerResult);
+  }, [itemsMap, plannerResult]);
 
   // List management callbacks
   const handleCreateList = useCallback((name: string) => {
@@ -370,6 +395,8 @@ export function QuartermasterApp() {
               itemsMap={itemsMap}
               stashItems={stashItems}
               plannerResult={plannerResult}
+              itemInsights={itemInsights}
+              getOwnedQuantity={getOwnedQuantity}
               onSyncStash={handleSyncStash}
               isSyncing={isSyncingStash}
             />
@@ -383,6 +410,8 @@ export function QuartermasterApp() {
               itemsMap={itemsMap}
               currentLoadout={currentLoadout}
               plannerResult={plannerResult}
+              itemInsights={itemInsights}
+              getOwnedQuantity={getOwnedQuantity}
               onSyncLoadout={handleSyncLoadout}
               isSyncing={isSyncingLoadout}
             />
@@ -395,6 +424,9 @@ export function QuartermasterApp() {
             itemsMap={itemsMap}
             lists={lists}
             hideoutLists={hideoutLists}
+            plannerResult={plannerResult}
+            itemInsights={itemInsights}
+            getOwnedQuantity={getOwnedQuantity}
             onCreateList={handleCreateList}
             onDeleteList={handleDeleteList}
             onToggleList={handleToggleList}
@@ -419,6 +451,8 @@ export function QuartermasterApp() {
             <InRaidView
               itemsMap={itemsMap}
               plannerResult={plannerResult}
+              itemInsights={itemInsights}
+              getOwnedQuantity={getOwnedQuantity}
             />
           </AuthGate>
         );
@@ -430,6 +464,9 @@ export function QuartermasterApp() {
               itemsMap={itemsMap}
               craftPlan={plannerResult.craftPlan}
               recyclePlan={plannerResult.recyclePlan}
+              plannerResult={plannerResult}
+              itemInsights={itemInsights}
+              getOwnedQuantity={getOwnedQuantity}
               onSyncStash={handleSyncStash}
               isSyncing={isSyncingStash}
             />

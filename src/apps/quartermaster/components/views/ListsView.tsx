@@ -7,14 +7,19 @@ import { useState, useMemo } from 'react';
 import { Plus, Trash2, Eye, EyeOff, List, RefreshCw, Home } from 'lucide-react';
 import type { ItemsMap } from '../../types/item';
 import type { StoredList } from '../../types/list';
+import type { PlannerResult } from '../../types/planner';
 import { ItemIcon } from '../ItemIcon';
 import { searchItems } from '../../utils/dataLoader';
 import { AuthGate } from '../AuthGate';
+import type { ItemInsightsMap } from '../../utils/itemInsights';
 
 interface ListsViewProps {
   itemsMap: ItemsMap;
   lists: StoredList[];
   hideoutLists: StoredList[];
+  plannerResult: PlannerResult;
+  itemInsights: ItemInsightsMap;
+  getOwnedQuantity: (itemId: string) => number | null;
   onCreateList: (name: string) => void;
   onDeleteList: (id: string) => void;
   onToggleList: (id: string) => void;
@@ -45,6 +50,9 @@ export function ListsView({
   itemsMap,
   lists,
   hideoutLists,
+  plannerResult,
+  itemInsights,
+  getOwnedQuantity,
   onCreateList,
   onDeleteList,
   onToggleList,
@@ -79,6 +87,11 @@ export function ListsView({
   const selectedList = lists.find(l => l.id === selectedListId)
     ?? hideoutLists.find(l => l.id === selectedListId);
   const isHideoutList = selectedList?.type === 'hideout';
+  const tooltipContext = {
+    itemsMap,
+    plannerResult,
+    itemInsights,
+  };
 
   // Search results for autocomplete
   const searchResults = useMemo(() => {
@@ -431,35 +444,51 @@ export function ListsView({
                     onDrop={!isHideoutList ? (e) => handleItemDrop(e, listItem.itemId) : undefined}
                     onDragEnd={!isHideoutList ? handleItemDragEnd : undefined}
                   >
+                    <div className="lists-view__row-actions">
+                      {isHideoutList ? (
+                        <button
+                          className="qm-button lists-view__action-button"
+                          onClick={() => {
+                            if (parsed) onToggleHideoutItem(parsed.moduleId, parsed.level, listItem.itemId);
+                          }}
+                        >
+                          {listItem.isEnabled ? <Eye size={16} /> : <EyeOff size={16} />}
+                        </button>
+                      ) : (
+                        <>
+                          <button
+                            className="qm-button lists-view__action-button lists-view__action-button--danger"
+                            onClick={() => onRemoveItem(selectedList.id, listItem.itemId)}
+                          >
+                            <Trash2 size={16} />
+                          </button>
+                          <button
+                            className="qm-button lists-view__action-button"
+                            onClick={() => onToggleItem(selectedList.id, listItem.itemId)}
+                          >
+                            {listItem.isEnabled ? <Eye size={16} /> : <EyeOff size={16} />}
+                          </button>
+                        </>
+                      )}
+                    </div>
                     <ItemIcon
                       itemId={item.id}
                       name={item.name}
                       icon={item.icon}
                       rarity={item.rarity}
-                      quantity={listItem.quantity}
+                      quantity={getOwnedQuantity(item.id)}
                       size="sm"
                       showName={false}
+                      tooltipContext={tooltipContext}
                     />
-                    <div className="lists-view__item-controls">
+                    <div className="lists-view__item-main">
+                      <span className="lists-view__item-name-label qm-item-name">{item.name}</span>
                       {isHideoutList ? (
-                        /* Hideout lists: toggle only, read-only quantity */
-                        <>
-                          <span className="lists-view__qty-label">{listItem.quantity}x</span>
-                          <span className="lists-view__item-name-label">{item.name}</span>
-                          <button
-                            className="qm-button qm-button--small"
-                            onClick={() => {
-                              if (parsed) onToggleHideoutItem(parsed.moduleId, parsed.level, listItem.itemId);
-                            }}
-                          >
-                            {listItem.isEnabled ? <Eye size={12} /> : <EyeOff size={12} />}
-                          </button>
-                        </>
+                        <span className="lists-view__qty-label">{listItem.quantity}x</span>
                       ) : (
-                        /* User lists: full controls */
-                        <>
+                        <div className="lists-view__item-controls">
                           <button
-                            className="qm-button qm-button--small"
+                            className="qm-button lists-view__step-button"
                             onClick={() => handleQuantityChange(listItem.itemId, -1)}
                           >
                             -
@@ -477,24 +506,12 @@ export function ListsView({
                             min={1}
                           />
                           <button
-                            className="qm-button qm-button--small"
+                            className="qm-button lists-view__step-button"
                             onClick={() => handleQuantityChange(listItem.itemId, 1)}
                           >
                             +
                           </button>
-                          <button
-                            className="qm-button qm-button--small"
-                            onClick={() => onToggleItem(selectedList.id, listItem.itemId)}
-                          >
-                            {listItem.isEnabled ? <Eye size={12} /> : <EyeOff size={12} />}
-                          </button>
-                          <button
-                            className="qm-button qm-button--small"
-                            onClick={() => onRemoveItem(selectedList.id, listItem.itemId)}
-                          >
-                            <Trash2 size={12} />
-                          </button>
-                        </>
+                        </div>
                       )}
                     </div>
                   </div>
