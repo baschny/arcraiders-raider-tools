@@ -70,7 +70,9 @@
     "map": [
       "the_blue_gate"
     ],
-    "previousQuestIds": [],
+    "previousQuestIds": [
+      "map_blue_gate"
+    ],
     "nextQuestIds": [
       "reduced_to_rubble"
     ],
@@ -589,6 +591,7 @@
       "stella_montis"
     ],
     "previousQuestIds": [
+      "map_stella_montis",
       "a_bad_feeling"
     ],
     "nextQuestIds": [
@@ -871,7 +874,9 @@
       "buried_city",
       "dam_battlegrounds"
     ],
-    "previousQuestIds": [],
+    "previousQuestIds": [
+      "map_dam_battleground"
+    ],
     "nextQuestIds": [
       "clearer_skies",
       "trash_into_treasure"

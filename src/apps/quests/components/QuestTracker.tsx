@@ -15,6 +15,7 @@ import { MapNode } from './MapNode';
 import { Sidebar } from './Sidebar';
 import { ConfirmDialog } from './ConfirmDialog';
 import { STORAGE_KEY } from '../data/static-data';
+import { migrateQuestIds } from '../data/questIdMigration';
 import { trackQuestMark } from '../../../shared/utils/analytics';
 
 const VIEWPORT_STORAGE_KEY = 'raider-tools:quest-tracker-viewport';
@@ -34,7 +35,13 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved) {
-        return new Set(JSON.parse(saved));
+        const parsed: unknown = JSON.parse(saved);
+        if (Array.isArray(parsed)) {
+          const questIds = parsed.filter(
+            (questId): questId is string => typeof questId === 'string'
+          );
+          return new Set(migrateQuestIds(questIds));
+        }
       }
     } catch (e) {
       console.error('Failed to load quest progress:', e);

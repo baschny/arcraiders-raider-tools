@@ -1,7 +1,6 @@
 import { Handle, Position } from 'reactflow';
 import type { QuestNodeData } from '../types/quest';
 import {
-  BLUEPRINT_QUESTS,
   TRADER_IMAGES,
   MAP_NAME_MAPPING,
 } from '../data/static-data';
@@ -9,7 +8,7 @@ import { formatWikiLink, getTraderClass } from '../utils/helpers';
 
 export function QuestNode({ data }: { data: QuestNodeData }) {
   const { quest, isCompleted, isAvailable, isHighlighted, onToggle } = data;
-  const hasBlueprintReward = BLUEPRINT_QUESTS.has(quest.id);
+  const hasBlueprintReward = quest.hasBlueprint;
 
   const traderClass = getTraderClass(quest.trader);
   const nodeClass = `quest-node ${isCompleted ? 'completed' : ''} ${isAvailable ? 'available' : ''} ${isHighlighted ? 'highlighted' : ''}`;

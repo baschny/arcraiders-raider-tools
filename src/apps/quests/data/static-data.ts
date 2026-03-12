@@ -8,7 +8,7 @@ export const MAP_NODES: Quest[] = [
     trader: 'Map',
     map: ['dam_battlegrounds'],
     previousQuestIds: [],
-    nextQuestIds: ['ss1'],
+    nextQuestIds: ['picking_up_the_pieces'],
     hasBlueprint: false,
   },
   {
@@ -17,7 +17,7 @@ export const MAP_NODES: Quest[] = [
     trader: 'Map',
     map: ['the_blue_gate'],
     previousQuestIds: [],
-    nextQuestIds: ['ss11'],
+    nextQuestIds: ['a_first_foothold'],
     hasBlueprint: false,
   },
   {
@@ -26,7 +26,7 @@ export const MAP_NODES: Quest[] = [
     trader: 'Map',
     map: ['stella_montis_upper'],
     previousQuestIds: [],
-    nextQuestIds: ['12_in_my_image'],
+    nextQuestIds: ['in_my_image'],
     hasBlueprint: false,
   },
 ];
@@ -56,8 +56,6 @@ export const MAP_IMAGES: Record<string, string> = {
   map_stella_montis: '/images/maps/stella-montis.webp',
 };
 
-// Quests that reward blueprints
-export const BLUEPRINT_QUESTS = new Set(['ss10a', 'ss10n', 'ss8b', 'ss10u']);
 
 // LocalStorage key for quest progress
 export const STORAGE_KEY = 'arcraiders-quest-progress-reactflow';

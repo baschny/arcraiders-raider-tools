@@ -22,9 +22,9 @@ jq -s '
     hasBlueprint: ((.rewardItemIds // []) | map(.itemId) | any(test("_blueprint$")))
   }) | 
   map(
-    if .id == "ss1" then .previousQuestIds = ["map_dam_battleground"] + .previousQuestIds
-    elif .id == "ss11" then .previousQuestIds = ["map_blue_gate"] + .previousQuestIds
-    elif .id == "12_in_my_image" then .previousQuestIds = ["map_stella_montis"] + .previousQuestIds
+    if .id == "picking_up_the_pieces" then .previousQuestIds = ["map_dam_battleground"] + .previousQuestIds
+    elif .id == "a_first_foothold" then .previousQuestIds = ["map_blue_gate"] + .previousQuestIds
+    elif .id == "in_my_image" then .previousQuestIds = ["map_stella_montis"] + .previousQuestIds
     else .
     end
   ) | sort_by(.id)
