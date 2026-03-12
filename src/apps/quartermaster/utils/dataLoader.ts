@@ -4,8 +4,10 @@
  */
 
 import type { PlannerItem, ItemsMap, ItemsData } from '../types/item';
+import type { HideoutModuleDefinition } from '../types/hideout';
 
 const ITEMS_URL = '/data/quartermaster/items.json';
+const HIDEOUT_URL = '/data/quartermaster/hideout.json';
 
 /**
  * Load all items from the generated JSON file
@@ -61,6 +63,19 @@ export function getItemsByCategory(itemsMap: ItemsMap, category: string): Planne
   return Object.values(itemsMap)
     .filter(item => item.category === category)
     .sort((a, b) => a.id.localeCompare(b.id));
+}
+
+/**
+ * Load hideout module definitions from the generated JSON file
+ */
+export async function loadHideoutDefinitions(): Promise<HideoutModuleDefinition[]> {
+  const response = await fetch(HIDEOUT_URL);
+
+  if (!response.ok) {
+    throw new Error(`Failed to load hideout definitions: ${response.status} ${response.statusText}`);
+  }
+
+  return response.json() as Promise<HideoutModuleDefinition[]>;
 }
 
 /**

@@ -8,11 +8,14 @@ import { RefreshCw, Search, Package } from 'lucide-react';
 import type { ItemsMap } from '../../types/item';
 import type { PlannerResult, StashItem } from '../../types/planner';
 import { ItemIcon } from '../ItemIcon';
+import type { ItemInsightsMap } from '../../utils/itemInsights';
 
 interface StashViewProps {
   itemsMap: ItemsMap;
   stashItems: StashItem[];
   plannerResult: PlannerResult;
+  itemInsights: ItemInsightsMap;
+  getOwnedQuantity: (itemId: string) => number | null;
   onSyncStash: () => void;
   isSyncing: boolean;
 }
@@ -21,6 +24,8 @@ export function StashView({
   itemsMap,
   stashItems,
   plannerResult,
+  itemInsights,
+  getOwnedQuantity,
   onSyncStash,
   isSyncing,
 }: StashViewProps) {
@@ -89,10 +94,33 @@ export function StashView({
       return sum + (item?.value ?? 0) * stashItem.quantity;
     }, 0);
   }, [stashItems, itemsMap]);
+  const planRowsByItemId = useMemo(() => {
+    const map = new Map(plannerResult.planRows.map((row) => [row.itemId, row]));
+    return map;
+  }, [plannerResult.planRows]);
 
-  // Get plan row for an item
-  const getPlanRow = (itemId: string) => {
-    return plannerResult.planRows.find(r => r.itemId === itemId);
+  const tooltipContext = useMemo(() => ({
+    itemsMap,
+    plannerResult,
+    itemInsights,
+  }), [itemsMap, plannerResult, itemInsights]);
+
+  const getMissingOriginLabel = (itemId: string): string => {
+    const insight = itemInsights[itemId];
+    if (!insight) return '';
+    const listNames = new Set<string>();
+    for (const need of insight.finalListNeeds) listNames.add(need.listName);
+    for (const need of insight.craftingNeeds) listNames.add(need.listName);
+    return Array.from(listNames).sort().join(', ');
+  };
+
+  const getRecycleReasonLabel = (itemId: string): string => {
+    const insight = itemInsights[itemId];
+    if (!insight) return '';
+    const recycleNeeds = insight.recycleSalvageNeeds.filter((need) => need.mode === 'recycle');
+    if (recycleNeeds.length === 0) return '';
+    const firstNeed = recycleNeeds[0];
+    return `${firstNeed.targetItemName} (${firstNeed.listName})`;
   };
 
   return (
@@ -175,11 +203,9 @@ export function StashView({
         <table className="qm-table">
           <thead>
             <tr>
-              <th style={{ width: 60 }}>Icon</th>
+              <th style={{ width: 80 }}>Icon</th>
               <th>Item</th>
-              <th style={{ width: 80 }}>Quantity</th>
-              <th style={{ width: 80 }}>Required</th>
-              <th style={{ width: 80 }}>Missing</th>
+              <th style={{ width: 140 }}>Need</th>
               <th>Status</th>
             </tr>
           </thead>
@@ -188,8 +214,13 @@ export function StashView({
               const item = itemsMap[stashItem.itemId];
               if (!item) return null;
               
-              const planRow = getPlanRow(stashItem.itemId);
+              const planRow = planRowsByItemId.get(stashItem.itemId);
               const toRecycle = recycleItemIds.has(stashItem.itemId);
+              const required = planRow?.required ?? 0;
+              const missing = planRow?.missing ?? 0;
+              const missingOriginLabel = getMissingOriginLabel(stashItem.itemId);
+              const recycleReason = getRecycleReasonLabel(stashItem.itemId);
+              const hasRequirement = required > 0;
 
               return (
                 <tr key={stashItem.itemId}>
@@ -199,33 +230,40 @@ export function StashView({
                       name={item.name}
                       icon={item.icon}
                       rarity={item.rarity}
-                      quantity={stashItem.quantity}
+                      quantity={getOwnedQuantity(item.id)}
                       size="sm"
                       showName={false}
+                      tooltipContext={tooltipContext}
                     />
                   </td>
-                  <td>{item.name}</td>
-                  <td>{stashItem.quantity}</td>
-                  <td>{planRow?.required ?? 0}</td>
-                  <td style={{ color: (planRow?.missing ?? 0) > 0 ? '#f44336' : 'inherit' }}>
-                    {planRow?.missing ?? 0}
+                  <td>
+                    <span className="qm-item-name">{item.name}</span>
+                  </td>
+                  <td className={missing > 0 ? 'stash-view__need stash-view__need--missing' : 'stash-view__need'}>
+                    {hasRequirement ? `${missing}/${required} Missing` : '0/0 Missing'}
                   </td>
                   <td>
-                    {planRow && (
-                      <span className={`stash-view__indicator stash-view__indicator--${planRow.badge.toLowerCase().replace('_', '-')}`}>
-                        {planRow.badge === 'HAVE' && '✓ Have'}
-                        {planRow.badge === 'CAN_CRAFT' && '🔧 Can Craft'}
-                        {planRow.badge === 'MISSING' && '⚠ Missing'}
+                    {(planRow?.missing ?? 0) === 0 && hasRequirement && (
+                      <span className="stash-view__indicator stash-view__indicator--have">
+                        ✓ Have
+                      </span>
+                    )}
+                    {(planRow?.missing ?? 0) > 0 && (
+                      <span className="stash-view__indicator stash-view__indicator--missing">
+                        ⚠ Missing{missingOriginLabel ? ` · ${missingOriginLabel}` : ''}
                       </span>
                     )}
                     {toRecycle && (
                       <span className="stash-view__indicator stash-view__indicator--recycle">
-                        🔄 Recycle
+                        🔄 Recycle{recycleReason ? ` · ${recycleReason}` : ''}
                       </span>
                     )}
                     {planRow?.isUncraftable && (
                       <span className="stash-view__indicator stash-view__indicator--uncraftable">
-                        🚫 Uncraftable
+                        {planRow.uncraftableReason === 'blueprint_locked' && '🔒 Blueprint Locked'}
+                        {planRow.uncraftableReason === 'insufficient_bench_level' && '🚫 Bench Level Too Low'}
+                        {planRow.uncraftableReason === 'missing_bench' && '🚫 No Craft Bench'}
+                        {planRow.uncraftableReason === 'cycle' && '🚫 Craft Cycle'}
                       </span>
                     )}
                   </td>

@@ -80,7 +80,7 @@
       "type": "Refined Material",
       "category": "Refined Material",
       "craftBench": "refiner",
-      "stationLevelRequired": 1,
+      "stationLevelRequired": 2,
       "blueprintLocked": false,
       "craftQuantity": 1,
       "recipe": {
@@ -109,7 +109,7 @@
       "type": "Refined Material",
       "category": "Refined Material",
       "craftBench": "refiner",
-      "stationLevelRequired": 1,
+      "stationLevelRequired": 2,
       "blueprintLocked": false,
       "craftQuantity": 1,
       "recipe": {
@@ -152,6 +152,27 @@
       "foundIn": [
         "Nature"
       ]
+    },
+    "agave_juice": {
+      "name": "Agave Juice",
+      "description": "A concoction that temporarily increases stamina regeneration, at a small initial cost to health.",
+      "icon": "https://cdn.arctracker.io/items/agave_juice.png",
+      "rarity": "Common",
+      "type": "Quick Use",
+      "category": "Quick Use",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "recipe": {
+        "agave": 1,
+        "empty_wine_bottle": 1
+      },
+      "salvagesInto": {
+        "empty_wine_bottle": 1
+      },
+      "stackSize": 5,
+      "value": 1800,
+      "weight": 0.2
     },
     "air_freshener": {
       "name": "Air Freshener",
@@ -307,7 +328,7 @@
       "type": "Refined Material",
       "category": "Refined Material",
       "craftBench": "refiner",
-      "stationLevelRequired": 1,
+      "stationLevelRequired": 2,
       "blueprintLocked": false,
       "craftQuantity": 1,
       "recipe": {
@@ -337,7 +358,7 @@
       "subCategory": "Hand Cannon",
       "craftBench": "weapon_bench",
       "stationLevelRequired": 1,
-      "blueprintLocked": false,
+      "blueprintLocked": true,
       "craftQuantity": 1,
       "recipe": {
         "mechanical_components": 5,
@@ -362,6 +383,7 @@
       "type": "Hand Cannon",
       "category": "Weapon",
       "subCategory": "Hand Cannon",
+      "craftBench": "weapon_bench",
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
@@ -384,6 +406,7 @@
       "type": "Hand Cannon",
       "category": "Weapon",
       "subCategory": "Hand Cannon",
+      "craftBench": "weapon_bench",
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
@@ -406,6 +429,7 @@
       "type": "Hand Cannon",
       "category": "Weapon",
       "subCategory": "Hand Cannon",
+      "craftBench": "weapon_bench",
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
@@ -502,6 +526,9 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "recipe": {
+        "wasp_driver": 1
+      },
       "recyclesInto": {
         "metal_parts": 2
       },
@@ -523,7 +550,7 @@
       "type": "Topside Material",
       "category": "Topside Material",
       "craftBench": "refiner",
-      "stationLevelRequired": 1,
+      "stationLevelRequired": 2,
       "blueprintLocked": false,
       "craftQuantity": 1,
       "recipe": {
@@ -596,7 +623,7 @@
       "type": "Topside Material",
       "category": "Topside Material",
       "craftBench": "refiner",
-      "stationLevelRequired": 1,
+      "stationLevelRequired": 2,
       "blueprintLocked": false,
       "craftQuantity": 1,
       "recipe": {
@@ -648,6 +675,15 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "recipe": {
+        "advanced_arc_powercell": 1
+      },
+      "recyclesInto": {
+        "arc_alloy": 1
+      },
+      "salvagesInto": {
+        "metal_parts": 1
+      },
       "stackSize": 5,
       "value": 270,
       "weight": 0.5,
@@ -710,7 +746,7 @@
       "category": "Weapon",
       "subCategory": "Assault Rifle",
       "craftBench": "weapon_bench",
-      "stationLevelRequired": 1,
+      "stationLevelRequired": 2,
       "blueprintLocked": false,
       "craftQuantity": 1,
       "recipe": {
@@ -807,24 +843,15 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "recipe": {
+        "agave": 1
+      },
       "stackSize": 100,
       "value": 100,
       "weight": 0.05,
       "foundIn": [
         "Nature"
       ]
-    },
-    "backpack_black_hiker_color": {
-      "name": "Backpack (Black Hiker Color)",
-      "description": "Cosmetic Backpack",
-      "icon": "",
-      "rarity": "Common",
-      "type": "Cosmetic",
-      "category": "Cosmetic",
-      "stationLevelRequired": 1,
-      "blueprintLocked": false,
-      "craftQuantity": 1,
-      "stackSize": 1
     },
     "bandage": {
       "name": "Bandage",
@@ -860,8 +887,8 @@
       "category": "Quick Use",
       "subCategory": "Utility",
       "craftBench": "utility_bench",
-      "stationLevelRequired": 1,
-      "blueprintLocked": false,
+      "stationLevelRequired": 2,
+      "blueprintLocked": true,
       "craftQuantity": 1,
       "recipe": {
         "mechanical_components": 1
@@ -887,14 +914,14 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "recyclesInto": {
-        "advanced_mechanical_components": 2,
-        "arc_alloy": 2
+        "advanced_mechanical_components": 1,
+        "arc_alloy": 3
       },
       "salvagesInto": {
-        "advanced_mechanical_components": 2
+        "advanced_mechanical_components": 1
       },
       "stackSize": 3,
-      "value": 5000,
+      "value": 3000,
       "weight": 1,
       "foundIn": [
         "ARC"
@@ -910,6 +937,9 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "recipe": {
+        "jolt_mine": 1
+      },
       "recyclesInto": {
         "metal_parts": 2
       },
@@ -933,8 +963,8 @@
       "category": "Weapon",
       "subCategory": "Assault Rifle",
       "craftBench": "weapon_bench",
-      "stationLevelRequired": 1,
-      "blueprintLocked": false,
+      "stationLevelRequired": 3,
+      "blueprintLocked": true,
       "craftQuantity": 1,
       "recipe": {
         "advanced_mechanical_components": 3,
@@ -1018,7 +1048,7 @@
         "advanced_mechanical_components": 4
       },
       "stackSize": 1,
-      "value": 17000,
+      "value": 18000,
       "weight": 11
     },
     "bicycle_pump": {
@@ -1082,7 +1112,7 @@
       "subCategory": "Explosive",
       "craftBench": "explosives_bench",
       "stationLevelRequired": 3,
-      "blueprintLocked": false,
+      "blueprintLocked": true,
       "craftQuantity": 1,
       "recipe": {
         "explosive_compound": 1,
@@ -1106,9 +1136,8 @@
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
-      "craftBench": "workbench",
       "stationLevelRequired": 1,
-      "blueprintLocked": false,
+      "blueprintLocked": true,
       "craftQuantity": 1,
       "recipe": {
         "blaze_grenade": 1,
@@ -1201,8 +1230,8 @@
       "category": "Quick Use",
       "subCategory": "Utility",
       "craftBench": "utility_bench",
-      "stationLevelRequired": 2,
-      "blueprintLocked": false,
+      "stationLevelRequired": 1,
+      "blueprintLocked": true,
       "craftQuantity": 1,
       "recipe": {
         "chemicals": 3
@@ -1217,18 +1246,6 @@
       "value": 150,
       "weight": 0.75
     },
-    "blue_radio_renegade_color": {
-      "name": "Blue (Radio Renegade Color)",
-      "description": "A new cosmetic variant will be added to your collection.",
-      "icon": "https://cdn.arctracker.io/items/blue_radio_renegade_color.png",
-      "rarity": "Common",
-      "type": "Cosmetic",
-      "category": "Cosmetic",
-      "stationLevelRequired": 1,
-      "blueprintLocked": false,
-      "craftQuantity": 1,
-      "stackSize": 1
-    },
     "bobcat_i": {
       "name": "Bobcat I",
       "description": "Fully automatic SMG with high fire rate but low accuracy.",
@@ -1239,7 +1256,7 @@
       "subCategory": "SMG",
       "craftBench": "weapon_bench",
       "stationLevelRequired": 3,
-      "blueprintLocked": false,
+      "blueprintLocked": true,
       "craftQuantity": 1,
       "recipe": {
         "exodus_modules": 2,
@@ -1265,6 +1282,7 @@
       "type": "SMG",
       "category": "Weapon",
       "subCategory": "SMG",
+      "craftBench": "weapon_bench",
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
@@ -1287,6 +1305,7 @@
       "type": "SMG",
       "category": "Weapon",
       "subCategory": "SMG",
+      "craftBench": "weapon_bench",
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
@@ -1309,6 +1328,7 @@
       "type": "SMG",
       "category": "Weapon",
       "subCategory": "SMG",
+      "craftBench": "weapon_bench",
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
@@ -1317,7 +1337,7 @@
         "light_gun_parts": 4
       },
       "salvagesInto": {
-        "light_gun_parts": 5
+        "light_gun_parts": 4
       },
       "stackSize": 1,
       "value": 27000,
@@ -1334,11 +1354,14 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "recyclesInto": {
-        "advanced_mechanical_components": 2,
-        "arc_alloy": 2
+        "advanced_mechanical_components": 1,
+        "arc_alloy": 3
+      },
+      "salvagesInto": {
+        "advanced_mechanical_components": 1
       },
       "stackSize": 3,
-      "value": 5000,
+      "value": 3000,
       "weight": 1,
       "foundIn": [
         "ARC"
@@ -1524,7 +1547,7 @@
       "subCategory": "Pistol",
       "craftBench": "weapon_bench",
       "stationLevelRequired": 1,
-      "blueprintLocked": false,
+      "blueprintLocked": true,
       "craftQuantity": 1,
       "recipe": {
         "mechanical_components": 3,
@@ -1549,6 +1572,7 @@
       "type": "Pistol",
       "category": "Weapon",
       "subCategory": "Pistol",
+      "craftBench": "weapon_bench",
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
@@ -1571,6 +1595,7 @@
       "type": "Pistol",
       "category": "Weapon",
       "subCategory": "Pistol",
+      "craftBench": "weapon_bench",
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
@@ -1593,6 +1618,7 @@
       "type": "Pistol",
       "category": "Weapon",
       "subCategory": "Pistol",
+      "craftBench": "weapon_bench",
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
@@ -1601,7 +1627,7 @@
         "simple_gun_parts": 4
       },
       "salvagesInto": {
-        "simple_gun_parts": 3
+        "simple_gun_parts": 4
       },
       "stackSize": 1,
       "value": 10000,
@@ -1623,7 +1649,7 @@
       "salvagesInto": {
         "arc_alloy": 1
       },
-      "stackSize": 5,
+      "stackSize": 3,
       "value": 640,
       "weight": 1,
       "foundIn": [
@@ -1724,6 +1750,9 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "recipe": {
+        "bicycle_pump": 1
+      },
       "recyclesInto": {
         "plastic_parts": 3
       },
@@ -1736,18 +1765,6 @@
       "foundIn": [
         "Commercial"
       ]
-    },
-    "cans_backpack_attachment": {
-      "name": "Cans Backpack Attachment",
-      "description": "Cosmetic Backpack Attachment",
-      "icon": "https://cdn.arctracker.io/items/cans.png",
-      "rarity": "Common",
-      "type": "Cosmetic",
-      "category": "Cosmetic",
-      "stationLevelRequired": 1,
-      "blueprintLocked": false,
-      "craftQuantity": 1,
-      "stackSize": 1
     },
     "cat_bed": {
       "name": "Cat Bed",
@@ -1780,18 +1797,6 @@
       "stackSize": 1,
       "weight": 0.25
     },
-    "cheer": {
-      "name": "Cheer",
-      "description": "A new cosmetic will be added to your collection.",
-      "icon": "https://cdn.arctracker.io/items/cheer.png",
-      "rarity": "Common",
-      "type": "Cosmetic",
-      "category": "Cosmetic",
-      "stationLevelRequired": 1,
-      "blueprintLocked": false,
-      "craftQuantity": 1,
-      "stackSize": 1
-    },
     "chemicals": {
       "name": "Chemicals",
       "description": "Used to craft medical supplies, explosives, and utility items. Used to craft: Heavy Ammo, Medium Ammo, Shotgun Ammo, Light Ammo, Light Impact Grenade",
@@ -1802,6 +1807,9 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "recipe": {
+        "gas_grenade": 1
+      },
       "stackSize": 50,
       "value": 50,
       "weight": 0.15,
@@ -1862,7 +1870,7 @@
       "type": "Augment",
       "category": "Augment",
       "craftBench": "equipment_bench",
-      "stationLevelRequired": 1,
+      "stationLevelRequired": 2,
       "blueprintLocked": false,
       "craftQuantity": 1,
       "recipe": {
@@ -1932,6 +1940,30 @@
       "value": 5000,
       "weight": 5
     },
+    "comet_igniter": {
+      "name": "Comet Igniter",
+      "description": "Can be recycled into crafting materials.",
+      "icon": "https://cdn.arctracker.io/items/comet_igniter.png",
+      "rarity": "Rare",
+      "type": "Recyclable",
+      "category": "Recyclable",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "recyclesInto": {
+        "arc_alloy": 2,
+        "crude_explosives": 2
+      },
+      "salvagesInto": {
+        "crude_explosives": 2
+      },
+      "stackSize": 3,
+      "value": 1000,
+      "weight": 1,
+      "foundIn": [
+        "ARC"
+      ]
+    },
     "compensator_i": {
       "name": "Compensator I",
       "description": "Slightly reduces per-shot dispersion. Compatible with: Arpeggio, Ferro, Renegade, Anvil, Stitcher",
@@ -1965,8 +1997,8 @@
       "type": "Modification",
       "category": "Modification",
       "craftBench": "weapon_bench",
-      "stationLevelRequired": 1,
-      "blueprintLocked": false,
+      "stationLevelRequired": 2,
+      "blueprintLocked": true,
       "craftQuantity": 1,
       "recipe": {
         "mechanical_components": 2,
@@ -2003,7 +2035,7 @@
         "wires": 2
       },
       "salvagesInto": {
-        "mechanical_components": 1
+        "mechanical_components": 2
       },
       "stackSize": 1,
       "value": 5000,
@@ -2017,8 +2049,8 @@
       "type": "Topside Material",
       "category": "Topside Material",
       "craftBench": "refiner",
-      "stationLevelRequired": 1,
-      "blueprintLocked": false,
+      "stationLevelRequired": 3,
+      "blueprintLocked": true,
       "craftQuantity": 1,
       "recipe": {
         "heavy_gun_parts": 2,
@@ -2189,6 +2221,20 @@
       "name": "Dam Control Tower Key",
       "description": "Unlocks a door to the Control Tower on Dam Battlegrounds.",
       "icon": "https://cdn.arctracker.io/items/dam_control_tower_key.png",
+      "rarity": "Epic",
+      "type": "Key",
+      "category": "Key",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "stackSize": 1,
+      "value": 100,
+      "weight": 0.25
+    },
+    "dam_controlled_access_zone_key": {
+      "name": "Dam Controlled Access Zone Key",
+      "description": "Unlocks a door to the Controlled Access Zone on Dam Battlegrounds.",
+      "icon": "https://cdn.arctracker.io/items/dam_testing_annex_key.png",
       "rarity": "Epic",
       "type": "Key",
       "category": "Key",
@@ -2388,7 +2434,7 @@
         "arc_alloy": 2
       },
       "stackSize": 3,
-      "value": 2000,
+      "value": 1000,
       "weight": 0.25,
       "foundIn": [
         "ARC"
@@ -2484,11 +2530,12 @@
       "category": "Quick Use",
       "subCategory": "Explosive",
       "craftBench": "explosives_bench",
-      "stationLevelRequired": 1,
-      "blueprintLocked": false,
+      "stationLevelRequired": 3,
+      "blueprintLocked": true,
       "craftQuantity": 1,
       "recipe": {
         "arc_circuitry": 2,
+        "comet_igniter": 1,
         "explosive_compound": 3
       },
       "recyclesInto": {
@@ -2499,7 +2546,7 @@
         "explosive_compound": 1
       },
       "stackSize": 1,
-      "value": 5000,
+      "value": 6000,
       "weight": 1
     },
     "defibrillator": {
@@ -2511,8 +2558,8 @@
       "category": "Quick Use",
       "subCategory": "Medicinal",
       "craftBench": "med_station",
-      "stationLevelRequired": 1,
-      "blueprintLocked": false,
+      "stationLevelRequired": 2,
+      "blueprintLocked": true,
       "craftQuantity": 1,
       "recipe": {
         "moss": 1,
@@ -2738,6 +2785,20 @@
         "Commercial"
       ]
     },
+    "dusty_film_reel": {
+      "name": "Dusty Film Reel",
+      "description": "An old film reel covered in dust. Might have been something worth watching.",
+      "icon": "",
+      "rarity": "Common",
+      "type": "Trinket",
+      "category": "Trinket",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "stackSize": 1,
+      "value": 0,
+      "weight": 0
+    },
     "electrical_components": {
       "name": "Electrical Components",
       "description": "Used to craft a wide range of items. Can be recycled into crafting materials. Used to craft: Tactical Mk. 2, Combat Mk. 2, Looting Mk. 2, Surge Shield Recharger, Lure Grenade",
@@ -2832,6 +2893,20 @@
       "value": 27500,
       "weight": 14
     },
+    "espresso_machine_parts": {
+      "name": "Espresso Machine Parts",
+      "description": "",
+      "icon": "https://cdn.arctracker.io/items/espresso_machine_parts.png",
+      "rarity": "Common",
+      "type": "Trinket",
+      "category": "Trinket",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "stackSize": 1,
+      "value": 0,
+      "weight": 0.5
+    },
     "esr_analyzer": {
       "name": "ESR Analyzer",
       "description": "A portable analyzer from the world before, complete with several spare tubes.",
@@ -2855,6 +2930,9 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "recipe": {
+        "ion_sputter": 1
+      },
       "recyclesInto": {
         "magnet": 2,
         "processor": 2
@@ -2932,7 +3010,7 @@
       "type": "Refined Material",
       "category": "Refined Material",
       "craftBench": "refiner",
-      "stationLevelRequired": 1,
+      "stationLevelRequired": 2,
       "blueprintLocked": false,
       "craftQuantity": 1,
       "recipe": {
@@ -2970,7 +3048,7 @@
         "sensors": 1
       },
       "recyclesInto": {
-        "oil": 2,
+        "oil": 1,
         "sensors": 1
       },
       "salvagesInto": {
@@ -3116,8 +3194,8 @@
       "type": "Modification",
       "category": "Modification",
       "craftBench": "weapon_bench",
-      "stationLevelRequired": 1,
-      "blueprintLocked": false,
+      "stationLevelRequired": 2,
+      "blueprintLocked": true,
       "craftQuantity": 1,
       "recipe": {
         "mechanical_components": 2,
@@ -3142,8 +3220,8 @@
       "type": "Modification",
       "category": "Modification",
       "craftBench": "weapon_bench",
-      "stationLevelRequired": 1,
-      "blueprintLocked": false,
+      "stationLevelRequired": 3,
+      "blueprintLocked": true,
       "craftQuantity": 1,
       "recipe": {
         "mod_components": 2,
@@ -3194,7 +3272,7 @@
       "category": "Modification",
       "craftBench": "weapon_bench",
       "stationLevelRequired": 2,
-      "blueprintLocked": false,
+      "blueprintLocked": true,
       "craftQuantity": 1,
       "recipe": {
         "mechanical_components": 2,
@@ -3218,9 +3296,14 @@
       "rarity": "Rare",
       "type": "Modification",
       "category": "Modification",
-      "stationLevelRequired": 1,
-      "blueprintLocked": false,
+      "craftBench": "weapon_bench",
+      "stationLevelRequired": 3,
+      "blueprintLocked": true,
       "craftQuantity": 1,
+      "recipe": {
+        "mod_components": 2,
+        "steel_spring": 5
+      },
       "recyclesInto": {
         "mod_components": 1,
         "steel_spring": 2
@@ -3242,6 +3325,12 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "recipe": {
+        "tattered_clothes": 1
+      },
+      "salvagesInto": {
+        "bandage": 1
+      },
       "stackSize": 50,
       "value": 50,
       "weight": 0.1,
@@ -3317,6 +3406,7 @@
       "type": "Battle Rifle",
       "category": "Weapon",
       "subCategory": "Battle Rifle",
+      "craftBench": "weapon_bench",
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
@@ -3325,7 +3415,7 @@
         "rubber_parts": 3
       },
       "salvagesInto": {
-        "metal_parts": 2
+        "metal_parts": 4
       },
       "stackSize": 1,
       "value": 1000,
@@ -3339,6 +3429,7 @@
       "type": "Battle Rifle",
       "category": "Weapon",
       "subCategory": "Battle Rifle",
+      "craftBench": "weapon_bench",
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
@@ -3361,6 +3452,7 @@
       "type": "Battle Rifle",
       "category": "Weapon",
       "subCategory": "Battle Rifle",
+      "craftBench": "weapon_bench",
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
@@ -3444,9 +3536,12 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "recipe": {
+        "flame_spray": 1
+      },
       "recyclesInto": {
         "arc_alloy": 1,
-        "chemicals": 1
+        "crude_explosives": 1
       },
       "salvagesInto": {
         "arc_alloy": 1
@@ -3483,6 +3578,30 @@
       "stackSize": 5,
       "value": 270,
       "weight": 0.05
+    },
+    "firefly_burner": {
+      "name": "Firefly Burner",
+      "description": "Can be recycled into crafting materials.",
+      "icon": "https://cdn.arctracker.io/items/firefly_burner.png",
+      "rarity": "Rare",
+      "type": "Recyclable",
+      "category": "Recyclable",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "recyclesInto": {
+        "arc_alloy": 2,
+        "crude_explosives": 2
+      },
+      "salvagesInto": {
+        "crude_explosives": 2
+      },
+      "stackSize": 3,
+      "value": 1000,
+      "weight": 0.75,
+      "foundIn": [
+        "ARC"
+      ]
     },
     "fireworks_box": {
       "name": "Fireworks Box",
@@ -3548,6 +3667,31 @@
       "craftQuantity": 1,
       "stackSize": 1,
       "weight": 0.25
+    },
+    "flame_spray": {
+      "name": "Flame Spray",
+      "description": "A classic makeshift weapon, sure to leave scorch marks.",
+      "icon": "https://cdn.arctracker.io/items/flame_spray.png",
+      "rarity": "Uncommon",
+      "type": "Quick Use",
+      "category": "Quick Use",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "recipe": {
+        "air_freshener": 1,
+        "fireball_burner": 1
+      },
+      "recyclesInto": {
+        "canister": 1,
+        "fireball_burner": 1
+      },
+      "salvagesInto": {
+        "fireball_burner": 1
+      },
+      "stackSize": 1,
+      "value": 2000,
+      "weight": 1
     },
     "flashy_duck": {
       "name": "Flashy Duck",
@@ -3617,7 +3761,7 @@
       "salvagesInto": {
         "explosive_compound": 2
       },
-      "stackSize": 3,
+      "stackSize": 1,
       "value": 4000,
       "weight": 0.25,
       "foundIn": [
@@ -3685,6 +3829,25 @@
       "foundIn": [
         "Technological"
       ]
+    },
+    "fruit_mix": {
+      "name": "Fruit Mix",
+      "description": "A food item that moderately increases both health and stamina.",
+      "icon": "https://cdn.arctracker.io/items/fruit_mix.png",
+      "rarity": "Uncommon",
+      "type": "Quick Use",
+      "category": "Quick Use",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "recipe": {
+        "apricot": 1,
+        "lemon": 1,
+        "prickly_pear": 1
+      },
+      "stackSize": 5,
+      "value": 1800,
+      "weight": 0.3
     },
     "frying_pan": {
       "name": "Frying Pan",
@@ -3767,9 +3930,8 @@
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
-      "craftBench": "workbench",
       "stationLevelRequired": 1,
-      "blueprintLocked": false,
+      "blueprintLocked": true,
       "craftQuantity": 1,
       "recipe": {
         "gas_grenade": 1,
@@ -3877,7 +4039,7 @@
       "subCategory": "Utility",
       "craftBench": "utility_bench",
       "stationLevelRequired": 1,
-      "blueprintLocked": false,
+      "blueprintLocked": true,
       "craftQuantity": 1,
       "recipe": {
         "chemicals": 3
@@ -4041,7 +4203,7 @@
       "category": "Quick Use",
       "subCategory": "Explosive",
       "craftBench": "explosives_bench",
-      "stationLevelRequired": 1,
+      "stationLevelRequired": 3,
       "blueprintLocked": false,
       "craftQuantity": 1,
       "recipe": {
@@ -4067,8 +4229,8 @@
       "type": "Topside Material",
       "category": "Topside Material",
       "craftBench": "refiner",
-      "stationLevelRequired": 1,
-      "blueprintLocked": false,
+      "stationLevelRequired": 2,
+      "blueprintLocked": true,
       "craftQuantity": 1,
       "recipe": {
         "simple_gun_parts": 4
@@ -4095,7 +4257,7 @@
       "type": "Shield",
       "category": "Shield",
       "craftBench": "equipment_bench",
-      "stationLevelRequired": 1,
+      "stationLevelRequired": 2,
       "blueprintLocked": false,
       "craftQuantity": 1,
       "recipe": {
@@ -4147,14 +4309,9 @@
       "rarity": "Epic",
       "type": "Modification",
       "category": "Modification",
-      "craftBench": "weapon_bench",
-      "stationLevelRequired": 3,
-      "blueprintLocked": true,
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
       "craftQuantity": 1,
-      "recipe": {
-        "duct_tape": 5,
-        "mod_components": 2
-      },
       "recyclesInto": {
         "duct_tape": 2,
         "mod_components": 1
@@ -4177,14 +4334,14 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "recyclesInto": {
-        "arc_alloy": 2,
-        "electrical_components": 2
+        "arc_alloy": 1,
+        "electrical_components": 1
       },
       "salvagesInto": {
-        "electrical_components": 2
+        "electrical_components": 1
       },
       "stackSize": 3,
-      "value": 2000,
+      "value": 1000,
       "weight": 0.75,
       "foundIn": [
         "ARC"
@@ -4223,7 +4380,7 @@
       "subCategory": "Special",
       "craftBench": "weapon_bench",
       "stationLevelRequired": 3,
-      "blueprintLocked": false,
+      "blueprintLocked": true,
       "craftQuantity": 1,
       "recipe": {
         "exodus_modules": 1,
@@ -4250,7 +4407,7 @@
       "category": "Weapon",
       "subCategory": "Special",
       "craftBench": "weapon_bench",
-      "stationLevelRequired": 2,
+      "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
       "recyclesInto": {
@@ -4273,7 +4430,7 @@
       "category": "Weapon",
       "subCategory": "Special",
       "craftBench": "weapon_bench",
-      "stationLevelRequired": 2,
+      "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
       "recyclesInto": {
@@ -4296,7 +4453,7 @@
       "category": "Weapon",
       "subCategory": "Special",
       "craftBench": "weapon_bench",
-      "stationLevelRequired": 2,
+      "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
       "recyclesInto": {
@@ -4367,7 +4524,7 @@
       "subCategory": "Shotgun",
       "craftBench": "weapon_bench",
       "stationLevelRequired": 1,
-      "blueprintLocked": false,
+      "blueprintLocked": true,
       "craftQuantity": 1,
       "recipe": {
         "mechanical_components": 5,
@@ -4581,8 +4738,8 @@
       "category": "Quick Use",
       "subCategory": "Explosive",
       "craftBench": "explosives_bench",
-      "stationLevelRequired": 1,
-      "blueprintLocked": false,
+      "stationLevelRequired": 2,
+      "blueprintLocked": true,
       "craftQuantity": 1,
       "recipe": {
         "battery": 1,
@@ -4598,18 +4755,6 @@
       "stackSize": 3,
       "value": 850,
       "weight": 0.2
-    },
-    "junior_outfit": {
-      "name": "Junior Outfit",
-      "description": "Cosmetic Outfit",
-      "icon": "",
-      "rarity": "Common",
-      "type": "Cosmetic",
-      "category": "Cosmetic",
-      "stationLevelRequired": 1,
-      "blueprintLocked": false,
-      "craftQuantity": 1,
-      "stackSize": 1
     },
     "jupiter": {
       "name": "Jupiter",
@@ -4674,6 +4819,7 @@
       "type": "Assault Rifle",
       "category": "Weapon",
       "subCategory": "Assault Rifle",
+      "craftBench": "weapon_bench",
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
@@ -4696,6 +4842,7 @@
       "type": "Assault Rifle",
       "category": "Weapon",
       "subCategory": "Assault Rifle",
+      "craftBench": "weapon_bench",
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
@@ -4718,6 +4865,7 @@
       "type": "Assault Rifle",
       "category": "Weapon",
       "subCategory": "Assault Rifle",
+      "craftBench": "weapon_bench",
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
@@ -4770,7 +4918,7 @@
       "salvagesInto": {
         "crude_explosives": 3
       },
-      "stackSize": 1,
+      "stackSize": 3,
       "value": 2000,
       "weight": 3,
       "foundIn": [
@@ -4825,14 +4973,14 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "recyclesInto": {
-        "advanced_mechanical_components": 2,
+        "advanced_mechanical_components": 1,
         "arc_alloy": 3
       },
       "salvagesInto": {
         "mechanical_components": 2
       },
       "stackSize": 3,
-      "value": 5000,
+      "value": 3000,
       "weight": 1,
       "foundIn": [
         "ARC"
@@ -4860,6 +5008,20 @@
       "foundIn": [
         "Nature"
       ]
+    },
+    "library_book": {
+      "name": "Book",
+      "description": "",
+      "icon": "",
+      "rarity": "Common",
+      "type": "Trinket",
+      "category": "Trinket",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "stackSize": 1,
+      "value": 0,
+      "weight": 0.5
     },
     "lidar_scanner": {
       "name": "Lidar Scanner",
@@ -4918,8 +5080,8 @@
       "type": "Topside Material",
       "category": "Topside Material",
       "craftBench": "refiner",
-      "stationLevelRequired": 1,
-      "blueprintLocked": false,
+      "stationLevelRequired": 2,
+      "blueprintLocked": true,
       "craftQuantity": 1,
       "recipe": {
         "simple_gun_parts": 4
@@ -4998,8 +5160,8 @@
       "type": "Modification",
       "category": "Modification",
       "craftBench": "weapon_bench",
-      "stationLevelRequired": 1,
-      "blueprintLocked": false,
+      "stationLevelRequired": 3,
+      "blueprintLocked": true,
       "craftQuantity": 1,
       "recipe": {
         "duct_tape": 5,
@@ -5077,7 +5239,7 @@
       "type": "Augment",
       "category": "Augment",
       "craftBench": "equipment_bench",
-      "stationLevelRequired": 1,
+      "stationLevelRequired": 2,
       "blueprintLocked": false,
       "craftQuantity": 1,
       "recipe": {
@@ -5103,7 +5265,7 @@
       "type": "Augment",
       "category": "Augment",
       "craftBench": "equipment_bench",
-      "stationLevelRequired": 1,
+      "stationLevelRequired": 3,
       "blueprintLocked": false,
       "craftQuantity": 1,
       "recipe": {
@@ -5129,7 +5291,7 @@
       "type": "Augment",
       "category": "Augment",
       "craftBench": "equipment_bench",
-      "stationLevelRequired": 1,
+      "stationLevelRequired": 3,
       "blueprintLocked": true,
       "craftQuantity": 1,
       "recipe": {
@@ -5155,7 +5317,7 @@
       "type": "Augment",
       "category": "Augment",
       "craftBench": "equipment_bench",
-      "stationLevelRequired": 1,
+      "stationLevelRequired": 3,
       "blueprintLocked": true,
       "craftQuantity": 1,
       "recipe": {
@@ -5182,8 +5344,8 @@
       "category": "Quick Use",
       "subCategory": "Utility",
       "craftBench": "utility_bench",
-      "stationLevelRequired": 1,
-      "blueprintLocked": false,
+      "stationLevelRequired": 2,
+      "blueprintLocked": true,
       "craftQuantity": 1,
       "recipe": {
         "electrical_components": 1,
@@ -5195,7 +5357,7 @@
       "salvagesInto": {
         "speaker_component": 1
       },
-      "stackSize": 1,
+      "stackSize": 3,
       "value": 1000,
       "weight": 0.4
     },
@@ -5206,9 +5368,8 @@
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
-      "craftBench": "workbench",
       "stationLevelRequired": 1,
-      "blueprintLocked": false,
+      "blueprintLocked": true,
       "craftQuantity": 1,
       "recipe": {
         "lure_grenade": 1,
@@ -5228,6 +5389,9 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "recipe": {
+        "industrial_magnet": 1
+      },
       "recyclesInto": {
         "metal_parts": 2
       },
@@ -5249,7 +5413,7 @@
       "type": "Refined Material",
       "category": "Refined Material",
       "craftBench": "refiner",
-      "stationLevelRequired": 1,
+      "stationLevelRequired": 3,
       "blueprintLocked": false,
       "craftQuantity": 1,
       "recipe": {
@@ -5294,6 +5458,20 @@
         "Exodus"
       ]
     },
+    "major_aivas_mementos": {
+      "name": "Major Aiva's Mementos",
+      "description": "",
+      "icon": "https://cdn.arctracker.io/items/major_aivas_mementos.png",
+      "rarity": "Common",
+      "type": "Trinket",
+      "category": "Trinket",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "stackSize": 1,
+      "value": 0,
+      "weight": 0.5
+    },
     "major_aivas_patch": {
       "name": "Major Aiva's Patch",
       "description": "A torn patch, found amidst rubble and ruin.",
@@ -5322,10 +5500,10 @@
         "power_rod": 1
       },
       "salvagesInto": {
-        "power_rod": 1
+        "magnetic_accelerator": 1
       },
       "stackSize": 1,
-      "value": 13000,
+      "value": 11000,
       "weight": 10
     },
     "mechanical_components": {
@@ -5384,8 +5562,8 @@
       "type": "Topside Material",
       "category": "Topside Material",
       "craftBench": "refiner",
-      "stationLevelRequired": 1,
-      "blueprintLocked": false,
+      "stationLevelRequired": 2,
+      "blueprintLocked": true,
       "craftQuantity": 1,
       "recipe": {
         "simple_gun_parts": 4
@@ -5421,6 +5599,9 @@
       },
       "recyclesInto": {
         "arc_circuitry": 1
+      },
+      "salvagesInto": {
+        "arc_alloy": 2
       },
       "stackSize": 1,
       "value": 2000,
@@ -5460,6 +5641,9 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "recipe": {
+        "damaged_tick_pod": 1
+      },
       "stackSize": 50,
       "value": 75,
       "weight": 0.1,
@@ -5526,7 +5710,7 @@
       "type": "Refined Material",
       "category": "Refined Material",
       "craftBench": "refiner",
-      "stationLevelRequired": 1,
+      "stationLevelRequired": 2,
       "blueprintLocked": false,
       "craftQuantity": 1,
       "recipe": {
@@ -5600,7 +5784,7 @@
       "salvagesInto": {
         "oil": 3
       },
-      "stackSize": 1,
+      "stackSize": 3,
       "value": 2000,
       "weight": 3,
       "foundIn": [
@@ -5617,7 +5801,7 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
-      "stackSize": 1,
+      "stackSize": 10,
       "value": 1000,
       "weight": 0.2,
       "foundIn": [
@@ -5694,8 +5878,8 @@
       "type": "Modification",
       "category": "Modification",
       "craftBench": "weapon_bench",
-      "stationLevelRequired": 1,
-      "blueprintLocked": false,
+      "stationLevelRequired": 2,
+      "blueprintLocked": true,
       "craftQuantity": 1,
       "recipe": {
         "mechanical_components": 2,
@@ -5737,6 +5921,30 @@
       "stackSize": 1,
       "value": 5000,
       "weight": 0.75
+    },
+    "noisemaker": {
+      "name": "Noisemaker",
+      "description": "A deployable proximity sensor that sounds an alarm when enemy raiders are detected.",
+      "icon": "https://cdn.arctracker.io/items/noisemaker.png",
+      "rarity": "Common",
+      "type": "Quick Use",
+      "category": "Quick Use",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "recipe": {
+        "plastic_parts": 2,
+        "speaker_component": 1
+      },
+      "recyclesInto": {
+        "speaker_component": 1
+      },
+      "salvagesInto": {
+        "speaker_component": 1
+      },
+      "stackSize": 3,
+      "value": 640,
+      "weight": 0.3
     },
     "number_plate": {
       "name": "Number Plate",
@@ -5784,6 +5992,9 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "recipe": {
+        "motor": 1
+      },
       "recyclesInto": {
         "chemicals": 3
       },
@@ -5844,7 +6055,7 @@
       "subCategory": "Sniper Rifle",
       "craftBench": "weapon_bench",
       "stationLevelRequired": 2,
-      "blueprintLocked": false,
+      "blueprintLocked": true,
       "craftQuantity": 1,
       "recipe": {
         "advanced_mechanical_components": 2,
@@ -5940,7 +6151,7 @@
       "category": "Modification",
       "craftBench": "weapon_bench",
       "stationLevelRequired": 3,
-      "blueprintLocked": false,
+      "blueprintLocked": true,
       "craftQuantity": 1,
       "recipe": {
         "duct_tape": 5,
@@ -6000,7 +6211,7 @@
       "category": "Quick Use",
       "subCategory": "Utility",
       "craftBench": "utility_bench",
-      "stationLevelRequired": 1,
+      "stationLevelRequired": 3,
       "blueprintLocked": false,
       "craftQuantity": 1,
       "recipe": {
@@ -6042,6 +6253,9 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "recipe": {
+        "surge_shield_recharger": 1
+      },
       "stackSize": 50,
       "value": 60,
       "weight": 0.1,
@@ -6141,6 +6355,20 @@
         "Residential"
       ]
     },
+    "possibly_toxic_plant": {
+      "name": "Possibly Toxic Plant",
+      "description": "",
+      "icon": "https://cdn.arctracker.io/items/possibly_toxic_plant.png",
+      "rarity": "Common",
+      "type": "Trinket",
+      "category": "Trinket",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "stackSize": 1,
+      "value": 0,
+      "weight": 0.5
+    },
     "poster_of_natural_wonders": {
       "name": "Poster of Natural Wonders",
       "description": "If you stand close and squint your eyes, it's like the world never came crumbling down.",
@@ -6236,7 +6464,7 @@
       "type": "Refined Material",
       "category": "Refined Material",
       "craftBench": "refiner",
-      "stationLevelRequired": 1,
+      "stationLevelRequired": 3,
       "blueprintLocked": false,
       "craftQuantity": 1,
       "recipe": {
@@ -6275,6 +6503,7 @@
       },
       "stackSize": 10,
       "value": 640,
+      "weight": 0.2,
       "foundIn": [
         "Nature"
       ]
@@ -6289,6 +6518,9 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "recipe": {
+        "projector": 1
+      },
       "recyclesInto": {
         "plastic_parts": 1,
         "wires": 1
@@ -6302,6 +6534,20 @@
       "foundIn": [
         "Technological"
       ]
+    },
+    "project_heartwood_blueprints": {
+      "name": "Project Heartwood Blueprints",
+      "description": "Faded blueprints for something called Project Heartwood. Whatever it was, it never got built.",
+      "icon": "",
+      "rarity": "Common",
+      "type": "Trinket",
+      "category": "Trinket",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "stackSize": 1,
+      "value": 0,
+      "weight": 0
     },
     "projector": {
       "name": "Projector",
@@ -6371,7 +6617,7 @@
         "power_rod": 1
       },
       "stackSize": 1,
-      "value": 13000,
+      "value": 11000,
       "weight": 10,
       "foundIn": [
         "ARC"
@@ -6434,7 +6680,7 @@
       "type": "Key",
       "category": "Key",
       "craftBench": "utility_bench",
-      "stationLevelRequired": 1,
+      "stationLevelRequired": 2,
       "blueprintLocked": false,
       "craftQuantity": 1,
       "recipe": {
@@ -6605,7 +6851,7 @@
       "subCategory": "Utility",
       "craftBench": "utility_bench",
       "stationLevelRequired": 1,
-      "blueprintLocked": false,
+      "blueprintLocked": true,
       "craftQuantity": 1,
       "recipe": {
         "chemicals": 3
@@ -6668,7 +6914,7 @@
       "subCategory": "Utility",
       "craftBench": "utility_bench",
       "stationLevelRequired": 1,
-      "blueprintLocked": false,
+      "blueprintLocked": true,
       "craftQuantity": 1,
       "recipe": {
         "chemicals": 2,
@@ -6855,14 +7101,14 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "recyclesInto": {
-        "advanced_electrical_components": 2,
+        "advanced_electrical_components": 1,
         "arc_alloy": 3
       },
       "salvagesInto": {
-        "arc_circuitry": 2
+        "arc_circuitry": 1
       },
       "stackSize": 3,
-      "value": 5000,
+      "value": 3000,
       "weight": 1,
       "foundIn": [
         "ARC"
@@ -6901,6 +7147,9 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "recipe": {
+        "zipline": 1
+      },
       "recyclesInto": {
         "fabric": 5
       },
@@ -6985,7 +7234,7 @@
         "rubber_parts": 18
       },
       "salvagesInto": {
-        "rubber_parts": 9
+        "rubber_parts": 12
       },
       "stackSize": 3,
       "value": 1000,
@@ -7004,6 +7253,9 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "recipe": {
+        "rubber_pad": 1
+      },
       "stackSize": 50,
       "value": 50,
       "weight": 0.1,
@@ -7050,6 +7302,9 @@
       "recyclesInto": {
         "plastic_parts": 2,
         "rubber_parts": 2
+      },
+      "salvagesInto": {
+        "plastic_parts": 3
       },
       "stackSize": 1,
       "value": 270,
@@ -7265,7 +7520,7 @@
       "salvagesInto": {
         "metal_parts": 7
       },
-      "stackSize": 1,
+      "stackSize": 3,
       "value": 1000,
       "weight": 2,
       "foundIn": [
@@ -7355,6 +7610,9 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "recipe": {
+        "broken_handheld_radio": 1
+      },
       "recyclesInto": {
         "metal_parts": 1,
         "wires": 1
@@ -7382,13 +7640,13 @@
       "craftQuantity": 1,
       "recyclesInto": {
         "arc_alloy": 2,
-        "mechanical_components": 3
+        "mechanical_components": 2
       },
       "salvagesInto": {
         "mechanical_components": 2
       },
       "stackSize": 3,
-      "value": 3000,
+      "value": 2000,
       "weight": 1,
       "foundIn": [
         "ARC"
@@ -7404,6 +7662,10 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "recipe": {
+        "assorted_seeds": 7,
+        "canister": 1
+      },
       "recyclesInto": {
         "plastic_parts": 10
       },
@@ -7578,18 +7840,19 @@
       "blueprintLocked": true,
       "craftQuantity": 1,
       "recipe": {
-        "advanced_electrical_components": 1,
+        "electrical_components": 1,
+        "hornet_driver": 1,
         "voltage_converter": 1
       },
       "recyclesInto": {
-        "battery": 2,
-        "electrical_components": 1
+        "electrical_components": 1,
+        "voltage_converter": 1
       },
       "salvagesInto": {
-        "battery": 2
+        "electrical_components": 1
       },
       "stackSize": 5,
-      "value": 2200,
+      "value": 2100,
       "weight": 0.4
     },
     "shrapnel_grenade": {
@@ -7601,7 +7864,7 @@
       "category": "Quick Use",
       "subCategory": "Explosive",
       "craftBench": "explosives_bench",
-      "stationLevelRequired": 1,
+      "stationLevelRequired": 2,
       "blueprintLocked": false,
       "craftQuantity": 1,
       "recipe": {
@@ -7630,14 +7893,14 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "recyclesInto": {
-        "arc_alloy": 3,
-        "mechanical_components": 3
+        "arc_alloy": 2,
+        "mechanical_components": 2
       },
       "salvagesInto": {
         "mechanical_components": 2
       },
       "stackSize": 3,
-      "value": 3000,
+      "value": 2000,
       "weight": 1,
       "foundIn": [
         "ARC"
@@ -7676,7 +7939,7 @@
       "category": "Modification",
       "craftBench": "weapon_bench",
       "stationLevelRequired": 2,
-      "blueprintLocked": false,
+      "blueprintLocked": true,
       "craftQuantity": 1,
       "recipe": {
         "mechanical_components": 2,
@@ -7702,7 +7965,7 @@
       "category": "Modification",
       "craftBench": "weapon_bench",
       "stationLevelRequired": 3,
-      "blueprintLocked": false,
+      "blueprintLocked": true,
       "craftQuantity": 1,
       "recipe": {
         "mod_components": 2,
@@ -7726,8 +7989,7 @@
       "rarity": "Epic",
       "type": "Modification",
       "category": "Modification",
-      "craftBench": "weapon_bench",
-      "stationLevelRequired": 3,
+      "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
       "recyclesInto": {
@@ -7735,7 +7997,7 @@
         "wires": 3
       },
       "salvagesInto": {
-        "mod_components": 2
+        "mod_components": 1
       },
       "stackSize": 1,
       "value": 7000,
@@ -7770,6 +8032,9 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "recipe": {
+        "il_toro_ii": 1
+      },
       "recyclesInto": {
         "metal_parts": 2
       },
@@ -7807,7 +8072,7 @@
       "salvagesInto": {
         "chemicals": 3
       },
-      "stackSize": 3,
+      "stackSize": 5,
       "value": 1000,
       "weight": 0.2
     },
@@ -7818,9 +8083,8 @@
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
-      "craftBench": "workbench",
       "stationLevelRequired": 1,
-      "blueprintLocked": false,
+      "blueprintLocked": true,
       "craftQuantity": 1,
       "recipe": {
         "smoke_grenade": 1,
@@ -7839,7 +8103,7 @@
       "category": "Quick Use",
       "subCategory": "Explosive",
       "craftBench": "explosives_bench",
-      "stationLevelRequired": 1,
+      "stationLevelRequired": 2,
       "blueprintLocked": false,
       "craftQuantity": 1,
       "recipe": {
@@ -7866,8 +8130,8 @@
       "category": "Quick Use",
       "subCategory": "Utility",
       "craftBench": "utility_bench",
-      "stationLevelRequired": 1,
-      "blueprintLocked": false,
+      "stationLevelRequired": 3,
+      "blueprintLocked": true,
       "craftQuantity": 1,
       "recipe": {
         "exodus_modules": 1,
@@ -7897,13 +8161,13 @@
       "craftQuantity": 1,
       "recyclesInto": {
         "arc_alloy": 1,
-        "electrical_components": 2
+        "electrical_components": 1
       },
       "salvagesInto": {
-        "electrical_components": 2
+        "electrical_components": 1
       },
       "stackSize": 3,
-      "value": 2000,
+      "value": 1000,
       "weight": 0.75,
       "foundIn": [
         "ARC"
@@ -7992,6 +8256,9 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "recipe": {
+        "noisemaker": 1
+      },
       "recyclesInto": {
         "plastic_parts": 2,
         "rubber_parts": 3
@@ -8047,7 +8314,7 @@
       "salvagesInto": {
         "processor": 2
       },
-      "stackSize": 1,
+      "stackSize": 3,
       "value": 3500,
       "weight": 1.5,
       "foundIn": [
@@ -8066,10 +8333,13 @@
       "craftQuantity": 1,
       "recyclesInto": {
         "arc_alloy": 1,
-        "electrical_components": 2
+        "electrical_components": 1
+      },
+      "salvagesInto": {
+        "electrical_components": 1
       },
       "stackSize": 3,
-      "value": 2000,
+      "value": 1000,
       "weight": 1,
       "foundIn": [
         "ARC"
@@ -8113,7 +8383,7 @@
       "craftQuantity": 1,
       "recipe": {
         "duct_tape": 1,
-        "rubber_parts": 6
+        "rubber_parts": 7
       },
       "recyclesInto": {
         "rubber_parts": 6
@@ -8177,6 +8447,20 @@
       "value": 5000,
       "weight": 0.75
     },
+    "stack_of_movie_tapes": {
+      "name": "Stack of Movie Tapes",
+      "description": "",
+      "icon": "https://cdn.arctracker.io/items/stack_of_movie_tapes.png",
+      "rarity": "Common",
+      "type": "Trinket",
+      "category": "Trinket",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "stackSize": 1,
+      "value": 0,
+      "weight": 0.5
+    },
     "statuette": {
       "name": "Statuette",
       "description": "Worth a small fortune.",
@@ -8205,6 +8489,9 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "recipe": {
+        "cooling_coil": 1
+      },
       "recyclesInto": {
         "metal_parts": 2
       },
@@ -8283,7 +8570,7 @@
       "category": "Quick Use",
       "subCategory": "Medicinal",
       "craftBench": "med_station",
-      "stationLevelRequired": 1,
+      "stationLevelRequired": 2,
       "blueprintLocked": false,
       "craftQuantity": 1,
       "recipe": {
@@ -8336,6 +8623,7 @@
       "type": "SMG",
       "category": "Weapon",
       "subCategory": "SMG",
+      "craftBench": "weapon_bench",
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
@@ -8358,6 +8646,7 @@
       "type": "SMG",
       "category": "Weapon",
       "subCategory": "SMG",
+      "craftBench": "weapon_bench",
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
@@ -8380,6 +8669,7 @@
       "type": "SMG",
       "category": "Weapon",
       "subCategory": "SMG",
+      "craftBench": "weapon_bench",
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
@@ -8403,7 +8693,7 @@
       "category": "Quick Use",
       "subCategory": "Medicinal",
       "craftBench": "med_station",
-      "stationLevelRequired": 1,
+      "stationLevelRequired": 2,
       "blueprintLocked": false,
       "craftQuantity": 1,
       "recipe": {
@@ -8431,14 +8721,14 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "recyclesInto": {
-        "arc_alloy": 2,
-        "mechanical_components": 2
+        "arc_alloy": 1,
+        "mechanical_components": 1
       },
       "salvagesInto": {
-        "mechanical_components": 2
+        "mechanical_components": 1
       },
       "stackSize": 3,
-      "value": 2000,
+      "value": 1000,
       "weight": 1,
       "foundIn": [
         "ARC"
@@ -8454,9 +8744,12 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "recipe": {
+        "rocket_thruster": 1
+      },
       "recyclesInto": {
-        "oil": 1,
-        "plastic_parts": 1
+        "chemicals": 1,
+        "oil": 1
       },
       "salvagesInto": {
         "oil": 1
@@ -8478,6 +8771,9 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "recipe": {
+        "rusted_shut_medical_kit": 1
+      },
       "recyclesInto": {
         "chemicals": 2,
         "plastic_parts": 3
@@ -8526,7 +8822,7 @@
       "type": "Augment",
       "category": "Augment",
       "craftBench": "equipment_bench",
-      "stationLevelRequired": 1,
+      "stationLevelRequired": 2,
       "blueprintLocked": false,
       "craftQuantity": 1,
       "recipe": {
@@ -8604,7 +8900,7 @@
       "type": "Augment",
       "category": "Augment",
       "craftBench": "equipment_bench",
-      "stationLevelRequired": 1,
+      "stationLevelRequired": 3,
       "blueprintLocked": true,
       "craftQuantity": 1,
       "recipe": {
@@ -8614,6 +8910,9 @@
       "recyclesInto": {
         "advanced_electrical_components": 1,
         "processor": 1
+      },
+      "salvagesInto": {
+        "electrical_components": 2
       },
       "stackSize": 1,
       "value": 5000,
@@ -8685,8 +8984,9 @@
       "salvagesInto": {
         "fabric": 5
       },
-      "stackSize": 1,
+      "stackSize": 3,
       "value": 640,
+      "weight": 0.8,
       "foundIn": [
         "Residential"
       ]
@@ -8935,8 +9235,8 @@
       "category": "Weapon",
       "subCategory": "LMG",
       "craftBench": "weapon_bench",
-      "stationLevelRequired": 1,
-      "blueprintLocked": false,
+      "stationLevelRequired": 2,
+      "blueprintLocked": true,
       "craftQuantity": 1,
       "recipe": {
         "advanced_mechanical_components": 2,
@@ -8962,6 +9262,7 @@
       "type": "LMG",
       "category": "Weapon",
       "subCategory": "LMG",
+      "craftBench": "weapon_bench",
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
@@ -8984,6 +9285,7 @@
       "type": "LMG",
       "category": "Weapon",
       "subCategory": "LMG",
+      "craftBench": "weapon_bench",
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
@@ -9006,6 +9308,7 @@
       "type": "LMG",
       "category": "Weapon",
       "subCategory": "LMG",
+      "craftBench": "weapon_bench",
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
@@ -9017,7 +9320,7 @@
         "medium_gun_parts": 3
       },
       "stackSize": 1,
-      "value": 16000,
+      "value": 17000,
       "weight": 12
     },
     "trailblazer": {
@@ -9030,20 +9333,21 @@
       "subCategory": "Explosive",
       "craftBench": "explosives_bench",
       "stationLevelRequired": 3,
-      "blueprintLocked": false,
+      "blueprintLocked": true,
       "craftQuantity": 1,
       "recipe": {
-        "explosive_compound": 1,
+        "crude_explosives": 2,
+        "firefly_burner": 1,
         "synthesized_fuel": 1
       },
       "recyclesInto": {
         "crude_explosives": 2
       },
       "salvagesInto": {
-        "crude_explosives": 1
+        "crude_explosives": 2
       },
       "stackSize": 3,
-      "value": 1600,
+      "value": 2200,
       "weight": 1
     },
     "trigger_nade": {
@@ -9055,8 +9359,8 @@
       "category": "Quick Use",
       "subCategory": "Explosive",
       "craftBench": "explosives_bench",
-      "stationLevelRequired": 1,
-      "blueprintLocked": false,
+      "stationLevelRequired": 2,
+      "blueprintLocked": true,
       "craftQuantity": 1,
       "recipe": {
         "crude_explosives": 2,
@@ -9128,7 +9432,7 @@
       "salvagesInto": {
         "simple_gun_parts": 3
       },
-      "stackSize": 1,
+      "stackSize": 3,
       "value": 2000,
       "weight": 3,
       "foundIn": [
@@ -9164,7 +9468,7 @@
       "subCategory": "Pistol",
       "craftBench": "weapon_bench",
       "stationLevelRequired": 2,
-      "blueprintLocked": false,
+      "blueprintLocked": true,
       "craftQuantity": 1,
       "recipe": {
         "advanced_mechanical_components": 2,
@@ -9310,8 +9614,8 @@
       "type": "Modification",
       "category": "Modification",
       "craftBench": "weapon_bench",
-      "stationLevelRequired": 1,
-      "blueprintLocked": false,
+      "stationLevelRequired": 3,
+      "blueprintLocked": true,
       "craftQuantity": 1,
       "recipe": {
         "duct_tape": 5,
@@ -9353,8 +9657,10 @@
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
+      "subCategory": "Medicinal",
+      "craftBench": "med_station",
       "stationLevelRequired": 3,
-      "blueprintLocked": false,
+      "blueprintLocked": true,
       "craftQuantity": 1,
       "recipe": {
         "antiseptic": 2,
@@ -9380,22 +9686,23 @@
       "category": "Quick Use",
       "subCategory": "Medicinal",
       "craftBench": "med_station",
-      "stationLevelRequired": 1,
-      "blueprintLocked": false,
+      "stationLevelRequired": 3,
+      "blueprintLocked": true,
       "craftQuantity": 1,
       "recipe": {
         "antiseptic": 3,
-        "canister": 1
+        "canister": 1,
+        "tick_pod": 1
       },
       "recyclesInto": {
         "antiseptic": 1,
-        "canister": 2
+        "canister": 1
       },
       "salvagesInto": {
         "antiseptic": 1
       },
       "stackSize": 1,
-      "value": 3000,
+      "value": 3400,
       "weight": 1
     },
     "volcanic_rock": {
@@ -9425,6 +9732,9 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "recipe": {
+        "signal_amplifier": 1
+      },
       "recyclesInto": {
         "rubber_parts": 1,
         "wires": 1
@@ -9551,10 +9861,10 @@
         "electrical_components": 1
       },
       "salvagesInto": {
-        "electrical_components": 1
+        "arc_alloy": 2
       },
       "stackSize": 3,
-      "value": 1000,
+      "value": 640,
       "weight": 0.6,
       "foundIn": [
         "ARC"
@@ -9619,6 +9929,9 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "recipe": {
+        "power_cable": 1
+      },
       "recyclesInto": {
         "rubber_parts": 2
       },
@@ -9642,12 +9955,13 @@
       "category": "Quick Use",
       "subCategory": "Explosive",
       "craftBench": "explosives_bench",
-      "stationLevelRequired": 1,
-      "blueprintLocked": false,
+      "stationLevelRequired": 3,
+      "blueprintLocked": true,
       "craftQuantity": 1,
       "recipe": {
         "arc_motion_core": 2,
-        "explosive_compound": 3
+        "explosive_compound": 1,
+        "rocketeer_driver": 1
       },
       "recyclesInto": {
         "arc_motion_core": 1,
@@ -9657,7 +9971,7 @@
         "explosive_compound": 2
       },
       "stackSize": 1,
-      "value": 5000,
+      "value": 6000,
       "weight": 1
     },
     "yellow_light_stick": {
@@ -9669,8 +9983,8 @@
       "category": "Quick Use",
       "subCategory": "Utility",
       "craftBench": "utility_bench",
-      "stationLevelRequired": 3,
-      "blueprintLocked": false,
+      "stationLevelRequired": 1,
+      "blueprintLocked": true,
       "craftQuantity": 1,
       "recipe": {
         "chemicals": 3
@@ -9694,7 +10008,7 @@
       "category": "Quick Use",
       "subCategory": "Utility",
       "craftBench": "utility_bench",
-      "stationLevelRequired": 1,
+      "stationLevelRequired": 2,
       "blueprintLocked": false,
       "craftQuantity": 1,
       "recipe": {
@@ -9708,7 +10022,7 @@
       "salvagesInto": {
         "rope": 1
       },
-      "stackSize": 1,
+      "stackSize": 3,
       "value": 1000,
       "weight": 0.4
     }

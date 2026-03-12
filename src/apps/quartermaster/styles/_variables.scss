@@ -29,12 +29,12 @@ $shadow-default: shared.$shadow-default;
 $transition-default: shared.$transition-default;
 
 // Quartermaster uses larger fonts than shared defaults
-$font-xs: 11px;
-$font-sm: 12px;
-$font-base: 13px;
-$font-md: 14px;
-$font-lg: 16px;
-$font-xl: 18px;
+$font-xs: 13px;
+$font-sm: 14px;
+$font-base: 15px;
+$font-md: 17px;
+$font-lg: 19px;
+$font-xl: 22px;
 
 // Quartermaster-specific colors
 $qm-sidebar-width: 200px;
@@ -53,13 +53,14 @@ $badge-recycle: #ff9800;
 $badge-discard: #757575;
 $badge-salvage: #2196f3;
 $badge-bring-home: #ff9800;
+$badge-direct-target: #e91e63;
 
 // Status colors
 $status-missing: #f44336;
 $status-uncraftable: #ff5722;
 $status-available: #4caf50;
 
-// Item icon sizes (+50% from original)
-$item-icon-sm: 60px;
+// Item icon sizes
+$item-icon-sm: 80px;
 $item-icon-md: 84px;
 $item-icon-lg: 108px;

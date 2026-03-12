@@ -29,6 +29,13 @@
   padding: $spacing-lg;
 }
 
+.qm-item-name {
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
 // Common table styles
 .qm-table {
   width: 100%;

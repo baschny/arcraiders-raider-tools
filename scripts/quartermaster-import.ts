@@ -89,7 +89,7 @@ const VALID_BENCH_IDS = new Set<string>([
  * Normalize craftBench field (section 3.2)
  * Returns undefined if item should be excluded, or a valid BenchId
  */
-function normalizeCraftBench(craftBench: string | string[] | undefined): BenchId | undefined | 'EXCLUDE' {
+function normalizeCraftBench(craftBench: string | string[] | undefined): BenchId | undefined {
   if (craftBench === undefined) {
     return undefined;
   }
@@ -97,7 +97,7 @@ function normalizeCraftBench(craftBench: string | string[] | undefined): BenchId
   // If string
   if (typeof craftBench === 'string') {
     if (craftBench === 'in_raid') {
-      return 'EXCLUDE'; // In-raid only, exclude
+      return undefined; // Found in raid only, no crafting bench
     }
     if (VALID_BENCH_IDS.has(craftBench)) {
       return craftBench as BenchId;
@@ -105,25 +105,10 @@ function normalizeCraftBench(craftBench: string | string[] | undefined): BenchId
     return undefined;
   }
 
-  // If array
+  // If array: filter out "in_raid" and "workbench", pick first valid bench
   if (Array.isArray(craftBench)) {
-    // Remove "workbench" and "in_raid", preserve order
     const filtered = craftBench.filter(b => b !== 'workbench' && b !== 'in_raid');
-    
-    if (filtered.length === 0) {
-      // Check if there was only "in_raid" (no other benches)
-      const hasOnlyInRaid = craftBench.includes('in_raid') && 
-        craftBench.filter(b => b !== 'in_raid').every(b => b === 'workbench');
-      if (hasOnlyInRaid || craftBench.every(b => b === 'workbench' || b === 'in_raid')) {
-        // If only in_raid (and maybe workbench), exclude
-        if (craftBench.includes('in_raid') && filtered.length === 0) {
-          return 'EXCLUDE';
-        }
-      }
-      return undefined;
-    }
 
-    // Return first valid bench
     for (const bench of filtered) {
       if (VALID_BENCH_IDS.has(bench)) {
         return bench as BenchId;
@@ -207,14 +192,9 @@ function processItem(source: SourceItem): { id: string; item: PlannerItem } | un
 
   // 3.2 Normalize craftBench
   const craftBench = normalizeCraftBench(source.craftBench);
-  
-  // 3.1.2 Exclude in-raid only
-  if (craftBench === 'EXCLUDE') {
-    return undefined;
-  }
 
   // 3.3 Category mapping
-  const { category, subCategory } = mapCategory(source, craftBench as BenchId | undefined);
+  const { category, subCategory } = mapCategory(source, craftBench);
 
   // 3.4 Default field completion
   const stackSize = source.stackSize ?? 1;
@@ -245,6 +225,88 @@ function processItem(source: SourceItem): { id: string; item: PlannerItem } | un
   };
 
   return { id: source.id, item };
+}
+
+// ---------------------------------------------------------------------------
+// Hideout import (CR-002, CR-003)
+// ---------------------------------------------------------------------------
+
+interface HideoutSourceLevel {
+  level: number;
+  requirementItemIds: { itemId: string; quantity: number }[];
+}
+
+interface HideoutSource {
+  id: string;
+  name: { en: string; [key: string]: string };
+  maxLevel: number;
+  levels: HideoutSourceLevel[];
+}
+
+interface HideoutModuleOutput {
+  id: string;
+  name: string;
+  maxLevel: number;
+  levels: {
+    level: number;
+    requirementItemIds: { itemId: string; quantity: number }[];
+  }[];
+}
+
+function generateHideoutData(scriptDir: string): void {
+  const sourceDir = path.resolve(scriptDir, '../../arcraiders-data/hideout');
+  const destFile = path.resolve(scriptDir, '../public/data/quartermaster/hideout.json');
+
+  if (!fs.existsSync(sourceDir)) {
+    console.error(`Error: Hideout source directory does not exist: ${sourceDir}`);
+    process.exit(1);
+  }
+
+  // Read and sort filenames ASCII ascending, exclude stash.json
+  const files = fs.readdirSync(sourceDir)
+    .filter(f => f.endsWith('.json') && f !== 'stash.json')
+    .sort();
+
+  console.log(`Processing ${files.length} hideout files from ${sourceDir}...`);
+
+  const modules: HideoutModuleOutput[] = [];
+
+  for (const file of files) {
+    const filePath = path.join(sourceDir, file);
+
+    try {
+      const content = fs.readFileSync(filePath, 'utf-8');
+      const source: HideoutSource = JSON.parse(content);
+
+      modules.push({
+        id: source.id,
+        name: source.name.en,
+        maxLevel: source.maxLevel,
+        levels: source.levels.map(level => ({
+          level: level.level,
+          requirementItemIds: [...level.requirementItemIds]
+            .sort((a, b) => a.itemId.localeCompare(b.itemId)),
+        })),
+      });
+    } catch (err) {
+      console.error(`Error processing hideout file ${file}:`, err);
+      process.exit(1);
+    }
+  }
+
+  // Sort modules by id ASCII ascending
+  modules.sort((a, b) => a.id.localeCompare(b.id));
+
+  // Ensure output directory exists
+  const destDir = path.dirname(destFile);
+  if (!fs.existsSync(destDir)) {
+    fs.mkdirSync(destDir, { recursive: true });
+  }
+
+  fs.writeFileSync(destFile, JSON.stringify(modules, null, 2) + '\n');
+
+  console.log(`Done! Generated ${destFile}`);
+  console.log(`  Modules: ${modules.length}`);
 }
 
 /**
@@ -313,6 +375,9 @@ function main(): void {
   console.log(`Done! Generated ${destFile}`);
   console.log(`  Processed: ${processedCount} items`);
   console.log(`  Excluded: ${excludedCount} items`);
+
+  // Generate hideout data (CR-002)
+  generateHideoutData(scriptDir);
 }
 
 main();

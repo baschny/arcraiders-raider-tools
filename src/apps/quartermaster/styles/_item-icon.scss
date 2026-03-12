@@ -36,6 +36,11 @@
     border-radius: 3px;
     min-width: 22px;
     text-align: center;
+
+    &--unknown {
+      color: #a6a6a6;
+      font-weight: 500;
+    }
   }
 
   &__badges {
@@ -88,19 +93,54 @@
       background: $status-uncraftable;
       color: white;
     }
+
+    &--direct-target {
+      background: $badge-direct-target;
+      color: white;
+    }
   }
 
   &__name {
-    font-size: 13px;
+    font-size: $font-sm;
     color: $text-primary;
     text-align: center;
     max-width: $item-icon-md + 30px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+
+    // In raid view: allow multiline word-wrap
+    .in-raid-view & {
+      white-space: normal;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      line-height: 1.3;
+      max-width: $item-icon-md + 30px;
+      min-height: 3.9em;
+    }
   }
 
   // Size variants
+  &--xs {
+    .item-icon__container {
+      width: 30px;
+      height: 30px;
+      border-radius: 3px;
+    }
+    .item-icon__image {
+      padding: 2px;
+    }
+    .item-icon__name {
+      max-width: 54px;
+      font-size: 9px;
+      letter-spacing: 0.6px;
+    }
+    .item-icon__quantity {
+      font-size: 9px;
+      min-width: 14px;
+      padding: 1px 4px;
+    }
+  }
   &--sm {
     .item-icon__container {
       width: $item-icon-sm;
@@ -108,10 +148,10 @@
     }
     .item-icon__name {
       max-width: $item-icon-sm + 24px;
-      font-size: 12px;
+      font-size: $font-xs;
     }
     .item-icon__quantity {
-      font-size: 12px;
+      font-size: $font-xs;
     }
   }
 

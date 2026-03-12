@@ -8,9 +8,11 @@ import type {
   ArctrackerProfileResponse,
   ArctrackerStashResponse,
   ArctrackerLoadoutResponse,
+  ArctrackerHideoutResponse,
   CachedProfile,
   CachedStash,
   CachedLoadout,
+  CachedHideout,
   ApiError,
   ArctrackerStashItem,
 } from '../types/arctracker';
@@ -19,6 +21,7 @@ import {
   getCachedProfile,
   getCachedStash,
   getCachedLoadout,
+  getCachedHideout,
   updateCacheMeta,
 } from './cacheService';
 import { getToken } from '../utils/tokenStorage';
@@ -27,7 +30,7 @@ const API_BASE = 'https://api.raider-tools.app/arctracker';
 const LOCALE = 'en';
 const TIMEOUT_MS = 10000;
 const MAX_RETRIES = 1;
-const STASH_PER_PAGE = 100;
+const STASH_PER_PAGE = 500;
 
 /**
  * Create an API error object.
@@ -218,6 +221,34 @@ export async function syncLoadout(): Promise<CachedLoadout> {
 }
 
 /**
+ * Sync and cache hideout progression.
+ * Transforms API shape (id → moduleId), excludes stash module.
+ */
+export async function syncHideout(): Promise<CachedHideout> {
+  const response = await apiRequest<ArctrackerHideoutResponse>(
+    `/v2/user/hideout`
+  );
+
+  // Transform API modules: map id → moduleId, exclude stash
+  const modules = response.data.modules
+    .filter(m => m.id !== 'stash')
+    .map(m => ({
+      moduleId: m.id,
+      currentLevel: m.currentLevel,
+      maxLevel: m.maxLevel,
+    }));
+
+  const cachedHideout: CachedHideout = {
+    modules,
+    syncedAt: new Date().toISOString(),
+    cachedAt: Date.now(),
+  };
+
+  await cacheSet('hideout', cachedHideout);
+  return cachedHideout;
+}
+
+/**
  * Sync all data (profile, stash, loadout).
  */
 export async function syncAll(): Promise<{
@@ -253,4 +284,11 @@ export async function getStash(): Promise<CachedStash | undefined> {
  */
 export async function getLoadout(): Promise<CachedLoadout | undefined> {
   return getCachedLoadout();
+}
+
+/**
+ * Get cached hideout (from IndexedDB).
+ */
+export async function getHideout(): Promise<CachedHideout | undefined> {
+  return getCachedHideout();
 }

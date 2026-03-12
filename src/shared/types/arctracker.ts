@@ -95,6 +95,45 @@ export interface ArctrackerLoadoutResponse {
 }
 
 // ============================================================================
+// Hideout Types
+// ============================================================================
+
+/** Raw module shape from the API (uses `id`, not `moduleId`) */
+export interface ArctrackerHideoutApiModule {
+  id: string;
+  name: string;
+  currentLevel: number;
+  maxLevel: number;
+}
+
+export interface ArctrackerHideoutResponse {
+  data: {
+    modules: ArctrackerHideoutApiModule[];
+    summary?: {
+      totalModules: number;
+      totalLevels: number;
+      maxTotalLevels: number;
+    };
+  };
+  meta: {
+    requestId: string;
+  };
+}
+
+/** Normalized module shape stored in cache */
+export interface CachedHideoutModule {
+  moduleId: string;
+  currentLevel: number;
+  maxLevel: number;
+}
+
+export interface CachedHideout {
+  modules: CachedHideoutModule[];
+  syncedAt: string;
+  cachedAt: number;
+}
+
+// ============================================================================
 // Cached Data Types
 // ============================================================================
 
@@ -125,7 +164,7 @@ export interface CacheMeta {
   version: number;
 }
 
-export type CacheKey = 'profile' | 'stash' | 'loadout' | 'meta';
+export type CacheKey = 'profile' | 'stash' | 'loadout' | 'hideout' | 'meta';
 
 // ============================================================================
 // Auth Types

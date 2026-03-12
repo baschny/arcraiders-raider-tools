@@ -34,6 +34,14 @@
     }
   }
 
+  &__need {
+    font-weight: 600;
+
+    &--missing {
+      color: $status-missing;
+    }
+  }
+
   &__indicator {
     display: inline-flex;
     align-items: center;
@@ -58,6 +66,11 @@
       color: $badge-recycle;
     }
 
+    &--have {
+      background: rgba($status-available, 0.2);
+      color: $status-available;
+    }
+
     &--missing {
       background: rgba($status-missing, 0.2);
       color: $status-missing;
@@ -66,6 +79,11 @@
     &--uncraftable {
       background: rgba($status-uncraftable, 0.2);
       color: $status-uncraftable;
+    }
+
+    &--direct-target {
+      background: rgba($badge-direct-target, 0.2);
+      color: $badge-direct-target;
     }
   }
 }

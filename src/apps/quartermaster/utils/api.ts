@@ -6,17 +6,19 @@
 
 import type { StashItem, CurrentLoadoutItem } from '../types/planner';
 import type { BenchId } from '../types/item';
-import type { CachedStash, CachedLoadout, ApiError } from '../../../shared/types/arctracker';
+import type { CachedStash, CachedLoadout, CachedHideout, ApiError } from '../../../shared/types/arctracker';
 import {
   syncStashAllPages,
   syncLoadout,
+  syncHideout,
   getStash,
   getLoadout,
+  getHideout,
 } from '../../../shared/services/arctrackerApi';
 
 // Re-export for convenience
-export { syncStashAllPages, syncLoadout, getStash, getLoadout };
-export type { CachedStash, CachedLoadout, ApiError };
+export { syncStashAllPages, syncLoadout, syncHideout, getStash, getLoadout, getHideout };
+export type { CachedStash, CachedLoadout, CachedHideout, ApiError };
 
 /**
  * Check if an error is an ApiError
@@ -88,17 +90,34 @@ export function aggregateLoadoutItems(cachedLoadout: CachedLoadout): CurrentLoad
 }
 
 /**
- * Get bench levels (v1: all at level 3)
- * See specification section 4.4
+ * Default bench levels (fallback: all at level 3)
  */
-export function getBenchLevels(): Record<BenchId, number> {
-  return {
-    equipment_bench: 3,
-    explosives_bench: 3,
-    med_station: 3,
-    refiner: 3,
-    utility_bench: 3,
-    weapon_bench: 3,
-    workbench: 3,
-  };
+const DEFAULT_BENCH_LEVELS: Record<BenchId, number> = {
+  equipment_bench: 3,
+  explosives_bench: 3,
+  med_station: 3,
+  refiner: 3,
+  utility_bench: 3,
+  weapon_bench: 3,
+  workbench: 3,
+};
+
+const BENCH_IDS = new Set<string>(Object.keys(DEFAULT_BENCH_LEVELS));
+
+/**
+ * Get bench levels from cached hideout state, or fallback to all level 3.
+ * See specification section 4.4 / CR-005
+ */
+export function getBenchLevels(cachedHideout?: CachedHideout | null): Record<BenchId, number> {
+  if (!cachedHideout) {
+    return { ...DEFAULT_BENCH_LEVELS };
+  }
+
+  const levels = { ...DEFAULT_BENCH_LEVELS };
+  for (const mod of cachedHideout.modules) {
+    if (BENCH_IDS.has(mod.moduleId)) {
+      levels[mod.moduleId as BenchId] = mod.currentLevel;
+    }
+  }
+  return levels;
 }

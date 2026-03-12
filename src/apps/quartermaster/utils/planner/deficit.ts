@@ -75,9 +75,14 @@ export function buildPlanRows(
     if (isCycleBlocked) {
       isUncraftable = true;
       uncraftableReason = 'cycle';
-    } else if (greedyResult.blueprintBlockers.has(itemId) || greedyResult.benchBlockers.has(itemId)) {
+    } else if (greedyResult.blueprintBlockers.has(itemId)) {
       isUncraftable = true;
-      uncraftableReason = 'blueprint_or_bench';
+      uncraftableReason = 'blueprint_locked';
+    } else if (greedyResult.benchBlockers.has(itemId)) {
+      isUncraftable = true;
+      // Check if item has no bench at all vs insufficient level
+      const plannerItem = itemsMap[itemId];
+      uncraftableReason = plannerItem?.craftBench ? 'insufficient_bench_level' : 'missing_bench';
     }
 
     rows.push({

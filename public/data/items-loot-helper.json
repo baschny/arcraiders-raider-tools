@@ -153,6 +153,35 @@
     ]
   },
   {
+    "id": "agave_juice",
+    "name": {
+      "en": "Agave Juice"
+    },
+    "description": {
+      "en": "A concoction that temporarily increases stamina regeneration, at a small initial cost to health."
+    },
+    "type": "Quick Use",
+    "rarity": "Common",
+    "value": 1800,
+    "weightKg": 0.2,
+    "stackSize": 5,
+    "recyclesInto": null,
+    "recipe": {
+      "agave": 1,
+      "empty_wine_bottle": 1
+    },
+    "salvagesInto": {
+      "empty_wine_bottle": 1
+    },
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/agave_juice.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "agave",
     "name": {
       "en": "Agave"
@@ -293,7 +322,7 @@
     "rarity": "Common",
     "value": 640,
     "weightKg": 0.25,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "plastic_parts": 6
     },
@@ -321,10 +350,10 @@
       "en": "Moderately reduces horizontal recoil. Compatible with: Arpeggio, Ferro, Il Toro, Stitcher"
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -348,7 +377,7 @@
     "rarity": "Uncommon",
     "value": 2000,
     "weightKg": 0.5,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "duct_tape": 1,
       "mechanical_components": 1
@@ -377,10 +406,10 @@
       "en": "Significantly reduces horizontal recoil. Compatible with: Arpeggio, Ferro, Venator, Il Toro, Stitcher"
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -404,7 +433,7 @@
     "rarity": "Rare",
     "value": 5000,
     "weightKg": 0.75,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "duct_tape": 2,
       "mod_components": 1
@@ -464,10 +493,10 @@
       "en": "Has high damage output and headshot damage, but slow handling."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -491,7 +520,7 @@
     "rarity": "Uncommon",
     "value": 5000,
     "weightKg": 5,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "mechanical_components": 2,
       "simple_gun_parts": 2
@@ -503,7 +532,10 @@
     "salvagesInto": {
       "simple_gun_parts": 2
     },
-    "upgradeCost": null,
+    "upgradeCost": {
+      "mechanical_components": 3,
+      "simple_gun_parts": 1
+    },
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/anvil.png",
     "isWeapon": true,
@@ -523,7 +555,7 @@
     "rarity": "Uncommon",
     "value": 7000,
     "weightKg": 5,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "mechanical_components": 3,
       "simple_gun_parts": 3
@@ -533,8 +565,8 @@
       "simple_gun_parts": 3
     },
     "upgradeCost": {
-      "mechanical_components": 3,
-      "simple_gun_parts": 1
+      "heavy_gun_parts": 1,
+      "mechanical_components": 4
     },
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/anvil.png",
@@ -555,7 +587,7 @@
     "rarity": "Uncommon",
     "value": 10000,
     "weightKg": 5,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "mechanical_components": 4,
       "simple_gun_parts": 4
@@ -587,7 +619,7 @@
     "rarity": "Uncommon",
     "value": 13000,
     "weightKg": 5,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "mechanical_components": 5,
       "simple_gun_parts": 5
@@ -619,7 +651,7 @@
     "rarity": "Legendary",
     "value": 7000,
     "weightKg": 0.5,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "mod_components": 1,
       "processor": 1
@@ -645,10 +677,10 @@
       "en": "An experimental ARC beam weapon powered by a Matriarch Reactor."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -672,7 +704,7 @@
     "rarity": "Legendary",
     "value": 27500,
     "weightKg": 14,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "complex_gun_parts": 1,
       "magnetic_accelerator": 2
@@ -737,7 +769,9 @@
     "recyclesInto": {
       "metal_parts": 2
     },
-    "recipe": null,
+    "recipe": {
+      "wasp_driver": 1
+    },
     "salvagesInto": {
       "metal_parts": 1
     },
@@ -906,9 +940,15 @@
     "value": 270,
     "weightKg": 0.5,
     "stackSize": 5,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
+    "recyclesInto": {
+      "arc_alloy": 1
+    },
+    "recipe": {
+      "advanced_arc_powercell": 1
+    },
+    "salvagesInto": {
+      "metal_parts": 1
+    },
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/arc_powercell.png",
@@ -985,7 +1025,7 @@
     "rarity": "Uncommon",
     "value": 5500,
     "weightKg": 7,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "mechanical_components": 2,
       "simple_gun_parts": 2
@@ -997,7 +1037,10 @@
     "salvagesInto": {
       "simple_gun_parts": 2
     },
-    "upgradeCost": null,
+    "upgradeCost": {
+      "mechanical_components": 4,
+      "simple_gun_parts": 1
+    },
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/arpeggio.png",
     "isWeapon": true,
@@ -1017,7 +1060,7 @@
     "rarity": "Uncommon",
     "value": 8000,
     "weightKg": 7,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "mechanical_components": 3,
       "simple_gun_parts": 3
@@ -1027,8 +1070,8 @@
       "simple_gun_parts": 3
     },
     "upgradeCost": {
-      "mechanical_components": 4,
-      "simple_gun_parts": 1
+      "mechanical_components": 5,
+      "medium_gun_parts": 1
     },
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/arpeggio.png",
@@ -1049,7 +1092,7 @@
     "rarity": "Uncommon",
     "value": 11500,
     "weightKg": 7,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "mechanical_components": 4,
       "simple_gun_parts": 4
@@ -1081,7 +1124,7 @@
     "rarity": "Uncommon",
     "value": 15000,
     "weightKg": 7,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "mechanical_components": 5,
       "simple_gun_parts": 5
@@ -1115,7 +1158,9 @@
     "weightKg": 0.05,
     "stackSize": 100,
     "recyclesInto": null,
-    "recipe": null,
+    "recipe": {
+      "agave": 1
+    },
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
@@ -1164,10 +1209,10 @@
       "en": "A deployable cover that can block incoming damage until it breaks."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -1254,7 +1299,9 @@
     "recyclesInto": {
       "metal_parts": 2
     },
-    "recipe": null,
+    "recipe": {
+      "jolt_mine": 1
+    },
     "salvagesInto": {
       "metal_parts": 1
     },
@@ -1276,10 +1323,10 @@
       "en": "Has slow fire rate and high damage output."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -1303,7 +1350,7 @@
     "rarity": "Epic",
     "value": 8000,
     "weightKg": 11,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "advanced_mechanical_components": 1,
       "heavy_gun_parts": 2
@@ -1316,7 +1363,10 @@
     "salvagesInto": {
       "advanced_mechanical_components": 1
     },
-    "upgradeCost": null,
+    "upgradeCost": {
+      "advanced_mechanical_components": 1,
+      "heavy_gun_parts": 2
+    },
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/bettina.png",
     "isWeapon": true,
@@ -1336,7 +1386,7 @@
     "rarity": "Epic",
     "value": 11000,
     "weightKg": 11,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "advanced_mechanical_components": 2,
       "heavy_gun_parts": 2
@@ -1368,7 +1418,7 @@
     "rarity": "Epic",
     "value": 14000,
     "weightKg": 11,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "advanced_mechanical_components": 2,
       "heavy_gun_parts": 3
@@ -1378,7 +1428,7 @@
       "advanced_mechanical_components": 3
     },
     "upgradeCost": {
-      "advanced_mechanical_components": 1,
+      "advanced_mechanical_components": 2,
       "heavy_gun_parts": 2
     },
     "tier": null,
@@ -1400,7 +1450,7 @@
     "rarity": "Epic",
     "value": 18000,
     "weightKg": 11,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "advanced_mechanical_components": 3,
       "heavy_gun_parts": 3
@@ -1490,10 +1540,10 @@
       "en": "A grenade that detonates on impact, covering an area in fire that deals damage over time."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -1694,7 +1744,7 @@
       "en": "A throwable chemical light that illuminates the area around it."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
     "stackSize": 1,
@@ -1748,10 +1798,10 @@
       "en": "Fully automatic SMG with high fire rate but low accuracy."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -1775,7 +1825,7 @@
     "rarity": "Epic",
     "value": 13000,
     "weightKg": 7,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "advanced_mechanical_components": 2,
       "light_gun_parts": 2
@@ -1788,7 +1838,10 @@
     "salvagesInto": {
       "light_gun_parts": 2
     },
-    "upgradeCost": null,
+    "upgradeCost": {
+      "advanced_mechanical_components": 2,
+      "light_gun_parts": 1
+    },
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/bobcat.png",
     "isWeapon": true,
@@ -1808,7 +1861,7 @@
     "rarity": "Epic",
     "value": 17000,
     "weightKg": 7,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "advanced_mechanical_components": 3,
       "light_gun_parts": 3
@@ -1819,7 +1872,7 @@
     },
     "upgradeCost": {
       "advanced_mechanical_components": 2,
-      "light_gun_parts": 1
+      "light_gun_parts": 3
     },
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/bobcat.png",
@@ -1840,7 +1893,7 @@
     "rarity": "Epic",
     "value": 22000,
     "weightKg": 7,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "advanced_mechanical_components": 4,
       "light_gun_parts": 4
@@ -1872,7 +1925,7 @@
     "rarity": "Epic",
     "value": 27000,
     "weightKg": 7,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "advanced_mechanical_components": 5,
       "light_gun_parts": 4
@@ -2167,10 +2220,10 @@
       "en": "A blueprint to craft the Burletta weapon."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": null,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -2194,7 +2247,7 @@
     "rarity": "Uncommon",
     "value": 2900,
     "weightKg": 4,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "mechanical_components": 1,
       "simple_gun_parts": 2
@@ -2206,7 +2259,10 @@
     "salvagesInto": {
       "simple_gun_parts": 2
     },
-    "upgradeCost": null,
+    "upgradeCost": {
+      "mechanical_components": 3,
+      "simple_gun_parts": 1
+    },
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/burletta.png",
     "isWeapon": true,
@@ -2226,7 +2282,7 @@
     "rarity": "Uncommon",
     "value": 5000,
     "weightKg": 4,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "mechanical_components": 2,
       "simple_gun_parts": 2
@@ -2258,7 +2314,7 @@
     "rarity": "Uncommon",
     "value": 7000,
     "weightKg": 4,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "mechanical_components": 3,
       "simple_gun_parts": 3
@@ -2268,8 +2324,8 @@
       "simple_gun_parts": 3
     },
     "upgradeCost": {
-      "mechanical_components": 3,
-      "simple_gun_parts": 1
+      "light_gun_parts": 1,
+      "mechanical_components": 4
     },
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/burletta.png",
@@ -2290,7 +2346,7 @@
     "rarity": "Uncommon",
     "value": 10000,
     "weightKg": 4,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "mechanical_components": 4,
       "simple_gun_parts": 4
@@ -2461,7 +2517,9 @@
     "recyclesInto": {
       "plastic_parts": 3
     },
-    "recipe": null,
+    "recipe": {
+      "bicycle_pump": 1
+    },
     "salvagesInto": {
       "plastic_parts": 1
     },
@@ -2536,7 +2594,9 @@
     "weightKg": 0.15,
     "stackSize": 50,
     "recyclesInto": null,
-    "recipe": null,
+    "recipe": {
+      "gas_grenade": 1
+    },
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
@@ -2645,10 +2705,10 @@
       "en": "An improved version of the Combat II augment. Supports more shield types, and comes with extra space for grenades."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -2701,10 +2761,10 @@
       "en": "An improved version of the Combat II augment. Designed for flanking maneuvers with enhanced mobility."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -2789,7 +2849,7 @@
     "rarity": "Common",
     "value": 640,
     "weightKg": 0.25,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "metal_parts": 5
     },
@@ -2817,10 +2877,10 @@
       "en": "Moderately reduces per-shot dispersion."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -2844,7 +2904,7 @@
     "rarity": "Uncommon",
     "value": 2000,
     "weightKg": 0.5,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "mechanical_components": 1,
       "wires": 1
@@ -2873,10 +2933,10 @@
       "en": "Moderately reduces per-shot dispersion. Compatible with: Arpeggio, Ferro, Renegade, Anvil, Stitcher"
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -2900,7 +2960,7 @@
     "rarity": "Rare",
     "value": 5000,
     "weightKg": 0.75,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "mod_components": 1,
       "wires": 2
@@ -2929,10 +2989,10 @@
       "en": "Used to craft advanced weapons."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -3193,7 +3253,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": null,
+    "imageFilename": "https://cdn.arctracker.io/items/dam_testing_annex_key.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -3578,7 +3638,7 @@
       "en": "Unlocks the ability to craft Deadline mines at the explosives bench."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
     "stackSize": 1,
@@ -3635,7 +3695,7 @@
       "en": "An injection that quickly revives downed raiders and restores some health."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
     "stackSize": 1,
@@ -4056,10 +4116,10 @@
       "en": "A high capacity experimental beam rifle."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -4083,7 +4143,7 @@
     "rarity": "Legendary",
     "value": 27500,
     "weightKg": 14,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "complex_gun_parts": 1,
       "magnetic_accelerator": 2
@@ -4169,7 +4229,9 @@
       "magnet": 2,
       "processor": 2
     },
-    "recipe": null,
+    "recipe": {
+      "ion_sputter": 1
+    },
     "salvagesInto": {
       "processor": 2
     },
@@ -4300,7 +4362,7 @@
       "en": "A proximity-triggered explosive device that detonates when enemies approach."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
     "stackSize": 1,
@@ -4356,10 +4418,10 @@
       "en": "Moderately increases bullet velocity. Compatible with: Tempest, Arpeggio, Ferro, Renegade, Anvil"
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -4383,7 +4445,7 @@
     "rarity": "Epic",
     "value": 5000,
     "weightKg": 0.5,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "mod_components": 1,
       "wires": 1
@@ -4415,7 +4477,7 @@
     "rarity": "Common",
     "value": 640,
     "weightKg": 0.25,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "plastic_parts": 6
     },
@@ -4443,10 +4505,10 @@
       "en": "Moderately extends the ammo capacity of compatible weapons that use light ammo."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -4470,7 +4532,7 @@
     "rarity": "Uncommon",
     "value": 2000,
     "weightKg": 0.5,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "mechanical_components": 1,
       "steel_spring": 1
@@ -4499,10 +4561,10 @@
       "en": "Significantly extends the ammo capacity of compatible weapons that use light ammo."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -4526,7 +4588,7 @@
     "rarity": "Rare",
     "value": 5000,
     "weightKg": 0.75,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "mod_components": 1,
       "steel_spring": 2
@@ -4558,7 +4620,7 @@
     "rarity": "Common",
     "value": 640,
     "weightKg": 0.25,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "plastic_parts": 6
     },
@@ -4586,10 +4648,10 @@
       "en": "Moderately extends the ammo capacity of compatible weapons that use medium ammo."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -4613,7 +4675,7 @@
     "rarity": "Uncommon",
     "value": 2000,
     "weightKg": 0.5,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "mechanical_components": 1,
       "steel_spring": 1
@@ -4642,7 +4704,7 @@
       "en": "Significantly extends the ammo capacity of compataible weapons that use medium ammo."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
     "stackSize": 1,
@@ -4669,7 +4731,7 @@
     "rarity": "Rare",
     "value": 5000,
     "weightKg": 0.75,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "mod_components": 1,
       "steel_spring": 2
@@ -4701,7 +4763,7 @@
     "rarity": "Common",
     "value": 640,
     "weightKg": 0.25,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "plastic_parts": 6
     },
@@ -4729,7 +4791,7 @@
       "en": "Moderately extends the ammo capacity of shotguns."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
     "stackSize": 1,
@@ -4756,7 +4818,7 @@
     "rarity": "Uncommon",
     "value": 2000,
     "weightKg": 0.5,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "mechanical_components": 1,
       "steel_spring": 1
@@ -4785,7 +4847,7 @@
       "en": "Significantly extends the ammo capacity of shotguns."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
     "stackSize": 1,
@@ -4812,7 +4874,7 @@
     "rarity": "Rare",
     "value": 5000,
     "weightKg": 0.75,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "mod_components": 1,
       "steel_spring": 2
@@ -4846,8 +4908,12 @@
     "weightKg": 0.1,
     "stackSize": 50,
     "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
+    "recipe": {
+      "tattered_clothes": 1
+    },
+    "salvagesInto": {
+      "bandage": 1
+    },
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/fabric.png",
@@ -4918,7 +4984,7 @@
     "rarity": "Common",
     "value": 475,
     "weightKg": 8,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "metal_parts": 2,
       "rubber_parts": 1
@@ -4930,7 +4996,9 @@
     "salvagesInto": {
       "metal_parts": 2
     },
-    "upgradeCost": null,
+    "upgradeCost": {
+      "metal_parts": 7
+    },
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/ferro.png",
     "isWeapon": true,
@@ -4950,7 +5018,7 @@
     "rarity": "Common",
     "value": 1000,
     "weightKg": 8,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "metal_parts": 4,
       "rubber_parts": 3
@@ -4960,7 +5028,8 @@
       "metal_parts": 4
     },
     "upgradeCost": {
-      "metal_parts": 7
+      "metal_parts": 9,
+      "simple_gun_parts": 1
     },
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/ferro.png",
@@ -4981,7 +5050,7 @@
     "rarity": "Common",
     "value": 2000,
     "weightKg": 8,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "metal_parts": 6,
       "simple_gun_parts": 1
@@ -4991,7 +5060,7 @@
       "simple_gun_parts": 1
     },
     "upgradeCost": {
-      "metal_parts": 9,
+      "mechanical_components": 1,
       "simple_gun_parts": 1
     },
     "tier": null,
@@ -5013,7 +5082,7 @@
     "rarity": "Common",
     "value": 2900,
     "weightKg": 8,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "mechanical_components": 1,
       "simple_gun_parts": 2
@@ -5128,7 +5197,9 @@
       "arc_alloy": 1,
       "crude_explosives": 1
     },
-    "recipe": null,
+    "recipe": {
+      "flame_spray": 1
+    },
     "salvagesInto": {
       "arc_alloy": 1
     },
@@ -5209,10 +5280,10 @@
       "en": "Unlocks the crafting blueprint for the Fireworks Box."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -5699,10 +5770,10 @@
       "en": "A proximity-triggered mine that pops up and deploys a gas cloud that rapidly drains stamina."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -5836,7 +5907,7 @@
       "en": "A throwable chemical light that illuminates the area around it."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
     "stackSize": 1,
@@ -5893,7 +5964,7 @@
     "rarity": "Common",
     "value": 450,
     "weightKg": 3,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "metal_parts": 2,
       "rubber_parts": 1
@@ -5905,7 +5976,9 @@
     "salvagesInto": {
       "metal_parts": 2
     },
-    "upgradeCost": null,
+    "upgradeCost": {
+      "metal_parts": 8
+    },
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/hairpin_i.png",
     "isWeapon": true,
@@ -5925,7 +5998,7 @@
     "rarity": "Common",
     "value": 1000,
     "weightKg": 3,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "metal_parts": 4,
       "rubber_parts": 3
@@ -5935,7 +6008,8 @@
       "metal_parts": 4
     },
     "upgradeCost": {
-      "metal_parts": 8
+      "metal_parts": 9,
+      "simple_gun_parts": 1
     },
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/hairpin_i.png",
@@ -5956,7 +6030,7 @@
     "rarity": "Common",
     "value": 2000,
     "weightKg": 3,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "metal_parts": 6,
       "simple_gun_parts": 1
@@ -5966,7 +6040,7 @@
       "simple_gun_parts": 1
     },
     "upgradeCost": {
-      "metal_parts": 9,
+      "mechanical_components": 1,
       "simple_gun_parts": 1
     },
     "tier": null,
@@ -5988,7 +6062,7 @@
     "rarity": "Common",
     "value": 2900,
     "weightKg": 3,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "mechanical_components": 1,
       "simple_gun_parts": 2
@@ -6106,7 +6180,7 @@
       "en": "Used to craft weapons."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
     "stackSize": 1,
@@ -6252,7 +6326,7 @@
     "rarity": "Epic",
     "value": 7000,
     "weightKg": 0.5,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "duct_tape": 2,
       "mod_components": 1
@@ -6335,10 +6409,10 @@
       "en": "Anti-ARC payloads used mainly by the Hullcracker."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -6375,7 +6449,10 @@
     "salvagesInto": {
       "heavy_gun_parts": 2
     },
-    "upgradeCost": null,
+    "upgradeCost": {
+      "advanced_mechanical_components": 1,
+      "heavy_gun_parts": 2
+    },
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/hullcracker.png",
     "isWeapon": true,
@@ -6395,7 +6472,7 @@
     "rarity": "Epic",
     "value": 13000,
     "weightKg": 7,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "advanced_mechanical_components": 2,
       "heavy_gun_parts": 3
@@ -6405,8 +6482,8 @@
       "heavy_gun_parts": 3
     },
     "upgradeCost": {
-      "advanced_mechanical_components": 1,
-      "heavy_gun_parts": 2
+      "advanced_mechanical_components": 2,
+      "heavy_gun_parts": 1
     },
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/hullcracker.png",
@@ -6427,7 +6504,7 @@
     "rarity": "Epic",
     "value": 17000,
     "weightKg": 7,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "advanced_mechanical_components": 3,
       "heavy_gun_parts": 4
@@ -6438,7 +6515,7 @@
     },
     "upgradeCost": {
       "advanced_mechanical_components": 2,
-      "heavy_gun_parts": 1
+      "heavy_gun_parts": 3
     },
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/hullcracker.png",
@@ -6459,7 +6536,7 @@
     "rarity": "Epic",
     "value": 22000,
     "weightKg": 7,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "advanced_mechanical_components": 4,
       "heavy_gun_parts": 5
@@ -6545,7 +6622,7 @@
       "en": "Has a large bullet spread, sharp falloff, and high damage output."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
     "stackSize": 1,
@@ -6572,7 +6649,7 @@
     "rarity": "Uncommon",
     "value": 5000,
     "weightKg": 8,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "mechanical_components": 2,
       "simple_gun_parts": 2
@@ -6584,7 +6661,10 @@
     "salvagesInto": {
       "simple_gun_parts": 2
     },
-    "upgradeCost": null,
+    "upgradeCost": {
+      "mechanical_components": 3,
+      "simple_gun_parts": 1
+    },
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/il_toro.png",
     "isWeapon": true,
@@ -6604,7 +6684,7 @@
     "rarity": "Uncommon",
     "value": 7000,
     "weightKg": 8,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "mechanical_components": 3,
       "simple_gun_parts": 3
@@ -6614,8 +6694,8 @@
       "simple_gun_parts": 3
     },
     "upgradeCost": {
-      "mechanical_components": 3,
-      "simple_gun_parts": 1
+      "heavy_gun_parts": 1,
+      "mechanical_components": 4
     },
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/il_toro.png",
@@ -6636,7 +6716,7 @@
     "rarity": "Uncommon",
     "value": 10000,
     "weightKg": 8,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "mechanical_components": 4,
       "simple_gun_parts": 4
@@ -6668,7 +6748,7 @@
     "rarity": "Uncommon",
     "value": 13000,
     "weightKg": 8,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "mechanical_components": 5,
       "simple_gun_parts": 5
@@ -6841,7 +6921,7 @@
       "en": "A proximity-triggered mine that pops up and stuns anything within its radius."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
     "stackSize": 1,
@@ -6897,10 +6977,10 @@
       "en": "A bolt-action sniper rifle with exceptional damage output and accuracy, but slow handling."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -6924,7 +7004,7 @@
     "rarity": "Legendary",
     "value": 27500,
     "weightKg": 9,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "complex_gun_parts": 1,
       "magnetic_accelerator": 2
@@ -6957,7 +7037,7 @@
     "rarity": "Common",
     "value": 840,
     "weightKg": 7,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "metal_parts": 3,
       "rubber_parts": 2
@@ -6969,7 +7049,10 @@
     "salvagesInto": {
       "metal_parts": 3
     },
-    "upgradeCost": null,
+    "upgradeCost": {
+      "metal_parts": 8,
+      "plastic_parts": 10
+    },
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/kettle.png",
     "isWeapon": true,
@@ -6989,7 +7072,7 @@
     "rarity": "Common",
     "value": 2000,
     "weightKg": 7,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "metal_parts": 6,
       "rubber_parts": 6
@@ -6999,8 +7082,8 @@
       "metal_parts": 6
     },
     "upgradeCost": {
-      "metal_parts": 8,
-      "plastic_parts": 10
+      "metal_parts": 10,
+      "simple_gun_parts": 1
     },
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/kettle.png",
@@ -7021,7 +7104,7 @@
     "rarity": "Common",
     "value": 3000,
     "weightKg": 7,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "metal_parts": 12,
       "simple_gun_parts": 1
@@ -7031,7 +7114,7 @@
       "simple_gun_parts": 1
     },
     "upgradeCost": {
-      "metal_parts": 10,
+      "mechanical_components": 3,
       "simple_gun_parts": 1
     },
     "tier": null,
@@ -7053,7 +7136,7 @@
     "rarity": "Common",
     "value": 5000,
     "weightKg": 7,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "mechanical_components": 2,
       "simple_gun_parts": 2
@@ -7109,7 +7192,7 @@
     "rarity": "Legendary",
     "value": 7000,
     "weightKg": 0.75,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "duct_tape": 2,
       "mod_components": 1
@@ -7372,7 +7455,7 @@
       "en": "Assorted spare parts used for pistols and SMGs."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
     "stackSize": 1,
@@ -7490,10 +7573,10 @@
       "en": "Moderately improves ADS & draw speed."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -7517,7 +7600,7 @@
     "rarity": "Epic",
     "value": 5000,
     "weightKg": 0.25,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "duct_tape": 1,
       "mod_components": 1
@@ -7674,10 +7757,10 @@
       "en": "A looting augment that trades weight and utility for increased looting potential. A Safe Pocket that allows any items to be stored."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -7786,10 +7869,10 @@
       "en": "A noisy device that sticks to surfaces, distracting nearby ARC machines and drawing their fire."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -7875,7 +7958,9 @@
     "recyclesInto": {
       "metal_parts": 2
     },
-    "recipe": null,
+    "recipe": {
+      "industrial_magnet": 1
+    },
     "salvagesInto": {
       "metal_parts": 1
     },
@@ -8093,10 +8178,10 @@
       "en": "Assorted spare parts used for rifles."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -8213,7 +8298,9 @@
     "weightKg": 0.1,
     "stackSize": 50,
     "recyclesInto": null,
-    "recipe": null,
+    "recipe": {
+      "damaged_tick_pod": 1
+    },
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
@@ -8484,7 +8571,7 @@
     "rarity": "Common",
     "value": 640,
     "weightKg": 0.25,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "metal_parts": 5
     },
@@ -8512,7 +8599,7 @@
       "en": "Moderately reduces both vertical recoil & horizontal recoil."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
     "stackSize": 1,
@@ -8539,7 +8626,7 @@
     "rarity": "Uncommon",
     "value": 2000,
     "weightKg": 0.5,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "mechanical_components": 1,
       "wires": 1
@@ -8568,10 +8655,10 @@
       "en": "Significantly reduces both vertical recoil & horizontal recoil. Compatible with: Arpeggio, Ferro, Renegade, Anvil, Stitcher"
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -8595,7 +8682,7 @@
     "rarity": "Rare",
     "value": 5000,
     "weightKg": 0.75,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "mod_components": 1,
       "wires": 2
@@ -8714,7 +8801,9 @@
     "recyclesInto": {
       "chemicals": 3
     },
-    "recipe": null,
+    "recipe": {
+      "motor": 1
+    },
     "salvagesInto": {
       "chemicals": 1
     },
@@ -8787,10 +8876,10 @@
       "en": "Has reliable damage output and accuracy."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -8814,7 +8903,7 @@
     "rarity": "Rare",
     "value": 7000,
     "weightKg": 7,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "advanced_mechanical_components": 1,
       "medium_gun_parts": 2
@@ -8827,7 +8916,10 @@
     "salvagesInto": {
       "medium_gun_parts": 2
     },
-    "upgradeCost": null,
+    "upgradeCost": {
+      "advanced_mechanical_components": 1,
+      "medium_gun_parts": 2
+    },
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/osprey.png",
     "isWeapon": true,
@@ -8847,7 +8939,7 @@
     "rarity": "Rare",
     "value": 10000,
     "weightKg": 7,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "advanced_mechanical_components": 2,
       "medium_gun_parts": 2
@@ -8879,7 +8971,7 @@
     "rarity": "Rare",
     "value": 13000,
     "weightKg": 7,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "advanced_mechanical_components": 2,
       "medium_gun_parts": 3
@@ -8889,7 +8981,7 @@
       "medium_gun_parts": 3
     },
     "upgradeCost": {
-      "advanced_mechanical_components": 1,
+      "advanced_mechanical_components": 2,
       "medium_gun_parts": 2
     },
     "tier": null,
@@ -8911,7 +9003,7 @@
     "rarity": "Rare",
     "value": 17000,
     "weightKg": 7,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "advanced_mechanical_components": 3,
       "medium_gun_parts": 3
@@ -8940,10 +9032,10 @@
       "en": "Significantly improves stability. Compatible with: Arpeggio, Rattler, Ferro, Renegade, Torrente"
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -8967,7 +9059,7 @@
     "rarity": "Epic",
     "value": 5000,
     "weightKg": 0.5,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "duct_tape": 1,
       "mod_components": 1
@@ -9105,7 +9197,9 @@
     "weightKg": 0.1,
     "stackSize": 50,
     "recyclesInto": null,
-    "recipe": null,
+    "recipe": {
+      "surge_shield_recharger": 1
+    },
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
@@ -9407,7 +9501,7 @@
     "type": "Nature",
     "rarity": "Common",
     "value": 640,
-    "weightKg": null,
+    "weightKg": 0.2,
     "stackSize": 10,
     "recyclesInto": {
       "assorted_seeds": 3
@@ -9441,7 +9535,9 @@
       "plastic_parts": 1,
       "wires": 1
     },
-    "recipe": null,
+    "recipe": {
+      "projector": 1
+    },
     "salvagesInto": {
       "plastic_parts": 2
     },
@@ -9515,10 +9611,10 @@
       "en": "A proximity-triggered mine that pops up and knocks back anything within its radius."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -9712,7 +9808,7 @@
     "rarity": "Common",
     "value": 1750,
     "weightKg": 6,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "metal_parts": 8
     },
@@ -9723,7 +9819,10 @@
     "salvagesInto": {
       "metal_parts": 4
     },
-    "upgradeCost": null,
+    "upgradeCost": {
+      "metal_parts": 10,
+      "rubber_parts": 10
+    },
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/rattler.png",
     "isWeapon": true,
@@ -9743,7 +9842,7 @@
     "rarity": "Common",
     "value": 3000,
     "weightKg": 6,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "metal_parts": 12
     },
@@ -9752,8 +9851,8 @@
       "metal_parts": 8
     },
     "upgradeCost": {
-      "metal_parts": 10,
-      "rubber_parts": 10
+      "mechanical_components": 3,
+      "simple_gun_parts": 1
     },
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/rattler.png",
@@ -9774,7 +9873,7 @@
     "rarity": "Common",
     "value": 5000,
     "weightKg": 6,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "mechanical_components": 3,
       "simple_gun_parts": 1
@@ -9806,7 +9905,7 @@
     "rarity": "Common",
     "value": 7000,
     "weightKg": 6,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "mechanical_components": 4,
       "simple_gun_parts": 2
@@ -9889,7 +9988,7 @@
       "en": "A throwable chemical light that illuminates the area around it."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
     "stackSize": 1,
@@ -9996,10 +10095,10 @@
       "en": "A deployable device that, when manually triggered, launches a Raider Distress Flare."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -10055,7 +10154,7 @@
     "rarity": "Rare",
     "value": 7000,
     "weightKg": 10,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "advanced_mechanical_components": 1,
       "medium_gun_parts": 2
@@ -10068,7 +10167,10 @@
     "salvagesInto": {
       "medium_gun_parts": 2
     },
-    "upgradeCost": null,
+    "upgradeCost": {
+      "advanced_mechanical_components": 1,
+      "medium_gun_parts": 2
+    },
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/renegade.png",
     "isWeapon": true,
@@ -10088,7 +10190,7 @@
     "rarity": "Rare",
     "value": 10000,
     "weightKg": 10,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "advanced_mechanical_components": 2,
       "medium_gun_parts": 2
@@ -10120,7 +10222,7 @@
     "rarity": "Rare",
     "value": 13000,
     "weightKg": 10,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "advanced_mechanical_components": 2,
       "medium_gun_parts": 3
@@ -10130,7 +10232,7 @@
       "medium_gun_parts": 3
     },
     "upgradeCost": {
-      "advanced_mechanical_components": 1,
+      "advanced_mechanical_components": 2,
       "medium_gun_parts": 2
     },
     "tier": null,
@@ -10152,7 +10254,7 @@
     "rarity": "Rare",
     "value": 17000,
     "weightKg": 10,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "advanced_mechanical_components": 3,
       "medium_gun_parts": 3
@@ -10327,7 +10429,9 @@
     "recyclesInto": {
       "fabric": 5
     },
-    "recipe": null,
+    "recipe": {
+      "zipline": 1
+    },
     "salvagesInto": {
       "fabric": 2
     },
@@ -10460,7 +10564,9 @@
     "weightKg": 0.1,
     "stackSize": 50,
     "recyclesInto": null,
-    "recipe": null,
+    "recipe": {
+      "rubber_pad": 1
+    },
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
@@ -10855,10 +10961,10 @@
       "en": "Unlocks the crafting blueprint for the Seeker Grenade."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -10918,7 +11024,9 @@
       "metal_parts": 1,
       "wires": 1
     },
-    "recipe": null,
+    "recipe": {
+      "broken_handheld_radio": 1
+    },
     "salvagesInto": {
       "wires": 1
     },
@@ -11061,7 +11169,7 @@
     "rarity": "Common",
     "value": 640,
     "weightKg": 0.25,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "metal_parts": 5
     },
@@ -11089,10 +11197,10 @@
       "en": "Moderately reduces base dispersion. Compatible with: Il Toro, Vulcano"
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -11116,7 +11224,7 @@
     "rarity": "Uncommon",
     "value": 2000,
     "weightKg": 0.5,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "mechanical_components": 1,
       "wires": 1
@@ -11145,10 +11253,10 @@
       "en": "Significantly reduces base dispersion."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -11172,7 +11280,7 @@
     "rarity": "Rare",
     "value": 5000,
     "weightKg": 0.75,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "mod_components": 1,
       "wires": 2
@@ -11201,10 +11309,10 @@
       "en": "Moderately reduces the amount of noise produced when firing."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -11228,7 +11336,7 @@
     "rarity": "Epic",
     "value": 5000,
     "weightKg": 0.5,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "mod_components": 1,
       "wires": 1
@@ -11257,10 +11365,10 @@
       "en": "A grenade that detonates after a delay, stunning enemies within its radius."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -11404,10 +11512,10 @@
       "en": "A blueprint to craft the Silencer I."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -11431,7 +11539,7 @@
     "rarity": "Uncommon",
     "value": 2000,
     "weightKg": 0.25,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "mechanical_components": 1,
       "wires": 1
@@ -11460,10 +11568,10 @@
       "en": "A blueprint to craft the Silencer II."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -11487,7 +11595,7 @@
     "rarity": "Rare",
     "value": 5000,
     "weightKg": 0.5,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "mod_components": 1,
       "wires": 2
@@ -11543,7 +11651,7 @@
     "rarity": "Epic",
     "value": 7000,
     "weightKg": 0.75,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "mod_components": 1,
       "wires": 3
@@ -11602,7 +11710,9 @@
     "recyclesInto": {
       "metal_parts": 2
     },
-    "recipe": null,
+    "recipe": {
+      "il_toro_ii": 1
+    },
     "salvagesInto": {
       "metal_parts": 1
     },
@@ -11624,10 +11734,10 @@
       "en": "A grenade that creates a lingering smoke cloud on impact, blocking visibility from ARC and other Raiders."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -11739,10 +11849,10 @@
       "en": "A gadget that allows the user to scale structures and cover large distances."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -11953,7 +12063,9 @@
       "plastic_parts": 2,
       "rubber_parts": 3
     },
-    "recipe": null,
+    "recipe": {
+      "noisemaker": 1
+    },
     "salvagesInto": {
       "plastic_parts": 2
     },
@@ -12094,7 +12206,7 @@
     "rarity": "Common",
     "value": 640,
     "weightKg": 0.25,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "rubber_parts": 6
     },
@@ -12122,10 +12234,10 @@
       "en": "Moderately improves dispersion & recoil recovery time."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -12149,7 +12261,7 @@
     "rarity": "Uncommon",
     "value": 2000,
     "weightKg": 0.5,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "duct_tape": 1,
       "mechanical_components": 1
@@ -12178,10 +12290,10 @@
       "en": "Significantly improves dispersion & recoil recovery time."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -12205,7 +12317,7 @@
     "rarity": "Rare",
     "value": 5000,
     "weightKg": 0.75,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "duct_tape": 2,
       "mod_components": 1
@@ -12290,7 +12402,9 @@
     "recyclesInto": {
       "metal_parts": 2
     },
-    "recipe": null,
+    "recipe": {
+      "cooling_coil": 1
+    },
     "salvagesInto": {
       "metal_parts": 1
     },
@@ -12338,7 +12452,7 @@
     "rarity": "Uncommon",
     "value": 100,
     "weightKg": 0.25,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -12386,7 +12500,7 @@
     "rarity": "Rare",
     "value": 100,
     "weightKg": 0.25,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -12442,7 +12556,7 @@
     "rarity": "Common",
     "value": 800,
     "weightKg": 5,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "metal_parts": 3,
       "rubber_parts": 2
@@ -12454,7 +12568,10 @@
     "salvagesInto": {
       "metal_parts": 3
     },
-    "upgradeCost": null,
+    "upgradeCost": {
+      "metal_parts": 8,
+      "rubber_parts": 12
+    },
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/stitcher.png",
     "isWeapon": true,
@@ -12474,7 +12591,7 @@
     "rarity": "Common",
     "value": 2000,
     "weightKg": 5,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "metal_parts": 6,
       "rubber_parts": 6
@@ -12484,8 +12601,8 @@
       "metal_parts": 6
     },
     "upgradeCost": {
-      "metal_parts": 8,
-      "rubber_parts": 12
+      "metal_parts": 10,
+      "simple_gun_parts": 1
     },
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/stitcher.png",
@@ -12506,7 +12623,7 @@
     "rarity": "Common",
     "value": 3000,
     "weightKg": 5,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "metal_parts": 12,
       "simple_gun_parts": 1
@@ -12516,7 +12633,7 @@
       "simple_gun_parts": 1
     },
     "upgradeCost": {
-      "metal_parts": 10,
+      "mechanical_components": 3,
       "simple_gun_parts": 1
     },
     "tier": null,
@@ -12538,7 +12655,7 @@
     "rarity": "Common",
     "value": 5000,
     "weightKg": 5,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "mechanical_components": 2,
       "simple_gun_parts": 2
@@ -12635,7 +12752,9 @@
       "chemicals": 1,
       "oil": 1
     },
-    "recipe": null,
+    "recipe": {
+      "rocket_thruster": 1
+    },
     "salvagesInto": {
       "oil": 1
     },
@@ -12664,7 +12783,9 @@
       "chemicals": 2,
       "plastic_parts": 3
     },
-    "recipe": null,
+    "recipe": {
+      "rusted_shut_medical_kit": 1
+    },
     "salvagesInto": {
       "plastic_parts": 2
     },
@@ -12749,10 +12870,10 @@
       "en": "A defensive-focused augment for keeping Shields topped up."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -12805,10 +12926,10 @@
       "en": "A healing-focused augment which adds extra slots for healing items."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -12861,10 +12982,10 @@
       "en": "A revival-focused augment designed for team support. Restores 1 health every 5 seconds. When damage is taken, the effect is paused for 30 seconds. Includes an integrated Defibrillator with infinite uses and a 240-second cooldown."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -12917,10 +13038,10 @@
       "en": "A grenade that detonates after a delay, tagging Raiders and ARC enemies in an area, allowing you to briefly track their location."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -13003,7 +13124,7 @@
     "type": "Recyclable",
     "rarity": "Uncommon",
     "value": 640,
-    "weightKg": null,
+    "weightKg": 0.8,
     "stackSize": 3,
     "recyclesInto": {
       "fabric": 11
@@ -13058,10 +13179,10 @@
       "en": "A high-powered weapon utilizing magnetic acceleration technology."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -13085,7 +13206,7 @@
     "rarity": "Epic",
     "value": 13000,
     "weightKg": 11,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "advanced_mechanical_components": 2,
       "medium_gun_parts": 2
@@ -13098,7 +13219,10 @@
     "salvagesInto": {
       "medium_gun_parts": 2
     },
-    "upgradeCost": null,
+    "upgradeCost": {
+      "advanced_mechanical_components": 2,
+      "medium_gun_parts": 1
+    },
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/tempest.png",
     "isWeapon": true,
@@ -13118,7 +13242,7 @@
     "rarity": "Epic",
     "value": 17000,
     "weightKg": 11,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "advanced_mechanical_components": 3,
       "medium_gun_parts": 3
@@ -13129,7 +13253,7 @@
     },
     "upgradeCost": {
       "advanced_mechanical_components": 2,
-      "medium_gun_parts": 1
+      "medium_gun_parts": 3
     },
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/tempest.png",
@@ -13150,7 +13274,7 @@
     "rarity": "Epic",
     "value": 22000,
     "weightKg": 11,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "advanced_mechanical_components": 4,
       "medium_gun_parts": 4
@@ -13182,7 +13306,7 @@
     "rarity": "Epic",
     "value": 27000,
     "weightKg": 11,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "advanced_mechanical_components": 5,
       "medium_gun_parts": 4
@@ -13352,10 +13476,10 @@
       "en": "Has a large ammo capacity, but is only accurate while crouched."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -13379,7 +13503,7 @@
     "rarity": "Rare",
     "value": 7000,
     "weightKg": 12,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "advanced_mechanical_components": 1,
       "medium_gun_parts": 2
@@ -13392,7 +13516,10 @@
     "salvagesInto": {
       "medium_gun_parts": 2
     },
-    "upgradeCost": null,
+    "upgradeCost": {
+      "advanced_mechanical_components": 1,
+      "medium_gun_parts": 2
+    },
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/torrente.png",
     "isWeapon": true,
@@ -13412,7 +13539,7 @@
     "rarity": "Rare",
     "value": 10000,
     "weightKg": 12,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "advanced_mechanical_components": 2,
       "medium_gun_parts": 2
@@ -13444,7 +13571,7 @@
     "rarity": "Rare",
     "value": 13000,
     "weightKg": 12,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "advanced_mechanical_components": 2,
       "medium_gun_parts": 3
@@ -13454,7 +13581,7 @@
       "medium_gun_parts": 3
     },
     "upgradeCost": {
-      "advanced_mechanical_components": 1,
+      "advanced_mechanical_components": 2,
       "medium_gun_parts": 2
     },
     "tier": null,
@@ -13476,7 +13603,7 @@
     "rarity": "Rare",
     "value": 17000,
     "weightKg": 12,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "advanced_mechanical_components": 3,
       "medium_gun_parts": 3
@@ -13505,10 +13632,10 @@
       "en": "Unlocks the crafting blueprint for the Trailblazer."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -13561,7 +13688,7 @@
       "en": "A remote-detonated grenade that can stick to surfaces and ARC, dealing explosive damage when triggered."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
     "stackSize": 1,
@@ -13725,10 +13852,10 @@
       "en": "Fires two shots at a time."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": null,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -13752,7 +13879,7 @@
     "rarity": "Rare",
     "value": 7000,
     "weightKg": 5,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "advanced_mechanical_components": 1,
       "medium_gun_parts": 2
@@ -13765,7 +13892,10 @@
     "salvagesInto": {
       "medium_gun_parts": 2
     },
-    "upgradeCost": null,
+    "upgradeCost": {
+      "advanced_mechanical_components": 1,
+      "medium_gun_parts": 2
+    },
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/venator.png",
     "isWeapon": true,
@@ -13785,7 +13915,7 @@
     "rarity": "Rare",
     "value": 10000,
     "weightKg": 5,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "advanced_mechanical_components": 2,
       "medium_gun_parts": 2
@@ -13817,7 +13947,7 @@
     "rarity": "Rare",
     "value": 13000,
     "weightKg": 5,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "advanced_mechanical_components": 2,
       "medium_gun_parts": 3
@@ -13827,7 +13957,7 @@
       "medium_gun_parts": 3
     },
     "upgradeCost": {
-      "advanced_mechanical_components": 1,
+      "advanced_mechanical_components": 2,
       "medium_gun_parts": 2
     },
     "tier": null,
@@ -13849,7 +13979,7 @@
     "rarity": "Rare",
     "value": 17000,
     "weightKg": 5,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "advanced_mechanical_components": 3,
       "medium_gun_parts": 3
@@ -13881,7 +14011,7 @@
     "rarity": "Common",
     "value": 640,
     "weightKg": 0.25,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "plastic_parts": 6
     },
@@ -13909,7 +14039,7 @@
       "en": "Moderately reduces vertical recoil. Compatible with: Arpeggio, Ferro, Venator, Il Toro, Stitcher"
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
     "stackSize": 1,
@@ -13936,7 +14066,7 @@
     "rarity": "Uncommon",
     "value": 2000,
     "weightKg": 0.5,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "duct_tape": 1,
       "mechanical_components": 1
@@ -13965,7 +14095,7 @@
       "en": "Significantly reduces vertical recoil."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
     "stackSize": 1,
@@ -13992,7 +14122,7 @@
     "rarity": "Rare",
     "value": 5000,
     "weightKg": 0.75,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "duct_tape": 2,
       "mechanical_components": 2
@@ -14046,10 +14176,10 @@
       "en": "A medical item that restores a large amount of health."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -14102,10 +14232,10 @@
       "en": "A medical item that continuously restores health during use. Can be used on yourself or your allies."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": null,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -14191,7 +14321,9 @@
       "rubber_parts": 1,
       "wires": 1
     },
-    "recipe": null,
+    "recipe": {
+      "signal_amplifier": 1
+    },
     "salvagesInto": {
       "rubber_parts": 2
     },
@@ -14212,10 +14344,10 @@
       "en": "Semi-automatic shotgun with good bullet spread but sharp falloff"
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -14239,7 +14371,7 @@
     "rarity": "Epic",
     "value": 10000,
     "weightKg": 8,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "advanced_mechanical_components": 2,
       "heavy_gun_parts": 2
@@ -14252,7 +14384,10 @@
     "salvagesInto": {
       "heavy_gun_parts": 2
     },
-    "upgradeCost": null,
+    "upgradeCost": {
+      "advanced_mechanical_components": 1,
+      "heavy_gun_parts": 2
+    },
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/vulcano.png",
     "isWeapon": true,
@@ -14282,8 +14417,8 @@
       "heavy_gun_parts": 3
     },
     "upgradeCost": {
-      "advanced_mechanical_components": 1,
-      "heavy_gun_parts": 2
+      "advanced_mechanical_components": 2,
+      "heavy_gun_parts": 1
     },
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/vulcano.png",
@@ -14304,7 +14439,7 @@
     "rarity": "Epic",
     "value": 17000,
     "weightKg": 8,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "advanced_mechanical_components": 3,
       "heavy_gun_parts": 4
@@ -14315,7 +14450,7 @@
     },
     "upgradeCost": {
       "advanced_mechanical_components": 2,
-      "heavy_gun_parts": 1
+      "heavy_gun_parts": 3
     },
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/vulcano.png",
@@ -14336,7 +14471,7 @@
     "rarity": "Epic",
     "value": 22000,
     "weightKg": 8,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": {
       "advanced_mechanical_components": 4,
       "heavy_gun_parts": 5
@@ -14460,7 +14595,9 @@
     "recyclesInto": {
       "rubber_parts": 2
     },
-    "recipe": null,
+    "recipe": {
+      "power_cable": 1
+    },
     "salvagesInto": {
       "rubber_parts": 1
     },
@@ -14482,10 +14619,10 @@
       "en": "A remote-detonated grenade that can stick to surfaces and ARC, dealing explosive damage when triggered."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": null,
+    "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
@@ -14539,7 +14676,7 @@
       "en": "A throwable chemical light that illuminates the area around it."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
     "stackSize": 1,

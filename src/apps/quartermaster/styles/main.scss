@@ -2,10 +2,11 @@
 @use 'variables';
 @use 'base';
 @use 'item-icon';
+@use 'item-tooltip';
 @use 'sidebar';
 @use 'global-header';
 @use 'stash-view';
 @use 'current-loadout-view';
-@use 'loadouts-view';
+@use 'lists-view';
 @use 'in-raid-view';
 @use 'crafting-view';

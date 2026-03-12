@@ -5,33 +5,48 @@
  */
 
 import { useState, useEffect, useMemo, useCallback } from 'react';
-import type { ItemsMap } from './types/item';
-import type { StoredLoadout } from './types/loadout';
+import type { ItemsMap, BenchId } from './types/item';
+import type { StoredList } from './types/list';
 import type { StashItem, CurrentLoadoutItem, PlannerResult } from './types/planner';
-import { loadAllItems } from './utils/dataLoader';
-import { 
-  loadStoredLoadouts, 
-  saveStoredLoadouts, 
-  createNewLoadout,
-  addItemToLoadout,
-  removeItemFromLoadout,
+import type { HideoutModuleDefinition, HideoutToggleState } from './types/hideout';
+import { loadAllItems, loadHideoutDefinitions } from './utils/dataLoader';
+import {
+  loadStoredLists,
+  saveStoredLists,
+  createNewList,
+  addItemToList,
+  removeItemFromList,
   updateItemQuantity,
   toggleItemEnabled,
-  toggleLoadoutEnabled,
-  renameLoadout,
+  toggleListEnabled,
+  renameList,
+  reorderListItems,
 } from './utils/storage';
 import { computePlan, createEmptyResult } from './utils/planner';
+import { generateHideoutLists } from './utils/hideoutLists';
+import {
+  loadHideoutToggleState,
+  saveHideoutToggleState,
+  cleanupObsoleteToggles,
+  listKey,
+  itemKey,
+} from './utils/hideoutStorage';
 import {
   syncStashAllPages,
   syncLoadout,
+  syncHideout,
   getStash,
   getLoadout,
+  getHideout,
   aggregateStashItems,
   aggregateLoadoutItems,
+  getBenchLevels,
   isApiError,
   type CachedStash,
   type CachedLoadout,
+  type CachedHideout,
 } from './utils/api';
+import { buildItemInsights, type ItemInsightsMap } from './utils/itemInsights';
 import { useAuth } from '../../shared/context/AuthContext';
 
 import { Sidebar, type ViewId } from './components/Sidebar';
@@ -39,7 +54,7 @@ import { GlobalHeader } from './components/GlobalHeader';
 import { AuthGate } from './components/AuthGate';
 import { StashView } from './components/views/StashView';
 import { CurrentLoadoutView } from './components/views/CurrentLoadoutView';
-import { LoadoutsView } from './components/views/LoadoutsView';
+import { ListsView } from './components/views/ListsView';
 import { InRaidView } from './components/views/InRaidView';
 import { CraftingView } from './components/views/CraftingView';
 
@@ -50,7 +65,7 @@ export function QuartermasterApp() {
 
   // Core state
   const [itemsMap, setItemsMap] = useState<ItemsMap | null>(null);
-  const [loadouts, setLoadouts] = useState<StoredLoadout[]>([]);
+  const [lists, setLists] = useState<StoredList[]>([]);
   const [stashItems, setStashItems] = useState<StashItem[]>([]);
   const [currentLoadout, setCurrentLoadout] = useState<CurrentLoadoutItem[]>([]);
   
@@ -58,13 +73,19 @@ export function QuartermasterApp() {
   const [cachedStash, setCachedStash] = useState<CachedStash | null>(null);
   const [cachedLoadout, setCachedLoadout] = useState<CachedLoadout | null>(null);
 
+  // Hideout state (CR-004, CR-007)
+  const [hideoutDefinitions, setHideoutDefinitions] = useState<HideoutModuleDefinition[]>([]);
+  const [cachedHideout, setCachedHideout] = useState<CachedHideout | null>(null);
+  const [hideoutToggleState, setHideoutToggleState] = useState<HideoutToggleState>({ listEnabled: {}, itemEnabled: {} });
+
   // UI state
-  const [activeView, setActiveView] = useState<ViewId>('loadouts');
+  const [activeView, setActiveView] = useState<ViewId>('lists');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [syncError, setSyncError] = useState<string | null>(null);
   const [isSyncingStash, setIsSyncingStash] = useState(false);
   const [isSyncingLoadout, setIsSyncingLoadout] = useState(false);
+  const [isSyncingHideout, setIsSyncingHideout] = useState(false);
 
   // Load items and cached data on mount
   useEffect(() => {
@@ -74,9 +95,9 @@ export function QuartermasterApp() {
         const items = await loadAllItems();
         setItemsMap(items);
         
-        // Load stored loadouts
-        const stored = loadStoredLoadouts(items);
-        setLoadouts(stored);
+        // Load stored lists
+        const stored = loadStoredLists(items);
+        setLists(stored);
 
         // Load cached stash from IndexedDB (per spec 4.2.2)
         const stash = await getStash();
@@ -96,6 +117,26 @@ export function QuartermasterApp() {
           setCurrentLoadout(knownItems);
         }
 
+        // Load hideout definitions and cached state (CR-004)
+        const hideoutDefs = await loadHideoutDefinitions();
+        setHideoutDefinitions(hideoutDefs);
+
+        const hideout = await getHideout();
+        if (hideout) {
+          setCachedHideout(hideout);
+        }
+
+        // Load hideout toggle state from localStorage (CR-008)
+        const toggleState = loadHideoutToggleState();
+        // Clean up obsolete toggles if hideout cache exists
+        if (hideout) {
+          const cleaned = cleanupObsoleteToggles(hideoutDefs, hideout, toggleState);
+          setHideoutToggleState(cleaned);
+          saveHideoutToggleState(cleaned);
+        } else {
+          setHideoutToggleState(toggleState);
+        }
+
         setLoading(false);
       } catch (err) {
         console.error('Failed to initialize:', err);
@@ -106,75 +147,128 @@ export function QuartermasterApp() {
     initialize();
   }, []);
 
+  // Derive bench levels from cached hideout (CR-005)
+  const benchLevels: Record<BenchId, number> = useMemo(() => {
+    return getBenchLevels(cachedHideout);
+  }, [cachedHideout]);
+
+  // Generate hideout upgrade lists (CR-007)
+  const hideoutLists: StoredList[] = useMemo(() => {
+    if (!cachedHideout || hideoutDefinitions.length === 0) return [];
+    return generateHideoutLists(hideoutDefinitions, cachedHideout, hideoutToggleState);
+  }, [hideoutDefinitions, cachedHideout, hideoutToggleState]);
+
+  // Merge user lists and hideout lists for planner aggregation (CR-007)
+  const allLists: StoredList[] = useMemo(() => {
+    return [...lists, ...hideoutLists];
+  }, [lists, hideoutLists]);
+
   // Compute planner result whenever inputs change
   const plannerResult: PlannerResult = useMemo(() => {
     if (!itemsMap) {
       return createEmptyResult();
     }
-    return computePlan(itemsMap, loadouts, stashItems);
-  }, [itemsMap, loadouts, stashItems]);
+    return computePlan(itemsMap, allLists, stashItems, benchLevels);
+  }, [itemsMap, allLists, stashItems, benchLevels]);
 
-  // Loadout management callbacks
-  const handleCreateLoadout = useCallback((name: string) => {
-    const newLoadout = createNewLoadout(name);
-    const updated = [...loadouts, newLoadout];
-    setLoadouts(updated);
-    saveStoredLoadouts(updated);
-  }, [loadouts]);
+  const hasOwnedQuantities = cachedStash !== null && cachedLoadout !== null;
+  const ownedQuantityByItemId = useMemo(() => {
+    if (!hasOwnedQuantities) return {};
 
-  const handleDeleteLoadout = useCallback((id: string) => {
-    const updated = loadouts.filter(l => l.id !== id);
-    setLoadouts(updated);
-    saveStoredLoadouts(updated);
-  }, [loadouts]);
+    const totals: Record<string, number> = {};
+    for (const item of stashItems) {
+      totals[item.itemId] = (totals[item.itemId] ?? 0) + item.quantity;
+    }
+    for (const item of currentLoadout) {
+      totals[item.itemId] = (totals[item.itemId] ?? 0) + item.quantity;
+    }
+    return totals;
+  }, [currentLoadout, hasOwnedQuantities, stashItems]);
 
-  const handleToggleLoadout = useCallback((id: string) => {
-    const updated = loadouts.map(l => 
-      l.id === id ? toggleLoadoutEnabled(l) : l
+  const getOwnedQuantity = useCallback((itemId: string): number | null => {
+    if (!hasOwnedQuantities) return null;
+    return ownedQuantityByItemId[itemId] ?? 0;
+  }, [hasOwnedQuantities, ownedQuantityByItemId]);
+
+  const itemInsights: ItemInsightsMap = useMemo(() => {
+    if (!itemsMap) return {};
+    return buildItemInsights(itemsMap, plannerResult);
+  }, [itemsMap, plannerResult]);
+
+  // List management callbacks
+  const handleCreateList = useCallback((name: string) => {
+    const newList = createNewList(name);
+    const updated = [...lists, newList];
+    setLists(updated);
+    saveStoredLists(updated);
+  }, [lists]);
+
+  const handleDeleteList = useCallback((id: string) => {
+    const updated = lists.filter(l => l.id !== id);
+    setLists(updated);
+    saveStoredLists(updated);
+  }, [lists]);
+
+  const handleToggleList = useCallback((id: string) => {
+    const updated = lists.map(l =>
+      l.id === id ? toggleListEnabled(l) : l
     );
-    setLoadouts(updated);
-    saveStoredLoadouts(updated);
-  }, [loadouts]);
+    setLists(updated);
+    saveStoredLists(updated);
+  }, [lists]);
 
-  const handleRenameLoadout = useCallback((id: string, name: string) => {
-    const updated = loadouts.map(l => 
-      l.id === id ? renameLoadout(l, name) : l
+  const handleRenameList = useCallback((id: string, name: string) => {
+    const updated = lists.map(l =>
+      l.id === id ? renameList(l, name) : l
     );
-    setLoadouts(updated);
-    saveStoredLoadouts(updated);
-  }, [loadouts]);
+    setLists(updated);
+    saveStoredLists(updated);
+  }, [lists]);
 
-  const handleAddItem = useCallback((loadoutId: string, itemId: string, quantity: number) => {
-    const updated = loadouts.map(l => 
-      l.id === loadoutId ? addItemToLoadout(l, itemId, quantity) : l
+  const handleAddItem = useCallback((listId: string, itemId: string, quantity: number) => {
+    const updated = lists.map(l =>
+      l.id === listId ? addItemToList(l, itemId, quantity) : l
     );
-    setLoadouts(updated);
-    saveStoredLoadouts(updated);
-  }, [loadouts]);
+    setLists(updated);
+    saveStoredLists(updated);
+  }, [lists]);
 
-  const handleRemoveItem = useCallback((loadoutId: string, itemId: string) => {
-    const updated = loadouts.map(l => 
-      l.id === loadoutId ? removeItemFromLoadout(l, itemId) : l
+  const handleRemoveItem = useCallback((listId: string, itemId: string) => {
+    const updated = lists.map(l =>
+      l.id === listId ? removeItemFromList(l, itemId) : l
     );
-    setLoadouts(updated);
-    saveStoredLoadouts(updated);
-  }, [loadouts]);
+    setLists(updated);
+    saveStoredLists(updated);
+  }, [lists]);
 
-  const handleUpdateQuantity = useCallback((loadoutId: string, itemId: string, quantity: number) => {
-    const updated = loadouts.map(l => 
-      l.id === loadoutId ? updateItemQuantity(l, itemId, quantity) : l
+  const handleUpdateQuantity = useCallback((listId: string, itemId: string, quantity: number) => {
+    const updated = lists.map(l =>
+      l.id === listId ? updateItemQuantity(l, itemId, quantity) : l
     );
-    setLoadouts(updated);
-    saveStoredLoadouts(updated);
-  }, [loadouts]);
+    setLists(updated);
+    saveStoredLists(updated);
+  }, [lists]);
 
-  const handleToggleItem = useCallback((loadoutId: string, itemId: string) => {
-    const updated = loadouts.map(l => 
-      l.id === loadoutId ? toggleItemEnabled(l, itemId) : l
+  const handleToggleItem = useCallback((listId: string, itemId: string) => {
+    const updated = lists.map(l =>
+      l.id === listId ? toggleItemEnabled(l, itemId) : l
     );
-    setLoadouts(updated);
-    saveStoredLoadouts(updated);
-  }, [loadouts]);
+    setLists(updated);
+    saveStoredLists(updated);
+  }, [lists]);
+
+  const handleReorderLists = useCallback((reorderedLists: StoredList[]) => {
+    setLists(reorderedLists);
+    saveStoredLists(reorderedLists);
+  }, []);
+
+  const handleReorderItems = useCallback((listId: string, reorderedItemIds: string[]) => {
+    const updated = lists.map(l =>
+      l.id === listId ? reorderListItems(l, reorderedItemIds) : l
+    );
+    setLists(updated);
+    saveStoredLists(updated);
+  }, [lists]);
 
   /**
    * Handle API errors per spec section 4.2.3 / 4.3.3
@@ -241,6 +335,53 @@ export function QuartermasterApp() {
     }
   }, [itemsMap, handleApiError]);
 
+  // Sync hideout (CR-004)
+  const handleSyncHideout = useCallback(async () => {
+    setIsSyncingHideout(true);
+    setSyncError(null);
+    try {
+      const hideout = await syncHideout();
+      setCachedHideout(hideout);
+
+      // Clean up obsolete toggles after progression
+      const cleaned = cleanupObsoleteToggles(hideoutDefinitions, hideout, hideoutToggleState);
+      setHideoutToggleState(cleaned);
+      saveHideoutToggleState(cleaned);
+    } catch (err) {
+      console.error('Failed to sync hideout:', err);
+      handleApiError(err, 'Sync hideout');
+    } finally {
+      setIsSyncingHideout(false);
+    }
+  }, [hideoutDefinitions, hideoutToggleState, handleApiError]);
+
+  // Hideout list toggle handlers (CR-008)
+  const handleToggleHideoutList = useCallback((moduleId: string, level: number) => {
+    const lk = listKey(moduleId, level);
+    const updated: HideoutToggleState = {
+      ...hideoutToggleState,
+      listEnabled: {
+        ...hideoutToggleState.listEnabled,
+        [lk]: !(hideoutToggleState.listEnabled[lk] ?? true),
+      },
+    };
+    setHideoutToggleState(updated);
+    saveHideoutToggleState(updated);
+  }, [hideoutToggleState]);
+
+  const handleToggleHideoutItem = useCallback((moduleId: string, level: number, itemId: string) => {
+    const ik = itemKey(moduleId, level, itemId);
+    const updated: HideoutToggleState = {
+      ...hideoutToggleState,
+      itemEnabled: {
+        ...hideoutToggleState.itemEnabled,
+        [ik]: !(hideoutToggleState.itemEnabled[ik] ?? true),
+      },
+    };
+    setHideoutToggleState(updated);
+    saveHideoutToggleState(updated);
+  }, [hideoutToggleState]);
+
   // Render content based on active view
   // Views requiring stash/loadout are wrapped in AuthGate (per spec section 3.2)
   const renderContent = () => {
@@ -254,6 +395,8 @@ export function QuartermasterApp() {
               itemsMap={itemsMap}
               stashItems={stashItems}
               plannerResult={plannerResult}
+              itemInsights={itemInsights}
+              getOwnedQuantity={getOwnedQuantity}
               onSyncStash={handleSyncStash}
               isSyncing={isSyncingStash}
             />
@@ -267,25 +410,38 @@ export function QuartermasterApp() {
               itemsMap={itemsMap}
               currentLoadout={currentLoadout}
               plannerResult={plannerResult}
+              itemInsights={itemInsights}
+              getOwnedQuantity={getOwnedQuantity}
               onSyncLoadout={handleSyncLoadout}
               isSyncing={isSyncingLoadout}
             />
           </AuthGate>
         );
 
-      case 'loadouts':
+      case 'lists':
         return (
-          <LoadoutsView
+          <ListsView
             itemsMap={itemsMap}
-            loadouts={loadouts}
-            onCreateLoadout={handleCreateLoadout}
-            onDeleteLoadout={handleDeleteLoadout}
-            onToggleLoadout={handleToggleLoadout}
-            onRenameLoadout={handleRenameLoadout}
+            lists={lists}
+            hideoutLists={hideoutLists}
+            plannerResult={plannerResult}
+            itemInsights={itemInsights}
+            getOwnedQuantity={getOwnedQuantity}
+            onCreateList={handleCreateList}
+            onDeleteList={handleDeleteList}
+            onToggleList={handleToggleList}
+            onRenameList={handleRenameList}
             onAddItem={handleAddItem}
             onRemoveItem={handleRemoveItem}
             onUpdateQuantity={handleUpdateQuantity}
             onToggleItem={handleToggleItem}
+            onReorderLists={handleReorderLists}
+            onReorderItems={handleReorderItems}
+            onSyncHideout={handleSyncHideout}
+            isSyncingHideout={isSyncingHideout}
+            hasHideoutCache={cachedHideout !== null}
+            onToggleHideoutList={handleToggleHideoutList}
+            onToggleHideoutItem={handleToggleHideoutItem}
           />
         );
 
@@ -294,8 +450,9 @@ export function QuartermasterApp() {
           <AuthGate>
             <InRaidView
               itemsMap={itemsMap}
-              lootSuggestions={plannerResult.lootSuggestions}
               plannerResult={plannerResult}
+              itemInsights={itemInsights}
+              getOwnedQuantity={getOwnedQuantity}
             />
           </AuthGate>
         );
@@ -307,6 +464,9 @@ export function QuartermasterApp() {
               itemsMap={itemsMap}
               craftPlan={plannerResult.craftPlan}
               recyclePlan={plannerResult.recyclePlan}
+              plannerResult={plannerResult}
+              itemInsights={itemInsights}
+              getOwnedQuantity={getOwnedQuantity}
               onSyncStash={handleSyncStash}
               isSyncing={isSyncingStash}
             />

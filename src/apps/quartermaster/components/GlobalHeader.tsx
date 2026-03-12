@@ -31,7 +31,7 @@ export function GlobalHeader({
   loadoutSyncedAt,
 }: GlobalHeaderProps) {
   const {
-    activeLoadoutsCount,
+    activeListsCount,
     totalMissingItemsCount,
     totalRecycleActionsCount,
     totalCraftStepsCount,
@@ -41,8 +41,8 @@ export function GlobalHeader({
     <div className="qm-global-header">
       <div className="qm-global-header__stats">
         <div className="qm-global-header__stat">
-          <span className="qm-global-header__stat-label">Active Loadouts</span>
-          <span className="qm-global-header__stat-value">{activeLoadoutsCount}</span>
+          <span className="qm-global-header__stat-label">Active Lists</span>
+          <span className="qm-global-header__stat-value">{activeListsCount}</span>
         </div>
 
         <div className="qm-global-header__stat">
