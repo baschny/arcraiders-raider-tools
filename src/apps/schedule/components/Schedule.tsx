@@ -73,14 +73,14 @@ export function Schedule({ data }: ScheduleProps) {
 
     if (majorEventId) {
       const majorEvent = data.eventTypes[majorEventId];
-      if (majorEvent && !majorEvent.disabled) {
+      if (majorEvent) {
         major = { event: majorEvent, eventId: majorEventId };
       }
     }
 
     if (minorEventId) {
       const minorEvent = data.eventTypes[minorEventId];
-      if (minorEvent && !minorEvent.disabled) {
+      if (minorEvent) {
         minor = { event: minorEvent, eventId: minorEventId };
       }
     }
@@ -109,7 +109,7 @@ export function Schedule({ data }: ScheduleProps) {
 
     return Array.from(activeEvents)
       .map(eventId => ({ eventId, event: data.eventTypes[eventId] }))
-      .filter(item => item.event && !item.event.disabled)
+      .filter(item => item.event)
       .sort((a, b) => {
         // Sort by category first (major then minor), then by name
         if (a.event.category !== b.event.category) {
