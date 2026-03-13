@@ -13,7 +13,8 @@
       "the_right_tool",
       "hatch_repairs"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "a_balanced_harvest",
@@ -28,7 +29,8 @@
     "nextQuestIds": [
       "untended_garden"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "a_better_use",
@@ -46,7 +48,8 @@
     "nextQuestIds": [
       "greasing_her_palms"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "a_dead_end",
@@ -61,7 +64,8 @@
     "nextQuestIds": [
       "a_rising_tide"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "a_first_foothold",
@@ -76,7 +80,8 @@
     "nextQuestIds": [
       "reduced_to_rubble"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "a_lay_of_the_land",
@@ -91,7 +96,8 @@
     "nextQuestIds": [
       "eyes_in_the_sky"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "a_new_type_of_plant",
@@ -106,7 +112,8 @@
     "nextQuestIds": [
       "armored_transports"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "a_prime_specimen",
@@ -119,7 +126,8 @@
       "the_clean_dream"
     ],
     "nextQuestIds": [],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "a_reveal_in_ruins",
@@ -134,7 +142,8 @@
     "nextQuestIds": [
       "a_lay_of_the_land"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "a_rising_tide",
@@ -148,7 +157,8 @@
       "a_dead_end"
     ],
     "nextQuestIds": [],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "a_symbol_of_unification",
@@ -165,7 +175,8 @@
       "celestes_journals",
       "out_of_the_shadows"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "a_toxic_trail",
@@ -180,7 +191,8 @@
     "nextQuestIds": [
       "the_stench_of_corruption"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "a_warm_place_to_rest",
@@ -195,7 +207,8 @@
     "nextQuestIds": [
       "prescriptions_of_the_past"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "after_rain_comes",
@@ -210,7 +223,8 @@
     "nextQuestIds": [
       "water_troubles"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "armored_transports",
@@ -224,7 +238,8 @@
       "a_new_type_of_plant"
     ],
     "nextQuestIds": [],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "back_on_top",
@@ -244,7 +259,8 @@
     "nextQuestIds": [
       "our_presence_up_there"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "bees",
@@ -259,7 +275,8 @@
     "nextQuestIds": [
       "espresso"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "bombing_run",
@@ -270,7 +287,8 @@
       "combat_recon"
     ],
     "nextQuestIds": [],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "broken_monument",
@@ -286,7 +304,8 @@
       "marked_for_death",
       "straight_record"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "building_a_library",
@@ -301,7 +320,8 @@
     "nextQuestIds": [
       "a_new_type_of_plant"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "celestes_journals",
@@ -316,7 +336,8 @@
     "nextQuestIds": [
       "back_on_top"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "clearer_skies",
@@ -329,7 +350,8 @@
     "nextQuestIds": [
       "off_the_radar"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "cold_storage",
@@ -344,7 +366,8 @@
     "nextQuestIds": [
       "snap_and_salvage"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "combat_recon",
@@ -360,7 +383,8 @@
     "nextQuestIds": [
       "bombing_run"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "communication_hideout",
@@ -375,7 +399,8 @@
     "nextQuestIds": [
       "into_the_fray"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "deciphering_the_data",
@@ -390,7 +415,8 @@
     "nextQuestIds": [
       "groundbreaking"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "digging_up_dirt",
@@ -406,7 +432,8 @@
       "turnabout",
       "building_a_library"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "doctors_orders",
@@ -419,7 +446,8 @@
     "nextQuestIds": [
       "medical_merchandise"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "dormant_barons",
@@ -438,7 +466,8 @@
       "mixed_signals",
       "what_we_left_behind"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "down_to_earth",
@@ -455,7 +484,8 @@
     "nextQuestIds": [
       "the_trifecta"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "echoes_of_victory_ridge",
@@ -470,7 +500,8 @@
     "nextQuestIds": [
       "unexpected_initiative"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "espresso",
@@ -485,7 +516,8 @@
     "nextQuestIds": [
       "life_of_a_pharmacist"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "eyes_in_the_sky",
@@ -504,7 +536,8 @@
       "a_balanced_harvest",
       "back_on_top"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "eyes_on_the_prize",
@@ -519,7 +552,8 @@
     "nextQuestIds": [
       "industrial_espionage"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "flickering_threat",
@@ -534,7 +568,8 @@
     "nextQuestIds": [
       "bees"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "greasing_her_palms",
@@ -552,7 +587,14 @@
       "dormant_barons",
       "doctors_orders"
     ],
-    "hasBlueprint": true
+    "hasBlueprint": true,
+    "blueprintRewards": [
+      {
+        "id": "lure_grenade_blueprint",
+        "name": "Lure Grenade Blueprint",
+        "imageFilename": "https://cdn.arctracker.io/items/lure_grenade.png"
+      }
+    ]
   },
   {
     "id": "groundbreaking",
@@ -568,7 +610,8 @@
       "worth_your_salt",
       "a_dead_end"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "hatch_repairs",
@@ -581,7 +624,8 @@
     "nextQuestIds": [
       "down_to_earth"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "in_my_image",
@@ -597,7 +641,8 @@
     "nextQuestIds": [
       "cold_storage"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "industrial_espionage",
@@ -612,7 +657,14 @@
     "nextQuestIds": [
       "unexpected_initiative"
     ],
-    "hasBlueprint": true
+    "hasBlueprint": true,
+    "blueprintRewards": [
+      {
+        "id": "burletta_blueprint",
+        "name": "Burletta Blueprint",
+        "imageFilename": "https://cdn.arctracker.io/items/burletta.png"
+      }
+    ]
   },
   {
     "id": "into_the_fray",
@@ -632,7 +684,8 @@
       "combat_recon",
       "paving_the_way"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "keeping_an_eye_out",
@@ -645,7 +698,8 @@
       "the_clean_dream"
     ],
     "nextQuestIds": [],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "keeping_the_memory",
@@ -660,7 +714,8 @@
     "nextQuestIds": [
       "echoes_of_victory_ridge"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "life_of_a_pharmacist",
@@ -676,7 +731,8 @@
       "a_toxic_trail",
       "tribute_to_toledo"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "lost_in_transmission",
@@ -691,7 +747,8 @@
     "nextQuestIds": [
       "communication_hideout"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "marked_for_death",
@@ -706,7 +763,8 @@
     "nextQuestIds": [
       "market_correction"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "market_correction",
@@ -721,7 +779,8 @@
     "nextQuestIds": [
       "eyes_on_the_prize"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "medical_merchandise",
@@ -738,7 +797,8 @@
     "nextQuestIds": [
       "a_reveal_in_ruins"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "mixed_signals",
@@ -754,7 +814,8 @@
       "dormant_barons"
     ],
     "nextQuestIds": [],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "movie_night",
@@ -765,7 +826,8 @@
       "with_a_view"
     ],
     "nextQuestIds": [],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "off_the_radar",
@@ -783,7 +845,8 @@
     "nextQuestIds": [
       "a_bad_feeling"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "on_deaf_ears",
@@ -799,7 +862,8 @@
     "nextQuestIds": [
       "on_the_map"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "on_the_map",
@@ -812,7 +876,8 @@
       "on_deaf_ears"
     ],
     "nextQuestIds": [],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "our_presence_up_there",
@@ -827,7 +892,8 @@
     "nextQuestIds": [
       "lost_in_transmission"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "out_of_the_shadows",
@@ -846,7 +912,8 @@
     "nextQuestIds": [
       "combat_recon"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "paving_the_way",
@@ -863,7 +930,8 @@
     "nextQuestIds": [
       "deciphering_the_data"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "picking_up_the_pieces",
@@ -881,7 +949,8 @@
       "clearer_skies",
       "trash_into_treasure"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "power_out",
@@ -896,7 +965,8 @@
     "nextQuestIds": [
       "flickering_threat"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "prescriptions_of_the_past",
@@ -911,7 +981,8 @@
     "nextQuestIds": [
       "power_out"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "reduced_to_rubble",
@@ -926,7 +997,8 @@
     "nextQuestIds": [
       "with_a_trace"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "safe_passage",
@@ -939,7 +1011,8 @@
     "nextQuestIds": [
       "what_goes_around"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "snap_and_salvage",
@@ -955,7 +1028,8 @@
       "on_deaf_ears",
       "with_a_view"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "source_of_the_contamination",
@@ -970,7 +1044,8 @@
     "nextQuestIds": [
       "switching_the_supply"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "sparks_fly",
@@ -984,7 +1059,14 @@
       "the_league",
       "out_of_the_shadows"
     ],
-    "hasBlueprint": true
+    "hasBlueprint": true,
+    "blueprintRewards": [
+      {
+        "id": "trigger_nade_blueprint",
+        "name": "Trigger Nade Blueprint",
+        "imageFilename": "https://cdn.arctracker.io/items/trigger_nade_blueprint.png"
+      }
+    ]
   },
   {
     "id": "stable_housing",
@@ -997,7 +1079,8 @@
       "with_a_view"
     ],
     "nextQuestIds": [],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "straight_record",
@@ -1012,7 +1095,8 @@
     "nextQuestIds": [
       "keeping_the_memory"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "switching_the_supply",
@@ -1027,7 +1111,8 @@
     "nextQuestIds": [
       "a_warm_place_to_rest"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "the_clean_dream",
@@ -1044,7 +1129,8 @@
       "keeping_an_eye_out",
       "a_prime_specimen"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "the_league",
@@ -1057,7 +1143,8 @@
       "sparks_fly"
     ],
     "nextQuestIds": [],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "the_majors_footlocker",
@@ -1072,7 +1159,14 @@
     "nextQuestIds": [
       "back_on_top"
     ],
-    "hasBlueprint": true
+    "hasBlueprint": true,
+    "blueprintRewards": [
+      {
+        "id": "hullcracker_blueprint",
+        "name": "Hullcracker Blueprint",
+        "imageFilename": "https://cdn.arctracker.io/items/hullcracker.png"
+      }
+    ]
   },
   {
     "id": "the_right_tool",
@@ -1085,7 +1179,8 @@
     "nextQuestIds": [
       "a_better_use"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "the_root_of_the_matter",
@@ -1100,7 +1195,8 @@
     "nextQuestIds": [
       "water_troubles"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "the_stench_of_corruption",
@@ -1113,7 +1209,8 @@
       "a_toxic_trail"
     ],
     "nextQuestIds": [],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "the_trifecta",
@@ -1131,7 +1228,8 @@
     "nextQuestIds": [
       "dormant_barons"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "trash_into_treasure",
@@ -1144,7 +1242,8 @@
     "nextQuestIds": [
       "off_the_radar"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "tribute_to_toledo",
@@ -1157,7 +1256,8 @@
     "nextQuestIds": [
       "digging_up_dirt"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "turnabout",
@@ -1170,7 +1270,8 @@
       "digging_up_dirt"
     ],
     "nextQuestIds": [],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "unexpected_initiative",
@@ -1186,7 +1287,8 @@
     "nextQuestIds": [
       "a_symbol_of_unification"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "untended_garden",
@@ -1201,7 +1303,8 @@
     "nextQuestIds": [
       "the_root_of_the_matter"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "water_troubles",
@@ -1218,7 +1321,8 @@
       "into_the_fray",
       "source_of_the_contamination"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "what_goes_around",
@@ -1231,7 +1335,8 @@
     "nextQuestIds": [
       "sparks_fly"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "what_we_left_behind",
@@ -1248,7 +1353,8 @@
     "nextQuestIds": [
       "broken_monument"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "with_a_trace",
@@ -1264,7 +1370,8 @@
       "armored_transports",
       "the_clean_dream"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "with_a_view",
@@ -1280,7 +1387,8 @@
       "stable_housing",
       "movie_night"
     ],
-    "hasBlueprint": false
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "worth_your_salt",
@@ -1295,6 +1403,13 @@
     "nextQuestIds": [
       "on_deaf_ears"
     ],
-    "hasBlueprint": true
+    "hasBlueprint": true,
+    "blueprintRewards": [
+      {
+        "id": "vita_spray_blueprint",
+        "name": "Vita Spray Blueprint",
+        "imageFilename": "https://cdn.arctracker.io/items/vita_spray.png"
+      }
+    ]
   }
 ]

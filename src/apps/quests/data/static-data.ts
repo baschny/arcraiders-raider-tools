@@ -10,6 +10,7 @@ export const MAP_NODES: Quest[] = [
     previousQuestIds: [],
     nextQuestIds: ['picking_up_the_pieces'],
     hasBlueprint: false,
+    blueprintRewards: [],
   },
   {
     id: 'map_blue_gate',
@@ -19,6 +20,7 @@ export const MAP_NODES: Quest[] = [
     previousQuestIds: [],
     nextQuestIds: ['a_first_foothold'],
     hasBlueprint: false,
+    blueprintRewards: [],
   },
   {
     id: 'map_stella_montis',
@@ -28,6 +30,7 @@ export const MAP_NODES: Quest[] = [
     previousQuestIds: [],
     nextQuestIds: ['in_my_image'],
     hasBlueprint: false,
+    blueprintRewards: [],
   },
 ];
 

@@ -1,4 +1,9 @@
 import type { Node } from 'reactflow';
+export interface BlueprintReward {
+  id: string;
+  name: string;
+  imageFilename: string;
+}
 
 export interface Quest {
   id: string;
@@ -8,6 +13,7 @@ export interface Quest {
   previousQuestIds: string[];
   nextQuestIds: string[];
   hasBlueprint: boolean;
+  blueprintRewards: BlueprintReward[];
 }
 
 export interface QuestNodeData {

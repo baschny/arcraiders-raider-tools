@@ -11,7 +11,7 @@ export function QuestNode({ data }: { data: QuestNodeData }) {
   const hasBlueprintReward = quest.hasBlueprint;
 
   const traderClass = getTraderClass(quest.trader);
-  const nodeClass = `quest-node ${isCompleted ? 'completed' : ''} ${isAvailable ? 'available' : ''} ${isHighlighted ? 'highlighted' : ''}`;
+  const nodeClass = `quest-node ${hasBlueprintReward ? 'has-blueprint' : ''} ${isCompleted ? 'completed' : ''} ${isAvailable ? 'available' : ''} ${isHighlighted ? 'highlighted' : ''}`;
   const traderImage = TRADER_IMAGES[quest.trader];
 
   const handleClick = (e: React.MouseEvent) => {

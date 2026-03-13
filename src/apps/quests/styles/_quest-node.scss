@@ -31,6 +31,18 @@
       color: $map-node-text-completed;
     }
   }
+  &.has-blueprint {
+    border-color: $blueprint-border;
+    box-shadow: $shadow-default, $shadow-blueprint;
+  }
+
+  &.has-blueprint.available {
+    box-shadow: $shadow-available, $shadow-blueprint;
+  }
+
+  &.has-blueprint.completed {
+    box-shadow: $shadow-blueprint;
+  }
 
   &.highlighted {
     animation: highlightPulse $transition-highlight;

@@ -12,6 +12,7 @@ import dagre from 'dagre';
 import type { Quest } from '../types/quest';
 import { QuestNode } from './QuestNode';
 import { MapNode } from './MapNode';
+import { BlueprintRewardsOverlay } from './BlueprintRewardsOverlay';
 import { Sidebar } from './Sidebar';
 import { ConfirmDialog } from './ConfirmDialog';
 import { STORAGE_KEY } from '../data/static-data';
@@ -19,6 +20,8 @@ import { migrateQuestIds } from '../data/questIdMigration';
 import { trackQuestMark } from '../../../shared/utils/analytics';
 
 const VIEWPORT_STORAGE_KEY = 'raider-tools:quest-tracker-viewport';
+const BLUEPRINT_OVERLAY_COLLAPSED_STORAGE_KEY =
+  'raider-tools:quest-tracker-blueprints-collapsed';
 import {
   isQuestAvailable,
   getAllDependents,
@@ -49,6 +52,19 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
     return new Set();
   };
 
+  // Load blueprint overlay collapse state from localStorage
+  const loadBlueprintOverlayCollapsed = (): boolean => {
+    try {
+      const saved = localStorage.getItem(BLUEPRINT_OVERLAY_COLLAPSED_STORAGE_KEY);
+      if (saved) {
+        return JSON.parse(saved) === true;
+      }
+    } catch (e) {
+      console.error('Failed to load blueprint overlay state:', e);
+    }
+    return true;
+  };
+
   // Load viewport from localStorage
   const loadViewport = (): Viewport | undefined => {
     try {
@@ -70,6 +86,8 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
   const [reactFlowInstance, setReactFlowInstance] =
     useState<ReactFlowInstance | null>(null);
   const [viewport, setViewport] = useState<Viewport>(loadViewport() || { x: 0, y: 0, zoom: 0.5 });
+  const [isBlueprintOverlayCollapsed, setIsBlueprintOverlayCollapsed] =
+    useState(loadBlueprintOverlayCollapsed);
 
   // Confirmation dialog state
   const [confirmDialog, setConfirmDialog] = useState<{
@@ -108,6 +126,18 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
       console.error('Failed to save viewport:', e);
     }
   }, [viewport]);
+
+  // Save blueprint overlay collapse state whenever it changes
+  useEffect(() => {
+    try {
+      localStorage.setItem(
+        BLUEPRINT_OVERLAY_COLLAPSED_STORAGE_KEY,
+        JSON.stringify(isBlueprintOverlayCollapsed)
+      );
+    } catch (e) {
+      console.error('Failed to save blueprint overlay state:', e);
+    }
+  }, [isBlueprintOverlayCollapsed]);
 
   // Handle viewport changes
   const onMoveEnd = useCallback((
@@ -352,6 +382,56 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
   const completedCount = actualQuests.filter((q) =>
     completedQuests.has(q.id)
   ).length;
+  const questProgressionOrder = useMemo(() => {
+    const questById = new Map(quests.map((quest) => [quest.id, quest]));
+    return new Map(
+      nodes
+        .filter((node) => questById.get(node.id)?.trader !== 'Map')
+        .sort((a, b) =>
+          a.position.y === b.position.y
+            ? a.position.x - b.position.x
+            : a.position.y - b.position.y
+        )
+        .map((node, index) => [node.id, index])
+    );
+  }, [nodes, quests]);
+  const blueprintCompletionById = useMemo(() => {
+    const completedByBlueprint = new Map<string, boolean>();
+    actualQuests.forEach((quest) => {
+      quest.blueprintRewards.forEach((blueprintReward) => {
+        if (completedQuests.has(quest.id)) {
+          completedByBlueprint.set(blueprintReward.id, true);
+        } else if (!completedByBlueprint.has(blueprintReward.id)) {
+          completedByBlueprint.set(blueprintReward.id, false);
+        }
+      });
+    });
+    return completedByBlueprint;
+  }, [actualQuests, completedQuests]);
+  const blueprintRewardEntries = useMemo(
+    () =>
+      actualQuests
+        .flatMap((quest) =>
+          quest.blueprintRewards.map((blueprintReward, rewardIndex) => ({
+            questId: quest.id,
+            questName: quest.name,
+            blueprintId: blueprintReward.id,
+            blueprintName: blueprintReward.name,
+            blueprintImageFilename: blueprintReward.imageFilename,
+            isCompleted: blueprintCompletionById.get(blueprintReward.id) ?? false,
+            progressionIndex:
+              questProgressionOrder.get(quest.id) ?? Number.MAX_SAFE_INTEGER,
+            rewardIndex,
+          }))
+        )
+        .sort(
+          (a, b) =>
+            a.progressionIndex - b.progressionIndex ||
+            a.rewardIndex - b.rewardIndex ||
+            a.blueprintName.localeCompare(b.blueprintName)
+        ),
+    [actualQuests, blueprintCompletionById, questProgressionOrder]
+  );
 
   // Filter quests by search query
   const searchResults = useMemo(() => {
@@ -511,6 +591,16 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
             <Controls showInteractive={false} />
             <Background color="#2c2c2c" gap={16} />
           </ReactFlow>
+          {blueprintRewardEntries.length > 0 && (
+            <BlueprintRewardsOverlay
+              entries={blueprintRewardEntries}
+              isCollapsed={isBlueprintOverlayCollapsed}
+              onToggleCollapsed={() =>
+                setIsBlueprintOverlayCollapsed((collapsed) => !collapsed)
+              }
+              onBlueprintClick={focusOnQuest}
+            />
+          )}
         </div>
       </div>
     </>
