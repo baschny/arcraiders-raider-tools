@@ -9,6 +9,10 @@ import { formatWikiLink, getTraderClass } from '../utils/helpers';
 export function QuestNode({ data }: { data: QuestNodeData }) {
   const { quest, isCompleted, isAvailable, isHighlighted, onToggle } = data;
   const hasBlueprintReward = quest.hasBlueprint;
+  const blueprintRewardTooltip =
+    quest.blueprintRewards.length > 0
+      ? `Rewards ${quest.blueprintRewards.map((reward) => reward.name).join(', ')}`
+      : 'Rewards a Blueprint';
 
   const traderClass = getTraderClass(quest.trader);
   const nodeClass = `quest-node ${hasBlueprintReward ? 'has-blueprint' : ''} ${isCompleted ? 'completed' : ''} ${isAvailable ? 'available' : ''} ${isHighlighted ? 'highlighted' : ''}`;
@@ -23,7 +27,7 @@ export function QuestNode({ data }: { data: QuestNodeData }) {
     <div className={nodeClass} onClick={handleClick}>
       <Handle type="target" position={Position.Top} />
       {hasBlueprintReward && (
-        <div className="blueprint-badge" title="Rewards a Blueprint">
+        <div className="blueprint-badge" title={blueprintRewardTooltip}>
           📜 BP
         </div>
       )}
