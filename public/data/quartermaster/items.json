@@ -526,9 +526,6 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
-      "recipe": {
-        "wasp_driver": 1
-      },
       "recyclesInto": {
         "metal_parts": 2
       },
@@ -675,15 +672,6 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
-      "recipe": {
-        "advanced_arc_powercell": 1
-      },
-      "recyclesInto": {
-        "arc_alloy": 1
-      },
-      "salvagesInto": {
-        "metal_parts": 1
-      },
       "stackSize": 5,
       "value": 270,
       "weight": 0.5,
@@ -843,9 +831,6 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
-      "recipe": {
-        "agave": 1
-      },
       "stackSize": 100,
       "value": 100,
       "weight": 0.05,
@@ -937,9 +922,6 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
-      "recipe": {
-        "jolt_mine": 1
-      },
       "recyclesInto": {
         "metal_parts": 2
       },
@@ -1137,7 +1119,7 @@
       "type": "Quick Use",
       "category": "Quick Use",
       "stationLevelRequired": 1,
-      "blueprintLocked": true,
+      "blueprintLocked": false,
       "craftQuantity": 1,
       "recipe": {
         "blaze_grenade": 1,
@@ -1750,9 +1732,6 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
-      "recipe": {
-        "bicycle_pump": 1
-      },
       "recyclesInto": {
         "plastic_parts": 3
       },
@@ -1807,9 +1786,6 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
-      "recipe": {
-        "gas_grenade": 1
-      },
       "stackSize": 50,
       "value": 50,
       "weight": 0.15,
@@ -2930,9 +2906,6 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
-      "recipe": {
-        "ion_sputter": 1
-      },
       "recyclesInto": {
         "magnet": 2,
         "processor": 2
@@ -3325,12 +3298,6 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
-      "recipe": {
-        "tattered_clothes": 1
-      },
-      "salvagesInto": {
-        "bandage": 1
-      },
       "stackSize": 50,
       "value": 50,
       "weight": 0.1,
@@ -3536,9 +3503,6 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
-      "recipe": {
-        "flame_spray": 1
-      },
       "recyclesInto": {
         "arc_alloy": 1,
         "crude_explosives": 1
@@ -3931,7 +3895,7 @@
       "type": "Quick Use",
       "category": "Quick Use",
       "stationLevelRequired": 1,
-      "blueprintLocked": true,
+      "blueprintLocked": false,
       "craftQuantity": 1,
       "recipe": {
         "gas_grenade": 1,
@@ -5369,7 +5333,7 @@
       "type": "Quick Use",
       "category": "Quick Use",
       "stationLevelRequired": 1,
-      "blueprintLocked": true,
+      "blueprintLocked": false,
       "craftQuantity": 1,
       "recipe": {
         "lure_grenade": 1,
@@ -5389,9 +5353,6 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
-      "recipe": {
-        "industrial_magnet": 1
-      },
       "recyclesInto": {
         "metal_parts": 2
       },
@@ -5641,9 +5602,6 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
-      "recipe": {
-        "damaged_tick_pod": 1
-      },
       "stackSize": 50,
       "value": 75,
       "weight": 0.1,
@@ -5992,9 +5950,6 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
-      "recipe": {
-        "motor": 1
-      },
       "recyclesInto": {
         "chemicals": 3
       },
@@ -6253,9 +6208,6 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
-      "recipe": {
-        "surge_shield_recharger": 1
-      },
       "stackSize": 50,
       "value": 60,
       "weight": 0.1,
@@ -6518,9 +6470,6 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
-      "recipe": {
-        "projector": 1
-      },
       "recyclesInto": {
         "plastic_parts": 1,
         "wires": 1
@@ -7147,9 +7096,6 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
-      "recipe": {
-        "zipline": 1
-      },
       "recyclesInto": {
         "fabric": 5
       },
@@ -7253,9 +7199,6 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
-      "recipe": {
-        "rubber_pad": 1
-      },
       "stackSize": 50,
       "value": 50,
       "weight": 0.1,
@@ -7610,9 +7553,6 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
-      "recipe": {
-        "broken_handheld_radio": 1
-      },
       "recyclesInto": {
         "metal_parts": 1,
         "wires": 1
@@ -8032,9 +7972,6 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
-      "recipe": {
-        "il_toro_ii": 1
-      },
       "recyclesInto": {
         "metal_parts": 2
       },
@@ -8084,7 +8021,7 @@
       "type": "Quick Use",
       "category": "Quick Use",
       "stationLevelRequired": 1,
-      "blueprintLocked": true,
+      "blueprintLocked": false,
       "craftQuantity": 1,
       "recipe": {
         "smoke_grenade": 1,
@@ -8256,9 +8193,6 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
-      "recipe": {
-        "noisemaker": 1
-      },
       "recyclesInto": {
         "plastic_parts": 2,
         "rubber_parts": 3
@@ -8489,9 +8423,6 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
-      "recipe": {
-        "cooling_coil": 1
-      },
       "recyclesInto": {
         "metal_parts": 2
       },
@@ -8744,9 +8675,6 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
-      "recipe": {
-        "rocket_thruster": 1
-      },
       "recyclesInto": {
         "chemicals": 1,
         "oil": 1
@@ -8771,9 +8699,6 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
-      "recipe": {
-        "rusted_shut_medical_kit": 1
-      },
       "recyclesInto": {
         "chemicals": 2,
         "plastic_parts": 3
@@ -9732,9 +9657,6 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
-      "recipe": {
-        "signal_amplifier": 1
-      },
       "recyclesInto": {
         "rubber_parts": 1,
         "wires": 1
@@ -9929,9 +9851,6 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
-      "recipe": {
-        "power_cable": 1
-      },
       "recyclesInto": {
         "rubber_parts": 2
       },
