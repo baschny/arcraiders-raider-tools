@@ -16,7 +16,7 @@
     "generate:items-loot-helper": "./scripts/generate-item-data-loot-helper.sh",
     "generate:items-craft-calculator": "./scripts/generate-item-data-craft-calculator.sh",
     "generate:items-quartermaster": "./scripts/generate-item-data-quartermaster.sh",
-    "generate:schedule": "/bin/cp -f ../arcraiders-data/map-events/map-events.json public/data/schedule/map-events.json"
+    "generate:schedule": "node ./scripts/generate-schedule-data.js"
   },
   "dependencies": {
     "dagre": "^0.8.5",

@@ -1,16 +1,92 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import type { MapEventsData, EventType } from '../types/mapEvents';
 
 interface ScheduleProps {
   data: MapEventsData;
 }
+const HOURS = Array.from({ length: 24 }, (_, hour) => hour);
+
+function getStartOfDay(date: Date): Date {
+  const value = new Date(date);
+  value.setHours(0, 0, 0, 0);
+  return value;
+}
+
+function addDays(date: Date, days: number): Date {
+  const value = new Date(date);
+  value.setDate(value.getDate() + days);
+  return value;
+}
+
+function isSameDay(a: Date, b: Date): boolean {
+  return (
+    a.getFullYear() === b.getFullYear() &&
+    a.getMonth() === b.getMonth() &&
+    a.getDate() === b.getDate()
+  );
+}
+
+function clampDateToRange(date: Date, minDateMs: number | null, maxDateMs: number | null): Date {
+  const normalizedDate = getStartOfDay(date);
+  if (minDateMs !== null && normalizedDate.getTime() < minDateMs) {
+    return new Date(minDateMs);
+  }
+  if (maxDateMs !== null && normalizedDate.getTime() > maxDateMs) {
+    return new Date(maxDateMs);
+  }
+  return normalizedDate;
+}
 
 export function Schedule({ data }: ScheduleProps) {
   const mapIds = Object.keys(data.maps);
   const [currentTime, setCurrentTime] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(() => getStartOfDay(new Date()));
   const [hoveredEventType, setHoveredEventType] = useState<string | null>(null);
   const [pinnedEventType, setPinnedEventType] = useState<string | null>(null);
+  const scheduleDateRange = useMemo(() => {
+    let minTimestamp = data.metadata?.timestampRange.start ?? null;
+    let maxTimestamp = data.metadata?.timestampRange.end ?? null;
 
+    if (!Number.isFinite(minTimestamp ?? Number.NaN) || !Number.isFinite(maxTimestamp ?? Number.NaN)) {
+      let computedMin = Number.POSITIVE_INFINITY;
+      let computedMax = Number.NEGATIVE_INFINITY;
+
+      Object.values(data.schedule).forEach((schedule) => {
+        if (!schedule) {
+          return;
+        }
+
+        Object.keys(schedule.major).forEach((timestamp) => {
+          const parsedTimestamp = Number(timestamp);
+          if (Number.isFinite(parsedTimestamp)) {
+            computedMin = Math.min(computedMin, parsedTimestamp);
+            computedMax = Math.max(computedMax, parsedTimestamp);
+          }
+        });
+
+        Object.keys(schedule.minor).forEach((timestamp) => {
+          const parsedTimestamp = Number(timestamp);
+          if (Number.isFinite(parsedTimestamp)) {
+            computedMin = Math.min(computedMin, parsedTimestamp);
+            computedMax = Math.max(computedMax, parsedTimestamp);
+          }
+        });
+      });
+
+      minTimestamp = Number.isFinite(computedMin) ? computedMin : null;
+      maxTimestamp = Number.isFinite(computedMax) ? computedMax + 3600 : null;
+    }
+
+    if (!Number.isFinite(minTimestamp ?? Number.NaN) || !Number.isFinite(maxTimestamp ?? Number.NaN)) {
+      return { minDateMs: null, maxDateMs: null };
+    }
+
+    const minDate = getStartOfDay(new Date((minTimestamp as number) * 1000)).getTime();
+    const maxEffectiveTimestamp = Math.max((maxTimestamp as number) - 1, minTimestamp as number);
+    const maxDate = getStartOfDay(new Date(maxEffectiveTimestamp * 1000)).getTime();
+    return { minDateMs: minDate, maxDateMs: maxDate };
+  }, [data]);
   // Update current time every minute
   useEffect(() => {
     const timer = setInterval(() => {
@@ -20,13 +96,15 @@ export function Schedule({ data }: ScheduleProps) {
     return () => clearInterval(timer);
   }, []);
 
-  // Get current local hour and calculate starting hour (previous hour)
+  // Current local time information
   const now = currentTime;
   const currentLocalHour = now.getHours();
-  const startHour = (currentLocalHour - 1 + 24) % 24;
-
-  // Generate array of 24 hours starting from previous hour
-  const hours = Array.from({ length: 24 }, (_, i) => (startHour + i) % 24);
+  const activeDate = clampDateToRange(
+    selectedDate,
+    scheduleDateRange.minDateMs,
+    scheduleDateRange.maxDateMs
+  );
+  const isViewingToday = isSameDay(activeDate, now);
 
   // Format current time for display
   const formatTime = (date: Date): string => {
@@ -44,12 +122,13 @@ export function Schedule({ data }: ScheduleProps) {
     const shortTz = date.toLocaleTimeString('en-US', { timeZoneName: 'short' }).split(' ').pop() || '';
     return `${timezoneName} (${shortTz})`;
   };
-
-  // Convert local hour to UTC hour for data lookup
-  const localToUtcHour = (localHour: number): number => {
-    const tempDate = new Date();
-    tempDate.setHours(localHour, 0, 0, 0);
-    return tempDate.getUTCHours();
+  const formatScheduleDate = (date: Date): string => {
+    return date.toLocaleDateString('en-US', {
+      weekday: 'short',
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+    });
   };
 
   // Get events for a specific map and hour (local hour)
@@ -59,14 +138,12 @@ export function Schedule({ data }: ScheduleProps) {
   } => {
     const schedule = data.schedule[mapId];
     if (!schedule) return { major: null, minor: null };
+    const localDateTime = new Date(activeDate);
+    localDateTime.setHours(localHour, 0, 0, 0);
+    const timestampKey = Math.floor(localDateTime.getTime() / 1000).toString();
 
-    // Convert local hour to UTC for data lookup
-    const utcHour = localToUtcHour(localHour);
-    const hourStr = utcHour.toString();
-    
-    // Check both major and minor events
-    const majorEventId = schedule.major?.[hourStr];
-    const minorEventId = schedule.minor?.[hourStr];
+    const majorEventId = schedule.major?.[timestampKey];
+    const minorEventId = schedule.minor?.[timestampKey];
 
     let major = null;
     let minor = null;
@@ -132,6 +209,10 @@ export function Schedule({ data }: ScheduleProps) {
 
   // Determine active highlighting (pinned takes precedence over hover)
   const activeEventType = pinnedEventType || hoveredEventType;
+  const canGoToPreviousDay =
+    scheduleDateRange.minDateMs === null || activeDate.getTime() > scheduleDateRange.minDateMs;
+  const canGoToNextDay =
+    scheduleDateRange.maxDateMs === null || activeDate.getTime() < scheduleDateRange.maxDateMs;
 
   return (
     <div className="schedule-container">
@@ -140,6 +221,27 @@ export function Schedule({ data }: ScheduleProps) {
         <div className="current-time-display">
           <div className="time">{formatTime(now)}</div>
           <div className="timezone">{getTimezone()}</div>
+        </div>
+        <div className="date-switcher">
+          <button
+            type="button"
+            className="date-switcher-button"
+            disabled={!canGoToPreviousDay}
+            onClick={() => setSelectedDate(addDays(activeDate, -1))}
+            aria-label="Previous day"
+          >
+            <ChevronLeft size={18} />
+          </button>
+          <div className="selected-date">{formatScheduleDate(activeDate)}</div>
+          <button
+            type="button"
+            className="date-switcher-button"
+            disabled={!canGoToNextDay}
+            onClick={() => setSelectedDate(addDays(activeDate, 1))}
+            aria-label="Next day"
+          >
+            <ChevronRight size={18} />
+          </button>
         </div>
 
         {/* Event Legend */}
@@ -176,7 +278,7 @@ export function Schedule({ data }: ScheduleProps) {
           <div className="schedule-header">
             <div className="map-label-header">Map</div>
             <div className="hours-container">
-              {hours.map((hour) => (
+              {HOURS.map((hour) => (
                 <div key={hour} className="hour-label">
                   {hour.toString().padStart(2, '0')}:00
                 </div>
@@ -193,16 +295,16 @@ export function Schedule({ data }: ScheduleProps) {
                   <span className="map-name-text">{mapInfo.displayName}</span>
                 </div>
                 <div className="cells-container">
-                  {hours.map((hour, index) => {
+                  {HOURS.map((hour, index) => {
                     const events = getEventsForHour(mapId, hour);
                     const isMajorHighlighted = events.major && activeEventType === events.major.eventId;
                     const isMinorHighlighted = events.minor && activeEventType === events.minor.eventId;
-                    const isCurrentHour = hour === currentLocalHour;
+                    const isCurrentHour = isViewingToday && hour === currentLocalHour;
                     
                     return (
                       <div
                         key={hour}
-                        className={`hour-cell ${index < hours.length - 1 ? 'with-separator' : ''}`}
+                        className={`hour-cell ${index < HOURS.length - 1 ? 'with-separator' : ''}`}
                       >
                         {/* Major event half (top) */}
                         <div

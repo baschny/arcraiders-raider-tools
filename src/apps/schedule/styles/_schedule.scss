@@ -33,6 +33,49 @@
   }
 }
 
+.date-switcher {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-xs;
+  border: $border-width-thin solid $border-default;
+  border-radius: $radius-sm;
+  background: $bg-secondary;
+  flex-shrink: 0;
+}
+
+.date-switcher-button {
+  width: 30px;
+  height: 30px;
+  border: $border-width-thin solid $border-light;
+  border-radius: $radius-sm;
+  background: $bg-primary;
+  color: $text-primary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  &:hover:not(:disabled) {
+    background: $bg-tertiary;
+    border-color: $border-lighter;
+  }
+
+  &:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+}
+
+.selected-date {
+  min-width: 180px;
+  text-align: center;
+  color: $text-primary;
+  font-size: $font-lg;
+  font-weight: 600;
+  font-family: $font-heading;
+}
 .event-legend {
   flex: 1;
   display: flex;
