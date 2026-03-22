@@ -4,7 +4,7 @@
     "format": "Schedule keys are UNIX timestamps (seconds, UTC) at event start; values are event type ids."
   },
   "metadata": {
-    "generatedAt": "2026-03-22T01:52:28.727Z",
+    "generatedAt": "2026-03-22T09:22:14.605Z",
     "sourceFiles": {
       "scenarios": "../embark-api/data/scenarios.json",
       "mapEvents": "../embark-api/data/arctracker-map-events.json",
@@ -13,13 +13,13 @@
       "previousSchedule": "public/data/schedule/map-events.json"
     },
     "timestampRange": {
-      "start": 1774080000,
+      "start": 1774087200,
       "end": 1777849200
     },
     "mergedPastEvents": {
       "windowSeconds": 86400,
-      "now": 1774144348,
-      "count": 59
+      "now": 1774171334,
+      "count": 79
     },
     "ignoredConditionIds": []
   },
@@ -478,7 +478,6 @@
         "1775426400": "electromagnetic-storm"
       },
       "minor": {
-        "1774083600": "harvester",
         "1774094400": "husk-graveyard",
         "1774105200": "harvester",
         "1774116000": "husk-graveyard",
@@ -793,10 +792,13 @@
         "1774202400": "hurricane",
         "1774206000": "cold-snap",
         "1774216800": "hurricane",
-        "1774220400": "night-raid"
+        "1774220400": "night-raid",
+        "1774231200": "hurricane",
+        "1774234800": "cold-snap",
+        "1774245600": "hurricane",
+        "1774249200": "night-raid"
       },
       "minor": {
-        "1774083600": "bird-city",
         "1774094400": "husk-graveyard",
         "1774105200": "bird-city",
         "1774116000": "husk-graveyard",
@@ -1038,8 +1040,6 @@
     },
     "the-spaceport": {
       "major": {
-        "1774080000": "electromagnetic-storm",
-        "1774083600": "hurricane",
         "1774094400": "cold-snap",
         "1774098000": "hurricane",
         "1774108800": "electromagnetic-storm",
@@ -1059,14 +1059,15 @@
         "1774209600": "hidden-bunker",
         "1774213200": "hurricane",
         "1774224000": "night-raid",
+        "1774227600": "hurricane",
         "1774238400": "cold-snap",
+        "1774242000": "hurricane",
         "1774252800": "night-raid",
         "1774267200": "cold-snap",
         "1774281600": "night-raid",
         "1774296000": "cold-snap"
       },
       "minor": {
-        "1774080000": "harvester",
         "1774090800": "launch-tower-loot",
         "1774101600": "matriarch",
         "1774112400": "harvester",
@@ -1252,7 +1253,6 @@
     },
     "blue-gate": {
       "major": {
-        "1774083600": "cold-snap",
         "1774090800": "hurricane",
         "1774098000": "electromagnetic-storm",
         "1774105200": "hurricane",
@@ -1273,7 +1273,9 @@
         "1774213200": "cold-snap",
         "1774220400": "hurricane",
         "1774227600": "locked-gate",
+        "1774234800": "hurricane",
         "1774242000": "locked-gate",
+        "1774249200": "hurricane",
         "1774256400": "locked-gate",
         "1774270800": "locked-gate",
         "1774285200": "locked-gate",
@@ -1466,7 +1468,6 @@
     },
     "stella-montis": {
       "major": {
-        "1774080000": "night-raid",
         "1774094400": "night-raid",
         "1774108800": "night-raid",
         "1774123200": "night-raid",
