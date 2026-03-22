@@ -4,16 +4,22 @@
     "format": "Schedule keys are UNIX timestamps (seconds, UTC) at event start; values are event type ids."
   },
   "metadata": {
-    "generatedAt": "2026-03-21T11:13:08.262Z",
+    "generatedAt": "2026-03-22T01:52:28.727Z",
     "sourceFiles": {
       "scenarios": "../embark-api/data/scenarios.json",
       "mapEvents": "../embark-api/data/arctracker-map-events.json",
       "maps": "../embark-api/data/arctracker-maps.json",
-      "localizations": "../arcraiders-data/map-events/map-events.json"
+      "localizations": "../arcraiders-data/map-events/map-events.json",
+      "previousSchedule": "public/data/schedule/map-events.json"
     },
     "timestampRange": {
       "start": 1774080000,
       "end": 1777849200
+    },
+    "mergedPastEvents": {
+      "windowSeconds": 86400,
+      "now": 1774144348,
+      "count": 59
     },
     "ignoredConditionIds": []
   },
@@ -418,6 +424,10 @@
         "1774130400": "electromagnetic-storm",
         "1774144800": "electromagnetic-storm",
         "1774159200": "electromagnetic-storm",
+        "1774173600": "electromagnetic-storm",
+        "1774188000": "electromagnetic-storm",
+        "1774202400": "electromagnetic-storm",
+        "1774216800": "electromagnetic-storm",
         "1774231200": "cold-snap",
         "1774245600": "night-raid",
         "1774260000": "cold-snap",
@@ -775,7 +785,15 @@
         "1774144800": "hurricane",
         "1774148400": "cold-snap",
         "1774159200": "hurricane",
-        "1774162800": "night-raid"
+        "1774162800": "night-raid",
+        "1774173600": "hurricane",
+        "1774177200": "cold-snap",
+        "1774188000": "hurricane",
+        "1774191600": "night-raid",
+        "1774202400": "hurricane",
+        "1774206000": "cold-snap",
+        "1774216800": "hurricane",
+        "1774220400": "night-raid"
       },
       "minor": {
         "1774083600": "bird-city",
@@ -1032,6 +1050,14 @@
         "1774141200": "hurricane",
         "1774152000": "hidden-bunker",
         "1774155600": "hurricane",
+        "1774166400": "electromagnetic-storm",
+        "1774170000": "hurricane",
+        "1774180800": "cold-snap",
+        "1774184400": "hurricane",
+        "1774195200": "electromagnetic-storm",
+        "1774198800": "hurricane",
+        "1774209600": "hidden-bunker",
+        "1774213200": "hurricane",
         "1774224000": "night-raid",
         "1774238400": "cold-snap",
         "1774252800": "night-raid",
@@ -1238,6 +1264,14 @@
         "1774148400": "hurricane",
         "1774155600": "electromagnetic-storm",
         "1774162800": "hurricane",
+        "1774170000": "cold-snap",
+        "1774177200": "hurricane",
+        "1774184400": "electromagnetic-storm",
+        "1774191600": "hurricane",
+        "1774198800": "electromagnetic-storm",
+        "1774206000": "hurricane",
+        "1774213200": "cold-snap",
+        "1774220400": "hurricane",
         "1774227600": "locked-gate",
         "1774242000": "locked-gate",
         "1774256400": "locked-gate",

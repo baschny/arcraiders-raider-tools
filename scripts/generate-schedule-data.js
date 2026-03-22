@@ -23,9 +23,24 @@ const MAP_ORDER = [
   'blue-gate',
   'stella-montis',
 ];
+const MERGE_HISTORY_WINDOW_SECONDS = 24 * 60 * 60;
+const CHANGE_REPORT_PREVIEW_LIMIT = 12;
 
 function readJson(filePath) {
   return JSON.parse(fs.readFileSync(filePath, 'utf8'));
+}
+
+function readJsonIfExists(filePath) {
+  if (!fs.existsSync(filePath)) {
+    return null;
+  }
+
+  try {
+    return readJson(filePath);
+  } catch (error) {
+    console.warn(`Warning: Failed to parse existing schedule at ${filePath}: ${error.message}`);
+    return null;
+  }
 }
 
 function slugify(value) {
@@ -103,11 +118,275 @@ function sortMapIds(mapIds) {
   });
 }
 
+function ensureScheduleMap(schedule, mapId) {
+  if (!schedule[mapId]) {
+    schedule[mapId] = { major: {}, minor: {} };
+  }
+
+  return schedule[mapId];
+}
+
+function toDisplayNameFromEventId(eventId) {
+  return String(eventId)
+    .split('-')
+    .filter(Boolean)
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(' ');
+}
+
+function collectTimestampRange(schedule, fallbackEndTimestamp) {
+  let minTimestamp = Number.POSITIVE_INFINITY;
+  let maxTimestamp = Number.NEGATIVE_INFINITY;
+
+  Object.values(schedule).forEach((mapSchedule) => {
+    ['major', 'minor'].forEach((category) => {
+      Object.keys(mapSchedule?.[category] ?? {}).forEach((timestampKey) => {
+        const timestamp = Number(timestampKey);
+        if (Number.isFinite(timestamp)) {
+          minTimestamp = Math.min(minTimestamp, timestamp);
+          maxTimestamp = Math.max(maxTimestamp, timestamp + 3600);
+        }
+      });
+    });
+  });
+
+  if (!Number.isFinite(minTimestamp)) {
+    return {
+      start: null,
+      end: Number.isFinite(fallbackEndTimestamp) ? fallbackEndTimestamp : null,
+    };
+  }
+
+  const end = Number.isFinite(fallbackEndTimestamp)
+    ? Math.max(fallbackEndTimestamp, maxTimestamp)
+    : maxTimestamp;
+
+  return {
+    start: minTimestamp,
+    end,
+  };
+}
+
+function flattenScheduleEntries(schedule, minTimestampInclusive) {
+  const entries = [];
+
+  Object.entries(schedule ?? {}).forEach(([mapId, mapSchedule]) => {
+    ['major', 'minor'].forEach((category) => {
+      Object.entries(mapSchedule?.[category] ?? {}).forEach(([timestampKey, eventId]) => {
+        const timestamp = Number(timestampKey);
+        if (!Number.isFinite(timestamp) || timestamp < minTimestampInclusive) {
+          return;
+        }
+
+        entries.push({
+          mapId,
+          category,
+          timestamp,
+          eventId: String(eventId),
+          key: `${mapId}|${category}|${timestamp}`,
+        });
+      });
+    });
+  });
+
+  return entries;
+}
+
+function formatUtcTimestamp(timestamp) {
+  return new Date(timestamp * 1000).toISOString().replace('.000Z', 'Z');
+}
+
+function sortScheduleEntry(a, b) {
+  if (a.mapId !== b.mapId) {
+    return a.mapId.localeCompare(b.mapId);
+  }
+
+  if (a.category !== b.category) {
+    return a.category.localeCompare(b.category);
+  }
+
+  if (a.timestamp !== b.timestamp) {
+    return a.timestamp - b.timestamp;
+  }
+
+  return a.eventId.localeCompare(b.eventId);
+}
+
+function summarizeFutureScheduleChanges(previousSchedule, nextSchedule, nowUnix) {
+  const previousEntries = flattenScheduleEntries(previousSchedule, nowUnix);
+  const nextEntries = flattenScheduleEntries(nextSchedule, nowUnix);
+
+  const previousByKey = new Map(previousEntries.map((entry) => [entry.key, entry]));
+  const nextByKey = new Map(nextEntries.map((entry) => [entry.key, entry]));
+
+  const rawAdded = [];
+  const rawRemoved = [];
+  const replaced = [];
+
+  previousByKey.forEach((previousEntry, key) => {
+    const nextEntry = nextByKey.get(key);
+    if (!nextEntry) {
+      rawRemoved.push(previousEntry);
+      return;
+    }
+
+    if (nextEntry.eventId !== previousEntry.eventId) {
+      replaced.push({
+        mapId: previousEntry.mapId,
+        category: previousEntry.category,
+        timestamp: previousEntry.timestamp,
+        fromEventId: previousEntry.eventId,
+        toEventId: nextEntry.eventId,
+      });
+      rawRemoved.push(previousEntry);
+      rawAdded.push(nextEntry);
+    }
+  });
+
+  nextByKey.forEach((nextEntry, key) => {
+    if (!previousByKey.has(key)) {
+      rawAdded.push(nextEntry);
+    }
+  });
+
+  const additionsByGroup = new Map();
+  const removalsByGroup = new Map();
+
+  rawAdded.forEach((entry) => {
+    const groupKey = `${entry.mapId}|${entry.category}|${entry.eventId}`;
+    const group = additionsByGroup.get(groupKey) ?? [];
+    group.push(entry);
+    additionsByGroup.set(groupKey, group);
+  });
+
+  rawRemoved.forEach((entry) => {
+    const groupKey = `${entry.mapId}|${entry.category}|${entry.eventId}`;
+    const group = removalsByGroup.get(groupKey) ?? [];
+    group.push(entry);
+    removalsByGroup.set(groupKey, group);
+  });
+
+  const moved = [];
+  const added = [];
+  const removed = [];
+
+  const allGroups = new Set([...additionsByGroup.keys(), ...removalsByGroup.keys()]);
+  allGroups.forEach((groupKey) => {
+    const groupedAdded = [...(additionsByGroup.get(groupKey) ?? [])].sort((a, b) => a.timestamp - b.timestamp);
+    const groupedRemoved = [...(removalsByGroup.get(groupKey) ?? [])].sort((a, b) => a.timestamp - b.timestamp);
+
+    const moveCount = Math.min(groupedAdded.length, groupedRemoved.length);
+    for (let index = 0; index < moveCount; index += 1) {
+      moved.push({
+        mapId: groupedAdded[index].mapId,
+        category: groupedAdded[index].category,
+        eventId: groupedAdded[index].eventId,
+        fromTimestamp: groupedRemoved[index].timestamp,
+        toTimestamp: groupedAdded[index].timestamp,
+      });
+    }
+
+    groupedRemoved.slice(moveCount).forEach((entry) => removed.push(entry));
+    groupedAdded.slice(moveCount).forEach((entry) => added.push(entry));
+  });
+
+  moved.sort((a, b) => {
+    if (a.mapId !== b.mapId) {
+      return a.mapId.localeCompare(b.mapId);
+    }
+    if (a.category !== b.category) {
+      return a.category.localeCompare(b.category);
+    }
+    if (a.fromTimestamp !== b.fromTimestamp) {
+      return a.fromTimestamp - b.fromTimestamp;
+    }
+    if (a.toTimestamp !== b.toTimestamp) {
+      return a.toTimestamp - b.toTimestamp;
+    }
+    return a.eventId.localeCompare(b.eventId);
+  });
+
+  replaced.sort((a, b) => {
+    if (a.mapId !== b.mapId) {
+      return a.mapId.localeCompare(b.mapId);
+    }
+    if (a.category !== b.category) {
+      return a.category.localeCompare(b.category);
+    }
+    return a.timestamp - b.timestamp;
+  });
+
+  return {
+    added: added.sort(sortScheduleEntry),
+    removed: removed.sort(sortScheduleEntry),
+    moved,
+    replaced,
+  };
+}
+
+function printPreviewLines(items, formatter, label) {
+  if (items.length === 0) {
+    return;
+  }
+
+  console.log(`  ${label}: ${items.length}`);
+  items.slice(0, CHANGE_REPORT_PREVIEW_LIMIT).forEach((item) => {
+    console.log(`    - ${formatter(item)}`);
+  });
+
+  if (items.length > CHANGE_REPORT_PREVIEW_LIMIT) {
+    console.log(`    ... and ${items.length - CHANGE_REPORT_PREVIEW_LIMIT} more`);
+  }
+}
+
+function printFutureScheduleChangeReport(changes) {
+  if (!changes) {
+    console.log('  Future schedule changes vs previous run: unavailable (no previous schedule)');
+    return;
+  }
+
+  const totalChanges =
+    changes.added.length + changes.removed.length + changes.moved.length + changes.replaced.length;
+  console.log(
+    `  Future schedule changes vs previous run: ${totalChanges} ` +
+      `(added ${changes.added.length}, removed ${changes.removed.length}, moved ${changes.moved.length}, replaced ${changes.replaced.length})`
+  );
+
+  printPreviewLines(
+    changes.added,
+    (entry) =>
+      `${entry.mapId}/${entry.category} ${formatUtcTimestamp(entry.timestamp)} -> ${entry.eventId}`,
+    'Added future events'
+  );
+
+  printPreviewLines(
+    changes.removed,
+    (entry) =>
+      `${entry.mapId}/${entry.category} ${formatUtcTimestamp(entry.timestamp)} -> ${entry.eventId}`,
+    'Removed future events'
+  );
+
+  printPreviewLines(
+    changes.moved,
+    (entry) =>
+      `${entry.mapId}/${entry.category} ${entry.eventId}: ${formatUtcTimestamp(entry.fromTimestamp)} -> ${formatUtcTimestamp(entry.toTimestamp)}`,
+    'Moved future events'
+  );
+
+  printPreviewLines(
+    changes.replaced,
+    (entry) =>
+      `${entry.mapId}/${entry.category} ${formatUtcTimestamp(entry.timestamp)}: ${entry.fromEventId} -> ${entry.toEventId}`,
+    'Replaced future events at same timestamp'
+  );
+}
+
 function main() {
   const scenariosData = readJson(SCENARIOS_PATH);
   const mapEventsMapping = readJson(MAP_EVENTS_PATH);
   const mapsMapping = readJson(MAPS_PATH);
   const legacyMapEventsData = readJson(LEGACY_MAP_EVENTS_PATH);
+  const previousOutputData = readJsonIfExists(OUTPUT_PATH);
   const legacyEventTypes = legacyMapEventsData?.eventTypes ?? {};
 
   const mapByInternalName = new Map();
@@ -213,6 +492,65 @@ function main() {
     });
   });
 
+  const nowUnix = Math.floor(Date.now() / 1000);
+  const mergeWindowStart = nowUnix - MERGE_HISTORY_WINDOW_SECONDS;
+  let mergedPastEventCount = 0;
+
+  const previousSchedule = previousOutputData?.schedule ?? {};
+  const previousEventTypes = previousOutputData?.eventTypes ?? {};
+  const previousMaps = previousOutputData?.maps ?? {};
+  const hadPreviousSchedule = Boolean(previousOutputData && previousOutputData.schedule);
+
+  Object.entries(previousSchedule).forEach(([mapId, mapSchedule]) => {
+    ensureScheduleMap(schedule, mapId);
+
+    if (!discoveredMaps[mapId] && previousMaps[mapId]) {
+      discoveredMaps[mapId] = {
+        displayName: previousMaps[mapId].displayName ?? mapId,
+      };
+    }
+
+    ['major', 'minor'].forEach((category) => {
+      const previousCategorySchedule = mapSchedule?.[category] ?? {};
+
+      Object.entries(previousCategorySchedule).forEach(([timestampKey, eventId]) => {
+        const timestamp = Number(timestampKey);
+        if (!Number.isFinite(timestamp)) {
+          return;
+        }
+
+        const isWithinMergeWindow = timestamp >= mergeWindowStart && timestamp < nowUnix;
+        if (!isWithinMergeWindow) {
+          return;
+        }
+
+        const currentEventId = schedule[mapId][category][timestampKey];
+        if (currentEventId) {
+          return;
+        }
+
+        schedule[mapId][category][timestampKey] = eventId;
+        mergedPastEventCount += 1;
+
+        if (!eventTypes[eventId]) {
+          const previousEventType = previousEventTypes[eventId];
+          if (previousEventType && typeof previousEventType === 'object') {
+            eventTypes[eventId] = previousEventType;
+          } else {
+            const fallbackDisplayName = toDisplayNameFromEventId(eventId);
+            eventTypes[eventId] = {
+              displayName: fallbackDisplayName,
+              icon: `https://cdn.arctracker.io/map-events/${String(eventId).replace(/-/g, '_')}.png`,
+              translationKey: toCamelCaseFromKebab(String(eventId)),
+              category,
+              localizations: { en: fallbackDisplayName },
+            };
+          }
+        }
+      });
+    });
+  });
+
   const sortedMapIds = sortMapIds(Object.keys(schedule));
   const sortedMaps = {};
   const sortedSchedule = {};
@@ -233,6 +571,11 @@ function main() {
       return a[1].displayName.localeCompare(b[1].displayName);
     })
   );
+  const fallbackEndTimestamp = Number.isFinite(maxTimestamp) ? maxTimestamp : null;
+  const finalTimestampRange = collectTimestampRange(sortedSchedule, fallbackEndTimestamp);
+  const futureChanges = hadPreviousSchedule
+    ? summarizeFutureScheduleChanges(previousSchedule, sortedSchedule, nowUnix)
+    : null;
 
   const output = {
     _readme: {
@@ -247,10 +590,13 @@ function main() {
         mapEvents: '../embark-api/data/arctracker-map-events.json',
         maps: '../embark-api/data/arctracker-maps.json',
         localizations: '../arcraiders-data/map-events/map-events.json',
+        previousSchedule: 'public/data/schedule/map-events.json',
       },
-      timestampRange: {
-        start: Number.isFinite(minTimestamp) ? minTimestamp : null,
-        end: Number.isFinite(maxTimestamp) ? maxTimestamp : null,
+      timestampRange: finalTimestampRange,
+      mergedPastEvents: {
+        windowSeconds: MERGE_HISTORY_WINDOW_SECONDS,
+        now: nowUnix,
+        count: mergedPastEventCount,
       },
       ignoredConditionIds: Array.from(missingConditionIds).sort((a, b) => Number(a) - Number(b)),
     },
@@ -267,6 +613,8 @@ function main() {
   console.log(`  Maps included: ${sortedMapIds.length}`);
   console.log(`  Event types included: ${Object.keys(sortedEventTypes).length}`);
   console.log(`  Conditions included: ${includedConditionCount}`);
+  console.log(`  Past events merged from previous schedule: ${mergedPastEventCount}`);
+  printFutureScheduleChangeReport(futureChanges);
   console.log(
     `  Ignored condition IDs without mapping: ${
       output.metadata.ignoredConditionIds.length > 0
