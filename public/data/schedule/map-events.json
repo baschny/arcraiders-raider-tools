@@ -4,7 +4,7 @@
     "format": "Schedule keys are UNIX timestamps (seconds, UTC) at event start; values are event type ids."
   },
   "metadata": {
-    "generatedAt": "2026-03-22T21:17:57.546Z",
+    "generatedAt": "2026-03-23T12:33:29.775Z",
     "sourceFiles": {
       "scenarios": "../embark-api/data/scenarios.json",
       "mapEvents": "../embark-api/data/arctracker-map-events.json",
@@ -13,13 +13,13 @@
       "previousSchedule": "public/data/schedule/map-events.json"
     },
     "timestampRange": {
-      "start": 1774130400,
+      "start": 1774184400,
       "end": 1777849200
     },
     "mergedPastEvents": {
       "windowSeconds": 86400,
-      "now": 1774214277,
-      "count": 79
+      "now": 1774269209,
+      "count": 78
     },
     "ignoredConditionIds": []
   },
@@ -418,10 +418,6 @@
   "schedule": {
     "dam-battleground": {
       "major": {
-        "1774130400": "electromagnetic-storm",
-        "1774144800": "electromagnetic-storm",
-        "1774159200": "electromagnetic-storm",
-        "1774173600": "electromagnetic-storm",
         "1774188000": "electromagnetic-storm",
         "1774202400": "electromagnetic-storm",
         "1774216800": "electromagnetic-storm",
@@ -431,6 +427,9 @@
         "1774274400": "night-raid",
         "1774288800": "cold-snap",
         "1774303200": "night-raid",
+        "1774317600": "cold-snap",
+        "1774332000": "night-raid",
+        "1774346400": "cold-snap",
         "1774828800": "electromagnetic-storm",
         "1774843200": "night-raid",
         "1774857600": "cold-snap",
@@ -475,11 +474,6 @@
         "1775426400": "electromagnetic-storm"
       },
       "minor": {
-        "1774137600": "harvester",
-        "1774141200": "matriarch",
-        "1774152000": "husk-graveyard",
-        "1774162800": "matriarch",
-        "1774173600": "husk-graveyard",
         "1774184400": "matriarch",
         "1774195200": "harvester",
         "1774206000": "matriarch",
@@ -766,14 +760,6 @@
     },
     "buried-city": {
       "major": {
-        "1774130400": "hurricane",
-        "1774134000": "night-raid",
-        "1774144800": "hurricane",
-        "1774148400": "cold-snap",
-        "1774159200": "hurricane",
-        "1774162800": "night-raid",
-        "1774173600": "hurricane",
-        "1774177200": "cold-snap",
         "1774188000": "hurricane",
         "1774191600": "night-raid",
         "1774202400": "hurricane",
@@ -789,14 +775,17 @@
         "1774274400": "hurricane",
         "1774278000": "night-raid",
         "1774288800": "hurricane",
-        "1774292400": "cold-snap"
+        "1774292400": "cold-snap",
+        "1774303200": "hurricane",
+        "1774306800": "night-raid",
+        "1774317600": "hurricane",
+        "1774321200": "cold-snap",
+        "1774332000": "hurricane",
+        "1774335600": "night-raid",
+        "1774346400": "hurricane",
+        "1774350000": "cold-snap"
       },
       "minor": {
-        "1774137600": "husk-graveyard",
-        "1774141200": "bird-city",
-        "1774152000": "husk-graveyard",
-        "1774162800": "bird-city",
-        "1774173600": "husk-graveyard",
         "1774184400": "bird-city",
         "1774195200": "husk-graveyard",
         "1774206000": "bird-city",
@@ -1029,13 +1018,6 @@
     },
     "the-spaceport": {
       "major": {
-        "1774137600": "electromagnetic-storm",
-        "1774141200": "hurricane",
-        "1774152000": "hidden-bunker",
-        "1774155600": "hurricane",
-        "1774166400": "electromagnetic-storm",
-        "1774170000": "hurricane",
-        "1774180800": "cold-snap",
         "1774184400": "hurricane",
         "1774195200": "electromagnetic-storm",
         "1774198800": "hurricane",
@@ -1051,15 +1033,16 @@
         "1774270800": "hurricane",
         "1774281600": "night-raid",
         "1774285200": "hurricane",
-        "1774296000": "cold-snap"
+        "1774296000": "cold-snap",
+        "1774299600": "hurricane",
+        "1774310400": "night-raid",
+        "1774314000": "hurricane",
+        "1774324800": "cold-snap",
+        "1774328400": "hurricane",
+        "1774339200": "night-raid",
+        "1774342800": "hurricane"
       },
       "minor": {
-        "1774134000": "launch-tower-loot",
-        "1774137600": "matriarch",
-        "1774148400": "husk-graveyard",
-        "1774159200": "harvester",
-        "1774170000": "matriarch",
-        "1774180800": "launch-tower-loot",
         "1774191600": "husk-graveyard",
         "1774202400": "harvester",
         "1774213200": "matriarch",
@@ -1235,13 +1218,6 @@
     },
     "blue-gate": {
       "major": {
-        "1774134000": "hurricane",
-        "1774141200": "electromagnetic-storm",
-        "1774148400": "hurricane",
-        "1774155600": "electromagnetic-storm",
-        "1774162800": "hurricane",
-        "1774170000": "cold-snap",
-        "1774177200": "hurricane",
         "1774184400": "electromagnetic-storm",
         "1774191600": "hurricane",
         "1774198800": "electromagnetic-storm",
@@ -1258,15 +1234,16 @@
         "1774278000": "hurricane",
         "1774285200": "locked-gate",
         "1774292400": "hurricane",
-        "1774299600": "locked-gate"
+        "1774299600": "locked-gate",
+        "1774306800": "hurricane",
+        "1774314000": "locked-gate",
+        "1774321200": "hurricane",
+        "1774328400": "locked-gate",
+        "1774335600": "hurricane",
+        "1774342800": "locked-gate",
+        "1774350000": "hurricane"
       },
       "minor": {
-        "1774130400": "harvester",
-        "1774137600": "matriarch",
-        "1774144800": "harvester",
-        "1774155600": "matriarch",
-        "1774166400": "husk-graveyard",
-        "1774177200": "harvester",
         "1774188000": "matriarch",
         "1774198800": "harvester",
         "1774209600": "husk-graveyard",
@@ -1443,10 +1420,6 @@
     },
     "stella-montis": {
       "major": {
-        "1774137600": "night-raid",
-        "1774144800": "night-raid",
-        "1774159200": "night-raid",
-        "1774173600": "night-raid",
         "1774188000": "night-raid",
         "1774202400": "night-raid",
         "1774216800": "night-raid",
