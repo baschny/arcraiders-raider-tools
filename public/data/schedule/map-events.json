@@ -4,7 +4,7 @@
     "format": "Schedule keys are UNIX timestamps (seconds, UTC) at event start; values are event type ids."
   },
   "metadata": {
-    "generatedAt": "2026-03-25T23:42:39.723Z",
+    "generatedAt": "2026-03-26T13:53:14.954Z",
     "sourceFiles": {
       "scenarios": "../embark-api/data/scenarios.json",
       "mapEvents": "../embark-api/data/arctracker-map-events.json",
@@ -17,9 +17,9 @@
       "end": 1777849200
     },
     "mergedPastEvents": {
-      "windowSeconds": 86400,
-      "now": 1774482159,
-      "count": 60
+      "windowSeconds": 2592000,
+      "now": 1774533194,
+      "count": 109
     },
     "ignoredConditionIds": []
   },
@@ -400,6 +400,9 @@
         "1774533600": "night-raid",
         "1774548000": "cold-snap",
         "1774562400": "night-raid",
+        "1774576800": "cold-snap",
+        "1774591200": "night-raid",
+        "1774605600": "cold-snap",
         "1774828800": "electromagnetic-storm",
         "1774843200": "night-raid",
         "1774857600": "cold-snap",
@@ -728,7 +731,14 @@
         "1774537200": "cold-snap",
         "1774548000": "hurricane",
         "1774551600": "night-raid",
-        "1774562400": "hurricane"
+        "1774562400": "hurricane",
+        "1774566000": "cold-snap",
+        "1774576800": "hurricane",
+        "1774580400": "night-raid",
+        "1774591200": "hurricane",
+        "1774594800": "cold-snap",
+        "1774605600": "hurricane",
+        "1774609200": "night-raid"
       },
       "minor": {
         "1774407600": "bird-city",
@@ -963,6 +973,13 @@
         "1774544400": "hurricane",
         "1774555200": "cold-snap",
         "1774558800": "hurricane",
+        "1774569600": "night-raid",
+        "1774573200": "hurricane",
+        "1774584000": "cold-snap",
+        "1774587600": "hurricane",
+        "1774598400": "night-raid",
+        "1774602000": "hurricane",
+        "1774612800": "cold-snap",
         "1774828800": "electromagnetic-storm",
         "1774843200": "night-raid",
         "1774857600": "electromagnetic-storm",
@@ -1146,6 +1163,13 @@
         "1774544400": "locked-gate",
         "1774551600": "hurricane",
         "1774558800": "locked-gate",
+        "1774566000": "hurricane",
+        "1774573200": "locked-gate",
+        "1774580400": "hurricane",
+        "1774587600": "locked-gate",
+        "1774594800": "hurricane",
+        "1774602000": "locked-gate",
+        "1774609200": "hurricane",
         "1774832400": "electromagnetic-storm",
         "1774846800": "night-raid",
         "1774861200": "electromagnetic-storm",

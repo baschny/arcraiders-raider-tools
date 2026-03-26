@@ -23,7 +23,7 @@ const MAP_ORDER = [
   'blue-gate',
   'stella-montis',
 ];
-const MERGE_HISTORY_WINDOW_SECONDS = 24 * 60 * 60;
+const MERGE_HISTORY_WINDOW_SECONDS = 30 * 24 * 60 * 60;
 const CHANGE_REPORT_PREVIEW_LIMIT = 12;
 
 function readJson(filePath) {
