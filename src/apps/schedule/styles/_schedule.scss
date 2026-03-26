@@ -15,6 +15,13 @@
   margin-bottom: $spacing-lg;
 }
 
+.header-left {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+  flex-shrink: 0;
+}
+
 .current-time-display {
   flex-shrink: 0;
   
@@ -42,6 +49,11 @@
   border-radius: $radius-sm;
   background: $bg-secondary;
   flex-shrink: 0;
+}
+
+.generated-at {
+  font-size: $font-sm;
+  color: $text-secondary;
 }
 
 .date-switcher-button {
@@ -75,6 +87,21 @@
   font-size: $font-lg;
   font-weight: 600;
   font-family: $font-heading;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: $spacing-xs $spacing-sm;
+  border-radius: $radius-sm;
+  transition: all 0.15s ease;
+
+  &:hover:not(:disabled) {
+    background: $bg-tertiary;
+    color: $text-accent;
+  }
+
+  &:disabled {
+    cursor: default;
+  }
 }
 .event-legend {
   flex: 1;
@@ -215,6 +242,11 @@
   color: $text-secondary;
   font-weight: 500;
   padding: $spacing-xs;
+
+  &.current-hour {
+    color: rgb(34, 197, 94);
+    font-weight: 700;
+  }
 }
 
 .map-row {
@@ -308,6 +340,12 @@
     background: rgba(255, 255, 255, 0.15);
     z-index: 2;
   }
+
+  &.current-hour {
+    outline: 1.5px solid rgba(34, 197, 94, 0.6);
+    outline-offset: -1px;
+    z-index: 3;
+  }
 }
 
 .cell-half {
@@ -361,15 +399,7 @@
   
   // Current hour styling
   &.current-hour {
-    background: rgba(34, 197, 94, 0.2);
-    
-    &.major-half.has-event {
-      background: color.mix(rgba(34, 197, 94, 0.2), rgba(255, 215, 0, 0.15));
-    }
-    
-    &.minor-half.has-event {
-      background: color.mix(rgba(34, 197, 94, 0.2), rgba(79, 195, 247, 0.15));
-    }
+    background: rgba(34, 197, 94, 0.15);
   }
   
   &.highlighted {

@@ -218,30 +218,52 @@ export function Schedule({ data }: ScheduleProps) {
     <div className="schedule-container">
       {/* Current time display and legend on same row */}
       <div className="header-row">
-        <div className="current-time-display">
-          <div className="time">{formatTime(now)}</div>
-          <div className="timezone">{getTimezone()}</div>
-        </div>
-        <div className="date-switcher">
-          <button
-            type="button"
-            className="date-switcher-button"
-            disabled={!canGoToPreviousDay}
-            onClick={() => setSelectedDate(addDays(activeDate, -1))}
-            aria-label="Previous day"
-          >
-            <ChevronLeft size={18} />
-          </button>
-          <div className="selected-date">{formatScheduleDate(activeDate)}</div>
-          <button
-            type="button"
-            className="date-switcher-button"
-            disabled={!canGoToNextDay}
-            onClick={() => setSelectedDate(addDays(activeDate, 1))}
-            aria-label="Next day"
-          >
-            <ChevronRight size={18} />
-          </button>
+        <div className="header-left">
+          <div className="current-time-display">
+            <div className="time">{formatTime(now)}</div>
+            <div className="timezone">{getTimezone()}</div>
+          </div>
+          <div className="date-switcher">
+            <button
+              type="button"
+              className="date-switcher-button"
+              disabled={!canGoToPreviousDay}
+              onClick={() => setSelectedDate(addDays(activeDate, -1))}
+              aria-label="Previous day"
+            >
+              <ChevronLeft size={18} />
+            </button>
+            <button
+              type="button"
+              className={`selected-date ${isViewingToday ? 'is-today' : ''}`}
+              onClick={() => setSelectedDate(getStartOfDay(new Date()))}
+              disabled={isViewingToday}
+              title="Go to today"
+            >
+              {formatScheduleDate(activeDate)}
+            </button>
+            <button
+              type="button"
+              className="date-switcher-button"
+              disabled={!canGoToNextDay}
+              onClick={() => setSelectedDate(addDays(activeDate, 1))}
+              aria-label="Next day"
+            >
+              <ChevronRight size={18} />
+            </button>
+          </div>
+          {data.metadata?.generatedAt && (
+            <div className="generated-at">
+              Updated: {new Date(data.metadata.generatedAt).toLocaleString('en-US', {
+                month: 'short',
+                day: 'numeric',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: false,
+              })}
+            </div>
+          )}
         </div>
 
         {/* Event Legend */}
@@ -279,7 +301,7 @@ export function Schedule({ data }: ScheduleProps) {
             <div className="map-label-header">Map</div>
             <div className="hours-container">
               {HOURS.map((hour) => (
-                <div key={hour} className="hour-label">
+                <div key={hour} className={`hour-label ${isViewingToday && hour === currentLocalHour ? 'current-hour' : ''}`}>
                   {hour.toString().padStart(2, '0')}:00
                 </div>
               ))}
@@ -304,7 +326,7 @@ export function Schedule({ data }: ScheduleProps) {
                     return (
                       <div
                         key={hour}
-                        className={`hour-cell ${index < HOURS.length - 1 ? 'with-separator' : ''}`}
+                        className={`hour-cell ${index < HOURS.length - 1 ? 'with-separator' : ''} ${isCurrentHour ? 'current-hour' : ''}`}
                       >
                         {/* Major event half (top) */}
                         <div
