@@ -4,7 +4,7 @@
     "format": "Schedule keys are UNIX timestamps (seconds, UTC) at event start; values are event type ids."
   },
   "metadata": {
-    "generatedAt": "2026-03-29T09:38:14.987Z",
+    "generatedAt": "2026-03-29T10:49:27.981Z",
     "sourceFiles": {
       "scenarios": "../embark-api/data/scenarios.json",
       "mapEvents": "../embark-api/data/arctracker-map-events.json",
@@ -18,8 +18,8 @@
     },
     "mergedPastEvents": {
       "windowSeconds": 2592000,
-      "now": 1774777094,
-      "count": 292
+      "now": 1774781367,
+      "count": 295
     },
     "ignoredConditionIds": []
   },
@@ -1032,6 +1032,7 @@
         "1774843200": "night-raid",
         "1774846800": "hurricane",
         "1774857600": "electromagnetic-storm",
+        "1774861200": "hurricane",
         "1774872000": "night-raid",
         "1774886400": "electromagnetic-storm",
         "1774900800": "night-raid"
