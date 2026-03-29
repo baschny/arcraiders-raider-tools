@@ -4,7 +4,7 @@
     "format": "Schedule keys are UNIX timestamps (seconds, UTC) at event start; values are event type ids."
   },
   "metadata": {
-    "generatedAt": "2026-03-29T10:49:27.981Z",
+    "generatedAt": "2026-03-29T21:24:37.272Z",
     "sourceFiles": {
       "scenarios": "../embark-api/data/scenarios.json",
       "mapEvents": "../embark-api/data/arctracker-map-events.json",
@@ -18,8 +18,8 @@
     },
     "mergedPastEvents": {
       "windowSeconds": 2592000,
-      "now": 1774781367,
-      "count": 295
+      "now": 1774819477,
+      "count": 332
     },
     "ignoredConditionIds": []
   },
@@ -769,7 +769,13 @@
         "1774836000": "hurricane",
         "1774839600": "night-raid",
         "1774850400": "hurricane",
-        "1774854000": "cold-snap"
+        "1774854000": "cold-snap",
+        "1774864800": "hurricane",
+        "1774868400": "night-raid",
+        "1774879200": "hurricane",
+        "1774882800": "cold-snap",
+        "1774893600": "hurricane",
+        "1774897200": "night-raid"
       },
       "minor": {
         "1774407600": "bird-city",
@@ -1034,7 +1040,9 @@
         "1774857600": "electromagnetic-storm",
         "1774861200": "hurricane",
         "1774872000": "night-raid",
+        "1774875600": "hurricane",
         "1774886400": "electromagnetic-storm",
+        "1774890000": "hurricane",
         "1774900800": "night-raid"
       },
       "minor": {
@@ -1242,8 +1250,11 @@
         "1774846800": "night-raid",
         "1774854000": "hurricane",
         "1774861200": "electromagnetic-storm",
+        "1774868400": "hurricane",
         "1774875600": "night-raid",
+        "1774882800": "hurricane",
         "1774890000": "electromagnetic-storm",
+        "1774897200": "hurricane",
         "1774904400": "night-raid"
       },
       "minor": {
