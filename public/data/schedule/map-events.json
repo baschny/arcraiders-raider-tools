@@ -4,7 +4,7 @@
     "format": "Schedule keys are UNIX timestamps (seconds, UTC) at event start; values are event type ids."
   },
   "metadata": {
-    "generatedAt": "2026-03-31T18:53:53.696Z",
+    "generatedAt": "2026-03-31T19:54:52.021Z",
     "sourceFiles": {
       "scenarios": "../embark-api/data/scenarios.json",
       "mapEvents": "../embark-api/data/arctracker-map-events.json",
@@ -18,8 +18,8 @@
     },
     "mergedPastEvents": {
       "windowSeconds": 2592000,
-      "now": 1774983233,
-      "count": 475
+      "now": 1774986892,
+      "count": 485
     },
     "ignoredConditionIds": [
       "1675344979"
@@ -459,6 +459,7 @@
         "1775012400": "electromagnetic-storm",
         "1775026800": "hurricane",
         "1775041200": "night-raid",
+        "1775055600": "electromagnetic-storm",
         "1775433600": "night-raid",
         "1775448000": "electromagnetic-storm",
         "1775462400": "hurricane",
@@ -815,6 +816,7 @@
         "1775016000": "hurricane",
         "1775030400": "night-raid",
         "1775044800": "hurricane",
+        "1775059200": "night-raid",
         "1775437200": "hurricane",
         "1775451600": "night-raid",
         "1775466000": "hurricane",
@@ -1173,6 +1175,7 @@
         "1775019600": "night-raid",
         "1775034000": "hurricane",
         "1775048400": "hidden-bunker",
+        "1775062800": "night-raid",
         "1775440800": "night-raid",
         "1775455200": "hidden-bunker",
         "1775469600": "electromagnetic-storm",
@@ -1530,6 +1533,7 @@
         "1775023200": "hurricane",
         "1775037600": "night-raid",
         "1775052000": "locked-gate",
+        "1775066400": "hurricane",
         "1775444400": "locked-gate",
         "1775458800": "locked-gate",
         "1775473200": "locked-gate",
