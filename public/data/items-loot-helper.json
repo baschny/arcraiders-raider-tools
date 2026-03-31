@@ -1131,6 +1131,35 @@
     ]
   },
   {
+    "id": "assessor_matrix",
+    "name": {
+      "en": "Assessor Matrix"
+    },
+    "description": {
+      "en": ""
+    },
+    "type": "Recyclable",
+    "rarity": "Epic",
+    "value": 5000,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "recyclesInto": {
+      "advanced_arc_powercell": 3,
+      "advanced_mechanical_components": 1
+    },
+    "recipe": null,
+    "salvagesInto": {
+      "advanced_arc_powercell": 2
+    },
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "assorted_seeds",
     "name": {
       "en": "Assorted Seeds"
@@ -2503,6 +2532,159 @@
     ]
   },
   {
+    "id": "canto_blueprint",
+    "name": {
+      "en": "Canto Blueprint"
+    },
+    "description": {
+      "en": "Fully automatic submachine gun with a larger caliber."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "canto_i",
+    "name": {
+      "en": "Canto I"
+    },
+    "description": {
+      "en": "Fully automatic submachine gun with a larger caliber."
+    },
+    "type": "SMG",
+    "rarity": "Legendary",
+    "value": 7000,
+    "weightKg": 6.5,
+    "stackSize": 1,
+    "recyclesInto": {
+      "advanced_mechanical_components": 1,
+      "medium_gun_parts": 2
+    },
+    "recipe": {
+      "advanced_mechanical_components": 2,
+      "magnet": 5,
+      "medium_gun_parts": 3
+    },
+    "salvagesInto": {
+      "medium_gun_parts": 2
+    },
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "canto_ii",
+    "name": {
+      "en": "Canto II"
+    },
+    "description": {
+      "en": "Fully automatic submachine gun with a larger caliber."
+    },
+    "type": "SMG",
+    "rarity": "Legendary",
+    "value": 10000,
+    "weightKg": 6.5,
+    "stackSize": 1,
+    "recyclesInto": {
+      "advanced_mechanical_components": 2,
+      "medium_gun_parts": 2
+    },
+    "recipe": null,
+    "salvagesInto": {
+      "medium_gun_parts": 2
+    },
+    "upgradeCost": {
+      "advanced_mechanical_components": 1,
+      "medium_gun_parts": 2
+    },
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "canto_iii",
+    "name": {
+      "en": "Canto III"
+    },
+    "description": {
+      "en": "Fully automatic submachine gun with a larger caliber."
+    },
+    "type": "SMG",
+    "rarity": "Legendary",
+    "value": 13000,
+    "weightKg": 6.5,
+    "stackSize": 1,
+    "recyclesInto": {
+      "advanced_mechanical_components": 2,
+      "medium_gun_parts": 3
+    },
+    "recipe": null,
+    "salvagesInto": {
+      "medium_gun_parts": 3
+    },
+    "upgradeCost": {
+      "advanced_mechanical_components": 1,
+      "medium_gun_parts": 2
+    },
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "canto_iv",
+    "name": {
+      "en": "Canto IV"
+    },
+    "description": {
+      "en": "Fully automatic submachine gun with a larger caliber."
+    },
+    "type": "SMG",
+    "rarity": "Legendary",
+    "value": 17000,
+    "weightKg": 6.5,
+    "stackSize": 1,
+    "recyclesInto": {
+      "advanced_mechanical_components": 3,
+      "medium_gun_parts": 3
+    },
+    "recipe": null,
+    "salvagesInto": {
+      "medium_gun_parts": 3
+    },
+    "upgradeCost": {
+      "advanced_mechanical_components": 2,
+      "medium_gun_parts": 2
+    },
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "cat_bed",
     "name": {
       "en": "Cat Bed"
@@ -3797,6 +3979,30 @@
     ]
   },
   {
+    "id": "dodgers_note",
+    "name": {
+      "en": "Dodger's Note"
+    },
+    "description": {
+      "en": ""
+    },
+    "type": "Trinket",
+    "rarity": "Common",
+    "value": 0,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "dog_collar",
     "name": {
       "en": "Dog Collar"
@@ -3823,6 +4029,62 @@
     "isWeapon": null,
     "foundIn": [
       "Residential"
+    ]
+  },
+  {
+    "id": "dolabra_blueprint",
+    "name": {
+      "en": "Dolabra Blueprint"
+    },
+    "description": {
+      "en": "An experimental weapon that can either fire a wide short range blast, or be focused to fire a tight medium range beam of heat."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "dolabra",
+    "name": {
+      "en": "Dolabra"
+    },
+    "description": {
+      "en": "An experimental weapon that can either fire a wide short range blast, or be focused to fire a tight medium range beam of heat."
+    },
+    "type": "Shotgun",
+    "rarity": "Legendary",
+    "value": 27500,
+    "weightKg": 8,
+    "stackSize": 1,
+    "recyclesInto": {
+      "magnetic_accelerator": 2
+    },
+    "recipe": {
+      "magnetic_accelerator": 3,
+      "shredder_gyro": 3,
+      "vaporizer_regulator": 2
+    },
+    "salvagesInto": {
+      "magnetic_accelerator": 1
+    },
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": true,
+    "foundIn": [
+      "Unknown"
     ]
   },
   {
@@ -4059,7 +4321,7 @@
     },
     "type": "Ammunition",
     "rarity": "Rare",
-    "value": 1000,
+    "value": 200,
     "weightKg": 0.3,
     "stackSize": 5,
     "recyclesInto": null,
@@ -5506,7 +5768,10 @@
     "value": 100,
     "weightKg": 1,
     "stackSize": 1,
-    "recyclesInto": null,
+    "recyclesInto": {
+      "plastic_parts": 6,
+      "rubber_parts": 6
+    },
     "recipe": null,
     "salvagesInto": null,
     "upgradeCost": null,
@@ -7759,7 +8024,7 @@
       "en": "A heavy-duty pack mule augment. Large weight capacity and large backpack space."
     },
     "type": "Blueprint",
-    "rarity": "Legendary",
+    "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
     "stackSize": null,
@@ -8722,6 +8987,30 @@
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/nutrient_meter.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "official_shutdown_documentation",
+    "name": {
+      "en": "Official Shutdown Documentation"
+    },
+    "description": {
+      "en": ""
+    },
+    "type": "Trinket",
+    "rarity": "Common",
+    "value": 0,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -10876,6 +11165,54 @@
     ]
   },
   {
+    "id": "scout_patrol_note",
+    "name": {
+      "en": "Scout Patrol Note"
+    },
+    "description": {
+      "en": ""
+    },
+    "type": "Trinket",
+    "rarity": "Common",
+    "value": 0,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "secret_meeting_info",
+    "name": {
+      "en": "Secret Meeting Info"
+    },
+    "description": {
+      "en": ""
+    },
+    "type": "Trinket",
+    "rarity": "Common",
+    "value": 0,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "seeker_grenade_blueprint",
     "name": {
       "en": "Seeker Grenade Blueprint"
@@ -12588,6 +12925,63 @@
     ]
   },
   {
+    "id": "surge_coil_blueprint",
+    "name": {
+      "en": "Surge Coil Blueprint"
+    },
+    "description": {
+      "en": "A deployable device that periodically electrifies the area around itself and briefly stuns anything caught within it."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "surge_coil",
+    "name": {
+      "en": "Surge Coil"
+    },
+    "description": {
+      "en": "A deployable device that periodically electrifies the area around itself and briefly stuns anything caught within it."
+    },
+    "type": "Quick Use",
+    "rarity": "Uncommon",
+    "value": 2100,
+    "weightKg": 0,
+    "stackSize": 3,
+    "recyclesInto": {
+      "electrical_components": 1,
+      "sensors": 1
+    },
+    "recipe": {
+      "electrical_components": 1,
+      "hornet_driver": 1,
+      "sensors": 1
+    },
+    "salvagesInto": {
+      "electrical_components": 1
+    },
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "surge_shield_recharger",
     "name": {
       "en": "Surge Shield Recharger"
@@ -13717,6 +14111,35 @@
     "isWeapon": null,
     "foundIn": [
       "Security"
+    ]
+  },
+  {
+    "id": "vaporizer_regulator",
+    "name": {
+      "en": "Vaporizer Regulator"
+    },
+    "description": {
+      "en": ""
+    },
+    "type": "Recyclable",
+    "rarity": "Epic",
+    "value": 6000,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "recyclesInto": {
+      "advanced_electrical_components": 1,
+      "arc_circuitry": 2
+    },
+    "recipe": null,
+    "salvagesInto": {
+      "arc_circuitry": 2
+    },
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
     ]
   },
   {

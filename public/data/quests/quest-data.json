@@ -62,7 +62,8 @@
       "groundbreaking"
     ],
     "nextQuestIds": [
-      "a_rising_tide"
+      "a_rising_tide",
+      "fragmented_logs"
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -75,7 +76,8 @@
       "the_blue_gate"
     ],
     "previousQuestIds": [
-      "map_blue_gate"
+      "map_blue_gate",
+      "off_the_radar"
     ],
     "nextQuestIds": [
       "reduced_to_rubble"
@@ -340,6 +342,20 @@
     "blueprintRewards": []
   },
   {
+    "id": "clamoring_for_attention",
+    "name": "Clamoring for Attention",
+    "trader": "Shani",
+    "map": [
+      "the_blue_gate"
+    ],
+    "previousQuestIds": [
+      "dormant_barons"
+    ],
+    "nextQuestIds": [],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
     "id": "clearer_skies",
     "name": "Clearer Skies",
     "trader": "Shani",
@@ -464,6 +480,7 @@
     ],
     "nextQuestIds": [
       "mixed_signals",
+      "clamoring_for_attention",
       "what_we_left_behind"
     ],
     "hasBlueprint": false,
@@ -483,6 +500,23 @@
     ],
     "nextQuestIds": [
       "the_trifecta"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "dust_on_the_wires",
+    "name": "Dust on the Wires",
+    "trader": "Shani",
+    "map": [
+      "the_spaceport"
+    ],
+    "previousQuestIds": [
+      "the_trifecta"
+    ],
+    "nextQuestIds": [
+      "waking_the_grid",
+      "fragmented_logs"
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -567,6 +601,39 @@
     ],
     "nextQuestIds": [
       "bees"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "fragmented_logs",
+    "name": "Fragmented Logs",
+    "trader": "Shani",
+    "map": [
+      "stella_montis"
+    ],
+    "previousQuestIds": [
+      "a_dead_end",
+      "dust_on_the_wires"
+    ],
+    "nextQuestIds": [
+      "furtive_meetings"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "furtive_meetings",
+    "name": "Furtive Meetings",
+    "trader": "Shani",
+    "map": [
+      "stella_montis"
+    ],
+    "previousQuestIds": [
+      "fragmented_logs"
+    ],
+    "nextQuestIds": [
+      "last_entry"
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -718,6 +785,26 @@
     "blueprintRewards": []
   },
   {
+    "id": "last_entry",
+    "name": "Last Entry",
+    "trader": "Shani",
+    "map": [
+      "stella_montis"
+    ],
+    "previousQuestIds": [
+      "furtive_meetings"
+    ],
+    "nextQuestIds": [],
+    "hasBlueprint": true,
+    "blueprintRewards": [
+      {
+        "id": "yellow_light_stick_blueprint",
+        "name": "Yellow Light Stick Blueprint",
+        "imageFilename": "https://cdn.arctracker.io/items/yellow_light_stick.png"
+      }
+    ]
+  },
+  {
     "id": "life_of_a_pharmacist",
     "name": "Life of a Pharmacist",
     "trader": "Lance",
@@ -843,6 +930,7 @@
       "trash_into_treasure"
     ],
     "nextQuestIds": [
+      "a_first_foothold",
       "a_bad_feeling"
     ],
     "hasBlueprint": false,
@@ -911,6 +999,22 @@
     ],
     "nextQuestIds": [
       "combat_recon"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "outstanding_balance",
+    "name": "Outstanding Balance",
+    "trader": "Tian Wen",
+    "map": [
+      "the_blue_gate"
+    ],
+    "previousQuestIds": [
+      "the_clean_dream"
+    ],
+    "nextQuestIds": [
+      "settled_in_full"
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -1015,6 +1119,18 @@
     "blueprintRewards": []
   },
   {
+    "id": "settled_in_full",
+    "name": "Settled in Full",
+    "trader": "Tian Wen",
+    "map": [],
+    "previousQuestIds": [
+      "outstanding_balance"
+    ],
+    "nextQuestIds": [],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
     "id": "snap_and_salvage",
     "name": "Snap and Salvage",
     "trader": "Tian Wen",
@@ -1115,6 +1231,24 @@
     "blueprintRewards": []
   },
   {
+    "id": "test_case",
+    "name": "Test Case",
+    "trader": "Apollo",
+    "map": [],
+    "previousQuestIds": [
+      "the_league"
+    ],
+    "nextQuestIds": [],
+    "hasBlueprint": true,
+    "blueprintRewards": [
+      {
+        "id": "fireworks_box_blueprint",
+        "name": "Fireworks Box Blueprint",
+        "imageFilename": "https://cdn.arctracker.io/items/fireworks_box.png"
+      }
+    ]
+  },
+  {
     "id": "the_clean_dream",
     "name": "The Clean Dream",
     "trader": "Apollo",
@@ -1127,6 +1261,7 @@
     ],
     "nextQuestIds": [
       "keeping_an_eye_out",
+      "outstanding_balance",
       "a_prime_specimen"
     ],
     "hasBlueprint": false,
@@ -1142,7 +1277,9 @@
     "previousQuestIds": [
       "sparks_fly"
     ],
-    "nextQuestIds": [],
+    "nextQuestIds": [
+      "test_case"
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1226,7 +1363,8 @@
       "down_to_earth"
     ],
     "nextQuestIds": [
-      "dormant_barons"
+      "dormant_barons",
+      "dust_on_the_wires"
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -1303,6 +1441,20 @@
     "nextQuestIds": [
       "the_root_of_the_matter"
     ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "waking_the_grid",
+    "name": "Waking the Grid",
+    "trader": "Shani",
+    "map": [
+      "the_spaceport"
+    ],
+    "previousQuestIds": [
+      "dust_on_the_wires"
+    ],
+    "nextQuestIds": [],
     "hasBlueprint": false,
     "blueprintRewards": []
   },

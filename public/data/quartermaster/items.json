@@ -821,6 +821,27 @@
       "value": 15000,
       "weight": 7
     },
+    "assessor_matrix": {
+      "name": "Assessor Matrix",
+      "description": "",
+      "icon": "",
+      "rarity": "Epic",
+      "type": "Recyclable",
+      "category": "Recyclable",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "recyclesInto": {
+        "advanced_arc_powercell": 3,
+        "advanced_mechanical_components": 1
+      },
+      "salvagesInto": {
+        "advanced_arc_powercell": 2
+      },
+      "stackSize": 1,
+      "value": 5000,
+      "weight": 0.5
+    },
     "assorted_seeds": {
       "name": "Assorted Seeds",
       "description": "A handful of seeds. Celeste might be looking for these.",
@@ -1745,6 +1766,96 @@
         "Commercial"
       ]
     },
+    "canto_i": {
+      "name": "Canto I",
+      "description": "Fully automatic submachine gun with a larger caliber.",
+      "icon": "",
+      "rarity": "Legendary",
+      "type": "SMG",
+      "category": "SMG",
+      "craftBench": "weapon_bench",
+      "stationLevelRequired": 3,
+      "blueprintLocked": true,
+      "craftQuantity": 1,
+      "recipe": {
+        "advanced_mechanical_components": 2,
+        "magnet": 5,
+        "medium_gun_parts": 3
+      },
+      "recyclesInto": {
+        "advanced_mechanical_components": 1,
+        "medium_gun_parts": 2
+      },
+      "salvagesInto": {
+        "medium_gun_parts": 2
+      },
+      "stackSize": 1,
+      "value": 7000,
+      "weight": 6.5
+    },
+    "canto_ii": {
+      "name": "Canto II",
+      "description": "Fully automatic submachine gun with a larger caliber.",
+      "icon": "",
+      "rarity": "Legendary",
+      "type": "SMG",
+      "category": "SMG",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "recyclesInto": {
+        "advanced_mechanical_components": 2,
+        "medium_gun_parts": 2
+      },
+      "salvagesInto": {
+        "medium_gun_parts": 2
+      },
+      "stackSize": 1,
+      "value": 10000,
+      "weight": 6.5
+    },
+    "canto_iii": {
+      "name": "Canto III",
+      "description": "Fully automatic submachine gun with a larger caliber.",
+      "icon": "",
+      "rarity": "Legendary",
+      "type": "SMG",
+      "category": "SMG",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "recyclesInto": {
+        "advanced_mechanical_components": 2,
+        "medium_gun_parts": 3
+      },
+      "salvagesInto": {
+        "medium_gun_parts": 3
+      },
+      "stackSize": 1,
+      "value": 13000,
+      "weight": 6.5
+    },
+    "canto_iv": {
+      "name": "Canto IV",
+      "description": "Fully automatic submachine gun with a larger caliber.",
+      "icon": "",
+      "rarity": "Legendary",
+      "type": "SMG",
+      "category": "SMG",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "recyclesInto": {
+        "advanced_mechanical_components": 3,
+        "medium_gun_parts": 3
+      },
+      "salvagesInto": {
+        "medium_gun_parts": 3
+      },
+      "stackSize": 1,
+      "value": 17000,
+      "weight": 6.5
+    },
     "cat_bed": {
       "name": "Cat Bed",
       "description": "At least a tiny bit more comfortable than your face.",
@@ -2622,6 +2733,20 @@
         "Residential"
       ]
     },
+    "dodgers_note": {
+      "name": "Dodger's Note",
+      "description": "",
+      "icon": "",
+      "rarity": "Common",
+      "type": "Trinket",
+      "category": "Trinket",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "stackSize": 1,
+      "value": 0,
+      "weight": 0.5
+    },
     "dog_collar": {
       "name": "Dog Collar",
       "description": "After all this time, you can still smell the goodness.",
@@ -2645,6 +2770,33 @@
       "foundIn": [
         "Residential"
       ]
+    },
+    "dolabra": {
+      "name": "Dolabra",
+      "description": "An experimental weapon that can either fire a wide short range blast, or be focused to fire a tight medium range beam of heat.",
+      "icon": "",
+      "rarity": "Legendary",
+      "type": "Shotgun",
+      "category": "Weapon",
+      "subCategory": "Shotgun",
+      "craftBench": "weapon_bench",
+      "stationLevelRequired": 3,
+      "blueprintLocked": true,
+      "craftQuantity": 1,
+      "recipe": {
+        "magnetic_accelerator": 3,
+        "shredder_gyro": 3,
+        "vaporizer_regulator": 2
+      },
+      "recyclesInto": {
+        "magnetic_accelerator": 2
+      },
+      "salvagesInto": {
+        "magnetic_accelerator": 1
+      },
+      "stackSize": 1,
+      "value": 27500,
+      "weight": 8
     },
     "doodly_duck": {
       "name": "Doodly Duck",
@@ -2838,7 +2990,7 @@
         "battery": 2
       },
       "stackSize": 5,
-      "value": 1000,
+      "value": 200,
       "weight": 0.3
     },
     "equalizer": {
@@ -3742,6 +3894,10 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "recyclesInto": {
+        "plastic_parts": 6,
+        "rubber_parts": 6
+      },
       "stackSize": 1,
       "value": 100,
       "weight": 1
@@ -5940,6 +6096,20 @@
       "stackSize": 1,
       "weight": 0.25
     },
+    "official_shutdown_documentation": {
+      "name": "Official Shutdown Documentation",
+      "description": "",
+      "icon": "",
+      "rarity": "Common",
+      "type": "Trinket",
+      "category": "Trinket",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "stackSize": 1,
+      "value": 0,
+      "weight": 0.5
+    },
     "oil": {
       "name": "Oil",
       "description": "Used to craft weapons and explosives. Can be recycled into chemicals. Used to craft: Renegade, Explosive Compound, Blaze Grenade",
@@ -7517,6 +7687,34 @@
         "Exodus"
       ]
     },
+    "scout_patrol_note": {
+      "name": "Scout Patrol Note",
+      "description": "",
+      "icon": "",
+      "rarity": "Common",
+      "type": "Trinket",
+      "category": "Trinket",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "stackSize": 1,
+      "value": 0,
+      "weight": 0.5
+    },
+    "secret_meeting_info": {
+      "name": "Secret Meeting Info",
+      "description": "",
+      "icon": "",
+      "rarity": "Common",
+      "type": "Trinket",
+      "category": "Trinket",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "stackSize": 1,
+      "value": 0,
+      "weight": 0.5
+    },
     "seeker_grenade": {
       "name": "Seeker Grenade",
       "description": "A homing grenade that targets a single nearby ARC dealing explosive damage on impact.",
@@ -8615,6 +8813,34 @@
       "value": 5000,
       "weight": 5
     },
+    "surge_coil": {
+      "name": "Surge Coil",
+      "description": "A deployable device that periodically electrifies the area around itself and briefly stuns anything caught within it.",
+      "icon": "",
+      "rarity": "Uncommon",
+      "type": "Quick Use",
+      "category": "Quick Use",
+      "subCategory": "Explosive",
+      "craftBench": "explosives_bench",
+      "stationLevelRequired": 3,
+      "blueprintLocked": true,
+      "craftQuantity": 1,
+      "recipe": {
+        "electrical_components": 1,
+        "hornet_driver": 1,
+        "sensors": 1
+      },
+      "recyclesInto": {
+        "electrical_components": 1,
+        "sensors": 1
+      },
+      "salvagesInto": {
+        "electrical_components": 1
+      },
+      "stackSize": 3,
+      "value": 2100,
+      "weight": 0
+    },
     "surge_shield_recharger": {
       "name": "Surge Shield Recharger",
       "description": "A handheld kit that recharges a shield on use.",
@@ -9363,6 +9589,27 @@
       "foundIn": [
         "Security"
       ]
+    },
+    "vaporizer_regulator": {
+      "name": "Vaporizer Regulator",
+      "description": "",
+      "icon": "",
+      "rarity": "Epic",
+      "type": "Recyclable",
+      "category": "Recyclable",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "recyclesInto": {
+        "advanced_electrical_components": 1,
+        "arc_circuitry": 2
+      },
+      "salvagesInto": {
+        "arc_circuitry": 2
+      },
+      "stackSize": 1,
+      "value": 6000,
+      "weight": 0.5
     },
     "vase": {
       "name": "Vase",
