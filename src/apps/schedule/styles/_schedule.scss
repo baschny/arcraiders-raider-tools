@@ -126,7 +126,7 @@
     border: 1px solid transparent;
     background: transparent;
 
-    &:hover {
+    &:hover:not(.legend-unavailable) {
       background: rgba(255, 255, 255, 0.05);
       transform: translateY(-2px);
     }
@@ -140,6 +140,15 @@
 
     &.legend-pinned {
       background: rgba(255, 255, 255, 0.12);
+    }
+
+    &.legend-unavailable {
+      opacity: 0.45;
+      filter: grayscale(100%);
+    }
+
+    &.legend-unavailable:not(.legend-pinned) {
+      cursor: default;
     }
   }
 

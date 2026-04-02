@@ -39,7 +39,7 @@ function clampDateToRange(date: Date, minDateMs: number | null, maxDateMs: numbe
 }
 
 export function Schedule({ data }: ScheduleProps) {
-  const mapIds = Object.keys(data.maps);
+  const mapIds = useMemo(() => Object.keys(data.maps), [data.maps]);
   const [currentTime, setCurrentTime] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(() => getStartOfDay(new Date()));
   const [hoveredEventType, setHoveredEventType] = useState<string | null>(null);
@@ -197,6 +197,35 @@ export function Schedule({ data }: ScheduleProps) {
   };
 
   const activeEventTypes = getActiveEventTypes();
+  const eventsOnActiveDate = useMemo(() => {
+    const availableEvents = new Set<string>();
+
+    mapIds.forEach((mapId) => {
+      const schedule = data.schedule[mapId];
+      if (!schedule) {
+        return;
+      }
+
+      HOURS.forEach((localHour) => {
+        const localDateTime = new Date(activeDate);
+        localDateTime.setHours(localHour, 0, 0, 0);
+        const timestampKey = Math.floor(localDateTime.getTime() / 1000).toString();
+
+        const majorEventId = schedule.major?.[timestampKey];
+        const minorEventId = schedule.minor?.[timestampKey];
+
+        if (majorEventId && data.eventTypes[majorEventId]) {
+          availableEvents.add(majorEventId);
+        }
+
+        if (minorEventId && data.eventTypes[minorEventId]) {
+          availableEvents.add(minorEventId);
+        }
+      });
+    });
+
+    return availableEvents;
+  }, [activeDate, data.eventTypes, data.schedule, mapIds]);
 
   // Toggle event type pin/unpin
   const handleEventToggle = (eventId: string) => {
@@ -269,26 +298,33 @@ export function Schedule({ data }: ScheduleProps) {
         {/* Event Legend */}
         <div className="event-legend">
           <div className="legend-items">
-            {activeEventTypes.map(({ eventId, event }) => (
-              <div
-                key={eventId}
-                className={`legend-item ${event.category} ${
-                  activeEventType === eventId ? 'legend-highlighted' : ''
-                } ${pinnedEventType === eventId ? 'legend-pinned' : ''}`}
-                onMouseEnter={() => !pinnedEventType && setHoveredEventType(eventId)}
-                onMouseLeave={() => setHoveredEventType(null)}
-                onClick={() => handleEventToggle(eventId)}
-              >
-                <div className="legend-icon-wrapper">
-                  <img
-                    src={getLocalIconPath(event.icon)}
-                    alt={event.displayName}
-                    className="legend-icon"
-                  />
+            {activeEventTypes.map(({ eventId, event }) => {
+              const isAvailableOnActiveDate = eventsOnActiveDate.has(eventId);
+              const canInteract = isAvailableOnActiveDate || pinnedEventType === eventId;
+
+              return (
+                <div
+                  key={eventId}
+                  className={`legend-item ${event.category} ${
+                    activeEventType === eventId ? 'legend-highlighted' : ''
+                  } ${pinnedEventType === eventId ? 'legend-pinned' : ''} ${
+                    isAvailableOnActiveDate ? '' : 'legend-unavailable'
+                  }`}
+                  onMouseEnter={() => !pinnedEventType && canInteract && setHoveredEventType(eventId)}
+                  onMouseLeave={() => setHoveredEventType(null)}
+                  onClick={() => canInteract && handleEventToggle(eventId)}
+                >
+                  <div className="legend-icon-wrapper">
+                    <img
+                      src={getLocalIconPath(event.icon)}
+                      alt={event.displayName}
+                      className="legend-icon"
+                    />
+                  </div>
+                  <span className="legend-name">{event.displayName}</span>
                 </div>
-                <span className="legend-name">{event.displayName}</span>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
