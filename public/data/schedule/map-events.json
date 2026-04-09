@@ -4,7 +4,7 @@
     "format": "Schedule keys are UNIX timestamps (seconds, UTC) at event start; values are event type ids."
   },
   "metadata": {
-    "generatedAt": "2026-04-09T21:39:05.814Z",
+    "generatedAt": "2026-04-09T22:13:12.971Z",
     "sourceFiles": {
       "scenarios": "../embark-api/data/scenarios.json",
       "mapEvents": "../embark-api/data/arctracker-map-events.json",
@@ -14,12 +14,12 @@
     },
     "timestampRange": {
       "start": 1774396800,
-      "end": 1775786400
+      "end": 1775793600
     },
     "mergedPastEvents": {
       "windowSeconds": 2592000,
-      "now": 1775770745,
-      "count": 1230
+      "now": 1775772792,
+      "count": 1233
     },
     "ignoredConditionIds": []
   },
@@ -561,7 +561,8 @@
         "1775750400": "electromagnetic-storm",
         "1775757600": "close-scrutiny",
         "1775764800": "hurricane",
-        "1775772000": "close-scrutiny"
+        "1775772000": "close-scrutiny",
+        "1775779200": "night-raid"
       },
       "minor": {
         "1774407600": "matriarch",
@@ -689,7 +690,8 @@
         "1775739600": "uncovered-caches",
         "1775750400": "matriarch",
         "1775761200": "uncovered-caches",
-        "1775772000": "harvester"
+        "1775772000": "harvester",
+        "1775786400": "uncovered-caches"
       }
     },
     "buried-city": {
@@ -991,7 +993,8 @@
         "1775739600": "uncovered-caches",
         "1775750400": "bird-city",
         "1775761200": "uncovered-caches",
-        "1775772000": "bird-city"
+        "1775772000": "bird-city",
+        "1775786400": "uncovered-caches"
       }
     },
     "the-spaceport": {
@@ -1160,7 +1163,8 @@
         "1775746800": "close-scrutiny",
         "1775757600": "hidden-bunker",
         "1775761200": "close-scrutiny",
-        "1775772000": "electromagnetic-storm"
+        "1775772000": "electromagnetic-storm",
+        "1775775600": "close-scrutiny"
       },
       "minor": {
         "1774404000": "matriarch",
@@ -1692,7 +1696,8 @@
         "1775728800": "night-raid",
         "1775743200": "night-raid",
         "1775757600": "night-raid",
-        "1775772000": "night-raid"
+        "1775772000": "night-raid",
+        "1775790000": "night-raid"
       },
       "minor": {}
     }
