@@ -4,7 +4,7 @@
     "format": "Schedule keys are UNIX timestamps (seconds, UTC) at event start; values are event type ids."
   },
   "metadata": {
-    "generatedAt": "2026-04-10T20:53:45.686Z",
+    "generatedAt": "2026-04-10T21:29:09.921Z",
     "sourceFiles": {
       "scenarios": "../embark-api/data/scenarios.json",
       "mapEvents": "../embark-api/data/arctracker-map-events.json",
@@ -14,12 +14,12 @@
     },
     "timestampRange": {
       "start": 1774396800,
-      "end": 1775865600
+      "end": 1775869200
     },
     "mergedPastEvents": {
       "windowSeconds": 2592000,
-      "now": 1775854425,
-      "count": 1247
+      "now": 1775856549,
+      "count": 1251
     },
     "ignoredConditionIds": []
   },
@@ -869,7 +869,8 @@
         "1775768400": "night-raid",
         "1775779200": "close-scrutiny",
         "1775851200": "close-scrutiny",
-        "1775854800": "night-raid"
+        "1775854800": "night-raid",
+        "1775865600": "close-scrutiny"
       },
       "minor": {
         "1774407600": "bird-city",
@@ -1476,7 +1477,8 @@
         "1775761200": "locked-gate",
         "1775768400": "close-scrutiny",
         "1775775600": "locked-gate",
-        "1775854800": "close-scrutiny"
+        "1775854800": "close-scrutiny",
+        "1775862000": "locked-gate"
       },
       "minor": {
         "1774396800": "matriarch",
@@ -1608,7 +1610,8 @@
         "1775754000": "matriarch",
         "1775764800": "uncovered-caches",
         "1775775600": "harvester",
-        "1775854800": "matriarch"
+        "1775854800": "matriarch",
+        "1775865600": "harvester"
       }
     },
     "stella-montis": {
