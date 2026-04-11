@@ -4,7 +4,7 @@
 
 SOURCE_DIR="../arcraiders-data/items"
 DEST_DIR="./public/data"
-LOCALES=("en" "de" "pt-BR")
+LOCALES=("en" "de" "pt-BR" "es" "fr" "it" "ja" "ko-KR" "pl" "ru" "tr" "zh-CN" "zh-TW")
 
 echo "Generating consolidated item data..."
 
@@ -29,6 +29,8 @@ for LOCALE in "${LOCALES[@]}"; do
   FALLBACK_LOCALE="en"
   if [ "$LOCALE" = "pt-BR" ]; then
     FALLBACK_LOCALE="pt"
+  elif [ "$LOCALE" = "ko-KR" ]; then
+    FALLBACK_LOCALE="ko"
   fi
 
   jq -s --arg locale "$LOCALE" --arg fallback "$FALLBACK_LOCALE" '

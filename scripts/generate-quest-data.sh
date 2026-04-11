@@ -9,7 +9,7 @@ QUESTS_DIR="$SCRIPT_DIR/../../arcraiders-data/quests"
 OUTPUT_FILE="$SCRIPT_DIR/../public/data/quests/quest-data.json"
 OUTPUT_DIR="$SCRIPT_DIR/../public/data/quests"
 ITEMS_DIR="$SCRIPT_DIR/../public/data"
-LOCALES=("en" "de" "pt-BR")
+LOCALES=("en" "de" "pt-BR" "es" "fr" "it" "ja" "ko-KR" "pl" "ru" "tr" "zh-CN" "zh-TW")
 
 echo "Generating quest data from $QUESTS_DIR..."
 
@@ -27,6 +27,8 @@ for LOCALE in "${LOCALES[@]}"; do
   FALLBACK_LOCALE="en"
   if [ "$LOCALE" = "pt-BR" ]; then
     FALLBACK_LOCALE="pt"
+  elif [ "$LOCALE" = "ko-KR" ]; then
+    FALLBACK_LOCALE="ko"
   fi
 
   jq -s --arg locale "$LOCALE" --arg fallback "$FALLBACK_LOCALE" --slurpfile items "$ITEMS_FILE" '
@@ -40,10 +42,16 @@ for LOCALE in "${LOCALES[@]}"; do
       map: (.map // []),
       previousQuestIds: (.previousQuestIds // []),
       nextQuestIds: (.nextQuestIds // []),
-      hasBlueprint: ((.rewardItemIds // []) | map(.itemId) | any(test("_blueprint$"))),
+      hasBlueprint: (
+        (.rewardItemIds // [])
+        | map(select(. != null))
+        | map(.itemId // empty)
+        | any(test("_blueprint$"))
+      ),
       blueprintRewards: (
         (.rewardItemIds // [])
-        | map(.itemId)
+        | map(select(. != null))
+        | map(.itemId // empty)
         | map(select(test("_blueprint$")))
         | map(
             . as $blueprintId

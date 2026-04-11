@@ -75,6 +75,13 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
     gap: $spacing-xs;
 
+    .tool-switcher-flag {
+      font-size: 1.45rem;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+    }
+
     &:hover {
       background: $bg-quaternary;
       border-color: $border-lighter;
@@ -130,8 +137,18 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .header-menu-item-flag {
-    width: 20px;
+    width: 28px;
     text-align: center;
+    font-size: 1.35rem;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .header-menu-item-language {
+    font-size: $font-md;
+    line-height: 1.2;
   }
 }
 

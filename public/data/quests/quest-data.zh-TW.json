@@ -1,0 +1,1870 @@
+[
+  {
+    "id": "a_bad_feeling",
+    "name": {
+      "value": "不祥預感",
+      "originalEn": "A Bad Feeling"
+    },
+    "trader": "Celeste",
+    "map": [],
+    "previousQuestIds": [
+      "off_the_radar"
+    ],
+    "nextQuestIds": [
+      "in_my_image",
+      "safe_passage",
+      "the_right_tool",
+      "hatch_repairs"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "a_balanced_harvest",
+    "name": {
+      "value": "均衡收穫",
+      "originalEn": "A Balanced Harvest"
+    },
+    "trader": "Celeste",
+    "map": [
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "eyes_in_the_sky"
+    ],
+    "nextQuestIds": [
+      "untended_garden"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "a_better_use",
+    "name": {
+      "value": "更好的用途",
+      "originalEn": "A Better Use"
+    },
+    "trader": "Tian Wen",
+    "map": [
+      "buried_city",
+      "the_spaceport",
+      "the_blue_gate",
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "the_right_tool"
+    ],
+    "nextQuestIds": [
+      "greasing_her_palms"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "a_dead_end",
+    "name": {
+      "value": "盡頭",
+      "originalEn": "A Dead End"
+    },
+    "trader": "Shani",
+    "map": [
+      "the_blue_gate"
+    ],
+    "previousQuestIds": [
+      "groundbreaking"
+    ],
+    "nextQuestIds": [
+      "a_rising_tide",
+      "fragmented_logs"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "a_first_foothold",
+    "name": {
+      "value": "第一個立足點",
+      "originalEn": "A First Foothold"
+    },
+    "trader": "Apollo",
+    "map": [
+      "the_blue_gate"
+    ],
+    "previousQuestIds": [
+      "map_blue_gate",
+      "off_the_radar"
+    ],
+    "nextQuestIds": [
+      "reduced_to_rubble"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "a_lay_of_the_land",
+    "name": {
+      "value": "打探地勢",
+      "originalEn": "A Lay of the Land"
+    },
+    "trader": "Shani",
+    "map": [
+      "the_spaceport"
+    ],
+    "previousQuestIds": [
+      "a_reveal_in_ruins"
+    ],
+    "nextQuestIds": [
+      "eyes_in_the_sky"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "a_new_type_of_plant",
+    "name": {
+      "value": "新種類植物",
+      "originalEn": "A New Type of Plant"
+    },
+    "trader": "Lance",
+    "map": [
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "building_a_library"
+    ],
+    "nextQuestIds": [
+      "armored_transports"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "a_prime_specimen",
+    "name": {
+      "value": "優秀樣本",
+      "originalEn": "A Prime Specimen"
+    },
+    "trader": "Shani",
+    "map": [
+      "the_blue_gate"
+    ],
+    "previousQuestIds": [
+      "the_clean_dream"
+    ],
+    "nextQuestIds": [],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "a_reveal_in_ruins",
+    "name": {
+      "value": "遺跡揭密",
+      "originalEn": "A Reveal in Ruins"
+    },
+    "trader": "Lance",
+    "map": [
+      "buried_city"
+    ],
+    "previousQuestIds": [
+      "medical_merchandise"
+    ],
+    "nextQuestIds": [
+      "a_lay_of_the_land"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "a_rising_tide",
+    "name": {
+      "value": "掀起浪潮",
+      "originalEn": "A Rising Tide"
+    },
+    "trader": "Celeste",
+    "map": [
+      "buried_city",
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "a_dead_end"
+    ],
+    "nextQuestIds": [],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "a_symbol_of_unification",
+    "name": {
+      "value": "統一象徵",
+      "originalEn": "A Symbol of Unification"
+    },
+    "trader": "Celeste",
+    "map": [
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "unexpected_initiative"
+    ],
+    "nextQuestIds": [
+      "the_majors_footlocker",
+      "celestes_journals",
+      "out_of_the_shadows"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "a_toxic_trail",
+    "name": {
+      "value": "有毒小徑",
+      "originalEn": "A Toxic Trail"
+    },
+    "trader": "Shani",
+    "map": [
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "life_of_a_pharmacist"
+    ],
+    "nextQuestIds": [
+      "the_stench_of_corruption"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "a_warm_place_to_rest",
+    "name": {
+      "value": "溫暖的休息處",
+      "originalEn": "A Warm Place To Rest"
+    },
+    "trader": "Apollo",
+    "map": [
+      "buried_city"
+    ],
+    "previousQuestIds": [
+      "switching_the_supply"
+    ],
+    "nextQuestIds": [
+      "prescriptions_of_the_past"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "after_rain_comes",
+    "name": {
+      "value": "雨過天晴",
+      "originalEn": "After Rain Comes"
+    },
+    "trader": "Celeste",
+    "map": [
+      "buried_city"
+    ],
+    "previousQuestIds": [
+      "eyes_in_the_sky"
+    ],
+    "nextQuestIds": [
+      "water_troubles"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "armored_transports",
+    "name": {
+      "value": "裝甲運輸車",
+      "originalEn": "Armored Transports"
+    },
+    "trader": "Tian Wen",
+    "map": [
+      "the_blue_gate"
+    ],
+    "previousQuestIds": [
+      "with_a_trace",
+      "a_new_type_of_plant"
+    ],
+    "nextQuestIds": [],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "back_on_top",
+    "name": {
+      "value": "返回頂層",
+      "originalEn": "Back on Top"
+    },
+    "trader": "Tian Wen",
+    "map": [
+      "buried_city",
+      "the_spaceport",
+      "the_blue_gate",
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "the_majors_footlocker",
+      "eyes_in_the_sky",
+      "celestes_journals"
+    ],
+    "nextQuestIds": [
+      "our_presence_up_there"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "bees",
+    "name": {
+      "value": "有蜜蜂！",
+      "originalEn": "Bees!"
+    },
+    "trader": "Celeste",
+    "map": [
+      "the_blue_gate"
+    ],
+    "previousQuestIds": [
+      "flickering_threat"
+    ],
+    "nextQuestIds": [
+      "espresso"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "bombing_run",
+    "name": {
+      "value": "轟炸行動",
+      "originalEn": "Bombing Run"
+    },
+    "trader": "Shani",
+    "map": [],
+    "previousQuestIds": [
+      "combat_recon"
+    ],
+    "nextQuestIds": [],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "broken_monument",
+    "name": {
+      "value": "破損的紀念碑",
+      "originalEn": "Broken Monument"
+    },
+    "trader": "Tian Wen",
+    "map": [
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "what_we_left_behind"
+    ],
+    "nextQuestIds": [
+      "marked_for_death",
+      "straight_record"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "building_a_library",
+    "name": {
+      "value": "建造圖書館",
+      "originalEn": "Building a Library"
+    },
+    "trader": "Apollo",
+    "map": [
+      "buried_city"
+    ],
+    "previousQuestIds": [
+      "digging_up_dirt"
+    ],
+    "nextQuestIds": [
+      "a_new_type_of_plant"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "celestes_journals",
+    "name": {
+      "value": "莎莉絲特的日誌",
+      "originalEn": "Celeste’s Journals"
+    },
+    "trader": "Celeste",
+    "map": [
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "a_symbol_of_unification"
+    ],
+    "nextQuestIds": [
+      "back_on_top"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "clamoring_for_attention",
+    "name": {
+      "value": "爭奪關注",
+      "originalEn": "Clamoring for Attention"
+    },
+    "trader": "Shani",
+    "map": [
+      "the_blue_gate"
+    ],
+    "previousQuestIds": [
+      "dormant_barons"
+    ],
+    "nextQuestIds": [],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "clearer_skies",
+    "name": {
+      "value": "更晴朗的天空",
+      "originalEn": "Clearer Skies"
+    },
+    "trader": "Shani",
+    "map": [],
+    "previousQuestIds": [
+      "picking_up_the_pieces"
+    ],
+    "nextQuestIds": [
+      "off_the_radar"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "cold_storage",
+    "name": {
+      "value": "冷藏室",
+      "originalEn": "Cold Storage"
+    },
+    "trader": "Shani",
+    "map": [
+      "stella_montis"
+    ],
+    "previousQuestIds": [
+      "in_my_image"
+    ],
+    "nextQuestIds": [
+      "snap_and_salvage"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "combat_recon",
+    "name": {
+      "value": "戰鬥偵察",
+      "originalEn": "Combat Recon"
+    },
+    "trader": "Shani",
+    "map": [
+      "buried_city"
+    ],
+    "previousQuestIds": [
+      "into_the_fray",
+      "out_of_the_shadows"
+    ],
+    "nextQuestIds": [
+      "bombing_run"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "communication_hideout",
+    "name": {
+      "value": "通訊躲藏點",
+      "originalEn": "Communication Hideout"
+    },
+    "trader": "Shani",
+    "map": [
+      "buried_city"
+    ],
+    "previousQuestIds": [
+      "lost_in_transmission"
+    ],
+    "nextQuestIds": [
+      "into_the_fray"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "deciphering_the_data",
+    "name": {
+      "value": "破解資料",
+      "originalEn": "Deciphering The Data"
+    },
+    "trader": "Shani",
+    "map": [
+      "the_spaceport"
+    ],
+    "previousQuestIds": [
+      "paving_the_way"
+    ],
+    "nextQuestIds": [
+      "groundbreaking"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "digging_up_dirt",
+    "name": {
+      "value": "挖掘醜聞",
+      "originalEn": "Digging Up Dirt"
+    },
+    "trader": "Celeste",
+    "map": [
+      "buried_city"
+    ],
+    "previousQuestIds": [
+      "tribute_to_toledo"
+    ],
+    "nextQuestIds": [
+      "turnabout",
+      "building_a_library"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "doctors_orders",
+    "name": {
+      "value": "醫生的訂單",
+      "originalEn": "Doctor's Orders"
+    },
+    "trader": "Lance",
+    "map": [],
+    "previousQuestIds": [
+      "greasing_her_palms"
+    ],
+    "nextQuestIds": [
+      "medical_merchandise"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "dormant_barons",
+    "name": {
+      "value": "沉睡的男爵",
+      "originalEn": "Dormant Barons"
+    },
+    "trader": "Shani",
+    "map": [
+      "the_spaceport",
+      "the_blue_gate",
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "greasing_her_palms",
+      "the_trifecta"
+    ],
+    "nextQuestIds": [
+      "mixed_signals",
+      "clamoring_for_attention",
+      "what_we_left_behind"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "down_to_earth",
+    "name": {
+      "value": "腳踏實地",
+      "originalEn": "Down to Earth"
+    },
+    "trader": "Shani",
+    "map": [
+      "buried_city",
+      "the_spaceport",
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "hatch_repairs"
+    ],
+    "nextQuestIds": [
+      "the_trifecta"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "dust_on_the_wires",
+    "name": {
+      "value": "電線上的塵埃",
+      "originalEn": "Dust on the Wires"
+    },
+    "trader": "Shani",
+    "map": [
+      "the_spaceport"
+    ],
+    "previousQuestIds": [
+      "the_trifecta"
+    ],
+    "nextQuestIds": [
+      "waking_the_grid",
+      "fragmented_logs"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "echoes_of_victory_ridge",
+    "name": {
+      "value": "勝利山脊的回音",
+      "originalEn": "Echoes of Victory Ridge"
+    },
+    "trader": "Celeste",
+    "map": [
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "keeping_the_memory"
+    ],
+    "nextQuestIds": [
+      "unexpected_initiative"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "espresso",
+    "name": {
+      "value": "義式咖啡",
+      "originalEn": "Espresso"
+    },
+    "trader": "Apollo",
+    "map": [
+      "buried_city"
+    ],
+    "previousQuestIds": [
+      "bees"
+    ],
+    "nextQuestIds": [
+      "life_of_a_pharmacist"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "eyes_in_the_sky",
+    "name": {
+      "value": "天空之眼",
+      "originalEn": "Eyes in the Sky"
+    },
+    "trader": "Shani",
+    "map": [
+      "buried_city",
+      "the_spaceport",
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "a_lay_of_the_land"
+    ],
+    "nextQuestIds": [
+      "after_rain_comes",
+      "a_balanced_harvest",
+      "back_on_top"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "eyes_on_the_prize",
+    "name": {
+      "value": "緊盯目標",
+      "originalEn": "Eyes on the Prize"
+    },
+    "trader": "Tian Wen",
+    "map": [
+      "buried_city"
+    ],
+    "previousQuestIds": [
+      "market_correction"
+    ],
+    "nextQuestIds": [
+      "industrial_espionage"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "flickering_threat",
+    "name": {
+      "value": "閃爍的威脅",
+      "originalEn": "Flickering Threat"
+    },
+    "trader": "Celeste",
+    "map": [
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "power_out"
+    ],
+    "nextQuestIds": [
+      "bees"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "fragmented_logs",
+    "name": {
+      "value": "紀錄片段",
+      "originalEn": "Fragmented Logs"
+    },
+    "trader": "Shani",
+    "map": [
+      "stella_montis"
+    ],
+    "previousQuestIds": [
+      "a_dead_end",
+      "dust_on_the_wires"
+    ],
+    "nextQuestIds": [
+      "furtive_meetings"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "furtive_meetings",
+    "name": {
+      "value": "秘密會面",
+      "originalEn": "Furtive Meetings"
+    },
+    "trader": "Shani",
+    "map": [
+      "stella_montis"
+    ],
+    "previousQuestIds": [
+      "fragmented_logs"
+    ],
+    "nextQuestIds": [
+      "last_entry"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "greasing_her_palms",
+    "name": {
+      "value": "行賄討好",
+      "originalEn": "Greasing Her Palms"
+    },
+    "trader": "Celeste",
+    "map": [
+      "buried_city",
+      "the_spaceport",
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "a_better_use"
+    ],
+    "nextQuestIds": [
+      "dormant_barons",
+      "doctors_orders"
+    ],
+    "hasBlueprint": true,
+    "blueprintRewards": [
+      {
+        "id": "lure_grenade_blueprint",
+        "name": {
+          "value": "誘餌手榴彈藍圖",
+          "originalEn": "Lure Grenade Blueprint"
+        },
+        "imageFilename": "https://cdn.arctracker.io/items/lure_grenade.png"
+      }
+    ]
+  },
+  {
+    "id": "groundbreaking",
+    "name": {
+      "value": "破土開創",
+      "originalEn": "Groundbreaking"
+    },
+    "trader": "Apollo",
+    "map": [
+      "the_blue_gate"
+    ],
+    "previousQuestIds": [
+      "deciphering_the_data"
+    ],
+    "nextQuestIds": [
+      "worth_your_salt",
+      "a_dead_end"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "hatch_repairs",
+    "name": {
+      "value": "出入口維修",
+      "originalEn": "Hatch Repairs"
+    },
+    "trader": "Shani",
+    "map": [],
+    "previousQuestIds": [
+      "a_bad_feeling"
+    ],
+    "nextQuestIds": [
+      "down_to_earth"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "in_my_image",
+    "name": {
+      "value": "和我如出一轍",
+      "originalEn": "In My Image"
+    },
+    "trader": "Lance",
+    "map": [
+      "stella_montis"
+    ],
+    "previousQuestIds": [
+      "map_stella_montis",
+      "a_bad_feeling"
+    ],
+    "nextQuestIds": [
+      "cold_storage"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "industrial_espionage",
+    "name": {
+      "value": "工業間諜",
+      "originalEn": "Industrial Espionage"
+    },
+    "trader": "Tian Wen",
+    "map": [
+      "buried_city"
+    ],
+    "previousQuestIds": [
+      "eyes_on_the_prize"
+    ],
+    "nextQuestIds": [
+      "unexpected_initiative"
+    ],
+    "hasBlueprint": true,
+    "blueprintRewards": [
+      {
+        "id": "burletta_blueprint",
+        "name": {
+          "value": "布雷塔藍圖",
+          "originalEn": "Burletta Blueprint"
+        },
+        "imageFilename": "https://cdn.arctracker.io/items/burletta.png"
+      }
+    ]
+  },
+  {
+    "id": "into_the_fray",
+    "name": {
+      "value": "投入戰鬥",
+      "originalEn": "Into the Fray"
+    },
+    "trader": "Shani",
+    "map": [
+      "buried_city",
+      "the_spaceport",
+      "the_blue_gate",
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "water_troubles",
+      "communication_hideout"
+    ],
+    "nextQuestIds": [
+      "combat_recon",
+      "paving_the_way"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "keeping_an_eye_out",
+    "name": {
+      "value": "多加留意",
+      "originalEn": "Keeping an Eye Out"
+    },
+    "trader": "Celeste",
+    "map": [
+      "the_blue_gate"
+    ],
+    "previousQuestIds": [
+      "the_clean_dream"
+    ],
+    "nextQuestIds": [],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "keeping_the_memory",
+    "name": {
+      "value": "保存記憶",
+      "originalEn": "Keeping the Memory"
+    },
+    "trader": "Celeste",
+    "map": [
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "straight_record"
+    ],
+    "nextQuestIds": [
+      "echoes_of_victory_ridge"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "last_entry",
+    "name": {
+      "value": "最後條目",
+      "originalEn": "Last Entry"
+    },
+    "trader": "Shani",
+    "map": [
+      "stella_montis"
+    ],
+    "previousQuestIds": [
+      "furtive_meetings"
+    ],
+    "nextQuestIds": [],
+    "hasBlueprint": true,
+    "blueprintRewards": [
+      {
+        "id": "yellow_light_stick_blueprint",
+        "name": {
+          "value": "黃色螢光棒",
+          "originalEn": "Yellow Light Stick Blueprint"
+        },
+        "imageFilename": "https://cdn.arctracker.io/items/yellow_light_stick.png"
+      }
+    ]
+  },
+  {
+    "id": "life_of_a_pharmacist",
+    "name": {
+      "value": "藥師的人生",
+      "originalEn": "Life of a Pharmacist"
+    },
+    "trader": "Lance",
+    "map": [
+      "buried_city"
+    ],
+    "previousQuestIds": [
+      "espresso"
+    ],
+    "nextQuestIds": [
+      "a_toxic_trail",
+      "tribute_to_toledo"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "lost_in_transmission",
+    "name": {
+      "value": "傳送遺失",
+      "originalEn": "Lost in Transmission"
+    },
+    "trader": "Shani",
+    "map": [
+      "the_spaceport"
+    ],
+    "previousQuestIds": [
+      "our_presence_up_there"
+    ],
+    "nextQuestIds": [
+      "communication_hideout"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "marked_for_death",
+    "name": {
+      "value": "死亡標記",
+      "originalEn": "Marked for Death"
+    },
+    "trader": "Tian Wen",
+    "map": [
+      "buried_city"
+    ],
+    "previousQuestIds": [
+      "broken_monument"
+    ],
+    "nextQuestIds": [
+      "market_correction"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "market_correction",
+    "name": {
+      "value": "市場修正",
+      "originalEn": "Market Correction"
+    },
+    "trader": "Tian Wen",
+    "map": [
+      "buried_city"
+    ],
+    "previousQuestIds": [
+      "marked_for_death"
+    ],
+    "nextQuestIds": [
+      "eyes_on_the_prize"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "medical_merchandise",
+    "name": {
+      "value": "醫療商品",
+      "originalEn": "Medical Merchandise"
+    },
+    "trader": "Lance",
+    "map": [
+      "buried_city",
+      "the_spaceport",
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "doctors_orders"
+    ],
+    "nextQuestIds": [
+      "a_reveal_in_ruins"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "mixed_signals",
+    "name": {
+      "value": "混雜訊號",
+      "originalEn": "Mixed Signals"
+    },
+    "trader": "Shani",
+    "map": [
+      "buried_city",
+      "the_spaceport",
+      "the_blue_gate",
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "dormant_barons"
+    ],
+    "nextQuestIds": [],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "movie_night",
+    "name": {
+      "value": "電影之夜",
+      "originalEn": "Movie Night"
+    },
+    "trader": "Apollo",
+    "map": [],
+    "previousQuestIds": [
+      "with_a_view"
+    ],
+    "nextQuestIds": [],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "off_the_radar",
+    "name": {
+      "value": "遠離雷達",
+      "originalEn": "Off The Radar"
+    },
+    "trader": "Shani",
+    "map": [
+      "buried_city",
+      "the_spaceport",
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "clearer_skies",
+      "trash_into_treasure"
+    ],
+    "nextQuestIds": [
+      "a_first_foothold",
+      "a_bad_feeling"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "on_deaf_ears",
+    "name": {
+      "value": "聽而不聞",
+      "originalEn": "On Deaf Ears"
+    },
+    "trader": "Lance",
+    "map": [
+      "stella_montis"
+    ],
+    "previousQuestIds": [
+      "worth_your_salt",
+      "snap_and_salvage"
+    ],
+    "nextQuestIds": [
+      "on_the_map"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "on_the_map",
+    "name": {
+      "value": "標上地圖",
+      "originalEn": "On The Map"
+    },
+    "trader": "Lance",
+    "map": [
+      "the_spaceport"
+    ],
+    "previousQuestIds": [
+      "on_deaf_ears"
+    ],
+    "nextQuestIds": [],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "our_presence_up_there",
+    "name": {
+      "value": "我們在上頭的勢力",
+      "originalEn": "Our Presence up There"
+    },
+    "trader": "Shani",
+    "map": [
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "back_on_top"
+    ],
+    "nextQuestIds": [
+      "lost_in_transmission"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "out_of_the_shadows",
+    "name": {
+      "value": "走出陰影",
+      "originalEn": "Out of the Shadows"
+    },
+    "trader": "Shani",
+    "map": [
+      "buried_city",
+      "the_spaceport",
+      "the_blue_gate",
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "a_symbol_of_unification",
+      "sparks_fly"
+    ],
+    "nextQuestIds": [
+      "combat_recon"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "outstanding_balance",
+    "name": {
+      "value": "未結餘額",
+      "originalEn": "Outstanding Balance"
+    },
+    "trader": "Tian Wen",
+    "map": [
+      "the_blue_gate"
+    ],
+    "previousQuestIds": [
+      "the_clean_dream"
+    ],
+    "nextQuestIds": [
+      "settled_in_full"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "paving_the_way",
+    "name": {
+      "value": "開闢道路",
+      "originalEn": "Paving the Way"
+    },
+    "trader": "Apollo",
+    "map": [
+      "the_blue_gate",
+      "buried_city",
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "into_the_fray"
+    ],
+    "nextQuestIds": [
+      "deciphering_the_data"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "picking_up_the_pieces",
+    "name": {
+      "value": "撿起材料",
+      "originalEn": "Picking Up The Pieces"
+    },
+    "trader": "Shani",
+    "map": [
+      "the_spaceport",
+      "buried_city",
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "map_dam_battleground"
+    ],
+    "nextQuestIds": [
+      "clearer_skies",
+      "trash_into_treasure"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "power_out",
+    "name": {
+      "value": "斷電",
+      "originalEn": "Power Out"
+    },
+    "trader": "Celeste",
+    "map": [
+      "the_spaceport"
+    ],
+    "previousQuestIds": [
+      "prescriptions_of_the_past"
+    ],
+    "nextQuestIds": [
+      "flickering_threat"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "prescriptions_of_the_past",
+    "name": {
+      "value": "過去的處方",
+      "originalEn": "Prescriptions of the Past"
+    },
+    "trader": "Lance",
+    "map": [
+      "the_spaceport"
+    ],
+    "previousQuestIds": [
+      "a_warm_place_to_rest"
+    ],
+    "nextQuestIds": [
+      "power_out"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "reduced_to_rubble",
+    "name": {
+      "value": "化為瓦礫",
+      "originalEn": "Reduced to Rubble"
+    },
+    "trader": "Shani",
+    "map": [
+      "the_blue_gate"
+    ],
+    "previousQuestIds": [
+      "a_first_foothold"
+    ],
+    "nextQuestIds": [
+      "with_a_trace"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "safe_passage",
+    "name": {
+      "value": "安全通道",
+      "originalEn": "Safe Passage"
+    },
+    "trader": "Apollo",
+    "map": [],
+    "previousQuestIds": [
+      "a_bad_feeling"
+    ],
+    "nextQuestIds": [
+      "what_goes_around"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "settled_in_full",
+    "name": {
+      "value": "全數清算",
+      "originalEn": "Settled in Full"
+    },
+    "trader": "Tian Wen",
+    "map": [],
+    "previousQuestIds": [
+      "outstanding_balance"
+    ],
+    "nextQuestIds": [],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "snap_and_salvage",
+    "name": {
+      "value": "破壞並拆解",
+      "originalEn": "Snap and Salvage"
+    },
+    "trader": "Tian Wen",
+    "map": [
+      "stella_montis"
+    ],
+    "previousQuestIds": [
+      "cold_storage"
+    ],
+    "nextQuestIds": [
+      "on_deaf_ears",
+      "with_a_view"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "source_of_the_contamination",
+    "name": {
+      "value": "污染源",
+      "originalEn": "Source of the Contamination"
+    },
+    "trader": "Celeste",
+    "map": [
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "water_troubles"
+    ],
+    "nextQuestIds": [
+      "switching_the_supply"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "sparks_fly",
+    "name": {
+      "value": "火花四濺",
+      "originalEn": "Sparks Fly"
+    },
+    "trader": "Apollo",
+    "map": [],
+    "previousQuestIds": [
+      "what_goes_around"
+    ],
+    "nextQuestIds": [
+      "the_league",
+      "out_of_the_shadows"
+    ],
+    "hasBlueprint": true,
+    "blueprintRewards": [
+      {
+        "id": "trigger_nade_blueprint",
+        "name": {
+          "value": "觸發手榴彈藍圖",
+          "originalEn": "Trigger Nade Blueprint"
+        },
+        "imageFilename": "https://cdn.arctracker.io/items/trigger_nade_blueprint.png"
+      }
+    ]
+  },
+  {
+    "id": "stable_housing",
+    "name": {
+      "value": "穩定住宅",
+      "originalEn": "Stable Housing"
+    },
+    "trader": "Tian Wen",
+    "map": [
+      "stella_montis"
+    ],
+    "previousQuestIds": [
+      "with_a_view"
+    ],
+    "nextQuestIds": [],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "straight_record",
+    "name": {
+      "value": "導回正軌",
+      "originalEn": "Straight Record"
+    },
+    "trader": "Celeste",
+    "map": [
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "broken_monument"
+    ],
+    "nextQuestIds": [
+      "keeping_the_memory"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "switching_the_supply",
+    "name": {
+      "value": "切換供給",
+      "originalEn": "Switching the Supply"
+    },
+    "trader": "Celeste",
+    "map": [
+      "the_spaceport"
+    ],
+    "previousQuestIds": [
+      "source_of_the_contamination"
+    ],
+    "nextQuestIds": [
+      "a_warm_place_to_rest"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "test_case",
+    "name": {
+      "value": "測試案例",
+      "originalEn": "Test Case"
+    },
+    "trader": "Apollo",
+    "map": [],
+    "previousQuestIds": [
+      "the_league"
+    ],
+    "nextQuestIds": [],
+    "hasBlueprint": true,
+    "blueprintRewards": [
+      {
+        "id": "fireworks_box_blueprint",
+        "name": {
+          "value": "煙火箱藍圖",
+          "originalEn": "Fireworks Box Blueprint"
+        },
+        "imageFilename": "https://cdn.arctracker.io/items/fireworks_box.png"
+      }
+    ]
+  },
+  {
+    "id": "the_clean_dream",
+    "name": {
+      "value": "純淨之夢",
+      "originalEn": "The Clean Dream"
+    },
+    "trader": "Apollo",
+    "map": [
+      "the_spaceport",
+      "the_blue_gate"
+    ],
+    "previousQuestIds": [
+      "with_a_trace"
+    ],
+    "nextQuestIds": [
+      "keeping_an_eye_out",
+      "outstanding_balance",
+      "a_prime_specimen"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "the_league",
+    "name": {
+      "value": "聯賽",
+      "originalEn": "The League"
+    },
+    "trader": "Apollo",
+    "map": [
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "sparks_fly"
+    ],
+    "nextQuestIds": [
+      "test_case"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "the_majors_footlocker",
+    "name": {
+      "value": "少校的儲物櫃",
+      "originalEn": "The Major’s Footlocker"
+    },
+    "trader": "Tian Wen",
+    "map": [
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "a_symbol_of_unification"
+    ],
+    "nextQuestIds": [
+      "back_on_top"
+    ],
+    "hasBlueprint": true,
+    "blueprintRewards": [
+      {
+        "id": "hullcracker_blueprint",
+        "name": {
+          "value": "碎艦者藍圖",
+          "originalEn": "Hullcracker Blueprint"
+        },
+        "imageFilename": "https://cdn.arctracker.io/items/hullcracker.png"
+      }
+    ]
+  },
+  {
+    "id": "the_right_tool",
+    "name": {
+      "value": "合適的工具",
+      "originalEn": "The Right Tool"
+    },
+    "trader": "Tian Wen",
+    "map": [],
+    "previousQuestIds": [
+      "a_bad_feeling"
+    ],
+    "nextQuestIds": [
+      "a_better_use"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "the_root_of_the_matter",
+    "name": {
+      "value": "問題的根源",
+      "originalEn": "The Root of the Matter"
+    },
+    "trader": "Celeste",
+    "map": [
+      "buried_city"
+    ],
+    "previousQuestIds": [
+      "untended_garden"
+    ],
+    "nextQuestIds": [
+      "water_troubles"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "the_stench_of_corruption",
+    "name": {
+      "value": "腐敗惡臭",
+      "originalEn": "The Stench of Corruption"
+    },
+    "trader": "Shani",
+    "map": [
+      "the_spaceport"
+    ],
+    "previousQuestIds": [
+      "a_toxic_trail"
+    ],
+    "nextQuestIds": [],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "the_trifecta",
+    "name": {
+      "value": "三連發",
+      "originalEn": "The Trifecta"
+    },
+    "trader": "Shani",
+    "map": [
+      "buried_city",
+      "the_spaceport",
+      "the_blue_gate",
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "down_to_earth"
+    ],
+    "nextQuestIds": [
+      "dormant_barons",
+      "dust_on_the_wires"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "trash_into_treasure",
+    "name": {
+      "value": "將垃圾化為寶藏",
+      "originalEn": "Trash Into Treasure"
+    },
+    "trader": "Shani",
+    "map": [],
+    "previousQuestIds": [
+      "picking_up_the_pieces"
+    ],
+    "nextQuestIds": [
+      "off_the_radar"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "tribute_to_toledo",
+    "name": {
+      "value": "向托雷多致敬",
+      "originalEn": "Tribute to Toledo"
+    },
+    "trader": "Celeste",
+    "map": [],
+    "previousQuestIds": [
+      "life_of_a_pharmacist"
+    ],
+    "nextQuestIds": [
+      "digging_up_dirt"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "turnabout",
+    "name": {
+      "value": "大逆轉",
+      "originalEn": "Turnabout"
+    },
+    "trader": "Celeste",
+    "map": [
+      "the_spaceport"
+    ],
+    "previousQuestIds": [
+      "digging_up_dirt"
+    ],
+    "nextQuestIds": [],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "unexpected_initiative",
+    "name": {
+      "value": "意外創舉",
+      "originalEn": "Unexpected Initiative"
+    },
+    "trader": "Tian Wen",
+    "map": [
+      "buried_city"
+    ],
+    "previousQuestIds": [
+      "industrial_espionage",
+      "echoes_of_victory_ridge"
+    ],
+    "nextQuestIds": [
+      "a_symbol_of_unification"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "untended_garden",
+    "name": {
+      "value": "荒蕪庭園",
+      "originalEn": "Untended Garden"
+    },
+    "trader": "Celeste",
+    "map": [
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "a_balanced_harvest"
+    ],
+    "nextQuestIds": [
+      "the_root_of_the_matter"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "waking_the_grid",
+    "name": {
+      "value": "喚醒網絡",
+      "originalEn": "Waking the Grid"
+    },
+    "trader": "Shani",
+    "map": [
+      "the_spaceport"
+    ],
+    "previousQuestIds": [
+      "dust_on_the_wires"
+    ],
+    "nextQuestIds": [],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "water_troubles",
+    "name": {
+      "value": "水源問題",
+      "originalEn": "Water Troubles"
+    },
+    "trader": "Celeste",
+    "map": [
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "after_rain_comes",
+      "the_root_of_the_matter"
+    ],
+    "nextQuestIds": [
+      "into_the_fray",
+      "source_of_the_contamination"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "what_goes_around",
+    "name": {
+      "value": "因果報應",
+      "originalEn": "What Goes Around"
+    },
+    "trader": "Apollo",
+    "map": [],
+    "previousQuestIds": [
+      "safe_passage"
+    ],
+    "nextQuestIds": [
+      "sparks_fly"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "what_we_left_behind",
+    "name": {
+      "value": "遺留之物",
+      "originalEn": "What We Left Behind"
+    },
+    "trader": "Tian Wen",
+    "map": [
+      "buried_city",
+      "the_spaceport",
+      "dam_battlegrounds"
+    ],
+    "previousQuestIds": [
+      "dormant_barons"
+    ],
+    "nextQuestIds": [
+      "broken_monument"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "with_a_trace",
+    "name": {
+      "value": "追查痕跡",
+      "originalEn": "With A Trace"
+    },
+    "trader": "Shani",
+    "map": [
+      "the_blue_gate"
+    ],
+    "previousQuestIds": [
+      "reduced_to_rubble"
+    ],
+    "nextQuestIds": [
+      "armored_transports",
+      "the_clean_dream"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "with_a_view",
+    "name": {
+      "value": "目的明確",
+      "originalEn": "With a View"
+    },
+    "trader": "Shani",
+    "map": [
+      "stella_montis"
+    ],
+    "previousQuestIds": [
+      "snap_and_salvage"
+    ],
+    "nextQuestIds": [
+      "stable_housing",
+      "movie_night"
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "worth_your_salt",
+    "name": {
+      "value": "勝任職責",
+      "originalEn": "Worth Your Salt"
+    },
+    "trader": "Celeste",
+    "map": [
+      "the_spaceport"
+    ],
+    "previousQuestIds": [
+      "groundbreaking"
+    ],
+    "nextQuestIds": [
+      "on_deaf_ears"
+    ],
+    "hasBlueprint": true,
+    "blueprintRewards": [
+      {
+        "id": "vita_spray_blueprint",
+        "name": {
+          "value": "生命噴霧藍圖",
+          "originalEn": "Vita Spray Blueprint"
+        },
+        "imageFilename": "https://cdn.arctracker.io/items/vita_spray.png"
+      }
+    ]
+  }
+]

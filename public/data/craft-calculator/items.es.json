@@ -2,7 +2,7 @@
   "acoustic_guitar": {
     "id": "acoustic_guitar",
     "name": {
-      "value": "Akustikgitarre",
+      "value": "Guitarra acústica",
       "originalEn": "Acoustic Guitar"
     },
     "stackSize": 1,
@@ -16,7 +16,7 @@
   "adrenaline_shot": {
     "id": "adrenaline_shot",
     "name": {
-      "value": "Adrenalinspritze",
+      "value": "Inyección de adrenalina",
       "originalEn": "Adrenaline Shot"
     },
     "stackSize": 5,
@@ -33,7 +33,7 @@
   "advanced_arc_powercell": {
     "id": "advanced_arc_powercell",
     "name": {
-      "value": "Fortschrittliche ARC-Energiezelle",
+      "value": "Celda de energía ARC avanzada",
       "originalEn": "Advanced ARC Powercell"
     },
     "stackSize": 5,
@@ -47,7 +47,7 @@
   "advanced_electrical_components": {
     "id": "advanced_electrical_components",
     "name": {
-      "value": "Fortschrittliche elektrische Komponenten",
+      "value": "Componentes eléctricos avanzados",
       "originalEn": "Advanced Electrical Components"
     },
     "stackSize": 5,
@@ -64,7 +64,7 @@
   "advanced_mechanical_components": {
     "id": "advanced_mechanical_components",
     "name": {
-      "value": "Fortschrittliche mechanische Komponenten",
+      "value": "Componentes mecánicos avanzados",
       "originalEn": "Advanced Mechanical Components"
     },
     "stackSize": 5,
@@ -95,7 +95,7 @@
   "agave_juice": {
     "id": "agave_juice",
     "name": {
-      "value": "Agavensaft",
+      "value": "Jugo de agave",
       "originalEn": "Agave Juice"
     },
     "stackSize": 5,
@@ -112,7 +112,7 @@
   "air_freshener": {
     "id": "air_freshener",
     "name": {
-      "value": "Lufterfrischer",
+      "value": "Ambientador",
       "originalEn": "Air Freshener"
     },
     "stackSize": 5,
@@ -126,7 +126,7 @@
   "alarm_clock": {
     "id": "alarm_clock",
     "name": {
-      "value": "Wecker",
+      "value": "Reloj Elegante",
       "originalEn": "Alarm Clock"
     },
     "stackSize": 3,
@@ -140,7 +140,7 @@
   "alien_duck": {
     "id": "alien_duck",
     "name": {
-      "value": "Außerirdische Ente",
+      "value": "Pato Alienígena",
       "originalEn": "Alien Duck"
     },
     "stackSize": 15,
@@ -154,7 +154,7 @@
   "ancient_fort_security_code": {
     "id": "ancient_fort_security_code",
     "name": {
-      "value": "Ancient Fort Sicherheitscode",
+      "value": "Código de seguridad de Ancient Fort",
       "originalEn": "Ancient Fort Security Code"
     },
     "stackSize": 1,
@@ -168,7 +168,7 @@
   "angled_grip_i": {
     "id": "angled_grip_i",
     "name": {
-      "value": "Abgewinkelter Griff I",
+      "value": "Empuñadura inclinada I",
       "originalEn": "Angled Grip I"
     },
     "stackSize": 1,
@@ -185,7 +185,7 @@
   "angled_grip_ii": {
     "id": "angled_grip_ii",
     "name": {
-      "value": "Abgewinkelter Griff II",
+      "value": "Empuñadura inclinada II",
       "originalEn": "Angled Grip II"
     },
     "stackSize": 1,
@@ -202,7 +202,7 @@
   "angled_grip_ii_blueprint": {
     "id": "angled_grip_ii_blueprint",
     "name": {
-      "value": "Bauplan: Abgewinkelter Griff II",
+      "value": "Plano de Empunadura inclinada II",
       "originalEn": "Angled Grip II Blueprint"
     },
     "stackSize": 1,
@@ -216,7 +216,7 @@
   "angled_grip_iii": {
     "id": "angled_grip_iii",
     "name": {
-      "value": "Abgewinkelter Griff III",
+      "value": "Empuñadura inclinada III",
       "originalEn": "Angled Grip III"
     },
     "stackSize": 1,
@@ -233,7 +233,7 @@
   "angled_grip_iii_blueprint": {
     "id": "angled_grip_iii_blueprint",
     "name": {
-      "value": "Bauplan: Abgewinkelter Griff III",
+      "value": "Plano de Empunadura inclinada III",
       "originalEn": "Angled Grip III Blueprint"
     },
     "stackSize": 1,
@@ -247,7 +247,7 @@
   "antiseptic": {
     "id": "antiseptic",
     "name": {
-      "value": "Desinfektionsmittel",
+      "value": "Antiséptico",
       "originalEn": "Antiseptic"
     },
     "stackSize": 5,
@@ -264,7 +264,7 @@
   "anvil_blueprint": {
     "id": "anvil_blueprint",
     "name": {
-      "value": "Bauplan: Anvil",
+      "value": "Plano de Yunque",
       "originalEn": "Anvil Blueprint"
     },
     "stackSize": 1,
@@ -278,7 +278,7 @@
   "anvil_i": {
     "id": "anvil_i",
     "name": {
-      "value": "Amboss I",
+      "value": "Yunque I",
       "originalEn": "Anvil I"
     },
     "stackSize": 1,
@@ -295,7 +295,7 @@
   "anvil_ii": {
     "id": "anvil_ii",
     "name": {
-      "value": "Amboss II",
+      "value": "Yunque II",
       "originalEn": "Anvil II"
     },
     "stackSize": 1,
@@ -312,7 +312,7 @@
   "anvil_iii": {
     "id": "anvil_iii",
     "name": {
-      "value": "Amboss III",
+      "value": "Yunque III",
       "originalEn": "Anvil III"
     },
     "stackSize": 1,
@@ -329,7 +329,7 @@
   "anvil_iv": {
     "id": "anvil_iv",
     "name": {
-      "value": "Amboss IV",
+      "value": "Yunque IV",
       "originalEn": "Anvil IV"
     },
     "stackSize": 1,
@@ -346,7 +346,7 @@
   "anvil_splitter": {
     "id": "anvil_splitter",
     "name": {
-      "value": "Amboss-Spalter",
+      "value": "Divisor Yunque",
       "originalEn": "Anvil Splitter"
     },
     "stackSize": 1,
@@ -360,7 +360,7 @@
   "aphelion": {
     "id": "aphelion",
     "name": {
-      "value": "Aphelion",
+      "value": "Afelio",
       "originalEn": "Aphelion"
     },
     "stackSize": 1,
@@ -378,7 +378,7 @@
   "aphelion_blueprint": {
     "id": "aphelion_blueprint",
     "name": {
-      "value": "Bauplan: Aphelion",
+      "value": "Plano de Afelio",
       "originalEn": "Aphelion Blueprint"
     },
     "stackSize": 1,
@@ -392,7 +392,7 @@
   "apricot": {
     "id": "apricot",
     "name": {
-      "value": "Aprikose",
+      "value": "Albaricoque",
       "originalEn": "Apricot"
     },
     "stackSize": 10,
@@ -406,7 +406,7 @@
   "arc_alloy": {
     "id": "arc_alloy",
     "name": {
-      "value": "ARC-Legierung",
+      "value": "Aleación ARC",
       "originalEn": "ARC Alloy"
     },
     "stackSize": 15,
@@ -420,7 +420,7 @@
   "arc_circuitry": {
     "id": "arc_circuitry",
     "name": {
-      "value": "ARC-Schaltkreise",
+      "value": "Sistema De Circuitos Arc",
       "originalEn": "ARC Circuitry"
     },
     "stackSize": 5,
@@ -436,7 +436,7 @@
   "arc_coolant": {
     "id": "arc_coolant",
     "name": {
-      "value": "ARC-Kühlmittel",
+      "value": "Refrigerante ARC",
       "originalEn": "ARC Coolant"
     },
     "stackSize": 3,
@@ -450,7 +450,7 @@
   "arc_flex_rubber": {
     "id": "arc_flex_rubber",
     "name": {
-      "value": "ARC-Flexgummi",
+      "value": "Goma Flexible Arc",
       "originalEn": "ARC Flex Rubber"
     },
     "stackSize": 3,
@@ -464,7 +464,7 @@
   "arc_motion_core": {
     "id": "arc_motion_core",
     "name": {
-      "value": "ARC-Bewegungskern",
+      "value": "Núcleo de movimiento ARC",
       "originalEn": "ARC Motion Core"
     },
     "stackSize": 5,
@@ -480,7 +480,7 @@
   "arc_performance_steel": {
     "id": "arc_performance_steel",
     "name": {
-      "value": "ARC-Hochleistungsstahl",
+      "value": "Acero Resistente Arc",
       "originalEn": "ARC Performance Steel"
     },
     "stackSize": 3,
@@ -494,7 +494,7 @@
   "arc_powercell": {
     "id": "arc_powercell",
     "name": {
-      "value": "ARC-Energiezelle",
+      "value": "Celda de energía ARC",
       "originalEn": "ARC Powercell"
     },
     "stackSize": 5,
@@ -508,7 +508,7 @@
   "arc_synthetic_resin": {
     "id": "arc_synthetic_resin",
     "name": {
-      "value": "ARC-Kunstharz",
+      "value": "Resina sintética ARC",
       "originalEn": "ARC Synthetic Resin"
     },
     "stackSize": 3,
@@ -522,7 +522,7 @@
   "arc_thermo_lining": {
     "id": "arc_thermo_lining",
     "name": {
-      "value": "ARC-Thermofütterung",
+      "value": "Revestimiento térmico ARC",
       "originalEn": "ARC Thermo Lining"
     },
     "stackSize": 3,
@@ -536,7 +536,7 @@
   "arpeggio_i": {
     "id": "arpeggio_i",
     "name": {
-      "value": "Arpeggio I",
+      "value": "Arpegio I",
       "originalEn": "Arpeggio I"
     },
     "stackSize": 1,
@@ -553,7 +553,7 @@
   "arpeggio_ii": {
     "id": "arpeggio_ii",
     "name": {
-      "value": "Arpeggio II",
+      "value": "Arpegio II",
       "originalEn": "Arpeggio II"
     },
     "stackSize": 1,
@@ -570,7 +570,7 @@
   "arpeggio_iii": {
     "id": "arpeggio_iii",
     "name": {
-      "value": "Arpeggio III",
+      "value": "Arpegio III",
       "originalEn": "Arpeggio III"
     },
     "stackSize": 1,
@@ -587,7 +587,7 @@
   "arpeggio_iv": {
     "id": "arpeggio_iv",
     "name": {
-      "value": "Arpeggio IV",
+      "value": "Arpegio IV",
       "originalEn": "Arpeggio IV"
     },
     "stackSize": 1,
@@ -618,7 +618,7 @@
   "assorted_seeds": {
     "id": "assorted_seeds",
     "name": {
-      "value": "Verschiedenes Saatgut",
+      "value": "Semillas variadas",
       "originalEn": "Assorted Seeds"
     },
     "stackSize": 100,
@@ -632,7 +632,7 @@
   "bandage": {
     "id": "bandage",
     "name": {
-      "value": "Verband",
+      "value": "Venda",
       "originalEn": "Bandage"
     },
     "stackSize": 5,
@@ -648,7 +648,7 @@
   "barricade_kit": {
     "id": "barricade_kit",
     "name": {
-      "value": "Barrikadenset",
+      "value": "Kit de barricada",
       "originalEn": "Barricade Kit"
     },
     "stackSize": 3,
@@ -664,7 +664,7 @@
   "barricade_kit_blueprint": {
     "id": "barricade_kit_blueprint",
     "name": {
-      "value": "Bauplan: Barrikadenset",
+      "value": "Plano de kit de barricada",
       "originalEn": "Barricade Kit Blueprint"
     },
     "stackSize": 1,
@@ -678,7 +678,7 @@
   "bastion_cell": {
     "id": "bastion_cell",
     "name": {
-      "value": "Bastionzelle",
+      "value": "Celda de bastión",
       "originalEn": "Bastion Cell"
     },
     "stackSize": 3,
@@ -692,7 +692,7 @@
   "battery": {
     "id": "battery",
     "name": {
-      "value": "Akku",
+      "value": "Batería",
       "originalEn": "Battery"
     },
     "stackSize": 15,
@@ -706,7 +706,7 @@
   "bettina_blueprint": {
     "id": "bettina_blueprint",
     "name": {
-      "value": "Bauplan: Bettina",
+      "value": "Plano Bettina",
       "originalEn": "Bettina Blueprint"
     },
     "stackSize": 1,
@@ -789,7 +789,7 @@
   "bicycle_pump": {
     "id": "bicycle_pump",
     "name": {
-      "value": "Fahrradpumpe",
+      "value": "Bomba de bicicleta",
       "originalEn": "Bicycle Pump"
     },
     "stackSize": 3,
@@ -803,7 +803,7 @@
   "binoculars": {
     "id": "binoculars",
     "name": {
-      "value": "Fernglas",
+      "value": "Binoculares",
       "originalEn": "Binoculars"
     },
     "stackSize": 1,
@@ -820,7 +820,7 @@
   "blaze_grenade": {
     "id": "blaze_grenade",
     "name": {
-      "value": "Flammengranate",
+      "value": "Granada de fuego",
       "originalEn": "Blaze Grenade"
     },
     "stackSize": 5,
@@ -837,7 +837,7 @@
   "blaze_grenade_blueprint": {
     "id": "blaze_grenade_blueprint",
     "name": {
-      "value": "Bauplan: Flammengranate",
+      "value": "Plano de granada de fuego",
       "originalEn": "Blaze Grenade Blueprint"
     },
     "stackSize": 1,
@@ -851,7 +851,7 @@
   "blaze_grenade_trap": {
     "id": "blaze_grenade_trap",
     "name": {
-      "value": "Laserfalle: Feuer",
+      "value": "Trampa de granada incendiaria",
       "originalEn": "Blaze Grenade Trap"
     },
     "stackSize": 3,
@@ -868,7 +868,7 @@
   "bloated_tuna_can": {
     "id": "bloated_tuna_can",
     "name": {
-      "value": "Aufgeblähte Thunfischdose",
+      "value": "Lata de atún hinchada",
       "originalEn": "Bloated Tuna Can"
     },
     "stackSize": 15,
@@ -882,7 +882,7 @@
   "blue_gate_cellar_key": {
     "id": "blue_gate_cellar_key",
     "name": {
-      "value": "Blauer Tor Kellerschlüssel",
+      "value": "Llave del sótano de la puerta azul",
       "originalEn": "Blue Gate Cellar Key"
     },
     "stackSize": 1,
@@ -896,7 +896,7 @@
   "blue_gate_communication_tower_key": {
     "id": "blue_gate_communication_tower_key",
     "name": {
-      "value": "Schlüssel zum Kommunikationsturm am Blauen Tor",
+      "value": "Llave de la Torre de Comunicación de la Puerta Azul",
       "originalEn": "Blue Gate Communication Tower Key"
     },
     "stackSize": 1,
@@ -910,7 +910,7 @@
   "blue_gate_confiscation_room_key": {
     "id": "blue_gate_confiscation_room_key",
     "name": {
-      "value": "Schlüssel zum Beschlagnahmungsraum des Blauen Tors",
+      "value": "Llave de la sala de confiscación de la puerta azul",
       "originalEn": "Blue Gate Confiscation Room Key"
     },
     "stackSize": 1,
@@ -924,7 +924,7 @@
   "blue_gate_village_key": {
     "id": "blue_gate_village_key",
     "name": {
-      "value": "Dorfschlüssel (Blaues Tor)",
+      "value": "Llave del pueblo de la puerta azul",
       "originalEn": "Blue Gate Village Key"
     },
     "stackSize": 1,
@@ -938,7 +938,7 @@
   "blue_light_stick": {
     "id": "blue_light_stick",
     "name": {
-      "value": "Blauer Leuchtstab",
+      "value": "Barra luminosa azul",
       "originalEn": "Blue Light Stick"
     },
     "stackSize": 5,
@@ -954,7 +954,7 @@
   "blue_light_stick_blueprint": {
     "id": "blue_light_stick_blueprint",
     "name": {
-      "value": "Bauplan: Blauer Leuchtstab",
+      "value": "Plano de barra luminosa azul",
       "originalEn": "Blue Light Stick Blueprint"
     },
     "stackSize": 1,
@@ -968,7 +968,7 @@
   "bobcat_blueprint": {
     "id": "bobcat_blueprint",
     "name": {
-      "value": "Bauplan: Bobcat",
+      "value": "Plano de Bobcat",
       "originalEn": "Bobcat Blueprint"
     },
     "stackSize": 1,
@@ -1051,7 +1051,7 @@
   "bombardier_cell": {
     "id": "bombardier_cell",
     "name": {
-      "value": "Kanonierzelle",
+      "value": "Célula de bombardero",
       "originalEn": "Bombardier Cell"
     },
     "stackSize": 3,
@@ -1065,7 +1065,7 @@
   "breathtaking_snow_globe": {
     "id": "breathtaking_snow_globe",
     "name": {
-      "value": "Entzückende Schneekugel",
+      "value": "Bola de nieve impresionante",
       "originalEn": "Breathtaking Snow Globe"
     },
     "stackSize": 1,
@@ -1079,7 +1079,7 @@
   "broken_flashlight": {
     "id": "broken_flashlight",
     "name": {
-      "value": "Kaputte Taschenlampe",
+      "value": "Linterna rota",
       "originalEn": "Broken Flashlight"
     },
     "stackSize": 3,
@@ -1093,7 +1093,7 @@
   "broken_guidance_system": {
     "id": "broken_guidance_system",
     "name": {
-      "value": "Kaputtes Leitsystem",
+      "value": "Sistema de guía roto",
       "originalEn": "Broken Guidance System"
     },
     "stackSize": 3,
@@ -1107,7 +1107,7 @@
   "broken_handheld_radio": {
     "id": "broken_handheld_radio",
     "name": {
-      "value": "Kaputtes Miniaturradio",
+      "value": "Radio portátil rota",
       "originalEn": "Broken Handheld Radio"
     },
     "stackSize": 3,
@@ -1121,7 +1121,7 @@
   "broken_taser": {
     "id": "broken_taser",
     "name": {
-      "value": "Kaputter Elektroschocker",
+      "value": "Táser roto",
       "originalEn": "Broken Taser"
     },
     "stackSize": 3,
@@ -1135,7 +1135,7 @@
   "buried_city_hospital_key": {
     "id": "buried_city_hospital_key",
     "name": {
-      "value": "Krankenhausschlüssel (Begrabene Stadt)",
+      "value": "Llave del hospital de la ciudad enterrada",
       "originalEn": "Buried City Hospital Key"
     },
     "stackSize": 1,
@@ -1149,7 +1149,7 @@
   "buried_city_jkv_employee_access_card": {
     "id": "buried_city_jkv_employee_access_card",
     "name": {
-      "value": "Schlüsselkarte für JKV-Angestellte (Begrabene Stadt)",
+      "value": "Tarjeta de acceso de empleado JKV de la ciudad enterrada",
       "originalEn": "Buried City JKV Employee Access Card"
     },
     "stackSize": 1,
@@ -1163,7 +1163,7 @@
   "buried_city_residential_master_key": {
     "id": "buried_city_residential_master_key",
     "name": {
-      "value": "Vergrabene Stadt Wohngebiet-Hauptschlüssel",
+      "value": "Llave maestra residencial de la ciudad enterrada",
       "originalEn": "Buried City Residential Master Key"
     },
     "stackSize": 1,
@@ -1177,7 +1177,7 @@
   "buried_city_town_hall_key": {
     "id": "buried_city_town_hall_key",
     "name": {
-      "value": "Rathausschlüssel (Begrabene Stadt)",
+      "value": "Llave del ayuntamiento de la ciudad enterrada",
       "originalEn": "Buried City Town Hall Key"
     },
     "stackSize": 1,
@@ -1191,7 +1191,7 @@
   "burletta_blueprint": {
     "id": "burletta_blueprint",
     "name": {
-      "value": "Bauplan: Burletta",
+      "value": "Plano de Burletta",
       "originalEn": "Burletta Blueprint"
     },
     "stackSize": 1,
@@ -1273,7 +1273,7 @@
   "burned_arc_circuitry": {
     "id": "burned_arc_circuitry",
     "name": {
-      "value": "Durchgebrannte ARC-Schaltkreise",
+      "value": "Circuitos ARC quemados",
       "originalEn": "Burned Arc Circuitry"
     },
     "stackSize": 3,
@@ -1287,7 +1287,7 @@
   "burnt_out_candles": {
     "id": "burnt_out_candles",
     "name": {
-      "value": "Ausgebrannte Kerzen",
+      "value": "Velas Consumidas",
       "originalEn": "Burnt-Out Candles"
     },
     "stackSize": 15,
@@ -1301,7 +1301,7 @@
   "camera_lens": {
     "id": "camera_lens",
     "name": {
-      "value": "Kameraobjektiv",
+      "value": "Lente de cámara",
       "originalEn": "Camera Lens"
     },
     "stackSize": 5,
@@ -1315,7 +1315,7 @@
   "candle_holder": {
     "id": "candle_holder",
     "name": {
-      "value": "Kerzenhalter",
+      "value": "Candelabro",
       "originalEn": "Candle Holder"
     },
     "stackSize": 3,
@@ -1329,7 +1329,7 @@
   "candleberries": {
     "id": "candleberries",
     "name": {
-      "value": "Kerzenbeeren",
+      "value": "Bayas de vela",
       "originalEn": "Candleberries"
     },
     "stackSize": 10,
@@ -1343,7 +1343,7 @@
   "canister": {
     "id": "canister",
     "name": {
-      "value": "Kanister",
+      "value": "Lata",
       "originalEn": "Canister"
     },
     "stackSize": 15,
@@ -1357,7 +1357,7 @@
   "canto_blueprint": {
     "id": "canto_blueprint",
     "name": {
-      "value": "Canto Bauplan",
+      "value": "Canto Plano",
       "originalEn": "Canto Blueprint"
     },
     "stackSize": 1,
@@ -1440,7 +1440,7 @@
   "cat_bed": {
     "id": "cat_bed",
     "name": {
-      "value": "Katzenbett",
+      "value": "Cama para gatos",
       "originalEn": "Cat Bed"
     },
     "stackSize": 3,
@@ -1454,7 +1454,7 @@
   "celeste_journal": {
     "id": "celeste_journal",
     "name": {
-      "value": "Celestes Tagebuch",
+      "value": "Diario de Celeste",
       "originalEn": "Celeste's Journal"
     },
     "stackSize": 1,
@@ -1468,7 +1468,7 @@
   "chemicals": {
     "id": "chemicals",
     "name": {
-      "value": "Chemikalien",
+      "value": "Producto Químico",
       "originalEn": "Chemicals"
     },
     "stackSize": 50,
@@ -1482,7 +1482,7 @@
   "coffee_pot": {
     "id": "coffee_pot",
     "name": {
-      "value": "Kaffeekanne",
+      "value": "Cafetera",
       "originalEn": "Coffee Pot"
     },
     "stackSize": 3,
@@ -1496,7 +1496,7 @@
   "combat_mk1": {
     "id": "combat_mk1",
     "name": {
-      "value": "Kampf-Marke 1",
+      "value": "Combate Ver. 1",
       "originalEn": "Combat Mk. 1"
     },
     "stackSize": 1,
@@ -1513,7 +1513,7 @@
   "combat_mk2": {
     "id": "combat_mk2",
     "name": {
-      "value": "Kampf-Marke 2",
+      "value": "Combate Ver. 2",
       "originalEn": "Combat Mk. 2"
     },
     "stackSize": 1,
@@ -1530,7 +1530,7 @@
   "combat_mk3_aggressive": {
     "id": "combat_mk3_aggressive",
     "name": {
-      "value": "Kampf-Marke 3 (Aggressiv)",
+      "value": "Combate Ver. 3 (Agresivo)",
       "originalEn": "Combat Mk. 3 (Aggressive)"
     },
     "stackSize": 1,
@@ -1547,7 +1547,7 @@
   "combat_mk3_aggressive_blueprint": {
     "id": "combat_mk3_aggressive_blueprint",
     "name": {
-      "value": "Bauplan: Kampf-Marke 3 (Aggressiv)",
+      "value": "Plano de Combate Ver. 3 (Agresivo)",
       "originalEn": "Combat Mk. 3 (Aggressive) Blueprint"
     },
     "stackSize": 1,
@@ -1561,7 +1561,7 @@
   "combat_mk3_flanking": {
     "id": "combat_mk3_flanking",
     "name": {
-      "value": "Kampf-Marke 3 (Flankierend)",
+      "value": "Combate Ver. 3 (Flanqueo)",
       "originalEn": "Combat Mk. 3 (Flanking)"
     },
     "stackSize": 1,
@@ -1578,7 +1578,7 @@
   "combat_mk3_flanking_blueprint": {
     "id": "combat_mk3_flanking_blueprint",
     "name": {
-      "value": "Bauplan: Kampf-Marke 3 (Flankierend)",
+      "value": "Plano Combate Ver. 3 (Flanqueo)",
       "originalEn": "Combat Mk. 3 (Flanking) Blueprint"
     },
     "stackSize": 1,
@@ -1592,7 +1592,7 @@
   "comet_igniter": {
     "id": "comet_igniter",
     "name": {
-      "value": "Kometenzünder",
+      "value": "Encendedor de cometa",
       "originalEn": "Comet Igniter"
     },
     "stackSize": 3,
@@ -1606,7 +1606,7 @@
   "compensator_i": {
     "id": "compensator_i",
     "name": {
-      "value": "Kompensator I",
+      "value": "Compensador I",
       "originalEn": "Compensator I"
     },
     "stackSize": 1,
@@ -1623,7 +1623,7 @@
   "compensator_ii": {
     "id": "compensator_ii",
     "name": {
-      "value": "Kompensator II",
+      "value": "Compensador II",
       "originalEn": "Compensator II"
     },
     "stackSize": 1,
@@ -1640,7 +1640,7 @@
   "compensator_ii_blueprint": {
     "id": "compensator_ii_blueprint",
     "name": {
-      "value": "Bauplan: Kompensator II",
+      "value": "Plano de compensador II",
       "originalEn": "Compensator II Blueprint"
     },
     "stackSize": 1,
@@ -1654,7 +1654,7 @@
   "compensator_iii": {
     "id": "compensator_iii",
     "name": {
-      "value": "Kompensator III",
+      "value": "Compensador III",
       "originalEn": "Compensator III"
     },
     "stackSize": 1,
@@ -1671,7 +1671,7 @@
   "compensator_iii_blueprint": {
     "id": "compensator_iii_blueprint",
     "name": {
-      "value": "Bauplan: Kompensator III",
+      "value": "Plano de Compensador III",
       "originalEn": "Compensator III Blueprint"
     },
     "stackSize": 1,
@@ -1685,7 +1685,7 @@
   "complex_gun_parts": {
     "id": "complex_gun_parts",
     "name": {
-      "value": "Komplexe Waffenteile",
+      "value": "Piezas de arma complejas",
       "originalEn": "Complex Gun Parts"
     },
     "stackSize": 3,
@@ -1703,7 +1703,7 @@
   "complex_gun_parts_blueprint": {
     "id": "complex_gun_parts_blueprint",
     "name": {
-      "value": "Bauplan: Komplexe Waffenteile",
+      "value": "Plano de piezas de armas complejas",
       "originalEn": "Complex Gun Parts Blueprint"
     },
     "stackSize": 1,
@@ -1717,7 +1717,7 @@
   "coolant": {
     "id": "coolant",
     "name": {
-      "value": "Kühlmittel",
+      "value": "Refrigerante",
       "originalEn": "Coolant"
     },
     "stackSize": 3,
@@ -1731,7 +1731,7 @@
   "cooling_coil": {
     "id": "cooling_coil",
     "name": {
-      "value": "Kühlspule",
+      "value": "Bobina de refrigeración",
       "originalEn": "Cooling Coil"
     },
     "stackSize": 3,
@@ -1745,7 +1745,7 @@
   "cooling_fan": {
     "id": "cooling_fan",
     "name": {
-      "value": "Kühlungslüfter",
+      "value": "Ventilador de refrigeración",
       "originalEn": "Cooling Fan"
     },
     "stackSize": 3,
@@ -1759,7 +1759,7 @@
   "cracked_bioscanner": {
     "id": "cracked_bioscanner",
     "name": {
-      "value": "Angeschlagener Bioscanner",
+      "value": "Bioescaner roto",
       "originalEn": "Cracked Bioscanner"
     },
     "stackSize": 3,
@@ -1773,7 +1773,7 @@
   "crude_explosives": {
     "id": "crude_explosives",
     "name": {
-      "value": "Rohe Sprengstoffe",
+      "value": "Explosivos rudimentarios",
       "originalEn": "Crude Explosives"
     },
     "stackSize": 10,
@@ -1789,7 +1789,7 @@
   "crumpled_plastic_bottle": {
     "id": "crumpled_plastic_bottle",
     "name": {
-      "value": "Zerknitterte Plastikflasche",
+      "value": "Botella de plástico arrugada",
       "originalEn": "Crumpled Plastic Bottle"
     },
     "stackSize": 3,
@@ -1803,7 +1803,7 @@
   "dam_control_tower_key": {
     "id": "dam_control_tower_key",
     "name": {
-      "value": "Schlüssel zum Damm-Kontrollturm",
+      "value": "Llave de la torre de control de la presa",
       "originalEn": "Dam Control Tower Key"
     },
     "stackSize": 1,
@@ -1817,7 +1817,7 @@
   "dam_controlled_access_zone_key": {
     "id": "dam_controlled_access_zone_key",
     "name": {
-      "value": "Schlüssel zur Damm-Sperrzone",
+      "value": "Llave de la Zona de Acceso Controlado de la Presa",
       "originalEn": "Dam Controlled Access Zone Key"
     },
     "stackSize": 1,
@@ -1831,7 +1831,7 @@
   "dam_staff_room_key": {
     "id": "dam_staff_room_key",
     "name": {
-      "value": "Damm-Personalraum-Schlüssel",
+      "value": "Llave de la sala de personal de la presa",
       "originalEn": "Dam Staff Room Key"
     },
     "stackSize": 1,
@@ -1845,7 +1845,7 @@
   "dam_surveillance_key": {
     "id": "dam_surveillance_key",
     "name": {
-      "value": "Überwachungsschlüssel (Damm)",
+      "value": "Llave de la sala de vigilancia de la presa",
       "originalEn": "Dam Surveillance Key"
     },
     "stackSize": 1,
@@ -1859,7 +1859,7 @@
   "dam_testing_annex_key": {
     "id": "dam_testing_annex_key",
     "name": {
-      "value": "Testanbauschlüssel (Damm)",
+      "value": "Llave del anexo de pruebas de la presa",
       "originalEn": "Dam Testing Annex Key"
     },
     "stackSize": 1,
@@ -1873,7 +1873,7 @@
   "dam_utility_key": {
     "id": "dam_utility_key",
     "name": {
-      "value": "Damm-Versorgungsschlüssel",
+      "value": "Llave de servicios de la presa",
       "originalEn": "Dam Utility Key"
     },
     "stackSize": 1,
@@ -1887,7 +1887,7 @@
   "damaged_arc_motion_core": {
     "id": "damaged_arc_motion_core",
     "name": {
-      "value": "Beschädigter ARC-Bewegungskern",
+      "value": "Núcleo de movimiento ARC dañado",
       "originalEn": "Damaged ARC Motion Core"
     },
     "stackSize": 5,
@@ -1901,7 +1901,7 @@
   "damaged_arc_powercell": {
     "id": "damaged_arc_powercell",
     "name": {
-      "value": "Beschädigte ARC-Energiezelle",
+      "value": "Celda de energía ARC dañada",
       "originalEn": "Damaged ARC Powercell"
     },
     "stackSize": 5,
@@ -1915,7 +1915,7 @@
   "damaged_fireball_burner": {
     "id": "damaged_fireball_burner",
     "name": {
-      "value": "Beschädigter Feuerball-Brenner",
+      "value": "Quemador de esferígneo dañado",
       "originalEn": "Damaged Fireball Burner"
     },
     "stackSize": 3,
@@ -1929,7 +1929,7 @@
   "damaged_heat_sink": {
     "id": "damaged_heat_sink",
     "name": {
-      "value": "Beschädigter Kühlkörper",
+      "value": "Disipador de calor dañado",
       "originalEn": "Damaged Heat Sink"
     },
     "stackSize": 3,
@@ -1943,7 +1943,7 @@
   "damaged_hornet_driver": {
     "id": "damaged_hornet_driver",
     "name": {
-      "value": "Beschädigter Hornissenantrieb",
+      "value": "Controlador de Avispón dañado",
       "originalEn": "Damaged Hornet Driver"
     },
     "stackSize": 3,
@@ -1957,7 +1957,7 @@
   "damaged_rocketeer_driver": {
     "id": "damaged_rocketeer_driver",
     "name": {
-      "value": "Beschädigter Raketenkanoniertreiber",
+      "value": "Controlador De Cohetero Dañado",
       "originalEn": "Damaged Rocketeer Driver"
     },
     "stackSize": 3,
@@ -1971,7 +1971,7 @@
   "damaged_snitch_scanner": {
     "id": "damaged_snitch_scanner",
     "name": {
-      "value": "Beschädigter Snitch-Scanner",
+      "value": "Escáner Snitch dañado",
       "originalEn": "Damaged Snitch Scanner"
     },
     "stackSize": 3,
@@ -1985,7 +1985,7 @@
   "damaged_tick_pod": {
     "id": "damaged_tick_pod",
     "name": {
-      "value": "Beschädigte Zeckenkapsel",
+      "value": "Cápsula de garrapata dañada",
       "originalEn": "Damaged Tick Pod"
     },
     "stackSize": 3,
@@ -1999,7 +1999,7 @@
   "damaged_wasp_driver": {
     "id": "damaged_wasp_driver",
     "name": {
-      "value": "Beschädigter Wespen-Treiber",
+      "value": "Controlador de Avispa dañado",
       "originalEn": "Damaged Wasp Driver"
     },
     "stackSize": 3,
@@ -2013,7 +2013,7 @@
   "dart_board": {
     "id": "dart_board",
     "name": {
-      "value": "Dartscheibe",
+      "value": "Diana de dardos",
       "originalEn": "Dart Board"
     },
     "stackSize": 3,
@@ -2027,7 +2027,7 @@
   "deadline": {
     "id": "deadline",
     "name": {
-      "value": "Deadline",
+      "value": "Ultimátum",
       "originalEn": "Deadline"
     },
     "stackSize": 1,
@@ -2045,7 +2045,7 @@
   "deadline_blueprint": {
     "id": "deadline_blueprint",
     "name": {
-      "value": "Bauplan: Deadline",
+      "value": "Plano de Deadline",
       "originalEn": "Deadline Blueprint"
     },
     "stackSize": 1,
@@ -2059,7 +2059,7 @@
   "defibrillator": {
     "id": "defibrillator",
     "name": {
-      "value": "Defibrillator",
+      "value": "Desfibrilador",
       "originalEn": "Defibrillator"
     },
     "stackSize": 3,
@@ -2076,7 +2076,7 @@
   "defibrillator_blueprint": {
     "id": "defibrillator_blueprint",
     "name": {
-      "value": "Bauplan: Defibrillator",
+      "value": "Plano de desfibrilador",
       "originalEn": "Defibrillator Blueprint"
     },
     "stackSize": 1,
@@ -2090,7 +2090,7 @@
   "deflated_football": {
     "id": "deflated_football",
     "name": {
-      "value": "Schlapper Fußball",
+      "value": "Balón de fútbol desinflado",
       "originalEn": "Deflated Football"
     },
     "stackSize": 3,
@@ -2104,7 +2104,7 @@
   "degraded_arc_rubber": {
     "id": "degraded_arc_rubber",
     "name": {
-      "value": "Zersetztes ARC-Gummi",
+      "value": "Goma ARC degradada",
       "originalEn": "Degraded ARC Rubber"
     },
     "stackSize": 3,
@@ -2118,7 +2118,7 @@
   "diving_goggles": {
     "id": "diving_goggles",
     "name": {
-      "value": "Taucherbrille",
+      "value": "Gafas de buceo",
       "originalEn": "Diving Goggles"
     },
     "stackSize": 3,
@@ -2132,7 +2132,7 @@
   "dodgers_note": {
     "id": "dodgers_note",
     "name": {
-      "value": "Dodgers Notiz",
+      "value": "Nota de Dodger",
       "originalEn": "Dodger's Note"
     },
     "stackSize": 1,
@@ -2146,7 +2146,7 @@
   "dog_collar": {
     "id": "dog_collar",
     "name": {
-      "value": "Hundehalsband",
+      "value": "Collar de perro",
       "originalEn": "Dog Collar"
     },
     "stackSize": 3,
@@ -2178,7 +2178,7 @@
   "dolabra_blueprint": {
     "id": "dolabra_blueprint",
     "name": {
-      "value": "Dolabra Bauplan",
+      "value": "Dolabra Plano",
       "originalEn": "Dolabra Blueprint"
     },
     "stackSize": 1,
@@ -2192,7 +2192,7 @@
   "doodly_duck": {
     "id": "doodly_duck",
     "name": {
-      "value": "Kritzel-Ente",
+      "value": "Pato Garabateado",
       "originalEn": "Doodly Duck"
     },
     "stackSize": 15,
@@ -2206,7 +2206,7 @@
   "door_blocker": {
     "id": "door_blocker",
     "name": {
-      "value": "Türblocker",
+      "value": "Bloqueador de puerta",
       "originalEn": "Door Blocker"
     },
     "stackSize": 3,
@@ -2223,7 +2223,7 @@
   "dried_out_arc_resin": {
     "id": "dried_out_arc_resin",
     "name": {
-      "value": "Ausgetrocknetes ARC-Harz",
+      "value": "Resina ARC seca",
       "originalEn": "Dried-Out ARC Resin"
     },
     "stackSize": 3,
@@ -2237,7 +2237,7 @@
   "duct_tape": {
     "id": "duct_tape",
     "name": {
-      "value": "Isolierband",
+      "value": "Cinta Americana",
       "originalEn": "Duct Tape"
     },
     "stackSize": 15,
@@ -2251,7 +2251,7 @@
   "durable_cloth": {
     "id": "durable_cloth",
     "name": {
-      "value": "Strapazierfähiges Stoffstück",
+      "value": "Tela resistente",
       "originalEn": "Durable Cloth"
     },
     "stackSize": 10,
@@ -2267,7 +2267,7 @@
   "dusty_film_reel": {
     "id": "dusty_film_reel",
     "name": {
-      "value": "Verstaubte Filmrolle",
+      "value": "Rollo de película polvoriento",
       "originalEn": "Dusty Film Reel"
     },
     "stackSize": 1,
@@ -2281,7 +2281,7 @@
   "electrical_components": {
     "id": "electrical_components",
     "name": {
-      "value": "Elektrische Komponenten",
+      "value": "Componentes eléctricos",
       "originalEn": "Electrical Components"
     },
     "stackSize": 10,
@@ -2298,7 +2298,7 @@
   "empty_wine_bottle": {
     "id": "empty_wine_bottle",
     "name": {
-      "value": "Leere Weinflasche",
+      "value": "Botella de vino vacía",
       "originalEn": "Empty Wine Bottle"
     },
     "stackSize": 5,
@@ -2312,7 +2312,7 @@
   "energy_clip": {
     "id": "energy_clip",
     "name": {
-      "value": "Energieclip",
+      "value": "Clip de energía",
       "originalEn": "Energy Clip"
     },
     "stackSize": 5,
@@ -2329,7 +2329,7 @@
   "equalizer": {
     "id": "equalizer",
     "name": {
-      "value": "Equalizer",
+      "value": "Ecualizador",
       "originalEn": "Equalizer"
     },
     "stackSize": 1,
@@ -2347,7 +2347,7 @@
   "equalizer_blueprint": {
     "id": "equalizer_blueprint",
     "name": {
-      "value": "Bauplan: Equalizer",
+      "value": "Plano del Ecualizador",
       "originalEn": "Equalizer Blueprint"
     },
     "stackSize": 1,
@@ -2361,7 +2361,7 @@
   "espresso_machine_parts": {
     "id": "espresso_machine_parts",
     "name": {
-      "value": "Espressomaschinenteile",
+      "value": "Piezas de máquina de espresso",
       "originalEn": "Espresso Machine Parts"
     },
     "stackSize": 1,
@@ -2375,7 +2375,7 @@
   "esr_analyzer": {
     "id": "esr_analyzer",
     "name": {
-      "value": "ESR-Analysegerät",
+      "value": "Analizador ESR",
       "originalEn": "ESR Analyzer"
     },
     "stackSize": 1,
@@ -2389,7 +2389,7 @@
   "exodus_modules": {
     "id": "exodus_modules",
     "name": {
-      "value": "Exodus-Module",
+      "value": "Módulos del Éxodo",
       "originalEn": "Exodus Modules"
     },
     "stackSize": 3,
@@ -2403,7 +2403,7 @@
   "experimental_seed_sample": {
     "id": "experimental_seed_sample",
     "name": {
-      "value": "Experimentelle Samenprobe",
+      "value": "Muestra de semilla experimental",
       "originalEn": "Experimental Seed Sample"
     },
     "stackSize": 1,
@@ -2417,7 +2417,7 @@
   "expired_pasta": {
     "id": "expired_pasta",
     "name": {
-      "value": "Abgelaufene Nudeln",
+      "value": "Pasta caducada",
       "originalEn": "Expired Pasta"
     },
     "stackSize": 15,
@@ -2431,7 +2431,7 @@
   "expired_respirator": {
     "id": "expired_respirator",
     "name": {
-      "value": "Abgelaufenes Atemgerät",
+      "value": "Respirador Inservible",
       "originalEn": "Expired Respirator"
     },
     "stackSize": 3,
@@ -2445,7 +2445,7 @@
   "explosive_compound": {
     "id": "explosive_compound",
     "name": {
-      "value": "Explosive Substanz",
+      "value": "Compuesto explosivo",
       "originalEn": "Explosive Compound"
     },
     "stackSize": 5,
@@ -2462,7 +2462,7 @@
   "explosive_mine": {
     "id": "explosive_mine",
     "name": {
-      "value": "Sprengmine",
+      "value": "Mina explosiva",
       "originalEn": "Explosive Mine"
     },
     "stackSize": 3,
@@ -2479,7 +2479,7 @@
   "explosive_mine_blueprint": {
     "id": "explosive_mine_blueprint",
     "name": {
-      "value": "Bauplan: Sprengmine",
+      "value": "Plano de Mina explosiva",
       "originalEn": "Explosive Mine Blueprint"
     },
     "stackSize": 1,
@@ -2493,7 +2493,7 @@
   "extended_barrel": {
     "id": "extended_barrel",
     "name": {
-      "value": "Verlängerter Lauf",
+      "value": "Cañón extendido",
       "originalEn": "Extended Barrel"
     },
     "stackSize": 1,
@@ -2510,7 +2510,7 @@
   "extended_barrel_blueprint": {
     "id": "extended_barrel_blueprint",
     "name": {
-      "value": "Bauplan: Verlangerter Lauf",
+      "value": "Plano de Canon extendido",
       "originalEn": "Extended Barrel Blueprint"
     },
     "stackSize": 1,
@@ -2524,7 +2524,7 @@
   "extended_light_mag_i": {
     "id": "extended_light_mag_i",
     "name": {
-      "value": "Erweitertes leichtes Magazin I",
+      "value": "Cargador ligero extendido I",
       "originalEn": "Extended Light Mag I"
     },
     "stackSize": 1,
@@ -2541,7 +2541,7 @@
   "extended_light_mag_ii": {
     "id": "extended_light_mag_ii",
     "name": {
-      "value": "Erweitertes leichtes Magazin II",
+      "value": "Cargador ligero extendido II",
       "originalEn": "Extended Light Mag II"
     },
     "stackSize": 1,
@@ -2558,7 +2558,7 @@
   "extended_light_mag_ii_blueprint": {
     "id": "extended_light_mag_ii_blueprint",
     "name": {
-      "value": "Bauplan: Erweitertes leichtes Magazin II",
+      "value": "Plano de Cargador ligero extendido II",
       "originalEn": "Extended Light Mag II Blueprint"
     },
     "stackSize": 1,
@@ -2572,7 +2572,7 @@
   "extended_light_mag_iii": {
     "id": "extended_light_mag_iii",
     "name": {
-      "value": "Erweitertes leichtes Magazin III",
+      "value": "Cargador ligero extendido III",
       "originalEn": "Extended Light Mag III"
     },
     "stackSize": 1,
@@ -2589,7 +2589,7 @@
   "extended_light_mag_iii_blueprint": {
     "id": "extended_light_mag_iii_blueprint",
     "name": {
-      "value": "Bauplan: Erweitertes leichtes Magazin III",
+      "value": "Plano de Cargador ligero extendido III",
       "originalEn": "Extended Light Mag III Blueprint"
     },
     "stackSize": 1,
@@ -2603,7 +2603,7 @@
   "extended_medium_mag_i": {
     "id": "extended_medium_mag_i",
     "name": {
-      "value": "Erweitertes mittelschweres Magazin I",
+      "value": "Cargador mediano extendido I",
       "originalEn": "Extended Medium Mag I"
     },
     "stackSize": 1,
@@ -2620,7 +2620,7 @@
   "extended_medium_mag_ii": {
     "id": "extended_medium_mag_ii",
     "name": {
-      "value": "Erweitertes mittelschweres Magazin II",
+      "value": "Cargador mediano extendido II",
       "originalEn": "Extended Medium Mag II"
     },
     "stackSize": 1,
@@ -2637,7 +2637,7 @@
   "extended_medium_mag_ii_blueprint": {
     "id": "extended_medium_mag_ii_blueprint",
     "name": {
-      "value": "Bauplan: Erweitertes mittelschweres Magazin II",
+      "value": "Plano de cargador mediano extendido II",
       "originalEn": "Extended Medium Mag II Blueprint"
     },
     "stackSize": 1,
@@ -2651,7 +2651,7 @@
   "extended_medium_mag_iii": {
     "id": "extended_medium_mag_iii",
     "name": {
-      "value": "Erweitertes mittelschweres Magazin III",
+      "value": "Cargador mediano extendido III",
       "originalEn": "Extended Medium Mag III"
     },
     "stackSize": 1,
@@ -2668,7 +2668,7 @@
   "extended_medium_mag_iii_blueprint": {
     "id": "extended_medium_mag_iii_blueprint",
     "name": {
-      "value": "Bauplan: Erweitertes mittelschweres Magazin III",
+      "value": "Plano de cargador mediano extendido III",
       "originalEn": "Extended Medium Mag III Blueprint"
     },
     "stackSize": 1,
@@ -2682,7 +2682,7 @@
   "extended_shotgun_mag_i": {
     "id": "extended_shotgun_mag_i",
     "name": {
-      "value": "Erweitertes Schrotflintenmagazin I",
+      "value": "Cargador de escopeta extendido I",
       "originalEn": "Extended Shotgun Mag I"
     },
     "stackSize": 1,
@@ -2699,7 +2699,7 @@
   "extended_shotgun_mag_ii": {
     "id": "extended_shotgun_mag_ii",
     "name": {
-      "value": "Erweitertes Schrotflintenmagazin II",
+      "value": "Cargador de escopeta extendido II",
       "originalEn": "Extended Shotgun Mag II"
     },
     "stackSize": 1,
@@ -2716,7 +2716,7 @@
   "extended_shotgun_mag_ii_blueprint": {
     "id": "extended_shotgun_mag_ii_blueprint",
     "name": {
-      "value": "Bauplan: Erweitertes Schrotflintenmagazin II",
+      "value": "Plano de cargador de escopeta extendido II",
       "originalEn": "Extended Shotgun Mag II Blueprint"
     },
     "stackSize": 1,
@@ -2730,7 +2730,7 @@
   "extended_shotgun_mag_iii": {
     "id": "extended_shotgun_mag_iii",
     "name": {
-      "value": "Erweitertes Schrotflintenmagazin III",
+      "value": "Cargador extendido de escopeta III",
       "originalEn": "Extended Shotgun Mag III"
     },
     "stackSize": 1,
@@ -2747,7 +2747,7 @@
   "extended_shotgun_mag_iii_blueprint": {
     "id": "extended_shotgun_mag_iii_blueprint",
     "name": {
-      "value": "Bauplan: Erweitertes Schrotflintenmagazin III",
+      "value": "Plano Cargador extendido de escopeta III",
       "originalEn": "Extended Shotgun Mag III Blueprint"
     },
     "stackSize": 1,
@@ -2761,7 +2761,7 @@
   "fabric": {
     "id": "fabric",
     "name": {
-      "value": "Stoff",
+      "value": "Tela",
       "originalEn": "Fabric"
     },
     "stackSize": 50,
@@ -2775,7 +2775,7 @@
   "faded_photograph": {
     "id": "faded_photograph",
     "name": {
-      "value": "Verblichenes Foto",
+      "value": "Fotografía descolorida",
       "originalEn": "Faded Photograph"
     },
     "stackSize": 15,
@@ -2789,7 +2789,7 @@
   "familiar_duck": {
     "id": "familiar_duck",
     "name": {
-      "value": "Vertraute Ente",
+      "value": "Pato Familiar",
       "originalEn": "Familiar Duck"
     },
     "stackSize": 15,
@@ -2870,7 +2870,7 @@
   "fertilizer": {
     "id": "fertilizer",
     "name": {
-      "value": "Dünger",
+      "value": "Fertilizante",
       "originalEn": "Fertilizer"
     },
     "stackSize": 5,
@@ -2884,7 +2884,7 @@
   "film_reel": {
     "id": "film_reel",
     "name": {
-      "value": "Filmrolle",
+      "value": "Rollo de película",
       "originalEn": "Film Reel"
     },
     "stackSize": 3,
@@ -2898,7 +2898,7 @@
   "fine_wristwatch": {
     "id": "fine_wristwatch",
     "name": {
-      "value": "Edle Armbanduhr",
+      "value": "Reloj de pulsera fino",
       "originalEn": "Fine Wristwatch"
     },
     "stackSize": 3,
@@ -2912,7 +2912,7 @@
   "fireball_burner": {
     "id": "fireball_burner",
     "name": {
-      "value": "Feuerballbrenner",
+      "value": "Quemador de esferígneo",
       "originalEn": "Fireball Burner"
     },
     "stackSize": 3,
@@ -2926,7 +2926,7 @@
   "firecracker": {
     "id": "firecracker",
     "name": {
-      "value": "Böller",
+      "value": "Petardo",
       "originalEn": "Firecracker"
     },
     "stackSize": 5,
@@ -2943,7 +2943,7 @@
   "firefly_burner": {
     "id": "firefly_burner",
     "name": {
-      "value": "Glühwürmchenbrenner",
+      "value": "Quemador de luciérnaga",
       "originalEn": "Firefly Burner"
     },
     "stackSize": 3,
@@ -2957,7 +2957,7 @@
   "fireworks_box": {
     "id": "fireworks_box",
     "name": {
-      "value": "Feuerwerkskiste",
+      "value": "Caja de fuegos artificiales",
       "originalEn": "Fireworks Box"
     },
     "stackSize": 1,
@@ -2974,7 +2974,7 @@
   "fireworks_box_blueprint": {
     "id": "fireworks_box_blueprint",
     "name": {
-      "value": "Bauplan: Feuerwerkskiste",
+      "value": "Plano de caja de fuegos artificiales",
       "originalEn": "Fireworks Box Blueprint"
     },
     "stackSize": 1,
@@ -2988,7 +2988,7 @@
   "first_wave_compass": {
     "id": "first_wave_compass",
     "name": {
-      "value": "Erste-Welle-Kompass",
+      "value": "Brújula de la Primera Ola",
       "originalEn": "First Wave Compass"
     },
     "stackSize": 1,
@@ -3002,7 +3002,7 @@
   "first_wave_rations": {
     "id": "first_wave_rations",
     "name": {
-      "value": "Erste-Welle-Rationen",
+      "value": "Raciones de la Primera Oleada",
       "originalEn": "First Wave Rations"
     },
     "stackSize": 1,
@@ -3016,7 +3016,7 @@
   "first_wave_tape": {
     "id": "first_wave_tape",
     "name": {
-      "value": "Erste-Welle-Band",
+      "value": "Cinta de la Primera Oleada",
       "originalEn": "First Wave Tape"
     },
     "stackSize": 1,
@@ -3030,7 +3030,7 @@
   "flame_spray": {
     "id": "flame_spray",
     "name": {
-      "value": "Flammen-Spray",
+      "value": "Lanzallamas",
       "originalEn": "Flame Spray"
     },
     "stackSize": 1,
@@ -3047,7 +3047,7 @@
   "flashy_duck": {
     "id": "flashy_duck",
     "name": {
-      "value": "Prunkvolle Ente",
+      "value": "Pato Llamativo",
       "originalEn": "Flashy Duck"
     },
     "stackSize": 15,
@@ -3061,7 +3061,7 @@
   "flow_controller": {
     "id": "flow_controller",
     "name": {
-      "value": "Durchflussregler",
+      "value": "Controlador de Flujo",
       "originalEn": "Flow Controller"
     },
     "stackSize": 3,
@@ -3075,7 +3075,7 @@
   "flushing_terminal_key": {
     "id": "flushing_terminal_key",
     "name": {
-      "value": "Schlüssel für das Flushing-Terminal",
+      "value": "Llave del Terminal de Flushing",
       "originalEn": "Flushing Terminal Key"
     },
     "stackSize": 1,
@@ -3089,7 +3089,7 @@
   "fossilized_lightning": {
     "id": "fossilized_lightning",
     "name": {
-      "value": "Versteinerter Blitz",
+      "value": "Rayo fosilizado",
       "originalEn": "Fossilized Lightning"
     },
     "stackSize": 1,
@@ -3103,7 +3103,7 @@
   "free_loadout_augment": {
     "id": "free_loadout_augment",
     "name": {
-      "value": "Augment mit Gratis-Loadout",
+      "value": "Aumento de equipamiento gratuito",
       "originalEn": "Free Loadout Augment"
     },
     "stackSize": 1,
@@ -3117,7 +3117,7 @@
   "frequency_modulation_box": {
     "id": "frequency_modulation_box",
     "name": {
-      "value": "Frequenzmodulationsbox",
+      "value": "Caja de modulación de frecuencia",
       "originalEn": "Frequency Modulation Box"
     },
     "stackSize": 3,
@@ -3131,7 +3131,7 @@
   "fried_motherboard": {
     "id": "fried_motherboard",
     "name": {
-      "value": "Durchgebranntes Motherboard",
+      "value": "Placa base quemada",
       "originalEn": "Fried Motherboard"
     },
     "stackSize": 3,
@@ -3145,7 +3145,7 @@
   "fruit_mix": {
     "id": "fruit_mix",
     "name": {
-      "value": "Obstmischung",
+      "value": "Mezcla de Frutas",
       "originalEn": "Fruit Mix"
     },
     "stackSize": 5,
@@ -3163,7 +3163,7 @@
   "frying_pan": {
     "id": "frying_pan",
     "name": {
-      "value": "Bratpfanne",
+      "value": "Sartén",
       "originalEn": "Frying Pan"
     },
     "stackSize": 3,
@@ -3177,7 +3177,7 @@
   "garlic_press": {
     "id": "garlic_press",
     "name": {
-      "value": "Knoblauchpresse",
+      "value": "Prensa de Ajo",
       "originalEn": "Garlic Press"
     },
     "stackSize": 3,
@@ -3191,7 +3191,7 @@
   "gas_grenade": {
     "id": "gas_grenade",
     "name": {
-      "value": "Gasgranate",
+      "value": "Granada de gas",
       "originalEn": "Gas Grenade"
     },
     "stackSize": 3,
@@ -3208,7 +3208,7 @@
   "gas_grenade_trap": {
     "id": "gas_grenade_trap",
     "name": {
-      "value": "Laserfalle: Gas",
+      "value": "Trampa de granada de gas",
       "originalEn": "Gas Grenade Trap"
     },
     "stackSize": 3,
@@ -3225,7 +3225,7 @@
   "gas_mine": {
     "id": "gas_mine",
     "name": {
-      "value": "Sprungmine: Ausdauerverlust über Zeit",
+      "value": "Mina de gas",
       "originalEn": "Gas Mine"
     },
     "stackSize": 3,
@@ -3242,7 +3242,7 @@
   "gas_mine_blueprint": {
     "id": "gas_mine_blueprint",
     "name": {
-      "value": "Bauplan: Sprungmine: Ausdauerverlust über Zeit",
+      "value": "Plano de Mina de gas",
       "originalEn": "Gas Mine Blueprint"
     },
     "stackSize": 1,
@@ -3256,7 +3256,7 @@
   "geiger_counter": {
     "id": "geiger_counter",
     "name": {
-      "value": "Geigerzähler",
+      "value": "Contador Geiger",
       "originalEn": "Geiger Counter"
     },
     "stackSize": 3,
@@ -3270,7 +3270,7 @@
   "gentle_duck": {
     "id": "gentle_duck",
     "name": {
-      "value": "Sanfte Ente",
+      "value": "Pato Gentil",
       "originalEn": "Gentle Duck"
     },
     "stackSize": 15,
@@ -3284,7 +3284,7 @@
   "great_mullein": {
     "id": "great_mullein",
     "name": {
-      "value": "Kleinblütige Königskerze",
+      "value": "Gran verbasco",
       "originalEn": "Great Mullein"
     },
     "stackSize": 15,
@@ -3298,7 +3298,7 @@
   "green_light_stick": {
     "id": "green_light_stick",
     "name": {
-      "value": "Grüner Leuchtstab",
+      "value": "Barra luminosa verde",
       "originalEn": "Green Light Stick"
     },
     "stackSize": 5,
@@ -3314,7 +3314,7 @@
   "green_light_stick_blueprint": {
     "id": "green_light_stick_blueprint",
     "name": {
-      "value": "Bauplan: Grüner Leuchtstab",
+      "value": "Plano de barra luminosa verde",
       "originalEn": "Green Light Stick Blueprint"
     },
     "stackSize": 1,
@@ -3328,7 +3328,7 @@
   "hairpin_i": {
     "id": "hairpin_i",
     "name": {
-      "value": "Hairpin I",
+      "value": "Horquilla I",
       "originalEn": "Hairpin I"
     },
     "stackSize": 1,
@@ -3345,7 +3345,7 @@
   "hairpin_ii": {
     "id": "hairpin_ii",
     "name": {
-      "value": "Hairpin II",
+      "value": "Horquilla II",
       "originalEn": "Hairpin II"
     },
     "stackSize": 1,
@@ -3361,7 +3361,7 @@
   "hairpin_iii": {
     "id": "hairpin_iii",
     "name": {
-      "value": "Hairpin III",
+      "value": "Horquilla III",
       "originalEn": "Hairpin III"
     },
     "stackSize": 1,
@@ -3378,7 +3378,7 @@
   "hairpin_iv": {
     "id": "hairpin_iv",
     "name": {
-      "value": "Hairpin IV",
+      "value": "Horquilla IV",
       "originalEn": "Hairpin IV"
     },
     "stackSize": 1,
@@ -3395,7 +3395,7 @@
   "headphones": {
     "id": "headphones",
     "name": {
-      "value": "Kopfhörer",
+      "value": "Auriculares",
       "originalEn": "Headphones"
     },
     "stackSize": 3,
@@ -3409,7 +3409,7 @@
   "heavy_ammo": {
     "id": "heavy_ammo",
     "name": {
-      "value": "Schwere Munition",
+      "value": "Munición pesada",
       "originalEn": "Heavy Ammo"
     },
     "stackSize": 40,
@@ -3426,7 +3426,7 @@
   "heavy_fuze_grenade": {
     "id": "heavy_fuze_grenade",
     "name": {
-      "value": "Schwere Zündgranate",
+      "value": "Granada de espoleta pesada",
       "originalEn": "Heavy Fuze Grenade"
     },
     "stackSize": 3,
@@ -3443,7 +3443,7 @@
   "heavy_gun_parts": {
     "id": "heavy_gun_parts",
     "name": {
-      "value": "Teile für Waffe mit schwerer Munition",
+      "value": "Piezas de arma pesada",
       "originalEn": "Heavy Gun Parts"
     },
     "stackSize": 5,
@@ -3459,7 +3459,7 @@
   "heavy_gun_parts_blueprint": {
     "id": "heavy_gun_parts_blueprint",
     "name": {
-      "value": "Bauplan: Teile für Waffe mit schwerer Munition",
+      "value": "Plano de piezas de arma pesada",
       "originalEn": "Heavy Gun Parts Blueprint"
     },
     "stackSize": 1,
@@ -3473,7 +3473,7 @@
   "heavy_shield": {
     "id": "heavy_shield",
     "name": {
-      "value": "Schwerer Schild",
+      "value": "Escudo pesado",
       "originalEn": "Heavy Shield"
     },
     "stackSize": 1,
@@ -3490,7 +3490,7 @@
   "herbal_bandage": {
     "id": "herbal_bandage",
     "name": {
-      "value": "Kräuterverband",
+      "value": "Venda herbal",
       "originalEn": "Herbal Bandage"
     },
     "stackSize": 5,
@@ -3507,7 +3507,7 @@
   "horizontal_grip": {
     "id": "horizontal_grip",
     "name": {
-      "value": "Horizontaler Griff",
+      "value": "Empuñadura Horizontal",
       "originalEn": "Horizontal Grip"
     },
     "stackSize": 1,
@@ -3521,7 +3521,7 @@
   "hornet_driver": {
     "id": "hornet_driver",
     "name": {
-      "value": "Hornissentreiber",
+      "value": "Controlador de Avispón",
       "originalEn": "Hornet Driver"
     },
     "stackSize": 3,
@@ -3535,7 +3535,7 @@
   "household_cleaner": {
     "id": "household_cleaner",
     "name": {
-      "value": "Haushaltsreiniger",
+      "value": "Limpiador Doméstico",
       "originalEn": "Household Cleaner"
     },
     "stackSize": 3,
@@ -3549,7 +3549,7 @@
   "hullcracker_blueprint": {
     "id": "hullcracker_blueprint",
     "name": {
-      "value": "Bauplan: Hüllenbrecher",
+      "value": "Planos de Partecascos",
       "originalEn": "Hullcracker Blueprint"
     },
     "stackSize": 1,
@@ -3563,7 +3563,7 @@
   "hullcracker_i": {
     "id": "hullcracker_i",
     "name": {
-      "value": "Hüllenbrecher I",
+      "value": "Partecascos I",
       "originalEn": "Hullcracker I"
     },
     "stackSize": 1,
@@ -3581,7 +3581,7 @@
   "hullcracker_ii": {
     "id": "hullcracker_ii",
     "name": {
-      "value": "Hüllenbrecher II",
+      "value": "Rompe Cascos II",
       "originalEn": "Hullcracker II"
     },
     "stackSize": 1,
@@ -3598,7 +3598,7 @@
   "hullcracker_iii": {
     "id": "hullcracker_iii",
     "name": {
-      "value": "Hüllenbrecher III",
+      "value": "Rompe Cascos III",
       "originalEn": "Hullcracker III"
     },
     "stackSize": 1,
@@ -3615,7 +3615,7 @@
   "hullcracker_iv": {
     "id": "hullcracker_iv",
     "name": {
-      "value": "Hüllenbrecher IV",
+      "value": "Rompe Cascos IV",
       "originalEn": "Hullcracker IV"
     },
     "stackSize": 1,
@@ -3632,7 +3632,7 @@
   "humidifier": {
     "id": "humidifier",
     "name": {
-      "value": "Luftbefeuchter",
+      "value": "Humidificador",
       "originalEn": "Humidifier"
     },
     "stackSize": 3,
@@ -3646,7 +3646,7 @@
   "ice_cream_scooper": {
     "id": "ice_cream_scooper",
     "name": {
-      "value": "Eisportionierer",
+      "value": "Cuchara De Helados",
       "originalEn": "Ice Cream Scooper"
     },
     "stackSize": 3,
@@ -3660,7 +3660,7 @@
   "il_toro_blueprint": {
     "id": "il_toro_blueprint",
     "name": {
-      "value": "Bauplan: Il Toro",
+      "value": "Plano de Il Toro",
       "originalEn": "Il Toro Blueprint"
     },
     "stackSize": 1,
@@ -3742,7 +3742,7 @@
   "impure_arc_coolant": {
     "id": "impure_arc_coolant",
     "name": {
-      "value": "Unreines ARC-Kühlmittel",
+      "value": "Refrigerante ARC Impuro",
       "originalEn": "Impure ARC Coolant"
     },
     "stackSize": 3,
@@ -3756,7 +3756,7 @@
   "industrial_battery": {
     "id": "industrial_battery",
     "name": {
-      "value": "Industrie-Akku",
+      "value": "Batería industrial",
       "originalEn": "Industrial Battery"
     },
     "stackSize": 3,
@@ -3770,7 +3770,7 @@
   "industrial_charger": {
     "id": "industrial_charger",
     "name": {
-      "value": "Industrie-Ladegerät",
+      "value": "Cargador Industrial",
       "originalEn": "Industrial Charger"
     },
     "stackSize": 3,
@@ -3784,7 +3784,7 @@
   "industrial_magnet": {
     "id": "industrial_magnet",
     "name": {
-      "value": "Industrie-Magnet",
+      "value": "Imán Industrial",
       "originalEn": "Industrial Magnet"
     },
     "stackSize": 3,
@@ -3798,7 +3798,7 @@
   "ion_sputter": {
     "id": "ion_sputter",
     "name": {
-      "value": "Ionenzerstäuber",
+      "value": "Pulverizador iónico",
       "originalEn": "Ion Sputter"
     },
     "stackSize": 3,
@@ -3812,7 +3812,7 @@
   "jolt_mine": {
     "id": "jolt_mine",
     "name": {
-      "value": "Schockmine",
+      "value": "Mina de choque",
       "originalEn": "Jolt Mine"
     },
     "stackSize": 3,
@@ -3829,7 +3829,7 @@
   "jolt_mine_blueprint": {
     "id": "jolt_mine_blueprint",
     "name": {
-      "value": "Bauplan: Schockmine",
+      "value": "Plano de mina aturdidora",
       "originalEn": "Jolt Mine Blueprint"
     },
     "stackSize": 1,
@@ -3843,7 +3843,7 @@
   "jupiter": {
     "id": "jupiter",
     "name": {
-      "value": "Jupiter",
+      "value": "Júpiter",
       "originalEn": "Jupiter"
     },
     "stackSize": 1,
@@ -3861,7 +3861,7 @@
   "jupiter_blueprint": {
     "id": "jupiter_blueprint",
     "name": {
-      "value": "Bauplan: Jupiter",
+      "value": "Plano de Júpiter",
       "originalEn": "Jupiter Blueprint"
     },
     "stackSize": 1,
@@ -3875,7 +3875,7 @@
   "kettle_i": {
     "id": "kettle_i",
     "name": {
-      "value": "Kettle I",
+      "value": "Caldero I",
       "originalEn": "Kettle I"
     },
     "stackSize": 1,
@@ -3892,7 +3892,7 @@
   "kettle_ii": {
     "id": "kettle_ii",
     "name": {
-      "value": "Kettle II",
+      "value": "Caldero II",
       "originalEn": "Kettle II"
     },
     "stackSize": 1,
@@ -3909,7 +3909,7 @@
   "kettle_iii": {
     "id": "kettle_iii",
     "name": {
-      "value": "Kettle III",
+      "value": "Caldero III",
       "originalEn": "Kettle III"
     },
     "stackSize": 1,
@@ -3926,7 +3926,7 @@
   "kettle_iv": {
     "id": "kettle_iv",
     "name": {
-      "value": "Kettle IV",
+      "value": "Caldero IV",
       "originalEn": "Kettle IV"
     },
     "stackSize": 1,
@@ -3943,7 +3943,7 @@
   "kinetic_converter": {
     "id": "kinetic_converter",
     "name": {
-      "value": "Kinetischer Konverter",
+      "value": "Convertidor cinético",
       "originalEn": "Kinetic Converter"
     },
     "stackSize": 1,
@@ -3957,7 +3957,7 @@
   "laboratory_reagents": {
     "id": "laboratory_reagents",
     "name": {
-      "value": "Laboringredienzien",
+      "value": "Reactivos de laboratorio",
       "originalEn": "Laboratory Reagents"
     },
     "stackSize": 3,
@@ -3971,7 +3971,7 @@
   "lances_mixtape_5th_edition": {
     "id": "lances_mixtape_5th_edition",
     "name": {
-      "value": "Lances Mixtape (5. Auflage)",
+      "value": "Mixtape de Lance (5ª edición)",
       "originalEn": "Lance's Mixtape (5th Edition)"
     },
     "stackSize": 3,
@@ -3985,7 +3985,7 @@
   "launcher_ammo": {
     "id": "launcher_ammo",
     "name": {
-      "value": "Werfermunition",
+      "value": "Munición de lanzador",
       "originalEn": "Launcher Ammo"
     },
     "stackSize": 24,
@@ -4002,7 +4002,7 @@
   "leaper_pulse_unit": {
     "id": "leaper_pulse_unit",
     "name": {
-      "value": "Springer-Impulseinheit",
+      "value": "Unidad de pulso de saltador",
       "originalEn": "Leaper Pulse Unit"
     },
     "stackSize": 3,
@@ -4016,7 +4016,7 @@
   "lemon": {
     "id": "lemon",
     "name": {
-      "value": "Zitrone",
+      "value": "Limón",
       "originalEn": "Lemon"
     },
     "stackSize": 10,
@@ -4030,7 +4030,7 @@
   "library_book": {
     "id": "library_book",
     "name": {
-      "value": "Buch",
+      "value": "Libro",
       "originalEn": "Book"
     },
     "stackSize": 1,
@@ -4044,7 +4044,7 @@
   "lidar_scanner": {
     "id": "lidar_scanner",
     "name": {
-      "value": "Lidar-Scanner",
+      "value": "Escáner Lidar",
       "originalEn": "Lidar Scanner"
     },
     "stackSize": 1,
@@ -4058,7 +4058,7 @@
   "light_ammo": {
     "id": "light_ammo",
     "name": {
-      "value": "Leichte Munition",
+      "value": "Munición ligera",
       "originalEn": "Light Ammo"
     },
     "stackSize": 100,
@@ -4075,7 +4075,7 @@
   "light_bulb": {
     "id": "light_bulb",
     "name": {
-      "value": "Glühbirne",
+      "value": "Bombilla",
       "originalEn": "Light Bulb"
     },
     "stackSize": 3,
@@ -4089,7 +4089,7 @@
   "light_gun_parts": {
     "id": "light_gun_parts",
     "name": {
-      "value": "Teile für Waffe mit leichter Munition",
+      "value": "Piezas de Armas Ligeras",
       "originalEn": "Light Gun Parts"
     },
     "stackSize": 5,
@@ -4105,7 +4105,7 @@
   "light_gun_parts_blueprint": {
     "id": "light_gun_parts_blueprint",
     "name": {
-      "value": "Bauplan: Leichte Waffenteile",
+      "value": "Plano de piezas de armas ligeras",
       "originalEn": "Light Gun Parts Blueprint"
     },
     "stackSize": 1,
@@ -4119,7 +4119,7 @@
   "light_impact_grenade": {
     "id": "light_impact_grenade",
     "name": {
-      "value": "Leichte Aufschlaggranate",
+      "value": "Granada de impacto ligera",
       "originalEn": "Light Impact Grenade"
     },
     "stackSize": 5,
@@ -4136,7 +4136,7 @@
   "light_shield": {
     "id": "light_shield",
     "name": {
-      "value": "Leichter Schild",
+      "value": "Escudo ligero",
       "originalEn": "Light Shield"
     },
     "stackSize": 1,
@@ -4153,7 +4153,7 @@
   "lightweight_stock": {
     "id": "lightweight_stock",
     "name": {
-      "value": "Leichtgewicht-Schaft",
+      "value": "Culata ligera",
       "originalEn": "Lightweight Stock"
     },
     "stackSize": 1,
@@ -4170,7 +4170,7 @@
   "lightweight_stock_blueprint": {
     "id": "lightweight_stock_blueprint",
     "name": {
-      "value": "Bauplan: Leichtgewicht-Schaft",
+      "value": "Plano de culata ligera",
       "originalEn": "Lightweight Stock Blueprint"
     },
     "stackSize": 1,
@@ -4184,7 +4184,7 @@
   "lil_smoke_grenade": {
     "id": "lil_smoke_grenade",
     "name": {
-      "value": "Mini-Rauchgranate",
+      "value": "Pequeña granada de humo",
       "originalEn": "Li'l Smoke Grenade"
     },
     "stackSize": 5,
@@ -4201,7 +4201,7 @@
   "looting_mk1": {
     "id": "looting_mk1",
     "name": {
-      "value": "Beute-Marke 1",
+      "value": "Saqueo Ver.1",
       "originalEn": "Looting Mk. 1"
     },
     "stackSize": 1,
@@ -4218,7 +4218,7 @@
   "looting_mk2": {
     "id": "looting_mk2",
     "name": {
-      "value": "Beute-Marke 2",
+      "value": "Saqueo Ver. 2",
       "originalEn": "Looting Mk. 2"
     },
     "stackSize": 1,
@@ -4235,7 +4235,7 @@
   "looting_mk3_cautious": {
     "id": "looting_mk3_cautious",
     "name": {
-      "value": "Beute-Marke 3 (Vorsichtig)",
+      "value": "Saqueo Ver. 3 (Cauteloso)",
       "originalEn": "Looting Mk. 3 (Cautious)"
     },
     "stackSize": 1,
@@ -4252,7 +4252,7 @@
   "looting_mk3_safekeeper": {
     "id": "looting_mk3_safekeeper",
     "name": {
-      "value": "Beute-Marke 3 (Hüter)",
+      "value": "Saqueo Ver. 3 (Guardián)",
       "originalEn": "Looting Mk. 3 (Safekeeper)"
     },
     "stackSize": 1,
@@ -4269,7 +4269,7 @@
   "looting_mk3_safekeeper_blueprint": {
     "id": "looting_mk3_safekeeper_blueprint",
     "name": {
-      "value": "Bauplan: Beute-Marke 3 (Hüter)",
+      "value": "Plano de Saqueo Mk. 3 (Custodio)",
       "originalEn": "Looting Mk. 3 (Safekeeper) Blueprint"
     },
     "stackSize": 1,
@@ -4283,7 +4283,7 @@
   "looting_mk3_survivor": {
     "id": "looting_mk3_survivor",
     "name": {
-      "value": "Beute-Marke 3 (Überleben)",
+      "value": "Saqueo Ver. 3 (Superviviente)",
       "originalEn": "Looting Mk. 3 (Survivor)"
     },
     "stackSize": 1,
@@ -4300,7 +4300,7 @@
   "looting_mk3_survivor_blueprint": {
     "id": "looting_mk3_survivor_blueprint",
     "name": {
-      "value": "Bauplan: Beute-Marke 3 (Überleben)",
+      "value": "Plano Saqueo Ver. 3 (Superviviente)",
       "originalEn": "Looting Mk. 3 (Survivor) Blueprint"
     },
     "stackSize": 1,
@@ -4314,7 +4314,7 @@
   "lure_grenade": {
     "id": "lure_grenade",
     "name": {
-      "value": "Ködergranate",
+      "value": "Granada señuelo",
       "originalEn": "Lure Grenade"
     },
     "stackSize": 3,
@@ -4331,7 +4331,7 @@
   "lure_grenade_blueprint": {
     "id": "lure_grenade_blueprint",
     "name": {
-      "value": "Bauplan: Ködergranate",
+      "value": "Plano de granada señuelo",
       "originalEn": "Lure Grenade Blueprint"
     },
     "stackSize": 1,
@@ -4345,7 +4345,7 @@
   "lure_grenade_trap": {
     "id": "lure_grenade_trap",
     "name": {
-      "value": "Köder-Granatenfalle",
+      "value": "Trampa de granada señuelo",
       "originalEn": "Lure Grenade Trap"
     },
     "stackSize": 3,
@@ -4362,7 +4362,7 @@
   "magnet": {
     "id": "magnet",
     "name": {
-      "value": "Magnet",
+      "value": "Imán",
       "originalEn": "Magnet"
     },
     "stackSize": 15,
@@ -4376,7 +4376,7 @@
   "magnetic_accelerator": {
     "id": "magnetic_accelerator",
     "name": {
-      "value": "Magnetischer Beschleuniger",
+      "value": "Acelerador Magnético",
       "originalEn": "Magnetic Accelerator"
     },
     "stackSize": 3,
@@ -4393,7 +4393,7 @@
   "magnetron": {
     "id": "magnetron",
     "name": {
-      "value": "Magnetron",
+      "value": "Magnetrón",
       "originalEn": "Magnetron"
     },
     "stackSize": 3,
@@ -4407,7 +4407,7 @@
   "major_aivas_mementos": {
     "id": "major_aivas_mementos",
     "name": {
-      "value": "Major Aivas Andenken",
+      "value": "Recuerdos de la Mayor Aiva",
       "originalEn": "Major Aiva's Mementos"
     },
     "stackSize": 1,
@@ -4421,7 +4421,7 @@
   "major_aivas_patch": {
     "id": "major_aivas_patch",
     "name": {
-      "value": "Major Aivas Abzeichen",
+      "value": "Parche del Mayor Aiva",
       "originalEn": "Major Aiva's Patch"
     },
     "stackSize": 1,
@@ -4435,7 +4435,7 @@
   "matriarch_reactor": {
     "id": "matriarch_reactor",
     "name": {
-      "value": "Matriarchenreaktor",
+      "value": "Reactor de la Matriarca",
       "originalEn": "Matriarch Reactor"
     },
     "stackSize": 1,
@@ -4449,7 +4449,7 @@
   "mechanical_components": {
     "id": "mechanical_components",
     "name": {
-      "value": "Mechanische Komponenten",
+      "value": "Componentes mecánicos",
       "originalEn": "Mechanical Components"
     },
     "stackSize": 10,
@@ -4466,7 +4466,7 @@
   "medium_ammo": {
     "id": "medium_ammo",
     "name": {
-      "value": "Mittlere Munition",
+      "value": "Munición media",
       "originalEn": "Medium Ammo"
     },
     "stackSize": 80,
@@ -4483,7 +4483,7 @@
   "medium_gun_parts": {
     "id": "medium_gun_parts",
     "name": {
-      "value": "Teile für Waffe mit mittlerer Munition",
+      "value": "Piezas de armas medianas",
       "originalEn": "Medium Gun Parts"
     },
     "stackSize": 5,
@@ -4499,7 +4499,7 @@
   "medium_gun_parts_blueprint": {
     "id": "medium_gun_parts_blueprint",
     "name": {
-      "value": "Bauplan: Teile für Waffe mit mittlerer Munition",
+      "value": "Plano de piezas de arma medianas",
       "originalEn": "Medium Gun Parts Blueprint"
     },
     "stackSize": 1,
@@ -4513,7 +4513,7 @@
   "medium_shield": {
     "id": "medium_shield",
     "name": {
-      "value": "Mittlerer Schild",
+      "value": "Escudo mediano",
       "originalEn": "Medium Shield"
     },
     "stackSize": 1,
@@ -4530,7 +4530,7 @@
   "metal_brackets": {
     "id": "metal_brackets",
     "name": {
-      "value": "Metallhalterungen",
+      "value": "Soportes metálicos",
       "originalEn": "Metal Brackets"
     },
     "stackSize": 3,
@@ -4544,7 +4544,7 @@
   "metal_parts": {
     "id": "metal_parts",
     "name": {
-      "value": "Metallteile",
+      "value": "Piezas de metal",
       "originalEn": "Metal Parts"
     },
     "stackSize": 50,
@@ -4558,7 +4558,7 @@
   "microscope": {
     "id": "microscope",
     "name": {
-      "value": "Mikroskop",
+      "value": "Microscopio",
       "originalEn": "Microscope"
     },
     "stackSize": 3,
@@ -4572,7 +4572,7 @@
   "mini_centrifuge": {
     "id": "mini_centrifuge",
     "name": {
-      "value": "Minizentrifuge",
+      "value": "Minicentrífuga",
       "originalEn": "Mini Centrifuge"
     },
     "stackSize": 3,
@@ -4586,7 +4586,7 @@
   "mod_components": {
     "id": "mod_components",
     "name": {
-      "value": "Mod-Komponenten",
+      "value": "Componentes de modificación",
       "originalEn": "Mod Components"
     },
     "stackSize": 5,
@@ -4603,7 +4603,7 @@
   "moisture_meter": {
     "id": "moisture_meter",
     "name": {
-      "value": "Feuchtigkeitsmesser",
+      "value": "Medidor de humedad",
       "originalEn": "Moisture Meter"
     },
     "stackSize": 1,
@@ -4617,7 +4617,7 @@
   "moss": {
     "id": "moss",
     "name": {
-      "value": "Moos",
+      "value": "Musgo",
       "originalEn": "Moss"
     },
     "stackSize": 10,
@@ -4645,7 +4645,7 @@
   "mushroom": {
     "id": "mushroom",
     "name": {
-      "value": "Pilz",
+      "value": "Seta",
       "originalEn": "Mushroom"
     },
     "stackSize": 10,
@@ -4659,7 +4659,7 @@
   "music_album": {
     "id": "music_album",
     "name": {
-      "value": "Musikalbum",
+      "value": "Álbum de música",
       "originalEn": "Music Album"
     },
     "stackSize": 3,
@@ -4673,7 +4673,7 @@
   "music_box": {
     "id": "music_box",
     "name": {
-      "value": "Spieluhr",
+      "value": "Caja de música",
       "originalEn": "Music Box"
     },
     "stackSize": 3,
@@ -4687,7 +4687,7 @@
   "muzzle_brake_i": {
     "id": "muzzle_brake_i",
     "name": {
-      "value": "Mündungsbremse I",
+      "value": "Freno de boca I",
       "originalEn": "Muzzle Brake I"
     },
     "stackSize": 1,
@@ -4704,7 +4704,7 @@
   "muzzle_brake_ii": {
     "id": "muzzle_brake_ii",
     "name": {
-      "value": "Mündungsbremse II",
+      "value": "Freno de boca II",
       "originalEn": "Muzzle Brake II"
     },
     "stackSize": 1,
@@ -4721,7 +4721,7 @@
   "muzzle_brake_ii_blueprint": {
     "id": "muzzle_brake_ii_blueprint",
     "name": {
-      "value": "Bauplan: Mündungsbremse II",
+      "value": "Plano de freno de boca II",
       "originalEn": "Muzzle Brake II Blueprint"
     },
     "stackSize": 1,
@@ -4735,7 +4735,7 @@
   "muzzle_brake_iii": {
     "id": "muzzle_brake_iii",
     "name": {
-      "value": "Mündungsbremse III",
+      "value": "Freno de boca III",
       "originalEn": "Muzzle Brake III"
     },
     "stackSize": 1,
@@ -4752,7 +4752,7 @@
   "muzzle_brake_iii_blueprint": {
     "id": "muzzle_brake_iii_blueprint",
     "name": {
-      "value": "Bauplan: Mundungsbremse III",
+      "value": "Plano de Freno de boca III",
       "originalEn": "Muzzle Brake III Blueprint"
     },
     "stackSize": 1,
@@ -4766,7 +4766,7 @@
   "noisemaker": {
     "id": "noisemaker",
     "name": {
-      "value": "Krachmacher",
+      "value": "Generador de ruido",
       "originalEn": "Noisemaker"
     },
     "stackSize": 3,
@@ -4783,7 +4783,7 @@
   "number_plate": {
     "id": "number_plate",
     "name": {
-      "value": "Nummernschild",
+      "value": "Matrícula",
       "originalEn": "Number Plate"
     },
     "stackSize": 3,
@@ -4797,7 +4797,7 @@
   "nutrient_meter": {
     "id": "nutrient_meter",
     "name": {
-      "value": "Nährstoffmessgerät",
+      "value": "Medidor de nutrientes",
       "originalEn": "Nutrient Meter"
     },
     "stackSize": 1,
@@ -4811,7 +4811,7 @@
   "official_shutdown_documentation": {
     "id": "official_shutdown_documentation",
     "name": {
-      "value": "Offizielle Stilllegungsdokumentation",
+      "value": "Documentación oficial de cierre",
       "originalEn": "Official Shutdown Documentation"
     },
     "stackSize": 1,
@@ -4825,7 +4825,7 @@
   "oil": {
     "id": "oil",
     "name": {
-      "value": "Öl",
+      "value": "Aceite",
       "originalEn": "Oil"
     },
     "stackSize": 15,
@@ -4839,7 +4839,7 @@
   "old_world_books": {
     "id": "old_world_books",
     "name": {
-      "value": "Bücher der Alten Welt",
+      "value": "Libros del Viejo Mundo",
       "originalEn": "Old World Books"
     },
     "stackSize": 1,
@@ -4853,7 +4853,7 @@
   "olives": {
     "id": "olives",
     "name": {
-      "value": "Oliven",
+      "value": "Aceitunas",
       "originalEn": "Olives"
     },
     "stackSize": 10,
@@ -4867,7 +4867,7 @@
   "osprey_blueprint": {
     "id": "osprey_blueprint",
     "name": {
-      "value": "Bauplan: Osprey",
+      "value": "Plano de Osprey",
       "originalEn": "Osprey Blueprint"
     },
     "stackSize": 1,
@@ -4950,7 +4950,7 @@
   "padded_stock": {
     "id": "padded_stock",
     "name": {
-      "value": "Gepolsterter Schaft",
+      "value": "Culata acolchada",
       "originalEn": "Padded Stock"
     },
     "stackSize": 1,
@@ -4967,7 +4967,7 @@
   "padded_stock_blueprint": {
     "id": "padded_stock_blueprint",
     "name": {
-      "value": "Bauplan: Gepolsterter Schaft",
+      "value": "Plano: Culata acolchada",
       "originalEn": "Padded Stock Blueprint"
     },
     "stackSize": 1,
@@ -4981,7 +4981,7 @@
   "painted_box": {
     "id": "painted_box",
     "name": {
-      "value": "Bemalte Kiste",
+      "value": "Caja pintada",
       "originalEn": "Painted Box"
     },
     "stackSize": 3,
@@ -4995,7 +4995,7 @@
   "patrol_car_key": {
     "id": "patrol_car_key",
     "name": {
-      "value": "Streifenwagenschlüssel",
+      "value": "Llave de coche patrulla",
       "originalEn": "Patrol Car Key"
     },
     "stackSize": 1,
@@ -5009,7 +5009,7 @@
   "photoelectric_cloak": {
     "id": "photoelectric_cloak",
     "name": {
-      "value": "Fotoelektrischer Umhang",
+      "value": "Capa fotoeléctrica",
       "originalEn": "Photoelectric Cloak"
     },
     "stackSize": 1,
@@ -5026,7 +5026,7 @@
   "pilgrims_peak_security_code": {
     "id": "pilgrims_peak_security_code",
     "name": {
-      "value": "Pilgrim's Peak Sicherheitscode",
+      "value": "Código de seguridad de Pilgrim's Peak",
       "originalEn": "Pilgrim's Peak Security Code"
     },
     "stackSize": 1,
@@ -5040,7 +5040,7 @@
   "plastic_parts": {
     "id": "plastic_parts",
     "name": {
-      "value": "Plastikteile",
+      "value": "Piezas de plástico",
       "originalEn": "Plastic Parts"
     },
     "stackSize": 50,
@@ -5054,7 +5054,7 @@
   "playing_cards": {
     "id": "playing_cards",
     "name": {
-      "value": "Spielkarten",
+      "value": "Cartas de juego",
       "originalEn": "Playing Cards"
     },
     "stackSize": 3,
@@ -5068,7 +5068,7 @@
   "polluted_air_filter": {
     "id": "polluted_air_filter",
     "name": {
-      "value": "Verunreinigter Luftfilter",
+      "value": "Filtro de aire contaminado",
       "originalEn": "Polluted Air Filter"
     },
     "stackSize": 3,
@@ -5082,7 +5082,7 @@
   "pop_trigger": {
     "id": "pop_trigger",
     "name": {
-      "value": "Pop-Auslöser",
+      "value": "Gatillo de tronador",
       "originalEn": "Pop Trigger"
     },
     "stackSize": 3,
@@ -5096,7 +5096,7 @@
   "portable_tv": {
     "id": "portable_tv",
     "name": {
-      "value": "Tragbarer Fernseher",
+      "value": "TV portátil",
       "originalEn": "Portable TV"
     },
     "stackSize": 1,
@@ -5110,7 +5110,7 @@
   "possibly_toxic_plant": {
     "id": "possibly_toxic_plant",
     "name": {
-      "value": "Möglicherweise giftige Pflanze",
+      "value": "Planta posiblemente tóxica",
       "originalEn": "Possibly Toxic Plant"
     },
     "stackSize": 1,
@@ -5124,7 +5124,7 @@
   "poster_of_natural_wonders": {
     "id": "poster_of_natural_wonders",
     "name": {
-      "value": "Naturwunder-Poster",
+      "value": "Póster de naturaleza",
       "originalEn": "Poster of Natural Wonders"
     },
     "stackSize": 3,
@@ -5138,7 +5138,7 @@
   "pottery": {
     "id": "pottery",
     "name": {
-      "value": "Keramik",
+      "value": "Cerámica",
       "originalEn": "Pottery"
     },
     "stackSize": 3,
@@ -5152,7 +5152,7 @@
   "power_bank": {
     "id": "power_bank",
     "name": {
-      "value": "Powerbank",
+      "value": "Batería Externa",
       "originalEn": "Power Bank"
     },
     "stackSize": 3,
@@ -5166,7 +5166,7 @@
   "power_cable": {
     "id": "power_cable",
     "name": {
-      "value": "Stromkabel",
+      "value": "Cable de alimentación",
       "originalEn": "Power Cable"
     },
     "stackSize": 3,
@@ -5180,7 +5180,7 @@
   "power_rod": {
     "id": "power_rod",
     "name": {
-      "value": "Energiestab",
+      "value": "Varilla de energía",
       "originalEn": "Power Rod"
     },
     "stackSize": 3,
@@ -5197,7 +5197,7 @@
   "prickly_pear": {
     "id": "prickly_pear",
     "name": {
-      "value": "Kaktusfeige",
+      "value": "Higo chumbo",
       "originalEn": "Prickly Pear"
     },
     "stackSize": 10,
@@ -5211,7 +5211,7 @@
   "processor": {
     "id": "processor",
     "name": {
-      "value": "Prozessor",
+      "value": "Procesador",
       "originalEn": "Processor"
     },
     "stackSize": 5,
@@ -5225,7 +5225,7 @@
   "project_heartwood_blueprints": {
     "id": "project_heartwood_blueprints",
     "name": {
-      "value": "Projekt-Heartwood-Baupläne",
+      "value": "Planos del Proyecto Heartwood",
       "originalEn": "Project Heartwood Blueprints"
     },
     "stackSize": 1,
@@ -5239,7 +5239,7 @@
   "projector": {
     "id": "projector",
     "name": {
-      "value": "Projektor",
+      "value": "Proyector",
       "originalEn": "Projector"
     },
     "stackSize": 3,
@@ -5253,7 +5253,7 @@
   "pulse_mine": {
     "id": "pulse_mine",
     "name": {
-      "value": "Sprungmine: Impuls",
+      "value": "Mina de pulso",
       "originalEn": "Pulse Mine"
     },
     "stackSize": 3,
@@ -5270,7 +5270,7 @@
   "pulse_mine_blueprint": {
     "id": "pulse_mine_blueprint",
     "name": {
-      "value": "Bauplan: Sprungmine: Impuls",
+      "value": "Plano de mina de pulso",
       "originalEn": "Pulse Mine Blueprint"
     },
     "stackSize": 1,
@@ -5284,7 +5284,7 @@
   "queen_reactor": {
     "id": "queen_reactor",
     "name": {
-      "value": "Königin-Reaktor",
+      "value": "Reactor de reina",
       "originalEn": "Queen Reactor"
     },
     "stackSize": 1,
@@ -5312,7 +5312,7 @@
   "radio_relay": {
     "id": "radio_relay",
     "name": {
-      "value": "Radio-Relais",
+      "value": "Relé de radio",
       "originalEn": "Radio Relay"
     },
     "stackSize": 3,
@@ -5326,7 +5326,7 @@
   "raider_hatch_key": {
     "id": "raider_hatch_key",
     "name": {
-      "value": "Raider-Lukenschlüssel",
+      "value": "Llave de trampilla de raider",
       "originalEn": "Raider Hatch Key"
     },
     "stackSize": 1,
@@ -5343,7 +5343,7 @@
   "raiders_refuge_security_code": {
     "id": "raiders_refuge_security_code",
     "name": {
-      "value": "Raider's Refuge Sicherheitscode",
+      "value": "Código de seguridad de Raider's Refuge",
       "originalEn": "Raider's Refuge Security Code"
     },
     "stackSize": 1,
@@ -5357,7 +5357,7 @@
   "rattler_i": {
     "id": "rattler_i",
     "name": {
-      "value": "Rattler I",
+      "value": "Crótalo I",
       "originalEn": "Rattler I"
     },
     "stackSize": 1,
@@ -5374,7 +5374,7 @@
   "rattler_ii": {
     "id": "rattler_ii",
     "name": {
-      "value": "Rattler II",
+      "value": "Crótalo II",
       "originalEn": "Rattler II"
     },
     "stackSize": 1,
@@ -5391,7 +5391,7 @@
   "rattler_iii": {
     "id": "rattler_iii",
     "name": {
-      "value": "Rattler III",
+      "value": "Crótalo III",
       "originalEn": "Rattler III"
     },
     "stackSize": 1,
@@ -5408,7 +5408,7 @@
   "rattler_iv": {
     "id": "rattler_iv",
     "name": {
-      "value": "Rattler IV",
+      "value": "Crótalo IV",
       "originalEn": "Rattler IV"
     },
     "stackSize": 1,
@@ -5425,7 +5425,7 @@
   "recorder": {
     "id": "recorder",
     "name": {
-      "value": "Spielbare Flöte",
+      "value": "Flauta",
       "originalEn": "Recorder"
     },
     "stackSize": 1,
@@ -5439,7 +5439,7 @@
   "red_coral_jewelry": {
     "id": "red_coral_jewelry",
     "name": {
-      "value": "Rote Korallenschmuck",
+      "value": "Joyería de coral rojo",
       "originalEn": "Red Coral Jewelry"
     },
     "stackSize": 3,
@@ -5453,7 +5453,7 @@
   "red_light_stick": {
     "id": "red_light_stick",
     "name": {
-      "value": "Roter Leuchtstab",
+      "value": "Barra luminosa roja",
       "originalEn": "Red Light Stick"
     },
     "stackSize": 5,
@@ -5469,7 +5469,7 @@
   "red_light_stick_blueprint": {
     "id": "red_light_stick_blueprint",
     "name": {
-      "value": "Bauplan: Roter Leuchtstab",
+      "value": "Plano de barra luminosa roja",
       "originalEn": "Red Light Stick Blueprint"
     },
     "stackSize": 1,
@@ -5483,7 +5483,7 @@
   "reinforced_reception_security_code": {
     "id": "reinforced_reception_security_code",
     "name": {
-      "value": "Reinforced Reception Sicherheitscode",
+      "value": "Código de seguridad de Reinforced Reception",
       "originalEn": "Reinforced Reception Security Code"
     },
     "stackSize": 1,
@@ -5497,7 +5497,7 @@
   "remote_control": {
     "id": "remote_control",
     "name": {
-      "value": "Fernbedienung",
+      "value": "Control Remoto",
       "originalEn": "Remote Control"
     },
     "stackSize": 3,
@@ -5511,7 +5511,7 @@
   "remote_raider_flare": {
     "id": "remote_raider_flare",
     "name": {
-      "value": "Raider-Leuchtfackel mit Fernzündung",
+      "value": "Bengala de asaltante remota",
       "originalEn": "Remote Raider Flare"
     },
     "stackSize": 3,
@@ -5528,7 +5528,7 @@
   "remote_raider_flare_blueprint": {
     "id": "remote_raider_flare_blueprint",
     "name": {
-      "value": "Bauplan: Raider-Leuchtfackel mit Fernzündung",
+      "value": "Plano de Bengala de asaltante remota",
       "originalEn": "Remote Raider Flare Blueprint"
     },
     "stackSize": 1,
@@ -5542,7 +5542,7 @@
   "renegade_i": {
     "id": "renegade_i",
     "name": {
-      "value": "Renegade I",
+      "value": "Renegado I",
       "originalEn": "Renegade I"
     },
     "stackSize": 1,
@@ -5560,7 +5560,7 @@
   "renegade_ii": {
     "id": "renegade_ii",
     "name": {
-      "value": "Renegade II",
+      "value": "Renegado II",
       "originalEn": "Renegade II"
     },
     "stackSize": 1,
@@ -5577,7 +5577,7 @@
   "renegade_iii": {
     "id": "renegade_iii",
     "name": {
-      "value": "Renegade III",
+      "value": "Renegado III",
       "originalEn": "Renegade III"
     },
     "stackSize": 1,
@@ -5594,7 +5594,7 @@
   "renegade_iv": {
     "id": "renegade_iv",
     "name": {
-      "value": "Renegade IV",
+      "value": "Renegado IV",
       "originalEn": "Renegade IV"
     },
     "stackSize": 1,
@@ -5611,7 +5611,7 @@
   "resin": {
     "id": "resin",
     "name": {
-      "value": "Harz",
+      "value": "Resina",
       "originalEn": "Resin"
     },
     "stackSize": 10,
@@ -5625,7 +5625,7 @@
   "ripped_safety_vest": {
     "id": "ripped_safety_vest",
     "name": {
-      "value": "Zerfetzte Sicherheitsweste",
+      "value": "Chaleco de seguridad rasgado",
       "originalEn": "Ripped Safety Vest"
     },
     "stackSize": 3,
@@ -5639,7 +5639,7 @@
   "rocket_thruster": {
     "id": "rocket_thruster",
     "name": {
-      "value": "Raketentriebwerk",
+      "value": "Propulsor de cohetero",
       "originalEn": "Rocket Thruster"
     },
     "stackSize": 3,
@@ -5653,7 +5653,7 @@
   "rocketeer_driver": {
     "id": "rocketeer_driver",
     "name": {
-      "value": "Raketenkanoniertreiber",
+      "value": "Controlador de cohetero",
       "originalEn": "Rocketeer Driver"
     },
     "stackSize": 3,
@@ -5667,7 +5667,7 @@
   "roots": {
     "id": "roots",
     "name": {
-      "value": "Wurzeln",
+      "value": "Raíces",
       "originalEn": "Roots"
     },
     "stackSize": 10,
@@ -5681,7 +5681,7 @@
   "rope": {
     "id": "rope",
     "name": {
-      "value": "Seil",
+      "value": "Cuerda",
       "originalEn": "Rope"
     },
     "stackSize": 5,
@@ -5695,7 +5695,7 @@
   "rosary": {
     "id": "rosary",
     "name": {
-      "value": "Rosenkranz",
+      "value": "Rosario",
       "originalEn": "Rosary"
     },
     "stackSize": 3,
@@ -5709,7 +5709,7 @@
   "rotary_encoder": {
     "id": "rotary_encoder",
     "name": {
-      "value": "Drehgeber",
+      "value": "Codificador rotatorio",
       "originalEn": "Rotary Encoder"
     },
     "stackSize": 3,
@@ -5723,7 +5723,7 @@
   "rubber_duck": {
     "id": "rubber_duck",
     "name": {
-      "value": "Quietscheente",
+      "value": "Pato de goma",
       "originalEn": "Rubber Duck"
     },
     "stackSize": 15,
@@ -5737,7 +5737,7 @@
   "rubber_pad": {
     "id": "rubber_pad",
     "name": {
-      "value": "Gummimatte",
+      "value": "Almohadilla de Goma",
       "originalEn": "Rubber Pad"
     },
     "stackSize": 3,
@@ -5751,7 +5751,7 @@
   "rubber_parts": {
     "id": "rubber_parts",
     "name": {
-      "value": "Gummiteile",
+      "value": "Piezas de goma",
       "originalEn": "Rubber Parts"
     },
     "stackSize": 50,
@@ -5765,7 +5765,7 @@
   "ruined_accordion": {
     "id": "ruined_accordion",
     "name": {
-      "value": "Kaputtes Akkordeon",
+      "value": "Acordeón arruinado",
       "originalEn": "Ruined Accordion"
     },
     "stackSize": 3,
@@ -5779,7 +5779,7 @@
   "ruined_augment": {
     "id": "ruined_augment",
     "name": {
-      "value": "Kaputte Verstärkung",
+      "value": "Aumento arruinado",
       "originalEn": "Ruined Augment"
     },
     "stackSize": 1,
@@ -5793,7 +5793,7 @@
   "ruined_baton": {
     "id": "ruined_baton",
     "name": {
-      "value": "Kaputter Schlagstock",
+      "value": "Bastón arruinado",
       "originalEn": "Ruined Baton"
     },
     "stackSize": 3,
@@ -5807,7 +5807,7 @@
   "ruined_handcuffs": {
     "id": "ruined_handcuffs",
     "name": {
-      "value": "Kaputte Handschellen",
+      "value": "Esposas arruinadas",
       "originalEn": "Ruined Handcuffs"
     },
     "stackSize": 3,
@@ -5821,7 +5821,7 @@
   "ruined_parachute": {
     "id": "ruined_parachute",
     "name": {
-      "value": "Kaputter Fallschirm",
+      "value": "Paracaídas arruinado",
       "originalEn": "Ruined Parachute"
     },
     "stackSize": 3,
@@ -5835,7 +5835,7 @@
   "ruined_riot_shield": {
     "id": "ruined_riot_shield",
     "name": {
-      "value": "Kaputtes Schutzschild",
+      "value": "Escudo antidisturbios arruinado",
       "originalEn": "Ruined Riot Shield"
     },
     "stackSize": 3,
@@ -5849,7 +5849,7 @@
   "ruined_tactical_vest": {
     "id": "ruined_tactical_vest",
     "name": {
-      "value": "Zerfetzte taktische Weste",
+      "value": "Chaleco táctico arruinado",
       "originalEn": "Ruined Tactical Vest"
     },
     "stackSize": 3,
@@ -5863,7 +5863,7 @@
   "rusted_bolts": {
     "id": "rusted_bolts",
     "name": {
-      "value": "Verrostete Bolzen",
+      "value": "Tornillos Oxidados",
       "originalEn": "Rusted Bolts"
     },
     "stackSize": 3,
@@ -5877,7 +5877,7 @@
   "rusted_gear": {
     "id": "rusted_gear",
     "name": {
-      "value": "Verrostetes Zahnrad",
+      "value": "Engranaje oxidado",
       "originalEn": "Rusted Gear"
     },
     "stackSize": 3,
@@ -5891,7 +5891,7 @@
   "rusted_shut_medical_kit": {
     "id": "rusted_shut_medical_kit",
     "name": {
-      "value": "Verrosteter verschlossener Verbandkasten",
+      "value": "Botiquín oxidado cerrado",
       "originalEn": "Rusted Shut Medical Kit"
     },
     "stackSize": 3,
@@ -5905,7 +5905,7 @@
   "rusted_tools": {
     "id": "rusted_tools",
     "name": {
-      "value": "Verrostete Werkzeuge",
+      "value": "Herramientas oxidadas",
       "originalEn": "Rusted Tools"
     },
     "stackSize": 3,
@@ -5919,7 +5919,7 @@
   "rusty_arc_steel": {
     "id": "rusty_arc_steel",
     "name": {
-      "value": "Rostiger ARC-Stahl",
+      "value": "Acero ARC oxidado",
       "originalEn": "Rusty ARC Steel"
     },
     "stackSize": 3,
@@ -5933,7 +5933,7 @@
   "sample_cleaner": {
     "id": "sample_cleaner",
     "name": {
-      "value": "Probenreiniger",
+      "value": "Limpiador de muestras",
       "originalEn": "Sample Cleaner"
     },
     "stackSize": 3,
@@ -5947,7 +5947,7 @@
   "scout_patrol_note": {
     "id": "scout_patrol_note",
     "name": {
-      "value": "Späherpatrouillen-Notiz",
+      "value": "Nota de patrulla de exploradores",
       "originalEn": "Scout Patrol Note"
     },
     "stackSize": 1,
@@ -5961,7 +5961,7 @@
   "secret_meeting_info": {
     "id": "secret_meeting_info",
     "name": {
-      "value": "Geheime Besprechungsinfos",
+      "value": "Información de reunión secreta",
       "originalEn": "Secret Meeting Info"
     },
     "stackSize": 1,
@@ -5975,7 +5975,7 @@
   "seeker_grenade": {
     "id": "seeker_grenade",
     "name": {
-      "value": "Suchgranate",
+      "value": "Granada rastreadora",
       "originalEn": "Seeker Grenade"
     },
     "stackSize": 5,
@@ -5992,7 +5992,7 @@
   "seeker_grenade_blueprint": {
     "id": "seeker_grenade_blueprint",
     "name": {
-      "value": "Bauplan: Suchgranate",
+      "value": "Plano de granada rastreadora",
       "originalEn": "Seeker Grenade Blueprint"
     },
     "stackSize": 1,
@@ -6006,7 +6006,7 @@
   "sensors": {
     "id": "sensors",
     "name": {
-      "value": "Sensoren",
+      "value": "Sensores",
       "originalEn": "Sensors"
     },
     "stackSize": 5,
@@ -6020,7 +6020,7 @@
   "sentinel_firing_core": {
     "id": "sentinel_firing_core",
     "name": {
-      "value": "Wächter-Feuerkern",
+      "value": "Núcleo de disparo de centinela",
       "originalEn": "Sentinel Firing Core"
     },
     "stackSize": 3,
@@ -6051,7 +6051,7 @@
   "shield_recharger": {
     "id": "shield_recharger",
     "name": {
-      "value": "Schildauflader",
+      "value": "Cargador de escudos",
       "originalEn": "Shield Recharger"
     },
     "stackSize": 5,
@@ -6068,7 +6068,7 @@
   "shotgun_ammo": {
     "id": "shotgun_ammo",
     "name": {
-      "value": "Schrotflintenmunition",
+      "value": "Munición de escopeta",
       "originalEn": "Shotgun Ammo"
     },
     "stackSize": 20,
@@ -6085,7 +6085,7 @@
   "shotgun_choke_i": {
     "id": "shotgun_choke_i",
     "name": {
-      "value": "Schrotflintenchoke I",
+      "value": "Estrangulador de escopeta I",
       "originalEn": "Shotgun Choke I"
     },
     "stackSize": 1,
@@ -6102,7 +6102,7 @@
   "shotgun_choke_ii": {
     "id": "shotgun_choke_ii",
     "name": {
-      "value": "Schrotflintenchoke II",
+      "value": "Estrangulador de escopeta II",
       "originalEn": "Shotgun Choke II"
     },
     "stackSize": 1,
@@ -6119,7 +6119,7 @@
   "shotgun_choke_ii_blueprint": {
     "id": "shotgun_choke_ii_blueprint",
     "name": {
-      "value": "Bauplan: Schrotflintenchoke II",
+      "value": "Plano de Estrangulador de escopeta II",
       "originalEn": "Shotgun Choke II Blueprint"
     },
     "stackSize": 1,
@@ -6133,7 +6133,7 @@
   "shotgun_choke_iii": {
     "id": "shotgun_choke_iii",
     "name": {
-      "value": "Schrotflintenchoke III",
+      "value": "Estrangulador de escopeta III",
       "originalEn": "Shotgun Choke III"
     },
     "stackSize": 1,
@@ -6150,7 +6150,7 @@
   "shotgun_choke_iii_blueprint": {
     "id": "shotgun_choke_iii_blueprint",
     "name": {
-      "value": "Bauplan: Schrotflintenchoke III",
+      "value": "Plano de Estrangulador de escopeta III",
       "originalEn": "Shotgun Choke III Blueprint"
     },
     "stackSize": 1,
@@ -6164,7 +6164,7 @@
   "shotgun_silencer": {
     "id": "shotgun_silencer",
     "name": {
-      "value": "Schrotflinten-Schalldämpfer",
+      "value": "Silenciador de escopeta",
       "originalEn": "Shotgun Silencer"
     },
     "stackSize": 1,
@@ -6181,7 +6181,7 @@
   "shotgun_silencer_blueprint": {
     "id": "shotgun_silencer_blueprint",
     "name": {
-      "value": "Bauplan: Schrotflinten-Schalldampfer",
+      "value": "Plano de Silenciador de escopeta",
       "originalEn": "Shotgun Silencer Blueprint"
     },
     "stackSize": 1,
@@ -6195,7 +6195,7 @@
   "showstopper": {
     "id": "showstopper",
     "name": {
-      "value": "Showstopper",
+      "value": "Aguafiestas",
       "originalEn": "Showstopper"
     },
     "stackSize": 5,
@@ -6213,7 +6213,7 @@
   "showstopper_blueprint": {
     "id": "showstopper_blueprint",
     "name": {
-      "value": "Bauplan: Showstopper",
+      "value": "Plano de Aguafiestas",
       "originalEn": "Showstopper Blueprint"
     },
     "stackSize": 1,
@@ -6227,7 +6227,7 @@
   "shrapnel_grenade": {
     "id": "shrapnel_grenade",
     "name": {
-      "value": "Schrapnellgranate",
+      "value": "Granada de metralla",
       "originalEn": "Shrapnel Grenade"
     },
     "stackSize": 5,
@@ -6244,7 +6244,7 @@
   "shredder_gyro": {
     "id": "shredder_gyro",
     "name": {
-      "value": "Schredder-Gyroskop",
+      "value": "Giroscopio de Triturador",
       "originalEn": "Shredder Gyro"
     },
     "stackSize": 3,
@@ -6258,7 +6258,7 @@
   "signal_amplifier": {
     "id": "signal_amplifier",
     "name": {
-      "value": "Signalverstärker",
+      "value": "Amplificador de señal",
       "originalEn": "Signal Amplifier"
     },
     "stackSize": 3,
@@ -6272,7 +6272,7 @@
   "silencer_i": {
     "id": "silencer_i",
     "name": {
-      "value": "Schalldämpfer I",
+      "value": "Silenciador I",
       "originalEn": "Silencer I"
     },
     "stackSize": 1,
@@ -6289,7 +6289,7 @@
   "silencer_i_blueprint": {
     "id": "silencer_i_blueprint",
     "name": {
-      "value": "Bauplan: Schalldämpfer I",
+      "value": "Plano de Silenciador I",
       "originalEn": "Silencer I Blueprint"
     },
     "stackSize": 1,
@@ -6303,7 +6303,7 @@
   "silencer_ii": {
     "id": "silencer_ii",
     "name": {
-      "value": "Schalldämpfer II",
+      "value": "Silenciador II",
       "originalEn": "Silencer II"
     },
     "stackSize": 1,
@@ -6320,7 +6320,7 @@
   "silencer_ii_blueprint": {
     "id": "silencer_ii_blueprint",
     "name": {
-      "value": "Bauplan: Schalldämpfer II",
+      "value": "Plano de Silenciador II",
       "originalEn": "Silencer II Blueprint"
     },
     "stackSize": 1,
@@ -6334,7 +6334,7 @@
   "silencer_iii": {
     "id": "silencer_iii",
     "name": {
-      "value": "Schalldämpfer III",
+      "value": "Silenciador III",
       "originalEn": "Silencer III"
     },
     "stackSize": 1,
@@ -6348,7 +6348,7 @@
   "silver_teaspoon_set": {
     "id": "silver_teaspoon_set",
     "name": {
-      "value": "Silberne Teelöffelt",
+      "value": "Juego de cucharitas de plata",
       "originalEn": "Silver Teaspoon Set"
     },
     "stackSize": 3,
@@ -6362,7 +6362,7 @@
   "simple_gun_parts": {
     "id": "simple_gun_parts",
     "name": {
-      "value": "Einfache Waffenteile",
+      "value": "Piezas de arma básica",
       "originalEn": "Simple Gun Parts"
     },
     "stackSize": 10,
@@ -6376,7 +6376,7 @@
   "smoke_grenade": {
     "id": "smoke_grenade",
     "name": {
-      "value": "Rauchgranate",
+      "value": "Granada de humo",
       "originalEn": "Smoke Grenade"
     },
     "stackSize": 5,
@@ -6393,7 +6393,7 @@
   "smoke_grenade_blueprint": {
     "id": "smoke_grenade_blueprint",
     "name": {
-      "value": "Bauplan: Rauchgranate",
+      "value": "Plano de Granada de humo",
       "originalEn": "Smoke Grenade Blueprint"
     },
     "stackSize": 1,
@@ -6407,7 +6407,7 @@
   "smoke_grenade_trap": {
     "id": "smoke_grenade_trap",
     "name": {
-      "value": "Laserfalle: Rauch",
+      "value": "Trampa de granada de humo",
       "originalEn": "Smoke Grenade Trap"
     },
     "stackSize": 3,
@@ -6424,7 +6424,7 @@
   "snap_blast_grenade": {
     "id": "snap_blast_grenade",
     "name": {
-      "value": "Snapshot-Granate",
+      "value": "Granada de ráfaga",
       "originalEn": "Snap Blast Grenade"
     },
     "stackSize": 3,
@@ -6441,7 +6441,7 @@
   "snap_hook": {
     "id": "snap_hook",
     "name": {
-      "value": "Karabinerhaken",
+      "value": "Mosquetón",
       "originalEn": "Snap Hook"
     },
     "stackSize": 1,
@@ -6459,7 +6459,7 @@
   "snap_hook_blueprint": {
     "id": "snap_hook_blueprint",
     "name": {
-      "value": "Bauplan: Karabinerhaken",
+      "value": "Proyecto del mosquetón",
       "originalEn": "Snap Hook Blueprint"
     },
     "stackSize": 1,
@@ -6473,7 +6473,7 @@
   "snitch_scanner": {
     "id": "snitch_scanner",
     "name": {
-      "value": "Spitzel-Scanner",
+      "value": "Escáner de delator",
       "originalEn": "Snitch Scanner"
     },
     "stackSize": 3,
@@ -6487,7 +6487,7 @@
   "snowball": {
     "id": "snowball",
     "name": {
-      "value": "Schneeball",
+      "value": "Bola de nieve",
       "originalEn": "Snowball"
     },
     "stackSize": 5,
@@ -6501,7 +6501,7 @@
   "spaceport_container_storage_key": {
     "id": "spaceport_container_storage_key",
     "name": {
-      "value": "Containerlagerschlüssel (Raumhafen)",
+      "value": "Llave del almacén de contenedores del espaciopuerto",
       "originalEn": "Spaceport Container Storage Key"
     },
     "stackSize": 1,
@@ -6515,7 +6515,7 @@
   "spaceport_control_tower_key": {
     "id": "spaceport_control_tower_key",
     "name": {
-      "value": "Raumhafen-Kontrollturm-Schlüssel",
+      "value": "Llave de la torre de control del espaciopuerto",
       "originalEn": "Spaceport Control Tower Key"
     },
     "stackSize": 1,
@@ -6529,7 +6529,7 @@
   "spaceport_trench_tower_key": {
     "id": "spaceport_trench_tower_key",
     "name": {
-      "value": "Grabenturmschlüssel (Raumhafen)",
+      "value": "Llave de la torre de trincheras del espaciopuerto",
       "originalEn": "Spaceport Trench Tower Key"
     },
     "stackSize": 1,
@@ -6543,7 +6543,7 @@
   "spaceport_warehouse_key": {
     "id": "spaceport_warehouse_key",
     "name": {
-      "value": "Lagerhausschlüssel (Raumhafen)",
+      "value": "Llave del almacén del espaciopuerto",
       "originalEn": "Spaceport Warehouse Key"
     },
     "stackSize": 1,
@@ -6557,7 +6557,7 @@
   "speaker_component": {
     "id": "speaker_component",
     "name": {
-      "value": "Lautsprecher-Komponente",
+      "value": "Componente de altavoz",
       "originalEn": "Speaker Component"
     },
     "stackSize": 5,
@@ -6571,7 +6571,7 @@
   "spectrometer": {
     "id": "spectrometer",
     "name": {
-      "value": "Spektrometer",
+      "value": "Espectrómetro",
       "originalEn": "Spectrometer"
     },
     "stackSize": 3,
@@ -6585,7 +6585,7 @@
   "spectrum_analyzer": {
     "id": "spectrum_analyzer",
     "name": {
-      "value": "Spektrumanalysator",
+      "value": "Analizador de espectro",
       "originalEn": "Spectrum Analyzer"
     },
     "stackSize": 3,
@@ -6599,7 +6599,7 @@
   "spotter_relay": {
     "id": "spotter_relay",
     "name": {
-      "value": "Aufklärer-Relais",
+      "value": "Repetidor de Vigía",
       "originalEn": "Spotter Relay"
     },
     "stackSize": 3,
@@ -6613,7 +6613,7 @@
   "spring_cushion": {
     "id": "spring_cushion",
     "name": {
-      "value": "Sprungfederkissen",
+      "value": "Cojín de Muelles",
       "originalEn": "Spring Cushion"
     },
     "stackSize": 3,
@@ -6627,7 +6627,7 @@
   "stable_stock_i": {
     "id": "stable_stock_i",
     "name": {
-      "value": "Stabiler Kolben I",
+      "value": "Culata estable I",
       "originalEn": "Stable Stock I"
     },
     "stackSize": 1,
@@ -6644,7 +6644,7 @@
   "stable_stock_ii": {
     "id": "stable_stock_ii",
     "name": {
-      "value": "Stabiler Kolben II",
+      "value": "Culata estable II",
       "originalEn": "Stable Stock II"
     },
     "stackSize": 1,
@@ -6661,7 +6661,7 @@
   "stable_stock_ii_blueprint": {
     "id": "stable_stock_ii_blueprint",
     "name": {
-      "value": "Bauplan: Stabiler Kolben II",
+      "value": "Plano de Culata estable II",
       "originalEn": "Stable Stock II Blueprint"
     },
     "stackSize": 1,
@@ -6675,7 +6675,7 @@
   "stable_stock_iii": {
     "id": "stable_stock_iii",
     "name": {
-      "value": "Stabiler Kolben III",
+      "value": "Culata estable III",
       "originalEn": "Stable Stock III"
     },
     "stackSize": 1,
@@ -6692,7 +6692,7 @@
   "stable_stock_iii_blueprint": {
     "id": "stable_stock_iii_blueprint",
     "name": {
-      "value": "Bauplan: Stabiler Kolben III",
+      "value": "Plano de Culata estable III",
       "originalEn": "Stable Stock III Blueprint"
     },
     "stackSize": 1,
@@ -6706,7 +6706,7 @@
   "stack_of_movie_tapes": {
     "id": "stack_of_movie_tapes",
     "name": {
-      "value": "Stapel Filmkassetten",
+      "value": "Pila de cintas de vídeo",
       "originalEn": "Stack of Movie Tapes"
     },
     "stackSize": 1,
@@ -6720,7 +6720,7 @@
   "statuette": {
     "id": "statuette",
     "name": {
-      "value": "Statuette",
+      "value": "Estatuilla",
       "originalEn": "Statuette"
     },
     "stackSize": 3,
@@ -6734,7 +6734,7 @@
   "steel_spring": {
     "id": "steel_spring",
     "name": {
-      "value": "Stahlfeder",
+      "value": "Resorte de acero",
       "originalEn": "Steel Spring"
     },
     "stackSize": 15,
@@ -6748,7 +6748,7 @@
   "stella_montis_archives_key": {
     "id": "stella_montis_archives_key",
     "name": {
-      "value": "Stella Montis Archivschlüssel",
+      "value": "Llave de los Archivos de Stella Montis",
       "originalEn": "Stella Montis Archives Key"
     },
     "stackSize": 1,
@@ -6762,7 +6762,7 @@
   "stella_montis_assembly_admin_key": {
     "id": "stella_montis_assembly_admin_key",
     "name": {
-      "value": "Schlüssel zur Montageverwaltung in Stella Montis",
+      "value": "Llave de Administrador del Ensamblaje de Stella Montis",
       "originalEn": "Stella Montis Assembly Admin Key"
     },
     "stackSize": 1,
@@ -6776,7 +6776,7 @@
   "stella_montis_medical_storage_key": {
     "id": "stella_montis_medical_storage_key",
     "name": {
-      "value": "Schlüssel zum medizinischen Lagerraum in Stella Montis",
+      "value": "Llave del Almacén Médico de Stella Montis",
       "originalEn": "Stella Montis Medical Storage Key"
     },
     "stackSize": 1,
@@ -6790,7 +6790,7 @@
   "stella_montis_security_checkpoint_key": {
     "id": "stella_montis_security_checkpoint_key",
     "name": {
-      "value": "Schlüssel zur Sicherheitskontrolle in Stella Montis",
+      "value": "Llave del puesto de control de seguridad de Stella Montis",
       "originalEn": "Stella Montis Security Checkpoint Key"
     },
     "stackSize": 1,
@@ -6804,7 +6804,7 @@
   "sterilized_bandage": {
     "id": "sterilized_bandage",
     "name": {
-      "value": "Steriler Verband",
+      "value": "Venda esterilizada",
       "originalEn": "Sterilized Bandage"
     },
     "stackSize": 3,
@@ -6821,7 +6821,7 @@
   "stitcher_i": {
     "id": "stitcher_i",
     "name": {
-      "value": "Stitcher I",
+      "value": "Costurero I",
       "originalEn": "Stitcher I"
     },
     "stackSize": 1,
@@ -6838,7 +6838,7 @@
   "stitcher_ii": {
     "id": "stitcher_ii",
     "name": {
-      "value": "Stitcher II",
+      "value": "Costurero II",
       "originalEn": "Stitcher II"
     },
     "stackSize": 1,
@@ -6855,7 +6855,7 @@
   "stitcher_iii": {
     "id": "stitcher_iii",
     "name": {
-      "value": "Stitcher III",
+      "value": "Costurero III",
       "originalEn": "Stitcher III"
     },
     "stackSize": 1,
@@ -6872,7 +6872,7 @@
   "stitcher_iv": {
     "id": "stitcher_iv",
     "name": {
-      "value": "Stitcher IV",
+      "value": "Costurero IV",
       "originalEn": "Stitcher IV"
     },
     "stackSize": 1,
@@ -6907,7 +6907,7 @@
   "surge_coil_blueprint": {
     "id": "surge_coil_blueprint",
     "name": {
-      "value": "Bauplan: Surge Coil",
+      "value": "Surge Coil Plano",
       "originalEn": "Surge Coil Blueprint"
     },
     "stackSize": 1,
@@ -6921,7 +6921,7 @@
   "surge_shield_recharger": {
     "id": "surge_shield_recharger",
     "name": {
-      "value": "Sofort-Schildauflader",
+      "value": "Cargador de escudos de sobrecarga",
       "originalEn": "Surge Shield Recharger"
     },
     "stackSize": 5,
@@ -6938,7 +6938,7 @@
   "surveyor_vault": {
     "id": "surveyor_vault",
     "name": {
-      "value": "Beobachtertresor",
+      "value": "Depósito de Vigilante",
       "originalEn": "Surveyor Vault"
     },
     "stackSize": 3,
@@ -6952,7 +6952,7 @@
   "synthesized_fuel": {
     "id": "synthesized_fuel",
     "name": {
-      "value": "Synthetischer Treibstoff",
+      "value": "Combustible sintetizado",
       "originalEn": "Synthesized Fuel"
     },
     "stackSize": 5,
@@ -6966,7 +6966,7 @@
   "syringe": {
     "id": "syringe",
     "name": {
-      "value": "Spritze",
+      "value": "Jeringa",
       "originalEn": "Syringe"
     },
     "stackSize": 5,
@@ -6980,7 +6980,7 @@
   "tactical_mk1": {
     "id": "tactical_mk1",
     "name": {
-      "value": "Taktisch-Marke 1",
+      "value": "Táctico Ver. 1",
       "originalEn": "Tactical Mk. 1"
     },
     "stackSize": 1,
@@ -6997,7 +6997,7 @@
   "tactical_mk2": {
     "id": "tactical_mk2",
     "name": {
-      "value": "Taktisch-Marke 2",
+      "value": "Táctico Ver. 2",
       "originalEn": "Tactical Mk. 2"
     },
     "stackSize": 1,
@@ -7014,7 +7014,7 @@
   "tactical_mk3_defensive": {
     "id": "tactical_mk3_defensive",
     "name": {
-      "value": "Taktisch-Marke 3 (Defensiv)",
+      "value": "Táctico Ver. 3 (Defensivo)",
       "originalEn": "Tactical Mk. 3 (Defensive)"
     },
     "stackSize": 1,
@@ -7031,7 +7031,7 @@
   "tactical_mk3_defensive_blueprint": {
     "id": "tactical_mk3_defensive_blueprint",
     "name": {
-      "value": "Bauplan: Taktisch-Marke 3 (Verteidigung)",
+      "value": "Plano Tactico Ver. 3 (Defensivo)",
       "originalEn": "Tactical Mk. 3 (Defensive) Blueprint"
     },
     "stackSize": 1,
@@ -7045,7 +7045,7 @@
   "tactical_mk3_healing": {
     "id": "tactical_mk3_healing",
     "name": {
-      "value": "Taktisch-Marke 3 (Heilung)",
+      "value": "Táctico Ver. 3 (Curación)",
       "originalEn": "Tactical Mk. 3 (Healing)"
     },
     "stackSize": 1,
@@ -7062,7 +7062,7 @@
   "tactical_mk3_healing_blueprint": {
     "id": "tactical_mk3_healing_blueprint",
     "name": {
-      "value": "Bauplan: Taktisch-Marke 3 (Heilung)",
+      "value": "Plano Táctico Ver. 3 (Curación)",
       "originalEn": "Tactical Mk. 3 (Healing) Blueprint"
     },
     "stackSize": 1,
@@ -7076,7 +7076,7 @@
   "tactical_mk3_revival": {
     "id": "tactical_mk3_revival",
     "name": {
-      "value": "Taktisch-Marke 3 (Wiederbelebung)",
+      "value": "Táctico Ver. 3 (Reanimación)",
       "originalEn": "Tactical Mk. 3 (Revival)"
     },
     "stackSize": 1,
@@ -7093,7 +7093,7 @@
   "tactical_mk3_revival_blueprint": {
     "id": "tactical_mk3_revival_blueprint",
     "name": {
-      "value": "Bauplan: Taktisch-Marke 3 (Wiederbelebung)",
+      "value": "Plano Táctico Mk. 3 (Reanimación)",
       "originalEn": "Tactical Mk. 3 (Revival) Blueprint"
     },
     "stackSize": 1,
@@ -7107,7 +7107,7 @@
   "tagging_grenade": {
     "id": "tagging_grenade",
     "name": {
-      "value": "Markierungsgranate",
+      "value": "Granada de marcaje",
       "originalEn": "Tagging Grenade"
     },
     "stackSize": 3,
@@ -7124,7 +7124,7 @@
   "tagging_grenade_blueprint": {
     "id": "tagging_grenade_blueprint",
     "name": {
-      "value": "Bauplan: Markierungsgranate",
+      "value": "Plano de Granada de marcaje",
       "originalEn": "Tagging Grenade Blueprint"
     },
     "stackSize": 1,
@@ -7138,7 +7138,7 @@
   "tattered_arc_lining": {
     "id": "tattered_arc_lining",
     "name": {
-      "value": "Zerfetzte ARC-Fütterung",
+      "value": "Revestimiento ARC Rasgado",
       "originalEn": "Tattered Arc Lining"
     },
     "stackSize": 3,
@@ -7152,7 +7152,7 @@
   "tattered_clothes": {
     "id": "tattered_clothes",
     "name": {
-      "value": "Zerfetzte Kleidung",
+      "value": "Ropa Andrajosa",
       "originalEn": "Tattered Clothes"
     },
     "stackSize": 3,
@@ -7166,7 +7166,7 @@
   "telemetry_transceiver": {
     "id": "telemetry_transceiver",
     "name": {
-      "value": "Telemetrie-Empfänger",
+      "value": "Transceptor de telemetría",
       "originalEn": "Telemetry Transceiver"
     },
     "stackSize": 3,
@@ -7180,7 +7180,7 @@
   "tempest_blueprint": {
     "id": "tempest_blueprint",
     "name": {
-      "value": "Bauplan: Tempest",
+      "value": "Plano de Tempestad",
       "originalEn": "Tempest Blueprint"
     },
     "stackSize": 1,
@@ -7194,7 +7194,7 @@
   "tempest_i": {
     "id": "tempest_i",
     "name": {
-      "value": "Tempest I",
+      "value": "Tempestad I",
       "originalEn": "Tempest I"
     },
     "stackSize": 1,
@@ -7212,7 +7212,7 @@
   "tempest_ii": {
     "id": "tempest_ii",
     "name": {
-      "value": "Tempest II",
+      "value": "Tempestad II",
       "originalEn": "Tempest II"
     },
     "stackSize": 1,
@@ -7229,7 +7229,7 @@
   "tempest_iii": {
     "id": "tempest_iii",
     "name": {
-      "value": "Tempest III",
+      "value": "Tempestad III",
       "originalEn": "Tempest III"
     },
     "stackSize": 1,
@@ -7246,7 +7246,7 @@
   "tempest_iv": {
     "id": "tempest_iv",
     "name": {
-      "value": "Tempest IV",
+      "value": "Tempestad IV",
       "originalEn": "Tempest IV"
     },
     "stackSize": 1,
@@ -7263,7 +7263,7 @@
   "thermostat": {
     "id": "thermostat",
     "name": {
-      "value": "Thermostat",
+      "value": "Termostato",
       "originalEn": "Thermostat"
     },
     "stackSize": 3,
@@ -7277,7 +7277,7 @@
   "tick_pod": {
     "id": "tick_pod",
     "name": {
-      "value": "Zeckenkapsel",
+      "value": "Cápsula de garrapata",
       "originalEn": "Tick Pod"
     },
     "stackSize": 3,
@@ -7291,7 +7291,7 @@
   "toaster": {
     "id": "toaster",
     "name": {
-      "value": "Toaster",
+      "value": "Tostador",
       "originalEn": "Toaster"
     },
     "stackSize": 3,
@@ -7305,7 +7305,7 @@
   "torn_blanket": {
     "id": "torn_blanket",
     "name": {
-      "value": "Zerrissene Decke",
+      "value": "Manta rasgada",
       "originalEn": "Torn Blanket"
     },
     "stackSize": 3,
@@ -7319,7 +7319,7 @@
   "torn_book": {
     "id": "torn_book",
     "name": {
-      "value": "Zerrissenes Buch",
+      "value": "Libro rasgado",
       "originalEn": "Torn Book"
     },
     "stackSize": 5,
@@ -7333,7 +7333,7 @@
   "torrente_blueprint": {
     "id": "torrente_blueprint",
     "name": {
-      "value": "Bauplan: Torrente",
+      "value": "Plano de Torrente",
       "originalEn": "Torrente Blueprint"
     },
     "stackSize": 1,
@@ -7416,7 +7416,7 @@
   "trailblazer": {
     "id": "trailblazer",
     "name": {
-      "value": "Trailblazer",
+      "value": "Pionero",
       "originalEn": "Trailblazer"
     },
     "stackSize": 3,
@@ -7434,7 +7434,7 @@
   "trailblazer_blueprint": {
     "id": "trailblazer_blueprint",
     "name": {
-      "value": "Bauplan: Trailblazer",
+      "value": "Plano de Trailblazer",
       "originalEn": "Trailblazer Blueprint"
     },
     "stackSize": 1,
@@ -7448,7 +7448,7 @@
   "trigger_nade": {
     "id": "trigger_nade",
     "name": {
-      "value": "Abzuggranate",
+      "value": "Granada de gatillo",
       "originalEn": "Trigger 'Nade"
     },
     "stackSize": 3,
@@ -7465,7 +7465,7 @@
   "trigger_nade_blueprint": {
     "id": "trigger_nade_blueprint",
     "name": {
-      "value": "Bauplan: Abzuggranate",
+      "value": "Plano de Granada de gatillo",
       "originalEn": "Trigger Nade Blueprint"
     },
     "stackSize": 1,
@@ -7479,7 +7479,7 @@
   "tropical_duck": {
     "id": "tropical_duck",
     "name": {
-      "value": "Tropische Ente",
+      "value": "Pato Tropical",
       "originalEn": "Tropical Duck"
     },
     "stackSize": 15,
@@ -7493,7 +7493,7 @@
   "turbo_pump": {
     "id": "turbo_pump",
     "name": {
-      "value": "Turbopumpe",
+      "value": "Bomba Turbomolecular",
       "originalEn": "Turbo Pump"
     },
     "stackSize": 3,
@@ -7507,7 +7507,7 @@
   "unusable_weapon": {
     "id": "unusable_weapon",
     "name": {
-      "value": "Unbrauchbare Waffe",
+      "value": "Arma inutilizable",
       "originalEn": "Unusable Weapon"
     },
     "stackSize": 3,
@@ -7535,7 +7535,7 @@
   "vase": {
     "id": "vase",
     "name": {
-      "value": "Vase",
+      "value": "Jarrón",
       "originalEn": "Vase"
     },
     "stackSize": 3,
@@ -7549,7 +7549,7 @@
   "venator_blueprint": {
     "id": "venator_blueprint",
     "name": {
-      "value": "Bauplan: Venator",
+      "value": "Plano de Venator",
       "originalEn": "Venator Blueprint"
     },
     "stackSize": 1,
@@ -7632,7 +7632,7 @@
   "vertical_grip_i": {
     "id": "vertical_grip_i",
     "name": {
-      "value": "Vertikaler Griff I",
+      "value": "Empuñadura vertical I",
       "originalEn": "Vertical Grip I"
     },
     "stackSize": 1,
@@ -7649,7 +7649,7 @@
   "vertical_grip_ii": {
     "id": "vertical_grip_ii",
     "name": {
-      "value": "Vertikaler Griff II",
+      "value": "Empuñadura vertical II",
       "originalEn": "Vertical Grip II"
     },
     "stackSize": 1,
@@ -7666,7 +7666,7 @@
   "vertical_grip_ii_blueprint": {
     "id": "vertical_grip_ii_blueprint",
     "name": {
-      "value": "Bauplan: Vertikaler Griff II",
+      "value": "Plano de Empunadura vertical II",
       "originalEn": "Vertical Grip II Blueprint"
     },
     "stackSize": 1,
@@ -7680,7 +7680,7 @@
   "vertical_grip_iii": {
     "id": "vertical_grip_iii",
     "name": {
-      "value": "Vertikaler Griff III",
+      "value": "Empuñadura Vertical III",
       "originalEn": "Vertical Grip III"
     },
     "stackSize": 1,
@@ -7697,7 +7697,7 @@
   "vertical_grip_iii_blueprint": {
     "id": "vertical_grip_iii_blueprint",
     "name": {
-      "value": "Bauplan: Vertikaler Griff III",
+      "value": "Plano de Empuñadura Vertical III",
       "originalEn": "Vertical Grip III Blueprint"
     },
     "stackSize": 1,
@@ -7711,7 +7711,7 @@
   "very_comfortable_pillow": {
     "id": "very_comfortable_pillow",
     "name": {
-      "value": "Ultragemütliches Kissen",
+      "value": "Almohada muy cómoda",
       "originalEn": "Very Comfortable Pillow"
     },
     "stackSize": 3,
@@ -7725,7 +7725,7 @@
   "vita_shot": {
     "id": "vita_shot",
     "name": {
-      "value": "Vita-Spritze",
+      "value": "Inyección de Vita",
       "originalEn": "Vita Shot"
     },
     "stackSize": 3,
@@ -7742,7 +7742,7 @@
   "vita_shot_blueprint": {
     "id": "vita_shot_blueprint",
     "name": {
-      "value": "Bauplan: Vita-Spritze",
+      "value": "Plano de Inyección de Vita",
       "originalEn": "Vita Shot Blueprint"
     },
     "stackSize": 1,
@@ -7756,7 +7756,7 @@
   "vita_spray": {
     "id": "vita_spray",
     "name": {
-      "value": "Vita-Spray",
+      "value": "Aerosol Vita",
       "originalEn": "Vita Spray"
     },
     "stackSize": 1,
@@ -7774,7 +7774,7 @@
   "vita_spray_blueprint": {
     "id": "vita_spray_blueprint",
     "name": {
-      "value": "Bauplan: Vita-Spray",
+      "value": "Plano de aerosol Vita",
       "originalEn": "Vita Spray Blueprint"
     },
     "stackSize": 1,
@@ -7788,7 +7788,7 @@
   "volcanic_rock": {
     "id": "volcanic_rock",
     "name": {
-      "value": "Vulkangestein",
+      "value": "Roca volcánica",
       "originalEn": "Volcanic Rock"
     },
     "stackSize": 5,
@@ -7802,7 +7802,7 @@
   "voltage_converter": {
     "id": "voltage_converter",
     "name": {
-      "value": "Spannungswandler",
+      "value": "Convertidor de voltaje",
       "originalEn": "Voltage Converter"
     },
     "stackSize": 5,
@@ -7816,7 +7816,7 @@
   "vulcano_blueprint": {
     "id": "vulcano_blueprint",
     "name": {
-      "value": "Bauplan: Vulcano",
+      "value": "Plano de Vulcano",
       "originalEn": "Vulcano Blueprint"
     },
     "stackSize": 1,
@@ -7899,7 +7899,7 @@
   "wasp_driver": {
     "id": "wasp_driver",
     "name": {
-      "value": "Wespentreiber",
+      "value": "Controlador de Avispa",
       "originalEn": "Wasp Driver"
     },
     "stackSize": 3,
@@ -7913,7 +7913,7 @@
   "water_filter": {
     "id": "water_filter",
     "name": {
-      "value": "Wasserfilter",
+      "value": "Filtro de agua",
       "originalEn": "Water Filter"
     },
     "stackSize": 3,
@@ -7927,7 +7927,7 @@
   "water_pump": {
     "id": "water_pump",
     "name": {
-      "value": "Wasserpumpe",
+      "value": "Bomba de agua",
       "originalEn": "Water Pump"
     },
     "stackSize": 3,
@@ -7941,7 +7941,7 @@
   "wires": {
     "id": "wires",
     "name": {
-      "value": "Kabel",
+      "value": "Cables",
       "originalEn": "Wires"
     },
     "stackSize": 15,
@@ -7955,7 +7955,7 @@
   "wolfpack": {
     "id": "wolfpack",
     "name": {
-      "value": "Wolfpack",
+      "value": "Manada de lobos",
       "originalEn": "Wolfpack"
     },
     "stackSize": 1,
@@ -7973,7 +7973,7 @@
   "wolfpack_blueprint": {
     "id": "wolfpack_blueprint",
     "name": {
-      "value": "Bauplan: Wolfpack",
+      "value": "Plano Wolfpack",
       "originalEn": "Wolfpack Blueprint"
     },
     "stackSize": 1,
@@ -7987,7 +7987,7 @@
   "yellow_light_stick": {
     "id": "yellow_light_stick",
     "name": {
-      "value": "Gelber Leuchtstab",
+      "value": "Barra de luz amarilla",
       "originalEn": "Yellow Light Stick"
     },
     "stackSize": 5,
@@ -8003,7 +8003,7 @@
   "yellow_light_stick_blueprint": {
     "id": "yellow_light_stick_blueprint",
     "name": {
-      "value": "Bauplan: Gelber Leuchtstab",
+      "value": "Barra de luz amarilla",
       "originalEn": "Yellow Light Stick Blueprint"
     },
     "stackSize": 1,
@@ -8017,7 +8017,7 @@
   "zipline": {
     "id": "zipline",
     "name": {
-      "value": "Seilrutsche",
+      "value": "Tirolina",
       "originalEn": "Zipline"
     },
     "stackSize": 3,

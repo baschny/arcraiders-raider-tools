@@ -1,4 +1,18 @@
-export const SUPPORTED_LOCALES = ['en', 'de', 'pt-BR'] as const;
+export const SUPPORTED_LOCALES = [
+  'en',
+  'de',
+  'pt-BR',
+  'es',
+  'fr',
+  'it',
+  'ja',
+  'ko-KR',
+  'pl',
+  'ru',
+  'tr',
+  'zh-CN',
+  'zh-TW',
+] as const;
 
 export type AppLocale = (typeof SUPPORTED_LOCALES)[number];
 
@@ -23,6 +37,16 @@ export const LOCALE_OPTIONS: LocaleOption[] = [
     flag: '🇧🇷',
     upstreamKeys: ['pt-BR', 'pt', 'en'],
   },
+  { code: 'es', label: 'Spanish', nativeLabel: 'Español', flag: '🇪🇸', upstreamKeys: ['es', 'en'] },
+  { code: 'fr', label: 'French', nativeLabel: 'Français', flag: '🇫🇷', upstreamKeys: ['fr', 'en'] },
+  { code: 'it', label: 'Italian', nativeLabel: 'Italiano', flag: '🇮🇹', upstreamKeys: ['it', 'en'] },
+  { code: 'ja', label: 'Japanese', nativeLabel: '日本語', flag: '🇯🇵', upstreamKeys: ['ja', 'en'] },
+  { code: 'ko-KR', label: 'Korean', nativeLabel: '한국어', flag: '🇰🇷', upstreamKeys: ['ko-KR', 'ko', 'kr', 'en'] },
+  { code: 'pl', label: 'Polish', nativeLabel: 'Polski', flag: '🇵🇱', upstreamKeys: ['pl', 'en'] },
+  { code: 'ru', label: 'Russian', nativeLabel: 'Русский', flag: '🇷🇺', upstreamKeys: ['ru', 'en'] },
+  { code: 'tr', label: 'Turkish', nativeLabel: 'Türkçe', flag: '🇹🇷', upstreamKeys: ['tr', 'en'] },
+  { code: 'zh-CN', label: 'Chinese (Simplified)', nativeLabel: '简体中文', flag: '🇨🇳', upstreamKeys: ['zh-CN', 'en'] },
+  { code: 'zh-TW', label: 'Chinese (Traditional)', nativeLabel: '繁體中文', flag: '🇹🇼', upstreamKeys: ['zh-TW', 'en'] },
 ];
 
 export function isSupportedLocale(value: string): value is AppLocale {
@@ -47,6 +71,26 @@ export function getIntlLocale(locale: AppLocale): string {
       return 'pt-BR';
     case 'de':
       return 'de-DE';
+    case 'es':
+      return 'es-ES';
+    case 'fr':
+      return 'fr-FR';
+    case 'it':
+      return 'it-IT';
+    case 'ja':
+      return 'ja-JP';
+    case 'ko-KR':
+      return 'ko-KR';
+    case 'pl':
+      return 'pl-PL';
+    case 'ru':
+      return 'ru-RU';
+    case 'tr':
+      return 'tr-TR';
+    case 'zh-CN':
+      return 'zh-CN';
+    case 'zh-TW':
+      return 'zh-TW';
     default:
       return 'en-US';
   }
@@ -78,6 +122,46 @@ export function detectInitialLocale(): AppLocale {
 
     if (language.startsWith('de')) {
       return 'de';
+    }
+
+    if (language.startsWith('es')) {
+      return 'es';
+    }
+
+    if (language.startsWith('fr')) {
+      return 'fr';
+    }
+
+    if (language.startsWith('it')) {
+      return 'it';
+    }
+
+    if (language.startsWith('ja')) {
+      return 'ja';
+    }
+
+    if (language.startsWith('ko')) {
+      return 'ko-KR';
+    }
+
+    if (language.startsWith('pl')) {
+      return 'pl';
+    }
+
+    if (language.startsWith('ru')) {
+      return 'ru';
+    }
+
+    if (language.startsWith('tr')) {
+      return 'tr';
+    }
+
+    if (language.toLowerCase().startsWith('zh-tw') || language.toLowerCase().startsWith('zh-hk')) {
+      return 'zh-TW';
+    }
+
+    if (language.startsWith('zh')) {
+      return 'zh-CN';
     }
 
     if (language.startsWith('en')) {

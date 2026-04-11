@@ -88,7 +88,7 @@ export function Header() {
             onClick={() => setIsLanguageOpen(!isLanguageOpen)}
             aria-label={t('shared.header.switchLanguage')}
           >
-            <span>{currentLocaleOption.flag}</span> <ChevronDown size={16} />
+            <span className="tool-switcher-flag">{currentLocaleOption.flag}</span> <ChevronDown size={16} />
           </button>
           {isLanguageOpen && (
             <div className="header-menu">
@@ -101,7 +101,7 @@ export function Header() {
                   }`}
                 >
                   <span className="header-menu-item-flag">{option.flag}</span>
-                  <span>{option.nativeLabel}</span>
+                  <span className="header-menu-item-language">{option.nativeLabel}</span>
                 </button>
               ))}
             </div>

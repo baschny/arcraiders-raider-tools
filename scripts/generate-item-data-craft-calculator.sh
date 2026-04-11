@@ -5,7 +5,7 @@
 
 SOURCE_DIR="../arcraiders-data/items"
 TARGET_DIR="public/data/craft-calculator"
-LOCALES=("en" "de" "pt-BR")
+LOCALES=("en" "de" "pt-BR" "es" "fr" "it" "ja" "ko-KR" "pl" "ru" "tr" "zh-CN" "zh-TW")
 
 if [ ! -d "$SOURCE_DIR" ]; then
   echo "Error: Source directory '$SOURCE_DIR' not found."
@@ -27,6 +27,8 @@ for LOCALE in "${LOCALES[@]}"; do
   FALLBACK_LOCALE="en"
   if [ "$LOCALE" = "pt-BR" ]; then
     FALLBACK_LOCALE="pt"
+  elif [ "$LOCALE" = "ko-KR" ]; then
+    FALLBACK_LOCALE="ko"
   fi
 
   jq -n --arg locale "$LOCALE" --arg fallback "$FALLBACK_LOCALE" '

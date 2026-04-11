@@ -2,7 +2,7 @@
   "acoustic_guitar": {
     "id": "acoustic_guitar",
     "name": {
-      "value": "Akustikgitarre",
+      "value": "原声吉他",
       "originalEn": "Acoustic Guitar"
     },
     "stackSize": 1,
@@ -16,7 +16,7 @@
   "adrenaline_shot": {
     "id": "adrenaline_shot",
     "name": {
-      "value": "Adrenalinspritze",
+      "value": "肾上腺素针剂",
       "originalEn": "Adrenaline Shot"
     },
     "stackSize": 5,
@@ -33,7 +33,7 @@
   "advanced_arc_powercell": {
     "id": "advanced_arc_powercell",
     "name": {
-      "value": "Fortschrittliche ARC-Energiezelle",
+      "value": "高级ARC能量电池",
       "originalEn": "Advanced ARC Powercell"
     },
     "stackSize": 5,
@@ -47,7 +47,7 @@
   "advanced_electrical_components": {
     "id": "advanced_electrical_components",
     "name": {
-      "value": "Fortschrittliche elektrische Komponenten",
+      "value": "高级电子元件",
       "originalEn": "Advanced Electrical Components"
     },
     "stackSize": 5,
@@ -64,7 +64,7 @@
   "advanced_mechanical_components": {
     "id": "advanced_mechanical_components",
     "name": {
-      "value": "Fortschrittliche mechanische Komponenten",
+      "value": "高级机械元件",
       "originalEn": "Advanced Mechanical Components"
     },
     "stackSize": 5,
@@ -81,7 +81,7 @@
   "agave": {
     "id": "agave",
     "name": {
-      "value": "Agave",
+      "value": "龙舌兰",
       "originalEn": "Agave"
     },
     "stackSize": 10,
@@ -95,7 +95,7 @@
   "agave_juice": {
     "id": "agave_juice",
     "name": {
-      "value": "Agavensaft",
+      "value": "龙舌兰汁",
       "originalEn": "Agave Juice"
     },
     "stackSize": 5,
@@ -112,7 +112,7 @@
   "air_freshener": {
     "id": "air_freshener",
     "name": {
-      "value": "Lufterfrischer",
+      "value": "空气清新剂",
       "originalEn": "Air Freshener"
     },
     "stackSize": 5,
@@ -126,7 +126,7 @@
   "alarm_clock": {
     "id": "alarm_clock",
     "name": {
-      "value": "Wecker",
+      "value": "闹钟",
       "originalEn": "Alarm Clock"
     },
     "stackSize": 3,
@@ -140,7 +140,7 @@
   "alien_duck": {
     "id": "alien_duck",
     "name": {
-      "value": "Außerirdische Ente",
+      "value": "外星鸭",
       "originalEn": "Alien Duck"
     },
     "stackSize": 15,
@@ -154,7 +154,7 @@
   "ancient_fort_security_code": {
     "id": "ancient_fort_security_code",
     "name": {
-      "value": "Ancient Fort Sicherheitscode",
+      "value": "古堡安全密码",
       "originalEn": "Ancient Fort Security Code"
     },
     "stackSize": 1,
@@ -168,7 +168,7 @@
   "angled_grip_i": {
     "id": "angled_grip_i",
     "name": {
-      "value": "Abgewinkelter Griff I",
+      "value": "直角握把 I",
       "originalEn": "Angled Grip I"
     },
     "stackSize": 1,
@@ -185,7 +185,7 @@
   "angled_grip_ii": {
     "id": "angled_grip_ii",
     "name": {
-      "value": "Abgewinkelter Griff II",
+      "value": "直角握把 II",
       "originalEn": "Angled Grip II"
     },
     "stackSize": 1,
@@ -202,7 +202,7 @@
   "angled_grip_ii_blueprint": {
     "id": "angled_grip_ii_blueprint",
     "name": {
-      "value": "Bauplan: Abgewinkelter Griff II",
+      "value": "直角握把 II 蓝图",
       "originalEn": "Angled Grip II Blueprint"
     },
     "stackSize": 1,
@@ -216,7 +216,7 @@
   "angled_grip_iii": {
     "id": "angled_grip_iii",
     "name": {
-      "value": "Abgewinkelter Griff III",
+      "value": "直角握把 III",
       "originalEn": "Angled Grip III"
     },
     "stackSize": 1,
@@ -233,7 +233,7 @@
   "angled_grip_iii_blueprint": {
     "id": "angled_grip_iii_blueprint",
     "name": {
-      "value": "Bauplan: Abgewinkelter Griff III",
+      "value": "直角握把 III 蓝图",
       "originalEn": "Angled Grip III Blueprint"
     },
     "stackSize": 1,
@@ -247,7 +247,7 @@
   "antiseptic": {
     "id": "antiseptic",
     "name": {
-      "value": "Desinfektionsmittel",
+      "value": "防腐剂",
       "originalEn": "Antiseptic"
     },
     "stackSize": 5,
@@ -264,7 +264,7 @@
   "anvil_blueprint": {
     "id": "anvil_blueprint",
     "name": {
-      "value": "Bauplan: Anvil",
+      "value": "铁砧蓝图",
       "originalEn": "Anvil Blueprint"
     },
     "stackSize": 1,
@@ -278,7 +278,7 @@
   "anvil_i": {
     "id": "anvil_i",
     "name": {
-      "value": "Amboss I",
+      "value": "铁砧 I",
       "originalEn": "Anvil I"
     },
     "stackSize": 1,
@@ -295,7 +295,7 @@
   "anvil_ii": {
     "id": "anvil_ii",
     "name": {
-      "value": "Amboss II",
+      "value": "铁砧 II",
       "originalEn": "Anvil II"
     },
     "stackSize": 1,
@@ -312,7 +312,7 @@
   "anvil_iii": {
     "id": "anvil_iii",
     "name": {
-      "value": "Amboss III",
+      "value": "铁砧 III",
       "originalEn": "Anvil III"
     },
     "stackSize": 1,
@@ -329,7 +329,7 @@
   "anvil_iv": {
     "id": "anvil_iv",
     "name": {
-      "value": "Amboss IV",
+      "value": "铁砧 IV",
       "originalEn": "Anvil IV"
     },
     "stackSize": 1,
@@ -346,7 +346,7 @@
   "anvil_splitter": {
     "id": "anvil_splitter",
     "name": {
-      "value": "Amboss-Spalter",
+      "value": "铁砧分流器",
       "originalEn": "Anvil Splitter"
     },
     "stackSize": 1,
@@ -360,7 +360,7 @@
   "aphelion": {
     "id": "aphelion",
     "name": {
-      "value": "Aphelion",
+      "value": "远日点",
       "originalEn": "Aphelion"
     },
     "stackSize": 1,
@@ -378,7 +378,7 @@
   "aphelion_blueprint": {
     "id": "aphelion_blueprint",
     "name": {
-      "value": "Bauplan: Aphelion",
+      "value": "远日点蓝图",
       "originalEn": "Aphelion Blueprint"
     },
     "stackSize": 1,
@@ -392,7 +392,7 @@
   "apricot": {
     "id": "apricot",
     "name": {
-      "value": "Aprikose",
+      "value": "杏子",
       "originalEn": "Apricot"
     },
     "stackSize": 10,
@@ -406,7 +406,7 @@
   "arc_alloy": {
     "id": "arc_alloy",
     "name": {
-      "value": "ARC-Legierung",
+      "value": "ARC合金",
       "originalEn": "ARC Alloy"
     },
     "stackSize": 15,
@@ -420,7 +420,7 @@
   "arc_circuitry": {
     "id": "arc_circuitry",
     "name": {
-      "value": "ARC-Schaltkreise",
+      "value": "ARC线圈",
       "originalEn": "ARC Circuitry"
     },
     "stackSize": 5,
@@ -436,7 +436,7 @@
   "arc_coolant": {
     "id": "arc_coolant",
     "name": {
-      "value": "ARC-Kühlmittel",
+      "value": "ARC冷却剂",
       "originalEn": "ARC Coolant"
     },
     "stackSize": 3,
@@ -450,7 +450,7 @@
   "arc_flex_rubber": {
     "id": "arc_flex_rubber",
     "name": {
-      "value": "ARC-Flexgummi",
+      "value": "ARC弹性橡胶",
       "originalEn": "ARC Flex Rubber"
     },
     "stackSize": 3,
@@ -464,7 +464,7 @@
   "arc_motion_core": {
     "id": "arc_motion_core",
     "name": {
-      "value": "ARC-Bewegungskern",
+      "value": "ARC运动核心",
       "originalEn": "ARC Motion Core"
     },
     "stackSize": 5,
@@ -480,7 +480,7 @@
   "arc_performance_steel": {
     "id": "arc_performance_steel",
     "name": {
-      "value": "ARC-Hochleistungsstahl",
+      "value": "ARC高性能钢材",
       "originalEn": "ARC Performance Steel"
     },
     "stackSize": 3,
@@ -494,7 +494,7 @@
   "arc_powercell": {
     "id": "arc_powercell",
     "name": {
-      "value": "ARC-Energiezelle",
+      "value": "ARC 能量电池",
       "originalEn": "ARC Powercell"
     },
     "stackSize": 5,
@@ -508,7 +508,7 @@
   "arc_synthetic_resin": {
     "id": "arc_synthetic_resin",
     "name": {
-      "value": "ARC-Kunstharz",
+      "value": "ARC合成树脂",
       "originalEn": "ARC Synthetic Resin"
     },
     "stackSize": 3,
@@ -522,7 +522,7 @@
   "arc_thermo_lining": {
     "id": "arc_thermo_lining",
     "name": {
-      "value": "ARC-Thermofütterung",
+      "value": "ARC隔热衬里",
       "originalEn": "ARC Thermo Lining"
     },
     "stackSize": 3,
@@ -536,7 +536,7 @@
   "arpeggio_i": {
     "id": "arpeggio_i",
     "name": {
-      "value": "Arpeggio I",
+      "value": "三连奏 I",
       "originalEn": "Arpeggio I"
     },
     "stackSize": 1,
@@ -553,7 +553,7 @@
   "arpeggio_ii": {
     "id": "arpeggio_ii",
     "name": {
-      "value": "Arpeggio II",
+      "value": "三连奏 II",
       "originalEn": "Arpeggio II"
     },
     "stackSize": 1,
@@ -570,7 +570,7 @@
   "arpeggio_iii": {
     "id": "arpeggio_iii",
     "name": {
-      "value": "Arpeggio III",
+      "value": "三连奏 III",
       "originalEn": "Arpeggio III"
     },
     "stackSize": 1,
@@ -587,7 +587,7 @@
   "arpeggio_iv": {
     "id": "arpeggio_iv",
     "name": {
-      "value": "Arpeggio IV",
+      "value": "三连奏 IV",
       "originalEn": "Arpeggio IV"
     },
     "stackSize": 1,
@@ -618,7 +618,7 @@
   "assorted_seeds": {
     "id": "assorted_seeds",
     "name": {
-      "value": "Verschiedenes Saatgut",
+      "value": "混合种子",
       "originalEn": "Assorted Seeds"
     },
     "stackSize": 100,
@@ -632,7 +632,7 @@
   "bandage": {
     "id": "bandage",
     "name": {
-      "value": "Verband",
+      "value": "绷带",
       "originalEn": "Bandage"
     },
     "stackSize": 5,
@@ -648,7 +648,7 @@
   "barricade_kit": {
     "id": "barricade_kit",
     "name": {
-      "value": "Barrikadenset",
+      "value": "路障工具",
       "originalEn": "Barricade Kit"
     },
     "stackSize": 3,
@@ -664,7 +664,7 @@
   "barricade_kit_blueprint": {
     "id": "barricade_kit_blueprint",
     "name": {
-      "value": "Bauplan: Barrikadenset",
+      "value": "路障工具蓝图",
       "originalEn": "Barricade Kit Blueprint"
     },
     "stackSize": 1,
@@ -678,7 +678,7 @@
   "bastion_cell": {
     "id": "bastion_cell",
     "name": {
-      "value": "Bastionzelle",
+      "value": "堡垒电池",
       "originalEn": "Bastion Cell"
     },
     "stackSize": 3,
@@ -692,7 +692,7 @@
   "battery": {
     "id": "battery",
     "name": {
-      "value": "Akku",
+      "value": "电池",
       "originalEn": "Battery"
     },
     "stackSize": 15,
@@ -706,7 +706,7 @@
   "bettina_blueprint": {
     "id": "bettina_blueprint",
     "name": {
-      "value": "Bauplan: Bettina",
+      "value": "贝蒂娜蓝图",
       "originalEn": "Bettina Blueprint"
     },
     "stackSize": 1,
@@ -720,7 +720,7 @@
   "bettina_i": {
     "id": "bettina_i",
     "name": {
-      "value": "Bettina I",
+      "value": "贝蒂娜 I",
       "originalEn": "Bettina I"
     },
     "stackSize": 1,
@@ -738,7 +738,7 @@
   "bettina_ii": {
     "id": "bettina_ii",
     "name": {
-      "value": "Bettina II",
+      "value": "贝蒂娜 II",
       "originalEn": "Bettina II"
     },
     "stackSize": 1,
@@ -755,7 +755,7 @@
   "bettina_iii": {
     "id": "bettina_iii",
     "name": {
-      "value": "Bettina III",
+      "value": "贝蒂娜 III",
       "originalEn": "Bettina III"
     },
     "stackSize": 1,
@@ -772,7 +772,7 @@
   "bettina_iv": {
     "id": "bettina_iv",
     "name": {
-      "value": "Bettina IV",
+      "value": "贝蒂娜 IV",
       "originalEn": "Bettina IV"
     },
     "stackSize": 1,
@@ -789,7 +789,7 @@
   "bicycle_pump": {
     "id": "bicycle_pump",
     "name": {
-      "value": "Fahrradpumpe",
+      "value": "自行车打气筒",
       "originalEn": "Bicycle Pump"
     },
     "stackSize": 3,
@@ -803,7 +803,7 @@
   "binoculars": {
     "id": "binoculars",
     "name": {
-      "value": "Fernglas",
+      "value": "双筒望远镜",
       "originalEn": "Binoculars"
     },
     "stackSize": 1,
@@ -820,7 +820,7 @@
   "blaze_grenade": {
     "id": "blaze_grenade",
     "name": {
-      "value": "Flammengranate",
+      "value": "火焰手雷",
       "originalEn": "Blaze Grenade"
     },
     "stackSize": 5,
@@ -837,7 +837,7 @@
   "blaze_grenade_blueprint": {
     "id": "blaze_grenade_blueprint",
     "name": {
-      "value": "Bauplan: Flammengranate",
+      "value": "火焰手雷蓝图",
       "originalEn": "Blaze Grenade Blueprint"
     },
     "stackSize": 1,
@@ -851,7 +851,7 @@
   "blaze_grenade_trap": {
     "id": "blaze_grenade_trap",
     "name": {
-      "value": "Laserfalle: Feuer",
+      "value": "火焰手雷陷阱",
       "originalEn": "Blaze Grenade Trap"
     },
     "stackSize": 3,
@@ -868,7 +868,7 @@
   "bloated_tuna_can": {
     "id": "bloated_tuna_can",
     "name": {
-      "value": "Aufgeblähte Thunfischdose",
+      "value": "膨胀的金枪鱼罐头",
       "originalEn": "Bloated Tuna Can"
     },
     "stackSize": 15,
@@ -882,7 +882,7 @@
   "blue_gate_cellar_key": {
     "id": "blue_gate_cellar_key",
     "name": {
-      "value": "Blauer Tor Kellerschlüssel",
+      "value": "蓝门地窖钥匙",
       "originalEn": "Blue Gate Cellar Key"
     },
     "stackSize": 1,
@@ -896,7 +896,7 @@
   "blue_gate_communication_tower_key": {
     "id": "blue_gate_communication_tower_key",
     "name": {
-      "value": "Schlüssel zum Kommunikationsturm am Blauen Tor",
+      "value": "蓝门通讯塔钥匙",
       "originalEn": "Blue Gate Communication Tower Key"
     },
     "stackSize": 1,
@@ -910,7 +910,7 @@
   "blue_gate_confiscation_room_key": {
     "id": "blue_gate_confiscation_room_key",
     "name": {
-      "value": "Schlüssel zum Beschlagnahmungsraum des Blauen Tors",
+      "value": "蓝门没收室钥匙",
       "originalEn": "Blue Gate Confiscation Room Key"
     },
     "stackSize": 1,
@@ -924,7 +924,7 @@
   "blue_gate_village_key": {
     "id": "blue_gate_village_key",
     "name": {
-      "value": "Dorfschlüssel (Blaues Tor)",
+      "value": "蓝门村庄钥匙",
       "originalEn": "Blue Gate Village Key"
     },
     "stackSize": 1,
@@ -938,7 +938,7 @@
   "blue_light_stick": {
     "id": "blue_light_stick",
     "name": {
-      "value": "Blauer Leuchtstab",
+      "value": "蓝色荧光棒",
       "originalEn": "Blue Light Stick"
     },
     "stackSize": 5,
@@ -954,7 +954,7 @@
   "blue_light_stick_blueprint": {
     "id": "blue_light_stick_blueprint",
     "name": {
-      "value": "Bauplan: Blauer Leuchtstab",
+      "value": "蓝色荧光棒蓝图",
       "originalEn": "Blue Light Stick Blueprint"
     },
     "stackSize": 1,
@@ -968,7 +968,7 @@
   "bobcat_blueprint": {
     "id": "bobcat_blueprint",
     "name": {
-      "value": "Bauplan: Bobcat",
+      "value": "山猫蓝图",
       "originalEn": "Bobcat Blueprint"
     },
     "stackSize": 1,
@@ -982,7 +982,7 @@
   "bobcat_i": {
     "id": "bobcat_i",
     "name": {
-      "value": "Bobcat I",
+      "value": "山猫 I",
       "originalEn": "Bobcat I"
     },
     "stackSize": 1,
@@ -1000,7 +1000,7 @@
   "bobcat_ii": {
     "id": "bobcat_ii",
     "name": {
-      "value": "Bobcat II",
+      "value": "山猫 II",
       "originalEn": "Bobcat II"
     },
     "stackSize": 1,
@@ -1017,7 +1017,7 @@
   "bobcat_iii": {
     "id": "bobcat_iii",
     "name": {
-      "value": "Bobcat III",
+      "value": "山猫 III",
       "originalEn": "Bobcat III"
     },
     "stackSize": 1,
@@ -1034,7 +1034,7 @@
   "bobcat_iv": {
     "id": "bobcat_iv",
     "name": {
-      "value": "Bobcat IV",
+      "value": "山猫 IV",
       "originalEn": "Bobcat IV"
     },
     "stackSize": 1,
@@ -1051,7 +1051,7 @@
   "bombardier_cell": {
     "id": "bombardier_cell",
     "name": {
-      "value": "Kanonierzelle",
+      "value": "投弹手电池",
       "originalEn": "Bombardier Cell"
     },
     "stackSize": 3,
@@ -1065,7 +1065,7 @@
   "breathtaking_snow_globe": {
     "id": "breathtaking_snow_globe",
     "name": {
-      "value": "Entzückende Schneekugel",
+      "value": "令人惊叹的雪球",
       "originalEn": "Breathtaking Snow Globe"
     },
     "stackSize": 1,
@@ -1079,7 +1079,7 @@
   "broken_flashlight": {
     "id": "broken_flashlight",
     "name": {
-      "value": "Kaputte Taschenlampe",
+      "value": "损坏的手电筒",
       "originalEn": "Broken Flashlight"
     },
     "stackSize": 3,
@@ -1093,7 +1093,7 @@
   "broken_guidance_system": {
     "id": "broken_guidance_system",
     "name": {
-      "value": "Kaputtes Leitsystem",
+      "value": "损坏的制导系统",
       "originalEn": "Broken Guidance System"
     },
     "stackSize": 3,
@@ -1107,7 +1107,7 @@
   "broken_handheld_radio": {
     "id": "broken_handheld_radio",
     "name": {
-      "value": "Kaputtes Miniaturradio",
+      "value": "损坏的手持无线电",
       "originalEn": "Broken Handheld Radio"
     },
     "stackSize": 3,
@@ -1121,7 +1121,7 @@
   "broken_taser": {
     "id": "broken_taser",
     "name": {
-      "value": "Kaputter Elektroschocker",
+      "value": "损坏的电击枪",
       "originalEn": "Broken Taser"
     },
     "stackSize": 3,
@@ -1135,7 +1135,7 @@
   "buried_city_hospital_key": {
     "id": "buried_city_hospital_key",
     "name": {
-      "value": "Krankenhausschlüssel (Begrabene Stadt)",
+      "value": "掩埋废城医院钥匙",
       "originalEn": "Buried City Hospital Key"
     },
     "stackSize": 1,
@@ -1149,7 +1149,7 @@
   "buried_city_jkv_employee_access_card": {
     "id": "buried_city_jkv_employee_access_card",
     "name": {
-      "value": "Schlüsselkarte für JKV-Angestellte (Begrabene Stadt)",
+      "value": "掩埋废城JKV员工门禁卡",
       "originalEn": "Buried City JKV Employee Access Card"
     },
     "stackSize": 1,
@@ -1163,7 +1163,7 @@
   "buried_city_residential_master_key": {
     "id": "buried_city_residential_master_key",
     "name": {
-      "value": "Vergrabene Stadt Wohngebiet-Hauptschlüssel",
+      "value": "掩埋废城住宅区万能钥匙",
       "originalEn": "Buried City Residential Master Key"
     },
     "stackSize": 1,
@@ -1177,7 +1177,7 @@
   "buried_city_town_hall_key": {
     "id": "buried_city_town_hall_key",
     "name": {
-      "value": "Rathausschlüssel (Begrabene Stadt)",
+      "value": "掩埋废城市政厅钥匙",
       "originalEn": "Buried City Town Hall Key"
     },
     "stackSize": 1,
@@ -1191,7 +1191,7 @@
   "burletta_blueprint": {
     "id": "burletta_blueprint",
     "name": {
-      "value": "Bauplan: Burletta",
+      "value": "布尔莱塔蓝图",
       "originalEn": "Burletta Blueprint"
     },
     "stackSize": 1,
@@ -1205,7 +1205,7 @@
   "burletta_i": {
     "id": "burletta_i",
     "name": {
-      "value": "Burletta I",
+      "value": "布尔莱塔 I",
       "originalEn": "Burletta I"
     },
     "stackSize": 1,
@@ -1222,7 +1222,7 @@
   "burletta_ii": {
     "id": "burletta_ii",
     "name": {
-      "value": "Burletta II",
+      "value": "布尔莱塔 II",
       "originalEn": "Burletta II"
     },
     "stackSize": 1,
@@ -1239,7 +1239,7 @@
   "burletta_iii": {
     "id": "burletta_iii",
     "name": {
-      "value": "Burletta III",
+      "value": "布尔莱塔 III",
       "originalEn": "Burletta III"
     },
     "stackSize": 1,
@@ -1256,7 +1256,7 @@
   "burletta_iv": {
     "id": "burletta_iv",
     "name": {
-      "value": "Burletta IV",
+      "value": "布尔莱塔 IV",
       "originalEn": "Burletta IV"
     },
     "stackSize": 1,
@@ -1273,7 +1273,7 @@
   "burned_arc_circuitry": {
     "id": "burned_arc_circuitry",
     "name": {
-      "value": "Durchgebrannte ARC-Schaltkreise",
+      "value": "烧毁的ARC线圈",
       "originalEn": "Burned Arc Circuitry"
     },
     "stackSize": 3,
@@ -1287,7 +1287,7 @@
   "burnt_out_candles": {
     "id": "burnt_out_candles",
     "name": {
-      "value": "Ausgebrannte Kerzen",
+      "value": "烧尽的蜡烛",
       "originalEn": "Burnt-Out Candles"
     },
     "stackSize": 15,
@@ -1301,7 +1301,7 @@
   "camera_lens": {
     "id": "camera_lens",
     "name": {
-      "value": "Kameraobjektiv",
+      "value": "相机镜头",
       "originalEn": "Camera Lens"
     },
     "stackSize": 5,
@@ -1315,7 +1315,7 @@
   "candle_holder": {
     "id": "candle_holder",
     "name": {
-      "value": "Kerzenhalter",
+      "value": "烛台",
       "originalEn": "Candle Holder"
     },
     "stackSize": 3,
@@ -1329,7 +1329,7 @@
   "candleberries": {
     "id": "candleberries",
     "name": {
-      "value": "Kerzenbeeren",
+      "value": "蜡莓",
       "originalEn": "Candleberries"
     },
     "stackSize": 10,
@@ -1343,7 +1343,7 @@
   "canister": {
     "id": "canister",
     "name": {
-      "value": "Kanister",
+      "value": "罐子",
       "originalEn": "Canister"
     },
     "stackSize": 15,
@@ -1357,7 +1357,7 @@
   "canto_blueprint": {
     "id": "canto_blueprint",
     "name": {
-      "value": "Canto Bauplan",
+      "value": "Canto 蓝图",
       "originalEn": "Canto Blueprint"
     },
     "stackSize": 1,
@@ -1440,7 +1440,7 @@
   "cat_bed": {
     "id": "cat_bed",
     "name": {
-      "value": "Katzenbett",
+      "value": "猫窝",
       "originalEn": "Cat Bed"
     },
     "stackSize": 3,
@@ -1454,7 +1454,7 @@
   "celeste_journal": {
     "id": "celeste_journal",
     "name": {
-      "value": "Celestes Tagebuch",
+      "value": "塞莱斯特的日记",
       "originalEn": "Celeste's Journal"
     },
     "stackSize": 1,
@@ -1468,7 +1468,7 @@
   "chemicals": {
     "id": "chemicals",
     "name": {
-      "value": "Chemikalien",
+      "value": "化学品",
       "originalEn": "Chemicals"
     },
     "stackSize": 50,
@@ -1482,7 +1482,7 @@
   "coffee_pot": {
     "id": "coffee_pot",
     "name": {
-      "value": "Kaffeekanne",
+      "value": "咖啡壶",
       "originalEn": "Coffee Pot"
     },
     "stackSize": 3,
@@ -1496,7 +1496,7 @@
   "combat_mk1": {
     "id": "combat_mk1",
     "name": {
-      "value": "Kampf-Marke 1",
+      "value": "战斗型 Mk. 1",
       "originalEn": "Combat Mk. 1"
     },
     "stackSize": 1,
@@ -1513,7 +1513,7 @@
   "combat_mk2": {
     "id": "combat_mk2",
     "name": {
-      "value": "Kampf-Marke 2",
+      "value": "战斗型 Mk. 2",
       "originalEn": "Combat Mk. 2"
     },
     "stackSize": 1,
@@ -1530,7 +1530,7 @@
   "combat_mk3_aggressive": {
     "id": "combat_mk3_aggressive",
     "name": {
-      "value": "Kampf-Marke 3 (Aggressiv)",
+      "value": "战斗 Mk. 3（进攻型）",
       "originalEn": "Combat Mk. 3 (Aggressive)"
     },
     "stackSize": 1,
@@ -1547,7 +1547,7 @@
   "combat_mk3_aggressive_blueprint": {
     "id": "combat_mk3_aggressive_blueprint",
     "name": {
-      "value": "Bauplan: Kampf-Marke 3 (Aggressiv)",
+      "value": "战斗 Mk. 3（进攻型）蓝图",
       "originalEn": "Combat Mk. 3 (Aggressive) Blueprint"
     },
     "stackSize": 1,
@@ -1561,7 +1561,7 @@
   "combat_mk3_flanking": {
     "id": "combat_mk3_flanking",
     "name": {
-      "value": "Kampf-Marke 3 (Flankierend)",
+      "value": "战斗 Mk. 3（侧翼突击）",
       "originalEn": "Combat Mk. 3 (Flanking)"
     },
     "stackSize": 1,
@@ -1578,7 +1578,7 @@
   "combat_mk3_flanking_blueprint": {
     "id": "combat_mk3_flanking_blueprint",
     "name": {
-      "value": "Bauplan: Kampf-Marke 3 (Flankierend)",
+      "value": "战斗 Mk. 3（侧翼突击）蓝图",
       "originalEn": "Combat Mk. 3 (Flanking) Blueprint"
     },
     "stackSize": 1,
@@ -1592,7 +1592,7 @@
   "comet_igniter": {
     "id": "comet_igniter",
     "name": {
-      "value": "Kometenzünder",
+      "value": "彗星点火器",
       "originalEn": "Comet Igniter"
     },
     "stackSize": 3,
@@ -1606,7 +1606,7 @@
   "compensator_i": {
     "id": "compensator_i",
     "name": {
-      "value": "Kompensator I",
+      "value": "补偿器 I",
       "originalEn": "Compensator I"
     },
     "stackSize": 1,
@@ -1623,7 +1623,7 @@
   "compensator_ii": {
     "id": "compensator_ii",
     "name": {
-      "value": "Kompensator II",
+      "value": "补偿器 II",
       "originalEn": "Compensator II"
     },
     "stackSize": 1,
@@ -1640,7 +1640,7 @@
   "compensator_ii_blueprint": {
     "id": "compensator_ii_blueprint",
     "name": {
-      "value": "Bauplan: Kompensator II",
+      "value": "补偿器II蓝图",
       "originalEn": "Compensator II Blueprint"
     },
     "stackSize": 1,
@@ -1654,7 +1654,7 @@
   "compensator_iii": {
     "id": "compensator_iii",
     "name": {
-      "value": "Kompensator III",
+      "value": "补偿器 III",
       "originalEn": "Compensator III"
     },
     "stackSize": 1,
@@ -1671,7 +1671,7 @@
   "compensator_iii_blueprint": {
     "id": "compensator_iii_blueprint",
     "name": {
-      "value": "Bauplan: Kompensator III",
+      "value": "补偿器 III 蓝图",
       "originalEn": "Compensator III Blueprint"
     },
     "stackSize": 1,
@@ -1685,7 +1685,7 @@
   "complex_gun_parts": {
     "id": "complex_gun_parts",
     "name": {
-      "value": "Komplexe Waffenteile",
+      "value": "复杂枪械零件",
       "originalEn": "Complex Gun Parts"
     },
     "stackSize": 3,
@@ -1703,7 +1703,7 @@
   "complex_gun_parts_blueprint": {
     "id": "complex_gun_parts_blueprint",
     "name": {
-      "value": "Bauplan: Komplexe Waffenteile",
+      "value": "复杂枪械零件蓝图",
       "originalEn": "Complex Gun Parts Blueprint"
     },
     "stackSize": 1,
@@ -1717,7 +1717,7 @@
   "coolant": {
     "id": "coolant",
     "name": {
-      "value": "Kühlmittel",
+      "value": "冷却剂",
       "originalEn": "Coolant"
     },
     "stackSize": 3,
@@ -1731,7 +1731,7 @@
   "cooling_coil": {
     "id": "cooling_coil",
     "name": {
-      "value": "Kühlspule",
+      "value": "冷却线圈",
       "originalEn": "Cooling Coil"
     },
     "stackSize": 3,
@@ -1745,7 +1745,7 @@
   "cooling_fan": {
     "id": "cooling_fan",
     "name": {
-      "value": "Kühlungslüfter",
+      "value": "冷却风扇",
       "originalEn": "Cooling Fan"
     },
     "stackSize": 3,
@@ -1759,7 +1759,7 @@
   "cracked_bioscanner": {
     "id": "cracked_bioscanner",
     "name": {
-      "value": "Angeschlagener Bioscanner",
+      "value": "破裂的生物扫描仪",
       "originalEn": "Cracked Bioscanner"
     },
     "stackSize": 3,
@@ -1773,7 +1773,7 @@
   "crude_explosives": {
     "id": "crude_explosives",
     "name": {
-      "value": "Rohe Sprengstoffe",
+      "value": "简易炸药",
       "originalEn": "Crude Explosives"
     },
     "stackSize": 10,
@@ -1789,7 +1789,7 @@
   "crumpled_plastic_bottle": {
     "id": "crumpled_plastic_bottle",
     "name": {
-      "value": "Zerknitterte Plastikflasche",
+      "value": "压扁的塑料瓶",
       "originalEn": "Crumpled Plastic Bottle"
     },
     "stackSize": 3,
@@ -1803,7 +1803,7 @@
   "dam_control_tower_key": {
     "id": "dam_control_tower_key",
     "name": {
-      "value": "Schlüssel zum Damm-Kontrollturm",
+      "value": "大坝控制塔钥匙",
       "originalEn": "Dam Control Tower Key"
     },
     "stackSize": 1,
@@ -1817,7 +1817,7 @@
   "dam_controlled_access_zone_key": {
     "id": "dam_controlled_access_zone_key",
     "name": {
-      "value": "Schlüssel zur Damm-Sperrzone",
+      "value": "大坝管制区钥匙",
       "originalEn": "Dam Controlled Access Zone Key"
     },
     "stackSize": 1,
@@ -1831,7 +1831,7 @@
   "dam_staff_room_key": {
     "id": "dam_staff_room_key",
     "name": {
-      "value": "Damm-Personalraum-Schlüssel",
+      "value": "大坝员工室钥匙",
       "originalEn": "Dam Staff Room Key"
     },
     "stackSize": 1,
@@ -1845,7 +1845,7 @@
   "dam_surveillance_key": {
     "id": "dam_surveillance_key",
     "name": {
-      "value": "Überwachungsschlüssel (Damm)",
+      "value": "大坝监控钥匙",
       "originalEn": "Dam Surveillance Key"
     },
     "stackSize": 1,
@@ -1859,7 +1859,7 @@
   "dam_testing_annex_key": {
     "id": "dam_testing_annex_key",
     "name": {
-      "value": "Testanbauschlüssel (Damm)",
+      "value": "大坝测试附楼钥匙",
       "originalEn": "Dam Testing Annex Key"
     },
     "stackSize": 1,
@@ -1873,7 +1873,7 @@
   "dam_utility_key": {
     "id": "dam_utility_key",
     "name": {
-      "value": "Damm-Versorgungsschlüssel",
+      "value": "大坝设施钥匙",
       "originalEn": "Dam Utility Key"
     },
     "stackSize": 1,
@@ -1887,7 +1887,7 @@
   "damaged_arc_motion_core": {
     "id": "damaged_arc_motion_core",
     "name": {
-      "value": "Beschädigter ARC-Bewegungskern",
+      "value": "损坏的ARC运动核心",
       "originalEn": "Damaged ARC Motion Core"
     },
     "stackSize": 5,
@@ -1901,7 +1901,7 @@
   "damaged_arc_powercell": {
     "id": "damaged_arc_powercell",
     "name": {
-      "value": "Beschädigte ARC-Energiezelle",
+      "value": "损坏的ARC能量电池",
       "originalEn": "Damaged ARC Powercell"
     },
     "stackSize": 5,
@@ -1915,7 +1915,7 @@
   "damaged_fireball_burner": {
     "id": "damaged_fireball_burner",
     "name": {
-      "value": "Beschädigter Feuerball-Brenner",
+      "value": "损坏的火球燃烧器",
       "originalEn": "Damaged Fireball Burner"
     },
     "stackSize": 3,
@@ -1929,7 +1929,7 @@
   "damaged_heat_sink": {
     "id": "damaged_heat_sink",
     "name": {
-      "value": "Beschädigter Kühlkörper",
+      "value": "损坏的散热器",
       "originalEn": "Damaged Heat Sink"
     },
     "stackSize": 3,
@@ -1943,7 +1943,7 @@
   "damaged_hornet_driver": {
     "id": "damaged_hornet_driver",
     "name": {
-      "value": "Beschädigter Hornissenantrieb",
+      "value": "损坏的黄蜂引擎",
       "originalEn": "Damaged Hornet Driver"
     },
     "stackSize": 3,
@@ -1957,7 +1957,7 @@
   "damaged_rocketeer_driver": {
     "id": "damaged_rocketeer_driver",
     "name": {
-      "value": "Beschädigter Raketenkanoniertreiber",
+      "value": "损坏的火箭手引擎",
       "originalEn": "Damaged Rocketeer Driver"
     },
     "stackSize": 3,
@@ -1971,7 +1971,7 @@
   "damaged_snitch_scanner": {
     "id": "damaged_snitch_scanner",
     "name": {
-      "value": "Beschädigter Snitch-Scanner",
+      "value": "损坏的告密者扫描仪",
       "originalEn": "Damaged Snitch Scanner"
     },
     "stackSize": 3,
@@ -1985,7 +1985,7 @@
   "damaged_tick_pod": {
     "id": "damaged_tick_pod",
     "name": {
-      "value": "Beschädigte Zeckenkapsel",
+      "value": "损坏的蜱虫荚",
       "originalEn": "Damaged Tick Pod"
     },
     "stackSize": 3,
@@ -1999,7 +1999,7 @@
   "damaged_wasp_driver": {
     "id": "damaged_wasp_driver",
     "name": {
-      "value": "Beschädigter Wespen-Treiber",
+      "value": "损坏的黄蜂引擎",
       "originalEn": "Damaged Wasp Driver"
     },
     "stackSize": 3,
@@ -2013,7 +2013,7 @@
   "dart_board": {
     "id": "dart_board",
     "name": {
-      "value": "Dartscheibe",
+      "value": "飞镖靶",
       "originalEn": "Dart Board"
     },
     "stackSize": 3,
@@ -2027,7 +2027,7 @@
   "deadline": {
     "id": "deadline",
     "name": {
-      "value": "Deadline",
+      "value": "死线",
       "originalEn": "Deadline"
     },
     "stackSize": 1,
@@ -2045,7 +2045,7 @@
   "deadline_blueprint": {
     "id": "deadline_blueprint",
     "name": {
-      "value": "Bauplan: Deadline",
+      "value": "死线蓝图",
       "originalEn": "Deadline Blueprint"
     },
     "stackSize": 1,
@@ -2059,7 +2059,7 @@
   "defibrillator": {
     "id": "defibrillator",
     "name": {
-      "value": "Defibrillator",
+      "value": "除颤器",
       "originalEn": "Defibrillator"
     },
     "stackSize": 3,
@@ -2076,7 +2076,7 @@
   "defibrillator_blueprint": {
     "id": "defibrillator_blueprint",
     "name": {
-      "value": "Bauplan: Defibrillator",
+      "value": "除颤器蓝图",
       "originalEn": "Defibrillator Blueprint"
     },
     "stackSize": 1,
@@ -2090,7 +2090,7 @@
   "deflated_football": {
     "id": "deflated_football",
     "name": {
-      "value": "Schlapper Fußball",
+      "value": "泄气的足球",
       "originalEn": "Deflated Football"
     },
     "stackSize": 3,
@@ -2104,7 +2104,7 @@
   "degraded_arc_rubber": {
     "id": "degraded_arc_rubber",
     "name": {
-      "value": "Zersetztes ARC-Gummi",
+      "value": "劣化的ARC橡胶",
       "originalEn": "Degraded ARC Rubber"
     },
     "stackSize": 3,
@@ -2118,7 +2118,7 @@
   "diving_goggles": {
     "id": "diving_goggles",
     "name": {
-      "value": "Taucherbrille",
+      "value": "潜水护目镜",
       "originalEn": "Diving Goggles"
     },
     "stackSize": 3,
@@ -2132,7 +2132,7 @@
   "dodgers_note": {
     "id": "dodgers_note",
     "name": {
-      "value": "Dodgers Notiz",
+      "value": "多杰的笔记",
       "originalEn": "Dodger's Note"
     },
     "stackSize": 1,
@@ -2146,7 +2146,7 @@
   "dog_collar": {
     "id": "dog_collar",
     "name": {
-      "value": "Hundehalsband",
+      "value": "狗项圈",
       "originalEn": "Dog Collar"
     },
     "stackSize": 3,
@@ -2178,7 +2178,7 @@
   "dolabra_blueprint": {
     "id": "dolabra_blueprint",
     "name": {
-      "value": "Dolabra Bauplan",
+      "value": "Dolabra 蓝图",
       "originalEn": "Dolabra Blueprint"
     },
     "stackSize": 1,
@@ -2192,7 +2192,7 @@
   "doodly_duck": {
     "id": "doodly_duck",
     "name": {
-      "value": "Kritzel-Ente",
+      "value": "涂鸦鸭",
       "originalEn": "Doodly Duck"
     },
     "stackSize": 15,
@@ -2206,7 +2206,7 @@
   "door_blocker": {
     "id": "door_blocker",
     "name": {
-      "value": "Türblocker",
+      "value": "门锁",
       "originalEn": "Door Blocker"
     },
     "stackSize": 3,
@@ -2223,7 +2223,7 @@
   "dried_out_arc_resin": {
     "id": "dried_out_arc_resin",
     "name": {
-      "value": "Ausgetrocknetes ARC-Harz",
+      "value": "干涸的ARC树脂",
       "originalEn": "Dried-Out ARC Resin"
     },
     "stackSize": 3,
@@ -2237,7 +2237,7 @@
   "duct_tape": {
     "id": "duct_tape",
     "name": {
-      "value": "Isolierband",
+      "value": "强力胶带",
       "originalEn": "Duct Tape"
     },
     "stackSize": 15,
@@ -2251,7 +2251,7 @@
   "durable_cloth": {
     "id": "durable_cloth",
     "name": {
-      "value": "Strapazierfähiges Stoffstück",
+      "value": "耐磨布料",
       "originalEn": "Durable Cloth"
     },
     "stackSize": 10,
@@ -2267,7 +2267,7 @@
   "dusty_film_reel": {
     "id": "dusty_film_reel",
     "name": {
-      "value": "Verstaubte Filmrolle",
+      "value": "布满灰尘的电影胶卷",
       "originalEn": "Dusty Film Reel"
     },
     "stackSize": 1,
@@ -2281,7 +2281,7 @@
   "electrical_components": {
     "id": "electrical_components",
     "name": {
-      "value": "Elektrische Komponenten",
+      "value": "电子元件",
       "originalEn": "Electrical Components"
     },
     "stackSize": 10,
@@ -2298,7 +2298,7 @@
   "empty_wine_bottle": {
     "id": "empty_wine_bottle",
     "name": {
-      "value": "Leere Weinflasche",
+      "value": "空酒瓶",
       "originalEn": "Empty Wine Bottle"
     },
     "stackSize": 5,
@@ -2312,7 +2312,7 @@
   "energy_clip": {
     "id": "energy_clip",
     "name": {
-      "value": "Energieclip",
+      "value": "能量夹",
       "originalEn": "Energy Clip"
     },
     "stackSize": 5,
@@ -2329,7 +2329,7 @@
   "equalizer": {
     "id": "equalizer",
     "name": {
-      "value": "Equalizer",
+      "value": "制裁者",
       "originalEn": "Equalizer"
     },
     "stackSize": 1,
@@ -2347,7 +2347,7 @@
   "equalizer_blueprint": {
     "id": "equalizer_blueprint",
     "name": {
-      "value": "Bauplan: Equalizer",
+      "value": "制裁者蓝图",
       "originalEn": "Equalizer Blueprint"
     },
     "stackSize": 1,
@@ -2361,7 +2361,7 @@
   "espresso_machine_parts": {
     "id": "espresso_machine_parts",
     "name": {
-      "value": "Espressomaschinenteile",
+      "value": "浓缩咖啡机零件",
       "originalEn": "Espresso Machine Parts"
     },
     "stackSize": 1,
@@ -2375,7 +2375,7 @@
   "esr_analyzer": {
     "id": "esr_analyzer",
     "name": {
-      "value": "ESR-Analysegerät",
+      "value": "ESR分析仪",
       "originalEn": "ESR Analyzer"
     },
     "stackSize": 1,
@@ -2389,7 +2389,7 @@
   "exodus_modules": {
     "id": "exodus_modules",
     "name": {
-      "value": "Exodus-Module",
+      "value": "离巢模块",
       "originalEn": "Exodus Modules"
     },
     "stackSize": 3,
@@ -2403,7 +2403,7 @@
   "experimental_seed_sample": {
     "id": "experimental_seed_sample",
     "name": {
-      "value": "Experimentelle Samenprobe",
+      "value": "实验种子样本",
       "originalEn": "Experimental Seed Sample"
     },
     "stackSize": 1,
@@ -2417,7 +2417,7 @@
   "expired_pasta": {
     "id": "expired_pasta",
     "name": {
-      "value": "Abgelaufene Nudeln",
+      "value": "过期意大利面",
       "originalEn": "Expired Pasta"
     },
     "stackSize": 15,
@@ -2431,7 +2431,7 @@
   "expired_respirator": {
     "id": "expired_respirator",
     "name": {
-      "value": "Abgelaufenes Atemgerät",
+      "value": "过期呼吸器",
       "originalEn": "Expired Respirator"
     },
     "stackSize": 3,
@@ -2445,7 +2445,7 @@
   "explosive_compound": {
     "id": "explosive_compound",
     "name": {
-      "value": "Explosive Substanz",
+      "value": "炸药混合物",
       "originalEn": "Explosive Compound"
     },
     "stackSize": 5,
@@ -2462,7 +2462,7 @@
   "explosive_mine": {
     "id": "explosive_mine",
     "name": {
-      "value": "Sprengmine",
+      "value": "爆炸地雷",
       "originalEn": "Explosive Mine"
     },
     "stackSize": 3,
@@ -2479,7 +2479,7 @@
   "explosive_mine_blueprint": {
     "id": "explosive_mine_blueprint",
     "name": {
-      "value": "Bauplan: Sprengmine",
+      "value": "爆炸地雷 蓝图",
       "originalEn": "Explosive Mine Blueprint"
     },
     "stackSize": 1,
@@ -2493,7 +2493,7 @@
   "extended_barrel": {
     "id": "extended_barrel",
     "name": {
-      "value": "Verlängerter Lauf",
+      "value": "加长枪管",
       "originalEn": "Extended Barrel"
     },
     "stackSize": 1,
@@ -2510,7 +2510,7 @@
   "extended_barrel_blueprint": {
     "id": "extended_barrel_blueprint",
     "name": {
-      "value": "Bauplan: Verlangerter Lauf",
+      "value": "加长枪管 蓝图",
       "originalEn": "Extended Barrel Blueprint"
     },
     "stackSize": 1,
@@ -2524,7 +2524,7 @@
   "extended_light_mag_i": {
     "id": "extended_light_mag_i",
     "name": {
-      "value": "Erweitertes leichtes Magazin I",
+      "value": "延长轻型弹匣 I",
       "originalEn": "Extended Light Mag I"
     },
     "stackSize": 1,
@@ -2541,7 +2541,7 @@
   "extended_light_mag_ii": {
     "id": "extended_light_mag_ii",
     "name": {
-      "value": "Erweitertes leichtes Magazin II",
+      "value": "延长轻型弹匣 II",
       "originalEn": "Extended Light Mag II"
     },
     "stackSize": 1,
@@ -2558,7 +2558,7 @@
   "extended_light_mag_ii_blueprint": {
     "id": "extended_light_mag_ii_blueprint",
     "name": {
-      "value": "Bauplan: Erweitertes leichtes Magazin II",
+      "value": "延长轻型弹匣 II 蓝图",
       "originalEn": "Extended Light Mag II Blueprint"
     },
     "stackSize": 1,
@@ -2572,7 +2572,7 @@
   "extended_light_mag_iii": {
     "id": "extended_light_mag_iii",
     "name": {
-      "value": "Erweitertes leichtes Magazin III",
+      "value": "延长轻型弹匣 III",
       "originalEn": "Extended Light Mag III"
     },
     "stackSize": 1,
@@ -2589,7 +2589,7 @@
   "extended_light_mag_iii_blueprint": {
     "id": "extended_light_mag_iii_blueprint",
     "name": {
-      "value": "Bauplan: Erweitertes leichtes Magazin III",
+      "value": "延长轻型弹匣 III 蓝图",
       "originalEn": "Extended Light Mag III Blueprint"
     },
     "stackSize": 1,
@@ -2603,7 +2603,7 @@
   "extended_medium_mag_i": {
     "id": "extended_medium_mag_i",
     "name": {
-      "value": "Erweitertes mittelschweres Magazin I",
+      "value": "延长中型弹匣 I",
       "originalEn": "Extended Medium Mag I"
     },
     "stackSize": 1,
@@ -2620,7 +2620,7 @@
   "extended_medium_mag_ii": {
     "id": "extended_medium_mag_ii",
     "name": {
-      "value": "Erweitertes mittelschweres Magazin II",
+      "value": "延长中型弹匣 II",
       "originalEn": "Extended Medium Mag II"
     },
     "stackSize": 1,
@@ -2637,7 +2637,7 @@
   "extended_medium_mag_ii_blueprint": {
     "id": "extended_medium_mag_ii_blueprint",
     "name": {
-      "value": "Bauplan: Erweitertes mittelschweres Magazin II",
+      "value": "延长中型弹匣II蓝图",
       "originalEn": "Extended Medium Mag II Blueprint"
     },
     "stackSize": 1,
@@ -2651,7 +2651,7 @@
   "extended_medium_mag_iii": {
     "id": "extended_medium_mag_iii",
     "name": {
-      "value": "Erweitertes mittelschweres Magazin III",
+      "value": "延长中型弹匣 III",
       "originalEn": "Extended Medium Mag III"
     },
     "stackSize": 1,
@@ -2668,7 +2668,7 @@
   "extended_medium_mag_iii_blueprint": {
     "id": "extended_medium_mag_iii_blueprint",
     "name": {
-      "value": "Bauplan: Erweitertes mittelschweres Magazin III",
+      "value": "延长中型弹匣III蓝图",
       "originalEn": "Extended Medium Mag III Blueprint"
     },
     "stackSize": 1,
@@ -2682,7 +2682,7 @@
   "extended_shotgun_mag_i": {
     "id": "extended_shotgun_mag_i",
     "name": {
-      "value": "Erweitertes Schrotflintenmagazin I",
+      "value": "延长霰弹枪弹匣 I",
       "originalEn": "Extended Shotgun Mag I"
     },
     "stackSize": 1,
@@ -2699,7 +2699,7 @@
   "extended_shotgun_mag_ii": {
     "id": "extended_shotgun_mag_ii",
     "name": {
-      "value": "Erweitertes Schrotflintenmagazin II",
+      "value": "延长霰弹枪弹匣 II",
       "originalEn": "Extended Shotgun Mag II"
     },
     "stackSize": 1,
@@ -2716,7 +2716,7 @@
   "extended_shotgun_mag_ii_blueprint": {
     "id": "extended_shotgun_mag_ii_blueprint",
     "name": {
-      "value": "Bauplan: Erweitertes Schrotflintenmagazin II",
+      "value": "延长霰弹枪弹匣 II 蓝图",
       "originalEn": "Extended Shotgun Mag II Blueprint"
     },
     "stackSize": 1,
@@ -2730,7 +2730,7 @@
   "extended_shotgun_mag_iii": {
     "id": "extended_shotgun_mag_iii",
     "name": {
-      "value": "Erweitertes Schrotflintenmagazin III",
+      "value": "扩展霰弹枪弹匣 III",
       "originalEn": "Extended Shotgun Mag III"
     },
     "stackSize": 1,
@@ -2747,7 +2747,7 @@
   "extended_shotgun_mag_iii_blueprint": {
     "id": "extended_shotgun_mag_iii_blueprint",
     "name": {
-      "value": "Bauplan: Erweitertes Schrotflintenmagazin III",
+      "value": "扩展霰弹枪弹匣 III 蓝图",
       "originalEn": "Extended Shotgun Mag III Blueprint"
     },
     "stackSize": 1,
@@ -2761,7 +2761,7 @@
   "fabric": {
     "id": "fabric",
     "name": {
-      "value": "Stoff",
+      "value": "布料",
       "originalEn": "Fabric"
     },
     "stackSize": 50,
@@ -2775,7 +2775,7 @@
   "faded_photograph": {
     "id": "faded_photograph",
     "name": {
-      "value": "Verblichenes Foto",
+      "value": "褪色的照片",
       "originalEn": "Faded Photograph"
     },
     "stackSize": 15,
@@ -2789,7 +2789,7 @@
   "familiar_duck": {
     "id": "familiar_duck",
     "name": {
-      "value": "Vertraute Ente",
+      "value": "伙伴鸭",
       "originalEn": "Familiar Duck"
     },
     "stackSize": 15,
@@ -2803,7 +2803,7 @@
   "ferro_i": {
     "id": "ferro_i",
     "name": {
-      "value": "Ferro I",
+      "value": "生铁 I",
       "originalEn": "Ferro I"
     },
     "stackSize": 1,
@@ -2820,7 +2820,7 @@
   "ferro_ii": {
     "id": "ferro_ii",
     "name": {
-      "value": "Ferro II",
+      "value": "生铁 II",
       "originalEn": "Ferro II"
     },
     "stackSize": 1,
@@ -2836,7 +2836,7 @@
   "ferro_iii": {
     "id": "ferro_iii",
     "name": {
-      "value": "Ferro III",
+      "value": "生铁 III",
       "originalEn": "Ferro III"
     },
     "stackSize": 1,
@@ -2853,7 +2853,7 @@
   "ferro_iv": {
     "id": "ferro_iv",
     "name": {
-      "value": "Ferro IV",
+      "value": "生铁 IV",
       "originalEn": "Ferro IV"
     },
     "stackSize": 1,
@@ -2870,7 +2870,7 @@
   "fertilizer": {
     "id": "fertilizer",
     "name": {
-      "value": "Dünger",
+      "value": "肥料",
       "originalEn": "Fertilizer"
     },
     "stackSize": 5,
@@ -2884,7 +2884,7 @@
   "film_reel": {
     "id": "film_reel",
     "name": {
-      "value": "Filmrolle",
+      "value": "胶片卷轴",
       "originalEn": "Film Reel"
     },
     "stackSize": 3,
@@ -2898,7 +2898,7 @@
   "fine_wristwatch": {
     "id": "fine_wristwatch",
     "name": {
-      "value": "Edle Armbanduhr",
+      "value": "精致腕表",
       "originalEn": "Fine Wristwatch"
     },
     "stackSize": 3,
@@ -2912,7 +2912,7 @@
   "fireball_burner": {
     "id": "fireball_burner",
     "name": {
-      "value": "Feuerballbrenner",
+      "value": "火球燃烧器",
       "originalEn": "Fireball Burner"
     },
     "stackSize": 3,
@@ -2926,7 +2926,7 @@
   "firecracker": {
     "id": "firecracker",
     "name": {
-      "value": "Böller",
+      "value": "爆竹",
       "originalEn": "Firecracker"
     },
     "stackSize": 5,
@@ -2943,7 +2943,7 @@
   "firefly_burner": {
     "id": "firefly_burner",
     "name": {
-      "value": "Glühwürmchenbrenner",
+      "value": "萤火虫燃烧器",
       "originalEn": "Firefly Burner"
     },
     "stackSize": 3,
@@ -2957,7 +2957,7 @@
   "fireworks_box": {
     "id": "fireworks_box",
     "name": {
-      "value": "Feuerwerkskiste",
+      "value": "烟花箱",
       "originalEn": "Fireworks Box"
     },
     "stackSize": 1,
@@ -2974,7 +2974,7 @@
   "fireworks_box_blueprint": {
     "id": "fireworks_box_blueprint",
     "name": {
-      "value": "Bauplan: Feuerwerkskiste",
+      "value": "烟花箱蓝图",
       "originalEn": "Fireworks Box Blueprint"
     },
     "stackSize": 1,
@@ -2988,7 +2988,7 @@
   "first_wave_compass": {
     "id": "first_wave_compass",
     "name": {
-      "value": "Erste-Welle-Kompass",
+      "value": "第一波罗盘",
       "originalEn": "First Wave Compass"
     },
     "stackSize": 1,
@@ -3002,7 +3002,7 @@
   "first_wave_rations": {
     "id": "first_wave_rations",
     "name": {
-      "value": "Erste-Welle-Rationen",
+      "value": "第一波配给",
       "originalEn": "First Wave Rations"
     },
     "stackSize": 1,
@@ -3016,7 +3016,7 @@
   "first_wave_tape": {
     "id": "first_wave_tape",
     "name": {
-      "value": "Erste-Welle-Band",
+      "value": "第一波录像带",
       "originalEn": "First Wave Tape"
     },
     "stackSize": 1,
@@ -3030,7 +3030,7 @@
   "flame_spray": {
     "id": "flame_spray",
     "name": {
-      "value": "Flammen-Spray",
+      "value": "火焰喷射器",
       "originalEn": "Flame Spray"
     },
     "stackSize": 1,
@@ -3047,7 +3047,7 @@
   "flashy_duck": {
     "id": "flashy_duck",
     "name": {
-      "value": "Prunkvolle Ente",
+      "value": "华丽鸭",
       "originalEn": "Flashy Duck"
     },
     "stackSize": 15,
@@ -3061,7 +3061,7 @@
   "flow_controller": {
     "id": "flow_controller",
     "name": {
-      "value": "Durchflussregler",
+      "value": "流量控制器",
       "originalEn": "Flow Controller"
     },
     "stackSize": 3,
@@ -3075,7 +3075,7 @@
   "flushing_terminal_key": {
     "id": "flushing_terminal_key",
     "name": {
-      "value": "Schlüssel für das Flushing-Terminal",
+      "value": "冲洗终端钥匙",
       "originalEn": "Flushing Terminal Key"
     },
     "stackSize": 1,
@@ -3089,7 +3089,7 @@
   "fossilized_lightning": {
     "id": "fossilized_lightning",
     "name": {
-      "value": "Versteinerter Blitz",
+      "value": "化石闪电",
       "originalEn": "Fossilized Lightning"
     },
     "stackSize": 1,
@@ -3103,7 +3103,7 @@
   "free_loadout_augment": {
     "id": "free_loadout_augment",
     "name": {
-      "value": "Augment mit Gratis-Loadout",
+      "value": "免费装备增强",
       "originalEn": "Free Loadout Augment"
     },
     "stackSize": 1,
@@ -3117,7 +3117,7 @@
   "frequency_modulation_box": {
     "id": "frequency_modulation_box",
     "name": {
-      "value": "Frequenzmodulationsbox",
+      "value": "频率调制盒",
       "originalEn": "Frequency Modulation Box"
     },
     "stackSize": 3,
@@ -3131,7 +3131,7 @@
   "fried_motherboard": {
     "id": "fried_motherboard",
     "name": {
-      "value": "Durchgebranntes Motherboard",
+      "value": "烧毁的主板",
       "originalEn": "Fried Motherboard"
     },
     "stackSize": 3,
@@ -3145,7 +3145,7 @@
   "fruit_mix": {
     "id": "fruit_mix",
     "name": {
-      "value": "Obstmischung",
+      "value": "水果拼盘",
       "originalEn": "Fruit Mix"
     },
     "stackSize": 5,
@@ -3163,7 +3163,7 @@
   "frying_pan": {
     "id": "frying_pan",
     "name": {
-      "value": "Bratpfanne",
+      "value": "平底锅",
       "originalEn": "Frying Pan"
     },
     "stackSize": 3,
@@ -3177,7 +3177,7 @@
   "garlic_press": {
     "id": "garlic_press",
     "name": {
-      "value": "Knoblauchpresse",
+      "value": "大蒜压榨器",
       "originalEn": "Garlic Press"
     },
     "stackSize": 3,
@@ -3191,7 +3191,7 @@
   "gas_grenade": {
     "id": "gas_grenade",
     "name": {
-      "value": "Gasgranate",
+      "value": "毒气手雷",
       "originalEn": "Gas Grenade"
     },
     "stackSize": 3,
@@ -3208,7 +3208,7 @@
   "gas_grenade_trap": {
     "id": "gas_grenade_trap",
     "name": {
-      "value": "Laserfalle: Gas",
+      "value": "毒气手榴弹陷阱",
       "originalEn": "Gas Grenade Trap"
     },
     "stackSize": 3,
@@ -3225,7 +3225,7 @@
   "gas_mine": {
     "id": "gas_mine",
     "name": {
-      "value": "Sprungmine: Ausdauerverlust über Zeit",
+      "value": "毒气地雷",
       "originalEn": "Gas Mine"
     },
     "stackSize": 3,
@@ -3242,7 +3242,7 @@
   "gas_mine_blueprint": {
     "id": "gas_mine_blueprint",
     "name": {
-      "value": "Bauplan: Sprungmine: Ausdauerverlust über Zeit",
+      "value": "毒气地雷 蓝图",
       "originalEn": "Gas Mine Blueprint"
     },
     "stackSize": 1,
@@ -3256,7 +3256,7 @@
   "geiger_counter": {
     "id": "geiger_counter",
     "name": {
-      "value": "Geigerzähler",
+      "value": "盖革计数器",
       "originalEn": "Geiger Counter"
     },
     "stackSize": 3,
@@ -3270,7 +3270,7 @@
   "gentle_duck": {
     "id": "gentle_duck",
     "name": {
-      "value": "Sanfte Ente",
+      "value": "温顺鸭",
       "originalEn": "Gentle Duck"
     },
     "stackSize": 15,
@@ -3284,7 +3284,7 @@
   "great_mullein": {
     "id": "great_mullein",
     "name": {
-      "value": "Kleinblütige Königskerze",
+      "value": "大毛蕊花",
       "originalEn": "Great Mullein"
     },
     "stackSize": 15,
@@ -3298,7 +3298,7 @@
   "green_light_stick": {
     "id": "green_light_stick",
     "name": {
-      "value": "Grüner Leuchtstab",
+      "value": "绿色荧光棒",
       "originalEn": "Green Light Stick"
     },
     "stackSize": 5,
@@ -3314,7 +3314,7 @@
   "green_light_stick_blueprint": {
     "id": "green_light_stick_blueprint",
     "name": {
-      "value": "Bauplan: Grüner Leuchtstab",
+      "value": "绿色荧光棒蓝图",
       "originalEn": "Green Light Stick Blueprint"
     },
     "stackSize": 1,
@@ -3328,7 +3328,7 @@
   "hairpin_i": {
     "id": "hairpin_i",
     "name": {
-      "value": "Hairpin I",
+      "value": "发夹 I",
       "originalEn": "Hairpin I"
     },
     "stackSize": 1,
@@ -3345,7 +3345,7 @@
   "hairpin_ii": {
     "id": "hairpin_ii",
     "name": {
-      "value": "Hairpin II",
+      "value": "发夹 II",
       "originalEn": "Hairpin II"
     },
     "stackSize": 1,
@@ -3361,7 +3361,7 @@
   "hairpin_iii": {
     "id": "hairpin_iii",
     "name": {
-      "value": "Hairpin III",
+      "value": "发夹 III",
       "originalEn": "Hairpin III"
     },
     "stackSize": 1,
@@ -3378,7 +3378,7 @@
   "hairpin_iv": {
     "id": "hairpin_iv",
     "name": {
-      "value": "Hairpin IV",
+      "value": "发夹 IV",
       "originalEn": "Hairpin IV"
     },
     "stackSize": 1,
@@ -3395,7 +3395,7 @@
   "headphones": {
     "id": "headphones",
     "name": {
-      "value": "Kopfhörer",
+      "value": "耳机",
       "originalEn": "Headphones"
     },
     "stackSize": 3,
@@ -3409,7 +3409,7 @@
   "heavy_ammo": {
     "id": "heavy_ammo",
     "name": {
-      "value": "Schwere Munition",
+      "value": "重型弹药",
       "originalEn": "Heavy Ammo"
     },
     "stackSize": 40,
@@ -3426,7 +3426,7 @@
   "heavy_fuze_grenade": {
     "id": "heavy_fuze_grenade",
     "name": {
-      "value": "Schwere Zündgranate",
+      "value": "重型定时手榴弹",
       "originalEn": "Heavy Fuze Grenade"
     },
     "stackSize": 3,
@@ -3443,7 +3443,7 @@
   "heavy_gun_parts": {
     "id": "heavy_gun_parts",
     "name": {
-      "value": "Teile für Waffe mit schwerer Munition",
+      "value": "重型枪械零件",
       "originalEn": "Heavy Gun Parts"
     },
     "stackSize": 5,
@@ -3459,7 +3459,7 @@
   "heavy_gun_parts_blueprint": {
     "id": "heavy_gun_parts_blueprint",
     "name": {
-      "value": "Bauplan: Teile für Waffe mit schwerer Munition",
+      "value": "重型枪械零件蓝图",
       "originalEn": "Heavy Gun Parts Blueprint"
     },
     "stackSize": 1,
@@ -3473,7 +3473,7 @@
   "heavy_shield": {
     "id": "heavy_shield",
     "name": {
-      "value": "Schwerer Schild",
+      "value": "重型护盾",
       "originalEn": "Heavy Shield"
     },
     "stackSize": 1,
@@ -3490,7 +3490,7 @@
   "herbal_bandage": {
     "id": "herbal_bandage",
     "name": {
-      "value": "Kräuterverband",
+      "value": "草药绷带",
       "originalEn": "Herbal Bandage"
     },
     "stackSize": 5,
@@ -3507,7 +3507,7 @@
   "horizontal_grip": {
     "id": "horizontal_grip",
     "name": {
-      "value": "Horizontaler Griff",
+      "value": "水平握把",
       "originalEn": "Horizontal Grip"
     },
     "stackSize": 1,
@@ -3521,7 +3521,7 @@
   "hornet_driver": {
     "id": "hornet_driver",
     "name": {
-      "value": "Hornissentreiber",
+      "value": "黄蜂引擎",
       "originalEn": "Hornet Driver"
     },
     "stackSize": 3,
@@ -3535,7 +3535,7 @@
   "household_cleaner": {
     "id": "household_cleaner",
     "name": {
-      "value": "Haushaltsreiniger",
+      "value": "家用清洁剂",
       "originalEn": "Household Cleaner"
     },
     "stackSize": 3,
@@ -3549,7 +3549,7 @@
   "hullcracker_blueprint": {
     "id": "hullcracker_blueprint",
     "name": {
-      "value": "Bauplan: Hüllenbrecher",
+      "value": "裂甲者蓝图",
       "originalEn": "Hullcracker Blueprint"
     },
     "stackSize": 1,
@@ -3563,7 +3563,7 @@
   "hullcracker_i": {
     "id": "hullcracker_i",
     "name": {
-      "value": "Hüllenbrecher I",
+      "value": "裂甲者 I",
       "originalEn": "Hullcracker I"
     },
     "stackSize": 1,
@@ -3581,7 +3581,7 @@
   "hullcracker_ii": {
     "id": "hullcracker_ii",
     "name": {
-      "value": "Hüllenbrecher II",
+      "value": "裂甲者 II",
       "originalEn": "Hullcracker II"
     },
     "stackSize": 1,
@@ -3598,7 +3598,7 @@
   "hullcracker_iii": {
     "id": "hullcracker_iii",
     "name": {
-      "value": "Hüllenbrecher III",
+      "value": "裂甲者 III",
       "originalEn": "Hullcracker III"
     },
     "stackSize": 1,
@@ -3615,7 +3615,7 @@
   "hullcracker_iv": {
     "id": "hullcracker_iv",
     "name": {
-      "value": "Hüllenbrecher IV",
+      "value": "裂甲者 IV",
       "originalEn": "Hullcracker IV"
     },
     "stackSize": 1,
@@ -3632,7 +3632,7 @@
   "humidifier": {
     "id": "humidifier",
     "name": {
-      "value": "Luftbefeuchter",
+      "value": "加湿器",
       "originalEn": "Humidifier"
     },
     "stackSize": 3,
@@ -3646,7 +3646,7 @@
   "ice_cream_scooper": {
     "id": "ice_cream_scooper",
     "name": {
-      "value": "Eisportionierer",
+      "value": "冰淇淋勺",
       "originalEn": "Ice Cream Scooper"
     },
     "stackSize": 3,
@@ -3660,7 +3660,7 @@
   "il_toro_blueprint": {
     "id": "il_toro_blueprint",
     "name": {
-      "value": "Bauplan: Il Toro",
+      "value": "公牛蓝图",
       "originalEn": "Il Toro Blueprint"
     },
     "stackSize": 1,
@@ -3674,7 +3674,7 @@
   "il_toro_i": {
     "id": "il_toro_i",
     "name": {
-      "value": "Il Toro I",
+      "value": "公牛 I",
       "originalEn": "Il Toro I"
     },
     "stackSize": 1,
@@ -3691,7 +3691,7 @@
   "il_toro_ii": {
     "id": "il_toro_ii",
     "name": {
-      "value": "Il Toro II",
+      "value": "公牛 II",
       "originalEn": "Il Toro II"
     },
     "stackSize": 1,
@@ -3708,7 +3708,7 @@
   "il_toro_iii": {
     "id": "il_toro_iii",
     "name": {
-      "value": "Il Toro III",
+      "value": "公牛 III",
       "originalEn": "Il Toro III"
     },
     "stackSize": 1,
@@ -3725,7 +3725,7 @@
   "il_toro_iv": {
     "id": "il_toro_iv",
     "name": {
-      "value": "Il Toro IV",
+      "value": "公牛 IV",
       "originalEn": "Il Toro IV"
     },
     "stackSize": 1,
@@ -3742,7 +3742,7 @@
   "impure_arc_coolant": {
     "id": "impure_arc_coolant",
     "name": {
-      "value": "Unreines ARC-Kühlmittel",
+      "value": "不纯ARC冷却液",
       "originalEn": "Impure ARC Coolant"
     },
     "stackSize": 3,
@@ -3756,7 +3756,7 @@
   "industrial_battery": {
     "id": "industrial_battery",
     "name": {
-      "value": "Industrie-Akku",
+      "value": "工业电池",
       "originalEn": "Industrial Battery"
     },
     "stackSize": 3,
@@ -3770,7 +3770,7 @@
   "industrial_charger": {
     "id": "industrial_charger",
     "name": {
-      "value": "Industrie-Ladegerät",
+      "value": "工业充电器",
       "originalEn": "Industrial Charger"
     },
     "stackSize": 3,
@@ -3784,7 +3784,7 @@
   "industrial_magnet": {
     "id": "industrial_magnet",
     "name": {
-      "value": "Industrie-Magnet",
+      "value": "工业磁铁",
       "originalEn": "Industrial Magnet"
     },
     "stackSize": 3,
@@ -3798,7 +3798,7 @@
   "ion_sputter": {
     "id": "ion_sputter",
     "name": {
-      "value": "Ionenzerstäuber",
+      "value": "离子溅射器",
       "originalEn": "Ion Sputter"
     },
     "stackSize": 3,
@@ -3812,7 +3812,7 @@
   "jolt_mine": {
     "id": "jolt_mine",
     "name": {
-      "value": "Schockmine",
+      "value": "电击地雷",
       "originalEn": "Jolt Mine"
     },
     "stackSize": 3,
@@ -3829,7 +3829,7 @@
   "jolt_mine_blueprint": {
     "id": "jolt_mine_blueprint",
     "name": {
-      "value": "Bauplan: Schockmine",
+      "value": "电击地雷蓝图",
       "originalEn": "Jolt Mine Blueprint"
     },
     "stackSize": 1,
@@ -3843,7 +3843,7 @@
   "jupiter": {
     "id": "jupiter",
     "name": {
-      "value": "Jupiter",
+      "value": "木星",
       "originalEn": "Jupiter"
     },
     "stackSize": 1,
@@ -3861,7 +3861,7 @@
   "jupiter_blueprint": {
     "id": "jupiter_blueprint",
     "name": {
-      "value": "Bauplan: Jupiter",
+      "value": "木星蓝图",
       "originalEn": "Jupiter Blueprint"
     },
     "stackSize": 1,
@@ -3875,7 +3875,7 @@
   "kettle_i": {
     "id": "kettle_i",
     "name": {
-      "value": "Kettle I",
+      "value": "水壶 I",
       "originalEn": "Kettle I"
     },
     "stackSize": 1,
@@ -3892,7 +3892,7 @@
   "kettle_ii": {
     "id": "kettle_ii",
     "name": {
-      "value": "Kettle II",
+      "value": "水壶 II",
       "originalEn": "Kettle II"
     },
     "stackSize": 1,
@@ -3909,7 +3909,7 @@
   "kettle_iii": {
     "id": "kettle_iii",
     "name": {
-      "value": "Kettle III",
+      "value": "水壶 III",
       "originalEn": "Kettle III"
     },
     "stackSize": 1,
@@ -3926,7 +3926,7 @@
   "kettle_iv": {
     "id": "kettle_iv",
     "name": {
-      "value": "Kettle IV",
+      "value": "水壶 IV",
       "originalEn": "Kettle IV"
     },
     "stackSize": 1,
@@ -3943,7 +3943,7 @@
   "kinetic_converter": {
     "id": "kinetic_converter",
     "name": {
-      "value": "Kinetischer Konverter",
+      "value": "动能转换器",
       "originalEn": "Kinetic Converter"
     },
     "stackSize": 1,
@@ -3957,7 +3957,7 @@
   "laboratory_reagents": {
     "id": "laboratory_reagents",
     "name": {
-      "value": "Laboringredienzien",
+      "value": "实验室试剂",
       "originalEn": "Laboratory Reagents"
     },
     "stackSize": 3,
@@ -3971,7 +3971,7 @@
   "lances_mixtape_5th_edition": {
     "id": "lances_mixtape_5th_edition",
     "name": {
-      "value": "Lances Mixtape (5. Auflage)",
+      "value": "兰斯的混音带（第5版）",
       "originalEn": "Lance's Mixtape (5th Edition)"
     },
     "stackSize": 3,
@@ -3985,7 +3985,7 @@
   "launcher_ammo": {
     "id": "launcher_ammo",
     "name": {
-      "value": "Werfermunition",
+      "value": "发射器弹药",
       "originalEn": "Launcher Ammo"
     },
     "stackSize": 24,
@@ -4002,7 +4002,7 @@
   "leaper_pulse_unit": {
     "id": "leaper_pulse_unit",
     "name": {
-      "value": "Springer-Impulseinheit",
+      "value": "跳跃者脉冲装置",
       "originalEn": "Leaper Pulse Unit"
     },
     "stackSize": 3,
@@ -4016,7 +4016,7 @@
   "lemon": {
     "id": "lemon",
     "name": {
-      "value": "Zitrone",
+      "value": "柠檬",
       "originalEn": "Lemon"
     },
     "stackSize": 10,
@@ -4030,7 +4030,7 @@
   "library_book": {
     "id": "library_book",
     "name": {
-      "value": "Buch",
+      "value": "书",
       "originalEn": "Book"
     },
     "stackSize": 1,
@@ -4044,7 +4044,7 @@
   "lidar_scanner": {
     "id": "lidar_scanner",
     "name": {
-      "value": "Lidar-Scanner",
+      "value": "激光雷达扫描仪",
       "originalEn": "Lidar Scanner"
     },
     "stackSize": 1,
@@ -4058,7 +4058,7 @@
   "light_ammo": {
     "id": "light_ammo",
     "name": {
-      "value": "Leichte Munition",
+      "value": "轻型弹药",
       "originalEn": "Light Ammo"
     },
     "stackSize": 100,
@@ -4075,7 +4075,7 @@
   "light_bulb": {
     "id": "light_bulb",
     "name": {
-      "value": "Glühbirne",
+      "value": "灯泡",
       "originalEn": "Light Bulb"
     },
     "stackSize": 3,
@@ -4089,7 +4089,7 @@
   "light_gun_parts": {
     "id": "light_gun_parts",
     "name": {
-      "value": "Teile für Waffe mit leichter Munition",
+      "value": "轻型枪械零件",
       "originalEn": "Light Gun Parts"
     },
     "stackSize": 5,
@@ -4105,7 +4105,7 @@
   "light_gun_parts_blueprint": {
     "id": "light_gun_parts_blueprint",
     "name": {
-      "value": "Bauplan: Leichte Waffenteile",
+      "value": "轻型枪械零件蓝图",
       "originalEn": "Light Gun Parts Blueprint"
     },
     "stackSize": 1,
@@ -4119,7 +4119,7 @@
   "light_impact_grenade": {
     "id": "light_impact_grenade",
     "name": {
-      "value": "Leichte Aufschlaggranate",
+      "value": "轻型冲击手榴弹",
       "originalEn": "Light Impact Grenade"
     },
     "stackSize": 5,
@@ -4136,7 +4136,7 @@
   "light_shield": {
     "id": "light_shield",
     "name": {
-      "value": "Leichter Schild",
+      "value": "轻型护盾",
       "originalEn": "Light Shield"
     },
     "stackSize": 1,
@@ -4153,7 +4153,7 @@
   "lightweight_stock": {
     "id": "lightweight_stock",
     "name": {
-      "value": "Leichtgewicht-Schaft",
+      "value": "轻量枪托",
       "originalEn": "Lightweight Stock"
     },
     "stackSize": 1,
@@ -4170,7 +4170,7 @@
   "lightweight_stock_blueprint": {
     "id": "lightweight_stock_blueprint",
     "name": {
-      "value": "Bauplan: Leichtgewicht-Schaft",
+      "value": "轻量枪托蓝图",
       "originalEn": "Lightweight Stock Blueprint"
     },
     "stackSize": 1,
@@ -4184,7 +4184,7 @@
   "lil_smoke_grenade": {
     "id": "lil_smoke_grenade",
     "name": {
-      "value": "Mini-Rauchgranate",
+      "value": "小型烟雾弹",
       "originalEn": "Li'l Smoke Grenade"
     },
     "stackSize": 5,
@@ -4201,7 +4201,7 @@
   "looting_mk1": {
     "id": "looting_mk1",
     "name": {
-      "value": "Beute-Marke 1",
+      "value": "掠夺 Mk. 1",
       "originalEn": "Looting Mk. 1"
     },
     "stackSize": 1,
@@ -4218,7 +4218,7 @@
   "looting_mk2": {
     "id": "looting_mk2",
     "name": {
-      "value": "Beute-Marke 2",
+      "value": "掠夺 Mk. 2",
       "originalEn": "Looting Mk. 2"
     },
     "stackSize": 1,
@@ -4235,7 +4235,7 @@
   "looting_mk3_cautious": {
     "id": "looting_mk3_cautious",
     "name": {
-      "value": "Beute-Marke 3 (Vorsichtig)",
+      "value": "掠夺 Mk. 3 (谨慎)",
       "originalEn": "Looting Mk. 3 (Cautious)"
     },
     "stackSize": 1,
@@ -4252,7 +4252,7 @@
   "looting_mk3_safekeeper": {
     "id": "looting_mk3_safekeeper",
     "name": {
-      "value": "Beute-Marke 3 (Hüter)",
+      "value": "掠夺 Mk. 3 (守护者)",
       "originalEn": "Looting Mk. 3 (Safekeeper)"
     },
     "stackSize": 1,
@@ -4269,7 +4269,7 @@
   "looting_mk3_safekeeper_blueprint": {
     "id": "looting_mk3_safekeeper_blueprint",
     "name": {
-      "value": "Bauplan: Beute-Marke 3 (Hüter)",
+      "value": "搜刮 Mk. 3 (保管者) 蓝图",
       "originalEn": "Looting Mk. 3 (Safekeeper) Blueprint"
     },
     "stackSize": 1,
@@ -4283,7 +4283,7 @@
   "looting_mk3_survivor": {
     "id": "looting_mk3_survivor",
     "name": {
-      "value": "Beute-Marke 3 (Überleben)",
+      "value": "掠夺 Mk. 3（幸存者）",
       "originalEn": "Looting Mk. 3 (Survivor)"
     },
     "stackSize": 1,
@@ -4300,7 +4300,7 @@
   "looting_mk3_survivor_blueprint": {
     "id": "looting_mk3_survivor_blueprint",
     "name": {
-      "value": "Bauplan: Beute-Marke 3 (Überleben)",
+      "value": "掠夺 Mk. 3（幸存者）蓝图",
       "originalEn": "Looting Mk. 3 (Survivor) Blueprint"
     },
     "stackSize": 1,
@@ -4314,7 +4314,7 @@
   "lure_grenade": {
     "id": "lure_grenade",
     "name": {
-      "value": "Ködergranate",
+      "value": "诱饵手榴弹",
       "originalEn": "Lure Grenade"
     },
     "stackSize": 3,
@@ -4331,7 +4331,7 @@
   "lure_grenade_blueprint": {
     "id": "lure_grenade_blueprint",
     "name": {
-      "value": "Bauplan: Ködergranate",
+      "value": "诱饵手榴弹蓝图",
       "originalEn": "Lure Grenade Blueprint"
     },
     "stackSize": 1,
@@ -4345,7 +4345,7 @@
   "lure_grenade_trap": {
     "id": "lure_grenade_trap",
     "name": {
-      "value": "Köder-Granatenfalle",
+      "value": "诱饵手榴弹陷阱",
       "originalEn": "Lure Grenade Trap"
     },
     "stackSize": 3,
@@ -4362,7 +4362,7 @@
   "magnet": {
     "id": "magnet",
     "name": {
-      "value": "Magnet",
+      "value": "磁铁",
       "originalEn": "Magnet"
     },
     "stackSize": 15,
@@ -4376,7 +4376,7 @@
   "magnetic_accelerator": {
     "id": "magnetic_accelerator",
     "name": {
-      "value": "Magnetischer Beschleuniger",
+      "value": "磁力加速器",
       "originalEn": "Magnetic Accelerator"
     },
     "stackSize": 3,
@@ -4393,7 +4393,7 @@
   "magnetron": {
     "id": "magnetron",
     "name": {
-      "value": "Magnetron",
+      "value": "磁控管",
       "originalEn": "Magnetron"
     },
     "stackSize": 3,
@@ -4407,7 +4407,7 @@
   "major_aivas_mementos": {
     "id": "major_aivas_mementos",
     "name": {
-      "value": "Major Aivas Andenken",
+      "value": "艾瓦少校的纪念品",
       "originalEn": "Major Aiva's Mementos"
     },
     "stackSize": 1,
@@ -4421,7 +4421,7 @@
   "major_aivas_patch": {
     "id": "major_aivas_patch",
     "name": {
-      "value": "Major Aivas Abzeichen",
+      "value": "艾娃少校的臂章",
       "originalEn": "Major Aiva's Patch"
     },
     "stackSize": 1,
@@ -4435,7 +4435,7 @@
   "matriarch_reactor": {
     "id": "matriarch_reactor",
     "name": {
-      "value": "Matriarchenreaktor",
+      "value": "母巢反应堆",
       "originalEn": "Matriarch Reactor"
     },
     "stackSize": 1,
@@ -4449,7 +4449,7 @@
   "mechanical_components": {
     "id": "mechanical_components",
     "name": {
-      "value": "Mechanische Komponenten",
+      "value": "机械零件",
       "originalEn": "Mechanical Components"
     },
     "stackSize": 10,
@@ -4466,7 +4466,7 @@
   "medium_ammo": {
     "id": "medium_ammo",
     "name": {
-      "value": "Mittlere Munition",
+      "value": "中型弹药",
       "originalEn": "Medium Ammo"
     },
     "stackSize": 80,
@@ -4483,7 +4483,7 @@
   "medium_gun_parts": {
     "id": "medium_gun_parts",
     "name": {
-      "value": "Teile für Waffe mit mittlerer Munition",
+      "value": "中型枪械零件",
       "originalEn": "Medium Gun Parts"
     },
     "stackSize": 5,
@@ -4499,7 +4499,7 @@
   "medium_gun_parts_blueprint": {
     "id": "medium_gun_parts_blueprint",
     "name": {
-      "value": "Bauplan: Teile für Waffe mit mittlerer Munition",
+      "value": "中型枪械零件蓝图",
       "originalEn": "Medium Gun Parts Blueprint"
     },
     "stackSize": 1,
@@ -4513,7 +4513,7 @@
   "medium_shield": {
     "id": "medium_shield",
     "name": {
-      "value": "Mittlerer Schild",
+      "value": "中型护盾",
       "originalEn": "Medium Shield"
     },
     "stackSize": 1,
@@ -4530,7 +4530,7 @@
   "metal_brackets": {
     "id": "metal_brackets",
     "name": {
-      "value": "Metallhalterungen",
+      "value": "金属支架",
       "originalEn": "Metal Brackets"
     },
     "stackSize": 3,
@@ -4544,7 +4544,7 @@
   "metal_parts": {
     "id": "metal_parts",
     "name": {
-      "value": "Metallteile",
+      "value": "金属零件",
       "originalEn": "Metal Parts"
     },
     "stackSize": 50,
@@ -4558,7 +4558,7 @@
   "microscope": {
     "id": "microscope",
     "name": {
-      "value": "Mikroskop",
+      "value": "显微镜",
       "originalEn": "Microscope"
     },
     "stackSize": 3,
@@ -4572,7 +4572,7 @@
   "mini_centrifuge": {
     "id": "mini_centrifuge",
     "name": {
-      "value": "Minizentrifuge",
+      "value": "迷你离心机",
       "originalEn": "Mini Centrifuge"
     },
     "stackSize": 3,
@@ -4586,7 +4586,7 @@
   "mod_components": {
     "id": "mod_components",
     "name": {
-      "value": "Mod-Komponenten",
+      "value": "改装组件",
       "originalEn": "Mod Components"
     },
     "stackSize": 5,
@@ -4603,7 +4603,7 @@
   "moisture_meter": {
     "id": "moisture_meter",
     "name": {
-      "value": "Feuchtigkeitsmesser",
+      "value": "湿度计",
       "originalEn": "Moisture Meter"
     },
     "stackSize": 1,
@@ -4617,7 +4617,7 @@
   "moss": {
     "id": "moss",
     "name": {
-      "value": "Moos",
+      "value": "苔藓",
       "originalEn": "Moss"
     },
     "stackSize": 10,
@@ -4631,7 +4631,7 @@
   "motor": {
     "id": "motor",
     "name": {
-      "value": "Motor",
+      "value": "马达",
       "originalEn": "Motor"
     },
     "stackSize": 3,
@@ -4645,7 +4645,7 @@
   "mushroom": {
     "id": "mushroom",
     "name": {
-      "value": "Pilz",
+      "value": "蘑菇",
       "originalEn": "Mushroom"
     },
     "stackSize": 10,
@@ -4659,7 +4659,7 @@
   "music_album": {
     "id": "music_album",
     "name": {
-      "value": "Musikalbum",
+      "value": "音乐专辑",
       "originalEn": "Music Album"
     },
     "stackSize": 3,
@@ -4673,7 +4673,7 @@
   "music_box": {
     "id": "music_box",
     "name": {
-      "value": "Spieluhr",
+      "value": "音乐盒",
       "originalEn": "Music Box"
     },
     "stackSize": 3,
@@ -4687,7 +4687,7 @@
   "muzzle_brake_i": {
     "id": "muzzle_brake_i",
     "name": {
-      "value": "Mündungsbremse I",
+      "value": "枪口制退器 I",
       "originalEn": "Muzzle Brake I"
     },
     "stackSize": 1,
@@ -4704,7 +4704,7 @@
   "muzzle_brake_ii": {
     "id": "muzzle_brake_ii",
     "name": {
-      "value": "Mündungsbremse II",
+      "value": "枪口制退器II",
       "originalEn": "Muzzle Brake II"
     },
     "stackSize": 1,
@@ -4721,7 +4721,7 @@
   "muzzle_brake_ii_blueprint": {
     "id": "muzzle_brake_ii_blueprint",
     "name": {
-      "value": "Bauplan: Mündungsbremse II",
+      "value": "枪口制退器 II 蓝图",
       "originalEn": "Muzzle Brake II Blueprint"
     },
     "stackSize": 1,
@@ -4735,7 +4735,7 @@
   "muzzle_brake_iii": {
     "id": "muzzle_brake_iii",
     "name": {
-      "value": "Mündungsbremse III",
+      "value": "枪口制退器 III",
       "originalEn": "Muzzle Brake III"
     },
     "stackSize": 1,
@@ -4752,7 +4752,7 @@
   "muzzle_brake_iii_blueprint": {
     "id": "muzzle_brake_iii_blueprint",
     "name": {
-      "value": "Bauplan: Mundungsbremse III",
+      "value": "枪口制退器 III 蓝图",
       "originalEn": "Muzzle Brake III Blueprint"
     },
     "stackSize": 1,
@@ -4766,7 +4766,7 @@
   "noisemaker": {
     "id": "noisemaker",
     "name": {
-      "value": "Krachmacher",
+      "value": "噪音制造器",
       "originalEn": "Noisemaker"
     },
     "stackSize": 3,
@@ -4783,7 +4783,7 @@
   "number_plate": {
     "id": "number_plate",
     "name": {
-      "value": "Nummernschild",
+      "value": "车牌",
       "originalEn": "Number Plate"
     },
     "stackSize": 3,
@@ -4797,7 +4797,7 @@
   "nutrient_meter": {
     "id": "nutrient_meter",
     "name": {
-      "value": "Nährstoffmessgerät",
+      "value": "营养计",
       "originalEn": "Nutrient Meter"
     },
     "stackSize": 1,
@@ -4811,7 +4811,7 @@
   "official_shutdown_documentation": {
     "id": "official_shutdown_documentation",
     "name": {
-      "value": "Offizielle Stilllegungsdokumentation",
+      "value": "官方关停文件",
       "originalEn": "Official Shutdown Documentation"
     },
     "stackSize": 1,
@@ -4825,7 +4825,7 @@
   "oil": {
     "id": "oil",
     "name": {
-      "value": "Öl",
+      "value": "油",
       "originalEn": "Oil"
     },
     "stackSize": 15,
@@ -4839,7 +4839,7 @@
   "old_world_books": {
     "id": "old_world_books",
     "name": {
-      "value": "Bücher der Alten Welt",
+      "value": "旧世界书籍",
       "originalEn": "Old World Books"
     },
     "stackSize": 1,
@@ -4853,7 +4853,7 @@
   "olives": {
     "id": "olives",
     "name": {
-      "value": "Oliven",
+      "value": "橄榄",
       "originalEn": "Olives"
     },
     "stackSize": 10,
@@ -4867,7 +4867,7 @@
   "osprey_blueprint": {
     "id": "osprey_blueprint",
     "name": {
-      "value": "Bauplan: Osprey",
+      "value": "鱼鹰蓝图",
       "originalEn": "Osprey Blueprint"
     },
     "stackSize": 1,
@@ -4881,7 +4881,7 @@
   "osprey_i": {
     "id": "osprey_i",
     "name": {
-      "value": "Osprey I",
+      "value": "鱼鹰 I",
       "originalEn": "Osprey I"
     },
     "stackSize": 1,
@@ -4899,7 +4899,7 @@
   "osprey_ii": {
     "id": "osprey_ii",
     "name": {
-      "value": "Osprey II",
+      "value": "鱼鹰 II",
       "originalEn": "Osprey II"
     },
     "stackSize": 1,
@@ -4916,7 +4916,7 @@
   "osprey_iii": {
     "id": "osprey_iii",
     "name": {
-      "value": "Osprey III",
+      "value": "鱼鹰 III",
       "originalEn": "Osprey III"
     },
     "stackSize": 1,
@@ -4933,7 +4933,7 @@
   "osprey_iv": {
     "id": "osprey_iv",
     "name": {
-      "value": "Osprey IV",
+      "value": "鱼鹰 IV",
       "originalEn": "Osprey IV"
     },
     "stackSize": 1,
@@ -4950,7 +4950,7 @@
   "padded_stock": {
     "id": "padded_stock",
     "name": {
-      "value": "Gepolsterter Schaft",
+      "value": "软垫枪托",
       "originalEn": "Padded Stock"
     },
     "stackSize": 1,
@@ -4967,7 +4967,7 @@
   "padded_stock_blueprint": {
     "id": "padded_stock_blueprint",
     "name": {
-      "value": "Bauplan: Gepolsterter Schaft",
+      "value": "软垫枪托蓝图",
       "originalEn": "Padded Stock Blueprint"
     },
     "stackSize": 1,
@@ -4981,7 +4981,7 @@
   "painted_box": {
     "id": "painted_box",
     "name": {
-      "value": "Bemalte Kiste",
+      "value": "彩绘盒子",
       "originalEn": "Painted Box"
     },
     "stackSize": 3,
@@ -4995,7 +4995,7 @@
   "patrol_car_key": {
     "id": "patrol_car_key",
     "name": {
-      "value": "Streifenwagenschlüssel",
+      "value": "巡逻车钥匙",
       "originalEn": "Patrol Car Key"
     },
     "stackSize": 1,
@@ -5009,7 +5009,7 @@
   "photoelectric_cloak": {
     "id": "photoelectric_cloak",
     "name": {
-      "value": "Fotoelektrischer Umhang",
+      "value": "光电斗篷",
       "originalEn": "Photoelectric Cloak"
     },
     "stackSize": 1,
@@ -5026,7 +5026,7 @@
   "pilgrims_peak_security_code": {
     "id": "pilgrims_peak_security_code",
     "name": {
-      "value": "Pilgrim's Peak Sicherheitscode",
+      "value": "朝圣峰安全码",
       "originalEn": "Pilgrim's Peak Security Code"
     },
     "stackSize": 1,
@@ -5040,7 +5040,7 @@
   "plastic_parts": {
     "id": "plastic_parts",
     "name": {
-      "value": "Plastikteile",
+      "value": "塑料零件",
       "originalEn": "Plastic Parts"
     },
     "stackSize": 50,
@@ -5054,7 +5054,7 @@
   "playing_cards": {
     "id": "playing_cards",
     "name": {
-      "value": "Spielkarten",
+      "value": "扑克牌",
       "originalEn": "Playing Cards"
     },
     "stackSize": 3,
@@ -5068,7 +5068,7 @@
   "polluted_air_filter": {
     "id": "polluted_air_filter",
     "name": {
-      "value": "Verunreinigter Luftfilter",
+      "value": "污染空气过滤器",
       "originalEn": "Polluted Air Filter"
     },
     "stackSize": 3,
@@ -5082,7 +5082,7 @@
   "pop_trigger": {
     "id": "pop_trigger",
     "name": {
-      "value": "Pop-Auslöser",
+      "value": "弹出扳机",
       "originalEn": "Pop Trigger"
     },
     "stackSize": 3,
@@ -5096,7 +5096,7 @@
   "portable_tv": {
     "id": "portable_tv",
     "name": {
-      "value": "Tragbarer Fernseher",
+      "value": "便携式电视",
       "originalEn": "Portable TV"
     },
     "stackSize": 1,
@@ -5110,7 +5110,7 @@
   "possibly_toxic_plant": {
     "id": "possibly_toxic_plant",
     "name": {
-      "value": "Möglicherweise giftige Pflanze",
+      "value": "可能有毒的植物",
       "originalEn": "Possibly Toxic Plant"
     },
     "stackSize": 1,
@@ -5124,7 +5124,7 @@
   "poster_of_natural_wonders": {
     "id": "poster_of_natural_wonders",
     "name": {
-      "value": "Naturwunder-Poster",
+      "value": "自然奇观海报",
       "originalEn": "Poster of Natural Wonders"
     },
     "stackSize": 3,
@@ -5138,7 +5138,7 @@
   "pottery": {
     "id": "pottery",
     "name": {
-      "value": "Keramik",
+      "value": "陶器",
       "originalEn": "Pottery"
     },
     "stackSize": 3,
@@ -5152,7 +5152,7 @@
   "power_bank": {
     "id": "power_bank",
     "name": {
-      "value": "Powerbank",
+      "value": "充电宝",
       "originalEn": "Power Bank"
     },
     "stackSize": 3,
@@ -5166,7 +5166,7 @@
   "power_cable": {
     "id": "power_cable",
     "name": {
-      "value": "Stromkabel",
+      "value": "电源线",
       "originalEn": "Power Cable"
     },
     "stackSize": 3,
@@ -5180,7 +5180,7 @@
   "power_rod": {
     "id": "power_rod",
     "name": {
-      "value": "Energiestab",
+      "value": "能量棒",
       "originalEn": "Power Rod"
     },
     "stackSize": 3,
@@ -5197,7 +5197,7 @@
   "prickly_pear": {
     "id": "prickly_pear",
     "name": {
-      "value": "Kaktusfeige",
+      "value": "仙人掌果",
       "originalEn": "Prickly Pear"
     },
     "stackSize": 10,
@@ -5211,7 +5211,7 @@
   "processor": {
     "id": "processor",
     "name": {
-      "value": "Prozessor",
+      "value": "处理器",
       "originalEn": "Processor"
     },
     "stackSize": 5,
@@ -5225,7 +5225,7 @@
   "project_heartwood_blueprints": {
     "id": "project_heartwood_blueprints",
     "name": {
-      "value": "Projekt-Heartwood-Baupläne",
+      "value": "“芯木计划”蓝图",
       "originalEn": "Project Heartwood Blueprints"
     },
     "stackSize": 1,
@@ -5239,7 +5239,7 @@
   "projector": {
     "id": "projector",
     "name": {
-      "value": "Projektor",
+      "value": "投影仪",
       "originalEn": "Projector"
     },
     "stackSize": 3,
@@ -5253,7 +5253,7 @@
   "pulse_mine": {
     "id": "pulse_mine",
     "name": {
-      "value": "Sprungmine: Impuls",
+      "value": "脉冲地雷",
       "originalEn": "Pulse Mine"
     },
     "stackSize": 3,
@@ -5270,7 +5270,7 @@
   "pulse_mine_blueprint": {
     "id": "pulse_mine_blueprint",
     "name": {
-      "value": "Bauplan: Sprungmine: Impuls",
+      "value": "脉冲地雷蓝图",
       "originalEn": "Pulse Mine Blueprint"
     },
     "stackSize": 1,
@@ -5284,7 +5284,7 @@
   "queen_reactor": {
     "id": "queen_reactor",
     "name": {
-      "value": "Königin-Reaktor",
+      "value": "女王反应堆",
       "originalEn": "Queen Reactor"
     },
     "stackSize": 1,
@@ -5298,7 +5298,7 @@
   "radio": {
     "id": "radio",
     "name": {
-      "value": "Radio",
+      "value": "收音机",
       "originalEn": "Radio"
     },
     "stackSize": 3,
@@ -5312,7 +5312,7 @@
   "radio_relay": {
     "id": "radio_relay",
     "name": {
-      "value": "Radio-Relais",
+      "value": "无线电中继器",
       "originalEn": "Radio Relay"
     },
     "stackSize": 3,
@@ -5326,7 +5326,7 @@
   "raider_hatch_key": {
     "id": "raider_hatch_key",
     "name": {
-      "value": "Raider-Lukenschlüssel",
+      "value": "掠夺者舱门钥匙",
       "originalEn": "Raider Hatch Key"
     },
     "stackSize": 1,
@@ -5343,7 +5343,7 @@
   "raiders_refuge_security_code": {
     "id": "raiders_refuge_security_code",
     "name": {
-      "value": "Raider's Refuge Sicherheitscode",
+      "value": "突袭者避难所安全密码",
       "originalEn": "Raider's Refuge Security Code"
     },
     "stackSize": 1,
@@ -5357,7 +5357,7 @@
   "rattler_i": {
     "id": "rattler_i",
     "name": {
-      "value": "Rattler I",
+      "value": "响尾蛇 I",
       "originalEn": "Rattler I"
     },
     "stackSize": 1,
@@ -5374,7 +5374,7 @@
   "rattler_ii": {
     "id": "rattler_ii",
     "name": {
-      "value": "Rattler II",
+      "value": "响尾蛇 II",
       "originalEn": "Rattler II"
     },
     "stackSize": 1,
@@ -5391,7 +5391,7 @@
   "rattler_iii": {
     "id": "rattler_iii",
     "name": {
-      "value": "Rattler III",
+      "value": "响尾蛇 III",
       "originalEn": "Rattler III"
     },
     "stackSize": 1,
@@ -5408,7 +5408,7 @@
   "rattler_iv": {
     "id": "rattler_iv",
     "name": {
-      "value": "Rattler IV",
+      "value": "响尾蛇 IV",
       "originalEn": "Rattler IV"
     },
     "stackSize": 1,
@@ -5425,7 +5425,7 @@
   "recorder": {
     "id": "recorder",
     "name": {
-      "value": "Spielbare Flöte",
+      "value": "竖笛",
       "originalEn": "Recorder"
     },
     "stackSize": 1,
@@ -5439,7 +5439,7 @@
   "red_coral_jewelry": {
     "id": "red_coral_jewelry",
     "name": {
-      "value": "Rote Korallenschmuck",
+      "value": "红珊瑚首饰",
       "originalEn": "Red Coral Jewelry"
     },
     "stackSize": 3,
@@ -5453,7 +5453,7 @@
   "red_light_stick": {
     "id": "red_light_stick",
     "name": {
-      "value": "Roter Leuchtstab",
+      "value": "红色荧光棒",
       "originalEn": "Red Light Stick"
     },
     "stackSize": 5,
@@ -5469,7 +5469,7 @@
   "red_light_stick_blueprint": {
     "id": "red_light_stick_blueprint",
     "name": {
-      "value": "Bauplan: Roter Leuchtstab",
+      "value": "红色荧光棒蓝图",
       "originalEn": "Red Light Stick Blueprint"
     },
     "stackSize": 1,
@@ -5483,7 +5483,7 @@
   "reinforced_reception_security_code": {
     "id": "reinforced_reception_security_code",
     "name": {
-      "value": "Reinforced Reception Sicherheitscode",
+      "value": "加固接待处安全密码",
       "originalEn": "Reinforced Reception Security Code"
     },
     "stackSize": 1,
@@ -5497,7 +5497,7 @@
   "remote_control": {
     "id": "remote_control",
     "name": {
-      "value": "Fernbedienung",
+      "value": "遥控器",
       "originalEn": "Remote Control"
     },
     "stackSize": 3,
@@ -5511,7 +5511,7 @@
   "remote_raider_flare": {
     "id": "remote_raider_flare",
     "name": {
-      "value": "Raider-Leuchtfackel mit Fernzündung",
+      "value": "远程掠夺者信号弹",
       "originalEn": "Remote Raider Flare"
     },
     "stackSize": 3,
@@ -5528,7 +5528,7 @@
   "remote_raider_flare_blueprint": {
     "id": "remote_raider_flare_blueprint",
     "name": {
-      "value": "Bauplan: Raider-Leuchtfackel mit Fernzündung",
+      "value": "远程掠夺者信号弹蓝图",
       "originalEn": "Remote Raider Flare Blueprint"
     },
     "stackSize": 1,
@@ -5542,7 +5542,7 @@
   "renegade_i": {
     "id": "renegade_i",
     "name": {
-      "value": "Renegade I",
+      "value": "叛逆 I",
       "originalEn": "Renegade I"
     },
     "stackSize": 1,
@@ -5560,7 +5560,7 @@
   "renegade_ii": {
     "id": "renegade_ii",
     "name": {
-      "value": "Renegade II",
+      "value": "叛逆 II",
       "originalEn": "Renegade II"
     },
     "stackSize": 1,
@@ -5577,7 +5577,7 @@
   "renegade_iii": {
     "id": "renegade_iii",
     "name": {
-      "value": "Renegade III",
+      "value": "叛逆 III",
       "originalEn": "Renegade III"
     },
     "stackSize": 1,
@@ -5594,7 +5594,7 @@
   "renegade_iv": {
     "id": "renegade_iv",
     "name": {
-      "value": "Renegade IV",
+      "value": "叛逆 IV",
       "originalEn": "Renegade IV"
     },
     "stackSize": 1,
@@ -5611,7 +5611,7 @@
   "resin": {
     "id": "resin",
     "name": {
-      "value": "Harz",
+      "value": "树脂",
       "originalEn": "Resin"
     },
     "stackSize": 10,
@@ -5625,7 +5625,7 @@
   "ripped_safety_vest": {
     "id": "ripped_safety_vest",
     "name": {
-      "value": "Zerfetzte Sicherheitsweste",
+      "value": "破损的安全背心",
       "originalEn": "Ripped Safety Vest"
     },
     "stackSize": 3,
@@ -5639,7 +5639,7 @@
   "rocket_thruster": {
     "id": "rocket_thruster",
     "name": {
-      "value": "Raketentriebwerk",
+      "value": "火箭推进器",
       "originalEn": "Rocket Thruster"
     },
     "stackSize": 3,
@@ -5653,7 +5653,7 @@
   "rocketeer_driver": {
     "id": "rocketeer_driver",
     "name": {
-      "value": "Raketenkanoniertreiber",
+      "value": "火箭手引擎",
       "originalEn": "Rocketeer Driver"
     },
     "stackSize": 3,
@@ -5667,7 +5667,7 @@
   "roots": {
     "id": "roots",
     "name": {
-      "value": "Wurzeln",
+      "value": "根茎",
       "originalEn": "Roots"
     },
     "stackSize": 10,
@@ -5681,7 +5681,7 @@
   "rope": {
     "id": "rope",
     "name": {
-      "value": "Seil",
+      "value": "绳索",
       "originalEn": "Rope"
     },
     "stackSize": 5,
@@ -5695,7 +5695,7 @@
   "rosary": {
     "id": "rosary",
     "name": {
-      "value": "Rosenkranz",
+      "value": "念珠",
       "originalEn": "Rosary"
     },
     "stackSize": 3,
@@ -5709,7 +5709,7 @@
   "rotary_encoder": {
     "id": "rotary_encoder",
     "name": {
-      "value": "Drehgeber",
+      "value": "旋转编码器",
       "originalEn": "Rotary Encoder"
     },
     "stackSize": 3,
@@ -5723,7 +5723,7 @@
   "rubber_duck": {
     "id": "rubber_duck",
     "name": {
-      "value": "Quietscheente",
+      "value": "橡皮鸭",
       "originalEn": "Rubber Duck"
     },
     "stackSize": 15,
@@ -5737,7 +5737,7 @@
   "rubber_pad": {
     "id": "rubber_pad",
     "name": {
-      "value": "Gummimatte",
+      "value": "橡胶垫",
       "originalEn": "Rubber Pad"
     },
     "stackSize": 3,
@@ -5751,7 +5751,7 @@
   "rubber_parts": {
     "id": "rubber_parts",
     "name": {
-      "value": "Gummiteile",
+      "value": "橡胶零件",
       "originalEn": "Rubber Parts"
     },
     "stackSize": 50,
@@ -5765,7 +5765,7 @@
   "ruined_accordion": {
     "id": "ruined_accordion",
     "name": {
-      "value": "Kaputtes Akkordeon",
+      "value": "损毁的手风琴",
       "originalEn": "Ruined Accordion"
     },
     "stackSize": 3,
@@ -5779,7 +5779,7 @@
   "ruined_augment": {
     "id": "ruined_augment",
     "name": {
-      "value": "Kaputte Verstärkung",
+      "value": "损毁的强化件",
       "originalEn": "Ruined Augment"
     },
     "stackSize": 1,
@@ -5793,7 +5793,7 @@
   "ruined_baton": {
     "id": "ruined_baton",
     "name": {
-      "value": "Kaputter Schlagstock",
+      "value": "损坏的警棍",
       "originalEn": "Ruined Baton"
     },
     "stackSize": 3,
@@ -5807,7 +5807,7 @@
   "ruined_handcuffs": {
     "id": "ruined_handcuffs",
     "name": {
-      "value": "Kaputte Handschellen",
+      "value": "损坏的手铐",
       "originalEn": "Ruined Handcuffs"
     },
     "stackSize": 3,
@@ -5821,7 +5821,7 @@
   "ruined_parachute": {
     "id": "ruined_parachute",
     "name": {
-      "value": "Kaputter Fallschirm",
+      "value": "损毁的降落伞",
       "originalEn": "Ruined Parachute"
     },
     "stackSize": 3,
@@ -5835,7 +5835,7 @@
   "ruined_riot_shield": {
     "id": "ruined_riot_shield",
     "name": {
-      "value": "Kaputtes Schutzschild",
+      "value": "损毁的防暴盾",
       "originalEn": "Ruined Riot Shield"
     },
     "stackSize": 3,
@@ -5849,7 +5849,7 @@
   "ruined_tactical_vest": {
     "id": "ruined_tactical_vest",
     "name": {
-      "value": "Zerfetzte taktische Weste",
+      "value": "损毁的战术背心",
       "originalEn": "Ruined Tactical Vest"
     },
     "stackSize": 3,
@@ -5863,7 +5863,7 @@
   "rusted_bolts": {
     "id": "rusted_bolts",
     "name": {
-      "value": "Verrostete Bolzen",
+      "value": "生锈螺栓",
       "originalEn": "Rusted Bolts"
     },
     "stackSize": 3,
@@ -5877,7 +5877,7 @@
   "rusted_gear": {
     "id": "rusted_gear",
     "name": {
-      "value": "Verrostetes Zahnrad",
+      "value": "生锈齿轮",
       "originalEn": "Rusted Gear"
     },
     "stackSize": 3,
@@ -5891,7 +5891,7 @@
   "rusted_shut_medical_kit": {
     "id": "rusted_shut_medical_kit",
     "name": {
-      "value": "Verrosteter verschlossener Verbandkasten",
+      "value": "锈死的医疗包",
       "originalEn": "Rusted Shut Medical Kit"
     },
     "stackSize": 3,
@@ -5905,7 +5905,7 @@
   "rusted_tools": {
     "id": "rusted_tools",
     "name": {
-      "value": "Verrostete Werkzeuge",
+      "value": "生锈的工具",
       "originalEn": "Rusted Tools"
     },
     "stackSize": 3,
@@ -5919,7 +5919,7 @@
   "rusty_arc_steel": {
     "id": "rusty_arc_steel",
     "name": {
-      "value": "Rostiger ARC-Stahl",
+      "value": "生锈的ARC钢铁",
       "originalEn": "Rusty ARC Steel"
     },
     "stackSize": 3,
@@ -5933,7 +5933,7 @@
   "sample_cleaner": {
     "id": "sample_cleaner",
     "name": {
-      "value": "Probenreiniger",
+      "value": "样本清洁器",
       "originalEn": "Sample Cleaner"
     },
     "stackSize": 3,
@@ -5947,7 +5947,7 @@
   "scout_patrol_note": {
     "id": "scout_patrol_note",
     "name": {
-      "value": "Späherpatrouillen-Notiz",
+      "value": "侦察兵巡逻笔记",
       "originalEn": "Scout Patrol Note"
     },
     "stackSize": 1,
@@ -5961,7 +5961,7 @@
   "secret_meeting_info": {
     "id": "secret_meeting_info",
     "name": {
-      "value": "Geheime Besprechungsinfos",
+      "value": "秘密会议信息",
       "originalEn": "Secret Meeting Info"
     },
     "stackSize": 1,
@@ -5975,7 +5975,7 @@
   "seeker_grenade": {
     "id": "seeker_grenade",
     "name": {
-      "value": "Suchgranate",
+      "value": "追踪手榴弹",
       "originalEn": "Seeker Grenade"
     },
     "stackSize": 5,
@@ -5992,7 +5992,7 @@
   "seeker_grenade_blueprint": {
     "id": "seeker_grenade_blueprint",
     "name": {
-      "value": "Bauplan: Suchgranate",
+      "value": "追踪手榴弹蓝图",
       "originalEn": "Seeker Grenade Blueprint"
     },
     "stackSize": 1,
@@ -6006,7 +6006,7 @@
   "sensors": {
     "id": "sensors",
     "name": {
-      "value": "Sensoren",
+      "value": "传感器",
       "originalEn": "Sensors"
     },
     "stackSize": 5,
@@ -6020,7 +6020,7 @@
   "sentinel_firing_core": {
     "id": "sentinel_firing_core",
     "name": {
-      "value": "Wächter-Feuerkern",
+      "value": "哨兵射击核心",
       "originalEn": "Sentinel Firing Core"
     },
     "stackSize": 3,
@@ -6034,7 +6034,7 @@
   "shaker": {
     "id": "shaker",
     "name": {
-      "value": "Shaker",
+      "value": "沙铃",
       "originalEn": "Shaker"
     },
     "stackSize": 1,
@@ -6051,7 +6051,7 @@
   "shield_recharger": {
     "id": "shield_recharger",
     "name": {
-      "value": "Schildauflader",
+      "value": "护盾充能器",
       "originalEn": "Shield Recharger"
     },
     "stackSize": 5,
@@ -6068,7 +6068,7 @@
   "shotgun_ammo": {
     "id": "shotgun_ammo",
     "name": {
-      "value": "Schrotflintenmunition",
+      "value": "霰弹枪弹药",
       "originalEn": "Shotgun Ammo"
     },
     "stackSize": 20,
@@ -6085,7 +6085,7 @@
   "shotgun_choke_i": {
     "id": "shotgun_choke_i",
     "name": {
-      "value": "Schrotflintenchoke I",
+      "value": "霰弹枪收束器 I",
       "originalEn": "Shotgun Choke I"
     },
     "stackSize": 1,
@@ -6102,7 +6102,7 @@
   "shotgun_choke_ii": {
     "id": "shotgun_choke_ii",
     "name": {
-      "value": "Schrotflintenchoke II",
+      "value": "霰弹枪收束器 II",
       "originalEn": "Shotgun Choke II"
     },
     "stackSize": 1,
@@ -6119,7 +6119,7 @@
   "shotgun_choke_ii_blueprint": {
     "id": "shotgun_choke_ii_blueprint",
     "name": {
-      "value": "Bauplan: Schrotflintenchoke II",
+      "value": "霰弹枪收束器 II 蓝图",
       "originalEn": "Shotgun Choke II Blueprint"
     },
     "stackSize": 1,
@@ -6133,7 +6133,7 @@
   "shotgun_choke_iii": {
     "id": "shotgun_choke_iii",
     "name": {
-      "value": "Schrotflintenchoke III",
+      "value": "霰弹枪收束器 III",
       "originalEn": "Shotgun Choke III"
     },
     "stackSize": 1,
@@ -6150,7 +6150,7 @@
   "shotgun_choke_iii_blueprint": {
     "id": "shotgun_choke_iii_blueprint",
     "name": {
-      "value": "Bauplan: Schrotflintenchoke III",
+      "value": "霰弹枪收束器 III 蓝图",
       "originalEn": "Shotgun Choke III Blueprint"
     },
     "stackSize": 1,
@@ -6164,7 +6164,7 @@
   "shotgun_silencer": {
     "id": "shotgun_silencer",
     "name": {
-      "value": "Schrotflinten-Schalldämpfer",
+      "value": "霰弹枪消音器",
       "originalEn": "Shotgun Silencer"
     },
     "stackSize": 1,
@@ -6181,7 +6181,7 @@
   "shotgun_silencer_blueprint": {
     "id": "shotgun_silencer_blueprint",
     "name": {
-      "value": "Bauplan: Schrotflinten-Schalldampfer",
+      "value": "霰弹枪消音器 蓝图",
       "originalEn": "Shotgun Silencer Blueprint"
     },
     "stackSize": 1,
@@ -6195,7 +6195,7 @@
   "showstopper": {
     "id": "showstopper",
     "name": {
-      "value": "Showstopper",
+      "value": "耀眼明星",
       "originalEn": "Showstopper"
     },
     "stackSize": 5,
@@ -6213,7 +6213,7 @@
   "showstopper_blueprint": {
     "id": "showstopper_blueprint",
     "name": {
-      "value": "Bauplan: Showstopper",
+      "value": "耀眼明星蓝图",
       "originalEn": "Showstopper Blueprint"
     },
     "stackSize": 1,
@@ -6227,7 +6227,7 @@
   "shrapnel_grenade": {
     "id": "shrapnel_grenade",
     "name": {
-      "value": "Schrapnellgranate",
+      "value": "破片手榴弹",
       "originalEn": "Shrapnel Grenade"
     },
     "stackSize": 5,
@@ -6244,7 +6244,7 @@
   "shredder_gyro": {
     "id": "shredder_gyro",
     "name": {
-      "value": "Schredder-Gyroskop",
+      "value": "粉碎者陀螺仪",
       "originalEn": "Shredder Gyro"
     },
     "stackSize": 3,
@@ -6258,7 +6258,7 @@
   "signal_amplifier": {
     "id": "signal_amplifier",
     "name": {
-      "value": "Signalverstärker",
+      "value": "信号放大器",
       "originalEn": "Signal Amplifier"
     },
     "stackSize": 3,
@@ -6272,7 +6272,7 @@
   "silencer_i": {
     "id": "silencer_i",
     "name": {
-      "value": "Schalldämpfer I",
+      "value": "消音器 I",
       "originalEn": "Silencer I"
     },
     "stackSize": 1,
@@ -6289,7 +6289,7 @@
   "silencer_i_blueprint": {
     "id": "silencer_i_blueprint",
     "name": {
-      "value": "Bauplan: Schalldämpfer I",
+      "value": "消音器 I 蓝图",
       "originalEn": "Silencer I Blueprint"
     },
     "stackSize": 1,
@@ -6303,7 +6303,7 @@
   "silencer_ii": {
     "id": "silencer_ii",
     "name": {
-      "value": "Schalldämpfer II",
+      "value": "消音器 II",
       "originalEn": "Silencer II"
     },
     "stackSize": 1,
@@ -6320,7 +6320,7 @@
   "silencer_ii_blueprint": {
     "id": "silencer_ii_blueprint",
     "name": {
-      "value": "Bauplan: Schalldämpfer II",
+      "value": "消音器 II 蓝图",
       "originalEn": "Silencer II Blueprint"
     },
     "stackSize": 1,
@@ -6334,7 +6334,7 @@
   "silencer_iii": {
     "id": "silencer_iii",
     "name": {
-      "value": "Schalldämpfer III",
+      "value": "消音器 III",
       "originalEn": "Silencer III"
     },
     "stackSize": 1,
@@ -6348,7 +6348,7 @@
   "silver_teaspoon_set": {
     "id": "silver_teaspoon_set",
     "name": {
-      "value": "Silberne Teelöffelt",
+      "value": "银茶匙套装",
       "originalEn": "Silver Teaspoon Set"
     },
     "stackSize": 3,
@@ -6362,7 +6362,7 @@
   "simple_gun_parts": {
     "id": "simple_gun_parts",
     "name": {
-      "value": "Einfache Waffenteile",
+      "value": "简易枪械零件",
       "originalEn": "Simple Gun Parts"
     },
     "stackSize": 10,
@@ -6376,7 +6376,7 @@
   "smoke_grenade": {
     "id": "smoke_grenade",
     "name": {
-      "value": "Rauchgranate",
+      "value": "烟雾弹",
       "originalEn": "Smoke Grenade"
     },
     "stackSize": 5,
@@ -6393,7 +6393,7 @@
   "smoke_grenade_blueprint": {
     "id": "smoke_grenade_blueprint",
     "name": {
-      "value": "Bauplan: Rauchgranate",
+      "value": "烟雾弹 蓝图",
       "originalEn": "Smoke Grenade Blueprint"
     },
     "stackSize": 1,
@@ -6407,7 +6407,7 @@
   "smoke_grenade_trap": {
     "id": "smoke_grenade_trap",
     "name": {
-      "value": "Laserfalle: Rauch",
+      "value": "烟雾手榴弹陷阱",
       "originalEn": "Smoke Grenade Trap"
     },
     "stackSize": 3,
@@ -6424,7 +6424,7 @@
   "snap_blast_grenade": {
     "id": "snap_blast_grenade",
     "name": {
-      "value": "Snapshot-Granate",
+      "value": "粘附爆破手雷",
       "originalEn": "Snap Blast Grenade"
     },
     "stackSize": 3,
@@ -6441,7 +6441,7 @@
   "snap_hook": {
     "id": "snap_hook",
     "name": {
-      "value": "Karabinerhaken",
+      "value": "安全钩",
       "originalEn": "Snap Hook"
     },
     "stackSize": 1,
@@ -6459,7 +6459,7 @@
   "snap_hook_blueprint": {
     "id": "snap_hook_blueprint",
     "name": {
-      "value": "Bauplan: Karabinerhaken",
+      "value": "安全钩蓝图",
       "originalEn": "Snap Hook Blueprint"
     },
     "stackSize": 1,
@@ -6473,7 +6473,7 @@
   "snitch_scanner": {
     "id": "snitch_scanner",
     "name": {
-      "value": "Spitzel-Scanner",
+      "value": "告密者扫描器",
       "originalEn": "Snitch Scanner"
     },
     "stackSize": 3,
@@ -6487,7 +6487,7 @@
   "snowball": {
     "id": "snowball",
     "name": {
-      "value": "Schneeball",
+      "value": "雪球",
       "originalEn": "Snowball"
     },
     "stackSize": 5,
@@ -6501,7 +6501,7 @@
   "spaceport_container_storage_key": {
     "id": "spaceport_container_storage_key",
     "name": {
-      "value": "Containerlagerschlüssel (Raumhafen)",
+      "value": "太空港集装箱仓库钥匙",
       "originalEn": "Spaceport Container Storage Key"
     },
     "stackSize": 1,
@@ -6515,7 +6515,7 @@
   "spaceport_control_tower_key": {
     "id": "spaceport_control_tower_key",
     "name": {
-      "value": "Raumhafen-Kontrollturm-Schlüssel",
+      "value": "太空港控制塔钥匙",
       "originalEn": "Spaceport Control Tower Key"
     },
     "stackSize": 1,
@@ -6529,7 +6529,7 @@
   "spaceport_trench_tower_key": {
     "id": "spaceport_trench_tower_key",
     "name": {
-      "value": "Grabenturmschlüssel (Raumhafen)",
+      "value": "太空港战壕塔钥匙",
       "originalEn": "Spaceport Trench Tower Key"
     },
     "stackSize": 1,
@@ -6543,7 +6543,7 @@
   "spaceport_warehouse_key": {
     "id": "spaceport_warehouse_key",
     "name": {
-      "value": "Lagerhausschlüssel (Raumhafen)",
+      "value": "太空港仓库钥匙",
       "originalEn": "Spaceport Warehouse Key"
     },
     "stackSize": 1,
@@ -6557,7 +6557,7 @@
   "speaker_component": {
     "id": "speaker_component",
     "name": {
-      "value": "Lautsprecher-Komponente",
+      "value": "扬声器组件",
       "originalEn": "Speaker Component"
     },
     "stackSize": 5,
@@ -6571,7 +6571,7 @@
   "spectrometer": {
     "id": "spectrometer",
     "name": {
-      "value": "Spektrometer",
+      "value": "光谱仪",
       "originalEn": "Spectrometer"
     },
     "stackSize": 3,
@@ -6585,7 +6585,7 @@
   "spectrum_analyzer": {
     "id": "spectrum_analyzer",
     "name": {
-      "value": "Spektrumanalysator",
+      "value": "频谱分析仪",
       "originalEn": "Spectrum Analyzer"
     },
     "stackSize": 3,
@@ -6599,7 +6599,7 @@
   "spotter_relay": {
     "id": "spotter_relay",
     "name": {
-      "value": "Aufklärer-Relais",
+      "value": "侦察中继器",
       "originalEn": "Spotter Relay"
     },
     "stackSize": 3,
@@ -6613,7 +6613,7 @@
   "spring_cushion": {
     "id": "spring_cushion",
     "name": {
-      "value": "Sprungfederkissen",
+      "value": "弹簧垫",
       "originalEn": "Spring Cushion"
     },
     "stackSize": 3,
@@ -6627,7 +6627,7 @@
   "stable_stock_i": {
     "id": "stable_stock_i",
     "name": {
-      "value": "Stabiler Kolben I",
+      "value": "稳定枪托 I",
       "originalEn": "Stable Stock I"
     },
     "stackSize": 1,
@@ -6644,7 +6644,7 @@
   "stable_stock_ii": {
     "id": "stable_stock_ii",
     "name": {
-      "value": "Stabiler Kolben II",
+      "value": "稳定枪托 II",
       "originalEn": "Stable Stock II"
     },
     "stackSize": 1,
@@ -6661,7 +6661,7 @@
   "stable_stock_ii_blueprint": {
     "id": "stable_stock_ii_blueprint",
     "name": {
-      "value": "Bauplan: Stabiler Kolben II",
+      "value": "稳定枪托 II 蓝图",
       "originalEn": "Stable Stock II Blueprint"
     },
     "stackSize": 1,
@@ -6675,7 +6675,7 @@
   "stable_stock_iii": {
     "id": "stable_stock_iii",
     "name": {
-      "value": "Stabiler Kolben III",
+      "value": "稳定枪托 III",
       "originalEn": "Stable Stock III"
     },
     "stackSize": 1,
@@ -6692,7 +6692,7 @@
   "stable_stock_iii_blueprint": {
     "id": "stable_stock_iii_blueprint",
     "name": {
-      "value": "Bauplan: Stabiler Kolben III",
+      "value": "稳定枪托 III 蓝图",
       "originalEn": "Stable Stock III Blueprint"
     },
     "stackSize": 1,
@@ -6706,7 +6706,7 @@
   "stack_of_movie_tapes": {
     "id": "stack_of_movie_tapes",
     "name": {
-      "value": "Stapel Filmkassetten",
+      "value": "一叠录像带",
       "originalEn": "Stack of Movie Tapes"
     },
     "stackSize": 1,
@@ -6720,7 +6720,7 @@
   "statuette": {
     "id": "statuette",
     "name": {
-      "value": "Statuette",
+      "value": "小雕像",
       "originalEn": "Statuette"
     },
     "stackSize": 3,
@@ -6734,7 +6734,7 @@
   "steel_spring": {
     "id": "steel_spring",
     "name": {
-      "value": "Stahlfeder",
+      "value": "钢制弹簧",
       "originalEn": "Steel Spring"
     },
     "stackSize": 15,
@@ -6748,7 +6748,7 @@
   "stella_montis_archives_key": {
     "id": "stella_montis_archives_key",
     "name": {
-      "value": "Stella Montis Archivschlüssel",
+      "value": "星辰山档案室钥匙",
       "originalEn": "Stella Montis Archives Key"
     },
     "stackSize": 1,
@@ -6762,7 +6762,7 @@
   "stella_montis_assembly_admin_key": {
     "id": "stella_montis_assembly_admin_key",
     "name": {
-      "value": "Schlüssel zur Montageverwaltung in Stella Montis",
+      "value": "星辰山组装厂管理区钥匙",
       "originalEn": "Stella Montis Assembly Admin Key"
     },
     "stackSize": 1,
@@ -6776,7 +6776,7 @@
   "stella_montis_medical_storage_key": {
     "id": "stella_montis_medical_storage_key",
     "name": {
-      "value": "Schlüssel zum medizinischen Lagerraum in Stella Montis",
+      "value": "星辰山医疗仓库钥匙",
       "originalEn": "Stella Montis Medical Storage Key"
     },
     "stackSize": 1,
@@ -6790,7 +6790,7 @@
   "stella_montis_security_checkpoint_key": {
     "id": "stella_montis_security_checkpoint_key",
     "name": {
-      "value": "Schlüssel zur Sicherheitskontrolle in Stella Montis",
+      "value": "星山安全检查站钥匙",
       "originalEn": "Stella Montis Security Checkpoint Key"
     },
     "stackSize": 1,
@@ -6804,7 +6804,7 @@
   "sterilized_bandage": {
     "id": "sterilized_bandage",
     "name": {
-      "value": "Steriler Verband",
+      "value": "消毒绷带",
       "originalEn": "Sterilized Bandage"
     },
     "stackSize": 3,
@@ -6821,7 +6821,7 @@
   "stitcher_i": {
     "id": "stitcher_i",
     "name": {
-      "value": "Stitcher I",
+      "value": "钉机 I",
       "originalEn": "Stitcher I"
     },
     "stackSize": 1,
@@ -6838,7 +6838,7 @@
   "stitcher_ii": {
     "id": "stitcher_ii",
     "name": {
-      "value": "Stitcher II",
+      "value": "钉机 II",
       "originalEn": "Stitcher II"
     },
     "stackSize": 1,
@@ -6855,7 +6855,7 @@
   "stitcher_iii": {
     "id": "stitcher_iii",
     "name": {
-      "value": "Stitcher III",
+      "value": "钉机 III",
       "originalEn": "Stitcher III"
     },
     "stackSize": 1,
@@ -6872,7 +6872,7 @@
   "stitcher_iv": {
     "id": "stitcher_iv",
     "name": {
-      "value": "Stitcher IV",
+      "value": "钉机 IV",
       "originalEn": "Stitcher IV"
     },
     "stackSize": 1,
@@ -6907,7 +6907,7 @@
   "surge_coil_blueprint": {
     "id": "surge_coil_blueprint",
     "name": {
-      "value": "Bauplan: Surge Coil",
+      "value": "Surge Coil 蓝图",
       "originalEn": "Surge Coil Blueprint"
     },
     "stackSize": 1,
@@ -6921,7 +6921,7 @@
   "surge_shield_recharger": {
     "id": "surge_shield_recharger",
     "name": {
-      "value": "Sofort-Schildauflader",
+      "value": "爆能护盾充能器",
       "originalEn": "Surge Shield Recharger"
     },
     "stackSize": 5,
@@ -6938,7 +6938,7 @@
   "surveyor_vault": {
     "id": "surveyor_vault",
     "name": {
-      "value": "Beobachtertresor",
+      "value": "勘测师保险库",
       "originalEn": "Surveyor Vault"
     },
     "stackSize": 3,
@@ -6952,7 +6952,7 @@
   "synthesized_fuel": {
     "id": "synthesized_fuel",
     "name": {
-      "value": "Synthetischer Treibstoff",
+      "value": "合成燃料",
       "originalEn": "Synthesized Fuel"
     },
     "stackSize": 5,
@@ -6966,7 +6966,7 @@
   "syringe": {
     "id": "syringe",
     "name": {
-      "value": "Spritze",
+      "value": "注射器",
       "originalEn": "Syringe"
     },
     "stackSize": 5,
@@ -6980,7 +6980,7 @@
   "tactical_mk1": {
     "id": "tactical_mk1",
     "name": {
-      "value": "Taktisch-Marke 1",
+      "value": "战术型 Mk. 1",
       "originalEn": "Tactical Mk. 1"
     },
     "stackSize": 1,
@@ -6997,7 +6997,7 @@
   "tactical_mk2": {
     "id": "tactical_mk2",
     "name": {
-      "value": "Taktisch-Marke 2",
+      "value": "战术型 Mk. 2",
       "originalEn": "Tactical Mk. 2"
     },
     "stackSize": 1,
@@ -7014,7 +7014,7 @@
   "tactical_mk3_defensive": {
     "id": "tactical_mk3_defensive",
     "name": {
-      "value": "Taktisch-Marke 3 (Defensiv)",
+      "value": "战术型 Mk. 3（防御型）",
       "originalEn": "Tactical Mk. 3 (Defensive)"
     },
     "stackSize": 1,
@@ -7031,7 +7031,7 @@
   "tactical_mk3_defensive_blueprint": {
     "id": "tactical_mk3_defensive_blueprint",
     "name": {
-      "value": "Bauplan: Taktisch-Marke 3 (Verteidigung)",
+      "value": "战术型 Mk. 3（防御型）蓝图",
       "originalEn": "Tactical Mk. 3 (Defensive) Blueprint"
     },
     "stackSize": 1,
@@ -7045,7 +7045,7 @@
   "tactical_mk3_healing": {
     "id": "tactical_mk3_healing",
     "name": {
-      "value": "Taktisch-Marke 3 (Heilung)",
+      "value": "战术型 Mk. 3 (治疗型)",
       "originalEn": "Tactical Mk. 3 (Healing)"
     },
     "stackSize": 1,
@@ -7062,7 +7062,7 @@
   "tactical_mk3_healing_blueprint": {
     "id": "tactical_mk3_healing_blueprint",
     "name": {
-      "value": "Bauplan: Taktisch-Marke 3 (Heilung)",
+      "value": "战术 Mk. 3（治疗型）蓝图",
       "originalEn": "Tactical Mk. 3 (Healing) Blueprint"
     },
     "stackSize": 1,
@@ -7076,7 +7076,7 @@
   "tactical_mk3_revival": {
     "id": "tactical_mk3_revival",
     "name": {
-      "value": "Taktisch-Marke 3 (Wiederbelebung)",
+      "value": "战术型 Mk. 3 (复活)",
       "originalEn": "Tactical Mk. 3 (Revival)"
     },
     "stackSize": 1,
@@ -7093,7 +7093,7 @@
   "tactical_mk3_revival_blueprint": {
     "id": "tactical_mk3_revival_blueprint",
     "name": {
-      "value": "Bauplan: Taktisch-Marke 3 (Wiederbelebung)",
+      "value": "战术 Mk. 3 (救援) 蓝图",
       "originalEn": "Tactical Mk. 3 (Revival) Blueprint"
     },
     "stackSize": 1,
@@ -7107,7 +7107,7 @@
   "tagging_grenade": {
     "id": "tagging_grenade",
     "name": {
-      "value": "Markierungsgranate",
+      "value": "标记手榴弹",
       "originalEn": "Tagging Grenade"
     },
     "stackSize": 3,
@@ -7124,7 +7124,7 @@
   "tagging_grenade_blueprint": {
     "id": "tagging_grenade_blueprint",
     "name": {
-      "value": "Bauplan: Markierungsgranate",
+      "value": "标记手榴弹 蓝图",
       "originalEn": "Tagging Grenade Blueprint"
     },
     "stackSize": 1,
@@ -7138,7 +7138,7 @@
   "tattered_arc_lining": {
     "id": "tattered_arc_lining",
     "name": {
-      "value": "Zerfetzte ARC-Fütterung",
+      "value": "破损的ARC内衬",
       "originalEn": "Tattered Arc Lining"
     },
     "stackSize": 3,
@@ -7152,7 +7152,7 @@
   "tattered_clothes": {
     "id": "tattered_clothes",
     "name": {
-      "value": "Zerfetzte Kleidung",
+      "value": "破烂衣物",
       "originalEn": "Tattered Clothes"
     },
     "stackSize": 3,
@@ -7166,7 +7166,7 @@
   "telemetry_transceiver": {
     "id": "telemetry_transceiver",
     "name": {
-      "value": "Telemetrie-Empfänger",
+      "value": "遥测收发器",
       "originalEn": "Telemetry Transceiver"
     },
     "stackSize": 3,
@@ -7180,7 +7180,7 @@
   "tempest_blueprint": {
     "id": "tempest_blueprint",
     "name": {
-      "value": "Bauplan: Tempest",
+      "value": "风暴蓝图",
       "originalEn": "Tempest Blueprint"
     },
     "stackSize": 1,
@@ -7194,7 +7194,7 @@
   "tempest_i": {
     "id": "tempest_i",
     "name": {
-      "value": "Tempest I",
+      "value": "风暴 I",
       "originalEn": "Tempest I"
     },
     "stackSize": 1,
@@ -7212,7 +7212,7 @@
   "tempest_ii": {
     "id": "tempest_ii",
     "name": {
-      "value": "Tempest II",
+      "value": "风暴 II",
       "originalEn": "Tempest II"
     },
     "stackSize": 1,
@@ -7229,7 +7229,7 @@
   "tempest_iii": {
     "id": "tempest_iii",
     "name": {
-      "value": "Tempest III",
+      "value": "风暴 III",
       "originalEn": "Tempest III"
     },
     "stackSize": 1,
@@ -7246,7 +7246,7 @@
   "tempest_iv": {
     "id": "tempest_iv",
     "name": {
-      "value": "Tempest IV",
+      "value": "风暴 IV",
       "originalEn": "Tempest IV"
     },
     "stackSize": 1,
@@ -7263,7 +7263,7 @@
   "thermostat": {
     "id": "thermostat",
     "name": {
-      "value": "Thermostat",
+      "value": "温控器",
       "originalEn": "Thermostat"
     },
     "stackSize": 3,
@@ -7277,7 +7277,7 @@
   "tick_pod": {
     "id": "tick_pod",
     "name": {
-      "value": "Zeckenkapsel",
+      "value": "蜱虫荚",
       "originalEn": "Tick Pod"
     },
     "stackSize": 3,
@@ -7291,7 +7291,7 @@
   "toaster": {
     "id": "toaster",
     "name": {
-      "value": "Toaster",
+      "value": "烤面包机",
       "originalEn": "Toaster"
     },
     "stackSize": 3,
@@ -7305,7 +7305,7 @@
   "torn_blanket": {
     "id": "torn_blanket",
     "name": {
-      "value": "Zerrissene Decke",
+      "value": "破损的毯子",
       "originalEn": "Torn Blanket"
     },
     "stackSize": 3,
@@ -7319,7 +7319,7 @@
   "torn_book": {
     "id": "torn_book",
     "name": {
-      "value": "Zerrissenes Buch",
+      "value": "破损的书",
       "originalEn": "Torn Book"
     },
     "stackSize": 5,
@@ -7333,7 +7333,7 @@
   "torrente_blueprint": {
     "id": "torrente_blueprint",
     "name": {
-      "value": "Bauplan: Torrente",
+      "value": "奔流蓝图",
       "originalEn": "Torrente Blueprint"
     },
     "stackSize": 1,
@@ -7347,7 +7347,7 @@
   "torrente_i": {
     "id": "torrente_i",
     "name": {
-      "value": "Torrente I",
+      "value": "奔流 I",
       "originalEn": "Torrente I"
     },
     "stackSize": 1,
@@ -7365,7 +7365,7 @@
   "torrente_ii": {
     "id": "torrente_ii",
     "name": {
-      "value": "Torrente II",
+      "value": "奔流 II",
       "originalEn": "Torrente II"
     },
     "stackSize": 1,
@@ -7382,7 +7382,7 @@
   "torrente_iii": {
     "id": "torrente_iii",
     "name": {
-      "value": "Torrente III",
+      "value": "奔流 III",
       "originalEn": "Torrente III"
     },
     "stackSize": 1,
@@ -7399,7 +7399,7 @@
   "torrente_iv": {
     "id": "torrente_iv",
     "name": {
-      "value": "Torrente IV",
+      "value": "奔流 IV",
       "originalEn": "Torrente IV"
     },
     "stackSize": 1,
@@ -7416,7 +7416,7 @@
   "trailblazer": {
     "id": "trailblazer",
     "name": {
-      "value": "Trailblazer",
+      "value": "开拓者",
       "originalEn": "Trailblazer"
     },
     "stackSize": 3,
@@ -7434,7 +7434,7 @@
   "trailblazer_blueprint": {
     "id": "trailblazer_blueprint",
     "name": {
-      "value": "Bauplan: Trailblazer",
+      "value": "开拓者蓝图",
       "originalEn": "Trailblazer Blueprint"
     },
     "stackSize": 1,
@@ -7448,7 +7448,7 @@
   "trigger_nade": {
     "id": "trigger_nade",
     "name": {
-      "value": "Abzuggranate",
+      "value": "遥控手雷",
       "originalEn": "Trigger 'Nade"
     },
     "stackSize": 3,
@@ -7465,7 +7465,7 @@
   "trigger_nade_blueprint": {
     "id": "trigger_nade_blueprint",
     "name": {
-      "value": "Bauplan: Abzuggranate",
+      "value": "触发手榴弹蓝图",
       "originalEn": "Trigger Nade Blueprint"
     },
     "stackSize": 1,
@@ -7479,7 +7479,7 @@
   "tropical_duck": {
     "id": "tropical_duck",
     "name": {
-      "value": "Tropische Ente",
+      "value": "热带鸭",
       "originalEn": "Tropical Duck"
     },
     "stackSize": 15,
@@ -7493,7 +7493,7 @@
   "turbo_pump": {
     "id": "turbo_pump",
     "name": {
-      "value": "Turbopumpe",
+      "value": "涡轮泵",
       "originalEn": "Turbo Pump"
     },
     "stackSize": 3,
@@ -7507,7 +7507,7 @@
   "unusable_weapon": {
     "id": "unusable_weapon",
     "name": {
-      "value": "Unbrauchbare Waffe",
+      "value": "无法使用的武器",
       "originalEn": "Unusable Weapon"
     },
     "stackSize": 3,
@@ -7535,7 +7535,7 @@
   "vase": {
     "id": "vase",
     "name": {
-      "value": "Vase",
+      "value": "花瓶",
       "originalEn": "Vase"
     },
     "stackSize": 3,
@@ -7549,7 +7549,7 @@
   "venator_blueprint": {
     "id": "venator_blueprint",
     "name": {
-      "value": "Bauplan: Venator",
+      "value": "复仇者蓝图",
       "originalEn": "Venator Blueprint"
     },
     "stackSize": 1,
@@ -7563,7 +7563,7 @@
   "venator_i": {
     "id": "venator_i",
     "name": {
-      "value": "Venator I",
+      "value": "复仇者 I",
       "originalEn": "Venator I"
     },
     "stackSize": 1,
@@ -7581,7 +7581,7 @@
   "venator_ii": {
     "id": "venator_ii",
     "name": {
-      "value": "Venator II",
+      "value": "复仇者 II",
       "originalEn": "Venator II"
     },
     "stackSize": 1,
@@ -7598,7 +7598,7 @@
   "venator_iii": {
     "id": "venator_iii",
     "name": {
-      "value": "Venator III",
+      "value": "复仇者 III",
       "originalEn": "Venator III"
     },
     "stackSize": 1,
@@ -7615,7 +7615,7 @@
   "venator_iv": {
     "id": "venator_iv",
     "name": {
-      "value": "Venator IV",
+      "value": "复仇者 IV",
       "originalEn": "Venator IV"
     },
     "stackSize": 1,
@@ -7632,7 +7632,7 @@
   "vertical_grip_i": {
     "id": "vertical_grip_i",
     "name": {
-      "value": "Vertikaler Griff I",
+      "value": "垂直握把 I",
       "originalEn": "Vertical Grip I"
     },
     "stackSize": 1,
@@ -7649,7 +7649,7 @@
   "vertical_grip_ii": {
     "id": "vertical_grip_ii",
     "name": {
-      "value": "Vertikaler Griff II",
+      "value": "垂直握把 II",
       "originalEn": "Vertical Grip II"
     },
     "stackSize": 1,
@@ -7666,7 +7666,7 @@
   "vertical_grip_ii_blueprint": {
     "id": "vertical_grip_ii_blueprint",
     "name": {
-      "value": "Bauplan: Vertikaler Griff II",
+      "value": "垂直握把 II 蓝图",
       "originalEn": "Vertical Grip II Blueprint"
     },
     "stackSize": 1,
@@ -7680,7 +7680,7 @@
   "vertical_grip_iii": {
     "id": "vertical_grip_iii",
     "name": {
-      "value": "Vertikaler Griff III",
+      "value": "垂直握把III",
       "originalEn": "Vertical Grip III"
     },
     "stackSize": 1,
@@ -7697,7 +7697,7 @@
   "vertical_grip_iii_blueprint": {
     "id": "vertical_grip_iii_blueprint",
     "name": {
-      "value": "Bauplan: Vertikaler Griff III",
+      "value": "垂直握把III 蓝图",
       "originalEn": "Vertical Grip III Blueprint"
     },
     "stackSize": 1,
@@ -7711,7 +7711,7 @@
   "very_comfortable_pillow": {
     "id": "very_comfortable_pillow",
     "name": {
-      "value": "Ultragemütliches Kissen",
+      "value": "非常舒适的枕头",
       "originalEn": "Very Comfortable Pillow"
     },
     "stackSize": 3,
@@ -7725,7 +7725,7 @@
   "vita_shot": {
     "id": "vita_shot",
     "name": {
-      "value": "Vita-Spritze",
+      "value": "生命针剂",
       "originalEn": "Vita Shot"
     },
     "stackSize": 3,
@@ -7742,7 +7742,7 @@
   "vita_shot_blueprint": {
     "id": "vita_shot_blueprint",
     "name": {
-      "value": "Bauplan: Vita-Spritze",
+      "value": "生命针剂蓝图",
       "originalEn": "Vita Shot Blueprint"
     },
     "stackSize": 1,
@@ -7756,7 +7756,7 @@
   "vita_spray": {
     "id": "vita_spray",
     "name": {
-      "value": "Vita-Spray",
+      "value": "生命喷雾",
       "originalEn": "Vita Spray"
     },
     "stackSize": 1,
@@ -7774,7 +7774,7 @@
   "vita_spray_blueprint": {
     "id": "vita_spray_blueprint",
     "name": {
-      "value": "Bauplan: Vita-Spray",
+      "value": "生命喷雾蓝图",
       "originalEn": "Vita Spray Blueprint"
     },
     "stackSize": 1,
@@ -7788,7 +7788,7 @@
   "volcanic_rock": {
     "id": "volcanic_rock",
     "name": {
-      "value": "Vulkangestein",
+      "value": "火山岩",
       "originalEn": "Volcanic Rock"
     },
     "stackSize": 5,
@@ -7802,7 +7802,7 @@
   "voltage_converter": {
     "id": "voltage_converter",
     "name": {
-      "value": "Spannungswandler",
+      "value": "变电器",
       "originalEn": "Voltage Converter"
     },
     "stackSize": 5,
@@ -7816,7 +7816,7 @@
   "vulcano_blueprint": {
     "id": "vulcano_blueprint",
     "name": {
-      "value": "Bauplan: Vulcano",
+      "value": "火山 蓝图",
       "originalEn": "Vulcano Blueprint"
     },
     "stackSize": 1,
@@ -7830,7 +7830,7 @@
   "vulcano_i": {
     "id": "vulcano_i",
     "name": {
-      "value": "Vulcano I",
+      "value": "火山 I",
       "originalEn": "Vulcano I"
     },
     "stackSize": 1,
@@ -7848,7 +7848,7 @@
   "vulcano_ii": {
     "id": "vulcano_ii",
     "name": {
-      "value": "Vulcano II",
+      "value": "火山 II",
       "originalEn": "Vulcano II"
     },
     "stackSize": 1,
@@ -7865,7 +7865,7 @@
   "vulcano_iii": {
     "id": "vulcano_iii",
     "name": {
-      "value": "Vulcano III",
+      "value": "火山 III",
       "originalEn": "Vulcano III"
     },
     "stackSize": 1,
@@ -7882,7 +7882,7 @@
   "vulcano_iv": {
     "id": "vulcano_iv",
     "name": {
-      "value": "Vulcano IV",
+      "value": "火山 IV",
       "originalEn": "Vulcano IV"
     },
     "stackSize": 1,
@@ -7899,7 +7899,7 @@
   "wasp_driver": {
     "id": "wasp_driver",
     "name": {
-      "value": "Wespentreiber",
+      "value": "黄蜂引擎",
       "originalEn": "Wasp Driver"
     },
     "stackSize": 3,
@@ -7913,7 +7913,7 @@
   "water_filter": {
     "id": "water_filter",
     "name": {
-      "value": "Wasserfilter",
+      "value": "滤水器",
       "originalEn": "Water Filter"
     },
     "stackSize": 3,
@@ -7927,7 +7927,7 @@
   "water_pump": {
     "id": "water_pump",
     "name": {
-      "value": "Wasserpumpe",
+      "value": "抽水机",
       "originalEn": "Water Pump"
     },
     "stackSize": 3,
@@ -7941,7 +7941,7 @@
   "wires": {
     "id": "wires",
     "name": {
-      "value": "Kabel",
+      "value": "电线",
       "originalEn": "Wires"
     },
     "stackSize": 15,
@@ -7955,7 +7955,7 @@
   "wolfpack": {
     "id": "wolfpack",
     "name": {
-      "value": "Wolfpack",
+      "value": "狼群",
       "originalEn": "Wolfpack"
     },
     "stackSize": 1,
@@ -7973,7 +7973,7 @@
   "wolfpack_blueprint": {
     "id": "wolfpack_blueprint",
     "name": {
-      "value": "Bauplan: Wolfpack",
+      "value": "狼群蓝图",
       "originalEn": "Wolfpack Blueprint"
     },
     "stackSize": 1,
@@ -7987,7 +7987,7 @@
   "yellow_light_stick": {
     "id": "yellow_light_stick",
     "name": {
-      "value": "Gelber Leuchtstab",
+      "value": "黄色荧光棒",
       "originalEn": "Yellow Light Stick"
     },
     "stackSize": 5,
@@ -8003,7 +8003,7 @@
   "yellow_light_stick_blueprint": {
     "id": "yellow_light_stick_blueprint",
     "name": {
-      "value": "Bauplan: Gelber Leuchtstab",
+      "value": "黄色荧光棒",
       "originalEn": "Yellow Light Stick Blueprint"
     },
     "stackSize": 1,
@@ -8017,7 +8017,7 @@
   "zipline": {
     "id": "zipline",
     "name": {
-      "value": "Seilrutsche",
+      "value": "滑索",
       "originalEn": "Zipline"
     },
     "stackSize": 3,

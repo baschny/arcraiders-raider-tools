@@ -6,7 +6,7 @@ export interface TranslationDictionary {
   [key: string]: TranslationValue;
 }
 
-export const translations: Record<AppLocale, TranslationDictionary> = {
+export const translations: Partial<Record<AppLocale, TranslationDictionary>> = {
   en: {
     app: {
       name: 'ARC Raiders Tools',

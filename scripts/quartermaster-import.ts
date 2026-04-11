@@ -12,7 +12,21 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
-const LOCALES = ['en', 'de', 'pt-BR'] as const;
+const LOCALES = [
+  'en',
+  'de',
+  'pt-BR',
+  'es',
+  'fr',
+  'it',
+  'ja',
+  'ko-KR',
+  'pl',
+  'ru',
+  'tr',
+  'zh-CN',
+  'zh-TW',
+] as const;
 type OutputLocale = (typeof LOCALES)[number];
 
 // Types
@@ -196,6 +210,10 @@ function getLocalizedValue(
 
   if (locale === 'pt-BR') {
     return values['pt-BR'] ?? values.pt ?? values.en ?? '';
+  }
+
+  if (locale === 'ko-KR') {
+    return values['ko-KR'] ?? values.ko ?? values.kr ?? values.en ?? '';
   }
 
   return values[locale] ?? values.en ?? '';

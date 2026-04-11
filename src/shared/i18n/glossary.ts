@@ -2,8 +2,18 @@ import type { AppLocale } from './config';
 
 export interface GlossaryEntry {
   en: string;
-  de: string;
-  'pt-BR': string;
+  de?: string;
+  'pt-BR'?: string;
+  es?: string;
+  fr?: string;
+  it?: string;
+  ja?: string;
+  'ko-KR'?: string;
+  pl?: string;
+  ru?: string;
+  tr?: string;
+  'zh-CN'?: string;
+  'zh-TW'?: string;
   notes?: string;
 }
 
@@ -59,5 +69,5 @@ export const DOMAIN_GLOSSARY: Record<string, GlossaryEntry> = {
 } as const;
 
 export function getGlossaryTerm(key: keyof typeof DOMAIN_GLOSSARY, locale: AppLocale): string {
-  return DOMAIN_GLOSSARY[key][locale];
+  return DOMAIN_GLOSSARY[key][locale] ?? DOMAIN_GLOSSARY[key].en;
 }
