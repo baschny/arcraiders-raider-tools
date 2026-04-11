@@ -1,4 +1,7 @@
 version: 1
+env:
+  variables:
+    VITE_SCHEDULE_DATA_URL: https://api.raider-tools.app/schedule/map-events.json
 frontend:
   phases:
     preBuild:
