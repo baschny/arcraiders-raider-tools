@@ -726,22 +726,9 @@ async function main() {
     maps: sortedMaps,
     schedule: sortedSchedule,
   };
-  const eventTypesOutput = {
-    _readme: {
-      description: 'Event type definitions used by schedule generators',
-      format: 'Keys are event type ids and values contain display name, icon, category and localizations.',
-    },
-    metadata: {
-      generatedAt: new Date().toISOString(),
-      source: 'scripts/generate-schedule-data-from-map-conditions.js',
-    },
-    eventTypes: sortedEventTypes,
-  };
 
   fs.mkdirSync(path.dirname(OUTPUT_PATH), { recursive: true });
-  fs.writeFileSync(EVENT_TYPES_PATH, `${JSON.stringify(eventTypesOutput, null, 2)}\n`, 'utf8');
   fs.writeFileSync(OUTPUT_PATH, `${JSON.stringify(output, null, 2)}\n`, 'utf8');
-  console.log(`✓ Generated ${EVENT_TYPES_PATH}`);
 
   console.log(`✓ Generated ${OUTPUT_PATH}`);
   console.log(`  Condition pages scraped: ${conditionTypesByName.size}`);
