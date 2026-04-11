@@ -9,16 +9,18 @@ export interface LocaleOption {
   code: AppLocale;
   label: string;
   nativeLabel: string;
+  flag: string;
   upstreamKeys: string[];
 }
 
 export const LOCALE_OPTIONS: LocaleOption[] = [
-  { code: 'en', label: 'English', nativeLabel: 'English', upstreamKeys: ['en'] },
-  { code: 'de', label: 'German', nativeLabel: 'Deutsch', upstreamKeys: ['de', 'en'] },
+  { code: 'en', label: 'English', nativeLabel: 'English', flag: '🇺🇸', upstreamKeys: ['en'] },
+  { code: 'de', label: 'German', nativeLabel: 'Deutsch', flag: '🇩🇪', upstreamKeys: ['de', 'en'] },
   {
     code: 'pt-BR',
     label: 'Portuguese (Brazil)',
     nativeLabel: 'Português (Brasil)',
+    flag: '🇧🇷',
     upstreamKeys: ['pt-BR', 'pt', 'en'],
   },
 ];

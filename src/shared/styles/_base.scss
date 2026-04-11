@@ -115,6 +115,9 @@ h1, h2, h3, h4, h5, h6 {
     cursor: pointer;
     font-size: $font-sm;
     transition: $transition-default;
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
 
     &:hover {
       background: $bg-tertiary;
@@ -124,6 +127,11 @@ h1, h2, h3, h4, h5, h6 {
       background: $bg-tertiary;
       color: $text-accent;
     }
+  }
+
+  .header-menu-item-flag {
+    width: 20px;
+    text-align: center;
   }
 }
 

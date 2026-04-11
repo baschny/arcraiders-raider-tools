@@ -25,6 +25,8 @@ export function Header() {
   const languageDropdownRef = useRef<HTMLDivElement>(null);
 
   const currentTool = TOOLS.find((tool) => tool.path === location.pathname) || TOOLS[0];
+  const currentLocaleOption =
+    localeOptions.find((option) => option.code === locale) ?? localeOptions[0];
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -86,7 +88,7 @@ export function Header() {
             onClick={() => setIsLanguageOpen(!isLanguageOpen)}
             aria-label={t('shared.header.switchLanguage')}
           >
-            <span>{locale}</span> <ChevronDown size={16} />
+            <span>{currentLocaleOption.flag}</span> <ChevronDown size={16} />
           </button>
           {isLanguageOpen && (
             <div className="header-menu">
@@ -98,7 +100,8 @@ export function Header() {
                     option.code === locale ? 'header-menu-item--active' : ''
                   }`}
                 >
-                  {option.nativeLabel}
+                  <span className="header-menu-item-flag">{option.flag}</span>
+                  <span>{option.nativeLabel}</span>
                 </button>
               ))}
             </div>
