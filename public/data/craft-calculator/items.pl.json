@@ -78,20 +78,6 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "agave": {
-    "id": "agave",
-    "name": {
-      "value": "Agawa",
-      "originalEn": "Agave"
-    },
-    "stackSize": 10,
-    "value": 1000,
-    "imageFilename": "https://cdn.arctracker.io/items/agave.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
   "agave_juice": {
     "id": "agave_juice",
     "name": {
@@ -106,6 +92,20 @@
       "agave": 1,
       "empty_wine_bottle": 1
     },
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "agave": {
+    "id": "agave",
+    "name": {
+      "value": "Agawa",
+      "originalEn": "Agave"
+    },
+    "stackSize": 10,
+    "value": 1000,
+    "imageFilename": "https://cdn.arctracker.io/items/agave.png",
+    "isWeapon": null,
+    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -182,6 +182,20 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "angled_grip_ii_blueprint": {
+    "id": "angled_grip_ii_blueprint",
+    "name": {
+      "value": "Projekt Chwyt katowy II",
+      "originalEn": "Angled Grip II Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/angled_grip_ii.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "angled_grip_ii": {
     "id": "angled_grip_ii",
     "name": {
@@ -199,15 +213,15 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "angled_grip_ii_blueprint": {
-    "id": "angled_grip_ii_blueprint",
+  "angled_grip_iii_blueprint": {
+    "id": "angled_grip_iii_blueprint",
     "name": {
-      "value": "Projekt Chwyt katowy II",
-      "originalEn": "Angled Grip II Blueprint"
+      "value": "Projekt Chwyt katowy III",
+      "originalEn": "Angled Grip III Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/angled_grip_ii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/angled_grip_iii.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -227,20 +241,6 @@
       "duct_tape": 5,
       "mod_components": 2
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "angled_grip_iii_blueprint": {
-    "id": "angled_grip_iii_blueprint",
-    "name": {
-      "value": "Projekt Chwyt katowy III",
-      "originalEn": "Angled Grip III Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/angled_grip_iii.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -357,6 +357,20 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "aphelion_blueprint": {
+    "id": "aphelion_blueprint",
+    "name": {
+      "value": "Projekt Aphelion",
+      "originalEn": "Aphelion Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/aphelion.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "aphelion": {
     "id": "aphelion",
     "name": {
@@ -372,20 +386,6 @@
       "magnetic_accelerator": 3,
       "matriarch_reactor": 1
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "aphelion_blueprint": {
-    "id": "aphelion_blueprint",
-    "name": {
-      "value": "Projekt Aphelion",
-      "originalEn": "Aphelion Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/aphelion.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -645,6 +645,20 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "barricade_kit_blueprint": {
+    "id": "barricade_kit_blueprint",
+    "name": {
+      "value": "Projekt zestawu barykady",
+      "originalEn": "Barricade Kit Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/barricade_kit.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "barricade_kit": {
     "id": "barricade_kit",
     "name": {
@@ -658,20 +672,6 @@
     "recipe": {
       "mechanical_components": 1
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "barricade_kit_blueprint": {
-    "id": "barricade_kit_blueprint",
-    "name": {
-      "value": "Projekt zestawu barykady",
-      "originalEn": "Barricade Kit Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/barricade_kit.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -817,23 +817,6 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "blaze_grenade": {
-    "id": "blaze_grenade",
-    "name": {
-      "value": "Granat płomienny",
-      "originalEn": "Blaze Grenade"
-    },
-    "stackSize": 5,
-    "value": 1600,
-    "imageFilename": "https://cdn.arctracker.io/items/blaze_grenade.png",
-    "isWeapon": null,
-    "recipe": {
-      "explosive_compound": 1,
-      "oil": 2
-    },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
   "blaze_grenade_blueprint": {
     "id": "blaze_grenade_blueprint",
     "name": {
@@ -861,6 +844,23 @@
     "recipe": {
       "blaze_grenade": 1,
       "wires": 1
+    },
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "blaze_grenade": {
+    "id": "blaze_grenade",
+    "name": {
+      "value": "Granat płomienny",
+      "originalEn": "Blaze Grenade"
+    },
+    "stackSize": 5,
+    "value": 1600,
+    "imageFilename": "https://cdn.arctracker.io/items/blaze_grenade.png",
+    "isWeapon": null,
+    "recipe": {
+      "explosive_compound": 1,
+      "oil": 2
     },
     "upgradeCost": null,
     "craftQuantity": 1
@@ -935,6 +935,20 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "blue_light_stick_blueprint": {
+    "id": "blue_light_stick_blueprint",
+    "name": {
+      "value": "Projekt niebieskiego patyka świetlnego",
+      "originalEn": "Blue Light Stick Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/blue_light_stick_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "blue_light_stick": {
     "id": "blue_light_stick",
     "name": {
@@ -948,20 +962,6 @@
     "recipe": {
       "chemicals": 3
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "blue_light_stick_blueprint": {
-    "id": "blue_light_stick_blueprint",
-    "name": {
-      "value": "Projekt niebieskiego patyka świetlnego",
-      "originalEn": "Blue Light Stick Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/blue_light_stick_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -1527,23 +1527,6 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "combat_mk3_aggressive": {
-    "id": "combat_mk3_aggressive",
-    "name": {
-      "value": "Bojowy Mk. 3 (Agresywny)",
-      "originalEn": "Combat Mk. 3 (Aggressive)"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/combat_mk3_aggressive.png",
-    "isWeapon": null,
-    "recipe": {
-      "advanced_electrical_components": 2,
-      "processor": 3
-    },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
   "combat_mk3_aggressive_blueprint": {
     "id": "combat_mk3_aggressive_blueprint",
     "name": {
@@ -1558,15 +1541,15 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "combat_mk3_flanking": {
-    "id": "combat_mk3_flanking",
+  "combat_mk3_aggressive": {
+    "id": "combat_mk3_aggressive",
     "name": {
-      "value": "Bojowy Mk. 3 (Flankujacy)",
-      "originalEn": "Combat Mk. 3 (Flanking)"
+      "value": "Bojowy Mk. 3 (Agresywny)",
+      "originalEn": "Combat Mk. 3 (Aggressive)"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/combat_mk3_flanking.png",
+    "imageFilename": "https://cdn.arctracker.io/items/combat_mk3_aggressive.png",
     "isWeapon": null,
     "recipe": {
       "advanced_electrical_components": 2,
@@ -1586,6 +1569,23 @@
     "imageFilename": "https://cdn.arctracker.io/items/combat_mk3_flanking.png",
     "isWeapon": null,
     "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "combat_mk3_flanking": {
+    "id": "combat_mk3_flanking",
+    "name": {
+      "value": "Bojowy Mk. 3 (Flankujacy)",
+      "originalEn": "Combat Mk. 3 (Flanking)"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/combat_mk3_flanking.png",
+    "isWeapon": null,
+    "recipe": {
+      "advanced_electrical_components": 2,
+      "processor": 3
+    },
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -1620,6 +1620,20 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "compensator_ii_blueprint": {
+    "id": "compensator_ii_blueprint",
+    "name": {
+      "value": "Projekt kompensatora II",
+      "originalEn": "Compensator II Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/compensator_ii_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "compensator_ii": {
     "id": "compensator_ii",
     "name": {
@@ -1637,15 +1651,15 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "compensator_ii_blueprint": {
-    "id": "compensator_ii_blueprint",
+  "compensator_iii_blueprint": {
+    "id": "compensator_iii_blueprint",
     "name": {
-      "value": "Projekt kompensatora II",
-      "originalEn": "Compensator II Blueprint"
+      "value": "Projekt Kompensator III",
+      "originalEn": "Compensator III Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/compensator_ii_blueprint.png",
+    "imageFilename": "https://cdn.arctracker.io/items/compensator_iii.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -1668,15 +1682,15 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "compensator_iii_blueprint": {
-    "id": "compensator_iii_blueprint",
+  "complex_gun_parts_blueprint": {
+    "id": "complex_gun_parts_blueprint",
     "name": {
-      "value": "Projekt Kompensator III",
-      "originalEn": "Compensator III Blueprint"
+      "value": "Projekt złożonych części broni",
+      "originalEn": "Complex Gun Parts Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/compensator_iii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/complex_gun_parts_blueprint.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -1697,20 +1711,6 @@
       "light_gun_parts": 2,
       "medium_gun_parts": 2
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "complex_gun_parts_blueprint": {
-    "id": "complex_gun_parts_blueprint",
-    "name": {
-      "value": "Projekt złożonych części broni",
-      "originalEn": "Complex Gun Parts Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/complex_gun_parts_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -2024,6 +2024,20 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "deadline_blueprint": {
+    "id": "deadline_blueprint",
+    "name": {
+      "value": "Schemat: Deadline",
+      "originalEn": "Deadline Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/deadline.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "deadline": {
     "id": "deadline",
     "name": {
@@ -2042,15 +2056,15 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "deadline_blueprint": {
-    "id": "deadline_blueprint",
+  "defibrillator_blueprint": {
+    "id": "defibrillator_blueprint",
     "name": {
-      "value": "Schemat: Deadline",
-      "originalEn": "Deadline Blueprint"
+      "value": "Projekt defibrylatora",
+      "originalEn": "Defibrillator Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/deadline.png",
+    "imageFilename": "https://cdn.arctracker.io/items/defibrillator.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -2070,20 +2084,6 @@
       "moss": 1,
       "plastic_parts": 9
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "defibrillator_blueprint": {
-    "id": "defibrillator_blueprint",
-    "name": {
-      "value": "Projekt defibrylatora",
-      "originalEn": "Defibrillator Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/defibrillator.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -2157,6 +2157,20 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "dolabra_blueprint": {
+    "id": "dolabra_blueprint",
+    "name": {
+      "value": "Dolabra Schemat",
+      "originalEn": "Dolabra Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": null,
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "dolabra": {
     "id": "dolabra",
     "name": {
@@ -2172,20 +2186,6 @@
       "shredder_gyro": 3,
       "vaporizer_regulator": 2
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "dolabra_blueprint": {
-    "id": "dolabra_blueprint",
-    "name": {
-      "value": "Dolabra Schemat",
-      "originalEn": "Dolabra Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": null,
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -2326,6 +2326,20 @@
     "upgradeCost": null,
     "craftQuantity": 5
   },
+  "equalizer_blueprint": {
+    "id": "equalizer_blueprint",
+    "name": {
+      "value": "Projekt Equalizera",
+      "originalEn": "Equalizer Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/equalizer.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "equalizer": {
     "id": "equalizer",
     "name": {
@@ -2341,20 +2355,6 @@
       "magnetic_accelerator": 3,
       "queen_reactor": 1
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "equalizer_blueprint": {
-    "id": "equalizer_blueprint",
-    "name": {
-      "value": "Projekt Equalizera",
-      "originalEn": "Equalizer Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/equalizer.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -2459,6 +2459,20 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "explosive_mine_blueprint": {
+    "id": "explosive_mine_blueprint",
+    "name": {
+      "value": "Projekt Mina wybuchowa",
+      "originalEn": "Explosive Mine Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/explosive_mine.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "explosive_mine": {
     "id": "explosive_mine",
     "name": {
@@ -2476,15 +2490,15 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "explosive_mine_blueprint": {
-    "id": "explosive_mine_blueprint",
+  "extended_barrel_blueprint": {
+    "id": "extended_barrel_blueprint",
     "name": {
-      "value": "Projekt Mina wybuchowa",
-      "originalEn": "Explosive Mine Blueprint"
+      "value": "Projekt Wydluzona lufa",
+      "originalEn": "Extended Barrel Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/explosive_mine.png",
+    "imageFilename": "https://cdn.arctracker.io/items/extended_barrel.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -2507,20 +2521,6 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "extended_barrel_blueprint": {
-    "id": "extended_barrel_blueprint",
-    "name": {
-      "value": "Projekt Wydluzona lufa",
-      "originalEn": "Extended Barrel Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/extended_barrel.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
   "extended_light_mag_i": {
     "id": "extended_light_mag_i",
     "name": {
@@ -2535,6 +2535,20 @@
       "plastic_parts": 6,
       "steel_spring": 1
     },
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "extended_light_mag_ii_blueprint": {
+    "id": "extended_light_mag_ii_blueprint",
+    "name": {
+      "value": "Projekt Rozszerzony lekki magazynek II",
+      "originalEn": "Extended Light Mag II Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/extended_light_mag_ii.png",
+    "isWeapon": null,
+    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -2555,15 +2569,15 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "extended_light_mag_ii_blueprint": {
-    "id": "extended_light_mag_ii_blueprint",
+  "extended_light_mag_iii_blueprint": {
+    "id": "extended_light_mag_iii_blueprint",
     "name": {
-      "value": "Projekt Rozszerzony lekki magazynek II",
-      "originalEn": "Extended Light Mag II Blueprint"
+      "value": "Projekt Rozszerzony lekki magazynek III",
+      "originalEn": "Extended Light Mag III Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/extended_light_mag_ii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/extended_light_mag_iii.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -2586,20 +2600,6 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "extended_light_mag_iii_blueprint": {
-    "id": "extended_light_mag_iii_blueprint",
-    "name": {
-      "value": "Projekt Rozszerzony lekki magazynek III",
-      "originalEn": "Extended Light Mag III Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/extended_light_mag_iii.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
   "extended_medium_mag_i": {
     "id": "extended_medium_mag_i",
     "name": {
@@ -2614,6 +2614,20 @@
       "plastic_parts": 6,
       "steel_spring": 1
     },
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "extended_medium_mag_ii_blueprint": {
+    "id": "extended_medium_mag_ii_blueprint",
+    "name": {
+      "value": "Projekt rozszerzonego średniego magazynka II",
+      "originalEn": "Extended Medium Mag II Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/extended_medium_mag_ii_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -2634,15 +2648,15 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "extended_medium_mag_ii_blueprint": {
-    "id": "extended_medium_mag_ii_blueprint",
+  "extended_medium_mag_iii_blueprint": {
+    "id": "extended_medium_mag_iii_blueprint",
     "name": {
-      "value": "Projekt rozszerzonego średniego magazynka II",
-      "originalEn": "Extended Medium Mag II Blueprint"
+      "value": "Projekt rozszerzonego średniego magazynka III",
+      "originalEn": "Extended Medium Mag III Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/extended_medium_mag_ii_blueprint.png",
+    "imageFilename": "https://cdn.arctracker.io/items/extended_medium_mag_iii.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -2665,20 +2679,6 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "extended_medium_mag_iii_blueprint": {
-    "id": "extended_medium_mag_iii_blueprint",
-    "name": {
-      "value": "Projekt rozszerzonego średniego magazynka III",
-      "originalEn": "Extended Medium Mag III Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/extended_medium_mag_iii.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
   "extended_shotgun_mag_i": {
     "id": "extended_shotgun_mag_i",
     "name": {
@@ -2693,6 +2693,20 @@
       "plastic_parts": 6,
       "steel_spring": 1
     },
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "extended_shotgun_mag_ii_blueprint": {
+    "id": "extended_shotgun_mag_ii_blueprint",
+    "name": {
+      "value": "Projekt rozszerzonego magazynka strzelby II",
+      "originalEn": "Extended Shotgun Mag II Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/extended_shotgun_mag_ii.png",
+    "isWeapon": null,
+    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -2713,15 +2727,15 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "extended_shotgun_mag_ii_blueprint": {
-    "id": "extended_shotgun_mag_ii_blueprint",
+  "extended_shotgun_mag_iii_blueprint": {
+    "id": "extended_shotgun_mag_iii_blueprint",
     "name": {
-      "value": "Projekt rozszerzonego magazynka strzelby II",
-      "originalEn": "Extended Shotgun Mag II Blueprint"
+      "value": "Projekt Rozszerzony magazynek do strzelby III",
+      "originalEn": "Extended Shotgun Mag III Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/extended_shotgun_mag_ii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/extended_shotgun_mag_iii.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -2741,20 +2755,6 @@
       "mod_components": 2,
       "steel_spring": 5
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "extended_shotgun_mag_iii_blueprint": {
-    "id": "extended_shotgun_mag_iii_blueprint",
-    "name": {
-      "value": "Projekt Rozszerzony magazynek do strzelby III",
-      "originalEn": "Extended Shotgun Mag III Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/extended_shotgun_mag_iii.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -2954,6 +2954,20 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "fireworks_box_blueprint": {
+    "id": "fireworks_box_blueprint",
+    "name": {
+      "value": "Projekt pudełka fajerwerków",
+      "originalEn": "Fireworks Box Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/fireworks_box.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "fireworks_box": {
     "id": "fireworks_box",
     "name": {
@@ -2968,20 +2982,6 @@
       "explosive_compound": 1,
       "pop_trigger": 3
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "fireworks_box_blueprint": {
-    "id": "fireworks_box_blueprint",
-    "name": {
-      "value": "Projekt pudełka fajerwerków",
-      "originalEn": "Fireworks Box Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/fireworks_box.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -3188,23 +3188,6 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "gas_grenade": {
-    "id": "gas_grenade",
-    "name": {
-      "value": "Granat gazowy",
-      "originalEn": "Gas Grenade"
-    },
-    "stackSize": 3,
-    "value": 270,
-    "imageFilename": "https://cdn.arctracker.io/items/gas_grenade.png",
-    "isWeapon": null,
-    "recipe": {
-      "chemicals": 4,
-      "rubber_parts": 2
-    },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
   "gas_grenade_trap": {
     "id": "gas_grenade_trap",
     "name": {
@@ -3222,15 +3205,15 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "gas_mine": {
-    "id": "gas_mine",
+  "gas_grenade": {
+    "id": "gas_grenade",
     "name": {
-      "value": "Mina gazowa",
-      "originalEn": "Gas Mine"
+      "value": "Granat gazowy",
+      "originalEn": "Gas Grenade"
     },
     "stackSize": 3,
     "value": 270,
-    "imageFilename": "https://cdn.arctracker.io/items/gas_mine.png",
+    "imageFilename": "https://cdn.arctracker.io/items/gas_grenade.png",
     "isWeapon": null,
     "recipe": {
       "chemicals": 4,
@@ -3250,6 +3233,23 @@
     "imageFilename": "https://cdn.arctracker.io/items/gas_mine.png",
     "isWeapon": null,
     "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "gas_mine": {
+    "id": "gas_mine",
+    "name": {
+      "value": "Mina gazowa",
+      "originalEn": "Gas Mine"
+    },
+    "stackSize": 3,
+    "value": 270,
+    "imageFilename": "https://cdn.arctracker.io/items/gas_mine.png",
+    "isWeapon": null,
+    "recipe": {
+      "chemicals": 4,
+      "rubber_parts": 2
+    },
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -3295,6 +3295,20 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "green_light_stick_blueprint": {
+    "id": "green_light_stick_blueprint",
+    "name": {
+      "value": "Projekt zielonego świecącego patyka",
+      "originalEn": "Green Light Stick Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/green_light_stick.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "green_light_stick": {
     "id": "green_light_stick",
     "name": {
@@ -3308,20 +3322,6 @@
     "recipe": {
       "chemicals": 3
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "green_light_stick_blueprint": {
-    "id": "green_light_stick_blueprint",
-    "name": {
-      "value": "Projekt zielonego świecącego patyka",
-      "originalEn": "Green Light Stick Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/green_light_stick.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -3440,6 +3440,20 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "heavy_gun_parts_blueprint": {
+    "id": "heavy_gun_parts_blueprint",
+    "name": {
+      "value": "Projekt części ciężkiej broni",
+      "originalEn": "Heavy Gun Parts Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/heavy_gun_parts.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "heavy_gun_parts": {
     "id": "heavy_gun_parts",
     "name": {
@@ -3453,20 +3467,6 @@
     "recipe": {
       "simple_gun_parts": 4
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "heavy_gun_parts_blueprint": {
-    "id": "heavy_gun_parts_blueprint",
-    "name": {
-      "value": "Projekt części ciężkiej broni",
-      "originalEn": "Heavy Gun Parts Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/heavy_gun_parts.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -3809,6 +3809,20 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "jolt_mine_blueprint": {
+    "id": "jolt_mine_blueprint",
+    "name": {
+      "value": "Projekt miny paraliżującej",
+      "originalEn": "Jolt Mine Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/jolt_mine.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "jolt_mine": {
     "id": "jolt_mine",
     "name": {
@@ -3826,15 +3840,15 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "jolt_mine_blueprint": {
-    "id": "jolt_mine_blueprint",
+  "jupiter_blueprint": {
+    "id": "jupiter_blueprint",
     "name": {
-      "value": "Projekt miny paraliżującej",
-      "originalEn": "Jolt Mine Blueprint"
+      "value": "Projekt Jupitera",
+      "originalEn": "Jupiter Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/jolt_mine.png",
+    "imageFilename": "https://cdn.arctracker.io/items/jupiter.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -3855,20 +3869,6 @@
       "magnetic_accelerator": 3,
       "queen_reactor": 1
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "jupiter_blueprint": {
-    "id": "jupiter_blueprint",
-    "name": {
-      "value": "Projekt Jupitera",
-      "originalEn": "Jupiter Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/jupiter.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -4086,6 +4086,20 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "light_gun_parts_blueprint": {
+    "id": "light_gun_parts_blueprint",
+    "name": {
+      "value": "Projekt lekkich części broni",
+      "originalEn": "Light Gun Parts Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/light_gun_parts_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "light_gun_parts": {
     "id": "light_gun_parts",
     "name": {
@@ -4099,20 +4113,6 @@
     "recipe": {
       "simple_gun_parts": 4
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "light_gun_parts_blueprint": {
-    "id": "light_gun_parts_blueprint",
-    "name": {
-      "value": "Projekt lekkich części broni",
-      "originalEn": "Light Gun Parts Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/light_gun_parts_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -4150,6 +4150,20 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "lightweight_stock_blueprint": {
+    "id": "lightweight_stock_blueprint",
+    "name": {
+      "value": "Projekt lekkiej kolby",
+      "originalEn": "Lightweight Stock Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/lightweight_stock_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "lightweight_stock": {
     "id": "lightweight_stock",
     "name": {
@@ -4164,20 +4178,6 @@
       "duct_tape": 5,
       "mod_components": 2
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "lightweight_stock_blueprint": {
-    "id": "lightweight_stock_blueprint",
-    "name": {
-      "value": "Projekt lekkiej kolby",
-      "originalEn": "Lightweight Stock Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/lightweight_stock_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -4249,23 +4249,6 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "looting_mk3_safekeeper": {
-    "id": "looting_mk3_safekeeper",
-    "name": {
-      "value": "Grabież Mk. 3 (Strażnik)",
-      "originalEn": "Looting Mk. 3 (Safekeeper)"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/looting_mk3_safekeeper.png",
-    "isWeapon": null,
-    "recipe": {
-      "advanced_electrical_components": 2,
-      "processor": 3
-    },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
   "looting_mk3_safekeeper_blueprint": {
     "id": "looting_mk3_safekeeper_blueprint",
     "name": {
@@ -4280,15 +4263,15 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "looting_mk3_survivor": {
-    "id": "looting_mk3_survivor",
+  "looting_mk3_safekeeper": {
+    "id": "looting_mk3_safekeeper",
     "name": {
-      "value": "Grabież Mk. 3 (Ocalały)",
-      "originalEn": "Looting Mk. 3 (Survivor)"
+      "value": "Grabież Mk. 3 (Strażnik)",
+      "originalEn": "Looting Mk. 3 (Safekeeper)"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/looting_mk3_survivor.png",
+    "imageFilename": "https://cdn.arctracker.io/items/looting_mk3_safekeeper.png",
     "isWeapon": null,
     "recipe": {
       "advanced_electrical_components": 2,
@@ -4311,19 +4294,19 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "lure_grenade": {
-    "id": "lure_grenade",
+  "looting_mk3_survivor": {
+    "id": "looting_mk3_survivor",
     "name": {
-      "value": "Granat wabik",
-      "originalEn": "Lure Grenade"
+      "value": "Grabież Mk. 3 (Ocalały)",
+      "originalEn": "Looting Mk. 3 (Survivor)"
     },
-    "stackSize": 3,
-    "value": 1000,
-    "imageFilename": "https://cdn.arctracker.io/items/lure_grenade.png",
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/looting_mk3_survivor.png",
     "isWeapon": null,
     "recipe": {
-      "electrical_components": 1,
-      "speaker_component": 1
+      "advanced_electrical_components": 2,
+      "processor": 3
     },
     "upgradeCost": null,
     "craftQuantity": 1
@@ -4355,6 +4338,23 @@
     "recipe": {
       "lure_grenade": 1,
       "wires": 1
+    },
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "lure_grenade": {
+    "id": "lure_grenade",
+    "name": {
+      "value": "Granat wabik",
+      "originalEn": "Lure Grenade"
+    },
+    "stackSize": 3,
+    "value": 1000,
+    "imageFilename": "https://cdn.arctracker.io/items/lure_grenade.png",
+    "isWeapon": null,
+    "recipe": {
+      "electrical_components": 1,
+      "speaker_component": 1
     },
     "upgradeCost": null,
     "craftQuantity": 1
@@ -4480,6 +4480,20 @@
     "upgradeCost": null,
     "craftQuantity": 20
   },
+  "medium_gun_parts_blueprint": {
+    "id": "medium_gun_parts_blueprint",
+    "name": {
+      "value": "Projekt średnich części broni",
+      "originalEn": "Medium Gun Parts Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/medium_gun_parts_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "medium_gun_parts": {
     "id": "medium_gun_parts",
     "name": {
@@ -4493,20 +4507,6 @@
     "recipe": {
       "simple_gun_parts": 4
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "medium_gun_parts_blueprint": {
-    "id": "medium_gun_parts_blueprint",
-    "name": {
-      "value": "Projekt średnich części broni",
-      "originalEn": "Medium Gun Parts Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/medium_gun_parts_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -4701,6 +4701,20 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "muzzle_brake_ii_blueprint": {
+    "id": "muzzle_brake_ii_blueprint",
+    "name": {
+      "value": "Projekt hamulca wylotowego II",
+      "originalEn": "Muzzle Brake II Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/muzzle_brake_ii.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "muzzle_brake_ii": {
     "id": "muzzle_brake_ii",
     "name": {
@@ -4718,15 +4732,15 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "muzzle_brake_ii_blueprint": {
-    "id": "muzzle_brake_ii_blueprint",
+  "muzzle_brake_iii_blueprint": {
+    "id": "muzzle_brake_iii_blueprint",
     "name": {
-      "value": "Projekt hamulca wylotowego II",
-      "originalEn": "Muzzle Brake II Blueprint"
+      "value": "Projekt Hamulec wylotowy III",
+      "originalEn": "Muzzle Brake III Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/muzzle_brake_ii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/muzzle_brake_iii.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -4746,20 +4760,6 @@
       "mod_components": 2,
       "wires": 8
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "muzzle_brake_iii_blueprint": {
-    "id": "muzzle_brake_iii_blueprint",
-    "name": {
-      "value": "Projekt Hamulec wylotowy III",
-      "originalEn": "Muzzle Brake III Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/muzzle_brake_iii.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -4947,6 +4947,20 @@
     },
     "craftQuantity": 1
   },
+  "padded_stock_blueprint": {
+    "id": "padded_stock_blueprint",
+    "name": {
+      "value": "Schemat: Wyściełana kolba",
+      "originalEn": "Padded Stock Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/padded_stock.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "padded_stock": {
     "id": "padded_stock",
     "name": {
@@ -4961,20 +4975,6 @@
       "duct_tape": 5,
       "mod_components": 2
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "padded_stock_blueprint": {
-    "id": "padded_stock_blueprint",
-    "name": {
-      "value": "Schemat: Wyściełana kolba",
-      "originalEn": "Padded Stock Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/padded_stock.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -5250,6 +5250,20 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "pulse_mine_blueprint": {
+    "id": "pulse_mine_blueprint",
+    "name": {
+      "value": "Projekt miny pulsacyjnej",
+      "originalEn": "Pulse Mine Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/pulse_mine.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "pulse_mine": {
     "id": "pulse_mine",
     "name": {
@@ -5267,20 +5281,6 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "pulse_mine_blueprint": {
-    "id": "pulse_mine_blueprint",
-    "name": {
-      "value": "Projekt miny pulsacyjnej",
-      "originalEn": "Pulse Mine Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/pulse_mine.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
   "queen_reactor": {
     "id": "queen_reactor",
     "name": {
@@ -5295,20 +5295,6 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "radio": {
-    "id": "radio",
-    "name": {
-      "value": "Radio",
-      "originalEn": "Radio"
-    },
-    "stackSize": 3,
-    "value": 1000,
-    "imageFilename": "https://cdn.arctracker.io/items/radio.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
   "radio_relay": {
     "id": "radio_relay",
     "name": {
@@ -5318,6 +5304,20 @@
     "stackSize": 3,
     "value": 3000,
     "imageFilename": "https://cdn.arctracker.io/items/radio_relay.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "radio": {
+    "id": "radio",
+    "name": {
+      "value": "Radio",
+      "originalEn": "Radio"
+    },
+    "stackSize": 3,
+    "value": 1000,
+    "imageFilename": "https://cdn.arctracker.io/items/radio.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -5450,6 +5450,20 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "red_light_stick_blueprint": {
+    "id": "red_light_stick_blueprint",
+    "name": {
+      "value": "Projekt czerwonego patyka świetlnego",
+      "originalEn": "Red Light Stick Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/red_light_stick.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "red_light_stick": {
     "id": "red_light_stick",
     "name": {
@@ -5463,20 +5477,6 @@
     "recipe": {
       "chemicals": 3
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "red_light_stick_blueprint": {
-    "id": "red_light_stick_blueprint",
-    "name": {
-      "value": "Projekt czerwonego patyka świetlnego",
-      "originalEn": "Red Light Stick Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/red_light_stick.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -5508,6 +5508,20 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "remote_raider_flare_blueprint": {
+    "id": "remote_raider_flare_blueprint",
+    "name": {
+      "value": "Projekt zdalnej flary najeźdźcy",
+      "originalEn": "Remote Raider Flare Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/remote_raider_flare.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "remote_raider_flare": {
     "id": "remote_raider_flare",
     "name": {
@@ -5522,20 +5536,6 @@
       "chemicals": 2,
       "rubber_parts": 4
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "remote_raider_flare_blueprint": {
-    "id": "remote_raider_flare_blueprint",
-    "name": {
-      "value": "Projekt zdalnej flary najeźdźcy",
-      "originalEn": "Remote Raider Flare Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/remote_raider_flare.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -5972,6 +5972,20 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "seeker_grenade_blueprint": {
+    "id": "seeker_grenade_blueprint",
+    "name": {
+      "value": "Projekt granatu naprowadzanego",
+      "originalEn": "Seeker Grenade Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/seeker_grenade.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "seeker_grenade": {
     "id": "seeker_grenade",
     "name": {
@@ -5986,20 +6000,6 @@
       "arc_alloy": 2,
       "crude_explosives": 1
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "seeker_grenade_blueprint": {
-    "id": "seeker_grenade_blueprint",
-    "name": {
-      "value": "Projekt granatu naprowadzanego",
-      "originalEn": "Seeker Grenade Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/seeker_grenade.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -6099,6 +6099,20 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "shotgun_choke_ii_blueprint": {
+    "id": "shotgun_choke_ii_blueprint",
+    "name": {
+      "value": "Projekt Dlawik do strzelby II",
+      "originalEn": "Shotgun Choke II Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/shotgun_choke_ii.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "shotgun_choke_ii": {
     "id": "shotgun_choke_ii",
     "name": {
@@ -6116,15 +6130,15 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "shotgun_choke_ii_blueprint": {
-    "id": "shotgun_choke_ii_blueprint",
+  "shotgun_choke_iii_blueprint": {
+    "id": "shotgun_choke_iii_blueprint",
     "name": {
-      "value": "Projekt Dlawik do strzelby II",
-      "originalEn": "Shotgun Choke II Blueprint"
+      "value": "Projekt Dlawik strzelby III",
+      "originalEn": "Shotgun Choke III Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/shotgun_choke_ii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/shotgun_choke_iii.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -6147,15 +6161,15 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "shotgun_choke_iii_blueprint": {
-    "id": "shotgun_choke_iii_blueprint",
+  "shotgun_silencer_blueprint": {
+    "id": "shotgun_silencer_blueprint",
     "name": {
-      "value": "Projekt Dlawik strzelby III",
-      "originalEn": "Shotgun Choke III Blueprint"
+      "value": "Projekt Tlumik do strzelby",
+      "originalEn": "Shotgun Silencer Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/shotgun_choke_iii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/shotgun_silencer.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -6178,15 +6192,15 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "shotgun_silencer_blueprint": {
-    "id": "shotgun_silencer_blueprint",
+  "showstopper_blueprint": {
+    "id": "showstopper_blueprint",
     "name": {
-      "value": "Projekt Tlumik do strzelby",
-      "originalEn": "Shotgun Silencer Blueprint"
+      "value": "Projekt Showstopper",
+      "originalEn": "Showstopper Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/shotgun_silencer.png",
+    "imageFilename": "https://cdn.arctracker.io/items/showstopper.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -6207,20 +6221,6 @@
       "hornet_driver": 1,
       "voltage_converter": 1
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "showstopper_blueprint": {
-    "id": "showstopper_blueprint",
-    "name": {
-      "value": "Projekt Showstopper",
-      "originalEn": "Showstopper Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/showstopper.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -6269,6 +6269,20 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "silencer_i_blueprint": {
+    "id": "silencer_i_blueprint",
+    "name": {
+      "value": "Projekt Tłumika I",
+      "originalEn": "Silencer I Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/silencer_i.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "silencer_i": {
     "id": "silencer_i",
     "name": {
@@ -6286,15 +6300,15 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "silencer_i_blueprint": {
-    "id": "silencer_i_blueprint",
+  "silencer_ii_blueprint": {
+    "id": "silencer_ii_blueprint",
     "name": {
-      "value": "Projekt Tłumika I",
-      "originalEn": "Silencer I Blueprint"
+      "value": "Projekt Tłumika II",
+      "originalEn": "Silencer II Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/silencer_i.png",
+    "imageFilename": "https://cdn.arctracker.io/items/silencer_ii.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -6314,20 +6328,6 @@
       "mod_components": 2,
       "wires": 8
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "silencer_ii_blueprint": {
-    "id": "silencer_ii_blueprint",
-    "name": {
-      "value": "Projekt Tłumika II",
-      "originalEn": "Silencer II Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/silencer_ii.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -6373,23 +6373,6 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "smoke_grenade": {
-    "id": "smoke_grenade",
-    "name": {
-      "value": "Granat dymny",
-      "originalEn": "Smoke Grenade"
-    },
-    "stackSize": 5,
-    "value": 1000,
-    "imageFilename": "https://cdn.arctracker.io/items/smoke_grenade.png",
-    "isWeapon": null,
-    "recipe": {
-      "canister": 1,
-      "chemicals": 14
-    },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
   "smoke_grenade_blueprint": {
     "id": "smoke_grenade_blueprint",
     "name": {
@@ -6421,6 +6404,23 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "smoke_grenade": {
+    "id": "smoke_grenade",
+    "name": {
+      "value": "Granat dymny",
+      "originalEn": "Smoke Grenade"
+    },
+    "stackSize": 5,
+    "value": 1000,
+    "imageFilename": "https://cdn.arctracker.io/items/smoke_grenade.png",
+    "isWeapon": null,
+    "recipe": {
+      "canister": 1,
+      "chemicals": 14
+    },
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "snap_blast_grenade": {
     "id": "snap_blast_grenade",
     "name": {
@@ -6435,6 +6435,20 @@
       "crude_explosives": 2,
       "magnet": 1
     },
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "snap_hook_blueprint": {
+    "id": "snap_hook_blueprint",
+    "name": {
+      "value": "Projekt Snap Hook",
+      "originalEn": "Snap Hook Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/snap_hook.png",
+    "isWeapon": null,
+    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -6453,20 +6467,6 @@
       "power_rod": 2,
       "rope": 3
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "snap_hook_blueprint": {
-    "id": "snap_hook_blueprint",
-    "name": {
-      "value": "Projekt Snap Hook",
-      "originalEn": "Snap Hook Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/snap_hook.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -6641,6 +6641,20 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "stable_stock_ii_blueprint": {
+    "id": "stable_stock_ii_blueprint",
+    "name": {
+      "value": "Projekt Stabilna kolba II",
+      "originalEn": "Stable Stock II Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/stable_stock_ii.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "stable_stock_ii": {
     "id": "stable_stock_ii",
     "name": {
@@ -6658,15 +6672,15 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "stable_stock_ii_blueprint": {
-    "id": "stable_stock_ii_blueprint",
+  "stable_stock_iii_blueprint": {
+    "id": "stable_stock_iii_blueprint",
     "name": {
-      "value": "Projekt Stabilna kolba II",
-      "originalEn": "Stable Stock II Blueprint"
+      "value": "Projekt Stabilna kolba III",
+      "originalEn": "Stable Stock III Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/stable_stock_ii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/stable_stock_iii.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -6686,20 +6700,6 @@
       "duct_tape": 5,
       "mod_components": 2
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "stable_stock_iii_blueprint": {
-    "id": "stable_stock_iii_blueprint",
-    "name": {
-      "value": "Projekt Stabilna kolba III",
-      "originalEn": "Stable Stock III Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/stable_stock_iii.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -6886,6 +6886,20 @@
     },
     "craftQuantity": 1
   },
+  "surge_coil_blueprint": {
+    "id": "surge_coil_blueprint",
+    "name": {
+      "value": "Surge Coil Schemat",
+      "originalEn": "Surge Coil Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": null,
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "surge_coil": {
     "id": "surge_coil",
     "name": {
@@ -6901,20 +6915,6 @@
       "hornet_driver": 1,
       "sensors": 1
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "surge_coil_blueprint": {
-    "id": "surge_coil_blueprint",
-    "name": {
-      "value": "Surge Coil Schemat",
-      "originalEn": "Surge Coil Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": null,
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -7011,23 +7011,6 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "tactical_mk3_defensive": {
-    "id": "tactical_mk3_defensive",
-    "name": {
-      "value": "Taktyczny Mk. 3 (Obronny)",
-      "originalEn": "Tactical Mk. 3 (Defensive)"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_defensive.png",
-    "isWeapon": null,
-    "recipe": {
-      "advanced_electrical_components": 2,
-      "processor": 3
-    },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
   "tactical_mk3_defensive_blueprint": {
     "id": "tactical_mk3_defensive_blueprint",
     "name": {
@@ -7042,15 +7025,15 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "tactical_mk3_healing": {
-    "id": "tactical_mk3_healing",
+  "tactical_mk3_defensive": {
+    "id": "tactical_mk3_defensive",
     "name": {
-      "value": "Taktyczny Mk. 3 (Leczenie)",
-      "originalEn": "Tactical Mk. 3 (Healing)"
+      "value": "Taktyczny Mk. 3 (Obronny)",
+      "originalEn": "Tactical Mk. 3 (Defensive)"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_healing.png",
+    "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_defensive.png",
     "isWeapon": null,
     "recipe": {
       "advanced_electrical_components": 2,
@@ -7073,15 +7056,15 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "tactical_mk3_revival": {
-    "id": "tactical_mk3_revival",
+  "tactical_mk3_healing": {
+    "id": "tactical_mk3_healing",
     "name": {
-      "value": "Taktyczny Mk. 3 (Wskrzeszenie)",
-      "originalEn": "Tactical Mk. 3 (Revival)"
+      "value": "Taktyczny Mk. 3 (Leczenie)",
+      "originalEn": "Tactical Mk. 3 (Healing)"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_revival.png",
+    "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_healing.png",
     "isWeapon": null,
     "recipe": {
       "advanced_electrical_components": 2,
@@ -7104,19 +7087,19 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "tagging_grenade": {
-    "id": "tagging_grenade",
+  "tactical_mk3_revival": {
+    "id": "tactical_mk3_revival",
     "name": {
-      "value": "Granat znacznikowy",
-      "originalEn": "Tagging Grenade"
+      "value": "Taktyczny Mk. 3 (Wskrzeszenie)",
+      "originalEn": "Tactical Mk. 3 (Revival)"
     },
-    "stackSize": 3,
-    "value": 1000,
-    "imageFilename": "https://cdn.arctracker.io/items/tagging_grenade.png",
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_revival.png",
     "isWeapon": null,
     "recipe": {
-      "electrical_components": 1,
-      "sensors": 1
+      "advanced_electrical_components": 2,
+      "processor": 3
     },
     "upgradeCost": null,
     "craftQuantity": 1
@@ -7132,6 +7115,23 @@
     "imageFilename": "https://cdn.arctracker.io/items/tagging_grenade.png",
     "isWeapon": null,
     "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "tagging_grenade": {
+    "id": "tagging_grenade",
+    "name": {
+      "value": "Granat znacznikowy",
+      "originalEn": "Tagging Grenade"
+    },
+    "stackSize": 3,
+    "value": 1000,
+    "imageFilename": "https://cdn.arctracker.io/items/tagging_grenade.png",
+    "isWeapon": null,
+    "recipe": {
+      "electrical_components": 1,
+      "sensors": 1
+    },
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -7413,6 +7413,20 @@
     },
     "craftQuantity": 1
   },
+  "trailblazer_blueprint": {
+    "id": "trailblazer_blueprint",
+    "name": {
+      "value": "Projekt Trailblazera",
+      "originalEn": "Trailblazer Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/trailblazer.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "trailblazer": {
     "id": "trailblazer",
     "name": {
@@ -7431,15 +7445,15 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "trailblazer_blueprint": {
-    "id": "trailblazer_blueprint",
+  "trigger_nade_blueprint": {
+    "id": "trigger_nade_blueprint",
     "name": {
-      "value": "Projekt Trailblazera",
-      "originalEn": "Trailblazer Blueprint"
+      "value": "Projekt granatu wyzwalającego",
+      "originalEn": "Trigger Nade Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/trailblazer.png",
+    "imageFilename": "https://cdn.arctracker.io/items/trigger_nade_blueprint.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -7459,20 +7473,6 @@
       "crude_explosives": 2,
       "processor": 1
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "trigger_nade_blueprint": {
-    "id": "trigger_nade_blueprint",
-    "name": {
-      "value": "Projekt granatu wyzwalającego",
-      "originalEn": "Trigger Nade Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/trigger_nade_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -7646,6 +7646,20 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "vertical_grip_ii_blueprint": {
+    "id": "vertical_grip_ii_blueprint",
+    "name": {
+      "value": "Projekt Chwyt pionowy II",
+      "originalEn": "Vertical Grip II Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/vertical_grip_ii.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "vertical_grip_ii": {
     "id": "vertical_grip_ii",
     "name": {
@@ -7663,15 +7677,15 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "vertical_grip_ii_blueprint": {
-    "id": "vertical_grip_ii_blueprint",
+  "vertical_grip_iii_blueprint": {
+    "id": "vertical_grip_iii_blueprint",
     "name": {
-      "value": "Projekt Chwyt pionowy II",
-      "originalEn": "Vertical Grip II Blueprint"
+      "value": "Projekt Chwytu Pionowego III",
+      "originalEn": "Vertical Grip III Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/vertical_grip_ii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/vertical_grip_iii_blueprint.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -7694,20 +7708,6 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "vertical_grip_iii_blueprint": {
-    "id": "vertical_grip_iii_blueprint",
-    "name": {
-      "value": "Projekt Chwytu Pionowego III",
-      "originalEn": "Vertical Grip III Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/vertical_grip_iii_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
   "very_comfortable_pillow": {
     "id": "very_comfortable_pillow",
     "name": {
@@ -7717,6 +7717,20 @@
     "stackSize": 3,
     "value": 2000,
     "imageFilename": "https://cdn.arctracker.io/items/very_comfortable_pillow.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "vita_shot_blueprint": {
+    "id": "vita_shot_blueprint",
+    "name": {
+      "value": "Projekt Zastrzyku Vita",
+      "originalEn": "Vita Shot Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/vita_shot.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -7739,15 +7753,15 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "vita_shot_blueprint": {
-    "id": "vita_shot_blueprint",
+  "vita_spray_blueprint": {
+    "id": "vita_spray_blueprint",
     "name": {
-      "value": "Projekt Zastrzyku Vita",
-      "originalEn": "Vita Shot Blueprint"
+      "value": "Projekt sprayu Vita",
+      "originalEn": "Vita Spray Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/vita_shot.png",
+    "imageFilename": "https://cdn.arctracker.io/items/vita_spray.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -7768,20 +7782,6 @@
       "canister": 1,
       "tick_pod": 1
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "vita_spray_blueprint": {
-    "id": "vita_spray_blueprint",
-    "name": {
-      "value": "Projekt sprayu Vita",
-      "originalEn": "Vita Spray Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/vita_spray.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -7952,6 +7952,20 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "wolfpack_blueprint": {
+    "id": "wolfpack_blueprint",
+    "name": {
+      "value": "Projekt Wolfpack",
+      "originalEn": "Wolfpack Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/wolfpack_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "wolfpack": {
     "id": "wolfpack",
     "name": {
@@ -7970,15 +7984,15 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "wolfpack_blueprint": {
-    "id": "wolfpack_blueprint",
+  "yellow_light_stick_blueprint": {
+    "id": "yellow_light_stick_blueprint",
     "name": {
-      "value": "Projekt Wolfpack",
-      "originalEn": "Wolfpack Blueprint"
+      "value": "Żółty patyk świetlny",
+      "originalEn": "Yellow Light Stick Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/wolfpack_blueprint.png",
+    "imageFilename": "https://cdn.arctracker.io/items/yellow_light_stick.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -7997,20 +8011,6 @@
     "recipe": {
       "chemicals": 3
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "yellow_light_stick_blueprint": {
-    "id": "yellow_light_stick_blueprint",
-    "name": {
-      "value": "Żółty patyk świetlny",
-      "originalEn": "Yellow Light Stick Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/yellow_light_stick.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },

@@ -158,35 +158,6 @@
     ]
   },
   {
-    "id": "agave",
-    "name": {
-      "value": "Agawa",
-      "originalEn": "Agave"
-    },
-    "description": {
-      "en": "Kawałek liścia agawy. Można użyć, aby odzyskać niewielką ilość zdrowia."
-    },
-    "type": "Nature",
-    "rarity": "Uncommon",
-    "value": 1000,
-    "weightKg": 0.2,
-    "stackSize": 10,
-    "recyclesInto": {
-      "assorted_seeds": 3
-    },
-    "recipe": null,
-    "salvagesInto": {
-      "assorted_seeds": 2
-    },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/agave.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Nature"
-    ]
-  },
-  {
     "id": "agave_juice",
     "name": {
       "value": "Sok z agawy",
@@ -214,6 +185,35 @@
     "isWeapon": null,
     "foundIn": [
       "Unknown"
+    ]
+  },
+  {
+    "id": "agave",
+    "name": {
+      "value": "Agawa",
+      "originalEn": "Agave"
+    },
+    "description": {
+      "en": "Kawałek liścia agawy. Można użyć, aby odzyskać niewielką ilość zdrowia."
+    },
+    "type": "Nature",
+    "rarity": "Uncommon",
+    "value": 1000,
+    "weightKg": 0.2,
+    "stackSize": 10,
+    "recyclesInto": {
+      "assorted_seeds": 3
+    },
+    "recipe": null,
+    "salvagesInto": {
+      "assorted_seeds": 2
+    },
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/agave.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Nature"
     ]
   },
   {
@@ -354,6 +354,31 @@
     ]
   },
   {
+    "id": "angled_grip_ii_blueprint",
+    "name": {
+      "value": "Projekt Chwyt katowy II",
+      "originalEn": "Angled Grip II Blueprint"
+    },
+    "description": {
+      "en": "Umiarkowanie redukuje odrzut poziomy. Kompatybilny z: Arpeggio, Ferro, Il Toro, Stitcher"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/angled_grip_ii.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "angled_grip_ii",
     "name": {
       "value": "Chwyt kątowy II",
@@ -387,13 +412,13 @@
     ]
   },
   {
-    "id": "angled_grip_ii_blueprint",
+    "id": "angled_grip_iii_blueprint",
     "name": {
-      "value": "Projekt Chwyt katowy II",
-      "originalEn": "Angled Grip II Blueprint"
+      "value": "Projekt Chwyt katowy III",
+      "originalEn": "Angled Grip III Blueprint"
     },
     "description": {
-      "en": "Umiarkowanie redukuje odrzut poziomy. Kompatybilny z: Arpeggio, Ferro, Il Toro, Stitcher"
+      "en": "Znaczaco zmniejsza odrzut poziomy. Kompatybilny z: Arpeggio, Ferro, Venator, Il Toro, Stitcher"
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -405,7 +430,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/angled_grip_ii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/angled_grip_iii.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -436,31 +461,6 @@
     "salvagesInto": {
       "mechanical_components": 2
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/angled_grip_iii.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "angled_grip_iii_blueprint",
-    "name": {
-      "value": "Projekt Chwyt katowy III",
-      "originalEn": "Angled Grip III Blueprint"
-    },
-    "description": {
-      "en": "Znaczaco zmniejsza odrzut poziomy. Kompatybilny z: Arpeggio, Ferro, Venator, Il Toro, Stitcher"
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/angled_grip_iii.png",
@@ -689,6 +689,31 @@
     ]
   },
   {
+    "id": "aphelion_blueprint",
+    "name": {
+      "value": "Projekt Aphelion",
+      "originalEn": "Aphelion Blueprint"
+    },
+    "description": {
+      "en": "Eksperymentalna bron wiazkowa ARC zasilana reaktorem Matriarch."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/aphelion.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "aphelion",
     "name": {
       "value": "Aphelion",
@@ -718,31 +743,6 @@
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/aphelion.png",
     "isWeapon": true,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "aphelion_blueprint",
-    "name": {
-      "value": "Projekt Aphelion",
-      "originalEn": "Aphelion Blueprint"
-    },
-    "description": {
-      "en": "Eksperymentalna bron wiazkowa ARC zasilana reaktorem Matriarch."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/aphelion.png",
-    "isWeapon": null,
     "foundIn": [
       "Unknown"
     ]
@@ -1256,6 +1256,31 @@
     ]
   },
   {
+    "id": "barricade_kit_blueprint",
+    "name": {
+      "value": "Projekt zestawu barykady",
+      "originalEn": "Barricade Kit Blueprint"
+    },
+    "description": {
+      "en": "Rozmieszczalna osłona, która może blokować nadchodzące obrażenia, dopóki się nie zniszczy."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/barricade_kit.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "barricade_kit",
     "name": {
       "value": "Zestaw barykady",
@@ -1278,31 +1303,6 @@
     "salvagesInto": {
       "metal_parts": 3
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/barricade_kit.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "barricade_kit_blueprint",
-    "name": {
-      "value": "Projekt zestawu barykady",
-      "originalEn": "Barricade Kit Blueprint"
-    },
-    "description": {
-      "en": "Rozmieszczalna osłona, która może blokować nadchodzące obrażenia, dopóki się nie zniszczy."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/barricade_kit.png",
@@ -1593,39 +1593,6 @@
     ]
   },
   {
-    "id": "blaze_grenade",
-    "name": {
-      "value": "Granat płomienny",
-      "originalEn": "Blaze Grenade"
-    },
-    "description": {
-      "en": "Granat, który detonuje przy uderzeniu, pokrywając obszar ogniem, który zadaje obrażenia w czasie."
-    },
-    "type": "Quick Use",
-    "rarity": "Rare",
-    "value": 1600,
-    "weightKg": 0.2,
-    "stackSize": 5,
-    "recyclesInto": {
-      "metal_parts": 4,
-      "oil": 2
-    },
-    "recipe": {
-      "explosive_compound": 1,
-      "oil": 2
-    },
-    "salvagesInto": {
-      "oil": 1
-    },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/blaze_grenade.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
     "id": "blaze_grenade_blueprint",
     "name": {
       "value": "Projekt granatu płomiennego",
@@ -1673,6 +1640,39 @@
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/blaze_grenade_trap.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "blaze_grenade",
+    "name": {
+      "value": "Granat płomienny",
+      "originalEn": "Blaze Grenade"
+    },
+    "description": {
+      "en": "Granat, który detonuje przy uderzeniu, pokrywając obszar ogniem, który zadaje obrażenia w czasie."
+    },
+    "type": "Quick Use",
+    "rarity": "Rare",
+    "value": 1600,
+    "weightKg": 0.2,
+    "stackSize": 5,
+    "recyclesInto": {
+      "metal_parts": 4,
+      "oil": 2
+    },
+    "recipe": {
+      "explosive_compound": 1,
+      "oil": 2
+    },
+    "salvagesInto": {
+      "oil": 1
+    },
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/blaze_grenade.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -1805,6 +1805,31 @@
     ]
   },
   {
+    "id": "blue_light_stick_blueprint",
+    "name": {
+      "value": "Projekt niebieskiego patyka świetlnego",
+      "originalEn": "Blue Light Stick Blueprint"
+    },
+    "description": {
+      "en": "Rzucany chemiczny patyk świetlny, który oświetla obszar wokół niego."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/blue_light_stick_blueprint.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "blue_light_stick",
     "name": {
       "value": "Niebieski patyk świetlny",
@@ -1830,31 +1855,6 @@
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/blue_light_stick.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "blue_light_stick_blueprint",
-    "name": {
-      "value": "Projekt niebieskiego patyka świetlnego",
-      "originalEn": "Blue Light Stick Blueprint"
-    },
-    "description": {
-      "en": "Rzucany chemiczny patyk świetlny, który oświetla obszar wokół niego."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/blue_light_stick_blueprint.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -2948,6 +2948,31 @@
     ]
   },
   {
+    "id": "combat_mk3_aggressive_blueprint",
+    "name": {
+      "value": "Bojowy Mk. 3 (Agresywny) Projekt",
+      "originalEn": "Combat Mk. 3 (Aggressive) Blueprint"
+    },
+    "description": {
+      "en": "Ulepszona wersja augmentacji Bojowy II. Obsługuje więcej typów tarcz i zapewnia dodatkowe miejsce na granaty."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/combat_mk3_aggressive.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "combat_mk3_aggressive",
     "name": {
       "value": "Bojowy Mk. 3 (Agresywny)",
@@ -2981,13 +3006,13 @@
     ]
   },
   {
-    "id": "combat_mk3_aggressive_blueprint",
+    "id": "combat_mk3_flanking_blueprint",
     "name": {
-      "value": "Bojowy Mk. 3 (Agresywny) Projekt",
-      "originalEn": "Combat Mk. 3 (Aggressive) Blueprint"
+      "value": "Projekt Bojowy Mk. 3 (Flankujacy)",
+      "originalEn": "Combat Mk. 3 (Flanking) Blueprint"
     },
     "description": {
-      "en": "Ulepszona wersja augmentacji Bojowy II. Obsługuje więcej typów tarcz i zapewnia dodatkowe miejsce na granaty."
+      "en": "Ulepszona wersja augmentacji Bojowy II. Zaprojektowana do manewrow flankujacych z poprawiona mobilnoscia."
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -2999,7 +3024,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/combat_mk3_aggressive.png",
+    "imageFilename": "https://cdn.arctracker.io/items/combat_mk3_flanking.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -3030,31 +3055,6 @@
     "salvagesInto": {
       "electrical_components": 2
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/combat_mk3_flanking.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "combat_mk3_flanking_blueprint",
-    "name": {
-      "value": "Projekt Bojowy Mk. 3 (Flankujacy)",
-      "originalEn": "Combat Mk. 3 (Flanking) Blueprint"
-    },
-    "description": {
-      "en": "Ulepszona wersja augmentacji Bojowy II. Zaprojektowana do manewrow flankujacych z poprawiona mobilnoscia."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/combat_mk3_flanking.png",
@@ -3126,6 +3126,31 @@
     ]
   },
   {
+    "id": "compensator_ii_blueprint",
+    "name": {
+      "value": "Projekt kompensatora II",
+      "originalEn": "Compensator II Blueprint"
+    },
+    "description": {
+      "en": "Umiarkowanie redukuje rozrzut na strzał."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/compensator_ii_blueprint.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "compensator_ii",
     "name": {
       "value": "Kompensator II",
@@ -3159,13 +3184,13 @@
     ]
   },
   {
-    "id": "compensator_ii_blueprint",
+    "id": "compensator_iii_blueprint",
     "name": {
-      "value": "Projekt kompensatora II",
-      "originalEn": "Compensator II Blueprint"
+      "value": "Projekt Kompensator III",
+      "originalEn": "Compensator III Blueprint"
     },
     "description": {
-      "en": "Umiarkowanie redukuje rozrzut na strzał."
+      "en": "Umiarkowanie zmniejsza rozrzut na strzal. Kompatybilny z: Arpeggio, Ferro, Renegade, Anvil, Stitcher"
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -3177,7 +3202,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/compensator_ii_blueprint.png",
+    "imageFilename": "https://cdn.arctracker.io/items/compensator_iii.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -3217,13 +3242,13 @@
     ]
   },
   {
-    "id": "compensator_iii_blueprint",
+    "id": "complex_gun_parts_blueprint",
     "name": {
-      "value": "Projekt Kompensator III",
-      "originalEn": "Compensator III Blueprint"
+      "value": "Projekt złożonych części broni",
+      "originalEn": "Complex Gun Parts Blueprint"
     },
     "description": {
-      "en": "Umiarkowanie zmniejsza rozrzut na strzal. Kompatybilny z: Arpeggio, Ferro, Renegade, Anvil, Stitcher"
+      "en": "Używany do tworzenia zaawansowanej broni."
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -3235,7 +3260,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/compensator_iii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/complex_gun_parts_blueprint.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -3272,31 +3297,6 @@
     "isWeapon": null,
     "foundIn": [
       "Security"
-    ]
-  },
-  {
-    "id": "complex_gun_parts_blueprint",
-    "name": {
-      "value": "Projekt złożonych części broni",
-      "originalEn": "Complex Gun Parts Blueprint"
-    },
-    "description": {
-      "en": "Używany do tworzenia zaawansowanej broni."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/complex_gun_parts_blueprint.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
     ]
   },
   {
@@ -3915,6 +3915,31 @@
     ]
   },
   {
+    "id": "deadline_blueprint",
+    "name": {
+      "value": "Schemat: Deadline",
+      "originalEn": "Deadline Blueprint"
+    },
+    "description": {
+      "en": "Odblokowuje możliwość wytwarzania min Deadline przy stole materiałów wybuchowych."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/deadline.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "deadline",
     "name": {
       "value": "Termin",
@@ -3949,13 +3974,13 @@
     ]
   },
   {
-    "id": "deadline_blueprint",
+    "id": "defibrillator_blueprint",
     "name": {
-      "value": "Schemat: Deadline",
-      "originalEn": "Deadline Blueprint"
+      "value": "Projekt defibrylatora",
+      "originalEn": "Defibrillator Blueprint"
     },
     "description": {
-      "en": "Odblokowuje możliwość wytwarzania min Deadline przy stole materiałów wybuchowych."
+      "en": "Zastrzyk, który szybko przywraca do życia powalonych najeźdźców i przywraca trochę zdrowia."
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -3967,7 +3992,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/deadline.png",
+    "imageFilename": "https://cdn.arctracker.io/items/defibrillator.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -3998,31 +4023,6 @@
     "salvagesInto": {
       "chemicals": 2
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/defibrillator.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "defibrillator_blueprint",
-    "name": {
-      "value": "Projekt defibrylatora",
-      "originalEn": "Defibrillator Blueprint"
-    },
-    "description": {
-      "en": "Zastrzyk, który szybko przywraca do życia powalonych najeźdźców i przywraca trochę zdrowia."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/defibrillator.png",
@@ -4175,6 +4175,31 @@
     ]
   },
   {
+    "id": "dolabra_blueprint",
+    "name": {
+      "value": "Dolabra Schemat",
+      "originalEn": "Dolabra Blueprint"
+    },
+    "description": {
+      "en": "Eksperymentalna broń, która może wystrzelić szeroki podmuch na krótki dystans lub zostać skupiona, aby wystrzelić wąską wiązkę ciepła o średnim zasięgu."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "dolabra",
     "name": {
       "value": "Dolabra",
@@ -4203,31 +4228,6 @@
     "tier": null,
     "imageFilename": null,
     "isWeapon": true,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "dolabra_blueprint",
-    "name": {
-      "value": "Dolabra Schemat",
-      "originalEn": "Dolabra Blueprint"
-    },
-    "description": {
-      "en": "Eksperymentalna broń, która może wystrzelić szeroki podmuch na krótki dystans lub zostać skupiona, aby wystrzelić wąską wiązkę ciepła o średnim zasięgu."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": null,
-    "isWeapon": null,
     "foundIn": [
       "Unknown"
     ]
@@ -4493,6 +4493,31 @@
     ]
   },
   {
+    "id": "equalizer_blueprint",
+    "name": {
+      "value": "Projekt Equalizera",
+      "originalEn": "Equalizer Blueprint"
+    },
+    "description": {
+      "en": "Eksperymentalna strzelba wiązkowa o dużej pojemności."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/equalizer.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "equalizer",
     "name": {
       "value": "Equalizer",
@@ -4522,31 +4547,6 @@
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/equalizer.png",
     "isWeapon": true,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "equalizer_blueprint",
-    "name": {
-      "value": "Projekt Equalizera",
-      "originalEn": "Equalizer Blueprint"
-    },
-    "description": {
-      "en": "Eksperymentalna strzelba wiązkowa o dużej pojemności."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/equalizer.png",
-    "isWeapon": null,
     "foundIn": [
       "Unknown"
     ]
@@ -4746,6 +4746,31 @@
     ]
   },
   {
+    "id": "explosive_mine_blueprint",
+    "name": {
+      "value": "Projekt Mina wybuchowa",
+      "originalEn": "Explosive Mine Blueprint"
+    },
+    "description": {
+      "en": "Urzadzenie wybuchowe wyzwalane zblizeniem, ktore detonuje, gdy wrogowie sie zbliza."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/explosive_mine.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "explosive_mine",
     "name": {
       "value": "Mina wybuchowa",
@@ -4779,13 +4804,13 @@
     ]
   },
   {
-    "id": "explosive_mine_blueprint",
+    "id": "extended_barrel_blueprint",
     "name": {
-      "value": "Projekt Mina wybuchowa",
-      "originalEn": "Explosive Mine Blueprint"
+      "value": "Projekt Wydluzona lufa",
+      "originalEn": "Extended Barrel Blueprint"
     },
     "description": {
-      "en": "Urzadzenie wybuchowe wyzwalane zblizeniem, ktore detonuje, gdy wrogowie sie zbliza."
+      "en": "Umiarkowanie zwieksza predkosc pocisku. Kompatybilny z: Tempest, Arpeggio, Ferro, Renegade, Anvil"
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -4797,7 +4822,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/explosive_mine.png",
+    "imageFilename": "https://cdn.arctracker.io/items/extended_barrel.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -4828,31 +4853,6 @@
     "salvagesInto": {
       "mechanical_components": 2
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/extended_barrel.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "extended_barrel_blueprint",
-    "name": {
-      "value": "Projekt Wydluzona lufa",
-      "originalEn": "Extended Barrel Blueprint"
-    },
-    "description": {
-      "en": "Umiarkowanie zwieksza predkosc pocisku. Kompatybilny z: Tempest, Arpeggio, Ferro, Renegade, Anvil"
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/extended_barrel.png",
@@ -4894,6 +4894,31 @@
     ]
   },
   {
+    "id": "extended_light_mag_ii_blueprint",
+    "name": {
+      "value": "Projekt Rozszerzony lekki magazynek II",
+      "originalEn": "Extended Light Mag II Blueprint"
+    },
+    "description": {
+      "en": "Umiarkowanie zwieksza pojemnosc amunicji kompatybilnej broni uzywajacej lekkiej amunicji."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/extended_light_mag_ii.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "extended_light_mag_ii",
     "name": {
       "value": "Rozszerzony lekki magazynek II",
@@ -4927,13 +4952,13 @@
     ]
   },
   {
-    "id": "extended_light_mag_ii_blueprint",
+    "id": "extended_light_mag_iii_blueprint",
     "name": {
-      "value": "Projekt Rozszerzony lekki magazynek II",
-      "originalEn": "Extended Light Mag II Blueprint"
+      "value": "Projekt Rozszerzony lekki magazynek III",
+      "originalEn": "Extended Light Mag III Blueprint"
     },
     "description": {
-      "en": "Umiarkowanie zwieksza pojemnosc amunicji kompatybilnej broni uzywajacej lekkiej amunicji."
+      "en": "Znacznie rozszerza pojemnosc amunicji kompatybilnych broni uzywajacych lekkiej amunicji."
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -4945,7 +4970,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/extended_light_mag_ii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/extended_light_mag_iii.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -4976,31 +5001,6 @@
     "salvagesInto": {
       "mechanical_components": 2
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/extended_light_mag_iii.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "extended_light_mag_iii_blueprint",
-    "name": {
-      "value": "Projekt Rozszerzony lekki magazynek III",
-      "originalEn": "Extended Light Mag III Blueprint"
-    },
-    "description": {
-      "en": "Znacznie rozszerza pojemnosc amunicji kompatybilnych broni uzywajacych lekkiej amunicji."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/extended_light_mag_iii.png",
@@ -5042,6 +5042,31 @@
     ]
   },
   {
+    "id": "extended_medium_mag_ii_blueprint",
+    "name": {
+      "value": "Projekt rozszerzonego średniego magazynka II",
+      "originalEn": "Extended Medium Mag II Blueprint"
+    },
+    "description": {
+      "en": "Umiarkowanie zwiększa pojemność amunicji kompatybilnych broni używających średniej amunicji."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/extended_medium_mag_ii_blueprint.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "extended_medium_mag_ii",
     "name": {
       "value": "Rozszerzony średni magazynek II",
@@ -5075,13 +5100,13 @@
     ]
   },
   {
-    "id": "extended_medium_mag_ii_blueprint",
+    "id": "extended_medium_mag_iii_blueprint",
     "name": {
-      "value": "Projekt rozszerzonego średniego magazynka II",
-      "originalEn": "Extended Medium Mag II Blueprint"
+      "value": "Projekt rozszerzonego średniego magazynka III",
+      "originalEn": "Extended Medium Mag III Blueprint"
     },
     "description": {
-      "en": "Umiarkowanie zwiększa pojemność amunicji kompatybilnych broni używających średniej amunicji."
+      "en": "Znacznie zwiększa pojemność amunicji kompatybilnych broni używających średniej amunicji."
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -5093,7 +5118,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/extended_medium_mag_ii_blueprint.png",
+    "imageFilename": "https://cdn.arctracker.io/items/extended_medium_mag_iii.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -5124,31 +5149,6 @@
     "salvagesInto": {
       "mechanical_components": 2
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/extended_medium_mag_iii.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "extended_medium_mag_iii_blueprint",
-    "name": {
-      "value": "Projekt rozszerzonego średniego magazynka III",
-      "originalEn": "Extended Medium Mag III Blueprint"
-    },
-    "description": {
-      "en": "Znacznie zwiększa pojemność amunicji kompatybilnych broni używających średniej amunicji."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/extended_medium_mag_iii.png",
@@ -5190,6 +5190,31 @@
     ]
   },
   {
+    "id": "extended_shotgun_mag_ii_blueprint",
+    "name": {
+      "value": "Projekt rozszerzonego magazynka strzelby II",
+      "originalEn": "Extended Shotgun Mag II Blueprint"
+    },
+    "description": {
+      "en": "Umiarkowanie zwiększa pojemność amunicji strzelb."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/extended_shotgun_mag_ii.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "extended_shotgun_mag_ii",
     "name": {
       "value": "Rozszerzony magazynek do strzelby II",
@@ -5223,13 +5248,13 @@
     ]
   },
   {
-    "id": "extended_shotgun_mag_ii_blueprint",
+    "id": "extended_shotgun_mag_iii_blueprint",
     "name": {
-      "value": "Projekt rozszerzonego magazynka strzelby II",
-      "originalEn": "Extended Shotgun Mag II Blueprint"
+      "value": "Projekt Rozszerzony magazynek do strzelby III",
+      "originalEn": "Extended Shotgun Mag III Blueprint"
     },
     "description": {
-      "en": "Umiarkowanie zwiększa pojemność amunicji strzelb."
+      "en": "Znacząco zwiększa pojemność amunicji strzelb."
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -5241,7 +5266,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/extended_shotgun_mag_ii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/extended_shotgun_mag_iii.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -5272,31 +5297,6 @@
     "salvagesInto": {
       "mechanical_components": 2
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/extended_shotgun_mag_iii.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "extended_shotgun_mag_iii_blueprint",
-    "name": {
-      "value": "Projekt Rozszerzony magazynek do strzelby III",
-      "originalEn": "Extended Shotgun Mag III Blueprint"
-    },
-    "description": {
-      "en": "Znacząco zwiększa pojemność amunicji strzelb."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/extended_shotgun_mag_iii.png",
@@ -5687,6 +5687,31 @@
     ]
   },
   {
+    "id": "fireworks_box_blueprint",
+    "name": {
+      "value": "Projekt pudełka fajerwerków",
+      "originalEn": "Fireworks Box Blueprint"
+    },
+    "description": {
+      "en": "Odblokowuje projekt wytwarzania Pudełka fajerwerków."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/fireworks_box.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "fireworks_box",
     "name": {
       "value": "Pudełko fajerwerków",
@@ -5710,31 +5735,6 @@
     "salvagesInto": {
       "explosive_compound": 1
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/fireworks_box.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "fireworks_box_blueprint",
-    "name": {
-      "value": "Projekt pudełka fajerwerków",
-      "originalEn": "Fireworks Box Blueprint"
-    },
-    "description": {
-      "en": "Odblokowuje projekt wytwarzania Pudełka fajerwerków."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/fireworks_box.png",
@@ -6137,6 +6137,34 @@
     ]
   },
   {
+    "id": "gas_grenade_trap",
+    "name": {
+      "value": "Pułapka z granatem gazowym",
+      "originalEn": "Gas Grenade Trap"
+    },
+    "description": {
+      "en": "Laserowy drut pułapkowy, który detonuje granat gazowy."
+    },
+    "type": "Quick Use",
+    "rarity": "Common",
+    "value": 300,
+    "weightKg": 0.25,
+    "stackSize": 3,
+    "recyclesInto": null,
+    "recipe": {
+      "gas_grenade": 1,
+      "wires": 1
+    },
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/gas_grenade_trap.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "gas_grenade",
     "name": {
       "value": "Granat gazowy",
@@ -6170,28 +6198,25 @@
     ]
   },
   {
-    "id": "gas_grenade_trap",
+    "id": "gas_mine_blueprint",
     "name": {
-      "value": "Pułapka z granatem gazowym",
-      "originalEn": "Gas Grenade Trap"
+      "value": "Projekt Mina gazowa",
+      "originalEn": "Gas Mine Blueprint"
     },
     "description": {
-      "en": "Laserowy drut pułapkowy, który detonuje granat gazowy."
+      "en": "Mina aktywowana zbliżeniem, która wyskakuje i uwalnia chmurę gazu szybko wyczerpującego wytrzymałość."
     },
-    "type": "Quick Use",
+    "type": "Blueprint",
     "rarity": "Common",
-    "value": 300,
-    "weightKg": 0.25,
-    "stackSize": 3,
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
     "recyclesInto": null,
-    "recipe": {
-      "gas_grenade": 1,
-      "wires": 1
-    },
+    "recipe": null,
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/gas_grenade_trap.png",
+    "imageFilename": "https://cdn.arctracker.io/items/gas_mine.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -6222,31 +6247,6 @@
     "salvagesInto": {
       "chemicals": 2
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/gas_mine.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "gas_mine_blueprint",
-    "name": {
-      "value": "Projekt Mina gazowa",
-      "originalEn": "Gas Mine Blueprint"
-    },
-    "description": {
-      "en": "Mina aktywowana zbliżeniem, która wyskakuje i uwalnia chmurę gazu szybko wyczerpującego wytrzymałość."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/gas_mine.png",
@@ -6340,6 +6340,31 @@
     ]
   },
   {
+    "id": "green_light_stick_blueprint",
+    "name": {
+      "value": "Projekt zielonego świecącego patyka",
+      "originalEn": "Green Light Stick Blueprint"
+    },
+    "description": {
+      "en": "Rzucany chemiczny świecący patyk, który oświetla obszar wokół siebie."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/green_light_stick.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "green_light_stick",
     "name": {
       "value": "Zielony patyk świetlny",
@@ -6362,31 +6387,6 @@
     "salvagesInto": {
       "chemicals": 1
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/green_light_stick.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "green_light_stick_blueprint",
-    "name": {
-      "value": "Projekt zielonego świecącego patyka",
-      "originalEn": "Green Light Stick Blueprint"
-    },
-    "description": {
-      "en": "Rzucany chemiczny świecący patyk, który oświetla obszar wokół siebie."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/green_light_stick.png",
@@ -6619,6 +6619,31 @@
     ]
   },
   {
+    "id": "heavy_gun_parts_blueprint",
+    "name": {
+      "value": "Projekt części ciężkiej broni",
+      "originalEn": "Heavy Gun Parts Blueprint"
+    },
+    "description": {
+      "en": "Używany do wytwarzania broni."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/heavy_gun_parts.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "heavy_gun_parts",
     "name": {
       "value": "Części ciężkiej broni",
@@ -6648,31 +6673,6 @@
     "foundIn": [
       "Security",
       "Raider"
-    ]
-  },
-  {
-    "id": "heavy_gun_parts_blueprint",
-    "name": {
-      "value": "Projekt części ciężkiej broni",
-      "originalEn": "Heavy Gun Parts Blueprint"
-    },
-    "description": {
-      "en": "Używany do wytwarzania broni."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/heavy_gun_parts.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
     ]
   },
   {
@@ -7354,6 +7354,31 @@
     ]
   },
   {
+    "id": "jolt_mine_blueprint",
+    "name": {
+      "value": "Projekt miny paraliżującej",
+      "originalEn": "Jolt Mine Blueprint"
+    },
+    "description": {
+      "en": "Mina aktywowana zbliżeniem, która wyskakuje i ogłusza wszystko w swoim promieniu."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/jolt_mine.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "jolt_mine",
     "name": {
       "value": "Mina Jolt",
@@ -7387,13 +7412,13 @@
     ]
   },
   {
-    "id": "jolt_mine_blueprint",
+    "id": "jupiter_blueprint",
     "name": {
-      "value": "Projekt miny paraliżującej",
-      "originalEn": "Jolt Mine Blueprint"
+      "value": "Projekt Jupitera",
+      "originalEn": "Jupiter Blueprint"
     },
     "description": {
-      "en": "Mina aktywowana zbliżeniem, która wyskakuje i ogłusza wszystko w swoim promieniu."
+      "en": "Karabin snajperski z zamkiem ryglowym o wyjątkowych obrażeniach i celności, ale powolnej obsłudze."
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -7405,7 +7430,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/jolt_mine.png",
+    "imageFilename": "https://cdn.arctracker.io/items/jupiter.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -7441,31 +7466,6 @@
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/jupiter.png",
     "isWeapon": true,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "jupiter_blueprint",
-    "name": {
-      "value": "Projekt Jupitera",
-      "originalEn": "Jupiter Blueprint"
-    },
-    "description": {
-      "en": "Karabin snajperski z zamkiem ryglowym o wyjątkowych obrażeniach i celności, ale powolnej obsłudze."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/jupiter.png",
-    "isWeapon": null,
     "foundIn": [
       "Unknown"
     ]
@@ -7879,6 +7879,31 @@
     ]
   },
   {
+    "id": "light_gun_parts_blueprint",
+    "name": {
+      "value": "Projekt lekkich części broni",
+      "originalEn": "Light Gun Parts Blueprint"
+    },
+    "description": {
+      "en": "Różne części zamienne używane do pistoletów i pistoletów maszynowych."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/light_gun_parts_blueprint.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "light_gun_parts",
     "name": {
       "value": "Części Lekkiej Broni",
@@ -7908,31 +7933,6 @@
     "foundIn": [
       "Raider",
       "Security"
-    ]
-  },
-  {
-    "id": "light_gun_parts_blueprint",
-    "name": {
-      "value": "Projekt lekkich części broni",
-      "originalEn": "Light Gun Parts Blueprint"
-    },
-    "description": {
-      "en": "Różne części zamienne używane do pistoletów i pistoletów maszynowych."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/light_gun_parts_blueprint.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
     ]
   },
   {
@@ -8001,6 +8001,31 @@
     ]
   },
   {
+    "id": "lightweight_stock_blueprint",
+    "name": {
+      "value": "Projekt lekkiej kolby",
+      "originalEn": "Lightweight Stock Blueprint"
+    },
+    "description": {
+      "en": "Umiarkowanie poprawia prędkość celowania i dobywania."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/lightweight_stock_blueprint.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "lightweight_stock",
     "name": {
       "value": "Lekka kolba",
@@ -8028,31 +8053,6 @@
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/lightweight_stock.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "lightweight_stock_blueprint",
-    "name": {
-      "value": "Projekt lekkiej kolby",
-      "originalEn": "Lightweight Stock Blueprint"
-    },
-    "description": {
-      "en": "Umiarkowanie poprawia prędkość celowania i dobywania."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/lightweight_stock_blueprint.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -8191,6 +8191,31 @@
     ]
   },
   {
+    "id": "looting_mk3_safekeeper_blueprint",
+    "name": {
+      "value": "Schemat: Łupienie Mk. 3 (Kustosz)",
+      "originalEn": "Looting Mk. 3 (Safekeeper) Blueprint"
+    },
+    "description": {
+      "en": "Ulepszenie łupieżcze, które poświęca wagę i użyteczność na rzecz zwiększonego potencjału zbierania łupów. Bezpieczna kieszeń umożliwia przechowywanie dowolnych przedmiotów."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/looting_mk3_safekeeper.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "looting_mk3_safekeeper",
     "name": {
       "value": "Grabież Mk. 3 (Strażnik)",
@@ -8224,25 +8249,25 @@
     ]
   },
   {
-    "id": "looting_mk3_safekeeper_blueprint",
+    "id": "looting_mk3_survivor_blueprint",
     "name": {
-      "value": "Schemat: Łupienie Mk. 3 (Kustosz)",
-      "originalEn": "Looting Mk. 3 (Safekeeper) Blueprint"
+      "value": "Projekt Grabież Mk. 3 (Ocalały)",
+      "originalEn": "Looting Mk. 3 (Survivor) Blueprint"
     },
     "description": {
-      "en": "Ulepszenie łupieżcze, które poświęca wagę i użyteczność na rzecz zwiększonego potencjału zbierania łupów. Bezpieczna kieszeń umożliwia przechowywanie dowolnych przedmiotów."
+      "en": "Wytrzymała augmentacjaьючного zwierzęcia. Duża pojemność wagowa i duża przestrzeń plecaka."
     },
     "type": "Blueprint",
     "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": 1,
+    "stackSize": null,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/looting_mk3_safekeeper.png",
+    "imageFilename": "https://cdn.arctracker.io/items/looting_mk3_survivor_blueprint.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -8276,63 +8301,6 @@
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/looting_mk3_survivor.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "looting_mk3_survivor_blueprint",
-    "name": {
-      "value": "Projekt Grabież Mk. 3 (Ocalały)",
-      "originalEn": "Looting Mk. 3 (Survivor) Blueprint"
-    },
-    "description": {
-      "en": "Wytrzymała augmentacjaьючного zwierzęcia. Duża pojemność wagowa i duża przestrzeń plecaka."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": null,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/looting_mk3_survivor_blueprint.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "lure_grenade",
-    "name": {
-      "value": "Granat wabik",
-      "originalEn": "Lure Grenade"
-    },
-    "description": {
-      "en": "Urządzenie dźwiękowe, które przykleja się do powierzchni, rozpraszając pobliskie maszyny ARC i przyciągając ich ogień."
-    },
-    "type": "Quick Use",
-    "rarity": "Uncommon",
-    "value": 1000,
-    "weightKg": 0.4,
-    "stackSize": 3,
-    "recyclesInto": {
-      "speaker_component": 1
-    },
-    "recipe": {
-      "electrical_components": 1,
-      "speaker_component": 1
-    },
-    "salvagesInto": {
-      "speaker_component": 1
-    },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/lure_grenade.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -8386,6 +8354,38 @@
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/lure_grenade_trap.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "lure_grenade",
+    "name": {
+      "value": "Granat wabik",
+      "originalEn": "Lure Grenade"
+    },
+    "description": {
+      "en": "Urządzenie dźwiękowe, które przykleja się do powierzchni, rozpraszając pobliskie maszyny ARC i przyciągając ich ogień."
+    },
+    "type": "Quick Use",
+    "rarity": "Uncommon",
+    "value": 1000,
+    "weightKg": 0.4,
+    "stackSize": 3,
+    "recyclesInto": {
+      "speaker_component": 1
+    },
+    "recipe": {
+      "electrical_components": 1,
+      "speaker_component": 1
+    },
+    "salvagesInto": {
+      "speaker_component": 1
+    },
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/lure_grenade.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -8625,6 +8625,31 @@
     ]
   },
   {
+    "id": "medium_gun_parts_blueprint",
+    "name": {
+      "value": "Projekt średnich części broni",
+      "originalEn": "Medium Gun Parts Blueprint"
+    },
+    "description": {
+      "en": "Różne części zamienne używane do karabinów."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/medium_gun_parts_blueprint.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "medium_gun_parts",
     "name": {
       "value": "Średnie części broni",
@@ -8654,31 +8679,6 @@
     "foundIn": [
       "Raider",
       "Security"
-    ]
-  },
-  {
-    "id": "medium_gun_parts_blueprint",
-    "name": {
-      "value": "Projekt średnich części broni",
-      "originalEn": "Medium Gun Parts Blueprint"
-    },
-    "description": {
-      "en": "Różne części zamienne używane do karabinów."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/medium_gun_parts_blueprint.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
     ]
   },
   {
@@ -9059,6 +9059,31 @@
     ]
   },
   {
+    "id": "muzzle_brake_ii_blueprint",
+    "name": {
+      "value": "Projekt hamulca wylotowego II",
+      "originalEn": "Muzzle Brake II Blueprint"
+    },
+    "description": {
+      "en": "Umiarkowanie zmniejsza zarówno odrzut pionowy, jak i poziomy."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/muzzle_brake_ii.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "muzzle_brake_ii",
     "name": {
       "value": "Hamulec wylotowy II",
@@ -9092,13 +9117,13 @@
     ]
   },
   {
-    "id": "muzzle_brake_ii_blueprint",
+    "id": "muzzle_brake_iii_blueprint",
     "name": {
-      "value": "Projekt hamulca wylotowego II",
-      "originalEn": "Muzzle Brake II Blueprint"
+      "value": "Projekt Hamulec wylotowy III",
+      "originalEn": "Muzzle Brake III Blueprint"
     },
     "description": {
-      "en": "Umiarkowanie zmniejsza zarówno odrzut pionowy, jak i poziomy."
+      "en": "Znaczaco zmniejsza zarowno odrzut pionowy, jak i poziomy. Kompatybilny z: Arpeggio, Ferro, Renegade, Anvil, Stitcher"
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -9110,7 +9135,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/muzzle_brake_ii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/muzzle_brake_iii.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -9141,31 +9166,6 @@
     "salvagesInto": {
       "mechanical_components": 2
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/muzzle_brake_iii.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "muzzle_brake_iii_blueprint",
-    "name": {
-      "value": "Projekt Hamulec wylotowy III",
-      "originalEn": "Muzzle Brake III Blueprint"
-    },
-    "description": {
-      "en": "Znaczaco zmniejsza zarowno odrzut pionowy, jak i poziomy. Kompatybilny z: Arpeggio, Ferro, Renegade, Anvil, Stitcher"
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/muzzle_brake_iii.png",
@@ -9527,6 +9527,31 @@
     ]
   },
   {
+    "id": "padded_stock_blueprint",
+    "name": {
+      "value": "Schemat: Wyściełana kolba",
+      "originalEn": "Padded Stock Blueprint"
+    },
+    "description": {
+      "en": "Znacznie poprawia stabilność. Kompatybilny z: Arpeggio, Rattler, Ferro, Renegade, Torrente"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/padded_stock.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "padded_stock",
     "name": {
       "value": "Wyściełana kolba",
@@ -9551,31 +9576,6 @@
     "salvagesInto": {
       "mechanical_components": 2
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/padded_stock.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "padded_stock_blueprint",
-    "name": {
-      "value": "Schemat: Wyściełana kolba",
-      "originalEn": "Padded Stock Blueprint"
-    },
-    "description": {
-      "en": "Znacznie poprawia stabilność. Kompatybilny z: Arpeggio, Rattler, Ferro, Renegade, Torrente"
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/padded_stock.png",
@@ -10020,7 +10020,7 @@
     "type": "Nature",
     "rarity": "Common",
     "value": 640,
-    "weightKg": 0.2,
+    "weightKg": null,
     "stackSize": 10,
     "recyclesInto": {
       "assorted_seeds": 3
@@ -10123,6 +10123,31 @@
     ]
   },
   {
+    "id": "pulse_mine_blueprint",
+    "name": {
+      "value": "Projekt miny pulsacyjnej",
+      "originalEn": "Pulse Mine Blueprint"
+    },
+    "description": {
+      "en": "Mina aktywowana zbliżeniem, która wyskakuje i odpycha wszystko w swoim promieniu."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/pulse_mine.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "pulse_mine",
     "name": {
       "value": "Mina pulsacyjna",
@@ -10146,31 +10171,6 @@
     "salvagesInto": {
       "chemicals": 3
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/pulse_mine.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "pulse_mine_blueprint",
-    "name": {
-      "value": "Projekt miny pulsacyjnej",
-      "originalEn": "Pulse Mine Blueprint"
-    },
-    "description": {
-      "en": "Mina aktywowana zbliżeniem, która wyskakuje i odpycha wszystko w swoim promieniu."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/pulse_mine.png",
@@ -10210,6 +10210,36 @@
     ]
   },
   {
+    "id": "radio_relay",
+    "name": {
+      "value": "Przekaźnik radiowy",
+      "originalEn": "Radio Relay"
+    },
+    "description": {
+      "en": "Można przetworzyć na materiały rzemieślnicze."
+    },
+    "type": "Recyclable",
+    "rarity": "Rare",
+    "value": 3000,
+    "weightKg": 1.5,
+    "stackSize": 3,
+    "recyclesInto": {
+      "sensors": 2,
+      "speaker_component": 2
+    },
+    "recipe": null,
+    "salvagesInto": {
+      "sensors": 2
+    },
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/radio_relay.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Exodus"
+    ]
+  },
+  {
     "id": "radio",
     "name": {
       "value": "Radio",
@@ -10238,36 +10268,6 @@
     "foundIn": [
       "Commercial",
       "Residential"
-    ]
-  },
-  {
-    "id": "radio_relay",
-    "name": {
-      "value": "Przekaźnik radiowy",
-      "originalEn": "Radio Relay"
-    },
-    "description": {
-      "en": "Można przetworzyć na materiały rzemieślnicze."
-    },
-    "type": "Recyclable",
-    "rarity": "Rare",
-    "value": 3000,
-    "weightKg": 1.5,
-    "stackSize": 3,
-    "recyclesInto": {
-      "sensors": 2,
-      "speaker_component": 2
-    },
-    "recipe": null,
-    "salvagesInto": {
-      "sensors": 2
-    },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/radio_relay.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Exodus"
     ]
   },
   {
@@ -10510,6 +10510,31 @@
     ]
   },
   {
+    "id": "red_light_stick_blueprint",
+    "name": {
+      "value": "Projekt czerwonego patyka świetlnego",
+      "originalEn": "Red Light Stick Blueprint"
+    },
+    "description": {
+      "en": "Rzucane światło chemiczne, które oświetla obszar wokół niego."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/red_light_stick.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "red_light_stick",
     "name": {
       "value": "Czerwony patyk świetlny",
@@ -10532,31 +10557,6 @@
     "salvagesInto": {
       "chemicals": 1
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/red_light_stick.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "red_light_stick_blueprint",
-    "name": {
-      "value": "Projekt czerwonego patyka świetlnego",
-      "originalEn": "Red Light Stick Blueprint"
-    },
-    "description": {
-      "en": "Rzucane światło chemiczne, które oświetla obszar wokół niego."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/red_light_stick.png",
@@ -10621,6 +10621,31 @@
     ]
   },
   {
+    "id": "remote_raider_flare_blueprint",
+    "name": {
+      "value": "Projekt zdalnej flary najeźdźcy",
+      "originalEn": "Remote Raider Flare Blueprint"
+    },
+    "description": {
+      "en": "Urządzenie do rozmieszczenia, które po ręcznym uruchomieniu wystrzeliwuje flarę wzywającą najeźdźców."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/remote_raider_flare.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "remote_raider_flare",
     "name": {
       "value": "Zdalna flara najeźdźcy",
@@ -10645,31 +10670,6 @@
     "salvagesInto": {
       "chemicals": 1
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/remote_raider_flare.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "remote_raider_flare_blueprint",
-    "name": {
-      "value": "Projekt zdalnej flary najeźdźcy",
-      "originalEn": "Remote Raider Flare Blueprint"
-    },
-    "description": {
-      "en": "Urządzenie do rozmieszczenia, które po ręcznym uruchomieniu wystrzeliwuje flarę wzywającą najeźdźców."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/remote_raider_flare.png",
@@ -11560,6 +11560,31 @@
     ]
   },
   {
+    "id": "seeker_grenade_blueprint",
+    "name": {
+      "value": "Projekt granatu naprowadzanego",
+      "originalEn": "Seeker Grenade Blueprint"
+    },
+    "description": {
+      "en": "Odblokowuje projekt wytwarzania Granatu naprowadzanego."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/seeker_grenade.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "seeker_grenade",
     "name": {
       "value": "Granat naprowadzany",
@@ -11583,31 +11608,6 @@
     "salvagesInto": {
       "chemicals": 3
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/seeker_grenade.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "seeker_grenade_blueprint",
-    "name": {
-      "value": "Projekt granatu naprowadzanego",
-      "originalEn": "Seeker Grenade Blueprint"
-    },
-    "description": {
-      "en": "Odblokowuje projekt wytwarzania Granatu naprowadzanego."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/seeker_grenade.png",
@@ -11802,6 +11802,31 @@
     ]
   },
   {
+    "id": "shotgun_choke_ii_blueprint",
+    "name": {
+      "value": "Projekt Dlawik do strzelby II",
+      "originalEn": "Shotgun Choke II Blueprint"
+    },
+    "description": {
+      "en": "Umiarkowanie redukuje podstawowy rozrzut. Kompatybilny z: Il Toro, Vulcano"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/shotgun_choke_ii.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "shotgun_choke_ii",
     "name": {
       "value": "Dławik do strzelby II",
@@ -11835,13 +11860,13 @@
     ]
   },
   {
-    "id": "shotgun_choke_ii_blueprint",
+    "id": "shotgun_choke_iii_blueprint",
     "name": {
-      "value": "Projekt Dlawik do strzelby II",
-      "originalEn": "Shotgun Choke II Blueprint"
+      "value": "Projekt Dlawik strzelby III",
+      "originalEn": "Shotgun Choke III Blueprint"
     },
     "description": {
-      "en": "Umiarkowanie redukuje podstawowy rozrzut. Kompatybilny z: Il Toro, Vulcano"
+      "en": "Znaczaco zmniejsza podstawowy rozrzut."
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -11853,7 +11878,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/shotgun_choke_ii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/shotgun_choke_iii.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -11893,13 +11918,13 @@
     ]
   },
   {
-    "id": "shotgun_choke_iii_blueprint",
+    "id": "shotgun_silencer_blueprint",
     "name": {
-      "value": "Projekt Dlawik strzelby III",
-      "originalEn": "Shotgun Choke III Blueprint"
+      "value": "Projekt Tlumik do strzelby",
+      "originalEn": "Shotgun Silencer Blueprint"
     },
     "description": {
-      "en": "Znaczaco zmniejsza podstawowy rozrzut."
+      "en": "Umiarkowanie redukuje ilosc halasu wytwarzanego podczas strzalu."
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -11911,7 +11936,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/shotgun_choke_iii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/shotgun_silencer.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -11951,13 +11976,13 @@
     ]
   },
   {
-    "id": "shotgun_silencer_blueprint",
+    "id": "showstopper_blueprint",
     "name": {
-      "value": "Projekt Tlumik do strzelby",
-      "originalEn": "Shotgun Silencer Blueprint"
+      "value": "Projekt Showstopper",
+      "originalEn": "Showstopper Blueprint"
     },
     "description": {
-      "en": "Umiarkowanie redukuje ilosc halasu wytwarzanego podczas strzalu."
+      "en": "Granat, ktory detonuje po opoznieniu, ogluszajac wrogow w swoim promieniu."
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -11969,7 +11994,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/shotgun_silencer.png",
+    "imageFilename": "https://cdn.arctracker.io/items/showstopper.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -12001,31 +12026,6 @@
     "salvagesInto": {
       "electrical_components": 1
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/showstopper.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "showstopper_blueprint",
-    "name": {
-      "value": "Projekt Showstopper",
-      "originalEn": "Showstopper Blueprint"
-    },
-    "description": {
-      "en": "Granat, ktory detonuje po opoznieniu, ogluszajac wrogow w swoim promieniu."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/showstopper.png",
@@ -12128,6 +12128,31 @@
     ]
   },
   {
+    "id": "silencer_i_blueprint",
+    "name": {
+      "value": "Projekt Tłumika I",
+      "originalEn": "Silencer I Blueprint"
+    },
+    "description": {
+      "en": "Projekt do wytworzenia Tłumika I."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/silencer_i.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "silencer_i",
     "name": {
       "value": "Tłumik I",
@@ -12161,13 +12186,13 @@
     ]
   },
   {
-    "id": "silencer_i_blueprint",
+    "id": "silencer_ii_blueprint",
     "name": {
-      "value": "Projekt Tłumika I",
-      "originalEn": "Silencer I Blueprint"
+      "value": "Projekt Tłumika II",
+      "originalEn": "Silencer II Blueprint"
     },
     "description": {
-      "en": "Projekt do wytworzenia Tłumika I."
+      "en": "Projekt do wytworzenia Tłumika II."
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -12179,7 +12204,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/silencer_i.png",
+    "imageFilename": "https://cdn.arctracker.io/items/silencer_ii.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -12210,31 +12235,6 @@
     "salvagesInto": {
       "mechanical_components": 2
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/silencer_ii.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "silencer_ii_blueprint",
-    "name": {
-      "value": "Projekt Tłumika II",
-      "originalEn": "Silencer II Blueprint"
-    },
-    "description": {
-      "en": "Projekt do wytworzenia Tłumika II."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/silencer_ii.png",
@@ -12331,39 +12331,6 @@
     ]
   },
   {
-    "id": "smoke_grenade",
-    "name": {
-      "value": "Granat dymny",
-      "originalEn": "Smoke Grenade"
-    },
-    "description": {
-      "en": "Granat, który tworzy utrzymującą się chmurę dymu po uderzeniu, blokując widoczność dla ARC i innych Najeźdźców."
-    },
-    "type": "Quick Use",
-    "rarity": "Rare",
-    "value": 1000,
-    "weightKg": 0.2,
-    "stackSize": 5,
-    "recyclesInto": {
-      "canister": 1,
-      "chemicals": 2
-    },
-    "recipe": {
-      "canister": 1,
-      "chemicals": 14
-    },
-    "salvagesInto": {
-      "chemicals": 3
-    },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/smoke_grenade.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
     "id": "smoke_grenade_blueprint",
     "name": {
       "value": "Projekt Granat dymny",
@@ -12417,6 +12384,39 @@
     ]
   },
   {
+    "id": "smoke_grenade",
+    "name": {
+      "value": "Granat dymny",
+      "originalEn": "Smoke Grenade"
+    },
+    "description": {
+      "en": "Granat, który tworzy utrzymującą się chmurę dymu po uderzeniu, blokując widoczność dla ARC i innych Najeźdźców."
+    },
+    "type": "Quick Use",
+    "rarity": "Rare",
+    "value": 1000,
+    "weightKg": 0.2,
+    "stackSize": 5,
+    "recyclesInto": {
+      "canister": 1,
+      "chemicals": 2
+    },
+    "recipe": {
+      "canister": 1,
+      "chemicals": 14
+    },
+    "salvagesInto": {
+      "chemicals": 3
+    },
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/smoke_grenade.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "snap_blast_grenade",
     "name": {
       "value": "Granat błyskawicznej eksplozji",
@@ -12450,6 +12450,31 @@
     ]
   },
   {
+    "id": "snap_hook_blueprint",
+    "name": {
+      "value": "Projekt Snap Hook",
+      "originalEn": "Snap Hook Blueprint"
+    },
+    "description": {
+      "en": "Gadżet pozwalający użytkownikowi wspinać się na konstrukcje i pokonywać duże odległości."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/snap_hook.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "snap_hook",
     "name": {
       "value": "Karabińczyk",
@@ -12475,31 +12500,6 @@
     "salvagesInto": {
       "advanced_electrical_components": 2
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/snap_hook.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "snap_hook_blueprint",
-    "name": {
-      "value": "Projekt Snap Hook",
-      "originalEn": "Snap Hook Blueprint"
-    },
-    "description": {
-      "en": "Gadżet pozwalający użytkownikowi wspinać się na konstrukcje i pokonywać duże odległości."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/snap_hook.png",
@@ -12847,6 +12847,31 @@
     ]
   },
   {
+    "id": "stable_stock_ii_blueprint",
+    "name": {
+      "value": "Projekt Stabilna kolba II",
+      "originalEn": "Stable Stock II Blueprint"
+    },
+    "description": {
+      "en": "Umiarkowanie poprawia rozrzut i czas regeneracji odrzutu."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/stable_stock_ii.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "stable_stock_ii",
     "name": {
       "value": "Stabilna kolba II",
@@ -12880,13 +12905,13 @@
     ]
   },
   {
-    "id": "stable_stock_ii_blueprint",
+    "id": "stable_stock_iii_blueprint",
     "name": {
-      "value": "Projekt Stabilna kolba II",
-      "originalEn": "Stable Stock II Blueprint"
+      "value": "Projekt Stabilna kolba III",
+      "originalEn": "Stable Stock III Blueprint"
     },
     "description": {
-      "en": "Umiarkowanie poprawia rozrzut i czas regeneracji odrzutu."
+      "en": "Znaczaco poprawia rozrzut i czas regeneracji odrzutu."
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -12898,7 +12923,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/stable_stock_ii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/stable_stock_iii.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -12929,31 +12954,6 @@
     "salvagesInto": {
       "mechanical_components": 2
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/stable_stock_iii.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "stable_stock_iii_blueprint",
-    "name": {
-      "value": "Projekt Stabilna kolba III",
-      "originalEn": "Stable Stock III Blueprint"
-    },
-    "description": {
-      "en": "Znaczaco poprawia rozrzut i czas regeneracji odrzutu."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/stable_stock_iii.png",
@@ -13308,6 +13308,31 @@
     ]
   },
   {
+    "id": "surge_coil_blueprint",
+    "name": {
+      "value": "Surge Coil Schemat",
+      "originalEn": "Surge Coil Blueprint"
+    },
+    "description": {
+      "en": "Urządzenie możliwe do rozstawienia, które okresowo elektryzuje obszar wokół siebie i na krótko ogłusza wszystko, co się w nim znajdzie."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "surge_coil",
     "name": {
       "value": "Surge Coil",
@@ -13333,31 +13358,6 @@
     "salvagesInto": {
       "electrical_components": 1
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": null,
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "surge_coil_blueprint",
-    "name": {
-      "value": "Surge Coil Schemat",
-      "originalEn": "Surge Coil Blueprint"
-    },
-    "description": {
-      "en": "Urządzenie możliwe do rozstawienia, które okresowo elektryzuje obszar wokół siebie i na krótko ogłusza wszystko, co się w nim znajdzie."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": null,
@@ -13555,6 +13555,31 @@
     ]
   },
   {
+    "id": "tactical_mk3_defensive_blueprint",
+    "name": {
+      "value": "Projekt Taktyczny Mk. 3 (Obronny)",
+      "originalEn": "Tactical Mk. 3 (Defensive) Blueprint"
+    },
+    "description": {
+      "en": "Ulepszenie skoncentrowane na obronie, pomagajace utrzymac tarcze w pelnej kondycji."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_defensive.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "tactical_mk3_defensive",
     "name": {
       "value": "Taktyczny Mk. 3 (Obronny)",
@@ -13588,13 +13613,13 @@
     ]
   },
   {
-    "id": "tactical_mk3_defensive_blueprint",
+    "id": "tactical_mk3_healing_blueprint",
     "name": {
-      "value": "Projekt Taktyczny Mk. 3 (Obronny)",
-      "originalEn": "Tactical Mk. 3 (Defensive) Blueprint"
+      "value": "Projekt Taktyczny Mk. 3 (Leczenie)",
+      "originalEn": "Tactical Mk. 3 (Healing) Blueprint"
     },
     "description": {
-      "en": "Ulepszenie skoncentrowane na obronie, pomagajace utrzymac tarcze w pelnej kondycji."
+      "en": "Augmentacja skupiona na leczeniu, która dodaje dodatkowe sloty na przedmioty lecznicze."
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -13606,7 +13631,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_defensive.png",
+    "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_healing_blueprint.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -13646,13 +13671,13 @@
     ]
   },
   {
-    "id": "tactical_mk3_healing_blueprint",
+    "id": "tactical_mk3_revival_blueprint",
     "name": {
-      "value": "Projekt Taktyczny Mk. 3 (Leczenie)",
-      "originalEn": "Tactical Mk. 3 (Healing) Blueprint"
+      "value": "Schemat: Taktyczne Mk. 3 (Reanimacja)",
+      "originalEn": "Tactical Mk. 3 (Revival) Blueprint"
     },
     "description": {
-      "en": "Augmentacja skupiona na leczeniu, która dodaje dodatkowe sloty na przedmioty lecznicze."
+      "en": "Ulepszenie skupione na reanimacji, zaprojektowane do wsparcia drużyny. Przywraca 1 pkt zdrowia co 5 sekund. Po otrzymaniu obrażeń efekt zostaje wstrzymany na 30 sekund. Zawiera zintegrowany defibrylator z nieskończoną liczbą użyć i 240-sekundowym czasem odnowienia."
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -13664,7 +13689,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_healing_blueprint.png",
+    "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_revival.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -13704,13 +13729,13 @@
     ]
   },
   {
-    "id": "tactical_mk3_revival_blueprint",
+    "id": "tagging_grenade_blueprint",
     "name": {
-      "value": "Schemat: Taktyczne Mk. 3 (Reanimacja)",
-      "originalEn": "Tactical Mk. 3 (Revival) Blueprint"
+      "value": "Projekt Granat znacznikowy",
+      "originalEn": "Tagging Grenade Blueprint"
     },
     "description": {
-      "en": "Ulepszenie skupione na reanimacji, zaprojektowane do wsparcia drużyny. Przywraca 1 pkt zdrowia co 5 sekund. Po otrzymaniu obrażeń efekt zostaje wstrzymany na 30 sekund. Zawiera zintegrowany defibrylator z nieskończoną liczbą użyć i 240-sekundowym czasem odnowienia."
+      "en": "Granat, ktory detonuje po opoznieniu, oznaczajac najezdzcow i wrogow ARC w obszarze."
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -13722,7 +13747,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_revival.png",
+    "imageFilename": "https://cdn.arctracker.io/items/tagging_grenade.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -13753,31 +13778,6 @@
     "salvagesInto": {
       "sensors": 1
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/tagging_grenade.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "tagging_grenade_blueprint",
-    "name": {
-      "value": "Projekt Granat znacznikowy",
-      "originalEn": "Tagging Grenade Blueprint"
-    },
-    "description": {
-      "en": "Granat, ktory detonuje po opoznieniu, oznaczajac najezdzcow i wrogow ARC w obszarze."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/tagging_grenade.png",
@@ -14337,6 +14337,31 @@
     ]
   },
   {
+    "id": "trailblazer_blueprint",
+    "name": {
+      "value": "Projekt Trailblazera",
+      "originalEn": "Trailblazer Blueprint"
+    },
+    "description": {
+      "en": "Odblokowuje projekt wytwarzania Trailblazera."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/trailblazer.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "trailblazer",
     "name": {
       "value": "Pionier",
@@ -14370,13 +14395,13 @@
     ]
   },
   {
-    "id": "trailblazer_blueprint",
+    "id": "trigger_nade_blueprint",
     "name": {
-      "value": "Projekt Trailblazera",
-      "originalEn": "Trailblazer Blueprint"
+      "value": "Projekt granatu wyzwalającego",
+      "originalEn": "Trigger Nade Blueprint"
     },
     "description": {
-      "en": "Odblokowuje projekt wytwarzania Trailblazera."
+      "en": "Granat zdalnie detonowany, który może przyczepić się do powierzchni i ARC, zadając obrażenia wybuchowe po aktywacji."
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -14388,7 +14413,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/trailblazer.png",
+    "imageFilename": "https://cdn.arctracker.io/items/trigger_nade_blueprint.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -14422,31 +14447,6 @@
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/trigger_nade.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "trigger_nade_blueprint",
-    "name": {
-      "value": "Projekt granatu wyzwalającego",
-      "originalEn": "Trigger Nade Blueprint"
-    },
-    "description": {
-      "en": "Granat zdalnie detonowany, który może przyczepić się do powierzchni i ARC, zadając obrażenia wybuchowe po aktywacji."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/trigger_nade_blueprint.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -14785,6 +14785,31 @@
     ]
   },
   {
+    "id": "vertical_grip_ii_blueprint",
+    "name": {
+      "value": "Projekt Chwyt pionowy II",
+      "originalEn": "Vertical Grip II Blueprint"
+    },
+    "description": {
+      "en": "Umiarkowanie redukuje odrzut pionowy. Kompatybilny z: Arpeggio, Ferro, Venator, Il Toro, Stitcher"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/vertical_grip_ii.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "vertical_grip_ii",
     "name": {
       "value": "Chwyt pionowy II",
@@ -14818,13 +14843,13 @@
     ]
   },
   {
-    "id": "vertical_grip_ii_blueprint",
+    "id": "vertical_grip_iii_blueprint",
     "name": {
-      "value": "Projekt Chwyt pionowy II",
-      "originalEn": "Vertical Grip II Blueprint"
+      "value": "Projekt Chwytu Pionowego III",
+      "originalEn": "Vertical Grip III Blueprint"
     },
     "description": {
-      "en": "Umiarkowanie redukuje odrzut pionowy. Kompatybilny z: Arpeggio, Ferro, Venator, Il Toro, Stitcher"
+      "en": "Znacznie zmniejsza pionowy odrzut."
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -14836,7 +14861,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/vertical_grip_ii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/vertical_grip_iii_blueprint.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -14876,31 +14901,6 @@
     ]
   },
   {
-    "id": "vertical_grip_iii_blueprint",
-    "name": {
-      "value": "Projekt Chwytu Pionowego III",
-      "originalEn": "Vertical Grip III Blueprint"
-    },
-    "description": {
-      "en": "Znacznie zmniejsza pionowy odrzut."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/vertical_grip_iii_blueprint.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
     "id": "very_comfortable_pillow",
     "name": {
       "value": "Bardzo wygodna poduszka",
@@ -14924,6 +14924,31 @@
     "foundIn": [
       "Residential",
       "Commercial"
+    ]
+  },
+  {
+    "id": "vita_shot_blueprint",
+    "name": {
+      "value": "Projekt Zastrzyku Vita",
+      "originalEn": "Vita Shot Blueprint"
+    },
+    "description": {
+      "en": "Przedmiot medyczny, który przywraca dużą ilość zdrowia."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/vita_shot.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
     ]
   },
   {
@@ -14960,25 +14985,25 @@
     ]
   },
   {
-    "id": "vita_shot_blueprint",
+    "id": "vita_spray_blueprint",
     "name": {
-      "value": "Projekt Zastrzyku Vita",
-      "originalEn": "Vita Shot Blueprint"
+      "value": "Projekt sprayu Vita",
+      "originalEn": "Vita Spray Blueprint"
     },
     "description": {
-      "en": "Przedmiot medyczny, który przywraca dużą ilość zdrowia."
+      "en": "Przedmiot medyczny, który stale przywraca zdrowie podczas użycia. Może być użyty na sobie lub sojusznikach."
     },
     "type": "Blueprint",
     "rarity": "Common",
     "value": 5000,
-    "weightKg": 0,
+    "weightKg": null,
     "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/vita_shot.png",
+    "imageFilename": "https://cdn.arctracker.io/items/vita_spray.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -15010,31 +15035,6 @@
     "salvagesInto": {
       "antiseptic": 1
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/vita_spray.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "vita_spray_blueprint",
-    "name": {
-      "value": "Projekt sprayu Vita",
-      "originalEn": "Vita Spray Blueprint"
-    },
-    "description": {
-      "en": "Przedmiot medyczny, który stale przywraca zdrowie podczas użycia. Może być użyty na sobie lub sojusznikach."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": null,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/vita_spray.png",
@@ -15378,6 +15378,31 @@
     ]
   },
   {
+    "id": "wolfpack_blueprint",
+    "name": {
+      "value": "Projekt Wolfpack",
+      "originalEn": "Wolfpack Blueprint"
+    },
+    "description": {
+      "en": "Granat zdalnie detonowany, który może przyczepić się do powierzchni i ARC, zadając obrażenia wybuchowe po aktywacji."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/wolfpack_blueprint.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "wolfpack",
     "name": {
       "value": "Wataha",
@@ -15412,13 +15437,13 @@
     ]
   },
   {
-    "id": "wolfpack_blueprint",
+    "id": "yellow_light_stick_blueprint",
     "name": {
-      "value": "Projekt Wolfpack",
-      "originalEn": "Wolfpack Blueprint"
+      "value": "Żółty patyk świetlny",
+      "originalEn": "Yellow Light Stick Blueprint"
     },
     "description": {
-      "en": "Granat zdalnie detonowany, który może przyczepić się do powierzchni i ARC, zadając obrażenia wybuchowe po aktywacji."
+      "en": "Rzucane światło chemiczne, które oświetla obszar wokół siebie."
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -15430,7 +15455,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/wolfpack_blueprint.png",
+    "imageFilename": "https://cdn.arctracker.io/items/yellow_light_stick.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -15459,31 +15484,6 @@
     "salvagesInto": {
       "chemicals": 1
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/yellow_light_stick.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "yellow_light_stick_blueprint",
-    "name": {
-      "value": "Żółty patyk świetlny",
-      "originalEn": "Yellow Light Stick Blueprint"
-    },
-    "description": {
-      "en": "Rzucane światło chemiczne, które oświetla obszar wokół siebie."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/yellow_light_stick.png",

@@ -158,35 +158,6 @@
     ]
   },
   {
-    "id": "agave",
-    "name": {
-      "value": "Agave",
-      "originalEn": "Agave"
-    },
-    "description": {
-      "en": "Bir agave yaprağı parçası. Az miktarda can yenilemek için kullanılabilir."
-    },
-    "type": "Nature",
-    "rarity": "Uncommon",
-    "value": 1000,
-    "weightKg": 0.2,
-    "stackSize": 10,
-    "recyclesInto": {
-      "assorted_seeds": 3
-    },
-    "recipe": null,
-    "salvagesInto": {
-      "assorted_seeds": 2
-    },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/agave.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Nature"
-    ]
-  },
-  {
     "id": "agave_juice",
     "name": {
       "value": "Agave Suyu",
@@ -214,6 +185,35 @@
     "isWeapon": null,
     "foundIn": [
       "Unknown"
+    ]
+  },
+  {
+    "id": "agave",
+    "name": {
+      "value": "Agave",
+      "originalEn": "Agave"
+    },
+    "description": {
+      "en": "Bir agave yaprağı parçası. Az miktarda can yenilemek için kullanılabilir."
+    },
+    "type": "Nature",
+    "rarity": "Uncommon",
+    "value": 1000,
+    "weightKg": 0.2,
+    "stackSize": 10,
+    "recyclesInto": {
+      "assorted_seeds": 3
+    },
+    "recipe": null,
+    "salvagesInto": {
+      "assorted_seeds": 2
+    },
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/agave.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Nature"
     ]
   },
   {
@@ -354,6 +354,31 @@
     ]
   },
   {
+    "id": "angled_grip_ii_blueprint",
+    "name": {
+      "value": "Açılı Tutamaç II Taslağı",
+      "originalEn": "Angled Grip II Blueprint"
+    },
+    "description": {
+      "en": "Yatay geri tepmesini orta duzeyde azaltir. Uyumlu: Arpeggio, Ferro, Il Toro, Stitcher"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/angled_grip_ii.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "angled_grip_ii",
     "name": {
       "value": "Açılı Tutamaç II",
@@ -387,13 +412,13 @@
     ]
   },
   {
-    "id": "angled_grip_ii_blueprint",
+    "id": "angled_grip_iii_blueprint",
     "name": {
-      "value": "Açılı Tutamaç II Taslağı",
-      "originalEn": "Angled Grip II Blueprint"
+      "value": "Açılı Tutamaç III Taslağı",
+      "originalEn": "Angled Grip III Blueprint"
     },
     "description": {
-      "en": "Yatay geri tepmesini orta duzeyde azaltir. Uyumlu: Arpeggio, Ferro, Il Toro, Stitcher"
+      "en": "Yatay geri tepmeyi onemli olcude azaltir. Uyumlu: Arpeggio, Ferro, Venator, Il Toro, Stitcher"
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -405,7 +430,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/angled_grip_ii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/angled_grip_iii.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -436,31 +461,6 @@
     "salvagesInto": {
       "mechanical_components": 2
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/angled_grip_iii.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "angled_grip_iii_blueprint",
-    "name": {
-      "value": "Açılı Tutamaç III Taslağı",
-      "originalEn": "Angled Grip III Blueprint"
-    },
-    "description": {
-      "en": "Yatay geri tepmeyi onemli olcude azaltir. Uyumlu: Arpeggio, Ferro, Venator, Il Toro, Stitcher"
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/angled_grip_iii.png",
@@ -689,6 +689,31 @@
     ]
   },
   {
+    "id": "aphelion_blueprint",
+    "name": {
+      "value": "Aphelion Taslağı",
+      "originalEn": "Aphelion Blueprint"
+    },
+    "description": {
+      "en": "Matriarch Reaktoru ile calisan deneysel bir ARC isin silahi."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/aphelion.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "aphelion",
     "name": {
       "value": "Aphelion",
@@ -718,31 +743,6 @@
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/aphelion.png",
     "isWeapon": true,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "aphelion_blueprint",
-    "name": {
-      "value": "Aphelion Taslağı",
-      "originalEn": "Aphelion Blueprint"
-    },
-    "description": {
-      "en": "Matriarch Reaktoru ile calisan deneysel bir ARC isin silahi."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/aphelion.png",
-    "isWeapon": null,
     "foundIn": [
       "Unknown"
     ]
@@ -1256,6 +1256,31 @@
     ]
   },
   {
+    "id": "barricade_kit_blueprint",
+    "name": {
+      "value": "Barikat Kiti Taslağı",
+      "originalEn": "Barricade Kit Blueprint"
+    },
+    "description": {
+      "en": "Kırılana kadar gelen hasarı engelleyebilen konuşlandırılabilir bir siper."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/barricade_kit.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "barricade_kit",
     "name": {
       "value": "Barikat Kiti",
@@ -1278,31 +1303,6 @@
     "salvagesInto": {
       "metal_parts": 3
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/barricade_kit.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "barricade_kit_blueprint",
-    "name": {
-      "value": "Barikat Kiti Taslağı",
-      "originalEn": "Barricade Kit Blueprint"
-    },
-    "description": {
-      "en": "Kırılana kadar gelen hasarı engelleyebilen konuşlandırılabilir bir siper."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/barricade_kit.png",
@@ -1593,39 +1593,6 @@
     ]
   },
   {
-    "id": "blaze_grenade",
-    "name": {
-      "value": "Alev Bombası",
-      "originalEn": "Blaze Grenade"
-    },
-    "description": {
-      "en": "Çarpma anında patlayan ve bir alanı zaman içinde hasar veren ateşle kaplayan bomba."
-    },
-    "type": "Quick Use",
-    "rarity": "Rare",
-    "value": 1600,
-    "weightKg": 0.2,
-    "stackSize": 5,
-    "recyclesInto": {
-      "metal_parts": 4,
-      "oil": 2
-    },
-    "recipe": {
-      "explosive_compound": 1,
-      "oil": 2
-    },
-    "salvagesInto": {
-      "oil": 1
-    },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/blaze_grenade.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
     "id": "blaze_grenade_blueprint",
     "name": {
       "value": "Alev Bombası Taslağı",
@@ -1673,6 +1640,39 @@
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/blaze_grenade_trap.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "blaze_grenade",
+    "name": {
+      "value": "Alev Bombası",
+      "originalEn": "Blaze Grenade"
+    },
+    "description": {
+      "en": "Çarpma anında patlayan ve bir alanı zaman içinde hasar veren ateşle kaplayan bomba."
+    },
+    "type": "Quick Use",
+    "rarity": "Rare",
+    "value": 1600,
+    "weightKg": 0.2,
+    "stackSize": 5,
+    "recyclesInto": {
+      "metal_parts": 4,
+      "oil": 2
+    },
+    "recipe": {
+      "explosive_compound": 1,
+      "oil": 2
+    },
+    "salvagesInto": {
+      "oil": 1
+    },
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/blaze_grenade.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -1805,6 +1805,31 @@
     ]
   },
   {
+    "id": "blue_light_stick_blueprint",
+    "name": {
+      "value": "Mavi Işık Çubuğu Taslağı",
+      "originalEn": "Blue Light Stick Blueprint"
+    },
+    "description": {
+      "en": "Etrafındaki alanı aydınlatan fırlatılabilir kimyasal bir ışık."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/blue_light_stick_blueprint.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "blue_light_stick",
     "name": {
       "value": "Mavi Işık Çubuğu",
@@ -1830,31 +1855,6 @@
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/blue_light_stick.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "blue_light_stick_blueprint",
-    "name": {
-      "value": "Mavi Işık Çubuğu Taslağı",
-      "originalEn": "Blue Light Stick Blueprint"
-    },
-    "description": {
-      "en": "Etrafındaki alanı aydınlatan fırlatılabilir kimyasal bir ışık."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/blue_light_stick_blueprint.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -2948,6 +2948,31 @@
     ]
   },
   {
+    "id": "combat_mk3_aggressive_blueprint",
+    "name": {
+      "value": "Çatışma Mod. 3 (Saldırgan) Taslağı",
+      "originalEn": "Combat Mk. 3 (Aggressive) Blueprint"
+    },
+    "description": {
+      "en": "Savaş II güçlendirmesinin geliştirilmiş versiyonu. Daha fazla kalkan türünü destekler ve el bombaları için ekstra alan sunar."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/combat_mk3_aggressive.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "combat_mk3_aggressive",
     "name": {
       "value": "Çatışma Mod. 3 (Saldırgan)",
@@ -2981,13 +3006,13 @@
     ]
   },
   {
-    "id": "combat_mk3_aggressive_blueprint",
+    "id": "combat_mk3_flanking_blueprint",
     "name": {
-      "value": "Çatışma Mod. 3 (Saldırgan) Taslağı",
-      "originalEn": "Combat Mk. 3 (Aggressive) Blueprint"
+      "value": "Çatışma Mod. 3 (Baskın) Taslağı",
+      "originalEn": "Combat Mk. 3 (Flanking) Blueprint"
     },
     "description": {
-      "en": "Savaş II güçlendirmesinin geliştirilmiş versiyonu. Daha fazla kalkan türünü destekler ve el bombaları için ekstra alan sunar."
+      "en": "Savas II guclendirmesinin gelistirilmis versiyonu. Arttirilmis hareketlilik ile yan cevirme manevralari icin tasarlanmistir."
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -2999,7 +3024,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/combat_mk3_aggressive.png",
+    "imageFilename": "https://cdn.arctracker.io/items/combat_mk3_flanking.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -3030,31 +3055,6 @@
     "salvagesInto": {
       "electrical_components": 2
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/combat_mk3_flanking.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "combat_mk3_flanking_blueprint",
-    "name": {
-      "value": "Çatışma Mod. 3 (Baskın) Taslağı",
-      "originalEn": "Combat Mk. 3 (Flanking) Blueprint"
-    },
-    "description": {
-      "en": "Savas II guclendirmesinin gelistirilmis versiyonu. Arttirilmis hareketlilik ile yan cevirme manevralari icin tasarlanmistir."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/combat_mk3_flanking.png",
@@ -3126,6 +3126,31 @@
     ]
   },
   {
+    "id": "compensator_ii_blueprint",
+    "name": {
+      "value": "Namlu Ağzı Baskısı II Taslağı",
+      "originalEn": "Compensator II Blueprint"
+    },
+    "description": {
+      "en": "Atış başına dağılımı orta düzeyde azaltır."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/compensator_ii_blueprint.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "compensator_ii",
     "name": {
       "value": "Namlu Ağzı Baskısı II",
@@ -3159,13 +3184,13 @@
     ]
   },
   {
-    "id": "compensator_ii_blueprint",
+    "id": "compensator_iii_blueprint",
     "name": {
-      "value": "Namlu Ağzı Baskısı II Taslağı",
-      "originalEn": "Compensator II Blueprint"
+      "value": "Namlu Ağzı Baskısı III Taslağı",
+      "originalEn": "Compensator III Blueprint"
     },
     "description": {
-      "en": "Atış başına dağılımı orta düzeyde azaltır."
+      "en": "Atis basina dagilmayi orta duzeyde azaltir. Uyumlu: Arpeggio, Ferro, Renegade, Anvil, Stitcher"
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -3177,7 +3202,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/compensator_ii_blueprint.png",
+    "imageFilename": "https://cdn.arctracker.io/items/compensator_iii.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -3217,13 +3242,13 @@
     ]
   },
   {
-    "id": "compensator_iii_blueprint",
+    "id": "complex_gun_parts_blueprint",
     "name": {
-      "value": "Namlu Ağzı Baskısı III Taslağı",
-      "originalEn": "Compensator III Blueprint"
+      "value": "Karmaşık Silah Parçaları Taslağı",
+      "originalEn": "Complex Gun Parts Blueprint"
     },
     "description": {
-      "en": "Atis basina dagilmayi orta duzeyde azaltir. Uyumlu: Arpeggio, Ferro, Renegade, Anvil, Stitcher"
+      "en": "Gelişmiş silahlar üretmek için kullanılır."
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -3235,7 +3260,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/compensator_iii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/complex_gun_parts_blueprint.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -3272,31 +3297,6 @@
     "isWeapon": null,
     "foundIn": [
       "Security"
-    ]
-  },
-  {
-    "id": "complex_gun_parts_blueprint",
-    "name": {
-      "value": "Karmaşık Silah Parçaları Taslağı",
-      "originalEn": "Complex Gun Parts Blueprint"
-    },
-    "description": {
-      "en": "Gelişmiş silahlar üretmek için kullanılır."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/complex_gun_parts_blueprint.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
     ]
   },
   {
@@ -3915,6 +3915,31 @@
     ]
   },
   {
+    "id": "deadline_blueprint",
+    "name": {
+      "value": "Mühlet Taslağı",
+      "originalEn": "Deadline Blueprint"
+    },
+    "description": {
+      "en": "Patlayıcı tezgahında Deadline mayınları üretme olanağını açar."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/deadline.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "deadline",
     "name": {
       "value": "Mühlet",
@@ -3949,13 +3974,13 @@
     ]
   },
   {
-    "id": "deadline_blueprint",
+    "id": "defibrillator_blueprint",
     "name": {
-      "value": "Mühlet Taslağı",
-      "originalEn": "Deadline Blueprint"
+      "value": "Şok Cihazı Taslağı",
+      "originalEn": "Defibrillator Blueprint"
     },
     "description": {
-      "en": "Patlayıcı tezgahında Deadline mayınları üretme olanağını açar."
+      "en": "Yere düşmüş akıncıları hızlıca canlandıran ve biraz sağlık kazandıran bir enjeksiyon."
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -3967,7 +3992,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/deadline.png",
+    "imageFilename": "https://cdn.arctracker.io/items/defibrillator.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -3998,31 +4023,6 @@
     "salvagesInto": {
       "chemicals": 2
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/defibrillator.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "defibrillator_blueprint",
-    "name": {
-      "value": "Şok Cihazı Taslağı",
-      "originalEn": "Defibrillator Blueprint"
-    },
-    "description": {
-      "en": "Yere düşmüş akıncıları hızlıca canlandıran ve biraz sağlık kazandıran bir enjeksiyon."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/defibrillator.png",
@@ -4175,6 +4175,31 @@
     ]
   },
   {
+    "id": "dolabra_blueprint",
+    "name": {
+      "value": "Dolabra Taslak",
+      "originalEn": "Dolabra Blueprint"
+    },
+    "description": {
+      "en": "İster kısa menzilli geniş bir patlama ateşleyebilen ister orta menzilli dar bir ısı ışını ateşlemek için odaklanabilen deneysel bir silah."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "dolabra",
     "name": {
       "value": "Dolabra",
@@ -4203,31 +4228,6 @@
     "tier": null,
     "imageFilename": null,
     "isWeapon": true,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "dolabra_blueprint",
-    "name": {
-      "value": "Dolabra Taslak",
-      "originalEn": "Dolabra Blueprint"
-    },
-    "description": {
-      "en": "İster kısa menzilli geniş bir patlama ateşleyebilen ister orta menzilli dar bir ısı ışını ateşlemek için odaklanabilen deneysel bir silah."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": null,
-    "isWeapon": null,
     "foundIn": [
       "Unknown"
     ]
@@ -4493,6 +4493,31 @@
     ]
   },
   {
+    "id": "equalizer_blueprint",
+    "name": {
+      "value": "Dengeleyici Taslağı",
+      "originalEn": "Equalizer Blueprint"
+    },
+    "description": {
+      "en": "Yüksek kapasiteli deneysel bir ışın tüfeği."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/equalizer.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "equalizer",
     "name": {
       "value": "Dengeleyici",
@@ -4522,31 +4547,6 @@
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/equalizer.png",
     "isWeapon": true,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "equalizer_blueprint",
-    "name": {
-      "value": "Dengeleyici Taslağı",
-      "originalEn": "Equalizer Blueprint"
-    },
-    "description": {
-      "en": "Yüksek kapasiteli deneysel bir ışın tüfeği."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/equalizer.png",
-    "isWeapon": null,
     "foundIn": [
       "Unknown"
     ]
@@ -4746,6 +4746,31 @@
     ]
   },
   {
+    "id": "explosive_mine_blueprint",
+    "name": {
+      "value": "Patlayıcı Mayın Taslağı",
+      "originalEn": "Explosive Mine Blueprint"
+    },
+    "description": {
+      "en": "Dusmanlar yaklastiginda patlayan yakinlik tetiklemeli patlayici cihaz."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/explosive_mine.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "explosive_mine",
     "name": {
       "value": "Patlayıcı Mayın",
@@ -4779,13 +4804,13 @@
     ]
   },
   {
-    "id": "explosive_mine_blueprint",
+    "id": "extended_barrel_blueprint",
     "name": {
-      "value": "Patlayıcı Mayın Taslağı",
-      "originalEn": "Explosive Mine Blueprint"
+      "value": "Uzatilmis Namlu Taslağı",
+      "originalEn": "Extended Barrel Blueprint"
     },
     "description": {
-      "en": "Dusmanlar yaklastiginda patlayan yakinlik tetiklemeli patlayici cihaz."
+      "en": "Mermi hizini orta duzeyde artirir. Uyumlu silahlar: Tempest, Arpeggio, Ferro, Renegade, Anvil"
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -4797,7 +4822,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/explosive_mine.png",
+    "imageFilename": "https://cdn.arctracker.io/items/extended_barrel.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -4828,31 +4853,6 @@
     "salvagesInto": {
       "mechanical_components": 2
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/extended_barrel.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "extended_barrel_blueprint",
-    "name": {
-      "value": "Uzatilmis Namlu Taslağı",
-      "originalEn": "Extended Barrel Blueprint"
-    },
-    "description": {
-      "en": "Mermi hizini orta duzeyde artirir. Uyumlu silahlar: Tempest, Arpeggio, Ferro, Renegade, Anvil"
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/extended_barrel.png",
@@ -4894,6 +4894,31 @@
     ]
   },
   {
+    "id": "extended_light_mag_ii_blueprint",
+    "name": {
+      "value": "Uzatılmış Hafif Şarjör II Taslağı",
+      "originalEn": "Extended Light Mag II Blueprint"
+    },
+    "description": {
+      "en": "Hafif mermi kullanan uyumlu silahlarin mermi kapasitesini orta duzeyde artirir."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/extended_light_mag_ii.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "extended_light_mag_ii",
     "name": {
       "value": "Uzatılmış Hafif Şarjör II",
@@ -4927,13 +4952,13 @@
     ]
   },
   {
-    "id": "extended_light_mag_ii_blueprint",
+    "id": "extended_light_mag_iii_blueprint",
     "name": {
-      "value": "Uzatılmış Hafif Şarjör II Taslağı",
-      "originalEn": "Extended Light Mag II Blueprint"
+      "value": "Uzatılmış Hafif Şarjör III Taslağı",
+      "originalEn": "Extended Light Mag III Blueprint"
     },
     "description": {
-      "en": "Hafif mermi kullanan uyumlu silahlarin mermi kapasitesini orta duzeyde artirir."
+      "en": "Hafif mermi kullanan uyumlu silahlarin muhimmat kapasitesini onemli olcude genisletir."
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -4945,7 +4970,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/extended_light_mag_ii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/extended_light_mag_iii.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -4976,31 +5001,6 @@
     "salvagesInto": {
       "mechanical_components": 2
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/extended_light_mag_iii.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "extended_light_mag_iii_blueprint",
-    "name": {
-      "value": "Uzatılmış Hafif Şarjör III Taslağı",
-      "originalEn": "Extended Light Mag III Blueprint"
-    },
-    "description": {
-      "en": "Hafif mermi kullanan uyumlu silahlarin muhimmat kapasitesini onemli olcude genisletir."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/extended_light_mag_iii.png",
@@ -5042,6 +5042,31 @@
     ]
   },
   {
+    "id": "extended_medium_mag_ii_blueprint",
+    "name": {
+      "value": "Uzatılmış Orta Şarjör II Taslağı",
+      "originalEn": "Extended Medium Mag II Blueprint"
+    },
+    "description": {
+      "en": "Orta boy mühimmat kullanan uyumlu silahların mermi kapasitesini orta düzeyde artırır."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/extended_medium_mag_ii_blueprint.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "extended_medium_mag_ii",
     "name": {
       "value": "Uzatılmış Orta Şarjör II",
@@ -5075,13 +5100,13 @@
     ]
   },
   {
-    "id": "extended_medium_mag_ii_blueprint",
+    "id": "extended_medium_mag_iii_blueprint",
     "name": {
-      "value": "Uzatılmış Orta Şarjör II Taslağı",
-      "originalEn": "Extended Medium Mag II Blueprint"
+      "value": "Uzatılmış Orta Şarjör III Taslağı",
+      "originalEn": "Extended Medium Mag III Blueprint"
     },
     "description": {
-      "en": "Orta boy mühimmat kullanan uyumlu silahların mermi kapasitesini orta düzeyde artırır."
+      "en": "Orta mermi kullanan uyumlu silahların mermi kapasitesini önemli ölçüde artırır."
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -5093,7 +5118,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/extended_medium_mag_ii_blueprint.png",
+    "imageFilename": "https://cdn.arctracker.io/items/extended_medium_mag_iii.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -5124,31 +5149,6 @@
     "salvagesInto": {
       "mechanical_components": 2
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/extended_medium_mag_iii.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "extended_medium_mag_iii_blueprint",
-    "name": {
-      "value": "Uzatılmış Orta Şarjör III Taslağı",
-      "originalEn": "Extended Medium Mag III Blueprint"
-    },
-    "description": {
-      "en": "Orta mermi kullanan uyumlu silahların mermi kapasitesini önemli ölçüde artırır."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/extended_medium_mag_iii.png",
@@ -5190,6 +5190,31 @@
     ]
   },
   {
+    "id": "extended_shotgun_mag_ii_blueprint",
+    "name": {
+      "value": "Uzatılmış Av Tüfeği Şarjörü II Taslağı",
+      "originalEn": "Extended Shotgun Mag II Blueprint"
+    },
+    "description": {
+      "en": "Pompalı tüfeklerin mermi kapasitesini orta düzeyde artırır."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/extended_shotgun_mag_ii.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "extended_shotgun_mag_ii",
     "name": {
       "value": "Uzatılmış Av Tüfeği Şarjörü II",
@@ -5223,13 +5248,13 @@
     ]
   },
   {
-    "id": "extended_shotgun_mag_ii_blueprint",
+    "id": "extended_shotgun_mag_iii_blueprint",
     "name": {
-      "value": "Uzatılmış Av Tüfeği Şarjörü II Taslağı",
-      "originalEn": "Extended Shotgun Mag II Blueprint"
+      "value": "Uzatılmış Av Tüfeği Şarjörü III Taslağı",
+      "originalEn": "Extended Shotgun Mag III Blueprint"
     },
     "description": {
-      "en": "Pompalı tüfeklerin mermi kapasitesini orta düzeyde artırır."
+      "en": "Pompalı tüfeklerin mermi kapasitesini önemli ölçüde artırır."
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -5241,7 +5266,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/extended_shotgun_mag_ii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/extended_shotgun_mag_iii.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -5272,31 +5297,6 @@
     "salvagesInto": {
       "mechanical_components": 2
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/extended_shotgun_mag_iii.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "extended_shotgun_mag_iii_blueprint",
-    "name": {
-      "value": "Uzatılmış Av Tüfeği Şarjörü III Taslağı",
-      "originalEn": "Extended Shotgun Mag III Blueprint"
-    },
-    "description": {
-      "en": "Pompalı tüfeklerin mermi kapasitesini önemli ölçüde artırır."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/extended_shotgun_mag_iii.png",
@@ -5687,6 +5687,31 @@
     ]
   },
   {
+    "id": "fireworks_box_blueprint",
+    "name": {
+      "value": "Havai Fişek Kutusu Taslağı",
+      "originalEn": "Fireworks Box Blueprint"
+    },
+    "description": {
+      "en": "Havai Fişek Kutusu için üretim planını açar."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/fireworks_box.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "fireworks_box",
     "name": {
       "value": "Havai Fişek Kutusu",
@@ -5710,31 +5735,6 @@
     "salvagesInto": {
       "explosive_compound": 1
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/fireworks_box.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "fireworks_box_blueprint",
-    "name": {
-      "value": "Havai Fişek Kutusu Taslağı",
-      "originalEn": "Fireworks Box Blueprint"
-    },
-    "description": {
-      "en": "Havai Fişek Kutusu için üretim planını açar."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/fireworks_box.png",
@@ -6137,6 +6137,34 @@
     ]
   },
   {
+    "id": "gas_grenade_trap",
+    "name": {
+      "value": "Lazer Tuzağı: Gaz",
+      "originalEn": "Gas Grenade Trap"
+    },
+    "description": {
+      "en": "Bir Gaz Bombasını patlatan lazer tuzak teli."
+    },
+    "type": "Quick Use",
+    "rarity": "Common",
+    "value": 300,
+    "weightKg": 0.25,
+    "stackSize": 3,
+    "recyclesInto": null,
+    "recipe": {
+      "gas_grenade": 1,
+      "wires": 1
+    },
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/gas_grenade_trap.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "gas_grenade",
     "name": {
       "value": "Gaz Bombası",
@@ -6170,28 +6198,25 @@
     ]
   },
   {
-    "id": "gas_grenade_trap",
+    "id": "gas_mine_blueprint",
     "name": {
-      "value": "Lazer Tuzağı: Gaz",
-      "originalEn": "Gas Grenade Trap"
+      "value": "Sıçrama Mayını: Enerji Azaltıcı Taslağı",
+      "originalEn": "Gas Mine Blueprint"
     },
     "description": {
-      "en": "Bir Gaz Bombasını patlatan lazer tuzak teli."
+      "en": "Yakınlık tetiklemeli bir mayın, fırlayarak dayanıklılığı hızla tüketen bir gaz bulutu yayar."
     },
-    "type": "Quick Use",
+    "type": "Blueprint",
     "rarity": "Common",
-    "value": 300,
-    "weightKg": 0.25,
-    "stackSize": 3,
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
     "recyclesInto": null,
-    "recipe": {
-      "gas_grenade": 1,
-      "wires": 1
-    },
+    "recipe": null,
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/gas_grenade_trap.png",
+    "imageFilename": "https://cdn.arctracker.io/items/gas_mine.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -6222,31 +6247,6 @@
     "salvagesInto": {
       "chemicals": 2
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/gas_mine.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "gas_mine_blueprint",
-    "name": {
-      "value": "Sıçrama Mayını: Enerji Azaltıcı Taslağı",
-      "originalEn": "Gas Mine Blueprint"
-    },
-    "description": {
-      "en": "Yakınlık tetiklemeli bir mayın, fırlayarak dayanıklılığı hızla tüketen bir gaz bulutu yayar."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/gas_mine.png",
@@ -6340,6 +6340,31 @@
     ]
   },
   {
+    "id": "green_light_stick_blueprint",
+    "name": {
+      "value": "Yeşil Işık Çubuğu Taslağı",
+      "originalEn": "Green Light Stick Blueprint"
+    },
+    "description": {
+      "en": "Etrafındaki alanı aydınlatan fırlatılabilir kimyasal ışık."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/green_light_stick.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "green_light_stick",
     "name": {
       "value": "Yeşil Işık Çubuğu",
@@ -6362,31 +6387,6 @@
     "salvagesInto": {
       "chemicals": 1
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/green_light_stick.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "green_light_stick_blueprint",
-    "name": {
-      "value": "Yeşil Işık Çubuğu Taslağı",
-      "originalEn": "Green Light Stick Blueprint"
-    },
-    "description": {
-      "en": "Etrafındaki alanı aydınlatan fırlatılabilir kimyasal ışık."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/green_light_stick.png",
@@ -6619,6 +6619,31 @@
     ]
   },
   {
+    "id": "heavy_gun_parts_blueprint",
+    "name": {
+      "value": "Ağır Silah Parçaları Taslağı",
+      "originalEn": "Heavy Gun Parts Blueprint"
+    },
+    "description": {
+      "en": "Silah üretmek için kullanılır."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/heavy_gun_parts.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "heavy_gun_parts",
     "name": {
       "value": "Ağır Silah Parçaları",
@@ -6648,31 +6673,6 @@
     "foundIn": [
       "Security",
       "Raider"
-    ]
-  },
-  {
-    "id": "heavy_gun_parts_blueprint",
-    "name": {
-      "value": "Ağır Silah Parçaları Taslağı",
-      "originalEn": "Heavy Gun Parts Blueprint"
-    },
-    "description": {
-      "en": "Silah üretmek için kullanılır."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/heavy_gun_parts.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
     ]
   },
   {
@@ -7354,6 +7354,31 @@
     ]
   },
   {
+    "id": "jolt_mine_blueprint",
+    "name": {
+      "value": "Şok Mayını Taslağı",
+      "originalEn": "Jolt Mine Blueprint"
+    },
+    "description": {
+      "en": "Yakınlık tetiklemeli bir mayın, fırlayarak yarıçapı içindeki her şeyi sersemletir."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/jolt_mine.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "jolt_mine",
     "name": {
       "value": "Şok Mayını",
@@ -7387,13 +7412,13 @@
     ]
   },
   {
-    "id": "jolt_mine_blueprint",
+    "id": "jupiter_blueprint",
     "name": {
-      "value": "Şok Mayını Taslağı",
-      "originalEn": "Jolt Mine Blueprint"
+      "value": "Erendiz Taslağı",
+      "originalEn": "Jupiter Blueprint"
     },
     "description": {
-      "en": "Yakınlık tetiklemeli bir mayın, fırlayarak yarıçapı içindeki her şeyi sersemletir."
+      "en": "Olağanüstü hasar çıktısı ve isabetliliğe sahip ancak yavaş kullanımlı sürgülü keskin nişancı tüfeği."
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -7405,7 +7430,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/jolt_mine.png",
+    "imageFilename": "https://cdn.arctracker.io/items/jupiter.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -7441,31 +7466,6 @@
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/jupiter.png",
     "isWeapon": true,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "jupiter_blueprint",
-    "name": {
-      "value": "Erendiz Taslağı",
-      "originalEn": "Jupiter Blueprint"
-    },
-    "description": {
-      "en": "Olağanüstü hasar çıktısı ve isabetliliğe sahip ancak yavaş kullanımlı sürgülü keskin nişancı tüfeği."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/jupiter.png",
-    "isWeapon": null,
     "foundIn": [
       "Unknown"
     ]
@@ -7879,6 +7879,31 @@
     ]
   },
   {
+    "id": "light_gun_parts_blueprint",
+    "name": {
+      "value": "Hafif Silah Parçaları Taslağı",
+      "originalEn": "Light Gun Parts Blueprint"
+    },
+    "description": {
+      "en": "Tabancalar ve hafif makineli tüfekler için çeşitli yedek parçalar."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/light_gun_parts_blueprint.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "light_gun_parts",
     "name": {
       "value": "Hafif Silah Parçaları",
@@ -7908,31 +7933,6 @@
     "foundIn": [
       "Raider",
       "Security"
-    ]
-  },
-  {
-    "id": "light_gun_parts_blueprint",
-    "name": {
-      "value": "Hafif Silah Parçaları Taslağı",
-      "originalEn": "Light Gun Parts Blueprint"
-    },
-    "description": {
-      "en": "Tabancalar ve hafif makineli tüfekler için çeşitli yedek parçalar."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/light_gun_parts_blueprint.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
     ]
   },
   {
@@ -8001,6 +8001,31 @@
     ]
   },
   {
+    "id": "lightweight_stock_blueprint",
+    "name": {
+      "value": "Hafif Dipçik Taslağı",
+      "originalEn": "Lightweight Stock Blueprint"
+    },
+    "description": {
+      "en": "Nişan alma ve çekme hızını orta düzeyde artırır."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/lightweight_stock_blueprint.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "lightweight_stock",
     "name": {
       "value": "Hafif Dipçik",
@@ -8028,31 +8053,6 @@
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/lightweight_stock.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "lightweight_stock_blueprint",
-    "name": {
-      "value": "Hafif Dipçik Taslağı",
-      "originalEn": "Lightweight Stock Blueprint"
-    },
-    "description": {
-      "en": "Nişan alma ve çekme hızını orta düzeyde artırır."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/lightweight_stock_blueprint.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -8191,6 +8191,31 @@
     ]
   },
   {
+    "id": "looting_mk3_safekeeper_blueprint",
+    "name": {
+      "value": "Yağmalama Mod.3 (Koruyucu) Taslağı",
+      "originalEn": "Looting Mk. 3 (Safekeeper) Blueprint"
+    },
+    "description": {
+      "en": "Ağırlık ve işlevsellikten ödün vererek yağma potansiyelini artıran bir yağma eklentisi. Herhangi bir eşyanın saklanmasını sağlayan bir Güvenli Cep."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/looting_mk3_safekeeper.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "looting_mk3_safekeeper",
     "name": {
       "value": "Yağmalama Mod.3 (Koruyucu)",
@@ -8224,25 +8249,25 @@
     ]
   },
   {
-    "id": "looting_mk3_safekeeper_blueprint",
+    "id": "looting_mk3_survivor_blueprint",
     "name": {
-      "value": "Yağmalama Mod.3 (Koruyucu) Taslağı",
-      "originalEn": "Looting Mk. 3 (Safekeeper) Blueprint"
+      "value": "Yağmalama Mod.3 (Hayatta Kalan) Taslağı",
+      "originalEn": "Looting Mk. 3 (Survivor) Blueprint"
     },
     "description": {
-      "en": "Ağırlık ve işlevsellikten ödün vererek yağma potansiyelini artıran bir yağma eklentisi. Herhangi bir eşyanın saklanmasını sağlayan bir Güvenli Cep."
+      "en": "Ağır hizmet tipi yük hayvanı güçlendirmesi. Büyük ağırlık kapasitesi ve büyük sırt çantası alanı."
     },
     "type": "Blueprint",
     "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": 1,
+    "stackSize": null,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/looting_mk3_safekeeper.png",
+    "imageFilename": "https://cdn.arctracker.io/items/looting_mk3_survivor_blueprint.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -8276,63 +8301,6 @@
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/looting_mk3_survivor.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "looting_mk3_survivor_blueprint",
-    "name": {
-      "value": "Yağmalama Mod.3 (Hayatta Kalan) Taslağı",
-      "originalEn": "Looting Mk. 3 (Survivor) Blueprint"
-    },
-    "description": {
-      "en": "Ağır hizmet tipi yük hayvanı güçlendirmesi. Büyük ağırlık kapasitesi ve büyük sırt çantası alanı."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": null,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/looting_mk3_survivor_blueprint.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "lure_grenade",
-    "name": {
-      "value": "Yem Bombası",
-      "originalEn": "Lure Grenade"
-    },
-    "description": {
-      "en": "Yüzeylere yapışan bir ses cihazı, yakındaki ARC makinelerinin dikkatini dağıtır ve ateşlerini üzerine çeker."
-    },
-    "type": "Quick Use",
-    "rarity": "Uncommon",
-    "value": 1000,
-    "weightKg": 0.4,
-    "stackSize": 3,
-    "recyclesInto": {
-      "speaker_component": 1
-    },
-    "recipe": {
-      "electrical_components": 1,
-      "speaker_component": 1
-    },
-    "salvagesInto": {
-      "speaker_component": 1
-    },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/lure_grenade.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -8386,6 +8354,38 @@
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/lure_grenade_trap.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "lure_grenade",
+    "name": {
+      "value": "Yem Bombası",
+      "originalEn": "Lure Grenade"
+    },
+    "description": {
+      "en": "Yüzeylere yapışan bir ses cihazı, yakındaki ARC makinelerinin dikkatini dağıtır ve ateşlerini üzerine çeker."
+    },
+    "type": "Quick Use",
+    "rarity": "Uncommon",
+    "value": 1000,
+    "weightKg": 0.4,
+    "stackSize": 3,
+    "recyclesInto": {
+      "speaker_component": 1
+    },
+    "recipe": {
+      "electrical_components": 1,
+      "speaker_component": 1
+    },
+    "salvagesInto": {
+      "speaker_component": 1
+    },
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/lure_grenade.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -8625,6 +8625,31 @@
     ]
   },
   {
+    "id": "medium_gun_parts_blueprint",
+    "name": {
+      "value": "Orta Silah Parçaları Taslağı",
+      "originalEn": "Medium Gun Parts Blueprint"
+    },
+    "description": {
+      "en": "Tüfekler için kullanılan çeşitli yedek parçalar."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/medium_gun_parts_blueprint.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "medium_gun_parts",
     "name": {
       "value": "Orta Silah Parçaları",
@@ -8654,31 +8679,6 @@
     "foundIn": [
       "Raider",
       "Security"
-    ]
-  },
-  {
-    "id": "medium_gun_parts_blueprint",
-    "name": {
-      "value": "Orta Silah Parçaları Taslağı",
-      "originalEn": "Medium Gun Parts Blueprint"
-    },
-    "description": {
-      "en": "Tüfekler için kullanılan çeşitli yedek parçalar."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/medium_gun_parts_blueprint.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
     ]
   },
   {
@@ -9059,6 +9059,31 @@
     ]
   },
   {
+    "id": "muzzle_brake_ii_blueprint",
+    "name": {
+      "value": "Namlu Ağzı Freni II Taslağı",
+      "originalEn": "Muzzle Brake II Blueprint"
+    },
+    "description": {
+      "en": "Hem dikey hem de yatay geri tepmesini orta düzeyde azaltır."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/muzzle_brake_ii.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "muzzle_brake_ii",
     "name": {
       "value": "Namlu Ağzı Freni II",
@@ -9092,13 +9117,13 @@
     ]
   },
   {
-    "id": "muzzle_brake_ii_blueprint",
+    "id": "muzzle_brake_iii_blueprint",
     "name": {
-      "value": "Namlu Ağzı Freni II Taslağı",
-      "originalEn": "Muzzle Brake II Blueprint"
+      "value": "Namlu Ağzı Freni III Taslağı",
+      "originalEn": "Muzzle Brake III Blueprint"
     },
     "description": {
-      "en": "Hem dikey hem de yatay geri tepmesini orta düzeyde azaltır."
+      "en": "Hem dikey geri tepmeyi hem de yatay geri tepmeyi onemli olcude azaltir. Uyumlu: Arpeggio, Ferro, Renegade, Anvil, Stitcher"
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -9110,7 +9135,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/muzzle_brake_ii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/muzzle_brake_iii.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -9141,31 +9166,6 @@
     "salvagesInto": {
       "mechanical_components": 2
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/muzzle_brake_iii.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "muzzle_brake_iii_blueprint",
-    "name": {
-      "value": "Namlu Ağzı Freni III Taslağı",
-      "originalEn": "Muzzle Brake III Blueprint"
-    },
-    "description": {
-      "en": "Hem dikey geri tepmeyi hem de yatay geri tepmeyi onemli olcude azaltir. Uyumlu: Arpeggio, Ferro, Renegade, Anvil, Stitcher"
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/muzzle_brake_iii.png",
@@ -9527,6 +9527,31 @@
     ]
   },
   {
+    "id": "padded_stock_blueprint",
+    "name": {
+      "value": "Yastıklı Dipçik Taslağı",
+      "originalEn": "Padded Stock Blueprint"
+    },
+    "description": {
+      "en": "Kararlılığı önemli ölçüde artırır. Uyumlu silahlar: Arpeggio, Rattler, Ferro, Renegade, Torrente"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/padded_stock.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "padded_stock",
     "name": {
       "value": "Yastıklı Dipçik",
@@ -9551,31 +9576,6 @@
     "salvagesInto": {
       "mechanical_components": 2
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/padded_stock.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "padded_stock_blueprint",
-    "name": {
-      "value": "Yastıklı Dipçik Taslağı",
-      "originalEn": "Padded Stock Blueprint"
-    },
-    "description": {
-      "en": "Kararlılığı önemli ölçüde artırır. Uyumlu silahlar: Arpeggio, Rattler, Ferro, Renegade, Torrente"
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/padded_stock.png",
@@ -10020,7 +10020,7 @@
     "type": "Nature",
     "rarity": "Common",
     "value": 640,
-    "weightKg": 0.2,
+    "weightKg": null,
     "stackSize": 10,
     "recyclesInto": {
       "assorted_seeds": 3
@@ -10123,6 +10123,31 @@
     ]
   },
   {
+    "id": "pulse_mine_blueprint",
+    "name": {
+      "value": "Sıçrama Mayını: İtici Taslağı",
+      "originalEn": "Pulse Mine Blueprint"
+    },
+    "description": {
+      "en": "Yakınlık tetiklemeli bir mayın, fırlayarak yarıçapı içindeki her şeyi geri iter."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/pulse_mine.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "pulse_mine",
     "name": {
       "value": "Sıçrama Mayını: İtici",
@@ -10146,31 +10171,6 @@
     "salvagesInto": {
       "chemicals": 3
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/pulse_mine.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "pulse_mine_blueprint",
-    "name": {
-      "value": "Sıçrama Mayını: İtici Taslağı",
-      "originalEn": "Pulse Mine Blueprint"
-    },
-    "description": {
-      "en": "Yakınlık tetiklemeli bir mayın, fırlayarak yarıçapı içindeki her şeyi geri iter."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/pulse_mine.png",
@@ -10210,6 +10210,36 @@
     ]
   },
   {
+    "id": "radio_relay",
+    "name": {
+      "value": "Radyo Rölesi",
+      "originalEn": "Radio Relay"
+    },
+    "description": {
+      "en": "Üretim malzemelerine geri dönüştürülebilir."
+    },
+    "type": "Recyclable",
+    "rarity": "Rare",
+    "value": 3000,
+    "weightKg": 1.5,
+    "stackSize": 3,
+    "recyclesInto": {
+      "sensors": 2,
+      "speaker_component": 2
+    },
+    "recipe": null,
+    "salvagesInto": {
+      "sensors": 2
+    },
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/radio_relay.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Exodus"
+    ]
+  },
+  {
     "id": "radio",
     "name": {
       "value": "Radyo",
@@ -10238,36 +10268,6 @@
     "foundIn": [
       "Commercial",
       "Residential"
-    ]
-  },
-  {
-    "id": "radio_relay",
-    "name": {
-      "value": "Radyo Rölesi",
-      "originalEn": "Radio Relay"
-    },
-    "description": {
-      "en": "Üretim malzemelerine geri dönüştürülebilir."
-    },
-    "type": "Recyclable",
-    "rarity": "Rare",
-    "value": 3000,
-    "weightKg": 1.5,
-    "stackSize": 3,
-    "recyclesInto": {
-      "sensors": 2,
-      "speaker_component": 2
-    },
-    "recipe": null,
-    "salvagesInto": {
-      "sensors": 2
-    },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/radio_relay.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Exodus"
     ]
   },
   {
@@ -10510,6 +10510,31 @@
     ]
   },
   {
+    "id": "red_light_stick_blueprint",
+    "name": {
+      "value": "Kırmızı Işık Çubuğu Taslağı",
+      "originalEn": "Red Light Stick Blueprint"
+    },
+    "description": {
+      "en": "Etrafındaki alanı aydınlatan fırlatılabilir kimyasal ışık."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/red_light_stick.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "red_light_stick",
     "name": {
       "value": "Kırmızı Işık Çubuğu",
@@ -10532,31 +10557,6 @@
     "salvagesInto": {
       "chemicals": 1
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/red_light_stick.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "red_light_stick_blueprint",
-    "name": {
-      "value": "Kırmızı Işık Çubuğu Taslağı",
-      "originalEn": "Red Light Stick Blueprint"
-    },
-    "description": {
-      "en": "Etrafındaki alanı aydınlatan fırlatılabilir kimyasal ışık."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/red_light_stick.png",
@@ -10621,6 +10621,31 @@
     ]
   },
   {
+    "id": "remote_raider_flare_blueprint",
+    "name": {
+      "value": "Kumandalı Raider Fişeği Taslağı",
+      "originalEn": "Remote Raider Flare Blueprint"
+    },
+    "description": {
+      "en": "Manuel olarak tetiklendiğinde Akıncı Tehlike İşaret Fişeği fırlatılan konuşlandırılabilir bir cihaz."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/remote_raider_flare.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "remote_raider_flare",
     "name": {
       "value": "Kumandalı Raider Fişeği",
@@ -10645,31 +10670,6 @@
     "salvagesInto": {
       "chemicals": 1
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/remote_raider_flare.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "remote_raider_flare_blueprint",
-    "name": {
-      "value": "Kumandalı Raider Fişeği Taslağı",
-      "originalEn": "Remote Raider Flare Blueprint"
-    },
-    "description": {
-      "en": "Manuel olarak tetiklendiğinde Akıncı Tehlike İşaret Fişeği fırlatılan konuşlandırılabilir bir cihaz."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/remote_raider_flare.png",
@@ -11560,6 +11560,31 @@
     ]
   },
   {
+    "id": "seeker_grenade_blueprint",
+    "name": {
+      "value": "Güdümlü Bomba Taslağı",
+      "originalEn": "Seeker Grenade Blueprint"
+    },
+    "description": {
+      "en": "İzleyici Bomba için üretim planını açar."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/seeker_grenade.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "seeker_grenade",
     "name": {
       "value": "Güdümlü Bomba",
@@ -11583,31 +11608,6 @@
     "salvagesInto": {
       "chemicals": 3
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/seeker_grenade.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "seeker_grenade_blueprint",
-    "name": {
-      "value": "Güdümlü Bomba Taslağı",
-      "originalEn": "Seeker Grenade Blueprint"
-    },
-    "description": {
-      "en": "İzleyici Bomba için üretim planını açar."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/seeker_grenade.png",
@@ -11802,6 +11802,31 @@
     ]
   },
   {
+    "id": "shotgun_choke_ii_blueprint",
+    "name": {
+      "value": "Av Tüfeği Boğumlu Namlusu II Taslağı",
+      "originalEn": "Shotgun Choke II Blueprint"
+    },
+    "description": {
+      "en": "Temel dagılımı orta duzeyde azaltır. Uyumlu: Il Toro, Vulcano"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/shotgun_choke_ii.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "shotgun_choke_ii",
     "name": {
       "value": "Av Tüfeği Boğumlu Namlusu II",
@@ -11835,13 +11860,13 @@
     ]
   },
   {
-    "id": "shotgun_choke_ii_blueprint",
+    "id": "shotgun_choke_iii_blueprint",
     "name": {
-      "value": "Av Tüfeği Boğumlu Namlusu II Taslağı",
-      "originalEn": "Shotgun Choke II Blueprint"
+      "value": "Av Tüfeği Boğumlu Namlusu III Taslağı",
+      "originalEn": "Shotgun Choke III Blueprint"
     },
     "description": {
-      "en": "Temel dagılımı orta duzeyde azaltır. Uyumlu: Il Toro, Vulcano"
+      "en": "Temel dagılmayı onemli olcude azaltır."
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -11853,7 +11878,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/shotgun_choke_ii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/shotgun_choke_iii.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -11893,13 +11918,13 @@
     ]
   },
   {
-    "id": "shotgun_choke_iii_blueprint",
+    "id": "shotgun_silencer_blueprint",
     "name": {
-      "value": "Av Tüfeği Boğumlu Namlusu III Taslağı",
-      "originalEn": "Shotgun Choke III Blueprint"
+      "value": "Pompalı Tüfek Susturucusu Taslağı",
+      "originalEn": "Shotgun Silencer Blueprint"
     },
     "description": {
-      "en": "Temel dagılmayı onemli olcude azaltır."
+      "en": "Ates ederken cikan gurultuyu orta duzeyde azaltir."
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -11911,7 +11936,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/shotgun_choke_iii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/shotgun_silencer.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -11951,13 +11976,13 @@
     ]
   },
   {
-    "id": "shotgun_silencer_blueprint",
+    "id": "showstopper_blueprint",
     "name": {
-      "value": "Pompalı Tüfek Susturucusu Taslağı",
-      "originalEn": "Shotgun Silencer Blueprint"
+      "value": "Efsane Taslağı",
+      "originalEn": "Showstopper Blueprint"
     },
     "description": {
-      "en": "Ates ederken cikan gurultuyu orta duzeyde azaltir."
+      "en": "Bir gecikmeden sonra patlayan ve yaricapindaki dusmanlari sersemletеn bir bomba."
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -11969,7 +11994,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/shotgun_silencer.png",
+    "imageFilename": "https://cdn.arctracker.io/items/showstopper.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -12001,31 +12026,6 @@
     "salvagesInto": {
       "electrical_components": 1
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/showstopper.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "showstopper_blueprint",
-    "name": {
-      "value": "Efsane Taslağı",
-      "originalEn": "Showstopper Blueprint"
-    },
-    "description": {
-      "en": "Bir gecikmeden sonra patlayan ve yaricapindaki dusmanlari sersemletеn bir bomba."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/showstopper.png",
@@ -12128,6 +12128,31 @@
     ]
   },
   {
+    "id": "silencer_i_blueprint",
+    "name": {
+      "value": "Susturucu I Taslağı",
+      "originalEn": "Silencer I Blueprint"
+    },
+    "description": {
+      "en": "Susturucu I üretmek için bir plan."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/silencer_i.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "silencer_i",
     "name": {
       "value": "Susturucu I",
@@ -12161,13 +12186,13 @@
     ]
   },
   {
-    "id": "silencer_i_blueprint",
+    "id": "silencer_ii_blueprint",
     "name": {
-      "value": "Susturucu I Taslağı",
-      "originalEn": "Silencer I Blueprint"
+      "value": "Susturucu II Taslağı",
+      "originalEn": "Silencer II Blueprint"
     },
     "description": {
-      "en": "Susturucu I üretmek için bir plan."
+      "en": "Susturucu II üretmek için bir plan."
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -12179,7 +12204,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/silencer_i.png",
+    "imageFilename": "https://cdn.arctracker.io/items/silencer_ii.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -12210,31 +12235,6 @@
     "salvagesInto": {
       "mechanical_components": 2
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/silencer_ii.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "silencer_ii_blueprint",
-    "name": {
-      "value": "Susturucu II Taslağı",
-      "originalEn": "Silencer II Blueprint"
-    },
-    "description": {
-      "en": "Susturucu II üretmek için bir plan."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/silencer_ii.png",
@@ -12331,39 +12331,6 @@
     ]
   },
   {
-    "id": "smoke_grenade",
-    "name": {
-      "value": "Sis Bombası",
-      "originalEn": "Smoke Grenade"
-    },
-    "description": {
-      "en": "Çarpma anında kalıcı bir duman bulutu oluşturarak ARC ve diğer Akıncıların görüşünü engelleyen bomba."
-    },
-    "type": "Quick Use",
-    "rarity": "Rare",
-    "value": 1000,
-    "weightKg": 0.2,
-    "stackSize": 5,
-    "recyclesInto": {
-      "canister": 1,
-      "chemicals": 2
-    },
-    "recipe": {
-      "canister": 1,
-      "chemicals": 14
-    },
-    "salvagesInto": {
-      "chemicals": 3
-    },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/smoke_grenade.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
     "id": "smoke_grenade_blueprint",
     "name": {
       "value": "Sis Bombası Taslağı",
@@ -12417,6 +12384,39 @@
     ]
   },
   {
+    "id": "smoke_grenade",
+    "name": {
+      "value": "Sis Bombası",
+      "originalEn": "Smoke Grenade"
+    },
+    "description": {
+      "en": "Çarpma anında kalıcı bir duman bulutu oluşturarak ARC ve diğer Akıncıların görüşünü engelleyen bomba."
+    },
+    "type": "Quick Use",
+    "rarity": "Rare",
+    "value": 1000,
+    "weightKg": 0.2,
+    "stackSize": 5,
+    "recyclesInto": {
+      "canister": 1,
+      "chemicals": 2
+    },
+    "recipe": {
+      "canister": 1,
+      "chemicals": 14
+    },
+    "salvagesInto": {
+      "chemicals": 3
+    },
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/smoke_grenade.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "snap_blast_grenade",
     "name": {
       "value": "Seri Patlama Bombası",
@@ -12450,6 +12450,31 @@
     ]
   },
   {
+    "id": "snap_hook_blueprint",
+    "name": {
+      "value": "Kanca Taslağı",
+      "originalEn": "Snap Hook Blueprint"
+    },
+    "description": {
+      "en": "Kullanıcının yapılara tırmanmasını ve büyük mesafeleri kat etmesini sağlayan bir alet."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/snap_hook.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "snap_hook",
     "name": {
       "value": "Kanca",
@@ -12475,31 +12500,6 @@
     "salvagesInto": {
       "advanced_electrical_components": 2
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/snap_hook.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "snap_hook_blueprint",
-    "name": {
-      "value": "Kanca Taslağı",
-      "originalEn": "Snap Hook Blueprint"
-    },
-    "description": {
-      "en": "Kullanıcının yapılara tırmanmasını ve büyük mesafeleri kat etmesini sağlayan bir alet."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/snap_hook.png",
@@ -12847,6 +12847,31 @@
     ]
   },
   {
+    "id": "stable_stock_ii_blueprint",
+    "name": {
+      "value": "Dengeli Dipçik II Taslağı",
+      "originalEn": "Stable Stock II Blueprint"
+    },
+    "description": {
+      "en": "Dagilma ve geri tepme toparlanma suresini orta derecede iyilestirir."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/stable_stock_ii.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "stable_stock_ii",
     "name": {
       "value": "Dengeli Dipçik II",
@@ -12880,13 +12905,13 @@
     ]
   },
   {
-    "id": "stable_stock_ii_blueprint",
+    "id": "stable_stock_iii_blueprint",
     "name": {
-      "value": "Dengeli Dipçik II Taslağı",
-      "originalEn": "Stable Stock II Blueprint"
+      "value": "Dengeli Dipçik III Taslağı",
+      "originalEn": "Stable Stock III Blueprint"
     },
     "description": {
-      "en": "Dagilma ve geri tepme toparlanma suresini orta derecede iyilestirir."
+      "en": "Dagilma ve geri tepme toparlanma suresini onemli olcude iyilestirir."
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -12898,7 +12923,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/stable_stock_ii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/stable_stock_iii.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -12929,31 +12954,6 @@
     "salvagesInto": {
       "mechanical_components": 2
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/stable_stock_iii.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "stable_stock_iii_blueprint",
-    "name": {
-      "value": "Dengeli Dipçik III Taslağı",
-      "originalEn": "Stable Stock III Blueprint"
-    },
-    "description": {
-      "en": "Dagilma ve geri tepme toparlanma suresini onemli olcude iyilestirir."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/stable_stock_iii.png",
@@ -13308,6 +13308,31 @@
     ]
   },
   {
+    "id": "surge_coil_blueprint",
+    "name": {
+      "value": "Surge Coil Taslak",
+      "originalEn": "Surge Coil Blueprint"
+    },
+    "description": {
+      "en": "Etrafındaki alanı periyodik olarak elektriklendiren ve içinde kalan her şeyi kısa süreliğine sersemleten konuşlandırılabilir bir cihaz."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "surge_coil",
     "name": {
       "value": "Surge Coil",
@@ -13333,31 +13358,6 @@
     "salvagesInto": {
       "electrical_components": 1
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": null,
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "surge_coil_blueprint",
-    "name": {
-      "value": "Surge Coil Taslak",
-      "originalEn": "Surge Coil Blueprint"
-    },
-    "description": {
-      "en": "Etrafındaki alanı periyodik olarak elektriklendiren ve içinde kalan her şeyi kısa süreliğine sersemleten konuşlandırılabilir bir cihaz."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": null,
@@ -13555,6 +13555,31 @@
     ]
   },
   {
+    "id": "tactical_mk3_defensive_blueprint",
+    "name": {
+      "value": "Taktiksel Mod. 3 (Savunma) Taslağı",
+      "originalEn": "Tactical Mk. 3 (Defensive) Blueprint"
+    },
+    "description": {
+      "en": "Kalkanlarin dolu kalmasini saglayan savunma odakli bir guclendirme."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_defensive.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "tactical_mk3_defensive",
     "name": {
       "value": "Taktiksel Mod. 3 (Savunma)",
@@ -13588,13 +13613,13 @@
     ]
   },
   {
-    "id": "tactical_mk3_defensive_blueprint",
+    "id": "tactical_mk3_healing_blueprint",
     "name": {
-      "value": "Taktiksel Mod. 3 (Savunma) Taslağı",
-      "originalEn": "Tactical Mk. 3 (Defensive) Blueprint"
+      "value": "Taktiksel Mod. 3 (İyileştirme) Taslağı",
+      "originalEn": "Tactical Mk. 3 (Healing) Blueprint"
     },
     "description": {
-      "en": "Kalkanlarin dolu kalmasini saglayan savunma odakli bir guclendirme."
+      "en": "İyileştirme öğeleri için ekstra yuva ekleyen, iyileştirme odaklı bir güçlendirme."
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -13606,7 +13631,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_defensive.png",
+    "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_healing_blueprint.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -13646,13 +13671,13 @@
     ]
   },
   {
-    "id": "tactical_mk3_healing_blueprint",
+    "id": "tactical_mk3_revival_blueprint",
     "name": {
-      "value": "Taktiksel Mod. 3 (İyileştirme) Taslağı",
-      "originalEn": "Tactical Mk. 3 (Healing) Blueprint"
+      "value": "Taktiksel Mod. 3 (Diriltici) Taslağı",
+      "originalEn": "Tactical Mk. 3 (Revival) Blueprint"
     },
     "description": {
-      "en": "İyileştirme öğeleri için ekstra yuva ekleyen, iyileştirme odaklı bir güçlendirme."
+      "en": "Takım desteği için tasarlanmış, canlandırma odaklı bir eklenti. Her 5 saniyede 1 Sağlık yeniler. Hasar alındığında etki 30 saniye duraklatılır. Sınırsız kullanıma ve 240 saniye bekleme süresine sahip entegre bir Defibrilatör içerir."
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -13664,7 +13689,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_healing_blueprint.png",
+    "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_revival.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -13704,13 +13729,13 @@
     ]
   },
   {
-    "id": "tactical_mk3_revival_blueprint",
+    "id": "tagging_grenade_blueprint",
     "name": {
-      "value": "Taktiksel Mod. 3 (Diriltici) Taslağı",
-      "originalEn": "Tactical Mk. 3 (Revival) Blueprint"
+      "value": "İşaretleme Bombası Taslağı",
+      "originalEn": "Tagging Grenade Blueprint"
     },
     "description": {
-      "en": "Takım desteği için tasarlanmış, canlandırma odaklı bir eklenti. Her 5 saniyede 1 Sağlık yeniler. Hasar alındığında etki 30 saniye duraklatılır. Sınırsız kullanıma ve 240 saniye bekleme süresine sahip entegre bir Defibrilatör içerir."
+      "en": "Gecikmeli olarak patlayan ve bir alandaki Akinciları ve ARC dusmanlarini isaretleyen bomba."
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -13722,7 +13747,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_revival.png",
+    "imageFilename": "https://cdn.arctracker.io/items/tagging_grenade.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -13753,31 +13778,6 @@
     "salvagesInto": {
       "sensors": 1
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/tagging_grenade.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "tagging_grenade_blueprint",
-    "name": {
-      "value": "İşaretleme Bombası Taslağı",
-      "originalEn": "Tagging Grenade Blueprint"
-    },
-    "description": {
-      "en": "Gecikmeli olarak patlayan ve bir alandaki Akinciları ve ARC dusmanlarini isaretleyen bomba."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/tagging_grenade.png",
@@ -14337,6 +14337,31 @@
     ]
   },
   {
+    "id": "trailblazer_blueprint",
+    "name": {
+      "value": "Yol Açan Taslağı",
+      "originalEn": "Trailblazer Blueprint"
+    },
+    "description": {
+      "en": "Yol Açan için üretim planını açar."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/trailblazer.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "trailblazer",
     "name": {
       "value": "Yol Açan",
@@ -14370,13 +14395,13 @@
     ]
   },
   {
-    "id": "trailblazer_blueprint",
+    "id": "trigger_nade_blueprint",
     "name": {
-      "value": "Yol Açan Taslağı",
-      "originalEn": "Trailblazer Blueprint"
+      "value": "Tetikleme Bombası Taslağı",
+      "originalEn": "Trigger Nade Blueprint"
     },
     "description": {
-      "en": "Yol Açan için üretim planını açar."
+      "en": "Yüzeyler ile ARC'a yapışabilen ve tetiklendiğinde patlayıcı hasar veren uzaktan kumandalı bir bomba."
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -14388,7 +14413,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/trailblazer.png",
+    "imageFilename": "https://cdn.arctracker.io/items/trigger_nade_blueprint.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -14422,31 +14447,6 @@
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/trigger_nade.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "trigger_nade_blueprint",
-    "name": {
-      "value": "Tetikleme Bombası Taslağı",
-      "originalEn": "Trigger Nade Blueprint"
-    },
-    "description": {
-      "en": "Yüzeyler ile ARC'a yapışabilen ve tetiklendiğinde patlayıcı hasar veren uzaktan kumandalı bir bomba."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/trigger_nade_blueprint.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -14785,6 +14785,31 @@
     ]
   },
   {
+    "id": "vertical_grip_ii_blueprint",
+    "name": {
+      "value": "Dikey Tutamaç II Taslağı",
+      "originalEn": "Vertical Grip II Blueprint"
+    },
+    "description": {
+      "en": "Dikey geri tepmesini orta derecede azaltir. Uyumlu silahlar: Arpeggio, Ferro, Avcı, Il Toro, Zımba"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/vertical_grip_ii.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "vertical_grip_ii",
     "name": {
       "value": "Dikey Tutamaç II",
@@ -14818,13 +14843,13 @@
     ]
   },
   {
-    "id": "vertical_grip_ii_blueprint",
+    "id": "vertical_grip_iii_blueprint",
     "name": {
-      "value": "Dikey Tutamaç II Taslağı",
-      "originalEn": "Vertical Grip II Blueprint"
+      "value": "Dikey Tutamaç III Taslağı",
+      "originalEn": "Vertical Grip III Blueprint"
     },
     "description": {
-      "en": "Dikey geri tepmesini orta derecede azaltir. Uyumlu silahlar: Arpeggio, Ferro, Avcı, Il Toro, Zımba"
+      "en": "Dikey geri tepmesini önemli ölçüde azaltır."
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -14836,7 +14861,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/vertical_grip_ii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/vertical_grip_iii_blueprint.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -14876,31 +14901,6 @@
     ]
   },
   {
-    "id": "vertical_grip_iii_blueprint",
-    "name": {
-      "value": "Dikey Tutamaç III Taslağı",
-      "originalEn": "Vertical Grip III Blueprint"
-    },
-    "description": {
-      "en": "Dikey geri tepmesini önemli ölçüde azaltır."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/vertical_grip_iii_blueprint.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
     "id": "very_comfortable_pillow",
     "name": {
       "value": "Çok Rahat Yastık",
@@ -14924,6 +14924,31 @@
     "foundIn": [
       "Residential",
       "Commercial"
+    ]
+  },
+  {
+    "id": "vita_shot_blueprint",
+    "name": {
+      "value": "Sağlık İğnesi Taslağı",
+      "originalEn": "Vita Shot Blueprint"
+    },
+    "description": {
+      "en": "Büyük miktarda can yenileyen bir tıbbi eşya."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/vita_shot.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
     ]
   },
   {
@@ -14960,25 +14985,25 @@
     ]
   },
   {
-    "id": "vita_shot_blueprint",
+    "id": "vita_spray_blueprint",
     "name": {
-      "value": "Sağlık İğnesi Taslağı",
-      "originalEn": "Vita Shot Blueprint"
+      "value": "Sağlık Spreyi Taslağı",
+      "originalEn": "Vita Spray Blueprint"
     },
     "description": {
-      "en": "Büyük miktarda can yenileyen bir tıbbi eşya."
+      "en": "Kullanıldığı süre boyunca canı devamlı olarak yenileyen bir tıbbi eşya. Kendin veya müttefiklerin için kullanabilirsin."
     },
     "type": "Blueprint",
     "rarity": "Common",
     "value": 5000,
-    "weightKg": 0,
+    "weightKg": null,
     "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/vita_shot.png",
+    "imageFilename": "https://cdn.arctracker.io/items/vita_spray.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -15010,31 +15035,6 @@
     "salvagesInto": {
       "antiseptic": 1
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/vita_spray.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "vita_spray_blueprint",
-    "name": {
-      "value": "Sağlık Spreyi Taslağı",
-      "originalEn": "Vita Spray Blueprint"
-    },
-    "description": {
-      "en": "Kullanıldığı süre boyunca canı devamlı olarak yenileyen bir tıbbi eşya. Kendin veya müttefiklerin için kullanabilirsin."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": null,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/vita_spray.png",
@@ -15378,6 +15378,31 @@
     ]
   },
   {
+    "id": "wolfpack_blueprint",
+    "name": {
+      "value": "Kurt Sürüsü Taslağı",
+      "originalEn": "Wolfpack Blueprint"
+    },
+    "description": {
+      "en": "Her biri Arc'ı hedef alan ve temas hâlinde patlayıcı hasar veren birden fazla güdümlü füzeye ayrılan bir bomba."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/wolfpack_blueprint.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "wolfpack",
     "name": {
       "value": "Kurt Sürüsü",
@@ -15412,13 +15437,13 @@
     ]
   },
   {
-    "id": "wolfpack_blueprint",
+    "id": "yellow_light_stick_blueprint",
     "name": {
-      "value": "Kurt Sürüsü Taslağı",
-      "originalEn": "Wolfpack Blueprint"
+      "value": "Sarı Işık Çubuğu Taslağı",
+      "originalEn": "Yellow Light Stick Blueprint"
     },
     "description": {
-      "en": "Her biri Arc'ı hedef alan ve temas hâlinde patlayıcı hasar veren birden fazla güdümlü füzeye ayrılan bir bomba."
+      "en": "Etrafındaki alanı aydınlatan fırlatılabilir kimyasal ışık."
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -15430,7 +15455,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/wolfpack_blueprint.png",
+    "imageFilename": "https://cdn.arctracker.io/items/yellow_light_stick.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -15459,31 +15484,6 @@
     "salvagesInto": {
       "chemicals": 1
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/yellow_light_stick.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "yellow_light_stick_blueprint",
-    "name": {
-      "value": "Sarı Işık Çubuğu Taslağı",
-      "originalEn": "Yellow Light Stick Blueprint"
-    },
-    "description": {
-      "en": "Etrafındaki alanı aydınlatan fırlatılabilir kimyasal ışık."
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/yellow_light_stick.png",

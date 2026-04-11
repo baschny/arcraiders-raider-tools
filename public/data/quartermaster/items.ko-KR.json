@@ -928,7 +928,7 @@
     },
     "assessor_matrix": {
       "name": {
-        "value": "Assessor Matrix",
+        "value": "어세서 매트릭스",
         "originalEn": "Assessor Matrix"
       },
       "description": "",
@@ -2005,7 +2005,7 @@
     },
     "canto_i": {
       "name": {
-        "value": "Canto I",
+        "value": "칸토 I",
         "originalEn": "Canto I"
       },
       "description": "더 큰 구경의 완전 자동 기관단총입니다.",
@@ -2035,7 +2035,7 @@
     },
     "canto_ii": {
       "name": {
-        "value": "Canto II",
+        "value": "칸토 II",
         "originalEn": "Canto II"
       },
       "description": "더 큰 구경의 완전 자동 기관단총입니다.",
@@ -2059,7 +2059,7 @@
     },
     "canto_iii": {
       "name": {
-        "value": "Canto III",
+        "value": "칸토 III",
         "originalEn": "Canto III"
       },
       "description": "더 큰 구경의 완전 자동 기관단총입니다.",
@@ -2083,7 +2083,7 @@
     },
     "canto_iv": {
       "name": {
-        "value": "Canto IV",
+        "value": "칸토 IV",
         "originalEn": "Canto IV"
       },
       "description": "더 큰 구경의 완전 자동 기관단총입니다.",
@@ -3148,7 +3148,7 @@
     },
     "dolabra": {
       "name": {
-        "value": "Dolabra",
+        "value": "돌라브라",
         "originalEn": "Dolabra"
       },
       "description": "근거리에서 넓은 폭발을 일으키거나, 초점을 맞춰 중거리에서 정밀한 열선을 발사할 수 있는 실험용 무기입니다.",
@@ -7516,7 +7516,6 @@
       },
       "stackSize": 10,
       "value": 640,
-      "weight": 0.2,
       "foundIn": [
         "Nature"
       ]
@@ -10000,7 +9999,7 @@
     },
     "surge_coil": {
       "name": {
-        "value": "Surge Coil",
+        "value": "서지 코일",
         "originalEn": "Surge Coil"
       },
       "description": "주변 지역을 주기적으로 전기화하고 그 안에 갇힌 대상을 잠시 기절시키는 설치형 장치입니다.",
@@ -10873,7 +10872,7 @@
     },
     "vaporizer_regulator": {
       "name": {
-        "value": "Vaporizer Regulator",
+        "value": "베이퍼라이저 조절기",
         "originalEn": "Vaporizer Regulator"
       },
       "description": "",

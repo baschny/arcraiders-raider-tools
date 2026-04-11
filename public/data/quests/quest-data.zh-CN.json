@@ -779,7 +779,7 @@
       {
         "id": "lure_grenade_blueprint",
         "name": {
-          "value": "诱饵手榴弹蓝图",
+          "value": "诱捕手雷蓝图",
           "originalEn": "Lure Grenade Blueprint"
         },
         "imageFilename": "https://cdn.arctracker.io/items/lure_grenade.png"
@@ -1402,7 +1402,7 @@
       {
         "id": "trigger_nade_blueprint",
         "name": {
-          "value": "触发手榴弹蓝图",
+          "value": "触发式手雷蓝图",
           "originalEn": "Trigger Nade Blueprint"
         },
         "imageFilename": "https://cdn.arctracker.io/items/trigger_nade_blueprint.png"
@@ -1860,7 +1860,7 @@
       {
         "id": "vita_spray_blueprint",
         "name": {
-          "value": "生命喷雾蓝图",
+          "value": "补水喷雾蓝图",
           "originalEn": "Vita Spray Blueprint"
         },
         "imageFilename": "https://cdn.arctracker.io/items/vita_spray.png"

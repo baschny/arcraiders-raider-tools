@@ -158,35 +158,6 @@
     ]
   },
   {
-    "id": "agave",
-    "name": {
-      "value": "龍舌蘭",
-      "originalEn": "Agave"
-    },
-    "description": {
-      "en": "一片龍舌蘭葉。可用於恢復少量生命值。"
-    },
-    "type": "Nature",
-    "rarity": "Uncommon",
-    "value": 1000,
-    "weightKg": 0.2,
-    "stackSize": 10,
-    "recyclesInto": {
-      "assorted_seeds": 3
-    },
-    "recipe": null,
-    "salvagesInto": {
-      "assorted_seeds": 2
-    },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/agave.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Nature"
-    ]
-  },
-  {
     "id": "agave_juice",
     "name": {
       "value": "龍舌蘭汁",
@@ -214,6 +185,35 @@
     "isWeapon": null,
     "foundIn": [
       "Unknown"
+    ]
+  },
+  {
+    "id": "agave",
+    "name": {
+      "value": "龍舌蘭",
+      "originalEn": "Agave"
+    },
+    "description": {
+      "en": "一片龍舌蘭葉。可用於恢復少量生命值。"
+    },
+    "type": "Nature",
+    "rarity": "Uncommon",
+    "value": 1000,
+    "weightKg": 0.2,
+    "stackSize": 10,
+    "recyclesInto": {
+      "assorted_seeds": 3
+    },
+    "recipe": null,
+    "salvagesInto": {
+      "assorted_seeds": 2
+    },
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/agave.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Nature"
     ]
   },
   {
@@ -354,6 +354,31 @@
     ]
   },
   {
+    "id": "angled_grip_ii_blueprint",
+    "name": {
+      "value": "斜角握把 II 藍圖",
+      "originalEn": "Angled Grip II Blueprint"
+    },
+    "description": {
+      "en": "中度降低水平後座力。與以下物品相容:水壺,碎甲者,獵人,公牛,暴風雨"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/angled_grip_ii.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "angled_grip_ii",
     "name": {
       "value": "斜角握把 II",
@@ -387,13 +412,13 @@
     ]
   },
   {
-    "id": "angled_grip_ii_blueprint",
+    "id": "angled_grip_iii_blueprint",
     "name": {
-      "value": "斜角握把 II 藍圖",
-      "originalEn": "Angled Grip II Blueprint"
+      "value": "斜角握把 III 藍圖",
+      "originalEn": "Angled Grip III Blueprint"
     },
     "description": {
-      "en": "中度降低水平後座力。與以下物品相容:水壺,碎甲者,獵人,公牛,暴風雨"
+      "en": "大幅減少水平後座力。相容武器：琶音、鐵衛、獵人、公牛、縫合者"
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -405,7 +430,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/angled_grip_ii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/angled_grip_iii.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -436,31 +461,6 @@
     "salvagesInto": {
       "mechanical_components": 2
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/angled_grip_iii.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "angled_grip_iii_blueprint",
-    "name": {
-      "value": "斜角握把 III 藍圖",
-      "originalEn": "Angled Grip III Blueprint"
-    },
-    "description": {
-      "en": "大幅減少水平後座力。相容武器：琶音、鐵衛、獵人、公牛、縫合者"
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/angled_grip_iii.png",
@@ -689,6 +689,31 @@
     ]
   },
   {
+    "id": "aphelion_blueprint",
+    "name": {
+      "value": "遠日點藍圖",
+      "originalEn": "Aphelion Blueprint"
+    },
+    "description": {
+      "en": "由族長反應爐供電的實驗性ARC光束武器。"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/aphelion.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "aphelion",
     "name": {
       "value": "遠日點",
@@ -718,31 +743,6 @@
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/aphelion.png",
     "isWeapon": true,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "aphelion_blueprint",
-    "name": {
-      "value": "遠日點藍圖",
-      "originalEn": "Aphelion Blueprint"
-    },
-    "description": {
-      "en": "由族長反應爐供電的實驗性ARC光束武器。"
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/aphelion.png",
-    "isWeapon": null,
     "foundIn": [
       "Unknown"
     ]
@@ -1256,6 +1256,31 @@
     ]
   },
   {
+    "id": "barricade_kit_blueprint",
+    "name": {
+      "value": "路障套組藍圖",
+      "originalEn": "Barricade Kit Blueprint"
+    },
+    "description": {
+      "en": "可部署的掩體，能夠阻擋傷害直到被摧毀。"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/barricade_kit.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "barricade_kit",
     "name": {
       "value": "路障套組",
@@ -1278,31 +1303,6 @@
     "salvagesInto": {
       "metal_parts": 3
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/barricade_kit.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "barricade_kit_blueprint",
-    "name": {
-      "value": "路障套組藍圖",
-      "originalEn": "Barricade Kit Blueprint"
-    },
-    "description": {
-      "en": "可部署的掩體，能夠阻擋傷害直到被摧毀。"
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/barricade_kit.png",
@@ -1593,39 +1593,6 @@
     ]
   },
   {
-    "id": "blaze_grenade",
-    "name": {
-      "value": "烈焰手榴彈",
-      "originalEn": "Blaze Grenade"
-    },
-    "description": {
-      "en": "撞擊時引爆的手榴彈，會在區域內產生持續造成傷害的火焰。"
-    },
-    "type": "Quick Use",
-    "rarity": "Rare",
-    "value": 1600,
-    "weightKg": 0.2,
-    "stackSize": 5,
-    "recyclesInto": {
-      "metal_parts": 4,
-      "oil": 2
-    },
-    "recipe": {
-      "explosive_compound": 1,
-      "oil": 2
-    },
-    "salvagesInto": {
-      "oil": 1
-    },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/blaze_grenade.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
     "id": "blaze_grenade_blueprint",
     "name": {
       "value": "烈焰手榴彈藍圖",
@@ -1673,6 +1640,39 @@
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/blaze_grenade_trap.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "blaze_grenade",
+    "name": {
+      "value": "烈焰手榴彈",
+      "originalEn": "Blaze Grenade"
+    },
+    "description": {
+      "en": "撞擊時引爆的手榴彈，會在區域內產生持續造成傷害的火焰。"
+    },
+    "type": "Quick Use",
+    "rarity": "Rare",
+    "value": 1600,
+    "weightKg": 0.2,
+    "stackSize": 5,
+    "recyclesInto": {
+      "metal_parts": 4,
+      "oil": 2
+    },
+    "recipe": {
+      "explosive_compound": 1,
+      "oil": 2
+    },
+    "salvagesInto": {
+      "oil": 1
+    },
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/blaze_grenade.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -1805,6 +1805,31 @@
     ]
   },
   {
+    "id": "blue_light_stick_blueprint",
+    "name": {
+      "value": "藍色螢光棒藍圖",
+      "originalEn": "Blue Light Stick Blueprint"
+    },
+    "description": {
+      "en": "可投擲的化學光源，能照亮周圍區域。"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/blue_light_stick_blueprint.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "blue_light_stick",
     "name": {
       "value": "藍色螢光棒",
@@ -1830,31 +1855,6 @@
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/blue_light_stick.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "blue_light_stick_blueprint",
-    "name": {
-      "value": "藍色螢光棒藍圖",
-      "originalEn": "Blue Light Stick Blueprint"
-    },
-    "description": {
-      "en": "可投擲的化學光源，能照亮周圍區域。"
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/blue_light_stick_blueprint.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -2948,6 +2948,31 @@
     ]
   },
   {
+    "id": "combat_mk3_aggressive_blueprint",
+    "name": {
+      "value": "戰鬥 Mk. 3（進攻型）藍圖",
+      "originalEn": "Combat Mk. 3 (Aggressive) Blueprint"
+    },
+    "description": {
+      "en": "戰鬥 II 增強裝置的改良版本。支援更多護盾類型，並提供額外的手榴彈空間。"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/combat_mk3_aggressive.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "combat_mk3_aggressive",
     "name": {
       "value": "戰鬥 Mk. 3（進攻型）",
@@ -2981,13 +3006,13 @@
     ]
   },
   {
-    "id": "combat_mk3_aggressive_blueprint",
+    "id": "combat_mk3_flanking_blueprint",
     "name": {
-      "value": "戰鬥 Mk. 3（進攻型）藍圖",
-      "originalEn": "Combat Mk. 3 (Aggressive) Blueprint"
+      "value": "戰鬥 Mk. 3（側翼型）藍圖",
+      "originalEn": "Combat Mk. 3 (Flanking) Blueprint"
     },
     "description": {
-      "en": "戰鬥 II 增強裝置的改良版本。支援更多護盾類型，並提供額外的手榴彈空間。"
+      "en": "戰鬥 II 增強裝置的改良版本。專為側翼機動設計，具有增強的機動性。"
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -2999,7 +3024,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/combat_mk3_aggressive.png",
+    "imageFilename": "https://cdn.arctracker.io/items/combat_mk3_flanking.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -3030,31 +3055,6 @@
     "salvagesInto": {
       "electrical_components": 2
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/combat_mk3_flanking.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "combat_mk3_flanking_blueprint",
-    "name": {
-      "value": "戰鬥 Mk. 3（側翼型）藍圖",
-      "originalEn": "Combat Mk. 3 (Flanking) Blueprint"
-    },
-    "description": {
-      "en": "戰鬥 II 增強裝置的改良版本。專為側翼機動設計，具有增強的機動性。"
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/combat_mk3_flanking.png",
@@ -3126,6 +3126,31 @@
     ]
   },
   {
+    "id": "compensator_ii_blueprint",
+    "name": {
+      "value": "補償器II藍圖",
+      "originalEn": "Compensator II Blueprint"
+    },
+    "description": {
+      "en": "適度減少每發射擊的擴散。"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/compensator_ii_blueprint.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "compensator_ii",
     "name": {
       "value": "補償器 II",
@@ -3159,13 +3184,13 @@
     ]
   },
   {
-    "id": "compensator_ii_blueprint",
+    "id": "compensator_iii_blueprint",
     "name": {
-      "value": "補償器II藍圖",
-      "originalEn": "Compensator II Blueprint"
+      "value": "補償器 III 藍圖",
+      "originalEn": "Compensator III Blueprint"
     },
     "description": {
-      "en": "適度減少每發射擊的擴散。"
+      "en": "適度減少每次射擊的擴散度。相容武器：琶音、鐵衛、叛徒、鐵砧、縫合者"
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -3177,7 +3202,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/compensator_ii_blueprint.png",
+    "imageFilename": "https://cdn.arctracker.io/items/compensator_iii.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -3217,13 +3242,13 @@
     ]
   },
   {
-    "id": "compensator_iii_blueprint",
+    "id": "complex_gun_parts_blueprint",
     "name": {
-      "value": "補償器 III 藍圖",
-      "originalEn": "Compensator III Blueprint"
+      "value": "複雜槍械零件藍圖",
+      "originalEn": "Complex Gun Parts Blueprint"
     },
     "description": {
-      "en": "適度減少每次射擊的擴散度。相容武器：琶音、鐵衛、叛徒、鐵砧、縫合者"
+      "en": "用於製作高級武器。"
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -3235,7 +3260,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/compensator_iii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/complex_gun_parts_blueprint.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -3272,31 +3297,6 @@
     "isWeapon": null,
     "foundIn": [
       "Security"
-    ]
-  },
-  {
-    "id": "complex_gun_parts_blueprint",
-    "name": {
-      "value": "複雜槍械零件藍圖",
-      "originalEn": "Complex Gun Parts Blueprint"
-    },
-    "description": {
-      "en": "用於製作高級武器。"
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/complex_gun_parts_blueprint.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
     ]
   },
   {
@@ -3915,6 +3915,31 @@
     ]
   },
   {
+    "id": "deadline_blueprint",
+    "name": {
+      "value": "最後期限藍圖",
+      "originalEn": "Deadline Blueprint"
+    },
+    "description": {
+      "en": "解鎖在爆裂物工作台製作最後期限地雷的能力。"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/deadline.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "deadline",
     "name": {
       "value": "最後期限",
@@ -3949,13 +3974,13 @@
     ]
   },
   {
-    "id": "deadline_blueprint",
+    "id": "defibrillator_blueprint",
     "name": {
-      "value": "最後期限藍圖",
-      "originalEn": "Deadline Blueprint"
+      "value": "除顫器藍圖",
+      "originalEn": "Defibrillator Blueprint"
     },
     "description": {
-      "en": "解鎖在爆裂物工作台製作最後期限地雷的能力。"
+      "en": "能快速復甦倒地的掠奪者並恢復部分生命值的注射劑。"
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -3967,7 +3992,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/deadline.png",
+    "imageFilename": "https://cdn.arctracker.io/items/defibrillator.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -3998,31 +4023,6 @@
     "salvagesInto": {
       "chemicals": 2
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/defibrillator.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "defibrillator_blueprint",
-    "name": {
-      "value": "除顫器藍圖",
-      "originalEn": "Defibrillator Blueprint"
-    },
-    "description": {
-      "en": "能快速復甦倒地的掠奪者並恢復部分生命值的注射劑。"
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/defibrillator.png",
@@ -4175,6 +4175,31 @@
     ]
   },
   {
+    "id": "dolabra_blueprint",
+    "name": {
+      "value": "Dolabra 藍圖",
+      "originalEn": "Dolabra Blueprint"
+    },
+    "description": {
+      "en": "一種實驗性武器，既可以發射寬範圍的短程衝擊，也可以聚焦發射窄範圍的中程熱能光束。"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "dolabra",
     "name": {
       "value": "Dolabra",
@@ -4203,31 +4228,6 @@
     "tier": null,
     "imageFilename": null,
     "isWeapon": true,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "dolabra_blueprint",
-    "name": {
-      "value": "Dolabra 藍圖",
-      "originalEn": "Dolabra Blueprint"
-    },
-    "description": {
-      "en": "一種實驗性武器，既可以發射寬範圍的短程衝擊，也可以聚焦發射窄範圍的中程熱能光束。"
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": null,
-    "isWeapon": null,
     "foundIn": [
       "Unknown"
     ]
@@ -4493,6 +4493,31 @@
     ]
   },
   {
+    "id": "equalizer_blueprint",
+    "name": {
+      "value": "均衡者藍圖",
+      "originalEn": "Equalizer Blueprint"
+    },
+    "description": {
+      "en": "一把高容量的實驗性光束步槍。"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/equalizer.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "equalizer",
     "name": {
       "value": "平衡者",
@@ -4522,31 +4547,6 @@
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/equalizer.png",
     "isWeapon": true,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "equalizer_blueprint",
-    "name": {
-      "value": "均衡者藍圖",
-      "originalEn": "Equalizer Blueprint"
-    },
-    "description": {
-      "en": "一把高容量的實驗性光束步槍。"
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/equalizer.png",
-    "isWeapon": null,
     "foundIn": [
       "Unknown"
     ]
@@ -4746,6 +4746,31 @@
     ]
   },
   {
+    "id": "explosive_mine_blueprint",
+    "name": {
+      "value": "爆炸地雷 藍圖",
+      "originalEn": "Explosive Mine Blueprint"
+    },
+    "description": {
+      "en": "當敵人接近時引爆的近距離觸發爆炸裝置。"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/explosive_mine.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "explosive_mine",
     "name": {
       "value": "爆炸地雷",
@@ -4779,13 +4804,13 @@
     ]
   },
   {
-    "id": "explosive_mine_blueprint",
+    "id": "extended_barrel_blueprint",
     "name": {
-      "value": "爆炸地雷 藍圖",
-      "originalEn": "Explosive Mine Blueprint"
+      "value": "加長槍管 藍圖",
+      "originalEn": "Extended Barrel Blueprint"
     },
     "description": {
-      "en": "當敵人接近時引爆的近距離觸發爆炸裝置。"
+      "en": "適度提升子彈速度。相容武器：Tempest、Arpeggio、Ferro、Renegade、Anvil"
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -4797,7 +4822,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/explosive_mine.png",
+    "imageFilename": "https://cdn.arctracker.io/items/extended_barrel.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -4828,31 +4853,6 @@
     "salvagesInto": {
       "mechanical_components": 2
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/extended_barrel.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "extended_barrel_blueprint",
-    "name": {
-      "value": "加長槍管 藍圖",
-      "originalEn": "Extended Barrel Blueprint"
-    },
-    "description": {
-      "en": "適度提升子彈速度。相容武器：Tempest、Arpeggio、Ferro、Renegade、Anvil"
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/extended_barrel.png",
@@ -4894,6 +4894,31 @@
     ]
   },
   {
+    "id": "extended_light_mag_ii_blueprint",
+    "name": {
+      "value": "延長輕型彈匣 II 藍圖",
+      "originalEn": "Extended Light Mag II Blueprint"
+    },
+    "description": {
+      "en": "適度延長使用輕型彈藥的相容武器的彈藥容量。"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/extended_light_mag_ii.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "extended_light_mag_ii",
     "name": {
       "value": "延長輕型彈匣 II",
@@ -4927,13 +4952,13 @@
     ]
   },
   {
-    "id": "extended_light_mag_ii_blueprint",
+    "id": "extended_light_mag_iii_blueprint",
     "name": {
-      "value": "延長輕型彈匣 II 藍圖",
-      "originalEn": "Extended Light Mag II Blueprint"
+      "value": "延長輕型彈匣 III 藍圖",
+      "originalEn": "Extended Light Mag III Blueprint"
     },
     "description": {
-      "en": "適度延長使用輕型彈藥的相容武器的彈藥容量。"
+      "en": "大幅延長使用輕型彈藥的相容武器的彈藥容量。"
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -4945,7 +4970,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/extended_light_mag_ii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/extended_light_mag_iii.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -4976,31 +5001,6 @@
     "salvagesInto": {
       "mechanical_components": 2
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/extended_light_mag_iii.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "extended_light_mag_iii_blueprint",
-    "name": {
-      "value": "延長輕型彈匣 III 藍圖",
-      "originalEn": "Extended Light Mag III Blueprint"
-    },
-    "description": {
-      "en": "大幅延長使用輕型彈藥的相容武器的彈藥容量。"
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/extended_light_mag_iii.png",
@@ -5042,6 +5042,31 @@
     ]
   },
   {
+    "id": "extended_medium_mag_ii_blueprint",
+    "name": {
+      "value": "延長中型彈匣II藍圖",
+      "originalEn": "Extended Medium Mag II Blueprint"
+    },
+    "description": {
+      "en": "適度延長使用中型彈藥的相容武器的彈藥容量。"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/extended_medium_mag_ii_blueprint.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "extended_medium_mag_ii",
     "name": {
       "value": "延長中型彈匣 II",
@@ -5075,13 +5100,13 @@
     ]
   },
   {
-    "id": "extended_medium_mag_ii_blueprint",
+    "id": "extended_medium_mag_iii_blueprint",
     "name": {
-      "value": "延長中型彈匣II藍圖",
-      "originalEn": "Extended Medium Mag II Blueprint"
+      "value": "延長中型彈匣III藍圖",
+      "originalEn": "Extended Medium Mag III Blueprint"
     },
     "description": {
-      "en": "適度延長使用中型彈藥的相容武器的彈藥容量。"
+      "en": "大幅延長使用中型彈藥的相容武器彈藥容量。"
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -5093,7 +5118,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/extended_medium_mag_ii_blueprint.png",
+    "imageFilename": "https://cdn.arctracker.io/items/extended_medium_mag_iii.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -5124,31 +5149,6 @@
     "salvagesInto": {
       "mechanical_components": 2
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/extended_medium_mag_iii.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "extended_medium_mag_iii_blueprint",
-    "name": {
-      "value": "延長中型彈匣III藍圖",
-      "originalEn": "Extended Medium Mag III Blueprint"
-    },
-    "description": {
-      "en": "大幅延長使用中型彈藥的相容武器彈藥容量。"
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/extended_medium_mag_iii.png",
@@ -5190,6 +5190,31 @@
     ]
   },
   {
+    "id": "extended_shotgun_mag_ii_blueprint",
+    "name": {
+      "value": "延長霰彈槍彈匣 II 藍圖",
+      "originalEn": "Extended Shotgun Mag II Blueprint"
+    },
+    "description": {
+      "en": "適度增加霰彈槍的彈藥容量。"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/extended_shotgun_mag_ii.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "extended_shotgun_mag_ii",
     "name": {
       "value": "延長霰彈槍彈匣 II",
@@ -5223,13 +5248,13 @@
     ]
   },
   {
-    "id": "extended_shotgun_mag_ii_blueprint",
+    "id": "extended_shotgun_mag_iii_blueprint",
     "name": {
-      "value": "延長霰彈槍彈匣 II 藍圖",
-      "originalEn": "Extended Shotgun Mag II Blueprint"
+      "value": "擴展霰彈槍彈匣 III 藍圖",
+      "originalEn": "Extended Shotgun Mag III Blueprint"
     },
     "description": {
-      "en": "適度增加霰彈槍的彈藥容量。"
+      "en": "顯著擴展霰彈槍的彈藥容量。"
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -5241,7 +5266,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/extended_shotgun_mag_ii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/extended_shotgun_mag_iii.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -5272,31 +5297,6 @@
     "salvagesInto": {
       "mechanical_components": 2
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/extended_shotgun_mag_iii.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "extended_shotgun_mag_iii_blueprint",
-    "name": {
-      "value": "擴展霰彈槍彈匣 III 藍圖",
-      "originalEn": "Extended Shotgun Mag III Blueprint"
-    },
-    "description": {
-      "en": "顯著擴展霰彈槍的彈藥容量。"
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/extended_shotgun_mag_iii.png",
@@ -5687,6 +5687,31 @@
     ]
   },
   {
+    "id": "fireworks_box_blueprint",
+    "name": {
+      "value": "煙火箱藍圖",
+      "originalEn": "Fireworks Box Blueprint"
+    },
+    "description": {
+      "en": "解鎖煙火箱的製作藍圖。"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/fireworks_box.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "fireworks_box",
     "name": {
       "value": "煙火箱",
@@ -5710,31 +5735,6 @@
     "salvagesInto": {
       "explosive_compound": 1
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/fireworks_box.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "fireworks_box_blueprint",
-    "name": {
-      "value": "煙火箱藍圖",
-      "originalEn": "Fireworks Box Blueprint"
-    },
-    "description": {
-      "en": "解鎖煙火箱的製作藍圖。"
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/fireworks_box.png",
@@ -6137,6 +6137,34 @@
     ]
   },
   {
+    "id": "gas_grenade_trap",
+    "name": {
+      "value": "毒氣手榴彈陷阱",
+      "originalEn": "Gas Grenade Trap"
+    },
+    "description": {
+      "en": "引爆毒氣手榴彈的雷射絆線。"
+    },
+    "type": "Quick Use",
+    "rarity": "Common",
+    "value": 300,
+    "weightKg": 0.25,
+    "stackSize": 3,
+    "recyclesInto": null,
+    "recipe": {
+      "gas_grenade": 1,
+      "wires": 1
+    },
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/gas_grenade_trap.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "gas_grenade",
     "name": {
       "value": "毒氣手榴彈",
@@ -6170,28 +6198,25 @@
     ]
   },
   {
-    "id": "gas_grenade_trap",
+    "id": "gas_mine_blueprint",
     "name": {
-      "value": "毒氣手榴彈陷阱",
-      "originalEn": "Gas Grenade Trap"
+      "value": "毒氣地雷 藍圖",
+      "originalEn": "Gas Mine Blueprint"
     },
     "description": {
-      "en": "引爆毒氣手榴彈的雷射絆線。"
+      "en": "一種近距離觸發的地雷，會彈出並釋放快速消耗耐力的毒氣雲。"
     },
-    "type": "Quick Use",
+    "type": "Blueprint",
     "rarity": "Common",
-    "value": 300,
-    "weightKg": 0.25,
-    "stackSize": 3,
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
     "recyclesInto": null,
-    "recipe": {
-      "gas_grenade": 1,
-      "wires": 1
-    },
+    "recipe": null,
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/gas_grenade_trap.png",
+    "imageFilename": "https://cdn.arctracker.io/items/gas_mine.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -6222,31 +6247,6 @@
     "salvagesInto": {
       "chemicals": 2
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/gas_mine.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "gas_mine_blueprint",
-    "name": {
-      "value": "毒氣地雷 藍圖",
-      "originalEn": "Gas Mine Blueprint"
-    },
-    "description": {
-      "en": "一種近距離觸發的地雷，會彈出並釋放快速消耗耐力的毒氣雲。"
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/gas_mine.png",
@@ -6340,6 +6340,31 @@
     ]
   },
   {
+    "id": "green_light_stick_blueprint",
+    "name": {
+      "value": "綠色螢光棒藍圖",
+      "originalEn": "Green Light Stick Blueprint"
+    },
+    "description": {
+      "en": "可投擲的化學光源，能照亮周圍區域。"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/green_light_stick.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "green_light_stick",
     "name": {
       "value": "綠色螢光棒",
@@ -6362,31 +6387,6 @@
     "salvagesInto": {
       "chemicals": 1
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/green_light_stick.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "green_light_stick_blueprint",
-    "name": {
-      "value": "綠色螢光棒藍圖",
-      "originalEn": "Green Light Stick Blueprint"
-    },
-    "description": {
-      "en": "可投擲的化學光源，能照亮周圍區域。"
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/green_light_stick.png",
@@ -6619,6 +6619,31 @@
     ]
   },
   {
+    "id": "heavy_gun_parts_blueprint",
+    "name": {
+      "value": "重型槍械零件藍圖",
+      "originalEn": "Heavy Gun Parts Blueprint"
+    },
+    "description": {
+      "en": "用於製作武器。"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/heavy_gun_parts.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "heavy_gun_parts",
     "name": {
       "value": "重型槍械零件",
@@ -6648,31 +6673,6 @@
     "foundIn": [
       "Security",
       "Raider"
-    ]
-  },
-  {
-    "id": "heavy_gun_parts_blueprint",
-    "name": {
-      "value": "重型槍械零件藍圖",
-      "originalEn": "Heavy Gun Parts Blueprint"
-    },
-    "description": {
-      "en": "用於製作武器。"
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/heavy_gun_parts.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
     ]
   },
   {
@@ -7354,6 +7354,31 @@
     ]
   },
   {
+    "id": "jolt_mine_blueprint",
+    "name": {
+      "value": "震盪地雷藍圖",
+      "originalEn": "Jolt Mine Blueprint"
+    },
+    "description": {
+      "en": "一種接近觸發的地雷，會彈起並擊暈範圍內的任何目標。"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/jolt_mine.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "jolt_mine",
     "name": {
       "value": "電擊地雷",
@@ -7387,13 +7412,13 @@
     ]
   },
   {
-    "id": "jolt_mine_blueprint",
+    "id": "jupiter_blueprint",
     "name": {
-      "value": "震盪地雷藍圖",
-      "originalEn": "Jolt Mine Blueprint"
+      "value": "木星藍圖",
+      "originalEn": "Jupiter Blueprint"
     },
     "description": {
-      "en": "一種接近觸發的地雷，會彈起並擊暈範圍內的任何目標。"
+      "en": "一把栓動式狙擊步槍，擁有卓越的傷害輸出和精準度，但操作緩慢。"
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -7405,7 +7430,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/jolt_mine.png",
+    "imageFilename": "https://cdn.arctracker.io/items/jupiter.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -7441,31 +7466,6 @@
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/jupiter.png",
     "isWeapon": true,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "jupiter_blueprint",
-    "name": {
-      "value": "木星藍圖",
-      "originalEn": "Jupiter Blueprint"
-    },
-    "description": {
-      "en": "一把栓動式狙擊步槍，擁有卓越的傷害輸出和精準度，但操作緩慢。"
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/jupiter.png",
-    "isWeapon": null,
     "foundIn": [
       "Unknown"
     ]
@@ -7879,6 +7879,31 @@
     ]
   },
   {
+    "id": "light_gun_parts_blueprint",
+    "name": {
+      "value": "輕型槍械零件藍圖",
+      "originalEn": "Light Gun Parts Blueprint"
+    },
+    "description": {
+      "en": "用於手槍和衝鋒槍的各種備用零件。"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/light_gun_parts_blueprint.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "light_gun_parts",
     "name": {
       "value": "輕型槍械零件",
@@ -7908,31 +7933,6 @@
     "foundIn": [
       "Raider",
       "Security"
-    ]
-  },
-  {
-    "id": "light_gun_parts_blueprint",
-    "name": {
-      "value": "輕型槍械零件藍圖",
-      "originalEn": "Light Gun Parts Blueprint"
-    },
-    "description": {
-      "en": "用於手槍和衝鋒槍的各種備用零件。"
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/light_gun_parts_blueprint.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
     ]
   },
   {
@@ -8001,6 +8001,31 @@
     ]
   },
   {
+    "id": "lightweight_stock_blueprint",
+    "name": {
+      "value": "輕量槍托藍圖",
+      "originalEn": "Lightweight Stock Blueprint"
+    },
+    "description": {
+      "en": "適度提升瞄準與拔槍速度。"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/lightweight_stock_blueprint.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "lightweight_stock",
     "name": {
       "value": "輕量槍托",
@@ -8028,31 +8053,6 @@
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/lightweight_stock.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "lightweight_stock_blueprint",
-    "name": {
-      "value": "輕量槍托藍圖",
-      "originalEn": "Lightweight Stock Blueprint"
-    },
-    "description": {
-      "en": "適度提升瞄準與拔槍速度。"
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/lightweight_stock_blueprint.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -8191,6 +8191,31 @@
     ]
   },
   {
+    "id": "looting_mk3_safekeeper_blueprint",
+    "name": {
+      "value": "搜刮 Mk. 3 (保管者) 藍圖",
+      "originalEn": "Looting Mk. 3 (Safekeeper) Blueprint"
+    },
+    "description": {
+      "en": "一種犧牲負重與實用性，以換取更高搜刮潛力的搜刮強化裝置。具備一個可存放任何物品的保險袋。"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/looting_mk3_safekeeper.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "looting_mk3_safekeeper",
     "name": {
       "value": "掠奪 Mk. 3 (守護者)",
@@ -8224,25 +8249,25 @@
     ]
   },
   {
-    "id": "looting_mk3_safekeeper_blueprint",
+    "id": "looting_mk3_survivor_blueprint",
     "name": {
-      "value": "搜刮 Mk. 3 (保管者) 藍圖",
-      "originalEn": "Looting Mk. 3 (Safekeeper) Blueprint"
+      "value": "掠奪 Mk. 3（倖存者）藍圖",
+      "originalEn": "Looting Mk. 3 (Survivor) Blueprint"
     },
     "description": {
-      "en": "一種犧牲負重與實用性，以換取更高搜刮潛力的搜刮強化裝置。具備一個可存放任何物品的保險袋。"
+      "en": "重型馱獸增強裝備。大載重容量和大背包空間。"
     },
     "type": "Blueprint",
     "rarity": "Common",
     "value": 5000,
     "weightKg": 0,
-    "stackSize": 1,
+    "stackSize": null,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/looting_mk3_safekeeper.png",
+    "imageFilename": "https://cdn.arctracker.io/items/looting_mk3_survivor_blueprint.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -8276,63 +8301,6 @@
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/looting_mk3_survivor.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "looting_mk3_survivor_blueprint",
-    "name": {
-      "value": "掠奪 Mk. 3（倖存者）藍圖",
-      "originalEn": "Looting Mk. 3 (Survivor) Blueprint"
-    },
-    "description": {
-      "en": "重型馱獸增強裝備。大載重容量和大背包空間。"
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": null,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/looting_mk3_survivor_blueprint.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "lure_grenade",
-    "name": {
-      "value": "誘餌手榴彈",
-      "originalEn": "Lure Grenade"
-    },
-    "description": {
-      "en": "一種可黏附在表面的噪音裝置，可分散附近ARC機械的注意力並吸引其火力。"
-    },
-    "type": "Quick Use",
-    "rarity": "Uncommon",
-    "value": 1000,
-    "weightKg": 0.4,
-    "stackSize": 3,
-    "recyclesInto": {
-      "speaker_component": 1
-    },
-    "recipe": {
-      "electrical_components": 1,
-      "speaker_component": 1
-    },
-    "salvagesInto": {
-      "speaker_component": 1
-    },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/lure_grenade.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -8386,6 +8354,38 @@
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/lure_grenade_trap.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "lure_grenade",
+    "name": {
+      "value": "誘餌手榴彈",
+      "originalEn": "Lure Grenade"
+    },
+    "description": {
+      "en": "一種可黏附在表面的噪音裝置，可分散附近ARC機械的注意力並吸引其火力。"
+    },
+    "type": "Quick Use",
+    "rarity": "Uncommon",
+    "value": 1000,
+    "weightKg": 0.4,
+    "stackSize": 3,
+    "recyclesInto": {
+      "speaker_component": 1
+    },
+    "recipe": {
+      "electrical_components": 1,
+      "speaker_component": 1
+    },
+    "salvagesInto": {
+      "speaker_component": 1
+    },
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/lure_grenade.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -8625,6 +8625,31 @@
     ]
   },
   {
+    "id": "medium_gun_parts_blueprint",
+    "name": {
+      "value": "中型槍械零件藍圖",
+      "originalEn": "Medium Gun Parts Blueprint"
+    },
+    "description": {
+      "en": "用於步槍的各種備用零件。"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/medium_gun_parts_blueprint.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "medium_gun_parts",
     "name": {
       "value": "中型槍械零件",
@@ -8654,31 +8679,6 @@
     "foundIn": [
       "Raider",
       "Security"
-    ]
-  },
-  {
-    "id": "medium_gun_parts_blueprint",
-    "name": {
-      "value": "中型槍械零件藍圖",
-      "originalEn": "Medium Gun Parts Blueprint"
-    },
-    "description": {
-      "en": "用於步槍的各種備用零件。"
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/medium_gun_parts_blueprint.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
     ]
   },
   {
@@ -9059,6 +9059,31 @@
     ]
   },
   {
+    "id": "muzzle_brake_ii_blueprint",
+    "name": {
+      "value": "槍口制退器 II 藍圖",
+      "originalEn": "Muzzle Brake II Blueprint"
+    },
+    "description": {
+      "en": "適度降低垂直後座力和水平後座力。"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/muzzle_brake_ii.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "muzzle_brake_ii",
     "name": {
       "value": "槍口制退器II",
@@ -9092,13 +9117,13 @@
     ]
   },
   {
-    "id": "muzzle_brake_ii_blueprint",
+    "id": "muzzle_brake_iii_blueprint",
     "name": {
-      "value": "槍口制退器 II 藍圖",
-      "originalEn": "Muzzle Brake II Blueprint"
+      "value": "槍口制退器 III 藍圖",
+      "originalEn": "Muzzle Brake III Blueprint"
     },
     "description": {
-      "en": "適度降低垂直後座力和水平後座力。"
+      "en": "大幅減少垂直後座力和水平後座力。相容武器：琶音、鐵衛、叛徒、鐵砧、縫合者"
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -9110,7 +9135,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/muzzle_brake_ii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/muzzle_brake_iii.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -9141,31 +9166,6 @@
     "salvagesInto": {
       "mechanical_components": 2
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/muzzle_brake_iii.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "muzzle_brake_iii_blueprint",
-    "name": {
-      "value": "槍口制退器 III 藍圖",
-      "originalEn": "Muzzle Brake III Blueprint"
-    },
-    "description": {
-      "en": "大幅減少垂直後座力和水平後座力。相容武器：琶音、鐵衛、叛徒、鐵砧、縫合者"
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/muzzle_brake_iii.png",
@@ -9527,6 +9527,31 @@
     ]
   },
   {
+    "id": "padded_stock_blueprint",
+    "name": {
+      "value": "軟墊槍托藍圖",
+      "originalEn": "Padded Stock Blueprint"
+    },
+    "description": {
+      "en": "顯著提升穩定性。相容武器：Arpeggio、Rattler、Ferro、Renegade、Torrente"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/padded_stock.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "padded_stock",
     "name": {
       "value": "軟墊槍托",
@@ -9551,31 +9576,6 @@
     "salvagesInto": {
       "mechanical_components": 2
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/padded_stock.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "padded_stock_blueprint",
-    "name": {
-      "value": "軟墊槍托藍圖",
-      "originalEn": "Padded Stock Blueprint"
-    },
-    "description": {
-      "en": "顯著提升穩定性。相容武器：Arpeggio、Rattler、Ferro、Renegade、Torrente"
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/padded_stock.png",
@@ -10020,7 +10020,7 @@
     "type": "Nature",
     "rarity": "Common",
     "value": 640,
-    "weightKg": 0.2,
+    "weightKg": null,
     "stackSize": 10,
     "recyclesInto": {
       "assorted_seeds": 3
@@ -10123,6 +10123,31 @@
     ]
   },
   {
+    "id": "pulse_mine_blueprint",
+    "name": {
+      "value": "脈衝地雷藍圖",
+      "originalEn": "Pulse Mine Blueprint"
+    },
+    "description": {
+      "en": "一種近距離觸發的地雷，會彈起並擊退半徑內的任何目標。"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/pulse_mine.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "pulse_mine",
     "name": {
       "value": "脈衝地雷",
@@ -10146,31 +10171,6 @@
     "salvagesInto": {
       "chemicals": 3
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/pulse_mine.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "pulse_mine_blueprint",
-    "name": {
-      "value": "脈衝地雷藍圖",
-      "originalEn": "Pulse Mine Blueprint"
-    },
-    "description": {
-      "en": "一種近距離觸發的地雷，會彈起並擊退半徑內的任何目標。"
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/pulse_mine.png",
@@ -10210,6 +10210,36 @@
     ]
   },
   {
+    "id": "radio_relay",
+    "name": {
+      "value": "無線電中繼器",
+      "originalEn": "Radio Relay"
+    },
+    "description": {
+      "en": "可回收為製作材料。"
+    },
+    "type": "Recyclable",
+    "rarity": "Rare",
+    "value": 3000,
+    "weightKg": 1.5,
+    "stackSize": 3,
+    "recyclesInto": {
+      "sensors": 2,
+      "speaker_component": 2
+    },
+    "recipe": null,
+    "salvagesInto": {
+      "sensors": 2
+    },
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/radio_relay.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Exodus"
+    ]
+  },
+  {
     "id": "radio",
     "name": {
       "value": "收音機",
@@ -10238,36 +10268,6 @@
     "foundIn": [
       "Commercial",
       "Residential"
-    ]
-  },
-  {
-    "id": "radio_relay",
-    "name": {
-      "value": "無線電中繼器",
-      "originalEn": "Radio Relay"
-    },
-    "description": {
-      "en": "可回收為製作材料。"
-    },
-    "type": "Recyclable",
-    "rarity": "Rare",
-    "value": 3000,
-    "weightKg": 1.5,
-    "stackSize": 3,
-    "recyclesInto": {
-      "sensors": 2,
-      "speaker_component": 2
-    },
-    "recipe": null,
-    "salvagesInto": {
-      "sensors": 2
-    },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/radio_relay.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Exodus"
     ]
   },
   {
@@ -10510,6 +10510,31 @@
     ]
   },
   {
+    "id": "red_light_stick_blueprint",
+    "name": {
+      "value": "紅色螢光棒藍圖",
+      "originalEn": "Red Light Stick Blueprint"
+    },
+    "description": {
+      "en": "可投擲的化學光源，能照亮周圍區域。"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/red_light_stick.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "red_light_stick",
     "name": {
       "value": "紅色螢光棒",
@@ -10532,31 +10557,6 @@
     "salvagesInto": {
       "chemicals": 1
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/red_light_stick.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "red_light_stick_blueprint",
-    "name": {
-      "value": "紅色螢光棒藍圖",
-      "originalEn": "Red Light Stick Blueprint"
-    },
-    "description": {
-      "en": "可投擲的化學光源，能照亮周圍區域。"
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/red_light_stick.png",
@@ -10621,6 +10621,31 @@
     ]
   },
   {
+    "id": "remote_raider_flare_blueprint",
+    "name": {
+      "value": "遠程掠奪者信號彈藍圖",
+      "originalEn": "Remote Raider Flare Blueprint"
+    },
+    "description": {
+      "en": "一個可部署的裝置，手動觸發時會發射掠奪者求救信號彈。"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/remote_raider_flare.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "remote_raider_flare",
     "name": {
       "value": "遠程掠奪者信號彈",
@@ -10645,31 +10670,6 @@
     "salvagesInto": {
       "chemicals": 1
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/remote_raider_flare.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "remote_raider_flare_blueprint",
-    "name": {
-      "value": "遠程掠奪者信號彈藍圖",
-      "originalEn": "Remote Raider Flare Blueprint"
-    },
-    "description": {
-      "en": "一個可部署的裝置，手動觸發時會發射掠奪者求救信號彈。"
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/remote_raider_flare.png",
@@ -11560,6 +11560,31 @@
     ]
   },
   {
+    "id": "seeker_grenade_blueprint",
+    "name": {
+      "value": "追蹤手榴彈藍圖",
+      "originalEn": "Seeker Grenade Blueprint"
+    },
+    "description": {
+      "en": "解鎖追蹤手榴彈的製作藍圖。"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/seeker_grenade.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "seeker_grenade",
     "name": {
       "value": "追蹤手榴彈",
@@ -11583,31 +11608,6 @@
     "salvagesInto": {
       "chemicals": 3
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/seeker_grenade.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "seeker_grenade_blueprint",
-    "name": {
-      "value": "追蹤手榴彈藍圖",
-      "originalEn": "Seeker Grenade Blueprint"
-    },
-    "description": {
-      "en": "解鎖追蹤手榴彈的製作藍圖。"
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/seeker_grenade.png",
@@ -11802,6 +11802,31 @@
     ]
   },
   {
+    "id": "shotgun_choke_ii_blueprint",
+    "name": {
+      "value": "霰彈槍收束器 II 藍圖",
+      "originalEn": "Shotgun Choke II Blueprint"
+    },
+    "description": {
+      "en": "適度降低基礎散布。相容武器：Il Toro、Vulcano"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/shotgun_choke_ii.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "shotgun_choke_ii",
     "name": {
       "value": "霰彈槍收束器 II",
@@ -11835,13 +11860,13 @@
     ]
   },
   {
-    "id": "shotgun_choke_ii_blueprint",
+    "id": "shotgun_choke_iii_blueprint",
     "name": {
-      "value": "霰彈槍收束器 II 藍圖",
-      "originalEn": "Shotgun Choke II Blueprint"
+      "value": "霰彈槍收束器 III 藍圖",
+      "originalEn": "Shotgun Choke III Blueprint"
     },
     "description": {
-      "en": "適度降低基礎散布。相容武器：Il Toro、Vulcano"
+      "en": "大幅減少基礎擴散度。"
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -11853,7 +11878,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/shotgun_choke_ii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/shotgun_choke_iii.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -11893,13 +11918,13 @@
     ]
   },
   {
-    "id": "shotgun_choke_iii_blueprint",
+    "id": "shotgun_silencer_blueprint",
     "name": {
-      "value": "霰彈槍收束器 III 藍圖",
-      "originalEn": "Shotgun Choke III Blueprint"
+      "value": "霰彈槍消音器 藍圖",
+      "originalEn": "Shotgun Silencer Blueprint"
     },
     "description": {
-      "en": "大幅減少基礎擴散度。"
+      "en": "適度減少射擊時產生的噪音。"
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -11911,7 +11936,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/shotgun_choke_iii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/shotgun_silencer.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -11951,13 +11976,13 @@
     ]
   },
   {
-    "id": "shotgun_silencer_blueprint",
+    "id": "showstopper_blueprint",
     "name": {
-      "value": "霰彈槍消音器 藍圖",
-      "originalEn": "Shotgun Silencer Blueprint"
+      "value": "表演終結者 藍圖",
+      "originalEn": "Showstopper Blueprint"
     },
     "description": {
-      "en": "適度減少射擊時產生的噪音。"
+      "en": "延遲引爆的手榴彈，可擊暈範圍內的敵人。"
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -11969,7 +11994,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/shotgun_silencer.png",
+    "imageFilename": "https://cdn.arctracker.io/items/showstopper.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -12001,31 +12026,6 @@
     "salvagesInto": {
       "electrical_components": 1
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/showstopper.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "showstopper_blueprint",
-    "name": {
-      "value": "表演終結者 藍圖",
-      "originalEn": "Showstopper Blueprint"
-    },
-    "description": {
-      "en": "延遲引爆的手榴彈，可擊暈範圍內的敵人。"
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/showstopper.png",
@@ -12128,6 +12128,31 @@
     ]
   },
   {
+    "id": "silencer_i_blueprint",
+    "name": {
+      "value": "消音器 I 藍圖",
+      "originalEn": "Silencer I Blueprint"
+    },
+    "description": {
+      "en": "用於製作消音器 I 的藍圖。"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/silencer_i.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "silencer_i",
     "name": {
       "value": "消音器 I",
@@ -12161,13 +12186,13 @@
     ]
   },
   {
-    "id": "silencer_i_blueprint",
+    "id": "silencer_ii_blueprint",
     "name": {
-      "value": "消音器 I 藍圖",
-      "originalEn": "Silencer I Blueprint"
+      "value": "消音器 II 藍圖",
+      "originalEn": "Silencer II Blueprint"
     },
     "description": {
-      "en": "用於製作消音器 I 的藍圖。"
+      "en": "用於製作消音器 II 的藍圖。"
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -12179,7 +12204,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/silencer_i.png",
+    "imageFilename": "https://cdn.arctracker.io/items/silencer_ii.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -12210,31 +12235,6 @@
     "salvagesInto": {
       "mechanical_components": 2
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/silencer_ii.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "silencer_ii_blueprint",
-    "name": {
-      "value": "消音器 II 藍圖",
-      "originalEn": "Silencer II Blueprint"
-    },
-    "description": {
-      "en": "用於製作消音器 II 的藍圖。"
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/silencer_ii.png",
@@ -12331,39 +12331,6 @@
     ]
   },
   {
-    "id": "smoke_grenade",
-    "name": {
-      "value": "煙霧彈",
-      "originalEn": "Smoke Grenade"
-    },
-    "description": {
-      "en": "撞擊時產生持續煙霧雲，阻擋 ARC 和其他掠奪者的視線。"
-    },
-    "type": "Quick Use",
-    "rarity": "Rare",
-    "value": 1000,
-    "weightKg": 0.2,
-    "stackSize": 5,
-    "recyclesInto": {
-      "canister": 1,
-      "chemicals": 2
-    },
-    "recipe": {
-      "canister": 1,
-      "chemicals": 14
-    },
-    "salvagesInto": {
-      "chemicals": 3
-    },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/smoke_grenade.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
     "id": "smoke_grenade_blueprint",
     "name": {
       "value": "煙霧彈 藍圖",
@@ -12417,6 +12384,39 @@
     ]
   },
   {
+    "id": "smoke_grenade",
+    "name": {
+      "value": "煙霧彈",
+      "originalEn": "Smoke Grenade"
+    },
+    "description": {
+      "en": "撞擊時產生持續煙霧雲，阻擋 ARC 和其他掠奪者的視線。"
+    },
+    "type": "Quick Use",
+    "rarity": "Rare",
+    "value": 1000,
+    "weightKg": 0.2,
+    "stackSize": 5,
+    "recyclesInto": {
+      "canister": 1,
+      "chemicals": 2
+    },
+    "recipe": {
+      "canister": 1,
+      "chemicals": 14
+    },
+    "salvagesInto": {
+      "chemicals": 3
+    },
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/smoke_grenade.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "snap_blast_grenade",
     "name": {
       "value": "黏附爆破手榴彈",
@@ -12450,6 +12450,31 @@
     ]
   },
   {
+    "id": "snap_hook_blueprint",
+    "name": {
+      "value": "Snap Hook 藍圖",
+      "originalEn": "Snap Hook Blueprint"
+    },
+    "description": {
+      "en": "一種讓使用者能夠攀爬建築物和跨越長距離的裝置。"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/snap_hook.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "snap_hook",
     "name": {
       "value": "扣鉤藍圖",
@@ -12475,31 +12500,6 @@
     "salvagesInto": {
       "advanced_electrical_components": 2
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/snap_hook.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "snap_hook_blueprint",
-    "name": {
-      "value": "Snap Hook 藍圖",
-      "originalEn": "Snap Hook Blueprint"
-    },
-    "description": {
-      "en": "一種讓使用者能夠攀爬建築物和跨越長距離的裝置。"
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/snap_hook.png",
@@ -12847,6 +12847,31 @@
     ]
   },
   {
+    "id": "stable_stock_ii_blueprint",
+    "name": {
+      "value": "穩定槍托 II 藍圖",
+      "originalEn": "Stable Stock II Blueprint"
+    },
+    "description": {
+      "en": "適度改善散布與後座力恢復時間。"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/stable_stock_ii.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "stable_stock_ii",
     "name": {
       "value": "穩定槍托 II",
@@ -12880,13 +12905,13 @@
     ]
   },
   {
-    "id": "stable_stock_ii_blueprint",
+    "id": "stable_stock_iii_blueprint",
     "name": {
-      "value": "穩定槍托 II 藍圖",
-      "originalEn": "Stable Stock II Blueprint"
+      "value": "穩定槍托 III 藍圖",
+      "originalEn": "Stable Stock III Blueprint"
     },
     "description": {
-      "en": "適度改善散布與後座力恢復時間。"
+      "en": "大幅改善擴散度和後座力恢復時間。"
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -12898,7 +12923,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/stable_stock_ii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/stable_stock_iii.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -12929,31 +12954,6 @@
     "salvagesInto": {
       "mechanical_components": 2
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/stable_stock_iii.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "stable_stock_iii_blueprint",
-    "name": {
-      "value": "穩定槍托 III 藍圖",
-      "originalEn": "Stable Stock III Blueprint"
-    },
-    "description": {
-      "en": "大幅改善擴散度和後座力恢復時間。"
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/stable_stock_iii.png",
@@ -13308,6 +13308,31 @@
     ]
   },
   {
+    "id": "surge_coil_blueprint",
+    "name": {
+      "value": "Surge Coil 藍圖",
+      "originalEn": "Surge Coil Blueprint"
+    },
+    "description": {
+      "en": "一種可部署的設備，定期使周圍區域帶電，並短暫擊暈其中的任何目標。"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "surge_coil",
     "name": {
       "value": "Surge Coil",
@@ -13333,31 +13358,6 @@
     "salvagesInto": {
       "electrical_components": 1
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": null,
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "surge_coil_blueprint",
-    "name": {
-      "value": "Surge Coil 藍圖",
-      "originalEn": "Surge Coil Blueprint"
-    },
-    "description": {
-      "en": "一種可部署的設備，定期使周圍區域帶電，並短暫擊暈其中的任何目標。"
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": null,
@@ -13555,6 +13555,31 @@
     ]
   },
   {
+    "id": "tactical_mk3_defensive_blueprint",
+    "name": {
+      "value": "戰術型 Mk. 3（防禦）藍圖",
+      "originalEn": "Tactical Mk. 3 (Defensive) Blueprint"
+    },
+    "description": {
+      "en": "專注於防禦的強化裝備，可保持護盾處於滿值狀態。"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_defensive.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "tactical_mk3_defensive",
     "name": {
       "value": "戰術型 Mk. 3（防禦）",
@@ -13588,13 +13613,13 @@
     ]
   },
   {
-    "id": "tactical_mk3_defensive_blueprint",
+    "id": "tactical_mk3_healing_blueprint",
     "name": {
-      "value": "戰術型 Mk. 3（防禦）藍圖",
-      "originalEn": "Tactical Mk. 3 (Defensive) Blueprint"
+      "value": "戰術 Mk. 3（治療）藍圖",
+      "originalEn": "Tactical Mk. 3 (Healing) Blueprint"
     },
     "description": {
-      "en": "專注於防禦的強化裝備，可保持護盾處於滿值狀態。"
+      "en": "專注於治療的增強裝備，為治療物品增加額外欄位。"
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -13606,7 +13631,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_defensive.png",
+    "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_healing_blueprint.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -13646,13 +13671,13 @@
     ]
   },
   {
-    "id": "tactical_mk3_healing_blueprint",
+    "id": "tactical_mk3_revival_blueprint",
     "name": {
-      "value": "戰術 Mk. 3（治療）藍圖",
-      "originalEn": "Tactical Mk. 3 (Healing) Blueprint"
+      "value": "戰術 Mk. 3 (復甦) 藍圖",
+      "originalEn": "Tactical Mk. 3 (Revival) Blueprint"
     },
     "description": {
-      "en": "專注於治療的增強裝備，為治療物品增加額外欄位。"
+      "en": "一種專為團隊支援設計的復甦強化裝置。每 5 秒恢復 1 點生命值。受到傷害時，此效果將暫停 30 秒。包含內建除顫器，擁有無限使用次數和 240 秒冷卻時間。"
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -13664,7 +13689,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_healing_blueprint.png",
+    "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_revival.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -13704,13 +13729,13 @@
     ]
   },
   {
-    "id": "tactical_mk3_revival_blueprint",
+    "id": "tagging_grenade_blueprint",
     "name": {
-      "value": "戰術 Mk. 3 (復甦) 藍圖",
-      "originalEn": "Tactical Mk. 3 (Revival) Blueprint"
+      "value": "標記手榴彈 藍圖",
+      "originalEn": "Tagging Grenade Blueprint"
     },
     "description": {
-      "en": "一種專為團隊支援設計的復甦強化裝置。每 5 秒恢復 1 點生命值。受到傷害時，此效果將暫停 30 秒。包含內建除顫器，擁有無限使用次數和 240 秒冷卻時間。"
+      "en": "延遲引爆的手榴彈，能標記區域內的掠奪者和ARC敵人。"
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -13722,7 +13747,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_revival.png",
+    "imageFilename": "https://cdn.arctracker.io/items/tagging_grenade.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -13753,31 +13778,6 @@
     "salvagesInto": {
       "sensors": 1
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/tagging_grenade.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "tagging_grenade_blueprint",
-    "name": {
-      "value": "標記手榴彈 藍圖",
-      "originalEn": "Tagging Grenade Blueprint"
-    },
-    "description": {
-      "en": "延遲引爆的手榴彈，能標記區域內的掠奪者和ARC敵人。"
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/tagging_grenade.png",
@@ -14337,6 +14337,31 @@
     ]
   },
   {
+    "id": "trailblazer_blueprint",
+    "name": {
+      "value": "開拓者藍圖",
+      "originalEn": "Trailblazer Blueprint"
+    },
+    "description": {
+      "en": "解鎖開拓者的製作藍圖。"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/trailblazer.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "trailblazer",
     "name": {
       "value": "開拓者",
@@ -14370,13 +14395,13 @@
     ]
   },
   {
-    "id": "trailblazer_blueprint",
+    "id": "trigger_nade_blueprint",
     "name": {
-      "value": "開拓者藍圖",
-      "originalEn": "Trailblazer Blueprint"
+      "value": "觸發手榴彈藍圖",
+      "originalEn": "Trigger Nade Blueprint"
     },
     "description": {
-      "en": "解鎖開拓者的製作藍圖。"
+      "en": "可黏附在表面和ARC上的遙控引爆手榴彈，觸發時造成爆炸傷害。"
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -14388,7 +14413,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/trailblazer.png",
+    "imageFilename": "https://cdn.arctracker.io/items/trigger_nade_blueprint.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -14422,31 +14447,6 @@
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/trigger_nade.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "trigger_nade_blueprint",
-    "name": {
-      "value": "觸發手榴彈藍圖",
-      "originalEn": "Trigger Nade Blueprint"
-    },
-    "description": {
-      "en": "可黏附在表面和ARC上的遙控引爆手榴彈，觸發時造成爆炸傷害。"
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/trigger_nade_blueprint.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -14785,6 +14785,31 @@
     ]
   },
   {
+    "id": "vertical_grip_ii_blueprint",
+    "name": {
+      "value": "垂直握把 II 藍圖",
+      "originalEn": "Vertical Grip II Blueprint"
+    },
+    "description": {
+      "en": "適度降低垂直後座力。相容武器：Arpeggio、Ferro、Venator、Il Toro、Stitcher"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/vertical_grip_ii.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "vertical_grip_ii",
     "name": {
       "value": "垂直握把 II",
@@ -14818,13 +14843,13 @@
     ]
   },
   {
-    "id": "vertical_grip_ii_blueprint",
+    "id": "vertical_grip_iii_blueprint",
     "name": {
-      "value": "垂直握把 II 藍圖",
-      "originalEn": "Vertical Grip II Blueprint"
+      "value": "垂直握把III 藍圖",
+      "originalEn": "Vertical Grip III Blueprint"
     },
     "description": {
-      "en": "適度降低垂直後座力。相容武器：Arpeggio、Ferro、Venator、Il Toro、Stitcher"
+      "en": "顯著降低垂直後座力。"
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -14836,7 +14861,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/vertical_grip_ii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/vertical_grip_iii_blueprint.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -14876,31 +14901,6 @@
     ]
   },
   {
-    "id": "vertical_grip_iii_blueprint",
-    "name": {
-      "value": "垂直握把III 藍圖",
-      "originalEn": "Vertical Grip III Blueprint"
-    },
-    "description": {
-      "en": "顯著降低垂直後座力。"
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/vertical_grip_iii_blueprint.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
     "id": "very_comfortable_pillow",
     "name": {
       "value": "非常舒適的枕頭",
@@ -14924,6 +14924,31 @@
     "foundIn": [
       "Residential",
       "Commercial"
+    ]
+  },
+  {
+    "id": "vita_shot_blueprint",
+    "name": {
+      "value": "活力注射劑藍圖",
+      "originalEn": "Vita Shot Blueprint"
+    },
+    "description": {
+      "en": "可恢復大量生命值的醫療物品。"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/vita_shot.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
     ]
   },
   {
@@ -14960,25 +14985,25 @@
     ]
   },
   {
-    "id": "vita_shot_blueprint",
+    "id": "vita_spray_blueprint",
     "name": {
-      "value": "活力注射劑藍圖",
-      "originalEn": "Vita Shot Blueprint"
+      "value": "生命噴霧藍圖",
+      "originalEn": "Vita Spray Blueprint"
     },
     "description": {
-      "en": "可恢復大量生命值的醫療物品。"
+      "en": "使用時持續恢復生命值的醫療物品。可以對自己或隊友使用。"
     },
     "type": "Blueprint",
     "rarity": "Common",
     "value": 5000,
-    "weightKg": 0,
+    "weightKg": null,
     "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/vita_shot.png",
+    "imageFilename": "https://cdn.arctracker.io/items/vita_spray.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -15010,31 +15035,6 @@
     "salvagesInto": {
       "antiseptic": 1
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/vita_spray.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "vita_spray_blueprint",
-    "name": {
-      "value": "生命噴霧藍圖",
-      "originalEn": "Vita Spray Blueprint"
-    },
-    "description": {
-      "en": "使用時持續恢復生命值的醫療物品。可以對自己或隊友使用。"
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": null,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/vita_spray.png",
@@ -15378,6 +15378,31 @@
     ]
   },
   {
+    "id": "wolfpack_blueprint",
+    "name": {
+      "value": "狼群藍圖",
+      "originalEn": "Wolfpack Blueprint"
+    },
+    "description": {
+      "en": "可黏附在表面和ARC上的遙控引爆手榴彈，觸發時造成爆炸傷害。"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/wolfpack_blueprint.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "wolfpack",
     "name": {
       "value": "狼群",
@@ -15412,13 +15437,13 @@
     ]
   },
   {
-    "id": "wolfpack_blueprint",
+    "id": "yellow_light_stick_blueprint",
     "name": {
-      "value": "狼群藍圖",
-      "originalEn": "Wolfpack Blueprint"
+      "value": "黃色螢光棒",
+      "originalEn": "Yellow Light Stick Blueprint"
     },
     "description": {
-      "en": "可黏附在表面和ARC上的遙控引爆手榴彈，觸發時造成爆炸傷害。"
+      "en": "可投擲的化學光源，照亮周圍區域。"
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -15430,7 +15455,7 @@
     "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/wolfpack_blueprint.png",
+    "imageFilename": "https://cdn.arctracker.io/items/yellow_light_stick.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -15459,31 +15484,6 @@
     "salvagesInto": {
       "chemicals": 1
     },
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/yellow_light_stick.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "yellow_light_stick_blueprint",
-    "name": {
-      "value": "黃色螢光棒",
-      "originalEn": "Yellow Light Stick Blueprint"
-    },
-    "description": {
-      "en": "可投擲的化學光源，照亮周圍區域。"
-    },
-    "type": "Blueprint",
-    "rarity": "Common",
-    "value": 5000,
-    "weightKg": 0,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/yellow_light_stick.png",

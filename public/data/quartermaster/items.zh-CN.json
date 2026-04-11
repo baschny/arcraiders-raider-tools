@@ -6,7 +6,7 @@
         "value": "原声吉他",
         "originalEn": "Acoustic Guitar"
       },
-      "description": "一把能演奏的原声吉他，即可用于引起ARC的注意，也能让其他奇袭者刮目相看。",
+      "description": "一把能演奏的原声吉他，既可用于引起ARC的注意，也能让其他奇袭者刮目相看。",
       "icon": "https://cdn.arctracker.io/items/acoustic_guitar.png",
       "rarity": "Legendary",
       "type": "Quick Use",
@@ -86,7 +86,7 @@
         "value": "高级电子元件",
         "originalEn": "Advanced Electrical Components"
       },
-      "description": "用于制作各种物品。可回收为制作材料。用于制作:奇袭者暗门钥匙，光电斗篷，耀眼明星，战术Mk.3(防御型)，战斗Mk.3(侧翼突击)",
+      "description": "用于制作各种物品。可回收为制作材料。用于制作:奇袭者暗门钥匙，光电斗篷，耀眼明星，战斗Mk.3(侧翼突击),战斗Mk.3(进攻型)，搜刮Mk.3(谨慎型)，战术Mk.3(恢复型)，战术Mk.3(防御型)",
       "icon": "https://cdn.arctracker.io/items/advanced_electrical_components.png",
       "rarity": "Rare",
       "type": "Refined Material",
@@ -147,7 +147,7 @@
     },
     "agave": {
       "name": {
-        "value": "龙舌兰",
+        "value": "龙舌兰叶",
         "originalEn": "Agave"
       },
       "description": "一片龙舌兰叶。可用于恢复少量生命值。",
@@ -530,7 +530,7 @@
         "value": "远日点",
         "originalEn": "Aphelion"
       },
-      "description": "能发射高速能量弹。由族长反应堆供电的实验性ARC光束武器。",
+      "description": "能发射高速能量弹。由族母反应堆供电的实验性ARC光束武器。",
       "icon": "https://cdn.arctracker.io/items/aphelion.png",
       "rarity": "Legendary",
       "type": "Special",
@@ -561,7 +561,7 @@
         "value": "杏子",
         "originalEn": "Apricot"
       },
-      "description": "阳光成熟的杏。可食用以恢复少量耐力。",
+      "description": "在阳光下自然成熟的杏子。食用后可恢复少量耐力。",
       "icon": "https://cdn.arctracker.io/items/apricot.png",
       "rarity": "Uncommon",
       "type": "Nature",
@@ -1028,7 +1028,7 @@
     },
     "bastion_cell": {
       "name": {
-        "value": "堡垒电池",
+        "value": "“堡垒”电池",
         "originalEn": "Bastion Cell"
       },
       "description": "可回收为制作材料。",
@@ -1218,7 +1218,7 @@
     },
     "binoculars": {
       "name": {
-        "value": "双筒望远镜",
+        "value": "望远镜",
         "originalEn": "Binoculars"
       },
       "description": "具有两级放大倍率的基本双筒望远镜。",
@@ -1281,7 +1281,7 @@
         "value": "火焰手雷陷阱",
         "originalEn": "Blaze Grenade Trap"
       },
-      "description": "引爆烈焰手榴弹的激光绊线。",
+      "description": "激光陷阱：强光(火焰)。",
       "icon": "https://cdn.arctracker.io/items/blaze_grenade_trap.png",
       "rarity": "Rare",
       "type": "Quick Use",
@@ -1552,10 +1552,10 @@
     },
     "breathtaking_snow_globe": {
       "name": {
-        "value": "令人惊叹的雪球",
+        "value": "惊艳的雪花玻璃球",
         "originalEn": "Breathtaking Snow Globe"
       },
-      "description": "每个斯佩兰赞人都羡慕的物品。证明这个世界曾经繁荣且充满魔力。",
+      "description": "这东西会让每个斯佩兰扎人都羡慕不已。它曾证明了这个世界曾经是那样生机勃勃、无比奇妙。",
       "icon": "https://cdn.arctracker.io/items/breathtaking_snow_globe.png",
       "rarity": "Epic",
       "type": "Trinket",
@@ -1956,7 +1956,7 @@
     },
     "candleberries": {
       "name": {
-        "value": "蜡莓",
+        "value": "烛莓",
         "originalEn": "Candleberries"
       },
       "description": "一种每年只在短暂时间内生长的蜡质浆果。人们长久以来一直依赖它来制作蜡烛、食物和药品。",
@@ -1979,7 +1979,7 @@
     },
     "canister": {
       "name": {
-        "value": "罐子",
+        "value": "小罐",
         "originalEn": "Canister"
       },
       "description": "用于制作各种物品。可回收成塑料。用于制作：Bettina、Vita Spray、重型引信手榴弹、烟雾弹",
@@ -2186,7 +2186,7 @@
     },
     "combat_mk1": {
       "name": {
-        "value": "战斗型 Mk. 1",
+        "value": "战斗 Mk. 1",
         "originalEn": "Combat Mk. 1"
       },
       "description": "基础战斗强化。支持更强的护盾，但背包容量和快速使用栏位有限。",
@@ -2215,7 +2215,7 @@
     },
     "combat_mk2": {
       "name": {
-        "value": "战斗型 Mk. 2",
+        "value": "战斗 Mk. 2",
         "originalEn": "Combat Mk. 2"
       },
       "description": "更注重机动性而非吸收伤害的战斗强化。",
@@ -2418,7 +2418,7 @@
         "value": "复杂枪械零件",
         "originalEn": "Complex Gun Parts"
       },
-      "description": "用于制作高级武器。可制作：Equalizer、Jupiter",
+      "description": "用于制作高级武器。可制作：制裁者、木星",
       "icon": "https://cdn.arctracker.io/items/complex_gun_parts.png",
       "rarity": "Epic",
       "type": "Topside Material",
@@ -2766,7 +2766,7 @@
     },
     "damaged_fireball_burner": {
       "name": {
-        "value": "损坏的火球燃烧器",
+        "value": "损坏的火球燃烧炉",
         "originalEn": "Damaged Fireball Burner"
       },
       "description": "可以回收为制作材料。",
@@ -2891,7 +2891,7 @@
     },
     "damaged_tick_pod": {
       "name": {
-        "value": "损坏的蜱虫荚",
+        "value": "损坏的“跳蚤”收纳仓",
         "originalEn": "Damaged Tick Pod"
       },
       "description": "可回收为制作材料。",
@@ -2946,7 +2946,7 @@
         "value": "飞镖靶",
         "originalEn": "Dart Board"
       },
-      "description": "有些掠夺者用它来练习灵巧度。其他人只是喜欢把东西扔向其他东西。",
+      "description": "有些奇袭者用它来练习灵巧度。其他人只是喜欢把东西扔向其他东西。",
       "icon": "https://cdn.arctracker.io/items/dart_board.png",
       "rarity": "Uncommon",
       "type": "Trinket",
@@ -2995,10 +2995,10 @@
     },
     "defibrillator": {
       "name": {
-        "value": "除颤器",
+        "value": "复苏剂（除颤器）",
         "originalEn": "Defibrillator"
       },
-      "description": "能快速复苏倒地的掠夺者并恢复部分生命值的注射剂。",
+      "description": "一种注射剂，可以用于快速救援倒地的奇袭者并恢复部分生命值。",
       "icon": "https://cdn.arctracker.io/items/defibrillator.png",
       "rarity": "Rare",
       "type": "Quick Use",
@@ -3195,10 +3195,10 @@
     },
     "door_blocker": {
       "name": {
-        "value": "门锁",
+        "value": "阻门器",
         "originalEn": "Door Blocker"
       },
-      "description": "可安装在大型金属门上以限制进入的锁定机制。",
+      "description": "一种锁定装置，可以安装在大型金属门上，限制他人使用这扇门。",
       "icon": "https://cdn.arctracker.io/items/door_blocker.png",
       "rarity": "Common",
       "type": "Quick Use",
@@ -3250,7 +3250,7 @@
     },
     "duct_tape": {
       "name": {
-        "value": "强力胶带",
+        "value": "胶带",
         "originalEn": "Duct Tape"
       },
       "description": "用于制作各种物品。可以回收成制作材料。用于制作：稳定枪托 I、垂直握把 I、倾斜握把 I、垂直握把 II、倾斜握把 II",
@@ -3328,7 +3328,7 @@
         "value": "电子元件",
         "originalEn": "Electrical Components"
       },
-      "description": "用于制作各种物品。可回收为制作材料。用于制作：Tactical Mk. 2、Combat Mk. 2、Looting Mk. 2、激增护盾充能器、诱饵手榴弹",
+      "description": "用于制作各种物品。可回收为制作材料。用于制作：Tactical Mk. 2、Combat Mk. 2、Looting Mk. 2、激增护盾充能器、诱捕手雷",
       "icon": "https://cdn.arctracker.io/items/electrical_components.png",
       "rarity": "Uncommon",
       "type": "Refined Material",
@@ -3378,10 +3378,10 @@
     },
     "energy_clip": {
       "name": {
-        "value": "能量夹",
+        "value": "能量弹匣",
         "originalEn": "Energy Clip"
       },
-      "description": "兼容武器：Equalizer、Jupiter",
+      "description": "兼容武器：制裁者、木星",
       "icon": "https://cdn.arctracker.io/items/energy_clip.png",
       "rarity": "Rare",
       "type": "Ammunition",
@@ -3558,7 +3558,7 @@
         "value": "炸药混合物",
         "originalEn": "Explosive Compound"
       },
-      "description": "用于制作爆炸物。可制作：Wolfpack、爆炸地雷、烈焰手榴弹、重型引信手榴弹",
+      "description": "用于制作爆炸物。可制作：Wolfpack、爆炸地雷、火焰手雷、重型引信手榴弹",
       "icon": "https://cdn.arctracker.io/items/explosive_compound.png",
       "rarity": "Rare",
       "type": "Refined Material",
@@ -3646,7 +3646,7 @@
     },
     "extended_light_mag_i": {
       "name": {
-        "value": "延长轻型弹匣 I",
+        "value": "轻型扩容弹匣 I",
         "originalEn": "Extended Light Mag I"
       },
       "description": "略微增加使用轻型弹药的兼容武器的弹药容量。兼容武器：Kettle、Burletta、Hairpin、Bobcat、Stitcher",
@@ -3674,7 +3674,7 @@
     },
     "extended_light_mag_ii": {
       "name": {
-        "value": "延长轻型弹匣 II",
+        "value": "轻型扩容弹匣 II",
         "originalEn": "Extended Light Mag II"
       },
       "description": "适度延长使用轻型弹药的兼容武器的弹药容量。兼容武器：Stitcher、Kettle、Burletta、Hairpin、Bobcat",
@@ -3703,7 +3703,7 @@
     },
     "extended_light_mag_iii": {
       "name": {
-        "value": "延长轻型弹匣 III",
+        "value": "轻型扩容弹匣 III",
         "originalEn": "Extended Light Mag III"
       },
       "description": "大幅延长使用轻型弹药的兼容武器的弹药容量。",
@@ -3732,7 +3732,7 @@
     },
     "extended_medium_mag_i": {
       "name": {
-        "value": "延长中型弹匣 I",
+        "value": "中型扩容弹匣 I",
         "originalEn": "Extended Medium Mag I"
       },
       "description": "适度延长使用中型弹药的兼容武器的弹药容量。兼容武器：Arpeggio、Renegade、Venator、Tempest、Torrente",
@@ -3760,7 +3760,7 @@
     },
     "extended_medium_mag_ii": {
       "name": {
-        "value": "延长中型弹匣 II",
+        "value": "中型扩容弹匣 II",
         "originalEn": "Extended Medium Mag II"
       },
       "description": "适度延长使用中型弹药的兼容武器的弹药容量。兼容武器：Arpeggio、Renegade、Venator、Tempest、Torrente",
@@ -3789,7 +3789,7 @@
     },
     "extended_medium_mag_iii": {
       "name": {
-        "value": "延长中型弹匣 III",
+        "value": "中型扩容弹匣 III",
         "originalEn": "Extended Medium Mag III"
       },
       "description": "大幅延长使用中型弹药的兼容武器的弹药容量。兼容武器：琶音、叛徒、猎人、风暴、激流",
@@ -3818,7 +3818,7 @@
     },
     "extended_shotgun_mag_i": {
       "name": {
-        "value": "延长霰弹枪弹匣 I",
+        "value": "霰弹枪扩容弹匣 I",
         "originalEn": "Extended Shotgun Mag I"
       },
       "description": "略微增加霰弹枪的弹药容量。兼容武器：Il Toro、Vulcano",
@@ -3846,7 +3846,7 @@
     },
     "extended_shotgun_mag_ii": {
       "name": {
-        "value": "延长霰弹枪弹匣 II",
+        "value": "霰弹枪扩容弹匣 II",
         "originalEn": "Extended Shotgun Mag II"
       },
       "description": "适度延长霰弹枪的弹药容量。兼容武器：Il Toro、Vulcano",
@@ -3875,7 +3875,7 @@
     },
     "extended_shotgun_mag_iii": {
       "name": {
-        "value": "扩展霰弹枪弹匣 III",
+        "value": "霰弹枪扩容弹匣 III",
         "originalEn": "Extended Shotgun Mag III"
       },
       "description": "显著扩展霰弹枪的弹药容量。兼容武器：Il Toro、Vulcano",
@@ -4139,7 +4139,7 @@
     },
     "fireball_burner": {
       "name": {
-        "value": "火球燃烧器",
+        "value": "火球燃烧炉",
         "originalEn": "Fireball Burner"
       },
       "description": "可回收为ARC合金。可投掷以制造小型火焰。",
@@ -4299,7 +4299,7 @@
     },
     "flame_spray": {
       "name": {
-        "value": "火焰喷射器",
+        "value": "火焰喷涂",
         "originalEn": "Flame Spray"
       },
       "description": "经典的临时武器，必定留下焦痕。",
@@ -4414,10 +4414,10 @@
     },
     "free_loadout_augment": {
       "name": {
-        "value": "免费装备增强",
+        "value": "免费配装强化",
         "originalEn": "Free Loadout Augment"
       },
-      "description": "新手掠夺者的基础增强，提供稍多的背包空间和负重能力。",
+      "description": "新手奇袭者的基础增强，提供稍多的背包空间和负重能力。",
       "icon": "https://cdn.arctracker.io/items/free_loadout_augment.png",
       "rarity": "Common",
       "type": "Augment",
@@ -4567,7 +4567,7 @@
         "value": "毒气手雷",
         "originalEn": "Gas Grenade"
       },
-      "description": "撞击时释放持续性毒云，消耗效果范围内所有掠夺者耐力的手雷。",
+      "description": "撞击时释放持续性毒云，消耗效果范围内所有奇袭者耐力的手雷。",
       "icon": "https://cdn.arctracker.io/items/gas_grenade.png",
       "rarity": "Common",
       "type": "Quick Use",
@@ -4594,10 +4594,10 @@
     },
     "gas_grenade_trap": {
       "name": {
-        "value": "毒气手榴弹陷阱",
+        "value": "毒气手雷陷阱",
         "originalEn": "Gas Grenade Trap"
       },
-      "description": "引爆毒气手榴弹的激光绊线。",
+      "description": "激光陷阱：毒气。",
       "icon": "https://cdn.arctracker.io/items/gas_grenade_trap.png",
       "rarity": "Common",
       "type": "Quick Use",
@@ -4615,7 +4615,7 @@
     },
     "gas_mine": {
       "name": {
-        "value": "毒气地雷",
+        "value": "跳雷：持续流失耐力（跳雷：毒气）",
         "originalEn": "Gas Mine"
       },
       "description": "一种近距离触发的地雷，会弹出并释放快速消耗耐力的毒气云。",
@@ -4901,7 +4901,7 @@
     },
     "heavy_fuze_grenade": {
       "name": {
-        "value": "重型定时手榴弹",
+        "value": "重型引信手雷",
         "originalEn": "Heavy Fuze Grenade"
       },
       "description": "延迟引爆的手榴弹，在其范围内造成爆炸伤害。",
@@ -4994,7 +4994,7 @@
         "value": "草药绷带",
         "originalEn": "Herbal Bandage"
       },
-      "description": "一种临时医疗物品，可随时间逐渐恢复生命值。",
+      "description": "一种简易医疗物品，能在一段时间内逐渐恢复生命值。",
       "icon": "https://cdn.arctracker.io/items/herbal_bandage.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
@@ -5924,10 +5924,10 @@
     },
     "light_impact_grenade": {
       "name": {
-        "value": "轻型冲击手榴弹",
+        "value": "轻型冲击手雷",
         "originalEn": "Light Impact Grenade"
       },
-      "description": "一种撞击时引爆的手榴弹，在小范围内造成爆炸伤害。",
+      "description": "遭受撞击即会爆炸的手雷，会在小范围内造成爆炸伤害。",
       "icon": "https://cdn.arctracker.io/items/light_impact_grenade.png",
       "rarity": "Common",
       "type": "Quick Use",
@@ -5982,7 +5982,7 @@
     },
     "lightweight_stock": {
       "name": {
-        "value": "轻量枪托",
+        "value": "轻型枪托",
         "originalEn": "Lightweight Stock"
       },
       "description": "适度提升瞄准速度和拔枪速度。兼容武器：Arpeggio、Kettle、Ferro、Renegade、Hullcracker",
@@ -6011,10 +6011,10 @@
     },
     "lil_smoke_grenade": {
       "name": {
-        "value": "小型烟雾弹",
+        "value": "小型烟雾手雷",
         "originalEn": "Li'l Smoke Grenade"
       },
-      "description": "着弹时产生浓密但范围较小的烟雾，阻挡ARC和其他掠夺者的视线。",
+      "description": "着弹时产生浓密但范围较小的烟雾，阻挡ARC和其他奇袭者的视线。",
       "icon": "https://cdn.arctracker.io/items/lil_smoke_grenade.png",
       "rarity": "Common",
       "type": "Quick Use",
@@ -6041,7 +6041,7 @@
     },
     "looting_mk1": {
       "name": {
-        "value": "掠夺 Mk. 1",
+        "value": "搜刮 Mk. 1",
         "originalEn": "Looting Mk. 1"
       },
       "description": "基础掠夺强化。更多背包栏位和负重容量，但防御和战术能力较低。",
@@ -6070,7 +6070,7 @@
     },
     "looting_mk2": {
       "name": {
-        "value": "掠夺 Mk. 2",
+        "value": "搜刮 Mk. 2",
         "originalEn": "Looting Mk. 2"
       },
       "description": "大幅提升掠夺潜力；增加饰品栏位。0.5秒后自动甩掉附着的蜱虫。",
@@ -6099,7 +6099,7 @@
     },
     "looting_mk3_cautious": {
       "name": {
-        "value": "掠夺 Mk. 3 (谨慎)",
+        "value": "搜刮 Mk. 3 (谨慎)",
         "originalEn": "Looting Mk. 3 (Cautious)"
       },
       "description": "一种掠夺增强装置，牺牲部分负重能力以提升生存能力。护盾破裂时自动注射弱效肾上腺素。具有固定冷却时间。",
@@ -6128,7 +6128,7 @@
     },
     "looting_mk3_safekeeper": {
       "name": {
-        "value": "掠夺 Mk. 3 (守护者)",
+        "value": "搜刮 Mk. 3 (守护者)",
         "originalEn": "Looting Mk. 3 (Safekeeper)"
       },
       "description": "一种牺牲负重和实用性以换取更高搜刮潜力的搜刮强化组件。拥有一个允许存储任何物品的保险袋。",
@@ -6157,7 +6157,7 @@
     },
     "looting_mk3_survivor": {
       "name": {
-        "value": "掠夺 Mk. 3（幸存者）",
+        "value": "搜刮 Mk. 3（生存型）",
         "originalEn": "Looting Mk. 3 (Survivor)"
       },
       "description": "重型驮兽增强装备。大载重容量和大背包空间。倒地且静止时，生命值恢复至最大倒地生命值的75%。",
@@ -6186,7 +6186,7 @@
     },
     "lure_grenade": {
       "name": {
-        "value": "诱饵手榴弹",
+        "value": "诱捕手雷",
         "originalEn": "Lure Grenade"
       },
       "description": "一种可粘附在表面的噪音装置，可分散附近ARC机械的注意力并吸引其火力。",
@@ -6215,10 +6215,10 @@
     },
     "lure_grenade_trap": {
       "name": {
-        "value": "诱饵手榴弹陷阱",
+        "value": "诱捕手雷陷阱",
         "originalEn": "Lure Grenade Trap"
       },
-      "description": "引爆诱饵手榴弹的激光绊线。",
+      "description": "激光陷阱：诱捕。",
       "icon": "https://cdn.arctracker.io/items/lure_grenade_trap.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
@@ -6265,7 +6265,7 @@
         "value": "磁力加速器",
         "originalEn": "Magnetic Accelerator"
       },
-      "description": "用于制作高级武器。可制作：Tempest、Equalizer、Vulcano、Jupiter、Hullcracker",
+      "description": "用于制作高级武器。可制作：Tempest、制裁者、Vulcano、木星、Hullcracker",
       "icon": "https://cdn.arctracker.io/items/magnetic_accelerator.png",
       "rarity": "Epic",
       "type": "Refined Material",
@@ -6354,7 +6354,7 @@
     },
     "matriarch_reactor": {
       "name": {
-        "value": "母巢反应堆",
+        "value": "“族母”反应堆",
         "originalEn": "Matriarch Reactor"
       },
       "description": "可回收为制作材料。",
@@ -6381,7 +6381,7 @@
         "value": "机械零件",
         "originalEn": "Mechanical Components"
       },
-      "description": "用于制作各种物品。可回收成制作材料。用于制作：Il Toro、Burletta、Anvil、枪口制退器II、延长中型弹匣II",
+      "description": "用于制作各种物品。可回收成制作材料。用于制作：Il Toro、Burletta、Anvil、枪口制退器II、中型扩容弹匣II",
       "icon": "https://cdn.arctracker.io/items/mechanical_components.png",
       "rarity": "Uncommon",
       "type": "Refined Material",
@@ -6595,10 +6595,10 @@
     },
     "mod_components": {
       "name": {
-        "value": "改装组件",
+        "value": "改装零件",
         "originalEn": "Mod Components"
       },
-      "description": "用于制作武器改装。可回收为制作材料。可制作：轻量化枪托、霰弹枪收束器 III、延长霰弹枪弹匣 III、软垫枪托、补偿器 III",
+      "description": "用于制作武器改装。可回收为制作材料。可制作：轻型枪托、霰弹枪收束器 III、霰弹枪扩容弹匣 III、减震枪托、补偿器 III",
       "icon": "https://cdn.arctracker.io/items/mod_components.png",
       "rarity": "Rare",
       "type": "Refined Material",
@@ -6845,10 +6845,10 @@
     },
     "noisemaker": {
       "name": {
-        "value": "噪音制造器",
+        "value": "发声器",
         "originalEn": "Noisemaker"
       },
-      "description": "可部署的接近传感器，侦测到敌方掠夺者时会发出警报。",
+      "description": "可部署的接近传感器，侦测到敌方奇袭者时会发出警报。",
       "icon": "https://cdn.arctracker.io/items/noisemaker.png",
       "rarity": "Common",
       "type": "Quick Use",
@@ -6934,7 +6934,7 @@
         "value": "油",
         "originalEn": "Oil"
       },
-      "description": "用于制作武器和爆炸物。可回收为化学品。用于制作：Renegade、爆炸化合物、烈焰手榴弹",
+      "description": "用于制作武器和爆炸物。可回收为化学品。用于制作：Renegade、爆炸化合物、火焰手雷",
       "icon": "https://cdn.arctracker.io/items/oil.png",
       "rarity": "Uncommon",
       "type": "Topside Material",
@@ -7109,7 +7109,7 @@
     },
     "padded_stock": {
       "name": {
-        "value": "软垫枪托",
+        "value": "减震枪托",
         "originalEn": "Padded Stock"
       },
       "description": "显著提升稳定性。兼容武器：Arpeggio、Rattler、Ferro、Renegade、Torrente",
@@ -7228,7 +7228,7 @@
         "value": "塑料零件",
         "originalEn": "Plastic Parts"
       },
-      "description": "用于制作各种物品。可制作：发夹、轻型护盾、掠夺 Mk. 1、轻型冲击手榴弹、霰弹枪扩容弹匣 I",
+      "description": "用于制作各种物品。可制作：发夹、轻型护盾、掠夺 Mk. 1、轻型冲击手雷、霰弹枪扩容弹匣 I",
       "icon": "https://cdn.arctracker.io/items/plastic_parts.png",
       "rarity": "Common",
       "type": "Basic Material",
@@ -7295,7 +7295,7 @@
     },
     "pop_trigger": {
       "name": {
-        "value": "弹出扳机",
+        "value": "“爆爆”触发器",
         "originalEn": "Pop Trigger"
       },
       "description": "可以回收成制作材料。",
@@ -7437,7 +7437,7 @@
     },
     "power_cable": {
       "name": {
-        "value": "电源线",
+        "value": "输电线",
         "originalEn": "Power Cable"
       },
       "description": "用于传输电力的重型电缆。",
@@ -7465,10 +7465,10 @@
     },
     "power_rod": {
       "name": {
-        "value": "能量棒",
+        "value": "能量管（电棍）",
         "originalEn": "Power Rod"
       },
-      "description": "用于制作。用于制作：重型护盾、快扣钩",
+      "description": "用于制作。用于制作：重型护盾、安全钩",
       "icon": "https://cdn.arctracker.io/items/power_rod.png",
       "rarity": "Epic",
       "type": "Refined Material",
@@ -7497,7 +7497,7 @@
     },
     "prickly_pear": {
       "name": {
-        "value": "仙人掌果",
+        "value": "仙人果（仙人掌果）",
         "originalEn": "Prickly Pear"
       },
       "description": "可以食用以恢复少量体力。",
@@ -7516,7 +7516,6 @@
       },
       "stackSize": 10,
       "value": 640,
-      "weight": 0.2,
       "foundIn": [
         "Nature"
       ]
@@ -7594,7 +7593,7 @@
     },
     "pulse_mine": {
       "name": {
-        "value": "脉冲地雷",
+        "value": "跳雷：冲击",
         "originalEn": "Pulse Mine"
       },
       "description": "一种近距离触发的地雷，会弹起并击退半径内的任何目标。",
@@ -7623,7 +7622,7 @@
     },
     "queen_reactor": {
       "name": {
-        "value": "女王反应堆",
+        "value": "“女王”反应堆",
         "originalEn": "Queen Reactor"
       },
       "description": "可回收为制作材料。",
@@ -7705,10 +7704,10 @@
     },
     "raider_hatch_key": {
       "name": {
-        "value": "掠夺者舱门钥匙",
+        "value": "奇袭者暗门钥匙",
         "originalEn": "Raider Hatch Key"
       },
-      "description": "解锁掠夺者舱门。",
+      "description": "解锁一道奇袭者暗门。",
       "icon": "https://cdn.arctracker.io/items/raider_hatch_key.png",
       "rarity": "Rare",
       "type": "Key",
@@ -7727,10 +7726,10 @@
     },
     "raiders_refuge_security_code": {
       "name": {
-        "value": "突袭者避难所安全密码",
+        "value": "奇袭者避难所安全密码",
         "originalEn": "Raider's Refuge Security Code"
       },
-      "description": "解锁蓝门上锁大门所需的四个安全密码之一。在突袭者避难所找到。",
+      "description": "解锁蓝门上锁大门所需的四个安全密码之一。在奇袭者避难所找到。",
       "icon": "https://cdn.arctracker.io/items/security_code.png",
       "rarity": "Common",
       "type": "Key",
@@ -7747,7 +7746,7 @@
         "value": "响尾蛇 I",
         "originalEn": "Rattler I"
       },
-      "description": "便宜的攻击选择，但每次只能装填2发子弹。",
+      "description": "性价比较高，但每次只能装填两发子弹。",
       "icon": "https://cdn.arctracker.io/items/rattler.png",
       "rarity": "Common",
       "type": "Assault Rifle",
@@ -7776,7 +7775,7 @@
         "value": "响尾蛇 II",
         "originalEn": "Rattler II"
       },
-      "description": "全自动突击步枪。廉价的进攻选择，但每次只能装填2发子弹。",
+      "description": "性价比较高，但每次只能装填两发子弹。",
       "icon": "https://cdn.arctracker.io/items/rattler.png",
       "rarity": "Common",
       "type": "Assault Rifle",
@@ -7801,7 +7800,7 @@
         "value": "响尾蛇 III",
         "originalEn": "Rattler III"
       },
-      "description": "便宜的攻击选项，但每次只能装填2发子弹。",
+      "description": "性价比较高，但每次只能装填两发子弹。",
       "icon": "https://cdn.arctracker.io/items/rattler.png",
       "rarity": "Common",
       "type": "Assault Rifle",
@@ -7827,7 +7826,7 @@
         "value": "响尾蛇 IV",
         "originalEn": "Rattler IV"
       },
-      "description": "全自动突击步枪。廉价的进攻选择，但每次只能装填2发子弹。",
+      "description": "性价比较高，但每次只能装填两发子弹。",
       "icon": "https://cdn.arctracker.io/items/rattler.png",
       "rarity": "Common",
       "type": "Assault Rifle",
@@ -7850,10 +7849,10 @@
     },
     "recorder": {
       "name": {
-        "value": "竖笛",
+        "value": "可演奏长笛",
         "originalEn": "Recorder"
       },
-      "description": "一支可演奏的竖笛，用于吸引ARC的注意并给其他掠夺者留下深刻印象。",
+      "description": "一支可演奏的长笛，用来吸引ARC，或者打动其他奇袭者。",
       "icon": "https://cdn.arctracker.io/items/recorder.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
@@ -7926,10 +7925,10 @@
     },
     "reinforced_reception_security_code": {
       "name": {
-        "value": "加固接待处安全密码",
+        "value": "加固前台安全密码",
         "originalEn": "Reinforced Reception Security Code"
       },
-      "description": "解锁蓝门上锁大门所需的四个安全密码之一。在加固接待处找到。",
+      "description": "解锁蓝门上锁大门所需的四个安全密码之一。在加固前台找到。",
       "icon": "https://cdn.arctracker.io/items/security_code.png",
       "rarity": "Common",
       "type": "Key",
@@ -7970,10 +7969,10 @@
     },
     "remote_raider_flare": {
       "name": {
-        "value": "远程掠夺者信号弹",
+        "value": "远程奇袭者信号弹",
         "originalEn": "Remote Raider Flare"
       },
-      "description": "一个可部署的装置，手动触发时会发射掠夺者求救信号弹。",
+      "description": "一个可部署的装置，手动触发时会发射奇袭者求救信号弹。",
       "icon": "https://cdn.arctracker.io/items/remote_raider_flare.png",
       "rarity": "Common",
       "type": "Quick Use",
@@ -8129,7 +8128,7 @@
     },
     "ripped_safety_vest": {
       "name": {
-        "value": "破损的安全背心",
+        "value": "撕坏的安全背心",
         "originalEn": "Ripped Safety Vest"
       },
       "description": "可回收为制作材料。",
@@ -8233,7 +8232,7 @@
     },
     "rope": {
       "name": {
-        "value": "绳索",
+        "value": "绳子",
         "originalEn": "Rope"
       },
       "description": "用于制作。可制作：Zipline、Snap Hook",
@@ -8560,7 +8559,7 @@
     },
     "rusted_bolts": {
       "name": {
-        "value": "生锈螺栓",
+        "value": "生锈的螺栓",
         "originalEn": "Rusted Bolts"
       },
       "description": "可回收为金属零件。",
@@ -8755,10 +8754,10 @@
     },
     "seeker_grenade": {
       "name": {
-        "value": "追踪手榴弹",
+        "value": "追踪手雷",
         "originalEn": "Seeker Grenade"
       },
-      "description": "一种追踪手榴弹，锁定附近单个ARC并在撞击时造成爆炸伤害。",
+      "description": "一枚追踪手雷，锁定附近单个ARC并在撞击时造成爆炸伤害。",
       "icon": "https://cdn.arctracker.io/items/seeker_grenade.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
@@ -8787,7 +8786,7 @@
         "value": "传感器",
         "originalEn": "Sensors"
       },
-      "description": "用于制作。可制作：狼群、爆炸地雷、掠夺者舱口钥匙、标记手榴弹",
+      "description": "用于制作。可制作：狼群、爆炸地雷、奇袭者暗门钥匙、标记手榴弹",
       "icon": "https://cdn.arctracker.io/items/sensors.png",
       "rarity": "Rare",
       "type": "Topside Material",
@@ -8812,7 +8811,7 @@
     },
     "sentinel_firing_core": {
       "name": {
-        "value": "哨兵射击核心",
+        "value": "哨兵核心",
         "originalEn": "Sentinel Firing Core"
       },
       "description": "可回收为制作材料。",
@@ -8839,10 +8838,10 @@
     },
     "shaker": {
       "name": {
-        "value": "沙铃",
+        "value": "摇铃",
         "originalEn": "Shaker"
       },
-      "description": "一种节奏乐器，用于吸引ARC的注意并给其他掠夺者留下深刻印象。",
+      "description": "一种节奏乐器，用于吸引ARC的注意并给其他奇袭者留下深刻印象。",
       "icon": "https://cdn.arctracker.io/items/shaker.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
@@ -9066,7 +9065,7 @@
     },
     "shrapnel_grenade": {
       "name": {
-        "value": "破片手榴弹",
+        "value": "碎片手雷",
         "originalEn": "Shrapnel Grenade"
       },
       "description": "一种简易引信手榴弹，爆炸时会迸发出锋利的碎片。对ARC装甲板效果较弱",
@@ -9281,10 +9280,10 @@
     },
     "smoke_grenade": {
       "name": {
-        "value": "烟雾弹",
+        "value": "烟雾手雷",
         "originalEn": "Smoke Grenade"
       },
-      "description": "撞击时产生持续烟雾云，阻挡 ARC 和其他掠夺者的视线。",
+      "description": "撞击时产生持续烟雾云，阻挡 ARC 和其他奇袭者的视线。",
       "icon": "https://cdn.arctracker.io/items/smoke_grenade.png",
       "rarity": "Rare",
       "type": "Quick Use",
@@ -9311,10 +9310,10 @@
     },
     "smoke_grenade_trap": {
       "name": {
-        "value": "烟雾手榴弹陷阱",
+        "value": "烟雾手雷陷阱",
         "originalEn": "Smoke Grenade Trap"
       },
-      "description": "引爆烟雾手榴弹的激光绊线。",
+      "description": "激光陷阱：烟雾。",
       "icon": "https://cdn.arctracker.io/items/smoke_grenade_trap.png",
       "rarity": "Rare",
       "type": "Quick Use",
@@ -9332,7 +9331,7 @@
     },
     "snap_blast_grenade": {
       "name": {
-        "value": "粘附爆破手雷",
+        "value": "闪爆手雷",
         "originalEn": "Snap Blast Grenade"
       },
       "description": "可粘附在表面的手雷，短暂延迟后造成爆炸伤害。",
@@ -9508,10 +9507,10 @@
     },
     "speaker_component": {
       "name": {
-        "value": "扬声器组件",
+        "value": "扬声器零件",
         "originalEn": "Speaker Component"
       },
-      "description": "用于制作。可制作：诱饵手榴弹、光电斗篷",
+      "description": "用于制作。可制作：诱捕手雷、光电斗篷",
       "icon": "https://cdn.arctracker.io/items/speaker_component.png",
       "rarity": "Rare",
       "type": "Topside Material",
@@ -9771,7 +9770,7 @@
         "value": "钢制弹簧",
         "originalEn": "Steel Spring"
       },
-      "description": "用于制作各种物品。可回收为制作材料。可制作：延长霰弹枪弹匣 I、延长中型弹匣 I、延长轻型弹匣 I、托伦特、延长中型弹匣 II",
+      "description": "用于制作各种物品。可回收为制作材料。可制作：霰弹枪扩容弹匣 I、中型扩容弹匣 I、轻型扩容弹匣 I、奔流、中型扩容弹匣 II",
       "icon": "https://cdn.arctracker.io/items/steel_spring.png",
       "rarity": "Uncommon",
       "type": "Topside Material",
@@ -9865,7 +9864,7 @@
         "value": "消毒绷带",
         "originalEn": "Sterilized Bandage"
       },
-      "description": "一种医疗物品，可随时间逐渐恢复大量生命值。",
+      "description": "一种医疗物品，能在一段时间内逐渐恢复大量生命值。",
       "icon": "https://cdn.arctracker.io/items/sterilized_bandage.png",
       "rarity": "Rare",
       "type": "Quick Use",
@@ -10060,7 +10059,7 @@
     },
     "surveyor_vault": {
       "name": {
-        "value": "勘测师保险库",
+        "value": "“勘测师”保险库",
         "originalEn": "Surveyor Vault"
       },
       "description": "可回收为制作材料。",
@@ -10141,7 +10140,7 @@
     },
     "tactical_mk1": {
       "name": {
-        "value": "战术型 Mk. 1",
+        "value": "战术 Mk. 1",
         "originalEn": "Tactical Mk. 1"
       },
       "description": "基础战术强化。更多快速使用栏位提供更多战术选择，但生存能力有限且掠夺潜力略低。",
@@ -10170,7 +10169,7 @@
     },
     "tactical_mk2": {
       "name": {
-        "value": "战术型 Mk. 2",
+        "value": "战术 Mk. 2",
         "originalEn": "Tactical Mk. 2"
       },
       "description": "增加更多背包空间和一个额外的实用物品栏位。",
@@ -10257,7 +10256,7 @@
     },
     "tactical_mk3_revival": {
       "name": {
-        "value": "战术型 Mk. 3 (复活)",
+        "value": "战术型 Mk. 3 (复苏)",
         "originalEn": "Tactical Mk. 3 (Revival)"
       },
       "description": "专为团队支援设计的救援强化组件。每 5 秒恢复 1 点生命值。受到伤害时，效果暂停 30 秒。包含一个内置除颤器，可无限次使用，冷却时间 240 秒。",
@@ -10531,7 +10530,7 @@
     },
     "tick_pod": {
       "name": {
-        "value": "蜱虫荚",
+        "value": "“跳蚤”收纳仓",
         "originalEn": "Tick Pod"
       },
       "description": "可回收为制作材料。",
@@ -10772,7 +10771,7 @@
     },
     "trigger_nade": {
       "name": {
-        "value": "遥控手雷",
+        "value": "触发式手雷",
         "originalEn": "Trigger 'Nade"
       },
       "description": "可粘附在表面和ARC上的遥控引爆手雷，触发时造成爆炸伤害。",
@@ -10846,7 +10845,7 @@
     },
     "unusable_weapon": {
       "name": {
-        "value": "无法使用的武器",
+        "value": "不堪用的武器",
         "originalEn": "Unusable Weapon"
       },
       "description": "可以回收为制作材料。",
@@ -11114,10 +11113,10 @@
     },
     "very_comfortable_pillow": {
       "name": {
-        "value": "非常舒适的枕头",
+        "value": "极为舒适的枕头",
         "originalEn": "Very Comfortable Pillow"
       },
-      "description": "每个掠夺者的羡慕对象。就像睡在特别符合人体工学的云上。",
+      "description": "每个奇袭者的梦想。脑袋就像躺在一片特别符合人体工程学的云朵上一样。",
       "icon": "https://cdn.arctracker.io/items/very_comfortable_pillow.png",
       "rarity": "Uncommon",
       "type": "Trinket",
@@ -11165,10 +11164,10 @@
     },
     "vita_spray": {
       "name": {
-        "value": "生命喷雾",
+        "value": "补水喷雾",
         "originalEn": "Vita Spray"
       },
-      "description": "使用期间持续恢复生命值的医疗物品。可用于自己或队友。",
+      "description": "一种医疗物品，在使用过程中不断恢复生命值。可以对自己或盟友使用。",
       "icon": "https://cdn.arctracker.io/items/vita_spray.png",
       "rarity": "Epic",
       "type": "Quick Use",
@@ -11199,7 +11198,7 @@
         "value": "火山岩",
         "originalEn": "Volcanic Rock"
       },
-      "description": "可以投掷。",
+      "description": "可用于投掷。",
       "icon": "https://cdn.arctracker.io/items/volcanic_rock.png",
       "rarity": "Common",
       "type": "Misc",
@@ -11406,7 +11405,7 @@
     },
     "water_pump": {
       "name": {
-        "value": "抽水机",
+        "value": "水泵",
         "originalEn": "Water Pump"
       },
       "description": "可以回收成制作材料。",
@@ -11434,10 +11433,10 @@
     },
     "wires": {
       "name": {
-        "value": "电线",
+        "value": "导线",
         "originalEn": "Wires"
       },
-      "description": "用于制作各种物品。可回收为制作材料。可制作：烈焰手榴弹陷阱、烟雾手榴弹陷阱、诱饵手榴弹陷阱、毒气手榴弹陷阱、枪口制退器I",
+      "description": "用于制作各种物品。可回收为制作材料。可制作：烈焰手雷陷阱、烟雾手雷陷阱、诱捕手雷陷阱、毒气手雷陷阱、枪口制退器I",
       "icon": "https://cdn.arctracker.io/items/wires.png",
       "rarity": "Uncommon",
       "type": "Topside Material",

@@ -78,20 +78,6 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "agave": {
-    "id": "agave",
-    "name": {
-      "value": "龙舌兰",
-      "originalEn": "Agave"
-    },
-    "stackSize": 10,
-    "value": 1000,
-    "imageFilename": "https://cdn.arctracker.io/items/agave.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
   "agave_juice": {
     "id": "agave_juice",
     "name": {
@@ -106,6 +92,20 @@
       "agave": 1,
       "empty_wine_bottle": 1
     },
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "agave": {
+    "id": "agave",
+    "name": {
+      "value": "龙舌兰叶",
+      "originalEn": "Agave"
+    },
+    "stackSize": 10,
+    "value": 1000,
+    "imageFilename": "https://cdn.arctracker.io/items/agave.png",
+    "isWeapon": null,
+    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -182,6 +182,20 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "angled_grip_ii_blueprint": {
+    "id": "angled_grip_ii_blueprint",
+    "name": {
+      "value": "直角握把 II 蓝图",
+      "originalEn": "Angled Grip II Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/angled_grip_ii.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "angled_grip_ii": {
     "id": "angled_grip_ii",
     "name": {
@@ -199,15 +213,15 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "angled_grip_ii_blueprint": {
-    "id": "angled_grip_ii_blueprint",
+  "angled_grip_iii_blueprint": {
+    "id": "angled_grip_iii_blueprint",
     "name": {
-      "value": "直角握把 II 蓝图",
-      "originalEn": "Angled Grip II Blueprint"
+      "value": "直角握把 III 蓝图",
+      "originalEn": "Angled Grip III Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/angled_grip_ii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/angled_grip_iii.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -227,20 +241,6 @@
       "duct_tape": 5,
       "mod_components": 2
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "angled_grip_iii_blueprint": {
-    "id": "angled_grip_iii_blueprint",
-    "name": {
-      "value": "直角握把 III 蓝图",
-      "originalEn": "Angled Grip III Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/angled_grip_iii.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -357,6 +357,20 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "aphelion_blueprint": {
+    "id": "aphelion_blueprint",
+    "name": {
+      "value": "远日点蓝图",
+      "originalEn": "Aphelion Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/aphelion.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "aphelion": {
     "id": "aphelion",
     "name": {
@@ -372,20 +386,6 @@
       "magnetic_accelerator": 3,
       "matriarch_reactor": 1
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "aphelion_blueprint": {
-    "id": "aphelion_blueprint",
-    "name": {
-      "value": "远日点蓝图",
-      "originalEn": "Aphelion Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/aphelion.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -645,6 +645,20 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "barricade_kit_blueprint": {
+    "id": "barricade_kit_blueprint",
+    "name": {
+      "value": "路障工具蓝图",
+      "originalEn": "Barricade Kit Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/barricade_kit.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "barricade_kit": {
     "id": "barricade_kit",
     "name": {
@@ -661,24 +675,10 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "barricade_kit_blueprint": {
-    "id": "barricade_kit_blueprint",
-    "name": {
-      "value": "路障工具蓝图",
-      "originalEn": "Barricade Kit Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/barricade_kit.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
   "bastion_cell": {
     "id": "bastion_cell",
     "name": {
-      "value": "堡垒电池",
+      "value": "“堡垒”电池",
       "originalEn": "Bastion Cell"
     },
     "stackSize": 3,
@@ -803,7 +803,7 @@
   "binoculars": {
     "id": "binoculars",
     "name": {
-      "value": "双筒望远镜",
+      "value": "望远镜",
       "originalEn": "Binoculars"
     },
     "stackSize": 1,
@@ -813,23 +813,6 @@
     "recipe": {
       "plastic_parts": 8,
       "rubber_parts": 4
-    },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "blaze_grenade": {
-    "id": "blaze_grenade",
-    "name": {
-      "value": "火焰手雷",
-      "originalEn": "Blaze Grenade"
-    },
-    "stackSize": 5,
-    "value": 1600,
-    "imageFilename": "https://cdn.arctracker.io/items/blaze_grenade.png",
-    "isWeapon": null,
-    "recipe": {
-      "explosive_compound": 1,
-      "oil": 2
     },
     "upgradeCost": null,
     "craftQuantity": 1
@@ -861,6 +844,23 @@
     "recipe": {
       "blaze_grenade": 1,
       "wires": 1
+    },
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "blaze_grenade": {
+    "id": "blaze_grenade",
+    "name": {
+      "value": "火焰手雷",
+      "originalEn": "Blaze Grenade"
+    },
+    "stackSize": 5,
+    "value": 1600,
+    "imageFilename": "https://cdn.arctracker.io/items/blaze_grenade.png",
+    "isWeapon": null,
+    "recipe": {
+      "explosive_compound": 1,
+      "oil": 2
     },
     "upgradeCost": null,
     "craftQuantity": 1
@@ -935,6 +935,20 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "blue_light_stick_blueprint": {
+    "id": "blue_light_stick_blueprint",
+    "name": {
+      "value": "蓝色荧光棒蓝图",
+      "originalEn": "Blue Light Stick Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/blue_light_stick_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "blue_light_stick": {
     "id": "blue_light_stick",
     "name": {
@@ -948,20 +962,6 @@
     "recipe": {
       "chemicals": 3
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "blue_light_stick_blueprint": {
-    "id": "blue_light_stick_blueprint",
-    "name": {
-      "value": "蓝色荧光棒蓝图",
-      "originalEn": "Blue Light Stick Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/blue_light_stick_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -1065,7 +1065,7 @@
   "breathtaking_snow_globe": {
     "id": "breathtaking_snow_globe",
     "name": {
-      "value": "令人惊叹的雪球",
+      "value": "惊艳的雪花玻璃球",
       "originalEn": "Breathtaking Snow Globe"
     },
     "stackSize": 1,
@@ -1329,7 +1329,7 @@
   "candleberries": {
     "id": "candleberries",
     "name": {
-      "value": "蜡莓",
+      "value": "烛莓",
       "originalEn": "Candleberries"
     },
     "stackSize": 10,
@@ -1343,7 +1343,7 @@
   "canister": {
     "id": "canister",
     "name": {
-      "value": "罐子",
+      "value": "小罐",
       "originalEn": "Canister"
     },
     "stackSize": 15,
@@ -1496,7 +1496,7 @@
   "combat_mk1": {
     "id": "combat_mk1",
     "name": {
-      "value": "战斗型 Mk. 1",
+      "value": "战斗 Mk. 1",
       "originalEn": "Combat Mk. 1"
     },
     "stackSize": 1,
@@ -1513,7 +1513,7 @@
   "combat_mk2": {
     "id": "combat_mk2",
     "name": {
-      "value": "战斗型 Mk. 2",
+      "value": "战斗 Mk. 2",
       "originalEn": "Combat Mk. 2"
     },
     "stackSize": 1,
@@ -1524,6 +1524,20 @@
       "electrical_components": 2,
       "magnet": 3
     },
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "combat_mk3_aggressive_blueprint": {
+    "id": "combat_mk3_aggressive_blueprint",
+    "name": {
+      "value": "战斗 Mk. 3（进攻型）蓝图",
+      "originalEn": "Combat Mk. 3 (Aggressive) Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/combat_mk3_aggressive.png",
+    "isWeapon": null,
+    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -1544,15 +1558,15 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "combat_mk3_aggressive_blueprint": {
-    "id": "combat_mk3_aggressive_blueprint",
+  "combat_mk3_flanking_blueprint": {
+    "id": "combat_mk3_flanking_blueprint",
     "name": {
-      "value": "战斗 Mk. 3（进攻型）蓝图",
-      "originalEn": "Combat Mk. 3 (Aggressive) Blueprint"
+      "value": "战斗 Mk. 3（侧翼突击）蓝图",
+      "originalEn": "Combat Mk. 3 (Flanking) Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/combat_mk3_aggressive.png",
+    "imageFilename": "https://cdn.arctracker.io/items/combat_mk3_flanking.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -1572,20 +1586,6 @@
       "advanced_electrical_components": 2,
       "processor": 3
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "combat_mk3_flanking_blueprint": {
-    "id": "combat_mk3_flanking_blueprint",
-    "name": {
-      "value": "战斗 Mk. 3（侧翼突击）蓝图",
-      "originalEn": "Combat Mk. 3 (Flanking) Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/combat_mk3_flanking.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -1620,6 +1620,20 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "compensator_ii_blueprint": {
+    "id": "compensator_ii_blueprint",
+    "name": {
+      "value": "补偿器II蓝图",
+      "originalEn": "Compensator II Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/compensator_ii_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "compensator_ii": {
     "id": "compensator_ii",
     "name": {
@@ -1637,15 +1651,15 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "compensator_ii_blueprint": {
-    "id": "compensator_ii_blueprint",
+  "compensator_iii_blueprint": {
+    "id": "compensator_iii_blueprint",
     "name": {
-      "value": "补偿器II蓝图",
-      "originalEn": "Compensator II Blueprint"
+      "value": "补偿器 III 蓝图",
+      "originalEn": "Compensator III Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/compensator_ii_blueprint.png",
+    "imageFilename": "https://cdn.arctracker.io/items/compensator_iii.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -1668,15 +1682,15 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "compensator_iii_blueprint": {
-    "id": "compensator_iii_blueprint",
+  "complex_gun_parts_blueprint": {
+    "id": "complex_gun_parts_blueprint",
     "name": {
-      "value": "补偿器 III 蓝图",
-      "originalEn": "Compensator III Blueprint"
+      "value": "复杂枪械零件蓝图",
+      "originalEn": "Complex Gun Parts Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/compensator_iii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/complex_gun_parts_blueprint.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -1697,20 +1711,6 @@
       "light_gun_parts": 2,
       "medium_gun_parts": 2
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "complex_gun_parts_blueprint": {
-    "id": "complex_gun_parts_blueprint",
-    "name": {
-      "value": "复杂枪械零件蓝图",
-      "originalEn": "Complex Gun Parts Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/complex_gun_parts_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -1915,7 +1915,7 @@
   "damaged_fireball_burner": {
     "id": "damaged_fireball_burner",
     "name": {
-      "value": "损坏的火球燃烧器",
+      "value": "损坏的火球燃烧炉",
       "originalEn": "Damaged Fireball Burner"
     },
     "stackSize": 3,
@@ -1985,7 +1985,7 @@
   "damaged_tick_pod": {
     "id": "damaged_tick_pod",
     "name": {
-      "value": "损坏的蜱虫荚",
+      "value": "损坏的“跳蚤”收纳仓",
       "originalEn": "Damaged Tick Pod"
     },
     "stackSize": 3,
@@ -2024,6 +2024,20 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "deadline_blueprint": {
+    "id": "deadline_blueprint",
+    "name": {
+      "value": "死线蓝图",
+      "originalEn": "Deadline Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/deadline.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "deadline": {
     "id": "deadline",
     "name": {
@@ -2042,15 +2056,15 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "deadline_blueprint": {
-    "id": "deadline_blueprint",
+  "defibrillator_blueprint": {
+    "id": "defibrillator_blueprint",
     "name": {
-      "value": "死线蓝图",
-      "originalEn": "Deadline Blueprint"
+      "value": "复苏剂蓝图（除颤器蓝图）",
+      "originalEn": "Defibrillator Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/deadline.png",
+    "imageFilename": "https://cdn.arctracker.io/items/defibrillator.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -2059,7 +2073,7 @@
   "defibrillator": {
     "id": "defibrillator",
     "name": {
-      "value": "除颤器",
+      "value": "复苏剂（除颤器）",
       "originalEn": "Defibrillator"
     },
     "stackSize": 3,
@@ -2070,20 +2084,6 @@
       "moss": 1,
       "plastic_parts": 9
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "defibrillator_blueprint": {
-    "id": "defibrillator_blueprint",
-    "name": {
-      "value": "除颤器蓝图",
-      "originalEn": "Defibrillator Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/defibrillator.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -2157,6 +2157,20 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "dolabra_blueprint": {
+    "id": "dolabra_blueprint",
+    "name": {
+      "value": "Dolabra 蓝图",
+      "originalEn": "Dolabra Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": null,
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "dolabra": {
     "id": "dolabra",
     "name": {
@@ -2172,20 +2186,6 @@
       "shredder_gyro": 3,
       "vaporizer_regulator": 2
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "dolabra_blueprint": {
-    "id": "dolabra_blueprint",
-    "name": {
-      "value": "Dolabra 蓝图",
-      "originalEn": "Dolabra Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": null,
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -2206,7 +2206,7 @@
   "door_blocker": {
     "id": "door_blocker",
     "name": {
-      "value": "门锁",
+      "value": "阻门器",
       "originalEn": "Door Blocker"
     },
     "stackSize": 3,
@@ -2237,7 +2237,7 @@
   "duct_tape": {
     "id": "duct_tape",
     "name": {
-      "value": "强力胶带",
+      "value": "胶带",
       "originalEn": "Duct Tape"
     },
     "stackSize": 15,
@@ -2312,7 +2312,7 @@
   "energy_clip": {
     "id": "energy_clip",
     "name": {
-      "value": "能量夹",
+      "value": "能量弹匣",
       "originalEn": "Energy Clip"
     },
     "stackSize": 5,
@@ -2325,6 +2325,20 @@
     },
     "upgradeCost": null,
     "craftQuantity": 5
+  },
+  "equalizer_blueprint": {
+    "id": "equalizer_blueprint",
+    "name": {
+      "value": "制裁者蓝图",
+      "originalEn": "Equalizer Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/equalizer.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
   },
   "equalizer": {
     "id": "equalizer",
@@ -2341,20 +2355,6 @@
       "magnetic_accelerator": 3,
       "queen_reactor": 1
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "equalizer_blueprint": {
-    "id": "equalizer_blueprint",
-    "name": {
-      "value": "制裁者蓝图",
-      "originalEn": "Equalizer Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/equalizer.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -2459,6 +2459,20 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "explosive_mine_blueprint": {
+    "id": "explosive_mine_blueprint",
+    "name": {
+      "value": "爆炸地雷 蓝图",
+      "originalEn": "Explosive Mine Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/explosive_mine.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "explosive_mine": {
     "id": "explosive_mine",
     "name": {
@@ -2476,15 +2490,15 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "explosive_mine_blueprint": {
-    "id": "explosive_mine_blueprint",
+  "extended_barrel_blueprint": {
+    "id": "extended_barrel_blueprint",
     "name": {
-      "value": "爆炸地雷 蓝图",
-      "originalEn": "Explosive Mine Blueprint"
+      "value": "加长枪管 蓝图",
+      "originalEn": "Extended Barrel Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/explosive_mine.png",
+    "imageFilename": "https://cdn.arctracker.io/items/extended_barrel.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -2507,24 +2521,10 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "extended_barrel_blueprint": {
-    "id": "extended_barrel_blueprint",
-    "name": {
-      "value": "加长枪管 蓝图",
-      "originalEn": "Extended Barrel Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/extended_barrel.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
   "extended_light_mag_i": {
     "id": "extended_light_mag_i",
     "name": {
-      "value": "延长轻型弹匣 I",
+      "value": "轻型扩容弹匣 I",
       "originalEn": "Extended Light Mag I"
     },
     "stackSize": 1,
@@ -2538,10 +2538,24 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "extended_light_mag_ii_blueprint": {
+    "id": "extended_light_mag_ii_blueprint",
+    "name": {
+      "value": "轻型扩容弹匣 II 蓝图",
+      "originalEn": "Extended Light Mag II Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/extended_light_mag_ii.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "extended_light_mag_ii": {
     "id": "extended_light_mag_ii",
     "name": {
-      "value": "延长轻型弹匣 II",
+      "value": "轻型扩容弹匣 II",
       "originalEn": "Extended Light Mag II"
     },
     "stackSize": 1,
@@ -2555,15 +2569,15 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "extended_light_mag_ii_blueprint": {
-    "id": "extended_light_mag_ii_blueprint",
+  "extended_light_mag_iii_blueprint": {
+    "id": "extended_light_mag_iii_blueprint",
     "name": {
-      "value": "延长轻型弹匣 II 蓝图",
-      "originalEn": "Extended Light Mag II Blueprint"
+      "value": "轻型扩容弹匣 III 蓝图",
+      "originalEn": "Extended Light Mag III Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/extended_light_mag_ii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/extended_light_mag_iii.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -2572,7 +2586,7 @@
   "extended_light_mag_iii": {
     "id": "extended_light_mag_iii",
     "name": {
-      "value": "延长轻型弹匣 III",
+      "value": "轻型扩容弹匣 III",
       "originalEn": "Extended Light Mag III"
     },
     "stackSize": 1,
@@ -2586,24 +2600,10 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "extended_light_mag_iii_blueprint": {
-    "id": "extended_light_mag_iii_blueprint",
-    "name": {
-      "value": "延长轻型弹匣 III 蓝图",
-      "originalEn": "Extended Light Mag III Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/extended_light_mag_iii.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
   "extended_medium_mag_i": {
     "id": "extended_medium_mag_i",
     "name": {
-      "value": "延长中型弹匣 I",
+      "value": "中型扩容弹匣 I",
       "originalEn": "Extended Medium Mag I"
     },
     "stackSize": 1,
@@ -2617,10 +2617,24 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "extended_medium_mag_ii_blueprint": {
+    "id": "extended_medium_mag_ii_blueprint",
+    "name": {
+      "value": "中型扩容弹匣II蓝图",
+      "originalEn": "Extended Medium Mag II Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/extended_medium_mag_ii_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "extended_medium_mag_ii": {
     "id": "extended_medium_mag_ii",
     "name": {
-      "value": "延长中型弹匣 II",
+      "value": "中型扩容弹匣 II",
       "originalEn": "Extended Medium Mag II"
     },
     "stackSize": 1,
@@ -2634,15 +2648,15 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "extended_medium_mag_ii_blueprint": {
-    "id": "extended_medium_mag_ii_blueprint",
+  "extended_medium_mag_iii_blueprint": {
+    "id": "extended_medium_mag_iii_blueprint",
     "name": {
-      "value": "延长中型弹匣II蓝图",
-      "originalEn": "Extended Medium Mag II Blueprint"
+      "value": "中型扩容弹匣III蓝图",
+      "originalEn": "Extended Medium Mag III Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/extended_medium_mag_ii_blueprint.png",
+    "imageFilename": "https://cdn.arctracker.io/items/extended_medium_mag_iii.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -2651,7 +2665,7 @@
   "extended_medium_mag_iii": {
     "id": "extended_medium_mag_iii",
     "name": {
-      "value": "延长中型弹匣 III",
+      "value": "中型扩容弹匣 III",
       "originalEn": "Extended Medium Mag III"
     },
     "stackSize": 1,
@@ -2665,24 +2679,10 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "extended_medium_mag_iii_blueprint": {
-    "id": "extended_medium_mag_iii_blueprint",
-    "name": {
-      "value": "延长中型弹匣III蓝图",
-      "originalEn": "Extended Medium Mag III Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/extended_medium_mag_iii.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
   "extended_shotgun_mag_i": {
     "id": "extended_shotgun_mag_i",
     "name": {
-      "value": "延长霰弹枪弹匣 I",
+      "value": "霰弹枪扩容弹匣 I",
       "originalEn": "Extended Shotgun Mag I"
     },
     "stackSize": 1,
@@ -2696,10 +2696,24 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "extended_shotgun_mag_ii_blueprint": {
+    "id": "extended_shotgun_mag_ii_blueprint",
+    "name": {
+      "value": "霰弹枪扩容弹匣 II 蓝图",
+      "originalEn": "Extended Shotgun Mag II Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/extended_shotgun_mag_ii.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "extended_shotgun_mag_ii": {
     "id": "extended_shotgun_mag_ii",
     "name": {
-      "value": "延长霰弹枪弹匣 II",
+      "value": "霰弹枪扩容弹匣 II",
       "originalEn": "Extended Shotgun Mag II"
     },
     "stackSize": 1,
@@ -2713,15 +2727,15 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "extended_shotgun_mag_ii_blueprint": {
-    "id": "extended_shotgun_mag_ii_blueprint",
+  "extended_shotgun_mag_iii_blueprint": {
+    "id": "extended_shotgun_mag_iii_blueprint",
     "name": {
-      "value": "延长霰弹枪弹匣 II 蓝图",
-      "originalEn": "Extended Shotgun Mag II Blueprint"
+      "value": "霰弹枪扩容弹匣 III 蓝图",
+      "originalEn": "Extended Shotgun Mag III Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/extended_shotgun_mag_ii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/extended_shotgun_mag_iii.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -2730,7 +2744,7 @@
   "extended_shotgun_mag_iii": {
     "id": "extended_shotgun_mag_iii",
     "name": {
-      "value": "扩展霰弹枪弹匣 III",
+      "value": "霰弹枪扩容弹匣 III",
       "originalEn": "Extended Shotgun Mag III"
     },
     "stackSize": 1,
@@ -2741,20 +2755,6 @@
       "mod_components": 2,
       "steel_spring": 5
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "extended_shotgun_mag_iii_blueprint": {
-    "id": "extended_shotgun_mag_iii_blueprint",
-    "name": {
-      "value": "扩展霰弹枪弹匣 III 蓝图",
-      "originalEn": "Extended Shotgun Mag III Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/extended_shotgun_mag_iii.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -2912,7 +2912,7 @@
   "fireball_burner": {
     "id": "fireball_burner",
     "name": {
-      "value": "火球燃烧器",
+      "value": "火球燃烧炉",
       "originalEn": "Fireball Burner"
     },
     "stackSize": 3,
@@ -2954,6 +2954,20 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "fireworks_box_blueprint": {
+    "id": "fireworks_box_blueprint",
+    "name": {
+      "value": "烟花箱蓝图",
+      "originalEn": "Fireworks Box Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/fireworks_box.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "fireworks_box": {
     "id": "fireworks_box",
     "name": {
@@ -2968,20 +2982,6 @@
       "explosive_compound": 1,
       "pop_trigger": 3
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "fireworks_box_blueprint": {
-    "id": "fireworks_box_blueprint",
-    "name": {
-      "value": "烟花箱蓝图",
-      "originalEn": "Fireworks Box Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/fireworks_box.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -3030,7 +3030,7 @@
   "flame_spray": {
     "id": "flame_spray",
     "name": {
-      "value": "火焰喷射器",
+      "value": "火焰喷涂",
       "originalEn": "Flame Spray"
     },
     "stackSize": 1,
@@ -3103,7 +3103,7 @@
   "free_loadout_augment": {
     "id": "free_loadout_augment",
     "name": {
-      "value": "免费装备增强",
+      "value": "免费配装强化",
       "originalEn": "Free Loadout Augment"
     },
     "stackSize": 1,
@@ -3188,6 +3188,23 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "gas_grenade_trap": {
+    "id": "gas_grenade_trap",
+    "name": {
+      "value": "毒气手雷陷阱",
+      "originalEn": "Gas Grenade Trap"
+    },
+    "stackSize": 3,
+    "value": 300,
+    "imageFilename": "https://cdn.arctracker.io/items/gas_grenade_trap.png",
+    "isWeapon": null,
+    "recipe": {
+      "gas_grenade": 1,
+      "wires": 1
+    },
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "gas_grenade": {
     "id": "gas_grenade",
     "name": {
@@ -3205,27 +3222,24 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "gas_grenade_trap": {
-    "id": "gas_grenade_trap",
+  "gas_mine_blueprint": {
+    "id": "gas_mine_blueprint",
     "name": {
-      "value": "毒气手榴弹陷阱",
-      "originalEn": "Gas Grenade Trap"
+      "value": "跳雷：持续流失耐力 蓝图（跳雷：毒气 蓝图）",
+      "originalEn": "Gas Mine Blueprint"
     },
-    "stackSize": 3,
-    "value": 300,
-    "imageFilename": "https://cdn.arctracker.io/items/gas_grenade_trap.png",
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/gas_mine.png",
     "isWeapon": null,
-    "recipe": {
-      "gas_grenade": 1,
-      "wires": 1
-    },
+    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
   "gas_mine": {
     "id": "gas_mine",
     "name": {
-      "value": "毒气地雷",
+      "value": "跳雷：持续流失耐力（跳雷：毒气）",
       "originalEn": "Gas Mine"
     },
     "stackSize": 3,
@@ -3236,20 +3250,6 @@
       "chemicals": 4,
       "rubber_parts": 2
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "gas_mine_blueprint": {
-    "id": "gas_mine_blueprint",
-    "name": {
-      "value": "毒气地雷 蓝图",
-      "originalEn": "Gas Mine Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/gas_mine.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -3295,6 +3295,20 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "green_light_stick_blueprint": {
+    "id": "green_light_stick_blueprint",
+    "name": {
+      "value": "绿色荧光棒蓝图",
+      "originalEn": "Green Light Stick Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/green_light_stick.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "green_light_stick": {
     "id": "green_light_stick",
     "name": {
@@ -3308,20 +3322,6 @@
     "recipe": {
       "chemicals": 3
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "green_light_stick_blueprint": {
-    "id": "green_light_stick_blueprint",
-    "name": {
-      "value": "绿色荧光棒蓝图",
-      "originalEn": "Green Light Stick Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/green_light_stick.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -3426,7 +3426,7 @@
   "heavy_fuze_grenade": {
     "id": "heavy_fuze_grenade",
     "name": {
-      "value": "重型定时手榴弹",
+      "value": "重型引信手雷",
       "originalEn": "Heavy Fuze Grenade"
     },
     "stackSize": 3,
@@ -3437,6 +3437,20 @@
       "canister": 2,
       "explosive_compound": 1
     },
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "heavy_gun_parts_blueprint": {
+    "id": "heavy_gun_parts_blueprint",
+    "name": {
+      "value": "重型枪械零件蓝图",
+      "originalEn": "Heavy Gun Parts Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/heavy_gun_parts.png",
+    "isWeapon": null,
+    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -3453,20 +3467,6 @@
     "recipe": {
       "simple_gun_parts": 4
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "heavy_gun_parts_blueprint": {
-    "id": "heavy_gun_parts_blueprint",
-    "name": {
-      "value": "重型枪械零件蓝图",
-      "originalEn": "Heavy Gun Parts Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/heavy_gun_parts.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -3809,6 +3809,20 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "jolt_mine_blueprint": {
+    "id": "jolt_mine_blueprint",
+    "name": {
+      "value": "电击地雷蓝图",
+      "originalEn": "Jolt Mine Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/jolt_mine.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "jolt_mine": {
     "id": "jolt_mine",
     "name": {
@@ -3826,15 +3840,15 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "jolt_mine_blueprint": {
-    "id": "jolt_mine_blueprint",
+  "jupiter_blueprint": {
+    "id": "jupiter_blueprint",
     "name": {
-      "value": "电击地雷蓝图",
-      "originalEn": "Jolt Mine Blueprint"
+      "value": "木星蓝图",
+      "originalEn": "Jupiter Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/jolt_mine.png",
+    "imageFilename": "https://cdn.arctracker.io/items/jupiter.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -3855,20 +3869,6 @@
       "magnetic_accelerator": 3,
       "queen_reactor": 1
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "jupiter_blueprint": {
-    "id": "jupiter_blueprint",
-    "name": {
-      "value": "木星蓝图",
-      "originalEn": "Jupiter Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/jupiter.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -4086,6 +4086,20 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "light_gun_parts_blueprint": {
+    "id": "light_gun_parts_blueprint",
+    "name": {
+      "value": "轻型枪械零件蓝图",
+      "originalEn": "Light Gun Parts Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/light_gun_parts_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "light_gun_parts": {
     "id": "light_gun_parts",
     "name": {
@@ -4102,24 +4116,10 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "light_gun_parts_blueprint": {
-    "id": "light_gun_parts_blueprint",
-    "name": {
-      "value": "轻型枪械零件蓝图",
-      "originalEn": "Light Gun Parts Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/light_gun_parts_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
   "light_impact_grenade": {
     "id": "light_impact_grenade",
     "name": {
-      "value": "轻型冲击手榴弹",
+      "value": "轻型冲击手雷",
       "originalEn": "Light Impact Grenade"
     },
     "stackSize": 5,
@@ -4150,10 +4150,24 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "lightweight_stock_blueprint": {
+    "id": "lightweight_stock_blueprint",
+    "name": {
+      "value": "轻型枪托蓝图",
+      "originalEn": "Lightweight Stock Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/lightweight_stock_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "lightweight_stock": {
     "id": "lightweight_stock",
     "name": {
-      "value": "轻量枪托",
+      "value": "轻型枪托",
       "originalEn": "Lightweight Stock"
     },
     "stackSize": 1,
@@ -4167,24 +4181,10 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "lightweight_stock_blueprint": {
-    "id": "lightweight_stock_blueprint",
-    "name": {
-      "value": "轻量枪托蓝图",
-      "originalEn": "Lightweight Stock Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/lightweight_stock_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
   "lil_smoke_grenade": {
     "id": "lil_smoke_grenade",
     "name": {
-      "value": "小型烟雾弹",
+      "value": "小型烟雾手雷",
       "originalEn": "Li'l Smoke Grenade"
     },
     "stackSize": 5,
@@ -4201,7 +4201,7 @@
   "looting_mk1": {
     "id": "looting_mk1",
     "name": {
-      "value": "掠夺 Mk. 1",
+      "value": "搜刮 Mk. 1",
       "originalEn": "Looting Mk. 1"
     },
     "stackSize": 1,
@@ -4218,7 +4218,7 @@
   "looting_mk2": {
     "id": "looting_mk2",
     "name": {
-      "value": "掠夺 Mk. 2",
+      "value": "搜刮 Mk. 2",
       "originalEn": "Looting Mk. 2"
     },
     "stackSize": 1,
@@ -4235,7 +4235,7 @@
   "looting_mk3_cautious": {
     "id": "looting_mk3_cautious",
     "name": {
-      "value": "掠夺 Mk. 3 (谨慎)",
+      "value": "搜刮 Mk. 3 (谨慎)",
       "originalEn": "Looting Mk. 3 (Cautious)"
     },
     "stackSize": 1,
@@ -4249,10 +4249,24 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "looting_mk3_safekeeper_blueprint": {
+    "id": "looting_mk3_safekeeper_blueprint",
+    "name": {
+      "value": "搜刮 Mk. 3 (守护者) 蓝图",
+      "originalEn": "Looting Mk. 3 (Safekeeper) Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/looting_mk3_safekeeper.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "looting_mk3_safekeeper": {
     "id": "looting_mk3_safekeeper",
     "name": {
-      "value": "掠夺 Mk. 3 (守护者)",
+      "value": "搜刮 Mk. 3 (守护者)",
       "originalEn": "Looting Mk. 3 (Safekeeper)"
     },
     "stackSize": 1,
@@ -4266,15 +4280,15 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "looting_mk3_safekeeper_blueprint": {
-    "id": "looting_mk3_safekeeper_blueprint",
+  "looting_mk3_survivor_blueprint": {
+    "id": "looting_mk3_survivor_blueprint",
     "name": {
-      "value": "搜刮 Mk. 3 (保管者) 蓝图",
-      "originalEn": "Looting Mk. 3 (Safekeeper) Blueprint"
+      "value": "搜刮 Mk. 3（生存型）蓝图",
+      "originalEn": "Looting Mk. 3 (Survivor) Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/looting_mk3_safekeeper.png",
+    "imageFilename": "https://cdn.arctracker.io/items/looting_mk3_survivor_blueprint.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -4283,7 +4297,7 @@
   "looting_mk3_survivor": {
     "id": "looting_mk3_survivor",
     "name": {
-      "value": "掠夺 Mk. 3（幸存者）",
+      "value": "搜刮 Mk. 3（生存型）",
       "originalEn": "Looting Mk. 3 (Survivor)"
     },
     "stackSize": 1,
@@ -4297,41 +4311,10 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "looting_mk3_survivor_blueprint": {
-    "id": "looting_mk3_survivor_blueprint",
-    "name": {
-      "value": "掠夺 Mk. 3（幸存者）蓝图",
-      "originalEn": "Looting Mk. 3 (Survivor) Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/looting_mk3_survivor_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "lure_grenade": {
-    "id": "lure_grenade",
-    "name": {
-      "value": "诱饵手榴弹",
-      "originalEn": "Lure Grenade"
-    },
-    "stackSize": 3,
-    "value": 1000,
-    "imageFilename": "https://cdn.arctracker.io/items/lure_grenade.png",
-    "isWeapon": null,
-    "recipe": {
-      "electrical_components": 1,
-      "speaker_component": 1
-    },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
   "lure_grenade_blueprint": {
     "id": "lure_grenade_blueprint",
     "name": {
-      "value": "诱饵手榴弹蓝图",
+      "value": "诱捕手雷蓝图",
       "originalEn": "Lure Grenade Blueprint"
     },
     "stackSize": 1,
@@ -4345,7 +4328,7 @@
   "lure_grenade_trap": {
     "id": "lure_grenade_trap",
     "name": {
-      "value": "诱饵手榴弹陷阱",
+      "value": "诱捕手雷陷阱",
       "originalEn": "Lure Grenade Trap"
     },
     "stackSize": 3,
@@ -4355,6 +4338,23 @@
     "recipe": {
       "lure_grenade": 1,
       "wires": 1
+    },
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "lure_grenade": {
+    "id": "lure_grenade",
+    "name": {
+      "value": "诱捕手雷",
+      "originalEn": "Lure Grenade"
+    },
+    "stackSize": 3,
+    "value": 1000,
+    "imageFilename": "https://cdn.arctracker.io/items/lure_grenade.png",
+    "isWeapon": null,
+    "recipe": {
+      "electrical_components": 1,
+      "speaker_component": 1
     },
     "upgradeCost": null,
     "craftQuantity": 1
@@ -4435,7 +4435,7 @@
   "matriarch_reactor": {
     "id": "matriarch_reactor",
     "name": {
-      "value": "母巢反应堆",
+      "value": "“族母”反应堆",
       "originalEn": "Matriarch Reactor"
     },
     "stackSize": 1,
@@ -4480,6 +4480,20 @@
     "upgradeCost": null,
     "craftQuantity": 20
   },
+  "medium_gun_parts_blueprint": {
+    "id": "medium_gun_parts_blueprint",
+    "name": {
+      "value": "中型枪械零件蓝图",
+      "originalEn": "Medium Gun Parts Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/medium_gun_parts_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "medium_gun_parts": {
     "id": "medium_gun_parts",
     "name": {
@@ -4493,20 +4507,6 @@
     "recipe": {
       "simple_gun_parts": 4
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "medium_gun_parts_blueprint": {
-    "id": "medium_gun_parts_blueprint",
-    "name": {
-      "value": "中型枪械零件蓝图",
-      "originalEn": "Medium Gun Parts Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/medium_gun_parts_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -4586,7 +4586,7 @@
   "mod_components": {
     "id": "mod_components",
     "name": {
-      "value": "改装组件",
+      "value": "改装零件",
       "originalEn": "Mod Components"
     },
     "stackSize": 5,
@@ -4701,6 +4701,20 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "muzzle_brake_ii_blueprint": {
+    "id": "muzzle_brake_ii_blueprint",
+    "name": {
+      "value": "枪口制退器 II 蓝图",
+      "originalEn": "Muzzle Brake II Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/muzzle_brake_ii.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "muzzle_brake_ii": {
     "id": "muzzle_brake_ii",
     "name": {
@@ -4718,15 +4732,15 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "muzzle_brake_ii_blueprint": {
-    "id": "muzzle_brake_ii_blueprint",
+  "muzzle_brake_iii_blueprint": {
+    "id": "muzzle_brake_iii_blueprint",
     "name": {
-      "value": "枪口制退器 II 蓝图",
-      "originalEn": "Muzzle Brake II Blueprint"
+      "value": "枪口制退器 III 蓝图",
+      "originalEn": "Muzzle Brake III Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/muzzle_brake_ii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/muzzle_brake_iii.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -4749,24 +4763,10 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "muzzle_brake_iii_blueprint": {
-    "id": "muzzle_brake_iii_blueprint",
-    "name": {
-      "value": "枪口制退器 III 蓝图",
-      "originalEn": "Muzzle Brake III Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/muzzle_brake_iii.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
   "noisemaker": {
     "id": "noisemaker",
     "name": {
-      "value": "噪音制造器",
+      "value": "发声器",
       "originalEn": "Noisemaker"
     },
     "stackSize": 3,
@@ -4947,10 +4947,24 @@
     },
     "craftQuantity": 1
   },
+  "padded_stock_blueprint": {
+    "id": "padded_stock_blueprint",
+    "name": {
+      "value": "减震枪托蓝图",
+      "originalEn": "Padded Stock Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/padded_stock.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "padded_stock": {
     "id": "padded_stock",
     "name": {
-      "value": "软垫枪托",
+      "value": "减震枪托",
       "originalEn": "Padded Stock"
     },
     "stackSize": 1,
@@ -4961,20 +4975,6 @@
       "duct_tape": 5,
       "mod_components": 2
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "padded_stock_blueprint": {
-    "id": "padded_stock_blueprint",
-    "name": {
-      "value": "软垫枪托蓝图",
-      "originalEn": "Padded Stock Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/padded_stock.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -5082,7 +5082,7 @@
   "pop_trigger": {
     "id": "pop_trigger",
     "name": {
-      "value": "弹出扳机",
+      "value": "“爆爆”触发器",
       "originalEn": "Pop Trigger"
     },
     "stackSize": 3,
@@ -5166,7 +5166,7 @@
   "power_cable": {
     "id": "power_cable",
     "name": {
-      "value": "电源线",
+      "value": "输电线",
       "originalEn": "Power Cable"
     },
     "stackSize": 3,
@@ -5180,7 +5180,7 @@
   "power_rod": {
     "id": "power_rod",
     "name": {
-      "value": "能量棒",
+      "value": "能量管（电棍）",
       "originalEn": "Power Rod"
     },
     "stackSize": 3,
@@ -5197,7 +5197,7 @@
   "prickly_pear": {
     "id": "prickly_pear",
     "name": {
-      "value": "仙人掌果",
+      "value": "仙人果（仙人掌果）",
       "originalEn": "Prickly Pear"
     },
     "stackSize": 10,
@@ -5250,10 +5250,24 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "pulse_mine_blueprint": {
+    "id": "pulse_mine_blueprint",
+    "name": {
+      "value": "跳雷：冲击蓝图",
+      "originalEn": "Pulse Mine Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/pulse_mine.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "pulse_mine": {
     "id": "pulse_mine",
     "name": {
-      "value": "脉冲地雷",
+      "value": "跳雷：冲击",
       "originalEn": "Pulse Mine"
     },
     "stackSize": 3,
@@ -5267,43 +5281,15 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "pulse_mine_blueprint": {
-    "id": "pulse_mine_blueprint",
-    "name": {
-      "value": "脉冲地雷蓝图",
-      "originalEn": "Pulse Mine Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/pulse_mine.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
   "queen_reactor": {
     "id": "queen_reactor",
     "name": {
-      "value": "女王反应堆",
+      "value": "“女王”反应堆",
       "originalEn": "Queen Reactor"
     },
     "stackSize": 1,
     "value": 11000,
     "imageFilename": "https://cdn.arctracker.io/items/queen_part.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "radio": {
-    "id": "radio",
-    "name": {
-      "value": "收音机",
-      "originalEn": "Radio"
-    },
-    "stackSize": 3,
-    "value": 1000,
-    "imageFilename": "https://cdn.arctracker.io/items/radio.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -5323,10 +5309,24 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "radio": {
+    "id": "radio",
+    "name": {
+      "value": "收音机",
+      "originalEn": "Radio"
+    },
+    "stackSize": 3,
+    "value": 1000,
+    "imageFilename": "https://cdn.arctracker.io/items/radio.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "raider_hatch_key": {
     "id": "raider_hatch_key",
     "name": {
-      "value": "掠夺者舱门钥匙",
+      "value": "奇袭者暗门钥匙",
       "originalEn": "Raider Hatch Key"
     },
     "stackSize": 1,
@@ -5343,7 +5343,7 @@
   "raiders_refuge_security_code": {
     "id": "raiders_refuge_security_code",
     "name": {
-      "value": "突袭者避难所安全密码",
+      "value": "奇袭者避难所安全密码",
       "originalEn": "Raider's Refuge Security Code"
     },
     "stackSize": 1,
@@ -5425,7 +5425,7 @@
   "recorder": {
     "id": "recorder",
     "name": {
-      "value": "竖笛",
+      "value": "可演奏长笛",
       "originalEn": "Recorder"
     },
     "stackSize": 1,
@@ -5450,6 +5450,20 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "red_light_stick_blueprint": {
+    "id": "red_light_stick_blueprint",
+    "name": {
+      "value": "红色荧光棒蓝图",
+      "originalEn": "Red Light Stick Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/red_light_stick.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "red_light_stick": {
     "id": "red_light_stick",
     "name": {
@@ -5466,24 +5480,10 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "red_light_stick_blueprint": {
-    "id": "red_light_stick_blueprint",
-    "name": {
-      "value": "红色荧光棒蓝图",
-      "originalEn": "Red Light Stick Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/red_light_stick.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
   "reinforced_reception_security_code": {
     "id": "reinforced_reception_security_code",
     "name": {
-      "value": "加固接待处安全密码",
+      "value": "加固前台安全密码",
       "originalEn": "Reinforced Reception Security Code"
     },
     "stackSize": 1,
@@ -5508,10 +5508,24 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "remote_raider_flare_blueprint": {
+    "id": "remote_raider_flare_blueprint",
+    "name": {
+      "value": "远程奇袭者信号弹蓝图",
+      "originalEn": "Remote Raider Flare Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/remote_raider_flare.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "remote_raider_flare": {
     "id": "remote_raider_flare",
     "name": {
-      "value": "远程掠夺者信号弹",
+      "value": "远程奇袭者信号弹",
       "originalEn": "Remote Raider Flare"
     },
     "stackSize": 3,
@@ -5522,20 +5536,6 @@
       "chemicals": 2,
       "rubber_parts": 4
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "remote_raider_flare_blueprint": {
-    "id": "remote_raider_flare_blueprint",
-    "name": {
-      "value": "远程掠夺者信号弹蓝图",
-      "originalEn": "Remote Raider Flare Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/remote_raider_flare.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -5625,7 +5625,7 @@
   "ripped_safety_vest": {
     "id": "ripped_safety_vest",
     "name": {
-      "value": "破损的安全背心",
+      "value": "撕坏的安全背心",
       "originalEn": "Ripped Safety Vest"
     },
     "stackSize": 3,
@@ -5681,7 +5681,7 @@
   "rope": {
     "id": "rope",
     "name": {
-      "value": "绳索",
+      "value": "绳子",
       "originalEn": "Rope"
     },
     "stackSize": 5,
@@ -5863,7 +5863,7 @@
   "rusted_bolts": {
     "id": "rusted_bolts",
     "name": {
-      "value": "生锈螺栓",
+      "value": "生锈的螺栓",
       "originalEn": "Rusted Bolts"
     },
     "stackSize": 3,
@@ -5972,10 +5972,24 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "seeker_grenade_blueprint": {
+    "id": "seeker_grenade_blueprint",
+    "name": {
+      "value": "追踪手雷蓝图",
+      "originalEn": "Seeker Grenade Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/seeker_grenade.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "seeker_grenade": {
     "id": "seeker_grenade",
     "name": {
-      "value": "追踪手榴弹",
+      "value": "追踪手雷",
       "originalEn": "Seeker Grenade"
     },
     "stackSize": 5,
@@ -5986,20 +6000,6 @@
       "arc_alloy": 2,
       "crude_explosives": 1
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "seeker_grenade_blueprint": {
-    "id": "seeker_grenade_blueprint",
-    "name": {
-      "value": "追踪手榴弹蓝图",
-      "originalEn": "Seeker Grenade Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/seeker_grenade.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -6020,7 +6020,7 @@
   "sentinel_firing_core": {
     "id": "sentinel_firing_core",
     "name": {
-      "value": "哨兵射击核心",
+      "value": "哨兵核心",
       "originalEn": "Sentinel Firing Core"
     },
     "stackSize": 3,
@@ -6034,7 +6034,7 @@
   "shaker": {
     "id": "shaker",
     "name": {
-      "value": "沙铃",
+      "value": "摇铃",
       "originalEn": "Shaker"
     },
     "stackSize": 1,
@@ -6099,6 +6099,20 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "shotgun_choke_ii_blueprint": {
+    "id": "shotgun_choke_ii_blueprint",
+    "name": {
+      "value": "霰弹枪收束器 II 蓝图",
+      "originalEn": "Shotgun Choke II Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/shotgun_choke_ii.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "shotgun_choke_ii": {
     "id": "shotgun_choke_ii",
     "name": {
@@ -6116,15 +6130,15 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "shotgun_choke_ii_blueprint": {
-    "id": "shotgun_choke_ii_blueprint",
+  "shotgun_choke_iii_blueprint": {
+    "id": "shotgun_choke_iii_blueprint",
     "name": {
-      "value": "霰弹枪收束器 II 蓝图",
-      "originalEn": "Shotgun Choke II Blueprint"
+      "value": "霰弹枪收束器 III 蓝图",
+      "originalEn": "Shotgun Choke III Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/shotgun_choke_ii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/shotgun_choke_iii.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -6147,15 +6161,15 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "shotgun_choke_iii_blueprint": {
-    "id": "shotgun_choke_iii_blueprint",
+  "shotgun_silencer_blueprint": {
+    "id": "shotgun_silencer_blueprint",
     "name": {
-      "value": "霰弹枪收束器 III 蓝图",
-      "originalEn": "Shotgun Choke III Blueprint"
+      "value": "霰弹枪消音器 蓝图",
+      "originalEn": "Shotgun Silencer Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/shotgun_choke_iii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/shotgun_silencer.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -6178,15 +6192,15 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "shotgun_silencer_blueprint": {
-    "id": "shotgun_silencer_blueprint",
+  "showstopper_blueprint": {
+    "id": "showstopper_blueprint",
     "name": {
-      "value": "霰弹枪消音器 蓝图",
-      "originalEn": "Shotgun Silencer Blueprint"
+      "value": "耀眼明星蓝图",
+      "originalEn": "Showstopper Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/shotgun_silencer.png",
+    "imageFilename": "https://cdn.arctracker.io/items/showstopper.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -6210,24 +6224,10 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "showstopper_blueprint": {
-    "id": "showstopper_blueprint",
-    "name": {
-      "value": "耀眼明星蓝图",
-      "originalEn": "Showstopper Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/showstopper.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
   "shrapnel_grenade": {
     "id": "shrapnel_grenade",
     "name": {
-      "value": "破片手榴弹",
+      "value": "碎片手雷",
       "originalEn": "Shrapnel Grenade"
     },
     "stackSize": 5,
@@ -6269,6 +6269,20 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "silencer_i_blueprint": {
+    "id": "silencer_i_blueprint",
+    "name": {
+      "value": "消音器 I 蓝图",
+      "originalEn": "Silencer I Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/silencer_i.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "silencer_i": {
     "id": "silencer_i",
     "name": {
@@ -6286,15 +6300,15 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "silencer_i_blueprint": {
-    "id": "silencer_i_blueprint",
+  "silencer_ii_blueprint": {
+    "id": "silencer_ii_blueprint",
     "name": {
-      "value": "消音器 I 蓝图",
-      "originalEn": "Silencer I Blueprint"
+      "value": "消音器 II 蓝图",
+      "originalEn": "Silencer II Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/silencer_i.png",
+    "imageFilename": "https://cdn.arctracker.io/items/silencer_ii.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -6314,20 +6328,6 @@
       "mod_components": 2,
       "wires": 8
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "silencer_ii_blueprint": {
-    "id": "silencer_ii_blueprint",
-    "name": {
-      "value": "消音器 II 蓝图",
-      "originalEn": "Silencer II Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/silencer_ii.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -6373,27 +6373,10 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "smoke_grenade": {
-    "id": "smoke_grenade",
-    "name": {
-      "value": "烟雾弹",
-      "originalEn": "Smoke Grenade"
-    },
-    "stackSize": 5,
-    "value": 1000,
-    "imageFilename": "https://cdn.arctracker.io/items/smoke_grenade.png",
-    "isWeapon": null,
-    "recipe": {
-      "canister": 1,
-      "chemicals": 14
-    },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
   "smoke_grenade_blueprint": {
     "id": "smoke_grenade_blueprint",
     "name": {
-      "value": "烟雾弹 蓝图",
+      "value": "烟雾手雷 蓝图",
       "originalEn": "Smoke Grenade Blueprint"
     },
     "stackSize": 1,
@@ -6407,7 +6390,7 @@
   "smoke_grenade_trap": {
     "id": "smoke_grenade_trap",
     "name": {
-      "value": "烟雾手榴弹陷阱",
+      "value": "烟雾手雷陷阱",
       "originalEn": "Smoke Grenade Trap"
     },
     "stackSize": 3,
@@ -6421,10 +6404,27 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "smoke_grenade": {
+    "id": "smoke_grenade",
+    "name": {
+      "value": "烟雾手雷",
+      "originalEn": "Smoke Grenade"
+    },
+    "stackSize": 5,
+    "value": 1000,
+    "imageFilename": "https://cdn.arctracker.io/items/smoke_grenade.png",
+    "isWeapon": null,
+    "recipe": {
+      "canister": 1,
+      "chemicals": 14
+    },
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "snap_blast_grenade": {
     "id": "snap_blast_grenade",
     "name": {
-      "value": "粘附爆破手雷",
+      "value": "闪爆手雷",
       "originalEn": "Snap Blast Grenade"
     },
     "stackSize": 3,
@@ -6435,6 +6435,20 @@
       "crude_explosives": 2,
       "magnet": 1
     },
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "snap_hook_blueprint": {
+    "id": "snap_hook_blueprint",
+    "name": {
+      "value": "安全钩蓝图",
+      "originalEn": "Snap Hook Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/snap_hook.png",
+    "isWeapon": null,
+    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -6453,20 +6467,6 @@
       "power_rod": 2,
       "rope": 3
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "snap_hook_blueprint": {
-    "id": "snap_hook_blueprint",
-    "name": {
-      "value": "安全钩蓝图",
-      "originalEn": "Snap Hook Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/snap_hook.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -6557,7 +6557,7 @@
   "speaker_component": {
     "id": "speaker_component",
     "name": {
-      "value": "扬声器组件",
+      "value": "扬声器零件",
       "originalEn": "Speaker Component"
     },
     "stackSize": 5,
@@ -6641,6 +6641,20 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "stable_stock_ii_blueprint": {
+    "id": "stable_stock_ii_blueprint",
+    "name": {
+      "value": "稳定枪托 II 蓝图",
+      "originalEn": "Stable Stock II Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/stable_stock_ii.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "stable_stock_ii": {
     "id": "stable_stock_ii",
     "name": {
@@ -6658,15 +6672,15 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "stable_stock_ii_blueprint": {
-    "id": "stable_stock_ii_blueprint",
+  "stable_stock_iii_blueprint": {
+    "id": "stable_stock_iii_blueprint",
     "name": {
-      "value": "稳定枪托 II 蓝图",
-      "originalEn": "Stable Stock II Blueprint"
+      "value": "稳定枪托 III 蓝图",
+      "originalEn": "Stable Stock III Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/stable_stock_ii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/stable_stock_iii.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -6686,20 +6700,6 @@
       "duct_tape": 5,
       "mod_components": 2
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "stable_stock_iii_blueprint": {
-    "id": "stable_stock_iii_blueprint",
-    "name": {
-      "value": "稳定枪托 III 蓝图",
-      "originalEn": "Stable Stock III Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/stable_stock_iii.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -6886,6 +6886,20 @@
     },
     "craftQuantity": 1
   },
+  "surge_coil_blueprint": {
+    "id": "surge_coil_blueprint",
+    "name": {
+      "value": "Surge Coil 蓝图",
+      "originalEn": "Surge Coil Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": null,
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "surge_coil": {
     "id": "surge_coil",
     "name": {
@@ -6901,20 +6915,6 @@
       "hornet_driver": 1,
       "sensors": 1
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "surge_coil_blueprint": {
-    "id": "surge_coil_blueprint",
-    "name": {
-      "value": "Surge Coil 蓝图",
-      "originalEn": "Surge Coil Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": null,
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -6938,7 +6938,7 @@
   "surveyor_vault": {
     "id": "surveyor_vault",
     "name": {
-      "value": "勘测师保险库",
+      "value": "“勘测师”保险库",
       "originalEn": "Surveyor Vault"
     },
     "stackSize": 3,
@@ -6980,7 +6980,7 @@
   "tactical_mk1": {
     "id": "tactical_mk1",
     "name": {
-      "value": "战术型 Mk. 1",
+      "value": "战术 Mk. 1",
       "originalEn": "Tactical Mk. 1"
     },
     "stackSize": 1,
@@ -6997,7 +6997,7 @@
   "tactical_mk2": {
     "id": "tactical_mk2",
     "name": {
-      "value": "战术型 Mk. 2",
+      "value": "战术 Mk. 2",
       "originalEn": "Tactical Mk. 2"
     },
     "stackSize": 1,
@@ -7007,23 +7007,6 @@
     "recipe": {
       "electrical_components": 2,
       "magnet": 3
-    },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "tactical_mk3_defensive": {
-    "id": "tactical_mk3_defensive",
-    "name": {
-      "value": "战术型 Mk. 3（防御型）",
-      "originalEn": "Tactical Mk. 3 (Defensive)"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_defensive.png",
-    "isWeapon": null,
-    "recipe": {
-      "advanced_electrical_components": 2,
-      "processor": 3
     },
     "upgradeCost": null,
     "craftQuantity": 1
@@ -7042,15 +7025,15 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "tactical_mk3_healing": {
-    "id": "tactical_mk3_healing",
+  "tactical_mk3_defensive": {
+    "id": "tactical_mk3_defensive",
     "name": {
-      "value": "战术型 Mk. 3 (治疗型)",
-      "originalEn": "Tactical Mk. 3 (Healing)"
+      "value": "战术型 Mk. 3（防御型）",
+      "originalEn": "Tactical Mk. 3 (Defensive)"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_healing.png",
+    "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_defensive.png",
     "isWeapon": null,
     "recipe": {
       "advanced_electrical_components": 2,
@@ -7073,10 +7056,41 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "tactical_mk3_healing": {
+    "id": "tactical_mk3_healing",
+    "name": {
+      "value": "战术型 Mk. 3 (治疗型)",
+      "originalEn": "Tactical Mk. 3 (Healing)"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_healing.png",
+    "isWeapon": null,
+    "recipe": {
+      "advanced_electrical_components": 2,
+      "processor": 3
+    },
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "tactical_mk3_revival_blueprint": {
+    "id": "tactical_mk3_revival_blueprint",
+    "name": {
+      "value": "战术 Mk. 3 (复苏) 蓝图",
+      "originalEn": "Tactical Mk. 3 (Revival) Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_revival.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "tactical_mk3_revival": {
     "id": "tactical_mk3_revival",
     "name": {
-      "value": "战术型 Mk. 3 (复活)",
+      "value": "战术型 Mk. 3 (复苏)",
       "originalEn": "Tactical Mk. 3 (Revival)"
     },
     "stackSize": 1,
@@ -7090,15 +7104,15 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "tactical_mk3_revival_blueprint": {
-    "id": "tactical_mk3_revival_blueprint",
+  "tagging_grenade_blueprint": {
+    "id": "tagging_grenade_blueprint",
     "name": {
-      "value": "战术 Mk. 3 (救援) 蓝图",
-      "originalEn": "Tactical Mk. 3 (Revival) Blueprint"
+      "value": "标记手榴弹 蓝图",
+      "originalEn": "Tagging Grenade Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_revival.png",
+    "imageFilename": "https://cdn.arctracker.io/items/tagging_grenade.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -7118,20 +7132,6 @@
       "electrical_components": 1,
       "sensors": 1
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "tagging_grenade_blueprint": {
-    "id": "tagging_grenade_blueprint",
-    "name": {
-      "value": "标记手榴弹 蓝图",
-      "originalEn": "Tagging Grenade Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/tagging_grenade.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -7277,7 +7277,7 @@
   "tick_pod": {
     "id": "tick_pod",
     "name": {
-      "value": "蜱虫荚",
+      "value": "“跳蚤”收纳仓",
       "originalEn": "Tick Pod"
     },
     "stackSize": 3,
@@ -7413,6 +7413,20 @@
     },
     "craftQuantity": 1
   },
+  "trailblazer_blueprint": {
+    "id": "trailblazer_blueprint",
+    "name": {
+      "value": "开拓者蓝图",
+      "originalEn": "Trailblazer Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/trailblazer.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "trailblazer": {
     "id": "trailblazer",
     "name": {
@@ -7431,15 +7445,15 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "trailblazer_blueprint": {
-    "id": "trailblazer_blueprint",
+  "trigger_nade_blueprint": {
+    "id": "trigger_nade_blueprint",
     "name": {
-      "value": "开拓者蓝图",
-      "originalEn": "Trailblazer Blueprint"
+      "value": "触发式手雷蓝图",
+      "originalEn": "Trigger Nade Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/trailblazer.png",
+    "imageFilename": "https://cdn.arctracker.io/items/trigger_nade_blueprint.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -7448,7 +7462,7 @@
   "trigger_nade": {
     "id": "trigger_nade",
     "name": {
-      "value": "遥控手雷",
+      "value": "触发式手雷",
       "originalEn": "Trigger 'Nade"
     },
     "stackSize": 3,
@@ -7459,20 +7473,6 @@
       "crude_explosives": 2,
       "processor": 1
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "trigger_nade_blueprint": {
-    "id": "trigger_nade_blueprint",
-    "name": {
-      "value": "触发手榴弹蓝图",
-      "originalEn": "Trigger Nade Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/trigger_nade_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -7507,7 +7507,7 @@
   "unusable_weapon": {
     "id": "unusable_weapon",
     "name": {
-      "value": "无法使用的武器",
+      "value": "不堪用的武器",
       "originalEn": "Unusable Weapon"
     },
     "stackSize": 3,
@@ -7646,6 +7646,20 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "vertical_grip_ii_blueprint": {
+    "id": "vertical_grip_ii_blueprint",
+    "name": {
+      "value": "垂直握把 II 蓝图",
+      "originalEn": "Vertical Grip II Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/vertical_grip_ii.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "vertical_grip_ii": {
     "id": "vertical_grip_ii",
     "name": {
@@ -7663,15 +7677,15 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "vertical_grip_ii_blueprint": {
-    "id": "vertical_grip_ii_blueprint",
+  "vertical_grip_iii_blueprint": {
+    "id": "vertical_grip_iii_blueprint",
     "name": {
-      "value": "垂直握把 II 蓝图",
-      "originalEn": "Vertical Grip II Blueprint"
+      "value": "垂直握把III 蓝图",
+      "originalEn": "Vertical Grip III Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/vertical_grip_ii.png",
+    "imageFilename": "https://cdn.arctracker.io/items/vertical_grip_iii_blueprint.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -7694,29 +7708,29 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "vertical_grip_iii_blueprint": {
-    "id": "vertical_grip_iii_blueprint",
-    "name": {
-      "value": "垂直握把III 蓝图",
-      "originalEn": "Vertical Grip III Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/vertical_grip_iii_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
   "very_comfortable_pillow": {
     "id": "very_comfortable_pillow",
     "name": {
-      "value": "非常舒适的枕头",
+      "value": "极为舒适的枕头",
       "originalEn": "Very Comfortable Pillow"
     },
     "stackSize": 3,
     "value": 2000,
     "imageFilename": "https://cdn.arctracker.io/items/very_comfortable_pillow.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "vita_shot_blueprint": {
+    "id": "vita_shot_blueprint",
+    "name": {
+      "value": "生命针剂蓝图",
+      "originalEn": "Vita Shot Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/vita_shot.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -7739,15 +7753,15 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "vita_shot_blueprint": {
-    "id": "vita_shot_blueprint",
+  "vita_spray_blueprint": {
+    "id": "vita_spray_blueprint",
     "name": {
-      "value": "生命针剂蓝图",
-      "originalEn": "Vita Shot Blueprint"
+      "value": "补水喷雾蓝图",
+      "originalEn": "Vita Spray Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/vita_shot.png",
+    "imageFilename": "https://cdn.arctracker.io/items/vita_spray.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -7756,7 +7770,7 @@
   "vita_spray": {
     "id": "vita_spray",
     "name": {
-      "value": "生命喷雾",
+      "value": "补水喷雾",
       "originalEn": "Vita Spray"
     },
     "stackSize": 1,
@@ -7768,20 +7782,6 @@
       "canister": 1,
       "tick_pod": 1
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "vita_spray_blueprint": {
-    "id": "vita_spray_blueprint",
-    "name": {
-      "value": "生命喷雾蓝图",
-      "originalEn": "Vita Spray Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/vita_spray.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -7927,7 +7927,7 @@
   "water_pump": {
     "id": "water_pump",
     "name": {
-      "value": "抽水机",
+      "value": "水泵",
       "originalEn": "Water Pump"
     },
     "stackSize": 3,
@@ -7941,12 +7941,26 @@
   "wires": {
     "id": "wires",
     "name": {
-      "value": "电线",
+      "value": "导线",
       "originalEn": "Wires"
     },
     "stackSize": 15,
     "value": 200,
     "imageFilename": "https://cdn.arctracker.io/items/wires.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "wolfpack_blueprint": {
+    "id": "wolfpack_blueprint",
+    "name": {
+      "value": "狼群蓝图",
+      "originalEn": "Wolfpack Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/wolfpack_blueprint.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -7970,15 +7984,15 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "wolfpack_blueprint": {
-    "id": "wolfpack_blueprint",
+  "yellow_light_stick_blueprint": {
+    "id": "yellow_light_stick_blueprint",
     "name": {
-      "value": "狼群蓝图",
-      "originalEn": "Wolfpack Blueprint"
+      "value": "黄色荧光棒",
+      "originalEn": "Yellow Light Stick Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/wolfpack_blueprint.png",
+    "imageFilename": "https://cdn.arctracker.io/items/yellow_light_stick.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -7997,20 +8011,6 @@
     "recipe": {
       "chemicals": 3
     },
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "yellow_light_stick_blueprint": {
-    "id": "yellow_light_stick_blueprint",
-    "name": {
-      "value": "黄色荧光棒",
-      "originalEn": "Yellow Light Stick Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/yellow_light_stick.png",
-    "isWeapon": null,
-    "recipe": null,
     "upgradeCost": null,
     "craftQuantity": 1
   },
