@@ -1535,6 +1535,39 @@ export const translations: Partial<Record<AppLocale, TranslationDictionary>> = {
     },
   },
   es: {
+    shared: {
+      footer: {
+        thanksPrefix: 'Datos proporcionados por ',
+        thanksMiddle: ' y ',
+        thanksSuffix: '. ¡Gracias por poner estos datos a disposición!',
+        contactDiscord: 'Contactar con baschny en Discord (abre aplicación externa)',
+        joinDiscord: 'Unirse al servidor de Discord de ARCTracker.io (abre aplicación externa)',
+        contact: 'Contacto',
+        arcTrackerDiscord: 'Discord de ARCTracker',
+      },
+      tools: {
+        home: 'Inicio',
+        schedule: 'Agenda de eventos',
+        craftCalculator: 'Calculadora de fabricación',
+        quests: 'Rastreador de misiones',
+        lootHelper: 'Asistente de botín',
+        quartermaster: 'Intendente',
+      },
+    },
+    dashboard: {
+      title: 'Raider Tools',
+      intro:
+        '¡Bienvenido! Esta es mi colección personal de herramientas para ARC Raiders. Empezaron como proyectos privados para ayudarme dentro del juego, pero eran demasiado útiles como para no compartirlas. Si te ayudan, dímelo. Elige una herramienta abajo y empieza.',
+      tools: {
+        schedule:
+          'Visualiza el horario de eventos de los mapas de ARC Raiders en una vista más clara para planificar tus incursiones.',
+        craftCalculator:
+          'Calcula cuántos objetos fabricar para aprovechar al máximo el espacio de tu alijo.',
+        quests: 'Sigue tu progreso de misiones con un árbol de misiones interactivo.',
+        lootHelper: 'Visualiza cadenas de fabricación para saber qué botín recoger durante las incursiones.',
+        quartermaster: 'Planifica tu alijo, equipamiento y requisitos del escondite en un solo lugar.',
+      },
+    },
     quests: {
       loading: 'Cargando datos de misiones...',
       noData: 'No hay datos de misiones disponibles',
@@ -1643,6 +1676,39 @@ export const translations: Partial<Record<AppLocale, TranslationDictionary>> = {
     },
   },
   fr: {
+    shared: {
+      footer: {
+        thanksPrefix: 'Données fournies par ',
+        thanksMiddle: ' et ',
+        thanksSuffix: '. Merci de rendre ces données disponibles !',
+        contactDiscord: 'Contacter baschny sur Discord (ouvre une application externe)',
+        joinDiscord: 'Rejoindre le serveur Discord ARCTracker.io (ouvre une application externe)',
+        contact: 'Contact',
+        arcTrackerDiscord: 'Discord ARCTracker',
+      },
+      tools: {
+        home: 'Accueil',
+        schedule: 'Planning des événements',
+        craftCalculator: 'Calculateur de craft',
+        quests: 'Suivi de quêtes',
+        lootHelper: 'Assistant de loot',
+        quartermaster: 'Intendant',
+      },
+    },
+    dashboard: {
+      title: 'Raider Tools',
+      intro:
+        'Bienvenue ! Voici ma collection personnelle d’outils ARC Raiders. Ces outils ont commencé comme des projets privés pour m’aider en jeu, mais ils étaient trop utiles pour ne pas être partagés. Si cela vous aide, dites-le-moi. Choisissez un outil ci-dessous et lancez-vous.',
+      tools: {
+        schedule:
+          'Visualisez le planning des événements des cartes ARC Raiders avec une vue plus claire pour planifier vos raids.',
+        craftCalculator:
+          'Calculez combien d’objets fabriquer pour optimiser l’espace de votre réserve.',
+        quests: 'Suivez votre progression de quêtes avec un arbre de quêtes interactif.',
+        lootHelper: 'Visualisez les chaînes de craft pour savoir quoi looter pendant les raids.',
+        quartermaster: 'Planifiez votre réserve, votre équipement et les besoins de votre repaire au même endroit.',
+      },
+    },
     quests: {
       loading: 'Chargement des données de quêtes...',
       noData: 'Aucune donnée de quête disponible',
@@ -1751,6 +1817,39 @@ export const translations: Partial<Record<AppLocale, TranslationDictionary>> = {
     },
   },
   it: {
+    shared: {
+      footer: {
+        thanksPrefix: 'Dati forniti da ',
+        thanksMiddle: ' e ',
+        thanksSuffix: '. Grazie per aver reso disponibili questi dati!',
+        contactDiscord: 'Contatta baschny su Discord (apre app esterna)',
+        joinDiscord: 'Unisciti al server Discord di ARCTracker.io (apre app esterna)',
+        contact: 'Contatto',
+        arcTrackerDiscord: 'Discord ARCTracker',
+      },
+      tools: {
+        home: 'Home',
+        schedule: 'Programma eventi',
+        craftCalculator: 'Calcolatore crafting',
+        quests: 'Tracker missioni',
+        lootHelper: 'Assistente loot',
+        quartermaster: 'Quartiermastro',
+      },
+    },
+    dashboard: {
+      title: 'Raider Tools',
+      intro:
+        'Benvenuto! Questa è la mia raccolta personale di strumenti per ARC Raiders. Sono nati come progetti privati per aiutarmi in gioco, ma erano troppo utili per non condividerli. Se ti sono utili, fammelo sapere. Scegli uno strumento qui sotto e inizia.',
+      tools: {
+        schedule:
+          'Visualizza il programma eventi delle mappe di ARC Raiders in una vista più chiara per pianificare i raid.',
+        craftCalculator:
+          'Calcola quanti oggetti creare per sfruttare al meglio lo spazio del tuo deposito.',
+        quests: 'Tieni traccia dei progressi missione con un albero missioni interattivo.',
+        lootHelper: 'Visualizza catene di crafting per sapere cosa raccogliere durante i raid.',
+        quartermaster: 'Pianifica deposito, equipaggiamento e requisiti del rifugio in un unico posto.',
+      },
+    },
     quests: {
       loading: 'Caricamento dati missioni...',
       noData: 'Nessun dato missione disponibile',
@@ -1859,6 +1958,39 @@ export const translations: Partial<Record<AppLocale, TranslationDictionary>> = {
     },
   },
   ja: {
+    shared: {
+      footer: {
+        thanksPrefix: 'データ提供: ',
+        thanksMiddle: ' と ',
+        thanksSuffix: '。データを公開してくれてありがとうございます！',
+        contactDiscord: 'Discordで baschny に連絡（外部アプリを開きます）',
+        joinDiscord: 'ARCTracker.io の Discord サーバーに参加（外部アプリを開きます）',
+        contact: '連絡先',
+        arcTrackerDiscord: 'ARCTracker Discord',
+      },
+      tools: {
+        home: 'ホーム',
+        schedule: 'イベントスケジュール',
+        craftCalculator: 'クラフト計算機',
+        quests: 'クエストトラッカー',
+        lootHelper: 'ルートヘルパー',
+        quartermaster: '補給管理',
+      },
+    },
+    dashboard: {
+      title: 'Raider Tools',
+      intro:
+        'ようこそ！これは ARC Raiders 用の個人的なツール集です。最初はゲーム内で自分を助けるための私的プロジェクトでしたが、とても便利だったので公開しました。役に立ったらぜひ教えてください。下のツールを選んで始めましょう。',
+      tools: {
+        schedule:
+          'ARC Raiders のマップイベントスケジュールを見やすく表示し、レイド計画を立てやすくします。',
+        craftCalculator:
+          'スタッシュの空き容量を最大化するために、何個クラフトすべきかを計算します。',
+        quests: 'インタラクティブなクエストツリーでクエスト進行を追跡します。',
+        lootHelper: 'クラフトチェーンを可視化し、レイド中に何を拾うべきか判断できます。',
+        quartermaster: 'スタッシュ、装備、隠れ家要件を一か所で管理できます。',
+      },
+    },
     quests: {
       loading: 'クエストデータを読み込み中...',
       noData: '利用可能なクエストデータがありません',
@@ -1967,6 +2099,39 @@ export const translations: Partial<Record<AppLocale, TranslationDictionary>> = {
     },
   },
   'ko-KR': {
+    shared: {
+      footer: {
+        thanksPrefix: '데이터 제공: ',
+        thanksMiddle: ' 및 ',
+        thanksSuffix: '. 데이터를 공개해 주셔서 감사합니다!',
+        contactDiscord: 'Discord에서 baschny에게 연락하기 (외부 앱 열림)',
+        joinDiscord: 'ARCTracker.io Discord 서버 참여 (외부 앱 열림)',
+        contact: '연락처',
+        arcTrackerDiscord: 'ARCTracker Discord',
+      },
+      tools: {
+        home: '홈',
+        schedule: '이벤트 일정',
+        craftCalculator: '제작 계산기',
+        quests: '퀘스트 추적기',
+        lootHelper: '루팅 도우미',
+        quartermaster: '병참 관리',
+      },
+    },
+    dashboard: {
+      title: 'Raider Tools',
+      intro:
+        '환영합니다! 이곳은 ARC Raiders를 위한 제 개인 도구 모음입니다. 원래는 게임에서 저를 돕기 위한 개인 프로젝트였지만, 너무 유용해서 공유하게 되었습니다. 도움이 된다면 알려주세요. 아래에서 도구를 선택해 시작해 보세요.',
+      tools: {
+        schedule:
+          'ARC Raiders 맵 이벤트 일정을 더 보기 좋은 화면으로 보여 주어 레이드 계획을 세우기 쉽습니다.',
+        craftCalculator:
+          '보관함 공간을 최대한 활용하기 위해 아이템을 몇 개 제작해야 하는지 계산합니다.',
+        quests: '인터랙티브 퀘스트 트리로 퀘스트 진행 상황을 추적합니다.',
+        lootHelper: '제작 체인을 시각화해 레이드 중 무엇을 루팅해야 하는지 판단할 수 있습니다.',
+        quartermaster: '보관함, 장비, 은신처 요구사항을 한 곳에서 계획합니다.',
+      },
+    },
     quests: {
       loading: '퀘스트 데이터 불러오는 중...',
       noData: '사용 가능한 퀘스트 데이터가 없습니다',
@@ -2075,6 +2240,39 @@ export const translations: Partial<Record<AppLocale, TranslationDictionary>> = {
     },
   },
   pl: {
+    shared: {
+      footer: {
+        thanksPrefix: 'Dane dostarczone przez ',
+        thanksMiddle: ' i ',
+        thanksSuffix: '. Dziękujemy za udostępnienie tych danych!',
+        contactDiscord: 'Skontaktuj się z baschny na Discordzie (otwiera zewnętrzną aplikację)',
+        joinDiscord: 'Dołącz do serwera Discord ARCTracker.io (otwiera zewnętrzną aplikację)',
+        contact: 'Kontakt',
+        arcTrackerDiscord: 'Discord ARCTracker',
+      },
+      tools: {
+        home: 'Strona główna',
+        schedule: 'Harmonogram wydarzeń',
+        craftCalculator: 'Kalkulator craftingu',
+        quests: 'Śledzenie zadań',
+        lootHelper: 'Pomocnik łupu',
+        quartermaster: 'Kwatermistrz',
+      },
+    },
+    dashboard: {
+      title: 'Raider Tools',
+      intro:
+        'Witaj! To moja osobista kolekcja narzędzi do ARC Raiders. Zaczynały jako prywatne projekty pomagające mi w grze, ale były zbyt przydatne, by ich nie udostępnić. Jeśli Ci pomagają, daj znać. Wybierz narzędzie poniżej i zaczynaj.',
+      tools: {
+        schedule:
+          'Zobacz harmonogram wydarzeń map ARC Raiders w czytelniejszym widoku i łatwiej planuj rajdy.',
+        craftCalculator:
+          'Oblicz, ile przedmiotów warto wytworzyć, aby najlepiej wykorzystać miejsce w schowku.',
+        quests: 'Śledź postępy zadań dzięki interaktywnemu drzewu zadań.',
+        lootHelper: 'Wizualizuj łańcuchy craftingu, aby wiedzieć, co zbierać podczas rajdów.',
+        quartermaster: 'Planuj schowek, wyposażenie i wymagania kryjówki w jednym miejscu.',
+      },
+    },
     quests: {
       loading: 'Ładowanie danych zadań...',
       noData: 'Brak dostępnych danych zadań',
@@ -2183,6 +2381,39 @@ export const translations: Partial<Record<AppLocale, TranslationDictionary>> = {
     },
   },
   ru: {
+    shared: {
+      footer: {
+        thanksPrefix: 'Данные предоставлены ',
+        thanksMiddle: ' и ',
+        thanksSuffix: '. Спасибо, что делаете эти данные доступными!',
+        contactDiscord: 'Связаться с baschny в Discord (откроет внешнее приложение)',
+        joinDiscord: 'Присоединиться к Discord-серверу ARCTracker.io (откроет внешнее приложение)',
+        contact: 'Контакт',
+        arcTrackerDiscord: 'Discord ARCTracker',
+      },
+      tools: {
+        home: 'Главная',
+        schedule: 'Расписание событий',
+        craftCalculator: 'Калькулятор крафта',
+        quests: 'Трекер квестов',
+        lootHelper: 'Помощник по луту',
+        quartermaster: 'Квартирмейстер',
+      },
+    },
+    dashboard: {
+      title: 'Raider Tools',
+      intro:
+        'Добро пожаловать! Это моя личная коллекция инструментов для ARC Raiders. Изначально это были приватные проекты для помощи мне в игре, но они оказались слишком полезными, чтобы не делиться ими. Если они вам помогают, дайте знать. Выберите инструмент ниже и начните.',
+      tools: {
+        schedule:
+          'Просматривайте расписание событий карт ARC Raiders в более удобном виде, чтобы планировать рейды.',
+        craftCalculator:
+          'Рассчитайте, сколько предметов крафтить, чтобы максимально эффективно использовать место в тайнике.',
+        quests: 'Отслеживайте прогресс квестов с помощью интерактивного дерева квестов.',
+        lootHelper: 'Визуализируйте цепочки крафта, чтобы понимать, что собирать в рейдах.',
+        quartermaster: 'Планируйте тайник, снаряжение и требования убежища в одном месте.',
+      },
+    },
     quests: {
       loading: 'Загрузка данных квестов...',
       noData: 'Данные квестов недоступны',
@@ -2291,6 +2522,39 @@ export const translations: Partial<Record<AppLocale, TranslationDictionary>> = {
     },
   },
   tr: {
+    shared: {
+      footer: {
+        thanksPrefix: 'Veriler şu kaynaklar tarafından sağlandı: ',
+        thanksMiddle: ' ve ',
+        thanksSuffix: '. Bu verileri erişilebilir kıldığınız için teşekkürler!',
+        contactDiscord: 'Discord’da baschny ile iletişime geç (harici uygulama açılır)',
+        joinDiscord: 'ARCTracker.io Discord sunucusuna katıl (harici uygulama açılır)',
+        contact: 'İletişim',
+        arcTrackerDiscord: 'ARCTracker Discord',
+      },
+      tools: {
+        home: 'Ana Sayfa',
+        schedule: 'Etkinlik Takvimi',
+        craftCalculator: 'Craft Hesaplayıcı',
+        quests: 'Görev Takibi',
+        lootHelper: 'Yağma Yardımcısı',
+        quartermaster: 'Levazım',
+      },
+    },
+    dashboard: {
+      title: 'Raider Tools',
+      intro:
+        'Hoş geldin! Bu, ARC Raiders için kişisel araç koleksiyonum. Başta oyun içinde bana yardımcı olmak için özel projelerdi, ancak paylaşmamak için fazla faydalıydılar. İşine yararsa bana haber ver. Aşağıdan bir araç seç ve başla.',
+      tools: {
+        schedule:
+          'ARC Raiders harita etkinlik takvimini daha iyi bir görünümle göstererek baskınlarını planlamanı sağlar.',
+        craftCalculator:
+          'Zulanda en iyi alan verimini almak için kaç eşya craft etmen gerektiğini hesapla.',
+        quests: 'Etkileşimli görev ağacı ile görev ilerlemeni takip et.',
+        lootHelper: 'Craft zincirlerini görselleştirerek baskınlarda ne toplayacağını öğren.',
+        quartermaster: 'Zulanı, teçhizatını ve sığınak gereksinimlerini tek bir yerde planla.',
+      },
+    },
     quests: {
       loading: 'Görev verileri yükleniyor...',
       noData: 'Görev verisi yok',
@@ -2399,6 +2663,39 @@ export const translations: Partial<Record<AppLocale, TranslationDictionary>> = {
     },
   },
   'zh-CN': {
+    shared: {
+      footer: {
+        thanksPrefix: '数据由 ',
+        thanksMiddle: ' 和 ',
+        thanksSuffix: ' 提供。感谢你们公开这些数据！',
+        contactDiscord: '在 Discord 联系 baschny（将打开外部应用）',
+        joinDiscord: '加入 ARCTracker.io Discord 服务器（将打开外部应用）',
+        contact: '联系',
+        arcTrackerDiscord: 'ARCTracker Discord',
+      },
+      tools: {
+        home: '首页',
+        schedule: '活动时间表',
+        craftCalculator: '制作计算器',
+        quests: '任务追踪器',
+        lootHelper: '战利品助手',
+        quartermaster: '军需官',
+      },
+    },
+    dashboard: {
+      title: 'Raider Tools',
+      intro:
+        '欢迎！这是我为 ARC Raiders 制作的个人工具合集。它们最初是为我自己在游戏中使用的私人工具，但实在太实用了，所以我决定分享出来。如果这些工具对你有帮助，欢迎告诉我。请选择下方工具开始使用。',
+      tools: {
+        schedule:
+          '以更清晰的视图展示 ARC Raiders 地图事件时间表，方便你规划突袭。',
+        craftCalculator:
+          '计算应制作多少物品，最大化利用你的仓库空间。',
+        quests: '通过交互式任务树追踪你的任务进度。',
+        lootHelper: '可视化制作链，帮助你在突袭中判断该拾取什么。',
+        quartermaster: '在一个页面中规划仓库、装备和藏身处需求。',
+      },
+    },
     quests: {
       loading: '正在加载任务数据...',
       noData: '没有可用的任务数据',
@@ -2507,6 +2804,39 @@ export const translations: Partial<Record<AppLocale, TranslationDictionary>> = {
     },
   },
   'zh-TW': {
+    shared: {
+      footer: {
+        thanksPrefix: '資料由 ',
+        thanksMiddle: ' 與 ',
+        thanksSuffix: ' 提供。感謝你們公開這些資料！',
+        contactDiscord: '在 Discord 聯絡 baschny（將開啟外部應用程式）',
+        joinDiscord: '加入 ARCTracker.io Discord 伺服器（將開啟外部應用程式）',
+        contact: '聯絡',
+        arcTrackerDiscord: 'ARCTracker Discord',
+      },
+      tools: {
+        home: '首頁',
+        schedule: '活動時程',
+        craftCalculator: '製作計算器',
+        quests: '任務追蹤器',
+        lootHelper: '戰利品助手',
+        quartermaster: '軍需官',
+      },
+    },
+    dashboard: {
+      title: 'Raider Tools',
+      intro:
+        '歡迎！這是我為 ARC Raiders 製作的個人工具集合。這些工具最初是為了在遊戲中幫助我自己而做的私人專案，但它們實在太實用了，所以我決定分享出來。如果它們對你有幫助，歡迎告訴我。請在下方選擇工具開始使用。',
+      tools: {
+        schedule:
+          '以更清楚的方式顯示 ARC Raiders 地圖活動時程，方便你規劃突襲。',
+        craftCalculator:
+          '計算你應該製作多少物品，以最大化倉庫空間利用率。',
+        quests: '透過互動式任務樹追蹤你的任務進度。',
+        lootHelper: '視覺化製作鏈，幫助你在突襲中判斷該拾取什麼。',
+        quartermaster: '在同一個地方規劃倉庫、裝備與藏身處需求。',
+      },
+    },
     quests: {
       loading: '正在載入任務資料...',
       noData: '沒有可用的任務資料',
