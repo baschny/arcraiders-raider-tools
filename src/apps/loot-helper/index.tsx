@@ -11,6 +11,7 @@ import type { ReverseMap } from './utils/craftingChain';
 import { useLocale } from '../../shared/context/LocaleContext';
 import { LoadingSpinner } from '../../shared/components/LoadingSpinner';
 import { ErrorDisplay } from '../../shared/components/ErrorDisplay';
+import { getItemDisplayName } from './utils/localization';
 import './styles/main.scss';
 import './styles/accordion.scss';
 
@@ -80,7 +81,7 @@ export function LootHelperApp() {
       // Track analytics
       const item = itemsMap?.[itemId];
       if (item) {
-        trackGoalItemAdded(itemId, item.name.en, item.rarity);
+        trackGoalItemAdded(itemId, getItemDisplayName(item), item.rarity);
       }
     }
   };
@@ -99,7 +100,7 @@ export function LootHelperApp() {
     // Track analytics
     const item = itemsMap?.[itemId];
     if (item) {
-      trackGoalItemRemoved(itemId, item.name.en, item.rarity);
+      trackGoalItemRemoved(itemId, getItemDisplayName(item), item.rarity);
     }
   };
 
@@ -117,7 +118,7 @@ export function LootHelperApp() {
     // Track analytics
     const item = itemsMap?.[itemId];
     if (item) {
-      trackGoalItemToggled(itemId, item.name.en, item.rarity, wasDisabled);
+      trackGoalItemToggled(itemId, getItemDisplayName(item), item.rarity, wasDisabled);
     }
   };
 
@@ -168,9 +169,9 @@ export function LootHelperApp() {
     const item = itemsMap?.[itemId];
     if (item) {
       if (wasInStash && !newStash.has(itemId)) {
-        trackStashItemRemoved(itemId, item.name.en, item.rarity);
+        trackStashItemRemoved(itemId, getItemDisplayName(item), item.rarity);
       } else if (!wasInStash && newStash.has(itemId)) {
-        trackStashItemAdded(itemId, item.name.en, item.rarity);
+        trackStashItemAdded(itemId, getItemDisplayName(item), item.rarity);
       }
     }
   };
@@ -194,7 +195,7 @@ export function LootHelperApp() {
     // Track analytics
     const item = itemsMap?.[itemId];
     if (item) {
-      trackStashItemToggled(itemId, item.name.en, item.rarity, wasDisabled);
+      trackStashItemToggled(itemId, getItemDisplayName(item), item.rarity, wasDisabled);
     }
   };
 
@@ -213,7 +214,7 @@ export function LootHelperApp() {
     // Track analytics
     const item = itemsMap?.[itemId];
     if (item) {
-      trackStashItemRemoved(itemId, item.name.en, item.rarity);
+      trackStashItemRemoved(itemId, getItemDisplayName(item), item.rarity);
     }
   };
 
@@ -250,7 +251,7 @@ export function LootHelperApp() {
       <div className="main-content-area">
         {goalItemIds.length === 0 ? (
           <div className="empty-state">
-            Add goal items from the sidebar to see what materials you need to loot.
+            {t('lootHelper.emptyState')}
           </div>
         ) : (
           <AccordionList

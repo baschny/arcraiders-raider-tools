@@ -2,9 +2,11 @@ import { useState, useEffect, useRef } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import type { Item, ItemsMap } from '../types/item';
 import { getRarityClass } from '../utils/dataLoader';
+import { getLootHelperItemName } from '../utils/localization';
 import { ItemIconWithInfo } from './ItemIconWithInfo';
 import { HelpDialog } from './HelpDialog';
 import { trackLootHelperAddGoal } from '../../../shared/utils/analytics';
+import { useLocale } from '../../../shared/context/LocaleContext';
 
 interface SidebarProps {
   itemsMap: ItemsMap;
@@ -37,6 +39,7 @@ export function Sidebar({
   onToggleDisabledStashItem,
   onRemoveStashItem,
 }: SidebarProps) {
+  const { t, compareText } = useLocale();
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredItems, setFilteredItems] = useState<Item[]>([]);
   const [showDropdown, setShowDropdown] = useState(false);
@@ -63,7 +66,7 @@ export function Sidebar({
       const searchLower = searchTerm.toLowerCase();
       const results = Object.values(itemsMap)
         .filter((item) => {
-          if (!item.name.en.toLowerCase().includes(searchLower)) {
+          if (!getLootHelperItemName(item).toLowerCase().includes(searchLower)) {
             return false;
           }
           // Only show craftable items (must have recipe with at least one ingredient)
@@ -86,7 +89,7 @@ export function Sidebar({
     const item = itemsMap[itemId];
     if (item) {
       // Track the goal item addition
-      trackLootHelperAddGoal(item.name.en, itemId);
+      trackLootHelperAddGoal(getLootHelperItemName(item), itemId);
     }
     onAddGoalItem(itemId);
     setSearchTerm('');
@@ -149,7 +152,7 @@ export function Sidebar({
   const stashItems = Array.from(stashItemIds)
     .map((id) => itemsMap[id])
     .filter((item) => item !== undefined)
-    .sort((a, b) => a.name.en.localeCompare(b.name.en));
+    .sort((a, b) => compareText(getLootHelperItemName(a), getLootHelperItemName(b)));
 
   return (
     <div className="sidebar">
@@ -158,18 +161,18 @@ export function Sidebar({
         <div className="sidebar-section">
           <div className="search-box">
             <div className="search-box-header">
-              <label className="sidebar-section-title">Goal Items</label>
+              <label className="sidebar-section-title">{t('lootHelper.sidebar.goalItems')}</label>
               <button 
                 className="help-icon-button" 
                 onClick={() => setShowHelp(true)}
-                title="How to use"
+                title={t('lootHelper.help.openTitle')}
               >
                 ?
               </button>
             </div>
             <input
               type="text"
-              placeholder="Search items..."
+              placeholder={t('lootHelper.sidebar.searchPlaceholder')}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               onFocus={() => {
@@ -190,12 +193,12 @@ export function Sidebar({
                     {item.imageFilename && (
                       <img
                         src={item.imageFilename}
-                        alt={item.name.en}
+                        alt={getLootHelperItemName(item)}
                         className={`autocomplete-dropdown-item-icon ${getRarityClass(item.rarity)}`}
                       />
                     )}
                     <span className="autocomplete-dropdown-item-name">
-                      {item.name.en}
+                      {getLootHelperItemName(item)}
                     </span>
                     <div className="autocomplete-dropdown-item-add">+</div>
                   </div>
@@ -208,7 +211,7 @@ export function Sidebar({
         {/* Goal Items List */}
         <div className="sidebar-section">
           <div className="sidebar-section-header">
-            <div className="sidebar-section-title">Your Goals</div>
+            <div className="sidebar-section-title">{t('lootHelper.sidebar.yourGoals')}</div>
             <div className="sidebar-section-actions">
               {goalItems.length > 0 && (
                 <>
@@ -216,24 +219,24 @@ export function Sidebar({
                     onClick={onEnableAllGoalItems}
                     className="sidebar-section-action"
                     disabled={disabledItemIds.size === 0}
-                    title="Enable all goal items"
+                    title={t('lootHelper.sidebar.enableAllTitle')}
                   >
-                    Enable All
+                    {t('lootHelper.sidebar.enableAll')}
                   </button>
                   <button
                     onClick={onDisableAllGoalItems}
                     className="sidebar-section-action"
                     disabled={disabledItemIds.size === goalItems.length}
-                    title="Disable all goal items"
+                    title={t('lootHelper.sidebar.disableAllTitle')}
                   >
-                    Disable All
+                    {t('lootHelper.sidebar.disableAll')}
                   </button>
                 </>
               )}
               <button
                 className="sidebar-section-toggle"
                 onClick={() => setGoalsCollapsed(!goalsCollapsed)}
-                title={goalsCollapsed ? 'Expand goals' : 'Collapse goals'}
+                title={goalsCollapsed ? t('lootHelper.sidebar.expandGoals') : t('lootHelper.sidebar.collapseGoals')}
                 disabled={goalItems.length === 0}
               >
                 {goalsCollapsed ? <ChevronDown size={16} /> : <ChevronUp size={16} />}
@@ -242,7 +245,7 @@ export function Sidebar({
           </div>
           {goalItems.length === 0 ? (
             <div className="goal-items-list-empty">
-              No goal items yet. Search and add items above.
+              {t('lootHelper.sidebar.noGoals')}
             </div>
           ) : !goalsCollapsed ? (
             <div className="goal-items-list">
@@ -264,7 +267,7 @@ export function Sidebar({
                     <div
                       className="goal-items-list-item-content"
                       onClick={() => onToggleGoalItem(item.id)}
-                      title={isDisabled ? 'Click to enable' : 'Click to disable'}
+                      title={isDisabled ? t('lootHelper.sidebar.enableItem') : t('lootHelper.sidebar.disableItem')}
                     >
                       {item.imageFilename && (
                         <ItemIconWithInfo
@@ -273,12 +276,12 @@ export function Sidebar({
                           className={`goal-items-list-item-icon ${getRarityClass(item.rarity)}`}
                         />
                       )}
-                      <span className="goal-items-list-item-name">{item.name.en}</span>
+                      <span className="goal-items-list-item-name">{getLootHelperItemName(item)}</span>
                     </div>
                     <button
                       className="goal-items-list-item-remove"
                       onClick={() => onRemoveGoalItem(item.id)}
-                      title="Remove from goals"
+                      title={t('lootHelper.sidebar.removeGoal')}
                     >
                       ×
                     </button>
@@ -291,13 +294,13 @@ export function Sidebar({
 
         <div className="sidebar-section">
           <div className="sidebar-section-header">
-            <div className="sidebar-section-title">Enough in Stash</div>
+            <div className="sidebar-section-title">{t('lootHelper.sidebar.stashTitle')}</div>
             <div className="sidebar-section-actions">
               <span className="sidebar-section-count">{stashItems.length}</span>
               <button
                 className="sidebar-section-toggle"
                 onClick={() => setStashCollapsed(!stashCollapsed)}
-                title={stashCollapsed ? 'Expand stash list' : 'Collapse stash list'}
+                title={stashCollapsed ? t('lootHelper.sidebar.expandStash') : t('lootHelper.sidebar.collapseStash')}
                 disabled={stashItems.length === 0}
               >
                 {stashCollapsed ? <ChevronDown size={16} /> : <ChevronUp size={16} />}
@@ -306,7 +309,7 @@ export function Sidebar({
           </div>
           {stashItems.length === 0 ? (
             <div className="goal-items-list-empty">
-              No items marked as in stash yet.
+              {t('lootHelper.sidebar.noStashItems')}
             </div>
           ) : !stashCollapsed ? (
             <div className="goal-items-list stash-items-list">
@@ -320,7 +323,7 @@ export function Sidebar({
                     <div
                       className="goal-items-list-item-content"
                       onClick={() => onToggleDisabledStashItem(item.id)}
-                      title={isDisabled ? 'Click to enable this stash item' : 'Click to disable this stash item'}
+                      title={isDisabled ? t('lootHelper.sidebar.enableStashItem') : t('lootHelper.sidebar.disableStashItem')}
                     >
                       {item.imageFilename && (
                         <ItemIconWithInfo
@@ -329,13 +332,13 @@ export function Sidebar({
                           className={`goal-items-list-item-icon ${getRarityClass(item.rarity)}`}
                         />
                       )}
-                      <span className="goal-items-list-item-name">{item.name.en}</span>
+                      <span className="goal-items-list-item-name">{getLootHelperItemName(item)}</span>
                     </div>
                     <div className="goal-items-list-item-actions">
                       <button
                         className="goal-items-list-item-remove"
                         onClick={() => onRemoveStashItem(item.id)}
-                        title="Remove from stash"
+                        title={t('lootHelper.sidebar.removeStashItem')}
                       >
                         ×
                       </button>

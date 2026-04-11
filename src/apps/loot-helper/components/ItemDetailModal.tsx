@@ -5,6 +5,8 @@ import { ItemHierarchy } from './ItemHierarchy';
 import { ItemIconWithInfo } from './ItemIconWithInfo';
 import { getRarityClass } from '../utils/dataLoader';
 import { X } from 'lucide-react';
+import { getItemDisplayName } from '../utils/localization';
+import { useLocale } from '../../../shared/context/LocaleContext';
 
 interface ItemDetailModalProps {
   itemId: string;
@@ -25,6 +27,7 @@ export function ItemDetailModal({
   onNavigateToItem,
   onToggleStashItem
 }: ItemDetailModalProps) {
+  const { t } = useLocale();
   const item = itemsMap[itemId];
 
   useEffect(() => {
@@ -47,7 +50,7 @@ export function ItemDetailModal({
                itemsMap={itemsMap} 
                className={`modal-item-icon ${getRarityClass(item.rarity)}`}
              />
-             <h2>{item.name.en}</h2>
+             <h2>{getItemDisplayName(item)}</h2>
            </div>
            <div className="modal-actions">
              <button 
@@ -56,7 +59,7 @@ export function ItemDetailModal({
                  onToggleStashItem(item.id);
                  onClose();
                }}
-               title="I have already enough of this material"
+               title={t('lootHelper.sidebar.stashEnoughTitle')}
              >
                −
              </button>

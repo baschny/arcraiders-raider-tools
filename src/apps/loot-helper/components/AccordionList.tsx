@@ -9,6 +9,15 @@ import { ActionIcon } from './ActionIcon';
 import { getRarityClass, getLocationIcon } from '../utils/dataLoader';
 import { getItemAction } from '../utils/itemAction';
 import { loadEnabledTypes, saveEnabledTypes, loadEnabledRarities, saveEnabledRarities, loadEnabledLocations, saveEnabledLocations } from '../utils/storage';
+import {
+  getItemDisplayName,
+  getLocalizedLootHelperLocation,
+  getLocalizedLootHelperRarity,
+  getLocalizedLootHelperType,
+  LOOT_HELPER_LOCATION_ORDER,
+  LOOT_HELPER_RARITY_ORDER,
+} from '../utils/localization';
+import { useLocale } from '../../../shared/context/LocaleContext';
 
 interface AccordionListProps {
   itemsMap: ItemsMap;
@@ -19,6 +28,7 @@ interface AccordionListProps {
 }
 
 export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds, onToggleStashItem }: AccordionListProps) {
+  const { t, tm, compareText } = useLocale();
   const [searchTerm, setSearchTerm] = useState('');
   const [expandedItemId, setExpandedItemId] = useState<string | null>(null);
   const [viewMode, setViewMode] = useState<'accordion' | 'grid'>('accordion');
@@ -58,12 +68,12 @@ export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds,
   });
 
   // Get all unique types, rarities, and locations from all items
-  const rarityOrder: ItemRarity[] = ['Common', 'Uncommon', 'Rare', 'Epic', 'Legendary'];
-  const locationOrder = ['Residential', 'Commercial', 'Old World', 'Technological', 'Medical', 'Mechanical', 'Industrial', 'Electrical', 'Arc', 'Unknown'];
+  const rarityOrder: ItemRarity[] = LOOT_HELPER_RARITY_ORDER;
+  const locationOrder = LOOT_HELPER_LOCATION_ORDER;
   
   const allPossibleTypes = Array.from(
     new Set(allPossibleItems.map((item) => item.type))
-  ).sort();
+  ).sort((a, b) => compareText(getLocalizedLootHelperType(t, a), getLocalizedLootHelperType(t, b)));
 
   const allPossibleRarities = Array.from(
     new Set(allPossibleItems.map((item) => item.rarity))
@@ -74,7 +84,9 @@ export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds,
   ).sort((a, b) => {
     const indexA = locationOrder.indexOf(a);
     const indexB = locationOrder.indexOf(b);
-    if (indexA === -1 && indexB === -1) return a.localeCompare(b);
+    if (indexA === -1 && indexB === -1) {
+      return compareText(getLocalizedLootHelperLocation(t, a), getLocalizedLootHelperLocation(t, b));
+    }
     if (indexA === -1) return 1;
     if (indexB === -1) return -1;
     return indexA - indexB;
@@ -92,7 +104,7 @@ export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds,
       if (item.isWeapon || item.type === 'Modification') return false;
       return true;
     })
-    .sort((a, b) => a.name.en.localeCompare(b.name.en));
+    .sort((a, b) => compareText(getItemDisplayName(a), getItemDisplayName(b)));
 
   // Initialize view mode from localStorage
   useEffect(() => {
@@ -166,7 +178,7 @@ export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds,
   // Filter based on search term, enabled types, enabled rarities, and enabled locations
   const filteredItems = sortedItems.filter((item) => {
     // Filter by search term
-    if (searchTerm.trim() && !item.name.en.toLowerCase().includes(searchTerm.toLowerCase())) {
+    if (searchTerm.trim() && !getItemDisplayName(item).toLowerCase().includes(searchTerm.toLowerCase())) {
       return false;
     }
     // Filter by type
@@ -313,19 +325,19 @@ export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds,
         )}
         
         {enabledTypes.size === 0 ? (
-          <span className="filter-summary-none">nothing</span>
+          <span className="filter-summary-none">{t('lootHelper.filters.none')}</span>
         ) : enabledTypes.size < allPossibleTypes.length ? (
           <div className="filter-summary-badges">
             {Array.from(enabledTypes).sort().map((type) => (
               <span key={type} className={`filter-summary-badge type-badge ${filtersExpanded ? 'faded' : ''}`}>
-                {type}
+                {getLocalizedLootHelperType(t, type)}
               </span>
             ))}
           </div>
         ) : null}
         
         {enabledRarities.size === 0 ? (
-          <span className="filter-summary-none">nothing</span>
+          <span className="filter-summary-none">{t('lootHelper.filters.none')}</span>
         ) : enabledRarities.size < allPossibleRarities.length ? (
           <div className="filter-summary-badges">
             {Array.from(enabledRarities).sort((a, b) => 
@@ -335,20 +347,22 @@ export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds,
                 key={rarity} 
                 className={`filter-summary-badge rarity-badge rarity-${rarity.toLowerCase()} ${filtersExpanded ? 'faded' : ''}`}
               >
-                {rarity}
+                {getLocalizedLootHelperRarity(t, rarity)}
               </span>
             ))}
           </div>
         ) : null}
         
         {enabledLocations.size === 0 ? (
-          <span className="filter-summary-none">nothing</span>
+          <span className="filter-summary-none">{t('lootHelper.filters.none')}</span>
         ) : enabledLocations.size < allPossibleLocations.length ? (
           <div className="filter-summary-badges">
             {Array.from(enabledLocations).sort((a, b) => {
               const indexA = locationOrder.indexOf(a);
               const indexB = locationOrder.indexOf(b);
-              if (indexA === -1 && indexB === -1) return a.localeCompare(b);
+              if (indexA === -1 && indexB === -1) {
+                return compareText(getLocalizedLootHelperLocation(t, a), getLocalizedLootHelperLocation(t, b));
+              }
               if (indexA === -1) return 1;
               if (indexB === -1) return -1;
               return indexA - indexB;
@@ -358,12 +372,12 @@ export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds,
                 <span 
                   key={location} 
                   className={`filter-summary-badge location-badge ${filtersExpanded ? 'faded' : ''}`}
-                  title={location}
+                  title={getLocalizedLootHelperLocation(t, location)}
                 >
                   {iconFile ? (
                     <img 
                       src={`/images/locations/${iconFile}`} 
-                      alt={location}
+                      alt={getLocalizedLootHelperLocation(t, location)}
                       className="location-badge-icon"
                     />
                   ) : (
@@ -398,14 +412,14 @@ export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds,
              <button 
                className={`view-switch-btn ${viewMode === 'accordion' ? 'active' : ''}`}
                onClick={() => handleSetViewMode('accordion')}
-               title="List View"
+               title={t('lootHelper.filters.listView')}
              >
                <List size={18} />
              </button>
              <button 
                className={`view-switch-btn ${viewMode === 'grid' ? 'active' : ''}`}
                onClick={() => handleSetViewMode('grid')}
-               title="Grid View"
+               title={t('lootHelper.filters.gridView')}
              >
                <LayoutGrid size={18} />
              </button>
@@ -415,11 +429,11 @@ export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds,
         {filtersExpanded && (
           <div className="filters-controls">
             <div className="filter-row">
-              <label className="filter-label">Search</label>
+              <label className="filter-label">{t('lootHelper.filters.search')}</label>
               <input
                 ref={searchInputRef}
                 type="text"
-                placeholder="Type to search items..."
+                placeholder={t('lootHelper.filters.searchPlaceholder')}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="accordion-search-input"
@@ -428,21 +442,21 @@ export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds,
 
             {allPossibleTypes.length > 0 && (
               <div className="filter-row">
-                <label className="filter-label">Type</label>
+                <label className="filter-label">{t('lootHelper.filters.type')}</label>
                 <div className="filter-buttons">
                   <button
                     onClick={handleEnableAllTypes}
                     className="filter-action-button"
                     disabled={enabledTypes.size === allPossibleTypes.length}
                   >
-                    All
+                    {t('lootHelper.filters.all')}
                   </button>
                   <button
                     onClick={handleDisableAllTypes}
                     className="filter-action-button"
                     disabled={enabledTypes.size === 0}
                   >
-                    None
+                    {t('lootHelper.filters.none')}
                   </button>
                   {allPossibleTypes.map((type) => {
                     const count = typeMatchCounts.get(type) || 0;
@@ -454,7 +468,7 @@ export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds,
                           enabledTypes.has(type) ? 'enabled' : 'disabled'
                         } ${count === 0 ? 'no-matches' : 'has-matches'}`}
                       >
-                        {type}
+                        {getLocalizedLootHelperType(t, type)}
                         <span className="filter-button-badge">{count}</span>
                       </button>
                     );
@@ -465,21 +479,21 @@ export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds,
 
             {allPossibleRarities.length > 0 && (
               <div className="filter-row">
-                <label className="filter-label">Rarity</label>
+                <label className="filter-label">{t('lootHelper.filters.rarity')}</label>
                 <div className="filter-buttons">
                   <button
                     onClick={handleEnableAllRarities}
                     className="filter-action-button"
                     disabled={enabledRarities.size === allPossibleRarities.length}
                   >
-                    All
+                    {t('lootHelper.filters.all')}
                   </button>
                   <button
                     onClick={handleDisableAllRarities}
                     className="filter-action-button"
                     disabled={enabledRarities.size === 0}
                   >
-                    None
+                    {t('lootHelper.filters.none')}
                   </button>
                   {allPossibleRarities.map((rarity) => {
                     const count = rarityMatchCounts.get(rarity) || 0;
@@ -491,7 +505,7 @@ export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds,
                           enabledRarities.has(rarity) ? 'enabled' : 'disabled'
                         } ${count === 0 ? 'no-matches' : 'has-matches'}`}
                       >
-                        {rarity}
+                        {getLocalizedLootHelperRarity(t, rarity)}
                         <span className="filter-button-badge">{count}</span>
                       </button>
                     );
@@ -502,21 +516,21 @@ export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds,
 
             {allPossibleLocations.length > 0 && (
               <div className="filter-row">
-                <label className="filter-label">Location</label>
+                <label className="filter-label">{t('lootHelper.filters.location')}</label>
                 <div className="filter-buttons">
                   <button
                     onClick={handleEnableAllLocations}
                     className="filter-action-button"
                     disabled={enabledLocations.size === allPossibleLocations.length}
                   >
-                    All
+                    {t('lootHelper.filters.all')}
                   </button>
                   <button
                     onClick={handleDisableAllLocations}
                     className="filter-action-button"
                     disabled={enabledLocations.size === 0}
                   >
-                    None
+                    {t('lootHelper.filters.none')}
                   </button>
                   {allPossibleLocations.map((location) => {
                     const iconFile = getLocationIcon(location);
@@ -528,12 +542,12 @@ export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds,
                         className={`filter-button filter-location ${
                           enabledLocations.has(location) ? 'enabled' : 'disabled'
                         } ${count === 0 ? 'no-matches' : 'has-matches'}`}
-                        title={location}
+                        title={getLocalizedLootHelperLocation(t, location)}
                       >
                         {iconFile ? (
                           <img 
                             src={`/images/locations/${iconFile}`} 
-                            alt={location}
+                            alt={getLocalizedLootHelperLocation(t, location)}
                             className="location-filter-icon"
                           />
                         ) : (
@@ -552,9 +566,9 @@ export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds,
 
       <div className="accordion-items">
         {sortedItems.length === 0 ? (
-          <div className="accordion-no-results">No items needed for your goals.</div>
+          <div className="accordion-no-results">{t('lootHelper.results.noItemsNeeded')}</div>
         ) : filteredItems.length === 0 ? (
-          <div className="accordion-no-results">No items found matching "{searchTerm}"</div>
+          <div className="accordion-no-results">{tm('lootHelper.results.noSearchResults', { query: searchTerm })}</div>
         ) : viewMode === 'grid' ? (
           <div className="items-grid">
             {filteredItems.map((item, index) => {
@@ -563,9 +577,9 @@ export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds,
               const itemAction = getItemAction(item.id, reverseMap);
               
               // Check if this is the first item with this starting letter
-              const firstLetter = item.name.en[0].toUpperCase();
+              const firstLetter = getItemDisplayName(item)[0].toUpperCase();
               const isFirstOfLetter = index === 0 || 
-                filteredItems[index - 1].name.en[0].toUpperCase() !== firstLetter;
+                getItemDisplayName(filteredItems[index - 1])[0].toUpperCase() !== firstLetter;
 
               return (
                 <div
@@ -588,7 +602,7 @@ export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds,
                       className="grid-item-action-icon" 
                     />
                   </div>
-                  <span className="grid-item-title">{item.name.en}</span>
+                  <span className="grid-item-title">{getItemDisplayName(item)}</span>
                 </div>
               );
             })}
@@ -632,8 +646,8 @@ export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds,
                       size={18} 
                       className="accordion-item-action-icon" 
                     />
-                    <span className="accordion-item-name">{item.name.en}</span>
-                    {isGoal && <span className="accordion-item-goal-badge">Goal</span>}
+                    <span className="accordion-item-name">{getItemDisplayName(item)}</span>
+                    {isGoal && <span className="accordion-item-goal-badge">{t('lootHelper.badges.goal')}</span>}
                   </div>
                   <div className="accordion-item-header-right">
                     {!isGoal && (
@@ -643,7 +657,7 @@ export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds,
                           e.stopPropagation();
                           onToggleStashItem(item.id);
                         }}
-                        title="I have already enough of this material"
+                        title={t('lootHelper.sidebar.stashEnoughTitle')}
                       >
                         −
                       </button>

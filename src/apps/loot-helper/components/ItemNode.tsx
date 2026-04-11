@@ -3,6 +3,8 @@ import { Handle, Position, useReactFlow } from 'reactflow';
 import type { NodeProps } from 'reactflow';
 import type { Item } from '../types/item';
 import { getRarityClass } from '../utils/dataLoader';
+import { getItemDisplayName } from '../utils/localization';
+import { useLocale } from '../../../shared/context/LocaleContext';
 
 export interface ItemNodeData {
   item: Item;
@@ -13,13 +15,14 @@ export interface ItemNodeData {
 }
 
 export const ItemNode = memo(({ data, id }: NodeProps<ItemNodeData>) => {
+  const { t } = useLocale();
   const { item, quantity, isGoal, isHighlighted, salvageMethod } = data;
   const rarityClass = getRarityClass(item.rarity);
   const reactFlowInstance = useReactFlow();
 
   const handleClick = (event: React.MouseEvent) => {
     event.stopPropagation();
-    console.log('Node clicked:', id, item.name.en);
+    console.log('Node clicked:', id, getItemDisplayName(item));
     
     const nodes = reactFlowInstance.getNodes();
     const edges = reactFlowInstance.getEdges();
@@ -101,7 +104,7 @@ export const ItemNode = memo(({ data, id }: NodeProps<ItemNodeData>) => {
       {salvageMethod && (
         <div 
           className={`item-node-method ${salvageMethod}`}
-          title={salvageMethod === 'salvage' ? 'Salvage' : 'Recycle'}
+          title={salvageMethod === 'salvage' ? t('lootHelper.actions.salvage') : t('lootHelper.actions.recycle')}
         >
           {salvageMethod === 'salvage' ? '⚡' : '🔧'}
         </div>
@@ -111,7 +114,7 @@ export const ItemNode = memo(({ data, id }: NodeProps<ItemNodeData>) => {
         {item.imageFilename && (
           <img
             src={item.imageFilename}
-            alt={item.name.en}
+            alt={getItemDisplayName(item)}
             className="item-node-icon"
           />
         )}
@@ -120,7 +123,7 @@ export const ItemNode = memo(({ data, id }: NodeProps<ItemNodeData>) => {
         )}
       </div>
 
-      <div className="item-node-name">{item.name.en}</div>
+      <div className="item-node-name">{getItemDisplayName(item)}</div>
       
       <Handle type="source" position={Position.Right} />
     </div>

@@ -2,7 +2,9 @@ import type { Item, ItemsMap } from '../types/item';
 import type { ReverseMap } from '../utils/craftingChain';
 import { ItemIconWithInfo } from './ItemIconWithInfo';
 import { getRarityClass } from '../utils/dataLoader';
+import { getItemDisplayName } from '../utils/localization';
 import { Recycle, Wrench } from 'lucide-react';
+import { useLocale } from '../../../shared/context/LocaleContext';
 
 /**
  * Check if salvaging an item is safe (doesn't lose materials compared to recycling)
@@ -61,6 +63,7 @@ export function ItemHierarchy({
   currentDepth = 0,
   visitedPath = new Set(),
 }: ItemHierarchyProps) {
+  const { t } = useLocale();
   const item = itemsMap[itemId];
   const usages = reverseMap.get(itemId) || [];
 
@@ -78,7 +81,7 @@ export function ItemHierarchy({
     <div className="item-hierarchy">
       {usages.length === 0 && !isGoal ? (
         <div className="hierarchy-leaf">
-          This item is not used in any of your goal items.
+          {t('lootHelper.hierarchy.leaf')}
         </div>
       ) : (
         <>
@@ -100,17 +103,19 @@ export function ItemHierarchy({
             
             if (usage.relationship === 'recycle') {
               quantityToShow = item.recyclesInto?.[usage.parentItemId] || 1;
-              relationshipText = 'recycles into';
+              relationshipText = t('lootHelper.hierarchy.recyclesInto');
               relationshipIcon = <Recycle size={14} strokeWidth={2} className="hierarchy-relationship-icon action-recycle" />;
             } else if (usage.relationship === 'salvage') {
               // Check salvagesInto first, then fall back to recyclesInto for database inconsistency
               quantityToShow = item.salvagesInto?.[usage.parentItemId] || item.recyclesInto?.[usage.parentItemId] || 1;
-              relationshipText = safeSalvage ? 'salvages into (safe)' : 'salvages into';
+              relationshipText = safeSalvage
+                ? t('lootHelper.hierarchy.salvagesIntoSafe')
+                : t('lootHelper.hierarchy.salvagesInto');
               relationshipIcon = <Wrench size={14} strokeWidth={2} className="hierarchy-relationship-icon action-salvage" />;
             } else {
               // For recipes: show how many of current material needed to build ONE parent item
               quantityToShow = parentItem.recipe?.[itemId] || 1;
-              relationshipText = 'used to build';
+              relationshipText = t('lootHelper.hierarchy.usedToBuild');
             }
 
             const parentUsages = reverseMap.get(usage.parentItemId) || [];
@@ -137,13 +142,13 @@ export function ItemHierarchy({
                         className={`hierarchy-item-icon ${getRarityClass(parentItem.rarity)}`}
                       />
                     )}
-                    <span className="hierarchy-item-name">{parentItem.name.en}</span>
+                    <span className="hierarchy-item-name">{getItemDisplayName(parentItem)}</span>
                     {(usage.relationship === 'salvage' || usage.relationship === 'recycle') && quantityToShow > 0 && (
                       <span className="hierarchy-item-quantity">×{quantityToShow}</span>
                     )}
                   </div>
                   {parentIsGoal && (
-                    <span className="hierarchy-goal-badge">Goal</span>
+                    <span className="hierarchy-goal-badge">{t('lootHelper.badges.goal')}</span>
                   )}
                 </div>
                 {parentUsages.length > 0 && (

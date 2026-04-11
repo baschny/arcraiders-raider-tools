@@ -1,7 +1,15 @@
 import { createPortal } from 'react-dom';
 import type { Item, ItemsMap } from '../types/item';
 import { getRarityClass, getLocationIcon } from '../utils/dataLoader';
+import {
+  getItemDisplayName,
+  getLocalizedLootHelperLocation,
+  getLocalizedLootHelperRarity,
+  getLocalizedLootHelperType,
+  getLootHelperItemDescription,
+} from '../utils/localization';
 import { PackageSearch, Coins, Weight, Wrench, Recycle, MapPin } from 'lucide-react';
+import { useLocale } from '../../../shared/context/LocaleContext';
 
 interface ItemInfoBoxProps {
   item: Item;
@@ -15,6 +23,7 @@ interface ItemInfoBoxProps {
 }
 
 export function ItemInfoBox({ item, itemsMap, position, visible, onMouseEnter, onMouseLeave, onContextMenu, maxHeight }: ItemInfoBoxProps) {
+  const { t } = useLocale();
   if (!visible) return null;
 
   const hasRecipe = item.recipe && Object.keys(item.recipe).length > 0;
@@ -39,28 +48,28 @@ export function ItemInfoBox({ item, itemsMap, position, visible, onMouseEnter, o
     >
       <div className="item-info-header">
         {item.imageFilename && (
-          <img
-            src={item.imageFilename}
-            alt={item.name.en}
-            className={`item-info-icon ${getRarityClass(item.rarity)}`}
-          />
-        )}
+            <img
+              src={item.imageFilename}
+              alt={getItemDisplayName(item)}
+              className={`item-info-icon ${getRarityClass(item.rarity)}`}
+            />
+          )}
         <div className="item-info-title">
-          <h3>{item.name.en}</h3>
+          <h3>{getItemDisplayName(item)}</h3>
           <div className="item-info-badges">
             <span className={`badge badge-type ${item.type.toLowerCase().replace(/\s+/g, '-')}`}>
-              {item.type}
+              {getLocalizedLootHelperType(t, item.type)}
             </span>
             <span className={`badge badge-rarity ${getRarityClass(item.rarity)}`}>
-              {item.rarity}
+              {getLocalizedLootHelperRarity(t, item.rarity)}
             </span>
           </div>
         </div>
       </div>
 
-      {item.description?.en && (
+      {getLootHelperItemDescription(item) && (
         <div className="item-info-description">
-          {item.description.en}
+          {getLootHelperItemDescription(item)}
         </div>
       )}
 
@@ -68,41 +77,42 @@ export function ItemInfoBox({ item, itemsMap, position, visible, onMouseEnter, o
         {item.stackSize !== undefined && item.stackSize !== null && (
           <div className="item-stat">
             <PackageSearch size={16} />
-            <span className="stat-label">Stack Size:</span>
+            <span className="stat-label">{t('lootHelper.itemInfo.stackSize')}</span>
             <span className="stat-value">{item.stackSize}</span>
           </div>
         )}
         {item.weightKg !== undefined && item.weightKg !== null && (
           <div className="item-stat">
             <Weight size={16} />
-            <span className="stat-label">Weight:</span>
+            <span className="stat-label">{t('lootHelper.itemInfo.weight')}</span>
             <span className="stat-value">{item.weightKg} kg</span>
           </div>
         )}
         {item.value !== undefined && item.value !== null && (
           <div className="item-stat">
             <Coins size={16} />
-            <span className="stat-label">Worth:</span>
+            <span className="stat-label">{t('lootHelper.itemInfo.worth')}</span>
             <span className="stat-value">{item.value} Coins</span>
           </div>
         )}
         {hasLocations && (
           <div className="item-stat">
             <MapPin size={16} />
-            <span className="stat-label">Found In:</span>
+            <span className="stat-label">{t('lootHelper.itemInfo.foundIn')}</span>
             <span className="stat-value">
               {item.foundIn!.map((location, index) => {
                 const iconFile = getLocationIcon(location);
+                const localizedLocation = getLocalizedLootHelperLocation(t, location);
                 return (
                   <span key={location} className="location-tag">
                     {iconFile && (
                       <img 
                         src={`/images/locations/${iconFile}`} 
-                        alt={location}
+                        alt={localizedLocation}
                         className="location-tag-icon"
                       />
                     )}
-                    {location}{index < item.foundIn!.length - 1 ? ', ' : ''}
+                    {localizedLocation}{index < item.foundIn!.length - 1 ? ', ' : ''}
                   </span>
                 );
               })}
@@ -113,7 +123,7 @@ export function ItemInfoBox({ item, itemsMap, position, visible, onMouseEnter, o
 
       {hasRecipe && (
         <div className="item-info-section">
-          <h4>Crafting Recipe</h4>
+          <h4>{t('lootHelper.itemInfo.craftingRecipe')}</h4>
           <div className="item-info-materials">
             {Object.entries(item.recipe!).map(([materialId, quantity]) => {
               const material = itemsMap[materialId];
@@ -123,11 +133,11 @@ export function ItemInfoBox({ item, itemsMap, position, visible, onMouseEnter, o
                   {material.imageFilename && (
                     <img
                       src={material.imageFilename}
-                      alt={material.name.en}
+                      alt={getItemDisplayName(material)}
                       className={`material-icon ${getRarityClass(material.rarity)}`}
                     />
                   )}
-                  <span className="material-name">{material.name.en}</span>
+                  <span className="material-name">{getItemDisplayName(material)}</span>
                   <span className="material-quantity">×{quantity}</span>
                 </div>
               );
@@ -140,7 +150,7 @@ export function ItemInfoBox({ item, itemsMap, position, visible, onMouseEnter, o
         <div className="item-info-section">
           <h4>
             <Recycle size={16} />
-            Recycles Into
+            {t('lootHelper.itemInfo.recyclesInto')}
           </h4>
           <div className="item-info-materials">
             {Object.entries(item.recyclesInto!).map(([materialId, quantity]) => {
@@ -151,11 +161,11 @@ export function ItemInfoBox({ item, itemsMap, position, visible, onMouseEnter, o
                   {material.imageFilename && (
                     <img
                       src={material.imageFilename}
-                      alt={material.name.en}
+                      alt={getItemDisplayName(material)}
                       className={`material-icon ${getRarityClass(material.rarity)}`}
                     />
                   )}
-                  <span className="material-name">{material.name.en}</span>
+                  <span className="material-name">{getItemDisplayName(material)}</span>
                   <span className="material-quantity">×{quantity}</span>
                 </div>
               );
@@ -168,7 +178,7 @@ export function ItemInfoBox({ item, itemsMap, position, visible, onMouseEnter, o
         <div className="item-info-section">
           <h4>
             <Wrench size={16} />
-            Salvages Into
+            {t('lootHelper.itemInfo.salvagesInto')}
           </h4>
           <div className="item-info-materials">
             {Object.entries(item.salvagesInto!).map(([materialId, quantity]) => {
@@ -179,11 +189,11 @@ export function ItemInfoBox({ item, itemsMap, position, visible, onMouseEnter, o
                   {material.imageFilename && (
                     <img
                       src={material.imageFilename}
-                      alt={material.name.en}
+                      alt={getItemDisplayName(material)}
                       className={`material-icon ${getRarityClass(material.rarity)}`}
                     />
                   )}
-                  <span className="material-name">{material.name.en}</span>
+                  <span className="material-name">{getItemDisplayName(material)}</span>
                   <span className="material-quantity">×{quantity}</span>
                 </div>
               );
