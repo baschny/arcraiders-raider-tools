@@ -55,6 +55,7 @@ The project is migrating toward a fully localized user experience. Treat localiz
 **UI Localization**:
 - Shared locale state lives in `src/shared/context/LocaleContext.tsx`
 - Shared translation dictionaries live in `src/shared/i18n/`
+- Domain terminology glossary lives in `src/shared/i18n/glossary.ts`
 - The global language switcher is app-wide, not per-tool
 - New user-facing labels should not be hardcoded inline if they are part of the site chrome or app UI
 
@@ -86,6 +87,7 @@ The project is migrating toward a fully localized user experience. Treat localiz
 - Keep locale codes aligned with upstream data keys when possible, e.g. `en`, `de`, `pt-BR`
 - For Brazilian Portuguese, fall back in this order: `pt-BR -> pt -> en`
 - Keep the client payload self-sufficient when a future bilingual feature is likely
+- When translating domain language, follow `src/shared/i18n/glossary.ts` first instead of inventing new terminology ad hoc
 
 ## Architecture & Patterns
 
