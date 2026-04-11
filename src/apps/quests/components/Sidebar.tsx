@@ -1,4 +1,6 @@
 import type { Quest } from '../types/quest';
+import { useLocale } from '../../../shared/context/LocaleContext';
+import { getLocalizedMapNodeName } from '../utils/localization';
 
 interface MapNodeWithStatus extends Quest {
   isCompleted: boolean;
@@ -31,27 +33,31 @@ export function Sidebar({
   onMapToggle,
   onResetAll,
 }: SidebarProps) {
+  const { locale, t, tm } = useLocale();
   return (
     <div className="available-sidebar">
       <div className="sidebar-stats">
         <div className="sidebar-stat-item">
           <span className="sidebar-stat-icon">✅</span>
           <span className="sidebar-stat-value">
-            <span title="Completed Quests">{completedCount}</span>
+            <span title={t('quests.sidebarCompleted')}>{completedCount}</span>
             <span style={{ margin: '0 4px', color: '#666', fontWeight: 'normal' }}>
               /
             </span>
-            <span title="Total Quests">{actualQuests.length}</span>
+            <span title={t('quests.sidebarTotal')}>{actualQuests.length}</span>
           </span>
         </div>
-        <div className="sidebar-stat-item" title="Available Quests">
+        <div className="sidebar-stat-item" title={t('quests.sidebarAvailable')}>
           <span className="sidebar-stat-icon">⭐</span>
           <span className="sidebar-stat-value">{availableQuests.length}</span>
         </div>
       </div>
 
       <div className="available-sidebar-header">
-        🗺️ Unlocked Maps ({mapNodes.filter((m) => m.isCompleted).length}/{mapNodes.length})
+        🗺️ {tm('quests.sidebarUnlockedMaps', {
+          completed: mapNodes.filter((m) => m.isCompleted).length,
+          total: mapNodes.length,
+        })}
       </div>
 
       <div className="available-quests-list">
@@ -60,23 +66,25 @@ export function Sidebar({
             key={mapNode.id}
             className={`available-quest-item ${mapNode.isCompleted ? 'completed' : ''}`}
             onClick={() => mapNode.isCompleted ? onQuestClick(mapNode.id) : onMapToggle(mapNode.id)}
-            title={mapNode.isCompleted ? 'Click to view in quest tree' : 'Click to unlock this map'}
+            title={mapNode.isCompleted ? t('quests.sidebarViewMap') : t('quests.sidebarUnlockMap')}
           >
-            <div className="available-quest-name">{mapNode.name}</div>
+            <div className="available-quest-name">
+              {getLocalizedMapNodeName(mapNode.id, mapNode.name, locale)}
+            </div>
             {mapNode.isCompleted && <span className="map-check">✓</span>}
           </div>
         ))}
       </div>
 
       <div className="available-sidebar-header">
-        <span>⭐ Available</span>
+        <span>⭐ {t('quests.sidebarAvailableHeader')}</span>
         {completedCount > 0 && (
           <button
             className="reset-all-button"
             onClick={onResetAll}
-            title="Reset all completed quests"
+            title={t('quests.sidebarResetAllTitle')}
           >
-            Reset all
+            {t('quests.sidebarResetAll')}
           </button>
         )}
       </div>
@@ -84,7 +92,7 @@ export function Sidebar({
       <div className="available-quests-list">
         {availableQuests.length === 0 ? (
           <div className="no-available-quests">
-            No quests available. Complete prerequisites first.
+            {t('quests.sidebarNoAvailable')}
           </div>
         ) : (
           availableQuests.map((quest) => (
@@ -92,7 +100,7 @@ export function Sidebar({
               key={quest.id}
               className="available-quest-item"
               onClick={() => onQuestClick(quest.id)}
-              title="Click to focus on this quest"
+              title={t('quests.sidebarFocusQuest')}
             >
               <div className="available-quest-name">{quest.name}</div>
             </div>
@@ -104,7 +112,7 @@ export function Sidebar({
         <input
           type="text"
           className="search-input"
-          placeholder="🔍 Search all quests..."
+          placeholder={`🔍 ${t('quests.sidebarSearchPlaceholder')}`}
           value={searchQuery}
           onChange={onSearchChange}
           onKeyDown={onSearchKeyDown}
@@ -114,12 +122,12 @@ export function Sidebar({
       {searchQuery.trim() && (
         <>
           <div className="available-sidebar-header">
-            🔍 Search Results ({searchResults.length})
+            🔍 {tm('quests.sidebarSearchResults', { count: searchResults.length })}
           </div>
           <div className="search-results-list">
             {searchResults.length === 0 ? (
               <div className="no-available-quests">
-                No quests found matching "{searchQuery}"
+                {tm('quests.sidebarSearchEmpty', { query: searchQuery })}
               </div>
             ) : (
               searchResults.map((quest) => (
@@ -127,7 +135,7 @@ export function Sidebar({
                   key={quest.id}
                   className="available-quest-item"
                   onClick={() => onQuestClick(quest.id)}
-                  title="Click to focus on this quest"
+                  title={t('quests.sidebarFocusQuest')}
                 >
                   <div className="available-quest-name">{quest.name}</div>
                 </div>

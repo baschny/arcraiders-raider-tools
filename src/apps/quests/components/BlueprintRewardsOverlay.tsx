@@ -1,3 +1,5 @@
+import { useLocale } from '../../../shared/context/LocaleContext';
+
 interface BlueprintRewardListEntry {
   questId: string;
   questName: string;
@@ -20,6 +22,7 @@ export function BlueprintRewardsOverlay({
   onToggleCollapsed,
   onBlueprintClick,
 }: BlueprintRewardsOverlayProps) {
+  const { t, tm } = useLocale();
   const completedCount = entries.filter((entry) => entry.isCompleted).length;
 
   return (
@@ -28,11 +31,11 @@ export function BlueprintRewardsOverlay({
         type="button"
         className="blueprint-overlay-toggle"
         onClick={onToggleCollapsed}
-        title={isCollapsed ? 'Show blueprint rewards' : 'Hide blueprint rewards'}
+        title={isCollapsed ? t('quests.blueprintsToggleShow') : t('quests.blueprintsToggleHide')}
       >
         <span className="blueprint-overlay-toggle-icon">📜</span>
         <span className="blueprint-overlay-toggle-label">
-          Blueprints ({completedCount}/{entries.length})
+          {tm('quests.blueprintsLabel', { completed: completedCount, total: entries.length })}
         </span>
         <span className="blueprint-overlay-toggle-chevron">
           {isCollapsed ? '▾' : '▴'}
@@ -47,7 +50,7 @@ export function BlueprintRewardsOverlay({
               type="button"
               className={`blueprint-overlay-item ${entry.isCompleted ? 'completed' : ''}`}
               onClick={() => onBlueprintClick(entry.questId)}
-              title={`Jump to quest: ${entry.questName}`}
+              title={tm('quests.blueprintsJumpToQuest', { quest: entry.questName })}
             >
               {entry.blueprintImageFilename ? (
                 <img
@@ -70,7 +73,7 @@ export function BlueprintRewardsOverlay({
               </span>
 
               {entry.isCompleted && (
-                <span className="blueprint-overlay-item-check" aria-label="Completed">
+                <span className="blueprint-overlay-item-check" aria-label={t('quests.completedLabel')}>
                   ✓
                 </span>
               )}

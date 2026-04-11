@@ -1,4 +1,5 @@
 import { useEffect, useCallback } from 'react';
+import { useLocale } from '../../../shared/context/LocaleContext';
 
 interface ConfirmDialogProps {
   isOpen: boolean;
@@ -19,6 +20,7 @@ export function ConfirmDialog({
   onConfirm,
   onCancel,
 }: ConfirmDialogProps) {
+  const { t, tm } = useLocale();
   // Handle escape key
   const handleEscape = useCallback(
     (event: KeyboardEvent) => {
@@ -71,7 +73,7 @@ export function ConfirmDialog({
               ))}
               {showMore > 0 && (
                 <div className="confirm-dialog-quest-more">
-                  ...and {showMore} more
+                  {tm('quests.dialogMore', { count: showMore })}
                 </div>
               )}
             </div>
@@ -83,14 +85,14 @@ export function ConfirmDialog({
             className="confirm-dialog-button confirm-dialog-button-cancel"
             onClick={onCancel}
           >
-            Cancel
+            {t('quests.dialogCancel')}
           </button>
           <button
             className="confirm-dialog-button confirm-dialog-button-confirm"
             onClick={onConfirm}
             autoFocus
           >
-            Confirm
+            {t('quests.dialogConfirm')}
           </button>
         </div>
       </div>

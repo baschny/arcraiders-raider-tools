@@ -1,22 +1,30 @@
 import { Handle, Position } from 'reactflow';
 import type { QuestNodeData } from '../types/quest';
-import {
-  TRADER_IMAGES,
-  MAP_NAME_MAPPING,
-} from '../data/static-data';
+import { TRADER_IMAGES } from '../data/static-data';
 import { formatWikiLink, getTraderClass } from '../utils/helpers';
+import { useLocale } from '../../../shared/context/LocaleContext';
+import {
+  getLocalizedMapName,
+  getLocalizedTraderName,
+  getQuestWikiName,
+} from '../utils/localization';
 
 export function QuestNode({ data }: { data: QuestNodeData }) {
+  const { locale, t } = useLocale();
   const { quest, isCompleted, isAvailable, isHighlighted, onToggle } = data;
   const hasBlueprintReward = quest.hasBlueprint;
   const blueprintRewardTooltip =
     quest.blueprintRewards.length > 0
-      ? `Rewards ${quest.blueprintRewards.map((reward) => reward.name).join(', ')}`
-      : 'Rewards a Blueprint';
+      ? t('quests.rewardsList').replace(
+          '{rewards}',
+          quest.blueprintRewards.map((reward) => reward.name).join(', ')
+        )
+      : t('quests.rewardsBlueprint');
 
   const traderClass = getTraderClass(quest.trader);
   const nodeClass = `quest-node ${hasBlueprintReward ? 'has-blueprint' : ''} ${isCompleted ? 'completed' : ''} ${isAvailable ? 'available' : ''} ${isHighlighted ? 'highlighted' : ''}`;
   const traderImage = TRADER_IMAGES[quest.trader];
+  const traderLabel = getLocalizedTraderName(quest.trader, locale);
 
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -32,11 +40,11 @@ export function QuestNode({ data }: { data: QuestNodeData }) {
         </div>
       )}
       <div className="quest-node-header">
-        <div className={`trader-icon ${traderClass}`} title={quest.trader}>
+        <div className={`trader-icon ${traderClass}`} title={traderLabel}>
           {traderImage ? (
             <img
               src={traderImage}
-              alt={quest.trader}
+              alt={traderLabel}
               style={{
                 width: '100%',
                 height: '100%',
@@ -51,13 +59,13 @@ export function QuestNode({ data }: { data: QuestNodeData }) {
               .join('')
           )}
         </div>
-        <div className="quest-info">
-          {quest.map && quest.map.length > 0 && (
-            <div className="quest-map-info">
-              {quest.map.map((m) => MAP_NAME_MAPPING[m] || m).join(', ')}
-            </div>
-          )}
-          <div className="quest-name">{quest.name}</div>
+          <div className="quest-info">
+            {quest.map && quest.map.length > 0 && (
+              <div className="quest-map-info">
+                {quest.map.map((mapId) => getLocalizedMapName(mapId, locale)).join(', ')}
+              </div>
+            )}
+            <div className="quest-name">{quest.name}</div>
         </div>
       </div>
 
@@ -67,19 +75,23 @@ export function QuestNode({ data }: { data: QuestNodeData }) {
             {isCompleted ? '✓' : isAvailable ? '⭐' : '🔒'}
           </span>
           <span>
-            {isCompleted ? 'Completed' : isAvailable ? 'Available' : 'Locked'}
+            {isCompleted
+              ? t('quests.statusCompleted')
+              : isAvailable
+                ? t('quests.statusAvailable')
+                : t('quests.statusLocked')}
           </span>
         </div>
         <div className="quest-actions">
           <a
-            href={'https://arcraiders.wiki/wiki/' + formatWikiLink(quest.name)}
+            href={'https://arcraiders.wiki/wiki/' + formatWikiLink(getQuestWikiName(quest))}
             target="_blank"
             rel="noopener noreferrer"
             className="quest-action-btn"
             onClick={(e) => e.stopPropagation()}
-            title="Open in ARC Raiders Wiki (new tab)"
+            title={t('quests.wikiTitle')}
           >
-            📖 Wiki
+            📖 {t('quests.wikiLabel')}
           </a>
         </div>
       </div>

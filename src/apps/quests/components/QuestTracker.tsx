@@ -18,6 +18,7 @@ import { ConfirmDialog } from './ConfirmDialog';
 import { STORAGE_KEY } from '../data/static-data';
 import { migrateQuestIds } from '../data/questIdMigration';
 import { trackQuestMark } from '../../../shared/utils/analytics';
+import { useLocale } from '../../../shared/context/LocaleContext';
 
 const VIEWPORT_STORAGE_KEY = 'raider-tools:quest-tracker-viewport';
 const BLUEPRINT_OVERLAY_COLLAPSED_STORAGE_KEY =
@@ -33,6 +34,7 @@ interface QuestTrackerProps {
 }
 
 export function QuestTracker({ quests }: QuestTrackerProps) {
+  const { tm, compareText } = useLocale();
   // Load completed quests from localStorage
   const loadCompletedQuests = (): Set<string> => {
     try {
@@ -181,8 +183,11 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
             // Show confirmation dialog
             setConfirmDialog({
               isOpen: true,
-              title: 'Mark Quest as Incomplete?',
-              message: `Marking "${quest.name}" as incomplete will also mark ${dependents.size} dependent quest(s) as incomplete:`,
+              title: tm('quests.confirmMarkIncompleteTitle', {}),
+              message: tm('quests.confirmMarkIncompleteMessage', {
+                quest: quest.name,
+                count: dependents.size,
+              }),
               questList: dependentNames.slice(0, 5),
               showMore: dependentNames.length > 5 ? dependentNames.length - 5 : 0,
               onConfirm: () => {
@@ -225,8 +230,11 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
             // Show confirmation dialog
             setConfirmDialog({
               isOpen: true,
-              title: 'Auto-complete Prerequisites?',
-              message: `"${quest.name}" has ${incompleteAll.length} incomplete prerequisite(s):`,
+              title: tm('quests.confirmAutocompleteTitle', {}),
+              message: tm('quests.confirmAutocompleteMessage', {
+                quest: quest.name,
+                count: incompleteAll.length,
+              }),
               questList: prereqNames.slice(0, 5),
               showMore: prereqNames.length > 5 ? prereqNames.length - 5 : 0,
               onConfirm: () => {
@@ -428,9 +436,9 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
           (a, b) =>
             a.progressionIndex - b.progressionIndex ||
             a.rewardIndex - b.rewardIndex ||
-            a.blueprintName.localeCompare(b.blueprintName)
+            compareText(a.blueprintName, b.blueprintName)
         ),
-    [actualQuests, blueprintCompletionById, questProgressionOrder]
+    [actualQuests, blueprintCompletionById, compareText, questProgressionOrder]
   );
 
   // Filter quests by search query
@@ -461,8 +469,10 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
 
     setConfirmDialog({
       isOpen: true,
-      title: 'Reset All Quests?',
-      message: `Do you want to reset all ${completedQuestsList.length} completed quest(s)?`,
+      title: tm('quests.resetAllTitle', {}),
+      message: tm('quests.resetAllMessage', {
+        count: completedQuestsList.length,
+      }),
       questList: completedQuestsList.slice(0, 5),
       showMore: completedQuestsList.length > 5 ? completedQuestsList.length - 5 : 0,
       onConfirm: () => {

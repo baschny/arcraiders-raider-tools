@@ -16,6 +16,7 @@ interface LocaleContextValue {
   localeOptions: LocaleOption[];
   setLocale: (locale: AppLocale) => void;
   t: (key: string) => string;
+  tm: (key: string, replacements: Record<string, string | number>) => string;
   formatDate: (value: Date, options?: Intl.DateTimeFormatOptions) => string;
   formatNumber: (value: number, options?: Intl.NumberFormatOptions) => string;
   compareText: (left: string, right: string) => number;
@@ -47,6 +48,23 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
           }
         }
         return getTranslationValue(DEFAULT_LOCALE, key) ?? key;
+      },
+      tm: (key, replacements) => {
+        let template = '';
+        for (const currentLocale of fallbackChain) {
+          const translated = getTranslationValue(currentLocale, key);
+          if (translated) {
+            template = translated;
+            break;
+          }
+        }
+
+        const base = template || getTranslationValue(DEFAULT_LOCALE, key) || key;
+        return Object.entries(replacements).reduce(
+          (value, [token, replacement]) =>
+            value.replaceAll(`{${token}}`, String(replacement)),
+          base
+        );
       },
       formatDate: (value, options) => new Intl.DateTimeFormat(intlLocale, options).format(value),
       formatNumber: (value, options) => new Intl.NumberFormat(intlLocale, options).format(value),

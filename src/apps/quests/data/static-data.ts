@@ -34,15 +34,6 @@ export const MAP_NODES: Quest[] = [
   },
 ];
 
-// Map name mapping for display
-export const MAP_NAME_MAPPING: Record<string, string> = {
-  dam_battlegrounds: 'Dam\u00A0Battlegrounds',
-  buried_city: 'Buried\u00A0City',
-  the_spaceport: 'Spaceport',
-  the_blue_gate: 'The\u00A0Blue\u00A0Gate',
-  stella_montis: 'Stella\u00A0Montis',
-};
-
 // Trader image paths
 export const TRADER_IMAGES: Record<string, string> = {
   Celeste: '/images/trader/celeste.png',

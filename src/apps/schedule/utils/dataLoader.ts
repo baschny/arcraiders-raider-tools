@@ -1,8 +1,13 @@
-import type { MapEventsData, ScheduleLocalizationsData } from '../types/mapEvents';
+import type {
+  MapEventsData,
+  MapEventLocalizationsData,
+  MapLocalizationsData,
+} from '../types/mapEvents';
 const LOCAL_MAP_EVENTS_URL = '/data/schedule/map-events.json';
 const MAP_EVENTS_URL = import.meta.env.VITE_SCHEDULE_DATA_URL || LOCAL_MAP_EVENTS_URL;
 const EVENT_TYPES_URL = '/data/schedule/event-types.json';
-const LOCALIZATIONS_URL = '/data/schedule/localizations.json';
+const MAP_LOCALIZATIONS_URL = '/data/maps/localizations.json';
+const MAP_EVENT_LOCALIZATIONS_URL = '/data/map-events/localizations.json';
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
 }
@@ -58,11 +63,14 @@ async function loadEventTypesJson(): Promise<MapEventsData['eventTypes']> {
 }
 
 export async function loadMapEventsData(): Promise<MapEventsData> {
-  const [mapEventsData, eventTypes, localizations] = await Promise.all([
+  const [mapEventsData, eventTypes, mapLocalizations, mapEventLocalizations] = await Promise.all([
     loadMapEventsJson(),
     loadEventTypesJson(),
-    loadJson<ScheduleLocalizationsData>(LOCALIZATIONS_URL).catch(
-      () => ({}) as ScheduleLocalizationsData
+    loadJson<MapLocalizationsData>(MAP_LOCALIZATIONS_URL).catch(
+      () => ({}) as MapLocalizationsData
+    ),
+    loadJson<MapEventLocalizationsData>(MAP_EVENT_LOCALIZATIONS_URL).catch(
+      () => ({}) as MapEventLocalizationsData
     ),
   ]);
 
@@ -76,7 +84,8 @@ export async function loadMapEventsData(): Promise<MapEventsData> {
       mapId,
       {
         ...mapInfo,
-        localizations: localizations.maps?.[mapId]?.localizations ?? mapInfo.localizations,
+        localizations:
+          mapLocalizations.maps?.[mapId]?.localizations ?? mapInfo.localizations,
       },
     ])
   );
@@ -90,7 +99,7 @@ export async function loadMapEventsData(): Promise<MapEventsData> {
       {
         ...eventType,
         localizations:
-          localizations.eventTypes?.[eventId]?.localizations ?? eventType.localizations,
+          mapEventLocalizations.eventTypes?.[eventId]?.localizations ?? eventType.localizations,
       },
     ])
   );

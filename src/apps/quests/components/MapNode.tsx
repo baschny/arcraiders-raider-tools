@@ -1,11 +1,18 @@
 import { Handle, Position } from 'reactflow';
 import type { MapNodeData } from '../types/quest';
 import { MAP_IMAGES } from '../data/static-data';
+import { useLocale } from '../../../shared/context/LocaleContext';
+import { getLocalizedMapNodeName } from '../utils/localization';
 
 export function MapNode({ data }: { data: MapNodeData }) {
+  const { locale, t } = useLocale();
   const { quest, isCompleted, onToggle } = data;
   const mapImage = MAP_IMAGES[quest.id];
-  const displayName = quest.name.replace('🗺️ ', ''); // Remove emoji
+  const displayName = getLocalizedMapNodeName(
+    quest.map[0],
+    quest.name.replace('🗺️ ', ''),
+    locale
+  );
 
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -24,7 +31,7 @@ export function MapNode({ data }: { data: MapNodeData }) {
       <div className="map-node-content">
         <div className="map-node-name">{displayName}</div>
         <div className="map-node-status">
-          {isCompleted ? '✓ Unlocked' : '🔒 Locked'}
+          {isCompleted ? `✓ ${t('quests.mapUnlocked')}` : `🔒 ${t('quests.mapLocked')}`}
         </div>
       </div>
       <Handle type="source" position={Position.Bottom} />

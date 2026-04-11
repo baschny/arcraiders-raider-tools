@@ -6,6 +6,7 @@ import { LoadingSpinner } from '../../shared/components/LoadingSpinner';
 import { ErrorDisplay } from '../../shared/components/ErrorDisplay';
 import { useLocale } from '../../shared/context/LocaleContext';
 import { fetchLocalizedJson } from '../../shared/utils/localizedContent';
+import { loadQuestMapLocalizations } from './utils/localization';
 import './styles/main.scss';
 
 export function QuestsApp() {
@@ -15,8 +16,11 @@ export function QuestsApp() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetchLocalizedJson<LocalizedQuest[]>('/data/quests/quest-data.json', locale)
-      .then((data) => {
+    Promise.all([
+      loadQuestMapLocalizations(),
+      fetchLocalizedJson<LocalizedQuest[]>('/data/quests/quest-data.json', locale),
+    ])
+      .then(([, data]) => {
         const localizedQuests: Quest[] = data.map((quest) => ({
           ...quest,
           name: quest.name.value,

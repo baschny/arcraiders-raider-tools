@@ -16,8 +16,9 @@
     "generate:items-loot-helper": "./scripts/generate-item-data-loot-helper.sh",
     "generate:items-craft-calculator": "./scripts/generate-item-data-craft-calculator.sh",
     "generate:items-quartermaster": "./scripts/generate-item-data-quartermaster.sh",
-    "generate:schedule-localizations": "node ./scripts/generate-schedule-localizations.js",
-    "generate:schedule": "npm run generate:schedule-localizations && node ./scripts/generate-schedule-data-from-map-conditions.js"
+    "generate:maps-localizations": "node ./scripts/generate-map-localizations.js",
+    "generate:map-events-localizations": "node ./scripts/generate-map-event-localizations.js",
+    "generate:schedule": "npm run generate:maps-localizations && npm run generate:map-events-localizations && node ./scripts/generate-schedule-data-from-map-conditions.js"
   },
   "dependencies": {
     "dagre": "^0.8.5",

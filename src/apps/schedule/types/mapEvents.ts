@@ -44,3 +44,11 @@ export interface ScheduleLocalizationsData {
   maps?: Record<string, { localizations?: Record<string, string> }>;
   eventTypes?: Record<string, { localizations?: Record<string, string> }>;
 }
+
+export interface MapLocalizationsData {
+  maps?: Record<string, { localizations?: Record<string, string> }>;
+}
+
+export interface MapEventLocalizationsData {
+  eventTypes?: Record<string, { localizations?: Record<string, string> }>;
+}
