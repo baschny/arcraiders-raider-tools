@@ -44,6 +44,49 @@ npm run generate:schedule     # Event schedule (direct copy)
 
 Generated files are placed in `public/data/<app-name>/` and loaded at runtime via fetch.
 
+### Localization Philosophy
+
+The project is migrating toward a fully localized user experience. Treat localization as a first-class architecture concern, not as a thin UI-layer afterthought.
+
+**Two-Layer Model**:
+- **UI strings** belong in app-owned translation dictionaries under `src/`
+- **Game content** belongs in generated JSON under `public/data/`
+
+**UI Localization**:
+- Shared locale state lives in `src/shared/context/LocaleContext.tsx`
+- Shared translation dictionaries live in `src/shared/i18n/`
+- The global language switcher is app-wide, not per-tool
+- New user-facing labels should not be hardcoded inline if they are part of the site chrome or app UI
+
+**Generated Content Localization**:
+- Prefer generating localized data from `../arcraiders-data/` instead of hardcoding translations in React components
+- When practical, generators should emit locale-specific files such as:
+  - `public/data/craft-calculator/items.en.json`
+  - `public/data/craft-calculator/items.de.json`
+  - `public/data/craft-calculator/items.pt-BR.json`
+- Loaders in the SPA should fetch the active locale first and fall back to English
+
+**English Original Names**:
+- Some localized content files intentionally embed the original English name alongside the localized display value
+- This is to support future UX such as tooltips, bilingual labels, and English alias search without requiring a second fetch
+- For now, embed English originals only for:
+  - item names
+  - quest names
+  - blueprint reward names
+  - hideout module names
+- Do **not** duplicate English prose for all text fields unless there is a concrete need
+
+**Current Preference Order**:
+1. Prefer upstream localized data from `../arcraiders-data/`
+2. If missing, preserve locale fallback behavior in generators/loaders
+3. Only use app-local translation maps for stable UI copy or as a temporary bridge
+
+**When Adding Localization**:
+- Avoid flattening multilingual upstream fields to `.en` during generation unless the app explicitly needs English-only output
+- Keep locale codes aligned with upstream data keys when possible, e.g. `en`, `de`, `pt-BR`
+- For Brazilian Portuguese, fall back in this order: `pt-BR -> pt -> en`
+- Keep the client payload self-sufficient when a future bilingual feature is likely
+
 ## Architecture & Patterns
 
 ### Project Structure
