@@ -4,7 +4,7 @@
     "format": "Schedule keys are UNIX timestamps (seconds, UTC) at event start; values are event type ids."
   },
   "metadata": {
-    "generatedAt": "2026-04-10T21:29:09.921Z",
+    "generatedAt": "2026-04-11T08:34:42.223Z",
     "sourceFiles": {
       "scenarios": "../embark-api/data/scenarios.json",
       "mapEvents": "../embark-api/data/arctracker-map-events.json",
@@ -14,12 +14,12 @@
     },
     "timestampRange": {
       "start": 1774396800,
-      "end": 1775869200
+      "end": 1775912400
     },
     "mergedPastEvents": {
       "windowSeconds": 2592000,
-      "now": 1775856549,
-      "count": 1251
+      "now": 1775896482,
+      "count": 1263
     },
     "ignoredConditionIds": []
   },
@@ -564,7 +564,9 @@
         "1775772000": "close-scrutiny",
         "1775779200": "night-raid",
         "1775851200": "hurricane",
-        "1775858400": "close-scrutiny"
+        "1775858400": "close-scrutiny",
+        "1775894400": "hurricane",
+        "1775901600": "close-scrutiny"
       },
       "minor": {
         "1774407600": "matriarch",
@@ -695,7 +697,8 @@
         "1775772000": "harvester",
         "1775786400": "uncovered-caches",
         "1775851200": "matriarch",
-        "1775862000": "harvester"
+        "1775862000": "harvester",
+        "1775898000": "harvester"
       }
     },
     "buried-city": {
@@ -870,7 +873,9 @@
         "1775779200": "close-scrutiny",
         "1775851200": "close-scrutiny",
         "1775854800": "night-raid",
-        "1775865600": "close-scrutiny"
+        "1775865600": "close-scrutiny",
+        "1775894400": "close-scrutiny",
+        "1775898000": "hurricane"
       },
       "minor": {
         "1774407600": "bird-city",
@@ -1003,7 +1008,8 @@
         "1775772000": "bird-city",
         "1775786400": "uncovered-caches",
         "1775851200": "uncovered-caches",
-        "1775862000": "bird-city"
+        "1775862000": "bird-city",
+        "1775898000": "uncovered-caches"
       }
     },
     "the-spaceport": {
@@ -1174,7 +1180,8 @@
         "1775761200": "close-scrutiny",
         "1775772000": "electromagnetic-storm",
         "1775775600": "close-scrutiny",
-        "1775858400": "electromagnetic-storm"
+        "1775858400": "electromagnetic-storm",
+        "1775901600": "electromagnetic-storm"
       },
       "minor": {
         "1774404000": "matriarch",
@@ -1306,7 +1313,9 @@
         "1775757600": "uncovered-caches",
         "1775768400": "launch-tower-loot",
         "1775782800": "uncovered-caches",
-        "1775858400": "harvester"
+        "1775858400": "harvester",
+        "1775894400": "matriarch",
+        "1775905200": "harvester"
       }
     },
     "blue-gate": {
@@ -1478,7 +1487,8 @@
         "1775768400": "close-scrutiny",
         "1775775600": "locked-gate",
         "1775854800": "close-scrutiny",
-        "1775862000": "locked-gate"
+        "1775862000": "locked-gate",
+        "1775898000": "close-scrutiny"
       },
       "minor": {
         "1774396800": "matriarch",
@@ -1611,7 +1621,8 @@
         "1775764800": "uncovered-caches",
         "1775775600": "harvester",
         "1775854800": "matriarch",
-        "1775865600": "harvester"
+        "1775865600": "harvester",
+        "1775901600": "matriarch"
       }
     },
     "stella-montis": {
@@ -1713,7 +1724,9 @@
         "1775757600": "night-raid",
         "1775772000": "night-raid",
         "1775790000": "night-raid",
-        "1775862000": "night-raid"
+        "1775862000": "night-raid",
+        "1775894400": "night-raid",
+        "1775908800": "night-raid"
       },
       "minor": {}
     }
