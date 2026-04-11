@@ -1,4 +1,6 @@
 import type { Item, ItemsMap, ItemRarity } from '../types/item';
+import type { AppLocale } from '../../../shared/i18n/config';
+import { fetchLocalizedJson } from '../../../shared/utils/localizedContent';
 
 /**
  * Consolidates weapon tiers by combining materials from all tiers (I-IV)
@@ -66,13 +68,24 @@ function consolidateWeaponTiers(items: Item[]): Item[] {
   return [...nonWeapons, ...consolidatedWeapons];
 }
 
-export async function loadAllItems(): Promise<ItemsMap> {
-  const response = await fetch('/data/items-loot-helper.json');
-  if (!response.ok) {
-    throw new Error('Failed to load items');
-  }
-  
-  const items: Item[] = await response.json();
+interface LocalizedLootHelperItem extends Omit<Item, 'name'> {
+  name: {
+    value: string;
+    originalEn: string;
+  };
+}
+
+export async function loadAllItems(locale: AppLocale): Promise<ItemsMap> {
+  const localizedItems = await fetchLocalizedJson<LocalizedLootHelperItem[]>(
+    '/data/items-loot-helper.json',
+    locale
+  );
+
+  const items: Item[] = localizedItems.map((item) => ({
+    ...item,
+    name: { en: item.name.value },
+    originalNameEn: item.name.originalEn,
+  }));
   
   // Consolidate weapon tiers
   const consolidatedItems = consolidateWeaponTiers(items);

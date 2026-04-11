@@ -9,6 +9,7 @@ import { trackCraftCalculatorItemSelection } from '../../../shared/utils/analyti
 import { isCraftableItem, calculateTotalMaterials, getUpgradeBreakdown } from '../utils/weaponTiers';
 import type { UpgradeBreakdown } from '../utils/weaponTiers';
 import { UpgradeBreakdown as UpgradeBreakdownComponent } from './UpgradeBreakdown';
+import { useLocale } from '../../../shared/context/LocaleContext';
 
 interface RequiredItemWithName extends RequiredItem {
   name?: string;
@@ -16,11 +17,8 @@ interface RequiredItemWithName extends RequiredItem {
   value?: number | null;
 }
 
-const formatValue = (value: number): string => {
-  return value.toLocaleString('en-US');
-};
-
 export function CraftCalculator() {
+  const { locale, t, formatNumber } = useLocale();
   const [loading, setLoading] = useState(true);
   const [selectedItem, setSelectedItem] = useState<Item | null>(null);
   const [craftedStackSize, setCraftedStackSize] = useState<StackSize>(10);
@@ -30,13 +28,13 @@ export function CraftCalculator() {
   const [upgradeBreakdown, setUpgradeBreakdown] = useState<UpgradeBreakdown[]>([]);
 
   useEffect(() => {
-    loadItems()
+    loadItems(locale)
       .then(() => setLoading(false))
       .catch((err) => {
         console.error('Failed to load items:', err);
         setLoading(false);
       });
-  }, []);
+  }, [locale]);
 
   const handleItemSelect = (item: Item) => {
     setSelectedItem(item);
@@ -107,7 +105,7 @@ export function CraftCalculator() {
     return (
       <div className="calculator">
         <div className="card">
-          <p style={{ textAlign: 'center', color: '#888' }}>Loading item data...</p>
+          <p style={{ textAlign: 'center', color: '#888' }}>{t('craftCalculator.loading')}</p>
         </div>
       </div>
     );
@@ -148,7 +146,7 @@ export function CraftCalculator() {
                 {selectedItem.value != null && (
                   <p style={{ color: '#888', fontSize: '14px', margin: '4px 0 0 0', display: 'flex', alignItems: 'center', gap: '4px' }}>
                     <img src="/images/icon-coin.webp" alt="coin" style={{ width: '18px', height: '18px' }} />
-                    {formatValue(selectedItem.value)}
+                    {formatNumber(selectedItem.value)}
                   </p>
                 )}
                 <button
@@ -218,12 +216,12 @@ export function CraftCalculator() {
                     <p style={{ color: '#888', fontSize: '14px', margin: '4px 0 0 0', display: 'flex', alignItems: 'center', gap: '4px' }}>
                       <span style={{ color: '#4fc3f7' }}>{item.amountRequired}x</span>
                       <img src="/images/icon-coin.webp" alt="coin" style={{ width: '18px', height: '18px' }} />
-                      {formatValue(item.value)}
+                      {formatNumber(item.value)}
                       {item.amountRequired > 1 && (
                         <>
                           <span style={{ marginLeft: '4px' }}>=</span>
                           <img src="/images/icon-coin.webp" alt="coin" style={{ width: '18px', height: '18px' }} />
-                          {formatValue(item.value * item.amountRequired)}
+                          {formatNumber(item.value * item.amountRequired)}
                         </>
                       )}
                     </p>
@@ -291,7 +289,7 @@ export function CraftCalculator() {
                 <span style={{ color: '#888', fontSize: '14px' }}>Investment (Materials):</span>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '16px' }}>
                   <img src="/images/icon-coin.webp" alt="coin" style={{ width: '18px', height: '18px' }} />
-                  <span style={{ fontWeight: 'bold' }}>{formatValue(totalInvestment)}</span>
+                  <span style={{ fontWeight: 'bold' }}>{formatNumber(totalInvestment)}</span>
                 </div>
               </div>
               
@@ -301,7 +299,7 @@ export function CraftCalculator() {
                 </span>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '16px' }}>
                   <img src="/images/icon-coin.webp" alt="coin" style={{ width: '18px', height: '18px' }} />
-                  <span style={{ fontWeight: 'bold' }}>{formatValue(returnValue)}</span>
+                  <span style={{ fontWeight: 'bold' }}>{formatNumber(returnValue)}</span>
                 </div>
               </div>
 
@@ -310,7 +308,7 @@ export function CraftCalculator() {
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '18px' }}>
                   <img src="/images/icon-coin.webp" alt="coin" style={{ width: '18px', height: '18px' }} />
                   <span style={{ fontWeight: 'bold', color: profitColor }}>
-                    {profit > 0 ? '+' : ''}{formatValue(profit)}
+                    {profit > 0 ? '+' : ''}{formatNumber(profit)}
                   </span>
                 </div>
               </div>

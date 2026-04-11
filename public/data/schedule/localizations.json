@@ -1,0 +1,472 @@
+{
+  "_readme": {
+    "description": "Schedule localization metadata extracted from ../arcraiders-data maps.json and map-events/map-events.json"
+  },
+  "metadata": {
+    "generatedAt": "2026-04-11T19:48:41.019Z",
+    "sources": {
+      "maps": "../arcraiders-data/maps.json",
+      "mapEvents": "../arcraiders-data/map-events/map-events.json"
+    }
+  },
+  "maps": {
+    "dam-battleground": {
+      "localizations": {
+        "da": "dæmning_slagsmark",
+        "de": "Damm-Schlachtfelder",
+        "en": "Dam Battlegrounds",
+        "es": "presas_campos_de_batalla",
+        "fr": "Champ de Bataille du Barrage",
+        "hr": "brana_bojišta",
+        "it": "Campo di battaglia della diga",
+        "ja": "ダム戦場",
+        "ko-KR": "댐 전장",
+        "no": "demning_slåssmark",
+        "pl": "zapory_pola_bitwy",
+        "pt": "barragens_campo_de_batalha",
+        "pt-BR": "Campos de Batalha da Represa",
+        "ru": "дамба_поля_боя",
+        "sr": "брана_бојишта",
+        "tr": "baraj_savaş_alanları",
+        "uk": "дамба_поля_битви",
+        "zh-CN": "大坝战场",
+        "zh-TW": "水壩_戰場"
+      }
+    },
+    "the-spaceport": {
+      "localizations": {
+        "da": "rumhavn",
+        "de": "Raumhafen",
+        "en": "The Spaceport",
+        "es": "el_puerto_espacial",
+        "fr": "Port Spatial",
+        "hr": "svemirska_luka",
+        "it": "Lo spazioporto",
+        "ja": "宇宙港",
+        "ko-KR": "우주 기지",
+        "no": "romhavn",
+        "pl": "port_kosmiczny",
+        "pt": "o_porto_espacial",
+        "pt-BR": "Espaçoporto",
+        "ru": "космопорт",
+        "sr": "космопорт",
+        "tr": "uzay_limani",
+        "uk": "космопорт",
+        "zh-CN": "太空港",
+        "zh-TW": "太空港"
+      }
+    },
+    "buried-city": {
+      "localizations": {
+        "da": "begravet_by",
+        "de": "Begrabene Stadt",
+        "en": "Buried City",
+        "es": "ciudad_enterrada",
+        "fr": "Ville Enfouie",
+        "hr": "zakopani_grad",
+        "it": "Città Sepolta",
+        "ja": "埋もれた街",
+        "ko-KR": "파묻힌 도시",
+        "no": "gravlagt_by",
+        "pl": "pochowane_miasto",
+        "pt": "cidade_enterrada",
+        "pt-BR": "Cidade Soterrada",
+        "ru": "погребенный_город",
+        "sr": "покојени_град",
+        "tr": "gömülü_şehir",
+        "uk": "поховане_місто",
+        "zh-CN": "掩埋废城",
+        "zh-TW": "埋葬之城"
+      }
+    },
+    "blue-gate": {
+      "localizations": {
+        "da": "den_blaa_port",
+        "de": "Das blaue Tor",
+        "en": "The Blue Gate",
+        "es": "la_puerta_azul",
+        "fr": "Le Portail Bleu",
+        "hr": "plava_vrata",
+        "it": "Il Varco Blu",
+        "ja": "ブルーゲート",
+        "ko-KR": "블루 게이트",
+        "no": "den_blå_porten",
+        "pl": "niebieska_brama",
+        "pt": "o_portão_azul",
+        "pt-BR": "O Portão Azul",
+        "ru": "синяя_врата",
+        "sr": "плава_врата",
+        "tr": "mavi_kapı",
+        "uk": "синя_брама",
+        "zh-CN": "蓝门",
+        "zh-TW": "藍門"
+      }
+    },
+    "stella-montis": {
+      "localizations": {
+        "da": "bjergstjerne",
+        "de": "Stella Montis",
+        "en": "Stella Montis",
+        "es": "estrella_de_la_montaña",
+        "fr": "Stella Montis",
+        "hr": "planinska_zvijezda",
+        "it": "Stella Montis",
+        "ja": "ステラ・モンティス",
+        "ko-KR": "스텔라 몬티스",
+        "no": "fjellstjerne",
+        "pl": "gwiazda_góry",
+        "pt": "estrela_da_montanha",
+        "pt-BR": "Stella Montis",
+        "ru": "звезда_горы",
+        "sr": "планинска_звезда",
+        "tr": "dağ_yıldızı",
+        "uk": "зірка_гори",
+        "zh-CN": "星辰山",
+        "zh-TW": "山之星"
+      }
+    }
+  },
+  "eventTypes": {
+    "hurricane": {
+      "localizations": {
+        "en": "Hurricane"
+      }
+    },
+    "night-raid": {
+      "localizations": {
+        "en": "Night Raid",
+        "de": "Nacht-Raid",
+        "fr": "Raid nocturne",
+        "es": "Incursión Nocturna",
+        "pt": "Incursão Noturna",
+        "pt-BR": "Incursão Noturna",
+        "pl": "Nocny Rajd",
+        "no": "Nattraid",
+        "da": "Nat-raid",
+        "it": "Raid Notturno",
+        "ja": "夜襲",
+        "ko": "야간 레이드",
+        "zh-CN": "夜间奇袭",
+        "zh-TW": "夜間奇襲",
+        "ru": "Ночной рейд",
+        "tr": "Gece Baskını",
+        "uk": "Нічний рейд",
+        "hr": "Noćni prepad",
+        "sr": "Noćna racija",
+        "he": "פשיטת לילה"
+      }
+    },
+    "electromagnetic-storm": {
+      "localizations": {
+        "en": "Electromagnetic Storm",
+        "de": "Elektromagnetischer Sturm",
+        "fr": "Tempête électromagnétique",
+        "es": "Tormenta Electromagnética",
+        "pt": "Tempestade Eletromagnética",
+        "pt-BR": "Tempestade Eletromagnética",
+        "pl": "Burza Elektromagnetyczna",
+        "no": "Elektromagnetisk storm",
+        "da": "Elektromagnetisk Storm",
+        "it": "Tempesta Elettromagnetica",
+        "ja": "電磁嵐",
+        "ko": "전자기 폭풍",
+        "zh-CN": "电磁风暴",
+        "zh-TW": "電磁風暴",
+        "ru": "Электромагнитная буря",
+        "tr": "Elektromanyetik Fırtına",
+        "uk": "Електромагнітна буря",
+        "hr": "Elektromagnetska oluja",
+        "sr": "Elektromagnetna oluja",
+        "he": "סופה אלקטרומגנטית"
+      }
+    },
+    "cold-snap": {
+      "localizations": {
+        "en": "Cold Snap",
+        "de": "Kälteeinbruch",
+        "fr": "Vague de froid",
+        "es": "Ola de Frío",
+        "pt": "Onda de Frio",
+        "pt-BR": "Onda de Frio",
+        "pl": "Fala Zimna",
+        "no": "Kuldebølge",
+        "da": "Kuldebølge",
+        "it": "Ondata di Freddo",
+        "ja": "寒波",
+        "ko": "한파",
+        "zh-CN": "寒潮",
+        "zh-TW": "寒潮",
+        "ru": "Похолодание",
+        "tr": "Ani Soğuma",
+        "uk": "Похолодання",
+        "hr": "Zahlađenje",
+        "sr": "Hladni talas",
+        "he": "גל קור"
+      }
+    },
+    "locked-gate": {
+      "localizations": {
+        "en": "Locked Gate",
+        "de": "Verschlossenes Tor",
+        "fr": "Portail verrouillé",
+        "es": "Puerta Bloqueada",
+        "pt": "Portão Trancado",
+        "pt-BR": "Portão Trancado",
+        "pl": "Zamknięta Brama",
+        "no": "Låst port",
+        "da": "Låst Port",
+        "it": "Cancello Bloccato",
+        "ja": "鍵のかかった門",
+        "ko": "잠긴 문",
+        "zh-CN": "上锁的大门",
+        "zh-TW": "上鎖的大門",
+        "ru": "Запертые ворота",
+        "tr": "Kilitli Kapı",
+        "uk": "Замкнені ворота",
+        "hr": "Zaključana vrata",
+        "sr": "Zaključana kapija",
+        "he": "שער נעול"
+      }
+    },
+    "hidden-bunker": {
+      "localizations": {
+        "en": "Hidden Bunker",
+        "de": "Versteckter Bunker",
+        "fr": "Bunker caché",
+        "es": "Búnker Oculto",
+        "pt": "Bunker Oculto",
+        "pt-BR": "Bunker Oculto",
+        "pl": "Ukryty Bunkier",
+        "no": "Skjult bunker",
+        "da": "Skjult Bunker",
+        "it": "Bunker Nascosto",
+        "ja": "隠された貯蔵庫",
+        "ko": "숨겨진 벙커",
+        "zh-CN": "隐藏地堡",
+        "zh-TW": "隱藏地堡",
+        "ru": "Скрытый бункер",
+        "tr": "Gizli Sığınak",
+        "uk": "Прихований бункер",
+        "hr": "Skriveni bunker",
+        "sr": "Skriveni bunker",
+        "he": "בונקר נסתר"
+      }
+    },
+    "matriarch": {
+      "localizations": {
+        "en": "Matriarch",
+        "de": "Matriarchin",
+        "fr": "Matriarche",
+        "es": "Matriarca",
+        "pt": "Matriarca",
+        "pt-BR": "Matriarca",
+        "pl": "Matriarcha",
+        "no": "Matriark",
+        "da": "Matriarch",
+        "it": "Matriarca",
+        "ja": "マトリアーク",
+        "ko": "매트리어크",
+        "zh-CN": "族母",
+        "zh-TW": "族母",
+        "ru": "Матриарх",
+        "tr": "Matriarch",
+        "uk": "Матріарх",
+        "hr": "Matrijarh",
+        "sr": "Matrijarh",
+        "he": "Matriarch"
+      }
+    },
+    "harvester": {
+      "localizations": {
+        "en": "Harvester",
+        "de": "Harvester",
+        "fr": "Récolteur",
+        "es": "Cosechador",
+        "pt": "Ceifador",
+        "pt-BR": "Ceifador",
+        "pl": "Żniwiarz",
+        "no": "Innhøster",
+        "da": "Harvester",
+        "it": "Raccoglitore",
+        "ja": "収穫機",
+        "ko": "하베스터",
+        "zh-CN": "收割者",
+        "zh-TW": "收割者",
+        "ru": "Жнец",
+        "tr": "Harvester",
+        "uk": "Жнивар (Harvester)",
+        "hr": "Žetelac",
+        "sr": "Žetelac",
+        "he": "Harvester"
+      }
+    },
+    "lush-blooms": {
+      "localizations": {
+        "en": "Lush Blooms",
+        "de": "Üppige Blüten",
+        "fr": "Floraisons luxuriantes",
+        "es": "Floración Exuberante",
+        "pt": "Floração Exuberante",
+        "pt-BR": "Flores Fartas",
+        "pl": "Bujny Rozkwit",
+        "no": "Frodige blomster",
+        "da": "Frodige Blomster",
+        "it": "Fioritura Lussureggiante",
+        "ja": "収穫の季節",
+        "ko": "무성한 개화",
+        "zh-CN": "繁茂花丛",
+        "zh-TW": "繁茂花叢",
+        "ru": "Пышное цветение",
+        "tr": "Gür Çiçekler",
+        "uk": "Пишне цвітіння",
+        "hr": "Bujni cvat",
+        "sr": "Bujni cvat",
+        "he": "פריחה עשירה"
+      }
+    },
+    "prospecting-probes": {
+      "localizations": {
+        "en": "Prospecting Probes",
+        "de": "Schürfsonden",
+        "fr": "Sondes de prospection",
+        "es": "Sondas de Prospección",
+        "pt": "Sondas de Prospecção",
+        "pt-BR": "Sondas de Prospecção",
+        "pl": "Sondy Poszukiwawcze",
+        "no": "Prospekteringsprober",
+        "da": "Prospekteringssonder",
+        "it": "Sonde di Prospezione",
+        "ja": "探査機",
+        "ko": "탐사 프로브",
+        "zh-CN": "四处窥探的探测器",
+        "zh-TW": "四處窺探的探測器",
+        "ru": "Геологические зонды",
+        "tr": "Arama Sondaları",
+        "uk": "Розвідувальні зонди",
+        "hr": "Sonde za istraživanje",
+        "sr": "Sonde za istraživanje",
+        "he": "Probes"
+      }
+    },
+    "husk-graveyard": {
+      "localizations": {
+        "en": "Husk Graveyard",
+        "de": "Husk-Friedhof",
+        "fr": "Cimetière d'épaves",
+        "es": "Cementerio de Carcasas",
+        "pt": "Cemitério de Carcaças",
+        "pt-BR": "Cemitério de Carcaças",
+        "pl": "Cmentarzysko Pustaków",
+        "no": "Husk-kirkegård",
+        "da": "Husk Kirkegård",
+        "it": "Cimitero di Carcasse",
+        "ja": "残骸の墓場",
+        "ko": "허스크 무덤",
+        "zh-CN": "机壳墓地",
+        "zh-TW": "機殼墓地",
+        "ru": "Кладбище Оболочек",
+        "tr": "Kabuk Mezarlığı",
+        "uk": "Кладовище оболонок",
+        "hr": "Groblje ljuski",
+        "sr": "Groblje ljuštura",
+        "he": "בית קברות ל-ARCs"
+      }
+    },
+    "uncovered-caches": {
+      "localizations": {
+        "en": "Uncovered Caches",
+        "de": "Freigelegte Verstecke",
+        "fr": "Caches de raider",
+        "es": "Alijos Descubiertos",
+        "pt": "Esconderijos Descobertos",
+        "pt-BR": "Caches Descobertos",
+        "pl": "Odsłonięte Skrytki",
+        "no": "Avdekkede lagre",
+        "da": "Afslørede Depoter",
+        "it": "Scorte Scoperte",
+        "ja": "さらされた宝箱",
+        "ko": "발견된 캐시",
+        "zh-CN": "暴露的奇袭者箱",
+        "zh-TW": "暴露的奇襲者箱",
+        "ru": "Обнаруженные тайники",
+        "tr": "Açığa Çıkmış Zulalar",
+        "uk": "Відкриті схованки",
+        "hr": "Otkrivena spremišta",
+        "sr": "Otkrivena skrovišta",
+        "he": "מצבורים שנחשפו"
+      }
+    },
+    "launch-tower-loot": {
+      "localizations": {
+        "en": "Launch Tower Loot",
+        "de": "Startturm-Beute",
+        "fr": "Butin de la tour de lancement",
+        "es": "Botín de Torre de Lanzamiento",
+        "pt": "Saque da Torre de Lançamento",
+        "pt-BR": "Espólio da Torre de Lançamento",
+        "pl": "Łup z Wieży Startowej",
+        "no": "Bytte fra oppskytningstårn",
+        "da": "Affyringstårn Loot",
+        "it": "Bottino Torre di Lancio",
+        "ja": "発射塔の戦利品",
+        "ko": "발사대 전리품",
+        "zh-CN": "发射塔上的战利品",
+        "zh-TW": "發射塔上的戰利品",
+        "ru": "Лут стартовой вышки",
+        "tr": "Fırlatma Kulesi Ganimeti",
+        "uk": "Здобич пускової вежі",
+        "hr": "Plijen lansirnog tornja",
+        "sr": "Plien lansirnog tornja",
+        "he": "שלל מגדל השיגור"
+      }
+    },
+    "bird-city": {
+      "localizations": {
+        "en": "Bird City",
+        "de": "Vogelstadt",
+        "fr": "Cité des Oiseaux",
+        "es": "Ciudad de los Pájaros",
+        "pt": "Cidade dos Pássaros",
+        "pt-BR": "Cidade dos Pássaros",
+        "pl": "Ptasie Miasto",
+        "no": "Fuglebyen",
+        "da": "Fugleby",
+        "it": "Città degli Uccelli",
+        "ja": "鳥の街",
+        "ko": "버드 시티",
+        "zh-CN": "鸟城",
+        "zh-TW": "鳥城",
+        "ru": "Птичий город",
+        "tr": "Kuş Şehri",
+        "uk": "Пташине місто",
+        "hr": "Grad ptica",
+        "sr": "Grad ptica",
+        "he": "עיר הציפורים"
+      }
+    },
+    "none": {
+      "localizations": {
+        "en": "None",
+        "de": "Keine",
+        "fr": "Aucun",
+        "es": "Ninguno",
+        "pt": "Nenhum",
+        "pt-BR": "Nenhum",
+        "pl": "Brak",
+        "no": "Ingen",
+        "da": "Ingen",
+        "it": "Nessuno",
+        "ja": "なし",
+        "ko": "없음",
+        "zh-CN": "无",
+        "zh-TW": "無",
+        "ru": "Нет",
+        "tr": "Hiçbiri",
+        "uk": "Немає",
+        "hr": "Nema",
+        "sr": "Nema",
+        "he": "ללא"
+      }
+    }
+  }
+}

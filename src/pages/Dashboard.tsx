@@ -1,35 +1,37 @@
 import { Link } from 'react-router-dom';
 import { Calendar, Calculator, ListTodo, Package } from 'lucide-react';
 import { trackNavigation } from '../shared/utils/analytics';
+import { useLocale } from '../shared/context/LocaleContext';
 
 const TOOLS = [
   {
     path: '/schedule',
     icon: Calendar,
-    name: 'Event Schedule',
-    description: 'Visualize the ARC Raiders map events schedule in a better overview to plan your raids.',
+    nameKey: 'shared.tools.schedule',
+    descriptionKey: 'dashboard.tools.schedule',
   },
   {
     path: '/craft-calculator',
     icon: Calculator,
-    name: 'Craft Calculator',
-    description: 'Calculate how many items to craft to squeeze the most space out of your stash.',
+    nameKey: 'shared.tools.craftCalculator',
+    descriptionKey: 'dashboard.tools.craftCalculator',
   },
   {
     path: '/quests',
     icon: ListTodo,
-    name: 'Quest Tracker',
-    description: 'Track your quest progress with an interactive quest tree.',
+    nameKey: 'shared.tools.quests',
+    descriptionKey: 'dashboard.tools.quests',
   },
   {
     path: '/loot-helper',
     icon: Package,
-    name: 'Looting Helper',
-    description: 'Visualize crafting chains to know what to loot during raids.',
+    nameKey: 'shared.tools.lootHelper',
+    descriptionKey: 'dashboard.tools.lootHelper',
   },
 ];
 
 export function Dashboard() {
+  const { t } = useLocale();
   return (
     <div className="content-container">
       <div style={{ marginBottom: '32px' }}>
@@ -44,12 +46,10 @@ export function Dashboard() {
             letterSpacing: '1.1px',
           }}
         >
-          Raider Tools
+          {t('dashboard.title')}
         </h2>
         <p style={{ fontSize: '14px', color: '#888', lineHeight: '1.6' }}>
-            Welcome! This is my personal collection of ARC Raiders tools.
-            These started as private projects to help me out in-game, but I figured they were too useful not to share.
-            If they help you out, let me know! Pick a tool below and dive in.
+          {t('dashboard.intro')}
         </p>
       </div>
 
@@ -60,59 +60,63 @@ export function Dashboard() {
           gap: '24px',
         }}
       >
-        {TOOLS.map((tool) => (
-          <Link
-            key={tool.path}
-            to={tool.path}
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              padding: '24px',
-              background: '#2c2c2c',
-              border: '2px solid #444',
-              borderRadius: '8px',
-              textDecoration: 'none',
-              color: '#e0e0e0',
-              transition: 'all 0.2s ease',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = '#4fc3f7';
-              e.currentTarget.style.background = '#3c3c3c';
-              e.currentTarget.style.transform = 'translateY(-4px)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = '#444';
-              e.currentTarget.style.background = '#2c2c2c';
-              e.currentTarget.style.transform = 'translateY(0)';
-            }}
-            onClick={() => trackNavigation(tool.name, 'dashboard')}
-          >
-            <tool.icon
-              size={48}
-              style={{ color: '#4fc3f7', marginBottom: '16px' }}
-            />
-            <h3
+        {TOOLS.map((tool) => {
+          const toolName = t(tool.nameKey);
+
+          return (
+            <Link
+              key={tool.path}
+              to={tool.path}
               style={{
-                fontSize: '18px',
-                fontWeight: 600,
-                marginBottom: '8px',
+                display: 'flex',
+                flexDirection: 'column',
+                padding: '24px',
+                background: '#2c2c2c',
+                border: '2px solid #444',
+                borderRadius: '8px',
+                textDecoration: 'none',
                 color: '#e0e0e0',
+                transition: 'all 0.2s ease',
               }}
-            >
-              {tool.name}
-            </h3>
-            <p
-              style={{
-                fontSize: '12px',
-                color: '#888',
-                lineHeight: '1.5',
-                margin: 0,
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = '#4fc3f7';
+                e.currentTarget.style.background = '#3c3c3c';
+                e.currentTarget.style.transform = 'translateY(-4px)';
               }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = '#444';
+                e.currentTarget.style.background = '#2c2c2c';
+                e.currentTarget.style.transform = 'translateY(0)';
+              }}
+              onClick={() => trackNavigation(toolName, 'dashboard')}
             >
-              {tool.description}
-            </p>
-          </Link>
-        ))}
+              <tool.icon
+                size={48}
+                style={{ color: '#4fc3f7', marginBottom: '16px' }}
+              />
+              <h3
+                style={{
+                  fontSize: '18px',
+                  fontWeight: 600,
+                  marginBottom: '8px',
+                  color: '#e0e0e0',
+                }}
+              >
+                {toolName}
+              </h3>
+              <p
+                style={{
+                  fontSize: '12px',
+                  color: '#888',
+                  lineHeight: '1.5',
+                  margin: 0,
+                }}
+              >
+                {t(tool.descriptionKey)}
+              </p>
+            </Link>
+          );
+        })}
       </div>
     </div>
   );

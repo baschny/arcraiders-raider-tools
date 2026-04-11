@@ -14,6 +14,7 @@ export type ItemRarity = 'Common' | 'Uncommon' | 'Rare' | 'Epic' | 'Legendary';
 export interface Item {
   id: string;
   name: ItemName;
+  originalNameEn?: string;
   description?: ItemName;
   type: string;
   rarity: ItemRarity;

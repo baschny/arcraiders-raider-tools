@@ -9,6 +9,7 @@ export interface EventType {
 
 export interface MapInfo {
   displayName: string;
+  localizations?: Record<string, string>;
 }
 
 export interface EventSchedule {
@@ -37,4 +38,9 @@ export interface MapEventsData {
   maps: Record<string, MapInfo>;
   schedule: Record<string, EventSchedule>;
   metadata?: ScheduleMetadata;
+}
+
+export interface ScheduleLocalizationsData {
+  maps?: Record<string, { localizations?: Record<string, string> }>;
+  eventTypes?: Record<string, { localizations?: Record<string, string> }>;
 }

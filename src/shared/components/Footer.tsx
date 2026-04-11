@@ -1,4 +1,7 @@
+import { useLocale } from '../context/LocaleContext';
+
 export function Footer() {
+  const { t } = useLocale();
   const DiscordIcon = () => (
     <svg
       width="20"
@@ -15,15 +18,15 @@ export function Footer() {
     <div className="app-footer">
       <div className="footer-content">
         <p className="footer-text">
-          Data provided by{' '}
+          {t('shared.footer.thanksPrefix')}
           <a
             href="https://github.com/RaidTheory/arcraiders-data"
             target="_blank"
             rel="noopener noreferrer"
           >
             RaidTheory/arcraiders-data
-          </a>{' '}
-          and{' '}
+          </a>
+          {t('shared.footer.thanksMiddle')}
           <a
             href="https://arctracker.io"
             target="_blank"
@@ -31,7 +34,7 @@ export function Footer() {
           >
             arctracker.io
           </a>
-          . Thank you for making this data available!
+          {t('shared.footer.thanksSuffix')}
         </p>
         <div className="footer-discord">
           <a
@@ -39,20 +42,20 @@ export function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             className="discord-link"
-            title="Contact baschny on Discord (opens external app)"
+            title={t('shared.footer.contactDiscord')}
           >
             <DiscordIcon />
-            <span>Contact</span>
+            <span>{t('shared.footer.contact')}</span>
           </a>
           <a
             href="https://discord.gg/JU5BJwE42Z"
             target="_blank"
             rel="noopener noreferrer"
             className="discord-link"
-            title="Join ARCTracker.io Discord server (opens external app)"
+            title={t('shared.footer.joinDiscord')}
           >
             <DiscordIcon />
-            <span>ARCTracker Discord</span>
+            <span>{t('shared.footer.arcTrackerDiscord')}</span>
           </a>
         </div>
       </div>

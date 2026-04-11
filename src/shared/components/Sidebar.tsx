@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { useLocale } from '../context/LocaleContext';
 import { 
   Home, 
   Calendar, 
@@ -12,16 +13,17 @@ import {
 import { trackNavigation } from '../utils/analytics';
 
 const NAV_ITEMS = [
-  { path: '/', icon: Home, label: 'Home' },
-  { path: '/schedule', icon: Calendar, label: 'Event Schedule' },
-  { path: '/craft-calculator', icon: Calculator, label: 'Craft Calculator' },
-  { path: '/quests', icon: ListTodo, label: 'Quest Tracker' },
-  { path: '/loot-helper', icon: Package, label: 'Looting Helper' },
+  { path: '/', icon: Home, labelKey: 'shared.tools.home' },
+  { path: '/schedule', icon: Calendar, labelKey: 'shared.tools.schedule' },
+  { path: '/craft-calculator', icon: Calculator, labelKey: 'shared.tools.craftCalculator' },
+  { path: '/quests', icon: ListTodo, labelKey: 'shared.tools.quests' },
+  { path: '/loot-helper', icon: Package, labelKey: 'shared.tools.lootHelper' },
 ];
 
 const SIDEBAR_STORAGE_KEY = 'raider-tools:sidebar-collapsed';
 
 export function Sidebar() {
+  const { t } = useLocale();
   const [collapsed, setCollapsed] = useState(() => {
     try {
       const saved = localStorage.getItem(SIDEBAR_STORAGE_KEY);
@@ -43,31 +45,34 @@ export function Sidebar() {
   return (
     <div className={`app-sidebar ${collapsed ? 'collapsed' : ''}`}>
       <div className="sidebar-header">
-        {!collapsed && <h2 className="sidebar-title">Tools</h2>}
+        {!collapsed && <h2 className="sidebar-title">{t('shared.sidebar.title')}</h2>}
         <button
           className="sidebar-toggle"
           onClick={() => setCollapsed(!collapsed)}
-          title={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+          title={collapsed ? t('shared.sidebar.expand') : t('shared.sidebar.collapseTitle')}
         >
           {collapsed ? <ChevronRight size={16} /> : <ChevronLeft size={16} />}
-          {!collapsed && <span className="sidebar-toggle-text">Collapse</span>}
+          {!collapsed && <span className="sidebar-toggle-text">{t('shared.sidebar.collapse')}</span>}
         </button>
       </div>
       <nav className="sidebar-nav">
         <ul className="sidebar-nav-list">
-          {NAV_ITEMS.map((item) => (
-            <li key={item.path} className="sidebar-nav-item">
-              <NavLink
-                to={item.path}
-                className={({ isActive }) => (isActive ? 'active' : '')}
-                title={collapsed ? item.label : undefined}
-                onClick={() => trackNavigation(item.label, 'sidebar')}
-              >
-                <item.icon size={20} />
-                {!collapsed && <span className="sidebar-nav-text">{item.label}</span>}
-              </NavLink>
-            </li>
-          ))}
+          {NAV_ITEMS.map((item) => {
+            const label = t(item.labelKey);
+            return (
+              <li key={item.path} className="sidebar-nav-item">
+                <NavLink
+                  to={item.path}
+                  className={({ isActive }) => (isActive ? 'active' : '')}
+                  title={collapsed ? label : undefined}
+                  onClick={() => trackNavigation(label, 'sidebar')}
+                >
+                  <item.icon size={20} />
+                  {!collapsed && <span className="sidebar-nav-text">{label}</span>}
+                </NavLink>
+              </li>
+            );
+          })}
         </ul>
       </nav>
     </div>

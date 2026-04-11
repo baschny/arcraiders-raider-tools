@@ -48,6 +48,7 @@ import {
 } from './utils/api';
 import { buildItemInsights, type ItemInsightsMap } from './utils/itemInsights';
 import { useAuth } from '../../shared/context/AuthContext';
+import { useLocale } from '../../shared/context/LocaleContext';
 
 import { Sidebar, type ViewId } from './components/Sidebar';
 import { GlobalHeader } from './components/GlobalHeader';
@@ -62,6 +63,7 @@ import './styles/main.scss';
 
 export function QuartermasterApp() {
   const { revalidate } = useAuth();
+  const { locale } = useLocale();
 
   // Core state
   const [itemsMap, setItemsMap] = useState<ItemsMap | null>(null);
@@ -92,7 +94,7 @@ export function QuartermasterApp() {
     async function initialize() {
       try {
         // Load static items first
-        const items = await loadAllItems();
+        const items = await loadAllItems(locale);
         setItemsMap(items);
         
         // Load stored lists
@@ -118,7 +120,7 @@ export function QuartermasterApp() {
         }
 
         // Load hideout definitions and cached state (CR-004)
-        const hideoutDefs = await loadHideoutDefinitions();
+        const hideoutDefs = await loadHideoutDefinitions(locale);
         setHideoutDefinitions(hideoutDefs);
 
         const hideout = await getHideout();
@@ -145,7 +147,7 @@ export function QuartermasterApp() {
       }
     }
     initialize();
-  }, []);
+  }, [locale]);
 
   // Derive bench levels from cached hideout (CR-005)
   const benchLevels: Record<BenchId, number> = useMemo(() => {

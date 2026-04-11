@@ -1,6 +1,8 @@
 import { useState, useEffect, useMemo } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import type { MapEventsData, EventType } from '../types/mapEvents';
+import { useLocale } from '../../../shared/context/LocaleContext';
+import { getLocalizedEventName, getLocalizedMapName } from '../utils/localization';
 
 interface ScheduleProps {
   data: MapEventsData;
@@ -39,6 +41,7 @@ function clampDateToRange(date: Date, minDateMs: number | null, maxDateMs: numbe
 }
 
 export function Schedule({ data }: ScheduleProps) {
+  const { locale, compareText, t } = useLocale();
   const mapIds = useMemo(() => Object.keys(data.maps), [data.maps]);
   const [currentTime, setCurrentTime] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(() => getStartOfDay(new Date()));
@@ -108,7 +111,7 @@ export function Schedule({ data }: ScheduleProps) {
 
   // Format current time for display
   const formatTime = (date: Date): string => {
-    return date.toLocaleTimeString('en-US', {
+    return date.toLocaleTimeString(locale, {
       hour: '2-digit',
       minute: '2-digit',
       hour12: false,
@@ -119,11 +122,11 @@ export function Schedule({ data }: ScheduleProps) {
   const getTimezone = (): string => {
     const timezoneName = Intl.DateTimeFormat().resolvedOptions().timeZone;
     const date = new Date();
-    const shortTz = date.toLocaleTimeString('en-US', { timeZoneName: 'short' }).split(' ').pop() || '';
+    const shortTz = date.toLocaleTimeString(locale, { timeZoneName: 'short' }).split(' ').pop() || '';
     return `${timezoneName} (${shortTz})`;
   };
   const formatScheduleDate = (date: Date): string => {
-    return date.toLocaleDateString('en-US', {
+    return date.toLocaleDateString(locale, {
       weekday: 'short',
       month: 'short',
       day: 'numeric',
@@ -192,7 +195,10 @@ export function Schedule({ data }: ScheduleProps) {
         if (a.event.category !== b.event.category) {
           return a.event.category === 'major' ? -1 : 1;
         }
-        return a.event.displayName.localeCompare(b.event.displayName);
+        return compareText(
+          getLocalizedEventName(a.event, locale),
+          getLocalizedEventName(b.event, locale)
+        );
       });
   };
 
@@ -258,7 +264,7 @@ export function Schedule({ data }: ScheduleProps) {
               className="date-switcher-button"
               disabled={!canGoToPreviousDay}
               onClick={() => setSelectedDate(addDays(activeDate, -1))}
-              aria-label="Previous day"
+              aria-label={t('schedule.previousDay')}
             >
               <ChevronLeft size={18} />
             </button>
@@ -267,7 +273,7 @@ export function Schedule({ data }: ScheduleProps) {
               className={`selected-date ${isViewingToday ? 'is-today' : ''}`}
               onClick={() => setSelectedDate(getStartOfDay(new Date()))}
               disabled={isViewingToday}
-              title="Go to today"
+              title={t('schedule.goToToday')}
             >
               {formatScheduleDate(activeDate)}
             </button>
@@ -276,14 +282,14 @@ export function Schedule({ data }: ScheduleProps) {
               className="date-switcher-button"
               disabled={!canGoToNextDay}
               onClick={() => setSelectedDate(addDays(activeDate, 1))}
-              aria-label="Next day"
+              aria-label={t('schedule.nextDay')}
             >
               <ChevronRight size={18} />
             </button>
           </div>
           {data.metadata?.generatedAt && (
             <div className="generated-at">
-              Updated: {new Date(data.metadata.generatedAt).toLocaleString('en-US', {
+              {t('schedule.updated')}: {new Date(data.metadata.generatedAt).toLocaleString(locale, {
                 month: 'short',
                 day: 'numeric',
                 year: 'numeric',
@@ -301,6 +307,7 @@ export function Schedule({ data }: ScheduleProps) {
             {activeEventTypes.map(({ eventId, event }) => {
               const isAvailableOnActiveDate = eventsOnActiveDate.has(eventId);
               const canInteract = isAvailableOnActiveDate || pinnedEventType === eventId;
+              const localizedEventName = getLocalizedEventName(event, locale);
 
               return (
                 <div
@@ -317,11 +324,11 @@ export function Schedule({ data }: ScheduleProps) {
                   <div className="legend-icon-wrapper">
                     <img
                       src={getLocalIconPath(event.icon)}
-                      alt={event.displayName}
+                      alt={localizedEventName}
                       className="legend-icon"
                     />
                   </div>
-                  <span className="legend-name">{event.displayName}</span>
+                  <span className="legend-name">{localizedEventName}</span>
                 </div>
               );
             })}
@@ -334,7 +341,7 @@ export function Schedule({ data }: ScheduleProps) {
         <div className="schedule-grid">
           {/* Hour labels header */}
           <div className="schedule-header">
-            <div className="map-label-header">Map</div>
+            <div className="map-label-header">{t('schedule.mapHeader')}</div>
             <div className="hours-container">
               {HOURS.map((hour) => (
                 <div key={hour} className={`hour-label ${isViewingToday && hour === currentLocalHour ? 'current-hour' : ''}`}>
@@ -347,10 +354,11 @@ export function Schedule({ data }: ScheduleProps) {
           {/* Map rows */}
           {mapIds.map((mapId) => {
             const mapInfo = data.maps[mapId];
+            const localizedMapName = getLocalizedMapName(mapId, mapInfo, locale);
             return (
               <div key={mapId} className="map-row">
                 <div className="map-label" data-map={mapId}>
-                  <span className="map-name-text">{mapInfo.displayName}</span>
+                  <span className="map-name-text">{localizedMapName}</span>
                 </div>
                 <div className="cells-container">
                   {HOURS.map((hour, index) => {
@@ -358,6 +366,12 @@ export function Schedule({ data }: ScheduleProps) {
                     const isMajorHighlighted = events.major && activeEventType === events.major.eventId;
                     const isMinorHighlighted = events.minor && activeEventType === events.minor.eventId;
                     const isCurrentHour = isViewingToday && hour === currentLocalHour;
+                    const majorEventName = events.major
+                      ? getLocalizedEventName(events.major.event, locale)
+                      : '';
+                    const minorEventName = events.minor
+                      ? getLocalizedEventName(events.minor.event, locale)
+                      : '';
                     
                     return (
                       <div
@@ -374,12 +388,12 @@ export function Schedule({ data }: ScheduleProps) {
                           onMouseEnter={() => events.major && !pinnedEventType && setHoveredEventType(events.major.eventId)}
                           onMouseLeave={() => setHoveredEventType(null)}
                           onClick={() => events.major && handleEventToggle(events.major.eventId)}
-                          title={events.major ? events.major.event.displayName : ''}
+                          title={majorEventName}
                         >
                           {events.major && (
                             <img
                               src={getLocalIconPath(events.major.event.icon)}
-                              alt={events.major.event.displayName}
+                              alt={majorEventName}
                               className="event-icon"
                             />
                           )}
@@ -395,12 +409,12 @@ export function Schedule({ data }: ScheduleProps) {
                           onMouseEnter={() => events.minor && !pinnedEventType && setHoveredEventType(events.minor.eventId)}
                           onMouseLeave={() => setHoveredEventType(null)}
                           onClick={() => events.minor && handleEventToggle(events.minor.eventId)}
-                          title={events.minor ? events.minor.event.displayName : ''}
+                          title={minorEventName}
                         >
                           {events.minor && (
                             <img
                               src={getLocalIconPath(events.minor.event.icon)}
-                              alt={events.minor.event.displayName}
+                              alt={minorEventName}
                               className="event-icon"
                             />
                           )}

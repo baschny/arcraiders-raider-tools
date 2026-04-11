@@ -18,8 +18,17 @@ export interface HideoutLevelDefinition {
 export interface HideoutModuleDefinition {
   id: string;
   name: string;
+  originalNameEn?: string;
   maxLevel: number;
   levels: HideoutLevelDefinition[];
+}
+
+export interface LocalizedHideoutModuleDefinition
+  extends Omit<HideoutModuleDefinition, 'name'> {
+  name: {
+    value: string;
+    originalEn: string;
+  };
 }
 
 // Cached hideout state (from API sync, stored in IndexedDB)

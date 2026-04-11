@@ -23,9 +23,27 @@ export interface ItemRecipe {
   [materialId: string]: number;
 }
 
+export interface LocalizedItemName {
+  value: string;
+  originalEn: string;
+}
+
 export interface Item {
   id: string;
   name: string;
+  originalNameEn?: string;
+  stackSize: number;
+  value?: number | null;
+  imageFilename?: string;
+  isWeapon?: boolean | null;
+  recipe?: ItemRecipe;
+  upgradeCost?: ItemRecipe;
+  craftQuantity?: number;
+}
+
+export interface LocalizedItem {
+  id: string;
+  name: LocalizedItemName;
   stackSize: number;
   value?: number | null;
   imageFilename?: string;
@@ -37,4 +55,8 @@ export interface Item {
 
 export interface ItemDatabase {
   [itemId: string]: Item;
+}
+
+export interface LocalizedItemDatabase {
+  [itemId: string]: LocalizedItem;
 }

@@ -2,23 +2,27 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { ChevronDown } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
 import { LoginButton } from './LoginButton';
+import { useLocale } from '../context/LocaleContext';
 
 const TOOLS = [
-  { path: '/', name: 'Raider Tools' },
-  { path: '/schedule', name: 'Event Schedule' },
-  { path: '/craft-calculator', name: 'Craft Calculator' },
-  { path: '/quests', name: 'Quest Tracker' },
-  { path: '/loot-helper', name: 'Looting Helper' },
-  { path: '/quartermaster', name: 'Quartermaster' },
+  { path: '/', nameKey: 'app.name' },
+  { path: '/schedule', nameKey: 'shared.tools.schedule' },
+  { path: '/craft-calculator', nameKey: 'shared.tools.craftCalculator' },
+  { path: '/quests', nameKey: 'shared.tools.quests' },
+  { path: '/loot-helper', nameKey: 'shared.tools.lootHelper' },
+  { path: '/quartermaster', nameKey: 'shared.tools.quartermaster' },
 ];
 
 const TOOLS_FOR_SWITCHER = TOOLS.filter((tool) => tool.path !== '/');
 
 export function Header() {
+  const { locale, localeOptions, setLocale, t } = useLocale();
   const navigate = useNavigate();
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
+  const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const languageDropdownRef = useRef<HTMLDivElement>(null);
 
   const currentTool = TOOLS.find((tool) => tool.path === location.pathname) || TOOLS[0];
 
@@ -26,6 +30,12 @@ export function Header() {
     function handleClickOutside(event: MouseEvent) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setIsOpen(false);
+      }
+      if (
+        languageDropdownRef.current &&
+        !languageDropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsLanguageOpen(false);
       }
     }
 
@@ -38,64 +48,61 @@ export function Header() {
     setIsOpen(false);
   };
 
+  const handleLocaleSelect = (nextLocale: typeof locale) => {
+    setLocale(nextLocale);
+    setIsLanguageOpen(false);
+  };
+
   return (
     <div className="app-header">
       <h1>
         <span className="brand-name">ARC Raiders</span>
-        <span className="app-name">{currentTool.name}</span>
+        <span className="app-name">{t(currentTool.nameKey)}</span>
       </h1>
       <div className="header-actions">
-        <div style={{ position: 'relative' }} ref={dropdownRef}>
+        <div className="header-dropdown" ref={dropdownRef}>
           <button className="tool-switcher" onClick={() => setIsOpen(!isOpen)}>
-            <span>Switch Tool</span> <ChevronDown size={16} />
+            <span>{t('shared.header.switchTool')}</span> <ChevronDown size={16} />
           </button>
         {isOpen && (
-          <div
-            style={{
-              position: 'absolute',
-              top: '100%',
-              right: 0,
-              marginTop: '8px',
-              background: '#2c2c2c',
-              border: '1px solid #555',
-              borderRadius: '4px',
-              minWidth: '200px',
-              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)',
-              zIndex: 1000,
-            }}
-          >
+          <div className="header-menu">
             {TOOLS_FOR_SWITCHER.map((tool) => (
               <button
                 key={tool.path}
                 onClick={() => handleToolSelect(tool.path)}
-                style={{
-                  display: 'block',
-                  width: '100%',
-                  padding: '12px 16px',
-                  background: tool.path === location.pathname ? '#3c3c3c' : 'transparent',
-                  border: 'none',
-                  color: tool.path === location.pathname ? '#4fc3f7' : '#e0e0e0',
-                  textAlign: 'left',
-                  cursor: 'pointer',
-                  fontSize: '12px',
-                  transition: 'all 0.2s ease',
-                }}
-                onMouseEnter={(e) => {
-                  if (tool.path !== location.pathname) {
-                    (e.target as HTMLElement).style.background = '#3c3c3c';
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  if (tool.path !== location.pathname) {
-                    (e.target as HTMLElement).style.background = 'transparent';
-                  }
-                }}
+                className={`header-menu-item ${
+                  tool.path === location.pathname ? 'header-menu-item--active' : ''
+                }`}
               >
-                {tool.name}
+                {t(tool.nameKey)}
               </button>
             ))}
           </div>
         )}
+        </div>
+        <div className="header-dropdown" ref={languageDropdownRef}>
+          <button
+            className="tool-switcher"
+            onClick={() => setIsLanguageOpen(!isLanguageOpen)}
+            aria-label={t('shared.header.switchLanguage')}
+          >
+            <span>{locale}</span> <ChevronDown size={16} />
+          </button>
+          {isLanguageOpen && (
+            <div className="header-menu">
+              {localeOptions.map((option) => (
+                <button
+                  key={option.code}
+                  onClick={() => handleLocaleSelect(option.code)}
+                  className={`header-menu-item ${
+                    option.code === locale ? 'header-menu-item--active' : ''
+                  }`}
+                >
+                  {option.nativeLabel}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
         <LoginButton />
       </div>

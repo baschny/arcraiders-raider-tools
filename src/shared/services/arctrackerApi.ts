@@ -25,12 +25,21 @@ import {
   updateCacheMeta,
 } from './cacheService';
 import { getToken } from '../utils/tokenStorage';
+import { DEFAULT_LOCALE, LOCALE_STORAGE_KEY, type AppLocale } from '../i18n/config';
 
 const API_BASE = 'https://api.raider-tools.app/arctracker';
-const LOCALE = 'en';
 const TIMEOUT_MS = 10000;
 const MAX_RETRIES = 1;
 const STASH_PER_PAGE = 500;
+
+function getApiLocale(): AppLocale {
+  if (typeof window === 'undefined') {
+    return DEFAULT_LOCALE;
+  }
+
+  const stored = window.localStorage.getItem(LOCALE_STORAGE_KEY);
+  return stored === 'de' || stored === 'pt-BR' || stored === 'en' ? stored : DEFAULT_LOCALE;
+}
 
 /**
  * Create an API error object.
@@ -162,8 +171,9 @@ export async function syncProfile(): Promise<CachedProfile> {
  * Fetch a single page of stash data.
  */
 async function fetchStashPage(page: number): Promise<ArctrackerStashResponse> {
+  const locale = getApiLocale();
   return apiRequest<ArctrackerStashResponse>(
-    `/v2/user/stash?locale=${LOCALE}&page=${page}&per_page=${STASH_PER_PAGE}&sort=slot`
+    `/v2/user/stash?locale=${locale}&page=${page}&per_page=${STASH_PER_PAGE}&sort=slot`
   );
 }
 
@@ -206,8 +216,9 @@ export async function syncStashAllPages(): Promise<CachedStash> {
  * Sync and cache the loadout.
  */
 export async function syncLoadout(): Promise<CachedLoadout> {
+  const locale = getApiLocale();
   const response = await apiRequest<ArctrackerLoadoutResponse>(
-    `/v2/user/loadout?locale=${LOCALE}`
+    `/v2/user/loadout?locale=${locale}`
   );
 
   const cachedLoadout: CachedLoadout = {

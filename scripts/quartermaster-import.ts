@@ -12,6 +12,9 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
+const LOCALES = ['en', 'de', 'pt-BR'] as const;
+type OutputLocale = (typeof LOCALES)[number];
+
 // Types
 type BenchId =
   | 'equipment_bench'
@@ -46,7 +49,10 @@ interface SourceItem {
 }
 
 interface PlannerItem {
-  name: string;
+  name: {
+    value: string;
+    originalEn: string;
+  };
   description: string;
   icon: string;
   rarity: Rarity;
@@ -180,11 +186,26 @@ function sortObjectKeys<T>(obj: Record<string, T>): Record<string, T> {
   return sorted;
 }
 
+function getLocalizedValue(
+  values: Record<string, string> | undefined,
+  locale: OutputLocale
+): string {
+  if (!values) {
+    return '';
+  }
+
+  if (locale === 'pt-BR') {
+    return values['pt-BR'] ?? values.pt ?? values.en ?? '';
+  }
+
+  return values[locale] ?? values.en ?? '';
+}
+
 /**
  * Process a single source item into a PlannerItem
  * Returns undefined if item should be excluded
  */
-function processItem(source: SourceItem): { id: string; item: PlannerItem } | undefined {
+function processItem(source: SourceItem, locale: OutputLocale): { id: string; item: PlannerItem } | undefined {
   // 3.1.1 Exclude by type
   if (EXCLUDED_TYPES.has(source.type)) {
     return undefined;
@@ -204,8 +225,11 @@ function processItem(source: SourceItem): { id: string; item: PlannerItem } | un
 
   // Build PlannerItem with canonical key order
   const item: PlannerItem = {
-    name: source.name.en,
-    description: source.description?.en ?? '',
+    name: {
+      value: getLocalizedValue(source.name, locale),
+      originalEn: source.name.en,
+    },
+    description: getLocalizedValue(source.description, locale),
     icon: source.imageFilename ?? '',
     rarity: source.rarity,
     type: source.type,
@@ -245,7 +269,10 @@ interface HideoutSource {
 
 interface HideoutModuleOutput {
   id: string;
-  name: string;
+  name: {
+    value: string;
+    originalEn: string;
+  };
   maxLevel: number;
   levels: {
     level: number;
@@ -253,9 +280,9 @@ interface HideoutModuleOutput {
   }[];
 }
 
-function generateHideoutData(scriptDir: string): void {
+function generateHideoutData(scriptDir: string, locale: OutputLocale): void {
   const sourceDir = path.resolve(scriptDir, '../../arcraiders-data/hideout');
-  const destFile = path.resolve(scriptDir, '../public/data/quartermaster/hideout.json');
+  const destFile = path.resolve(scriptDir, `../public/data/quartermaster/hideout.${locale}.json`);
 
   if (!fs.existsSync(sourceDir)) {
     console.error(`Error: Hideout source directory does not exist: ${sourceDir}`);
@@ -280,7 +307,10 @@ function generateHideoutData(scriptDir: string): void {
 
       modules.push({
         id: source.id,
-        name: source.name.en,
+        name: {
+          value: getLocalizedValue(source.name, locale),
+          originalEn: source.name.en,
+        },
         maxLevel: source.maxLevel,
         levels: source.levels.map(level => ({
           level: level.level,
@@ -306,7 +336,7 @@ function generateHideoutData(scriptDir: string): void {
   fs.writeFileSync(destFile, JSON.stringify(modules, null, 2) + '\n');
 
   console.log(`Done! Generated ${destFile}`);
-  console.log(`  Modules: ${modules.length}`);
+  console.log(`  Modules (${locale}): ${modules.length}`);
 }
 
 /**
@@ -315,7 +345,6 @@ function generateHideoutData(scriptDir: string): void {
 function main(): void {
   const scriptDir = path.dirname(new URL(import.meta.url).pathname);
   const sourceDir = path.resolve(scriptDir, '../../arcraiders-data/items');
-  const destFile = path.resolve(scriptDir, '../public/data/quartermaster/items.json');
 
   // Check source directory exists
   if (!fs.existsSync(sourceDir)) {
@@ -330,54 +359,51 @@ function main(): void {
 
   console.log(`Processing ${files.length} item files from ${sourceDir}...`);
 
-  const items: Record<string, PlannerItem> = {};
-  let processedCount = 0;
-  let excludedCount = 0;
+  for (const locale of LOCALES) {
+    const destFile = path.resolve(scriptDir, `../public/data/quartermaster/items.${locale}.json`);
+    const items: Record<string, PlannerItem> = {};
+    let processedCount = 0;
+    let excludedCount = 0;
 
-  for (const file of files) {
-    const filePath = path.join(sourceDir, file);
-    
-    try {
-      const content = fs.readFileSync(filePath, 'utf-8');
-      const source: SourceItem = JSON.parse(content);
-      
-      const result = processItem(source);
-      if (result) {
-        items[result.id] = result.item;
-        processedCount++;
-      } else {
-        excludedCount++;
+    for (const file of files) {
+      const filePath = path.join(sourceDir, file);
+
+      try {
+        const content = fs.readFileSync(filePath, 'utf-8');
+        const source: SourceItem = JSON.parse(content);
+
+        const result = processItem(source, locale);
+        if (result) {
+          items[result.id] = result.item;
+          processedCount++;
+        } else {
+          excludedCount++;
+        }
+      } catch (err) {
+        console.error(`Error processing ${file}:`, err);
+        process.exit(1);
       }
-    } catch (err) {
-      console.error(`Error processing ${file}:`, err);
-      process.exit(1);
     }
+
+    const sortedItems = sortObjectKeys(items);
+    const output: OutputData = {
+      version: 1,
+      items: sortedItems,
+    };
+
+    const destDir = path.dirname(destFile);
+    if (!fs.existsSync(destDir)) {
+      fs.mkdirSync(destDir, { recursive: true });
+    }
+
+    fs.writeFileSync(destFile, JSON.stringify(output, null, 2) + '\n');
+
+    console.log(`Done! Generated ${destFile}`);
+    console.log(`  Processed (${locale}): ${processedCount} items`);
+    console.log(`  Excluded (${locale}): ${excludedCount} items`);
+
+    generateHideoutData(scriptDir, locale);
   }
-
-  // Sort items by itemId (ASCII ascending)
-  const sortedItems = sortObjectKeys(items);
-
-  // Build output structure
-  const output: OutputData = {
-    version: 1,
-    items: sortedItems,
-  };
-
-  // Ensure output directory exists
-  const destDir = path.dirname(destFile);
-  if (!fs.existsSync(destDir)) {
-    fs.mkdirSync(destDir, { recursive: true });
-  }
-
-  // Write with stable formatting
-  fs.writeFileSync(destFile, JSON.stringify(output, null, 2) + '\n');
-
-  console.log(`Done! Generated ${destFile}`);
-  console.log(`  Processed: ${processedCount} items`);
-  console.log(`  Excluded: ${excludedCount} items`);
-
-  // Generate hideout data (CR-002)
-  generateHideoutData(scriptDir);
 }
 
 main();

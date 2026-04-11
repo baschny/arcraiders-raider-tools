@@ -8,10 +8,14 @@ import { getActiveStashItems } from './utils/stash';
 import { trackGoalItemAdded, trackGoalItemRemoved, trackGoalItemToggled, trackStashItemAdded, trackStashItemRemoved, trackStashItemToggled } from './utils/analytics';
 import type { ItemsMap } from './types/item';
 import type { ReverseMap } from './utils/craftingChain';
+import { useLocale } from '../../shared/context/LocaleContext';
+import { LoadingSpinner } from '../../shared/components/LoadingSpinner';
+import { ErrorDisplay } from '../../shared/components/ErrorDisplay';
 import './styles/main.scss';
 import './styles/accordion.scss';
 
 export function LootHelperApp() {
+  const { locale, t } = useLocale();
   const [itemsMap, setItemsMap] = useState<ItemsMap | null>(null);
   const [goalItemIds, setGoalItemIds] = useState<string[]>([]);
   const [disabledGoalItemIds, setDisabledGoalItemIds] = useState<Set<string>>(new Set());
@@ -23,7 +27,7 @@ export function LootHelperApp() {
 
   // Load items on mount
   useEffect(() => {
-    loadAllItems()
+    loadAllItems(locale)
       .then((items) => {
         setItemsMap(items);
         setGoalItemIds(loadGoalItems());
@@ -37,7 +41,7 @@ export function LootHelperApp() {
         setError(err.message);
         setLoading(false);
       });
-  }, []);
+  }, [locale]);
 
   const activeStashItemIds = useMemo(() => {
     return getActiveStashItems(stashItemIds, disabledStashItemIds);
@@ -215,57 +219,15 @@ export function LootHelperApp() {
 
 
   if (loading) {
-    return (
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          height: '100vh',
-          background: '#1a1a1a',
-          color: '#e0e0e0',
-          fontSize: '18px',
-        }}
-      >
-        Loading item data...
-      </div>
-    );
+    return <LoadingSpinner message={t('lootHelper.loading')} />;
   }
 
   if (error) {
-    return (
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          height: '100vh',
-          background: '#1a1a1a',
-          color: '#e53935',
-          fontSize: '18px',
-        }}
-      >
-        Error: {error}
-      </div>
-    );
+    return <ErrorDisplay message={error} />;
   }
 
   if (!itemsMap) {
-    return (
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          height: '100vh',
-          background: '#1a1a1a',
-          color: '#e0e0e0',
-          fontSize: '18px',
-        }}
-      >
-        No item data available
-      </div>
-    );
+    return <ErrorDisplay message={t('lootHelper.noData')} />;
   }
 
   return (

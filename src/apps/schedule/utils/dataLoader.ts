@@ -1,7 +1,8 @@
-import type { MapEventsData } from '../types/mapEvents';
+import type { MapEventsData, ScheduleLocalizationsData } from '../types/mapEvents';
 const LOCAL_MAP_EVENTS_URL = '/data/schedule/map-events.json';
 const MAP_EVENTS_URL = import.meta.env.VITE_SCHEDULE_DATA_URL || LOCAL_MAP_EVENTS_URL;
 const EVENT_TYPES_URL = '/data/schedule/event-types.json';
+const LOCALIZATIONS_URL = '/data/schedule/localizations.json';
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
 }
@@ -57,9 +58,12 @@ async function loadEventTypesJson(): Promise<MapEventsData['eventTypes']> {
 }
 
 export async function loadMapEventsData(): Promise<MapEventsData> {
-  const [mapEventsData, eventTypes] = await Promise.all([
+  const [mapEventsData, eventTypes, localizations] = await Promise.all([
     loadMapEventsJson(),
     loadEventTypesJson(),
+    loadJson<ScheduleLocalizationsData>(LOCALIZATIONS_URL).catch(
+      () => ({}) as ScheduleLocalizationsData
+    ),
   ]);
 
   const fallbackEventTypes =
@@ -67,12 +71,33 @@ export async function loadMapEventsData(): Promise<MapEventsData> {
       ? mapEventsData.eventTypes
       : {};
 
-  return {
-    eventTypes: {
+  const mergedMaps = Object.fromEntries(
+    Object.entries(mapEventsData.maps ?? {}).map(([mapId, mapInfo]) => [
+      mapId,
+      {
+        ...mapInfo,
+        localizations: localizations.maps?.[mapId]?.localizations ?? mapInfo.localizations,
+      },
+    ])
+  );
+
+  const mergedEventTypes = Object.fromEntries(
+    Object.entries({
       ...fallbackEventTypes,
       ...(eventTypes ?? {}),
-    },
-    maps: mapEventsData.maps ?? {},
+    }).map(([eventId, eventType]) => [
+      eventId,
+      {
+        ...eventType,
+        localizations:
+          localizations.eventTypes?.[eventId]?.localizations ?? eventType.localizations,
+      },
+    ])
+  );
+
+  return {
+    eventTypes: mergedEventTypes,
+    maps: mergedMaps,
     schedule: mapEventsData.schedule ?? {},
     metadata: mapEventsData.metadata,
   };

@@ -1,19 +1,26 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useLocale } from '../context/LocaleContext';
 
-const PAGE_TITLES: Record<string, string> = {
-  '/': 'ARC Raiders Tools',
-  '/schedule': 'ARC Raiders Tools: Event Schedule',
-  '/craft-calculator': 'ARC Raiders Tools: Craft Calculator',
-  '/quests': 'ARC Raiders Tools: Quest Tracker',
-  '/loot-helper': 'ARC Raiders Tools: Looting Helper',
+const PAGE_TITLE_KEYS: Record<string, string> = {
+  '/': 'app.name',
+  '/schedule': 'shared.tools.schedule',
+  '/craft-calculator': 'shared.tools.craftCalculator',
+  '/quests': 'shared.tools.quests',
+  '/loot-helper': 'shared.tools.lootHelper',
+  '/quartermaster': 'shared.tools.quartermaster',
+  '/settings/profile': 'pages.profileSettings',
 };
 
 export function usePageTitle() {
   const location = useLocation();
+  const { t } = useLocale();
 
   useEffect(() => {
-    const title = PAGE_TITLES[location.pathname] || 'ARC Raiders Tools';
+    const appName = t('app.name');
+    const pageKey = PAGE_TITLE_KEYS[location.pathname];
+    const pageTitle = pageKey ? t(pageKey) : t('pages.notFound');
+    const title = pageKey === 'app.name' ? appName : `${appName}: ${pageTitle}`;
     document.title = title;
-  }, [location.pathname]);
+  }, [location.pathname, t]);
 }

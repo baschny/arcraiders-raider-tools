@@ -17,6 +17,7 @@ export type ItemRarity = 'Common' | 'Uncommon' | 'Rare' | 'Epic' | 'Legendary';
 export interface PlannerItem {
   id: string;
   name: string;
+  originalNameEn?: string;
   description: string;
   icon: string;
   rarity: ItemRarity;
@@ -51,6 +52,18 @@ export interface ItemsData {
   items: Record<string, Omit<PlannerItem, 'id'>>;
 }
 
+export interface LocalizedPlannerItemData extends Omit<PlannerItem, 'id' | 'name'> {
+  name: {
+    value: string;
+    originalEn: string;
+  };
+}
+
+export interface LocalizedItemsData {
+  version: number;
+  items: Record<string, LocalizedPlannerItemData>;
+}
+
 /**
  * Canonical bench order for craft plan grouping (section 6.9)
  */
@@ -75,4 +88,3 @@ export const NON_RECYCLABLE_CATEGORIES = new Set([
   'Quick Use',
   'Shield',
 ]);
-

@@ -3,8 +3,10 @@
  * Loads and transforms item data from public/data/quartermaster/items.json
  */
 
-import type { PlannerItem, ItemsMap, ItemsData } from '../types/item';
-import type { HideoutModuleDefinition } from '../types/hideout';
+import type { AppLocale } from '../../../shared/i18n/config';
+import { fetchLocalizedJson } from '../../../shared/utils/localizedContent';
+import type { PlannerItem, ItemsMap, LocalizedItemsData } from '../types/item';
+import type { HideoutModuleDefinition, LocalizedHideoutModuleDefinition } from '../types/hideout';
 
 const ITEMS_URL = '/data/quartermaster/items.json';
 const HIDEOUT_URL = '/data/quartermaster/hideout.json';
@@ -13,20 +15,16 @@ const HIDEOUT_URL = '/data/quartermaster/hideout.json';
  * Load all items from the generated JSON file
  * Transforms the stored format into ItemsMap with id property included
  */
-export async function loadAllItems(): Promise<ItemsMap> {
-  const response = await fetch(ITEMS_URL);
-  
-  if (!response.ok) {
-    throw new Error(`Failed to load items: ${response.status} ${response.statusText}`);
-  }
-
-  const data: ItemsData = await response.json();
+export async function loadAllItems(locale: AppLocale): Promise<ItemsMap> {
+  const data = await fetchLocalizedJson<LocalizedItemsData>(ITEMS_URL, locale);
   
   // Transform items to include id property
   const itemsMap: ItemsMap = {};
   for (const [id, item] of Object.entries(data.items)) {
     itemsMap[id] = {
       ...item,
+      name: item.name.value,
+      originalNameEn: item.name.originalEn,
       id,
     } as PlannerItem;
   }
@@ -68,14 +66,17 @@ export function getItemsByCategory(itemsMap: ItemsMap, category: string): Planne
 /**
  * Load hideout module definitions from the generated JSON file
  */
-export async function loadHideoutDefinitions(): Promise<HideoutModuleDefinition[]> {
-  const response = await fetch(HIDEOUT_URL);
+export async function loadHideoutDefinitions(locale: AppLocale): Promise<HideoutModuleDefinition[]> {
+  const definitions = await fetchLocalizedJson<LocalizedHideoutModuleDefinition[]>(
+    HIDEOUT_URL,
+    locale
+  );
 
-  if (!response.ok) {
-    throw new Error(`Failed to load hideout definitions: ${response.status} ${response.statusText}`);
-  }
-
-  return response.json() as Promise<HideoutModuleDefinition[]>;
+  return definitions.map((definition) => ({
+    ...definition,
+    name: definition.name.value,
+    originalNameEn: definition.name.originalEn,
+  }));
 }
 
 /**

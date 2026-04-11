@@ -2,12 +2,14 @@ import type { Node } from 'reactflow';
 export interface BlueprintReward {
   id: string;
   name: string;
+  originalNameEn?: string;
   imageFilename: string;
 }
 
 export interface Quest {
   id: string;
   name: string;
+  originalNameEn?: string;
   trader: string;
   map: string[];
   previousQuestIds: string[];
@@ -32,3 +34,18 @@ export interface MapNodeData {
 
 export type QuestNode = Node<QuestNodeData>;
 export type MapNode = Node<MapNodeData>;
+
+export interface LocalizedBlueprintReward extends Omit<BlueprintReward, 'name'> {
+  name: {
+    value: string;
+    originalEn: string;
+  };
+}
+
+export interface LocalizedQuest extends Omit<Quest, 'name' | 'blueprintRewards'> {
+  name: {
+    value: string;
+    originalEn: string;
+  };
+  blueprintRewards: LocalizedBlueprintReward[];
+}

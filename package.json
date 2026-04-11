@@ -11,12 +11,13 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "generate": "npm run generate:quests && npm run generate:items-loot-helper && npm run generate:items-quartermaster && npm run generate:items-craft-calculator && npm run generate:schedule",
+    "generate": "npm run generate:items-loot-helper && npm run generate:quests && npm run generate:items-quartermaster && npm run generate:items-craft-calculator && npm run generate:schedule",
     "generate:quests": "./scripts/generate-quest-data.sh",
     "generate:items-loot-helper": "./scripts/generate-item-data-loot-helper.sh",
     "generate:items-craft-calculator": "./scripts/generate-item-data-craft-calculator.sh",
     "generate:items-quartermaster": "./scripts/generate-item-data-quartermaster.sh",
-    "generate:schedule": "node ./scripts/generate-schedule-data-from-map-conditions.js"
+    "generate:schedule-localizations": "node ./scripts/generate-schedule-localizations.js",
+    "generate:schedule": "npm run generate:schedule-localizations && node ./scripts/generate-schedule-data-from-map-conditions.js"
   },
   "dependencies": {
     "dagre": "^0.8.5",
