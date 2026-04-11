@@ -7,9 +7,7 @@ import { fileURLToPath } from 'node:url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const SCENARIOS_PATH = path.resolve(__dirname, '../../embark-api/data/scenarios.json');
-const MAP_EVENTS_PATH = path.resolve(__dirname, '../../embark-api/data/arctracker-map-events.json');
-const MAPS_PATH = path.resolve(__dirname, '../../embark-api/data/arctracker-maps.json');
+const MAP_CONDITIONS_URL = 'https://arcraiders.com/map-conditions';
 const EVENT_TYPES_PATH = path.resolve(__dirname, '../public/data/schedule/event-types.json');
 const OUTPUT_PATH = path.resolve(__dirname, '../public/data/schedule/map-events.json');
 
@@ -22,6 +20,15 @@ const MAP_ORDER = [
 ];
 const MERGE_HISTORY_WINDOW_SECONDS = 30 * 24 * 60 * 60;
 const CHANGE_REPORT_PREVIEW_LIMIT = 12;
+const FETCH_TIMEOUT_MS = 20_000;
+
+const KNOWN_MAP_ID_BY_DISPLAY_NAME = {
+  'Buried City': 'buried-city',
+  'Dam Battlegrounds': 'dam-battleground',
+  Spaceport: 'the-spaceport',
+  'Stella Montis': 'stella-montis',
+  'The Blue Gate': 'blue-gate',
+};
 
 function readJson(filePath) {
   return JSON.parse(fs.readFileSync(filePath, 'utf8'));
@@ -41,7 +48,7 @@ function readJsonIfExists(filePath) {
 }
 
 function slugify(value) {
-  return value
+  return String(value ?? '')
     .toLowerCase()
     .trim()
     .replace(/[^a-z0-9]+/g, '-')
@@ -50,31 +57,6 @@ function slugify(value) {
 
 function toCamelCaseFromKebab(value) {
   return value.replace(/-([a-z])/g, (_match, char) => char.toUpperCase());
-}
-
-function parseConditionAssetInteger(value) {
-  const match = String(value ?? '').match(/^(-?\d+)/);
-  return match ? match[1] : null;
-}
-
-function parseStartTimestamp(value) {
-  const match = String(value ?? '').match(/^(\d+)/);
-  return match ? Number(match[1]) : null;
-}
-
-function parseConditionInfo(label) {
-  const normalized = String(label ?? '').trim();
-  const majorMatch = normalized.match(/^Major:\s*(.+)$/i);
-  if (majorMatch) {
-    return { category: 'major', displayName: majorMatch[1].trim() };
-  }
-
-  const minorMatch = normalized.match(/^Minor:\s*(.+)$/i);
-  if (minorMatch) {
-    return { category: 'minor', displayName: minorMatch[1].trim() };
-  }
-
-  return null;
 }
 
 function canonicalizeMapId(rawMapId) {
@@ -89,6 +71,10 @@ function canonicalizeMapId(rawMapId) {
 
   if (withHyphens === 'the-blue-gate') {
     return 'blue-gate';
+  }
+
+  if (withHyphens === 'spaceport') {
+    return 'the-spaceport';
   }
 
   return withHyphens;
@@ -378,12 +364,141 @@ function printFutureScheduleChangeReport(changes) {
   );
 }
 
-function main() {
-  const scenariosData = readJson(SCENARIOS_PATH);
-  const mapEventsMapping = readJson(MAP_EVENTS_PATH);
-  const mapsMapping = readJson(MAPS_PATH);
+async function fetchText(url) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
+
+  try {
+    const response = await fetch(url, {
+      headers: {
+        accept: 'text/html,application/xhtml+xml',
+        'user-agent': 'raider-tools-map-events/1.0',
+      },
+      signal: controller.signal,
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status} ${response.statusText}`);
+    }
+
+    return await response.text();
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
+function extractEscapedJsonArray(document, escapedToken) {
+  const tokenIndex = document.indexOf(escapedToken);
+  if (tokenIndex === -1) {
+    return null;
+  }
+
+  const startIndex = document.indexOf('[', tokenIndex + escapedToken.length);
+  if (startIndex === -1) {
+    return null;
+  }
+
+  let depth = 0;
+  for (let index = startIndex; index < document.length; index += 1) {
+    const char = document[index];
+    if (char === '[') {
+      depth += 1;
+      continue;
+    }
+
+    if (char === ']') {
+      depth -= 1;
+      if (depth === 0) {
+        const rawEscaped = document.slice(startIndex, index + 1);
+        const jsonText = rawEscaped.replace(/\\"/g, '"').replace(/\\\\/g, '\\');
+        try {
+          return JSON.parse(jsonText);
+        } catch (error) {
+          throw new Error(`Failed to parse token ${escapedToken}: ${error.message}`);
+        }
+      }
+    }
+  }
+
+  return null;
+}
+
+function normalizeMapDisplayName(value) {
+  return String(value ?? '').trim();
+}
+
+function resolveMapId(mapDisplayName, mapIdByDisplayName) {
+  const normalizedDisplayName = normalizeMapDisplayName(mapDisplayName);
+  if (!normalizedDisplayName) {
+    return null;
+  }
+
+  if (KNOWN_MAP_ID_BY_DISPLAY_NAME[normalizedDisplayName]) {
+    return KNOWN_MAP_ID_BY_DISPLAY_NAME[normalizedDisplayName];
+  }
+
+  const existingMapId = mapIdByDisplayName.get(normalizedDisplayName.toLowerCase());
+  if (existingMapId) {
+    return existingMapId;
+  }
+
+  return canonicalizeMapId(slugify(normalizedDisplayName));
+}
+
+async function collectMapConditionEntries() {
+  const overviewHtml = await fetchText(MAP_CONDITIONS_URL);
+  const conditionItems =
+    extractEscapedJsonArray(overviewHtml, '\\\"conditionItems\\\":') ?? [];
+
+  const conditionEntries = [];
+  const conditionTypesByName = new Map();
+
+  conditionItems.forEach((conditionItem) => {
+    const name = String(conditionItem?.name ?? '').trim();
+    const type = String(conditionItem?.type ?? '').trim().toLowerCase();
+    if (!name || !['major', 'minor'].includes(type)) {
+      return;
+    }
+
+    conditionTypesByName.set(name, type);
+  });
+
+  for (const [conditionName, conditionCategory] of conditionTypesByName.entries()) {
+    const conditionSlug = slugify(conditionName);
+    if (!conditionSlug) {
+      continue;
+    }
+
+    const pageUrl = `${MAP_CONDITIONS_URL}/${conditionSlug}`;
+    const html = await fetchText(pageUrl);
+    const entries = extractEscapedJsonArray(html, '\\\"entries\\\":') ?? [];
+
+    entries.forEach((entry) => {
+      conditionEntries.push({
+        conditionName: String(entry?.conditionName ?? '').trim(),
+        mapDisplayName: String(entry?.mapDisplayName ?? '').trim(),
+        startTimestampMs: Number(entry?.startTimestamp),
+        endTimestampMs: Number(entry?.endTimestamp),
+        durationInSeconds: Number(entry?.durationInSeconds),
+        category: conditionCategory,
+        sourcePage: pageUrl,
+      });
+    });
+  }
+
+  return {
+    conditionTypesByName,
+    conditionEntries,
+  };
+}
+
+async function main() {
+  const previousOutputData = readJsonIfExists(OUTPUT_PATH) ?? {};
+  const previousSchedule = previousOutputData?.schedule ?? {};
+  const previousEventTypes = previousOutputData?.eventTypes ?? {};
+  const previousMaps = previousOutputData?.maps ?? {};
+  const hadPreviousSchedule = Boolean(previousOutputData && previousOutputData.schedule);
   const eventTypesSourceData = readJsonIfExists(EVENT_TYPES_PATH) ?? {};
-  const previousOutputData = readJsonIfExists(OUTPUT_PATH);
   const sourceEventTypes =
     eventTypesSourceData &&
     typeof eventTypesSourceData === 'object' &&
@@ -392,121 +507,120 @@ function main() {
       ? eventTypesSourceData.eventTypes
       : eventTypesSourceData;
 
-  const mapByInternalName = new Map();
-  const discoveredMaps = {};
+  const mapIdByDisplayName = new Map(
+    Object.entries(previousMaps).map(([mapId, map]) => [
+      normalizeMapDisplayName(map?.displayName).toLowerCase(),
+      mapId,
+    ])
+  );
 
-  Object.values(mapsMapping).forEach((mapEntry) => {
-    const internalName = mapEntry?.internalName;
-    if (!internalName) {
-      return;
-    }
-
-    const mapId = canonicalizeMapId(mapEntry.id ?? mapEntry.name);
-    const displayName = String(mapEntry.name ?? mapId).trim();
-    mapByInternalName.set(internalName, { mapId, displayName });
-    discoveredMaps[mapId] = { displayName };
-  });
+  const { conditionTypesByName, conditionEntries } = await collectMapConditionEntries();
 
   const schedule = {};
   const eventTypes = {};
-  const missingConditionIds = new Set();
+  const discoveredMaps = {};
+  const ignoredMapNames = new Set();
+  const ignoredEntries = [];
+  const dedupeKeys = new Set();
   let minTimestamp = Number.POSITIVE_INFINITY;
   let maxTimestamp = Number.NEGATIVE_INFINITY;
   let includedConditionCount = 0;
 
-  const scenarios = Array.isArray(scenariosData.matchmakingScenarios)
-    ? scenariosData.matchmakingScenarios
-    : [];
+  conditionEntries.forEach((entry) => {
+    const conditionName = String(entry.conditionName ?? '').trim();
+    const mapDisplayName = normalizeMapDisplayName(entry.mapDisplayName);
+    const startTimestampMs = Number(entry.startTimestampMs);
+    const endTimestampMs = Number(entry.endTimestampMs);
+    const durationInSeconds = Number(entry.durationInSeconds);
+    const category = String(entry.category ?? '').toLowerCase();
 
-  scenarios.forEach((scenario) => {
-    const internalMapName = scenario?.parameters?.mapName;
-    const mapInfo = mapByInternalName.get(internalMapName);
-    if (!mapInfo) {
+    if (!conditionName || !mapDisplayName) {
+      ignoredEntries.push(`missing condition/map value from ${entry.sourcePage}`);
       return;
     }
 
-    if (!schedule[mapInfo.mapId]) {
-      schedule[mapInfo.mapId] = { major: {}, minor: {} };
-    }
-
-    const conditions = scenario?.pioneerSettings?.mapConditions?.conditionSettings;
-    if (!Array.isArray(conditions)) {
+    if (!Number.isFinite(startTimestampMs)) {
+      ignoredEntries.push(`invalid start timestamp for ${conditionName} (${mapDisplayName})`);
       return;
     }
 
-    conditions.forEach((condition) => {
-      const conditionId = parseConditionAssetInteger(condition?.conditionAssetId);
-      if (!conditionId) {
-        return;
-      }
+    if (!['major', 'minor'].includes(category)) {
+      ignoredEntries.push(`unknown category "${category}" for ${conditionName}`);
+      return;
+    }
 
-      const conditionMapping = mapEventsMapping[conditionId];
-      if (!conditionMapping) {
-        missingConditionIds.add(conditionId);
-        return;
-      }
+    const mapId = resolveMapId(mapDisplayName, mapIdByDisplayName);
+    if (!mapId) {
+      ignoredMapNames.add(mapDisplayName);
+      return;
+    }
 
-      const fallbackLabel = String(condition.conditionAssetId)
-        .replace(/^-?\d+\s*/, '')
-        .trim();
-      const parsedInfo =
-        parseConditionInfo(conditionMapping.name) ?? parseConditionInfo(fallbackLabel);
+    const eventId = slugify(conditionName);
+    if (!eventId) {
+      ignoredEntries.push(`invalid event id for condition "${conditionName}"`);
+      return;
+    }
 
-      if (!parsedInfo) {
-        return;
-      }
+    const startTimestamp = Math.floor(startTimestampMs / 1000);
+    const dedupeKey = `${mapId}|${category}|${startTimestamp}|${eventId}`;
+    if (dedupeKeys.has(dedupeKey)) {
+      return;
+    }
+    dedupeKeys.add(dedupeKey);
 
-      const startTimestamp = parseStartTimestamp(condition?.startTime);
-      if (!Number.isFinite(startTimestamp)) {
-        return;
-      }
+    ensureScheduleMap(schedule, mapId);
+    schedule[mapId][category][String(startTimestamp)] = eventId;
 
-      const eventId = slugify(parsedInfo.displayName);
-      if (!eventId) {
-        return;
-      }
+    if (!discoveredMaps[mapId]) {
+      discoveredMaps[mapId] = previousMaps[mapId] ?? { displayName: mapDisplayName };
+    }
 
-      const timestampKey = String(startTimestamp);
-      schedule[mapInfo.mapId][parsedInfo.category][timestampKey] = eventId;
+    if (!eventTypes[eventId]) {
+      const previousEventType = previousEventTypes[eventId];
+      const sourceEventType = sourceEventTypes[eventId];
 
-      if (!eventTypes[eventId]) {
-        const sourceEventType = sourceEventTypes[eventId];
-        const localizations =
-          sourceEventType && typeof sourceEventType === 'object' && sourceEventType.localizations
+      if (previousEventType && typeof previousEventType === 'object') {
+        eventTypes[eventId] = previousEventType;
+      } else {
+        const sourceLocalizations =
+          sourceEventType &&
+          typeof sourceEventType === 'object' &&
+          sourceEventType.localizations &&
+          typeof sourceEventType.localizations === 'object'
             ? sourceEventType.localizations
-            : { en: parsedInfo.displayName };
+            : null;
+
         const displayName =
           sourceEventType?.displayName && String(sourceEventType.displayName).trim()
             ? sourceEventType.displayName
-            : parsedInfo.displayName;
+            : conditionName;
+        const localizations = sourceLocalizations ?? { en: displayName };
+
         eventTypes[eventId] = {
           displayName,
           icon: `https://cdn.arctracker.io/map-events/${eventId.replace(/-/g, '_')}.png`,
           translationKey: toCamelCaseFromKebab(eventId),
-          category: parsedInfo.category,
+          category,
           localizations,
         };
       }
+    }
 
-      const durationSeconds = Number(condition?.durationInSecond);
-      const safeDuration = Number.isFinite(durationSeconds) && durationSeconds > 0
-        ? durationSeconds
-        : 3600;
+    const fallbackDuration = Number.isFinite(durationInSeconds) && durationInSeconds > 0
+      ? durationInSeconds
+      : 3600;
+    const calculatedEndTimestamp = Number.isFinite(endTimestampMs)
+      ? Math.floor(endTimestampMs / 1000)
+      : startTimestamp + fallbackDuration;
 
-      minTimestamp = Math.min(minTimestamp, startTimestamp);
-      maxTimestamp = Math.max(maxTimestamp, startTimestamp + safeDuration);
-      includedConditionCount += 1;
-    });
+    minTimestamp = Math.min(minTimestamp, startTimestamp);
+    maxTimestamp = Math.max(maxTimestamp, calculatedEndTimestamp);
+    includedConditionCount += 1;
   });
 
   const nowUnix = Math.floor(Date.now() / 1000);
   const mergeWindowStart = nowUnix - MERGE_HISTORY_WINDOW_SECONDS;
   let mergedPastEventCount = 0;
-
-  const previousSchedule = previousOutputData?.schedule ?? {};
-  const previousEventTypes = previousOutputData?.eventTypes ?? {};
-  const previousMaps = previousOutputData?.maps ?? {};
-  const hadPreviousSchedule = Boolean(previousOutputData && previousOutputData.schedule);
 
   Object.entries(previousSchedule).forEach(([mapId, mapSchedule]) => {
     ensureScheduleMap(schedule, mapId);
@@ -578,6 +692,7 @@ function main() {
       return a[1].displayName.localeCompare(b[1].displayName);
     })
   );
+
   const fallbackEndTimestamp = Number.isFinite(maxTimestamp) ? maxTimestamp : null;
   const finalTimestampRange = collectTimestampRange(sortedSchedule, fallbackEndTimestamp);
   const futureChanges = hadPreviousSchedule
@@ -586,16 +701,15 @@ function main() {
 
   const output = {
     _readme: {
-      description: 'Map events schedule for ARC Raiders generated from embark-api scenarios',
+      description: 'Map events schedule for ARC Raiders generated from arcraiders.com map-conditions',
       format:
         'Schedule keys are UNIX timestamps (seconds, UTC) at event start; values are event type ids.',
     },
     metadata: {
       generatedAt: new Date().toISOString(),
       sourceFiles: {
-        scenarios: '../embark-api/data/scenarios.json',
-        mapEvents: '../embark-api/data/arctracker-map-events.json',
-        maps: '../embark-api/data/arctracker-maps.json',
+        mapConditionsOverview: MAP_CONDITIONS_URL,
+        mapConditionsPerCondition: `${MAP_CONDITIONS_URL}/<condition-slug>`,
         eventTypes: 'public/data/schedule/event-types.json',
         previousSchedule: 'public/data/schedule/map-events.json',
       },
@@ -605,7 +719,8 @@ function main() {
         now: nowUnix,
         count: mergedPastEventCount,
       },
-      ignoredConditionIds: Array.from(missingConditionIds).sort((a, b) => Number(a) - Number(b)),
+      ignoredMapNames: [...ignoredMapNames].sort((a, b) => a.localeCompare(b)),
+      ignoredEntriesCount: ignoredEntries.length,
     },
     eventTypes: sortedEventTypes,
     maps: sortedMaps,
@@ -618,7 +733,7 @@ function main() {
     },
     metadata: {
       generatedAt: new Date().toISOString(),
-      source: 'scripts/generate-schedule-data.js',
+      source: 'scripts/generate-schedule-data-from-map-conditions.js',
     },
     eventTypes: sortedEventTypes,
   };
@@ -629,19 +744,23 @@ function main() {
   console.log(`✓ Generated ${EVENT_TYPES_PATH}`);
 
   console.log(`✓ Generated ${OUTPUT_PATH}`);
-  console.log(`  Scenarios processed: ${scenarios.length}`);
+  console.log(`  Condition pages scraped: ${conditionTypesByName.size}`);
+  console.log(`  Entries scraped: ${conditionEntries.length}`);
+  console.log(`  Conditions included: ${includedConditionCount}`);
   console.log(`  Maps included: ${sortedMapIds.length}`);
   console.log(`  Event types included: ${Object.keys(sortedEventTypes).length}`);
-  console.log(`  Conditions included: ${includedConditionCount}`);
   console.log(`  Past events merged from previous schedule: ${mergedPastEventCount}`);
   printFutureScheduleChangeReport(futureChanges);
   console.log(
-    `  Ignored condition IDs without mapping: ${
-      output.metadata.ignoredConditionIds.length > 0
-        ? output.metadata.ignoredConditionIds.join(', ')
+    `  Ignored map names: ${
+      output.metadata.ignoredMapNames.length > 0
+        ? output.metadata.ignoredMapNames.join(', ')
         : 'none'
     }`
   );
 }
 
-main();
+main().catch((error) => {
+  console.error(`Error: ${error.message}`);
+  process.exit(1);
+});
