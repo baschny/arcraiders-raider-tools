@@ -2,12 +2,14 @@ import { useState } from 'react';
 import { Info } from 'lucide-react';
 import type { UpgradeBreakdown as UpgradeBreakdownType } from '../utils/weaponTiers';
 import { getItem } from '../utils/itemData';
+import { useLocale } from '../../../shared/context/LocaleContext';
 
 interface UpgradeBreakdownProps {
   breakdown: UpgradeBreakdownType[];
 }
 
 export function UpgradeBreakdown({ breakdown }: UpgradeBreakdownProps) {
+  const { t, tm } = useLocale();
   const [showTooltip, setShowTooltip] = useState(false);
 
   if (breakdown.length <= 1) {
@@ -41,21 +43,21 @@ export function UpgradeBreakdown({ breakdown }: UpgradeBreakdownProps) {
         className="info-icon"
         onMouseEnter={() => setShowTooltip(true)}
         onMouseLeave={() => setShowTooltip(false)}
-        aria-label="Show upgrade breakdown"
+        aria-label={t('craftCalculator.showUpgradeBreakdown')}
       >
         <Info size={20} />
       </button>
       {showTooltip && (
         <div className="upgrade-breakdown-tooltip">
-          <h4>Material Breakdown by Tier</h4>
+          <h4>{t('craftCalculator.breakdownTitle')}</h4>
           <table className="breakdown-table">
             <thead>
               <tr>
-                <th>Material</th>
+                <th>{t('craftCalculator.materialHeader')}</th>
                 {breakdown.map((tier) => (
-                  <th key={tier.tier}>Tier {tier.tier}</th>
+                  <th key={tier.tier}>{tm('craftCalculator.tierHeader', { tier: tier.tier })}</th>
                 ))}
-                <th className="total-column">Total</th>
+                <th className="total-column">{t('craftCalculator.totalHeader')}</th>
               </tr>
             </thead>
             <tbody>

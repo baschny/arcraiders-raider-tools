@@ -1,16 +1,21 @@
 import type { CraftingResult } from '../types/crafting';
 import { StashSpaceGraph } from './StashSpaceGraph';
+import { useLocale } from '../../../shared/context/LocaleContext';
 
 interface CraftingResultsProps {
   result: CraftingResult;
   profitPerCraft: number | null;
 }
 
-const formatValue = (value: number): string => {
-  return value.toLocaleString('en-US');
-};
-
 export function CraftingResults({ result, profitPerCraft }: CraftingResultsProps) {
+  const { t, tm, formatNumber } = useLocale();
+  const timesLabel = (count: number) =>
+    count === 1 ? t('craftCalculator.timeSingle') : t('craftCalculator.timePlural');
+  const slotLabel = (count: number) =>
+    count === 1 ? t('craftCalculator.slotSingle') : t('craftCalculator.slotPlural');
+  const itemsSuffix = (count: number) =>
+    result.craftQuantity > 1 ? tm('craftCalculator.itemSuffix', { count: count * result.craftQuantity }) : '';
+
   return (
     <>
       <div className="card">
@@ -25,75 +30,90 @@ export function CraftingResults({ result, profitPerCraft }: CraftingResultsProps
 
       <div className="card">
         <div className="recommendation">
-          <h3>💡 Optimal Recommendation</h3>
+          <h3>💡 {t('craftCalculator.recommendationTitle')}</h3>
           <div className="recommendation-text">
             {result.optimalCraftAmount === 0 ? (
               <>
-                <strong>Don't craft anything.</strong> Your current stash is already optimally
-                organized. Crafting would increase stash usage.
+                <strong>{t('craftCalculator.recommendDoNotCraftStrong')}</strong>{' '}
+                {t('craftCalculator.recommendDoNotCraftBody')}
                 {result.minCraftForReduction && (
                   <>
                     {' '}
-                    However, if you craft at least{' '}
                     <strong>
-                      {result.minCraftForReduction} {result.minCraftForReduction === 1 ? 'time' : 'times'}
-                      {result.craftQuantity > 1 && ` (${result.minCraftForReduction * result.craftQuantity} items)`}
-                    </strong>, you will start saving space.
+                      {tm('craftCalculator.recommendDoNotCraftMin', {
+                        count: result.minCraftForReduction,
+                        timesLabel: timesLabel(result.minCraftForReduction),
+                        itemsSuffix: itemsSuffix(result.minCraftForReduction),
+                      })}
+                    </strong>
                   </>
                 )}
               </>
             ) : result.optimalCraftAmount === result.maxCraftable ? (
               <>
                 <strong>
-                  Craft all {result.maxCraftable} {result.maxCraftable === 1 ? 'time' : 'times'}
-                  {result.craftQuantity > 1 && ` (${result.maxCraftable * result.craftQuantity} items)`}.
+                  {tm('craftCalculator.recommendCraftAll', {
+                    count: result.maxCraftable,
+                    timesLabel: timesLabel(result.maxCraftable),
+                    itemsSuffix: itemsSuffix(result.maxCraftable),
+                  })}
                 </strong>{' '}
-                This will{' '}
                 {result.optimalSpaceChange < 0 ? (
                   <>
                     <span style={{ color: '#4caf50' }}>
-                      save {Math.abs(result.optimalSpaceChange)} slot
-                      {Math.abs(result.optimalSpaceChange) !== 1 ? 's' : ''}
+                      {tm('craftCalculator.recommendWillSave', {
+                        count: Math.abs(result.optimalSpaceChange),
+                        slotLabel: slotLabel(Math.abs(result.optimalSpaceChange)),
+                      })}
                     </span>
                   </>
                 ) : result.optimalSpaceChange > 0 ? (
                   <>
                     <span style={{ color: '#ff9800' }}>
-                      use {result.optimalSpaceChange} more slot
-                      {result.optimalSpaceChange !== 1 ? 's' : ''}
+                      {tm('craftCalculator.recommendWillUseMore', {
+                        count: result.optimalSpaceChange,
+                        slotLabel: slotLabel(result.optimalSpaceChange),
+                      })}
                     </span>
                   </>
                 ) : (
-                  'not change your stash usage'
+                  t('craftCalculator.recommendNoChange')
                 )}
                 .
               </>
             ) : (
               <>
                 <strong>
-                  Craft exactly {result.optimalCraftAmount} {result.optimalCraftAmount === 1 ? 'time' : 'times'}
-                  {result.craftQuantity > 1 && ` (${result.optimalCraftAmount * result.craftQuantity} items)`}.
+                  {tm('craftCalculator.recommendCraftExact', {
+                    count: result.optimalCraftAmount,
+                    timesLabel: timesLabel(result.optimalCraftAmount),
+                    itemsSuffix: itemsSuffix(result.optimalCraftAmount),
+                  })}
                 </strong>{' '}
                 {result.optimalSpaceChange < 0 ? (
                   <>
-                    This will minimize stash usage to {result.optimalStash.totalSlots} slots (
-                    <span style={{ color: '#4caf50' }}>
-                      saving {Math.abs(result.optimalSpaceChange)} slot
-                      {Math.abs(result.optimalSpaceChange) !== 1 ? 's' : ''}
-                    </span>
-                    ).
+                    {tm('craftCalculator.recommendMinimizeTo', {
+                      slots: result.optimalStash.totalSlots,
+                      slotLabel: slotLabel(result.optimalStash.totalSlots),
+                      savingText: tm('craftCalculator.savingText', {
+                        count: Math.abs(result.optimalSpaceChange),
+                        slotLabel: slotLabel(Math.abs(result.optimalSpaceChange)),
+                      }),
+                    })}
                   </>
                 ) : result.optimalSpaceChange > 0 ? (
                   <>
-                    This will use {result.optimalStash.totalSlots} slots (
-                    <span style={{ color: '#ff9800' }}>
-                      {result.optimalSpaceChange} more slot
-                      {result.optimalSpaceChange !== 1 ? 's' : ''}
-                    </span>
-                    ).
+                    {tm('craftCalculator.recommendUseTo', {
+                      slots: result.optimalStash.totalSlots,
+                      slotLabel: slotLabel(result.optimalStash.totalSlots),
+                      increaseText: tm('craftCalculator.increaseText', {
+                        count: result.optimalSpaceChange,
+                        slotLabel: slotLabel(result.optimalSpaceChange),
+                      }),
+                    })}
                   </>
                 ) : (
-                  'This will keep the current stash usage, but fill all slots to maximum stacking size.'
+                  t('craftCalculator.recommendKeepCurrent')
                 )}
               </>
             )}
@@ -104,14 +124,14 @@ export function CraftingResults({ result, profitPerCraft }: CraftingResultsProps
               
               if (totalValueChange > 0) {
                 valueColor = '#4caf50';
-                valueText = `increase by`;
+                valueText = t('craftCalculator.stashValueIncrease');
               } else if (totalValueChange < 0) {
                 valueColor = '#f44336';
-                valueText = `decrease by`;
+                valueText = t('craftCalculator.stashValueDecrease');
               } else {
                 return (
                   <div style={{ marginTop: '12px', paddingTop: '12px', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
-                    Your stash value will stay the same.
+                    {t('craftCalculator.stashValueSame')}
                   </div>
                 );
               }
@@ -121,7 +141,7 @@ export function CraftingResults({ result, profitPerCraft }: CraftingResultsProps
                   Your stash value will {valueText}{' '}
                   <span style={{ color: valueColor, fontWeight: 'bold' }}>
                     <img src="/images/icon-coin.webp" alt="coin" style={{ width: '18px', height: '18px', verticalAlign: 'middle', marginRight: '4px' }} />
-                    {formatValue(Math.abs(totalValueChange))}
+                    {formatNumber(Math.abs(totalValueChange))}
                   </span>.
                 </div>
               );

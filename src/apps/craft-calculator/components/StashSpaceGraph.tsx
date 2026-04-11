@@ -1,4 +1,5 @@
 import type { CraftingDataPoint } from '../types/crafting';
+import { useLocale } from '../../../shared/context/LocaleContext';
 
 interface StashSpaceGraphProps {
   dataPoints: CraftingDataPoint[];
@@ -15,6 +16,7 @@ export function StashSpaceGraph({
   minCraftForReduction,
   craftQuantity,
 }: StashSpaceGraphProps) {
+  const { t, tm } = useLocale();
   if (dataPoints.length === 0) return null;
 
   const maxSlots = Math.max(...dataPoints.map((p) => p.slots));
@@ -36,9 +38,16 @@ export function StashSpaceGraph({
   const maxHeight = 100;
   const minBarHeight = 20;
 
+  const getTimesLabel = (count: number) =>
+    count === 1 ? t('craftCalculator.timeSingle') : t('craftCalculator.timePlural');
+  const getItemsSuffix = (count: number) =>
+    craftQuantity > 1 ? tm('craftCalculator.itemSuffix', { count: count * craftQuantity }) : '';
+  const getSlotLabel = (count: number) =>
+    count === 1 ? t('craftCalculator.slotSingle') : t('craftCalculator.slotPlural');
+
   return (
     <div className="stash-graph">
-      <div className="graph-title">Stash Space by Craft Amount</div>
+      <div className="graph-title">{t('craftCalculator.graphTitle')}</div>
       <div className="graph-container">
         <div className="graph-bars">
           {dataPoints.map((point, index) => {
@@ -55,7 +64,14 @@ export function StashSpaceGraph({
                   style={{
                     height: `${barHeight}px`,
                   }}
-                  title={`Craft ${point.amount} ${point.amount === 1 ? 'time' : 'times'}${craftQuantity > 1 ? ` (${point.amount * craftQuantity} items)` : ''}: ${point.slots} slots (${point.slots - currentSlots >= 0 ? '+' : ''}${point.slots - currentSlots})`}
+                  title={tm('craftCalculator.graphTooltip', {
+                    count: point.amount,
+                    timesLabel: getTimesLabel(point.amount),
+                    itemsSuffix: getItemsSuffix(point.amount),
+                    slots: point.slots,
+                    slotLabel: getSlotLabel(point.slots),
+                    delta: `${point.slots - currentSlots >= 0 ? '+' : ''}${point.slots - currentSlots}`,
+                  })}
                 >
                   {isOptimal && <div className="bar-label optimal-label">★</div>}
                 </div>
@@ -70,28 +86,28 @@ export function StashSpaceGraph({
           })}
         </div>
         <div className="graph-y-axis">
-          <div className="y-label">{maxSlots} slots</div>
+          <div className="y-label">{maxSlots} {getSlotLabel(maxSlots)}</div>
           <div className="y-label" style={{ position: 'absolute', bottom: '0', width: '100%' }}>
-            {minSlots} slots
+            {minSlots} {getSlotLabel(minSlots)}
           </div>
         </div>
       </div>
       <div className="graph-legend">
         <div className="legend-item">
           <div className="legend-color bar-saves-optimal" />
-          <span>Optimal</span>
+          <span>{t('craftCalculator.graphOptimal')}</span>
         </div>
         <div className="legend-item">
           <div className="legend-color bar-saves" />
-          <span>Saves Space</span>
+          <span>{t('craftCalculator.graphSavesSpace')}</span>
         </div>
         <div className="legend-item">
           <div className="legend-color bar-uses-more" />
-          <span>Uses More</span>
+          <span>{t('craftCalculator.graphUsesMore')}</span>
         </div>
         <div className="legend-item">
           <div className="legend-color bar-same" />
-          <span>Same Space</span>
+          <span>{t('craftCalculator.graphSameSpace')}</span>
         </div>
       </div>
     </div>

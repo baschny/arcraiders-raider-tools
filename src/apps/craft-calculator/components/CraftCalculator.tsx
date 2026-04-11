@@ -18,7 +18,7 @@ interface RequiredItemWithName extends RequiredItem {
 }
 
 export function CraftCalculator() {
-  const { locale, t, formatNumber } = useLocale();
+  const { locale, t, tm, formatNumber } = useLocale();
   const [loading, setLoading] = useState(true);
   const [selectedItem, setSelectedItem] = useState<Item | null>(null);
   const [craftedStackSize, setCraftedStackSize] = useState<StackSize>(10);
@@ -26,6 +26,7 @@ export function CraftCalculator() {
   const craftedIncomplete = craftedInStash % craftedStackSize;
   const [requiredItems, setRequiredItems] = useState<RequiredItemWithName[]>([]);
   const [upgradeBreakdown, setUpgradeBreakdown] = useState<UpgradeBreakdown[]>([]);
+  const fallbackItemLabel = (index: number) => tm('craftCalculator.itemFallback', { index });
 
   useEffect(() => {
     loadItems(locale)
@@ -115,12 +116,12 @@ export function CraftCalculator() {
     <>
       <div className="calculator">
       <div className="card">
-        <h2 className="card-title">Select Item to Craft</h2>
+        <h2 className="card-title">{t('craftCalculator.selectItemTitle')}</h2>
         <div className="form-group">
-          <label>Search for craftable item</label>
+          <label>{t('craftCalculator.searchLabel')}</label>
           <ItemSearch
             onSelect={handleItemSelect}
-            placeholder="Type item name..."
+            placeholder={t('craftCalculator.searchPlaceholder')}
             filter={isCraftableItem}
           />
         </div>
@@ -128,7 +129,7 @@ export function CraftCalculator() {
 
       {selectedItem && (
         <div className="card">
-          <h2 className="card-title">Crafted Item</h2>
+          <h2 className="card-title">{t('craftCalculator.craftedItemTitle')}</h2>
           <div className="selected-item-display">
             {selectedItem.imageFilename && (
               <img
@@ -141,7 +142,7 @@ export function CraftCalculator() {
               <div>
                 <h3 style={{ margin: 0 }}>{selectedItem.name}</h3>
                 <p style={{ color: '#888', fontSize: '14px', margin: '4px 0 0 0' }}>
-                  Stack Size: {selectedItem.stackSize}
+                  {t('craftCalculator.stackSize')}: {selectedItem.stackSize}
                 </p>
                 {selectedItem.value != null && (
                   <p style={{ color: '#888', fontSize: '14px', margin: '4px 0 0 0', display: 'flex', alignItems: 'center', gap: '4px' }}>
@@ -165,12 +166,12 @@ export function CraftCalculator() {
                     marginTop: '4px',
                   }}
                 >
-                  Change Item
+                  {t('craftCalculator.changeItem')}
                 </button>
               </div>
             </div>
             <div className="input-with-label">
-              <label>In Stash</label>
+              <label>{t('craftCalculator.inStash')}</label>
               <input
                 type="number"
                 min="0"
@@ -187,7 +188,7 @@ export function CraftCalculator() {
       {selectedItem && (
         <div className="card">
           <div className="card-title-with-info">
-            <h2 className="card-title">Required Items</h2>
+            <h2 className="card-title">{t('craftCalculator.requiredItemsTitle')}</h2>
             <UpgradeBreakdownComponent breakdown={upgradeBreakdown} />
           </div>
           {requiredItems.map((item, index) => (
@@ -196,7 +197,7 @@ export function CraftCalculator() {
                 {item.imageUrl && (
                   <img
                     src={item.imageUrl}
-                    alt={item.name || `Item ${index + 1}`}
+                    alt={item.name || fallbackItemLabel(index + 1)}
                     style={{
                       width: '24px',
                       height: '24px',
@@ -210,7 +211,7 @@ export function CraftCalculator() {
                 <div style={{ flex: 1 }}>
                   <h3 style={{ margin: 0 }}>
                     <span style={{ color: '#4fc3f7', marginRight: '6px' }}>{item.amountRequired}x</span>
-                    {item.name || `Item ${index + 1}`}
+                    {item.name || fallbackItemLabel(index + 1)}
                   </h3>
                   {item.value != null && (
                     <p style={{ color: '#888', fontSize: '14px', margin: '4px 0 0 0', display: 'flex', alignItems: 'center', gap: '4px' }}>
@@ -229,7 +230,7 @@ export function CraftCalculator() {
                 </div>
               </div>
               <div className="input-with-label">
-                <label>In Stash</label>
+                <label>{t('craftCalculator.inStash')}</label>
                 <input
                   type="number"
                   min="0"
@@ -272,21 +273,21 @@ export function CraftCalculator() {
         let profitLabel: string;
         if (profit > 0) {
           profitColor = '#4caf50'; // green
-          profitLabel = 'Profit';
+          profitLabel = t('craftCalculator.profit');
         } else if (profit < 0) {
           profitColor = '#f44336'; // red
-          profitLabel = 'Deficit';
+          profitLabel = t('craftCalculator.deficit');
         } else {
           profitColor = '#ff9800'; // orange
-          profitLabel = 'Break Even';
+          profitLabel = t('craftCalculator.breakEven');
         }
 
         return (
           <div className="card">
-            <h2 className="card-title">Crafting Economics</h2>
+            <h2 className="card-title">{t('craftCalculator.craftingEconomicsTitle')}</h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span style={{ color: '#888', fontSize: '14px' }}>Investment (Materials):</span>
+                <span style={{ color: '#888', fontSize: '14px' }}>{t('craftCalculator.investment')}:</span>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '16px' }}>
                   <img src="/images/icon-coin.webp" alt="coin" style={{ width: '18px', height: '18px' }} />
                   <span style={{ fontWeight: 'bold' }}>{formatNumber(totalInvestment)}</span>
@@ -295,7 +296,10 @@ export function CraftCalculator() {
               
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <span style={{ color: '#888', fontSize: '14px' }}>
-                  Return ({craftQuantity > 1 ? `${craftQuantity}x Crafted Items` : 'Crafted Item'}):
+                  {craftQuantity > 1
+                    ? tm('craftCalculator.returnMultiple', { count: craftQuantity })
+                    : t('craftCalculator.returnSingle')}
+                  :
                 </span>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '16px' }}>
                   <img src="/images/icon-coin.webp" alt="coin" style={{ width: '18px', height: '18px' }} />

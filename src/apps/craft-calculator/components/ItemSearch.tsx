@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import type { Item } from '../types/item';
 import { searchItems } from '../utils/itemData';
+import { useLocale } from '../../../shared/context/LocaleContext';
 
 interface ItemSearchProps {
   onSelect: (item: Item) => void;
@@ -9,6 +10,7 @@ interface ItemSearchProps {
 }
 
 export function ItemSearch({ onSelect, placeholder = 'Search items...', filter }: ItemSearchProps) {
+  const { tm } = useLocale();
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<Item[]>([]);
   const [showResults, setShowResults] = useState(false);
@@ -104,7 +106,7 @@ export function ItemSearch({ onSelect, placeholder = 'Search items...', filter }
               <div className="item-info">
                 <div className="item-name">{item.name}</div>
                 {item.stackSize && (
-                  <div className="item-meta">Stack: {item.stackSize}</div>
+                  <div className="item-meta">{tm('craftCalculator.stackMeta', { count: item.stackSize })}</div>
                 )}
               </div>
             </div>
