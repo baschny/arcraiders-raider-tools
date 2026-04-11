@@ -1,4 +1,4 @@
-
+"use strict";
 /**
  * Raider Tools Arc Relay Infrastructure Stack
  *
@@ -6,55 +6,53 @@
  * between the Raider Tools SPA and the arctracker.io API.
  * It manages the API Gateway, Lambda proxy, DNS records, and SSL certificates.
  */
-
-import * as cdk from "aws-cdk-lib";
-import { Construct } from "constructs";
-import * as route53 from "aws-cdk-lib/aws-route53";
-import * as certificatemanager from "aws-cdk-lib/aws-certificatemanager";
-import * as secretsmanager from "aws-cdk-lib/aws-secretsmanager";
-import * as lambda from "aws-cdk-lib/aws-lambda";
-import * as nodeLambda from "aws-cdk-lib/aws-lambda-nodejs";
-import * as apigwv2 from "aws-cdk-lib/aws-apigatewayv2";
-import * as integrations from "aws-cdk-lib/aws-apigatewayv2-integrations";
-import * as route53Targets from "aws-cdk-lib/aws-route53-targets";
-import * as s3 from "aws-cdk-lib/aws-s3";
-import * as events from "aws-cdk-lib/aws-events";
-import * as eventsTargets from "aws-cdk-lib/aws-events-targets";
-
-/**
- * Properties for the RaiderToolsArcRelayStack.
- */
-export interface RaiderToolsArcRelayStackProps extends cdk.StackProps {
-    /**
-     * The root domain name for the application.
-     * @example "raider-tools.app"
-     */
-    rootDomainName: string;
-
-    /**
-     * The domain name for the API.
-     * @example "api.raider-tools.app"
-     */
-    apiDomainName: string;
-
-    /**
-     * Hosted Zone ID for the rootDomainName.
-     */
-    hostedZoneId: string;
-
-    /**
-     * Secret name that contains the ArcTracker app key.
-     * The secret value should be the raw app key string, e.g. "arc_k1_..."
-     */
-    arcAppKeySecretName: string;
-
-    /**
-     * Allowed SPA origins for CORS.
-     * @example ["https://raider-tools.app", "http://localhost:5173"]
-     */
-    allowedOrigins: string[];
-}
-
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || (function () {
+    var ownKeys = function(o) {
+        ownKeys = Object.getOwnPropertyNames || function (o) {
+            var ar = [];
+            for (var k in o) if (Object.prototype.hasOwnProperty.call(o, k)) ar[ar.length] = k;
+            return ar;
+        };
+        return ownKeys(o);
+    };
+    return function (mod) {
+        if (mod && mod.__esModule) return mod;
+        var result = {};
+        if (mod != null) for (var k = ownKeys(mod), i = 0; i < k.length; i++) if (k[i] !== "default") __createBinding(result, mod, k[i]);
+        __setModuleDefault(result, mod);
+        return result;
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.RaiderToolsArcRelayStack = void 0;
+const cdk = __importStar(require("aws-cdk-lib"));
+const route53 = __importStar(require("aws-cdk-lib/aws-route53"));
+const certificatemanager = __importStar(require("aws-cdk-lib/aws-certificatemanager"));
+const secretsmanager = __importStar(require("aws-cdk-lib/aws-secretsmanager"));
+const lambda = __importStar(require("aws-cdk-lib/aws-lambda"));
+const nodeLambda = __importStar(require("aws-cdk-lib/aws-lambda-nodejs"));
+const apigwv2 = __importStar(require("aws-cdk-lib/aws-apigatewayv2"));
+const integrations = __importStar(require("aws-cdk-lib/aws-apigatewayv2-integrations"));
+const route53Targets = __importStar(require("aws-cdk-lib/aws-route53-targets"));
+const s3 = __importStar(require("aws-cdk-lib/aws-s3"));
+const events = __importStar(require("aws-cdk-lib/aws-events"));
+const eventsTargets = __importStar(require("aws-cdk-lib/aws-events-targets"));
 /**
  * RaiderToolsArcRelayStack
  *
@@ -68,34 +66,26 @@ export interface RaiderToolsArcRelayStackProps extends cdk.StackProps {
  *
  * The stack is designed to be deployed in the `eu-central-1` region.
  */
-export class RaiderToolsArcRelayStack extends cdk.Stack {
-    constructor(scope: Construct, id: string, props: RaiderToolsArcRelayStackProps) {
+class RaiderToolsArcRelayStack extends cdk.Stack {
+    constructor(scope, id, props) {
         super(scope, id, props);
-
         if (cdk.Stack.of(this).region !== "eu-central-1") {
             // Not strictly required, but matches your stated target.
             // Remove if you deploy in multiple regions.
             throw new Error("This stack is intended for eu-central-1.");
         }
-
         // --- Route53 hosted zone lookup (same account)
         const zone = route53.HostedZone.fromHostedZoneAttributes(this, "HostedZone", {
             hostedZoneId: props.hostedZoneId,
             zoneName: props.rootDomainName,
         });
-
         // --- ACM certificate in eu-central-1 for api.raider-tools.app (DNS validated)
         const apiCert = new certificatemanager.Certificate(this, "ApiCert", {
             domainName: props.apiDomainName,
             validation: certificatemanager.CertificateValidation.fromDns(zone),
         });
-
         // --- Secret containing ArcTracker app key (reference existing secret)
-        const arcAppKeySecret = secretsmanager.Secret.fromSecretNameV2(
-            this,
-            "ArcAppKeySecret",
-            props.arcAppKeySecretName
-        );
+        const arcAppKeySecret = secretsmanager.Secret.fromSecretNameV2(this, "ArcAppKeySecret", props.arcAppKeySecretName);
         const scheduleBucket = new s3.Bucket(this, "ScheduleDataBucket", {
             blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,
             encryption: s3.BucketEncryption.S3_MANAGED,
@@ -104,7 +94,6 @@ export class RaiderToolsArcRelayStack extends cdk.Stack {
             removalPolicy: cdk.RemovalPolicy.RETAIN,
             autoDeleteObjects: false,
         });
-
         // --- Lambda (TypeScript) - relay/proxy to arctracker.io
         const relayFn = new nodeLambda.NodejsFunction(this, "ArcRelayFunction", {
             runtime: lambda.Runtime.NODEJS_22_X,
@@ -142,7 +131,6 @@ export class RaiderToolsArcRelayStack extends cdk.Stack {
                 target: "node22",
             },
         });
-
         const scheduleUpdateFn = new nodeLambda.NodejsFunction(this, "ScheduleUpdateFunction", {
             runtime: lambda.Runtime.NODEJS_22_X,
             entry: "lambda/schedule-updater.ts",
@@ -164,15 +152,12 @@ export class RaiderToolsArcRelayStack extends cdk.Stack {
                 target: "node22",
             },
         });
-
         // Allow lambda to read the secret value
         arcAppKeySecret.grantRead(relayFn);
         scheduleBucket.grantRead(scheduleReadFn);
         scheduleBucket.grantReadWrite(scheduleUpdateFn);
-
         // Optional: tighten outbound by using a VPC + egress controls (not shown here).
         // For now, lambda will access arctracker.io over the public internet.
-
         // --- API Gateway HTTP API
         const httpApi = new apigwv2.HttpApi(this, "ArcRelayHttpApi", {
             apiName: "raider-tools-arc-relay",
@@ -188,14 +173,9 @@ export class RaiderToolsArcRelayStack extends cdk.Stack {
                 maxAge: cdk.Duration.hours(1),
             },
         });
-
         // --- Lambda integration + routes (explicit allowlist at the gateway layer)
         const integration = new integrations.HttpLambdaIntegration("RelayIntegration", relayFn);
-        const scheduleIntegration = new integrations.HttpLambdaIntegration(
-            "ScheduleReadIntegration",
-            scheduleReadFn
-        );
-
+        const scheduleIntegration = new integrations.HttpLambdaIntegration("ScheduleReadIntegration", scheduleReadFn);
         // Recommended: define explicit routes per endpoint you want to support.
         // If you want a single "proxy" route, use /arctracker/{proxy+} and enforce allowlist in code.
         httpApi.addRoutes({
@@ -218,31 +198,24 @@ export class RaiderToolsArcRelayStack extends cdk.Stack {
             schedule: events.Schedule.rate(cdk.Duration.hours(1)),
         });
         scheduleRule.addTarget(new eventsTargets.LambdaFunction(scheduleUpdateFn));
-
         // --- Custom domain for the API
         const apiDomain = new apigwv2.DomainName(this, "ArcRelayDomainName", {
             domainName: props.apiDomainName,
             certificate: apiCert,
         });
-
         // Map custom domain -> API stage ($default)
         new apigwv2.ApiMapping(this, "ArcRelayApiMapping", {
             api: httpApi,
             domainName: apiDomain,
-            stage: httpApi.defaultStage!, // created by default for HttpApi
+            stage: httpApi.defaultStage, // created by default for HttpApi
             // mappingKey: undefined // root mapping
         });
-
         // --- Route53 alias record api.raider-tools.app -> API Gateway domain target
         new route53.ARecord(this, "ApiAliasRecord", {
             zone,
             recordName: props.apiDomainName, // "api.raider-tools.app"
-            target: route53.RecordTarget.fromAlias(new route53Targets.ApiGatewayv2DomainProperties(
-                apiDomain.regionalDomainName,
-                apiDomain.regionalHostedZoneId
-            )),
+            target: route53.RecordTarget.fromAlias(new route53Targets.ApiGatewayv2DomainProperties(apiDomain.regionalDomainName, apiDomain.regionalHostedZoneId)),
         });
-
         // --- Outputs
         new cdk.CfnOutput(this, "HttpApiId", { value: httpApi.httpApiId });
         new cdk.CfnOutput(this, "ApiBaseUrlCustomDomain", { value: `https://${props.apiDomainName}` });
@@ -258,3 +231,4 @@ export class RaiderToolsArcRelayStack extends cdk.Stack {
         });
     }
 }
+exports.RaiderToolsArcRelayStack = RaiderToolsArcRelayStack;

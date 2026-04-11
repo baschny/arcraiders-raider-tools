@@ -17,17 +17,19 @@ export interface EventSchedule {
 }
 export interface ScheduleMetadata {
   generatedAt: string;
-  sourceFiles: {
-    scenarios: string;
-    mapEvents: string;
-    maps: string;
-    localizations: string;
-  };
-  timestampRange: {
+  sourceFiles?: Record<string, string>;
+  timestampRange?: {
     start: number | null;
     end: number | null;
   };
-  ignoredConditionIds: string[];
+  mergedPastEvents?: {
+    windowSeconds: number;
+    now: number;
+    count: number;
+  };
+  ignoredConditionIds?: string[];
+  ignoredMapNames?: string[];
+  ignoredEntriesCount?: number;
 }
 
 export interface MapEventsData {

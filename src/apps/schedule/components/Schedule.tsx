@@ -45,8 +45,8 @@ export function Schedule({ data }: ScheduleProps) {
   const [hoveredEventType, setHoveredEventType] = useState<string | null>(null);
   const [pinnedEventType, setPinnedEventType] = useState<string | null>(null);
   const scheduleDateRange = useMemo(() => {
-    let minTimestamp = data.metadata?.timestampRange.start ?? null;
-    let maxTimestamp = data.metadata?.timestampRange.end ?? null;
+    let minTimestamp = data.metadata?.timestampRange?.start ?? null;
+    let maxTimestamp = data.metadata?.timestampRange?.end ?? null;
 
     if (!Number.isFinite(minTimestamp ?? Number.NaN) || !Number.isFinite(maxTimestamp ?? Number.NaN)) {
       let computedMin = Number.POSITIVE_INFINITY;
