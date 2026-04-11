@@ -8,6 +8,7 @@ import type { ItemsMap } from '../../types/item';
 import type { InRaidSuggestion, PlannerResult } from '../../types/planner';
 import type { ItemInsightsMap } from '../../utils/itemInsights';
 import { ItemIcon } from '../ItemIcon';
+import { useLocale } from '../../../../shared/context/LocaleContext';
 
 interface InRaidViewProps {
   itemsMap: ItemsMap;
@@ -22,6 +23,7 @@ export function InRaidView({
   itemInsights,
   getOwnedQuantity,
 }: InRaidViewProps) {
+  const { t, tm, compareText } = useLocale();
 
   const suggestions = plannerResult.inRaidSuggestions.items;
   const tooltipContext = {
@@ -58,7 +60,7 @@ export function InRaidView({
       }
     }
 
-    return Array.from(totals.values()).sort((a, b) => a.listName.localeCompare(b.listName));
+    return Array.from(totals.values()).sort((a, b) => compareText(a.listName, b.listName));
   };
 
   const renderActionTooltip = (actionKind: ActionKind, suggestion: InRaidSuggestion) => {
@@ -69,8 +71,8 @@ export function InRaidView({
       const keepBreakdown = getKeepBreakdown(item.id, suggestion);
       return (
         <div className="in-raid-view__icon-tooltip">
-          <div className="in-raid-view__icon-tooltip-title">Keep</div>
-          <div className="in-raid-view__icon-tooltip-subtitle">Needed for Lists</div>
+          <div className="in-raid-view__icon-tooltip-title">{t('quartermaster.inRaid.keep')}</div>
+          <div className="in-raid-view__icon-tooltip-subtitle">{t('quartermaster.inRaid.neededForLists')}</div>
           {keepBreakdown.length > 0 ? (
             <ul className="in-raid-view__icon-tooltip-list">
               {keepBreakdown.map((source) => (
@@ -81,7 +83,7 @@ export function InRaidView({
               ))}
             </ul>
           ) : (
-            <div className="in-raid-view__icon-tooltip-empty">No list breakdown available</div>
+            <div className="in-raid-view__icon-tooltip-empty">{t('quartermaster.inRaid.noListBreakdown')}</div>
           )}
         </div>
       );
@@ -96,9 +98,9 @@ export function InRaidView({
     return (
       <div className="in-raid-view__icon-tooltip">
         <div className="in-raid-view__icon-tooltip-title">
-          {actionKind === 'salvage' ? 'Salvage' : 'Recycle'}
+          {actionKind === 'salvage' ? t('quartermaster.inRaid.salvage') : t('quartermaster.inRaid.recycle')}
         </div>
-        <div className="in-raid-view__icon-tooltip-subtitle">Yields</div>
+        <div className="in-raid-view__icon-tooltip-subtitle">{t('quartermaster.inRaid.yields')}</div>
         {yieldEntries.length > 0 ? (
           <ul className="in-raid-view__icon-tooltip-list">
             {yieldEntries.map(([yieldId, quantity]) => (
@@ -109,7 +111,7 @@ export function InRaidView({
             ))}
           </ul>
         ) : (
-          <div className="in-raid-view__icon-tooltip-empty">No yields available</div>
+          <div className="in-raid-view__icon-tooltip-empty">{t('quartermaster.inRaid.noYields')}</div>
         )}
       </div>
     );
@@ -167,7 +169,7 @@ export function InRaidView({
                 {isFinalTarget && required > 0 && (
                   <div className="in-raid-view__missing-wrapper">
                     <div className="in-raid-view__missing-circle">{deficit}</div>
-                    <div className="in-raid-view__mini-tooltip">{`${deficit}/${required} Missing`}</div>
+                    <div className="in-raid-view__mini-tooltip">{tm('quartermaster.stash.missingCount', { missing: deficit, required })}</div>
                   </div>
                 )}
               </div>
@@ -183,7 +185,7 @@ export function InRaidView({
       <div className="in-raid-view">
         <div className="qm-empty-state">
           <Target size={48} />
-          <p>No loot suggestions. Configure lists to see what items to look for.</p>
+          <p>{t('quartermaster.inRaid.empty')}</p>
         </div>
       </div>
     );
@@ -193,14 +195,14 @@ export function InRaidView({
     <div className="in-raid-view">
       {directTargets.length > 0 && (
         <section className="in-raid-view__section">
-          <h3 className="qm-section-title">Direct Targets – Bring Home</h3>
+          <h3 className="qm-section-title">{t('quartermaster.inRaid.directTargets')}</h3>
           {renderSuggestionGrid(directTargets)}
         </section>
       )}
 
       {craftSupport.length > 0 && (
         <section className="in-raid-view__section">
-          <h3 className="qm-section-title">Crafting Materials</h3>
+          <h3 className="qm-section-title">{t('quartermaster.inRaid.craftingMaterials')}</h3>
           {renderSuggestionGrid(craftSupport)}
         </section>
       )}

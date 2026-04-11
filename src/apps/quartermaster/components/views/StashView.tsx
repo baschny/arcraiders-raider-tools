@@ -9,6 +9,12 @@ import type { ItemsMap } from '../../types/item';
 import type { PlannerResult, StashItem } from '../../types/planner';
 import { ItemIcon } from '../ItemIcon';
 import type { ItemInsightsMap } from '../../utils/itemInsights';
+import {
+  getLocalizedQuartermasterCategory,
+  getLocalizedQuartermasterRarity,
+  getUncraftableReasonLabel,
+} from '../../utils/localization';
+import { useLocale } from '../../../../shared/context/LocaleContext';
 
 interface StashViewProps {
   itemsMap: ItemsMap;
@@ -29,6 +35,7 @@ export function StashView({
   onSyncStash,
   isSyncing,
 }: StashViewProps) {
+  const { t, tm, compareText, formatNumber } = useLocale();
   const [searchQuery, setSearchQuery] = useState('');
   const [categoryFilter, setCategoryFilter] = useState<string>('all');
   const [rarityFilter, setRarityFilter] = useState<string>('all');
@@ -48,8 +55,8 @@ export function StashView({
         cats.add(plannerItem.category);
       }
     }
-    return Array.from(cats).sort();
-  }, [stashItems, itemsMap]);
+    return Array.from(cats).sort((a, b) => compareText(getLocalizedQuartermasterCategory(t, a), getLocalizedQuartermasterCategory(t, b)));
+  }, [stashItems, itemsMap, compareText, t]);
 
   // Filter and sort stash items
   const filteredItems = useMemo(() => {
@@ -83,9 +90,9 @@ export function StashView({
       .sort((a, b) => {
         const itemA = itemsMap[a.itemId];
         const itemB = itemsMap[b.itemId];
-        return (itemA?.name ?? '').localeCompare(itemB?.name ?? '');
+        return compareText(itemA?.name ?? '', itemB?.name ?? '');
       });
-  }, [stashItems, itemsMap, searchQuery, categoryFilter, rarityFilter, showOnlyRecyclable, recycleItemIds]);
+  }, [stashItems, itemsMap, searchQuery, categoryFilter, rarityFilter, showOnlyRecyclable, recycleItemIds, compareText]);
 
   // Calculate total value
   const totalValue = useMemo(() => {
@@ -111,7 +118,7 @@ export function StashView({
     const listNames = new Set<string>();
     for (const need of insight.finalListNeeds) listNames.add(need.listName);
     for (const need of insight.craftingNeeds) listNames.add(need.listName);
-    return Array.from(listNames).sort().join(', ');
+    return Array.from(listNames).sort(compareText).join(', ');
   };
 
   const getRecycleReasonLabel = (itemId: string): string => {
@@ -132,7 +139,7 @@ export function StashView({
           disabled={isSyncing}
         >
           <RefreshCw size={14} className={isSyncing ? 'animate-spin' : ''} />
-          Sync Inventory
+          {t('quartermaster.common.syncInventory')}
         </button>
 
         <div className="stash-view__search">
@@ -141,7 +148,7 @@ export function StashView({
             <input
               type="text"
               className="qm-input"
-              placeholder="Search items..."
+              placeholder={t('quartermaster.stash.searchPlaceholder')}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               style={{ paddingLeft: 28, width: '100%' }}
@@ -155,9 +162,9 @@ export function StashView({
             value={categoryFilter}
             onChange={(e) => setCategoryFilter(e.target.value)}
           >
-            <option value="all">All Categories</option>
+            <option value="all">{t('quartermaster.stash.allCategories')}</option>
             {categories.map(cat => (
-              <option key={cat} value={cat}>{cat}</option>
+              <option key={cat} value={cat}>{getLocalizedQuartermasterCategory(t, cat)}</option>
             ))}
           </select>
 
@@ -166,12 +173,12 @@ export function StashView({
             value={rarityFilter}
             onChange={(e) => setRarityFilter(e.target.value)}
           >
-            <option value="all">All Rarities</option>
-            <option value="Common">Common</option>
-            <option value="Uncommon">Uncommon</option>
-            <option value="Rare">Rare</option>
-            <option value="Epic">Epic</option>
-            <option value="Legendary">Legendary</option>
+            <option value="all">{t('quartermaster.stash.allRarities')}</option>
+            <option value="Common">{getLocalizedQuartermasterRarity(t, 'Common')}</option>
+            <option value="Uncommon">{getLocalizedQuartermasterRarity(t, 'Uncommon')}</option>
+            <option value="Rare">{getLocalizedQuartermasterRarity(t, 'Rare')}</option>
+            <option value="Epic">{getLocalizedQuartermasterRarity(t, 'Epic')}</option>
+            <option value="Legendary">{getLocalizedQuartermasterRarity(t, 'Legendary')}</option>
           </select>
 
           <label style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 11, cursor: 'pointer' }}>
@@ -180,33 +187,33 @@ export function StashView({
               checked={showOnlyRecyclable}
               onChange={(e) => setShowOnlyRecyclable(e.target.checked)}
             />
-            Show Only Recyclable
+            {t('quartermaster.stash.showOnlyRecyclable')}
           </label>
         </div>
 
         <div className="stash-view__value">
-          Total Value: <span>{totalValue.toLocaleString()}</span>
+          {t('quartermaster.stash.totalValue')}: <span>{formatNumber(totalValue)}</span>
         </div>
       </div>
 
       {stashItems.length === 0 ? (
         <div className="qm-empty-state">
           <Package size={48} />
-          <p>No items in stash. Click &quot;Sync Inventory&quot; to load your stash.</p>
+          <p>{t('quartermaster.stash.empty')}</p>
         </div>
       ) : filteredItems.length === 0 ? (
         <div className="qm-empty-state">
           <Search size={48} />
-          <p>No items match your filters.</p>
+          <p>{t('quartermaster.stash.noMatches')}</p>
         </div>
       ) : (
         <table className="qm-table">
           <thead>
             <tr>
-              <th style={{ width: 80 }}>Icon</th>
-              <th>Item</th>
-              <th style={{ width: 140 }}>Need</th>
-              <th>Status</th>
+              <th style={{ width: 80 }}>{t('quartermaster.stash.columns.icon')}</th>
+              <th>{t('quartermaster.stash.columns.item')}</th>
+              <th style={{ width: 140 }}>{t('quartermaster.stash.columns.need')}</th>
+              <th>{t('quartermaster.stash.columns.status')}</th>
             </tr>
           </thead>
           <tbody>
@@ -240,30 +247,29 @@ export function StashView({
                     <span className="qm-item-name">{item.name}</span>
                   </td>
                   <td className={missing > 0 ? 'stash-view__need stash-view__need--missing' : 'stash-view__need'}>
-                    {hasRequirement ? `${missing}/${required} Missing` : '0/0 Missing'}
+                    {hasRequirement
+                      ? tm('quartermaster.stash.missingCount', { missing, required })
+                      : tm('quartermaster.stash.missingCount', { missing: 0, required: 0 })}
                   </td>
                   <td>
                     {(planRow?.missing ?? 0) === 0 && hasRequirement && (
                       <span className="stash-view__indicator stash-view__indicator--have">
-                        ✓ Have
+                        {t('quartermaster.status.have')}
                       </span>
                     )}
                     {(planRow?.missing ?? 0) > 0 && (
                       <span className="stash-view__indicator stash-view__indicator--missing">
-                        ⚠ Missing{missingOriginLabel ? ` · ${missingOriginLabel}` : ''}
+                        {t('quartermaster.status.missing')}{missingOriginLabel ? ` · ${missingOriginLabel}` : ''}
                       </span>
                     )}
                     {toRecycle && (
                       <span className="stash-view__indicator stash-view__indicator--recycle">
-                        🔄 Recycle{recycleReason ? ` · ${recycleReason}` : ''}
+                        {t('quartermaster.status.recycle')}{recycleReason ? ` · ${recycleReason}` : ''}
                       </span>
                     )}
                     {planRow?.isUncraftable && (
                       <span className="stash-view__indicator stash-view__indicator--uncraftable">
-                        {planRow.uncraftableReason === 'blueprint_locked' && '🔒 Blueprint Locked'}
-                        {planRow.uncraftableReason === 'insufficient_bench_level' && '🚫 Bench Level Too Low'}
-                        {planRow.uncraftableReason === 'missing_bench' && '🚫 No Craft Bench'}
-                        {planRow.uncraftableReason === 'cycle' && '🚫 Craft Cycle'}
+                        {getUncraftableReasonLabel(t, planRow.uncraftableReason)}
                       </span>
                     )}
                   </td>

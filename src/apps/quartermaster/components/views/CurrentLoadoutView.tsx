@@ -8,6 +8,7 @@ import type { ItemsMap } from '../../types/item';
 import type { CurrentLoadoutItem, PlannerResult } from '../../types/planner';
 import type { ItemInsightsMap } from '../../utils/itemInsights';
 import { ItemIcon } from '../ItemIcon';
+import { useLocale } from '../../../../shared/context/LocaleContext';
 
 interface CurrentLoadoutViewProps {
   itemsMap: ItemsMap;
@@ -28,6 +29,7 @@ export function CurrentLoadoutView({
   onSyncLoadout,
   isSyncing,
 }: CurrentLoadoutViewProps) {
+  const { t } = useLocale();
   const tooltipContext = {
     itemsMap,
     plannerResult,
@@ -43,12 +45,12 @@ export function CurrentLoadoutView({
             disabled={isSyncing}
           >
             <RefreshCw size={14} className={isSyncing ? 'animate-spin' : ''} />
-            Sync Loadout
+            {t('quartermaster.common.syncLoadout')}
           </button>
         </div>
         <div className="qm-empty-state">
           <Backpack size={48} />
-          <p>No loadout synced. Click &quot;Sync Loadout&quot; to load your current equipment.</p>
+          <p>{t('quartermaster.loadout.empty')}</p>
         </div>
       </div>
     );
@@ -63,13 +65,13 @@ export function CurrentLoadoutView({
           disabled={isSyncing}
         >
           <RefreshCw size={14} className={isSyncing ? 'animate-spin' : ''} />
-          Sync Loadout
+          {t('quartermaster.common.syncLoadout')}
         </button>
       </div>
 
       <div className="current-loadout-view__grid">
         <div className="current-loadout-view__section">
-          <div className="current-loadout-view__section-title">Backpack Contents</div>
+          <div className="current-loadout-view__section-title">{t('quartermaster.loadout.backpackContents')}</div>
           <div className="current-loadout-view__backpack-grid">
             {currentLoadout.map((loadoutItem, idx) => {
               const item = itemsMap[loadoutItem.itemId];

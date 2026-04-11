@@ -12,6 +12,7 @@ import { ItemIcon } from '../ItemIcon';
 import { searchItems } from '../../utils/dataLoader';
 import { AuthGate } from '../AuthGate';
 import type { ItemInsightsMap } from '../../utils/itemInsights';
+import { useLocale } from '../../../../shared/context/LocaleContext';
 
 interface ListsViewProps {
   itemsMap: ItemsMap;
@@ -69,6 +70,7 @@ export function ListsView({
   onToggleHideoutList,
   onToggleHideoutItem,
 }: ListsViewProps) {
+  const { t, compareText } = useLocale();
   const [selectedListId, setSelectedListId] = useState<string | null>(
     lists.length > 0 ? lists[0].id : null
   );
@@ -96,8 +98,10 @@ export function ListsView({
   // Search results for autocomplete
   const searchResults = useMemo(() => {
     if (!searchQuery.trim()) return [];
-    return searchItems(itemsMap, searchQuery).slice(0, 10);
-  }, [itemsMap, searchQuery]);
+    return searchItems(itemsMap, searchQuery)
+      .sort((a, b) => compareText(a.name, b.name))
+      .slice(0, 10);
+  }, [itemsMap, searchQuery, compareText]);
 
   // --- Handlers ---
 
@@ -230,7 +234,7 @@ export function ListsView({
       <div className="lists-view__list">
         {/* User Lists Section */}
         <div className="lists-view__list-header">
-          <span className="lists-view__list-title">User Lists</span>
+          <span className="lists-view__list-title">{t('quartermaster.lists.userLists')}</span>
         </div>
 
         <div className="lists-view__items">
@@ -268,7 +272,7 @@ export function ListsView({
         {/* Hideout Upgrade Lists Section (CR-009) */}
         <div className="lists-view__list-header" style={{ marginTop: 12 }}>
           <span className="lists-view__list-title">
-            <Home size={14} /> Hideout Upgrades
+            <Home size={14} /> {t('quartermaster.lists.hideoutUpgrades')}
           </span>
         </div>
 
@@ -304,8 +308,8 @@ export function ListsView({
         ) : (
           <div className="lists-view__hideout-hint">
             {hasHideoutCache
-              ? 'All hideout modules are at max level.'
-              : 'Sync your hideout to see upgrade lists.'}
+              ? t('quartermaster.lists.hideoutMaxed')
+              : t('quartermaster.lists.syncHideoutHint')}
           </div>
         )}
 
@@ -317,7 +321,7 @@ export function ListsView({
             style={{ width: '100%', marginTop: 8 }}
           >
             <RefreshCw size={14} className={isSyncingHideout ? 'animate-spin' : ''} />
-            Sync Hideouts
+            {t('quartermaster.common.syncHideouts')}
           </button>
         </AuthGate>
 
@@ -325,7 +329,7 @@ export function ListsView({
           <input
             type="text"
             className="qm-input"
-            placeholder="New list name..."
+            placeholder={t('quartermaster.lists.newListPlaceholder')}
             value={newListName}
             onChange={(e) => setNewListName(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && handleCreateList()}
@@ -337,7 +341,7 @@ export function ListsView({
             disabled={!newListName.trim()}
             style={{ width: '100%' }}
           >
-            <Plus size={14} /> Create List
+            <Plus size={14} /> {t('quartermaster.lists.createList')}
           </button>
         </div>
       </div>
@@ -366,7 +370,7 @@ export function ListsView({
                     setSelectedListId(lists.find(l => l.id !== selectedList.id)?.id ?? null);
                   }}
                 >
-                  <Trash2 size={14} /> Delete
+                  <Trash2 size={14} /> {t('quartermaster.lists.delete')}
                 </button>
               )}
             </div>
@@ -377,7 +381,7 @@ export function ListsView({
                 <input
                   type="text"
                   className="qm-input"
-                  placeholder="Search items to add..."
+                  placeholder={t('quartermaster.lists.searchItemsPlaceholder')}
                   value={searchQuery}
                   onChange={(e) => {
                     setSearchQuery(e.target.value);
@@ -522,7 +526,7 @@ export function ListsView({
         ) : (
           <div className="qm-empty-state">
             <List size={48} />
-            <p>Select or create a list to edit.</p>
+            <p>{t('quartermaster.lists.empty')}</p>
           </div>
         )}
       </div>

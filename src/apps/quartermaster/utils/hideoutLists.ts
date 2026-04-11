@@ -8,6 +8,11 @@ import type { CachedHideout } from '../../../shared/types/arctracker';
 import type { StoredList } from '../types/list';
 import { listKey, itemKey } from './hideoutStorage';
 
+interface HideoutListLocalizationOptions {
+  formatListName: (moduleName: string, level: number, isNext: boolean) => string;
+  compareText: (left: string, right: string) => number;
+}
+
 /**
  * Generate hideout upgrade lists from static definitions and cached hideout state.
  *
@@ -20,8 +25,10 @@ export function generateHideoutLists(
   definitions: HideoutModuleDefinition[],
   cachedHideout: CachedHideout,
   toggleState: HideoutToggleState,
+  options: HideoutListLocalizationOptions,
 ): StoredList[] {
   const moduleMap = new Map(cachedHideout.modules.map(m => [m.moduleId, m]));
+  const definitionMap = new Map(definitions.map((definition) => [definition.id, definition]));
   const lists: StoredList[] = [];
 
   for (const def of definitions) {
@@ -32,9 +39,7 @@ export function generateHideoutLists(
       if (levelDef.level <= cached.currentLevel) continue;
 
       const isNext = levelDef.level === cached.currentLevel + 1;
-      const name = isNext
-        ? `${def.name} to Level ${levelDef.level} (Next)`
-        : `${def.name} to Level ${levelDef.level}`;
+      const name = options.formatListName(def.name, levelDef.level, isNext);
 
       const lk = listKey(def.id, levelDef.level);
       const isListEnabled = toggleState.listEnabled[lk] ?? true;
@@ -58,20 +63,21 @@ export function generateHideoutLists(
   // 2. Remaining future levels
   // 3. Within each group: bench name ASC, then target level ASC
   lists.sort((a, b) => {
-    const aIsNext = a.name.endsWith('(Next)');
-    const bIsNext = b.name.endsWith('(Next)');
+    const aIdParts = a.id.match(/^hideout_(.+)_(\d+)$/);
+    const bIdParts = b.id.match(/^hideout_(.+)_(\d+)$/);
+    const aModuleId = aIdParts?.[1] ?? '';
+    const bModuleId = bIdParts?.[1] ?? '';
+    const aLevel = parseInt(aIdParts?.[2] ?? '0', 10);
+    const bLevel = parseInt(bIdParts?.[2] ?? '0', 10);
+    const aModuleName = definitionMap.get(aModuleId)?.name ?? a.name;
+    const bModuleName = definitionMap.get(bModuleId)?.name ?? b.name;
+    const aIsNext = moduleMap.get(aModuleId)?.currentLevel === aLevel - 1;
+    const bIsNext = moduleMap.get(bModuleId)?.currentLevel === bLevel - 1;
 
     if (aIsNext !== bIsNext) return aIsNext ? -1 : 1;
 
-    // Extract module name and level for sorting
-    const aName = a.name.replace(/ to Level \d+.*$/, '');
-    const bName = b.name.replace(/ to Level \d+.*$/, '');
+    if (aModuleName !== bModuleName) return options.compareText(aModuleName, bModuleName);
 
-    if (aName !== bName) return aName.localeCompare(bName);
-
-    // Extract target level from id: hideout_<moduleId>_<level>
-    const aLevel = parseInt(a.id.split('_').pop() ?? '0', 10);
-    const bLevel = parseInt(b.id.split('_').pop() ?? '0', 10);
     return aLevel - bLevel;
   });
 

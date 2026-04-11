@@ -47,6 +47,7 @@ import {
   type CachedHideout,
 } from './utils/api';
 import { buildItemInsights, type ItemInsightsMap } from './utils/itemInsights';
+import { formatHideoutListName } from './utils/localization';
 import { useAuth } from '../../shared/context/AuthContext';
 import { useLocale } from '../../shared/context/LocaleContext';
 
@@ -63,7 +64,7 @@ import './styles/main.scss';
 
 export function QuartermasterApp() {
   const { revalidate } = useAuth();
-  const { locale } = useLocale();
+  const { locale, t, tm, compareText } = useLocale();
 
   // Core state
   const [itemsMap, setItemsMap] = useState<ItemsMap | null>(null);
@@ -142,12 +143,12 @@ export function QuartermasterApp() {
         setLoading(false);
       } catch (err) {
         console.error('Failed to initialize:', err);
-        setError(err instanceof Error ? err.message : 'Unknown error');
+        setError(err instanceof Error ? err.message : t('quartermaster.common.unknownError'));
         setLoading(false);
       }
     }
     initialize();
-  }, [locale]);
+  }, [locale, t]);
 
   // Derive bench levels from cached hideout (CR-005)
   const benchLevels: Record<BenchId, number> = useMemo(() => {
@@ -157,8 +158,12 @@ export function QuartermasterApp() {
   // Generate hideout upgrade lists (CR-007)
   const hideoutLists: StoredList[] = useMemo(() => {
     if (!cachedHideout || hideoutDefinitions.length === 0) return [];
-    return generateHideoutLists(hideoutDefinitions, cachedHideout, hideoutToggleState);
-  }, [hideoutDefinitions, cachedHideout, hideoutToggleState]);
+    return generateHideoutLists(hideoutDefinitions, cachedHideout, hideoutToggleState, {
+      formatListName: (moduleName, level, isNext) =>
+        formatHideoutListName(t, moduleName, level, isNext),
+      compareText,
+    });
+  }, [hideoutDefinitions, cachedHideout, hideoutToggleState, t, compareText]);
 
   // Merge user lists and hideout lists for planner aggregation (CR-007)
   const allLists: StoredList[] = useMemo(() => {
@@ -279,20 +284,25 @@ export function QuartermasterApp() {
     if (isApiError(err)) {
       if (err.status === 401) {
         // Prompt re-auth
-        setSyncError('Session expired. Please log in again.');
+        setSyncError(t('quartermaster.sync.sessionExpired'));
         revalidate();
       } else if (err.status === 429 || err.isRetryable) {
         // Show warning for rate limit or retryable errors
-        setSyncError(`Rate limited. Please wait a moment and try again.`);
+        setSyncError(t('quartermaster.sync.rateLimited'));
       } else {
         // Other errors
-        setSyncError(`${operation} failed: ${err.message}`);
+        setSyncError(tm('quartermaster.sync.failed', { operation, message: err.message }));
       }
     } else {
-      setSyncError(`${operation} failed: ${err instanceof Error ? err.message : 'Unknown error'}`);
+      setSyncError(
+        tm('quartermaster.sync.failed', {
+          operation,
+          message: err instanceof Error ? err.message : t('quartermaster.common.unknownError'),
+        }),
+      );
     }
     // Do NOT clear cache on failure (per spec 4.2.3)
-  }, [revalidate]);
+  }, [revalidate, t, tm]);
 
   // Sync callbacks using shared arctrackerApi service (spec 4.2.1, 4.3.1)
   const handleSyncStash = useCallback(async () => {
@@ -310,11 +320,11 @@ export function QuartermasterApp() {
       setStashItems(knownItems);
     } catch (err) {
       console.error('Failed to sync stash:', err);
-      handleApiError(err, 'Sync inventory');
+      handleApiError(err, t('quartermaster.common.syncInventory'));
     } finally {
       setIsSyncingStash(false);
     }
-  }, [itemsMap, handleApiError]);
+  }, [itemsMap, handleApiError, t]);
 
   const handleSyncLoadout = useCallback(async () => {
     setIsSyncingLoadout(true);
@@ -331,11 +341,11 @@ export function QuartermasterApp() {
       setCurrentLoadout(knownItems);
     } catch (err) {
       console.error('Failed to sync loadout:', err);
-      handleApiError(err, 'Sync loadout');
+      handleApiError(err, t('quartermaster.common.syncLoadout'));
     } finally {
       setIsSyncingLoadout(false);
     }
-  }, [itemsMap, handleApiError]);
+  }, [itemsMap, handleApiError, t]);
 
   // Sync hideout (CR-004)
   const handleSyncHideout = useCallback(async () => {
@@ -351,11 +361,11 @@ export function QuartermasterApp() {
       saveHideoutToggleState(cleaned);
     } catch (err) {
       console.error('Failed to sync hideout:', err);
-      handleApiError(err, 'Sync hideout');
+      handleApiError(err, t('quartermaster.common.syncHideout'));
     } finally {
       setIsSyncingHideout(false);
     }
-  }, [hideoutDefinitions, hideoutToggleState, handleApiError]);
+  }, [hideoutDefinitions, hideoutToggleState, handleApiError, t]);
 
   // Hideout list toggle handlers (CR-008)
   const handleToggleHideoutList = useCallback((moduleId: string, level: number) => {
@@ -483,8 +493,8 @@ export function QuartermasterApp() {
   // Loading state
   if (loading) {
     return (
-      <div className="quartermaster-container">
-        <div className="qm-loading">Loading item data...</div>
+        <div className="quartermaster-container">
+        <div className="qm-loading">{t('quartermaster.loading')}</div>
       </div>
     );
   }
@@ -492,8 +502,8 @@ export function QuartermasterApp() {
   // Error state
   if (error) {
     return (
-      <div className="quartermaster-container">
-        <div className="qm-error">Error: {error}</div>
+        <div className="quartermaster-container">
+        <div className="qm-error">{t('shared.errorPrefix')}: {error}</div>
       </div>
     );
   }

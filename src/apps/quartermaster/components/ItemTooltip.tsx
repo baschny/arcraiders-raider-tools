@@ -4,6 +4,12 @@ import type { ItemsMap, PlannerItem } from '../types/item';
 import type { PlannerResult } from '../types/planner';
 import { getEmptyItemInsight, type ItemInsightsMap } from '../utils/itemInsights';
 import { getLocationIcon } from '../utils/locationIcons';
+import {
+  getLocalizedQuartermasterLocation,
+  getLocalizedQuartermasterRarity,
+  getLocalizedQuartermasterType,
+} from '../utils/localization';
+import { useLocale } from '../../../shared/context/LocaleContext';
 
 interface ItemTooltipProps {
   item: PlannerItem;
@@ -22,10 +28,10 @@ function getRarityClass(rarity: PlannerItem['rarity']): string {
   return `rarity-${rarity.toLowerCase()}`;
 }
 
-function renderCompleteBadge(isComplete: boolean) {
+function renderCompleteBadge(isComplete: boolean, t: (key: string) => string) {
   return (
     <span className={`qm-item-tooltip__status-badge ${isComplete ? 'qm-item-tooltip__status-badge--complete' : 'qm-item-tooltip__status-badge--missing'}`}>
-      {isComplete ? 'Complete' : 'Needed'}
+      {isComplete ? t('quartermaster.itemTooltip.complete') : t('quartermaster.itemTooltip.needed')}
     </span>
   );
 }
@@ -42,6 +48,7 @@ export function ItemTooltip({
   onMouseLeave,
   onContextMenu,
 }: ItemTooltipProps) {
+  const { t } = useLocale();
   if (!visible) return null;
 
   const insight = getEmptyItemInsight(itemInsights, item.id);
@@ -84,9 +91,9 @@ export function ItemTooltip({
         <div className="qm-item-tooltip__title">
           <h3 className="qm-item-name">{item.name}</h3>
           <div className="qm-item-tooltip__badges">
-            <span className="qm-item-tooltip__badge qm-item-tooltip__badge--type">{item.type}</span>
+            <span className="qm-item-tooltip__badge qm-item-tooltip__badge--type">{getLocalizedQuartermasterType(t, item.type)}</span>
             <span className={`qm-item-tooltip__badge qm-item-tooltip__badge--rarity ${getRarityClass(item.rarity)}`}>
-              {item.rarity}
+              {getLocalizedQuartermasterRarity(t, item.rarity)}
             </span>
           </div>
         </div>
@@ -99,40 +106,41 @@ export function ItemTooltip({
       <div className="qm-item-tooltip__stats">
         <div className="qm-item-tooltip__stat">
           <PackageSearch size={15} />
-          <span className="qm-item-tooltip__stat-label">Stack Size:</span>
+          <span className="qm-item-tooltip__stat-label">{t('quartermaster.itemTooltip.stackSize')}</span>
           <span className="qm-item-tooltip__stat-value">{item.stackSize}</span>
         </div>
         {item.weight !== undefined && (
           <div className="qm-item-tooltip__stat">
             <Weight size={15} />
-            <span className="qm-item-tooltip__stat-label">Weight:</span>
+            <span className="qm-item-tooltip__stat-label">{t('quartermaster.itemTooltip.weight')}</span>
             <span className="qm-item-tooltip__stat-value">{item.weight} kg</span>
           </div>
         )}
         {item.value !== undefined && (
           <div className="qm-item-tooltip__stat">
             <Coins size={15} />
-            <span className="qm-item-tooltip__stat-label">Value:</span>
+            <span className="qm-item-tooltip__stat-label">{t('quartermaster.itemTooltip.value')}</span>
             <span className="qm-item-tooltip__stat-value">{item.value} Coins</span>
           </div>
         )}
         {hasLocations && (
           <div className="qm-item-tooltip__stat">
             <MapPin size={15} />
-            <span className="qm-item-tooltip__stat-label">Found In:</span>
+            <span className="qm-item-tooltip__stat-label">{t('quartermaster.itemTooltip.foundIn')}</span>
             <span className="qm-item-tooltip__stat-value qm-item-tooltip__stat-value--locations">
               {item.foundIn!.map((location) => {
                 const locationIcon = getLocationIcon(location);
+                const localizedLocation = getLocalizedQuartermasterLocation(t, location);
                 return (
                   <span className="qm-item-tooltip__location" key={location}>
                     {locationIcon && (
                       <img
                         src={locationIcon}
-                        alt={location}
+                        alt={localizedLocation}
                         className="qm-item-tooltip__location-icon"
                       />
                     )}
-                    {location}
+                    {localizedLocation}
                   </span>
                 );
               })}
@@ -143,7 +151,7 @@ export function ItemTooltip({
 
       {insight.finalListNeeds.length > 0 && (
         <div className="qm-item-tooltip__section">
-          <h4>Needed for Lists</h4>
+          <h4>{t('quartermaster.itemTooltip.neededForLists')}</h4>
           <div className="qm-item-tooltip__status-list">
             {insight.finalListNeeds.map((need) => (
               <div className="qm-item-tooltip__status-item" key={`${need.listId}-${need.quantity}`}>
@@ -151,7 +159,7 @@ export function ItemTooltip({
                   <span>{need.quantity}×</span>
                   <span>{need.listName}</span>
                 </div>
-                {renderCompleteBadge(need.isComplete)}
+                {renderCompleteBadge(need.isComplete, t)}
               </div>
             ))}
           </div>
@@ -160,7 +168,7 @@ export function ItemTooltip({
 
       {insight.craftingNeeds.length > 0 && (
         <div className="qm-item-tooltip__section">
-          <h4>Needed for Crafting (Direct / Indirect)</h4>
+          <h4>{t('quartermaster.itemTooltip.neededForCrafting')}</h4>
           <div className="qm-item-tooltip__status-list">
             {insight.craftingNeeds.map((need, index) => (
               <div className="qm-item-tooltip__status-item qm-item-tooltip__status-item--multiline" key={`${need.listId}-${need.targetItemId}-${index}`}>
@@ -169,7 +177,7 @@ export function ItemTooltip({
                   <span className="qm-item-name">{need.targetItemName}</span>
                 </div>
                 <div className="qm-item-tooltip__status-sub">{need.chainLabel}</div>
-                {renderCompleteBadge(need.isComplete)}
+                {renderCompleteBadge(need.isComplete, t)}
               </div>
             ))}
           </div>
@@ -178,13 +186,13 @@ export function ItemTooltip({
 
       {activeRecycleSalvageNeeds.length > 0 && (
         <div className="qm-item-tooltip__section">
-          <h4>Needed via Recycling / Salvaging</h4>
+          <h4>{t('quartermaster.itemTooltip.neededViaRecycleSalvage')}</h4>
           <div className="qm-item-tooltip__status-list">
             {activeRecycleSalvageNeeds.map((need, index) => (
               <div className="qm-item-tooltip__status-item" key={`${need.mode}-${need.producedItemId}-${need.listId}-${index}`}>
                 <div className="qm-item-tooltip__status-main qm-item-tooltip__status-main--single-row">
                   <span className={`qm-item-tooltip__mode-badge qm-item-tooltip__mode-badge--${need.mode}`}>
-                    {need.mode === 'recycle' ? 'Recycle' : 'Salvage'}
+                    {need.mode === 'recycle' ? t('quartermaster.itemTooltip.recycle') : t('quartermaster.itemTooltip.salvage')}
                   </span>
                   <span>{need.listName}</span>
                   <span className="qm-item-tooltip__status-arrow">→</span>
@@ -198,7 +206,7 @@ export function ItemTooltip({
 
       {hasRecipe && (
         <div className="qm-item-tooltip__section">
-          <h4>Crafting Recipe</h4>
+          <h4>{t('quartermaster.itemTooltip.craftingRecipe')}</h4>
           <div className="qm-item-tooltip__materials">
             {Object.entries(item.recipe!).map(([materialId, quantity]) => {
               const material = itemsMap[materialId];
@@ -227,7 +235,7 @@ export function ItemTooltip({
         <div className="qm-item-tooltip__section">
           <h4>
             <Recycle size={14} />
-            Recycles Into
+            {t('quartermaster.itemTooltip.recyclesInto')}
           </h4>
           <div className="qm-item-tooltip__materials">
             {Object.entries(item.recyclesInto!).map(([materialId, quantity]) => {
@@ -257,7 +265,7 @@ export function ItemTooltip({
         <div className="qm-item-tooltip__section">
           <h4>
             <Wrench size={14} />
-            Salvages Into
+            {t('quartermaster.itemTooltip.salvagesInto')}
           </h4>
           <div className="qm-item-tooltip__materials">
             {Object.entries(item.salvagesInto!).map(([materialId, quantity]) => {

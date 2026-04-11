@@ -9,6 +9,8 @@ import type { CraftPlan, PlannerResult, RecyclePlan } from '../../types/planner'
 import { BENCH_ORDER } from '../../types/item';
 import { ItemIcon } from '../ItemIcon';
 import type { ItemInsightsMap } from '../../utils/itemInsights';
+import { getLocalizedBenchName } from '../../utils/localization';
+import { useLocale } from '../../../../shared/context/LocaleContext';
 
 interface CraftingViewProps {
   itemsMap: ItemsMap;
@@ -21,16 +23,6 @@ interface CraftingViewProps {
   isSyncing: boolean;
 }
 
-const BENCH_NAMES: Record<BenchId, string> = {
-  refiner: 'Refiner',
-  equipment_bench: 'Equipment Bench',
-  explosives_bench: 'Explosives Bench',
-  med_station: 'Med Station',
-  utility_bench: 'Utility Bench',
-  weapon_bench: 'Weapon Bench',
-  workbench: 'Workbench',
-};
-
 export function CraftingView({
   itemsMap,
   craftPlan,
@@ -41,6 +33,7 @@ export function CraftingView({
   onSyncStash,
   isSyncing,
 }: CraftingViewProps) {
+  const { t } = useLocale();
   // Filter to fully satisfiable targets only (CR-ADD-6.X)
   const satisfiableSteps = craftPlan.steps.filter(step => step.isFullySatisfiable);
   const tooltipContext = {
@@ -100,7 +93,7 @@ export function CraftingView({
     isComplete: boolean;
   }>) => {
     if (entries.length === 0) {
-      return <span className="crafting-view__why-empty">No active target impact</span>;
+      return <span className="crafting-view__why-empty">{t('quartermaster.crafting.noImpact')}</span>;
     }
 
     return (
@@ -130,7 +123,7 @@ export function CraftingView({
                 <div className="crafting-view__why-sub">{entry.chainLabel}</div>
               </div>
               <span className={`crafting-view__why-state ${entry.isComplete ? 'crafting-view__why-state--complete' : 'crafting-view__why-state--needed'}`}>
-                {entry.isComplete ? 'Complete' : 'Needed'}
+                {entry.isComplete ? t('quartermaster.itemTooltip.complete') : t('quartermaster.itemTooltip.needed')}
               </span>
             </div>
           );
@@ -185,14 +178,14 @@ export function CraftingView({
           disabled={isSyncing}
         >
           <RefreshCw size={14} className={isSyncing ? 'animate-spin' : ''} />
-          Sync Inventory
+          {t('quartermaster.common.syncInventory')}
         </button>
       </div>
 
       {/* Recycle First Section */}
       {hasRecycleActions && (
         <div className="crafting-view__section">
-          <h3 className="qm-section-title">Step 1: Recycle First</h3>
+          <h3 className="qm-section-title">{t('quartermaster.crafting.step1')}</h3>
           <table className="qm-table">
             <colgroup>
               <col className="crafting-view__col-item" />
@@ -203,11 +196,11 @@ export function CraftingView({
             </colgroup>
             <thead>
               <tr>
-                <th style={{ width: 80 }}>Item</th>
-                <th>Name</th>
-                <th style={{ width: 100 }}>Qty to Recycle</th>
-                <th>Yields</th>
-                <th>Why</th>
+                <th style={{ width: 80 }}>{t('quartermaster.crafting.columns.item')}</th>
+                <th>{t('quartermaster.crafting.columns.name')}</th>
+                <th style={{ width: 100 }}>{t('quartermaster.crafting.columns.qtyToRecycle')}</th>
+                <th>{t('quartermaster.crafting.columns.yields')}</th>
+                <th>{t('quartermaster.crafting.columns.why')}</th>
               </tr>
             </thead>
             <tbody>
@@ -245,7 +238,7 @@ export function CraftingView({
       {hasCraftSteps ? (
         <div className="crafting-view__section">
           <h3 className="qm-section-title">
-            {hasRecycleActions ? 'Step 2: Craft Items' : 'Craft Items'}
+            {hasRecycleActions ? t('quartermaster.crafting.step2') : t('quartermaster.crafting.craftItems')}
           </h3>
           
           {BENCH_ORDER.map(benchId => {
@@ -256,7 +249,7 @@ export function CraftingView({
               <div key={benchId} className="crafting-view__bench-group">
                 <div className="crafting-view__bench-header">
                   <Hammer size={16} />
-                  {BENCH_NAMES[benchId]}
+                  {getLocalizedBenchName(t, benchId)}
                 </div>
                 <table className="qm-table">
                   <colgroup>
@@ -269,12 +262,12 @@ export function CraftingView({
                   </colgroup>
                   <thead>
                     <tr>
-                      <th style={{ width: 80 }}>Item</th>
-                      <th>Name</th>
-                      <th style={{ width: 100 }}>Craft Times</th>
-                      <th style={{ width: 100 }}>Total Output</th>
-                      <th>Inputs Needed</th>
-                      <th>Why</th>
+                      <th style={{ width: 80 }}>{t('quartermaster.crafting.columns.item')}</th>
+                      <th>{t('quartermaster.crafting.columns.name')}</th>
+                      <th style={{ width: 100 }}>{t('quartermaster.crafting.columns.craftTimes')}</th>
+                      <th style={{ width: 100 }}>{t('quartermaster.crafting.columns.totalOutput')}</th>
+                      <th>{t('quartermaster.crafting.columns.inputsNeeded')}</th>
+                      <th>{t('quartermaster.crafting.columns.why')}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -319,7 +312,7 @@ export function CraftingView({
       ) : (
         <div className="qm-empty-state">
           <Hammer size={48} />
-          <p>No crafting needed. All required items are in your stash!</p>
+          <p>{t('quartermaster.crafting.empty')}</p>
         </div>
       )}
     </div>

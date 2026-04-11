@@ -7,6 +7,7 @@
 import { Link } from 'react-router-dom';
 import { LogIn, Loader2 } from 'lucide-react';
 import { useAuth } from '../../../shared/context/AuthContext';
+import { useLocale } from '../../../shared/context/LocaleContext';
 import type { ReactNode } from 'react';
 
 interface AuthGateProps {
@@ -20,6 +21,7 @@ interface AuthGateProps {
  * - Renders children if authenticated
  */
 export function AuthGate({ children }: AuthGateProps) {
+  const { t } = useLocale();
   const { isAuthenticated, isValidating } = useAuth();
 
   if (isValidating) {
@@ -27,7 +29,7 @@ export function AuthGate({ children }: AuthGateProps) {
       <div className="qm-auth-gate">
         <div className="qm-auth-gate__loading">
           <Loader2 size={32} className="animate-spin" />
-          <p>Verifying authentication...</p>
+          <p>{t('quartermaster.auth.verifying')}</p>
         </div>
       </div>
     );
@@ -38,12 +40,12 @@ export function AuthGate({ children }: AuthGateProps) {
       <div className="qm-auth-gate">
         <div className="qm-auth-gate__login">
           <LogIn size={48} />
-          <h3>Authentication Required</h3>
+          <h3>{t('quartermaster.auth.requiredTitle')}</h3>
           <p>
-            To use the Quartermaster planner, you need to connect your ArcTracker account.
+            {t('quartermaster.auth.requiredBody')}
           </p>
           <Link to="/settings/profile" className="qm-button qm-button--primary">
-            Go to Settings
+            {t('quartermaster.auth.goToSettings')}
           </Link>
         </div>
       </div>
