@@ -138,7 +138,7 @@ export function CraftingResults({ result, profitPerCraft }: CraftingResultsProps
               
               return (
                 <div style={{ marginTop: '12px', paddingTop: '12px', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
-                  Your stash value will {valueText}{' '}
+                  {t('craftCalculator.stashValuePrefix')} {valueText}{' '}
                   <span style={{ color: valueColor, fontWeight: 'bold' }}>
                     <img src="/images/icon-coin.webp" alt="coin" style={{ width: '18px', height: '18px', verticalAlign: 'middle', marginRight: '4px' }} />
                     {formatNumber(Math.abs(totalValueChange))}
