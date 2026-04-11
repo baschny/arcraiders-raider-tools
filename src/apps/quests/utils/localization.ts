@@ -4,6 +4,25 @@ import type { Quest } from '../types/quest';
 
 let mapNameLocalizations: Record<string, Record<string, string>> = {};
 
+function normalizeMapId(mapId: string): string {
+  switch (mapId) {
+    case 'dam_battlegrounds':
+      return 'dam-battleground';
+    case 'buried_city':
+      return 'buried-city';
+    case 'the_spaceport':
+      return 'the-spaceport';
+    case 'the_blue_gate':
+      return 'blue-gate';
+    case 'stella_montis':
+    case 'stella_montis_upper':
+    case 'stella_montis_lower':
+      return 'stella-montis';
+    default:
+      return mapId;
+  }
+}
+
 const TRADER_NAME_LOCALIZATIONS: Record<string, Record<string, string>> = {
   Map: {
     en: 'Map',
@@ -57,7 +76,8 @@ function getLocalizedValue(
 }
 
 export function getLocalizedMapName(mapId: string, locale: AppLocale): string {
-  return getLocalizedValue(mapNameLocalizations[mapId], locale, mapId);
+  const normalizedMapId = normalizeMapId(mapId);
+  return getLocalizedValue(mapNameLocalizations[normalizedMapId], locale, mapId);
 }
 
 export function getLocalizedMapNodeName(
@@ -69,7 +89,8 @@ export function getLocalizedMapNodeName(
     return fallbackName;
   }
 
-  return getLocalizedValue(mapNameLocalizations[mapId], locale, fallbackName);
+  const normalizedMapId = normalizeMapId(mapId);
+  return getLocalizedValue(mapNameLocalizations[normalizedMapId], locale, fallbackName);
 }
 
 export function getLocalizedTraderName(trader: string, locale: AppLocale): string {
