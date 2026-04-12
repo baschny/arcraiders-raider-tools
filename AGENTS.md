@@ -43,6 +43,7 @@ npm run generate:schedule     # Event schedule (direct copy)
 **Important**: The upstream data structure may change as it's community-maintained. Keep generation scripts in sync with schema changes.
 
 Generated files are placed in `public/data/<app-name>/` and loaded at runtime via fetch.
+For schedule-specific generation, AWS automation, and dependency details, see `docs/Schedule-Update.md`.
 
 ### Localization Philosophy
 
