@@ -339,13 +339,16 @@ async function collectMapConditionEntries(): Promise<{
             }>) ?? [];
 
         entries.forEach((entry) => {
+            const entryConditionName = String(entry?.conditionName ?? "").trim();
+            const resolvedCategory =
+                conditionTypesByName.get(entryConditionName) ?? conditionCategory;
             conditionEntries.push({
-                conditionName: String(entry?.conditionName ?? "").trim(),
+                conditionName: entryConditionName,
                 mapDisplayName: String(entry?.mapDisplayName ?? "").trim(),
                 startTimestampMs: Number(entry?.startTimestamp),
                 endTimestampMs: Number(entry?.endTimestamp),
                 durationInSeconds: Number(entry?.durationInSeconds),
-                category: conditionCategory,
+                category: resolvedCategory,
                 sourcePage: pageUrl,
             });
         });
