@@ -16,6 +16,52 @@
       "the_right_tool",
       "hatch_repairs"
     ],
+    "description": {
+      "value": "即便讓ARC行為產生最微小的改變，都可能會引發災難。\r\n\r\n而你之前聽到的那個訊號？我們從未接收過那種東西。要是它們有什麼企圖，我們一定要清楚才行。",
+      "originalEn": "Even the slightest change to ARC's behavior could spell disaster.\r\n\r\nAnd that signal you heard? It's like nothing we've ever picked up. If they're up to something, we need to find out whatever we can."
+    },
+    "objectives": [
+      {
+        "value": "找到並搜索任何ARC探測機或ARC運輸機",
+        "originalEn": "Find and search any ARC Probe or ARC Courier"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "metal_parts",
+        "quantity": 10,
+        "name": {
+          "value": "金屬零件",
+          "originalEn": "Metal Parts"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/metal_parts.png"
+      },
+      {
+        "id": "steel_spring",
+        "quantity": 5,
+        "name": {
+          "value": "鋼製彈簧",
+          "originalEn": "Steel Spring"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/steel_spring.png"
+      },
+      {
+        "id": "duct_tape",
+        "quantity": 5,
+        "name": {
+          "value": "強力膠帶",
+          "originalEn": "Duct Tape"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/duct_tape.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -34,6 +80,60 @@
     ],
     "nextQuestIds": [
       "untended_garden"
+    ],
+    "description": {
+      "value": "我們的糧食產量終於足以滿足我們的基本需求了，但我們現在真正需要的是多樣化。我掌握到一條線索，能了解第一波發生前的農業研究。你要加入嗎？",
+      "originalEn": "Our food production is finally enough to meet our basic needs, but what we really need now is variety. I have a lead on some agricultural research from before the First Wave. Are you in?"
+    },
+    "objectives": [
+      {
+        "value": "前往研究行政部大樓",
+        "originalEn": "Go to the Research & Administration building"
+      },
+      {
+        "value": "找到位於櫃台上方樓層的1號實驗室",
+        "originalEn": "Locate Lab 1 on the upper floor above the reception"
+      },
+      {
+        "value": "搜索有無農業研究計畫的痕跡",
+        "originalEn": "Search for any traces of the agricultural research project"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "advanced_mechanical_components",
+        "quantity": 3,
+        "name": {
+          "value": "進階機械元件",
+          "originalEn": "Advanced Mechanical Components"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/advanced_mechanical_components.png"
+      },
+      {
+        "id": "medium_gun_parts",
+        "quantity": 3,
+        "name": {
+          "value": "中型槍械零件",
+          "originalEn": "Medium Gun Parts"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/medium_gun_parts.png"
+      },
+      {
+        "id": "steel_spring",
+        "quantity": 10,
+        "name": {
+          "value": "鋼製彈簧",
+          "originalEn": "Steel Spring"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/steel_spring.png"
+      }
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -57,6 +157,56 @@
     "nextQuestIds": [
       "greasing_her_palms"
     ],
+    "description": {
+      "value": "我們什麼都缺，就是不缺吃飯的嘴，結果莎莉絲特還把珍貴的物資送上天給掠手們搶奪。我受夠好東西被白白浪費了。",
+      "originalEn": "We're short on everything but mouths to feed, yet Celeste's launching precious supplies into the air for Raiders to claw over. I’m done letting the good stuff go to waste."
+    },
+    "objectives": [
+      {
+        "value": "從呼叫站請求空投物資",
+        "originalEn": "Request in a Supply Drop from a Call Station"
+      },
+      {
+        "value": "搜刮1份空投物資",
+        "originalEn": "Loot a Supply Drop"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "extended_light_mag_i",
+        "quantity": 1,
+        "name": {
+          "value": "延長輕型彈匣 I",
+          "originalEn": "Extended Light Mag I"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/extended_light_mag_i.png"
+      },
+      {
+        "id": "stable_stock_i",
+        "quantity": 1,
+        "name": {
+          "value": "穩定槍托 I",
+          "originalEn": "Stable Stock I"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/stable_stock_i.png"
+      },
+      {
+        "id": "muzzle_brake_ii",
+        "quantity": 1,
+        "name": {
+          "value": "槍口制退器II",
+          "originalEn": "Muzzle Brake II"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/muzzle_brake_ii.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -76,6 +226,59 @@
     "nextQuestIds": [
       "a_rising_tide",
       "fragmented_logs"
+    ],
+    "description": {
+      "value": "我…我搞不懂。他們本來還想阻止大崩潰的，然後一夕之間…就沒了。\r\n\r\n有個叫「蠍獅」的團體中止了那個防震公營住宅建案。你覺得你能查出更多情報嗎？",
+      "originalEn": "I… I don’t get it. One day they were trying to stave off the Collapse, and then, suddenly… Nothing.\r\n\r\nThat earthquake-resistant housing project was shut down by a group named MANTIKOR. Think you could find out more?"
+    },
+    "objectives": [
+      {
+        "value": "找到蠍獅的地下設施",
+        "originalEn": "Find MANTIKOR's underground facilities"
+      },
+      {
+        "value": "想辦法進入安全部門上鎖的房間",
+        "originalEn": "Find a way into into the locked room in the Security Wing"
+      },
+      {
+        "value": "搜索上鎖的房間，尋找是否有長青計畫的紀錄",
+        "originalEn": "Search the locked room for any records on Project Heartwood"
+      },
+      {
+        "value": "找到布滿灰塵的底片膠卷",
+        "originalEn": "Find the Dusty Film Reel"
+      },
+      {
+        "value": "把布滿灰塵的底片膠卷交給珊妮",
+        "originalEn": "Deliver the Dusty Film Reel to Shani"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "dusty_film_reel",
+        "quantity": 1,
+        "name": {
+          "value": "佈滿灰塵的膠卷",
+          "originalEn": "Dusty Film Reel"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "coins",
+        "quantity": 2000,
+        "name": {
+          "value": "coins",
+          "originalEn": "coins"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -97,6 +300,77 @@
     "nextQuestIds": [
       "reduced_to_rubble"
     ],
+    "description": {
+      "value": "我們才剛把運輸管網絡延伸到藍色大門那邊，其餘部分仍在加緊施工。我的團隊一直在山谷四處建造新的基礎建設來保護我們的掠手，但ARC持續不斷的威脅讓一切很難有所進展。",
+      "originalEn": "We’ve only just finished expanding the Tube network towards the Blue Gate, and we’re still laboring away at the rest.\n\nMy crew’s been building new infrastructure around the valley to safeguard our Raiders, but the constant ARC threat has made it difficult to get anything done."
+    },
+    "objectives": [
+      {
+        "value": "穩定山脊線附近的觀測平台",
+        "originalEn": "Stabilize the observation deck near the Ridgeline"
+      },
+      {
+        "value": "啟用橄欖園附近的通訊終端機",
+        "originalEn": "Enable the comms terminal near the Olive Grove"
+      },
+      {
+        "value": "在資料保存庫北方，旋轉教堂屋頂上的衛星接收器",
+        "originalEn": "Rotate the satellite dishes on the church roof, north of the Data Vault"
+      },
+      {
+        "value": "在捕獸人的林間空地附近，釘緊掠手建築的屋頂板材",
+        "originalEn": "Nail down the roof plates on the Raider structure near Trapper's Glade"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [
+      "18x Raids"
+    ],
+    "grantedItems": [
+      {
+        "id": "noisemaker",
+        "quantity": 2,
+        "name": {
+          "value": "噪音製造器",
+          "originalEn": "Noisemaker"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/noisemaker.png"
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "shrapnel_grenade",
+        "quantity": 3,
+        "name": {
+          "value": "破片手榴彈",
+          "originalEn": "Shrapnel Grenade"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/shrapnel_grenade.png"
+      },
+      {
+        "id": "snap_blast_grenade",
+        "quantity": 3,
+        "name": {
+          "value": "黏附爆破手榴彈",
+          "originalEn": "Snap Blast Grenade"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/snap_blast_grenade.png"
+      },
+      {
+        "id": "heavy_fuze_grenade",
+        "quantity": 3,
+        "name": {
+          "value": "重型定時手榴彈",
+          "originalEn": "Heavy Fuze Grenade"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/heavy_fuze_grenade.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -115,6 +389,75 @@
     ],
     "nextQuestIds": [
       "eyes_in_the_sky"
+    ],
+    "description": {
+      "value": "原本遙遠的轟隆聲響，一天一天越來越近了。我查出有一些感光掃描儀或許能幫助我們監控震動。你還想要頭頂上有屋頂，對吧？",
+      "originalEn": "Those distant rumbles are getting less distant with each passing day.\n\nI have a lead on some LiDAR scanners that may help us monitor the tremors. You do want to keep a roof over your head, don’t you?"
+    },
+    "objectives": [
+      {
+        "value": "到達Jiangsu倉庫",
+        "originalEn": "Reach the Jiangsu Warehouse"
+      },
+      {
+        "value": "在領班的辦公室找到貨運筆記",
+        "originalEn": "Find the shipping notes in the foreman’s office"
+      },
+      {
+        "value": "找到位於塔台A6飛行控制中心的掃描儀",
+        "originalEn": "Locate the scanners in the Flight Control office of Control Tower A6"
+      },
+      {
+        "value": "將1個感光掃描儀運送給珊妮",
+        "originalEn": "Deliver 1 LiDAR Scanners to Shani"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "lidar_scanner",
+        "quantity": 1,
+        "name": {
+          "value": "光達掃描儀",
+          "originalEn": "Lidar Scanner"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/lidar_scanner.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "dam_testing_annex_key",
+        "quantity": 1,
+        "name": {
+          "value": "水壩測試附屬建築鑰匙",
+          "originalEn": "Dam Testing Annex Key"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/dam_testing_annex_key.png"
+      },
+      {
+        "id": "zipline",
+        "quantity": 3,
+        "name": {
+          "value": "滑索",
+          "originalEn": "Zipline"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/zipline.png"
+      },
+      {
+        "id": "smoke_grenade",
+        "quantity": 2,
+        "name": {
+          "value": "煙霧彈",
+          "originalEn": "Smoke Grenade"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/smoke_grenade.png"
+      }
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -135,6 +478,57 @@
     "nextQuestIds": [
       "armored_transports"
     ],
+    "description": {
+      "value": "有些偵察兵回報，說有一種奇怪的植物正在這一帶擴散。你的老友蘭斯覺得它可能有些有趣的用途。",
+      "originalEn": "Some scouts have been bringing back reports of these weird plants spreading into the area. Now, this makes your old pal Lance think it may have some interesting uses."
+    },
+    "objectives": [
+      {
+        "value": "在舊戰場的男爵機殼附近搜尋新植物",
+        "originalEn": "Search for the new plant near the Baron Husk in the Old Battleground"
+      },
+      {
+        "value": "將疑似有毒植物運送給蘭斯",
+        "originalEn": "Deliver the Possibly Toxic Plant to Lance"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "possibly_toxic_plant",
+        "quantity": 1,
+        "name": {
+          "value": "可能有毒的植物",
+          "originalEn": "Possibly Toxic Plant"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/possibly_toxic_plant.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "vita_shot",
+        "quantity": 1,
+        "name": {
+          "value": "活力注射劑",
+          "originalEn": "Vita Shot"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/vita_shot.png"
+      },
+      {
+        "id": "antiseptic",
+        "quantity": 5,
+        "name": {
+          "value": "防腐劑",
+          "originalEn": "Antiseptic"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/antiseptic.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -152,6 +546,72 @@
       "the_clean_dream"
     ],
     "nextQuestIds": [],
+    "description": {
+      "value": "藍色大門旁的那台森林砍伐機雖然造成了相當大的破壞，不過狀態如此完好的機殼，對我們的研究來說也是個很珍貴的樣本。",
+      "originalEn": "That Deforester by the Blue Gate may have caused some real devastation, but a pristine husk like that is also an invaluable sample for our research."
+    },
+    "objectives": [
+      {
+        "value": "取得2顆ARC動力電池",
+        "originalEn": "Obtain 2 ARC Powercells"
+      },
+      {
+        "value": "與任何ARC森林砍伐機互動",
+        "originalEn": "Interact with any ARC Deforester"
+      },
+      {
+        "value": "搜刮1台ARC森林砍伐機",
+        "originalEn": "Loot an ARC Deforester"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "remote_raider_flare",
+        "quantity": 3,
+        "name": {
+          "value": "遠程掠奪者信號彈",
+          "originalEn": "Remote Raider Flare"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/remote_raider_flare.png"
+      }
+    ],
+    "requiredItems": [
+      {
+        "id": "arc_powercell",
+        "quantity": 2,
+        "name": {
+          "value": "ARC 能量電池",
+          "originalEn": "ARC Powercell"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/arc_powercell.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "patrol_car_key",
+        "quantity": 1,
+        "name": {
+          "value": "巡邏車鑰匙",
+          "originalEn": "Patrol Car Key"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/patrol_car_key.png"
+      },
+      {
+        "id": "door_blocker",
+        "quantity": 3,
+        "name": {
+          "value": "門鎖",
+          "originalEn": "Door Blocker"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/door_blocker.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -171,6 +631,57 @@
     "nextQuestIds": [
       "a_lay_of_the_land"
     ],
+    "description": {
+      "value": "我弄到了一台新奇的ESR分析儀，本來打算來隆重介紹給大家看的。前一分鐘它還在這裡，下一分鐘就突然不見了。能幫幫忙嗎？",
+      "originalEn": "I got my hands on a fancy new ESR analyzer; had a whole big reveal planned. One minute it’s here, next minute—poof. Please help?"
+    },
+    "objectives": [
+      {
+        "value": "在埋藏都市的任何藥局內搜索ESR分析儀",
+        "originalEn": "Search for an ESR Analyzer inside any pharmacy in Buried City"
+      },
+      {
+        "value": "將ESR分析儀運送給蘭斯",
+        "originalEn": "Deliver the ESR Analyzer to Lance"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "esr_analyzer",
+        "quantity": 1,
+        "name": {
+          "value": "ESR分析儀",
+          "originalEn": "ESR Analyzer"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/esr_analyzer.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "tactical_mk3_healing",
+        "quantity": 1,
+        "name": {
+          "value": "戰術型 Mk. 3 (治療)",
+          "originalEn": "Tactical Mk. 3 (Healing)"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_healing.png"
+      },
+      {
+        "id": "surge_shield_recharger",
+        "quantity": 1,
+        "name": {
+          "value": "激能護盾充能器",
+          "originalEn": "Surge Shield Recharger"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/surge_shield_recharger.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -189,6 +700,78 @@
       "a_dead_end"
     ],
     "nextQuestIds": [],
+    "description": {
+      "value": "這裡寫說大壩以前有個領班，是在長青計畫取消後馬上雇用的，負責某個重大的重建計畫。",
+      "originalEn": "Says here there was a foreman at The Dam, who got recruited right after they canceled Project Heartwood. Got put in charge of some big reconstruction project."
+    },
+    "objectives": [
+      {
+        "value": "在埋藏都市羅馬廣場南方尋找領班被封鎖的公寓",
+        "originalEn": "On Buried City, find the foreman's barricaded apartment south of Piazza Roma"
+      },
+      {
+        "value": "查看領班的數位日誌",
+        "originalEn": "Access the foreman's digital logbook"
+      },
+      {
+        "value": "在大壩戰場，到達發電綜合設施",
+        "originalEn": "On Dam Battlegrounds, reach the Power Generation Complex"
+      },
+      {
+        "value": "想辦法進入控制存取區",
+        "originalEn": "Find a way into the Controlled Access Zone"
+      },
+      {
+        "value": "搜索控制存取區，尋找是否有關於領班重建計畫的任何線索",
+        "originalEn": "Search the Controlled Access Zone for any clues about the foreman's reconstruction project"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "anvil_ii",
+        "quantity": 1,
+        "name": {
+          "value": "鐵砧 II",
+          "originalEn": "Anvil II"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/anvil.png"
+      },
+      {
+        "id": "anvil_splitter",
+        "quantity": 1,
+        "name": {
+          "value": "鐵砧分裂器",
+          "originalEn": "Anvil Splitter"
+        },
+        "rarity": "Legendary",
+        "imageFilename": "https://cdn.arctracker.io/items/anvil_splitter.png"
+      },
+      {
+        "id": "extended_barrel",
+        "quantity": 1,
+        "name": {
+          "value": "加長槍管",
+          "originalEn": "Extended Barrel"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/extended_barrel.png"
+      },
+      {
+        "id": "heavy_ammo",
+        "quantity": 40,
+        "name": {
+          "value": "重型彈藥",
+          "originalEn": "Heavy Ammo"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/heavy_ammo.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -210,6 +793,50 @@
       "celestes_journals",
       "out_of_the_shadows"
     ],
+    "description": {
+      "value": "你知道嗎？從前我們確實擁有過一面旗幟，雖然說基本上就是塊破布而已。不過，看到它就代表你知道附近有盟友、知道你在自己的地盤上。所以，我在想…",
+      "originalEn": "Y’know, back in the day we actually used to have a flag - well, a scrap of cloth more than anything. Still, seeing it meant you knew you had allies nearby, that you were on your own home turf. So, I was thinking…"
+    },
+    "objectives": [
+      {
+        "value": "到達大壩戰場的蟻丘哨站",
+        "originalEn": "Reach the Formicai Outpost in Dam Battlegrounds"
+      },
+      {
+        "value": "找出蟻丘哨站的旗幟",
+        "originalEn": "Locate the flag at the Formicai Outpost"
+      },
+      {
+        "value": "在可眺望紅湖的小平台上升起旗幟",
+        "originalEn": "Hoist the flag on the small platform overlooking the Red Lake"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "mod_components",
+        "quantity": 3,
+        "name": {
+          "value": "改裝組件",
+          "originalEn": "Mod Components"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/mod_components.png"
+      },
+      {
+        "id": "duct_tape",
+        "quantity": 5,
+        "name": {
+          "value": "強力膠帶",
+          "originalEn": "Duct Tape"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/duct_tape.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -228,6 +855,74 @@
     ],
     "nextQuestIds": [
       "the_stench_of_corruption"
+    ],
+    "description": {
+      "value": "我們順利讓水變乾淨了，但如果破壞者再次行動，人們又會生病的。我們必須從根本解決這個問題。",
+      "originalEn": "We've got clean water again, but we can't risk people falling ill if the saboteurs return. We need to root them out once and for all."
+    },
+    "objectives": [
+      {
+        "value": "回到水處理控制大樓下方的進水口",
+        "originalEn": "Return to the water intake below the Water Treatment Control building"
+      },
+      {
+        "value": "搜索沼澤，尋找是否有關於桶子來源的線索",
+        "originalEn": "Search the swamp for traces of the barrel's origins"
+      },
+      {
+        "value": "拍攝載運桶子卡車的照片",
+        "originalEn": "Take a photo of the barrel truck"
+      },
+      {
+        "value": "搜索卡車，尋找有關破壞者身分的線索",
+        "originalEn": "Search the truck for clues about the saboteur's identity"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "tactical_mk2",
+        "quantity": 1,
+        "name": {
+          "value": "戰術型 Mk. 2",
+          "originalEn": "Tactical Mk. 2"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/tactical_i.png"
+      },
+      {
+        "id": "zipline",
+        "quantity": 3,
+        "name": {
+          "value": "滑索",
+          "originalEn": "Zipline"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/zipline.png"
+      },
+      {
+        "id": "pulse_mine",
+        "quantity": 3,
+        "name": {
+          "value": "脈衝地雷",
+          "originalEn": "Pulse Mine"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/pulse_mine.png"
+      },
+      {
+        "id": "gas_mine",
+        "quantity": 3,
+        "name": {
+          "value": "毒氣地雷",
+          "originalEn": "Gas Mine"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/gas_mine.png"
+      }
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -248,6 +943,64 @@
     "nextQuestIds": [
       "prescriptions_of_the_past"
     ],
+    "description": {
+      "value": "我的一位顧客看到有一家人躲在埋藏都市的一處舊營地。誰能找到他們並護送他們回到安全的地方，我就付錢犒賞。",
+      "originalEn": "A customer of mine saw a family taking cover in an old encampment in Buried City. I'll pay anyone who manages to find them and escort them back to safety."
+    },
+    "objectives": [
+      {
+        "value": "找到廢棄的高速公路營地",
+        "originalEn": "Locate the Abandoned Highway Camp"
+      },
+      {
+        "value": "搜索生還者的跡象",
+        "originalEn": "Search for any signs of survivors"
+      },
+      {
+        "value": "追蹤紅色標記",
+        "originalEn": "Follow the red markers"
+      },
+      {
+        "value": "檢查墓穴",
+        "originalEn": "Inspect the grave"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "noisemaker",
+        "quantity": 3,
+        "name": {
+          "value": "噪音製造器",
+          "originalEn": "Noisemaker"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/noisemaker.png"
+      },
+      {
+        "id": "blue_light_stick",
+        "quantity": 5,
+        "name": {
+          "value": "藍色螢光棒",
+          "originalEn": "Blue Light Stick"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/blue_light_stick.png"
+      },
+      {
+        "id": "rosary",
+        "quantity": 1,
+        "name": {
+          "value": "念珠",
+          "originalEn": "Rosary"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/rosary.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -267,6 +1020,88 @@
     "nextQuestIds": [
       "water_troubles"
     ],
+    "description": {
+      "value": "我知道、我知道！那個區域已經停電…\r\n喔，嗨。有場洪水淹沒了埋藏都市那裡的一些太陽能板，發電機也只能再撐一段時間。\r\n\r\n你到那裡後，幫我們處理一下好嗎？",
+      "originalEn": "I know, I know! The power's down in sector—\r\nOh, hey. A flash flood took out some of our solar panels in Buried City, and the generators only hold on for so long.\r\n\r\nDo us all a solid when you're up there, OK?"
+    },
+    "objectives": [
+      {
+        "value": "找到格蘭迪索公寓附近被淹沒的太陽能板",
+        "originalEn": "Find the flooded solar panels nearby the Grandioso Apartments"
+      },
+      {
+        "value": "使用5條電線和2顆電池修理太陽能板",
+        "originalEn": "Repair the solar panels using 5 Wires and 2 Batteries"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "zipline",
+        "quantity": 1,
+        "name": {
+          "value": "滑索",
+          "originalEn": "Zipline"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/zipline.png"
+      }
+    ],
+    "requiredItems": [
+      {
+        "id": "wires",
+        "quantity": 5,
+        "name": {
+          "value": "電線",
+          "originalEn": "Wires"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/wires.png"
+      },
+      {
+        "id": "battery",
+        "quantity": 2,
+        "name": {
+          "value": "電池",
+          "originalEn": "Battery"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/battery.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "blue_light_stick",
+        "quantity": 5,
+        "name": {
+          "value": "藍色螢光棒",
+          "originalEn": "Blue Light Stick"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/blue_light_stick.png"
+      },
+      {
+        "id": "antiseptic",
+        "quantity": 3,
+        "name": {
+          "value": "防腐劑",
+          "originalEn": "Antiseptic"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/antiseptic.png"
+      },
+      {
+        "id": "durable_cloth",
+        "quantity": 5,
+        "name": {
+          "value": "耐用布料",
+          "originalEn": "Durable Cloth"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/durable_cloth.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -285,6 +1120,54 @@
       "a_new_type_of_plant"
     ],
     "nextQuestIds": [],
+    "description": {
+      "value": "自從我們將隧道擴展到藍色大門之後，一些珍貴的裝備就開始出現在黑市。但我卻被困在這裡，兜售壞掉的舊響尾蛇。要是我不趕快找到新的供應來源，生意就要做不下去了。\r\n",
+      "originalEn": "Ever since we expanded the tunnels to the Blue Gate, some rare pieces have started appearing on the black market.\n\nMeanwhile, I'm stuck here peddling battered old Rattlers. If I don't find new supply lines, I'll be left in the dust. "
+    },
+    "objectives": [
+      {
+        "value": "到達檢查站",
+        "originalEn": "Reach the Checkpoint"
+      },
+      {
+        "value": "在守衛小屋搜尋裝甲巡邏車鑰匙卡",
+        "originalEn": "Search the Guard huts for an Armored Patrol Key Card"
+      },
+      {
+        "value": "到達藍色大門檢查站附近的交通隧道",
+        "originalEn": "Reach the Traffic Tunnel near the Blue Gate Checkpoint"
+      },
+      {
+        "value": "找到並打開一輛裝甲巡邏車的後車門",
+        "originalEn": "Find and unlock the rear door of an armored patrol car"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "smoke_grenade",
+        "quantity": 3,
+        "name": {
+          "value": "煙霧彈",
+          "originalEn": "Smoke Grenade"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/smoke_grenade.png"
+      },
+      {
+        "id": "defibrillator",
+        "quantity": 3,
+        "name": {
+          "value": "除顫器",
+          "originalEn": "Defibrillator"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/defibrillator.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -309,6 +1192,66 @@
     "nextQuestIds": [
       "our_presence_up_there"
     ],
+    "description": {
+      "value": "猜猜看怎麼了？珊妮要我去幫個忙，而這次我很慶幸她這麼做。我們要在頂層設立新哨站！至少我們是打算要這麼做的。你能相信嗎？",
+      "originalEn": "Guess what? Shani asked me to help out with something, and for once, I’m actually glad she did. We’re setting up new outposts topside! Or, planning to, at least. Can you believe it?"
+    },
+    "objectives": [
+      {
+        "value": "在大壩戰場，標記圖案屋",
+        "originalEn": "On Dam Battlegrounds, mark the Pattern House"
+      },
+      {
+        "value": "在藍色大門，標記倉庫綜合設施南部的白色瞭望塔",
+        "originalEn": "On The Blue Gate, mark the white lookout tower south of the Warehouse Complex"
+      },
+      {
+        "value": "在太空港，標記南壕塔",
+        "originalEn": "On Spaceport, mark the South Trench Tower"
+      },
+      {
+        "value": "在埋藏都市，標記埋藏的房產中有壁畫的建築",
+        "originalEn": "On Buried City, mark the building with the mural in the Buried Properties"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [
+      "18x Raids"
+    ],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "renegade_i",
+        "quantity": 1,
+        "name": {
+          "value": "叛徒 I",
+          "originalEn": "Renegade I"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/renegade.png"
+      },
+      {
+        "id": "stable_stock_iii",
+        "quantity": 1,
+        "name": {
+          "value": "穩定槍托 III",
+          "originalEn": "Stable Stock III"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/stable_stock_iii.png"
+      },
+      {
+        "id": "medium_ammo",
+        "quantity": 80,
+        "name": {
+          "value": "中型彈藥",
+          "originalEn": "Medium Ammo"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/medium_ammo.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -328,6 +1271,57 @@
     "nextQuestIds": [
       "espresso"
     ],
+    "description": {
+      "value": "蜜蜂！附近還是有蜜蜂！雖然我不是專家，但是我們的溫室員工肯定會超想要的。",
+      "originalEn": "Bees! There are bees still around! While I’m no expert, our greenhouse crew desperately wants some."
+    },
+    "objectives": [
+      {
+        "value": "到達藍色大門的橄欖園",
+        "originalEn": "Reach the Olive Grove in Blue Gate"
+      },
+      {
+        "value": "在橄欖園周圍搜尋蜂巢",
+        "originalEn": "Search for bee hives around the Olive Grove"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "yellow_light_stick",
+        "quantity": 5,
+        "name": {
+          "value": "黃色螢光棒",
+          "originalEn": "Yellow Light Stick"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/yellow_light_stick.png"
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "advanced_electrical_components",
+        "quantity": 1,
+        "name": {
+          "value": "進階電子元件",
+          "originalEn": "Advanced Electrical Components"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/advanced_electrical_components.png"
+      },
+      {
+        "id": "sensors",
+        "quantity": 3,
+        "name": {
+          "value": "感應器",
+          "originalEn": "Sensors"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/sensors.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -343,6 +1337,47 @@
       "combat_recon"
     ],
     "nextQuestIds": [],
+    "description": {
+      "value": "是時候確認之前偵察行動的成效了。如果能讓掠手學會怎麼在上頭更有效率地對付投彈手，我們在底下這裡也會更安全。",
+      "originalEn": "Now, time to see if that recon paid off. If we can teach Raiders to effectively counter Bombardiers up there, we’d be a lot safer down here."
+    },
+    "objectives": [
+      {
+        "value": "摧毀1台投彈手",
+        "originalEn": "Destroy a Bombardier"
+      },
+      {
+        "value": "將投彈手電池送去給珊妮",
+        "originalEn": "Deliver a Bombardier Cell to Shani"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "bombardier_cell",
+        "quantity": 1,
+        "name": {
+          "value": "轟炸者電池",
+          "originalEn": "Bombardier Cell"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/bombardier_cell.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "raider_tokens",
+        "quantity": 30,
+        "name": {
+          "value": "raider_tokens",
+          "originalEn": "raider_tokens"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -363,6 +1398,107 @@
       "marked_for_death",
       "straight_record"
     ],
+    "description": {
+      "value": "我還有一個特別的地點需要你幫忙搜索一下，那是第一波的古老戰場。現在的掠手通常會把那種地方掠劫一空，儘管它們曾有重要的意義。人們總是遺忘得很快。太快了。",
+      "originalEn": "I have another special site I need you to search for me. An old battlegrounds, from the First Wave. Raiders nowadays usually pick places like that clean, despite the significance they once held. People forget quickly. Quicker than they should."
+    },
+    "objectives": [
+      {
+        "value": "抵達廢料場旁的聖地",
+        "originalEn": "Reach the hallowed grounds by the Scrap Yard"
+      },
+      {
+        "value": "在拋錨的車輛附近搜尋羅盤",
+        "originalEn": "Search for a compass near the broken-down vehicles"
+      },
+      {
+        "value": "在圓柱形容器附近搜尋錄影帶",
+        "originalEn": "Search for the video tape near the cylindrical containers"
+      },
+      {
+        "value": "搜尋掠手營地中的陳舊野戰口糧。",
+        "originalEn": "Search for the old field rations in the Raider camp"
+      },
+      {
+        "value": "將第一波錄影帶運送給田文",
+        "originalEn": "Deliver the First Wave Tape to Tian Wen"
+      },
+      {
+        "value": "將第一波羅盤運送給田文",
+        "originalEn": "Deliver First Wave Compass to Tian Wen"
+      },
+      {
+        "value": "將第一波口糧運送給田文",
+        "originalEn": "Deliver First Wave Rations to Tian Wen"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "first_wave_tape",
+        "quantity": 1,
+        "name": {
+          "value": "第一波錄影帶",
+          "originalEn": "First Wave Tape"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/first_wave_tape.png"
+      },
+      {
+        "id": "first_wave_compass",
+        "quantity": 1,
+        "name": {
+          "value": "第一波羅盤",
+          "originalEn": "First Wave Compass"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/first_wave_compass.png"
+      },
+      {
+        "id": "first_wave_rations",
+        "quantity": 1,
+        "name": {
+          "value": "第一波配給",
+          "originalEn": "First Wave Rations"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/first_wave_rations.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "arpeggio_i",
+        "quantity": 1,
+        "name": {
+          "value": "琶音 I",
+          "originalEn": "Arpeggio I"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/arpeggio.png"
+      },
+      {
+        "id": "compensator_ii",
+        "quantity": 1,
+        "name": {
+          "value": "補償器 II",
+          "originalEn": "Compensator II"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/compensator_ii.png"
+      },
+      {
+        "id": "medium_ammo",
+        "quantity": 80,
+        "name": {
+          "value": "中型彈藥",
+          "originalEn": "Medium Ammo"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/medium_ammo.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -381,6 +1517,79 @@
     ],
     "nextQuestIds": [
       "a_new_type_of_plant"
+    ],
+    "description": {
+      "value": "我們圖書館的藏書越來越陳舊過時了。你能去埋藏都市多找幾本書給我們閱讀嗎？請務必適合不同人閱讀的書來。",
+      "originalEn": "Our library selection has grown pretty stale. Could you head out to Buried City, and find something more for us to read? Make sure you bring something for everyone."
+    },
+    "objectives": [
+      {
+        "value": "找到位於市中心的圖書館",
+        "originalEn": "Locate the Library in the City Center"
+      },
+      {
+        "value": "找到1本言情小說",
+        "originalEn": "Find 1 romance book"
+      },
+      {
+        "value": "找到1本推理小說",
+        "originalEn": "Find 1 detective book"
+      },
+      {
+        "value": "找到1本冒險小說",
+        "originalEn": "Find 1 adventure book"
+      },
+      {
+        "value": "將3本書運送給阿波羅",
+        "originalEn": "Deliver 3 books to Apollo"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "library_book",
+        "quantity": 3,
+        "name": {
+          "value": "書",
+          "originalEn": "Book"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "explosive_mine",
+        "quantity": 1,
+        "name": {
+          "value": "爆炸地雷",
+          "originalEn": "Explosive Mine"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/explosive_mine.png"
+      },
+      {
+        "id": "jolt_mine",
+        "quantity": 1,
+        "name": {
+          "value": "電擊地雷",
+          "originalEn": "Jolt Mine"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/jolt_mine.png"
+      },
+      {
+        "id": "heavy_fuze_grenade",
+        "quantity": 1,
+        "name": {
+          "value": "重型定時手榴彈",
+          "originalEn": "Heavy Fuze Grenade"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/heavy_fuze_grenade.png"
+      }
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -401,6 +1610,71 @@
     "nextQuestIds": [
       "back_on_top"
     ],
+    "description": {
+      "value": "好吧，這件事說來有點尷尬…我上次去頂層的時候，在檢查哨站時弄丟了兩本日誌。你能趁其他人還沒找到之前，幫我把它們找回來嗎？",
+      "originalEn": "Okay, so this is awkward… I lost two of my journals during some outpost inspections last time I went topside. Could you head out there and try to find them back before someone else stumbles on them?"
+    },
+    "objectives": [
+      {
+        "value": "從南沼澤哨站回收莎莉絲特的日誌",
+        "originalEn": "Retrieve Celeste’s Journals from the South Swamp Outpost"
+      },
+      {
+        "value": "從可眺望紅湖的北方哨站回收莎莉絲特的日誌",
+        "originalEn": "Retrieve Celeste’s Journals from the northern outpost overlooking the Red Lakes"
+      },
+      {
+        "value": "將2份日誌運送給莎莉絲特",
+        "originalEn": "Deliver 2 Journals to Celeste"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "celeste_journal",
+        "quantity": 2,
+        "name": {
+          "value": "賽勒斯特的日記",
+          "originalEn": "Celeste's Journal"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/celestes_journal.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "magnetic_accelerator",
+        "quantity": 1,
+        "name": {
+          "value": "磁力加速器",
+          "originalEn": "Magnetic Accelerator"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/magnetic_accelerator.png"
+      },
+      {
+        "id": "heavy_gun_parts",
+        "quantity": 3,
+        "name": {
+          "value": "重型槍械零件",
+          "originalEn": "Heavy Gun Parts"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/heavy_gun_parts.png"
+      },
+      {
+        "id": "exodus_modules",
+        "quantity": 1,
+        "name": {
+          "value": "出埃及模組",
+          "originalEn": "Exodus Modules"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/exodus_modules.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -418,6 +1692,62 @@
       "dormant_barons"
     ],
     "nextQuestIds": [],
+    "description": {
+      "value": "我好像發現了一個可以利用的漏洞。當大型ARC機器彼此距離夠遠時，時機精準的干擾能讓其中一台離開原定位置。想測試一下這個想法嗎？",
+      "originalEn": "I think I've found something we might exploit. When bigger ARC machines are just far enough from each other, a well-timed distraction could pull one out of position. You want to test that idea?"
+    },
+    "objectives": [
+      {
+        "value": "使用3條電線修理並啟動倉庫綜合設施旁的緊急警報器",
+        "originalEn": "Use 3 Wires to repair and sound the emergency siren by the Warehouse Complex"
+      },
+      {
+        "value": "使用電池啟動村莊內的音響",
+        "originalEn": "Use a Battery to start the boom box in the Village"
+      },
+      {
+        "value": "按鳴檢查站旁任何巴士的喇叭",
+        "originalEn": "Sound any bus horn by the Checkpoint"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [
+      "18x Raids"
+    ],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "lure_grenade",
+        "quantity": 5,
+        "name": {
+          "value": "誘餌手榴彈",
+          "originalEn": "Lure Grenade"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/lure_grenade.png"
+      },
+      {
+        "id": "noisemaker",
+        "quantity": 5,
+        "name": {
+          "value": "噪音製造器",
+          "originalEn": "Noisemaker"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/noisemaker.png"
+      },
+      {
+        "id": "tagging_grenade",
+        "quantity": 3,
+        "name": {
+          "value": "標記手榴彈",
+          "originalEn": "Tagging Grenade"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/tagging_grenade.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -434,6 +1764,57 @@
     ],
     "nextQuestIds": [
       "off_the_radar"
+    ],
+    "description": {
+      "value": "一群迷失方向的黃蜂墜毀在我們其中一扇天窗附近。\r\n\r\n在發生更多意外之前，我需要你先幫忙削弱ARC的數量，然後收集一些牢固的材料來修復這次的損害。",
+      "originalEn": "A swarm of disoriented Wasps crashed near one of our skylights.\r\n\r\nI need you to help thin ARC's ranks before any more accidents happen, and gather some extra sturdy materials to fix the damage."
+    },
+    "objectives": [
+      {
+        "value": "摧毀3台ARC敵人",
+        "originalEn": "Destroy 3 ARC enemies"
+      },
+      {
+        "value": "為珊妮取得3個ARC合金",
+        "originalEn": "Get 3 ARC Alloy for Shani"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "arc_alloy",
+        "quantity": 3,
+        "name": {
+          "value": "ARC合金",
+          "originalEn": "ARC Alloy"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/arc_alloy.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "sterilized_bandage",
+        "quantity": 3,
+        "name": {
+          "value": "消毒繃帶",
+          "originalEn": "Sterilized Bandage"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/sterilized_bandage.png"
+      },
+      {
+        "id": "light_shield",
+        "quantity": 1,
+        "name": {
+          "value": "輕型護盾",
+          "originalEn": "Light Shield"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/light_shield.png"
+      }
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -453,6 +1834,57 @@
     ],
     "nextQuestIds": [
       "snap_and_salvage"
+    ],
+    "description": {
+      "value": "我們不斷收到有關星辰山的報告，和我們之前所收到的情報相當不同。那裡可能有過去的紀錄或遺物，如果屬實，那我一定要拿到手。",
+      "originalEn": "Reports about Stella Montis keep coming in, and it’s unlike anything we’ve seen before. There may be records or relics from the past in there, and if so, I want them."
+    },
+    "objectives": [
+      {
+        "value": "搜尋J Kozma Ventures貨櫃",
+        "originalEn": "Search any J Kozma Ventures container"
+      },
+      {
+        "value": "將舊世界書本送去給珊妮",
+        "originalEn": "Deliver the Old World Books to Shani"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "old_world_books",
+        "quantity": 1,
+        "name": {
+          "value": "舊世界書籍",
+          "originalEn": "Old World Books"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/old_world_books.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "gas_mine",
+        "quantity": 3,
+        "name": {
+          "value": "毒氣地雷",
+          "originalEn": "Gas Mine"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/gas_mine.png"
+      },
+      {
+        "id": "raider_hatch_key",
+        "quantity": 1,
+        "name": {
+          "value": "掠奪者艙門鑰匙",
+          "originalEn": "Raider Hatch Key"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/raider_hatch_key.png"
+      }
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -474,6 +1906,80 @@
     "nextQuestIds": [
       "bombing_run"
     ],
+    "description": {
+      "value": "那些投彈手加入後，ARC也有了把掠手逼出掩護的全新方法。\r\n\r\n若想解決投彈手，你的技巧和策略都得更刁鑽才行。",
+      "originalEn": "With those Bombardiers roaming around, ARC has found an entirely new way to flush Raiders out of cover. \r\n\r\nIf you’re hoping to take one down, you’ll need to sharpen your skills and your strategy."
+    },
+    "objectives": [
+      {
+        "value": "在室內停車場的樓梯找到一個可提供掩護的地點",
+        "originalEn": "Scope out a cover spot in the Parking Garage staircases"
+      },
+      {
+        "value": "在馬拉諾公園附近的巴士之間找到一個可提供掩護的地點",
+        "originalEn": "Scope out a cover spot in the buses near Marano Park"
+      },
+      {
+        "value": "在主街附近的閣樓找到一個可提供掩護的地點",
+        "originalEn": "Scope out a cover spot in the attics around Main Street"
+      },
+      {
+        "value": "摧毀2台探子",
+        "originalEn": "Destroy 2 Spotters"
+      },
+      {
+        "value": "將探子中繼器送去給珊妮",
+        "originalEn": "Deliver a Spotter Relay to Shani"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "binoculars",
+        "quantity": 1,
+        "name": {
+          "value": "雙筒望遠鏡",
+          "originalEn": "Binoculars"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/binoculars.png"
+      }
+    ],
+    "requiredItems": [
+      {
+        "id": "spotter_relay",
+        "quantity": 1,
+        "name": {
+          "value": "偵察中繼器",
+          "originalEn": "Spotter Relay"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/spotter_relay.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "firecracker",
+        "quantity": 5,
+        "name": {
+          "value": "爆竹",
+          "originalEn": "Firecracker"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/firecracker.png"
+      },
+      {
+        "id": "fireworks_box",
+        "quantity": 1,
+        "name": {
+          "value": "煙火箱",
+          "originalEn": "Fireworks Box"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/fireworks_box.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -493,6 +1999,58 @@
     "nextQuestIds": [
       "into_the_fray"
     ],
+    "description": {
+      "value": "我們失去了埋藏都市某些區域的訊號，我猜是我們的設備故障了。你對維修很在行，對吧？可以去檢查一下嗎？",
+      "originalEn": "We've been losing signals in some areas of Buried City—my guess is that our equipment is acting up. You’re quite skilled with repairs, aren’t you? Could you check it out?"
+    },
+    "objectives": [
+      {
+        "value": "到達舊城區的紅塔",
+        "originalEn": "Reach the Red Tower in Old Town"
+      },
+      {
+        "value": "找到遺失的電池",
+        "originalEn": "Find missing battery cell"
+      },
+      {
+        "value": "在發電機中安裝電池",
+        "originalEn": "Install the battery cell in the Generator"
+      },
+      {
+        "value": "啟用發電機電源",
+        "originalEn": "Enable the power on the Generator"
+      },
+      {
+        "value": "啟動紅塔附近的天線終端機",
+        "originalEn": "Boot the antenna terminal near the Red Tower"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "anvil_iii",
+        "quantity": 1,
+        "name": {
+          "value": "鐵砧 III",
+          "originalEn": "Anvil III"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/anvil.png"
+      },
+      {
+        "id": "heavy_ammo",
+        "quantity": 40,
+        "name": {
+          "value": "重型彈藥",
+          "originalEn": "Heavy Ammo"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/heavy_ammo.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -511,6 +2069,50 @@
     ],
     "nextQuestIds": [
       "groundbreaking"
+    ],
+    "description": {
+      "value": "如果你找到的資料可以避免天花板崩塌，那我們不能再拖了。\r\n\r\n我知道阿切拉太空港附近有幾部出逃時代的磁力解譯器，可能還能夠運作。",
+      "originalEn": "If the data you found can keep the ceiling from collapsing, we have no time to spare.\r\n\r\nI know of a few magnetic decryptors around Acerra Spaceport, from back during the Exodus. They might still be working."
+    },
+    "objectives": [
+      {
+        "value": "使用燃料控制中心的磁力解譯器",
+        "originalEn": "Use the Magnetic Decryptor in the Fuel Control Building"
+      },
+      {
+        "value": "到達太空港的入境大樓",
+        "originalEn": "Reach the Arrival Building in Spaceport"
+      },
+      {
+        "value": "使用入境大樓頂樓的磁力解譯器",
+        "originalEn": "Use the Magnetic Decryptor on the top floor of the Arrival Building"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "defibrillator",
+        "quantity": 3,
+        "name": {
+          "value": "除顫器",
+          "originalEn": "Defibrillator"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/defibrillator.png"
+      },
+      {
+        "id": "trailblazer",
+        "quantity": 3,
+        "name": {
+          "value": "開拓者",
+          "originalEn": "Trailblazer"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/trailblazer.png"
+      }
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -532,6 +2134,46 @@
       "turnabout",
       "building_a_library"
     ],
+    "description": {
+      "value": "我們走運了。我們有名偵察兵看到運輸管管理部門的一名成員在埋藏都市的聖瑪麗亞住宅內投放了秘密情報。這或許是我們掌握他們醜聞的好機會。你要加入嗎？",
+      "originalEn": "We caught a break. One of our scouts saw a member of the Tubes Management make a dead drop inside the Santa Maria Houses in the Buried City. This might be our chance to dig up some dirt on them for a change. You in?"
+    },
+    "objectives": [
+      {
+        "value": "找到舊城區中的聖瑪麗亞住宅",
+        "originalEn": "Locate the Santa Maria Houses in Old Town"
+      },
+      {
+        "value": "找到庭院中的秘密投放點",
+        "originalEn": "Locate the Dead Drop inside the courtyard"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "advanced_electrical_components",
+        "quantity": 2,
+        "name": {
+          "value": "進階電子元件",
+          "originalEn": "Advanced Electrical Components"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/advanced_electrical_components.png"
+      },
+      {
+        "id": "speaker_component",
+        "quantity": 4,
+        "name": {
+          "value": "揚聲器組件",
+          "originalEn": "Speaker Component"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/speaker_component.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -548,6 +2190,105 @@
     ],
     "nextQuestIds": [
       "medical_merchandise"
+    ],
+    "description": {
+      "value": "喂，菜鳥，如果你想讓我給你治療，最好證明自己的寶貝四肢是值得包紮的。",
+      "originalEn": "Say, newbie: if you want me to treat you, you better prove that those precious limbs of yours are worth bandaging."
+    },
+    "objectives": [
+      {
+        "value": "獲得1個注射器",
+        "originalEn": "Obtain 1 Syringe"
+      },
+      {
+        "value": "獲得2個防腐劑",
+        "originalEn": "Obtain 2 Antiseptic"
+      },
+      {
+        "value": "獲得1個耐用布料",
+        "originalEn": "Obtain 1 Durable Cloth"
+      },
+      {
+        "value": "獲得1朵毛蕊花",
+        "originalEn": "Obtain 1 Great Mullein"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "syringe",
+        "quantity": 1,
+        "name": {
+          "value": "注射器",
+          "originalEn": "Syringe"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/syringe.png"
+      },
+      {
+        "id": "antiseptic",
+        "quantity": 2,
+        "name": {
+          "value": "防腐劑",
+          "originalEn": "Antiseptic"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/antiseptic.png"
+      },
+      {
+        "id": "durable_cloth",
+        "quantity": 1,
+        "name": {
+          "value": "耐用布料",
+          "originalEn": "Durable Cloth"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/durable_cloth.png"
+      },
+      {
+        "id": "great_mullein",
+        "quantity": 1,
+        "name": {
+          "value": "毛蕊花",
+          "originalEn": "Great Mullein"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/great_mullein.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "adrenaline_shot",
+        "quantity": 3,
+        "name": {
+          "value": "腎上腺素注射劑",
+          "originalEn": "Adrenaline Shot"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/adrenaline_shot.png"
+      },
+      {
+        "id": "sterilized_bandage",
+        "quantity": 3,
+        "name": {
+          "value": "消毒繃帶",
+          "originalEn": "Sterilized Bandage"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/sterilized_bandage.png"
+      },
+      {
+        "id": "surge_shield_recharger",
+        "quantity": 1,
+        "name": {
+          "value": "激能護盾充能器",
+          "originalEn": "Surge Shield Recharger"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/surge_shield_recharger.png"
+      }
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -573,6 +2314,42 @@
       "clamoring_for_attention",
       "what_we_left_behind"
     ],
+    "description": {
+      "value": "第一波時，男爵造成的傷害比其他機器加起來還要多。現在它們只剩下機殼，一直待在它們倒下的地方…不過，其內部可能蘊藏著抵禦ARC的方法，因此請你去打開一個看看，並且把裡面的東西拿來給我。",
+      "originalEn": "During the First Wave, the Barons did more damage than all the other machines combined. Now they’re mere husks; fixed in place where they once fell... \n\nStill, their internals might hold the answer to keeping ARC at bay. So open one up, and bring me whatever is inside."
+    },
+    "objectives": [
+      {
+        "value": "搜刮1台男爵機殼",
+        "originalEn": "Loot a Baron husk"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "door_blocker",
+        "quantity": 3,
+        "name": {
+          "value": "門鎖",
+          "originalEn": "Door Blocker"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/door_blocker.png"
+      },
+      {
+        "id": "lil_smoke_grenade",
+        "quantity": 3,
+        "name": {
+          "value": "小型煙霧彈",
+          "originalEn": "Li'l Smoke Grenade"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/lil_smoke_grenade.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -594,6 +2371,61 @@
     "nextQuestIds": [
       "the_trifecta"
     ],
+    "description": {
+      "value": "掠手很早以前就報告過，故障的ARC探測機會掉下外觀很奇怪的貨箱。如果我們能找到打開它們的方法，或許就能更清楚它們在追求什麼。",
+      "originalEn": "Raiders have long reported peculiar-looking crates dropping down from malfunctioning ARC Probes. \n\nIf we can figure out a way to crack them open, we might get a better understanding of what it is they’re after."
+    },
+    "objectives": [
+      {
+        "value": "前往實地倉庫",
+        "originalEn": "Visit a Field Depot"
+      },
+      {
+        "value": "運送一個實地貨箱到實地倉庫",
+        "originalEn": "Deliver a Field Crate to a Field Depot"
+      },
+      {
+        "value": "收集獎勵",
+        "originalEn": "Collect the reward"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "binoculars",
+        "quantity": 1,
+        "name": {
+          "value": "雙筒望遠鏡",
+          "originalEn": "Binoculars"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/binoculars.png"
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "combat_mk1",
+        "quantity": 1,
+        "name": {
+          "value": "戰鬥型 Mk. 1",
+          "originalEn": "Combat Mk. 1"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/combat_i.png"
+      },
+      {
+        "id": "medium_shield",
+        "quantity": 1,
+        "name": {
+          "value": "中型護盾",
+          "originalEn": "Medium Shield"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/medium_shield.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -614,6 +2446,52 @@
       "waking_the_grid",
       "fragmented_logs"
     ],
+    "description": {
+      "value": "我前陣子派了一支偵察兵小隊前往太空港。例行公事，清點保全設施，看看有什麼可以重新利用的東西。但兩天過去卻音訊全無。",
+      "originalEn": "I sent a scout team to the Spaceport a while ago. Routine work — cataloging security, see if there's anything we could re-purpose. But I've heard nothing for two days."
+    },
+    "objectives": [
+      {
+        "value": "前往太空港東側的任一座實地倉庫",
+        "originalEn": "Visit any Field Depot on the eastern side of the Spaceport"
+      },
+      {
+        "value": "使用野戰無線電將偵察兵小組的最後紀錄傳送給珊妮",
+        "originalEn": "Use the Field Radio to transmit the scout group’s last log to Shani"
+      },
+      {
+        "value": "與維修機庫北側的老舊掠手塔中的終端機互動",
+        "originalEn": "Interact with the terminal in the old Raider Tower north of the Maintenance Hangar"
+      },
+      {
+        "value": "在維修機庫附近找到偵察兵巡邏隊的蹤跡",
+        "originalEn": "Find traces of the scout patrol near the Maintenance Hangar"
+      },
+      {
+        "value": "搜索偵察兵留下的殘骸",
+        "originalEn": "Search the remains left by the scouts"
+      },
+      {
+        "value": "將偵察兵巡邏隊筆記送去給珊妮",
+        "originalEn": "Deliver the Scout Patrol Note to Shani"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "scout_patrol_note",
+        "quantity": 1,
+        "name": {
+          "value": "偵察兵巡邏筆記",
+          "originalEn": "Scout Patrol Note"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
+    "rewardItems": [],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -633,6 +2511,71 @@
     "nextQuestIds": [
       "unexpected_initiative"
     ],
+    "description": {
+      "value": "你昨晚有感覺到任何震動嗎？我也沒有。但顯然地面搖晃了一下，導致原本被廢墟掩蓋住的第一波舊哨站露了出來。我希望你趕在其他人之前先進到裡面去。",
+      "originalEn": "Did you feel any tremors last night? Me neither. But apparently the ground shifted at some point, and in the process it unearthed an old First Wave outpost that’d been blocked by debris. I’d like you to get in there quick, before anyone else does."
+    },
+    "objectives": [
+      {
+        "value": "到達勝利山脊",
+        "originalEn": "Reach Victory Ridge"
+      },
+      {
+        "value": "從損毀高速公路下方的藏身處回收作戰計畫",
+        "originalEn": "Retrieve the battle plans from the hideout under the broken highway"
+      },
+      {
+        "value": "將艾瓦少校的制服章運送給莎莉絲特",
+        "originalEn": "Deliver Major Aiva's Patch to Celeste"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "major_aivas_patch",
+        "quantity": 1,
+        "name": {
+          "value": "艾娃少校的臂章",
+          "originalEn": "Major Aiva's Patch"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/major_aivas_patch.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "crude_explosives",
+        "quantity": 6,
+        "name": {
+          "value": "簡易炸藥",
+          "originalEn": "Crude Explosives"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/crude_explosives.png"
+      },
+      {
+        "id": "processor",
+        "quantity": 2,
+        "name": {
+          "value": "處理器",
+          "originalEn": "Processor"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/processor.png"
+      },
+      {
+        "id": "music_box",
+        "quantity": 1,
+        "name": {
+          "value": "音樂盒",
+          "originalEn": "Music Box"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/music_box.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -651,6 +2594,57 @@
     ],
     "nextQuestIds": [
       "life_of_a_pharmacist"
+    ],
+    "description": {
+      "value": "稍早有個掠手來到我的店裡，想用她在埋藏都市找到的機器換一些手榴彈。她說那台機器能煮咖啡，但好像少了幾個零件。有興趣接份工作嗎？",
+      "originalEn": "A Raider came into my shop earlier, to trade some grenades for a machine she found in Buried City. She said it makes coffee, but it seems to be missing a few parts. Up for a job?"
+    },
+    "objectives": [
+      {
+        "value": "找到一台義式咖啡機以回收多餘零件",
+        "originalEn": "Find an espresso machine to salvage for spare parts"
+      },
+      {
+        "value": "為阿波羅取得義式咖啡機零件",
+        "originalEn": "Get the Espresso Machine Parts for Apollo"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "espresso_machine_parts",
+        "quantity": 1,
+        "name": {
+          "value": "濃縮咖啡機零件",
+          "originalEn": "Espresso Machine Parts"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/espresso_machine_parts.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "coffee_pot",
+        "quantity": 1,
+        "name": {
+          "value": "咖啡壺",
+          "originalEn": "Coffee Pot"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/coffee_pot.png"
+      },
+      {
+        "id": "adrenaline_shot",
+        "quantity": 3,
+        "name": {
+          "value": "腎上腺素注射劑",
+          "originalEn": "Adrenaline Shot"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/adrenaline_shot.png"
+      }
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -675,6 +2669,71 @@
       "a_balanced_harvest",
       "back_on_top"
     ],
+    "description": {
+      "value": "你找到的感光掃描儀要放在高處才能發揮最佳作用。我已經找出鐵鏽帶附近適合放置的幾個地點；希望你沒有懼高症啊。",
+      "originalEn": "Those LiDAR scanners you found work best when put in high locations. I’ve identified a few good spots around the Rust Belt; hope you’re surefooted."
+    },
+    "objectives": [
+      {
+        "value": "在大壩戰場的塔台頂端安裝感光掃描儀",
+        "originalEn": "On Dam Battlegrounds, install a LiDAR Scanner at the top of the Control Tower"
+      },
+      {
+        "value": "在太空港的通訊塔上安裝感光掃描儀",
+        "originalEn": "On Spaceport, install a LiDAR Scanner at the Communications Tower"
+      },
+      {
+        "value": "在埋藏都市的畫廊招牌上安裝感光掃描儀",
+        "originalEn": "On Buried City, install a LiDAR Scanner on top of the Galleria sign"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "zipline",
+        "quantity": 1,
+        "name": {
+          "value": "滑索",
+          "originalEn": "Zipline"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/zipline.png"
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "tagging_grenade",
+        "quantity": 3,
+        "name": {
+          "value": "標記手榴彈",
+          "originalEn": "Tagging Grenade"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/tagging_grenade.png"
+      },
+      {
+        "id": "vita_spray",
+        "quantity": 1,
+        "name": {
+          "value": "活力噴霧",
+          "originalEn": "Vita Spray"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/vita_spray.png"
+      },
+      {
+        "id": "yellow_light_stick",
+        "quantity": 5,
+        "name": {
+          "value": "黃色螢光棒",
+          "originalEn": "Yellow Light Stick"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/yellow_light_stick.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -694,6 +2753,57 @@
     "nextQuestIds": [
       "industrial_espionage"
     ],
+    "description": {
+      "value": "自從你來幫忙之後，我的交貨點變得平靜許多，但不表示這種平靜能維持多久。我已經在埋藏都市裡我最常使用的其中一個交貨點安裝好監視器了，以防未來再被人動手腳。唯一的問題是，監視器需要電源才能運作。",
+      "originalEn": "Everything’s been calm around my drop-offs since you helped out, but that doesn’t mean it’ll stay that way for long. I’ve set up surveillance at one of my most used spots in Buried City, to prevent future tampering. Only problem is, it needs power to go live."
+    },
+    "objectives": [
+      {
+        "value": "找到南站西南方的僻靜屋頂露台，看到藍色帆布就知道了。",
+        "originalEn": "Find the secluded roof terrace south-west of the Southern Station, look for blue tarps."
+      },
+      {
+        "value": "使用3條電線為太陽能板重新配線",
+        "originalEn": "Rewire the solar panel using 3 Wires"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "wires",
+        "quantity": 3,
+        "name": {
+          "value": "電線",
+          "originalEn": "Wires"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/wires.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "extended_shotgun_mag_ii",
+        "quantity": 1,
+        "name": {
+          "value": "延長霰彈槍彈匣 II",
+          "originalEn": "Extended Shotgun Mag II"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/extended_shotgun_mag_ii.png"
+      },
+      {
+        "id": "extended_medium_mag_ii",
+        "quantity": 1,
+        "name": {
+          "value": "延長中型彈匣 II",
+          "originalEn": "Extended Medium Mag II"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/extended_medium_mag_ii.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -712,6 +2822,65 @@
     ],
     "nextQuestIds": [
       "bees"
+    ],
+    "description": {
+      "value": "我的常任工程師還在療傷，他已經昏昏沉沉好幾天了。在他痊癒之前，我們不能讓效率降低；我需要有人暫時頂替他的工作。",
+      "originalEn": "My usual engineer is still healing from his wounds, and has been loopy for days. We can’t afford to be at half-grid until he heals; I need someone to pick up his wrench in the mean time."
+    },
+    "objectives": [
+      {
+        "value": "找到發電機室",
+        "originalEn": "Find the Generator Room"
+      },
+      {
+        "value": "使用4條電線修理發電機",
+        "originalEn": "Repair the Generator using 4 Wires"
+      },
+      {
+        "value": "找到通風井",
+        "originalEn": "Find the Ventilation Shaft"
+      },
+      {
+        "value": "透過樓梯下的電源開關開啟電源",
+        "originalEn": "Enable the power via the power switch underneath the stairs"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "wires",
+        "quantity": 4,
+        "name": {
+          "value": "電線",
+          "originalEn": "Wires"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/wires.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "medium_gun_parts",
+        "quantity": 5,
+        "name": {
+          "value": "中型槍械零件",
+          "originalEn": "Medium Gun Parts"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/medium_gun_parts.png"
+      },
+      {
+        "id": "advanced_mechanical_components",
+        "quantity": 3,
+        "name": {
+          "value": "進階機械元件",
+          "originalEn": "Advanced Mechanical Components"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/advanced_mechanical_components.png"
+      }
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -733,6 +2902,50 @@
     "nextQuestIds": [
       "furtive_meetings"
     ],
+    "description": {
+      "value": "現在我們已在星辰山站穩腳跟，多方人馬都對深入挖掘這片土地的過往深感興趣。然而，要實現這個目標，我們必須啟動這些陳舊的機器，才能開始梳理其中的資料。 ",
+      "originalEn": "Now that we’ve found our footing on Stella Montis, several parties are interested in digging a bit deeper and seeing what we can find out about the past of this place. To do so, however, we’ll need to power up some of these old machines so we can start to sift through the data. "
+    },
+    "objectives": [
+      {
+        "value": "在任一機械沙盒控制室中，使用1個電子元件修理故障的終端機",
+        "originalEn": "In either of the Robotic Sandbox control rooms, repair the out-of-service terminal with 1 Electrical Component"
+      },
+      {
+        "value": "啟用機械沙盒附近任一導管後室的電源",
+        "originalEn": "Enable the power in any of the conduit backrooms near the Robotic Sandboxes"
+      },
+      {
+        "value": "啟動文化檔案庫服務後室的主機資料終端機",
+        "originalEn": "Boot the main frame data terminal in the Cultural Archives service backrooms"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "showstopper",
+        "quantity": 3,
+        "name": {
+          "value": "表演終結者",
+          "originalEn": "Showstopper"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/showstopper.png"
+      },
+      {
+        "id": "trailblazer",
+        "quantity": 3,
+        "name": {
+          "value": "開拓者",
+          "originalEn": "Trailblazer"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/trailblazer.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -751,6 +2964,69 @@
     ],
     "nextQuestIds": [
       "last_entry"
+    ],
+    "description": {
+      "value": "我還在整理你在星辰山找到的資料，但有東西引起了我的注意。我想請你調查一下。",
+      "originalEn": "I’m still sorting through the data you found in Stella Montis, but something’s caught my eye. I’d like you to look into it."
+    },
+    "objectives": [
+      {
+        "value": "在醫學研究區的一座樓梯下方搜索秘密會面地點",
+        "originalEn": "Search for the secret meeting spot under a staircase in the Medical Research Area"
+      },
+      {
+        "value": "在機械沙盒B和種子庫之間的通風井附近找到秘密會面地點",
+        "originalEn": "Find the secret meeting spot near the ventilation shaft between Robotic Sandbox B and Seed Vault"
+      },
+      {
+        "value": "在連接文化檔案庫和種子庫的樓梯底層尋找秘密會面地點",
+        "originalEn": "Find the secret meeting spot at the bottom of the staircase connecting the Cultural Archives and Seed Vault"
+      },
+      {
+        "value": "搜索會面區域",
+        "originalEn": "Search the meeting area"
+      },
+      {
+        "value": "將秘密會面資訊帶去給珊妮",
+        "originalEn": "Bring the Secret Meeting Info to Shani"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "secret_meeting_info",
+        "quantity": 1,
+        "name": {
+          "value": "秘密會議資訊",
+          "originalEn": "Secret Meeting Info"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "aphelion",
+        "quantity": 1,
+        "name": {
+          "value": "遠日點",
+          "originalEn": "Aphelion"
+        },
+        "rarity": "Legendary",
+        "imageFilename": "https://cdn.arctracker.io/items/aphelion.png"
+      },
+      {
+        "id": "energy_clip",
+        "quantity": 5,
+        "name": {
+          "value": "能量夾",
+          "originalEn": "Energy Clip"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/energy_clip.png"
+      }
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -773,6 +3049,71 @@
     "nextQuestIds": [
       "dormant_barons",
       "doctors_orders"
+    ],
+    "description": {
+      "value": "最近我一直嘗試讓田文參與我們的社群計畫，但一直沒能成功。我可能得多給些好處。她一直都在抱怨市場上販售的回收物品質太差，你能在這方面幫她點忙嗎？",
+      "originalEn": "Recently, I’ve been trying and failing to get Tian Wen to join our community projects.\n\nI may have to sweeten the deal. She’s been complaining about the quality of salvage found on the market; think we could do her a solid?"
+    },
+    "objectives": [
+      {
+        "value": "在大壩戰場，前往水處理控制大樓的上鎖房間",
+        "originalEn": "On Dam Battlegrounds, visit the Locked Room in the Water Treatment Control building"
+      },
+      {
+        "value": "在太空港，調查火箭組裝區外面的火箭推進器",
+        "originalEn": "On Spaceport, scope out the rocket thrusters outside the Rocket Assembly"
+      },
+      {
+        "value": "在埋藏都市，前往太空旅行局大樓6樓的封鎖區域",
+        "originalEn": "On Buried City, visit the barricaded area on floor 6 of the Space Travel Building"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "dam_surveillance_key",
+        "quantity": 2,
+        "name": {
+          "value": "水壩監控鑰匙",
+          "originalEn": "Dam Surveillance Key"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/dam_surveillance_key.png"
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "lure_grenade_blueprint",
+        "quantity": 1,
+        "name": {
+          "value": "誘餌手榴彈藍圖",
+          "originalEn": "Lure Grenade Blueprint"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/lure_grenade.png"
+      },
+      {
+        "id": "speaker_component",
+        "quantity": 3,
+        "name": {
+          "value": "揚聲器組件",
+          "originalEn": "Speaker Component"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/speaker_component.png"
+      },
+      {
+        "id": "electrical_components",
+        "quantity": 3,
+        "name": {
+          "value": "電子元件",
+          "originalEn": "Electrical Components"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/electrical_components.png"
+      }
     ],
     "hasBlueprint": true,
     "blueprintRewards": [
@@ -803,6 +3144,55 @@
       "worth_your_salt",
       "a_dead_end"
     ],
+    "description": {
+      "value": "不管能否找到資料，我們都能學到如何讓這個地方抵禦地震的影響。既然當初的研究那麼深入，一定能在某處找到相關的檔案。",
+      "originalEn": "Data or no data: we’ll learn how to make this place earthquake-proof. With a research this in-depth, there’s bound to be a paper trail somewhere."
+    },
+    "objectives": [
+      {
+        "value": "進入朝聖者巔峰的上鎖房間",
+        "originalEn": "Enter the locked room at Pilgrim's Peak"
+      },
+      {
+        "value": "搜索房間尋找是否有任何建築相關研究",
+        "originalEn": "Search the room for any construction research"
+      },
+      {
+        "value": "尋找白板上畫的那棟建築",
+        "originalEn": "Find the building pictured on the whiteboard"
+      },
+      {
+        "value": "拍攝廢棄的公營住宅",
+        "originalEn": "Photograph the abandoned housing project"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "blue_gate_communication_tower_key",
+        "quantity": 1,
+        "name": {
+          "value": "藍門通訊塔鑰匙",
+          "originalEn": "Blue Gate Communication Tower Key"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/blue_gate_communication_tower_key.png"
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "power_rod",
+        "quantity": 1,
+        "name": {
+          "value": "能量棒",
+          "originalEn": "Power Rod"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/power_rod.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -819,6 +3209,42 @@
     ],
     "nextQuestIds": [
       "down_to_earth"
+    ],
+    "description": {
+      "value": "我們的偵察兵回報有數個掠手出入口的液壓管外洩了。它們仍能作用，但無法維持太久。下次你經過時，能夠修補一下嗎？",
+      "originalEn": "Our scouts have reported several Raider Hatches with leaking hydraulic pipes. They still work, but not for long. Mind patching one up, next time you’re out there?"
+    },
+    "objectives": [
+      {
+        "value": "修理掠手出入口附近的洩漏液壓管線",
+        "originalEn": "Repair the leaking hydraulic pipes near a Raider Hatch"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "raider_hatch_key",
+        "quantity": 1,
+        "name": {
+          "value": "掠奪者艙門鑰匙",
+          "originalEn": "Raider Hatch Key"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/raider_hatch_key.png"
+      },
+      {
+        "id": "binoculars",
+        "quantity": 1,
+        "name": {
+          "value": "雙筒望遠鏡",
+          "originalEn": "Binoculars"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/binoculars.png"
+      }
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -840,6 +3266,59 @@
     "nextQuestIds": [
       "cold_storage"
     ],
+    "description": {
+      "value": "我剛治療了最早造訪星辰山的掠手，她說她看到了…其他的機器人，說和我很相似。",
+      "originalEn": "I just treated one of the first Raiders who visited Stella Montis, and she said that she saw... others. Androids, very much like me."
+    },
+    "objectives": [
+      {
+        "value": "部署至星辰山內",
+        "originalEn": "Deploy into Stella Montis"
+      },
+      {
+        "value": "找到並搜索3個機器人",
+        "originalEn": "Find and search 3 Androids"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [
+      "24x Raids"
+    ],
+    "grantedItems": [
+      {
+        "id": "defibrillator",
+        "quantity": 3,
+        "name": {
+          "value": "除顫器",
+          "originalEn": "Defibrillator"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/defibrillator.png"
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "looting_mk2",
+        "quantity": 1,
+        "name": {
+          "value": "掠奪 Mk. 2",
+          "originalEn": "Looting Mk. 2"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/looting_mk2.png"
+      },
+      {
+        "id": "green_light_stick",
+        "quantity": 5,
+        "name": {
+          "value": "綠色螢光棒",
+          "originalEn": "Green Light Stick"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/green_light_stick.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -858,6 +3337,71 @@
     ],
     "nextQuestIds": [
       "unexpected_initiative"
+    ],
+    "description": {
+      "value": "在確保我的儲藏箱安全無虞後，現在應該要更加密切注意競爭對手，避免再次發生這種情況。",
+      "originalEn": "With my own stashes secured, I think it might be time to keep a closer eye on the competition so this doesn’t happen again."
+    },
+    "objectives": [
+      {
+        "value": "在郊區的加油站附近找到田文的武器藏貨",
+        "originalEn": "Find Tian Wen's weapon cache near the Gas Station in the Outskirts"
+      },
+      {
+        "value": "將伯萊塔運送到敵方武器藏貨處",
+        "originalEn": "Deliver the Burletta to the rival weapon cache"
+      },
+      {
+        "value": "在武器藏貨上裝設竊聽器",
+        "originalEn": "Plant a bug on the weapon cache"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "burletta_i",
+        "quantity": 1,
+        "name": {
+          "value": "布雷塔 I",
+          "originalEn": "Burletta I"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/burletta.png"
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "burletta_blueprint",
+        "quantity": 1,
+        "name": {
+          "value": "布雷塔藍圖",
+          "originalEn": "Burletta Blueprint"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/burletta.png"
+      },
+      {
+        "id": "mechanical_components",
+        "quantity": 3,
+        "name": {
+          "value": "機械零件",
+          "originalEn": "Mechanical Components"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/mechanical_components.png"
+      },
+      {
+        "id": "simple_gun_parts",
+        "quantity": 3,
+        "name": {
+          "value": "簡易槍械零件",
+          "originalEn": "Simple Gun Parts"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/simple_gun_parts.png"
+      }
     ],
     "hasBlueprint": true,
     "blueprintRewards": [
@@ -892,6 +3436,57 @@
       "combat_recon",
       "paving_the_way"
     ],
+    "description": {
+      "value": "以前上面都是它們的世界。沒人敢挑戰它們的霸權。但如今我們走到了這一步。越來越多哨站、越來越多情報、越來越強大的火力。要是我天真一點的話，可能還會說我們人類還是有反抗的機會的。",
+      "originalEn": "It used to be their world, up there. Nobody to challenge their claim. \n\nYet here we are. More outposts. More intel. More firepower. If I didn’t know better, I’d say we’ve got quite a bit of fight left in us."
+    },
+    "objectives": [
+      {
+        "value": "摧毀1台跳躍者",
+        "originalEn": "Destroy a Leaper"
+      },
+      {
+        "value": "獲得跳躍者脈衝單元",
+        "originalEn": "Obtain a Leaper Pulse Unit"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "leaper_pulse_unit",
+        "quantity": 1,
+        "name": {
+          "value": "跳躍者脈衝裝置",
+          "originalEn": "Leaper Pulse Unit"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/leaper_pulse_unit.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "vulcano_iii",
+        "quantity": 1,
+        "name": {
+          "value": "火山 III",
+          "originalEn": "Vulcano III"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/vulcano.png"
+      },
+      {
+        "id": "shotgun_ammo",
+        "quantity": 40,
+        "name": {
+          "value": "霰彈槍彈藥",
+          "originalEn": "Shotgun Ammo"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/shotgun_ammo.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -909,6 +3504,46 @@
       "the_clean_dream"
     ],
     "nextQuestIds": [],
+    "description": {
+      "value": "我正在找某個人。他叫比爾古恩。你可能在附近見過他，不過也可能沒有。因為他…不是喜歡交際的人。\r\n\r\n他大部分時間在頂層，但常常會定期回到斯佩蘭薩來報到。",
+      "originalEn": "I’m looking for someone. Bilguun. You might’ve seen him around, but chances are you haven’t. He’s… not the most sociable person around, you see.\r\n\r\nHe spends a lot of time Topside, but usually returns to Speranza regularly to check in."
+    },
+    "objectives": [
+      {
+        "value": "找到貧瘠空地南側邊緣的倒塌高速公路",
+        "originalEn": "Locate the collapsed highway by the southern edge of the Barren Clearing"
+      },
+      {
+        "value": "找到比爾古恩的簡易住所，並搜尋是否有他來過的線索",
+        "originalEn": "Find Bilguun's shelter, and search for any clues of his presence"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "pulse_mine",
+        "quantity": 5,
+        "name": {
+          "value": "脈衝地雷",
+          "originalEn": "Pulse Mine"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/pulse_mine.png"
+      },
+      {
+        "id": "flame_spray",
+        "quantity": 1,
+        "name": {
+          "value": "火焰噴射器",
+          "originalEn": "Flame Spray"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/flame_spray.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -928,6 +3563,60 @@
     "nextQuestIds": [
       "echoes_of_victory_ridge"
     ],
+    "description": {
+      "value": "我派你去處理那個陷阱時有點失控了。我通常不會發脾氣的，但是第一波…當時我們經歷了許多悲慘的事情，失去了很多人。對我來說，那個傷口依然難以癒合，但我希望你能理解。",
+      "originalEn": "I lost my cool a bit when I sent you after that trap. I don’t usually lose my temper, but the First Wave… We went through a lot, back then. Lost a lot of people. It’s still a bit of a raw wound for me, but I want you to understand. "
+    },
+    "objectives": [
+      {
+        "value": "到達蟻丘的殘骸處",
+        "originalEn": "Reach the wreckage in the Formicai Hills"
+      },
+      {
+        "value": "搜尋遺失的頭盔",
+        "originalEn": "Search for the missing helmet"
+      },
+      {
+        "value": "將頭盔帶回紀念碑",
+        "originalEn": "Return the helmet to the memorial"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "simple_gun_parts",
+        "quantity": 5,
+        "name": {
+          "value": "簡易槍械零件",
+          "originalEn": "Simple Gun Parts"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/simple_gun_parts.png"
+      },
+      {
+        "id": "duct_tape",
+        "quantity": 5,
+        "name": {
+          "value": "強力膠帶",
+          "originalEn": "Duct Tape"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/duct_tape.png"
+      },
+      {
+        "id": "magnet",
+        "quantity": 5,
+        "name": {
+          "value": "磁鐵",
+          "originalEn": "Magnet"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/magnet.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -945,6 +3634,59 @@
       "furtive_meetings"
     ],
     "nextQuestIds": [],
+    "description": {
+      "value": "關於蠍獅的討論越多，研究員間的分歧也越明顯。我覺得緊張局勢終將升級。",
+      "originalEn": "More mentions of Mantikor, and more clear signs of dissent among the researchers. I suspect tensions eventually escalated."
+    },
+    "objectives": [
+      {
+        "value": "尋找並前往種子庫中正確的工作站以取得線索",
+        "originalEn": "Find and access the right work station in the Seed Vault for clues"
+      },
+      {
+        "value": "在相鄰的房間中搜索隱藏的鑰匙",
+        "originalEn": "Search for the hidden key in the adjacent room"
+      },
+      {
+        "value": "搜索種子庫並解鎖種子儲存箱",
+        "originalEn": "Search the Seed Vault and unlock the seed deposit box"
+      },
+      {
+        "value": "搜尋種子儲存箱",
+        "originalEn": "Search the seed deposit box"
+      },
+      {
+        "value": "將有關計畫終止的官方文件帶去給珊妮",
+        "originalEn": "Bring the Official Shutdown Documentation to Shani"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "official_shutdown_documentation",
+        "quantity": 1,
+        "name": {
+          "value": "官方關閉文件",
+          "originalEn": "Official Shutdown Documentation"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "yellow_light_stick_blueprint",
+        "quantity": 1,
+        "name": {
+          "value": "黃色螢光棒",
+          "originalEn": "Yellow Light Stick Blueprint"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/yellow_light_stick.png"
+      }
+    ],
     "hasBlueprint": true,
     "blueprintRewards": [
       {
@@ -974,6 +3716,68 @@
       "a_toxic_trail",
       "tribute_to_toledo"
     ],
+    "description": {
+      "value": "這個地方需要翻新，但我不想讓它看起來像破舊的掠手小窩。你能不能幫忙了解一下我那些過去的醫療同行是怎麼生活的？ ",
+      "originalEn": "This place could use a makeover, but I don’t want it looking like your raggedy Raider Dens. See if you can find out how my fellow medical greats used to live. "
+    },
+    "objectives": [
+      {
+        "value": "在倒塌的高速公路附近找到阿布斯托藥局",
+        "originalEn": "Find the Arbusto Farmacia by the collapsed highway"
+      },
+      {
+        "value": "記錄藥師的愛好",
+        "originalEn": "Document the pharmacist’s hobbies"
+      },
+      {
+        "value": "記錄藥師的家人",
+        "originalEn": "Document the pharmacist’s family"
+      },
+      {
+        "value": "記錄藥師的品味",
+        "originalEn": "Document the pharmacist’s taste"
+      },
+      {
+        "value": "記錄藥師的技能",
+        "originalEn": "Document the pharmacist’s skills"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "defibrillator",
+        "quantity": 1,
+        "name": {
+          "value": "除顫器",
+          "originalEn": "Defibrillator"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/defibrillator.png"
+      },
+      {
+        "id": "surge_shield_recharger",
+        "quantity": 1,
+        "name": {
+          "value": "激能護盾充能器",
+          "originalEn": "Surge Shield Recharger"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/surge_shield_recharger.png"
+      },
+      {
+        "id": "sterilized_bandage",
+        "quantity": 3,
+        "name": {
+          "value": "消毒繃帶",
+          "originalEn": "Sterilized Bandage"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/sterilized_bandage.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -992,6 +3796,51 @@
     ],
     "nextQuestIds": [
       "communication_hideout"
+    ],
+    "description": {
+      "value": "我在太空港設置了監控ARC行動的設備。我的連線剛剛中斷了，我需要你前往塔台，幫我取回我的紀錄。",
+      "originalEn": "I have equipment set up at the Spaceport, to monitor ARC’s movements. My connection broke down just now — I need you to head to the Control Towers and help me retrieve my logs."
+    },
+    "objectives": [
+      {
+        "value": "前往塔台A6",
+        "originalEn": "Visit Control Tower A6"
+      },
+      {
+        "value": "到達塔台A6的頂端",
+        "originalEn": "Reach the top of Control Tower A6"
+      },
+      {
+        "value": "從終端機建立連線",
+        "originalEn": "Establish a connection from the terminal"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "spaceport_control_tower_key",
+        "quantity": 1,
+        "name": {
+          "value": "太空港控制塔鑰匙",
+          "originalEn": "Spaceport Control Tower Key"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/spaceport_control_tower_key.png"
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "snap_hook",
+        "quantity": 1,
+        "name": {
+          "value": "扣鉤藍圖",
+          "originalEn": "Snap Hook"
+        },
+        "rarity": "Legendary",
+        "imageFilename": "https://cdn.arctracker.io/items/snap_hook.png"
+      }
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -1012,6 +3861,50 @@
     "nextQuestIds": [
       "market_correction"
     ],
+    "description": {
+      "value": "有人一直從我在埋藏都市的交貨點偷竊物資。我已經設好了陷阱，但我需要人手去幫我確認情況。",
+      "originalEn": "Someone has been lifting supplies from my drop-off point in Buried City. I’ve set up a trap, but I need someone to check it for me."
+    },
+    "objectives": [
+      {
+        "value": "到達埋藏都市郊區的Su Durante倉庫",
+        "originalEn": "Reach the Su Durante Warehouses in the Outskirts in Buried City"
+      },
+      {
+        "value": "在倉庫附近搜尋田文的藏貨",
+        "originalEn": "Search for Tian Wen's cache near the Warehouses"
+      },
+      {
+        "value": "追蹤線索",
+        "originalEn": "Follow the clues"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "shotgun_choke_ii",
+        "quantity": 1,
+        "name": {
+          "value": "霰彈槍收束器 II",
+          "originalEn": "Shotgun Choke II"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/shotgun_choke_ii.png"
+      },
+      {
+        "id": "angled_grip_ii",
+        "quantity": 1,
+        "name": {
+          "value": "斜角握把 II",
+          "originalEn": "Angled Grip II"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/angled_grip_ii.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1030,6 +3923,56 @@
     ],
     "nextQuestIds": [
       "eyes_on_the_prize"
+    ],
+    "description": {
+      "value": "之前的那個小偷？現在看起來不再是巧合了。托雷多的一些競爭對手正在他們不該去的地方做生意。我要你去破壞他們的藏貨處，趁他們還沒得寸進尺之前。",
+      "originalEn": "That theft before? Doesn’t look like a coincidence anymore. Some of the competition from Toledo is setting up shop where they don’t belong. I want their cache sabotaged, preferably before they get too comfortable."
+    },
+    "objectives": [
+      {
+        "value": "找到馬拉諾站附近的藏貨",
+        "originalEn": "Locate the cache near Marano Station"
+      },
+      {
+        "value": "破壞藏貨",
+        "originalEn": "Sabotage the cache"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "silencer_ii",
+        "quantity": 1,
+        "name": {
+          "value": "消音器 II",
+          "originalEn": "Silencer II"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/silencer_ii.png"
+      },
+      {
+        "id": "extended_light_mag_i",
+        "quantity": 1,
+        "name": {
+          "value": "延長輕型彈匣 I",
+          "originalEn": "Extended Light Mag I"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/extended_light_mag_i.png"
+      },
+      {
+        "id": "compensator_i",
+        "quantity": 1,
+        "name": {
+          "value": "補償器 I",
+          "originalEn": "Compensator I"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/compensator_i.png"
+      }
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -1052,6 +3995,50 @@
     "nextQuestIds": [
       "a_reveal_in_ruins"
     ],
+    "description": {
+      "value": "我已經很擅長用布料編織繃帶了，但慚愧的是，我還沒有完全掌握編織X光機或血氧計的技術。",
+      "originalEn": "I’ve become quite crafty at weaving bandages from Fabric, but to my shame, I haven’t quite mastered weaving an x-ray machine or a pulse oximiter."
+    },
+    "objectives": [
+      {
+        "value": "在太空港，搜索出境大樓檢查室中的2個容器",
+        "originalEn": "On Spaceport, search 2 containers in the Departure Building's exam rooms"
+      },
+      {
+        "value": "在埋藏都市，搜索醫院中的3個容器",
+        "originalEn": "Search 3 containers in the Hospital in Buried City"
+      },
+      {
+        "value": "在大壩戰場，搜索研究行政部大樓醫療室中的2個容器",
+        "originalEn": "On Dam Battlegrounds, search 2 containers in the Research & Administration building's medical room"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "defibrillator",
+        "quantity": 3,
+        "name": {
+          "value": "除顫器",
+          "originalEn": "Defibrillator"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/defibrillator.png"
+      },
+      {
+        "id": "vita_shot",
+        "quantity": 2,
+        "name": {
+          "value": "活力注射劑",
+          "originalEn": "Vita Shot"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/vita_shot.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1072,6 +4059,78 @@
       "dormant_barons"
     ],
     "nextQuestIds": [],
+    "description": {
+      "value": "你看到任何勘查員了嗎？那些又大又圓的傢伙？它們似乎會把資料傳輸回軌道，我總覺得這和我們之前接收到的那個訊號有關。你能不能拆開一台，讓我們試著破解其中的資料？",
+      "originalEn": "Have you spotted any Surveyors; the big round ones? \n\nThey seem to be transmitting data back into orbit, and I can’t help but think it's tied to that signal we picked up. Will you break one open, so we can try to decipher the data?"
+    },
+    "objectives": [
+      {
+        "value": "摧毀一台ARC勘查員",
+        "originalEn": "Destroy an ARC Surveyor"
+      },
+      {
+        "value": "獲得1個勘查員保存庫",
+        "originalEn": "Obtain 1 Surveyor Vault"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "jolt_mine",
+        "quantity": 3,
+        "name": {
+          "value": "電擊地雷",
+          "originalEn": "Jolt Mine"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/jolt_mine.png"
+      },
+      {
+        "id": "showstopper",
+        "quantity": 2,
+        "name": {
+          "value": "表演終結者",
+          "originalEn": "Showstopper"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/showstopper.png"
+      }
+    ],
+    "requiredItems": [
+      {
+        "id": "surveyor_vault",
+        "quantity": 1,
+        "name": {
+          "value": "勘測者保險庫",
+          "originalEn": "Surveyor Vault"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/surveyor_vault.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "photoelectric_cloak",
+        "quantity": 1,
+        "name": {
+          "value": "光電斗篷",
+          "originalEn": "Photoelectric Cloak"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/photoelectric_cloak.png"
+      },
+      {
+        "id": "raider_hatch_key",
+        "quantity": 1,
+        "name": {
+          "value": "掠奪者艙門鑰匙",
+          "originalEn": "Raider Hatch Key"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/raider_hatch_key.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1087,6 +4146,102 @@
       "with_a_view"
     ],
     "nextQuestIds": [],
+    "description": {
+      "value": "自從關於那個ARC訊號的傳言傳開後，每個人都很緊繃。我想說舉辦電影之夜是轉移注意力不錯的方法，但我缺少一些重要資源。你會幫我對吧？",
+      "originalEn": "Everyone's been on edge ever since rumors of that ARC signal spread. I was thinking a movie night would be a great distraction, but I'm missing some crucial supplies. You'll help me out, yeah?"
+    },
+    "objectives": [
+      {
+        "value": "將隨身電視送去給阿波羅",
+        "originalEn": "Deliver a Portable TV to Apollo"
+      },
+      {
+        "value": "在星辰山，搜索文化檔案庫以尋找老電影錄影帶",
+        "originalEn": "On Stella Montis, search the Cultural Archives for old movie tapes"
+      },
+      {
+        "value": "將一疊電影錄影帶送去給阿波羅",
+        "originalEn": "Deliver the Stack of Movie Tapes to Apollo"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "blue_light_stick",
+        "quantity": 3,
+        "name": {
+          "value": "藍色螢光棒",
+          "originalEn": "Blue Light Stick"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/blue_light_stick.png"
+      },
+      {
+        "id": "yellow_light_stick",
+        "quantity": 3,
+        "name": {
+          "value": "黃色螢光棒",
+          "originalEn": "Yellow Light Stick"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/yellow_light_stick.png"
+      }
+    ],
+    "requiredItems": [
+      {
+        "id": "portable_tv",
+        "quantity": 1,
+        "name": {
+          "value": "攜帶型電視",
+          "originalEn": "Portable TV"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/portable_tv.png"
+      },
+      {
+        "id": "stack_of_movie_tapes",
+        "quantity": 1,
+        "name": {
+          "value": "一疊錄影帶",
+          "originalEn": "Stack of Movie Tapes"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/stack_of_movie_tapes.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "showstopper",
+        "quantity": 3,
+        "name": {
+          "value": "表演終結者",
+          "originalEn": "Showstopper"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/showstopper.png"
+      },
+      {
+        "id": "smoke_grenade",
+        "quantity": 3,
+        "name": {
+          "value": "煙霧彈",
+          "originalEn": "Smoke Grenade"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/smoke_grenade.png"
+      },
+      {
+        "id": "fireworks_box",
+        "quantity": 1,
+        "name": {
+          "value": "煙火箱",
+          "originalEn": "Fireworks Box"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/fireworks_box.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1110,6 +4265,47 @@
       "a_first_foothold",
       "a_bad_feeling"
     ],
+    "description": {
+      "value": "這裡的損傷相當嚴重，但我們頂層的基礎建設受損更嚴重。風暴過後，我這邊還有一些天線是故障的。",
+      "originalEn": "The damage down here was pretty bad, but our Topside infrastructure was hit even harder. I still have several antennas that stopped working after the storm."
+    },
+    "objectives": [
+      {
+        "value": "前往實地倉庫",
+        "originalEn": "Visit a Field Depot"
+      },
+      {
+        "value": "修理實地倉庫屋頂上的天線",
+        "originalEn": "Repair the antenna on the roof of the Field Depot"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "remote_raider_flare",
+        "quantity": 2,
+        "name": {
+          "value": "遠程掠奪者信號彈",
+          "originalEn": "Remote Raider Flare"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/remote_raider_flare.png"
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "defibrillator",
+        "quantity": 2,
+        "name": {
+          "value": "除顫器",
+          "originalEn": "Defibrillator"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/defibrillator.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1130,6 +4326,64 @@
     "nextQuestIds": [
       "on_the_map"
     ],
+    "description": {
+      "value": "這裡的掠手好像大半都有嚴重的聽力受損情形。\r\n\r\n我聽過傳聞說，星辰山的人開發了某種特別先進的助聽器。如果你能成功找到，大家或許就終於能用正常的音量對話，不用大吼大叫了。",
+      "originalEn": "Seems like every other Raider here has some serious hearing damage.\r\n\r\nI heard rumors they developed some extra advanced hearing aids at Stella Montis. If you can track them down, we might all be able to use our indoor voices, for once."
+    },
+    "objectives": [
+      {
+        "value": "在櫃台電腦上找到研究人員的訪客紀錄",
+        "originalEn": "Find the researcher's guest logs on the reception computers"
+      },
+      {
+        "value": "找到研究人員舉行講座的地方，並取得他們的筆記",
+        "originalEn": "Find where the researcher held their lecture, and access their notes"
+      },
+      {
+        "value": "在醫療研究設施的電腦上找到試作品的相關資訊",
+        "originalEn": "Find information about the prototypes on the Medical Research computers"
+      },
+      {
+        "value": "在組裝廠工坊中找到紙本貨運紀錄",
+        "originalEn": "Find the printed shipping logs in the Assembly Workshops"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "lure_grenade",
+        "quantity": 3,
+        "name": {
+          "value": "誘餌手榴彈",
+          "originalEn": "Lure Grenade"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/lure_grenade.png"
+      },
+      {
+        "id": "noisemaker",
+        "quantity": 5,
+        "name": {
+          "value": "噪音製造器",
+          "originalEn": "Noisemaker"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/noisemaker.png"
+      },
+      {
+        "id": "shaker",
+        "quantity": 1,
+        "name": {
+          "value": "沙鈴",
+          "originalEn": "Shaker"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/shaker.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1147,6 +4401,79 @@
       "on_deaf_ears"
     ],
     "nextQuestIds": [],
+    "description": {
+      "value": "我們知道那些助聽器的座標了，但我得跟太空港的紙本地圖交叉對照一下。你的腿還撐得住吧？",
+      "originalEn": "We know the coordinates for those hearing aids, but I’ll have to cross-reference them with a paper map of the Spaceport. Those legs of yours aren’t too tired, are they?"
+    },
+    "objectives": [
+      {
+        "value": "前往燃料管線斷裂的位置，然後傳輸你的地點",
+        "originalEn": "Head to where the Fuel Lines snapped, and transmit your location"
+      },
+      {
+        "value": "前往燃料控制中心附近的天線，然後傳輸你的地點",
+        "originalEn": "Head to the antenna near the Fuel Control, and transmit your location"
+      },
+      {
+        "value": "前往牆面破口長有仙人掌的地方，然後傳輸你的地點",
+        "originalEn": "Head to the cactus patch in the wall breach, and transmit your location"
+      },
+      {
+        "value": "從貨櫃儲藏庫建築的屋頂傳輸你的地點",
+        "originalEn": "Transmit your location from the roof of the Container Storage building"
+      },
+      {
+        "value": "找到用防水布蓋起來的貨櫃，並加以標記",
+        "originalEn": "Find the container covered in tarp, and mark it"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "defibrillator",
+        "quantity": 3,
+        "name": {
+          "value": "除顫器",
+          "originalEn": "Defibrillator"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/defibrillator.png"
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "sterilized_bandage",
+        "quantity": 3,
+        "name": {
+          "value": "消毒繃帶",
+          "originalEn": "Sterilized Bandage"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/sterilized_bandage.png"
+      },
+      {
+        "id": "surge_shield_recharger",
+        "quantity": 3,
+        "name": {
+          "value": "激能護盾充能器",
+          "originalEn": "Surge Shield Recharger"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/surge_shield_recharger.png"
+      },
+      {
+        "id": "tactical_mk3_healing",
+        "quantity": 1,
+        "name": {
+          "value": "戰術型 Mk. 3 (治療)",
+          "originalEn": "Tactical Mk. 3 (Healing)"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_healing.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1165,6 +4492,60 @@
     ],
     "nextQuestIds": [
       "lost_in_transmission"
+    ],
+    "description": {
+      "value": "ARC可能正在改變，但我們終於也跟著開始改變了。我們來完成那些哨站，並改變我們追蹤、襲擊和把它們打成碎片的方式吧。",
+      "originalEn": "ARC may be changing, but we’re finally changing with it. Let’s finish up those outposts and revolutionize the way we track them, flank them, and smash them to bits."
+    },
+    "objectives": [
+      {
+        "value": "前往大壩內的圖案屋",
+        "originalEn": "Visit the Pattern House in The Dam"
+      },
+      {
+        "value": "找到並打開電源開關",
+        "originalEn": "Find and flip the power switch"
+      },
+      {
+        "value": "完成屋頂上的天線安裝",
+        "originalEn": "Complete the antenna installation on the roof"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "buried_city_town_hall_key",
+        "quantity": 1,
+        "name": {
+          "value": "埋沒之城市政廳鑰匙",
+          "originalEn": "Buried City Town Hall Key"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/buried_city_town_hall_key.png"
+      },
+      {
+        "id": "raider_hatch_key",
+        "quantity": 1,
+        "name": {
+          "value": "掠奪者艙門鑰匙",
+          "originalEn": "Raider Hatch Key"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/raider_hatch_key.png"
+      },
+      {
+        "id": "jolt_mine",
+        "quantity": 3,
+        "name": {
+          "value": "電擊地雷",
+          "originalEn": "Jolt Mine"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/jolt_mine.png"
+      }
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -1189,6 +4570,88 @@
     "nextQuestIds": [
       "combat_recon"
     ],
+    "description": {
+      "value": "你看到旗幟了嗎？畏首畏尾的時代已經結束。據我所知，你是身經百戰的高手。你覺得你能打敗火箭兵嗎？",
+      "originalEn": "Did you see the flags? The time for cowering is over. You’ve been more than battle-tested, from what I hear; think you can take on a Rocketeer?"
+    },
+    "objectives": [
+      {
+        "value": "摧毀1台火箭兵",
+        "originalEn": "Destroy a Rocketeer"
+      },
+      {
+        "value": "獲得1個火箭兵驅動器",
+        "originalEn": "Obtain a Rocketeer Driver"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "medium_shield",
+        "quantity": 1,
+        "name": {
+          "value": "中型護盾",
+          "originalEn": "Medium Shield"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/medium_shield.png"
+      },
+      {
+        "id": "combat_mk2",
+        "quantity": 1,
+        "name": {
+          "value": "戰鬥型 Mk. 2",
+          "originalEn": "Combat Mk. 2"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/combat_i.png"
+      }
+    ],
+    "requiredItems": [
+      {
+        "id": "rocketeer_driver",
+        "quantity": 1,
+        "name": {
+          "value": "火箭兵驅動器",
+          "originalEn": "Rocketeer Driver"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/rocketeer_driver.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "surge_shield_recharger",
+        "quantity": 3,
+        "name": {
+          "value": "激能護盾充能器",
+          "originalEn": "Surge Shield Recharger"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/surge_shield_recharger.png"
+      },
+      {
+        "id": "wolfpack",
+        "quantity": 1,
+        "name": {
+          "value": "狼群",
+          "originalEn": "Wolfpack"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/wolfpack.png"
+      },
+      {
+        "id": "wolfpack",
+        "quantity": 1,
+        "name": {
+          "value": "狼群",
+          "originalEn": "Wolfpack"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/wolfpack.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1207,6 +4670,61 @@
     ],
     "nextQuestIds": [
       "settled_in_full"
+    ],
+    "description": {
+      "value": "我原本和一名叫道奇的掠手談妥了堡壘電池的交易，但他現在失聯了。\r\n\r\n我需要有人找到他的藏貨，以免不小心落入拾荒者手中。有興趣幫忙嗎？",
+      "originalEn": "I had a deal for a Bastion Cell lined up with a Raider called Dodger, but he's gone quiet. \r\n\r\nI need someone to track down his stash before some scavenger stumbles into it. Interested?"
+    },
+    "objectives": [
+      {
+        "value": "在交通隧道內搜尋道奇的藏貨",
+        "originalEn": "Search for Dodger's stash inside the Traffic Tunnel"
+      },
+      {
+        "value": "搜索朝聖者巔峰天線旁的道奇交易地點",
+        "originalEn": "Search Dodger's deal spot by the Pilgrim's Peak antenna"
+      },
+      {
+        "value": "將道奇的筆記送去給田文",
+        "originalEn": "Deliver Dodger's Note to Tian Wen"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "dodgers_note",
+        "quantity": 1,
+        "name": {
+          "value": "多傑的筆記",
+          "originalEn": "Dodger's Note"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "extended_medium_mag_iii",
+        "quantity": 1,
+        "name": {
+          "value": "延長中型彈匣 III",
+          "originalEn": "Extended Medium Mag III"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/extended_medium_mag_iii.png"
+      },
+      {
+        "id": "silencer_ii",
+        "quantity": 1,
+        "name": {
+          "value": "消音器 II",
+          "originalEn": "Silencer II"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/silencer_ii.png"
+      }
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -1228,6 +4746,64 @@
     ],
     "nextQuestIds": [
       "deciphering_the_data"
+    ],
+    "description": {
+      "value": "一整區居然就這樣坍塌了…難怪人們會害怕。我們必須用遠超過之前強度的方式來鞏固結構，而這事我們是沒辦法獨力完成的。",
+      "originalEn": "For an entire sector to collapse like that… No wonder people are scared. We need to reinforce beyond anything we’ve done before, and we can’t do it alone."
+    },
+    "objectives": [
+      {
+        "value": "前往任意ENELICA建築",
+        "originalEn": "Go to any ENELICA building"
+      },
+      {
+        "value": "搜尋上面貼有研究人員留言的公佈欄",
+        "originalEn": "Search for a notice board with a note from the researcher"
+      },
+      {
+        "value": "在埋藏都市，到達羅馬廣場Convinio上方的頂樓",
+        "originalEn": "On Buried City, reach the top floor above the Convinio in Piazza Roma"
+      },
+      {
+        "value": "找到研究人員的公寓，並搜尋是否有任何研究資料",
+        "originalEn": "Find the researcher's flat and search for any research data"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "raider_hatch_key",
+        "quantity": 1,
+        "name": {
+          "value": "掠奪者艙門鑰匙",
+          "originalEn": "Raider Hatch Key"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/raider_hatch_key.png"
+      },
+      {
+        "id": "seeker_grenade",
+        "quantity": 3,
+        "name": {
+          "value": "追蹤手榴彈",
+          "originalEn": "Seeker Grenade"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/seeker_grenade.png"
+      },
+      {
+        "id": "advanced_electrical_components",
+        "quantity": 1,
+        "name": {
+          "value": "進階電子元件",
+          "originalEn": "Advanced Electrical Components"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/advanced_electrical_components.png"
+      }
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -1251,6 +4827,46 @@
       "clearer_skies",
       "trash_into_treasure"
     ],
+    "description": {
+      "value": "風暴大致已平息，但我們很多基礎建設都遭受重創。如果你想留下來，我需要你參與修理工作。",
+      "originalEn": "The storm has mostly settled, but much of our infrastructure has taken a proper beating. If you're hoping to stay with us, I'll need you to pull your weight in the repair efforts."
+    },
+    "objectives": [
+      {
+        "value": "前往地圖上有搜刮品類別圖示的區域",
+        "originalEn": "Visit any area on your map with a loot category icon"
+      },
+      {
+        "value": "搜刮3個容器",
+        "originalEn": "Loot 3 containers"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "rattler_iii",
+        "quantity": 1,
+        "name": {
+          "value": "響尾蛇 III",
+          "originalEn": "Rattler III"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/rattler.png"
+      },
+      {
+        "id": "medium_ammo",
+        "quantity": 80,
+        "name": {
+          "value": "中型彈藥",
+          "originalEn": "Medium Ammo"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/medium_ammo.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1269,6 +4885,64 @@
     ],
     "nextQuestIds": [
       "flickering_threat"
+    ],
+    "description": {
+      "value": "這不是倒楣的問題而已。某種東西，或某個人，破壞了我們的幾個變電所。我派去修理的工程師還沒回來，所以我需要有空的掠手都去調查此事。包括你。",
+      "originalEn": "This goes beyond bad luck. Something—or someone—has knocked out some of our electrical substations. The engineer I sent out to fix it hasn’t returned, so I need all available Raiders to look into it. That includes you."
+    },
+    "objectives": [
+      {
+        "value": "找到太空港南方的變電所",
+        "originalEn": "Find the Electrical Substation south of the Spaceport"
+      },
+      {
+        "value": "找到失蹤工程師的蹤跡",
+        "originalEn": "Find any sign of the missing engineer"
+      },
+      {
+        "value": "安裝保險絲",
+        "originalEn": "Install the fuse"
+      },
+      {
+        "value": "恢復供電",
+        "originalEn": "Restore the power"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "wires",
+        "quantity": 5,
+        "name": {
+          "value": "電線",
+          "originalEn": "Wires"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/wires.png"
+      },
+      {
+        "id": "explosive_compound",
+        "quantity": 5,
+        "name": {
+          "value": "爆炸化合物",
+          "originalEn": "Explosive Compound"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/explosive_compound.png"
+      },
+      {
+        "id": "oil",
+        "quantity": 5,
+        "name": {
+          "value": "油",
+          "originalEn": "Oil"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/oil.png"
+      }
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -1289,6 +4963,60 @@
     "nextQuestIds": [
       "power_out"
     ],
+    "description": {
+      "value": "我對太空港裡面那個醫療區感到好奇已經好一陣子了。總覺得那裡有東西可以讓我成為這一帶最受歡迎的人。",
+      "originalEn": "I’ve been curious about the medical area in the Spaceport for a while now. Something tells me it’s got just what I need to become the undeniable champion of this place."
+    },
+    "objectives": [
+      {
+        "value": "前往太空港的出境大樓",
+        "originalEn": "Visit the Departure Building in Spaceport"
+      },
+      {
+        "value": "找到出境大樓內的醫療檢查室",
+        "originalEn": "Find the Medical Exam Room inside the Departure Building"
+      },
+      {
+        "value": "搜索紀錄",
+        "originalEn": "Search for the records"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "heavy_shield",
+        "quantity": 1,
+        "name": {
+          "value": "重型護盾",
+          "originalEn": "Heavy Shield"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/heavy_shield.png"
+      },
+      {
+        "id": "tactical_mk3_healing",
+        "quantity": 1,
+        "name": {
+          "value": "戰術型 Mk. 3 (治療)",
+          "originalEn": "Tactical Mk. 3 (Healing)"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_healing.png"
+      },
+      {
+        "id": "adrenaline_shot",
+        "quantity": 3,
+        "name": {
+          "value": "腎上腺素注射劑",
+          "originalEn": "Adrenaline Shot"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/adrenaline_shot.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1308,6 +5036,75 @@
     "nextQuestIds": [
       "with_a_trace"
     ],
+    "description": {
+      "value": "崩塌的高速公路讓我很擔心。那看起來是近日才發生的。頂層雖然有很多地方化為廢墟，但那些都是很久以前就發生的事。",
+      "originalEn": "That collapsed highway worries me; it looks to be recent. Much of Topside may be in ruins, but most of it is from ages ago."
+    },
+    "objectives": [
+      {
+        "value": "拍攝倒塌高速公路的照片",
+        "originalEn": "Take a photo of the Collapsed Highway"
+      },
+      {
+        "value": "前往破碎大地",
+        "originalEn": "Go to the Broken Earth"
+      },
+      {
+        "value": "沿著破壞痕跡穿越破碎大地",
+        "originalEn": "Follow the trail of destruction through the Broken Earth"
+      },
+      {
+        "value": "調查未知的ARC機器",
+        "originalEn": "Investigate the unknown ARC machines"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "binoculars",
+        "quantity": 1,
+        "name": {
+          "value": "雙筒望遠鏡",
+          "originalEn": "Binoculars"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/binoculars.png"
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "zipline",
+        "quantity": 1,
+        "name": {
+          "value": "滑索",
+          "originalEn": "Zipline"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/zipline.png"
+      },
+      {
+        "id": "barricade_kit",
+        "quantity": 3,
+        "name": {
+          "value": "路障套組",
+          "originalEn": "Barricade Kit"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/barricade_kit.png"
+      },
+      {
+        "id": "door_blocker",
+        "quantity": 3,
+        "name": {
+          "value": "門鎖",
+          "originalEn": "Door Blocker"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/door_blocker.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1325,6 +5122,83 @@
     "nextQuestIds": [
       "what_goes_around"
     ],
+    "description": {
+      "value": "我聽說珊妮接收到一些訊號。ARC一直持續在演進著，我敢說這不會是他們最後發出的警告訊號。\r\n\r\n要是他們想進行軍備競賽，我們當然也會奉陪。",
+      "originalEn": "I heard rumors about some signal Shani picked up. ARC is constantly adapting, and I'm sure this won’t be their last warning sign.\r\n\r\nWell, if it’s an arms race they want, they can get one."
+    },
+    "objectives": [
+      {
+        "value": "使用任何爆炸手榴彈摧毀ARC敵人2次",
+        "originalEn": "Destroy 2 ARC enemies using any explosive grenade"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "light_impact_grenade",
+        "quantity": 5,
+        "name": {
+          "value": "輕型衝擊手榴彈",
+          "originalEn": "Light Impact Grenade"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/light_impact_grenade.png"
+      },
+      {
+        "id": "light_impact_grenade",
+        "quantity": 5,
+        "name": {
+          "value": "輕型衝擊手榴彈",
+          "originalEn": "Light Impact Grenade"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/light_impact_grenade.png"
+      },
+      {
+        "id": "snap_blast_grenade",
+        "quantity": 3,
+        "name": {
+          "value": "黏附爆破手榴彈",
+          "originalEn": "Snap Blast Grenade"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/snap_blast_grenade.png"
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "lil_smoke_grenade",
+        "quantity": 5,
+        "name": {
+          "value": "小型煙霧彈",
+          "originalEn": "Li'l Smoke Grenade"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/lil_smoke_grenade.png"
+      },
+      {
+        "id": "shrapnel_grenade",
+        "quantity": 3,
+        "name": {
+          "value": "破片手榴彈",
+          "originalEn": "Shrapnel Grenade"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/shrapnel_grenade.png"
+      },
+      {
+        "id": "barricade_kit",
+        "quantity": 3,
+        "name": {
+          "value": "路障套組",
+          "originalEn": "Barricade Kit"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/barricade_kit.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1340,6 +5214,47 @@
       "outstanding_balance"
     ],
     "nextQuestIds": [],
+    "description": {
+      "value": "算你走運，道奇的債務還有機會還清。帶一個堡壘電池來給我。必須是從真正的堡壘上拆下來的真品。道奇欠我的錢可以就此一筆勾銷。好嗎？",
+      "originalEn": "Lucky for you, Dodger's debt can still be settled. Bring me a Bastion Cell. A real one, pulled from a real Bastion. Consider what Dodger owed me transferred to credit for you. Okay?"
+    },
+    "objectives": [
+      {
+        "value": "摧毀1台堡壘",
+        "originalEn": "Destroy a Bastion"
+      },
+      {
+        "value": "將堡壘電池送去給田文",
+        "originalEn": "Deliver a Bastion Cell to Tian Wen"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "bastion_cell",
+        "quantity": 1,
+        "name": {
+          "value": "堡壘電池",
+          "originalEn": "Bastion Cell"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/bastion_cell.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "raider_tokens",
+        "quantity": 30,
+        "name": {
+          "value": "raider_tokens",
+          "originalEn": "raider_tokens"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1360,6 +5275,95 @@
       "on_deaf_ears",
       "with_a_view"
     ],
+    "description": {
+      "value": "現在整個斯佩蘭薩都在熱烈討論星辰山，我也承認它引起了我的注意。芝麻蒜皮的事就給其他人來煩惱吧，我只對裡頭蘊藏的科技感興趣。",
+      "originalEn": "All of Speranza is buzzing about Stella Montis right now, and I admit it’s caught my attention. Let the others sort out the whats and hows; I’m interested in the tech inside."
+    },
+    "objectives": [
+      {
+        "value": "拍攝沙盒中任何探測車的照片",
+        "originalEn": "Take a Photo of any of the Rovers in the Sandbox"
+      },
+      {
+        "value": "在大廳旁的安全檢查站搜索文件",
+        "originalEn": "Search the papers in the Security Checkpoint room by the Lobby"
+      },
+      {
+        "value": "將磁控管送去給田文",
+        "originalEn": "Deliver a Magnetron to Tian Wen"
+      },
+      {
+        "value": "將流量控制器送去給田文",
+        "originalEn": "Deliver a Flow Controller to Tian Wen"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "magnetron",
+        "quantity": 1,
+        "name": {
+          "value": "磁控管",
+          "originalEn": "Magnetron"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/magnetron.png"
+      },
+      {
+        "id": "flow_controller",
+        "quantity": 1,
+        "name": {
+          "value": "流量控制器",
+          "originalEn": "Flow Controller"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/flow_controller.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "burletta_iii",
+        "quantity": 1,
+        "name": {
+          "value": "布雷塔 III",
+          "originalEn": "Burletta III"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/burletta.png"
+      },
+      {
+        "id": "silencer_ii",
+        "quantity": 1,
+        "name": {
+          "value": "消音器 II",
+          "originalEn": "Silencer II"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/silencer_ii.png"
+      },
+      {
+        "id": "extended_light_mag_ii",
+        "quantity": 1,
+        "name": {
+          "value": "延長輕型彈匣 II",
+          "originalEn": "Extended Light Mag II"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/extended_light_mag_ii.png"
+      },
+      {
+        "id": "light_ammo",
+        "quantity": 100,
+        "name": {
+          "value": "輕型彈藥",
+          "originalEn": "Light Ammo"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/light_ammo.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1379,6 +5383,60 @@
     "nextQuestIds": [
       "switching_the_supply"
     ],
+    "description": {
+      "value": "我並不是說我們的水被人動了手腳，但根據你的樣本，我也不能排除這種可能性。你能返回大壩查看出了什麼問題嗎？",
+      "originalEn": "I’m not saying our water’s been tampered with, but based on your samples, I can’t rule out the possibility either. Would you return to the Dam and see what’s wrong?"
+    },
+    "objectives": [
+      {
+        "value": "到達大壩水處理廠",
+        "originalEn": "Reach the Water Treatment Building in The Dam"
+      },
+      {
+        "value": "在沼澤附近搜索溢洪道進水口",
+        "originalEn": "Search for the Flood Spill Intake near the Swamp"
+      },
+      {
+        "value": "調查有無可疑物體",
+        "originalEn": "Investigate any suspicious objects"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "steel_spring",
+        "quantity": 5,
+        "name": {
+          "value": "鋼製彈簧",
+          "originalEn": "Steel Spring"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/steel_spring.png"
+      },
+      {
+        "id": "duct_tape",
+        "quantity": 5,
+        "name": {
+          "value": "強力膠帶",
+          "originalEn": "Duct Tape"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/duct_tape.png"
+      },
+      {
+        "id": "mod_components",
+        "quantity": 1,
+        "name": {
+          "value": "改裝組件",
+          "originalEn": "Mod Components"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/mod_components.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1396,6 +5454,83 @@
     "nextQuestIds": [
       "the_league",
       "out_of_the_shadows"
+    ],
+    "description": {
+      "value": "運氣不好的話，那些虎頭蜂的針可會讓你有得受的。就算你打下一隻，還是得浪費大量的彈藥。\r\n\r\n我一直在研究如何以更優雅的方式消滅它們。你想不想來點煙火秀啊？",
+      "originalEn": "Those Hornet stings can really mess you up, if you’re unlucky. And even if you destroy one, you’re still wasting a ton of ammo.\r\n\r\nI’ve been working on a more elegant way to bring them down. Care to make some sparks fly?"
+    },
+    "objectives": [
+      {
+        "value": "使用觸發手榴彈或黏爆彈摧毀1台虎頭蜂",
+        "originalEn": "Destroy a Hornet with a Trigger 'Nade or Snap Blast"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "trigger_nade",
+        "quantity": 3,
+        "name": {
+          "value": "遙控手榴彈",
+          "originalEn": "Trigger 'Nade"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/trigger_nade.png"
+      },
+      {
+        "id": "trigger_nade",
+        "quantity": 3,
+        "name": {
+          "value": "遙控手榴彈",
+          "originalEn": "Trigger 'Nade"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/trigger_nade.png"
+      },
+      {
+        "id": "snap_blast_grenade",
+        "quantity": 2,
+        "name": {
+          "value": "黏附爆破手榴彈",
+          "originalEn": "Snap Blast Grenade"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/snap_blast_grenade.png"
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "trigger_nade_blueprint",
+        "quantity": 1,
+        "name": {
+          "value": "觸發手榴彈藍圖",
+          "originalEn": "Trigger Nade Blueprint"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/trigger_nade_blueprint.png"
+      },
+      {
+        "id": "crude_explosives",
+        "quantity": 4,
+        "name": {
+          "value": "簡易炸藥",
+          "originalEn": "Crude Explosives"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/crude_explosives.png"
+      },
+      {
+        "id": "processor",
+        "quantity": 2,
+        "name": {
+          "value": "處理器",
+          "originalEn": "Processor"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/processor.png"
+      }
     ],
     "hasBlueprint": true,
     "blueprintRewards": [
@@ -1423,6 +5558,87 @@
       "with_a_view"
     ],
     "nextQuestIds": [],
+    "description": {
+      "value": "你喜歡一點不確定性，對吧？有個客戶想要星辰山中一個上鎖保險箱的內容物。保險箱完好無缺，所以裡頭存放的一定是出逃前的東西。有興趣嗎？",
+      "originalEn": "You like a certain amount of uncertainty, right? A client wants the contents of a locked safe in Stella Montis. It's intact, so whatever's inside has been there since before the Exodus. Interested?"
+    },
+    "objectives": [
+      {
+        "value": "前往安全橋",
+        "originalEn": "Go to the Security Bridge"
+      },
+      {
+        "value": "搜索三樓樓梯旁側室中的保險箱",
+        "originalEn": "Search for the safe in the side room by the third-floor staircases"
+      },
+      {
+        "value": "上樓前往四樓控制室",
+        "originalEn": "Head upstairs to the fourth-floor control room"
+      },
+      {
+        "value": "使用門禁卡列印機列印保險箱的鑰匙",
+        "originalEn": "Use the Access Card Printer to print a key to the safe"
+      },
+      {
+        "value": "搜尋打開保險箱的替代方式",
+        "originalEn": "Search for alternate ways into the safe"
+      },
+      {
+        "value": "取回保險箱中的內容物",
+        "originalEn": "Retrieve the contents of the safe"
+      },
+      {
+        "value": "將長青計畫藍圖送去給田文",
+        "originalEn": "Deliver the Project Heartwood Blueprints to Tian Wen"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "project_heartwood_blueprints",
+        "quantity": 1,
+        "name": {
+          "value": "心材計劃藍圖",
+          "originalEn": "Project Heartwood Blueprints"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "seeker_grenade",
+        "quantity": 5,
+        "name": {
+          "value": "追蹤手榴彈",
+          "originalEn": "Seeker Grenade"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/seeker_grenade.png"
+      },
+      {
+        "id": "lure_grenade",
+        "quantity": 5,
+        "name": {
+          "value": "誘餌手榴彈",
+          "originalEn": "Lure Grenade"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/lure_grenade.png"
+      },
+      {
+        "id": "snap_hook",
+        "quantity": 1,
+        "name": {
+          "value": "扣鉤藍圖",
+          "originalEn": "Snap Hook"
+        },
+        "rarity": "Legendary",
+        "imageFilename": "https://cdn.arctracker.io/items/snap_hook.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1441,6 +5657,83 @@
     ],
     "nextQuestIds": [
       "keeping_the_memory"
+    ],
+    "description": {
+      "value": "第一波期間，我和我的小隊在大壩那裡設下了陷阱。我們讓一台發電機過載，把它改造成臨時的ARC陷阱。現在我聽說有掠手用它來切斷通訊來對彼此發動埋伏。我需要你去解除那個陷阱。",
+      "originalEn": "Back during the First Wave, my squad and I built a trap out by the Dam. Overloaded a generator, turned it into a makeshift ARC trap. Now I hear Raiders are using it to cut comms and spring ambushes on each other. I need you to end it."
+    },
+    "objectives": [
+      {
+        "value": "到達勝利山脊",
+        "originalEn": "Reach Victory Ridge"
+      },
+      {
+        "value": "找到舊EMP陷阱",
+        "originalEn": "Find the old EMP trap"
+      },
+      {
+        "value": "關掉第一個電源開關",
+        "originalEn": "Disable the first power switch"
+      },
+      {
+        "value": "關掉第二個電源開關",
+        "originalEn": "Disable the second power switch"
+      },
+      {
+        "value": "關掉第三個電源開關",
+        "originalEn": "Disable the third power switch"
+      },
+      {
+        "value": "關閉EMP陷阱",
+        "originalEn": "Shut down the EMP trap"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "binoculars",
+        "quantity": 1,
+        "name": {
+          "value": "雙筒望遠鏡",
+          "originalEn": "Binoculars"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/binoculars.png"
+      },
+      {
+        "id": "defibrillator",
+        "quantity": 1,
+        "name": {
+          "value": "除顫器",
+          "originalEn": "Defibrillator"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/defibrillator.png"
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "medium_gun_parts",
+        "quantity": 5,
+        "name": {
+          "value": "中型槍械零件",
+          "originalEn": "Medium Gun Parts"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/medium_gun_parts.png"
+      },
+      {
+        "id": "advanced_mechanical_components",
+        "quantity": 3,
+        "name": {
+          "value": "進階機械元件",
+          "originalEn": "Advanced Mechanical Components"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/advanced_mechanical_components.png"
+      }
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -1461,6 +5754,46 @@
     "nextQuestIds": [
       "a_warm_place_to_rest"
     ],
+    "description": {
+      "value": "太空港下方有座水庫；如果我們能把那裡的水轉送到這裡，就能爭取時間處理污染。",
+      "originalEn": "There is a reservoir beneath the Spaceport; if we manage to rout that water here, that should buy us time to deal with the contamination."
+    },
+    "objectives": [
+      {
+        "value": "找到太空港下的隧道",
+        "originalEn": "Find the tunnels under the Spaceport"
+      },
+      {
+        "value": "找到並轉動太空港下方隧道中的閥門",
+        "originalEn": "Find and turn the valve in the tunnels under Spaceport"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "spaceport_trench_tower_key",
+        "quantity": 1,
+        "name": {
+          "value": "太空港戰壕塔鑰匙",
+          "originalEn": "Spaceport Trench Tower Key"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/spaceport_trench_tower_key.png"
+      },
+      {
+        "id": "synthesized_fuel",
+        "quantity": 3,
+        "name": {
+          "value": "合成燃料",
+          "originalEn": "Synthesized Fuel"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/synthesized_fuel.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1476,6 +5809,95 @@
       "the_league"
     ],
     "nextQuestIds": [],
+    "description": {
+      "value": "嘿，問你個問題。如果把虎頭蜂和火球結合，會生出什麼？如果你的答案是「螢火蟲」，那我們就算心有靈犀了。",
+      "originalEn": "Hey, question for you. What do you get if you cross a Hornet and Fireball? If your answer is ‘a Firefly’, then we’re on the same page."
+    },
+    "objectives": [
+      {
+        "value": "將虎頭蜂驅動器送去給阿波羅",
+        "originalEn": "Deliver a Hornet Driver to Apollo"
+      },
+      {
+        "value": "將火球燃燒器送去給阿波羅",
+        "originalEn": "Deliver a Fireball Burner to Apollo"
+      },
+      {
+        "value": "摧毀1台螢火蟲",
+        "originalEn": "Destroy a Firefly"
+      },
+      {
+        "value": "將螢火蟲燃燒器送去給阿波羅",
+        "originalEn": "Deliver a Firefly Burner to Apollo"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "hornet_driver",
+        "quantity": 1,
+        "name": {
+          "value": "黃蜂驅動器",
+          "originalEn": "Hornet Driver"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/hornet_driver.png"
+      },
+      {
+        "id": "fireball_burner",
+        "quantity": 1,
+        "name": {
+          "value": "火球燃燒器",
+          "originalEn": "Fireball Burner"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/fireball_burner.png"
+      },
+      {
+        "id": "firefly_burner",
+        "quantity": 1,
+        "name": {
+          "value": "螢火蟲燃燒器",
+          "originalEn": "Firefly Burner"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/firefly_burner.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "fireworks_box_blueprint",
+        "quantity": 1,
+        "name": {
+          "value": "煙火箱藍圖",
+          "originalEn": "Fireworks Box Blueprint"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/fireworks_box.png"
+      },
+      {
+        "id": "seeker_grenade",
+        "quantity": 3,
+        "name": {
+          "value": "追蹤手榴彈",
+          "originalEn": "Seeker Grenade"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/seeker_grenade.png"
+      },
+      {
+        "id": "blaze_grenade",
+        "quantity": 3,
+        "name": {
+          "value": "烈焰手榴彈",
+          "originalEn": "Blaze Grenade"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/blaze_grenade.png"
+      }
+    ],
     "hasBlueprint": true,
     "blueprintRewards": [
       {
@@ -1507,6 +5929,79 @@
       "outstanding_balance",
       "a_prime_specimen"
     ],
+    "description": {
+      "value": "知道我最近想要什麼嗎？一台會講話的水蒸餾器！很瘋狂對吧？不過說正經的，如果手邊有更純淨的化合物，我就能製作出威力更強大的爆裂物了！那肯定很棒，對吧？",
+      "originalEn": "You know what I've been dreaming of lately? A talking water distiller! Crazy, huh? But seriously, with purer compounds I could make explosives with more oumph! Would be something, right?"
+    },
+    "objectives": [
+      {
+        "value": "在太空港，搜索地下隧道中的4個容器",
+        "originalEn": "On Spaceport, search 4 containers in the underground tunnels"
+      },
+      {
+        "value": "在隧道中尋找並監控任何過濾系統",
+        "originalEn": "Find and monitor any Filtration System in the tunnels"
+      },
+      {
+        "value": "在藍色大門，前往維修掩體",
+        "originalEn": "On The Blue Gate, visit the Maintenance Bunker"
+      },
+      {
+        "value": "在掩體中監控淨化系統",
+        "originalEn": "Monitor the Purification System in the bunker"
+      },
+      {
+        "value": "在掩體中尋找藍圖並拍下照片",
+        "originalEn": "Find and photograph the blueprints in the bunker"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "blue_light_stick",
+        "quantity": 5,
+        "name": {
+          "value": "藍色螢光棒",
+          "originalEn": "Blue Light Stick"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/blue_light_stick.png"
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "deadline",
+        "quantity": 2,
+        "name": {
+          "value": "最後期限",
+          "originalEn": "Deadline"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/deadline.png"
+      },
+      {
+        "id": "showstopper",
+        "quantity": 3,
+        "name": {
+          "value": "表演終結者",
+          "originalEn": "Showstopper"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/showstopper.png"
+      },
+      {
+        "id": "heavy_fuze_grenade",
+        "quantity": 3,
+        "name": {
+          "value": "重型定時手榴彈",
+          "originalEn": "Heavy Fuze Grenade"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/heavy_fuze_grenade.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1526,6 +6021,96 @@
     "nextQuestIds": [
       "test_case"
     ],
+    "description": {
+      "value": "這裡的孩子喜歡踢著手榴彈的空彈殼玩，但遲早會踢到有裝東西的彈殼。所以我有一個計畫：我想請你幫忙前置準備工作，我會為這些小朋友創一個真正的足球隊。",
+      "originalEn": "Kids around here have been kicking empty grenade casings around. It’s only a matter of time before they’re not so empty.\r\n\r\nSo here’s the plan. You help me with some prep work, and I’ll set up an actual football team for the young ones."
+    },
+    "objectives": [
+      {
+        "value": "將洩氣的足球送去給阿波羅",
+        "originalEn": "Deliver a Deflated Football to Apollo"
+      },
+      {
+        "value": "將自行車打氣筒送去給阿波羅",
+        "originalEn": "Deliver a Bicycle Pump to Apollo"
+      },
+      {
+        "value": "在大壩戰場，拍攝水塔旁邊的球門",
+        "originalEn": "On Dam Battlegrounds, photograph the goal by the Water Towers"
+      },
+      {
+        "value": "在埋藏都市，拍攝任何小攤販上的足球雜誌",
+        "originalEn": "On Buried City, photograph the football magazines in any kiosk"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "yellow_light_stick",
+        "quantity": 5,
+        "name": {
+          "value": "黃色螢光棒",
+          "originalEn": "Yellow Light Stick"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/yellow_light_stick.png"
+      },
+      {
+        "id": "red_light_stick",
+        "quantity": 5,
+        "name": {
+          "value": "紅色螢光棒",
+          "originalEn": "Red Light Stick"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/red_light_stick.png"
+      }
+    ],
+    "requiredItems": [
+      {
+        "id": "deflated_football",
+        "quantity": 1,
+        "name": {
+          "value": "洩氣的足球",
+          "originalEn": "Deflated Football"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/deflated_football.png"
+      },
+      {
+        "id": "bicycle_pump",
+        "quantity": 1,
+        "name": {
+          "value": "腳踏車打氣筒",
+          "originalEn": "Bicycle Pump"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/bicycle_pump.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "tagging_grenade",
+        "quantity": 5,
+        "name": {
+          "value": "標記手榴彈",
+          "originalEn": "Tagging Grenade"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/tagging_grenade.png"
+      },
+      {
+        "id": "firecracker",
+        "quantity": 5,
+        "name": {
+          "value": "爆竹",
+          "originalEn": "Firecracker"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/firecracker.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1544,6 +6129,47 @@
     ],
     "nextQuestIds": [
       "back_on_top"
+    ],
+    "description": {
+      "value": "我有另一個工作。是關於…我媽媽。\r\n\r\n記得我之前派你去的那些第一波據點嗎？我其實是希望你能找到我母親的一些東西。她參與了掠手的反抗行動。原本希望渺茫，但我掌握到了一個確切的線索。",
+      "originalEn": "I have another job. It’s.. about my mom.\n\nThose First Wave sites I sent you to before? I actually hoped you’d find something of my mother’s. She fought in the Raider resistance. It was a long shot; but now I've got an actual lead."
+    },
+    "objectives": [
+      {
+        "value": "在大壩西北方的公寓，搜尋艾瓦少校的遺物",
+        "originalEn": "Search for Major Aiva's mementos in the apartments northwest of The Dam"
+      },
+      {
+        "value": "將艾瓦少校的遺物運送給田文",
+        "originalEn": "Deliver Major Aiva's Mementos to Tian Wen"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "major_aivas_mementos",
+        "quantity": 1,
+        "name": {
+          "value": "艾瓦少校的紀念品",
+          "originalEn": "Major Aiva's Mementos"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/major_aivas_mementos.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "hullcracker_blueprint",
+        "quantity": 1,
+        "name": {
+          "value": "碎艦者藍圖",
+          "originalEn": "Hullcracker Blueprint"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/hullcracker.png"
+      }
     ],
     "hasBlueprint": true,
     "blueprintRewards": [
@@ -1571,6 +6197,71 @@
     "nextQuestIds": [
       "a_better_use"
     ],
+    "description": {
+      "value": "你是新來的，對吧？我需要一個志願者來測試這把升級版的鐵桿；這應該能像切奶油一樣切開ARC裝甲板。去刺穿幾台機器，然後回來向我報告。",
+      "originalEn": "You're one of the new arrivals, right? I need a volunteer to test out this upgraded Ferro; should cut through ARC plating like butter. Go put holes in some machines, and report back to me."
+    },
+    "objectives": [
+      {
+        "value": "摧毀1台火球",
+        "originalEn": "Destroy a Fireball"
+      },
+      {
+        "value": "摧毀1台虎頭蜂",
+        "originalEn": "Destroy a Hornet"
+      },
+      {
+        "value": "摧毀1座砲塔",
+        "originalEn": "Destroy a Turret"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "ferro_iv",
+        "quantity": 1,
+        "name": {
+          "value": "Ferro IV",
+          "originalEn": "Ferro IV"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/ferro.png"
+      },
+      {
+        "id": "heavy_ammo",
+        "quantity": 20,
+        "name": {
+          "value": "重型彈藥",
+          "originalEn": "Heavy Ammo"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/heavy_ammo.png"
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "stitcher_ii",
+        "quantity": 1,
+        "name": {
+          "value": "縫合者 II",
+          "originalEn": "Stitcher II"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/stitcher.png"
+      },
+      {
+        "id": "extended_light_mag_i",
+        "quantity": 1,
+        "name": {
+          "value": "延長輕型彈匣 I",
+          "originalEn": "Extended Light Mag I"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/extended_light_mag_i.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1590,6 +6281,51 @@
     "nextQuestIds": [
       "water_troubles"
     ],
+    "description": {
+      "value": "我們很幸運。你上次找到的筆記是首席研究員撰寫的。計畫失敗後，她似乎拿走了一些種子樣本，並將其封存在一個安全的地方。",
+      "originalEn": "We're in luck. The notes you found last time were written by the lead researcher. When the project went under, it seems she took some of the seed samples and sealed them away in a secure location."
+    },
+    "objectives": [
+      {
+        "value": "前往研究大樓",
+        "originalEn": "Go to the Research Building"
+      },
+      {
+        "value": "在「景色極佳的房間」搜索種子庫",
+        "originalEn": "Search for the seed vault in the \"room with a great view\""
+      },
+      {
+        "value": "將實驗種子樣本運送給莎莉絲特",
+        "originalEn": "Deliver the Experimental Seed Sample to Celeste"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "experimental_seed_sample",
+        "quantity": 1,
+        "name": {
+          "value": "實驗種子樣本",
+          "originalEn": "Experimental Seed Sample"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/experimental_seed_sample.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "coins",
+        "quantity": 1000,
+        "name": {
+          "value": "coins",
+          "originalEn": "coins"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1607,6 +6343,68 @@
       "a_toxic_trail"
     ],
     "nextQuestIds": [],
+    "description": {
+      "value": "關於你在那輛載運桶子的卡車上找到的鑰匙…我還不想做出任何指控，但確實感覺很像是某個內鬼幹的。你能不能幫忙調查一下這個預感是否為真？",
+      "originalEn": "That key you found in the barrel truck… I won’t jump to accusations just yet, but this certainly reeks of an inside job. Could you investigate a hunch I have?"
+    },
+    "objectives": [
+      {
+        "value": "到達出境大樓西南方的大廳",
+        "originalEn": "Reach the southwest lobby of the Departure Building"
+      },
+      {
+        "value": "找到員工更衣室",
+        "originalEn": "Find the staff locker room"
+      },
+      {
+        "value": "搜索房間，尋找有關破壞者身分的線索",
+        "originalEn": "Search the room for any clues of the saboteur's identity"
+      },
+      {
+        "value": "到達太空港下方的隧道",
+        "originalEn": "Reach the tunnels below the Spaceport"
+      },
+      {
+        "value": "在任意沖洗終端上使用鑰匙來覆寫旁路程序",
+        "originalEn": "Use the key on any Flushing Terminal to override the bypass protocol"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "air_freshener",
+        "quantity": 1,
+        "name": {
+          "value": "空氣清新劑",
+          "originalEn": "Air Freshener"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/air_freshener.png"
+      },
+      {
+        "id": "dam_staff_room_key",
+        "quantity": 1,
+        "name": {
+          "value": "水壩員工室鑰匙",
+          "originalEn": "Dam Staff Room Key"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/dam_staff_room_key.png"
+      },
+      {
+        "id": "noisemaker",
+        "quantity": 3,
+        "name": {
+          "value": "噪音製造器",
+          "originalEn": "Noisemaker"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/noisemaker.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1630,6 +6428,114 @@
       "dormant_barons",
       "dust_on_the_wires"
     ],
+    "description": {
+      "value": "情報雖然不錯，但能幫助我們的也有限。如果ARC真的在逼近，我需要每個掠手證明自己能在戰鬥中操控無人機。",
+      "originalEn": "Intel’s all well and good, but it only gets us so far. If ARC’s truly closing in, I need every Raider to prove they can handle their drones in a fight."
+    },
+    "objectives": [
+      {
+        "value": "摧毀1台黃蜂",
+        "originalEn": "Destroy a Wasp"
+      },
+      {
+        "value": "為珊妮取得1個黃蜂驅動器",
+        "originalEn": "Get a Wasp Driver for Shani"
+      },
+      {
+        "value": "摧毀1台虎頭蜂",
+        "originalEn": "Destroy a Hornet"
+      },
+      {
+        "value": "為珊妮取得1個虎頭蜂驅動器",
+        "originalEn": "Get a Hornet Driver for Shani"
+      },
+      {
+        "value": "摧毀1台告密者",
+        "originalEn": "Destroy a Snitch"
+      },
+      {
+        "value": "為珊妮取得1個告密者掃描儀",
+        "originalEn": "Get a Snitch Scanner for Shani"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "remote_raider_flare",
+        "quantity": 3,
+        "name": {
+          "value": "遠程掠奪者信號彈",
+          "originalEn": "Remote Raider Flare"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/remote_raider_flare.png"
+      }
+    ],
+    "requiredItems": [
+      {
+        "id": "wasp_driver",
+        "quantity": 2,
+        "name": {
+          "value": "黃蜂驅動器",
+          "originalEn": "Wasp Driver"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/wasp_driver.png"
+      },
+      {
+        "id": "hornet_driver",
+        "quantity": 2,
+        "name": {
+          "value": "黃蜂驅動器",
+          "originalEn": "Hornet Driver"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/hornet_driver.png"
+      },
+      {
+        "id": "snitch_scanner",
+        "quantity": 2,
+        "name": {
+          "value": "告密掃描器",
+          "originalEn": "Snitch Scanner"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/snitch_scanner.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "raider_hatch_key",
+        "quantity": 1,
+        "name": {
+          "value": "掠奪者艙門鑰匙",
+          "originalEn": "Raider Hatch Key"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/raider_hatch_key.png"
+      },
+      {
+        "id": "defibrillator",
+        "quantity": 2,
+        "name": {
+          "value": "除顫器",
+          "originalEn": "Defibrillator"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/defibrillator.png"
+      },
+      {
+        "id": "dam_control_tower_key",
+        "quantity": 1,
+        "name": {
+          "value": "水壩控制塔鑰匙",
+          "originalEn": "Dam Control Tower Key"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/dam_control_tower_key.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1646,6 +6552,78 @@
     ],
     "nextQuestIds": [
       "off_the_radar"
+    ],
+    "description": {
+      "value": "對掠手來說，沒有所謂的垃圾可言，因為它們都是等著被回收的寶貴材料。\r\n\r\n如果你想在這裡混出什麼名堂，就不能坐等天上掉下來的禮物。",
+      "originalEn": "There's no such thing as junk, to a Raider; just valuable materials waiting to be recycled.\r\n\r\nIf you're going to amount to anything around here, you can't just wait for things to be served on a silver platter."
+    },
+    "objectives": [
+      {
+        "value": "獲得6條電線",
+        "originalEn": "Obtain 6 Wires"
+      },
+      {
+        "value": "獲得1顆電池",
+        "originalEn": "Obtain 1 Battery"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "binoculars",
+        "quantity": 1,
+        "name": {
+          "value": "雙筒望遠鏡",
+          "originalEn": "Binoculars"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/binoculars.png"
+      }
+    ],
+    "requiredItems": [
+      {
+        "id": "wires",
+        "quantity": 6,
+        "name": {
+          "value": "電線",
+          "originalEn": "Wires"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/wires.png"
+      },
+      {
+        "id": "battery",
+        "quantity": 1,
+        "name": {
+          "value": "電池",
+          "originalEn": "Battery"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/battery.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "tactical_mk1",
+        "quantity": 1,
+        "name": {
+          "value": "戰術型 Mk. 1",
+          "originalEn": "Tactical Mk. 1"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/tactical_i.png"
+      },
+      {
+        "id": "adrenaline_shot",
+        "quantity": 3,
+        "name": {
+          "value": "腎上腺素注射劑",
+          "originalEn": "Adrenaline Shot"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/adrenaline_shot.png"
+      }
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -1664,6 +6642,63 @@
     "nextQuestIds": [
       "digging_up_dirt"
     ],
+    "description": {
+      "value": "官方托雷多運輸管管理部門要求我們提供一根電源棒，給「他們的」彈弓運輸管使用。別被這名稱誤導了，他們根本不是官方人員；只是一群手握大權的暴徒。你能幫我嗎？",
+      "originalEn": "The Official Toledo Tubes Management is demanding one of our Power Rods for usage of “their” Slingshot tubes. Don’t let the name fool you, they’re in no way official; just thugs with lots of power. Could you help me with this?"
+    },
+    "objectives": [
+      {
+        "value": "為莎莉絲特取得電源棒",
+        "originalEn": "Get a Power Rod for Celeste"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "power_rod",
+        "quantity": 1,
+        "name": {
+          "value": "能量棒",
+          "originalEn": "Power Rod"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/power_rod.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "magnet",
+        "quantity": 5,
+        "name": {
+          "value": "磁鐵",
+          "originalEn": "Magnet"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/magnet.png"
+      },
+      {
+        "id": "advanced_mechanical_components",
+        "quantity": 2,
+        "name": {
+          "value": "進階機械元件",
+          "originalEn": "Advanced Mechanical Components"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/advanced_mechanical_components.png"
+      },
+      {
+        "id": "synthesized_fuel",
+        "quantity": 3,
+        "name": {
+          "value": "合成燃料",
+          "originalEn": "Synthesized Fuel"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/synthesized_fuel.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1681,6 +6716,57 @@
       "digging_up_dirt"
     ],
     "nextQuestIds": [],
+    "description": {
+      "value": "我有個計畫。如果我們能搶在OTTM之前拿到證據，就有機會一口氣徹底擺脫他們了。",
+      "originalEn": "I got a plan. If we recover the evidence against the OTTM before they get to it, we might get them off our backs once and for all."
+    },
+    "objectives": [
+      {
+        "value": "前往北壕塔",
+        "originalEn": "Go to the North Trench Tower"
+      },
+      {
+        "value": "找到並上傳勒索檔案給莎莉絲特",
+        "originalEn": "Locate and upload the blackmail files to Celeste"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "spaceport_trench_tower_key",
+        "quantity": 1,
+        "name": {
+          "value": "太空港戰壕塔鑰匙",
+          "originalEn": "Spaceport Trench Tower Key"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/spaceport_trench_tower_key.png"
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "heavy_gun_parts",
+        "quantity": 2,
+        "name": {
+          "value": "重型槍械零件",
+          "originalEn": "Heavy Gun Parts"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/heavy_gun_parts.png"
+      },
+      {
+        "id": "medium_gun_parts",
+        "quantity": 2,
+        "name": {
+          "value": "中型槍械零件",
+          "originalEn": "Medium Gun Parts"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/medium_gun_parts.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1701,6 +6787,93 @@
     "nextQuestIds": [
       "a_symbol_of_unification"
     ],
+    "description": {
+      "value": "我正在設立溫室，以幫助提升食物產量。我只是在幫莎莉絲特的忙，好嗎？僅此而已。但別再說這個了。我搞定了所有細節，但是需要一些物資，而且我才不要一個人去搬回來。",
+      "originalEn": "I’m setting up a greenhouse, to help boost our food production. I’m doing Celeste a solid, alright? That’s all. But enough about that. I’ve got all the details worked out, but I’ll need supplies, and I’m not hauling them alone."
+    },
+    "objectives": [
+      {
+        "value": "到達埋藏都市的格蘭迪索公寓",
+        "originalEn": "Reach the Grandioso Apartments in Buried City"
+      },
+      {
+        "value": "在格蘭迪索公寓屋頂搜尋濕度測定儀",
+        "originalEn": "Search for a Moisture Meter on the rooftop of the Grandioso Apartments"
+      },
+      {
+        "value": "到達埋藏都市的羅馬廣場",
+        "originalEn": "Reach Piazza Roma in Buried City"
+      },
+      {
+        "value": "在羅馬廣場的荒廢空中花園搜尋營養測定儀",
+        "originalEn": "Search for a Nutrient Meter in the broken rooftop gardens at Piazza Roma"
+      },
+      {
+        "value": "將營養測定儀送去給田文",
+        "originalEn": "Deliver a Nutrient Meter to Tian Wen"
+      },
+      {
+        "value": "將濕度測定儀送去給田文",
+        "originalEn": "Deliver a Moisture Meter to Tian Wen"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "nutrient_meter",
+        "quantity": 1,
+        "name": {
+          "value": "營養計",
+          "originalEn": "Nutrient Meter"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/nutrient_meter.png"
+      },
+      {
+        "id": "moisture_meter",
+        "quantity": 1,
+        "name": {
+          "value": "濕度計",
+          "originalEn": "Moisture Meter"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/moisture_meter.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "il_toro_i",
+        "quantity": 1,
+        "name": {
+          "value": "Il Toro I",
+          "originalEn": "Il Toro I"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/il_toro.png"
+      },
+      {
+        "id": "shotgun_ammo",
+        "quantity": 40,
+        "name": {
+          "value": "霰彈槍彈藥",
+          "originalEn": "Shotgun Ammo"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/shotgun_ammo.png"
+      },
+      {
+        "id": "shotgun_choke_ii",
+        "quantity": 1,
+        "name": {
+          "value": "霰彈槍收束器 II",
+          "originalEn": "Shotgun Choke II"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/shotgun_choke_ii.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1720,6 +6893,60 @@
     "nextQuestIds": [
       "the_root_of_the_matter"
     ],
+    "description": {
+      "value": "根據你在實驗室找到的檔案，原來就是栽培研究員在沼澤設置水耕圓頂的。聽起來那裡顯然就是下一個該搜的地方，對不對？",
+      "originalEn": "According to the files you found in the lab, the cultivation researchers were actually the ones who set up the hydroponic domes out in the swamp. Sounds like the most obvious place to search next, don’t you think?"
+    },
+    "objectives": [
+      {
+        "value": "前往水耕圓頂綜合設施",
+        "originalEn": "Go to the Hydroponic Dome Complex"
+      },
+      {
+        "value": "存取其中一個圓頂內的資料庫",
+        "originalEn": "Access the data archive in one of the domes"
+      },
+      {
+        "value": "將資料上傳到任何實地倉庫的電腦終端機",
+        "originalEn": "Upload the data to the computer terminal in any Field Depot"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "advanced_mechanical_components",
+        "quantity": 3,
+        "name": {
+          "value": "進階機械元件",
+          "originalEn": "Advanced Mechanical Components"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/advanced_mechanical_components.png"
+      },
+      {
+        "id": "heavy_gun_parts",
+        "quantity": 3,
+        "name": {
+          "value": "重型槍械零件",
+          "originalEn": "Heavy Gun Parts"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/heavy_gun_parts.png"
+      },
+      {
+        "id": "canister",
+        "quantity": 5,
+        "name": {
+          "value": "罐子",
+          "originalEn": "Canister"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/canister.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1737,6 +6964,60 @@
       "dust_on_the_wires"
     ],
     "nextQuestIds": [],
+    "description": {
+      "value": "我們在太空港的感應器覆蓋狀況出了點問題。由於保全網本就很老舊，可能只是單純的故障。如果你能修好，我就不會一直失眠了。",
+      "originalEn": "There's a problem with our sensor coverage at the Spaceport. The security grid is old, so maybe it's just acting up. If you could get it running again, it'd save me a lot of sleepless nights."
+    },
+    "objectives": [
+      {
+        "value": "啟動其中一座守衛塔的保全感應器",
+        "originalEn": "Activate the security sensors in one of the Guard Towers"
+      },
+      {
+        "value": "啟動出境大樓的保全控制中心",
+        "originalEn": "Start the Security Control Center in the Departure Building"
+      },
+      {
+        "value": "在入境大樓內搜尋任何保全漏洞的跡象",
+        "originalEn": "Search for any traces of a security breach in the Arrival Building Data Office"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "tactical_mk3_revival",
+        "quantity": 1,
+        "name": {
+          "value": "戰術型 Mk. 3 (復活)",
+          "originalEn": "Tactical Mk. 3 (Revival)"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_revival.png"
+      },
+      {
+        "id": "vita_shot",
+        "quantity": 3,
+        "name": {
+          "value": "活力注射劑",
+          "originalEn": "Vita Shot"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/vita_shot.png"
+      },
+      {
+        "id": "surge_shield_recharger",
+        "quantity": 5,
+        "name": {
+          "value": "激能護盾充能器",
+          "originalEn": "Surge Shield Recharger"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/surge_shield_recharger.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1758,6 +7039,60 @@
       "into_the_fray",
       "source_of_the_contamination"
     ],
+    "description": {
+      "value": "如果你是來抱怨水質的，你不是第一個了。我已經處理投訴了一整天。一定出什麼問題了，我需要人來幫忙解決。",
+      "originalEn": "If you’re here to complain about the water, join the club. I’ve been fielding complaints all day. Something is definitely up with it, and I need some help to sort it out."
+    },
+    "objectives": [
+      {
+        "value": "找到紅湖陽台下的洩洪隧道",
+        "originalEn": "Locate the Flood Access Tunnel under the Red Lake Balcony"
+      },
+      {
+        "value": "找到此地區供水系統的進水口",
+        "originalEn": "Find the intake to the District's Water Supply"
+      },
+      {
+        "value": "取得水體樣本",
+        "originalEn": "Sample the water"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "mechanical_components",
+        "quantity": 3,
+        "name": {
+          "value": "機械零件",
+          "originalEn": "Mechanical Components"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/mechanical_components.png"
+      },
+      {
+        "id": "simple_gun_parts",
+        "quantity": 3,
+        "name": {
+          "value": "簡易槍械零件",
+          "originalEn": "Simple Gun Parts"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/simple_gun_parts.png"
+      },
+      {
+        "id": "steel_spring",
+        "quantity": 3,
+        "name": {
+          "value": "鋼製彈簧",
+          "originalEn": "Steel Spring"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/steel_spring.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1774,6 +7109,53 @@
     ],
     "nextQuestIds": [
       "sparks_fly"
+    ],
+    "description": {
+      "value": "我們沒辦法從零開始打造ARC技術，但我可以用你搜刮回來的材料拼湊出不少東西。\r\n\r\n我正在嘗試將不同的ARC零件挪作其他用途，你有空幫我做些實驗嗎？",
+      "originalEn": "We can't build ARC tech from scratch, but there's plenty I can tinker from the pieces you salvage.\r\n\r\nI'm currently trying to repurpose different ARC parts. Would you mind running some experiments for me?"
+    },
+    "objectives": [
+      {
+        "value": "使用火球燃燒器摧毀任何ARC敵人",
+        "originalEn": "Destroy any ARC enemy using a Fireball Burner"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "red_light_stick",
+        "quantity": 5,
+        "name": {
+          "value": "紅色螢光棒",
+          "originalEn": "Red Light Stick"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/red_light_stick.png"
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "blaze_grenade",
+        "quantity": 3,
+        "name": {
+          "value": "烈焰手榴彈",
+          "originalEn": "Blaze Grenade"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/blaze_grenade.png"
+      },
+      {
+        "id": "noisemaker",
+        "quantity": 2,
+        "name": {
+          "value": "噪音製造器",
+          "originalEn": "Noisemaker"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/noisemaker.png"
+      }
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -1796,6 +7178,60 @@
     "nextQuestIds": [
       "broken_monument"
     ],
+    "description": {
+      "value": "莎莉絲特跟我說你是專門幫她騷擾我，要我為大家出點力的那個傢伙。我只說一次：我不喜歡別人來管閒事，而且我會拒絕也是有理由的。不過我確實感謝你提供的廢料。既然你很擅長追蹤這些東西，我可能有個你能勝任的任務。",
+      "originalEn": "Celeste told me you’re the one who helped her hound me about pitching in more. I’ll say this once: I don’t appreciate the meddling, and I have my own reasons for refusing. I do, however, appreciate the scrap. Since you’re apparently good at tracking it down, I may have a task for you."
+    },
+    "objectives": [
+      {
+        "value": "在埋藏都市室內停車場下方的掠手營地，搜索2個容器",
+        "originalEn": "On Buried City, search 2 containers in the Raider Camp beneath the Parking Garage"
+      },
+      {
+        "value": "在大壩戰場南沼澤哨站，搜尋任何重要物品 ",
+        "originalEn": "On Dam Battlegrounds, search for anything significant in the South Swamp Outpost "
+      },
+      {
+        "value": "在太空港貨櫃儲藏庫旁的比爾古恩藏身處，搜尋任何重要物品",
+        "originalEn": "On Spaceport, search for anything significant in Bilguun's Hideout, next to the Container Storage"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "muzzle_brake_ii",
+        "quantity": 1,
+        "name": {
+          "value": "槍口制退器II",
+          "originalEn": "Muzzle Brake II"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/muzzle_brake_ii.png"
+      },
+      {
+        "id": "vertical_grip_ii",
+        "quantity": 1,
+        "name": {
+          "value": "垂直握把 II",
+          "originalEn": "Vertical Grip II"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/vertical_grip_ii.png"
+      },
+      {
+        "id": "stable_stock_ii",
+        "quantity": 1,
+        "name": {
+          "value": "穩定槍托 II",
+          "originalEn": "Stable Stock II"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/stable_stock_ii.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1815,6 +7251,54 @@
     "nextQuestIds": [
       "armored_transports",
       "the_clean_dream"
+    ],
+    "description": {
+      "value": "那台被摧毀的機器…那不是我們幹的。我們確實知道上頭還有一些流浪的生還者，但如此程度的破壞？這絕對不是一個人就能做到的。",
+      "originalEn": "That downed machine… We weren’t the ones who did that. We know that there are stray survivors out there, but this? This goes far beyond a single person."
+    },
+    "objectives": [
+      {
+        "value": "到達貧瘠空地",
+        "originalEn": "Reach the Barren Clearing"
+      },
+      {
+        "value": "找到ARC機器破壞者的線索",
+        "originalEn": "Find signs of who brought down the ARC machines"
+      },
+      {
+        "value": "檢查裝飾殘骸",
+        "originalEn": "Inspect the Adorned Wreckage"
+      },
+      {
+        "value": "檢查通訊裝置",
+        "originalEn": "Inspect the communications device"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "looting_mk2",
+        "quantity": 1,
+        "name": {
+          "value": "掠奪 Mk. 2",
+          "originalEn": "Looting Mk. 2"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/looting_mk2.png"
+      },
+      {
+        "id": "medium_shield",
+        "quantity": 1,
+        "name": {
+          "value": "中型護盾",
+          "originalEn": "Medium Shield"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/medium_shield.png"
+      }
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -1836,6 +7320,89 @@
       "stable_housing",
       "movie_night"
     ],
+    "description": {
+      "value": "你有注意過那些在空中快速閃過的光線嗎？\r\n\r\n我看過太多怪事了，覺得那不可能是自然現象，但要說服莎莉絲特的話，只憑直覺作為根據是不夠的。",
+      "originalEn": "Have you ever noticed those streaks of light darting across the skies? \r\n\r\nI’ve seen too much to believe they’re natural, but it’ll take more than a hunch to convince Celeste."
+    },
+    "objectives": [
+      {
+        "value": "取得旋轉編碼器",
+        "originalEn": "Obtain a Rotary Encoder"
+      },
+      {
+        "value": "前往組裝廠流水線附近任何一間控制室",
+        "originalEn": "Visit any of the Control Rooms near the Assembly Line"
+      },
+      {
+        "value": "使用旋轉編碼器來啟動伺服器開關",
+        "originalEn": "Use the Rotary Encoder to activate the server switch"
+      },
+      {
+        "value": "與附近的電腦互動以協助識別正確零件",
+        "originalEn": "Interact with a nearby computer to help identify the correct parts"
+      },
+      {
+        "value": "將離子濺射器送去給珊妮",
+        "originalEn": "Deliver an Ion Sputter to Shani"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "rotary_encoder",
+        "quantity": 1,
+        "name": {
+          "value": "旋轉編碼器",
+          "originalEn": "Rotary Encoder"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/rotary_encoder.png"
+      },
+      {
+        "id": "ion_sputter",
+        "quantity": 1,
+        "name": {
+          "value": "離子濺射器",
+          "originalEn": "Ion Sputter"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/ion_sputter.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "steel_spring",
+        "quantity": 5,
+        "name": {
+          "value": "鋼製彈簧",
+          "originalEn": "Steel Spring"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/steel_spring.png"
+      },
+      {
+        "id": "wires",
+        "quantity": 5,
+        "name": {
+          "value": "電線",
+          "originalEn": "Wires"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/wires.png"
+      },
+      {
+        "id": "tactical_mk2",
+        "quantity": 1,
+        "name": {
+          "value": "戰術型 Mk. 2",
+          "originalEn": "Tactical Mk. 2"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/tactical_i.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1854,6 +7421,48 @@
     ],
     "nextQuestIds": [
       "on_deaf_ears"
+    ],
+    "description": {
+      "value": "我發現一些筆記提到，太空港有些電子工程師當時在製作先進的鹽式電池。要是我們能拿到一顆，或許它可以在下次天塌下來時防止全面停電。",
+      "originalEn": "I found notes that some electrical engineers at the Spaceport were working on advanced, salt-based batteries. If we can get our hands on one, perhaps it’ll prevent full-scale power outages next time a ceiling comes crashing down."
+    },
+    "objectives": [
+      {
+        "value": "前往火箭組裝區",
+        "originalEn": "Go to the Rocket Assembly"
+      },
+      {
+        "value": "在高處搜尋隱藏的電池試作品",
+        "originalEn": "Search for the hidden Battery Prototype in a high place"
+      },
+      {
+        "value": "把電池試作品放入工業充電器",
+        "originalEn": "Bring the Battery Prototype to the Industrial Recharger"
+      },
+      {
+        "value": "使用機器來為電池充電",
+        "originalEn": "Use the machinery to charge the battery"
+      },
+      {
+        "value": "將充完電的電池運送到角落的交貨點",
+        "originalEn": "Deliver the Charged Battery to the drop-off point in the corner"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "vita_spray_blueprint",
+        "quantity": 1,
+        "name": {
+          "value": "生命噴霧藍圖",
+          "originalEn": "Vita Spray Blueprint"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/vita_spray.png"
+      }
     ],
     "hasBlueprint": true,
     "blueprintRewards": [

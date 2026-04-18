@@ -16,6 +16,52 @@
       "the_right_tool",
       "hatch_repairs"
     ],
+    "description": {
+      "value": "ARCの動きにわずかな変化でもあれば災いになる。\r\n\r\n例の信号、今までに前例のないものだ。何かの予兆であるなら、可能な限り調査するべきだ。",
+      "originalEn": "Even the slightest change to ARC's behavior could spell disaster.\r\n\r\nAnd that signal you heard? It's like nothing we've ever picked up. If they're up to something, we need to find out whatever we can."
+    },
+    "objectives": [
+      {
+        "value": "ARC プローブ、ARC クーリエ、または残骸を探して見つけた",
+        "originalEn": "Find and search any ARC Probe or ARC Courier"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "metal_parts",
+        "quantity": 10,
+        "name": {
+          "value": "金属パーツ",
+          "originalEn": "Metal Parts"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/metal_parts.png"
+      },
+      {
+        "id": "steel_spring",
+        "quantity": 5,
+        "name": {
+          "value": "鋼鉄のバネ",
+          "originalEn": "Steel Spring"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/steel_spring.png"
+      },
+      {
+        "id": "duct_tape",
+        "quantity": 5,
+        "name": {
+          "value": "ダクトテープ",
+          "originalEn": "Duct Tape"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/duct_tape.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -34,6 +80,60 @@
     ],
     "nextQuestIds": [
       "untended_garden"
+    ],
+    "description": {
+      "value": "食料生産はようやく基本的なニーズを満たすのに十分な量になったが、いま本当に必要なのはバリエーションだ。私は、ファーストウェーブ以前に行われた農業研究の手がかりを持っている。興味あるか？",
+      "originalEn": "Our food production is finally enough to meet our basic needs, but what we really need now is variety. I have a lead on some agricultural research from before the First Wave. Are you in?"
+    },
+    "objectives": [
+      {
+        "value": "研究管理センターに行った",
+        "originalEn": "Go to the Research & Administration building"
+      },
+      {
+        "value": "受付の上にある階で第一実験室を見つけた",
+        "originalEn": "Locate Lab 1 on the upper floor above the reception"
+      },
+      {
+        "value": "農業調査プロジェクトの痕跡を探した",
+        "originalEn": "Search for any traces of the agricultural research project"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "advanced_mechanical_components",
+        "quantity": 3,
+        "name": {
+          "value": "高度な機械部品",
+          "originalEn": "Advanced Mechanical Components"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/advanced_mechanical_components.png"
+      },
+      {
+        "id": "medium_gun_parts",
+        "quantity": 3,
+        "name": {
+          "value": "中型銃のパーツ",
+          "originalEn": "Medium Gun Parts"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/medium_gun_parts.png"
+      },
+      {
+        "id": "steel_spring",
+        "quantity": 10,
+        "name": {
+          "value": "鋼鉄のバネ",
+          "originalEn": "Steel Spring"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/steel_spring.png"
+      }
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -57,6 +157,56 @@
     "nextQuestIds": [
       "greasing_her_palms"
     ],
+    "description": {
+      "value": "人を除けば何もかもが足りてないのに、セレステは貴重な資源を空中に打ち上げて、それを巡ってレイダーが醜く争ってる。いい物が無駄になるのはもうウンザリだ。",
+      "originalEn": "We're short on everything but mouths to feed, yet Celeste's launching precious supplies into the air for Raiders to claw over. I’m done letting the good stuff go to waste."
+    },
+    "objectives": [
+      {
+        "value": "コールステーションで物資投下を申請した",
+        "originalEn": "Request in a Supply Drop from a Call Station"
+      },
+      {
+        "value": "投下物資を漁った",
+        "originalEn": "Loot a Supply Drop"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "extended_light_mag_i",
+        "quantity": 1,
+        "name": {
+          "value": "拡張小型弾倉 I",
+          "originalEn": "Extended Light Mag I"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/extended_light_mag_i.png"
+      },
+      {
+        "id": "stable_stock_i",
+        "quantity": 1,
+        "name": {
+          "value": "ステイブル・ストック I",
+          "originalEn": "Stable Stock I"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/stable_stock_i.png"
+      },
+      {
+        "id": "muzzle_brake_ii",
+        "quantity": 1,
+        "name": {
+          "value": "マズルブレーキII",
+          "originalEn": "Muzzle Brake II"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/muzzle_brake_ii.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -76,6 +226,59 @@
     "nextQuestIds": [
       "a_rising_tide",
       "fragmented_logs"
+    ],
+    "description": {
+      "value": "り… 理解できない。 大崩壊を食い止めようとしてたのに、突然… 全部なくなった。\r\n\r\nあの耐震住宅プロジェクトはMANTIKORという団体によって中止させられたんだ。もっと詳しく調べてくれない？",
+      "originalEn": "I… I don’t get it. One day they were trying to stave off the Collapse, and then, suddenly… Nothing.\r\n\r\nThat earthquake-resistant housing project was shut down by a group named MANTIKOR. Think you could find out more?"
+    },
+    "objectives": [
+      {
+        "value": "MANTIKORの地下施設を見つけた",
+        "originalEn": "Find MANTIKOR's underground facilities"
+      },
+      {
+        "value": "セキュリティー棟の施錠された部屋に入る方法を見つけた",
+        "originalEn": "Find a way into into the locked room in the Security Wing"
+      },
+      {
+        "value": "施錠された部屋の中でプロジェクト・エバーグリーンの記録を探した",
+        "originalEn": "Search the locked room for any records on Project Heartwood"
+      },
+      {
+        "value": "埃をかぶった映画フィルムを見つけた",
+        "originalEn": "Find the Dusty Film Reel"
+      },
+      {
+        "value": "埃をかぶった映画フィルムをシャニに届けた",
+        "originalEn": "Deliver the Dusty Film Reel to Shani"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "dusty_film_reel",
+        "quantity": 1,
+        "name": {
+          "value": "埃をかぶったフィルムリール",
+          "originalEn": "Dusty Film Reel"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "coins",
+        "quantity": 2000,
+        "name": {
+          "value": "coins",
+          "originalEn": "coins"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -97,6 +300,77 @@
     "nextQuestIds": [
       "reduced_to_rubble"
     ],
+    "description": {
+      "value": "チューブはやっとブルーゲートの方向へ拡張したばかりだ。他の場所へは、まだ骨が折れそうだ。レイダーの安全のため、俺のクルーが谷のあちこちでインフラを新造しているんだが、ARCのせいで作業が進まない。",
+      "originalEn": "We’ve only just finished expanding the Tube network towards the Blue Gate, and we’re still laboring away at the rest.\n\nMy crew’s been building new infrastructure around the valley to safeguard our Raiders, but the constant ARC threat has made it difficult to get anything done."
+    },
+    "objectives": [
+      {
+        "value": "尾根の近くの展望台を安定化させた",
+        "originalEn": "Stabilize the observation deck near the Ridgeline"
+      },
+      {
+        "value": "オリーブ畑の近くの通信端末を使用可能にした",
+        "originalEn": "Enable the comms terminal near the Olive Grove"
+      },
+      {
+        "value": "データ保管室の北にある教会の屋根で衛星アンテナを回転させた",
+        "originalEn": "Rotate the satellite dishes on the church roof, north of the Data Vault"
+      },
+      {
+        "value": "罠猟師の空地の近くにあるレイダーの住居に屋根板を釘付けした",
+        "originalEn": "Nail down the roof plates on the Raider structure near Trapper's Glade"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [
+      "18x Raids"
+    ],
+    "grantedItems": [
+      {
+        "id": "noisemaker",
+        "quantity": 2,
+        "name": {
+          "value": "騒音発生装置",
+          "originalEn": "Noisemaker"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/noisemaker.png"
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "shrapnel_grenade",
+        "quantity": 3,
+        "name": {
+          "value": "シャープネル・グレネード",
+          "originalEn": "Shrapnel Grenade"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/shrapnel_grenade.png"
+      },
+      {
+        "id": "snap_blast_grenade",
+        "quantity": 3,
+        "name": {
+          "value": "スナップブラスト・グレネード",
+          "originalEn": "Snap Blast Grenade"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/snap_blast_grenade.png"
+      },
+      {
+        "id": "heavy_fuze_grenade",
+        "quantity": 3,
+        "name": {
+          "value": "ヘビーフューズ・グレネード",
+          "originalEn": "Heavy Fuze Grenade"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/heavy_fuze_grenade.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -115,6 +389,75 @@
     ],
     "nextQuestIds": [
       "eyes_in_the_sky"
+    ],
+    "description": {
+      "value": "遠くの地鳴りが、毎日近づいて来ている。地鳴りをモニターできそうなLiDARスキャナについて、情報を手に入れた。手を貸してくれる？ 君も、ある日ここの天井が崩れてきたら嫌でしょ？",
+      "originalEn": "Those distant rumbles are getting less distant with each passing day.\n\nI have a lead on some LiDAR scanners that may help us monitor the tremors. You do want to keep a roof over your head, don’t you?"
+    },
+    "objectives": [
+      {
+        "value": "江蘇省倉庫に到達した",
+        "originalEn": "Reach the Jiangsu Warehouse"
+      },
+      {
+        "value": "作業長の出荷記録を見つけた",
+        "originalEn": "Find the shipping notes in the foreman’s office"
+      },
+      {
+        "value": "管制塔A6の管制室でスキャナを探した",
+        "originalEn": "Locate the scanners in the Flight Control office of Control Tower A6"
+      },
+      {
+        "value": "シャニにLiDARスキャナを1個届けた",
+        "originalEn": "Deliver 1 LiDAR Scanners to Shani"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "lidar_scanner",
+        "quantity": 1,
+        "name": {
+          "value": "ライダースキャナー",
+          "originalEn": "Lidar Scanner"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/lidar_scanner.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "dam_testing_annex_key",
+        "quantity": 1,
+        "name": {
+          "value": "ダムのテスティング・アネックスの鍵",
+          "originalEn": "Dam Testing Annex Key"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/dam_testing_annex_key.png"
+      },
+      {
+        "id": "zipline",
+        "quantity": 3,
+        "name": {
+          "value": "ジップライン",
+          "originalEn": "Zipline"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/zipline.png"
+      },
+      {
+        "id": "smoke_grenade",
+        "quantity": 2,
+        "name": {
+          "value": "スモーク・グレネード",
+          "originalEn": "Smoke Grenade"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/smoke_grenade.png"
+      }
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -135,6 +478,57 @@
     "nextQuestIds": [
       "armored_transports"
     ],
+    "description": {
+      "value": "スカウトからの報告によると、妙な植物が一帯に広がってるらしい。ランス的には、面白い使い方もできそうだと思ってる。",
+      "originalEn": "Some scouts have been bringing back reports of these weird plants spreading into the area. Now, this makes your old pal Lance think it may have some interesting uses."
+    },
+    "objectives": [
+      {
+        "value": "古い戦場にあるバロンの残骸の近くで新しい植物を探した",
+        "originalEn": "Search for the new plant near the Baron Husk in the Old Battleground"
+      },
+      {
+        "value": "ランスに有毒かもしれない植物を届けた",
+        "originalEn": "Deliver the Possibly Toxic Plant to Lance"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "possibly_toxic_plant",
+        "quantity": 1,
+        "name": {
+          "value": "有毒かもしれない植物",
+          "originalEn": "Possibly Toxic Plant"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/possibly_toxic_plant.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "vita_shot",
+        "quantity": 1,
+        "name": {
+          "value": "ヴィータ注射",
+          "originalEn": "Vita Shot"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/vita_shot.png"
+      },
+      {
+        "id": "antiseptic",
+        "quantity": 5,
+        "name": {
+          "value": "消毒液",
+          "originalEn": "Antiseptic"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/antiseptic.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -152,6 +546,72 @@
       "the_clean_dream"
     ],
     "nextQuestIds": [],
+    "description": {
+      "value": "ブルーゲートのそばにいるあのデフォレスターは、確かに大きな被害をもたらしたかもしれないけど、あんなにきれいな残骸なら私たちの研究において非常に貴重なサンプルになる。",
+      "originalEn": "That Deforester by the Blue Gate may have caused some real devastation, but a pristine husk like that is also an invaluable sample for our research."
+    },
+    "objectives": [
+      {
+        "value": "ARC電池を2個入手した",
+        "originalEn": "Obtain 2 ARC Powercells"
+      },
+      {
+        "value": "ARCデフォレスターに接触した",
+        "originalEn": "Interact with any ARC Deforester"
+      },
+      {
+        "value": "ARCデフォレスターを略奪した",
+        "originalEn": "Loot an ARC Deforester"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "remote_raider_flare",
+        "quantity": 3,
+        "name": {
+          "value": "遠隔レイダー発煙筒",
+          "originalEn": "Remote Raider Flare"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/remote_raider_flare.png"
+      }
+    ],
+    "requiredItems": [
+      {
+        "id": "arc_powercell",
+        "quantity": 2,
+        "name": {
+          "value": "ARC電池",
+          "originalEn": "ARC Powercell"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/arc_powercell.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "patrol_car_key",
+        "quantity": 1,
+        "name": {
+          "value": "パトロールカーの鍵",
+          "originalEn": "Patrol Car Key"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/patrol_car_key.png"
+      },
+      {
+        "id": "door_blocker",
+        "quantity": 3,
+        "name": {
+          "value": "ドアストッパー",
+          "originalEn": "Door Blocker"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/door_blocker.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -171,6 +631,57 @@
     "nextQuestIds": [
       "a_lay_of_the_land"
     ],
+    "description": {
+      "value": "おしゃれな新しいESR分析装置を手に入れたんだ。盛大なお披露目会も予定してた。でも急に消えてしまったんだ。ねえ助けてくれないか？",
+      "originalEn": "I got my hands on a fancy new ESR analyzer; had a whole big reveal planned. One minute it’s here, next minute—poof. Please help?"
+    },
+    "objectives": [
+      {
+        "value": "埋もれた街の薬局でESR分析装置を調査した",
+        "originalEn": "Search for an ESR Analyzer inside any pharmacy in Buried City"
+      },
+      {
+        "value": "ランスにESR分析装置を届けた",
+        "originalEn": "Deliver the ESR Analyzer to Lance"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "esr_analyzer",
+        "quantity": 1,
+        "name": {
+          "value": "ESR分析装置",
+          "originalEn": "ESR Analyzer"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/esr_analyzer.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "tactical_mk3_healing",
+        "quantity": 1,
+        "name": {
+          "value": "戦術MK3 (回復)",
+          "originalEn": "Tactical Mk. 3 (Healing)"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_healing.png"
+      },
+      {
+        "id": "surge_shield_recharger",
+        "quantity": 1,
+        "name": {
+          "value": "サージシールド・リチャージャー",
+          "originalEn": "Surge Shield Recharger"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/surge_shield_recharger.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -189,6 +700,78 @@
       "a_dead_end"
     ],
     "nextQuestIds": [],
+    "description": {
+      "value": "プロジェクト・エバーグリーンが中止になった直後、ダムに雇われた現場監督がいたとここに書いてある。大きな再建プロジェクトの責任者を任されたらしい。",
+      "originalEn": "Says here there was a foreman at The Dam, who got recruited right after they canceled Project Heartwood. Got put in charge of some big reconstruction project."
+    },
+    "objectives": [
+      {
+        "value": "埋もれた街で、ピアッツァ・ローマの南にあるバリケードで囲まれた現場監督のアパートを見つけた",
+        "originalEn": "On Buried City, find the foreman's barricaded apartment south of Piazza Roma"
+      },
+      {
+        "value": "現場監督のデジタルログにアクセスした",
+        "originalEn": "Access the foreman's digital logbook"
+      },
+      {
+        "value": "ダム戦場で発電総合施設に辿り着いた",
+        "originalEn": "On Dam Battlegrounds, reach the Power Generation Complex"
+      },
+      {
+        "value": "立ち入り制限区域に入る方法を見つけた",
+        "originalEn": "Find a way into the Controlled Access Zone"
+      },
+      {
+        "value": "立ち入り制限区域の中で、現場監督の再建プロジェクトに関する手がかりを探した",
+        "originalEn": "Search the Controlled Access Zone for any clues about the foreman's reconstruction project"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "anvil_ii",
+        "quantity": 1,
+        "name": {
+          "value": "アンヴィル II",
+          "originalEn": "Anvil II"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/anvil.png"
+      },
+      {
+        "id": "anvil_splitter",
+        "quantity": 1,
+        "name": {
+          "value": "アンヴィル・スプリッター",
+          "originalEn": "Anvil Splitter"
+        },
+        "rarity": "Legendary",
+        "imageFilename": "https://cdn.arctracker.io/items/anvil_splitter.png"
+      },
+      {
+        "id": "extended_barrel",
+        "quantity": 1,
+        "name": {
+          "value": "拡張バレル",
+          "originalEn": "Extended Barrel"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/extended_barrel.png"
+      },
+      {
+        "id": "heavy_ammo",
+        "quantity": 40,
+        "name": {
+          "value": "大型弾薬",
+          "originalEn": "Heavy Ammo"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/heavy_ammo.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -210,6 +793,50 @@
       "celestes_journals",
       "out_of_the_shadows"
     ],
+    "description": {
+      "value": "かつて、本当に旗を使っていたこともある。ただの布きれだが、旗を見れば味方が近くにいるとわかる。自分たちの縄張りだとわかるんだ。だから考えてみた…",
+      "originalEn": "Y’know, back in the day we actually used to have a flag - well, a scrap of cloth more than anything. Still, seeing it meant you knew you had allies nearby, that you were on your own home turf. So, I was thinking…"
+    },
+    "objectives": [
+      {
+        "value": "ダム戦場のフォルミカイ前哨基地に到達した",
+        "originalEn": "Reach the Formicai Outpost in Dam Battlegrounds"
+      },
+      {
+        "value": "フォルミカイ前哨基地で旗を探した",
+        "originalEn": "Locate the flag at the Formicai Outpost"
+      },
+      {
+        "value": "赤い池を展望する小さな台に旗を揚げた",
+        "originalEn": "Hoist the flag on the small platform overlooking the Red Lake"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "mod_components",
+        "quantity": 3,
+        "name": {
+          "value": "モジュール部品",
+          "originalEn": "Mod Components"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/mod_components.png"
+      },
+      {
+        "id": "duct_tape",
+        "quantity": 5,
+        "name": {
+          "value": "ダクトテープ",
+          "originalEn": "Duct Tape"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/duct_tape.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -228,6 +855,74 @@
     ],
     "nextQuestIds": [
       "the_stench_of_corruption"
+    ],
+    "description": {
+      "value": "また水が綺麗になったけど、犯人が戻ってきて人を病気にさせるリスクは捨て置けない。奴らを根絶やしにしないと。",
+      "originalEn": "We've got clean water again, but we can't risk people falling ill if the saboteurs return. We need to root them out once and for all."
+    },
+    "objectives": [
+      {
+        "value": "水質管理センターの下にある取水口に戻った",
+        "originalEn": "Return to the water intake below the Water Treatment Control building"
+      },
+      {
+        "value": "沼地でバレルの出所に関する痕跡を探した",
+        "originalEn": "Search the swamp for traces of the barrel's origins"
+      },
+      {
+        "value": "バレルトラックの写真を撮る",
+        "originalEn": "Take a photo of the barrel truck"
+      },
+      {
+        "value": "トラックを調べて、犯人の正体に関する手がかりを探した",
+        "originalEn": "Search the truck for clues about the saboteur's identity"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "tactical_mk2",
+        "quantity": 1,
+        "name": {
+          "value": "戦術MK2",
+          "originalEn": "Tactical Mk. 2"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/tactical_i.png"
+      },
+      {
+        "id": "zipline",
+        "quantity": 3,
+        "name": {
+          "value": "ジップライン",
+          "originalEn": "Zipline"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/zipline.png"
+      },
+      {
+        "id": "pulse_mine",
+        "quantity": 3,
+        "name": {
+          "value": "ジャンプ地雷：衝撃",
+          "originalEn": "Pulse Mine"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/pulse_mine.png"
+      },
+      {
+        "id": "gas_mine",
+        "quantity": 3,
+        "name": {
+          "value": "ジャンプ地雷：時間経過スタミナダメージ",
+          "originalEn": "Gas Mine"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/gas_mine.png"
+      }
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -248,6 +943,64 @@
     "nextQuestIds": [
       "prescriptions_of_the_past"
     ],
+    "description": {
+      "value": "客の一人が、埋もれた街の古い野営地に身を潜めている家族を見かけたんだ。彼らを見つけて、安全な場所に案内してくれる人がいたら報酬を出してやる。",
+      "originalEn": "A customer of mine saw a family taking cover in an old encampment in Buried City. I'll pay anyone who manages to find them and escort them back to safety."
+    },
+    "objectives": [
+      {
+        "value": "放棄された高速道路の野営地を見つけた",
+        "originalEn": "Locate the Abandoned Highway Camp"
+      },
+      {
+        "value": "生存者の痕跡を探した",
+        "originalEn": "Search for any signs of survivors"
+      },
+      {
+        "value": "赤いマーカーを辿った",
+        "originalEn": "Follow the red markers"
+      },
+      {
+        "value": "墓を調べる",
+        "originalEn": "Inspect the grave"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "noisemaker",
+        "quantity": 3,
+        "name": {
+          "value": "騒音発生装置",
+          "originalEn": "Noisemaker"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/noisemaker.png"
+      },
+      {
+        "id": "blue_light_stick",
+        "quantity": 5,
+        "name": {
+          "value": "青色のグロースティック",
+          "originalEn": "Blue Light Stick"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/blue_light_stick.png"
+      },
+      {
+        "id": "rosary",
+        "quantity": 1,
+        "name": {
+          "value": "ロザリオ",
+          "originalEn": "Rosary"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/rosary.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -267,6 +1020,88 @@
     "nextQuestIds": [
       "water_troubles"
     ],
+    "description": {
+      "value": "わかっている、大丈夫だ！ 停電が起きているんだな——\r\nああ、どうも。埋もれた街のソーラーパネルが一部鉄砲水にやられて、発電機も長くは持たない。\r\n\r\nもし上に行ったら、私たちのために一肌脱いでくれないか？",
+      "originalEn": "I know, I know! The power's down in sector—\r\nOh, hey. A flash flood took out some of our solar panels in Buried City, and the generators only hold on for so long.\r\n\r\nDo us all a solid when you're up there, OK?"
+    },
+    "objectives": [
+      {
+        "value": "グランディオーソ・アパートの近くにある浸水したソーラーパネルを見つけた",
+        "originalEn": "Find the flooded solar panels nearby the Grandioso Apartments"
+      },
+      {
+        "value": "ワイヤー5本とバッテリー2個を使ってソーラーパネルを修理した",
+        "originalEn": "Repair the solar panels using 5 Wires and 2 Batteries"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "zipline",
+        "quantity": 1,
+        "name": {
+          "value": "ジップライン",
+          "originalEn": "Zipline"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/zipline.png"
+      }
+    ],
+    "requiredItems": [
+      {
+        "id": "wires",
+        "quantity": 5,
+        "name": {
+          "value": "ワイヤー",
+          "originalEn": "Wires"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/wires.png"
+      },
+      {
+        "id": "battery",
+        "quantity": 2,
+        "name": {
+          "value": "バッテリー",
+          "originalEn": "Battery"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/battery.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "blue_light_stick",
+        "quantity": 5,
+        "name": {
+          "value": "青色のグロースティック",
+          "originalEn": "Blue Light Stick"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/blue_light_stick.png"
+      },
+      {
+        "id": "antiseptic",
+        "quantity": 3,
+        "name": {
+          "value": "消毒液",
+          "originalEn": "Antiseptic"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/antiseptic.png"
+      },
+      {
+        "id": "durable_cloth",
+        "quantity": 5,
+        "name": {
+          "value": "丈夫な服",
+          "originalEn": "Durable Cloth"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/durable_cloth.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -285,6 +1120,54 @@
       "a_new_type_of_plant"
     ],
     "nextQuestIds": [],
+    "description": {
+      "value": "ブルーゲートに続くトンネルが拡張されて以来、闇市には掘り出し物が並ぶようになった。こっちは相変わらず壊れたラトラーを売ってる。新しい仕入れ先を見つけなきゃ、商売あがったりだ。",
+      "originalEn": "Ever since we expanded the tunnels to the Blue Gate, some rare pieces have started appearing on the black market.\n\nMeanwhile, I'm stuck here peddling battered old Rattlers. If I don't find new supply lines, I'll be left in the dust. "
+    },
+    "objectives": [
+      {
+        "value": "チェックポイントに到達した",
+        "originalEn": "Reach the Checkpoint"
+      },
+      {
+        "value": "衛兵の小屋で装甲パトロール車のキーカードを探した",
+        "originalEn": "Search the Guard huts for an Armored Patrol Key Card"
+      },
+      {
+        "value": "ブルーゲート・チェックポイントの近くの交通トンネルに到達した",
+        "originalEn": "Reach the Traffic Tunnel near the Blue Gate Checkpoint"
+      },
+      {
+        "value": "装甲パトロールカーの後部ドアを見つけて開けた",
+        "originalEn": "Find and unlock the rear door of an armored patrol car"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "smoke_grenade",
+        "quantity": 3,
+        "name": {
+          "value": "スモーク・グレネード",
+          "originalEn": "Smoke Grenade"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/smoke_grenade.png"
+      },
+      {
+        "id": "defibrillator",
+        "quantity": 3,
+        "name": {
+          "value": "蘇生装置",
+          "originalEn": "Defibrillator"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/defibrillator.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -309,6 +1192,66 @@
     "nextQuestIds": [
       "our_presence_up_there"
     ],
+    "description": {
+      "value": "シャニからの頼みがあってね。上層に基地を作るだなんて、やってくれたよ！ 計画段階かもしれないけど、すごいことだろ？",
+      "originalEn": "Guess what? Shani asked me to help out with something, and for once, I’m actually glad she did. We’re setting up new outposts topside! Or, planning to, at least. Can you believe it?"
+    },
+    "objectives": [
+      {
+        "value": "ダム戦場で壁画の家の場所をマークした",
+        "originalEn": "On Dam Battlegrounds, mark the Pattern House"
+      },
+      {
+        "value": "ブルーゲートで倉庫施設の南にある白い見張り塔の場所をマークした",
+        "originalEn": "On The Blue Gate, mark the white lookout tower south of the Warehouse Complex"
+      },
+      {
+        "value": "宇宙港で南トレンチタワーの場所をマークした",
+        "originalEn": "On Spaceport, mark the South Trench Tower"
+      },
+      {
+        "value": "埋もれた街の埋もれた物件で壁画のある建物の場所をマークした",
+        "originalEn": "On Buried City, mark the building with the mural in the Buried Properties"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [
+      "18x Raids"
+    ],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "renegade_i",
+        "quantity": 1,
+        "name": {
+          "value": "レネゲイド I",
+          "originalEn": "Renegade I"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/renegade.png"
+      },
+      {
+        "id": "stable_stock_iii",
+        "quantity": 1,
+        "name": {
+          "value": "ステイブル・ストック III",
+          "originalEn": "Stable Stock III"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/stable_stock_iii.png"
+      },
+      {
+        "id": "medium_ammo",
+        "quantity": 80,
+        "name": {
+          "value": "中型弾薬",
+          "originalEn": "Medium Ammo"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/medium_ammo.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -328,6 +1271,57 @@
     "nextQuestIds": [
       "espresso"
     ],
+    "description": {
+      "value": "蜂だ！ 蜂がまだいるらしい！ 詳しいことはわからないが、温室班がどうしても欲しがっている。",
+      "originalEn": "Bees! There are bees still around! While I’m no expert, our greenhouse crew desperately wants some."
+    },
+    "objectives": [
+      {
+        "value": "ブルーゲートのオリーブ畑に到達した",
+        "originalEn": "Reach the Olive Grove in Blue Gate"
+      },
+      {
+        "value": "オリーブ畑周辺で蜂の巣を探した",
+        "originalEn": "Search for bee hives around the Olive Grove"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "yellow_light_stick",
+        "quantity": 5,
+        "name": {
+          "value": "黄色のグロースティック",
+          "originalEn": "Yellow Light Stick"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/yellow_light_stick.png"
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "advanced_electrical_components",
+        "quantity": 1,
+        "name": {
+          "value": "高度な電気部品",
+          "originalEn": "Advanced Electrical Components"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/advanced_electrical_components.png"
+      },
+      {
+        "id": "sensors",
+        "quantity": 3,
+        "name": {
+          "value": "センサー",
+          "originalEn": "Sensors"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/sensors.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -343,6 +1337,47 @@
       "combat_recon"
     ],
     "nextQuestIds": [],
+    "description": {
+      "value": "さて、偵察がうまくいったか確認しよう。あそこのボンバルディアに対抗するのに効果的な方法をレイダーに教えることができれば、こちら側の安全性もぐっと増すだろう。",
+      "originalEn": "Now, time to see if that recon paid off. If we can teach Raiders to effectively counter Bombardiers up there, we’d be a lot safer down here."
+    },
+    "objectives": [
+      {
+        "value": "ボンバルディアを破壊した",
+        "originalEn": "Destroy a Bombardier"
+      },
+      {
+        "value": "ボンバルディア・セルをシャニに届けた",
+        "originalEn": "Deliver a Bombardier Cell to Shani"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "bombardier_cell",
+        "quantity": 1,
+        "name": {
+          "value": "ボンバルディア・セル",
+          "originalEn": "Bombardier Cell"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/bombardier_cell.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "raider_tokens",
+        "quantity": 30,
+        "name": {
+          "value": "raider_tokens",
+          "originalEn": "raider_tokens"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -363,6 +1398,107 @@
       "marked_for_death",
       "straight_record"
     ],
+    "description": {
+      "value": "また探ってほしい場所ができたんだ。ファーストウェーブの頃の古戦場さ。最近のレイダーは、歴史的意義のある場所も荒らして回る。人間が忘れるのはあまりにも早い。",
+      "originalEn": "I have another special site I need you to search for me. An old battlegrounds, from the First Wave. Raiders nowadays usually pick places like that clean, despite the significance they once held. People forget quickly. Quicker than they should."
+    },
+    "objectives": [
+      {
+        "value": "廃品置き場の近くにある神聖な地に到達した",
+        "originalEn": "Reach the hallowed grounds by the Scrap Yard"
+      },
+      {
+        "value": "壊れた車両の近くでコンパスを探した",
+        "originalEn": "Search for a compass near the broken-down vehicles"
+      },
+      {
+        "value": "円筒型のコンテナの近くでビデオテープを探した",
+        "originalEn": "Search for the video tape near the cylindrical containers"
+      },
+      {
+        "value": "レイダーの野営地で古い野戦食を探した",
+        "originalEn": "Search for the old field rations in the Raider camp"
+      },
+      {
+        "value": "ティアン・ウェンにファーストウェーブのテープを届けた",
+        "originalEn": "Deliver the First Wave Tape to Tian Wen"
+      },
+      {
+        "value": "ティアン・ウェンにファーストウェーブのコンパスを届けた",
+        "originalEn": "Deliver First Wave Compass to Tian Wen"
+      },
+      {
+        "value": "ティアン・ウェンにファーストウェーブの携帯食を届けた",
+        "originalEn": "Deliver First Wave Rations to Tian Wen"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "first_wave_tape",
+        "quantity": 1,
+        "name": {
+          "value": "第一波のテープ",
+          "originalEn": "First Wave Tape"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/first_wave_tape.png"
+      },
+      {
+        "id": "first_wave_compass",
+        "quantity": 1,
+        "name": {
+          "value": "第一波コンパス",
+          "originalEn": "First Wave Compass"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/first_wave_compass.png"
+      },
+      {
+        "id": "first_wave_rations",
+        "quantity": 1,
+        "name": {
+          "value": "第一波の配給品",
+          "originalEn": "First Wave Rations"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/first_wave_rations.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "arpeggio_i",
+        "quantity": 1,
+        "name": {
+          "value": "アルペジオ I",
+          "originalEn": "Arpeggio I"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/arpeggio.png"
+      },
+      {
+        "id": "compensator_ii",
+        "quantity": 1,
+        "name": {
+          "value": "コンペンセイター II",
+          "originalEn": "Compensator II"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/compensator_ii.png"
+      },
+      {
+        "id": "medium_ammo",
+        "quantity": 80,
+        "name": {
+          "value": "中型弾薬",
+          "originalEn": "Medium Ammo"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/medium_ammo.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -381,6 +1517,79 @@
     ],
     "nextQuestIds": [
       "a_new_type_of_plant"
+    ],
+    "description": {
+      "value": "図書館の品揃えがかなり古くなってきた。埋もれた街へ出かけて、何かもっと読む本を見つけてくれないか？ みんなが楽しめるように、いろいろ持ってきてほしいな。",
+      "originalEn": "Our library selection has grown pretty stale. Could you head out to Buried City, and find something more for us to read? Make sure you bring something for everyone."
+    },
+    "objectives": [
+      {
+        "value": "都心の図書館を見つけた",
+        "originalEn": "Locate the Library in the City Center"
+      },
+      {
+        "value": "恋愛小説を1冊見つけた",
+        "originalEn": "Find 1 romance book"
+      },
+      {
+        "value": "ミステリー小説を1冊見つけた",
+        "originalEn": "Find 1 detective book"
+      },
+      {
+        "value": "冒険物語を1冊見つけた",
+        "originalEn": "Find 1 adventure book"
+      },
+      {
+        "value": "アポロに本を3冊届けた",
+        "originalEn": "Deliver 3 books to Apollo"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "library_book",
+        "quantity": 3,
+        "name": {
+          "value": "本",
+          "originalEn": "Book"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "explosive_mine",
+        "quantity": 1,
+        "name": {
+          "value": "起爆マイン",
+          "originalEn": "Explosive Mine"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/explosive_mine.png"
+      },
+      {
+        "id": "jolt_mine",
+        "quantity": 1,
+        "name": {
+          "value": "ジョルト地雷",
+          "originalEn": "Jolt Mine"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/jolt_mine.png"
+      },
+      {
+        "id": "heavy_fuze_grenade",
+        "quantity": 1,
+        "name": {
+          "value": "ヘビーフューズ・グレネード",
+          "originalEn": "Heavy Fuze Grenade"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/heavy_fuze_grenade.png"
+      }
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -401,6 +1610,71 @@
     "nextQuestIds": [
       "back_on_top"
     ],
+    "description": {
+      "value": "ひどいことになった… 上層で前哨基地の点検に行った際、日誌を2冊もなくしてしまった。誰かに読まれる前に探してきてくれないか？",
+      "originalEn": "Okay, so this is awkward… I lost two of my journals during some outpost inspections last time I went topside. Could you head out there and try to find them back before someone else stumbles on them?"
+    },
+    "objectives": [
+      {
+        "value": "南の沼の拠点からセレステの日誌を回収した",
+        "originalEn": "Retrieve Celeste’s Journals from the South Swamp Outpost"
+      },
+      {
+        "value": "赤い池を見渡せる北の前哨基地からセレステの日誌を回収した",
+        "originalEn": "Retrieve Celeste’s Journals from the northern outpost overlooking the Red Lakes"
+      },
+      {
+        "value": "セレステに日誌2冊を届けた",
+        "originalEn": "Deliver 2 Journals to Celeste"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "celeste_journal",
+        "quantity": 2,
+        "name": {
+          "value": "セレステの日記",
+          "originalEn": "Celeste's Journal"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/celestes_journal.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "magnetic_accelerator",
+        "quantity": 1,
+        "name": {
+          "value": "磁力加速装置",
+          "originalEn": "Magnetic Accelerator"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/magnetic_accelerator.png"
+      },
+      {
+        "id": "heavy_gun_parts",
+        "quantity": 3,
+        "name": {
+          "value": "大型銃のパーツ",
+          "originalEn": "Heavy Gun Parts"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/heavy_gun_parts.png"
+      },
+      {
+        "id": "exodus_modules",
+        "quantity": 1,
+        "name": {
+          "value": "エクソダスモジュール",
+          "originalEn": "Exodus Modules"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/exodus_modules.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -418,6 +1692,62 @@
       "dormant_barons"
     ],
     "nextQuestIds": [],
+    "description": {
+      "value": "ARCの裏をかく方法があるかもしれない。大きなARCが複数いる時、マシン同士の距離が開いたタイミングで1体の注意を引けば、うまく引き離せるはず。実証してみない？",
+      "originalEn": "I think I've found something we might exploit. When bigger ARC machines are just far enough from each other, a well-timed distraction could pull one out of position. You want to test that idea?"
+    },
+    "objectives": [
+      {
+        "value": "ワイヤー3本を使って倉庫施設の警報サイレンを修理して鳴らす",
+        "originalEn": "Use 3 Wires to repair and sound the emergency siren by the Warehouse Complex"
+      },
+      {
+        "value": "バッテリーを使って村の音楽プレイヤーを起動した",
+        "originalEn": "Use a Battery to start the boom box in the Village"
+      },
+      {
+        "value": "チェックポイントにあるいずれかのバスのクラクションを鳴らす",
+        "originalEn": "Sound any bus horn by the Checkpoint"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [
+      "18x Raids"
+    ],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "lure_grenade",
+        "quantity": 5,
+        "name": {
+          "value": "ルアー・グレネード",
+          "originalEn": "Lure Grenade"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/lure_grenade.png"
+      },
+      {
+        "id": "noisemaker",
+        "quantity": 5,
+        "name": {
+          "value": "騒音発生装置",
+          "originalEn": "Noisemaker"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/noisemaker.png"
+      },
+      {
+        "id": "tagging_grenade",
+        "quantity": 3,
+        "name": {
+          "value": "タグ・グレネード",
+          "originalEn": "Tagging Grenade"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/tagging_grenade.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -434,6 +1764,57 @@
     ],
     "nextQuestIds": [
       "off_the_radar"
+    ],
+    "description": {
+      "value": "方向感覚を失ったワスプの群れがスカイライトに衝突した。\r\n\r\nARCの下っ端がまた事故を起こす前に助けてあげて。修理に使える頑丈な素材も集めてほしい。",
+      "originalEn": "A swarm of disoriented Wasps crashed near one of our skylights.\r\n\r\nI need you to help thin ARC's ranks before any more accidents happen, and gather some extra sturdy materials to fix the damage."
+    },
+    "objectives": [
+      {
+        "value": "ARCエネミーを3体破壊した",
+        "originalEn": "Destroy 3 ARC enemies"
+      },
+      {
+        "value": "シャニに渡すARC合金を3個入手した",
+        "originalEn": "Get 3 ARC Alloy for Shani"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "arc_alloy",
+        "quantity": 3,
+        "name": {
+          "value": "ARC合金",
+          "originalEn": "ARC Alloy"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/arc_alloy.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "sterilized_bandage",
+        "quantity": 3,
+        "name": {
+          "value": "消毒された包帯",
+          "originalEn": "Sterilized Bandage"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/sterilized_bandage.png"
+      },
+      {
+        "id": "light_shield",
+        "quantity": 1,
+        "name": {
+          "value": "小型シールド",
+          "originalEn": "Light Shield"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/light_shield.png"
+      }
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -453,6 +1834,57 @@
     ],
     "nextQuestIds": [
       "snap_and_salvage"
+    ],
+    "description": {
+      "value": "ステラ・モンティスの報告が次々届いて来てるんだけど、これまでの場所とはまるで違う。過去の記録や遺物があったら、ぜひ持ち帰って。",
+      "originalEn": "Reports about Stella Montis keep coming in, and it’s unlike anything we’ve seen before. There may be records or relics from the past in there, and if so, I want them."
+    },
+    "objectives": [
+      {
+        "value": "J Kozma Venturesのコンテナを探した",
+        "originalEn": "Search any J Kozma Ventures container"
+      },
+      {
+        "value": "旧世界の本をシャニに届けた",
+        "originalEn": "Deliver the Old World Books to Shani"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "old_world_books",
+        "quantity": 1,
+        "name": {
+          "value": "旧世界の書物",
+          "originalEn": "Old World Books"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/old_world_books.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "gas_mine",
+        "quantity": 3,
+        "name": {
+          "value": "ジャンプ地雷：時間経過スタミナダメージ",
+          "originalEn": "Gas Mine"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/gas_mine.png"
+      },
+      {
+        "id": "raider_hatch_key",
+        "quantity": 1,
+        "name": {
+          "value": "レイダーハッチの鍵",
+          "originalEn": "Raider Hatch Key"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/raider_hatch_key.png"
+      }
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -474,6 +1906,80 @@
     "nextQuestIds": [
       "bombing_run"
     ],
+    "description": {
+      "value": "ボンバルディアがそこらをうろついているおかげで、ARCはまったく新しいやり方で隠れているレイダーを引きずり出せるようになったんだ。\r\n\r\n倒したければ、腕と戦略を磨く必要があるよ。",
+      "originalEn": "With those Bombardiers roaming around, ARC has found an entirely new way to flush Raiders out of cover. \r\n\r\nIf you’re hoping to take one down, you’ll need to sharpen your skills and your strategy."
+    },
+    "objectives": [
+      {
+        "value": "駐車ガレージの階段で身を潜められる場所を探し出す",
+        "originalEn": "Scope out a cover spot in the Parking Garage staircases"
+      },
+      {
+        "value": "マラーノ公園近くのバスで身を潜められる場所を探し出した",
+        "originalEn": "Scope out a cover spot in the buses near Marano Park"
+      },
+      {
+        "value": "メインストリート周辺の屋根裏部屋で身を潜められる場所を探し出した",
+        "originalEn": "Scope out a cover spot in the attics around Main Street"
+      },
+      {
+        "value": "スポッターを2体倒した",
+        "originalEn": "Destroy 2 Spotters"
+      },
+      {
+        "value": "スポッター中継器をシャニに届けた",
+        "originalEn": "Deliver a Spotter Relay to Shani"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "binoculars",
+        "quantity": 1,
+        "name": {
+          "value": "双眼鏡",
+          "originalEn": "Binoculars"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/binoculars.png"
+      }
+    ],
+    "requiredItems": [
+      {
+        "id": "spotter_relay",
+        "quantity": 1,
+        "name": {
+          "value": "スポッター中継機",
+          "originalEn": "Spotter Relay"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/spotter_relay.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "firecracker",
+        "quantity": 5,
+        "name": {
+          "value": "爆竹",
+          "originalEn": "Firecracker"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/firecracker.png"
+      },
+      {
+        "id": "fireworks_box",
+        "quantity": 1,
+        "name": {
+          "value": "花火の箱",
+          "originalEn": "Fireworks Box"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/fireworks_box.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -493,6 +1999,58 @@
     "nextQuestIds": [
       "into_the_fray"
     ],
+    "description": {
+      "value": "埋もれた街の一部エリアで電波が途絶えている。おそらく機器の調子が悪いんだ。君は修理が得意だよね？ 調べに行ってくれない？",
+      "originalEn": "We've been losing signals in some areas of Buried City—my guess is that our equipment is acting up. You’re quite skilled with repairs, aren’t you? Could you check it out?"
+    },
+    "objectives": [
+      {
+        "value": "古い町のレッド・タワーに辿り着いた",
+        "originalEn": "Reach the Red Tower in Old Town"
+      },
+      {
+        "value": "なくなったバッテリーセルを見つけた",
+        "originalEn": "Find missing battery cell"
+      },
+      {
+        "value": "発電機にバッテリーセルを入れた",
+        "originalEn": "Install the battery cell in the Generator"
+      },
+      {
+        "value": "発電機の電源を入れた",
+        "originalEn": "Enable the power on the Generator"
+      },
+      {
+        "value": "レッド・タワー付近のアンテナ端末を起動した",
+        "originalEn": "Boot the antenna terminal near the Red Tower"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "anvil_iii",
+        "quantity": 1,
+        "name": {
+          "value": "アンヴィル III",
+          "originalEn": "Anvil III"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/anvil.png"
+      },
+      {
+        "id": "heavy_ammo",
+        "quantity": 40,
+        "name": {
+          "value": "大型弾薬",
+          "originalEn": "Heavy Ammo"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/heavy_ammo.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -511,6 +2069,50 @@
     ],
     "nextQuestIds": [
       "groundbreaking"
+    ],
+    "description": {
+      "value": "もし見つけたデータが天井の崩落を防げるなら、すぐに行動しないと。\r\n\r\nエクソダス時代、アセラ宇宙港周辺に設置された磁気解読装置をいくつか知っている。まだ機能しているかもしれない。",
+      "originalEn": "If the data you found can keep the ceiling from collapsing, we have no time to spare.\r\n\r\nI know of a few magnetic decryptors around Acerra Spaceport, from back during the Exodus. They might still be working."
+    },
+    "objectives": [
+      {
+        "value": "燃料管理室で磁気解読装置を使用した",
+        "originalEn": "Use the Magnetic Decryptor in the Fuel Control Building"
+      },
+      {
+        "value": "宇宙港の到着棟に辿り着いた",
+        "originalEn": "Reach the Arrival Building in Spaceport"
+      },
+      {
+        "value": "到着棟の最上階で磁気解読装置を使用した",
+        "originalEn": "Use the Magnetic Decryptor on the top floor of the Arrival Building"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "defibrillator",
+        "quantity": 3,
+        "name": {
+          "value": "蘇生装置",
+          "originalEn": "Defibrillator"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/defibrillator.png"
+      },
+      {
+        "id": "trailblazer",
+        "quantity": 3,
+        "name": {
+          "value": "トレイルブレイザー",
+          "originalEn": "Trailblazer"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/trailblazer.png"
+      }
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -532,6 +2134,46 @@
       "turnabout",
       "building_a_library"
     ],
+    "description": {
+      "value": "好機を掴んだぞ。うちのスカウトが、埋もれた街で、チューブ管理チームの一員が何かを隠し置きするのを目撃した。サンタマリアの家々の中だ。今度はこっちが奴らの汚点を掴むチャンスかもな。一枚噛んでみないか？",
+      "originalEn": "We caught a break. One of our scouts saw a member of the Tubes Management make a dead drop inside the Santa Maria Houses in the Buried City. This might be our chance to dig up some dirt on them for a change. You in?"
+    },
+    "objectives": [
+      {
+        "value": "古い町にあるサンタマリアの家々を見つけた",
+        "originalEn": "Locate the Santa Maria Houses in Old Town"
+      },
+      {
+        "value": "中庭で隠し物を探した",
+        "originalEn": "Locate the Dead Drop inside the courtyard"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "advanced_electrical_components",
+        "quantity": 2,
+        "name": {
+          "value": "高度な電気部品",
+          "originalEn": "Advanced Electrical Components"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/advanced_electrical_components.png"
+      },
+      {
+        "id": "speaker_component",
+        "quantity": 4,
+        "name": {
+          "value": "スピーカーの部品",
+          "originalEn": "Speaker Component"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/speaker_component.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -548,6 +2190,105 @@
     ],
     "nextQuestIds": [
       "medical_merchandise"
+    ],
+    "description": {
+      "value": "いいか新人くん。治療して欲しかったら、その大事な手足に包帯を巻く価値があることを証明した方がいいね。",
+      "originalEn": "Say, newbie: if you want me to treat you, you better prove that those precious limbs of yours are worth bandaging."
+    },
+    "objectives": [
+      {
+        "value": "注射器を1個手に入れた",
+        "originalEn": "Obtain 1 Syringe"
+      },
+      {
+        "value": "消毒液を2個手に入れた",
+        "originalEn": "Obtain 2 Antiseptic"
+      },
+      {
+        "value": "丈夫な服を1個手に入れた",
+        "originalEn": "Obtain 1 Durable Cloth"
+      },
+      {
+        "value": "ビロードモウズイカを1個入手した",
+        "originalEn": "Obtain 1 Great Mullein"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "syringe",
+        "quantity": 1,
+        "name": {
+          "value": "注射器",
+          "originalEn": "Syringe"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/syringe.png"
+      },
+      {
+        "id": "antiseptic",
+        "quantity": 2,
+        "name": {
+          "value": "消毒液",
+          "originalEn": "Antiseptic"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/antiseptic.png"
+      },
+      {
+        "id": "durable_cloth",
+        "quantity": 1,
+        "name": {
+          "value": "丈夫な服",
+          "originalEn": "Durable Cloth"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/durable_cloth.png"
+      },
+      {
+        "id": "great_mullein",
+        "quantity": 1,
+        "name": {
+          "value": "ビロードモウズイカ",
+          "originalEn": "Great Mullein"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/great_mullein.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "adrenaline_shot",
+        "quantity": 3,
+        "name": {
+          "value": "アドレナリン注射",
+          "originalEn": "Adrenaline Shot"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/adrenaline_shot.png"
+      },
+      {
+        "id": "sterilized_bandage",
+        "quantity": 3,
+        "name": {
+          "value": "消毒された包帯",
+          "originalEn": "Sterilized Bandage"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/sterilized_bandage.png"
+      },
+      {
+        "id": "surge_shield_recharger",
+        "quantity": 1,
+        "name": {
+          "value": "サージシールド・リチャージャー",
+          "originalEn": "Surge Shield Recharger"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/surge_shield_recharger.png"
+      }
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -573,6 +2314,42 @@
       "clamoring_for_attention",
       "what_we_left_behind"
     ],
+    "description": {
+      "value": "バロンがファーストウェーブで与えた被害は、他の全マシンを足し合わせた被害よりも大きい。今では残骸となり、倒れた場所から動けないけど… ARCを食い止める答えが中に入ってるかもしれない。だから一つ開けて、その中身を持ってきてほしい。",
+      "originalEn": "During the First Wave, the Barons did more damage than all the other machines combined. Now they’re mere husks; fixed in place where they once fell... \n\nStill, their internals might hold the answer to keeping ARC at bay. So open one up, and bring me whatever is inside."
+    },
+    "objectives": [
+      {
+        "value": "バロンの残骸を略奪した",
+        "originalEn": "Loot a Baron husk"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "door_blocker",
+        "quantity": 3,
+        "name": {
+          "value": "ドアストッパー",
+          "originalEn": "Door Blocker"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/door_blocker.png"
+      },
+      {
+        "id": "lil_smoke_grenade",
+        "quantity": 3,
+        "name": {
+          "value": "リトルスモーク・グレネード",
+          "originalEn": "Li'l Smoke Grenade"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/lil_smoke_grenade.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -594,6 +2371,61 @@
     "nextQuestIds": [
       "the_trifecta"
     ],
+    "description": {
+      "value": "故障したARC プローブが妙な見た目の箱を落としたって、以前から何度も報告されてる。\r\n\r\nこじ開ける方法が見つかれば、奴らの狙いを知ることにつながるはず。",
+      "originalEn": "Raiders have long reported peculiar-looking crates dropping down from malfunctioning ARC Probes. \n\nIf we can figure out a way to crack them open, we might get a better understanding of what it is they’re after."
+    },
+    "objectives": [
+      {
+        "value": "フィールド貯蔵庫を訪れた",
+        "originalEn": "Visit a Field Depot"
+      },
+      {
+        "value": "フィールド・クレートをフィールド貯蔵庫に届けた",
+        "originalEn": "Deliver a Field Crate to a Field Depot"
+      },
+      {
+        "value": "報酬を受け取った",
+        "originalEn": "Collect the reward"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "binoculars",
+        "quantity": 1,
+        "name": {
+          "value": "双眼鏡",
+          "originalEn": "Binoculars"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/binoculars.png"
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "combat_mk1",
+        "quantity": 1,
+        "name": {
+          "value": "戦闘MK1",
+          "originalEn": "Combat Mk. 1"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/combat_i.png"
+      },
+      {
+        "id": "medium_shield",
+        "quantity": 1,
+        "name": {
+          "value": "中型シールド",
+          "originalEn": "Medium Shield"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/medium_shield.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -614,6 +2446,52 @@
       "waking_the_grid",
       "fragmented_logs"
     ],
+    "description": {
+      "value": "少し前に、宇宙港に偵察チームを送ったんだ。任務の目的は警備システムの点検や、再利用可能な物の回収... ルーチン作業のはずだった。でももう2日も連絡が途絶えていて。",
+      "originalEn": "I sent a scout team to the Spaceport a while ago. Routine work — cataloging security, see if there's anything we could re-purpose. But I've heard nothing for two days."
+    },
+    "objectives": [
+      {
+        "value": "宇宙港の東側にあるフィールド貯蔵庫の1つに行く",
+        "originalEn": "Visit any Field Depot on the eastern side of the Spaceport"
+      },
+      {
+        "value": "偵察チームの最後のログを野外無線機でシャニに送信した",
+        "originalEn": "Use the Field Radio to transmit the scout group’s last log to Shani"
+      },
+      {
+        "value": "メンテナンス格納庫の北にある古いレイダー塔の端末を操作する",
+        "originalEn": "Interact with the terminal in the old Raider Tower north of the Maintenance Hangar"
+      },
+      {
+        "value": "メンテナンス格納庫の近くで偵察チームの痕跡を見つける",
+        "originalEn": "Find traces of the scout patrol near the Maintenance Hangar"
+      },
+      {
+        "value": "偵察チームの残した物を調べた",
+        "originalEn": "Search the remains left by the scouts"
+      },
+      {
+        "value": "シャニに偵察チームのメモを届けた",
+        "originalEn": "Deliver the Scout Patrol Note to Shani"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "scout_patrol_note",
+        "quantity": 1,
+        "name": {
+          "value": "偵察パトロールのメモ",
+          "originalEn": "Scout Patrol Note"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
+    "rewardItems": [],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -633,6 +2511,71 @@
     "nextQuestIds": [
       "unexpected_initiative"
     ],
+    "description": {
+      "value": "昨夜の地震には気付いたか？ 私は気付かなかったが… 地面が動いた結果、ファーストウェーブ時代の古い基地が瓦礫の中から現れたらしい。誰よりも先に、その基地に向かってもらいたい。",
+      "originalEn": "Did you feel any tremors last night? Me neither. But apparently the ground shifted at some point, and in the process it unearthed an old First Wave outpost that’d been blocked by debris. I’d like you to get in there quick, before anyone else does."
+    },
+    "objectives": [
+      {
+        "value": "ビクトリー・リッジに向かう",
+        "originalEn": "Reach Victory Ridge"
+      },
+      {
+        "value": "崩壊した高速道路の下にある隠れ家から作戦計画を回収した",
+        "originalEn": "Retrieve the battle plans from the hideout under the broken highway"
+      },
+      {
+        "value": "セレステにアイヴァ少佐の当て布を届けた",
+        "originalEn": "Deliver Major Aiva's Patch to Celeste"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "major_aivas_patch",
+        "quantity": 1,
+        "name": {
+          "value": "アイヴァ少佐のパッチ",
+          "originalEn": "Major Aiva's Patch"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/major_aivas_patch.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "crude_explosives",
+        "quantity": 6,
+        "name": {
+          "value": "粗製爆弾",
+          "originalEn": "Crude Explosives"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/crude_explosives.png"
+      },
+      {
+        "id": "processor",
+        "quantity": 2,
+        "name": {
+          "value": "プロセッサ",
+          "originalEn": "Processor"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/processor.png"
+      },
+      {
+        "id": "music_box",
+        "quantity": 1,
+        "name": {
+          "value": "オルゴール",
+          "originalEn": "Music Box"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/music_box.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -651,6 +2594,57 @@
     ],
     "nextQuestIds": [
       "life_of_a_pharmacist"
+    ],
+    "description": {
+      "value": "さっきレイダーが来店して、埋もれた街で見つけた機械をグレネード数個と交換したんだ。コーヒーが作れるって言ってたけど、いくつかパーツが足りないようだ。一仕事してくれないか？",
+      "originalEn": "A Raider came into my shop earlier, to trade some grenades for a machine she found in Buried City. She said it makes coffee, but it seems to be missing a few parts. Up for a job?"
+    },
+    "objectives": [
+      {
+        "value": "スペアパーツを回収するためのエスプレッソマシンを見つけた",
+        "originalEn": "Find an espresso machine to salvage for spare parts"
+      },
+      {
+        "value": "アポロのためにエスプレッソマシンのパーツを確保した",
+        "originalEn": "Get the Espresso Machine Parts for Apollo"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "espresso_machine_parts",
+        "quantity": 1,
+        "name": {
+          "value": "エスプレッソマシンの部品",
+          "originalEn": "Espresso Machine Parts"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/espresso_machine_parts.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "coffee_pot",
+        "quantity": 1,
+        "name": {
+          "value": "コーヒーポット",
+          "originalEn": "Coffee Pot"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/coffee_pot.png"
+      },
+      {
+        "id": "adrenaline_shot",
+        "quantity": 3,
+        "name": {
+          "value": "アドレナリン注射",
+          "originalEn": "Adrenaline Shot"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/adrenaline_shot.png"
+      }
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -675,6 +2669,71 @@
       "a_balanced_harvest",
       "back_on_top"
     ],
+    "description": {
+      "value": "君の見つけたLiDARスキャナは、高所でよく機能する。ラストベルトで数か所、いい設置地点を特定した。山登りはできる？",
+      "originalEn": "Those LiDAR scanners you found work best when put in high locations. I’ve identified a few good spots around the Rust Belt; hope you’re surefooted."
+    },
+    "objectives": [
+      {
+        "value": "ダム戦場の管制塔の頂上にLiDARスキャナを設置した",
+        "originalEn": "On Dam Battlegrounds, install a LiDAR Scanner at the top of the Control Tower"
+      },
+      {
+        "value": "宇宙港の通信塔にLiDARスキャナを設置した",
+        "originalEn": "On Spaceport, install a LiDAR Scanner at the Communications Tower"
+      },
+      {
+        "value": "埋もれた街でガレリアの標識の上にLiDARスキャナを設置した",
+        "originalEn": "On Buried City, install a LiDAR Scanner on top of the Galleria sign"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "zipline",
+        "quantity": 1,
+        "name": {
+          "value": "ジップライン",
+          "originalEn": "Zipline"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/zipline.png"
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "tagging_grenade",
+        "quantity": 3,
+        "name": {
+          "value": "タグ・グレネード",
+          "originalEn": "Tagging Grenade"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/tagging_grenade.png"
+      },
+      {
+        "id": "vita_spray",
+        "quantity": 1,
+        "name": {
+          "value": "ヴィータ・スプレー",
+          "originalEn": "Vita Spray"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/vita_spray.png"
+      },
+      {
+        "id": "yellow_light_stick",
+        "quantity": 5,
+        "name": {
+          "value": "黄色のグロースティック",
+          "originalEn": "Yellow Light Stick"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/yellow_light_stick.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -694,6 +2753,57 @@
     "nextQuestIds": [
       "industrial_espionage"
     ],
+    "description": {
+      "value": "あんたのおかげで受け渡し場所は平和に回ってる。でもいつトラブルが起きるかはわからない。これ以上妨害されないよう、埋もれた街にカメラを仕掛けたんだ。一番使う場所だからね。問題は、動かすための電力だ。",
+      "originalEn": "Everything’s been calm around my drop-offs since you helped out, but that doesn’t mean it’ll stay that way for long. I’ve set up surveillance at one of my most used spots in Buried City, to prevent future tampering. Only problem is, it needs power to go live."
+    },
+    "objectives": [
+      {
+        "value": "南ステーションの南西にある青い防水シートを探し、人けのない屋上を見つけた。",
+        "originalEn": "Find the secluded roof terrace south-west of the Southern Station, look for blue tarps."
+      },
+      {
+        "value": "ワイヤーを3本使ってソーラーパネルを配線し直した",
+        "originalEn": "Rewire the solar panel using 3 Wires"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "wires",
+        "quantity": 3,
+        "name": {
+          "value": "ワイヤー",
+          "originalEn": "Wires"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/wires.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "extended_shotgun_mag_ii",
+        "quantity": 1,
+        "name": {
+          "value": "拡張ショットガン弾倉 II",
+          "originalEn": "Extended Shotgun Mag II"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/extended_shotgun_mag_ii.png"
+      },
+      {
+        "id": "extended_medium_mag_ii",
+        "quantity": 1,
+        "name": {
+          "value": "拡張中型弾倉 II",
+          "originalEn": "Extended Medium Mag II"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/extended_medium_mag_ii.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -712,6 +2822,65 @@
     ],
     "nextQuestIds": [
       "bees"
+    ],
+    "description": {
+      "value": "いつものエンジニアはまだ傷が癒えていないし、しばらく様子もおかしい。回復を待つ間、半分の電力で過ごすのは無理だ。誰かに彼のレンチを回収してほしいのだが…",
+      "originalEn": "My usual engineer is still healing from his wounds, and has been loopy for days. We can’t afford to be at half-grid until he heals; I need someone to pick up his wrench in the mean time."
+    },
+    "objectives": [
+      {
+        "value": "発電室を見つけた",
+        "originalEn": "Find the Generator Room"
+      },
+      {
+        "value": "ワイヤーを4本使って発電機を修理した",
+        "originalEn": "Repair the Generator using 4 Wires"
+      },
+      {
+        "value": "換気シャフトを見つけた",
+        "originalEn": "Find the Ventilation Shaft"
+      },
+      {
+        "value": "階段の下にあるスイッチで電源を入れた",
+        "originalEn": "Enable the power via the power switch underneath the stairs"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "wires",
+        "quantity": 4,
+        "name": {
+          "value": "ワイヤー",
+          "originalEn": "Wires"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/wires.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "medium_gun_parts",
+        "quantity": 5,
+        "name": {
+          "value": "中型銃のパーツ",
+          "originalEn": "Medium Gun Parts"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/medium_gun_parts.png"
+      },
+      {
+        "id": "advanced_mechanical_components",
+        "quantity": 3,
+        "name": {
+          "value": "高度な機械部品",
+          "originalEn": "Advanced Mechanical Components"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/advanced_mechanical_components.png"
+      }
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -733,6 +2902,50 @@
     "nextQuestIds": [
       "furtive_meetings"
     ],
+    "description": {
+      "value": "ステラ・モンティスに足がかりを築いた今、あの場所の過去について本格的な調査を行いたがっているグループが複数いる。過去のデータをかき分けるには、まず古い機械の電源を復旧しなければいけない。 ",
+      "originalEn": "Now that we’ve found our footing on Stella Montis, several parties are interested in digging a bit deeper and seeing what we can find out about the past of this place. To do so, however, we’ll need to power up some of these old machines so we can start to sift through the data. "
+    },
+    "objectives": [
+      {
+        "value": "いずれかのロボット検証環境の管理室で、電気部品1個を使って故障端末を修理する",
+        "originalEn": "In either of the Robotic Sandbox control rooms, repair the out-of-service terminal with 1 Electrical Component"
+      },
+      {
+        "value": "ロボット検証環境の近くにある電力管理室の1つで電源を入れた",
+        "originalEn": "Enable the power in any of the conduit backrooms near the Robotic Sandboxes"
+      },
+      {
+        "value": "文化アーカイブのサービス管理室でメインフレーム端末を起動した",
+        "originalEn": "Boot the main frame data terminal in the Cultural Archives service backrooms"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "showstopper",
+        "quantity": 3,
+        "name": {
+          "value": "ショーストッパー",
+          "originalEn": "Showstopper"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/showstopper.png"
+      },
+      {
+        "id": "trailblazer",
+        "quantity": 3,
+        "name": {
+          "value": "トレイルブレイザー",
+          "originalEn": "Trailblazer"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/trailblazer.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -751,6 +2964,69 @@
     ],
     "nextQuestIds": [
       "last_entry"
+    ],
+    "description": {
+      "value": "今、ステラ・モンティスで見つけてくれたデータを見ているんだけど、ある点が気になって。調べてみてくれない？",
+      "originalEn": "I’m still sorting through the data you found in Stella Montis, but something’s caught my eye. I’d like you to look into it."
+    },
+    "objectives": [
+      {
+        "value": "医療研究所エリアの階段の下で秘密のミーティング場所を探す",
+        "originalEn": "Search for the secret meeting spot under a staircase in the Medical Research Area"
+      },
+      {
+        "value": "ロボット検証環境Bと種子保管庫の間にある換気シャフトの近くで秘密のミーティング場所を見つける",
+        "originalEn": "Find the secret meeting spot near the ventilation shaft between Robotic Sandbox B and Seed Vault"
+      },
+      {
+        "value": "文化アーカイブと種子保管庫をつなぐ階段の下で秘密のミーティング場所を見つける",
+        "originalEn": "Find the secret meeting spot at the bottom of the staircase connecting the Cultural Archives and Seed Vault"
+      },
+      {
+        "value": "ミーティング場所を調べる",
+        "originalEn": "Search the meeting area"
+      },
+      {
+        "value": "秘密のミーティング情報をシャニに渡す",
+        "originalEn": "Bring the Secret Meeting Info to Shani"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "secret_meeting_info",
+        "quantity": 1,
+        "name": {
+          "value": "秘密の会議情報",
+          "originalEn": "Secret Meeting Info"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "aphelion",
+        "quantity": 1,
+        "name": {
+          "value": "アフェリオン",
+          "originalEn": "Aphelion"
+        },
+        "rarity": "Legendary",
+        "imageFilename": "https://cdn.arctracker.io/items/aphelion.png"
+      },
+      {
+        "id": "energy_clip",
+        "quantity": 5,
+        "name": {
+          "value": "エネルギークリップ",
+          "originalEn": "Energy Clip"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/energy_clip.png"
+      }
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -773,6 +3049,71 @@
     "nextQuestIds": [
       "dormant_barons",
       "doctors_orders"
+    ],
+    "description": {
+      "value": "先日ティアン・ウェンを我々の計画に巻き込もうとしたが、断られてしまった。譲歩が必要だろうか。そういえば市場のサルベージ品の質に不満を漏らしていたな。何とかできるだろうか？",
+      "originalEn": "Recently, I’ve been trying and failing to get Tian Wen to join our community projects.\n\nI may have to sweeten the deal. She’s been complaining about the quality of salvage found on the market; think we could do her a solid?"
+    },
+    "objectives": [
+      {
+        "value": "ダム戦場の水質管理センターにある鍵のかかった部屋に入った",
+        "originalEn": "On Dam Battlegrounds, visit the Locked Room in the Water Treatment Control building"
+      },
+      {
+        "value": "宇宙港でロケット組み立て場の外にあるロケットスラスターを確認した",
+        "originalEn": "On Spaceport, scope out the rocket thrusters outside the Rocket Assembly"
+      },
+      {
+        "value": "埋もれた街のスペーストラベル施設6階にあるバリケードが組まれた区画に入った",
+        "originalEn": "On Buried City, visit the barricaded area on floor 6 of the Space Travel Building"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "dam_surveillance_key",
+        "quantity": 2,
+        "name": {
+          "value": "ダムの監視室の鍵",
+          "originalEn": "Dam Surveillance Key"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/dam_surveillance_key.png"
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "lure_grenade_blueprint",
+        "quantity": 1,
+        "name": {
+          "value": "ルアー・グレネード設計図",
+          "originalEn": "Lure Grenade Blueprint"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/lure_grenade.png"
+      },
+      {
+        "id": "speaker_component",
+        "quantity": 3,
+        "name": {
+          "value": "スピーカーの部品",
+          "originalEn": "Speaker Component"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/speaker_component.png"
+      },
+      {
+        "id": "electrical_components",
+        "quantity": 3,
+        "name": {
+          "value": "電気部品",
+          "originalEn": "Electrical Components"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/electrical_components.png"
+      }
     ],
     "hasBlueprint": true,
     "blueprintRewards": [
@@ -803,6 +3144,55 @@
       "worth_your_salt",
       "a_dead_end"
     ],
+    "description": {
+      "value": "データがあってもなくても、ここを地震に強くしている方法を学んでやる。これほど徹底的な調査なら、どこかに文書として痕跡が残ってるはずだ。",
+      "originalEn": "Data or no data: we’ll learn how to make this place earthquake-proof. With a research this in-depth, there’s bound to be a paper trail somewhere."
+    },
+    "objectives": [
+      {
+        "value": "ピリグリム・ピークの施錠された部屋に入った",
+        "originalEn": "Enter the locked room at Pilgrim's Peak"
+      },
+      {
+        "value": "部屋の中で建設に関する研究資料を探した",
+        "originalEn": "Search the room for any construction research"
+      },
+      {
+        "value": "ホワイトボードに描かれた建物を見つけた",
+        "originalEn": "Find the building pictured on the whiteboard"
+      },
+      {
+        "value": "放棄された公営住宅を撮影した",
+        "originalEn": "Photograph the abandoned housing project"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "blue_gate_communication_tower_key",
+        "quantity": 1,
+        "name": {
+          "value": "ブルーゲート通信塔の鍵",
+          "originalEn": "Blue Gate Communication Tower Key"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/blue_gate_communication_tower_key.png"
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "power_rod",
+        "quantity": 1,
+        "name": {
+          "value": "電気ロッド",
+          "originalEn": "Power Rod"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/power_rod.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -819,6 +3209,42 @@
     ],
     "nextQuestIds": [
       "down_to_earth"
+    ],
+    "description": {
+      "value": "複数のレイダーハッチで水圧管が漏れてるってスカウトから報告が入った。まだ機能してるけど、きっと時間の問題だね。次に上行ったら、一つ直してくれる？",
+      "originalEn": "Our scouts have reported several Raider Hatches with leaking hydraulic pipes. They still work, but not for long. Mind patching one up, next time you’re out there?"
+    },
+    "objectives": [
+      {
+        "value": "レイダーハッチの近くにある水圧管の漏れを修理した",
+        "originalEn": "Repair the leaking hydraulic pipes near a Raider Hatch"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "raider_hatch_key",
+        "quantity": 1,
+        "name": {
+          "value": "レイダーハッチの鍵",
+          "originalEn": "Raider Hatch Key"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/raider_hatch_key.png"
+      },
+      {
+        "id": "binoculars",
+        "quantity": 1,
+        "name": {
+          "value": "双眼鏡",
+          "originalEn": "Binoculars"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/binoculars.png"
+      }
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -840,6 +3266,59 @@
     "nextQuestIds": [
       "cold_storage"
     ],
+    "description": {
+      "value": "さっき、ステラ・モンティスから戻ったレイダーと話したんだ。俺のような奴を見かけたらしい... つまりアンドロイドを。",
+      "originalEn": "I just treated one of the first Raiders who visited Stella Montis, and she said that she saw... others. Androids, very much like me."
+    },
+    "objectives": [
+      {
+        "value": "ステラ・モンティスに出発した",
+        "originalEn": "Deploy into Stella Montis"
+      },
+      {
+        "value": "3体のアンドロイドを探して調べた",
+        "originalEn": "Find and search 3 Androids"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [
+      "24x Raids"
+    ],
+    "grantedItems": [
+      {
+        "id": "defibrillator",
+        "quantity": 3,
+        "name": {
+          "value": "蘇生装置",
+          "originalEn": "Defibrillator"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/defibrillator.png"
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "looting_mk2",
+        "quantity": 1,
+        "name": {
+          "value": "略奪MK2",
+          "originalEn": "Looting Mk. 2"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/looting_mk2.png"
+      },
+      {
+        "id": "green_light_stick",
+        "quantity": 5,
+        "name": {
+          "value": "緑色のグロースティック",
+          "originalEn": "Green Light Stick"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/green_light_stick.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -858,6 +3337,71 @@
     ],
     "nextQuestIds": [
       "unexpected_initiative"
+    ],
+    "description": {
+      "value": "商品の安全が確保できたら、商売敵の連中に目を光らせることにするよ。同じことが起きないようにね。",
+      "originalEn": "With my own stashes secured, I think it might be time to keep a closer eye on the competition so this doesn’t happen again."
+    },
+    "objectives": [
+      {
+        "value": "郊外のガソリンスタンド付近でティアン・ウェンの武器の隠し場所を見つけた",
+        "originalEn": "Find Tian Wen's weapon cache near the Gas Station in the Outskirts"
+      },
+      {
+        "value": "競合相手の武器置場にバーレッタを届けた",
+        "originalEn": "Deliver the Burletta to the rival weapon cache"
+      },
+      {
+        "value": "武器置場に盗聴器をしかけた",
+        "originalEn": "Plant a bug on the weapon cache"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "burletta_i",
+        "quantity": 1,
+        "name": {
+          "value": "バーレッタ I",
+          "originalEn": "Burletta I"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/burletta.png"
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "burletta_blueprint",
+        "quantity": 1,
+        "name": {
+          "value": "バーレッタ設計図",
+          "originalEn": "Burletta Blueprint"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/burletta.png"
+      },
+      {
+        "id": "mechanical_components",
+        "quantity": 3,
+        "name": {
+          "value": "機械部品",
+          "originalEn": "Mechanical Components"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/mechanical_components.png"
+      },
+      {
+        "id": "simple_gun_parts",
+        "quantity": 3,
+        "name": {
+          "value": "シンプルな銃のパーツ",
+          "originalEn": "Simple Gun Parts"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/simple_gun_parts.png"
+      }
     ],
     "hasBlueprint": true,
     "blueprintRewards": [
@@ -892,6 +3436,57 @@
       "combat_recon",
       "paving_the_way"
     ],
+    "description": {
+      "value": "そこは誰も手を出せない、奴らの世界だった。でも私たちがいる。基地を建てて、情報も集めた。火力も十分。戦いの終わりまで、あと少しだ。",
+      "originalEn": "It used to be their world, up there. Nobody to challenge their claim. \n\nYet here we are. More outposts. More intel. More firepower. If I didn’t know better, I’d say we’ve got quite a bit of fight left in us."
+    },
+    "objectives": [
+      {
+        "value": "リーパーを破壊した",
+        "originalEn": "Destroy a Leaper"
+      },
+      {
+        "value": "リーパー・パルスユニットを手に入れた",
+        "originalEn": "Obtain a Leaper Pulse Unit"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "leaper_pulse_unit",
+        "quantity": 1,
+        "name": {
+          "value": "リーパー・パルスユニット",
+          "originalEn": "Leaper Pulse Unit"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/leaper_pulse_unit.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "vulcano_iii",
+        "quantity": 1,
+        "name": {
+          "value": "ヴルカノ III",
+          "originalEn": "Vulcano III"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/vulcano.png"
+      },
+      {
+        "id": "shotgun_ammo",
+        "quantity": 40,
+        "name": {
+          "value": "ショットガンの弾薬",
+          "originalEn": "Shotgun Ammo"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/shotgun_ammo.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -909,6 +3504,46 @@
       "the_clean_dream"
     ],
     "nextQuestIds": [],
+    "description": {
+      "value": "探してる人がいる。名前はビルグーン。どこかで見たことがあるかもしれないが、可能性は低いだろうな。彼は… あまり社交的じゃない。\r\n\r\n上層にいることが多いが、定期的にスペランザの様子を見に戻ってくる。",
+      "originalEn": "I’m looking for someone. Bilguun. You might’ve seen him around, but chances are you haven’t. He’s… not the most sociable person around, you see.\r\n\r\nHe spends a lot of time Topside, but usually returns to Speranza regularly to check in."
+    },
+    "objectives": [
+      {
+        "value": "不毛の空地の南端で崩落した高速道路を見つけた",
+        "originalEn": "Locate the collapsed highway by the southern edge of the Barren Clearing"
+      },
+      {
+        "value": "ビルグーンの隠れ家を見つけ、彼の存在を示す手がかりを探した",
+        "originalEn": "Find Bilguun's shelter, and search for any clues of his presence"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "pulse_mine",
+        "quantity": 5,
+        "name": {
+          "value": "ジャンプ地雷：衝撃",
+          "originalEn": "Pulse Mine"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/pulse_mine.png"
+      },
+      {
+        "id": "flame_spray",
+        "quantity": 1,
+        "name": {
+          "value": "フレイムスプレー",
+          "originalEn": "Flame Spray"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/flame_spray.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -928,6 +3563,60 @@
     "nextQuestIds": [
       "echoes_of_victory_ridge"
     ],
+    "description": {
+      "value": "トラップの件で君を送った時、私は冷静さを失いかけていた。普段の私ならあり得ないことだが… ファーストウェーブは地獄だった。多くの人が死んだ。まだ傷が癒えきっていないんだ。理解してくれるといいが。",
+      "originalEn": "I lost my cool a bit when I sent you after that trap. I don’t usually lose my temper, but the First Wave… We went through a lot, back then. Lost a lot of people. It’s still a bit of a raw wound for me, but I want you to understand. "
+    },
+    "objectives": [
+      {
+        "value": "フォルミカイ山地の残骸に到達した",
+        "originalEn": "Reach the wreckage in the Formicai Hills"
+      },
+      {
+        "value": "無くなったヘルメットを探した",
+        "originalEn": "Search for the missing helmet"
+      },
+      {
+        "value": "記念碑にヘルメットを戻した",
+        "originalEn": "Return the helmet to the memorial"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "simple_gun_parts",
+        "quantity": 5,
+        "name": {
+          "value": "シンプルな銃のパーツ",
+          "originalEn": "Simple Gun Parts"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/simple_gun_parts.png"
+      },
+      {
+        "id": "duct_tape",
+        "quantity": 5,
+        "name": {
+          "value": "ダクトテープ",
+          "originalEn": "Duct Tape"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/duct_tape.png"
+      },
+      {
+        "id": "magnet",
+        "quantity": 5,
+        "name": {
+          "value": "磁石",
+          "originalEn": "Magnet"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/magnet.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -945,6 +3634,59 @@
       "furtive_meetings"
     ],
     "nextQuestIds": [],
+    "description": {
+      "value": "またMANTIKORの話だ。研究者たちの方も、明らかに不満を募らせていたようだね。緊張関係が、やがてエスカレートしていったのかも。",
+      "originalEn": "More mentions of Mantikor, and more clear signs of dissent among the researchers. I suspect tensions eventually escalated."
+    },
+    "objectives": [
+      {
+        "value": "種子保管庫で正しいワークステーションを見つけて手がかりを探す",
+        "originalEn": "Find and access the right work station in the Seed Vault for clues"
+      },
+      {
+        "value": "隣の部屋で隠された鍵を探す",
+        "originalEn": "Search for the hidden key in the adjacent room"
+      },
+      {
+        "value": "種子保管庫を探して種子保管ボックスの鍵を開ける",
+        "originalEn": "Search the Seed Vault and unlock the seed deposit box"
+      },
+      {
+        "value": "種子保管ボックスを調べた",
+        "originalEn": "Search the seed deposit box"
+      },
+      {
+        "value": "プロジェクト閉鎖の公式文書をシャニに届ける",
+        "originalEn": "Bring the Official Shutdown Documentation to Shani"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "official_shutdown_documentation",
+        "quantity": 1,
+        "name": {
+          "value": "公式な閉鎖ドキュメント",
+          "originalEn": "Official Shutdown Documentation"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "yellow_light_stick_blueprint",
+        "quantity": 1,
+        "name": {
+          "value": "黄色のグロースティック設計図",
+          "originalEn": "Yellow Light Stick Blueprint"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/yellow_light_stick.png"
+      }
+    ],
     "hasBlueprint": true,
     "blueprintRewards": [
       {
@@ -974,6 +3716,68 @@
       "a_toxic_trail",
       "tribute_to_toledo"
     ],
+    "description": {
+      "value": "ここはリフォームが必要だけど、お前のみすぼらしいアジトみたいにはしたくない。医学の大先輩たちがどうやって暮らしてたのか調べてみてくれ。 ",
+      "originalEn": "This place could use a makeover, but I don’t want it looking like your raggedy Raider Dens. See if you can find out how my fellow medical greats used to live. "
+    },
+    "objectives": [
+      {
+        "value": "崩壊した高速道路の側のアルブスト薬局を見つけた",
+        "originalEn": "Find the Arbusto Farmacia by the collapsed highway"
+      },
+      {
+        "value": "薬剤師の趣味について記録した",
+        "originalEn": "Document the pharmacist’s hobbies"
+      },
+      {
+        "value": "薬剤師の家族について記録した",
+        "originalEn": "Document the pharmacist’s family"
+      },
+      {
+        "value": "薬剤師のセンスについて記録した",
+        "originalEn": "Document the pharmacist’s taste"
+      },
+      {
+        "value": "薬剤師の能力について記録した",
+        "originalEn": "Document the pharmacist’s skills"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "defibrillator",
+        "quantity": 1,
+        "name": {
+          "value": "蘇生装置",
+          "originalEn": "Defibrillator"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/defibrillator.png"
+      },
+      {
+        "id": "surge_shield_recharger",
+        "quantity": 1,
+        "name": {
+          "value": "サージシールド・リチャージャー",
+          "originalEn": "Surge Shield Recharger"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/surge_shield_recharger.png"
+      },
+      {
+        "id": "sterilized_bandage",
+        "quantity": 3,
+        "name": {
+          "value": "消毒された包帯",
+          "originalEn": "Sterilized Bandage"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/sterilized_bandage.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -992,6 +3796,51 @@
     ],
     "nextQuestIds": [
       "communication_hideout"
+    ],
+    "description": {
+      "value": "ARCの動きを監視するための機材を宇宙港に設置した。さっき接続が切れてしまったんだ… だから管制塔に向かって、ログの回収を手伝ってほしい。",
+      "originalEn": "I have equipment set up at the Spaceport, to monitor ARC’s movements. My connection broke down just now — I need you to head to the Control Towers and help me retrieve my logs."
+    },
+    "objectives": [
+      {
+        "value": "管制塔A6を訪れた",
+        "originalEn": "Visit Control Tower A6"
+      },
+      {
+        "value": "管制塔A6の最上階に到達した",
+        "originalEn": "Reach the top of Control Tower A6"
+      },
+      {
+        "value": "端末から接続を確立した",
+        "originalEn": "Establish a connection from the terminal"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "spaceport_control_tower_key",
+        "quantity": 1,
+        "name": {
+          "value": "宇宙港管制塔の鍵",
+          "originalEn": "Spaceport Control Tower Key"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/spaceport_control_tower_key.png"
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "snap_hook",
+        "quantity": 1,
+        "name": {
+          "value": "スナップ・フック",
+          "originalEn": "Snap Hook"
+        },
+        "rarity": "Legendary",
+        "imageFilename": "https://cdn.arctracker.io/items/snap_hook.png"
+      }
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -1012,6 +3861,50 @@
     "nextQuestIds": [
       "market_correction"
     ],
+    "description": {
+      "value": "埋もれた街の受け渡し場所から、うちの商品を奪った奴がいる。罠を仕掛けたんだけど、あんたに確認してきてほしいんだ。",
+      "originalEn": "Someone has been lifting supplies from my drop-off point in Buried City. I’ve set up a trap, but I need someone to check it for me."
+    },
+    "objectives": [
+      {
+        "value": "埋もれた街の郊外にあるSu Durante倉庫に到達した",
+        "originalEn": "Reach the Su Durante Warehouses in the Outskirts in Buried City"
+      },
+      {
+        "value": "倉庫付近でティアン・ウェンの隠し場所を探した",
+        "originalEn": "Search for Tian Wen's cache near the Warehouses"
+      },
+      {
+        "value": "手がかりを辿った",
+        "originalEn": "Follow the clues"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "shotgun_choke_ii",
+        "quantity": 1,
+        "name": {
+          "value": "ショットガン・チョーク II",
+          "originalEn": "Shotgun Choke II"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/shotgun_choke_ii.png"
+      },
+      {
+        "id": "angled_grip_ii",
+        "quantity": 1,
+        "name": {
+          "value": "アングル・グリップ II",
+          "originalEn": "Angled Grip II"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/angled_grip_ii.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1030,6 +3923,56 @@
     ],
     "nextQuestIds": [
       "eyes_on_the_prize"
+    ],
+    "description": {
+      "value": "あの時の盗み、偶然とは思えないな。トレドの商売敵の中に、勝手な場所に店を建てた奴がいる。宝箱に細工してきてくれないか。奴らが調子に乗る前にね。",
+      "originalEn": "That theft before? Doesn’t look like a coincidence anymore. Some of the competition from Toledo is setting up shop where they don’t belong. I want their cache sabotaged, preferably before they get too comfortable."
+    },
+    "objectives": [
+      {
+        "value": "マラーノ駅付近の宝箱を探した",
+        "originalEn": "Locate the cache near Marano Station"
+      },
+      {
+        "value": "隠してある物に細工をした",
+        "originalEn": "Sabotage the cache"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "silencer_ii",
+        "quantity": 1,
+        "name": {
+          "value": "サイレンサー II",
+          "originalEn": "Silencer II"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/silencer_ii.png"
+      },
+      {
+        "id": "extended_light_mag_i",
+        "quantity": 1,
+        "name": {
+          "value": "拡張小型弾倉 I",
+          "originalEn": "Extended Light Mag I"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/extended_light_mag_i.png"
+      },
+      {
+        "id": "compensator_i",
+        "quantity": 1,
+        "name": {
+          "value": "コンペンセイター I",
+          "originalEn": "Compensator I"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/compensator_i.png"
+      }
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -1052,6 +3995,50 @@
     "nextQuestIds": [
       "a_reveal_in_ruins"
     ],
+    "description": {
+      "value": "布から包帯を作るのは得意になったけど、レントゲンやパルスオキシメーターの扱いには慣れてないんだ。",
+      "originalEn": "I’ve become quite crafty at weaving bandages from Fabric, but to my shame, I haven’t quite mastered weaving an x-ray machine or a pulse oximiter."
+    },
+    "objectives": [
+      {
+        "value": "宇宙港の出発棟でコンテナを2個調べた",
+        "originalEn": "On Spaceport, search 2 containers in the Departure Building's exam rooms"
+      },
+      {
+        "value": "埋もれた街の病院でコンテナを3個調べた",
+        "originalEn": "Search 3 containers in the Hospital in Buried City"
+      },
+      {
+        "value": "ダム戦場の研究管理センターで診察室のコンテナを2個調べた",
+        "originalEn": "On Dam Battlegrounds, search 2 containers in the Research & Administration building's medical room"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "defibrillator",
+        "quantity": 3,
+        "name": {
+          "value": "蘇生装置",
+          "originalEn": "Defibrillator"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/defibrillator.png"
+      },
+      {
+        "id": "vita_shot",
+        "quantity": 2,
+        "name": {
+          "value": "ヴィータ注射",
+          "originalEn": "Vita Shot"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/vita_shot.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1072,6 +4059,78 @@
       "dormant_barons"
     ],
     "nextQuestIds": [],
+    "description": {
+      "value": "サーベイヤーは見つけた？\r\n\r\nデカくて丸い連中。おそらく軌道上にデータを送り返してるから、例の信号と関係してる気がしてる。中身を開いて、データを解読してみてくれない？",
+      "originalEn": "Have you spotted any Surveyors; the big round ones? \n\nThey seem to be transmitting data back into orbit, and I can’t help but think it's tied to that signal we picked up. Will you break one open, so we can try to decipher the data?"
+    },
+    "objectives": [
+      {
+        "value": "ARC サーベイヤーを破壊した",
+        "originalEn": "Destroy an ARC Surveyor"
+      },
+      {
+        "value": "サーベイヤーのボックスを1個手に入れた",
+        "originalEn": "Obtain 1 Surveyor Vault"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "jolt_mine",
+        "quantity": 3,
+        "name": {
+          "value": "ジョルト地雷",
+          "originalEn": "Jolt Mine"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/jolt_mine.png"
+      },
+      {
+        "id": "showstopper",
+        "quantity": 2,
+        "name": {
+          "value": "ショーストッパー",
+          "originalEn": "Showstopper"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/showstopper.png"
+      }
+    ],
+    "requiredItems": [
+      {
+        "id": "surveyor_vault",
+        "quantity": 1,
+        "name": {
+          "value": "サーベイヤーのボックス",
+          "originalEn": "Surveyor Vault"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/surveyor_vault.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "photoelectric_cloak",
+        "quantity": 1,
+        "name": {
+          "value": "光電子マント",
+          "originalEn": "Photoelectric Cloak"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/photoelectric_cloak.png"
+      },
+      {
+        "id": "raider_hatch_key",
+        "quantity": 1,
+        "name": {
+          "value": "レイダーハッチの鍵",
+          "originalEn": "Raider Hatch Key"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/raider_hatch_key.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1087,6 +4146,102 @@
       "with_a_view"
     ],
     "nextQuestIds": [],
+    "description": {
+      "value": "ARCの信号が広がっているって噂で、みんなピリピリしてる。映画鑑賞会でも開けば気が紛れると思ったんだけど、必要なものが少し足りないんだ。手を貸してくれないか？",
+      "originalEn": "Everyone's been on edge ever since rumors of that ARC signal spread. I was thinking a movie night would be a great distraction, but I'm missing some crucial supplies. You'll help me out, yeah?"
+    },
+    "objectives": [
+      {
+        "value": "携帯テレビをアポロに届けた",
+        "originalEn": "Deliver a Portable TV to Apollo"
+      },
+      {
+        "value": "ステラ・モンティスで、古い映画テープの文化アーカイブを探した",
+        "originalEn": "On Stella Montis, search the Cultural Archives for old movie tapes"
+      },
+      {
+        "value": "映画のテープの山をアポロに届けた",
+        "originalEn": "Deliver the Stack of Movie Tapes to Apollo"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "blue_light_stick",
+        "quantity": 3,
+        "name": {
+          "value": "青色のグロースティック",
+          "originalEn": "Blue Light Stick"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/blue_light_stick.png"
+      },
+      {
+        "id": "yellow_light_stick",
+        "quantity": 3,
+        "name": {
+          "value": "黄色のグロースティック",
+          "originalEn": "Yellow Light Stick"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/yellow_light_stick.png"
+      }
+    ],
+    "requiredItems": [
+      {
+        "id": "portable_tv",
+        "quantity": 1,
+        "name": {
+          "value": "携帯テレビ",
+          "originalEn": "Portable TV"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/portable_tv.png"
+      },
+      {
+        "id": "stack_of_movie_tapes",
+        "quantity": 1,
+        "name": {
+          "value": "映画テープの山",
+          "originalEn": "Stack of Movie Tapes"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/stack_of_movie_tapes.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "showstopper",
+        "quantity": 3,
+        "name": {
+          "value": "ショーストッパー",
+          "originalEn": "Showstopper"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/showstopper.png"
+      },
+      {
+        "id": "smoke_grenade",
+        "quantity": 3,
+        "name": {
+          "value": "スモーク・グレネード",
+          "originalEn": "Smoke Grenade"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/smoke_grenade.png"
+      },
+      {
+        "id": "fireworks_box",
+        "quantity": 1,
+        "name": {
+          "value": "花火の箱",
+          "originalEn": "Fireworks Box"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/fireworks_box.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1110,6 +4265,47 @@
       "a_first_foothold",
       "a_bad_feeling"
     ],
+    "description": {
+      "value": "深刻な損害が出ているけど、一番ひどいのが上層の設備。嵐のせいで動かなくなったアンテナも複数確認されてる。",
+      "originalEn": "The damage down here was pretty bad, but our Topside infrastructure was hit even harder. I still have several antennas that stopped working after the storm."
+    },
+    "objectives": [
+      {
+        "value": "フィールド貯蔵庫に向かった",
+        "originalEn": "Visit a Field Depot"
+      },
+      {
+        "value": "フィールド貯蔵庫の屋上のアンテナを修理した",
+        "originalEn": "Repair the antenna on the roof of the Field Depot"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "remote_raider_flare",
+        "quantity": 2,
+        "name": {
+          "value": "遠隔レイダー発煙筒",
+          "originalEn": "Remote Raider Flare"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/remote_raider_flare.png"
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "defibrillator",
+        "quantity": 2,
+        "name": {
+          "value": "蘇生装置",
+          "originalEn": "Defibrillator"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/defibrillator.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1130,6 +4326,64 @@
     "nextQuestIds": [
       "on_the_map"
     ],
+    "description": {
+      "value": "他のレイダーたちはみんな聴覚障害が深刻らしい。\r\n\r\nステラ・モンティスで超高機能な補聴器が開発されたって噂を聞いたんだ。そいつを見つけ出すことができれば、みんな室内で話すくらいの声量で話せるかもしれない。",
+      "originalEn": "Seems like every other Raider here has some serious hearing damage.\r\n\r\nI heard rumors they developed some extra advanced hearing aids at Stella Montis. If you can track them down, we might all be able to use our indoor voices, for once."
+    },
+    "objectives": [
+      {
+        "value": "受付のコンピューターで研究者の訪問者ログを見つけた",
+        "originalEn": "Find the researcher's guest logs on the reception computers"
+      },
+      {
+        "value": "研究者が講義をしている場所を探し、メモを見た",
+        "originalEn": "Find where the researcher held their lecture, and access their notes"
+      },
+      {
+        "value": "医療研究所にあるコンピューターのプロトタイプに関する情報を見つけた",
+        "originalEn": "Find information about the prototypes on the Medical Research computers"
+      },
+      {
+        "value": "組み立て場のワークショップ内で、印刷された発送記録を見つけた",
+        "originalEn": "Find the printed shipping logs in the Assembly Workshops"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "lure_grenade",
+        "quantity": 3,
+        "name": {
+          "value": "ルアー・グレネード",
+          "originalEn": "Lure Grenade"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/lure_grenade.png"
+      },
+      {
+        "id": "noisemaker",
+        "quantity": 5,
+        "name": {
+          "value": "騒音発生装置",
+          "originalEn": "Noisemaker"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/noisemaker.png"
+      },
+      {
+        "id": "shaker",
+        "quantity": 1,
+        "name": {
+          "value": "マラカス",
+          "originalEn": "Shaker"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/shaker.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1147,6 +4401,79 @@
       "on_deaf_ears"
     ],
     "nextQuestIds": [],
+    "description": {
+      "value": "補聴器の座標はわかっているが、それを宇宙港の紙の地図と照合する必要がある。足はまだ動かせるな？",
+      "originalEn": "We know the coordinates for those hearing aids, but I’ll have to cross-reference them with a paper map of the Spaceport. Those legs of yours aren’t too tired, are they?"
+    },
+    "objectives": [
+      {
+        "value": "燃料ラインの断裂箇所に向かい、位置情報を送信した",
+        "originalEn": "Head to where the Fuel Lines snapped, and transmit your location"
+      },
+      {
+        "value": "燃料管理室の近くにあるアンテナに向かい、位置情報を送信した",
+        "originalEn": "Head to the antenna near the Fuel Control, and transmit your location"
+      },
+      {
+        "value": "壁の裂け目の向こうにあるサボテン地帯に向かい、位置情報を送信した",
+        "originalEn": "Head to the cactus patch in the wall breach, and transmit your location"
+      },
+      {
+        "value": "コンテナ保管庫の建物の屋上から位置情報を送信した",
+        "originalEn": "Transmit your location from the roof of the Container Storage building"
+      },
+      {
+        "value": "タープで覆われたコンテナを見つけ、マークした",
+        "originalEn": "Find the container covered in tarp, and mark it"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "defibrillator",
+        "quantity": 3,
+        "name": {
+          "value": "蘇生装置",
+          "originalEn": "Defibrillator"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/defibrillator.png"
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "sterilized_bandage",
+        "quantity": 3,
+        "name": {
+          "value": "消毒された包帯",
+          "originalEn": "Sterilized Bandage"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/sterilized_bandage.png"
+      },
+      {
+        "id": "surge_shield_recharger",
+        "quantity": 3,
+        "name": {
+          "value": "サージシールド・リチャージャー",
+          "originalEn": "Surge Shield Recharger"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/surge_shield_recharger.png"
+      },
+      {
+        "id": "tactical_mk3_healing",
+        "quantity": 1,
+        "name": {
+          "value": "戦術MK3 (回復)",
+          "originalEn": "Tactical Mk. 3 (Healing)"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_healing.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1165,6 +4492,60 @@
     ],
     "nextQuestIds": [
       "lost_in_transmission"
+    ],
+    "description": {
+      "value": "ARCが進化するなら、私たちだって負けてない。基地を仕上げて革命を起こそうか。新しいやり方でARCを追跡し、隙を突き、バラバラにしてやるんだ。",
+      "originalEn": "ARC may be changing, but we’re finally changing with it. Let’s finish up those outposts and revolutionize the way we track them, flank them, and smash them to bits."
+    },
+    "objectives": [
+      {
+        "value": "ダムにある壁画の家を訪れた",
+        "originalEn": "Visit the Pattern House in The Dam"
+      },
+      {
+        "value": "電源スイッチを見つけて操作した",
+        "originalEn": "Find and flip the power switch"
+      },
+      {
+        "value": "屋根のアンテナ設置を完了した",
+        "originalEn": "Complete the antenna installation on the roof"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "buried_city_town_hall_key",
+        "quantity": 1,
+        "name": {
+          "value": "埋もれた街の町役場の鍵",
+          "originalEn": "Buried City Town Hall Key"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/buried_city_town_hall_key.png"
+      },
+      {
+        "id": "raider_hatch_key",
+        "quantity": 1,
+        "name": {
+          "value": "レイダーハッチの鍵",
+          "originalEn": "Raider Hatch Key"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/raider_hatch_key.png"
+      },
+      {
+        "id": "jolt_mine",
+        "quantity": 3,
+        "name": {
+          "value": "ジョルト地雷",
+          "originalEn": "Jolt Mine"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/jolt_mine.png"
+      }
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -1189,6 +4570,88 @@
     "nextQuestIds": [
       "combat_recon"
     ],
+    "description": {
+      "value": "旗は見えた？ 怯えるのはもうおしまいにしよう。君はいくつもの死線をくぐり抜けてきたって聞いてる。ロケッティアを倒せると思う？",
+      "originalEn": "Did you see the flags? The time for cowering is over. You’ve been more than battle-tested, from what I hear; think you can take on a Rocketeer?"
+    },
+    "objectives": [
+      {
+        "value": "ロケッティアを破壊した",
+        "originalEn": "Destroy a Rocketeer"
+      },
+      {
+        "value": "ロケッティアドライバーを手に入れた",
+        "originalEn": "Obtain a Rocketeer Driver"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "medium_shield",
+        "quantity": 1,
+        "name": {
+          "value": "中型シールド",
+          "originalEn": "Medium Shield"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/medium_shield.png"
+      },
+      {
+        "id": "combat_mk2",
+        "quantity": 1,
+        "name": {
+          "value": "戦闘MK2",
+          "originalEn": "Combat Mk. 2"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/combat_i.png"
+      }
+    ],
+    "requiredItems": [
+      {
+        "id": "rocketeer_driver",
+        "quantity": 1,
+        "name": {
+          "value": "ロケッティアドライバー",
+          "originalEn": "Rocketeer Driver"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/rocketeer_driver.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "surge_shield_recharger",
+        "quantity": 3,
+        "name": {
+          "value": "サージシールド・リチャージャー",
+          "originalEn": "Surge Shield Recharger"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/surge_shield_recharger.png"
+      },
+      {
+        "id": "wolfpack",
+        "quantity": 1,
+        "name": {
+          "value": "ウルフパック",
+          "originalEn": "Wolfpack"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/wolfpack.png"
+      },
+      {
+        "id": "wolfpack",
+        "quantity": 1,
+        "name": {
+          "value": "ウルフパック",
+          "originalEn": "Wolfpack"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/wolfpack.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1207,6 +4670,61 @@
     ],
     "nextQuestIds": [
       "settled_in_full"
+    ],
+    "description": {
+      "value": "ドジャーっていうレイダーにバスティオン・セルを届けてもらう約束だったのに、音信が途絶えた。\r\n\r\nそのブツがどこかの物漁りに取られてしまう前に、物品の隠し場所を見つけてほしい。興味ある？",
+      "originalEn": "I had a deal for a Bastion Cell lined up with a Raider called Dodger, but he's gone quiet. \r\n\r\nI need someone to track down his stash before some scavenger stumbles into it. Interested?"
+    },
+    "objectives": [
+      {
+        "value": "交通トンネルでドジャーの物品隠し場所を探した",
+        "originalEn": "Search for Dodger's stash inside the Traffic Tunnel"
+      },
+      {
+        "value": "ピリグリム・ピークのアンテナ付近でドジャーの取り引き場所を探す",
+        "originalEn": "Search Dodger's deal spot by the Pilgrim's Peak antenna"
+      },
+      {
+        "value": "ドジャーのメモをティアン・ウェンに届けた",
+        "originalEn": "Deliver Dodger's Note to Tian Wen"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "dodgers_note",
+        "quantity": 1,
+        "name": {
+          "value": "ドジャーのメモ",
+          "originalEn": "Dodger's Note"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "extended_medium_mag_iii",
+        "quantity": 1,
+        "name": {
+          "value": "拡張中型弾倉 III",
+          "originalEn": "Extended Medium Mag III"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/extended_medium_mag_iii.png"
+      },
+      {
+        "id": "silencer_ii",
+        "quantity": 1,
+        "name": {
+          "value": "サイレンサー II",
+          "originalEn": "Silencer II"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/silencer_ii.png"
+      }
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -1228,6 +4746,64 @@
     ],
     "nextQuestIds": [
       "deciphering_the_data"
+    ],
+    "description": {
+      "value": "あんな風に地区が丸ごと崩壊するなんて… みんなが怖がるのも無理はない。これまで以上に補強が必要になるけど、俺たちだけじゃ無理だ。",
+      "originalEn": "For an entire sector to collapse like that… No wonder people are scared. We need to reinforce beyond anything we’ve done before, and we can’t do it alone."
+    },
+    "objectives": [
+      {
+        "value": "任意のENELICA社の建物に行く",
+        "originalEn": "Go to any ENELICA building"
+      },
+      {
+        "value": "研究者のメモが貼ってある掲示板を探す",
+        "originalEn": "Search for a notice board with a note from the researcher"
+      },
+      {
+        "value": "埋もれた街で、ローマ広場のコンヴィニオの上にある最上階に到達する",
+        "originalEn": "On Buried City, reach the top floor above the Convinio in Piazza Roma"
+      },
+      {
+        "value": "研究者のアパートを見つけ、研究データを探す",
+        "originalEn": "Find the researcher's flat and search for any research data"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "raider_hatch_key",
+        "quantity": 1,
+        "name": {
+          "value": "レイダーハッチの鍵",
+          "originalEn": "Raider Hatch Key"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/raider_hatch_key.png"
+      },
+      {
+        "id": "seeker_grenade",
+        "quantity": 3,
+        "name": {
+          "value": "シーカー・グレネード",
+          "originalEn": "Seeker Grenade"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/seeker_grenade.png"
+      },
+      {
+        "id": "advanced_electrical_components",
+        "quantity": 1,
+        "name": {
+          "value": "高度な電気部品",
+          "originalEn": "Advanced Electrical Components"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/advanced_electrical_components.png"
+      }
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -1251,6 +4827,46 @@
       "clearer_skies",
       "trash_into_treasure"
     ],
+    "description": {
+      "value": "嵐は落ち着いたけど、多くのインフラに損害が出ている。ここに滞在したいなら、修理にも協力してもらわないと。",
+      "originalEn": "The storm has mostly settled, but much of our infrastructure has taken a proper beating. If you're hoping to stay with us, I'll need you to pull your weight in the repair efforts."
+    },
+    "objectives": [
+      {
+        "value": "戦利品アイコンでマップに示されたエリアを訪れた",
+        "originalEn": "Visit any area on your map with a loot category icon"
+      },
+      {
+        "value": "容器を3個調査した",
+        "originalEn": "Loot 3 containers"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "rattler_iii",
+        "quantity": 1,
+        "name": {
+          "value": "ラトラー III",
+          "originalEn": "Rattler III"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/rattler.png"
+      },
+      {
+        "id": "medium_ammo",
+        "quantity": 80,
+        "name": {
+          "value": "中型弾薬",
+          "originalEn": "Medium Ammo"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/medium_ammo.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1269,6 +4885,64 @@
     ],
     "nextQuestIds": [
       "flickering_threat"
+    ],
+    "description": {
+      "value": "これは不運なんてレベルじゃない。何かが… あるいは誰かがうちの変電所をいくつか破壊したんだ。 修理を頼んだエンジニアが戻ってこないから、空いているレイダー全員に調査してもらいたい。君もだ。",
+      "originalEn": "This goes beyond bad luck. Something—or someone—has knocked out some of our electrical substations. The engineer I sent out to fix it hasn’t returned, so I need all available Raiders to look into it. That includes you."
+    },
+    "objectives": [
+      {
+        "value": "宇宙港の南にある変電所を見つけた",
+        "originalEn": "Find the Electrical Substation south of the Spaceport"
+      },
+      {
+        "value": "行方不明になったエンジニアの痕跡を見つけた",
+        "originalEn": "Find any sign of the missing engineer"
+      },
+      {
+        "value": "フューズを設置した",
+        "originalEn": "Install the fuse"
+      },
+      {
+        "value": "電力を復旧した",
+        "originalEn": "Restore the power"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "wires",
+        "quantity": 5,
+        "name": {
+          "value": "ワイヤー",
+          "originalEn": "Wires"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/wires.png"
+      },
+      {
+        "id": "explosive_compound",
+        "quantity": 5,
+        "name": {
+          "value": "爆発性化合物",
+          "originalEn": "Explosive Compound"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/explosive_compound.png"
+      },
+      {
+        "id": "oil",
+        "quantity": 5,
+        "name": {
+          "value": "オイル",
+          "originalEn": "Oil"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/oil.png"
+      }
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -1289,6 +4963,60 @@
     "nextQuestIds": [
       "power_out"
     ],
+    "description": {
+      "value": "前から宇宙港の医療エリアが気になってたんだ。あそこにある物を使えば、この街で問答無用のチャンピオンになれる気がするんだよね。",
+      "originalEn": "I’ve been curious about the medical area in the Spaceport for a while now. Something tells me it’s got just what I need to become the undeniable champion of this place."
+    },
+    "objectives": [
+      {
+        "value": "宇宙港の出発棟を訪れた",
+        "originalEn": "Visit the Departure Building in Spaceport"
+      },
+      {
+        "value": "出発棟の中にある診察室を見つけた",
+        "originalEn": "Find the Medical Exam Room inside the Departure Building"
+      },
+      {
+        "value": "記録を探した",
+        "originalEn": "Search for the records"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "heavy_shield",
+        "quantity": 1,
+        "name": {
+          "value": "大型シールド",
+          "originalEn": "Heavy Shield"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/heavy_shield.png"
+      },
+      {
+        "id": "tactical_mk3_healing",
+        "quantity": 1,
+        "name": {
+          "value": "戦術MK3 (回復)",
+          "originalEn": "Tactical Mk. 3 (Healing)"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_healing.png"
+      },
+      {
+        "id": "adrenaline_shot",
+        "quantity": 3,
+        "name": {
+          "value": "アドレナリン注射",
+          "originalEn": "Adrenaline Shot"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/adrenaline_shot.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1308,6 +5036,75 @@
     "nextQuestIds": [
       "with_a_trace"
     ],
+    "description": {
+      "value": "崩壊した高速道路だけど、最近壊れたようだというのが心配だね。上層に廃墟は珍しくないけど、ほとんどは大昔壊れたものだから。",
+      "originalEn": "That collapsed highway worries me; it looks to be recent. Much of Topside may be in ruins, but most of it is from ages ago."
+    },
+    "objectives": [
+      {
+        "value": "崩壊した高速道路の写真を撮った",
+        "originalEn": "Take a photo of the Collapsed Highway"
+      },
+      {
+        "value": "割れた地面に行った",
+        "originalEn": "Go to the Broken Earth"
+      },
+      {
+        "value": "割れた地面を通って破壊の跡を辿った",
+        "originalEn": "Follow the trail of destruction through the Broken Earth"
+      },
+      {
+        "value": "未知のARCマシンを調査した",
+        "originalEn": "Investigate the unknown ARC machines"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "binoculars",
+        "quantity": 1,
+        "name": {
+          "value": "双眼鏡",
+          "originalEn": "Binoculars"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/binoculars.png"
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "zipline",
+        "quantity": 1,
+        "name": {
+          "value": "ジップライン",
+          "originalEn": "Zipline"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/zipline.png"
+      },
+      {
+        "id": "barricade_kit",
+        "quantity": 3,
+        "name": {
+          "value": "バリケードキット",
+          "originalEn": "Barricade Kit"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/barricade_kit.png"
+      },
+      {
+        "id": "door_blocker",
+        "quantity": 3,
+        "name": {
+          "value": "ドアストッパー",
+          "originalEn": "Door Blocker"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/door_blocker.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1325,6 +5122,83 @@
     "nextQuestIds": [
       "what_goes_around"
     ],
+    "description": {
+      "value": "シャニが拾った信号について噂を聞いたよ。ARCは常に環境に適応するし、これで最後ってわけじゃないはずだ。\r\n\r\n軍備拡張で競争したいなら、やってやろうじゃないか。",
+      "originalEn": "I heard rumors about some signal Shani picked up. ARC is constantly adapting, and I'm sure this won’t be their last warning sign.\r\n\r\nWell, if it’s an arms race they want, they can get one."
+    },
+    "objectives": [
+      {
+        "value": "任意のグレネードでARCエネミーを2体爆破した",
+        "originalEn": "Destroy 2 ARC enemies using any explosive grenade"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "light_impact_grenade",
+        "quantity": 5,
+        "name": {
+          "value": "ライトインパクト・グレネード",
+          "originalEn": "Light Impact Grenade"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/light_impact_grenade.png"
+      },
+      {
+        "id": "light_impact_grenade",
+        "quantity": 5,
+        "name": {
+          "value": "ライトインパクト・グレネード",
+          "originalEn": "Light Impact Grenade"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/light_impact_grenade.png"
+      },
+      {
+        "id": "snap_blast_grenade",
+        "quantity": 3,
+        "name": {
+          "value": "スナップブラスト・グレネード",
+          "originalEn": "Snap Blast Grenade"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/snap_blast_grenade.png"
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "lil_smoke_grenade",
+        "quantity": 5,
+        "name": {
+          "value": "リトルスモーク・グレネード",
+          "originalEn": "Li'l Smoke Grenade"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/lil_smoke_grenade.png"
+      },
+      {
+        "id": "shrapnel_grenade",
+        "quantity": 3,
+        "name": {
+          "value": "シャープネル・グレネード",
+          "originalEn": "Shrapnel Grenade"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/shrapnel_grenade.png"
+      },
+      {
+        "id": "barricade_kit",
+        "quantity": 3,
+        "name": {
+          "value": "バリケードキット",
+          "originalEn": "Barricade Kit"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/barricade_kit.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1340,6 +5214,47 @@
       "outstanding_balance"
     ],
     "nextQuestIds": [],
+    "description": {
+      "value": "ラッキーだね。ドジャーの負債が、あんたの稼ぎの種になる。バスティオン・セルを持ってきな。本物のバスティオンから、本物のセルを引っこ抜いてくるんだ。いいね？",
+      "originalEn": "Lucky for you, Dodger's debt can still be settled. Bring me a Bastion Cell. A real one, pulled from a real Bastion. Consider what Dodger owed me transferred to credit for you. Okay?"
+    },
+    "objectives": [
+      {
+        "value": "バスティオンを破壊した",
+        "originalEn": "Destroy a Bastion"
+      },
+      {
+        "value": "ティアン・ウェンにバスティオン・セルを届けた",
+        "originalEn": "Deliver a Bastion Cell to Tian Wen"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "bastion_cell",
+        "quantity": 1,
+        "name": {
+          "value": "バスティオン・セル",
+          "originalEn": "Bastion Cell"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/bastion_cell.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "raider_tokens",
+        "quantity": 30,
+        "name": {
+          "value": "raider_tokens",
+          "originalEn": "raider_tokens"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1360,6 +5275,95 @@
       "on_deaf_ears",
       "with_a_view"
     ],
+    "description": {
+      "value": "街はステラ・モンティスのことで持ち切りだ。正直、私も注目してるよ。あの場所が何なのかは、他の奴に考えさせとくとして... 私が気になるのは、中のテクノロジーだね。",
+      "originalEn": "All of Speranza is buzzing about Stella Montis right now, and I admit it’s caught my attention. Let the others sort out the whats and hows; I’m interested in the tech inside."
+    },
+    "objectives": [
+      {
+        "value": "検証環境でローヴァーの写真を撮った",
+        "originalEn": "Take a Photo of any of the Rovers in the Sandbox"
+      },
+      {
+        "value": "ロビーの隣のセキュリティ・チェックポイント室で書類を調査した",
+        "originalEn": "Search the papers in the Security Checkpoint room by the Lobby"
+      },
+      {
+        "value": "ティアン・ウェンにマグネトロンを届けた",
+        "originalEn": "Deliver a Magnetron to Tian Wen"
+      },
+      {
+        "value": "ティアン・ウェンにフローコントローラーを届けた",
+        "originalEn": "Deliver a Flow Controller to Tian Wen"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "magnetron",
+        "quantity": 1,
+        "name": {
+          "value": "マグネトロン",
+          "originalEn": "Magnetron"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/magnetron.png"
+      },
+      {
+        "id": "flow_controller",
+        "quantity": 1,
+        "name": {
+          "value": "フローコントローラー",
+          "originalEn": "Flow Controller"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/flow_controller.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "burletta_iii",
+        "quantity": 1,
+        "name": {
+          "value": "バーレッタ III",
+          "originalEn": "Burletta III"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/burletta.png"
+      },
+      {
+        "id": "silencer_ii",
+        "quantity": 1,
+        "name": {
+          "value": "サイレンサー II",
+          "originalEn": "Silencer II"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/silencer_ii.png"
+      },
+      {
+        "id": "extended_light_mag_ii",
+        "quantity": 1,
+        "name": {
+          "value": "拡張小型弾倉 II",
+          "originalEn": "Extended Light Mag II"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/extended_light_mag_ii.png"
+      },
+      {
+        "id": "light_ammo",
+        "quantity": 100,
+        "name": {
+          "value": "小型弾薬",
+          "originalEn": "Light Ammo"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/light_ammo.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1379,6 +5383,60 @@
     "nextQuestIds": [
       "switching_the_supply"
     ],
+    "description": {
+      "value": "水に毒を盛られたとまでは言わないけど、君が持ってきたサンプルを見る限り、そうじゃないとも言い切れない。ダムに戻って、何が起こってるのか確認してくれないか？",
+      "originalEn": "I’m not saying our water’s been tampered with, but based on your samples, I can’t rule out the possibility either. Would you return to the Dam and see what’s wrong?"
+    },
+    "objectives": [
+      {
+        "value": "ダムの水質管理棟に辿り着いた",
+        "originalEn": "Reach the Water Treatment Building in The Dam"
+      },
+      {
+        "value": "沼の近くにある浸水吸入口を探した",
+        "originalEn": "Search for the Flood Spill Intake near the Swamp"
+      },
+      {
+        "value": "不審物を調査した",
+        "originalEn": "Investigate any suspicious objects"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "steel_spring",
+        "quantity": 5,
+        "name": {
+          "value": "鋼鉄のバネ",
+          "originalEn": "Steel Spring"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/steel_spring.png"
+      },
+      {
+        "id": "duct_tape",
+        "quantity": 5,
+        "name": {
+          "value": "ダクトテープ",
+          "originalEn": "Duct Tape"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/duct_tape.png"
+      },
+      {
+        "id": "mod_components",
+        "quantity": 1,
+        "name": {
+          "value": "モジュール部品",
+          "originalEn": "Mod Components"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/mod_components.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1396,6 +5454,83 @@
     "nextQuestIds": [
       "the_league",
       "out_of_the_shadows"
+    ],
+    "description": {
+      "value": "ホーネットに刺されると、下手したら本当にひどい目に遭ってしまう。1匹仕留めたとしても、大量の弾を無駄にしたことになる。\r\n\r\nもっとエレガントに倒せる方法を開発してる最中だ。ちょっと火花を散らしてみないか？",
+      "originalEn": "Those Hornet stings can really mess you up, if you’re unlucky. And even if you destroy one, you’re still wasting a ton of ammo.\r\n\r\nI’ve been working on a more elegant way to bring them down. Care to make some sparks fly?"
+    },
+    "objectives": [
+      {
+        "value": "トリガー・グレネードでホーネットを破壊した",
+        "originalEn": "Destroy a Hornet with a Trigger 'Nade or Snap Blast"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "trigger_nade",
+        "quantity": 3,
+        "name": {
+          "value": "トリガー・グレネード",
+          "originalEn": "Trigger 'Nade"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/trigger_nade.png"
+      },
+      {
+        "id": "trigger_nade",
+        "quantity": 3,
+        "name": {
+          "value": "トリガー・グレネード",
+          "originalEn": "Trigger 'Nade"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/trigger_nade.png"
+      },
+      {
+        "id": "snap_blast_grenade",
+        "quantity": 2,
+        "name": {
+          "value": "スナップブラスト・グレネード",
+          "originalEn": "Snap Blast Grenade"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/snap_blast_grenade.png"
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "trigger_nade_blueprint",
+        "quantity": 1,
+        "name": {
+          "value": "トリガー・グレネード設計図",
+          "originalEn": "Trigger Nade Blueprint"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/trigger_nade_blueprint.png"
+      },
+      {
+        "id": "crude_explosives",
+        "quantity": 4,
+        "name": {
+          "value": "粗製爆弾",
+          "originalEn": "Crude Explosives"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/crude_explosives.png"
+      },
+      {
+        "id": "processor",
+        "quantity": 2,
+        "name": {
+          "value": "プロセッサ",
+          "originalEn": "Processor"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/processor.png"
+      }
     ],
     "hasBlueprint": true,
     "blueprintRewards": [
@@ -1423,6 +5558,87 @@
       "with_a_view"
     ],
     "nextQuestIds": [],
+    "description": {
+      "value": "何事もちょっと不透明な方が楽しいだろ？ ある依頼主がステラ・モンティスの金庫の中身を欲しがっている。金庫は無傷だ。つまり中身はエクソダス以前からそこにあったものだ。興味ある？",
+      "originalEn": "You like a certain amount of uncertainty, right? A client wants the contents of a locked safe in Stella Montis. It's intact, so whatever's inside has been there since before the Exodus. Interested?"
+    },
+    "objectives": [
+      {
+        "value": "セキュリティ・ブリッジに行った",
+        "originalEn": "Go to the Security Bridge"
+      },
+      {
+        "value": "3階の階段脇の部屋で金庫を探した",
+        "originalEn": "Search for the safe in the side room by the third-floor staircases"
+      },
+      {
+        "value": "4階の管制室に上がった",
+        "originalEn": "Head upstairs to the fourth-floor control room"
+      },
+      {
+        "value": "アクセスカードプリンターを使い、金庫を開ける鍵を印刷した",
+        "originalEn": "Use the Access Card Printer to print a key to the safe"
+      },
+      {
+        "value": "金庫に入る別の方法を探した",
+        "originalEn": "Search for alternate ways into the safe"
+      },
+      {
+        "value": "金庫の中身を回収した",
+        "originalEn": "Retrieve the contents of the safe"
+      },
+      {
+        "value": "ティアン・ウェンにプロジェクト・エバーグリーンの設計図を届けた",
+        "originalEn": "Deliver the Project Heartwood Blueprints to Tian Wen"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "project_heartwood_blueprints",
+        "quantity": 1,
+        "name": {
+          "value": "プロジェクト・ハートウッドの設計図",
+          "originalEn": "Project Heartwood Blueprints"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "seeker_grenade",
+        "quantity": 5,
+        "name": {
+          "value": "シーカー・グレネード",
+          "originalEn": "Seeker Grenade"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/seeker_grenade.png"
+      },
+      {
+        "id": "lure_grenade",
+        "quantity": 5,
+        "name": {
+          "value": "ルアー・グレネード",
+          "originalEn": "Lure Grenade"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/lure_grenade.png"
+      },
+      {
+        "id": "snap_hook",
+        "quantity": 1,
+        "name": {
+          "value": "スナップ・フック",
+          "originalEn": "Snap Hook"
+        },
+        "rarity": "Legendary",
+        "imageFilename": "https://cdn.arctracker.io/items/snap_hook.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1441,6 +5657,83 @@
     ],
     "nextQuestIds": [
       "keeping_the_memory"
+    ],
+    "description": {
+      "value": "ファーストウェーブの時代に、仲間とダムの近くにトラップを作った。発電機をオーバーロードさせ、ARC対策に使ったんだ。今も通信の遮断や奇襲のため、その罠が使われていると聞いた。レイダー同士の争いだ。終わらせるべきだ。",
+      "originalEn": "Back during the First Wave, my squad and I built a trap out by the Dam. Overloaded a generator, turned it into a makeshift ARC trap. Now I hear Raiders are using it to cut comms and spring ambushes on each other. I need you to end it."
+    },
+    "objectives": [
+      {
+        "value": "ビクトリー・リッジに向かう",
+        "originalEn": "Reach Victory Ridge"
+      },
+      {
+        "value": "古いEMPトラップを見つけた",
+        "originalEn": "Find the old EMP trap"
+      },
+      {
+        "value": "1つ目の電源スイッチを切った",
+        "originalEn": "Disable the first power switch"
+      },
+      {
+        "value": "2つ目の電源スイッチを切った",
+        "originalEn": "Disable the second power switch"
+      },
+      {
+        "value": "3つ目の電源スイッチを切った",
+        "originalEn": "Disable the third power switch"
+      },
+      {
+        "value": "EMPトラップを停止した",
+        "originalEn": "Shut down the EMP trap"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "binoculars",
+        "quantity": 1,
+        "name": {
+          "value": "双眼鏡",
+          "originalEn": "Binoculars"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/binoculars.png"
+      },
+      {
+        "id": "defibrillator",
+        "quantity": 1,
+        "name": {
+          "value": "蘇生装置",
+          "originalEn": "Defibrillator"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/defibrillator.png"
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "medium_gun_parts",
+        "quantity": 5,
+        "name": {
+          "value": "中型銃のパーツ",
+          "originalEn": "Medium Gun Parts"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/medium_gun_parts.png"
+      },
+      {
+        "id": "advanced_mechanical_components",
+        "quantity": 3,
+        "name": {
+          "value": "高度な機械部品",
+          "originalEn": "Advanced Mechanical Components"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/advanced_mechanical_components.png"
+      }
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -1461,6 +5754,46 @@
     "nextQuestIds": [
       "a_warm_place_to_rest"
     ],
+    "description": {
+      "value": "宇宙港の地下に溜め池がある。その水をここまで引くことができたら、汚染を解決するまでの時間稼ぎになるだろう。",
+      "originalEn": "There is a reservoir beneath the Spaceport; if we manage to rout that water here, that should buy us time to deal with the contamination."
+    },
+    "objectives": [
+      {
+        "value": "宇宙港の下のトンネルを見つけた",
+        "originalEn": "Find the tunnels under the Spaceport"
+      },
+      {
+        "value": "宇宙港の下のトンネルにあるバルブを見つけて回した",
+        "originalEn": "Find and turn the valve in the tunnels under Spaceport"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "spaceport_trench_tower_key",
+        "quantity": 1,
+        "name": {
+          "value": "宇宙港のトレンチタワーの鍵",
+          "originalEn": "Spaceport Trench Tower Key"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/spaceport_trench_tower_key.png"
+      },
+      {
+        "id": "synthesized_fuel",
+        "quantity": 3,
+        "name": {
+          "value": "合成燃料",
+          "originalEn": "Synthesized Fuel"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/synthesized_fuel.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1476,6 +5809,95 @@
       "the_league"
     ],
     "nextQuestIds": [],
+    "description": {
+      "value": "ここでクイズだ。ホーネットにファイアボールをかけ合わせると、何になる？ 「ファイフライ」って答えたなら、俺と同じ認識だな。",
+      "originalEn": "Hey, question for you. What do you get if you cross a Hornet and Fireball? If your answer is ‘a Firefly’, then we’re on the same page."
+    },
+    "objectives": [
+      {
+        "value": "アポロにホーネットドライバーを届けた",
+        "originalEn": "Deliver a Hornet Driver to Apollo"
+      },
+      {
+        "value": "アポロにファイアボールバーナーを届けた",
+        "originalEn": "Deliver a Fireball Burner to Apollo"
+      },
+      {
+        "value": "ファイアフライを破壊した",
+        "originalEn": "Destroy a Firefly"
+      },
+      {
+        "value": "アポロにファイアフライ・バーナーを届けた",
+        "originalEn": "Deliver a Firefly Burner to Apollo"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "hornet_driver",
+        "quantity": 1,
+        "name": {
+          "value": "ホーネットドライバー",
+          "originalEn": "Hornet Driver"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/hornet_driver.png"
+      },
+      {
+        "id": "fireball_burner",
+        "quantity": 1,
+        "name": {
+          "value": "ファイアボールバーナー",
+          "originalEn": "Fireball Burner"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/fireball_burner.png"
+      },
+      {
+        "id": "firefly_burner",
+        "quantity": 1,
+        "name": {
+          "value": "ファイアフライ・バーナー",
+          "originalEn": "Firefly Burner"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/firefly_burner.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "fireworks_box_blueprint",
+        "quantity": 1,
+        "name": {
+          "value": "花火の箱の設計図",
+          "originalEn": "Fireworks Box Blueprint"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/fireworks_box.png"
+      },
+      {
+        "id": "seeker_grenade",
+        "quantity": 3,
+        "name": {
+          "value": "シーカー・グレネード",
+          "originalEn": "Seeker Grenade"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/seeker_grenade.png"
+      },
+      {
+        "id": "blaze_grenade",
+        "quantity": 3,
+        "name": {
+          "value": "ブレイズ・グレネード",
+          "originalEn": "Blaze Grenade"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/blaze_grenade.png"
+      }
+    ],
     "hasBlueprint": true,
     "blueprintRewards": [
       {
@@ -1507,6 +5929,79 @@
       "outstanding_balance",
       "a_prime_specimen"
     ],
+    "description": {
+      "value": "最近、おしゃべりできる蒸留器の夢を見るんだ！ 変な話だよな？ でも真面目な話、もっと純度の高い化合物を使えば、より強力な爆薬が作れるはずだ！ すごいことになりそうだろ？",
+      "originalEn": "You know what I've been dreaming of lately? A talking water distiller! Crazy, huh? But seriously, with purer compounds I could make explosives with more oumph! Would be something, right?"
+    },
+    "objectives": [
+      {
+        "value": "宇宙港の地下トンネルでコンテナを4個調べた",
+        "originalEn": "On Spaceport, search 4 containers in the underground tunnels"
+      },
+      {
+        "value": "トンネル内のろ過システムを見つけて監視した",
+        "originalEn": "Find and monitor any Filtration System in the tunnels"
+      },
+      {
+        "value": "ブルーゲートの整備バンカーを訪れた",
+        "originalEn": "On The Blue Gate, visit the Maintenance Bunker"
+      },
+      {
+        "value": "バンカーの浄化システムを監視した",
+        "originalEn": "Monitor the Purification System in the bunker"
+      },
+      {
+        "value": "バンカーの設計図を見つけて写真を撮った",
+        "originalEn": "Find and photograph the blueprints in the bunker"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "blue_light_stick",
+        "quantity": 5,
+        "name": {
+          "value": "青色のグロースティック",
+          "originalEn": "Blue Light Stick"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/blue_light_stick.png"
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "deadline",
+        "quantity": 2,
+        "name": {
+          "value": "デッドライン",
+          "originalEn": "Deadline"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/deadline.png"
+      },
+      {
+        "id": "showstopper",
+        "quantity": 3,
+        "name": {
+          "value": "ショーストッパー",
+          "originalEn": "Showstopper"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/showstopper.png"
+      },
+      {
+        "id": "heavy_fuze_grenade",
+        "quantity": 3,
+        "name": {
+          "value": "ヘビーフューズ・グレネード",
+          "originalEn": "Heavy Fuze Grenade"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/heavy_fuze_grenade.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1526,6 +6021,96 @@
     "nextQuestIds": [
       "test_case"
     ],
+    "description": {
+      "value": "この辺りの子供たちが空っぽのグレネードの薬莢を蹴り回している。空っぽでなくなるのも時間の問題だ。そこで計画がある。準備を手伝ってくれれば、子どもたちのためにちゃんとしたサッカーチームを作れると思う。",
+      "originalEn": "Kids around here have been kicking empty grenade casings around. It’s only a matter of time before they’re not so empty.\r\n\r\nSo here’s the plan. You help me with some prep work, and I’ll set up an actual football team for the young ones."
+    },
+    "objectives": [
+      {
+        "value": "アポロに空気の抜けたサッカーボールを届けた",
+        "originalEn": "Deliver a Deflated Football to Apollo"
+      },
+      {
+        "value": "自転車の空気入れをアポロに届けた",
+        "originalEn": "Deliver a Bicycle Pump to Apollo"
+      },
+      {
+        "value": "ダム戦場で、給水塔のそばのゴールを写真に撮った",
+        "originalEn": "On Dam Battlegrounds, photograph the goal by the Water Towers"
+      },
+      {
+        "value": "埋もれた街の売店で、サッカー雑誌を写真に撮った",
+        "originalEn": "On Buried City, photograph the football magazines in any kiosk"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "yellow_light_stick",
+        "quantity": 5,
+        "name": {
+          "value": "黄色のグロースティック",
+          "originalEn": "Yellow Light Stick"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/yellow_light_stick.png"
+      },
+      {
+        "id": "red_light_stick",
+        "quantity": 5,
+        "name": {
+          "value": "赤色のグロースティック",
+          "originalEn": "Red Light Stick"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/red_light_stick.png"
+      }
+    ],
+    "requiredItems": [
+      {
+        "id": "deflated_football",
+        "quantity": 1,
+        "name": {
+          "value": "空気の抜けたサッカーボール",
+          "originalEn": "Deflated Football"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/deflated_football.png"
+      },
+      {
+        "id": "bicycle_pump",
+        "quantity": 1,
+        "name": {
+          "value": "自転車の空気入れ",
+          "originalEn": "Bicycle Pump"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/bicycle_pump.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "tagging_grenade",
+        "quantity": 5,
+        "name": {
+          "value": "タグ・グレネード",
+          "originalEn": "Tagging Grenade"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/tagging_grenade.png"
+      },
+      {
+        "id": "firecracker",
+        "quantity": 5,
+        "name": {
+          "value": "爆竹",
+          "originalEn": "Firecracker"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/firecracker.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1544,6 +6129,47 @@
     ],
     "nextQuestIds": [
       "back_on_top"
+    ],
+    "description": {
+      "value": "また頼みたいことがある。実は… 母のことなんだ。\r\n\r\nあんたをファーストウェーブ時代の施設に送った時、本当は母の形見が見つからないかと思ってて。レイダーのレジスタンスの一員だったんだ。これまでは望み薄だったけど、今は手掛かりがあるから。",
+      "originalEn": "I have another job. It’s.. about my mom.\n\nThose First Wave sites I sent you to before? I actually hoped you’d find something of my mother’s. She fought in the Raider resistance. It was a long shot; but now I've got an actual lead."
+    },
+    "objectives": [
+      {
+        "value": "ダム北西のアパートでアイヴァ少佐の形見を探した",
+        "originalEn": "Search for Major Aiva's mementos in the apartments northwest of The Dam"
+      },
+      {
+        "value": "ティアン・ウェンにアイヴァ少佐の形見を届けた",
+        "originalEn": "Deliver Major Aiva's Mementos to Tian Wen"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "major_aivas_mementos",
+        "quantity": 1,
+        "name": {
+          "value": "エイヴァ少佐の思い出の品",
+          "originalEn": "Major Aiva's Mementos"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/major_aivas_mementos.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "hullcracker_blueprint",
+        "quantity": 1,
+        "name": {
+          "value": "ハルクラッカー設計図",
+          "originalEn": "Hullcracker Blueprint"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/hullcracker.png"
+      }
     ],
     "hasBlueprint": true,
     "blueprintRewards": [
@@ -1571,6 +6197,71 @@
     "nextQuestIds": [
       "a_better_use"
     ],
+    "description": {
+      "value": "あんたって新人の一人だよね？ この強化フェロを試すボランティアが欲しいんだ… ARCの装甲をバターのように切り裂いてくれるはず。機械に穴を開けられるか、結果を報告しに来てほしい。",
+      "originalEn": "You're one of the new arrivals, right? I need a volunteer to test out this upgraded Ferro; should cut through ARC plating like butter. Go put holes in some machines, and report back to me."
+    },
+    "objectives": [
+      {
+        "value": "ファイアボールを破壊した",
+        "originalEn": "Destroy a Fireball"
+      },
+      {
+        "value": "ホーネットを破壊した",
+        "originalEn": "Destroy a Hornet"
+      },
+      {
+        "value": "タレットを破壊した",
+        "originalEn": "Destroy a Turret"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "ferro_iv",
+        "quantity": 1,
+        "name": {
+          "value": "フェロ IV",
+          "originalEn": "Ferro IV"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/ferro.png"
+      },
+      {
+        "id": "heavy_ammo",
+        "quantity": 20,
+        "name": {
+          "value": "大型弾薬",
+          "originalEn": "Heavy Ammo"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/heavy_ammo.png"
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "stitcher_ii",
+        "quantity": 1,
+        "name": {
+          "value": "スティッチャー II",
+          "originalEn": "Stitcher II"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/stitcher.png"
+      },
+      {
+        "id": "extended_light_mag_i",
+        "quantity": 1,
+        "name": {
+          "value": "拡張小型弾倉 I",
+          "originalEn": "Extended Light Mag I"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/extended_light_mag_i.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1590,6 +6281,51 @@
     "nextQuestIds": [
       "water_troubles"
     ],
+    "description": {
+      "value": "ツイてるぞ。君が前回見つけたメモは研究主任が書いたものだった。プロジェクトが崩壊したとき、種子のサンプルのいくつかを持ち出して安全な場所に封印したようだ。",
+      "originalEn": "We're in luck. The notes you found last time were written by the lead researcher. When the project went under, it seems she took some of the seed samples and sealed them away in a secure location."
+    },
+    "objectives": [
+      {
+        "value": "研究棟に行った",
+        "originalEn": "Go to the Research Building"
+      },
+      {
+        "value": "「景色が綺麗な部屋」の中にある種子保管庫を探した",
+        "originalEn": "Search for the seed vault in the \"room with a great view\""
+      },
+      {
+        "value": "セレステに実験的な種子のサンプルを届けた",
+        "originalEn": "Deliver the Experimental Seed Sample to Celeste"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "experimental_seed_sample",
+        "quantity": 1,
+        "name": {
+          "value": "実験用種子サンプル",
+          "originalEn": "Experimental Seed Sample"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/experimental_seed_sample.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "coins",
+        "quantity": 1000,
+        "name": {
+          "value": "coins",
+          "originalEn": "coins"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1607,6 +6343,68 @@
       "a_toxic_trail"
     ],
     "nextQuestIds": [],
+    "description": {
+      "value": "あなたがバレルのトラックの中で見つけた鍵… まだ誰かを責めるには早いけど、内部犯行の臭いがプンプンするわね。私の心当たりを調べてくれない？",
+      "originalEn": "That key you found in the barrel truck… I won’t jump to accusations just yet, but this certainly reeks of an inside job. Could you investigate a hunch I have?"
+    },
+    "objectives": [
+      {
+        "value": "出発棟の南西ロビーに辿り着いた",
+        "originalEn": "Reach the southwest lobby of the Departure Building"
+      },
+      {
+        "value": "職員のロッカールームを見つけた",
+        "originalEn": "Find the staff locker room"
+      },
+      {
+        "value": "部屋の中で犯人の正体に関する手がかりを探した",
+        "originalEn": "Search the room for any clues of the saboteur's identity"
+      },
+      {
+        "value": "宇宙港の下にあるトンネルに辿り着いた",
+        "originalEn": "Reach the tunnels below the Spaceport"
+      },
+      {
+        "value": "任意の送水用端末で鍵を使用し、バイパスプロトコルを上書きした",
+        "originalEn": "Use the key on any Flushing Terminal to override the bypass protocol"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "air_freshener",
+        "quantity": 1,
+        "name": {
+          "value": "芳香剤",
+          "originalEn": "Air Freshener"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/air_freshener.png"
+      },
+      {
+        "id": "dam_staff_room_key",
+        "quantity": 1,
+        "name": {
+          "value": "ダムのスタッフルームの鍵",
+          "originalEn": "Dam Staff Room Key"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/dam_staff_room_key.png"
+      },
+      {
+        "id": "noisemaker",
+        "quantity": 3,
+        "name": {
+          "value": "騒音発生装置",
+          "originalEn": "Noisemaker"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/noisemaker.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1630,6 +6428,114 @@
       "dormant_barons",
       "dust_on_the_wires"
     ],
+    "description": {
+      "value": "情報があるのはいいけど、悩ましくなる一方だよ。ARCが本当に接近してるなら、レイダー全員が奴らのドローンに対処できないといけない。",
+      "originalEn": "Intel’s all well and good, but it only gets us so far. If ARC’s truly closing in, I need every Raider to prove they can handle their drones in a fight."
+    },
+    "objectives": [
+      {
+        "value": "ワスプを破壊した",
+        "originalEn": "Destroy a Wasp"
+      },
+      {
+        "value": "シャニのためにワスプドライバーを手に入れた",
+        "originalEn": "Get a Wasp Driver for Shani"
+      },
+      {
+        "value": "ホーネットを破壊した",
+        "originalEn": "Destroy a Hornet"
+      },
+      {
+        "value": "シャニのためにホーネットドライバーを手に入れた",
+        "originalEn": "Get a Hornet Driver for Shani"
+      },
+      {
+        "value": "スニッチを破壊する",
+        "originalEn": "Destroy a Snitch"
+      },
+      {
+        "value": "シャニのためスニッチスキャナを入手する",
+        "originalEn": "Get a Snitch Scanner for Shani"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "remote_raider_flare",
+        "quantity": 3,
+        "name": {
+          "value": "遠隔レイダー発煙筒",
+          "originalEn": "Remote Raider Flare"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/remote_raider_flare.png"
+      }
+    ],
+    "requiredItems": [
+      {
+        "id": "wasp_driver",
+        "quantity": 2,
+        "name": {
+          "value": "ワスプドライバー",
+          "originalEn": "Wasp Driver"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/wasp_driver.png"
+      },
+      {
+        "id": "hornet_driver",
+        "quantity": 2,
+        "name": {
+          "value": "ホーネットドライバー",
+          "originalEn": "Hornet Driver"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/hornet_driver.png"
+      },
+      {
+        "id": "snitch_scanner",
+        "quantity": 2,
+        "name": {
+          "value": "スニッチスキャナ",
+          "originalEn": "Snitch Scanner"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/snitch_scanner.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "raider_hatch_key",
+        "quantity": 1,
+        "name": {
+          "value": "レイダーハッチの鍵",
+          "originalEn": "Raider Hatch Key"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/raider_hatch_key.png"
+      },
+      {
+        "id": "defibrillator",
+        "quantity": 2,
+        "name": {
+          "value": "蘇生装置",
+          "originalEn": "Defibrillator"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/defibrillator.png"
+      },
+      {
+        "id": "dam_control_tower_key",
+        "quantity": 1,
+        "name": {
+          "value": "ダム管制塔の鍵",
+          "originalEn": "Dam Control Tower Key"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/dam_control_tower_key.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1646,6 +6552,78 @@
     ],
     "nextQuestIds": [
       "off_the_radar"
+    ],
+    "description": {
+      "value": "レイダーにとって、ただのジャンクなんて物はない。\r\n\r\nリサイクルすべき貴重な資源なんだ。この街でいっぱしになりたければ、人に何でも用意してもらうつもりじゃだめだよ。",
+      "originalEn": "There's no such thing as junk, to a Raider; just valuable materials waiting to be recycled.\r\n\r\nIf you're going to amount to anything around here, you can't just wait for things to be served on a silver platter."
+    },
+    "objectives": [
+      {
+        "value": "ワイヤーを6個手に入れた",
+        "originalEn": "Obtain 6 Wires"
+      },
+      {
+        "value": "バッテリーを1個手に入れた",
+        "originalEn": "Obtain 1 Battery"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "binoculars",
+        "quantity": 1,
+        "name": {
+          "value": "双眼鏡",
+          "originalEn": "Binoculars"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/binoculars.png"
+      }
+    ],
+    "requiredItems": [
+      {
+        "id": "wires",
+        "quantity": 6,
+        "name": {
+          "value": "ワイヤー",
+          "originalEn": "Wires"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/wires.png"
+      },
+      {
+        "id": "battery",
+        "quantity": 1,
+        "name": {
+          "value": "バッテリー",
+          "originalEn": "Battery"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/battery.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "tactical_mk1",
+        "quantity": 1,
+        "name": {
+          "value": "戦術MK1",
+          "originalEn": "Tactical Mk. 1"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/tactical_i.png"
+      },
+      {
+        "id": "adrenaline_shot",
+        "quantity": 3,
+        "name": {
+          "value": "アドレナリン注射",
+          "originalEn": "Adrenaline Shot"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/adrenaline_shot.png"
+      }
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -1664,6 +6642,63 @@
     "nextQuestIds": [
       "digging_up_dirt"
     ],
+    "description": {
+      "value": "トレド・チューブ公式管理チームが、「自分たちの」スリングショットチューブを使う代償に、電気ロッドを要求してきた。名前に騙されるな… 奴らは公式でもなんでもない。大きな力を握ったゴロツキたちだ。力を貸してくれないか？",
+      "originalEn": "The Official Toledo Tubes Management is demanding one of our Power Rods for usage of “their” Slingshot tubes. Don’t let the name fool you, they’re in no way official; just thugs with lots of power. Could you help me with this?"
+    },
+    "objectives": [
+      {
+        "value": "セレステのために電気ロッドを確保した",
+        "originalEn": "Get a Power Rod for Celeste"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "power_rod",
+        "quantity": 1,
+        "name": {
+          "value": "電気ロッド",
+          "originalEn": "Power Rod"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/power_rod.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "magnet",
+        "quantity": 5,
+        "name": {
+          "value": "磁石",
+          "originalEn": "Magnet"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/magnet.png"
+      },
+      {
+        "id": "advanced_mechanical_components",
+        "quantity": 2,
+        "name": {
+          "value": "高度な機械部品",
+          "originalEn": "Advanced Mechanical Components"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/advanced_mechanical_components.png"
+      },
+      {
+        "id": "synthesized_fuel",
+        "quantity": 3,
+        "name": {
+          "value": "合成燃料",
+          "originalEn": "Synthesized Fuel"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/synthesized_fuel.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1681,6 +6716,57 @@
       "digging_up_dirt"
     ],
     "nextQuestIds": [],
+    "description": {
+      "value": "いい考えがある。トレド・チューブ公式管理チームより先に証拠を回収すれば、あいつらを完全に黙らせることができるかもしれない。",
+      "originalEn": "I got a plan. If we recover the evidence against the OTTM before they get to it, we might get them off our backs once and for all."
+    },
+    "objectives": [
+      {
+        "value": "北トレンチタワーに行った",
+        "originalEn": "Go to the North Trench Tower"
+      },
+      {
+        "value": "脅迫用のファイルを見つけてセレステに送信した",
+        "originalEn": "Locate and upload the blackmail files to Celeste"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "spaceport_trench_tower_key",
+        "quantity": 1,
+        "name": {
+          "value": "宇宙港のトレンチタワーの鍵",
+          "originalEn": "Spaceport Trench Tower Key"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/spaceport_trench_tower_key.png"
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "heavy_gun_parts",
+        "quantity": 2,
+        "name": {
+          "value": "大型銃のパーツ",
+          "originalEn": "Heavy Gun Parts"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/heavy_gun_parts.png"
+      },
+      {
+        "id": "medium_gun_parts",
+        "quantity": 2,
+        "name": {
+          "value": "中型銃のパーツ",
+          "originalEn": "Medium Gun Parts"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/medium_gun_parts.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1701,6 +6787,93 @@
     "nextQuestIds": [
       "a_symbol_of_unification"
     ],
+    "description": {
+      "value": "食料生産を加速させるために温室を作ってるんだ。セレステには感謝してもらわないとね。でももうたくさんだ。手筈は整えたけど、物資も必要だ。一人でやるつもりはないよ。",
+      "originalEn": "I’m setting up a greenhouse, to help boost our food production. I’m doing Celeste a solid, alright? That’s all. But enough about that. I’ve got all the details worked out, but I’ll need supplies, and I’m not hauling them alone."
+    },
+    "objectives": [
+      {
+        "value": "埋もれた街のグランディオーソ・アパートに到達した",
+        "originalEn": "Reach the Grandioso Apartments in Buried City"
+      },
+      {
+        "value": "グランディオーソ・アパートの屋上で水分計を探した",
+        "originalEn": "Search for a Moisture Meter on the rooftop of the Grandioso Apartments"
+      },
+      {
+        "value": "埋もれた街のピアッツァ・ローマに到達した",
+        "originalEn": "Reach Piazza Roma in Buried City"
+      },
+      {
+        "value": "ピアッツァ・ローマにある壊れた屋上庭園で栄養メーターを探した",
+        "originalEn": "Search for a Nutrient Meter in the broken rooftop gardens at Piazza Roma"
+      },
+      {
+        "value": "ティアン・ウェンに栄養メーターを届けた",
+        "originalEn": "Deliver a Nutrient Meter to Tian Wen"
+      },
+      {
+        "value": "ティアン・ウェンに水分計を届けた",
+        "originalEn": "Deliver a Moisture Meter to Tian Wen"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "nutrient_meter",
+        "quantity": 1,
+        "name": {
+          "value": "栄養計",
+          "originalEn": "Nutrient Meter"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/nutrient_meter.png"
+      },
+      {
+        "id": "moisture_meter",
+        "quantity": 1,
+        "name": {
+          "value": "水分計",
+          "originalEn": "Moisture Meter"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/moisture_meter.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "il_toro_i",
+        "quantity": 1,
+        "name": {
+          "value": "イル・トーロ I",
+          "originalEn": "Il Toro I"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/il_toro.png"
+      },
+      {
+        "id": "shotgun_ammo",
+        "quantity": 40,
+        "name": {
+          "value": "ショットガンの弾薬",
+          "originalEn": "Shotgun Ammo"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/shotgun_ammo.png"
+      },
+      {
+        "id": "shotgun_choke_ii",
+        "quantity": 1,
+        "name": {
+          "value": "ショットガン・チョーク II",
+          "originalEn": "Shotgun Choke II"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/shotgun_choke_ii.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1720,6 +6893,60 @@
     "nextQuestIds": [
       "the_root_of_the_matter"
     ],
+    "description": {
+      "value": "研究室で見つけたファイルによると、沼に水耕ドームを設置したのは実は植物栽培の研究者だったらしい。どう考えても、次はそこを探索すべきだろう。",
+      "originalEn": "According to the files you found in the lab, the cultivation researchers were actually the ones who set up the hydroponic domes out in the swamp. Sounds like the most obvious place to search next, don’t you think?"
+    },
+    "objectives": [
+      {
+        "value": "水耕ドーム総合施設に行った",
+        "originalEn": "Go to the Hydroponic Dome Complex"
+      },
+      {
+        "value": "いずれかのドームの中にあるデータアーカイブにアクセスした",
+        "originalEn": "Access the data archive in one of the domes"
+      },
+      {
+        "value": "好きなフィールド貯蔵庫でコンピューター端末にデータをアップロードした",
+        "originalEn": "Upload the data to the computer terminal in any Field Depot"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "advanced_mechanical_components",
+        "quantity": 3,
+        "name": {
+          "value": "高度な機械部品",
+          "originalEn": "Advanced Mechanical Components"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/advanced_mechanical_components.png"
+      },
+      {
+        "id": "heavy_gun_parts",
+        "quantity": 3,
+        "name": {
+          "value": "大型銃のパーツ",
+          "originalEn": "Heavy Gun Parts"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/heavy_gun_parts.png"
+      },
+      {
+        "id": "canister",
+        "quantity": 5,
+        "name": {
+          "value": "キャニスター",
+          "originalEn": "Canister"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/canister.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1737,6 +6964,60 @@
       "dust_on_the_wires"
     ],
     "nextQuestIds": [],
+    "description": {
+      "value": "宇宙港のセンサー網が、周囲を正しく感知できていない。 古いシステムだから、ただの誤作動かもしれない。それを修理してくれれば、私も安心して夜に眠るんだけど。",
+      "originalEn": "There's a problem with our sensor coverage at the Spaceport. The security grid is old, so maybe it's just acting up. If you could get it running again, it'd save me a lot of sleepless nights."
+    },
+    "objectives": [
+      {
+        "value": "守備塔の1つで警備センサーを起動した",
+        "originalEn": "Activate the security sensors in one of the Guard Towers"
+      },
+      {
+        "value": "出発棟のセキュリティ・コントロールセンターを起動した",
+        "originalEn": "Start the Security Control Center in the Departure Building"
+      },
+      {
+        "value": "到着棟でセキュリティ突破の痕跡を探した",
+        "originalEn": "Search for any traces of a security breach in the Arrival Building Data Office"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "tactical_mk3_revival",
+        "quantity": 1,
+        "name": {
+          "value": "戦術MK3 (リバイバル)",
+          "originalEn": "Tactical Mk. 3 (Revival)"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_revival.png"
+      },
+      {
+        "id": "vita_shot",
+        "quantity": 3,
+        "name": {
+          "value": "ヴィータ注射",
+          "originalEn": "Vita Shot"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/vita_shot.png"
+      },
+      {
+        "id": "surge_shield_recharger",
+        "quantity": 5,
+        "name": {
+          "value": "サージシールド・リチャージャー",
+          "originalEn": "Surge Shield Recharger"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/surge_shield_recharger.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1758,6 +7039,60 @@
       "into_the_fray",
       "source_of_the_contamination"
     ],
+    "description": {
+      "value": "水について文句を言いに来たのなら、私だってそうだ。一日中クレームを受け続けてるんだ。絶対に何かおかしいから、解決するための助けがほしい。",
+      "originalEn": "If you’re here to complain about the water, join the club. I’ve been fielding complaints all day. Something is definitely up with it, and I need some help to sort it out."
+    },
+    "objectives": [
+      {
+        "value": "赤い池のバルコニーの下にある浸水時の地下通路を見つけた",
+        "originalEn": "Locate the Flood Access Tunnel under the Red Lake Balcony"
+      },
+      {
+        "value": "地区の取水口を見つけた",
+        "originalEn": "Find the intake to the District's Water Supply"
+      },
+      {
+        "value": "水を採った",
+        "originalEn": "Sample the water"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "mechanical_components",
+        "quantity": 3,
+        "name": {
+          "value": "機械部品",
+          "originalEn": "Mechanical Components"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/mechanical_components.png"
+      },
+      {
+        "id": "simple_gun_parts",
+        "quantity": 3,
+        "name": {
+          "value": "シンプルな銃のパーツ",
+          "originalEn": "Simple Gun Parts"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/simple_gun_parts.png"
+      },
+      {
+        "id": "steel_spring",
+        "quantity": 3,
+        "name": {
+          "value": "鋼鉄のバネ",
+          "originalEn": "Steel Spring"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/steel_spring.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1774,6 +7109,53 @@
     ],
     "nextQuestIds": [
       "sparks_fly"
+    ],
+    "description": {
+      "value": "ARCのテクノロジーを1から作ることはできないが、君が取ってきた部品ならいくらでもいじれる。\r\n\r\n今はいろいろなARCのパーツを再利用しようとしてるんだ。俺の代わりに一つ実験してくれないか？",
+      "originalEn": "We can't build ARC tech from scratch, but there's plenty I can tinker from the pieces you salvage.\r\n\r\nI'm currently trying to repurpose different ARC parts. Would you mind running some experiments for me?"
+    },
+    "objectives": [
+      {
+        "value": "ファイアボールバーナーを使ってARCを破壊した",
+        "originalEn": "Destroy any ARC enemy using a Fireball Burner"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "red_light_stick",
+        "quantity": 5,
+        "name": {
+          "value": "赤色のグロースティック",
+          "originalEn": "Red Light Stick"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/red_light_stick.png"
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "blaze_grenade",
+        "quantity": 3,
+        "name": {
+          "value": "ブレイズ・グレネード",
+          "originalEn": "Blaze Grenade"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/blaze_grenade.png"
+      },
+      {
+        "id": "noisemaker",
+        "quantity": 2,
+        "name": {
+          "value": "騒音発生装置",
+          "originalEn": "Noisemaker"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/noisemaker.png"
+      }
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -1796,6 +7178,60 @@
     "nextQuestIds": [
       "broken_monument"
     ],
+    "description": {
+      "value": "聞いたよ。あんた、セレステに私を懐柔するのを頼まれてたらしいね。言っとくが余計なお世話だ。こっちには断る理由がある。まあスクラップは受け取っておくよ。探索が得意みたいだし、私から依頼を出そうか。",
+      "originalEn": "Celeste told me you’re the one who helped her hound me about pitching in more. I’ll say this once: I don’t appreciate the meddling, and I have my own reasons for refusing. I do, however, appreciate the scrap. Since you’re apparently good at tracking it down, I may have a task for you."
+    },
+    "objectives": [
+      {
+        "value": "埋もれた街で駐車ガレージの下にあるレイダーの野営地のコンテナを2個調べる",
+        "originalEn": "On Buried City, search 2 containers in the Raider Camp beneath the Parking Garage"
+      },
+      {
+        "value": "ダム戦場にある南の沼の拠点で重要物を探す ",
+        "originalEn": "On Dam Battlegrounds, search for anything significant in the South Swamp Outpost "
+      },
+      {
+        "value": "宇宙港のコンテナ保管庫の隣にあるビルグーンの隠れ家で重要物を探す",
+        "originalEn": "On Spaceport, search for anything significant in Bilguun's Hideout, next to the Container Storage"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "muzzle_brake_ii",
+        "quantity": 1,
+        "name": {
+          "value": "マズルブレーキII",
+          "originalEn": "Muzzle Brake II"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/muzzle_brake_ii.png"
+      },
+      {
+        "id": "vertical_grip_ii",
+        "quantity": 1,
+        "name": {
+          "value": "縦グリップ II",
+          "originalEn": "Vertical Grip II"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/vertical_grip_ii.png"
+      },
+      {
+        "id": "stable_stock_ii",
+        "quantity": 1,
+        "name": {
+          "value": "ステイブル・ストック II",
+          "originalEn": "Stable Stock II"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/stable_stock_ii.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1815,6 +7251,54 @@
     "nextQuestIds": [
       "armored_transports",
       "the_clean_dream"
+    ],
+    "description": {
+      "value": "あのマシン… あれを倒したのはここの人じゃない。もちろん外にははぐれの生存者もいるけど、こんなのは… 一人でできることじゃない。",
+      "originalEn": "That downed machine… We weren’t the ones who did that. We know that there are stray survivors out there, but this? This goes far beyond a single person."
+    },
+    "objectives": [
+      {
+        "value": "不毛の空地に到達した",
+        "originalEn": "Reach the Barren Clearing"
+      },
+      {
+        "value": "ARCマシンを倒した者の痕跡を見つけた",
+        "originalEn": "Find signs of who brought down the ARC machines"
+      },
+      {
+        "value": "飾られた残骸を調べた",
+        "originalEn": "Inspect the Adorned Wreckage"
+      },
+      {
+        "value": "通信機を調べた",
+        "originalEn": "Inspect the communications device"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "looting_mk2",
+        "quantity": 1,
+        "name": {
+          "value": "略奪MK2",
+          "originalEn": "Looting Mk. 2"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/looting_mk2.png"
+      },
+      {
+        "id": "medium_shield",
+        "quantity": 1,
+        "name": {
+          "value": "中型シールド",
+          "originalEn": "Medium Shield"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/medium_shield.png"
+      }
     ],
     "hasBlueprint": false,
     "blueprintRewards": []
@@ -1836,6 +7320,89 @@
       "stable_housing",
       "movie_night"
     ],
+    "description": {
+      "value": "あの空を横切る光の筋は見た？\r\n\r\nあまりにも見る頻度が多いし天然物だとは信じられないけど、勘だけじゃセレステを説得できない。",
+      "originalEn": "Have you ever noticed those streaks of light darting across the skies? \r\n\r\nI’ve seen too much to believe they’re natural, but it’ll take more than a hunch to convince Celeste."
+    },
+    "objectives": [
+      {
+        "value": "回転エンコーダーを入手した",
+        "originalEn": "Obtain a Rotary Encoder"
+      },
+      {
+        "value": "組み立てラインの近くにある管制室に行った",
+        "originalEn": "Visit any of the Control Rooms near the Assembly Line"
+      },
+      {
+        "value": "回転エンコーダーを使ってサーバースイッチをオンにした",
+        "originalEn": "Use the Rotary Encoder to activate the server switch"
+      },
+      {
+        "value": "近くのコンピューターを操作し、正しいパーツの特定に役立てた",
+        "originalEn": "Interact with a nearby computer to help identify the correct parts"
+      },
+      {
+        "value": "イオンスパッターをシャニに届けた",
+        "originalEn": "Deliver an Ion Sputter to Shani"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "rotary_encoder",
+        "quantity": 1,
+        "name": {
+          "value": "ロータリーエンコーダー",
+          "originalEn": "Rotary Encoder"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/rotary_encoder.png"
+      },
+      {
+        "id": "ion_sputter",
+        "quantity": 1,
+        "name": {
+          "value": "イオンスパッター",
+          "originalEn": "Ion Sputter"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/ion_sputter.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "steel_spring",
+        "quantity": 5,
+        "name": {
+          "value": "鋼鉄のバネ",
+          "originalEn": "Steel Spring"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/steel_spring.png"
+      },
+      {
+        "id": "wires",
+        "quantity": 5,
+        "name": {
+          "value": "ワイヤー",
+          "originalEn": "Wires"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/wires.png"
+      },
+      {
+        "id": "tactical_mk2",
+        "quantity": 1,
+        "name": {
+          "value": "戦術MK2",
+          "originalEn": "Tactical Mk. 2"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/tactical_i.png"
+      }
+    ],
     "hasBlueprint": false,
     "blueprintRewards": []
   },
@@ -1854,6 +7421,48 @@
     ],
     "nextQuestIds": [
       "on_deaf_ears"
+    ],
+    "description": {
+      "value": "宇宙港の電気技師たちが先進的な塩電池の開発に取り組んでいるというメモを見つけた。もし手に入れることができたら、次に天井が崩落しても大規模な停電を防げるかもしれない。",
+      "originalEn": "I found notes that some electrical engineers at the Spaceport were working on advanced, salt-based batteries. If we can get our hands on one, perhaps it’ll prevent full-scale power outages next time a ceiling comes crashing down."
+    },
+    "objectives": [
+      {
+        "value": "ロケット組み立て場に行った",
+        "originalEn": "Go to the Rocket Assembly"
+      },
+      {
+        "value": "高い場所に隠されたバッテリープロトタイプを探した",
+        "originalEn": "Search for the hidden Battery Prototype in a high place"
+      },
+      {
+        "value": "バッテリープロトタイプを産業用充電器まで持っていった",
+        "originalEn": "Bring the Battery Prototype to the Industrial Recharger"
+      },
+      {
+        "value": "機械を使ってバッテリーを充電した",
+        "originalEn": "Use the machinery to charge the battery"
+      },
+      {
+        "value": "充電済みバッテリーを隅の受け渡し場所まで届けた",
+        "originalEn": "Deliver the Charged Battery to the drop-off point in the corner"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "vita_spray_blueprint",
+        "quantity": 1,
+        "name": {
+          "value": "ヴィータ・スプレー設計図",
+          "originalEn": "Vita Spray Blueprint"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/vita_spray.png"
+      }
     ],
     "hasBlueprint": true,
     "blueprintRewards": [

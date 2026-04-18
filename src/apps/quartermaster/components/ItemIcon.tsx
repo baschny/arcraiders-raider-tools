@@ -6,7 +6,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { ItemRarity, ItemsMap } from '../types/item';
 import type { PlannerResult } from '../types/planner';
 import type { ItemInsightsMap } from '../utils/itemInsights';
-import { useHoverIntent } from '../hooks/useHoverIntent';
+import { useHoverIntent } from '../../../shared/hooks/useHoverIntent';
 import { ItemTooltip } from './ItemTooltip';
 
 export interface ItemIconBadge {

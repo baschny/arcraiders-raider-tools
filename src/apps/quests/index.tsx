@@ -25,10 +25,28 @@ export function QuestsApp() {
           ...quest,
           name: quest.name.value,
           originalNameEn: quest.name.originalEn,
+          description: quest.description.value,
+          descriptionOriginalEn: quest.description.originalEn,
+          objectives: quest.objectives.map((objective) => objective.value),
           blueprintRewards: quest.blueprintRewards.map((reward) => ({
             ...reward,
             name: reward.name.value,
             originalNameEn: reward.name.originalEn,
+          })),
+          grantedItems: quest.grantedItems.map((item) => ({
+            ...item,
+            name: item.name.value,
+            originalNameEn: item.name.originalEn,
+          })),
+          requiredItems: quest.requiredItems.map((item) => ({
+            ...item,
+            name: item.name.value,
+            originalNameEn: item.name.originalEn,
+          })),
+          rewardItems: quest.rewardItems.map((item) => ({
+            ...item,
+            name: item.name.value,
+            originalNameEn: item.name.originalEn,
           })),
         }));
         // Combine MAP_NODES with loaded quest data

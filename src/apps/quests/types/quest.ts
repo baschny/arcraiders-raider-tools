@@ -1,8 +1,25 @@
 import type { Node } from 'reactflow';
+
+export type QuestItemRarity =
+  | 'Common'
+  | 'Uncommon'
+  | 'Rare'
+  | 'Epic'
+  | 'Legendary';
+
 export interface BlueprintReward {
   id: string;
   name: string;
   originalNameEn?: string;
+  imageFilename: string;
+}
+
+export interface QuestItemEntry {
+  id: string;
+  quantity: number;
+  name: string;
+  originalNameEn?: string;
+  rarity: QuestItemRarity;
   imageFilename: string;
 }
 
@@ -16,6 +33,14 @@ export interface Quest {
   nextQuestIds: string[];
   hasBlueprint: boolean;
   blueprintRewards: BlueprintReward[];
+  description: string;
+  descriptionOriginalEn?: string;
+  objectives: string[];
+  objectivesOneRound: boolean;
+  otherRequirements: string[];
+  grantedItems: QuestItemEntry[];
+  requiredItems: QuestItemEntry[];
+  rewardItems: QuestItemEntry[];
 }
 
 export interface QuestNodeData {
@@ -42,10 +67,36 @@ export interface LocalizedBlueprintReward extends Omit<BlueprintReward, 'name'> 
   };
 }
 
-export interface LocalizedQuest extends Omit<Quest, 'name' | 'blueprintRewards'> {
+export interface LocalizedQuestItemEntry extends Omit<QuestItemEntry, 'name'> {
+  name: {
+    value: string;
+    originalEn: string;
+  };
+}
+
+export interface LocalizedQuest
+  extends Omit<
+    Quest,
+    | 'name'
+    | 'blueprintRewards'
+    | 'description'
+    | 'descriptionOriginalEn'
+    | 'objectives'
+    | 'grantedItems'
+    | 'requiredItems'
+    | 'rewardItems'
+  > {
   name: {
     value: string;
     originalEn: string;
   };
   blueprintRewards: LocalizedBlueprintReward[];
+  description: {
+    value: string;
+    originalEn: string;
+  };
+  objectives: Array<{ value: string; originalEn: string }>;
+  grantedItems: LocalizedQuestItemEntry[];
+  requiredItems: LocalizedQuestItemEntry[];
+  rewardItems: LocalizedQuestItemEntry[];
 }

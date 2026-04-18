@@ -32,6 +32,23 @@ for LOCALE in "${LOCALES[@]}"; do
   fi
 
   jq -s --arg locale "$LOCALE" --arg fallback "$FALLBACK_LOCALE" --slurpfile items "$ITEMS_FILE" '
+    def resolveItemList(input):
+      (input // [])
+      | map(select(. != null and (.itemId // "") != ""))
+      | map(
+          . as $entry
+          | ($items[0] | map(select(.id == $entry.itemId)) | first) as $item
+          | {
+              id: $entry.itemId,
+              quantity: ($entry.quantity // 1),
+              name: {
+                value: ($item.name.value // $entry.itemId),
+                originalEn: ($item.name.originalEn // $entry.itemId)
+              },
+              rarity: ($item.rarity // "Common"),
+              imageFilename: ($item.imageFilename // "")
+            }
+        );
     map({
       id,
       name: {
@@ -42,6 +59,22 @@ for LOCALE in "${LOCALES[@]}"; do
       map: (.map // []),
       previousQuestIds: (.previousQuestIds // []),
       nextQuestIds: (.nextQuestIds // []),
+      description: {
+        value: ((.description // {})[$locale] // (.description // {})[$fallback] // (.description // {}).en // ""),
+        originalEn: ((.description // {}).en // "")
+      },
+      objectives: (
+        (.objectives // [])
+        | map({
+            value: (.[$locale] // .[$fallback] // .en // ""),
+            originalEn: (.en // "")
+          })
+      ),
+      objectivesOneRound: (.objectivesOneRound // false),
+      otherRequirements: (.otherRequirements // []),
+      grantedItems: resolveItemList(.grantedItemIds),
+      requiredItems: resolveItemList(.requiredItemIds),
+      rewardItems: resolveItemList(.rewardItemIds),
       hasBlueprint: (
         (.rewardItemIds // [])
         | map(select(. != null))

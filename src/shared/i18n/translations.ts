@@ -114,6 +114,11 @@ export const translations: Partial<Record<AppLocale, TranslationDictionary>> = {
       dialogMore: '...and {count} more',
       dialogCancel: 'Cancel',
       dialogConfirm: 'Confirm',
+      tooltipObjectives: 'Objectives',
+      tooltipObjectivesOneRound: 'One round',
+      tooltipRequirements: 'Requirements',
+      tooltipGranted: 'Granted items',
+      tooltipRewards: 'Rewards',
     },
     lootHelper: {
       loading: 'Loading item data...',
@@ -624,6 +629,11 @@ export const translations: Partial<Record<AppLocale, TranslationDictionary>> = {
       dialogMore: '...und {count} weitere',
       dialogCancel: 'Abbrechen',
       dialogConfirm: 'Bestätigen',
+      tooltipObjectives: 'Ziele',
+      tooltipObjectivesOneRound: 'In einer Runde',
+      tooltipRequirements: 'Voraussetzungen',
+      tooltipGranted: 'Erhaltene Gegenstände',
+      tooltipRewards: 'Belohnungen',
     },
     lootHelper: {
       loading: 'Gegenstandsdaten werden geladen...',

@@ -1,5 +1,26 @@
 import type { Quest } from '../types/quest';
 
+// Default empty quest detail fields used for MAP_NODES (which don't carry
+// quest descriptions, objectives, or item references).
+const mapNodeDetails = (): Pick<
+  Quest,
+  | 'description'
+  | 'objectives'
+  | 'objectivesOneRound'
+  | 'otherRequirements'
+  | 'grantedItems'
+  | 'requiredItems'
+  | 'rewardItems'
+> => ({
+  description: '',
+  objectives: [],
+  objectivesOneRound: false,
+  otherRequirements: [],
+  grantedItems: [],
+  requiredItems: [],
+  rewardItems: [],
+});
+
 // Map prerequisite nodes (not from arctracker data)
 export const MAP_NODES: Quest[] = [
   {
@@ -11,6 +32,7 @@ export const MAP_NODES: Quest[] = [
     nextQuestIds: ['picking_up_the_pieces'],
     hasBlueprint: false,
     blueprintRewards: [],
+    ...mapNodeDetails(),
   },
   {
     id: 'map_blue_gate',
@@ -21,6 +43,7 @@ export const MAP_NODES: Quest[] = [
     nextQuestIds: ['a_first_foothold'],
     hasBlueprint: false,
     blueprintRewards: [],
+    ...mapNodeDetails(),
   },
   {
     id: 'map_stella_montis',
@@ -31,6 +54,7 @@ export const MAP_NODES: Quest[] = [
     nextQuestIds: ['in_my_image'],
     hasBlueprint: false,
     blueprintRewards: [],
+    ...mapNodeDetails(),
   },
 ];
 
