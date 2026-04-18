@@ -26,22 +26,63 @@ export function Sidebar({
   onResetAll,
 }: SidebarProps) {
   const { locale, t, tm } = useLocale();
+  const totalQuests = actualQuests.length;
+  const availableCount = availableQuests.length;
+  const lockedCount = Math.max(totalQuests - completedCount - availableCount, 0);
+  const completedPercent = totalQuests > 0 ? (completedCount / totalQuests) * 100 : 0;
+  const availablePercent = totalQuests > 0 ? (availableCount / totalQuests) * 100 : 0;
+  const lockedPercent = totalQuests > 0 ? (lockedCount / totalQuests) * 100 : 0;
   return (
     <div className="available-sidebar">
-      <div className="sidebar-stats">
-        <div className="sidebar-stat-item">
-          <span className="sidebar-stat-icon">✅</span>
-          <span className="sidebar-stat-value">
-            <span title={t('quests.sidebarCompleted')}>{completedCount}</span>
-            <span style={{ margin: '0 4px', color: '#666', fontWeight: 'normal' }}>
-              /
-            </span>
-            <span title={t('quests.sidebarTotal')}>{actualQuests.length}</span>
-          </span>
+      <div
+        className="sidebar-progress"
+        role="img"
+        aria-label={`${t('quests.sidebarCompleted')}: ${completedCount}/${totalQuests}, ${t('quests.sidebarAvailable')}: ${availableCount}, ${t('quests.sidebarLocked')}: ${lockedCount}`}
+      >
+        <div className="sidebar-progress-bar">
+          {completedPercent > 0 && (
+            <div
+              className="sidebar-progress-segment is-completed"
+              style={{ width: `${completedPercent}%` }}
+            />
+          )}
+          {availablePercent > 0 && (
+            <div
+              className="sidebar-progress-segment is-available"
+              style={{ width: `${availablePercent}%` }}
+            />
+          )}
+          {lockedPercent > 0 && (
+            <div
+              className="sidebar-progress-segment is-locked"
+              style={{ width: `${lockedPercent}%` }}
+            />
+          )}
         </div>
-        <div className="sidebar-stat-item" title={t('quests.sidebarAvailable')}>
-          <span className="sidebar-stat-icon">⭐</span>
-          <span className="sidebar-stat-value">{availableQuests.length}</span>
+        <div className="sidebar-progress-tooltip" role="tooltip">
+          <div className="sidebar-progress-tooltip-row">
+            <span className="sidebar-progress-swatch is-completed" aria-hidden="true" />
+            <span className="sidebar-progress-tooltip-label">
+              {t('quests.sidebarCompleted')}
+            </span>
+            <span className="sidebar-progress-tooltip-value">
+              {completedCount} / {totalQuests}
+            </span>
+          </div>
+          <div className="sidebar-progress-tooltip-row">
+            <span className="sidebar-progress-swatch is-available" aria-hidden="true" />
+            <span className="sidebar-progress-tooltip-label">
+              {t('quests.sidebarAvailable')}
+            </span>
+            <span className="sidebar-progress-tooltip-value">{availableCount}</span>
+          </div>
+          <div className="sidebar-progress-tooltip-row">
+            <span className="sidebar-progress-swatch is-locked" aria-hidden="true" />
+            <span className="sidebar-progress-tooltip-label">
+              {t('quests.sidebarLocked')}
+            </span>
+            <span className="sidebar-progress-tooltip-value">{lockedCount}</span>
+          </div>
         </div>
       </div>
 
