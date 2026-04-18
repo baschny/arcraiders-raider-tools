@@ -4,7 +4,7 @@ import type { Quest } from '../types/quest';
 
 let mapNameLocalizations: Record<string, Record<string, string>> = {};
 
-function normalizeMapId(mapId: string): string {
+export function normalizeMapId(mapId: string): string {
   switch (mapId) {
     case 'dam_battlegrounds':
       return 'dam-battleground';

@@ -1,8 +1,9 @@
-import { useState } from 'react';
-import { ChevronDown, ChevronUp } from 'lucide-react';
+import { useState, type CSSProperties } from 'react';
+import { ChevronDown, ChevronUp, Map as MapIcon } from 'lucide-react';
 import type { Quest } from '../types/quest';
 import { useLocale } from '../../../shared/context/LocaleContext';
 import { getLocalizedMapNodeName } from '../utils/localization';
+import { getQuestMapIndicator } from '../utils/mapMeta';
 
 interface MapNodeWithStatus extends Quest {
   isCompleted: boolean;
@@ -142,16 +143,39 @@ export function Sidebar({
             {t('quests.sidebarNoAvailable')}
           </div>
         ) : (
-          availableQuests.map((quest) => (
-            <div
-              key={quest.id}
-              className="available-quest-item"
-              onClick={() => onQuestClick(quest.id)}
-              title={t('quests.sidebarFocusQuest')}
-            >
-              <div className="available-quest-name">{quest.name}</div>
-            </div>
-          ))
+          availableQuests.map((quest) => {
+            const mapIndicator = getQuestMapIndicator(quest.map, locale);
+            const indicatorStyle = mapIndicator
+              ? ({
+                  '--map-accent': mapIndicator.accentColor,
+                  ...(mapIndicator.backgroundImage
+                    ? { backgroundImage: `url(${mapIndicator.backgroundImage})` }
+                    : {}),
+                } as CSSProperties)
+              : undefined;
+            return (
+              <div
+                key={quest.id}
+                className="available-quest-item"
+                onClick={() => onQuestClick(quest.id)}
+                title={t('quests.sidebarFocusQuest')}
+              >
+                <div className="available-quest-name">{quest.name}</div>
+                {mapIndicator && (
+                  <div
+                    className={`available-quest-map${mapIndicator.isMultiple ? ' is-multiple' : ''}`}
+                    style={indicatorStyle}
+                    title={mapIndicator.names.join(', ')}
+                    aria-label={mapIndicator.names.join(', ')}
+                  >
+                    {mapIndicator.isMultiple && (
+                      <MapIcon size={14} aria-hidden="true" />
+                    )}
+                  </div>
+                )}
+              </div>
+            );
+          })
         )}
       </div>
     </div>
