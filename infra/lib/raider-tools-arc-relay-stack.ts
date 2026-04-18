@@ -69,6 +69,12 @@ export interface RaiderToolsArcRelayStackProps extends cdk.StackProps {
  * The stack is designed to be deployed in the `eu-central-1` region.
  */
 export class RaiderToolsArcRelayStack extends cdk.Stack {
+    /**
+     * Public reference to the HTTP API so additional stacks (e.g. the auth stack)
+     * can attach further routes (under the same custom domain).
+     */
+    public readonly httpApi: apigwv2.HttpApi;
+
     constructor(scope: Construct, id: string, props: RaiderToolsArcRelayStackProps) {
         super(scope, id, props);
 
@@ -174,7 +180,7 @@ export class RaiderToolsArcRelayStack extends cdk.Stack {
         // For now, lambda will access arctracker.io over the public internet.
 
         // --- API Gateway HTTP API
-        const httpApi = new apigwv2.HttpApi(this, "ArcRelayHttpApi", {
+        this.httpApi = new apigwv2.HttpApi(this, "ArcRelayHttpApi", {
             apiName: "raider-tools-arc-relay",
             corsPreflight: {
                 allowOrigins: props.allowedOrigins,
@@ -198,17 +204,17 @@ export class RaiderToolsArcRelayStack extends cdk.Stack {
 
         // Recommended: define explicit routes per endpoint you want to support.
         // If you want a single "proxy" route, use /arctracker/{proxy+} and enforce allowlist in code.
-        httpApi.addRoutes({
+        this.httpApi.addRoutes({
             path: "/arctracker/{proxy+}",
             methods: [apigwv2.HttpMethod.GET],
             integration,
         });
-        httpApi.addRoutes({
+        this.httpApi.addRoutes({
             path: "/schedule/map-events.json",
             methods: [apigwv2.HttpMethod.GET],
             integration: scheduleIntegration,
         });
-        httpApi.addRoutes({
+        this.httpApi.addRoutes({
             path: "/schedule/health.json",
             methods: [apigwv2.HttpMethod.GET],
             integration: scheduleIntegration,
@@ -227,9 +233,9 @@ export class RaiderToolsArcRelayStack extends cdk.Stack {
 
         // Map custom domain -> API stage ($default)
         new apigwv2.ApiMapping(this, "ArcRelayApiMapping", {
-            api: httpApi,
+            api: this.httpApi,
             domainName: apiDomain,
-            stage: httpApi.defaultStage!, // created by default for HttpApi
+            stage: this.httpApi.defaultStage!, // created by default for HttpApi
             // mappingKey: undefined // root mapping
         });
 
@@ -244,9 +250,9 @@ export class RaiderToolsArcRelayStack extends cdk.Stack {
         });
 
         // --- Outputs
-        new cdk.CfnOutput(this, "HttpApiId", { value: httpApi.httpApiId });
+        new cdk.CfnOutput(this, "HttpApiId", { value: this.httpApi.httpApiId });
         new cdk.CfnOutput(this, "ApiBaseUrlCustomDomain", { value: `https://${props.apiDomainName}` });
-        new cdk.CfnOutput(this, "ApiBaseUrlDefault", { value: httpApi.apiEndpoint });
+        new cdk.CfnOutput(this, "ApiBaseUrlDefault", { value: this.httpApi.apiEndpoint });
         new cdk.CfnOutput(this, "ScheduleMapEventsUrl", {
             value: `https://${props.apiDomainName}/schedule/map-events.json`,
         });

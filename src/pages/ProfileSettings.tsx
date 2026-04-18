@@ -4,14 +4,17 @@
  */
 
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Eye, EyeOff, ExternalLink, LogOut, AlertCircle, CheckCircle, Loader2 } from 'lucide-react';
 import { useAuth } from '../shared/context/AuthContext';
+import { useCognitoAuth } from '../shared/context/CognitoAuthContext';
 import { getToken } from '../shared/utils/tokenStorage';
 import { getCacheMeta } from '../shared/services/cacheService';
 import '../shared/styles/_settings.scss';
 
 export function ProfileSettings() {
   const { isAuthenticated, username, isValidating, error, login, logout } = useAuth();
+  const cognito = useCognitoAuth();
   const [tokenInput, setTokenInput] = useState('');
   const [showToken, setShowToken] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -73,6 +76,37 @@ export function ProfileSettings() {
     <div className="content-container">
       <div className="settings-page">
         <h2 className="settings-title">Account Settings</h2>
+
+        {cognito.available && (
+          <div className="settings-section">
+            <h3 className="settings-section-title">Identity</h3>
+            {cognito.user ? (
+              <div className="settings-account-info">
+                <div className="account-detail">
+                  <span className="account-label">Signed in as:</span>
+                  <span className="account-value">{cognito.user.email ?? cognito.user.sub}</span>
+                </div>
+                <div className="settings-actions">
+                  <button
+                    className="settings-button settings-button--danger"
+                    onClick={cognito.signOut}
+                  >
+                    <LogOut size={16} />
+                    <span>Sign out</span>
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div className="settings-info">
+                <p>
+                  You are not signed in. <Link to="/auth/sign-in">Sign in</Link> or{' '}
+                  <Link to="/auth/sign-up">create an account</Link> to sync your
+                  ArcTracker integration across devices.
+                </p>
+              </div>
+            )}
+          </div>
+        )}
 
         <div className="settings-section">
           <h3 className="settings-section-title">ArcTracker Integration</h3>

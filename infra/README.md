@@ -1,6 +1,14 @@
-# Raider Tools – ArcTracker Relay (Infrastructure)
+# Raider Tools – Infrastructure (Relay + Auth)
 
-This `infra/` project provisions a minimal serverless relay API for `raider-tools.app` to call `arctracker.io` securely without exposing the ArcTracker **app key** in the browser.
+This `infra/` project provisions the AWS resources for `raider-tools.app`. It is split into three stacks deployed together:
+
+- `RaiderToolsAuthCertStack` (**us-east-1**) – ACM certificate for the Cognito custom domain `auth.raider-tools.app`. Cognito requires this certificate to live in us-east-1 because it serves the domain via CloudFront.
+- `RaiderToolsArcRelayStack` (eu-central-1) – serverless ArcTracker relay + schedule services and the shared HTTP API at `api.raider-tools.app`.
+- `RaiderToolsAuthStack` (eu-central-1) – Cognito user pool (using the custom domain), DynamoDB user table, KMS CMK, Discord OAuth bridge, and authenticated `/me` + `/me/links/*` routes attached to the same HTTP API.
+
+The relay portion exposes the ArcTracker API to the SPA without exposing the ArcTracker **app key** in the browser.
+
+Cross-stack references between the cert stack and the auth stack are wired via CDK's `crossRegionReferences: true` (no manual ARN copy/paste).
 
 Mapping:
 * Source (Relay API): `https://api.raider-tools.app/arctracker/<path>`
@@ -78,11 +86,14 @@ Edit `infra/bin/app.ts` and set:
 
 ### 4) CDK bootstrap (one-time per account/region)
 
-If not done yet:
+If not done yet, bootstrap **both** regions used by this project:
 
 ```bash
 AWS_PROFILE=baschny cdk bootstrap aws://935743309611/eu-central-1
+AWS_PROFILE=baschny cdk bootstrap aws://935743309611/us-east-1
 ```
+
+The us-east-1 bootstrap is required for `RaiderToolsAuthCertStack` (the Cognito custom-domain certificate).
 
 ---
 
@@ -166,3 +177,68 @@ Expected result:
 - Add new ArcTracker endpoints in both:
     - CDK routes (`httpApi.addRoutes(...)`)
     - Lambda route map (`ROUTE_MAP` in `arc-relay.ts`)
+
+---
+
+## Auth stack (Cognito + Discord + DynamoDB + KMS)
+
+The auth stack adds:
+
+- A **Cognito User Pool** (email + password, plus a Discord-bridged passwordless flow via custom-auth Lambda triggers).
+- A **Cognito custom domain** at `auth.raider-tools.app`, backed by a us-east-1 ACM certificate provisioned by `RaiderToolsAuthCertStack` and wired in via cross-region references. A Route53 A-record alias is created automatically.
+- A **DynamoDB single-table** `raider-tools-users` for profiles, IdP mappings, and envelope-encrypted linked-account tokens.
+- A **KMS CMK** (`alias/raider-tools/user-secrets`) used to envelope-encrypt linked-account tokens (currently ArcTracker; Embark in phase 2).
+- A **Secrets Manager** secret `raider-tools/discord/oauth` with the Discord OAuth client id/secret + a HMAC state-signing key.
+- Three Lambdas behind new routes on the existing HTTP API:
+  - `GET /auth/discord/start`, `GET /auth/discord/callback` – Discord OAuth bridge (no JWT auth).
+  - `GET|PATCH /me` – profile (Cognito JWT-protected).
+  - `GET|PUT|DELETE /me/links/{provider}` – manage external account links (Cognito JWT-protected).
+
+### Pre-deploy: apex-record requirement (Cognito custom domain)
+
+Cognito refuses to create a custom domain if the **apex** of the parent zone (`raider-tools.app`) does not already resolve. Verify before `cdk deploy`:
+
+```bash
+dig +short raider-tools.app A
+```
+
+If empty, add an A or alias record at the apex (the Amplify hosting record is sufficient) before deploying. Otherwise the auth-stack deploy will fail with `InvalidParameterException: Custom domain is not a valid subdomain`.
+
+> First-time creation of the Cognito custom domain takes **20–40 minutes** because Cognito provisions a CloudFront distribution behind the scenes.
+
+### Post-deploy: populate the Discord OAuth secret
+
+1. Create an application at https://discord.com/developers/applications.
+2. In **OAuth2 → Redirects**, add: `https://api.raider-tools.app/auth/discord/callback`.
+3. In **OAuth2 → Scopes**, no static config needed (we request `identify email` from the SPA flow).
+4. Generate a 32-byte random key for HMAC-signing the `state` parameter:
+
+   ```bash
+   STATE_KEY=$(openssl rand -base64 32)
+   ```
+
+5. Populate the secret (this overwrites the placeholder created by CDK):
+
+   ```bash
+   AWS_PROFILE=baschny aws secretsmanager put-secret-value \
+     --secret-id raider-tools/discord/oauth \
+     --secret-string "{\"clientId\":\"<discord client id>\",\"clientSecret\":\"<discord client secret>\",\"stateSigningKey\":\"$STATE_KEY\"}"
+   ```
+
+### SPA environment variables
+
+Add these to the Vite `.env` (and to AWS Amplify environment variables for production):
+
+- `VITE_COGNITO_USER_POOL_ID` – from CDK output `RaiderToolsAuthStack.UserPoolId`
+- `VITE_COGNITO_CLIENT_ID` – from CDK output `RaiderToolsAuthStack.UserPoolClientId`
+- `VITE_API_BASE_URL=https://api.raider-tools.app`
+
+### Smoke tests
+
+```bash
+# Start the Discord flow (will 302 to discord.com/oauth2/authorize)
+curl -i "https://api.raider-tools.app/auth/discord/start?return=https://raider-tools.app"
+
+# Read your own profile (replace <ID_TOKEN> with a Cognito ID token from sign-in)
+curl -i -H "Authorization: Bearer <ID_TOKEN>" https://api.raider-tools.app/me
+```

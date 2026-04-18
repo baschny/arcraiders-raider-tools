@@ -3,12 +3,22 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Layout } from './shared/components/Layout';
 import { LoadingSpinner } from './shared/components/LoadingSpinner';
 import { AuthProvider } from './shared/context/AuthContext';
+import { CognitoAuthProvider } from './shared/context/CognitoAuthContext';
 import { LocaleProvider } from './shared/context/LocaleContext';
 import { Dashboard } from './pages/Dashboard';
 import { NotFound } from './pages/NotFound';
 
 const ProfileSettings = lazy(() =>
   import('./pages/ProfileSettings').then((m) => ({ default: m.ProfileSettings }))
+);
+const SignIn = lazy(() =>
+  import('./pages/SignIn').then((m) => ({ default: m.SignIn }))
+);
+const SignUp = lazy(() =>
+  import('./pages/SignUp').then((m) => ({ default: m.SignUp }))
+);
+const AuthCallback = lazy(() =>
+  import('./pages/AuthCallback').then((m) => ({ default: m.AuthCallback }))
 );
 const ScheduleApp = lazy(() =>
   import('./apps/schedule').then((m) => ({ default: m.ScheduleApp }))
@@ -30,22 +40,27 @@ function App() {
   return (
     <BrowserRouter>
       <LocaleProvider>
-        <AuthProvider>
-          <Suspense fallback={<LoadingSpinner />}>
-            <Routes>
-              <Route path="/" element={<Layout />}>
-                <Route index element={<Dashboard />} />
-                <Route path="schedule" element={<ScheduleApp />} />
-                <Route path="craft-calculator" element={<CraftCalculatorApp />} />
-                <Route path="quests" element={<QuestsApp />} />
-                <Route path="loot-helper" element={<LootHelperApp />} />
-                <Route path="quartermaster" element={<QuartermasterApp />} />
-                <Route path="settings/profile" element={<ProfileSettings />} />
-                <Route path="*" element={<NotFound />} />
-              </Route>
-            </Routes>
-          </Suspense>
-        </AuthProvider>
+        <CognitoAuthProvider>
+          <AuthProvider>
+            <Suspense fallback={<LoadingSpinner />}>
+              <Routes>
+                <Route path="/" element={<Layout />}>
+                  <Route index element={<Dashboard />} />
+                  <Route path="schedule" element={<ScheduleApp />} />
+                  <Route path="craft-calculator" element={<CraftCalculatorApp />} />
+                  <Route path="quests" element={<QuestsApp />} />
+                  <Route path="loot-helper" element={<LootHelperApp />} />
+                  <Route path="quartermaster" element={<QuartermasterApp />} />
+                  <Route path="settings/profile" element={<ProfileSettings />} />
+                  <Route path="auth/sign-in" element={<SignIn />} />
+                  <Route path="auth/sign-up" element={<SignUp />} />
+                  <Route path="auth/callback" element={<AuthCallback />} />
+                  <Route path="*" element={<NotFound />} />
+                </Route>
+              </Routes>
+            </Suspense>
+          </AuthProvider>
+        </CognitoAuthProvider>
       </LocaleProvider>
     </BrowserRouter>
   );

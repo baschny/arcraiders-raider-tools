@@ -1,6 +1,16 @@
 /**
- * Auth Context
- * Provides global authentication state for the application.
+ * Auth Context (ArcTracker link state).
+ *
+ * Despite the name, this context represents the *ArcTracker integration*
+ * status — whether the user has linked an ArcTracker account, and what
+ * their ArcTracker username is. The user's *identity* lives in
+ * `CognitoAuthContext`.
+ *
+ * The backing store automatically switches:
+ *   - Cognito user signed in   -> remote (server-side, KMS-encrypted).
+ *   - Anonymous mode           -> local (`localStorage`), as before.
+ *
+ * The public API is unchanged so existing call sites keep working.
  */
 
 import {
@@ -9,11 +19,16 @@ import {
   useState,
   useEffect,
   useCallback,
+  useMemo,
   type ReactNode,
 } from 'react';
-import { getToken, setToken, clearToken } from '../utils/tokenStorage';
-import { validateToken } from '../services/arctrackerApi';
 import { cacheClear } from '../services/cacheService';
+import {
+  type ArctrackerTokenLink,
+  localTokenLink,
+  remoteTokenLink,
+} from '../auth/tokenLink';
+import { useCognitoAuth } from './CognitoAuthContext';
 
 interface AuthContextValue {
   isAuthenticated: boolean;
@@ -32,89 +47,78 @@ interface AuthProviderProps {
 }
 
 export function AuthProvider({ children }: AuthProviderProps) {
+  const cognito = useCognitoAuth();
+
+  // Pick the active backend: server-side when the user is signed in,
+  // local-storage otherwise. This is recomputed when sign-in state flips.
+  const link: ArctrackerTokenLink = useMemo(
+    () => (cognito.user ? remoteTokenLink : localTokenLink),
+    [cognito.user],
+  );
+
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [username, setUsername] = useState<string | null>(null);
   const [isValidating, setIsValidating] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  /**
-   * Validate the stored token on mount.
-   */
   const revalidate = useCallback(async () => {
-    const token = getToken();
-    if (!token) {
-      setIsAuthenticated(false);
-      setUsername(null);
-      setIsValidating(false);
-      return;
-    }
-
     setIsValidating(true);
     setError(null);
-
     try {
-      const validatedUsername = await validateToken(token);
-      if (validatedUsername) {
-        setIsAuthenticated(true);
-        setUsername(validatedUsername);
-      } else {
-        // Token is invalid, clear it
-        clearToken();
-        setIsAuthenticated(false);
-        setUsername(null);
-        setError('Session expired. Please log in again.');
+      const snap = await link.refresh();
+      setIsAuthenticated(snap.isLinked);
+      setUsername(snap.username);
+      if (!snap.isLinked && link.kind === 'local') {
+        // Existing UX: stale local token → mention session expiry.
+        setError(prev => prev);
       }
     } catch {
-      // Keep existing state on network error, don't clear token
       setError('Unable to verify session. Please check your connection.');
     } finally {
       setIsValidating(false);
     }
-  }, []);
+  }, [link]);
 
-  /**
-   * Login with a new token.
-   * Returns true if successful, false otherwise.
-   */
-  const login = useCallback(async (token: string): Promise<boolean> => {
-    setIsValidating(true);
-    setError(null);
-
-    try {
-      const validatedUsername = await validateToken(token);
-      if (validatedUsername) {
-        setToken(token);
-        setIsAuthenticated(true);
-        setUsername(validatedUsername);
-        setIsValidating(false);
-        return true;
-      } else {
+  const login = useCallback(
+    async (token: string): Promise<boolean> => {
+      setIsValidating(true);
+      setError(null);
+      try {
+        const validatedUsername = await link.link(token);
+        if (validatedUsername) {
+          setIsAuthenticated(true);
+          setUsername(validatedUsername);
+          return true;
+        }
         setError('Invalid token. Please check your API token and try again.');
-        setIsValidating(false);
         return false;
+      } catch {
+        setError('Failed to validate token. Please try again.');
+        return false;
+      } finally {
+        setIsValidating(false);
       }
-    } catch {
-      setError('Failed to validate token. Please try again.');
-      setIsValidating(false);
-      return false;
-    }
-  }, []);
+    },
+    [link],
+  );
 
-  /**
-   * Logout: clear token and cached data.
-   */
   const logout = useCallback(async () => {
-    clearToken();
+    try {
+      await link.unlink();
+    } catch (err) {
+      console.warn('Failed to unlink ArcTracker token', err);
+    }
     await cacheClear();
     setIsAuthenticated(false);
     setUsername(null);
     setError(null);
-  }, []);
+  }, [link]);
 
-  // Validate token on mount
+  // Re-check link state whenever the active backend changes (sign in / out).
   useEffect(() => {
+    if (cognito.initializing) return;
     revalidate();
-  }, [revalidate]);
+  }, [cognito.initializing, revalidate]);
 
   const value: AuthContextValue = {
     isAuthenticated,
@@ -129,9 +133,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 
-/**
- * Hook to access auth context.
- */
 export function useAuth(): AuthContextValue {
   const context = useContext(AuthContext);
   if (!context) {
