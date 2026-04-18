@@ -75,6 +75,17 @@ async function handleStart(event: APIGatewayProxyEventV2): Promise<APIGatewayPro
         return { statusCode: 400, body: "Invalid return URL" };
     }
 
+    // Discord defaults to showing the consent screen on every visit. We opt
+    // into the "silent" flow with `prompt=none`: returning users redirect
+    // straight back with an authorization code; first-time (or revoked)
+    // users cause Discord to respond with an error that the callback
+    // handler catches and retries WITHOUT `prompt=none`, so the consent
+    // screen is shown exactly once.
+    //
+    // `?consent=1` on the start URL explicitly forces the consent screen
+    // (used by the callback's retry path, and useful for testing).
+    const forceConsent = event.queryStringParameters?.consent === "1";
+
     const secret = await getDiscordSecret();
     const state = signState({ r: returnUrl, n: randomBytes(8).toString("hex"), t: Date.now() }, secret.stateSigningKey);
     const redirectUri = process.env.DISCORD_REDIRECT_URI!;
@@ -84,7 +95,7 @@ async function handleStart(event: APIGatewayProxyEventV2): Promise<APIGatewayPro
     url.searchParams.set("response_type", "code");
     url.searchParams.set("redirect_uri", redirectUri);
     url.searchParams.set("scope", "identify email");
-    url.searchParams.set("prompt", "consent");
+    url.searchParams.set("prompt", forceConsent ? "consent" : "none");
     url.searchParams.set("state", state);
 
     return {
@@ -97,6 +108,30 @@ async function handleStart(event: APIGatewayProxyEventV2): Promise<APIGatewayPro
 // /auth/discord/callback
 // ---------------------------------------------------------------------------
 async function handleCallback(event: APIGatewayProxyEventV2): Promise<APIGatewayProxyResultV2> {
+    // Discord signals a silent-auth failure (no existing grant, or grant was
+    // revoked) by redirecting here with `?error=...` instead of `?code=...`.
+    // We recover by bouncing the browser back to /auth/discord/start with
+    // `consent=1`, which triggers the real consent screen. This keeps the
+    // happy path silent while still handling first-time / revoked users.
+    const discordError = event.queryStringParameters?.error;
+    if (discordError) {
+        const allowed = (process.env.ALLOWED_ORIGINS ?? "").split(",").map(s => s.trim()).filter(Boolean);
+        const stateParam = event.queryStringParameters?.state ?? "";
+        const secret = await getDiscordSecret();
+        const decoded = verifyState(stateParam, secret.stateSigningKey);
+        // Recover only for the prompt=none-specific errors. Anything else is a
+        // real failure we should surface to the user as-is.
+        const recoverable = new Set(["consent_required", "login_required", "interaction_required", "account_selection_required"]);
+        if (decoded && recoverable.has(discordError)) {
+            const origin = `${new URL(decoded.r).protocol}//${new URL(decoded.r).host}`;
+            if (allowed.includes(origin)) {
+                const redirectBack = `${process.env.DISCORD_REDIRECT_URI!.replace("/auth/discord/callback", "/auth/discord/start")}?consent=1&return=${encodeURIComponent(origin)}`;
+                return { statusCode: 302, headers: { Location: redirectBack } };
+            }
+        }
+        return { statusCode: 400, body: `Discord returned error: ${discordError}` };
+    }
+
     const code = event.queryStringParameters?.code;
     const state = event.queryStringParameters?.state;
     if (!code || !state) return { statusCode: 400, body: "Missing code or state" };
