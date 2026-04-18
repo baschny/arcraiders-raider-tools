@@ -285,13 +285,17 @@ async function createCognitoUserForDiscord(
     discordUser: DiscordUser,
     tableName: string,
 ): Promise<string> {
-    const username = `discord_${discordUser.id}`;
-    const email = discordUser.email ?? `${username}@no-email.discord.local`;
+    // The user pool is configured with `signInAliases: { email: true }`,
+    // which makes Cognito require the `Username` of AdminCreateUser to
+    // *look* like an email; the actual internal username stored in the
+    // pool is an auto-generated UUID that we must read back from the
+    // response and use for every subsequent admin call.
+    const email = discordUser.email ?? `discord-${discordUser.id}@no-email.raider-tools.app`;
     const displayName = discordUser.global_name || discordUser.username;
 
     const created = await cognito.send(new AdminCreateUserCommand({
         UserPoolId: userPoolId,
-        Username: username,
+        Username: email,
         MessageAction: "SUPPRESS",
         UserAttributes: [
             { Name: "email", Value: email },
@@ -301,6 +305,11 @@ async function createCognitoUserForDiscord(
         ],
     }));
 
+    const internalUsername = created.User?.Username;
+    if (!internalUsername) {
+        throw new Error("AdminCreateUser did not return an internal Username");
+    }
+
     // Set a long random password so the account isn't FORCE_CHANGE_PASSWORD,
     // and immediately mark it as Confirmed. Users sign in via custom-auth
     // (Discord) only; they cannot brute-force the password because they
@@ -308,7 +317,7 @@ async function createCognitoUserForDiscord(
     // exposed by the SPA.
     await cognito.send(new AdminSetUserPasswordCommand({
         UserPoolId: userPoolId,
-        Username: username,
+        Username: internalUsername,
         Password: randomBytes(24).toString("base64") + "Aa1!",
         Permanent: true,
     }));
@@ -319,21 +328,24 @@ async function createCognitoUserForDiscord(
     if (discordUser.verified && discordUser.email) {
         await cognito.send(new AdminUpdateUserAttributesCommand({
             UserPoolId: userPoolId,
-            Username: username,
+            Username: internalUsername,
             UserAttributes: [{ Name: "email_verified", Value: "true" }],
         }));
     }
 
-    const sub = created.User?.Attributes?.find(a => a.Name === "sub")?.Value ?? username;
+    const sub = created.User?.Attributes?.find(a => a.Name === "sub")?.Value ?? internalUsername;
 
-    // Persist the IdP mapping AND a profile row.
+    // Persist the IdP mapping AND a profile row. `cognitoUsername` stores
+    // Cognito's internal UUID so the Discord-bridge login path and the
+    // custom-auth triggers both see the exact same identifier.
     await ddb.send(new PutCommand({
         TableName: tableName,
         Item: {
             pk: `IDP#discord#${discordUser.id}`,
             sk: "USER",
-            cognitoUsername: username,
+            cognitoUsername: internalUsername,
             sub,
+            email,
             createdAt: new Date().toISOString(),
         },
     }));
@@ -350,5 +362,5 @@ async function createCognitoUserForDiscord(
         },
     }));
 
-    return username;
+    return internalUsername;
 }
