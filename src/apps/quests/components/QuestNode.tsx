@@ -33,7 +33,7 @@ export function QuestNode({ data }: { data: QuestNodeData }) {
 
   return (
     <div className={nodeClass} onClick={handleClick}>
-      <Handle type="target" position={Position.Top} />
+      <Handle type="target" position={Position.Top} id="target-top" />
       {hasBlueprintReward && (
         <div className="blueprint-badge" title={blueprintRewardTooltip}>
           📜 BP
@@ -95,7 +95,9 @@ export function QuestNode({ data }: { data: QuestNodeData }) {
           </a>
         </div>
       </div>
-      <Handle type="source" position={Position.Bottom} />
+      <Handle type="source" position={Position.Bottom} id="source-bottom" />
+      <Handle type="source" position={Position.Left} id="source-left" />
+      <Handle type="source" position={Position.Right} id="source-right" />
     </div>
   );
 }

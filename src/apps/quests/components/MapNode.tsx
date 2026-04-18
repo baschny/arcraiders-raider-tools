@@ -24,7 +24,7 @@ export function MapNode({ data }: { data: MapNodeData }) {
       className={`map-node ${isCompleted ? 'completed' : ''}`}
       onClick={handleClick}
     >
-      <Handle type="target" position={Position.Top} />
+      <Handle type="target" position={Position.Top} id="target-top" />
       {mapImage && (
         <img src={mapImage} alt={displayName} className="map-node-image" />
       )}
@@ -34,7 +34,9 @@ export function MapNode({ data }: { data: MapNodeData }) {
           {isCompleted ? `✓ ${t('quests.mapUnlocked')}` : `🔒 ${t('quests.mapLocked')}`}
         </div>
       </div>
-      <Handle type="source" position={Position.Bottom} />
+      <Handle type="source" position={Position.Bottom} id="source-bottom" />
+      <Handle type="source" position={Position.Left} id="source-left" />
+      <Handle type="source" position={Position.Right} id="source-right" />
     </div>
   );
 }

@@ -8,7 +8,8 @@ import ReactFlow, {
   type Viewport,
 } from 'reactflow';
 import type { Node, Edge, ReactFlowInstance } from 'reactflow';
-import dagre from 'dagre';
+import ELK from 'elkjs/lib/elk.bundled.js';
+import type { ElkNode } from 'elkjs/lib/elk.bundled.js';
 import type { Quest } from '../types/quest';
 import { QuestNode } from './QuestNode';
 import { MapNode } from './MapNode';
@@ -266,45 +267,85 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
     [quests]
   );
 
-  // Create nodes using Dagre layout
-  const { nodes, edges } = useMemo(() => {
-    const g = new dagre.graphlib.Graph();
-    g.setGraph({ rankdir: 'TB', nodesep: 50, ranksep: 70 });
-    g.setDefaultEdgeLabel(() => ({}));
+  // Compute node positions with ELK. The layout only depends on the graph
+  // shape (quests + their prerequisite links), so we recompute it only when
+  // `quests` changes, not on every completion toggle.
+  const [elkPositions, setElkPositions] = useState<Map<
+    string,
+    { x: number; y: number }
+  > | null>(null);
 
-    // Add nodes to dagre with appropriate dimensions
-    quests.forEach((quest) => {
-      const isMap = quest.trader === 'Map';
-      g.setNode(quest.id, {
-        width: 300, // Same width for both
-        height: isMap ? 110 : 140,
-      });
-    });
+  useEffect(() => {
+    let cancelled = false;
+    const elk = new ELK();
 
-    // Add edges to dagre
-    quests.forEach((quest) => {
-      quest.previousQuestIds.forEach((prevId) => {
-        g.setEdge(prevId, quest.id);
-      });
-    });
-
-    dagre.layout(g);
-
-    // Create React Flow nodes
-    const flowNodes: Node[] = quests.map((quest) => {
-      const nodeWithPosition = g.node(quest.id);
-      const isMap = quest.trader === 'Map';
-      const nodeType = isMap ? 'mapNode' : 'questNode';
-      const width = 300; // Same width for both types
-      const height = isMap ? 110 : 140;
-
-      return {
+    const graph: ElkNode = {
+      id: 'root',
+      layoutOptions: {
+        'elk.algorithm': 'layered',
+        'elk.direction': 'DOWN',
+        'elk.layered.spacing.nodeNodeBetweenLayers': '100',
+        'elk.spacing.nodeNode': '70',
+        'elk.layered.nodePlacement.strategy': 'BRANDES_KOEPF',
+        'elk.layered.crossingMinimization.strategy': 'LAYER_SWEEP',
+        'elk.layered.mergeEdges': 'true',
+        'elk.edgeRouting': 'SPLINES',
+      },
+      children: quests.map((quest) => ({
         id: quest.id,
-        type: nodeType,
-        position: {
-          x: nodeWithPosition.x - width / 2,
-          y: nodeWithPosition.y - height / 2,
-        },
+        width: 300,
+        height: quest.trader === 'Map' ? 110 : 140,
+      })),
+      edges: quests.flatMap((quest) =>
+        quest.previousQuestIds.map((prevId) => ({
+          id: `${prevId}-${quest.id}`,
+          sources: [prevId],
+          targets: [quest.id],
+        }))
+      ),
+    };
+
+    elk
+      .layout(graph)
+      .then((layouted) => {
+        if (cancelled) return;
+        const positions = new Map<string, { x: number; y: number }>();
+        layouted.children?.forEach((child) => {
+          if (child.x != null && child.y != null) {
+            positions.set(child.id, { x: child.x, y: child.y });
+          }
+        });
+        setElkPositions(positions);
+      })
+      .catch((err) => {
+        console.error('ELK layout failed:', err);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [quests]);
+
+  // Build React Flow nodes/edges from the computed positions and the
+  // interactive state (completion, availability, highlight).
+  const { nodes, edges } = useMemo(() => {
+    if (!elkPositions) return { nodes: [] as Node[], edges: [] as Edge[] };
+
+    // Horizontal threshold for choosing a side handle instead of the bottom
+    // handle. Using ~40% of the node width so clearly-offset children exit
+    // left/right while nearly-aligned children keep the bottom handle.
+    const SIDE_HANDLE_THRESHOLD = 120;
+    const NODE_WIDTH = 300;
+
+    const flowNodes: Node[] = [];
+    quests.forEach((quest) => {
+      const pos = elkPositions.get(quest.id);
+      if (!pos) return;
+      const isMap = quest.trader === 'Map';
+      flowNodes.push({
+        id: quest.id,
+        type: isMap ? 'mapNode' : 'questNode',
+        position: { x: pos.x, y: pos.y },
         data: {
           quest,
           isCompleted: completedQuests.has(quest.id),
@@ -313,10 +354,9 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
           onToggle: toggleQuest,
         },
         draggable: false,
-      };
+      });
     });
 
-    // Create React Flow edges
     const flowEdges: Edge[] = [];
     quests.forEach((quest) => {
       quest.previousQuestIds.forEach((prevId) => {
@@ -331,10 +371,31 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
           className = 'available';
         }
 
+        // Pick a source handle based on where the target sits horizontally
+        // relative to the source. ELK positions are top-left corners; compare
+        // centers so node width is cancelled out and only the horizontal
+        // offset matters. Target handle stays on top since the graph flows
+        // top-to-bottom.
+        const sourcePos = elkPositions.get(prevId);
+        const targetPos = elkPositions.get(quest.id);
+        let sourceHandle: string = 'source-bottom';
+        if (sourcePos && targetPos) {
+          const sourceCenterX = sourcePos.x + NODE_WIDTH / 2;
+          const targetCenterX = targetPos.x + NODE_WIDTH / 2;
+          const dx = targetCenterX - sourceCenterX;
+          if (dx > SIDE_HANDLE_THRESHOLD) {
+            sourceHandle = 'source-right';
+          } else if (dx < -SIDE_HANDLE_THRESHOLD) {
+            sourceHandle = 'source-left';
+          }
+        }
+
         const edge: Edge = {
           id: `${prevId}-${quest.id}`,
           source: prevId,
           target: quest.id,
+          sourceHandle,
+          targetHandle: 'target-top',
           type: 'default',
           className,
           animated: targetAvailable && !targetCompleted,
@@ -367,7 +428,14 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
     });
 
     return { nodes: flowNodes, edges: flowEdges };
-  }, [completedQuests, isAvailable, toggleQuest, highlightedQuestId, quests]);
+  }, [
+    elkPositions,
+    completedQuests,
+    isAvailable,
+    toggleQuest,
+    highlightedQuestId,
+    quests,
+  ]);
 
   // Initialize state hooks with the computed nodes and edges
   const [flowNodes, setNodes, onNodesChange] = useNodesState(nodes);
@@ -589,7 +657,7 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
             }}
             translateExtent={bounds}
             fitView={!loadViewport()}
-            minZoom={0.3}
+            minZoom={0.1}
             maxZoom={1.5}
             defaultViewport={viewport}
             nodesDraggable={false}

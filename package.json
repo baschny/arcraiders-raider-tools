@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "dagre": "^0.8.5",
+    "elkjs": "^0.11.1",
     "idb": "^8.0.3",
     "lucide-react": "^0.562.0",
     "react": "^19.2.0",
