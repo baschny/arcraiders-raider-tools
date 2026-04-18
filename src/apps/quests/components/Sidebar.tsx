@@ -11,10 +11,6 @@ interface SidebarProps {
   mapNodes: MapNodeWithStatus[];
   availableQuests: Quest[];
   completedCount: number;
-  searchQuery: string;
-  searchResults: Quest[];
-  onSearchChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onSearchKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   onQuestClick: (questId: string) => void;
   onMapToggle: (mapId: string) => void;
   onResetAll: () => void;
@@ -25,10 +21,6 @@ export function Sidebar({
   mapNodes,
   availableQuests,
   completedCount,
-  searchQuery,
-  searchResults,
-  onSearchChange,
-  onSearchKeyDown,
   onQuestClick,
   onMapToggle,
   onResetAll,
@@ -107,43 +99,6 @@ export function Sidebar({
           ))
         )}
       </div>
-
-      <div className="sidebar-search">
-        <input
-          type="text"
-          className="search-input"
-          placeholder={`🔍 ${t('quests.sidebarSearchPlaceholder')}`}
-          value={searchQuery}
-          onChange={onSearchChange}
-          onKeyDown={onSearchKeyDown}
-        />
-      </div>
-
-      {searchQuery.trim() && (
-        <>
-          <div className="available-sidebar-header">
-            🔍 {tm('quests.sidebarSearchResults', { count: searchResults.length })}
-          </div>
-          <div className="search-results-list">
-            {searchResults.length === 0 ? (
-              <div className="no-available-quests">
-                {tm('quests.sidebarSearchEmpty', { query: searchQuery })}
-              </div>
-            ) : (
-              searchResults.map((quest) => (
-                <div
-                  key={quest.id}
-                  className="available-quest-item"
-                  onClick={() => onQuestClick(quest.id)}
-                  title={t('quests.sidebarFocusQuest')}
-                >
-                  <div className="available-quest-name">{quest.name}</div>
-                </div>
-              ))
-            )}
-          </div>
-        </>
-      )}
     </div>
   );
 }

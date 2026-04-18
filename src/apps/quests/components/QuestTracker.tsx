@@ -13,6 +13,7 @@ import type { Quest } from '../types/quest';
 import { QuestNode } from './QuestNode';
 import { MapNode } from './MapNode';
 import { BlueprintRewardsOverlay } from './BlueprintRewardsOverlay';
+import { QuestSearchOverlay } from './QuestSearchOverlay';
 import { Sidebar } from './Sidebar';
 import { ConfirmDialog } from './ConfirmDialog';
 import { STORAGE_KEY } from '../data/static-data';
@@ -567,10 +568,6 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
           mapNodes={mapNodes}
           availableQuests={availableQuests}
           completedCount={completedCount}
-          searchQuery={searchQuery}
-          searchResults={searchResults}
-          onSearchChange={handleSearchChange}
-          onSearchKeyDown={handleSearchKeyDown}
           onQuestClick={focusOnQuest}
           onMapToggle={toggleQuest}
           onResetAll={handleResetAll}
@@ -601,6 +598,13 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
             <Controls showInteractive={false} />
             <Background color="#2c2c2c" gap={16} />
           </ReactFlow>
+          <QuestSearchOverlay
+            searchQuery={searchQuery}
+            searchResults={searchResults}
+            onSearchChange={handleSearchChange}
+            onSearchKeyDown={handleSearchKeyDown}
+            onQuestClick={focusOnQuest}
+          />
           {blueprintRewardEntries.length > 0 && (
             <BlueprintRewardsOverlay
               entries={blueprintRewardEntries}
