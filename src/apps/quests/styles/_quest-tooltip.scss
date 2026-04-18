@@ -172,7 +172,6 @@ $rarity-legendary-border: #ff9800;
     }
   }
 
-  &__objectives,
   &__requirements {
     margin: 0;
     padding-left: $spacing-lg;
@@ -184,12 +183,38 @@ $rarity-legendary-border: #ff9800;
     line-height: 1.4;
   }
 
-  &__objectives li::marker {
-    color: $text-secondary;
-  }
-
   &__requirements li::marker {
     color: $text-accent;
+  }
+
+  &__objectives {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+    color: $text-primary;
+    font-size: $font-lg;
+    line-height: 1.45;
+
+    li {
+      position: relative;
+      padding-left: calc(#{$spacing-lg} + 10px);
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0.15em;
+        width: 18px;
+        height: 18px;
+        border: $border-width-default solid $border-lighter;
+        border-radius: 3px;
+        background: rgba(255, 255, 255, 0.04);
+        box-sizing: border-box;
+      }
+    }
   }
 
   &__tiles {
