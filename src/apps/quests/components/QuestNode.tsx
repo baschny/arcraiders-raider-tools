@@ -151,6 +151,16 @@ export function QuestNode({ data }: { data: QuestNodeData }) {
           >
             📖 {t('quests.wikiLabel')}
           </a>
+          <a
+            href={`https://arctracker.io/quests/${quest.id.replaceAll('_', '-')}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="quest-action-btn"
+            onClick={(e) => e.stopPropagation()}
+            title={t('quests.arcTrackerTitle')}
+          >
+            🛰️ {t('quests.arcTrackerLabel')}
+          </a>
         </div>
       </div>
       <Handle type="source" position={Position.Bottom} id="source-bottom" />

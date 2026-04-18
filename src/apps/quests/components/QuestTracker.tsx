@@ -1,4 +1,4 @@
-import { useState, useCallback, useMemo, useEffect } from 'react';
+import { useState, useCallback, useMemo, useEffect, useRef } from 'react';
 import ReactFlow, {
   Controls,
   Background,
@@ -89,7 +89,14 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
   );
   const [reactFlowInstance, setReactFlowInstance] =
     useState<ReactFlowInstance | null>(null);
-  const [viewport, setViewport] = useState<Viewport>(loadViewport() || { x: 0, y: 0, zoom: 0.5 });
+  // Capture any saved viewport once at mount. This determines whether we
+  // need to compute an initial centered viewport after the graph layout is
+  // ready (no saved viewport) or restore the user's previous viewport.
+  const savedViewportRef = useRef<Viewport | undefined>(loadViewport());
+  const [viewport, setViewport] = useState<Viewport>(
+    savedViewportRef.current || { x: 0, y: 0, zoom: 0.5 }
+  );
+  const initialCenterAppliedRef = useRef(false);
   const [isBlueprintOverlayCollapsed, setIsBlueprintOverlayCollapsed] =
     useState(loadBlueprintOverlayCollapsed);
 
@@ -122,8 +129,11 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
     }
   }, [completedQuests]);
 
-  // Save viewport to localStorage whenever it changes
+  // Save viewport to localStorage whenever it changes, but skip the very
+  // first render so we don't persist the placeholder default viewport before
+  // the graph has been centered on the available quests.
   useEffect(() => {
+    if (!initialCenterAppliedRef.current) return;
     try {
       localStorage.setItem(VIEWPORT_STORAGE_KEY, JSON.stringify(viewport));
     } catch (e) {
@@ -325,6 +335,55 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
       cancelled = true;
     };
   }, [quests]);
+
+  // On first load without a saved viewport, center the view on the
+  // currently-available quests (prereqs met, not completed). Fallbacks: the
+  // top-most quest row, or fit all nodes.
+  useEffect(() => {
+    if (initialCenterAppliedRef.current) return;
+    if (!reactFlowInstance || !elkPositions || elkPositions.size === 0) return;
+
+    // If we already had a saved viewport, respect it and skip centering.
+    if (savedViewportRef.current) {
+      initialCenterAppliedRef.current = true;
+      return;
+    }
+
+    const actual = quests.filter((q) => q.trader !== 'Map');
+    const available = actual.filter((q) =>
+      isQuestAvailable(q, completedQuests)
+    );
+
+    // Pick target nodes to center on. Prefer available quests; otherwise
+    // fall back to root quests (no prerequisites) which are effectively the
+    // top-most nodes in the layout.
+    let targetIds = available.map((q) => q.id);
+    if (targetIds.length === 0) {
+      targetIds = actual
+        .filter((q) => q.previousQuestIds.length === 0)
+        .map((q) => q.id);
+    }
+    // Only keep ids that actually have a computed position.
+    targetIds = targetIds.filter((id) => elkPositions.has(id));
+
+    if (targetIds.length > 0) {
+      reactFlowInstance.fitView({
+        nodes: targetIds.map((id) => ({ id })),
+        padding: 0.3,
+        duration: 0,
+        maxZoom: 0.8,
+        minZoom: 0.3,
+      });
+    } else {
+      reactFlowInstance.fitView({ padding: 0.2, duration: 0 });
+    }
+
+    initialCenterAppliedRef.current = true;
+    // Sync the React state so subsequent renders use the new viewport as the
+    // default and the persistence effect stores the right value.
+    const current = reactFlowInstance.getViewport();
+    setViewport(current);
+  }, [reactFlowInstance, elkPositions, quests, completedQuests]);
 
   // Build React Flow nodes/edges from the computed positions and the
   // interactive state (completion, availability, highlight).
@@ -656,7 +715,6 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
               markerEnd: { type: MarkerType.ArrowClosed },
             }}
             translateExtent={bounds}
-            fitView={!loadViewport()}
             minZoom={0.1}
             maxZoom={1.5}
             defaultViewport={viewport}
