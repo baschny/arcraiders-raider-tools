@@ -5,9 +5,8 @@ import ReactFlow, {
   useNodesState,
   useEdgesState,
   MarkerType,
-  type Viewport,
 } from 'reactflow';
-import type { Node, Edge, ReactFlowInstance } from 'reactflow';
+import type { Node, Edge, ReactFlowInstance, Viewport } from 'reactflow';
 import ELK from 'elkjs/lib/elk.bundled.js';
 import type { ElkNode } from 'elkjs/lib/elk.bundled.js';
 import type { Quest } from '../types/quest';
@@ -22,9 +21,17 @@ import { migrateQuestIds } from '../data/questIdMigration';
 import { trackQuestMark } from '../../../shared/utils/analytics';
 import { useLocale } from '../../../shared/context/LocaleContext';
 
-const VIEWPORT_STORAGE_KEY = 'raider-tools:quest-tracker-viewport';
 const BLUEPRINT_OVERLAY_COLLAPSED_STORAGE_KEY =
   'raider-tools:quest-tracker-blueprints-collapsed';
+const VIEWPORT_STORAGE_KEY = 'raider-tools:quest-tracker-viewport';
+// Node width used by the ELK layout; kept in sync with the `width: 300`
+// passed to ELK when building the graph.
+const NODE_WIDTH = 300;
+// Initial zoom level used when we don't have a saved viewport.
+const INITIAL_ZOOM = 0.5;
+// Top padding (in flow coordinates after zoom) between the top edge of
+// the pane and the top-most node on first load.
+const INITIAL_TOP_PADDING = 50;
 import {
   isQuestAvailable,
   getAllDependents,
@@ -69,13 +76,11 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
     return true;
   };
 
-  // Load viewport from localStorage
+  // Load the last-known viewport from localStorage.
   const loadViewport = (): Viewport | undefined => {
     try {
       const saved = localStorage.getItem(VIEWPORT_STORAGE_KEY);
-      if (saved) {
-        return JSON.parse(saved);
-      }
+      if (saved) return JSON.parse(saved);
     } catch (e) {
       console.error('Failed to load viewport:', e);
     }
@@ -89,16 +94,17 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
   );
   const [reactFlowInstance, setReactFlowInstance] =
     useState<ReactFlowInstance | null>(null);
-  // Capture any saved viewport once at mount. This determines whether we
-  // need to compute an initial centered viewport after the graph layout is
-  // ready (no saved viewport) or restore the user's previous viewport.
-  const savedViewportRef = useRef<Viewport | undefined>(loadViewport());
-  const [viewport, setViewport] = useState<Viewport>(
-    savedViewportRef.current || { x: 0, y: 0, zoom: 0.5 }
-  );
-  const initialCenterAppliedRef = useRef(false);
   const [isBlueprintOverlayCollapsed, setIsBlueprintOverlayCollapsed] =
     useState(loadBlueprintOverlayCollapsed);
+  // Snapshot of the persisted viewport captured once at mount. When
+  // present we pass it to React Flow as `defaultViewport` and skip the
+  // top-center positioning done on first load.
+  const [savedViewport] = useState<Viewport | undefined>(() => loadViewport());
+  // Ref to the graph container so we can read its pixel dimensions when
+  // computing the initial top-center viewport.
+  const graphContainerRef = useRef<HTMLDivElement>(null);
+  // Ensures the initial top-center positioning only runs once per mount.
+  const initialViewportAppliedRef = useRef(false);
 
   // Confirmation dialog state
   const [confirmDialog, setConfirmDialog] = useState<{
@@ -129,18 +135,6 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
     }
   }, [completedQuests]);
 
-  // Save viewport to localStorage whenever it changes, but skip the very
-  // first render so we don't persist the placeholder default viewport before
-  // the graph has been centered on the available quests.
-  useEffect(() => {
-    if (!initialCenterAppliedRef.current) return;
-    try {
-      localStorage.setItem(VIEWPORT_STORAGE_KEY, JSON.stringify(viewport));
-    } catch (e) {
-      console.error('Failed to save viewport:', e);
-    }
-  }, [viewport]);
-
   // Save blueprint overlay collapse state whenever it changes
   useEffect(() => {
     try {
@@ -153,13 +147,23 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
     }
   }, [isBlueprintOverlayCollapsed]);
 
-  // Handle viewport changes
-  const onMoveEnd = useCallback((
-    _event: MouseEvent | TouchEvent | null,
-    newViewport: Viewport
-  ) => {
-    setViewport(newViewport);
-  }, []);
+  // Persist the viewport on user-driven pan/zoom. React Flow only invokes
+  // `onMoveEnd` for interactions that have a DOM sourceEvent, so our own
+  // programmatic `setViewport` call for the initial top-center layout
+  // does NOT trigger this handler.
+  const onMoveEnd = useCallback(
+    (_event: MouseEvent | TouchEvent | null, nextViewport: Viewport) => {
+      try {
+        localStorage.setItem(
+          VIEWPORT_STORAGE_KEY,
+          JSON.stringify(nextViewport)
+        );
+      } catch (e) {
+        console.error('Failed to save viewport:', e);
+      }
+    },
+    []
+  );
 
   // Node types registration
   const nodeTypes = useMemo(
@@ -336,54 +340,33 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
     };
   }, [quests]);
 
-  // On first load without a saved viewport, center the view on the
-  // currently-available quests (prereqs met, not completed). Fallbacks: the
-  // top-most quest row, or fit all nodes.
+  // On first load (no saved viewport), position the pane horizontally
+  // centered on the graph and aligned with its top edge. We run this
+  // once the ReactFlow instance is ready AND ELK has produced positions,
+  // so we already know the graph's bounds without having to wait for
+  // React Flow to measure the DOM nodes.
   useEffect(() => {
-    if (initialCenterAppliedRef.current) return;
+    if (savedViewport) return;
+    if (initialViewportAppliedRef.current) return;
     if (!reactFlowInstance || !elkPositions || elkPositions.size === 0) return;
 
-    // If we already had a saved viewport, respect it and skip centering.
-    if (savedViewportRef.current) {
-      initialCenterAppliedRef.current = true;
-      return;
-    }
+    let minX = Infinity;
+    let maxX = -Infinity;
+    let minY = Infinity;
+    elkPositions.forEach((pos) => {
+      minX = Math.min(minX, pos.x);
+      maxX = Math.max(maxX, pos.x + NODE_WIDTH);
+      minY = Math.min(minY, pos.y);
+    });
 
-    const actual = quests.filter((q) => q.trader !== 'Map');
-    const available = actual.filter((q) =>
-      isQuestAvailable(q, completedQuests)
-    );
+    const paneWidth = graphContainerRef.current?.clientWidth ?? 0;
+    const graphCenterX = (minX + maxX) / 2;
+    const x = paneWidth / 2 - graphCenterX * INITIAL_ZOOM;
+    const y = -minY * INITIAL_ZOOM + INITIAL_TOP_PADDING;
 
-    // Pick target nodes to center on. Prefer available quests; otherwise
-    // fall back to root quests (no prerequisites) which are effectively the
-    // top-most nodes in the layout.
-    let targetIds = available.map((q) => q.id);
-    if (targetIds.length === 0) {
-      targetIds = actual
-        .filter((q) => q.previousQuestIds.length === 0)
-        .map((q) => q.id);
-    }
-    // Only keep ids that actually have a computed position.
-    targetIds = targetIds.filter((id) => elkPositions.has(id));
-
-    if (targetIds.length > 0) {
-      reactFlowInstance.fitView({
-        nodes: targetIds.map((id) => ({ id })),
-        padding: 0.3,
-        duration: 0,
-        maxZoom: 0.8,
-        minZoom: 0.3,
-      });
-    } else {
-      reactFlowInstance.fitView({ padding: 0.2, duration: 0 });
-    }
-
-    initialCenterAppliedRef.current = true;
-    // Sync the React state so subsequent renders use the new viewport as the
-    // default and the persistence effect stores the right value.
-    const current = reactFlowInstance.getViewport();
-    setViewport(current);
-  }, [reactFlowInstance, elkPositions, quests, completedQuests]);
+    reactFlowInstance.setViewport({ x, y, zoom: INITIAL_ZOOM });
+    initialViewportAppliedRef.current = true;
+  }, [reactFlowInstance, elkPositions, savedViewport]);
 
   // Build React Flow nodes/edges from the computed positions and the
   // interactive state (completion, availability, highlight).
@@ -652,11 +635,17 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
     [searchResults, focusOnQuest]
   );
 
-  // Calculate bounds for translateExtent
+  // Calculate bounds for translateExtent.
+  //
+  // Before the nodes are known we MUST return an infinite extent. React
+  // Flow uses this prop at mount time to build d3-zoom and immediately
+  // constrains `defaultViewport` against it, so any restrictive fallback
+  // would clamp a restored saved viewport to the top-left corner before
+  // the real graph bounds are available.
   const bounds = useMemo(() => {
     if (nodes.length === 0) return [
-      [0, 0],
-      [1000, 1000],
+      [Number.NEGATIVE_INFINITY, Number.NEGATIVE_INFINITY],
+      [Number.POSITIVE_INFINITY, Number.POSITIVE_INFINITY],
     ] as [[number, number], [number, number]];
 
     let minX = Infinity,
@@ -700,7 +689,7 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
           onResetAll={handleResetAll}
         />
 
-        <div className="graph-container">
+        <div className="graph-container" ref={graphContainerRef}>
           <ReactFlow
             nodes={flowNodes}
             edges={flowEdges}
@@ -717,7 +706,7 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
             translateExtent={bounds}
             minZoom={0.1}
             maxZoom={1.5}
-            defaultViewport={viewport}
+            {...(savedViewport ? { defaultViewport: savedViewport } : {})}
             nodesDraggable={false}
             nodesConnectable={false}
           >
