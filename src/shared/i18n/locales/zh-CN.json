@@ -22,10 +22,10 @@
     "title": "Raider Tools",
     "intro": "欢迎！这是我为 ARC Raiders 制作的个人工具合集。它们最初是为我自己在游戏中使用的私人工具，但实在太实用了，所以我决定分享出来。如果这些工具对你有帮助，欢迎告诉我。请选择下方工具开始使用。",
     "tools": {
-      "schedule": "以更清晰的视图展示 ARC Raiders 地图事件时间表，方便你规划突袭。",
+      "schedule": "以更清晰的视图展示 ARC Raiders 地图事件时间表，方便你规划对局。",
       "craftCalculator": "计算应制作多少物品，最大化利用你的仓库空间。",
       "quests": "通过交互式任务树追踪你的任务进度。",
-      "lootHelper": "可视化制作链，帮助你在突袭中判断该拾取什么。",
+      "lootHelper": "可视化制作链，帮助你在对局中判断该拾取什么。",
       "quartermaster": "在一个页面中规划仓库、装备和藏身处需求。"
     }
   },
@@ -83,7 +83,7 @@
     "requiredItemsTitle": "所需物品",
     "itemFallback": "物品 {index}",
     "craftingEconomicsTitle": "制作收益",
-    "profit": "利润",
+    "profit": "收益",
     "deficit": "亏损",
     "breakEven": "持平",
     "investment": "投入（材料）",
