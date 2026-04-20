@@ -1,3 +1,9 @@
 files:
   - source: /src/shared/i18n/locales/en.json
     translation: /src/shared/i18n/locales/%two_letters_code%.json
+    languages_mapping:
+      two_letters_code:
+        pt-BR: pt-BR
+        ko: ko-KR
+        zh-CN: zh-CN
+        zh-TW: zh-TW
