@@ -41,6 +41,12 @@ import {
     runSignOutWipe,
 } from '../state/hydration';
 import { installGlobalFlushHooks } from '../state/stores';
+import { classifyError } from '../state/userStateStore';
+import {
+    reportSyncError,
+    clearSyncError,
+    setRetryHandler,
+} from '../state/syncStatus';
 
 interface CognitoAuthContextValue {
     /** True when the SPA has Cognito env vars configured (or dev-auth is on). */
@@ -125,14 +131,39 @@ export function CognitoAuthProvider({ children }: ProviderProps) {
     }, [available, devAuth]);
 
     // Whenever the signed-in user changes, run the post-sign-in sync
-    // (migration or server-wins hydrate) exactly once per sub.
+    // (migration or server-wins hydrate) exactly once per sub. Failures
+    // are surfaced via the sync-status aggregator so the UI can show a
+    // banner and the user can retry manually.
     useEffect(() => {
         if (!user) return;
         if (syncedForSubRef.current === user.sub) return;
         syncedForSubRef.current = user.sub;
-        runPostSignInSync().catch(err => {
-            console.error('Post-sign-in sync failed', err);
+        runPostSignInSync()
+            .then(() => clearSyncError('post-sign-in'))
+            .catch(err => {
+                console.error('[raider-tools sync] post-sign-in sync failed', err);
+                reportSyncError('post-sign-in', classifyError(err, 'read'));
+            });
+    }, [user]);
+
+    // Register the retry handler that the banner's Retry button calls.
+    // It re-runs the post-sign-in flow for the currently signed-in user.
+    useEffect(() => {
+        if (!user) {
+            setRetryHandler(null);
+            return;
+        }
+        setRetryHandler(async () => {
+            try {
+                await runPostSignInSync();
+                clearSyncError('post-sign-in');
+            } catch (err) {
+                console.error('[raider-tools sync] post-sign-in retry failed', err);
+                reportSyncError('post-sign-in', classifyError(err, 'read'));
+                throw err;
+            }
         });
+        return () => setRetryHandler(null);
     }, [user]);
 
     const signInWithPassword = useCallback(async (email: string, password: string) => {

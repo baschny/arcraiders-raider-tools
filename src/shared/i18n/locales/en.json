@@ -6,6 +6,31 @@
     "language": "Language",
     "loading": "Loading...",
     "errorPrefix": "Error",
+    "syncError": {
+      "network": {
+        "title": "Can't reach the sync server",
+        "body": "Your recent changes aren't being saved. Check your connection or try again in a moment."
+      },
+      "unauthorized": {
+        "title": "Your session expired",
+        "body": "Please sign in again to continue syncing your progress across devices.",
+        "signIn": "Sign in again"
+      },
+      "server": {
+        "title": "Sync server error (HTTP {status})",
+        "body": "The backend is currently unhealthy. Your recent changes aren't being saved."
+      },
+      "client": {
+        "title": "Sync rejected (HTTP {status})",
+        "body": "The server refused the last write. Your recent changes aren't being saved."
+      },
+      "unknown": {
+        "title": "Sync error",
+        "body": "Your recent changes might not be saved. Please try again."
+      },
+      "retry": "Retry",
+      "details": "Affected: {sources}"
+    },
     "header": {
       "switchTool": "Switch Tool",
       "switchLanguage": "Switch Language",

@@ -50,6 +50,82 @@ export class ConflictError<T> extends Error {
     }
 }
 
+/**
+ * High-level classification of a sync failure. Used by the UI to pick
+ * appropriate copy and by devs to understand what went wrong at a
+ * glance.
+ */
+export type SyncErrorKind =
+    | 'network'       // fetch threw — server unreachable, CORS, DNS, offline, etc.
+    | 'unauthorized'  // 401 / 403 — token missing, expired, or rejected
+    | 'server'        // 5xx — backend is reachable but broken
+    | 'client'        // other 4xx (not 409, not auth) — malformed request, payload too big, etc.
+    | 'unknown';      // anything we couldn't classify
+
+export type SyncOperation = 'read' | 'write' | 'clear';
+
+/**
+ * Description of a persistence failure, exposed on `UserStateStore` so
+ * the UI can react and developers can diagnose what went wrong.
+ */
+export interface SyncError {
+    kind: SyncErrorKind;
+    operation: SyncOperation;
+    /** HTTP status when the failure came from a server response. */
+    status?: number;
+    /** Raw diagnostic message; safe for logs, not for end users. */
+    message: string;
+    /** Wall-clock time so the UI can show relative age if it wants. */
+    at: number;
+}
+
+/**
+ * Thrown by `RemoteBackend` when a remote call fails for a non-conflict
+ * reason. Carries enough information for the store to classify the
+ * failure without string-parsing.
+ */
+export class RemoteFetchError extends Error {
+    readonly operation: SyncOperation;
+    readonly status?: number;
+    constructor(operation: SyncOperation, message: string, status?: number, cause?: unknown) {
+        super(message);
+        this.name = 'RemoteFetchError';
+        this.operation = operation;
+        this.status = status;
+        if (cause !== undefined) {
+            (this as { cause?: unknown }).cause = cause;
+        }
+    }
+}
+
+export function classifyError(err: unknown, operation: SyncOperation): SyncError {
+    const at = Date.now();
+    if (err instanceof RemoteFetchError) {
+        const status = err.status;
+        let kind: SyncErrorKind;
+        if (status === undefined) {
+            kind = 'network';
+        } else if (status === 401 || status === 403) {
+            kind = 'unauthorized';
+        } else if (status >= 500) {
+            kind = 'server';
+        } else if (status >= 400) {
+            kind = 'client';
+        } else {
+            kind = 'unknown';
+        }
+        return { kind, operation: err.operation, status, message: err.message, at };
+    }
+    if (err instanceof TypeError) {
+        // fetch() surfaces network failures as TypeError in browsers.
+        return { kind: 'network', operation, message: err.message, at };
+    }
+    if (err instanceof Error) {
+        return { kind: 'unknown', operation, message: err.message, at };
+    }
+    return { kind: 'unknown', operation, message: String(err), at };
+}
+
 export interface WriteResult {
     /** New revision assigned by the server (local backend returns null). */
     revision: number | null;
@@ -112,6 +188,12 @@ export class UserStateStore<T> {
      * successful write or hydrate.
      */
     private lastConflict: DomainEnvelope<T> | null = null;
+    /**
+     * Tracks the most recent non-conflict sync failure (network, 5xx, 401,
+     * …). Subscribers are notified when this changes so the UI can
+     * surface it. Cleared on the next successful read/write.
+     */
+    private lastError: SyncError | null = null;
     private readonly opts: StoreOptions<T>;
 
     constructor(opts: StoreOptions<T>) {
@@ -129,6 +211,8 @@ export class UserStateStore<T> {
     get revision(): number | null { return this.currentRevision; }
     /** The most recent server snapshot adopted after a revision conflict. */
     get conflict(): DomainEnvelope<T> | null { return this.lastConflict; }
+    /** The most recent non-conflict sync failure, or null when healthy. */
+    get error(): SyncError | null { return this.lastError; }
 
     /** Current snapshot (in-memory). Safe to call synchronously. */
     get(): T {
@@ -155,9 +239,20 @@ export class UserStateStore<T> {
     /**
      * Load the current value from the active backend and set it as the
      * in-memory snapshot. Called during app boot and after backend swaps.
+     *
+     * On failure, `this.error` is populated and the error is rethrown so
+     * callers (e.g. sign-in hydration) can also react.
      */
     async hydrate(): Promise<void> {
-        const stored = await this.backend.read();
+        let stored: DomainEnvelope<T> | null;
+        try {
+            stored = await this.backend.read();
+        } catch (err) {
+            this.recordError(classifyError(err, 'read'));
+            console.error(`[sync:${this.opts.domain}] read failed`, err);
+            this.notify();
+            throw err;
+        }
         if (!stored) {
             this.current = this.opts.defaultValue;
             this.currentRevision = null;
@@ -179,6 +274,7 @@ export class UserStateStore<T> {
         }
         this.dirty = false;
         this.lastConflict = null;
+        this.clearError();
         this.notify();
     }
 
@@ -200,13 +296,24 @@ export class UserStateStore<T> {
         // Write through immediately to the active backend so local cache
         // and server stay consistent. The backend may return a new
         // revision (remote backend) which we capture.
-        const result = await this.backend.write({
-            schemaVersion: this.opts.schemaVersion,
-            data: this.current,
-            revision: this.currentRevision,
-        });
-        if (result.revision !== null) {
-            this.currentRevision = result.revision;
+        try {
+            const result = await this.backend.write({
+                schemaVersion: this.opts.schemaVersion,
+                data: this.current,
+                revision: this.currentRevision,
+            });
+            if (result.revision !== null) {
+                this.currentRevision = result.revision;
+            }
+            this.clearError();
+            this.notify();
+        } catch (err) {
+            if (!(err instanceof ConflictError)) {
+                this.recordError(classifyError(err, 'write'));
+                console.error(`[sync:${this.opts.domain}] authoritative write failed`, err);
+                this.notify();
+            }
+            throw err;
         }
     }
 
@@ -244,6 +351,8 @@ export class UserStateStore<T> {
                     this.currentRevision = result.revision;
                 }
                 this.lastConflict = null;
+                this.clearError();
+                this.notify();
             })
             .catch(async err => {
                 if (err instanceof ConflictError) {
@@ -260,14 +369,19 @@ export class UserStateStore<T> {
                         this.currentRevision = null;
                         this.lastConflict = null;
                     }
+                    this.clearError();
                     this.notify();
                     console.warn(
-                        `[userStateStore:${this.opts.domain}] revision conflict; adopted server state (revision=${this.currentRevision})`,
+                        `[sync:${this.opts.domain}] revision conflict; adopted server state (revision=${this.currentRevision})`,
                     );
                     return;
                 }
-                console.error(`[userStateStore:${this.opts.domain}] write failed`, err);
+                // Real failure: classify, record for the UI, keep the
+                // value dirty so a future flush can retry.
+                this.recordError(classifyError(err, 'write'));
                 this.dirty = true;
+                this.notify();
+                console.error(`[sync:${this.opts.domain}] write failed`, err);
             });
         await this.pendingWrite;
     }
@@ -286,6 +400,7 @@ export class UserStateStore<T> {
         this.current = this.opts.defaultValue;
         this.currentRevision = null;
         this.lastConflict = null;
+        this.clearError();
         await this.backend.clear();
         this.notify();
     }
@@ -311,6 +426,14 @@ export class UserStateStore<T> {
 
     private notify(): void {
         for (const listener of this.subscribers) listener();
+    }
+
+    private recordError(error: SyncError): void {
+        this.lastError = error;
+    }
+
+    private clearError(): void {
+        this.lastError = null;
     }
 }
 
@@ -364,12 +487,29 @@ class RemoteBackend<T> implements Backend<T> {
     }
     async read(): Promise<DomainEnvelope<T> | null> {
         const token = await getIdToken();
-        if (!token) throw new Error('Not signed in');
-        const resp = await fetch(`${API_BASE}/me/state/${this.opts.domain}`, {
-            headers: { Authorization: `Bearer ${token}`, Accept: 'application/json' },
-        });
+        if (!token) throw new RemoteFetchError('read', 'Not signed in', 401);
+        const url = `${API_BASE}/me/state/${this.opts.domain}`;
+        let resp: Response;
+        try {
+            resp = await fetch(url, {
+                headers: { Authorization: `Bearer ${token}`, Accept: 'application/json' },
+            });
+        } catch (err) {
+            throw new RemoteFetchError(
+                'read',
+                `GET /me/state/${this.opts.domain} failed to reach server: ${(err as Error)?.message ?? 'unknown'}`,
+                undefined,
+                err,
+            );
+        }
         if (resp.status === 404) return null;
-        if (!resp.ok) throw new Error(`GET /me/state/${this.opts.domain} failed: ${resp.status}`);
+        if (!resp.ok) {
+            throw new RemoteFetchError(
+                'read',
+                `GET /me/state/${this.opts.domain} returned HTTP ${resp.status}`,
+                resp.status,
+            );
+        }
         const json = await resp.json() as { schemaVersion: number; data: T; revision?: number };
         return {
             schemaVersion: json.schemaVersion,
@@ -379,7 +519,7 @@ class RemoteBackend<T> implements Backend<T> {
     }
     async write(envelope: DomainEnvelope<T>): Promise<WriteResult> {
         const token = await getIdToken();
-        if (!token) throw new Error('Not signed in');
+        if (!token) throw new RemoteFetchError('write', 'Not signed in', 401);
         // The PUT body echoes our last-seen revision so the server can
         // reject the write when it has moved on. A null `revision` means
         // "I've never seen this row before"; the server will create it
@@ -391,15 +531,26 @@ class RemoteBackend<T> implements Backend<T> {
         if (envelope.revision !== null) {
             putBody.revision = envelope.revision;
         }
-        const resp = await fetch(`${API_BASE}/me/state/${this.opts.domain}`, {
-            method: 'PUT',
-            headers: {
-                Authorization: `Bearer ${token}`,
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(putBody),
-            keepalive: true,
-        });
+        const url = `${API_BASE}/me/state/${this.opts.domain}`;
+        let resp: Response;
+        try {
+            resp = await fetch(url, {
+                method: 'PUT',
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(putBody),
+                keepalive: true,
+            });
+        } catch (err) {
+            throw new RemoteFetchError(
+                'write',
+                `PUT /me/state/${this.opts.domain} failed to reach server: ${(err as Error)?.message ?? 'unknown'}`,
+                undefined,
+                err,
+            );
+        }
         if (resp.status === 409) {
             const body = await resp.json().catch(() => ({})) as {
                 current?: { schemaVersion: number; data: T; revision?: number };
@@ -413,19 +564,40 @@ class RemoteBackend<T> implements Backend<T> {
                 : null;
             throw new ConflictError<T>(current);
         }
-        if (!resp.ok) throw new Error(`PUT /me/state/${this.opts.domain} failed: ${resp.status}`);
+        if (!resp.ok) {
+            throw new RemoteFetchError(
+                'write',
+                `PUT /me/state/${this.opts.domain} returned HTTP ${resp.status}`,
+                resp.status,
+            );
+        }
         const okBody = await resp.json().catch(() => ({})) as { revision?: number };
         return { revision: typeof okBody.revision === 'number' ? okBody.revision : null };
     }
     async clear(): Promise<void> {
         const token = await getIdToken();
-        if (!token) throw new Error('Not signed in');
-        const resp = await fetch(`${API_BASE}/me/state/${this.opts.domain}`, {
-            method: 'DELETE',
-            headers: { Authorization: `Bearer ${token}` },
-        });
+        if (!token) throw new RemoteFetchError('clear', 'Not signed in', 401);
+        const url = `${API_BASE}/me/state/${this.opts.domain}`;
+        let resp: Response;
+        try {
+            resp = await fetch(url, {
+                method: 'DELETE',
+                headers: { Authorization: `Bearer ${token}` },
+            });
+        } catch (err) {
+            throw new RemoteFetchError(
+                'clear',
+                `DELETE /me/state/${this.opts.domain} failed to reach server: ${(err as Error)?.message ?? 'unknown'}`,
+                undefined,
+                err,
+            );
+        }
         if (!resp.ok && resp.status !== 404) {
-            throw new Error(`DELETE /me/state/${this.opts.domain} failed: ${resp.status}`);
+            throw new RemoteFetchError(
+                'clear',
+                `DELETE /me/state/${this.opts.domain} returned HTTP ${resp.status}`,
+                resp.status,
+            );
         }
     }
 }

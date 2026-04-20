@@ -29,6 +29,7 @@ import {
     lootStore,
     quartermasterStore,
 } from './stores';
+import { RemoteFetchError } from './userStateStore';
 
 const API_BASE = (import.meta.env.VITE_API_BASE_URL as string | undefined) ??
     'https://api.raider-tools.app';
@@ -116,11 +117,23 @@ export async function runSignOutWipe(): Promise<void> {
 // ---------------------------------------------------------------------------
 async function fetchMe(): Promise<MeResponseShape> {
     const token = await getIdToken();
-    if (!token) throw new Error('Not signed in');
-    const resp = await fetch(`${API_BASE}/me`, {
-        headers: { Authorization: `Bearer ${token}`, Accept: 'application/json' },
-    });
-    if (!resp.ok) throw new Error(`GET /me failed: ${resp.status}`);
+    if (!token) throw new RemoteFetchError('read', 'Not signed in', 401);
+    let resp: Response;
+    try {
+        resp = await fetch(`${API_BASE}/me`, {
+            headers: { Authorization: `Bearer ${token}`, Accept: 'application/json' },
+        });
+    } catch (err) {
+        throw new RemoteFetchError(
+            'read',
+            `GET /me failed to reach server: ${(err as Error)?.message ?? 'unknown'}`,
+            undefined,
+            err,
+        );
+    }
+    if (!resp.ok) {
+        throw new RemoteFetchError('read', `GET /me returned HTTP ${resp.status}`, resp.status);
+    }
     return resp.json() as Promise<MeResponseShape>;
 }
 
@@ -156,17 +169,27 @@ async function tryMigrateLocalToServer(): Promise<boolean> {
     const qm = quartermasterStore.get();
     body.quartermaster = { schemaVersion: quartermasterStore.schemaVersion, data: qm };
 
-    const resp = await fetch(`${API_BASE}/me/migrate`, {
-        method: 'POST',
-        headers: {
-            Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(body),
-    });
+    let resp: Response;
+    try {
+        resp = await fetch(`${API_BASE}/me/migrate`, {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(body),
+        });
+    } catch (err) {
+        throw new RemoteFetchError(
+            'write',
+            `POST /me/migrate failed to reach server: ${(err as Error)?.message ?? 'unknown'}`,
+            undefined,
+            err,
+        );
+    }
     if (resp.status === 200) return true;
     if (resp.status === 409) return false; // another device migrated first
-    throw new Error(`POST /me/migrate failed: ${resp.status}`);
+    throw new RemoteFetchError('write', `POST /me/migrate returned HTTP ${resp.status}`, resp.status);
 }
 
 async function swapAllToRemote(): Promise<void> {

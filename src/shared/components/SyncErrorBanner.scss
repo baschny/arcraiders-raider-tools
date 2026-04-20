@@ -1,0 +1,91 @@
+@use '../styles/variables' as *;
+
+.sync-error-banner {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: flex-start;
+    gap: $spacing-md;
+    margin: 0;
+    padding: $spacing-sm $spacing-lg;
+    background: color-mix(in srgb, $status-available 22%, $bg-dark);
+    border: 0;
+    border-bottom: $border-width-default solid $status-available;
+    border-radius: 0;
+    color: $text-primary;
+    font-size: $font-md;
+    line-height: 1.4;
+}
+
+.sync-error-banner__icon {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: $status-available;
+}
+
+.sync-error-banner__body {
+    flex: 1 1 auto;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.sync-error-banner__title {
+    font-weight: 600;
+}
+
+.sync-error-banner__text {
+    color: $text-primary;
+}
+
+.sync-error-banner__details {
+    color: $text-secondary;
+    font-size: $font-sm;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.sync-error-banner__action {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: $gap-xs;
+    padding: $spacing-xs $spacing-md;
+    background: $bg-tertiary;
+    border: $border-width-thin solid $border-light;
+    border-radius: $radius-sm;
+    color: $text-primary;
+    text-decoration: none;
+    font-size: $font-md;
+    cursor: pointer;
+    transition: $transition-default;
+
+    &:hover:not(:disabled) {
+        background: $bg-quaternary;
+        border-color: $border-lighter;
+    }
+
+    &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+    .spin {
+        animation: sync-error-banner-spin 0.9s linear infinite;
+    }
+}
+
+.sync-error-banner__action--primary {
+    background: $status-available;
+    color: $bg-primary;
+    border-color: $status-available;
+
+    &:hover:not(:disabled) {
+        background: color-mix(in srgb, $status-available 80%, white);
+        border-color: color-mix(in srgb, $status-available 80%, white);
+    }
+}
+
+@keyframes sync-error-banner-spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
