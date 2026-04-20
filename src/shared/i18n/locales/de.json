@@ -6,13 +6,38 @@
     "language": "Sprache",
     "loading": "Wird geladen...",
     "errorPrefix": "Fehler",
+    "syncError": {
+      "network": {
+        "title": "Kann den Sync-Server nicht erreichen",
+        "body": "Ihre letzten Änderungen werden nicht gespeichert. Überprüfen Sie Ihre Verbindung oder versuchen Sie es in einem Moment erneut."
+      },
+      "unauthorized": {
+        "title": "Ihre Sitzung ist abgelaufen",
+        "body": "Bitte melde dich erneut an, um deinen Fortschritt zwischen Geräten zu synchronisieren.",
+        "signIn": "Erneut anmelden"
+      },
+      "server": {
+        "title": "Sync-Serverfehler (HTTP {status})",
+        "body": "Das Backend ist derzeit ungesund. Ihre letzten Änderungen werden nicht gespeichert."
+      },
+      "client": {
+        "title": "Sync abgelehnt (HTTP {status})",
+        "body": "Der Server hat das letzte Schreiben abgelehnt. Ihre letzten Änderungen werden nicht gespeichert."
+      },
+      "unknown": {
+        "title": "Sync-Fehler",
+        "body": "Ihre letzten Änderungen werden möglicherweise nicht gespeichert. Bitte versuchen Sie es erneut."
+      },
+      "retry": "Wiederholen",
+      "details": "Betroffen: {sources}"
+    },
     "header": {
       "switchTool": "Tool wechseln",
       "switchLanguage": "Sprache wechseln",
       "languageLabel": "Sprache"
     },
     "sidebar": {
-      "title": "Tools",
+      "title": "Werkzeuge",
       "collapse": "Einklappen",
       "expand": "Seitenleiste ausklappen",
       "collapseTitle": "Seitenleiste einklappen",
