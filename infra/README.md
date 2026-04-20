@@ -1,14 +1,15 @@
-# Raider Tools – Infrastructure (Relay + Auth)
+# Raider Tools – Infrastructure
 
-This `infra/` project provisions the AWS resources for `raider-tools.app`. It is split into three stacks deployed together:
+This `infra/` project provisions the AWS resources for `raider-tools.app`. Two stacks in two regions, always deployed together:
 
 - `RaiderToolsAuthCertStack` (**us-east-1**) – ACM certificate for the Cognito custom domain `auth.raider-tools.app`. Cognito requires this certificate to live in us-east-1 because it serves the domain via CloudFront.
-- `RaiderToolsArcRelayStack` (eu-central-1) – serverless ArcTracker relay + schedule services and the shared HTTP API at `api.raider-tools.app`.
-- `RaiderToolsAuthStack` (eu-central-1) – Cognito user pool (using the custom domain), DynamoDB user table, KMS CMK, Discord OAuth bridge, and authenticated `/me` + `/me/links/*` routes attached to the same HTTP API.
+- `RaiderToolsStack` (eu-central-1) – everything else: HTTP API at `api.raider-tools.app`, ArcTracker relay, schedule services, Cognito user pool (using the custom domain), DynamoDB user table, KMS CMK, Discord OAuth bridge, and all `/me*`, `/me/state/*`, `/me/migrate` Lambdas + routes.
 
 The relay portion exposes the ArcTracker API to the SPA without exposing the ArcTracker **app key** in the browser.
 
-Cross-stack references between the cert stack and the auth stack are wired via CDK's `crossRegionReferences: true` (no manual ARN copy/paste).
+Cross-stack references between the two stacks are wired via CDK's `crossRegionReferences: true` (no manual ARN copy/paste).
+
+History: `RaiderToolsStack` merges two older stacks, `RaiderToolsArcRelayStack` and `RaiderToolsAuthStack`. The split was purely thematic and caused a silent foot-gun — routes added via `httpApi.addRoutes(...)` from the auth stack physically landed in the relay stack, so `cdk deploy` of only the auth stack quietly skipped new routes. The merged layout makes `cdk deploy --all` always sufficient.
 
 Mapping:
 * Source (Relay API): `https://api.raider-tools.app/arctracker/<path>`
@@ -101,8 +102,10 @@ The us-east-1 bootstrap is required for `RaiderToolsAuthCertStack` (the Cognito 
 
 ```bash
 cd infra
-AWS_PROFILE=baschny cdk deploy
+AWS_PROFILE=baschny npx cdk deploy --all --require-approval never
 ```
+
+Always use `--all` (or both stack names explicitly). Deploying just `RaiderToolsStack` skips the us-east-1 cert stack; deploying just `RaiderToolsAuthCertStack` has no Lambdas to update.
 
 ---
 
@@ -180,19 +183,20 @@ Expected result:
 
 ---
 
-## Auth stack (Cognito + Discord + DynamoDB + KMS)
+## User accounts + per-user state (Cognito + Discord + DynamoDB + KMS)
 
-The auth stack adds:
+These resources all live in the unified `RaiderToolsStack`:
 
 - A **Cognito User Pool** (email + password, plus a Discord-bridged passwordless flow via custom-auth Lambda triggers).
 - A **Cognito custom domain** at `auth.raider-tools.app`, backed by a us-east-1 ACM certificate provisioned by `RaiderToolsAuthCertStack` and wired in via cross-region references. A Route53 A-record alias is created automatically.
-- A **DynamoDB single-table** `raider-tools-users` for profiles, IdP mappings, and envelope-encrypted linked-account tokens.
+- A **DynamoDB single-table** `raider-tools-users` for profiles, IdP mappings, envelope-encrypted linked-account tokens, and per-user synced state (`STATE#*` rows).
 - A **KMS CMK** (`alias/raider-tools/user-secrets`) used to envelope-encrypt linked-account tokens (currently ArcTracker; Embark in phase 2).
 - A **Secrets Manager** secret `raider-tools/discord/oauth` with the Discord OAuth client id/secret + a HMAC state-signing key.
-- Three Lambdas behind new routes on the existing HTTP API:
+- Lambdas behind new routes on the shared HTTP API:
   - `GET /auth/discord/start`, `GET /auth/discord/callback` – Discord OAuth bridge (no JWT auth).
   - `GET|PATCH /me` – profile (Cognito JWT-protected).
   - `GET|PUT|DELETE /me/links/{provider}` – manage external account links (Cognito JWT-protected).
+  - `GET|PUT|DELETE /me/state/{domain}`, `POST /me/migrate` – per-user synced state with optimistic concurrency (Cognito JWT-protected).
 
 ### Pre-deploy: apex-record requirement (Cognito custom domain)
 
@@ -229,9 +233,11 @@ If empty, add an A or alias record at the apex (the Amplify hosting record is su
 
 Add these to the Vite `.env` (and to AWS Amplify environment variables for production):
 
-- `VITE_COGNITO_USER_POOL_ID` – from CDK output `RaiderToolsAuthStack.UserPoolId`
-- `VITE_COGNITO_CLIENT_ID` – from CDK output `RaiderToolsAuthStack.UserPoolClientId`
+- `VITE_COGNITO_USER_POOL_ID` – from CDK output `RaiderToolsStack.UserPoolId`
+- `VITE_COGNITO_CLIENT_ID` – from CDK output `RaiderToolsStack.UserPoolClientId`
 - `VITE_API_BASE_URL=https://api.raider-tools.app`
+
+Whenever the Cognito pool is recreated (e.g. stack rebuild), both values change and the Amplify build needs the new values before the next SPA deploy — otherwise sign-in fails silently against the old pool.
 
 ### Smoke tests
 

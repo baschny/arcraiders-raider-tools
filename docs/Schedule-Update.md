@@ -31,7 +31,7 @@ NPM entry points:
 
 ## AWS automation (infra)
 Defined in:
-- `infra/lib/raider-tools-arc-relay-stack.ts`
+- `infra/lib/raider-tools-stack.ts`
 - `infra/bin/app.ts`
 - `infra/cdk.json`
 
@@ -100,13 +100,13 @@ Then confirm:
 From repository root:
 ```bash
 AWS_PROFILE=baschny npm --prefix ./infra run diff
-AWS_PROFILE=baschny npm --prefix ./infra run deploy -- RaiderToolsArcRelayStack
+AWS_PROFILE=baschny npm --prefix ./infra run deploy -- --all
 ```
 
 ### 3) Trigger/verify after deploy
 Manual invoke:
 ```bash
-FN_NAME=$(AWS_PROFILE=baschny aws cloudformation describe-stack-resources --stack-name RaiderToolsArcRelayStack --query "StackResources[?LogicalResourceId=='ScheduleUpdateFunction'].PhysicalResourceId" --output text --no-cli-pager)
+FN_NAME=$(AWS_PROFILE=baschny aws cloudformation describe-stack-resources --stack-name RaiderToolsStack --query "StackResources[?LogicalResourceId=='ScheduleUpdateFunction'].PhysicalResourceId" --output text --no-cli-pager)
 AWS_PROFILE=baschny aws lambda invoke --function-name "$FN_NAME" --payload '{}' /tmp/schedule-updater-response.json --no-cli-pager
 ```
 

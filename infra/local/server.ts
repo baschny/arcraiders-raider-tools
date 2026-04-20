@@ -88,7 +88,7 @@ async function ensureTable(): Promise<void> {
     }
 
     // Minimal schema: pk/sk only. Keep in sync with the CDK table
-    // definition in infra/lib/raider-tools-auth-stack.ts — this local
+    // definition in infra/lib/raider-tools-stack.ts — this local
     // version intentionally omits PITR + KMS + TTL attribute (TTL is
     // only enforced on NONCE#* rows which are an auth-layer concern
     // not exercised locally).

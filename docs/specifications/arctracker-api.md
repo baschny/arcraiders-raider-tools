@@ -362,4 +362,4 @@ async function syncWithErrorHandling() {
 | `src/shared/components/LoginButton.tsx` | Header login button |
 | `src/pages/ProfileSettings.tsx` | Token management page |
 | `infra/lambda/arc-relay.ts` | Lambda proxy function |
-| `infra/lib/raider-tools-arc-relay-stack.ts` | AWS CDK stack |
+| `infra/lib/raider-tools-stack.ts` | AWS CDK stack |

@@ -47,7 +47,7 @@ Browser SPA                                            API Gateway HTTP API
                                             • envelope-encrypts LINK#<provider> tokens
                                             • EncryptionContext binds to {userId, purpose, provider}
 ```
-The server-side Lambdas + DynamoDB table are provisioned by `RaiderToolsAuthStack` (eu-central-1) in `infra/lib/raider-tools-auth-stack.ts`. The SPA-side abstractions live under `src/shared/state/`.
+The server-side Lambdas + DynamoDB table are provisioned by `RaiderToolsStack` (eu-central-1) in `infra/lib/raider-tools-stack.ts`. The SPA-side abstractions live under `src/shared/state/`.
 
 ---
 ## 2. Server-side storage model
@@ -264,7 +264,7 @@ If the provider also acts as an identity provider (sign-in mechanism), do §5 in
 2. **Surface the linked status** on `GET /me` — update `profile.ts` so `links.<provider>` appears in the response.
 3. **Add a typed client** in `src/shared/services/userApi.ts` (`getXLink`, `putXLink`, `deleteXLink`).
 4. **UI** — add controls in `src/pages/ProfileSettings.tsx` under a new section; follow the ArcTracker section's layout.
-5. **KMS grants** — `linksFn` already has `grantEncryptDecrypt` on the CMK. If a *new* Lambda (e.g. a background sync job) needs to read these tokens, explicitly grant it in `RaiderToolsAuthStack` and use the same `EncryptionContext`.
+5. **KMS grants** — `linksFn` already has `grantEncryptDecrypt` on the CMK. If a *new* Lambda (e.g. a background sync job) needs to read these tokens, explicitly grant it in `infra/lib/raider-tools-stack.ts` and use the same `EncryptionContext`.
 6. **Background refresh** (optional) — if the token needs periodic refresh (OAuth refresh tokens), create an EventBridge-scheduled Lambda that reads the encrypted row, performs the refresh against the provider, and writes the new ciphertext back. Reuse `encryptToken` / `decryptToken` — never decrypt outside a Lambda that needs the plaintext.
 
 ### 5.3 Adding fields to an existing state domain
@@ -279,6 +279,7 @@ If the provider also acts as an identity provider (sign-in mechanism), do §5 in
 - **Never read/write `localStorage` directly from an app for user-authored state.** Go through a `UserStateStore`. UI prefs that deliberately do not sync (locale, sidebar state) are fine.
 - **Never store linked-account tokens in plaintext** in DynamoDB, `localStorage`, `IndexedDB`, or cookies. Always use `encryptToken`/`decryptToken` with a correct `EncryptionContext`.
 - **Never add a new `pk` prefix to the user table** without updating §2.1 and the relevant IAM grants. The KMS `EncryptionContext` is keyed on `{userId, purpose, provider}` — changing its shape after the fact invalidates prior ciphertexts.
+- **IAM grants for new Lambdas that read linked-account tokens** must be added in `infra/lib/raider-tools-stack.ts` (`grantEncryptDecrypt` on `kmsKey`, `grantReadWriteData` on `userTable`). The two-stack split no longer exists, so all grants live in one place.
 - **Never skip the `revision` field** when writing to an existing `STATE` row. Omitting `revision` is reserved for the very first write on a brand-new row and will 409 otherwise.
 - **Never merge client-side.** On 409, the store adopts the server snapshot (server wins); the conflict is surfaced via `store.conflict` for the UI to notice. Do not add per-field merging — that was explicitly rejected during design (D5).
 - **Keep `STATE` payloads small.** 64 KB hard cap server-side. For anything larger use S3 + presigned URLs, not DynamoDB.
@@ -307,13 +308,13 @@ The `installServerMock` helper in `hydration.test.ts` is the authoritative refer
 
 ---
 ## 8. Deployment
-Any change to Lambdas, the DynamoDB table, or the KMS CMK goes through CDK:
+Any change to Lambdas, the DynamoDB table, the KMS CMK, or anything under API Gateway goes through CDK:
 ```bash
 cd infra
-AWS_PROFILE=baschny npx cdk diff RaiderToolsAuthStack
-AWS_PROFILE=baschny npx cdk deploy RaiderToolsAuthStack --require-approval never
+AWS_PROFILE=baschny npx cdk diff
+AWS_PROFILE=baschny npx cdk deploy --all --require-approval never
 ```
-The stack is in eu-central-1. The only cross-region dependency is the ACM cert in `RaiderToolsAuthCertStack`, which is an auth concern — see `docs/Authentication.md` §7.
+All runtime resources live in a single eu-central-1 stack (`RaiderToolsStack`). The only cross-region dependency is the ACM cert for the Cognito custom domain, which has to live in us-east-1 and is therefore kept in its own stack (`RaiderToolsAuthCertStack`). Always use `cdk deploy --all` — deploying a single stack is fine for iteration but can silently miss cross-region changes.
 
 SPA changes ship via Amplify on push to `main`. SPA env vars that gate the remote backend:
 - `VITE_COGNITO_USER_POOL_ID` — auth concern, but required for the SPA to ever switch to `remote` backend.
@@ -325,7 +326,8 @@ Without these the SPA runs in anonymous mode permanently and only the `LocalBack
 ---
 ## 9. File map (user-data cheat sheet)
 Server / infra:
-- `infra/lib/raider-tools-auth-stack.ts` — DynamoDB table, KMS CMK, `/me*` Lambdas + routes.
+- `infra/lib/raider-tools-stack.ts` — unified eu-central-1 stack: HTTP API + custom domain, Cognito user pool, DynamoDB table, KMS CMK, schedule + relay + Discord + `/me*` Lambdas, and every API Gateway route.
+- `infra/lib/raider-tools-auth-cert-stack.ts` — us-east-1 ACM cert for `auth.raider-tools.app` (Cognito custom domain requirement).
 - `infra/lambda/profile.ts` — `/me` handler (profile + migration flag).
 - `infra/lambda/links.ts` — `/me/links/{provider}` handler (linked-account tokens).
 - `infra/lambda/state.ts` — `/me/state/{domain}` + `/me/migrate` (per-user app state + optimistic concurrency).

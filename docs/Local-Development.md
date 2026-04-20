@@ -88,7 +88,7 @@ The local setup deliberately skips:
 - **ArcTracker relay + KMS envelope encryption.** `POST /me/links/arctracker` won't work locally unless you point `ARCTRACKER_RELAY_URL` at a running relay; even then, tokens will be written without the KMS envelope. Don't test the ArcTracker PUT path locally.
 - **Discord OAuth bridge and Cognito custom-auth triggers.** Dev auth is sub-only; the full federated flow still requires the real stack.
 - **PITR, TTL eviction, customer-managed KMS at rest.** The local table has none of these. If you're testing behavior that depends on them, use the deployed stack.
-- **Schema drift guardrails.** `infra/local/server.ts::ensureTable()` is hand-written to match `RaiderToolsAuthStack.UserTable`. If you change the CDK table definition in `infra/lib/raider-tools-auth-stack.ts`, update `ensureTable()` in the same PR.
+- **Schema drift guardrails.** `infra/local/server.ts::ensureTable()` is hand-written to match `RaiderToolsStack.UserTable`. If you change the CDK table definition in `infra/lib/raider-tools-stack.ts`, update `ensureTable()` in the same PR.
 ## File map (local-dev cheat sheet)
 - `infra/local/docker-compose.yml` — DynamoDB Local container spec.
 - `infra/local/server.ts` — Local HTTP server; dispatches to the real Lambda handlers.

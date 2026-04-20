@@ -1,19 +1,33 @@
 /**
- * Raider Tools Auth Stack
+ * Raider Tools Infrastructure Stack
  *
- * Provisions everything needed for phase 1 of the user-account rollout:
- * - Amazon Cognito User Pool (email + password, plus a Discord-bridged
- *   passwordless flow via custom auth Lambda triggers).
- * - A single DynamoDB table (`raider-tools-users`) for profiles, IdP
- *   mappings, and envelope-encrypted "linked account" tokens.
- * - A customer-managed KMS key used to envelope-encrypt the per-user
- *   ArcTracker (and later Embark) tokens stored in DynamoDB.
- * - A Secrets Manager secret holding the Discord OAuth client id/secret
- *   and a state-signing key (populated manually post-deploy).
- * - Lambdas: Discord OAuth bridge, profile, link management, and the
- *   three Cognito custom-auth triggers.
- * - New routes added to the *existing* HTTP API (passed in from the relay
- *   stack), gated by a JWT authorizer bound to the Cognito user pool.
+ * Single eu-central-1 stack that owns everything behind
+ * `api.raider-tools.app` and the `auth.raider-tools.app` Cognito domain:
+ *   - HTTP API (API Gateway v2) + ACM cert + Route53 alias.
+ *   - ArcTracker relay Lambda.
+ *   - Schedule reader/updater Lambdas + versioned S3 bucket + hourly
+ *     EventBridge rule.
+ *   - Cognito User Pool (email + Discord-bridged passwordless flow) with
+ *     a custom domain using the us-east-1 ACM cert imported from
+ *     RaiderToolsAuthCertStack.
+ *   - DynamoDB single-table for users, KMS CMK for envelope-encrypted
+ *     linked-account tokens, Secrets Manager entry for Discord OAuth.
+ *   - Discord OAuth bridge Lambda + profile / links / state Lambdas.
+ *   - JWT-protected `/me`, `/me/links/*`, `/me/state/*`, `/me/migrate`
+ *     routes and the unauthenticated `/auth/discord/*`, `/arctracker/*`,
+ *     `/schedule/*` routes.
+ *
+ * This stack replaces the previous `RaiderToolsArcRelayStack` +
+ * `RaiderToolsAuthStack` split. That split was purely thematic and caused
+ * a silent foot-gun: routes added from the auth stack via
+ * `httpApi.addRoutes(...)` physically land in the stack that owns the
+ * `HttpApi` construct, so deploying only the auth stack used to skip new
+ * routes. Keeping everything in one stack means `cdk deploy --all` is
+ * always sufficient.
+ *
+ * Cross-region: the companion `RaiderToolsAuthCertStack` still lives in
+ * us-east-1 because Cognito's custom domain is CloudFront-backed and
+ * requires a us-east-1 ACM cert.
  */
 
 import * as cdk from "aws-cdk-lib";
@@ -31,82 +45,110 @@ import * as route53Targets from "aws-cdk-lib/aws-route53-targets";
 import * as apigwv2 from "aws-cdk-lib/aws-apigatewayv2";
 import * as integrations from "aws-cdk-lib/aws-apigatewayv2-integrations";
 import * as authorizers from "aws-cdk-lib/aws-apigatewayv2-authorizers";
+import * as s3 from "aws-cdk-lib/aws-s3";
+import * as events from "aws-cdk-lib/aws-events";
+import * as eventsTargets from "aws-cdk-lib/aws-events-targets";
 
-export interface RaiderToolsAuthStackProps extends cdk.StackProps {
+export interface RaiderToolsStackProps extends cdk.StackProps {
     /**
-     * The HTTP API created by the relay stack. New auth/me routes are
-     * added here so everything stays under the same custom domain.
-     */
-    httpApi: apigwv2.HttpApi;
-
-    /**
-     * Public origin of the SPA (used for redirect-back after Discord login
-     * and for CORS validation in user-facing Lambdas).
-     * @example "https://raider-tools.app"
-     */
-    spaOrigin: string;
-
-    /**
-     * Public origin of the API (used to compute the Discord redirect URI).
-     * @example "https://api.raider-tools.app"
-     */
-    apiOrigin: string;
-
-    /**
-     * Allowed SPA origins for CORS / return-URL validation.
-     */
-    allowedOrigins: string[];
-
-    /**
-     * Base URL of the ArcTracker relay used by the LinksFn to validate a
-     * newly-submitted ArcTracker token before persisting it encrypted.
-     * @example "https://api.raider-tools.app/arctracker"
-     */
-    arctrackerRelayUrl: string;
-
-    /**
-     * Name of the Secrets Manager secret holding Discord OAuth credentials.
-     * Created by this stack with an empty placeholder; the real value is
-     * filled in via `aws secretsmanager put-secret-value` post-deploy.
-     */
-    discordSecretName: string;
-
-    /**
-     * Apex hosted zone domain used to create the Route53 alias record for
-     * the Cognito custom domain.
+     * Apex hosted zone domain used for Route53 records.
      * @example "raider-tools.app"
      */
     rootDomainName: string;
 
-    /**
-     * Hosted zone id for `rootDomainName`.
-     */
+    /** Hosted zone id for `rootDomainName`. */
     hostedZoneId: string;
 
     /**
-     * Fully-qualified hostname to expose Cognito on.
+     * Fully-qualified hostname exposing the HTTP API.
+     * @example "api.raider-tools.app"
+     */
+    apiDomainName: string;
+
+    /**
+     * Fully-qualified hostname exposing the Cognito custom domain.
      * @example "auth.raider-tools.app"
      */
     authDomainName: string;
 
     /**
-     * us-east-1 ACM certificate for `authDomainName`. Imported from the
-     * companion `RaiderToolsAuthCertStack` via cross-region references.
+     * SPA origin used as the Discord post-login redirect target and for
+     * CORS validation.
+     * @example "https://raider-tools.app"
+     */
+    spaOrigin: string;
+
+    /** Allowed SPA origins for CORS / return-URL validation. */
+    allowedOrigins: string[];
+
+    /**
+     * Name of the Secrets Manager secret holding the ArcTracker app key.
+     * Referenced by name (not CDK-managed) so rotation stays out of band.
+     */
+    arcAppKeySecretName: string;
+
+    /**
+     * Name of the Secrets Manager secret holding Discord OAuth credentials.
+     * Created here with a placeholder; real values are put via
+     * `aws secretsmanager put-secret-value` post-deploy.
+     */
+    discordSecretName: string;
+
+    /**
+     * us-east-1 ACM cert for `authDomainName`. Imported from
+     * `RaiderToolsAuthCertStack` via cross-region references.
      */
     authCertificate: acm.ICertificate;
 }
 
-export class RaiderToolsAuthStack extends cdk.Stack {
+export class RaiderToolsStack extends cdk.Stack {
+    public readonly httpApi: apigwv2.HttpApi;
     public readonly userPool: cognito.UserPool;
     public readonly userPoolClient: cognito.UserPoolClient;
     public readonly userTable: dynamodb.TableV2;
     public readonly kmsKey: kms.Key;
 
-    constructor(scope: Construct, id: string, props: RaiderToolsAuthStackProps) {
+    constructor(scope: Construct, id: string, props: RaiderToolsStackProps) {
         super(scope, id, props);
 
+        if (cdk.Stack.of(this).region !== "eu-central-1") {
+            throw new Error("This stack is intended for eu-central-1.");
+        }
+
+        const apiOrigin = `https://${props.apiDomainName}`;
+
         // -----------------------------------------------------------------
-        // KMS customer-managed key for envelope encryption of user tokens.
+        // Route53 hosted zone (shared between api + auth records).
+        // -----------------------------------------------------------------
+        const zone = route53.HostedZone.fromHostedZoneAttributes(this, "HostedZone", {
+            hostedZoneId: props.hostedZoneId,
+            zoneName: props.rootDomainName,
+        });
+
+        // -----------------------------------------------------------------
+        // ArcTracker app key (reference existing secret, managed externally).
+        // -----------------------------------------------------------------
+        const arcAppKeySecret = secretsmanager.Secret.fromSecretNameV2(
+            this,
+            "ArcAppKeySecret",
+            props.arcAppKeySecretName,
+        );
+
+        // -----------------------------------------------------------------
+        // S3 bucket for cached schedule data. Versioned so the updater
+        // can diff between snapshots safely.
+        // -----------------------------------------------------------------
+        const scheduleBucket = new s3.Bucket(this, "ScheduleDataBucket", {
+            blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,
+            encryption: s3.BucketEncryption.S3_MANAGED,
+            enforceSSL: true,
+            versioned: true,
+            removalPolicy: cdk.RemovalPolicy.RETAIN,
+            autoDeleteObjects: false,
+        });
+
+        // -----------------------------------------------------------------
+        // KMS CMK for envelope-encrypting linked-account tokens.
         // -----------------------------------------------------------------
         this.kmsKey = new kms.Key(this, "UserSecretsKey", {
             alias: "alias/raider-tools/user-secrets",
@@ -116,10 +158,7 @@ export class RaiderToolsAuthStack extends cdk.Stack {
         });
 
         // -----------------------------------------------------------------
-        // DynamoDB single-table for users + links + IdP mappings.
-        //   pk = USER#<sub>     sk = PROFILE | LINK#<provider>
-        //   pk = IDP#<provider>#<externalId>  sk = USER (lookup by IdP id)
-        //   pk = NONCE#<id>     sk = NONCE (single-use, TTL evicted)
+        // DynamoDB single-table (users + links + IdP mappings + nonces).
         // -----------------------------------------------------------------
         this.userTable = new dynamodb.TableV2(this, "UserTable", {
             tableName: "raider-tools-users",
@@ -132,8 +171,7 @@ export class RaiderToolsAuthStack extends cdk.Stack {
         });
 
         // -----------------------------------------------------------------
-        // Discord OAuth secret (placeholder; populated post-deploy).
-        // Shape: { "clientId":"...", "clientSecret":"...", "stateSigningKey":"<base64>" }
+        // Discord OAuth credentials (placeholder; populated post-deploy).
         // -----------------------------------------------------------------
         const discordSecret = new secretsmanager.Secret(this, "DiscordOAuthSecret", {
             secretName: props.discordSecretName,
@@ -146,8 +184,7 @@ export class RaiderToolsAuthStack extends cdk.Stack {
         });
 
         // -----------------------------------------------------------------
-        // Cognito custom-auth triggers (used by the Discord bridge to log
-        // an existing or freshly-created user in without a password).
+        // Cognito custom-auth triggers (Discord-bridged passwordless).
         // -----------------------------------------------------------------
         const defineAuthFn = this.makeLambda("DefineAuthFn", "cognito-define-auth.ts", {
             timeout: cdk.Duration.seconds(5),
@@ -169,7 +206,7 @@ export class RaiderToolsAuthStack extends cdk.Stack {
         this.userTable.grantReadWriteData(verifyAuthFn);
 
         // -----------------------------------------------------------------
-        // Cognito user pool (email + password baseline).
+        // Cognito user pool.
         // -----------------------------------------------------------------
         this.userPool = new cognito.UserPool(this, "UserPool", {
             userPoolName: "raider-tools-users",
@@ -198,8 +235,6 @@ export class RaiderToolsAuthStack extends cdk.Stack {
             },
         });
 
-        // Custom Cognito hosted domain (e.g. auth.raider-tools.app), backed
-        // by the cross-region us-east-1 ACM certificate.
         const userPoolDomain = this.userPool.addDomain("UserPoolDomain", {
             customDomain: {
                 domainName: props.authDomainName,
@@ -207,11 +242,6 @@ export class RaiderToolsAuthStack extends cdk.Stack {
             },
         });
 
-        // Route53 alias auth.raider-tools.app -> Cognito CloudFront target.
-        const zone = route53.HostedZone.fromHostedZoneAttributes(this, "HostedZone", {
-            hostedZoneId: props.hostedZoneId,
-            zoneName: props.rootDomainName,
-        });
         new route53.ARecord(this, "AuthAliasRecord", {
             zone,
             recordName: props.authDomainName,
@@ -230,8 +260,68 @@ export class RaiderToolsAuthStack extends cdk.Stack {
             accessTokenValidity: cdk.Duration.hours(1),
             idTokenValidity: cdk.Duration.hours(1),
             refreshTokenValidity: cdk.Duration.days(30),
-            // No OAuth callback URLs in phase 1 because the SPA does not
-            // use the hosted UI; sign-in goes through Cognito JS directly.
+        });
+
+        // -----------------------------------------------------------------
+        // ArcTracker relay + schedule Lambdas.
+        // -----------------------------------------------------------------
+        const relayFn = new nodeLambda.NodejsFunction(this, "ArcRelayFunction", {
+            runtime: lambda.Runtime.NODEJS_22_X,
+            entry: "lambda/arc-relay.ts",
+            handler: "handler",
+            memorySize: 256,
+            timeout: cdk.Duration.seconds(10),
+            environment: {
+                ARC_APP_KEY_SECRET_ARN: arcAppKeySecret.secretArn,
+                ALLOWED_ORIGINS: props.allowedOrigins.join(","),
+            },
+            bundling: {
+                minify: true,
+                sourceMap: true,
+                target: "node22",
+            },
+        });
+        arcAppKeySecret.grantRead(relayFn);
+
+        const scheduleReadFn = new nodeLambda.NodejsFunction(this, "ScheduleReadFunction", {
+            runtime: lambda.Runtime.NODEJS_22_X,
+            entry: "lambda/schedule-reader.ts",
+            handler: "handler",
+            memorySize: 128,
+            timeout: cdk.Duration.seconds(10),
+            environment: {
+                ALLOWED_ORIGINS: props.allowedOrigins.join(","),
+                SCHEDULE_BUCKET_NAME: scheduleBucket.bucketName,
+                SCHEDULE_KEY: "map-events.json",
+                SCHEDULE_HEALTH_KEY: "health.json",
+            },
+            bundling: { minify: true, sourceMap: true, target: "node22" },
+        });
+        scheduleBucket.grantRead(scheduleReadFn);
+
+        const scheduleUpdateFn = new nodeLambda.NodejsFunction(this, "ScheduleUpdateFunction", {
+            runtime: lambda.Runtime.NODEJS_22_X,
+            entry: "lambda/schedule-updater.ts",
+            handler: "handler",
+            memorySize: 512,
+            timeout: cdk.Duration.seconds(120),
+            environment: {
+                MAP_CONDITIONS_URL: "https://arcraiders.com/map-conditions",
+                EVENT_TYPES_URL: "https://raider-tools.app/data/schedule/event-types.json",
+                SCHEDULE_BUCKET_NAME: scheduleBucket.bucketName,
+                SCHEDULE_KEY: "map-events.json",
+                SCHEDULE_STAGING_KEY: "staging/map-events.json",
+                SCHEDULE_HEALTH_KEY: "health.json",
+                MERGE_HISTORY_WINDOW_SECONDS: String(30 * 24 * 60 * 60),
+            },
+            bundling: { minify: true, sourceMap: true, target: "node22" },
+        });
+        scheduleBucket.grantReadWrite(scheduleUpdateFn);
+
+        new events.Rule(this, "ScheduleUpdaterHourlyRule", {
+            description: "Refresh ARC Raiders map schedule from map-conditions HTML every hour",
+            schedule: events.Schedule.rate(cdk.Duration.hours(1)),
+            targets: [new eventsTargets.LambdaFunction(scheduleUpdateFn)],
         });
 
         // -----------------------------------------------------------------
@@ -247,7 +337,7 @@ export class RaiderToolsAuthStack extends cdk.Stack {
                 USER_POOL_CLIENT_ID: this.userPoolClient.userPoolClientId,
                 SPA_ORIGIN: props.spaOrigin,
                 ALLOWED_ORIGINS: props.allowedOrigins.join(","),
-                DISCORD_REDIRECT_URI: `${props.apiOrigin}/auth/discord/callback`,
+                DISCORD_REDIRECT_URI: `${apiOrigin}/auth/discord/callback`,
             },
         });
         discordSecret.grantRead(discordAuthFn);
@@ -265,7 +355,7 @@ export class RaiderToolsAuthStack extends cdk.Stack {
         }));
 
         // -----------------------------------------------------------------
-        // ProfileFn + LinksFn (JWT-protected).
+        // /me, /me/links/*, /me/state/*, /me/migrate Lambdas (JWT-protected).
         // -----------------------------------------------------------------
         const profileFn = this.makeLambda("ProfileFn", "profile.ts", {
             timeout: cdk.Duration.seconds(10),
@@ -284,7 +374,7 @@ export class RaiderToolsAuthStack extends cdk.Stack {
                 USER_TABLE_NAME: this.userTable.tableName,
                 KMS_KEY_ID: this.kmsKey.keyId,
                 ALLOWED_ORIGINS: props.allowedOrigins.join(","),
-                ARCTRACKER_RELAY_URL: props.arctrackerRelayUrl,
+                ARCTRACKER_RELAY_URL: `${apiOrigin}/arctracker`,
             },
         });
         this.userTable.grantReadWriteData(linksFn);
@@ -301,7 +391,65 @@ export class RaiderToolsAuthStack extends cdk.Stack {
         this.userTable.grantReadWriteData(stateFn);
 
         // -----------------------------------------------------------------
-        // Routes on the existing HTTP API.
+        // HTTP API + custom domain + Route53 alias.
+        // -----------------------------------------------------------------
+        const apiCert = new acm.Certificate(this, "ApiCert", {
+            domainName: props.apiDomainName,
+            validation: acm.CertificateValidation.fromDns(zone),
+        });
+
+        this.httpApi = new apigwv2.HttpApi(this, "HttpApi", {
+            apiName: "raider-tools-api",
+            corsPreflight: {
+                allowOrigins: props.allowedOrigins,
+                allowMethods: [
+                    apigwv2.CorsHttpMethod.GET,
+                    apigwv2.CorsHttpMethod.POST,
+                    apigwv2.CorsHttpMethod.PUT,
+                    apigwv2.CorsHttpMethod.PATCH,
+                    apigwv2.CorsHttpMethod.DELETE,
+                    apigwv2.CorsHttpMethod.OPTIONS,
+                ],
+                allowHeaders: [
+                    "Authorization",
+                    "Content-Type",
+                    "If-None-Match",
+                    "If-Modified-Since",
+                ],
+                exposeHeaders: [
+                    "X-RateLimit-Limit",
+                    "X-RateLimit-Remaining",
+                    "X-RateLimit-Reset",
+                    "Retry-After",
+                ],
+                maxAge: cdk.Duration.hours(1),
+            },
+        });
+
+        const apiDomain = new apigwv2.DomainName(this, "ApiDomainName", {
+            domainName: props.apiDomainName,
+            certificate: apiCert,
+        });
+
+        new apigwv2.ApiMapping(this, "ApiMapping", {
+            api: this.httpApi,
+            domainName: apiDomain,
+            stage: this.httpApi.defaultStage!,
+        });
+
+        new route53.ARecord(this, "ApiAliasRecord", {
+            zone,
+            recordName: props.apiDomainName,
+            target: route53.RecordTarget.fromAlias(
+                new route53Targets.ApiGatewayv2DomainProperties(
+                    apiDomain.regionalDomainName,
+                    apiDomain.regionalHostedZoneId,
+                ),
+            ),
+        });
+
+        // -----------------------------------------------------------------
+        // Routes.
         // -----------------------------------------------------------------
         const jwtAuthorizer = new authorizers.HttpJwtAuthorizer(
             "CognitoJwtAuthorizer",
@@ -309,18 +457,41 @@ export class RaiderToolsAuthStack extends cdk.Stack {
             {
                 identitySource: ["$request.header.Authorization"],
                 jwtAudience: [this.userPoolClient.userPoolClientId],
-            }
+            },
         );
+
+        const relayIntegration = new integrations.HttpLambdaIntegration(
+            "RelayIntegration", relayFn,
+        );
+        this.httpApi.addRoutes({
+            path: "/arctracker/{proxy+}",
+            methods: [apigwv2.HttpMethod.GET],
+            integration: relayIntegration,
+        });
+
+        const scheduleIntegration = new integrations.HttpLambdaIntegration(
+            "ScheduleReadIntegration", scheduleReadFn,
+        );
+        this.httpApi.addRoutes({
+            path: "/schedule/map-events.json",
+            methods: [apigwv2.HttpMethod.GET],
+            integration: scheduleIntegration,
+        });
+        this.httpApi.addRoutes({
+            path: "/schedule/health.json",
+            methods: [apigwv2.HttpMethod.GET],
+            integration: scheduleIntegration,
+        });
 
         const discordIntegration = new integrations.HttpLambdaIntegration(
             "DiscordIntegration", discordAuthFn,
         );
-        props.httpApi.addRoutes({
+        this.httpApi.addRoutes({
             path: "/auth/discord/start",
             methods: [apigwv2.HttpMethod.GET],
             integration: discordIntegration,
         });
-        props.httpApi.addRoutes({
+        this.httpApi.addRoutes({
             path: "/auth/discord/callback",
             methods: [apigwv2.HttpMethod.GET],
             integration: discordIntegration,
@@ -329,7 +500,7 @@ export class RaiderToolsAuthStack extends cdk.Stack {
         const profileIntegration = new integrations.HttpLambdaIntegration(
             "ProfileIntegration", profileFn,
         );
-        props.httpApi.addRoutes({
+        this.httpApi.addRoutes({
             path: "/me",
             methods: [apigwv2.HttpMethod.GET, apigwv2.HttpMethod.PATCH],
             integration: profileIntegration,
@@ -339,7 +510,7 @@ export class RaiderToolsAuthStack extends cdk.Stack {
         const linksIntegration = new integrations.HttpLambdaIntegration(
             "LinksIntegration", linksFn,
         );
-        props.httpApi.addRoutes({
+        this.httpApi.addRoutes({
             path: "/me/links/{provider}",
             methods: [
                 apigwv2.HttpMethod.GET,
@@ -353,7 +524,7 @@ export class RaiderToolsAuthStack extends cdk.Stack {
         const stateIntegration = new integrations.HttpLambdaIntegration(
             "StateIntegration", stateFn,
         );
-        props.httpApi.addRoutes({
+        this.httpApi.addRoutes({
             path: "/me/state/{domain}",
             methods: [
                 apigwv2.HttpMethod.GET,
@@ -363,7 +534,7 @@ export class RaiderToolsAuthStack extends cdk.Stack {
             integration: stateIntegration,
             authorizer: jwtAuthorizer,
         });
-        props.httpApi.addRoutes({
+        this.httpApi.addRoutes({
             path: "/me/migrate",
             methods: [apigwv2.HttpMethod.POST],
             integration: stateIntegration,
@@ -373,17 +544,20 @@ export class RaiderToolsAuthStack extends cdk.Stack {
         // -----------------------------------------------------------------
         // Outputs.
         // -----------------------------------------------------------------
+        new cdk.CfnOutput(this, "HttpApiId", { value: this.httpApi.httpApiId });
+        new cdk.CfnOutput(this, "ApiBaseUrl", { value: apiOrigin });
         new cdk.CfnOutput(this, "UserPoolId", { value: this.userPool.userPoolId });
         new cdk.CfnOutput(this, "UserPoolClientId", { value: this.userPoolClient.userPoolClientId });
         new cdk.CfnOutput(this, "UserPoolDomainBaseUrl", { value: userPoolDomain.baseUrl() });
         new cdk.CfnOutput(this, "UserTableName", { value: this.userTable.tableName });
         new cdk.CfnOutput(this, "UserSecretsKeyArn", { value: this.kmsKey.keyArn });
-        new cdk.CfnOutput(this, "DiscordCallbackUrl", { value: `${props.apiOrigin}/auth/discord/callback` });
+        new cdk.CfnOutput(this, "ScheduleBucketName", { value: scheduleBucket.bucketName });
+        new cdk.CfnOutput(this, "DiscordCallbackUrl", { value: `${apiOrigin}/auth/discord/callback` });
+        new cdk.CfnOutput(this, "ScheduleMapEventsUrl", { value: `${apiOrigin}/schedule/map-events.json` });
+        new cdk.CfnOutput(this, "ScheduleHealthUrl", { value: `${apiOrigin}/schedule/health.json` });
     }
 
-    /**
-     * Small helper to keep all auth-stack Lambdas configured uniformly.
-     */
+    /** Uniform Node.js Lambda configuration for all functions in this stack. */
     private makeLambda(
         id: string,
         entry: string,

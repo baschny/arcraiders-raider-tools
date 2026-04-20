@@ -44,10 +44,9 @@ DynamoDB raider-tools-users
   • NONCE#<hex>               → single-use HMAC nonces (TTL evicted)
   (full data model in docs/User-Data.md)
 ```
-All three auth-related stacks are in `infra/`:
-- `RaiderToolsAuthCertStack` (us-east-1) — ACM cert for the Cognito custom domain.
-- `RaiderToolsAuthStack` (eu-central-1) — User Pool, User Pool Client, custom domain, custom-auth Lambdas, Discord bridge, plus the `/me*` Lambdas + routes (covered in User-Data.md).
-- `RaiderToolsArcRelayStack` (eu-central-1) — shared HTTP API; the auth stack attaches its routes here.
+Two stacks in `infra/` own everything auth-related:
+- `RaiderToolsAuthCertStack` (us-east-1) — ACM cert for the Cognito custom domain (Cognito requires the cert in us-east-1 because it serves the domain via CloudFront).
+- `RaiderToolsStack` (eu-central-1) — HTTP API + User Pool + User Pool Client + custom domain + custom-auth Lambdas + Discord bridge + `/me*` Lambdas + all API Gateway routes (data-layer pieces are covered in `User-Data.md`).
 
 ---
 ## 2. Authentication flows
@@ -119,7 +118,7 @@ Key properties:
 ### 2.4 Custom domain (`auth.raider-tools.app`)
 Cognito serves the custom domain via CloudFront, which means the ACM certificate **must live in us-east-1**. That is why we have a two-region setup:
 - `RaiderToolsAuthCertStack` in us-east-1 provisions the cert against Route53 DNS validation.
-- `RaiderToolsAuthStack` in eu-central-1 consumes it via CDK's `crossRegionReferences: true`.
+- `RaiderToolsStack` in eu-central-1 consumes it via CDK's `crossRegionReferences: true`.
 - A Route53 `A`-alias record points `auth.raider-tools.app` at Cognito's CloudFront distribution.
 
 **Pre-deploy requirement**: the apex `raider-tools.app` must resolve (`dig +short raider-tools.app A`). Cognito refuses to create a subdomain if the parent zone has no apex record. The Amplify hosting record is sufficient.
@@ -173,7 +172,7 @@ Use this when you need a new `/me/*` or similar route that just needs authentica
        // … your logic …
    }
    ```
-2. **CDK** — in `infra/lib/raider-tools-auth-stack.ts`, use the private `makeLambda(...)` helper. Grant whatever IAM the handler needs (DynamoDB, KMS, Secrets Manager) through the existing constructs.
+2. **CDK** — in `infra/lib/raider-tools-stack.ts`, use the private `makeLambda(...)` helper. Grant whatever IAM the handler needs (DynamoDB, KMS, Secrets Manager) through the existing constructs.
 3. **Route** — attach via `props.httpApi.addRoutes({ path, methods, integration, authorizer: jwtAuthorizer })`. The authorizer (`CognitoJwtAuthorizer`) is already defined in that file; reuse it — do not create a new one.
 4. **Client** — add a typed function in `src/shared/services/userApi.ts`. It must await `getIdToken()` and set `Authorization: Bearer <token>`.
 5. **Tests** — see `docs/User-Data.md` §7 for the fetch-mock pattern; it applies to any new authenticated endpoint.
@@ -193,7 +192,7 @@ If the provider also produces a long-lived token you want to store for later use
    - `GET /auth/<provider>/start` → signed-state redirect to the provider's `/authorize`.
    - `GET /auth/<provider>/callback` → exchange code, fetch profile, look up `IDP#<provider>#<external_id>` in DynamoDB, `AdminCreateUser` (Username = email) on first sight, mint nonce, run `AdminInitiateAuth(CUSTOM_AUTH)` + `AdminRespondToAuthChallenge`, 302 back to the SPA with tokens in the URL fragment.
 3. **Cognito custom-auth triggers** — the existing `cognito-define-auth.ts` / `cognito-create-auth.ts` / `cognito-verify-auth.ts` are **generic** (they verify `<nonce>.<hmac>` against `stateSigningKey`). Reuse them. If your provider needs a different signing key, either share `stateSigningKey` across providers (easiest) or extend the verify trigger to try multiple keys.
-4. **CDK** — wire the new Lambda in `RaiderToolsAuthStack`, grant Secrets Manager read, DynamoDB R/W, and the same `cognito-idp:AdminCreate/Get/InitiateAuth/RespondToAuthChallenge/SetUserPassword/UpdateUserAttributes` actions that `discordAuthFn` has. Add two routes (`/auth/<provider>/start`, `/auth/<provider>/callback`) on `props.httpApi` — **no JWT authorizer**; these are pre-auth routes.
+4. **CDK** — wire the new Lambda in `RaiderToolsStack`, grant Secrets Manager read, DynamoDB R/W, and the same `cognito-idp:AdminCreate/Get/InitiateAuth/RespondToAuthChallenge/SetUserPassword/UpdateUserAttributes` actions that `discordAuthFn` has. Add two routes (`/auth/<provider>/start`, `/auth/<provider>/callback`) on `this.httpApi` — **no JWT authorizer**; these are pre-auth routes.
 5. **Dev portal setup** — register the OAuth redirect URI `https://api.raider-tools.app/auth/<provider>/callback` in the provider's developer console.
 6. **SPA** — add a `startSignInWith<Provider>()` helper in `CognitoAuthContext` that navigates to `/auth/<provider>/start?return=<origin>`, and a button in `SignIn.tsx`.
 7. **AuthCallback** — the existing `/auth/callback` page consumes any `id_token + refresh_token + access_token` fragment regardless of provider. No changes needed.
@@ -222,10 +221,10 @@ If the provider also produces a long-lived token you want to store for later use
 ## 7. Deployment
 ```bash
 cd infra
-AWS_PROFILE=baschny npx cdk diff RaiderToolsAuthStack
-AWS_PROFILE=baschny npx cdk deploy RaiderToolsAuthStack --require-approval never
+AWS_PROFILE=baschny npx cdk diff
+AWS_PROFILE=baschny npx cdk deploy --all --require-approval never
 ```
-Cross-region cert changes (very rare) go via `RaiderToolsAuthCertStack` (us-east-1). Both regions must be bootstrapped:
+Everything auth-related lives in `RaiderToolsStack` (eu-central-1). Cross-region cert changes (very rare) go via `RaiderToolsAuthCertStack` (us-east-1) — `--all` handles both. Both regions must be bootstrapped:
 ```bash
 AWS_PROFILE=baschny cdk bootstrap aws://935743309611/eu-central-1
 AWS_PROFILE=baschny cdk bootstrap aws://935743309611/us-east-1
@@ -246,7 +245,7 @@ Set these in the Amplify console for production and in `.env` for local dev. The
 ---
 ## 8. File map (auth-specific cheat sheet)
 Server / infra:
-- `infra/lib/raider-tools-auth-stack.ts` — User Pool, custom domain, Cognito triggers, Discord bridge, all `/me*` routes (data endpoints detailed in User-Data.md).
+- `infra/lib/raider-tools-stack.ts` — unified eu-central-1 stack: HTTP API + custom domain, User Pool + custom domain, Cognito triggers, Discord bridge, all `/me*` routes (data endpoints detailed in User-Data.md).
 - `infra/lib/raider-tools-auth-cert-stack.ts` — us-east-1 ACM cert for `auth.raider-tools.app`.
 - `infra/lambda/discord-auth.ts` — Discord OAuth bridge (`/auth/discord/start`, `/auth/discord/callback`).
 - `infra/lambda/cognito-define-auth.ts` — Cognito `DefineAuthChallenge` trigger.
