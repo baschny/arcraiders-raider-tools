@@ -3,6 +3,8 @@ This document is the single entry point for future AI agents (and humans) workin
 
 For anything that reads or writes **server-persisted user data**, read `docs/User-Data.md` instead; the two documents are intentionally split. They reference each other where the concerns overlap (envelope-encrypted linked-account tokens, sign-out orchestration, etc.).
 
+For running sign-in locally against the dev-auth bypass (no Cognito, no Discord), read `docs/Local-Development.md`.
+
 This document covers:
 - The Cognito setup and how email/password + Discord sign-in work.
 - The custom domain (`auth.raider-tools.app`) and its cross-region cert.

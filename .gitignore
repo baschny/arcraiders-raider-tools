@@ -14,6 +14,9 @@ dist-ssr
 *.local
 .env
 
+# Local DynamoDB persistent volume (see infra/local/docker-compose.yml)
+infra/local/.data
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

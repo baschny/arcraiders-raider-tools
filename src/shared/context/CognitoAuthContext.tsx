@@ -32,6 +32,10 @@ import {
     confirmSignUp as cognitoConfirmSignUp,
 } from '../auth/cognitoClient';
 import {
+    isDevAuthEnabled,
+    signInAsDevUser as devSignInAs,
+} from '../auth/devAuthClient';
+import {
     hydrateAllLocal,
     runPostSignInSync,
     runSignOutWipe,
@@ -39,8 +43,10 @@ import {
 import { installGlobalFlushHooks } from '../state/stores';
 
 interface CognitoAuthContextValue {
-    /** True when the SPA has Cognito env vars configured. */
+    /** True when the SPA has Cognito env vars configured (or dev-auth is on). */
     available: boolean;
+    /** True when the SPA is running in dev-auth (local/offline) mode. */
+    devAuth: boolean;
     /** True while we are checking for an existing session on mount. */
     initializing: boolean;
     /** Current signed-in user or null. */
@@ -53,6 +59,11 @@ interface CognitoAuthContextValue {
     confirmSignUp(email: string, code: string): Promise<void>;
     /** Redirect the browser to the Discord OAuth bridge. */
     startDiscordSignIn(): void;
+    /**
+     * Dev-only: sign in as a synthetic user against the local API server.
+     * Only works when `VITE_DEV_AUTH=true`; throws otherwise.
+     */
+    signInAsDevUser(sub: string, email?: string | null): void;
     /** Sign the user out (clears Cognito local cache). */
     signOut(): void;
 }
@@ -67,9 +78,10 @@ interface ProviderProps {
 }
 
 export function CognitoAuthProvider({ children }: ProviderProps) {
+    const devAuth = isDevAuthEnabled();
     const available = isCognitoConfigured();
-    // When Cognito is not configured we have nothing to initialize — skip the
-    // "initializing" gate entirely so `set-state-in-effect` is not needed.
+    // When neither Cognito nor dev-auth is configured we have nothing to
+    // initialize — skip the "initializing" gate entirely.
     const [initializing, setInitializing] = useState<boolean>(() => available);
     const [user, setUser] = useState<AuthSession | null>(null);
     // Tracks which user sub we've already run the post-sign-in sync for
@@ -84,29 +96,33 @@ export function CognitoAuthProvider({ children }: ProviderProps) {
         void hydrateAllLocal();
     }, []);
 
-    // On mount when Cognito IS configured: 1) consume tokens from the URL
-    // fragment if present, 2) hydrate any cached session from the SDK.
+    // On mount when sign-in IS configured (Cognito or dev-auth):
+    //   - Cognito: 1) consume tokens from the URL fragment if present,
+    //              2) hydrate any cached session from the SDK.
+    //   - dev-auth: just hydrate whatever is in localStorage.
     useEffect(() => {
         if (!available) return;
 
-        const hashParams = parseHashTokens(window.location.hash);
-        if (hashParams) {
-            try {
-                const session = acceptTokensFromHash(hashParams);
-                setUser(session);
-                // Strip the fragment from the URL without leaving history junk.
-                history.replaceState(null, '', window.location.pathname + window.location.search);
-                setInitializing(false);
-                return;
-            } catch (err) {
-                console.warn('Failed to consume hash tokens', err);
+        if (!devAuth) {
+            const hashParams = parseHashTokens(window.location.hash);
+            if (hashParams) {
+                try {
+                    const session = acceptTokensFromHash(hashParams);
+                    setUser(session);
+                    // Strip the fragment from the URL without leaving history junk.
+                    history.replaceState(null, '', window.location.pathname + window.location.search);
+                    setInitializing(false);
+                    return;
+                } catch (err) {
+                    console.warn('Failed to consume hash tokens', err);
+                }
             }
         }
 
         getCurrentSession()
             .then(s => setUser(s))
             .finally(() => setInitializing(false));
-    }, [available]);
+    }, [available, devAuth]);
 
     // Whenever the signed-in user changes, run the post-sign-in sync
     // (migration or server-wins hydrate) exactly once per sub.
@@ -137,6 +153,14 @@ export function CognitoAuthProvider({ children }: ProviderProps) {
         window.location.href = `${API_BASE}/auth/discord/start?return=${ret}`;
     }, []);
 
+    const signInAsDevUser = useCallback((sub: string, email?: string | null) => {
+        if (!isDevAuthEnabled()) {
+            throw new Error('Dev auth is not enabled in this build');
+        }
+        const session = devSignInAs(sub, email ?? null);
+        setUser(session);
+    }, []);
+
     const signOut = useCallback(() => {
         // Fire-and-forget the wipe; Cognito sign-out itself is sync and
         // should not wait on HTTP calls that will imminently fail once
@@ -149,15 +173,17 @@ export function CognitoAuthProvider({ children }: ProviderProps) {
 
     const value = useMemo<CognitoAuthContextValue>(() => ({
         available,
+        devAuth,
         initializing,
         user,
         signInWithPassword,
         signUpWithPassword,
         confirmSignUp,
         startDiscordSignIn,
+        signInAsDevUser,
         signOut,
-    }), [available, initializing, user, signInWithPassword, signUpWithPassword,
-        confirmSignUp, startDiscordSignIn, signOut]);
+    }), [available, devAuth, initializing, user, signInWithPassword, signUpWithPassword,
+        confirmSignUp, startDiscordSignIn, signInAsDevUser, signOut]);
 
     return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }

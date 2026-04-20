@@ -1,0 +1,100 @@
+# Local Development (server-backed state)
+This document covers how to run the server-backed parts of raider-tools fully offline:
+- A local DynamoDB (Docker) that replaces the real `raider-tools-users` table.
+- A tiny Node HTTP server that hosts the **same** `profile.ts` / `state.ts` / `links.ts` Lambda handlers used in production, pointed at the local DynamoDB.
+- A fake "sign in as dev user" flow that bypasses Cognito entirely.
+This lets you exercise `UserStateStore` against a real DynamoDB, iterate on Lambda handler code, and test sign-in hydration + sign-out wipe without ever touching AWS.
+For the production equivalents of these moving parts, see `Authentication.md` and `User-Data.md`.
+## Prerequisites
+- Docker Desktop (for DynamoDB Local).
+- Node 20+ (`nvm use 20`).
+- `npm install` at the repo root and inside `infra/`.
+## One-time setup
+```bash
+# Repo root
+npm install
+cd infra
+npm install
+cd ..
+```
+Create a local env file at the repo root (`.env.local`, gitignored):
+```dotenv
+# Turn on dev-auth + point the SPA at the local API server.
+VITE_DEV_AUTH=true
+VITE_API_BASE_URL=http://localhost:4000
+# Optional: override the local API port (must match LOCAL_API_PORT in infra).
+# VITE_LOCAL_API_PORT=4000
+```
+`VITE_DEV_AUTH=true` MUST NOT be set in production Amplify builds — it disables every real sign-in path and switches the SPA to an unsigned dev bearer token.
+## The three processes
+You need three terminals (or run each in the background).
+### 1. DynamoDB Local (Docker)
+```bash
+cd infra
+npm run local:ddb        # starts raider-tools-dynamodb-local on :8000
+```
+Data persists under `infra/local/.data/` (gitignored). Tear down with:
+```bash
+npm run local:ddb:down
+```
+Wipe all local data:
+```bash
+npm run local:ddb:down
+/bin/rm -rf local/.data
+```
+### 2. Local API server
+```bash
+cd infra
+npm run local:api        # starts http://localhost:4000
+```
+On first boot the server creates the `raider-tools-users` table (pk/sk only, on-demand billing). It reuses `infra/lambda/profile.ts`, `state.ts`, and `links.ts` by constructing synthetic API Gateway events, so any fix made to those files is picked up on restart.
+Environment overrides (all optional):
+- `LOCAL_API_PORT` — default `4000`.
+- `AWS_ENDPOINT_URL_DYNAMODB` — default `http://localhost:8000`.
+- `USER_TABLE_NAME` — default `raider-tools-users`.
+- `ALLOWED_ORIGINS` — default `http://localhost:5173`.
+- `ARCTRACKER_RELAY_URL` — unset locally; `/me/links/arctracker` PUT calls will fail fast (the relay isn't simulated; see §Scope).
+### 3. Vite dev server
+```bash
+# Repo root
+npm run dev              # starts http://localhost:5173
+```
+Open http://localhost:5173, navigate to `/auth/sign-in`, enter a dev sub (default `dev-user-1`) and optional email, submit. The SPA now drives `UserStateStore` through `PUT /me/state/<domain>` against the local API server.
+## Verifying the round-trip
+Peek at DynamoDB Local directly:
+```bash
+aws dynamodb --endpoint-url http://localhost:8000 \
+    scan --table-name raider-tools-users --no-cli-pager
+```
+Health check:
+```bash
+curl http://localhost:4000/healthz
+```
+End-to-end sanity:
+```bash
+curl -H 'Authorization: Bearer dev.dev-user-1' http://localhost:4000/me
+```
+## Dev-auth token format
+The local server accepts one authorization scheme:
+```
+Authorization: Bearer dev.<sub>[.<email>]
+```
+- `<sub>` is the user id used as the DynamoDB partition prefix (`USER#<sub>`).
+- `<email>` is optional; surfaced to `profile.ts` as the `email` JWT claim.
+- No signing, no validation — this works only for the local server.
+`src/shared/auth/devAuthClient.ts` emits exactly this format; nothing else in the SPA talks to the server directly.
+## Scope & non-goals
+The local setup deliberately skips:
+- **ArcTracker relay + KMS envelope encryption.** `POST /me/links/arctracker` won't work locally unless you point `ARCTRACKER_RELAY_URL` at a running relay; even then, tokens will be written without the KMS envelope. Don't test the ArcTracker PUT path locally.
+- **Discord OAuth bridge and Cognito custom-auth triggers.** Dev auth is sub-only; the full federated flow still requires the real stack.
+- **PITR, TTL eviction, customer-managed KMS at rest.** The local table has none of these. If you're testing behavior that depends on them, use the deployed stack.
+- **Schema drift guardrails.** `infra/local/server.ts::ensureTable()` is hand-written to match `RaiderToolsAuthStack.UserTable`. If you change the CDK table definition in `infra/lib/raider-tools-auth-stack.ts`, update `ensureTable()` in the same PR.
+## File map (local-dev cheat sheet)
+- `infra/local/docker-compose.yml` — DynamoDB Local container spec.
+- `infra/local/server.ts` — Local HTTP server; dispatches to the real Lambda handlers.
+- `infra/package.json` — `local:ddb`, `local:ddb:down`, `local:api`, `local:dev` scripts.
+- `src/shared/auth/devAuthClient.ts` — Dev-mode session store + bearer-token generator.
+- `src/shared/auth/cognitoClient.ts` — Delegates to `devAuthClient` when `VITE_DEV_AUTH=true`.
+- `src/shared/context/CognitoAuthContext.tsx` — Adds `signInAsDevUser(sub, email?)` and a `devAuth` flag.
+- `src/pages/SignIn.tsx` — Renders a "Sign in as dev user" panel when `devAuth` is true.
+- `vite.config.ts` — Conditional `/me` proxy to `localhost:4000` in dev-auth mode.

@@ -6,7 +6,11 @@
     "cdk": "cdk",
     "deploy": "cdk deploy",
     "diff": "cdk diff",
-    "synth": "cdk synth"
+    "synth": "cdk synth",
+    "local:ddb": "docker compose -f local/docker-compose.yml up -d --wait",
+    "local:ddb:down": "docker compose -f local/docker-compose.yml down",
+    "local:api": "tsx local/server.ts",
+    "local:dev": "npm run local:ddb && npm run local:api"
   },
   "dependencies": {
     "@aws-sdk/client-cognito-identity-provider": "^3.985.0",
@@ -22,6 +26,7 @@
     "@types/aws-lambda": "^8.10.160",
     "aws-cdk": "^2.0.0",
     "ts-node": "^10.9.2",
+    "tsx": "^4.19.2",
     "typescript": "^5.0.0"
   }
 }

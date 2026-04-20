@@ -1,0 +1,25 @@
+# Docker Compose for local DynamoDB development.
+#
+# This brings up DynamoDB Local so `infra/local/server.ts` (the local
+# API server that hosts the same Lambda handlers used in production)
+# has a real DynamoDB to talk to. Data is persisted under ./.data and
+# survives container restarts.
+#
+# See ../../docs/Local-Development.md for the full workflow.
+
+services:
+  dynamodb:
+    image: amazon/dynamodb-local:latest
+    container_name: raider-tools-dynamodb-local
+    # -sharedDb: single shared DB file regardless of credentials (matches
+    #   the AWS SDK default region/credentials we pass from server.ts).
+    # -dbPath:  where to persist the on-disk store.
+    command: -jar DynamoDBLocal.jar -sharedDb -dbPath /home/dynamodblocal/data
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./.data:/home/dynamodblocal/data
+    working_dir: /home/dynamodblocal
+    # The base image ships as the `dynamodblocal` user; the data dir
+    # needs to be writable by it.
+    user: "1000"

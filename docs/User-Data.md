@@ -3,6 +3,8 @@ This document is the single entry point for future AI agents (and humans) workin
 
 For anything about **how users sign in** (Cognito, Discord bridge, custom-auth triggers, custom domain, session lifecycle), read `docs/Authentication.md` instead. The two documents are intentionally split. They reference each other where the concerns overlap — e.g. `signOut()` in the auth layer triggers the sign-out wipe in this layer.
 
+For iterating on the server-backed state flow **offline** (DynamoDB Local + `/me*` handlers + fake sign-in), read `docs/Local-Development.md`.
+
 This document covers:
 - The DynamoDB single-table model (`raider-tools-users`) and all row families.
 - KMS envelope encryption for linked-account tokens.

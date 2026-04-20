@@ -22,13 +22,25 @@ import {
     type ISignUpResult,
     type ICognitoUserPoolData,
 } from 'amazon-cognito-identity-js';
+import {
+    getDevIdToken,
+    getDevSession,
+    isDevAuthEnabled,
+    signOutDevUser,
+} from './devAuthClient';
 
 const POOL_ID = import.meta.env.VITE_COGNITO_USER_POOL_ID as string | undefined;
 const CLIENT_ID = import.meta.env.VITE_COGNITO_CLIENT_ID as string | undefined;
 
 let pool: CognitoUserPool | null = null;
 
+/**
+ * Returns true when either a real Cognito pool is configured OR the
+ * local dev-auth flag is enabled. Callers use this to decide whether
+ * to render sign-in UI; both backends plug into the same context.
+ */
 export function isCognitoConfigured(): boolean {
+    if (isDevAuthEnabled()) return true;
     return !!POOL_ID && !!CLIENT_ID;
 }
 
@@ -70,7 +82,12 @@ function sessionToAuth(session: CognitoUserSession): AuthSession {
     };
 }
 
+function devAuthUnavailable(api: string): never {
+    throw new Error(`${api} is not available in dev-auth mode`);
+}
+
 export async function signUp(email: string, password: string): Promise<ISignUpResult> {
+    if (isDevAuthEnabled()) return devAuthUnavailable('signUp');
     const attrs = [new CognitoUserAttribute({ Name: 'email', Value: email })];
     return new Promise((resolve, reject) => {
         getPool().signUp(email, password, attrs, [], (err, result) => {
@@ -81,6 +98,7 @@ export async function signUp(email: string, password: string): Promise<ISignUpRe
 }
 
 export async function confirmSignUp(email: string, code: string): Promise<void> {
+    if (isDevAuthEnabled()) return devAuthUnavailable('confirmSignUp');
     return new Promise((resolve, reject) => {
         userByEmail(email).confirmRegistration(code, true, err => {
             if (err) return reject(err);
@@ -90,6 +108,7 @@ export async function confirmSignUp(email: string, code: string): Promise<void> 
 }
 
 export async function resendConfirmationCode(email: string): Promise<void> {
+    if (isDevAuthEnabled()) return devAuthUnavailable('resendConfirmationCode');
     return new Promise((resolve, reject) => {
         userByEmail(email).resendConfirmationCode(err => {
             if (err) return reject(err);
@@ -99,6 +118,7 @@ export async function resendConfirmationCode(email: string): Promise<void> {
 }
 
 export async function signIn(email: string, password: string): Promise<AuthSession> {
+    if (isDevAuthEnabled()) return devAuthUnavailable('signIn');
     const user = userByEmail(email);
     const details = new AuthenticationDetails({ Username: email, Password: password });
     return new Promise((resolve, reject) => {
@@ -111,6 +131,10 @@ export async function signIn(email: string, password: string): Promise<AuthSessi
 }
 
 export function signOut(): void {
+    if (isDevAuthEnabled()) {
+        signOutDevUser();
+        return;
+    }
     const user = getPool().getCurrentUser();
     if (user) user.signOut();
 }
@@ -118,8 +142,12 @@ export function signOut(): void {
 /**
  * Returns a fresh ID token, refreshing through Cognito if needed. Returns
  * null when the user is not signed in.
+ *
+ * In dev-auth mode this returns the unsigned `dev.<sub>[.<email>]` token
+ * the local API server parses as JWT claims.
  */
 export async function getIdToken(): Promise<string | null> {
+    if (isDevAuthEnabled()) return getDevIdToken();
     const user = getPool().getCurrentUser();
     if (!user) return null;
     return new Promise(resolve => {
@@ -135,6 +163,7 @@ export async function getIdToken(): Promise<string | null> {
  * need a guaranteed-fresh ID token should use `getIdToken()`.
  */
 export async function getCurrentSession(): Promise<AuthSession | null> {
+    if (isDevAuthEnabled()) return getDevSession();
     const user = getPool().getCurrentUser();
     if (!user) return null;
     return new Promise(resolve => {
@@ -160,6 +189,7 @@ export function acceptTokensFromHash(params: {
     accessToken: string;
     refreshToken: string;
 }): AuthSession {
+    if (isDevAuthEnabled()) return devAuthUnavailable('acceptTokensFromHash');
     const idToken = new CognitoIdToken({ IdToken: params.idToken });
     const accessToken = new CognitoAccessToken({ AccessToken: params.accessToken });
     const refreshToken = new CognitoRefreshToken({ RefreshToken: params.refreshToken });
