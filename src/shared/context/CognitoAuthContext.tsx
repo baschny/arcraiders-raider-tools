@@ -17,6 +17,7 @@ import {
     useContext,
     useEffect,
     useMemo,
+    useRef,
     useState,
     type ReactNode,
 } from 'react';
@@ -30,6 +31,12 @@ import {
     signUp as cognitoSignUp,
     confirmSignUp as cognitoConfirmSignUp,
 } from '../auth/cognitoClient';
+import {
+    hydrateAllLocal,
+    runPostSignInSync,
+    runSignOutWipe,
+} from '../state/hydration';
+import { installGlobalFlushHooks } from '../state/stores';
 
 interface CognitoAuthContextValue {
     /** True when the SPA has Cognito env vars configured. */
@@ -65,6 +72,17 @@ export function CognitoAuthProvider({ children }: ProviderProps) {
     // "initializing" gate entirely so `set-state-in-effect` is not needed.
     const [initializing, setInitializing] = useState<boolean>(() => available);
     const [user, setUser] = useState<AuthSession | null>(null);
+    // Tracks which user sub we've already run the post-sign-in sync for
+    // in this tab, so we don't re-hit the endpoints on every re-render.
+    const syncedForSubRef = useRef<string | null>(null);
+
+    // On mount (independent of Cognito availability): hydrate every user-
+    // state store from localStorage so the UI renders with the correct
+    // data immediately, and install the tab-lifecycle flush hooks.
+    useEffect(() => {
+        installGlobalFlushHooks();
+        void hydrateAllLocal();
+    }, []);
 
     // On mount when Cognito IS configured: 1) consume tokens from the URL
     // fragment if present, 2) hydrate any cached session from the SDK.
@@ -90,6 +108,17 @@ export function CognitoAuthProvider({ children }: ProviderProps) {
             .finally(() => setInitializing(false));
     }, [available]);
 
+    // Whenever the signed-in user changes, run the post-sign-in sync
+    // (migration or server-wins hydrate) exactly once per sub.
+    useEffect(() => {
+        if (!user) return;
+        if (syncedForSubRef.current === user.sub) return;
+        syncedForSubRef.current = user.sub;
+        runPostSignInSync().catch(err => {
+            console.error('Post-sign-in sync failed', err);
+        });
+    }, [user]);
+
     const signInWithPassword = useCallback(async (email: string, password: string) => {
         const session = await cognitoSignIn(email, password);
         setUser(session);
@@ -109,7 +138,12 @@ export function CognitoAuthProvider({ children }: ProviderProps) {
     }, []);
 
     const signOut = useCallback(() => {
+        // Fire-and-forget the wipe; Cognito sign-out itself is sync and
+        // should not wait on HTTP calls that will imminently fail once
+        // tokens are gone.
+        void runSignOutWipe();
         cognitoSignOut();
+        syncedForSubRef.current = null;
         setUser(null);
     }, []);
 

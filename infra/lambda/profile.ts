@@ -110,6 +110,9 @@ async function handleGet(
         displayName: profile?.displayName ?? null,
         locale: profile?.locale ?? null,
         signupProvider: profile?.signupProvider ?? "cognito",
+        // Defaults to false when the flag is absent so the client can detect
+        // a brand-new user and run the one-shot local→server migration.
+        dataMigrationCompleted: profile?.dataMigrationCompleted === true,
         links: {
             arctracker: arc
                 ? {

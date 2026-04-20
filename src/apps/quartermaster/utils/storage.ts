@@ -1,13 +1,12 @@
 /**
  * Storage Utilities for Quartermaster
- * Handles localStorage persistence for lists
+ * Handles persistence for lists via the shared `quartermasterStore`.
  * See specification section 7.1.3 / CR-002
  */
 
 import type { StoredList } from '../types/list';
 import type { ItemsMap } from '../types/item';
-
-const STORAGE_KEY = 'quartermaster_lists';
+import { quartermasterStore } from '../../../shared/state/stores';
 
 /**
  * Generate a unique ID for a new list
@@ -17,70 +16,38 @@ export function generateListId(): string {
 }
 
 /**
- * Load all stored lists from localStorage
- * Validates item IDs against known items; preserves array order (= priority)
+ * Load all stored lists from the in-memory snapshot.
+ * Validates item IDs against known items; preserves array order (= priority).
  */
 export function loadStoredLists(itemsMap: ItemsMap): StoredList[] {
-  try {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (!stored) {
-      return [];
-    }
-
-    const parsed = JSON.parse(stored);
-    if (!Array.isArray(parsed)) {
-      return [];
-    }
-
-    const lists: StoredList[] = [];
-
-    for (const raw of parsed) {
-      if (!raw || typeof raw !== 'object') {
-        continue;
-      }
-
-      if (!raw.id || !raw.name) {
-        continue;
-      }
-
-      // Filter out unknown item IDs
-      const validItems = Array.isArray(raw.items)
-        ? raw.items.filter((item: { itemId?: string }) =>
-            item?.itemId && itemsMap[item.itemId]
-          )
-        : [];
-
-      lists.push({
-        id: raw.id,
-        name: raw.name,
-        type: (raw.type as 'user' | 'hideout') ?? 'user',
-        isEnabled: raw.isEnabled ?? true,
-        items: validItems.map((item: { itemId: string; quantity?: number; isEnabled?: boolean }) => ({
-          itemId: item.itemId,
-          quantity: item.quantity ?? 1,
-          isEnabled: item.isEnabled ?? true,
-        })),
-      });
-    }
-
-    // Preserve stored order – order IS the priority
-    return lists;
-  } catch {
-    console.error('Failed to load stored lists');
-    return [];
+  const raw = quartermasterStore.get().lists;
+  const lists: StoredList[] = [];
+  for (const r of raw) {
+    if (!r || !r.id || !r.name) continue;
+    const validItems = Array.isArray(r.items)
+      ? r.items.filter((item) => item?.itemId && itemsMap[item.itemId])
+      : [];
+    lists.push({
+      id: r.id,
+      name: r.name,
+      type: (r.type as 'user' | 'hideout') ?? 'user',
+      isEnabled: r.isEnabled ?? true,
+      items: validItems.map((item) => ({
+        itemId: item.itemId,
+        quantity: item.quantity ?? 1,
+        isEnabled: item.isEnabled ?? true,
+      })),
+    });
   }
+  return lists;
 }
 
 /**
- * Save lists to localStorage
- * Array order is preserved as-is (order = priority)
+ * Save lists through the store. Array order = priority.
  */
 export function saveStoredLists(lists: StoredList[]): void {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(lists));
-  } catch {
-    console.error('Failed to save lists');
-  }
+  const prev = quartermasterStore.get();
+  quartermasterStore.set({ ...prev, lists });
 }
 
 /**

@@ -1,0 +1,47 @@
+@use '../styles/variables' as *;
+
+.signin-nudge {
+    display: flex;
+    align-items: flex-start;
+    gap: $spacing-md;
+    margin: 0 0 $spacing-lg 0;
+    padding: $spacing-md $spacing-lg;
+    background: $bg-secondary;
+    border: $border-width-thin solid $border-default;
+    border-radius: $radius-md;
+    color: $text-primary;
+    font-size: $font-md;
+    line-height: 1.5;
+
+    a {
+        color: $text-accent;
+        text-decoration: underline;
+    }
+}
+
+.signin-nudge__icon {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: $text-accent;
+}
+
+.signin-nudge__body {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.signin-nudge__dismiss {
+    flex-shrink: 0;
+    background: transparent;
+    border: none;
+    color: $text-secondary;
+    cursor: pointer;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+        color: $text-primary;
+    }
+}

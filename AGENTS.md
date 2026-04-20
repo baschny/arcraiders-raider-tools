@@ -45,6 +45,20 @@ npm run generate:schedule     # Event schedule (direct copy)
 Generated files are placed in `public/data/<app-name>/` and loaded at runtime via fetch.
 For schedule-specific generation, AWS automation, and dependency details, see `docs/Schedule-Update.md`.
 
+### Authentication
+
+If you are touching **how users sign in** — adding a new identity / social provider, adding a new JWT-protected endpoint, changing Cognito configuration, or modifying anything under `src/shared/auth/`, `src/shared/context/CognitoAuthContext.tsx`, `src/pages/SignIn*.tsx` / `SignUp*.tsx` / `AuthCallback.tsx`, or the auth-related Lambdas in `infra/lambda/` (`discord-auth.ts`, `cognito-*-auth.ts`) — **read `docs/Authentication.md` first**.
+
+It covers the Cognito setup, the Discord-bridged custom-auth flow, the `auth.raider-tools.app` custom domain, the client-side auth API, and step-by-step recipes for adding a new JWT-protected endpoint or a new identity provider.
+
+### User Data
+
+If you are touching **what we store on behalf of a user on the server** — adding a new linked-account token (Embark, Twitch, etc.), adding a new per-user state domain that syncs across devices, changing the DynamoDB schema, or modifying anything under `src/shared/state/`, `src/shared/services/userApi.ts`, or the user-data Lambdas in `infra/lambda/` (`profile.ts`, `links.ts`, `state.ts`) — **read `docs/User-Data.md` first**.
+
+It covers the DynamoDB single-table model, KMS envelope encryption for linked-account tokens, optimistic-concurrency (`revision`) semantics, the `UserStateStore` client abstraction, sign-in hydration and sign-out wipe, and step-by-step recipes for adding a new state domain or a new linked-account token.
+
+Do not design a new auth or user-data feature without consulting these docs — the abstractions in `src/shared/state/`, `src/shared/auth/`, and `infra/lambda/` exist for reasons captured there, and many of them have hard safety rules (envelope encryption, conditional writes, sign-out wipe, single-use nonces) that are easy to break by accident.
+
 ### Localization Philosophy
 
 The project is migrating toward a fully localized user experience. Treat localization as a first-class architecture concern, not as a thin UI-layer afterthought.

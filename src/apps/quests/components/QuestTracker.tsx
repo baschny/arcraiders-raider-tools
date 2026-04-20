@@ -16,10 +16,10 @@ import { BlueprintRewardsOverlay } from './BlueprintRewardsOverlay';
 import { QuestSearchOverlay } from './QuestSearchOverlay';
 import { Sidebar } from './Sidebar';
 import { ConfirmDialog } from './ConfirmDialog';
-import { STORAGE_KEY } from '../data/static-data';
 import { migrateQuestIds } from '../data/questIdMigration';
 import { trackQuestMark } from '../../../shared/utils/analytics';
 import { useLocale } from '../../../shared/context/LocaleContext';
+import { questsStore } from '../../../shared/state/stores';
 
 const BLUEPRINT_OVERLAY_COLLAPSED_STORAGE_KEY =
   'raider-tools:quest-tracker-blueprints-collapsed';
@@ -44,23 +44,12 @@ interface QuestTrackerProps {
 
 export function QuestTracker({ quests }: QuestTrackerProps) {
   const { tm, compareText } = useLocale();
-  // Load completed quests from localStorage
+  // Completed quests live in `questsStore` (phase 2). The store is kept
+  // in sync with either localStorage (anonymous) or the server (signed
+  // in) by the shared state subsystem.
   const loadCompletedQuests = (): Set<string> => {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved) {
-        const parsed: unknown = JSON.parse(saved);
-        if (Array.isArray(parsed)) {
-          const questIds = parsed.filter(
-            (questId): questId is string => typeof questId === 'string'
-          );
-          return new Set(migrateQuestIds(questIds));
-        }
-      }
-    } catch (e) {
-      console.error('Failed to load quest progress:', e);
-    }
-    return new Set();
+    const ids = questsStore.get().completedQuestIds ?? [];
+    return new Set(migrateQuestIds(ids));
   };
 
   // Load blueprint overlay collapse state from localStorage
@@ -123,16 +112,11 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
     onConfirm: () => {},
   });
 
-  // Save to localStorage whenever completedQuests changes
+  // Persist completed quests whenever they change. The store debounces
+  // writes internally, so this is cheap even when we're calling it on
+  // every keystroke-like interaction.
   useEffect(() => {
-    try {
-      localStorage.setItem(
-        STORAGE_KEY,
-        JSON.stringify(Array.from(completedQuests))
-      );
-    } catch (e) {
-      console.error('Failed to save quest progress:', e);
-    }
+    questsStore.set({ completedQuestIds: Array.from(completedQuests) });
   }, [completedQuests]);
 
   // Save blueprint overlay collapse state whenever it changes

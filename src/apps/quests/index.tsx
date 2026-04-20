@@ -7,6 +7,7 @@ import { ErrorDisplay } from '../../shared/components/ErrorDisplay';
 import { useLocale } from '../../shared/context/LocaleContext';
 import { fetchLocalizedJson } from '../../shared/utils/localizedContent';
 import { loadQuestMapLocalizations } from './utils/localization';
+import { SignInNudge } from '../../shared/components/SignInNudge';
 import './styles/main.scss';
 
 export function QuestsApp() {
@@ -74,6 +75,7 @@ export function QuestsApp() {
 
   return (
     <div className="quest-tracker-wrapper">
+      <SignInNudge />
       <QuestTracker quests={questData} />
     </div>
   );

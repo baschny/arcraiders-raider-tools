@@ -11,6 +11,7 @@ import type { ReverseMap } from './utils/craftingChain';
 import { useLocale } from '../../shared/context/LocaleContext';
 import { LoadingSpinner } from '../../shared/components/LoadingSpinner';
 import { ErrorDisplay } from '../../shared/components/ErrorDisplay';
+import { SignInNudge } from '../../shared/components/SignInNudge';
 import { getItemDisplayName } from './utils/localization';
 import './styles/main.scss';
 import './styles/accordion.scss';
@@ -233,6 +234,7 @@ export function LootHelperApp() {
 
   return (
     <div className="loot-helper-container">
+      <SignInNudge />
       <Sidebar
         itemsMap={itemsMap}
         goalItemIds={goalItemIds}

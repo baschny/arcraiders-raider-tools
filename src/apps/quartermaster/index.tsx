@@ -50,6 +50,7 @@ import { buildItemInsights, type ItemInsightsMap } from './utils/itemInsights';
 import { formatHideoutListName } from './utils/localization';
 import { useAuth } from '../../shared/context/AuthContext';
 import { useLocale } from '../../shared/context/LocaleContext';
+import { SignInNudge } from '../../shared/components/SignInNudge';
 
 import { Sidebar, type ViewId } from './components/Sidebar';
 import { GlobalHeader } from './components/GlobalHeader';
@@ -518,6 +519,7 @@ export function QuartermasterApp() {
             stashSyncedAt={cachedStash?.syncedAt ?? null}
             loadoutSyncedAt={cachedLoadout?.syncedAt ?? null}
           />
+          <SignInNudge />
           {syncError && (
             <div className="qm-sync-error">
               {syncError}

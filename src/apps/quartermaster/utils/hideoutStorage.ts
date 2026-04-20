@@ -6,39 +6,25 @@
 import type { HideoutToggleState } from '../types/hideout';
 import type { CachedHideout } from '../../../shared/types/arctracker';
 import type { HideoutModuleDefinition } from '../types/hideout';
-
-const STORAGE_KEY = 'quartermaster_hideout_toggles';
+import { quartermasterStore } from '../../../shared/state/stores';
 
 /**
- * Load hideout toggle state from localStorage
+ * Load hideout toggle state from the shared quartermaster store.
  */
 export function loadHideoutToggleState(): HideoutToggleState {
-  try {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (!stored) {
-      return { listEnabled: {}, itemEnabled: {} };
-    }
-
-    const parsed = JSON.parse(stored);
-    return {
-      listEnabled: parsed.listEnabled ?? {},
-      itemEnabled: parsed.itemEnabled ?? {},
-    };
-  } catch {
-    console.error('Failed to load hideout toggle state');
-    return { listEnabled: {}, itemEnabled: {} };
-  }
+  const t = quartermasterStore.get().hideoutToggles;
+  return {
+    listEnabled: t.listEnabled ?? {},
+    itemEnabled: t.itemEnabled ?? {},
+  };
 }
 
 /**
- * Save hideout toggle state to localStorage
+ * Save hideout toggle state via the shared quartermaster store.
  */
 export function saveHideoutToggleState(state: HideoutToggleState): void {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-  } catch {
-    console.error('Failed to save hideout toggle state');
-  }
+  const prev = quartermasterStore.get();
+  quartermasterStore.set({ ...prev, hideoutToggles: state });
 }
 
 /**

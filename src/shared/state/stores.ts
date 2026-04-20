@@ -1,0 +1,121 @@
+/**
+ * Concrete domain stores for the three user-state domains.
+ *
+ * Each store is a module-level singleton. Other modules (the three apps)
+ * import these instances directly; orchestration code (sign-in, sign-out,
+ * migration) uses the `allStores` array.
+ */
+
+import { useSyncExternalStore } from 'react';
+import { UserStateStore } from './userStateStore';
+import { migrateQuestIds } from '../../apps/quests/data/questIdMigration';
+
+// ---------------------------------------------------------------------------
+// Quests
+// ---------------------------------------------------------------------------
+export interface QuestsState {
+    /** Set of completed quest IDs (serialized as an array). */
+    completedQuestIds: string[];
+}
+export const questsStore = new UserStateStore<QuestsState>({
+    domain: 'quests',
+    schemaVersion: 1,
+    defaultValue: { completedQuestIds: [] },
+    migrate: (raw) => {
+        const r = raw as Partial<QuestsState> | null;
+        const arr = Array.isArray(r?.completedQuestIds) ? r!.completedQuestIds : [];
+        return { completedQuestIds: migrateQuestIds(arr) };
+    },
+});
+
+// ---------------------------------------------------------------------------
+// Loot-helper
+// ---------------------------------------------------------------------------
+export interface LootState {
+    goalItems: string[];
+    disabledItems: string[];
+    stashItems: string[];
+    disabledStashItems: string[];
+    enabledTypes: string[] | null;
+    enabledRarities: string[] | null;
+    enabledLocations: string[] | null;
+}
+export const lootStore = new UserStateStore<LootState>({
+    domain: 'loot',
+    schemaVersion: 1,
+    defaultValue: {
+        goalItems: [],
+        disabledItems: [],
+        stashItems: [],
+        disabledStashItems: [],
+        enabledTypes: null,
+        enabledRarities: null,
+        enabledLocations: null,
+    },
+});
+
+// ---------------------------------------------------------------------------
+// Quartermaster
+// ---------------------------------------------------------------------------
+export interface QuartermasterStoredList {
+    id: string;
+    name: string;
+    type: 'user' | 'hideout';
+    isEnabled: boolean;
+    items: Array<{ itemId: string; quantity: number; isEnabled: boolean }>;
+}
+export interface QuartermasterState {
+    lists: QuartermasterStoredList[];
+    hideoutToggles: {
+        listEnabled: Record<string, boolean>;
+        itemEnabled: Record<string, boolean>;
+    };
+}
+export const quartermasterStore = new UserStateStore<QuartermasterState>({
+    domain: 'quartermaster',
+    schemaVersion: 1,
+    defaultValue: {
+        lists: [],
+        hideoutToggles: { listEnabled: {}, itemEnabled: {} },
+    },
+});
+
+// ---------------------------------------------------------------------------
+// Registry + global flush hooks
+// ---------------------------------------------------------------------------
+
+export const allStores = [questsStore, lootStore, quartermasterStore] as const;
+
+let globalHooksInstalled = false;
+
+/**
+ * Install page-lifecycle hooks that flush all dirty stores before the tab
+ * is hidden or unloaded. Idempotent.
+ */
+export function installGlobalFlushHooks(): void {
+    if (globalHooksInstalled || typeof window === 'undefined') return;
+    globalHooksInstalled = true;
+
+    const flushAll = () => {
+        for (const store of allStores) void store.flush();
+    };
+    window.addEventListener('pagehide', flushAll);
+    document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'hidden') flushAll();
+    });
+}
+
+/**
+ * React hook that subscribes to a store. Returns `[value, setValue]`.
+ *
+ * The setter always replaces the value; callers should use the
+ * functional-update pattern at the call site if they need prev-state.
+ */
+export function useStore<T>(store: UserStateStore<T>): [T, (next: T) => void] {
+    const value = useSyncExternalStore(
+        (listener) => store.subscribe(listener),
+        () => store.get(),
+        () => store.get(),
+    );
+    return [value, (next: T) => store.set(next)];
+}

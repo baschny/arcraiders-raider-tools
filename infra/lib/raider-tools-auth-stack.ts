@@ -290,6 +290,16 @@ export class RaiderToolsAuthStack extends cdk.Stack {
         this.userTable.grantReadWriteData(linksFn);
         this.kmsKey.grantEncryptDecrypt(linksFn);
 
+        const stateFn = this.makeLambda("StateFn", "state.ts", {
+            timeout: cdk.Duration.seconds(10),
+            memorySize: 256,
+            environment: {
+                USER_TABLE_NAME: this.userTable.tableName,
+                ALLOWED_ORIGINS: props.allowedOrigins.join(","),
+            },
+        });
+        this.userTable.grantReadWriteData(stateFn);
+
         // -----------------------------------------------------------------
         // Routes on the existing HTTP API.
         // -----------------------------------------------------------------
@@ -337,6 +347,26 @@ export class RaiderToolsAuthStack extends cdk.Stack {
                 apigwv2.HttpMethod.DELETE,
             ],
             integration: linksIntegration,
+            authorizer: jwtAuthorizer,
+        });
+
+        const stateIntegration = new integrations.HttpLambdaIntegration(
+            "StateIntegration", stateFn,
+        );
+        props.httpApi.addRoutes({
+            path: "/me/state/{domain}",
+            methods: [
+                apigwv2.HttpMethod.GET,
+                apigwv2.HttpMethod.PUT,
+                apigwv2.HttpMethod.DELETE,
+            ],
+            integration: stateIntegration,
+            authorizer: jwtAuthorizer,
+        });
+        props.httpApi.addRoutes({
+            path: "/me/migrate",
+            methods: [apigwv2.HttpMethod.POST],
+            integration: stateIntegration,
             authorizer: jwtAuthorizer,
         });
 
