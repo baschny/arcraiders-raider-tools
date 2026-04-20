@@ -1,0 +1,146 @@
+@use 'variables' as *;
+@use 'sass:color';
+
+.profile-page {
+  display: flex;
+  gap: $spacing-xl;
+  padding: $content-padding;
+  min-height: 100%;
+  box-sizing: border-box;
+}
+
+.profile-sidebar {
+  flex: 0 0 240px;
+  background: $bg-secondary;
+  border: $border-width-thin solid $border-default;
+  border-radius: $radius-md;
+  padding: $spacing-md;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  align-self: flex-start;
+  position: sticky;
+  top: $spacing-xl;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    padding: $spacing-sm;
+    border-bottom: $border-width-thin solid $border-default;
+    padding-bottom: $spacing-md;
+    color: $text-primary;
+  }
+
+  &__identity {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  &__title {
+    @include urbanist-title;
+    font-size: $font-lg;
+  }
+
+  &__identity-value {
+    font-size: $font-sm;
+    color: $text-secondary;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    padding: $spacing-sm $spacing-md;
+    border-radius: $radius-sm;
+    color: $text-primary;
+    text-decoration: none;
+    font-size: $font-md;
+    transition: $transition-default;
+    cursor: pointer;
+
+    &:hover {
+      background: $bg-tertiary;
+    }
+
+    &--active {
+      background: $bg-tertiary;
+      color: $text-accent;
+      border-left: 3px solid $text-accent;
+      padding-left: calc(#{$spacing-md} - 3px);
+    }
+  }
+}
+
+.profile-content {
+  flex: 1;
+  min-width: 0;
+}
+
+// Lightweight wrapper when the section page embeds in .profile-content;
+// override max-width so sections can use the full available width.
+.profile-content .settings-page.profile-section {
+  max-width: none;
+}
+
+.profile-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  color: $text-secondary;
+}
+
+.profile-signed-out {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-md;
+  max-width: 480px;
+  margin: $spacing-xl auto;
+  padding: $spacing-xl;
+  background: $bg-secondary;
+  border: $border-width-thin solid $border-default;
+  border-radius: $radius-md;
+  color: $text-primary;
+  text-align: center;
+
+  h2 {
+    @include urbanist-title;
+    font-size: $font-2xl;
+    margin: 0;
+  }
+
+  p {
+    color: $text-secondary;
+    line-height: 1.5;
+  }
+
+  .settings-button {
+    text-decoration: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .profile-page {
+    flex-direction: column;
+    padding: $spacing-lg;
+  }
+
+  .profile-sidebar {
+    flex: 0 0 auto;
+    position: static;
+    width: 100%;
+  }
+}

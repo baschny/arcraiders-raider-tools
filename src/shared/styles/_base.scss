@@ -76,7 +76,9 @@ h1, h2, h3, h4, h5, h6 {
     gap: $spacing-xs;
 
     .tool-switcher-flag {
-      font-size: 1.45rem;
+      // Sized to match the height of the $font-md text / ChevronDown in the
+      // adjacent "Switch Tool" button, so both header buttons line up.
+      font-size: 1.05rem;
       line-height: 1;
       display: inline-flex;
       align-items: center;

@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Layout } from './shared/components/Layout';
 import { LoadingSpinner } from './shared/components/LoadingSpinner';
 import { AuthProvider } from './shared/context/AuthContext';
@@ -8,8 +8,13 @@ import { LocaleProvider } from './shared/context/LocaleContext';
 import { Dashboard } from './pages/Dashboard';
 import { NotFound } from './pages/NotFound';
 
-const ProfileSettings = lazy(() =>
-  import('./pages/ProfileSettings').then((m) => ({ default: m.ProfileSettings }))
+const Profile = lazy(() =>
+  import('./pages/Profile').then((m) => ({ default: m.Profile }))
+);
+const ArcTrackerSection = lazy(() =>
+  import('./pages/profile/ArcTrackerSection').then((m) => ({
+    default: m.ArcTrackerSection,
+  }))
 );
 const SignIn = lazy(() =>
   import('./pages/SignIn').then((m) => ({ default: m.SignIn }))
@@ -51,7 +56,10 @@ function App() {
                   <Route path="quests" element={<QuestsApp />} />
                   <Route path="loot-helper" element={<LootHelperApp />} />
                   <Route path="quartermaster" element={<QuartermasterApp />} />
-                  <Route path="settings/profile" element={<ProfileSettings />} />
+                  <Route path="profile" element={<Profile />}>
+                    <Route index element={<Navigate to="arctracker" replace />} />
+                    <Route path="arctracker" element={<ArcTrackerSection />} />
+                  </Route>
                   <Route path="auth/sign-in" element={<SignIn />} />
                   <Route path="auth/sign-up" element={<SignUp />} />
                   <Route path="auth/callback" element={<AuthCallback />} />

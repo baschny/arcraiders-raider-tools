@@ -29,15 +29,24 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Override main-content padding for full-screen loot helper */
-.main-content:has(.loot-helper-container) {
+.main-content:has(.loot-helper-layout) {
   padding: 0;
   overflow: hidden;
 }
 
-/* Loot helper container */
+/* Vertical wrapper: sign-in nudge on top, content row below */
+.loot-helper-layout {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Loot helper content row (sidebar + main area) */
 .loot-helper-container {
   flex: 1;
   display: flex;
+  min-height: 0;
   overflow: hidden;
 }
 

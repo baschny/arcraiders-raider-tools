@@ -11,6 +11,7 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Loader2 } from 'lucide-react';
 import { useCognitoAuth } from '../shared/context/CognitoAuthContext';
+import '../shared/styles/_auth.scss';
 
 export function AuthCallback() {
   const cognito = useCognitoAuth();
@@ -18,12 +19,12 @@ export function AuthCallback() {
 
   useEffect(() => {
     if (cognito.initializing) return;
-    navigate(cognito.user ? '/settings/profile' : '/auth/sign-in', { replace: true });
+    navigate(cognito.user ? '/' : '/auth/sign-in', { replace: true });
   }, [cognito.initializing, cognito.user, navigate]);
 
   return (
-    <div className="content-container">
-      <div className="settings-page" style={{ textAlign: 'center' }}>
+    <div className="auth-page">
+      <div className="auth-card" style={{ textAlign: 'center', alignItems: 'center' }}>
         <Loader2 className="spin" size={32} />
         <p>Finishing sign-in…</p>
       </div>

@@ -10,6 +10,7 @@ import { useState, type FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AlertCircle, CheckCircle, Loader2 } from 'lucide-react';
 import { useCognitoAuth } from '../shared/context/CognitoAuthContext';
+import '../shared/styles/_auth.scss';
 import '../shared/styles/_settings.scss';
 
 export function SignUp() {
@@ -25,9 +26,9 @@ export function SignUp() {
 
   if (!cognito.available) {
     return (
-      <div className="content-container">
-        <div className="settings-page">
-          <h2 className="settings-title">Create account</h2>
+      <div className="auth-page">
+        <div className="auth-card">
+          <h2 className="auth-card__title">Create account</h2>
           <div className="settings-message settings-message--error">
             <AlertCircle size={16} />
             <span>Sign-up is not configured for this build.</span>
@@ -66,9 +67,9 @@ export function SignUp() {
   };
 
   return (
-    <div className="content-container">
-      <div className="settings-page">
-        <h2 className="settings-title">Create account</h2>
+    <div className="auth-page">
+      <div className="auth-card">
+        <h2 className="auth-card__title">Create account</h2>
 
         {stage === 'register' ? (
           <form className="settings-form" onSubmit={onRegister}>
@@ -86,10 +87,9 @@ export function SignUp() {
             />
             {error && (<div className="settings-message settings-message--error"><AlertCircle size={16} /><span>{error}</span></div>)}
             <div className="settings-actions">
-              <button type="submit" className="settings-button settings-button--primary" disabled={submitting}>
+              <button type="submit" className="settings-button settings-button--primary" disabled={submitting} style={{ flex: 1 }}>
                 {submitting ? <><Loader2 size={16} className="spin" /><span>Creating…</span></> : 'Create account'}
               </button>
-              <Link to="/auth/sign-in">Already have an account?</Link>
             </div>
           </form>
         ) : (
@@ -103,12 +103,17 @@ export function SignUp() {
             {info && (<div className="settings-message settings-message--success"><CheckCircle size={16} /><span>{info}</span></div>)}
             {error && (<div className="settings-message settings-message--error"><AlertCircle size={16} /><span>{error}</span></div>)}
             <div className="settings-actions">
-              <button type="submit" className="settings-button settings-button--primary" disabled={submitting}>
+              <button type="submit" className="settings-button settings-button--primary" disabled={submitting} style={{ flex: 1 }}>
                 {submitting ? <><Loader2 size={16} className="spin" /><span>Confirming…</span></> : 'Confirm'}
               </button>
             </div>
           </form>
         )}
+
+        <div className="auth-card__footer">
+          <span>Already have an account?</span>
+          <Link to="/auth/sign-in">Sign in</Link>
+        </div>
       </div>
     </div>
   );

@@ -15,7 +15,18 @@
       "title": "Ferramentas",
       "collapse": "Recolher",
       "expand": "Expandir barra lateral",
-      "collapseTitle": "Recolher barra lateral"
+      "collapseTitle": "Recolher barra lateral",
+      "profile": "Perfil"
+    },
+    "userMenu": {
+      "login": "Entrar",
+      "profile": "Perfil",
+      "logout": "Sair",
+      "signedInAs": "Conectado como",
+      "confirmSignOutTitle": "Sair?",
+      "confirmSignOutBody": "Você precisará entrar novamente para sincronizar seu progresso entre dispositivos.",
+      "cancel": "Cancelar",
+      "confirm": "Sair"
     },
     "footer": {
       "thanksPrefix": "Dados fornecidos por ",
@@ -48,7 +59,13 @@
   },
   "pages": {
     "notFound": "Página não encontrada",
-    "profileSettings": "Configurações de perfil"
+    "profileSettings": "Configurações de perfil",
+    "profile": {
+      "title": "Perfil",
+      "sections": {
+        "arctracker": "Integração com ArcTracker"
+      }
+    }
   },
   "schedule": {
     "loading": "Carregando agenda de eventos...",

@@ -89,6 +89,8 @@
   flex: 1;
   padding: $spacing-md;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .sidebar-nav-list {
@@ -98,6 +100,12 @@
   display: flex;
   flex-direction: column;
   gap: $spacing-xs;
+
+  &--bottom {
+    margin-top: auto;
+    padding-top: $spacing-md;
+    border-top: $border-width-thin solid $border-default;
+  }
 }
 
 .sidebar-nav-item {

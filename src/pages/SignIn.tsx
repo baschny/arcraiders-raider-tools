@@ -13,10 +13,11 @@
  * notice and let the user keep using the app anonymously.
  */
 
-import { useState, type FormEvent } from 'react';
+import { useEffect, useState, type FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AlertCircle, Loader2 } from 'lucide-react';
 import { useCognitoAuth } from '../shared/context/CognitoAuthContext';
+import '../shared/styles/_auth.scss';
 import '../shared/styles/_settings.scss';
 
 export function SignIn() {
@@ -29,27 +30,22 @@ export function SignIn() {
   const [devSub, setDevSub] = useState('dev-user-1');
   const [devEmail, setDevEmail] = useState('dev@localhost');
 
+  // If the user is already signed in, skip straight to the dashboard.
+  useEffect(() => {
+    if (cognito.user) {
+      navigate('/', { replace: true });
+    }
+  }, [cognito.user, navigate]);
+
   if (!cognito.available) {
     return (
-      <div className="content-container">
-        <div className="settings-page">
-          <h2 className="settings-title">Sign in</h2>
+      <div className="auth-page">
+        <div className="auth-card">
+          <h2 className="auth-card__title">Sign in</h2>
           <div className="settings-message settings-message--error">
             <AlertCircle size={16} />
             <span>Sign-in is not configured for this build. You can keep using the app anonymously.</span>
           </div>
-        </div>
-      </div>
-    );
-  }
-
-  if (cognito.user) {
-    return (
-      <div className="content-container">
-        <div className="settings-page">
-          <h2 className="settings-title">Already signed in</h2>
-          <p>Signed in as {cognito.user.email ?? cognito.user.sub}.</p>
-          <Link to="/settings/profile">Go to account settings</Link>
         </div>
       </div>
     );
@@ -61,7 +57,7 @@ export function SignIn() {
     setSubmitting(true);
     try {
       await cognito.signInWithPassword(email.trim(), password);
-      navigate('/settings/profile');
+      navigate('/');
     } catch (err) {
       setError((err as Error).message || 'Sign-in failed');
     } finally {
@@ -74,7 +70,7 @@ export function SignIn() {
     setError(null);
     try {
       cognito.signInAsDevUser(devSub.trim(), devEmail.trim() || null);
-      navigate('/settings/profile');
+      navigate('/');
     } catch (err) {
       setError((err as Error).message || 'Dev sign-in failed');
     }
@@ -82,9 +78,9 @@ export function SignIn() {
 
   if (cognito.devAuth) {
     return (
-      <div className="content-container">
-        <div className="settings-page">
-          <h2 className="settings-title">Sign in (dev mode)</h2>
+      <div className="auth-page">
+        <div className="auth-card">
+          <h2 className="auth-card__title">Sign in (dev mode)</h2>
           <div className="settings-message">
             <AlertCircle size={16} />
             <span>
@@ -133,60 +129,67 @@ export function SignIn() {
   }
 
   return (
-    <div className="content-container">
-      <div className="settings-page">
-        <h2 className="settings-title">Sign in</h2>
+    <div className="auth-page">
+      <div className="auth-card">
+        <h2 className="auth-card__title">Sign in</h2>
+        <p className="auth-card__subtitle">
+          Sign in to sync your progress across devices.
+        </p>
 
         <button
-          className="settings-button settings-button--primary"
+          className="auth-discord-button"
           onClick={cognito.startDiscordSignIn}
           disabled={submitting}
         >
           Continue with Discord
         </button>
 
-        <div className="settings-section">
-          <h3 className="settings-section-title">Or with email + password</h3>
-          <form className="settings-form" onSubmit={onSubmit}>
-            <label htmlFor="signin-email" className="settings-label">Email</label>
-            <input
-              id="signin-email"
-              type="email"
-              required
-              autoComplete="email"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-              className="token-input"
-              disabled={submitting}
-            />
-            <label htmlFor="signin-password" className="settings-label">Password</label>
-            <input
-              id="signin-password"
-              type="password"
-              required
-              autoComplete="current-password"
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-              className="token-input"
-              disabled={submitting}
-            />
-            {error && (
-              <div className="settings-message settings-message--error">
-                <AlertCircle size={16} />
-                <span>{error}</span>
-              </div>
-            )}
-            <div className="settings-actions">
-              <button
-                type="submit"
-                className="settings-button settings-button--primary"
-                disabled={submitting}
-              >
-                {submitting ? <><Loader2 size={16} className="spin" /><span>Signing in…</span></> : 'Sign in'}
-              </button>
-              <Link to="/auth/sign-up">Create an account</Link>
+        <div className="auth-card__divider">or with email</div>
+
+        <form className="settings-form" onSubmit={onSubmit}>
+          <label htmlFor="signin-email" className="settings-label">Email</label>
+          <input
+            id="signin-email"
+            type="email"
+            required
+            autoComplete="email"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            className="token-input"
+            disabled={submitting}
+          />
+          <label htmlFor="signin-password" className="settings-label">Password</label>
+          <input
+            id="signin-password"
+            type="password"
+            required
+            autoComplete="current-password"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            className="token-input"
+            disabled={submitting}
+          />
+          {error && (
+            <div className="settings-message settings-message--error">
+              <AlertCircle size={16} />
+              <span>{error}</span>
             </div>
-          </form>
+          )}
+          <div className="settings-actions">
+            <button
+              type="submit"
+              className="settings-button settings-button--primary"
+              disabled={submitting}
+              style={{ flex: 1 }}
+            >
+              {submitting ? <><Loader2 size={16} className="spin" /><span>Signing in…</span></> : 'Sign in'}
+            </button>
+          </div>
+        </form>
+
+        <div className="auth-card__footer">
+          <span>Don't have an account?</span>
+          <Link to="/auth/sign-up">Create one</Link>
         </div>
       </div>
     </div>

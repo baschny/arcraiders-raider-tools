@@ -1,0 +1,100 @@
+@use 'variables' as *;
+@use 'sass:color';
+
+// Centered auth card used by /auth/sign-in, /auth/sign-up, /auth/callback
+.auth-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-xl;
+  min-height: 100%;
+  box-sizing: border-box;
+}
+
+.auth-card {
+  background: $bg-secondary;
+  border: $border-width-thin solid $border-default;
+  border-radius: $radius-md;
+  box-shadow: $shadow-default;
+  padding: $spacing-xl;
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+
+  &__title {
+    @include urbanist-title;
+    font-size: $font-3xl;
+    color: $text-primary;
+    margin: 0;
+    text-align: center;
+  }
+
+  &__subtitle {
+    font-size: $font-md;
+    color: $text-secondary;
+    text-align: center;
+    margin: 0;
+  }
+
+  &__divider {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+    color: $text-tertiary;
+    font-size: $font-sm;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+
+    &::before,
+    &::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: $border-default;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: center;
+    font-size: $font-md;
+    color: $text-secondary;
+    gap: $spacing-xs;
+
+    a {
+      color: $text-accent;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.auth-discord-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+  padding: $spacing-md $spacing-lg;
+  border-radius: $radius-sm;
+  font-size: $font-md;
+  font-weight: 600;
+  cursor: pointer;
+  transition: $transition-default;
+  border: $border-width-thin solid transparent;
+  background: #5865f2;
+  color: $text-primary;
+
+  &:hover:not(:disabled) {
+    background: color.adjust(#5865f2, $lightness: 6%);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}

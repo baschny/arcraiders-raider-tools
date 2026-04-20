@@ -233,37 +233,39 @@ export function LootHelperApp() {
   }
 
   return (
-    <div className="loot-helper-container">
+    <div className="loot-helper-layout">
       <SignInNudge />
-      <Sidebar
-        itemsMap={itemsMap}
-        goalItemIds={goalItemIds}
-        disabledItemIds={disabledGoalItemIds}
-        stashItemIds={stashItemIds}
-        disabledStashItemIds={disabledStashItemIds}
-        onAddGoalItem={handleAddGoalItem}
-        onRemoveGoalItem={handleRemoveGoalItem}
-        onToggleGoalItem={handleToggleGoalItem}
-        onReorderGoalItems={handleReorderGoalItems}
-        onEnableAllGoalItems={handleEnableAllGoalItems}
-        onDisableAllGoalItems={handleDisableAllGoalItems}
-        onToggleDisabledStashItem={handleToggleDisabledStashItem}
-        onRemoveStashItem={handleRemoveStashItem}
-      />
-      <div className="main-content-area">
-        {goalItemIds.length === 0 ? (
-          <div className="empty-state">
-            {t('lootHelper.emptyState')}
-          </div>
-        ) : (
-          <AccordionList
-            itemsMap={itemsMap}
-            goalItemIds={goalItemIds.filter((id) => !disabledGoalItemIds.has(id))}
-            reverseMap={reverseMap}
-            stashItemIds={activeStashItemIds}
-            onToggleStashItem={handleToggleStashItem}
-          />
-        )}
+      <div className="loot-helper-container">
+        <Sidebar
+          itemsMap={itemsMap}
+          goalItemIds={goalItemIds}
+          disabledItemIds={disabledGoalItemIds}
+          stashItemIds={stashItemIds}
+          disabledStashItemIds={disabledStashItemIds}
+          onAddGoalItem={handleAddGoalItem}
+          onRemoveGoalItem={handleRemoveGoalItem}
+          onToggleGoalItem={handleToggleGoalItem}
+          onReorderGoalItems={handleReorderGoalItems}
+          onEnableAllGoalItems={handleEnableAllGoalItems}
+          onDisableAllGoalItems={handleDisableAllGoalItems}
+          onToggleDisabledStashItem={handleToggleDisabledStashItem}
+          onRemoveStashItem={handleRemoveStashItem}
+        />
+        <div className="main-content-area">
+          {goalItemIds.length === 0 ? (
+            <div className="empty-state">
+              {t('lootHelper.emptyState')}
+            </div>
+          ) : (
+            <AccordionList
+              itemsMap={itemsMap}
+              goalItemIds={goalItemIds.filter((id) => !disabledGoalItemIds.has(id))}
+              reverseMap={reverseMap}
+              stashItemIds={activeStashItemIds}
+              onToggleStashItem={handleToggleStashItem}
+            />
+          )}
+        </div>
       </div>
     </div>
   );

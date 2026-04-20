@@ -15,7 +15,18 @@
       "title": "Tools",
       "collapse": "Einklappen",
       "expand": "Seitenleiste ausklappen",
-      "collapseTitle": "Seitenleiste einklappen"
+      "collapseTitle": "Seitenleiste einklappen",
+      "profile": "Profil"
+    },
+    "userMenu": {
+      "login": "Anmelden",
+      "profile": "Profil",
+      "logout": "Abmelden",
+      "signedInAs": "Angemeldet als",
+      "confirmSignOutTitle": "Abmelden?",
+      "confirmSignOutBody": "Du musst dich erneut anmelden, um deinen Fortschritt geräteübergreifend zu synchronisieren.",
+      "cancel": "Abbrechen",
+      "confirm": "Abmelden"
     },
     "footer": {
       "thanksPrefix": "Daten bereitgestellt von ",
@@ -48,7 +59,13 @@
   },
   "pages": {
     "notFound": "Seite nicht gefunden",
-    "profileSettings": "Profileinstellungen"
+    "profileSettings": "Profileinstellungen",
+    "profile": {
+      "title": "Profil",
+      "sections": {
+        "arctracker": "ArcTracker-Integration"
+      }
+    }
   },
   "schedule": {
     "loading": "Ereignisplan wird geladen...",

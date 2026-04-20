@@ -15,7 +15,18 @@
       "title": "Tools",
       "collapse": "Collapse",
       "expand": "Expand sidebar",
-      "collapseTitle": "Collapse sidebar"
+      "collapseTitle": "Collapse sidebar",
+      "profile": "Profile"
+    },
+    "userMenu": {
+      "login": "Login",
+      "profile": "Profile",
+      "logout": "Logout",
+      "signedInAs": "Signed in as",
+      "confirmSignOutTitle": "Sign out?",
+      "confirmSignOutBody": "You'll need to sign back in to sync your progress across devices.",
+      "cancel": "Cancel",
+      "confirm": "Sign out"
     },
     "footer": {
       "thanksPrefix": "Data provided by ",
@@ -48,7 +59,13 @@
   },
   "pages": {
     "notFound": "Page not found",
-    "profileSettings": "Profile Settings"
+    "profileSettings": "Profile Settings",
+    "profile": {
+      "title": "Profile",
+      "sections": {
+        "arctracker": "ArcTracker Integration"
+      }
+    }
   },
   "schedule": {
     "loading": "Loading event schedule...",

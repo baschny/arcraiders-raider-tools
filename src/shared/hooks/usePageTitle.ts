@@ -9,8 +9,24 @@ const PAGE_TITLE_KEYS: Record<string, string> = {
   '/quests': 'shared.tools.quests',
   '/loot-helper': 'shared.tools.lootHelper',
   '/quartermaster': 'shared.tools.quartermaster',
-  '/settings/profile': 'pages.profileSettings',
 };
+
+// Prefix-based title keys for nested routes that share a common title.
+const PAGE_TITLE_PREFIXES: Array<{ prefix: string; key: string }> = [
+  { prefix: '/profile', key: 'pages.profile.title' },
+  { prefix: '/auth/sign-in', key: 'pages.profileSettings' },
+  { prefix: '/auth/sign-up', key: 'pages.profileSettings' },
+];
+
+function resolvePageKey(pathname: string): string | undefined {
+  if (PAGE_TITLE_KEYS[pathname]) {
+    return PAGE_TITLE_KEYS[pathname];
+  }
+  const prefixMatch = PAGE_TITLE_PREFIXES.find(({ prefix }) =>
+    pathname === prefix || pathname.startsWith(`${prefix}/`),
+  );
+  return prefixMatch?.key;
+}
 
 export function usePageTitle() {
   const location = useLocation();
@@ -18,7 +34,7 @@ export function usePageTitle() {
 
   useEffect(() => {
     const appName = t('app.name');
-    const pageKey = PAGE_TITLE_KEYS[location.pathname];
+    const pageKey = resolvePageKey(location.pathname);
     const pageTitle = pageKey ? t(pageKey) : t('pages.notFound');
     const title = pageKey === 'app.name' ? appName : `${appName}: ${pageTitle}`;
     document.title = title;

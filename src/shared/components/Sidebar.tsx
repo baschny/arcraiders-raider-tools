@@ -1,14 +1,16 @@
 import { NavLink } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useLocale } from '../context/LocaleContext';
-import { 
-  Home, 
-  Calendar, 
-  Calculator, 
-  ListTodo, 
+import { useCognitoAuth } from '../context/CognitoAuthContext';
+import {
+  Home,
+  Calendar,
+  Calculator,
+  ListTodo,
   Package,
+  UserCircle,
   ChevronLeft,
-  ChevronRight 
+  ChevronRight,
 } from 'lucide-react';
 import { trackNavigation } from '../utils/analytics';
 
@@ -20,10 +22,17 @@ const NAV_ITEMS = [
   { path: '/loot-helper', icon: Package, labelKey: 'shared.tools.lootHelper' },
 ];
 
+const BOTTOM_NAV_ITEM = {
+  path: '/profile',
+  icon: UserCircle,
+  labelKey: 'shared.sidebar.profile',
+};
+
 const SIDEBAR_STORAGE_KEY = 'raider-tools:sidebar-collapsed';
 
 export function Sidebar() {
   const { t } = useLocale();
+  const cognito = useCognitoAuth();
   const [collapsed, setCollapsed] = useState(() => {
     try {
       const saved = localStorage.getItem(SIDEBAR_STORAGE_KEY);
@@ -74,6 +83,26 @@ export function Sidebar() {
             );
           })}
         </ul>
+        {cognito.user && (
+          <ul className="sidebar-nav-list sidebar-nav-list--bottom">
+            {(() => {
+              const label = t(BOTTOM_NAV_ITEM.labelKey);
+              return (
+                <li key={BOTTOM_NAV_ITEM.path} className="sidebar-nav-item">
+                  <NavLink
+                    to={BOTTOM_NAV_ITEM.path}
+                    className={({ isActive }) => (isActive ? 'active' : '')}
+                    title={collapsed ? label : undefined}
+                    onClick={() => trackNavigation(label, 'sidebar')}
+                  >
+                    <BOTTOM_NAV_ITEM.icon size={20} />
+                    {!collapsed && <span className="sidebar-nav-text">{label}</span>}
+                  </NavLink>
+                </li>
+              );
+            })()}
+          </ul>
+        )}
       </nav>
     </div>
   );

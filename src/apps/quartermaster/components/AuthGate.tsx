@@ -44,7 +44,7 @@ export function AuthGate({ children }: AuthGateProps) {
           <p>
             {t('quartermaster.auth.requiredBody')}
           </p>
-          <Link to="/settings/profile" className="qm-button qm-button--primary">
+          <Link to="/profile/arctracker" className="qm-button qm-button--primary">
             {t('quartermaster.auth.goToSettings')}
           </Link>
         </div>

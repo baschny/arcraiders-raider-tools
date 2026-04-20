@@ -1,17 +1,19 @@
 @use '../styles/variables' as *;
 
 .signin-nudge {
+    flex: 0 0 auto;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: $spacing-md;
-    margin: 0 0 $spacing-lg 0;
-    padding: $spacing-md $spacing-lg;
+    margin: 0;
+    padding: $spacing-sm $spacing-lg;
     background: $bg-secondary;
-    border: $border-width-thin solid $border-default;
-    border-radius: $radius-md;
+    border: 0;
+    border-bottom: $border-width-thin solid $border-default;
+    border-radius: 0;
     color: $text-primary;
     font-size: $font-md;
-    line-height: 1.5;
+    line-height: 1.4;
 
     a {
         color: $text-accent;
@@ -21,7 +23,6 @@
 
 .signin-nudge__icon {
     flex-shrink: 0;
-    margin-top: 2px;
     color: $text-accent;
 }
 
