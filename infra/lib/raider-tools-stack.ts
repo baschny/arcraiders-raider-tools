@@ -207,6 +207,14 @@ export class RaiderToolsStack extends cdk.Stack {
 
         // -----------------------------------------------------------------
         // Cognito user pool.
+        //
+        // `userVerification` overrides the default subject + body of the
+        // sign-up verification email. This is Cognito's built-in sender
+        // (`no-reply@verificationemail.com`), so delivery is still
+        // subject to the 50-emails-per-day cap on Cognito-owned senders
+        // — good enough for dev + low-volume launch. Switch to SES
+        // (see `email: cognito.UserPoolEmail.withSES(...)`) once we need
+        // production-grade deliverability from `noreply@raider-tools.app`.
         // -----------------------------------------------------------------
         this.userPool = new cognito.UserPool(this, "UserPool", {
             userPoolName: "raider-tools-users",
@@ -227,6 +235,23 @@ export class RaiderToolsStack extends cdk.Stack {
                 requireSymbols: false,
             },
             accountRecovery: cognito.AccountRecovery.EMAIL_ONLY,
+            userVerification: {
+                emailSubject: "Verify your Raider Tools account",
+                // HTML body — Cognito replaces `{####}` with the 6-digit
+                // verification code at send time. Keep inline styles only
+                // so the markup survives the stricter rendering rules of
+                // Gmail / Outlook / Apple Mail.
+                emailBody: [
+                    '<div style="font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#1a1a1a;line-height:1.5;">',
+                    '  <p>Welcome to <strong>Raider Tools</strong>!</p>',
+                    '  <p>Use the following verification code to finish creating your account:</p>',
+                    '  <p style="font-size:22px;font-weight:700;letter-spacing:2px;background:#f4f4f4;padding:12px 16px;border-radius:6px;display:inline-block;">{####}</p>',
+                    '  <p style="color:#555;">The code expires in 24 hours. Once confirmed, you can sign in at <a href="https://raider-tools.app">raider-tools.app</a>.</p>',
+                    '  <p style="color:#888;font-size:12px;margin-top:24px;">If you didn\'t sign up for Raider Tools, you can safely ignore this email — no account will be created.</p>',
+                    '</div>',
+                ].join("\n"),
+                emailStyle: cognito.VerificationEmailStyle.CODE,
+            },
             removalPolicy: cdk.RemovalPolicy.RETAIN,
             lambdaTriggers: {
                 defineAuthChallenge: defineAuthFn,
