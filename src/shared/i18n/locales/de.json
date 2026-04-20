@@ -8,28 +8,28 @@
     "errorPrefix": "Fehler",
     "syncError": {
       "network": {
-        "title": "Can't reach the sync server",
-        "body": "Your recent changes aren't being saved. Check your connection or try again in a moment."
+        "title": "Kann den Sync-Server nicht erreichen",
+        "body": "Ihre letzten Änderungen werden nicht gespeichert. Überprüfen Sie Ihre Verbindung oder versuchen Sie es in einem Moment erneut."
       },
       "unauthorized": {
-        "title": "Your session expired",
-        "body": "Please sign in again to continue syncing your progress across devices.",
-        "signIn": "Sign in again"
+        "title": "Ihre Sitzung ist abgelaufen",
+        "body": "Bitte melde dich erneut an, um deinen Fortschritt zwischen Geräten zu synchronisieren.",
+        "signIn": "Erneut anmelden"
       },
       "server": {
-        "title": "Sync server error (HTTP {status})",
-        "body": "The backend is currently unhealthy. Your recent changes aren't being saved."
+        "title": "Sync-Serverfehler (HTTP {status})",
+        "body": "Das Backend ist derzeit ungesund. Ihre letzten Änderungen werden nicht gespeichert."
       },
       "client": {
-        "title": "Sync rejected (HTTP {status})",
-        "body": "The server refused the last write. Your recent changes aren't being saved."
+        "title": "Sync abgelehnt (HTTP {status})",
+        "body": "Der Server hat das letzte Schreiben abgelehnt. Ihre letzten Änderungen werden nicht gespeichert."
       },
       "unknown": {
-        "title": "Sync error",
-        "body": "Your recent changes might not be saved. Please try again."
+        "title": "Sync-Fehler",
+        "body": "Ihre letzten Änderungen werden möglicherweise nicht gespeichert. Bitte versuchen Sie es erneut."
       },
-      "retry": "Retry",
-      "details": "Affected: {sources}"
+      "retry": "Wiederholen",
+      "details": "Betroffen: {sources}"
     },
     "header": {
       "switchTool": "Tool wechseln",
@@ -37,7 +37,7 @@
       "languageLabel": "Sprache"
     },
     "sidebar": {
-      "title": "Tools",
+      "title": "Werkzeuge",
       "collapse": "Einklappen",
       "expand": "Seitenleiste ausklappen",
       "collapseTitle": "Seitenleiste einklappen",
