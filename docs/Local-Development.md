@@ -65,6 +65,10 @@ Environment overrides (all optional):
 - `EMBARK_OAUTH_CLIENT_SECRET` — required only if you want the local Embark `/start` + `/complete` flow to reach the real Embark OAuth/token endpoints.
 - `EMBARK_MANIFEST_ID` and `EMBARK_USER_AGENT` — required only if you want the local Embark completion flow to fetch `/v1/shared/profile`.
 - `EMBARK_LOOPBACK_REDIRECT_URI` — default `http://127.0.0.1:49176`.
+
+Embark-specific caveats:
+- Refresh-token handling is not available because the upstream Embark auth server is currently broken for refresh use. Re-authenticate after expiry; revisit this after June 2026.
+- The loopback redirect is meant for the browser extension. If the extension is not available, the current fallback is a manual callback URL domain/host rewrite following site-owner instructions.
 ### 3. Vite dev server
 ```bash
 # Repo root

@@ -96,7 +96,7 @@
       "embark": {
         "description": "Link your Embark account to let Raider Tools read live ARC Raiders data directly from the game APIs.",
         "extensionDetected": "Embark login extension detected. The redirect flow should complete normally.",
-        "extensionMissing": "Embark login extension was not detected. You can still continue, but the redirect callback may fail.",
+        "extensionMissing": "Embark login extension was not detected. You can still continue if you follow the manual callback URL instructions from the site owner.",
         "howItWorksTitle": "How it works",
         "stepInstall": "Install the Embark login extension in your browser.",
         "stepChooseProvider": "Choose the identity provider you use to sign in to Embark.",

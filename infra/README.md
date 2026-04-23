@@ -282,6 +282,8 @@ Operational note:
 
 - New Lambda containers pick up the changed SSM values immediately.
 - Warm Embark Lambda containers cache `manifestId` and `userAgent` for **60 seconds**, so a change can take up to about one minute to be reflected everywhere.
+- Embark token refresh is intentionally not wired up. The upstream Embark auth server is currently broken for refresh-token use, despite the `offline` scope. Users must re-authenticate after token expiry until this is revisited after June 2026.
+- The Embark callback is extension-oriented and uses the loopback redirect `http://127.0.0.1:49176`. When the extension is unavailable, the current operational fallback is to let the user continue and manually rewrite the callback URL domain/host using site-owner instructions.
 
 ### SPA environment variables
 
