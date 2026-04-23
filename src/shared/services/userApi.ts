@@ -16,11 +16,12 @@ export interface MeResponse {
     displayName: string | null;
     locale: string | null;
     signupProvider: string;
+    dataMigrationCompleted?: boolean;
     links: {
         arctracker:
             | { linked: true; validatedUsername: string | null; validatedAt: string | null }
             | { linked: false };
-        embark: { linked: boolean };
+        embark: EmbarkLinkStatus;
     };
 }
 
@@ -29,6 +30,38 @@ export interface ArctrackerLinkStatus {
     validatedUsername?: string | null;
     validatedAt?: string | null;
 }
+
+export interface EmbarkProfileSummary {
+    accountId?: string;
+    countryCode?: string;
+    createdAt?: number;
+    dateOfBirth?: string;
+    displayName?: {
+        discriminator?: string;
+        name?: string;
+    };
+    displayNameCooldownEndsAt?: number;
+    email?: string;
+    emailIsVerified?: boolean;
+    emailVerifiedAt?: number;
+    isSpender?: boolean;
+    tenancyUserId?: string;
+    thirdPartyLastSeenAccountName?: string;
+    thirdPartyUserId?: string;
+}
+
+export type EmbarkLinkStatus =
+    | { linked: false }
+    | {
+        linked: true;
+        provider: string | null;
+        expiresAt: string | null;
+        linkedAt: string | null;
+        profileFetchedAt: string | null;
+        expired: boolean;
+        countdownMinutes?: number | null;
+        profile: EmbarkProfileSummary | null;
+    };
 
 async function authedFetch(path: string, init: RequestInit = {}): Promise<Response> {
     const token = await getIdToken();
@@ -77,4 +110,32 @@ export async function putArctrackerLink(token: string): Promise<ArctrackerLinkSt
 
 export async function deleteArctrackerLink(): Promise<void> {
     await readJson(await authedFetch('/me/links/arctracker', { method: 'DELETE' }));
+}
+
+export async function getEmbarkLink(): Promise<EmbarkLinkStatus> {
+    return readJson<EmbarkLinkStatus>(await authedFetch('/me/links/embark'));
+}
+
+export async function deleteEmbarkLink(): Promise<void> {
+    await readJson(await authedFetch('/me/links/embark', { method: 'DELETE' }));
+}
+
+export async function startEmbarkLink(
+    provider: string,
+    returnUrl: string,
+): Promise<{ authUrl: string; state: string; provider: string }> {
+    return readJson(await authedFetch('/me/links/embark/start', {
+        method: 'POST',
+        body: JSON.stringify({ provider, returnUrl }),
+    }));
+}
+
+export async function completeEmbarkLink(
+    code: string,
+    state: string,
+): Promise<void> {
+    await readJson(await authedFetch('/me/links/embark/complete', {
+        method: 'POST',
+        body: JSON.stringify({ code, state }),
+    }));
 }

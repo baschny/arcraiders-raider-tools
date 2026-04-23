@@ -15,7 +15,7 @@
  */
 
 import { KMSClient, GenerateDataKeyCommand, DecryptCommand } from "@aws-sdk/client-kms";
-import { createCipheriv, createDecipheriv, randomBytes } from "node:crypto";
+import { createCipheriv, createDecipheriv, createHash, randomBytes } from "node:crypto";
 
 const kms = new KMSClient({});
 
@@ -52,6 +52,10 @@ export async function encryptToken(
     plaintext: string,
     ctx: EnvelopeContext,
 ): Promise<EnvelopePayload> {
+    if (process.env.LOCAL_DEV_BYPASS_KMS === "true") {
+        return encryptTokenLocal(plaintext, ctx);
+    }
+
     const keyId = process.env.KMS_KEY_ID;
     if (!keyId) throw new Error("Missing KMS_KEY_ID");
 
@@ -86,6 +90,10 @@ export async function decryptToken(
     payload: EnvelopePayload,
     ctx: EnvelopeContext,
 ): Promise<string> {
+    if (process.env.LOCAL_DEV_BYPASS_KMS === "true") {
+        return decryptTokenLocal(payload, ctx);
+    }
+
     const dec = await kms.send(new DecryptCommand({
         CiphertextBlob: Buffer.from(payload.encryptedDataKey, "base64"),
         EncryptionContext: ctxToRecord(ctx),
@@ -106,4 +114,48 @@ export async function decryptToken(
     (dec.Plaintext as Uint8Array).fill(0);
 
     return pt.toString("utf8");
+}
+
+function encryptTokenLocal(
+    plaintext: string,
+    ctx: EnvelopeContext,
+): EnvelopePayload {
+    const key = localKeyForContext(ctx);
+    const iv = randomBytes(12);
+    const cipher = createCipheriv("aes-256-gcm", key, iv);
+    const ct = Buffer.concat([cipher.update(plaintext, "utf8"), cipher.final()]);
+    const tag = cipher.getAuthTag();
+    return {
+        alg: "AES-256-GCM",
+        ciphertext: ct.toString("base64"),
+        iv: iv.toString("base64"),
+        tag: tag.toString("base64"),
+        encryptedDataKey: Buffer.from("local-dev").toString("base64"),
+        createdAt: new Date().toISOString(),
+    };
+}
+
+function decryptTokenLocal(
+    payload: EnvelopePayload,
+    ctx: EnvelopeContext,
+): string {
+    const key = localKeyForContext(ctx);
+    const decipher = createDecipheriv(
+        "aes-256-gcm",
+        key,
+        Buffer.from(payload.iv, "base64"),
+    );
+    decipher.setAuthTag(Buffer.from(payload.tag, "base64"));
+    const pt = Buffer.concat([
+        decipher.update(Buffer.from(payload.ciphertext, "base64")),
+        decipher.final(),
+    ]);
+    return pt.toString("utf8");
+}
+
+function localKeyForContext(ctx: EnvelopeContext): Buffer {
+    const seed = process.env.LOCAL_DEV_KMS_SECRET ?? "raider-tools-local-dev-kms";
+    return createHash("sha256")
+        .update(`${seed}:${ctx.userId}:${ctx.purpose}:${ctx.provider}`)
+        .digest();
 }

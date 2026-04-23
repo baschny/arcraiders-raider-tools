@@ -324,6 +324,16 @@
     text-overflow: ellipsis;
     white-space: nowrap;
   }
+
+  &__meta {
+    font-size: $font-sm;
+    color: $text-secondary;
+    margin-top: 2px;
+
+    &--expired {
+      color: #f44336;
+    }
+  }
 }
 
 .header-menu-item--danger {
@@ -381,6 +391,70 @@
   display: flex;
   align-items: center;
   gap: $spacing-md;
+}
+
+.embark-warning {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-md;
+  border-radius: $radius-sm;
+  margin-bottom: $spacing-lg;
+  background: rgba($status-completed, 0.12);
+  border: $border-width-thin solid rgba($status-completed, 0.25);
+  color: $text-primary;
+
+  &--alert {
+    background: rgba(#f59e0b, 0.14);
+    border-color: rgba(#f59e0b, 0.35);
+  }
+}
+
+.embark-provider-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: $spacing-md;
+}
+
+.embark-provider-button {
+  width: 100%;
+}
+
+.embark-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-md;
+  margin-bottom: $spacing-lg;
+}
+
+.embark-refresh-button {
+  padding: $spacing-sm $spacing-md;
+}
+
+.embark-loading,
+.embark-empty {
+  color: $text-secondary;
+}
+
+.embark-loading {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.embark-status-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px $spacing-sm;
+  border-radius: 999px;
+  background: rgba($status-completed, 0.14);
+  color: $status-completed;
+
+  &--expired {
+    background: rgba(#f44336, 0.14);
+    color: #f44336;
+  }
 }
 
 // Spin animation for loaders

@@ -1,7 +1,7 @@
 # Local Development (server-backed state)
 This document covers how to run the server-backed parts of raider-tools fully offline:
 - A local DynamoDB (Docker) that replaces the real `raider-tools-users` table.
-- A tiny Node HTTP server that hosts the **same** `profile.ts` / `state.ts` / `links.ts` Lambda handlers used in production, pointed at the local DynamoDB.
+- A tiny Node HTTP server that hosts the **same** `profile.ts` / `state.ts` / `links.ts` / `embark-link.ts` Lambda handlers used in production, pointed at the local DynamoDB.
 - A fake "sign in as dev user" flow that bypasses Cognito entirely.
 This lets you exercise `UserStateStore` against a real DynamoDB, iterate on Lambda handler code, and test sign-in hydration + sign-out wipe without ever touching AWS.
 For the production equivalents of these moving parts, see `Authentication.md` and `User-Data.md`.
@@ -47,13 +47,24 @@ npm run local:ddb:down
 cd infra
 npm run local:api        # starts http://localhost:4000
 ```
-On first boot the server creates the `raider-tools-users` table (pk/sk only, on-demand billing). It reuses `infra/lambda/profile.ts`, `state.ts`, and `links.ts` by constructing synthetic API Gateway events, so any fix made to those files is picked up on restart.
+On first boot the server creates the `raider-tools-users` table (pk/sk only, on-demand billing). It reuses `infra/lambda/profile.ts`, `state.ts`, `links.ts`, and `embark-link.ts` by constructing synthetic API Gateway events, so any fix made to those files is picked up on restart.
+
+The local API server automatically reads:
+- `infra/.env`
+- `infra/.env.local`
+
+with `.env.local` overriding `.env`. Use [infra/.env.example](/Users/ernst/Develop/Games/ArcRaiders/raider-tools/infra/.env.example) as the template for local server-side settings such as Embark OAuth/config values.
+
 Environment overrides (all optional):
 - `LOCAL_API_PORT` — default `4000`.
 - `AWS_ENDPOINT_URL_DYNAMODB` — default `http://localhost:8000`.
 - `USER_TABLE_NAME` — default `raider-tools-users`.
 - `ALLOWED_ORIGINS` — default `http://localhost:5173`.
 - `ARCTRACKER_RELAY_URL` — unset locally; `/me/links/arctracker` PUT calls will fail fast (the relay isn't simulated; see §Scope).
+- `LOCAL_DEV_BYPASS_KMS` — default `true`; uses a deterministic local AES key instead of AWS KMS so encrypted link rows can still be exercised offline.
+- `EMBARK_OAUTH_CLIENT_SECRET` — required only if you want the local Embark `/start` + `/complete` flow to reach the real Embark OAuth/token endpoints.
+- `EMBARK_MANIFEST_ID` and `EMBARK_USER_AGENT` — required only if you want the local Embark completion flow to fetch `/v1/shared/profile`.
+- `EMBARK_LOOPBACK_REDIRECT_URI` — default `http://127.0.0.1:49176`.
 ### 3. Vite dev server
 ```bash
 # Repo root
@@ -89,6 +100,7 @@ The local setup deliberately skips:
 - **Discord OAuth bridge and Cognito custom-auth triggers.** Dev auth is sub-only; the full federated flow still requires the real stack.
 - **PITR, TTL eviction, customer-managed KMS at rest.** The local table has none of these. If you're testing behavior that depends on them, use the deployed stack.
 - **Schema drift guardrails.** `infra/local/server.ts::ensureTable()` is hand-written to match `RaiderToolsStack.UserTable`. If you change the CDK table definition in `infra/lib/raider-tools-stack.ts`, update `ensureTable()` in the same PR.
+- **Local route parity is manual.** If you add a new API Lambda or HTTP route in `infra/lib/raider-tools-stack.ts`, also register it in `infra/local/server.ts` in the same PR so the Vite + `local:api` workflow stays representative.
 ## File map (local-dev cheat sheet)
 - `infra/local/docker-compose.yml` — DynamoDB Local container spec.
 - `infra/local/server.ts` — Local HTTP server; dispatches to the real Lambda handlers.
@@ -98,3 +110,4 @@ The local setup deliberately skips:
 - `src/shared/context/CognitoAuthContext.tsx` — Adds `signInAsDevUser(sub, email?)` and a `devAuth` flag.
 - `src/pages/SignIn.tsx` — Renders a "Sign in as dev user" panel when `devAuth` is true.
 - `vite.config.ts` — Conditional `/me` proxy to `localhost:4000` in dev-auth mode.
+- `infra/.env.example` — Template for local API server env vars loaded by `infra/local/server.ts`.

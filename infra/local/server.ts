@@ -3,7 +3,8 @@
  *
  * Mirrors the production API Gateway + Lambda stack on a single Node
  * process by dispatching HTTP requests to the same handlers used in
- * production (`infra/lambda/profile.ts`, `state.ts`, `links.ts`). The
+ * production (`infra/lambda/profile.ts`, `state.ts`, `links.ts`,
+ * `embark-link.ts`). The
  * handlers talk to DynamoDB Local (via `AWS_ENDPOINT_URL_DYNAMODB`)
  * instead of the real DynamoDB, and the JWT authorizer is replaced by
  * a trivial dev-token scheme understood by `src/shared/auth/devAuthClient.ts`.
@@ -25,6 +26,8 @@
  */
 
 import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
+import { existsSync, readFileSync } from "node:fs";
+import path from "node:path";
 import type {
     APIGatewayProxyEventV2WithJWTAuthorizer,
     APIGatewayProxyResultV2,
@@ -45,6 +48,8 @@ import {
 // set them later the clients would already be pinned to a different
 // (missing) endpoint and would fail to connect to DynamoDB Local.
 // ---------------------------------------------------------------------------
+loadLocalEnvFiles();
+
 const LOCAL_API_PORT = Number(process.env.LOCAL_API_PORT ?? 4000);
 const DDB_ENDPOINT = process.env.AWS_ENDPOINT_URL_DYNAMODB ?? "http://localhost:8000";
 const TABLE_NAME = process.env.USER_TABLE_NAME ?? "raider-tools-users";
@@ -60,6 +65,16 @@ process.env.ALLOWED_ORIGINS = ALLOWED_ORIGINS;
 // `links.ts` reads this on module load; provide a harmless default that
 // will only ever be hit if the user explicitly exercises the PUT path.
 process.env.ARCTRACKER_RELAY_URL = process.env.ARCTRACKER_RELAY_URL ?? "http://localhost:0/not-configured";
+process.env.LOCAL_DEV_BYPASS_KMS = process.env.LOCAL_DEV_BYPASS_KMS ?? "true";
+process.env.LOCAL_DEV_KMS_SECRET = process.env.LOCAL_DEV_KMS_SECRET ?? "raider-tools-local-dev-kms";
+process.env.EMBARK_LOOPBACK_REDIRECT_URI =
+    process.env.EMBARK_LOOPBACK_REDIRECT_URI ?? "http://127.0.0.1:49176";
+process.env.EMBARK_OAUTH_CLIENT_SECRET =
+    process.env.EMBARK_OAUTH_CLIENT_SECRET ?? "";
+process.env.EMBARK_MANIFEST_ID =
+    process.env.EMBARK_MANIFEST_ID ?? "local-dev-manifest";
+process.env.EMBARK_USER_AGENT =
+    process.env.EMBARK_USER_AGENT ?? "RaiderToolsLocalDev/0.1";
 
 /* eslint-disable @typescript-eslint/no-require-imports */
 // Imports are intentionally deferred until after env setup so that each
@@ -67,6 +82,7 @@ process.env.ARCTRACKER_RELAY_URL = process.env.ARCTRACKER_RELAY_URL ?? "http://l
 const profile = require("../lambda/profile");
 const state = require("../lambda/state");
 const links = require("../lambda/links");
+const embarkLink = require("../lambda/embark-link");
 /* eslint-enable @typescript-eslint/no-require-imports */
 
 // ---------------------------------------------------------------------------
@@ -140,27 +156,34 @@ function parseDevToken(authHeader: string | undefined): DevClaims | null {
 // ---------------------------------------------------------------------------
 // Routing
 // ---------------------------------------------------------------------------
-type Handler = (
-    event: APIGatewayProxyEventV2WithJWTAuthorizer,
-) => Promise<APIGatewayProxyResultV2>;
+type Handler = (event: APIGatewayProxyEventV2WithJWTAuthorizer) => Promise<APIGatewayProxyResultV2>;
+type RouteAuth = "devBearer" | "none";
 
 interface MatchedRoute {
     handler: Handler;
     pathParameters: Record<string, string>;
+    auth: RouteAuth;
 }
 
 function matchRoute(method: string, pathname: string): MatchedRoute | null {
     if (pathname === "/me" && (method === "GET" || method === "PATCH")) {
-        return { handler: profile.handler, pathParameters: {} };
+        return { handler: profile.handler, pathParameters: {}, auth: "devBearer" };
     }
     if (pathname === "/me/migrate" && method === "POST") {
-        return { handler: state.handler, pathParameters: {} };
+        return { handler: state.handler, pathParameters: {}, auth: "devBearer" };
+    }
+    if (pathname === "/me/links/embark/start" && method === "POST") {
+        return { handler: embarkLink.handler, pathParameters: {}, auth: "devBearer" };
+    }
+    if (pathname === "/me/links/embark/complete" && method === "POST") {
+        return { handler: embarkLink.handler, pathParameters: {}, auth: "devBearer" };
     }
     const stateMatch = /^\/me\/state\/([^/]+)$/.exec(pathname);
     if (stateMatch && (method === "GET" || method === "PUT" || method === "DELETE")) {
         return {
             handler: state.handler,
             pathParameters: { domain: decodeURIComponent(stateMatch[1]) },
+            auth: "devBearer",
         };
     }
     const linksMatch = /^\/me\/links\/([^/]+)$/.exec(pathname);
@@ -168,6 +191,7 @@ function matchRoute(method: string, pathname: string): MatchedRoute | null {
         return {
             handler: links.handler,
             pathParameters: { provider: decodeURIComponent(linksMatch[1]) },
+            auth: "devBearer",
         };
     }
     return null;
@@ -191,7 +215,7 @@ function buildEvent(
     url: URL,
     pathParameters: Record<string, string>,
     body: string | null,
-    claims: DevClaims,
+    claims: DevClaims | null,
 ): APIGatewayProxyEventV2WithJWTAuthorizer {
     const method = (req.method ?? "GET").toUpperCase();
     const headers: Record<string, string> = {};
@@ -202,8 +226,11 @@ function buildEvent(
     const queryStringParameters: Record<string, string> = {};
     for (const [k, v] of url.searchParams) queryStringParameters[k] = v;
 
-    const claimsRecord: Record<string, string | number | boolean> = { sub: claims.sub };
-    if (claims.email) claimsRecord.email = claims.email;
+    const claimsRecord: Record<string, string | number | boolean> = {};
+    if (claims) {
+        claimsRecord.sub = claims.sub;
+        if (claims.email) claimsRecord.email = claims.email;
+    }
 
     return {
         version: "2.0",
@@ -237,7 +264,7 @@ function buildEvent(
                 // AWS-provided authorizer typing but the handlers never
                 // read them; we fill them with placeholders so the cast
                 // is type-safe without loosening the handler contract.
-                principalId: claims.sub,
+                principalId: claims?.sub ?? "local-admin",
                 integrationLatency: 0,
                 jwt: {
                     claims: claimsRecord,
@@ -322,10 +349,13 @@ async function handleRequest(req: IncomingMessage, res: ServerResponse): Promise
         return;
     }
 
-    const claims = parseDevToken(req.headers.authorization as string | undefined);
-    if (!claims) {
-        writeStructured(res, origin, 401, { error: "Missing or invalid dev token" });
-        return;
+    let claims: DevClaims | null = null;
+    if (route.auth === "devBearer") {
+        claims = parseDevToken(req.headers.authorization as string | undefined);
+        if (!claims) {
+            writeStructured(res, origin, 401, { error: "Missing or invalid dev token" });
+            return;
+        }
     }
 
     let body: string | null;
@@ -368,6 +398,7 @@ async function main(): Promise<void> {
         console.log(`[local-api] dynamodb endpoint: ${DDB_ENDPOINT}`);
         console.log(`[local-api] user table:        ${TABLE_NAME}`);
         console.log(`[local-api] allowed origins:   ${ALLOWED_ORIGINS}`);
+        console.log(`[local-api] local KMS bypass:  ${process.env.LOCAL_DEV_BYPASS_KMS}`);
     });
 }
 
@@ -375,3 +406,30 @@ main().catch(err => {
     console.error("[local-api] failed to start", err);
     process.exit(1);
 });
+
+function loadLocalEnvFiles(): void {
+    const envDir = path.resolve(__dirname, "..");
+    // Match Vite-style precedence: .env first, then .env.local overrides it.
+    loadEnvFile(path.join(envDir, ".env"));
+    loadEnvFile(path.join(envDir, ".env.local"));
+}
+
+function loadEnvFile(filename: string): void {
+    if (!existsSync(filename)) return;
+    const raw = readFileSync(filename, "utf8");
+    for (const line of raw.split(/\r?\n/)) {
+        const trimmed = line.trim();
+        if (!trimmed || trimmed.startsWith("#")) continue;
+        const idx = trimmed.indexOf("=");
+        if (idx <= 0) continue;
+        const key = trimmed.slice(0, idx).trim();
+        let value = trimmed.slice(idx + 1).trim();
+        if (
+            (value.startsWith('"') && value.endsWith('"'))
+            || (value.startsWith("'") && value.endsWith("'"))
+        ) {
+            value = value.slice(1, -1);
+        }
+        process.env[key] = value;
+    }
+}

@@ -18,12 +18,17 @@ import { useAuth } from '../context/AuthContext';
 import { useCognitoAuth } from '../context/CognitoAuthContext';
 import { useLocale } from '../context/LocaleContext';
 import { runSignOutWipe } from '../state/hydration';
+import { useEmbarkLinkStatus } from '../hooks/useEmbarkLinkStatus';
+import { useMinuteTicker } from '../hooks/useMinuteTicker';
+import { getEmbarkStatusLabel, isEmbarkExpired } from '../utils/embark';
 
 export function LoginButton() {
   const navigate = useNavigate();
   const { t } = useLocale();
   const { username, isValidating } = useAuth();
   const cognito = useCognitoAuth();
+  const { status: embarkStatus } = useEmbarkLinkStatus(Boolean(cognito.user), { pollIntervalMs: null });
+  const countdownNow = useMinuteTicker(Boolean(embarkStatus?.linked));
 
   const [open, setOpen] = useState(false);
   const [confirming, setConfirming] = useState(false);
@@ -55,6 +60,11 @@ export function LoginButton() {
   const handleProfileClick = useCallback(() => {
     setOpen(false);
     navigate('/profile');
+  }, [navigate]);
+
+  const handleEmbarkClick = useCallback(() => {
+    setOpen(false);
+    navigate('/profile/embark');
   }, [navigate]);
 
   const handleLogoutConfirm = useCallback(async () => {
@@ -91,6 +101,8 @@ export function LoginButton() {
 
   if (signedIn) {
     const displayName = cognito.user?.email ?? username ?? '';
+    const embarkExpired = embarkStatus?.linked ? isEmbarkExpired(embarkStatus.expiresAt, countdownNow) : false;
+    const embarkLabel = getEmbarkStatusLabel(embarkStatus, countdownNow);
     return (
       <div className="header-dropdown" ref={wrapperRef}>
         <button
@@ -112,6 +124,12 @@ export function LoginButton() {
                   {t('shared.userMenu.signedInAs')}
                 </span>
                 <span className="user-menu__identity-value">{displayName}</span>
+                {embarkStatus?.linked && (
+                  <span className={`user-menu__meta${embarkExpired ? ' user-menu__meta--expired' : ''}`}>
+                    {t('shared.userMenu.embarkStatusPrefix')}
+                    {embarkLabel ? ` ${embarkLabel}` : ''}
+                  </span>
+                )}
               </div>
             </div>
             <button
@@ -121,6 +139,17 @@ export function LoginButton() {
             >
               <User size={16} />
               <span>{t('shared.userMenu.profile')}</span>
+            </button>
+            <button
+              className="header-menu-item"
+              onClick={handleEmbarkClick}
+              role="menuitem"
+            >
+              <User size={16} />
+              <span>
+                {t('shared.userMenu.embark')}
+                {embarkStatus?.linked && embarkLabel ? ` (${embarkLabel})` : ''}
+              </span>
             </button>
             <button
               className="header-menu-item header-menu-item--danger"

@@ -7,7 +7,7 @@
  *                                 and stores ciphertext in DynamoDB.
  * DELETE /me/links/arctracker  -> removes the link.
  *
- * GET    /me/links/embark      -> stub: { linked: false } (phase 2)
+ * GET    /me/links/embark      -> returns current Embark link status
  *
  * Auth: Cognito JWT (attached at the API Gateway authorizer).
  */
@@ -30,6 +30,7 @@ import {
     parseJsonBody,
 } from "./_lib/http";
 import { encryptToken, type EnvelopePayload } from "./_lib/envelope";
+import { computeCountdownMinutes, type EmbarkProfile } from "./_lib/embark";
 
 const ddb = DynamoDBDocumentClient.from(new DynamoDBClient({}));
 
@@ -64,9 +65,9 @@ export async function handler(
             return jsonResponse(405, { error: "Method not allowed" }, origin);
         }
         if (provider === "embark") {
-            // Phase-2 stub. Always reports unlinked.
-            if (method === "GET") return jsonResponse(200, { linked: false, stub: true }, origin);
-            return jsonResponse(501, { error: "Embark linking not implemented yet" }, origin);
+            if (method === "GET") return await handleEmbarkGet(tableName, sub, origin);
+            if (method === "DELETE") return await handleEmbarkDelete(tableName, sub, origin);
+            return jsonResponse(405, { error: "Method not allowed" }, origin);
         }
         return jsonResponse(404, { error: `Unknown provider: ${provider}` }, origin);
     } catch (err) {
@@ -160,6 +161,58 @@ async function handleArctrackerDelete(
     await ddb.send(new DeleteCommand({
         TableName: tableName,
         Key: { pk: `USER#${sub}`, sk: "LINK#arctracker" },
+    }));
+    return jsonResponse(200, { linked: false }, origin);
+}
+
+// ---------------------------------------------------------------------------
+// Embark
+// ---------------------------------------------------------------------------
+
+interface EmbarkLinkItem extends EnvelopePayload {
+    provider?: string;
+    expiresAt?: string | null;
+    linkedAt?: string | null;
+    profileFetchedAt?: string | null;
+    cachedProfile?: EmbarkProfile;
+}
+
+function embarkStatusFromItem(item: EmbarkLinkItem | undefined | null) {
+    if (!item) return { linked: false };
+    const expiresAt = item.expiresAt ?? null;
+    const countdownMinutes = computeCountdownMinutes(expiresAt);
+    return {
+        linked: true,
+        provider: item.provider ?? null,
+        expiresAt,
+        linkedAt: item.linkedAt ?? null,
+        profileFetchedAt: item.profileFetchedAt ?? null,
+        expired: countdownMinutes !== null ? countdownMinutes <= 0 : false,
+        countdownMinutes,
+        profile: item.cachedProfile ?? null,
+    };
+}
+
+async function handleEmbarkGet(
+    tableName: string,
+    sub: string,
+    origin: string,
+): Promise<APIGatewayProxyResultV2> {
+    const r = await ddb.send(new GetCommand({
+        TableName: tableName,
+        Key: { pk: `USER#${sub}`, sk: "LINK#embark" },
+    }));
+    return jsonResponse(200, embarkStatusFromItem(r.Item as EmbarkLinkItem | undefined), origin);
+}
+
+async function handleEmbarkDelete(
+    tableName: string,
+    sub: string,
+    origin: string,
+): Promise<APIGatewayProxyResultV2> {
+    await ddb.send(new DeleteCommand({
+        TableName: tableName,
+        Key: { pk: `USER#${sub}`, sk: "LINK#embark" },
     }));
     return jsonResponse(200, { linked: false }, origin);
 }

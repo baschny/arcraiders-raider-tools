@@ -229,6 +229,60 @@ If empty, add an A or alias record at the apex (the Amplify hosting record is su
      --secret-string "{\"clientId\":\"<discord client id>\",\"clientSecret\":\"<discord client secret>\",\"stateSigningKey\":\"$STATE_KEY\"}"
    ```
 
+### Post-deploy: populate the Embark OAuth/config values
+
+The Embark-linked-account flow depends on three operational values:
+
+- Secrets Manager secret `raider-tools/embark/oauth`
+  - JSON field: `clientSecret`
+- SSM parameter `/raider-tools/embark/manifest-id`
+- SSM parameter `/raider-tools/embark/user-agent`
+
+These are intentionally managed **outside CloudFormation** so later `cdk deploy --all` runs do not reset them to placeholders.
+
+#### 1. Set the Embark OAuth client secret
+
+```bash
+AWS_PROFILE=baschny aws secretsmanager put-secret-value \
+  --secret-id raider-tools/embark/oauth \
+  --secret-string '{"clientSecret":"<embark client secret>"}'
+```
+
+#### 2. Create or update the Embark request-config parameters
+
+```bash
+AWS_PROFILE=baschny aws ssm put-parameter \
+  --name /raider-tools/embark/manifest-id \
+  --type String \
+  --value "1668862126276720848" \
+  --overwrite
+
+AWS_PROFILE=baschny aws ssm put-parameter \
+  --name /raider-tools/embark/user-agent \
+  --type String \
+  --value "PioneerGame/pioneer_1.13.x-CL-1067127 (http-legacy) Windows/10.0.26100.1.768.64bit" \
+  --overwrite
+```
+
+#### 3. Verify the current values
+
+```bash
+AWS_PROFILE=baschny aws ssm get-parameter \
+  --name /raider-tools/embark/manifest-id \
+  --query Parameter.Value \
+  --output text
+
+AWS_PROFILE=baschny aws ssm get-parameter \
+  --name /raider-tools/embark/user-agent \
+  --query Parameter.Value \
+  --output text
+```
+
+Operational note:
+
+- New Lambda containers pick up the changed SSM values immediately.
+- Warm Embark Lambda containers cache `manifestId` and `userAgent` for **60 seconds**, so a change can take up to about one minute to be reflected everywhere.
+
 ### SPA environment variables
 
 Add these to the Vite `.env` (and to AWS Amplify environment variables for production):

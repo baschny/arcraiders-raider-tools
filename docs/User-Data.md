@@ -30,8 +30,11 @@ Browser SPA                                            API Gateway HTTP API
   │                                                   │  • dataMigrationCompleted   │
   │   GET|PUT|DELETE /me/links/{provider} ─────────►  │ LinksFn      (links.ts)     │
   │                                                   │  • envelope enc/dec         │
-  │                                                   │  • ArcTracker today,        │
-  │                                                   │    Embark reserved          │
+  │                                                   │  • ArcTracker + Embark      │
+  │   POST /me/links/embark/start          ─────────► │ EmbarkLinkFn (embark-link.ts)
+  │   POST /me/links/embark/complete       ─────────► │  • PKCE state/verifier      │
+  │                                                   │  • token exchange           │
+  │                                                   │  • cached profile fetch     │
   │   GET|PUT|DELETE /me/state/{domain}   ─────────►  │ StateFn      (state.ts)     │
   │   POST /me/migrate                    ─────────►  │  • revision concurrency     │
   │                                                   └──────────────┬──────────────┘
@@ -60,7 +63,7 @@ Row families (all others are reserved — do not invent new `pk` prefixes withou
 |----|----|---------|---------------|
 | `USER#<sub>` | `PROFILE` | display name, locale, signupProvider, `dataMigrationCompleted` flag | `ProfileFn` |
 | `USER#<sub>` | `LINK#arctracker` | envelope-encrypted ArcTracker token | `LinksFn` |
-| `USER#<sub>` | `LINK#embark` | reserved for phase 3 (envelope-encrypted Embark token) | `LinksFn` |
+| `USER#<sub>` | `LINK#embark` | envelope-encrypted Embark token payload + derived metadata (`provider`, `expiresAt`, cached profile snapshot) | `EmbarkLinkFn` / `LinksFn` / `ProfileFn` |
 | `USER#<sub>` | `STATE#quests` | sync'd quest progress | `StateFn` |
 | `USER#<sub>` | `STATE#loot` | sync'd loot-helper selections | `StateFn` |
 | `USER#<sub>` | `STATE#quartermaster` | sync'd quartermaster lists + hideout toggles | `StateFn` |
@@ -70,7 +73,7 @@ Row families (all others are reserved — do not invent new `pk` prefixes withou
 The `<sub>` in `USER#<sub>` is the Cognito user id (`sub` claim); this is the only identifier we use for ownership — email/username/etc. are mutable, `sub` is not.
 
 ### 2.2 Envelope encryption for linked-account tokens
-Implemented in `infra/lambda/_lib/envelope.ts`. Used by `LinksFn` for any external-service token (ArcTracker today, Embark next).
+Implemented in `infra/lambda/_lib/envelope.ts`. Used for any external-service token (ArcTracker, Embark, future providers).
 
 Write path:
 1. `GenerateDataKey(AES_256)` against the CMK, with `EncryptionContext = { userId, purpose: "link", provider }`.
@@ -110,13 +113,25 @@ GET /me
       dataMigrationCompleted,
       links: {
         arctracker: { linked: true, validatedUsername, validatedAt } | { linked: false },
-        embark:     { linked: bool }
+        embark:     { linked: false }
+                  | { linked: true, provider, expiresAt, linkedAt, profileFetchedAt,
+                      expired, countdownMinutes, profile }
       }
     }
 PATCH /me  { displayName?, locale? }     → 200 { ok: true, updates }
 GET    /me/links/arctracker               → 200 { linked, validatedUsername?, validatedAt? }
 PUT    /me/links/arctracker  { token }    → 200 { linked: true, validatedUsername, validatedAt }
 DELETE /me/links/arctracker               → 200 { linked: false }
+GET    /me/links/embark                   → 200 { linked: false }
+                                          | 200 { linked: true, provider, expiresAt, linkedAt,
+                                                  profileFetchedAt, expired, countdownMinutes,
+                                                  profile }
+DELETE /me/links/embark                   → 200 { linked: false }
+POST   /me/links/embark/start { provider, returnUrl }
+                                          → 200 { authUrl, state, provider }
+POST   /me/links/embark/complete { code, state }
+                                          → 200 { linked: true, provider, expiresAt, linkedAt,
+                                                  profileFetchedAt, expired, profile }
 GET    /me/state/<domain>                 → 200 { schemaVersion, data, revision, updatedAt } | 404
 PUT    /me/state/<domain>  { schemaVersion, data, revision? }
                                           → 200 { ok: true, revision }
@@ -257,15 +272,23 @@ Use this when the SPA (or a background Lambda) needs to call a third-party API o
 
 If the provider also acts as an identity provider (sign-in mechanism), do §5 in `docs/Authentication.md` **first**, then this recipe to persist the refresh token.
 
+Embark is the concrete example in the current codebase, but it intentionally does **not** act as a Raider Tools identity provider. Users sign in with Cognito first, then run a separate linked-account OAuth flow under `/me/links/embark/*`.
+
 1. **Extend the `LinksFn` handler** in `infra/lambda/links.ts`:
    - Add a new `handle<Provider>Get/Put/Delete` branch under the `/me/links/{provider}` route.
    - For writes, validate the incoming token against the external service if possible (see `handleArctrackerPut` calling the ArcTracker relay).
    - Always persist via `encryptToken(plaintext, { userId: sub, purpose: 'link', provider: '<name>' })`. Never write the plaintext token anywhere.
+   - If the provider needs a browser-based OAuth dance rather than a user-pasted token, create a companion JWT-protected Lambda (Embark uses `infra/lambda/embark-link.ts`) for `start` / `complete` while still exposing status and unlink via `LinksFn`.
 2. **Surface the linked status** on `GET /me` — update `profile.ts` so `links.<provider>` appears in the response.
 3. **Add a typed client** in `src/shared/services/userApi.ts` (`getXLink`, `putXLink`, `deleteXLink`).
-4. **UI** — add controls in `src/pages/ProfileSettings.tsx` under a new section; follow the ArcTracker section's layout.
+4. **UI** — add controls in the Profile area under a new section; follow the ArcTracker / Embark section layout in `src/pages/profile/`.
 5. **KMS grants** — `linksFn` already has `grantEncryptDecrypt` on the CMK. If a *new* Lambda (e.g. a background sync job) needs to read these tokens, explicitly grant it in `infra/lib/raider-tools-stack.ts` and use the same `EncryptionContext`.
 6. **Background refresh** (optional) — if the token needs periodic refresh (OAuth refresh tokens), create an EventBridge-scheduled Lambda that reads the encrypted row, performs the refresh against the provider, and writes the new ciphertext back. Reuse `encryptToken` / `decryptToken` — never decrypt outside a Lambda that needs the plaintext.
+
+Embark-specific notes:
+- The stored ciphertext is the **raw token JSON response** from Embark, not just the access token string.
+- The `LINK#embark` row also stores unencrypted derived metadata needed for UI and scheduling: `provider`, `expiresAt`, `linkedAt`, `profileFetchedAt`, and `cachedProfile`.
+- Embark request headers (`User-Agent`, `x-embark-manifest-id`) are operational config stored outside DynamoDB in SSM Parameter Store; they are not per-user state.
 
 ### 5.3 Adding fields to an existing state domain
 - Add the field to the domain's `State` interface in `stores.ts`.
@@ -330,8 +353,10 @@ Server / infra:
 - `infra/lib/raider-tools-auth-cert-stack.ts` — us-east-1 ACM cert for `auth.raider-tools.app` (Cognito custom domain requirement).
 - `infra/lambda/profile.ts` — `/me` handler (profile + migration flag).
 - `infra/lambda/links.ts` — `/me/links/{provider}` handler (linked-account tokens).
+- `infra/lambda/embark-link.ts` — JWT-protected Embark OAuth start/complete flow.
 - `infra/lambda/state.ts` — `/me/state/{domain}` + `/me/migrate` (per-user app state + optimistic concurrency).
 - `infra/lambda/_lib/envelope.ts` — KMS envelope encrypt/decrypt helpers.
+- `infra/lambda/_lib/embark.ts` — Embark OAuth exchange, `/v1/shared/profile`, and SSM-backed request-config helpers.
 - `infra/lambda/_lib/http.ts` — shared JSON/CORS helpers used by all three handlers.
 
 Client:
@@ -339,9 +364,10 @@ Client:
 - `src/shared/state/stores.ts` — concrete domain stores + registry + flush hooks + `useStore` hook.
 - `src/shared/state/hydration.ts` — `runPostSignInSync()`, `runSignOutWipe()`, `LEGACY_KEYS`.
 - `src/shared/services/userApi.ts` — typed client for `/me` and `/me/links/*`.
+- `src/shared/hooks/useEmbarkLinkStatus.ts` — Embark link-status loader with optional polling.
 - `src/shared/auth/tokenLink.ts` — local/remote backends for the ArcTracker integration.
 - `src/shared/context/AuthContext.tsx` — ArcTracker *link* context, backed by `tokenLink.ts`.
 - `src/shared/components/SignInNudge.tsx` — anonymous-mode banner.
-- `src/pages/ProfileSettings.tsx` — linked-account controls (ArcTracker today).
+- `src/pages/profile/ArcTrackerSection.tsx`, `src/pages/profile/EmbarkSection.tsx` — linked-account controls.
 
 For anything about how the user authenticates, including `CognitoAuthContext`, the Discord bridge, custom-auth triggers, or the `IDP#*` / `NONCE#*` rows, go to `docs/Authentication.md`. When in doubt: check the tests in `src/shared/state/__tests__/` — they are the canonical examples of expected behavior.

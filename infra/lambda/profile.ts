@@ -25,6 +25,7 @@ import {
     jwtEmail,
     parseJsonBody,
 } from "./_lib/http";
+import { computeCountdownMinutes, type EmbarkProfile } from "./_lib/embark";
 
 const ddb = DynamoDBDocumentClient.from(new DynamoDBClient({}));
 
@@ -83,6 +84,9 @@ async function handleGet(
     const profile = items.find(i => i.sk === "PROFILE");
     const arc = items.find(i => i.sk === "LINK#arctracker");
     const embark = items.find(i => i.sk === "LINK#embark");
+    const embarkExpiresAt =
+        typeof embark?.expiresAt === "string" ? embark.expiresAt : null;
+    const embarkCountdownMinutes = computeCountdownMinutes(embarkExpiresAt);
 
     if (!profile) {
         // First-touch profile creation for email/password signups (which
@@ -121,7 +125,18 @@ async function handleGet(
                     validatedAt: arc.validatedAt ?? null,
                 }
                 : { linked: false },
-            embark: { linked: !!embark },
+            embark: embark
+                ? {
+                    linked: true,
+                    provider: embark.provider ?? null,
+                    expiresAt: embarkExpiresAt,
+                    linkedAt: embark.linkedAt ?? null,
+                    profileFetchedAt: embark.profileFetchedAt ?? null,
+                    expired: embarkCountdownMinutes !== null ? embarkCountdownMinutes <= 0 : false,
+                    countdownMinutes: embarkCountdownMinutes,
+                    profile: (embark.cachedProfile ?? null) as EmbarkProfile | null,
+                }
+                : { linked: false },
         },
     }, origin);
 }

@@ -39,6 +39,7 @@ import * as iam from "aws-cdk-lib/aws-iam";
 import * as lambda from "aws-cdk-lib/aws-lambda";
 import * as nodeLambda from "aws-cdk-lib/aws-lambda-nodejs";
 import * as secretsmanager from "aws-cdk-lib/aws-secretsmanager";
+import * as ssm from "aws-cdk-lib/aws-ssm";
 import * as acm from "aws-cdk-lib/aws-certificatemanager";
 import * as route53 from "aws-cdk-lib/aws-route53";
 import * as route53Targets from "aws-cdk-lib/aws-route53-targets";
@@ -182,6 +183,27 @@ export class RaiderToolsStack extends cdk.Stack {
                 stateSigningKey: cdk.SecretValue.unsafePlainText("PLACEHOLDER"),
             },
         });
+
+        const embarkOauthSecret = new secretsmanager.Secret(this, "EmbarkOAuthSecret", {
+            secretName: "raider-tools/embark/oauth",
+            description: "Embark OAuth client secret",
+            secretObjectValue: {
+                clientSecret: cdk.SecretValue.unsafePlainText("PLACEHOLDER"),
+            },
+        });
+
+        const embarkManifestParamName = "/raider-tools/embark/manifest-id";
+        const embarkUserAgentParamName = "/raider-tools/embark/user-agent";
+        const embarkManifestParam = ssm.StringParameter.fromStringParameterName(
+            this,
+            "EmbarkManifestParam",
+            embarkManifestParamName,
+        );
+        const embarkUserAgentParam = ssm.StringParameter.fromStringParameterName(
+            this,
+            "EmbarkUserAgentParam",
+            embarkUserAgentParamName,
+        );
 
         // -----------------------------------------------------------------
         // Cognito custom-auth triggers (Discord-bridged passwordless).
@@ -405,6 +427,25 @@ export class RaiderToolsStack extends cdk.Stack {
         this.userTable.grantReadWriteData(linksFn);
         this.kmsKey.grantEncryptDecrypt(linksFn);
 
+        const embarkLinkFn = this.makeLambda("EmbarkLinkFn", "embark-link.ts", {
+            timeout: cdk.Duration.seconds(15),
+            memorySize: 256,
+            environment: {
+                USER_TABLE_NAME: this.userTable.tableName,
+                KMS_KEY_ID: this.kmsKey.keyId,
+                ALLOWED_ORIGINS: props.allowedOrigins.join(","),
+                EMBARK_OAUTH_SECRET_ARN: embarkOauthSecret.secretArn,
+                EMBARK_MANIFEST_PARAM_NAME: embarkManifestParam.parameterName,
+                EMBARK_USER_AGENT_PARAM_NAME: embarkUserAgentParam.parameterName,
+                EMBARK_LOOPBACK_REDIRECT_URI: "http://127.0.0.1:49176",
+            },
+        });
+        this.userTable.grantReadWriteData(embarkLinkFn);
+        this.kmsKey.grantEncryptDecrypt(embarkLinkFn);
+        embarkOauthSecret.grantRead(embarkLinkFn);
+        embarkManifestParam.grantRead(embarkLinkFn);
+        embarkUserAgentParam.grantRead(embarkLinkFn);
+
         const stateFn = this.makeLambda("StateFn", "state.ts", {
             timeout: cdk.Duration.seconds(10),
             memorySize: 256,
@@ -549,6 +590,9 @@ export class RaiderToolsStack extends cdk.Stack {
         const stateIntegration = new integrations.HttpLambdaIntegration(
             "StateIntegration", stateFn,
         );
+        const embarkLinkIntegration = new integrations.HttpLambdaIntegration(
+            "EmbarkLinkIntegration", embarkLinkFn,
+        );
         this.httpApi.addRoutes({
             path: "/me/state/{domain}",
             methods: [
@@ -565,6 +609,18 @@ export class RaiderToolsStack extends cdk.Stack {
             integration: stateIntegration,
             authorizer: jwtAuthorizer,
         });
+        this.httpApi.addRoutes({
+            path: "/me/links/embark/start",
+            methods: [apigwv2.HttpMethod.POST],
+            integration: embarkLinkIntegration,
+            authorizer: jwtAuthorizer,
+        });
+        this.httpApi.addRoutes({
+            path: "/me/links/embark/complete",
+            methods: [apigwv2.HttpMethod.POST],
+            integration: embarkLinkIntegration,
+            authorizer: jwtAuthorizer,
+        });
 
         // -----------------------------------------------------------------
         // Outputs.
@@ -578,6 +634,9 @@ export class RaiderToolsStack extends cdk.Stack {
         new cdk.CfnOutput(this, "UserSecretsKeyArn", { value: this.kmsKey.keyArn });
         new cdk.CfnOutput(this, "ScheduleBucketName", { value: scheduleBucket.bucketName });
         new cdk.CfnOutput(this, "DiscordCallbackUrl", { value: `${apiOrigin}/auth/discord/callback` });
+        new cdk.CfnOutput(this, "EmbarkOAuthSecretArn", { value: embarkOauthSecret.secretArn });
+        new cdk.CfnOutput(this, "EmbarkManifestParamName", { value: embarkManifestParamName });
+        new cdk.CfnOutput(this, "EmbarkUserAgentParamName", { value: embarkUserAgentParamName });
         new cdk.CfnOutput(this, "ScheduleMapEventsUrl", { value: `${apiOrigin}/schedule/map-events.json` });
         new cdk.CfnOutput(this, "ScheduleHealthUrl", { value: `${apiOrigin}/schedule/health.json` });
     }

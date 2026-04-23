@@ -242,6 +242,15 @@ Most development focuses on a single app at a time:
 
 **Note**: Do NOT run `npm run dev` for testing unless needed - user typically runs it continuously in the background. Use `npm run build` to verify changes compile.
 
+### Local API Parity
+
+If you add or change API Lambdas or HTTP routes in `infra/lib/raider-tools-stack.ts`, also update `infra/local/server.ts` in the same change so the route remains testable through the local Vite + `npm run local:api` workflow.
+
+This includes:
+- registering the new route matcher in `infra/local/server.ts`
+- importing the Lambda handler there
+- providing any local-only env fallbacks needed for Secrets Manager, SSM, KMS, or other AWS-backed dependencies
+
 ### Adding a New App
 
 1. Create directory structure:

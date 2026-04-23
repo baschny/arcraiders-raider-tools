@@ -11,7 +11,7 @@
  */
 
 import { NavLink, Outlet } from 'react-router-dom';
-import { Link2, Loader2, LogIn, UserCircle } from 'lucide-react';
+import { KeyRound, Link2, Loader2, LogIn, UserCircle } from 'lucide-react';
 import { useLocale } from '../shared/context/LocaleContext';
 import { useCognitoAuth } from '../shared/context/CognitoAuthContext';
 import '../shared/styles/_profile.scss';
@@ -25,6 +25,7 @@ interface ProfileSection {
 
 const SECTIONS: ProfileSection[] = [
   { path: 'arctracker', labelKey: 'pages.profile.sections.arctracker', icon: Link2 },
+  { path: 'embark', labelKey: 'pages.profile.sections.embark', icon: KeyRound },
 ];
 
 export function Profile() {
@@ -98,4 +99,3 @@ export function Profile() {
     </div>
   );
 }
-

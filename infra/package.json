@@ -18,6 +18,7 @@
     "@aws-sdk/client-kms": "^3.985.0",
     "@aws-sdk/client-s3": "^3.985.0",
     "@aws-sdk/client-secrets-manager": "^3.985.0",
+    "@aws-sdk/client-ssm": "^3.985.0",
     "@aws-sdk/lib-dynamodb": "^3.985.0",
     "aws-cdk-lib": "^2.0.0",
     "constructs": "^10.0.0"

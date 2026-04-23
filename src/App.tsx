@@ -16,6 +16,11 @@ const ArcTrackerSection = lazy(() =>
     default: m.ArcTrackerSection,
   }))
 );
+const EmbarkSection = lazy(() =>
+  import('./pages/profile/EmbarkSection').then((m) => ({
+    default: m.EmbarkSection,
+  }))
+);
 const SignIn = lazy(() =>
   import('./pages/SignIn').then((m) => ({ default: m.SignIn }))
 );
@@ -24,6 +29,9 @@ const SignUp = lazy(() =>
 );
 const AuthCallback = lazy(() =>
   import('./pages/AuthCallback').then((m) => ({ default: m.AuthCallback }))
+);
+const EmbarkCallback = lazy(() =>
+  import('./pages/EmbarkCallback').then((m) => ({ default: m.EmbarkCallback }))
 );
 const ScheduleApp = lazy(() =>
   import('./apps/schedule').then((m) => ({ default: m.ScheduleApp }))
@@ -59,10 +67,12 @@ function App() {
                   <Route path="profile" element={<Profile />}>
                     <Route index element={<Navigate to="arctracker" replace />} />
                     <Route path="arctracker" element={<ArcTrackerSection />} />
+                    <Route path="embark" element={<EmbarkSection />} />
                   </Route>
                   <Route path="auth/sign-in" element={<SignIn />} />
                   <Route path="auth/sign-up" element={<SignUp />} />
                   <Route path="auth/callback" element={<AuthCallback />} />
+                  <Route path="embark-callback" element={<EmbarkCallback />} />
                   <Route path="*" element={<NotFound />} />
                 </Route>
               </Routes>
