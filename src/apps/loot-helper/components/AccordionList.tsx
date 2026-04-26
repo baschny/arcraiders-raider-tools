@@ -19,6 +19,8 @@ import {
 } from '../utils/localization';
 import { useLocale } from '../../../shared/context/LocaleContext';
 
+const FILTERS_EXPANDED_STORAGE_KEY = 'loot-helper:filters-expanded';
+
 interface AccordionListProps {
   itemsMap: ItemsMap;
   goalItemIds: string[];
@@ -36,7 +38,14 @@ export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds,
   const [enabledTypes, setEnabledTypes] = useState<Set<string>>(new Set());
   const [enabledRarities, setEnabledRarities] = useState<Set<ItemRarity>>(new Set());
   const [enabledLocations, setEnabledLocations] = useState<Set<string>>(new Set());
-  const [filtersExpanded, setFiltersExpanded] = useState(true);
+  const [filtersExpanded, setFiltersExpanded] = useState<boolean>(() => {
+    try {
+      const saved = localStorage.getItem(FILTERS_EXPANDED_STORAGE_KEY);
+      return saved === null ? true : JSON.parse(saved);
+    } catch {
+      return true;
+    }
+  });
   const itemRefs = useRef<Map<string, HTMLDivElement>>(new Map());
   const searchInputRef = useRef<HTMLInputElement>(null);
 
@@ -307,7 +316,12 @@ export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds,
   const handleToggleFilters = () => {
     const newExpanded = !filtersExpanded;
     setFiltersExpanded(newExpanded);
-    
+    try {
+      localStorage.setItem(FILTERS_EXPANDED_STORAGE_KEY, JSON.stringify(newExpanded));
+    } catch {
+      // Ignore storage errors (private mode, quota, etc.)
+    }
+
     // Focus search input when expanding
     if (newExpanded) {
       setTimeout(() => {
