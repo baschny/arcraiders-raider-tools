@@ -1,5 +1,58 @@
 {
+  "app": {
+    "name": "ARC Raiders Tools"
+  },
   "shared": {
+    "language": "Language",
+    "loading": "Loading...",
+    "errorPrefix": "Error",
+    "syncError": {
+      "network": {
+        "title": "Can't reach the sync server",
+        "body": "Your recent changes aren't being saved. Check your connection or try again in a moment."
+      },
+      "unauthorized": {
+        "title": "Your session expired",
+        "body": "Please sign in again to continue syncing your progress across devices.",
+        "signIn": "Sign in again"
+      },
+      "server": {
+        "title": "Sync server error (HTTP {status})",
+        "body": "The backend is currently unhealthy. Your recent changes aren't being saved."
+      },
+      "client": {
+        "title": "Sync rejected (HTTP {status})",
+        "body": "The server refused the last write. Your recent changes aren't being saved."
+      },
+      "unknown": {
+        "title": "Sync error",
+        "body": "Your recent changes might not be saved. Please try again."
+      },
+      "retry": "Retry",
+      "details": "Affected: {sources}"
+    },
+    "header": {
+      "switchTool": "Switch Tool",
+      "switchLanguage": "Switch Language",
+      "languageLabel": "Language"
+    },
+    "sidebar": {
+      "title": "Tools",
+      "collapse": "Collapse",
+      "expand": "Expand sidebar",
+      "collapseTitle": "Collapse sidebar",
+      "profile": "Profile"
+    },
+    "userMenu": {
+      "login": "Login",
+      "profile": "Profile",
+      "logout": "Logout",
+      "signedInAs": "Signed in as",
+      "confirmSignOutTitle": "Sign out?",
+      "confirmSignOutBody": "You'll need to sign back in to sync your progress across devices.",
+      "cancel": "Cancel",
+      "confirm": "Sign out"
+    },
     "footer": {
       "thanksPrefix": "数据由 ",
       "thanksMiddle": " 和 ",
@@ -28,6 +81,25 @@
       "lootHelper": "可视化制作链，帮助你在对局中判断该拾取什么。",
       "quartermaster": "在一个页面中规划仓库、装备和藏身处需求。"
     }
+  },
+  "pages": {
+    "notFound": "Page not found",
+    "profileSettings": "Profile Settings",
+    "profile": {
+      "title": "Profile",
+      "sections": {
+        "arctracker": "ArcTracker Integration"
+      }
+    }
+  },
+  "schedule": {
+    "loading": "Loading event schedule...",
+    "noData": "No data available",
+    "previousDay": "Previous day",
+    "nextDay": "Next day",
+    "goToToday": "Go to today",
+    "updated": "Updated",
+    "mapHeader": "Map"
   },
   "quests": {
     "loading": "正在加载任务数据...",
@@ -62,6 +134,8 @@
     "statusLocked": "已锁定",
     "wikiTitle": "在 ARC Raiders Wiki 中打开（新标签页）",
     "wikiLabel": "Wiki",
+    "arcTrackerTitle": "Open on arctracker.io (new tab)",
+    "arcTrackerLabel": "ARCTracker",
     "blueprintsToggleShow": "显示蓝图奖励",
     "blueprintsToggleHide": "隐藏蓝图奖励",
     "blueprintsLabel": "蓝图 ({completed}/{total})",
@@ -69,7 +143,343 @@
     "completedLabel": "已完成",
     "dialogMore": "...以及另外 {count} 个",
     "dialogCancel": "取消",
-    "dialogConfirm": "确认"
+    "dialogConfirm": "确认",
+    "tooltipObjectives": "Objectives",
+    "tooltipObjectivesOneRound": "One round",
+    "tooltipRequirements": "Requirements",
+    "tooltipGranted": "Granted items",
+    "tooltipRewards": "Rewards"
+  },
+  "lootHelper": {
+    "loading": "Loading item data...",
+    "noData": "No item data available",
+    "emptyState": "Add goal items from the sidebar to see what materials you need to loot.",
+    "badges": {
+      "goal": "Goal"
+    },
+    "actions": {
+      "recycle": "Recycle",
+      "salvage": "Salvage"
+    },
+    "sidebar": {
+      "goalItems": "Goal Items",
+      "yourGoals": "Your Goals",
+      "searchPlaceholder": "Search items...",
+      "enableAll": "Enable All",
+      "disableAll": "Disable All",
+      "enableAllTitle": "Enable all goal items",
+      "disableAllTitle": "Disable all goal items",
+      "expandGoals": "Expand goals",
+      "collapseGoals": "Collapse goals",
+      "noGoals": "No goal items yet. Search and add items above.",
+      "enableItem": "Click to enable",
+      "disableItem": "Click to disable",
+      "removeGoal": "Remove from goals",
+      "stashTitle": "Enough in Stash",
+      "stashEnoughTitle": "I already have enough of this material",
+      "expandStash": "Expand stash list",
+      "collapseStash": "Collapse stash list",
+      "noStashItems": "No items marked as in stash yet.",
+      "enableStashItem": "Click to enable this stash item",
+      "disableStashItem": "Click to disable this stash item",
+      "removeStashItem": "Remove from stash"
+    },
+    "filters": {
+      "search": "Search",
+      "searchPlaceholder": "Type to search items...",
+      "type": "Type",
+      "rarity": "Rarity",
+      "location": "Location",
+      "all": "All",
+      "none": "None",
+      "listView": "List View",
+      "gridView": "Grid View"
+    },
+    "results": {
+      "noItemsNeeded": "No items needed for your goals.",
+      "noSearchResults": "No items found matching \"{query}\""
+    },
+    "itemInfo": {
+      "stackSize": "Stack Size:",
+      "weight": "Weight:",
+      "worth": "Worth:",
+      "foundIn": "Found In:",
+      "craftingRecipe": "Crafting Recipe",
+      "recyclesInto": "Recycles Into",
+      "salvagesInto": "Salvages Into"
+    },
+    "hierarchy": {
+      "leaf": "This item is not used in any of your goal items.",
+      "recyclesInto": "recycles into",
+      "salvagesInto": "salvages into",
+      "salvagesIntoSafe": "salvages into (safe)",
+      "usedToBuild": "used to build"
+    },
+    "help": {
+      "openTitle": "How to use",
+      "title": "How to Use",
+      "videoTitle": "Video Tutorial",
+      "videoLink": "Watch a quick walkthrough: How to Use the Looting Helper",
+      "step1Title": "1. Set Your Crafting Goals",
+      "step1Body": "Use the search bar to find and add items you want to craft regularly. This builds your master list of requirements.",
+      "step2Title": "2. Identify Loot Priorities",
+      "step2Body": "The app automatically generates a list of all base resources and materials you need to loot to achieve these crafting goals.",
+      "step3Title": "3. Manage Your Stash",
+      "step3Body": "Mark items as already covered in your stash when you have enough of them. This reduces the list to what you still actually need.",
+      "step4Title": "4. Optimize Your Raids",
+      "step4Body": "Use the list during or after a raid to quickly decide what to keep, salvage, leave behind, or sell.",
+      "exampleTitle": "Example Workflow",
+      "exampleBody": "If you want to craft a specific gadget, add it as a goal. The visualizer shows the full tree from the final item down to base materials like Circuit Boards or Chemicals. When you find a topside item during a raid, you can quickly check which materials it salvages into and decide whether it is worth the inventory space.",
+      "noteLabel": "Note:",
+      "noteBody": "This tool focuses specifically on items needed for crafting. Combine these requirements with whatever you still need for expeditions or projects.",
+      "learningTitle": "Learning the Game",
+      "learningBody": "A key benefit of this tool is learning the relationship between topside items and the materials they provide. As you use it, you develop a better feel for what is valuable and eventually you will know what to keep without needing the tool."
+    },
+    "rarities": {
+      "common": "Common",
+      "uncommon": "Uncommon",
+      "rare": "Rare",
+      "epic": "Epic",
+      "legendary": "Legendary"
+    },
+    "locations": {
+      "arc": "ARC",
+      "commercial": "Commercial",
+      "electrical": "Electrical",
+      "exodus": "Exodus",
+      "industrial": "Industrial",
+      "mechanical": "Mechanical",
+      "medical": "Medical",
+      "nature": "Nature",
+      "oldWorld": "Old World",
+      "raider": "Raider",
+      "residential": "Residential",
+      "security": "Security",
+      "technological": "Technological",
+      "unknown": "Unknown"
+    },
+    "types": {
+      "ammunition": "Ammunition",
+      "assaultRifle": "Assault Rifle",
+      "augment": "Augment",
+      "basicMaterial": "Basic Material",
+      "battleRifle": "Battle Rifle",
+      "blueprint": "Blueprint",
+      "handCannon": "Hand Cannon",
+      "key": "Key",
+      "lmg": "LMG",
+      "misc": "Misc",
+      "modification": "Modification",
+      "nature": "Nature",
+      "pistol": "Pistol",
+      "quickUse": "Quick Use",
+      "recyclable": "Recyclable",
+      "refinedMaterial": "Refined Material",
+      "smg": "SMG",
+      "shield": "Shield",
+      "shotgun": "Shotgun",
+      "sniperRifle": "Sniper Rifle",
+      "special": "Special",
+      "topsideMaterial": "Topside Material",
+      "trinket": "Trinket"
+    }
+  },
+  "quartermaster": {
+    "loading": "Loading item data...",
+    "nav": {
+      "stash": "Stash",
+      "currentLoadout": "Current Loadout",
+      "lists": "Lists",
+      "inRaid": "In Raid",
+      "crafting": "Crafting"
+    },
+    "globalHeader": {
+      "activeLists": "Active Lists",
+      "missingItems": "Missing Items",
+      "recycleActions": "Recycle Actions",
+      "craftSteps": "Craft Steps",
+      "stash": "Stash",
+      "loadout": "Loadout",
+      "never": "Never",
+      "invalid": "Invalid"
+    },
+    "auth": {
+      "verifying": "Verifying authentication...",
+      "requiredTitle": "Authentication Required",
+      "requiredBody": "To use the Quartermaster planner, you need to connect your ArcTracker account.",
+      "goToSettings": "Go to Settings"
+    },
+    "common": {
+      "syncInventory": "Sync Inventory",
+      "syncLoadout": "Sync Loadout",
+      "syncHideout": "Sync Hideout",
+      "syncHideouts": "Sync Hideouts",
+      "unknownError": "Unknown error"
+    },
+    "sync": {
+      "sessionExpired": "Session expired. Please log in again.",
+      "rateLimited": "Rate limited. Please wait a moment and try again.",
+      "failed": "{operation} failed: {message}"
+    },
+    "stash": {
+      "searchPlaceholder": "Search items...",
+      "allCategories": "All Categories",
+      "allRarities": "All Rarities",
+      "showOnlyRecyclable": "Show Only Recyclable",
+      "totalValue": "Total Value",
+      "empty": "No items in stash. Click \"Sync Inventory\" to load your stash.",
+      "noMatches": "No items match your filters.",
+      "missingCount": "{missing}/{required} Missing",
+      "columns": {
+        "icon": "Icon",
+        "item": "Item",
+        "need": "Need",
+        "status": "Status"
+      }
+    },
+    "loadout": {
+      "empty": "No loadout synced. Click \"Sync Loadout\" to load your current equipment.",
+      "backpackContents": "Backpack Contents"
+    },
+    "lists": {
+      "userLists": "User Lists",
+      "hideoutUpgrades": "Hideout Upgrades",
+      "hideoutMaxed": "All hideout modules are at max level.",
+      "syncHideoutHint": "Sync your hideout to see upgrade lists.",
+      "newListPlaceholder": "New list name...",
+      "createList": "Create List",
+      "delete": "Delete",
+      "searchItemsPlaceholder": "Search items to add...",
+      "empty": "Select or create a list to edit.",
+      "hideoutName": "{module} to Level {level}",
+      "hideoutNameNext": "{module} to Level {level} (Next)"
+    },
+    "inRaid": {
+      "keep": "Keep",
+      "recycle": "Recycle",
+      "salvage": "Salvage",
+      "neededForLists": "Needed for Lists",
+      "noListBreakdown": "No list breakdown available",
+      "yields": "Yields",
+      "noYields": "No yields available",
+      "empty": "No loot suggestions. Configure lists to see what items to look for.",
+      "directTargets": "Direct Targets - Bring Home",
+      "craftingMaterials": "Crafting Materials"
+    },
+    "crafting": {
+      "noImpact": "No active target impact",
+      "step1": "Step 1: Recycle First",
+      "step2": "Step 2: Craft Items",
+      "craftItems": "Craft Items",
+      "empty": "No crafting needed. All required items are in your stash!",
+      "columns": {
+        "item": "Item",
+        "name": "Name",
+        "qtyToRecycle": "Qty to Recycle",
+        "yields": "Yields",
+        "why": "Why",
+        "craftTimes": "Craft Times",
+        "totalOutput": "Total Output",
+        "inputsNeeded": "Inputs Needed"
+      }
+    },
+    "itemTooltip": {
+      "complete": "Complete",
+      "needed": "Needed",
+      "stackSize": "Stack Size:",
+      "weight": "Weight:",
+      "value": "Value:",
+      "foundIn": "Found In:",
+      "neededForLists": "Needed for Lists",
+      "neededForCrafting": "Needed for Crafting (Direct / Indirect)",
+      "neededViaRecycleSalvage": "Needed via Recycling / Salvaging",
+      "recycle": "Recycle",
+      "salvage": "Salvage",
+      "craftingRecipe": "Crafting Recipe",
+      "recyclesInto": "Recycles Into",
+      "salvagesInto": "Salvages Into"
+    },
+    "status": {
+      "have": "Have",
+      "missing": "Missing",
+      "recycle": "Recycle",
+      "blueprintLocked": "Blueprint Locked",
+      "benchLevelTooLow": "Bench Level Too Low",
+      "noCraftBench": "No Craft Bench",
+      "craftCycle": "Craft Cycle"
+    },
+    "rarities": {
+      "common": "Common",
+      "uncommon": "Uncommon",
+      "rare": "Rare",
+      "epic": "Epic",
+      "legendary": "Legendary"
+    },
+    "locations": {
+      "arc": "ARC",
+      "commercial": "Commercial",
+      "electrical": "Electrical",
+      "exodus": "Exodus",
+      "industrial": "Industrial",
+      "mechanical": "Mechanical",
+      "medical": "Medical",
+      "nature": "Nature",
+      "oldWorld": "Old World",
+      "raider": "Raider",
+      "residential": "Residential",
+      "security": "Security",
+      "technological": "Technological"
+    },
+    "categories": {
+      "ammunition": "Ammunition",
+      "augment": "Augment",
+      "basicMaterial": "Basic Material",
+      "key": "Key",
+      "misc": "Misc",
+      "modification": "Modification",
+      "nature": "Nature",
+      "quickUse": "Quick Use",
+      "recyclable": "Recyclable",
+      "refinedMaterial": "Refined Material",
+      "smg": "SMG",
+      "shield": "Shield",
+      "topsideMaterial": "Topside Material",
+      "trinket": "Trinket",
+      "weapon": "Weapon"
+    },
+    "types": {
+      "ammunition": "Ammunition",
+      "assaultRifle": "Assault Rifle",
+      "augment": "Augment",
+      "basicMaterial": "Basic Material",
+      "battleRifle": "Battle Rifle",
+      "handCannon": "Hand Cannon",
+      "key": "Key",
+      "lmg": "LMG",
+      "misc": "Misc",
+      "modification": "Modification",
+      "nature": "Nature",
+      "pistol": "Pistol",
+      "quickUse": "Quick Use",
+      "recyclable": "Recyclable",
+      "refinedMaterial": "Refined Material",
+      "smg": "SMG",
+      "shield": "Shield",
+      "shotgun": "Shotgun",
+      "sniperRifle": "Sniper Rifle",
+      "special": "Special",
+      "topsideMaterial": "Topside Material",
+      "trinket": "Trinket"
+    },
+    "benches": {
+      "refiner": "Refiner",
+      "equipmentBench": "Equipment Bench",
+      "explosivesBench": "Explosives Bench",
+      "medStation": "Med Station",
+      "utilityBench": "Utility Bench",
+      "weaponBench": "Weapon Bench",
+      "workbench": "Workbench"
+    }
   },
   "craftCalculator": {
     "loading": "正在加载物品数据...",
