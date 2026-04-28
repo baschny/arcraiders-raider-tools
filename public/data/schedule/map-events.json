@@ -4,7 +4,7 @@
     "format": "Schedule keys are UNIX timestamps (seconds, UTC) at event start; values are event type ids."
   },
   "metadata": {
-    "generatedAt": "2026-04-28T16:41:40.820Z",
+    "generatedAt": "2026-04-28T16:57:52.968Z",
     "sourceFiles": {
       "mapConditionsOverview": "https://arcraiders.com/map-conditions",
       "mapConditionsPerCondition": "https://arcraiders.com/map-conditions/<condition-slug>",
@@ -17,7 +17,7 @@
     },
     "mergedPastEvents": {
       "windowSeconds": 2592000,
-      "now": 1777394500,
+      "now": 1777395472,
       "count": 1139
     },
     "ignoredMapNames": [],

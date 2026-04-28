@@ -1005,6 +1005,63 @@
     "blueprintRewards": []
   },
   {
+    "id": "a_wrench_in_the_works",
+    "name": {
+      "value": "Tekere Sokulan Çomak",
+      "originalEn": "A Wrench in the Works"
+    },
+    "trader": "Celeste",
+    "map": [
+      "the_spaceport"
+    ],
+    "previousQuestIds": [
+      "safe_harbor"
+    ],
+    "nextQuestIds": [],
+    "description": {
+      "value": "Anlaşılan kızgınlık Uzaylimanı'nın kendi yer personeline kadar ulaşmış. Exodus'un tam kalbinde bir isyan körüklenmiş.",
+      "originalEn": "Looks like the resentment ended up reaching the ground staff of the Spaceport itself. A mutiny brewing, right in the heart of the Exodus."
+    },
+    "objectives": [
+      {
+        "value": "Batı kapısı yakınındaki otobüsleri ara",
+        "originalEn": "Search the buses near the western gate"
+      },
+      {
+        "value": "Su Kulelerinde gizlenen sabotaj malzemesi zulasını bul",
+        "originalEn": "Locate the stash of sabotage supplies hidden at the Water Towers"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "mechanical_components",
+        "quantity": 5,
+        "name": {
+          "value": "Mekanik Bileşenler",
+          "originalEn": "Mechanical Components"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/mechanical_components.png"
+      },
+      {
+        "id": "mod_components",
+        "quantity": 3,
+        "name": {
+          "value": "Mod Bileşenleri",
+          "originalEn": "Mod Components"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/mod_components.png"
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
     "id": "after_rain_comes",
     "name": {
       "value": "Yağmur Yağdıktan Sonra",
@@ -1250,6 +1307,69 @@
         },
         "rarity": "Common",
         "imageFilename": "https://cdn.arctracker.io/items/medium_ammo.png"
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "battening_down",
+    "name": {
+      "value": "Zora Hazırlık",
+      "originalEn": "Battening Down"
+    },
+    "trader": "Apollo",
+    "map": [
+      "riven_tide"
+    ],
+    "previousQuestIds": [
+      "off_the_radar"
+    ],
+    "nextQuestIds": [],
+    "description": {
+      "value": "Riven Tides'daki deniz setleri bizi biraz korur diye ummuştuk ancak görünüşe göre kasırgalar burayı da vurmuş.",
+      "originalEn": "We’d hoped the seawalls at Riven Tides might offer us some protection from the elements, but it seems the hurricanes were not kind to this place, either."
+    },
+    "objectives": [
+      {
+        "value": "Deniz seddinde oluşan çatlakların fotoğrafını çek",
+        "originalEn": "Photograph the cracks forming in the seawall"
+      },
+      {
+        "value": "Otel sahilininin yakınındaki sahil şeridinden numune al",
+        "originalEn": "Sample the shoreline near the hotel beach"
+      },
+      {
+        "value": "Kuzeydoğudaki sızdıran yağ borusunu tamir et",
+        "originalEn": "Fix the leaking oil pipe in the northeast"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [
+      "20x Raids"
+    ],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "riven_tides_hotel_keycard_no_107",
+        "quantity": 1,
+        "name": {
+          "value": "Riven Tides Otel Anahtar Kartı No. 107",
+          "originalEn": "Riven Tides Hotel Keycard No. 107"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      },
+      {
+        "id": "smoke_grenade_trap",
+        "quantity": 3,
+        "name": {
+          "value": "Lazer Tuzağı: Sis",
+          "originalEn": "Smoke Grenade Trap"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/smoke_grenade_trap.png"
       }
     ],
     "hasBlueprint": false,
@@ -1620,8 +1740,8 @@
         "originalEn": "Retrieve Celeste’s Journals from the South Swamp Outpost"
       },
       {
-        "value": "Kızıl Göller'e bakan kuzey karakolundan Celeste'in Günlüğü'nü al",
-        "originalEn": "Retrieve Celeste’s Journals from the northern outpost overlooking the Red Lakes"
+        "value": "Doğu Raider Karakolu'ndan Celeste'in Günlüğü'nü al",
+        "originalEn": "Retrieve Celeste’s Journals from Raider Outpost East"
       },
       {
         "value": "Celeste'e 2 Günlük temsil et",
@@ -1884,6 +2004,82 @@
         },
         "rarity": "Rare",
         "imageFilename": "https://cdn.arctracker.io/items/raider_hatch_key.png"
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "collision_course",
+    "name": {
+      "value": "Çarpışma Rotası",
+      "originalEn": "Collision Course"
+    },
+    "trader": "Tian Wen",
+    "map": [],
+    "previousQuestIds": [
+      "safe_passage"
+    ],
+    "nextQuestIds": [],
+    "description": {
+      "value": "Birçok Raider Kuyruklı Yıldızlardan kaçınmasını öğrendi ancak onları düşürüp iç kısımlarına ulaşmasını çok azı biliyor.",
+      "originalEn": "Many Raiders have learned how to dodge a Comet, but far too few know how to bring them down and get at their inner parts."
+    },
+    "objectives": [
+      {
+        "value": "Bir Kuyruklu Yıldız Yok Et",
+        "originalEn": "Destroy a Comet"
+      },
+      {
+        "value": "Tian Wen'e bir Kuyruklu Yıldız Ateşleyicisi teslim et",
+        "originalEn": "Deliver a Comet Igniter to Tian Wen"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "comet_igniter",
+        "quantity": 1,
+        "name": {
+          "value": "Kuyruklu Yıldız Ateşleyicisi",
+          "originalEn": "Comet Igniter"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/comet_igniter.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "canto_i",
+        "quantity": 1,
+        "name": {
+          "value": "Canto I",
+          "originalEn": "Canto I"
+        },
+        "rarity": "Legendary",
+        "imageFilename": ""
+      },
+      {
+        "id": "extended_medium_mag_iii",
+        "quantity": 1,
+        "name": {
+          "value": "Uzatılmış Orta Şarjör III",
+          "originalEn": "Extended Medium Mag III"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/extended_medium_mag_iii.png"
+      },
+      {
+        "id": "muzzle_brake_ii",
+        "quantity": 1,
+        "name": {
+          "value": "Namlu Ağzı Freni II",
+          "originalEn": "Muzzle Brake II"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/muzzle_brake_ii.png"
       }
     ],
     "hasBlueprint": false,
@@ -3633,7 +3829,9 @@
     "previousQuestIds": [
       "furtive_meetings"
     ],
-    "nextQuestIds": [],
+    "nextQuestIds": [
+      "line_in_the_sand"
+    ],
     "description": {
       "value": "Mantikor'dan daha fazla bahsediliyor ve araştırmacılar arasında daha net görüş ayrılıkları mevcut. Gerilimin zamanla arttığını tahmin ediyorum.",
       "originalEn": "More mentions of Mantikor, and more clear signs of dissent among the researchers. I suspect tensions eventually escalated."
@@ -3776,6 +3974,83 @@
         },
         "rarity": "Rare",
         "imageFilename": "https://cdn.arctracker.io/items/sterilized_bandage.png"
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "line_in_the_sand",
+    "name": {
+      "value": "Kumdaki Hat",
+      "originalEn": "Line in the Sand"
+    },
+    "trader": "Celeste",
+    "map": [
+      "buried_city"
+    ],
+    "previousQuestIds": [
+      "last_entry"
+    ],
+    "nextQuestIds": [
+      "safe_harbor"
+    ],
+    "description": {
+      "value": "Stella Montis'ten gelen sabit diskte kapanış belgelerinden daha fazlası varmış. Bazı çok kritik Exodus bileşenlerlerinin taşıma programları da içindeymiş.",
+      "originalEn": "That Stella Montis hard drive contained more than just the shutdown documentation - it also had the transport schedules of some pretty critical Exodus components."
+    },
+    "objectives": [
+      {
+        "value": "Trenin Marano İstasyonu'na ulaşmama nedenini öğren",
+        "originalEn": "Find out why the train never reached Marano Station"
+      },
+      {
+        "value": "Soygunu kimin düzenlediğini öğren",
+        "originalEn": "Find out who orchestrated the robbery"
+      },
+      {
+        "value": "İtici vanaların zulalandığı yeri bul",
+        "originalEn": "Find out where the thruster valves were stashed"
+      },
+      {
+        "value": "Tüccarın yakındaki apartmanının bodrumunu ara",
+        "originalEn": "Search the basement of the merchant’s nearby apartment"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "exodus_modules",
+        "quantity": 2,
+        "name": {
+          "value": "Exodus Modülleri",
+          "originalEn": "Exodus Modules"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/exodus_modules.png"
+      },
+      {
+        "id": "magnetic_accelerator",
+        "quantity": 2,
+        "name": {
+          "value": "Manyetik Hızlandırıcı",
+          "originalEn": "Magnetic Accelerator"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/magnetic_accelerator.png"
+      },
+      {
+        "id": "magnetron",
+        "quantity": 2,
+        "name": {
+          "value": "Mıknatıs Robot",
+          "originalEn": "Magnetron"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/magnetron.png"
       }
     ],
     "hasBlueprint": false,
@@ -4263,6 +4538,8 @@
     ],
     "nextQuestIds": [
       "a_first_foothold",
+      "shoring_up_defenses",
+      "battening_down",
       "a_bad_feeling"
     ],
     "description": {
@@ -4815,11 +5092,7 @@
       "originalEn": "Picking Up The Pieces"
     },
     "trader": "Shani",
-    "map": [
-      "the_spaceport",
-      "buried_city",
-      "dam_battlegrounds"
-    ],
+    "map": [],
     "previousQuestIds": [
       "map_dam_battleground"
     ],
@@ -5109,6 +5382,94 @@
     "blueprintRewards": []
   },
   {
+    "id": "safe_harbor",
+    "name": {
+      "value": "Güvenli Liman",
+      "originalEn": "Safe Harbor"
+    },
+    "trader": "Tian Wen",
+    "map": [
+      "riven_tide"
+    ],
+    "previousQuestIds": [
+      "line_in_the_sand"
+    ],
+    "nextQuestIds": [
+      "a_wrench_in_the_works"
+    ],
+    "description": {
+      "value": "Anlaşılan raydan çıkan tren haberi hızlı yayılmış... Birçok işçi fırsattan istifade değerli teknoloji ürünlerini meraklı gözlerden uzağa zulalamış.",
+      "originalEn": "Seems like news of the train derailment spread fast… And drove many workers to stash some very tasty technology away from prying eyes."
+    },
+    "objectives": [
+      {
+        "value": "Restoranın mutfak personeli tarafından bırakılan ipucunu bul",
+        "originalEn": "Find the clue left by the restaurant kitchen staff"
+      },
+      {
+        "value": "Taslakta çizilen bölgeyi bul",
+        "originalEn": "Find the area portrayed in the sketch"
+      },
+      {
+        "value": "Gömülü parçayı kazarak çıkar",
+        "originalEn": "Dig up the buried part"
+      },
+      {
+        "value": "Tian Wen'e Hassas Yalpa Çemberi'ni teslim et",
+        "originalEn": "Deliver the Precision Gimbal to Tian Wen"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "precision_gimbal",
+        "quantity": 1,
+        "name": {
+          "value": "Hassas Gimbal",
+          "originalEn": "Precision Gimbal"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "surge_coil",
+        "quantity": 1,
+        "name": {
+          "value": "Surge Coil",
+          "originalEn": "Surge Coil"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": ""
+      },
+      {
+        "id": "heavy_gun_parts",
+        "quantity": 1,
+        "name": {
+          "value": "Ağır Silah Parçaları",
+          "originalEn": "Heavy Gun Parts"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/heavy_gun_parts.png"
+      },
+      {
+        "id": "horizontal_grip",
+        "quantity": 1,
+        "name": {
+          "value": "Yatay Tutamaç",
+          "originalEn": "Horizontal Grip"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/horizontal_grip.png"
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
     "id": "safe_passage",
     "name": {
       "value": "Güvenli Geçiş",
@@ -5120,7 +5481,8 @@
       "a_bad_feeling"
     ],
     "nextQuestIds": [
-      "what_goes_around"
+      "what_goes_around",
+      "collision_course"
     ],
     "description": {
       "value": "Shani'nin bir sinyal aldığını duydum. ARC devamlı yeni gelişmelere uyum sağlıyor, eminim bu son uyarıları olmayacaktır. \r\n\r\nEğer silahlanma yarışına girmek istiyorlarsa buyursun gelsinler.",
@@ -5253,6 +5615,94 @@
         },
         "rarity": "Common",
         "imageFilename": ""
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "shoring_up_defenses",
+    "name": {
+      "value": "Savunmayı Desteklemek",
+      "originalEn": "Shoring Up Defenses"
+    },
+    "trader": "Apollo",
+    "map": [
+      "riven_tide"
+    ],
+    "previousQuestIds": [
+      "off_the_radar"
+    ],
+    "nextQuestIds": [],
+    "description": {
+      "value": "Eskiden bu uçsuz bucaksız sahil şeridi tehlike demekti; şimdiyse Paslı Kemer'e ilerleyen yeni tehditleri saptayabileceğimiz tek yer orası.\r\n\r\nO yüzden siperimizi kendimiz kazıp savunmaya dair ne bulursak güçlendireceğiz.",
+      "originalEn": "The wide-open coastline used to mean danger, but now it's the only place we can spot new threats moving into the Rust Belt.\r\n\r\nSo we'll have to make our own cover, and reinforce what few defenses we can find."
+    },
+    "objectives": [
+      {
+        "value": "5 Eşek Arısı Yok Et",
+        "originalEn": "Destroy 5 Wasps"
+      },
+      {
+        "value": "3 Ateş Böceği Yok Et",
+        "originalEn": "Destroy 3 Fireflies"
+      },
+      {
+        "value": "1 ARC Alaşımı kullanarak bir Yığma Avlusu vincinin üzerindeki Raider yapısını güçlendir",
+        "originalEn": "Use 1 ARC Alloy to reinforce the Raider structure on top of any Stacking Yard crane"
+      },
+      {
+        "value": "Oteldeki panjurları kapalı pencerelere tahta çak",
+        "originalEn": "Board up shuttered windows in the hotel"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [
+      "20x Raids"
+    ],
+    "grantedItems": [
+      {
+        "id": "dockmasters_detector",
+        "quantity": 1,
+        "name": {
+          "value": "Liman şefinin dedektörü",
+          "originalEn": "Dockmaster's Detector"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/dockmasters_detector.png"
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "barricade_kit",
+        "quantity": 3,
+        "name": {
+          "value": "Barikat Kiti",
+          "originalEn": "Barricade Kit"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/barricade_kit.png"
+      },
+      {
+        "id": "lure_grenade_trap",
+        "quantity": 3,
+        "name": {
+          "value": "Lazer Tuzağı: Yem",
+          "originalEn": "Lure Grenade Trap"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/lure_grenade_trap.png"
+      },
+      {
+        "id": "seeker_grenade",
+        "quantity": 6,
+        "name": {
+          "value": "Güdümlü Bomba",
+          "originalEn": "Seeker Grenade"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/seeker_grenade.png"
       }
     ],
     "hasBlueprint": false,
@@ -6013,7 +6463,8 @@
     },
     "trader": "Apollo",
     "map": [
-      "dam_battlegrounds"
+      "dam_battlegrounds",
+      "buried_city"
     ],
     "previousQuestIds": [
       "sparks_fly"
@@ -6978,7 +7429,7 @@
         "originalEn": "Start the Security Control Center in the Departure Building"
       },
       {
-        "value": "Geliş Binası'nda güvenlik ihlali izleri olup olmadığını araştır.",
+        "value": "Geliş Binası Veri Ofisi'nde güvenlik ihlali izleri olup olmadığını araştır",
         "originalEn": "Search for any traces of a security breach in the Arrival Building Data Office"
       }
     ],

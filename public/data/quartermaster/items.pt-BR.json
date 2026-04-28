@@ -932,7 +932,7 @@
         "originalEn": "Assessor Matrix"
       },
       "description": "",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/assessor_matrix.png",
       "rarity": "Epic",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -2140,6 +2140,7 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "stackSize": 1,
+      "value": 100,
       "weight": 0.25
     },
     "chemicals": {
@@ -2552,6 +2553,36 @@
       "foundIn": [
         "Medical"
       ]
+    },
+    "crash_mat": {
+      "name": {
+        "value": "Tapete de pouso",
+        "originalEn": "Crash Mat"
+      },
+      "description": "Um dispositivo de pouso de emergência arremessável, para amortecer algumas quedas pesadas",
+      "icon": "",
+      "rarity": "Uncommon",
+      "type": "Quick Use",
+      "category": "Quick Use",
+      "subCategory": "Utility",
+      "craftBench": "utility_bench",
+      "stationLevelRequired": 2,
+      "blueprintLocked": true,
+      "craftQuantity": 1,
+      "recipe": {
+        "durable_cloth": 1,
+        "electrical_components": 1
+      },
+      "recyclesInto": {
+        "fabric": 6,
+        "plastic_parts": 3
+      },
+      "salvagesInto": {
+        "fabric": 4
+      },
+      "stackSize": 5,
+      "value": 1200,
+      "weight": 0.6
     },
     "crude_explosives": {
       "name": {
@@ -3102,6 +3133,23 @@
         "Residential"
       ]
     },
+    "dockmasters_detector": {
+      "name": {
+        "value": "Detector do capitão do porto",
+        "originalEn": "Dockmaster's Detector"
+      },
+      "description": "Estes detectores parecem ser capazes de localizar objetos estranhos enterrados nas areias ao redor de Riven Tides, embora sua forma exata de funcionamento seja desconhecida.",
+      "icon": "https://cdn.arctracker.io/items/dockmasters_detector.png",
+      "rarity": "Uncommon",
+      "type": "Quick Use",
+      "category": "Quick Use",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "stackSize": 1,
+      "value": 1000,
+      "weight": 1
+    },
     "dodgers_note": {
       "name": {
         "value": "Bilhete do Dodger",
@@ -3116,7 +3164,7 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "stackSize": 1,
-      "value": 0,
+      "value": 100,
       "weight": 0.5
     },
     "dog_collar": {
@@ -3320,7 +3368,7 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "stackSize": 1,
-      "value": 0,
+      "value": 100,
       "weight": 0
     },
     "electrical_components": {
@@ -3443,7 +3491,7 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "stackSize": 1,
-      "value": 0,
+      "value": 100,
       "weight": 0.5
     },
     "esr_analyzer": {
@@ -3460,6 +3508,7 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "stackSize": 1,
+      "value": 100,
       "weight": 0.25
     },
     "exodus_modules": {
@@ -3503,6 +3552,7 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "stackSize": 1,
+      "value": 100,
       "weight": 0.25
     },
     "expired_pasta": {
@@ -4263,6 +4313,7 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "stackSize": 1,
+      "value": 100,
       "weight": 0.25
     },
     "first_wave_rations": {
@@ -4279,6 +4330,7 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "stackSize": 1,
+      "value": 100,
       "weight": 0.25
     },
     "first_wave_tape": {
@@ -4295,6 +4347,7 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "stackSize": 1,
+      "value": 100,
       "weight": 0.25
     },
     "flame_spray": {
@@ -4383,7 +4436,7 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "stackSize": 1,
-      "value": 0,
+      "value": 100,
       "weight": 0.25
     },
     "fossilized_lightning": {
@@ -5181,7 +5234,7 @@
     },
     "hullcracker_iv": {
       "name": {
-        "value": "Quebra-Cascos IV",
+        "value": "Quebra-Casco IV",
         "originalEn": "Hullcracker IV"
       },
       "description": "Dispara projéteis explosivos que só detonam ao atingir ARC.",
@@ -5816,6 +5869,23 @@
         "Nature"
       ]
     },
+    "leviathans_crown_ship_model": {
+      "name": {
+        "value": "Modelo de navio \"Leviathan's Crown\"",
+        "originalEn": "\"Leviathan's Crown\" Ship Model"
+      },
+      "description": "Uma visão majestosa em qualquer era, este feroz navio mercante é indiferente aos benefícios aerodinâmicos da tecnologia de fibra de vidro.",
+      "icon": "https://cdn.arctracker.io/items/leviathans_crown_ship_model.png",
+      "rarity": "Legendary",
+      "type": "Trinket",
+      "category": "Trinket",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "stackSize": 1,
+      "value": 10000,
+      "weight": 0.5
+    },
     "library_book": {
       "name": {
         "value": "Livro",
@@ -5830,7 +5900,7 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "stackSize": 1,
-      "value": 0,
+      "value": 100,
       "weight": 0.5
     },
     "lidar_scanner": {
@@ -5847,6 +5917,7 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "stackSize": 1,
+      "value": 100,
       "weight": 0.25
     },
     "light_ammo": {
@@ -6333,7 +6404,7 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "stackSize": 1,
-      "value": 0,
+      "value": 100,
       "weight": 0.5
     },
     "major_aivas_patch": {
@@ -6350,6 +6421,7 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "stackSize": 1,
+      "value": 100,
       "weight": 0.25
     },
     "matriarch_reactor": {
@@ -6639,6 +6711,7 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "stackSize": 1,
+      "value": 100,
       "weight": 0.25
     },
     "moss": {
@@ -6910,6 +6983,7 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "stackSize": 1,
+      "value": 100,
       "weight": 0.25
     },
     "official_shutdown_documentation": {
@@ -6926,7 +7000,7 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "stackSize": 1,
-      "value": 0,
+      "value": 100,
       "weight": 0.5
     },
     "oil": {
@@ -6969,7 +7043,7 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "stackSize": 1,
-      "value": 0,
+      "value": 100,
       "weight": 0.25
     },
     "olives": {
@@ -7361,7 +7435,7 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "stackSize": 1,
-      "value": 0,
+      "value": 100,
       "weight": 0.5
     },
     "poster_of_natural_wonders": {
@@ -7495,6 +7569,52 @@
         "Exodus"
       ]
     },
+    "powered_descender": {
+      "name": {
+        "value": "Descensor motorizado",
+        "originalEn": "Powered Descender"
+      },
+      "description": "Reduz a velocidade de queda quando usado no ar, mas precisa de um tempo de ativação antes de atingir força total. Desliga quando fica sem energia",
+      "icon": "https://cdn.arctracker.io/items/powered_descender.png",
+      "rarity": "Epic",
+      "type": "Quick Use",
+      "category": "Quick Use",
+      "subCategory": "Utility",
+      "craftBench": "utility_bench",
+      "stationLevelRequired": 3,
+      "blueprintLocked": true,
+      "craftQuantity": 1,
+      "recipe": {
+        "power_rod": 1
+      },
+      "recyclesInto": {
+        "advanced_electrical_components": 1,
+        "arc_circuitry": 2
+      },
+      "salvagesInto": {
+        "advanced_electrical_components": 1
+      },
+      "stackSize": 1,
+      "value": 10000,
+      "weight": 5
+    },
+    "precision_gimbal": {
+      "name": {
+        "value": "Gimbal de Precisão",
+        "originalEn": "Precision Gimbal"
+      },
+      "description": "",
+      "icon": "",
+      "rarity": "Common",
+      "type": "Trinket",
+      "category": "Trinket",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "stackSize": 1,
+      "value": 100,
+      "weight": 0.5
+    },
     "prickly_pear": {
       "name": {
         "value": "Figo da Índia",
@@ -7516,6 +7636,7 @@
       },
       "stackSize": 10,
       "value": 640,
+      "weight": 0.2,
       "foundIn": [
         "Nature"
       ]
@@ -7561,7 +7682,7 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "stackSize": 1,
-      "value": 0,
+      "value": 100,
       "weight": 0
     },
     "projector": {
@@ -8150,6 +8271,23 @@
       "value": 1000,
       "weight": 0.8
     },
+    "riven_tides_hotel_keycard_no_107": {
+      "name": {
+        "value": "Cartão-chave do Hotel Riven Tides nº 107",
+        "originalEn": "Riven Tides Hotel Keycard No. 107"
+      },
+      "description": "Destranca a porta de uma das muitas suítes do Panorama Azzurro em Riven Tides",
+      "icon": "",
+      "rarity": "Common",
+      "type": "Key",
+      "category": "Key",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "stackSize": 1,
+      "value": 100,
+      "weight": 0.5
+    },
     "rocket_thruster": {
       "name": {
         "value": "Propulsor de Foguete",
@@ -8732,7 +8870,7 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "stackSize": 1,
-      "value": 0,
+      "value": 100,
       "weight": 0.5
     },
     "secret_meeting_info": {
@@ -8749,7 +8887,7 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "stackSize": 1,
-      "value": 0,
+      "value": 100,
       "weight": 0.5
     },
     "seeker_grenade": {
@@ -9278,6 +9416,23 @@
         "Security"
       ]
     },
+    "sirena_dorata_ship_model": {
+      "name": {
+        "value": "Modelo de navio \"Sirena Dorata\"",
+        "originalEn": "\"Sirena Dorata\" Ship Model"
+      },
+      "description": "Com o sol mediterrâneo brilhando em seu casco, este iate vibrante é a personificação atemporal do esplendor das águas salgadas.",
+      "icon": "https://cdn.arctracker.io/items/sirena_dorata_ship_model.png",
+      "rarity": "Epic",
+      "type": "Trinket",
+      "category": "Trinket",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "stackSize": 1,
+      "value": 7000,
+      "weight": 0.5
+    },
     "smoke_grenade": {
       "name": {
         "value": "Granada de Fumaça",
@@ -9741,7 +9896,7 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "stackSize": 1,
-      "value": 0,
+      "value": 100,
       "weight": 0.5
     },
     "statuette": {
@@ -10283,6 +10438,35 @@
       "value": 5000,
       "weight": 3
     },
+    "tactical_mk3_smoke": {
+      "name": {
+        "value": "Tático Mk. 3 (Fumaça)",
+        "originalEn": "Tactical Mk. 3 (Smoke)"
+      },
+      "description": "Uma versão aprimorada do aumento Tático MK. 2, adicionando capacidade expandida em todos os aspectos. Quando o Escudo quebra, aciona uma pequena granada de fumaça. Tem tempo de recarga fixo.",
+      "icon": "https://cdn.arctracker.io/items/tactical_mk3_smoke.png",
+      "rarity": "Epic",
+      "type": "Augment",
+      "category": "Augment",
+      "craftBench": "equipment_bench",
+      "stationLevelRequired": 3,
+      "blueprintLocked": true,
+      "craftQuantity": 1,
+      "recipe": {
+        "advanced_electrical_components": 2,
+        "processor": 3
+      },
+      "recyclesInto": {
+        "advanced_electrical_components": 1,
+        "processor": 1
+      },
+      "salvagesInto": {
+        "electrical_components": 2
+      },
+      "stackSize": 1,
+      "value": 5000,
+      "weight": 4
+    },
     "tagging_grenade": {
       "name": {
         "value": "Granada de Marcação",
@@ -10816,6 +11000,24 @@
       "value": 1000,
       "weight": 0.3
     },
+    "turbine_compressor": {
+      "name": {
+        "value": "Compressor de turbina",
+        "originalEn": "Turbine Compressor"
+      },
+      "description": "",
+      "icon": "",
+      "rarity": "Epic",
+      "type": "Recyclable",
+      "category": "Recyclable",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "stackSize": 3,
+      "foundIn": [
+        "ARC"
+      ]
+    },
     "turbo_pump": {
       "name": {
         "value": "Turbobomba",
@@ -10842,6 +11044,23 @@
       "foundIn": [
         "Exodus"
       ]
+    },
+    "twilight_compass_ship_model": {
+      "name": {
+        "value": "Modelo de navio \"Twilight Compass\"",
+        "originalEn": "\"Twilight Compass\" Ship Model"
+      },
+      "description": "Um promissor cheio de espírito, este bimastro é conhecido por navegar ligeirissimamente além do horizonte.",
+      "icon": "https://cdn.arctracker.io/items/twilight_compass_ship_model.png",
+      "rarity": "Uncommon",
+      "type": "Trinket",
+      "category": "Trinket",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "stackSize": 1,
+      "value": 1000,
+      "weight": 0.5
     },
     "unusable_weapon": {
       "name": {
@@ -10876,7 +11095,7 @@
         "originalEn": "Vaporizer Regulator"
       },
       "description": "",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/vaporizer_regulator.png",
       "rarity": "Epic",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -10915,6 +11134,23 @@
         "Residential",
         "Commercial"
       ]
+    },
+    "velocity_ship_model": {
+      "name": {
+        "value": "Modelo de navio \"Velocity\"",
+        "originalEn": "\"Velocity\" Ship Model"
+      },
+      "description": "Otimizado para o desempenho, esta maravilha da tecnologia realmente espera que você não estivesse planejando levar um almoço particularmente elaborado.",
+      "icon": "https://cdn.arctracker.io/items/velocity_ship_model.png",
+      "rarity": "Rare",
+      "type": "Trinket",
+      "category": "Trinket",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "stackSize": 1,
+      "value": 3000,
+      "weight": 0.5
     },
     "venator_i": {
       "name": {
@@ -11430,6 +11666,51 @@
         "Mechanical",
         "Industrial"
       ]
+    },
+    "white_flag": {
+      "name": {
+        "value": "Bandeira Branca",
+        "originalEn": "White Flag"
+      },
+      "description": "Uma bandeira branca posicionável",
+      "icon": "",
+      "rarity": "Uncommon",
+      "type": "Quick Use",
+      "category": "Quick Use",
+      "stationLevelRequired": 1,
+      "blueprintLocked": true,
+      "craftQuantity": 1,
+      "recipe": {
+        "fabric": 10,
+        "plastic_parts": 3
+      },
+      "recyclesInto": {
+        "fabric": 5,
+        "plastic_parts": 1
+      },
+      "salvagesInto": {
+        "fabric": 3
+      },
+      "stackSize": 5,
+      "value": 640,
+      "weight": 0.2
+    },
+    "wind_sprite_ship_model": {
+      "name": {
+        "value": "Modelo de navio \"Wind Sprite\"",
+        "originalEn": "\"Wind Sprite\" Ship Model"
+      },
+      "description": "Imperturbável diante de seus irmãos maiores, este ágil monomastro é conhecido por enfrentar até as ondas ligeiramente acima da média.",
+      "icon": "https://cdn.arctracker.io/items/wind_sprite_ship_model.png",
+      "rarity": "Common",
+      "type": "Trinket",
+      "category": "Trinket",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "stackSize": 1,
+      "value": 1000,
+      "weight": 0.5
     },
     "wires": {
       "name": {

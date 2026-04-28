@@ -1193,7 +1193,7 @@
     },
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": null,
+    "imageFilename": "https://cdn.arctracker.io/items/assessor_matrix.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -2815,7 +2815,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": null,
+    "value": 100,
     "weightKg": 0.25,
     "stackSize": 1,
     "recyclesInto": null,
@@ -3417,6 +3417,64 @@
     "isWeapon": null,
     "foundIn": [
       "Medical"
+    ]
+  },
+  {
+    "id": "crash_mat_blueprint",
+    "name": {
+      "value": "着陆垫蓝图",
+      "originalEn": "Crash Mat Blueprint"
+    },
+    "description": {
+      "en": "一种可投掷的紧急着陆装置，用于缓冲部分重着陆冲击"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "crash_mat",
+    "name": {
+      "value": "着陆垫",
+      "originalEn": "Crash Mat"
+    },
+    "description": {
+      "en": "一种可投掷的紧急着陆装置，用于缓冲部分重着陆冲击"
+    },
+    "type": "Quick Use",
+    "rarity": "Uncommon",
+    "value": 1200,
+    "weightKg": 0.6,
+    "stackSize": 5,
+    "recyclesInto": {
+      "fabric": 6,
+      "plastic_parts": 3
+    },
+    "recipe": {
+      "durable_cloth": 1,
+      "electrical_components": 1
+    },
+    "salvagesInto": {
+      "fabric": 4
+    },
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
     ]
   },
   {
@@ -4120,6 +4178,31 @@
     ]
   },
   {
+    "id": "dockmasters_detector",
+    "name": {
+      "value": "码头主管的探测器",
+      "originalEn": "Dockmaster's Detector"
+    },
+    "description": {
+      "en": "这些探测器似乎能够定位埋藏在Riven Tides周围沙地中的外来物体，尽管它们的确切运作方式尚不清楚。"
+    },
+    "type": "Quick Use",
+    "rarity": "Uncommon",
+    "value": 1000,
+    "weightKg": 1.0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/dockmasters_detector.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "dodgers_note",
     "name": {
       "value": "多杰的笔记",
@@ -4130,7 +4213,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": 0,
+    "value": 100,
     "weightKg": 0.5,
     "stackSize": 1,
     "recyclesInto": null,
@@ -4391,7 +4474,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": 0,
+    "value": 100,
     "weightKg": 0,
     "stackSize": 1,
     "recyclesInto": null,
@@ -4562,7 +4645,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": 0,
+    "value": 100,
     "weightKg": 0.5,
     "stackSize": 1,
     "recyclesInto": null,
@@ -4587,7 +4670,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": null,
+    "value": 100,
     "weightKg": 0.25,
     "stackSize": 1,
     "recyclesInto": null,
@@ -4642,7 +4725,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": null,
+    "value": 100,
     "weightKg": 0.25,
     "stackSize": 1,
     "recyclesInto": null,
@@ -5754,7 +5837,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": null,
+    "value": 100,
     "weightKg": 0.25,
     "stackSize": 1,
     "recyclesInto": null,
@@ -5779,7 +5862,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": null,
+    "value": 100,
     "weightKg": 0.25,
     "stackSize": 1,
     "recyclesInto": null,
@@ -5804,7 +5887,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": null,
+    "value": 100,
     "weightKg": 0.25,
     "stackSize": 1,
     "recyclesInto": null,
@@ -5917,7 +6000,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": 0,
+    "value": 100,
     "weightKg": 0.25,
     "stackSize": 1,
     "recyclesInto": null,
@@ -7776,6 +7859,31 @@
     ]
   },
   {
+    "id": "leviathans_crown_ship_model",
+    "name": {
+      "value": "「Leviathan's Crown」号船模",
+      "originalEn": "\"Leviathan's Crown\" Ship Model"
+    },
+    "description": {
+      "en": "无论哪个时代都堪称壮观，这艘凶悍的商船对玻璃纤维技术带来的空气动力学优势毫不在意。"
+    },
+    "type": "Trinket",
+    "rarity": "Legendary",
+    "value": 10000,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/leviathans_crown_ship_model.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "library_book",
     "name": {
       "value": "书",
@@ -7786,7 +7894,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": 0,
+    "value": 100,
     "weightKg": 0.5,
     "stackSize": 1,
     "recyclesInto": null,
@@ -7811,7 +7919,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": null,
+    "value": 100,
     "weightKg": 0.25,
     "stackSize": 1,
     "recyclesInto": null,
@@ -8494,7 +8602,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": 0,
+    "value": 100,
     "weightKg": 0.5,
     "stackSize": 1,
     "recyclesInto": null,
@@ -8519,7 +8627,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": null,
+    "value": 100,
     "weightKg": 0.25,
     "stackSize": 1,
     "recyclesInto": null,
@@ -8875,7 +8983,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": null,
+    "value": 100,
     "weightKg": 0.25,
     "stackSize": 1,
     "recyclesInto": null,
@@ -9246,7 +9354,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": null,
+    "value": 100,
     "weightKg": 0.25,
     "stackSize": 1,
     "recyclesInto": null,
@@ -9271,7 +9379,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": 0,
+    "value": 100,
     "weightKg": 0.5,
     "stackSize": 1,
     "recyclesInto": null,
@@ -9325,7 +9433,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": 0,
+    "value": 100,
     "weightKg": 0.25,
     "stackSize": 1,
     "recyclesInto": null,
@@ -9846,7 +9954,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": 0,
+    "value": 100,
     "weightKg": 0.5,
     "stackSize": 1,
     "recyclesInto": null,
@@ -10009,6 +10117,88 @@
     ]
   },
   {
+    "id": "powered_descender_blueprint",
+    "name": {
+      "value": "动力下降器蓝图",
+      "originalEn": "Powered Descender Blueprint"
+    },
+    "description": {
+      "en": "在空中使用时可降低下坠速度，但需要预热时间才能达到全功率。电量耗尽后会关闭"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "powered_descender",
+    "name": {
+      "value": "动力下降器",
+      "originalEn": "Powered Descender"
+    },
+    "description": {
+      "en": "在空中使用时可降低下坠速度，但需要预热时间才能达到全功率。电量耗尽后会关闭"
+    },
+    "type": "Quick Use",
+    "rarity": "Epic",
+    "value": 10000,
+    "weightKg": 5,
+    "stackSize": 1,
+    "recyclesInto": {
+      "advanced_electrical_components": 1,
+      "arc_circuitry": 2
+    },
+    "recipe": {
+      "power_rod": 1
+    },
+    "salvagesInto": {
+      "advanced_electrical_components": 1
+    },
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/powered_descender.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "precision_gimbal",
+    "name": {
+      "value": "精密云台",
+      "originalEn": "Precision Gimbal"
+    },
+    "description": {
+      "en": ""
+    },
+    "type": "Trinket",
+    "rarity": "Common",
+    "value": 100,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "prickly_pear",
     "name": {
       "value": "仙人果（仙人掌果）",
@@ -10020,7 +10210,7 @@
     "type": "Nature",
     "rarity": "Common",
     "value": 640,
-    "weightKg": null,
+    "weightKg": 0.2,
     "stackSize": 10,
     "recyclesInto": {
       "assorted_seeds": 3
@@ -10078,7 +10268,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": 0,
+    "value": 100,
     "weightKg": 0,
     "stackSize": 1,
     "recyclesInto": null,
@@ -10867,6 +11057,31 @@
     ]
   },
   {
+    "id": "riven_tides_hotel_keycard_no_107",
+    "name": {
+      "value": "Riven Tides酒店107号钥匙卡",
+      "originalEn": "Riven Tides Hotel Keycard No. 107"
+    },
+    "description": {
+      "en": "可开启Riven Tides中Panorama Azzurro众多套房之一的房门"
+    },
+    "type": "Key",
+    "rarity": "Common",
+    "value": 100,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "rocket_thruster",
     "name": {
       "value": "火箭推进器",
@@ -11520,7 +11735,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": 0,
+    "value": 100,
     "weightKg": 0.5,
     "stackSize": 1,
     "recyclesInto": null,
@@ -11545,7 +11760,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": 0,
+    "value": 100,
     "weightKg": 0.5,
     "stackSize": 1,
     "recyclesInto": null,
@@ -12331,6 +12546,31 @@
     ]
   },
   {
+    "id": "sirena_dorata_ship_model",
+    "name": {
+      "value": "「Sirena Dorata」号船模",
+      "originalEn": "\"Sirena Dorata\" Ship Model"
+    },
+    "description": {
+      "en": "地中海的阳光在船身上闪烁，这艘鲜艳的游艇是咸水奢华永恒的典范。"
+    },
+    "type": "Trinket",
+    "rarity": "Epic",
+    "value": 7000,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/sirena_dorata_ship_model.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "smoke_grenade_blueprint",
     "name": {
       "value": "烟雾手雷 蓝图",
@@ -12973,7 +13213,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": 0,
+    "value": 100,
     "weightKg": 0.5,
     "stackSize": 1,
     "recyclesInto": null,
@@ -13729,6 +13969,64 @@
     ]
   },
   {
+    "id": "tactical_mk3_smoke_blueprint",
+    "name": {
+      "value": "战术 Mk. 3（烟雾型）蓝图",
+      "originalEn": "Tactical Mk. 3 (Smoke) Blueprint"
+    },
+    "description": {
+      "en": "战术 MK. 2 强化装备的升级版，全面扩展容量。"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_smoke_blueprint.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "tactical_mk3_smoke",
+    "name": {
+      "value": "战术型 Mk. 3（烟雾型）",
+      "originalEn": "Tactical Mk. 3 (Smoke)"
+    },
+    "description": {
+      "en": "战术 MK. 2 强化装备的升级版，全面扩展容量。护盾破裂时，会部署一枚小型烟雾手雷。拥有固定冷却时间。"
+    },
+    "type": "Augment",
+    "rarity": "Epic",
+    "value": 5000,
+    "weightKg": 4,
+    "stackSize": 1,
+    "recyclesInto": {
+      "advanced_electrical_components": 1,
+      "processor": 1
+    },
+    "recipe": {
+      "advanced_electrical_components": 2,
+      "processor": 3
+    },
+    "salvagesInto": {
+      "electrical_components": 2
+    },
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_smoke.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "tagging_grenade_blueprint",
     "name": {
       "value": "标记手榴弹 蓝图",
@@ -14478,6 +14776,31 @@
     ]
   },
   {
+    "id": "turbine_compressor",
+    "name": {
+      "value": "涡轮压缩机",
+      "originalEn": "Turbine Compressor"
+    },
+    "description": {
+      "en": ""
+    },
+    "type": "Recyclable",
+    "rarity": "Epic",
+    "value": null,
+    "weightKg": null,
+    "stackSize": 3,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "ARC"
+    ]
+  },
+  {
     "id": "turbo_pump",
     "name": {
       "value": "涡轮泵",
@@ -14505,6 +14828,31 @@
     "isWeapon": null,
     "foundIn": [
       "Exodus"
+    ]
+  },
+  {
+    "id": "twilight_compass_ship_model",
+    "name": {
+      "value": "「Twilight Compass」号船模",
+      "originalEn": "\"Twilight Compass\" Ship Model"
+    },
+    "description": {
+      "en": "这艘充满活力的双桅新秀，以扬帆驶到地平线之外那么一点点而闻名。"
+    },
+    "type": "Trinket",
+    "rarity": "Uncommon",
+    "value": 1000,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/twilight_compass_ship_model.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
     ]
   },
   {
@@ -14561,7 +14909,7 @@
     },
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": null,
+    "imageFilename": "https://cdn.arctracker.io/items/vaporizer_regulator.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -14592,6 +14940,31 @@
       "Old World",
       "Residential",
       "Commercial"
+    ]
+  },
+  {
+    "id": "velocity_ship_model",
+    "name": {
+      "value": "「Velocity」号船模",
+      "originalEn": "\"Velocity\" Ship Model"
+    },
+    "description": {
+      "en": "为追求性能而优化，这件科技奇迹真心希望你没打算带上一顿特别精致的午餐。"
+    },
+    "type": "Trinket",
+    "rarity": "Rare",
+    "value": 3000,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/velocity_ship_model.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
     ]
   },
   {
@@ -15345,6 +15718,89 @@
     "foundIn": [
       "Mechanical",
       "Industrial"
+    ]
+  },
+  {
+    "id": "white_flag_blueprint",
+    "name": {
+      "value": "白旗蓝图",
+      "originalEn": "White Flag Blueprint"
+    },
+    "description": {
+      "en": "可部署的白旗"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "white_flag",
+    "name": {
+      "value": "白旗",
+      "originalEn": "White Flag"
+    },
+    "description": {
+      "en": "可部署的白旗"
+    },
+    "type": "Quick Use",
+    "rarity": "Uncommon",
+    "value": 640,
+    "weightKg": 0.2,
+    "stackSize": 5,
+    "recyclesInto": {
+      "fabric": 5,
+      "plastic_parts": 1
+    },
+    "recipe": {
+      "fabric": 10,
+      "plastic_parts": 3
+    },
+    "salvagesInto": {
+      "fabric": 3
+    },
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "wind_sprite_ship_model",
+    "name": {
+      "value": "「Wind Sprite」号船模",
+      "originalEn": "\"Wind Sprite\" Ship Model"
+    },
+    "description": {
+      "en": "面对更大的同胞毫不退缩，这艘灵活的单桅帆船以敢于挑战哪怕只是略高于平均水平的海浪而闻名。"
+    },
+    "type": "Trinket",
+    "rarity": "Common",
+    "value": 1000,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/wind_sprite_ship_model.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
     ]
   },
   {

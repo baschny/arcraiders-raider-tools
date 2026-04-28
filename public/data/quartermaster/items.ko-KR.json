@@ -932,7 +932,7 @@
         "originalEn": "Assessor Matrix"
       },
       "description": "",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/assessor_matrix.png",
       "rarity": "Epic",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -2140,6 +2140,7 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "stackSize": 1,
+      "value": 100,
       "weight": 0.25
     },
     "chemicals": {
@@ -2552,6 +2553,36 @@
       "foundIn": [
         "Medical"
       ]
+    },
+    "crash_mat": {
+      "name": {
+        "value": "착지 매트",
+        "originalEn": "Crash Mat"
+      },
+      "description": "무거운 착지를 어느 정도 완화해 주는 투척식 비상 착륙 장치입니다.",
+      "icon": "",
+      "rarity": "Uncommon",
+      "type": "Quick Use",
+      "category": "Quick Use",
+      "subCategory": "Utility",
+      "craftBench": "utility_bench",
+      "stationLevelRequired": 2,
+      "blueprintLocked": true,
+      "craftQuantity": 1,
+      "recipe": {
+        "durable_cloth": 1,
+        "electrical_components": 1
+      },
+      "recyclesInto": {
+        "fabric": 6,
+        "plastic_parts": 3
+      },
+      "salvagesInto": {
+        "fabric": 4
+      },
+      "stackSize": 5,
+      "value": 1200,
+      "weight": 0.6
     },
     "crude_explosives": {
       "name": {
@@ -3102,6 +3133,23 @@
         "Residential"
       ]
     },
+    "dockmasters_detector": {
+      "name": {
+        "value": "도크마스터의 탐지기",
+        "originalEn": "Dockmaster's Detector"
+      },
+      "description": "이 탐지기들은 Riven Tides 주변의 모래에 묻힌 이물질을 찾아낼 수 있는 것으로 보이지만, 정확한 작동 방식은 알려져 있지 않다.",
+      "icon": "https://cdn.arctracker.io/items/dockmasters_detector.png",
+      "rarity": "Uncommon",
+      "type": "Quick Use",
+      "category": "Quick Use",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "stackSize": 1,
+      "value": 1000,
+      "weight": 1
+    },
     "dodgers_note": {
       "name": {
         "value": "다저의 메모",
@@ -3116,7 +3164,7 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "stackSize": 1,
-      "value": 0,
+      "value": 100,
       "weight": 0.5
     },
     "dog_collar": {
@@ -3320,7 +3368,7 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "stackSize": 1,
-      "value": 0,
+      "value": 100,
       "weight": 0
     },
     "electrical_components": {
@@ -3443,7 +3491,7 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "stackSize": 1,
-      "value": 0,
+      "value": 100,
       "weight": 0.5
     },
     "esr_analyzer": {
@@ -3460,6 +3508,7 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "stackSize": 1,
+      "value": 100,
       "weight": 0.25
     },
     "exodus_modules": {
@@ -3503,6 +3552,7 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "stackSize": 1,
+      "value": 100,
       "weight": 0.25
     },
     "expired_pasta": {
@@ -4263,6 +4313,7 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "stackSize": 1,
+      "value": 100,
       "weight": 0.25
     },
     "first_wave_rations": {
@@ -4279,6 +4330,7 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "stackSize": 1,
+      "value": 100,
       "weight": 0.25
     },
     "first_wave_tape": {
@@ -4295,6 +4347,7 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "stackSize": 1,
+      "value": 100,
       "weight": 0.25
     },
     "flame_spray": {
@@ -4383,7 +4436,7 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "stackSize": 1,
-      "value": 0,
+      "value": 100,
       "weight": 0.25
     },
     "fossilized_lightning": {
@@ -5816,6 +5869,23 @@
         "Nature"
       ]
     },
+    "leviathans_crown_ship_model": {
+      "name": {
+        "value": "\"Leviathan's Crown\" 선박 모형",
+        "originalEn": "\"Leviathan's Crown\" Ship Model"
+      },
+      "description": "어느 시대에서나 위풍당당한 광경을 자랑하는 이 사나운 상선은, 유리섬유 기술의 공기역학적 이점에는 무관심하다.",
+      "icon": "https://cdn.arctracker.io/items/leviathans_crown_ship_model.png",
+      "rarity": "Legendary",
+      "type": "Trinket",
+      "category": "Trinket",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "stackSize": 1,
+      "value": 10000,
+      "weight": 0.5
+    },
     "library_book": {
       "name": {
         "value": "책",
@@ -5830,7 +5900,7 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "stackSize": 1,
-      "value": 0,
+      "value": 100,
       "weight": 0.5
     },
     "lidar_scanner": {
@@ -5847,6 +5917,7 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "stackSize": 1,
+      "value": 100,
       "weight": 0.25
     },
     "light_ammo": {
@@ -6333,7 +6404,7 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "stackSize": 1,
-      "value": 0,
+      "value": 100,
       "weight": 0.5
     },
     "major_aivas_patch": {
@@ -6350,6 +6421,7 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "stackSize": 1,
+      "value": 100,
       "weight": 0.25
     },
     "matriarch_reactor": {
@@ -6639,6 +6711,7 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "stackSize": 1,
+      "value": 100,
       "weight": 0.25
     },
     "moss": {
@@ -6910,6 +6983,7 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "stackSize": 1,
+      "value": 100,
       "weight": 0.25
     },
     "official_shutdown_documentation": {
@@ -6926,7 +7000,7 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "stackSize": 1,
-      "value": 0,
+      "value": 100,
       "weight": 0.5
     },
     "oil": {
@@ -6969,7 +7043,7 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "stackSize": 1,
-      "value": 0,
+      "value": 100,
       "weight": 0.25
     },
     "olives": {
@@ -7361,7 +7435,7 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "stackSize": 1,
-      "value": 0,
+      "value": 100,
       "weight": 0.5
     },
     "poster_of_natural_wonders": {
@@ -7495,6 +7569,52 @@
         "Exodus"
       ]
     },
+    "powered_descender": {
+      "name": {
+        "value": "동력 강하기",
+        "originalEn": "Powered Descender"
+      },
+      "description": "공중에서 사용하면 낙하 속도를 줄여 주지만, 최대 출력에 도달하기까지 예열 시간이 필요합니다. 전력이 떨어지면 꺼집니다.",
+      "icon": "https://cdn.arctracker.io/items/powered_descender.png",
+      "rarity": "Epic",
+      "type": "Quick Use",
+      "category": "Quick Use",
+      "subCategory": "Utility",
+      "craftBench": "utility_bench",
+      "stationLevelRequired": 3,
+      "blueprintLocked": true,
+      "craftQuantity": 1,
+      "recipe": {
+        "power_rod": 1
+      },
+      "recyclesInto": {
+        "advanced_electrical_components": 1,
+        "arc_circuitry": 2
+      },
+      "salvagesInto": {
+        "advanced_electrical_components": 1
+      },
+      "stackSize": 1,
+      "value": 10000,
+      "weight": 5
+    },
+    "precision_gimbal": {
+      "name": {
+        "value": "정밀 짐벌",
+        "originalEn": "Precision Gimbal"
+      },
+      "description": "",
+      "icon": "",
+      "rarity": "Common",
+      "type": "Trinket",
+      "category": "Trinket",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "stackSize": 1,
+      "value": 100,
+      "weight": 0.5
+    },
     "prickly_pear": {
       "name": {
         "value": "선인장 열매",
@@ -7516,6 +7636,7 @@
       },
       "stackSize": 10,
       "value": 640,
+      "weight": 0.2,
       "foundIn": [
         "Nature"
       ]
@@ -7561,7 +7682,7 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "stackSize": 1,
-      "value": 0,
+      "value": 100,
       "weight": 0
     },
     "projector": {
@@ -8150,6 +8271,23 @@
       "value": 1000,
       "weight": 0.8
     },
+    "riven_tides_hotel_keycard_no_107": {
+      "name": {
+        "value": "Riven Tides 호텔 키카드 107번",
+        "originalEn": "Riven Tides Hotel Keycard No. 107"
+      },
+      "description": "Riven Tides에 있는 Panorama Azzurro의 여러 스위트룸 중 하나의 문을 엽니다.",
+      "icon": "",
+      "rarity": "Common",
+      "type": "Key",
+      "category": "Key",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "stackSize": 1,
+      "value": 100,
+      "weight": 0.5
+    },
     "rocket_thruster": {
       "name": {
         "value": "로켓 추진기",
@@ -8732,7 +8870,7 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "stackSize": 1,
-      "value": 0,
+      "value": 100,
       "weight": 0.5
     },
     "secret_meeting_info": {
@@ -8749,7 +8887,7 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "stackSize": 1,
-      "value": 0,
+      "value": 100,
       "weight": 0.5
     },
     "seeker_grenade": {
@@ -9278,6 +9416,23 @@
         "Security"
       ]
     },
+    "sirena_dorata_ship_model": {
+      "name": {
+        "value": "\"Sirena Dorata\" 선박 모형",
+        "originalEn": "\"Sirena Dorata\" Ship Model"
+      },
+      "description": "지중해의 햇살이 선체에 반짝이는 이 화려한 요트는, 바닷물의 화려함을 상징하는 영원한 전형이다.",
+      "icon": "https://cdn.arctracker.io/items/sirena_dorata_ship_model.png",
+      "rarity": "Epic",
+      "type": "Trinket",
+      "category": "Trinket",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "stackSize": 1,
+      "value": 7000,
+      "weight": 0.5
+    },
     "smoke_grenade": {
       "name": {
         "value": "연막탄",
@@ -9741,7 +9896,7 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "stackSize": 1,
-      "value": 0,
+      "value": 100,
       "weight": 0.5
     },
     "statuette": {
@@ -10283,6 +10438,35 @@
       "value": 5000,
       "weight": 3
     },
+    "tactical_mk3_smoke": {
+      "name": {
+        "value": "전술 마크 3 (연막)",
+        "originalEn": "Tactical Mk. 3 (Smoke)"
+      },
+      "description": "전술 MK. 2 증강의 업그레이드 버전으로, 전반적인 수용량을 확장합니다. 방어막이 파괴되면 작은 연막탄을 배치합니다. 고정 재사용 대기시간이 있습니다.",
+      "icon": "https://cdn.arctracker.io/items/tactical_mk3_smoke.png",
+      "rarity": "Epic",
+      "type": "Augment",
+      "category": "Augment",
+      "craftBench": "equipment_bench",
+      "stationLevelRequired": 3,
+      "blueprintLocked": true,
+      "craftQuantity": 1,
+      "recipe": {
+        "advanced_electrical_components": 2,
+        "processor": 3
+      },
+      "recyclesInto": {
+        "advanced_electrical_components": 1,
+        "processor": 1
+      },
+      "salvagesInto": {
+        "electrical_components": 2
+      },
+      "stackSize": 1,
+      "value": 5000,
+      "weight": 4
+    },
     "tagging_grenade": {
       "name": {
         "value": "표식 수류탄",
@@ -10816,6 +11000,24 @@
       "value": 1000,
       "weight": 0.3
     },
+    "turbine_compressor": {
+      "name": {
+        "value": "터빈 압축기",
+        "originalEn": "Turbine Compressor"
+      },
+      "description": "",
+      "icon": "",
+      "rarity": "Epic",
+      "type": "Recyclable",
+      "category": "Recyclable",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "stackSize": 3,
+      "foundIn": [
+        "ARC"
+      ]
+    },
     "turbo_pump": {
       "name": {
         "value": "터보 펌프",
@@ -10842,6 +11044,23 @@
       "foundIn": [
         "Exodus"
       ]
+    },
+    "twilight_compass_ship_model": {
+      "name": {
+        "value": "\"Twilight Compass\" 선박 모형",
+        "originalEn": "\"Twilight Compass\" Ship Model"
+      },
+      "description": "기개 넘치는 신예인 이 이마스트선은 수평선을 아주 살짝 넘어 항해하는 것으로 알려져 있다.",
+      "icon": "https://cdn.arctracker.io/items/twilight_compass_ship_model.png",
+      "rarity": "Uncommon",
+      "type": "Trinket",
+      "category": "Trinket",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "stackSize": 1,
+      "value": 1000,
+      "weight": 0.5
     },
     "unusable_weapon": {
       "name": {
@@ -10876,7 +11095,7 @@
         "originalEn": "Vaporizer Regulator"
       },
       "description": "",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/vaporizer_regulator.png",
       "rarity": "Epic",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -10915,6 +11134,23 @@
         "Residential",
         "Commercial"
       ]
+    },
+    "velocity_ship_model": {
+      "name": {
+        "value": "\"Velocity\" 선박 모형",
+        "originalEn": "\"Velocity\" Ship Model"
+      },
+      "description": "성능에 최적화된 이 기술의 결정체는, 당신이 특별히 거창한 점심을 챙길 계획이 아니었기를 진심으로 바랄 것이다.",
+      "icon": "https://cdn.arctracker.io/items/velocity_ship_model.png",
+      "rarity": "Rare",
+      "type": "Trinket",
+      "category": "Trinket",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "stackSize": 1,
+      "value": 3000,
+      "weight": 0.5
     },
     "venator_i": {
       "name": {
@@ -11430,6 +11666,51 @@
         "Mechanical",
         "Industrial"
       ]
+    },
+    "white_flag": {
+      "name": {
+        "value": "백기",
+        "originalEn": "White Flag"
+      },
+      "description": "설치 가능한 백기입니다.",
+      "icon": "",
+      "rarity": "Uncommon",
+      "type": "Quick Use",
+      "category": "Quick Use",
+      "stationLevelRequired": 1,
+      "blueprintLocked": true,
+      "craftQuantity": 1,
+      "recipe": {
+        "fabric": 10,
+        "plastic_parts": 3
+      },
+      "recyclesInto": {
+        "fabric": 5,
+        "plastic_parts": 1
+      },
+      "salvagesInto": {
+        "fabric": 3
+      },
+      "stackSize": 5,
+      "value": 640,
+      "weight": 0.2
+    },
+    "wind_sprite_ship_model": {
+      "name": {
+        "value": "\"Wind Sprite\" 선박 모형",
+        "originalEn": "\"Wind Sprite\" Ship Model"
+      },
+      "description": "더 큰 형제들 앞에서도 굴하지 않으며, 이 민첩한 단마스트선은 평균을 약간 웃도는 파도조차 헤쳐 나가는 것으로 유명하다.",
+      "icon": "https://cdn.arctracker.io/items/wind_sprite_ship_model.png",
+      "rarity": "Common",
+      "type": "Trinket",
+      "category": "Trinket",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "stackSize": 1,
+      "value": 1000,
+      "weight": 0.5
     },
     "wires": {
       "name": {

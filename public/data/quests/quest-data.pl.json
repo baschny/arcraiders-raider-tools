@@ -1005,6 +1005,63 @@
     "blueprintRewards": []
   },
   {
+    "id": "a_wrench_in_the_works",
+    "name": {
+      "value": "Kij w szprychach",
+      "originalEn": "A Wrench in the Works"
+    },
+    "trader": "Celeste",
+    "map": [
+      "the_spaceport"
+    ],
+    "previousQuestIds": [
+      "safe_harbor"
+    ],
+    "nextQuestIds": [],
+    "description": {
+      "value": "Wygląda na to, że frustracja udzieliła się też naziemnej obsłudze portu kosmicznego. W samym sercu Exodusu zanosiło się na bunt.",
+      "originalEn": "Looks like the resentment ended up reaching the ground staff of the Spaceport itself. A mutiny brewing, right in the heart of the Exodus."
+    },
+    "objectives": [
+      {
+        "value": "Przeszukaj autobusy przy zachodniej bramie",
+        "originalEn": "Search the buses near the western gate"
+      },
+      {
+        "value": "Znajdź skrytkę z zapasami sabotażystów ukrytą w wieżach ciśnień",
+        "originalEn": "Locate the stash of sabotage supplies hidden at the Water Towers"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "mechanical_components",
+        "quantity": 5,
+        "name": {
+          "value": "Komponenty mechaniczne",
+          "originalEn": "Mechanical Components"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/mechanical_components.png"
+      },
+      {
+        "id": "mod_components",
+        "quantity": 3,
+        "name": {
+          "value": "Komponenty modyfikacji",
+          "originalEn": "Mod Components"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/mod_components.png"
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
     "id": "after_rain_comes",
     "name": {
       "value": "Po deszczu",
@@ -1250,6 +1307,69 @@
         },
         "rarity": "Common",
         "imageFilename": "https://cdn.arctracker.io/items/medium_ammo.png"
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "battening_down",
+    "name": {
+      "value": "Przygotowując się na najgorsze",
+      "originalEn": "Battening Down"
+    },
+    "trader": "Apollo",
+    "map": [
+      "riven_tide"
+    ],
+    "previousQuestIds": [
+      "off_the_radar"
+    ],
+    "nextQuestIds": [],
+    "description": {
+      "value": "Mieliśmy nadzieję, że falochrony na Rozdartym Wybrzeżu ochronią nas przed żywiołami, ale, jak widać, huragany nie oszczędziły też tego miejsca.",
+      "originalEn": "We’d hoped the seawalls at Riven Tides might offer us some protection from the elements, but it seems the hurricanes were not kind to this place, either."
+    },
+    "objectives": [
+      {
+        "value": "Zrób zdjęcie pęknięciom powstającym na falochronie",
+        "originalEn": "Photograph the cracks forming in the seawall"
+      },
+      {
+        "value": "Pobierz próbki na linii brzegowej w pobliżu hotelowej plaży",
+        "originalEn": "Sample the shoreline near the hotel beach"
+      },
+      {
+        "value": "Napraw przeciekającą rurę naftową na północnym wschodzie.",
+        "originalEn": "Fix the leaking oil pipe in the northeast"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [
+      "20x Raids"
+    ],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "riven_tides_hotel_keycard_no_107",
+        "quantity": 1,
+        "name": {
+          "value": "Karta hotelowa Riven Tides nr 107",
+          "originalEn": "Riven Tides Hotel Keycard No. 107"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      },
+      {
+        "id": "smoke_grenade_trap",
+        "quantity": 3,
+        "name": {
+          "value": "Pułapka z granatem dymnym",
+          "originalEn": "Smoke Grenade Trap"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/smoke_grenade_trap.png"
       }
     ],
     "hasBlueprint": false,
@@ -1620,8 +1740,8 @@
         "originalEn": "Retrieve Celeste’s Journals from the South Swamp Outpost"
       },
       {
-        "value": "Odzyskaj dzienniki Celeste z posterunku północnego nad Jeziorami Czerwonymi",
-        "originalEn": "Retrieve Celeste’s Journals from the northern outpost overlooking the Red Lakes"
+        "value": "Odzyskaj dzienniki Celeste ze wschodniego posterunku łupieżców",
+        "originalEn": "Retrieve Celeste’s Journals from Raider Outpost East"
       },
       {
         "value": "Dostarcz dzienniki (2) Celeste",
@@ -1884,6 +2004,82 @@
         },
         "rarity": "Rare",
         "imageFilename": "https://cdn.arctracker.io/items/raider_hatch_key.png"
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "collision_course",
+    "name": {
+      "value": "Kurs kolizyjny",
+      "originalEn": "Collision Course"
+    },
+    "trader": "Tian Wen",
+    "map": [],
+    "previousQuestIds": [
+      "safe_passage"
+    ],
+    "nextQuestIds": [],
+    "description": {
+      "value": "Wielu łupieżców nauczyło się unikać komety, ale zdecydowanie zbyt mała garstka wie, jak je pokonać i wydobyć z nich części.",
+      "originalEn": "Many Raiders have learned how to dodge a Comet, but far too few know how to bring them down and get at their inner parts."
+    },
+    "objectives": [
+      {
+        "value": "Zniszcz kometę",
+        "originalEn": "Destroy a Comet"
+      },
+      {
+        "value": "Dostarcz zapalnik komety Tian Wen",
+        "originalEn": "Deliver a Comet Igniter to Tian Wen"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "comet_igniter",
+        "quantity": 1,
+        "name": {
+          "value": "Zapalnik Komety",
+          "originalEn": "Comet Igniter"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/comet_igniter.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "canto_i",
+        "quantity": 1,
+        "name": {
+          "value": "Canto I",
+          "originalEn": "Canto I"
+        },
+        "rarity": "Legendary",
+        "imageFilename": ""
+      },
+      {
+        "id": "extended_medium_mag_iii",
+        "quantity": 1,
+        "name": {
+          "value": "Rozszerzony średni magazynek III",
+          "originalEn": "Extended Medium Mag III"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/extended_medium_mag_iii.png"
+      },
+      {
+        "id": "muzzle_brake_ii",
+        "quantity": 1,
+        "name": {
+          "value": "Hamulec wylotowy II",
+          "originalEn": "Muzzle Brake II"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/muzzle_brake_ii.png"
       }
     ],
     "hasBlueprint": false,
@@ -3633,7 +3829,9 @@
     "previousQuestIds": [
       "furtive_meetings"
     ],
-    "nextQuestIds": [],
+    "nextQuestIds": [
+      "line_in_the_sand"
+    ],
     "description": {
       "value": "Kolejne wzmianki o Mantikor i wyraźniejsze oznaki konfliktów wśród naukowców. Podejrzewam, że napięcia ostatecznie się nasiliły.",
       "originalEn": "More mentions of Mantikor, and more clear signs of dissent among the researchers. I suspect tensions eventually escalated."
@@ -3776,6 +3974,83 @@
         },
         "rarity": "Rare",
         "imageFilename": "https://cdn.arctracker.io/items/sterilized_bandage.png"
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "line_in_the_sand",
+    "name": {
+      "value": "Ostateczna granica",
+      "originalEn": "Line in the Sand"
+    },
+    "trader": "Celeste",
+    "map": [
+      "buried_city"
+    ],
+    "previousQuestIds": [
+      "last_entry"
+    ],
+    "nextQuestIds": [
+      "safe_harbor"
+    ],
+    "description": {
+      "value": "Na tym dysku twardym ze Stella Montis znajdowała się nie tylko dokumentacja z zamknięcia, ale też harmonogramy transportowe dotyczące kluczowych części z czasów Exodusu.",
+      "originalEn": "That Stella Montis hard drive contained more than just the shutdown documentation - it also had the transport schedules of some pretty critical Exodus components."
+    },
+    "objectives": [
+      {
+        "value": "Dowiedz się, dlaczego pociąg nigdy nie dojechał na stację Marano",
+        "originalEn": "Find out why the train never reached Marano Station"
+      },
+      {
+        "value": "Dowiedz się, kto zorganizował napad",
+        "originalEn": "Find out who orchestrated the robbery"
+      },
+      {
+        "value": "Dowiedz się, gdzie ukryto zawory silników sterujących",
+        "originalEn": "Find out where the thruster valves were stashed"
+      },
+      {
+        "value": "Przeszukaj piwnicę pobliskiego mieszkania kupca.",
+        "originalEn": "Search the basement of the merchant’s nearby apartment"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "exodus_modules",
+        "quantity": 2,
+        "name": {
+          "value": "Moduły Exodus",
+          "originalEn": "Exodus Modules"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/exodus_modules.png"
+      },
+      {
+        "id": "magnetic_accelerator",
+        "quantity": 2,
+        "name": {
+          "value": "Akcelerator Magnetyczny",
+          "originalEn": "Magnetic Accelerator"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/magnetic_accelerator.png"
+      },
+      {
+        "id": "magnetron",
+        "quantity": 2,
+        "name": {
+          "value": "Magnetron",
+          "originalEn": "Magnetron"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/magnetron.png"
       }
     ],
     "hasBlueprint": false,
@@ -4263,6 +4538,8 @@
     ],
     "nextQuestIds": [
       "a_first_foothold",
+      "shoring_up_defenses",
+      "battening_down",
       "a_bad_feeling"
     ],
     "description": {
@@ -4815,11 +5092,7 @@
       "originalEn": "Picking Up The Pieces"
     },
     "trader": "Shani",
-    "map": [
-      "the_spaceport",
-      "buried_city",
-      "dam_battlegrounds"
-    ],
+    "map": [],
     "previousQuestIds": [
       "map_dam_battleground"
     ],
@@ -5109,6 +5382,94 @@
     "blueprintRewards": []
   },
   {
+    "id": "safe_harbor",
+    "name": {
+      "value": "Bezpieczna przystań",
+      "originalEn": "Safe Harbor"
+    },
+    "trader": "Tian Wen",
+    "map": [
+      "riven_tide"
+    ],
+    "previousQuestIds": [
+      "line_in_the_sand"
+    ],
+    "nextQuestIds": [
+      "a_wrench_in_the_works"
+    ],
+    "description": {
+      "value": "Wieści o wykolejeniu pociągu chyba szybko się rozniosły… I skłoniły wielu pracowników do ukrycia bardzo kuszącej technologii z dala od wścibskich oczu.",
+      "originalEn": "Seems like news of the train derailment spread fast… And drove many workers to stash some very tasty technology away from prying eyes."
+    },
+    "objectives": [
+      {
+        "value": "Znajdź wskazówkę pozostawioną przez pracowników restauracyjnej kuchni",
+        "originalEn": "Find the clue left by the restaurant kitchen staff"
+      },
+      {
+        "value": "Znajdź miejsce przedstawione na rysunku",
+        "originalEn": "Find the area portrayed in the sketch"
+      },
+      {
+        "value": "Wykop zakopaną część",
+        "originalEn": "Dig up the buried part"
+      },
+      {
+        "value": "Dostarcz precyzyjny stabilizator Tian Wen",
+        "originalEn": "Deliver the Precision Gimbal to Tian Wen"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "precision_gimbal",
+        "quantity": 1,
+        "name": {
+          "value": "Precyzyjny gimbal",
+          "originalEn": "Precision Gimbal"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "surge_coil",
+        "quantity": 1,
+        "name": {
+          "value": "Surge Coil",
+          "originalEn": "Surge Coil"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": ""
+      },
+      {
+        "id": "heavy_gun_parts",
+        "quantity": 1,
+        "name": {
+          "value": "Części ciężkiej broni",
+          "originalEn": "Heavy Gun Parts"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/heavy_gun_parts.png"
+      },
+      {
+        "id": "horizontal_grip",
+        "quantity": 1,
+        "name": {
+          "value": "Chwyt Horyzontalny",
+          "originalEn": "Horizontal Grip"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/horizontal_grip.png"
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
     "id": "safe_passage",
     "name": {
       "value": "Bezpieczne przejście",
@@ -5120,7 +5481,8 @@
       "a_bad_feeling"
     ],
     "nextQuestIds": [
-      "what_goes_around"
+      "what_goes_around",
+      "collision_course"
     ],
     "description": {
       "value": "Dotarły do mnie pogłoski, że Shani odebrała jakiś sygnał. ARC stale się adaptuje i coś mi mówi, że to nie będzie ich ostatnie ostrzeżenie.\r\n\r\nNo cóż, jeśli marzy im się wyścig zbrojeń, możemy im go zafundować.",
@@ -5253,6 +5615,94 @@
         },
         "rarity": "Common",
         "imageFilename": ""
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "shoring_up_defenses",
+    "name": {
+      "value": "Obrona na brzegu",
+      "originalEn": "Shoring Up Defenses"
+    },
+    "trader": "Apollo",
+    "map": [
+      "riven_tide"
+    ],
+    "previousQuestIds": [
+      "off_the_radar"
+    ],
+    "nextQuestIds": [],
+    "description": {
+      "value": "Rozległe, odsłonięte wybrzeże kojarzyło się niegdyś z niebezpieczeństwem, ale obecnie to jedyne miejsce, z którego możemy dostrzec nowe zagrożenia nadciągające do Rdzawego Pasa.\r\n\r\nBędziemy musieli zadbać o osłonę i wzmocnić wszelkie znalezione na miejscu struktury obronne.",
+      "originalEn": "The wide-open coastline used to mean danger, but now it's the only place we can spot new threats moving into the Rust Belt.\r\n\r\nSo we'll have to make our own cover, and reinforce what few defenses we can find."
+    },
+    "objectives": [
+      {
+        "value": "Zniszcz osy: 5",
+        "originalEn": "Destroy 5 Wasps"
+      },
+      {
+        "value": "Zniszcz świetliki: 3",
+        "originalEn": "Destroy 3 Fireflies"
+      },
+      {
+        "value": "Użyj 1 szt. stopu ARC, aby wzmocnić konstrukcję łupieżców na szczycie dowolnego żurawia na składowisku.",
+        "originalEn": "Use 1 ARC Alloy to reinforce the Raider structure on top of any Stacking Yard crane"
+      },
+      {
+        "value": "Zabij deskami rozbite okna w hotelu",
+        "originalEn": "Board up shuttered windows in the hotel"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [
+      "20x Raids"
+    ],
+    "grantedItems": [
+      {
+        "id": "dockmasters_detector",
+        "quantity": 1,
+        "name": {
+          "value": "Detektor bosmana portu",
+          "originalEn": "Dockmaster's Detector"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/dockmasters_detector.png"
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "barricade_kit",
+        "quantity": 3,
+        "name": {
+          "value": "Zestaw barykady",
+          "originalEn": "Barricade Kit"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/barricade_kit.png"
+      },
+      {
+        "id": "lure_grenade_trap",
+        "quantity": 3,
+        "name": {
+          "value": "Pułapka z granatem wabik",
+          "originalEn": "Lure Grenade Trap"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/lure_grenade_trap.png"
+      },
+      {
+        "id": "seeker_grenade",
+        "quantity": 6,
+        "name": {
+          "value": "Granat naprowadzany",
+          "originalEn": "Seeker Grenade"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/seeker_grenade.png"
       }
     ],
     "hasBlueprint": false,
@@ -6013,7 +6463,8 @@
     },
     "trader": "Apollo",
     "map": [
-      "dam_battlegrounds"
+      "dam_battlegrounds",
+      "buried_city"
     ],
     "previousQuestIds": [
       "sparks_fly"
@@ -6978,7 +7429,7 @@
         "originalEn": "Start the Security Control Center in the Departure Building"
       },
       {
-        "value": "Poszukaj śladów naruszenia bezpieczeństwa w budynku przylotów",
+        "value": "Poszukaj śladów naruszenia bezpieczeństwa w biurze danych w budynku przylotów",
         "originalEn": "Search for any traces of a security breach in the Arrival Building Data Office"
       }
     ],

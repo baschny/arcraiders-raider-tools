@@ -1193,7 +1193,7 @@
     },
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": null,
+    "imageFilename": "https://cdn.arctracker.io/items/assessor_matrix.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -2815,7 +2815,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": null,
+    "value": 100,
     "weightKg": 0.25,
     "stackSize": 1,
     "recyclesInto": null,
@@ -3417,6 +3417,64 @@
     "isWeapon": null,
     "foundIn": [
       "Medical"
+    ]
+  },
+  {
+    "id": "crash_mat_blueprint",
+    "name": {
+      "value": "Чертеж посадочного мата",
+      "originalEn": "Crash Mat Blueprint"
+    },
+    "description": {
+      "en": "Метательное устройство аварийной посадки, смягчающее тяжелые приземления"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "crash_mat",
+    "name": {
+      "value": "Посадочный мат",
+      "originalEn": "Crash Mat"
+    },
+    "description": {
+      "en": "Метательное устройство аварийной посадки, смягчающее тяжелые приземления"
+    },
+    "type": "Quick Use",
+    "rarity": "Uncommon",
+    "value": 1200,
+    "weightKg": 0.6,
+    "stackSize": 5,
+    "recyclesInto": {
+      "fabric": 6,
+      "plastic_parts": 3
+    },
+    "recipe": {
+      "durable_cloth": 1,
+      "electrical_components": 1
+    },
+    "salvagesInto": {
+      "fabric": 4
+    },
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
     ]
   },
   {
@@ -4120,6 +4178,31 @@
     ]
   },
   {
+    "id": "dockmasters_detector",
+    "name": {
+      "value": "Детектор начальника порта",
+      "originalEn": "Dockmaster's Detector"
+    },
+    "description": {
+      "en": "Эти детекторы, по всей видимости, способны находить посторонние объекты, погребённые в песках вокруг Riven Tides, хотя точный принцип их работы неизвестен."
+    },
+    "type": "Quick Use",
+    "rarity": "Uncommon",
+    "value": 1000,
+    "weightKg": 1.0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/dockmasters_detector.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "dodgers_note",
     "name": {
       "value": "Записка Доджера",
@@ -4130,7 +4213,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": 0,
+    "value": 100,
     "weightKg": 0.5,
     "stackSize": 1,
     "recyclesInto": null,
@@ -4391,7 +4474,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": 0,
+    "value": 100,
     "weightKg": 0,
     "stackSize": 1,
     "recyclesInto": null,
@@ -4562,7 +4645,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": 0,
+    "value": 100,
     "weightKg": 0.5,
     "stackSize": 1,
     "recyclesInto": null,
@@ -4587,7 +4670,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": null,
+    "value": 100,
     "weightKg": 0.25,
     "stackSize": 1,
     "recyclesInto": null,
@@ -4642,7 +4725,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": null,
+    "value": 100,
     "weightKg": 0.25,
     "stackSize": 1,
     "recyclesInto": null,
@@ -5754,7 +5837,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": null,
+    "value": 100,
     "weightKg": 0.25,
     "stackSize": 1,
     "recyclesInto": null,
@@ -5779,7 +5862,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": null,
+    "value": 100,
     "weightKg": 0.25,
     "stackSize": 1,
     "recyclesInto": null,
@@ -5804,7 +5887,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": null,
+    "value": 100,
     "weightKg": 0.25,
     "stackSize": 1,
     "recyclesInto": null,
@@ -5917,7 +6000,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": 0,
+    "value": 100,
     "weightKg": 0.25,
     "stackSize": 1,
     "recyclesInto": null,
@@ -7141,7 +7224,7 @@
   {
     "id": "il_toro_iii",
     "name": {
-      "value": "Il Toro III",
+      "value": "Эль-Торо III",
       "originalEn": "Il Toro III"
     },
     "description": {
@@ -7174,7 +7257,7 @@
   {
     "id": "il_toro_iv",
     "name": {
-      "value": "Il Toro IV",
+      "value": "Эль-Торо IV",
       "originalEn": "Il Toro IV"
     },
     "description": {
@@ -7776,6 +7859,31 @@
     ]
   },
   {
+    "id": "leviathans_crown_ship_model",
+    "name": {
+      "value": "Модель корабля «Leviathan's Crown»",
+      "originalEn": "\"Leviathan's Crown\" Ship Model"
+    },
+    "description": {
+      "en": "Величественное зрелище в любую эпоху — этот свирепый торговый корабль безразличен к аэродинамическим преимуществам стеклопластика."
+    },
+    "type": "Trinket",
+    "rarity": "Legendary",
+    "value": 10000,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/leviathans_crown_ship_model.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "library_book",
     "name": {
       "value": "Книга",
@@ -7786,7 +7894,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": 0,
+    "value": 100,
     "weightKg": 0.5,
     "stackSize": 1,
     "recyclesInto": null,
@@ -7811,7 +7919,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": null,
+    "value": 100,
     "weightKg": 0.25,
     "stackSize": 1,
     "recyclesInto": null,
@@ -8494,7 +8602,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": 0,
+    "value": 100,
     "weightKg": 0.5,
     "stackSize": 1,
     "recyclesInto": null,
@@ -8519,7 +8627,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": null,
+    "value": 100,
     "weightKg": 0.25,
     "stackSize": 1,
     "recyclesInto": null,
@@ -8875,7 +8983,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": null,
+    "value": 100,
     "weightKg": 0.25,
     "stackSize": 1,
     "recyclesInto": null,
@@ -9246,7 +9354,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": null,
+    "value": 100,
     "weightKg": 0.25,
     "stackSize": 1,
     "recyclesInto": null,
@@ -9271,7 +9379,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": 0,
+    "value": 100,
     "weightKg": 0.5,
     "stackSize": 1,
     "recyclesInto": null,
@@ -9325,7 +9433,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": 0,
+    "value": 100,
     "weightKg": 0.25,
     "stackSize": 1,
     "recyclesInto": null,
@@ -9846,7 +9954,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": 0,
+    "value": 100,
     "weightKg": 0.5,
     "stackSize": 1,
     "recyclesInto": null,
@@ -10009,6 +10117,88 @@
     ]
   },
   {
+    "id": "powered_descender_blueprint",
+    "name": {
+      "value": "Чертеж моторизованного спускового устройства",
+      "originalEn": "Powered Descender Blueprint"
+    },
+    "description": {
+      "en": "Снижает скорость падения при использовании в воздухе, но требует времени на разгон до полной мощности. Отключается, когда заканчивается заряд"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "powered_descender",
+    "name": {
+      "value": "Моторизованный спусковой механизм",
+      "originalEn": "Powered Descender"
+    },
+    "description": {
+      "en": "Снижает скорость падения при использовании в воздухе, но требует времени на разгон до полной мощности. Отключается, когда заканчивается заряд"
+    },
+    "type": "Quick Use",
+    "rarity": "Epic",
+    "value": 10000,
+    "weightKg": 5,
+    "stackSize": 1,
+    "recyclesInto": {
+      "advanced_electrical_components": 1,
+      "arc_circuitry": 2
+    },
+    "recipe": {
+      "power_rod": 1
+    },
+    "salvagesInto": {
+      "advanced_electrical_components": 1
+    },
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/powered_descender.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "precision_gimbal",
+    "name": {
+      "value": "Прецизионный подвес",
+      "originalEn": "Precision Gimbal"
+    },
+    "description": {
+      "en": ""
+    },
+    "type": "Trinket",
+    "rarity": "Common",
+    "value": 100,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "prickly_pear",
     "name": {
       "value": "Опунция",
@@ -10020,7 +10210,7 @@
     "type": "Nature",
     "rarity": "Common",
     "value": 640,
-    "weightKg": null,
+    "weightKg": 0.2,
     "stackSize": 10,
     "recyclesInto": {
       "assorted_seeds": 3
@@ -10078,7 +10268,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": 0,
+    "value": 100,
     "weightKg": 0,
     "stackSize": 1,
     "recyclesInto": null,
@@ -10423,7 +10613,7 @@
   {
     "id": "rattler_iv",
     "name": {
-      "value": "Rattler IV",
+      "value": "Трещетка IV",
       "originalEn": "Rattler IV"
     },
     "description": {
@@ -10715,7 +10905,7 @@
   {
     "id": "renegade_ii",
     "name": {
-      "value": "Renegade II",
+      "value": "Ренегат II",
       "originalEn": "Renegade II"
     },
     "description": {
@@ -10861,6 +11051,31 @@
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/ripped_safety_vest.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "riven_tides_hotel_keycard_no_107",
+    "name": {
+      "value": "Карта-ключ отеля Riven Tides № 107",
+      "originalEn": "Riven Tides Hotel Keycard No. 107"
+    },
+    "description": {
+      "en": "Открывает дверь в один из многочисленных люксов Panorama Azzurro в Riven Tides"
+    },
+    "type": "Key",
+    "rarity": "Common",
+    "value": 100,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -11520,7 +11735,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": 0,
+    "value": 100,
     "weightKg": 0.5,
     "stackSize": 1,
     "recyclesInto": null,
@@ -11545,7 +11760,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": 0,
+    "value": 100,
     "weightKg": 0.5,
     "stackSize": 1,
     "recyclesInto": null,
@@ -12331,6 +12546,31 @@
     ]
   },
   {
+    "id": "sirena_dorata_ship_model",
+    "name": {
+      "value": "Модель корабля «Sirena Dorata»",
+      "originalEn": "\"Sirena Dorata\" Ship Model"
+    },
+    "description": {
+      "en": "Когда средиземноморское солнце играет на её корпусе, эта яркая яхта — вневременное воплощение солёного великолепия."
+    },
+    "type": "Trinket",
+    "rarity": "Epic",
+    "value": 7000,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/sirena_dorata_ship_model.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "smoke_grenade_blueprint",
     "name": {
       "value": "Чертеж — Дымовая граната",
@@ -12973,7 +13213,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": 0,
+    "value": 100,
     "weightKg": 0.5,
     "stackSize": 1,
     "recyclesInto": null,
@@ -13729,6 +13969,64 @@
     ]
   },
   {
+    "id": "tactical_mk3_smoke_blueprint",
+    "name": {
+      "value": "Чертеж тактического Mk. 3 (дым)",
+      "originalEn": "Tactical Mk. 3 (Smoke) Blueprint"
+    },
+    "description": {
+      "en": "Улучшенная версия аугмента Тактический MK. 2, увеличивающая вместимость по всем параметрам."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_smoke_blueprint.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "tactical_mk3_smoke",
+    "name": {
+      "value": "Тактический Mk. 3 (Дым)",
+      "originalEn": "Tactical Mk. 3 (Smoke)"
+    },
+    "description": {
+      "en": "Улучшенная версия аугмента Тактический MK. 2, увеличивающая вместимость по всем параметрам. При пробитии щита разворачивает небольшую дымовую гранату. Имеет фиксированное время восстановления."
+    },
+    "type": "Augment",
+    "rarity": "Epic",
+    "value": 5000,
+    "weightKg": 4,
+    "stackSize": 1,
+    "recyclesInto": {
+      "advanced_electrical_components": 1,
+      "processor": 1
+    },
+    "recipe": {
+      "advanced_electrical_components": 2,
+      "processor": 3
+    },
+    "salvagesInto": {
+      "electrical_components": 2
+    },
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_smoke.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "tagging_grenade_blueprint",
     "name": {
       "value": "Чертеж — Маркирующая граната",
@@ -14478,6 +14776,31 @@
     ]
   },
   {
+    "id": "turbine_compressor",
+    "name": {
+      "value": "Турбинный компрессор",
+      "originalEn": "Turbine Compressor"
+    },
+    "description": {
+      "en": ""
+    },
+    "type": "Recyclable",
+    "rarity": "Epic",
+    "value": null,
+    "weightKg": null,
+    "stackSize": 3,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "ARC"
+    ]
+  },
+  {
     "id": "turbo_pump",
     "name": {
       "value": "Турбонасос",
@@ -14505,6 +14828,31 @@
     "isWeapon": null,
     "foundIn": [
       "Exodus"
+    ]
+  },
+  {
+    "id": "twilight_compass_ship_model",
+    "name": {
+      "value": "Модель корабля «Twilight Compass»",
+      "originalEn": "\"Twilight Compass\" Ship Model"
+    },
+    "description": {
+      "en": "Энергичный новичок на подъёме, этот двухмачтовик известен тем, что заплывает чуть-чуть за горизонт."
+    },
+    "type": "Trinket",
+    "rarity": "Uncommon",
+    "value": 1000,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/twilight_compass_ship_model.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
     ]
   },
   {
@@ -14561,7 +14909,7 @@
     },
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": null,
+    "imageFilename": "https://cdn.arctracker.io/items/vaporizer_regulator.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -14592,6 +14940,31 @@
       "Old World",
       "Residential",
       "Commercial"
+    ]
+  },
+  {
+    "id": "velocity_ship_model",
+    "name": {
+      "value": "Модель корабля «Velocity»",
+      "originalEn": "\"Velocity\" Ship Model"
+    },
+    "description": {
+      "en": "Оптимизированное для скорости, это чудо техники очень надеется, что вы не планировали взять с собой особенно изысканный обед."
+    },
+    "type": "Trinket",
+    "rarity": "Rare",
+    "value": 3000,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/velocity_ship_model.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
     ]
   },
   {
@@ -14689,7 +15062,7 @@
   {
     "id": "venator_iii",
     "name": {
-      "value": "Venator III",
+      "value": "Охотник III",
       "originalEn": "Venator III"
     },
     "description": {
@@ -15226,7 +15599,7 @@
   {
     "id": "vulcano_iv",
     "name": {
-      "value": "Vulcano IV",
+      "value": "Вулкан IV",
       "originalEn": "Vulcano IV"
     },
     "description": {
@@ -15345,6 +15718,89 @@
     "foundIn": [
       "Mechanical",
       "Industrial"
+    ]
+  },
+  {
+    "id": "white_flag_blueprint",
+    "name": {
+      "value": "Чертеж белого флага",
+      "originalEn": "White Flag Blueprint"
+    },
+    "description": {
+      "en": "Развертываемый белый флаг"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "white_flag",
+    "name": {
+      "value": "Белый флаг",
+      "originalEn": "White Flag"
+    },
+    "description": {
+      "en": "Развертываемый белый флаг"
+    },
+    "type": "Quick Use",
+    "rarity": "Uncommon",
+    "value": 640,
+    "weightKg": 0.2,
+    "stackSize": 5,
+    "recyclesInto": {
+      "fabric": 5,
+      "plastic_parts": 1
+    },
+    "recipe": {
+      "fabric": 10,
+      "plastic_parts": 3
+    },
+    "salvagesInto": {
+      "fabric": 3
+    },
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "wind_sprite_ship_model",
+    "name": {
+      "value": "Модель корабля «Wind Sprite»",
+      "originalEn": "\"Wind Sprite\" Ship Model"
+    },
+    "description": {
+      "en": "Непоколебимый перед лицом своих более крупных собратьев, этот проворный одномачтовик известен тем, что бросает вызов даже самым чуть-выше-среднего волнам."
+    },
+    "type": "Trinket",
+    "rarity": "Common",
+    "value": 1000,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/wind_sprite_ship_model.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
     ]
   },
   {

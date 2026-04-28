@@ -1193,7 +1193,7 @@
     },
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": null,
+    "imageFilename": "https://cdn.arctracker.io/items/assessor_matrix.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -2815,7 +2815,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": null,
+    "value": 100,
     "weightKg": 0.25,
     "stackSize": 1,
     "recyclesInto": null,
@@ -3417,6 +3417,64 @@
     "isWeapon": null,
     "foundIn": [
       "Medical"
+    ]
+  },
+  {
+    "id": "crash_mat_blueprint",
+    "name": {
+      "value": "着地マットの設計図",
+      "originalEn": "Crash Mat Blueprint"
+    },
+    "description": {
+      "en": "投げて使う緊急着陸装置。重い着地の衝撃をいくらか和らげる。"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "crash_mat",
+    "name": {
+      "value": "着地マット",
+      "originalEn": "Crash Mat"
+    },
+    "description": {
+      "en": "投げて使う緊急着陸装置。重い着地の衝撃をいくらか和らげる。"
+    },
+    "type": "Quick Use",
+    "rarity": "Uncommon",
+    "value": 1200,
+    "weightKg": 0.6,
+    "stackSize": 5,
+    "recyclesInto": {
+      "fabric": 6,
+      "plastic_parts": 3
+    },
+    "recipe": {
+      "durable_cloth": 1,
+      "electrical_components": 1
+    },
+    "salvagesInto": {
+      "fabric": 4
+    },
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
     ]
   },
   {
@@ -4120,6 +4178,31 @@
     ]
   },
   {
+    "id": "dockmasters_detector",
+    "name": {
+      "value": "ドックマスターのディテクター",
+      "originalEn": "Dockmaster's Detector"
+    },
+    "description": {
+      "en": "これらのディテクターは、Riven Tides周辺の砂に埋もれた異物を発見できるようだが、その正確な動作原理は不明である。"
+    },
+    "type": "Quick Use",
+    "rarity": "Uncommon",
+    "value": 1000,
+    "weightKg": 1.0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/dockmasters_detector.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "dodgers_note",
     "name": {
       "value": "ドジャーのメモ",
@@ -4130,7 +4213,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": 0,
+    "value": 100,
     "weightKg": 0.5,
     "stackSize": 1,
     "recyclesInto": null,
@@ -4391,7 +4474,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": 0,
+    "value": 100,
     "weightKg": 0,
     "stackSize": 1,
     "recyclesInto": null,
@@ -4562,7 +4645,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": 0,
+    "value": 100,
     "weightKg": 0.5,
     "stackSize": 1,
     "recyclesInto": null,
@@ -4587,7 +4670,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": null,
+    "value": 100,
     "weightKg": 0.25,
     "stackSize": 1,
     "recyclesInto": null,
@@ -4642,7 +4725,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": null,
+    "value": 100,
     "weightKg": 0.25,
     "stackSize": 1,
     "recyclesInto": null,
@@ -5754,7 +5837,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": null,
+    "value": 100,
     "weightKg": 0.25,
     "stackSize": 1,
     "recyclesInto": null,
@@ -5779,7 +5862,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": null,
+    "value": 100,
     "weightKg": 0.25,
     "stackSize": 1,
     "recyclesInto": null,
@@ -5804,7 +5887,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": null,
+    "value": 100,
     "weightKg": 0.25,
     "stackSize": 1,
     "recyclesInto": null,
@@ -5917,7 +6000,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": 0,
+    "value": 100,
     "weightKg": 0.25,
     "stackSize": 1,
     "recyclesInto": null,
@@ -7776,6 +7859,31 @@
     ]
   },
   {
+    "id": "leviathans_crown_ship_model",
+    "name": {
+      "value": "「Leviathan's Crown」船舶模型",
+      "originalEn": "\"Leviathan's Crown\" Ship Model"
+    },
+    "description": {
+      "en": "どの時代においても堂々たる姿を誇るこの猛々しい商船は、グラスファイバー技術がもたらす空力的な恩恵に無関心である。"
+    },
+    "type": "Trinket",
+    "rarity": "Legendary",
+    "value": 10000,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/leviathans_crown_ship_model.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "library_book",
     "name": {
       "value": "本",
@@ -7786,7 +7894,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": 0,
+    "value": 100,
     "weightKg": 0.5,
     "stackSize": 1,
     "recyclesInto": null,
@@ -7811,7 +7919,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": null,
+    "value": 100,
     "weightKg": 0.25,
     "stackSize": 1,
     "recyclesInto": null,
@@ -8494,7 +8602,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": 0,
+    "value": 100,
     "weightKg": 0.5,
     "stackSize": 1,
     "recyclesInto": null,
@@ -8519,7 +8627,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": null,
+    "value": 100,
     "weightKg": 0.25,
     "stackSize": 1,
     "recyclesInto": null,
@@ -8875,7 +8983,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": null,
+    "value": 100,
     "weightKg": 0.25,
     "stackSize": 1,
     "recyclesInto": null,
@@ -9246,7 +9354,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": null,
+    "value": 100,
     "weightKg": 0.25,
     "stackSize": 1,
     "recyclesInto": null,
@@ -9271,7 +9379,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": 0,
+    "value": 100,
     "weightKg": 0.5,
     "stackSize": 1,
     "recyclesInto": null,
@@ -9325,7 +9433,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": 0,
+    "value": 100,
     "weightKg": 0.25,
     "stackSize": 1,
     "recyclesInto": null,
@@ -9846,7 +9954,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": 0,
+    "value": 100,
     "weightKg": 0.5,
     "stackSize": 1,
     "recyclesInto": null,
@@ -10009,6 +10117,88 @@
     ]
   },
   {
+    "id": "powered_descender_blueprint",
+    "name": {
+      "value": "動力式降下装置の設計図",
+      "originalEn": "Powered Descender Blueprint"
+    },
+    "description": {
+      "en": "空中で使用すると落下速度を低下させるが、最大出力に達するまでに起動時間が必要。電力が尽きると停止する。"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "powered_descender",
+    "name": {
+      "value": "電動ディセンダー",
+      "originalEn": "Powered Descender"
+    },
+    "description": {
+      "en": "空中で使用すると落下速度を低下させるが、最大出力に達するまでに起動時間が必要。電力が尽きると停止する。"
+    },
+    "type": "Quick Use",
+    "rarity": "Epic",
+    "value": 10000,
+    "weightKg": 5,
+    "stackSize": 1,
+    "recyclesInto": {
+      "advanced_electrical_components": 1,
+      "arc_circuitry": 2
+    },
+    "recipe": {
+      "power_rod": 1
+    },
+    "salvagesInto": {
+      "advanced_electrical_components": 1
+    },
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/powered_descender.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "precision_gimbal",
+    "name": {
+      "value": "精密ジンバル",
+      "originalEn": "Precision Gimbal"
+    },
+    "description": {
+      "en": ""
+    },
+    "type": "Trinket",
+    "rarity": "Common",
+    "value": 100,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "prickly_pear",
     "name": {
       "value": "トゥナ",
@@ -10020,7 +10210,7 @@
     "type": "Nature",
     "rarity": "Common",
     "value": 640,
-    "weightKg": null,
+    "weightKg": 0.2,
     "stackSize": 10,
     "recyclesInto": {
       "assorted_seeds": 3
@@ -10078,7 +10268,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": 0,
+    "value": 100,
     "weightKg": 0,
     "stackSize": 1,
     "recyclesInto": null,
@@ -10867,6 +11057,31 @@
     ]
   },
   {
+    "id": "riven_tides_hotel_keycard_no_107",
+    "name": {
+      "value": "Riven Tidesホテル キーカードNo.107",
+      "originalEn": "Riven Tides Hotel Keycard No. 107"
+    },
+    "description": {
+      "en": "Riven TidesにあるPanorama Azzurroの数あるスイートのひとつのドアを解錠する。"
+    },
+    "type": "Key",
+    "rarity": "Common",
+    "value": 100,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "rocket_thruster",
     "name": {
       "value": "ロケットスラスター",
@@ -11520,7 +11735,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": 0,
+    "value": 100,
     "weightKg": 0.5,
     "stackSize": 1,
     "recyclesInto": null,
@@ -11545,7 +11760,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": 0,
+    "value": 100,
     "weightKg": 0.5,
     "stackSize": 1,
     "recyclesInto": null,
@@ -12331,6 +12546,31 @@
     ]
   },
   {
+    "id": "sirena_dorata_ship_model",
+    "name": {
+      "value": "「Sirena Dorata」船舶模型",
+      "originalEn": "\"Sirena Dorata\" Ship Model"
+    },
+    "description": {
+      "en": "地中海の太陽が船体に輝くこの鮮やかなヨットは、海水の華麗さを象徴する永遠の傑作である。"
+    },
+    "type": "Trinket",
+    "rarity": "Epic",
+    "value": 7000,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/sirena_dorata_ship_model.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "smoke_grenade_blueprint",
     "name": {
       "value": "スモーク・グレネード 設計図",
@@ -12973,7 +13213,7 @@
     },
     "type": "Trinket",
     "rarity": "Common",
-    "value": 0,
+    "value": 100,
     "weightKg": 0.5,
     "stackSize": 1,
     "recyclesInto": null,
@@ -13729,6 +13969,64 @@
     ]
   },
   {
+    "id": "tactical_mk3_smoke_blueprint",
+    "name": {
+      "value": "戦術MK3（煙幕）設計図",
+      "originalEn": "Tactical Mk. 3 (Smoke) Blueprint"
+    },
+    "description": {
+      "en": "戦術MK2強化装備のアップグレード版で、全体的に容量が拡張される。"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_smoke_blueprint.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "tactical_mk3_smoke",
+    "name": {
+      "value": "戦術MK3（煙幕）",
+      "originalEn": "Tactical Mk. 3 (Smoke)"
+    },
+    "description": {
+      "en": "戦術MK2強化装備のアップグレード版で、全体的に容量が拡張される。シールド破壊時、小型のスモーク・グレネードを展開する。固定クールダウンあり。"
+    },
+    "type": "Augment",
+    "rarity": "Epic",
+    "value": 5000,
+    "weightKg": 4,
+    "stackSize": 1,
+    "recyclesInto": {
+      "advanced_electrical_components": 1,
+      "processor": 1
+    },
+    "recipe": {
+      "advanced_electrical_components": 2,
+      "processor": 3
+    },
+    "salvagesInto": {
+      "electrical_components": 2
+    },
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_smoke.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "tagging_grenade_blueprint",
     "name": {
       "value": "タグ・グレネード 設計図",
@@ -14478,6 +14776,31 @@
     ]
   },
   {
+    "id": "turbine_compressor",
+    "name": {
+      "value": "タービンコンプレッサー",
+      "originalEn": "Turbine Compressor"
+    },
+    "description": {
+      "en": ""
+    },
+    "type": "Recyclable",
+    "rarity": "Epic",
+    "value": null,
+    "weightKg": null,
+    "stackSize": 3,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "ARC"
+    ]
+  },
+  {
     "id": "turbo_pump",
     "name": {
       "value": "ターボポンプ",
@@ -14505,6 +14828,31 @@
     "isWeapon": null,
     "foundIn": [
       "Exodus"
+    ]
+  },
+  {
+    "id": "twilight_compass_ship_model",
+    "name": {
+      "value": "「Twilight Compass」船舶模型",
+      "originalEn": "\"Twilight Compass\" Ship Model"
+    },
+    "description": {
+      "en": "意気盛んな新進気鋭の二本マスト船は、地平線のほんのわずか先まで航海することで知られている。"
+    },
+    "type": "Trinket",
+    "rarity": "Uncommon",
+    "value": 1000,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/twilight_compass_ship_model.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
     ]
   },
   {
@@ -14561,7 +14909,7 @@
     },
     "upgradeCost": null,
     "tier": null,
-    "imageFilename": null,
+    "imageFilename": "https://cdn.arctracker.io/items/vaporizer_regulator.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"
@@ -14592,6 +14940,31 @@
       "Old World",
       "Residential",
       "Commercial"
+    ]
+  },
+  {
+    "id": "velocity_ship_model",
+    "name": {
+      "value": "「Velocity」船舶模型",
+      "originalEn": "\"Velocity\" Ship Model"
+    },
+    "description": {
+      "en": "性能に特化したこのテクノロジーの結晶は、特別手の込んだ昼食を持参するつもりがなかったことを切に願っている。"
+    },
+    "type": "Trinket",
+    "rarity": "Rare",
+    "value": 3000,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/velocity_ship_model.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
     ]
   },
   {
@@ -15345,6 +15718,89 @@
     "foundIn": [
       "Mechanical",
       "Industrial"
+    ]
+  },
+  {
+    "id": "white_flag_blueprint",
+    "name": {
+      "value": "白旗の設計図",
+      "originalEn": "White Flag Blueprint"
+    },
+    "description": {
+      "en": "設置可能な白旗。"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "white_flag",
+    "name": {
+      "value": "白旗",
+      "originalEn": "White Flag"
+    },
+    "description": {
+      "en": "設置可能な白旗。"
+    },
+    "type": "Quick Use",
+    "rarity": "Uncommon",
+    "value": 640,
+    "weightKg": 0.2,
+    "stackSize": 5,
+    "recyclesInto": {
+      "fabric": 5,
+      "plastic_parts": 1
+    },
+    "recipe": {
+      "fabric": 10,
+      "plastic_parts": 3
+    },
+    "salvagesInto": {
+      "fabric": 3
+    },
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "wind_sprite_ship_model",
+    "name": {
+      "value": "「Wind Sprite」船舶模型",
+      "originalEn": "\"Wind Sprite\" Ship Model"
+    },
+    "description": {
+      "en": "より大きな兄弟たちを前にしても怯まず、この機敏な一本マスト船は平均をわずかに上回る波にすら立ち向かうことで知られている。"
+    },
+    "type": "Trinket",
+    "rarity": "Common",
+    "value": 1000,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/wind_sprite_ship_model.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
     ]
   },
   {

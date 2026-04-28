@@ -609,7 +609,7 @@
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": null,
+    "imageFilename": "https://cdn.arctracker.io/items/assessor_matrix.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -1458,7 +1458,7 @@
       "originalEn": "Celeste's Journal"
     },
     "stackSize": 1,
-    "value": null,
+    "value": 100,
     "imageFilename": "https://cdn.arctracker.io/items/celestes_journal.png",
     "isWeapon": null,
     "recipe": null,
@@ -1767,6 +1767,37 @@
     "imageFilename": "https://cdn.arctracker.io/items/cracked_bioscanner.png",
     "isWeapon": null,
     "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "crash_mat_blueprint": {
+    "id": "crash_mat_blueprint",
+    "name": {
+      "value": "Progetto materasso d'atterraggio",
+      "originalEn": "Crash Mat Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": null,
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "crash_mat": {
+    "id": "crash_mat",
+    "name": {
+      "value": "Materasso d'atterraggio",
+      "originalEn": "Crash Mat"
+    },
+    "stackSize": 5,
+    "value": 1200,
+    "imageFilename": null,
+    "isWeapon": null,
+    "recipe": {
+      "durable_cloth": 1,
+      "electrical_components": 1
+    },
     "upgradeCost": null,
     "craftQuantity": 1
   },
@@ -2129,6 +2160,20 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "dockmasters_detector": {
+    "id": "dockmasters_detector",
+    "name": {
+      "value": "Rilevatore del capitano di porto",
+      "originalEn": "Dockmaster's Detector"
+    },
+    "stackSize": 1,
+    "value": 1000,
+    "imageFilename": "https://cdn.arctracker.io/items/dockmasters_detector.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "dodgers_note": {
     "id": "dodgers_note",
     "name": {
@@ -2136,7 +2181,7 @@
       "originalEn": "Dodger's Note"
     },
     "stackSize": 1,
-    "value": 0,
+    "value": 100,
     "imageFilename": null,
     "isWeapon": null,
     "recipe": null,
@@ -2271,7 +2316,7 @@
       "originalEn": "Dusty Film Reel"
     },
     "stackSize": 1,
-    "value": 0,
+    "value": 100,
     "imageFilename": null,
     "isWeapon": null,
     "recipe": null,
@@ -2365,7 +2410,7 @@
       "originalEn": "Espresso Machine Parts"
     },
     "stackSize": 1,
-    "value": 0,
+    "value": 100,
     "imageFilename": "https://cdn.arctracker.io/items/espresso_machine_parts.png",
     "isWeapon": null,
     "recipe": null,
@@ -2379,7 +2424,7 @@
       "originalEn": "ESR Analyzer"
     },
     "stackSize": 1,
-    "value": null,
+    "value": 100,
     "imageFilename": "https://cdn.arctracker.io/items/esr_analyzer.png",
     "isWeapon": null,
     "recipe": null,
@@ -2407,7 +2452,7 @@
       "originalEn": "Experimental Seed Sample"
     },
     "stackSize": 1,
-    "value": null,
+    "value": 100,
     "imageFilename": "https://cdn.arctracker.io/items/experimental_seed_sample.png",
     "isWeapon": null,
     "recipe": null,
@@ -2992,7 +3037,7 @@
       "originalEn": "First Wave Compass"
     },
     "stackSize": 1,
-    "value": null,
+    "value": 100,
     "imageFilename": "https://cdn.arctracker.io/items/first_wave_compass.png",
     "isWeapon": null,
     "recipe": null,
@@ -3006,7 +3051,7 @@
       "originalEn": "First Wave Rations"
     },
     "stackSize": 1,
-    "value": null,
+    "value": 100,
     "imageFilename": "https://cdn.arctracker.io/items/first_wave_rations.png",
     "isWeapon": null,
     "recipe": null,
@@ -3020,7 +3065,7 @@
       "originalEn": "First Wave Tape"
     },
     "stackSize": 1,
-    "value": null,
+    "value": 100,
     "imageFilename": "https://cdn.arctracker.io/items/first_wave_tape.png",
     "isWeapon": null,
     "recipe": null,
@@ -3079,7 +3124,7 @@
       "originalEn": "Flushing Terminal Key"
     },
     "stackSize": 1,
-    "value": 0,
+    "value": 100,
     "imageFilename": "https://cdn.arctracker.io/items/flushing_terminal_key.png",
     "isWeapon": null,
     "recipe": null,
@@ -4027,6 +4072,20 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "leviathans_crown_ship_model": {
+    "id": "leviathans_crown_ship_model",
+    "name": {
+      "value": "Modellino di nave \"Leviathan's Crown\"",
+      "originalEn": "\"Leviathan's Crown\" Ship Model"
+    },
+    "stackSize": 1,
+    "value": 10000,
+    "imageFilename": "https://cdn.arctracker.io/items/leviathans_crown_ship_model.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "library_book": {
     "id": "library_book",
     "name": {
@@ -4034,7 +4093,7 @@
       "originalEn": "Book"
     },
     "stackSize": 1,
-    "value": 0,
+    "value": 100,
     "imageFilename": null,
     "isWeapon": null,
     "recipe": null,
@@ -4048,7 +4107,7 @@
       "originalEn": "Lidar Scanner"
     },
     "stackSize": 1,
-    "value": null,
+    "value": 100,
     "imageFilename": "https://cdn.arctracker.io/items/lidar_scanner.png",
     "isWeapon": null,
     "recipe": null,
@@ -4411,7 +4470,7 @@
       "originalEn": "Major Aiva's Mementos"
     },
     "stackSize": 1,
-    "value": 0,
+    "value": 100,
     "imageFilename": "https://cdn.arctracker.io/items/major_aivas_mementos.png",
     "isWeapon": null,
     "recipe": null,
@@ -4425,7 +4484,7 @@
       "originalEn": "Major Aiva's Patch"
     },
     "stackSize": 1,
-    "value": null,
+    "value": 100,
     "imageFilename": "https://cdn.arctracker.io/items/major_aivas_patch.png",
     "isWeapon": null,
     "recipe": null,
@@ -4607,7 +4666,7 @@
       "originalEn": "Moisture Meter"
     },
     "stackSize": 1,
-    "value": null,
+    "value": 100,
     "imageFilename": "https://cdn.arctracker.io/items/moisture_meter.png",
     "isWeapon": null,
     "recipe": null,
@@ -4801,7 +4860,7 @@
       "originalEn": "Nutrient Meter"
     },
     "stackSize": 1,
-    "value": null,
+    "value": 100,
     "imageFilename": "https://cdn.arctracker.io/items/nutrient_meter.png",
     "isWeapon": null,
     "recipe": null,
@@ -4815,7 +4874,7 @@
       "originalEn": "Official Shutdown Documentation"
     },
     "stackSize": 1,
-    "value": 0,
+    "value": 100,
     "imageFilename": null,
     "isWeapon": null,
     "recipe": null,
@@ -4843,7 +4902,7 @@
       "originalEn": "Old World Books"
     },
     "stackSize": 1,
-    "value": 0,
+    "value": 100,
     "imageFilename": "https://cdn.arctracker.io/items/old_world_books.png",
     "isWeapon": null,
     "recipe": null,
@@ -5114,7 +5173,7 @@
       "originalEn": "Possibly Toxic Plant"
     },
     "stackSize": 1,
-    "value": 0,
+    "value": 100,
     "imageFilename": "https://cdn.arctracker.io/items/possibly_toxic_plant.png",
     "isWeapon": null,
     "recipe": null,
@@ -5194,6 +5253,50 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "powered_descender_blueprint": {
+    "id": "powered_descender_blueprint",
+    "name": {
+      "value": "Progetto discensore motorizzato",
+      "originalEn": "Powered Descender Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": null,
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "powered_descender": {
+    "id": "powered_descender",
+    "name": {
+      "value": "Discensore motorizzato",
+      "originalEn": "Powered Descender"
+    },
+    "stackSize": 1,
+    "value": 10000,
+    "imageFilename": "https://cdn.arctracker.io/items/powered_descender.png",
+    "isWeapon": null,
+    "recipe": {
+      "power_rod": 1
+    },
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "precision_gimbal": {
+    "id": "precision_gimbal",
+    "name": {
+      "value": "Gimbal di precisione",
+      "originalEn": "Precision Gimbal"
+    },
+    "stackSize": 1,
+    "value": 100,
+    "imageFilename": null,
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "prickly_pear": {
     "id": "prickly_pear",
     "name": {
@@ -5229,7 +5332,7 @@
       "originalEn": "Project Heartwood Blueprints"
     },
     "stackSize": 1,
-    "value": 0,
+    "value": 100,
     "imageFilename": null,
     "isWeapon": null,
     "recipe": null,
@@ -5636,6 +5739,20 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "riven_tides_hotel_keycard_no_107": {
+    "id": "riven_tides_hotel_keycard_no_107",
+    "name": {
+      "value": "Tessera magnetica dell'hotel di Riven Tides n. 107",
+      "originalEn": "Riven Tides Hotel Keycard No. 107"
+    },
+    "stackSize": 1,
+    "value": 100,
+    "imageFilename": null,
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "rocket_thruster": {
     "id": "rocket_thruster",
     "name": {
@@ -5951,7 +6068,7 @@
       "originalEn": "Scout Patrol Note"
     },
     "stackSize": 1,
-    "value": 0,
+    "value": 100,
     "imageFilename": null,
     "isWeapon": null,
     "recipe": null,
@@ -5965,7 +6082,7 @@
       "originalEn": "Secret Meeting Info"
     },
     "stackSize": 1,
-    "value": 0,
+    "value": 100,
     "imageFilename": null,
     "isWeapon": null,
     "recipe": null,
@@ -6373,6 +6490,20 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "sirena_dorata_ship_model": {
+    "id": "sirena_dorata_ship_model",
+    "name": {
+      "value": "Modellino di nave \"Sirena Dorata\"",
+      "originalEn": "\"Sirena Dorata\" Ship Model"
+    },
+    "stackSize": 1,
+    "value": 7000,
+    "imageFilename": "https://cdn.arctracker.io/items/sirena_dorata_ship_model.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "smoke_grenade_blueprint": {
     "id": "smoke_grenade_blueprint",
     "name": {
@@ -6710,7 +6841,7 @@
       "originalEn": "Stack of Movie Tapes"
     },
     "stackSize": 1,
-    "value": 0,
+    "value": 100,
     "imageFilename": "https://cdn.arctracker.io/items/stack_of_movie_tapes.png",
     "isWeapon": null,
     "recipe": null,
@@ -7096,6 +7227,37 @@
     "stackSize": 1,
     "value": 5000,
     "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_revival.png",
+    "isWeapon": null,
+    "recipe": {
+      "advanced_electrical_components": 2,
+      "processor": 3
+    },
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "tactical_mk3_smoke_blueprint": {
+    "id": "tactical_mk3_smoke_blueprint",
+    "name": {
+      "value": "Progetto Tattico Mk. 3 (Fumo)",
+      "originalEn": "Tactical Mk. 3 (Smoke) Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_smoke_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "tactical_mk3_smoke": {
+    "id": "tactical_mk3_smoke",
+    "name": {
+      "value": "Tattico Mk. 3 (Fumo)",
+      "originalEn": "Tactical Mk. 3 (Smoke)"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_smoke.png",
     "isWeapon": null,
     "recipe": {
       "advanced_electrical_components": 2,
@@ -7490,6 +7652,20 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "turbine_compressor": {
+    "id": "turbine_compressor",
+    "name": {
+      "value": "Compressore della turbina",
+      "originalEn": "Turbine Compressor"
+    },
+    "stackSize": 3,
+    "value": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "turbo_pump": {
     "id": "turbo_pump",
     "name": {
@@ -7499,6 +7675,20 @@
     "stackSize": 3,
     "value": 2000,
     "imageFilename": "https://cdn.arctracker.io/items/turbo_pump.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "twilight_compass_ship_model": {
+    "id": "twilight_compass_ship_model",
+    "name": {
+      "value": "Modellino di nave \"Twilight Compass\"",
+      "originalEn": "\"Twilight Compass\" Ship Model"
+    },
+    "stackSize": 1,
+    "value": 1000,
+    "imageFilename": "https://cdn.arctracker.io/items/twilight_compass_ship_model.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -7526,7 +7716,7 @@
     },
     "stackSize": 1,
     "value": 6000,
-    "imageFilename": null,
+    "imageFilename": "https://cdn.arctracker.io/items/vaporizer_regulator.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -7541,6 +7731,20 @@
     "stackSize": 3,
     "value": 3000,
     "imageFilename": "https://cdn.arctracker.io/items/vase.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "velocity_ship_model": {
+    "id": "velocity_ship_model",
+    "name": {
+      "value": "Modellino di nave \"Velocity\"",
+      "originalEn": "\"Velocity\" Ship Model"
+    },
+    "stackSize": 1,
+    "value": 3000,
+    "imageFilename": "https://cdn.arctracker.io/items/velocity_ship_model.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
@@ -7933,6 +8137,51 @@
     "stackSize": 3,
     "value": 1000,
     "imageFilename": "https://cdn.arctracker.io/items/water_pump.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "white_flag_blueprint": {
+    "id": "white_flag_blueprint",
+    "name": {
+      "value": "Progetto bandiera bianca",
+      "originalEn": "White Flag Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": null,
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "white_flag": {
+    "id": "white_flag",
+    "name": {
+      "value": "Bandiera bianca",
+      "originalEn": "White Flag"
+    },
+    "stackSize": 5,
+    "value": 640,
+    "imageFilename": null,
+    "isWeapon": null,
+    "recipe": {
+      "fabric": 10,
+      "plastic_parts": 3
+    },
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "wind_sprite_ship_model": {
+    "id": "wind_sprite_ship_model",
+    "name": {
+      "value": "Modellino di nave \"Wind Sprite\"",
+      "originalEn": "\"Wind Sprite\" Ship Model"
+    },
+    "stackSize": 1,
+    "value": 1000,
+    "imageFilename": "https://cdn.arctracker.io/items/wind_sprite_ship_model.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
