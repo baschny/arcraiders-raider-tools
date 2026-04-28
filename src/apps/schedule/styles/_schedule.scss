@@ -320,6 +320,10 @@
     background-image: url('/images/maps/blue-gate.webp');
   }
 
+  &[data-map="riven-tides"] {
+    background-image: url('/images/maps/riven-tides.webp');
+  }
+
   &[data-map="stella-montis"] {
     background-image: url('/images/maps/stella-montis.webp');
   }
@@ -440,4 +444,3 @@
   transition: all 0.15s ease;
   pointer-events: none;
 }
-

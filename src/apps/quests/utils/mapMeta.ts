@@ -5,6 +5,7 @@ export type MapSlug =
   | 'blue-gate'
   | 'buried-city'
   | 'dam-battleground'
+  | 'riven-tides'
   | 'stella-montis'
   | 'the-spaceport';
 
@@ -12,6 +13,7 @@ const KNOWN_MAP_SLUGS: readonly MapSlug[] = [
   'blue-gate',
   'buried-city',
   'dam-battleground',
+  'riven-tides',
   'stella-montis',
   'the-spaceport',
 ];
@@ -20,6 +22,7 @@ const MAP_IMAGE_PATHS: Record<MapSlug, string> = {
   'blue-gate': '/images/maps/blue-gate.webp',
   'buried-city': '/images/maps/buried-city.webp',
   'dam-battleground': '/images/maps/dam-battleground.webp',
+  'riven-tides': '/images/maps/riven-tides.webp',
   'stella-montis': '/images/maps/stella-montis.webp',
   'the-spaceport': '/images/maps/the-spaceport.webp',
 };
@@ -32,6 +35,7 @@ const MAP_ACCENT_COLORS: Record<MapSlug, string> = {
   'blue-gate': '#4fc3f7',
   'buried-city': '#ff9800',
   'dam-battleground': '#26a69a',
+  'riven-tides': '#4db6ac',
   'stella-montis': '#b39ddb',
   'the-spaceport': '#90a4ae',
 };
