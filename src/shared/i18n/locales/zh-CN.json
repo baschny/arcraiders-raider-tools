@@ -3,55 +3,55 @@
     "name": "ARC Raiders 工具"
   },
   "shared": {
-    "language": "Language",
-    "loading": "Loading...",
-    "errorPrefix": "Error",
+    "language": "语言",
+    "loading": "加载中...",
+    "errorPrefix": "错误",
     "syncError": {
       "network": {
-        "title": "Can't reach the sync server",
-        "body": "Your recent changes aren't being saved. Check your connection or try again in a moment."
+        "title": "无法连接到同步服务器",
+        "body": "您最近的更改未被保存。请检查您的连接或稍后重试。"
       },
       "unauthorized": {
-        "title": "Your session expired",
-        "body": "Please sign in again to continue syncing your progress across devices.",
-        "signIn": "Sign in again"
+        "title": "会话已过期",
+        "body": "请重新登录以继续在不同设备之间同步您的进度。",
+        "signIn": "重新登录"
       },
       "server": {
-        "title": "Sync server error (HTTP {status})",
+        "title": "同步服务器错误 (HTTP {status})",
         "body": "The backend is currently unhealthy. Your recent changes aren't being saved."
       },
       "client": {
-        "title": "Sync rejected (HTTP {status})",
-        "body": "The server refused the last write. Your recent changes aren't being saved."
+        "title": "同步被拒绝 (HTTP {status})",
+        "body": "服务器拒绝了上次写入。您最近的更改未被保存。"
       },
       "unknown": {
-        "title": "Sync error",
-        "body": "Your recent changes might not be saved. Please try again."
+        "title": "同步错误",
+        "body": "您最近的更改可能未被保存。请重试。"
       },
-      "retry": "Retry",
-      "details": "Affected: {sources}"
+      "retry": "重试",
+      "details": "被影响：{sources}"
     },
     "header": {
-      "switchTool": "Switch Tool",
-      "switchLanguage": "Switch Language",
-      "languageLabel": "Language"
+      "switchTool": "切换工具",
+      "switchLanguage": "切换语言",
+      "languageLabel": "语言"
     },
     "sidebar": {
-      "title": "Tools",
-      "collapse": "Collapse",
-      "expand": "Expand sidebar",
-      "collapseTitle": "Collapse sidebar",
-      "profile": "Profile"
+      "title": "工具",
+      "collapse": "收起",
+      "expand": "展开侧边栏",
+      "collapseTitle": "收起侧边栏",
+      "profile": "个人资料"
     },
     "userMenu": {
-      "login": "Login",
-      "profile": "Profile",
-      "logout": "Logout",
-      "signedInAs": "Signed in as",
-      "confirmSignOutTitle": "Sign out?",
-      "confirmSignOutBody": "You'll need to sign back in to sync your progress across devices.",
-      "cancel": "Cancel",
-      "confirm": "Sign out"
+      "login": "登录",
+      "profile": "个人资料",
+      "logout": "登出",
+      "signedInAs": "登录为",
+      "confirmSignOutTitle": "登出？",
+      "confirmSignOutBody": "您需要重新登录才能在不同设备之间同步您的进度。",
+      "cancel": "取消",
+      "confirm": "登出"
     },
     "footer": {
       "thanksPrefix": "数据由 ",
@@ -72,7 +72,7 @@
     }
   },
   "dashboard": {
-    "title": "Raider Tools",
+    "title": "奇袭者工具",
     "intro": "欢迎！这是我为 ARC Raiders 制作的个人工具合集。它们最初是为我自己在游戏中使用的私人工具，但实在太实用了，所以我决定分享出来。如果这些工具对你有帮助，欢迎告诉我。请选择下方工具开始使用。",
     "tools": {
       "schedule": "以更清晰的视图展示 ARC Raiders 地图事件时间表，方便你规划对局。",
@@ -83,23 +83,23 @@
     }
   },
   "pages": {
-    "notFound": "Page not found",
-    "profileSettings": "Profile Settings",
+    "notFound": "找不到页面",
+    "profileSettings": "个人资料设置",
     "profile": {
-      "title": "Profile",
+      "title": "个人资料",
       "sections": {
-        "arctracker": "ArcTracker Integration"
+        "arctracker": "ArcTracker 集成"
       }
     }
   },
   "schedule": {
-    "loading": "Loading event schedule...",
-    "noData": "No data available",
-    "previousDay": "Previous day",
-    "nextDay": "Next day",
-    "goToToday": "Go to today",
-    "updated": "Updated",
-    "mapHeader": "Map"
+    "loading": "正在加载事件时间表...",
+    "noData": "无可用数据",
+    "previousDay": "上一天",
+    "nextDay": "次日",
+    "goToToday": "转到今日",
+    "updated": "已更新",
+    "mapHeader": "地图"
   },
   "quests": {
     "loading": "正在加载任务数据...",
@@ -134,7 +134,7 @@
     "statusLocked": "已锁定",
     "wikiTitle": "在 ARC Raiders Wiki 中打开（新标签页）",
     "wikiLabel": "Wiki",
-    "arcTrackerTitle": "Open on arctracker.io (new tab)",
+    "arcTrackerTitle": "在 arctracker.io 上打开 (新标签)",
     "arcTrackerLabel": "ARCTracker",
     "blueprintsToggleShow": "显示蓝图奖励",
     "blueprintsToggleHide": "隐藏蓝图奖励",
@@ -144,7 +144,7 @@
     "dialogMore": "...以及另外 {count} 个",
     "dialogCancel": "取消",
     "dialogConfirm": "确认",
-    "tooltipObjectives": "Objectives",
+    "tooltipObjectives": "目标",
     "tooltipObjectivesOneRound": "一轮",
     "tooltipRequirements": "Requirements",
     "tooltipGranted": "Granted items",
