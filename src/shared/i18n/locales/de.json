@@ -158,8 +158,15 @@
       "goal": "Ziel"
     },
     "actions": {
+      "keep": "Keep for Crafting",
       "recycle": "Recyceln",
       "salvage": "Zerlegen"
+    },
+    "grouping": {
+      "label": "Group by",
+      "alphabet": "By Alphabet",
+      "salvage": "By Salvage Type",
+      "goals": "By Active Goals"
     },
     "sidebar": {
       "goalItems": "Zielgegenstände",
@@ -197,7 +204,8 @@
     },
     "results": {
       "noItemsNeeded": "Für deine Ziele werden keine Gegenstände benötigt.",
-      "noSearchResults": "Keine Gegenstände passend zu „{query}“ gefunden"
+      "noSearchResults": "Keine Gegenstände passend zu „{query}“ gefunden",
+      "noItemsForGroup": "No items in this group."
     },
     "itemInfo": {
       "stackSize": "Stapelgröße:",

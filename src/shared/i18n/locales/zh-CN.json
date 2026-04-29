@@ -1,6 +1,6 @@
 {
   "app": {
-    "name": "ARC Raiders Tools"
+    "name": "ARC Raiders 工具"
   },
   "shared": {
     "language": "Language",
@@ -145,41 +145,48 @@
     "dialogCancel": "取消",
     "dialogConfirm": "确认",
     "tooltipObjectives": "Objectives",
-    "tooltipObjectivesOneRound": "One round",
+    "tooltipObjectivesOneRound": "一轮",
     "tooltipRequirements": "Requirements",
     "tooltipGranted": "Granted items",
-    "tooltipRewards": "Rewards"
+    "tooltipRewards": "奖励"
   },
   "lootHelper": {
-    "loading": "Loading item data...",
-    "noData": "No item data available",
-    "emptyState": "Add goal items from the sidebar to see what materials you need to loot.",
+    "loading": "正在加载物品数据...",
+    "noData": "没有可用的物品数据",
+    "emptyState": "从侧边栏添加目标物品以查看您需要搜刮的材料。",
     "badges": {
-      "goal": "Goal"
+      "goal": "目标"
     },
     "actions": {
-      "recycle": "Recycle",
-      "salvage": "Salvage"
+      "keep": "保留以制作",
+      "recycle": "回收",
+      "salvage": "分解"
+    },
+    "grouping": {
+      "label": "分组",
+      "alphabet": "按字母排序",
+      "salvage": "按分解类型",
+      "goals": "按活跃目标"
     },
     "sidebar": {
-      "goalItems": "Goal Items",
-      "yourGoals": "Your Goals",
-      "searchPlaceholder": "Search items...",
-      "enableAll": "Enable All",
-      "disableAll": "Disable All",
-      "enableAllTitle": "Enable all goal items",
-      "disableAllTitle": "Disable all goal items",
-      "expandGoals": "Expand goals",
-      "collapseGoals": "Collapse goals",
-      "noGoals": "No goal items yet. Search and add items above.",
-      "enableItem": "Click to enable",
-      "disableItem": "Click to disable",
-      "removeGoal": "Remove from goals",
-      "stashTitle": "Enough in Stash",
-      "stashEnoughTitle": "I already have enough of this material",
-      "expandStash": "Expand stash list",
-      "collapseStash": "Collapse stash list",
-      "noStashItems": "No items marked as in stash yet.",
+      "goalItems": "目标物品",
+      "yourGoals": "你的目标",
+      "searchPlaceholder": "搜索物品...",
+      "enableAll": "全部启用",
+      "disableAll": "全部禁用",
+      "enableAllTitle": "启用所有目标物品",
+      "disableAllTitle": "禁用所有目标物品",
+      "expandGoals": "展开目标",
+      "collapseGoals": "收起目标",
+      "noGoals": "尚无目标物品。搜索并添加以上物品。",
+      "enableItem": "单击以启用",
+      "disableItem": "单击以禁用",
+      "removeGoal": "从目标中移除",
+      "stashTitle": "仓库中已有足够的库存",
+      "stashEnoughTitle": "我已有足够的材料",
+      "expandStash": "展开仓库列表",
+      "collapseStash": "折叠仓库列表",
+      "noStashItems": "仓库里暂无被标记的物品。",
       "enableStashItem": "Click to enable this stash item",
       "disableStashItem": "Click to disable this stash item",
       "removeStashItem": "Remove from stash"
@@ -197,7 +204,8 @@
     },
     "results": {
       "noItemsNeeded": "No items needed for your goals.",
-      "noSearchResults": "No items found matching \"{query}\""
+      "noSearchResults": "No items found matching \"{query}\"",
+      "noItemsForGroup": "No items in this group."
     },
     "itemInfo": {
       "stackSize": "Stack Size:",
