@@ -535,7 +535,7 @@ src/shared/services/arctrackerApi.ts
 which proxies requests to:
 
 ```
-https://api.raider-tools.app/arctracker
+https://api.raider-tools.app/me/arctracker
 ```
 
 The Lambda proxy injects the application authentication key and forwards rate-limit headers.

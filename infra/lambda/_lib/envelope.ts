@@ -15,9 +15,10 @@
  */
 
 import { KMSClient, GenerateDataKeyCommand, DecryptCommand } from "@aws-sdk/client-kms";
-import { createCipheriv, createDecipheriv, randomBytes } from "node:crypto";
+import { createCipheriv, createDecipheriv, createHash, randomBytes } from "node:crypto";
 
 const kms = new KMSClient({});
+const LOCAL_DEV_KEY_MARKER = "local-dev:v1";
 
 export interface EnvelopePayload {
     /** Algorithm used. Always `AES-256-GCM` for now. */
@@ -52,6 +53,10 @@ export async function encryptToken(
     plaintext: string,
     ctx: EnvelopeContext,
 ): Promise<EnvelopePayload> {
+    if (process.env.RAIDER_TOOLS_LOCAL_DEV === "true") {
+        return encryptTokenLocalDev(plaintext);
+    }
+
     const keyId = process.env.KMS_KEY_ID;
     if (!keyId) throw new Error("Missing KMS_KEY_ID");
 
@@ -86,6 +91,13 @@ export async function decryptToken(
     payload: EnvelopePayload,
     ctx: EnvelopeContext,
 ): Promise<string> {
+    if (payload.encryptedDataKey === LOCAL_DEV_KEY_MARKER) {
+        if (process.env.RAIDER_TOOLS_LOCAL_DEV !== "true") {
+            throw new Error("Local-dev encrypted token cannot be decrypted outside local dev");
+        }
+        return decryptTokenLocalDev(payload);
+    }
+
     const dec = await kms.send(new DecryptCommand({
         CiphertextBlob: Buffer.from(payload.encryptedDataKey, "base64"),
         EncryptionContext: ctxToRecord(ctx),
@@ -104,6 +116,43 @@ export async function decryptToken(
     ]);
 
     (dec.Plaintext as Uint8Array).fill(0);
+
+    return pt.toString("utf8");
+}
+
+function localDevKey(): Buffer {
+    const secret = process.env.LOCAL_TOKEN_ENCRYPTION_KEY;
+    if (!secret) throw new Error("Missing LOCAL_TOKEN_ENCRYPTION_KEY");
+    return createHash("sha256").update(secret, "utf8").digest();
+}
+
+function encryptTokenLocalDev(plaintext: string): EnvelopePayload {
+    const iv = randomBytes(12);
+    const cipher = createCipheriv("aes-256-gcm", localDevKey(), iv);
+    const ct = Buffer.concat([cipher.update(plaintext, "utf8"), cipher.final()]);
+    const tag = cipher.getAuthTag();
+
+    return {
+        alg: "AES-256-GCM",
+        ciphertext: ct.toString("base64"),
+        iv: iv.toString("base64"),
+        tag: tag.toString("base64"),
+        encryptedDataKey: LOCAL_DEV_KEY_MARKER,
+        createdAt: new Date().toISOString(),
+    };
+}
+
+function decryptTokenLocalDev(payload: EnvelopePayload): string {
+    const decipher = createDecipheriv(
+        "aes-256-gcm",
+        localDevKey(),
+        Buffer.from(payload.iv, "base64"),
+    );
+    decipher.setAuthTag(Buffer.from(payload.tag, "base64"));
+    const pt = Buffer.concat([
+        decipher.update(Buffer.from(payload.ciphertext, "base64")),
+        decipher.final(),
+    ]);
 
     return pt.toString("utf8");
 }

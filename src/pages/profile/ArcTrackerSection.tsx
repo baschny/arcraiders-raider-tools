@@ -2,8 +2,8 @@
  * ArcTracker Integration Section
  *
  * Extracted from the legacy `ProfileSettings` page. Lets users link or
- * unlink their arctracker.io account via API token. The backing store
- * (local vs. server) is picked by `AuthContext` based on Cognito state.
+ * unlink their arctracker.io account via API token. Tokens are stored
+ * server-side for signed-in Raider Tools users.
  */
 
 import { useEffect, useState } from 'react';
@@ -17,7 +17,6 @@ import {
   LogOut,
 } from 'lucide-react';
 import { useAuth } from '../../shared/context/AuthContext';
-import { getToken } from '../../shared/utils/tokenStorage';
 import { getCacheMeta } from '../../shared/services/cacheService';
 import { useLocale } from '../../shared/context/LocaleContext';
 
@@ -30,14 +29,6 @@ export function ArcTrackerSection() {
   const [lastSynced, setLastSynced] = useState<Date | null>(null);
   const [localError, setLocalError] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
-
-  // Prefill existing token so the user can see / edit it.
-  useEffect(() => {
-    const existingToken = getToken();
-    if (existingToken) {
-      setTokenInput(existingToken);
-    }
-  }, []);
 
   // Last-synced metadata is shown alongside the connected account.
   useEffect(() => {

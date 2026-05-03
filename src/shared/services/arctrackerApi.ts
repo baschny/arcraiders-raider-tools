@@ -1,6 +1,8 @@
 /**
  * ArcTracker API Service
- * Handles all communication with the arctracker.io API via our proxy.
+ * Handles communication with arctracker.io via Raider Tools proxies.
+ * Data sync requires a signed-in Raider Tools user with a server-side linked
+ * ArcTracker token.
  * Includes retry logic, timeout handling, and IndexedDB caching.
  */
 
@@ -24,10 +26,12 @@ import {
   getCachedHideout,
   updateCacheMeta,
 } from './cacheService';
-import { getToken } from '../utils/tokenStorage';
+import { getIdToken } from '../auth/cognitoClient';
 import { DEFAULT_LOCALE, LOCALE_STORAGE_KEY, type AppLocale } from '../i18n/config';
 
-const API_BASE = 'https://api.raider-tools.app/arctracker';
+const API_ORIGIN = (import.meta.env.VITE_API_BASE_URL as string | undefined) ??
+  'https://api.raider-tools.app';
+const USER_RELAY_BASE = `${API_ORIGIN}/me/arctracker`;
 const TIMEOUT_MS = 10000;
 const MAX_RETRIES = 1;
 const STASH_PER_PAGE = 500;
@@ -78,18 +82,15 @@ async function apiRequest<T>(
   token?: string,
   retryCount = 0
 ): Promise<T> {
-  const authToken = token ?? getToken();
-  if (!authToken) {
-    throw createApiError('No authentication token available', 401, false);
-  }
+  const auth = await getRequestAuth(token);
 
-  const url = `${API_BASE}${endpoint}`;
+  const url = `${auth.baseUrl}${endpoint}`;
 
   try {
     const response = await fetchWithTimeout(url, {
       method: 'GET',
       headers: {
-        'Authorization': `Bearer ${authToken}`,
+        'Authorization': `Bearer ${auth.token}`,
         'Accept': 'application/json',
       },
     });
@@ -133,20 +134,17 @@ async function apiRequest<T>(
   }
 }
 
-/**
- * Validate a token by calling the profile endpoint.
- * Returns the username if valid, null otherwise.
- */
-export async function validateToken(token: string): Promise<string | null> {
-  try {
-    const response = await apiRequest<ArctrackerProfileResponse>(
-      `/v2/user/profile`,
-      token
-    );
-    return response.data.username;
-  } catch {
-    return null;
+async function getRequestAuth(token?: string): Promise<{ baseUrl: string; token: string }> {
+  if (token) {
+    throw createApiError('Direct ArcTracker token usage is not supported', 401, false);
   }
+
+  const idToken = await getIdToken();
+  if (idToken) {
+    return { baseUrl: USER_RELAY_BASE, token: idToken };
+  }
+
+  throw createApiError('No authentication token available', 401, false);
 }
 
 /**

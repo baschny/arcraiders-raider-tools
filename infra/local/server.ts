@@ -3,7 +3,8 @@
  *
  * Mirrors the production API Gateway + Lambda stack on a single Node
  * process by dispatching HTTP requests to the same handlers used in
- * production (`infra/lambda/profile.ts`, `state.ts`, `links.ts`). The
+ * production (`infra/lambda/profile.ts`, `state.ts`, `links.ts`,
+ * `arctracker-user-proxy.ts`). The
  * handlers talk to DynamoDB Local (via `AWS_ENDPOINT_URL_DYNAMODB`)
  * instead of the real DynamoDB, and the JWT authorizer is replaced by
  * a trivial dev-token scheme understood by `src/shared/auth/devAuthClient.ts`.
@@ -25,6 +26,8 @@
  */
 
 import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
+import { existsSync, readFileSync } from "node:fs";
+import { resolve } from "node:path";
 import type {
     APIGatewayProxyEventV2WithJWTAuthorizer,
     APIGatewayProxyResultV2,
@@ -45,6 +48,8 @@ import {
 // set them later the clients would already be pinned to a different
 // (missing) endpoint and would fail to connect to DynamoDB Local.
 // ---------------------------------------------------------------------------
+loadLocalEnv();
+
 const LOCAL_API_PORT = Number(process.env.LOCAL_API_PORT ?? 4000);
 const DDB_ENDPOINT = process.env.AWS_ENDPOINT_URL_DYNAMODB ?? "http://localhost:8000";
 const TABLE_NAME = process.env.USER_TABLE_NAME ?? "raider-tools-users";
@@ -57,9 +62,40 @@ process.env.AWS_SECRET_ACCESS_KEY = process.env.AWS_SECRET_ACCESS_KEY ?? "local"
 process.env.AWS_ENDPOINT_URL_DYNAMODB = DDB_ENDPOINT;
 process.env.USER_TABLE_NAME = TABLE_NAME;
 process.env.ALLOWED_ORIGINS = ALLOWED_ORIGINS;
-// `links.ts` reads this on module load; provide a harmless default that
-// will only ever be hit if the user explicitly exercises the PUT path.
-process.env.ARCTRACKER_RELAY_URL = process.env.ARCTRACKER_RELAY_URL ?? "http://localhost:0/not-configured";
+process.env.RAIDER_TOOLS_LOCAL_DEV = "true";
+process.env.LOCAL_TOKEN_ENCRYPTION_KEY = process.env.LOCAL_TOKEN_ENCRYPTION_KEY ?? "raider-tools-local-dev-token-key";
+function loadLocalEnv(): void {
+    const envPath = resolve(__dirname, "..", ".env");
+    if (!existsSync(envPath)) return;
+
+    const lines = readFileSync(envPath, "utf8").split(/\r?\n/);
+    for (const line of lines) {
+        const trimmed = line.trim();
+        if (!trimmed || trimmed.startsWith("#")) continue;
+
+        const equals = trimmed.indexOf("=");
+        if (equals <= 0) continue;
+
+        const key = trimmed.slice(0, equals).trim();
+        if (!/^[A-Za-z_][A-Za-z0-9_]*$/.test(key) || process.env[key] !== undefined) {
+            continue;
+        }
+
+        process.env[key] = parseEnvValue(trimmed.slice(equals + 1).trim());
+    }
+}
+
+function parseEnvValue(raw: string): string {
+    if (
+        (raw.startsWith("\"") && raw.endsWith("\"")) ||
+        (raw.startsWith("'") && raw.endsWith("'"))
+    ) {
+        return raw.slice(1, -1);
+    }
+
+    const comment = raw.indexOf(" #");
+    return (comment >= 0 ? raw.slice(0, comment) : raw).trim();
+}
 
 /* eslint-disable @typescript-eslint/no-require-imports */
 // Imports are intentionally deferred until after env setup so that each
@@ -67,6 +103,7 @@ process.env.ARCTRACKER_RELAY_URL = process.env.ARCTRACKER_RELAY_URL ?? "http://l
 const profile = require("../lambda/profile");
 const state = require("../lambda/state");
 const links = require("../lambda/links");
+const arctrackerUserProxy = require("../lambda/arctracker-user-proxy");
 /* eslint-enable @typescript-eslint/no-require-imports */
 
 // ---------------------------------------------------------------------------
@@ -147,20 +184,25 @@ type Handler = (
 interface MatchedRoute {
     handler: Handler;
     pathParameters: Record<string, string>;
+    requiresDevAuth: boolean;
 }
 
 function matchRoute(method: string, pathname: string): MatchedRoute | null {
     if (pathname === "/me" && (method === "GET" || method === "PATCH")) {
-        return { handler: profile.handler, pathParameters: {} };
+        return { handler: profile.handler, pathParameters: {}, requiresDevAuth: true };
     }
     if (pathname === "/me/migrate" && method === "POST") {
-        return { handler: state.handler, pathParameters: {} };
+        return { handler: state.handler, pathParameters: {}, requiresDevAuth: true };
+    }
+    if (pathname.startsWith("/me/arctracker/") && method === "GET") {
+        return { handler: arctrackerUserProxy.handler, pathParameters: {}, requiresDevAuth: true };
     }
     const stateMatch = /^\/me\/state\/([^/]+)$/.exec(pathname);
     if (stateMatch && (method === "GET" || method === "PUT" || method === "DELETE")) {
         return {
             handler: state.handler,
             pathParameters: { domain: decodeURIComponent(stateMatch[1]) },
+            requiresDevAuth: true,
         };
     }
     const linksMatch = /^\/me\/links\/([^/]+)$/.exec(pathname);
@@ -168,6 +210,7 @@ function matchRoute(method: string, pathname: string): MatchedRoute | null {
         return {
             handler: links.handler,
             pathParameters: { provider: decodeURIComponent(linksMatch[1]) },
+            requiresDevAuth: true,
         };
     }
     return null;
@@ -322,7 +365,9 @@ async function handleRequest(req: IncomingMessage, res: ServerResponse): Promise
         return;
     }
 
-    const claims = parseDevToken(req.headers.authorization as string | undefined);
+    const claims = route.requiresDevAuth
+        ? parseDevToken(req.headers.authorization as string | undefined)
+        : { sub: "local-relay", email: null };
     if (!claims) {
         writeStructured(res, origin, 401, { error: "Missing or invalid dev token" });
         return;

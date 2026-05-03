@@ -6,9 +6,8 @@
  * their ArcTracker username is. The user's *identity* lives in
  * `CognitoAuthContext`.
  *
- * The backing store automatically switches:
- *   - Cognito user signed in   -> remote (server-side, KMS-encrypted).
- *   - Anonymous mode           -> local (`localStorage`), as before.
+ * The ArcTracker token is available only for signed-in users and is stored
+ * server-side, KMS-encrypted in production.
  *
  * The public API is unchanged so existing call sites keep working.
  */
@@ -19,15 +18,10 @@ import {
   useState,
   useEffect,
   useCallback,
-  useMemo,
   type ReactNode,
 } from 'react';
 import { cacheClear } from '../services/cacheService';
-import {
-  type ArctrackerTokenLink,
-  localTokenLink,
-  remoteTokenLink,
-} from '../auth/tokenLink';
+import { serverTokenLink } from '../auth/tokenLink';
 import { useCognitoAuth } from './CognitoAuthContext';
 
 interface AuthContextValue {
@@ -49,13 +43,6 @@ interface AuthProviderProps {
 export function AuthProvider({ children }: AuthProviderProps) {
   const cognito = useCognitoAuth();
 
-  // Pick the active backend: server-side when the user is signed in,
-  // local-storage otherwise. This is recomputed when sign-in state flips.
-  const link: ArctrackerTokenLink = useMemo(
-    () => (cognito.user ? remoteTokenLink : localTokenLink),
-    [cognito.user],
-  );
-
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [username, setUsername] = useState<string | null>(null);
   const [isValidating, setIsValidating] = useState(true);
@@ -65,26 +52,31 @@ export function AuthProvider({ children }: AuthProviderProps) {
     setIsValidating(true);
     setError(null);
     try {
-      const snap = await link.refresh();
+      if (!cognito.user) {
+        setIsAuthenticated(false);
+        setUsername(null);
+        return;
+      }
+      const snap = await serverTokenLink.refresh();
       setIsAuthenticated(snap.isLinked);
       setUsername(snap.username);
-      if (!snap.isLinked && link.kind === 'local') {
-        // Existing UX: stale local token → mention session expiry.
-        setError(prev => prev);
-      }
     } catch {
       setError('Unable to verify session. Please check your connection.');
     } finally {
       setIsValidating(false);
     }
-  }, [link]);
+  }, [cognito.user]);
 
   const login = useCallback(
     async (token: string): Promise<boolean> => {
       setIsValidating(true);
       setError(null);
       try {
-        const validatedUsername = await link.link(token);
+        if (!cognito.user) {
+          setError('Please sign in before linking ArcTracker.');
+          return false;
+        }
+        const validatedUsername = await serverTokenLink.link(token);
         if (validatedUsername) {
           setIsAuthenticated(true);
           setUsername(validatedUsername);
@@ -99,12 +91,12 @@ export function AuthProvider({ children }: AuthProviderProps) {
         setIsValidating(false);
       }
     },
-    [link],
+    [cognito.user],
   );
 
   const logout = useCallback(async () => {
     try {
-      await link.unlink();
+      if (cognito.user) await serverTokenLink.unlink();
     } catch (err) {
       console.warn('Failed to unlink ArcTracker token', err);
     }
@@ -112,7 +104,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     setIsAuthenticated(false);
     setUsername(null);
     setError(null);
-  }, [link]);
+  }, [cognito.user]);
 
   // Re-check link state whenever the active backend changes (sign in / out).
   useEffect(() => {

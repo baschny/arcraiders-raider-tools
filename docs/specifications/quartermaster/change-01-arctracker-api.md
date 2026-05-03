@@ -41,7 +41,7 @@ No planner core logic (Section 6) was changed.
   ```
 - Base URL:
   ```
-  https://api.raider-tools.app/arctracker
+  https://api.raider-tools.app/me/arctracker
   ```
 
 **Technical Impact**

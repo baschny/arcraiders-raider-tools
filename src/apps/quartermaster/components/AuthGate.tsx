@@ -7,6 +7,7 @@
 import { Link } from 'react-router-dom';
 import { LogIn, Loader2 } from 'lucide-react';
 import { useAuth } from '../../../shared/context/AuthContext';
+import { useCognitoAuth } from '../../../shared/context/CognitoAuthContext';
 import { useLocale } from '../../../shared/context/LocaleContext';
 import type { ReactNode } from 'react';
 
@@ -23,6 +24,7 @@ interface AuthGateProps {
 export function AuthGate({ children }: AuthGateProps) {
   const { t } = useLocale();
   const { isAuthenticated, isValidating } = useAuth();
+  const cognito = useCognitoAuth();
 
   if (isValidating) {
     return (
@@ -36,6 +38,11 @@ export function AuthGate({ children }: AuthGateProps) {
   }
 
   if (!isAuthenticated) {
+    const linkTarget = cognito.user ? '/profile/arctracker' : '/auth/sign-in';
+    const linkLabel = cognito.user
+      ? t('quartermaster.auth.goToSettings')
+      : t('shared.userMenu.login');
+
     return (
       <div className="qm-auth-gate">
         <div className="qm-auth-gate__login">
@@ -44,8 +51,8 @@ export function AuthGate({ children }: AuthGateProps) {
           <p>
             {t('quartermaster.auth.requiredBody')}
           </p>
-          <Link to="/profile/arctracker" className="qm-button qm-button--primary">
-            {t('quartermaster.auth.goToSettings')}
+          <Link to={linkTarget} className="qm-button qm-button--primary">
+            {linkLabel}
           </Link>
         </div>
       </div>

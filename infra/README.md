@@ -3,26 +3,15 @@
 This `infra/` project provisions the AWS resources for `raider-tools.app`. Two stacks in two regions, always deployed together:
 
 - `RaiderToolsAuthCertStack` (**us-east-1**) – ACM certificate for the Cognito custom domain `auth.raider-tools.app`. Cognito requires this certificate to live in us-east-1 because it serves the domain via CloudFront.
-- `RaiderToolsStack` (eu-central-1) – everything else: HTTP API at `api.raider-tools.app`, ArcTracker relay, schedule services, Cognito user pool (using the custom domain), DynamoDB user table, KMS CMK, Discord OAuth bridge, and all `/me*`, `/me/state/*`, `/me/migrate` Lambdas + routes.
+- `RaiderToolsStack` (eu-central-1) – everything else: HTTP API at `api.raider-tools.app`, authenticated ArcTracker proxying, schedule services, Cognito user pool (using the custom domain), DynamoDB user table, KMS CMK, Discord OAuth bridge, and all `/me*`, `/me/state/*`, `/me/migrate` Lambdas + routes.
 
-The relay portion exposes the ArcTracker API to the SPA without exposing the ArcTracker **app key** in the browser.
+ArcTracker profile data requires a signed-in Raider Tools user. The SPA links a user's ArcTracker token through `/me/links/arctracker`, and ArcTracker-backed data sync runs through `/me/arctracker/{proxy+}` using the encrypted linked token server-side. The ArcTracker **app key** is never exposed in the browser.
 
 Cross-stack references between the two stacks are wired via CDK's `crossRegionReferences: true` (no manual ARN copy/paste).
 
 History: `RaiderToolsStack` merges two older stacks, `RaiderToolsArcRelayStack` and `RaiderToolsAuthStack`. The split was purely thematic and caused a silent foot-gun — routes added via `httpApi.addRoutes(...)` from the auth stack physically landed in the relay stack, so `cdk deploy` of only the auth stack quietly skipped new routes. The merged layout makes `cdk deploy --all` always sufficient.
 
-Mapping:
-* Source (Relay API): `https://api.raider-tools.app/arctracker/<path>`
-* Target (ArcTracker API): `https://arctracker.io/api/<path>`
-
 See https://arctracker.io/developers/docs for complete documentation.
-
-### Some examples
-
-| **Call** | **Target** |
-|----------|-------------|
-| https://api.raider-tools.app/arctracker/api/items | https://arctracker.io/api/items |
-| https://api.raider-tools.app/arctracker/api/v2/user/profile | https://arctracker.io/api/v2/user/profile |
 
 ---
 
@@ -31,10 +20,11 @@ See https://arctracker.io/developers/docs for complete documentation.
 The CDK stack (CloudFormation) creates the following resources in **eu-central-1**:
 
 - ACM Certificate for `api.raider-tools.app` (DNS validated via Route53)
-- API Gateway (HTTP API) for the relay endpoints (e.g. `/arc/user/profile`)
-- Lambda function (Node.js) that:
+- API Gateway (HTTP API) for authenticated user endpoints and schedule endpoints
+- Lambda functions (Node.js) that:
     - reads the ArcTracker app key from Secrets Manager
-    - forwards the user’s `Authorization: Bearer ...` token to ArcTracker
+    - decrypt the signed-in user's linked ArcTracker token when needed
+    - forward authorized requests to ArcTracker
     - passes through rate-limit headers
     - enforces an allowlist of routes
 - API Gateway custom domain name `api.raider-tools.app`
@@ -136,7 +126,7 @@ AWS_PROFILE=baschny aws secretsmanager get-secret-value \
 
 ## d) How to redeploy the Lambda when code changes
 
-Any change to `infra/lambda/arc-relay.ts` is deployed via CDK:
+Any change to ArcTracker forwarding or user proxy Lambda code is deployed via CDK:
 
 ```bash
 cd infra
@@ -154,12 +144,12 @@ AWS_PROFILE=baschny cdk deploy
 
 ## Smoke test
 
-After deployment, test the relay with a real user token:
+After deployment, test ArcTracker sync through the signed-in user proxy with a Cognito ID token for a user that has linked ArcTracker:
 
 ```bash
 curl -i \
-  -H "Authorization: Bearer arc_u1_USER_TOKEN_HERE" \
-  https://api.raider-tools.app/arctracker/v2/user/profile
+  -H "Authorization: Bearer COGNITO_ID_TOKEN_HERE" \
+  https://api.raider-tools.app/me/arctracker/v2/user/profile
 ```
 
 Expected result:
@@ -175,11 +165,8 @@ Expected result:
 
 ## Notes
 
-- This relay intentionally does **not** store user tokens or user data server-side.
-- API routes are **explicitly allowlisted**.
-- Add new ArcTracker endpoints in both:
-    - CDK routes (`httpApi.addRoutes(...)`)
-    - Lambda route map (`ROUTE_MAP` in `arc-relay.ts`)
+- Signed-in Raider Tools users access stored ArcTracker tokens through `/me/arctracker/{proxy+}`; that route decrypts the linked token server-side and uses the shared relay forwarding helper.
+- Anonymous ArcTracker profile usage is intentionally unsupported.
 
 ---
 
@@ -196,6 +183,7 @@ These resources all live in the unified `RaiderToolsStack`:
   - `GET /auth/discord/start`, `GET /auth/discord/callback` – Discord OAuth bridge (no JWT auth).
   - `GET|PATCH /me` – profile (Cognito JWT-protected).
   - `GET|PUT|DELETE /me/links/{provider}` – manage external account links (Cognito JWT-protected).
+  - `GET /me/arctracker/{proxy+}` – call ArcTracker with the user's encrypted linked token (Cognito JWT-protected).
   - `GET|PUT|DELETE /me/state/{domain}`, `POST /me/migrate` – per-user synced state with optimistic concurrency (Cognito JWT-protected).
 
 ### Pre-deploy: apex-record requirement (Cognito custom domain)
