@@ -20,7 +20,13 @@ export function generateListId(): string {
  * Validates item IDs against known items; preserves array order (= priority).
  */
 export function loadStoredLists(itemsMap: ItemsMap): StoredList[] {
-  const raw = quartermasterStore.get().lists;
+  return normalizeStoredLists(quartermasterStore.get().lists, itemsMap);
+}
+
+export function normalizeStoredLists(
+  raw: ReturnType<typeof quartermasterStore.get>['lists'],
+  itemsMap: ItemsMap
+): StoredList[] {
   const lists: StoredList[] = [];
   for (const r of raw) {
     if (!r || !r.id || !r.name) continue;

@@ -19,7 +19,7 @@ import { ConfirmDialog } from './ConfirmDialog';
 import { migrateQuestIds } from '../data/questIdMigration';
 import { trackQuestMark } from '../../../shared/utils/analytics';
 import { useLocale } from '../../../shared/context/LocaleContext';
-import { questsStore } from '../../../shared/state/stores';
+import { questsStore, useStore } from '../../../shared/state/stores';
 
 const BLUEPRINT_OVERLAY_COLLAPSED_STORAGE_KEY =
   'raider-tools:quest-tracker-blueprints-collapsed';
@@ -47,10 +47,23 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
   // Completed quests live in `questsStore` (phase 2). The store is kept
   // in sync with either localStorage (anonymous) or the server (signed
   // in) by the shared state subsystem.
-  const loadCompletedQuests = (): Set<string> => {
+  const [questState, setQuestState] = useStore(questsStore);
+  const completedQuests = useMemo(() => {
+    const ids = questState.completedQuestIds ?? [];
+    return new Set(migrateQuestIds(ids));
+  }, [questState.completedQuestIds]);
+
+  const readCompletedQuests = useCallback((): Set<string> => {
     const ids = questsStore.get().completedQuestIds ?? [];
     return new Set(migrateQuestIds(ids));
-  };
+  }, []);
+
+  const saveCompletedQuests = useCallback(
+    (next: Set<string>) => {
+      setQuestState({ completedQuestIds: Array.from(next) });
+    },
+    [setQuestState]
+  );
 
   // Load blueprint overlay collapse state from localStorage
   const loadBlueprintOverlayCollapsed = (): boolean => {
@@ -76,7 +89,6 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
     return undefined;
   };
 
-  const [completedQuests, setCompletedQuests] = useState(loadCompletedQuests);
   const [searchQuery, setSearchQuery] = useState('');
   const [highlightedQuestId, setHighlightedQuestId] = useState<string | null>(
     null
@@ -111,13 +123,6 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
     showMore: 0,
     onConfirm: () => {},
   });
-
-  // Persist completed quests whenever they change. The store debounces
-  // writes internally, so this is cheap even when we're calling it on
-  // every keystroke-like interaction.
-  useEffect(() => {
-    questsStore.set({ completedQuestIds: Array.from(completedQuests) });
-  }, [completedQuests]);
 
   // Save blueprint overlay collapse state whenever it changes
   useEffect(() => {
@@ -167,102 +172,101 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
   // Toggle quest completion
   const toggleQuest = useCallback(
     (questId: string) => {
-      setCompletedQuests((prev) => {
-        const quest = quests.find((q) => q.id === questId);
-        if (!quest) return prev;
+      const prev = completedQuests;
+      const quest = quests.find((q) => q.id === questId);
+      if (!quest) return;
 
-        if (prev.has(questId)) {
-          // Uncompleting a quest - check for completed dependents
-          const dependents = getAllDependents(questId, quests, prev);
+      if (prev.has(questId)) {
+        // Uncompleting a quest - check for completed dependents
+        const dependents = getAllDependents(questId, quests, prev);
 
-          if (dependents.size > 0) {
-            const dependentNames = Array.from(dependents)
-              .map((id) => quests.find((q) => q.id === id)?.name)
-              .filter(Boolean) as string[];
+        if (dependents.size > 0) {
+          const dependentNames = Array.from(dependents)
+            .map((id) => quests.find((q) => q.id === id)?.name)
+            .filter(Boolean) as string[];
 
-            // Show confirmation dialog
-            setConfirmDialog({
-              isOpen: true,
-              title: tm('quests.confirmMarkIncompleteTitle', {}),
-              message: tm('quests.confirmMarkIncompleteMessage', {
-                quest: quest.name,
-                count: dependents.size,
-              }),
-              questList: dependentNames.slice(0, 5),
-              showMore: dependentNames.length > 5 ? dependentNames.length - 5 : 0,
-              onConfirm: () => {
-                // Remove quest and all dependents
-                setCompletedQuests((current) => {
-                  const newSet = new Set(current);
-                  newSet.delete(questId);
-                  dependents.forEach((id) => newSet.delete(id));
-                  // Track quest unmarking
-                  trackQuestMark(quest.name, questId, false);
-                  return newSet;
-                });
-                setConfirmDialog((prev) => ({ ...prev, isOpen: false }));
-              },
-            });
-            return prev;
-          } else {
-            // No dependents, just uncomplete
-            const newSet = new Set(prev);
-            newSet.delete(questId);
-            // Track quest unmarking
-            trackQuestMark(quest.name, questId, false);
-            return newSet;
-          }
+          // Show confirmation dialog
+          setConfirmDialog({
+            isOpen: true,
+            title: tm('quests.confirmMarkIncompleteTitle', {}),
+            message: tm('quests.confirmMarkIncompleteMessage', {
+              quest: quest.name,
+              count: dependents.size,
+            }),
+            questList: dependentNames.slice(0, 5),
+            showMore: dependentNames.length > 5 ? dependentNames.length - 5 : 0,
+            onConfirm: () => {
+              // Remove quest and all dependents from the latest store value.
+              const newSet = readCompletedQuests();
+              newSet.delete(questId);
+              dependents.forEach((id) => newSet.delete(id));
+              saveCompletedQuests(newSet);
+              // Track quest unmarking
+              trackQuestMark(quest.name, questId, false);
+              setConfirmDialog((prev) => ({ ...prev, isOpen: false }));
+            },
+          });
         } else {
-          // Completing a quest - check for incomplete prerequisites
-          const incompletePrereqs = quest.previousQuestIds.filter(
+          // No dependents, just uncomplete
+          const newSet = new Set(prev);
+          newSet.delete(questId);
+          saveCompletedQuests(newSet);
+          // Track quest unmarking
+          trackQuestMark(quest.name, questId, false);
+        }
+      } else {
+        // Completing a quest - check for incomplete prerequisites
+        const incompletePrereqs = quest.previousQuestIds.filter(
+          (id) => !prev.has(id)
+        );
+
+        if (incompletePrereqs.length > 0) {
+          const allPrereqs = getAllPrerequisites(questId, quests);
+          const incompleteAll = Array.from(allPrereqs).filter(
             (id) => !prev.has(id)
           );
+          const prereqNames = incompleteAll
+            .map((id) => quests.find((q) => q.id === id)?.name)
+            .filter(Boolean) as string[];
 
-          if (incompletePrereqs.length > 0) {
-            const allPrereqs = getAllPrerequisites(questId, quests);
-            const incompleteAll = Array.from(allPrereqs).filter(
-              (id) => !prev.has(id)
-            );
-            const prereqNames = incompleteAll
-              .map((id) => quests.find((q) => q.id === id)?.name)
-              .filter(Boolean) as string[];
-
-            // Show confirmation dialog
-            setConfirmDialog({
-              isOpen: true,
-              title: tm('quests.confirmAutocompleteTitle', {}),
-              message: tm('quests.confirmAutocompleteMessage', {
-                quest: quest.name,
-                count: incompleteAll.length,
-              }),
-              questList: prereqNames.slice(0, 5),
-              showMore: prereqNames.length > 5 ? prereqNames.length - 5 : 0,
-              onConfirm: () => {
-                // Add quest and all prerequisites
-                setCompletedQuests((current) => {
-                  const newSet = new Set(current);
-                  incompleteAll.forEach((id) => newSet.add(id));
-                  newSet.add(questId);
-                  // Track quest marking
-                  trackQuestMark(quest.name, questId, true);
-                  return newSet;
-                });
-                setConfirmDialog((prev) => ({ ...prev, isOpen: false }));
-              },
-            });
-            return prev;
-          } else {
-            // All prerequisites complete, just complete this quest
-            const newSet = new Set(prev);
-            newSet.add(questId);
-            // Track quest marking
-            trackQuestMark(quest.name, questId, true);
-            return newSet;
-          }
+          // Show confirmation dialog
+          setConfirmDialog({
+            isOpen: true,
+            title: tm('quests.confirmAutocompleteTitle', {}),
+            message: tm('quests.confirmAutocompleteMessage', {
+              quest: quest.name,
+              count: incompleteAll.length,
+            }),
+            questList: prereqNames.slice(0, 5),
+            showMore: prereqNames.length > 5 ? prereqNames.length - 5 : 0,
+            onConfirm: () => {
+              // Add quest and all prerequisites to the latest store value.
+              const newSet = readCompletedQuests();
+              incompleteAll.forEach((id) => newSet.add(id));
+              newSet.add(questId);
+              saveCompletedQuests(newSet);
+              // Track quest marking
+              trackQuestMark(quest.name, questId, true);
+              setConfirmDialog((prev) => ({ ...prev, isOpen: false }));
+            },
+          });
+        } else {
+          // All prerequisites complete, just complete this quest
+          const newSet = new Set(prev);
+          newSet.add(questId);
+          saveCompletedQuests(newSet);
+          // Track quest marking
+          trackQuestMark(quest.name, questId, true);
         }
-      });
+      }
     },
-    [quests]
+    [
+      completedQuests,
+      quests,
+      readCompletedQuests,
+      saveCompletedQuests,
+      tm,
+    ]
   );
 
   // Compute node positions with ELK. The layout only depends on the graph
@@ -571,11 +575,11 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
       questList: completedQuestsList.slice(0, 5),
       showMore: completedQuestsList.length > 5 ? completedQuestsList.length - 5 : 0,
       onConfirm: () => {
-        setCompletedQuests(new Set());
+        saveCompletedQuests(new Set());
         setConfirmDialog((prev) => ({ ...prev, isOpen: false }));
       },
     });
-  }, [actualQuests, completedQuests]);
+  }, [actualQuests, completedQuests, saveCompletedQuests, tm]);
 
   // Focus on a specific quest
   const focusOnQuest = useCallback(

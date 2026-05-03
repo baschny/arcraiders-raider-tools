@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, type ReactNode } from 'react';
+import { useState, useEffect, useMemo, useRef, type ReactNode } from 'react';
 import { ChevronUp, ChevronDown, Filter, LayoutGrid, List, Inbox, Recycle, Wrench } from 'lucide-react';
 import type { Item, ItemsMap, ItemRarity } from '../types/item';
 import type { ReverseMap } from '../utils/craftingChain';
@@ -8,7 +8,6 @@ import { ItemDetailModal } from './ItemDetailModal';
 import { ActionIcon } from './ActionIcon';
 import { getRarityClass, getLocationIcon } from '../utils/dataLoader';
 import { getItemAction, type ItemAction } from '../utils/itemAction';
-import { loadEnabledTypes, saveEnabledTypes, loadEnabledRarities, saveEnabledRarities, loadEnabledLocations, saveEnabledLocations } from '../utils/storage';
 import {
   getItemDisplayName,
   getLocalizedLootHelperLocation,
@@ -19,6 +18,7 @@ import {
   LOOT_HELPER_RARITY_ORDER,
 } from '../utils/localization';
 import { useLocale } from '../../../shared/context/LocaleContext';
+import { lootStore, useStore } from '../../../shared/state/stores';
 
 const FILTERS_EXPANDED_STORAGE_KEY = 'loot-helper:filters-expanded';
 const GROUP_BY_STORAGE_KEY = 'loot-helper:group-by';
@@ -48,13 +48,11 @@ interface AccordionListProps {
 
 export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds, onToggleStashItem }: AccordionListProps) {
   const { t, tm, compareText } = useLocale();
+  const [lootState, setLootState] = useStore(lootStore);
   const [searchTerm, setSearchTerm] = useState('');
   const [expandedItemId, setExpandedItemId] = useState<string | null>(null);
   const [viewMode, setViewMode] = useState<'accordion' | 'grid'>('accordion');
   const [selectedGridItemId, setSelectedGridItemId] = useState<string | null>(null);
-  const [enabledTypes, setEnabledTypes] = useState<Set<string>>(new Set());
-  const [enabledRarities, setEnabledRarities] = useState<Set<ItemRarity>>(new Set());
-  const [enabledLocations, setEnabledLocations] = useState<Set<string>>(new Set());
   const [filtersExpanded, setFiltersExpanded] = useState<boolean>(() => {
     try {
       const saved = localStorage.getItem(FILTERS_EXPANDED_STORAGE_KEY);
@@ -130,6 +128,26 @@ export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds,
     return indexA - indexB;
   });
 
+  const enabledTypes = useMemo(
+    () => new Set(lootState.enabledTypes ?? allPossibleTypes),
+    [allPossibleTypes, lootState.enabledTypes]
+  );
+  const enabledRarities = useMemo(
+    () => new Set<ItemRarity>((lootState.enabledRarities as ItemRarity[] | null) ?? allPossibleRarities),
+    [allPossibleRarities, lootState.enabledRarities]
+  );
+  const enabledLocations = useMemo(
+    () => new Set(lootState.enabledLocations ?? allPossibleLocations),
+    [allPossibleLocations, lootState.enabledLocations]
+  );
+  const patchLootFilters = (next: {
+    enabledTypes?: string[];
+    enabledRarities?: string[];
+    enabledLocations?: string[];
+  }) => {
+    setLootState({ ...lootStore.get(), ...next });
+  };
+
   // Get items and sort alphabetically (this is the filtered list)
   // Filter out Basic Materials, weapons, and modifications (same as allPossibleItems filter)
   const sortedItems = requiredItemIds
@@ -156,42 +174,6 @@ export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds,
     setViewMode(mode);
     localStorage.setItem('view-mode', mode);
   };
-
-  // Initialize enabled types from localStorage or default to all types
-  useEffect(() => {
-    if (allPossibleTypes.length > 0 && enabledTypes.size === 0) {
-      const savedTypes = loadEnabledTypes();
-      if (savedTypes && savedTypes.size > 0) {
-        setEnabledTypes(savedTypes);
-      } else {
-        setEnabledTypes(new Set(allPossibleTypes));
-      }
-    }
-  }, [allPossibleTypes.length]); // eslint-disable-line react-hooks/exhaustive-deps
-
-  // Initialize enabled rarities from localStorage or default to all rarities
-  useEffect(() => {
-    if (allPossibleRarities.length > 0 && enabledRarities.size === 0) {
-      const savedRarities = loadEnabledRarities();
-      if (savedRarities && savedRarities.size > 0) {
-        setEnabledRarities(savedRarities as Set<ItemRarity>);
-      } else {
-        setEnabledRarities(new Set(allPossibleRarities));
-      }
-    }
-  }, [allPossibleRarities.length]); // eslint-disable-line react-hooks/exhaustive-deps
-
-  // Initialize enabled locations from localStorage or default to all locations
-  useEffect(() => {
-    if (allPossibleLocations.length > 0 && enabledLocations.size === 0) {
-      const savedLocations = loadEnabledLocations();
-      if (savedLocations && savedLocations.size > 0) {
-        setEnabledLocations(savedLocations);
-      } else {
-        setEnabledLocations(new Set(allPossibleLocations));
-      }
-    }
-  }, [allPossibleLocations.length]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Calculate match counts for each filter option
   const typeMatchCounts = new Map<string, number>();
@@ -280,20 +262,17 @@ export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds,
     } else {
       newEnabledTypes.add(type);
     }
-    setEnabledTypes(newEnabledTypes);
-    saveEnabledTypes(newEnabledTypes);
+    patchLootFilters({ enabledTypes: Array.from(newEnabledTypes) });
   };
 
   const handleEnableAllTypes = () => {
     const allTypesSet = new Set(allPossibleTypes);
-    setEnabledTypes(allTypesSet);
-    saveEnabledTypes(allTypesSet);
+    patchLootFilters({ enabledTypes: Array.from(allTypesSet) });
   };
 
   const handleDisableAllTypes = () => {
     const emptySet = new Set<string>();
-    setEnabledTypes(emptySet);
-    saveEnabledTypes(emptySet);
+    patchLootFilters({ enabledTypes: Array.from(emptySet) });
   };
 
   const handleToggleRarity = (rarity: ItemRarity) => {
@@ -303,20 +282,17 @@ export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds,
     } else {
       newEnabledRarities.add(rarity);
     }
-    setEnabledRarities(newEnabledRarities);
-    saveEnabledRarities(newEnabledRarities);
+    patchLootFilters({ enabledRarities: Array.from(newEnabledRarities) });
   };
 
   const handleEnableAllRarities = () => {
     const allRaritiesSet = new Set(allPossibleRarities);
-    setEnabledRarities(allRaritiesSet);
-    saveEnabledRarities(allRaritiesSet);
+    patchLootFilters({ enabledRarities: Array.from(allRaritiesSet) });
   };
 
   const handleDisableAllRarities = () => {
     const emptySet = new Set<ItemRarity>();
-    setEnabledRarities(emptySet);
-    saveEnabledRarities(emptySet);
+    patchLootFilters({ enabledRarities: Array.from(emptySet) });
   };
 
   const handleToggleLocation = (location: string) => {
@@ -326,20 +302,17 @@ export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds,
     } else {
       newEnabledLocations.add(location);
     }
-    setEnabledLocations(newEnabledLocations);
-    saveEnabledLocations(newEnabledLocations);
+    patchLootFilters({ enabledLocations: Array.from(newEnabledLocations) });
   };
 
   const handleEnableAllLocations = () => {
     const allLocationsSet = new Set(allPossibleLocations);
-    setEnabledLocations(allLocationsSet);
-    saveEnabledLocations(allLocationsSet);
+    patchLootFilters({ enabledLocations: Array.from(allLocationsSet) });
   };
 
   const handleDisableAllLocations = () => {
     const emptySet = new Set<string>();
-    setEnabledLocations(emptySet);
-    saveEnabledLocations(emptySet);
+    patchLootFilters({ enabledLocations: Array.from(emptySet) });
   };
 
   const handleSetGroupBy = (mode: GroupBy) => {

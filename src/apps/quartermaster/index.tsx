@@ -11,8 +11,7 @@ import type { StashItem, CurrentLoadoutItem, PlannerResult } from './types/plann
 import type { HideoutModuleDefinition, HideoutToggleState } from './types/hideout';
 import { loadAllItems, loadHideoutDefinitions } from './utils/dataLoader';
 import {
-  loadStoredLists,
-  saveStoredLists,
+  normalizeStoredLists,
   createNewList,
   addItemToList,
   removeItemFromList,
@@ -25,8 +24,6 @@ import {
 import { computePlan, createEmptyResult } from './utils/planner';
 import { generateHideoutLists } from './utils/hideoutLists';
 import {
-  loadHideoutToggleState,
-  saveHideoutToggleState,
   cleanupObsoleteToggles,
   listKey,
   itemKey,
@@ -51,6 +48,11 @@ import { formatHideoutListName } from './utils/localization';
 import { useAuth } from '../../shared/context/AuthContext';
 import { useLocale } from '../../shared/context/LocaleContext';
 import { SignInNudge } from '../../shared/components/SignInNudge';
+import {
+  quartermasterStore,
+  useStore,
+  type QuartermasterState,
+} from '../../shared/state/stores';
 
 import { Sidebar, type ViewId } from './components/Sidebar';
 import { GlobalHeader } from './components/GlobalHeader';
@@ -66,10 +68,10 @@ import './styles/main.scss';
 export function QuartermasterApp() {
   const { revalidate } = useAuth();
   const { locale, t, tm, compareText } = useLocale();
+  const [quartermasterState, setQuartermasterState] = useStore(quartermasterStore);
 
   // Core state
   const [itemsMap, setItemsMap] = useState<ItemsMap | null>(null);
-  const [lists, setLists] = useState<StoredList[]>([]);
   const [stashItems, setStashItems] = useState<StashItem[]>([]);
   const [currentLoadout, setCurrentLoadout] = useState<CurrentLoadoutItem[]>([]);
   
@@ -80,7 +82,6 @@ export function QuartermasterApp() {
   // Hideout state (CR-004, CR-007)
   const [hideoutDefinitions, setHideoutDefinitions] = useState<HideoutModuleDefinition[]>([]);
   const [cachedHideout, setCachedHideout] = useState<CachedHideout | null>(null);
-  const [hideoutToggleState, setHideoutToggleState] = useState<HideoutToggleState>({ listEnabled: {}, itemEnabled: {} });
 
   // UI state
   const [activeView, setActiveView] = useState<ViewId>('lists');
@@ -90,6 +91,14 @@ export function QuartermasterApp() {
   const [isSyncingStash, setIsSyncingStash] = useState(false);
   const [isSyncingLoadout, setIsSyncingLoadout] = useState(false);
   const [isSyncingHideout, setIsSyncingHideout] = useState(false);
+  const lists = useMemo(
+    () => itemsMap ? normalizeStoredLists(quartermasterState.lists, itemsMap) : [],
+    [itemsMap, quartermasterState.lists]
+  );
+  const hideoutToggleState = quartermasterState.hideoutToggles;
+  const patchQuartermasterState = useCallback((next: Partial<QuartermasterState>) => {
+    setQuartermasterState({ ...quartermasterStore.get(), ...next });
+  }, [setQuartermasterState]);
 
   // Load items and cached data on mount
   useEffect(() => {
@@ -98,10 +107,6 @@ export function QuartermasterApp() {
         // Load static items first
         const items = await loadAllItems(locale);
         setItemsMap(items);
-        
-        // Load stored lists
-        const stored = loadStoredLists(items);
-        setLists(stored);
 
         // Load cached stash from IndexedDB (per spec 4.2.2)
         const stash = await getStash();
@@ -128,17 +133,6 @@ export function QuartermasterApp() {
         const hideout = await getHideout();
         if (hideout) {
           setCachedHideout(hideout);
-        }
-
-        // Load hideout toggle state from localStorage (CR-008)
-        const toggleState = loadHideoutToggleState();
-        // Clean up obsolete toggles if hideout cache exists
-        if (hideout) {
-          const cleaned = cleanupObsoleteToggles(hideoutDefs, hideout, toggleState);
-          setHideoutToggleState(cleaned);
-          saveHideoutToggleState(cleaned);
-        } else {
-          setHideoutToggleState(toggleState);
         }
 
         setLoading(false);
@@ -207,76 +201,66 @@ export function QuartermasterApp() {
   const handleCreateList = useCallback((name: string) => {
     const newList = createNewList(name);
     const updated = [...lists, newList];
-    setLists(updated);
-    saveStoredLists(updated);
-  }, [lists]);
+    patchQuartermasterState({ lists: updated });
+  }, [lists, patchQuartermasterState]);
 
   const handleDeleteList = useCallback((id: string) => {
     const updated = lists.filter(l => l.id !== id);
-    setLists(updated);
-    saveStoredLists(updated);
-  }, [lists]);
+    patchQuartermasterState({ lists: updated });
+  }, [lists, patchQuartermasterState]);
 
   const handleToggleList = useCallback((id: string) => {
     const updated = lists.map(l =>
       l.id === id ? toggleListEnabled(l) : l
     );
-    setLists(updated);
-    saveStoredLists(updated);
-  }, [lists]);
+    patchQuartermasterState({ lists: updated });
+  }, [lists, patchQuartermasterState]);
 
   const handleRenameList = useCallback((id: string, name: string) => {
     const updated = lists.map(l =>
       l.id === id ? renameList(l, name) : l
     );
-    setLists(updated);
-    saveStoredLists(updated);
-  }, [lists]);
+    patchQuartermasterState({ lists: updated });
+  }, [lists, patchQuartermasterState]);
 
   const handleAddItem = useCallback((listId: string, itemId: string, quantity: number) => {
     const updated = lists.map(l =>
       l.id === listId ? addItemToList(l, itemId, quantity) : l
     );
-    setLists(updated);
-    saveStoredLists(updated);
-  }, [lists]);
+    patchQuartermasterState({ lists: updated });
+  }, [lists, patchQuartermasterState]);
 
   const handleRemoveItem = useCallback((listId: string, itemId: string) => {
     const updated = lists.map(l =>
       l.id === listId ? removeItemFromList(l, itemId) : l
     );
-    setLists(updated);
-    saveStoredLists(updated);
-  }, [lists]);
+    patchQuartermasterState({ lists: updated });
+  }, [lists, patchQuartermasterState]);
 
   const handleUpdateQuantity = useCallback((listId: string, itemId: string, quantity: number) => {
     const updated = lists.map(l =>
       l.id === listId ? updateItemQuantity(l, itemId, quantity) : l
     );
-    setLists(updated);
-    saveStoredLists(updated);
-  }, [lists]);
+    patchQuartermasterState({ lists: updated });
+  }, [lists, patchQuartermasterState]);
 
   const handleToggleItem = useCallback((listId: string, itemId: string) => {
     const updated = lists.map(l =>
       l.id === listId ? toggleItemEnabled(l, itemId) : l
     );
-    setLists(updated);
-    saveStoredLists(updated);
-  }, [lists]);
+    patchQuartermasterState({ lists: updated });
+  }, [lists, patchQuartermasterState]);
 
   const handleReorderLists = useCallback((reorderedLists: StoredList[]) => {
-    setLists(reorderedLists);
-    saveStoredLists(reorderedLists);
-  }, []);
+    patchQuartermasterState({ lists: reorderedLists });
+  }, [patchQuartermasterState]);
 
   const handleReorderItems = useCallback((listId: string, reorderedItemIds: string[]) => {
     const updated = lists.map(l =>
       l.id === listId ? reorderListItems(l, reorderedItemIds) : l
     );
-    setLists(updated);
-    saveStoredLists(updated);
-  }, [lists]);
+    patchQuartermasterState({ lists: updated });
+  }, [lists, patchQuartermasterState]);
 
   /**
    * Handle API errors per spec section 4.2.3 / 4.3.3
@@ -361,15 +345,14 @@ export function QuartermasterApp() {
 
       // Clean up obsolete toggles after progression
       const cleaned = cleanupObsoleteToggles(hideoutDefinitions, hideout, hideoutToggleState);
-      setHideoutToggleState(cleaned);
-      saveHideoutToggleState(cleaned);
+      patchQuartermasterState({ hideoutToggles: cleaned });
     } catch (err) {
       console.error('Failed to sync hideout:', err);
       handleApiError(err, t('quartermaster.common.syncHideout'));
     } finally {
       setIsSyncingHideout(false);
     }
-  }, [hideoutDefinitions, hideoutToggleState, handleApiError, t]);
+  }, [hideoutDefinitions, hideoutToggleState, handleApiError, patchQuartermasterState, t]);
 
   // Hideout list toggle handlers (CR-008)
   const handleToggleHideoutList = useCallback((moduleId: string, level: number) => {
@@ -381,9 +364,8 @@ export function QuartermasterApp() {
         [lk]: !(hideoutToggleState.listEnabled[lk] ?? true),
       },
     };
-    setHideoutToggleState(updated);
-    saveHideoutToggleState(updated);
-  }, [hideoutToggleState]);
+    patchQuartermasterState({ hideoutToggles: updated });
+  }, [hideoutToggleState, patchQuartermasterState]);
 
   const handleToggleHideoutItem = useCallback((moduleId: string, level: number, itemId: string) => {
     const ik = itemKey(moduleId, level, itemId);
@@ -394,9 +376,8 @@ export function QuartermasterApp() {
         [ik]: !(hideoutToggleState.itemEnabled[ik] ?? true),
       },
     };
-    setHideoutToggleState(updated);
-    saveHideoutToggleState(updated);
-  }, [hideoutToggleState]);
+    patchQuartermasterState({ hideoutToggles: updated });
+  }, [hideoutToggleState, patchQuartermasterState]);
 
   // Render content based on active view
   // Views requiring stash/loadout are wrapped in AuthGate (per spec section 3.2)
