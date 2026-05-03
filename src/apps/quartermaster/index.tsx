@@ -284,9 +284,12 @@ export function QuartermasterApp() {
   const handleApiError = useCallback((err: unknown, operation: string) => {
     if (isApiError(err)) {
       if (err.status === 401) {
-        // Prompt re-auth
-        setSyncError(t('quartermaster.sync.sessionExpired'));
-        revalidate();
+        if (err.message === 'No authentication token available') {
+          setSyncError(t('quartermaster.sync.sessionExpired'));
+          revalidate();
+        } else {
+          setSyncError(tm('quartermaster.sync.failed', { operation, message: err.message }));
+        }
       } else if (err.status === 429 || err.isRetryable) {
         // Show warning for rate limit or retryable errors
         setSyncError(t('quartermaster.sync.rateLimited'));

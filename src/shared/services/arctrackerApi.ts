@@ -52,6 +52,15 @@ function createApiError(message: string, status?: number, isRetryable = false): 
   return { message, status, isRetryable };
 }
 
+async function getApiErrorMessage(response: Response): Promise<string> {
+  try {
+    const body = await response.json() as { error?: string; message?: string };
+    return body.error ?? body.message ?? `API request failed: ${response.status} ${response.statusText}`;
+  } catch {
+    return `API request failed: ${response.status} ${response.statusText}`;
+  }
+}
+
 /**
  * Fetch with timeout support.
  */
@@ -106,7 +115,7 @@ async function apiRequest<T>(
       }
 
       throw createApiError(
-        `API request failed: ${response.status} ${response.statusText}`,
+        await getApiErrorMessage(response),
         response.status,
         isRetryable
       );
