@@ -20,7 +20,7 @@ export interface ArctrackerProfileResponse {
 }
 
 export interface ArctrackerStashItem {
-  itemId: string;
+  itemId: string | null;
   name: string;
   quantity: number;
   slotIndex: number;

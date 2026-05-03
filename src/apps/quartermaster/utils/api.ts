@@ -39,6 +39,7 @@ export function aggregateStashItems(cachedStash: CachedStash): StashItem[] {
   const aggregated = new Map<string, number>();
   
   for (const item of cachedStash.items) {
+    if (!item.itemId || item.quantity <= 0) continue;
     const current = aggregated.get(item.itemId) ?? 0;
     aggregated.set(item.itemId, current + item.quantity);
   }
