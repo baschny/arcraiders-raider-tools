@@ -3,7 +3,7 @@
     "description": "Map event name localizations extracted from ../arcraiders-data/map-events/map-events.json"
   },
   "metadata": {
-    "generatedAt": "2026-04-11T21:42:03.440Z",
+    "generatedAt": "2026-05-03T19:41:52.921Z",
     "source": "../arcraiders-data/map-events/map-events.json"
   },
   "eventTypes": {
@@ -131,11 +131,6 @@
         "hr": "Skriveni bunker",
         "sr": "Skriveni bunker",
         "he": "בונקר נסתר"
-      }
-    },
-    "beachcombing": {
-      "localizations": {
-        "en": "Beachcombing"
       }
     },
     "matriarch": {
@@ -328,6 +323,30 @@
         "hr": "Grad ptica",
         "sr": "Grad ptica",
         "he": "עיר הציפורים"
+      }
+    },
+    "beachcombing": {
+      "localizations": {
+        "en": "Beachcombing",
+        "de": "Strandgut sammeln",
+        "fr": "Collecte sur la plage",
+        "es": "Recolección en la Playa",
+        "pt": "Coleta na Praia",
+        "pt-BR": "Coleta na Praia",
+        "pl": "Przeczesywanie Plaży",
+        "no": "Strandleting",
+        "da": "Strandjagt",
+        "it": "Raccolta sulla Spiaggia",
+        "ja": "ビーチコーミング",
+        "ko-KR": "해변 수색",
+        "zh-CN": "海滩拾荒",
+        "zh-TW": "海灘拾荒",
+        "ru": "Прочёсывание пляжа",
+        "tr": "Sahil Taraması",
+        "uk": "Прочісування пляжу",
+        "hr": "Pretraživanje plaže",
+        "sr": "Pretraživanje plaže",
+        "he": "חיפוש על החוף"
       }
     },
     "none": {

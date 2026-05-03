@@ -3,7 +3,7 @@
     "description": "Map name localizations extracted from ../arcraiders-data/maps.json"
   },
   "metadata": {
-    "generatedAt": "2026-04-11T21:42:03.313Z",
+    "generatedAt": "2026-05-03T19:41:52.808Z",
     "source": "../arcraiders-data/maps.json"
   },
   "maps": {
@@ -99,11 +99,6 @@
         "zh-TW": "藍門"
       }
     },
-    "riven-tides": {
-      "localizations": {
-        "en": "Riven Tides"
-      }
-    },
     "stella-montis": {
       "localizations": {
         "da": "bjergstjerne",
@@ -125,6 +120,30 @@
         "uk": "зірка_гори",
         "zh-CN": "星辰山",
         "zh-TW": "山之星"
+      }
+    },
+    "riven-tides": {
+      "localizations": {
+        "da": "Splittede tidevand",
+        "de": "Riven Tides",
+        "en": "Riven Tides",
+        "es": "Mareas divididas",
+        "fr": "Riven Tides",
+        "he": "גאות קרועה",
+        "hr": "Rascijepljene plime",
+        "it": "Spezzamarea",
+        "ja": "リブン・タイズ",
+        "ko-KR": "갈라진 물결",
+        "no": "Splittet tidevann",
+        "pl": "Rozdarte Wybrzeże",
+        "pt": "Marés Partidas",
+        "pt-BR": "Marés Partidas",
+        "ru": "Бурные потоки",
+        "sr": "Раздеране плиме",
+        "tr": "Riven Tides",
+        "uk": "Бурхливі потоки",
+        "zh-CN": "裂潮镇",
+        "zh-TW": "裂潮鎮"
       }
     }
   }

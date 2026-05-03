@@ -6653,7 +6653,7 @@
     "rarity": "Common",
     "value": 12,
     "weightKg": 0.05,
-    "stackSize": 40,
+    "stackSize": 60,
     "recyclesInto": null,
     "recipe": {
       "chemicals": 2,
@@ -10160,7 +10160,8 @@
       "arc_circuitry": 2
     },
     "recipe": {
-      "power_rod": 1
+      "power_rod": 1,
+      "turbine_compressor": 1
     },
     "salvagesInto": {
       "advanced_electrical_components": 1
@@ -11057,6 +11058,81 @@
     ]
   },
   {
+    "id": "riven_tides_classifed_records_keycard",
+    "name": {
+      "value": "Riven Tides Classifed Records Keycard",
+      "originalEn": "Riven Tides Classifed Records Keycard"
+    },
+    "description": {
+      "en": "Unlocks a door to the Classified Records room in the Port Authority Building at Riven Tides."
+    },
+    "type": "Key",
+    "rarity": "Uncommon",
+    "value": 100,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "riven_tides_crane_house_keycard",
+    "name": {
+      "value": "Riven Tides Crane House Keycard",
+      "originalEn": "Riven Tides Crane House Keycard"
+    },
+    "description": {
+      "en": "Unlocks a door in one of the Crane Houses at Riven Tides."
+    },
+    "type": "Key",
+    "rarity": "Common",
+    "value": 100,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "riven_tides_hotel_keycard_no_102",
+    "name": {
+      "value": "Riven Tides Hotel Keycard No. 102",
+      "originalEn": "Riven Tides Hotel Keycard No. 102"
+    },
+    "description": {
+      "en": "Unlocks the door to one of Panorama Azzurro's many suites at Riven Tides"
+    },
+    "type": "Key",
+    "rarity": "Common",
+    "value": 100,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "riven_tides_hotel_keycard_no_107",
     "name": {
       "value": "Riven Tides Hotel Keycard No. 107",
@@ -11069,6 +11145,156 @@
     "rarity": "Common",
     "value": 100,
     "weightKg": 0.5,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "riven_tides_hotel_keycard_no_113",
+    "name": {
+      "value": "Riven Tides Hotel Keycard No. 113",
+      "originalEn": "Riven Tides Hotel Keycard No. 113"
+    },
+    "description": {
+      "en": "Unlocks the door to one of Panorama Azzurro's many suites at Riven Tides"
+    },
+    "type": "Key",
+    "rarity": "Common",
+    "value": 100,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "riven_tides_hotel_keycard_no_205",
+    "name": {
+      "value": "Riven Tides Hotel Keycard No. 205",
+      "originalEn": "Riven Tides Hotel Keycard No. 205"
+    },
+    "description": {
+      "en": "Unlocks the door to one of Panorama Azzurro's many suites at Riven Tides"
+    },
+    "type": "Key",
+    "rarity": "Common",
+    "value": 100,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "riven_tides_hotel_keycard_no_208",
+    "name": {
+      "value": "Riven Tides Hotel Keycard No. 208",
+      "originalEn": "Riven Tides Hotel Keycard No. 208"
+    },
+    "description": {
+      "en": "Unlocks the door to one of Panorama Azzurro's many suites at Riven Tides"
+    },
+    "type": "Key",
+    "rarity": "Common",
+    "value": 100,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "riven_tides_hotel_keycard_no_311",
+    "name": {
+      "value": "Riven Tides Hotel Keycard No. 311",
+      "originalEn": "Riven Tides Hotel Keycard No. 311"
+    },
+    "description": {
+      "en": "Unlocks the door to one of Panorama Azzurro's many suites at Riven Tides"
+    },
+    "type": "Key",
+    "rarity": "Common",
+    "value": 100,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "riven_tides_hotel_keycard_no_404",
+    "name": {
+      "value": "Riven Tides Hotel Keycard No. 404",
+      "originalEn": "Riven Tides Hotel Keycard No. 404"
+    },
+    "description": {
+      "en": "Unlocks the door to one of Panorama Azzurro's many suites at Riven Tides"
+    },
+    "type": "Key",
+    "rarity": "Common",
+    "value": 100,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "riven_tides_secure_storage_keycard",
+    "name": {
+      "value": "Riven Tides Secure Storage Keycard",
+      "originalEn": "Riven Tides Secure Storage Keycard"
+    },
+    "description": {
+      "en": "Unlocks a door to the Secure Storage room in the Port Authority Building at Riven Tides"
+    },
+    "type": "Key",
+    "rarity": "Epic",
+    "value": 100,
+    "weightKg": 0.25,
     "stackSize": 1,
     "recyclesInto": null,
     "recipe": null,
@@ -14782,16 +15008,21 @@
       "originalEn": "Turbine Compressor"
     },
     "description": {
-      "en": ""
+      "en": "Can be recycled into crafting materials."
     },
     "type": "Recyclable",
     "rarity": "Epic",
-    "value": null,
-    "weightKg": null,
+    "value": 5000,
+    "weightKg": 0.5,
     "stackSize": 3,
-    "recyclesInto": null,
+    "recyclesInto": {
+      "arc_circuitry": 1,
+      "arc_motion_core": 1
+    },
     "recipe": null,
-    "salvagesInto": null,
+    "salvagesInto": {
+      "arc_circuitry": 1
+    },
     "upgradeCost": null,
     "tier": null,
     "imageFilename": null,
@@ -14898,7 +15129,7 @@
     "rarity": "Epic",
     "value": 6000,
     "weightKg": 0.5,
-    "stackSize": 1,
+    "stackSize": 3,
     "recyclesInto": {
       "advanced_electrical_components": 1,
       "arc_circuitry": 2
@@ -15644,8 +15875,7 @@
     "weightKg": 0.6,
     "stackSize": 3,
     "recyclesInto": {
-      "arc_alloy": 1,
-      "electrical_components": 1
+      "arc_alloy": 2
     },
     "recipe": null,
     "salvagesInto": {

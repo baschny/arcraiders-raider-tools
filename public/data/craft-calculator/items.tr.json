@@ -3457,7 +3457,7 @@
       "value": "Ağır Cephane",
       "originalEn": "Heavy Ammo"
     },
-    "stackSize": 40,
+    "stackSize": 60,
     "value": 12,
     "imageFilename": "https://cdn.arctracker.io/items/heavy_ammo.png",
     "isWeapon": null,
@@ -5278,7 +5278,8 @@
     "imageFilename": "https://cdn.arctracker.io/items/powered_descender.png",
     "isWeapon": null,
     "recipe": {
-      "power_rod": 1
+      "power_rod": 1,
+      "turbine_compressor": 1
     },
     "upgradeCost": null,
     "craftQuantity": 1
@@ -5739,11 +5740,137 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "riven_tides_classifed_records_keycard": {
+    "id": "riven_tides_classifed_records_keycard",
+    "name": {
+      "value": "Riven Tides Gizli Kayıtlar Anahtar Kartı",
+      "originalEn": "Riven Tides Classifed Records Keycard"
+    },
+    "stackSize": 1,
+    "value": 100,
+    "imageFilename": null,
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "riven_tides_crane_house_keycard": {
+    "id": "riven_tides_crane_house_keycard",
+    "name": {
+      "value": "Riven Tides Vinç Evi Anahtar Kartı",
+      "originalEn": "Riven Tides Crane House Keycard"
+    },
+    "stackSize": 1,
+    "value": 100,
+    "imageFilename": null,
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "riven_tides_hotel_keycard_no_102": {
+    "id": "riven_tides_hotel_keycard_no_102",
+    "name": {
+      "value": "Riven Tides Otel Anahtar Kartı No. 102",
+      "originalEn": "Riven Tides Hotel Keycard No. 102"
+    },
+    "stackSize": 1,
+    "value": 100,
+    "imageFilename": null,
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
   "riven_tides_hotel_keycard_no_107": {
     "id": "riven_tides_hotel_keycard_no_107",
     "name": {
       "value": "Riven Tides Otel Anahtar Kartı No. 107",
       "originalEn": "Riven Tides Hotel Keycard No. 107"
+    },
+    "stackSize": 1,
+    "value": 100,
+    "imageFilename": null,
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "riven_tides_hotel_keycard_no_113": {
+    "id": "riven_tides_hotel_keycard_no_113",
+    "name": {
+      "value": "Riven Tides Otel Anahtar Kartı No. 113",
+      "originalEn": "Riven Tides Hotel Keycard No. 113"
+    },
+    "stackSize": 1,
+    "value": 100,
+    "imageFilename": null,
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "riven_tides_hotel_keycard_no_205": {
+    "id": "riven_tides_hotel_keycard_no_205",
+    "name": {
+      "value": "Riven Tides Otel Anahtar Kartı No. 205",
+      "originalEn": "Riven Tides Hotel Keycard No. 205"
+    },
+    "stackSize": 1,
+    "value": 100,
+    "imageFilename": null,
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "riven_tides_hotel_keycard_no_208": {
+    "id": "riven_tides_hotel_keycard_no_208",
+    "name": {
+      "value": "Riven Tides Otel Anahtar Kartı No. 208",
+      "originalEn": "Riven Tides Hotel Keycard No. 208"
+    },
+    "stackSize": 1,
+    "value": 100,
+    "imageFilename": null,
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "riven_tides_hotel_keycard_no_311": {
+    "id": "riven_tides_hotel_keycard_no_311",
+    "name": {
+      "value": "Riven Tides Otel Anahtar Kartı No. 311",
+      "originalEn": "Riven Tides Hotel Keycard No. 311"
+    },
+    "stackSize": 1,
+    "value": 100,
+    "imageFilename": null,
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "riven_tides_hotel_keycard_no_404": {
+    "id": "riven_tides_hotel_keycard_no_404",
+    "name": {
+      "value": "Riven Tides Otel Anahtar Kartı No. 404",
+      "originalEn": "Riven Tides Hotel Keycard No. 404"
+    },
+    "stackSize": 1,
+    "value": 100,
+    "imageFilename": null,
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "riven_tides_secure_storage_keycard": {
+    "id": "riven_tides_secure_storage_keycard",
+    "name": {
+      "value": "Riven Tides Güvenli Depo Anahtar Kartı",
+      "originalEn": "Riven Tides Secure Storage Keycard"
     },
     "stackSize": 1,
     "value": 100,
@@ -7659,7 +7786,7 @@
       "originalEn": "Turbine Compressor"
     },
     "stackSize": 3,
-    "value": null,
+    "value": 5000,
     "imageFilename": null,
     "isWeapon": null,
     "recipe": null,
@@ -7714,7 +7841,7 @@
       "value": "Vaporizer Regulator",
       "originalEn": "Vaporizer Regulator"
     },
-    "stackSize": 1,
+    "stackSize": 3,
     "value": 6000,
     "imageFilename": "https://cdn.arctracker.io/items/vaporizer_regulator.png",
     "isWeapon": null,

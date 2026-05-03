@@ -4948,7 +4948,7 @@
         "chemicals": 2,
         "metal_parts": 3
       },
-      "stackSize": 40,
+      "stackSize": 60,
       "value": 12,
       "weight": 0.05
     },
@@ -7585,7 +7585,8 @@
       "blueprintLocked": true,
       "craftQuantity": 1,
       "recipe": {
-        "power_rod": 1
+        "power_rod": 1,
+        "turbine_compressor": 1
       },
       "recyclesInto": {
         "advanced_electrical_components": 1,
@@ -8271,6 +8272,57 @@
       "value": 1000,
       "weight": 0.8
     },
+    "riven_tides_classifed_records_keycard": {
+      "name": {
+        "value": "Riven Tides机密记录钥匙卡",
+        "originalEn": "Riven Tides Classifed Records Keycard"
+      },
+      "description": "可开启Riven Tides港务局大楼中机密记录室的一扇门。",
+      "icon": "",
+      "rarity": "Uncommon",
+      "type": "Key",
+      "category": "Key",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "stackSize": 1,
+      "value": 100,
+      "weight": 0.25
+    },
+    "riven_tides_crane_house_keycard": {
+      "name": {
+        "value": "Riven Tides起重机房钥匙卡",
+        "originalEn": "Riven Tides Crane House Keycard"
+      },
+      "description": "可开启Riven Tides某座起重机房内的一扇门。",
+      "icon": "",
+      "rarity": "Common",
+      "type": "Key",
+      "category": "Key",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "stackSize": 1,
+      "value": 100,
+      "weight": 0.25
+    },
+    "riven_tides_hotel_keycard_no_102": {
+      "name": {
+        "value": "Riven Tides酒店102号钥匙卡",
+        "originalEn": "Riven Tides Hotel Keycard No. 102"
+      },
+      "description": "可开启Riven Tides中Panorama Azzurro众多套房之一的房门",
+      "icon": "",
+      "rarity": "Common",
+      "type": "Key",
+      "category": "Key",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "stackSize": 1,
+      "value": 100,
+      "weight": 0.5
+    },
     "riven_tides_hotel_keycard_no_107": {
       "name": {
         "value": "Riven Tides酒店107号钥匙卡",
@@ -8287,6 +8339,108 @@
       "stackSize": 1,
       "value": 100,
       "weight": 0.5
+    },
+    "riven_tides_hotel_keycard_no_113": {
+      "name": {
+        "value": "Riven Tides酒店113号钥匙卡",
+        "originalEn": "Riven Tides Hotel Keycard No. 113"
+      },
+      "description": "可开启Riven Tides中Panorama Azzurro众多套房之一的房门",
+      "icon": "",
+      "rarity": "Common",
+      "type": "Key",
+      "category": "Key",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "stackSize": 1,
+      "value": 100,
+      "weight": 0.5
+    },
+    "riven_tides_hotel_keycard_no_205": {
+      "name": {
+        "value": "Riven Tides酒店205号钥匙卡",
+        "originalEn": "Riven Tides Hotel Keycard No. 205"
+      },
+      "description": "可开启Riven Tides中Panorama Azzurro众多套房之一的房门",
+      "icon": "",
+      "rarity": "Common",
+      "type": "Key",
+      "category": "Key",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "stackSize": 1,
+      "value": 100,
+      "weight": 0.5
+    },
+    "riven_tides_hotel_keycard_no_208": {
+      "name": {
+        "value": "Riven Tides酒店208号钥匙卡",
+        "originalEn": "Riven Tides Hotel Keycard No. 208"
+      },
+      "description": "可开启Riven Tides中Panorama Azzurro众多套房之一的房门",
+      "icon": "",
+      "rarity": "Common",
+      "type": "Key",
+      "category": "Key",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "stackSize": 1,
+      "value": 100,
+      "weight": 0.5
+    },
+    "riven_tides_hotel_keycard_no_311": {
+      "name": {
+        "value": "Riven Tides酒店311号钥匙卡",
+        "originalEn": "Riven Tides Hotel Keycard No. 311"
+      },
+      "description": "可开启Riven Tides中Panorama Azzurro众多套房之一的房门",
+      "icon": "",
+      "rarity": "Common",
+      "type": "Key",
+      "category": "Key",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "stackSize": 1,
+      "value": 100,
+      "weight": 0.5
+    },
+    "riven_tides_hotel_keycard_no_404": {
+      "name": {
+        "value": "Riven Tides酒店404号钥匙卡",
+        "originalEn": "Riven Tides Hotel Keycard No. 404"
+      },
+      "description": "可开启Riven Tides中Panorama Azzurro众多套房之一的房门",
+      "icon": "",
+      "rarity": "Common",
+      "type": "Key",
+      "category": "Key",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "stackSize": 1,
+      "value": 100,
+      "weight": 0.5
+    },
+    "riven_tides_secure_storage_keycard": {
+      "name": {
+        "value": "Riven Tides安全仓库钥匙卡",
+        "originalEn": "Riven Tides Secure Storage Keycard"
+      },
+      "description": "可开启Riven Tides港务局大楼中安全仓库的一扇门",
+      "icon": "",
+      "rarity": "Epic",
+      "type": "Key",
+      "category": "Key",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "stackSize": 1,
+      "value": 100,
+      "weight": 0.25
     },
     "rocket_thruster": {
       "name": {
@@ -11013,7 +11167,16 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "recyclesInto": {
+        "arc_circuitry": 1,
+        "arc_motion_core": 1
+      },
+      "salvagesInto": {
+        "arc_circuitry": 1
+      },
       "stackSize": 3,
+      "value": 5000,
+      "weight": 0.5,
       "foundIn": [
         "ARC"
       ]
@@ -11109,7 +11272,7 @@
       "salvagesInto": {
         "arc_circuitry": 2
       },
-      "stackSize": 1,
+      "stackSize": 3,
       "value": 6000,
       "weight": 0.5
     },
@@ -11599,8 +11762,7 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "recyclesInto": {
-        "arc_alloy": 1,
-        "electrical_components": 1
+        "arc_alloy": 2
       },
       "salvagesInto": {
         "arc_alloy": 2
@@ -11677,6 +11839,8 @@
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
+      "subCategory": "Medicinal",
+      "craftBench": "med_station",
       "stationLevelRequired": 1,
       "blueprintLocked": true,
       "craftQuantity": 1,
