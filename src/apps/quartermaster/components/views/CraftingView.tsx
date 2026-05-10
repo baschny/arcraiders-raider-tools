@@ -45,7 +45,7 @@ export function CraftingView({
   blueprintUnlockCount,
 }: CraftingViewProps) {
   const { t, tm, formatDate } = useLocale();
-  // Filter to fully satisfiable targets only (CR-ADD-6.X)
+  // Craft steps are executable actions, including partial progress toward a target.
   const satisfiableSteps = craftPlan.steps.filter(step => step.isFullySatisfiable);
   const tooltipContext = {
     itemsMap,

@@ -114,6 +114,7 @@ export function computePlan(
   return {
     required,
     deficit,
+    remainingIngredientDeficits: greedyResult.remainingDeficits,
 
     planRows,
 
@@ -143,6 +144,7 @@ export function createEmptyResult(): PlannerResult {
   return {
     required: {},
     deficit: {},
+    remainingIngredientDeficits: {},
     planRows: [],
     craftPlan: { steps: [] },
     recyclePlan: { actions: [] },

@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import type { ItemsMap, PlannerItem, BenchId } from '../../../types/item';
 import type { StoredList } from '../../../types/list';
 import { computePlan } from '../index';
+import { buildItemInsights } from '../../itemInsights';
 
 const benchLevels: Record<BenchId, number> = {
   equipment_bench: 3,
@@ -69,6 +70,57 @@ const itemsMap: ItemsMap = {
       explosive_compound: 3,
     },
   }),
+  chemicals: item({
+    id: 'chemicals',
+    name: 'Chemicals',
+    stackSize: 50,
+  }),
+  damaged_heat_sink: item({
+    id: 'damaged_heat_sink',
+    name: 'Damaged Heat Sink',
+    category: 'Recyclable',
+    recyclesInto: {
+      metal_parts: 6,
+      wires: 2,
+    },
+  }),
+  rusted_tools: item({
+    id: 'rusted_tools',
+    name: 'Rusted Tools',
+    category: 'Recyclable',
+    recyclesInto: {
+      metal_parts: 8,
+      steel_spring: 1,
+    },
+  }),
+  steel_spring: item({
+    id: 'steel_spring',
+    name: 'Steel Spring',
+    stackSize: 50,
+  }),
+  medium_ammo: item({
+    id: 'medium_ammo',
+    name: 'Medium Ammo',
+    type: 'Ammunition',
+    category: 'Ammunition',
+    craftBench: 'workbench',
+    craftQuantity: 20,
+    recipe: {
+      chemicals: 2,
+      metal_parts: 3,
+    },
+    stackSize: 80,
+  }),
+  metal_parts: item({
+    id: 'metal_parts',
+    name: 'Metal Parts',
+    stackSize: 50,
+  }),
+  wires: item({
+    id: 'wires',
+    name: 'Wires',
+    stackSize: 50,
+  }),
 };
 
 const lists: StoredList[] = [{
@@ -127,5 +179,124 @@ describe('quartermaster blueprint craftability', () => {
 
     expect(result.deficit.arc_alloy).toBe(5);
     expect(result.planRows.find((row) => row.itemId === 'arc_alloy')?.have).toBe(95);
+  });
+
+  it('crafts Medium Ammo when owned ingredients cover the missing output', () => {
+    const result = computePlan(
+      itemsMap,
+      [{
+        id: 'ammo',
+        name: 'Ammo',
+        type: 'user',
+        isEnabled: true,
+        items: [{ itemId: 'medium_ammo', quantity: 260, isEnabled: true }],
+      }],
+      [
+        { itemId: 'medium_ammo', quantity: 174 },
+        { itemId: 'metal_parts', quantity: 28 },
+        { itemId: 'chemicals', quantity: 293 },
+      ],
+      benchLevels,
+    );
+
+    expect(result.satisfiableTargets.has('medium_ammo')).toBe(true);
+    expect(result.craftPlan.steps.map((step) => ({
+      itemId: step.itemId,
+      qty: step.qty,
+    }))).toEqual([{ itemId: 'medium_ammo', qty: 100 }]);
+    expect(result.inRaidSuggestions.items).toEqual([]);
+  });
+
+  it('keeps recycle-yield explanations active for missing craft ingredients', () => {
+    const result = computePlan(
+      itemsMap,
+      [{
+        id: 'ammo',
+        name: 'Ammo',
+        type: 'user',
+        isEnabled: true,
+        items: [{ itemId: 'medium_ammo', quantity: 260, isEnabled: true }],
+      }],
+      [
+        { itemId: 'medium_ammo', quantity: 174 },
+        { itemId: 'metal_parts', quantity: 13 },
+        { itemId: 'chemicals', quantity: 293 },
+      ],
+      benchLevels,
+    );
+
+    const insights = buildItemInsights(itemsMap, result);
+
+    expect(result.remainingIngredientDeficits).toEqual({ metal_parts: 2 });
+    expect(result.inRaidSuggestions.items.find((suggestion) => suggestion.itemId === 'damaged_heat_sink')).toMatchObject({
+      reasons: ['BRING_HOME_FOR_RECYCLE_YIELD'],
+      impactedTargetItemIds: ['medium_ammo'],
+    });
+    expect(insights.damaged_heat_sink.recycleSalvageNeeds).toContainEqual(
+      expect.objectContaining({
+        mode: 'recycle',
+        producedItemId: 'metal_parts',
+        targetItemId: 'medium_ammo',
+        isComplete: false,
+      }),
+    );
+  });
+
+  it('uses owned recycle materials to make a target fully craftable', () => {
+    const result = computePlan(
+      itemsMap,
+      [{
+        id: 'ammo',
+        name: 'Ammo',
+        type: 'user',
+        isEnabled: true,
+        items: [{ itemId: 'medium_ammo', quantity: 360, isEnabled: true }],
+      }],
+      [
+        { itemId: 'medium_ammo', quantity: 174 },
+        { itemId: 'metal_parts', quantity: 28 },
+        { itemId: 'chemicals', quantity: 293 },
+        { itemId: 'rusted_tools', quantity: 3 },
+      ],
+      benchLevels,
+    );
+
+    expect(result.recyclePlan.actions).toContainEqual(
+      expect.objectContaining({
+        srcItemId: 'rusted_tools',
+        qtyToRecycle: 1,
+      }),
+    );
+    expect(result.satisfiableTargets.has('medium_ammo')).toBe(true);
+    expect(result.craftPlan.steps.map((step) => ({
+      itemId: step.itemId,
+      qty: step.qty,
+    }))).toEqual([{ itemId: 'medium_ammo', qty: 200 }]);
+  });
+
+  it('suggests the partial craft amount available from current base materials', () => {
+    const result = computePlan(
+      itemsMap,
+      [{
+        id: 'ammo',
+        name: 'Ammo',
+        type: 'user',
+        isEnabled: true,
+        items: [{ itemId: 'medium_ammo', quantity: 360, isEnabled: true }],
+      }],
+      [
+        { itemId: 'medium_ammo', quantity: 174 },
+        { itemId: 'metal_parts', quantity: 28 },
+        { itemId: 'chemicals', quantity: 293 },
+      ],
+      benchLevels,
+    );
+
+    expect(result.satisfiableTargets.has('medium_ammo')).toBe(false);
+    expect(result.craftPlan.steps.map((step) => ({
+      itemId: step.itemId,
+      qty: step.qty,
+    }))).toEqual([{ itemId: 'medium_ammo', qty: 180 }]);
+    expect(result.remainingIngredientDeficits).toEqual({ metal_parts: 2 });
   });
 });

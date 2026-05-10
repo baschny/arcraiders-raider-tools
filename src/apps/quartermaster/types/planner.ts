@@ -113,6 +113,7 @@ export interface BlockerSummary {
 export interface PlannerResult {
   required: Record<ItemId, Qty>;
   deficit: Record<ItemId, Qty>;
+  remainingIngredientDeficits: Record<ItemId, Qty>;
 
   planRows: PlanRow[];
 

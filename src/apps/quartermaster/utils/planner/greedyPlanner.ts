@@ -175,19 +175,14 @@ function recycleForNeeded(
   state: PlannerState,
   needed: Record<ItemId, Qty>,
 ): void {
+  const remaining: Record<ItemId, Qty> = {};
+  for (const [id, qty] of Object.entries(needed)) {
+    if (qty > 0) remaining[id] = qty;
+  }
+
   // Loop until no more useful recycling
   while (true) {
-    // Rebuild remaining need
-    const remaining: Record<ItemId, Qty> = {};
-    let anyNeed = false;
-    for (const [id, qty] of Object.entries(needed)) {
-      const deficit = qty - getAvail(state, id);
-      if (deficit > 0) {
-        remaining[id] = deficit;
-        anyNeed = true;
-      }
-    }
-    if (!anyNeed) break;
+    if (!Object.values(remaining).some((qty) => qty > 0)) break;
 
     const candidates = buildRecycleCandidates(state, remaining);
     if (candidates.length === 0) break;
@@ -210,6 +205,7 @@ function recycleForNeeded(
     for (const [matId, yieldPer] of Object.entries(best.recyclesInto)) {
       const totalYield = yieldPer * units;
       yields[matId] = totalYield;
+      remaining[matId] = Math.max(0, (remaining[matId] ?? 0) - totalYield);
       // Add to avail but NOT to recycleEligible (no chaining)
       addAvail(state, matId, totalYield);
     }
@@ -433,6 +429,20 @@ function applyPendingCraftsIfPossible(
   return { ok: true, avail };
 }
 
+function getCraftableTimesFromAvail(
+  state: PlannerState,
+  recipe: Record<ItemId, Qty>,
+): Qty {
+  let craftableTimes = Infinity;
+
+  for (const [ingId, qtyPerCraft] of Object.entries(recipe)) {
+    if (qtyPerCraft <= 0) continue;
+    craftableTimes = Math.min(craftableTimes, Math.floor(getAvail(state, ingId) / qtyPerCraft));
+  }
+
+  return Number.isFinite(craftableTimes) ? craftableTimes : 0;
+}
+
 // ---------------------------------------------------------------------------
 // Main entry point
 // ---------------------------------------------------------------------------
@@ -618,6 +628,16 @@ export function runGreedyPlanner(
       recordCraftStep(state, targetId, totalOutput);
 
       // surplus from over-production already in avail from addAvail above
+    } else if (pendingCrafts.length === 0) {
+      const partialCraftTimes = Math.min(craftTimes, getCraftableTimesFromAvail(state, targetRecipe));
+      if (partialCraftTimes > 0) {
+        const partialOutput = partialCraftTimes * targetItem.craftQuantity;
+        for (const [ingId, qtyPerCraft] of Object.entries(targetRecipe)) {
+          consumeAvail(state, ingId, qtyPerCraft * partialCraftTimes);
+        }
+        addAvail(state, targetId, partialOutput);
+        recordCraftStep(state, targetId, partialOutput);
+      }
     }
   }
 
@@ -625,7 +645,7 @@ export function runGreedyPlanner(
   // the planner still couldn't source after all phases
   const remainingDeficits: Record<ItemId, Qty> = {};
   for (const targetId of sortedTargets) {
-    const need = missingFinal[targetId];
+    const need = Math.max(0, (requiredFinal[targetId] ?? 0) - getAvail(state, targetId));
     if (need <= 0) continue;
     if (state.satisfiableTargets.has(targetId)) continue;
 

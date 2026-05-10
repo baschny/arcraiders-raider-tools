@@ -110,6 +110,9 @@ function buildPlanMissingMap(plannerResult: PlannerResult): Record<string, numbe
   for (const row of plannerResult.planRows) {
     missingByItemId[row.itemId] = row.missing;
   }
+  for (const [itemId, quantity] of Object.entries(plannerResult.remainingIngredientDeficits)) {
+    missingByItemId[itemId] = Math.max(missingByItemId[itemId] ?? 0, quantity);
+  }
   return missingByItemId;
 }
 
