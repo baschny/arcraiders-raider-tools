@@ -50,11 +50,21 @@ const itemsMap: ItemsMap = {
     id: 'comet_igniter',
     name: 'Comet Igniter',
     category: 'Recyclable',
+    value: 1000,
+    recyclesInto: {
+      arc_alloy: 2,
+      crude_explosives: 2,
+    },
   }),
   explosive_compound: item({
     id: 'explosive_compound',
     name: 'Explosive Compound',
     category: 'Refined Material',
+    value: 1000,
+    recyclesInto: {
+      crude_explosives: 2,
+      oil: 2,
+    },
   }),
   advanced_electrical_components: item({
     id: 'advanced_electrical_components',
@@ -113,6 +123,60 @@ const itemsMap: ItemsMap = {
     id: 'chemicals',
     name: 'Chemicals',
     stackSize: 50,
+  }),
+  crude_explosives: item({
+    id: 'crude_explosives',
+    name: 'Crude Explosives',
+    craftBench: 'explosives_bench',
+    recipe: {
+      chemicals: 6,
+    },
+    stackSize: 50,
+  }),
+  arc_motion_core: item({
+    id: 'arc_motion_core',
+    name: 'ARC Motion Core',
+    stackSize: 10,
+  }),
+  launcher_ammo: item({
+    id: 'launcher_ammo',
+    name: 'Launcher Ammo',
+    type: 'Ammunition',
+    category: 'Ammunition',
+    craftBench: 'workbench',
+    craftQuantity: 60,
+    recipe: {
+      arc_motion_core: 1,
+      crude_explosives: 20,
+    },
+    stackSize: 60,
+  }),
+  spare_recycler: item({
+    id: 'spare_recycler',
+    name: 'Spare Recycler',
+    category: 'Recyclable',
+    value: 900,
+    recyclesInto: {
+      crude_explosives: 2,
+    },
+  }),
+  bargain_recycler: item({
+    id: 'bargain_recycler',
+    name: 'Bargain Recycler',
+    category: 'Recyclable',
+    value: 500,
+    recyclesInto: {
+      crude_explosives: 2,
+    },
+  }),
+  premium_recycler: item({
+    id: 'premium_recycler',
+    name: 'Premium Recycler',
+    category: 'Recyclable',
+    value: 1500,
+    recyclesInto: {
+      crude_explosives: 2,
+    },
   }),
   damaged_heat_sink: item({
     id: 'damaged_heat_sink',
@@ -393,6 +457,138 @@ describe('quartermaster blueprint craftability', () => {
     expect(result.remainingIngredientDeficits).toMatchObject({
       power_rod: 1,
       voltage_converter: 2,
+    });
+  });
+
+  it('crafts missing direct inputs from base materials before recycling direct inputs for active targets', () => {
+    const result = computePlan(
+      itemsMap,
+      [{
+        id: 'ammo',
+        name: 'Ammo',
+        type: 'user',
+        isEnabled: true,
+        items: [
+          { itemId: 'deadline', quantity: 1, isEnabled: true },
+          { itemId: 'launcher_ammo', quantity: 60, isEnabled: true },
+        ],
+      }],
+      [
+        { itemId: 'deadline', quantity: 1 },
+        { itemId: 'arc_motion_core', quantity: 1 },
+        { itemId: 'crude_explosives', quantity: 16 },
+        { itemId: 'chemicals', quantity: 24 },
+        { itemId: 'comet_igniter', quantity: 2 },
+      ],
+      benchLevels,
+      new Set(['deadline']),
+    );
+
+    expect(result.recyclePlan.actions).toEqual([]);
+    expect(result.satisfiableTargets.has('launcher_ammo')).toBe(true);
+    expect(result.craftPlan.steps.map((step) => ({
+      itemId: step.itemId,
+      qty: step.qty,
+    }))).toEqual([
+      { itemId: 'crude_explosives', qty: 4 },
+      { itemId: 'launcher_ammo', qty: 60 },
+    ]);
+  });
+
+  it('prefers non-direct recycle sources over direct recipe inputs for active targets', () => {
+    const result = computePlan(
+      itemsMap,
+      [{
+        id: 'ammo',
+        name: 'Ammo',
+        type: 'user',
+        isEnabled: true,
+        items: [
+          { itemId: 'deadline', quantity: 1, isEnabled: true },
+          { itemId: 'launcher_ammo', quantity: 60, isEnabled: true },
+        ],
+      }],
+      [
+        { itemId: 'deadline', quantity: 1 },
+        { itemId: 'arc_motion_core', quantity: 1 },
+        { itemId: 'crude_explosives', quantity: 16 },
+        { itemId: 'comet_igniter', quantity: 2 },
+        { itemId: 'spare_recycler', quantity: 2 },
+      ],
+      benchLevels,
+      new Set(['deadline']),
+    );
+
+    expect(result.recyclePlan.actions).toHaveLength(1);
+    expect(result.recyclePlan.actions[0]).toMatchObject({
+      srcItemId: 'spare_recycler',
+      qtyToRecycle: 2,
+      sourcePriorityGroup: 'normal',
+    });
+  });
+
+  it('uses direct recipe input recycle sources as a warned fallback', () => {
+    const result = computePlan(
+      itemsMap,
+      [{
+        id: 'ammo',
+        name: 'Ammo',
+        type: 'user',
+        isEnabled: true,
+        items: [
+          { itemId: 'deadline', quantity: 1, isEnabled: true },
+          { itemId: 'launcher_ammo', quantity: 60, isEnabled: true },
+        ],
+      }],
+      [
+        { itemId: 'deadline', quantity: 1 },
+        { itemId: 'arc_motion_core', quantity: 1 },
+        { itemId: 'crude_explosives', quantity: 16 },
+        { itemId: 'comet_igniter', quantity: 2 },
+      ],
+      benchLevels,
+      new Set(['deadline']),
+    );
+
+    expect(result.recyclePlan.actions).toHaveLength(1);
+    expect(result.recyclePlan.actions[0]).toMatchObject({
+      srcItemId: 'comet_igniter',
+      qtyToRecycle: 2,
+      sourcePriorityGroup: 'direct_recipe_input',
+      sourcePriorityWarnings: [
+        expect.objectContaining({
+          listId: 'ammo',
+          listName: 'Ammo',
+          targetItemId: 'deadline',
+          targetItemName: 'Deadline',
+        }),
+      ],
+    });
+  });
+
+  it('uses lower value as a deterministic tie-breaker within the same recycle group', () => {
+    const result = computePlan(
+      itemsMap,
+      [{
+        id: 'ammo',
+        name: 'Ammo',
+        type: 'user',
+        isEnabled: true,
+        items: [{ itemId: 'launcher_ammo', quantity: 60, isEnabled: true }],
+      }],
+      [
+        { itemId: 'arc_motion_core', quantity: 1 },
+        { itemId: 'crude_explosives', quantity: 16 },
+        { itemId: 'bargain_recycler', quantity: 2 },
+        { itemId: 'premium_recycler', quantity: 2 },
+      ],
+      benchLevels,
+    );
+
+    expect(result.recyclePlan.actions).toHaveLength(1);
+    expect(result.recyclePlan.actions[0]).toMatchObject({
+      srcItemId: 'bargain_recycler',
+      qtyToRecycle: 2,
     });
   });
 });

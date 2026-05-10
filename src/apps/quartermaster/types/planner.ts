@@ -81,11 +81,22 @@ export interface RecycleActionReason {
   quantityCovered: Qty;
 }
 
+export type RecycleSourcePriorityGroup = 'normal' | 'direct_recipe_input';
+
+export interface RecycleSourcePriorityWarning {
+  targetItemId: ItemId;
+  targetItemName: string;
+  listId: string;
+  listName: string;
+}
+
 export interface RecycleAction {
   srcItemId: ItemId;
   qtyToRecycle: Qty;
   yields: Record<ItemId, Qty>;
   reasons: RecycleActionReason[];
+  sourcePriorityGroup?: RecycleSourcePriorityGroup;
+  sourcePriorityWarnings?: RecycleSourcePriorityWarning[];
 }
 
 export interface RecyclePlan {

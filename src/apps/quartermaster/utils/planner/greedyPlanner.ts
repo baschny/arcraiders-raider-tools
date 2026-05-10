@@ -10,7 +10,18 @@
  */
 
 import type { ItemsMap, BenchId } from '../../types/item';
-import type { ItemId, Qty, CraftStep, RecycleAction, RecycleActionReason, CycleDiagnostic, RequiredSource, UncraftableReason } from '../../types/planner';
+import type {
+  ItemId,
+  Qty,
+  CraftStep,
+  RecycleAction,
+  RecycleActionReason,
+  RecycleSourcePriorityGroup,
+  RecycleSourcePriorityWarning,
+  CycleDiagnostic,
+  RequiredSource,
+  UncraftableReason,
+} from '../../types/planner';
 import type { TargetPriority } from './aggregation';
 import { NON_RECYCLABLE_CATEGORIES } from '../../types/item';
 
@@ -49,6 +60,12 @@ interface PlannerState {
   /** Items protected from being recycled */
   protectedFromRecycle: Set<ItemId>;
 
+  /** Direct recipe inputs for active list targets; recycled only as a fallback */
+  activeDirectRecipeInputSet: Set<ItemId>;
+
+  /** Warning provenance for direct recipe inputs that are recycled as a fallback */
+  directRecipeInputWarnings: Map<ItemId, RecycleSourcePriorityWarning[]>;
+
   /** Accumulated craft steps keyed by itemId */
   craftSteps: Map<ItemId, CraftStep>;
 
@@ -86,6 +103,13 @@ function clonePlannerState(state: PlannerState): PlannerState {
     avail: { ...state.avail },
     recycleEligible: { ...state.recycleEligible },
     protectedFromRecycle: new Set(state.protectedFromRecycle),
+    activeDirectRecipeInputSet: new Set(state.activeDirectRecipeInputSet),
+    directRecipeInputWarnings: new Map(
+      Array.from(state.directRecipeInputWarnings.entries()).map(([itemId, warnings]) => [
+        itemId,
+        warnings.map((warning) => ({ ...warning })),
+      ]),
+    ),
     craftSteps: new Map(
       Array.from(state.craftSteps.entries()).map(([itemId, step]) => [itemId, { ...step }]),
     ),
@@ -96,6 +120,7 @@ function clonePlannerState(state: PlannerState): PlannerState {
         ...reason,
         chainItemIds: [...reason.chainItemIds],
       })),
+      sourcePriorityWarnings: action.sourcePriorityWarnings?.map((warning) => ({ ...warning })),
     })),
     satisfiableTargets: new Set(state.satisfiableTargets),
     cycleDiagnostics: state.cycleDiagnostics.map((diagnostic) => ({ ...diagnostic })),
@@ -152,6 +177,58 @@ function buildReasonFactory(
   };
 }
 
+function buildDirectRecipeInputWarnings(
+  itemsMap: ItemsMap,
+  requiredFinal: Record<ItemId, Qty>,
+  requiredSourcesByItemId: Record<ItemId, RequiredSource[]>,
+  targetPriority: Record<ItemId, TargetPriority>,
+): { inputSet: Set<ItemId>; warnings: Map<ItemId, RecycleSourcePriorityWarning[]> } {
+  const inputSet = new Set<ItemId>();
+  const warnings = new Map<ItemId, RecycleSourcePriorityWarning[]>();
+
+  for (const targetId of Object.keys(requiredFinal).sort()) {
+    const targetItem = itemsMap[targetId];
+    if (!targetItem?.recipe) continue;
+
+    const sources = requiredSourcesByItemId[targetId] ?? [];
+    for (const inputId of Object.keys(targetItem.recipe)) {
+      inputSet.add(inputId);
+      const existing = warnings.get(inputId) ?? [];
+      for (const source of sources) {
+        existing.push({
+          targetItemId: targetId,
+          targetItemName: targetItem.name,
+          listId: source.listId,
+          listName: source.listName,
+        });
+      }
+      warnings.set(inputId, existing);
+    }
+  }
+
+  for (const [inputId, itemWarnings] of warnings.entries()) {
+    const deduped = Array.from(
+      new Map(itemWarnings.map((warning) => [
+        `${warning.listId}|${warning.targetItemId}`,
+        warning,
+      ])).values(),
+    );
+
+    deduped.sort((a, b) => {
+      const prioA = targetPriority[a.targetItemId] ?? { listIndex: Infinity, itemIndex: Infinity };
+      const prioB = targetPriority[b.targetItemId] ?? { listIndex: Infinity, itemIndex: Infinity };
+      if (prioA.listIndex !== prioB.listIndex) return prioA.listIndex - prioB.listIndex;
+      if (prioA.itemIndex !== prioB.itemIndex) return prioA.itemIndex - prioB.itemIndex;
+      if (a.listName !== b.listName) return a.listName.localeCompare(b.listName);
+      return a.targetItemId.localeCompare(b.targetItemId);
+    });
+
+    warnings.set(inputId, deduped);
+  }
+
+  return { inputSet, warnings };
+}
+
 /**
  * Check if an item can be crafted (has recipe, bench, not blueprint-locked, bench level OK)
  * See specification CR-006: formal craftability predicate
@@ -179,10 +256,12 @@ function canCraft(
 }
 
 /**
- * Deterministic recycle comparator (CR-ADD-6.X)
- * 1. Higher yield toward missing materials
- * 2. Higher coverage count
- * 3. Lower itemId
+ * Deterministic recycle comparator (CR-009)
+ * 1. Non-direct recipe input sources before direct recipe inputs
+ * 2. Higher yield toward missing materials
+ * 3. Higher coverage count
+ * 4. Lower value
+ * 5. Lower itemId
  */
 interface RecycleCandidate {
   srcItemId: ItemId;
@@ -190,11 +269,14 @@ interface RecycleCandidate {
   recyclesInto: Record<ItemId, Qty>;
   effectiveYield: number;
   coverageCount: number;
+  sourcePriorityGroup: RecycleSourcePriorityGroup;
+  value: number;
 }
 
 function buildRecycleCandidates(
   state: PlannerState,
   neededItems: Record<ItemId, Qty>,
+  allowDirectRecipeInputSources = true,
 ): RecycleCandidate[] {
   const candidates: RecycleCandidate[] = [];
   const sortedIds = Object.keys(state.recycleEligible).sort();
@@ -206,6 +288,10 @@ function buildRecycleCandidates(
 
     const item = state.itemsMap[srcId];
     if (!item) continue;
+    const sourcePriorityGroup: RecycleSourcePriorityGroup = state.activeDirectRecipeInputSet.has(srcId)
+      ? 'direct_recipe_input'
+      : 'normal';
+    if (!allowDirectRecipeInputSources && sourcePriorityGroup === 'direct_recipe_input') continue;
     if (NON_RECYCLABLE_CATEGORIES.has(item.category)) continue;
     if (!item.recyclesInto || Object.keys(item.recyclesInto).length === 0) continue;
 
@@ -228,13 +314,19 @@ function buildRecycleCandidates(
       recyclesInto: item.recyclesInto,
       effectiveYield,
       coverageCount,
+      sourcePriorityGroup,
+      value: item.value ?? 0,
     });
   }
 
   // Sort by deterministic comparator
   candidates.sort((a, b) => {
+    if (a.sourcePriorityGroup !== b.sourcePriorityGroup) {
+      return a.sourcePriorityGroup === 'normal' ? -1 : 1;
+    }
     if (b.effectiveYield !== a.effectiveYield) return b.effectiveYield - a.effectiveYield;
     if (b.coverageCount !== a.coverageCount) return b.coverageCount - a.coverageCount;
+    if (a.value !== b.value) return a.value - b.value;
     return a.srcItemId.localeCompare(b.srcItemId);
   });
 
@@ -249,7 +341,9 @@ function recycleForNeeded(
   state: PlannerState,
   needed: Record<ItemId, Qty>,
   reasonFactory: RecycleReasonFactory,
+  options: { allowDirectRecipeInputSources?: boolean } = {},
 ): void {
+  const { allowDirectRecipeInputSources = true } = options;
   const remaining: Record<ItemId, Qty> = {};
   for (const [id, qty] of Object.entries(needed)) {
     if (qty > 0) remaining[id] = qty;
@@ -259,7 +353,7 @@ function recycleForNeeded(
   while (true) {
     if (!Object.values(remaining).some((qty) => qty > 0)) break;
 
-    const candidates = buildRecycleCandidates(state, remaining);
+    const candidates = buildRecycleCandidates(state, remaining, allowDirectRecipeInputSources);
     if (candidates.length === 0) break;
 
     const best = candidates[0];
@@ -300,6 +394,10 @@ function recycleForNeeded(
       qtyToRecycle: units,
       yields,
       reasons,
+      sourcePriorityGroup: best.sourcePriorityGroup,
+      sourcePriorityWarnings: best.sourcePriorityGroup === 'direct_recipe_input'
+        ? state.directRecipeInputWarnings.get(best.srcItemId) ?? []
+        : undefined,
     });
   }
 }
@@ -402,8 +500,8 @@ function phaseC(
     const ingNeed = missingIngredients[ingId];
     if (ingNeed <= 0) continue;
 
-    // Check what we still need after avail
-    const ingDeficit = ingNeed - getAvail(state, ingId);
+    // `missingIngredients` already contains deficits after current availability.
+    const ingDeficit = ingNeed;
     if (ingDeficit <= 0) continue;
 
     const ingItem = state.itemsMap[ingId];
@@ -525,6 +623,24 @@ function getCraftableTimesFromAvail(
   return Number.isFinite(craftableTimes) ? craftableTimes : 0;
 }
 
+function getRecipeDeficitsFromAvail(
+  state: PlannerState,
+  recipe: Record<ItemId, Qty>,
+  craftTimes: Qty,
+): Record<ItemId, Qty> {
+  const deficits: Record<ItemId, Qty> = {};
+
+  for (const [ingId, qtyPerCraft] of Object.entries(recipe)) {
+    const totalNeeded = qtyPerCraft * craftTimes;
+    const have = getAvail(state, ingId);
+    if (have < totalNeeded) {
+      deficits[ingId] = totalNeeded - have;
+    }
+  }
+
+  return deficits;
+}
+
 // ---------------------------------------------------------------------------
 // Main entry point
 // ---------------------------------------------------------------------------
@@ -556,6 +672,13 @@ export function runGreedyPlanner(
     }
   }
 
+  const directRecipeInputPriority = buildDirectRecipeInputWarnings(
+    itemsMap,
+    requiredFinal,
+    requiredSourcesByItemId,
+    targetPriority,
+  );
+
   // Sort missing targets: listIndex ASC, itemIndex ASC, value DESC, itemId ASC (CR-004)
   const sortedTargets = Object.keys(missingFinal).sort((a, b) => {
     const prioA = targetPriority[a] ?? { listIndex: Infinity, itemIndex: Infinity };
@@ -576,6 +699,8 @@ export function runGreedyPlanner(
     avail: { ...owned },
     recycleEligible: { ...owned },
     protectedFromRecycle: new Set<ItemId>(),
+    activeDirectRecipeInputSet: directRecipeInputPriority.inputSet,
+    directRecipeInputWarnings: directRecipeInputPriority.warnings,
     craftSteps: new Map(),
     recycleActions: [],
     satisfiableTargets: new Set(),
@@ -595,15 +720,8 @@ export function runGreedyPlanner(
     state.protectedFromRecycle.add(itemId);
   }
 
-  // Precompute L1 ingredient sets for all targets → protect from recycling
-  for (const targetId of sortedTargets) {
-    const item = itemsMap[targetId];
-    if (item?.recipe) {
-      for (const ingId of Object.keys(item.recipe)) {
-        state.protectedFromRecycle.add(ingId);
-      }
-    }
-  }
+  // L1 ingredients are not hard-protected: they are lower-priority recycle sources
+  // and can be sacrificed only after normal recycle candidates and craft paths fail.
 
   // Process each target greedily
   for (const targetId of sortedTargets) {
@@ -636,9 +754,11 @@ export function runGreedyPlanner(
       Object.fromEntries(Object.keys(missingL1).map((itemId) => [itemId, [targetId, itemId]])),
     );
 
-    // Phase B: Recycle once for direct (L1) inputs
+    // Phase B: Recycle once for direct (L1) inputs, using non-direct-input sources first.
     if (Object.keys(missingL1).length > 0) {
-      recycleForNeeded(trialState, missingL1, directRecycleReasonFactory);
+      recycleForNeeded(trialState, missingL1, directRecycleReasonFactory, {
+        allowDirectRecipeInputSources: false,
+      });
     }
 
     // Re-check L1 deficits after recycling
@@ -661,6 +781,14 @@ export function runGreedyPlanner(
       pendingCrafts = phaseCResult.pendingCrafts;
     }
 
+    const pendingCraftItemIds = new Set(pendingCrafts.map((craft) => craft.itemId));
+    const missingL1WithoutPendingCrafts = Object.fromEntries(
+      Object.entries(stillMissingL1).filter(([ingId]) => !pendingCraftItemIds.has(ingId)),
+    );
+    if (Object.keys(missingL1WithoutPendingCrafts).length > 0) {
+      recycleForNeeded(trialState, missingL1WithoutPendingCrafts, directRecycleReasonFactory);
+    }
+
     const subIngredientChains: Record<ItemId, ItemId[]> = {};
     for (const craft of pendingCrafts) {
       for (const subId of Object.keys(craft.recipe)) {
@@ -679,7 +807,13 @@ export function runGreedyPlanner(
       recycleForNeeded(trialState, missingSub, subRecycleReasonFactory);
     }
 
-    const pendingResult = applyPendingCraftsIfPossible(trialState, pendingCrafts);
+    let pendingResult = applyPendingCraftsIfPossible(trialState, pendingCrafts);
+    if (!pendingResult.ok && pendingCrafts.length > 0) {
+      const remainingL1BeforeFallback = getRecipeDeficitsFromAvail(trialState, targetRecipe, craftTimes);
+      recycleForNeeded(trialState, remainingL1BeforeFallback, directRecycleReasonFactory);
+      pendingCrafts = [];
+      pendingResult = applyPendingCraftsIfPossible(trialState, pendingCrafts);
+    }
 
     // Final check: is this target fully satisfiable?
     let fullySatisfiable = true;

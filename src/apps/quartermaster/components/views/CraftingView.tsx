@@ -3,7 +3,7 @@
  * See specification section 7.6
  */
 
-import { RefreshCw, Hammer } from 'lucide-react';
+import { AlertTriangle, RefreshCw, Hammer } from 'lucide-react';
 import type { ItemsMap, BenchId } from '../../types/item';
 import type { CraftPlan, PlannerResult, RecycleAction, RecyclePlan } from '../../types/planner';
 import { BENCH_ORDER } from '../../types/item';
@@ -157,6 +157,28 @@ export function CraftingView({
     );
   };
 
+  const renderRecyclePriorityWarning = (action: RecycleAction) => {
+    if (action.sourcePriorityGroup !== 'direct_recipe_input' || !action.sourcePriorityWarnings?.length) {
+      return null;
+    }
+
+    const [warning] = action.sourcePriorityWarnings;
+    const remainingCount = action.sourcePriorityWarnings.length - 1;
+
+    return (
+      <div className="crafting-view__why-warning">
+        <AlertTriangle size={14} strokeWidth={2} />
+        <span>
+          {tm('quartermaster.crafting.directInputRecycleWarning', {
+            listName: warning.listName,
+            targetItemName: warning.targetItemName,
+            count: remainingCount,
+          })}
+        </span>
+      </div>
+    );
+  };
+
   const renderMaterialRows = (materials: Record<string, number>) => (
     <div className="crafting-view__materials">
       {Object.entries(materials).map(([materialId, quantity]) => {
@@ -268,7 +290,10 @@ export function CraftingView({
                     <td><span className="qm-item-name">{item.name}</span></td>
                     <td>{action.qtyToRecycle}</td>
                     <td>{renderMaterialRows(action.yields)}</td>
-                    <td>{renderWhyEntries(getRecycleWhyEntries(action), { showState: false })}</td>
+                    <td>
+                      {renderWhyEntries(getRecycleWhyEntries(action), { showState: false })}
+                      {renderRecyclePriorityWarning(action)}
+                    </td>
                   </tr>
                 );
               })}

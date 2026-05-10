@@ -402,6 +402,7 @@
       "craftItems": "Craft Items",
       "empty": "No crafting needed. All required items are in your stash!",
       "blueprintsSynced": "Blueprints synced: {timestamp}",
+      "directInputRecycleWarning": "Warning: also needed directly for {listName} -> {targetItemName}",
       "columns": {
         "item": "Item",
         "name": "Name",

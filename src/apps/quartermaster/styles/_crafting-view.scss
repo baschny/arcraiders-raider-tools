@@ -120,6 +120,25 @@
     gap: 6px;
   }
 
+  &__why-warning {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    margin-top: 6px;
+    border-radius: $radius-sm;
+    border: 1px solid rgba($badge-recycle, 0.35);
+    background: rgba($badge-recycle, 0.1);
+    color: $badge-recycle;
+    padding: 6px;
+    font-size: 11px;
+    line-height: 1.35;
+
+    svg {
+      flex: 0 0 auto;
+      margin-top: 1px;
+    }
+  }
+
   &__why-item {
     display: flex;
     align-items: flex-start;
