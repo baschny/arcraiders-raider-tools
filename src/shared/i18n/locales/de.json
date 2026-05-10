@@ -295,7 +295,7 @@
   "quartermaster": {
     "loading": "Gegenstandsdaten werden geladen...",
     "nav": {
-      "stash": "Lager",
+      "stash": "My Items",
       "currentLoadout": "Aktuelle Ausrüstung",
       "lists": "Listen",
       "inRaid": "Im Raid",
@@ -306,7 +306,7 @@
       "missingItems": "Fehlende Gegenstände",
       "recycleActions": "Recycling-Aktionen",
       "craftSteps": "Crafting-Schritte",
-      "stash": "Lager",
+      "stash": "Inventory",
       "loadout": "Ausrüstung",
       "never": "Nie",
       "invalid": "Ungültig"
@@ -322,6 +322,7 @@
       "syncLoadout": "Ausrüstung synchronisieren",
       "syncHideout": "Hideout synchronisieren",
       "syncHideouts": "Hideouts synchronisieren",
+      "syncBlueprints": "Sync Unlocked Blueprints",
       "unknownError": "Unbekannter Fehler"
     },
     "sync": {
@@ -330,14 +331,34 @@
       "failed": "{operation} fehlgeschlagen: {message}"
     },
     "stash": {
-      "searchPlaceholder": "Gegenstände suchen...",
+      "searchPlaceholder": "Search my items...",
       "allCategories": "Alle Kategorien",
       "allRarities": "Alle Seltenheiten",
       "showOnlyRecyclable": "Nur recycelbare anzeigen",
       "totalValue": "Gesamtwert",
-      "empty": "Keine Gegenstände im Lager. Klicke auf „Inventar synchronisieren“, um dein Lager zu laden.",
+      "empty": "No items loaded. Click \"Sync My Items\" to load your inventory and current loadout.",
       "noMatches": "Keine Gegenstände passen zu deinen Filtern.",
       "missingCount": "{missing}/{required} fehlen",
+      "syncMyItems": "Sync My Items",
+      "syncingInventory": "Syncing inventory...",
+      "syncingLoadout": "Syncing loadout...",
+      "inventorySource": "inventory",
+      "loadoutSource": "loadout",
+      "incompleteWarning": "Owned inventory is incomplete. Sync missing source: {sources}.",
+      "attachmentsCounted": "Attachments counted separately",
+      "activeRequirements": "active requirements",
+      "acrossLists": "{count} lists",
+      "locations": {
+        "inCurrentLoadout": "In current loadout",
+        "attachedInStash": "Attached to {item} in stash",
+        "attachedInLoadout": "Attached to {item} in current loadout",
+        "more": "+{count} more locations"
+      },
+      "status": {
+        "owned": "Owned {owned}",
+        "haveRequired": "Have {owned} / {required} required for {source}",
+        "needMore": "Need {missing} more for {source} ({required} required, {owned} owned)"
+      },
       "columns": {
         "icon": "Icon",
         "item": "Gegenstand",
@@ -380,6 +401,7 @@
       "step2": "Schritt 2: Gegenstände craften",
       "craftItems": "Gegenstände craften",
       "empty": "Kein Crafting nötig. Alle benötigten Gegenstände sind in deinem Lager!",
+      "blueprintsSynced": "Blueprints synced: {timestamp}",
       "columns": {
         "item": "Gegenstand",
         "name": "Name",
