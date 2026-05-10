@@ -10,7 +10,7 @@
  */
 
 import type { ItemsMap, BenchId } from '../../types/item';
-import type { ItemId, Qty, CraftStep, RecycleAction, CycleDiagnostic, UncraftableReason } from '../../types/planner';
+import type { ItemId, Qty, CraftStep, RecycleAction, RecycleActionReason, CycleDiagnostic, RequiredSource, UncraftableReason } from '../../types/planner';
 import type { TargetPriority } from './aggregation';
 import { NON_RECYCLABLE_CATEGORIES } from '../../types/item';
 
@@ -28,6 +28,8 @@ export interface GreedyPlanResult {
   blueprintBlockers: Set<ItemId>;
   benchBlockers: Set<ItemId>;
 }
+
+type RecycleReasonFactory = (producedItemId: ItemId, quantityCovered: Qty) => RecycleActionReason[];
 
 // ---------------------------------------------------------------------------
 // Internal state
@@ -76,6 +78,78 @@ function consumeAvail(state: PlannerState, itemId: ItemId, qty: Qty): void {
 
 function addAvail(state: PlannerState, itemId: ItemId, qty: Qty): void {
   state.avail[itemId] = (state.avail[itemId] ?? 0) + qty;
+}
+
+function clonePlannerState(state: PlannerState): PlannerState {
+  return {
+    ...state,
+    avail: { ...state.avail },
+    recycleEligible: { ...state.recycleEligible },
+    protectedFromRecycle: new Set(state.protectedFromRecycle),
+    craftSteps: new Map(
+      Array.from(state.craftSteps.entries()).map(([itemId, step]) => [itemId, { ...step }]),
+    ),
+    recycleActions: state.recycleActions.map((action) => ({
+      ...action,
+      yields: { ...action.yields },
+      reasons: action.reasons.map((reason) => ({
+        ...reason,
+        chainItemIds: [...reason.chainItemIds],
+      })),
+    })),
+    satisfiableTargets: new Set(state.satisfiableTargets),
+    cycleDiagnostics: state.cycleDiagnostics.map((diagnostic) => ({ ...diagnostic })),
+    blueprintBlockers: new Set(state.blueprintBlockers),
+    benchBlockers: new Set(state.benchBlockers),
+  };
+}
+
+function mergePlannerDiagnostics(target: PlannerState, source: PlannerState): void {
+  for (const diagnostic of source.cycleDiagnostics) {
+    if (!target.cycleDiagnostics.some((existing) => existing.itemId === diagnostic.itemId)) {
+      target.cycleDiagnostics.push({ ...diagnostic });
+    }
+  }
+  for (const itemId of source.blueprintBlockers) {
+    target.blueprintBlockers.add(itemId);
+  }
+  for (const itemId of source.benchBlockers) {
+    target.benchBlockers.add(itemId);
+  }
+}
+
+function formatChainLabel(state: PlannerState, chainItemIds: ItemId[]): string {
+  return chainItemIds
+    .map((itemId) => state.itemsMap[itemId]?.name ?? itemId)
+    .join(' -> ');
+}
+
+function buildReasonFactory(
+  state: PlannerState,
+  targetId: ItemId,
+  requiredSourcesByItemId: Record<ItemId, RequiredSource[]>,
+  chainByProducedItemId: Record<ItemId, ItemId[]>,
+): RecycleReasonFactory {
+  return (producedItemId, quantityCovered) => {
+    const targetItem = state.itemsMap[targetId];
+    const producedItem = state.itemsMap[producedItemId];
+    const sources = requiredSourcesByItemId[targetId] ?? [];
+    const chainItemIds = chainByProducedItemId[producedItemId] ?? [targetId, producedItemId];
+
+    if (!targetItem || !producedItem || sources.length === 0) return [];
+
+    return sources.map((source) => ({
+      listId: source.listId,
+      listName: source.listName,
+      targetItemId: targetId,
+      targetItemName: targetItem.name,
+      producedItemId,
+      producedItemName: producedItem.name,
+      chainItemIds,
+      chainLabel: formatChainLabel(state, chainItemIds),
+      quantityCovered,
+    }));
+  };
 }
 
 /**
@@ -174,6 +248,7 @@ function buildRecycleCandidates(
 function recycleForNeeded(
   state: PlannerState,
   needed: Record<ItemId, Qty>,
+  reasonFactory: RecycleReasonFactory,
 ): void {
   const remaining: Record<ItemId, Qty> = {};
   for (const [id, qty] of Object.entries(needed)) {
@@ -202,10 +277,16 @@ function recycleForNeeded(
 
     // Apply recycling
     const yields: Record<ItemId, Qty> = {};
+    const reasons: RecycleActionReason[] = [];
     for (const [matId, yieldPer] of Object.entries(best.recyclesInto)) {
       const totalYield = yieldPer * units;
+      const deficitBeforeYield = remaining[matId] ?? 0;
       yields[matId] = totalYield;
       remaining[matId] = Math.max(0, (remaining[matId] ?? 0) - totalYield);
+      const quantityCovered = Math.min(deficitBeforeYield, totalYield);
+      if (quantityCovered > 0) {
+        reasons.push(...reasonFactory(matId, quantityCovered));
+      }
       // Add to avail but NOT to recycleEligible (no chaining)
       addAvail(state, matId, totalYield);
     }
@@ -218,6 +299,7 @@ function recycleForNeeded(
       srcItemId: best.srcItemId,
       qtyToRecycle: units,
       yields,
+      reasons,
     });
   }
 }
@@ -463,6 +545,7 @@ export function runGreedyPlanner(
   benchLevels: Record<BenchId, number>,
   targetPriority: Record<ItemId, TargetPriority> = {},
   unlockedBlueprintItemIds: Set<ItemId> = new Set(),
+  requiredSourcesByItemId: Record<ItemId, RequiredSource[]> = {},
 ): GreedyPlanResult {
   // Compute missingFinal (CR-MOD-6.2)
   const missingFinal: Record<ItemId, Qty> = {};
@@ -486,7 +569,7 @@ export function runGreedyPlanner(
   });
 
   // Initialize state
-  const state: PlannerState = {
+  let state: PlannerState = {
     itemsMap,
     benchLevels,
     unlockedBlueprintItemIds,
@@ -530,9 +613,14 @@ export function runGreedyPlanner(
     const targetItem = itemsMap[targetId];
     if (!targetItem) continue;
 
+    const trialState = clonePlannerState(state);
+
     // Phase A: Direct Craft
-    const phaseAResult = phaseA(state, targetId, need);
-    if (!phaseAResult) continue; // Not craftable
+    const phaseAResult = phaseA(trialState, targetId, need);
+    if (!phaseAResult) {
+      mergePlannerDiagnostics(state, trialState);
+      continue; // Not craftable
+    }
 
     // Extract metadata
     const totalOutput = phaseAResult['_totalOutput'] ?? 0;
@@ -541,10 +629,16 @@ export function runGreedyPlanner(
     delete phaseAResult['_craftTimes'];
 
     const missingL1 = { ...phaseAResult };
+    const directRecycleReasonFactory = buildReasonFactory(
+      trialState,
+      targetId,
+      requiredSourcesByItemId,
+      Object.fromEntries(Object.keys(missingL1).map((itemId) => [itemId, [targetId, itemId]])),
+    );
 
     // Phase B: Recycle once for direct (L1) inputs
     if (Object.keys(missingL1).length > 0) {
-      recycleForNeeded(state, missingL1);
+      recycleForNeeded(trialState, missingL1, directRecycleReasonFactory);
     }
 
     // Re-check L1 deficits after recycling
@@ -552,7 +646,7 @@ export function runGreedyPlanner(
     const stillMissingL1: Record<ItemId, Qty> = {};
     for (const [ingId, qtyPerCraft] of Object.entries(targetRecipe)) {
       const totalNeeded = qtyPerCraft * craftTimes;
-      const have = getAvail(state, ingId);
+      const have = getAvail(trialState, ingId);
       if (have < totalNeeded) {
         stillMissingL1[ingId] = totalNeeded - have;
       }
@@ -562,17 +656,30 @@ export function runGreedyPlanner(
     let missingSub: Record<ItemId, Qty> = {};
     let pendingCrafts: PendingCraft[] = [];
     if (Object.keys(stillMissingL1).length > 0) {
-      const phaseCResult = phaseC(state, stillMissingL1);
+      const phaseCResult = phaseC(trialState, stillMissingL1);
       missingSub = phaseCResult.missingSub;
       pendingCrafts = phaseCResult.pendingCrafts;
     }
 
+    const subIngredientChains: Record<ItemId, ItemId[]> = {};
+    for (const craft of pendingCrafts) {
+      for (const subId of Object.keys(craft.recipe)) {
+        subIngredientChains[subId] = [targetId, craft.itemId, subId];
+      }
+    }
+    const subRecycleReasonFactory = buildReasonFactory(
+      trialState,
+      targetId,
+      requiredSourcesByItemId,
+      subIngredientChains,
+    );
+
     // Phase D: Recycle once for level-2 sub-ingredients
     if (Object.keys(missingSub).length > 0) {
-      recycleForNeeded(state, missingSub);
+      recycleForNeeded(trialState, missingSub, subRecycleReasonFactory);
     }
 
-    const pendingResult = applyPendingCraftsIfPossible(state, pendingCrafts);
+    const pendingResult = applyPendingCraftsIfPossible(trialState, pendingCrafts);
 
     // Final check: is this target fully satisfiable?
     let fullySatisfiable = true;
@@ -590,17 +697,17 @@ export function runGreedyPlanner(
     // If L2 crafts have unmet sub-ingredients, also not satisfiable
     if (fullySatisfiable && Object.keys(stillMissingL1).length > 0) {
       for (const [ingId] of Object.entries(stillMissingL1)) {
-        const ingItem = state.itemsMap[ingId];
+        const ingItem = trialState.itemsMap[ingId];
         if (!ingItem?.recipe) {
           // Base material still missing
-          if (getAvail(state, ingId) < (targetRecipe[ingId] ?? 0) * craftTimes) {
+          if (getAvail(trialState, ingId) < (targetRecipe[ingId] ?? 0) * craftTimes) {
             fullySatisfiable = false;
             break;
           }
           continue;
         }
         // Check if L2 craft sub-ingredients are satisfied
-        const { ok } = canCraft(ingItem, state.benchLevels, state.unlockedBlueprintItemIds, ingId);
+        const { ok } = canCraft(ingItem, trialState.benchLevels, trialState.unlockedBlueprintItemIds, ingId);
         if (!ok) {
           if (getFrom(pendingResult.avail, ingId) < (targetRecipe[ingId] ?? 0) * craftTimes) {
             fullySatisfiable = false;
@@ -611,24 +718,29 @@ export function runGreedyPlanner(
     }
 
     if (fullySatisfiable) {
-      state.satisfiableTargets.add(targetId);
-      state.avail = pendingResult.avail;
+      trialState.satisfiableTargets.add(targetId);
+      trialState.avail = pendingResult.avail;
 
       // Consume ingredients and produce output
       for (const [ingId, qtyPerCraft] of Object.entries(targetRecipe)) {
-        consumeAvail(state, ingId, qtyPerCraft * craftTimes);
+        consumeAvail(trialState, ingId, qtyPerCraft * craftTimes);
       }
-      addAvail(state, targetId, totalOutput);
+      addAvail(trialState, targetId, totalOutput);
 
       for (const craft of pendingCrafts) {
-        recordCraftStep(state, craft.itemId, craft.totalOutput);
+        recordCraftStep(trialState, craft.itemId, craft.totalOutput);
       }
 
       // Record the L1 craft step
-      recordCraftStep(state, targetId, totalOutput);
+      recordCraftStep(trialState, targetId, totalOutput);
 
       // surplus from over-production already in avail from addAvail above
-    } else if (pendingCrafts.length === 0) {
+      state = trialState;
+    } else {
+      mergePlannerDiagnostics(state, trialState);
+    }
+
+    if (!fullySatisfiable && pendingCrafts.length === 0) {
       const partialCraftTimes = Math.min(craftTimes, getCraftableTimesFromAvail(state, targetRecipe));
       if (partialCraftTimes > 0) {
         const partialOutput = partialCraftTimes * targetItem.craftQuantity;

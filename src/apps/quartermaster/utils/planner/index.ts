@@ -82,6 +82,7 @@ export function computePlan(
     benchLevels,
     targetPriority,
     unlockedBlueprintItemIds,
+    requiredSourcesByItemId,
   );
 
   // Step 4: Build sorted craft plan (fully satisfiable only in Craft UI)

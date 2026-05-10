@@ -5,7 +5,7 @@
 
 import { RefreshCw, Hammer } from 'lucide-react';
 import type { ItemsMap, BenchId } from '../../types/item';
-import type { CraftPlan, PlannerResult, RecyclePlan } from '../../types/planner';
+import type { CraftPlan, PlannerResult, RecycleAction, RecyclePlan } from '../../types/planner';
 import { BENCH_ORDER } from '../../types/item';
 import { ItemIcon } from '../ItemIcon';
 import type { ItemInsightsMap } from '../../utils/itemInsights';
@@ -87,19 +87,22 @@ export function CraftingView({
     return Array.from(dedupe.values());
   };
 
-  const getRecycleWhyEntries = (itemId: string) => {
-    const insight = itemInsights[itemId];
-    if (!insight) return [];
-    return insight.recycleSalvageNeeds
-      .filter((need) => need.mode === 'recycle')
-      .map((need, index) => ({
-        key: `${need.listId}-${need.targetItemId}-${need.producedItemId}-${index}`,
-        listName: need.listName,
-        targetItemId: need.targetItemId,
-        targetItemName: need.targetItemName,
-        chainLabel: need.chainLabel,
-        isComplete: need.isComplete,
-      }));
+  const getRecycleWhyEntries = (action: RecycleAction) => {
+    const entries = action.reasons.map((reason) => ({
+      key: [
+        reason.listId,
+        reason.targetItemId,
+        reason.producedItemId,
+        reason.chainItemIds.join('>'),
+      ].join('|'),
+      listName: reason.listName,
+      targetItemId: reason.targetItemId,
+      targetItemName: reason.targetItemName,
+      chainLabel: reason.chainLabel,
+    }));
+
+    const dedupe = new Map(entries.map((entry) => [entry.key, entry]));
+    return Array.from(dedupe.values());
   };
 
   const renderWhyEntries = (entries: Array<{
@@ -108,8 +111,10 @@ export function CraftingView({
     targetItemId: string;
     targetItemName: string;
     chainLabel: string;
-    isComplete: boolean;
-  }>) => {
+    isComplete?: boolean;
+  }>, options: { showState?: boolean } = {}) => {
+    const { showState = true } = options;
+
     if (entries.length === 0) {
       return <span className="crafting-view__why-empty">{t('quartermaster.crafting.noImpact')}</span>;
     }
@@ -140,9 +145,11 @@ export function CraftingView({
                 </div>
                 <div className="crafting-view__why-sub">{entry.chainLabel}</div>
               </div>
-              <span className={`crafting-view__why-state ${entry.isComplete ? 'crafting-view__why-state--complete' : 'crafting-view__why-state--needed'}`}>
-                {entry.isComplete ? t('quartermaster.itemTooltip.complete') : t('quartermaster.itemTooltip.needed')}
-              </span>
+              {showState && (
+                <span className={`crafting-view__why-state ${entry.isComplete ? 'crafting-view__why-state--complete' : 'crafting-view__why-state--needed'}`}>
+                  {entry.isComplete ? t('quartermaster.itemTooltip.complete') : t('quartermaster.itemTooltip.needed')}
+                </span>
+              )}
             </div>
           );
         })}
@@ -261,7 +268,7 @@ export function CraftingView({
                     <td><span className="qm-item-name">{item.name}</span></td>
                     <td>{action.qtyToRecycle}</td>
                     <td>{renderMaterialRows(action.yields)}</td>
-                    <td>{renderWhyEntries(getRecycleWhyEntries(action.srcItemId))}</td>
+                    <td>{renderWhyEntries(getRecycleWhyEntries(action), { showState: false })}</td>
                   </tr>
                 );
               })}

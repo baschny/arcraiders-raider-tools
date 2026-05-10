@@ -69,10 +69,23 @@ export interface CraftPlan {
 }
 
 // Recycling Plan (section 6.8.5)
+export interface RecycleActionReason {
+  listId: string;
+  listName: string;
+  targetItemId: ItemId;
+  targetItemName: string;
+  producedItemId: ItemId;
+  producedItemName: string;
+  chainItemIds: ItemId[];
+  chainLabel: string;
+  quantityCovered: Qty;
+}
+
 export interface RecycleAction {
   srcItemId: ItemId;
   qtyToRecycle: Qty;
   yields: Record<ItemId, Qty>;
+  reasons: RecycleActionReason[];
 }
 
 export interface RecyclePlan {

@@ -56,6 +56,45 @@ const itemsMap: ItemsMap = {
     name: 'Explosive Compound',
     category: 'Refined Material',
   }),
+  advanced_electrical_components: item({
+    id: 'advanced_electrical_components',
+    name: 'Advanced Electrical Components',
+    category: 'Refined Material',
+  }),
+  voltage_converter: item({
+    id: 'voltage_converter',
+    name: 'Voltage Converter',
+    category: 'Topside Material',
+  }),
+  vaporizer_regulator: item({
+    id: 'vaporizer_regulator',
+    name: 'Vaporizer Regulator',
+    category: 'Recyclable',
+    recyclesInto: {
+      advanced_electrical_components: 2,
+      arc_circuitry: 2,
+    },
+  }),
+  power_rod: item({
+    id: 'power_rod',
+    name: 'Power Rod',
+    craftBench: 'refiner',
+    recipe: {
+      advanced_electrical_components: 1,
+      arc_circuitry: 1,
+    },
+  }),
+  heavy_shield: item({
+    id: 'heavy_shield',
+    name: 'Heavy Shield',
+    type: 'Shield',
+    category: 'Shield',
+    craftBench: 'equipment_bench',
+    recipe: {
+      power_rod: 1,
+      voltage_converter: 2,
+    },
+  }),
   deadline: item({
     id: 'deadline',
     name: 'Deadline',
@@ -265,6 +304,12 @@ describe('quartermaster blueprint craftability', () => {
       expect.objectContaining({
         srcItemId: 'rusted_tools',
         qtyToRecycle: 1,
+        reasons: [
+          expect.objectContaining({
+            targetItemId: 'medium_ammo',
+            producedItemId: 'metal_parts',
+          }),
+        ],
       }),
     );
     expect(result.satisfiableTargets.has('medium_ammo')).toBe(true);
@@ -298,5 +343,56 @@ describe('quartermaster blueprint craftability', () => {
       qty: step.qty,
     }))).toEqual([{ itemId: 'medium_ammo', qty: 180 }]);
     expect(result.remainingIngredientDeficits).toEqual({ metal_parts: 2 });
+  });
+
+  it('does not commit recycle work or reasons for a target blocked by raid-only ingredients', () => {
+    const result = computePlan(
+      itemsMap,
+      [{
+        id: 'loadout',
+        name: 'Loadout',
+        type: 'user',
+        isEnabled: true,
+        items: [
+          { itemId: 'deadline', quantity: 6, isEnabled: true },
+          { itemId: 'heavy_shield', quantity: 1, isEnabled: true },
+        ],
+      }],
+      [
+        { itemId: 'deadline', quantity: 3 },
+        { itemId: 'comet_igniter', quantity: 3 },
+        { itemId: 'explosive_compound', quantity: 9 },
+        { itemId: 'arc_circuitry', quantity: 2 },
+        { itemId: 'vaporizer_regulator', quantity: 3 },
+      ],
+      benchLevels,
+      new Set(['deadline']),
+    );
+
+    expect(result.satisfiableTargets.has('deadline')).toBe(true);
+    expect(result.satisfiableTargets.has('heavy_shield')).toBe(false);
+    expect(result.recyclePlan.actions).toHaveLength(1);
+    expect(result.recyclePlan.actions[0]).toMatchObject({
+      srcItemId: 'vaporizer_regulator',
+      qtyToRecycle: 2,
+      yields: {
+        advanced_electrical_components: 4,
+        arc_circuitry: 4,
+      },
+    });
+    expect(result.recyclePlan.actions[0].reasons).toEqual([
+      expect.objectContaining({
+        listId: 'loadout',
+        targetItemId: 'deadline',
+        producedItemId: 'arc_circuitry',
+        chainItemIds: ['deadline', 'arc_circuitry'],
+      }),
+    ]);
+    expect(result.recyclePlan.actions[0].reasons.some((reason) => reason.targetItemId === 'heavy_shield')).toBe(false);
+    expect(result.craftPlan.steps.map((step) => step.itemId)).toEqual(['deadline']);
+    expect(result.remainingIngredientDeficits).toMatchObject({
+      power_rod: 1,
+      voltage_converter: 2,
+    });
   });
 });

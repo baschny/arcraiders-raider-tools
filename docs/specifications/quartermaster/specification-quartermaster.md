@@ -1017,6 +1017,32 @@ Planner result must include:
 
 Depth-2 craft inputs must be checked before the parent target is marked satisfiable.
 
+## 6.3 Transactional Target Planning
+
+Planning for a single missing final target must be transactional.
+
+The planner may simulate crafting and recycling while evaluating a target, but it must not commit any of the following to the canonical planner result until the target is proven fully satisfiable:
+
+- recycle actions
+- consumed owned quantities
+- produced recycle yields
+- depth-2 craft outputs
+- final craft outputs
+- craft steps
+
+If a target remains blocked after simulation, such as by a missing raid-only ingredient, blueprint blocker, bench blocker, or unavailable sub-ingredient, all simulated recycle and craft effects for that target must be discarded.
+
+Blocked targets must still contribute to remaining ingredient deficits and In Raid guidance, but they must not create Crafting view actions.
+
+Example:
+
+- Desired list contains `heavy_shield` x1.
+- `heavy_shield` requires `power_rod` x1 and `voltage_converter` x2.
+- `power_rod` can be crafted from materials available through recycling.
+- `voltage_converter` is still missing and cannot be locally produced.
+
+Planner result must not include recycling or crafting steps solely for `heavy_shield`, because the final target is not locally satisfiable.
+
 ---
 
 # 7. ASSUMPTIONS
@@ -1424,6 +1450,24 @@ List Name → Target Item
 Small icon of target item must be shown.
 
 Tooltip for the icon must display the full item tooltip.
+
+Step 1 Recycle reasons must be based on committed recycle action provenance, not broad dependency matching.
+
+Recycle reasons must only describe targets that are locally satisfiable and whose plan was committed.
+
+The Recycle "Why" column must not show:
+
+- blocked final targets
+- simulated-but-discarded final targets
+- completed intermediate dependency paths
+- `COMPLETE` status badges
+
+Preferred recycle reason format:
+
+```
+List Name → Target Item
+Target Item → Needed Material
+```
 
 ---
 
