@@ -295,7 +295,7 @@
   "quartermaster": {
     "loading": "Loading item data...",
     "nav": {
-      "stash": "Stash",
+      "stash": "My Items",
       "currentLoadout": "Current Loadout",
       "lists": "Lists",
       "inRaid": "In Raid",
@@ -306,7 +306,7 @@
       "missingItems": "Missing Items",
       "recycleActions": "Recycle Actions",
       "craftSteps": "Craft Steps",
-      "stash": "Stash",
+      "stash": "Inventory",
       "loadout": "Loadout",
       "never": "Never",
       "invalid": "Invalid"
@@ -322,6 +322,7 @@
       "syncLoadout": "Sync Loadout",
       "syncHideout": "Sync Hideout",
       "syncHideouts": "Sync Hideouts",
+      "syncBlueprints": "Sync Unlocked Blueprints",
       "unknownError": "Unknown error"
     },
     "sync": {
@@ -330,14 +331,34 @@
       "failed": "{operation} failed: {message}"
     },
     "stash": {
-      "searchPlaceholder": "Search items...",
+      "searchPlaceholder": "Search my items...",
       "allCategories": "All Categories",
       "allRarities": "All Rarities",
       "showOnlyRecyclable": "Show Only Recyclable",
       "totalValue": "Total Value",
-      "empty": "No items in stash. Click \"Sync Inventory\" to load your stash.",
+      "empty": "No items loaded. Click \"Sync My Items\" to load your inventory and current loadout.",
       "noMatches": "No items match your filters.",
       "missingCount": "{missing}/{required} Missing",
+      "syncMyItems": "Sync My Items",
+      "syncingInventory": "Syncing inventory...",
+      "syncingLoadout": "Syncing loadout...",
+      "inventorySource": "inventory",
+      "loadoutSource": "loadout",
+      "incompleteWarning": "Owned inventory is incomplete. Sync missing source: {sources}.",
+      "attachmentsCounted": "Attachments counted separately",
+      "activeRequirements": "active requirements",
+      "acrossLists": "{count} lists",
+      "locations": {
+        "inCurrentLoadout": "In current loadout",
+        "attachedInStash": "Attached to {item} in stash",
+        "attachedInLoadout": "Attached to {item} in current loadout",
+        "more": "+{count} more locations"
+      },
+      "status": {
+        "owned": "Owned {owned}",
+        "haveRequired": "Have {owned} / {required} required for {source}",
+        "needMore": "Need {missing} more for {source} ({required} required, {owned} owned)"
+      },
       "columns": {
         "icon": "Icon",
         "item": "Item",
@@ -380,6 +401,7 @@
       "step2": "Step 2: Craft Items",
       "craftItems": "Craft Items",
       "empty": "No crafting needed. All required items are in your stash!",
+      "blueprintsSynced": "Blueprints synced: {timestamp}",
       "columns": {
         "item": "Item",
         "name": "Name",
