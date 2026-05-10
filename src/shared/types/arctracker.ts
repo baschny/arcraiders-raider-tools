@@ -24,6 +24,8 @@ export interface ArctrackerStashItem {
   name: string;
   quantity: number;
   slotIndex: number;
+  durabilityPercent?: number;
+  attachments?: ArctrackerLoadoutSlot[];
 }
 
 export interface ArctrackerStashCurrencies {

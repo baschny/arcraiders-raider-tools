@@ -37,7 +37,7 @@ function computeIngredientDemands(
 export function buildPlanRows(
   itemsMap: ItemsMap,
   required: Record<ItemId, Qty>,
-  stash: Record<ItemId, Qty>,
+  owned: Record<ItemId, Qty>,
   greedyResult: GreedyPlanResult,
 ): PlanRow[] {
   // Merge loadout requirements with ingredient demands from craft plan
@@ -53,7 +53,7 @@ export function buildPlanRows(
   for (const itemId of itemIds) {
     if (!itemsMap[itemId]) continue;
 
-    const have = stash[itemId] ?? 0;
+    const have = owned[itemId] ?? 0;
     const req = totalRequired[itemId] ?? 0;
     const missing = Math.max(0, req - have);
 

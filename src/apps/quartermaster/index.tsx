@@ -7,7 +7,7 @@
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import type { ItemsMap, BenchId } from './types/item';
 import type { StoredList } from './types/list';
-import type { StashItem, CurrentLoadoutItem, PlannerResult } from './types/planner';
+import type { PlannerResult } from './types/planner';
 import type { HideoutModuleDefinition, HideoutToggleState } from './types/hideout';
 import { loadAllItems, loadHideoutDefinitions } from './utils/dataLoader';
 import {
@@ -37,8 +37,8 @@ import {
   getLoadout,
   getHideout,
   getBlueprints,
-  aggregateStashItems,
-  aggregateLoadoutItems,
+  aggregateOwnedInventory,
+  toOwnedItemQuantities,
   getBenchLevels,
   getUnlockedBlueprintItemIds,
   isApiError,
@@ -62,7 +62,6 @@ import { Sidebar, type ViewId } from './components/Sidebar';
 import { GlobalHeader } from './components/GlobalHeader';
 import { AuthGate } from './components/AuthGate';
 import { StashView } from './components/views/StashView';
-import { CurrentLoadoutView } from './components/views/CurrentLoadoutView';
 import { ListsView } from './components/views/ListsView';
 import { InRaidView } from './components/views/InRaidView';
 import { CraftingView } from './components/views/CraftingView';
@@ -76,8 +75,6 @@ export function QuartermasterApp() {
 
   // Core state
   const [itemsMap, setItemsMap] = useState<ItemsMap | null>(null);
-  const [stashItems, setStashItems] = useState<StashItem[]>([]);
-  const [currentLoadout, setCurrentLoadout] = useState<CurrentLoadoutItem[]>([]);
   
   // Cached data for timestamps (section 3.4)
   const [cachedStash, setCachedStash] = useState<CachedStash | null>(null);
@@ -95,6 +92,7 @@ export function QuartermasterApp() {
   const [syncError, setSyncError] = useState<string | null>(null);
   const [isSyncingStash, setIsSyncingStash] = useState(false);
   const [isSyncingLoadout, setIsSyncingLoadout] = useState(false);
+  const [myItemsSyncStep, setMyItemsSyncStep] = useState<'inventory' | 'loadout' | null>(null);
   const [isSyncingHideout, setIsSyncingHideout] = useState(false);
   const [isSyncingBlueprints, setIsSyncingBlueprints] = useState(false);
   const lists = useMemo(
@@ -118,18 +116,12 @@ export function QuartermasterApp() {
         const stash = await getStash();
         if (stash) {
           setCachedStash(stash);
-          const aggregated = aggregateStashItems(stash);
-          const knownItems = aggregated.filter(i => items[i.itemId]);
-          setStashItems(knownItems);
         }
 
         // Load cached loadout from IndexedDB (per spec 4.3.2)
         const loadout = await getLoadout();
         if (loadout) {
           setCachedLoadout(loadout);
-          const aggregated = aggregateLoadoutItems(loadout);
-          const knownItems = aggregated.filter(i => items[i.itemId]);
-          setCurrentLoadout(knownItems);
         }
 
         // Load hideout definitions and cached state (CR-004)
@@ -180,32 +172,43 @@ export function QuartermasterApp() {
     return [...lists, ...hideoutLists];
   }, [lists, hideoutLists]);
 
+  const ownedItemRows = useMemo(() => {
+    if (!itemsMap) return [];
+    return aggregateOwnedInventory(cachedStash, cachedLoadout, itemsMap);
+  }, [cachedLoadout, cachedStash, itemsMap]);
+
+  const ownedItemQuantities = useMemo(() => {
+    return toOwnedItemQuantities(ownedItemRows);
+  }, [ownedItemRows]);
+
   // Compute planner result whenever inputs change
   const plannerResult: PlannerResult = useMemo(() => {
     if (!itemsMap) {
       return createEmptyResult();
     }
-    return computePlan(itemsMap, allLists, stashItems, benchLevels, unlockedBlueprintItemIds);
-  }, [itemsMap, allLists, stashItems, benchLevels, unlockedBlueprintItemIds]);
+    return computePlan(itemsMap, allLists, ownedItemQuantities, benchLevels, unlockedBlueprintItemIds);
+  }, [itemsMap, allLists, ownedItemQuantities, benchLevels, unlockedBlueprintItemIds]);
 
   const hasOwnedQuantities = cachedStash !== null && cachedLoadout !== null;
   const ownedQuantityByItemId = useMemo(() => {
-    if (!hasOwnedQuantities) return {};
-
     const totals: Record<string, number> = {};
-    for (const item of stashItems) {
-      totals[item.itemId] = (totals[item.itemId] ?? 0) + item.quantity;
-    }
-    for (const item of currentLoadout) {
+    for (const item of ownedItemQuantities) {
       totals[item.itemId] = (totals[item.itemId] ?? 0) + item.quantity;
     }
     return totals;
-  }, [currentLoadout, hasOwnedQuantities, stashItems]);
+  }, [ownedItemQuantities]);
 
   const getOwnedQuantity = useCallback((itemId: string): number | null => {
     if (!hasOwnedQuantities) return null;
     return ownedQuantityByItemId[itemId] ?? 0;
   }, [hasOwnedQuantities, ownedQuantityByItemId]);
+
+  const missingOwnedSources = useMemo(() => {
+    const sources: string[] = [];
+    if (!cachedStash) sources.push(t('quartermaster.stash.inventorySource'));
+    if (!cachedLoadout) sources.push(t('quartermaster.stash.loadoutSource'));
+    return sources;
+  }, [cachedLoadout, cachedStash, t]);
 
   const itemInsights: ItemInsightsMap = useMemo(() => {
     if (!itemsMap) return {};
@@ -314,41 +317,43 @@ export function QuartermasterApp() {
     try {
       const stash = await syncStashAllPages();
       setCachedStash(stash);
-      
-      // Filter to only known items (per spec 4.2.2)
-      const aggregated = aggregateStashItems(stash);
-      const knownItems = itemsMap 
-        ? aggregated.filter(i => itemsMap[i.itemId])
-        : aggregated;
-      setStashItems(knownItems);
     } catch (err) {
       console.error('Failed to sync stash:', err);
       handleApiError(err, t('quartermaster.common.syncInventory'));
     } finally {
       setIsSyncingStash(false);
     }
-  }, [itemsMap, handleApiError, t]);
+  }, [handleApiError, t]);
 
-  const handleSyncLoadout = useCallback(async () => {
-    setIsSyncingLoadout(true);
+  const handleSyncMyItems = useCallback(async () => {
     setSyncError(null);
+    setIsSyncingStash(true);
+    setMyItemsSyncStep('inventory');
+    try {
+      const stash = await syncStashAllPages();
+      setCachedStash(stash);
+    } catch (err) {
+      console.error('Failed to sync stash:', err);
+      handleApiError(err, t('quartermaster.common.syncInventory'));
+      setMyItemsSyncStep(null);
+      return;
+    } finally {
+      setIsSyncingStash(false);
+    }
+
+    setIsSyncingLoadout(true);
+    setMyItemsSyncStep('loadout');
     try {
       const loadout = await syncLoadout();
       setCachedLoadout(loadout);
-      
-      // Filter to only known items (per spec 4.3.2)
-      const aggregated = aggregateLoadoutItems(loadout);
-      const knownItems = itemsMap 
-        ? aggregated.filter(i => itemsMap[i.itemId])
-        : aggregated;
-      setCurrentLoadout(knownItems);
     } catch (err) {
       console.error('Failed to sync loadout:', err);
       handleApiError(err, t('quartermaster.common.syncLoadout'));
     } finally {
       setIsSyncingLoadout(false);
+      setMyItemsSyncStep(null);
     }
-  }, [itemsMap, handleApiError, t]);
+  }, [handleApiError, t]);
 
   const handleSyncBlueprints = useCallback(async () => {
     setIsSyncingBlueprints(true);
@@ -419,27 +424,15 @@ export function QuartermasterApp() {
           <AuthGate>
             <StashView
               itemsMap={itemsMap}
-              stashItems={stashItems}
+              ownedItemRows={ownedItemRows}
               plannerResult={plannerResult}
               itemInsights={itemInsights}
               getOwnedQuantity={getOwnedQuantity}
-              onSyncStash={handleSyncStash}
-              isSyncing={isSyncingStash}
-            />
-          </AuthGate>
-        );
-
-      case 'current-loadout':
-        return (
-          <AuthGate>
-            <CurrentLoadoutView
-              itemsMap={itemsMap}
-              currentLoadout={currentLoadout}
-              plannerResult={plannerResult}
-              itemInsights={itemInsights}
-              getOwnedQuantity={getOwnedQuantity}
-              onSyncLoadout={handleSyncLoadout}
-              isSyncing={isSyncingLoadout}
+              onSyncMyItems={handleSyncMyItems}
+              isSyncing={isSyncingStash || isSyncingLoadout}
+              syncStep={myItemsSyncStep}
+              hasInventoryCache={cachedStash !== null}
+              hasLoadoutCache={cachedLoadout !== null}
             />
           </AuthGate>
         );
@@ -545,6 +538,11 @@ export function QuartermasterApp() {
               >
                 ×
               </button>
+            </div>
+          )}
+          {activeView !== 'stash' && missingOwnedSources.length > 0 && (
+            <div className="qm-sync-error">
+              {tm('quartermaster.stash.incompleteWarning', { sources: missingOwnedSources.join(', ') })}
             </div>
           )}
           <div className="quartermaster-content">

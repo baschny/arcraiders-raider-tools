@@ -38,7 +38,7 @@ interface PlannerState {
   benchLevels: Record<BenchId, number>;
   unlockedBlueprintItemIds: Set<ItemId>;
 
-  /** Available quantities (stash minus consumed, plus craft surplus) */
+  /** Available quantities (owned items minus consumed, plus craft surplus) */
   avail: Record<ItemId, Qty>;
 
   /** Items eligible for recycling (items produced by recycling are NOT eligible) */
@@ -442,14 +442,14 @@ function applyPendingCraftsIfPossible(
  *
  * @param itemsMap       – Item database
  * @param requiredFinal  – Aggregated required items from lists
- * @param stash          – Current stash quantities
+ * @param owned          – Current owned quantities
  * @param benchLevels    – Current bench levels
  * @param targetPriority – Priority metadata from list aggregation
  */
 export function runGreedyPlanner(
   itemsMap: ItemsMap,
   requiredFinal: Record<ItemId, Qty>,
-  stash: Record<ItemId, Qty>,
+  owned: Record<ItemId, Qty>,
   benchLevels: Record<BenchId, number>,
   targetPriority: Record<ItemId, TargetPriority> = {},
   unlockedBlueprintItemIds: Set<ItemId> = new Set(),
@@ -457,7 +457,7 @@ export function runGreedyPlanner(
   // Compute missingFinal (CR-MOD-6.2)
   const missingFinal: Record<ItemId, Qty> = {};
   for (const [itemId, req] of Object.entries(requiredFinal)) {
-    const deficit = Math.max(0, req - (stash[itemId] ?? 0));
+    const deficit = Math.max(0, req - (owned[itemId] ?? 0));
     if (deficit > 0) {
       missingFinal[itemId] = deficit;
     }
@@ -480,8 +480,8 @@ export function runGreedyPlanner(
     itemsMap,
     benchLevels,
     unlockedBlueprintItemIds,
-    avail: { ...stash },
-    recycleEligible: { ...stash },
+    avail: { ...owned },
+    recycleEligible: { ...owned },
     protectedFromRecycle: new Set<ItemId>(),
     craftSteps: new Map(),
     recycleActions: [],
@@ -492,7 +492,7 @@ export function runGreedyPlanner(
   };
 
   // Protect all non-recyclable-category items and required final items from recycling (CR-005, CR-009)
-  for (const itemId of Object.keys(stash)) {
+  for (const itemId of Object.keys(owned)) {
     const item = itemsMap[itemId];
     if (item && NON_RECYCLABLE_CATEGORIES.has(item.category)) {
       state.protectedFromRecycle.add(itemId);

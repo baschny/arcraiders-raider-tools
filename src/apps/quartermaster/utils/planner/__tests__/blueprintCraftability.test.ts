@@ -79,7 +79,7 @@ const lists: StoredList[] = [{
   items: [{ itemId: 'deadline', quantity: 1, isEnabled: true }],
 }];
 
-const stash = [
+const ownedItems = [
   { itemId: 'comet_igniter', quantity: 1 },
   { itemId: 'explosive_compound', quantity: 3 },
   { itemId: 'arc_alloy', quantity: 80 },
@@ -87,7 +87,7 @@ const stash = [
 
 describe('quartermaster blueprint craftability', () => {
   it('blocks blueprint-locked items that are not in the learned blueprint set', () => {
-    const result = computePlan(itemsMap, lists, stash, benchLevels, new Set());
+    const result = computePlan(itemsMap, lists, ownedItems, benchLevels, new Set());
 
     expect(result.blockers.blueprintBlockers).toEqual(['deadline']);
     expect(result.craftPlan.steps).toEqual([]);
@@ -95,7 +95,7 @@ describe('quartermaster blueprint craftability', () => {
   });
 
   it('crafts Deadline when its blueprint is learned and indirect materials are available', () => {
-    const result = computePlan(itemsMap, lists, stash, benchLevels, new Set(['deadline']));
+    const result = computePlan(itemsMap, lists, ownedItems, benchLevels, new Set(['deadline']));
 
     expect(result.blockers.blueprintBlockers).toEqual([]);
     expect(result.satisfiableTargets.has('deadline')).toBe(true);
@@ -106,5 +106,26 @@ describe('quartermaster blueprint craftability', () => {
       { itemId: 'arc_circuitry', qty: 2 },
       { itemId: 'deadline', qty: 1 },
     ]);
+  });
+
+  it('uses canonical owned quantities when computing deficits', () => {
+    const result = computePlan(
+      itemsMap,
+      [{
+        id: 'materials',
+        name: 'Materials',
+        type: 'user',
+        isEnabled: true,
+        items: [{ itemId: 'arc_alloy', quantity: 100, isEnabled: true }],
+      }],
+      [
+        { itemId: 'arc_alloy', quantity: 80 },
+        { itemId: 'arc_alloy', quantity: 15 },
+      ],
+      benchLevels,
+    );
+
+    expect(result.deficit.arc_alloy).toBe(5);
+    expect(result.planRows.find((row) => row.itemId === 'arc_alloy')?.have).toBe(95);
   });
 });

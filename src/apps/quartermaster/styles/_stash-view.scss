@@ -42,6 +42,41 @@
     }
   }
 
+  &__warning {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    margin-bottom: $spacing-md;
+    padding: $spacing-sm $spacing-md;
+    border: 1px solid rgba($badge-recycle, 0.35);
+    background: rgba($badge-recycle, 0.12);
+    color: $text-primary;
+    font-size: $font-sm;
+  }
+
+  &__locations {
+    margin-top: 3px;
+    color: $text-secondary;
+    font-size: 12px;
+    line-height: 1.35;
+  }
+
+  &__attachment-note {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 5px;
+    color: $text-accent;
+    font-size: 11px;
+  }
+
+  &__status-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
   &__indicator {
     display: inline-flex;
     align-items: center;
@@ -69,6 +104,11 @@
     &--have {
       background: rgba($status-available, 0.2);
       color: $status-available;
+    }
+
+    &--owned {
+      background: rgba($text-secondary, 0.16);
+      color: $text-secondary;
     }
 
     &--missing {

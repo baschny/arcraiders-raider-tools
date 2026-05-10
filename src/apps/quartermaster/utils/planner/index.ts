@@ -6,7 +6,7 @@
 
 import type { ItemsMap, BenchId } from '../../types/item';
 import type { StoredList } from '../../types/list';
-import type { PlannerResult, StashItem, ItemId, Qty } from '../../types/planner';
+import type { PlannerResult, OwnedItemQuantity, ItemId, Qty } from '../../types/planner';
 import { BENCH_ORDER } from '../../types/item';
 
 import { aggregateRequired, getActiveListsCount } from './aggregation';
@@ -29,14 +29,14 @@ const DEFAULT_BENCH_LEVELS: Record<BenchId, number> = {
 };
 
 /**
- * Convert stash items array to record
+ * Convert owned item quantities array to record
  */
-function stashToRecord(stashItems: StashItem[]): Record<ItemId, Qty> {
-  const stash: Record<ItemId, Qty> = {};
-  for (const item of stashItems) {
-    stash[item.itemId] = (stash[item.itemId] ?? 0) + item.quantity;
+function ownedItemsToRecord(ownedItems: OwnedItemQuantity[]): Record<ItemId, Qty> {
+  const owned: Record<ItemId, Qty> = {};
+  for (const item of ownedItems) {
+    owned[item.itemId] = (owned[item.itemId] ?? 0) + item.quantity;
   }
-  return stash;
+  return owned;
 }
 
 /**
@@ -58,11 +58,11 @@ function sortCraftSteps(steps: PlannerResult['craftPlan']['steps']): PlannerResu
 export function computePlan(
   itemsMap: ItemsMap,
   lists: StoredList[],
-  stashItems: StashItem[],
+  ownedItems: OwnedItemQuantity[],
   benchLevels: Record<BenchId, number> = DEFAULT_BENCH_LEVELS,
   unlockedBlueprintItemIds: Set<ItemId> = new Set(),
 ): PlannerResult {
-  const stash = stashToRecord(stashItems);
+  const owned = ownedItemsToRecord(ownedItems);
 
   // Step 1: Aggregate required from enabled lists (CR-001, CR-003)
   const { required, targetPriority, requiredSourcesByItemId } = aggregateRequired(lists);
@@ -70,7 +70,7 @@ export function computePlan(
   // Step 2: Compute deficit (CR-MOD-6.2)
   const deficit: Record<ItemId, Qty> = {};
   for (const [itemId, req] of Object.entries(required)) {
-    const d = Math.max(0, req - (stash[itemId] ?? 0));
+    const d = Math.max(0, req - (owned[itemId] ?? 0));
     if (d > 0) deficit[itemId] = d;
   }
 
@@ -78,7 +78,7 @@ export function computePlan(
   const greedyResult = runGreedyPlanner(
     itemsMap,
     required,
-    stash,
+    owned,
     benchLevels,
     targetPriority,
     unlockedBlueprintItemIds,
@@ -106,7 +106,7 @@ export function computePlan(
   );
 
   // Step 6: Build plan rows with badges
-  const planRows = buildPlanRows(itemsMap, required, stash, greedyResult);
+  const planRows = buildPlanRows(itemsMap, required, owned, greedyResult);
 
   // Step 7: Build blocker summary
   const blockers = buildBlockerSummary(itemsMap, deficit, greedyResult);

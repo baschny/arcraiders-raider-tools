@@ -287,20 +287,26 @@ Definition:
 
 ```
 ownedQuantity[itemId] =
-    stashQuantity[itemId]
-  + loadoutQuantity[itemId]
+    stashRootQuantity[itemId]
+  + stashAttachmentQuantity[itemId]
+  + loadoutRootQuantity[itemId]
+  + loadoutAttachmentQuantity[itemId]
 ```
 
 Where:
 
-- `stashQuantity` comes from the cached stash dataset.
-- `loadoutQuantity` includes the entire current loadout:
+- `stashRootQuantity` comes from top-level cached stash items.
+- `stashAttachmentQuantity` comes from valid attachment items nested under cached stash items.
+- `loadoutRootQuantity` includes top-level items in the current loadout:
   - weapons
   - shield
   - quick-use slots
   - backpack
   - augment slots
   - safe pocket
+- `loadoutAttachmentQuantity` comes from valid attachment items nested under loadout items.
+
+Unknown `itemId`, `null` `itemId`, non-positive quantities, and item ids not present in the static Quartermaster item dataset are ignored.
 
 If stash or loadout state has not been synced yet, owned quantity is considered **unknown**.
 
@@ -308,7 +314,8 @@ In such cases:
 
 - owned quantity must render as `"?"`
 - the placeholder must be visually neutral and non-intrusive
-- planner logic must treat unknown quantity as `0` for deterministic computation
+- planner logic may use available cached sources, with missing sources contributing `0`
+- planner-adjacent views must warn that owned inventory is incomplete and identify whether inventory, loadout, or both are missing
 
 ---
 
@@ -580,11 +587,11 @@ Logout behavior:
 
 ---
 
-## 4.2 Stash Integration
+## 4.2 Stash / Inventory Integration
 
 ### 4.2.1 Sync Operation
 
-Sync Inventory button must call:
+Inventory sync must call:
 
 ```ts
 syncStashAllPages()
@@ -605,11 +612,13 @@ Quartermaster reads stash using:
 getStash()
 ```
 
-Planner stash input rules:
+Inventory aggregation rules:
 
 - Aggregate by `itemId`.
-- Ignore `slotIndex`.
+- Ignore `slotIndex` for quantity calculations.
 - Use `CachedStash.items`.
+- Count valid `attachments` entries as separately owned items.
+- Preserve attachment parent context for My Items display.
 - Unknown `itemId` not present in static dataset must be ignored.
 - If sync fails:
   - Previously cached stash remains available.
@@ -637,7 +646,7 @@ Behavior:
 
 ### 4.3.1 Sync Operation
 
-Sync Loadout button must call:
+Loadout sync must call:
 
 ```ts
 syncLoadout()
@@ -654,8 +663,11 @@ getLoadout()
 Planner loadout aggregation rules:
 
 - Loadout data is **not used as planner targets**.
-- Loadout data is used only for the **Current Loadout View**.
+- Loadout data is used as an owned inventory source.
+- Count valid `attachments` entries as separately owned items.
+- Preserve loadout and attachment parent context for My Items display.
 - Planner logic must ignore `CachedLoadout` when computing `requiredFinal`.
+- Planner logic must include `CachedLoadout` when computing owned quantities, deficits, crafting availability, recycling availability, and In Raid suggestions.
 
 Timestamp for header:
 
@@ -664,6 +676,19 @@ Timestamp for header:
 ### 4.3.3 Error Handling
 
 Same rules as section 4.2.3.
+
+### 4.3.4 Combined My Items Sync
+
+The My Items view must expose one combined **Sync My Items** action.
+
+The combined sync action must:
+
+- sync inventory first
+- then sync loadout
+- display the current step:
+  - `Syncing inventory...`
+  - `Syncing loadout...`
+- preserve individual error handling internally so failures identify the failing operation
 
 ---
 
@@ -1230,40 +1255,57 @@ Tooltip must remain fully visible.
 
 ---
 
-## 4.1 Stash View
+## 4.1 My Items View
 
 ### Quantity Behavior
 
 Icon overlay shows owned quantity.
 
-Status column uses format:
+The view shows the canonical owned inventory: stash items, current loadout items, stash attachments, and current loadout attachments.
 
-```
-x/y Missing
-```
+Attached items must be displayed as separate owned items.
 
-Where:
+Rows are aggregated by `itemId`. If an item exists in multiple locations, the row must show summarized location subtext rather than duplicate rows.
 
-- x = missing
-- y = required
+Required location labels:
+
+- `In current loadout`
+- `Attached to {weaponName} in stash`
+- `Attached to {weaponName} in current loadout`
+
+Top-level weapons with counted attachments must show an indicator that their attachments were counted separately.
+
+If stash/inventory or loadout has not been synced, the view must warn that owned inventory is incomplete.
 
 ---
 
 ### Status Indicators
 
-Indicators must display contextual explanation:
+The **Need** column is removed. The status column carries requirement and planner explanation.
 
-- **Have** (green)
-- **Missing** – display list name
+Indicators must display contextual and quantified explanation:
+
+- **Have** (green) – include owned and required quantities
+- **Needed** (red) – include missing, required, owned, and list context
 - **Recycle** – display target item + list name
+- **Blocked** – display uncraftable reason when applicable
+
+Examples:
+
+```text
+Have 12 / 10 required for Loadout
+Need 3 more for Loadout (10 required, 7 owned)
+Need 5 more across 3 lists (18 required, 13 owned)
+Owned 4
+Recycle for Mechanical Components (Loadout)
+Blocked: blueprint not unlocked
+```
 
 ---
 
 ## 4.2 Loadout View
 
-Icon overlay displays owned quantity.
-
-No additional quantity information shown.
+The dedicated Loadout view is removed. Current loadout data is represented inside My Items.
 
 ---
 

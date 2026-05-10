@@ -39,7 +39,7 @@ export interface InRaidSuggestion {
   listSources?: RequiredSource[];
 }
 
-// Loadout badge for Current Loadout / Stash views (CR-MOD-7)
+// Requirement badge for planner rows and My Items status (CR-MOD-7)
 export type LoadoutBadge = 'HAVE' | 'CAN_CRAFT' | 'MISSING';
 
 // Plan Table (section 6.8.2)
@@ -135,14 +135,38 @@ export interface PlannerResult {
   totalCraftStepsCount: number;
 }
 
-// Advisory badge for Current Loadout view (section 7.3.2)
+// Advisory badge for legacy planner recommendations (section 7.3.2)
 export type AdvisoryBadge = 'KEEP' | 'RECYCLE' | 'DISCARD';
 
 // Stash and API data
-export interface StashItem {
+export interface OwnedItemQuantity {
   itemId: ItemId;
   quantity: Qty;
 }
+
+export type OwnedItemLocation =
+  | {
+      source: 'stash';
+      quantity: Qty;
+      hasAttachments?: boolean;
+    }
+  | {
+      source: 'loadout';
+      quantity: Qty;
+      hasAttachments?: boolean;
+    }
+  | {
+      source: 'stash_attachment' | 'loadout_attachment';
+      quantity: Qty;
+      parentItemId: ItemId;
+      parentName: string;
+    };
+
+export interface OwnedItemDisplayRow extends OwnedItemQuantity {
+  locations: OwnedItemLocation[];
+}
+
+export type StashItem = OwnedItemQuantity;
 
 export interface CurrentLoadoutItem {
   itemId: ItemId;
