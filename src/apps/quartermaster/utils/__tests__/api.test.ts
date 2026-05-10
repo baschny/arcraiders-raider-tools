@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { aggregateStashItems } from '../api';
-import type { CachedStash } from '../../../../shared/types/arctracker';
+import blueprintSample from '../../../../../docs/sample/arctracker-api/blueprints.json';
+import { aggregateStashItems, getUnlockedBlueprintItemIds } from '../api';
+import type { CachedBlueprints, CachedStash } from '../../../../shared/types/arctracker';
 
 describe('quartermaster API utilities', () => {
   it('ignores stash rows without item IDs while aggregating', () => {
@@ -20,5 +21,24 @@ describe('quartermaster API utilities', () => {
     expect(aggregateStashItems(stash)).toEqual([
       { itemId: 'metal_parts', quantity: 5 },
     ]);
+  });
+
+  it('derives learned blueprint target item IDs from cached blueprints', () => {
+    const cachedBlueprints: CachedBlueprints = {
+      unlockedItemIds: blueprintSample.data.blueprints
+        .filter((blueprint) => blueprint.learned)
+        .map((blueprint) => blueprint.targetItemId)
+        .sort((a, b) => a.localeCompare(b)),
+      blueprintsByTargetItemId: Object.fromEntries(
+        blueprintSample.data.blueprints.map((blueprint) => [blueprint.targetItemId, blueprint]),
+      ),
+      syncedAt: '2026-05-10T00:00:00.000Z',
+      cachedAt: 0,
+    };
+
+    const unlocked = getUnlockedBlueprintItemIds(cachedBlueprints);
+
+    expect(unlocked.has('anvil')).toBe(true);
+    expect(unlocked.has('canto')).toBe(false);
   });
 });

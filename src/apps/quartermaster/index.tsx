@@ -32,16 +32,20 @@ import {
   syncStashAllPages,
   syncLoadout,
   syncHideout,
+  syncBlueprints,
   getStash,
   getLoadout,
   getHideout,
+  getBlueprints,
   aggregateStashItems,
   aggregateLoadoutItems,
   getBenchLevels,
+  getUnlockedBlueprintItemIds,
   isApiError,
   type CachedStash,
   type CachedLoadout,
   type CachedHideout,
+  type CachedBlueprints,
 } from './utils/api';
 import { buildItemInsights, type ItemInsightsMap } from './utils/itemInsights';
 import { formatHideoutListName } from './utils/localization';
@@ -82,6 +86,7 @@ export function QuartermasterApp() {
   // Hideout state (CR-004, CR-007)
   const [hideoutDefinitions, setHideoutDefinitions] = useState<HideoutModuleDefinition[]>([]);
   const [cachedHideout, setCachedHideout] = useState<CachedHideout | null>(null);
+  const [cachedBlueprints, setCachedBlueprints] = useState<CachedBlueprints | null>(null);
 
   // UI state
   const [activeView, setActiveView] = useState<ViewId>('lists');
@@ -91,6 +96,7 @@ export function QuartermasterApp() {
   const [isSyncingStash, setIsSyncingStash] = useState(false);
   const [isSyncingLoadout, setIsSyncingLoadout] = useState(false);
   const [isSyncingHideout, setIsSyncingHideout] = useState(false);
+  const [isSyncingBlueprints, setIsSyncingBlueprints] = useState(false);
   const lists = useMemo(
     () => itemsMap ? normalizeStoredLists(quartermasterState.lists, itemsMap) : [],
     [itemsMap, quartermasterState.lists]
@@ -135,6 +141,11 @@ export function QuartermasterApp() {
           setCachedHideout(hideout);
         }
 
+        const blueprints = await getBlueprints();
+        if (blueprints) {
+          setCachedBlueprints(blueprints);
+        }
+
         setLoading(false);
       } catch (err) {
         console.error('Failed to initialize:', err);
@@ -149,6 +160,10 @@ export function QuartermasterApp() {
   const benchLevels: Record<BenchId, number> = useMemo(() => {
     return getBenchLevels(cachedHideout);
   }, [cachedHideout]);
+
+  const unlockedBlueprintItemIds = useMemo(() => {
+    return getUnlockedBlueprintItemIds(cachedBlueprints);
+  }, [cachedBlueprints]);
 
   // Generate hideout upgrade lists (CR-007)
   const hideoutLists: StoredList[] = useMemo(() => {
@@ -170,8 +185,8 @@ export function QuartermasterApp() {
     if (!itemsMap) {
       return createEmptyResult();
     }
-    return computePlan(itemsMap, allLists, stashItems, benchLevels);
-  }, [itemsMap, allLists, stashItems, benchLevels]);
+    return computePlan(itemsMap, allLists, stashItems, benchLevels, unlockedBlueprintItemIds);
+  }, [itemsMap, allLists, stashItems, benchLevels, unlockedBlueprintItemIds]);
 
   const hasOwnedQuantities = cachedStash !== null && cachedLoadout !== null;
   const ownedQuantityByItemId = useMemo(() => {
@@ -335,6 +350,20 @@ export function QuartermasterApp() {
     }
   }, [itemsMap, handleApiError, t]);
 
+  const handleSyncBlueprints = useCallback(async () => {
+    setIsSyncingBlueprints(true);
+    setSyncError(null);
+    try {
+      const blueprints = await syncBlueprints();
+      setCachedBlueprints(blueprints);
+    } catch (err) {
+      console.error('Failed to sync blueprints:', err);
+      handleApiError(err, t('quartermaster.common.syncBlueprints'));
+    } finally {
+      setIsSyncingBlueprints(false);
+    }
+  }, [handleApiError, t]);
+
   // Sync hideout (CR-004)
   const handleSyncHideout = useCallback(async () => {
     setIsSyncingHideout(true);
@@ -465,7 +494,10 @@ export function QuartermasterApp() {
               itemInsights={itemInsights}
               getOwnedQuantity={getOwnedQuantity}
               onSyncStash={handleSyncStash}
+              onSyncBlueprints={handleSyncBlueprints}
               isSyncing={isSyncingStash}
+              isSyncingBlueprints={isSyncingBlueprints}
+              blueprintsSyncedAt={cachedBlueprints?.syncedAt ?? null}
             />
           </AuthGate>
         );

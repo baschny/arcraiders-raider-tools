@@ -11,10 +11,12 @@ import type {
   ArctrackerStashResponse,
   ArctrackerLoadoutResponse,
   ArctrackerHideoutResponse,
+  ArctrackerBlueprintsResponse,
   CachedProfile,
   CachedStash,
   CachedLoadout,
   CachedHideout,
+  CachedBlueprints,
   ApiError,
   ArctrackerStashItem,
 } from '../types/arctracker';
@@ -24,6 +26,7 @@ import {
   getCachedStash,
   getCachedLoadout,
   getCachedHideout,
+  getCachedBlueprints,
   updateCacheMeta,
 } from './cacheService';
 import { getIdToken } from '../auth/cognitoClient';
@@ -267,6 +270,45 @@ export async function syncHideout(): Promise<CachedHideout> {
 }
 
 /**
+ * Sync and cache learned blueprints.
+ */
+export async function syncBlueprints(): Promise<CachedBlueprints> {
+  const response = await apiRequest<ArctrackerBlueprintsResponse>(
+    `/v2/user/blueprints`
+  );
+
+  const blueprintsByTargetItemId: CachedBlueprints['blueprintsByTargetItemId'] = {};
+  const unlockedItemIds: string[] = [];
+
+  for (const blueprint of response.data.blueprints) {
+    if (!blueprint.targetItemId) continue;
+
+    blueprintsByTargetItemId[blueprint.targetItemId] = {
+      id: blueprint.id,
+      name: blueprint.name,
+      category: blueprint.category,
+      rarity: blueprint.rarity,
+      learned: blueprint.learned,
+      targetItemId: blueprint.targetItemId,
+    };
+
+    if (blueprint.learned) {
+      unlockedItemIds.push(blueprint.targetItemId);
+    }
+  }
+
+  const cachedBlueprints: CachedBlueprints = {
+    unlockedItemIds: Array.from(new Set(unlockedItemIds)).sort((a, b) => a.localeCompare(b)),
+    blueprintsByTargetItemId,
+    syncedAt: new Date().toISOString(),
+    cachedAt: Date.now(),
+  };
+
+  await cacheSet('blueprints', cachedBlueprints);
+  return cachedBlueprints;
+}
+
+/**
  * Sync all data (profile, stash, loadout).
  */
 export async function syncAll(): Promise<{
@@ -309,4 +351,11 @@ export async function getLoadout(): Promise<CachedLoadout | undefined> {
  */
 export async function getHideout(): Promise<CachedHideout | undefined> {
   return getCachedHideout();
+}
+
+/**
+ * Get cached blueprints (from IndexedDB).
+ */
+export async function getBlueprints(): Promise<CachedBlueprints | undefined> {
+  return getCachedBlueprints();
 }

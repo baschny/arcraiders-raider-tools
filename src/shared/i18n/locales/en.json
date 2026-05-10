@@ -322,6 +322,7 @@
       "syncLoadout": "Sync Loadout",
       "syncHideout": "Sync Hideout",
       "syncHideouts": "Sync Hideouts",
+      "syncBlueprints": "Sync Unlocked Blueprints",
       "unknownError": "Unknown error"
     },
     "sync": {
@@ -380,6 +381,7 @@
       "step2": "Step 2: Craft Items",
       "craftItems": "Craft Items",
       "empty": "No crafting needed. All required items are in your stash!",
+      "blueprintsSynced": "Blueprints synced: {timestamp}",
       "columns": {
         "item": "Item",
         "name": "Name",

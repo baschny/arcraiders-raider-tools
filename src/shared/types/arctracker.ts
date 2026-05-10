@@ -134,6 +134,44 @@ export interface CachedHideout {
 }
 
 // ============================================================================
+// Blueprint Types
+// ============================================================================
+
+export interface ArctrackerBlueprint {
+  id: string;
+  name: string;
+  category: string;
+  rarity: string;
+  learned: boolean;
+  targetItemId: string;
+}
+
+export interface ArctrackerBlueprintsResponse {
+  data: {
+    blueprints: ArctrackerBlueprint[];
+  };
+  meta?: {
+    requestId: string;
+  };
+}
+
+export interface CachedBlueprint {
+  id: string;
+  name: string;
+  category: string;
+  rarity: string;
+  learned: boolean;
+  targetItemId: string;
+}
+
+export interface CachedBlueprints {
+  unlockedItemIds: string[];
+  blueprintsByTargetItemId: Record<string, CachedBlueprint>;
+  syncedAt: string;
+  cachedAt: number;
+}
+
+// ============================================================================
 // Cached Data Types
 // ============================================================================
 
@@ -164,7 +202,7 @@ export interface CacheMeta {
   version: number;
 }
 
-export type CacheKey = 'profile' | 'stash' | 'loadout' | 'hideout' | 'meta';
+export type CacheKey = 'profile' | 'stash' | 'loadout' | 'hideout' | 'blueprints' | 'meta';
 
 // ============================================================================
 // Auth Types

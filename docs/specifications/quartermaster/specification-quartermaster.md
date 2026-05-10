@@ -193,6 +193,7 @@ After import:
 - No item retains `craftBench = "in_raid"` after normalization.
 - `craftQuantity` is always defined.
 - Default `craftQuantity` is `1` if missing in source.
+- `blueprintLocked` indicates that static game data says the item requires a learned blueprint; it is not by itself a user-specific craftability decision.
 
 ---
 
@@ -767,7 +768,89 @@ Unknown hideout modules not present in the imported static dataset must be ignor
 
 ---
 
+## 4.6 Blueprint Integration
+
+Quartermaster integrates with the user blueprints endpoint through the shared Raider Tools API layer.
+
+Upstream ArcTracker endpoint:
+
+```text
+GET https://arctracker.io/api/v2/user/blueprints
+```
+
+Quartermaster must not call `arctracker.io` directly. The request must go through the Raider Tools ArcTracker proxy/service layer.
+
+### 4.6.1 Sync Operation
+
+The Crafting view must provide a **Sync Unlocked Blueprints** button next to **Sync Inventory**.
+
+This button synchronizes the user's learned blueprint state.
+
+Expected response shape:
+
+```ts
+interface ArcTrackerBlueprintResponse {
+  data: {
+    blueprints: ArcTrackerBlueprint[]
+  }
+}
+
+interface ArcTrackerBlueprint {
+  id: string
+  name: string
+  category: string
+  rarity: string
+  learned: boolean
+  targetItemId: string
+}
+```
+
+If `learned` is `true`, the item identified by `targetItemId` is considered blueprint-unlocked.
+
+### 4.6.2 Cached Data Usage
+
+Quartermaster reads cached blueprint state from local cache.
+
+Blueprint cache must contain at least:
+
+```ts
+interface CachedBlueprints {
+  unlockedItemIds: string[]
+  blueprintsByTargetItemId: Record<string, CachedBlueprint>
+  syncedAt: string
+}
+```
+
+Rules:
+
+- `unlockedItemIds` contains only blueprints with `learned === true`.
+- `unlockedItemIds` is sorted ASCII ascending.
+- `blueprintsByTargetItemId` is keyed by `targetItemId`.
+- Failed sync must not clear previously cached blueprint state.
+- Sign-out must wipe cached blueprint state with other ArcTracker user data.
+- Unknown `targetItemId` values must be ignored by planner logic.
+
+### 4.6.3 Craftability Dependency
+
+The planner must receive the learned blueprint target item ids derived from cached blueprint state.
+
+For example, this API entry makes `deadline` craftable if all other craftability checks pass:
+
+```json
+{
+  "id": "deadline_blueprint",
+  "name": "Deadline Blueprint",
+  "category": "Explosives",
+  "rarity": "Common",
+  "learned": true,
+  "targetItemId": "deadline"
+}
+```
+
+---
+
 # 5. HARD STRATEGY CONSTRAINTS
+
 
 ---
 
@@ -856,6 +939,52 @@ If no intermediate ingredient exists, the chain contains only:
 ```
 Final Target -> Current Item
 ```
+
+## 6.1 Craftability Predicate
+
+An item is locally craftable if:
+
+- item has `recipe`
+- `craftBench` is defined
+- required bench exists in planner
+- bench level is `>= stationLevelRequired`
+- blueprint availability passes the runtime blueprint rule
+
+Runtime blueprint rule:
+
+```ts
+if (!item.blueprintLocked) {
+  return true
+}
+
+return unlockedBlueprintItemIds.has(item.id)
+```
+
+Meaning:
+
+- Items not marked `blueprintLocked` in static data remain craftable without blueprint API state.
+- Items marked `blueprintLocked` are craftable only when their `item.id` appears in the learned blueprint cache.
+- If no blueprint cache exists yet, `blueprintLocked: true` items are treated as not locally craftable until blueprints are synced.
+- Blueprint blocker diagnostics are preserved for statically blueprint-locked items absent from the learned blueprint set.
+
+## 6.2 Depth-Limited Crafting Output Availability
+
+The planner must treat committed depth-2 craft outputs as available to their parent craft.
+
+Example:
+
+- Desired list contains `deadline` x1.
+- Stash contains `comet_igniter` x1, `explosive_compound` x3, and `arc_alloy` x80.
+- Learned blueprint set contains `deadline`.
+- `deadline` requires `arc_circuitry` x2.
+- `arc_circuitry` crafts from `arc_alloy` x8 each.
+
+Planner result must include:
+
+- Craft `arc_circuitry` x2.
+- Craft `deadline` x1.
+
+Depth-2 craft inputs must be checked before the parent target is marked satisfiable.
 
 ---
 
@@ -1214,6 +1343,17 @@ Add visual spacing between:
 ---
 
 ## 4.5 Crafting View
+
+### Sync Controls
+
+The Crafting view must include:
+
+- **Sync Inventory**
+- **Sync Unlocked Blueprints**
+
+The blueprint sync control must refresh cached learned blueprint state and recompute planner output.
+
+If blueprint sync fails, previous cached blueprint state remains active.
 
 ### Table Alignment
 

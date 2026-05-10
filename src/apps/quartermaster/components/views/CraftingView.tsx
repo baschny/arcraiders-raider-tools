@@ -20,7 +20,10 @@ interface CraftingViewProps {
   itemInsights: ItemInsightsMap;
   getOwnedQuantity: (itemId: string) => number | null;
   onSyncStash: () => void;
+  onSyncBlueprints: () => void;
   isSyncing: boolean;
+  isSyncingBlueprints: boolean;
+  blueprintsSyncedAt: string | null;
 }
 
 export function CraftingView({
@@ -31,15 +34,25 @@ export function CraftingView({
   itemInsights,
   getOwnedQuantity,
   onSyncStash,
+  onSyncBlueprints,
   isSyncing,
+  isSyncingBlueprints,
+  blueprintsSyncedAt,
 }: CraftingViewProps) {
-  const { t } = useLocale();
+  const { t, tm, formatDate } = useLocale();
   // Filter to fully satisfiable targets only (CR-ADD-6.X)
   const satisfiableSteps = craftPlan.steps.filter(step => step.isFullySatisfiable);
   const tooltipContext = {
     itemsMap,
     plannerResult,
     itemInsights,
+  };
+  const formatTimestamp = (isoString: string): string => {
+    try {
+      return formatDate(new Date(isoString), { hour: '2-digit', minute: '2-digit' });
+    } catch {
+      return t('quartermaster.globalHeader.invalid');
+    }
   };
 
   const getCraftWhyEntries = (itemId: string) => {
@@ -180,6 +193,19 @@ export function CraftingView({
           <RefreshCw size={14} className={isSyncing ? 'animate-spin' : ''} />
           {t('quartermaster.common.syncInventory')}
         </button>
+        <button
+          className="qm-button"
+          onClick={onSyncBlueprints}
+          disabled={isSyncingBlueprints}
+        >
+          <RefreshCw size={14} className={isSyncingBlueprints ? 'animate-spin' : ''} />
+          {t('quartermaster.common.syncBlueprints')}
+        </button>
+        {blueprintsSyncedAt && (
+          <span className="crafting-view__sync-meta">
+            {tm('quartermaster.crafting.blueprintsSynced', { timestamp: formatTimestamp(blueprintsSyncedAt) })}
+          </span>
+        )}
       </div>
 
       {/* Recycle First Section */}

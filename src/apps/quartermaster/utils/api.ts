@@ -6,19 +6,30 @@
 
 import type { StashItem, CurrentLoadoutItem } from '../types/planner';
 import type { BenchId } from '../types/item';
-import type { CachedStash, CachedLoadout, CachedHideout, ApiError } from '../../../shared/types/arctracker';
+import type { CachedStash, CachedLoadout, CachedHideout, CachedBlueprints, ApiError } from '../../../shared/types/arctracker';
 import {
   syncStashAllPages,
   syncLoadout,
   syncHideout,
+  syncBlueprints,
   getStash,
   getLoadout,
   getHideout,
+  getBlueprints,
 } from '../../../shared/services/arctrackerApi';
 
 // Re-export for convenience
-export { syncStashAllPages, syncLoadout, syncHideout, getStash, getLoadout, getHideout };
-export type { CachedStash, CachedLoadout, CachedHideout, ApiError };
+export {
+  syncStashAllPages,
+  syncLoadout,
+  syncHideout,
+  syncBlueprints,
+  getStash,
+  getLoadout,
+  getHideout,
+  getBlueprints,
+};
+export type { CachedStash, CachedLoadout, CachedHideout, CachedBlueprints, ApiError };
 
 /**
  * Check if an error is an ApiError
@@ -121,4 +132,11 @@ export function getBenchLevels(cachedHideout?: CachedHideout | null): Record<Ben
     }
   }
   return levels;
+}
+
+/**
+ * Get learned blueprint target item IDs from cached blueprint state.
+ */
+export function getUnlockedBlueprintItemIds(cachedBlueprints?: CachedBlueprints | null): Set<string> {
+  return new Set(cachedBlueprints?.unlockedItemIds ?? []);
 }

@@ -59,7 +59,8 @@ export function computePlan(
   itemsMap: ItemsMap,
   lists: StoredList[],
   stashItems: StashItem[],
-  benchLevels: Record<BenchId, number> = DEFAULT_BENCH_LEVELS
+  benchLevels: Record<BenchId, number> = DEFAULT_BENCH_LEVELS,
+  unlockedBlueprintItemIds: Set<ItemId> = new Set(),
 ): PlannerResult {
   const stash = stashToRecord(stashItems);
 
@@ -74,7 +75,14 @@ export function computePlan(
   }
 
   // Step 3: Run greedy planner with priority ordering (CR-004)
-  const greedyResult = runGreedyPlanner(itemsMap, required, stash, benchLevels, targetPriority);
+  const greedyResult = runGreedyPlanner(
+    itemsMap,
+    required,
+    stash,
+    benchLevels,
+    targetPriority,
+    unlockedBlueprintItemIds,
+  );
 
   // Step 4: Build sorted craft plan (fully satisfiable only in Craft UI)
   const craftPlan = { steps: sortCraftSteps(greedyResult.craftSteps) };

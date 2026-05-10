@@ -2,7 +2,16 @@
 
 .crafting-view {
   &__controls {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: $spacing-sm;
     margin-bottom: $spacing-lg;
+  }
+
+  &__sync-meta {
+    color: $text-secondary;
+    font-size: $font-sm;
   }
 
   &__section {
