@@ -19,11 +19,15 @@ interface CraftingViewProps {
   plannerResult: PlannerResult;
   itemInsights: ItemInsightsMap;
   getOwnedQuantity: (itemId: string) => number | null;
-  onSyncStash: () => void;
+  onSyncMyItems: () => void;
   onSyncBlueprints: () => void;
-  isSyncing: boolean;
+  isSyncingMyItems: boolean;
   isSyncingBlueprints: boolean;
   blueprintsSyncedAt: string | null;
+  blueprintUnlockCount: {
+    unlocked: number;
+    total: number;
+  } | null;
 }
 
 export function CraftingView({
@@ -33,11 +37,12 @@ export function CraftingView({
   plannerResult,
   itemInsights,
   getOwnedQuantity,
-  onSyncStash,
+  onSyncMyItems,
   onSyncBlueprints,
-  isSyncing,
+  isSyncingMyItems,
   isSyncingBlueprints,
   blueprintsSyncedAt,
+  blueprintUnlockCount,
 }: CraftingViewProps) {
   const { t, tm, formatDate } = useLocale();
   // Filter to fully satisfiable targets only (CR-ADD-6.X)
@@ -187,11 +192,11 @@ export function CraftingView({
       <div className="crafting-view__controls">
         <button 
           className="qm-button" 
-          onClick={onSyncStash}
-          disabled={isSyncing}
+          onClick={onSyncMyItems}
+          disabled={isSyncingMyItems}
         >
-          <RefreshCw size={14} className={isSyncing ? 'animate-spin' : ''} />
-          {t('quartermaster.common.syncInventory')}
+          <RefreshCw size={14} className={isSyncingMyItems ? 'animate-spin' : ''} />
+          {t('quartermaster.stash.syncMyItems')}
         </button>
         <button
           className="qm-button"
@@ -200,6 +205,11 @@ export function CraftingView({
         >
           <RefreshCw size={14} className={isSyncingBlueprints ? 'animate-spin' : ''} />
           {t('quartermaster.common.syncBlueprints')}
+          {blueprintUnlockCount && (
+            <span className="crafting-view__button-meta">
+              {tm('quartermaster.crafting.blueprintUnlockCount', blueprintUnlockCount)}
+            </span>
+          )}
         </button>
         {blueprintsSyncedAt && (
           <span className="crafting-view__sync-meta">

@@ -441,11 +441,11 @@
     },
     "benches": {
       "refiner": "Refinaria",
-      "equipmentBench": "Bancada de equipamento",
-      "explosivesBench": "Bancada de explosivos",
-      "medStation": "Estação médica",
-      "utilityBench": "Bancada utilitária",
-      "weaponBench": "Bancada de armas",
+      "equipmentBench": "Gear Bench",
+      "explosivesBench": "Explosives Station",
+      "medStation": "Medical Lab",
+      "utilityBench": "Utility Station",
+      "weaponBench": "Gunsmith",
       "workbench": "Bancada de trabalho"
     }
   },

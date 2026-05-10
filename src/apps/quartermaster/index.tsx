@@ -157,6 +157,15 @@ export function QuartermasterApp() {
     return getUnlockedBlueprintItemIds(cachedBlueprints);
   }, [cachedBlueprints]);
 
+  const blueprintUnlockCount = useMemo(() => {
+    if (!cachedBlueprints) return null;
+
+    return {
+      unlocked: cachedBlueprints.unlockedItemIds.length,
+      total: Object.keys(cachedBlueprints.blueprintsByTargetItemId).length,
+    };
+  }, [cachedBlueprints]);
+
   // Generate hideout upgrade lists (CR-007)
   const hideoutLists: StoredList[] = useMemo(() => {
     if (!cachedHideout || hideoutDefinitions.length === 0) return [];
@@ -311,20 +320,6 @@ export function QuartermasterApp() {
   }, [revalidate, t, tm]);
 
   // Sync callbacks using shared arctrackerApi service (spec 4.2.1, 4.3.1)
-  const handleSyncStash = useCallback(async () => {
-    setIsSyncingStash(true);
-    setSyncError(null);
-    try {
-      const stash = await syncStashAllPages();
-      setCachedStash(stash);
-    } catch (err) {
-      console.error('Failed to sync stash:', err);
-      handleApiError(err, t('quartermaster.common.syncInventory'));
-    } finally {
-      setIsSyncingStash(false);
-    }
-  }, [handleApiError, t]);
-
   const handleSyncMyItems = useCallback(async () => {
     setSyncError(null);
     setIsSyncingStash(true);
@@ -486,11 +481,12 @@ export function QuartermasterApp() {
               plannerResult={plannerResult}
               itemInsights={itemInsights}
               getOwnedQuantity={getOwnedQuantity}
-              onSyncStash={handleSyncStash}
+              onSyncMyItems={handleSyncMyItems}
               onSyncBlueprints={handleSyncBlueprints}
-              isSyncing={isSyncingStash}
+              isSyncingMyItems={isSyncingStash || isSyncingLoadout}
               isSyncingBlueprints={isSyncingBlueprints}
               blueprintsSyncedAt={cachedBlueprints?.syncedAt ?? null}
+              blueprintUnlockCount={blueprintUnlockCount}
             />
           </AuthGate>
         );

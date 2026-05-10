@@ -807,7 +807,13 @@ Quartermaster must not call `arctracker.io` directly. The request must go throug
 
 ### 4.6.1 Sync Operation
 
-The Crafting view must provide a **Sync Unlocked Blueprints** button next to **Sync Inventory**.
+The Crafting view must provide a **Sync Unlocked Blueprints** button next to **Sync My Items**.
+
+If cached blueprint state is available, the blueprint sync control must show learned blueprint progress as:
+
+```text
+{learned}/{total} unlocked
+```
 
 This button synchronizes the user's learned blueprint state.
 
@@ -1390,7 +1396,7 @@ Add visual spacing between:
 
 The Crafting view must include:
 
-- **Sync Inventory**
+- **Sync My Items**
 - **Sync Unlocked Blueprints**
 
 The blueprint sync control must refresh cached learned blueprint state and recompute planner output.

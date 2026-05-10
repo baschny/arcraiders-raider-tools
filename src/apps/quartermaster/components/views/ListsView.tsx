@@ -3,7 +3,7 @@
  * See specification section 7.4 / CR-006, CR-007
  */
 
-import { useState, useMemo } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { Plus, Trash2, Eye, EyeOff, List, RefreshCw, Home } from 'lucide-react';
 import type { ItemsMap } from '../../types/item';
 import type { StoredList } from '../../types/list';
@@ -38,6 +38,8 @@ interface ListsViewProps {
   onToggleHideoutItem: (moduleId: string, level: number, itemId: string) => void;
 }
 
+const SELECTED_LIST_STORAGE_KEY = 'quartermaster.selectedListId';
+
 /**
  * Parse moduleId and level from a hideout list id: "hideout_<moduleId>_<level>"
  */
@@ -45,6 +47,38 @@ function parseHideoutListId(listId: string): { moduleId: string; level: number }
   const match = listId.match(/^hideout_(.+)_(\d+)$/);
   if (!match) return null;
   return { moduleId: match[1], level: parseInt(match[2], 10) };
+}
+
+function getStoredSelectedListId(): string | null {
+  try {
+    return window.localStorage.getItem(SELECTED_LIST_STORAGE_KEY);
+  } catch {
+    return null;
+  }
+}
+
+function persistSelectedListId(listId: string | null): void {
+  try {
+    if (listId) {
+      window.localStorage.setItem(SELECTED_LIST_STORAGE_KEY, listId);
+    } else {
+      window.localStorage.removeItem(SELECTED_LIST_STORAGE_KEY);
+    }
+  } catch {
+    // Ignore localStorage failures; selection still works for the current mount.
+  }
+}
+
+function resolveSelectedListId(
+  lists: StoredList[],
+  hideoutLists: StoredList[],
+  preferredListId: string | null,
+): string | null {
+  const allLists = [...lists, ...hideoutLists];
+  if (preferredListId && allLists.some((list) => list.id === preferredListId)) {
+    return preferredListId;
+  }
+  return allLists[0]?.id ?? null;
 }
 
 export function ListsView({
@@ -72,7 +106,7 @@ export function ListsView({
 }: ListsViewProps) {
   const { t, compareText } = useLocale();
   const [selectedListId, setSelectedListId] = useState<string | null>(
-    lists.length > 0 ? lists[0].id : null
+    () => resolveSelectedListId(lists, hideoutLists, getStoredSelectedListId())
   );
   const [newListName, setNewListName] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
@@ -102,6 +136,22 @@ export function ListsView({
       .sort((a, b) => compareText(a.name, b.name))
       .slice(0, 10);
   }, [itemsMap, searchQuery, compareText]);
+
+  useEffect(() => {
+    const nextSelectedListId = resolveSelectedListId(
+      lists,
+      hideoutLists,
+      selectedListId ?? getStoredSelectedListId(),
+    );
+
+    if (nextSelectedListId !== selectedListId) {
+      setSelectedListId(nextSelectedListId);
+    }
+  }, [lists, hideoutLists, selectedListId]);
+
+  useEffect(() => {
+    persistSelectedListId(selectedListId);
+  }, [selectedListId]);
 
   // --- Handlers ---
 
@@ -390,35 +440,17 @@ export function ListsView({
                   onFocus={() => setShowSuggestions(true)}
                 />
                 {showSuggestions && searchResults.length > 0 && (
-                  <div style={{
-                    position: 'absolute',
-                    top: '100%',
-                    left: 0,
-                    right: 0,
-                    background: '#2c2c2c',
-                    border: '1px solid #444',
-                    borderRadius: 4,
-                    maxHeight: 200,
-                    overflowY: 'auto',
-                    zIndex: 100,
-                  }}>
+                  <div className="lists-view__suggestions">
                     {searchResults.map(item => (
-                      <div
+                      <button
+                        type="button"
                         key={item.id}
+                        className="lists-view__suggestion"
                         onClick={() => handleAddItem(item.id)}
-                        style={{
-                          padding: '8px 12px',
-                          cursor: 'pointer',
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: 8,
-                        }}
-                        onMouseEnter={(e) => (e.currentTarget.style.background = '#3c3c3c')}
-                        onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
                       >
-                        <img src={item.icon} alt="" style={{ width: 24, height: 24 }} />
-                        <span style={{ fontSize: 11 }}>{item.name}</span>
-                      </div>
+                        <img className="lists-view__suggestion-icon" src={item.icon} alt="" />
+                        <span className="lists-view__suggestion-name qm-item-name">{item.name}</span>
+                      </button>
                     ))}
                   </div>
                 )}

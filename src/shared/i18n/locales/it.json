@@ -481,11 +481,11 @@
     },
     "benches": {
       "refiner": "Refiner",
-      "equipmentBench": "Equipment Bench",
-      "explosivesBench": "Explosives Bench",
-      "medStation": "Med Station",
-      "utilityBench": "Utility Bench",
-      "weaponBench": "Weapon Bench",
+      "equipmentBench": "Gear Bench",
+      "explosivesBench": "Explosives Station",
+      "medStation": "Medical Lab",
+      "utilityBench": "Utility Station",
+      "weaponBench": "Gunsmith",
       "workbench": "Workbench"
     }
   },

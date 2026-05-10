@@ -156,7 +156,7 @@ Addition
 
 ### Change
 
-The Crafting UI panel must provide a **Sync Unlocked Blueprints** button next to the existing **Sync Inventory** button.
+The Crafting UI panel must provide a **Sync Unlocked Blueprints** button next to the existing **Sync My Items** button.
 
 Behavior:
 
@@ -164,6 +164,7 @@ Behavior:
 - While syncing, the button must show a loading/disabled state.
 - On success, cached blueprint state and planner output must refresh.
 - On failure, the previous cached blueprint state must remain active.
+- When cached blueprint state is available, the button must show learned blueprint progress, e.g. `40/70 unlocked`.
 - The UI should expose the last blueprint sync timestamp when available, following the existing timestamp style used for inventory/loadout syncs.
 
 Authentication behavior:
@@ -286,7 +287,7 @@ If no blueprint cache exists yet, Quartermaster must use this conservative fallb
 
 This avoids silently assuming locked recipes are available once a real blueprint API exists.
 
-The Crafting UI must make the remedy discoverable by showing **Sync Unlocked Blueprints** next to **Sync Inventory**.
+The Crafting UI must make the remedy discoverable by showing **Sync Unlocked Blueprints** next to **Sync My Items**.
 Use a tooltip to explain the need for blueprint sync when blueprint-locked items are present:
 "Sync blueprints to check craftability for locked items".
 

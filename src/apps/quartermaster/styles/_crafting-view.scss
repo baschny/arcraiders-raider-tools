@@ -14,6 +14,12 @@
     font-size: $font-sm;
   }
 
+  &__button-meta {
+    color: $text-secondary;
+    font-size: $font-xs;
+    font-weight: 600;
+  }
+
   &__section {
     margin-bottom: $spacing-xl;
   }
