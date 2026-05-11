@@ -3,10 +3,10 @@
  * See specification section 7.1.1
  */
 
-import { Package, List, Target, Hammer } from 'lucide-react';
+import { Hammer, Home, List, Package, Target } from 'lucide-react';
 import { useLocale } from '../../../shared/context/LocaleContext';
 
-export type ViewId = 'stash' | 'lists' | 'in-raid' | 'crafting';
+export type ViewId = 'stash' | 'lists' | 'hideout' | 'in-raid' | 'crafting';
 
 interface SidebarProps {
   activeView: ViewId;
@@ -18,6 +18,7 @@ export function Sidebar({ activeView, onViewChange }: SidebarProps) {
   const navItems: { id: ViewId; label: string; icon: React.ReactNode }[] = [
     { id: 'stash', label: t('quartermaster.nav.stash'), icon: <Package size={18} /> },
     { id: 'lists', label: t('quartermaster.nav.lists'), icon: <List size={18} /> },
+    { id: 'hideout', label: t('quartermaster.nav.hideout'), icon: <Home size={18} /> },
     { id: 'in-raid', label: t('quartermaster.nav.inRaid'), icon: <Target size={18} /> },
     { id: 'crafting', label: t('quartermaster.nav.crafting'), icon: <Hammer size={18} /> },
   ];

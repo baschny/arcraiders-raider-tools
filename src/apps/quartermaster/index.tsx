@@ -63,6 +63,7 @@ import { GlobalHeader } from './components/GlobalHeader';
 import { AuthGate } from './components/AuthGate';
 import { StashView } from './components/views/StashView';
 import { ListsView } from './components/views/ListsView';
+import { HideoutView } from './components/views/HideoutView';
 import { InRaidView } from './components/views/InRaidView';
 import { CraftingView } from './components/views/CraftingView';
 
@@ -176,9 +177,9 @@ export function QuartermasterApp() {
     });
   }, [hideoutDefinitions, cachedHideout, hideoutToggleState, t, compareText]);
 
-  // Merge user lists and hideout lists for planner aggregation (CR-007)
+  // Merge hideout lists before user lists for planner priority.
   const allLists: StoredList[] = useMemo(() => {
-    return [...lists, ...hideoutLists];
+    return [...hideoutLists, ...lists];
   }, [lists, hideoutLists]);
 
   const ownedItemRows = useMemo(() => {
@@ -396,6 +397,24 @@ export function QuartermasterApp() {
     patchQuartermasterState({ hideoutToggles: updated });
   }, [hideoutToggleState, patchQuartermasterState]);
 
+  const handleSetHideoutModuleListsEnabled = useCallback((
+    moduleId: string,
+    levels: number[],
+    isEnabled: boolean,
+  ) => {
+    const nextListEnabled = { ...hideoutToggleState.listEnabled };
+    for (const level of levels) {
+      nextListEnabled[listKey(moduleId, level)] = isEnabled;
+    }
+
+    patchQuartermasterState({
+      hideoutToggles: {
+        ...hideoutToggleState,
+        listEnabled: nextListEnabled,
+      },
+    });
+  }, [hideoutToggleState, patchQuartermasterState]);
+
   const handleToggleHideoutItem = useCallback((moduleId: string, level: number, itemId: string) => {
     const ik = itemKey(moduleId, level, itemId);
     const updated: HideoutToggleState = {
@@ -437,7 +456,6 @@ export function QuartermasterApp() {
           <ListsView
             itemsMap={itemsMap}
             lists={lists}
-            hideoutLists={hideoutLists}
             plannerResult={plannerResult}
             itemInsights={itemInsights}
             getOwnedQuantity={getOwnedQuantity}
@@ -451,10 +469,23 @@ export function QuartermasterApp() {
             onToggleItem={handleToggleItem}
             onReorderLists={handleReorderLists}
             onReorderItems={handleReorderItems}
+          />
+        );
+
+      case 'hideout':
+        return (
+          <HideoutView
+            itemsMap={itemsMap}
+            hideoutDefinitions={hideoutDefinitions}
+            cachedHideout={cachedHideout}
+            hideoutLists={hideoutLists}
+            plannerResult={plannerResult}
+            itemInsights={itemInsights}
+            getOwnedQuantity={getOwnedQuantity}
             onSyncHideout={handleSyncHideout}
             isSyncingHideout={isSyncingHideout}
-            hasHideoutCache={cachedHideout !== null}
             onToggleHideoutList={handleToggleHideoutList}
+            onSetHideoutModuleListsEnabled={handleSetHideoutModuleListsEnabled}
             onToggleHideoutItem={handleToggleHideoutItem}
           />
         );

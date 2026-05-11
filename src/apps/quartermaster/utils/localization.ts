@@ -120,13 +120,13 @@ export function formatHideoutListName(
   level: number,
   isNext: boolean,
 ): string {
-  return isNext
-    ? t('quartermaster.lists.hideoutNameNext')
-        .replace('{module}', moduleName)
-        .replace('{level}', String(level))
-    : t('quartermaster.lists.hideoutName')
-        .replace('{module}', moduleName)
-        .replace('{level}', String(level));
+  void isNext;
+
+  if (level === 1) {
+    return `${moduleName} ${t('quartermaster.hideout.unlock')}`;
+  }
+
+  return `${moduleName} ${t('quartermaster.hideout.tierLabel').replace('{level}', String(level))}`;
 }
 
 export function sortQuartermasterItemsByName<T extends { name: string }>(

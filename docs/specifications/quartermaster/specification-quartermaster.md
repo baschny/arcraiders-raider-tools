@@ -74,7 +74,7 @@ The system must:
 - Provide deterministic and meaningful crafting and recycling suggestions.
 - Provide deterministic and meaningful loot suggestions for both crafting support materials and loot-only final targets.
 - Generate deterministic hideout upgrade lists based on the user's current hideout module levels.
-- Allow generated hideout upgrade lists to participate in normal planner aggregation.
+- Allow generated hideout upgrade lists to participate in planner aggregation with higher priority than user-authored lists.
 - Support loot acquisition planning for hideout upgrade materials.
 - Keep generated hideout list composition read-only while preserving per-list and per-item enable/disable control.
 - Limit crafting depth to practical real-world gameplay expectations.
@@ -737,7 +737,7 @@ Quartermaster integrates with the user hideout endpoint through the shared Raide
 
 ### 4.5.1 Sync Operation
 
-The Lists view must provide a **Sync Hideouts** button.
+The Hideout view must provide a **Sync Hideouts** button.
 
 This button must call the shared API method for:
 
@@ -779,13 +779,57 @@ Generated hideout upgrade lists are derived from:
 If no cached hideout state exists:
 
 - no generated hideout upgrade lists are shown
-- Lists view must display a hint prompting the user to use **Sync Hideouts**
+- Hideout view must display a hint prompting the user to use **Sync Hideouts**
 
 If cached hideout state is unavailable, missing, or invalid:
 
 - generated hideout upgrade lists must not be synthesized from fallback bench level assumptions
 
-### 4.5.4 Exclusions
+Generated hideout upgrade lists must not be displayed in the Lists view.
+
+Generated hideout upgrade lists are displayed only in the top-level Hideout view.
+
+### 4.5.4 Generated Upgrade List Rules
+
+For each hideout module:
+
+```ts
+targetLevels = levels where level > currentLevel
+```
+
+Generate one list per future unlock/tier.
+
+Rules:
+
+- Generate every future tier per bench, not only the next tier.
+- `currentLevel = 0` means the bench is not yet unlocked.
+- `targetLevel = 1` is the bench Unlock step.
+- Unlock is treated as the first tier.
+- Each generated list contains only the requirement items for that specific unlock/tier.
+- Generated lists are non-cumulative.
+- Generated list composition is read-only.
+- Generated list quantities are read-only.
+- Generated lists are not reorderable.
+- Generated list items are not reorderable.
+- Users may enable or disable each generated list.
+- Users may enable or disable individual generated list items.
+- Only generated list and generated item toggle state is persisted.
+- If a generated list disappears due to hideout progression, obsolete toggle state must be removed.
+
+Recommended generated list names:
+
+```text
+<Bench Name> Unlock
+<Bench Name> Tier <N>
+```
+
+Generated list ids may remain:
+
+```text
+hideout_<moduleId>_<level>
+```
+
+### 4.5.5 Exclusions
 
 The `stash` module must not generate upgrade lists.
 
@@ -940,10 +984,35 @@ Missing `value` is treated as `0` for ordering.
 
 Planning order for missing final targets:
 
+1. Generated hideout upgrade lists.
+2. User-authored lists.
+
+Within generated hideout upgrade lists:
+
+1. Next upgrades first, where `targetLevel === currentLevel + 1`.
+2. Remaining future tiers.
+3. Bench/module name ascending.
+4. Target level ascending.
+5. Item order within the generated list.
+6. `value` descending.
+7. `itemId` ascending (ASCII).
+
+Within user-authored lists:
+
 1. List order (top to bottom in the Lists UI).
 2. Item order within the list (top to bottom).
 3. `value` descending.
 4. `itemId` ascending (ASCII).
+
+If the same `itemId` appears in generated hideout lists and user-authored lists:
+
+- quantities sum
+- generated hideout priority wins for the item's earliest priority metadata
+
+If the same `itemId` appears in multiple generated hideout lists:
+
+- quantities sum
+- the earliest generated hideout priority position wins
 
 Planning model is greedy and deterministic.
 
@@ -971,7 +1040,50 @@ If no intermediate ingredient exists, the chain contains only:
 Final Target -> Current Item
 ```
 
-## 6.1 Craftability Predicate
+## 6.1 Required Target Aggregation
+
+Planner targets are derived from two sources:
+
+- generated hideout upgrade lists
+- user-authored lists
+
+Disabled lists and disabled list items are ignored.
+
+Generated hideout upgrade lists have higher priority than user-authored lists for all planner outputs, including:
+
+- In Raid suggestions
+- Crafting plan
+- material deficits
+- target ordering
+- protected-from-recycling reservations
+
+Equivalent aggregation order:
+
+```ts
+allLists = [...orderedHideoutLists, ...userLists]
+```
+
+`orderedHideoutLists` must be deterministic:
+
+1. next upgrades first
+2. remaining future tiers
+3. bench/module name ascending
+4. target level ascending
+
+Aggregation rule:
+
+```ts
+requiredFinal[itemId] =
+  sum(quantity across all enabled lists and enabled list items)
+```
+
+Duplicate `itemId` values across any list sources must sum quantities.
+
+Priority metadata must record the earliest position after applying hideout-first ordering. This earliest position controls deterministic target processing and must be stable for identical inputs.
+
+Generated hideout lists are not stored as user-authored lists. They are generated from hideout definitions plus cached hideout state, then merged into planner input before user-authored lists.
+
+## 6.2 Craftability Predicate
 
 An item is locally craftable if:
 
@@ -998,7 +1110,7 @@ Meaning:
 - If no blueprint cache exists yet, `blueprintLocked: true` items are treated as not locally craftable until blueprints are synced.
 - Blueprint blocker diagnostics are preserved for statically blueprint-locked items absent from the learned blueprint set.
 
-## 6.2 Depth-Limited Crafting Output Availability
+## 6.3 Depth-Limited Crafting Output Availability
 
 The planner must treat committed depth-2 craft outputs as available to their parent craft.
 
@@ -1017,7 +1129,7 @@ Planner result must include:
 
 Depth-2 craft inputs must be checked before the parent target is marked satisfiable.
 
-## 6.3 Transactional Target Planning
+## 6.4 Transactional Target Planning
 
 Planning for a single missing final target must be transactional.
 
@@ -1086,6 +1198,23 @@ Additional validation scenarios:
 - Unknown stash/loadout state renders `"?"` quantity placeholder.
 - Planner logic remains deterministic even when quantity placeholder is displayed.
 - Craft provenance chains correctly display `Final -> Intermediate -> Current` when applicable.
+- Sidebar includes Hideout between Lists and In Raid.
+- Lists view renders only user-authored lists.
+- Lists view no longer renders generated hideout upgrade lists or Sync Hideouts.
+- Hideout view renders Sync Hideouts at the top.
+- Hideout view shows no generated lists when no hideout cache exists.
+- Hideout view shows every bench from static definitions except excluded modules.
+- Hideout view shows completed benches with `Tier <current>/<max>` and completed state.
+- Hideout view generates one list for every future unlock/tier.
+- Unlock is shown as the first tier for benches with `currentLevel = 0`.
+- Generated hideout list and item toggles persist.
+- Disabled generated hideout lists do not contribute planner targets.
+- Disabled generated hideout items do not contribute planner targets.
+- Planner prioritizes generated hideout targets before user-authored list targets.
+- Duplicate item targets sum quantities while retaining generated hideout priority metadata.
+- In Raid suggestions reflect generated hideout priority before user-authored list priority.
+- Crafting plan reflects generated hideout priority before user-authored list priority.
+- Obsolete generated hideout toggle cleanup still runs after hideout progression.
 
 ---
 
@@ -1343,6 +1472,8 @@ The dedicated Loadout view is removed. Current loadout data is represented insid
 
 ## 4.3 Lists View
 
+The Lists view contains user-authored lists only.
+
 Icon overlay displays owned quantity.
 
 Editing controls must be visually larger:
@@ -1356,14 +1487,112 @@ Buttons must be placed on the **left side** of rows.
 
 Padding must be added around numeric input fields to separate them from browser spinner arrows.
 
-Generated hideout lists:
+The Lists view must support existing user-list behavior:
 
-- Hide toggle allowed
-- Delete action not allowed
+- create list
+- rename list
+- delete list
+- reorder lists
+- add items
+- remove items
+- reorder items
+- change quantities
+- enable or disable lists and items
 
 ---
 
-## 4.4 In Raid View
+## 4.4 Hideout View
+
+The Hideout view is a top-level Quartermaster view between Lists and In Raid.
+
+The sidebar view order is:
+
+1. My Items
+2. Lists
+3. Hideout
+4. In Raid
+5. Crafting
+
+The Hideout view owns all generated hideout upgrade list presentation and controls.
+
+### Sync Controls
+
+The **Sync Hideouts** button appears at the top of the Hideout view.
+
+Rules:
+
+- If no hideout cache exists, show a prompt explaining that hideout data must be synced before upgrade lists can be generated.
+- While syncing, disable the button and show loading state.
+- The Lists view must not show Sync Hideouts.
+
+### Bench Overview
+
+The Hideout view must present all hideout benches/modules from static definitions except excluded modules.
+
+Each bench must show:
+
+- bench/module name
+- current tier
+- max tier
+- completed state when fully upgraded
+- generated upgrade lists for every future unlock/tier
+
+Tier badge format:
+
+```text
+Tier <currentLevel>/<maxLevel>
+```
+
+Fully upgraded benches remain visible and show a completed state next to the tier badge. A green checkmark is the preferred visual treatment.
+
+### Unlock and Tier Lists
+
+The first upgrade level is the bench Unlock tier.
+
+Rules:
+
+- `currentLevel = 0` means the bench is not yet unlocked.
+- The first generated upgrade list for such a bench is labeled as the unlock step.
+- Unlock requirements participate in planning exactly like later tier requirements.
+- Fully upgraded benches have no generated upgrade lists and do not contribute planner targets.
+
+Recommended display labels:
+
+```text
+Unlock
+Tier 2
+Tier 3
+Tier 4
+```
+
+### Generated List Controls
+
+Generated hideout lists in the Hideout view:
+
+- may be enabled or disabled
+- may have individual items enabled or disabled
+- may not be renamed
+- may not have items added
+- may not have items removed
+- may not be reordered
+- may not have quantities changed
+
+### Empty and Completed States
+
+The Hideout view must clearly handle:
+
+- static data loading
+- no cached hideout state
+- sync in progress
+- synced with pending upgrades
+- synced with all benches completed
+- unknown cached modules ignored
+
+No fallback bench-level assumptions may be used to synthesize hideout upgrade lists.
+
+---
+
+## 4.5 In Raid View
 
 ### Grid Layout
 
@@ -1416,7 +1645,7 @@ Add visual spacing between:
 
 ---
 
-## 4.5 Crafting View
+## 4.6 Crafting View
 
 ### Sync Controls
 

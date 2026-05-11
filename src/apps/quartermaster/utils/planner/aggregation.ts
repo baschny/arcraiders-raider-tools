@@ -26,9 +26,13 @@ export function aggregateRequired(lists: StoredList[]): AggregationResult {
   const required: Record<ItemId, Qty> = {};
   const targetPriority: Record<ItemId, TargetPriority> = {};
   const requiredSourcesByItemId: Record<ItemId, RequiredSource[]> = {};
+  const orderedLists = [
+    ...lists.filter(list => list.type === 'hideout'),
+    ...lists.filter(list => list.type !== 'hideout'),
+  ];
 
-  for (let listIndex = 0; listIndex < lists.length; listIndex++) {
-    const list = lists[listIndex];
+  for (let listIndex = 0; listIndex < orderedLists.length; listIndex++) {
+    const list = orderedLists[listIndex];
     if (!list.isEnabled) continue;
 
     for (let itemIndex = 0; itemIndex < list.items.length; itemIndex++) {

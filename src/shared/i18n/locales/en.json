@@ -298,6 +298,7 @@
       "stash": "My Items",
       "currentLoadout": "Current Loadout",
       "lists": "Lists",
+      "hideout": "Hideout",
       "inRaid": "In Raid",
       "crafting": "Crafting"
     },
@@ -383,6 +384,23 @@
       "empty": "Select or create a list to edit.",
       "hideoutName": "{module} to Level {level}",
       "hideoutNameNext": "{module} to Level {level} (Next)"
+    },
+    "hideout": {
+      "subtitle": "Track bench tiers and plan every future hideout upgrade.",
+      "syncPrompt": "Sync your hideout to see current bench tiers and upgrade requirements.",
+      "allComplete": "All hideout modules are fully upgraded.",
+      "tierProgress": "Tier {current}/{max}",
+      "unlock": "Unlock",
+      "tierLabel": "Tier {level}",
+      "upgradeToTierLabel": "Upgrade to Tier {level}",
+      "next": "Next",
+      "nextUpgrade": "Next upgrade first",
+      "completed": "Completed",
+      "noPendingUpgrades": "No pending upgrades",
+      "hideBench": "Hide",
+      "unhideBench": "Unhide",
+      "disableBenchTooltip": "Disable tracking all tiers of this bench",
+      "enableBenchTooltip": "Enable tracking all tiers of this bench"
     },
     "inRaid": {
       "keep": "Keep",
