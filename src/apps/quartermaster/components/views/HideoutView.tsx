@@ -8,6 +8,7 @@ import { CheckCircle2, ChevronDown, ChevronRight, Eye, EyeOff, Home, RefreshCw }
 import type { CachedHideout } from '../../../../shared/types/arctracker';
 import { useLocale } from '../../../../shared/context/LocaleContext';
 import { ItemIcon } from '../ItemIcon';
+import { loadCollapsedHideoutModules, saveCollapsedHideoutModules } from '../../utils/preferences';
 import type { HideoutModuleDefinition } from '../../types/hideout';
 import type { ItemsMap } from '../../types/item';
 import type { StoredList } from '../../types/list';
@@ -72,7 +73,13 @@ export function HideoutView({
   onToggleHideoutItem,
 }: HideoutViewProps) {
   const { t, compareText } = useLocale();
-  const [collapsedModules, setCollapsedModules] = useState<Record<string, boolean>>({});
+  const [collapsedModules, setCollapsedModules] = useState<Record<string, boolean>>(
+    () => loadCollapsedHideoutModules(),
+  );
+  const updateCollapsedModules = (next: Record<string, boolean>) => {
+    setCollapsedModules(next);
+    saveCollapsedHideoutModules(next);
+  };
   const tooltipContext = {
     itemsMap,
     plannerResult,
@@ -183,12 +190,12 @@ export function HideoutView({
                           type="button"
                           className="hideout-view__module-toggle"
                           aria-expanded={isExpanded}
-                          onClick={() =>
-                            setCollapsedModules(current => ({
-                              ...current,
-                              [definition.id]: !current[definition.id],
-                            }))
-                          }
+                          onClick={() => {
+                            updateCollapsedModules({
+                              ...collapsedModules,
+                              [definition.id]: !collapsedModules[definition.id],
+                            });
+                          }}
                         >
                           <span className="hideout-view__module-heading">
                             {isExpanded ? <ChevronDown size={18} /> : <ChevronRight size={18} />}

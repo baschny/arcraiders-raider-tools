@@ -202,6 +202,7 @@ export interface CachedLoadout {
 export interface CacheMeta {
   lastSyncedAt: number | null;
   version: number;
+  userSub: string | null;
 }
 
 export type CacheKey = 'profile' | 'stash' | 'loadout' | 'hideout' | 'blueprints' | 'meta';

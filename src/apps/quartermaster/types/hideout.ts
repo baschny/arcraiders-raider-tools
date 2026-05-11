@@ -45,7 +45,7 @@ export interface CachedHideout {
   cachedAt: number;
 }
 
-// Toggle persistence for generated lists (stored in localStorage)
+// Toggle persistence for generated lists (stored in quartermasterStore)
 
 export interface HideoutToggleState {
   /** Keys: "moduleId:level" */

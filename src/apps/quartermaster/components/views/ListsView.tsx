@@ -11,6 +11,7 @@ import type { PlannerResult } from '../../types/planner';
 import { ItemIcon } from '../ItemIcon';
 import { searchItems } from '../../utils/dataLoader';
 import type { ItemInsightsMap } from '../../utils/itemInsights';
+import { loadSelectedListId, saveSelectedListId } from '../../utils/preferences';
 import { useLocale } from '../../../../shared/context/LocaleContext';
 
 interface ListsViewProps {
@@ -29,28 +30,6 @@ interface ListsViewProps {
   onToggleItem: (listId: string, itemId: string) => void;
   onReorderLists: (reorderedLists: StoredList[]) => void;
   onReorderItems: (listId: string, reorderedItemIds: string[]) => void;
-}
-
-const SELECTED_LIST_STORAGE_KEY = 'quartermaster.selectedListId';
-
-function getStoredSelectedListId(): string | null {
-  try {
-    return window.localStorage.getItem(SELECTED_LIST_STORAGE_KEY);
-  } catch {
-    return null;
-  }
-}
-
-function persistSelectedListId(listId: string | null): void {
-  try {
-    if (listId) {
-      window.localStorage.setItem(SELECTED_LIST_STORAGE_KEY, listId);
-    } else {
-      window.localStorage.removeItem(SELECTED_LIST_STORAGE_KEY);
-    }
-  } catch {
-    // Ignore localStorage failures; selection still works for the current mount.
-  }
 }
 
 function resolveSelectedListId(
@@ -82,7 +61,7 @@ export function ListsView({
 }: ListsViewProps) {
   const { t, compareText } = useLocale();
   const [selectedListId, setSelectedListId] = useState<string | null>(
-    () => resolveSelectedListId(lists, getStoredSelectedListId())
+    () => resolveSelectedListId(lists, loadSelectedListId())
   );
   const [newListName, setNewListName] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
@@ -114,7 +93,7 @@ export function ListsView({
   useEffect(() => {
     const nextSelectedListId = resolveSelectedListId(
       lists,
-      selectedListId ?? getStoredSelectedListId(),
+      selectedListId ?? loadSelectedListId(),
     );
 
     if (nextSelectedListId !== selectedListId) {
@@ -123,7 +102,7 @@ export function ListsView({
   }, [lists, selectedListId]);
 
   useEffect(() => {
-    persistSelectedListId(selectedListId);
+    saveSelectedListId(selectedListId);
   }, [selectedListId]);
 
   // --- Handlers ---

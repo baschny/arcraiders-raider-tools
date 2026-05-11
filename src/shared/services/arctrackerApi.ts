@@ -28,8 +28,9 @@ import {
   getCachedHideout,
   getCachedBlueprints,
   updateCacheMeta,
+  setCacheOwner,
 } from './cacheService';
-import { getIdToken } from '../auth/cognitoClient';
+import { getCurrentSession, getIdToken } from '../auth/cognitoClient';
 import { DEFAULT_LOCALE, LOCALE_STORAGE_KEY, type AppLocale } from '../i18n/config';
 
 const API_ORIGIN = (import.meta.env.VITE_API_BASE_URL as string | undefined) ??
@@ -153,6 +154,8 @@ async function getRequestAuth(token?: string): Promise<{ baseUrl: string; token:
 
   const idToken = await getIdToken();
   if (idToken) {
+    const session = await getCurrentSession();
+    await setCacheOwner(session?.sub ?? null);
     return { baseUrl: USER_RELAY_BASE, token: idToken };
   }
 

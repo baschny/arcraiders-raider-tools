@@ -47,6 +47,7 @@ import {
     clearSyncError,
     setRetryHandler,
 } from '../state/syncStatus';
+import { setCacheOwner } from '../services/cacheService';
 
 interface CognitoAuthContextValue {
     /** True when the SPA has Cognito env vars configured (or dev-auth is on). */
@@ -136,6 +137,7 @@ export function CognitoAuthProvider({ children }: ProviderProps) {
     // banner and the user can retry manually.
     useEffect(() => {
         if (!user) return;
+        void setCacheOwner(user.sub);
         if (syncedForSubRef.current === user.sub) return;
         syncedForSubRef.current = user.sub;
         runPostSignInSync()

@@ -213,6 +213,7 @@ Runs *before* Cognito tokens are cleared so any pending writes can still authent
 2. `setBackend('local')` on every store.
 3. `clearAll()` on every store → clears the `rt_state_*` localStorage keys and resets to defaults.
 4. Iterates `LEGACY_KEYS` (pre-phase-2 key names: `arcraiders-quest-progress-reactflow`, `quartermaster_lists`, `what-to-loot-*`, etc.) and removes them too.
+5. Clears the ArcTracker IndexedDB cache (`raiderToolsCache`) and drops the active cache owner so stash/loadout/hideout/blueprint data from one signed-in user cannot be shown to another user.
 
 UI prefs (locale, sidebar open/closed) and the sign-in-nudge dismissal flag intentionally survive sign-out; they are device-level prefs, not user data.
 

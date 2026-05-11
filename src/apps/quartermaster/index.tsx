@@ -49,6 +49,7 @@ import {
 } from './utils/api';
 import { buildItemInsights, type ItemInsightsMap } from './utils/itemInsights';
 import { formatHideoutListName } from './utils/localization';
+import { loadActiveView, saveActiveView } from './utils/preferences';
 import { useAuth } from '../../shared/context/AuthContext';
 import { useLocale } from '../../shared/context/LocaleContext';
 import { SignInNudge } from '../../shared/components/SignInNudge';
@@ -87,7 +88,7 @@ export function QuartermasterApp() {
   const [cachedBlueprints, setCachedBlueprints] = useState<CachedBlueprints | null>(null);
 
   // UI state
-  const [activeView, setActiveView] = useState<ViewId>('lists');
+  const [activeView, setActiveView] = useState<ViewId>(() => loadActiveView());
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [syncError, setSyncError] = useState<string | null>(null);
@@ -104,6 +105,11 @@ export function QuartermasterApp() {
   const patchQuartermasterState = useCallback((next: Partial<QuartermasterState>) => {
     setQuartermasterState({ ...quartermasterStore.get(), ...next });
   }, [setQuartermasterState]);
+
+  const handleViewChange = useCallback((view: ViewId) => {
+    setActiveView(view);
+    saveActiveView(view);
+  }, []);
 
   // Load items and cached data on mount
   useEffect(() => {
@@ -549,7 +555,7 @@ export function QuartermasterApp() {
   return (
     <div className="quartermaster-container">
       <div className="quartermaster-layout">
-        <Sidebar activeView={activeView} onViewChange={setActiveView} />
+        <Sidebar activeView={activeView} onViewChange={handleViewChange} />
         <div className="quartermaster-main">
           <GlobalHeader
             plannerResult={plannerResult}
