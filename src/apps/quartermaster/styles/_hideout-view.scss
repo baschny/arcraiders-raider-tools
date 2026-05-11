@@ -7,25 +7,50 @@
   height: 100%;
   min-height: 0;
 
-  &__header {
+  &__controls {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: $spacing-lg;
-    padding: $spacing-lg;
+    gap: $spacing-sm;
+    flex-wrap: wrap;
+  }
+
+  &__tracking {
+    position: relative;
+  }
+
+  &__tracking-menu {
+    position: absolute;
+    top: calc(100% + #{$spacing-xs});
+    left: 0;
+    z-index: 20;
+    min-width: 230px;
+    padding: $spacing-xs;
     background: $bg-secondary;
-    border-radius: $radius-md;
+    border: 1px solid rgba($border-light, 0.45);
+    border-radius: $radius-sm;
+    box-shadow: 0 12px 30px rgba($bg-dark, 0.45);
 
-    h2 {
-      margin: 0 0 $spacing-xs;
-      font-size: $font-xl;
+    button {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: $spacing-sm;
+      padding: $spacing-sm;
+      border: 0;
+      border-radius: $radius-sm;
+      background: transparent;
       color: $text-primary;
-    }
+      font-size: $font-sm;
+      text-align: left;
+      cursor: pointer;
+      transition: $transition-default;
 
-    p {
-      margin: 0;
-      color: $text-secondary;
-      font-size: $font-base;
+      &:hover,
+      &:focus-visible {
+        outline: none;
+        background: $bg-tertiary;
+        color: $text-accent;
+      }
     }
   }
 
@@ -59,61 +84,83 @@
   &__module {
     display: flex;
     flex-direction: column;
+    flex: 0 0 auto;
     min-width: 0;
     background: $bg-secondary;
     border: 1px solid rgba($border-default, 0.9);
     border-radius: $radius-md;
+    overflow: hidden;
 
     &--complete {
       border-color: rgba($status-available, 0.35);
+    }
+
+    &--disabled {
+      .hideout-view__module-title,
+      .hideout-view__tier-badge,
+      .hideout-view__tracking-badge,
+      .hideout-view__upgrade-available-badge,
+      .hideout-view__collapse-icon {
+        opacity: 0.5;
+      }
+
+      .hideout-view__bench-image {
+        opacity: 0.65;
+      }
     }
   }
 
   &__module-header {
     width: 100%;
+    flex: 0 0 auto;
     display: flex;
     align-items: stretch;
     justify-content: space-between;
-    gap: $spacing-md;
-    padding: $spacing-lg;
+    min-height: 62px;
+    border-bottom: 1px solid rgba($border-light, 0.18);
+
+    &--clickable {
+      cursor: pointer;
+      transition: $transition-default;
+
+      &:hover,
+      &:focus-visible {
+        outline: none;
+        background: rgba($text-accent, 0.05);
+
+        .hideout-view__module-title,
+        .hideout-view__collapse-icon {
+          color: $text-accent;
+        }
+      }
+    }
   }
 
   &__module-main {
     flex: 1;
     min-width: 0;
-  }
-
-  &__module-toggle,
-  &__module-summary {
-    min-width: 0;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: $spacing-md;
-  }
-
-  &__module-toggle {
-    border: 0;
-    padding: 0;
-    background: transparent;
-    color: inherit;
-    text-align: left;
-    cursor: pointer;
-    transition: $transition-default;
-    border-radius: $radius-sm;
-
-    &:hover,
-    &:focus-visible {
-      outline: none;
-      color: $text-accent;
-    }
-  }
-
-  &__module-heading {
     display: flex;
     align-items: center;
     gap: $spacing-sm;
-    min-width: 0;
+    padding: $spacing-md $spacing-lg $spacing-md $spacing-md;
+  }
+
+  &__bench-image {
+    width: 80px;
+    align-self: stretch;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: rgba($bg-dark, 0.28);
+    border-right: 1px solid rgba($border-light, 0.18);
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
   }
 
   &__module-title {
@@ -122,14 +169,17 @@
     font-size: $font-lg;
     font-weight: 700;
     line-height: 1.2;
+    min-width: 0;
+    overflow-wrap: anywhere;
   }
 
   &__bench-toggle {
     flex-shrink: 0;
-    align-self: center;
   }
 
   &__tier-badge,
+  &__tracking-badge,
+  &__upgrade-available-badge,
   &__next-pill {
     display: inline-flex;
     align-items: center;
@@ -147,18 +197,64 @@
     border: 1px solid rgba($border-light, 0.35);
   }
 
+  &__tracking-badge {
+    background: rgba($text-accent, 0.12);
+    color: $text-accent;
+    border: 1px solid rgba($text-accent, 0.32);
+  }
+
+  &__upgrade-available-badge {
+    background: rgba($badge-recycle, 0.16);
+    color: $badge-recycle;
+    border: 1px solid rgba($badge-recycle, 0.42);
+  }
+
   &__complete-icon {
     color: $status-available;
   }
 
+  &__icon-button {
+    min-width: 34px;
+    width: 34px;
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    flex-shrink: 0;
+  }
+
+  &__complete-icon.hideout-view__icon-button {
+    background: rgba($status-available, 0.12);
+    border: 1px solid rgba($status-available, 0.35);
+    border-radius: $radius-sm;
+    color: $status-available;
+  }
+
+  &__collapse-icon {
+    width: 54px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: $text-secondary;
+    transition: $transition-default;
+  }
+
   &__upgrade-list {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 260px);
+    align-items: stretch;
+    justify-content: flex-start;
     gap: $spacing-md;
     padding: $spacing-lg;
   }
 
   &__upgrade {
+    min-width: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
     background: $bg-tertiary;
     border-radius: $radius-sm;
     padding: $spacing-md;
@@ -167,81 +263,146 @@
     &--disabled {
       opacity: 0.55;
     }
+
+    &--complete {
+      border-color: rgba($status-available, 0.45);
+      box-shadow: inset 0 0 0 1px rgba($status-available, 0.12);
+    }
   }
 
   &__upgrade-header {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
-    gap: $spacing-md;
+    gap: $spacing-sm;
     margin-bottom: $spacing-md;
+  }
+
+  &__upgrade-heading {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+  }
+
+  &__upgrade-badges {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: $spacing-xs;
+    flex-shrink: 0;
+    flex-wrap: wrap;
   }
 
   &__upgrade-title {
     color: $text-primary;
-    font-size: $font-base;
+    font-size: $font-sm;
     font-weight: 700;
+    line-height: 1.25;
   }
 
   &__next-pill {
-    margin-left: $spacing-sm;
+    flex-shrink: 0;
     color: $text-accent;
     background: rgba($text-accent, 0.14);
     border: 1px solid rgba($text-accent, 0.35);
+  }
+
+  &__complete-pill {
+    display: inline-flex;
+    align-items: center;
+    min-height: 28px;
+    padding: 0 $spacing-sm;
+    border-radius: $radius-sm;
+    font-size: $font-xs;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: $status-available;
+    background: rgba($status-available, 0.13);
+    border: 1px solid rgba($status-available, 0.35);
   }
 
   &__items {
     display: flex;
     flex-direction: column;
     gap: $spacing-sm;
+    flex: 1;
   }
 
   &__item {
+    position: relative;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: $spacing-sm;
+    justify-content: center;
+    gap: $spacing-xs;
     min-width: 0;
+    min-height: 150px;
     padding: $spacing-sm;
     background: rgba($bg-dark, 0.25);
     border-radius: $radius-sm;
+    border: 1px solid rgba($border-light, 0.12);
+    text-align: center;
+    cursor: pointer;
+    transition: $transition-default;
+
+    &:hover,
+    &:focus-visible {
+      outline: none;
+      border-color: rgba($text-accent, 0.45);
+      background: rgba($text-accent, 0.08);
+    }
 
     &--disabled {
       opacity: 0.5;
     }
+
+    &--complete {
+      border-color: rgba($status-available, 0.45);
+      background: rgba($status-available, 0.08);
+    }
   }
 
-  &__icon-button {
-    min-width: 34px;
-    width: 34px;
-    height: 34px;
+  &__item-complete {
+    position: absolute;
+    top: $spacing-xs;
+    right: $spacing-xs;
+    width: 22px;
+    height: 22px;
+    display: inline-flex;
+    align-items: center;
     justify-content: center;
-    padding: 0;
+    border-radius: 999px;
+    color: $status-available;
+    background: rgba($bg-dark, 0.72);
+    border: 1px solid rgba($status-available, 0.5);
+  }
+
+  &__upgrade-toggle {
     flex-shrink: 0;
   }
 
-  &__item-meta {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: $spacing-md;
-    min-width: 0;
-    flex: 1;
-  }
-
   &__item-name {
+    width: 100%;
     min-width: 0;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
     color: $text-primary;
-    font-size: $font-sm;
+    font-size: $font-xs;
+    line-height: 1.2;
   }
 
   &__qty {
     flex-shrink: 0;
     color: $text-secondary;
     font-weight: 700;
-    font-size: $font-sm;
+    font-size: $font-xs;
+    text-transform: uppercase;
   }
 
   &__module-empty {
@@ -256,19 +417,30 @@
 
 @media (max-width: 760px) {
   .hideout-view {
-    &__header {
-      align-items: stretch;
-      flex-direction: column;
-    }
-    &__module-header {
+    &__controls {
       align-items: stretch;
       flex-direction: column;
     }
 
-    &__module-toggle,
-    &__module-summary {
-      align-items: flex-start;
-      flex-direction: column;
+    &__tracking,
+    &__tracking > .qm-button {
+      width: 100%;
+    }
+
+    &__tracking-menu {
+      width: 100%;
+    }
+    &__module-header {
+      min-height: 58px;
+    }
+
+    &__bench-image {
+      width: 64px;
+    }
+
+    &__module-main {
+      flex-wrap: wrap;
+      padding: $spacing-sm $spacing-md;
     }
   }
 }

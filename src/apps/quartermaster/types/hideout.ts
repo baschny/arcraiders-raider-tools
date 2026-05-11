@@ -12,6 +12,7 @@ export interface HideoutRequirementItem {
 
 export interface HideoutLevelDefinition {
   level: number;
+  image: string | null;
   requirementItemIds: HideoutRequirementItem[];
 }
 

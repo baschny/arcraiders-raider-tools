@@ -71,6 +71,41 @@ import { CraftingView } from './components/views/CraftingView';
 
 import './styles/main.scss';
 
+function parseHideoutListId(listId: string): { moduleId: string; level: number } | null {
+  const match = /^hideout_(.+)_(\d+)$/.exec(listId);
+  if (!match) return null;
+  return { moduleId: match[1], level: parseInt(match[2], 10) };
+}
+
+function countAvailableNextHideoutUpgrades(
+  hideoutLists: StoredList[],
+  cachedHideout: CachedHideout | null,
+  getOwnedQuantity: (itemId: string) => number | null,
+): number {
+  if (!cachedHideout) return 0;
+
+  const moduleLevels = new Map(
+    cachedHideout.modules.map(module => [module.moduleId, module.currentLevel]),
+  );
+  let availableCount = 0;
+
+  for (const list of hideoutLists) {
+    const parsed = parseHideoutListId(list.id);
+    if (!parsed || parsed.level !== (moduleLevels.get(parsed.moduleId) ?? 0) + 1) {
+      continue;
+    }
+
+    if (list.items.every(item => {
+      const ownedQuantity = getOwnedQuantity(item.itemId);
+      return ownedQuantity !== null && ownedQuantity >= item.quantity;
+    })) {
+      availableCount++;
+    }
+  }
+
+  return availableCount;
+}
+
 export function QuartermasterApp() {
   const { isAuthenticated, revalidate } = useAuth();
   const { locale, t, tm, compareText } = useLocale();
@@ -222,6 +257,10 @@ export function QuartermasterApp() {
     if (!hasOwnedQuantities) return null;
     return ownedQuantityByItemId[itemId] ?? 0;
   }, [hasOwnedQuantities, ownedQuantityByItemId]);
+
+  const availableHideoutUpgradeCount = useMemo(() => {
+    return countAvailableNextHideoutUpgrades(hideoutLists, cachedHideout, getOwnedQuantity);
+  }, [cachedHideout, getOwnedQuantity, hideoutLists]);
 
   const missingOwnedSources = useMemo(() => {
     const sources: string[] = [];
@@ -447,6 +486,37 @@ export function QuartermasterApp() {
     });
   }, [hideoutToggleState, patchQuartermasterState]);
 
+  const handleSetHideoutTrackingMode = useCallback((
+    mode: 'enable-all' | 'disable-all' | 'next-only',
+  ) => {
+    const moduleLevels = new Map(
+      cachedHideout?.modules.map(module => [module.moduleId, module.currentLevel]) ?? [],
+    );
+    const nextListEnabled = { ...hideoutToggleState.listEnabled };
+
+    for (const list of hideoutLists) {
+      const match = /^hideout_(.+)_(\d+)$/.exec(list.id);
+      if (!match) continue;
+
+      const moduleId = match[1];
+      const level = parseInt(match[2], 10);
+      const shouldEnable = mode === 'enable-all'
+        ? true
+        : mode === 'disable-all'
+          ? false
+          : level === (moduleLevels.get(moduleId) ?? 0) + 1;
+
+      nextListEnabled[listKey(moduleId, level)] = shouldEnable;
+    }
+
+    patchQuartermasterState({
+      hideoutToggles: {
+        ...hideoutToggleState,
+        listEnabled: nextListEnabled,
+      },
+    });
+  }, [cachedHideout, hideoutLists, hideoutToggleState, patchQuartermasterState]);
+
   const handleToggleHideoutItem = useCallback((moduleId: string, level: number, itemId: string) => {
     const ik = itemKey(moduleId, level, itemId);
     const updated: HideoutToggleState = {
@@ -522,6 +592,7 @@ export function QuartermasterApp() {
               isSyncingHideout={isSyncingHideout}
               onToggleHideoutList={handleToggleHideoutList}
               onSetHideoutModuleListsEnabled={handleSetHideoutModuleListsEnabled}
+              onSetHideoutTrackingMode={handleSetHideoutTrackingMode}
               onToggleHideoutItem={handleToggleHideoutItem}
             />
           </AuthGate>
@@ -586,7 +657,11 @@ export function QuartermasterApp() {
   return (
     <div className="quartermaster-container">
       <div className="quartermaster-layout">
-        <Sidebar activeView={activeView} onViewChange={handleViewChange} />
+        <Sidebar
+          activeView={activeView}
+          onViewChange={handleViewChange}
+          hideoutAvailableUpgradeCount={availableHideoutUpgradeCount}
+        />
         <div className="quartermaster-main">
           <GlobalHeader
             plannerResult={plannerResult}

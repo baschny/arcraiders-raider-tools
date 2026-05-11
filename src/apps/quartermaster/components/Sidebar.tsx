@@ -11,9 +11,10 @@ export type ViewId = 'welcome' | 'stash' | 'lists' | 'hideout' | 'in-raid' | 'cr
 interface SidebarProps {
   activeView: ViewId;
   onViewChange: (view: ViewId) => void;
+  hideoutAvailableUpgradeCount?: number;
 }
 
-export function Sidebar({ activeView, onViewChange }: SidebarProps) {
+export function Sidebar({ activeView, onViewChange, hideoutAvailableUpgradeCount = 0 }: SidebarProps) {
   const { t } = useLocale();
   const navItems: { id: ViewId; label: string; icon: React.ReactNode }[] = [
     { id: 'welcome', label: t('quartermaster.nav.welcome'), icon: <Info size={18} /> },
@@ -35,6 +36,14 @@ export function Sidebar({ activeView, onViewChange }: SidebarProps) {
           >
             {item.icon}
             <span>{item.label}</span>
+            {item.id === 'hideout' && hideoutAvailableUpgradeCount > 0 && (
+              <span
+                className="qm-sidebar__badge"
+                title={t('quartermaster.hideout.availableUpgradesTooltip')}
+              >
+                {hideoutAvailableUpgradeCount}
+              </span>
+            )}
           </div>
         ))}
       </nav>

@@ -331,6 +331,14 @@ interface HideoutSource {
   levels: HideoutSourceLevel[];
 }
 
+interface ArctrackerBench {
+  id: string;
+  level: number;
+  assetIndex?: {
+    id?: string;
+  };
+}
+
 interface HideoutModuleOutput {
   id: string;
   name: {
@@ -340,13 +348,58 @@ interface HideoutModuleOutput {
   maxLevel: number;
   levels: {
     level: number;
+    image: string | null;
     requirementItemIds: { itemId: string; quantity: number }[];
   }[];
+}
+
+function loadHideoutBenchImages(scriptDir: string): Map<string, string | null> {
+  const mappingFile = path.resolve(scriptDir, '../../embark-api/data/arctracker-benches.json');
+  const imageSourceDir = path.resolve(scriptDir, '../../embark-api/asset-index/images');
+  const imageDestDir = path.resolve(scriptDir, '../public/images/benches');
+  const imageByBenchLevel = new Map<string, string | null>();
+
+  if (!fs.existsSync(mappingFile)) {
+    console.warn(`Warning: Hideout bench mapping file does not exist: ${mappingFile}`);
+    return imageByBenchLevel;
+  }
+
+  if (!fs.existsSync(imageDestDir)) {
+    fs.mkdirSync(imageDestDir, { recursive: true });
+  }
+
+  const benchRecords = Object.values(
+    JSON.parse(fs.readFileSync(mappingFile, 'utf-8')) as Record<string, ArctrackerBench>,
+  );
+
+  for (const bench of benchRecords) {
+    const assetId = bench.assetIndex?.id;
+    const key = `${bench.id}:${bench.level}`;
+
+    if (!assetId) {
+      imageByBenchLevel.set(key, null);
+      continue;
+    }
+
+    const sourceFile = path.join(imageSourceDir, `${assetId}.png`);
+    if (!fs.existsSync(sourceFile)) {
+      imageByBenchLevel.set(key, null);
+      continue;
+    }
+
+    const fileName = `${bench.id}-tier${bench.level}.png`;
+    const destFile = path.join(imageDestDir, fileName);
+    fs.copyFileSync(sourceFile, destFile);
+    imageByBenchLevel.set(key, `/images/benches/${fileName}`);
+  }
+
+  return imageByBenchLevel;
 }
 
 function generateHideoutData(scriptDir: string, locale: OutputLocale): void {
   const sourceDir = path.resolve(scriptDir, '../../arcraiders-data/hideout');
   const destFile = path.resolve(scriptDir, `../public/data/quartermaster/hideout.${locale}.json`);
+  const benchImages = loadHideoutBenchImages(scriptDir);
 
   if (!fs.existsSync(sourceDir)) {
     console.error(`Error: Hideout source directory does not exist: ${sourceDir}`);
@@ -378,6 +431,7 @@ function generateHideoutData(scriptDir: string, locale: OutputLocale): void {
         maxLevel: source.maxLevel,
         levels: source.levels.map(level => ({
           level: level.level,
+          image: benchImages.get(`${source.id}:${level.level}`) ?? null,
           requirementItemIds: [...level.requirementItemIds]
             .sort((a, b) => a.itemId.localeCompare(b.itemId)),
         })),
