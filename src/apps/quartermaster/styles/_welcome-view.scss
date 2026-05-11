@@ -8,18 +8,21 @@
   margin: 0 auto;
 
   &__intro {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(260px, 340px);
-    gap: $spacing-lg;
-    align-items: end;
     padding-bottom: $spacing-lg;
     border-bottom: 1px solid $border-default;
 
     h2 {
-      margin: 0 0 $spacing-sm;
+      margin: 0;
       font-size: 30px;
       line-height: 1.1;
       color: $text-primary;
+    }
+
+    h3 {
+      margin: $spacing-xs 0 $spacing-md;
+      color: $text-accent;
+      font-size: $font-xl;
+      line-height: 1.2;
     }
 
     p {
@@ -30,17 +33,10 @@
     }
   }
 
-  &__eyebrow {
-    margin-bottom: $spacing-xs !important;
-    color: $text-accent !important;
-    font-size: $font-sm;
-    font-weight: 700;
-    text-transform: uppercase;
-  }
-
-  &__status {
+  &__setup {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: $spacing-sm;
     padding: $spacing-md;
     background: $bg-secondary;
@@ -49,17 +45,41 @@
     color: $text-primary;
     font-size: $font-sm;
     line-height: 1.4;
+  }
+
+  &__setup-status {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
 
     svg {
       color: $text-accent;
       flex-shrink: 0;
     }
+
+    h3 {
+      margin: 0 0 4px;
+      color: $text-primary;
+      font-size: $font-lg;
+    }
+
+    p {
+      margin: 0;
+      color: $text-secondary;
+    }
   }
 
-  &__grid {
+  &__workflow {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: $spacing-md;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr);
+    gap: $spacing-sm;
+    align-items: stretch;
+  }
+
+  &__arrow {
+    align-self: center;
+    color: $text-accent;
+    opacity: 0.8;
   }
 
   &__panel {
@@ -94,9 +114,18 @@
 
 @media (max-width: 920px) {
   .welcome-view {
-    &__intro,
-    &__grid {
+    &__workflow {
       grid-template-columns: 1fr;
+    }
+
+    &__setup {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    &__arrow {
+      justify-self: center;
+      transform: rotate(90deg);
     }
 
     &__panel {
