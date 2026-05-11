@@ -51,6 +51,24 @@ function sortCraftSteps(steps: PlannerResult['craftPlan']['steps']): PlannerResu
   });
 }
 
+function sortWeaponUpgradeSteps(
+  steps: PlannerResult['weaponUpgradePlan']['steps'],
+): PlannerResult['weaponUpgradePlan']['steps'] {
+  return [...steps].sort((a, b) => {
+    const fromA = itemsTierSortKey(a.fromItemId);
+    const fromB = itemsTierSortKey(b.fromItemId);
+    if (fromA !== fromB) return fromA - fromB;
+    if (a.fromItemId !== b.fromItemId) return a.fromItemId.localeCompare(b.fromItemId);
+    return a.toItemId.localeCompare(b.toItemId);
+  });
+}
+
+function itemsTierSortKey(itemId: string): number {
+  const match = itemId.match(/_(i|ii|iii|iv)$/);
+  if (!match) return 0;
+  return ['i', 'ii', 'iii', 'iv'].indexOf(match[1]) + 1;
+}
+
 /**
  * Main planner computation
  * Takes all inputs and produces deterministic PlannerResult
@@ -87,6 +105,7 @@ export function computePlan(
 
   // Step 4: Build sorted craft plan (fully satisfiable only in Craft UI)
   const craftPlan = { steps: sortCraftSteps(greedyResult.craftSteps) };
+  const weaponUpgradePlan = { steps: sortWeaponUpgradeSteps(greedyResult.weaponUpgradeSteps) };
   const recyclePlan = { actions: greedyResult.recycleActions };
 
   // Step 5: Generate loot suggestions (CR-MOD-6.5)
@@ -120,6 +139,7 @@ export function computePlan(
     planRows,
 
     craftPlan,
+    weaponUpgradePlan,
     recyclePlan,
     lootSuggestions,
     inRaidSuggestions,
@@ -134,6 +154,7 @@ export function computePlan(
     totalMissingItemsCount: getMissingItemsCount(deficit),
     totalRecycleActionsCount: recyclePlan.actions.length,
     totalCraftStepsCount: craftPlan.steps.length,
+    totalWeaponUpgradeStepsCount: weaponUpgradePlan.steps.length,
   };
 }
 
@@ -148,6 +169,7 @@ export function createEmptyResult(): PlannerResult {
     remainingIngredientDeficits: {},
     planRows: [],
     craftPlan: { steps: [] },
+    weaponUpgradePlan: { steps: [] },
     recyclePlan: { actions: [] },
     lootSuggestions: { items: [] },
     inRaidSuggestions: { items: [] },
@@ -164,5 +186,6 @@ export function createEmptyResult(): PlannerResult {
     totalMissingItemsCount: 0,
     totalRecycleActionsCount: 0,
     totalCraftStepsCount: 0,
+    totalWeaponUpgradeStepsCount: 0,
   };
 }

@@ -412,6 +412,7 @@
         "mechanical_components": 5,
         "simple_gun_parts": 6
       },
+      "upgradesTo": "anvil_ii",
       "recyclesInto": {
         "mechanical_components": 2,
         "simple_gun_parts": 2
@@ -421,7 +422,9 @@
       },
       "stackSize": 1,
       "value": 5000,
-      "weight": 5
+      "weight": 5,
+      "weaponBaseId": "anvil_i",
+      "weaponTier": 1
     },
     "anvil_ii": {
       "name": {
@@ -438,6 +441,11 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "mechanical_components": 3,
+        "simple_gun_parts": 1
+      },
+      "upgradesTo": "anvil_iii",
       "recyclesInto": {
         "mechanical_components": 3,
         "simple_gun_parts": 3
@@ -447,7 +455,10 @@
       },
       "stackSize": 1,
       "value": 7000,
-      "weight": 5
+      "weight": 5,
+      "upgradesFrom": "anvil_i",
+      "weaponBaseId": "anvil_i",
+      "weaponTier": 2
     },
     "anvil_iii": {
       "name": {
@@ -464,6 +475,11 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "heavy_gun_parts": 1,
+        "mechanical_components": 4
+      },
+      "upgradesTo": "anvil_iv",
       "recyclesInto": {
         "mechanical_components": 4,
         "simple_gun_parts": 4
@@ -473,7 +489,10 @@
       },
       "stackSize": 1,
       "value": 10000,
-      "weight": 5
+      "weight": 5,
+      "upgradesFrom": "anvil_ii",
+      "weaponBaseId": "anvil_i",
+      "weaponTier": 3
     },
     "anvil_iv": {
       "name": {
@@ -490,6 +509,10 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "heavy_gun_parts": 1,
+        "mechanical_components": 4
+      },
       "recyclesInto": {
         "mechanical_components": 5,
         "simple_gun_parts": 5
@@ -499,7 +522,10 @@
       },
       "stackSize": 1,
       "value": 13000,
-      "weight": 5
+      "weight": 5,
+      "upgradesFrom": "anvil_iii",
+      "weaponBaseId": "anvil_i",
+      "weaponTier": 4
     },
     "anvil_splitter": {
       "name": {
@@ -837,6 +863,7 @@
         "mechanical_components": 6,
         "simple_gun_parts": 6
       },
+      "upgradesTo": "arpeggio_ii",
       "recyclesInto": {
         "mechanical_components": 2,
         "simple_gun_parts": 2
@@ -846,7 +873,9 @@
       },
       "stackSize": 1,
       "value": 5500,
-      "weight": 7
+      "weight": 7,
+      "weaponBaseId": "arpeggio_i",
+      "weaponTier": 1
     },
     "arpeggio_ii": {
       "name": {
@@ -863,6 +892,11 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "mechanical_components": 4,
+        "simple_gun_parts": 1
+      },
+      "upgradesTo": "arpeggio_iii",
       "recyclesInto": {
         "mechanical_components": 3,
         "simple_gun_parts": 3
@@ -872,7 +906,10 @@
       },
       "stackSize": 1,
       "value": 8000,
-      "weight": 7
+      "weight": 7,
+      "upgradesFrom": "arpeggio_i",
+      "weaponBaseId": "arpeggio_i",
+      "weaponTier": 2
     },
     "arpeggio_iii": {
       "name": {
@@ -889,6 +926,11 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "mechanical_components": 5,
+        "medium_gun_parts": 1
+      },
+      "upgradesTo": "arpeggio_iv",
       "recyclesInto": {
         "mechanical_components": 4,
         "simple_gun_parts": 4
@@ -898,7 +940,10 @@
       },
       "stackSize": 1,
       "value": 11500,
-      "weight": 7
+      "weight": 7,
+      "upgradesFrom": "arpeggio_ii",
+      "weaponBaseId": "arpeggio_i",
+      "weaponTier": 3
     },
     "arpeggio_iv": {
       "name": {
@@ -915,6 +960,10 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "mechanical_components": 5,
+        "medium_gun_parts": 1
+      },
       "recyclesInto": {
         "mechanical_components": 5,
         "simple_gun_parts": 5
@@ -924,7 +973,10 @@
       },
       "stackSize": 1,
       "value": 15000,
-      "weight": 7
+      "weight": 7,
+      "upgradesFrom": "arpeggio_iii",
+      "weaponBaseId": "arpeggio_i",
+      "weaponTier": 4
     },
     "assessor_matrix": {
       "name": {
@@ -1100,6 +1152,7 @@
         "canister": 3,
         "heavy_gun_parts": 3
       },
+      "upgradesTo": "bettina_ii",
       "recyclesInto": {
         "advanced_mechanical_components": 1,
         "heavy_gun_parts": 2
@@ -1109,7 +1162,9 @@
       },
       "stackSize": 1,
       "value": 8000,
-      "weight": 11
+      "weight": 11,
+      "weaponBaseId": "bettina_i",
+      "weaponTier": 1
     },
     "bettina_ii": {
       "name": {
@@ -1126,6 +1181,11 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "advanced_mechanical_components": 1,
+        "heavy_gun_parts": 2
+      },
+      "upgradesTo": "bettina_iii",
       "recyclesInto": {
         "advanced_mechanical_components": 2,
         "heavy_gun_parts": 2
@@ -1135,7 +1195,10 @@
       },
       "stackSize": 1,
       "value": 11000,
-      "weight": 11
+      "weight": 11,
+      "upgradesFrom": "bettina_i",
+      "weaponBaseId": "bettina_i",
+      "weaponTier": 2
     },
     "bettina_iii": {
       "name": {
@@ -1152,6 +1215,11 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "advanced_mechanical_components": 1,
+        "heavy_gun_parts": 2
+      },
+      "upgradesTo": "bettina_iv",
       "recyclesInto": {
         "advanced_mechanical_components": 2,
         "heavy_gun_parts": 3
@@ -1161,7 +1229,10 @@
       },
       "stackSize": 1,
       "value": 14000,
-      "weight": 11
+      "weight": 11,
+      "upgradesFrom": "bettina_ii",
+      "weaponBaseId": "bettina_i",
+      "weaponTier": 3
     },
     "bettina_iv": {
       "name": {
@@ -1178,6 +1249,10 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "advanced_mechanical_components": 2,
+        "heavy_gun_parts": 2
+      },
       "recyclesInto": {
         "advanced_mechanical_components": 3,
         "heavy_gun_parts": 3
@@ -1187,7 +1262,10 @@
       },
       "stackSize": 1,
       "value": 18000,
-      "weight": 11
+      "weight": 11,
+      "upgradesFrom": "bettina_iii",
+      "weaponBaseId": "bettina_i",
+      "weaponTier": 4
     },
     "bicycle_pump": {
       "name": {
@@ -1434,6 +1512,7 @@
         "light_gun_parts": 3,
         "magnetic_accelerator": 1
       },
+      "upgradesTo": "bobcat_ii",
       "recyclesInto": {
         "advanced_mechanical_components": 2,
         "light_gun_parts": 2
@@ -1443,7 +1522,9 @@
       },
       "stackSize": 1,
       "value": 13000,
-      "weight": 7
+      "weight": 7,
+      "weaponBaseId": "bobcat_i",
+      "weaponTier": 1
     },
     "bobcat_ii": {
       "name": {
@@ -1460,6 +1541,11 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "advanced_mechanical_components": 2,
+        "light_gun_parts": 1
+      },
+      "upgradesTo": "bobcat_iii",
       "recyclesInto": {
         "advanced_mechanical_components": 3,
         "light_gun_parts": 3
@@ -1469,7 +1555,10 @@
       },
       "stackSize": 1,
       "value": 17000,
-      "weight": 7
+      "weight": 7,
+      "upgradesFrom": "bobcat_i",
+      "weaponBaseId": "bobcat_i",
+      "weaponTier": 2
     },
     "bobcat_iii": {
       "name": {
@@ -1486,6 +1575,11 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "advanced_mechanical_components": 2,
+        "light_gun_parts": 3
+      },
+      "upgradesTo": "bobcat_iv",
       "recyclesInto": {
         "advanced_mechanical_components": 4,
         "light_gun_parts": 4
@@ -1495,7 +1589,10 @@
       },
       "stackSize": 1,
       "value": 22000,
-      "weight": 7
+      "weight": 7,
+      "upgradesFrom": "bobcat_ii",
+      "weaponBaseId": "bobcat_i",
+      "weaponTier": 3
     },
     "bobcat_iv": {
       "name": {
@@ -1512,6 +1609,10 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "advanced_mechanical_components": 2,
+        "light_gun_parts": 3
+      },
       "recyclesInto": {
         "advanced_mechanical_components": 5,
         "light_gun_parts": 4
@@ -1521,7 +1622,10 @@
       },
       "stackSize": 1,
       "value": 27000,
-      "weight": 7
+      "weight": 7,
+      "upgradesFrom": "bobcat_iii",
+      "weaponBaseId": "bobcat_i",
+      "weaponTier": 4
     },
     "bombardier_cell": {
       "name": {
@@ -1766,6 +1870,7 @@
         "mechanical_components": 3,
         "simple_gun_parts": 3
       },
+      "upgradesTo": "burletta_ii",
       "recyclesInto": {
         "mechanical_components": 1,
         "simple_gun_parts": 2
@@ -1775,7 +1880,9 @@
       },
       "stackSize": 1,
       "value": 2900,
-      "weight": 4
+      "weight": 4,
+      "weaponBaseId": "burletta_i",
+      "weaponTier": 1
     },
     "burletta_ii": {
       "name": {
@@ -1792,6 +1899,11 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "mechanical_components": 3,
+        "simple_gun_parts": 1
+      },
+      "upgradesTo": "burletta_iii",
       "recyclesInto": {
         "mechanical_components": 2,
         "simple_gun_parts": 2
@@ -1801,7 +1913,10 @@
       },
       "stackSize": 1,
       "value": 5000,
-      "weight": 4
+      "weight": 4,
+      "upgradesFrom": "burletta_i",
+      "weaponBaseId": "burletta_i",
+      "weaponTier": 2
     },
     "burletta_iii": {
       "name": {
@@ -1818,6 +1933,11 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "mechanical_components": 3,
+        "simple_gun_parts": 1
+      },
+      "upgradesTo": "burletta_iv",
       "recyclesInto": {
         "mechanical_components": 3,
         "simple_gun_parts": 3
@@ -1827,7 +1947,10 @@
       },
       "stackSize": 1,
       "value": 7000,
-      "weight": 4
+      "weight": 4,
+      "upgradesFrom": "burletta_ii",
+      "weaponBaseId": "burletta_i",
+      "weaponTier": 3
     },
     "burletta_iv": {
       "name": {
@@ -1844,6 +1967,10 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "light_gun_parts": 1,
+        "mechanical_components": 4
+      },
       "recyclesInto": {
         "mechanical_components": 4,
         "simple_gun_parts": 4
@@ -1853,7 +1980,10 @@
       },
       "stackSize": 1,
       "value": 10000,
-      "weight": 4
+      "weight": 4,
+      "upgradesFrom": "burletta_iii",
+      "weaponBaseId": "burletta_i",
+      "weaponTier": 4
     },
     "burned_arc_circuitry": {
       "name": {
@@ -2046,6 +2176,10 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "advanced_mechanical_components": 1,
+        "medium_gun_parts": 2
+      },
       "recyclesInto": {
         "advanced_mechanical_components": 2,
         "medium_gun_parts": 2
@@ -2070,6 +2204,10 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "advanced_mechanical_components": 1,
+        "medium_gun_parts": 2
+      },
       "recyclesInto": {
         "advanced_mechanical_components": 2,
         "medium_gun_parts": 3
@@ -2094,6 +2232,10 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "advanced_mechanical_components": 2,
+        "medium_gun_parts": 2
+      },
       "recyclesInto": {
         "advanced_mechanical_components": 3,
         "medium_gun_parts": 3
@@ -3603,6 +3745,23 @@
         "Medical"
       ]
     },
+    "expired_security_code": {
+      "name": {
+        "value": "Código de segurança expirado",
+        "originalEn": "Expired Security Code"
+      },
+      "description": "Um código de segurança expirado. Não tem mais utilidade prática.",
+      "icon": "",
+      "rarity": "Common",
+      "type": "Key",
+      "category": "Key",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "stackSize": 1,
+      "value": 10,
+      "weight": 0.25
+    },
     "explosive_compound": {
       "name": {
         "value": "Composto explosivo",
@@ -4030,6 +4189,7 @@
         "metal_parts": 5,
         "rubber_parts": 2
       },
+      "upgradesTo": "ferro_ii",
       "recyclesInto": {
         "metal_parts": 2,
         "rubber_parts": 1
@@ -4039,7 +4199,9 @@
       },
       "stackSize": 1,
       "value": 475,
-      "weight": 8
+      "weight": 8,
+      "weaponBaseId": "ferro_i",
+      "weaponTier": 1
     },
     "ferro_ii": {
       "name": {
@@ -4056,6 +4218,10 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "metal_parts": 7
+      },
+      "upgradesTo": "ferro_iii",
       "recyclesInto": {
         "metal_parts": 4,
         "rubber_parts": 3
@@ -4065,7 +4231,10 @@
       },
       "stackSize": 1,
       "value": 1000,
-      "weight": 8
+      "weight": 8,
+      "upgradesFrom": "ferro_i",
+      "weaponBaseId": "ferro_i",
+      "weaponTier": 2
     },
     "ferro_iii": {
       "name": {
@@ -4082,6 +4251,11 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "metal_parts": 9,
+        "simple_gun_parts": 1
+      },
+      "upgradesTo": "ferro_iv",
       "recyclesInto": {
         "metal_parts": 6,
         "simple_gun_parts": 1
@@ -4091,7 +4265,10 @@
       },
       "stackSize": 1,
       "value": 2000,
-      "weight": 8
+      "weight": 8,
+      "upgradesFrom": "ferro_ii",
+      "weaponBaseId": "ferro_i",
+      "weaponTier": 3
     },
     "ferro_iv": {
       "name": {
@@ -4108,6 +4285,10 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "mechanical_components": 1,
+        "simple_gun_parts": 1
+      },
       "recyclesInto": {
         "mechanical_components": 1,
         "simple_gun_parts": 2
@@ -4117,7 +4298,10 @@
       },
       "stackSize": 1,
       "value": 2900,
-      "weight": 8
+      "weight": 8,
+      "upgradesFrom": "ferro_iii",
+      "weaponBaseId": "ferro_i",
+      "weaponTier": 4
     },
     "fertilizer": {
       "name": {
@@ -4813,6 +4997,7 @@
         "metal_parts": 2,
         "plastic_parts": 5
       },
+      "upgradesTo": "hairpin_ii",
       "recyclesInto": {
         "metal_parts": 2,
         "rubber_parts": 1
@@ -4822,7 +5007,9 @@
       },
       "stackSize": 1,
       "value": 450,
-      "weight": 3
+      "weight": 3,
+      "weaponBaseId": "hairpin_i",
+      "weaponTier": 1
     },
     "hairpin_ii": {
       "name": {
@@ -4839,6 +5026,10 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "metal_parts": 8
+      },
+      "upgradesTo": "hairpin_iii",
       "recyclesInto": {
         "metal_parts": 4,
         "rubber_parts": 3
@@ -4848,7 +5039,10 @@
       },
       "stackSize": 1,
       "value": 1000,
-      "weight": 3
+      "weight": 3,
+      "upgradesFrom": "hairpin_i",
+      "weaponBaseId": "hairpin_i",
+      "weaponTier": 2
     },
     "hairpin_iii": {
       "name": {
@@ -4865,6 +5059,11 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "metal_parts": 9,
+        "simple_gun_parts": 1
+      },
+      "upgradesTo": "hairpin_iv",
       "recyclesInto": {
         "metal_parts": 6,
         "simple_gun_parts": 1
@@ -4874,7 +5073,10 @@
       },
       "stackSize": 1,
       "value": 2000,
-      "weight": 3
+      "weight": 3,
+      "upgradesFrom": "hairpin_ii",
+      "weaponBaseId": "hairpin_i",
+      "weaponTier": 3
     },
     "hairpin_iv": {
       "name": {
@@ -4891,6 +5093,10 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "mechanical_components": 1,
+        "simple_gun_parts": 1
+      },
       "recyclesInto": {
         "mechanical_components": 1,
         "simple_gun_parts": 2
@@ -4900,7 +5106,10 @@
       },
       "stackSize": 1,
       "value": 2900,
-      "weight": 3
+      "weight": 3,
+      "upgradesFrom": "hairpin_iii",
+      "weaponBaseId": "hairpin_i",
+      "weaponTier": 4
     },
     "headphones": {
       "name": {
@@ -5072,6 +5281,23 @@
       "value": 900,
       "weight": 0.15
     },
+    "hidden_bunker_key": {
+      "name": {
+        "value": "Chave de bunker oculto",
+        "originalEn": "Hidden Bunker Key"
+      },
+      "description": "Uma chave improvisada que permite abrir um bunker no porto espacial.",
+      "icon": "",
+      "rarity": "Common",
+      "type": "Key",
+      "category": "Key",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "stackSize": 1,
+      "value": 100,
+      "weight": 0.25
+    },
     "horizontal_grip": {
       "name": {
         "value": "Empunhadura Horizontal",
@@ -5169,6 +5395,7 @@
         "heavy_gun_parts": 3,
         "magnetic_accelerator": 1
       },
+      "upgradesTo": "hullcracker_ii",
       "recyclesInto": {
         "advanced_mechanical_components": 2,
         "heavy_gun_parts": 2
@@ -5178,7 +5405,9 @@
       },
       "stackSize": 1,
       "value": 10000,
-      "weight": 7
+      "weight": 7,
+      "weaponBaseId": "hullcracker_i",
+      "weaponTier": 1
     },
     "hullcracker_ii": {
       "name": {
@@ -5195,6 +5424,11 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "advanced_mechanical_components": 1,
+        "heavy_gun_parts": 2
+      },
+      "upgradesTo": "hullcracker_iii",
       "recyclesInto": {
         "advanced_mechanical_components": 2,
         "heavy_gun_parts": 3
@@ -5204,7 +5438,10 @@
       },
       "stackSize": 1,
       "value": 13000,
-      "weight": 7
+      "weight": 7,
+      "upgradesFrom": "hullcracker_i",
+      "weaponBaseId": "hullcracker_i",
+      "weaponTier": 2
     },
     "hullcracker_iii": {
       "name": {
@@ -5221,6 +5458,11 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "advanced_mechanical_components": 2,
+        "heavy_gun_parts": 1
+      },
+      "upgradesTo": "hullcracker_iv",
       "recyclesInto": {
         "advanced_mechanical_components": 3,
         "heavy_gun_parts": 4
@@ -5230,7 +5472,10 @@
       },
       "stackSize": 1,
       "value": 17000,
-      "weight": 7
+      "weight": 7,
+      "upgradesFrom": "hullcracker_ii",
+      "weaponBaseId": "hullcracker_i",
+      "weaponTier": 3
     },
     "hullcracker_iv": {
       "name": {
@@ -5247,6 +5492,10 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "advanced_mechanical_components": 2,
+        "heavy_gun_parts": 3
+      },
       "recyclesInto": {
         "advanced_mechanical_components": 4,
         "heavy_gun_parts": 5
@@ -5256,7 +5505,10 @@
       },
       "stackSize": 1,
       "value": 22000,
-      "weight": 7
+      "weight": 7,
+      "upgradesFrom": "hullcracker_iii",
+      "weaponBaseId": "hullcracker_i",
+      "weaponTier": 4
     },
     "humidifier": {
       "name": {
@@ -5330,6 +5582,7 @@
         "mechanical_components": 5,
         "simple_gun_parts": 6
       },
+      "upgradesTo": "il_toro_ii",
       "recyclesInto": {
         "mechanical_components": 2,
         "simple_gun_parts": 2
@@ -5339,7 +5592,9 @@
       },
       "stackSize": 1,
       "value": 5000,
-      "weight": 8
+      "weight": 8,
+      "weaponBaseId": "il_toro_i",
+      "weaponTier": 1
     },
     "il_toro_ii": {
       "name": {
@@ -5356,6 +5611,11 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "mechanical_components": 3,
+        "simple_gun_parts": 1
+      },
+      "upgradesTo": "il_toro_iii",
       "recyclesInto": {
         "mechanical_components": 3,
         "simple_gun_parts": 3
@@ -5365,7 +5625,10 @@
       },
       "stackSize": 1,
       "value": 7000,
-      "weight": 8
+      "weight": 8,
+      "upgradesFrom": "il_toro_i",
+      "weaponBaseId": "il_toro_i",
+      "weaponTier": 2
     },
     "il_toro_iii": {
       "name": {
@@ -5382,6 +5645,11 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "heavy_gun_parts": 1,
+        "mechanical_components": 4
+      },
+      "upgradesTo": "il_toro_iv",
       "recyclesInto": {
         "mechanical_components": 4,
         "simple_gun_parts": 4
@@ -5391,7 +5659,10 @@
       },
       "stackSize": 1,
       "value": 10000,
-      "weight": 8
+      "weight": 8,
+      "upgradesFrom": "il_toro_ii",
+      "weaponBaseId": "il_toro_i",
+      "weaponTier": 3
     },
     "il_toro_iv": {
       "name": {
@@ -5408,6 +5679,10 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "heavy_gun_parts": 1,
+        "mechanical_components": 4
+      },
       "recyclesInto": {
         "mechanical_components": 5,
         "simple_gun_parts": 5
@@ -5417,7 +5692,10 @@
       },
       "stackSize": 1,
       "value": 13000,
-      "weight": 8
+      "weight": 8,
+      "upgradesFrom": "il_toro_iii",
+      "weaponBaseId": "il_toro_i",
+      "weaponTier": 4
     },
     "impure_arc_coolant": {
       "name": {
@@ -5633,6 +5911,7 @@
         "metal_parts": 6,
         "rubber_parts": 8
       },
+      "upgradesTo": "kettle_ii",
       "recyclesInto": {
         "metal_parts": 3,
         "rubber_parts": 2
@@ -5642,7 +5921,9 @@
       },
       "stackSize": 1,
       "value": 840,
-      "weight": 7
+      "weight": 7,
+      "weaponBaseId": "kettle_i",
+      "weaponTier": 1
     },
     "kettle_ii": {
       "name": {
@@ -5659,6 +5940,11 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "metal_parts": 8,
+        "plastic_parts": 10
+      },
+      "upgradesTo": "kettle_iii",
       "recyclesInto": {
         "metal_parts": 6,
         "rubber_parts": 6
@@ -5668,7 +5954,10 @@
       },
       "stackSize": 1,
       "value": 2000,
-      "weight": 7
+      "weight": 7,
+      "upgradesFrom": "kettle_i",
+      "weaponBaseId": "kettle_i",
+      "weaponTier": 2
     },
     "kettle_iii": {
       "name": {
@@ -5685,6 +5974,11 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "metal_parts": 10,
+        "simple_gun_parts": 1
+      },
+      "upgradesTo": "kettle_iv",
       "recyclesInto": {
         "metal_parts": 12,
         "simple_gun_parts": 1
@@ -5694,7 +5988,10 @@
       },
       "stackSize": 1,
       "value": 3000,
-      "weight": 7
+      "weight": 7,
+      "upgradesFrom": "kettle_ii",
+      "weaponBaseId": "kettle_i",
+      "weaponTier": 3
     },
     "kettle_iv": {
       "name": {
@@ -5711,6 +6008,10 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "mechanical_components": 3,
+        "simple_gun_parts": 1
+      },
       "recyclesInto": {
         "mechanical_components": 2,
         "simple_gun_parts": 2
@@ -5720,7 +6021,10 @@
       },
       "stackSize": 1,
       "value": 5000,
-      "weight": 7
+      "weight": 7,
+      "upgradesFrom": "kettle_iii",
+      "weaponBaseId": "kettle_i",
+      "weaponTier": 4
     },
     "kinetic_converter": {
       "name": {
@@ -6424,6 +6728,23 @@
       "value": 100,
       "weight": 0.25
     },
+    "marano_market_business_card": {
+      "name": {
+        "value": "Cartão de visita do Mercado Marano",
+        "originalEn": "Marano Market Business Card"
+      },
+      "description": "A escrita rabiscada neste cartão de visita quase obscurece o logotipo do mercado de Marano.",
+      "icon": "",
+      "rarity": "Common",
+      "type": "Trinket",
+      "category": "Trinket",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "stackSize": 1,
+      "value": 100,
+      "weight": 0.5
+    },
     "matriarch_reactor": {
       "name": {
         "value": "Reator da Matriarca",
@@ -7092,6 +7413,7 @@
         "medium_gun_parts": 3,
         "wires": 7
       },
+      "upgradesTo": "osprey_ii",
       "recyclesInto": {
         "advanced_mechanical_components": 1,
         "medium_gun_parts": 2
@@ -7101,7 +7423,9 @@
       },
       "stackSize": 1,
       "value": 7000,
-      "weight": 7
+      "weight": 7,
+      "weaponBaseId": "osprey_i",
+      "weaponTier": 1
     },
     "osprey_ii": {
       "name": {
@@ -7118,6 +7442,11 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "advanced_mechanical_components": 1,
+        "medium_gun_parts": 2
+      },
+      "upgradesTo": "osprey_iii",
       "recyclesInto": {
         "advanced_mechanical_components": 2,
         "medium_gun_parts": 2
@@ -7127,7 +7456,10 @@
       },
       "stackSize": 1,
       "value": 10000,
-      "weight": 7
+      "weight": 7,
+      "upgradesFrom": "osprey_i",
+      "weaponBaseId": "osprey_i",
+      "weaponTier": 2
     },
     "osprey_iii": {
       "name": {
@@ -7144,6 +7476,11 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "advanced_mechanical_components": 1,
+        "medium_gun_parts": 2
+      },
+      "upgradesTo": "osprey_iv",
       "recyclesInto": {
         "advanced_mechanical_components": 2,
         "medium_gun_parts": 3
@@ -7153,7 +7490,10 @@
       },
       "stackSize": 1,
       "value": 13000,
-      "weight": 7
+      "weight": 7,
+      "upgradesFrom": "osprey_ii",
+      "weaponBaseId": "osprey_i",
+      "weaponTier": 3
     },
     "osprey_iv": {
       "name": {
@@ -7170,6 +7510,10 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "advanced_mechanical_components": 2,
+        "medium_gun_parts": 2
+      },
       "recyclesInto": {
         "advanced_mechanical_components": 3,
         "medium_gun_parts": 3
@@ -7179,7 +7523,10 @@
       },
       "stackSize": 1,
       "value": 17000,
-      "weight": 7
+      "weight": 7,
+      "upgradesFrom": "osprey_iii",
+      "weaponBaseId": "osprey_i",
+      "weaponTier": 4
     },
     "padded_stock": {
       "name": {
@@ -7824,6 +8171,22 @@
         "Exodus"
       ]
     },
+    "raider_flag": {
+      "name": {
+        "value": "Bandeira Raider",
+        "originalEn": "Raider Flag"
+      },
+      "description": "Desbotada pelo sol e enrugada, mas ainda assim digna.",
+      "icon": "",
+      "rarity": "Common",
+      "type": "Trinket",
+      "category": "Trinket",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "stackSize": 1,
+      "weight": 0.5
+    },
     "raider_hatch_key": {
       "name": {
         "value": "Chave da Escotilha de Combatente",
@@ -7882,6 +8245,7 @@
         "metal_parts": 16,
         "rubber_parts": 12
       },
+      "upgradesTo": "rattler_ii",
       "recyclesInto": {
         "metal_parts": 8
       },
@@ -7890,7 +8254,9 @@
       },
       "stackSize": 1,
       "value": 1750,
-      "weight": 6
+      "weight": 6,
+      "weaponBaseId": "rattler_i",
+      "weaponTier": 1
     },
     "rattler_ii": {
       "name": {
@@ -7907,6 +8273,11 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "metal_parts": 10,
+        "rubber_parts": 10
+      },
+      "upgradesTo": "rattler_iii",
       "recyclesInto": {
         "metal_parts": 12
       },
@@ -7915,7 +8286,10 @@
       },
       "stackSize": 1,
       "value": 3000,
-      "weight": 6
+      "weight": 6,
+      "upgradesFrom": "rattler_i",
+      "weaponBaseId": "rattler_i",
+      "weaponTier": 2
     },
     "rattler_iii": {
       "name": {
@@ -7932,6 +8306,11 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "mechanical_components": 3,
+        "simple_gun_parts": 1
+      },
+      "upgradesTo": "rattler_iv",
       "recyclesInto": {
         "mechanical_components": 3,
         "simple_gun_parts": 1
@@ -7941,7 +8320,10 @@
       },
       "stackSize": 1,
       "value": 5000,
-      "weight": 6
+      "weight": 6,
+      "upgradesFrom": "rattler_ii",
+      "weaponBaseId": "rattler_i",
+      "weaponTier": 3
     },
     "rattler_iv": {
       "name": {
@@ -7958,6 +8340,10 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "mechanical_components": 3,
+        "simple_gun_parts": 1
+      },
       "recyclesInto": {
         "mechanical_components": 4,
         "simple_gun_parts": 2
@@ -7967,7 +8353,10 @@
       },
       "stackSize": 1,
       "value": 7000,
-      "weight": 6
+      "weight": 6,
+      "upgradesFrom": "rattler_iii",
+      "weaponBaseId": "rattler_i",
+      "weaponTier": 4
     },
     "recorder": {
       "name": {
@@ -8139,6 +8528,7 @@
         "medium_gun_parts": 3,
         "oil": 5
       },
+      "upgradesTo": "renegade_ii",
       "recyclesInto": {
         "advanced_mechanical_components": 1,
         "medium_gun_parts": 2
@@ -8148,7 +8538,9 @@
       },
       "stackSize": 1,
       "value": 7000,
-      "weight": 10
+      "weight": 10,
+      "weaponBaseId": "renegade_i",
+      "weaponTier": 1
     },
     "renegade_ii": {
       "name": {
@@ -8165,6 +8557,11 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "advanced_mechanical_components": 1,
+        "medium_gun_parts": 2
+      },
+      "upgradesTo": "renegade_iii",
       "recyclesInto": {
         "advanced_mechanical_components": 2,
         "medium_gun_parts": 2
@@ -8174,7 +8571,10 @@
       },
       "stackSize": 1,
       "value": 10000,
-      "weight": 10
+      "weight": 10,
+      "upgradesFrom": "renegade_i",
+      "weaponBaseId": "renegade_i",
+      "weaponTier": 2
     },
     "renegade_iii": {
       "name": {
@@ -8191,6 +8591,11 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "advanced_mechanical_components": 1,
+        "medium_gun_parts": 2
+      },
+      "upgradesTo": "renegade_iv",
       "recyclesInto": {
         "advanced_mechanical_components": 2,
         "medium_gun_parts": 3
@@ -8200,7 +8605,10 @@
       },
       "stackSize": 1,
       "value": 13000,
-      "weight": 10
+      "weight": 10,
+      "upgradesFrom": "renegade_ii",
+      "weaponBaseId": "renegade_i",
+      "weaponTier": 3
     },
     "renegade_iv": {
       "name": {
@@ -8217,6 +8625,10 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "advanced_mechanical_components": 2,
+        "medium_gun_parts": 2
+      },
       "recyclesInto": {
         "advanced_mechanical_components": 3,
         "medium_gun_parts": 3
@@ -8226,7 +8638,10 @@
       },
       "stackSize": 1,
       "value": 17000,
-      "weight": 10
+      "weight": 10,
+      "upgradesFrom": "renegade_iii",
+      "weaponBaseId": "renegade_i",
+      "weaponTier": 4
     },
     "resin": {
       "name": {
@@ -8272,10 +8687,10 @@
       "value": 1000,
       "weight": 0.8
     },
-    "riven_tides_classifed_records_keycard": {
+    "riven_tides_classified_records_keycard": {
       "name": {
         "value": "Cartão-chave dos Registros Confidenciais de Riven Tides",
-        "originalEn": "Riven Tides Classifed Records Keycard"
+        "originalEn": "Riven Tides Classified Records Keycard"
       },
       "description": "Destranca uma porta para a sala de Registros Confidenciais no prédio da Autoridade Portuária em Riven Tides.",
       "icon": "",
@@ -9043,6 +9458,23 @@
       "stackSize": 1,
       "value": 100,
       "weight": 0.5
+    },
+    "seed_vault_box_key": {
+      "name": {
+        "value": "Chave da caixa do cofre de sementes",
+        "originalEn": "Seed Vault Box Key"
+      },
+      "description": "Uma chave que abre uma caixa específica no cofre de sementes de Stella Montis.",
+      "icon": "",
+      "rarity": "Common",
+      "type": "Key",
+      "category": "Key",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "stackSize": 1,
+      "value": 100,
+      "weight": 0.25
     },
     "seeker_grenade": {
       "name": {
@@ -10217,6 +10649,7 @@
         "metal_parts": 8,
         "rubber_parts": 4
       },
+      "upgradesTo": "stitcher_ii",
       "recyclesInto": {
         "metal_parts": 3,
         "rubber_parts": 2
@@ -10226,7 +10659,9 @@
       },
       "stackSize": 1,
       "value": 800,
-      "weight": 5
+      "weight": 5,
+      "weaponBaseId": "stitcher_i",
+      "weaponTier": 1
     },
     "stitcher_ii": {
       "name": {
@@ -10243,6 +10678,11 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "metal_parts": 8,
+        "rubber_parts": 12
+      },
+      "upgradesTo": "stitcher_iii",
       "recyclesInto": {
         "metal_parts": 6,
         "rubber_parts": 6
@@ -10252,7 +10692,10 @@
       },
       "stackSize": 1,
       "value": 2000,
-      "weight": 5
+      "weight": 5,
+      "upgradesFrom": "stitcher_i",
+      "weaponBaseId": "stitcher_i",
+      "weaponTier": 2
     },
     "stitcher_iii": {
       "name": {
@@ -10269,6 +10712,11 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "metal_parts": 10,
+        "simple_gun_parts": 1
+      },
+      "upgradesTo": "stitcher_iv",
       "recyclesInto": {
         "metal_parts": 12,
         "simple_gun_parts": 1
@@ -10278,7 +10726,10 @@
       },
       "stackSize": 1,
       "value": 3000,
-      "weight": 5
+      "weight": 5,
+      "upgradesFrom": "stitcher_ii",
+      "weaponBaseId": "stitcher_i",
+      "weaponTier": 3
     },
     "stitcher_iv": {
       "name": {
@@ -10295,6 +10746,10 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "mechanical_components": 3,
+        "simple_gun_parts": 1
+      },
       "recyclesInto": {
         "mechanical_components": 2,
         "simple_gun_parts": 2
@@ -10304,7 +10759,10 @@
       },
       "stackSize": 1,
       "value": 5000,
-      "weight": 5
+      "weight": 5,
+      "upgradesFrom": "stitcher_iii",
+      "weaponBaseId": "stitcher_i",
+      "weaponTier": 4
     },
     "surge_coil": {
       "name": {
@@ -10750,6 +11208,7 @@
         "magnetic_accelerator": 1,
         "medium_gun_parts": 3
       },
+      "upgradesTo": "tempest_ii",
       "recyclesInto": {
         "advanced_mechanical_components": 2,
         "medium_gun_parts": 2
@@ -10759,7 +11218,9 @@
       },
       "stackSize": 1,
       "value": 13000,
-      "weight": 11
+      "weight": 11,
+      "weaponBaseId": "tempest_i",
+      "weaponTier": 1
     },
     "tempest_ii": {
       "name": {
@@ -10776,6 +11237,11 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "advanced_mechanical_components": 2,
+        "medium_gun_parts": 1
+      },
+      "upgradesTo": "tempest_iii",
       "recyclesInto": {
         "advanced_mechanical_components": 3,
         "medium_gun_parts": 3
@@ -10785,7 +11251,10 @@
       },
       "stackSize": 1,
       "value": 17000,
-      "weight": 11
+      "weight": 11,
+      "upgradesFrom": "tempest_i",
+      "weaponBaseId": "tempest_i",
+      "weaponTier": 2
     },
     "tempest_iii": {
       "name": {
@@ -10802,6 +11271,11 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "advanced_mechanical_components": 2,
+        "medium_gun_parts": 3
+      },
+      "upgradesTo": "tempest_iv",
       "recyclesInto": {
         "advanced_mechanical_components": 4,
         "medium_gun_parts": 4
@@ -10811,7 +11285,10 @@
       },
       "stackSize": 1,
       "value": 22000,
-      "weight": 11
+      "weight": 11,
+      "upgradesFrom": "tempest_ii",
+      "weaponBaseId": "tempest_i",
+      "weaponTier": 3
     },
     "tempest_iv": {
       "name": {
@@ -10828,6 +11305,10 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "advanced_mechanical_components": 2,
+        "medium_gun_parts": 3
+      },
       "recyclesInto": {
         "advanced_mechanical_components": 5,
         "medium_gun_parts": 4
@@ -10837,7 +11318,10 @@
       },
       "stackSize": 1,
       "value": 27000,
-      "weight": 11
+      "weight": 11,
+      "upgradesFrom": "tempest_iii",
+      "weaponBaseId": "tempest_i",
+      "weaponTier": 4
     },
     "thermostat": {
       "name": {
@@ -10988,6 +11472,7 @@
         "medium_gun_parts": 3,
         "steel_spring": 6
       },
+      "upgradesTo": "torrente_ii",
       "recyclesInto": {
         "advanced_mechanical_components": 1,
         "medium_gun_parts": 2
@@ -10997,7 +11482,9 @@
       },
       "stackSize": 1,
       "value": 7000,
-      "weight": 12
+      "weight": 12,
+      "weaponBaseId": "torrente_i",
+      "weaponTier": 1
     },
     "torrente_ii": {
       "name": {
@@ -11014,6 +11501,11 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "advanced_mechanical_components": 1,
+        "medium_gun_parts": 2
+      },
+      "upgradesTo": "torrente_iii",
       "recyclesInto": {
         "advanced_mechanical_components": 2,
         "medium_gun_parts": 2
@@ -11023,7 +11515,10 @@
       },
       "stackSize": 1,
       "value": 10000,
-      "weight": 12
+      "weight": 12,
+      "upgradesFrom": "torrente_i",
+      "weaponBaseId": "torrente_i",
+      "weaponTier": 2
     },
     "torrente_iii": {
       "name": {
@@ -11040,6 +11535,11 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "advanced_mechanical_components": 1,
+        "medium_gun_parts": 2
+      },
+      "upgradesTo": "torrente_iv",
       "recyclesInto": {
         "advanced_mechanical_components": 2,
         "medium_gun_parts": 3
@@ -11049,7 +11549,10 @@
       },
       "stackSize": 1,
       "value": 13000,
-      "weight": 12
+      "weight": 12,
+      "upgradesFrom": "torrente_ii",
+      "weaponBaseId": "torrente_i",
+      "weaponTier": 3
     },
     "torrente_iv": {
       "name": {
@@ -11066,6 +11569,10 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "advanced_mechanical_components": 2,
+        "medium_gun_parts": 2
+      },
       "recyclesInto": {
         "advanced_mechanical_components": 3,
         "medium_gun_parts": 3
@@ -11075,7 +11582,10 @@
       },
       "stackSize": 1,
       "value": 17000,
-      "weight": 12
+      "weight": 12,
+      "upgradesFrom": "torrente_iii",
+      "weaponBaseId": "torrente_i",
+      "weaponTier": 4
     },
     "trailblazer": {
       "name": {
@@ -11335,6 +11845,7 @@
         "magnet": 5,
         "medium_gun_parts": 3
       },
+      "upgradesTo": "venator_ii",
       "recyclesInto": {
         "advanced_mechanical_components": 1,
         "medium_gun_parts": 2
@@ -11344,7 +11855,9 @@
       },
       "stackSize": 1,
       "value": 7000,
-      "weight": 5
+      "weight": 5,
+      "weaponBaseId": "venator_i",
+      "weaponTier": 1
     },
     "venator_ii": {
       "name": {
@@ -11361,6 +11874,11 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "advanced_mechanical_components": 1,
+        "medium_gun_parts": 2
+      },
+      "upgradesTo": "venator_iii",
       "recyclesInto": {
         "advanced_mechanical_components": 2,
         "medium_gun_parts": 2
@@ -11370,7 +11888,10 @@
       },
       "stackSize": 1,
       "value": 10000,
-      "weight": 5
+      "weight": 5,
+      "upgradesFrom": "venator_i",
+      "weaponBaseId": "venator_i",
+      "weaponTier": 2
     },
     "venator_iii": {
       "name": {
@@ -11387,6 +11908,11 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "advanced_mechanical_components": 1,
+        "medium_gun_parts": 2
+      },
+      "upgradesTo": "venator_iv",
       "recyclesInto": {
         "advanced_mechanical_components": 2,
         "medium_gun_parts": 3
@@ -11396,7 +11922,10 @@
       },
       "stackSize": 1,
       "value": 13000,
-      "weight": 5
+      "weight": 5,
+      "upgradesFrom": "venator_ii",
+      "weaponBaseId": "venator_i",
+      "weaponTier": 3
     },
     "venator_iv": {
       "name": {
@@ -11413,6 +11942,10 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "advanced_mechanical_components": 2,
+        "medium_gun_parts": 2
+      },
       "recyclesInto": {
         "advanced_mechanical_components": 3,
         "medium_gun_parts": 3
@@ -11422,7 +11955,10 @@
       },
       "stackSize": 1,
       "value": 17000,
-      "weight": 5
+      "weight": 5,
+      "upgradesFrom": "venator_iii",
+      "weaponBaseId": "venator_i",
+      "weaponTier": 4
     },
     "vertical_grip_i": {
       "name": {
@@ -11659,6 +12195,7 @@
         "heavy_gun_parts": 3,
         "magnetic_accelerator": 1
       },
+      "upgradesTo": "vulcano_ii",
       "recyclesInto": {
         "advanced_mechanical_components": 2,
         "heavy_gun_parts": 2
@@ -11668,7 +12205,9 @@
       },
       "stackSize": 1,
       "value": 10000,
-      "weight": 8
+      "weight": 8,
+      "weaponBaseId": "vulcano_i",
+      "weaponTier": 1
     },
     "vulcano_ii": {
       "name": {
@@ -11685,6 +12224,11 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "advanced_mechanical_components": 1,
+        "heavy_gun_parts": 2
+      },
+      "upgradesTo": "vulcano_iii",
       "recyclesInto": {
         "advanced_mechanical_components": 2,
         "heavy_gun_parts": 3
@@ -11694,7 +12238,10 @@
       },
       "stackSize": 1,
       "value": 13000,
-      "weight": 9.25
+      "weight": 9.25,
+      "upgradesFrom": "vulcano_i",
+      "weaponBaseId": "vulcano_i",
+      "weaponTier": 2
     },
     "vulcano_iii": {
       "name": {
@@ -11711,6 +12258,11 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "advanced_mechanical_components": 2,
+        "heavy_gun_parts": 1
+      },
+      "upgradesTo": "vulcano_iv",
       "recyclesInto": {
         "advanced_mechanical_components": 3,
         "heavy_gun_parts": 4
@@ -11720,7 +12272,10 @@
       },
       "stackSize": 1,
       "value": 17000,
-      "weight": 8
+      "weight": 8,
+      "upgradesFrom": "vulcano_ii",
+      "weaponBaseId": "vulcano_i",
+      "weaponTier": 3
     },
     "vulcano_iv": {
       "name": {
@@ -11737,6 +12292,10 @@
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
+      "upgradeCost": {
+        "advanced_mechanical_components": 2,
+        "heavy_gun_parts": 3
+      },
       "recyclesInto": {
         "advanced_mechanical_components": 4,
         "heavy_gun_parts": 5
@@ -11746,7 +12305,10 @@
       },
       "stackSize": 1,
       "value": 22000,
-      "weight": 8
+      "weight": 8,
+      "upgradesFrom": "vulcano_iii",
+      "weaponBaseId": "vulcano_i",
+      "weaponTier": 4
     },
     "wasp_driver": {
       "name": {

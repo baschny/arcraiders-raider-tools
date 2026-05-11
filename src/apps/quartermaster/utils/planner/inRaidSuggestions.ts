@@ -38,6 +38,12 @@ function computeRecipeRelevantSet(itemsMap: ItemsMap): Set<ItemId> {
         relevant.add(ingId);
       }
     }
+    if (item.upgradeCost && Object.keys(item.upgradeCost).length > 0) {
+      relevant.add(itemId);
+      for (const ingId of Object.keys(item.upgradeCost)) {
+        relevant.add(ingId);
+      }
+    }
   }
 
   return relevant;
@@ -240,7 +246,8 @@ export function generateInRaidSuggestions(
           for (const [targetId, targetReq] of Object.entries(requiredFinal)) {
             if (targetReq <= 0) continue;
             const targetItem = itemsMap[targetId];
-            if (targetItem?.recipe && yieldId in targetItem.recipe) {
+            if ((targetItem?.recipe && yieldId in targetItem.recipe)
+              || (targetItem?.upgradeCost && yieldId in targetItem.upgradeCost)) {
               impacted.add(targetId);
             }
           }
@@ -253,7 +260,8 @@ export function generateInRaidSuggestions(
           for (const [targetId, targetReq] of Object.entries(requiredFinal)) {
             if (targetReq <= 0) continue;
             const targetItem = itemsMap[targetId];
-            if (targetItem?.recipe && yieldId in targetItem.recipe) {
+            if ((targetItem?.recipe && yieldId in targetItem.recipe)
+              || (targetItem?.upgradeCost && yieldId in targetItem.upgradeCost)) {
               impacted.add(targetId);
             }
           }
@@ -266,7 +274,8 @@ export function generateInRaidSuggestions(
       for (const [targetId, targetReq] of Object.entries(requiredFinal)) {
         if (targetReq <= 0) continue;
         const targetItem = itemsMap[targetId];
-        if (targetItem?.recipe && suggestion.itemId in targetItem.recipe) {
+        if ((targetItem?.recipe && suggestion.itemId in targetItem.recipe)
+          || (targetItem?.upgradeCost && suggestion.itemId in targetItem.upgradeCost)) {
           impacted.add(targetId);
         }
       }

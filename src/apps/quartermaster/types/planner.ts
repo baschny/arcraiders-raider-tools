@@ -68,6 +68,21 @@ export interface CraftPlan {
   steps: CraftStep[];
 }
 
+// Weapon Upgrade Plan (CR-010)
+export interface WeaponUpgradeStep {
+  benchId: BenchId;
+  fromItemId: ItemId;
+  toItemId: ItemId;
+  qty: Qty;
+  upgradeCost: Record<ItemId, Qty>;
+  stationLevelRequired: 1 | 2 | 3;
+  isFullySatisfiable: boolean;
+}
+
+export interface WeaponUpgradePlan {
+  steps: WeaponUpgradeStep[];
+}
+
 // Recycling Plan (section 6.8.5)
 export interface RecycleActionReason {
   listId: string;
@@ -142,6 +157,7 @@ export interface PlannerResult {
   planRows: PlanRow[];
 
   craftPlan: CraftPlan;
+  weaponUpgradePlan: WeaponUpgradePlan;
   recyclePlan: RecyclePlan;
   lootSuggestions: LootSuggestionList;
   inRaidSuggestions: InRaidSuggestionList;
@@ -158,6 +174,7 @@ export interface PlannerResult {
   totalMissingItemsCount: number;
   totalRecycleActionsCount: number;
   totalCraftStepsCount: number;
+  totalWeaponUpgradeStepsCount: number;
 }
 
 // Advisory badge for legacy planner recommendations (section 7.3.2)

@@ -34,6 +34,11 @@ export interface PlannerItem {
   craftQuantity: number;
 
   recipe?: Record<string, number>;
+  upgradeCost?: Record<string, number>;
+  upgradesTo?: string;
+  upgradesFrom?: string;
+  weaponBaseId?: string;
+  weaponTier?: 1 | 2 | 3 | 4;
   recyclesInto?: Record<string, number>;
   salvagesInto?: Record<string, number>;
 

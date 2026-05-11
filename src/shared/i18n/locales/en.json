@@ -357,7 +357,8 @@
       "status": {
         "owned": "Owned {owned}",
         "haveRequired": "Have {owned} / {required} required for {source}",
-        "needMore": "Need {missing} more for {source} ({required} required, {owned} owned)"
+        "needMore": "Need {missing} more for {source} ({required} required, {owned} owned)",
+        "upgradeBase": "Planned as weapon upgrade base"
       },
       "columns": {
         "icon": "Icon",
@@ -400,6 +401,8 @@
       "step1": "Step 1: Recycle First",
       "step2": "Step 2: Craft Items",
       "craftItems": "Craft Items",
+      "gunsmithCraft": "Gunsmith: Craft",
+      "gunsmithUpgradeWeapons": "Gunsmith: Upgrade Weapons",
       "empty": "No crafting needed. All required items are in your stash!",
       "blueprintsSynced": "Blueprints synced: {timestamp}",
       "directInputRecycleWarning": "Warning: also needed directly for {listName} -> {targetItemName}",
@@ -411,7 +414,10 @@
         "why": "Why",
         "craftTimes": "Craft Times",
         "totalOutput": "Total Output",
-        "inputsNeeded": "Inputs Needed"
+        "inputsNeeded": "Inputs Needed",
+        "upgradeFrom": "Upgrade From",
+        "upgradeTo": "Upgrade To",
+        "qtyToUpgrade": "Qty to Upgrade"
       },
       "blueprintUnlockCount": "{unlocked}/{total} unlocked"
     },

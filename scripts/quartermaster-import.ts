@@ -53,6 +53,8 @@ interface SourceItem {
   blueprintLocked?: boolean;
   craftQuantity?: number;
   recipe?: Record<string, number>;
+  upgradeCost?: Record<string, number>;
+  upgradesTo?: string;
   recyclesInto?: Record<string, number>;
   salvagesInto?: Record<string, number>;
   stackSize?: number;
@@ -78,6 +80,11 @@ interface PlannerItem {
   blueprintLocked: boolean;
   craftQuantity: number;
   recipe?: Record<string, number>;
+  upgradeCost?: Record<string, number>;
+  upgradesTo?: string;
+  upgradesFrom?: string;
+  weaponBaseId?: string;
+  weaponTier?: 1 | 2 | 3 | 4;
   recyclesInto?: Record<string, number>;
   salvagesInto?: Record<string, number>;
   stackSize: number;
@@ -258,6 +265,8 @@ function processItem(source: SourceItem, locale: OutputLocale): { id: string; it
     blueprintLocked,
     craftQuantity,
     ...(source.recipe && Object.keys(source.recipe).length > 0 && { recipe: sortObjectKeys(source.recipe) }),
+    ...(source.upgradeCost && Object.keys(source.upgradeCost).length > 0 && { upgradeCost: sortObjectKeys(source.upgradeCost) }),
+    ...(source.upgradesTo && { upgradesTo: source.upgradesTo }),
     ...(source.recyclesInto && Object.keys(source.recyclesInto).length > 0 && { recyclesInto: sortObjectKeys(source.recyclesInto) }),
     ...(source.salvagesInto && Object.keys(source.salvagesInto).length > 0 && { salvagesInto: sortObjectKeys(source.salvagesInto) }),
     stackSize,
@@ -267,6 +276,43 @@ function processItem(source: SourceItem, locale: OutputLocale): { id: string; it
   };
 
   return { id: source.id, item };
+}
+
+function addWeaponChainMetadata(items: Record<string, PlannerItem>): void {
+  const upgradesFromByTarget = new Map<string, string>();
+
+  for (const [itemId, item] of Object.entries(items)) {
+    if (item.upgradesTo && items[item.upgradesTo]) {
+      upgradesFromByTarget.set(item.upgradesTo, itemId);
+    }
+  }
+
+  for (const [targetId, sourceId] of upgradesFromByTarget.entries()) {
+    items[targetId].upgradesFrom = sourceId;
+  }
+
+  const roots = Object.keys(items)
+    .filter((itemId) => {
+      const item = items[itemId];
+      return (item.upgradesTo || item.upgradesFrom) && !item.upgradesFrom;
+    })
+    .sort();
+
+  for (const rootId of roots) {
+    let currentId: string | undefined = rootId;
+    let tier = 1;
+    const visited = new Set<string>();
+
+    while (currentId && items[currentId] && !visited.has(currentId)) {
+      visited.add(currentId);
+      items[currentId].weaponBaseId = rootId;
+      if (tier >= 1 && tier <= 4) {
+        items[currentId].weaponTier = tier as 1 | 2 | 3 | 4;
+      }
+      currentId = items[currentId].upgradesTo;
+      tier++;
+    }
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -402,6 +448,8 @@ function main(): void {
         process.exit(1);
       }
     }
+
+    addWeaponChainMetadata(items);
 
     const sortedItems = sortObjectKeys(items);
     const output: OutputData = {

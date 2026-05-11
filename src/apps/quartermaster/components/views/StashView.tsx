@@ -51,6 +51,9 @@ export function StashView({
   const recycleItemIds = useMemo(() => {
     return new Set(plannerResult.recyclePlan.actions.map(a => a.srcItemId));
   }, [plannerResult.recyclePlan]);
+  const upgradeBaseItemIds = useMemo(() => {
+    return new Set(plannerResult.weaponUpgradePlan.steps.map(step => step.fromItemId));
+  }, [plannerResult.weaponUpgradePlan]);
 
   // Get unique categories from owned items
   const categories = useMemo(() => {
@@ -288,6 +291,7 @@ export function StashView({
               
               const planRow = planRowsByItemId.get(ownedItem.itemId);
               const toRecycle = recycleItemIds.has(ownedItem.itemId);
+              const isUpgradeBase = upgradeBaseItemIds.has(ownedItem.itemId);
               const required = planRow?.required ?? 0;
               const missing = planRow?.missing ?? 0;
               const listNames = getRequirementListNames(ownedItem.itemId);
@@ -356,6 +360,11 @@ export function StashView({
                       {toRecycle && (
                         <span className="stash-view__indicator stash-view__indicator--recycle">
                           {t('quartermaster.status.recycle')}{recycleReason ? ` · ${recycleReason}` : ''}
+                        </span>
+                      )}
+                      {isUpgradeBase && (
+                        <span className="stash-view__indicator stash-view__indicator--have">
+                          {t('quartermaster.stash.status.upgradeBase')}
                         </span>
                       )}
                       {planRow?.isUncraftable && (

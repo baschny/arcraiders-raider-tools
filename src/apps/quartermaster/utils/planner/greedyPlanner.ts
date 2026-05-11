@@ -14,6 +14,7 @@ import type {
   ItemId,
   Qty,
   CraftStep,
+  WeaponUpgradeStep,
   RecycleAction,
   RecycleActionReason,
   RecycleSourcePriorityGroup,
@@ -31,6 +32,7 @@ import { NON_RECYCLABLE_CATEGORIES } from '../../types/item';
 
 export interface GreedyPlanResult {
   craftSteps: CraftStep[];
+  weaponUpgradeSteps: WeaponUpgradeStep[];
   recycleActions: RecycleAction[];
   satisfiableTargets: Set<ItemId>;
   /** Ingredient deficits remaining after planning (what the planner couldn't source) */
@@ -68,6 +70,9 @@ interface PlannerState {
 
   /** Accumulated craft steps keyed by itemId */
   craftSteps: Map<ItemId, CraftStep>;
+
+  /** Accumulated weapon upgrade steps keyed by fromItemId->toItemId */
+  weaponUpgradeSteps: Map<string, WeaponUpgradeStep>;
 
   /** Accumulated recycle actions */
   recycleActions: RecycleAction[];
@@ -112,6 +117,12 @@ function clonePlannerState(state: PlannerState): PlannerState {
     ),
     craftSteps: new Map(
       Array.from(state.craftSteps.entries()).map(([itemId, step]) => [itemId, { ...step }]),
+    ),
+    weaponUpgradeSteps: new Map(
+      Array.from(state.weaponUpgradeSteps.entries()).map(([key, step]) => [
+        key,
+        { ...step, upgradeCost: { ...step.upgradeCost } },
+      ]),
     ),
     recycleActions: state.recycleActions.map((action) => ({
       ...action,
@@ -424,6 +435,27 @@ function recordCraftStep(state: PlannerState, itemId: ItemId, totalOutput: Qty):
   }
 }
 
+function recordWeaponUpgradeStep(state: PlannerState, fromItemId: ItemId, toItemId: ItemId, qty: Qty): void {
+  const toItem = state.itemsMap[toItemId];
+  if (!toItem?.upgradeCost) return;
+
+  const key = `${fromItemId}->${toItemId}`;
+  const existing = state.weaponUpgradeSteps.get(key);
+  if (existing) {
+    existing.qty += qty;
+  } else {
+    state.weaponUpgradeSteps.set(key, {
+      benchId: 'weapon_bench',
+      fromItemId,
+      toItemId,
+      qty,
+      upgradeCost: { ...toItem.upgradeCost },
+      stationLevelRequired: toItem.stationLevelRequired,
+      isFullySatisfiable: true,
+    });
+  }
+}
+
 interface PendingCraft {
   itemId: ItemId;
   totalOutput: Qty;
@@ -641,6 +673,274 @@ function getRecipeDeficitsFromAvail(
   return deficits;
 }
 
+function getUpgradeFamilyIds(state: PlannerState, targetId: ItemId): ItemId[] {
+  const target = state.itemsMap[targetId];
+  if (!target?.weaponBaseId || !target.weaponTier) return [];
+
+  return Object.keys(state.itemsMap)
+    .filter((itemId) => {
+      const item = state.itemsMap[itemId];
+      return item.weaponBaseId === target.weaponBaseId
+        && (item.weaponTier ?? 0) >= 1
+        && (item.weaponTier ?? 0) <= target.weaponTier!;
+    })
+    .sort((a, b) => {
+      const tierA = state.itemsMap[a]?.weaponTier ?? 0;
+      const tierB = state.itemsMap[b]?.weaponTier ?? 0;
+      if (tierA !== tierB) return tierA - tierB;
+      return a.localeCompare(b);
+    });
+}
+
+function getWeaponRootId(state: PlannerState, targetId: ItemId): ItemId | null {
+  const target = state.itemsMap[targetId];
+  if (!target?.weaponBaseId || !target.weaponTier || target.weaponTier <= 1) return null;
+  const root = state.itemsMap[target.weaponBaseId];
+  return root ? target.weaponBaseId : null;
+}
+
+function buildUpgradePath(state: PlannerState, fromItemId: ItemId, targetId: ItemId): ItemId[] | null {
+  const path: ItemId[] = [];
+  let currentId = fromItemId;
+  const visited = new Set<ItemId>([currentId]);
+
+  while (currentId !== targetId) {
+    const nextId = state.itemsMap[currentId]?.upgradesTo;
+    if (!nextId || !state.itemsMap[nextId] || visited.has(nextId)) return null;
+    path.push(nextId);
+    visited.add(nextId);
+    currentId = nextId;
+  }
+
+  return path;
+}
+
+function buildNeededFromCost(state: PlannerState, cost: Record<ItemId, Qty>, qty: Qty): Record<ItemId, Qty> {
+  const needed: Record<ItemId, Qty> = {};
+
+  for (const [itemId, qtyPerUpgrade] of Object.entries(cost)) {
+    const totalNeeded = qtyPerUpgrade * qty;
+    const have = getAvail(state, itemId);
+    if (have < totalNeeded) {
+      needed[itemId] = totalNeeded - have;
+    }
+  }
+
+  return needed;
+}
+
+function consumeCost(state: PlannerState, cost: Record<ItemId, Qty>, qty: Qty): void {
+  for (const [itemId, qtyPerUpgrade] of Object.entries(cost)) {
+    consumeAvail(state, itemId, qtyPerUpgrade * qty);
+  }
+}
+
+function satisfyMaterialNeeds(
+  state: PlannerState,
+  targetId: ItemId,
+  needed: Record<ItemId, Qty>,
+  requiredSourcesByItemId: Record<ItemId, RequiredSource[]>,
+  chainPrefix: ItemId[],
+): boolean {
+  const directRecycleReasonFactory = buildReasonFactory(
+    state,
+    targetId,
+    requiredSourcesByItemId,
+    Object.fromEntries(Object.keys(needed).map((itemId) => [itemId, [...chainPrefix, itemId]])),
+  );
+
+  if (Object.keys(needed).length > 0) {
+    recycleForNeeded(state, needed, directRecycleReasonFactory, {
+      allowDirectRecipeInputSources: false,
+    });
+  }
+
+  const stillMissing: Record<ItemId, Qty> = {};
+  for (const [itemId, qty] of Object.entries(needed)) {
+    const have = getAvail(state, itemId);
+    if (have < qty) {
+      stillMissing[itemId] = qty - have;
+    }
+  }
+
+  let missingSub: Record<ItemId, Qty> = {};
+  let pendingCrafts: PendingCraft[] = [];
+  if (Object.keys(stillMissing).length > 0) {
+    const phaseCResult = phaseC(state, stillMissing);
+    missingSub = phaseCResult.missingSub;
+    pendingCrafts = phaseCResult.pendingCrafts;
+  }
+
+  const pendingCraftItemIds = new Set(pendingCrafts.map((craft) => craft.itemId));
+  const missingWithoutPendingCrafts = Object.fromEntries(
+    Object.entries(stillMissing).filter(([itemId]) => !pendingCraftItemIds.has(itemId)),
+  );
+  if (Object.keys(missingWithoutPendingCrafts).length > 0) {
+    recycleForNeeded(state, missingWithoutPendingCrafts, directRecycleReasonFactory);
+  }
+
+  const subIngredientChains: Record<ItemId, ItemId[]> = {};
+  for (const craft of pendingCrafts) {
+    for (const subId of Object.keys(craft.recipe)) {
+      subIngredientChains[subId] = [...chainPrefix, craft.itemId, subId];
+    }
+  }
+  const subRecycleReasonFactory = buildReasonFactory(
+    state,
+    targetId,
+    requiredSourcesByItemId,
+    subIngredientChains,
+  );
+
+  if (Object.keys(missingSub).length > 0) {
+    recycleForNeeded(state, missingSub, subRecycleReasonFactory);
+  }
+
+  const pendingResult = applyPendingCraftsIfPossible(state, pendingCrafts);
+  if (!pendingResult.ok) return false;
+  state.avail = pendingResult.avail;
+
+  for (const craft of pendingCrafts) {
+    recordCraftStep(state, craft.itemId, craft.totalOutput);
+  }
+
+  for (const [itemId, qty] of Object.entries(needed)) {
+    if (getAvail(state, itemId) < qty) return false;
+  }
+
+  return true;
+}
+
+function craftItemFullyForUpgrade(
+  state: PlannerState,
+  itemId: ItemId,
+  qty: Qty,
+  requiredSourcesByItemId: Record<ItemId, RequiredSource[]>,
+  targetId: ItemId,
+): boolean {
+  const item = state.itemsMap[itemId];
+  if (!item) return false;
+
+  const { ok, reason } = canCraft(item, state.benchLevels, state.unlockedBlueprintItemIds, itemId);
+  if (!ok) {
+    if (reason === 'blueprint_locked') {
+      state.blueprintBlockers.add(itemId);
+    } else if (reason === 'insufficient_bench_level' || reason === 'missing_bench') {
+      state.benchBlockers.add(itemId);
+    }
+    return false;
+  }
+
+  if (item.recipe![itemId] !== undefined) {
+    state.cycleDiagnostics.push({ itemId });
+    return false;
+  }
+
+  const craftTimes = Math.ceil(qty / item.craftQuantity);
+  const totalOutput = craftTimes * item.craftQuantity;
+  const needed = getRecipeDeficitsFromAvail(state, item.recipe!, craftTimes);
+
+  if (!satisfyMaterialNeeds(state, targetId, needed, requiredSourcesByItemId, [targetId, itemId])) {
+    return false;
+  }
+
+  for (const [ingId, qtyPerCraft] of Object.entries(item.recipe!)) {
+    const totalNeeded = qtyPerCraft * craftTimes;
+    if (getAvail(state, ingId) < totalNeeded) return false;
+  }
+
+  for (const [ingId, qtyPerCraft] of Object.entries(item.recipe!)) {
+    consumeAvail(state, ingId, qtyPerCraft * craftTimes);
+  }
+  addAvail(state, itemId, totalOutput);
+  recordCraftStep(state, itemId, totalOutput);
+
+  return getAvail(state, itemId) >= qty;
+}
+
+function applyUpgradePath(
+  state: PlannerState,
+  fromItemId: ItemId,
+  targetId: ItemId,
+  qty: Qty,
+  requiredSourcesByItemId: Record<ItemId, RequiredSource[]>,
+): boolean {
+  const path = buildUpgradePath(state, fromItemId, targetId);
+  if (!path || path.length === 0) return false;
+
+  let currentId = fromItemId;
+  for (const toItemId of path) {
+    const toItem = state.itemsMap[toItemId];
+    if (!toItem?.upgradeCost) return false;
+    if ((state.benchLevels.weapon_bench ?? 3) < toItem.stationLevelRequired) {
+      state.benchBlockers.add(toItemId);
+      return false;
+    }
+
+    const needed = buildNeededFromCost(state, toItem.upgradeCost, qty);
+    if (!satisfyMaterialNeeds(state, targetId, needed, requiredSourcesByItemId, [targetId, toItemId])) {
+      return false;
+    }
+
+    for (const [matId, matQty] of Object.entries(toItem.upgradeCost)) {
+      if (getAvail(state, matId) < matQty * qty) return false;
+    }
+    if (getAvail(state, currentId) < qty) return false;
+
+    consumeAvail(state, currentId, qty);
+    consumeCost(state, toItem.upgradeCost, qty);
+    addAvail(state, toItemId, qty);
+    recordWeaponUpgradeStep(state, currentId, toItemId, qty);
+    currentId = toItemId;
+  }
+
+  return true;
+}
+
+function planWeaponUpgradeTarget(
+  state: PlannerState,
+  targetId: ItemId,
+  need: Qty,
+  requiredSourcesByItemId: Record<ItemId, RequiredSource[]>,
+): boolean {
+  const target = state.itemsMap[targetId];
+  const rootId = getWeaponRootId(state, targetId);
+  if (!target?.weaponTier || !rootId) return false;
+
+  let remaining = need;
+  const familyIds = getUpgradeFamilyIds(state, targetId);
+  const lowerTierIds = familyIds
+    .filter((itemId) => itemId !== targetId && (state.itemsMap[itemId]?.weaponTier ?? 0) < target.weaponTier!)
+    .sort((a, b) => {
+      const tierA = state.itemsMap[a]?.weaponTier ?? 0;
+      const tierB = state.itemsMap[b]?.weaponTier ?? 0;
+      if (tierA !== tierB) return tierB - tierA;
+      return a.localeCompare(b);
+    });
+
+  for (const lowerTierId of lowerTierIds) {
+    if (remaining <= 0) break;
+    const usable = Math.min(remaining, getAvail(state, lowerTierId));
+    if (usable <= 0) continue;
+    if (!applyUpgradePath(state, lowerTierId, targetId, usable, requiredSourcesByItemId)) {
+      return false;
+    }
+    remaining -= usable;
+  }
+
+  while (remaining > 0) {
+    if (!craftItemFullyForUpgrade(state, rootId, 1, requiredSourcesByItemId, targetId)) {
+      return false;
+    }
+    if (!applyUpgradePath(state, rootId, targetId, 1, requiredSourcesByItemId)) {
+      return false;
+    }
+    remaining -= 1;
+  }
+
+  return true;
+}
+
 // ---------------------------------------------------------------------------
 // Main entry point
 // ---------------------------------------------------------------------------
@@ -702,6 +1002,7 @@ export function runGreedyPlanner(
     activeDirectRecipeInputSet: directRecipeInputPriority.inputSet,
     directRecipeInputWarnings: directRecipeInputPriority.warnings,
     craftSteps: new Map(),
+    weaponUpgradeSteps: new Map(),
     recycleActions: [],
     satisfiableTargets: new Set(),
     cycleDiagnostics: [],
@@ -732,6 +1033,23 @@ export function runGreedyPlanner(
     if (!targetItem) continue;
 
     const trialState = clonePlannerState(state);
+
+    if (targetItem.weaponTier && targetItem.weaponTier > 1 && targetItem.weaponBaseId) {
+      const fullySatisfiable = planWeaponUpgradeTarget(
+        trialState,
+        targetId,
+        need,
+        requiredSourcesByItemId,
+      );
+
+      if (fullySatisfiable) {
+        trialState.satisfiableTargets.add(targetId);
+        state = trialState;
+      } else {
+        mergePlannerDiagnostics(state, trialState);
+      }
+      continue;
+    }
 
     // Phase A: Direct Craft
     const phaseAResult = phaseA(trialState, targetId, need);
@@ -898,6 +1216,40 @@ export function runGreedyPlanner(
     const item = itemsMap[targetId];
     if (!item) continue;
 
+    if (item.weaponTier && item.weaponTier > 1 && item.weaponBaseId) {
+      const root = itemsMap[item.weaponBaseId];
+      if (root?.recipe) {
+        const rootHave = getAvail(state, item.weaponBaseId);
+        const rootNeed = Math.max(0, need - rootHave);
+        if (rootNeed > 0) {
+          const craftTimes = Math.ceil(rootNeed / root.craftQuantity);
+          for (const [ingId, qtyPerCraft] of Object.entries(root.recipe)) {
+            const totalNeeded = qtyPerCraft * craftTimes;
+            const have = getAvail(state, ingId);
+            if (have < totalNeeded) {
+              remainingDeficits[ingId] = (remainingDeficits[ingId] ?? 0) + (totalNeeded - have);
+            }
+          }
+        }
+      }
+
+      const familyIds = getUpgradeFamilyIds(state, targetId);
+      const targetTier = item.weaponTier;
+      for (const stepTargetId of familyIds) {
+        const stepTarget = itemsMap[stepTargetId];
+        if (!stepTarget?.upgradeCost || !stepTarget.weaponTier || stepTarget.weaponTier > targetTier) continue;
+        if (stepTarget.weaponTier <= 1) continue;
+        for (const [matId, qtyPerUpgrade] of Object.entries(stepTarget.upgradeCost)) {
+          const totalNeeded = qtyPerUpgrade * need;
+          const have = getAvail(state, matId);
+          if (have < totalNeeded) {
+            remainingDeficits[matId] = (remainingDeficits[matId] ?? 0) + (totalNeeded - have);
+          }
+        }
+      }
+      continue;
+    }
+
     if (!item.recipe || !item.craftBench) {
       // Base material, not craftable – deficit is the item itself
       const d = need - getAvail(state, targetId);
@@ -918,6 +1270,7 @@ export function runGreedyPlanner(
 
   return {
     craftSteps: Array.from(state.craftSteps.values()),
+    weaponUpgradeSteps: Array.from(state.weaponUpgradeSteps.values()),
     recycleActions: state.recycleActions,
     satisfiableTargets: state.satisfiableTargets,
     remainingDeficits,

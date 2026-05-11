@@ -477,6 +477,7 @@ export function QuartermasterApp() {
             <CraftingView
               itemsMap={itemsMap}
               craftPlan={plannerResult.craftPlan}
+              weaponUpgradePlan={plannerResult.weaponUpgradePlan}
               recyclePlan={plannerResult.recyclePlan}
               plannerResult={plannerResult}
               itemInsights={itemInsights}

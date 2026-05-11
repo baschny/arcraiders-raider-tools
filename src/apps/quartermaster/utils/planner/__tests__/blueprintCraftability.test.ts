@@ -592,3 +592,323 @@ describe('quartermaster blueprint craftability', () => {
     });
   });
 });
+
+const weaponItemsMap: ItemsMap = {
+  mechanical_components: item({
+    id: 'mechanical_components',
+    name: 'Mechanical Components',
+    stackSize: 50,
+  }),
+  simple_gun_parts: item({
+    id: 'simple_gun_parts',
+    name: 'Simple Gun Parts',
+    stackSize: 50,
+  }),
+  heavy_gun_parts: item({
+    id: 'heavy_gun_parts',
+    name: 'Heavy Gun Parts',
+    stackSize: 50,
+  }),
+  metal_parts: item({
+    id: 'metal_parts',
+    name: 'Metal Parts',
+    stackSize: 50,
+  }),
+  steel_spring: item({
+    id: 'steel_spring',
+    name: 'Steel Spring',
+    stackSize: 50,
+  }),
+  rusted_tools: item({
+    id: 'rusted_tools',
+    name: 'Rusted Tools',
+    category: 'Recyclable',
+    recyclesInto: {
+      heavy_gun_parts: 1,
+      metal_parts: 8,
+    },
+  }),
+  heavy_gun_parts_bundle: item({
+    id: 'heavy_gun_parts_bundle',
+    name: 'Heavy Gun Parts Bundle',
+    craftBench: 'refiner',
+    recipe: {
+      metal_parts: 2,
+      steel_spring: 1,
+    },
+  }),
+  anvil_i: item({
+    id: 'anvil_i',
+    name: 'Anvil I',
+    type: 'Hand Cannon',
+    category: 'Weapon',
+    craftBench: 'weapon_bench',
+    blueprintLocked: true,
+    recipe: {
+      mechanical_components: 5,
+      simple_gun_parts: 6,
+    },
+    upgradesTo: 'anvil_ii',
+    weaponBaseId: 'anvil_i',
+    weaponTier: 1,
+  }),
+  anvil_ii: item({
+    id: 'anvil_ii',
+    name: 'Anvil II',
+    type: 'Hand Cannon',
+    category: 'Weapon',
+    craftBench: 'weapon_bench',
+    upgradeCost: {
+      mechanical_components: 3,
+      simple_gun_parts: 1,
+    },
+    upgradesFrom: 'anvil_i',
+    upgradesTo: 'anvil_iii',
+    weaponBaseId: 'anvil_i',
+    weaponTier: 2,
+  }),
+  anvil_iii: item({
+    id: 'anvil_iii',
+    name: 'Anvil III',
+    type: 'Hand Cannon',
+    category: 'Weapon',
+    craftBench: 'weapon_bench',
+    upgradeCost: {
+      heavy_gun_parts: 1,
+      mechanical_components: 4,
+    },
+    upgradesFrom: 'anvil_ii',
+    upgradesTo: 'anvil_iv',
+    weaponBaseId: 'anvil_i',
+    weaponTier: 3,
+  }),
+  anvil_iv: item({
+    id: 'anvil_iv',
+    name: 'Anvil IV',
+    type: 'Hand Cannon',
+    category: 'Weapon',
+    craftBench: 'weapon_bench',
+    upgradeCost: {
+      heavy_gun_parts: 1,
+      mechanical_components: 4,
+    },
+    upgradesFrom: 'anvil_iii',
+    weaponBaseId: 'anvil_i',
+    weaponTier: 4,
+  }),
+};
+
+const anvilIvList: StoredList[] = [{
+  id: 'weapons',
+  name: 'Weapons',
+  type: 'user',
+  isEnabled: true,
+  items: [{ itemId: 'anvil_iv', quantity: 1, isEnabled: true }],
+}];
+
+describe('quartermaster weapon upgrade planning', () => {
+  it('crafts tier I and upgrades through each tier for a higher-tier weapon from scratch', () => {
+    const result = computePlan(
+      weaponItemsMap,
+      anvilIvList,
+      [
+        { itemId: 'mechanical_components', quantity: 16 },
+        { itemId: 'simple_gun_parts', quantity: 7 },
+        { itemId: 'heavy_gun_parts', quantity: 2 },
+      ],
+      benchLevels,
+      new Set(['anvil_i']),
+    );
+
+    expect(result.satisfiableTargets.has('anvil_iv')).toBe(true);
+    expect(result.craftPlan.steps.map((step) => ({ itemId: step.itemId, qty: step.qty }))).toEqual([
+      { itemId: 'anvil_i', qty: 1 },
+    ]);
+    expect(result.weaponUpgradePlan.steps.map((step) => ({
+      fromItemId: step.fromItemId,
+      toItemId: step.toItemId,
+      qty: step.qty,
+    }))).toEqual([
+      { fromItemId: 'anvil_i', toItemId: 'anvil_ii', qty: 1 },
+      { fromItemId: 'anvil_ii', toItemId: 'anvil_iii', qty: 1 },
+      { fromItemId: 'anvil_iii', toItemId: 'anvil_iv', qty: 1 },
+    ]);
+  });
+
+  it('uses an owned lower-tier weapon as the upgrade base without requiring the tier I blueprint', () => {
+    const result = computePlan(
+      weaponItemsMap,
+      anvilIvList,
+      [
+        { itemId: 'anvil_ii', quantity: 1 },
+        { itemId: 'mechanical_components', quantity: 8 },
+        { itemId: 'heavy_gun_parts', quantity: 2 },
+      ],
+      benchLevels,
+      new Set(),
+    );
+
+    expect(result.blockers.blueprintBlockers).toEqual([]);
+    expect(result.craftPlan.steps).toEqual([]);
+    expect(result.weaponUpgradePlan.steps.map((step) => ({
+      fromItemId: step.fromItemId,
+      toItemId: step.toItemId,
+      qty: step.qty,
+    }))).toEqual([
+      { fromItemId: 'anvil_ii', toItemId: 'anvil_iii', qty: 1 },
+      { fromItemId: 'anvil_iii', toItemId: 'anvil_iv', qty: 1 },
+    ]);
+  });
+
+  it('consumes multiple owned lower-tier weapons highest-tier first', () => {
+    const result = computePlan(
+      weaponItemsMap,
+      [{
+        ...anvilIvList[0],
+        items: [{ itemId: 'anvil_iv', quantity: 2, isEnabled: true }],
+      }],
+      [
+        { itemId: 'anvil_i', quantity: 1 },
+        { itemId: 'anvil_iii', quantity: 1 },
+        { itemId: 'mechanical_components', quantity: 15 },
+        { itemId: 'simple_gun_parts', quantity: 1 },
+        { itemId: 'heavy_gun_parts', quantity: 3 },
+      ],
+      benchLevels,
+      new Set(),
+    );
+
+    expect(result.satisfiableTargets.has('anvil_iv')).toBe(true);
+    expect(result.weaponUpgradePlan.steps.map((step) => ({
+      fromItemId: step.fromItemId,
+      toItemId: step.toItemId,
+      qty: step.qty,
+    }))).toEqual([
+      { fromItemId: 'anvil_i', toItemId: 'anvil_ii', qty: 1 },
+      { fromItemId: 'anvil_ii', toItemId: 'anvil_iii', qty: 1 },
+      { fromItemId: 'anvil_iii', toItemId: 'anvil_iv', qty: 2 },
+    ]);
+  });
+
+  it('can craft missing upgrade-cost materials before upgrading', () => {
+    const result = computePlan(
+      {
+        ...weaponItemsMap,
+        heavy_gun_parts: item({
+          id: 'heavy_gun_parts',
+          name: 'Heavy Gun Parts',
+          craftBench: 'refiner',
+          recipe: {
+            metal_parts: 2,
+            steel_spring: 1,
+          },
+        }),
+      },
+      anvilIvList,
+      [
+        { itemId: 'anvil_ii', quantity: 1 },
+        { itemId: 'mechanical_components', quantity: 8 },
+        { itemId: 'metal_parts', quantity: 4 },
+        { itemId: 'steel_spring', quantity: 2 },
+      ],
+      benchLevels,
+      new Set(),
+    );
+
+    expect(result.satisfiableTargets.has('anvil_iv')).toBe(true);
+    expect(result.craftPlan.steps.map((step) => step.itemId)).toEqual(['heavy_gun_parts']);
+    expect(result.weaponUpgradePlan.steps.map((step) => step.toItemId)).toEqual(['anvil_iii', 'anvil_iv']);
+  });
+
+  it('can recycle for missing upgrade-cost materials', () => {
+    const result = computePlan(
+      weaponItemsMap,
+      anvilIvList,
+      [
+        { itemId: 'anvil_ii', quantity: 1 },
+        { itemId: 'mechanical_components', quantity: 8 },
+        { itemId: 'heavy_gun_parts', quantity: 2 },
+      ],
+      benchLevels,
+      new Set(),
+    );
+
+    expect(result.recyclePlan.actions).toEqual([]);
+
+    const recycleResult = computePlan(
+      weaponItemsMap,
+      anvilIvList,
+      [
+        { itemId: 'anvil_ii', quantity: 1 },
+        { itemId: 'mechanical_components', quantity: 8 },
+        { itemId: 'heavy_gun_parts', quantity: 1 },
+        { itemId: 'rusted_tools', quantity: 1 },
+      ],
+      benchLevels,
+      new Set(),
+    );
+
+    expect(recycleResult.recyclePlan.actions.map((action) => action.srcItemId)).toEqual(['rusted_tools']);
+    expect(recycleResult.satisfiableTargets.has('anvil_iv')).toBe(true);
+  });
+
+  it('blocks crafting tier I from scratch when the blueprint is locked', () => {
+    const result = computePlan(
+      weaponItemsMap,
+      anvilIvList,
+      [
+        { itemId: 'mechanical_components', quantity: 16 },
+        { itemId: 'simple_gun_parts', quantity: 7 },
+        { itemId: 'heavy_gun_parts', quantity: 2 },
+      ],
+      benchLevels,
+      new Set(),
+    );
+
+    expect(result.blockers.blueprintBlockers).toEqual(['anvil_i']);
+    expect(result.weaponUpgradePlan.steps).toEqual([]);
+    expect(result.satisfiableTargets.has('anvil_iv')).toBe(false);
+  });
+
+  it('blocks upgrades when the Gunsmith level is insufficient', () => {
+    const result = computePlan(
+      {
+        ...weaponItemsMap,
+        anvil_iii: {
+          ...weaponItemsMap.anvil_iii,
+          stationLevelRequired: 3,
+        },
+      },
+      anvilIvList,
+      [
+        { itemId: 'anvil_ii', quantity: 1 },
+        { itemId: 'mechanical_components', quantity: 8 },
+        { itemId: 'heavy_gun_parts', quantity: 2 },
+      ],
+      {
+        ...benchLevels,
+        weapon_bench: 2,
+      },
+      new Set(),
+    );
+
+    expect(result.blockers.benchBlockers).toEqual(['anvil_iii']);
+    expect(result.weaponUpgradePlan.steps).toEqual([]);
+  });
+
+  it('keeps In Raid weapon suggestions to the exact required tier', () => {
+    const result = computePlan(
+      weaponItemsMap,
+      anvilIvList,
+      [],
+      benchLevels,
+      new Set(),
+    );
+
+    const suggestionIds = result.inRaidSuggestions.items.map((suggestion) => suggestion.itemId);
+    expect(suggestionIds).toContain('anvil_iv');
+    expect(suggestionIds).not.toContain('anvil_i');
+    expect(suggestionIds).not.toContain('anvil_ii');
+    expect(suggestionIds).not.toContain('anvil_iii');
+  });
+});
