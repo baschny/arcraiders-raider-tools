@@ -1051,6 +1051,23 @@ export function runGreedyPlanner(
       continue;
     }
 
+    if (!targetItem.recipe || !targetItem.craftBench) {
+      const directTargetRecycleReasonFactory = buildReasonFactory(
+        trialState,
+        targetId,
+        requiredSourcesByItemId,
+        { [targetId]: [targetId] },
+      );
+
+      recycleForNeeded(trialState, { [targetId]: need }, directTargetRecycleReasonFactory);
+
+      if (getAvail(trialState, targetId) >= (requiredFinal[targetId] ?? 0)) {
+        trialState.satisfiableTargets.add(targetId);
+        state = trialState;
+      }
+      continue;
+    }
+
     // Phase A: Direct Craft
     const phaseAResult = phaseA(trialState, targetId, need);
     if (!phaseAResult) {

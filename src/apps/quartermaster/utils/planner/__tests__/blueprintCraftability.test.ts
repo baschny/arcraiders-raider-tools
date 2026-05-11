@@ -178,6 +178,53 @@ const itemsMap: ItemsMap = {
       crude_explosives: 2,
     },
   }),
+  fabric: item({
+    id: 'fabric',
+    name: 'Fabric',
+    category: 'Basic Material',
+    stackSize: 50,
+  }),
+  durable_cloth: item({
+    id: 'durable_cloth',
+    name: 'Durable Cloth',
+    category: 'Refined Material',
+    craftBench: 'refiner',
+    recipe: {
+      fabric: 14,
+    },
+    recyclesInto: {
+      fabric: 6,
+    },
+    stackSize: 5,
+    value: 640,
+  }),
+  arc_thermo_lining: item({
+    id: 'arc_thermo_lining',
+    name: 'ARC Thermo Lining',
+    category: 'Recyclable',
+    recyclesInto: {
+      fabric: 16,
+    },
+    value: 1000,
+  }),
+  torn_blanket: item({
+    id: 'torn_blanket',
+    name: 'Torn Blanket',
+    category: 'Recyclable',
+    recyclesInto: {
+      fabric: 12,
+    },
+    value: 640,
+  }),
+  tattered_clothes: item({
+    id: 'tattered_clothes',
+    name: 'Tattered Clothes',
+    category: 'Recyclable',
+    recyclesInto: {
+      fabric: 11,
+    },
+    value: 640,
+  }),
   damaged_heat_sink: item({
     id: 'damaged_heat_sink',
     name: 'Damaged Heat Sink',
@@ -381,6 +428,58 @@ describe('quartermaster blueprint craftability', () => {
       itemId: step.itemId,
       qty: step.qty,
     }))).toEqual([{ itemId: 'medium_ammo', qty: 200 }]);
+  });
+
+  it('prioritizes recycling for direct hideout material targets before later crafted upgrades', () => {
+    const result = computePlan(
+      itemsMap,
+      [
+        {
+          id: 'hideout_med_station_1',
+          name: 'Medical Lab Unlock',
+          type: 'hideout',
+          isEnabled: true,
+          items: [{ itemId: 'fabric', quantity: 50, isEnabled: true }],
+        },
+        {
+          id: 'hideout_med_station_2',
+          name: 'Medical Lab Tier 2',
+          type: 'hideout',
+          isEnabled: true,
+          items: [{ itemId: 'durable_cloth', quantity: 5, isEnabled: true }],
+        },
+      ],
+      [
+        { itemId: 'fabric', quantity: 20 },
+        { itemId: 'arc_thermo_lining', quantity: 1 },
+        { itemId: 'torn_blanket', quantity: 2 },
+        { itemId: 'tattered_clothes', quantity: 1 },
+      ],
+      benchLevels,
+    );
+
+    expect(result.recyclePlan.actions[0]).toMatchObject({
+      srcItemId: 'arc_thermo_lining',
+      reasons: [
+        expect.objectContaining({
+          listId: 'hideout_med_station_1',
+          targetItemId: 'fabric',
+          producedItemId: 'fabric',
+        }),
+      ],
+    });
+    expect(result.recyclePlan.actions[1]).toMatchObject({
+      srcItemId: 'torn_blanket',
+      qtyToRecycle: 2,
+      reasons: [
+        expect.objectContaining({
+          listId: 'hideout_med_station_1',
+          targetItemId: 'fabric',
+          producedItemId: 'fabric',
+        }),
+      ],
+    });
+    expect(result.satisfiableTargets.has('fabric')).toBe(true);
   });
 
   it('suggests the partial craft amount available from current base materials', () => {
