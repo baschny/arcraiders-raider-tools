@@ -7,7 +7,7 @@
         "originalEn": "Acoustic Guitar"
       },
       "description": "一把可彈奏的木吉他，用來吸引ARC的注意並讓其他掠奪者刮目相看。",
-      "icon": "https://cdn.arctracker.io/items/acoustic_guitar.png",
+      "icon": "https://cdn.arctracker.io/items/v2/acoustic_guitar.png",
       "rarity": "Legendary",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -31,7 +31,7 @@
         "originalEn": "Adrenaline Shot"
       },
       "description": "一種血清,能完全恢復體力並暫時提升體力自然恢復速度。",
-      "icon": "https://cdn.arctracker.io/items/adrenaline_shot.png",
+      "icon": "https://cdn.arctracker.io/items/v2/adrenaline_shot.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -61,7 +61,7 @@
         "originalEn": "Advanced ARC Powercell"
       },
       "description": "從特定ARC敵人掉落的非常珍貴資源。",
-      "icon": "https://cdn.arctracker.io/items/advanced_arc_powercell.png",
+      "icon": "https://cdn.arctracker.io/items/v2/advanced_arc_powercell.png",
       "rarity": "Rare",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -87,7 +87,7 @@
         "originalEn": "Advanced Electrical Components"
       },
       "description": "用來製作多種物品。可回收成製作材料。用來製作:戰術第3型(防禦),戰鬥第3型(側擊),戰鬥第3型(積極),搜刮第3型(謹慎),戰術第3型(治療)",
-      "icon": "https://cdn.arctracker.io/items/advanced_electrical_components.png",
+      "icon": "https://cdn.arctracker.io/items/v2/advanced_electrical_components.png",
       "rarity": "Rare",
       "type": "Refined Material",
       "category": "Refined Material",
@@ -119,7 +119,7 @@
         "originalEn": "Advanced Mechanical Components"
       },
       "description": "用來製作進階武器。可回收成製作材料。用來製作:奔流,獵人,魚鷹,叛將,貝蒂娜",
-      "icon": "https://cdn.arctracker.io/items/advanced_mechanical_components.png",
+      "icon": "https://cdn.arctracker.io/items/v2/advanced_mechanical_components.png",
       "rarity": "Rare",
       "type": "Refined Material",
       "category": "Refined Material",
@@ -151,7 +151,7 @@
         "originalEn": "Agave"
       },
       "description": "一片龍舌蘭葉。可用於恢復少量生命值。",
-      "icon": "https://cdn.arctracker.io/items/agave.png",
+      "icon": "https://cdn.arctracker.io/items/v2/agave.png",
       "rarity": "Uncommon",
       "type": "Nature",
       "category": "Nature",
@@ -177,7 +177,7 @@
         "originalEn": "Agave Juice"
       },
       "description": "一種能暫時提升耐力回復速度的混合液，但使用時會消耗少量的生命值。",
-      "icon": "https://cdn.arctracker.io/items/agave_juice.png",
+      "icon": "https://cdn.arctracker.io/items/v2/agave_juice.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -201,7 +201,7 @@
         "originalEn": "Air Freshener"
       },
       "description": "可能值幾枚硬幣。",
-      "icon": "https://cdn.arctracker.io/items/air_freshener.png",
+      "icon": "https://cdn.arctracker.io/items/v2/air_freshener.png",
       "rarity": "Uncommon",
       "type": "Trinket",
       "category": "Trinket",
@@ -221,7 +221,7 @@
         "originalEn": "Alarm Clock"
       },
       "description": "可回收成製作材料。",
-      "icon": "https://cdn.arctracker.io/items/alarm_clock.png",
+      "icon": "https://cdn.arctracker.io/items/v2/alarm_clock.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -248,7 +248,7 @@
         "originalEn": "Alien Duck"
       },
       "description": "離家很遠很遠。可以投擲來製造噪音。",
-      "icon": "https://cdn.arctracker.io/items/alien_duck.png",
+      "icon": "https://cdn.arctracker.io/items/v2/alien_duck.png",
       "rarity": "Uncommon",
       "type": "Trinket",
       "category": "Trinket",
@@ -265,7 +265,7 @@
         "originalEn": "Ancient Fort Security Code"
       },
       "description": "解鎖藍門上鎖大門所需的四個安全密碼之一。在古堡找到。",
-      "icon": "https://cdn.arctracker.io/items/security_code.png",
+      "icon": "https://cdn.arctracker.io/items/v2/ancient_fort_security_code.png",
       "rarity": "Common",
       "type": "Key",
       "category": "Key",
@@ -282,7 +282,7 @@
         "originalEn": "Angled Grip I"
       },
       "description": "稍微降低水平後座力。與以下物品相容:水壺,碎甲者,獵人,公牛,暴風雨",
-      "icon": "https://cdn.arctracker.io/items/angled_grip_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/angled_grip_i.png",
       "rarity": "Common",
       "type": "Modification",
       "category": "Modification",
@@ -310,7 +310,7 @@
         "originalEn": "Angled Grip II"
       },
       "description": "中度降低水平後座力。與以下物品相容:水壺,碎甲者,獵人,公牛,暴風雨",
-      "icon": "https://cdn.arctracker.io/items/angled_grip_ii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/angled_grip_ii.png",
       "rarity": "Uncommon",
       "type": "Modification",
       "category": "Modification",
@@ -339,7 +339,7 @@
         "originalEn": "Angled Grip III"
       },
       "description": "大幅減少水平後座力。相容武器：琶音、鐵衛、獵人、公牛、縫合者",
-      "icon": "https://cdn.arctracker.io/items/angled_grip_iii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/angled_grip_iii.png",
       "rarity": "Rare",
       "type": "Modification",
       "category": "Modification",
@@ -368,7 +368,7 @@
         "originalEn": "Antiseptic"
       },
       "description": "用來製作醫療物資。可回收成化學物質。用來製作:滅菌繃帶,維生素噴霧,維生素注射",
-      "icon": "https://cdn.arctracker.io/items/antiseptic.png",
+      "icon": "https://cdn.arctracker.io/items/v2/antiseptic.png",
       "rarity": "Rare",
       "type": "Refined Material",
       "category": "Refined Material",
@@ -399,7 +399,7 @@
         "originalEn": "Anvil I"
       },
       "description": "單動式手砲，具有高傷害與爆頭傷害，但操控較慢。",
-      "icon": "https://cdn.arctracker.io/items/anvil.png",
+      "icon": "https://cdn.arctracker.io/items/v2/anvil_i.png",
       "rarity": "Uncommon",
       "type": "Hand Cannon",
       "category": "Weapon",
@@ -432,7 +432,7 @@
         "originalEn": "Anvil II"
       },
       "description": "單動式手砲，具有高傷害與爆頭傷害，但操控較慢。",
-      "icon": "https://cdn.arctracker.io/items/anvil.png",
+      "icon": "https://cdn.arctracker.io/items/v2/anvil_ii.png",
       "rarity": "Uncommon",
       "type": "Hand Cannon",
       "category": "Weapon",
@@ -466,7 +466,7 @@
         "originalEn": "Anvil III"
       },
       "description": "單動式手砲，具有高傷害與爆頭傷害，但操控較慢。",
-      "icon": "https://cdn.arctracker.io/items/anvil.png",
+      "icon": "https://cdn.arctracker.io/items/v2/anvil_iii.png",
       "rarity": "Uncommon",
       "type": "Hand Cannon",
       "category": "Weapon",
@@ -500,7 +500,7 @@
         "originalEn": "Anvil IV"
       },
       "description": "單動式手砲，具有高傷害與爆頭傷害，但操控較慢。",
-      "icon": "https://cdn.arctracker.io/items/anvil.png",
+      "icon": "https://cdn.arctracker.io/items/v2/anvil_iv.png",
       "rarity": "Uncommon",
       "type": "Hand Cannon",
       "category": "Weapon",
@@ -533,7 +533,7 @@
         "originalEn": "Anvil Splitter"
       },
       "description": "鐵砧的科技模組，將其子彈替換為分裂成4個較弱彈體的子彈。",
-      "icon": "https://cdn.arctracker.io/items/anvil_splitter.png",
+      "icon": "https://cdn.arctracker.io/items/v2/anvil_splitter.png",
       "rarity": "Legendary",
       "type": "Modification",
       "category": "Modification",
@@ -557,7 +557,7 @@
         "originalEn": "Aphelion"
       },
       "description": "由族長反應爐供電的實驗性ARC光束武器。",
-      "icon": "https://cdn.arctracker.io/items/aphelion.png",
+      "icon": "https://cdn.arctracker.io/items/v2/aphelion.png",
       "rarity": "Legendary",
       "type": "Special",
       "category": "Weapon",
@@ -588,7 +588,7 @@
         "originalEn": "Apricot"
       },
       "description": "陽光成熟的杏桃。可食用以恢復少量耐力。",
-      "icon": "https://cdn.arctracker.io/items/apricot.png",
+      "icon": "https://cdn.arctracker.io/items/v2/apricot.png",
       "rarity": "Uncommon",
       "type": "Nature",
       "category": "Nature",
@@ -614,7 +614,7 @@
         "originalEn": "ARC Alloy"
       },
       "description": "從ARC敵人或活動中獲得，或透過回收特定ARC零件取得。用於製作組件。可製作：輕型護盾、ARC動力核心、ARC電路",
-      "icon": "https://cdn.arctracker.io/items/arc_alloy.png",
+      "icon": "https://cdn.arctracker.io/items/v2/arc_alloy.png",
       "rarity": "Uncommon",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -640,7 +640,7 @@
         "originalEn": "ARC Circuitry"
       },
       "description": "從ARC敵人或活動中獲得。用於製作組件。可回收為ARC合金。可製作：中型護盾、能量棒",
-      "icon": "https://cdn.arctracker.io/items/arc_circuitry.png",
+      "icon": "https://cdn.arctracker.io/items/v2/arc_circuitry.png",
       "rarity": "Rare",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -670,7 +670,7 @@
         "originalEn": "ARC Coolant"
       },
       "description": "從ARC敵人或活動中獲得。可回收為化學品。",
-      "icon": "https://cdn.arctracker.io/items/arc_coolant.png",
+      "icon": "https://cdn.arctracker.io/items/v2/arc_coolant.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -696,7 +696,7 @@
         "originalEn": "ARC Flex Rubber"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/arc_flex_rubber.png",
+      "icon": "https://cdn.arctracker.io/items/v2/arc_flex_rubber.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -722,7 +722,7 @@
         "originalEn": "ARC Motion Core"
       },
       "description": "從ARC敵人或活動中獲得。用於製作組件。可回收為ARC合金。可製作：磁力加速器",
-      "icon": "https://cdn.arctracker.io/items/arc_motion_core.png",
+      "icon": "https://cdn.arctracker.io/items/v2/arc_motion_core.png",
       "rarity": "Rare",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -752,7 +752,7 @@
         "originalEn": "ARC Performance Steel"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/arc_performance_steel.png",
+      "icon": "https://cdn.arctracker.io/items/v2/arc_performance_steel.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -778,7 +778,7 @@
         "originalEn": "ARC Powercell"
       },
       "description": "從所有 ARC 敵人身上掉落的珍貴資源。用於製作：護盾充能器。可用於修復護盾。",
-      "icon": "https://cdn.arctracker.io/items/arc_powercell.png",
+      "icon": "https://cdn.arctracker.io/items/v2/arc_powercell.png",
       "rarity": "Common",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -798,7 +798,7 @@
         "originalEn": "ARC Synthetic Resin"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/arc_synthetic_resin.png",
+      "icon": "https://cdn.arctracker.io/items/v2/arc_synthetic_resin.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -824,7 +824,7 @@
         "originalEn": "ARC Thermo Lining"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/arc_thermo_lining.png",
+      "icon": "https://cdn.arctracker.io/items/v2/arc_thermo_lining.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -850,7 +850,7 @@
         "originalEn": "Arpeggio I"
       },
       "description": "擁有不錯的傷害輸出和精準度。",
-      "icon": "https://cdn.arctracker.io/items/arpeggio.png",
+      "icon": "https://cdn.arctracker.io/items/v2/arpeggio_i.png",
       "rarity": "Uncommon",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -883,7 +883,7 @@
         "originalEn": "Arpeggio II"
       },
       "description": "擁有不錯的傷害輸出和精準度。",
-      "icon": "https://cdn.arctracker.io/items/arpeggio.png",
+      "icon": "https://cdn.arctracker.io/items/v2/arpeggio_ii.png",
       "rarity": "Uncommon",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -917,7 +917,7 @@
         "originalEn": "Arpeggio III"
       },
       "description": "擁有不錯的傷害輸出和精準度。",
-      "icon": "https://cdn.arctracker.io/items/arpeggio.png",
+      "icon": "https://cdn.arctracker.io/items/v2/arpeggio_iii.png",
       "rarity": "Uncommon",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -951,7 +951,7 @@
         "originalEn": "Arpeggio IV"
       },
       "description": "擁有不錯的傷害輸出和精準度。",
-      "icon": "https://cdn.arctracker.io/items/arpeggio.png",
+      "icon": "https://cdn.arctracker.io/items/v2/arpeggio_iv.png",
       "rarity": "Uncommon",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -984,7 +984,7 @@
         "originalEn": "Assessor Matrix"
       },
       "description": "",
-      "icon": "https://cdn.arctracker.io/items/assessor_matrix.png",
+      "icon": "https://cdn.arctracker.io/items/v2/assessor_matrix.png",
       "rarity": "Epic",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -1008,7 +1008,7 @@
         "originalEn": "Assorted Seeds"
       },
       "description": "一把種子。Celeste可能在找這些。",
-      "icon": "https://cdn.arctracker.io/items/assorted_seeds.png",
+      "icon": "https://cdn.arctracker.io/items/v2/assorted_seeds.png",
       "rarity": "Common",
       "type": "Nature",
       "category": "Nature",
@@ -1028,7 +1028,7 @@
         "originalEn": "Bandage"
       },
       "description": "一種醫療物品，能隨時間逐漸恢復生命值。",
-      "icon": "https://cdn.arctracker.io/items/bandage.png",
+      "icon": "https://cdn.arctracker.io/items/v2/bandage.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -1056,7 +1056,7 @@
         "originalEn": "Barricade Kit"
       },
       "description": "可部署的掩體，能夠阻擋傷害直到被摧毀。",
-      "icon": "https://cdn.arctracker.io/items/barricade_kit.png",
+      "icon": "https://cdn.arctracker.io/items/v2/barricade_kit.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -1084,7 +1084,7 @@
         "originalEn": "Bastion Cell"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/bastion_cell.png",
+      "icon": "https://cdn.arctracker.io/items/v2/bastion_cell.png",
       "rarity": "Epic",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -1111,7 +1111,7 @@
         "originalEn": "Battery"
       },
       "description": "用於製作各種物品。可回收成廢金屬。用於製作：能量彈夾、中型護盾、電擊地雷",
-      "icon": "https://cdn.arctracker.io/items/battery.png",
+      "icon": "https://cdn.arctracker.io/items/v2/battery.png",
       "rarity": "Uncommon",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -1138,7 +1138,7 @@
         "originalEn": "Bettina I"
       },
       "description": "射速慢但傷害輸出高。",
-      "icon": "https://cdn.arctracker.io/items/bettina.png",
+      "icon": "https://cdn.arctracker.io/items/v2/bettina_i.png",
       "rarity": "Epic",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -1172,7 +1172,7 @@
         "originalEn": "Bettina II"
       },
       "description": "射速慢但傷害高。",
-      "icon": "https://cdn.arctracker.io/items/bettina.png",
+      "icon": "https://cdn.arctracker.io/items/v2/bettina_ii.png",
       "rarity": "Epic",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -1206,7 +1206,7 @@
         "originalEn": "Bettina III"
       },
       "description": "射速慢但傷害高。",
-      "icon": "https://cdn.arctracker.io/items/bettina.png",
+      "icon": "https://cdn.arctracker.io/items/v2/bettina_iii.png",
       "rarity": "Epic",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -1240,7 +1240,7 @@
         "originalEn": "Bettina IV"
       },
       "description": "射速慢但傷害高。",
-      "icon": "https://cdn.arctracker.io/items/bettina.png",
+      "icon": "https://cdn.arctracker.io/items/v2/bettina_iv.png",
       "rarity": "Epic",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -1273,7 +1273,7 @@
         "originalEn": "Bicycle Pump"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/bicycle_pump.png",
+      "icon": "https://cdn.arctracker.io/items/v2/bicycle_pump.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -1300,7 +1300,7 @@
         "originalEn": "Binoculars"
       },
       "description": "具有兩級放大倍率的基本雙筒望遠鏡。",
-      "icon": "https://cdn.arctracker.io/items/binoculars.png",
+      "icon": "https://cdn.arctracker.io/items/v2/binoculars.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -1330,7 +1330,7 @@
         "originalEn": "Blaze Grenade"
       },
       "description": "撞擊時引爆的手榴彈，會在區域內產生持續造成傷害的火焰。",
-      "icon": "https://cdn.arctracker.io/items/blaze_grenade.png",
+      "icon": "https://cdn.arctracker.io/items/v2/blaze_grenade.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -1360,7 +1360,7 @@
         "originalEn": "Blaze Grenade Trap"
       },
       "description": "引爆烈焰手榴彈的雷射絆線。",
-      "icon": "https://cdn.arctracker.io/items/blaze_grenade_trap.png",
+      "icon": "https://cdn.arctracker.io/items/v2/blaze_grenade_trap.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -1402,7 +1402,7 @@
         "originalEn": "Blue Gate Cellar Key"
       },
       "description": "藍門地窖的鑰匙。",
-      "icon": "https://cdn.arctracker.io/items/blue_gate_cellar_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/blue_gate_cellar_key.png",
       "rarity": "Rare",
       "type": "Key",
       "category": "Key",
@@ -1419,7 +1419,7 @@
         "originalEn": "Blue Gate Communication Tower Key"
       },
       "description": "解鎖藍門附近通訊塔旁的一扇門",
-      "icon": "https://cdn.arctracker.io/items/blue_gate_communication_tower_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/blue_gate_communication_tower_key.png",
       "rarity": "Rare",
       "type": "Key",
       "category": "Key",
@@ -1436,7 +1436,7 @@
         "originalEn": "Blue Gate Confiscation Room Key"
       },
       "description": "解鎖藍門隧道內沒收物品區域的門",
-      "icon": "https://cdn.arctracker.io/items/blue_gate_confiscation_room_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/blue_gate_confiscation_room_key.png",
       "rarity": "Epic",
       "type": "Key",
       "category": "Key",
@@ -1453,7 +1453,7 @@
         "originalEn": "Blue Gate Village Key"
       },
       "description": "藍門村落內部區域的鑰匙。",
-      "icon": "https://cdn.arctracker.io/items/blue_gate_village_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/blue_gate_village_key.png",
       "rarity": "Uncommon",
       "type": "Key",
       "category": "Key",
@@ -1470,7 +1470,7 @@
         "originalEn": "Blue Light Stick"
       },
       "description": "可投擲的化學光源，照亮周圍區域。",
-      "icon": "https://cdn.arctracker.io/items/blue_light_stick.png",
+      "icon": "https://cdn.arctracker.io/items/v2/blue_light_stick.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -1498,7 +1498,7 @@
         "originalEn": "Bobcat I"
       },
       "description": "全自動SMG，射速高但精準度低。",
-      "icon": "https://cdn.arctracker.io/items/bobcat.png",
+      "icon": "https://cdn.arctracker.io/items/v2/bobcat_i.png",
       "rarity": "Epic",
       "type": "SMG",
       "category": "Weapon",
@@ -1532,7 +1532,7 @@
         "originalEn": "Bobcat II"
       },
       "description": "全自動SMG，射速高但精準度低。",
-      "icon": "https://cdn.arctracker.io/items/bobcat.png",
+      "icon": "https://cdn.arctracker.io/items/v2/bobcat_ii.png",
       "rarity": "Epic",
       "type": "SMG",
       "category": "Weapon",
@@ -1566,7 +1566,7 @@
         "originalEn": "Bobcat III"
       },
       "description": "全自動SMG，射速高但精準度低。",
-      "icon": "https://cdn.arctracker.io/items/bobcat.png",
+      "icon": "https://cdn.arctracker.io/items/v2/bobcat_iii.png",
       "rarity": "Epic",
       "type": "SMG",
       "category": "Weapon",
@@ -1600,7 +1600,7 @@
         "originalEn": "Bobcat IV"
       },
       "description": "全自動SMG，射速高但精準度低。",
-      "icon": "https://cdn.arctracker.io/items/bobcat.png",
+      "icon": "https://cdn.arctracker.io/items/v2/bobcat_iv.png",
       "rarity": "Epic",
       "type": "SMG",
       "category": "Weapon",
@@ -1633,7 +1633,7 @@
         "originalEn": "Bombardier Cell"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/bombardier_cell.png",
+      "icon": "https://cdn.arctracker.io/items/v2/bombardier_cell.png",
       "rarity": "Epic",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -1660,7 +1660,7 @@
         "originalEn": "Breathtaking Snow Globe"
       },
       "description": "每個斯佩蘭贊人都羨慕的物品。證明這個世界曾經繁榮且充滿魔力。",
-      "icon": "https://cdn.arctracker.io/items/breathtaking_snow_globe.png",
+      "icon": "https://cdn.arctracker.io/items/v2/breathtaking_snow_globe.png",
       "rarity": "Epic",
       "type": "Trinket",
       "category": "Trinket",
@@ -1682,7 +1682,7 @@
         "originalEn": "Broken Flashlight"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/broken_flashlight.png",
+      "icon": "https://cdn.arctracker.io/items/v2/broken_flashlight.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -1709,7 +1709,7 @@
         "originalEn": "Broken Guidance System"
       },
       "description": "可回收成製作材料。",
-      "icon": "https://cdn.arctracker.io/items/broken_guidance_system.png",
+      "icon": "https://cdn.arctracker.io/items/v2/broken_guidance_system.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -1735,7 +1735,7 @@
         "originalEn": "Broken Handheld Radio"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/broken_handheld_radio.png",
+      "icon": "https://cdn.arctracker.io/items/v2/broken_handheld_radio.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -1762,7 +1762,7 @@
         "originalEn": "Broken Taser"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/broken_taser.png",
+      "icon": "https://cdn.arctracker.io/items/v2/broken_taser.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -1789,7 +1789,7 @@
         "originalEn": "Buried City Hospital Key"
       },
       "description": "埋沒之城醫院內部區域的鑰匙。",
-      "icon": "https://cdn.arctracker.io/items/buried_city_hospital_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/buried_city_hospital_key.png",
       "rarity": "Rare",
       "type": "Key",
       "category": "Key",
@@ -1806,7 +1806,7 @@
         "originalEn": "Buried City JKV Employee Access Card"
       },
       "description": "埋沒之城JKV設施的員工門禁卡。",
-      "icon": "https://cdn.arctracker.io/items/buried_city_jkv_employee_access_card.png",
+      "icon": "https://cdn.arctracker.io/items/v2/buried_city_jkv_employee_access_card.png",
       "rarity": "Uncommon",
       "type": "Key",
       "category": "Key",
@@ -1823,7 +1823,7 @@
         "originalEn": "Buried City Residential Master Key"
       },
       "description": "埋沒之城住宅區的萬能鑰匙。",
-      "icon": "https://cdn.arctracker.io/items/buried_city_residential_master_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/buried_city_residential_master_key.png",
       "rarity": "Uncommon",
       "type": "Key",
       "category": "Key",
@@ -1840,7 +1840,7 @@
         "originalEn": "Buried City Town Hall Key"
       },
       "description": "開啟埋沒之城市政廳的門",
-      "icon": "https://cdn.arctracker.io/items/buried_city_town_hall_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/buried_city_town_hall_key.png",
       "rarity": "Epic",
       "type": "Key",
       "category": "Key",
@@ -1857,7 +1857,7 @@
         "originalEn": "Burletta I"
       },
       "description": "半自動手槍，具有不錯的傷害輸出和精準度。可以以扣動扳機的速度射擊。",
-      "icon": "https://cdn.arctracker.io/items/burletta.png",
+      "icon": "https://cdn.arctracker.io/items/v2/burletta_i.png",
       "rarity": "Uncommon",
       "type": "Pistol",
       "category": "Weapon",
@@ -1890,7 +1890,7 @@
         "originalEn": "Burletta II"
       },
       "description": "半自動手槍，具有不錯的傷害輸出和精準度。可以以扣動扳機的速度射擊。",
-      "icon": "https://cdn.arctracker.io/items/burletta.png",
+      "icon": "https://cdn.arctracker.io/items/v2/burletta_ii.png",
       "rarity": "Uncommon",
       "type": "Pistol",
       "category": "Weapon",
@@ -1924,7 +1924,7 @@
         "originalEn": "Burletta III"
       },
       "description": "半自動手槍，具有不錯的傷害輸出和精準度。可以以扣動扳機的速度射擊。",
-      "icon": "https://cdn.arctracker.io/items/burletta.png",
+      "icon": "https://cdn.arctracker.io/items/v2/burletta_iii.png",
       "rarity": "Uncommon",
       "type": "Pistol",
       "category": "Weapon",
@@ -1958,7 +1958,7 @@
         "originalEn": "Burletta IV"
       },
       "description": "半自動手槍，具有不錯的傷害輸出和精準度。可以以扣動扳機的速度射擊。",
-      "icon": "https://cdn.arctracker.io/items/burletta.png",
+      "icon": "https://cdn.arctracker.io/items/v2/burletta_iv.png",
       "rarity": "Uncommon",
       "type": "Pistol",
       "category": "Weapon",
@@ -1991,7 +1991,7 @@
         "originalEn": "Burned Arc Circuitry"
       },
       "description": "可回收成製作材料。",
-      "icon": "https://cdn.arctracker.io/items/burned_arc_circuitry.png",
+      "icon": "https://cdn.arctracker.io/items/v2/burned_arc_circuitry.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -2017,7 +2017,7 @@
         "originalEn": "Burnt-Out Candles"
       },
       "description": "電網崩潰後，蠟燭成為許多人首選的光源。與電力不同，一根好蠟燭永遠不會讓你失望。除非有風。或者下雨。或者...",
-      "icon": "https://cdn.arctracker.io/items/burnt_out_candles.png",
+      "icon": "https://cdn.arctracker.io/items/v2/burnt_out_candles.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -2038,7 +2038,7 @@
         "originalEn": "Camera Lens"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/camera_lens.png",
+      "icon": "https://cdn.arctracker.io/items/v2/camera_lens.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -2064,7 +2064,7 @@
         "originalEn": "Candle Holder"
       },
       "description": "可回收成製作材料。",
-      "icon": "https://cdn.arctracker.io/items/candle_holder.png",
+      "icon": "https://cdn.arctracker.io/items/v2/candle_holder.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -2090,7 +2090,7 @@
         "originalEn": "Candleberries"
       },
       "description": "一種每年只在短暫時間內生長的蠟質漿果。人們長久以來一直依賴它來製作蠟燭、食物和藥品。",
-      "icon": "https://cdn.arctracker.io/items/candleberries.png",
+      "icon": "https://cdn.arctracker.io/items/v2/candleberries.png",
       "rarity": "Rare",
       "type": "Nature",
       "category": "Nature",
@@ -2113,7 +2113,7 @@
         "originalEn": "Canister"
       },
       "description": "用於製作各種物品。可回收成塑膠。用於製作：Bettina、Vita Spray、重型引信手榴彈、煙霧彈",
-      "icon": "https://cdn.arctracker.io/items/canister.png",
+      "icon": "https://cdn.arctracker.io/items/v2/canister.png",
       "rarity": "Uncommon",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -2139,8 +2139,8 @@
         "originalEn": "Canto I"
       },
       "description": "全自動大口徑衝鋒槍。",
-      "icon": "",
-      "rarity": "Legendary",
+      "icon": "https://cdn.arctracker.io/items/v2/canto_i.png",
+      "rarity": "Rare",
       "type": "SMG",
       "category": "SMG",
       "craftBench": "weapon_bench",
@@ -2169,8 +2169,8 @@
         "originalEn": "Canto II"
       },
       "description": "全自動大口徑衝鋒槍。",
-      "icon": "",
-      "rarity": "Legendary",
+      "icon": "https://cdn.arctracker.io/items/v2/canto_ii.png",
+      "rarity": "Rare",
       "type": "SMG",
       "category": "SMG",
       "stationLevelRequired": 1,
@@ -2197,8 +2197,8 @@
         "originalEn": "Canto III"
       },
       "description": "全自動大口徑衝鋒槍。",
-      "icon": "",
-      "rarity": "Legendary",
+      "icon": "https://cdn.arctracker.io/items/v2/canto_iii.png",
+      "rarity": "Rare",
       "type": "SMG",
       "category": "SMG",
       "stationLevelRequired": 1,
@@ -2225,8 +2225,8 @@
         "originalEn": "Canto IV"
       },
       "description": "全自動大口徑衝鋒槍。",
-      "icon": "",
-      "rarity": "Legendary",
+      "icon": "https://cdn.arctracker.io/items/v2/canto_iv.png",
+      "rarity": "Rare",
       "type": "SMG",
       "category": "SMG",
       "stationLevelRequired": 1,
@@ -2253,7 +2253,7 @@
         "originalEn": "Cat Bed"
       },
       "description": "至少比你的臉舒服一點點。",
-      "icon": "https://cdn.arctracker.io/items/cat_bed.png",
+      "icon": "https://cdn.arctracker.io/items/v2/cat_bed.png",
       "rarity": "Uncommon",
       "type": "Trinket",
       "category": "Trinket",
@@ -2274,7 +2274,7 @@
         "originalEn": "Celeste's Journal"
       },
       "description": "破舊不堪，你可以看到邊緣處隱約的塗鴉輪廓。",
-      "icon": "https://cdn.arctracker.io/items/celestes_journal.png",
+      "icon": "https://cdn.arctracker.io/items/v2/celeste_journal.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -2291,7 +2291,7 @@
         "originalEn": "Chemicals"
       },
       "description": "用於製作醫療用品、爆裂物和實用物品。用於製作：重型彈藥、中型彈藥、霰彈槍彈藥、輕型彈藥、輕型衝擊手榴彈",
-      "icon": "https://cdn.arctracker.io/items/chemicals.png",
+      "icon": "https://cdn.arctracker.io/items/v2/chemicals.png",
       "rarity": "Common",
       "type": "Basic Material",
       "category": "Basic Material",
@@ -2313,7 +2313,7 @@
         "originalEn": "Coffee Pot"
       },
       "description": "面對新一天的力量，一次一杯。",
-      "icon": "https://cdn.arctracker.io/items/coffee_pot.png",
+      "icon": "https://cdn.arctracker.io/items/v2/coffee_pot.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -2333,7 +2333,7 @@
         "originalEn": "Combat Mk. 1"
       },
       "description": "基礎戰鬥強化。支援更強的護盾，但背包容量和快速使用欄位有限。",
-      "icon": "https://cdn.arctracker.io/items/combat_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/combat_mk1.png",
       "rarity": "Uncommon",
       "type": "Augment",
       "category": "Augment",
@@ -2362,7 +2362,7 @@
         "originalEn": "Combat Mk. 2"
       },
       "description": "更注重機動性而非吸收傷害的戰鬥強化。",
-      "icon": "https://cdn.arctracker.io/items/combat_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/combat_mk2.png",
       "rarity": "Rare",
       "type": "Augment",
       "category": "Augment",
@@ -2391,7 +2391,7 @@
         "originalEn": "Combat Mk. 3 (Aggressive)"
       },
       "description": "戰鬥 II 增強裝置的改良版本。支援更多護盾類型，並提供額外的手榴彈空間。",
-      "icon": "https://cdn.arctracker.io/items/combat_mk3_aggressive.png",
+      "icon": "https://cdn.arctracker.io/items/v2/combat_mk3_aggressive.png",
       "rarity": "Epic",
       "type": "Augment",
       "category": "Augment",
@@ -2420,7 +2420,7 @@
         "originalEn": "Combat Mk. 3 (Flanking)"
       },
       "description": "戰鬥 II 增強裝置的改良版本。專為側翼機動設計，具有增強的機動性。",
-      "icon": "https://cdn.arctracker.io/items/combat_mk3_flanking.png",
+      "icon": "https://cdn.arctracker.io/items/v2/combat_mk3_flanking.png",
       "rarity": "Epic",
       "type": "Augment",
       "category": "Augment",
@@ -2449,7 +2449,7 @@
         "originalEn": "Comet Igniter"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/comet_igniter.png",
+      "icon": "https://cdn.arctracker.io/items/v2/comet_igniter.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -2476,7 +2476,7 @@
         "originalEn": "Compensator I"
       },
       "description": "略微降低每次射擊的擴散度。相容武器：Arpeggio、Ferro、Renegade、Anvil、Stitcher",
-      "icon": "https://cdn.arctracker.io/items/compensator_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/compensator_i.png",
       "rarity": "Common",
       "type": "Modification",
       "category": "Modification",
@@ -2504,7 +2504,7 @@
         "originalEn": "Compensator II"
       },
       "description": "適度減少每次射擊的擴散度。相容武器：琶音、鐵衛、叛徒、鐵砧、縫合者",
-      "icon": "https://cdn.arctracker.io/items/compensator_ii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/compensator_ii.png",
       "rarity": "Uncommon",
       "type": "Modification",
       "category": "Modification",
@@ -2533,7 +2533,7 @@
         "originalEn": "Compensator III"
       },
       "description": "適度減少每次射擊的擴散度。相容武器：琶音、鐵衛、叛徒、鐵砧、縫合者",
-      "icon": "https://cdn.arctracker.io/items/compensator_ii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/compensator_iii.png",
       "rarity": "Rare",
       "type": "Modification",
       "category": "Modification",
@@ -2562,7 +2562,7 @@
         "originalEn": "Complex Gun Parts"
       },
       "description": "用於製作高級武器。可製作：Equalizer、Jupiter",
-      "icon": "https://cdn.arctracker.io/items/complex_gun_parts.png",
+      "icon": "https://cdn.arctracker.io/items/v2/complex_gun_parts.png",
       "rarity": "Epic",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -2594,7 +2594,7 @@
         "originalEn": "Coolant"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/coolant.png",
+      "icon": "https://cdn.arctracker.io/items/v2/coolant.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -2621,7 +2621,7 @@
         "originalEn": "Cooling Coil"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/cooling_coil.png",
+      "icon": "https://cdn.arctracker.io/items/v2/cooling_coil.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -2648,7 +2648,7 @@
         "originalEn": "Cooling Fan"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/cooling_fan.png",
+      "icon": "https://cdn.arctracker.io/items/v2/cooling_fan.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -2675,7 +2675,7 @@
         "originalEn": "Cracked Bioscanner"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/cracked_bioscanner.png",
+      "icon": "https://cdn.arctracker.io/items/v2/cracked_bioscanner.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -2702,7 +2702,7 @@
         "originalEn": "Crash Mat"
       },
       "description": "一種可投擲的緊急降落裝置，用來緩和部分重著陸衝擊",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/crash_mat.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -2732,7 +2732,7 @@
         "originalEn": "Crude Explosives"
       },
       "description": "用於製作爆裂物。可回收為製作材料。可製作：發射器彈藥、爆炸化合物、速爆手榴彈、破片手榴彈、引爆手榴彈",
-      "icon": "https://cdn.arctracker.io/items/crude_explosives.png",
+      "icon": "https://cdn.arctracker.io/items/v2/crude_explosives.png",
       "rarity": "Uncommon",
       "type": "Refined Material",
       "category": "Refined Material",
@@ -2763,7 +2763,7 @@
         "originalEn": "Crumpled Plastic Bottle"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/crumpled_plastic_bottle.png",
+      "icon": "https://cdn.arctracker.io/items/v2/crumpled_plastic_bottle.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -2789,7 +2789,7 @@
         "originalEn": "Dam Control Tower Key"
       },
       "description": "解鎖水壩戰場上控制塔的門。",
-      "icon": "https://cdn.arctracker.io/items/dam_control_tower_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/dam_control_tower_key.png",
       "rarity": "Epic",
       "type": "Key",
       "category": "Key",
@@ -2806,7 +2806,7 @@
         "originalEn": "Dam Controlled Access Zone Key"
       },
       "description": "解鎖水壩戰場通往管制區的門。",
-      "icon": "https://cdn.arctracker.io/items/dam_testing_annex_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/dam_controlled_access_zone_key.png",
       "rarity": "Epic",
       "type": "Key",
       "category": "Key",
@@ -2823,7 +2823,7 @@
         "originalEn": "Dam Staff Room Key"
       },
       "description": "水壩員工室的鑰匙。",
-      "icon": "https://cdn.arctracker.io/items/dam_staff_room_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/dam_staff_room_key.png",
       "rarity": "Uncommon",
       "type": "Key",
       "category": "Key",
@@ -2840,7 +2840,7 @@
         "originalEn": "Dam Surveillance Key"
       },
       "description": "解鎖水壩戰場上水處理控制建築內的一扇門。",
-      "icon": "https://cdn.arctracker.io/items/dam_surveillance_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/dam_surveillance_key.png",
       "rarity": "Uncommon",
       "type": "Key",
       "category": "Key",
@@ -2857,25 +2857,8 @@
         "originalEn": "Dam Testing Annex Key"
       },
       "description": "解鎖水壩戰場測試附屬建築中的一扇門。",
-      "icon": "https://cdn.arctracker.io/items/dam_testing_annex_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/dam_testing_annex_key.png",
       "rarity": "Rare",
-      "type": "Key",
-      "category": "Key",
-      "stationLevelRequired": 1,
-      "blueprintLocked": false,
-      "craftQuantity": 1,
-      "stackSize": 1,
-      "value": 100,
-      "weight": 0.25
-    },
-    "dam_utility_key": {
-      "name": {
-        "value": "水壩設施鑰匙",
-        "originalEn": "Dam Utility Key"
-      },
-      "description": "水壩設施通道的鑰匙。",
-      "icon": "https://cdn.arctracker.io/items/dam_utility_key.png",
-      "rarity": "Uncommon",
       "type": "Key",
       "category": "Key",
       "stationLevelRequired": 1,
@@ -2891,7 +2874,7 @@
         "originalEn": "Damaged ARC Motion Core"
       },
       "description": "可以回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/damaged_arc_motion_core.png",
+      "icon": "https://cdn.arctracker.io/items/v2/damaged_arc_motion_core.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -2917,7 +2900,7 @@
         "originalEn": "Damaged ARC Powercell"
       },
       "description": "可以回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/damaged_arc_powercell.png",
+      "icon": "https://cdn.arctracker.io/items/v2/damaged_arc_powercell.png",
       "rarity": "Common",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -2943,7 +2926,7 @@
         "originalEn": "Damaged Fireball Burner"
       },
       "description": "可以回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/damaged_fireball_burner.png",
+      "icon": "https://cdn.arctracker.io/items/v2/damaged_fireball_burner.png",
       "rarity": "Common",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -2969,7 +2952,7 @@
         "originalEn": "Damaged Heat Sink"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/damaged_heat_sink.png",
+      "icon": "https://cdn.arctracker.io/items/v2/damaged_heat_sink.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -2996,7 +2979,7 @@
         "originalEn": "Damaged Hornet Driver"
       },
       "description": "可以回收成製作材料。",
-      "icon": "https://cdn.arctracker.io/items/damaged_hornet_driver.png",
+      "icon": "https://cdn.arctracker.io/items/v2/damaged_hornet_driver.png",
       "rarity": "Common",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -3022,7 +3005,7 @@
         "originalEn": "Damaged Rocketeer Driver"
       },
       "description": "可以回收成製作材料。",
-      "icon": "https://cdn.arctracker.io/items/damaged_rocketeer_driver.png",
+      "icon": "https://cdn.arctracker.io/items/v2/damaged_rocketeer_driver.png",
       "rarity": "Common",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -3048,7 +3031,7 @@
         "originalEn": "Damaged Snitch Scanner"
       },
       "description": "可以回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/damaged_snitch_scanner.png",
+      "icon": "https://cdn.arctracker.io/items/v2/damaged_snitch_scanner.png",
       "rarity": "Common",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -3068,7 +3051,7 @@
         "originalEn": "Damaged Tick Pod"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/damaged_tick_pod.png",
+      "icon": "https://cdn.arctracker.io/items/v2/damaged_tick_pod.png",
       "rarity": "Common",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -3094,7 +3077,7 @@
         "originalEn": "Damaged Wasp Driver"
       },
       "description": "可以回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/damaged_wasp_driver.png",
+      "icon": "https://cdn.arctracker.io/items/v2/damaged_wasp_driver.png",
       "rarity": "Common",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -3120,7 +3103,7 @@
         "originalEn": "Dart Board"
       },
       "description": "有些掠奪者用它來練習靈巧度。其他人只是喜歡把東西扔向其他東西。",
-      "icon": "https://cdn.arctracker.io/items/dart_board.png",
+      "icon": "https://cdn.arctracker.io/items/v2/dart_board.png",
       "rarity": "Uncommon",
       "type": "Trinket",
       "category": "Trinket",
@@ -3141,7 +3124,7 @@
         "originalEn": "Deadline"
       },
       "description": "一種在計時器耗盡後對半徑內的任何目標造成傷害的地雷。",
-      "icon": "https://cdn.arctracker.io/items/deadline.png",
+      "icon": "https://cdn.arctracker.io/items/v2/deadline.png",
       "rarity": "Epic",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -3172,7 +3155,7 @@
         "originalEn": "Defibrillator"
       },
       "description": "能快速復甦倒地的掠奪者並恢復部分生命值的注射劑。",
-      "icon": "https://cdn.arctracker.io/items/defibrillator.png",
+      "icon": "https://cdn.arctracker.io/items/v2/defibrillator.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -3202,7 +3185,7 @@
         "originalEn": "Deflated Football"
       },
       "description": "光是看著它，你也開始感到有點洩氣。",
-      "icon": "https://cdn.arctracker.io/items/deflated_football.png",
+      "icon": "https://cdn.arctracker.io/items/v2/deflated_football.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -3229,7 +3212,7 @@
         "originalEn": "Degraded ARC Rubber"
       },
       "description": "從ARC敵人或活動中獲得。可回收成橡膠。",
-      "icon": "https://cdn.arctracker.io/items/degraded_arc_rubber.png",
+      "icon": "https://cdn.arctracker.io/items/v2/degraded_arc_rubber.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -3255,7 +3238,7 @@
         "originalEn": "Diving Goggles"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/diving_goggles.png",
+      "icon": "https://cdn.arctracker.io/items/v2/diving_goggles.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -3281,7 +3264,7 @@
         "originalEn": "Dockmaster's Detector"
       },
       "description": "這些探測器似乎能夠定位埋藏在Riven Tides周圍沙地中的外來物體，儘管它們的確切運作方式尚不清楚。",
-      "icon": "https://cdn.arctracker.io/items/dockmasters_detector.png",
+      "icon": "https://cdn.arctracker.io/items/v2/dockmasters_detector.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -3298,7 +3281,7 @@
         "originalEn": "Dodger's Note"
       },
       "description": "",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/dodgers_note.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -3315,7 +3298,7 @@
         "originalEn": "Dog Collar"
       },
       "description": "經過這麼長時間，你仍能聞到美好的氣息。",
-      "icon": "https://cdn.arctracker.io/items/dog_collar.png",
+      "icon": "https://cdn.arctracker.io/items/v2/dog_collar.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -3342,7 +3325,7 @@
         "originalEn": "Dolabra"
       },
       "description": "一種實驗性武器，既可以發射寬範圍的短程衝擊，也可以聚焦發射窄範圍的中程熱能光束。",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/dolabra.png",
       "rarity": "Legendary",
       "type": "Shotgun",
       "category": "Weapon",
@@ -3372,7 +3355,7 @@
         "originalEn": "Doodly Duck"
       },
       "description": "對於有創意的孩子來說，一切都是畫布。可以投擲來製造噪音。",
-      "icon": "https://cdn.arctracker.io/items/doodly_duck.png",
+      "icon": "https://cdn.arctracker.io/items/v2/doodly_duck.png",
       "rarity": "Rare",
       "type": "Trinket",
       "category": "Trinket",
@@ -3389,7 +3372,7 @@
         "originalEn": "Door Blocker"
       },
       "description": "可安裝在大型金屬門上以限制進入的鎖定機制。",
-      "icon": "https://cdn.arctracker.io/items/door_blocker.png",
+      "icon": "https://cdn.arctracker.io/items/v2/door_blocker.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -3418,7 +3401,7 @@
         "originalEn": "Dried-Out ARC Resin"
       },
       "description": "從ARC敵人或活動中獲得。可回收成塑膠。",
-      "icon": "https://cdn.arctracker.io/items/dried_out_arc_resin.png",
+      "icon": "https://cdn.arctracker.io/items/v2/dried_out_arc_resin.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -3444,7 +3427,7 @@
         "originalEn": "Duct Tape"
       },
       "description": "用於製作各種物品。可以回收成製作材料。用於製作：穩定槍托 I、垂直握把 I、傾斜握把 I、垂直握把 II、傾斜握把 II",
-      "icon": "https://cdn.arctracker.io/items/duct_tape.png",
+      "icon": "https://cdn.arctracker.io/items/v2/duct_tape.png",
       "rarity": "Uncommon",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -3471,7 +3454,7 @@
         "originalEn": "Durable Cloth"
       },
       "description": "用於製作醫療用品。可製作：草藥繃帶、消毒繃帶",
-      "icon": "https://cdn.arctracker.io/items/durable_cloth.png",
+      "icon": "https://cdn.arctracker.io/items/v2/durable_cloth.png",
       "rarity": "Uncommon",
       "type": "Refined Material",
       "category": "Refined Material",
@@ -3502,7 +3485,7 @@
         "originalEn": "Dusty Film Reel"
       },
       "description": "一卷佈滿灰塵的舊膠卷。也許裡面曾有些值得一看的內容。",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/dusty_film_reel.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -3519,7 +3502,7 @@
         "originalEn": "Electrical Components"
       },
       "description": "用於製作各種物品。可回收為製作材料。用於製作：Tactical Mk. 2、Combat Mk. 2、Looting Mk. 2、激增護盾充能器、誘餌手榴彈",
-      "icon": "https://cdn.arctracker.io/items/electrical_components.png",
+      "icon": "https://cdn.arctracker.io/items/v2/electrical_components.png",
       "rarity": "Uncommon",
       "type": "Refined Material",
       "category": "Refined Material",
@@ -3551,7 +3534,7 @@
         "originalEn": "Empty Wine Bottle"
       },
       "description": "是的，真的是空的。",
-      "icon": "https://cdn.arctracker.io/items/empty_wine_bottle.png",
+      "icon": "https://cdn.arctracker.io/items/v2/empty_wine_bottle.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -3572,7 +3555,7 @@
         "originalEn": "Energy Clip"
       },
       "description": "相容武器：Equalizer、Jupiter",
-      "icon": "https://cdn.arctracker.io/items/energy_clip.png",
+      "icon": "https://cdn.arctracker.io/items/v2/energy_clip.png",
       "rarity": "Rare",
       "type": "Ammunition",
       "category": "Ammunition",
@@ -3594,7 +3577,7 @@
         "originalEn": "Equalizer"
       },
       "description": "一把高容量的實驗性光束步槍。",
-      "icon": "https://cdn.arctracker.io/items/equalizer.png",
+      "icon": "https://cdn.arctracker.io/items/v2/equalizer.png",
       "rarity": "Legendary",
       "type": "LMG",
       "category": "Weapon",
@@ -3625,7 +3608,7 @@
         "originalEn": "Espresso Machine Parts"
       },
       "description": "",
-      "icon": "https://cdn.arctracker.io/items/espresso_machine_parts.png",
+      "icon": "https://cdn.arctracker.io/items/v2/espresso_machine_parts.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -3642,7 +3625,7 @@
         "originalEn": "ESR Analyzer"
       },
       "description": "一種用於分析紅血球沉降率的專業醫療設備。",
-      "icon": "https://cdn.arctracker.io/items/esr_analyzer.png",
+      "icon": "https://cdn.arctracker.io/items/v2/esr_analyzer.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -3659,7 +3642,7 @@
         "originalEn": "Exodus Modules"
       },
       "description": "用於製作各種物品。可製作：暴風、火山、破殼者、山貓、快扣",
-      "icon": "https://cdn.arctracker.io/items/exodus_modules.png",
+      "icon": "https://cdn.arctracker.io/items/v2/exodus_modules.png",
       "rarity": "Epic",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -3686,7 +3669,7 @@
         "originalEn": "Experimental Seed Sample"
       },
       "description": "一份經過低溫冷凍的實驗作物研究樣本。",
-      "icon": "https://cdn.arctracker.io/items/experimental_seed_sample.png",
+      "icon": "https://cdn.arctracker.io/items/v2/experimental_seed_sample.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -3724,7 +3707,7 @@
         "originalEn": "Expired Respirator"
       },
       "description": "過濾器被沙子和有毒煙霧堵塞。早已超過使用壽命。",
-      "icon": "https://cdn.arctracker.io/items/expired_respirator.png",
+      "icon": "https://cdn.arctracker.io/items/v2/expired_respirator.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -3751,7 +3734,7 @@
         "originalEn": "Expired Security Code"
       },
       "description": "一段已過期的安全代碼。已無實際用途。",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/expired_security_code.png",
       "rarity": "Common",
       "type": "Key",
       "category": "Key",
@@ -3768,7 +3751,7 @@
         "originalEn": "Explosive Compound"
       },
       "description": "用於製作爆裂物。可製作：Wolfpack、爆炸地雷、烈焰手榴彈、重型引信手榴彈",
-      "icon": "https://cdn.arctracker.io/items/explosive_compound.png",
+      "icon": "https://cdn.arctracker.io/items/v2/explosive_compound.png",
       "rarity": "Rare",
       "type": "Refined Material",
       "category": "Refined Material",
@@ -3800,7 +3783,7 @@
         "originalEn": "Explosive Mine"
       },
       "description": "當敵人接近時引爆的近距離觸發爆炸裝置。",
-      "icon": "https://cdn.arctracker.io/items/explosive_mine.png",
+      "icon": "https://cdn.arctracker.io/items/v2/explosive_mine.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -3830,7 +3813,7 @@
         "originalEn": "Extended Barrel"
       },
       "description": "適度提升子彈速度。相容武器：Tempest、Arpeggio、Ferro、Renegade、Anvil",
-      "icon": "https://cdn.arctracker.io/items/extended_barrel.png",
+      "icon": "https://cdn.arctracker.io/items/v2/extended_barrel.png",
       "rarity": "Epic",
       "type": "Modification",
       "category": "Modification",
@@ -3859,7 +3842,7 @@
         "originalEn": "Extended Light Mag I"
       },
       "description": "略微增加使用輕型彈藥的相容武器的彈藥容量。相容武器：Kettle、Burletta、Hairpin、Bobcat、Stitcher",
-      "icon": "https://cdn.arctracker.io/items/extended_light_mag_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/extended_light_mag_i.png",
       "rarity": "Common",
       "type": "Modification",
       "category": "Modification",
@@ -3887,7 +3870,7 @@
         "originalEn": "Extended Light Mag II"
       },
       "description": "適度延長使用輕型彈藥的相容武器的彈藥容量。相容武器：Stitcher、Kettle、Burletta、Hairpin、Bobcat",
-      "icon": "https://cdn.arctracker.io/items/extended_light_mag_ii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/extended_light_mag_ii.png",
       "rarity": "Uncommon",
       "type": "Modification",
       "category": "Modification",
@@ -3916,7 +3899,7 @@
         "originalEn": "Extended Light Mag III"
       },
       "description": "大幅延長使用輕型彈藥的相容武器的彈藥容量。",
-      "icon": "https://cdn.arctracker.io/items/extended_light_mag_iii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/extended_light_mag_iii.png",
       "rarity": "Rare",
       "type": "Modification",
       "category": "Modification",
@@ -3945,7 +3928,7 @@
         "originalEn": "Extended Medium Mag I"
       },
       "description": "適度延長使用中型彈藥的相容武器的彈藥容量。相容武器：Arpeggio、Renegade、Venator、Tempest、Torrente",
-      "icon": "https://cdn.arctracker.io/items/extended_medium_mag_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/extended_medium_mag_i.png",
       "rarity": "Common",
       "type": "Modification",
       "category": "Modification",
@@ -3973,7 +3956,7 @@
         "originalEn": "Extended Medium Mag II"
       },
       "description": "適度延長使用中型彈藥的相容武器的彈藥容量。相容武器：Arpeggio、Renegade、Venator、Tempest、Torrente",
-      "icon": "https://cdn.arctracker.io/items/extended_medium_mag_ii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/extended_medium_mag_ii.png",
       "rarity": "Uncommon",
       "type": "Modification",
       "category": "Modification",
@@ -4002,7 +3985,7 @@
         "originalEn": "Extended Medium Mag III"
       },
       "description": "大幅延長使用中型彈藥的相容武器的彈藥容量。相容武器：琶音、叛徒、獵人、風暴、激流",
-      "icon": "https://cdn.arctracker.io/items/extended_medium_mag_iii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/extended_medium_mag_iii.png",
       "rarity": "Rare",
       "type": "Modification",
       "category": "Modification",
@@ -4031,7 +4014,7 @@
         "originalEn": "Extended Shotgun Mag I"
       },
       "description": "略微增加霰彈槍的彈藥容量。相容武器：Il Toro、Vulcano",
-      "icon": "https://cdn.arctracker.io/items/extended_shotgun_mag_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/extended_shotgun_mag_i.png",
       "rarity": "Common",
       "type": "Modification",
       "category": "Modification",
@@ -4059,7 +4042,7 @@
         "originalEn": "Extended Shotgun Mag II"
       },
       "description": "適度延長霰彈槍的彈藥容量。相容武器：Il Toro、Vulcano",
-      "icon": "https://cdn.arctracker.io/items/extended_shotgun_mag_ii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/extended_shotgun_mag_ii.png",
       "rarity": "Uncommon",
       "type": "Modification",
       "category": "Modification",
@@ -4088,7 +4071,7 @@
         "originalEn": "Extended Shotgun Mag III"
       },
       "description": "顯著擴展霰彈槍的彈藥容量。相容武器：Il Toro、Vulcano",
-      "icon": "https://cdn.arctracker.io/items/extended_shotgun_mag_iii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/extended_shotgun_mag_iii.png",
       "rarity": "Rare",
       "type": "Modification",
       "category": "Modification",
@@ -4117,7 +4100,7 @@
         "originalEn": "Fabric"
       },
       "description": "用於製作醫療用品和護盾。可用於緩慢恢復少量生命值。",
-      "icon": "https://cdn.arctracker.io/items/fabric.png",
+      "icon": "https://cdn.arctracker.io/items/v2/fabric.png",
       "rarity": "Common",
       "type": "Basic Material",
       "category": "Basic Material",
@@ -4139,7 +4122,7 @@
         "originalEn": "Faded Photograph"
       },
       "description": "過去世界的快照，被陽光和時間褪色。",
-      "icon": "https://cdn.arctracker.io/items/faded_photograph.png",
+      "icon": "https://cdn.arctracker.io/items/v2/faded_photograph.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -4159,7 +4142,7 @@
         "originalEn": "Familiar Duck"
       },
       "description": "與真正的不同，這個可以放進你的背包。可以投擲來製造噪音。",
-      "icon": "https://cdn.arctracker.io/items/familiar_duck.png",
+      "icon": "https://cdn.arctracker.io/items/v2/familiar_duck.png",
       "rarity": "Epic",
       "type": "Trinket",
       "category": "Trinket",
@@ -4176,7 +4159,7 @@
         "originalEn": "Ferro I"
       },
       "description": "威力強大，但每發射擊後都必須重新裝填。",
-      "icon": "https://cdn.arctracker.io/items/ferro.png",
+      "icon": "https://cdn.arctracker.io/items/v2/ferro_i.png",
       "rarity": "Common",
       "type": "Battle Rifle",
       "category": "Weapon",
@@ -4209,7 +4192,7 @@
         "originalEn": "Ferro II"
       },
       "description": "威力強大，但每次射擊後都必須重新裝填。",
-      "icon": "https://cdn.arctracker.io/items/ferro.png",
+      "icon": "https://cdn.arctracker.io/items/v2/ferro_ii.png",
       "rarity": "Common",
       "type": "Battle Rifle",
       "category": "Weapon",
@@ -4242,7 +4225,7 @@
         "originalEn": "Ferro III"
       },
       "description": "威力強大，但每次射擊後都必須重新裝填。",
-      "icon": "https://cdn.arctracker.io/items/ferro.png",
+      "icon": "https://cdn.arctracker.io/items/v2/ferro_iii.png",
       "rarity": "Common",
       "type": "Battle Rifle",
       "category": "Weapon",
@@ -4276,7 +4259,7 @@
         "originalEn": "Ferro IV"
       },
       "description": "威力強大，但每發射一次都必須重新裝填。",
-      "icon": "https://cdn.arctracker.io/items/ferro.png",
+      "icon": "https://cdn.arctracker.io/items/v2/ferro_iv.png",
       "rarity": "Common",
       "type": "Battle Rifle",
       "category": "Weapon",
@@ -4309,7 +4292,7 @@
         "originalEn": "Fertilizer"
       },
       "description": "可能值幾個硬幣。",
-      "icon": "https://cdn.arctracker.io/items/fertilizer.png",
+      "icon": "https://cdn.arctracker.io/items/v2/fertilizer.png",
       "rarity": "Uncommon",
       "type": "Nature",
       "category": "Nature",
@@ -4335,7 +4318,7 @@
         "originalEn": "Film Reel"
       },
       "description": "可能值幾個硬幣。",
-      "icon": "https://cdn.arctracker.io/items/film_reel.png",
+      "icon": "https://cdn.arctracker.io/items/v2/film_reel.png",
       "rarity": "Rare",
       "type": "Trinket",
       "category": "Trinket",
@@ -4356,7 +4339,7 @@
         "originalEn": "Fine Wristwatch"
       },
       "description": "完美地顯示時間，並展示你是一個極其高雅的人。",
-      "icon": "https://cdn.arctracker.io/items/fine_wristwatch.png",
+      "icon": "https://cdn.arctracker.io/items/v2/fine_wristwatch.png",
       "rarity": "Rare",
       "type": "Trinket",
       "category": "Trinket",
@@ -4377,7 +4360,7 @@
         "originalEn": "Fireball Burner"
       },
       "description": "可回收為ARC合金。可投擲以製造小型火焰。",
-      "icon": "https://cdn.arctracker.io/items/fireball_burner.png",
+      "icon": "https://cdn.arctracker.io/items/v2/fireball_burner.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -4404,7 +4387,7 @@
         "originalEn": "Firecracker"
       },
       "description": "一種會發出火花並帶來悅耳劈啪聲的裝置。",
-      "icon": "https://cdn.arctracker.io/items/firecracker.png",
+      "icon": "https://cdn.arctracker.io/items/v2/firecracker.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -4433,7 +4416,7 @@
         "originalEn": "Firefly Burner"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/firefly_burner.png",
+      "icon": "https://cdn.arctracker.io/items/v2/firefly_burner.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -4460,7 +4443,7 @@
         "originalEn": "Fireworks Box"
       },
       "description": "可遠端觸發的絢麗煙火組合，保證帶來一場表演。",
-      "icon": "https://cdn.arctracker.io/items/fireworks_box.png",
+      "icon": "https://cdn.arctracker.io/items/v2/fireworks_box.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -4489,7 +4472,7 @@
         "originalEn": "First Wave Compass"
       },
       "description": "雖然佈滿灰塵但仍能使用，在一切似乎都失去希望時幫助指引了方向。",
-      "icon": "https://cdn.arctracker.io/items/first_wave_compass.png",
+      "icon": "https://cdn.arctracker.io/items/v2/first_wave_compass.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -4506,7 +4489,7 @@
         "originalEn": "First Wave Rations"
       },
       "description": "這些微薄的補給常在隱蔽的火堆上加熱，據說曾為抵抗運動提供了動力。",
-      "icon": "https://cdn.arctracker.io/items/first_wave_rations.png",
+      "icon": "https://cdn.arctracker.io/items/v2/first_wave_rations.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -4523,7 +4506,7 @@
         "originalEn": "First Wave Tape"
       },
       "description": "在一台破舊的老式攝影機中發現的舊錄影帶。",
-      "icon": "https://cdn.arctracker.io/items/first_wave_tape.png",
+      "icon": "https://cdn.arctracker.io/items/v2/first_wave_tape.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -4540,7 +4523,7 @@
         "originalEn": "Flame Spray"
       },
       "description": "經典的臨時武器，必定留下焦痕。",
-      "icon": "https://cdn.arctracker.io/items/flame_spray.png",
+      "icon": "https://cdn.arctracker.io/items/v2/flame_spray.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -4568,7 +4551,7 @@
         "originalEn": "Flashy Duck"
       },
       "description": "由某位才華橫溢的人精心手繪——顯然。猜猜是誰？可以投擲來製造噪音。",
-      "icon": "https://cdn.arctracker.io/items/flashy_duck.png",
+      "icon": "https://cdn.arctracker.io/items/v2/flashy_duck.png",
       "rarity": "Rare",
       "type": "Trinket",
       "category": "Trinket",
@@ -4585,7 +4568,7 @@
         "originalEn": "Flow Controller"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/flow_controller.png",
+      "icon": "https://cdn.arctracker.io/items/v2/flow_controller.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -4612,7 +4595,7 @@
         "originalEn": "Flushing Terminal Key"
       },
       "description": "此鑰匙用於任務「The Stench of Corruption」，用來啟動沖洗終端機",
-      "icon": "https://cdn.arctracker.io/items/flushing_terminal_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/flushing_terminal_key.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -4629,7 +4612,7 @@
         "originalEn": "Fossilized Lightning"
       },
       "description": "在雷擊後有機會生成的物品。",
-      "icon": "https://cdn.arctracker.io/items/fossilized_lightning.png",
+      "icon": "https://cdn.arctracker.io/items/v2/fossilized_lightning.png",
       "rarity": "Epic",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -4655,7 +4638,7 @@
         "originalEn": "Free Loadout Augment"
       },
       "description": "新手掠奪者的基礎增強，提供稍多的背包空間和負重能力。",
-      "icon": "https://cdn.arctracker.io/items/free_loadout_augment.png",
+      "icon": "https://cdn.arctracker.io/items/v2/free_loadout_augment.png",
       "rarity": "Common",
       "type": "Augment",
       "category": "Augment",
@@ -4676,7 +4659,7 @@
         "originalEn": "Frequency Modulation Box"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/frequency_modulation_box.png",
+      "icon": "https://cdn.arctracker.io/items/v2/frequency_modulation_box.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -4703,7 +4686,7 @@
         "originalEn": "Fried Motherboard"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/fried_motherboard.png",
+      "icon": "https://cdn.arctracker.io/items/v2/fried_motherboard.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -4730,7 +4713,7 @@
         "originalEn": "Fruit Mix"
       },
       "description": "一種能適度增加生命值和耐力的食物。",
-      "icon": "https://cdn.arctracker.io/items/fruit_mix.png",
+      "icon": "https://cdn.arctracker.io/items/v2/fruit_mix.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -4752,7 +4735,7 @@
         "originalEn": "Frying Pan"
       },
       "description": "可以回收成製作材料。",
-      "icon": "https://cdn.arctracker.io/items/frying_pan.png",
+      "icon": "https://cdn.arctracker.io/items/v2/frying_pan.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -4778,7 +4761,7 @@
         "originalEn": "Garlic Press"
       },
       "description": "可以壓榨大蒜、橄欖，可能還有許多其他東西。",
-      "icon": "https://cdn.arctracker.io/items/garlic_press.png",
+      "icon": "https://cdn.arctracker.io/items/v2/garlic_press.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -4805,7 +4788,7 @@
         "originalEn": "Gas Grenade"
       },
       "description": "撞擊時釋放持續性毒雲，消耗效果範圍內所有掠奪者耐力的手榴彈。",
-      "icon": "https://cdn.arctracker.io/items/gas_grenade.png",
+      "icon": "https://cdn.arctracker.io/items/v2/gas_grenade.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -4835,7 +4818,7 @@
         "originalEn": "Gas Grenade Trap"
       },
       "description": "引爆毒氣手榴彈的雷射絆線。",
-      "icon": "https://cdn.arctracker.io/items/gas_grenade_trap.png",
+      "icon": "https://cdn.arctracker.io/items/v2/gas_grenade_trap.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -4856,7 +4839,7 @@
         "originalEn": "Gas Mine"
       },
       "description": "一種近距離觸發的地雷，會彈出並釋放快速消耗耐力的毒氣雲。",
-      "icon": "https://cdn.arctracker.io/items/gas_mine.png",
+      "icon": "https://cdn.arctracker.io/items/v2/gas_mine.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -4886,7 +4869,7 @@
         "originalEn": "Geiger Counter"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/geiger_counter.png",
+      "icon": "https://cdn.arctracker.io/items/v2/geiger_counter.png",
       "rarity": "Epic",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -4913,7 +4896,7 @@
         "originalEn": "Gentle Duck"
       },
       "description": "非常可愛。可以投擲來製造噪音。",
-      "icon": "https://cdn.arctracker.io/items/gentle_duck.png",
+      "icon": "https://cdn.arctracker.io/items/v2/gentle_duck.png",
       "rarity": "Uncommon",
       "type": "Trinket",
       "category": "Trinket",
@@ -4930,7 +4913,7 @@
         "originalEn": "Great Mullein"
       },
       "description": "用於製作醫療用品。可製作：草藥繃帶、消毒劑",
-      "icon": "https://cdn.arctracker.io/items/great_mullein.png",
+      "icon": "https://cdn.arctracker.io/items/v2/great_mullein.png",
       "rarity": "Uncommon",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -4956,7 +4939,7 @@
         "originalEn": "Green Light Stick"
       },
       "description": "可投擲的化學光源，照亮周圍區域。",
-      "icon": "https://cdn.arctracker.io/items/green_light_stick.png",
+      "icon": "https://cdn.arctracker.io/items/v2/green_light_stick.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -4984,7 +4967,7 @@
         "originalEn": "Hairpin I"
       },
       "description": "內建消音器。非常適合潛行，但在戰鬥中較難使用。",
-      "icon": "https://cdn.arctracker.io/items/hairpin_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/hairpin_i.png",
       "rarity": "Common",
       "type": "Pistol",
       "category": "Weapon",
@@ -5017,7 +5000,7 @@
         "originalEn": "Hairpin II"
       },
       "description": "內建消音器。非常適合潛行，但在戰鬥中較難使用。",
-      "icon": "https://cdn.arctracker.io/items/hairpin_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/hairpin_ii.png",
       "rarity": "Common",
       "type": "Pistol",
       "category": "Weapon",
@@ -5050,7 +5033,7 @@
         "originalEn": "Hairpin III"
       },
       "description": "內建消音器。非常適合潛行，但在戰鬥中較難使用。",
-      "icon": "https://cdn.arctracker.io/items/hairpin_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/hairpin_iii.png",
       "rarity": "Common",
       "type": "Pistol",
       "category": "Weapon",
@@ -5084,7 +5067,7 @@
         "originalEn": "Hairpin IV"
       },
       "description": "內建消音器。非常適合潛行，但在戰鬥中較難使用。",
-      "icon": "https://cdn.arctracker.io/items/hairpin_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/hairpin_iv.png",
       "rarity": "Common",
       "type": "Pistol",
       "category": "Weapon",
@@ -5117,7 +5100,7 @@
         "originalEn": "Headphones"
       },
       "description": "可以回收成製作材料。",
-      "icon": "https://cdn.arctracker.io/items/headphones.png",
+      "icon": "https://cdn.arctracker.io/items/v2/headphones.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -5145,7 +5128,7 @@
         "originalEn": "Heavy Ammo"
       },
       "description": "相容武器：Ferro、Anvil、Bettina",
-      "icon": "https://cdn.arctracker.io/items/heavy_ammo.png",
+      "icon": "https://cdn.arctracker.io/items/v2/heavy_ammo.png",
       "rarity": "Common",
       "type": "Ammunition",
       "category": "Ammunition",
@@ -5167,7 +5150,7 @@
         "originalEn": "Heavy Fuze Grenade"
       },
       "description": "延遲引爆的手榴彈，在其範圍內造成爆炸傷害。",
-      "icon": "https://cdn.arctracker.io/items/heavy_fuze_grenade.png",
+      "icon": "https://cdn.arctracker.io/items/v2/heavy_fuze_grenade.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -5197,7 +5180,7 @@
         "originalEn": "Heavy Gun Parts"
       },
       "description": "用於製作武器。可製作：Vulcano、Hullcracker、Bettina、複雜槍械零件",
-      "icon": "https://cdn.arctracker.io/items/heavy_gun_parts.png",
+      "icon": "https://cdn.arctracker.io/items/v2/heavy_gun_parts.png",
       "rarity": "Rare",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -5228,7 +5211,7 @@
         "originalEn": "Heavy Shield"
       },
       "description": "重型護盾，可阻擋大量傷害，但會大幅降低機動性。",
-      "icon": "https://cdn.arctracker.io/items/heavy_shield.png",
+      "icon": "https://cdn.arctracker.io/items/v2/heavy_shield.png",
       "rarity": "Epic",
       "type": "Shield",
       "category": "Shield",
@@ -5257,7 +5240,7 @@
         "originalEn": "Herbal Bandage"
       },
       "description": "一種臨時醫療物品，可隨時間逐漸恢復生命值。",
-      "icon": "https://cdn.arctracker.io/items/herbal_bandage.png",
+      "icon": "https://cdn.arctracker.io/items/v2/herbal_bandage.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -5287,7 +5270,7 @@
         "originalEn": "Hidden Bunker Key"
       },
       "description": "一把臨時製作的鑰匙，可讓你打開太空港中的一個地堡。",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/hidden_bunker_key.png",
       "rarity": "Common",
       "type": "Key",
       "category": "Key",
@@ -5304,7 +5287,7 @@
         "originalEn": "Horizontal Grip"
       },
       "description": "適度降低垂直和水平後座力。",
-      "icon": "https://cdn.arctracker.io/items/horizontal_grip.png",
+      "icon": "https://cdn.arctracker.io/items/v2/horizontal_grip.png",
       "rarity": "Epic",
       "type": "Modification",
       "category": "Modification",
@@ -5328,7 +5311,7 @@
         "originalEn": "Hornet Driver"
       },
       "description": "可投擲並短暫擊暈附近目標",
-      "icon": "https://cdn.arctracker.io/items/hornet_driver.png",
+      "icon": "https://cdn.arctracker.io/items/v2/hornet_driver.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -5355,7 +5338,7 @@
         "originalEn": "Household Cleaner"
       },
       "description": "可以回收成化學品。",
-      "icon": "https://cdn.arctracker.io/items/household_cleaner.png",
+      "icon": "https://cdn.arctracker.io/items/v2/household_cleaner.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -5381,7 +5364,7 @@
         "originalEn": "Hullcracker I"
       },
       "description": "發射爆炸性彈藥，僅在擊中ARC時引爆。",
-      "icon": "https://cdn.arctracker.io/items/hullcracker.png",
+      "icon": "https://cdn.arctracker.io/items/v2/hullcracker_i.png",
       "rarity": "Epic",
       "type": "Special",
       "category": "Weapon",
@@ -5415,7 +5398,7 @@
         "originalEn": "Hullcracker II"
       },
       "description": "發射爆炸性彈藥，僅在擊中 ARC 時引爆。",
-      "icon": "https://cdn.arctracker.io/items/hullcracker.png",
+      "icon": "https://cdn.arctracker.io/items/v2/hullcracker_ii.png",
       "rarity": "Epic",
       "type": "Special",
       "category": "Weapon",
@@ -5449,7 +5432,7 @@
         "originalEn": "Hullcracker III"
       },
       "description": "發射爆炸性彈藥，僅在擊中 ARC 時引爆。",
-      "icon": "https://cdn.arctracker.io/items/hullcracker.png",
+      "icon": "https://cdn.arctracker.io/items/v2/hullcracker_iii.png",
       "rarity": "Epic",
       "type": "Special",
       "category": "Weapon",
@@ -5483,7 +5466,7 @@
         "originalEn": "Hullcracker IV"
       },
       "description": "發射爆炸性彈藥，僅在擊中 ARC 時引爆。",
-      "icon": "https://cdn.arctracker.io/items/hullcracker.png",
+      "icon": "https://cdn.arctracker.io/items/v2/hullcracker_iv.png",
       "rarity": "Epic",
       "type": "Special",
       "category": "Weapon",
@@ -5516,7 +5499,7 @@
         "originalEn": "Humidifier"
       },
       "description": "可以回收成製作材料。",
-      "icon": "https://cdn.arctracker.io/items/humidifier.png",
+      "icon": "https://cdn.arctracker.io/items/v2/humidifier.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -5543,7 +5526,7 @@
         "originalEn": "Ice Cream Scooper"
       },
       "description": "據推測，在以前的世界裡，舀東西是一種最喜愛的消遣。",
-      "icon": "https://cdn.arctracker.io/items/ice_cream_scooper.png",
+      "icon": "https://cdn.arctracker.io/items/v2/ice_cream_scooper.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -5569,7 +5552,7 @@
         "originalEn": "Il Toro I"
       },
       "description": "具有大範圍彈道擴散、急劇衰減和高傷害輸出。",
-      "icon": "https://cdn.arctracker.io/items/il_toro.png",
+      "icon": "https://cdn.arctracker.io/items/v2/il_toro_i.png",
       "rarity": "Uncommon",
       "type": "Shotgun",
       "category": "Weapon",
@@ -5602,7 +5585,7 @@
         "originalEn": "Il Toro II"
       },
       "description": "具有大範圍彈道擴散、急劇衰減和高傷害輸出。",
-      "icon": "https://cdn.arctracker.io/items/il_toro.png",
+      "icon": "https://cdn.arctracker.io/items/v2/il_toro_ii.png",
       "rarity": "Uncommon",
       "type": "Shotgun",
       "category": "Weapon",
@@ -5636,7 +5619,7 @@
         "originalEn": "Il Toro III"
       },
       "description": "泵動式霰彈槍，具有大範圍彈丸擴散、急劇衰減和高傷害輸出。",
-      "icon": "https://cdn.arctracker.io/items/il_toro.png",
+      "icon": "https://cdn.arctracker.io/items/v2/il_toro_iii.png",
       "rarity": "Uncommon",
       "type": "Shotgun",
       "category": "Weapon",
@@ -5670,7 +5653,7 @@
         "originalEn": "Il Toro IV"
       },
       "description": "泵動式霰彈槍，具有大範圍彈丸擴散、急劇衰減和高傷害輸出。",
-      "icon": "https://cdn.arctracker.io/items/il_toro.png",
+      "icon": "https://cdn.arctracker.io/items/v2/il_toro_iv.png",
       "rarity": "Uncommon",
       "type": "Shotgun",
       "category": "Weapon",
@@ -5703,7 +5686,7 @@
         "originalEn": "Impure ARC Coolant"
       },
       "description": "可以回收成製作材料。",
-      "icon": "https://cdn.arctracker.io/items/impure_arc_coolant.png",
+      "icon": "https://cdn.arctracker.io/items/v2/impure_arc_coolant.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -5729,7 +5712,7 @@
         "originalEn": "Industrial Battery"
       },
       "description": "用於工業設備的大型高容量電池。",
-      "icon": "https://cdn.arctracker.io/items/industrial_battery.png",
+      "icon": "https://cdn.arctracker.io/items/v2/industrial_battery.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -5756,7 +5739,7 @@
         "originalEn": "Industrial Charger"
       },
       "description": "可以回收成製作材料。",
-      "icon": "https://cdn.arctracker.io/items/industrial_charger.png",
+      "icon": "https://cdn.arctracker.io/items/v2/industrial_charger.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -5783,7 +5766,7 @@
         "originalEn": "Industrial Magnet"
       },
       "description": "可以回收成製作材料。",
-      "icon": "https://cdn.arctracker.io/items/industrial_magnet.png",
+      "icon": "https://cdn.arctracker.io/items/v2/industrial_magnet.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -5810,7 +5793,7 @@
         "originalEn": "Ion Sputter"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/ion_sputter.png",
+      "icon": "https://cdn.arctracker.io/items/v2/ion_sputter.png",
       "rarity": "Epic",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -5837,7 +5820,7 @@
         "originalEn": "Jolt Mine"
       },
       "description": "一種近距離觸發的地雷，會彈起並暈眩範圍內的所有目標。",
-      "icon": "https://cdn.arctracker.io/items/jolt_mine.png",
+      "icon": "https://cdn.arctracker.io/items/v2/jolt_mine.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -5867,7 +5850,7 @@
         "originalEn": "Jupiter"
       },
       "description": "一把栓動式狙擊步槍，擁有卓越的傷害輸出和精準度，但操作緩慢。",
-      "icon": "https://cdn.arctracker.io/items/jupiter.png",
+      "icon": "https://cdn.arctracker.io/items/v2/jupiter.png",
       "rarity": "Legendary",
       "type": "Sniper Rifle",
       "category": "Weapon",
@@ -5898,7 +5881,7 @@
         "originalEn": "Kettle I"
       },
       "description": "快速且精準，但子彈速度較慢且裝填時間較長。",
-      "icon": "https://cdn.arctracker.io/items/kettle.png",
+      "icon": "https://cdn.arctracker.io/items/v2/kettle_i.png",
       "rarity": "Common",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -5931,7 +5914,7 @@
         "originalEn": "Kettle II"
       },
       "description": "半自動突擊步槍。快速且精準，但子彈速度較慢且裝填時間較長。",
-      "icon": "https://cdn.arctracker.io/items/kettle.png",
+      "icon": "https://cdn.arctracker.io/items/v2/kettle_ii.png",
       "rarity": "Common",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -5965,7 +5948,7 @@
         "originalEn": "Kettle III"
       },
       "description": "快速且精準，但子彈速度慢且重新裝填時間長。",
-      "icon": "https://cdn.arctracker.io/items/kettle.png",
+      "icon": "https://cdn.arctracker.io/items/v2/kettle_iii.png",
       "rarity": "Common",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -5999,7 +5982,7 @@
         "originalEn": "Kettle IV"
       },
       "description": "快速且精準，但子彈速度慢且重新裝填時間長。",
-      "icon": "https://cdn.arctracker.io/items/kettle.png",
+      "icon": "https://cdn.arctracker.io/items/v2/kettle_iv.png",
       "rarity": "Common",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -6032,7 +6015,7 @@
         "originalEn": "Kinetic Converter"
       },
       "description": "適度提升射速。相容武器：Arpeggio、Rattler、Kettle、Ferro、Renegade",
-      "icon": "https://cdn.arctracker.io/items/kinetic_converter.png",
+      "icon": "https://cdn.arctracker.io/items/v2/kinetic_converter.png",
       "rarity": "Legendary",
       "type": "Modification",
       "category": "Modification",
@@ -6056,7 +6039,7 @@
         "originalEn": "Laboratory Reagents"
       },
       "description": "用於實驗室實驗的一組化學試劑。",
-      "icon": "https://cdn.arctracker.io/items/laboratory_reagents.png",
+      "icon": "https://cdn.arctracker.io/items/v2/laboratory_reagents.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -6083,7 +6066,7 @@
         "originalEn": "Lance's Mixtape (5th Edition)"
       },
       "description": "蘭斯出於某種原因，親自在鏽帶各處放置了許多這些東西。",
-      "icon": "https://cdn.arctracker.io/items/lances_mixtape_5th_edition.png",
+      "icon": "https://cdn.arctracker.io/items/v2/lances_mixtape_5th_edition.png",
       "rarity": "Epic",
       "type": "Trinket",
       "category": "Trinket",
@@ -6104,7 +6087,7 @@
         "originalEn": "Launcher Ammo"
       },
       "description": "主要由Hullcracker使用的反ARC彈頭。相容武器：Hullcracker",
-      "icon": "https://cdn.arctracker.io/items/launcher_ammo.png",
+      "icon": "https://cdn.arctracker.io/items/v2/launcher_ammo.png",
       "rarity": "Rare",
       "type": "Ammunition",
       "category": "Ammunition",
@@ -6126,7 +6109,7 @@
         "originalEn": "Leaper Pulse Unit"
       },
       "description": "可回收為製作材料。可投擲以創造猛烈的奇點。",
-      "icon": "https://cdn.arctracker.io/items/leaper_pulse_unit.png",
+      "icon": "https://cdn.arctracker.io/items/v2/leaper_pulse_unit.png",
       "rarity": "Epic",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -6153,7 +6136,7 @@
         "originalEn": "Lemon"
       },
       "description": "可食用以恢復少量耐力。",
-      "icon": "https://cdn.arctracker.io/items/lemon.png",
+      "icon": "https://cdn.arctracker.io/items/v2/lemon.png",
       "rarity": "Uncommon",
       "type": "Nature",
       "category": "Nature",
@@ -6179,7 +6162,7 @@
         "originalEn": "\"Leviathan's Crown\" Ship Model"
       },
       "description": "無論哪個時代都堪稱壯觀，這艘兇悍的商船對玻璃纖維技術帶來的空氣動力學優勢毫不在意。",
-      "icon": "https://cdn.arctracker.io/items/leviathans_crown_ship_model.png",
+      "icon": "https://cdn.arctracker.io/items/v2/leviathans_crown_ship_model.png",
       "rarity": "Legendary",
       "type": "Trinket",
       "category": "Trinket",
@@ -6213,7 +6196,7 @@
         "originalEn": "Lidar Scanner"
       },
       "description": "一種基於雷射的掃描儀，用於偵測地球表面最細微的變化",
-      "icon": "https://cdn.arctracker.io/items/lidar_scanner.png",
+      "icon": "https://cdn.arctracker.io/items/v2/lidar_scanner.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -6230,7 +6213,7 @@
         "originalEn": "Light Ammo"
       },
       "description": "主要用於衝鋒槍和輕型手槍的輕型子彈。相容武器：Burletta、Stitcher、Kettle、Hairpin、Bobcat",
-      "icon": "https://cdn.arctracker.io/items/light_ammo.png",
+      "icon": "https://cdn.arctracker.io/items/v2/light_ammo.png",
       "rarity": "Common",
       "type": "Ammunition",
       "category": "Ammunition",
@@ -6252,7 +6235,7 @@
         "originalEn": "Light Bulb"
       },
       "description": "沒有光，地下生活將不可能。",
-      "icon": "https://cdn.arctracker.io/items/light_bulb.png",
+      "icon": "https://cdn.arctracker.io/items/v2/light_bulb.png",
       "rarity": "Uncommon",
       "type": "Trinket",
       "category": "Trinket",
@@ -6272,7 +6255,7 @@
         "originalEn": "Light Gun Parts"
       },
       "description": "用於手槍和衝鋒槍的各種備用零件。可製作：Bobcat、複雜槍械零件",
-      "icon": "https://cdn.arctracker.io/items/light_gun_parts.png",
+      "icon": "https://cdn.arctracker.io/items/v2/light_gun_parts.png",
       "rarity": "Rare",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -6303,7 +6286,7 @@
         "originalEn": "Light Impact Grenade"
       },
       "description": "一種撞擊時引爆的手榴彈，在小範圍內造成爆炸傷害。",
-      "icon": "https://cdn.arctracker.io/items/light_impact_grenade.png",
+      "icon": "https://cdn.arctracker.io/items/v2/light_impact_grenade.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -6333,7 +6316,7 @@
         "originalEn": "Light Shield"
       },
       "description": "輕量護盾，可阻擋少量傷害，且不影響機動性。",
-      "icon": "https://cdn.arctracker.io/items/light_shield.png",
+      "icon": "https://cdn.arctracker.io/items/v2/light_shield.png",
       "rarity": "Uncommon",
       "type": "Shield",
       "category": "Shield",
@@ -6361,7 +6344,7 @@
         "originalEn": "Lightweight Stock"
       },
       "description": "適度提升瞄準速度和拔槍速度。相容武器：Arpeggio、Kettle、Ferro、Renegade、Hullcracker",
-      "icon": "https://cdn.arctracker.io/items/lightweight_stock.png",
+      "icon": "https://cdn.arctracker.io/items/v2/lightweight_stock.png",
       "rarity": "Epic",
       "type": "Modification",
       "category": "Modification",
@@ -6390,7 +6373,7 @@
         "originalEn": "Li'l Smoke Grenade"
       },
       "description": "著彈時產生濃密但範圍較小的煙霧，阻擋ARC和其他掠奪者的視線。",
-      "icon": "https://cdn.arctracker.io/items/lil_smoke_grenade.png",
+      "icon": "https://cdn.arctracker.io/items/v2/lil_smoke_grenade.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -6420,7 +6403,7 @@
         "originalEn": "Looting Mk. 1"
       },
       "description": "基礎掠奪強化。更多背包欄位和負重容量，但防禦和戰術能力較低。",
-      "icon": "https://cdn.arctracker.io/items/looting_mk1.png",
+      "icon": "https://cdn.arctracker.io/items/v2/looting_mk1.png",
       "rarity": "Uncommon",
       "type": "Augment",
       "category": "Augment",
@@ -6449,7 +6432,7 @@
         "originalEn": "Looting Mk. 2"
       },
       "description": "大幅提升掠奪潛力；增加飾品欄位。0.5秒後自動甩掉附著的蜱蟲。",
-      "icon": "https://cdn.arctracker.io/items/looting_mk2.png",
+      "icon": "https://cdn.arctracker.io/items/v2/looting_mk2.png",
       "rarity": "Rare",
       "type": "Augment",
       "category": "Augment",
@@ -6478,7 +6461,7 @@
         "originalEn": "Looting Mk. 3 (Cautious)"
       },
       "description": "一種掠奪增強裝置，犧牲部分負重能力以提升生存能力。護盾破裂時自動注射弱效腎上腺素。具有固定冷卻時間。",
-      "icon": "https://cdn.arctracker.io/items/looting_mk3_cautious.png",
+      "icon": "https://cdn.arctracker.io/items/v2/looting_mk3_cautious.png",
       "rarity": "Epic",
       "type": "Augment",
       "category": "Augment",
@@ -6507,7 +6490,7 @@
         "originalEn": "Looting Mk. 3 (Safekeeper)"
       },
       "description": "一種犧牲負重與實用性，以換取更高搜刮潛力的搜刮強化裝置。具備一個可存放任何物品的保險袋。",
-      "icon": "https://cdn.arctracker.io/items/looting_mk3_safekeeper.png",
+      "icon": "https://cdn.arctracker.io/items/v2/looting_mk3_safekeeper.png",
       "rarity": "Epic",
       "type": "Augment",
       "category": "Augment",
@@ -6536,7 +6519,7 @@
         "originalEn": "Looting Mk. 3 (Survivor)"
       },
       "description": "重型馱獸增強裝備。大載重容量和大背包空間。倒地且靜止時，生命值恢復至最大倒地生命值的75%。",
-      "icon": "https://cdn.arctracker.io/items/looting_mk3_survivor.png",
+      "icon": "https://cdn.arctracker.io/items/v2/looting_mk3_survivor.png",
       "rarity": "Epic",
       "type": "Augment",
       "category": "Augment",
@@ -6565,7 +6548,7 @@
         "originalEn": "Lure Grenade"
       },
       "description": "一種可黏附在表面的噪音裝置，可分散附近ARC機械的注意力並吸引其火力。",
-      "icon": "https://cdn.arctracker.io/items/lure_grenade.png",
+      "icon": "https://cdn.arctracker.io/items/v2/lure_grenade.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -6594,7 +6577,7 @@
         "originalEn": "Lure Grenade Trap"
       },
       "description": "引爆誘餌手榴彈的雷射絆線。",
-      "icon": "https://cdn.arctracker.io/items/lure_grenade_trap.png",
+      "icon": "https://cdn.arctracker.io/items/v2/lure_grenade_trap.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -6615,7 +6598,7 @@
         "originalEn": "Magnet"
       },
       "description": "用於製作各種物品。可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/magnet.png",
+      "icon": "https://cdn.arctracker.io/items/v2/magnet.png",
       "rarity": "Uncommon",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -6641,7 +6624,7 @@
         "originalEn": "Magnetic Accelerator"
       },
       "description": "用於製作高級武器。可製作：Tempest、Equalizer、Vulcano、Jupiter、Hullcracker",
-      "icon": "https://cdn.arctracker.io/items/magnetic_accelerator.png",
+      "icon": "https://cdn.arctracker.io/items/v2/magnetic_accelerator.png",
       "rarity": "Epic",
       "type": "Refined Material",
       "category": "Refined Material",
@@ -6673,7 +6656,7 @@
         "originalEn": "Magnetron"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/magnetron.png",
+      "icon": "https://cdn.arctracker.io/items/v2/magnetron.png",
       "rarity": "Epic",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -6700,7 +6683,7 @@
         "originalEn": "Major Aiva's Mementos"
       },
       "description": "",
-      "icon": "https://cdn.arctracker.io/items/major_aivas_mementos.png",
+      "icon": "https://cdn.arctracker.io/items/v2/major_aivas_mementos.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -6717,7 +6700,7 @@
         "originalEn": "Major Aiva's Patch"
       },
       "description": "一塊破損的臂章，在瓦礫和廢墟中發現。",
-      "icon": "https://cdn.arctracker.io/items/major_aivas_patch.png",
+      "icon": "https://cdn.arctracker.io/items/v2/major_aivas_patch.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -6734,7 +6717,7 @@
         "originalEn": "Marano Market Business Card"
       },
       "description": "這張名片上潦草的字跡幾乎遮住了馬拉諾市場的標誌。",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/marano_market_business_card.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -6751,7 +6734,7 @@
         "originalEn": "Matriarch Reactor"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/matriarch_reactor.png",
+      "icon": "https://cdn.arctracker.io/items/v2/matriarch_reactor.png",
       "rarity": "Legendary",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -6775,7 +6758,7 @@
         "originalEn": "Mechanical Components"
       },
       "description": "用於製作各種物品。可回收成製作材料。用於製作：Il Toro、Burletta、Anvil、槍口制退器II、延長中型彈匣II",
-      "icon": "https://cdn.arctracker.io/items/mechanical_components.png",
+      "icon": "https://cdn.arctracker.io/items/v2/mechanical_components.png",
       "rarity": "Uncommon",
       "type": "Refined Material",
       "category": "Refined Material",
@@ -6807,7 +6790,7 @@
         "originalEn": "Medium Ammo"
       },
       "description": "相容武器：Rattler、Tempest、Arpeggio、Renegade、Torrente",
-      "icon": "https://cdn.arctracker.io/items/medium_ammo.png",
+      "icon": "https://cdn.arctracker.io/items/v2/medium_ammo.png",
       "rarity": "Common",
       "type": "Ammunition",
       "category": "Ammunition",
@@ -6829,7 +6812,7 @@
         "originalEn": "Medium Gun Parts"
       },
       "description": "用於步槍的各種備用零件。用於製作：Torrente、Venator、Osprey、Renegade、Tempest",
-      "icon": "https://cdn.arctracker.io/items/medium_gun_parts.png",
+      "icon": "https://cdn.arctracker.io/items/v2/medium_gun_parts.png",
       "rarity": "Rare",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -6860,7 +6843,7 @@
         "originalEn": "Medium Shield"
       },
       "description": "標準護盾，可阻擋中等程度的傷害，但會適度降低機動性。",
-      "icon": "https://cdn.arctracker.io/items/medium_shield.png",
+      "icon": "https://cdn.arctracker.io/items/v2/medium_shield.png",
       "rarity": "Rare",
       "type": "Shield",
       "category": "Shield",
@@ -6888,7 +6871,7 @@
         "originalEn": "Metal Brackets"
       },
       "description": "可以回收為金屬零件。",
-      "icon": "https://cdn.arctracker.io/items/metal_brackets.png",
+      "icon": "https://cdn.arctracker.io/items/v2/metal_brackets.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -6915,7 +6898,7 @@
         "originalEn": "Metal Parts"
       },
       "description": "用於製作各種物品。可製作：發射器彈藥、髮夾、重型彈藥、費羅、水壺",
-      "icon": "https://cdn.arctracker.io/items/metal_parts.png",
+      "icon": "https://cdn.arctracker.io/items/v2/metal_parts.png",
       "rarity": "Common",
       "type": "Basic Material",
       "category": "Basic Material",
@@ -6938,7 +6921,7 @@
         "originalEn": "Microscope"
       },
       "description": "可以回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/microscope.png",
+      "icon": "https://cdn.arctracker.io/items/v2/microscope.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -6965,7 +6948,7 @@
         "originalEn": "Mini Centrifuge"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/mini_centrifuge.png",
+      "icon": "https://cdn.arctracker.io/items/v2/mini_centrifuge.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -6992,7 +6975,7 @@
         "originalEn": "Mod Components"
       },
       "description": "用於製作武器改裝。可回收為製作材料。可製作：輕量化槍托、霰彈槍收束器 III、延長霰彈槍彈匣 III、軟墊槍托、補償器 III",
-      "icon": "https://cdn.arctracker.io/items/mod_components.png",
+      "icon": "https://cdn.arctracker.io/items/v2/mod_components.png",
       "rarity": "Rare",
       "type": "Refined Material",
       "category": "Refined Material",
@@ -7024,7 +7007,7 @@
         "originalEn": "Moisture Meter"
       },
       "description": "一個必須交給田文以完成意外的主動任務的任務物品。",
-      "icon": "https://cdn.arctracker.io/items/moisture_meter.png",
+      "icon": "https://cdn.arctracker.io/items/v2/moisture_meter.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -7041,7 +7024,7 @@
         "originalEn": "Moss"
       },
       "description": "可用於恢復少量生命值。",
-      "icon": "https://cdn.arctracker.io/items/moss.png",
+      "icon": "https://cdn.arctracker.io/items/v2/moss.png",
       "rarity": "Rare",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -7067,7 +7050,7 @@
         "originalEn": "Motor"
       },
       "description": "小型電動馬達，可用於各種裝置。",
-      "icon": "https://cdn.arctracker.io/items/motor.png",
+      "icon": "https://cdn.arctracker.io/items/v2/motor.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -7094,7 +7077,7 @@
         "originalEn": "Mushroom"
       },
       "description": "可以食用以恢復少量生命值。",
-      "icon": "https://cdn.arctracker.io/items/mushroom.png",
+      "icon": "https://cdn.arctracker.io/items/v2/mushroom.png",
       "rarity": "Uncommon",
       "type": "Nature",
       "category": "Nature",
@@ -7114,7 +7097,7 @@
         "originalEn": "Music Album"
       },
       "description": "非常適合在家放鬆的夜晚、休閒聚會和私人空氣吉他演奏會。",
-      "icon": "https://cdn.arctracker.io/items/music_album.png",
+      "icon": "https://cdn.arctracker.io/items/v2/music_album.png",
       "rarity": "Rare",
       "type": "Trinket",
       "category": "Trinket",
@@ -7135,7 +7118,7 @@
         "originalEn": "Music Box"
       },
       "description": "價值不菲。",
-      "icon": "https://cdn.arctracker.io/items/music_box.png",
+      "icon": "https://cdn.arctracker.io/items/v2/music_box.png",
       "rarity": "Rare",
       "type": "Trinket",
       "category": "Trinket",
@@ -7157,7 +7140,7 @@
         "originalEn": "Muzzle Brake I"
       },
       "description": "略微降低垂直後座力和水平後座力。相容武器：Rattler、Ferro、Burletta、Stitcher、Tempest",
-      "icon": "https://cdn.arctracker.io/items/muzzle_brake_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/muzzle_brake_i.png",
       "rarity": "Common",
       "type": "Modification",
       "category": "Modification",
@@ -7185,7 +7168,7 @@
         "originalEn": "Muzzle Brake II"
       },
       "description": "適度降低垂直後座力和水平後座力。相容武器：Tempest、Arpeggio、Kettle、Ferro、Renegade",
-      "icon": "https://cdn.arctracker.io/items/muzzle_brake_ii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/muzzle_brake_ii.png",
       "rarity": "Uncommon",
       "type": "Modification",
       "category": "Modification",
@@ -7214,7 +7197,7 @@
         "originalEn": "Muzzle Brake III"
       },
       "description": "大幅減少垂直後座力和水平後座力。相容武器：琶音、鐵衛、叛徒、鐵砧、縫合者",
-      "icon": "https://cdn.arctracker.io/items/muzzle_brake_iii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/muzzle_brake_iii.png",
       "rarity": "Rare",
       "type": "Modification",
       "category": "Modification",
@@ -7243,7 +7226,7 @@
         "originalEn": "Noisemaker"
       },
       "description": "可部署的接近感應器，偵測到敵方掠奪者時會發出警報。",
-      "icon": "https://cdn.arctracker.io/items/noisemaker.png",
+      "icon": "https://cdn.arctracker.io/items/v2/noisemaker.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -7270,7 +7253,7 @@
         "originalEn": "Number Plate"
       },
       "description": "可回收為金屬零件。",
-      "icon": "https://cdn.arctracker.io/items/number_plate.png",
+      "icon": "https://cdn.arctracker.io/items/v2/number_plate.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -7296,7 +7279,7 @@
         "originalEn": "Nutrient Meter"
       },
       "description": "一個必須交給田文以完成意外的主動任務的任務物品。",
-      "icon": "https://cdn.arctracker.io/items/nutrient_meter.png",
+      "icon": "https://cdn.arctracker.io/items/v2/nutrient_meter.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -7313,7 +7296,7 @@
         "originalEn": "Official Shutdown Documentation"
       },
       "description": "",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/official_shutdown_documentation.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -7330,7 +7313,7 @@
         "originalEn": "Oil"
       },
       "description": "用於製作武器和爆裂物。可回收為化學品。用於製作：Renegade、爆炸化合物、烈焰手榴彈",
-      "icon": "https://cdn.arctracker.io/items/oil.png",
+      "icon": "https://cdn.arctracker.io/items/v2/oil.png",
       "rarity": "Uncommon",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -7356,7 +7339,7 @@
         "originalEn": "Old World Books"
       },
       "description": "過去以碎片的形式殘存，雖往往枯燥平凡，但對合適的人來說卻是無價之寶。",
-      "icon": "https://cdn.arctracker.io/items/old_world_books.png",
+      "icon": "https://cdn.arctracker.io/items/v2/old_world_books.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -7373,7 +7356,7 @@
         "originalEn": "Olives"
       },
       "description": "可以食用以恢復少量體力。",
-      "icon": "https://cdn.arctracker.io/items/olives.png",
+      "icon": "https://cdn.arctracker.io/items/v2/olives.png",
       "rarity": "Uncommon",
       "type": "Nature",
       "category": "Nature",
@@ -7399,7 +7382,7 @@
         "originalEn": "Osprey I"
       },
       "description": "擁有可靠的傷害和精準度。",
-      "icon": "https://cdn.arctracker.io/items/osprey.png",
+      "icon": "https://cdn.arctracker.io/items/v2/osprey_i.png",
       "rarity": "Rare",
       "type": "Sniper Rifle",
       "category": "Weapon",
@@ -7433,7 +7416,7 @@
         "originalEn": "Osprey II"
       },
       "description": "一把配備瞄準鏡的栓動式狙擊步槍，具有可靠的傷害輸出和精準度。",
-      "icon": "https://cdn.arctracker.io/items/osprey.png",
+      "icon": "https://cdn.arctracker.io/items/v2/osprey_ii.png",
       "rarity": "Rare",
       "type": "Sniper Rifle",
       "category": "Weapon",
@@ -7467,7 +7450,7 @@
         "originalEn": "Osprey III"
       },
       "description": "一把配備瞄準鏡的栓動式狙擊步槍，具有可靠的傷害輸出和精準度。",
-      "icon": "https://cdn.arctracker.io/items/osprey.png",
+      "icon": "https://cdn.arctracker.io/items/v2/osprey_iii.png",
       "rarity": "Rare",
       "type": "Sniper Rifle",
       "category": "Weapon",
@@ -7501,7 +7484,7 @@
         "originalEn": "Osprey IV"
       },
       "description": "一把配備瞄準鏡的栓動式狙擊步槍，具有可靠的傷害輸出和精準度。",
-      "icon": "https://cdn.arctracker.io/items/osprey.png",
+      "icon": "https://cdn.arctracker.io/items/v2/osprey_iv.png",
       "rarity": "Rare",
       "type": "Sniper Rifle",
       "category": "Weapon",
@@ -7534,7 +7517,7 @@
         "originalEn": "Padded Stock"
       },
       "description": "顯著提升穩定性。相容武器：Arpeggio、Rattler、Ferro、Renegade、Torrente",
-      "icon": "https://cdn.arctracker.io/items/padded_stock.png",
+      "icon": "https://cdn.arctracker.io/items/v2/padded_stock.png",
       "rarity": "Epic",
       "type": "Modification",
       "category": "Modification",
@@ -7563,7 +7546,7 @@
         "originalEn": "Painted Box"
       },
       "description": "可能值幾枚硬幣。",
-      "icon": "https://cdn.arctracker.io/items/painted_box.png",
+      "icon": "https://cdn.arctracker.io/items/v2/painted_box.png",
       "rarity": "Uncommon",
       "type": "Trinket",
       "category": "Trinket",
@@ -7583,7 +7566,7 @@
         "originalEn": "Patrol Car Key"
       },
       "description": "巡邏車的鑰匙。",
-      "icon": "https://cdn.arctracker.io/items/patrol_car_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/patrol_car_key.png",
       "rarity": "Uncommon",
       "type": "Key",
       "category": "Key",
@@ -7603,7 +7586,7 @@
         "originalEn": "Photoelectric Cloak"
       },
       "description": "能讓使用者躲避ARC的裝置。",
-      "icon": "https://cdn.arctracker.io/items/photoelectric_cloak.png",
+      "icon": "https://cdn.arctracker.io/items/v2/photoelectric_cloak.png",
       "rarity": "Epic",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -7625,7 +7608,7 @@
       },
       "stackSize": 1,
       "value": 5000,
-      "weight": 1
+      "weight": 3
     },
     "pilgrims_peak_security_code": {
       "name": {
@@ -7633,7 +7616,7 @@
         "originalEn": "Pilgrim's Peak Security Code"
       },
       "description": "解鎖藍門上鎖大門所需的四個安全密碼之一。在朝聖者之巔找到。",
-      "icon": "https://cdn.arctracker.io/items/security_code.png",
+      "icon": "https://cdn.arctracker.io/items/v2/pilgrims_peak_security_code.png",
       "rarity": "Common",
       "type": "Key",
       "category": "Key",
@@ -7650,7 +7633,7 @@
         "originalEn": "Plastic Parts"
       },
       "description": "用於製作各種物品。可製作：髮夾、輕型護盾、掠奪 Mk. 1、輕型衝擊手榴彈、霰彈槍擴充彈匣 I",
-      "icon": "https://cdn.arctracker.io/items/plastic_parts.png",
+      "icon": "https://cdn.arctracker.io/items/v2/plastic_parts.png",
       "rarity": "Common",
       "type": "Basic Material",
       "category": "Basic Material",
@@ -7672,7 +7655,7 @@
         "originalEn": "Playing Cards"
       },
       "description": "斯佩蘭扎人喜歡看誰能搭出最高的塔——在震動將它們推倒之前。",
-      "icon": "https://cdn.arctracker.io/items/playing_cards.png",
+      "icon": "https://cdn.arctracker.io/items/v2/playing_cards.png",
       "rarity": "Rare",
       "type": "Trinket",
       "category": "Trinket",
@@ -7693,7 +7676,7 @@
         "originalEn": "Polluted Air Filter"
       },
       "description": "可回收為製作組件。",
-      "icon": "https://cdn.arctracker.io/items/polluted_air_filter.png",
+      "icon": "https://cdn.arctracker.io/items/v2/polluted_air_filter.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -7720,7 +7703,7 @@
         "originalEn": "Pop Trigger"
       },
       "description": "可以回收成製作材料。",
-      "icon": "https://cdn.arctracker.io/items/pop_trigger.png",
+      "icon": "https://cdn.arctracker.io/items/v2/pop_trigger.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -7747,7 +7730,7 @@
         "originalEn": "Portable TV"
       },
       "description": "可以回收成製作材料。",
-      "icon": "https://cdn.arctracker.io/items/portable_tv.png",
+      "icon": "https://cdn.arctracker.io/items/v2/portable_tv.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -7774,7 +7757,7 @@
         "originalEn": "Possibly Toxic Plant"
       },
       "description": "",
-      "icon": "https://cdn.arctracker.io/items/possibly_toxic_plant.png",
+      "icon": "https://cdn.arctracker.io/items/v2/possibly_toxic_plant.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -7791,7 +7774,7 @@
         "originalEn": "Poster of Natural Wonders"
       },
       "description": "如果你站近一點並瞇起眼睛，就像世界從未崩塌過一樣。",
-      "icon": "https://cdn.arctracker.io/items/poster_of_natural_wonders.png",
+      "icon": "https://cdn.arctracker.io/items/v2/poster_of_natural_wonders.png",
       "rarity": "Uncommon",
       "type": "Trinket",
       "category": "Trinket",
@@ -7812,7 +7795,7 @@
         "originalEn": "Pottery"
       },
       "description": "可能值幾枚硬幣。",
-      "icon": "https://cdn.arctracker.io/items/pottery.png",
+      "icon": "https://cdn.arctracker.io/items/v2/pottery.png",
       "rarity": "Uncommon",
       "type": "Trinket",
       "category": "Trinket",
@@ -7833,7 +7816,7 @@
         "originalEn": "Power Bank"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/power_bank.png",
+      "icon": "https://cdn.arctracker.io/items/v2/power_bank.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -7862,7 +7845,7 @@
         "originalEn": "Power Cable"
       },
       "description": "用於傳輸電力的重型電纜。",
-      "icon": "https://cdn.arctracker.io/items/power_cable.png",
+      "icon": "https://cdn.arctracker.io/items/v2/power_cable.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -7890,7 +7873,7 @@
         "originalEn": "Power Rod"
       },
       "description": "用於製作。用於製作：重型護盾、快扣鉤",
-      "icon": "https://cdn.arctracker.io/items/power_rod.png",
+      "icon": "https://cdn.arctracker.io/items/v2/power_rod.png",
       "rarity": "Epic",
       "type": "Refined Material",
       "category": "Refined Material",
@@ -7922,7 +7905,7 @@
         "originalEn": "Powered Descender"
       },
       "description": "在空中使用時可降低下墜速度，但需要預熱時間才能達到全功率。電力耗盡後會關閉",
-      "icon": "https://cdn.arctracker.io/items/powered_descender.png",
+      "icon": "https://cdn.arctracker.io/items/v2/powered_descender.png",
       "rarity": "Epic",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -7952,7 +7935,7 @@
         "originalEn": "Precision Gimbal"
       },
       "description": "",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/precision_gimbal.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -7969,7 +7952,7 @@
         "originalEn": "Prickly Pear"
       },
       "description": "可以食用以恢復少量體力。",
-      "icon": "https://cdn.arctracker.io/items/prickly_pear.png",
+      "icon": "https://cdn.arctracker.io/items/v2/prickly_pear.png",
       "rarity": "Common",
       "type": "Nature",
       "category": "Nature",
@@ -7995,7 +7978,7 @@
         "originalEn": "Processor"
       },
       "description": "用於製作。用於製作：Tactical Mk. 3（防禦型）、Combat Mk. 3（側翼型）、Combat Mk. 3（進攻型）、Looting Mk. 3（謹慎型）、Tactical Mk. 3（治療型）",
-      "icon": "https://cdn.arctracker.io/items/processor.png",
+      "icon": "https://cdn.arctracker.io/items/v2/processor.png",
       "rarity": "Rare",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -8022,7 +8005,7 @@
         "originalEn": "Project Heartwood Blueprints"
       },
       "description": "一份名為「心材」計劃的褪色藍圖。無論那是什麼，它從未被建造出來。",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/project_heartwood_blueprints.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -8039,7 +8022,7 @@
         "originalEn": "Projector"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/projector.png",
+      "icon": "https://cdn.arctracker.io/items/v2/projector.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -8066,7 +8049,7 @@
         "originalEn": "Pulse Mine"
       },
       "description": "一種近距離觸發的地雷，會彈起並擊退半徑內的任何目標。",
-      "icon": "https://cdn.arctracker.io/items/pulse_mine.png",
+      "icon": "https://cdn.arctracker.io/items/v2/pulse_mine.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -8095,7 +8078,7 @@
         "originalEn": "Queen Reactor"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/queen_part.png",
+      "icon": "https://cdn.arctracker.io/items/v2/queen_reactor.png",
       "rarity": "Legendary",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -8122,7 +8105,7 @@
         "originalEn": "Radio"
       },
       "description": "可回收為製作組件。",
-      "icon": "https://cdn.arctracker.io/items/radio.png",
+      "icon": "https://cdn.arctracker.io/items/v2/radio.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -8150,7 +8133,7 @@
         "originalEn": "Radio Relay"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/radio_relay.png",
+      "icon": "https://cdn.arctracker.io/items/v2/radio_relay.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -8177,7 +8160,7 @@
         "originalEn": "Raider Flag"
       },
       "description": "被陽光曬得褪色且起皺，但依然莊重。",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/raider_flag.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -8193,7 +8176,7 @@
         "originalEn": "Raider Hatch Key"
       },
       "description": "解鎖掠奪者艙門。",
-      "icon": "https://cdn.arctracker.io/items/raider_hatch_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/raider_hatch_key.png",
       "rarity": "Rare",
       "type": "Key",
       "category": "Key",
@@ -8215,7 +8198,7 @@
         "originalEn": "Raider's Refuge Security Code"
       },
       "description": "解鎖藍門上鎖大門所需的四個安全密碼之一。在突襲者避難所找到。",
-      "icon": "https://cdn.arctracker.io/items/security_code.png",
+      "icon": "https://cdn.arctracker.io/items/v2/raiders_refuge_security_code.png",
       "rarity": "Common",
       "type": "Key",
       "category": "Key",
@@ -8232,7 +8215,7 @@
         "originalEn": "Rattler I"
       },
       "description": "便宜的攻擊選擇，但每次只能裝填2發子彈。",
-      "icon": "https://cdn.arctracker.io/items/rattler.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rattler_i.png",
       "rarity": "Common",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -8264,7 +8247,7 @@
         "originalEn": "Rattler II"
       },
       "description": "全自動突擊步槍。便宜的進攻選擇，但每次只能裝填2發子彈。",
-      "icon": "https://cdn.arctracker.io/items/rattler.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rattler_ii.png",
       "rarity": "Common",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -8297,7 +8280,7 @@
         "originalEn": "Rattler III"
       },
       "description": "便宜的攻擊選項，但每次只能裝填2發子彈。",
-      "icon": "https://cdn.arctracker.io/items/rattler.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rattler_iii.png",
       "rarity": "Common",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -8331,7 +8314,7 @@
         "originalEn": "Rattler IV"
       },
       "description": "全自動突擊步槍。便宜的進攻選擇，但每次只能裝填2發子彈。",
-      "icon": "https://cdn.arctracker.io/items/rattler.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rattler_iv.png",
       "rarity": "Common",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -8364,7 +8347,7 @@
         "originalEn": "Recorder"
       },
       "description": "一支可演奏的直笛，用於吸引ARC的注意並給其他掠奪者留下深刻印象。",
-      "icon": "https://cdn.arctracker.io/items/recorder.png",
+      "icon": "https://cdn.arctracker.io/items/v2/recorder.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -8390,7 +8373,7 @@
         "originalEn": "Red Coral Jewelry"
       },
       "description": "以其精湛的工藝和讓你眼睛一亮的輕鬆能力而受到重視。",
-      "icon": "https://cdn.arctracker.io/items/red_coral_jewelry.png",
+      "icon": "https://cdn.arctracker.io/items/v2/red_coral_jewelry.png",
       "rarity": "Rare",
       "type": "Trinket",
       "category": "Trinket",
@@ -8412,7 +8395,7 @@
         "originalEn": "Red Light Stick"
       },
       "description": "可投擲的化學光源，照亮周圍區域。",
-      "icon": "https://cdn.arctracker.io/items/red_light_stick.png",
+      "icon": "https://cdn.arctracker.io/items/v2/red_light_stick.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -8440,7 +8423,7 @@
         "originalEn": "Reinforced Reception Security Code"
       },
       "description": "解鎖藍門上鎖大門所需的四個安全密碼之一。在加固接待處找到。",
-      "icon": "https://cdn.arctracker.io/items/security_code.png",
+      "icon": "https://cdn.arctracker.io/items/v2/reinforced_reception_security_code.png",
       "rarity": "Common",
       "type": "Key",
       "category": "Key",
@@ -8457,7 +8440,7 @@
         "originalEn": "Remote Control"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/remote_control.png",
+      "icon": "https://cdn.arctracker.io/items/v2/remote_control.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -8484,7 +8467,7 @@
         "originalEn": "Remote Raider Flare"
       },
       "description": "一個可部署的裝置，手動觸發時會發射掠奪者求救信號彈。",
-      "icon": "https://cdn.arctracker.io/items/remote_raider_flare.png",
+      "icon": "https://cdn.arctracker.io/items/v2/remote_raider_flare.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -8514,7 +8497,7 @@
         "originalEn": "Renegade I"
       },
       "description": "具有高傷害輸出、精準度和爆頭傷害。",
-      "icon": "https://cdn.arctracker.io/items/renegade.png",
+      "icon": "https://cdn.arctracker.io/items/v2/renegade_i.png",
       "rarity": "Rare",
       "type": "Battle Rifle",
       "category": "Weapon",
@@ -8548,7 +8531,7 @@
         "originalEn": "Renegade II"
       },
       "description": "一把槓桿式戰鬥步槍，具有高傷害輸出、精準度和爆頭傷害。",
-      "icon": "https://cdn.arctracker.io/items/renegade.png",
+      "icon": "https://cdn.arctracker.io/items/v2/renegade_ii.png",
       "rarity": "Rare",
       "type": "Battle Rifle",
       "category": "Weapon",
@@ -8582,7 +8565,7 @@
         "originalEn": "Renegade III"
       },
       "description": "槓桿式戰鬥步槍，具有高傷害輸出、精準度和爆頭傷害。",
-      "icon": "https://cdn.arctracker.io/items/renegade.png",
+      "icon": "https://cdn.arctracker.io/items/v2/renegade_iii.png",
       "rarity": "Rare",
       "type": "Battle Rifle",
       "category": "Weapon",
@@ -8616,7 +8599,7 @@
         "originalEn": "Renegade IV"
       },
       "description": "槓桿式戰鬥步槍，具有高傷害輸出、精準度和爆頭傷害。",
-      "icon": "https://cdn.arctracker.io/items/renegade.png",
+      "icon": "https://cdn.arctracker.io/items/v2/renegade_iv.png",
       "rarity": "Rare",
       "type": "Battle Rifle",
       "category": "Weapon",
@@ -8649,7 +8632,7 @@
         "originalEn": "Resin"
       },
       "description": "可用於隨時間逐漸恢復少量生命值。",
-      "icon": "https://cdn.arctracker.io/items/resin.png",
+      "icon": "https://cdn.arctracker.io/items/v2/resin.png",
       "rarity": "Common",
       "type": "Nature",
       "category": "Nature",
@@ -8669,7 +8652,7 @@
         "originalEn": "Ripped Safety Vest"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/ripped_safety_vest.png",
+      "icon": "https://cdn.arctracker.io/items/v2/ripped_safety_vest.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -8687,13 +8670,30 @@
       "value": 1000,
       "weight": 0.8
     },
+    "riven_tides_classifed_records_keycard": {
+      "name": {
+        "value": "Riven Tides機密紀錄鑰匙卡",
+        "originalEn": "Riven Tides Classifed Records Keycard"
+      },
+      "description": "可開啟Riven Tides港務局大樓中機密紀錄室的一扇門。",
+      "icon": "https://cdn.arctracker.io/items/v2/riven_tides_classified_records_keycard.png",
+      "rarity": "Uncommon",
+      "type": "Key",
+      "category": "Key",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "stackSize": 1,
+      "value": 100,
+      "weight": 0.25
+    },
     "riven_tides_classified_records_keycard": {
       "name": {
         "value": "Riven Tides機密紀錄鑰匙卡",
         "originalEn": "Riven Tides Classified Records Keycard"
       },
       "description": "可開啟Riven Tides港務局大樓中機密紀錄室的一扇門。",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/riven_tides_classified_records_keycard.png",
       "rarity": "Uncommon",
       "type": "Key",
       "category": "Key",
@@ -8710,7 +8710,7 @@
         "originalEn": "Riven Tides Crane House Keycard"
       },
       "description": "可開啟Riven Tides某座起重機房內的一扇門。",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/riven_tides_crane_house_keycard.png",
       "rarity": "Common",
       "type": "Key",
       "category": "Key",
@@ -8727,7 +8727,7 @@
         "originalEn": "Riven Tides Hotel Keycard No. 102"
       },
       "description": "可開啟Riven Tides中Panorama Azzurro眾多套房之一的房門",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/riven_tides_hotel_keycard_no_102.png",
       "rarity": "Common",
       "type": "Key",
       "category": "Key",
@@ -8744,7 +8744,7 @@
         "originalEn": "Riven Tides Hotel Keycard No. 107"
       },
       "description": "可開啟Riven Tides中Panorama Azzurro眾多套房之一的房門",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/riven_tides_hotel_keycard_no_107.png",
       "rarity": "Common",
       "type": "Key",
       "category": "Key",
@@ -8761,7 +8761,7 @@
         "originalEn": "Riven Tides Hotel Keycard No. 113"
       },
       "description": "可開啟Riven Tides中Panorama Azzurro眾多套房之一的房門",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/riven_tides_hotel_keycard_no_113.png",
       "rarity": "Common",
       "type": "Key",
       "category": "Key",
@@ -8778,7 +8778,7 @@
         "originalEn": "Riven Tides Hotel Keycard No. 205"
       },
       "description": "可開啟Riven Tides中Panorama Azzurro眾多套房之一的房門",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/riven_tides_hotel_keycard_no_205.png",
       "rarity": "Common",
       "type": "Key",
       "category": "Key",
@@ -8795,7 +8795,7 @@
         "originalEn": "Riven Tides Hotel Keycard No. 208"
       },
       "description": "可開啟Riven Tides中Panorama Azzurro眾多套房之一的房門",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/riven_tides_hotel_keycard_no_208.png",
       "rarity": "Common",
       "type": "Key",
       "category": "Key",
@@ -8812,7 +8812,7 @@
         "originalEn": "Riven Tides Hotel Keycard No. 311"
       },
       "description": "可開啟Riven Tides中Panorama Azzurro眾多套房之一的房門",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/riven_tides_hotel_keycard_no_311.png",
       "rarity": "Common",
       "type": "Key",
       "category": "Key",
@@ -8829,7 +8829,7 @@
         "originalEn": "Riven Tides Hotel Keycard No. 404"
       },
       "description": "可開啟Riven Tides中Panorama Azzurro眾多套房之一的房門",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/riven_tides_hotel_keycard_no_404.png",
       "rarity": "Common",
       "type": "Key",
       "category": "Key",
@@ -8846,7 +8846,7 @@
         "originalEn": "Riven Tides Secure Storage Keycard"
       },
       "description": "可開啟Riven Tides港務局大樓中安全倉庫的一扇門",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/riven_tides_secure_storage_keycard.png",
       "rarity": "Epic",
       "type": "Key",
       "category": "Key",
@@ -8863,7 +8863,7 @@
         "originalEn": "Rocket Thruster"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/rocket_thruster.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rocket_thruster.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -8890,7 +8890,7 @@
         "originalEn": "Rocketeer Driver"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/rocketeer_driver.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rocketeer_driver.png",
       "rarity": "Epic",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -8917,7 +8917,7 @@
         "originalEn": "Roots"
       },
       "description": "可能值幾枚硬幣。",
-      "icon": "https://cdn.arctracker.io/items/roots.png",
+      "icon": "https://cdn.arctracker.io/items/v2/roots.png",
       "rarity": "Uncommon",
       "type": "Nature",
       "category": "Nature",
@@ -8943,7 +8943,7 @@
         "originalEn": "Rope"
       },
       "description": "用於製作。可製作：Zipline、Snap Hook",
-      "icon": "https://cdn.arctracker.io/items/rope.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rope.png",
       "rarity": "Rare",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -8970,7 +8970,7 @@
         "originalEn": "Rosary"
       },
       "description": "可能值幾個硬幣。",
-      "icon": "https://cdn.arctracker.io/items/rosary.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rosary.png",
       "rarity": "Rare",
       "type": "Trinket",
       "category": "Trinket",
@@ -8991,7 +8991,7 @@
         "originalEn": "Rotary Encoder"
       },
       "description": "可以回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/rotary_encoder.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rotary_encoder.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9018,7 +9018,7 @@
         "originalEn": "Rubber Duck"
       },
       "description": "總是在你需要時傾聽。可以投擲來製造噪音。",
-      "icon": "https://cdn.arctracker.io/items/rubber_duck.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rubber_duck.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -9035,7 +9035,7 @@
         "originalEn": "Rubber Pad"
       },
       "description": "可回收為橡膠零件。",
-      "icon": "https://cdn.arctracker.io/items/rubber_pad.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rubber_pad.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9061,7 +9061,7 @@
         "originalEn": "Rubber Parts"
       },
       "description": "用於製作的橡膠碎片。可製作：費羅、水壺、掠奪 Mk. 1、護盾充能器、縫合器",
-      "icon": "https://cdn.arctracker.io/items/rubber_parts.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rubber_parts.png",
       "rarity": "Common",
       "type": "Basic Material",
       "category": "Basic Material",
@@ -9083,7 +9083,7 @@
         "originalEn": "Ruined Accordion"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/ruined_accordion.png",
+      "icon": "https://cdn.arctracker.io/items/v2/ruined_accordion.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9110,7 +9110,7 @@
         "originalEn": "Ruined Augment"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/ruined_augment.png",
+      "icon": "https://cdn.arctracker.io/items/v2/ruined_augment.png",
       "rarity": "Common",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9137,7 +9137,7 @@
         "originalEn": "Ruined Baton"
       },
       "description": "可回收為製作材料",
-      "icon": "https://cdn.arctracker.io/items/ruined_baton.png",
+      "icon": "https://cdn.arctracker.io/items/v2/ruined_baton.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9164,7 +9164,7 @@
         "originalEn": "Ruined Handcuffs"
       },
       "description": "可以回收成製作材料。",
-      "icon": "https://cdn.arctracker.io/items/ruined_handcuffs.png",
+      "icon": "https://cdn.arctracker.io/items/v2/ruined_handcuffs.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9190,7 +9190,7 @@
         "originalEn": "Ruined Parachute"
       },
       "description": "可以回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/ruined_parachute.png",
+      "icon": "https://cdn.arctracker.io/items/v2/ruined_parachute.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9216,7 +9216,7 @@
         "originalEn": "Ruined Riot Shield"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/ruined_riot_shield.png",
+      "icon": "https://cdn.arctracker.io/items/v2/ruined_riot_shield.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9243,7 +9243,7 @@
         "originalEn": "Ruined Tactical Vest"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/ruined_tactical_vest.png",
+      "icon": "https://cdn.arctracker.io/items/v2/ruined_tactical_vest.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9270,7 +9270,7 @@
         "originalEn": "Rusted Bolts"
       },
       "description": "可回收為金屬零件。",
-      "icon": "https://cdn.arctracker.io/items/rusted_bolts.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rusted_bolts.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9297,7 +9297,7 @@
         "originalEn": "Rusted Gear"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/rusted_gear.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rusted_gear.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9324,7 +9324,7 @@
         "originalEn": "Rusted Shut Medical Kit"
       },
       "description": "一個鏽死的醫療包，內容物不明。",
-      "icon": "https://cdn.arctracker.io/items/rusted_shut_medical_kit.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rusted_shut_medical_kit.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9351,7 +9351,7 @@
         "originalEn": "Rusted Tools"
       },
       "description": "一套工具，雖然生鏽但仍可用於製作。",
-      "icon": "https://cdn.arctracker.io/items/rusted_tools.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rusted_tools.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9378,7 +9378,7 @@
         "originalEn": "Rusty ARC Steel"
       },
       "description": "從ARC敵人和活動中獲得。可以回收成廢金屬。",
-      "icon": "https://cdn.arctracker.io/items/rusty_arc_steel.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rusty_arc_steel.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9404,7 +9404,7 @@
         "originalEn": "Sample Cleaner"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/sample_cleaner.png",
+      "icon": "https://cdn.arctracker.io/items/v2/sample_cleaner.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9431,7 +9431,7 @@
         "originalEn": "Scout Patrol Note"
       },
       "description": "",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/scout_patrol_note.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -9448,7 +9448,7 @@
         "originalEn": "Secret Meeting Info"
       },
       "description": "",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/secret_meeting_info.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -9465,7 +9465,7 @@
         "originalEn": "Seed Vault Box Key"
       },
       "description": "一把可打開斯特拉・蒙蒂斯種子庫中特定箱子的鑰匙。",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/seed_vault_box_key.png",
       "rarity": "Common",
       "type": "Key",
       "category": "Key",
@@ -9482,7 +9482,7 @@
         "originalEn": "Seeker Grenade"
       },
       "description": "一種追蹤手榴彈，鎖定附近單個ARC並在撞擊時造成爆炸傷害。",
-      "icon": "https://cdn.arctracker.io/items/seeker_grenade.png",
+      "icon": "https://cdn.arctracker.io/items/v2/seeker_grenade.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -9511,7 +9511,7 @@
         "originalEn": "Sensors"
       },
       "description": "用於製作。可製作：狼群、爆炸地雷、掠奪者艙口鑰匙、標記手榴彈",
-      "icon": "https://cdn.arctracker.io/items/sensors.png",
+      "icon": "https://cdn.arctracker.io/items/v2/sensors.png",
       "rarity": "Rare",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -9539,7 +9539,7 @@
         "originalEn": "Sentinel Firing Core"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/sentinel_firing_core.png",
+      "icon": "https://cdn.arctracker.io/items/v2/sentinel_firing_core.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9566,7 +9566,7 @@
         "originalEn": "Shaker"
       },
       "description": "一種節奏樂器，用於吸引ARC的注意並給其他掠奪者留下深刻印象。",
-      "icon": "https://cdn.arctracker.io/items/shaker.png",
+      "icon": "https://cdn.arctracker.io/items/v2/shaker.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -9596,7 +9596,7 @@
         "originalEn": "Shield Recharger"
       },
       "description": "一個手持套件，可隨時間逐漸為護盾充能。",
-      "icon": "https://cdn.arctracker.io/items/shield_recharger.png",
+      "icon": "https://cdn.arctracker.io/items/v2/shield_recharger.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -9625,7 +9625,7 @@
         "originalEn": "Shotgun Ammo"
       },
       "description": "相容武器：Il Toro、Vulcano",
-      "icon": "https://cdn.arctracker.io/items/shotgun_ammo.png",
+      "icon": "https://cdn.arctracker.io/items/v2/shotgun_ammo.png",
       "rarity": "Common",
       "type": "Ammunition",
       "category": "Ammunition",
@@ -9647,7 +9647,7 @@
         "originalEn": "Shotgun Choke I"
       },
       "description": "略微降低基礎散布。相容武器：Il Toro、Vulcano",
-      "icon": "https://cdn.arctracker.io/items/shotgun_choke_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/shotgun_choke_i.png",
       "rarity": "Common",
       "type": "Modification",
       "category": "Modification",
@@ -9675,7 +9675,7 @@
         "originalEn": "Shotgun Choke II"
       },
       "description": "適度降低基礎散布。相容武器：Il Toro、Vulcano",
-      "icon": "https://cdn.arctracker.io/items/shotgun_choke_ii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/shotgun_choke_ii.png",
       "rarity": "Uncommon",
       "type": "Modification",
       "category": "Modification",
@@ -9704,7 +9704,7 @@
         "originalEn": "Shotgun Choke III"
       },
       "description": "大幅減少基礎擴散度。",
-      "icon": "https://cdn.arctracker.io/items/shotgun_choke_iii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/shotgun_choke_iii.png",
       "rarity": "Rare",
       "type": "Modification",
       "category": "Modification",
@@ -9733,7 +9733,7 @@
         "originalEn": "Shotgun Silencer"
       },
       "description": "適度減少射擊時產生的噪音。",
-      "icon": "https://cdn.arctracker.io/items/shotgun_silencer.png",
+      "icon": "https://cdn.arctracker.io/items/v2/shotgun_silencer.png",
       "rarity": "Epic",
       "type": "Modification",
       "category": "Modification",
@@ -9762,7 +9762,7 @@
         "originalEn": "Showstopper"
       },
       "description": "延遲引爆的手榴彈，可擊暈範圍內的敵人。",
-      "icon": "https://cdn.arctracker.io/items/showstopper.png",
+      "icon": "https://cdn.arctracker.io/items/v2/showstopper.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -9793,7 +9793,7 @@
         "originalEn": "Shrapnel Grenade"
       },
       "description": "一種簡易引信手榴彈，爆炸時會迸發出鋒利的碎片。對ARC裝甲板效果較弱",
-      "icon": "https://cdn.arctracker.io/items/shrapnel_grenade.png",
+      "icon": "https://cdn.arctracker.io/items/v2/shrapnel_grenade.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -9823,7 +9823,7 @@
         "originalEn": "Shredder Gyro"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/shredder_gyro.png",
+      "icon": "https://cdn.arctracker.io/items/v2/shredder_gyro.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9850,7 +9850,7 @@
         "originalEn": "Signal Amplifier"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/signal_amplifier.png",
+      "icon": "https://cdn.arctracker.io/items/v2/signal_amplifier.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9877,7 +9877,7 @@
         "originalEn": "Silencer I"
       },
       "description": "略微降低射擊時產生的噪音。",
-      "icon": "https://cdn.arctracker.io/items/silencer_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/silencer_i.png",
       "rarity": "Uncommon",
       "type": "Modification",
       "category": "Modification",
@@ -9906,7 +9906,7 @@
         "originalEn": "Silencer II"
       },
       "description": "適度減少射擊時產生的噪音。相容武器：琶音、鐵衛、叛徒、鐵砧、縫合者",
-      "icon": "https://cdn.arctracker.io/items/silencer_ii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/silencer_ii.png",
       "rarity": "Rare",
       "type": "Modification",
       "category": "Modification",
@@ -9935,7 +9935,7 @@
         "originalEn": "Silencer III"
       },
       "description": "大幅降低射擊時產生的噪音。相容武器：Tempest、Arpeggio、Kettle、Ferro、Renegade",
-      "icon": "https://cdn.arctracker.io/items/silencer_iii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/silencer_iii.png",
       "rarity": "Epic",
       "type": "Modification",
       "category": "Modification",
@@ -9959,7 +9959,7 @@
         "originalEn": "Silver Teaspoon Set"
       },
       "description": "閃耀奪目的精緻優雅套裝。",
-      "icon": "https://cdn.arctracker.io/items/silver_teaspoon_set.png",
+      "icon": "https://cdn.arctracker.io/items/v2/silver_teaspoon_set.png",
       "rarity": "Rare",
       "type": "Trinket",
       "category": "Trinket",
@@ -9981,7 +9981,7 @@
         "originalEn": "Simple Gun Parts"
       },
       "description": "用於製作武器。用於製作：Il Toro、Burletta、Anvil、Arpeggio、重型槍械零件",
-      "icon": "https://cdn.arctracker.io/items/simple_gun_parts.png",
+      "icon": "https://cdn.arctracker.io/items/v2/simple_gun_parts.png",
       "rarity": "Uncommon",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -10008,7 +10008,7 @@
         "originalEn": "\"Sirena Dorata\" Ship Model"
       },
       "description": "地中海的陽光在船身上閃爍，這艘鮮豔的遊艇是鹹水奢華永恆的典範。",
-      "icon": "https://cdn.arctracker.io/items/sirena_dorata_ship_model.png",
+      "icon": "https://cdn.arctracker.io/items/v2/sirena_dorata_ship_model.png",
       "rarity": "Epic",
       "type": "Trinket",
       "category": "Trinket",
@@ -10025,7 +10025,7 @@
         "originalEn": "Smoke Grenade"
       },
       "description": "撞擊時產生持續煙霧雲，阻擋 ARC 和其他掠奪者的視線。",
-      "icon": "https://cdn.arctracker.io/items/smoke_grenade.png",
+      "icon": "https://cdn.arctracker.io/items/v2/smoke_grenade.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -10055,7 +10055,7 @@
         "originalEn": "Smoke Grenade Trap"
       },
       "description": "引爆煙霧手榴彈的雷射絆線。",
-      "icon": "https://cdn.arctracker.io/items/smoke_grenade_trap.png",
+      "icon": "https://cdn.arctracker.io/items/v2/smoke_grenade_trap.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -10076,7 +10076,7 @@
         "originalEn": "Snap Blast Grenade"
       },
       "description": "可黏附在表面的手榴彈，短暫延遲後造成爆炸傷害。",
-      "icon": "https://cdn.arctracker.io/items/snap_blast_grenade.png",
+      "icon": "https://cdn.arctracker.io/items/v2/snap_blast_grenade.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -10106,7 +10106,7 @@
         "originalEn": "Snap Hook"
       },
       "description": "一種讓使用者能夠攀爬建築物和跨越長距離的裝置。",
-      "icon": "https://cdn.arctracker.io/items/snap_hook.png",
+      "icon": "https://cdn.arctracker.io/items/v2/snap_hook.png",
       "rarity": "Legendary",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -10137,7 +10137,7 @@
         "originalEn": "Snitch Scanner"
       },
       "description": "可回收為ARC合金。可投擲以召喚ARC。",
-      "icon": "https://cdn.arctracker.io/items/snitch_scanner.png",
+      "icon": "https://cdn.arctracker.io/items/v2/snitch_scanner.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -10164,7 +10164,7 @@
         "originalEn": "Snowball"
       },
       "description": "一顆緊實的雪球。",
-      "icon": "https://cdn.arctracker.io/items/snowball.png",
+      "icon": "https://cdn.arctracker.io/items/v2/snowball.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -10184,7 +10184,7 @@
         "originalEn": "Spaceport Container Storage Key"
       },
       "description": "太空港貨櫃倉庫的鑰匙。",
-      "icon": "https://cdn.arctracker.io/items/spaceport_control_tower_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/spaceport_container_storage_key.png",
       "rarity": "Rare",
       "type": "Key",
       "category": "Key",
@@ -10201,7 +10201,7 @@
         "originalEn": "Spaceport Control Tower Key"
       },
       "description": "解鎖太空港控制塔A6的門",
-      "icon": "https://cdn.arctracker.io/items/spaceport_control_tower_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/spaceport_control_tower_key.png",
       "rarity": "Rare",
       "type": "Key",
       "category": "Key",
@@ -10218,7 +10218,7 @@
         "originalEn": "Spaceport Trench Tower Key"
       },
       "description": "解鎖通往太空港戰壕塔的門",
-      "icon": "https://cdn.arctracker.io/items/spaceport_trench_tower_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/spaceport_trench_tower_key.png",
       "rarity": "Uncommon",
       "type": "Key",
       "category": "Key",
@@ -10235,7 +10235,7 @@
         "originalEn": "Spaceport Warehouse Key"
       },
       "description": "太空港倉庫的鑰匙。",
-      "icon": "https://cdn.arctracker.io/items/spaceport_trench_tower_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/spaceport_warehouse_key.png",
       "rarity": "Uncommon",
       "type": "Key",
       "category": "Key",
@@ -10252,7 +10252,7 @@
         "originalEn": "Speaker Component"
       },
       "description": "用於製作。可製作：誘餌手榴彈、光電斗篷",
-      "icon": "https://cdn.arctracker.io/items/speaker_component.png",
+      "icon": "https://cdn.arctracker.io/items/v2/speaker_component.png",
       "rarity": "Rare",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -10279,7 +10279,7 @@
         "originalEn": "Spectrometer"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/spectrometer.png",
+      "icon": "https://cdn.arctracker.io/items/v2/spectrometer.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -10306,7 +10306,7 @@
         "originalEn": "Spectrum Analyzer"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/spectrum_analyzer.png",
+      "icon": "https://cdn.arctracker.io/items/v2/spectrum_analyzer.png",
       "rarity": "Epic",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -10333,7 +10333,7 @@
         "originalEn": "Spotter Relay"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/spotter_relay.png",
+      "icon": "https://cdn.arctracker.io/items/v2/spotter_relay.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -10360,7 +10360,7 @@
         "originalEn": "Spring Cushion"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/spring_cushion.png",
+      "icon": "https://cdn.arctracker.io/items/v2/spring_cushion.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -10388,7 +10388,7 @@
         "originalEn": "Stable Stock I"
       },
       "description": "略微改善擴散度和後座力恢復時間。",
-      "icon": "https://cdn.arctracker.io/items/stable_stock_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/stable_stock_i.png",
       "rarity": "Common",
       "type": "Modification",
       "category": "Modification",
@@ -10416,7 +10416,7 @@
         "originalEn": "Stable Stock II"
       },
       "description": "適度改善散布與後座力恢復時間。",
-      "icon": "https://cdn.arctracker.io/items/stable_stock_ii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/stable_stock_ii.png",
       "rarity": "Uncommon",
       "type": "Modification",
       "category": "Modification",
@@ -10445,7 +10445,7 @@
         "originalEn": "Stable Stock III"
       },
       "description": "大幅改善擴散度和後座力恢復時間。",
-      "icon": "https://cdn.arctracker.io/items/stable_stock_iii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/stable_stock_iii.png",
       "rarity": "Rare",
       "type": "Modification",
       "category": "Modification",
@@ -10474,7 +10474,7 @@
         "originalEn": "Stack of Movie Tapes"
       },
       "description": "",
-      "icon": "https://cdn.arctracker.io/items/stack_of_movie_tapes.png",
+      "icon": "https://cdn.arctracker.io/items/v2/stack_of_movie_tapes.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -10491,7 +10491,7 @@
         "originalEn": "Statuette"
       },
       "description": "價值不菲。",
-      "icon": "https://cdn.arctracker.io/items/statuette.png",
+      "icon": "https://cdn.arctracker.io/items/v2/statuette.png",
       "rarity": "Rare",
       "type": "Trinket",
       "category": "Trinket",
@@ -10512,7 +10512,7 @@
         "originalEn": "Steel Spring"
       },
       "description": "用於製作各種物品。可回收為製作材料。可製作：延長霰彈槍彈匣 I、延長中型彈匣 I、延長輕型彈匣 I、托倫特、延長中型彈匣 II",
-      "icon": "https://cdn.arctracker.io/items/steel_spring.png",
+      "icon": "https://cdn.arctracker.io/items/v2/steel_spring.png",
       "rarity": "Uncommon",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -10538,7 +10538,7 @@
         "originalEn": "Stella Montis Archives Key"
       },
       "description": "解鎖星山醫學研究區的一扇門",
-      "icon": "https://cdn.arctracker.io/items/stella_montis_archives_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/stella_montis_archives_key.png",
       "rarity": "Epic",
       "type": "Key",
       "category": "Key",
@@ -10555,7 +10555,7 @@
         "originalEn": "Stella Montis Assembly Admin Key"
       },
       "description": "解鎖星山組裝區的一扇門",
-      "icon": "https://cdn.arctracker.io/items/stella_montis_assembly_admin_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/stella_montis_assembly_admin_key.png",
       "rarity": "Uncommon",
       "type": "Key",
       "category": "Key",
@@ -10572,7 +10572,7 @@
         "originalEn": "Stella Montis Medical Storage Key"
       },
       "description": "解鎖星山檔案室的一扇門",
-      "icon": "https://cdn.arctracker.io/items/stella_montis_medical_storage_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/stella_montis_medical_storage_key.png",
       "rarity": "Uncommon",
       "type": "Key",
       "category": "Key",
@@ -10589,7 +10589,7 @@
         "originalEn": "Stella Montis Security Checkpoint Key"
       },
       "description": "解鎖星山安全檢查站的一扇門",
-      "icon": "https://cdn.arctracker.io/items/stella_montis_security_checkpoint_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/stella_montis_security_checkpoint_key.png",
       "rarity": "Rare",
       "type": "Key",
       "category": "Key",
@@ -10606,7 +10606,7 @@
         "originalEn": "Sterilized Bandage"
       },
       "description": "一種醫療物品，可隨時間逐漸恢復大量生命值。",
-      "icon": "https://cdn.arctracker.io/items/sterilized_bandage.png",
+      "icon": "https://cdn.arctracker.io/items/v2/sterilized_bandage.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -10636,7 +10636,7 @@
         "originalEn": "Stitcher I"
       },
       "description": "造成不錯的傷害，但射速相當低且難以控制。",
-      "icon": "https://cdn.arctracker.io/items/stitcher.png",
+      "icon": "https://cdn.arctracker.io/items/v2/stitcher_i.png",
       "rarity": "Common",
       "type": "SMG",
       "category": "Weapon",
@@ -10669,7 +10669,7 @@
         "originalEn": "Stitcher II"
       },
       "description": "造成不錯的傷害，但射速相當低且難以控制。",
-      "icon": "https://cdn.arctracker.io/items/stitcher.png",
+      "icon": "https://cdn.arctracker.io/items/v2/stitcher_ii.png",
       "rarity": "Common",
       "type": "SMG",
       "category": "Weapon",
@@ -10703,7 +10703,7 @@
         "originalEn": "Stitcher III"
       },
       "description": "全自動衝鋒槍。造成不錯的傷害，但射速相當低且難以控制。",
-      "icon": "https://cdn.arctracker.io/items/stitcher.png",
+      "icon": "https://cdn.arctracker.io/items/v2/stitcher_iii.png",
       "rarity": "Common",
       "type": "SMG",
       "category": "Weapon",
@@ -10737,7 +10737,7 @@
         "originalEn": "Stitcher IV"
       },
       "description": "全自動衝鋒槍。造成不錯的傷害，但射速相當低且難以控制。",
-      "icon": "https://cdn.arctracker.io/items/stitcher.png",
+      "icon": "https://cdn.arctracker.io/items/v2/stitcher_iv.png",
       "rarity": "Common",
       "type": "SMG",
       "category": "Weapon",
@@ -10770,7 +10770,7 @@
         "originalEn": "Surge Coil"
       },
       "description": "一種可部署的設備，定期使周圍區域帶電，並短暫擊暈其中的任何目標。",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/surge_coil.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -10801,7 +10801,7 @@
         "originalEn": "Surge Shield Recharger"
       },
       "description": "使用時為護盾充能的手持套件。",
-      "icon": "https://cdn.arctracker.io/items/surge_shield_recharger.png",
+      "icon": "https://cdn.arctracker.io/items/v2/surge_shield_recharger.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -10830,7 +10830,7 @@
         "originalEn": "Surveyor Vault"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/surveyor_vault.png",
+      "icon": "https://cdn.arctracker.io/items/v2/surveyor_vault.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -10857,7 +10857,7 @@
         "originalEn": "Synthesized Fuel"
       },
       "description": "一罐合成燃料混合物。",
-      "icon": "https://cdn.arctracker.io/items/synthesized_fuel.png",
+      "icon": "https://cdn.arctracker.io/items/v2/synthesized_fuel.png",
       "rarity": "Rare",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -10884,7 +10884,7 @@
         "originalEn": "Syringe"
       },
       "description": "用於製作醫療用品。可回收為塑膠。用於製作：活力注射劑",
-      "icon": "https://cdn.arctracker.io/items/syringe.png",
+      "icon": "https://cdn.arctracker.io/items/v2/syringe.png",
       "rarity": "Rare",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -10911,7 +10911,7 @@
         "originalEn": "Tactical Mk. 1"
       },
       "description": "基礎戰術強化。更多快速使用欄位提供更多戰術選擇，但生存能力有限且掠奪潛力略低。",
-      "icon": "https://cdn.arctracker.io/items/tactical_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/tactical_mk1.png",
       "rarity": "Uncommon",
       "type": "Augment",
       "category": "Augment",
@@ -10940,7 +10940,7 @@
         "originalEn": "Tactical Mk. 2"
       },
       "description": "增加更多背包空間和一個額外的實用物品欄位。",
-      "icon": "https://cdn.arctracker.io/items/tactical_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/tactical_mk2.png",
       "rarity": "Rare",
       "type": "Augment",
       "category": "Augment",
@@ -10969,7 +10969,7 @@
         "originalEn": "Tactical Mk. 3 (Defensive)"
       },
       "description": "專注於防禦的強化裝備，可保持護盾處於滿值狀態。",
-      "icon": "https://cdn.arctracker.io/items/tactical_mk3_defensive.png",
+      "icon": "https://cdn.arctracker.io/items/v2/tactical_mk3_defensive.png",
       "rarity": "Epic",
       "type": "Augment",
       "category": "Augment",
@@ -10998,7 +10998,7 @@
         "originalEn": "Tactical Mk. 3 (Healing)"
       },
       "description": "專注於治療的強化裝備，增加治療物品欄位。從倒地狀態復活時，釋放治療雲霧，在10秒內恢復20點生命值。冷卻時間30秒。",
-      "icon": "https://cdn.arctracker.io/items/tactical_mk3_healing.png",
+      "icon": "https://cdn.arctracker.io/items/v2/tactical_mk3_healing.png",
       "rarity": "Epic",
       "type": "Augment",
       "category": "Augment",
@@ -11027,7 +11027,7 @@
         "originalEn": "Tactical Mk. 3 (Revival)"
       },
       "description": "一種專為團隊支援設計的復甦強化裝置。每 5 秒恢復 1 點生命值。受到傷害時，此效果將暫停 30 秒。包含內建除顫器，擁有無限使用次數和 240 秒冷卻時間。",
-      "icon": "https://cdn.arctracker.io/items/tactical_mk3_revival.png",
+      "icon": "https://cdn.arctracker.io/items/v2/tactical_mk3_revival.png",
       "rarity": "Epic",
       "type": "Augment",
       "category": "Augment",
@@ -11056,7 +11056,7 @@
         "originalEn": "Tactical Mk. 3 (Smoke)"
       },
       "description": "戰術 MK. 2 強化裝備的升級版，全面擴充容量。護盾破裂時，會部署一枚小型煙霧彈。擁有固定冷卻時間。",
-      "icon": "https://cdn.arctracker.io/items/tactical_mk3_smoke.png",
+      "icon": "https://cdn.arctracker.io/items/v2/tactical_mk3_smoke.png",
       "rarity": "Epic",
       "type": "Augment",
       "category": "Augment",
@@ -11085,7 +11085,7 @@
         "originalEn": "Tagging Grenade"
       },
       "description": "延遲引爆的手榴彈，能標記區域內的掠奪者和ARC敵人，讓你能短暫追蹤他們的位置。",
-      "icon": "https://cdn.arctracker.io/items/tagging_grenade.png",
+      "icon": "https://cdn.arctracker.io/items/v2/tagging_grenade.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -11115,7 +11115,7 @@
         "originalEn": "Tattered Arc Lining"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/tattered_arc_lining.png",
+      "icon": "https://cdn.arctracker.io/items/v2/tattered_arc_lining.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -11141,7 +11141,7 @@
         "originalEn": "Tattered Clothes"
       },
       "description": "可回收為布料。",
-      "icon": "https://cdn.arctracker.io/items/tattered_clothes.png",
+      "icon": "https://cdn.arctracker.io/items/v2/tattered_clothes.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -11167,7 +11167,7 @@
         "originalEn": "Telemetry Transceiver"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/telemetry_transceiver.png",
+      "icon": "https://cdn.arctracker.io/items/v2/telemetry_transceiver.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -11194,7 +11194,7 @@
         "originalEn": "Tempest I"
       },
       "description": "全自動突擊步槍，射速和精準度適中。",
-      "icon": "https://cdn.arctracker.io/items/tempest.png",
+      "icon": "https://cdn.arctracker.io/items/v2/tempest_i.png",
       "rarity": "Epic",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -11228,7 +11228,7 @@
         "originalEn": "Tempest II"
       },
       "description": "全自動突擊步槍，射速和精準度適中。",
-      "icon": "https://cdn.arctracker.io/items/tempest.png",
+      "icon": "https://cdn.arctracker.io/items/v2/tempest_ii.png",
       "rarity": "Epic",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -11262,7 +11262,7 @@
         "originalEn": "Tempest III"
       },
       "description": "全自動突擊步槍，射速和精準度適中。",
-      "icon": "https://cdn.arctracker.io/items/tempest.png",
+      "icon": "https://cdn.arctracker.io/items/v2/tempest_iii.png",
       "rarity": "Epic",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -11296,7 +11296,7 @@
         "originalEn": "Tempest IV"
       },
       "description": "全自動突擊步槍，射速和精準度適中。",
-      "icon": "https://cdn.arctracker.io/items/tempest.png",
+      "icon": "https://cdn.arctracker.io/items/v2/tempest_iv.png",
       "rarity": "Epic",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -11329,7 +11329,7 @@
         "originalEn": "Thermostat"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/thermostat.png",
+      "icon": "https://cdn.arctracker.io/items/v2/thermostat.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -11356,7 +11356,7 @@
         "originalEn": "Tick Pod"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/tick_pod.png",
+      "icon": "https://cdn.arctracker.io/items/v2/tick_pod.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -11383,7 +11383,7 @@
         "originalEn": "Toaster"
       },
       "description": "可回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/toaster.png",
+      "icon": "https://cdn.arctracker.io/items/v2/toaster.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -11410,7 +11410,7 @@
         "originalEn": "Torn Blanket"
       },
       "description": "可回收為布料。",
-      "icon": "https://cdn.arctracker.io/items/torn_blanket.png",
+      "icon": "https://cdn.arctracker.io/items/v2/torn_blanket.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -11437,7 +11437,7 @@
         "originalEn": "Torn Book"
       },
       "description": "殘存的書頁講述著英雄、吸血鬼和許多目光的故事。",
-      "icon": "https://cdn.arctracker.io/items/torn_book.png",
+      "icon": "https://cdn.arctracker.io/items/v2/torn_book.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -11458,7 +11458,7 @@
         "originalEn": "Torrente I"
       },
       "description": "擁有大量彈藥容量，但只有在蹲下時才準確。",
-      "icon": "https://cdn.arctracker.io/items/torrente.png",
+      "icon": "https://cdn.arctracker.io/items/v2/torrente_i.png",
       "rarity": "Rare",
       "type": "LMG",
       "category": "Weapon",
@@ -11492,7 +11492,7 @@
         "originalEn": "Torrente II"
       },
       "description": "擁有大容量彈藥，但只有在蹲下時才準確。",
-      "icon": "https://cdn.arctracker.io/items/torrente.png",
+      "icon": "https://cdn.arctracker.io/items/v2/torrente_ii.png",
       "rarity": "Rare",
       "type": "LMG",
       "category": "Weapon",
@@ -11526,7 +11526,7 @@
         "originalEn": "Torrente III"
       },
       "description": "擁有大容量彈藥，但只有在蹲下時才準確。",
-      "icon": "https://cdn.arctracker.io/items/torrente.png",
+      "icon": "https://cdn.arctracker.io/items/v2/torrente_iii.png",
       "rarity": "Rare",
       "type": "LMG",
       "category": "Weapon",
@@ -11560,7 +11560,7 @@
         "originalEn": "Torrente IV"
       },
       "description": "擁有大容量彈藥，但只有在蹲下時才準確。",
-      "icon": "https://cdn.arctracker.io/items/torrente.png",
+      "icon": "https://cdn.arctracker.io/items/v2/torrente_iv.png",
       "rarity": "Rare",
       "type": "LMG",
       "category": "Weapon",
@@ -11593,7 +11593,7 @@
         "originalEn": "Trailblazer"
       },
       "description": "一種沿路徑釋放易燃氣體軌跡的手榴彈，點燃時會引發爆炸性連鎖反應。",
-      "icon": "https://cdn.arctracker.io/items/trailblazer.png",
+      "icon": "https://cdn.arctracker.io/items/v2/trailblazer.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -11623,7 +11623,7 @@
         "originalEn": "Trigger 'Nade"
       },
       "description": "可黏附在表面和ARC上的遙控引爆手榴彈，觸發時造成爆炸傷害。",
-      "icon": "https://cdn.arctracker.io/items/trigger_nade.png",
+      "icon": "https://cdn.arctracker.io/items/v2/trigger_nade.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -11653,7 +11653,7 @@
         "originalEn": "Tropical Duck"
       },
       "description": "它默默夢想著與同伴一起翱翔天空。可以投擲來製造噪音。",
-      "icon": "https://cdn.arctracker.io/items/tropical_duck.png",
+      "icon": "https://cdn.arctracker.io/items/v2/tropical_duck.png",
       "rarity": "Uncommon",
       "type": "Trinket",
       "category": "Trinket",
@@ -11670,7 +11670,7 @@
         "originalEn": "Turbine Compressor"
       },
       "description": "",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/turbine_compressor.png",
       "rarity": "Epic",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -11697,7 +11697,7 @@
         "originalEn": "Turbo Pump"
       },
       "description": "可以回收成製作材料。",
-      "icon": "https://cdn.arctracker.io/items/turbo_pump.png",
+      "icon": "https://cdn.arctracker.io/items/v2/turbo_pump.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -11724,7 +11724,7 @@
         "originalEn": "\"Twilight Compass\" Ship Model"
       },
       "description": "這艘充滿活力的雙桅新秀，以揚帆駛到地平線之外那麼一點點而聞名。",
-      "icon": "https://cdn.arctracker.io/items/twilight_compass_ship_model.png",
+      "icon": "https://cdn.arctracker.io/items/v2/twilight_compass_ship_model.png",
       "rarity": "Uncommon",
       "type": "Trinket",
       "category": "Trinket",
@@ -11741,7 +11741,7 @@
         "originalEn": "Unusable Weapon"
       },
       "description": "可以回收為製作材料。",
-      "icon": "https://cdn.arctracker.io/items/unusable_weapon.png",
+      "icon": "https://cdn.arctracker.io/items/v2/unusable_weapon.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -11768,7 +11768,7 @@
         "originalEn": "Vaporizer Regulator"
       },
       "description": "",
-      "icon": "https://cdn.arctracker.io/items/vaporizer_regulator.png",
+      "icon": "https://cdn.arctracker.io/items/v2/vaporizer_regulator.png",
       "rarity": "Epic",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -11792,7 +11792,7 @@
         "originalEn": "Vase"
       },
       "description": "價值不菲。",
-      "icon": "https://cdn.arctracker.io/items/vase.png",
+      "icon": "https://cdn.arctracker.io/items/v2/vase.png",
       "rarity": "Rare",
       "type": "Trinket",
       "category": "Trinket",
@@ -11814,7 +11814,7 @@
         "originalEn": "\"Velocity\" Ship Model"
       },
       "description": "為追求性能而優化，這件科技奇蹟真心希望你沒打算帶上一頓特別精緻的午餐。",
-      "icon": "https://cdn.arctracker.io/items/velocity_ship_model.png",
+      "icon": "https://cdn.arctracker.io/items/v2/velocity_ship_model.png",
       "rarity": "Rare",
       "type": "Trinket",
       "category": "Trinket",
@@ -11831,7 +11831,7 @@
         "originalEn": "Venator I"
       },
       "description": "半自動手槍。一次發射兩發子彈。",
-      "icon": "https://cdn.arctracker.io/items/venator.png",
+      "icon": "https://cdn.arctracker.io/items/v2/venator_i.png",
       "rarity": "Rare",
       "type": "Pistol",
       "category": "Weapon",
@@ -11865,7 +11865,7 @@
         "originalEn": "Venator II"
       },
       "description": "半自動手槍。一次發射兩發子彈。",
-      "icon": "https://cdn.arctracker.io/items/venator.png",
+      "icon": "https://cdn.arctracker.io/items/v2/venator_ii.png",
       "rarity": "Rare",
       "type": "Pistol",
       "category": "Weapon",
@@ -11899,7 +11899,7 @@
         "originalEn": "Venator III"
       },
       "description": "半自動手槍。一次發射兩發子彈。",
-      "icon": "https://cdn.arctracker.io/items/venator.png",
+      "icon": "https://cdn.arctracker.io/items/v2/venator_iii.png",
       "rarity": "Rare",
       "type": "Pistol",
       "category": "Weapon",
@@ -11933,7 +11933,7 @@
         "originalEn": "Venator IV"
       },
       "description": "半自動手槍。一次發射兩發子彈。",
-      "icon": "https://cdn.arctracker.io/items/venator.png",
+      "icon": "https://cdn.arctracker.io/items/v2/venator_iv.png",
       "rarity": "Rare",
       "type": "Pistol",
       "category": "Weapon",
@@ -11966,7 +11966,7 @@
         "originalEn": "Vertical Grip I"
       },
       "description": "略微降低垂直後座力。相容武器：Tempest、Arpeggio、Kettle、Ferro、Hullcracker",
-      "icon": "https://cdn.arctracker.io/items/vertical_grip_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/vertical_grip_i.png",
       "rarity": "Common",
       "type": "Modification",
       "category": "Modification",
@@ -11994,7 +11994,7 @@
         "originalEn": "Vertical Grip II"
       },
       "description": "適度降低垂直後座力。相容武器：Arpeggio、Ferro、Venator、Il Toro、Stitcher",
-      "icon": "https://cdn.arctracker.io/items/vertical_grip_ii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/vertical_grip_ii.png",
       "rarity": "Uncommon",
       "type": "Modification",
       "category": "Modification",
@@ -12023,7 +12023,7 @@
         "originalEn": "Vertical Grip III"
       },
       "description": "顯著降低垂直後座力。相容武器：Tempest、Kettle、Hullcracker、Venator、Il Toro",
-      "icon": "https://cdn.arctracker.io/items/vertical_grip_iii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/vertical_grip_iii.png",
       "rarity": "Rare",
       "type": "Modification",
       "category": "Modification",
@@ -12052,7 +12052,7 @@
         "originalEn": "Very Comfortable Pillow"
       },
       "description": "每個掠奪者的羨慕對象。就像睡在特別符合人體工學的雲上。",
-      "icon": "https://cdn.arctracker.io/items/very_comfortable_pillow.png",
+      "icon": "https://cdn.arctracker.io/items/v2/very_comfortable_pillow.png",
       "rarity": "Uncommon",
       "type": "Trinket",
       "category": "Trinket",
@@ -12073,7 +12073,7 @@
         "originalEn": "Vita Shot"
       },
       "description": "可恢復大量生命值的醫療物品。",
-      "icon": "https://cdn.arctracker.io/items/vita_shot.png",
+      "icon": "https://cdn.arctracker.io/items/v2/vita_shot.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -12103,7 +12103,7 @@
         "originalEn": "Vita Spray"
       },
       "description": "使用期間持續恢復生命值的醫療物品。可用於自己或隊友。",
-      "icon": "https://cdn.arctracker.io/items/vita_spray.png",
+      "icon": "https://cdn.arctracker.io/items/v2/vita_spray.png",
       "rarity": "Epic",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -12134,7 +12134,7 @@
         "originalEn": "Volcanic Rock"
       },
       "description": "可以投擲。",
-      "icon": "https://cdn.arctracker.io/items/volcanic_rock.png",
+      "icon": "https://cdn.arctracker.io/items/v2/volcanic_rock.png",
       "rarity": "Common",
       "type": "Misc",
       "category": "Misc",
@@ -12154,7 +12154,7 @@
         "originalEn": "Voltage Converter"
       },
       "description": "用於製作。可製作：重型護盾、終結者",
-      "icon": "https://cdn.arctracker.io/items/voltage_converter.png",
+      "icon": "https://cdn.arctracker.io/items/v2/voltage_converter.png",
       "rarity": "Rare",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -12181,7 +12181,7 @@
         "originalEn": "Vulcano I"
       },
       "description": "半自動霰彈槍，擁有良好的彈丸擴散但急劇的傷害衰減。",
-      "icon": "https://cdn.arctracker.io/items/vulcano.png",
+      "icon": "https://cdn.arctracker.io/items/v2/vulcano_i.png",
       "rarity": "Epic",
       "type": "Shotgun",
       "category": "Weapon",
@@ -12215,7 +12215,7 @@
         "originalEn": "Vulcano II"
       },
       "description": "擁有良好的彈丸擴散但急劇的傷害衰減。",
-      "icon": "https://cdn.arctracker.io/items/vulcano.png",
+      "icon": "https://cdn.arctracker.io/items/v2/vulcano_ii.png",
       "rarity": "Epic",
       "type": "Shotgun",
       "category": "Weapon",
@@ -12249,7 +12249,7 @@
         "originalEn": "Vulcano III"
       },
       "description": "擁有良好的彈道擴散，但傷害衰減明顯。",
-      "icon": "https://cdn.arctracker.io/items/vulcano.png",
+      "icon": "https://cdn.arctracker.io/items/v2/vulcano_iii.png",
       "rarity": "Epic",
       "type": "Shotgun",
       "category": "Weapon",
@@ -12283,7 +12283,7 @@
         "originalEn": "Vulcano IV"
       },
       "description": "半自動霰彈槍，擴散良好但傷害衰減明顯",
-      "icon": "https://cdn.arctracker.io/items/vulcano.png",
+      "icon": "https://cdn.arctracker.io/items/v2/vulcano_iv.png",
       "rarity": "Epic",
       "type": "Shotgun",
       "category": "Weapon",
@@ -12316,7 +12316,7 @@
         "originalEn": "Wasp Driver"
       },
       "description": "可回收為ARC合金。可投擲，被射擊時會爆炸。",
-      "icon": "https://cdn.arctracker.io/items/wasp_driver.png",
+      "icon": "https://cdn.arctracker.io/items/v2/wasp_driver.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -12342,7 +12342,7 @@
         "originalEn": "Water Filter"
       },
       "description": "用於淨化水的便攜式過濾裝置。",
-      "icon": "https://cdn.arctracker.io/items/water_filter.png",
+      "icon": "https://cdn.arctracker.io/items/v2/water_filter.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -12369,7 +12369,7 @@
         "originalEn": "Water Pump"
       },
       "description": "可以回收成製作材料。",
-      "icon": "https://cdn.arctracker.io/items/water_pump.png",
+      "icon": "https://cdn.arctracker.io/items/v2/water_pump.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -12397,7 +12397,7 @@
         "originalEn": "White Flag"
       },
       "description": "可部署的白旗",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/white_flag.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -12427,7 +12427,7 @@
         "originalEn": "\"Wind Sprite\" Ship Model"
       },
       "description": "面對更大的同胞毫不退縮，這艘靈活的單桅帆船以敢於挑戰哪怕只是略高於平均水平的海浪而聞名。",
-      "icon": "https://cdn.arctracker.io/items/wind_sprite_ship_model.png",
+      "icon": "https://cdn.arctracker.io/items/v2/wind_sprite_ship_model.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -12444,7 +12444,7 @@
         "originalEn": "Wires"
       },
       "description": "用於製作各種物品。可回收為製作材料。可製作：烈焰手榴彈陷阱、煙霧手榴彈陷阱、誘餌手榴彈陷阱、毒氣手榴彈陷阱、槍口制退器I",
-      "icon": "https://cdn.arctracker.io/items/wires.png",
+      "icon": "https://cdn.arctracker.io/items/v2/wires.png",
       "rarity": "Uncommon",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -12471,7 +12471,7 @@
         "originalEn": "Wolfpack"
       },
       "description": "一種散開成多枚追蹤飛彈的手榴彈，每枚飛彈都會鎖定ARC並在撞擊時造成爆炸傷害。",
-      "icon": "https://cdn.arctracker.io/items/wolfpack.png",
+      "icon": "https://cdn.arctracker.io/items/v2/wolfpack.png",
       "rarity": "Epic",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -12502,7 +12502,7 @@
         "originalEn": "Yellow Light Stick"
       },
       "description": "可投擲的化學光源，照亮周圍區域。",
-      "icon": "https://cdn.arctracker.io/items/yellow_light_stick.png",
+      "icon": "https://cdn.arctracker.io/items/v2/yellow_light_stick.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -12530,7 +12530,7 @@
         "originalEn": "Zipline"
       },
       "description": "可部署的滑索，讓你能快速在兩個地點間移動。",
-      "icon": "https://cdn.arctracker.io/items/zipline.png",
+      "icon": "https://cdn.arctracker.io/items/v2/zipline.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",

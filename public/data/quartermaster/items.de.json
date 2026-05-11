@@ -7,7 +7,7 @@
         "originalEn": "Acoustic Guitar"
       },
       "description": "Eine spielbare Akustikgitarre, um ARCs Aufmerksamkeit zu erregen und andere Raider zu beeindrucken.",
-      "icon": "https://cdn.arctracker.io/items/acoustic_guitar.png",
+      "icon": "https://cdn.arctracker.io/items/v2/acoustic_guitar.png",
       "rarity": "Legendary",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -31,7 +31,7 @@
         "originalEn": "Adrenaline Shot"
       },
       "description": "Ein Serum, das deine Ausdauer vollständig wiederherstellt und deine Ausdauerregeneration vorübergehend erhöht.",
-      "icon": "https://cdn.arctracker.io/items/adrenaline_shot.png",
+      "icon": "https://cdn.arctracker.io/items/v2/adrenaline_shot.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -61,7 +61,7 @@
         "originalEn": "Advanced ARC Powercell"
       },
       "description": "Sehr wertvolle Ressource, die von bestimmten ARC-Gegnern fallen gelassen wird. Zur Herstellung von: Energieclip, Sturm-Schildauflader",
-      "icon": "https://cdn.arctracker.io/items/advanced_arc_powercell.png",
+      "icon": "https://cdn.arctracker.io/items/v2/advanced_arc_powercell.png",
       "rarity": "Rare",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -87,7 +87,7 @@
         "originalEn": "Advanced Electrical Components"
       },
       "description": "Wird zur Herstellung verschiedenster Gegenstände verwendet. Kann zu Herstellungsmaterialien recycelt werden. Zur Herstellung von: Taktisch-Marke 3 (Defensiv), Kampf-Marke 3 (Flankierend), Kampf-Marke 3 (Aggressiv), Beute-Marke 3 (Vorsichtig), Taktisch-Marke 3 (Heilung)",
-      "icon": "https://cdn.arctracker.io/items/advanced_electrical_components.png",
+      "icon": "https://cdn.arctracker.io/items/v2/advanced_electrical_components.png",
       "rarity": "Rare",
       "type": "Refined Material",
       "category": "Refined Material",
@@ -119,7 +119,7 @@
         "originalEn": "Advanced Mechanical Components"
       },
       "description": "Wird zur Herstellung fortschrittlicher Waffen verwendet. Kann zu Herstellungsmaterialien recycelt werden. Zur Herstellung von: Torrente, Venator, Osprey, Renegade, Bettina",
-      "icon": "https://cdn.arctracker.io/items/advanced_mechanical_components.png",
+      "icon": "https://cdn.arctracker.io/items/v2/advanced_mechanical_components.png",
       "rarity": "Rare",
       "type": "Refined Material",
       "category": "Refined Material",
@@ -151,7 +151,7 @@
         "originalEn": "Agave"
       },
       "description": "Ein Stück von einem Agavenblatt. Kann zur Regeneration einer kleinen Menge Gesundheit benutzt werden.",
-      "icon": "https://cdn.arctracker.io/items/agave.png",
+      "icon": "https://cdn.arctracker.io/items/v2/agave.png",
       "rarity": "Uncommon",
       "type": "Nature",
       "category": "Nature",
@@ -177,7 +177,7 @@
         "originalEn": "Agave Juice"
       },
       "description": "Ein Gebräu, das vorübergehend die Ausdauerregeneration erhöht, zu geringen anfänglichen Kosten an Gesundheit.",
-      "icon": "https://cdn.arctracker.io/items/agave_juice.png",
+      "icon": "https://cdn.arctracker.io/items/v2/agave_juice.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -201,7 +201,7 @@
         "originalEn": "Air Freshener"
       },
       "description": "Vielleicht ein paar Münzen wert.",
-      "icon": "https://cdn.arctracker.io/items/air_freshener.png",
+      "icon": "https://cdn.arctracker.io/items/v2/air_freshener.png",
       "rarity": "Uncommon",
       "type": "Trinket",
       "category": "Trinket",
@@ -221,7 +221,7 @@
         "originalEn": "Alarm Clock"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/alarm_clock.png",
+      "icon": "https://cdn.arctracker.io/items/v2/alarm_clock.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -248,7 +248,7 @@
         "originalEn": "Alien Duck"
       },
       "description": "Weit, weit weg von zu Hause. Kann geworfen werden, um Lärm zu erzeugen.",
-      "icon": "https://cdn.arctracker.io/items/alien_duck.png",
+      "icon": "https://cdn.arctracker.io/items/v2/alien_duck.png",
       "rarity": "Uncommon",
       "type": "Trinket",
       "category": "Trinket",
@@ -265,7 +265,7 @@
         "originalEn": "Ancient Fort Security Code"
       },
       "description": "Einer von vier Sicherheitscodes, die zum Öffnen des verschlossenen Tors am Blue Gate benötigt werden. Gefunden bei Ancient Fort.",
-      "icon": "https://cdn.arctracker.io/items/security_code.png",
+      "icon": "https://cdn.arctracker.io/items/v2/ancient_fort_security_code.png",
       "rarity": "Common",
       "type": "Key",
       "category": "Key",
@@ -282,7 +282,7 @@
         "originalEn": "Angled Grip I"
       },
       "description": "Verringert den horizontalen Rückstoß geringfügig. Kompatibel mit: Tempest, Arpeggio, Kettle, Ferro, Hullcracker",
-      "icon": "https://cdn.arctracker.io/items/angled_grip_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/angled_grip_i.png",
       "rarity": "Common",
       "type": "Modification",
       "category": "Modification",
@@ -310,7 +310,7 @@
         "originalEn": "Angled Grip II"
       },
       "description": "Verringert den horizontalen Rückstoß moderat. Kompatibel mit: Arpeggio, Rattler, Kettle, Ferro, Venator",
-      "icon": "https://cdn.arctracker.io/items/angled_grip_ii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/angled_grip_ii.png",
       "rarity": "Uncommon",
       "type": "Modification",
       "category": "Modification",
@@ -339,7 +339,7 @@
         "originalEn": "Angled Grip III"
       },
       "description": "Verringert den horizontalen Rückstoß erheblich. Kompatibel mit: Arpeggio, Ferro, Venator, Il Toro, Stitcher",
-      "icon": "https://cdn.arctracker.io/items/angled_grip_iii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/angled_grip_iii.png",
       "rarity": "Rare",
       "type": "Modification",
       "category": "Modification",
@@ -368,7 +368,7 @@
         "originalEn": "Antiseptic"
       },
       "description": "Wird zur Herstellung medizinischer Objekte verwendet. Kann zu Chemikalien recycelt werden. Zur Herstellung von: Steriler Verband, Vita-Spray, Vita-Spritze",
-      "icon": "https://cdn.arctracker.io/items/antiseptic.png",
+      "icon": "https://cdn.arctracker.io/items/v2/antiseptic.png",
       "rarity": "Rare",
       "type": "Refined Material",
       "category": "Refined Material",
@@ -399,7 +399,7 @@
         "originalEn": "Anvil I"
       },
       "description": "Richtet bei Körpertreffern und insbesondere bei Kopfschüssen hohen Schaden an, ist aber in der Benutzung langsam.",
-      "icon": "https://cdn.arctracker.io/items/anvil.png",
+      "icon": "https://cdn.arctracker.io/items/v2/anvil_i.png",
       "rarity": "Uncommon",
       "type": "Hand Cannon",
       "category": "Weapon",
@@ -432,7 +432,7 @@
         "originalEn": "Anvil II"
       },
       "description": "Richtet bei Körpertreffern und insbesondere bei Kopfschüssen hohen Schaden an, ist aber in der Benutzung langsam.",
-      "icon": "https://cdn.arctracker.io/items/anvil.png",
+      "icon": "https://cdn.arctracker.io/items/v2/anvil_ii.png",
       "rarity": "Uncommon",
       "type": "Hand Cannon",
       "category": "Weapon",
@@ -466,7 +466,7 @@
         "originalEn": "Anvil III"
       },
       "description": "Richtet bei Körpertreffern und insbesondere bei Kopfschüssen hohen Schaden an, ist aber in der Benutzung langsam.",
-      "icon": "https://cdn.arctracker.io/items/anvil.png",
+      "icon": "https://cdn.arctracker.io/items/v2/anvil_iii.png",
       "rarity": "Uncommon",
       "type": "Hand Cannon",
       "category": "Weapon",
@@ -500,7 +500,7 @@
         "originalEn": "Anvil IV"
       },
       "description": "Richtet bei Körpertreffern und insbesondere bei Kopfschüssen hohen Schaden an, ist aber in der Benutzung langsam.",
-      "icon": "https://cdn.arctracker.io/items/anvil.png",
+      "icon": "https://cdn.arctracker.io/items/v2/anvil_iv.png",
       "rarity": "Uncommon",
       "type": "Hand Cannon",
       "category": "Weapon",
@@ -533,7 +533,7 @@
         "originalEn": "Anvil Splitter"
       },
       "description": "Technische Modifikation für den Amboss, die seine Kugeln durch solche ersetzt, die sich in 4 schwächere Projektile aufteilen.",
-      "icon": "https://cdn.arctracker.io/items/anvil_splitter.png",
+      "icon": "https://cdn.arctracker.io/items/v2/anvil_splitter.png",
       "rarity": "Legendary",
       "type": "Modification",
       "category": "Modification",
@@ -557,7 +557,7 @@
         "originalEn": "Aphelion"
       },
       "description": "Eine experimentelle ARC-Strahlenwaffe, angetrieben von einem Matriarch-Reaktor.",
-      "icon": "https://cdn.arctracker.io/items/aphelion.png",
+      "icon": "https://cdn.arctracker.io/items/v2/aphelion.png",
       "rarity": "Legendary",
       "type": "Special",
       "category": "Weapon",
@@ -588,7 +588,7 @@
         "originalEn": "Apricot"
       },
       "description": "Eine sonnengereifte Aprikose. Kann zum Gewinn einer kleinen Menge Ausdauer verzehrt werden.",
-      "icon": "https://cdn.arctracker.io/items/apricot.png",
+      "icon": "https://cdn.arctracker.io/items/v2/apricot.png",
       "rarity": "Uncommon",
       "type": "Nature",
       "category": "Nature",
@@ -614,7 +614,7 @@
         "originalEn": "ARC Alloy"
       },
       "description": "Erhältlich von ARC-Gegnern, durch Aktivitäten oder durch das Recyceln bestimmter ARC-Teile. Wird zur Herstellung von Komponenten verwendet. Zur Herstellung von: Leichter Schild, Suchgranate, ARC-Bewegungskern, ARC-Schaltkreise",
-      "icon": "https://cdn.arctracker.io/items/arc_alloy.png",
+      "icon": "https://cdn.arctracker.io/items/v2/arc_alloy.png",
       "rarity": "Uncommon",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -640,7 +640,7 @@
         "originalEn": "ARC Circuitry"
       },
       "description": "Erhältlich von ARC-Gegnern oder durch Aktivitäten. Wird zur Herstellung von Komponenten verwendet. Kann zu ARC-Legierung recycelt werden. Zur Herstellung von: Mittlerer Schild, Deadline, Energiestab",
-      "icon": "https://cdn.arctracker.io/items/arc_circuitry.png",
+      "icon": "https://cdn.arctracker.io/items/v2/arc_circuitry.png",
       "rarity": "Rare",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -670,7 +670,7 @@
         "originalEn": "ARC Coolant"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/arc_coolant.png",
+      "icon": "https://cdn.arctracker.io/items/v2/arc_coolant.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -696,7 +696,7 @@
         "originalEn": "ARC Flex Rubber"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/arc_flex_rubber.png",
+      "icon": "https://cdn.arctracker.io/items/v2/arc_flex_rubber.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -722,7 +722,7 @@
         "originalEn": "ARC Motion Core"
       },
       "description": "Erhältlich von ARC-Gegnern oder durch Aktivitäten. Wird zur Herstellung von Komponenten verwendet. Kann zu ARC-Legierung recycelt werden. Zur Herstellung von: Werfermunition, Wolfpack, Magnetischer Beschleuniger",
-      "icon": "https://cdn.arctracker.io/items/arc_motion_core.png",
+      "icon": "https://cdn.arctracker.io/items/v2/arc_motion_core.png",
       "rarity": "Rare",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -752,7 +752,7 @@
         "originalEn": "ARC Performance Steel"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/arc_performance_steel.png",
+      "icon": "https://cdn.arctracker.io/items/v2/arc_performance_steel.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -778,7 +778,7 @@
         "originalEn": "ARC Powercell"
       },
       "description": "Wertvolle Ressource, die von allen ARC-Gegnern fallengelassen wird. Zur Herstellung von: Schildauflader. Kann zur Reparatur von Schilden verwendet werden.",
-      "icon": "https://cdn.arctracker.io/items/arc_powercell.png",
+      "icon": "https://cdn.arctracker.io/items/v2/arc_powercell.png",
       "rarity": "Common",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -798,7 +798,7 @@
         "originalEn": "ARC Synthetic Resin"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/arc_synthetic_resin.png",
+      "icon": "https://cdn.arctracker.io/items/v2/arc_synthetic_resin.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -824,7 +824,7 @@
         "originalEn": "ARC Thermo Lining"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/arc_thermo_lining.png",
+      "icon": "https://cdn.arctracker.io/items/v2/arc_thermo_lining.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -850,7 +850,7 @@
         "originalEn": "Arpeggio I"
       },
       "description": "Verursacht ordentlichen Schaden bei annehmbarer Genauigkeit.",
-      "icon": "https://cdn.arctracker.io/items/arpeggio.png",
+      "icon": "https://cdn.arctracker.io/items/v2/arpeggio_i.png",
       "rarity": "Uncommon",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -883,7 +883,7 @@
         "originalEn": "Arpeggio II"
       },
       "description": "Verursacht ordentlichen Schaden bei annehmbarer Genauigkeit.",
-      "icon": "https://cdn.arctracker.io/items/arpeggio.png",
+      "icon": "https://cdn.arctracker.io/items/v2/arpeggio_ii.png",
       "rarity": "Uncommon",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -917,7 +917,7 @@
         "originalEn": "Arpeggio III"
       },
       "description": "Verursacht ordentlichen Schaden bei annehmbarer Genauigkeit.",
-      "icon": "https://cdn.arctracker.io/items/arpeggio.png",
+      "icon": "https://cdn.arctracker.io/items/v2/arpeggio_iii.png",
       "rarity": "Uncommon",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -951,7 +951,7 @@
         "originalEn": "Arpeggio IV"
       },
       "description": "Verursacht ordentlichen Schaden bei annehmbarer Genauigkeit.",
-      "icon": "https://cdn.arctracker.io/items/arpeggio.png",
+      "icon": "https://cdn.arctracker.io/items/v2/arpeggio_iv.png",
       "rarity": "Uncommon",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -984,7 +984,7 @@
         "originalEn": "Assessor Matrix"
       },
       "description": "",
-      "icon": "https://cdn.arctracker.io/items/assessor_matrix.png",
+      "icon": "https://cdn.arctracker.io/items/v2/assessor_matrix.png",
       "rarity": "Epic",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -1008,7 +1008,7 @@
         "originalEn": "Assorted Seeds"
       },
       "description": "Eine Handvoll Saatgut. Celeste könnte Interesse daran haben.",
-      "icon": "https://cdn.arctracker.io/items/assorted_seeds.png",
+      "icon": "https://cdn.arctracker.io/items/v2/assorted_seeds.png",
       "rarity": "Common",
       "type": "Nature",
       "category": "Nature",
@@ -1028,7 +1028,7 @@
         "originalEn": "Bandage"
       },
       "description": "Ein medizinischer Gegenstand, der allmählich Gesundheit wiederherstellt.",
-      "icon": "https://cdn.arctracker.io/items/bandage.png",
+      "icon": "https://cdn.arctracker.io/items/v2/bandage.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -1056,7 +1056,7 @@
         "originalEn": "Barricade Kit"
       },
       "description": "Eine einsetzbare Deckung, die Schaden abfängt, bis sie zerstört wird.",
-      "icon": "https://cdn.arctracker.io/items/barricade_kit.png",
+      "icon": "https://cdn.arctracker.io/items/v2/barricade_kit.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -1084,7 +1084,7 @@
         "originalEn": "Bastion Cell"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/bastion_cell.png",
+      "icon": "https://cdn.arctracker.io/items/v2/bastion_cell.png",
       "rarity": "Epic",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -1111,7 +1111,7 @@
         "originalEn": "Battery"
       },
       "description": "Wird zur Herstellung verschiedenster Gegenstände verwendet. Kann zu Metallschrott recycelt werden. Zur Herstellung von: Energieclip, Mittlerer Schild, Schockmine",
-      "icon": "https://cdn.arctracker.io/items/battery.png",
+      "icon": "https://cdn.arctracker.io/items/v2/battery.png",
       "rarity": "Uncommon",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -1138,7 +1138,7 @@
         "originalEn": "Bettina I"
       },
       "description": "Hat eine langsame Feuerrate und hohen Schadensausstoß.",
-      "icon": "https://cdn.arctracker.io/items/bettina.png",
+      "icon": "https://cdn.arctracker.io/items/v2/bettina_i.png",
       "rarity": "Epic",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -1172,7 +1172,7 @@
         "originalEn": "Bettina II"
       },
       "description": "Hat eine langsame Feuerrate und hohen Schadensausstoß.",
-      "icon": "https://cdn.arctracker.io/items/bettina.png",
+      "icon": "https://cdn.arctracker.io/items/v2/bettina_ii.png",
       "rarity": "Epic",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -1206,7 +1206,7 @@
         "originalEn": "Bettina III"
       },
       "description": "Hat eine langsame Feuerrate und hohen Schadensausstoß.",
-      "icon": "https://cdn.arctracker.io/items/bettina.png",
+      "icon": "https://cdn.arctracker.io/items/v2/bettina_iii.png",
       "rarity": "Epic",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -1240,7 +1240,7 @@
         "originalEn": "Bettina IV"
       },
       "description": "Hat eine langsame Feuerrate und hohen Schadensausstoß.",
-      "icon": "https://cdn.arctracker.io/items/bettina.png",
+      "icon": "https://cdn.arctracker.io/items/v2/bettina_iv.png",
       "rarity": "Epic",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -1273,7 +1273,7 @@
         "originalEn": "Bicycle Pump"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/bicycle_pump.png",
+      "icon": "https://cdn.arctracker.io/items/v2/bicycle_pump.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -1300,7 +1300,7 @@
         "originalEn": "Binoculars"
       },
       "description": "Ein einfaches Fernglas mit zwei Vergrößerungsstufen.",
-      "icon": "https://cdn.arctracker.io/items/binoculars.png",
+      "icon": "https://cdn.arctracker.io/items/v2/binoculars.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -1330,7 +1330,7 @@
         "originalEn": "Blaze Grenade"
       },
       "description": "Eine Granate, die beim Aufprall explodiert und einen großen Bereich mit Feuer bedeckt, um Schaden über Zeit zu verursachen.",
-      "icon": "https://cdn.arctracker.io/items/blaze_grenade.png",
+      "icon": "https://cdn.arctracker.io/items/v2/blaze_grenade.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -1360,7 +1360,7 @@
         "originalEn": "Blaze Grenade Trap"
       },
       "description": "Ein Laser-Stolperdraht, der eine Flammengranate detonieren lässt.",
-      "icon": "https://cdn.arctracker.io/items/blaze_grenade_trap.png",
+      "icon": "https://cdn.arctracker.io/items/v2/blaze_grenade_trap.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -1402,7 +1402,7 @@
         "originalEn": "Blue Gate Cellar Key"
       },
       "description": "Ein Schlüssel zum Keller im Blauen Tor.",
-      "icon": "https://cdn.arctracker.io/items/blue_gate_cellar_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/blue_gate_cellar_key.png",
       "rarity": "Rare",
       "type": "Key",
       "category": "Key",
@@ -1419,7 +1419,7 @@
         "originalEn": "Blue Gate Communication Tower Key"
       },
       "description": "Öffnet eine Tür beim Kommunikationsturm in der Nähe des Blauen Tors",
-      "icon": "https://cdn.arctracker.io/items/blue_gate_communication_tower_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/blue_gate_communication_tower_key.png",
       "rarity": "Rare",
       "type": "Key",
       "category": "Key",
@@ -1436,7 +1436,7 @@
         "originalEn": "Blue Gate Confiscation Room Key"
       },
       "description": "Öffnet eine Tür zum Bereich der beschlagnahmten Güter in den Tunneln des Blauen Tors",
-      "icon": "https://cdn.arctracker.io/items/blue_gate_confiscation_room_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/blue_gate_confiscation_room_key.png",
       "rarity": "Epic",
       "type": "Key",
       "category": "Key",
@@ -1453,7 +1453,7 @@
         "originalEn": "Blue Gate Village Key"
       },
       "description": "Ein Schlüssel zu Bereichen innerhalb des Blauen Tor Dorfes.",
-      "icon": "https://cdn.arctracker.io/items/blue_gate_village_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/blue_gate_village_key.png",
       "rarity": "Uncommon",
       "type": "Key",
       "category": "Key",
@@ -1470,7 +1470,7 @@
         "originalEn": "Blue Light Stick"
       },
       "description": "Ein werfbares chemisches Licht, das seine Umgebung erhellt.",
-      "icon": "https://cdn.arctracker.io/items/blue_light_stick.png",
+      "icon": "https://cdn.arctracker.io/items/v2/blue_light_stick.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -1498,7 +1498,7 @@
         "originalEn": "Bobcat I"
       },
       "description": "Hat eine hohe Feuerrate, aber eine niedrige Genauigkeit.",
-      "icon": "https://cdn.arctracker.io/items/bobcat.png",
+      "icon": "https://cdn.arctracker.io/items/v2/bobcat_i.png",
       "rarity": "Epic",
       "type": "SMG",
       "category": "Weapon",
@@ -1532,7 +1532,7 @@
         "originalEn": "Bobcat II"
       },
       "description": "Hat eine hohe Feuerrate, aber eine niedrige Genauigkeit.",
-      "icon": "https://cdn.arctracker.io/items/bobcat.png",
+      "icon": "https://cdn.arctracker.io/items/v2/bobcat_ii.png",
       "rarity": "Epic",
       "type": "SMG",
       "category": "Weapon",
@@ -1566,7 +1566,7 @@
         "originalEn": "Bobcat III"
       },
       "description": "Hat eine hohe Feuerrate, aber eine niedrige Genauigkeit.",
-      "icon": "https://cdn.arctracker.io/items/bobcat.png",
+      "icon": "https://cdn.arctracker.io/items/v2/bobcat_iii.png",
       "rarity": "Epic",
       "type": "SMG",
       "category": "Weapon",
@@ -1600,7 +1600,7 @@
         "originalEn": "Bobcat IV"
       },
       "description": "Hat eine hohe Feuerrate, aber eine niedrige Genauigkeit.",
-      "icon": "https://cdn.arctracker.io/items/bobcat.png",
+      "icon": "https://cdn.arctracker.io/items/v2/bobcat_iv.png",
       "rarity": "Epic",
       "type": "SMG",
       "category": "Weapon",
@@ -1633,7 +1633,7 @@
         "originalEn": "Bombardier Cell"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/bombardier_cell.png",
+      "icon": "https://cdn.arctracker.io/items/v2/bombardier_cell.png",
       "rarity": "Epic",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -1660,7 +1660,7 @@
         "originalEn": "Breathtaking Snow Globe"
       },
       "description": "Darum würde dich jeder Speranzer beneiden. Ein Beweis dafür, dass diese Welt einst blühend und magisch war.",
-      "icon": "https://cdn.arctracker.io/items/breathtaking_snow_globe.png",
+      "icon": "https://cdn.arctracker.io/items/v2/breathtaking_snow_globe.png",
       "rarity": "Epic",
       "type": "Trinket",
       "category": "Trinket",
@@ -1682,7 +1682,7 @@
         "originalEn": "Broken Flashlight"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/broken_flashlight.png",
+      "icon": "https://cdn.arctracker.io/items/v2/broken_flashlight.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -1709,7 +1709,7 @@
         "originalEn": "Broken Guidance System"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/broken_guidance_system.png",
+      "icon": "https://cdn.arctracker.io/items/v2/broken_guidance_system.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -1735,7 +1735,7 @@
         "originalEn": "Broken Handheld Radio"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/broken_handheld_radio.png",
+      "icon": "https://cdn.arctracker.io/items/v2/broken_handheld_radio.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -1762,7 +1762,7 @@
         "originalEn": "Broken Taser"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/broken_taser.png",
+      "icon": "https://cdn.arctracker.io/items/v2/broken_taser.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -1789,7 +1789,7 @@
         "originalEn": "Buried City Hospital Key"
       },
       "description": "Öffnet eine Tür im Krankenhaus in der Begrabenen Stadt.",
-      "icon": "https://cdn.arctracker.io/items/buried_city_hospital_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/buried_city_hospital_key.png",
       "rarity": "Rare",
       "type": "Key",
       "category": "Key",
@@ -1806,7 +1806,7 @@
         "originalEn": "Buried City JKV Employee Access Card"
       },
       "description": "Eine Mitarbeiterzugangskarte für JKV-Einrichtungen in der Begrabenen Stadt.",
-      "icon": "https://cdn.arctracker.io/items/buried_city_jkv_employee_access_card.png",
+      "icon": "https://cdn.arctracker.io/items/v2/buried_city_jkv_employee_access_card.png",
       "rarity": "Uncommon",
       "type": "Key",
       "category": "Key",
@@ -1823,7 +1823,7 @@
         "originalEn": "Buried City Residential Master Key"
       },
       "description": "Ein Hauptschlüssel für Wohngebiete in der vergrabenen Stadt.",
-      "icon": "https://cdn.arctracker.io/items/buried_city_residential_master_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/buried_city_residential_master_key.png",
       "rarity": "Uncommon",
       "type": "Key",
       "category": "Key",
@@ -1840,7 +1840,7 @@
         "originalEn": "Buried City Town Hall Key"
       },
       "description": "Öffnet die Tür zum Rathaus in der Begrabenen Stadt",
-      "icon": "https://cdn.arctracker.io/items/buried_city_town_hall_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/buried_city_town_hall_key.png",
       "rarity": "Epic",
       "type": "Key",
       "category": "Key",
@@ -1857,7 +1857,7 @@
         "originalEn": "Burletta I"
       },
       "description": "Verursacht ordentlichen Schaden bei annehmbarer Genauigkeit.",
-      "icon": "https://cdn.arctracker.io/items/burletta.png",
+      "icon": "https://cdn.arctracker.io/items/v2/burletta_i.png",
       "rarity": "Uncommon",
       "type": "Pistol",
       "category": "Weapon",
@@ -1890,7 +1890,7 @@
         "originalEn": "Burletta II"
       },
       "description": "Verursacht ordentlichen Schaden bei annehmbarer Genauigkeit.",
-      "icon": "https://cdn.arctracker.io/items/burletta.png",
+      "icon": "https://cdn.arctracker.io/items/v2/burletta_ii.png",
       "rarity": "Uncommon",
       "type": "Pistol",
       "category": "Weapon",
@@ -1924,7 +1924,7 @@
         "originalEn": "Burletta III"
       },
       "description": "Verursacht ordentlichen Schaden bei annehmbarer Genauigkeit.",
-      "icon": "https://cdn.arctracker.io/items/burletta.png",
+      "icon": "https://cdn.arctracker.io/items/v2/burletta_iii.png",
       "rarity": "Uncommon",
       "type": "Pistol",
       "category": "Weapon",
@@ -1958,7 +1958,7 @@
         "originalEn": "Burletta IV"
       },
       "description": "Verursacht ordentlichen Schaden bei annehmbarer Genauigkeit.",
-      "icon": "https://cdn.arctracker.io/items/burletta.png",
+      "icon": "https://cdn.arctracker.io/items/v2/burletta_iv.png",
       "rarity": "Uncommon",
       "type": "Pistol",
       "category": "Weapon",
@@ -1991,7 +1991,7 @@
         "originalEn": "Burned Arc Circuitry"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/burned_arc_circuitry.png",
+      "icon": "https://cdn.arctracker.io/items/v2/burned_arc_circuitry.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -2017,7 +2017,7 @@
         "originalEn": "Burnt-Out Candles"
       },
       "description": "Nach dem Zusammenbruch des Stromnetzes wurden Kerzen für viele zur bevorzugten Lichtquelle. Im Gegensatz zu Elektrizität wird dich eine gute alte Kerze nie im Stich lassen. Es sei denn, es ist windig. Oder es regnet. Oder...",
-      "icon": "https://cdn.arctracker.io/items/burnt_out_candles.png",
+      "icon": "https://cdn.arctracker.io/items/v2/burnt_out_candles.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -2038,7 +2038,7 @@
         "originalEn": "Camera Lens"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/camera_lens.png",
+      "icon": "https://cdn.arctracker.io/items/v2/camera_lens.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -2064,7 +2064,7 @@
         "originalEn": "Candle Holder"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/candle_holder.png",
+      "icon": "https://cdn.arctracker.io/items/v2/candle_holder.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -2090,7 +2090,7 @@
         "originalEn": "Candleberries"
       },
       "description": "Eine wachsartige Beere, die nur in einem kurzen Zeitfenster im Jahr wächst. Die Menschen haben sich seit jeher auf sie verlassen, um Kerzen, Lebensmittel und Medizin herzustellen.",
-      "icon": "https://cdn.arctracker.io/items/candleberries.png",
+      "icon": "https://cdn.arctracker.io/items/v2/candleberries.png",
       "rarity": "Rare",
       "type": "Nature",
       "category": "Nature",
@@ -2113,7 +2113,7 @@
         "originalEn": "Canister"
       },
       "description": "Wird zur Herstellung verschiedenster Gegenstände verwendet. Kann zu Plastik recycelt werden. Zur Herstellung von: Bettina, Schwere Zündgranate, Rauchgranate, Vita-Spray",
-      "icon": "https://cdn.arctracker.io/items/canister.png",
+      "icon": "https://cdn.arctracker.io/items/v2/canister.png",
       "rarity": "Uncommon",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -2139,8 +2139,8 @@
         "originalEn": "Canto I"
       },
       "description": "Vollautomatische Maschinenpistole mit größerem Kaliber.",
-      "icon": "",
-      "rarity": "Legendary",
+      "icon": "https://cdn.arctracker.io/items/v2/canto_i.png",
+      "rarity": "Rare",
       "type": "SMG",
       "category": "SMG",
       "craftBench": "weapon_bench",
@@ -2169,8 +2169,8 @@
         "originalEn": "Canto II"
       },
       "description": "Vollautomatische Maschinenpistole mit größerem Kaliber.",
-      "icon": "",
-      "rarity": "Legendary",
+      "icon": "https://cdn.arctracker.io/items/v2/canto_ii.png",
+      "rarity": "Rare",
       "type": "SMG",
       "category": "SMG",
       "stationLevelRequired": 1,
@@ -2197,8 +2197,8 @@
         "originalEn": "Canto III"
       },
       "description": "Vollautomatische Maschinenpistole mit größerem Kaliber.",
-      "icon": "",
-      "rarity": "Legendary",
+      "icon": "https://cdn.arctracker.io/items/v2/canto_iii.png",
+      "rarity": "Rare",
       "type": "SMG",
       "category": "SMG",
       "stationLevelRequired": 1,
@@ -2225,8 +2225,8 @@
         "originalEn": "Canto IV"
       },
       "description": "Vollautomatische Maschinenpistole mit größerem Kaliber.",
-      "icon": "",
-      "rarity": "Legendary",
+      "icon": "https://cdn.arctracker.io/items/v2/canto_iv.png",
+      "rarity": "Rare",
       "type": "SMG",
       "category": "SMG",
       "stationLevelRequired": 1,
@@ -2253,7 +2253,7 @@
         "originalEn": "Cat Bed"
       },
       "description": "Zumindest ein kleines bisschen gemütlicher als dein Gesicht.",
-      "icon": "https://cdn.arctracker.io/items/cat_bed.png",
+      "icon": "https://cdn.arctracker.io/items/v2/cat_bed.png",
       "rarity": "Uncommon",
       "type": "Trinket",
       "category": "Trinket",
@@ -2274,7 +2274,7 @@
         "originalEn": "Celeste's Journal"
       },
       "description": "Abgenutzt und zerrissen, man kann die schwachen Umrisse von Kritzeleien an den Rändern sehen.",
-      "icon": "https://cdn.arctracker.io/items/celestes_journal.png",
+      "icon": "https://cdn.arctracker.io/items/v2/celeste_journal.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -2291,7 +2291,7 @@
         "originalEn": "Chemicals"
       },
       "description": "Wird zur Herstellung von medizinischen Objekten, Sprengstoffen und Gebrauchsgegenständen verwendet. Zur Herstellung von: Schwere Munition, Mittlere Munition, Schrotflintenmunition, Leichte Munition, Leichte Aufschlaggranate",
-      "icon": "https://cdn.arctracker.io/items/chemicals.png",
+      "icon": "https://cdn.arctracker.io/items/v2/chemicals.png",
       "rarity": "Common",
       "type": "Basic Material",
       "category": "Basic Material",
@@ -2313,7 +2313,7 @@
         "originalEn": "Coffee Pot"
       },
       "description": "Kraft für einen neuen Tag - Tasse für Tasse.",
-      "icon": "https://cdn.arctracker.io/items/coffee_pot.png",
+      "icon": "https://cdn.arctracker.io/items/v2/coffee_pot.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -2333,7 +2333,7 @@
         "originalEn": "Combat Mk. 1"
       },
       "description": "Basis-Kampf-Augment. Unterstützt stärkere Schilde, schränkt aber die Rucksackkapazität und die Schnelleinsatz-Plätze ein.",
-      "icon": "https://cdn.arctracker.io/items/combat_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/combat_mk1.png",
       "rarity": "Uncommon",
       "type": "Augment",
       "category": "Augment",
@@ -2362,7 +2362,7 @@
         "originalEn": "Combat Mk. 2"
       },
       "description": "Ein Kampf-Augment, dessen Fokus mehr auf Manövrierfähigkeit und weniger auf Schadensabsorption liegt.",
-      "icon": "https://cdn.arctracker.io/items/combat_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/combat_mk2.png",
       "rarity": "Rare",
       "type": "Augment",
       "category": "Augment",
@@ -2391,7 +2391,7 @@
         "originalEn": "Combat Mk. 3 (Aggressive)"
       },
       "description": "Eine verbesserte Version des Kampf II-Augments. Unterstützt mehr Schildtypen und bietet zusätzlichen Platz für Granaten.",
-      "icon": "https://cdn.arctracker.io/items/combat_mk3_aggressive.png",
+      "icon": "https://cdn.arctracker.io/items/v2/combat_mk3_aggressive.png",
       "rarity": "Epic",
       "type": "Augment",
       "category": "Augment",
@@ -2420,7 +2420,7 @@
         "originalEn": "Combat Mk. 3 (Flanking)"
       },
       "description": "Eine verbesserte Version des Kampf II-Augments. Fur Flankierungsmanover mit verbesserter Mobilitat entwickelt.",
-      "icon": "https://cdn.arctracker.io/items/combat_mk3_flanking.png",
+      "icon": "https://cdn.arctracker.io/items/v2/combat_mk3_flanking.png",
       "rarity": "Epic",
       "type": "Augment",
       "category": "Augment",
@@ -2449,7 +2449,7 @@
         "originalEn": "Comet Igniter"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/comet_igniter.png",
+      "icon": "https://cdn.arctracker.io/items/v2/comet_igniter.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -2476,7 +2476,7 @@
         "originalEn": "Compensator I"
       },
       "description": "Verringert die Streuung pro Schuss geringfügig. Kompatibel mit: Arpeggio, Rattler, Kettle, Ferro, Anvil",
-      "icon": "https://cdn.arctracker.io/items/compensator_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/compensator_i.png",
       "rarity": "Common",
       "type": "Modification",
       "category": "Modification",
@@ -2504,7 +2504,7 @@
         "originalEn": "Compensator II"
       },
       "description": "Verringert die Streuung pro Schuss moderat. Kompatibel mit: Arpeggio, Ferro, Renegade, Anvil, Stitcher",
-      "icon": "https://cdn.arctracker.io/items/compensator_ii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/compensator_ii.png",
       "rarity": "Uncommon",
       "type": "Modification",
       "category": "Modification",
@@ -2533,7 +2533,7 @@
         "originalEn": "Compensator III"
       },
       "description": "Verringert die Streuung pro Schuss moderat. Kompatibel mit: Arpeggio, Ferro, Renegade, Anvil, Stitcher",
-      "icon": "https://cdn.arctracker.io/items/compensator_ii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/compensator_iii.png",
       "rarity": "Rare",
       "type": "Modification",
       "category": "Modification",
@@ -2562,7 +2562,7 @@
         "originalEn": "Complex Gun Parts"
       },
       "description": "Wird zur Herstellung von fortschrittlichen Waffen verwendet. Zur Herstellung von: Equalizer, Aphelion, Jupiter",
-      "icon": "https://cdn.arctracker.io/items/complex_gun_parts.png",
+      "icon": "https://cdn.arctracker.io/items/v2/complex_gun_parts.png",
       "rarity": "Epic",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -2594,7 +2594,7 @@
         "originalEn": "Coolant"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/coolant.png",
+      "icon": "https://cdn.arctracker.io/items/v2/coolant.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -2621,7 +2621,7 @@
         "originalEn": "Cooling Coil"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/cooling_coil.png",
+      "icon": "https://cdn.arctracker.io/items/v2/cooling_coil.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -2648,7 +2648,7 @@
         "originalEn": "Cooling Fan"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/cooling_fan.png",
+      "icon": "https://cdn.arctracker.io/items/v2/cooling_fan.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -2675,7 +2675,7 @@
         "originalEn": "Cracked Bioscanner"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/cracked_bioscanner.png",
+      "icon": "https://cdn.arctracker.io/items/v2/cracked_bioscanner.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -2702,7 +2702,7 @@
         "originalEn": "Crash Mat"
       },
       "description": "Ein werfbares Notlandegerät, das schwere Landungen abfedert",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/crash_mat.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -2732,7 +2732,7 @@
         "originalEn": "Crude Explosives"
       },
       "description": "Wird zur Herstellung von Sprengstoffen verwendet. Kann zu Herstellungsmaterialien recycelt werden. Zur Herstellung von: Werfermunition, Suchgranate, Sprungmine: Impuls, Snapshot-Granate, Schrapnellgranate. Kann geworfen werden, um ein lautes Geräusch zu erzeugen.",
-      "icon": "https://cdn.arctracker.io/items/crude_explosives.png",
+      "icon": "https://cdn.arctracker.io/items/v2/crude_explosives.png",
       "rarity": "Uncommon",
       "type": "Refined Material",
       "category": "Refined Material",
@@ -2763,7 +2763,7 @@
         "originalEn": "Crumpled Plastic Bottle"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/crumpled_plastic_bottle.png",
+      "icon": "https://cdn.arctracker.io/items/v2/crumpled_plastic_bottle.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -2789,7 +2789,7 @@
         "originalEn": "Dam Control Tower Key"
       },
       "description": "Öffnet eine Tür zum Kontrollturm an den Damm-Schlachtfeldern.",
-      "icon": "https://cdn.arctracker.io/items/dam_control_tower_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/dam_control_tower_key.png",
       "rarity": "Epic",
       "type": "Key",
       "category": "Key",
@@ -2806,7 +2806,7 @@
         "originalEn": "Dam Controlled Access Zone Key"
       },
       "description": "Öffnet eine Tür zur Sperrzone auf dem Damm-Schlachtfeld.",
-      "icon": "https://cdn.arctracker.io/items/dam_testing_annex_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/dam_controlled_access_zone_key.png",
       "rarity": "Epic",
       "type": "Key",
       "category": "Key",
@@ -2823,7 +2823,7 @@
         "originalEn": "Dam Staff Room Key"
       },
       "description": "Ein Schlüssel zum Personalraum im Damm.",
-      "icon": "https://cdn.arctracker.io/items/dam_staff_room_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/dam_staff_room_key.png",
       "rarity": "Uncommon",
       "type": "Key",
       "category": "Key",
@@ -2840,7 +2840,7 @@
         "originalEn": "Dam Surveillance Key"
       },
       "description": "Öffnet eine Tür im Kontrollgebäude der Wasseraufbereitung an den Damm-Schlachtfeldern.",
-      "icon": "https://cdn.arctracker.io/items/dam_surveillance_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/dam_surveillance_key.png",
       "rarity": "Uncommon",
       "type": "Key",
       "category": "Key",
@@ -2857,25 +2857,8 @@
         "originalEn": "Dam Testing Annex Key"
       },
       "description": "Öffnet eine Tür im Testanbau an den Damm-Schlachtfeldern.",
-      "icon": "https://cdn.arctracker.io/items/dam_testing_annex_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/dam_testing_annex_key.png",
       "rarity": "Rare",
-      "type": "Key",
-      "category": "Key",
-      "stationLevelRequired": 1,
-      "blueprintLocked": false,
-      "craftQuantity": 1,
-      "stackSize": 1,
-      "value": 100,
-      "weight": 0.25
-    },
-    "dam_utility_key": {
-      "name": {
-        "value": "Damm-Versorgungsschlüssel",
-        "originalEn": "Dam Utility Key"
-      },
-      "description": "Ein Schlüssel für den Versorgungszugang im Damm.",
-      "icon": "https://cdn.arctracker.io/items/dam_utility_key.png",
-      "rarity": "Uncommon",
       "type": "Key",
       "category": "Key",
       "stationLevelRequired": 1,
@@ -2891,7 +2874,7 @@
         "originalEn": "Damaged ARC Motion Core"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/damaged_arc_motion_core.png",
+      "icon": "https://cdn.arctracker.io/items/v2/damaged_arc_motion_core.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -2917,7 +2900,7 @@
         "originalEn": "Damaged ARC Powercell"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/damaged_arc_powercell.png",
+      "icon": "https://cdn.arctracker.io/items/v2/damaged_arc_powercell.png",
       "rarity": "Common",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -2943,7 +2926,7 @@
         "originalEn": "Damaged Fireball Burner"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/damaged_fireball_burner.png",
+      "icon": "https://cdn.arctracker.io/items/v2/damaged_fireball_burner.png",
       "rarity": "Common",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -2969,7 +2952,7 @@
         "originalEn": "Damaged Heat Sink"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/damaged_heat_sink.png",
+      "icon": "https://cdn.arctracker.io/items/v2/damaged_heat_sink.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -2996,7 +2979,7 @@
         "originalEn": "Damaged Hornet Driver"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/damaged_hornet_driver.png",
+      "icon": "https://cdn.arctracker.io/items/v2/damaged_hornet_driver.png",
       "rarity": "Common",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -3022,7 +3005,7 @@
         "originalEn": "Damaged Rocketeer Driver"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/damaged_rocketeer_driver.png",
+      "icon": "https://cdn.arctracker.io/items/v2/damaged_rocketeer_driver.png",
       "rarity": "Common",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -3048,7 +3031,7 @@
         "originalEn": "Damaged Snitch Scanner"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/damaged_snitch_scanner.png",
+      "icon": "https://cdn.arctracker.io/items/v2/damaged_snitch_scanner.png",
       "rarity": "Common",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -3068,7 +3051,7 @@
         "originalEn": "Damaged Tick Pod"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/damaged_tick_pod.png",
+      "icon": "https://cdn.arctracker.io/items/v2/damaged_tick_pod.png",
       "rarity": "Common",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -3094,7 +3077,7 @@
         "originalEn": "Damaged Wasp Driver"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/damaged_wasp_driver.png",
+      "icon": "https://cdn.arctracker.io/items/v2/damaged_wasp_driver.png",
       "rarity": "Common",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -3120,7 +3103,7 @@
         "originalEn": "Dart Board"
       },
       "description": "Einige Räuber nutzen es, um Geschicklichkeit zu üben. Andere werfen einfach gerne Dinge auf andere Dinge.",
-      "icon": "https://cdn.arctracker.io/items/dart_board.png",
+      "icon": "https://cdn.arctracker.io/items/v2/dart_board.png",
       "rarity": "Uncommon",
       "type": "Trinket",
       "category": "Trinket",
@@ -3141,7 +3124,7 @@
         "originalEn": "Deadline"
       },
       "description": "Eine Mine, die allem in ihrem Radius Schaden zufügt, sobald der Timer abläuft.",
-      "icon": "https://cdn.arctracker.io/items/deadline.png",
+      "icon": "https://cdn.arctracker.io/items/v2/deadline.png",
       "rarity": "Epic",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -3172,7 +3155,7 @@
         "originalEn": "Defibrillator"
       },
       "description": "Eine Injektion, die entkräftete Raider schnell wiederbelebt und etwas Gesundheit wiederherstellt.",
-      "icon": "https://cdn.arctracker.io/items/defibrillator.png",
+      "icon": "https://cdn.arctracker.io/items/v2/defibrillator.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -3202,7 +3185,7 @@
         "originalEn": "Deflated Football"
       },
       "description": "Beim Anblick dessen fühlst auch du dich etwas schlapp.",
-      "icon": "https://cdn.arctracker.io/items/deflated_football.png",
+      "icon": "https://cdn.arctracker.io/items/v2/deflated_football.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -3229,7 +3212,7 @@
         "originalEn": "Degraded ARC Rubber"
       },
       "description": "Von ARC-Gegnern oder -Aktivitäten erhalten. Kann zu Gummi recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/degraded_arc_rubber.png",
+      "icon": "https://cdn.arctracker.io/items/v2/degraded_arc_rubber.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -3255,7 +3238,7 @@
         "originalEn": "Diving Goggles"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/diving_goggles.png",
+      "icon": "https://cdn.arctracker.io/items/v2/diving_goggles.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -3281,7 +3264,7 @@
         "originalEn": "Dockmaster's Detector"
       },
       "description": "Diese Detektoren scheinen in der Lage zu sein, Fremdkörper zu orten, die im Sand rund um Riven Tides vergraben sind, obwohl ihre genaue Funktionsweise unbekannt ist.",
-      "icon": "https://cdn.arctracker.io/items/dockmasters_detector.png",
+      "icon": "https://cdn.arctracker.io/items/v2/dockmasters_detector.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -3298,7 +3281,7 @@
         "originalEn": "Dodger's Note"
       },
       "description": "",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/dodgers_note.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -3315,7 +3298,7 @@
         "originalEn": "Dog Collar"
       },
       "description": "Selbst nach all dieser Zeit kann man noch die Qualität riechen.",
-      "icon": "https://cdn.arctracker.io/items/dog_collar.png",
+      "icon": "https://cdn.arctracker.io/items/v2/dog_collar.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -3342,7 +3325,7 @@
         "originalEn": "Dolabra"
       },
       "description": "Eine experimentelle Waffe, die entweder einen breiten Schuss mit kurzer Reichweite abgeben kann oder so fokussiert wird, dass sie einen konzentrierten Hitzestrahl mit mittlerer Reichweite verschießt.",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/dolabra.png",
       "rarity": "Legendary",
       "type": "Shotgun",
       "category": "Weapon",
@@ -3372,7 +3355,7 @@
         "originalEn": "Doodly Duck"
       },
       "description": "Alles ist eine Leinwand für ein kreatives Kind. Kann geworfen werden, um Lärm zu erzeugen.",
-      "icon": "https://cdn.arctracker.io/items/doodly_duck.png",
+      "icon": "https://cdn.arctracker.io/items/v2/doodly_duck.png",
       "rarity": "Rare",
       "type": "Trinket",
       "category": "Trinket",
@@ -3389,7 +3372,7 @@
         "originalEn": "Door Blocker"
       },
       "description": "Ein Sperrmechanismus, der an großen Metalltüren platziert werden kann, um den Zugang einzuschränken.",
-      "icon": "https://cdn.arctracker.io/items/door_blocker.png",
+      "icon": "https://cdn.arctracker.io/items/v2/door_blocker.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -3418,7 +3401,7 @@
         "originalEn": "Dried-Out ARC Resin"
       },
       "description": "Von ARC-Gegnern oder -Aktivitäten erhalten. Kann zu Plastik recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/dried_out_arc_resin.png",
+      "icon": "https://cdn.arctracker.io/items/v2/dried_out_arc_resin.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -3444,7 +3427,7 @@
         "originalEn": "Duct Tape"
       },
       "description": "Wird zur Herstellung verschiedenster Gegenstände verwendet. Kann zu Herstellungsmaterialien recycelt werden. Zur Herstellung von: Stabiler Kolben I, Vertikaler Griff I, Abgewinkelter Griff I, Vertikaler Griff II, Abgewinkelter Griff II",
-      "icon": "https://cdn.arctracker.io/items/duct_tape.png",
+      "icon": "https://cdn.arctracker.io/items/v2/duct_tape.png",
       "rarity": "Uncommon",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -3471,7 +3454,7 @@
         "originalEn": "Durable Cloth"
       },
       "description": "Wird zur Herstellung von medizinischen Objekte verwendet. Zur Herstellung von: Kräuterverband, Steriler Verband",
-      "icon": "https://cdn.arctracker.io/items/durable_cloth.png",
+      "icon": "https://cdn.arctracker.io/items/v2/durable_cloth.png",
       "rarity": "Uncommon",
       "type": "Refined Material",
       "category": "Refined Material",
@@ -3502,7 +3485,7 @@
         "originalEn": "Dusty Film Reel"
       },
       "description": "Eine alte, staubbedeckte Filmrolle. Vielleicht war etwas Sehenswertes darauf.",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/dusty_film_reel.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -3519,7 +3502,7 @@
         "originalEn": "Electrical Components"
       },
       "description": "Wird zur Herstellung verschiedenster Gegenstände verwendet. Kann zu Herstellungsmaterialien recycelt werden. Zur Herstellung von: Taktisch-Marke 2, Kampf-Marke 2, Beute-Marke 2, Schockmine, Ködergranate",
-      "icon": "https://cdn.arctracker.io/items/electrical_components.png",
+      "icon": "https://cdn.arctracker.io/items/v2/electrical_components.png",
       "rarity": "Uncommon",
       "type": "Refined Material",
       "category": "Refined Material",
@@ -3551,7 +3534,7 @@
         "originalEn": "Empty Wine Bottle"
       },
       "description": "Ja, sie ist wirklich leer.",
-      "icon": "https://cdn.arctracker.io/items/empty_wine_bottle.png",
+      "icon": "https://cdn.arctracker.io/items/v2/empty_wine_bottle.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -3572,7 +3555,7 @@
         "originalEn": "Energy Clip"
       },
       "description": "Munition, die für Energiewaffen genutzt wird. Mit einem Clip wird eine einzelne Waffe vollständig geladen. Kompatibel mit: Equalizer, Jupiter",
-      "icon": "https://cdn.arctracker.io/items/energy_clip.png",
+      "icon": "https://cdn.arctracker.io/items/v2/energy_clip.png",
       "rarity": "Rare",
       "type": "Ammunition",
       "category": "Ammunition",
@@ -3594,7 +3577,7 @@
         "originalEn": "Equalizer"
       },
       "description": "Ein experimentelles Strahlengewehr mit hoher Kapazität.",
-      "icon": "https://cdn.arctracker.io/items/equalizer.png",
+      "icon": "https://cdn.arctracker.io/items/v2/equalizer.png",
       "rarity": "Legendary",
       "type": "LMG",
       "category": "Weapon",
@@ -3625,7 +3608,7 @@
         "originalEn": "Espresso Machine Parts"
       },
       "description": "",
-      "icon": "https://cdn.arctracker.io/items/espresso_machine_parts.png",
+      "icon": "https://cdn.arctracker.io/items/v2/espresso_machine_parts.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -3642,7 +3625,7 @@
         "originalEn": "ESR Analyzer"
       },
       "description": "Ein spezialisiertes medizinisches Gerät zur Analyse der Erythrozytensedimentationsrate.",
-      "icon": "https://cdn.arctracker.io/items/esr_analyzer.png",
+      "icon": "https://cdn.arctracker.io/items/v2/esr_analyzer.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -3659,7 +3642,7 @@
         "originalEn": "Exodus Modules"
       },
       "description": "Wird zur Herstellung verschiedenster Gegenstände verwendet. Zur Herstellung von: Tempest, Vulcano, Hüllenbrecher, Bobcat, Karabinerhaken",
-      "icon": "https://cdn.arctracker.io/items/exodus_modules.png",
+      "icon": "https://cdn.arctracker.io/items/v2/exodus_modules.png",
       "rarity": "Epic",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -3686,7 +3669,7 @@
         "originalEn": "Experimental Seed Sample"
       },
       "description": "Eine kryogen eingefrorene Forschungsprobe einer experimentellen Nutzpflanze.",
-      "icon": "https://cdn.arctracker.io/items/experimental_seed_sample.png",
+      "icon": "https://cdn.arctracker.io/items/v2/experimental_seed_sample.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -3724,7 +3707,7 @@
         "originalEn": "Expired Respirator"
       },
       "description": "Die Filter sind mit Sand und giftigen Dämpfen verschmutzt. Hat seine Mindesthaltbarkeit längst überschritten.",
-      "icon": "https://cdn.arctracker.io/items/expired_respirator.png",
+      "icon": "https://cdn.arctracker.io/items/v2/expired_respirator.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -3751,7 +3734,7 @@
         "originalEn": "Expired Security Code"
       },
       "description": "Ein abgelaufener Sicherheitscode. Hat keinen praktischen Nutzen mehr.",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/expired_security_code.png",
       "rarity": "Common",
       "type": "Key",
       "category": "Key",
@@ -3768,7 +3751,7 @@
         "originalEn": "Explosive Compound"
       },
       "description": "Wird zur Herstellung von Sprengstoffen verwendet. Zur Herstellung von: Trailblazer, Wolfpack, Sprengmine, Flammengranate, Deadline",
-      "icon": "https://cdn.arctracker.io/items/explosive_compound.png",
+      "icon": "https://cdn.arctracker.io/items/v2/explosive_compound.png",
       "rarity": "Rare",
       "type": "Refined Material",
       "category": "Refined Material",
@@ -3800,7 +3783,7 @@
         "originalEn": "Explosive Mine"
       },
       "description": "Eine Mine, die bei Annäherung explodiert und dabei alles beschädigt, was sich in ihrem Radius befindet.",
-      "icon": "https://cdn.arctracker.io/items/explosive_mine.png",
+      "icon": "https://cdn.arctracker.io/items/v2/explosive_mine.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -3830,7 +3813,7 @@
         "originalEn": "Extended Barrel"
       },
       "description": "Erhöht die Geschossgeschwindigkeit moderat. Kompatibel mit: Arpeggio, Rattler, Kettle, Ferro, Anvil",
-      "icon": "https://cdn.arctracker.io/items/extended_barrel.png",
+      "icon": "https://cdn.arctracker.io/items/v2/extended_barrel.png",
       "rarity": "Epic",
       "type": "Modification",
       "category": "Modification",
@@ -3859,7 +3842,7 @@
         "originalEn": "Extended Light Mag I"
       },
       "description": "Erhöht die Munitionskapazität kompatibler Waffen mit leichter Munition geringfügig. Kompatibel mit: Kettle, Burletta, Stitcher, Hairpin, Bobcat",
-      "icon": "https://cdn.arctracker.io/items/extended_light_mag_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/extended_light_mag_i.png",
       "rarity": "Common",
       "type": "Modification",
       "category": "Modification",
@@ -3887,7 +3870,7 @@
         "originalEn": "Extended Light Mag II"
       },
       "description": "Erhöht die Munitionskapatität kompatibler Waffen mit leichter Munition moderat. Kompatibel mit: Kettle, Burletta, Stitcher, Hairpin, Bobcat",
-      "icon": "https://cdn.arctracker.io/items/extended_light_mag_ii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/extended_light_mag_ii.png",
       "rarity": "Uncommon",
       "type": "Modification",
       "category": "Modification",
@@ -3916,7 +3899,7 @@
         "originalEn": "Extended Light Mag III"
       },
       "description": "Erhöht die Munitionskapatität kompatibler Waffen mit leichter Munition erheblich.",
-      "icon": "https://cdn.arctracker.io/items/extended_light_mag_iii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/extended_light_mag_iii.png",
       "rarity": "Rare",
       "type": "Modification",
       "category": "Modification",
@@ -3945,7 +3928,7 @@
         "originalEn": "Extended Medium Mag I"
       },
       "description": "Erhöht die Munitionskapazität kompatibler Waffen mit mittlerer Munition geringfügig. Kompatibel mit: Arpeggio, Renegade, Venator, Tempest, Torrente",
-      "icon": "https://cdn.arctracker.io/items/extended_medium_mag_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/extended_medium_mag_i.png",
       "rarity": "Common",
       "type": "Modification",
       "category": "Modification",
@@ -3973,7 +3956,7 @@
         "originalEn": "Extended Medium Mag II"
       },
       "description": "Erhöht die Munitionskapazität kompatibler Waffen mit mittlerer Munition erheblich. Kompatibel mit: Arpeggio, Renegade, Venator, Tempest, Renegade, Torrente",
-      "icon": "https://cdn.arctracker.io/items/extended_medium_mag_ii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/extended_medium_mag_ii.png",
       "rarity": "Uncommon",
       "type": "Modification",
       "category": "Modification",
@@ -4002,7 +3985,7 @@
         "originalEn": "Extended Medium Mag III"
       },
       "description": "Erhöht die Munitionskapazität kompatibler Waffen mit mittlerer Munition erheblich. Kompatibel mit: Arpeggio, Renegade, Venator, Tempest, Torrente",
-      "icon": "https://cdn.arctracker.io/items/extended_medium_mag_iii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/extended_medium_mag_iii.png",
       "rarity": "Rare",
       "type": "Modification",
       "category": "Modification",
@@ -4031,7 +4014,7 @@
         "originalEn": "Extended Shotgun Mag I"
       },
       "description": "Erhöht die Munitionskapazität von Schrotflinten geringfügig. Kompatibel mit: Il Toro, Vulcano",
-      "icon": "https://cdn.arctracker.io/items/extended_shotgun_mag_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/extended_shotgun_mag_i.png",
       "rarity": "Common",
       "type": "Modification",
       "category": "Modification",
@@ -4059,7 +4042,7 @@
         "originalEn": "Extended Shotgun Mag II"
       },
       "description": "Erhöht die Munitionskapazität von Schrotflinten moderat. Kompatibel mit: Il Toro, Vulcano",
-      "icon": "https://cdn.arctracker.io/items/extended_shotgun_mag_ii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/extended_shotgun_mag_ii.png",
       "rarity": "Uncommon",
       "type": "Modification",
       "category": "Modification",
@@ -4088,7 +4071,7 @@
         "originalEn": "Extended Shotgun Mag III"
       },
       "description": "Erhöht die Munitionskapazität von Schrotflinten erheblich. Kompatibel mit: Il Toro, Vulcano",
-      "icon": "https://cdn.arctracker.io/items/extended_shotgun_mag_iii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/extended_shotgun_mag_iii.png",
       "rarity": "Rare",
       "type": "Modification",
       "category": "Modification",
@@ -4117,7 +4100,7 @@
         "originalEn": "Fabric"
       },
       "description": "Wird zur Herstellung von medizinischen Objekten und Schilden verwendet. Zur Herstellung von: Verband, Strapazierfähiges Stoffstück. Kann zur allmählichen Regeneration einer kleinen Menge Gesundheit benutzt werden.",
-      "icon": "https://cdn.arctracker.io/items/fabric.png",
+      "icon": "https://cdn.arctracker.io/items/v2/fabric.png",
       "rarity": "Common",
       "type": "Basic Material",
       "category": "Basic Material",
@@ -4139,7 +4122,7 @@
         "originalEn": "Faded Photograph"
       },
       "description": "Ein Foto von der alten Welt, durch Sonnenlicht und Alter längst verblichen.",
-      "icon": "https://cdn.arctracker.io/items/faded_photograph.png",
+      "icon": "https://cdn.arctracker.io/items/v2/faded_photograph.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -4159,7 +4142,7 @@
         "originalEn": "Familiar Duck"
       },
       "description": "Anders als die echte passt diese in deinen Rucksack. Kann geworfen werden, um Lärm zu erzeugen.",
-      "icon": "https://cdn.arctracker.io/items/familiar_duck.png",
+      "icon": "https://cdn.arctracker.io/items/v2/familiar_duck.png",
       "rarity": "Epic",
       "type": "Trinket",
       "category": "Trinket",
@@ -4176,7 +4159,7 @@
         "originalEn": "Ferro I"
       },
       "description": "Gute Durchschlagskraft, muss aber nach jedem Schuss nachgeladen werden.",
-      "icon": "https://cdn.arctracker.io/items/ferro.png",
+      "icon": "https://cdn.arctracker.io/items/v2/ferro_i.png",
       "rarity": "Common",
       "type": "Battle Rifle",
       "category": "Weapon",
@@ -4209,7 +4192,7 @@
         "originalEn": "Ferro II"
       },
       "description": "Gute Durchschlagskraft, muss aber nach jedem Schuss nachgeladen werden.",
-      "icon": "https://cdn.arctracker.io/items/ferro.png",
+      "icon": "https://cdn.arctracker.io/items/v2/ferro_ii.png",
       "rarity": "Common",
       "type": "Battle Rifle",
       "category": "Weapon",
@@ -4242,7 +4225,7 @@
         "originalEn": "Ferro III"
       },
       "description": "Gute Durchschlagskraft, muss aber nach jedem Schuss nachgeladen werden.",
-      "icon": "https://cdn.arctracker.io/items/ferro.png",
+      "icon": "https://cdn.arctracker.io/items/v2/ferro_iii.png",
       "rarity": "Common",
       "type": "Battle Rifle",
       "category": "Weapon",
@@ -4276,7 +4259,7 @@
         "originalEn": "Ferro IV"
       },
       "description": "Gute Durchschlagskraft, muss aber nach jedem Schuss nachgeladen werden.",
-      "icon": "https://cdn.arctracker.io/items/ferro.png",
+      "icon": "https://cdn.arctracker.io/items/v2/ferro_iv.png",
       "rarity": "Common",
       "type": "Battle Rifle",
       "category": "Weapon",
@@ -4309,7 +4292,7 @@
         "originalEn": "Fertilizer"
       },
       "description": "Vielleicht ein paar Münzen wert.",
-      "icon": "https://cdn.arctracker.io/items/fertilizer.png",
+      "icon": "https://cdn.arctracker.io/items/v2/fertilizer.png",
       "rarity": "Uncommon",
       "type": "Nature",
       "category": "Nature",
@@ -4335,7 +4318,7 @@
         "originalEn": "Film Reel"
       },
       "description": "Vielleicht ein paar Münzen wert",
-      "icon": "https://cdn.arctracker.io/items/film_reel.png",
+      "icon": "https://cdn.arctracker.io/items/v2/film_reel.png",
       "rarity": "Rare",
       "type": "Trinket",
       "category": "Trinket",
@@ -4356,7 +4339,7 @@
         "originalEn": "Fine Wristwatch"
       },
       "description": "Perfekt, um zu sehen, wie spät es ist - und um zu zeigen, wie vornehm du bist.",
-      "icon": "https://cdn.arctracker.io/items/fine_wristwatch.png",
+      "icon": "https://cdn.arctracker.io/items/v2/fine_wristwatch.png",
       "rarity": "Rare",
       "type": "Trinket",
       "category": "Trinket",
@@ -4377,7 +4360,7 @@
         "originalEn": "Fireball Burner"
       },
       "description": "Kann zu ARC-Legierung recycelt werden. Kann geworfen werden, um kleine Feuer zu erzeugen.",
-      "icon": "https://cdn.arctracker.io/items/fireball_burner.png",
+      "icon": "https://cdn.arctracker.io/items/v2/fireball_burner.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -4404,7 +4387,7 @@
         "originalEn": "Firecracker"
       },
       "description": "Ein Gerät, das angenehm funkelt und knallt.",
-      "icon": "https://cdn.arctracker.io/items/firecracker.png",
+      "icon": "https://cdn.arctracker.io/items/v2/firecracker.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -4433,7 +4416,7 @@
         "originalEn": "Firefly Burner"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/firefly_burner.png",
+      "icon": "https://cdn.arctracker.io/items/v2/firefly_burner.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -4460,7 +4443,7 @@
         "originalEn": "Fireworks Box"
       },
       "description": "Eine ferngesteuerte Anordnung funkelnder Feuerwerkskörper – garantiert ein Spektakel.",
-      "icon": "https://cdn.arctracker.io/items/fireworks_box.png",
+      "icon": "https://cdn.arctracker.io/items/v2/fireworks_box.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -4489,7 +4472,7 @@
         "originalEn": "First Wave Compass"
       },
       "description": "Staubig, aber funktionsfähig, halfen diese dabei, einen Kurs zu bestimmen, als alles verloren schien.",
-      "icon": "https://cdn.arctracker.io/items/first_wave_compass.png",
+      "icon": "https://cdn.arctracker.io/items/v2/first_wave_compass.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -4506,7 +4489,7 @@
         "originalEn": "First Wave Rations"
       },
       "description": "Oft über versteckten Feuern erhitzt, sollen diese kargen Vorräte einen Widerstand angetrieben haben.",
-      "icon": "https://cdn.arctracker.io/items/first_wave_rations.png",
+      "icon": "https://cdn.arctracker.io/items/v2/first_wave_rations.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -4523,7 +4506,7 @@
         "originalEn": "First Wave Tape"
       },
       "description": "Ein altes Band, das in einem abgenutzten alten Camcorder gefunden wurde.",
-      "icon": "https://cdn.arctracker.io/items/first_wave_tape.png",
+      "icon": "https://cdn.arctracker.io/items/v2/first_wave_tape.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -4540,7 +4523,7 @@
         "originalEn": "Flame Spray"
       },
       "description": "Eine klassische Behelfswaffe. Hinterlässt garantiert Brandflecken.",
-      "icon": "https://cdn.arctracker.io/items/flame_spray.png",
+      "icon": "https://cdn.arctracker.io/items/v2/flame_spray.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -4568,7 +4551,7 @@
         "originalEn": "Flashy Duck"
       },
       "description": "Liebevoll von jemandem mit großem Talent handbemalt—offensichtlich. Errätst du, wer? Kann geworfen werden, um Lärm zu erzeugen.",
-      "icon": "https://cdn.arctracker.io/items/flashy_duck.png",
+      "icon": "https://cdn.arctracker.io/items/v2/flashy_duck.png",
       "rarity": "Rare",
       "type": "Trinket",
       "category": "Trinket",
@@ -4585,7 +4568,7 @@
         "originalEn": "Flow Controller"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/flow_controller.png",
+      "icon": "https://cdn.arctracker.io/items/v2/flow_controller.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -4612,7 +4595,7 @@
         "originalEn": "Flushing Terminal Key"
       },
       "description": "Dieser Schlüssel wird für die Quest \"The Stench of Corruption\" verwendet, um das Flushing Terminal zu aktivieren",
-      "icon": "https://cdn.arctracker.io/items/flushing_terminal_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/flushing_terminal_key.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -4629,7 +4612,7 @@
         "originalEn": "Fossilized Lightning"
       },
       "description": "Ein Gegenstand, der nach Blitzeinschlägen mit einer gewissen Chance erscheinen kann.",
-      "icon": "https://cdn.arctracker.io/items/fossilized_lightning.png",
+      "icon": "https://cdn.arctracker.io/items/v2/fossilized_lightning.png",
       "rarity": "Epic",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -4655,7 +4638,7 @@
         "originalEn": "Free Loadout Augment"
       },
       "description": "Basis-Augment für Raider-Neulinge, mit etwas mehr Platz im Rucksack und Tragekapazität.",
-      "icon": "https://cdn.arctracker.io/items/free_loadout_augment.png",
+      "icon": "https://cdn.arctracker.io/items/v2/free_loadout_augment.png",
       "rarity": "Common",
       "type": "Augment",
       "category": "Augment",
@@ -4676,7 +4659,7 @@
         "originalEn": "Frequency Modulation Box"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/frequency_modulation_box.png",
+      "icon": "https://cdn.arctracker.io/items/v2/frequency_modulation_box.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -4703,7 +4686,7 @@
         "originalEn": "Fried Motherboard"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/fried_motherboard.png",
+      "icon": "https://cdn.arctracker.io/items/v2/fried_motherboard.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -4730,7 +4713,7 @@
         "originalEn": "Fruit Mix"
       },
       "description": "Ein Lebensmittel, das Gesundheit und Ausdauer moderat erhöht.",
-      "icon": "https://cdn.arctracker.io/items/fruit_mix.png",
+      "icon": "https://cdn.arctracker.io/items/v2/fruit_mix.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -4752,7 +4735,7 @@
         "originalEn": "Frying Pan"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/frying_pan.png",
+      "icon": "https://cdn.arctracker.io/items/v2/frying_pan.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -4778,7 +4761,7 @@
         "originalEn": "Garlic Press"
       },
       "description": "Hiermit kann man Knoblauch, Oliven und wahrscheinlich noch andere Dinge pressen.",
-      "icon": "https://cdn.arctracker.io/items/garlic_press.png",
+      "icon": "https://cdn.arctracker.io/items/v2/garlic_press.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -4805,7 +4788,7 @@
         "originalEn": "Gas Grenade"
       },
       "description": "Eine Granate, die beim Aufprall eine Giftwolke ausstößt, die Raidern in ihrem Wirkungsbereich Ausdauer raubt.",
-      "icon": "https://cdn.arctracker.io/items/gas_grenade.png",
+      "icon": "https://cdn.arctracker.io/items/v2/gas_grenade.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -4835,7 +4818,7 @@
         "originalEn": "Gas Grenade Trap"
       },
       "description": "Ein Laser-Stolperdraht, der eine Gasgranate detonieren lässt.",
-      "icon": "https://cdn.arctracker.io/items/gas_grenade_trap.png",
+      "icon": "https://cdn.arctracker.io/items/v2/gas_grenade_trap.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -4856,7 +4839,7 @@
         "originalEn": "Gas Mine"
       },
       "description": "Eine Mine, die bei Annäherung explodiert und dabei eine Gaswolke erzeugt, welche schnell Ausdauer absaugt.",
-      "icon": "https://cdn.arctracker.io/items/gas_mine.png",
+      "icon": "https://cdn.arctracker.io/items/v2/gas_mine.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -4886,7 +4869,7 @@
         "originalEn": "Geiger Counter"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/geiger_counter.png",
+      "icon": "https://cdn.arctracker.io/items/v2/geiger_counter.png",
       "rarity": "Epic",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -4913,7 +4896,7 @@
         "originalEn": "Gentle Duck"
       },
       "description": "Unwiderstehlich niedlich. Kann geworfen werden, um Lärm zu erzeugen.",
-      "icon": "https://cdn.arctracker.io/items/gentle_duck.png",
+      "icon": "https://cdn.arctracker.io/items/v2/gentle_duck.png",
       "rarity": "Uncommon",
       "type": "Trinket",
       "category": "Trinket",
@@ -4930,7 +4913,7 @@
         "originalEn": "Great Mullein"
       },
       "description": "Wird zur Herstellung medizinischer Objekte verwendet. Zur Herstellung von: Kräuterverband, Desinfektionsmittel",
-      "icon": "https://cdn.arctracker.io/items/great_mullein.png",
+      "icon": "https://cdn.arctracker.io/items/v2/great_mullein.png",
       "rarity": "Uncommon",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -4956,7 +4939,7 @@
         "originalEn": "Green Light Stick"
       },
       "description": "Ein werfbares chemisches Licht, das seine Umgebung erhellt.",
-      "icon": "https://cdn.arctracker.io/items/green_light_stick.png",
+      "icon": "https://cdn.arctracker.io/items/v2/green_light_stick.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -4984,7 +4967,7 @@
         "originalEn": "Hairpin I"
       },
       "description": "Hat einen eingebauten Schalldämpfer. Herausragend, um unentdeckt zu bleiben, im Feuergefecht aber eher unpraktisch.",
-      "icon": "https://cdn.arctracker.io/items/hairpin_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/hairpin_i.png",
       "rarity": "Common",
       "type": "Pistol",
       "category": "Weapon",
@@ -5017,7 +5000,7 @@
         "originalEn": "Hairpin II"
       },
       "description": "Hat einen eingebauten Schalldämpfer. Herausragend, um unentdeckt zu bleiben, im Feuergefecht aber eher unpraktisch.",
-      "icon": "https://cdn.arctracker.io/items/hairpin_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/hairpin_ii.png",
       "rarity": "Common",
       "type": "Pistol",
       "category": "Weapon",
@@ -5050,7 +5033,7 @@
         "originalEn": "Hairpin III"
       },
       "description": "Hat einen eingebauten Schalldämpfer. Herausragend, um unentdeckt zu bleiben, im Feuergefecht aber eher unpraktisch.",
-      "icon": "https://cdn.arctracker.io/items/hairpin_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/hairpin_iii.png",
       "rarity": "Common",
       "type": "Pistol",
       "category": "Weapon",
@@ -5084,7 +5067,7 @@
         "originalEn": "Hairpin IV"
       },
       "description": "Hat einen eingebauten Schalldämpfer. Herausragend, um unentdeckt zu bleiben, im Feuergefecht aber eher unpraktisch.",
-      "icon": "https://cdn.arctracker.io/items/hairpin_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/hairpin_iv.png",
       "rarity": "Common",
       "type": "Pistol",
       "category": "Weapon",
@@ -5117,7 +5100,7 @@
         "originalEn": "Headphones"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/headphones.png",
+      "icon": "https://cdn.arctracker.io/items/v2/headphones.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -5145,7 +5128,7 @@
         "originalEn": "Heavy Ammo"
       },
       "description": "Kompatibel mit: Ferro, Anvil, Bettina",
-      "icon": "https://cdn.arctracker.io/items/heavy_ammo.png",
+      "icon": "https://cdn.arctracker.io/items/v2/heavy_ammo.png",
       "rarity": "Common",
       "type": "Ammunition",
       "category": "Ammunition",
@@ -5167,7 +5150,7 @@
         "originalEn": "Heavy Fuze Grenade"
       },
       "description": "Eine Granate, die nach einer Verzögerung explodiert und in ihrem Radius Explosionsschaden verursacht.",
-      "icon": "https://cdn.arctracker.io/items/heavy_fuze_grenade.png",
+      "icon": "https://cdn.arctracker.io/items/v2/heavy_fuze_grenade.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -5197,7 +5180,7 @@
         "originalEn": "Heavy Gun Parts"
       },
       "description": "Wird zur Herstellung von Waffen verwendet. Zur Herstellung von: Vulcano, Hüllenbrecher, Bettina, Komplexe Waffenteile",
-      "icon": "https://cdn.arctracker.io/items/heavy_gun_parts.png",
+      "icon": "https://cdn.arctracker.io/items/v2/heavy_gun_parts.png",
       "rarity": "Rare",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -5228,7 +5211,7 @@
         "originalEn": "Heavy Shield"
       },
       "description": "Ein schwerer Schild, der einen Großteil des eingehenden Schadens abwehrt, worunter allerdings die Mobilität deutlich leidet.",
-      "icon": "https://cdn.arctracker.io/items/heavy_shield.png",
+      "icon": "https://cdn.arctracker.io/items/v2/heavy_shield.png",
       "rarity": "Epic",
       "type": "Shield",
       "category": "Shield",
@@ -5257,7 +5240,7 @@
         "originalEn": "Herbal Bandage"
       },
       "description": "Ein improvisierter medizinischer Gegenstand, der allmählich Gesundheit wiederherstellt.",
-      "icon": "https://cdn.arctracker.io/items/herbal_bandage.png",
+      "icon": "https://cdn.arctracker.io/items/v2/herbal_bandage.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -5287,7 +5270,7 @@
         "originalEn": "Hidden Bunker Key"
       },
       "description": "Ein improvisierter Schlüssel, mit dem du einen Bunker im Raumhafen öffnen kannst.",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/hidden_bunker_key.png",
       "rarity": "Common",
       "type": "Key",
       "category": "Key",
@@ -5304,7 +5287,7 @@
         "originalEn": "Horizontal Grip"
       },
       "description": "Verringert sowohl den vertikalen als auch den horizontalen Rückstoß moderat.",
-      "icon": "https://cdn.arctracker.io/items/horizontal_grip.png",
+      "icon": "https://cdn.arctracker.io/items/v2/horizontal_grip.png",
       "rarity": "Epic",
       "type": "Modification",
       "category": "Modification",
@@ -5328,7 +5311,7 @@
         "originalEn": "Hornet Driver"
       },
       "description": "Kann zu ARC-Legierung recycelt werden. Kann geworfen werden, um nahe Ziele kurzfristig zu betäuben.",
-      "icon": "https://cdn.arctracker.io/items/hornet_driver.png",
+      "icon": "https://cdn.arctracker.io/items/v2/hornet_driver.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -5355,7 +5338,7 @@
         "originalEn": "Household Cleaner"
       },
       "description": "Kann zu Chemikalien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/household_cleaner.png",
+      "icon": "https://cdn.arctracker.io/items/v2/household_cleaner.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -5381,7 +5364,7 @@
         "originalEn": "Hullcracker I"
       },
       "description": "Schießt explosive Geschosse ab, die erst explodieren, wenn sie ARC treffen.",
-      "icon": "https://cdn.arctracker.io/items/hullcracker.png",
+      "icon": "https://cdn.arctracker.io/items/v2/hullcracker_i.png",
       "rarity": "Epic",
       "type": "Special",
       "category": "Weapon",
@@ -5415,7 +5398,7 @@
         "originalEn": "Hullcracker II"
       },
       "description": "Schießt explosive Geschosse ab, die erst explodieren, wenn sie ARC treffen.",
-      "icon": "https://cdn.arctracker.io/items/hullcracker.png",
+      "icon": "https://cdn.arctracker.io/items/v2/hullcracker_ii.png",
       "rarity": "Epic",
       "type": "Special",
       "category": "Weapon",
@@ -5449,7 +5432,7 @@
         "originalEn": "Hullcracker III"
       },
       "description": "Schießt explosive Geschosse ab, die erst explodieren, wenn sie ARC treffen.",
-      "icon": "https://cdn.arctracker.io/items/hullcracker.png",
+      "icon": "https://cdn.arctracker.io/items/v2/hullcracker_iii.png",
       "rarity": "Epic",
       "type": "Special",
       "category": "Weapon",
@@ -5483,7 +5466,7 @@
         "originalEn": "Hullcracker IV"
       },
       "description": "Schießt explosive Geschosse ab, die erst explodieren, wenn sie ARC treffen.",
-      "icon": "https://cdn.arctracker.io/items/hullcracker.png",
+      "icon": "https://cdn.arctracker.io/items/v2/hullcracker_iv.png",
       "rarity": "Epic",
       "type": "Special",
       "category": "Weapon",
@@ -5516,7 +5499,7 @@
         "originalEn": "Humidifier"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/humidifier.png",
+      "icon": "https://cdn.arctracker.io/items/v2/humidifier.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -5543,7 +5526,7 @@
         "originalEn": "Ice Cream Scooper"
       },
       "description": "Es wird vermutet, dass das Schöpfen von Dingen ein beliebter Zeitvertreib in der Welt davor war.",
-      "icon": "https://cdn.arctracker.io/items/ice_cream_scooper.png",
+      "icon": "https://cdn.arctracker.io/items/v2/ice_cream_scooper.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -5569,7 +5552,7 @@
         "originalEn": "Il Toro I"
       },
       "description": "Hat eine hohe Streuung und geringe Reichweite, verursacht aber hohen Schaden.",
-      "icon": "https://cdn.arctracker.io/items/il_toro.png",
+      "icon": "https://cdn.arctracker.io/items/v2/il_toro_i.png",
       "rarity": "Uncommon",
       "type": "Shotgun",
       "category": "Weapon",
@@ -5602,7 +5585,7 @@
         "originalEn": "Il Toro II"
       },
       "description": "Hat eine hohe Streuung und geringe Reichweite, verursacht aber hohen Schaden.",
-      "icon": "https://cdn.arctracker.io/items/il_toro.png",
+      "icon": "https://cdn.arctracker.io/items/v2/il_toro_ii.png",
       "rarity": "Uncommon",
       "type": "Shotgun",
       "category": "Weapon",
@@ -5636,7 +5619,7 @@
         "originalEn": "Il Toro III"
       },
       "description": "Hat eine hohe Streuung und geringe Reichweite, verursacht aber hohen Schaden.",
-      "icon": "https://cdn.arctracker.io/items/il_toro.png",
+      "icon": "https://cdn.arctracker.io/items/v2/il_toro_iii.png",
       "rarity": "Uncommon",
       "type": "Shotgun",
       "category": "Weapon",
@@ -5670,7 +5653,7 @@
         "originalEn": "Il Toro IV"
       },
       "description": "Hat eine hohe Streuung und geringe Reichweite, verursacht aber hohen Schaden.",
-      "icon": "https://cdn.arctracker.io/items/il_toro.png",
+      "icon": "https://cdn.arctracker.io/items/v2/il_toro_iv.png",
       "rarity": "Uncommon",
       "type": "Shotgun",
       "category": "Weapon",
@@ -5703,7 +5686,7 @@
         "originalEn": "Impure ARC Coolant"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/impure_arc_coolant.png",
+      "icon": "https://cdn.arctracker.io/items/v2/impure_arc_coolant.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -5729,7 +5712,7 @@
         "originalEn": "Industrial Battery"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/industrial_battery.png",
+      "icon": "https://cdn.arctracker.io/items/v2/industrial_battery.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -5756,7 +5739,7 @@
         "originalEn": "Industrial Charger"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/industrial_charger.png",
+      "icon": "https://cdn.arctracker.io/items/v2/industrial_charger.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -5783,7 +5766,7 @@
         "originalEn": "Industrial Magnet"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/industrial_magnet.png",
+      "icon": "https://cdn.arctracker.io/items/v2/industrial_magnet.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -5810,7 +5793,7 @@
         "originalEn": "Ion Sputter"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/ion_sputter.png",
+      "icon": "https://cdn.arctracker.io/items/v2/ion_sputter.png",
       "rarity": "Epic",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -5837,7 +5820,7 @@
         "originalEn": "Jolt Mine"
       },
       "description": "Eine Mine, die bei Annäherung explodiert und dabei alle in ihrem Radius betäubt.",
-      "icon": "https://cdn.arctracker.io/items/jolt_mine.png",
+      "icon": "https://cdn.arctracker.io/items/v2/jolt_mine.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -5867,7 +5850,7 @@
         "originalEn": "Jupiter"
       },
       "description": "Ein Repetier-Scharfschützengewehr mit außergewöhnlicher Schadensleistung und Genauigkeit, aber langsamer Handhabung.",
-      "icon": "https://cdn.arctracker.io/items/jupiter.png",
+      "icon": "https://cdn.arctracker.io/items/v2/jupiter.png",
       "rarity": "Legendary",
       "type": "Sniper Rifle",
       "category": "Weapon",
@@ -5898,7 +5881,7 @@
         "originalEn": "Kettle I"
       },
       "description": "Es ist schnell und präzise, doch die Kugeln fliegen recht langsam und das Nachladen dauert lange.",
-      "icon": "https://cdn.arctracker.io/items/kettle.png",
+      "icon": "https://cdn.arctracker.io/items/v2/kettle_i.png",
       "rarity": "Common",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -5931,7 +5914,7 @@
         "originalEn": "Kettle II"
       },
       "description": "Es ist schnell und präzise, doch die Kugeln fliegen recht langsam und das Nachladen dauert lange.",
-      "icon": "https://cdn.arctracker.io/items/kettle.png",
+      "icon": "https://cdn.arctracker.io/items/v2/kettle_ii.png",
       "rarity": "Common",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -5965,7 +5948,7 @@
         "originalEn": "Kettle III"
       },
       "description": "Es ist schnell und präzise, doch die Kugeln fliegen recht langsam und das Nachladen dauert lange.",
-      "icon": "https://cdn.arctracker.io/items/kettle.png",
+      "icon": "https://cdn.arctracker.io/items/v2/kettle_iii.png",
       "rarity": "Common",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -5999,7 +5982,7 @@
         "originalEn": "Kettle IV"
       },
       "description": "Es ist schnell und präzise, doch die Kugeln fliegen recht langsam und das Nachladen dauert lange.",
-      "icon": "https://cdn.arctracker.io/items/kettle.png",
+      "icon": "https://cdn.arctracker.io/items/v2/kettle_iv.png",
       "rarity": "Common",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -6032,7 +6015,7 @@
         "originalEn": "Kinetic Converter"
       },
       "description": "Erhöht die Feuerrate moderat. Kompatibel mit: Arpeggio, Rattler, Kettle, Ferro, Il Toro",
-      "icon": "https://cdn.arctracker.io/items/kinetic_converter.png",
+      "icon": "https://cdn.arctracker.io/items/v2/kinetic_converter.png",
       "rarity": "Legendary",
       "type": "Modification",
       "category": "Modification",
@@ -6056,7 +6039,7 @@
         "originalEn": "Laboratory Reagents"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/laboratory_reagents.png",
+      "icon": "https://cdn.arctracker.io/items/v2/laboratory_reagents.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -6083,7 +6066,7 @@
         "originalEn": "Lance's Mixtape (5th Edition)"
       },
       "description": "Aus irgendeinem Grund hat Lance persönlich ein paar davon im Rostgürtel gepflanzt.",
-      "icon": "https://cdn.arctracker.io/items/lances_mixtape_5th_edition.png",
+      "icon": "https://cdn.arctracker.io/items/v2/lances_mixtape_5th_edition.png",
       "rarity": "Epic",
       "type": "Trinket",
       "category": "Trinket",
@@ -6104,7 +6087,7 @@
         "originalEn": "Launcher Ammo"
       },
       "description": "Anti-ARC-Munition, wird hauptsächlich für den Hüllenbrecher verwendet. Kompatibel mit: Hüllenbrecher",
-      "icon": "https://cdn.arctracker.io/items/launcher_ammo.png",
+      "icon": "https://cdn.arctracker.io/items/v2/launcher_ammo.png",
       "rarity": "Rare",
       "type": "Ammunition",
       "category": "Ammunition",
@@ -6126,7 +6109,7 @@
         "originalEn": "Leaper Pulse Unit"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden. Kann geworfen werden, um eine brutale Singularität zu erzeugen.",
-      "icon": "https://cdn.arctracker.io/items/leaper_pulse_unit.png",
+      "icon": "https://cdn.arctracker.io/items/v2/leaper_pulse_unit.png",
       "rarity": "Epic",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -6153,7 +6136,7 @@
         "originalEn": "Lemon"
       },
       "description": "Kann zum Gewinn einer kleinen Menge Ausdauer verzehrt werden.",
-      "icon": "https://cdn.arctracker.io/items/lemon.png",
+      "icon": "https://cdn.arctracker.io/items/v2/lemon.png",
       "rarity": "Uncommon",
       "type": "Nature",
       "category": "Nature",
@@ -6179,7 +6162,7 @@
         "originalEn": "\"Leviathan's Crown\" Ship Model"
       },
       "description": "Ein majestätischer Anblick in jeder Epoche – dieses wilde Handelsschiff ist gleichgültig gegenüber den aerodynamischen Vorteilen der Glasfasertechnologie.",
-      "icon": "https://cdn.arctracker.io/items/leviathans_crown_ship_model.png",
+      "icon": "https://cdn.arctracker.io/items/v2/leviathans_crown_ship_model.png",
       "rarity": "Legendary",
       "type": "Trinket",
       "category": "Trinket",
@@ -6213,7 +6196,7 @@
         "originalEn": "Lidar Scanner"
       },
       "description": "Ein laserbasierter Scanner zur Erkennung feinster Veränderungen der Erdoberfläche",
-      "icon": "https://cdn.arctracker.io/items/lidar_scanner.png",
+      "icon": "https://cdn.arctracker.io/items/v2/lidar_scanner.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -6230,7 +6213,7 @@
         "originalEn": "Light Ammo"
       },
       "description": "Kompatibel mit: Kettle, Burletta, Stitcher, Hairpin, Bobcat",
-      "icon": "https://cdn.arctracker.io/items/light_ammo.png",
+      "icon": "https://cdn.arctracker.io/items/v2/light_ammo.png",
       "rarity": "Common",
       "type": "Ammunition",
       "category": "Ammunition",
@@ -6252,7 +6235,7 @@
         "originalEn": "Light Bulb"
       },
       "description": "Ohne Licht wäre das Leben unter der Erde nicht möglich.",
-      "icon": "https://cdn.arctracker.io/items/light_bulb.png",
+      "icon": "https://cdn.arctracker.io/items/v2/light_bulb.png",
       "rarity": "Uncommon",
       "type": "Trinket",
       "category": "Trinket",
@@ -6272,7 +6255,7 @@
         "originalEn": "Light Gun Parts"
       },
       "description": "Verschiedenste Ersatzteile, die in Pistolen und MPs zum Einsatz kommen. Zur Herstellung von: Bobcat, Komplexe Waffenteile",
-      "icon": "https://cdn.arctracker.io/items/light_gun_parts.png",
+      "icon": "https://cdn.arctracker.io/items/v2/light_gun_parts.png",
       "rarity": "Rare",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -6303,7 +6286,7 @@
         "originalEn": "Light Impact Grenade"
       },
       "description": "Eine Granate, die beim Aufprall explodiert und in einem kleinen Radius Explosionsschaden verursacht.",
-      "icon": "https://cdn.arctracker.io/items/light_impact_grenade.png",
+      "icon": "https://cdn.arctracker.io/items/v2/light_impact_grenade.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -6333,7 +6316,7 @@
         "originalEn": "Light Shield"
       },
       "description": "Ein leichter Schild, der einen kleinen Teil des eingehenden Schadens abwehrt, ohne dass die Mobilität beeinträchtigt wird.",
-      "icon": "https://cdn.arctracker.io/items/light_shield.png",
+      "icon": "https://cdn.arctracker.io/items/v2/light_shield.png",
       "rarity": "Uncommon",
       "type": "Shield",
       "category": "Shield",
@@ -6361,7 +6344,7 @@
         "originalEn": "Lightweight Stock"
       },
       "description": "Verbessert ADS- und Ziehgeschwindigkeit mäßig. Kompatibel mit: Arpeggio, Kettle, Ferro, Renegade, Hullcracker",
-      "icon": "https://cdn.arctracker.io/items/lightweight_stock.png",
+      "icon": "https://cdn.arctracker.io/items/v2/lightweight_stock.png",
       "rarity": "Epic",
       "type": "Modification",
       "category": "Modification",
@@ -6390,7 +6373,7 @@
         "originalEn": "Li'l Smoke Grenade"
       },
       "description": "Eine Granate, die beim Aufprall eine dichte, aber kleine Rauchwolke entstehen lässt, die die Sicht von ARC und anderen Raidern einschränkt.",
-      "icon": "https://cdn.arctracker.io/items/lil_smoke_grenade.png",
+      "icon": "https://cdn.arctracker.io/items/v2/lil_smoke_grenade.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -6420,7 +6403,7 @@
         "originalEn": "Looting Mk. 1"
       },
       "description": "Basis-Plünder-Augment. Mehr Rucksackplätze und Gewichtskapazität, aber nur geringste Verteidigungs- und taktische Kapazität.",
-      "icon": "https://cdn.arctracker.io/items/looting_mk1.png",
+      "icon": "https://cdn.arctracker.io/items/v2/looting_mk1.png",
       "rarity": "Uncommon",
       "type": "Augment",
       "category": "Augment",
@@ -6449,7 +6432,7 @@
         "originalEn": "Looting Mk. 2"
       },
       "description": "Erhöht das Plünderungspotenzial erheblich; fügt Plätze für Zierden hinzu. Wirft befestigte Zecken nach 1 Sek. ab.",
-      "icon": "https://cdn.arctracker.io/items/looting_mk2.png",
+      "icon": "https://cdn.arctracker.io/items/v2/looting_mk2.png",
       "rarity": "Rare",
       "type": "Augment",
       "category": "Augment",
@@ -6478,7 +6461,7 @@
         "originalEn": "Looting Mk. 3 (Cautious)"
       },
       "description": "Eine Plünderungsverbesserung, die etwas Tragekapazität gegen erhöhte Überlebensfähigkeit tauscht. Bei Schildbruch wird automatisch eine schwache Adrenalinspritze verabreicht. Hat eine feste Abklingzeit.",
-      "icon": "https://cdn.arctracker.io/items/looting_mk3_cautious.png",
+      "icon": "https://cdn.arctracker.io/items/v2/looting_mk3_cautious.png",
       "rarity": "Epic",
       "type": "Augment",
       "category": "Augment",
@@ -6507,7 +6490,7 @@
         "originalEn": "Looting Mk. 3 (Safekeeper)"
       },
       "description": "Ein Plünderungs-Augment, das Gewicht und Nutzen gegen erhöhtes Plünderungspotenzial eintauscht. Eine sichere Tasche, in der beliebige Gegenstände aufbewahrt werden können.",
-      "icon": "https://cdn.arctracker.io/items/looting_mk3_safekeeper.png",
+      "icon": "https://cdn.arctracker.io/items/v2/looting_mk3_safekeeper.png",
       "rarity": "Epic",
       "type": "Augment",
       "category": "Augment",
@@ -6536,7 +6519,7 @@
         "originalEn": "Looting Mk. 3 (Survivor)"
       },
       "description": "Ein robustes Packesel-Augment. Große Tragekapazität und viel Platz im Rucksack. Im entkräfteten und bewegungslosen Zustand erholt sich die Gesundheit auf bis zu 75% der max. Gesundheit im entkräfteten Zustand.",
-      "icon": "https://cdn.arctracker.io/items/looting_mk3_survivor.png",
+      "icon": "https://cdn.arctracker.io/items/v2/looting_mk3_survivor.png",
       "rarity": "Epic",
       "type": "Augment",
       "category": "Augment",
@@ -6565,7 +6548,7 @@
         "originalEn": "Lure Grenade"
       },
       "description": "Ein lautes Gerät, das an Oberflächen haften bleibt, ARC-Maschinen in der Nähe ablenkt und ihre Schüsse auf sich zieht.",
-      "icon": "https://cdn.arctracker.io/items/lure_grenade.png",
+      "icon": "https://cdn.arctracker.io/items/v2/lure_grenade.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -6594,7 +6577,7 @@
         "originalEn": "Lure Grenade Trap"
       },
       "description": "Ein Laser-Stolperdraht, der eine Ködergranate zur Detonation bringt.",
-      "icon": "https://cdn.arctracker.io/items/lure_grenade_trap.png",
+      "icon": "https://cdn.arctracker.io/items/v2/lure_grenade_trap.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -6615,7 +6598,7 @@
         "originalEn": "Magnet"
       },
       "description": "Wird zur Herstellung verschiedenster Gegenstände verwendet. Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/magnet.png",
+      "icon": "https://cdn.arctracker.io/items/v2/magnet.png",
       "rarity": "Uncommon",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -6641,7 +6624,7 @@
         "originalEn": "Magnetic Accelerator"
       },
       "description": "Wird zur Herstellung von fortschrittlichen Waffen verwendet. Zur Herstellung von: Tempest, Equalizer, Vulcano, Aphelion, Jupiter",
-      "icon": "https://cdn.arctracker.io/items/magnetic_accelerator.png",
+      "icon": "https://cdn.arctracker.io/items/v2/magnetic_accelerator.png",
       "rarity": "Epic",
       "type": "Refined Material",
       "category": "Refined Material",
@@ -6673,7 +6656,7 @@
         "originalEn": "Magnetron"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/magnetron.png",
+      "icon": "https://cdn.arctracker.io/items/v2/magnetron.png",
       "rarity": "Epic",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -6700,7 +6683,7 @@
         "originalEn": "Major Aiva's Mementos"
       },
       "description": "",
-      "icon": "https://cdn.arctracker.io/items/major_aivas_mementos.png",
+      "icon": "https://cdn.arctracker.io/items/v2/major_aivas_mementos.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -6717,7 +6700,7 @@
         "originalEn": "Major Aiva's Patch"
       },
       "description": "Ein zerrissenes Abzeichen, gefunden inmitten von Schutt und Ruinen.",
-      "icon": "https://cdn.arctracker.io/items/major_aivas_patch.png",
+      "icon": "https://cdn.arctracker.io/items/v2/major_aivas_patch.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -6734,7 +6717,7 @@
         "originalEn": "Marano Market Business Card"
       },
       "description": "Die gekritzelte Schrift auf dieser Visitenkarte verdeckt fast das Logo von Maranos Markt.",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/marano_market_business_card.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -6751,7 +6734,7 @@
         "originalEn": "Matriarch Reactor"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/matriarch_reactor.png",
+      "icon": "https://cdn.arctracker.io/items/v2/matriarch_reactor.png",
       "rarity": "Legendary",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -6775,7 +6758,7 @@
         "originalEn": "Mechanical Components"
       },
       "description": "Wird zur Herstellung verschiedenster Gegenstände verwendet. Kann zu Herstellungsmaterialien recycelt werden. Zur Herstellung von: Il Toro, Burletta, Anvil, Mündungsbremse II, Erweitertes mittelschweres Magazin II",
-      "icon": "https://cdn.arctracker.io/items/mechanical_components.png",
+      "icon": "https://cdn.arctracker.io/items/v2/mechanical_components.png",
       "rarity": "Uncommon",
       "type": "Refined Material",
       "category": "Refined Material",
@@ -6807,7 +6790,7 @@
         "originalEn": "Medium Ammo"
       },
       "description": "Kompatibel mit: Arpeggio, Rattler, Venator, Tempest, Renegade",
-      "icon": "https://cdn.arctracker.io/items/medium_ammo.png",
+      "icon": "https://cdn.arctracker.io/items/v2/medium_ammo.png",
       "rarity": "Common",
       "type": "Ammunition",
       "category": "Ammunition",
@@ -6829,7 +6812,7 @@
         "originalEn": "Medium Gun Parts"
       },
       "description": "Verschiedenste Ersatzteile, die in Gewehren zum Einsatz kommen. Zur Herstellung von: Torrente, Venator, Osprey, Renegade, Tempest",
-      "icon": "https://cdn.arctracker.io/items/medium_gun_parts.png",
+      "icon": "https://cdn.arctracker.io/items/v2/medium_gun_parts.png",
       "rarity": "Rare",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -6860,7 +6843,7 @@
         "originalEn": "Medium Shield"
       },
       "description": "Ein Standardschild, der einen mittleren Teil des eingehenden Schadens abwehrt, worunter allerdings auch die Mobilität moderat leidet.",
-      "icon": "https://cdn.arctracker.io/items/medium_shield.png",
+      "icon": "https://cdn.arctracker.io/items/v2/medium_shield.png",
       "rarity": "Rare",
       "type": "Shield",
       "category": "Shield",
@@ -6888,7 +6871,7 @@
         "originalEn": "Metal Brackets"
       },
       "description": "Kann zu Metallteilen recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/metal_brackets.png",
+      "icon": "https://cdn.arctracker.io/items/v2/metal_brackets.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -6915,7 +6898,7 @@
         "originalEn": "Metal Parts"
       },
       "description": "Wird zur Herstellung verschiedenster Gegenstände verwendet. Zur Herstellung von: Werfermunition, Hairpin, Schwere Munition, Ferro, Kettle",
-      "icon": "https://cdn.arctracker.io/items/metal_parts.png",
+      "icon": "https://cdn.arctracker.io/items/v2/metal_parts.png",
       "rarity": "Common",
       "type": "Basic Material",
       "category": "Basic Material",
@@ -6938,7 +6921,7 @@
         "originalEn": "Microscope"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/microscope.png",
+      "icon": "https://cdn.arctracker.io/items/v2/microscope.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -6965,7 +6948,7 @@
         "originalEn": "Mini Centrifuge"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/mini_centrifuge.png",
+      "icon": "https://cdn.arctracker.io/items/v2/mini_centrifuge.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -6992,7 +6975,7 @@
         "originalEn": "Mod Components"
       },
       "description": "Wird zur Herstellung von Waffen-Mods verwendet. Kann zu Herstellungsmaterialien recycelt werden. Zur Herstellung von: Leichtgewichtkolben, Schrotflintenchoke III, Erweitertes Schrotflintenmagazin III, Gepolsterter Kolben, Kompensator III",
-      "icon": "https://cdn.arctracker.io/items/mod_components.png",
+      "icon": "https://cdn.arctracker.io/items/v2/mod_components.png",
       "rarity": "Rare",
       "type": "Refined Material",
       "category": "Refined Material",
@@ -7024,7 +7007,7 @@
         "originalEn": "Moisture Meter"
       },
       "description": "Ein Quest-Gegenstand, der an Tian Wen geliefert werden muss, um die Quest Unerwartete Initiative abzuschließen.",
-      "icon": "https://cdn.arctracker.io/items/moisture_meter.png",
+      "icon": "https://cdn.arctracker.io/items/v2/moisture_meter.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -7041,7 +7024,7 @@
         "originalEn": "Moss"
       },
       "description": "Kann zur Regeneration einer kleinen Menge Gesundheit benutzt werden. Zur Herstellung von: Defibrillator",
-      "icon": "https://cdn.arctracker.io/items/moss.png",
+      "icon": "https://cdn.arctracker.io/items/v2/moss.png",
       "rarity": "Rare",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -7067,7 +7050,7 @@
         "originalEn": "Motor"
       },
       "description": "Ein kleiner Elektromotor, nützlich für verschiedene Geräte.",
-      "icon": "https://cdn.arctracker.io/items/motor.png",
+      "icon": "https://cdn.arctracker.io/items/v2/motor.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -7094,7 +7077,7 @@
         "originalEn": "Mushroom"
       },
       "description": "Kann zur Regeneration einer kleinen Menge Gesundheit verzehrt werden.",
-      "icon": "https://cdn.arctracker.io/items/mushroom.png",
+      "icon": "https://cdn.arctracker.io/items/v2/mushroom.png",
       "rarity": "Uncommon",
       "type": "Nature",
       "category": "Nature",
@@ -7114,7 +7097,7 @@
         "originalEn": "Music Album"
       },
       "description": "Perfekt für entspannte Abende zu Hause, lockere Treffen und private Luftgitarren-Konzerte.",
-      "icon": "https://cdn.arctracker.io/items/music_album.png",
+      "icon": "https://cdn.arctracker.io/items/v2/music_album.png",
       "rarity": "Rare",
       "type": "Trinket",
       "category": "Trinket",
@@ -7135,7 +7118,7 @@
         "originalEn": "Music Box"
       },
       "description": "Ein kleines Vermögen wert.",
-      "icon": "https://cdn.arctracker.io/items/music_box.png",
+      "icon": "https://cdn.arctracker.io/items/v2/music_box.png",
       "rarity": "Rare",
       "type": "Trinket",
       "category": "Trinket",
@@ -7157,7 +7140,7 @@
         "originalEn": "Muzzle Brake I"
       },
       "description": "Verringert den vertikalen und horizontalen Rückstoß geringfügig. Kompatibel mit: Rattler, Ferro, Burletta, Stitcher, Tempest",
-      "icon": "https://cdn.arctracker.io/items/muzzle_brake_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/muzzle_brake_i.png",
       "rarity": "Common",
       "type": "Modification",
       "category": "Modification",
@@ -7185,7 +7168,7 @@
         "originalEn": "Muzzle Brake II"
       },
       "description": "Verringert den vertikalen und horizontalen Rückstoß moderat. Kompatibel mit: Tempest, Arpeggio, Kettle, Ferro, Renegade",
-      "icon": "https://cdn.arctracker.io/items/muzzle_brake_ii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/muzzle_brake_ii.png",
       "rarity": "Uncommon",
       "type": "Modification",
       "category": "Modification",
@@ -7214,7 +7197,7 @@
         "originalEn": "Muzzle Brake III"
       },
       "description": "Verringert den vertikalen und horizontalen Rückstoß erheblich. Kompatibel mit: Arpeggio, Ferro, Renegade, Anvil, Stitcher",
-      "icon": "https://cdn.arctracker.io/items/muzzle_brake_iii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/muzzle_brake_iii.png",
       "rarity": "Rare",
       "type": "Modification",
       "category": "Modification",
@@ -7243,7 +7226,7 @@
         "originalEn": "Noisemaker"
       },
       "description": "Ein einsatzbereiter Näherungssensor, der einen Alarm ertönen lässt, wenn er gegnerische Raider entdeckt.",
-      "icon": "https://cdn.arctracker.io/items/noisemaker.png",
+      "icon": "https://cdn.arctracker.io/items/v2/noisemaker.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -7270,7 +7253,7 @@
         "originalEn": "Number Plate"
       },
       "description": "Kann zu Metallteilen recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/number_plate.png",
+      "icon": "https://cdn.arctracker.io/items/v2/number_plate.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -7296,7 +7279,7 @@
         "originalEn": "Nutrient Meter"
       },
       "description": "Ein Quest-Gegenstand, der an Tian Wen geliefert werden muss, um die Quest Unerwartete Initiative abzuschließen.",
-      "icon": "https://cdn.arctracker.io/items/nutrient_meter.png",
+      "icon": "https://cdn.arctracker.io/items/v2/nutrient_meter.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -7313,7 +7296,7 @@
         "originalEn": "Official Shutdown Documentation"
       },
       "description": "",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/official_shutdown_documentation.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -7330,7 +7313,7 @@
         "originalEn": "Oil"
       },
       "description": "Wird zur Herstellung von Waffen und Sprengstoffen verwendet. Kann zu Chemikalien recycelt werden. Zur Herstellung von: Renegade, Flammengranate, Explosive Substanz",
-      "icon": "https://cdn.arctracker.io/items/oil.png",
+      "icon": "https://cdn.arctracker.io/items/v2/oil.png",
       "rarity": "Uncommon",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -7356,7 +7339,7 @@
         "originalEn": "Old World Books"
       },
       "description": "Die Vergangenheit überdauert in Fragmenten, oft unscheinbar oder gewöhnlich, doch für die richtige Person unbezahlbar.",
-      "icon": "https://cdn.arctracker.io/items/old_world_books.png",
+      "icon": "https://cdn.arctracker.io/items/v2/old_world_books.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -7373,7 +7356,7 @@
         "originalEn": "Olives"
       },
       "description": "Kann zum Gewinn einer kleinen Menge Ausdauer verzehrt werden.",
-      "icon": "https://cdn.arctracker.io/items/olives.png",
+      "icon": "https://cdn.arctracker.io/items/v2/olives.png",
       "rarity": "Uncommon",
       "type": "Nature",
       "category": "Nature",
@@ -7399,7 +7382,7 @@
         "originalEn": "Osprey I"
       },
       "description": "Verursacht verlässlichen Schaden bei annehmbarer Genauigkeit.",
-      "icon": "https://cdn.arctracker.io/items/osprey.png",
+      "icon": "https://cdn.arctracker.io/items/v2/osprey_i.png",
       "rarity": "Rare",
       "type": "Sniper Rifle",
       "category": "Weapon",
@@ -7433,7 +7416,7 @@
         "originalEn": "Osprey II"
       },
       "description": "Verursacht verlässlichen Schaden bei annehmbarer Genauigkeit.",
-      "icon": "https://cdn.arctracker.io/items/osprey.png",
+      "icon": "https://cdn.arctracker.io/items/v2/osprey_ii.png",
       "rarity": "Rare",
       "type": "Sniper Rifle",
       "category": "Weapon",
@@ -7467,7 +7450,7 @@
         "originalEn": "Osprey III"
       },
       "description": "Verursacht verlässlichen Schaden bei annehmbarer Genauigkeit.",
-      "icon": "https://cdn.arctracker.io/items/osprey.png",
+      "icon": "https://cdn.arctracker.io/items/v2/osprey_iii.png",
       "rarity": "Rare",
       "type": "Sniper Rifle",
       "category": "Weapon",
@@ -7501,7 +7484,7 @@
         "originalEn": "Osprey IV"
       },
       "description": "Verursacht verlässlichen Schaden bei annehmbarer Genauigkeit.",
-      "icon": "https://cdn.arctracker.io/items/osprey.png",
+      "icon": "https://cdn.arctracker.io/items/v2/osprey_iv.png",
       "rarity": "Rare",
       "type": "Sniper Rifle",
       "category": "Weapon",
@@ -7534,7 +7517,7 @@
         "originalEn": "Padded Stock"
       },
       "description": "Verbessert die Stabilität erheblich. Kompatibel mit: Arpeggio, Rattler, Ferro, Renegade, Torrente",
-      "icon": "https://cdn.arctracker.io/items/padded_stock.png",
+      "icon": "https://cdn.arctracker.io/items/v2/padded_stock.png",
       "rarity": "Epic",
       "type": "Modification",
       "category": "Modification",
@@ -7563,7 +7546,7 @@
         "originalEn": "Painted Box"
       },
       "description": "Vielleicht ein paar Münzen wert",
-      "icon": "https://cdn.arctracker.io/items/painted_box.png",
+      "icon": "https://cdn.arctracker.io/items/v2/painted_box.png",
       "rarity": "Uncommon",
       "type": "Trinket",
       "category": "Trinket",
@@ -7583,7 +7566,7 @@
         "originalEn": "Patrol Car Key"
       },
       "description": "Ein Schlüssel für einen Streifenwagen.",
-      "icon": "https://cdn.arctracker.io/items/patrol_car_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/patrol_car_key.png",
       "rarity": "Uncommon",
       "type": "Key",
       "category": "Key",
@@ -7603,7 +7586,7 @@
         "originalEn": "Photoelectric Cloak"
       },
       "description": "Ein Gadget, mit dem der Benutzer sich vor ARC verstecken kann.",
-      "icon": "https://cdn.arctracker.io/items/photoelectric_cloak.png",
+      "icon": "https://cdn.arctracker.io/items/v2/photoelectric_cloak.png",
       "rarity": "Epic",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -7625,7 +7608,7 @@
       },
       "stackSize": 1,
       "value": 5000,
-      "weight": 1
+      "weight": 3
     },
     "pilgrims_peak_security_code": {
       "name": {
@@ -7633,7 +7616,7 @@
         "originalEn": "Pilgrim's Peak Security Code"
       },
       "description": "Einer von vier Sicherheitscodes, die zum Öffnen des verschlossenen Tors am Blue Gate benötigt werden. Gefunden bei Pilgrim's Peak.",
-      "icon": "https://cdn.arctracker.io/items/security_code.png",
+      "icon": "https://cdn.arctracker.io/items/v2/pilgrims_peak_security_code.png",
       "rarity": "Common",
       "type": "Key",
       "category": "Key",
@@ -7650,7 +7633,7 @@
         "originalEn": "Plastic Parts"
       },
       "description": "Wird zur Herstellung verschiedenster Gegenstände verwendet. Zur Herstellung von: Hairpin, Leichter Schild, Beute-Marke 1, Leichte Aufschlaggranate, Erweitertes Schrotflintenmagazin I",
-      "icon": "https://cdn.arctracker.io/items/plastic_parts.png",
+      "icon": "https://cdn.arctracker.io/items/v2/plastic_parts.png",
       "rarity": "Common",
       "type": "Basic Material",
       "category": "Basic Material",
@@ -7672,7 +7655,7 @@
         "originalEn": "Playing Cards"
       },
       "description": "Speranzaner lieben es zu sehen, wer den höchsten Turm bauen kann - bevor die Erschütterungen ihn umwerfen.",
-      "icon": "https://cdn.arctracker.io/items/playing_cards.png",
+      "icon": "https://cdn.arctracker.io/items/v2/playing_cards.png",
       "rarity": "Rare",
       "type": "Trinket",
       "category": "Trinket",
@@ -7693,7 +7676,7 @@
         "originalEn": "Polluted Air Filter"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/polluted_air_filter.png",
+      "icon": "https://cdn.arctracker.io/items/v2/polluted_air_filter.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -7720,7 +7703,7 @@
         "originalEn": "Pop Trigger"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/pop_trigger.png",
+      "icon": "https://cdn.arctracker.io/items/v2/pop_trigger.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -7747,7 +7730,7 @@
         "originalEn": "Portable TV"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/portable_tv.png",
+      "icon": "https://cdn.arctracker.io/items/v2/portable_tv.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -7774,7 +7757,7 @@
         "originalEn": "Possibly Toxic Plant"
       },
       "description": "",
-      "icon": "https://cdn.arctracker.io/items/possibly_toxic_plant.png",
+      "icon": "https://cdn.arctracker.io/items/v2/possibly_toxic_plant.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -7791,7 +7774,7 @@
         "originalEn": "Poster of Natural Wonders"
       },
       "description": "Wenn du ganz nah rangehst und die Augen zusammenkneifst, ist es fast, als on die Welt nie untergegangen wäre.",
-      "icon": "https://cdn.arctracker.io/items/poster_of_natural_wonders.png",
+      "icon": "https://cdn.arctracker.io/items/v2/poster_of_natural_wonders.png",
       "rarity": "Uncommon",
       "type": "Trinket",
       "category": "Trinket",
@@ -7812,7 +7795,7 @@
         "originalEn": "Pottery"
       },
       "description": "Vielleicht ein paar Münzen wert",
-      "icon": "https://cdn.arctracker.io/items/pottery.png",
+      "icon": "https://cdn.arctracker.io/items/v2/pottery.png",
       "rarity": "Uncommon",
       "type": "Trinket",
       "category": "Trinket",
@@ -7833,7 +7816,7 @@
         "originalEn": "Power Bank"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/power_bank.png",
+      "icon": "https://cdn.arctracker.io/items/v2/power_bank.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -7862,7 +7845,7 @@
         "originalEn": "Power Cable"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/power_cable.png",
+      "icon": "https://cdn.arctracker.io/items/v2/power_cable.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -7890,7 +7873,7 @@
         "originalEn": "Power Rod"
       },
       "description": "Wird bei der Herstellung verwendet. Zur Herstellung von: Schwerer Schild, Karabinerhaken",
-      "icon": "https://cdn.arctracker.io/items/power_rod.png",
+      "icon": "https://cdn.arctracker.io/items/v2/power_rod.png",
       "rarity": "Epic",
       "type": "Refined Material",
       "category": "Refined Material",
@@ -7922,7 +7905,7 @@
         "originalEn": "Powered Descender"
       },
       "description": "Verringert die Fallgeschwindigkeit, wenn es in der Luft verwendet wird, benötigt aber Anlaufzeit, bevor es die volle Kraft erreicht. Schaltet sich ab, sobald die Energie aufgebraucht ist",
-      "icon": "https://cdn.arctracker.io/items/powered_descender.png",
+      "icon": "https://cdn.arctracker.io/items/v2/powered_descender.png",
       "rarity": "Epic",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -7952,7 +7935,7 @@
         "originalEn": "Precision Gimbal"
       },
       "description": "",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/precision_gimbal.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -7969,7 +7952,7 @@
         "originalEn": "Prickly Pear"
       },
       "description": "Kann zum Gewinn einer kleinen Menge Ausdauer verzehrt werden.",
-      "icon": "https://cdn.arctracker.io/items/prickly_pear.png",
+      "icon": "https://cdn.arctracker.io/items/v2/prickly_pear.png",
       "rarity": "Common",
       "type": "Nature",
       "category": "Nature",
@@ -7995,7 +7978,7 @@
         "originalEn": "Processor"
       },
       "description": "Wird zur Herstellung verwendet. Zur Herstellung von: Taktisch-Marke 3 (Defensiv), Kampf-Marke 3 (Flankierend), Kampf-Marke 3 (Aggressiv), Beute-Marke 3 (Vorsichtig), Taktisch-Marke 3 (Heilung)",
-      "icon": "https://cdn.arctracker.io/items/processor.png",
+      "icon": "https://cdn.arctracker.io/items/v2/processor.png",
       "rarity": "Rare",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -8022,7 +8005,7 @@
         "originalEn": "Project Heartwood Blueprints"
       },
       "description": "Verblasste Baupläne für etwas namens Projekt Heartwood. Was auch immer es war, es wurde nie gebaut.",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/project_heartwood_blueprints.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -8039,7 +8022,7 @@
         "originalEn": "Projector"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/projector.png",
+      "icon": "https://cdn.arctracker.io/items/v2/projector.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -8066,7 +8049,7 @@
         "originalEn": "Pulse Mine"
       },
       "description": "Eine Mine, die bei Annäherung explodiert und dabei alle in ihrem Radius zurückstößt.",
-      "icon": "https://cdn.arctracker.io/items/pulse_mine.png",
+      "icon": "https://cdn.arctracker.io/items/v2/pulse_mine.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -8095,7 +8078,7 @@
         "originalEn": "Queen Reactor"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/queen_part.png",
+      "icon": "https://cdn.arctracker.io/items/v2/queen_reactor.png",
       "rarity": "Legendary",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -8122,7 +8105,7 @@
         "originalEn": "Radio"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/radio.png",
+      "icon": "https://cdn.arctracker.io/items/v2/radio.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -8150,7 +8133,7 @@
         "originalEn": "Radio Relay"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/radio_relay.png",
+      "icon": "https://cdn.arctracker.io/items/v2/radio_relay.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -8177,7 +8160,7 @@
         "originalEn": "Raider Flag"
       },
       "description": "Von der Sonne ausgebleicht und zerknittert, aber dennoch würdevoll.",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/raider_flag.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -8193,7 +8176,7 @@
         "originalEn": "Raider Hatch Key"
       },
       "description": "Öffnet eine Raider-Luke.",
-      "icon": "https://cdn.arctracker.io/items/raider_hatch_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/raider_hatch_key.png",
       "rarity": "Rare",
       "type": "Key",
       "category": "Key",
@@ -8215,7 +8198,7 @@
         "originalEn": "Raider's Refuge Security Code"
       },
       "description": "Einer von vier Sicherheitscodes, die zum Öffnen des verschlossenen Tors am Blue Gate benötigt werden. Gefunden bei Raider's Refuge.",
-      "icon": "https://cdn.arctracker.io/items/security_code.png",
+      "icon": "https://cdn.arctracker.io/items/v2/raiders_refuge_security_code.png",
       "rarity": "Common",
       "type": "Key",
       "category": "Key",
@@ -8232,7 +8215,7 @@
         "originalEn": "Rattler I"
       },
       "description": "Eine billige Option für offensive Zwecke - muss aber jedes Mal um 2 Geschosse nachgeladen werden.",
-      "icon": "https://cdn.arctracker.io/items/rattler.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rattler_i.png",
       "rarity": "Common",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -8264,7 +8247,7 @@
         "originalEn": "Rattler II"
       },
       "description": "Eine billige Option für offensive Zwecke - muss aber jedes Mal um 2 Geschosse nachgeladen werden.",
-      "icon": "https://cdn.arctracker.io/items/rattler.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rattler_ii.png",
       "rarity": "Common",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -8297,7 +8280,7 @@
         "originalEn": "Rattler III"
       },
       "description": "Eine billige Option für offensive Zwecke - muss aber jedes Mal um 2 Geschosse nachgeladen werden.",
-      "icon": "https://cdn.arctracker.io/items/rattler.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rattler_iii.png",
       "rarity": "Common",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -8331,7 +8314,7 @@
         "originalEn": "Rattler IV"
       },
       "description": "Eine billige Option für offensive Zwecke - muss aber jedes Mal um 2 Geschosse nachgeladen werden.",
-      "icon": "https://cdn.arctracker.io/items/rattler.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rattler_iv.png",
       "rarity": "Common",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -8364,7 +8347,7 @@
         "originalEn": "Recorder"
       },
       "description": "Eine spielbare Flöte, mit der ARC angelockt oder andere Raider beeindruckt werden können.",
-      "icon": "https://cdn.arctracker.io/items/recorder.png",
+      "icon": "https://cdn.arctracker.io/items/v2/recorder.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -8390,7 +8373,7 @@
         "originalEn": "Red Coral Jewelry"
       },
       "description": "Geschätzt für seine feine Handwerkskunst und mühelose Fähigkeit, Ihre Augen zum Leuchten zu bringen.",
-      "icon": "https://cdn.arctracker.io/items/red_coral_jewelry.png",
+      "icon": "https://cdn.arctracker.io/items/v2/red_coral_jewelry.png",
       "rarity": "Rare",
       "type": "Trinket",
       "category": "Trinket",
@@ -8412,7 +8395,7 @@
         "originalEn": "Red Light Stick"
       },
       "description": "Ein werfbares chemisches Licht, das seine Umgebung erhellt.",
-      "icon": "https://cdn.arctracker.io/items/red_light_stick.png",
+      "icon": "https://cdn.arctracker.io/items/v2/red_light_stick.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -8440,7 +8423,7 @@
         "originalEn": "Reinforced Reception Security Code"
       },
       "description": "Einer von vier Sicherheitscodes, die zum Öffnen des verschlossenen Tors am Blue Gate benötigt werden. Gefunden bei Reinforced Reception.",
-      "icon": "https://cdn.arctracker.io/items/security_code.png",
+      "icon": "https://cdn.arctracker.io/items/v2/reinforced_reception_security_code.png",
       "rarity": "Common",
       "type": "Key",
       "category": "Key",
@@ -8457,7 +8440,7 @@
         "originalEn": "Remote Control"
       },
       "description": "Kann zu Handwerksmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/remote_control.png",
+      "icon": "https://cdn.arctracker.io/items/v2/remote_control.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -8484,7 +8467,7 @@
         "originalEn": "Remote Raider Flare"
       },
       "description": "Ein einsetzbares Gerät, das bei manueller Auslösung ein Raider-Notsignal abfeuert.",
-      "icon": "https://cdn.arctracker.io/items/remote_raider_flare.png",
+      "icon": "https://cdn.arctracker.io/items/v2/remote_raider_flare.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -8514,7 +8497,7 @@
         "originalEn": "Renegade I"
       },
       "description": "Richtet bei Körpertreffern und insbesondere bei Kopfschüssen hohen Schaden an und ist präzise.",
-      "icon": "https://cdn.arctracker.io/items/renegade.png",
+      "icon": "https://cdn.arctracker.io/items/v2/renegade_i.png",
       "rarity": "Rare",
       "type": "Battle Rifle",
       "category": "Weapon",
@@ -8548,7 +8531,7 @@
         "originalEn": "Renegade II"
       },
       "description": "Richtet bei Körpertreffern und insbesondere bei Kopfschüssen hohen Schaden an und ist präzise.",
-      "icon": "https://cdn.arctracker.io/items/renegade.png",
+      "icon": "https://cdn.arctracker.io/items/v2/renegade_ii.png",
       "rarity": "Rare",
       "type": "Battle Rifle",
       "category": "Weapon",
@@ -8582,7 +8565,7 @@
         "originalEn": "Renegade III"
       },
       "description": "Richtet bei Körpertreffern und insbesondere bei Kopfschüssen hohen Schaden an und ist präzise.",
-      "icon": "https://cdn.arctracker.io/items/renegade.png",
+      "icon": "https://cdn.arctracker.io/items/v2/renegade_iii.png",
       "rarity": "Rare",
       "type": "Battle Rifle",
       "category": "Weapon",
@@ -8616,7 +8599,7 @@
         "originalEn": "Renegade IV"
       },
       "description": "Richtet bei Körpertreffern und insbesondere bei Kopfschüssen hohen Schaden an und ist präzise.",
-      "icon": "https://cdn.arctracker.io/items/renegade.png",
+      "icon": "https://cdn.arctracker.io/items/v2/renegade_iv.png",
       "rarity": "Rare",
       "type": "Battle Rifle",
       "category": "Weapon",
@@ -8649,7 +8632,7 @@
         "originalEn": "Resin"
       },
       "description": "Kann verwendet werden, um im Laufe der Zeit allmählich eine kleine Menge Gesundheit wiederherzustellen.",
-      "icon": "https://cdn.arctracker.io/items/resin.png",
+      "icon": "https://cdn.arctracker.io/items/v2/resin.png",
       "rarity": "Common",
       "type": "Nature",
       "category": "Nature",
@@ -8669,7 +8652,7 @@
         "originalEn": "Ripped Safety Vest"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/ripped_safety_vest.png",
+      "icon": "https://cdn.arctracker.io/items/v2/ripped_safety_vest.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -8687,13 +8670,30 @@
       "value": 1000,
       "weight": 0.8
     },
+    "riven_tides_classifed_records_keycard": {
+      "name": {
+        "value": "Riven Tides-Schlüsselkarte für Geheimakten",
+        "originalEn": "Riven Tides Classifed Records Keycard"
+      },
+      "description": "Öffnet eine Tür zum Geheimaktenraum im Hafenbehördengebäude in Riven Tides.",
+      "icon": "https://cdn.arctracker.io/items/v2/riven_tides_classified_records_keycard.png",
+      "rarity": "Uncommon",
+      "type": "Key",
+      "category": "Key",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "stackSize": 1,
+      "value": 100,
+      "weight": 0.25
+    },
     "riven_tides_classified_records_keycard": {
       "name": {
         "value": "Riven Tides-Schlüsselkarte für Geheimakten",
         "originalEn": "Riven Tides Classified Records Keycard"
       },
       "description": "Öffnet eine Tür zum Geheimaktenraum im Hafenbehördengebäude in Riven Tides.",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/riven_tides_classified_records_keycard.png",
       "rarity": "Uncommon",
       "type": "Key",
       "category": "Key",
@@ -8710,7 +8710,7 @@
         "originalEn": "Riven Tides Crane House Keycard"
       },
       "description": "Öffnet eine Tür in einem der Kranhäuser in Riven Tides.",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/riven_tides_crane_house_keycard.png",
       "rarity": "Common",
       "type": "Key",
       "category": "Key",
@@ -8727,7 +8727,7 @@
         "originalEn": "Riven Tides Hotel Keycard No. 102"
       },
       "description": "Öffnet die Tür zu einer der vielen Suiten des Panorama Azzurro in Riven Tides",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/riven_tides_hotel_keycard_no_102.png",
       "rarity": "Common",
       "type": "Key",
       "category": "Key",
@@ -8744,7 +8744,7 @@
         "originalEn": "Riven Tides Hotel Keycard No. 107"
       },
       "description": "Öffnet die Tür zu einer der vielen Suiten des Panorama Azzurro in Riven Tides",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/riven_tides_hotel_keycard_no_107.png",
       "rarity": "Common",
       "type": "Key",
       "category": "Key",
@@ -8761,7 +8761,7 @@
         "originalEn": "Riven Tides Hotel Keycard No. 113"
       },
       "description": "Öffnet die Tür zu einer der vielen Suiten des Panorama Azzurro in Riven Tides",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/riven_tides_hotel_keycard_no_113.png",
       "rarity": "Common",
       "type": "Key",
       "category": "Key",
@@ -8778,7 +8778,7 @@
         "originalEn": "Riven Tides Hotel Keycard No. 205"
       },
       "description": "Öffnet die Tür zu einer der vielen Suiten des Panorama Azzurro in Riven Tides",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/riven_tides_hotel_keycard_no_205.png",
       "rarity": "Common",
       "type": "Key",
       "category": "Key",
@@ -8795,7 +8795,7 @@
         "originalEn": "Riven Tides Hotel Keycard No. 208"
       },
       "description": "Öffnet die Tür zu einer der vielen Suiten des Panorama Azzurro in Riven Tides",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/riven_tides_hotel_keycard_no_208.png",
       "rarity": "Common",
       "type": "Key",
       "category": "Key",
@@ -8812,7 +8812,7 @@
         "originalEn": "Riven Tides Hotel Keycard No. 311"
       },
       "description": "Öffnet die Tür zu einer der vielen Suiten des Panorama Azzurro in Riven Tides",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/riven_tides_hotel_keycard_no_311.png",
       "rarity": "Common",
       "type": "Key",
       "category": "Key",
@@ -8829,7 +8829,7 @@
         "originalEn": "Riven Tides Hotel Keycard No. 404"
       },
       "description": "Öffnet die Tür zu einer der vielen Suiten des Panorama Azzurro in Riven Tides",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/riven_tides_hotel_keycard_no_404.png",
       "rarity": "Common",
       "type": "Key",
       "category": "Key",
@@ -8846,7 +8846,7 @@
         "originalEn": "Riven Tides Secure Storage Keycard"
       },
       "description": "Öffnet eine Tür zum Sicherheitslagerraum im Hafenbehördengebäude in Riven Tides",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/riven_tides_secure_storage_keycard.png",
       "rarity": "Epic",
       "type": "Key",
       "category": "Key",
@@ -8863,7 +8863,7 @@
         "originalEn": "Rocket Thruster"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/rocket_thruster.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rocket_thruster.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -8890,7 +8890,7 @@
         "originalEn": "Rocketeer Driver"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/rocketeer_driver.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rocketeer_driver.png",
       "rarity": "Epic",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -8917,7 +8917,7 @@
         "originalEn": "Roots"
       },
       "description": "Vielleicht ein paar Münzen wert",
-      "icon": "https://cdn.arctracker.io/items/roots.png",
+      "icon": "https://cdn.arctracker.io/items/v2/roots.png",
       "rarity": "Uncommon",
       "type": "Nature",
       "category": "Nature",
@@ -8943,7 +8943,7 @@
         "originalEn": "Rope"
       },
       "description": "Wird bei der Herstellung verwendet. Zur Herstellung von: Seilrutsche, Karabinerhaken",
-      "icon": "https://cdn.arctracker.io/items/rope.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rope.png",
       "rarity": "Rare",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -8970,7 +8970,7 @@
         "originalEn": "Rosary"
       },
       "description": "Vielleicht ein paar Münzen wert",
-      "icon": "https://cdn.arctracker.io/items/rosary.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rosary.png",
       "rarity": "Rare",
       "type": "Trinket",
       "category": "Trinket",
@@ -8991,7 +8991,7 @@
         "originalEn": "Rotary Encoder"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/rotary_encoder.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rotary_encoder.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9018,7 +9018,7 @@
         "originalEn": "Rubber Duck"
       },
       "description": "Immer da, um zuzuhören, wenn man es braucht. Kann geworfen werden, um Lärm zu erzeugen.",
-      "icon": "https://cdn.arctracker.io/items/rubber_duck.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rubber_duck.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -9035,7 +9035,7 @@
         "originalEn": "Rubber Pad"
       },
       "description": "Kann zu Gummiteilen recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/rubber_pad.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rubber_pad.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9061,7 +9061,7 @@
         "originalEn": "Rubber Parts"
       },
       "description": "Wird zur Herstellung verschiedenster Gegenstände verwendet. Zur Herstellung von: Ferro, Kettle, Beute-Marke 1, Schildauflader, Stitcher",
-      "icon": "https://cdn.arctracker.io/items/rubber_parts.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rubber_parts.png",
       "rarity": "Common",
       "type": "Basic Material",
       "category": "Basic Material",
@@ -9083,7 +9083,7 @@
         "originalEn": "Ruined Accordion"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/ruined_accordion.png",
+      "icon": "https://cdn.arctracker.io/items/v2/ruined_accordion.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9110,7 +9110,7 @@
         "originalEn": "Ruined Augment"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/ruined_augment.png",
+      "icon": "https://cdn.arctracker.io/items/v2/ruined_augment.png",
       "rarity": "Common",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9137,7 +9137,7 @@
         "originalEn": "Ruined Baton"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden",
-      "icon": "https://cdn.arctracker.io/items/ruined_baton.png",
+      "icon": "https://cdn.arctracker.io/items/v2/ruined_baton.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9164,7 +9164,7 @@
         "originalEn": "Ruined Handcuffs"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/ruined_handcuffs.png",
+      "icon": "https://cdn.arctracker.io/items/v2/ruined_handcuffs.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9190,7 +9190,7 @@
         "originalEn": "Ruined Parachute"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/ruined_parachute.png",
+      "icon": "https://cdn.arctracker.io/items/v2/ruined_parachute.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9216,7 +9216,7 @@
         "originalEn": "Ruined Riot Shield"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/ruined_riot_shield.png",
+      "icon": "https://cdn.arctracker.io/items/v2/ruined_riot_shield.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9243,7 +9243,7 @@
         "originalEn": "Ruined Tactical Vest"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/ruined_tactical_vest.png",
+      "icon": "https://cdn.arctracker.io/items/v2/ruined_tactical_vest.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9270,7 +9270,7 @@
         "originalEn": "Rusted Bolts"
       },
       "description": "Kann zu Metallteilen recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/rusted_bolts.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rusted_bolts.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9297,7 +9297,7 @@
         "originalEn": "Rusted Gear"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/rusted_gear.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rusted_gear.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9324,7 +9324,7 @@
         "originalEn": "Rusted Shut Medical Kit"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/rusted_shut_medical_kit.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rusted_shut_medical_kit.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9351,7 +9351,7 @@
         "originalEn": "Rusted Tools"
       },
       "description": "Kann zu Metallteilen recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/rusted_tools.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rusted_tools.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9378,7 +9378,7 @@
         "originalEn": "Rusty ARC Steel"
       },
       "description": "Von ARC-Gegnern und Aktivitäten erhalten. Kann zu Metallteilen recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/rusty_arc_steel.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rusty_arc_steel.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9404,7 +9404,7 @@
         "originalEn": "Sample Cleaner"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/sample_cleaner.png",
+      "icon": "https://cdn.arctracker.io/items/v2/sample_cleaner.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9431,7 +9431,7 @@
         "originalEn": "Scout Patrol Note"
       },
       "description": "",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/scout_patrol_note.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -9448,7 +9448,7 @@
         "originalEn": "Secret Meeting Info"
       },
       "description": "",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/secret_meeting_info.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -9465,7 +9465,7 @@
         "originalEn": "Seed Vault Box Key"
       },
       "description": "Ein Schlüssel, der eine bestimmte Box im Saatgut-Tresor von Stella Montis öffnet.",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/seed_vault_box_key.png",
       "rarity": "Common",
       "type": "Key",
       "category": "Key",
@@ -9482,7 +9482,7 @@
         "originalEn": "Seeker Grenade"
       },
       "description": "Eine Zielsuchgranate, die auf einzelne ARC in der Nähe abzielt und beim Aufprall Explosionsschaden verursacht.",
-      "icon": "https://cdn.arctracker.io/items/seeker_grenade.png",
+      "icon": "https://cdn.arctracker.io/items/v2/seeker_grenade.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -9511,7 +9511,7 @@
         "originalEn": "Sensors"
       },
       "description": "Wird bei der Herstellung verwendet. Zur Herstellung von: Sprengmine, Raider-Lukenschlüssel, Markierungsgranate",
-      "icon": "https://cdn.arctracker.io/items/sensors.png",
+      "icon": "https://cdn.arctracker.io/items/v2/sensors.png",
       "rarity": "Rare",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -9539,7 +9539,7 @@
         "originalEn": "Sentinel Firing Core"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/sentinel_firing_core.png",
+      "icon": "https://cdn.arctracker.io/items/v2/sentinel_firing_core.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9566,7 +9566,7 @@
         "originalEn": "Shaker"
       },
       "description": "Ein rhythmisches Instrument, das die Aufmerksamkeit von ARC anzieht und andere Raiders beeindruckt.",
-      "icon": "https://cdn.arctracker.io/items/shaker.png",
+      "icon": "https://cdn.arctracker.io/items/v2/shaker.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -9596,7 +9596,7 @@
         "originalEn": "Shield Recharger"
       },
       "description": "Ein Hangerät, das Schilde im Laufe der Zeit wieder auflädt.",
-      "icon": "https://cdn.arctracker.io/items/shield_recharger.png",
+      "icon": "https://cdn.arctracker.io/items/v2/shield_recharger.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -9625,7 +9625,7 @@
         "originalEn": "Shotgun Ammo"
       },
       "description": "Kompatibel mit: Il Toro, Vulcano",
-      "icon": "https://cdn.arctracker.io/items/shotgun_ammo.png",
+      "icon": "https://cdn.arctracker.io/items/v2/shotgun_ammo.png",
       "rarity": "Common",
       "type": "Ammunition",
       "category": "Ammunition",
@@ -9647,7 +9647,7 @@
         "originalEn": "Shotgun Choke I"
       },
       "description": "Verringert die Grundstreuung geringfügig. Kompatibel mit: Il Toro, Vulcano",
-      "icon": "https://cdn.arctracker.io/items/shotgun_choke_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/shotgun_choke_i.png",
       "rarity": "Common",
       "type": "Modification",
       "category": "Modification",
@@ -9675,7 +9675,7 @@
         "originalEn": "Shotgun Choke II"
       },
       "description": "Verringert die Grundstreuung moderat. Kompatibel mit: Il Toro, Vulcano",
-      "icon": "https://cdn.arctracker.io/items/shotgun_choke_ii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/shotgun_choke_ii.png",
       "rarity": "Uncommon",
       "type": "Modification",
       "category": "Modification",
@@ -9704,7 +9704,7 @@
         "originalEn": "Shotgun Choke III"
       },
       "description": "Verringert die Grundstreuung erheblich.",
-      "icon": "https://cdn.arctracker.io/items/shotgun_choke_iii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/shotgun_choke_iii.png",
       "rarity": "Rare",
       "type": "Modification",
       "category": "Modification",
@@ -9733,7 +9733,7 @@
         "originalEn": "Shotgun Silencer"
       },
       "description": "Verringert die beim Schießen erzeugte Lautstärke moderat.",
-      "icon": "https://cdn.arctracker.io/items/shotgun_silencer.png",
+      "icon": "https://cdn.arctracker.io/items/v2/shotgun_silencer.png",
       "rarity": "Epic",
       "type": "Modification",
       "category": "Modification",
@@ -9762,7 +9762,7 @@
         "originalEn": "Showstopper"
       },
       "description": "Eine Granate, die nach einer Verzögerung explodiert und Gegner in ihrem Radius betäubt.",
-      "icon": "https://cdn.arctracker.io/items/showstopper.png",
+      "icon": "https://cdn.arctracker.io/items/v2/showstopper.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -9793,7 +9793,7 @@
         "originalEn": "Shrapnel Grenade"
       },
       "description": "Eine improvisierte Zündgranate, die bei Detonation in messerscharfe Fragmente zerbirst. Schwach gegen ARC-Panzerung.",
-      "icon": "https://cdn.arctracker.io/items/shrapnel_grenade.png",
+      "icon": "https://cdn.arctracker.io/items/v2/shrapnel_grenade.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -9823,7 +9823,7 @@
         "originalEn": "Shredder Gyro"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/shredder_gyro.png",
+      "icon": "https://cdn.arctracker.io/items/v2/shredder_gyro.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9850,7 +9850,7 @@
         "originalEn": "Signal Amplifier"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/signal_amplifier.png",
+      "icon": "https://cdn.arctracker.io/items/v2/signal_amplifier.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9877,7 +9877,7 @@
         "originalEn": "Silencer I"
       },
       "description": "Verringert die Lautstärke von Schüssen geringfügig.",
-      "icon": "https://cdn.arctracker.io/items/silencer_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/silencer_i.png",
       "rarity": "Uncommon",
       "type": "Modification",
       "category": "Modification",
@@ -9906,7 +9906,7 @@
         "originalEn": "Silencer II"
       },
       "description": "Verringert die Lautstärke von Schüssen moderat. Kompatibel mit: Arpeggio, Rattler, Kettle, Ferro, Anvil",
-      "icon": "https://cdn.arctracker.io/items/silencer_ii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/silencer_ii.png",
       "rarity": "Rare",
       "type": "Modification",
       "category": "Modification",
@@ -9935,7 +9935,7 @@
         "originalEn": "Silencer III"
       },
       "description": "Verringert die Lautstärke von Schüssen erheblich. Kompatibel mit: Tempest, Arpeggio, Kettle, Ferro, Renegade",
-      "icon": "https://cdn.arctracker.io/items/silencer_iii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/silencer_iii.png",
       "rarity": "Epic",
       "type": "Modification",
       "category": "Modification",
@@ -9959,7 +9959,7 @@
         "originalEn": "Silver Teaspoon Set"
       },
       "description": "Ein glänzendes, schimmerndes Set voller Raffinesse und Eleganz.",
-      "icon": "https://cdn.arctracker.io/items/silver_teaspoon_set.png",
+      "icon": "https://cdn.arctracker.io/items/v2/silver_teaspoon_set.png",
       "rarity": "Rare",
       "type": "Trinket",
       "category": "Trinket",
@@ -9981,7 +9981,7 @@
         "originalEn": "Simple Gun Parts"
       },
       "description": "Wird zur Herstellung von Waffen verwendet. Zur Herstellung von: Il Toro, Burletta, Anvil, Arpeggio, Teile für Waffe mit schwerer Munition",
-      "icon": "https://cdn.arctracker.io/items/simple_gun_parts.png",
+      "icon": "https://cdn.arctracker.io/items/v2/simple_gun_parts.png",
       "rarity": "Uncommon",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -10008,7 +10008,7 @@
         "originalEn": "\"Sirena Dorata\" Ship Model"
       },
       "description": "Wenn die Mittelmeersonne von ihrem Rumpf glitzert, ist diese strahlende Yacht der zeitlose Inbegriff von Salzwasserpracht.",
-      "icon": "https://cdn.arctracker.io/items/sirena_dorata_ship_model.png",
+      "icon": "https://cdn.arctracker.io/items/v2/sirena_dorata_ship_model.png",
       "rarity": "Epic",
       "type": "Trinket",
       "category": "Trinket",
@@ -10025,7 +10025,7 @@
         "originalEn": "Smoke Grenade"
       },
       "description": "Eine Granate, die beim Aufprall eine Rauchwolke zurücklässt, die die Sicht von ARC und anderen Raidern einschränkt.",
-      "icon": "https://cdn.arctracker.io/items/smoke_grenade.png",
+      "icon": "https://cdn.arctracker.io/items/v2/smoke_grenade.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -10055,7 +10055,7 @@
         "originalEn": "Smoke Grenade Trap"
       },
       "description": "Ein Laser-Stolperdraht, der eine Rauchgranate zündet.",
-      "icon": "https://cdn.arctracker.io/items/smoke_grenade_trap.png",
+      "icon": "https://cdn.arctracker.io/items/v2/smoke_grenade_trap.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -10076,7 +10076,7 @@
         "originalEn": "Snap Blast Grenade"
       },
       "description": "Eine Granate, die an Oberflächen haftet und nach kurzer Verzögerung Explosionsschaden verursacht.",
-      "icon": "https://cdn.arctracker.io/items/snap_blast_grenade.png",
+      "icon": "https://cdn.arctracker.io/items/v2/snap_blast_grenade.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -10106,7 +10106,7 @@
         "originalEn": "Snap Hook"
       },
       "description": "Ein Gadget, mit dem der Benutzer Gebäude erklimmen und große Entfernungen zurücklegen kann.",
-      "icon": "https://cdn.arctracker.io/items/snap_hook.png",
+      "icon": "https://cdn.arctracker.io/items/v2/snap_hook.png",
       "rarity": "Legendary",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -10137,7 +10137,7 @@
         "originalEn": "Snitch Scanner"
       },
       "description": "Kann zu ARC-Legierung recycelt werden. Kann geworfen werden, um ARC zu rufen.",
-      "icon": "https://cdn.arctracker.io/items/snitch_scanner.png",
+      "icon": "https://cdn.arctracker.io/items/v2/snitch_scanner.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -10164,7 +10164,7 @@
         "originalEn": "Snowball"
       },
       "description": "Ein kompakter Schneeball.",
-      "icon": "https://cdn.arctracker.io/items/snowball.png",
+      "icon": "https://cdn.arctracker.io/items/v2/snowball.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -10184,7 +10184,7 @@
         "originalEn": "Spaceport Container Storage Key"
       },
       "description": "Ein Schlüssel für das Containerlager am Raumhafen.",
-      "icon": "https://cdn.arctracker.io/items/spaceport_control_tower_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/spaceport_container_storage_key.png",
       "rarity": "Rare",
       "type": "Key",
       "category": "Key",
@@ -10201,7 +10201,7 @@
         "originalEn": "Spaceport Control Tower Key"
       },
       "description": "Öffnet eine Tür im Kontrollturm A6 im Raumhafen",
-      "icon": "https://cdn.arctracker.io/items/spaceport_control_tower_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/spaceport_control_tower_key.png",
       "rarity": "Rare",
       "type": "Key",
       "category": "Key",
@@ -10218,7 +10218,7 @@
         "originalEn": "Spaceport Trench Tower Key"
       },
       "description": "Öffnet eine Tür zu den Grabentürmen im Raumhafen",
-      "icon": "https://cdn.arctracker.io/items/spaceport_trench_tower_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/spaceport_trench_tower_key.png",
       "rarity": "Uncommon",
       "type": "Key",
       "category": "Key",
@@ -10235,7 +10235,7 @@
         "originalEn": "Spaceport Warehouse Key"
       },
       "description": "Öffnet eine Tür im Versandlager im Raumhafen.",
-      "icon": "https://cdn.arctracker.io/items/spaceport_trench_tower_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/spaceport_warehouse_key.png",
       "rarity": "Uncommon",
       "type": "Key",
       "category": "Key",
@@ -10252,7 +10252,7 @@
         "originalEn": "Speaker Component"
       },
       "description": "Wird bei der Herstellung verwendet. Zur Herstellung von: Ködergranate, Fotoelektrischer Tarnumhang",
-      "icon": "https://cdn.arctracker.io/items/speaker_component.png",
+      "icon": "https://cdn.arctracker.io/items/v2/speaker_component.png",
       "rarity": "Rare",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -10279,7 +10279,7 @@
         "originalEn": "Spectrometer"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/spectrometer.png",
+      "icon": "https://cdn.arctracker.io/items/v2/spectrometer.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -10306,7 +10306,7 @@
         "originalEn": "Spectrum Analyzer"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/spectrum_analyzer.png",
+      "icon": "https://cdn.arctracker.io/items/v2/spectrum_analyzer.png",
       "rarity": "Epic",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -10333,7 +10333,7 @@
         "originalEn": "Spotter Relay"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/spotter_relay.png",
+      "icon": "https://cdn.arctracker.io/items/v2/spotter_relay.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -10360,7 +10360,7 @@
         "originalEn": "Spring Cushion"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/spring_cushion.png",
+      "icon": "https://cdn.arctracker.io/items/v2/spring_cushion.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -10388,7 +10388,7 @@
         "originalEn": "Stable Stock I"
       },
       "description": "Verringert die Zeit, in der du dich von Streuung und Rückstoß erholst, geringfügig.",
-      "icon": "https://cdn.arctracker.io/items/stable_stock_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/stable_stock_i.png",
       "rarity": "Common",
       "type": "Modification",
       "category": "Modification",
@@ -10416,7 +10416,7 @@
         "originalEn": "Stable Stock II"
       },
       "description": "Verringert die Zeit, in der du dich von Streuung und Rückstoß erholst, moderat.",
-      "icon": "https://cdn.arctracker.io/items/stable_stock_ii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/stable_stock_ii.png",
       "rarity": "Uncommon",
       "type": "Modification",
       "category": "Modification",
@@ -10445,7 +10445,7 @@
         "originalEn": "Stable Stock III"
       },
       "description": "Verbessert deutlich die Streuung und Rückstoßerholungszeit.",
-      "icon": "https://cdn.arctracker.io/items/stable_stock_iii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/stable_stock_iii.png",
       "rarity": "Rare",
       "type": "Modification",
       "category": "Modification",
@@ -10474,7 +10474,7 @@
         "originalEn": "Stack of Movie Tapes"
       },
       "description": "",
-      "icon": "https://cdn.arctracker.io/items/stack_of_movie_tapes.png",
+      "icon": "https://cdn.arctracker.io/items/v2/stack_of_movie_tapes.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -10491,7 +10491,7 @@
         "originalEn": "Statuette"
       },
       "description": "Wert ein kleines Vermögen.",
-      "icon": "https://cdn.arctracker.io/items/statuette.png",
+      "icon": "https://cdn.arctracker.io/items/v2/statuette.png",
       "rarity": "Rare",
       "type": "Trinket",
       "category": "Trinket",
@@ -10512,7 +10512,7 @@
         "originalEn": "Steel Spring"
       },
       "description": "Wird zur Herstellung verschiedenster Gegenstände verwendet. Kann zu Herstellungsmaterialien recycelt werden. Zur Herstellung von: Erweitertes Schrotflintenmagazin I, Erweitertes mittelschweres Magazin I, Erweitertes leichtes Magazin I, Torrente, Erweitertes mittelschweres Magazin II",
-      "icon": "https://cdn.arctracker.io/items/steel_spring.png",
+      "icon": "https://cdn.arctracker.io/items/v2/steel_spring.png",
       "rarity": "Uncommon",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -10538,7 +10538,7 @@
         "originalEn": "Stella Montis Archives Key"
       },
       "description": "Öffnet eine Tür in der Medizinischen Forschung in Stella Montis",
-      "icon": "https://cdn.arctracker.io/items/stella_montis_archives_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/stella_montis_archives_key.png",
       "rarity": "Epic",
       "type": "Key",
       "category": "Key",
@@ -10555,7 +10555,7 @@
         "originalEn": "Stella Montis Assembly Admin Key"
       },
       "description": "Öffnet eine Tür in der Montagestätte in Stella Montis",
-      "icon": "https://cdn.arctracker.io/items/stella_montis_assembly_admin_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/stella_montis_assembly_admin_key.png",
       "rarity": "Uncommon",
       "type": "Key",
       "category": "Key",
@@ -10572,7 +10572,7 @@
         "originalEn": "Stella Montis Medical Storage Key"
       },
       "description": "Öffnet eine Tür in der medizinischen Forschungseinrichtung in Stella Montis",
-      "icon": "https://cdn.arctracker.io/items/stella_montis_medical_storage_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/stella_montis_medical_storage_key.png",
       "rarity": "Uncommon",
       "type": "Key",
       "category": "Key",
@@ -10589,7 +10589,7 @@
         "originalEn": "Stella Montis Security Checkpoint Key"
       },
       "description": "Öffnet eine Tür in der Sicherheitskontrolle in Stella Montis",
-      "icon": "https://cdn.arctracker.io/items/stella_montis_security_checkpoint_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/stella_montis_security_checkpoint_key.png",
       "rarity": "Rare",
       "type": "Key",
       "category": "Key",
@@ -10606,7 +10606,7 @@
         "originalEn": "Sterilized Bandage"
       },
       "description": "Ein medizinischer Gegenstand, der allmählich viel Gesundheit wiederherstellt.",
-      "icon": "https://cdn.arctracker.io/items/sterilized_bandage.png",
+      "icon": "https://cdn.arctracker.io/items/v2/sterilized_bandage.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -10636,7 +10636,7 @@
         "originalEn": "Stitcher I"
       },
       "description": "Richtet ordentlichen Schaden an, hat aber eine recht niedrige Feuerrate und ist schwer zu kontrollieren.",
-      "icon": "https://cdn.arctracker.io/items/stitcher.png",
+      "icon": "https://cdn.arctracker.io/items/v2/stitcher_i.png",
       "rarity": "Common",
       "type": "SMG",
       "category": "Weapon",
@@ -10669,7 +10669,7 @@
         "originalEn": "Stitcher II"
       },
       "description": "Richtet ordentlichen Schaden an, hat aber eine recht niedrige Feuerrate und ist schwer zu kontrollieren.",
-      "icon": "https://cdn.arctracker.io/items/stitcher.png",
+      "icon": "https://cdn.arctracker.io/items/v2/stitcher_ii.png",
       "rarity": "Common",
       "type": "SMG",
       "category": "Weapon",
@@ -10703,7 +10703,7 @@
         "originalEn": "Stitcher III"
       },
       "description": "Richtet ordentlichen Schaden an, hat aber eine recht niedrige Feuerrate und ist schwer zu kontrollieren.",
-      "icon": "https://cdn.arctracker.io/items/stitcher.png",
+      "icon": "https://cdn.arctracker.io/items/v2/stitcher_iii.png",
       "rarity": "Common",
       "type": "SMG",
       "category": "Weapon",
@@ -10737,7 +10737,7 @@
         "originalEn": "Stitcher IV"
       },
       "description": "Richtet ordentlichen Schaden an, hat aber eine recht niedrige Feuerrate und ist schwer zu kontrollieren.",
-      "icon": "https://cdn.arctracker.io/items/stitcher.png",
+      "icon": "https://cdn.arctracker.io/items/v2/stitcher_iv.png",
       "rarity": "Common",
       "type": "SMG",
       "category": "Weapon",
@@ -10770,7 +10770,7 @@
         "originalEn": "Surge Coil"
       },
       "description": "Ein einsetzbares Gerät, das den Bereich um sich herum regelmäßig unter Strom setzt und alles, was darin gefangen ist, kurzzeitig betäubt.",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/surge_coil.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -10801,7 +10801,7 @@
         "originalEn": "Surge Shield Recharger"
       },
       "description": "Ein tragbares Set, das bei Gebrauch einen Schild wieder auflädt.",
-      "icon": "https://cdn.arctracker.io/items/surge_shield_recharger.png",
+      "icon": "https://cdn.arctracker.io/items/v2/surge_shield_recharger.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -10830,7 +10830,7 @@
         "originalEn": "Surveyor Vault"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/surveyor_vault.png",
+      "icon": "https://cdn.arctracker.io/items/v2/surveyor_vault.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -10857,7 +10857,7 @@
         "originalEn": "Synthesized Fuel"
       },
       "description": "Wird zur Herstellung von Gebrauchsgegenständen und Sprengstoffen verwendet. Kann zu Chemikalien recycelt werden. Zur Herstellung von: Trailblazer. Kann geworfen werden; explodiert, wenn abgeschossen.",
-      "icon": "https://cdn.arctracker.io/items/synthesized_fuel.png",
+      "icon": "https://cdn.arctracker.io/items/v2/synthesized_fuel.png",
       "rarity": "Rare",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -10884,7 +10884,7 @@
         "originalEn": "Syringe"
       },
       "description": "Wird zur Herstellung medizinischer Objekte verwendet. Kann zu Plastik recycelt werden. Zur Herstellung von: Vita-Spritze",
-      "icon": "https://cdn.arctracker.io/items/syringe.png",
+      "icon": "https://cdn.arctracker.io/items/v2/syringe.png",
       "rarity": "Rare",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -10911,7 +10911,7 @@
         "originalEn": "Tactical Mk. 1"
       },
       "description": "Basis-Taktik-Augment. Mehr Schnelleinsatz-Plätze für größere taktische Auswahl, aber begrenzte Überlebensfähigkeit und etwas geringeres Plünderpotenzial.",
-      "icon": "https://cdn.arctracker.io/items/tactical_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/tactical_mk1.png",
       "rarity": "Uncommon",
       "type": "Augment",
       "category": "Augment",
@@ -10940,7 +10940,7 @@
         "originalEn": "Tactical Mk. 2"
       },
       "description": "Sorgt für mehr Platz im Rucksack und gewährt einen weiteren Platz für Gebrauchsgegenstände.",
-      "icon": "https://cdn.arctracker.io/items/tactical_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/tactical_mk2.png",
       "rarity": "Rare",
       "type": "Augment",
       "category": "Augment",
@@ -10969,7 +10969,7 @@
         "originalEn": "Tactical Mk. 3 (Defensive)"
       },
       "description": "Ein auf Verteidigung fokussiertes Augment, das hilft, Schilde aufrechtzuerhalten.",
-      "icon": "https://cdn.arctracker.io/items/tactical_mk3_defensive.png",
+      "icon": "https://cdn.arctracker.io/items/v2/tactical_mk3_defensive.png",
       "rarity": "Epic",
       "type": "Augment",
       "category": "Augment",
@@ -10998,7 +10998,7 @@
         "originalEn": "Tactical Mk. 3 (Healing)"
       },
       "description": "Ein heilungsorientiertes Aufment, das zusätzliche Plätze für heilende Gegenstände hinzufügt. Wenn du entkräftet bist und wiederbelebt wirst, wird eine Heilungswolke ausgelöst, die über 10 Sekunden 20 Gesundheit wiederherstellt. Hat eine Abklingzeit von 30 Sekunden.",
-      "icon": "https://cdn.arctracker.io/items/tactical_mk3_healing.png",
+      "icon": "https://cdn.arctracker.io/items/v2/tactical_mk3_healing.png",
       "rarity": "Epic",
       "type": "Augment",
       "category": "Augment",
@@ -11027,7 +11027,7 @@
         "originalEn": "Tactical Mk. 3 (Revival)"
       },
       "description": "Ein auf Wiederbelebung fokussiertes Augment für Teamunterstützung. Stellt alle 5 Sekunden 1 Gesundheit wieder her. Bei Schadensnahme wird der Effekt für 30 Sekunden pausiert. Enthält einen integrierten Defibrillator mit unbegrenzter Nutzung und 240 Sekunden Abklingzeit.",
-      "icon": "https://cdn.arctracker.io/items/tactical_mk3_revival.png",
+      "icon": "https://cdn.arctracker.io/items/v2/tactical_mk3_revival.png",
       "rarity": "Epic",
       "type": "Augment",
       "category": "Augment",
@@ -11056,7 +11056,7 @@
         "originalEn": "Tactical Mk. 3 (Smoke)"
       },
       "description": "Eine verbesserte Version des Augments Taktisch MK. 2, die durchweg erweiterte Kapazität bietet. Wenn der Schild bricht, wird eine kleine Rauchgranate ausgelöst. Hat eine feste Abklingzeit.",
-      "icon": "https://cdn.arctracker.io/items/tactical_mk3_smoke.png",
+      "icon": "https://cdn.arctracker.io/items/v2/tactical_mk3_smoke.png",
       "rarity": "Epic",
       "type": "Augment",
       "category": "Augment",
@@ -11085,7 +11085,7 @@
         "originalEn": "Tagging Grenade"
       },
       "description": "Eine Granate, die nach einer Verzögerung explodiert und Raider sowie ARC-Gegner in ihrem Bereich markiert, danut du ihre Bewegungen für kurze Zeit verfolgen kannst.",
-      "icon": "https://cdn.arctracker.io/items/tagging_grenade.png",
+      "icon": "https://cdn.arctracker.io/items/v2/tagging_grenade.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -11115,7 +11115,7 @@
         "originalEn": "Tattered Arc Lining"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/tattered_arc_lining.png",
+      "icon": "https://cdn.arctracker.io/items/v2/tattered_arc_lining.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -11141,7 +11141,7 @@
         "originalEn": "Tattered Clothes"
       },
       "description": "Kann zu Stoff recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/tattered_clothes.png",
+      "icon": "https://cdn.arctracker.io/items/v2/tattered_clothes.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -11167,7 +11167,7 @@
         "originalEn": "Telemetry Transceiver"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/telemetry_transceiver.png",
+      "icon": "https://cdn.arctracker.io/items/v2/telemetry_transceiver.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -11194,7 +11194,7 @@
         "originalEn": "Tempest I"
       },
       "description": "Vollautomatisches Sturmgewehr mit mittlerer Feuerrate und Genauigkeit.",
-      "icon": "https://cdn.arctracker.io/items/tempest.png",
+      "icon": "https://cdn.arctracker.io/items/v2/tempest_i.png",
       "rarity": "Epic",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -11228,7 +11228,7 @@
         "originalEn": "Tempest II"
       },
       "description": "Vollautomatisches Sturmgewehr mit mittlerer Feuerrate und Genauigkeit.",
-      "icon": "https://cdn.arctracker.io/items/tempest.png",
+      "icon": "https://cdn.arctracker.io/items/v2/tempest_ii.png",
       "rarity": "Epic",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -11262,7 +11262,7 @@
         "originalEn": "Tempest III"
       },
       "description": "Vollautomatisches Sturmgewehr mit mittlerer Feuerrate und Genauigkeit.",
-      "icon": "https://cdn.arctracker.io/items/tempest.png",
+      "icon": "https://cdn.arctracker.io/items/v2/tempest_iii.png",
       "rarity": "Epic",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -11296,7 +11296,7 @@
         "originalEn": "Tempest IV"
       },
       "description": "Vollautomatisches Sturmgewehr mit mittlerer Feuerrate und Genauigkeit.",
-      "icon": "https://cdn.arctracker.io/items/tempest.png",
+      "icon": "https://cdn.arctracker.io/items/v2/tempest_iv.png",
       "rarity": "Epic",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -11329,7 +11329,7 @@
         "originalEn": "Thermostat"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/thermostat.png",
+      "icon": "https://cdn.arctracker.io/items/v2/thermostat.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -11356,7 +11356,7 @@
         "originalEn": "Tick Pod"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/tick_pod.png",
+      "icon": "https://cdn.arctracker.io/items/v2/tick_pod.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -11383,7 +11383,7 @@
         "originalEn": "Toaster"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/toaster.png",
+      "icon": "https://cdn.arctracker.io/items/v2/toaster.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -11410,7 +11410,7 @@
         "originalEn": "Torn Blanket"
       },
       "description": "Kann zu Stoff recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/torn_blanket.png",
+      "icon": "https://cdn.arctracker.io/items/v2/torn_blanket.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -11437,7 +11437,7 @@
         "originalEn": "Torn Book"
       },
       "description": "Die verbliebenen Seiten erzählen von Helden, Vampiren und vielen Blicken.",
-      "icon": "https://cdn.arctracker.io/items/torn_book.png",
+      "icon": "https://cdn.arctracker.io/items/v2/torn_book.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -11458,7 +11458,7 @@
         "originalEn": "Torrente I"
       },
       "description": "Hat eine große Munitionskapazität, ist aber nur im Hocken präzise.",
-      "icon": "https://cdn.arctracker.io/items/torrente.png",
+      "icon": "https://cdn.arctracker.io/items/v2/torrente_i.png",
       "rarity": "Rare",
       "type": "LMG",
       "category": "Weapon",
@@ -11492,7 +11492,7 @@
         "originalEn": "Torrente II"
       },
       "description": "Hat eine große Munitionskapazität, ist aber nur in der Hocke präzise.",
-      "icon": "https://cdn.arctracker.io/items/torrente.png",
+      "icon": "https://cdn.arctracker.io/items/v2/torrente_ii.png",
       "rarity": "Rare",
       "type": "LMG",
       "category": "Weapon",
@@ -11526,7 +11526,7 @@
         "originalEn": "Torrente III"
       },
       "description": "Hat eine große Munitionskapazität, ist aber nur in der Hocke präzise.",
-      "icon": "https://cdn.arctracker.io/items/torrente.png",
+      "icon": "https://cdn.arctracker.io/items/v2/torrente_iii.png",
       "rarity": "Rare",
       "type": "LMG",
       "category": "Weapon",
@@ -11560,7 +11560,7 @@
         "originalEn": "Torrente IV"
       },
       "description": "Hat eine große Munitionskapazität, ist aber nur in der Hocke präzise.",
-      "icon": "https://cdn.arctracker.io/items/torrente.png",
+      "icon": "https://cdn.arctracker.io/items/v2/torrente_iv.png",
       "rarity": "Rare",
       "type": "LMG",
       "category": "Weapon",
@@ -11593,7 +11593,7 @@
         "originalEn": "Trailblazer"
       },
       "description": "Eine Granate, die eine Spur aus brennbarem Gas hinterlässt und bei der Zündung eine explosive Kettenreaktion auslöst.",
-      "icon": "https://cdn.arctracker.io/items/trailblazer.png",
+      "icon": "https://cdn.arctracker.io/items/v2/trailblazer.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -11623,7 +11623,7 @@
         "originalEn": "Trigger 'Nade"
       },
       "description": "Eine ferngezündete Granate, die an Oberflächen und ARC haften bleibt und bei Zündung Explosionsschaden verursacht.",
-      "icon": "https://cdn.arctracker.io/items/trigger_nade.png",
+      "icon": "https://cdn.arctracker.io/items/v2/trigger_nade.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -11653,7 +11653,7 @@
         "originalEn": "Tropical Duck"
       },
       "description": "Sie träumt still davon, mit ihren Artgenossen in den Himmel aufzusteigen. Kann geworfen werden, um Lärm zu erzeugen.",
-      "icon": "https://cdn.arctracker.io/items/tropical_duck.png",
+      "icon": "https://cdn.arctracker.io/items/v2/tropical_duck.png",
       "rarity": "Uncommon",
       "type": "Trinket",
       "category": "Trinket",
@@ -11670,7 +11670,7 @@
         "originalEn": "Turbine Compressor"
       },
       "description": "",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/turbine_compressor.png",
       "rarity": "Epic",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -11697,7 +11697,7 @@
         "originalEn": "Turbo Pump"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/turbo_pump.png",
+      "icon": "https://cdn.arctracker.io/items/v2/turbo_pump.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -11724,7 +11724,7 @@
         "originalEn": "\"Twilight Compass\" Ship Model"
       },
       "description": "Ein lebhafter Aufsteiger, dieser Zweimaster ist dafür bekannt, ein klein wenig über den Horizont hinauszusegeln.",
-      "icon": "https://cdn.arctracker.io/items/twilight_compass_ship_model.png",
+      "icon": "https://cdn.arctracker.io/items/v2/twilight_compass_ship_model.png",
       "rarity": "Uncommon",
       "type": "Trinket",
       "category": "Trinket",
@@ -11741,7 +11741,7 @@
         "originalEn": "Unusable Weapon"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/unusable_weapon.png",
+      "icon": "https://cdn.arctracker.io/items/v2/unusable_weapon.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -11768,7 +11768,7 @@
         "originalEn": "Vaporizer Regulator"
       },
       "description": "",
-      "icon": "https://cdn.arctracker.io/items/vaporizer_regulator.png",
+      "icon": "https://cdn.arctracker.io/items/v2/vaporizer_regulator.png",
       "rarity": "Epic",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -11792,7 +11792,7 @@
         "originalEn": "Vase"
       },
       "description": "Wert ein kleines Vermögen.",
-      "icon": "https://cdn.arctracker.io/items/vase.png",
+      "icon": "https://cdn.arctracker.io/items/v2/vase.png",
       "rarity": "Rare",
       "type": "Trinket",
       "category": "Trinket",
@@ -11814,7 +11814,7 @@
         "originalEn": "\"Velocity\" Ship Model"
       },
       "description": "Auf Leistung optimiert, hofft dieses technische Wunderwerk inständig, dass du nicht vorhattest, ein besonders aufwändiges Mittagessen einzupacken.",
-      "icon": "https://cdn.arctracker.io/items/velocity_ship_model.png",
+      "icon": "https://cdn.arctracker.io/items/v2/velocity_ship_model.png",
       "rarity": "Rare",
       "type": "Trinket",
       "category": "Trinket",
@@ -11831,7 +11831,7 @@
         "originalEn": "Venator I"
       },
       "description": "Feuert zwei Schüsse gleichzeitig.",
-      "icon": "https://cdn.arctracker.io/items/venator.png",
+      "icon": "https://cdn.arctracker.io/items/v2/venator_i.png",
       "rarity": "Rare",
       "type": "Pistol",
       "category": "Weapon",
@@ -11865,7 +11865,7 @@
         "originalEn": "Venator II"
       },
       "description": "Feuert zwei Schüsse gleichzeitig.",
-      "icon": "https://cdn.arctracker.io/items/venator.png",
+      "icon": "https://cdn.arctracker.io/items/v2/venator_ii.png",
       "rarity": "Rare",
       "type": "Pistol",
       "category": "Weapon",
@@ -11899,7 +11899,7 @@
         "originalEn": "Venator III"
       },
       "description": "Feuert zwei Schüsse gleichzeitig.",
-      "icon": "https://cdn.arctracker.io/items/venator.png",
+      "icon": "https://cdn.arctracker.io/items/v2/venator_iii.png",
       "rarity": "Rare",
       "type": "Pistol",
       "category": "Weapon",
@@ -11933,7 +11933,7 @@
         "originalEn": "Venator IV"
       },
       "description": "Feuert zwei Schüsse gleichzeitig.",
-      "icon": "https://cdn.arctracker.io/items/venator.png",
+      "icon": "https://cdn.arctracker.io/items/v2/venator_iv.png",
       "rarity": "Rare",
       "type": "Pistol",
       "category": "Weapon",
@@ -11966,7 +11966,7 @@
         "originalEn": "Vertical Grip I"
       },
       "description": "Verringert den vertikalen Rückstoß geringfügig. Kompatibel mit: Tempest, Arpeggio, Kettle, Ferro, Hullcracker",
-      "icon": "https://cdn.arctracker.io/items/vertical_grip_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/vertical_grip_i.png",
       "rarity": "Common",
       "type": "Modification",
       "category": "Modification",
@@ -11994,7 +11994,7 @@
         "originalEn": "Vertical Grip II"
       },
       "description": "Verringert den vertikalen Rückstoß moderat. Kompatibel mit: Arpeggio, Ferro, Venator, Il Toro, Stitcher",
-      "icon": "https://cdn.arctracker.io/items/vertical_grip_ii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/vertical_grip_ii.png",
       "rarity": "Uncommon",
       "type": "Modification",
       "category": "Modification",
@@ -12023,7 +12023,7 @@
         "originalEn": "Vertical Grip III"
       },
       "description": "Verringert den vertikalen Rückstoß erheblich. Kompatibel mit: Tempest, Kettle, Hullcracker, Venator, Il Toro",
-      "icon": "https://cdn.arctracker.io/items/vertical_grip_iii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/vertical_grip_iii.png",
       "rarity": "Rare",
       "type": "Modification",
       "category": "Modification",
@@ -12052,7 +12052,7 @@
         "originalEn": "Very Comfortable Pillow"
       },
       "description": "Macht jeden Raider neidisch. Darauf schläfst du wie auf einer besonders ergonomischen Wolke.",
-      "icon": "https://cdn.arctracker.io/items/very_comfortable_pillow.png",
+      "icon": "https://cdn.arctracker.io/items/v2/very_comfortable_pillow.png",
       "rarity": "Uncommon",
       "type": "Trinket",
       "category": "Trinket",
@@ -12073,7 +12073,7 @@
         "originalEn": "Vita Shot"
       },
       "description": "Ein medizinischer Gegenstand, der viel Gesundheit wiederherstellt.",
-      "icon": "https://cdn.arctracker.io/items/vita_shot.png",
+      "icon": "https://cdn.arctracker.io/items/v2/vita_shot.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -12103,7 +12103,7 @@
         "originalEn": "Vita Spray"
       },
       "description": "Ein medizinischer Gegenstand, der während der Verwendung kontinuierlich Gesundheit wiederherstellt. Kann für dich selbst oder Verbündete benutzt werden.",
-      "icon": "https://cdn.arctracker.io/items/vita_spray.png",
+      "icon": "https://cdn.arctracker.io/items/v2/vita_spray.png",
       "rarity": "Epic",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -12134,7 +12134,7 @@
         "originalEn": "Volcanic Rock"
       },
       "description": "Kann geworfen werden.",
-      "icon": "https://cdn.arctracker.io/items/volcanic_rock.png",
+      "icon": "https://cdn.arctracker.io/items/v2/volcanic_rock.png",
       "rarity": "Common",
       "type": "Misc",
       "category": "Misc",
@@ -12154,7 +12154,7 @@
         "originalEn": "Voltage Converter"
       },
       "description": "Wird bei der Herstellung verwendet. Zur Herstellung von: Schwerer Schild, Showstopper",
-      "icon": "https://cdn.arctracker.io/items/voltage_converter.png",
+      "icon": "https://cdn.arctracker.io/items/v2/voltage_converter.png",
       "rarity": "Rare",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -12181,7 +12181,7 @@
         "originalEn": "Vulcano I"
       },
       "description": "Hat eine gute Streuung, aber eine geringe Reichweite.",
-      "icon": "https://cdn.arctracker.io/items/vulcano.png",
+      "icon": "https://cdn.arctracker.io/items/v2/vulcano_i.png",
       "rarity": "Epic",
       "type": "Shotgun",
       "category": "Weapon",
@@ -12215,7 +12215,7 @@
         "originalEn": "Vulcano II"
       },
       "description": "Hat eine gute Streuung, aber eine geringe Reichweite.",
-      "icon": "https://cdn.arctracker.io/items/vulcano.png",
+      "icon": "https://cdn.arctracker.io/items/v2/vulcano_ii.png",
       "rarity": "Epic",
       "type": "Shotgun",
       "category": "Weapon",
@@ -12249,7 +12249,7 @@
         "originalEn": "Vulcano III"
       },
       "description": "Hat eine gute Streuung, aber eine geringe Reichweite.",
-      "icon": "https://cdn.arctracker.io/items/vulcano.png",
+      "icon": "https://cdn.arctracker.io/items/v2/vulcano_iii.png",
       "rarity": "Epic",
       "type": "Shotgun",
       "category": "Weapon",
@@ -12283,7 +12283,7 @@
         "originalEn": "Vulcano IV"
       },
       "description": "Hat eine gute Streuung, aber eine geringe Reichweite.",
-      "icon": "https://cdn.arctracker.io/items/vulcano.png",
+      "icon": "https://cdn.arctracker.io/items/v2/vulcano_iv.png",
       "rarity": "Epic",
       "type": "Shotgun",
       "category": "Weapon",
@@ -12316,7 +12316,7 @@
         "originalEn": "Wasp Driver"
       },
       "description": "Kann zu ARC-Legierung recycelt werden. Kann geworfen werden; explodiert, wenn abgeschossen.",
-      "icon": "https://cdn.arctracker.io/items/wasp_driver.png",
+      "icon": "https://cdn.arctracker.io/items/v2/wasp_driver.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -12342,7 +12342,7 @@
         "originalEn": "Water Filter"
       },
       "description": "Ein tragbares Filtrationsgerät zur Wasserreinigung.",
-      "icon": "https://cdn.arctracker.io/items/water_filter.png",
+      "icon": "https://cdn.arctracker.io/items/v2/water_filter.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -12369,7 +12369,7 @@
         "originalEn": "Water Pump"
       },
       "description": "Kann zu Herstellungsmaterialien recycelt werden.",
-      "icon": "https://cdn.arctracker.io/items/water_pump.png",
+      "icon": "https://cdn.arctracker.io/items/v2/water_pump.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -12397,7 +12397,7 @@
         "originalEn": "White Flag"
       },
       "description": "Eine platzierbare weiße Flagge",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/white_flag.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -12427,7 +12427,7 @@
         "originalEn": "\"Wind Sprite\" Ship Model"
       },
       "description": "Unerschrocken angesichts seiner größeren Geschwister ist dieser flinke Einmaster dafür bekannt, selbst den gerade-über-durchschnittlichsten Wellen zu trotzen.",
-      "icon": "https://cdn.arctracker.io/items/wind_sprite_ship_model.png",
+      "icon": "https://cdn.arctracker.io/items/v2/wind_sprite_ship_model.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -12444,7 +12444,7 @@
         "originalEn": "Wires"
       },
       "description": "Wird zur Herstellung verschiedenster Gegenstände verwendet. Kann zu Herstellungsmaterialien recycelt werden. Zur Herstellung von: Laserfalle: Feuer, Laserfalle: Rauch, Laserfalle: Köder, Laserfalle: Gas, Mündungsbremse I",
-      "icon": "https://cdn.arctracker.io/items/wires.png",
+      "icon": "https://cdn.arctracker.io/items/v2/wires.png",
       "rarity": "Uncommon",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -12471,7 +12471,7 @@
         "originalEn": "Wolfpack"
       },
       "description": "Eine Granate, die sich in mehrere zielsuchende Raketen spaltet, welche auf ARC zufliegen und beim Aufprall Explosionsschaden verursachen.",
-      "icon": "https://cdn.arctracker.io/items/wolfpack.png",
+      "icon": "https://cdn.arctracker.io/items/v2/wolfpack.png",
       "rarity": "Epic",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -12502,7 +12502,7 @@
         "originalEn": "Yellow Light Stick"
       },
       "description": "Ein werfbares chemisches Licht, das seine Umgebung erhellt.",
-      "icon": "https://cdn.arctracker.io/items/yellow_light_stick.png",
+      "icon": "https://cdn.arctracker.io/items/v2/yellow_light_stick.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -12530,7 +12530,7 @@
         "originalEn": "Zipline"
       },
       "description": "Eine einsetzbare Seilrutsche, mit der man sich schnell zwischen zwei Positionen bewegen kann.",
-      "icon": "https://cdn.arctracker.io/items/zipline.png",
+      "icon": "https://cdn.arctracker.io/items/v2/zipline.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",

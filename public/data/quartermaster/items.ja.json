@@ -7,7 +7,7 @@
         "originalEn": "Acoustic Guitar"
       },
       "description": "ARCの注意を引き、ほかのレイダーに自慢できる、演奏可能なアコースティックギター。",
-      "icon": "https://cdn.arctracker.io/items/acoustic_guitar.png",
+      "icon": "https://cdn.arctracker.io/items/v2/acoustic_guitar.png",
       "rarity": "Legendary",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -31,7 +31,7 @@
         "originalEn": "Adrenaline Shot"
       },
       "description": "スタミナを完全に回復し、一時的にスタミナ回復速度を上昇させる血清。",
-      "icon": "https://cdn.arctracker.io/items/adrenaline_shot.png",
+      "icon": "https://cdn.arctracker.io/items/v2/adrenaline_shot.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -61,7 +61,7 @@
         "originalEn": "Advanced ARC Powercell"
       },
       "description": "特定のARC敵からドロップする非常に貴重なリソース。",
-      "icon": "https://cdn.arctracker.io/items/advanced_arc_powercell.png",
+      "icon": "https://cdn.arctracker.io/items/v2/advanced_arc_powercell.png",
       "rarity": "Rare",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -87,7 +87,7 @@
         "originalEn": "Advanced Electrical Components"
       },
       "description": "幅広いアイテムの製作に使用。クラフト素材にリサイクル可能。製作用途：戦術MK3（防御型）、戦闘MK3（側面攻撃型）、戦闘MK3（攻撃型）、略奪MK3（慎重型）、戦術MK3（回復型）",
-      "icon": "https://cdn.arctracker.io/items/advanced_electrical_components.png",
+      "icon": "https://cdn.arctracker.io/items/v2/advanced_electrical_components.png",
       "rarity": "Rare",
       "type": "Refined Material",
       "category": "Refined Material",
@@ -119,7 +119,7 @@
         "originalEn": "Advanced Mechanical Components"
       },
       "description": "高度な武器の製作に使用。製作材料にリサイクル可能。製作可能: Torrente、Venator、Osprey、Renegade、Bettina",
-      "icon": "https://cdn.arctracker.io/items/advanced_mechanical_components.png",
+      "icon": "https://cdn.arctracker.io/items/v2/advanced_mechanical_components.png",
       "rarity": "Rare",
       "type": "Refined Material",
       "category": "Refined Material",
@@ -151,7 +151,7 @@
         "originalEn": "Agave"
       },
       "description": "アガベの葉の一部。少量の体力を回復するために使用できます。",
-      "icon": "https://cdn.arctracker.io/items/agave.png",
+      "icon": "https://cdn.arctracker.io/items/v2/agave.png",
       "rarity": "Uncommon",
       "type": "Nature",
       "category": "Nature",
@@ -177,7 +177,7 @@
         "originalEn": "Agave Juice"
       },
       "description": "わずかな体力を消費する代わりに、一時的にスタミナの回復速度を高める調合薬。",
-      "icon": "https://cdn.arctracker.io/items/agave_juice.png",
+      "icon": "https://cdn.arctracker.io/items/v2/agave_juice.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -201,7 +201,7 @@
         "originalEn": "Air Freshener"
       },
       "description": "数枚のコインの価値があるかもしれない。",
-      "icon": "https://cdn.arctracker.io/items/air_freshener.png",
+      "icon": "https://cdn.arctracker.io/items/v2/air_freshener.png",
       "rarity": "Uncommon",
       "type": "Trinket",
       "category": "Trinket",
@@ -221,7 +221,7 @@
         "originalEn": "Alarm Clock"
       },
       "description": "クラフト素材にリサイクル可能。",
-      "icon": "https://cdn.arctracker.io/items/alarm_clock.png",
+      "icon": "https://cdn.arctracker.io/items/v2/alarm_clock.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -248,7 +248,7 @@
         "originalEn": "Alien Duck"
       },
       "description": "故郷からはるか遠く離れている。投げて音を立てることができる。",
-      "icon": "https://cdn.arctracker.io/items/alien_duck.png",
+      "icon": "https://cdn.arctracker.io/items/v2/alien_duck.png",
       "rarity": "Uncommon",
       "type": "Trinket",
       "category": "Trinket",
@@ -265,7 +265,7 @@
         "originalEn": "Ancient Fort Security Code"
       },
       "description": "ブルーゲートのロックされたゲートを解除するために必要な4つのセキュリティコードの1つ。エンシェント・フォートで発見。",
-      "icon": "https://cdn.arctracker.io/items/security_code.png",
+      "icon": "https://cdn.arctracker.io/items/v2/ancient_fort_security_code.png",
       "rarity": "Common",
       "type": "Key",
       "category": "Key",
@@ -282,7 +282,7 @@
         "originalEn": "Angled Grip I"
       },
       "description": "水平反動をわずかに軽減する。対応武器：Tempest、Arpeggio、Kettle、Ferro、Hullcracker",
-      "icon": "https://cdn.arctracker.io/items/angled_grip_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/angled_grip_i.png",
       "rarity": "Common",
       "type": "Modification",
       "category": "Modification",
@@ -310,7 +310,7 @@
         "originalEn": "Angled Grip II"
       },
       "description": "水平反動を適度に減少させる。対応武器：Arpeggio、Ferro、Il Toro、Stitcher",
-      "icon": "https://cdn.arctracker.io/items/angled_grip_ii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/angled_grip_ii.png",
       "rarity": "Uncommon",
       "type": "Modification",
       "category": "Modification",
@@ -339,7 +339,7 @@
         "originalEn": "Angled Grip III"
       },
       "description": "水平反動を大幅に軽減します。対応武器：アルペジオ、フェロ、ヴェナトール、イル・トロ、ステッチャー",
-      "icon": "https://cdn.arctracker.io/items/angled_grip_iii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/angled_grip_iii.png",
       "rarity": "Rare",
       "type": "Modification",
       "category": "Modification",
@@ -368,7 +368,7 @@
         "originalEn": "Antiseptic"
       },
       "description": "医療品のクラフトに使用。化学薬品にリサイクル可能。クラフト用途：滅菌包帯、ヴィータスプレー、ヴィータショット",
-      "icon": "https://cdn.arctracker.io/items/antiseptic.png",
+      "icon": "https://cdn.arctracker.io/items/v2/antiseptic.png",
       "rarity": "Rare",
       "type": "Refined Material",
       "category": "Refined Material",
@@ -399,7 +399,7 @@
         "originalEn": "Anvil I"
       },
       "description": "高威力の単発式ハンドキャノン。ヘッドショットダメージも高いが、取り回しは遅い。",
-      "icon": "https://cdn.arctracker.io/items/anvil.png",
+      "icon": "https://cdn.arctracker.io/items/v2/anvil_i.png",
       "rarity": "Uncommon",
       "type": "Hand Cannon",
       "category": "Weapon",
@@ -432,7 +432,7 @@
         "originalEn": "Anvil II"
       },
       "description": "高威力の単発式ハンドキャノン。ヘッドショットダメージも高いが、取り回しは遅い。",
-      "icon": "https://cdn.arctracker.io/items/anvil.png",
+      "icon": "https://cdn.arctracker.io/items/v2/anvil_ii.png",
       "rarity": "Uncommon",
       "type": "Hand Cannon",
       "category": "Weapon",
@@ -466,7 +466,7 @@
         "originalEn": "Anvil III"
       },
       "description": "高威力の単発式ハンドキャノン。ヘッドショットダメージも高いが、取り回しは遅い。",
-      "icon": "https://cdn.arctracker.io/items/anvil.png",
+      "icon": "https://cdn.arctracker.io/items/v2/anvil_iii.png",
       "rarity": "Uncommon",
       "type": "Hand Cannon",
       "category": "Weapon",
@@ -500,7 +500,7 @@
         "originalEn": "Anvil IV"
       },
       "description": "高威力の単発式ハンドキャノン。ヘッドショットダメージも高いが、取り回しは遅い。",
-      "icon": "https://cdn.arctracker.io/items/anvil.png",
+      "icon": "https://cdn.arctracker.io/items/v2/anvil_iv.png",
       "rarity": "Uncommon",
       "type": "Hand Cannon",
       "category": "Weapon",
@@ -533,7 +533,7 @@
         "originalEn": "Anvil Splitter"
       },
       "description": "アンビルのテクニカルモッドで、弾丸を4つの弱い発射体に分裂するものに置き換えます。",
-      "icon": "https://cdn.arctracker.io/items/anvil_splitter.png",
+      "icon": "https://cdn.arctracker.io/items/v2/anvil_splitter.png",
       "rarity": "Legendary",
       "type": "Modification",
       "category": "Modification",
@@ -557,7 +557,7 @@
         "originalEn": "Aphelion"
       },
       "description": "マトリアーク・リアクターを動力源とする実験的なARCビーム兵器。",
-      "icon": "https://cdn.arctracker.io/items/aphelion.png",
+      "icon": "https://cdn.arctracker.io/items/v2/aphelion.png",
       "rarity": "Legendary",
       "type": "Special",
       "category": "Weapon",
@@ -588,7 +588,7 @@
         "originalEn": "Apricot"
       },
       "description": "太陽で熟したアプリコット。消費すると少量のスタミナを回復できる。",
-      "icon": "https://cdn.arctracker.io/items/apricot.png",
+      "icon": "https://cdn.arctracker.io/items/v2/apricot.png",
       "rarity": "Uncommon",
       "type": "Nature",
       "category": "Nature",
@@ -614,7 +614,7 @@
         "originalEn": "ARC Alloy"
       },
       "description": "ARC敵やアクティビティから入手、または特定のARCパーツをリサイクルして入手。コンポーネントの製作に使用。製作可能: ライトシールド、ARCモーションコア、ARC回路",
-      "icon": "https://cdn.arctracker.io/items/arc_alloy.png",
+      "icon": "https://cdn.arctracker.io/items/v2/arc_alloy.png",
       "rarity": "Uncommon",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -640,7 +640,7 @@
         "originalEn": "ARC Circuitry"
       },
       "description": "ARC敵または活動から入手。コンポーネントの作成に使用。ARC合金にリサイクル可能。作成可能: ミディアムシールド、パワーロッド",
-      "icon": "https://cdn.arctracker.io/items/arc_circuitry.png",
+      "icon": "https://cdn.arctracker.io/items/v2/arc_circuitry.png",
       "rarity": "Rare",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -670,7 +670,7 @@
         "originalEn": "ARC Coolant"
       },
       "description": "ARC敵またはアクティビティから入手。化学物質にリサイクル可能。",
-      "icon": "https://cdn.arctracker.io/items/arc_coolant.png",
+      "icon": "https://cdn.arctracker.io/items/v2/arc_coolant.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -696,7 +696,7 @@
         "originalEn": "ARC Flex Rubber"
       },
       "description": "クラフト素材にリサイクルできる。",
-      "icon": "https://cdn.arctracker.io/items/arc_flex_rubber.png",
+      "icon": "https://cdn.arctracker.io/items/v2/arc_flex_rubber.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -722,7 +722,7 @@
         "originalEn": "ARC Motion Core"
       },
       "description": "ARC敵または活動から入手。コンポーネントの作成に使用。ARC合金にリサイクル可能。作成可能: マグネティックアクセラレーター",
-      "icon": "https://cdn.arctracker.io/items/arc_motion_core.png",
+      "icon": "https://cdn.arctracker.io/items/v2/arc_motion_core.png",
       "rarity": "Rare",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -752,7 +752,7 @@
         "originalEn": "ARC Performance Steel"
       },
       "description": "クラフト素材にリサイクル可能。",
-      "icon": "https://cdn.arctracker.io/items/arc_performance_steel.png",
+      "icon": "https://cdn.arctracker.io/items/v2/arc_performance_steel.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -778,7 +778,7 @@
         "originalEn": "ARC Powercell"
       },
       "description": "すべてのARC敵からドロップする貴重な資源。シールドリチャージャーの製作に使用。シールドの修理に使用可能。",
-      "icon": "https://cdn.arctracker.io/items/arc_powercell.png",
+      "icon": "https://cdn.arctracker.io/items/v2/arc_powercell.png",
       "rarity": "Common",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -798,7 +798,7 @@
         "originalEn": "ARC Synthetic Resin"
       },
       "description": "クラフト素材にリサイクルできます。",
-      "icon": "https://cdn.arctracker.io/items/arc_synthetic_resin.png",
+      "icon": "https://cdn.arctracker.io/items/v2/arc_synthetic_resin.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -824,7 +824,7 @@
         "originalEn": "ARC Thermo Lining"
       },
       "description": "クラフト素材にリサイクルできます。",
-      "icon": "https://cdn.arctracker.io/items/arc_thermo_lining.png",
+      "icon": "https://cdn.arctracker.io/items/v2/arc_thermo_lining.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -850,7 +850,7 @@
         "originalEn": "Arpeggio I"
       },
       "description": "適度なダメージと精度を持つ。",
-      "icon": "https://cdn.arctracker.io/items/arpeggio.png",
+      "icon": "https://cdn.arctracker.io/items/v2/arpeggio_i.png",
       "rarity": "Uncommon",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -883,7 +883,7 @@
         "originalEn": "Arpeggio II"
       },
       "description": "適度なダメージと精度を持つ。",
-      "icon": "https://cdn.arctracker.io/items/arpeggio.png",
+      "icon": "https://cdn.arctracker.io/items/v2/arpeggio_ii.png",
       "rarity": "Uncommon",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -917,7 +917,7 @@
         "originalEn": "Arpeggio III"
       },
       "description": "適度なダメージと精度を持つ。",
-      "icon": "https://cdn.arctracker.io/items/arpeggio.png",
+      "icon": "https://cdn.arctracker.io/items/v2/arpeggio_iii.png",
       "rarity": "Uncommon",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -951,7 +951,7 @@
         "originalEn": "Arpeggio IV"
       },
       "description": "適度なダメージと精度を持つ。",
-      "icon": "https://cdn.arctracker.io/items/arpeggio.png",
+      "icon": "https://cdn.arctracker.io/items/v2/arpeggio_iv.png",
       "rarity": "Uncommon",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -984,7 +984,7 @@
         "originalEn": "Assessor Matrix"
       },
       "description": "",
-      "icon": "https://cdn.arctracker.io/items/assessor_matrix.png",
+      "icon": "https://cdn.arctracker.io/items/v2/assessor_matrix.png",
       "rarity": "Epic",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -1008,7 +1008,7 @@
         "originalEn": "Assorted Seeds"
       },
       "description": "一握りの種。セレステが探しているかもしれない。",
-      "icon": "https://cdn.arctracker.io/items/assorted_seeds.png",
+      "icon": "https://cdn.arctracker.io/items/v2/assorted_seeds.png",
       "rarity": "Common",
       "type": "Nature",
       "category": "Nature",
@@ -1028,7 +1028,7 @@
         "originalEn": "Bandage"
       },
       "description": "時間経過とともに徐々に体力を回復する医療アイテム。",
-      "icon": "https://cdn.arctracker.io/items/bandage.png",
+      "icon": "https://cdn.arctracker.io/items/v2/bandage.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -1056,7 +1056,7 @@
         "originalEn": "Barricade Kit"
       },
       "description": "展開可能な遮蔽物。破壊されるまで攻撃を防ぐことができる。",
-      "icon": "https://cdn.arctracker.io/items/barricade_kit.png",
+      "icon": "https://cdn.arctracker.io/items/v2/barricade_kit.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -1084,7 +1084,7 @@
         "originalEn": "Bastion Cell"
       },
       "description": "クラフト素材にリサイクル可能。",
-      "icon": "https://cdn.arctracker.io/items/bastion_cell.png",
+      "icon": "https://cdn.arctracker.io/items/v2/bastion_cell.png",
       "rarity": "Epic",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -1111,7 +1111,7 @@
         "originalEn": "Battery"
       },
       "description": "幅広いアイテムの製作に使用。スクラップメタルにリサイクル可能。製作に使用: エナジークリップ、ミディアムシールド、ジョルトマイン",
-      "icon": "https://cdn.arctracker.io/items/battery.png",
+      "icon": "https://cdn.arctracker.io/items/v2/battery.png",
       "rarity": "Uncommon",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -1138,7 +1138,7 @@
         "originalEn": "Bettina I"
       },
       "description": "発射速度は遅いが、高いダメージを与える。",
-      "icon": "https://cdn.arctracker.io/items/bettina.png",
+      "icon": "https://cdn.arctracker.io/items/v2/bettina_i.png",
       "rarity": "Epic",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -1172,7 +1172,7 @@
         "originalEn": "Bettina II"
       },
       "description": "低い連射速度と高いダメージを持つ。",
-      "icon": "https://cdn.arctracker.io/items/bettina.png",
+      "icon": "https://cdn.arctracker.io/items/v2/bettina_ii.png",
       "rarity": "Epic",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -1206,7 +1206,7 @@
         "originalEn": "Bettina III"
       },
       "description": "低い連射速度と高いダメージを持つ。",
-      "icon": "https://cdn.arctracker.io/items/bettina.png",
+      "icon": "https://cdn.arctracker.io/items/v2/bettina_iii.png",
       "rarity": "Epic",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -1240,7 +1240,7 @@
         "originalEn": "Bettina IV"
       },
       "description": "低い連射速度と高いダメージを持つ。",
-      "icon": "https://cdn.arctracker.io/items/bettina.png",
+      "icon": "https://cdn.arctracker.io/items/v2/bettina_iv.png",
       "rarity": "Epic",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -1273,7 +1273,7 @@
         "originalEn": "Bicycle Pump"
       },
       "description": "クラフト素材にリサイクルできる。",
-      "icon": "https://cdn.arctracker.io/items/bicycle_pump.png",
+      "icon": "https://cdn.arctracker.io/items/v2/bicycle_pump.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -1300,7 +1300,7 @@
         "originalEn": "Binoculars"
       },
       "description": "2段階のズーム機能を持つ基本的な双眼鏡。",
-      "icon": "https://cdn.arctracker.io/items/binoculars.png",
+      "icon": "https://cdn.arctracker.io/items/v2/binoculars.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -1330,7 +1330,7 @@
         "originalEn": "Blaze Grenade"
       },
       "description": "着弾時に爆発し、範囲を炎で覆って継続ダメージを与える手榴弾。",
-      "icon": "https://cdn.arctracker.io/items/blaze_grenade.png",
+      "icon": "https://cdn.arctracker.io/items/v2/blaze_grenade.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -1360,7 +1360,7 @@
         "originalEn": "Blaze Grenade Trap"
       },
       "description": "ブレイズグレネードを起爆するレーザートリップワイヤー。",
-      "icon": "https://cdn.arctracker.io/items/blaze_grenade_trap.png",
+      "icon": "https://cdn.arctracker.io/items/v2/blaze_grenade_trap.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -1402,7 +1402,7 @@
         "originalEn": "Blue Gate Cellar Key"
       },
       "description": "青い門の地下室への鍵。",
-      "icon": "https://cdn.arctracker.io/items/blue_gate_cellar_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/blue_gate_cellar_key.png",
       "rarity": "Rare",
       "type": "Key",
       "category": "Key",
@@ -1419,7 +1419,7 @@
         "originalEn": "Blue Gate Communication Tower Key"
       },
       "description": "ブルーゲート近くの通信塔のそばにあるドアを開錠する",
-      "icon": "https://cdn.arctracker.io/items/blue_gate_communication_tower_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/blue_gate_communication_tower_key.png",
       "rarity": "Rare",
       "type": "Key",
       "category": "Key",
@@ -1436,7 +1436,7 @@
         "originalEn": "Blue Gate Confiscation Room Key"
       },
       "description": "ブルーゲートトンネル内の押収品エリアへの扉を開ける",
-      "icon": "https://cdn.arctracker.io/items/blue_gate_confiscation_room_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/blue_gate_confiscation_room_key.png",
       "rarity": "Epic",
       "type": "Key",
       "category": "Key",
@@ -1453,7 +1453,7 @@
         "originalEn": "Blue Gate Village Key"
       },
       "description": "青い門の村内のエリアへの鍵。",
-      "icon": "https://cdn.arctracker.io/items/blue_gate_village_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/blue_gate_village_key.png",
       "rarity": "Uncommon",
       "type": "Key",
       "category": "Key",
@@ -1470,7 +1470,7 @@
         "originalEn": "Blue Light Stick"
       },
       "description": "投げることができる化学発光体。周囲を照らす。",
-      "icon": "https://cdn.arctracker.io/items/blue_light_stick.png",
+      "icon": "https://cdn.arctracker.io/items/v2/blue_light_stick.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -1498,7 +1498,7 @@
         "originalEn": "Bobcat I"
       },
       "description": "高い発射速度だが精度の低い全自動SMG。",
-      "icon": "https://cdn.arctracker.io/items/bobcat.png",
+      "icon": "https://cdn.arctracker.io/items/v2/bobcat_i.png",
       "rarity": "Epic",
       "type": "SMG",
       "category": "Weapon",
@@ -1532,7 +1532,7 @@
         "originalEn": "Bobcat II"
       },
       "description": "高い発射速度だが精度の低い全自動SMG。",
-      "icon": "https://cdn.arctracker.io/items/bobcat.png",
+      "icon": "https://cdn.arctracker.io/items/v2/bobcat_ii.png",
       "rarity": "Epic",
       "type": "SMG",
       "category": "Weapon",
@@ -1566,7 +1566,7 @@
         "originalEn": "Bobcat III"
       },
       "description": "高い発射速度だが精度の低い全自動SMG。",
-      "icon": "https://cdn.arctracker.io/items/bobcat.png",
+      "icon": "https://cdn.arctracker.io/items/v2/bobcat_iii.png",
       "rarity": "Epic",
       "type": "SMG",
       "category": "Weapon",
@@ -1600,7 +1600,7 @@
         "originalEn": "Bobcat IV"
       },
       "description": "高い発射速度だが精度の低い全自動SMG。",
-      "icon": "https://cdn.arctracker.io/items/bobcat.png",
+      "icon": "https://cdn.arctracker.io/items/v2/bobcat_iv.png",
       "rarity": "Epic",
       "type": "SMG",
       "category": "Weapon",
@@ -1633,7 +1633,7 @@
         "originalEn": "Bombardier Cell"
       },
       "description": "クラフト素材にリサイクルできます。",
-      "icon": "https://cdn.arctracker.io/items/bombardier_cell.png",
+      "icon": "https://cdn.arctracker.io/items/v2/bombardier_cell.png",
       "rarity": "Epic",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -1660,7 +1660,7 @@
         "originalEn": "Breathtaking Snow Globe"
       },
       "description": "すべてのスペランザンの羨望の的。この世界がかつて繁栄し、魔法に満ちていた証。",
-      "icon": "https://cdn.arctracker.io/items/breathtaking_snow_globe.png",
+      "icon": "https://cdn.arctracker.io/items/v2/breathtaking_snow_globe.png",
       "rarity": "Epic",
       "type": "Trinket",
       "category": "Trinket",
@@ -1682,7 +1682,7 @@
         "originalEn": "Broken Flashlight"
       },
       "description": "クラフト素材にリサイクルできる。",
-      "icon": "https://cdn.arctracker.io/items/broken_flashlight.png",
+      "icon": "https://cdn.arctracker.io/items/v2/broken_flashlight.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -1709,7 +1709,7 @@
         "originalEn": "Broken Guidance System"
       },
       "description": "クラフト素材にリサイクル可能。",
-      "icon": "https://cdn.arctracker.io/items/broken_guidance_system.png",
+      "icon": "https://cdn.arctracker.io/items/v2/broken_guidance_system.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -1735,7 +1735,7 @@
         "originalEn": "Broken Handheld Radio"
       },
       "description": "クラフト素材にリサイクルできる。",
-      "icon": "https://cdn.arctracker.io/items/broken_handheld_radio.png",
+      "icon": "https://cdn.arctracker.io/items/v2/broken_handheld_radio.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -1762,7 +1762,7 @@
         "originalEn": "Broken Taser"
       },
       "description": "クラフト素材にリサイクルできます。",
-      "icon": "https://cdn.arctracker.io/items/broken_taser.png",
+      "icon": "https://cdn.arctracker.io/items/v2/broken_taser.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -1789,7 +1789,7 @@
         "originalEn": "Buried City Hospital Key"
       },
       "description": "埋もれた街の病院内のエリアへの鍵。",
-      "icon": "https://cdn.arctracker.io/items/buried_city_hospital_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/buried_city_hospital_key.png",
       "rarity": "Rare",
       "type": "Key",
       "category": "Key",
@@ -1806,7 +1806,7 @@
         "originalEn": "Buried City JKV Employee Access Card"
       },
       "description": "埋もれた街のJKV施設への従業員アクセスカード。",
-      "icon": "https://cdn.arctracker.io/items/buried_city_jkv_employee_access_card.png",
+      "icon": "https://cdn.arctracker.io/items/v2/buried_city_jkv_employee_access_card.png",
       "rarity": "Uncommon",
       "type": "Key",
       "category": "Key",
@@ -1823,7 +1823,7 @@
         "originalEn": "Buried City Residential Master Key"
       },
       "description": "埋もれた街の住宅区用のマスターキー。",
-      "icon": "https://cdn.arctracker.io/items/buried_city_residential_master_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/buried_city_residential_master_key.png",
       "rarity": "Uncommon",
       "type": "Key",
       "category": "Key",
@@ -1840,7 +1840,7 @@
         "originalEn": "Buried City Town Hall Key"
       },
       "description": "埋もれた街の市庁舎の扉を開ける",
-      "icon": "https://cdn.arctracker.io/items/buried_city_town_hall_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/buried_city_town_hall_key.png",
       "rarity": "Epic",
       "type": "Key",
       "category": "Key",
@@ -1857,7 +1857,7 @@
         "originalEn": "Burletta I"
       },
       "description": "適度なダメージと精度を持つセミオートピストル。引き金を引く速さで発射できる。",
-      "icon": "https://cdn.arctracker.io/items/burletta.png",
+      "icon": "https://cdn.arctracker.io/items/v2/burletta_i.png",
       "rarity": "Uncommon",
       "type": "Pistol",
       "category": "Weapon",
@@ -1890,7 +1890,7 @@
         "originalEn": "Burletta II"
       },
       "description": "適度なダメージと精度を持つセミオートピストル。引き金を引く速さで発射できる。",
-      "icon": "https://cdn.arctracker.io/items/burletta.png",
+      "icon": "https://cdn.arctracker.io/items/v2/burletta_ii.png",
       "rarity": "Uncommon",
       "type": "Pistol",
       "category": "Weapon",
@@ -1924,7 +1924,7 @@
         "originalEn": "Burletta III"
       },
       "description": "適度なダメージと精度を持つセミオートピストル。引き金を引く速さで発射できる。",
-      "icon": "https://cdn.arctracker.io/items/burletta.png",
+      "icon": "https://cdn.arctracker.io/items/v2/burletta_iii.png",
       "rarity": "Uncommon",
       "type": "Pistol",
       "category": "Weapon",
@@ -1958,7 +1958,7 @@
         "originalEn": "Burletta IV"
       },
       "description": "適度なダメージと精度を持つセミオートピストル。引き金を引く速さで発射できる。",
-      "icon": "https://cdn.arctracker.io/items/burletta.png",
+      "icon": "https://cdn.arctracker.io/items/v2/burletta_iv.png",
       "rarity": "Uncommon",
       "type": "Pistol",
       "category": "Weapon",
@@ -1991,7 +1991,7 @@
         "originalEn": "Burned Arc Circuitry"
       },
       "description": "クラフト素材にリサイクル可能。",
-      "icon": "https://cdn.arctracker.io/items/burned_arc_circuitry.png",
+      "icon": "https://cdn.arctracker.io/items/v2/burned_arc_circuitry.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -2017,7 +2017,7 @@
         "originalEn": "Burnt-Out Candles"
       },
       "description": "電力網が落ちた後、多くの人にとってロウソクが好まれる光源となった。電気と違って、昔ながらのロウソクは決して裏切らない。風が吹いていなければ。雨が降っていなければ。あるいは...",
-      "icon": "https://cdn.arctracker.io/items/burnt_out_candles.png",
+      "icon": "https://cdn.arctracker.io/items/v2/burnt_out_candles.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -2038,7 +2038,7 @@
         "originalEn": "Camera Lens"
       },
       "description": "製作素材にリサイクル可能。",
-      "icon": "https://cdn.arctracker.io/items/camera_lens.png",
+      "icon": "https://cdn.arctracker.io/items/v2/camera_lens.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -2064,7 +2064,7 @@
         "originalEn": "Candle Holder"
       },
       "description": "クラフト素材にリサイクル可能。",
-      "icon": "https://cdn.arctracker.io/items/candle_holder.png",
+      "icon": "https://cdn.arctracker.io/items/v2/candle_holder.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -2090,7 +2090,7 @@
         "originalEn": "Candleberries"
       },
       "description": "毎年わずかな期間にしか実らないワックス状の果実。人々は古くからこれを使ってろうそくや食品、薬を作ってきた。",
-      "icon": "https://cdn.arctracker.io/items/candleberries.png",
+      "icon": "https://cdn.arctracker.io/items/v2/candleberries.png",
       "rarity": "Rare",
       "type": "Nature",
       "category": "Nature",
@@ -2113,7 +2113,7 @@
         "originalEn": "Canister"
       },
       "description": "幅広いアイテムの製作に使用。プラスチックにリサイクル可能。製作可能: Bettina、Vita Spray、ヘビーヒューズグレネード、スモークグレネード",
-      "icon": "https://cdn.arctracker.io/items/canister.png",
+      "icon": "https://cdn.arctracker.io/items/v2/canister.png",
       "rarity": "Uncommon",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -2139,8 +2139,8 @@
         "originalEn": "Canto I"
       },
       "description": "大口径のフルオートマチックサブマシンガン。",
-      "icon": "",
-      "rarity": "Legendary",
+      "icon": "https://cdn.arctracker.io/items/v2/canto_i.png",
+      "rarity": "Rare",
       "type": "SMG",
       "category": "SMG",
       "craftBench": "weapon_bench",
@@ -2169,8 +2169,8 @@
         "originalEn": "Canto II"
       },
       "description": "大口径のフルオートマチックサブマシンガン。",
-      "icon": "",
-      "rarity": "Legendary",
+      "icon": "https://cdn.arctracker.io/items/v2/canto_ii.png",
+      "rarity": "Rare",
       "type": "SMG",
       "category": "SMG",
       "stationLevelRequired": 1,
@@ -2197,8 +2197,8 @@
         "originalEn": "Canto III"
       },
       "description": "大口径のフルオートマチックサブマシンガン。",
-      "icon": "",
-      "rarity": "Legendary",
+      "icon": "https://cdn.arctracker.io/items/v2/canto_iii.png",
+      "rarity": "Rare",
       "type": "SMG",
       "category": "SMG",
       "stationLevelRequired": 1,
@@ -2225,8 +2225,8 @@
         "originalEn": "Canto IV"
       },
       "description": "大口径のフルオートマチックサブマシンガン。",
-      "icon": "",
-      "rarity": "Legendary",
+      "icon": "https://cdn.arctracker.io/items/v2/canto_iv.png",
+      "rarity": "Rare",
       "type": "SMG",
       "category": "SMG",
       "stationLevelRequired": 1,
@@ -2253,7 +2253,7 @@
         "originalEn": "Cat Bed"
       },
       "description": "少なくとも、あなたの顔よりはほんの少し快適。",
-      "icon": "https://cdn.arctracker.io/items/cat_bed.png",
+      "icon": "https://cdn.arctracker.io/items/v2/cat_bed.png",
       "rarity": "Uncommon",
       "type": "Trinket",
       "category": "Trinket",
@@ -2274,7 +2274,7 @@
         "originalEn": "Celeste's Journal"
       },
       "description": "ボロボロで破れており、端に沿ってかすかな落書きの輪郭が見える。",
-      "icon": "https://cdn.arctracker.io/items/celestes_journal.png",
+      "icon": "https://cdn.arctracker.io/items/v2/celeste_journal.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -2291,7 +2291,7 @@
         "originalEn": "Chemicals"
       },
       "description": "医療品、爆発物、ユーティリティアイテムの製作に使用。製作に使用: ヘビー弾薬、ミディアム弾薬、ショットガン弾薬、ライト弾薬、軽量衝撃グレネード",
-      "icon": "https://cdn.arctracker.io/items/chemicals.png",
+      "icon": "https://cdn.arctracker.io/items/v2/chemicals.png",
       "rarity": "Common",
       "type": "Basic Material",
       "category": "Basic Material",
@@ -2313,7 +2313,7 @@
         "originalEn": "Coffee Pot"
       },
       "description": "新しい日に立ち向かう力、一杯ずつ。",
-      "icon": "https://cdn.arctracker.io/items/coffee_pot.png",
+      "icon": "https://cdn.arctracker.io/items/v2/coffee_pot.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -2333,7 +2333,7 @@
         "originalEn": "Combat Mk. 1"
       },
       "description": "基本的な戦闘強化。より強力なシールドをサポートするが、バックパック容量とクイック使用スロットが限定的。",
-      "icon": "https://cdn.arctracker.io/items/combat_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/combat_mk1.png",
       "rarity": "Uncommon",
       "type": "Augment",
       "category": "Augment",
@@ -2362,7 +2362,7 @@
         "originalEn": "Combat Mk. 2"
       },
       "description": "ダメージ吸収よりも機動性に重点を置いた戦闘強化。",
-      "icon": "https://cdn.arctracker.io/items/combat_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/combat_mk2.png",
       "rarity": "Rare",
       "type": "Augment",
       "category": "Augment",
@@ -2391,7 +2391,7 @@
         "originalEn": "Combat Mk. 3 (Aggressive)"
       },
       "description": "コンバット II オーグメントの改良版。より多くのシールドタイプに対応し、グレネード用の追加スペースを備えています。",
-      "icon": "https://cdn.arctracker.io/items/combat_mk3_aggressive.png",
+      "icon": "https://cdn.arctracker.io/items/v2/combat_mk3_aggressive.png",
       "rarity": "Epic",
       "type": "Augment",
       "category": "Augment",
@@ -2420,7 +2420,7 @@
         "originalEn": "Combat Mk. 3 (Flanking)"
       },
       "description": "コンバット II オーグメントの改良版。機動性が向上したフランキング作戦用に設計されています。",
-      "icon": "https://cdn.arctracker.io/items/combat_mk3_flanking.png",
+      "icon": "https://cdn.arctracker.io/items/v2/combat_mk3_flanking.png",
       "rarity": "Epic",
       "type": "Augment",
       "category": "Augment",
@@ -2449,7 +2449,7 @@
         "originalEn": "Comet Igniter"
       },
       "description": "リサイクルしてクラフト素材にできる。",
-      "icon": "https://cdn.arctracker.io/items/comet_igniter.png",
+      "icon": "https://cdn.arctracker.io/items/v2/comet_igniter.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -2476,7 +2476,7 @@
         "originalEn": "Compensator I"
       },
       "description": "射撃ごとの拡散をわずかに軽減する。対応武器：Arpeggio、Ferro、Renegade、Anvil、Stitcher",
-      "icon": "https://cdn.arctracker.io/items/compensator_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/compensator_i.png",
       "rarity": "Common",
       "type": "Modification",
       "category": "Modification",
@@ -2504,7 +2504,7 @@
         "originalEn": "Compensator II"
       },
       "description": "射撃ごとの拡散を適度に軽減します。対応武器：アルペジオ、フェロ、レネゲード、アンビル、ステッチャー",
-      "icon": "https://cdn.arctracker.io/items/compensator_ii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/compensator_ii.png",
       "rarity": "Uncommon",
       "type": "Modification",
       "category": "Modification",
@@ -2533,7 +2533,7 @@
         "originalEn": "Compensator III"
       },
       "description": "射撃ごとの拡散を適度に軽減します。対応武器：アルペジオ、フェロ、レネゲード、アンビル、ステッチャー",
-      "icon": "https://cdn.arctracker.io/items/compensator_ii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/compensator_iii.png",
       "rarity": "Rare",
       "type": "Modification",
       "category": "Modification",
@@ -2562,7 +2562,7 @@
         "originalEn": "Complex Gun Parts"
       },
       "description": "高度な武器の製作に使用。製作可能: Equalizer、Jupiter",
-      "icon": "https://cdn.arctracker.io/items/complex_gun_parts.png",
+      "icon": "https://cdn.arctracker.io/items/v2/complex_gun_parts.png",
       "rarity": "Epic",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -2594,7 +2594,7 @@
         "originalEn": "Coolant"
       },
       "description": "クラフト素材にリサイクルできます。",
-      "icon": "https://cdn.arctracker.io/items/coolant.png",
+      "icon": "https://cdn.arctracker.io/items/v2/coolant.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -2621,7 +2621,7 @@
         "originalEn": "Cooling Coil"
       },
       "description": "クラフト素材にリサイクルできる。",
-      "icon": "https://cdn.arctracker.io/items/cooling_coil.png",
+      "icon": "https://cdn.arctracker.io/items/v2/cooling_coil.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -2648,7 +2648,7 @@
         "originalEn": "Cooling Fan"
       },
       "description": "クラフト素材にリサイクルできる。",
-      "icon": "https://cdn.arctracker.io/items/cooling_fan.png",
+      "icon": "https://cdn.arctracker.io/items/v2/cooling_fan.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -2675,7 +2675,7 @@
         "originalEn": "Cracked Bioscanner"
       },
       "description": "クラフト素材にリサイクルできる。",
-      "icon": "https://cdn.arctracker.io/items/cracked_bioscanner.png",
+      "icon": "https://cdn.arctracker.io/items/v2/cracked_bioscanner.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -2702,7 +2702,7 @@
         "originalEn": "Crash Mat"
       },
       "description": "投げて使う緊急着陸装置。重い着地の衝撃をいくらか和らげる。",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/crash_mat.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -2732,7 +2732,7 @@
         "originalEn": "Crude Explosives"
       },
       "description": "爆発物の製作に使用。クラフト素材にリサイクルできる。製作可能：ランチャー弾薬、爆発性化合物、スナップブラスト手榴弾、破片手榴弾、トリガー手榴弾",
-      "icon": "https://cdn.arctracker.io/items/crude_explosives.png",
+      "icon": "https://cdn.arctracker.io/items/v2/crude_explosives.png",
       "rarity": "Uncommon",
       "type": "Refined Material",
       "category": "Refined Material",
@@ -2763,7 +2763,7 @@
         "originalEn": "Crumpled Plastic Bottle"
       },
       "description": "クラフト素材にリサイクルできる。",
-      "icon": "https://cdn.arctracker.io/items/crumpled_plastic_bottle.png",
+      "icon": "https://cdn.arctracker.io/items/v2/crumpled_plastic_bottle.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -2789,7 +2789,7 @@
         "originalEn": "Dam Control Tower Key"
       },
       "description": "ダムバトルグラウンドの管理塔への扉を開錠する。",
-      "icon": "https://cdn.arctracker.io/items/dam_control_tower_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/dam_control_tower_key.png",
       "rarity": "Epic",
       "type": "Key",
       "category": "Key",
@@ -2806,7 +2806,7 @@
         "originalEn": "Dam Controlled Access Zone Key"
       },
       "description": "ダム・バトルグラウンドの管理区域へのドアを解錠する。",
-      "icon": "https://cdn.arctracker.io/items/dam_testing_annex_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/dam_controlled_access_zone_key.png",
       "rarity": "Epic",
       "type": "Key",
       "category": "Key",
@@ -2823,7 +2823,7 @@
         "originalEn": "Dam Staff Room Key"
       },
       "description": "ダムの職員室の鍵。",
-      "icon": "https://cdn.arctracker.io/items/dam_staff_room_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/dam_staff_room_key.png",
       "rarity": "Uncommon",
       "type": "Key",
       "category": "Key",
@@ -2840,7 +2840,7 @@
         "originalEn": "Dam Surveillance Key"
       },
       "description": "ダム戦場の水処理管理棟の扉を開ける。",
-      "icon": "https://cdn.arctracker.io/items/dam_surveillance_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/dam_surveillance_key.png",
       "rarity": "Uncommon",
       "type": "Key",
       "category": "Key",
@@ -2857,25 +2857,8 @@
         "originalEn": "Dam Testing Annex Key"
       },
       "description": "ダム戦場の試験棟のドアを開錠する。",
-      "icon": "https://cdn.arctracker.io/items/dam_testing_annex_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/dam_testing_annex_key.png",
       "rarity": "Rare",
-      "type": "Key",
-      "category": "Key",
-      "stationLevelRequired": 1,
-      "blueprintLocked": false,
-      "craftQuantity": 1,
-      "stackSize": 1,
-      "value": 100,
-      "weight": 0.25
-    },
-    "dam_utility_key": {
-      "name": {
-        "value": "ダム施設の鍵",
-        "originalEn": "Dam Utility Key"
-      },
-      "description": "ダムの施設へのアクセス用の鍵。",
-      "icon": "https://cdn.arctracker.io/items/dam_utility_key.png",
-      "rarity": "Uncommon",
       "type": "Key",
       "category": "Key",
       "stationLevelRequired": 1,
@@ -2891,7 +2874,7 @@
         "originalEn": "Damaged ARC Motion Core"
       },
       "description": "クラフト素材にリサイクルできます。",
-      "icon": "https://cdn.arctracker.io/items/damaged_arc_motion_core.png",
+      "icon": "https://cdn.arctracker.io/items/v2/damaged_arc_motion_core.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -2917,7 +2900,7 @@
         "originalEn": "Damaged ARC Powercell"
       },
       "description": "クラフト素材にリサイクルできます。",
-      "icon": "https://cdn.arctracker.io/items/damaged_arc_powercell.png",
+      "icon": "https://cdn.arctracker.io/items/v2/damaged_arc_powercell.png",
       "rarity": "Common",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -2943,7 +2926,7 @@
         "originalEn": "Damaged Fireball Burner"
       },
       "description": "クラフト素材にリサイクルできます。",
-      "icon": "https://cdn.arctracker.io/items/damaged_fireball_burner.png",
+      "icon": "https://cdn.arctracker.io/items/v2/damaged_fireball_burner.png",
       "rarity": "Common",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -2969,7 +2952,7 @@
         "originalEn": "Damaged Heat Sink"
       },
       "description": "クラフト素材にリサイクルできる。",
-      "icon": "https://cdn.arctracker.io/items/damaged_heat_sink.png",
+      "icon": "https://cdn.arctracker.io/items/v2/damaged_heat_sink.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -2996,7 +2979,7 @@
         "originalEn": "Damaged Hornet Driver"
       },
       "description": "クラフト素材にリサイクルできる。",
-      "icon": "https://cdn.arctracker.io/items/damaged_hornet_driver.png",
+      "icon": "https://cdn.arctracker.io/items/v2/damaged_hornet_driver.png",
       "rarity": "Common",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -3022,7 +3005,7 @@
         "originalEn": "Damaged Rocketeer Driver"
       },
       "description": "クラフト素材にリサイクルできる。",
-      "icon": "https://cdn.arctracker.io/items/damaged_rocketeer_driver.png",
+      "icon": "https://cdn.arctracker.io/items/v2/damaged_rocketeer_driver.png",
       "rarity": "Common",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -3048,7 +3031,7 @@
         "originalEn": "Damaged Snitch Scanner"
       },
       "description": "クラフト素材にリサイクルできます。",
-      "icon": "https://cdn.arctracker.io/items/damaged_snitch_scanner.png",
+      "icon": "https://cdn.arctracker.io/items/v2/damaged_snitch_scanner.png",
       "rarity": "Common",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -3068,7 +3051,7 @@
         "originalEn": "Damaged Tick Pod"
       },
       "description": "クラフト素材にリサイクルできる。",
-      "icon": "https://cdn.arctracker.io/items/damaged_tick_pod.png",
+      "icon": "https://cdn.arctracker.io/items/v2/damaged_tick_pod.png",
       "rarity": "Common",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -3094,7 +3077,7 @@
         "originalEn": "Damaged Wasp Driver"
       },
       "description": "クラフト素材にリサイクルできます。",
-      "icon": "https://cdn.arctracker.io/items/damaged_wasp_driver.png",
+      "icon": "https://cdn.arctracker.io/items/v2/damaged_wasp_driver.png",
       "rarity": "Common",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -3120,7 +3103,7 @@
         "originalEn": "Dart Board"
       },
       "description": "器用さを練習するために使うレイダーもいる。他の者は単に物を物に投げるのが好きなだけだ。",
-      "icon": "https://cdn.arctracker.io/items/dart_board.png",
+      "icon": "https://cdn.arctracker.io/items/v2/dart_board.png",
       "rarity": "Uncommon",
       "type": "Trinket",
       "category": "Trinket",
@@ -3141,7 +3124,7 @@
         "originalEn": "Deadline"
       },
       "description": "タイマーが切れると範囲内のすべてにダメージを与える地雷。",
-      "icon": "https://cdn.arctracker.io/items/deadline.png",
+      "icon": "https://cdn.arctracker.io/items/v2/deadline.png",
       "rarity": "Epic",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -3172,7 +3155,7 @@
         "originalEn": "Defibrillator"
       },
       "description": "倒れたレイダーを素早く蘇生し、体力を回復する注射。",
-      "icon": "https://cdn.arctracker.io/items/defibrillator.png",
+      "icon": "https://cdn.arctracker.io/items/v2/defibrillator.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -3202,7 +3185,7 @@
         "originalEn": "Deflated Football"
       },
       "description": "これを見ているだけで、あなたも少し気が抜けてくる。",
-      "icon": "https://cdn.arctracker.io/items/deflated_football.png",
+      "icon": "https://cdn.arctracker.io/items/v2/deflated_football.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -3229,7 +3212,7 @@
         "originalEn": "Degraded ARC Rubber"
       },
       "description": "ARCの敵や活動から入手。ゴムにリサイクル可能。",
-      "icon": "https://cdn.arctracker.io/items/degraded_arc_rubber.png",
+      "icon": "https://cdn.arctracker.io/items/v2/degraded_arc_rubber.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -3255,7 +3238,7 @@
         "originalEn": "Diving Goggles"
       },
       "description": "クラフト素材にリサイクルできる。",
-      "icon": "https://cdn.arctracker.io/items/diving_goggles.png",
+      "icon": "https://cdn.arctracker.io/items/v2/diving_goggles.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -3281,7 +3264,7 @@
         "originalEn": "Dockmaster's Detector"
       },
       "description": "これらのディテクターは、Riven Tides周辺の砂に埋もれた異物を発見できるようだが、その正確な動作原理は不明である。",
-      "icon": "https://cdn.arctracker.io/items/dockmasters_detector.png",
+      "icon": "https://cdn.arctracker.io/items/v2/dockmasters_detector.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -3298,7 +3281,7 @@
         "originalEn": "Dodger's Note"
       },
       "description": "",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/dodgers_note.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -3315,7 +3298,7 @@
         "originalEn": "Dog Collar"
       },
       "description": "これほど時間が経っても、まだ優しさの匂いがする。",
-      "icon": "https://cdn.arctracker.io/items/dog_collar.png",
+      "icon": "https://cdn.arctracker.io/items/v2/dog_collar.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -3342,7 +3325,7 @@
         "originalEn": "Dolabra"
       },
       "description": "近距離に広範囲の爆風を発射するか、収束させて中距離に強力な熱線を照射することができる実験的な武器。",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/dolabra.png",
       "rarity": "Legendary",
       "type": "Shotgun",
       "category": "Weapon",
@@ -3372,7 +3355,7 @@
         "originalEn": "Doodly Duck"
       },
       "description": "創造力豊かな子供にとって、すべてはキャンバス。投げて音を立てることができる。",
-      "icon": "https://cdn.arctracker.io/items/doodly_duck.png",
+      "icon": "https://cdn.arctracker.io/items/v2/doodly_duck.png",
       "rarity": "Rare",
       "type": "Trinket",
       "category": "Trinket",
@@ -3389,7 +3372,7 @@
         "originalEn": "Door Blocker"
       },
       "description": "大型の金属製ドアに設置してアクセスを制限できるロック機構。",
-      "icon": "https://cdn.arctracker.io/items/door_blocker.png",
+      "icon": "https://cdn.arctracker.io/items/v2/door_blocker.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -3418,7 +3401,7 @@
         "originalEn": "Dried-Out ARC Resin"
       },
       "description": "ARCの敵や活動から入手。プラスチックにリサイクル可能。",
-      "icon": "https://cdn.arctracker.io/items/dried_out_arc_resin.png",
+      "icon": "https://cdn.arctracker.io/items/v2/dried_out_arc_resin.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -3444,7 +3427,7 @@
         "originalEn": "Duct Tape"
       },
       "description": "幅広いアイテムの製作に使用。クラフト素材にリサイクル可能。製作用途：スタブルストック I、バーティカルグリップ I、アングルグリップ I、バーティカルグリップ II、アングルグリップ II",
-      "icon": "https://cdn.arctracker.io/items/duct_tape.png",
+      "icon": "https://cdn.arctracker.io/items/v2/duct_tape.png",
       "rarity": "Uncommon",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -3471,7 +3454,7 @@
         "originalEn": "Durable Cloth"
       },
       "description": "医療用品の製作に使用される。製作可能：ハーバル包帯、滅菌包帯",
-      "icon": "https://cdn.arctracker.io/items/durable_cloth.png",
+      "icon": "https://cdn.arctracker.io/items/v2/durable_cloth.png",
       "rarity": "Uncommon",
       "type": "Refined Material",
       "category": "Refined Material",
@@ -3502,7 +3485,7 @@
         "originalEn": "Dusty Film Reel"
       },
       "description": "埃に覆われた古いフィルムリール。見る価値のあるものだったかもしれない。",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/dusty_film_reel.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -3519,7 +3502,7 @@
         "originalEn": "Electrical Components"
       },
       "description": "幅広いアイテムの製作に使用。製作素材にリサイクル可能。製作用途：Tactical Mk. 2、Combat Mk. 2、Looting Mk. 2、サージシールドリチャージャー、ルアーグレネード",
-      "icon": "https://cdn.arctracker.io/items/electrical_components.png",
+      "icon": "https://cdn.arctracker.io/items/v2/electrical_components.png",
       "rarity": "Uncommon",
       "type": "Refined Material",
       "category": "Refined Material",
@@ -3551,7 +3534,7 @@
         "originalEn": "Empty Wine Bottle"
       },
       "description": "はい、本当に空です。",
-      "icon": "https://cdn.arctracker.io/items/empty_wine_bottle.png",
+      "icon": "https://cdn.arctracker.io/items/v2/empty_wine_bottle.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -3572,7 +3555,7 @@
         "originalEn": "Energy Clip"
       },
       "description": "対応武器: Equalizer、Jupiter",
-      "icon": "https://cdn.arctracker.io/items/energy_clip.png",
+      "icon": "https://cdn.arctracker.io/items/v2/energy_clip.png",
       "rarity": "Rare",
       "type": "Ammunition",
       "category": "Ammunition",
@@ -3594,7 +3577,7 @@
         "originalEn": "Equalizer"
       },
       "description": "高容量の実験的ビームライフル。",
-      "icon": "https://cdn.arctracker.io/items/equalizer.png",
+      "icon": "https://cdn.arctracker.io/items/v2/equalizer.png",
       "rarity": "Legendary",
       "type": "LMG",
       "category": "Weapon",
@@ -3625,7 +3608,7 @@
         "originalEn": "Espresso Machine Parts"
       },
       "description": "",
-      "icon": "https://cdn.arctracker.io/items/espresso_machine_parts.png",
+      "icon": "https://cdn.arctracker.io/items/v2/espresso_machine_parts.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -3642,7 +3625,7 @@
         "originalEn": "ESR Analyzer"
       },
       "description": "赤血球沈降速度を分析するための専門医療機器。",
-      "icon": "https://cdn.arctracker.io/items/esr_analyzer.png",
+      "icon": "https://cdn.arctracker.io/items/v2/esr_analyzer.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -3659,7 +3642,7 @@
         "originalEn": "Exodus Modules"
       },
       "description": "幅広いアイテムの製作に使用される。製作可能：テンペスト、ヴルカーノ、ハルクラッカー、ボブキャット、スナップフック",
-      "icon": "https://cdn.arctracker.io/items/exodus_modules.png",
+      "icon": "https://cdn.arctracker.io/items/v2/exodus_modules.png",
       "rarity": "Epic",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -3686,7 +3669,7 @@
         "originalEn": "Experimental Seed Sample"
       },
       "description": "実験作物の極低温冷凍研究サンプル。",
-      "icon": "https://cdn.arctracker.io/items/experimental_seed_sample.png",
+      "icon": "https://cdn.arctracker.io/items/v2/experimental_seed_sample.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -3724,7 +3707,7 @@
         "originalEn": "Expired Respirator"
       },
       "description": "フィルターは砂と有毒ガスで詰まっている。寿命をとうに過ぎている。",
-      "icon": "https://cdn.arctracker.io/items/expired_respirator.png",
+      "icon": "https://cdn.arctracker.io/items/v2/expired_respirator.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -3751,7 +3734,7 @@
         "originalEn": "Expired Security Code"
       },
       "description": "期限切れのセキュリティコード。もはや実用的な用途はない。",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/expired_security_code.png",
       "rarity": "Common",
       "type": "Key",
       "category": "Key",
@@ -3768,7 +3751,7 @@
         "originalEn": "Explosive Compound"
       },
       "description": "爆発物の製作に使用される。製作可能: Wolfpack、爆発地雷、ブレイズグレネード、ヘビーフューズグレネード",
-      "icon": "https://cdn.arctracker.io/items/explosive_compound.png",
+      "icon": "https://cdn.arctracker.io/items/v2/explosive_compound.png",
       "rarity": "Rare",
       "type": "Refined Material",
       "category": "Refined Material",
@@ -3800,7 +3783,7 @@
         "originalEn": "Explosive Mine"
       },
       "description": "敵が近づくと爆発する近接起爆装置。",
-      "icon": "https://cdn.arctracker.io/items/explosive_mine.png",
+      "icon": "https://cdn.arctracker.io/items/v2/explosive_mine.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -3830,7 +3813,7 @@
         "originalEn": "Extended Barrel"
       },
       "description": "弾速を適度に増加させます。対応武器：Tempest、Arpeggio、Ferro、Renegade、Anvil",
-      "icon": "https://cdn.arctracker.io/items/extended_barrel.png",
+      "icon": "https://cdn.arctracker.io/items/v2/extended_barrel.png",
       "rarity": "Epic",
       "type": "Modification",
       "category": "Modification",
@@ -3859,7 +3842,7 @@
         "originalEn": "Extended Light Mag I"
       },
       "description": "軽弾薬を使用する対応武器の弾薬容量をわずかに拡張する。対応武器：Kettle、Burletta、Hairpin、Bobcat、Stitcher",
-      "icon": "https://cdn.arctracker.io/items/extended_light_mag_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/extended_light_mag_i.png",
       "rarity": "Common",
       "type": "Modification",
       "category": "Modification",
@@ -3887,7 +3870,7 @@
         "originalEn": "Extended Light Mag II"
       },
       "description": "軽弾薬を使用する対応武器の弾薬容量を適度に拡張します。対応武器：Stitcher、Kettle、Burletta、Hairpin、Bobcat",
-      "icon": "https://cdn.arctracker.io/items/extended_light_mag_ii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/extended_light_mag_ii.png",
       "rarity": "Uncommon",
       "type": "Modification",
       "category": "Modification",
@@ -3916,7 +3899,7 @@
         "originalEn": "Extended Light Mag III"
       },
       "description": "ライト弾薬を使用する対応武器の弾薬容量を大幅に拡張する。",
-      "icon": "https://cdn.arctracker.io/items/extended_light_mag_iii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/extended_light_mag_iii.png",
       "rarity": "Rare",
       "type": "Modification",
       "category": "Modification",
@@ -3945,7 +3928,7 @@
         "originalEn": "Extended Medium Mag I"
       },
       "description": "中弾薬を使用する対応武器の弾薬容量を適度に拡張します。対応武器：Arpeggio、Renegade、Venator、Tempest、Torrente",
-      "icon": "https://cdn.arctracker.io/items/extended_medium_mag_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/extended_medium_mag_i.png",
       "rarity": "Common",
       "type": "Modification",
       "category": "Modification",
@@ -3973,7 +3956,7 @@
         "originalEn": "Extended Medium Mag II"
       },
       "description": "中弾薬を使用する対応武器の弾薬容量を適度に拡張します。対応武器：Arpeggio、Renegade、Venator、Tempest、Torrente",
-      "icon": "https://cdn.arctracker.io/items/extended_medium_mag_ii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/extended_medium_mag_ii.png",
       "rarity": "Uncommon",
       "type": "Modification",
       "category": "Modification",
@@ -4002,7 +3985,7 @@
         "originalEn": "Extended Medium Mag III"
       },
       "description": "中型弾薬を使用する対応武器の弾薬容量を大幅に拡張します。対応武器：アルペジオ、レネゲード、ヴェナトール、テンペスト、トレンテ",
-      "icon": "https://cdn.arctracker.io/items/extended_medium_mag_iii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/extended_medium_mag_iii.png",
       "rarity": "Rare",
       "type": "Modification",
       "category": "Modification",
@@ -4031,7 +4014,7 @@
         "originalEn": "Extended Shotgun Mag I"
       },
       "description": "ショットガンの弾薬容量をわずかに拡張する。対応武器：Il Toro、Vulcano",
-      "icon": "https://cdn.arctracker.io/items/extended_shotgun_mag_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/extended_shotgun_mag_i.png",
       "rarity": "Common",
       "type": "Modification",
       "category": "Modification",
@@ -4059,7 +4042,7 @@
         "originalEn": "Extended Shotgun Mag II"
       },
       "description": "ショットガンの弾薬容量を適度に拡張します。対応武器：Il Toro、Vulcano",
-      "icon": "https://cdn.arctracker.io/items/extended_shotgun_mag_ii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/extended_shotgun_mag_ii.png",
       "rarity": "Uncommon",
       "type": "Modification",
       "category": "Modification",
@@ -4088,7 +4071,7 @@
         "originalEn": "Extended Shotgun Mag III"
       },
       "description": "ショットガンの弾薬容量を大幅に拡張します。対応武器：Il Toro、Vulcano",
-      "icon": "https://cdn.arctracker.io/items/extended_shotgun_mag_iii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/extended_shotgun_mag_iii.png",
       "rarity": "Rare",
       "type": "Modification",
       "category": "Modification",
@@ -4117,7 +4100,7 @@
         "originalEn": "Fabric"
       },
       "description": "医療品とシールドの製作に使用。使用すると少量の体力をゆっくり回復できる。",
-      "icon": "https://cdn.arctracker.io/items/fabric.png",
+      "icon": "https://cdn.arctracker.io/items/v2/fabric.png",
       "rarity": "Common",
       "type": "Basic Material",
       "category": "Basic Material",
@@ -4139,7 +4122,7 @@
         "originalEn": "Faded Photograph"
       },
       "description": "かつての世界のスナップショット。日光と時間によって色褪せている。",
-      "icon": "https://cdn.arctracker.io/items/faded_photograph.png",
+      "icon": "https://cdn.arctracker.io/items/v2/faded_photograph.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -4159,7 +4142,7 @@
         "originalEn": "Familiar Duck"
       },
       "description": "本物と違って、これはリュックに入る。投げて音を立てることができる。",
-      "icon": "https://cdn.arctracker.io/items/familiar_duck.png",
+      "icon": "https://cdn.arctracker.io/items/v2/familiar_duck.png",
       "rarity": "Epic",
       "type": "Trinket",
       "category": "Trinket",
@@ -4176,7 +4159,7 @@
         "originalEn": "Ferro I"
       },
       "description": "強力な一撃を放つが、毎発ごとにリロードが必要。",
-      "icon": "https://cdn.arctracker.io/items/ferro.png",
+      "icon": "https://cdn.arctracker.io/items/v2/ferro_i.png",
       "rarity": "Common",
       "type": "Battle Rifle",
       "category": "Weapon",
@@ -4209,7 +4192,7 @@
         "originalEn": "Ferro II"
       },
       "description": "強力な一撃を放つが、毎回リロードが必要です。",
-      "icon": "https://cdn.arctracker.io/items/ferro.png",
+      "icon": "https://cdn.arctracker.io/items/v2/ferro_ii.png",
       "rarity": "Common",
       "type": "Battle Rifle",
       "category": "Weapon",
@@ -4242,7 +4225,7 @@
         "originalEn": "Ferro III"
       },
       "description": "強力な一撃を放つが、毎回リロードが必要です。",
-      "icon": "https://cdn.arctracker.io/items/ferro.png",
+      "icon": "https://cdn.arctracker.io/items/v2/ferro_iii.png",
       "rarity": "Common",
       "type": "Battle Rifle",
       "category": "Weapon",
@@ -4276,7 +4259,7 @@
         "originalEn": "Ferro IV"
       },
       "description": "強力な一撃を放つが、毎回リロードが必要。",
-      "icon": "https://cdn.arctracker.io/items/ferro.png",
+      "icon": "https://cdn.arctracker.io/items/v2/ferro_iv.png",
       "rarity": "Common",
       "type": "Battle Rifle",
       "category": "Weapon",
@@ -4309,7 +4292,7 @@
         "originalEn": "Fertilizer"
       },
       "description": "数枚のコインの価値があるかもしれない。",
-      "icon": "https://cdn.arctracker.io/items/fertilizer.png",
+      "icon": "https://cdn.arctracker.io/items/v2/fertilizer.png",
       "rarity": "Uncommon",
       "type": "Nature",
       "category": "Nature",
@@ -4335,7 +4318,7 @@
         "originalEn": "Film Reel"
       },
       "description": "数コインの価値があるかもしれない。",
-      "icon": "https://cdn.arctracker.io/items/film_reel.png",
+      "icon": "https://cdn.arctracker.io/items/v2/film_reel.png",
       "rarity": "Rare",
       "type": "Trinket",
       "category": "Trinket",
@@ -4356,7 +4339,7 @@
         "originalEn": "Fine Wristwatch"
       },
       "description": "時間を確認するのに最適で、あなたが非常に品格のある人物であることを示せる。",
-      "icon": "https://cdn.arctracker.io/items/fine_wristwatch.png",
+      "icon": "https://cdn.arctracker.io/items/v2/fine_wristwatch.png",
       "rarity": "Rare",
       "type": "Trinket",
       "category": "Trinket",
@@ -4377,7 +4360,7 @@
         "originalEn": "Fireball Burner"
       },
       "description": "ARCアロイにリサイクル可能。投擲して小さな火を起こせる。",
-      "icon": "https://cdn.arctracker.io/items/fireball_burner.png",
+      "icon": "https://cdn.arctracker.io/items/v2/fireball_burner.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -4404,7 +4387,7 @@
         "originalEn": "Firecracker"
       },
       "description": "心地よく火花が散り、パチパチと音を立てる装置。",
-      "icon": "https://cdn.arctracker.io/items/firecracker.png",
+      "icon": "https://cdn.arctracker.io/items/v2/firecracker.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -4433,7 +4416,7 @@
         "originalEn": "Firefly Burner"
       },
       "description": "リサイクルしてクラフト素材にできる。",
-      "icon": "https://cdn.arctracker.io/items/firefly_burner.png",
+      "icon": "https://cdn.arctracker.io/items/v2/firefly_burner.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -4460,7 +4443,7 @@
         "originalEn": "Fireworks Box"
       },
       "description": "遠隔で起動する、まばゆい花火のセット。きっとショーになる。",
-      "icon": "https://cdn.arctracker.io/items/fireworks_box.png",
+      "icon": "https://cdn.arctracker.io/items/v2/fireworks_box.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -4489,7 +4472,7 @@
         "originalEn": "First Wave Compass"
       },
       "description": "埃まみれだが機能的で、すべてが失われたように見えた時に進路を示してくれた。",
-      "icon": "https://cdn.arctracker.io/items/first_wave_compass.png",
+      "icon": "https://cdn.arctracker.io/items/v2/first_wave_compass.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -4506,7 +4489,7 @@
         "originalEn": "First Wave Rations"
       },
       "description": "目立たない焚き火で温められることが多く、これらのわずかな食料が抵抗運動を支えたと言われている。",
-      "icon": "https://cdn.arctracker.io/items/first_wave_rations.png",
+      "icon": "https://cdn.arctracker.io/items/v2/first_wave_rations.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -4523,7 +4506,7 @@
         "originalEn": "First Wave Tape"
       },
       "description": "ボロボロの古いビデオカメラの中で見つかった古いテープ。",
-      "icon": "https://cdn.arctracker.io/items/first_wave_tape.png",
+      "icon": "https://cdn.arctracker.io/items/v2/first_wave_tape.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -4540,7 +4523,7 @@
         "originalEn": "Flame Spray"
       },
       "description": "古典的な即席武器で、焦げ跡を残すこと間違いなし。",
-      "icon": "https://cdn.arctracker.io/items/flame_spray.png",
+      "icon": "https://cdn.arctracker.io/items/v2/flame_spray.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -4568,7 +4551,7 @@
         "originalEn": "Flashy Duck"
       },
       "description": "明らかに才能ある誰かが愛情を込めて手描きした。誰かわかる？投げて音を立てることができる。",
-      "icon": "https://cdn.arctracker.io/items/flashy_duck.png",
+      "icon": "https://cdn.arctracker.io/items/v2/flashy_duck.png",
       "rarity": "Rare",
       "type": "Trinket",
       "category": "Trinket",
@@ -4585,7 +4568,7 @@
         "originalEn": "Flow Controller"
       },
       "description": "クラフト素材にリサイクルできます。",
-      "icon": "https://cdn.arctracker.io/items/flow_controller.png",
+      "icon": "https://cdn.arctracker.io/items/v2/flow_controller.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -4612,7 +4595,7 @@
         "originalEn": "Flushing Terminal Key"
       },
       "description": "この鍵はクエスト\"The Stench of Corruption\"でフラッシング端末を起動するために使用される",
-      "icon": "https://cdn.arctracker.io/items/flushing_terminal_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/flushing_terminal_key.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -4629,7 +4612,7 @@
         "originalEn": "Fossilized Lightning"
       },
       "description": "落雷のあとに一定確率で出現するアイテム。",
-      "icon": "https://cdn.arctracker.io/items/fossilized_lightning.png",
+      "icon": "https://cdn.arctracker.io/items/v2/fossilized_lightning.png",
       "rarity": "Epic",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -4655,7 +4638,7 @@
         "originalEn": "Free Loadout Augment"
       },
       "description": "初心者レイダー向けの基本強化で、バックパックスペースと運搬容量がわずかに増加します。",
-      "icon": "https://cdn.arctracker.io/items/free_loadout_augment.png",
+      "icon": "https://cdn.arctracker.io/items/v2/free_loadout_augment.png",
       "rarity": "Common",
       "type": "Augment",
       "category": "Augment",
@@ -4676,7 +4659,7 @@
         "originalEn": "Frequency Modulation Box"
       },
       "description": "クラフト素材にリサイクルできます。",
-      "icon": "https://cdn.arctracker.io/items/frequency_modulation_box.png",
+      "icon": "https://cdn.arctracker.io/items/v2/frequency_modulation_box.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -4703,7 +4686,7 @@
         "originalEn": "Fried Motherboard"
       },
       "description": "クラフト素材にリサイクル可能。",
-      "icon": "https://cdn.arctracker.io/items/fried_motherboard.png",
+      "icon": "https://cdn.arctracker.io/items/v2/fried_motherboard.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -4730,7 +4713,7 @@
         "originalEn": "Fruit Mix"
       },
       "description": "体力とスタミナを適度に回復する食料アイテム。",
-      "icon": "https://cdn.arctracker.io/items/fruit_mix.png",
+      "icon": "https://cdn.arctracker.io/items/v2/fruit_mix.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -4752,7 +4735,7 @@
         "originalEn": "Frying Pan"
       },
       "description": "クラフト素材にリサイクルできる。",
-      "icon": "https://cdn.arctracker.io/items/frying_pan.png",
+      "icon": "https://cdn.arctracker.io/items/v2/frying_pan.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -4778,7 +4761,7 @@
         "originalEn": "Garlic Press"
       },
       "description": "ニンニク、オリーブ、そしておそらく他の多くのものを潰すことができる。",
-      "icon": "https://cdn.arctracker.io/items/garlic_press.png",
+      "icon": "https://cdn.arctracker.io/items/v2/garlic_press.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -4805,7 +4788,7 @@
         "originalEn": "Gas Grenade"
       },
       "description": "着弾時に持続する毒性の雲を放ち、効果範囲内のレイダーのスタミナを消耗させる手榴弾。",
-      "icon": "https://cdn.arctracker.io/items/gas_grenade.png",
+      "icon": "https://cdn.arctracker.io/items/v2/gas_grenade.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -4835,7 +4818,7 @@
         "originalEn": "Gas Grenade Trap"
       },
       "description": "ガスグレネードを起爆するレーザートリップワイヤー。",
-      "icon": "https://cdn.arctracker.io/items/gas_grenade_trap.png",
+      "icon": "https://cdn.arctracker.io/items/v2/gas_grenade_trap.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -4856,7 +4839,7 @@
         "originalEn": "Gas Mine"
       },
       "description": "近接起動する地雷で、飛び出してスタミナを急速に消耗させるガス雲を展開する。",
-      "icon": "https://cdn.arctracker.io/items/gas_mine.png",
+      "icon": "https://cdn.arctracker.io/items/v2/gas_mine.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -4886,7 +4869,7 @@
         "originalEn": "Geiger Counter"
       },
       "description": "クラフト素材にリサイクルできます。",
-      "icon": "https://cdn.arctracker.io/items/geiger_counter.png",
+      "icon": "https://cdn.arctracker.io/items/v2/geiger_counter.png",
       "rarity": "Epic",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -4913,7 +4896,7 @@
         "originalEn": "Gentle Duck"
       },
       "description": "とても愛らしい。投げて音を立てることができる。",
-      "icon": "https://cdn.arctracker.io/items/gentle_duck.png",
+      "icon": "https://cdn.arctracker.io/items/v2/gentle_duck.png",
       "rarity": "Uncommon",
       "type": "Trinket",
       "category": "Trinket",
@@ -4930,7 +4913,7 @@
         "originalEn": "Great Mullein"
       },
       "description": "医療品の製作に使用される。製作可能: ハーブ包帯、消毒薬",
-      "icon": "https://cdn.arctracker.io/items/great_mullein.png",
+      "icon": "https://cdn.arctracker.io/items/v2/great_mullein.png",
       "rarity": "Uncommon",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -4956,7 +4939,7 @@
         "originalEn": "Green Light Stick"
       },
       "description": "投げることができる化学発光体。周囲を照らす。",
-      "icon": "https://cdn.arctracker.io/items/green_light_stick.png",
+      "icon": "https://cdn.arctracker.io/items/v2/green_light_stick.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -4984,7 +4967,7 @@
         "originalEn": "Hairpin I"
       },
       "description": "サイレンサー内蔵。ステルスには最適だが、戦闘では扱いにくい。",
-      "icon": "https://cdn.arctracker.io/items/hairpin_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/hairpin_i.png",
       "rarity": "Common",
       "type": "Pistol",
       "category": "Weapon",
@@ -5017,7 +5000,7 @@
         "originalEn": "Hairpin II"
       },
       "description": "サイレンサー内蔵。ステルスには最適だが、戦闘では扱いにくい。",
-      "icon": "https://cdn.arctracker.io/items/hairpin_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/hairpin_ii.png",
       "rarity": "Common",
       "type": "Pistol",
       "category": "Weapon",
@@ -5050,7 +5033,7 @@
         "originalEn": "Hairpin III"
       },
       "description": "サイレンサー内蔵。ステルスには最適だが、戦闘では扱いにくい。",
-      "icon": "https://cdn.arctracker.io/items/hairpin_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/hairpin_iii.png",
       "rarity": "Common",
       "type": "Pistol",
       "category": "Weapon",
@@ -5084,7 +5067,7 @@
         "originalEn": "Hairpin IV"
       },
       "description": "サイレンサー内蔵。ステルスには最適だが、戦闘では扱いにくい。",
-      "icon": "https://cdn.arctracker.io/items/hairpin_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/hairpin_iv.png",
       "rarity": "Common",
       "type": "Pistol",
       "category": "Weapon",
@@ -5117,7 +5100,7 @@
         "originalEn": "Headphones"
       },
       "description": "製作素材にリサイクルできる。",
-      "icon": "https://cdn.arctracker.io/items/headphones.png",
+      "icon": "https://cdn.arctracker.io/items/v2/headphones.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -5145,7 +5128,7 @@
         "originalEn": "Heavy Ammo"
       },
       "description": "対応武器: Ferro、Anvil、Bettina",
-      "icon": "https://cdn.arctracker.io/items/heavy_ammo.png",
+      "icon": "https://cdn.arctracker.io/items/v2/heavy_ammo.png",
       "rarity": "Common",
       "type": "Ammunition",
       "category": "Ammunition",
@@ -5167,7 +5150,7 @@
         "originalEn": "Heavy Fuze Grenade"
       },
       "description": "遅延後に爆発し、範囲内に爆発ダメージを与える手榴弾。",
-      "icon": "https://cdn.arctracker.io/items/heavy_fuze_grenade.png",
+      "icon": "https://cdn.arctracker.io/items/v2/heavy_fuze_grenade.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -5197,7 +5180,7 @@
         "originalEn": "Heavy Gun Parts"
       },
       "description": "武器の製作に使用。製作可能: Vulcano、Hullcracker、Bettina、複雑な銃パーツ",
-      "icon": "https://cdn.arctracker.io/items/heavy_gun_parts.png",
+      "icon": "https://cdn.arctracker.io/items/v2/heavy_gun_parts.png",
       "rarity": "Rare",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -5228,7 +5211,7 @@
         "originalEn": "Heavy Shield"
       },
       "description": "大量の被ダメージを防ぐ重量シールド。機動性が大幅に低下する。",
-      "icon": "https://cdn.arctracker.io/items/heavy_shield.png",
+      "icon": "https://cdn.arctracker.io/items/v2/heavy_shield.png",
       "rarity": "Epic",
       "type": "Shield",
       "category": "Shield",
@@ -5257,7 +5240,7 @@
         "originalEn": "Herbal Bandage"
       },
       "description": "時間経過とともに徐々に体力を回復する即席の医療アイテムです。",
-      "icon": "https://cdn.arctracker.io/items/herbal_bandage.png",
+      "icon": "https://cdn.arctracker.io/items/v2/herbal_bandage.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -5287,7 +5270,7 @@
         "originalEn": "Hidden Bunker Key"
       },
       "description": "スペースポートにあるバンカーを開けることができる即席の鍵。",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/hidden_bunker_key.png",
       "rarity": "Common",
       "type": "Key",
       "category": "Key",
@@ -5304,7 +5287,7 @@
         "originalEn": "Horizontal Grip"
       },
       "description": "垂直反動と水平反動を適度に軽減します。",
-      "icon": "https://cdn.arctracker.io/items/horizontal_grip.png",
+      "icon": "https://cdn.arctracker.io/items/v2/horizontal_grip.png",
       "rarity": "Epic",
       "type": "Modification",
       "category": "Modification",
@@ -5328,7 +5311,7 @@
         "originalEn": "Hornet Driver"
       },
       "description": "投げると近くのターゲットを短時間スタンさせる",
-      "icon": "https://cdn.arctracker.io/items/hornet_driver.png",
+      "icon": "https://cdn.arctracker.io/items/v2/hornet_driver.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -5355,7 +5338,7 @@
         "originalEn": "Household Cleaner"
       },
       "description": "化学薬品にリサイクルできる。",
-      "icon": "https://cdn.arctracker.io/items/household_cleaner.png",
+      "icon": "https://cdn.arctracker.io/items/v2/household_cleaner.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -5381,7 +5364,7 @@
         "originalEn": "Hullcracker I"
       },
       "description": "ARCに命中した時のみ爆発する爆発性の弾を発射する。",
-      "icon": "https://cdn.arctracker.io/items/hullcracker.png",
+      "icon": "https://cdn.arctracker.io/items/v2/hullcracker_i.png",
       "rarity": "Epic",
       "type": "Special",
       "category": "Weapon",
@@ -5415,7 +5398,7 @@
         "originalEn": "Hullcracker II"
       },
       "description": "ARCに命中した時のみ爆発する爆発性の発射体を発射します。",
-      "icon": "https://cdn.arctracker.io/items/hullcracker.png",
+      "icon": "https://cdn.arctracker.io/items/v2/hullcracker_ii.png",
       "rarity": "Epic",
       "type": "Special",
       "category": "Weapon",
@@ -5449,7 +5432,7 @@
         "originalEn": "Hullcracker III"
       },
       "description": "ARCに命中した時のみ爆発する爆発性の発射体を発射します。",
-      "icon": "https://cdn.arctracker.io/items/hullcracker.png",
+      "icon": "https://cdn.arctracker.io/items/v2/hullcracker_iii.png",
       "rarity": "Epic",
       "type": "Special",
       "category": "Weapon",
@@ -5483,7 +5466,7 @@
         "originalEn": "Hullcracker IV"
       },
       "description": "ARCに命中した時のみ爆発する爆発性の発射体を発射します。",
-      "icon": "https://cdn.arctracker.io/items/hullcracker.png",
+      "icon": "https://cdn.arctracker.io/items/v2/hullcracker_iv.png",
       "rarity": "Epic",
       "type": "Special",
       "category": "Weapon",
@@ -5516,7 +5499,7 @@
         "originalEn": "Humidifier"
       },
       "description": "製作素材にリサイクルできる。",
-      "icon": "https://cdn.arctracker.io/items/humidifier.png",
+      "icon": "https://cdn.arctracker.io/items/v2/humidifier.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -5543,7 +5526,7 @@
         "originalEn": "Ice Cream Scooper"
       },
       "description": "かつての世界では、すくうことが人気の娯楽だったと推測されている。",
-      "icon": "https://cdn.arctracker.io/items/ice_cream_scooper.png",
+      "icon": "https://cdn.arctracker.io/items/v2/ice_cream_scooper.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -5569,7 +5552,7 @@
         "originalEn": "Il Toro I"
       },
       "description": "弾の拡散が大きく、急激な減衰があり、高いダメージを与えます。",
-      "icon": "https://cdn.arctracker.io/items/il_toro.png",
+      "icon": "https://cdn.arctracker.io/items/v2/il_toro_i.png",
       "rarity": "Uncommon",
       "type": "Shotgun",
       "category": "Weapon",
@@ -5602,7 +5585,7 @@
         "originalEn": "Il Toro II"
       },
       "description": "弾丸の拡散が大きく、急激な減衰と高いダメージ出力を持つ。",
-      "icon": "https://cdn.arctracker.io/items/il_toro.png",
+      "icon": "https://cdn.arctracker.io/items/v2/il_toro_ii.png",
       "rarity": "Uncommon",
       "type": "Shotgun",
       "category": "Weapon",
@@ -5636,7 +5619,7 @@
         "originalEn": "Il Toro III"
       },
       "description": "広範囲の弾丸拡散、急激な減衰、高ダメージ出力を持つポンプアクション・ショットガン。",
-      "icon": "https://cdn.arctracker.io/items/il_toro.png",
+      "icon": "https://cdn.arctracker.io/items/v2/il_toro_iii.png",
       "rarity": "Uncommon",
       "type": "Shotgun",
       "category": "Weapon",
@@ -5670,7 +5653,7 @@
         "originalEn": "Il Toro IV"
       },
       "description": "広範囲の弾丸拡散、急激な減衰、高ダメージ出力を持つポンプアクション・ショットガン。",
-      "icon": "https://cdn.arctracker.io/items/il_toro.png",
+      "icon": "https://cdn.arctracker.io/items/v2/il_toro_iv.png",
       "rarity": "Uncommon",
       "type": "Shotgun",
       "category": "Weapon",
@@ -5703,7 +5686,7 @@
         "originalEn": "Impure ARC Coolant"
       },
       "description": "製作素材にリサイクルできる。",
-      "icon": "https://cdn.arctracker.io/items/impure_arc_coolant.png",
+      "icon": "https://cdn.arctracker.io/items/v2/impure_arc_coolant.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -5729,7 +5712,7 @@
         "originalEn": "Industrial Battery"
       },
       "description": "産業機器用の大型高容量バッテリー。",
-      "icon": "https://cdn.arctracker.io/items/industrial_battery.png",
+      "icon": "https://cdn.arctracker.io/items/v2/industrial_battery.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -5756,7 +5739,7 @@
         "originalEn": "Industrial Charger"
       },
       "description": "製作素材にリサイクルできる。",
-      "icon": "https://cdn.arctracker.io/items/industrial_charger.png",
+      "icon": "https://cdn.arctracker.io/items/v2/industrial_charger.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -5783,7 +5766,7 @@
         "originalEn": "Industrial Magnet"
       },
       "description": "製作素材にリサイクルできる。",
-      "icon": "https://cdn.arctracker.io/items/industrial_magnet.png",
+      "icon": "https://cdn.arctracker.io/items/v2/industrial_magnet.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -5810,7 +5793,7 @@
         "originalEn": "Ion Sputter"
       },
       "description": "クラフト素材にリサイクルできます。",
-      "icon": "https://cdn.arctracker.io/items/ion_sputter.png",
+      "icon": "https://cdn.arctracker.io/items/v2/ion_sputter.png",
       "rarity": "Epic",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -5837,7 +5820,7 @@
         "originalEn": "Jolt Mine"
       },
       "description": "近接起動する地雷で、飛び出して範囲内のすべてをスタンさせる。",
-      "icon": "https://cdn.arctracker.io/items/jolt_mine.png",
+      "icon": "https://cdn.arctracker.io/items/v2/jolt_mine.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -5867,7 +5850,7 @@
         "originalEn": "Jupiter"
       },
       "description": "優れたダメージ出力と精度を持つボルトアクション式スナイパーライフルですが、取り回しが遅いです。",
-      "icon": "https://cdn.arctracker.io/items/jupiter.png",
+      "icon": "https://cdn.arctracker.io/items/v2/jupiter.png",
       "rarity": "Legendary",
       "type": "Sniper Rifle",
       "category": "Weapon",
@@ -5898,7 +5881,7 @@
         "originalEn": "Kettle I"
       },
       "description": "素早く正確だが、弾速が遅く、リロードに時間がかかる。",
-      "icon": "https://cdn.arctracker.io/items/kettle.png",
+      "icon": "https://cdn.arctracker.io/items/v2/kettle_i.png",
       "rarity": "Common",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -5931,7 +5914,7 @@
         "originalEn": "Kettle II"
       },
       "description": "セミオートマチックアサルトライフル。素早く正確だが、弾速が遅く、リロードに時間がかかる。",
-      "icon": "https://cdn.arctracker.io/items/kettle.png",
+      "icon": "https://cdn.arctracker.io/items/v2/kettle_ii.png",
       "rarity": "Common",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -5965,7 +5948,7 @@
         "originalEn": "Kettle III"
       },
       "description": "素早く正確ですが、弾速が遅く、リロードに時間がかかります。",
-      "icon": "https://cdn.arctracker.io/items/kettle.png",
+      "icon": "https://cdn.arctracker.io/items/v2/kettle_iii.png",
       "rarity": "Common",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -5999,7 +5982,7 @@
         "originalEn": "Kettle IV"
       },
       "description": "素早く正確ですが、弾速が遅く、リロードに時間がかかります。",
-      "icon": "https://cdn.arctracker.io/items/kettle.png",
+      "icon": "https://cdn.arctracker.io/items/v2/kettle_iv.png",
       "rarity": "Common",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -6032,7 +6015,7 @@
         "originalEn": "Kinetic Converter"
       },
       "description": "射撃速度を適度に増加させる。対応武器：Arpeggio、Rattler、Kettle、Ferro、Renegade",
-      "icon": "https://cdn.arctracker.io/items/kinetic_converter.png",
+      "icon": "https://cdn.arctracker.io/items/v2/kinetic_converter.png",
       "rarity": "Legendary",
       "type": "Modification",
       "category": "Modification",
@@ -6056,7 +6039,7 @@
         "originalEn": "Laboratory Reagents"
       },
       "description": "実験室での実験に使用される化学試薬のセット。",
-      "icon": "https://cdn.arctracker.io/items/laboratory_reagents.png",
+      "icon": "https://cdn.arctracker.io/items/v2/laboratory_reagents.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -6083,7 +6066,7 @@
         "originalEn": "Lance's Mixtape (5th Edition)"
       },
       "description": "ランスは何らかの理由で、ラストベルト周辺に個人的にこれらをいくつか設置した。",
-      "icon": "https://cdn.arctracker.io/items/lances_mixtape_5th_edition.png",
+      "icon": "https://cdn.arctracker.io/items/v2/lances_mixtape_5th_edition.png",
       "rarity": "Epic",
       "type": "Trinket",
       "category": "Trinket",
@@ -6104,7 +6087,7 @@
         "originalEn": "Launcher Ammo"
       },
       "description": "主にHullcrackerで使用される対ARC弾頭。対応武器：Hullcracker",
-      "icon": "https://cdn.arctracker.io/items/launcher_ammo.png",
+      "icon": "https://cdn.arctracker.io/items/v2/launcher_ammo.png",
       "rarity": "Rare",
       "type": "Ammunition",
       "category": "Ammunition",
@@ -6126,7 +6109,7 @@
         "originalEn": "Leaper Pulse Unit"
       },
       "description": "クラフト素材にリサイクルできます。投げると強力な特異点を生成します。",
-      "icon": "https://cdn.arctracker.io/items/leaper_pulse_unit.png",
+      "icon": "https://cdn.arctracker.io/items/v2/leaper_pulse_unit.png",
       "rarity": "Epic",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -6153,7 +6136,7 @@
         "originalEn": "Lemon"
       },
       "description": "消費すると少量のスタミナを回復できる。",
-      "icon": "https://cdn.arctracker.io/items/lemon.png",
+      "icon": "https://cdn.arctracker.io/items/v2/lemon.png",
       "rarity": "Uncommon",
       "type": "Nature",
       "category": "Nature",
@@ -6179,7 +6162,7 @@
         "originalEn": "\"Leviathan's Crown\" Ship Model"
       },
       "description": "どの時代においても堂々たる姿を誇るこの猛々しい商船は、グラスファイバー技術がもたらす空力的な恩恵に無関心である。",
-      "icon": "https://cdn.arctracker.io/items/leviathans_crown_ship_model.png",
+      "icon": "https://cdn.arctracker.io/items/v2/leviathans_crown_ship_model.png",
       "rarity": "Legendary",
       "type": "Trinket",
       "category": "Trinket",
@@ -6213,7 +6196,7 @@
         "originalEn": "Lidar Scanner"
       },
       "description": "地表の最も微細な変化を検出するために使用されるレーザーベースのスキャナー",
-      "icon": "https://cdn.arctracker.io/items/lidar_scanner.png",
+      "icon": "https://cdn.arctracker.io/items/v2/lidar_scanner.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -6230,7 +6213,7 @@
         "originalEn": "Light Ammo"
       },
       "description": "主にSMGや軽量ハンドガンで使用される軽量弾。対応武器: Burletta、Stitcher、Kettle、Hairpin、Bobcat",
-      "icon": "https://cdn.arctracker.io/items/light_ammo.png",
+      "icon": "https://cdn.arctracker.io/items/v2/light_ammo.png",
       "rarity": "Common",
       "type": "Ammunition",
       "category": "Ammunition",
@@ -6252,7 +6235,7 @@
         "originalEn": "Light Bulb"
       },
       "description": "光がなければ、地下での生活は不可能だろう。",
-      "icon": "https://cdn.arctracker.io/items/light_bulb.png",
+      "icon": "https://cdn.arctracker.io/items/v2/light_bulb.png",
       "rarity": "Uncommon",
       "type": "Trinket",
       "category": "Trinket",
@@ -6272,7 +6255,7 @@
         "originalEn": "Light Gun Parts"
       },
       "description": "ピストルとサブマシンガンに使用される各種予備パーツ。製作可能: Bobcat、複雑な銃器パーツ",
-      "icon": "https://cdn.arctracker.io/items/light_gun_parts.png",
+      "icon": "https://cdn.arctracker.io/items/v2/light_gun_parts.png",
       "rarity": "Rare",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -6303,7 +6286,7 @@
         "originalEn": "Light Impact Grenade"
       },
       "description": "着弾時に爆発し、小範囲に爆発ダメージを与えるグレネード。",
-      "icon": "https://cdn.arctracker.io/items/light_impact_grenade.png",
+      "icon": "https://cdn.arctracker.io/items/v2/light_impact_grenade.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -6333,7 +6316,7 @@
         "originalEn": "Light Shield"
       },
       "description": "少量の被ダメージを防ぐ軽量シールド。機動性に影響しない。",
-      "icon": "https://cdn.arctracker.io/items/light_shield.png",
+      "icon": "https://cdn.arctracker.io/items/v2/light_shield.png",
       "rarity": "Uncommon",
       "type": "Shield",
       "category": "Shield",
@@ -6361,7 +6344,7 @@
         "originalEn": "Lightweight Stock"
       },
       "description": "ADS速度と構え速度を適度に向上させる。対応武器：Arpeggio、Kettle、Ferro、Renegade、Hullcracker",
-      "icon": "https://cdn.arctracker.io/items/lightweight_stock.png",
+      "icon": "https://cdn.arctracker.io/items/v2/lightweight_stock.png",
       "rarity": "Epic",
       "type": "Modification",
       "category": "Modification",
@@ -6390,7 +6373,7 @@
         "originalEn": "Li'l Smoke Grenade"
       },
       "description": "着弾時に濃密だが小さな煙幕を発生させ、ARCや他のレイダーからの視界を遮る手榴弾。",
-      "icon": "https://cdn.arctracker.io/items/lil_smoke_grenade.png",
+      "icon": "https://cdn.arctracker.io/items/v2/lil_smoke_grenade.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -6420,7 +6403,7 @@
         "originalEn": "Looting Mk. 1"
       },
       "description": "基本的な略奪強化。バックパックスロットと重量容量が増加するが、防御力と戦術能力は低い。",
-      "icon": "https://cdn.arctracker.io/items/looting_mk1.png",
+      "icon": "https://cdn.arctracker.io/items/v2/looting_mk1.png",
       "rarity": "Uncommon",
       "type": "Augment",
       "category": "Augment",
@@ -6449,7 +6432,7 @@
         "originalEn": "Looting Mk. 2"
       },
       "description": "略奪能力を大幅に向上させ、装身具用のスロットを追加する。0.5秒後に付着したティックを自動的に振り払う。",
-      "icon": "https://cdn.arctracker.io/items/looting_mk2.png",
+      "icon": "https://cdn.arctracker.io/items/v2/looting_mk2.png",
       "rarity": "Rare",
       "type": "Augment",
       "category": "Augment",
@@ -6478,7 +6461,7 @@
         "originalEn": "Looting Mk. 3 (Cautious)"
       },
       "description": "運搬能力の一部を生存性向上と交換する略奪用強化装置。シールド破壊時に弱いアドレナリン注射を自動投与する。固定クールダウンあり。",
-      "icon": "https://cdn.arctracker.io/items/looting_mk3_cautious.png",
+      "icon": "https://cdn.arctracker.io/items/v2/looting_mk3_cautious.png",
       "rarity": "Epic",
       "type": "Augment",
       "category": "Augment",
@@ -6507,7 +6490,7 @@
         "originalEn": "Looting Mk. 3 (Safekeeper)"
       },
       "description": "重量とユーティリティを犠牲にして、物資回収能力を向上させるオーグメント。あらゆるアイテムを収納可能なセーフポケットを備えている。",
-      "icon": "https://cdn.arctracker.io/items/looting_mk3_safekeeper.png",
+      "icon": "https://cdn.arctracker.io/items/v2/looting_mk3_safekeeper.png",
       "rarity": "Epic",
       "type": "Augment",
       "category": "Augment",
@@ -6536,7 +6519,7 @@
         "originalEn": "Looting Mk. 3 (Survivor)"
       },
       "description": "頑丈な荷役用強化装備。大きな重量容量と大きなバックパックスペース。ダウン中で静止している間、ヘルスが最大ダウンヘルスの75%まで回復します。",
-      "icon": "https://cdn.arctracker.io/items/looting_mk3_survivor.png",
+      "icon": "https://cdn.arctracker.io/items/v2/looting_mk3_survivor.png",
       "rarity": "Epic",
       "type": "Augment",
       "category": "Augment",
@@ -6565,7 +6548,7 @@
         "originalEn": "Lure Grenade"
       },
       "description": "表面に貼り付く音響装置。近くのARCマシンの注意を引き、攻撃を誘導する。",
-      "icon": "https://cdn.arctracker.io/items/lure_grenade.png",
+      "icon": "https://cdn.arctracker.io/items/v2/lure_grenade.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -6594,7 +6577,7 @@
         "originalEn": "Lure Grenade Trap"
       },
       "description": "ルアーグレネードを起爆するレーザートリップワイヤー。",
-      "icon": "https://cdn.arctracker.io/items/lure_grenade_trap.png",
+      "icon": "https://cdn.arctracker.io/items/v2/lure_grenade_trap.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -6615,7 +6598,7 @@
         "originalEn": "Magnet"
       },
       "description": "幅広いアイテムの作成に使用。クラフト素材にリサイクル可能。",
-      "icon": "https://cdn.arctracker.io/items/magnet.png",
+      "icon": "https://cdn.arctracker.io/items/v2/magnet.png",
       "rarity": "Uncommon",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -6641,7 +6624,7 @@
         "originalEn": "Magnetic Accelerator"
       },
       "description": "高度な武器の製作に使用。製作可能: Tempest、Equalizer、Vulcano、Jupiter、Hullcracker",
-      "icon": "https://cdn.arctracker.io/items/magnetic_accelerator.png",
+      "icon": "https://cdn.arctracker.io/items/v2/magnetic_accelerator.png",
       "rarity": "Epic",
       "type": "Refined Material",
       "category": "Refined Material",
@@ -6673,7 +6656,7 @@
         "originalEn": "Magnetron"
       },
       "description": "クラフト素材にリサイクルできます。",
-      "icon": "https://cdn.arctracker.io/items/magnetron.png",
+      "icon": "https://cdn.arctracker.io/items/v2/magnetron.png",
       "rarity": "Epic",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -6700,7 +6683,7 @@
         "originalEn": "Major Aiva's Mementos"
       },
       "description": "",
-      "icon": "https://cdn.arctracker.io/items/major_aivas_mementos.png",
+      "icon": "https://cdn.arctracker.io/items/v2/major_aivas_mementos.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -6717,7 +6700,7 @@
         "originalEn": "Major Aiva's Patch"
       },
       "description": "瓦礫と廃墟の中で見つかった破れたパッチ。",
-      "icon": "https://cdn.arctracker.io/items/major_aivas_patch.png",
+      "icon": "https://cdn.arctracker.io/items/v2/major_aivas_patch.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -6734,7 +6717,7 @@
         "originalEn": "Marano Market Business Card"
       },
       "description": "この名刺に走り書きされた文字が、マラーノ市場のロゴをほとんど覆い隠している。",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/marano_market_business_card.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -6751,7 +6734,7 @@
         "originalEn": "Matriarch Reactor"
       },
       "description": "クラフト素材にリサイクルできます。",
-      "icon": "https://cdn.arctracker.io/items/matriarch_reactor.png",
+      "icon": "https://cdn.arctracker.io/items/v2/matriarch_reactor.png",
       "rarity": "Legendary",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -6775,7 +6758,7 @@
         "originalEn": "Mechanical Components"
       },
       "description": "幅広いアイテムの製作に使用。製作材料にリサイクル可能。製作可能: Il Toro、Burletta、Anvil、マズルブレーキII、拡張ミディアムマガジンII",
-      "icon": "https://cdn.arctracker.io/items/mechanical_components.png",
+      "icon": "https://cdn.arctracker.io/items/v2/mechanical_components.png",
       "rarity": "Uncommon",
       "type": "Refined Material",
       "category": "Refined Material",
@@ -6807,7 +6790,7 @@
         "originalEn": "Medium Ammo"
       },
       "description": "対応武器: Rattler、Tempest、Arpeggio、Renegade、Torrente",
-      "icon": "https://cdn.arctracker.io/items/medium_ammo.png",
+      "icon": "https://cdn.arctracker.io/items/v2/medium_ammo.png",
       "rarity": "Common",
       "type": "Ammunition",
       "category": "Ammunition",
@@ -6829,7 +6812,7 @@
         "originalEn": "Medium Gun Parts"
       },
       "description": "ライフル用の各種予備パーツ。製作に使用: Torrente、Venator、Osprey、Renegade、Tempest",
-      "icon": "https://cdn.arctracker.io/items/medium_gun_parts.png",
+      "icon": "https://cdn.arctracker.io/items/v2/medium_gun_parts.png",
       "rarity": "Rare",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -6860,7 +6843,7 @@
         "originalEn": "Medium Shield"
       },
       "description": "中程度の被ダメージを防ぐ標準的なシールド。機動性がやや低下する。",
-      "icon": "https://cdn.arctracker.io/items/medium_shield.png",
+      "icon": "https://cdn.arctracker.io/items/v2/medium_shield.png",
       "rarity": "Rare",
       "type": "Shield",
       "category": "Shield",
@@ -6888,7 +6871,7 @@
         "originalEn": "Metal Brackets"
       },
       "description": "金属パーツにリサイクルできます。",
-      "icon": "https://cdn.arctracker.io/items/metal_brackets.png",
+      "icon": "https://cdn.arctracker.io/items/v2/metal_brackets.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -6915,7 +6898,7 @@
         "originalEn": "Metal Parts"
       },
       "description": "幅広いアイテムの製作に使用。製作可能: ランチャー弾薬、ヘアピン、ヘビー弾薬、フェロ、ケトル",
-      "icon": "https://cdn.arctracker.io/items/metal_parts.png",
+      "icon": "https://cdn.arctracker.io/items/v2/metal_parts.png",
       "rarity": "Common",
       "type": "Basic Material",
       "category": "Basic Material",
@@ -6938,7 +6921,7 @@
         "originalEn": "Microscope"
       },
       "description": "クラフト素材にリサイクルできます。",
-      "icon": "https://cdn.arctracker.io/items/microscope.png",
+      "icon": "https://cdn.arctracker.io/items/v2/microscope.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -6965,7 +6948,7 @@
         "originalEn": "Mini Centrifuge"
       },
       "description": "クラフト素材にリサイクルできます。",
-      "icon": "https://cdn.arctracker.io/items/mini_centrifuge.png",
+      "icon": "https://cdn.arctracker.io/items/v2/mini_centrifuge.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -6992,7 +6975,7 @@
         "originalEn": "Mod Components"
       },
       "description": "武器モッドの製作に使用。クラフト素材にリサイクル可能。製作可能: 軽量ストック、ショットガンチョーク III、拡張ショットガンマガジン III、パッド入りストック、コンペンセーター III",
-      "icon": "https://cdn.arctracker.io/items/mod_components.png",
+      "icon": "https://cdn.arctracker.io/items/v2/mod_components.png",
       "rarity": "Rare",
       "type": "Refined Material",
       "category": "Refined Material",
@@ -7024,7 +7007,7 @@
         "originalEn": "Moisture Meter"
       },
       "description": "予期せぬイニシアチブのクエストを完了するためにティアン・ウェンに届ける必要があるクエストアイテム。",
-      "icon": "https://cdn.arctracker.io/items/moisture_meter.png",
+      "icon": "https://cdn.arctracker.io/items/v2/moisture_meter.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -7041,7 +7024,7 @@
         "originalEn": "Moss"
       },
       "description": "使用すると少量の体力を回復できる。",
-      "icon": "https://cdn.arctracker.io/items/moss.png",
+      "icon": "https://cdn.arctracker.io/items/v2/moss.png",
       "rarity": "Rare",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -7067,7 +7050,7 @@
         "originalEn": "Motor"
       },
       "description": "小型電動モーター、様々な装置に有用。",
-      "icon": "https://cdn.arctracker.io/items/motor.png",
+      "icon": "https://cdn.arctracker.io/items/v2/motor.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -7094,7 +7077,7 @@
         "originalEn": "Mushroom"
       },
       "description": "消費すると少量の体力を回復できる。",
-      "icon": "https://cdn.arctracker.io/items/mushroom.png",
+      "icon": "https://cdn.arctracker.io/items/v2/mushroom.png",
       "rarity": "Uncommon",
       "type": "Nature",
       "category": "Nature",
@@ -7114,7 +7097,7 @@
         "originalEn": "Music Album"
       },
       "description": "家でのリラックスした夜、気軽な集まり、プライベートなエアギターコンサートに最適。",
-      "icon": "https://cdn.arctracker.io/items/music_album.png",
+      "icon": "https://cdn.arctracker.io/items/v2/music_album.png",
       "rarity": "Rare",
       "type": "Trinket",
       "category": "Trinket",
@@ -7135,7 +7118,7 @@
         "originalEn": "Music Box"
       },
       "description": "ちょっとした財産の価値がある。",
-      "icon": "https://cdn.arctracker.io/items/music_box.png",
+      "icon": "https://cdn.arctracker.io/items/v2/music_box.png",
       "rarity": "Rare",
       "type": "Trinket",
       "category": "Trinket",
@@ -7157,7 +7140,7 @@
         "originalEn": "Muzzle Brake I"
       },
       "description": "垂直反動と水平反動の両方をわずかに軽減。対応武器: Rattler、Ferro、Burletta、Stitcher、Tempest",
-      "icon": "https://cdn.arctracker.io/items/muzzle_brake_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/muzzle_brake_i.png",
       "rarity": "Common",
       "type": "Modification",
       "category": "Modification",
@@ -7185,7 +7168,7 @@
         "originalEn": "Muzzle Brake II"
       },
       "description": "垂直反動と水平反動の両方を適度に軽減。対応武器：Tempest、Arpeggio、Kettle、Ferro、Renegade",
-      "icon": "https://cdn.arctracker.io/items/muzzle_brake_ii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/muzzle_brake_ii.png",
       "rarity": "Uncommon",
       "type": "Modification",
       "category": "Modification",
@@ -7214,7 +7197,7 @@
         "originalEn": "Muzzle Brake III"
       },
       "description": "垂直反動と水平反動の両方を大幅に軽減します。対応武器：アルペジオ、フェロ、レネゲード、アンビル、ステッチャー",
-      "icon": "https://cdn.arctracker.io/items/muzzle_brake_iii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/muzzle_brake_iii.png",
       "rarity": "Rare",
       "type": "Modification",
       "category": "Modification",
@@ -7243,7 +7226,7 @@
         "originalEn": "Noisemaker"
       },
       "description": "敵のレイダーを検知すると警報を鳴らす設置型近接センサー。",
-      "icon": "https://cdn.arctracker.io/items/noisemaker.png",
+      "icon": "https://cdn.arctracker.io/items/v2/noisemaker.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -7270,7 +7253,7 @@
         "originalEn": "Number Plate"
       },
       "description": "金属部品にリサイクルできる。",
-      "icon": "https://cdn.arctracker.io/items/number_plate.png",
+      "icon": "https://cdn.arctracker.io/items/v2/number_plate.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -7296,7 +7279,7 @@
         "originalEn": "Nutrient Meter"
       },
       "description": "予期せぬイニシアチブのクエストを完了するためにティアン・ウェンに届ける必要があるクエストアイテム。",
-      "icon": "https://cdn.arctracker.io/items/nutrient_meter.png",
+      "icon": "https://cdn.arctracker.io/items/v2/nutrient_meter.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -7313,7 +7296,7 @@
         "originalEn": "Official Shutdown Documentation"
       },
       "description": "",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/official_shutdown_documentation.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -7330,7 +7313,7 @@
         "originalEn": "Oil"
       },
       "description": "武器や爆発物の製作に使用。化学薬品にリサイクル可能。製作用途：Renegade、爆発性化合物、ブレイズグレネード",
-      "icon": "https://cdn.arctracker.io/items/oil.png",
+      "icon": "https://cdn.arctracker.io/items/v2/oil.png",
       "rarity": "Uncommon",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -7356,7 +7339,7 @@
         "originalEn": "Old World Books"
       },
       "description": "過去は断片として生き残っている。多くは退屈で平凡なものだが、然るべき者にとっては計り知れない価値がある。",
-      "icon": "https://cdn.arctracker.io/items/old_world_books.png",
+      "icon": "https://cdn.arctracker.io/items/v2/old_world_books.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -7373,7 +7356,7 @@
         "originalEn": "Olives"
       },
       "description": "消費すると少量のスタミナを回復できる。",
-      "icon": "https://cdn.arctracker.io/items/olives.png",
+      "icon": "https://cdn.arctracker.io/items/v2/olives.png",
       "rarity": "Uncommon",
       "type": "Nature",
       "category": "Nature",
@@ -7399,7 +7382,7 @@
         "originalEn": "Osprey I"
       },
       "description": "信頼できるダメージと精度を持つ。",
-      "icon": "https://cdn.arctracker.io/items/osprey.png",
+      "icon": "https://cdn.arctracker.io/items/v2/osprey_i.png",
       "rarity": "Rare",
       "type": "Sniper Rifle",
       "category": "Weapon",
@@ -7433,7 +7416,7 @@
         "originalEn": "Osprey II"
       },
       "description": "信頼性の高いダメージ出力と精度を備えたスコープ付きボルトアクション・スナイパーライフル。",
-      "icon": "https://cdn.arctracker.io/items/osprey.png",
+      "icon": "https://cdn.arctracker.io/items/v2/osprey_ii.png",
       "rarity": "Rare",
       "type": "Sniper Rifle",
       "category": "Weapon",
@@ -7467,7 +7450,7 @@
         "originalEn": "Osprey III"
       },
       "description": "信頼性の高いダメージ出力と精度を備えたスコープ付きボルトアクション・スナイパーライフル。",
-      "icon": "https://cdn.arctracker.io/items/osprey.png",
+      "icon": "https://cdn.arctracker.io/items/v2/osprey_iii.png",
       "rarity": "Rare",
       "type": "Sniper Rifle",
       "category": "Weapon",
@@ -7501,7 +7484,7 @@
         "originalEn": "Osprey IV"
       },
       "description": "信頼性の高いダメージ出力と精度を備えたスコープ付きボルトアクション・スナイパーライフル。",
-      "icon": "https://cdn.arctracker.io/items/osprey.png",
+      "icon": "https://cdn.arctracker.io/items/v2/osprey_iv.png",
       "rarity": "Rare",
       "type": "Sniper Rifle",
       "category": "Weapon",
@@ -7534,7 +7517,7 @@
         "originalEn": "Padded Stock"
       },
       "description": "安定性を大幅に向上させます。対応武器：Arpeggio、Rattler、Ferro、Renegade、Torrente",
-      "icon": "https://cdn.arctracker.io/items/padded_stock.png",
+      "icon": "https://cdn.arctracker.io/items/v2/padded_stock.png",
       "rarity": "Epic",
       "type": "Modification",
       "category": "Modification",
@@ -7563,7 +7546,7 @@
         "originalEn": "Painted Box"
       },
       "description": "数枚のコインの価値があるかもしれない。",
-      "icon": "https://cdn.arctracker.io/items/painted_box.png",
+      "icon": "https://cdn.arctracker.io/items/v2/painted_box.png",
       "rarity": "Uncommon",
       "type": "Trinket",
       "category": "Trinket",
@@ -7583,7 +7566,7 @@
         "originalEn": "Patrol Car Key"
       },
       "description": "パトカーの鍵。",
-      "icon": "https://cdn.arctracker.io/items/patrol_car_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/patrol_car_key.png",
       "rarity": "Uncommon",
       "type": "Key",
       "category": "Key",
@@ -7603,7 +7586,7 @@
         "originalEn": "Photoelectric Cloak"
       },
       "description": "ARCから身を隠すことができるガジェット。",
-      "icon": "https://cdn.arctracker.io/items/photoelectric_cloak.png",
+      "icon": "https://cdn.arctracker.io/items/v2/photoelectric_cloak.png",
       "rarity": "Epic",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -7625,7 +7608,7 @@
       },
       "stackSize": 1,
       "value": 5000,
-      "weight": 1
+      "weight": 3
     },
     "pilgrims_peak_security_code": {
       "name": {
@@ -7633,7 +7616,7 @@
         "originalEn": "Pilgrim's Peak Security Code"
       },
       "description": "ブルーゲートのロックされたゲートを解除するために必要な4つのセキュリティコードの1つ。ピルグリムズ・ピークで発見。",
-      "icon": "https://cdn.arctracker.io/items/security_code.png",
+      "icon": "https://cdn.arctracker.io/items/v2/pilgrims_peak_security_code.png",
       "rarity": "Common",
       "type": "Key",
       "category": "Key",
@@ -7650,7 +7633,7 @@
         "originalEn": "Plastic Parts"
       },
       "description": "幅広いアイテムのクラフトに使用。クラフト可能：ヘアピン、ライトシールド、略奪MK1、ライトインパクトグレネード、拡張ショットガンマガジン I",
-      "icon": "https://cdn.arctracker.io/items/plastic_parts.png",
+      "icon": "https://cdn.arctracker.io/items/v2/plastic_parts.png",
       "rarity": "Common",
       "type": "Basic Material",
       "category": "Basic Material",
@@ -7672,7 +7655,7 @@
         "originalEn": "Playing Cards"
       },
       "description": "スペランザンたちは、地震で倒れる前に誰が一番高い塔を作れるか見るのが大好きだ。",
-      "icon": "https://cdn.arctracker.io/items/playing_cards.png",
+      "icon": "https://cdn.arctracker.io/items/v2/playing_cards.png",
       "rarity": "Rare",
       "type": "Trinket",
       "category": "Trinket",
@@ -7693,7 +7676,7 @@
         "originalEn": "Polluted Air Filter"
       },
       "description": "製作部品にリサイクルできる。",
-      "icon": "https://cdn.arctracker.io/items/polluted_air_filter.png",
+      "icon": "https://cdn.arctracker.io/items/v2/polluted_air_filter.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -7720,7 +7703,7 @@
         "originalEn": "Pop Trigger"
       },
       "description": "クラフト素材にリサイクルできる。",
-      "icon": "https://cdn.arctracker.io/items/pop_trigger.png",
+      "icon": "https://cdn.arctracker.io/items/v2/pop_trigger.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -7747,7 +7730,7 @@
         "originalEn": "Portable TV"
       },
       "description": "クラフト素材にリサイクルできる。",
-      "icon": "https://cdn.arctracker.io/items/portable_tv.png",
+      "icon": "https://cdn.arctracker.io/items/v2/portable_tv.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -7774,7 +7757,7 @@
         "originalEn": "Possibly Toxic Plant"
       },
       "description": "",
-      "icon": "https://cdn.arctracker.io/items/possibly_toxic_plant.png",
+      "icon": "https://cdn.arctracker.io/items/v2/possibly_toxic_plant.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -7791,7 +7774,7 @@
         "originalEn": "Poster of Natural Wonders"
       },
       "description": "近くに立って目を細めれば、世界が崩壊しなかったかのようだ。",
-      "icon": "https://cdn.arctracker.io/items/poster_of_natural_wonders.png",
+      "icon": "https://cdn.arctracker.io/items/v2/poster_of_natural_wonders.png",
       "rarity": "Uncommon",
       "type": "Trinket",
       "category": "Trinket",
@@ -7812,7 +7795,7 @@
         "originalEn": "Pottery"
       },
       "description": "数枚のコインの価値があるかもしれない。",
-      "icon": "https://cdn.arctracker.io/items/pottery.png",
+      "icon": "https://cdn.arctracker.io/items/v2/pottery.png",
       "rarity": "Uncommon",
       "type": "Trinket",
       "category": "Trinket",
@@ -7833,7 +7816,7 @@
         "originalEn": "Power Bank"
       },
       "description": "製作材料にリサイクルできる。",
-      "icon": "https://cdn.arctracker.io/items/power_bank.png",
+      "icon": "https://cdn.arctracker.io/items/v2/power_bank.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -7862,7 +7845,7 @@
         "originalEn": "Power Cable"
       },
       "description": "電力伝送用の頑丈なケーブル。",
-      "icon": "https://cdn.arctracker.io/items/power_cable.png",
+      "icon": "https://cdn.arctracker.io/items/v2/power_cable.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -7890,7 +7873,7 @@
         "originalEn": "Power Rod"
       },
       "description": "製作に使用。製作に使用: ヘビーシールド、スナップフック",
-      "icon": "https://cdn.arctracker.io/items/power_rod.png",
+      "icon": "https://cdn.arctracker.io/items/v2/power_rod.png",
       "rarity": "Epic",
       "type": "Refined Material",
       "category": "Refined Material",
@@ -7922,7 +7905,7 @@
         "originalEn": "Powered Descender"
       },
       "description": "空中で使用すると落下速度を低下させるが、最大出力に達するまでに起動時間が必要。電力が尽きると停止する。",
-      "icon": "https://cdn.arctracker.io/items/powered_descender.png",
+      "icon": "https://cdn.arctracker.io/items/v2/powered_descender.png",
       "rarity": "Epic",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -7952,7 +7935,7 @@
         "originalEn": "Precision Gimbal"
       },
       "description": "",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/precision_gimbal.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -7969,7 +7952,7 @@
         "originalEn": "Prickly Pear"
       },
       "description": "消費すると少量のスタミナを回復できる。",
-      "icon": "https://cdn.arctracker.io/items/prickly_pear.png",
+      "icon": "https://cdn.arctracker.io/items/v2/prickly_pear.png",
       "rarity": "Common",
       "type": "Nature",
       "category": "Nature",
@@ -7995,7 +7978,7 @@
         "originalEn": "Processor"
       },
       "description": "製作に使用。製作に使用: Tactical Mk. 3 (防御型)、Combat Mk. 3 (側面攻撃型)、Combat Mk. 3 (攻撃型)、Looting Mk. 3 (慎重型)、Tactical Mk. 3 (治療型)",
-      "icon": "https://cdn.arctracker.io/items/processor.png",
+      "icon": "https://cdn.arctracker.io/items/v2/processor.png",
       "rarity": "Rare",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -8022,7 +8005,7 @@
         "originalEn": "Project Heartwood Blueprints"
       },
       "description": "プロジェクト・ハートウッドと呼ばれる何かの色あせた設計図。その正体は何であれ、建造されることはなかった。",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/project_heartwood_blueprints.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -8039,7 +8022,7 @@
         "originalEn": "Projector"
       },
       "description": "製作材料にリサイクルできる。",
-      "icon": "https://cdn.arctracker.io/items/projector.png",
+      "icon": "https://cdn.arctracker.io/items/v2/projector.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -8066,7 +8049,7 @@
         "originalEn": "Pulse Mine"
       },
       "description": "近接起動する地雷で、範囲内のあらゆるものを跳ね上げてノックバックさせる。",
-      "icon": "https://cdn.arctracker.io/items/pulse_mine.png",
+      "icon": "https://cdn.arctracker.io/items/v2/pulse_mine.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -8095,7 +8078,7 @@
         "originalEn": "Queen Reactor"
       },
       "description": "クラフト素材にリサイクル可能。",
-      "icon": "https://cdn.arctracker.io/items/queen_part.png",
+      "icon": "https://cdn.arctracker.io/items/v2/queen_reactor.png",
       "rarity": "Legendary",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -8122,7 +8105,7 @@
         "originalEn": "Radio"
       },
       "description": "製作部品にリサイクルできる。",
-      "icon": "https://cdn.arctracker.io/items/radio.png",
+      "icon": "https://cdn.arctracker.io/items/v2/radio.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -8150,7 +8133,7 @@
         "originalEn": "Radio Relay"
       },
       "description": "クラフト素材にリサイクルできます。",
-      "icon": "https://cdn.arctracker.io/items/radio_relay.png",
+      "icon": "https://cdn.arctracker.io/items/v2/radio_relay.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -8177,7 +8160,7 @@
         "originalEn": "Raider Flag"
       },
       "description": "日焼けで色あせ、しわだらけだが、それでもなお威厳がある。",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/raider_flag.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -8193,7 +8176,7 @@
         "originalEn": "Raider Hatch Key"
       },
       "description": "レイダーハッチを開錠する。",
-      "icon": "https://cdn.arctracker.io/items/raider_hatch_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/raider_hatch_key.png",
       "rarity": "Rare",
       "type": "Key",
       "category": "Key",
@@ -8215,7 +8198,7 @@
         "originalEn": "Raider's Refuge Security Code"
       },
       "description": "ブルーゲートのロックされたゲートを解除するために必要な4つのセキュリティコードの1つ。レイダーズ・レフュージで発見。",
-      "icon": "https://cdn.arctracker.io/items/security_code.png",
+      "icon": "https://cdn.arctracker.io/items/v2/raiders_refuge_security_code.png",
       "rarity": "Common",
       "type": "Key",
       "category": "Key",
@@ -8232,7 +8215,7 @@
         "originalEn": "Rattler I"
       },
       "description": "安価な攻撃オプションだが、一度に2発ずつリロードする必要がある。",
-      "icon": "https://cdn.arctracker.io/items/rattler.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rattler_i.png",
       "rarity": "Common",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -8264,7 +8247,7 @@
         "originalEn": "Rattler II"
       },
       "description": "フルオート式アサルトライフル。安価な攻撃オプションだが、一度に2発ずつリロードする必要がある。",
-      "icon": "https://cdn.arctracker.io/items/rattler.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rattler_ii.png",
       "rarity": "Common",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -8297,7 +8280,7 @@
         "originalEn": "Rattler III"
       },
       "description": "安価な攻撃手段だが、一度に2発ずつリロードする必要がある。",
-      "icon": "https://cdn.arctracker.io/items/rattler.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rattler_iii.png",
       "rarity": "Common",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -8331,7 +8314,7 @@
         "originalEn": "Rattler IV"
       },
       "description": "フルオート式アサルトライフル。安価な攻撃オプションだが、一度に2発ずつリロードする必要がある。",
-      "icon": "https://cdn.arctracker.io/items/rattler.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rattler_iv.png",
       "rarity": "Common",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -8364,7 +8347,7 @@
         "originalEn": "Recorder"
       },
       "description": "ARCの注意を引き、他のレイダーに感銘を与えるために使用できるリコーダー。",
-      "icon": "https://cdn.arctracker.io/items/recorder.png",
+      "icon": "https://cdn.arctracker.io/items/v2/recorder.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -8390,7 +8373,7 @@
         "originalEn": "Red Coral Jewelry"
       },
       "description": "精巧な職人技と、目を引く自然な魅力で評価されている。",
-      "icon": "https://cdn.arctracker.io/items/red_coral_jewelry.png",
+      "icon": "https://cdn.arctracker.io/items/v2/red_coral_jewelry.png",
       "rarity": "Rare",
       "type": "Trinket",
       "category": "Trinket",
@@ -8412,7 +8395,7 @@
         "originalEn": "Red Light Stick"
       },
       "description": "投げることができる化学発光体で、周囲のエリアを照らす。",
-      "icon": "https://cdn.arctracker.io/items/red_light_stick.png",
+      "icon": "https://cdn.arctracker.io/items/v2/red_light_stick.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -8440,7 +8423,7 @@
         "originalEn": "Reinforced Reception Security Code"
       },
       "description": "ブルーゲートのロックされたゲートを解除するために必要な4つのセキュリティコードの1つ。リインフォースド・レセプションで発見。",
-      "icon": "https://cdn.arctracker.io/items/security_code.png",
+      "icon": "https://cdn.arctracker.io/items/v2/reinforced_reception_security_code.png",
       "rarity": "Common",
       "type": "Key",
       "category": "Key",
@@ -8457,7 +8440,7 @@
         "originalEn": "Remote Control"
       },
       "description": "製作材料にリサイクルできる。",
-      "icon": "https://cdn.arctracker.io/items/remote_control.png",
+      "icon": "https://cdn.arctracker.io/items/v2/remote_control.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -8484,7 +8467,7 @@
         "originalEn": "Remote Raider Flare"
       },
       "description": "手動で起動すると、レイダー遭難フレアを発射する設置型デバイス。",
-      "icon": "https://cdn.arctracker.io/items/remote_raider_flare.png",
+      "icon": "https://cdn.arctracker.io/items/v2/remote_raider_flare.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -8514,7 +8497,7 @@
         "originalEn": "Renegade I"
       },
       "description": "高いダメージ出力、精度、ヘッドショットダメージを持つ。",
-      "icon": "https://cdn.arctracker.io/items/renegade.png",
+      "icon": "https://cdn.arctracker.io/items/v2/renegade_i.png",
       "rarity": "Rare",
       "type": "Battle Rifle",
       "category": "Weapon",
@@ -8548,7 +8531,7 @@
         "originalEn": "Renegade II"
       },
       "description": "高いダメージ出力、精度、ヘッドショットダメージを備えたレバーアクション・バトルライフル。",
-      "icon": "https://cdn.arctracker.io/items/renegade.png",
+      "icon": "https://cdn.arctracker.io/items/v2/renegade_ii.png",
       "rarity": "Rare",
       "type": "Battle Rifle",
       "category": "Weapon",
@@ -8582,7 +8565,7 @@
         "originalEn": "Renegade III"
       },
       "description": "高いダメージ出力、精度、ヘッドショットダメージを持つレバーアクション式バトルライフル。",
-      "icon": "https://cdn.arctracker.io/items/renegade.png",
+      "icon": "https://cdn.arctracker.io/items/v2/renegade_iii.png",
       "rarity": "Rare",
       "type": "Battle Rifle",
       "category": "Weapon",
@@ -8616,7 +8599,7 @@
         "originalEn": "Renegade IV"
       },
       "description": "高いダメージ出力、精度、ヘッドショットダメージを持つレバーアクション式バトルライフル。",
-      "icon": "https://cdn.arctracker.io/items/renegade.png",
+      "icon": "https://cdn.arctracker.io/items/v2/renegade_iv.png",
       "rarity": "Rare",
       "type": "Battle Rifle",
       "category": "Weapon",
@@ -8649,7 +8632,7 @@
         "originalEn": "Resin"
       },
       "description": "使用すると時間経過で少量の体力を徐々に回復できる。",
-      "icon": "https://cdn.arctracker.io/items/resin.png",
+      "icon": "https://cdn.arctracker.io/items/v2/resin.png",
       "rarity": "Common",
       "type": "Nature",
       "category": "Nature",
@@ -8669,7 +8652,7 @@
         "originalEn": "Ripped Safety Vest"
       },
       "description": "クラフト素材にリサイクルできます。",
-      "icon": "https://cdn.arctracker.io/items/ripped_safety_vest.png",
+      "icon": "https://cdn.arctracker.io/items/v2/ripped_safety_vest.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -8687,13 +8670,30 @@
       "value": 1000,
       "weight": 0.8
     },
+    "riven_tides_classifed_records_keycard": {
+      "name": {
+        "value": "Riven Tides機密記録キーカード",
+        "originalEn": "Riven Tides Classifed Records Keycard"
+      },
+      "description": "Riven Tidesの港湾局ビルにある機密記録室へのドアを解錠する。",
+      "icon": "https://cdn.arctracker.io/items/v2/riven_tides_classified_records_keycard.png",
+      "rarity": "Uncommon",
+      "type": "Key",
+      "category": "Key",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "stackSize": 1,
+      "value": 100,
+      "weight": 0.25
+    },
     "riven_tides_classified_records_keycard": {
       "name": {
         "value": "Riven Tides機密記録キーカード",
         "originalEn": "Riven Tides Classified Records Keycard"
       },
       "description": "Riven Tidesの港湾局ビルにある機密記録室へのドアを解錠する。",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/riven_tides_classified_records_keycard.png",
       "rarity": "Uncommon",
       "type": "Key",
       "category": "Key",
@@ -8710,7 +8710,7 @@
         "originalEn": "Riven Tides Crane House Keycard"
       },
       "description": "Riven Tidesにあるクレーンハウスのひとつのドアを解錠する。",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/riven_tides_crane_house_keycard.png",
       "rarity": "Common",
       "type": "Key",
       "category": "Key",
@@ -8727,7 +8727,7 @@
         "originalEn": "Riven Tides Hotel Keycard No. 102"
       },
       "description": "Riven TidesにあるPanorama Azzurroの数あるスイートのひとつのドアを解錠する。",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/riven_tides_hotel_keycard_no_102.png",
       "rarity": "Common",
       "type": "Key",
       "category": "Key",
@@ -8744,7 +8744,7 @@
         "originalEn": "Riven Tides Hotel Keycard No. 107"
       },
       "description": "Riven TidesにあるPanorama Azzurroの数あるスイートのひとつのドアを解錠する。",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/riven_tides_hotel_keycard_no_107.png",
       "rarity": "Common",
       "type": "Key",
       "category": "Key",
@@ -8761,7 +8761,7 @@
         "originalEn": "Riven Tides Hotel Keycard No. 113"
       },
       "description": "Riven TidesにあるPanorama Azzurroの数あるスイートのひとつのドアを解錠する。",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/riven_tides_hotel_keycard_no_113.png",
       "rarity": "Common",
       "type": "Key",
       "category": "Key",
@@ -8778,7 +8778,7 @@
         "originalEn": "Riven Tides Hotel Keycard No. 205"
       },
       "description": "Riven TidesにあるPanorama Azzurroの数あるスイートのひとつのドアを解錠する。",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/riven_tides_hotel_keycard_no_205.png",
       "rarity": "Common",
       "type": "Key",
       "category": "Key",
@@ -8795,7 +8795,7 @@
         "originalEn": "Riven Tides Hotel Keycard No. 208"
       },
       "description": "Riven TidesにあるPanorama Azzurroの数あるスイートのひとつのドアを解錠する。",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/riven_tides_hotel_keycard_no_208.png",
       "rarity": "Common",
       "type": "Key",
       "category": "Key",
@@ -8812,7 +8812,7 @@
         "originalEn": "Riven Tides Hotel Keycard No. 311"
       },
       "description": "Riven TidesにあるPanorama Azzurroの数あるスイートのひとつのドアを解錠する。",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/riven_tides_hotel_keycard_no_311.png",
       "rarity": "Common",
       "type": "Key",
       "category": "Key",
@@ -8829,7 +8829,7 @@
         "originalEn": "Riven Tides Hotel Keycard No. 404"
       },
       "description": "Riven TidesにあるPanorama Azzurroの数あるスイートのひとつのドアを解錠する。",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/riven_tides_hotel_keycard_no_404.png",
       "rarity": "Common",
       "type": "Key",
       "category": "Key",
@@ -8846,7 +8846,7 @@
         "originalEn": "Riven Tides Secure Storage Keycard"
       },
       "description": "Riven Tidesの港湾局ビルにある安全保管庫へのドアを解錠する",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/riven_tides_secure_storage_keycard.png",
       "rarity": "Epic",
       "type": "Key",
       "category": "Key",
@@ -8863,7 +8863,7 @@
         "originalEn": "Rocket Thruster"
       },
       "description": "クラフト素材にリサイクル可能。",
-      "icon": "https://cdn.arctracker.io/items/rocket_thruster.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rocket_thruster.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -8890,7 +8890,7 @@
         "originalEn": "Rocketeer Driver"
       },
       "description": "クラフト素材にリサイクルできます。",
-      "icon": "https://cdn.arctracker.io/items/rocketeer_driver.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rocketeer_driver.png",
       "rarity": "Epic",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -8917,7 +8917,7 @@
         "originalEn": "Roots"
       },
       "description": "数枚のコインの価値があるかもしれない。",
-      "icon": "https://cdn.arctracker.io/items/roots.png",
+      "icon": "https://cdn.arctracker.io/items/v2/roots.png",
       "rarity": "Uncommon",
       "type": "Nature",
       "category": "Nature",
@@ -8943,7 +8943,7 @@
         "originalEn": "Rope"
       },
       "description": "製作に使用。製作可能: Zipline、Snap Hook",
-      "icon": "https://cdn.arctracker.io/items/rope.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rope.png",
       "rarity": "Rare",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -8970,7 +8970,7 @@
         "originalEn": "Rosary"
       },
       "description": "数枚のコインの価値があるかもしれない。",
-      "icon": "https://cdn.arctracker.io/items/rosary.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rosary.png",
       "rarity": "Rare",
       "type": "Trinket",
       "category": "Trinket",
@@ -8991,7 +8991,7 @@
         "originalEn": "Rotary Encoder"
       },
       "description": "クラフト素材にリサイクルできます。",
-      "icon": "https://cdn.arctracker.io/items/rotary_encoder.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rotary_encoder.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9018,7 +9018,7 @@
         "originalEn": "Rubber Duck"
       },
       "description": "必要な時にいつでも話を聞いてくれる。投げて音を立てることができる。",
-      "icon": "https://cdn.arctracker.io/items/rubber_duck.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rubber_duck.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -9035,7 +9035,7 @@
         "originalEn": "Rubber Pad"
       },
       "description": "ゴム部品にリサイクルできる。",
-      "icon": "https://cdn.arctracker.io/items/rubber_pad.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rubber_pad.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9061,7 +9061,7 @@
         "originalEn": "Rubber Parts"
       },
       "description": "製作用のゴム片。製作可能: フェロ、ケトル、略奪MK1、シールドリチャージャー、ステッチャー",
-      "icon": "https://cdn.arctracker.io/items/rubber_parts.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rubber_parts.png",
       "rarity": "Common",
       "type": "Basic Material",
       "category": "Basic Material",
@@ -9083,7 +9083,7 @@
         "originalEn": "Ruined Accordion"
       },
       "description": "クラフト素材にリサイクルできる。",
-      "icon": "https://cdn.arctracker.io/items/ruined_accordion.png",
+      "icon": "https://cdn.arctracker.io/items/v2/ruined_accordion.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9110,7 +9110,7 @@
         "originalEn": "Ruined Augment"
       },
       "description": "クラフト素材にリサイクルできる。",
-      "icon": "https://cdn.arctracker.io/items/ruined_augment.png",
+      "icon": "https://cdn.arctracker.io/items/v2/ruined_augment.png",
       "rarity": "Common",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9137,7 +9137,7 @@
         "originalEn": "Ruined Baton"
       },
       "description": "クラフト素材にリサイクルできる",
-      "icon": "https://cdn.arctracker.io/items/ruined_baton.png",
+      "icon": "https://cdn.arctracker.io/items/v2/ruined_baton.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9164,7 +9164,7 @@
         "originalEn": "Ruined Handcuffs"
       },
       "description": "クラフト素材にリサイクルできる。",
-      "icon": "https://cdn.arctracker.io/items/ruined_handcuffs.png",
+      "icon": "https://cdn.arctracker.io/items/v2/ruined_handcuffs.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9190,7 +9190,7 @@
         "originalEn": "Ruined Parachute"
       },
       "description": "クラフト素材にリサイクルできます。",
-      "icon": "https://cdn.arctracker.io/items/ruined_parachute.png",
+      "icon": "https://cdn.arctracker.io/items/v2/ruined_parachute.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9216,7 +9216,7 @@
         "originalEn": "Ruined Riot Shield"
       },
       "description": "クラフト素材にリサイクル可能。",
-      "icon": "https://cdn.arctracker.io/items/ruined_riot_shield.png",
+      "icon": "https://cdn.arctracker.io/items/v2/ruined_riot_shield.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9243,7 +9243,7 @@
         "originalEn": "Ruined Tactical Vest"
       },
       "description": "クラフト素材にリサイクルできます。",
-      "icon": "https://cdn.arctracker.io/items/ruined_tactical_vest.png",
+      "icon": "https://cdn.arctracker.io/items/v2/ruined_tactical_vest.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9270,7 +9270,7 @@
         "originalEn": "Rusted Bolts"
       },
       "description": "金属部品にリサイクルできる。",
-      "icon": "https://cdn.arctracker.io/items/rusted_bolts.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rusted_bolts.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9297,7 +9297,7 @@
         "originalEn": "Rusted Gear"
       },
       "description": "クラフト素材にリサイクル可能。",
-      "icon": "https://cdn.arctracker.io/items/rusted_gear.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rusted_gear.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9324,7 +9324,7 @@
         "originalEn": "Rusted Shut Medical Kit"
       },
       "description": "錆びついて開かない救急箱、中身は不明。",
-      "icon": "https://cdn.arctracker.io/items/rusted_shut_medical_kit.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rusted_shut_medical_kit.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9351,7 +9351,7 @@
         "originalEn": "Rusted Tools"
       },
       "description": "錆びているが、クラフトにはまだ使える工具セット。",
-      "icon": "https://cdn.arctracker.io/items/rusted_tools.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rusted_tools.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9378,7 +9378,7 @@
         "originalEn": "Rusty ARC Steel"
       },
       "description": "ARCの敵や活動から入手。スクラップメタルにリサイクルできます。",
-      "icon": "https://cdn.arctracker.io/items/rusty_arc_steel.png",
+      "icon": "https://cdn.arctracker.io/items/v2/rusty_arc_steel.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9404,7 +9404,7 @@
         "originalEn": "Sample Cleaner"
       },
       "description": "クラフト素材にリサイクルできます。",
-      "icon": "https://cdn.arctracker.io/items/sample_cleaner.png",
+      "icon": "https://cdn.arctracker.io/items/v2/sample_cleaner.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9431,7 +9431,7 @@
         "originalEn": "Scout Patrol Note"
       },
       "description": "",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/scout_patrol_note.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -9448,7 +9448,7 @@
         "originalEn": "Secret Meeting Info"
       },
       "description": "",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/secret_meeting_info.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -9465,7 +9465,7 @@
         "originalEn": "Seed Vault Box Key"
       },
       "description": "ステラ・モンティスの種子保管庫にある特定の箱を開ける鍵。",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/seed_vault_box_key.png",
       "rarity": "Common",
       "type": "Key",
       "category": "Key",
@@ -9482,7 +9482,7 @@
         "originalEn": "Seeker Grenade"
       },
       "description": "近くの単一のARCを標的とし、着弾時に爆発ダメージを与える誘導グレネード。",
-      "icon": "https://cdn.arctracker.io/items/seeker_grenade.png",
+      "icon": "https://cdn.arctracker.io/items/v2/seeker_grenade.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -9511,7 +9511,7 @@
         "originalEn": "Sensors"
       },
       "description": "クラフトに使用。作成可能: ウルフパック、爆発地雷、レイダーハッチキー、タギンググレネード",
-      "icon": "https://cdn.arctracker.io/items/sensors.png",
+      "icon": "https://cdn.arctracker.io/items/v2/sensors.png",
       "rarity": "Rare",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -9539,7 +9539,7 @@
         "originalEn": "Sentinel Firing Core"
       },
       "description": "クラフト素材にリサイクルできます。",
-      "icon": "https://cdn.arctracker.io/items/sentinel_firing_core.png",
+      "icon": "https://cdn.arctracker.io/items/v2/sentinel_firing_core.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9566,7 +9566,7 @@
         "originalEn": "Shaker"
       },
       "description": "ARCの注意を引き、他のレイダーを感心させるためのリズム楽器。",
-      "icon": "https://cdn.arctracker.io/items/shaker.png",
+      "icon": "https://cdn.arctracker.io/items/v2/shaker.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -9596,7 +9596,7 @@
         "originalEn": "Shield Recharger"
       },
       "description": "時間経過とともにシールドを徐々に回復する携帯キット。",
-      "icon": "https://cdn.arctracker.io/items/shield_recharger.png",
+      "icon": "https://cdn.arctracker.io/items/v2/shield_recharger.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -9625,7 +9625,7 @@
         "originalEn": "Shotgun Ammo"
       },
       "description": "対応武器：Il Toro、Vulcano",
-      "icon": "https://cdn.arctracker.io/items/shotgun_ammo.png",
+      "icon": "https://cdn.arctracker.io/items/v2/shotgun_ammo.png",
       "rarity": "Common",
       "type": "Ammunition",
       "category": "Ammunition",
@@ -9647,7 +9647,7 @@
         "originalEn": "Shotgun Choke I"
       },
       "description": "基本拡散をわずかに軽減する。対応武器：Il Toro、Vulcano",
-      "icon": "https://cdn.arctracker.io/items/shotgun_choke_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/shotgun_choke_i.png",
       "rarity": "Common",
       "type": "Modification",
       "category": "Modification",
@@ -9675,7 +9675,7 @@
         "originalEn": "Shotgun Choke II"
       },
       "description": "基本拡散を適度に減少させる。対応武器：Il Toro、Vulcano",
-      "icon": "https://cdn.arctracker.io/items/shotgun_choke_ii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/shotgun_choke_ii.png",
       "rarity": "Uncommon",
       "type": "Modification",
       "category": "Modification",
@@ -9704,7 +9704,7 @@
         "originalEn": "Shotgun Choke III"
       },
       "description": "基本拡散を大幅に軽減します。",
-      "icon": "https://cdn.arctracker.io/items/shotgun_choke_iii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/shotgun_choke_iii.png",
       "rarity": "Rare",
       "type": "Modification",
       "category": "Modification",
@@ -9733,7 +9733,7 @@
         "originalEn": "Shotgun Silencer"
       },
       "description": "発砲時の騒音を適度に軽減する。",
-      "icon": "https://cdn.arctracker.io/items/shotgun_silencer.png",
+      "icon": "https://cdn.arctracker.io/items/v2/shotgun_silencer.png",
       "rarity": "Epic",
       "type": "Modification",
       "category": "Modification",
@@ -9762,7 +9762,7 @@
         "originalEn": "Showstopper"
       },
       "description": "遅延起爆する手榴弾。範囲内の敵をスタンさせる。",
-      "icon": "https://cdn.arctracker.io/items/showstopper.png",
+      "icon": "https://cdn.arctracker.io/items/v2/showstopper.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -9793,7 +9793,7 @@
         "originalEn": "Shrapnel Grenade"
       },
       "description": "爆発時に鋭利な破片を飛散させる即席信管グレネード。ARCの装甲板には効果が薄い",
-      "icon": "https://cdn.arctracker.io/items/shrapnel_grenade.png",
+      "icon": "https://cdn.arctracker.io/items/v2/shrapnel_grenade.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -9823,7 +9823,7 @@
         "originalEn": "Shredder Gyro"
       },
       "description": "クラフト素材にリサイクルできます。",
-      "icon": "https://cdn.arctracker.io/items/shredder_gyro.png",
+      "icon": "https://cdn.arctracker.io/items/v2/shredder_gyro.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9850,7 +9850,7 @@
         "originalEn": "Signal Amplifier"
       },
       "description": "クラフト素材にリサイクルできます。",
-      "icon": "https://cdn.arctracker.io/items/signal_amplifier.png",
+      "icon": "https://cdn.arctracker.io/items/v2/signal_amplifier.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -9877,7 +9877,7 @@
         "originalEn": "Silencer I"
       },
       "description": "発砲時の騒音をわずかに軽減する。",
-      "icon": "https://cdn.arctracker.io/items/silencer_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/silencer_i.png",
       "rarity": "Uncommon",
       "type": "Modification",
       "category": "Modification",
@@ -9906,7 +9906,7 @@
         "originalEn": "Silencer II"
       },
       "description": "射撃時に発生する騒音を適度に軽減します。対応武器：アルペジオ、フェロ、レネゲード、アンビル、ステッチャー",
-      "icon": "https://cdn.arctracker.io/items/silencer_ii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/silencer_ii.png",
       "rarity": "Rare",
       "type": "Modification",
       "category": "Modification",
@@ -9935,7 +9935,7 @@
         "originalEn": "Silencer III"
       },
       "description": "発砲時の騒音を大幅に軽減します。対応武器：Tempest、Arpeggio、Kettle、Ferro、Renegade",
-      "icon": "https://cdn.arctracker.io/items/silencer_iii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/silencer_iii.png",
       "rarity": "Epic",
       "type": "Modification",
       "category": "Modification",
@@ -9959,7 +9959,7 @@
         "originalEn": "Silver Teaspoon Set"
       },
       "description": "洗練と優雅さを放つ、輝く煌めくセット。",
-      "icon": "https://cdn.arctracker.io/items/silver_teaspoon_set.png",
+      "icon": "https://cdn.arctracker.io/items/v2/silver_teaspoon_set.png",
       "rarity": "Rare",
       "type": "Trinket",
       "category": "Trinket",
@@ -9981,7 +9981,7 @@
         "originalEn": "Simple Gun Parts"
       },
       "description": "武器の製作に使用。製作可能: Il Toro、Burletta、Anvil、Arpeggio、ヘビーガンパーツ",
-      "icon": "https://cdn.arctracker.io/items/simple_gun_parts.png",
+      "icon": "https://cdn.arctracker.io/items/v2/simple_gun_parts.png",
       "rarity": "Uncommon",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -10008,7 +10008,7 @@
         "originalEn": "\"Sirena Dorata\" Ship Model"
       },
       "description": "地中海の太陽が船体に輝くこの鮮やかなヨットは、海水の華麗さを象徴する永遠の傑作である。",
-      "icon": "https://cdn.arctracker.io/items/sirena_dorata_ship_model.png",
+      "icon": "https://cdn.arctracker.io/items/v2/sirena_dorata_ship_model.png",
       "rarity": "Epic",
       "type": "Trinket",
       "category": "Trinket",
@@ -10025,7 +10025,7 @@
         "originalEn": "Smoke Grenade"
       },
       "description": "着弾時に持続する煙幕を発生させ、ARCや他のレイダーの視界を遮る手榴弾。",
-      "icon": "https://cdn.arctracker.io/items/smoke_grenade.png",
+      "icon": "https://cdn.arctracker.io/items/v2/smoke_grenade.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -10055,7 +10055,7 @@
         "originalEn": "Smoke Grenade Trap"
       },
       "description": "スモークグレネードを起爆するレーザートリップワイヤー。",
-      "icon": "https://cdn.arctracker.io/items/smoke_grenade_trap.png",
+      "icon": "https://cdn.arctracker.io/items/v2/smoke_grenade_trap.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -10076,7 +10076,7 @@
         "originalEn": "Snap Blast Grenade"
       },
       "description": "表面に張り付き、短い遅延の後に爆発ダメージを与える手榴弾。",
-      "icon": "https://cdn.arctracker.io/items/snap_blast_grenade.png",
+      "icon": "https://cdn.arctracker.io/items/v2/snap_blast_grenade.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -10106,7 +10106,7 @@
         "originalEn": "Snap Hook"
       },
       "description": "構造物を登ったり、長距離を移動したりできるガジェット。",
-      "icon": "https://cdn.arctracker.io/items/snap_hook.png",
+      "icon": "https://cdn.arctracker.io/items/v2/snap_hook.png",
       "rarity": "Legendary",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -10137,7 +10137,7 @@
         "originalEn": "Snitch Scanner"
       },
       "description": "ARCアロイにリサイクル可能。投擲してARCを呼び出せる。",
-      "icon": "https://cdn.arctracker.io/items/snitch_scanner.png",
+      "icon": "https://cdn.arctracker.io/items/v2/snitch_scanner.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -10164,7 +10164,7 @@
         "originalEn": "Snowball"
       },
       "description": "固く握り固めた雪玉。",
-      "icon": "https://cdn.arctracker.io/items/snowball.png",
+      "icon": "https://cdn.arctracker.io/items/v2/snowball.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -10184,7 +10184,7 @@
         "originalEn": "Spaceport Container Storage Key"
       },
       "description": "宇宙港のコンテナ倉庫用の鍵。",
-      "icon": "https://cdn.arctracker.io/items/spaceport_control_tower_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/spaceport_container_storage_key.png",
       "rarity": "Rare",
       "type": "Key",
       "category": "Key",
@@ -10201,7 +10201,7 @@
         "originalEn": "Spaceport Control Tower Key"
       },
       "description": "宇宙港の管制塔A6の扉を開ける",
-      "icon": "https://cdn.arctracker.io/items/spaceport_control_tower_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/spaceport_control_tower_key.png",
       "rarity": "Rare",
       "type": "Key",
       "category": "Key",
@@ -10218,7 +10218,7 @@
         "originalEn": "Spaceport Trench Tower Key"
       },
       "description": "宇宙港の塹壕タワーへの扉を開錠します",
-      "icon": "https://cdn.arctracker.io/items/spaceport_trench_tower_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/spaceport_trench_tower_key.png",
       "rarity": "Uncommon",
       "type": "Key",
       "category": "Key",
@@ -10235,7 +10235,7 @@
         "originalEn": "Spaceport Warehouse Key"
       },
       "description": "宇宙港の倉庫の鍵。",
-      "icon": "https://cdn.arctracker.io/items/spaceport_trench_tower_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/spaceport_warehouse_key.png",
       "rarity": "Uncommon",
       "type": "Key",
       "category": "Key",
@@ -10252,7 +10252,7 @@
         "originalEn": "Speaker Component"
       },
       "description": "クラフトに使用。作成可能: ルアーグレネード、光電クローク",
-      "icon": "https://cdn.arctracker.io/items/speaker_component.png",
+      "icon": "https://cdn.arctracker.io/items/v2/speaker_component.png",
       "rarity": "Rare",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -10279,7 +10279,7 @@
         "originalEn": "Spectrometer"
       },
       "description": "クラフト素材にリサイクルできます。",
-      "icon": "https://cdn.arctracker.io/items/spectrometer.png",
+      "icon": "https://cdn.arctracker.io/items/v2/spectrometer.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -10306,7 +10306,7 @@
         "originalEn": "Spectrum Analyzer"
       },
       "description": "クラフト素材にリサイクルできます。",
-      "icon": "https://cdn.arctracker.io/items/spectrum_analyzer.png",
+      "icon": "https://cdn.arctracker.io/items/v2/spectrum_analyzer.png",
       "rarity": "Epic",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -10333,7 +10333,7 @@
         "originalEn": "Spotter Relay"
       },
       "description": "クラフト素材にリサイクルできます。",
-      "icon": "https://cdn.arctracker.io/items/spotter_relay.png",
+      "icon": "https://cdn.arctracker.io/items/v2/spotter_relay.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -10360,7 +10360,7 @@
         "originalEn": "Spring Cushion"
       },
       "description": "クラフト素材にリサイクルできます。",
-      "icon": "https://cdn.arctracker.io/items/spring_cushion.png",
+      "icon": "https://cdn.arctracker.io/items/v2/spring_cushion.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -10388,7 +10388,7 @@
         "originalEn": "Stable Stock I"
       },
       "description": "拡散と反動の回復時間をわずかに改善する。",
-      "icon": "https://cdn.arctracker.io/items/stable_stock_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/stable_stock_i.png",
       "rarity": "Common",
       "type": "Modification",
       "category": "Modification",
@@ -10416,7 +10416,7 @@
         "originalEn": "Stable Stock II"
       },
       "description": "拡散と反動回復時間を適度に改善。",
-      "icon": "https://cdn.arctracker.io/items/stable_stock_ii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/stable_stock_ii.png",
       "rarity": "Uncommon",
       "type": "Modification",
       "category": "Modification",
@@ -10445,7 +10445,7 @@
         "originalEn": "Stable Stock III"
       },
       "description": "拡散と反動回復時間を大幅に改善します。",
-      "icon": "https://cdn.arctracker.io/items/stable_stock_iii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/stable_stock_iii.png",
       "rarity": "Rare",
       "type": "Modification",
       "category": "Modification",
@@ -10474,7 +10474,7 @@
         "originalEn": "Stack of Movie Tapes"
       },
       "description": "",
-      "icon": "https://cdn.arctracker.io/items/stack_of_movie_tapes.png",
+      "icon": "https://cdn.arctracker.io/items/v2/stack_of_movie_tapes.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -10491,7 +10491,7 @@
         "originalEn": "Statuette"
       },
       "description": "ちょっとした財産に値する。",
-      "icon": "https://cdn.arctracker.io/items/statuette.png",
+      "icon": "https://cdn.arctracker.io/items/v2/statuette.png",
       "rarity": "Rare",
       "type": "Trinket",
       "category": "Trinket",
@@ -10512,7 +10512,7 @@
         "originalEn": "Steel Spring"
       },
       "description": "幅広いアイテムの作成に使用。クラフト素材にリサイクル可能。作成可能: 拡張ショットガンマガジンI、拡張ミディアムマガジンI、拡張ライトマガジンI、トレンテ、拡張ミディアムマガジンII",
-      "icon": "https://cdn.arctracker.io/items/steel_spring.png",
+      "icon": "https://cdn.arctracker.io/items/v2/steel_spring.png",
       "rarity": "Uncommon",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -10538,7 +10538,7 @@
         "originalEn": "Stella Montis Archives Key"
       },
       "description": "ステラ・モンティスの医学研究所の扉を開ける",
-      "icon": "https://cdn.arctracker.io/items/stella_montis_archives_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/stella_montis_archives_key.png",
       "rarity": "Epic",
       "type": "Key",
       "category": "Key",
@@ -10555,7 +10555,7 @@
         "originalEn": "Stella Montis Assembly Admin Key"
       },
       "description": "ステラ・モンティスの組立エリアのドアを開錠する",
-      "icon": "https://cdn.arctracker.io/items/stella_montis_assembly_admin_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/stella_montis_assembly_admin_key.png",
       "rarity": "Uncommon",
       "type": "Key",
       "category": "Key",
@@ -10572,7 +10572,7 @@
         "originalEn": "Stella Montis Medical Storage Key"
       },
       "description": "ステラ・モンティスの記録保管所の扉を開ける",
-      "icon": "https://cdn.arctracker.io/items/stella_montis_medical_storage_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/stella_montis_medical_storage_key.png",
       "rarity": "Uncommon",
       "type": "Key",
       "category": "Key",
@@ -10589,7 +10589,7 @@
         "originalEn": "Stella Montis Security Checkpoint Key"
       },
       "description": "ステラ・モンティスのセキュリティチェックポイントの扉を開ける",
-      "icon": "https://cdn.arctracker.io/items/stella_montis_security_checkpoint_key.png",
+      "icon": "https://cdn.arctracker.io/items/v2/stella_montis_security_checkpoint_key.png",
       "rarity": "Rare",
       "type": "Key",
       "category": "Key",
@@ -10606,7 +10606,7 @@
         "originalEn": "Sterilized Bandage"
       },
       "description": "時間をかけて大量の体力を徐々に回復する医療アイテム。",
-      "icon": "https://cdn.arctracker.io/items/sterilized_bandage.png",
+      "icon": "https://cdn.arctracker.io/items/v2/sterilized_bandage.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -10636,7 +10636,7 @@
         "originalEn": "Stitcher I"
       },
       "description": "優れたダメージを与えるが、発射速度がかなり低く、制御が難しい。",
-      "icon": "https://cdn.arctracker.io/items/stitcher.png",
+      "icon": "https://cdn.arctracker.io/items/v2/stitcher_i.png",
       "rarity": "Common",
       "type": "SMG",
       "category": "Weapon",
@@ -10669,7 +10669,7 @@
         "originalEn": "Stitcher II"
       },
       "description": "優れたダメージを与えるが、発射速度がかなり低く、制御が難しい。",
-      "icon": "https://cdn.arctracker.io/items/stitcher.png",
+      "icon": "https://cdn.arctracker.io/items/v2/stitcher_ii.png",
       "rarity": "Common",
       "type": "SMG",
       "category": "Weapon",
@@ -10703,7 +10703,7 @@
         "originalEn": "Stitcher III"
       },
       "description": "フルオートサブマシンガン。優れたダメージを与えるが、発射速度がかなり低く、制御が難しい。",
-      "icon": "https://cdn.arctracker.io/items/stitcher.png",
+      "icon": "https://cdn.arctracker.io/items/v2/stitcher_iii.png",
       "rarity": "Common",
       "type": "SMG",
       "category": "Weapon",
@@ -10737,7 +10737,7 @@
         "originalEn": "Stitcher IV"
       },
       "description": "フルオートサブマシンガン。優れたダメージを与えるが、発射速度がかなり低く、制御が難しい。",
-      "icon": "https://cdn.arctracker.io/items/stitcher.png",
+      "icon": "https://cdn.arctracker.io/items/v2/stitcher_iv.png",
       "rarity": "Common",
       "type": "SMG",
       "category": "Weapon",
@@ -10770,7 +10770,7 @@
         "originalEn": "Surge Coil"
       },
       "description": "一定時間ごとに周囲を帯電させ、範囲内にいるものを短時間スタンさせる設置型デバイス。",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/surge_coil.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -10801,7 +10801,7 @@
         "originalEn": "Surge Shield Recharger"
       },
       "description": "使用時にシールドを充電する携帯キット。",
-      "icon": "https://cdn.arctracker.io/items/surge_shield_recharger.png",
+      "icon": "https://cdn.arctracker.io/items/v2/surge_shield_recharger.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -10830,7 +10830,7 @@
         "originalEn": "Surveyor Vault"
       },
       "description": "クラフト素材にリサイクルできます。",
-      "icon": "https://cdn.arctracker.io/items/surveyor_vault.png",
+      "icon": "https://cdn.arctracker.io/items/v2/surveyor_vault.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -10857,7 +10857,7 @@
         "originalEn": "Synthesized Fuel"
       },
       "description": "合成燃料ブレンドの容器。",
-      "icon": "https://cdn.arctracker.io/items/synthesized_fuel.png",
+      "icon": "https://cdn.arctracker.io/items/v2/synthesized_fuel.png",
       "rarity": "Rare",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -10884,7 +10884,7 @@
         "originalEn": "Syringe"
       },
       "description": "医療品のクラフトに使用。プラスチックにリサイクル可能。クラフト用途：ヴィータショット",
-      "icon": "https://cdn.arctracker.io/items/syringe.png",
+      "icon": "https://cdn.arctracker.io/items/v2/syringe.png",
       "rarity": "Rare",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -10911,7 +10911,7 @@
         "originalEn": "Tactical Mk. 1"
       },
       "description": "基本的な戦術強化。より多くのクイック使用スロットで戦術的選択肢が増えるが、生存性が限定的で略奪能力がやや低い。",
-      "icon": "https://cdn.arctracker.io/items/tactical_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/tactical_mk1.png",
       "rarity": "Uncommon",
       "type": "Augment",
       "category": "Augment",
@@ -10940,7 +10940,7 @@
         "originalEn": "Tactical Mk. 2"
       },
       "description": "バックパックスペースとユーティリティアイテムスロットを追加。",
-      "icon": "https://cdn.arctracker.io/items/tactical_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/tactical_mk2.png",
       "rarity": "Rare",
       "type": "Augment",
       "category": "Augment",
@@ -10969,7 +10969,7 @@
         "originalEn": "Tactical Mk. 3 (Defensive)"
       },
       "description": "防御に特化した強化装備で、シールドを常に最大に保つ。",
-      "icon": "https://cdn.arctracker.io/items/tactical_mk3_defensive.png",
+      "icon": "https://cdn.arctracker.io/items/v2/tactical_mk3_defensive.png",
       "rarity": "Epic",
       "type": "Augment",
       "category": "Augment",
@@ -10998,7 +10998,7 @@
         "originalEn": "Tactical Mk. 3 (Healing)"
       },
       "description": "治療に特化した強化装備で、治療アイテム用の追加スロットを提供。ダウン状態から復活すると、10秒間で20の体力を回復する治療クラウドを放出。クールダウン30秒。",
-      "icon": "https://cdn.arctracker.io/items/tactical_mk3_healing.png",
+      "icon": "https://cdn.arctracker.io/items/v2/tactical_mk3_healing.png",
       "rarity": "Epic",
       "type": "Augment",
       "category": "Augment",
@@ -11027,7 +11027,7 @@
         "originalEn": "Tactical Mk. 3 (Revival)"
       },
       "description": "チームサポート用に設計された蘇生特化型オーグメント。5秒ごとにHPを1回復する。ダメージを受けると、効果は30秒間中断される。使用回数無制限、クールダウン240秒のデフィブリレーターが内蔵されている。",
-      "icon": "https://cdn.arctracker.io/items/tactical_mk3_revival.png",
+      "icon": "https://cdn.arctracker.io/items/v2/tactical_mk3_revival.png",
       "rarity": "Epic",
       "type": "Augment",
       "category": "Augment",
@@ -11056,7 +11056,7 @@
         "originalEn": "Tactical Mk. 3 (Smoke)"
       },
       "description": "戦術MK2強化装備のアップグレード版で、全体的に容量が拡張される。シールド破壊時、小型のスモーク・グレネードを展開する。固定クールダウンあり。",
-      "icon": "https://cdn.arctracker.io/items/tactical_mk3_smoke.png",
+      "icon": "https://cdn.arctracker.io/items/v2/tactical_mk3_smoke.png",
       "rarity": "Epic",
       "type": "Augment",
       "category": "Augment",
@@ -11085,7 +11085,7 @@
         "originalEn": "Tagging Grenade"
       },
       "description": "遅延後に爆発し、エリア内のレイダーとARC敵をタグ付けして、一時的に位置を追跡できるようにする手榴弾。",
-      "icon": "https://cdn.arctracker.io/items/tagging_grenade.png",
+      "icon": "https://cdn.arctracker.io/items/v2/tagging_grenade.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -11115,7 +11115,7 @@
         "originalEn": "Tattered Arc Lining"
       },
       "description": "クラフト素材にリサイクルできます。",
-      "icon": "https://cdn.arctracker.io/items/tattered_arc_lining.png",
+      "icon": "https://cdn.arctracker.io/items/v2/tattered_arc_lining.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -11141,7 +11141,7 @@
         "originalEn": "Tattered Clothes"
       },
       "description": "布にリサイクルできます。",
-      "icon": "https://cdn.arctracker.io/items/tattered_clothes.png",
+      "icon": "https://cdn.arctracker.io/items/v2/tattered_clothes.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -11167,7 +11167,7 @@
         "originalEn": "Telemetry Transceiver"
       },
       "description": "クラフト素材にリサイクルできます。",
-      "icon": "https://cdn.arctracker.io/items/telemetry_transceiver.png",
+      "icon": "https://cdn.arctracker.io/items/v2/telemetry_transceiver.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -11194,7 +11194,7 @@
         "originalEn": "Tempest I"
       },
       "description": "完全自動のアサルトライフル。連射速度と精度は中程度。",
-      "icon": "https://cdn.arctracker.io/items/tempest.png",
+      "icon": "https://cdn.arctracker.io/items/v2/tempest_i.png",
       "rarity": "Epic",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -11228,7 +11228,7 @@
         "originalEn": "Tempest II"
       },
       "description": "完全自動のアサルトライフル。連射速度と精度は中程度。",
-      "icon": "https://cdn.arctracker.io/items/tempest.png",
+      "icon": "https://cdn.arctracker.io/items/v2/tempest_ii.png",
       "rarity": "Epic",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -11262,7 +11262,7 @@
         "originalEn": "Tempest III"
       },
       "description": "完全自動のアサルトライフル。連射速度と精度は中程度。",
-      "icon": "https://cdn.arctracker.io/items/tempest.png",
+      "icon": "https://cdn.arctracker.io/items/v2/tempest_iii.png",
       "rarity": "Epic",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -11296,7 +11296,7 @@
         "originalEn": "Tempest IV"
       },
       "description": "完全自動のアサルトライフル。連射速度と精度は中程度。",
-      "icon": "https://cdn.arctracker.io/items/tempest.png",
+      "icon": "https://cdn.arctracker.io/items/v2/tempest_iv.png",
       "rarity": "Epic",
       "type": "Assault Rifle",
       "category": "Weapon",
@@ -11329,7 +11329,7 @@
         "originalEn": "Thermostat"
       },
       "description": "クラフト素材にリサイクルできます。",
-      "icon": "https://cdn.arctracker.io/items/thermostat.png",
+      "icon": "https://cdn.arctracker.io/items/v2/thermostat.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -11356,7 +11356,7 @@
         "originalEn": "Tick Pod"
       },
       "description": "製作材料にリサイクルできる。",
-      "icon": "https://cdn.arctracker.io/items/tick_pod.png",
+      "icon": "https://cdn.arctracker.io/items/v2/tick_pod.png",
       "rarity": "Uncommon",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -11383,7 +11383,7 @@
         "originalEn": "Toaster"
       },
       "description": "クラフト素材にリサイクル可能。",
-      "icon": "https://cdn.arctracker.io/items/toaster.png",
+      "icon": "https://cdn.arctracker.io/items/v2/toaster.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -11410,7 +11410,7 @@
         "originalEn": "Torn Blanket"
       },
       "description": "布にリサイクルできる。",
-      "icon": "https://cdn.arctracker.io/items/torn_blanket.png",
+      "icon": "https://cdn.arctracker.io/items/v2/torn_blanket.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -11437,7 +11437,7 @@
         "originalEn": "Torn Book"
       },
       "description": "残されたページには英雄、吸血鬼、そして多くの視線について書かれている。",
-      "icon": "https://cdn.arctracker.io/items/torn_book.png",
+      "icon": "https://cdn.arctracker.io/items/v2/torn_book.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -11458,7 +11458,7 @@
         "originalEn": "Torrente I"
       },
       "description": "弾薬容量は大きいが、しゃがんでいる時しか正確に当たらない。",
-      "icon": "https://cdn.arctracker.io/items/torrente.png",
+      "icon": "https://cdn.arctracker.io/items/v2/torrente_i.png",
       "rarity": "Rare",
       "type": "LMG",
       "category": "Weapon",
@@ -11492,7 +11492,7 @@
         "originalEn": "Torrente II"
       },
       "description": "大容量の弾薬を持つが、しゃがんでいる時のみ正確。",
-      "icon": "https://cdn.arctracker.io/items/torrente.png",
+      "icon": "https://cdn.arctracker.io/items/v2/torrente_ii.png",
       "rarity": "Rare",
       "type": "LMG",
       "category": "Weapon",
@@ -11526,7 +11526,7 @@
         "originalEn": "Torrente III"
       },
       "description": "大容量の弾薬を持つが、しゃがんでいる時のみ正確。",
-      "icon": "https://cdn.arctracker.io/items/torrente.png",
+      "icon": "https://cdn.arctracker.io/items/v2/torrente_iii.png",
       "rarity": "Rare",
       "type": "LMG",
       "category": "Weapon",
@@ -11560,7 +11560,7 @@
         "originalEn": "Torrente IV"
       },
       "description": "大容量の弾薬を持つが、しゃがんでいる時のみ正確。",
-      "icon": "https://cdn.arctracker.io/items/torrente.png",
+      "icon": "https://cdn.arctracker.io/items/v2/torrente_iv.png",
       "rarity": "Rare",
       "type": "LMG",
       "category": "Weapon",
@@ -11593,7 +11593,7 @@
         "originalEn": "Trailblazer"
       },
       "description": "軌道に沿って可燃性ガスの軌跡を放出し、着火時に爆発的な連鎖反応を引き起こす手榴弾。",
-      "icon": "https://cdn.arctracker.io/items/trailblazer.png",
+      "icon": "https://cdn.arctracker.io/items/v2/trailblazer.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -11623,7 +11623,7 @@
         "originalEn": "Trigger 'Nade"
       },
       "description": "表面やARCに貼り付けられる遠隔起爆手榴弾。起爆時に爆発ダメージを与える。",
-      "icon": "https://cdn.arctracker.io/items/trigger_nade.png",
+      "icon": "https://cdn.arctracker.io/items/v2/trigger_nade.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -11653,7 +11653,7 @@
         "originalEn": "Tropical Duck"
       },
       "description": "仲間と一緒に空を飛ぶことを静かに夢見ている。投げて音を立てることができる。",
-      "icon": "https://cdn.arctracker.io/items/tropical_duck.png",
+      "icon": "https://cdn.arctracker.io/items/v2/tropical_duck.png",
       "rarity": "Uncommon",
       "type": "Trinket",
       "category": "Trinket",
@@ -11670,7 +11670,7 @@
         "originalEn": "Turbine Compressor"
       },
       "description": "",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/turbine_compressor.png",
       "rarity": "Epic",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -11697,7 +11697,7 @@
         "originalEn": "Turbo Pump"
       },
       "description": "クラフト素材にリサイクルできる。",
-      "icon": "https://cdn.arctracker.io/items/turbo_pump.png",
+      "icon": "https://cdn.arctracker.io/items/v2/turbo_pump.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -11724,7 +11724,7 @@
         "originalEn": "\"Twilight Compass\" Ship Model"
       },
       "description": "意気盛んな新進気鋭の二本マスト船は、地平線のほんのわずか先まで航海することで知られている。",
-      "icon": "https://cdn.arctracker.io/items/twilight_compass_ship_model.png",
+      "icon": "https://cdn.arctracker.io/items/v2/twilight_compass_ship_model.png",
       "rarity": "Uncommon",
       "type": "Trinket",
       "category": "Trinket",
@@ -11741,7 +11741,7 @@
         "originalEn": "Unusable Weapon"
       },
       "description": "クラフト素材にリサイクルできる。",
-      "icon": "https://cdn.arctracker.io/items/unusable_weapon.png",
+      "icon": "https://cdn.arctracker.io/items/v2/unusable_weapon.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -11768,7 +11768,7 @@
         "originalEn": "Vaporizer Regulator"
       },
       "description": "",
-      "icon": "https://cdn.arctracker.io/items/vaporizer_regulator.png",
+      "icon": "https://cdn.arctracker.io/items/v2/vaporizer_regulator.png",
       "rarity": "Epic",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -11792,7 +11792,7 @@
         "originalEn": "Vase"
       },
       "description": "ちょっとした財産に値する。",
-      "icon": "https://cdn.arctracker.io/items/vase.png",
+      "icon": "https://cdn.arctracker.io/items/v2/vase.png",
       "rarity": "Rare",
       "type": "Trinket",
       "category": "Trinket",
@@ -11814,7 +11814,7 @@
         "originalEn": "\"Velocity\" Ship Model"
       },
       "description": "性能に特化したこのテクノロジーの結晶は、特別手の込んだ昼食を持参するつもりがなかったことを切に願っている。",
-      "icon": "https://cdn.arctracker.io/items/velocity_ship_model.png",
+      "icon": "https://cdn.arctracker.io/items/v2/velocity_ship_model.png",
       "rarity": "Rare",
       "type": "Trinket",
       "category": "Trinket",
@@ -11831,7 +11831,7 @@
         "originalEn": "Venator I"
       },
       "description": "セミオートマチックピストル。一度に2発発射。",
-      "icon": "https://cdn.arctracker.io/items/venator.png",
+      "icon": "https://cdn.arctracker.io/items/v2/venator_i.png",
       "rarity": "Rare",
       "type": "Pistol",
       "category": "Weapon",
@@ -11865,7 +11865,7 @@
         "originalEn": "Venator II"
       },
       "description": "セミオートマチックピストル。一度に2発発射。",
-      "icon": "https://cdn.arctracker.io/items/venator.png",
+      "icon": "https://cdn.arctracker.io/items/v2/venator_ii.png",
       "rarity": "Rare",
       "type": "Pistol",
       "category": "Weapon",
@@ -11899,7 +11899,7 @@
         "originalEn": "Venator III"
       },
       "description": "セミオートマチックピストル。一度に2発発射。",
-      "icon": "https://cdn.arctracker.io/items/venator.png",
+      "icon": "https://cdn.arctracker.io/items/v2/venator_iii.png",
       "rarity": "Rare",
       "type": "Pistol",
       "category": "Weapon",
@@ -11933,7 +11933,7 @@
         "originalEn": "Venator IV"
       },
       "description": "セミオートマチックピストル。一度に2発発射。",
-      "icon": "https://cdn.arctracker.io/items/venator.png",
+      "icon": "https://cdn.arctracker.io/items/v2/venator_iv.png",
       "rarity": "Rare",
       "type": "Pistol",
       "category": "Weapon",
@@ -11966,7 +11966,7 @@
         "originalEn": "Vertical Grip I"
       },
       "description": "垂直反動をわずかに軽減する。対応武器：Tempest、Arpeggio、Kettle、Ferro、Hullcracker",
-      "icon": "https://cdn.arctracker.io/items/vertical_grip_i.png",
+      "icon": "https://cdn.arctracker.io/items/v2/vertical_grip_i.png",
       "rarity": "Common",
       "type": "Modification",
       "category": "Modification",
@@ -11994,7 +11994,7 @@
         "originalEn": "Vertical Grip II"
       },
       "description": "垂直反動を適度に軽減。対応武器: Arpeggio、Ferro、Venator、Il Toro、Stitcher",
-      "icon": "https://cdn.arctracker.io/items/vertical_grip_ii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/vertical_grip_ii.png",
       "rarity": "Uncommon",
       "type": "Modification",
       "category": "Modification",
@@ -12023,7 +12023,7 @@
         "originalEn": "Vertical Grip III"
       },
       "description": "垂直反動を大幅に軽減します。対応武器：Tempest、Kettle、Hullcracker、Venator、Il Toro",
-      "icon": "https://cdn.arctracker.io/items/vertical_grip_iii.png",
+      "icon": "https://cdn.arctracker.io/items/v2/vertical_grip_iii.png",
       "rarity": "Rare",
       "type": "Modification",
       "category": "Modification",
@@ -12052,7 +12052,7 @@
         "originalEn": "Very Comfortable Pillow"
       },
       "description": "すべてのレイダーの羨望の的。特に人間工学的な雲の上で眠るような感じ。",
-      "icon": "https://cdn.arctracker.io/items/very_comfortable_pillow.png",
+      "icon": "https://cdn.arctracker.io/items/v2/very_comfortable_pillow.png",
       "rarity": "Uncommon",
       "type": "Trinket",
       "category": "Trinket",
@@ -12073,7 +12073,7 @@
         "originalEn": "Vita Shot"
       },
       "description": "大量の体力を回復する医療アイテム。",
-      "icon": "https://cdn.arctracker.io/items/vita_shot.png",
+      "icon": "https://cdn.arctracker.io/items/v2/vita_shot.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -12103,7 +12103,7 @@
         "originalEn": "Vita Spray"
       },
       "description": "使用中に継続的に体力を回復する医療アイテム。自分または味方に使用できる。",
-      "icon": "https://cdn.arctracker.io/items/vita_spray.png",
+      "icon": "https://cdn.arctracker.io/items/v2/vita_spray.png",
       "rarity": "Epic",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -12134,7 +12134,7 @@
         "originalEn": "Volcanic Rock"
       },
       "description": "投げることができる。",
-      "icon": "https://cdn.arctracker.io/items/volcanic_rock.png",
+      "icon": "https://cdn.arctracker.io/items/v2/volcanic_rock.png",
       "rarity": "Common",
       "type": "Misc",
       "category": "Misc",
@@ -12154,7 +12154,7 @@
         "originalEn": "Voltage Converter"
       },
       "description": "クラフトに使用。作成可能: ヘビーシールド、ショーストッパー",
-      "icon": "https://cdn.arctracker.io/items/voltage_converter.png",
+      "icon": "https://cdn.arctracker.io/items/v2/voltage_converter.png",
       "rarity": "Rare",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -12181,7 +12181,7 @@
         "originalEn": "Vulcano I"
       },
       "description": "セミオートマチックショットガン。良好な弾の拡散だが急激な減衰。",
-      "icon": "https://cdn.arctracker.io/items/vulcano.png",
+      "icon": "https://cdn.arctracker.io/items/v2/vulcano_i.png",
       "rarity": "Epic",
       "type": "Shotgun",
       "category": "Weapon",
@@ -12215,7 +12215,7 @@
         "originalEn": "Vulcano II"
       },
       "description": "良好な弾の拡散だが急激な減衰。",
-      "icon": "https://cdn.arctracker.io/items/vulcano.png",
+      "icon": "https://cdn.arctracker.io/items/v2/vulcano_ii.png",
       "rarity": "Epic",
       "type": "Shotgun",
       "category": "Weapon",
@@ -12249,7 +12249,7 @@
         "originalEn": "Vulcano III"
       },
       "description": "弾の拡散は良好だが、急激な減衰がある。",
-      "icon": "https://cdn.arctracker.io/items/vulcano.png",
+      "icon": "https://cdn.arctracker.io/items/v2/vulcano_iii.png",
       "rarity": "Epic",
       "type": "Shotgun",
       "category": "Weapon",
@@ -12283,7 +12283,7 @@
         "originalEn": "Vulcano IV"
       },
       "description": "弾の拡散は良好だが急激なダメージ減衰がある半自動ショットガン",
-      "icon": "https://cdn.arctracker.io/items/vulcano.png",
+      "icon": "https://cdn.arctracker.io/items/v2/vulcano_iv.png",
       "rarity": "Epic",
       "type": "Shotgun",
       "category": "Weapon",
@@ -12316,7 +12316,7 @@
         "originalEn": "Wasp Driver"
       },
       "description": "ARCアロイにリサイクル可能。投擲でき、撃たれると爆発する。",
-      "icon": "https://cdn.arctracker.io/items/wasp_driver.png",
+      "icon": "https://cdn.arctracker.io/items/v2/wasp_driver.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -12342,7 +12342,7 @@
         "originalEn": "Water Filter"
       },
       "description": "水を浄化するための携帯用ろ過装置。",
-      "icon": "https://cdn.arctracker.io/items/water_filter.png",
+      "icon": "https://cdn.arctracker.io/items/v2/water_filter.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -12369,7 +12369,7 @@
         "originalEn": "Water Pump"
       },
       "description": "クラフト素材にリサイクルできる。",
-      "icon": "https://cdn.arctracker.io/items/water_pump.png",
+      "icon": "https://cdn.arctracker.io/items/v2/water_pump.png",
       "rarity": "Rare",
       "type": "Recyclable",
       "category": "Recyclable",
@@ -12397,7 +12397,7 @@
         "originalEn": "White Flag"
       },
       "description": "設置可能な白旗。",
-      "icon": "",
+      "icon": "https://cdn.arctracker.io/items/v2/white_flag.png",
       "rarity": "Uncommon",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -12427,7 +12427,7 @@
         "originalEn": "\"Wind Sprite\" Ship Model"
       },
       "description": "より大きな兄弟たちを前にしても怯まず、この機敏な一本マスト船は平均をわずかに上回る波にすら立ち向かうことで知られている。",
-      "icon": "https://cdn.arctracker.io/items/wind_sprite_ship_model.png",
+      "icon": "https://cdn.arctracker.io/items/v2/wind_sprite_ship_model.png",
       "rarity": "Common",
       "type": "Trinket",
       "category": "Trinket",
@@ -12444,7 +12444,7 @@
         "originalEn": "Wires"
       },
       "description": "幅広いアイテムの作成に使用。クラフト素材にリサイクル可能。作成可能: ブレイズグレネードトラップ、スモークグレネードトラップ、ルアーグレネードトラップ、ガスグレネードトラップ、マズルブレーキI",
-      "icon": "https://cdn.arctracker.io/items/wires.png",
+      "icon": "https://cdn.arctracker.io/items/v2/wires.png",
       "rarity": "Uncommon",
       "type": "Topside Material",
       "category": "Topside Material",
@@ -12471,7 +12471,7 @@
         "originalEn": "Wolfpack"
       },
       "description": "複数の追尾ミサイルに分散するグレネード。各ミサイルはARCを標的とし、着弾時に爆発ダメージを与える。",
-      "icon": "https://cdn.arctracker.io/items/wolfpack.png",
+      "icon": "https://cdn.arctracker.io/items/v2/wolfpack.png",
       "rarity": "Epic",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -12502,7 +12502,7 @@
         "originalEn": "Yellow Light Stick"
       },
       "description": "投げることができる化学発光体で、周囲のエリアを照らす。",
-      "icon": "https://cdn.arctracker.io/items/yellow_light_stick.png",
+      "icon": "https://cdn.arctracker.io/items/v2/yellow_light_stick.png",
       "rarity": "Common",
       "type": "Quick Use",
       "category": "Quick Use",
@@ -12530,7 +12530,7 @@
         "originalEn": "Zipline"
       },
       "description": "設置可能なジップライン。2地点間を素早く移動できる。",
-      "icon": "https://cdn.arctracker.io/items/zipline.png",
+      "icon": "https://cdn.arctracker.io/items/v2/zipline.png",
       "rarity": "Rare",
       "type": "Quick Use",
       "category": "Quick Use",
