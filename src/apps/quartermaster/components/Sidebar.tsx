@@ -3,10 +3,10 @@
  * See specification section 7.1.1
  */
 
-import { Hammer, Home, List, Package, Target } from 'lucide-react';
+import { Hammer, Home, Info, List, Package, Target } from 'lucide-react';
 import { useLocale } from '../../../shared/context/LocaleContext';
 
-export type ViewId = 'stash' | 'lists' | 'hideout' | 'in-raid' | 'crafting';
+export type ViewId = 'welcome' | 'stash' | 'lists' | 'hideout' | 'in-raid' | 'crafting';
 
 interface SidebarProps {
   activeView: ViewId;
@@ -16,6 +16,7 @@ interface SidebarProps {
 export function Sidebar({ activeView, onViewChange }: SidebarProps) {
   const { t } = useLocale();
   const navItems: { id: ViewId; label: string; icon: React.ReactNode }[] = [
+    { id: 'welcome', label: t('quartermaster.nav.welcome'), icon: <Info size={18} /> },
     { id: 'stash', label: t('quartermaster.nav.stash'), icon: <Package size={18} /> },
     { id: 'lists', label: t('quartermaster.nav.lists'), icon: <List size={18} /> },
     { id: 'hideout', label: t('quartermaster.nav.hideout'), icon: <Home size={18} /> },

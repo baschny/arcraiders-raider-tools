@@ -264,7 +264,7 @@ export async function syncHideout(): Promise<CachedHideout> {
 
   const cachedHideout: CachedHideout = {
     modules,
-    syncedAt: new Date().toISOString(),
+    syncedAt: response.data.syncedAt ?? new Date().toISOString(),
     cachedAt: Date.now(),
   };
 

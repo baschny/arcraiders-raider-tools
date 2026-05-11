@@ -4,7 +4,7 @@
  */
 
 import { useState, useMemo } from 'react';
-import { AlertTriangle, Paperclip, RefreshCw, Search, Package } from 'lucide-react';
+import { Info, Paperclip, RefreshCw, Search, Package } from 'lucide-react';
 import type { ItemsMap } from '../../types/item';
 import type { OwnedItemDisplayRow, OwnedItemLocation, PlannerResult } from '../../types/planner';
 import { ItemIcon } from '../ItemIcon';
@@ -258,9 +258,9 @@ export function StashView({
 
       {missingSources.length > 0 && (
         <div className="stash-view__warning">
-          <AlertTriangle size={16} />
+          <Info size={16} />
           <span>
-            {tm('quartermaster.stash.incompleteWarning', { sources: missingSources.join(', ') })}
+            {tm('quartermaster.stash.syncSetupHint', { sources: missingSources.join(', ') })}
           </span>
         </div>
       )}

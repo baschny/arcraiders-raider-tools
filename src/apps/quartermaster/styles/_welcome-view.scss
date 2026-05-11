@@ -1,0 +1,106 @@
+@use 'variables' as *;
+
+.welcome-view {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+  max-width: 1100px;
+  margin: 0 auto;
+
+  &__intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 340px);
+    gap: $spacing-lg;
+    align-items: end;
+    padding-bottom: $spacing-lg;
+    border-bottom: 1px solid $border-default;
+
+    h2 {
+      margin: 0 0 $spacing-sm;
+      font-size: 30px;
+      line-height: 1.1;
+      color: $text-primary;
+    }
+
+    p {
+      max-width: 720px;
+      margin: 0;
+      color: $text-secondary;
+      line-height: 1.55;
+    }
+  }
+
+  &__eyebrow {
+    margin-bottom: $spacing-xs !important;
+    color: $text-accent !important;
+    font-size: $font-sm;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  &__status {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    padding: $spacing-md;
+    background: $bg-secondary;
+    border: 1px solid $border-default;
+    border-radius: $radius-md;
+    color: $text-primary;
+    font-size: $font-sm;
+    line-height: 1.4;
+
+    svg {
+      color: $text-accent;
+      flex-shrink: 0;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: $spacing-md;
+  }
+
+  &__panel {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $spacing-sm;
+    min-height: 230px;
+    padding: $spacing-lg;
+    background: $bg-secondary;
+    border: 1px solid $border-default;
+    border-radius: $radius-md;
+
+    > svg {
+      color: $text-accent;
+    }
+
+    h3 {
+      margin: 0;
+      color: $text-primary;
+      font-size: $font-lg;
+    }
+
+    p {
+      flex: 1;
+      margin: 0;
+      color: $text-secondary;
+      line-height: 1.5;
+    }
+  }
+}
+
+@media (max-width: 920px) {
+  .welcome-view {
+    &__intro,
+    &__grid {
+      grid-template-columns: 1fr;
+    }
+
+    &__panel {
+      min-height: 0;
+    }
+  }
+}

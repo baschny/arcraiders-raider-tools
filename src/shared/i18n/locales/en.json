@@ -295,6 +295,7 @@
   "quartermaster": {
     "loading": "Loading item data...",
     "nav": {
+      "welcome": "Welcome",
       "stash": "My Items",
       "currentLoadout": "Current Loadout",
       "lists": "Lists",
@@ -315,21 +316,51 @@
     "auth": {
       "verifying": "Verifying authentication...",
       "requiredTitle": "Authentication Required",
-      "requiredBody": "To use the Quartermaster planner, you need to connect your ArcTracker account.",
-      "goToSettings": "Go to Settings"
+      "requiredBody": "Sign in to Raider Tools before using ArcTracker-backed Quartermaster views.",
+      "signInRequiredBody": "Sign in to Raider Tools before using ArcTracker-backed Quartermaster views.",
+      "linkRequiredTitle": "Link ArcTracker Account",
+      "linkRequiredBody": "Your Raider Tools account is signed in, but Quartermaster needs a valid arctracker.io API key before it can sync this view.",
+      "signIn": "Sign In",
+      "linkArcTracker": "Link ArcTracker"
     },
     "common": {
       "syncInventory": "Sync Inventory",
       "syncLoadout": "Sync Loadout",
       "syncHideout": "Sync Hideout",
-      "syncHideouts": "Sync Hideouts",
+      "syncHideouts": "Sync Hideout",
       "syncBlueprints": "Sync Unlocked Blueprints",
       "unknownError": "Unknown error"
     },
     "sync": {
       "sessionExpired": "Session expired. Please log in again.",
       "rateLimited": "Rate limited. Please wait a moment and try again.",
-      "failed": "{operation} failed: {message}"
+      "failed": "{operation} failed: {message}",
+      "staleTitle": "ArcTracker data has not updated yet",
+      "staleBody": "Quartermaster received the same synced timestamp for {sources}. Open arctracker.io, press \"Sync stash\" there, then come back and sync again.",
+      "openArcTrackerStash": "Open arctracker.io Stash",
+      "close": "Close",
+      "myItemsRequired": "Quartermaster needs {sources} data for this view. Go to My Items and hit \"Sync My Items\" first."
+    },
+    "welcome": {
+      "eyebrow": "Quartermaster setup",
+      "title": "Plan what to keep before you drop back topside.",
+      "body": "Quartermaster combines your target lists, hideout upgrades, current inventory, loadout, and unlocked blueprints. Lists work on their own, while My Items, Hideout, In Raid, and Crafting become most useful after you link arctracker.io and sync fresh data.",
+      "statusSignedOut": "You are browsing anonymously. Lists are available, but ArcTracker-backed views require sign-in.",
+      "statusNeedsArcTracker": "You are signed in. Link a valid arctracker.io API key to sync your inventory and hideout.",
+      "statusReady": "ArcTracker is linked. Sync fresh data whenever you update your stash.",
+      "statusReadyWithName": "ArcTracker is linked as {username}. Sync fresh data whenever you update your stash.",
+      "planTitle": "Start with lists",
+      "planBody": "Create shopping lists for gear, quests, or future crafts. This does not require ArcTracker data, so it is safe to use before linking an account.",
+      "openLists": "Open Lists",
+      "connectTitle": "Connect your data",
+      "connectSignedOutBody": "Sign in to Raider Tools first. After that, link your arctracker.io API key from the Profile page so Quartermaster can sync server-side.",
+      "connectSignedInBody": "Link or refresh your arctracker.io API key from Profile. If the key expires, Quartermaster will send you back there before syncing protected views.",
+      "signIn": "Sign In",
+      "linkArcTracker": "Link ArcTracker",
+      "openMyItems": "Open My Items",
+      "syncTitle": "Sync in the right order",
+      "syncBody": "When your stash changes, first open arctracker.io and press \"Sync stash\". Then use Quartermaster's Sync buttons to pull the updated inventory, loadout, hideout, and blueprint data.",
+      "openArcTracker": "Open arctracker.io Stash"
     },
     "stash": {
       "searchPlaceholder": "Search my items...",
@@ -346,6 +377,7 @@
       "inventorySource": "inventory",
       "loadoutSource": "loadout",
       "incompleteWarning": "Owned inventory is incomplete. Sync missing source: {sources}.",
+      "syncSetupHint": "Quartermaster needs {sources} data before it can calculate owned items. Hit \"Sync My Items\" to load your inventory and current loadout.",
       "attachmentsCounted": "Attachments counted separately",
       "activeRequirements": "active requirements",
       "acrossLists": "{count} lists",
@@ -387,7 +419,7 @@
     },
     "hideout": {
       "subtitle": "Track bench tiers and plan every future hideout upgrade.",
-      "syncPrompt": "Sync your hideout to see current bench tiers and upgrade requirements.",
+      "syncPrompt": "Hit the \"Sync Hideout\" button to load your current bench tiers and upgrade requirements.",
       "allComplete": "All hideout modules are fully upgraded.",
       "tierProgress": "Tier {current}/{max}",
       "unlock": "Unlock",

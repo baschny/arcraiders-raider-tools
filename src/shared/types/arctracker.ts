@@ -111,6 +111,7 @@ export interface ArctrackerHideoutApiModule {
 export interface ArctrackerHideoutResponse {
   data: {
     modules: ArctrackerHideoutApiModule[];
+    syncedAt?: string;
     summary?: {
       totalModules: number;
       totalLevels: number;

@@ -6,7 +6,7 @@
  * data that should sync across devices.
  */
 
-export type QuartermasterViewId = 'lists' | 'stash' | 'hideout' | 'in-raid' | 'crafting';
+export type QuartermasterViewId = 'welcome' | 'lists' | 'stash' | 'hideout' | 'in-raid' | 'crafting';
 
 const ACTIVE_VIEW_KEY = 'quartermaster.ui.activeView';
 const SELECTED_LIST_KEY = 'quartermaster.ui.selectedListId';
@@ -14,6 +14,7 @@ const COLLAPSED_HIDEOUT_MODULES_KEY = 'quartermaster.ui.collapsedHideoutModules'
 const LEGACY_SELECTED_LIST_KEY = 'quartermaster.selectedListId';
 
 const VALID_VIEWS = new Set<QuartermasterViewId>([
+  'welcome',
   'lists',
   'stash',
   'hideout',
@@ -45,7 +46,7 @@ export function loadActiveView(): QuartermasterViewId {
   const stored = readString(ACTIVE_VIEW_KEY);
   return stored && VALID_VIEWS.has(stored as QuartermasterViewId)
     ? stored as QuartermasterViewId
-    : 'lists';
+    : 'welcome';
 }
 
 export function saveActiveView(view: QuartermasterViewId): void {

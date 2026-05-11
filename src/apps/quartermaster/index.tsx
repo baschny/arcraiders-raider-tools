@@ -63,6 +63,7 @@ import { Sidebar, type ViewId } from './components/Sidebar';
 import { GlobalHeader } from './components/GlobalHeader';
 import { AuthGate } from './components/AuthGate';
 import { StashView } from './components/views/StashView';
+import { WelcomeView } from './components/views/WelcomeView';
 import { ListsView } from './components/views/ListsView';
 import { HideoutView } from './components/views/HideoutView';
 import { InRaidView } from './components/views/InRaidView';
@@ -71,7 +72,7 @@ import { CraftingView } from './components/views/CraftingView';
 import './styles/main.scss';
 
 export function QuartermasterApp() {
-  const { revalidate } = useAuth();
+  const { isAuthenticated, revalidate } = useAuth();
   const { locale, t, tm, compareText } = useLocale();
   const [quartermasterState, setQuartermasterState] = useStore(quartermasterStore);
 
@@ -97,6 +98,9 @@ export function QuartermasterApp() {
   const [myItemsSyncStep, setMyItemsSyncStep] = useState<'inventory' | 'loadout' | null>(null);
   const [isSyncingHideout, setIsSyncingHideout] = useState(false);
   const [isSyncingBlueprints, setIsSyncingBlueprints] = useState(false);
+  const [staleSyncModal, setStaleSyncModal] = useState<{
+    sources: string[];
+  } | null>(null);
   const lists = useMemo(
     () => itemsMap ? normalizeStoredLists(quartermasterState.lists, itemsMap) : [],
     [itemsMap, quartermasterState.lists]
@@ -329,11 +333,19 @@ export function QuartermasterApp() {
   // Sync callbacks using shared arctrackerApi service (spec 4.2.1, 4.3.1)
   const handleSyncMyItems = useCallback(async () => {
     setSyncError(null);
+    setStaleSyncModal(null);
+    const previousStashSyncedAt = cachedStash?.syncedAt ?? null;
+    const previousLoadoutSyncedAt = cachedLoadout?.syncedAt ?? null;
+    const unchangedSources: string[] = [];
+
     setIsSyncingStash(true);
     setMyItemsSyncStep('inventory');
     try {
       const stash = await syncStashAllPages();
       setCachedStash(stash);
+      if (previousStashSyncedAt && stash.syncedAt === previousStashSyncedAt) {
+        unchangedSources.push(t('quartermaster.stash.inventorySource'));
+      }
     } catch (err) {
       console.error('Failed to sync stash:', err);
       handleApiError(err, t('quartermaster.common.syncInventory'));
@@ -348,6 +360,9 @@ export function QuartermasterApp() {
     try {
       const loadout = await syncLoadout();
       setCachedLoadout(loadout);
+      if (previousLoadoutSyncedAt && loadout.syncedAt === previousLoadoutSyncedAt) {
+        unchangedSources.push(t('quartermaster.stash.loadoutSource'));
+      }
     } catch (err) {
       console.error('Failed to sync loadout:', err);
       handleApiError(err, t('quartermaster.common.syncLoadout'));
@@ -355,7 +370,11 @@ export function QuartermasterApp() {
       setIsSyncingLoadout(false);
       setMyItemsSyncStep(null);
     }
-  }, [handleApiError, t]);
+
+    if (unchangedSources.length > 0) {
+      setStaleSyncModal({ sources: unchangedSources });
+    }
+  }, [cachedLoadout, cachedStash, handleApiError, t]);
 
   const handleSyncBlueprints = useCallback(async () => {
     setIsSyncingBlueprints(true);
@@ -375,9 +394,16 @@ export function QuartermasterApp() {
   const handleSyncHideout = useCallback(async () => {
     setIsSyncingHideout(true);
     setSyncError(null);
+    setStaleSyncModal(null);
+    const previousSyncedAt = cachedHideout?.syncedAt ?? null;
     try {
       const hideout = await syncHideout();
       setCachedHideout(hideout);
+      if (previousSyncedAt && hideout.syncedAt === previousSyncedAt) {
+        setStaleSyncModal({
+          sources: [t('quartermaster.nav.hideout')],
+        });
+      }
 
       // Clean up obsolete toggles after progression
       const cleaned = cleanupObsoleteToggles(hideoutDefinitions, hideout, hideoutToggleState);
@@ -388,7 +414,7 @@ export function QuartermasterApp() {
     } finally {
       setIsSyncingHideout(false);
     }
-  }, [hideoutDefinitions, hideoutToggleState, handleApiError, patchQuartermasterState, t]);
+  }, [cachedHideout, hideoutDefinitions, hideoutToggleState, handleApiError, patchQuartermasterState, t]);
 
   // Hideout list toggle handlers (CR-008)
   const handleToggleHideoutList = useCallback((moduleId: string, level: number) => {
@@ -439,6 +465,9 @@ export function QuartermasterApp() {
     if (!itemsMap) return null;
 
     switch (activeView) {
+      case 'welcome':
+        return <WelcomeView onViewChange={handleViewChange} />;
+
       case 'stash':
         return (
           <AuthGate>
@@ -480,20 +509,22 @@ export function QuartermasterApp() {
 
       case 'hideout':
         return (
-          <HideoutView
-            itemsMap={itemsMap}
-            hideoutDefinitions={hideoutDefinitions}
-            cachedHideout={cachedHideout}
-            hideoutLists={hideoutLists}
-            plannerResult={plannerResult}
-            itemInsights={itemInsights}
-            getOwnedQuantity={getOwnedQuantity}
-            onSyncHideout={handleSyncHideout}
-            isSyncingHideout={isSyncingHideout}
-            onToggleHideoutList={handleToggleHideoutList}
-            onSetHideoutModuleListsEnabled={handleSetHideoutModuleListsEnabled}
-            onToggleHideoutItem={handleToggleHideoutItem}
-          />
+          <AuthGate>
+            <HideoutView
+              itemsMap={itemsMap}
+              hideoutDefinitions={hideoutDefinitions}
+              cachedHideout={cachedHideout}
+              hideoutLists={hideoutLists}
+              plannerResult={plannerResult}
+              itemInsights={itemInsights}
+              getOwnedQuantity={getOwnedQuantity}
+              onSyncHideout={handleSyncHideout}
+              isSyncingHideout={isSyncingHideout}
+              onToggleHideoutList={handleToggleHideoutList}
+              onSetHideoutModuleListsEnabled={handleSetHideoutModuleListsEnabled}
+              onToggleHideoutItem={handleToggleHideoutItem}
+            />
+          </AuthGate>
         );
 
       case 'in-raid':
@@ -562,7 +593,7 @@ export function QuartermasterApp() {
             stashSyncedAt={cachedStash?.syncedAt ?? null}
             loadoutSyncedAt={cachedLoadout?.syncedAt ?? null}
           />
-          <SignInNudge />
+          {activeView !== 'welcome' && <SignInNudge />}
           {syncError && (
             <div className="qm-sync-error">
               {syncError}
@@ -574,9 +605,18 @@ export function QuartermasterApp() {
               </button>
             </div>
           )}
-          {activeView !== 'stash' && missingOwnedSources.length > 0 && (
-            <div className="qm-sync-error">
-              {tm('quartermaster.stash.incompleteWarning', { sources: missingOwnedSources.join(', ') })}
+          {isAuthenticated && ['in-raid', 'crafting'].includes(activeView) && missingOwnedSources.length > 0 && (
+            <div className="qm-sync-hint">
+              <span>
+                {tm('quartermaster.sync.myItemsRequired', { sources: missingOwnedSources.join(', ') })}
+              </span>
+              <button
+                type="button"
+                className="qm-button qm-button--small"
+                onClick={() => handleViewChange('stash')}
+              >
+                {t('quartermaster.stash.syncMyItems')}
+              </button>
             </div>
           )}
           <div className="quartermaster-content">
@@ -584,6 +624,40 @@ export function QuartermasterApp() {
           </div>
         </div>
       </div>
+      {staleSyncModal && (
+        <div className="qm-modal-backdrop" role="presentation">
+          <div
+            className="qm-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="qm-stale-sync-title"
+          >
+            <h3 id="qm-stale-sync-title">{t('quartermaster.sync.staleTitle')}</h3>
+            <p>
+              {tm('quartermaster.sync.staleBody', {
+                sources: staleSyncModal.sources.join(', '),
+              })}
+            </p>
+            <div className="qm-modal__actions">
+              <a
+                href="https://arctracker.io/stash"
+                className="qm-button qm-button--primary"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {t('quartermaster.sync.openArcTrackerStash')}
+              </a>
+              <button
+                type="button"
+                className="qm-button"
+                onClick={() => setStaleSyncModal(null)}
+              >
+                {t('quartermaster.sync.close')}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
