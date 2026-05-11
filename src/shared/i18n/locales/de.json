@@ -298,6 +298,7 @@
       "stash": "My Items",
       "currentLoadout": "Aktuelle Ausrüstung",
       "lists": "Listen",
+      "hideout": "Hideout",
       "inRaid": "Im Raid",
       "crafting": "Crafting"
     },
@@ -357,7 +358,8 @@
       "status": {
         "owned": "Owned {owned}",
         "haveRequired": "Have {owned} / {required} required for {source}",
-        "needMore": "Need {missing} more for {source} ({required} required, {owned} owned)"
+        "needMore": "Need {missing} more for {source} ({required} required, {owned} owned)",
+        "upgradeBase": "Planned as weapon upgrade base"
       },
       "columns": {
         "icon": "Icon",
@@ -383,6 +385,23 @@
       "hideoutName": "{module} auf Stufe {level}",
       "hideoutNameNext": "{module} auf Stufe {level} (Nächste)"
     },
+    "hideout": {
+      "subtitle": "Track bench tiers and plan every future hideout upgrade.",
+      "syncPrompt": "Sync your hideout to see current bench tiers and upgrade requirements.",
+      "allComplete": "All hideout modules are fully upgraded.",
+      "tierProgress": "Tier {current}/{max}",
+      "unlock": "Unlock",
+      "tierLabel": "Tier {level}",
+      "upgradeToTierLabel": "Upgrade to Tier {level}",
+      "next": "Next",
+      "nextUpgrade": "Next upgrade first",
+      "completed": "Completed",
+      "noPendingUpgrades": "No pending upgrades",
+      "hideBench": "Hide",
+      "unhideBench": "Unhide",
+      "disableBenchTooltip": "Disable tracking all tiers of this bench",
+      "enableBenchTooltip": "Enable tracking all tiers of this bench"
+    },
     "inRaid": {
       "keep": "Behalten",
       "recycle": "Recyceln",
@@ -400,8 +419,11 @@
       "step1": "Schritt 1: Zuerst recyceln",
       "step2": "Schritt 2: Gegenstände craften",
       "craftItems": "Gegenstände craften",
+      "gunsmithCraft": "Gunsmith: Craft",
+      "gunsmithUpgradeWeapons": "Gunsmith: Upgrade Weapons",
       "empty": "Kein Crafting nötig. Alle benötigten Gegenstände sind in deinem Lager!",
       "blueprintsSynced": "Blueprints synced: {timestamp}",
+      "directInputRecycleWarning": "Warning: also needed directly for {listName} -> {targetItemName}",
       "columns": {
         "item": "Gegenstand",
         "name": "Name",
@@ -410,8 +432,12 @@
         "why": "Warum",
         "craftTimes": "Craft-Vorgänge",
         "totalOutput": "Gesamtausgabe",
-        "inputsNeeded": "Benötigte Eingaben"
-      }
+        "inputsNeeded": "Benötigte Eingaben",
+        "upgradeFrom": "Upgrade From",
+        "upgradeTo": "Upgrade To",
+        "qtyToUpgrade": "Qty to Upgrade"
+      },
+      "blueprintUnlockCount": "{unlocked}/{total} unlocked"
     },
     "itemTooltip": {
       "complete": "Abgedeckt",
@@ -503,11 +529,11 @@
     },
     "benches": {
       "refiner": "Raffinerie",
-      "equipmentBench": "Ausrüstungsbank",
-      "explosivesBench": "Sprengstoffbank",
-      "medStation": "Med-Station",
-      "utilityBench": "Utility-Bank",
-      "weaponBench": "Waffenbank",
+      "equipmentBench": "Gear Bench",
+      "explosivesBench": "Explosives Station",
+      "medStation": "Medical Lab",
+      "utilityBench": "Utility Station",
+      "weaponBench": "Gunsmith",
       "workbench": "Werkbank"
     }
   },
