@@ -74,6 +74,13 @@
   "dashboard": {
     "title": "Raider Tools",
     "intro": "Welcome! This is my personal collection of ARC Raiders tools. These started as private projects to help me out in-game, but I figured they were too useful not to share. If they help you out, let me know! Pick a tool below and dive in.",
+    "changelog": {
+      "title": "Latest changes",
+      "intro": "Recent updates and additions across Raider Tools.",
+      "affectedApps": "Affected tools",
+      "affectedAppLink": "Open affected tool",
+      "allTools": "All tools"
+    },
     "tools": {
       "schedule": "Visualize the ARC Raiders map events schedule in a better overview to plan your raids.",
       "craftCalculator": "Calculate how many items to craft to squeeze the most space out of your stash.",

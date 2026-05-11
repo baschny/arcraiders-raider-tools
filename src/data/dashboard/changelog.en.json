@@ -1,0 +1,88 @@
+{
+  "locale": "en",
+  "entries": [
+    {
+      "date": "2026-05-11",
+      "apps": ["quartermaster"],
+      "title": "Overhauled the Quartermaster tool and made it officially available. Requires login and an arctracker.io account. A video explaining the tool will come soon.",
+      "highlights": [
+        "Hideout tracker enhanced",
+        "Calculation of crafting improved",
+        "Weapon upgrade requirement calculation",
+        "Enhanced crafting instructions",
+        "Updated item information",
+        "Much more!"
+      ]
+    },
+    {
+      "date": "2026-04-28",
+      "apps": ["craft-calculator", "loot-helper", "quartermaster"],
+      "title": "Updated Riven Tides items."
+    },
+    {
+      "date": "2026-04-26",
+      "apps": ["loot-helper"],
+      "title": "Added grouping selector to loot helper list view."
+    },
+    {
+      "date": "2026-04-20",
+      "apps": ["all"],
+      "title": "Added sign up and server storage of your user data. Now you can switch browsers and keep the same information up-to-date. You can sign up easily using Discord authentication."
+    },
+    {
+      "date": "2026-04-18",
+      "apps": ["quests"],
+      "title": "Optimized the quest tracker and made it more beautiful and functional with a new tree view and more visible map names."
+    },
+    {
+      "date": "2026-04-11",
+      "apps": ["all"],
+      "title": "Added multilingual support for English 🇺🇸, German 🇩🇪 Deutsch, Portuguese (Brazil) 🇧🇷 Português (Brasil), Spanish 🇪🇸 Español, French 🇫🇷 Français, Italian 🇮🇹 Italiano, Japanese 🇯🇵 日本語, Korean 🇰🇷 한국어, Polish 🇵🇱 Polski, Russian 🇷🇺 Русский, Turkish 🇹🇷 Türkçe, Chinese (Simplified) 🇨🇳 简体中文, and Chinese (Traditional) 🇹🇼 繁體中文."
+    },
+    {
+      "date": "2026-04-10",
+      "apps": ["schedule"],
+      "title": "Schedule now auto-updates based on Embark's new platform, Map Conditions on their homepage."
+    },
+    {
+      "date": "2026-03-13",
+      "apps": ["quests"],
+      "title": "Show blueprints and allow players to find them in the Quest Tracker."
+    },
+    {
+      "date": "2026-03-09",
+      "apps": ["all"],
+      "title": "Big UX/UI overhaul with more information and better popups."
+    },
+    {
+      "date": "2026-03-06",
+      "apps": ["craft-calculator", "loot-helper", "quartermaster"],
+      "title": "Updated all items from arctracker.io."
+    },
+    {
+      "date": "2026-03-06",
+      "apps": ["quartermaster"],
+      "title": "First iteration of the Quartermaster, still beta."
+    },
+    {
+      "date": "2026-02-25",
+      "apps": ["schedule"],
+      "title": "Added Hurricane event."
+    },
+    {
+      "date": "2026-02-16",
+      "apps": ["all"],
+      "title": "Added authentication to user data via arctracker.io."
+    },
+    {
+      "date": "2026-01-30",
+      "apps": ["craft-calculator"],
+      "title": "Added crafting economics to the craft calculator."
+    },
+    {
+      "date": "2026-01-28",
+      "apps": ["all"],
+      "title": "Merged previously separate tools into a single platform: raider-tools.app is born."
+    }
+  ]
+}
