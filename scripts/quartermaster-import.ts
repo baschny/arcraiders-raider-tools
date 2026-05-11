@@ -287,9 +287,9 @@ function addWeaponChainMetadata(items: Record<string, PlannerItem>): void {
     }
   }
 
-  for (const [targetId, sourceId] of upgradesFromByTarget.entries()) {
+  upgradesFromByTarget.forEach((sourceId, targetId) => {
     items[targetId].upgradesFrom = sourceId;
-  }
+  });
 
   const roots = Object.keys(items)
     .filter((itemId) => {
@@ -461,7 +461,8 @@ function generateHideoutData(scriptDir: string, locale: OutputLocale): void {
  * Main import function
  */
 function main(): void {
-  const scriptDir = path.dirname(new URL(import.meta.url).pathname);
+  const scriptPath = path.resolve(process.argv[1] ?? './scripts/quartermaster-import.ts');
+  const scriptDir = path.dirname(scriptPath);
   const sourceDir = path.resolve(scriptDir, '../../arcraiders-data/items');
 
   // Check source directory exists
