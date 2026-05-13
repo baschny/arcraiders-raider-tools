@@ -77,9 +77,9 @@
     "changelog": {
       "title": "Latest changes",
       "intro": "Recent updates and additions across Raider Tools.",
-      "affectedApps": "Affected tools",
-      "affectedAppLink": "Open affected tool",
-      "allTools": "All tools"
+      "affectedApps": "受影响的工具",
+      "affectedAppLink": "打开受影响的工具",
+      "allTools": "所有工具"
     },
     "tools": {
       "schedule": "以更清晰的视图展示 ARC Raiders 地图事件时间表，方便你规划对局。",
@@ -153,8 +153,8 @@
     "dialogConfirm": "确认",
     "tooltipObjectives": "目标",
     "tooltipObjectivesOneRound": "一轮",
-    "tooltipRequirements": "Requirements",
-    "tooltipGranted": "Granted items",
+    "tooltipRequirements": "要求",
+    "tooltipGranted": "已批准的物品",
     "tooltipRewards": "奖励"
   },
   "lootHelper": {
@@ -194,32 +194,32 @@
       "expandStash": "展开仓库列表",
       "collapseStash": "折叠仓库列表",
       "noStashItems": "仓库里暂无被标记的物品。",
-      "enableStashItem": "Click to enable this stash item",
-      "disableStashItem": "Click to disable this stash item",
-      "removeStashItem": "Remove from stash"
+      "enableStashItem": "单击以启用此仓库内物品",
+      "disableStashItem": "单击以禁用此仓库内物品",
+      "removeStashItem": "从仓库中移除"
     },
     "filters": {
-      "search": "Search",
+      "search": "搜索",
       "searchPlaceholder": "Type to search items...",
-      "type": "Type",
-      "rarity": "Rarity",
-      "location": "Location",
-      "all": "All",
-      "none": "None",
-      "listView": "List View",
-      "gridView": "Grid View"
+      "type": "类型",
+      "rarity": "稀有度",
+      "location": "位置",
+      "all": "全部",
+      "none": "无",
+      "listView": "列表视图",
+      "gridView": "网格视图"
     },
     "results": {
-      "noItemsNeeded": "No items needed for your goals.",
-      "noSearchResults": "No items found matching \"{query}\"",
-      "noItemsForGroup": "No items in this group."
+      "noItemsNeeded": "您的目标不需要任何物品。",
+      "noSearchResults": "未找到匹配“{query}”的物品",
+      "noItemsForGroup": "此组中没有物品。"
     },
     "itemInfo": {
-      "stackSize": "Stack Size:",
-      "weight": "Weight:",
-      "worth": "Worth:",
-      "foundIn": "Found In:",
-      "craftingRecipe": "Crafting Recipe",
+      "stackSize": "堆叠数量：",
+      "weight": "重量：",
+      "worth": "价值：",
+      "foundIn": "发现于：",
+      "craftingRecipe": "合成配方",
       "recyclesInto": "Recycles Into",
       "salvagesInto": "Salvages Into"
     },
