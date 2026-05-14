@@ -75,10 +75,10 @@ function isCraftingRelevant(
 function determineBadge(
   item: { recyclesInto?: Record<string, number>; salvagesInto?: Record<string, number> },
   neededMaterials: Set<ItemId>,
-  isFinalTarget: boolean,
+  shouldBringHome: boolean,
 ): LootBadge {
-  // Final targets are always BRING_HOME
-  if (isFinalTarget) return 'BRING_HOME';
+  // Final targets and directly needed craft materials are always BRING_HOME.
+  if (shouldBringHome) return 'BRING_HOME';
 
   const recycleUseful = new Set<string>();
   const salvageUseful = new Set<string>();
@@ -226,9 +226,10 @@ export function generateInRaidSuggestions(
       (a, b) => REASON_ORDER.indexOf(a) - REASON_ORDER.indexOf(b),
     );
 
-    // Badge: final-target reason takes precedence (CR-006)
+    // Badge: keep/direct-material reasons take precedence over recycle/salvage yields.
     const isFinalTarget = suggestion.reasons.includes('BRING_HOME_FINAL_TARGET');
-    suggestion.badge = determineBadge(item, neededMaterials, isFinalTarget);
+    const isDirectMaterial = suggestion.reasons.includes('BRING_HOME_DIRECT_MATERIAL');
+    suggestion.badge = determineBadge(item, neededMaterials, isFinalTarget || isDirectMaterial);
 
     // Compute impacted target itemIds
     const impacted = new Set<string>();

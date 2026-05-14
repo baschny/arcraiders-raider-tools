@@ -114,6 +114,9 @@ export function StashView({
     const map = new Map(plannerResult.planRows.map((row) => [row.itemId, row]));
     return map;
   }, [plannerResult.planRows]);
+  const ingredientMissingByItemId = useMemo(() => {
+    return new Map(Object.entries(plannerResult.remainingIngredientDeficits));
+  }, [plannerResult.remainingIngredientDeficits]);
 
   const tooltipContext = useMemo(() => ({
     itemsMap,
@@ -292,10 +295,11 @@ export function StashView({
               const planRow = planRowsByItemId.get(ownedItem.itemId);
               const toRecycle = recycleItemIds.has(ownedItem.itemId);
               const isUpgradeBase = upgradeBaseItemIds.has(ownedItem.itemId);
-              const required = planRow?.required ?? 0;
-              const missing = planRow?.missing ?? 0;
               const listNames = getRequirementListNames(ownedItem.itemId);
               const requirementLabel = getRequirementLabel(listNames);
+              const ingredientMissing = ingredientMissingByItemId.get(ownedItem.itemId) ?? 0;
+              const required = planRow?.required ?? (ingredientMissing > 0 ? ownedItem.quantity + ingredientMissing : 0);
+              const missing = planRow?.missing ?? ingredientMissing;
               const recycleReason = getRecycleReasonLabel(ownedItem.itemId);
               const hasRequirement = required > 0;
               const locationLabels = getLocationLabels(ownedItem.locations);

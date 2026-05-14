@@ -665,6 +665,64 @@ describe('quartermaster blueprint craftability', () => {
     });
   });
 
+  it('keeps direct hideout craft materials ahead of salvage yield suggestions', () => {
+    const hideoutItemsMap: ItemsMap = {
+      ...itemsMap,
+      arc_alloy: item({
+        id: 'arc_alloy',
+        name: 'ARC Alloy',
+        category: 'Topside Material',
+        recyclesInto: { metal_parts: 2 },
+        salvagesInto: { metal_parts: 1 },
+      }),
+      arc_motion_core: item({
+        id: 'arc_motion_core',
+        name: 'ARC Motion Core',
+        category: 'Refined Material',
+        craftBench: 'refiner',
+        recipe: { arc_alloy: 9 },
+      }),
+    };
+
+    const result = computePlan(
+      hideoutItemsMap,
+      [
+        {
+          id: 'hideout_refiner_2',
+          name: 'Refiner Tier 2',
+          type: 'hideout',
+          isEnabled: true,
+          items: [{ itemId: 'arc_motion_core', quantity: 1, isEnabled: true }],
+        },
+        {
+          id: 'metal_list',
+          name: 'List 1',
+          type: 'user',
+          isEnabled: true,
+          items: [{ itemId: 'metal_parts', quantity: 71, isEnabled: true }],
+        },
+      ],
+      [],
+      benchLevels,
+    );
+
+    const arcAlloySuggestion = result.inRaidSuggestions.items.find((suggestion) => suggestion.itemId === 'arc_alloy');
+    expect(arcAlloySuggestion).toMatchObject({
+      badge: 'BRING_HOME',
+      reasons: ['BRING_HOME_DIRECT_MATERIAL', 'SALVAGE_FOR_MATERIAL', 'BRING_HOME_FOR_RECYCLE_YIELD'],
+      impactedTargetItemIds: ['arc_motion_core'],
+    });
+
+    const insights = buildItemInsights(hideoutItemsMap, result);
+    expect(insights.arc_alloy.craftingNeeds).toEqual([
+      expect.objectContaining({
+        listName: 'Refiner Tier 2',
+        targetItemId: 'arc_motion_core',
+        isComplete: false,
+      }),
+    ]);
+  });
+
   it('uses lower value as a deterministic tie-breaker within the same recycle group', () => {
     const result = computePlan(
       itemsMap,
