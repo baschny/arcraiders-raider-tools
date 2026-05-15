@@ -75,8 +75,8 @@
     "title": "奇袭者工具",
     "intro": "欢迎！这是我为 ARC Raiders 制作的个人工具合集。它们最初是为我自己在游戏中使用的私人工具，但实在太实用了，所以我决定分享出来。如果这些工具对你有帮助，欢迎告诉我。请选择下方工具开始使用。",
     "changelog": {
-      "title": "Latest changes",
-      "intro": "Recent updates and additions across Raider Tools.",
+      "title": "更新日志",
+      "intro": "奇袭者工具最近更新和添加。",
       "affectedApps": "受影响的工具",
       "affectedAppLink": "打开受影响的工具",
       "allTools": "所有工具"
@@ -200,7 +200,7 @@
     },
     "filters": {
       "search": "搜索",
-      "searchPlaceholder": "Type to search items...",
+      "searchPlaceholder": "输入搜索物品...",
       "type": "类型",
       "rarity": "稀有度",
       "location": "位置",
@@ -220,22 +220,22 @@
       "worth": "价值：",
       "foundIn": "发现于：",
       "craftingRecipe": "合成配方",
-      "recyclesInto": "Recycles Into",
-      "salvagesInto": "Salvages Into"
+      "recyclesInto": "回收为",
+      "salvagesInto": "拆解为"
     },
     "hierarchy": {
-      "leaf": "This item is not used in any of your goal items.",
-      "recyclesInto": "recycles into",
-      "salvagesInto": "salvages into",
-      "salvagesIntoSafe": "salvages into (safe)",
+      "leaf": "此项目未用于任何目标物品。",
+      "recyclesInto": "回收为",
+      "salvagesInto": "拆解为",
+      "salvagesIntoSafe": "拆解为（安全）",
       "usedToBuild": "used to build"
     },
     "help": {
-      "openTitle": "How to use",
-      "title": "How to Use",
-      "videoTitle": "Video Tutorial",
-      "videoLink": "Watch a quick walkthrough: How to Use the Looting Helper",
-      "step1Title": "1. Set Your Crafting Goals",
+      "openTitle": "如何使用",
+      "title": "如何使用",
+      "videoTitle": "视频教程",
+      "videoLink": "观看快速演示：如何使用搜刮助手",
+      "step1Title": "1. 设定您的合成目标",
       "step1Body": "Use the search bar to find and add items you want to craft regularly. This builds your master list of requirements.",
       "step2Title": "2. Identify Loot Priorities",
       "step2Body": "The app automatically generates a list of all base resources and materials you need to loot to achieve these crafting goals.",
