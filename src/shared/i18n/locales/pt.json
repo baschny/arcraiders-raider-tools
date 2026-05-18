@@ -74,6 +74,13 @@
   "dashboard": {
     "title": "Raider Tools",
     "intro": "Bem-vindo! Esta é a minha coleção pessoal de ferramentas para ARC Raiders. Elas começaram como projetos privados para me ajudar no jogo, mas eram úteis demais para não compartilhar. Se elas te ajudarem, me avise. Escolha uma ferramenta abaixo e comece.",
+    "changelog": {
+      "title": "Latest changes",
+      "intro": "Recent updates and additions across Raider Tools.",
+      "affectedApps": "Affected tools",
+      "affectedAppLink": "Open affected tool",
+      "allTools": "All tools"
+    },
     "tools": {
       "schedule": "Visualize a agenda de eventos dos mapas de ARC Raiders em uma visão melhor para planejar seus raids.",
       "craftCalculator": "Calcule quantos itens craftar para aproveitar melhor o espaço do seu baú.",
@@ -295,9 +302,11 @@
   "quartermaster": {
     "loading": "Carregando dados dos itens...",
     "nav": {
+      "welcome": "Welcome",
       "stash": "My Items",
       "currentLoadout": "Loadout atual",
       "lists": "Listas",
+      "hideout": "Hideout",
       "inRaid": "No raid",
       "crafting": "Crafting"
     },
@@ -306,7 +315,7 @@
       "missingItems": "Itens faltando",
       "recycleActions": "Ações de reciclagem",
       "craftSteps": "Etapas de crafting",
-      "stash": "Estoque",
+      "stash": "Inventory",
       "loadout": "Loadout",
       "never": "Nunca",
       "invalid": "Inválido"
@@ -314,30 +323,85 @@
     "auth": {
       "verifying": "Verificando autenticação...",
       "requiredTitle": "Autenticação necessária",
-      "requiredBody": "Para usar o planejador Quartermaster, você precisa conectar sua conta do ArcTracker.",
-      "goToSettings": "Ir para as configurações"
+      "requiredBody": "Sign in to Raider Tools before using ArcTracker-backed Quartermaster views.",
+      "signInRequiredBody": "Sign in to Raider Tools before using ArcTracker-backed Quartermaster views.",
+      "linkRequiredTitle": "Link ArcTracker Account",
+      "linkRequiredBody": "Your Raider Tools account is signed in, but Quartermaster needs a valid arctracker.io API key before it can sync this view.",
+      "signIn": "Sign In",
+      "linkArcTracker": "Link ArcTracker"
     },
     "common": {
       "syncInventory": "Sincronizar inventário",
       "syncLoadout": "Sincronizar loadout",
       "syncHideout": "Sincronizar hideout",
-      "syncHideouts": "Sincronizar hideouts",
+      "syncHideouts": "Sync Hideout",
+      "syncBlueprints": "Sync Unlocked Blueprints",
       "unknownError": "Erro desconhecido"
     },
     "sync": {
       "sessionExpired": "Sessão expirada. Faça login novamente.",
       "rateLimited": "Limite atingido. Aguarde um momento e tente novamente.",
-      "failed": "{operation} falhou: {message}"
+      "failed": "{operation} falhou: {message}",
+      "staleTitle": "ArcTracker data has not updated yet",
+      "staleBody": "Quartermaster received the same synced timestamp for {sources}. Open arctracker.io, press \"Sync stash\" there, then come back and sync again.",
+      "openArcTrackerStash": "Open arctracker.io Stash",
+      "close": "Close",
+      "myItemsRequired": "Quartermaster needs {sources} data for this view. Go to My Items and hit \"Sync My Items\" first."
+    },
+    "welcome": {
+      "title": "Quartermaster Tool",
+      "subtitle": "Plan your topside raids and minimize crafting time",
+      "body": "Quartermaster allows you to keep your stash always full with the stuff you need for your next runs. Never again miss certain materials for your loadout, be it guns, attachments, ammo, or any craftable quick use item.",
+      "signInLinkTitle": "Sign in and link arctracker.io",
+      "linkTitle": "Link arctracker.io",
+      "arcTrackerTitle": "arctracker.io",
+      "statusSignedOut": "You are browsing anonymously. ArcTracker-backed views require sign-in.",
+      "statusNeedsArcTracker": "Start by linking your arctracker.io account to Raider Tools.",
+      "statusReady": "ArcTracker is linked. Sync fresh data whenever you update your stash.",
+      "statusReadyWithName": "ArcTracker is linked as {username}. Sync data whenever you update your stash.",
+      "planTitle": "Start with Lists",
+      "planBody": "Create lists of items you always want to have in your stash or need to hunt for. Make lists per type, i.e. Gear, Guns, Ammo, Explosives, Medical, Projects.",
+      "openLists": "Open Lists",
+      "signIn": "Sign In",
+      "linkArcTracker": "Link ArcTracker",
+      "inRaidTitle": "In Raid",
+      "inRaidBody": "Your lists can guide your looting run topside: the In Raid view shows what you should loot in order to have materials to craft or maintain your list goals.",
+      "openInRaid": "Open In Raid",
+      "craftingTitle": "Crafting",
+      "craftingBody": "Once back to Speranza, this tool will help you quickly re-craft everything you need for the next run. No waste of time.",
+      "openCrafting": "Open Crafting"
     },
     "stash": {
-      "searchPlaceholder": "Pesquisar itens...",
+      "searchPlaceholder": "Search my items...",
       "allCategories": "Todas as categorias",
       "allRarities": "Todas as raridades",
       "showOnlyRecyclable": "Mostrar apenas recicláveis",
       "totalValue": "Valor total",
-      "empty": "Nenhum item no estoque. Clique em \"Sincronizar inventário\" para carregar seu estoque.",
+      "empty": "No items loaded. Click \"Sync My Items\" to load your inventory and current loadout.",
       "noMatches": "Nenhum item corresponde aos seus filtros.",
       "missingCount": "{missing}/{required} faltando",
+      "syncMyItems": "Sync My Items",
+      "syncingInventory": "Syncing inventory...",
+      "syncingLoadout": "Syncing loadout...",
+      "inventorySource": "inventory",
+      "loadoutSource": "loadout",
+      "incompleteWarning": "Owned inventory is incomplete. Sync missing source: {sources}.",
+      "syncSetupHint": "Quartermaster needs {sources} data before it can calculate owned items. Hit \"Sync My Items\" to load your inventory and current loadout.",
+      "attachmentsCounted": "Attachments counted separately",
+      "activeRequirements": "active requirements",
+      "acrossLists": "{count} lists",
+      "locations": {
+        "inCurrentLoadout": "In current loadout",
+        "attachedInStash": "Attached to {item} in stash",
+        "attachedInLoadout": "Attached to {item} in current loadout",
+        "more": "+{count} more locations"
+      },
+      "status": {
+        "owned": "Owned {owned}",
+        "haveRequired": "Have {owned} / {required} required for {source}",
+        "needMore": "Need {missing} more for {source} ({required} required, {owned} owned)",
+        "upgradeBase": "Planned as weapon upgrade base"
+      },
       "columns": {
         "icon": "Ícone",
         "item": "Item",
@@ -362,6 +426,48 @@
       "hideoutName": "{module} para nível {level}",
       "hideoutNameNext": "{module} para nível {level} (Próximo)"
     },
+    "hideout": {
+      "subtitle": "Track bench tiers and plan every future hideout upgrade.",
+      "syncPrompt": "Hit the \"Sync Hideout\" button to load your current bench tiers and upgrade requirements.",
+      "allComplete": "All hideout modules are fully upgraded.",
+      "tierProgress": "Tier {current}/{max}",
+      "unlock": "Unlock",
+      "tierLabel": "Tier {level}",
+      "upgradeToTierLabel": "Upgrade to Tier {level}",
+      "next": "Next",
+      "nextUpgrade": "Next upgrade first",
+      "completed": "Completed",
+      "noPendingUpgrades": "No pending upgrades",
+      "hideBench": "Hide",
+      "unhideBench": "Unhide",
+      "maxTierTooltip": "This bench is already at maximum tier",
+      "syncTooltip": "Refresh your current hideout bench tiers from ArcTracker.",
+      "collapseAll": "Collapse all",
+      "collapseAllTooltip": "Collapse every hideout bench section.",
+      "expandAll": "Expand all",
+      "expandAllTooltip": "Expand every hideout bench section with pending upgrades.",
+      "tracking": "Tracking",
+      "trackingTooltip": "Choose which pending hideout upgrade tiers are tracked.",
+      "enableAll": "Enable all tiers",
+      "enableAllTooltip": "Track every pending hideout upgrade tier.",
+      "disableAll": "Disable all tiers",
+      "disableAllTooltip": "Stop tracking every pending hideout upgrade tier.",
+      "nextOnly": "Enable next tiers only",
+      "nextOnlyTooltip": "Track only the next upgrade tier for each bench and disable later tiers.",
+      "trackedItems": "{count} ITEMS",
+      "trackedItemsTooltip": "Unique required items currently tracked for enabled tiers in this bench.",
+      "needQuantity": "Need: {quantity}",
+      "itemCompleteTooltip": "You have enough of this item.",
+      "upgradeAvailable": "Upgrade Available",
+      "upgradeAvailableTooltip": "You have all required items for the next tier of this bench.",
+      "availableUpgradesTooltip": "Hideout upgrades available now.",
+      "disableTierTooltip": "Disable tracking this upgrade tier.",
+      "enableTierTooltip": "Enable tracking this upgrade tier.",
+      "disableItemTooltip": "Disable tracking this required item.",
+      "enableItemTooltip": "Enable tracking this required item.",
+      "disableBenchTooltip": "Disable tracking all tiers of this bench",
+      "enableBenchTooltip": "Enable tracking all tiers of this bench"
+    },
     "inRaid": {
       "keep": "Guardar",
       "recycle": "Reciclar",
@@ -379,7 +485,11 @@
       "step1": "Etapa 1: Recicle primeiro",
       "step2": "Etapa 2: Crafte itens",
       "craftItems": "Crafte itens",
+      "gunsmithCraft": "Gunsmith: Craft",
+      "gunsmithUpgradeWeapons": "Gunsmith: Upgrade Weapons",
       "empty": "Nenhum crafting necessário. Todos os itens exigidos já estão no seu estoque!",
+      "blueprintsSynced": "Blueprints synced: {timestamp}",
+      "directInputRecycleWarning": "Warning: also needed directly for {listName} -> {targetItemName}",
       "columns": {
         "item": "Item",
         "name": "Nome",
@@ -388,8 +498,12 @@
         "why": "Motivo",
         "craftTimes": "Vezes de craft",
         "totalOutput": "Saída total",
-        "inputsNeeded": "Materiais necessários"
-      }
+        "inputsNeeded": "Materiais necessários",
+        "upgradeFrom": "Upgrade From",
+        "upgradeTo": "Upgrade To",
+        "qtyToUpgrade": "Qty to Upgrade"
+      },
+      "blueprintUnlockCount": "{unlocked}/{total} unlocked"
     },
     "itemTooltip": {
       "complete": "Completo",
