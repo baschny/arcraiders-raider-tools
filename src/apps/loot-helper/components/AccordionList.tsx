@@ -1,23 +1,42 @@
-import { useState, useEffect, useRef } from 'react';
-import { ChevronUp, ChevronDown, Filter, LayoutGrid, List } from 'lucide-react';
-import type { ItemsMap, ItemRarity } from '../types/item';
+import { useState, useEffect, useMemo, useRef, type ReactNode } from 'react';
+import { ChevronUp, ChevronDown, Filter, LayoutGrid, List, Inbox, Recycle, Wrench } from 'lucide-react';
+import type { Item, ItemsMap, ItemRarity } from '../types/item';
 import type { ReverseMap } from '../utils/craftingChain';
 import { ItemHierarchy } from './ItemHierarchy';
 import { ItemIconWithInfo } from './ItemIconWithInfo';
 import { ItemDetailModal } from './ItemDetailModal';
 import { ActionIcon } from './ActionIcon';
 import { getRarityClass, getLocationIcon } from '../utils/dataLoader';
-import { getItemAction } from '../utils/itemAction';
-import { loadEnabledTypes, saveEnabledTypes, loadEnabledRarities, saveEnabledRarities, loadEnabledLocations, saveEnabledLocations } from '../utils/storage';
+import { getItemAction, type ItemAction } from '../utils/itemAction';
 import {
   getItemDisplayName,
   getLocalizedLootHelperLocation,
   getLocalizedLootHelperRarity,
   getLocalizedLootHelperType,
+  getLootHelperItemName,
   LOOT_HELPER_LOCATION_ORDER,
   LOOT_HELPER_RARITY_ORDER,
 } from '../utils/localization';
 import { useLocale } from '../../../shared/context/LocaleContext';
+import { lootStore, useStore } from '../../../shared/state/stores';
+
+const FILTERS_EXPANDED_STORAGE_KEY = 'loot-helper:filters-expanded';
+const GROUP_BY_STORAGE_KEY = 'loot-helper:group-by';
+
+type GroupBy = 'alphabet' | 'salvage' | 'goals';
+const VALID_GROUP_BYS: readonly GroupBy[] = ['alphabet', 'salvage', 'goals'] as const;
+
+interface ItemGroup {
+  key: string;
+  /** When undefined, the group renders without a header (used for the
+   *  default "alphabet" grouping which is a single flat list). */
+  header?: ReactNode;
+  items: Item[];
+  /** When true, the header is clickable to collapse/expand the group. */
+  collapsible?: boolean;
+  /** Optional CSS hook for action-coloured headers (salvage grouping). */
+  action?: ItemAction;
+}
 
 interface AccordionListProps {
   itemsMap: ItemsMap;
@@ -29,14 +48,31 @@ interface AccordionListProps {
 
 export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds, onToggleStashItem }: AccordionListProps) {
   const { t, tm, compareText } = useLocale();
+  const [lootState, setLootState] = useStore(lootStore);
   const [searchTerm, setSearchTerm] = useState('');
   const [expandedItemId, setExpandedItemId] = useState<string | null>(null);
   const [viewMode, setViewMode] = useState<'accordion' | 'grid'>('accordion');
   const [selectedGridItemId, setSelectedGridItemId] = useState<string | null>(null);
-  const [enabledTypes, setEnabledTypes] = useState<Set<string>>(new Set());
-  const [enabledRarities, setEnabledRarities] = useState<Set<ItemRarity>>(new Set());
-  const [enabledLocations, setEnabledLocations] = useState<Set<string>>(new Set());
-  const [filtersExpanded, setFiltersExpanded] = useState(true);
+  const [filtersExpanded, setFiltersExpanded] = useState<boolean>(() => {
+    try {
+      const saved = localStorage.getItem(FILTERS_EXPANDED_STORAGE_KEY);
+      return saved === null ? true : JSON.parse(saved);
+    } catch {
+      return true;
+    }
+  });
+  const [groupBy, setGroupBy] = useState<GroupBy>(() => {
+    try {
+      const saved = localStorage.getItem(GROUP_BY_STORAGE_KEY);
+      if (saved && (VALID_GROUP_BYS as readonly string[]).includes(saved)) {
+        return saved as GroupBy;
+      }
+    } catch {
+      // ignore
+    }
+    return 'alphabet';
+  });
+  const [collapsedGoalGroups, setCollapsedGoalGroups] = useState<Set<string>>(new Set());
   const itemRefs = useRef<Map<string, HTMLDivElement>>(new Map());
   const searchInputRef = useRef<HTMLInputElement>(null);
 
@@ -92,6 +128,26 @@ export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds,
     return indexA - indexB;
   });
 
+  const enabledTypes = useMemo(
+    () => new Set(lootState.enabledTypes ?? allPossibleTypes),
+    [allPossibleTypes, lootState.enabledTypes]
+  );
+  const enabledRarities = useMemo(
+    () => new Set<ItemRarity>((lootState.enabledRarities as ItemRarity[] | null) ?? allPossibleRarities),
+    [allPossibleRarities, lootState.enabledRarities]
+  );
+  const enabledLocations = useMemo(
+    () => new Set(lootState.enabledLocations ?? allPossibleLocations),
+    [allPossibleLocations, lootState.enabledLocations]
+  );
+  const patchLootFilters = (next: {
+    enabledTypes?: string[];
+    enabledRarities?: string[];
+    enabledLocations?: string[];
+  }) => {
+    setLootState({ ...lootStore.get(), ...next });
+  };
+
   // Get items and sort alphabetically (this is the filtered list)
   // Filter out Basic Materials, weapons, and modifications (same as allPossibleItems filter)
   const sortedItems = requiredItemIds
@@ -118,42 +174,6 @@ export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds,
     setViewMode(mode);
     localStorage.setItem('view-mode', mode);
   };
-
-  // Initialize enabled types from localStorage or default to all types
-  useEffect(() => {
-    if (allPossibleTypes.length > 0 && enabledTypes.size === 0) {
-      const savedTypes = loadEnabledTypes();
-      if (savedTypes && savedTypes.size > 0) {
-        setEnabledTypes(savedTypes);
-      } else {
-        setEnabledTypes(new Set(allPossibleTypes));
-      }
-    }
-  }, [allPossibleTypes.length]); // eslint-disable-line react-hooks/exhaustive-deps
-
-  // Initialize enabled rarities from localStorage or default to all rarities
-  useEffect(() => {
-    if (allPossibleRarities.length > 0 && enabledRarities.size === 0) {
-      const savedRarities = loadEnabledRarities();
-      if (savedRarities && savedRarities.size > 0) {
-        setEnabledRarities(savedRarities as Set<ItemRarity>);
-      } else {
-        setEnabledRarities(new Set(allPossibleRarities));
-      }
-    }
-  }, [allPossibleRarities.length]); // eslint-disable-line react-hooks/exhaustive-deps
-
-  // Initialize enabled locations from localStorage or default to all locations
-  useEffect(() => {
-    if (allPossibleLocations.length > 0 && enabledLocations.size === 0) {
-      const savedLocations = loadEnabledLocations();
-      if (savedLocations && savedLocations.size > 0) {
-        setEnabledLocations(savedLocations);
-      } else {
-        setEnabledLocations(new Set(allPossibleLocations));
-      }
-    }
-  }, [allPossibleLocations.length]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Calculate match counts for each filter option
   const typeMatchCounts = new Map<string, number>();
@@ -242,20 +262,17 @@ export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds,
     } else {
       newEnabledTypes.add(type);
     }
-    setEnabledTypes(newEnabledTypes);
-    saveEnabledTypes(newEnabledTypes);
+    patchLootFilters({ enabledTypes: Array.from(newEnabledTypes) });
   };
 
   const handleEnableAllTypes = () => {
     const allTypesSet = new Set(allPossibleTypes);
-    setEnabledTypes(allTypesSet);
-    saveEnabledTypes(allTypesSet);
+    patchLootFilters({ enabledTypes: Array.from(allTypesSet) });
   };
 
   const handleDisableAllTypes = () => {
     const emptySet = new Set<string>();
-    setEnabledTypes(emptySet);
-    saveEnabledTypes(emptySet);
+    patchLootFilters({ enabledTypes: Array.from(emptySet) });
   };
 
   const handleToggleRarity = (rarity: ItemRarity) => {
@@ -265,20 +282,17 @@ export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds,
     } else {
       newEnabledRarities.add(rarity);
     }
-    setEnabledRarities(newEnabledRarities);
-    saveEnabledRarities(newEnabledRarities);
+    patchLootFilters({ enabledRarities: Array.from(newEnabledRarities) });
   };
 
   const handleEnableAllRarities = () => {
     const allRaritiesSet = new Set(allPossibleRarities);
-    setEnabledRarities(allRaritiesSet);
-    saveEnabledRarities(allRaritiesSet);
+    patchLootFilters({ enabledRarities: Array.from(allRaritiesSet) });
   };
 
   const handleDisableAllRarities = () => {
     const emptySet = new Set<ItemRarity>();
-    setEnabledRarities(emptySet);
-    saveEnabledRarities(emptySet);
+    patchLootFilters({ enabledRarities: Array.from(emptySet) });
   };
 
   const handleToggleLocation = (location: string) => {
@@ -288,32 +302,261 @@ export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds,
     } else {
       newEnabledLocations.add(location);
     }
-    setEnabledLocations(newEnabledLocations);
-    saveEnabledLocations(newEnabledLocations);
+    patchLootFilters({ enabledLocations: Array.from(newEnabledLocations) });
   };
 
   const handleEnableAllLocations = () => {
     const allLocationsSet = new Set(allPossibleLocations);
-    setEnabledLocations(allLocationsSet);
-    saveEnabledLocations(allLocationsSet);
+    patchLootFilters({ enabledLocations: Array.from(allLocationsSet) });
   };
 
   const handleDisableAllLocations = () => {
     const emptySet = new Set<string>();
-    setEnabledLocations(emptySet);
-    saveEnabledLocations(emptySet);
+    patchLootFilters({ enabledLocations: Array.from(emptySet) });
+  };
+
+  const handleSetGroupBy = (mode: GroupBy) => {
+    setGroupBy(mode);
+    try {
+      localStorage.setItem(GROUP_BY_STORAGE_KEY, mode);
+    } catch {
+      // Ignore storage errors (private mode, quota, etc.)
+    }
+  };
+
+  const toggleGoalGroupCollapsed = (goalId: string) => {
+    setCollapsedGoalGroups((prev) => {
+      const next = new Set(prev);
+      if (next.has(goalId)) {
+        next.delete(goalId);
+      } else {
+        next.add(goalId);
+      }
+      return next;
+    });
   };
 
   const handleToggleFilters = () => {
     const newExpanded = !filtersExpanded;
     setFiltersExpanded(newExpanded);
-    
+    try {
+      localStorage.setItem(FILTERS_EXPANDED_STORAGE_KEY, JSON.stringify(newExpanded));
+    } catch {
+      // Ignore storage errors (private mode, quota, etc.)
+    }
+
     // Focus search input when expanding
     if (newExpanded) {
       setTimeout(() => {
         searchInputRef.current?.focus();
       }, 50);
     }
+  };
+
+  /**
+   * Compute the groups to render based on the current groupBy setting.
+   * Each group preserves alphabetical ordering of its items.
+   */
+  const itemGroups: ItemGroup[] = (() => {
+    if (groupBy === 'salvage') {
+      const buckets: Record<'keep' | 'recycle' | 'salvage', Item[]> = {
+        keep: [],
+        recycle: [],
+        salvage: [],
+      };
+      for (const item of filteredItems) {
+        const action = getItemAction(item.id, reverseMap);
+        if (action === 'keep' || action === 'recycle' || action === 'salvage') {
+          buckets[action].push(item);
+        }
+      }
+      const renderHeader = (action: 'keep' | 'recycle' | 'salvage', label: string, Icon: typeof Inbox, count: number) => (
+        <>
+          <div className={`item-group-title action-${action}`}>
+            <Icon size={18} />
+            <span>{label}</span>
+          </div>
+          <span className="item-group-count">{count}</span>
+        </>
+      );
+      return [
+        {
+          key: 'keep',
+          action: 'keep' as ItemAction,
+          items: buckets.keep,
+          header: renderHeader('keep', t('lootHelper.actions.keep'), Inbox, buckets.keep.length),
+        },
+        {
+          key: 'recycle',
+          action: 'recycle' as ItemAction,
+          items: buckets.recycle,
+          header: renderHeader('recycle', t('lootHelper.actions.recycle'), Recycle, buckets.recycle.length),
+        },
+        {
+          key: 'salvage',
+          action: 'salvage' as ItemAction,
+          items: buckets.salvage,
+          header: renderHeader('salvage', t('lootHelper.actions.salvage'), Wrench, buckets.salvage.length),
+        },
+      ];
+    }
+
+    if (groupBy === 'goals') {
+      // One group per enabled goal, in the order the user arranged them.
+      // `goalItemIds` here is already filtered to enabled goals at the call site.
+      return goalItemIds
+        .map((goalId): ItemGroup | null => {
+          const goalItem = itemsMap[goalId];
+          if (!goalItem) return null;
+          const items = filteredItems.filter((item) => {
+            const usages = reverseMap.get(item.id);
+            if (!usages) return false;
+            return usages.some((u) => u.goalItemIds.includes(goalId));
+          });
+          return {
+            key: `goal-${goalId}`,
+            collapsible: true,
+            items,
+            header: (
+              <>
+                <div className="item-group-title">
+                  {goalItem.imageFilename && (
+                    <img
+                      src={goalItem.imageFilename}
+                      alt={getLootHelperItemName(goalItem)}
+                      className={`item-group-goal-icon ${getRarityClass(goalItem.rarity)}`}
+                    />
+                  )}
+                  <span>{getLootHelperItemName(goalItem)}</span>
+                </div>
+                <span className="item-group-count">{items.length}</span>
+              </>
+            ),
+          };
+        })
+        .filter((g): g is ItemGroup => g !== null);
+    }
+
+    // 'alphabet' (default): a single flat group with no header.
+    return [{ key: 'all', items: filteredItems }];
+  })();
+
+  /** Render a single grid tile. `prevItemName` is used to decide whether
+   *  a letter badge should appear (so badges reset within each group). */
+  const renderGridItem = (item: Item, prevItemName: string | null) => {
+    const goalCount = getGoalCount(item.id);
+    const priorityLevel = getPriorityLevel(goalCount);
+    const itemAction = getItemAction(item.id, reverseMap);
+
+    const firstLetter = getItemDisplayName(item)[0].toUpperCase();
+    const isFirstOfLetter =
+      prevItemName === null || prevItemName[0].toUpperCase() !== firstLetter;
+
+    return (
+      <div
+        key={item.id}
+        className={`grid-item priority-${priorityLevel}`}
+        onClick={() => setSelectedGridItemId(item.id)}
+      >
+        {isFirstOfLetter && (
+          <div className="grid-item-letter-badge">{firstLetter}</div>
+        )}
+        <div className="grid-item-icon-container">
+          <ItemIconWithInfo
+            item={item}
+            itemsMap={itemsMap}
+            className={`grid-item-icon ${getRarityClass(item.rarity)}`}
+          />
+          <ActionIcon
+            action={itemAction}
+            size={16}
+            className="grid-item-action-icon"
+          />
+        </div>
+        <span className="grid-item-title">{getItemDisplayName(item)}</span>
+      </div>
+    );
+  };
+
+  /** Render a single accordion item. */
+  const renderAccordionItem = (item: Item) => {
+    const isExpanded = expandedItemId === item.id;
+    const isGoal = goalItemIds.includes(item.id);
+    const goalCount = getGoalCount(item.id);
+    const priorityLevel = getPriorityLevel(goalCount);
+    const itemAction = getItemAction(item.id, reverseMap);
+
+    return (
+      <div
+        key={item.id}
+        ref={(el) => {
+          if (el) {
+            itemRefs.current.set(item.id, el);
+          } else {
+            itemRefs.current.delete(item.id);
+          }
+        }}
+        className={`accordion-item ${isExpanded ? 'expanded' : ''} ${
+          isGoal ? 'goal-item' : ''
+        } priority-${priorityLevel}`}
+      >
+        <div
+          className="accordion-item-header"
+          onClick={() => handleToggleItem(item.id)}
+        >
+          <div className="accordion-item-header-content">
+            {item.imageFilename && (
+              <ItemIconWithInfo
+                item={item}
+                itemsMap={itemsMap}
+                className={`accordion-item-icon ${getRarityClass(item.rarity)}`}
+              />
+            )}
+            <ActionIcon
+              action={itemAction}
+              size={18}
+              className="accordion-item-action-icon"
+            />
+            <span className="accordion-item-name">{getItemDisplayName(item)}</span>
+            {isGoal && <span className="accordion-item-goal-badge">{t('lootHelper.badges.goal')}</span>}
+          </div>
+          <div className="accordion-item-header-right">
+            {!isGoal && (
+              <button
+                className="accordion-item-stash-button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onToggleStashItem(item.id);
+                }}
+                title={t('lootHelper.sidebar.stashEnoughTitle')}
+              >
+                −
+              </button>
+            )}
+            {goalCount > 0 && (
+              <span className={`accordion-item-goal-count priority-${priorityLevel}`}>
+                ×{goalCount}
+              </span>
+            )}
+            <span className="accordion-item-toggle">
+              {isExpanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+            </span>
+          </div>
+        </div>
+
+        {isExpanded && (
+          <div className="accordion-item-content">
+            <ItemHierarchy
+              itemId={item.id}
+              itemsMap={itemsMap}
+              reverseMap={reverseMap}
+              goalItemIds={goalItemIds}
+              onNavigateToItem={handleNavigateToItem}
+            />
+          </div>
+        )}
+      </div>
+    );
   };
 
   // Build summary for collapsed state
@@ -407,6 +650,20 @@ export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds,
             <span className="filters-toggle">
               {filtersExpanded ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
             </span>
+          </div>
+          <div className="group-by-switch" title={t('lootHelper.grouping.label')}>
+            <select
+              className="group-by-select"
+              value={groupBy}
+              onChange={(e) => handleSetGroupBy(e.target.value as GroupBy)}
+              aria-label={t('lootHelper.grouping.label')}
+            >
+              <option value="alphabet">{t('lootHelper.grouping.alphabet')}</option>
+              <option value="salvage">{t('lootHelper.grouping.salvage')}</option>
+              <option value="goals" disabled={goalItemIds.length === 0}>
+                {t('lootHelper.grouping.goals')}
+              </option>
+            </select>
           </div>
           <div className="view-switch">
              <button 
@@ -569,121 +826,53 @@ export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds,
           <div className="accordion-no-results">{t('lootHelper.results.noItemsNeeded')}</div>
         ) : filteredItems.length === 0 ? (
           <div className="accordion-no-results">{tm('lootHelper.results.noSearchResults', { query: searchTerm })}</div>
-        ) : viewMode === 'grid' ? (
-          <div className="items-grid">
-            {filteredItems.map((item, index) => {
-              const goalCount = getGoalCount(item.id);
-              const priorityLevel = getPriorityLevel(goalCount);
-              const itemAction = getItemAction(item.id, reverseMap);
-              
-              // Check if this is the first item with this starting letter
-              const firstLetter = getItemDisplayName(item)[0].toUpperCase();
-              const isFirstOfLetter = index === 0 || 
-                getItemDisplayName(filteredItems[index - 1])[0].toUpperCase() !== firstLetter;
-
-              return (
-                <div
-                  key={item.id}
-                  className={`grid-item priority-${priorityLevel}`}
-                  onClick={() => setSelectedGridItemId(item.id)}
-                >
-                  {isFirstOfLetter && (
-                    <div className="grid-item-letter-badge">{firstLetter}</div>
-                  )}
-                  <div className="grid-item-icon-container">
-                    <ItemIconWithInfo 
-                      item={item} 
-                      itemsMap={itemsMap} 
-                      className={`grid-item-icon ${getRarityClass(item.rarity)}`} 
-                    />
-                    <ActionIcon 
-                      action={itemAction} 
-                      size={16} 
-                      className="grid-item-action-icon" 
-                    />
-                  </div>
-                  <span className="grid-item-title">{getItemDisplayName(item)}</span>
-                </div>
-              );
-            })}
-          </div>
         ) : (
-          filteredItems.map((item) => {
-            const isExpanded = expandedItemId === item.id;
-            const isGoal = goalItemIds.includes(item.id);
-            const goalCount = getGoalCount(item.id);
-            const priorityLevel = getPriorityLevel(goalCount);
-            const itemAction = getItemAction(item.id, reverseMap);
-
+          itemGroups.map((group) => {
+            const isCollapsed = group.collapsible && collapsedGoalGroups.has(
+              group.key.startsWith('goal-') ? group.key.slice('goal-'.length) : group.key
+            );
             return (
               <div
-                key={item.id}
-                ref={(el) => {
-                  if (el) {
-                    itemRefs.current.set(item.id, el);
-                  } else {
-                    itemRefs.current.delete(item.id);
-                  }
-                }}
-                className={`accordion-item ${isExpanded ? 'expanded' : ''} ${
-                  isGoal ? 'goal-item' : ''
-                } priority-${priorityLevel}`}
+                key={group.key}
+                className={`item-group ${group.action ? `item-group-${group.action}` : ''}`}
               >
-                <div
-                  className="accordion-item-header"
-                  onClick={() => handleToggleItem(item.id)}
-                >
-                  <div className="accordion-item-header-content">
-                    {item.imageFilename && (
-                      <ItemIconWithInfo
-                        item={item}
-                        itemsMap={itemsMap}
-                        className={`accordion-item-icon ${getRarityClass(item.rarity)}`}
-                      />
-                    )}
-                    <ActionIcon 
-                      action={itemAction} 
-                      size={18} 
-                      className="accordion-item-action-icon" 
-                    />
-                    <span className="accordion-item-name">{getItemDisplayName(item)}</span>
-                    {isGoal && <span className="accordion-item-goal-badge">{t('lootHelper.badges.goal')}</span>}
-                  </div>
-                  <div className="accordion-item-header-right">
-                    {!isGoal && (
-                      <button
-                        className="accordion-item-stash-button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          onToggleStashItem(item.id);
-                        }}
-                        title={t('lootHelper.sidebar.stashEnoughTitle')}
-                      >
-                        −
-                      </button>
-                    )}
-                    {goalCount > 0 && (
-                      <span className={`accordion-item-goal-count priority-${priorityLevel}`}>
-                        ×{goalCount}
+                {group.header && (
+                  <div
+                    className={`item-group-header ${group.collapsible ? 'collapsible' : ''}`}
+                    onClick={
+                      group.collapsible
+                        ? () =>
+                            toggleGoalGroupCollapsed(
+                              group.key.startsWith('goal-')
+                                ? group.key.slice('goal-'.length)
+                                : group.key
+                            )
+                        : undefined
+                    }
+                  >
+                    {group.header}
+                    {group.collapsible && (
+                      <span className="item-group-toggle">
+                        {isCollapsed ? <ChevronDown size={18} /> : <ChevronUp size={18} />}
                       </span>
                     )}
-                    <span className="accordion-item-toggle">
-                      {isExpanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
-                    </span>
-                  </div>
-                </div>
-
-                {isExpanded && (
-                  <div className="accordion-item-content">
-                    <ItemHierarchy
-                      itemId={item.id}
-                      itemsMap={itemsMap}
-                      reverseMap={reverseMap}
-                      goalItemIds={goalItemIds}
-                      onNavigateToItem={handleNavigateToItem}
-                    />
                   </div>
                 )}
+                {!isCollapsed &&
+                  (group.items.length === 0 ? (
+                    <div className="accordion-no-results">{t('lootHelper.results.noItemsForGroup')}</div>
+                  ) : viewMode === 'grid' ? (
+                    <div className="items-grid">
+                      {group.items.map((item, index) =>
+                        renderGridItem(
+                          item,
+                          index === 0 ? null : getItemDisplayName(group.items[index - 1])
+                        )
+                      )}
+                    </div>
+                  ) : (
+                    group.items.map((item) => renderAccordionItem(item))
+                  ))}
               </div>
             );
           })

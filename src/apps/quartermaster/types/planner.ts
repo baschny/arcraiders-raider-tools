@@ -39,7 +39,7 @@ export interface InRaidSuggestion {
   listSources?: RequiredSource[];
 }
 
-// Loadout badge for Current Loadout / Stash views (CR-MOD-7)
+// Requirement badge for planner rows and My Items status (CR-MOD-7)
 export type LoadoutBadge = 'HAVE' | 'CAN_CRAFT' | 'MISSING';
 
 // Plan Table (section 6.8.2)
@@ -68,11 +68,50 @@ export interface CraftPlan {
   steps: CraftStep[];
 }
 
+// Weapon Upgrade Plan (CR-010)
+export interface WeaponUpgradeStep {
+  benchId: BenchId;
+  fromItemId: ItemId;
+  toItemId: ItemId;
+  qty: Qty;
+  upgradeCost: Record<ItemId, Qty>;
+  stationLevelRequired: 1 | 2 | 3;
+  isFullySatisfiable: boolean;
+}
+
+export interface WeaponUpgradePlan {
+  steps: WeaponUpgradeStep[];
+}
+
 // Recycling Plan (section 6.8.5)
+export interface RecycleActionReason {
+  listId: string;
+  listName: string;
+  targetItemId: ItemId;
+  targetItemName: string;
+  producedItemId: ItemId;
+  producedItemName: string;
+  chainItemIds: ItemId[];
+  chainLabel: string;
+  quantityCovered: Qty;
+}
+
+export type RecycleSourcePriorityGroup = 'normal' | 'direct_recipe_input';
+
+export interface RecycleSourcePriorityWarning {
+  targetItemId: ItemId;
+  targetItemName: string;
+  listId: string;
+  listName: string;
+}
+
 export interface RecycleAction {
   srcItemId: ItemId;
   qtyToRecycle: Qty;
   yields: Record<ItemId, Qty>;
+  reasons: RecycleActionReason[];
+  sourcePriorityGroup?: RecycleSourcePriorityGroup;
+  sourcePriorityWarnings?: RecycleSourcePriorityWarning[];
 }
 
 export interface RecyclePlan {
@@ -113,10 +152,12 @@ export interface BlockerSummary {
 export interface PlannerResult {
   required: Record<ItemId, Qty>;
   deficit: Record<ItemId, Qty>;
+  remainingIngredientDeficits: Record<ItemId, Qty>;
 
   planRows: PlanRow[];
 
   craftPlan: CraftPlan;
+  weaponUpgradePlan: WeaponUpgradePlan;
   recyclePlan: RecyclePlan;
   lootSuggestions: LootSuggestionList;
   inRaidSuggestions: InRaidSuggestionList;
@@ -133,16 +174,41 @@ export interface PlannerResult {
   totalMissingItemsCount: number;
   totalRecycleActionsCount: number;
   totalCraftStepsCount: number;
+  totalWeaponUpgradeStepsCount: number;
 }
 
-// Advisory badge for Current Loadout view (section 7.3.2)
+// Advisory badge for legacy planner recommendations (section 7.3.2)
 export type AdvisoryBadge = 'KEEP' | 'RECYCLE' | 'DISCARD';
 
 // Stash and API data
-export interface StashItem {
+export interface OwnedItemQuantity {
   itemId: ItemId;
   quantity: Qty;
 }
+
+export type OwnedItemLocation =
+  | {
+      source: 'stash';
+      quantity: Qty;
+      hasAttachments?: boolean;
+    }
+  | {
+      source: 'loadout';
+      quantity: Qty;
+      hasAttachments?: boolean;
+    }
+  | {
+      source: 'stash_attachment' | 'loadout_attachment';
+      quantity: Qty;
+      parentItemId: ItemId;
+      parentName: string;
+    };
+
+export interface OwnedItemDisplayRow extends OwnedItemQuantity {
+  locations: OwnedItemLocation[];
+}
+
+export type StashItem = OwnedItemQuantity;
 
 export interface CurrentLoadoutItem {
   itemId: ItemId;

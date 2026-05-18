@@ -18,6 +18,7 @@ import { KMSClient, GenerateDataKeyCommand, DecryptCommand } from "@aws-sdk/clie
 import { createCipheriv, createDecipheriv, createHash, randomBytes } from "node:crypto";
 
 const kms = new KMSClient({});
+const LOCAL_DEV_KEY_MARKER = "local-dev:v1";
 
 export interface EnvelopePayload {
     /** Algorithm used. Always `AES-256-GCM` for now. */
@@ -52,8 +53,8 @@ export async function encryptToken(
     plaintext: string,
     ctx: EnvelopeContext,
 ): Promise<EnvelopePayload> {
-    if (process.env.LOCAL_DEV_BYPASS_KMS === "true") {
-        return encryptTokenLocal(plaintext, ctx);
+    if (process.env.RAIDER_TOOLS_LOCAL_DEV === "true") {
+        return encryptTokenLocalDev(plaintext);
     }
 
     const keyId = process.env.KMS_KEY_ID;
@@ -90,8 +91,11 @@ export async function decryptToken(
     payload: EnvelopePayload,
     ctx: EnvelopeContext,
 ): Promise<string> {
-    if (process.env.LOCAL_DEV_BYPASS_KMS === "true") {
-        return decryptTokenLocal(payload, ctx);
+    if (payload.encryptedDataKey === LOCAL_DEV_KEY_MARKER) {
+        if (process.env.RAIDER_TOOLS_LOCAL_DEV !== "true") {
+            throw new Error("Local-dev encrypted token cannot be decrypted outside local dev");
+        }
+        return decryptTokenLocalDev(payload);
     }
 
     const dec = await kms.send(new DecryptCommand({
@@ -116,33 +120,32 @@ export async function decryptToken(
     return pt.toString("utf8");
 }
 
-function encryptTokenLocal(
-    plaintext: string,
-    ctx: EnvelopeContext,
-): EnvelopePayload {
-    const key = localKeyForContext(ctx);
+function localDevKey(): Buffer {
+    const secret = process.env.LOCAL_TOKEN_ENCRYPTION_KEY;
+    if (!secret) throw new Error("Missing LOCAL_TOKEN_ENCRYPTION_KEY");
+    return createHash("sha256").update(secret, "utf8").digest();
+}
+
+function encryptTokenLocalDev(plaintext: string): EnvelopePayload {
     const iv = randomBytes(12);
-    const cipher = createCipheriv("aes-256-gcm", key, iv);
+    const cipher = createCipheriv("aes-256-gcm", localDevKey(), iv);
     const ct = Buffer.concat([cipher.update(plaintext, "utf8"), cipher.final()]);
     const tag = cipher.getAuthTag();
+
     return {
         alg: "AES-256-GCM",
         ciphertext: ct.toString("base64"),
         iv: iv.toString("base64"),
         tag: tag.toString("base64"),
-        encryptedDataKey: Buffer.from("local-dev").toString("base64"),
+        encryptedDataKey: LOCAL_DEV_KEY_MARKER,
         createdAt: new Date().toISOString(),
     };
 }
 
-function decryptTokenLocal(
-    payload: EnvelopePayload,
-    ctx: EnvelopeContext,
-): string {
-    const key = localKeyForContext(ctx);
+function decryptTokenLocalDev(payload: EnvelopePayload): string {
     const decipher = createDecipheriv(
         "aes-256-gcm",
-        key,
+        localDevKey(),
         Buffer.from(payload.iv, "base64"),
     );
     decipher.setAuthTag(Buffer.from(payload.tag, "base64"));
@@ -150,12 +153,6 @@ function decryptTokenLocal(
         decipher.update(Buffer.from(payload.ciphertext, "base64")),
         decipher.final(),
     ]);
-    return pt.toString("utf8");
-}
 
-function localKeyForContext(ctx: EnvelopeContext): Buffer {
-    const seed = process.env.LOCAL_DEV_KMS_SECRET ?? "raider-tools-local-dev-kms";
-    return createHash("sha256")
-        .update(`${seed}:${ctx.userId}:${ctx.purpose}:${ctx.provider}`)
-        .digest();
+    return pt.toString("utf8");
 }

@@ -12,6 +12,7 @@ export interface HideoutRequirementItem {
 
 export interface HideoutLevelDefinition {
   level: number;
+  image: string | null;
   requirementItemIds: HideoutRequirementItem[];
 }
 
@@ -45,7 +46,7 @@ export interface CachedHideout {
   cachedAt: number;
 }
 
-// Toggle persistence for generated lists (stored in localStorage)
+// Toggle persistence for generated lists (stored in quartermasterStore)
 
 export interface HideoutToggleState {
   /** Keys: "moduleId:level" */

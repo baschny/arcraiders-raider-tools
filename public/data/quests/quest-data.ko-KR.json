@@ -39,7 +39,7 @@
           "originalEn": "Metal Parts"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/metal_parts.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/metal_parts.png"
       },
       {
         "id": "steel_spring",
@@ -49,7 +49,7 @@
           "originalEn": "Steel Spring"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/steel_spring.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/steel_spring.png"
       },
       {
         "id": "duct_tape",
@@ -59,7 +59,7 @@
           "originalEn": "Duct Tape"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/duct_tape.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/duct_tape.png"
       }
     ],
     "hasBlueprint": false,
@@ -112,7 +112,7 @@
           "originalEn": "Advanced Mechanical Components"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/advanced_mechanical_components.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/advanced_mechanical_components.png"
       },
       {
         "id": "medium_gun_parts",
@@ -122,7 +122,7 @@
           "originalEn": "Medium Gun Parts"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/medium_gun_parts.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/medium_gun_parts.png"
       },
       {
         "id": "steel_spring",
@@ -132,7 +132,7 @@
           "originalEn": "Steel Spring"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/steel_spring.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/steel_spring.png"
       }
     ],
     "hasBlueprint": false,
@@ -184,7 +184,7 @@
           "originalEn": "Extended Light Mag I"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/extended_light_mag_i.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/extended_light_mag_i.png"
       },
       {
         "id": "stable_stock_i",
@@ -194,7 +194,7 @@
           "originalEn": "Stable Stock I"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/stable_stock_i.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/stable_stock_i.png"
       },
       {
         "id": "muzzle_brake_ii",
@@ -204,7 +204,7 @@
           "originalEn": "Muzzle Brake II"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/muzzle_brake_ii.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/muzzle_brake_ii.png"
       }
     ],
     "hasBlueprint": false,
@@ -265,7 +265,7 @@
           "originalEn": "Dusty Film Reel"
         },
         "rarity": "Common",
-        "imageFilename": ""
+        "imageFilename": "https://cdn.arctracker.io/items/v2/dusty_film_reel.png"
       }
     ],
     "rewardItems": [
@@ -335,7 +335,7 @@
           "originalEn": "Noisemaker"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/noisemaker.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/noisemaker.png"
       }
     ],
     "requiredItems": [],
@@ -348,7 +348,7 @@
           "originalEn": "Shrapnel Grenade"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/shrapnel_grenade.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/shrapnel_grenade.png"
       },
       {
         "id": "snap_blast_grenade",
@@ -358,7 +358,7 @@
           "originalEn": "Snap Blast Grenade"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/snap_blast_grenade.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/snap_blast_grenade.png"
       },
       {
         "id": "heavy_fuze_grenade",
@@ -368,7 +368,7 @@
           "originalEn": "Heavy Fuze Grenade"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/heavy_fuze_grenade.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/heavy_fuze_grenade.png"
       }
     ],
     "hasBlueprint": false,
@@ -424,7 +424,7 @@
           "originalEn": "Lidar Scanner"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/lidar_scanner.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/lidar_scanner.png"
       }
     ],
     "rewardItems": [
@@ -436,7 +436,7 @@
           "originalEn": "Dam Testing Annex Key"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/dam_testing_annex_key.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/dam_testing_annex_key.png"
       },
       {
         "id": "zipline",
@@ -446,7 +446,7 @@
           "originalEn": "Zipline"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/zipline.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/zipline.png"
       },
       {
         "id": "smoke_grenade",
@@ -456,7 +456,7 @@
           "originalEn": "Smoke Grenade"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/smoke_grenade.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/smoke_grenade.png"
       }
     ],
     "hasBlueprint": false,
@@ -504,7 +504,7 @@
           "originalEn": "Possibly Toxic Plant"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/possibly_toxic_plant.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/possibly_toxic_plant.png"
       }
     ],
     "rewardItems": [
@@ -516,7 +516,7 @@
           "originalEn": "Vita Shot"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/vita_shot.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/vita_shot.png"
       },
       {
         "id": "antiseptic",
@@ -526,7 +526,7 @@
           "originalEn": "Antiseptic"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/antiseptic.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/antiseptic.png"
       }
     ],
     "hasBlueprint": false,
@@ -575,7 +575,7 @@
           "originalEn": "Remote Raider Flare"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/remote_raider_flare.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/remote_raider_flare.png"
       }
     ],
     "requiredItems": [
@@ -587,7 +587,7 @@
           "originalEn": "ARC Powercell"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/arc_powercell.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/arc_powercell.png"
       }
     ],
     "rewardItems": [
@@ -599,7 +599,7 @@
           "originalEn": "Patrol Car Key"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/patrol_car_key.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/patrol_car_key.png"
       },
       {
         "id": "door_blocker",
@@ -609,7 +609,7 @@
           "originalEn": "Door Blocker"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/door_blocker.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/door_blocker.png"
       }
     ],
     "hasBlueprint": false,
@@ -657,7 +657,7 @@
           "originalEn": "ESR Analyzer"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/esr_analyzer.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/esr_analyzer.png"
       }
     ],
     "rewardItems": [
@@ -669,7 +669,7 @@
           "originalEn": "Tactical Mk. 3 (Healing)"
         },
         "rarity": "Epic",
-        "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_healing.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/tactical_mk3_healing.png"
       },
       {
         "id": "surge_shield_recharger",
@@ -679,7 +679,7 @@
           "originalEn": "Surge Shield Recharger"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/surge_shield_recharger.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/surge_shield_recharger.png"
       }
     ],
     "hasBlueprint": false,
@@ -739,7 +739,7 @@
           "originalEn": "Anvil II"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/anvil.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/anvil_ii.png"
       },
       {
         "id": "anvil_splitter",
@@ -749,7 +749,7 @@
           "originalEn": "Anvil Splitter"
         },
         "rarity": "Legendary",
-        "imageFilename": "https://cdn.arctracker.io/items/anvil_splitter.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/anvil_splitter.png"
       },
       {
         "id": "extended_barrel",
@@ -759,7 +759,7 @@
           "originalEn": "Extended Barrel"
         },
         "rarity": "Epic",
-        "imageFilename": "https://cdn.arctracker.io/items/extended_barrel.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/extended_barrel.png"
       },
       {
         "id": "heavy_ammo",
@@ -769,7 +769,7 @@
           "originalEn": "Heavy Ammo"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/heavy_ammo.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/heavy_ammo.png"
       }
     ],
     "hasBlueprint": false,
@@ -824,7 +824,7 @@
           "originalEn": "Mod Components"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/mod_components.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/mod_components.png"
       },
       {
         "id": "duct_tape",
@@ -834,7 +834,7 @@
           "originalEn": "Duct Tape"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/duct_tape.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/duct_tape.png"
       }
     ],
     "hasBlueprint": false,
@@ -891,7 +891,7 @@
           "originalEn": "Tactical Mk. 2"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/tactical_i.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/tactical_mk2.png"
       },
       {
         "id": "zipline",
@@ -901,7 +901,7 @@
           "originalEn": "Zipline"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/zipline.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/zipline.png"
       },
       {
         "id": "pulse_mine",
@@ -911,7 +911,7 @@
           "originalEn": "Pulse Mine"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/pulse_mine.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/pulse_mine.png"
       },
       {
         "id": "gas_mine",
@@ -921,7 +921,7 @@
           "originalEn": "Gas Mine"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/gas_mine.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/gas_mine.png"
       }
     ],
     "hasBlueprint": false,
@@ -978,7 +978,7 @@
           "originalEn": "Noisemaker"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/noisemaker.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/noisemaker.png"
       },
       {
         "id": "blue_light_stick",
@@ -988,7 +988,7 @@
           "originalEn": "Blue Light Stick"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/blue_light_stick.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/blue_light_stick.png"
       },
       {
         "id": "rosary",
@@ -998,7 +998,64 @@
           "originalEn": "Rosary"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/rosary.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/rosary.png"
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "a_wrench_in_the_works",
+    "name": {
+      "value": "작업에 낀 렌치",
+      "originalEn": "A Wrench in the Works"
+    },
+    "trader": "Celeste",
+    "map": [
+      "the_spaceport"
+    ],
+    "previousQuestIds": [
+      "safe_harbor"
+    ],
+    "nextQuestIds": [],
+    "description": {
+      "value": "그 불만은 결국 우주 기지의 지상 직원들에게까지 번진 모양이에요. 엑소더스 한복판에서 반란의 불씨가 커지고 있었던 거죠.",
+      "originalEn": "Looks like the resentment ended up reaching the ground staff of the Spaceport itself. A mutiny brewing, right in the heart of the Exodus."
+    },
+    "objectives": [
+      {
+        "value": "서쪽 게이트 근처 버스 수색하기",
+        "originalEn": "Search the buses near the western gate"
+      },
+      {
+        "value": "급수탑에 숨겨진 파괴 공작 보급품 은닉처 찾기",
+        "originalEn": "Locate the stash of sabotage supplies hidden at the Water Towers"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "mechanical_components",
+        "quantity": 5,
+        "name": {
+          "value": "기계 부품",
+          "originalEn": "Mechanical Components"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/mechanical_components.png"
+      },
+      {
+        "id": "mod_components",
+        "quantity": 3,
+        "name": {
+          "value": "모드 부품",
+          "originalEn": "Mod Components"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/mod_components.png"
       }
     ],
     "hasBlueprint": false,
@@ -1045,7 +1102,7 @@
           "originalEn": "Zipline"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/zipline.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/zipline.png"
       }
     ],
     "requiredItems": [
@@ -1057,7 +1114,7 @@
           "originalEn": "Wires"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/wires.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/wires.png"
       },
       {
         "id": "battery",
@@ -1067,7 +1124,7 @@
           "originalEn": "Battery"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/battery.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/battery.png"
       }
     ],
     "rewardItems": [
@@ -1079,7 +1136,7 @@
           "originalEn": "Blue Light Stick"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/blue_light_stick.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/blue_light_stick.png"
       },
       {
         "id": "antiseptic",
@@ -1089,7 +1146,7 @@
           "originalEn": "Antiseptic"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/antiseptic.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/antiseptic.png"
       },
       {
         "id": "durable_cloth",
@@ -1099,7 +1156,7 @@
           "originalEn": "Durable Cloth"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/durable_cloth.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/durable_cloth.png"
       }
     ],
     "hasBlueprint": false,
@@ -1155,7 +1212,7 @@
           "originalEn": "Smoke Grenade"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/smoke_grenade.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/smoke_grenade.png"
       },
       {
         "id": "defibrillator",
@@ -1165,7 +1222,7 @@
           "originalEn": "Defibrillator"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/defibrillator.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/defibrillator.png"
       }
     ],
     "hasBlueprint": false,
@@ -1229,7 +1286,7 @@
           "originalEn": "Renegade I"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/renegade.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/renegade_i.png"
       },
       {
         "id": "stable_stock_iii",
@@ -1239,7 +1296,7 @@
           "originalEn": "Stable Stock III"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/stable_stock_iii.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/stable_stock_iii.png"
       },
       {
         "id": "medium_ammo",
@@ -1249,7 +1306,70 @@
           "originalEn": "Medium Ammo"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/medium_ammo.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/medium_ammo.png"
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "battening_down",
+    "name": {
+      "value": "철저한 대비",
+      "originalEn": "Battening Down"
+    },
+    "trader": "Apollo",
+    "map": [
+      "riven_tides"
+    ],
+    "previousQuestIds": [
+      "off_the_radar"
+    ],
+    "nextQuestIds": [],
+    "description": {
+      "value": "갈라진 물결의 방파제가 비바람을 막아주기를 바랐지만, 허리케인이 자비 없이 몰아친 모양입니다.",
+      "originalEn": "We’d hoped the seawalls at Riven Tides might offer us some protection from the elements, but it seems the hurricanes were not kind to this place, either."
+    },
+    "objectives": [
+      {
+        "value": "방파제에 생기고 있는 균열 촬영하기",
+        "originalEn": "Photograph the cracks forming in the seawall"
+      },
+      {
+        "value": "호텔 해변 근처 해안선 샘플 채취하기",
+        "originalEn": "Sample the shoreline near the hotel beach"
+      },
+      {
+        "value": "북동쪽에 있는 새는 송유관 수리하기",
+        "originalEn": "Fix the leaking oil pipe in the northeast"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [
+      "20x Raids"
+    ],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "riven_tides_hotel_keycard_no_107",
+        "quantity": 1,
+        "name": {
+          "value": "Riven Tides 호텔 키카드 107번",
+          "originalEn": "Riven Tides Hotel Keycard No. 107"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/riven_tides_hotel_keycard_no_107.png"
+      },
+      {
+        "id": "smoke_grenade_trap",
+        "quantity": 3,
+        "name": {
+          "value": "연막탄 함정",
+          "originalEn": "Smoke Grenade Trap"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/smoke_grenade_trap.png"
       }
     ],
     "hasBlueprint": false,
@@ -1296,7 +1416,7 @@
           "originalEn": "Yellow Light Stick"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/yellow_light_stick.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/yellow_light_stick.png"
       }
     ],
     "requiredItems": [],
@@ -1309,7 +1429,7 @@
           "originalEn": "Advanced Electrical Components"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/advanced_electrical_components.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/advanced_electrical_components.png"
       },
       {
         "id": "sensors",
@@ -1319,7 +1439,7 @@
           "originalEn": "Sensors"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/sensors.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/sensors.png"
       }
     ],
     "hasBlueprint": false,
@@ -1363,7 +1483,7 @@
           "originalEn": "Bombardier Cell"
         },
         "rarity": "Epic",
-        "imageFilename": "https://cdn.arctracker.io/items/bombardier_cell.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/bombardier_cell.png"
       }
     ],
     "rewardItems": [
@@ -1444,7 +1564,7 @@
           "originalEn": "First Wave Tape"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/first_wave_tape.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/first_wave_tape.png"
       },
       {
         "id": "first_wave_compass",
@@ -1454,7 +1574,7 @@
           "originalEn": "First Wave Compass"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/first_wave_compass.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/first_wave_compass.png"
       },
       {
         "id": "first_wave_rations",
@@ -1464,7 +1584,7 @@
           "originalEn": "First Wave Rations"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/first_wave_rations.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/first_wave_rations.png"
       }
     ],
     "rewardItems": [
@@ -1476,7 +1596,7 @@
           "originalEn": "Arpeggio I"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/arpeggio.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/arpeggio_i.png"
       },
       {
         "id": "compensator_ii",
@@ -1486,7 +1606,7 @@
           "originalEn": "Compensator II"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/compensator_ii.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/compensator_ii.png"
       },
       {
         "id": "medium_ammo",
@@ -1496,7 +1616,7 @@
           "originalEn": "Medium Ammo"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/medium_ammo.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/medium_ammo.png"
       }
     ],
     "hasBlueprint": false,
@@ -1568,7 +1688,7 @@
           "originalEn": "Explosive Mine"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/explosive_mine.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/explosive_mine.png"
       },
       {
         "id": "jolt_mine",
@@ -1578,7 +1698,7 @@
           "originalEn": "Jolt Mine"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/jolt_mine.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/jolt_mine.png"
       },
       {
         "id": "heavy_fuze_grenade",
@@ -1588,7 +1708,7 @@
           "originalEn": "Heavy Fuze Grenade"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/heavy_fuze_grenade.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/heavy_fuze_grenade.png"
       }
     ],
     "hasBlueprint": false,
@@ -1620,8 +1740,8 @@
         "originalEn": "Retrieve Celeste’s Journals from the South Swamp Outpost"
       },
       {
-        "value": "붉은 호수가 내려다보이는 북쪽 전초 기지에서 셀레스테의 일지 회수하기",
-        "originalEn": "Retrieve Celeste’s Journals from the northern outpost overlooking the Red Lakes"
+        "value": "동쪽 레이더 전초 기지에서 셀레스테의 일지 회수하기",
+        "originalEn": "Retrieve Celeste’s Journals from Raider Outpost East"
       },
       {
         "value": "셀레스테에게 일지 2권 전달하기",
@@ -1640,7 +1760,7 @@
           "originalEn": "Celeste's Journal"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/celestes_journal.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/celeste_journal.png"
       }
     ],
     "rewardItems": [
@@ -1652,7 +1772,7 @@
           "originalEn": "Magnetic Accelerator"
         },
         "rarity": "Epic",
-        "imageFilename": "https://cdn.arctracker.io/items/magnetic_accelerator.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/magnetic_accelerator.png"
       },
       {
         "id": "heavy_gun_parts",
@@ -1662,7 +1782,7 @@
           "originalEn": "Heavy Gun Parts"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/heavy_gun_parts.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/heavy_gun_parts.png"
       },
       {
         "id": "exodus_modules",
@@ -1672,7 +1792,7 @@
           "originalEn": "Exodus Modules"
         },
         "rarity": "Epic",
-        "imageFilename": "https://cdn.arctracker.io/items/exodus_modules.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/exodus_modules.png"
       }
     ],
     "hasBlueprint": false,
@@ -1725,7 +1845,7 @@
           "originalEn": "Lure Grenade"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/lure_grenade.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/lure_grenade.png"
       },
       {
         "id": "noisemaker",
@@ -1735,7 +1855,7 @@
           "originalEn": "Noisemaker"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/noisemaker.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/noisemaker.png"
       },
       {
         "id": "tagging_grenade",
@@ -1745,7 +1865,7 @@
           "originalEn": "Tagging Grenade"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/tagging_grenade.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/tagging_grenade.png"
       }
     ],
     "hasBlueprint": false,
@@ -1791,7 +1911,7 @@
           "originalEn": "ARC Alloy"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/arc_alloy.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/arc_alloy.png"
       }
     ],
     "rewardItems": [
@@ -1803,7 +1923,7 @@
           "originalEn": "Sterilized Bandage"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/sterilized_bandage.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/sterilized_bandage.png"
       },
       {
         "id": "light_shield",
@@ -1813,7 +1933,7 @@
           "originalEn": "Light Shield"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/light_shield.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/light_shield.png"
       }
     ],
     "hasBlueprint": false,
@@ -1861,7 +1981,7 @@
           "originalEn": "Old World Books"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/old_world_books.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/old_world_books.png"
       }
     ],
     "rewardItems": [
@@ -1873,7 +1993,7 @@
           "originalEn": "Gas Mine"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/gas_mine.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/gas_mine.png"
       },
       {
         "id": "raider_hatch_key",
@@ -1883,7 +2003,83 @@
           "originalEn": "Raider Hatch Key"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/raider_hatch_key.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/raider_hatch_key.png"
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "collision_course",
+    "name": {
+      "value": "충돌 경로",
+      "originalEn": "Collision Course"
+    },
+    "trader": "Tian Wen",
+    "map": [],
+    "previousQuestIds": [
+      "safe_passage"
+    ],
+    "nextQuestIds": [],
+    "description": {
+      "value": "레이더가 코멧을 피하는 법을 아는 사람은 많지만, 놈을 격추해 내부 부품을 확보하는 법을 아는 이는 턱없이 적습니다.",
+      "originalEn": "Many Raiders have learned how to dodge a Comet, but far too few know how to bring them down and get at their inner parts."
+    },
+    "objectives": [
+      {
+        "value": "코멧 파괴하기",
+        "originalEn": "Destroy a Comet"
+      },
+      {
+        "value": "티안 웬에게 코멧 점화기 전달하기",
+        "originalEn": "Deliver a Comet Igniter to Tian Wen"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "comet_igniter",
+        "quantity": 1,
+        "name": {
+          "value": "Comet Igniter",
+          "originalEn": "Comet Igniter"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/comet_igniter.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "canto_i",
+        "quantity": 1,
+        "name": {
+          "value": "칸토 I",
+          "originalEn": "Canto I"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/canto_i.png"
+      },
+      {
+        "id": "extended_medium_mag_iii",
+        "quantity": 1,
+        "name": {
+          "value": "확장형 중량 탄창 III",
+          "originalEn": "Extended Medium Mag III"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/extended_medium_mag_iii.png"
+      },
+      {
+        "id": "muzzle_brake_ii",
+        "quantity": 1,
+        "name": {
+          "value": "총구 제동기 II",
+          "originalEn": "Muzzle Brake II"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/muzzle_brake_ii.png"
       }
     ],
     "hasBlueprint": false,
@@ -1943,7 +2139,7 @@
           "originalEn": "Binoculars"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/binoculars.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/binoculars.png"
       }
     ],
     "requiredItems": [
@@ -1955,7 +2151,7 @@
           "originalEn": "Spotter Relay"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/spotter_relay.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/spotter_relay.png"
       }
     ],
     "rewardItems": [
@@ -1967,7 +2163,7 @@
           "originalEn": "Firecracker"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/firecracker.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/firecracker.png"
       },
       {
         "id": "fireworks_box",
@@ -1977,7 +2173,7 @@
           "originalEn": "Fireworks Box"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/fireworks_box.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/fireworks_box.png"
       }
     ],
     "hasBlueprint": false,
@@ -2038,7 +2234,7 @@
           "originalEn": "Anvil III"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/anvil.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/anvil_iii.png"
       },
       {
         "id": "heavy_ammo",
@@ -2048,7 +2244,7 @@
           "originalEn": "Heavy Ammo"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/heavy_ammo.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/heavy_ammo.png"
       }
     ],
     "hasBlueprint": false,
@@ -2101,7 +2297,7 @@
           "originalEn": "Defibrillator"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/defibrillator.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/defibrillator.png"
       },
       {
         "id": "trailblazer",
@@ -2111,7 +2307,7 @@
           "originalEn": "Trailblazer"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/trailblazer.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/trailblazer.png"
       }
     ],
     "hasBlueprint": false,
@@ -2161,7 +2357,7 @@
           "originalEn": "Advanced Electrical Components"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/advanced_electrical_components.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/advanced_electrical_components.png"
       },
       {
         "id": "speaker_component",
@@ -2171,7 +2367,7 @@
           "originalEn": "Speaker Component"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/speaker_component.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/speaker_component.png"
       }
     ],
     "hasBlueprint": false,
@@ -2225,7 +2421,7 @@
           "originalEn": "Syringe"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/syringe.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/syringe.png"
       },
       {
         "id": "antiseptic",
@@ -2235,7 +2431,7 @@
           "originalEn": "Antiseptic"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/antiseptic.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/antiseptic.png"
       },
       {
         "id": "durable_cloth",
@@ -2245,7 +2441,7 @@
           "originalEn": "Durable Cloth"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/durable_cloth.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/durable_cloth.png"
       },
       {
         "id": "great_mullein",
@@ -2255,7 +2451,7 @@
           "originalEn": "Great Mullein"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/great_mullein.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/great_mullein.png"
       }
     ],
     "rewardItems": [
@@ -2267,7 +2463,7 @@
           "originalEn": "Adrenaline Shot"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/adrenaline_shot.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/adrenaline_shot.png"
       },
       {
         "id": "sterilized_bandage",
@@ -2277,7 +2473,7 @@
           "originalEn": "Sterilized Bandage"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/sterilized_bandage.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/sterilized_bandage.png"
       },
       {
         "id": "surge_shield_recharger",
@@ -2287,7 +2483,7 @@
           "originalEn": "Surge Shield Recharger"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/surge_shield_recharger.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/surge_shield_recharger.png"
       }
     ],
     "hasBlueprint": false,
@@ -2337,7 +2533,7 @@
           "originalEn": "Door Blocker"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/door_blocker.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/door_blocker.png"
       },
       {
         "id": "lil_smoke_grenade",
@@ -2347,7 +2543,7 @@
           "originalEn": "Li'l Smoke Grenade"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/lil_smoke_grenade.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/lil_smoke_grenade.png"
       }
     ],
     "hasBlueprint": false,
@@ -2400,7 +2596,7 @@
           "originalEn": "Binoculars"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/binoculars.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/binoculars.png"
       }
     ],
     "requiredItems": [],
@@ -2413,7 +2609,7 @@
           "originalEn": "Combat Mk. 1"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/combat_i.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/combat_mk1.png"
       },
       {
         "id": "medium_shield",
@@ -2423,7 +2619,7 @@
           "originalEn": "Medium Shield"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/medium_shield.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/medium_shield.png"
       }
     ],
     "hasBlueprint": false,
@@ -2488,7 +2684,7 @@
           "originalEn": "Scout Patrol Note"
         },
         "rarity": "Common",
-        "imageFilename": ""
+        "imageFilename": "https://cdn.arctracker.io/items/v2/scout_patrol_note.png"
       }
     ],
     "rewardItems": [],
@@ -2541,7 +2737,7 @@
           "originalEn": "Major Aiva's Patch"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/major_aivas_patch.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/major_aivas_patch.png"
       }
     ],
     "rewardItems": [
@@ -2553,7 +2749,7 @@
           "originalEn": "Crude Explosives"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/crude_explosives.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/crude_explosives.png"
       },
       {
         "id": "processor",
@@ -2563,7 +2759,7 @@
           "originalEn": "Processor"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/processor.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/processor.png"
       },
       {
         "id": "music_box",
@@ -2573,7 +2769,7 @@
           "originalEn": "Music Box"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/music_box.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/music_box.png"
       }
     ],
     "hasBlueprint": false,
@@ -2621,7 +2817,7 @@
           "originalEn": "Espresso Machine Parts"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/espresso_machine_parts.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/espresso_machine_parts.png"
       }
     ],
     "rewardItems": [
@@ -2633,7 +2829,7 @@
           "originalEn": "Coffee Pot"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/coffee_pot.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/coffee_pot.png"
       },
       {
         "id": "adrenaline_shot",
@@ -2643,7 +2839,7 @@
           "originalEn": "Adrenaline Shot"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/adrenaline_shot.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/adrenaline_shot.png"
       }
     ],
     "hasBlueprint": false,
@@ -2698,7 +2894,7 @@
           "originalEn": "Zipline"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/zipline.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/zipline.png"
       }
     ],
     "requiredItems": [],
@@ -2711,7 +2907,7 @@
           "originalEn": "Tagging Grenade"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/tagging_grenade.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/tagging_grenade.png"
       },
       {
         "id": "vita_spray",
@@ -2721,7 +2917,7 @@
           "originalEn": "Vita Spray"
         },
         "rarity": "Epic",
-        "imageFilename": "https://cdn.arctracker.io/items/vita_spray.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/vita_spray.png"
       },
       {
         "id": "yellow_light_stick",
@@ -2731,7 +2927,7 @@
           "originalEn": "Yellow Light Stick"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/yellow_light_stick.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/yellow_light_stick.png"
       }
     ],
     "hasBlueprint": false,
@@ -2779,7 +2975,7 @@
           "originalEn": "Wires"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/wires.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/wires.png"
       }
     ],
     "rewardItems": [
@@ -2791,7 +2987,7 @@
           "originalEn": "Extended Shotgun Mag II"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/extended_shotgun_mag_ii.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/extended_shotgun_mag_ii.png"
       },
       {
         "id": "extended_medium_mag_ii",
@@ -2801,7 +2997,7 @@
           "originalEn": "Extended Medium Mag II"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/extended_medium_mag_ii.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/extended_medium_mag_ii.png"
       }
     ],
     "hasBlueprint": false,
@@ -2857,7 +3053,7 @@
           "originalEn": "Wires"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/wires.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/wires.png"
       }
     ],
     "rewardItems": [
@@ -2869,7 +3065,7 @@
           "originalEn": "Medium Gun Parts"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/medium_gun_parts.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/medium_gun_parts.png"
       },
       {
         "id": "advanced_mechanical_components",
@@ -2879,7 +3075,7 @@
           "originalEn": "Advanced Mechanical Components"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/advanced_mechanical_components.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/advanced_mechanical_components.png"
       }
     ],
     "hasBlueprint": false,
@@ -2933,7 +3129,7 @@
           "originalEn": "Showstopper"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/showstopper.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/showstopper.png"
       },
       {
         "id": "trailblazer",
@@ -2943,7 +3139,7 @@
           "originalEn": "Trailblazer"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/trailblazer.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/trailblazer.png"
       }
     ],
     "hasBlueprint": false,
@@ -3003,7 +3199,7 @@
           "originalEn": "Secret Meeting Info"
         },
         "rarity": "Common",
-        "imageFilename": ""
+        "imageFilename": "https://cdn.arctracker.io/items/v2/secret_meeting_info.png"
       }
     ],
     "rewardItems": [
@@ -3015,7 +3211,7 @@
           "originalEn": "Aphelion"
         },
         "rarity": "Legendary",
-        "imageFilename": "https://cdn.arctracker.io/items/aphelion.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/aphelion.png"
       },
       {
         "id": "energy_clip",
@@ -3025,7 +3221,7 @@
           "originalEn": "Energy Clip"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/energy_clip.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/energy_clip.png"
       }
     ],
     "hasBlueprint": false,
@@ -3079,7 +3275,7 @@
           "originalEn": "Dam Surveillance Key"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/dam_surveillance_key.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/dam_surveillance_key.png"
       }
     ],
     "requiredItems": [],
@@ -3092,7 +3288,7 @@
           "originalEn": "Lure Grenade Blueprint"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/lure_grenade.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/lure_grenade_blueprint.png"
       },
       {
         "id": "speaker_component",
@@ -3102,7 +3298,7 @@
           "originalEn": "Speaker Component"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/speaker_component.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/speaker_component.png"
       },
       {
         "id": "electrical_components",
@@ -3112,7 +3308,7 @@
           "originalEn": "Electrical Components"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/electrical_components.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/electrical_components.png"
       }
     ],
     "hasBlueprint": true,
@@ -3123,7 +3319,7 @@
           "value": "유인 수류탄 설계도",
           "originalEn": "Lure Grenade Blueprint"
         },
-        "imageFilename": "https://cdn.arctracker.io/items/lure_grenade.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/lure_grenade_blueprint.png"
       }
     ]
   },
@@ -3177,7 +3373,7 @@
           "originalEn": "Blue Gate Communication Tower Key"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/blue_gate_communication_tower_key.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/blue_gate_communication_tower_key.png"
       }
     ],
     "requiredItems": [],
@@ -3190,7 +3386,7 @@
           "originalEn": "Power Rod"
         },
         "rarity": "Epic",
-        "imageFilename": "https://cdn.arctracker.io/items/power_rod.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/power_rod.png"
       }
     ],
     "hasBlueprint": false,
@@ -3233,7 +3429,7 @@
           "originalEn": "Raider Hatch Key"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/raider_hatch_key.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/raider_hatch_key.png"
       },
       {
         "id": "binoculars",
@@ -3243,7 +3439,7 @@
           "originalEn": "Binoculars"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/binoculars.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/binoculars.png"
       }
     ],
     "hasBlueprint": false,
@@ -3293,7 +3489,7 @@
           "originalEn": "Defibrillator"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/defibrillator.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/defibrillator.png"
       }
     ],
     "requiredItems": [],
@@ -3306,7 +3502,7 @@
           "originalEn": "Looting Mk. 2"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/looting_mk2.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/looting_mk2.png"
       },
       {
         "id": "green_light_stick",
@@ -3316,7 +3512,7 @@
           "originalEn": "Green Light Stick"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/green_light_stick.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/green_light_stick.png"
       }
     ],
     "hasBlueprint": false,
@@ -3367,7 +3563,7 @@
           "originalEn": "Burletta I"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/burletta.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/burletta_i.png"
       }
     ],
     "requiredItems": [],
@@ -3380,7 +3576,7 @@
           "originalEn": "Burletta Blueprint"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/burletta.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/burletta_blueprint.png"
       },
       {
         "id": "mechanical_components",
@@ -3390,7 +3586,7 @@
           "originalEn": "Mechanical Components"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/mechanical_components.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/mechanical_components.png"
       },
       {
         "id": "simple_gun_parts",
@@ -3400,7 +3596,7 @@
           "originalEn": "Simple Gun Parts"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/simple_gun_parts.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/simple_gun_parts.png"
       }
     ],
     "hasBlueprint": true,
@@ -3411,7 +3607,7 @@
           "value": "부를레타 설계도",
           "originalEn": "Burletta Blueprint"
         },
-        "imageFilename": "https://cdn.arctracker.io/items/burletta.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/burletta_blueprint.png"
       }
     ]
   },
@@ -3462,7 +3658,7 @@
           "originalEn": "Leaper Pulse Unit"
         },
         "rarity": "Epic",
-        "imageFilename": "https://cdn.arctracker.io/items/leaper_pulse_unit.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/leaper_pulse_unit.png"
       }
     ],
     "rewardItems": [
@@ -3474,7 +3670,7 @@
           "originalEn": "Vulcano III"
         },
         "rarity": "Epic",
-        "imageFilename": "https://cdn.arctracker.io/items/vulcano.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/vulcano_iii.png"
       },
       {
         "id": "shotgun_ammo",
@@ -3484,7 +3680,7 @@
           "originalEn": "Shotgun Ammo"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/shotgun_ammo.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/shotgun_ammo.png"
       }
     ],
     "hasBlueprint": false,
@@ -3531,7 +3727,7 @@
           "originalEn": "Pulse Mine"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/pulse_mine.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/pulse_mine.png"
       },
       {
         "id": "flame_spray",
@@ -3541,7 +3737,7 @@
           "originalEn": "Flame Spray"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/flame_spray.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/flame_spray.png"
       }
     ],
     "hasBlueprint": false,
@@ -3594,7 +3790,7 @@
           "originalEn": "Simple Gun Parts"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/simple_gun_parts.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/simple_gun_parts.png"
       },
       {
         "id": "duct_tape",
@@ -3604,7 +3800,7 @@
           "originalEn": "Duct Tape"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/duct_tape.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/duct_tape.png"
       },
       {
         "id": "magnet",
@@ -3614,7 +3810,7 @@
           "originalEn": "Magnet"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/magnet.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/magnet.png"
       }
     ],
     "hasBlueprint": false,
@@ -3633,7 +3829,9 @@
     "previousQuestIds": [
       "furtive_meetings"
     ],
-    "nextQuestIds": [],
+    "nextQuestIds": [
+      "line_in_the_sand"
+    ],
     "description": {
       "value": "만티코어에 대한 언급이 더 늘었고, 연구자들 사이에 반발 조짐도 더욱 뚜렷해졌습니다. 결국 긴장이 크게 고조됐던 것 같네요.",
       "originalEn": "More mentions of Mantikor, and more clear signs of dissent among the researchers. I suspect tensions eventually escalated."
@@ -3672,7 +3870,7 @@
           "originalEn": "Official Shutdown Documentation"
         },
         "rarity": "Common",
-        "imageFilename": ""
+        "imageFilename": "https://cdn.arctracker.io/items/v2/official_shutdown_documentation.png"
       }
     ],
     "rewardItems": [
@@ -3684,7 +3882,7 @@
           "originalEn": "Yellow Light Stick Blueprint"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/yellow_light_stick.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/yellow_light_stick_blueprint.png"
       }
     ],
     "hasBlueprint": true,
@@ -3695,7 +3893,7 @@
           "value": "노란색 야광봉",
           "originalEn": "Yellow Light Stick Blueprint"
         },
-        "imageFilename": "https://cdn.arctracker.io/items/yellow_light_stick.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/yellow_light_stick_blueprint.png"
       }
     ]
   },
@@ -3755,7 +3953,7 @@
           "originalEn": "Defibrillator"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/defibrillator.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/defibrillator.png"
       },
       {
         "id": "surge_shield_recharger",
@@ -3765,7 +3963,7 @@
           "originalEn": "Surge Shield Recharger"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/surge_shield_recharger.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/surge_shield_recharger.png"
       },
       {
         "id": "sterilized_bandage",
@@ -3775,7 +3973,84 @@
           "originalEn": "Sterilized Bandage"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/sterilized_bandage.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/sterilized_bandage.png"
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "line_in_the_sand",
+    "name": {
+      "value": "모래 위 저지선",
+      "originalEn": "Line in the Sand"
+    },
+    "trader": "Celeste",
+    "map": [
+      "buried_city"
+    ],
+    "previousQuestIds": [
+      "last_entry"
+    ],
+    "nextQuestIds": [
+      "safe_harbor"
+    ],
+    "description": {
+      "value": "스텔라 몬티스 하드 드라이브에는 중단 문서만 들어 있던 게 아니었습니다. 꽤 중요한 엑소더스 부품의 운송 계획도 들어 있었죠.",
+      "originalEn": "That Stella Montis hard drive contained more than just the shutdown documentation - it also had the transport schedules of some pretty critical Exodus components."
+    },
+    "objectives": [
+      {
+        "value": "열차가 마라노역에 도착하지 못한 이유 알아내기",
+        "originalEn": "Find out why the train never reached Marano Station"
+      },
+      {
+        "value": "강도 사건의 주동자 알아내기",
+        "originalEn": "Find out who orchestrated the robbery"
+      },
+      {
+        "value": "추진기 밸브가 숨겨진 곳 알아내기",
+        "originalEn": "Find out where the thruster valves were stashed"
+      },
+      {
+        "value": "상인의 근처 아파트 지하실 수색하기",
+        "originalEn": "Search the basement of the merchant’s nearby apartment"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "exodus_modules",
+        "quantity": 2,
+        "name": {
+          "value": "엑소더스 모듈",
+          "originalEn": "Exodus Modules"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/exodus_modules.png"
+      },
+      {
+        "id": "magnetic_accelerator",
+        "quantity": 2,
+        "name": {
+          "value": "자성 가속기",
+          "originalEn": "Magnetic Accelerator"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/magnetic_accelerator.png"
+      },
+      {
+        "id": "magnetron",
+        "quantity": 2,
+        "name": {
+          "value": "전자관",
+          "originalEn": "Magnetron"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/magnetron.png"
       }
     ],
     "hasBlueprint": false,
@@ -3826,7 +4101,7 @@
           "originalEn": "Spaceport Control Tower Key"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/spaceport_control_tower_key.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/spaceport_control_tower_key.png"
       }
     ],
     "requiredItems": [],
@@ -3839,7 +4114,7 @@
           "originalEn": "Snap Hook"
         },
         "rarity": "Legendary",
-        "imageFilename": "https://cdn.arctracker.io/items/snap_hook.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/snap_hook.png"
       }
     ],
     "hasBlueprint": false,
@@ -3892,7 +4167,7 @@
           "originalEn": "Shotgun Choke II"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/shotgun_choke_ii.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/shotgun_choke_ii.png"
       },
       {
         "id": "angled_grip_ii",
@@ -3902,7 +4177,7 @@
           "originalEn": "Angled Grip II"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/angled_grip_ii.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/angled_grip_ii.png"
       }
     ],
     "hasBlueprint": false,
@@ -3951,7 +4226,7 @@
           "originalEn": "Silencer II"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/silencer_ii.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/silencer_ii.png"
       },
       {
         "id": "extended_light_mag_i",
@@ -3961,7 +4236,7 @@
           "originalEn": "Extended Light Mag I"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/extended_light_mag_i.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/extended_light_mag_i.png"
       },
       {
         "id": "compensator_i",
@@ -3971,7 +4246,7 @@
           "originalEn": "Compensator I"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/compensator_i.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/compensator_i.png"
       }
     ],
     "hasBlueprint": false,
@@ -4026,7 +4301,7 @@
           "originalEn": "Defibrillator"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/defibrillator.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/defibrillator.png"
       },
       {
         "id": "vita_shot",
@@ -4036,7 +4311,7 @@
           "originalEn": "Vita Shot"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/vita_shot.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/vita_shot.png"
       }
     ],
     "hasBlueprint": false,
@@ -4084,7 +4359,7 @@
           "originalEn": "Jolt Mine"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/jolt_mine.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/jolt_mine.png"
       },
       {
         "id": "showstopper",
@@ -4094,7 +4369,7 @@
           "originalEn": "Showstopper"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/showstopper.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/showstopper.png"
       }
     ],
     "requiredItems": [
@@ -4106,7 +4381,7 @@
           "originalEn": "Surveyor Vault"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/surveyor_vault.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/surveyor_vault.png"
       }
     ],
     "rewardItems": [
@@ -4118,7 +4393,7 @@
           "originalEn": "Photoelectric Cloak"
         },
         "rarity": "Epic",
-        "imageFilename": "https://cdn.arctracker.io/items/photoelectric_cloak.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/photoelectric_cloak.png"
       },
       {
         "id": "raider_hatch_key",
@@ -4128,7 +4403,7 @@
           "originalEn": "Raider Hatch Key"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/raider_hatch_key.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/raider_hatch_key.png"
       }
     ],
     "hasBlueprint": false,
@@ -4175,7 +4450,7 @@
           "originalEn": "Blue Light Stick"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/blue_light_stick.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/blue_light_stick.png"
       },
       {
         "id": "yellow_light_stick",
@@ -4185,7 +4460,7 @@
           "originalEn": "Yellow Light Stick"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/yellow_light_stick.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/yellow_light_stick.png"
       }
     ],
     "requiredItems": [
@@ -4197,7 +4472,7 @@
           "originalEn": "Portable TV"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/portable_tv.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/portable_tv.png"
       },
       {
         "id": "stack_of_movie_tapes",
@@ -4207,7 +4482,7 @@
           "originalEn": "Stack of Movie Tapes"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/stack_of_movie_tapes.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/stack_of_movie_tapes.png"
       }
     ],
     "rewardItems": [
@@ -4219,7 +4494,7 @@
           "originalEn": "Showstopper"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/showstopper.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/showstopper.png"
       },
       {
         "id": "smoke_grenade",
@@ -4229,7 +4504,7 @@
           "originalEn": "Smoke Grenade"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/smoke_grenade.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/smoke_grenade.png"
       },
       {
         "id": "fireworks_box",
@@ -4239,7 +4514,7 @@
           "originalEn": "Fireworks Box"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/fireworks_box.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/fireworks_box.png"
       }
     ],
     "hasBlueprint": false,
@@ -4263,6 +4538,8 @@
     ],
     "nextQuestIds": [
       "a_first_foothold",
+      "shoring_up_defenses",
+      "battening_down",
       "a_bad_feeling"
     ],
     "description": {
@@ -4290,7 +4567,7 @@
           "originalEn": "Remote Raider Flare"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/remote_raider_flare.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/remote_raider_flare.png"
       }
     ],
     "requiredItems": [],
@@ -4303,7 +4580,7 @@
           "originalEn": "Defibrillator"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/defibrillator.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/defibrillator.png"
       }
     ],
     "hasBlueprint": false,
@@ -4361,7 +4638,7 @@
           "originalEn": "Lure Grenade"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/lure_grenade.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/lure_grenade.png"
       },
       {
         "id": "noisemaker",
@@ -4371,7 +4648,7 @@
           "originalEn": "Noisemaker"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/noisemaker.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/noisemaker.png"
       },
       {
         "id": "shaker",
@@ -4381,7 +4658,7 @@
           "originalEn": "Shaker"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/shaker.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/shaker.png"
       }
     ],
     "hasBlueprint": false,
@@ -4438,7 +4715,7 @@
           "originalEn": "Defibrillator"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/defibrillator.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/defibrillator.png"
       }
     ],
     "requiredItems": [],
@@ -4451,7 +4728,7 @@
           "originalEn": "Sterilized Bandage"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/sterilized_bandage.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/sterilized_bandage.png"
       },
       {
         "id": "surge_shield_recharger",
@@ -4461,7 +4738,7 @@
           "originalEn": "Surge Shield Recharger"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/surge_shield_recharger.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/surge_shield_recharger.png"
       },
       {
         "id": "tactical_mk3_healing",
@@ -4471,7 +4748,7 @@
           "originalEn": "Tactical Mk. 3 (Healing)"
         },
         "rarity": "Epic",
-        "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_healing.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/tactical_mk3_healing.png"
       }
     ],
     "hasBlueprint": false,
@@ -4524,7 +4801,7 @@
           "originalEn": "Buried City Town Hall Key"
         },
         "rarity": "Epic",
-        "imageFilename": "https://cdn.arctracker.io/items/buried_city_town_hall_key.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/buried_city_town_hall_key.png"
       },
       {
         "id": "raider_hatch_key",
@@ -4534,7 +4811,7 @@
           "originalEn": "Raider Hatch Key"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/raider_hatch_key.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/raider_hatch_key.png"
       },
       {
         "id": "jolt_mine",
@@ -4544,7 +4821,7 @@
           "originalEn": "Jolt Mine"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/jolt_mine.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/jolt_mine.png"
       }
     ],
     "hasBlueprint": false,
@@ -4595,7 +4872,7 @@
           "originalEn": "Medium Shield"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/medium_shield.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/medium_shield.png"
       },
       {
         "id": "combat_mk2",
@@ -4605,7 +4882,7 @@
           "originalEn": "Combat Mk. 2"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/combat_i.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/combat_mk2.png"
       }
     ],
     "requiredItems": [
@@ -4617,7 +4894,7 @@
           "originalEn": "Rocketeer Driver"
         },
         "rarity": "Epic",
-        "imageFilename": "https://cdn.arctracker.io/items/rocketeer_driver.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/rocketeer_driver.png"
       }
     ],
     "rewardItems": [
@@ -4629,7 +4906,7 @@
           "originalEn": "Surge Shield Recharger"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/surge_shield_recharger.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/surge_shield_recharger.png"
       },
       {
         "id": "wolfpack",
@@ -4639,7 +4916,7 @@
           "originalEn": "Wolfpack"
         },
         "rarity": "Epic",
-        "imageFilename": "https://cdn.arctracker.io/items/wolfpack.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/wolfpack.png"
       },
       {
         "id": "wolfpack",
@@ -4649,7 +4926,7 @@
           "originalEn": "Wolfpack"
         },
         "rarity": "Epic",
-        "imageFilename": "https://cdn.arctracker.io/items/wolfpack.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/wolfpack.png"
       }
     ],
     "hasBlueprint": false,
@@ -4701,7 +4978,7 @@
           "originalEn": "Dodger's Note"
         },
         "rarity": "Common",
-        "imageFilename": ""
+        "imageFilename": "https://cdn.arctracker.io/items/v2/dodgers_note.png"
       }
     ],
     "rewardItems": [
@@ -4713,7 +4990,7 @@
           "originalEn": "Extended Medium Mag III"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/extended_medium_mag_iii.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/extended_medium_mag_iii.png"
       },
       {
         "id": "silencer_ii",
@@ -4723,7 +5000,7 @@
           "originalEn": "Silencer II"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/silencer_ii.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/silencer_ii.png"
       }
     ],
     "hasBlueprint": false,
@@ -4782,7 +5059,7 @@
           "originalEn": "Raider Hatch Key"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/raider_hatch_key.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/raider_hatch_key.png"
       },
       {
         "id": "seeker_grenade",
@@ -4792,7 +5069,7 @@
           "originalEn": "Seeker Grenade"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/seeker_grenade.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/seeker_grenade.png"
       },
       {
         "id": "advanced_electrical_components",
@@ -4802,7 +5079,7 @@
           "originalEn": "Advanced Electrical Components"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/advanced_electrical_components.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/advanced_electrical_components.png"
       }
     ],
     "hasBlueprint": false,
@@ -4815,11 +5092,7 @@
       "originalEn": "Picking Up The Pieces"
     },
     "trader": "Shani",
-    "map": [
-      "the_spaceport",
-      "buried_city",
-      "dam_battlegrounds"
-    ],
+    "map": [],
     "previousQuestIds": [
       "map_dam_battleground"
     ],
@@ -4854,7 +5127,7 @@
           "originalEn": "Rattler III"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/rattler.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/rattler_iii.png"
       },
       {
         "id": "medium_ammo",
@@ -4864,7 +5137,7 @@
           "originalEn": "Medium Ammo"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/medium_ammo.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/medium_ammo.png"
       }
     ],
     "hasBlueprint": false,
@@ -4921,7 +5194,7 @@
           "originalEn": "Wires"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/wires.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/wires.png"
       },
       {
         "id": "explosive_compound",
@@ -4931,7 +5204,7 @@
           "originalEn": "Explosive Compound"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/explosive_compound.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/explosive_compound.png"
       },
       {
         "id": "oil",
@@ -4941,7 +5214,7 @@
           "originalEn": "Oil"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/oil.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/oil.png"
       }
     ],
     "hasBlueprint": false,
@@ -4994,7 +5267,7 @@
           "originalEn": "Heavy Shield"
         },
         "rarity": "Epic",
-        "imageFilename": "https://cdn.arctracker.io/items/heavy_shield.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/heavy_shield.png"
       },
       {
         "id": "tactical_mk3_healing",
@@ -5004,7 +5277,7 @@
           "originalEn": "Tactical Mk. 3 (Healing)"
         },
         "rarity": "Epic",
-        "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_healing.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/tactical_mk3_healing.png"
       },
       {
         "id": "adrenaline_shot",
@@ -5014,7 +5287,7 @@
           "originalEn": "Adrenaline Shot"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/adrenaline_shot.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/adrenaline_shot.png"
       }
     ],
     "hasBlueprint": false,
@@ -5069,7 +5342,7 @@
           "originalEn": "Binoculars"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/binoculars.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/binoculars.png"
       }
     ],
     "requiredItems": [],
@@ -5082,7 +5355,7 @@
           "originalEn": "Zipline"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/zipline.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/zipline.png"
       },
       {
         "id": "barricade_kit",
@@ -5092,7 +5365,7 @@
           "originalEn": "Barricade Kit"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/barricade_kit.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/barricade_kit.png"
       },
       {
         "id": "door_blocker",
@@ -5102,7 +5375,95 @@
           "originalEn": "Door Blocker"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/door_blocker.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/door_blocker.png"
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "safe_harbor",
+    "name": {
+      "value": "안식의 항구",
+      "originalEn": "Safe Harbor"
+    },
+    "trader": "Tian Wen",
+    "map": [
+      "riven_tides"
+    ],
+    "previousQuestIds": [
+      "line_in_the_sand"
+    ],
+    "nextQuestIds": [
+      "a_wrench_in_the_works"
+    ],
+    "description": {
+      "value": "열차 탈선 소식이 빠르게 퍼진 것 같습니다… 그래서 많은 노동자가 감시를 피해 탐나는 장비를 숨겨두게 된 것 같고요.",
+      "originalEn": "Seems like news of the train derailment spread fast… And drove many workers to stash some very tasty technology away from prying eyes."
+    },
+    "objectives": [
+      {
+        "value": "레스토랑 주방 직원이 남긴 단서 찾기",
+        "originalEn": "Find the clue left by the restaurant kitchen staff"
+      },
+      {
+        "value": "스케치에 그려진 장소 찾기",
+        "originalEn": "Find the area portrayed in the sketch"
+      },
+      {
+        "value": "묻힌 부품 파내기",
+        "originalEn": "Dig up the buried part"
+      },
+      {
+        "value": "티안 웬에게 정밀 짐벌 전달하기",
+        "originalEn": "Deliver the Precision Gimbal to Tian Wen"
+      }
+    ],
+    "objectivesOneRound": true,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "precision_gimbal",
+        "quantity": 1,
+        "name": {
+          "value": "정밀 짐벌",
+          "originalEn": "Precision Gimbal"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/precision_gimbal.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "surge_coil",
+        "quantity": 1,
+        "name": {
+          "value": "서지 코일",
+          "originalEn": "Surge Coil"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/surge_coil.png"
+      },
+      {
+        "id": "heavy_gun_parts",
+        "quantity": 1,
+        "name": {
+          "value": "중량 총기 부품",
+          "originalEn": "Heavy Gun Parts"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/heavy_gun_parts.png"
+      },
+      {
+        "id": "horizontal_grip",
+        "quantity": 1,
+        "name": {
+          "value": "수평 그립",
+          "originalEn": "Horizontal Grip"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/horizontal_grip.png"
       }
     ],
     "hasBlueprint": false,
@@ -5120,7 +5481,8 @@
       "a_bad_feeling"
     ],
     "nextQuestIds": [
-      "what_goes_around"
+      "what_goes_around",
+      "collision_course"
     ],
     "description": {
       "value": "샤니가 포착한 신호에 관한 소문을 들었어요. 아크는 계속 적응 중이니, 이번이 마지막 신호도 아닐 테죠. \r\n\r\n무기 경쟁을 펼치길 원한다면 그러라고 해요.",
@@ -5143,7 +5505,7 @@
           "originalEn": "Light Impact Grenade"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/light_impact_grenade.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/light_impact_grenade.png"
       },
       {
         "id": "light_impact_grenade",
@@ -5153,7 +5515,7 @@
           "originalEn": "Light Impact Grenade"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/light_impact_grenade.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/light_impact_grenade.png"
       },
       {
         "id": "snap_blast_grenade",
@@ -5163,7 +5525,7 @@
           "originalEn": "Snap Blast Grenade"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/snap_blast_grenade.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/snap_blast_grenade.png"
       }
     ],
     "requiredItems": [],
@@ -5176,7 +5538,7 @@
           "originalEn": "Li'l Smoke Grenade"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/lil_smoke_grenade.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/lil_smoke_grenade.png"
       },
       {
         "id": "shrapnel_grenade",
@@ -5186,7 +5548,7 @@
           "originalEn": "Shrapnel Grenade"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/shrapnel_grenade.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/shrapnel_grenade.png"
       },
       {
         "id": "barricade_kit",
@@ -5196,7 +5558,7 @@
           "originalEn": "Barricade Kit"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/barricade_kit.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/barricade_kit.png"
       }
     ],
     "hasBlueprint": false,
@@ -5240,7 +5602,7 @@
           "originalEn": "Bastion Cell"
         },
         "rarity": "Epic",
-        "imageFilename": "https://cdn.arctracker.io/items/bastion_cell.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/bastion_cell.png"
       }
     ],
     "rewardItems": [
@@ -5253,6 +5615,94 @@
         },
         "rarity": "Common",
         "imageFilename": ""
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "shoring_up_defenses",
+    "name": {
+      "value": "방어선 보강",
+      "originalEn": "Shoring Up Defenses"
+    },
+    "trader": "Apollo",
+    "map": [
+      "riven_tides"
+    ],
+    "previousQuestIds": [
+      "off_the_radar"
+    ],
+    "nextQuestIds": [],
+    "description": {
+      "value": "사방이 트인 해안선은 예전엔 위험 그 자체였지만, 이제는 러스트 벨트로 유입되는 새로운 위협을 감시할 수 있는 유일한 장소입니다.\r\n\r\n그러니 우리가 직접 엄폐물을 만들고, 남아 있는 얼마 안 되는 방어 시설도 보강해야 합니다.",
+      "originalEn": "The wide-open coastline used to mean danger, but now it's the only place we can spot new threats moving into the Rust Belt.\r\n\r\nSo we'll have to make our own cover, and reinforce what few defenses we can find."
+    },
+    "objectives": [
+      {
+        "value": "와스프 5개 파괴하기",
+        "originalEn": "Destroy 5 Wasps"
+      },
+      {
+        "value": "파이어플라이 3개 파괴하기",
+        "originalEn": "Destroy 3 Fireflies"
+      },
+      {
+        "value": "적치장 크레인 아무 곳의 꼭대기에 있는 레이더 구조물을 아크 합금 1개로 보강하기",
+        "originalEn": "Use 1 ARC Alloy to reinforce the Raider structure on top of any Stacking Yard crane"
+      },
+      {
+        "value": "호텔의 닫힌 창문에 판자 덧대기",
+        "originalEn": "Board up shuttered windows in the hotel"
+      }
+    ],
+    "objectivesOneRound": false,
+    "otherRequirements": [
+      "20x Raids"
+    ],
+    "grantedItems": [
+      {
+        "id": "dockmasters_detector",
+        "quantity": 1,
+        "name": {
+          "value": "도크마스터의 탐지기",
+          "originalEn": "Dockmaster's Detector"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/dockmasters_detector.png"
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "barricade_kit",
+        "quantity": 3,
+        "name": {
+          "value": "바리케이드 키트",
+          "originalEn": "Barricade Kit"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/barricade_kit.png"
+      },
+      {
+        "id": "lure_grenade_trap",
+        "quantity": 3,
+        "name": {
+          "value": "유인 수류탄 함정",
+          "originalEn": "Lure Grenade Trap"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/lure_grenade_trap.png"
+      },
+      {
+        "id": "seeker_grenade",
+        "quantity": 6,
+        "name": {
+          "value": "추적 수류탄",
+          "originalEn": "Seeker Grenade"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/seeker_grenade.png"
       }
     ],
     "hasBlueprint": false,
@@ -5309,7 +5759,7 @@
           "originalEn": "Magnetron"
         },
         "rarity": "Epic",
-        "imageFilename": "https://cdn.arctracker.io/items/magnetron.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/magnetron.png"
       },
       {
         "id": "flow_controller",
@@ -5319,7 +5769,7 @@
           "originalEn": "Flow Controller"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/flow_controller.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/flow_controller.png"
       }
     ],
     "rewardItems": [
@@ -5331,7 +5781,7 @@
           "originalEn": "Burletta III"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/burletta.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/burletta_iii.png"
       },
       {
         "id": "silencer_ii",
@@ -5341,7 +5791,7 @@
           "originalEn": "Silencer II"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/silencer_ii.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/silencer_ii.png"
       },
       {
         "id": "extended_light_mag_ii",
@@ -5351,7 +5801,7 @@
           "originalEn": "Extended Light Mag II"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/extended_light_mag_ii.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/extended_light_mag_ii.png"
       },
       {
         "id": "light_ammo",
@@ -5361,7 +5811,7 @@
           "originalEn": "Light Ammo"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/light_ammo.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/light_ammo.png"
       }
     ],
     "hasBlueprint": false,
@@ -5414,7 +5864,7 @@
           "originalEn": "Steel Spring"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/steel_spring.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/steel_spring.png"
       },
       {
         "id": "duct_tape",
@@ -5424,7 +5874,7 @@
           "originalEn": "Duct Tape"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/duct_tape.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/duct_tape.png"
       },
       {
         "id": "mod_components",
@@ -5434,7 +5884,7 @@
           "originalEn": "Mod Components"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/mod_components.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/mod_components.png"
       }
     ],
     "hasBlueprint": false,
@@ -5476,7 +5926,7 @@
           "originalEn": "Trigger 'Nade"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/trigger_nade.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/trigger_nade.png"
       },
       {
         "id": "trigger_nade",
@@ -5486,7 +5936,7 @@
           "originalEn": "Trigger 'Nade"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/trigger_nade.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/trigger_nade.png"
       },
       {
         "id": "snap_blast_grenade",
@@ -5496,7 +5946,7 @@
           "originalEn": "Snap Blast Grenade"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/snap_blast_grenade.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/snap_blast_grenade.png"
       }
     ],
     "requiredItems": [],
@@ -5509,7 +5959,7 @@
           "originalEn": "Trigger Nade Blueprint"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/trigger_nade_blueprint.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/trigger_nade_blueprint.png"
       },
       {
         "id": "crude_explosives",
@@ -5519,7 +5969,7 @@
           "originalEn": "Crude Explosives"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/crude_explosives.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/crude_explosives.png"
       },
       {
         "id": "processor",
@@ -5529,7 +5979,7 @@
           "originalEn": "Processor"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/processor.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/processor.png"
       }
     ],
     "hasBlueprint": true,
@@ -5540,7 +5990,7 @@
           "value": "트리거 수류탄 설계도",
           "originalEn": "Trigger Nade Blueprint"
         },
-        "imageFilename": "https://cdn.arctracker.io/items/trigger_nade_blueprint.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/trigger_nade_blueprint.png"
       }
     ]
   },
@@ -5604,7 +6054,7 @@
           "originalEn": "Project Heartwood Blueprints"
         },
         "rarity": "Common",
-        "imageFilename": ""
+        "imageFilename": "https://cdn.arctracker.io/items/v2/project_heartwood_blueprints.png"
       }
     ],
     "rewardItems": [
@@ -5616,7 +6066,7 @@
           "originalEn": "Seeker Grenade"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/seeker_grenade.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/seeker_grenade.png"
       },
       {
         "id": "lure_grenade",
@@ -5626,7 +6076,7 @@
           "originalEn": "Lure Grenade"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/lure_grenade.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/lure_grenade.png"
       },
       {
         "id": "snap_hook",
@@ -5636,7 +6086,7 @@
           "originalEn": "Snap Hook"
         },
         "rarity": "Legendary",
-        "imageFilename": "https://cdn.arctracker.io/items/snap_hook.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/snap_hook.png"
       }
     ],
     "hasBlueprint": false,
@@ -5699,7 +6149,7 @@
           "originalEn": "Binoculars"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/binoculars.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/binoculars.png"
       },
       {
         "id": "defibrillator",
@@ -5709,7 +6159,7 @@
           "originalEn": "Defibrillator"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/defibrillator.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/defibrillator.png"
       }
     ],
     "requiredItems": [],
@@ -5722,7 +6172,7 @@
           "originalEn": "Medium Gun Parts"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/medium_gun_parts.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/medium_gun_parts.png"
       },
       {
         "id": "advanced_mechanical_components",
@@ -5732,7 +6182,7 @@
           "originalEn": "Advanced Mechanical Components"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/advanced_mechanical_components.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/advanced_mechanical_components.png"
       }
     ],
     "hasBlueprint": false,
@@ -5781,7 +6231,7 @@
           "originalEn": "Spaceport Trench Tower Key"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/spaceport_trench_tower_key.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/spaceport_trench_tower_key.png"
       },
       {
         "id": "synthesized_fuel",
@@ -5791,7 +6241,7 @@
           "originalEn": "Synthesized Fuel"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/synthesized_fuel.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/synthesized_fuel.png"
       }
     ],
     "hasBlueprint": false,
@@ -5843,7 +6293,7 @@
           "originalEn": "Hornet Driver"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/hornet_driver.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/hornet_driver.png"
       },
       {
         "id": "fireball_burner",
@@ -5853,7 +6303,7 @@
           "originalEn": "Fireball Burner"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/fireball_burner.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/fireball_burner.png"
       },
       {
         "id": "firefly_burner",
@@ -5863,7 +6313,7 @@
           "originalEn": "Firefly Burner"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/firefly_burner.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/firefly_burner.png"
       }
     ],
     "rewardItems": [
@@ -5875,7 +6325,7 @@
           "originalEn": "Fireworks Box Blueprint"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/fireworks_box.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/fireworks_box_blueprint.png"
       },
       {
         "id": "seeker_grenade",
@@ -5885,7 +6335,7 @@
           "originalEn": "Seeker Grenade"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/seeker_grenade.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/seeker_grenade.png"
       },
       {
         "id": "blaze_grenade",
@@ -5895,7 +6345,7 @@
           "originalEn": "Blaze Grenade"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/blaze_grenade.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/blaze_grenade.png"
       }
     ],
     "hasBlueprint": true,
@@ -5906,7 +6356,7 @@
           "value": "폭죽 상자 설계도",
           "originalEn": "Fireworks Box Blueprint"
         },
-        "imageFilename": "https://cdn.arctracker.io/items/fireworks_box.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/fireworks_box_blueprint.png"
       }
     ]
   },
@@ -5966,7 +6416,7 @@
           "originalEn": "Blue Light Stick"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/blue_light_stick.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/blue_light_stick.png"
       }
     ],
     "requiredItems": [],
@@ -5979,7 +6429,7 @@
           "originalEn": "Deadline"
         },
         "rarity": "Epic",
-        "imageFilename": "https://cdn.arctracker.io/items/deadline.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/deadline.png"
       },
       {
         "id": "showstopper",
@@ -5989,7 +6439,7 @@
           "originalEn": "Showstopper"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/showstopper.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/showstopper.png"
       },
       {
         "id": "heavy_fuze_grenade",
@@ -5999,7 +6449,7 @@
           "originalEn": "Heavy Fuze Grenade"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/heavy_fuze_grenade.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/heavy_fuze_grenade.png"
       }
     ],
     "hasBlueprint": false,
@@ -6013,7 +6463,8 @@
     },
     "trader": "Apollo",
     "map": [
-      "dam_battlegrounds"
+      "dam_battlegrounds",
+      "buried_city"
     ],
     "previousQuestIds": [
       "sparks_fly"
@@ -6054,7 +6505,7 @@
           "originalEn": "Yellow Light Stick"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/yellow_light_stick.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/yellow_light_stick.png"
       },
       {
         "id": "red_light_stick",
@@ -6064,7 +6515,7 @@
           "originalEn": "Red Light Stick"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/red_light_stick.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/red_light_stick.png"
       }
     ],
     "requiredItems": [
@@ -6076,7 +6527,7 @@
           "originalEn": "Deflated Football"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/deflated_football.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/deflated_football.png"
       },
       {
         "id": "bicycle_pump",
@@ -6086,7 +6537,7 @@
           "originalEn": "Bicycle Pump"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/bicycle_pump.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/bicycle_pump.png"
       }
     ],
     "rewardItems": [
@@ -6098,7 +6549,7 @@
           "originalEn": "Tagging Grenade"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/tagging_grenade.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/tagging_grenade.png"
       },
       {
         "id": "firecracker",
@@ -6108,7 +6559,7 @@
           "originalEn": "Firecracker"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/firecracker.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/firecracker.png"
       }
     ],
     "hasBlueprint": false,
@@ -6156,7 +6607,7 @@
           "originalEn": "Major Aiva's Mementos"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/major_aivas_mementos.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/major_aivas_mementos.png"
       }
     ],
     "rewardItems": [
@@ -6168,7 +6619,7 @@
           "originalEn": "Hullcracker Blueprint"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/hullcracker.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/hullcracker_blueprint.png"
       }
     ],
     "hasBlueprint": true,
@@ -6179,7 +6630,7 @@
           "value": "헐크래커 설계도",
           "originalEn": "Hullcracker Blueprint"
         },
-        "imageFilename": "https://cdn.arctracker.io/items/hullcracker.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/hullcracker_blueprint.png"
       }
     ]
   },
@@ -6226,7 +6677,7 @@
           "originalEn": "Ferro IV"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/ferro.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/ferro_iv.png"
       },
       {
         "id": "heavy_ammo",
@@ -6236,7 +6687,7 @@
           "originalEn": "Heavy Ammo"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/heavy_ammo.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/heavy_ammo.png"
       }
     ],
     "requiredItems": [],
@@ -6249,7 +6700,7 @@
           "originalEn": "Stitcher II"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/stitcher.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/stitcher_ii.png"
       },
       {
         "id": "extended_light_mag_i",
@@ -6259,7 +6710,7 @@
           "originalEn": "Extended Light Mag I"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/extended_light_mag_i.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/extended_light_mag_i.png"
       }
     ],
     "hasBlueprint": false,
@@ -6311,7 +6762,7 @@
           "originalEn": "Experimental Seed Sample"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/experimental_seed_sample.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/experimental_seed_sample.png"
       }
     ],
     "rewardItems": [
@@ -6382,7 +6833,7 @@
           "originalEn": "Air Freshener"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/air_freshener.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/air_freshener.png"
       },
       {
         "id": "dam_staff_room_key",
@@ -6392,7 +6843,7 @@
           "originalEn": "Dam Staff Room Key"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/dam_staff_room_key.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/dam_staff_room_key.png"
       },
       {
         "id": "noisemaker",
@@ -6402,7 +6853,7 @@
           "originalEn": "Noisemaker"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/noisemaker.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/noisemaker.png"
       }
     ],
     "hasBlueprint": false,
@@ -6469,7 +6920,7 @@
           "originalEn": "Remote Raider Flare"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/remote_raider_flare.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/remote_raider_flare.png"
       }
     ],
     "requiredItems": [
@@ -6481,7 +6932,7 @@
           "originalEn": "Wasp Driver"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/wasp_driver.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/wasp_driver.png"
       },
       {
         "id": "hornet_driver",
@@ -6491,7 +6942,7 @@
           "originalEn": "Hornet Driver"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/hornet_driver.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/hornet_driver.png"
       },
       {
         "id": "snitch_scanner",
@@ -6501,7 +6952,7 @@
           "originalEn": "Snitch Scanner"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/snitch_scanner.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/snitch_scanner.png"
       }
     ],
     "rewardItems": [
@@ -6513,7 +6964,7 @@
           "originalEn": "Raider Hatch Key"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/raider_hatch_key.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/raider_hatch_key.png"
       },
       {
         "id": "defibrillator",
@@ -6523,7 +6974,7 @@
           "originalEn": "Defibrillator"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/defibrillator.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/defibrillator.png"
       },
       {
         "id": "dam_control_tower_key",
@@ -6533,7 +6984,7 @@
           "originalEn": "Dam Control Tower Key"
         },
         "rarity": "Epic",
-        "imageFilename": "https://cdn.arctracker.io/items/dam_control_tower_key.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/dam_control_tower_key.png"
       }
     ],
     "hasBlueprint": false,
@@ -6578,7 +7029,7 @@
           "originalEn": "Binoculars"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/binoculars.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/binoculars.png"
       }
     ],
     "requiredItems": [
@@ -6590,7 +7041,7 @@
           "originalEn": "Wires"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/wires.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/wires.png"
       },
       {
         "id": "battery",
@@ -6600,7 +7051,7 @@
           "originalEn": "Battery"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/battery.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/battery.png"
       }
     ],
     "rewardItems": [
@@ -6612,7 +7063,7 @@
           "originalEn": "Tactical Mk. 1"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/tactical_i.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/tactical_mk1.png"
       },
       {
         "id": "adrenaline_shot",
@@ -6622,7 +7073,7 @@
           "originalEn": "Adrenaline Shot"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/adrenaline_shot.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/adrenaline_shot.png"
       }
     ],
     "hasBlueprint": false,
@@ -6664,7 +7115,7 @@
           "originalEn": "Power Rod"
         },
         "rarity": "Epic",
-        "imageFilename": "https://cdn.arctracker.io/items/power_rod.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/power_rod.png"
       }
     ],
     "rewardItems": [
@@ -6676,7 +7127,7 @@
           "originalEn": "Magnet"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/magnet.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/magnet.png"
       },
       {
         "id": "advanced_mechanical_components",
@@ -6686,7 +7137,7 @@
           "originalEn": "Advanced Mechanical Components"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/advanced_mechanical_components.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/advanced_mechanical_components.png"
       },
       {
         "id": "synthesized_fuel",
@@ -6696,7 +7147,7 @@
           "originalEn": "Synthesized Fuel"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/synthesized_fuel.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/synthesized_fuel.png"
       }
     ],
     "hasBlueprint": false,
@@ -6741,7 +7192,7 @@
           "originalEn": "Spaceport Trench Tower Key"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/spaceport_trench_tower_key.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/spaceport_trench_tower_key.png"
       }
     ],
     "requiredItems": [],
@@ -6754,7 +7205,7 @@
           "originalEn": "Heavy Gun Parts"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/heavy_gun_parts.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/heavy_gun_parts.png"
       },
       {
         "id": "medium_gun_parts",
@@ -6764,7 +7215,7 @@
           "originalEn": "Medium Gun Parts"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/medium_gun_parts.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/medium_gun_parts.png"
       }
     ],
     "hasBlueprint": false,
@@ -6829,7 +7280,7 @@
           "originalEn": "Nutrient Meter"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/nutrient_meter.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/nutrient_meter.png"
       },
       {
         "id": "moisture_meter",
@@ -6839,7 +7290,7 @@
           "originalEn": "Moisture Meter"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/moisture_meter.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/moisture_meter.png"
       }
     ],
     "rewardItems": [
@@ -6851,7 +7302,7 @@
           "originalEn": "Il Toro I"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/il_toro.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/il_toro_i.png"
       },
       {
         "id": "shotgun_ammo",
@@ -6861,7 +7312,7 @@
           "originalEn": "Shotgun Ammo"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/shotgun_ammo.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/shotgun_ammo.png"
       },
       {
         "id": "shotgun_choke_ii",
@@ -6871,7 +7322,7 @@
           "originalEn": "Shotgun Choke II"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/shotgun_choke_ii.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/shotgun_choke_ii.png"
       }
     ],
     "hasBlueprint": false,
@@ -6924,7 +7375,7 @@
           "originalEn": "Advanced Mechanical Components"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/advanced_mechanical_components.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/advanced_mechanical_components.png"
       },
       {
         "id": "heavy_gun_parts",
@@ -6934,7 +7385,7 @@
           "originalEn": "Heavy Gun Parts"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/heavy_gun_parts.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/heavy_gun_parts.png"
       },
       {
         "id": "canister",
@@ -6944,7 +7395,7 @@
           "originalEn": "Canister"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/canister.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/canister.png"
       }
     ],
     "hasBlueprint": false,
@@ -6978,7 +7429,7 @@
         "originalEn": "Start the Security Control Center in the Departure Building"
       },
       {
-        "value": "도착동의 보안실에서 침입 흔적 찾기",
+        "value": "도착동의 데이터 사무실에서 보안 침해 흔적 찾기",
         "originalEn": "Search for any traces of a security breach in the Arrival Building Data Office"
       }
     ],
@@ -6995,7 +7446,7 @@
           "originalEn": "Tactical Mk. 3 (Revival)"
         },
         "rarity": "Epic",
-        "imageFilename": "https://cdn.arctracker.io/items/tactical_mk3_revival.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/tactical_mk3_revival.png"
       },
       {
         "id": "vita_shot",
@@ -7005,7 +7456,7 @@
           "originalEn": "Vita Shot"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/vita_shot.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/vita_shot.png"
       },
       {
         "id": "surge_shield_recharger",
@@ -7015,7 +7466,7 @@
           "originalEn": "Surge Shield Recharger"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/surge_shield_recharger.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/surge_shield_recharger.png"
       }
     ],
     "hasBlueprint": false,
@@ -7070,7 +7521,7 @@
           "originalEn": "Mechanical Components"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/mechanical_components.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/mechanical_components.png"
       },
       {
         "id": "simple_gun_parts",
@@ -7080,7 +7531,7 @@
           "originalEn": "Simple Gun Parts"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/simple_gun_parts.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/simple_gun_parts.png"
       },
       {
         "id": "steel_spring",
@@ -7090,7 +7541,7 @@
           "originalEn": "Steel Spring"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/steel_spring.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/steel_spring.png"
       }
     ],
     "hasBlueprint": false,
@@ -7131,7 +7582,7 @@
           "originalEn": "Red Light Stick"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/red_light_stick.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/red_light_stick.png"
       }
     ],
     "requiredItems": [],
@@ -7144,7 +7595,7 @@
           "originalEn": "Blaze Grenade"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/blaze_grenade.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/blaze_grenade.png"
       },
       {
         "id": "noisemaker",
@@ -7154,7 +7605,7 @@
           "originalEn": "Noisemaker"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/noisemaker.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/noisemaker.png"
       }
     ],
     "hasBlueprint": false,
@@ -7209,7 +7660,7 @@
           "originalEn": "Muzzle Brake II"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/muzzle_brake_ii.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/muzzle_brake_ii.png"
       },
       {
         "id": "vertical_grip_ii",
@@ -7219,7 +7670,7 @@
           "originalEn": "Vertical Grip II"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/vertical_grip_ii.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/vertical_grip_ii.png"
       },
       {
         "id": "stable_stock_ii",
@@ -7229,7 +7680,7 @@
           "originalEn": "Stable Stock II"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/stable_stock_ii.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/stable_stock_ii.png"
       }
     ],
     "hasBlueprint": false,
@@ -7287,7 +7738,7 @@
           "originalEn": "Looting Mk. 2"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/looting_mk2.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/looting_mk2.png"
       },
       {
         "id": "medium_shield",
@@ -7297,7 +7748,7 @@
           "originalEn": "Medium Shield"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/medium_shield.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/medium_shield.png"
       }
     ],
     "hasBlueprint": false,
@@ -7358,7 +7809,7 @@
           "originalEn": "Rotary Encoder"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/rotary_encoder.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/rotary_encoder.png"
       },
       {
         "id": "ion_sputter",
@@ -7368,7 +7819,7 @@
           "originalEn": "Ion Sputter"
         },
         "rarity": "Epic",
-        "imageFilename": "https://cdn.arctracker.io/items/ion_sputter.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/ion_sputter.png"
       }
     ],
     "rewardItems": [
@@ -7380,7 +7831,7 @@
           "originalEn": "Steel Spring"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/steel_spring.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/steel_spring.png"
       },
       {
         "id": "wires",
@@ -7390,7 +7841,7 @@
           "originalEn": "Wires"
         },
         "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/wires.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/wires.png"
       },
       {
         "id": "tactical_mk2",
@@ -7400,7 +7851,7 @@
           "originalEn": "Tactical Mk. 2"
         },
         "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/tactical_i.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/tactical_mk2.png"
       }
     ],
     "hasBlueprint": false,
@@ -7461,7 +7912,7 @@
           "originalEn": "Vita Spray Blueprint"
         },
         "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/vita_spray.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/vita_spray_blueprint.png"
       }
     ],
     "hasBlueprint": true,
@@ -7472,7 +7923,7 @@
           "value": "회복 스프레이 설계도",
           "originalEn": "Vita Spray Blueprint"
         },
-        "imageFilename": "https://cdn.arctracker.io/items/vita_spray.png"
+        "imageFilename": "https://cdn.arctracker.io/items/v2/vita_spray_blueprint.png"
       }
     ]
   }

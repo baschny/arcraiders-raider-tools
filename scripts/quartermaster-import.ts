@@ -53,6 +53,8 @@ interface SourceItem {
   blueprintLocked?: boolean;
   craftQuantity?: number;
   recipe?: Record<string, number>;
+  upgradeCost?: Record<string, number>;
+  upgradesTo?: string;
   recyclesInto?: Record<string, number>;
   salvagesInto?: Record<string, number>;
   stackSize?: number;
@@ -78,6 +80,11 @@ interface PlannerItem {
   blueprintLocked: boolean;
   craftQuantity: number;
   recipe?: Record<string, number>;
+  upgradeCost?: Record<string, number>;
+  upgradesTo?: string;
+  upgradesFrom?: string;
+  weaponBaseId?: string;
+  weaponTier?: 1 | 2 | 3 | 4;
   recyclesInto?: Record<string, number>;
   salvagesInto?: Record<string, number>;
   stackSize: number;
@@ -258,6 +265,8 @@ function processItem(source: SourceItem, locale: OutputLocale): { id: string; it
     blueprintLocked,
     craftQuantity,
     ...(source.recipe && Object.keys(source.recipe).length > 0 && { recipe: sortObjectKeys(source.recipe) }),
+    ...(source.upgradeCost && Object.keys(source.upgradeCost).length > 0 && { upgradeCost: sortObjectKeys(source.upgradeCost) }),
+    ...(source.upgradesTo && { upgradesTo: source.upgradesTo }),
     ...(source.recyclesInto && Object.keys(source.recyclesInto).length > 0 && { recyclesInto: sortObjectKeys(source.recyclesInto) }),
     ...(source.salvagesInto && Object.keys(source.salvagesInto).length > 0 && { salvagesInto: sortObjectKeys(source.salvagesInto) }),
     stackSize,
@@ -267,6 +276,43 @@ function processItem(source: SourceItem, locale: OutputLocale): { id: string; it
   };
 
   return { id: source.id, item };
+}
+
+function addWeaponChainMetadata(items: Record<string, PlannerItem>): void {
+  const upgradesFromByTarget = new Map<string, string>();
+
+  for (const [itemId, item] of Object.entries(items)) {
+    if (item.upgradesTo && items[item.upgradesTo]) {
+      upgradesFromByTarget.set(item.upgradesTo, itemId);
+    }
+  }
+
+  upgradesFromByTarget.forEach((sourceId, targetId) => {
+    items[targetId].upgradesFrom = sourceId;
+  });
+
+  const roots = Object.keys(items)
+    .filter((itemId) => {
+      const item = items[itemId];
+      return (item.upgradesTo || item.upgradesFrom) && !item.upgradesFrom;
+    })
+    .sort();
+
+  for (const rootId of roots) {
+    let currentId: string | undefined = rootId;
+    let tier = 1;
+    const visited = new Set<string>();
+
+    while (currentId && items[currentId] && !visited.has(currentId)) {
+      visited.add(currentId);
+      items[currentId].weaponBaseId = rootId;
+      if (tier >= 1 && tier <= 4) {
+        items[currentId].weaponTier = tier as 1 | 2 | 3 | 4;
+      }
+      currentId = items[currentId].upgradesTo;
+      tier++;
+    }
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -285,6 +331,14 @@ interface HideoutSource {
   levels: HideoutSourceLevel[];
 }
 
+interface ArctrackerBench {
+  id: string;
+  level: number;
+  assetIndex?: {
+    id?: string;
+  };
+}
+
 interface HideoutModuleOutput {
   id: string;
   name: {
@@ -294,13 +348,58 @@ interface HideoutModuleOutput {
   maxLevel: number;
   levels: {
     level: number;
+    image: string | null;
     requirementItemIds: { itemId: string; quantity: number }[];
   }[];
+}
+
+function loadHideoutBenchImages(scriptDir: string): Map<string, string | null> {
+  const mappingFile = path.resolve(scriptDir, '../../embark-api/data/arctracker-benches.json');
+  const imageSourceDir = path.resolve(scriptDir, '../../embark-api/asset-index/images');
+  const imageDestDir = path.resolve(scriptDir, '../public/images/benches');
+  const imageByBenchLevel = new Map<string, string | null>();
+
+  if (!fs.existsSync(mappingFile)) {
+    console.warn(`Warning: Hideout bench mapping file does not exist: ${mappingFile}`);
+    return imageByBenchLevel;
+  }
+
+  if (!fs.existsSync(imageDestDir)) {
+    fs.mkdirSync(imageDestDir, { recursive: true });
+  }
+
+  const benchRecords = Object.values(
+    JSON.parse(fs.readFileSync(mappingFile, 'utf-8')) as Record<string, ArctrackerBench>,
+  );
+
+  for (const bench of benchRecords) {
+    const assetId = bench.assetIndex?.id;
+    const key = `${bench.id}:${bench.level}`;
+
+    if (!assetId) {
+      imageByBenchLevel.set(key, null);
+      continue;
+    }
+
+    const sourceFile = path.join(imageSourceDir, `${assetId}.png`);
+    if (!fs.existsSync(sourceFile)) {
+      imageByBenchLevel.set(key, null);
+      continue;
+    }
+
+    const fileName = `${bench.id}-tier${bench.level}.png`;
+    const destFile = path.join(imageDestDir, fileName);
+    fs.copyFileSync(sourceFile, destFile);
+    imageByBenchLevel.set(key, `/images/benches/${fileName}`);
+  }
+
+  return imageByBenchLevel;
 }
 
 function generateHideoutData(scriptDir: string, locale: OutputLocale): void {
   const sourceDir = path.resolve(scriptDir, '../../arcraiders-data/hideout');
   const destFile = path.resolve(scriptDir, `../public/data/quartermaster/hideout.${locale}.json`);
+  const benchImages = loadHideoutBenchImages(scriptDir);
 
   if (!fs.existsSync(sourceDir)) {
     console.error(`Error: Hideout source directory does not exist: ${sourceDir}`);
@@ -332,6 +431,7 @@ function generateHideoutData(scriptDir: string, locale: OutputLocale): void {
         maxLevel: source.maxLevel,
         levels: source.levels.map(level => ({
           level: level.level,
+          image: benchImages.get(`${source.id}:${level.level}`) ?? null,
           requirementItemIds: [...level.requirementItemIds]
             .sort((a, b) => a.itemId.localeCompare(b.itemId)),
         })),
@@ -361,7 +461,8 @@ function generateHideoutData(scriptDir: string, locale: OutputLocale): void {
  * Main import function
  */
 function main(): void {
-  const scriptDir = path.dirname(new URL(import.meta.url).pathname);
+  const scriptPath = path.resolve(process.argv[1] ?? './scripts/quartermaster-import.ts');
+  const scriptDir = path.dirname(scriptPath);
   const sourceDir = path.resolve(scriptDir, '../../arcraiders-data/items');
 
   // Check source directory exists
@@ -402,6 +503,8 @@ function main(): void {
         process.exit(1);
       }
     }
+
+    addWeaponChainMetadata(items);
 
     const sortedItems = sortObjectKeys(items);
     const output: OutputData = {

@@ -35,6 +35,9 @@ Browser SPA                                            API Gateway HTTP API
   │   POST /me/links/embark/complete       ─────────► │  • PKCE state/verifier      │
   │                                                   │  • token exchange           │
   │                                                   │  • cached profile fetch     │
+  │   GET /me/arctracker/{proxy+}        ───────────►  │ ArcTracker user proxy       │
+  │                                                   │  • decrypt linked token     │
+  │                                                   │  • call relay server-side   │
   │   GET|PUT|DELETE /me/state/{domain}   ─────────►  │ StateFn      (state.ts)     │
   │   POST /me/migrate                    ─────────►  │  • revision concurrency     │
   │                                                   └──────────────┬──────────────┘
@@ -132,6 +135,7 @@ POST   /me/links/embark/start { provider, returnUrl }
 POST   /me/links/embark/complete { code, state }
                                           → 200 { linked: true, provider, expiresAt, linkedAt,
                                                   profileFetchedAt, expired, profile }
+GET    /me/arctracker/<path>              → ArcTracker response via stored linked token
 GET    /me/state/<domain>                 → 200 { schemaVersion, data, revision, updatedAt } | 404
 PUT    /me/state/<domain>  { schemaVersion, data, revision? }
                                           → 200 { ok: true, revision }
@@ -189,7 +193,9 @@ Files to touch when changing domain schemas:
 If you change the shape of a store's `data`, bump its `schemaVersion` in `stores.ts` and add a `migrate()` function that forward-migrates older payloads.
 
 ### 3.4 Typed API client (`src/shared/services/userApi.ts`)
-All `/me` + `/me/links/*` calls go through this module. It attaches the Cognito ID token automatically (via `getIdToken()` from the auth layer) and coerces server error bodies into `Error.message`. Use it instead of writing ad-hoc `fetch` calls — it is the authoritative place to add new typed endpoints.
+All `/me` + `/me/links/*` calls go through this module. It attaches the Cognito ID token automatically (via `getIdToken()` from the auth layer) and coerces server error bodies into `Error.message`. ArcTracker data sync calls use `src/shared/services/arctrackerApi.ts`, which calls `/me/arctracker/*` when a Cognito/dev session is active so linked tokens stay server-side. Use these typed clients instead of writing ad-hoc `fetch` calls.
+
+ArcTracker profile data is not available in anonymous mode. Users must be signed in to Raider Tools before linking an ArcTracker token or syncing ArcTracker-backed inventory/loadout/hideout data. The SPA must never store or reuse an ArcTracker `arc_u1_*` token in `localStorage`; token validation during linking is the only browser flow that handles the submitted token directly, and persistence happens server-side via `LinksFn`.
 
 ### 3.5 `SignInNudge` (`src/shared/components/SignInNudge.tsx`)
 Dismissible banner rendered inside the three stateful apps for anonymous users. Hidden when `cognito.user` is present or when `cognito.available` is false. Dismissal persisted in `localStorage['rt_signin_nudge_dismissed']`. Add it to any new app that stores user progress behind the `UserStateStore` so users understand the anonymous/signed-in distinction (see §4.3 for the copy the user sees).
@@ -222,6 +228,7 @@ Runs *before* Cognito tokens are cleared so any pending writes can still authent
 2. `setBackend('local')` on every store.
 3. `clearAll()` on every store → clears the `rt_state_*` localStorage keys and resets to defaults.
 4. Iterates `LEGACY_KEYS` (pre-phase-2 key names: `arcraiders-quest-progress-reactflow`, `quartermaster_lists`, `what-to-loot-*`, etc.) and removes them too.
+5. Clears the ArcTracker IndexedDB cache (`raiderToolsCache`) and drops the active cache owner so stash/loadout/hideout/blueprint data from one signed-in user cannot be shown to another user.
 
 UI prefs (locale, sidebar open/closed) and the sign-in-nudge dismissal flag intentionally survive sign-out; they are device-level prefs, not user data.
 
@@ -303,6 +310,7 @@ Embark-specific notes:
 ## 6. Restrictions and caveats (non-negotiable)
 - **Never read/write `localStorage` directly from an app for user-authored state.** Go through a `UserStateStore`. UI prefs that deliberately do not sync (locale, sidebar state) are fine.
 - **Never store linked-account tokens in plaintext** in DynamoDB, `localStorage`, `IndexedDB`, or cookies. Always use `encryptToken`/`decryptToken` with a correct `EncryptionContext`.
+- **Never support anonymous ArcTracker profile usage.** ArcTracker-backed data sync must go through `/me/arctracker/*` with a signed-in Raider Tools user and a server-side linked token.
 - **Never add a new `pk` prefix to the user table** without updating §2.1 and the relevant IAM grants. The KMS `EncryptionContext` is keyed on `{userId, purpose, provider}` — changing its shape after the fact invalidates prior ciphertexts.
 - **IAM grants for new Lambdas that read linked-account tokens** must be added in `infra/lib/raider-tools-stack.ts` (`grantEncryptDecrypt` on `kmsKey`, `grantReadWriteData` on `userTable`). The two-stack split no longer exists, so all grants live in one place.
 - **Never skip the `revision` field** when writing to an existing `STATE` row. Omitting `revision` is reserved for the very first write on a brand-new row and will 409 otherwise.

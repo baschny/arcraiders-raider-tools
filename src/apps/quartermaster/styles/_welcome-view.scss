@@ -1,0 +1,135 @@
+@use 'variables' as *;
+
+.welcome-view {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+  max-width: 1100px;
+  margin: 0 auto;
+
+  &__intro {
+    padding-bottom: $spacing-lg;
+    border-bottom: 1px solid $border-default;
+
+    h2 {
+      margin: 0;
+      font-size: 30px;
+      line-height: 1.1;
+      color: $text-primary;
+    }
+
+    h3 {
+      margin: $spacing-xs 0 $spacing-md;
+      color: $text-accent;
+      font-size: $font-xl;
+      line-height: 1.2;
+    }
+
+    p {
+      max-width: 720px;
+      margin: 0;
+      color: $text-secondary;
+      line-height: 1.55;
+    }
+  }
+
+  &__setup {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-sm;
+    padding: $spacing-md;
+    background: $bg-secondary;
+    border: 1px solid $border-default;
+    border-radius: $radius-md;
+    color: $text-primary;
+    font-size: $font-sm;
+    line-height: 1.4;
+  }
+
+  &__setup-status {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+
+    svg {
+      color: $text-accent;
+      flex-shrink: 0;
+    }
+
+    h3 {
+      margin: 0 0 4px;
+      color: $text-primary;
+      font-size: $font-lg;
+    }
+
+    p {
+      margin: 0;
+      color: $text-secondary;
+    }
+  }
+
+  &__workflow {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr);
+    gap: $spacing-sm;
+    align-items: stretch;
+  }
+
+  &__arrow {
+    align-self: center;
+    color: $text-accent;
+    opacity: 0.8;
+  }
+
+  &__panel {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $spacing-sm;
+    min-height: 230px;
+    padding: $spacing-lg;
+    background: $bg-secondary;
+    border: 1px solid $border-default;
+    border-radius: $radius-md;
+
+    > svg {
+      color: $text-accent;
+    }
+
+    h3 {
+      margin: 0;
+      color: $text-primary;
+      font-size: $font-lg;
+    }
+
+    p {
+      flex: 1;
+      margin: 0;
+      color: $text-secondary;
+      line-height: 1.5;
+    }
+  }
+}
+
+@media (max-width: 920px) {
+  .welcome-view {
+    &__workflow {
+      grid-template-columns: 1fr;
+    }
+
+    &__setup {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    &__arrow {
+      justify-self: center;
+      transform: rotate(90deg);
+    }
+
+    &__panel {
+      min-height: 0;
+    }
+  }
+}

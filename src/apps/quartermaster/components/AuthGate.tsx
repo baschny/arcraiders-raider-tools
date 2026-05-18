@@ -5,8 +5,9 @@
  */
 
 import { Link } from 'react-router-dom';
-import { LogIn, Loader2 } from 'lucide-react';
+import { KeyRound, Loader2, LogIn } from 'lucide-react';
 import { useAuth } from '../../../shared/context/AuthContext';
+import { useCognitoAuth } from '../../../shared/context/CognitoAuthContext';
 import { useLocale } from '../../../shared/context/LocaleContext';
 import type { ReactNode } from 'react';
 
@@ -23,6 +24,7 @@ interface AuthGateProps {
 export function AuthGate({ children }: AuthGateProps) {
   const { t } = useLocale();
   const { isAuthenticated, isValidating } = useAuth();
+  const cognito = useCognitoAuth();
 
   if (isValidating) {
     return (
@@ -36,16 +38,26 @@ export function AuthGate({ children }: AuthGateProps) {
   }
 
   if (!isAuthenticated) {
+    const isSignedIn = !!cognito.user;
+    const linkTarget = isSignedIn ? '/profile/arctracker' : '/auth/sign-in';
+    const linkLabel = isSignedIn
+      ? t('quartermaster.auth.linkArcTracker')
+      : t('quartermaster.auth.signIn');
+    const title = isSignedIn
+      ? t('quartermaster.auth.linkRequiredTitle')
+      : t('quartermaster.auth.requiredTitle');
+    const body = isSignedIn
+      ? t('quartermaster.auth.linkRequiredBody')
+      : t('quartermaster.auth.signInRequiredBody');
+
     return (
       <div className="qm-auth-gate">
         <div className="qm-auth-gate__login">
-          <LogIn size={48} />
-          <h3>{t('quartermaster.auth.requiredTitle')}</h3>
-          <p>
-            {t('quartermaster.auth.requiredBody')}
-          </p>
-          <Link to="/profile/arctracker" className="qm-button qm-button--primary">
-            {t('quartermaster.auth.goToSettings')}
+          {isSignedIn ? <KeyRound size={48} /> : <LogIn size={48} />}
+          <h3>{title}</h3>
+          <p>{body}</p>
+          <Link to={linkTarget} className="qm-button qm-button--primary">
+            {linkLabel}
           </Link>
         </div>
       </div>

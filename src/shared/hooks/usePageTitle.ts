@@ -19,11 +19,14 @@ const PAGE_TITLE_PREFIXES: Array<{ prefix: string; key: string }> = [
 ];
 
 function resolvePageKey(pathname: string): string | undefined {
-  if (PAGE_TITLE_KEYS[pathname]) {
-    return PAGE_TITLE_KEYS[pathname];
+  const normalizedPathname =
+    pathname.length > 1 ? pathname.replace(/\/+$/, '') : pathname;
+
+  if (PAGE_TITLE_KEYS[normalizedPathname]) {
+    return PAGE_TITLE_KEYS[normalizedPathname];
   }
   const prefixMatch = PAGE_TITLE_PREFIXES.find(({ prefix }) =>
-    pathname === prefix || pathname.startsWith(`${prefix}/`),
+    normalizedPathname === prefix || normalizedPathname.startsWith(`${prefix}/`),
   );
   return prefixMatch?.key;
 }

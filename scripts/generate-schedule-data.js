@@ -18,6 +18,7 @@ const MAP_ORDER = [
   'buried-city',
   'the-spaceport',
   'blue-gate',
+  'riven-tides',
   'stella-montis',
 ];
 const MERGE_HISTORY_WINDOW_SECONDS = 30 * 24 * 60 * 60;
@@ -89,6 +90,10 @@ function canonicalizeMapId(rawMapId) {
 
   if (withHyphens === 'the-blue-gate') {
     return 'blue-gate';
+  }
+
+  if (withHyphens === 'spaceport') {
+    return 'the-spaceport';
   }
 
   return withHyphens;

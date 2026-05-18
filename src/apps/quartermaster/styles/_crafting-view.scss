@@ -2,7 +2,22 @@
 
 .crafting-view {
   &__controls {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: $spacing-sm;
     margin-bottom: $spacing-lg;
+  }
+
+  &__sync-meta {
+    color: $text-secondary;
+    font-size: $font-sm;
+  }
+
+  &__button-meta {
+    color: $text-secondary;
+    font-size: $font-xs;
+    font-weight: 600;
   }
 
   &__section {
@@ -103,6 +118,25 @@
     display: flex;
     flex-direction: column;
     gap: 6px;
+  }
+
+  &__why-warning {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    margin-top: 6px;
+    border-radius: $radius-sm;
+    border: 1px solid rgba($badge-recycle, 0.35);
+    background: rgba($badge-recycle, 0.1);
+    color: $badge-recycle;
+    padding: 6px;
+    font-size: 11px;
+    line-height: 1.35;
+
+    svg {
+      flex: 0 0 auto;
+      margin-top: 1px;
+    }
   }
 
   &__why-item {

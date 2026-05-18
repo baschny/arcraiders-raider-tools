@@ -166,6 +166,15 @@
         "he": "פשיטת לילה"
       }
     },
+    "beachcombing": {
+      "displayName": "Beachcombing",
+      "icon": "https://cdn.arctracker.io/map-events/beachcombing.png",
+      "translationKey": "beachcombing",
+      "category": "minor",
+      "localizations": {
+        "en": "Beachcombing"
+      }
+    },
     "bird-city": {
       "displayName": "Bird City",
       "icon": "https://cdn.arctracker.io/map-events/bird_city.png",

@@ -2,9 +2,9 @@
  * /me/links/{provider} — manage external account links for the user.
  *
  * GET    /me/links/arctracker  -> { linked, validatedUsername?, validatedAt? }
- * PUT    /me/links/arctracker  -> body: { token } -> validates via the
- *                                 ArcTracker relay, then envelope-encrypts
- *                                 and stores ciphertext in DynamoDB.
+ * PUT    /me/links/arctracker  -> body: { token } -> validates via
+ *                                 ArcTracker, then envelope-encrypts and
+ *                                 stores ciphertext in DynamoDB.
  * DELETE /me/links/arctracker  -> removes the link.
  *
  * GET    /me/links/embark      -> returns current Embark link status
@@ -31,6 +31,7 @@ import {
 } from "./_lib/http";
 import { encryptToken, type EnvelopePayload } from "./_lib/envelope";
 import { computeCountdownMinutes, type EmbarkProfile } from "./_lib/embark";
+import { forwardArcTrackerRequest } from "./_lib/arctrackerRelay";
 
 const ddb = DynamoDBDocumentClient.from(new DynamoDBClient({}));
 
@@ -111,21 +112,21 @@ async function handleArctrackerPut(
         return jsonResponse(400, { error: "Token format invalid" }, origin);
     }
 
-    // Validate via the relay (which adds the X-App-Key transparently).
-    const relayUrl = process.env.ARCTRACKER_RELAY_URL!;
-    const profileResp = await fetch(`${relayUrl}/v2/user/profile`, {
-        headers: {
-            Authorization: `Bearer ${token}`,
-            Accept: "application/json",
-        },
+    const profileResp = await forwardArcTrackerRequest({
+        subPath: "/v2/user/profile",
+        bearerToken: token,
+        origin,
     });
-    if (profileResp.status === 401 || profileResp.status === 403) {
-        return jsonResponse(400, { error: "ArcTracker rejected the token" }, origin);
-    }
-    if (!profileResp.ok) {
+    if (typeof profileResp === "string") {
         return jsonResponse(502, { error: "ArcTracker validation failed" }, origin);
     }
-    const profileJson = await profileResp.json() as ArctrackerProfileResponse;
+    if (profileResp.statusCode === 401 || profileResp.statusCode === 403) {
+        return jsonResponse(400, { error: "ArcTracker rejected the token" }, origin);
+    }
+    if (!profileResp.statusCode || profileResp.statusCode < 200 || profileResp.statusCode >= 300) {
+        return jsonResponse(502, { error: "ArcTracker validation failed" }, origin);
+    }
+    const profileJson = JSON.parse(profileResp.body ?? "{}") as ArctrackerProfileResponse;
     const validatedUsername = profileJson.data?.username ?? null;
 
     // Envelope-encrypt and persist.

@@ -4,9 +4,9 @@
  */
 
 import { useState, useMemo } from 'react';
-import { RefreshCw, Search, Package } from 'lucide-react';
+import { Info, Paperclip, RefreshCw, Search, Package } from 'lucide-react';
 import type { ItemsMap } from '../../types/item';
-import type { PlannerResult, StashItem } from '../../types/planner';
+import type { OwnedItemDisplayRow, OwnedItemLocation, PlannerResult } from '../../types/planner';
 import { ItemIcon } from '../ItemIcon';
 import type { ItemInsightsMap } from '../../utils/itemInsights';
 import {
@@ -18,22 +18,28 @@ import { useLocale } from '../../../../shared/context/LocaleContext';
 
 interface StashViewProps {
   itemsMap: ItemsMap;
-  stashItems: StashItem[];
+  ownedItemRows: OwnedItemDisplayRow[];
   plannerResult: PlannerResult;
   itemInsights: ItemInsightsMap;
   getOwnedQuantity: (itemId: string) => number | null;
-  onSyncStash: () => void;
+  onSyncMyItems: () => void;
   isSyncing: boolean;
+  syncStep: 'inventory' | 'loadout' | null;
+  hasInventoryCache: boolean;
+  hasLoadoutCache: boolean;
 }
 
 export function StashView({
   itemsMap,
-  stashItems,
+  ownedItemRows,
   plannerResult,
   itemInsights,
   getOwnedQuantity,
-  onSyncStash,
+  onSyncMyItems,
   isSyncing,
+  syncStep,
+  hasInventoryCache,
+  hasLoadoutCache,
 }: StashViewProps) {
   const { t, tm, compareText, formatNumber } = useLocale();
   const [searchQuery, setSearchQuery] = useState('');
@@ -45,24 +51,27 @@ export function StashView({
   const recycleItemIds = useMemo(() => {
     return new Set(plannerResult.recyclePlan.actions.map(a => a.srcItemId));
   }, [plannerResult.recyclePlan]);
+  const upgradeBaseItemIds = useMemo(() => {
+    return new Set(plannerResult.weaponUpgradePlan.steps.map(step => step.fromItemId));
+  }, [plannerResult.weaponUpgradePlan]);
 
-  // Get unique categories from stash items
+  // Get unique categories from owned items
   const categories = useMemo(() => {
     const cats = new Set<string>();
-    for (const item of stashItems) {
+    for (const item of ownedItemRows) {
       const plannerItem = itemsMap[item.itemId];
       if (plannerItem) {
         cats.add(plannerItem.category);
       }
     }
     return Array.from(cats).sort((a, b) => compareText(getLocalizedQuartermasterCategory(t, a), getLocalizedQuartermasterCategory(t, b)));
-  }, [stashItems, itemsMap, compareText, t]);
+  }, [ownedItemRows, itemsMap, compareText, t]);
 
-  // Filter and sort stash items
+  // Filter and sort owned items
   const filteredItems = useMemo(() => {
-    return stashItems
-      .filter(stashItem => {
-        const item = itemsMap[stashItem.itemId];
+    return ownedItemRows
+      .filter(ownedItem => {
+        const item = itemsMap[ownedItem.itemId];
         if (!item) return false;
 
         // Search filter
@@ -81,7 +90,7 @@ export function StashView({
         }
 
         // Recyclable filter
-        if (showOnlyRecyclable && !recycleItemIds.has(stashItem.itemId)) {
+        if (showOnlyRecyclable && !recycleItemIds.has(ownedItem.itemId)) {
           return false;
         }
 
@@ -92,19 +101,22 @@ export function StashView({
         const itemB = itemsMap[b.itemId];
         return compareText(itemA?.name ?? '', itemB?.name ?? '');
       });
-  }, [stashItems, itemsMap, searchQuery, categoryFilter, rarityFilter, showOnlyRecyclable, recycleItemIds, compareText]);
+  }, [ownedItemRows, itemsMap, searchQuery, categoryFilter, rarityFilter, showOnlyRecyclable, recycleItemIds, compareText]);
 
   // Calculate total value
   const totalValue = useMemo(() => {
-    return stashItems.reduce((sum, stashItem) => {
-      const item = itemsMap[stashItem.itemId];
-      return sum + (item?.value ?? 0) * stashItem.quantity;
+    return ownedItemRows.reduce((sum, ownedItem) => {
+      const item = itemsMap[ownedItem.itemId];
+      return sum + (item?.value ?? 0) * ownedItem.quantity;
     }, 0);
-  }, [stashItems, itemsMap]);
+  }, [ownedItemRows, itemsMap]);
   const planRowsByItemId = useMemo(() => {
     const map = new Map(plannerResult.planRows.map((row) => [row.itemId, row]));
     return map;
   }, [plannerResult.planRows]);
+  const ingredientMissingByItemId = useMemo(() => {
+    return new Map(Object.entries(plannerResult.remainingIngredientDeficits));
+  }, [plannerResult.remainingIngredientDeficits]);
 
   const tooltipContext = useMemo(() => ({
     itemsMap,
@@ -112,13 +124,13 @@ export function StashView({
     itemInsights,
   }), [itemsMap, plannerResult, itemInsights]);
 
-  const getMissingOriginLabel = (itemId: string): string => {
+  const getRequirementListNames = (itemId: string): string[] => {
     const insight = itemInsights[itemId];
-    if (!insight) return '';
+    if (!insight) return [];
     const listNames = new Set<string>();
     for (const need of insight.finalListNeeds) listNames.add(need.listName);
     for (const need of insight.craftingNeeds) listNames.add(need.listName);
-    return Array.from(listNames).sort(compareText).join(', ');
+    return Array.from(listNames).sort(compareText);
   };
 
   const getRecycleReasonLabel = (itemId: string): string => {
@@ -130,16 +142,67 @@ export function StashView({
     return `${firstNeed.targetItemName} (${firstNeed.listName})`;
   };
 
+  const getRequirementLabel = (listNames: string[]): string => {
+    if (listNames.length === 0) return t('quartermaster.stash.activeRequirements');
+    if (listNames.length === 1) return listNames[0];
+    return tm('quartermaster.stash.acrossLists', { count: listNames.length });
+  };
+
+  const getLocationLabels = (locations: OwnedItemLocation[]): string[] => {
+    const labels: string[] = [];
+    for (const location of locations) {
+      switch (location.source) {
+        case 'loadout':
+          labels.push(t('quartermaster.stash.locations.inCurrentLoadout'));
+          break;
+        case 'stash_attachment':
+          labels.push(tm('quartermaster.stash.locations.attachedInStash', { item: location.parentName }));
+          break;
+        case 'loadout_attachment':
+          labels.push(tm('quartermaster.stash.locations.attachedInLoadout', { item: location.parentName }));
+          break;
+        default:
+          break;
+      }
+    }
+
+    const uniqueLabels = Array.from(new Set(labels));
+    if (uniqueLabels.length <= 2) return uniqueLabels;
+    return [
+      ...uniqueLabels.slice(0, 2),
+      tm('quartermaster.stash.locations.more', { count: uniqueLabels.length - 2 }),
+    ];
+  };
+
+  const hasCountedAttachments = (locations: OwnedItemLocation[]): boolean => {
+    return locations.some((location) =>
+      (location.source === 'stash' || location.source === 'loadout') && location.hasAttachments,
+    );
+  };
+
+  const missingSources = useMemo(() => {
+    const sources: string[] = [];
+    if (!hasInventoryCache) sources.push(t('quartermaster.stash.inventorySource'));
+    if (!hasLoadoutCache) sources.push(t('quartermaster.stash.loadoutSource'));
+    return sources;
+  }, [hasInventoryCache, hasLoadoutCache, t]);
+
+  const syncLabel = syncStep === 'inventory'
+    ? t('quartermaster.stash.syncingInventory')
+    : syncStep === 'loadout'
+      ? t('quartermaster.stash.syncingLoadout')
+      : t('quartermaster.stash.syncMyItems');
+
   return (
     <div className="stash-view">
       <div className="stash-view__controls">
         <button 
           className="qm-button" 
-          onClick={onSyncStash}
+          onClick={onSyncMyItems}
           disabled={isSyncing}
         >
           <RefreshCw size={14} className={isSyncing ? 'animate-spin' : ''} />
-          {t('quartermaster.common.syncInventory')}
+          {syncLabel}
         </button>
 
         <div className="stash-view__search">
@@ -196,7 +259,16 @@ export function StashView({
         </div>
       </div>
 
-      {stashItems.length === 0 ? (
+      {missingSources.length > 0 && (
+        <div className="stash-view__warning">
+          <Info size={16} />
+          <span>
+            {tm('quartermaster.stash.syncSetupHint', { sources: missingSources.join(', ') })}
+          </span>
+        </div>
+      )}
+
+      {ownedItemRows.length === 0 ? (
         <div className="qm-empty-state">
           <Package size={48} />
           <p>{t('quartermaster.stash.empty')}</p>
@@ -212,25 +284,29 @@ export function StashView({
             <tr>
               <th style={{ width: 80 }}>{t('quartermaster.stash.columns.icon')}</th>
               <th>{t('quartermaster.stash.columns.item')}</th>
-              <th style={{ width: 140 }}>{t('quartermaster.stash.columns.need')}</th>
               <th>{t('quartermaster.stash.columns.status')}</th>
             </tr>
           </thead>
           <tbody>
-            {filteredItems.map(stashItem => {
-              const item = itemsMap[stashItem.itemId];
+            {filteredItems.map(ownedItem => {
+              const item = itemsMap[ownedItem.itemId];
               if (!item) return null;
               
-              const planRow = planRowsByItemId.get(stashItem.itemId);
-              const toRecycle = recycleItemIds.has(stashItem.itemId);
-              const required = planRow?.required ?? 0;
-              const missing = planRow?.missing ?? 0;
-              const missingOriginLabel = getMissingOriginLabel(stashItem.itemId);
-              const recycleReason = getRecycleReasonLabel(stashItem.itemId);
+              const planRow = planRowsByItemId.get(ownedItem.itemId);
+              const toRecycle = recycleItemIds.has(ownedItem.itemId);
+              const isUpgradeBase = upgradeBaseItemIds.has(ownedItem.itemId);
+              const listNames = getRequirementListNames(ownedItem.itemId);
+              const requirementLabel = getRequirementLabel(listNames);
+              const ingredientMissing = ingredientMissingByItemId.get(ownedItem.itemId) ?? 0;
+              const required = planRow?.required ?? (ingredientMissing > 0 ? ownedItem.quantity + ingredientMissing : 0);
+              const missing = planRow?.missing ?? ingredientMissing;
+              const recycleReason = getRecycleReasonLabel(ownedItem.itemId);
               const hasRequirement = required > 0;
+              const locationLabels = getLocationLabels(ownedItem.locations);
+              const attachmentsCounted = hasCountedAttachments(ownedItem.locations);
 
               return (
-                <tr key={stashItem.itemId}>
+                <tr key={ownedItem.itemId}>
                   <td>
                     <ItemIcon
                       itemId={item.id}
@@ -245,33 +321,62 @@ export function StashView({
                   </td>
                   <td>
                     <span className="qm-item-name">{item.name}</span>
-                  </td>
-                  <td className={missing > 0 ? 'stash-view__need stash-view__need--missing' : 'stash-view__need'}>
-                    {hasRequirement
-                      ? tm('quartermaster.stash.missingCount', { missing, required })
-                      : tm('quartermaster.stash.missingCount', { missing: 0, required: 0 })}
+                    {locationLabels.length > 0 && (
+                      <div className="stash-view__locations">
+                        {locationLabels.map((label) => (
+                          <div key={label}>{label}</div>
+                        ))}
+                      </div>
+                    )}
+                    {attachmentsCounted && (
+                      <div className="stash-view__attachment-note">
+                        <Paperclip size={12} />
+                        {t('quartermaster.stash.attachmentsCounted')}
+                      </div>
+                    )}
                   </td>
                   <td>
-                    {(planRow?.missing ?? 0) === 0 && hasRequirement && (
-                      <span className="stash-view__indicator stash-view__indicator--have">
-                        {t('quartermaster.status.have')}
-                      </span>
-                    )}
-                    {(planRow?.missing ?? 0) > 0 && (
-                      <span className="stash-view__indicator stash-view__indicator--missing">
-                        {t('quartermaster.status.missing')}{missingOriginLabel ? ` · ${missingOriginLabel}` : ''}
-                      </span>
-                    )}
-                    {toRecycle && (
-                      <span className="stash-view__indicator stash-view__indicator--recycle">
-                        {t('quartermaster.status.recycle')}{recycleReason ? ` · ${recycleReason}` : ''}
-                      </span>
-                    )}
-                    {planRow?.isUncraftable && (
-                      <span className="stash-view__indicator stash-view__indicator--uncraftable">
-                        {getUncraftableReasonLabel(t, planRow.uncraftableReason)}
-                      </span>
-                    )}
+                    <div className="stash-view__status-stack">
+                      {missing === 0 && hasRequirement && (
+                        <span className="stash-view__indicator stash-view__indicator--have">
+                          {tm('quartermaster.stash.status.haveRequired', {
+                            owned: ownedItem.quantity,
+                            required,
+                            source: requirementLabel,
+                          })}
+                        </span>
+                      )}
+                      {missing > 0 && (
+                        <span className="stash-view__indicator stash-view__indicator--missing">
+                          {tm('quartermaster.stash.status.needMore', {
+                            missing,
+                            source: requirementLabel,
+                            required,
+                            owned: ownedItem.quantity,
+                          })}
+                        </span>
+                      )}
+                      {!hasRequirement && (
+                        <span className="stash-view__indicator stash-view__indicator--owned">
+                          {tm('quartermaster.stash.status.owned', { owned: ownedItem.quantity })}
+                        </span>
+                      )}
+                      {toRecycle && (
+                        <span className="stash-view__indicator stash-view__indicator--recycle">
+                          {t('quartermaster.status.recycle')}{recycleReason ? ` · ${recycleReason}` : ''}
+                        </span>
+                      )}
+                      {isUpgradeBase && (
+                        <span className="stash-view__indicator stash-view__indicator--have">
+                          {t('quartermaster.stash.status.upgradeBase')}
+                        </span>
+                      )}
+                      {planRow?.isUncraftable && (
+                        <span className="stash-view__indicator stash-view__indicator--uncraftable">
+                          {getUncraftableReasonLabel(t, planRow.uncraftableReason)}
+                        </span>
+                      )}
+                    </div>
                   </td>
                 </tr>
               );

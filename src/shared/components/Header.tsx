@@ -15,6 +15,10 @@ const TOOLS = [
 
 const TOOLS_FOR_SWITCHER = TOOLS.filter((tool) => tool.path !== '/');
 
+function normalizePathname(pathname: string): string {
+  return pathname.length > 1 ? pathname.replace(/\/+$/, '') : pathname;
+}
+
 export function Header() {
   const { locale, localeOptions, setLocale, t } = useLocale();
   const navigate = useNavigate();
@@ -24,7 +28,8 @@ export function Header() {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const languageDropdownRef = useRef<HTMLDivElement>(null);
 
-  const currentTool = TOOLS.find((tool) => tool.path === location.pathname) || TOOLS[0];
+  const currentPathname = normalizePathname(location.pathname);
+  const currentTool = TOOLS.find((tool) => tool.path === currentPathname) || TOOLS[0];
   const currentLocaleOption =
     localeOptions.find((option) => option.code === locale) ?? localeOptions[0];
 
@@ -73,7 +78,7 @@ export function Header() {
                 key={tool.path}
                 onClick={() => handleToolSelect(tool.path)}
                 className={`header-menu-item ${
-                  tool.path === location.pathname ? 'header-menu-item--active' : ''
+                  tool.path === currentPathname ? 'header-menu-item--active' : ''
                 }`}
               >
                 {t(tool.nameKey)}

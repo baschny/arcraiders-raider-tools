@@ -44,20 +44,21 @@ export function Profile() {
     );
   }
 
-  // If sign-in is configured but the user is anonymous, nudge them to
-  // the sign-in page. Anonymous-only builds (available === false) still
-  // get to see the ArcTracker section because that works locally too.
-  if (cognito.available && !cognito.user) {
+  // ArcTracker linking requires a Raider Tools account because the user's
+  // ArcTracker token is stored encrypted server-side.
+  if (!cognito.user) {
     return (
       <div className="content-container">
         <div className="profile-signed-out">
           <UserCircle size={40} />
           <h2>{t('pages.profile.title')}</h2>
           <p>{t('shared.userMenu.confirmSignOutBody')}</p>
-          <NavLink to="/auth/sign-in" className="settings-button settings-button--primary">
-            <LogIn size={16} />
-            <span>{t('shared.userMenu.login')}</span>
-          </NavLink>
+          {cognito.available && (
+            <NavLink to="/auth/sign-in" className="settings-button settings-button--primary">
+              <LogIn size={16} />
+              <span>{t('shared.userMenu.login')}</span>
+            </NavLink>
+          )}
         </div>
       </div>
     );

@@ -1,6 +1,8 @@
 /**
  * ArcTracker API Service
- * Handles all communication with the arctracker.io API via our proxy.
+ * Handles communication with arctracker.io via Raider Tools proxies.
+ * Data sync requires a signed-in Raider Tools user with a server-side linked
+ * ArcTracker token.
  * Includes retry logic, timeout handling, and IndexedDB caching.
  */
 
@@ -9,10 +11,12 @@ import type {
   ArctrackerStashResponse,
   ArctrackerLoadoutResponse,
   ArctrackerHideoutResponse,
+  ArctrackerBlueprintsResponse,
   CachedProfile,
   CachedStash,
   CachedLoadout,
   CachedHideout,
+  CachedBlueprints,
   ApiError,
   ArctrackerStashItem,
 } from '../types/arctracker';
@@ -22,12 +26,16 @@ import {
   getCachedStash,
   getCachedLoadout,
   getCachedHideout,
+  getCachedBlueprints,
   updateCacheMeta,
+  setCacheOwner,
 } from './cacheService';
-import { getToken } from '../utils/tokenStorage';
+import { getCurrentSession, getIdToken } from '../auth/cognitoClient';
 import { DEFAULT_LOCALE, LOCALE_STORAGE_KEY, type AppLocale } from '../i18n/config';
 
-const API_BASE = 'https://api.raider-tools.app/arctracker';
+const API_ORIGIN = (import.meta.env.VITE_API_BASE_URL as string | undefined) ??
+  'https://api.raider-tools.app';
+const USER_RELAY_BASE = `${API_ORIGIN}/me/arctracker`;
 const TIMEOUT_MS = 10000;
 const MAX_RETRIES = 1;
 const STASH_PER_PAGE = 500;
@@ -46,6 +54,15 @@ function getApiLocale(): AppLocale {
  */
 function createApiError(message: string, status?: number, isRetryable = false): ApiError {
   return { message, status, isRetryable };
+}
+
+async function getApiErrorMessage(response: Response): Promise<string> {
+  try {
+    const body = await response.json() as { error?: string; message?: string };
+    return body.error ?? body.message ?? `API request failed: ${response.status} ${response.statusText}`;
+  } catch {
+    return `API request failed: ${response.status} ${response.statusText}`;
+  }
 }
 
 /**
@@ -78,18 +95,15 @@ async function apiRequest<T>(
   token?: string,
   retryCount = 0
 ): Promise<T> {
-  const authToken = token ?? getToken();
-  if (!authToken) {
-    throw createApiError('No authentication token available', 401, false);
-  }
+  const auth = await getRequestAuth(token);
 
-  const url = `${API_BASE}${endpoint}`;
+  const url = `${auth.baseUrl}${endpoint}`;
 
   try {
     const response = await fetchWithTimeout(url, {
       method: 'GET',
       headers: {
-        'Authorization': `Bearer ${authToken}`,
+        'Authorization': `Bearer ${auth.token}`,
         'Accept': 'application/json',
       },
     });
@@ -105,7 +119,7 @@ async function apiRequest<T>(
       }
 
       throw createApiError(
-        `API request failed: ${response.status} ${response.statusText}`,
+        await getApiErrorMessage(response),
         response.status,
         isRetryable
       );
@@ -133,20 +147,19 @@ async function apiRequest<T>(
   }
 }
 
-/**
- * Validate a token by calling the profile endpoint.
- * Returns the username if valid, null otherwise.
- */
-export async function validateToken(token: string): Promise<string | null> {
-  try {
-    const response = await apiRequest<ArctrackerProfileResponse>(
-      `/v2/user/profile`,
-      token
-    );
-    return response.data.username;
-  } catch {
-    return null;
+async function getRequestAuth(token?: string): Promise<{ baseUrl: string; token: string }> {
+  if (token) {
+    throw createApiError('Direct ArcTracker token usage is not supported', 401, false);
   }
+
+  const idToken = await getIdToken();
+  if (idToken) {
+    const session = await getCurrentSession();
+    await setCacheOwner(session?.sub ?? null);
+    return { baseUrl: USER_RELAY_BASE, token: idToken };
+  }
+
+  throw createApiError('No authentication token available', 401, false);
 }
 
 /**
@@ -251,12 +264,51 @@ export async function syncHideout(): Promise<CachedHideout> {
 
   const cachedHideout: CachedHideout = {
     modules,
-    syncedAt: new Date().toISOString(),
+    syncedAt: response.data.syncedAt ?? new Date().toISOString(),
     cachedAt: Date.now(),
   };
 
   await cacheSet('hideout', cachedHideout);
   return cachedHideout;
+}
+
+/**
+ * Sync and cache learned blueprints.
+ */
+export async function syncBlueprints(): Promise<CachedBlueprints> {
+  const response = await apiRequest<ArctrackerBlueprintsResponse>(
+    `/v2/user/blueprints`
+  );
+
+  const blueprintsByTargetItemId: CachedBlueprints['blueprintsByTargetItemId'] = {};
+  const unlockedItemIds: string[] = [];
+
+  for (const blueprint of response.data.blueprints) {
+    if (!blueprint.targetItemId) continue;
+
+    blueprintsByTargetItemId[blueprint.targetItemId] = {
+      id: blueprint.id,
+      name: blueprint.name,
+      category: blueprint.category,
+      rarity: blueprint.rarity,
+      learned: blueprint.learned,
+      targetItemId: blueprint.targetItemId,
+    };
+
+    if (blueprint.learned) {
+      unlockedItemIds.push(blueprint.targetItemId);
+    }
+  }
+
+  const cachedBlueprints: CachedBlueprints = {
+    unlockedItemIds: Array.from(new Set(unlockedItemIds)).sort((a, b) => a.localeCompare(b)),
+    blueprintsByTargetItemId,
+    syncedAt: new Date().toISOString(),
+    cachedAt: Date.now(),
+  };
+
+  await cacheSet('blueprints', cachedBlueprints);
+  return cachedBlueprints;
 }
 
 /**
@@ -302,4 +354,11 @@ export async function getLoadout(): Promise<CachedLoadout | undefined> {
  */
 export async function getHideout(): Promise<CachedHideout | undefined> {
   return getCachedHideout();
+}
+
+/**
+ * Get cached blueprints (from IndexedDB).
+ */
+export async function getBlueprints(): Promise<CachedBlueprints | undefined> {
+  return getCachedBlueprints();
 }

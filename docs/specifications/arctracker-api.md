@@ -43,14 +43,14 @@ When a token is submitted:
 
 1. `AuthContext.login(token)` is called
 2. The token is validated by calling the `/v2/user/profile` endpoint
-3. If valid: token is stored in localStorage, username is extracted and displayed
+3. If valid: token is stored encrypted server-side, username is extracted and displayed
 4. If invalid: error message is shown, token is not stored
 
 ### 3. Session Persistence
 
 On application load:
 
-1. `AuthContext` checks for existing token in localStorage
+1. `AuthContext` checks the signed-in user's server-side ArcTracker link
 2. If found, re-validates by calling the profile endpoint
 3. If valid: user is authenticated, username displayed in header
 4. If invalid: token is cleared, user prompted to re-authenticate
@@ -59,18 +59,15 @@ On application load:
 
 When user logs out:
 
-1. Token is removed from localStorage
+1. Token is removed from the signed-in user's server-side link record
 2. All cached data is cleared from IndexedDB
 3. Auth state is reset
 
 ## Storage
 
-### localStorage Keys
+### Token Storage
 
-| Key | Description |
-|-----|-------------|
-| `rt_arctracker_token` | The user's API token |
-| `rt_arctracker_validatedAt` | Timestamp (epoch ms) when token was last validated |
+ArcTracker profile usage requires a signed-in Raider Tools account. The `arc_u1_*` token is stored encrypted server-side in the user table and is never stored in browser `localStorage`.
 
 ### IndexedDB Structure
 
@@ -90,11 +87,11 @@ When user logs out:
 ### Base URL
 
 ```
-https://api.raider-tools.app/arctracker
+https://api.raider-tools.app/me/arctracker
 ```
 
-All requests are proxied through our Lambda function which:
-- Validates the request origin (CORS)
+All profile data requests are authenticated with the Raider Tools user session and proxied through a Lambda function which:
+- Decrypts the signed-in user's linked ArcTracker token server-side
 - Injects the app authentication key
 - Forwards rate limit headers
 - Handles retries for transient errors
@@ -342,7 +339,7 @@ async function syncWithErrorHandling() {
 
 ## Security Considerations
 
-1. **Token Storage**: Tokens are stored in localStorage (client-side only). They are never sent to our servers except through the authenticated proxy.
+1. **Token Storage**: Tokens are stored encrypted server-side and used through authenticated Raider Tools endpoints.
 
 2. **Proxy Architecture**: The Lambda proxy injects our app key server-side, so it never reaches the client.
 
@@ -355,11 +352,11 @@ async function syncWithErrorHandling() {
 | File | Purpose |
 |------|---------|
 | `src/shared/types/arctracker.ts` | TypeScript type definitions |
-| `src/shared/utils/tokenStorage.ts` | localStorage token management |
+| `infra/lambda/arctracker-user-proxy.ts` | Authenticated proxy using the stored linked token |
 | `src/shared/services/cacheService.ts` | IndexedDB wrapper |
 | `src/shared/services/arctrackerApi.ts` | API client with sync methods |
 | `src/shared/context/AuthContext.tsx` | React auth context |
 | `src/shared/components/LoginButton.tsx` | Header login button |
 | `src/pages/ProfileSettings.tsx` | Token management page |
-| `infra/lambda/arc-relay.ts` | Lambda proxy function |
+| `infra/lambda/_lib/arctrackerRelay.ts` | Shared ArcTracker upstream forwarding helper |
 | `infra/lib/raider-tools-stack.ts` | AWS CDK stack |

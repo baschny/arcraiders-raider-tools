@@ -1,6 +1,10 @@
 # CHANGE REQUEST
 ## Quartermaster Specification Update — Hideout Progression Lists and Bench-Level Craftability
 
+Supersession note:
+
+`change-11-hideout-top-level-view.md` promotes generated hideout upgrade lists into a dedicated top-level **Hideout** view. Any requirements in this file that place generated hideout lists, hideout hints, or **Sync Hideouts** inside the Lists view are superseded by the canonical specification.
+
 ---
 
 # CR-001 — Extend System Purpose for Hideout Progression Planning
@@ -28,7 +32,7 @@ Planner must support two list sources:
 - User-authored lists
 - Generated hideout upgrade lists
 
-Aggregation logic must treat both sources uniformly.
+Aggregation logic must process generated hideout upgrade lists before user-authored lists while preserving the same enable/disable and quantity summing semantics for both sources.
 
 ---
 
@@ -164,7 +168,7 @@ Quartermaster must integrate with the hideout endpoint:
 /api/v2/user/hideout
 ```
 
-Lists view must provide a **Sync Hideouts** button.
+Hideout view must provide a **Sync Hideouts** button.
 
 Returned hideout state must be cached locally, analogous to stash caching.
 
@@ -180,7 +184,7 @@ Behavior:
 - Generated upgrade lists depend on cached hideout state
 - If no cached hideout state exists:
     - no generated hideout lists appear
-    - Lists view displays hint prompting Sync Hideouts
+    - Hideout view displays hint prompting Sync Hideouts
 
 Unknown modules must be ignored.
 
@@ -190,7 +194,7 @@ Module `stash` must be excluded from upgrade list generation.
 
 New cached dataset required.
 
-New UI control required in Lists view.
+New UI control required in Hideout view.
 
 ---
 
@@ -323,6 +327,7 @@ Higher levels:
 Generated lists:
 
 - participate in planner aggregation
+- have higher planner priority than user-authored lists
 - may be enabled or disabled
 - item rows may be enabled or disabled
 - names and composition are read-only
@@ -373,31 +378,41 @@ Local persistence layer must support toggle state for generated lists.
 
 ---
 
-# CR-009 — Extend Lists View UI
+# CR-009 — Dedicated Hideout View UI
 
 ## Type
 Modification
 
 ## Affected Section
 7.4 Lists View
+7.5 Hideout View
 
 ## Change
 
-Lists view must display two groups:
+Generated hideout upgrade lists must be removed from the Lists view and displayed in a dedicated top-level **Hideout** view.
+
+Lists view must display only:
 
 - User Lists
-- Hideout Upgrade Lists
 
-Add **Sync Hideouts** button.
+Hideout view must display:
+
+- Sync Hideouts button
+- all hideout benches/modules
+- current and max tier for every bench
+- completed state for fully upgraded benches
+- generated hideout upgrade lists for every future unlock/tier
 
 Generated lists must appear only when hideout cache exists.
 
 Ordering rules:
 
-1. All `(Next)` lists
+1. Next upgrade lists first
 2. Remaining future levels
 3. Bench name ascending
 4. Target level ascending
+
+The first upgrade for an unstarted bench is the Unlock tier.
 
 Allowed actions for generated lists:
 
@@ -414,7 +429,9 @@ Disallowed:
 
 ## Technical Impact
 
-Lists UI must support list type differentiation and separate rendering.
+Lists UI must no longer support hideout list rendering.
+
+Hideout UI must support generated hideout list rendering and toggle controls.
 
 ---
 

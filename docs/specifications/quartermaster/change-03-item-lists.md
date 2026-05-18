@@ -1,6 +1,10 @@
 # CHANGE REQUEST
 ## Quartermaster – Replace Loadouts with Priority-Based Item Lists
 
+Supersession note:
+
+`change-11-hideout-top-level-view.md` adds generated hideout upgrade lists as a higher-priority planner source. Priority rules in this file continue to define ordering within user-authored lists, but generated hideout lists are processed before user-authored lists in the canonical specification.
+
 ---
 
 # CR-001 — Replace Loadout Concept with Lists
@@ -24,9 +28,9 @@ Each list contains item entries that represent items the player wants to obtain.
 
 Planner targets must now be derived exclusively from **enabled lists and enabled list items**.
 
-Lists maintain a **priority order defined by UI order (top → bottom)**.
+User-authored lists maintain a **priority order defined by UI order (top → bottom)**.
 
-Items inside a list also maintain **priority order defined by UI order (top → bottom)**.
+Items inside a user-authored list also maintain **priority order defined by UI order (top → bottom)**.
 
 Disabled lists and disabled list items are ignored during planner computation.
 
@@ -196,12 +200,17 @@ Old ordering:
 1. value descending
 2. itemId ascending
 
-New deterministic ordering:
+New deterministic ordering within user-authored lists:
 
 1. **List order** (top → bottom)
 2. **Item order inside list** (top → bottom)
 3. **value descending**
 4. **itemId ascending (ASCII)**
+
+Canonical source-priority ordering:
+
+1. generated hideout upgrade lists
+2. user-authored lists
 
 ## Implementation Rule
 

@@ -14,6 +14,8 @@ export function normalizeMapId(mapId: string): string {
       return 'the-spaceport';
     case 'the_blue_gate':
       return 'blue-gate';
+    case 'riven_tides':
+      return 'riven-tides';
     case 'stella_montis':
     case 'stella_montis_upper':
     case 'stella_montis_lower':

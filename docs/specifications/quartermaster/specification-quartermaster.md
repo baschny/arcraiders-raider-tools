@@ -74,7 +74,7 @@ The system must:
 - Provide deterministic and meaningful crafting and recycling suggestions.
 - Provide deterministic and meaningful loot suggestions for both crafting support materials and loot-only final targets.
 - Generate deterministic hideout upgrade lists based on the user's current hideout module levels.
-- Allow generated hideout upgrade lists to participate in normal planner aggregation.
+- Allow generated hideout upgrade lists to participate in planner aggregation with higher priority than user-authored lists.
 - Support loot acquisition planning for hideout upgrade materials.
 - Keep generated hideout list composition read-only while preserving per-list and per-item enable/disable control.
 - Limit crafting depth to practical real-world gameplay expectations.
@@ -193,6 +193,7 @@ After import:
 - No item retains `craftBench = "in_raid"` after normalization.
 - `craftQuantity` is always defined.
 - Default `craftQuantity` is `1` if missing in source.
+- `blueprintLocked` indicates that static game data says the item requires a learned blueprint; it is not by itself a user-specific craftability decision.
 
 ---
 
@@ -286,20 +287,26 @@ Definition:
 
 ```
 ownedQuantity[itemId] =
-    stashQuantity[itemId]
-  + loadoutQuantity[itemId]
+    stashRootQuantity[itemId]
+  + stashAttachmentQuantity[itemId]
+  + loadoutRootQuantity[itemId]
+  + loadoutAttachmentQuantity[itemId]
 ```
 
 Where:
 
-- `stashQuantity` comes from the cached stash dataset.
-- `loadoutQuantity` includes the entire current loadout:
+- `stashRootQuantity` comes from top-level cached stash items.
+- `stashAttachmentQuantity` comes from valid attachment items nested under cached stash items.
+- `loadoutRootQuantity` includes top-level items in the current loadout:
   - weapons
   - shield
   - quick-use slots
   - backpack
   - augment slots
   - safe pocket
+- `loadoutAttachmentQuantity` comes from valid attachment items nested under loadout items.
+
+Unknown `itemId`, `null` `itemId`, non-positive quantities, and item ids not present in the static Quartermaster item dataset are ignored.
 
 If stash or loadout state has not been synced yet, owned quantity is considered **unknown**.
 
@@ -307,7 +314,8 @@ In such cases:
 
 - owned quantity must render as `"?"`
 - the placeholder must be visually neutral and non-intrusive
-- planner logic must treat unknown quantity as `0` for deterministic computation
+- planner logic may use available cached sources, with missing sources contributing `0`
+- planner-adjacent views must warn that owned inventory is incomplete and identify whether inventory, loadout, or both are missing
 
 ---
 
@@ -535,7 +543,7 @@ src/shared/services/arctrackerApi.ts
 which proxies requests to:
 
 ```
-https://api.raider-tools.app/arctracker
+https://api.raider-tools.app/me/arctracker
 ```
 
 The Lambda proxy injects the application authentication key and forwards rate-limit headers.
@@ -579,11 +587,11 @@ Logout behavior:
 
 ---
 
-## 4.2 Stash Integration
+## 4.2 Stash / Inventory Integration
 
 ### 4.2.1 Sync Operation
 
-Sync Inventory button must call:
+Inventory sync must call:
 
 ```ts
 syncStashAllPages()
@@ -604,11 +612,13 @@ Quartermaster reads stash using:
 getStash()
 ```
 
-Planner stash input rules:
+Inventory aggregation rules:
 
 - Aggregate by `itemId`.
-- Ignore `slotIndex`.
+- Ignore `slotIndex` for quantity calculations.
 - Use `CachedStash.items`.
+- Count valid `attachments` entries as separately owned items.
+- Preserve attachment parent context for My Items display.
 - Unknown `itemId` not present in static dataset must be ignored.
 - If sync fails:
   - Previously cached stash remains available.
@@ -636,7 +646,7 @@ Behavior:
 
 ### 4.3.1 Sync Operation
 
-Sync Loadout button must call:
+Loadout sync must call:
 
 ```ts
 syncLoadout()
@@ -653,8 +663,11 @@ getLoadout()
 Planner loadout aggregation rules:
 
 - Loadout data is **not used as planner targets**.
-- Loadout data is used only for the **Current Loadout View**.
+- Loadout data is used as an owned inventory source.
+- Count valid `attachments` entries as separately owned items.
+- Preserve loadout and attachment parent context for My Items display.
 - Planner logic must ignore `CachedLoadout` when computing `requiredFinal`.
+- Planner logic must include `CachedLoadout` when computing owned quantities, deficits, crafting availability, recycling availability, and In Raid suggestions.
 
 Timestamp for header:
 
@@ -663,6 +676,19 @@ Timestamp for header:
 ### 4.3.3 Error Handling
 
 Same rules as section 4.2.3.
+
+### 4.3.4 Combined My Items Sync
+
+The My Items view must expose one combined **Sync My Items** action.
+
+The combined sync action must:
+
+- sync inventory first
+- then sync loadout
+- display the current step:
+  - `Syncing inventory...`
+  - `Syncing loadout...`
+- preserve individual error handling internally so failures identify the failing operation
 
 ---
 
@@ -711,7 +737,7 @@ Quartermaster integrates with the user hideout endpoint through the shared Raide
 
 ### 4.5.1 Sync Operation
 
-The Lists view must provide a **Sync Hideouts** button.
+The Hideout view must provide a **Sync Hideouts** button.
 
 This button must call the shared API method for:
 
@@ -753,13 +779,57 @@ Generated hideout upgrade lists are derived from:
 If no cached hideout state exists:
 
 - no generated hideout upgrade lists are shown
-- Lists view must display a hint prompting the user to use **Sync Hideouts**
+- Hideout view must display a hint prompting the user to use **Sync Hideouts**
 
 If cached hideout state is unavailable, missing, or invalid:
 
 - generated hideout upgrade lists must not be synthesized from fallback bench level assumptions
 
-### 4.5.4 Exclusions
+Generated hideout upgrade lists must not be displayed in the Lists view.
+
+Generated hideout upgrade lists are displayed only in the top-level Hideout view.
+
+### 4.5.4 Generated Upgrade List Rules
+
+For each hideout module:
+
+```ts
+targetLevels = levels where level > currentLevel
+```
+
+Generate one list per future unlock/tier.
+
+Rules:
+
+- Generate every future tier per bench, not only the next tier.
+- `currentLevel = 0` means the bench is not yet unlocked.
+- `targetLevel = 1` is the bench Unlock step.
+- Unlock is treated as the first tier.
+- Each generated list contains only the requirement items for that specific unlock/tier.
+- Generated lists are non-cumulative.
+- Generated list composition is read-only.
+- Generated list quantities are read-only.
+- Generated lists are not reorderable.
+- Generated list items are not reorderable.
+- Users may enable or disable each generated list.
+- Users may enable or disable individual generated list items.
+- Only generated list and generated item toggle state is persisted.
+- If a generated list disappears due to hideout progression, obsolete toggle state must be removed.
+
+Recommended generated list names:
+
+```text
+<Bench Name> Unlock
+<Bench Name> Tier <N>
+```
+
+Generated list ids may remain:
+
+```text
+hideout_<moduleId>_<level>
+```
+
+### 4.5.5 Exclusions
 
 The `stash` module must not generate upgrade lists.
 
@@ -767,7 +837,95 @@ Unknown hideout modules not present in the imported static dataset must be ignor
 
 ---
 
+## 4.6 Blueprint Integration
+
+Quartermaster integrates with the user blueprints endpoint through the shared Raider Tools API layer.
+
+Upstream ArcTracker endpoint:
+
+```text
+GET https://arctracker.io/api/v2/user/blueprints
+```
+
+Quartermaster must not call `arctracker.io` directly. The request must go through the Raider Tools ArcTracker proxy/service layer.
+
+### 4.6.1 Sync Operation
+
+The Crafting view must provide a **Sync Unlocked Blueprints** button next to **Sync My Items**.
+
+If cached blueprint state is available, the blueprint sync control must show learned blueprint progress as:
+
+```text
+{learned}/{total} unlocked
+```
+
+This button synchronizes the user's learned blueprint state.
+
+Expected response shape:
+
+```ts
+interface ArcTrackerBlueprintResponse {
+  data: {
+    blueprints: ArcTrackerBlueprint[]
+  }
+}
+
+interface ArcTrackerBlueprint {
+  id: string
+  name: string
+  category: string
+  rarity: string
+  learned: boolean
+  targetItemId: string
+}
+```
+
+If `learned` is `true`, the item identified by `targetItemId` is considered blueprint-unlocked.
+
+### 4.6.2 Cached Data Usage
+
+Quartermaster reads cached blueprint state from local cache.
+
+Blueprint cache must contain at least:
+
+```ts
+interface CachedBlueprints {
+  unlockedItemIds: string[]
+  blueprintsByTargetItemId: Record<string, CachedBlueprint>
+  syncedAt: string
+}
+```
+
+Rules:
+
+- `unlockedItemIds` contains only blueprints with `learned === true`.
+- `unlockedItemIds` is sorted ASCII ascending.
+- `blueprintsByTargetItemId` is keyed by `targetItemId`.
+- Failed sync must not clear previously cached blueprint state.
+- Sign-out must wipe cached blueprint state with other ArcTracker user data.
+- Unknown `targetItemId` values must be ignored by planner logic.
+
+### 4.6.3 Craftability Dependency
+
+The planner must receive the learned blueprint target item ids derived from cached blueprint state.
+
+For example, this API entry makes `deadline` craftable if all other craftability checks pass:
+
+```json
+{
+  "id": "deadline_blueprint",
+  "name": "Deadline Blueprint",
+  "category": "Explosives",
+  "rarity": "Common",
+  "learned": true,
+  "targetItemId": "deadline"
+}
+```
+
+---
+
 # 5. HARD STRATEGY CONSTRAINTS
+
 
 ---
 
@@ -826,10 +984,35 @@ Missing `value` is treated as `0` for ordering.
 
 Planning order for missing final targets:
 
+1. Generated hideout upgrade lists.
+2. User-authored lists.
+
+Within generated hideout upgrade lists:
+
+1. Next upgrades first, where `targetLevel === currentLevel + 1`.
+2. Remaining future tiers.
+3. Bench/module name ascending.
+4. Target level ascending.
+5. Item order within the generated list.
+6. `value` descending.
+7. `itemId` ascending (ASCII).
+
+Within user-authored lists:
+
 1. List order (top to bottom in the Lists UI).
 2. Item order within the list (top to bottom).
 3. `value` descending.
 4. `itemId` ascending (ASCII).
+
+If the same `itemId` appears in generated hideout lists and user-authored lists:
+
+- quantities sum
+- generated hideout priority wins for the item's earliest priority metadata
+
+If the same `itemId` appears in multiple generated hideout lists:
+
+- quantities sum
+- the earliest generated hideout priority position wins
 
 Planning model is greedy and deterministic.
 
@@ -856,6 +1039,121 @@ If no intermediate ingredient exists, the chain contains only:
 ```
 Final Target -> Current Item
 ```
+
+## 6.1 Required Target Aggregation
+
+Planner targets are derived from two sources:
+
+- generated hideout upgrade lists
+- user-authored lists
+
+Disabled lists and disabled list items are ignored.
+
+Generated hideout upgrade lists have higher priority than user-authored lists for all planner outputs, including:
+
+- In Raid suggestions
+- Crafting plan
+- material deficits
+- target ordering
+- protected-from-recycling reservations
+
+Equivalent aggregation order:
+
+```ts
+allLists = [...orderedHideoutLists, ...userLists]
+```
+
+`orderedHideoutLists` must be deterministic:
+
+1. next upgrades first
+2. remaining future tiers
+3. bench/module name ascending
+4. target level ascending
+
+Aggregation rule:
+
+```ts
+requiredFinal[itemId] =
+  sum(quantity across all enabled lists and enabled list items)
+```
+
+Duplicate `itemId` values across any list sources must sum quantities.
+
+Priority metadata must record the earliest position after applying hideout-first ordering. This earliest position controls deterministic target processing and must be stable for identical inputs.
+
+Generated hideout lists are not stored as user-authored lists. They are generated from hideout definitions plus cached hideout state, then merged into planner input before user-authored lists.
+
+## 6.2 Craftability Predicate
+
+An item is locally craftable if:
+
+- item has `recipe`
+- `craftBench` is defined
+- required bench exists in planner
+- bench level is `>= stationLevelRequired`
+- blueprint availability passes the runtime blueprint rule
+
+Runtime blueprint rule:
+
+```ts
+if (!item.blueprintLocked) {
+  return true
+}
+
+return unlockedBlueprintItemIds.has(item.id)
+```
+
+Meaning:
+
+- Items not marked `blueprintLocked` in static data remain craftable without blueprint API state.
+- Items marked `blueprintLocked` are craftable only when their `item.id` appears in the learned blueprint cache.
+- If no blueprint cache exists yet, `blueprintLocked: true` items are treated as not locally craftable until blueprints are synced.
+- Blueprint blocker diagnostics are preserved for statically blueprint-locked items absent from the learned blueprint set.
+
+## 6.3 Depth-Limited Crafting Output Availability
+
+The planner must treat committed depth-2 craft outputs as available to their parent craft.
+
+Example:
+
+- Desired list contains `deadline` x1.
+- Stash contains `comet_igniter` x1, `explosive_compound` x3, and `arc_alloy` x80.
+- Learned blueprint set contains `deadline`.
+- `deadline` requires `arc_circuitry` x2.
+- `arc_circuitry` crafts from `arc_alloy` x8 each.
+
+Planner result must include:
+
+- Craft `arc_circuitry` x2.
+- Craft `deadline` x1.
+
+Depth-2 craft inputs must be checked before the parent target is marked satisfiable.
+
+## 6.4 Transactional Target Planning
+
+Planning for a single missing final target must be transactional.
+
+The planner may simulate crafting and recycling while evaluating a target, but it must not commit any of the following to the canonical planner result until the target is proven fully satisfiable:
+
+- recycle actions
+- consumed owned quantities
+- produced recycle yields
+- depth-2 craft outputs
+- final craft outputs
+- craft steps
+
+If a target remains blocked after simulation, such as by a missing raid-only ingredient, blueprint blocker, bench blocker, or unavailable sub-ingredient, all simulated recycle and craft effects for that target must be discarded.
+
+Blocked targets must still contribute to remaining ingredient deficits and In Raid guidance, but they must not create Crafting view actions.
+
+Example:
+
+- Desired list contains `heavy_shield` x1.
+- `heavy_shield` requires `power_rod` x1 and `voltage_converter` x2.
+- `power_rod` can be crafted from materials available through recycling.
+- `voltage_converter` is still missing and cannot be locally produced.
+
+Planner result must not include recycling or crafting steps solely for `heavy_shield`, because the final target is not locally satisfiable.
 
 ---
 
@@ -900,6 +1198,23 @@ Additional validation scenarios:
 - Unknown stash/loadout state renders `"?"` quantity placeholder.
 - Planner logic remains deterministic even when quantity placeholder is displayed.
 - Craft provenance chains correctly display `Final -> Intermediate -> Current` when applicable.
+- Sidebar includes Hideout between Lists and In Raid.
+- Lists view renders only user-authored lists.
+- Lists view no longer renders generated hideout upgrade lists or Sync Hideouts.
+- Hideout view renders Sync Hideouts at the top.
+- Hideout view shows no generated lists when no hideout cache exists.
+- Hideout view shows every bench from static definitions except excluded modules.
+- Hideout view shows completed benches with `Tier <current>/<max>` and completed state.
+- Hideout view generates one list for every future unlock/tier.
+- Unlock is shown as the first tier for benches with `currentLevel = 0`.
+- Generated hideout list and item toggles persist.
+- Disabled generated hideout lists do not contribute planner targets.
+- Disabled generated hideout items do not contribute planner targets.
+- Planner prioritizes generated hideout targets before user-authored list targets.
+- Duplicate item targets sum quantities while retaining generated hideout priority metadata.
+- In Raid suggestions reflect generated hideout priority before user-authored list priority.
+- Crafting plan reflects generated hideout priority before user-authored list priority.
+- Obsolete generated hideout toggle cleanup still runs after hideout progression.
 
 ---
 
@@ -1101,44 +1416,63 @@ Tooltip must remain fully visible.
 
 ---
 
-## 4.1 Stash View
+## 4.1 My Items View
 
 ### Quantity Behavior
 
 Icon overlay shows owned quantity.
 
-Status column uses format:
+The view shows the canonical owned inventory: stash items, current loadout items, stash attachments, and current loadout attachments.
 
-```
-x/y Missing
-```
+Attached items must be displayed as separate owned items.
 
-Where:
+Rows are aggregated by `itemId`. If an item exists in multiple locations, the row must show summarized location subtext rather than duplicate rows.
 
-- x = missing
-- y = required
+Required location labels:
+
+- `In current loadout`
+- `Attached to {weaponName} in stash`
+- `Attached to {weaponName} in current loadout`
+
+Top-level weapons with counted attachments must show an indicator that their attachments were counted separately.
+
+If stash/inventory or loadout has not been synced, the view must warn that owned inventory is incomplete.
 
 ---
 
 ### Status Indicators
 
-Indicators must display contextual explanation:
+The **Need** column is removed. The status column carries requirement and planner explanation.
 
-- **Have** (green)
-- **Missing** – display list name
+Indicators must display contextual and quantified explanation:
+
+- **Have** (green) – include owned and required quantities
+- **Needed** (red) – include missing, required, owned, and list context
 - **Recycle** – display target item + list name
+- **Blocked** – display uncraftable reason when applicable
+
+Examples:
+
+```text
+Have 12 / 10 required for Loadout
+Need 3 more for Loadout (10 required, 7 owned)
+Need 5 more across 3 lists (18 required, 13 owned)
+Owned 4
+Recycle for Mechanical Components (Loadout)
+Blocked: blueprint not unlocked
+```
 
 ---
 
 ## 4.2 Loadout View
 
-Icon overlay displays owned quantity.
-
-No additional quantity information shown.
+The dedicated Loadout view is removed. Current loadout data is represented inside My Items.
 
 ---
 
 ## 4.3 Lists View
+
+The Lists view contains user-authored lists only.
 
 Icon overlay displays owned quantity.
 
@@ -1153,14 +1487,112 @@ Buttons must be placed on the **left side** of rows.
 
 Padding must be added around numeric input fields to separate them from browser spinner arrows.
 
-Generated hideout lists:
+The Lists view must support existing user-list behavior:
 
-- Hide toggle allowed
-- Delete action not allowed
+- create list
+- rename list
+- delete list
+- reorder lists
+- add items
+- remove items
+- reorder items
+- change quantities
+- enable or disable lists and items
 
 ---
 
-## 4.4 In Raid View
+## 4.4 Hideout View
+
+The Hideout view is a top-level Quartermaster view between Lists and In Raid.
+
+The sidebar view order is:
+
+1. My Items
+2. Lists
+3. Hideout
+4. In Raid
+5. Crafting
+
+The Hideout view owns all generated hideout upgrade list presentation and controls.
+
+### Sync Controls
+
+The **Sync Hideouts** button appears at the top of the Hideout view.
+
+Rules:
+
+- If no hideout cache exists, show a prompt explaining that hideout data must be synced before upgrade lists can be generated.
+- While syncing, disable the button and show loading state.
+- The Lists view must not show Sync Hideouts.
+
+### Bench Overview
+
+The Hideout view must present all hideout benches/modules from static definitions except excluded modules.
+
+Each bench must show:
+
+- bench/module name
+- current tier
+- max tier
+- completed state when fully upgraded
+- generated upgrade lists for every future unlock/tier
+
+Tier badge format:
+
+```text
+Tier <currentLevel>/<maxLevel>
+```
+
+Fully upgraded benches remain visible and show a completed state next to the tier badge. A green checkmark is the preferred visual treatment.
+
+### Unlock and Tier Lists
+
+The first upgrade level is the bench Unlock tier.
+
+Rules:
+
+- `currentLevel = 0` means the bench is not yet unlocked.
+- The first generated upgrade list for such a bench is labeled as the unlock step.
+- Unlock requirements participate in planning exactly like later tier requirements.
+- Fully upgraded benches have no generated upgrade lists and do not contribute planner targets.
+
+Recommended display labels:
+
+```text
+Unlock
+Tier 2
+Tier 3
+Tier 4
+```
+
+### Generated List Controls
+
+Generated hideout lists in the Hideout view:
+
+- may be enabled or disabled
+- may have individual items enabled or disabled
+- may not be renamed
+- may not have items added
+- may not have items removed
+- may not be reordered
+- may not have quantities changed
+
+### Empty and Completed States
+
+The Hideout view must clearly handle:
+
+- static data loading
+- no cached hideout state
+- sync in progress
+- synced with pending upgrades
+- synced with all benches completed
+- unknown cached modules ignored
+
+No fallback bench-level assumptions may be used to synthesize hideout upgrade lists.
+
+---
+
+## 4.5 In Raid View
 
 ### Grid Layout
 
@@ -1213,7 +1645,18 @@ Add visual spacing between:
 
 ---
 
-## 4.5 Crafting View
+## 4.6 Crafting View
+
+### Sync Controls
+
+The Crafting view must include:
+
+- **Sync My Items**
+- **Sync Unlocked Blueprints**
+
+The blueprint sync control must refresh cached learned blueprint state and recompute planner output.
+
+If blueprint sync fails, previous cached blueprint state remains active.
 
 ### Table Alignment
 
@@ -1236,6 +1679,24 @@ List Name → Target Item
 Small icon of target item must be shown.
 
 Tooltip for the icon must display the full item tooltip.
+
+Step 1 Recycle reasons must be based on committed recycle action provenance, not broad dependency matching.
+
+Recycle reasons must only describe targets that are locally satisfiable and whose plan was committed.
+
+The Recycle "Why" column must not show:
+
+- blocked final targets
+- simulated-but-discarded final targets
+- completed intermediate dependency paths
+- `COMPLETE` status badges
+
+Preferred recycle reason format:
+
+```
+List Name → Target Item
+Target Item → Needed Material
+```
 
 ---
 

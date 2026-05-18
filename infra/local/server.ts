@@ -4,7 +4,7 @@
  * Mirrors the production API Gateway + Lambda stack on a single Node
  * process by dispatching HTTP requests to the same handlers used in
  * production (`infra/lambda/profile.ts`, `state.ts`, `links.ts`,
- * `embark-link.ts`). The
+ * `embark-link.ts`, `arctracker-user-proxy.ts`). The
  * handlers talk to DynamoDB Local (via `AWS_ENDPOINT_URL_DYNAMODB`)
  * instead of the real DynamoDB, and the JWT authorizer is replaced by
  * a trivial dev-token scheme understood by `src/shared/auth/devAuthClient.ts`.
@@ -27,7 +27,7 @@
 
 import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
 import { existsSync, readFileSync } from "node:fs";
-import path from "node:path";
+import { resolve } from "node:path";
 import type {
     APIGatewayProxyEventV2WithJWTAuthorizer,
     APIGatewayProxyResultV2,
@@ -62,11 +62,8 @@ process.env.AWS_SECRET_ACCESS_KEY = process.env.AWS_SECRET_ACCESS_KEY ?? "local"
 process.env.AWS_ENDPOINT_URL_DYNAMODB = DDB_ENDPOINT;
 process.env.USER_TABLE_NAME = TABLE_NAME;
 process.env.ALLOWED_ORIGINS = ALLOWED_ORIGINS;
-// `links.ts` reads this on module load; provide a harmless default that
-// will only ever be hit if the user explicitly exercises the PUT path.
-process.env.ARCTRACKER_RELAY_URL = process.env.ARCTRACKER_RELAY_URL ?? "http://localhost:0/not-configured";
-process.env.LOCAL_DEV_BYPASS_KMS = process.env.LOCAL_DEV_BYPASS_KMS ?? "true";
-process.env.LOCAL_DEV_KMS_SECRET = process.env.LOCAL_DEV_KMS_SECRET ?? "raider-tools-local-dev-kms";
+process.env.RAIDER_TOOLS_LOCAL_DEV = "true";
+process.env.LOCAL_TOKEN_ENCRYPTION_KEY = process.env.LOCAL_TOKEN_ENCRYPTION_KEY ?? "raider-tools-local-dev-token-key";
 process.env.EMBARK_LOOPBACK_REDIRECT_URI =
     process.env.EMBARK_LOOPBACK_REDIRECT_URI ?? "http://127.0.0.1:49176";
 process.env.EMBARK_OAUTH_CLIENT_SECRET =
@@ -83,6 +80,7 @@ const profile = require("../lambda/profile");
 const state = require("../lambda/state");
 const links = require("../lambda/links");
 const embarkLink = require("../lambda/embark-link");
+const arctrackerUserProxy = require("../lambda/arctracker-user-proxy");
 /* eslint-enable @typescript-eslint/no-require-imports */
 
 // ---------------------------------------------------------------------------
@@ -157,33 +155,35 @@ function parseDevToken(authHeader: string | undefined): DevClaims | null {
 // Routing
 // ---------------------------------------------------------------------------
 type Handler = (event: APIGatewayProxyEventV2WithJWTAuthorizer) => Promise<APIGatewayProxyResultV2>;
-type RouteAuth = "devBearer" | "none";
 
 interface MatchedRoute {
     handler: Handler;
     pathParameters: Record<string, string>;
-    auth: RouteAuth;
+    requiresDevAuth: boolean;
 }
 
 function matchRoute(method: string, pathname: string): MatchedRoute | null {
     if (pathname === "/me" && (method === "GET" || method === "PATCH")) {
-        return { handler: profile.handler, pathParameters: {}, auth: "devBearer" };
+        return { handler: profile.handler, pathParameters: {}, requiresDevAuth: true };
     }
     if (pathname === "/me/migrate" && method === "POST") {
-        return { handler: state.handler, pathParameters: {}, auth: "devBearer" };
+        return { handler: state.handler, pathParameters: {}, requiresDevAuth: true };
     }
     if (pathname === "/me/links/embark/start" && method === "POST") {
-        return { handler: embarkLink.handler, pathParameters: {}, auth: "devBearer" };
+        return { handler: embarkLink.handler, pathParameters: {}, requiresDevAuth: true };
     }
     if (pathname === "/me/links/embark/complete" && method === "POST") {
-        return { handler: embarkLink.handler, pathParameters: {}, auth: "devBearer" };
+        return { handler: embarkLink.handler, pathParameters: {}, requiresDevAuth: true };
+    }
+    if (pathname.startsWith("/me/arctracker/") && method === "GET") {
+        return { handler: arctrackerUserProxy.handler, pathParameters: {}, requiresDevAuth: true };
     }
     const stateMatch = /^\/me\/state\/([^/]+)$/.exec(pathname);
     if (stateMatch && (method === "GET" || method === "PUT" || method === "DELETE")) {
         return {
             handler: state.handler,
             pathParameters: { domain: decodeURIComponent(stateMatch[1]) },
-            auth: "devBearer",
+            requiresDevAuth: true,
         };
     }
     const linksMatch = /^\/me\/links\/([^/]+)$/.exec(pathname);
@@ -191,7 +191,7 @@ function matchRoute(method: string, pathname: string): MatchedRoute | null {
         return {
             handler: links.handler,
             pathParameters: { provider: decodeURIComponent(linksMatch[1]) },
-            auth: "devBearer",
+            requiresDevAuth: true,
         };
     }
     return null;
@@ -349,13 +349,12 @@ async function handleRequest(req: IncomingMessage, res: ServerResponse): Promise
         return;
     }
 
-    let claims: DevClaims | null = null;
-    if (route.auth === "devBearer") {
-        claims = parseDevToken(req.headers.authorization as string | undefined);
-        if (!claims) {
-            writeStructured(res, origin, 401, { error: "Missing or invalid dev token" });
-            return;
-        }
+    const claims = route.requiresDevAuth
+        ? parseDevToken(req.headers.authorization as string | undefined)
+        : { sub: "local-relay", email: null };
+    if (!claims) {
+        writeStructured(res, origin, 401, { error: "Missing or invalid dev token" });
+        return;
     }
 
     let body: string | null;
@@ -398,7 +397,7 @@ async function main(): Promise<void> {
         console.log(`[local-api] dynamodb endpoint: ${DDB_ENDPOINT}`);
         console.log(`[local-api] user table:        ${TABLE_NAME}`);
         console.log(`[local-api] allowed origins:   ${ALLOWED_ORIGINS}`);
-        console.log(`[local-api] local KMS bypass:  ${process.env.LOCAL_DEV_BYPASS_KMS}`);
+        console.log(`[local-api] local dev crypto:  ${process.env.RAIDER_TOOLS_LOCAL_DEV}`);
     });
 }
 
@@ -408,13 +407,13 @@ main().catch(err => {
 });
 
 function loadLocalEnvFiles(): void {
-    const envDir = path.resolve(__dirname, "..");
+    const envDir = resolve(__dirname, "..");
     // Match Vite-style precedence: .env first, then .env.local overrides it.
-    loadEnvFile(path.join(envDir, ".env"));
-    loadEnvFile(path.join(envDir, ".env.local"));
+    loadEnvFile(resolve(envDir, ".env"), false);
+    loadEnvFile(resolve(envDir, ".env.local"), true);
 }
 
-function loadEnvFile(filename: string): void {
+function loadEnvFile(filename: string, override: boolean): void {
     if (!existsSync(filename)) return;
     const raw = readFileSync(filename, "utf8");
     for (const line of raw.split(/\r?\n/)) {
@@ -423,12 +422,17 @@ function loadEnvFile(filename: string): void {
         const idx = trimmed.indexOf("=");
         if (idx <= 0) continue;
         const key = trimmed.slice(0, idx).trim();
+        if (!/^[A-Za-z_][A-Za-z0-9_]*$/.test(key)) continue;
+        if (!override && process.env[key] !== undefined) continue;
         let value = trimmed.slice(idx + 1).trim();
         if (
             (value.startsWith('"') && value.endsWith('"'))
             || (value.startsWith("'") && value.endsWith("'"))
         ) {
             value = value.slice(1, -1);
+        } else {
+            const comment = value.indexOf(" #");
+            value = (comment >= 0 ? value.slice(0, comment) : value).trim();
         }
         process.env[key] = value;
     }

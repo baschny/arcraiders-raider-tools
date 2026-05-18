@@ -14,6 +14,8 @@ import type { GreedyPlanResult } from './greedyPlanner';
 function computeIngredientDemands(
   itemsMap: ItemsMap,
   craftSteps: GreedyPlanResult['craftSteps'],
+  weaponUpgradeSteps: GreedyPlanResult['weaponUpgradeSteps'],
+  owned: Record<ItemId, Qty>,
 ): Record<ItemId, Qty> {
   const demands: Record<ItemId, Qty> = {};
 
@@ -27,6 +29,16 @@ function computeIngredientDemands(
     }
   }
 
+  for (const step of weaponUpgradeSteps) {
+    const ownedBaseQty = Math.min(step.qty, owned[step.fromItemId] ?? 0);
+    if (ownedBaseQty > 0) {
+      demands[step.fromItemId] = (demands[step.fromItemId] ?? 0) + ownedBaseQty;
+    }
+    for (const [itemId, qtyPerUpgrade] of Object.entries(step.upgradeCost)) {
+      demands[itemId] = (demands[itemId] ?? 0) + qtyPerUpgrade * step.qty;
+    }
+  }
+
   return demands;
 }
 
@@ -37,11 +49,16 @@ function computeIngredientDemands(
 export function buildPlanRows(
   itemsMap: ItemsMap,
   required: Record<ItemId, Qty>,
-  stash: Record<ItemId, Qty>,
+  owned: Record<ItemId, Qty>,
   greedyResult: GreedyPlanResult,
 ): PlanRow[] {
   // Merge loadout requirements with ingredient demands from craft plan
-  const ingredientDemands = computeIngredientDemands(itemsMap, greedyResult.craftSteps);
+  const ingredientDemands = computeIngredientDemands(
+    itemsMap,
+    greedyResult.craftSteps,
+    greedyResult.weaponUpgradeSteps,
+    owned,
+  );
   const totalRequired: Record<ItemId, Qty> = { ...required };
   for (const [itemId, qty] of Object.entries(ingredientDemands)) {
     totalRequired[itemId] = (totalRequired[itemId] ?? 0) + qty;
@@ -53,7 +70,7 @@ export function buildPlanRows(
   for (const itemId of itemIds) {
     if (!itemsMap[itemId]) continue;
 
-    const have = stash[itemId] ?? 0;
+    const have = owned[itemId] ?? 0;
     const req = totalRequired[itemId] ?? 0;
     const missing = Math.max(0, req - have);
 
@@ -123,9 +140,10 @@ export function buildBlockerSummary(
     if (!item) continue;
 
     const hasRecipe = item.recipe && Object.keys(item.recipe).length > 0;
+    const hasUpgradePath = item.weaponTier && item.weaponTier > 1 && item.weaponBaseId;
     const hasBench = !!item.craftBench;
 
-    if (!hasRecipe || !hasBench) {
+    if ((!hasRecipe || !hasBench) && !hasUpgradePath) {
       missingBaseMaterials.push(itemId);
     }
   }

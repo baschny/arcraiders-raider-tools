@@ -3,21 +3,20 @@
  * See specification section 7.4 / CR-006, CR-007
  */
 
-import { useState, useMemo } from 'react';
-import { Plus, Trash2, Eye, EyeOff, List, RefreshCw, Home } from 'lucide-react';
+import { useEffect, useState, useMemo } from 'react';
+import { Plus, Trash2, Eye, EyeOff, List } from 'lucide-react';
 import type { ItemsMap } from '../../types/item';
 import type { StoredList } from '../../types/list';
 import type { PlannerResult } from '../../types/planner';
 import { ItemIcon } from '../ItemIcon';
 import { searchItems } from '../../utils/dataLoader';
-import { AuthGate } from '../AuthGate';
 import type { ItemInsightsMap } from '../../utils/itemInsights';
+import { loadSelectedListId, saveSelectedListId } from '../../utils/preferences';
 import { useLocale } from '../../../../shared/context/LocaleContext';
 
 interface ListsViewProps {
   itemsMap: ItemsMap;
   lists: StoredList[];
-  hideoutLists: StoredList[];
   plannerResult: PlannerResult;
   itemInsights: ItemInsightsMap;
   getOwnedQuantity: (itemId: string) => number | null;
@@ -31,26 +30,21 @@ interface ListsViewProps {
   onToggleItem: (listId: string, itemId: string) => void;
   onReorderLists: (reorderedLists: StoredList[]) => void;
   onReorderItems: (listId: string, reorderedItemIds: string[]) => void;
-  onSyncHideout: () => void;
-  isSyncingHideout: boolean;
-  hasHideoutCache: boolean;
-  onToggleHideoutList: (moduleId: string, level: number) => void;
-  onToggleHideoutItem: (moduleId: string, level: number, itemId: string) => void;
 }
 
-/**
- * Parse moduleId and level from a hideout list id: "hideout_<moduleId>_<level>"
- */
-function parseHideoutListId(listId: string): { moduleId: string; level: number } | null {
-  const match = listId.match(/^hideout_(.+)_(\d+)$/);
-  if (!match) return null;
-  return { moduleId: match[1], level: parseInt(match[2], 10) };
+function resolveSelectedListId(
+  lists: StoredList[],
+  preferredListId: string | null,
+): string | null {
+  if (preferredListId && lists.some((list) => list.id === preferredListId)) {
+    return preferredListId;
+  }
+  return lists[0]?.id ?? null;
 }
 
 export function ListsView({
   itemsMap,
   lists,
-  hideoutLists,
   plannerResult,
   itemInsights,
   getOwnedQuantity,
@@ -64,15 +58,10 @@ export function ListsView({
   onToggleItem,
   onReorderLists,
   onReorderItems,
-  onSyncHideout,
-  isSyncingHideout,
-  hasHideoutCache,
-  onToggleHideoutList,
-  onToggleHideoutItem,
 }: ListsViewProps) {
   const { t, compareText } = useLocale();
   const [selectedListId, setSelectedListId] = useState<string | null>(
-    lists.length > 0 ? lists[0].id : null
+    () => resolveSelectedListId(lists, loadSelectedListId())
   );
   const [newListName, setNewListName] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
@@ -86,9 +75,7 @@ export function ListsView({
   const [draggedItemId, setDraggedItemId] = useState<string | null>(null);
   const [dropTargetItemId, setDropTargetItemId] = useState<string | null>(null);
 
-  const selectedList = lists.find(l => l.id === selectedListId)
-    ?? hideoutLists.find(l => l.id === selectedListId);
-  const isHideoutList = selectedList?.type === 'hideout';
+  const selectedList = lists.find(l => l.id === selectedListId);
   const tooltipContext = {
     itemsMap,
     plannerResult,
@@ -102,6 +89,21 @@ export function ListsView({
       .sort((a, b) => compareText(a.name, b.name))
       .slice(0, 10);
   }, [itemsMap, searchQuery, compareText]);
+
+  useEffect(() => {
+    const nextSelectedListId = resolveSelectedListId(
+      lists,
+      selectedListId ?? loadSelectedListId(),
+    );
+
+    if (nextSelectedListId !== selectedListId) {
+      setSelectedListId(nextSelectedListId);
+    }
+  }, [lists, selectedListId]);
+
+  useEffect(() => {
+    saveSelectedListId(selectedListId);
+  }, [selectedListId]);
 
   // --- Handlers ---
 
@@ -228,7 +230,7 @@ export function ListsView({
     setDropTargetItemId(null);
   };
 
-    return (
+  return (
     <div className="lists-view">
       {/* List Panel */}
       <div className="lists-view__list">
@@ -269,62 +271,6 @@ export function ListsView({
           ))}
         </div>
 
-        {/* Hideout Upgrade Lists Section (CR-009) */}
-        <div className="lists-view__list-header" style={{ marginTop: 12 }}>
-          <span className="lists-view__list-title">
-            <Home size={14} /> {t('quartermaster.lists.hideoutUpgrades')}
-          </span>
-        </div>
-
-        {hasHideoutCache && hideoutLists.length > 0 ? (
-          <div className="lists-view__items">
-            {hideoutLists.map(list => {
-              const parsed = parseHideoutListId(list.id);
-              return (
-                <div
-                  key={list.id}
-                  className={[
-                    'lists-view__item',
-                    'lists-view__item--hideout',
-                    list.id === selectedListId ? 'lists-view__item--active' : '',
-                    !list.isEnabled ? 'lists-view__item--disabled' : '',
-                  ].filter(Boolean).join(' ')}
-                  onClick={() => setSelectedListId(list.id)}
-                >
-                  <span className="lists-view__item-name">{list.name}</span>
-                  <span
-                    className="lists-view__item-toggle"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      if (parsed) onToggleHideoutList(parsed.moduleId, parsed.level);
-                    }}
-                  >
-                    {list.isEnabled ? <Eye size={14} /> : <EyeOff size={14} />}
-                  </span>
-                </div>
-              );
-            })}
-          </div>
-        ) : (
-          <div className="lists-view__hideout-hint">
-            {hasHideoutCache
-              ? t('quartermaster.lists.hideoutMaxed')
-              : t('quartermaster.lists.syncHideoutHint')}
-          </div>
-        )}
-
-        <AuthGate>
-          <button
-            className="qm-button"
-            onClick={onSyncHideout}
-            disabled={isSyncingHideout}
-            style={{ width: '100%', marginTop: 8 }}
-          >
-            <RefreshCw size={14} className={isSyncingHideout ? 'animate-spin' : ''} />
-            {t('quartermaster.common.syncHideouts')}
-          </button>
-        </AuthGate>
-
         <div style={{ marginTop: 'auto', paddingTop: 12, borderTop: '1px solid #444' }}>
           <input
             type="text"
@@ -351,79 +297,52 @@ export function ListsView({
         {selectedList ? (
           <>
             <div className="lists-view__editor-header">
-              {isHideoutList ? (
-                <span style={{ fontSize: 14, fontWeight: 600 }}>{selectedList.name}</span>
-              ) : (
-                <input
-                  type="text"
-                  className="qm-input"
-                  value={selectedList.name}
-                  onChange={(e) => onRenameList(selectedList.id, e.target.value)}
-                  style={{ fontSize: 14, fontWeight: 600 }}
-                />
-              )}
-              {!isHideoutList && (
-                <button
-                  className="qm-button"
-                  onClick={() => {
-                    onDeleteList(selectedList.id);
-                    setSelectedListId(lists.find(l => l.id !== selectedList.id)?.id ?? null);
-                  }}
-                >
-                  <Trash2 size={14} /> {t('quartermaster.lists.delete')}
-                </button>
-              )}
+              <input
+                type="text"
+                className="qm-input"
+                value={selectedList.name}
+                onChange={(e) => onRenameList(selectedList.id, e.target.value)}
+                style={{ fontSize: 14, fontWeight: 600 }}
+              />
+              <button
+                className="qm-button"
+                onClick={() => {
+                  onDeleteList(selectedList.id);
+                  setSelectedListId(lists.find(l => l.id !== selectedList.id)?.id ?? null);
+                }}
+              >
+                <Trash2 size={14} /> {t('quartermaster.lists.delete')}
+              </button>
             </div>
 
-            {/* Add Item – user lists only */}
-            {!isHideoutList && (
-              <div className="lists-view__add-item" style={{ position: 'relative' }}>
-                <input
-                  type="text"
-                  className="qm-input"
-                  placeholder={t('quartermaster.lists.searchItemsPlaceholder')}
-                  value={searchQuery}
-                  onChange={(e) => {
-                    setSearchQuery(e.target.value);
-                    setShowSuggestions(true);
-                  }}
-                  onFocus={() => setShowSuggestions(true)}
-                />
-                {showSuggestions && searchResults.length > 0 && (
-                  <div style={{
-                    position: 'absolute',
-                    top: '100%',
-                    left: 0,
-                    right: 0,
-                    background: '#2c2c2c',
-                    border: '1px solid #444',
-                    borderRadius: 4,
-                    maxHeight: 200,
-                    overflowY: 'auto',
-                    zIndex: 100,
-                  }}>
-                    {searchResults.map(item => (
-                      <div
-                        key={item.id}
-                        onClick={() => handleAddItem(item.id)}
-                        style={{
-                          padding: '8px 12px',
-                          cursor: 'pointer',
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: 8,
-                        }}
-                        onMouseEnter={(e) => (e.currentTarget.style.background = '#3c3c3c')}
-                        onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
-                      >
-                        <img src={item.icon} alt="" style={{ width: 24, height: 24 }} />
-                        <span style={{ fontSize: 11 }}>{item.name}</span>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-            )}
+            <div className="lists-view__add-item" style={{ position: 'relative' }}>
+              <input
+                type="text"
+                className="qm-input"
+                placeholder={t('quartermaster.lists.searchItemsPlaceholder')}
+                value={searchQuery}
+                onChange={(e) => {
+                  setSearchQuery(e.target.value);
+                  setShowSuggestions(true);
+                }}
+                onFocus={() => setShowSuggestions(true)}
+              />
+              {showSuggestions && searchResults.length > 0 && (
+                <div className="lists-view__suggestions">
+                  {searchResults.map(item => (
+                    <button
+                      type="button"
+                      key={item.id}
+                      className="lists-view__suggestion"
+                      onClick={() => handleAddItem(item.id)}
+                    >
+                      <img className="lists-view__suggestion-icon" src={item.icon} alt="" />
+                      <span className="lists-view__suggestion-name qm-item-name">{item.name}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
 
             {/* Items */}
             <div className="lists-view__item-list">
@@ -431,49 +350,34 @@ export function ListsView({
                 const item = itemsMap[listItem.itemId];
                 if (!item) return null;
 
-                const parsed = isHideoutList ? parseHideoutListId(selectedList.id) : null;
-
                 return (
                   <div
                     key={listItem.itemId}
-                    draggable={!isHideoutList}
+                    draggable
                     className={[
                       'lists-view__list-item',
                       !listItem.isEnabled ? 'lists-view__list-item--disabled' : '',
-                      !isHideoutList && listItem.itemId === dropTargetItemId ? 'lists-view__list-item--drop-target' : '',
+                      listItem.itemId === dropTargetItemId ? 'lists-view__list-item--drop-target' : '',
                     ].filter(Boolean).join(' ')}
-                    onDragStart={!isHideoutList ? (e) => handleItemDragStart(e, listItem.itemId) : undefined}
-                    onDragOver={!isHideoutList ? (e) => handleItemDragOver(e, listItem.itemId) : undefined}
-                    onDragLeave={!isHideoutList ? handleItemDragLeave : undefined}
-                    onDrop={!isHideoutList ? (e) => handleItemDrop(e, listItem.itemId) : undefined}
-                    onDragEnd={!isHideoutList ? handleItemDragEnd : undefined}
+                    onDragStart={(e) => handleItemDragStart(e, listItem.itemId)}
+                    onDragOver={(e) => handleItemDragOver(e, listItem.itemId)}
+                    onDragLeave={handleItemDragLeave}
+                    onDrop={(e) => handleItemDrop(e, listItem.itemId)}
+                    onDragEnd={handleItemDragEnd}
                   >
                     <div className="lists-view__row-actions">
-                      {isHideoutList ? (
-                        <button
-                          className="qm-button lists-view__action-button"
-                          onClick={() => {
-                            if (parsed) onToggleHideoutItem(parsed.moduleId, parsed.level, listItem.itemId);
-                          }}
-                        >
-                          {listItem.isEnabled ? <Eye size={16} /> : <EyeOff size={16} />}
-                        </button>
-                      ) : (
-                        <>
-                          <button
-                            className="qm-button lists-view__action-button lists-view__action-button--danger"
-                            onClick={() => onRemoveItem(selectedList.id, listItem.itemId)}
-                          >
-                            <Trash2 size={16} />
-                          </button>
-                          <button
-                            className="qm-button lists-view__action-button"
-                            onClick={() => onToggleItem(selectedList.id, listItem.itemId)}
-                          >
-                            {listItem.isEnabled ? <Eye size={16} /> : <EyeOff size={16} />}
-                          </button>
-                        </>
-                      )}
+                      <button
+                        className="qm-button lists-view__action-button lists-view__action-button--danger"
+                        onClick={() => onRemoveItem(selectedList.id, listItem.itemId)}
+                      >
+                        <Trash2 size={16} />
+                      </button>
+                      <button
+                        className="qm-button lists-view__action-button"
+                        onClick={() => onToggleItem(selectedList.id, listItem.itemId)}
+                      >
+                        {listItem.isEnabled ? <Eye size={16} /> : <EyeOff size={16} />}
+                      </button>
                     </div>
                     <ItemIcon
                       itemId={item.id}
@@ -487,36 +391,32 @@ export function ListsView({
                     />
                     <div className="lists-view__item-main">
                       <span className="lists-view__item-name-label qm-item-name">{item.name}</span>
-                      {isHideoutList ? (
-                        <span className="lists-view__qty-label">{listItem.quantity}x</span>
-                      ) : (
-                        <div className="lists-view__item-controls">
-                          <button
-                            className="qm-button lists-view__step-button"
-                            onClick={() => handleQuantityChange(listItem.itemId, -1)}
-                          >
-                            -
-                          </button>
-                          <input
-                            type="number"
-                            className="qm-input lists-view__qty-input"
-                            value={listItem.quantity}
-                            onChange={(e) => {
-                              const val = parseInt(e.target.value, 10);
-                              if (!isNaN(val) && val > 0) {
-                                onUpdateQuantity(selectedList.id, listItem.itemId, val);
-                              }
-                            }}
-                            min={1}
-                          />
-                          <button
-                            className="qm-button lists-view__step-button"
-                            onClick={() => handleQuantityChange(listItem.itemId, 1)}
-                          >
-                            +
-                          </button>
-                        </div>
-                      )}
+                      <div className="lists-view__item-controls">
+                        <button
+                          className="qm-button lists-view__step-button"
+                          onClick={() => handleQuantityChange(listItem.itemId, -1)}
+                        >
+                          -
+                        </button>
+                        <input
+                          type="number"
+                          className="qm-input lists-view__qty-input"
+                          value={listItem.quantity}
+                          onChange={(e) => {
+                            const val = parseInt(e.target.value, 10);
+                            if (!isNaN(val) && val > 0) {
+                              onUpdateQuantity(selectedList.id, listItem.itemId, val);
+                            }
+                          }}
+                          min={1}
+                        />
+                        <button
+                          className="qm-button lists-view__step-button"
+                          onClick={() => handleQuantityChange(listItem.itemId, 1)}
+                        >
+                          +
+                        </button>
+                      </div>
                     </div>
                   </div>
                 );

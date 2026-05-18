@@ -13,9 +13,9 @@
  *   - DynamoDB single-table for users, KMS CMK for envelope-encrypted
  *     linked-account tokens, Secrets Manager entry for Discord OAuth.
  *   - Discord OAuth bridge Lambda + profile / links / state Lambdas.
- *   - JWT-protected `/me`, `/me/links/*`, `/me/state/*`, `/me/migrate`
- *     routes and the unauthenticated `/auth/discord/*`, `/arctracker/*`,
- *     `/schedule/*` routes.
+ *   - JWT-protected `/me`, `/me/links/*`, `/me/arctracker/*`,
+ *     `/me/state/*`, `/me/migrate` routes and the unauthenticated
+ *     `/auth/discord/*`, `/schedule/*` routes.
  *
  * This stack replaces the previous `RaiderToolsArcRelayStack` +
  * `RaiderToolsAuthStack` split. That split was purely thematic and caused
@@ -310,26 +310,8 @@ export class RaiderToolsStack extends cdk.Stack {
         });
 
         // -----------------------------------------------------------------
-        // ArcTracker relay + schedule Lambdas.
+        // Schedule Lambdas.
         // -----------------------------------------------------------------
-        const relayFn = new nodeLambda.NodejsFunction(this, "ArcRelayFunction", {
-            runtime: lambda.Runtime.NODEJS_22_X,
-            entry: "lambda/arc-relay.ts",
-            handler: "handler",
-            memorySize: 256,
-            timeout: cdk.Duration.seconds(10),
-            environment: {
-                ARC_APP_KEY_SECRET_ARN: arcAppKeySecret.secretArn,
-                ALLOWED_ORIGINS: props.allowedOrigins.join(","),
-            },
-            bundling: {
-                minify: true,
-                sourceMap: true,
-                target: "node22",
-            },
-        });
-        arcAppKeySecret.grantRead(relayFn);
-
         const scheduleReadFn = new nodeLambda.NodejsFunction(this, "ScheduleReadFunction", {
             runtime: lambda.Runtime.NODEJS_22_X,
             entry: "lambda/schedule-reader.ts",
@@ -421,11 +403,26 @@ export class RaiderToolsStack extends cdk.Stack {
                 USER_TABLE_NAME: this.userTable.tableName,
                 KMS_KEY_ID: this.kmsKey.keyId,
                 ALLOWED_ORIGINS: props.allowedOrigins.join(","),
-                ARCTRACKER_RELAY_URL: `${apiOrigin}/arctracker`,
+                ARC_APP_KEY_SECRET_ARN: arcAppKeySecret.secretArn,
             },
         });
         this.userTable.grantReadWriteData(linksFn);
         this.kmsKey.grantEncryptDecrypt(linksFn);
+        arcAppKeySecret.grantRead(linksFn);
+
+        const arctrackerUserProxyFn = this.makeLambda("ArctrackerUserProxyFn", "arctracker-user-proxy.ts", {
+            timeout: cdk.Duration.seconds(10),
+            memorySize: 256,
+            environment: {
+                USER_TABLE_NAME: this.userTable.tableName,
+                KMS_KEY_ID: this.kmsKey.keyId,
+                ALLOWED_ORIGINS: props.allowedOrigins.join(","),
+                ARC_APP_KEY_SECRET_ARN: arcAppKeySecret.secretArn,
+            },
+        });
+        this.userTable.grantReadWriteData(arctrackerUserProxyFn);
+        this.kmsKey.grantEncryptDecrypt(arctrackerUserProxyFn);
+        arcAppKeySecret.grantRead(arctrackerUserProxyFn);
 
         const embarkLinkFn = this.makeLambda("EmbarkLinkFn", "embark-link.ts", {
             timeout: cdk.Duration.seconds(15),
@@ -526,15 +523,6 @@ export class RaiderToolsStack extends cdk.Stack {
             },
         );
 
-        const relayIntegration = new integrations.HttpLambdaIntegration(
-            "RelayIntegration", relayFn,
-        );
-        this.httpApi.addRoutes({
-            path: "/arctracker/{proxy+}",
-            methods: [apigwv2.HttpMethod.GET],
-            integration: relayIntegration,
-        });
-
         const scheduleIntegration = new integrations.HttpLambdaIntegration(
             "ScheduleReadIntegration", scheduleReadFn,
         );
@@ -584,6 +572,16 @@ export class RaiderToolsStack extends cdk.Stack {
                 apigwv2.HttpMethod.DELETE,
             ],
             integration: linksIntegration,
+            authorizer: jwtAuthorizer,
+        });
+
+        const arctrackerUserProxyIntegration = new integrations.HttpLambdaIntegration(
+            "ArctrackerUserProxyIntegration", arctrackerUserProxyFn,
+        );
+        this.httpApi.addRoutes({
+            path: "/me/arctracker/{proxy+}",
+            methods: [apigwv2.HttpMethod.GET],
+            integration: arctrackerUserProxyIntegration,
             authorizer: jwtAuthorizer,
         });
 

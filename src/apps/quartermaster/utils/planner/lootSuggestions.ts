@@ -31,6 +31,12 @@ function computeRecipeRelevantSet(itemsMap: ItemsMap): Set<ItemId> {
         relevant.add(ingId);
       }
     }
+    if (item.upgradeCost && Object.keys(item.upgradeCost).length > 0) {
+      relevant.add(itemId);
+      for (const ingId of Object.keys(item.upgradeCost)) {
+        relevant.add(ingId);
+      }
+    }
   }
 
   return relevant;

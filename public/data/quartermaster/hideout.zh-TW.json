@@ -9,6 +9,7 @@
     "levels": [
       {
         "level": 1,
+        "image": "/images/benches/equipment_bench-tier1.png",
         "requirementItemIds": [
           {
             "itemId": "fabric",
@@ -22,6 +23,7 @@
       },
       {
         "level": 2,
+        "image": "/images/benches/equipment_bench-tier2.png",
         "requirementItemIds": [
           {
             "itemId": "electrical_components",
@@ -39,6 +41,7 @@
       },
       {
         "level": 3,
+        "image": "/images/benches/equipment_bench-tier3.png",
         "requirementItemIds": [
           {
             "itemId": "advanced_electrical_components",
@@ -66,6 +69,7 @@
     "levels": [
       {
         "level": 1,
+        "image": "/images/benches/explosives_bench-tier1.png",
         "requirementItemIds": [
           {
             "itemId": "arc_alloy",
@@ -79,6 +83,7 @@
       },
       {
         "level": 2,
+        "image": "/images/benches/explosives_bench-tier2.png",
         "requirementItemIds": [
           {
             "itemId": "crude_explosives",
@@ -96,6 +101,7 @@
       },
       {
         "level": 3,
+        "image": "/images/benches/explosives_bench-tier3.png",
         "requirementItemIds": [
           {
             "itemId": "explosive_compound",
@@ -123,6 +129,7 @@
     "levels": [
       {
         "level": 1,
+        "image": "/images/benches/med_station-tier1.png",
         "requirementItemIds": [
           {
             "itemId": "arc_alloy",
@@ -136,6 +143,7 @@
       },
       {
         "level": 2,
+        "image": "/images/benches/med_station-tier2.png",
         "requirementItemIds": [
           {
             "itemId": "cracked_bioscanner",
@@ -153,6 +161,7 @@
       },
       {
         "level": 3,
+        "image": "/images/benches/med_station-tier3.png",
         "requirementItemIds": [
           {
             "itemId": "antiseptic",
@@ -180,6 +189,7 @@
     "levels": [
       {
         "level": 1,
+        "image": "/images/benches/refiner-tier1.png",
         "requirementItemIds": [
           {
             "itemId": "arc_powercell",
@@ -193,6 +203,7 @@
       },
       {
         "level": 2,
+        "image": "/images/benches/refiner-tier2.png",
         "requirementItemIds": [
           {
             "itemId": "arc_motion_core",
@@ -210,6 +221,7 @@
       },
       {
         "level": 3,
+        "image": "/images/benches/refiner-tier3.png",
         "requirementItemIds": [
           {
             "itemId": "arc_circuitry",
@@ -237,10 +249,12 @@
     "levels": [
       {
         "level": 1,
+        "image": null,
         "requirementItemIds": []
       },
       {
         "level": 2,
+        "image": null,
         "requirementItemIds": [
           {
             "itemId": "dog_collar",
@@ -250,6 +264,7 @@
       },
       {
         "level": 3,
+        "image": null,
         "requirementItemIds": [
           {
             "itemId": "apricot",
@@ -263,6 +278,7 @@
       },
       {
         "level": 4,
+        "image": null,
         "requirementItemIds": [
           {
             "itemId": "cat_bed",
@@ -280,6 +296,7 @@
       },
       {
         "level": 5,
+        "image": null,
         "requirementItemIds": [
           {
             "itemId": "apricot",
@@ -307,6 +324,7 @@
     "levels": [
       {
         "level": 1,
+        "image": "/images/benches/utility_bench-tier1.png",
         "requirementItemIds": [
           {
             "itemId": "arc_alloy",
@@ -320,6 +338,7 @@
       },
       {
         "level": 2,
+        "image": "/images/benches/utility_bench-tier2.png",
         "requirementItemIds": [
           {
             "itemId": "damaged_heat_sink",
@@ -337,6 +356,7 @@
       },
       {
         "level": 3,
+        "image": "/images/benches/utility_bench-tier3.png",
         "requirementItemIds": [
           {
             "itemId": "advanced_electrical_components",
@@ -364,6 +384,7 @@
     "levels": [
       {
         "level": 1,
+        "image": "/images/benches/weapon_bench-tier1.png",
         "requirementItemIds": [
           {
             "itemId": "metal_parts",
@@ -377,6 +398,7 @@
       },
       {
         "level": 2,
+        "image": "/images/benches/weapon_bench-tier2.png",
         "requirementItemIds": [
           {
             "itemId": "mechanical_components",
@@ -394,6 +416,7 @@
       },
       {
         "level": 3,
+        "image": "/images/benches/weapon_bench-tier3.png",
         "requirementItemIds": [
           {
             "itemId": "advanced_mechanical_components",

@@ -20,10 +20,12 @@ export interface ArctrackerProfileResponse {
 }
 
 export interface ArctrackerStashItem {
-  itemId: string;
+  itemId: string | null;
   name: string;
   quantity: number;
   slotIndex: number;
+  durabilityPercent?: number;
+  attachments?: ArctrackerLoadoutSlot[];
 }
 
 export interface ArctrackerStashCurrencies {
@@ -109,6 +111,7 @@ export interface ArctrackerHideoutApiModule {
 export interface ArctrackerHideoutResponse {
   data: {
     modules: ArctrackerHideoutApiModule[];
+    syncedAt?: string;
     summary?: {
       totalModules: number;
       totalLevels: number;
@@ -129,6 +132,44 @@ export interface CachedHideoutModule {
 
 export interface CachedHideout {
   modules: CachedHideoutModule[];
+  syncedAt: string;
+  cachedAt: number;
+}
+
+// ============================================================================
+// Blueprint Types
+// ============================================================================
+
+export interface ArctrackerBlueprint {
+  id: string;
+  name: string;
+  category: string;
+  rarity: string;
+  learned: boolean;
+  targetItemId: string;
+}
+
+export interface ArctrackerBlueprintsResponse {
+  data: {
+    blueprints: ArctrackerBlueprint[];
+  };
+  meta?: {
+    requestId: string;
+  };
+}
+
+export interface CachedBlueprint {
+  id: string;
+  name: string;
+  category: string;
+  rarity: string;
+  learned: boolean;
+  targetItemId: string;
+}
+
+export interface CachedBlueprints {
+  unlockedItemIds: string[];
+  blueprintsByTargetItemId: Record<string, CachedBlueprint>;
   syncedAt: string;
   cachedAt: number;
 }
@@ -162,9 +203,10 @@ export interface CachedLoadout {
 export interface CacheMeta {
   lastSyncedAt: number | null;
   version: number;
+  userSub: string | null;
 }
 
-export type CacheKey = 'profile' | 'stash' | 'loadout' | 'hideout' | 'meta';
+export type CacheKey = 'profile' | 'stash' | 'loadout' | 'hideout' | 'blueprints' | 'meta';
 
 // ============================================================================
 // Auth Types

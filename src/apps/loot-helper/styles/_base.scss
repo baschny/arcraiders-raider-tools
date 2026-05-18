@@ -28,10 +28,17 @@ h1, h2, h3, h4, h5, h6 {
   background: $bg-primary;
 }
 
-/* Override main-content padding for full-screen loot helper */
+/* Override main-content padding for full-screen loot helper.
+   We also turn .main-content into a flex column so the inner
+   .loot-helper-layout can fill the available height (otherwise its
+   `flex: 1` has no effect against a non-flex parent and the layout
+   grows to its content size, breaking inner scrolling). */
 .main-content:has(.loot-helper-layout) {
   padding: 0;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
 }
 
 /* Vertical wrapper: sign-in nudge on top, content row below */
@@ -55,6 +62,8 @@ h1, h2, h3, h4, h5, h6 {
   flex: 1;
   display: flex;
   flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
   background: #1a1a1a;
 }
 

@@ -10,6 +10,7 @@ import type {
   CachedStash,
   CachedLoadout,
   CachedHideout,
+  CachedBlueprints,
   CacheMeta,
   CacheKey,
 } from '../types/arctracker';
@@ -18,9 +19,30 @@ const DB_NAME = 'raiderToolsCache';
 const DB_VERSION = 1;
 const STORE_NAME = 'arctracker';
 
-type CacheValue = CachedProfile | CachedStash | CachedLoadout | CachedHideout | CacheMeta;
+type CacheValue =
+  | CachedProfile
+  | CachedStash
+  | CachedLoadout
+  | CachedHideout
+  | CachedBlueprints
+  | CacheMeta;
 
 let dbPromise: Promise<IDBPDatabase> | null = null;
+let activeCacheOwnerSub: string | null = null;
+
+/**
+ * Set the signed-in Raider Tools user that owns ArcTracker cache reads/writes.
+ * Passing null disables reads and writes until a new owner is known.
+ */
+export async function setCacheOwner(userSub: string | null): Promise<void> {
+  activeCacheOwnerSub = userSub;
+  if (!userSub) return;
+
+  const meta = await readRawMeta();
+  if (meta?.userSub !== userSub) {
+    await cacheClear();
+  }
+}
 
 /**
  * Get or initialize the database connection.
@@ -43,6 +65,9 @@ function getDB(): Promise<IDBPDatabase> {
  */
 export async function cacheGet<T extends CacheValue>(key: CacheKey): Promise<T | undefined> {
   const db = await getDB();
+  if (key !== 'meta' && !(await cacheBelongsToActiveOwner())) {
+    return undefined;
+  }
   return db.get(STORE_NAME, key) as Promise<T | undefined>;
 }
 
@@ -51,6 +76,9 @@ export async function cacheGet<T extends CacheValue>(key: CacheKey): Promise<T |
  */
 export async function cacheSet<T extends CacheValue>(key: CacheKey, value: T): Promise<void> {
   const db = await getDB();
+  if (key !== 'meta' && !(await prepareCacheWrite())) {
+    return;
+  }
   await db.put(STORE_NAME, value, key);
 }
 
@@ -85,6 +113,7 @@ export async function updateCacheMeta(updates: Partial<CacheMeta>): Promise<void
   const meta: CacheMeta = {
     lastSyncedAt: current?.lastSyncedAt ?? null,
     version: current?.version ?? 1,
+    userSub: activeCacheOwnerSub,
     ...updates,
   };
   await cacheSet('meta', meta);
@@ -116,4 +145,35 @@ export async function getCachedLoadout(): Promise<CachedLoadout | undefined> {
  */
 export async function getCachedHideout(): Promise<CachedHideout | undefined> {
   return cacheGet<CachedHideout>('hideout');
+}
+
+/**
+ * Get cached blueprint data.
+ */
+export async function getCachedBlueprints(): Promise<CachedBlueprints | undefined> {
+  return cacheGet<CachedBlueprints>('blueprints');
+}
+
+async function readRawMeta(): Promise<CacheMeta | undefined> {
+  const db = await getDB();
+  return db.get(STORE_NAME, 'meta') as Promise<CacheMeta | undefined>;
+}
+
+async function cacheBelongsToActiveOwner(): Promise<boolean> {
+  if (!activeCacheOwnerSub) return false;
+
+  const meta = await readRawMeta();
+  return meta?.userSub === activeCacheOwnerSub;
+}
+
+async function prepareCacheWrite(): Promise<boolean> {
+  if (!activeCacheOwnerSub) return false;
+
+  const meta = await readRawMeta();
+  if (meta?.userSub !== activeCacheOwnerSub) {
+    await cacheClear();
+  }
+
+  await updateCacheMeta({ userSub: activeCacheOwnerSub });
+  return true;
 }

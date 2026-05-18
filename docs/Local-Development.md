@@ -1,7 +1,7 @@
 # Local Development (server-backed state)
 This document covers how to run the server-backed parts of raider-tools fully offline:
 - A local DynamoDB (Docker) that replaces the real `raider-tools-users` table.
-- A tiny Node HTTP server that hosts the **same** `profile.ts` / `state.ts` / `links.ts` / `embark-link.ts` Lambda handlers used in production, pointed at the local DynamoDB.
+- A tiny Node HTTP server that hosts the **same** `profile.ts` / `state.ts` / `links.ts` / `embark-link.ts` / `arctracker-user-proxy.ts` Lambda handlers used in production, pointed at the local DynamoDB where applicable.
 - A fake "sign in as dev user" flow that bypasses Cognito entirely.
 This lets you exercise `UserStateStore` against a real DynamoDB, iterate on Lambda handler code, and test sign-in hydration + sign-out wipe without ever touching AWS.
 For the production equivalents of these moving parts, see `Authentication.md` and `User-Data.md`.
@@ -56,12 +56,14 @@ The local API server automatically reads:
 with `.env.local` overriding `.env`. Use [infra/.env.example](/Users/ernst/Develop/Games/ArcRaiders/raider-tools/infra/.env.example) as the template for local server-side settings such as Embark OAuth/config values.
 
 Environment overrides (all optional):
+The local API server loads `infra/.env` before applying defaults. Values already exported in your shell take precedence over `infra/.env`.
+
 - `LOCAL_API_PORT` — default `4000`.
 - `AWS_ENDPOINT_URL_DYNAMODB` — default `http://localhost:8000`.
 - `USER_TABLE_NAME` — default `raider-tools-users`.
 - `ALLOWED_ORIGINS` — default `http://localhost:5173`.
-- `ARCTRACKER_RELAY_URL` — unset locally; `/me/links/arctracker` PUT calls will fail fast (the relay isn't simulated; see §Scope).
-- `LOCAL_DEV_BYPASS_KMS` — default `true`; uses a deterministic local AES key instead of AWS KMS so encrypted link rows can still be exercised offline.
+- `ARC_APP_KEY` — required when linking or syncing ArcTracker data locally. This is the ArcTracker app key injected by the relay, not the user's `arc_u1_*` token.
+- `LOCAL_TOKEN_ENCRYPTION_KEY` — local-only key material used to encrypt linked account tokens in DynamoDB Local when `KMS_KEY_ID` is not set.
 - `EMBARK_OAUTH_CLIENT_SECRET` — required only if you want the local Embark `/start` + `/complete` flow to reach the real Embark OAuth/token endpoints.
 - `EMBARK_MANIFEST_ID` and `EMBARK_USER_AGENT` — required only if you want the local Embark completion flow to fetch `/v1/shared/profile`.
 - `EMBARK_LOOPBACK_REDIRECT_URI` — default `http://127.0.0.1:49176`.
@@ -89,6 +91,12 @@ End-to-end sanity:
 ```bash
 curl -H 'Authorization: Bearer dev.dev-user-1' http://localhost:4000/me
 ```
+After linking an ArcTracker token as `dev.dev-user-1`, the authenticated user proxy can be smoke-tested without exposing the ArcTracker token to the browser:
+```bash
+curl -i \
+  -H 'Authorization: Bearer dev.dev-user-1' \
+  http://localhost:4000/me/arctracker/v2/user/profile
+```
 ## Dev-auth token format
 The local server accepts one authorization scheme:
 ```
@@ -100,7 +108,8 @@ Authorization: Bearer dev.<sub>[.<email>]
 `src/shared/auth/devAuthClient.ts` emits exactly this format; nothing else in the SPA talks to the server directly.
 ## Scope & non-goals
 The local setup deliberately skips:
-- **ArcTracker relay + KMS envelope encryption.** `POST /me/links/arctracker` won't work locally unless you point `ARCTRACKER_RELAY_URL` at a running relay; even then, tokens will be written without the KMS envelope. Don't test the ArcTracker PUT path locally.
+- **AWS KMS for linked-account token encryption.** `PUT /me/links/arctracker` validates with the shared ArcTracker forwarding helper and stores an AES-GCM-encrypted local-dev envelope in DynamoDB Local. Production still requires KMS.
+- **Anonymous ArcTracker profile usage.** Local dev mirrors production: link and sync ArcTracker data only after signing in with dev-auth.
 - **Discord OAuth bridge and Cognito custom-auth triggers.** Dev auth is sub-only; the full federated flow still requires the real stack.
 - **PITR, TTL eviction, customer-managed KMS at rest.** The local table has none of these. If you're testing behavior that depends on them, use the deployed stack.
 - **Schema drift guardrails.** `infra/local/server.ts::ensureTable()` is hand-written to match `RaiderToolsStack.UserTable`. If you change the CDK table definition in `infra/lib/raider-tools-stack.ts`, update `ensureTable()` in the same PR.

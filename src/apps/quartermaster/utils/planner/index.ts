@@ -6,7 +6,7 @@
 
 import type { ItemsMap, BenchId } from '../../types/item';
 import type { StoredList } from '../../types/list';
-import type { PlannerResult, StashItem, ItemId, Qty } from '../../types/planner';
+import type { PlannerResult, OwnedItemQuantity, ItemId, Qty } from '../../types/planner';
 import { BENCH_ORDER } from '../../types/item';
 
 import { aggregateRequired, getActiveListsCount } from './aggregation';
@@ -29,14 +29,14 @@ const DEFAULT_BENCH_LEVELS: Record<BenchId, number> = {
 };
 
 /**
- * Convert stash items array to record
+ * Convert owned item quantities array to record
  */
-function stashToRecord(stashItems: StashItem[]): Record<ItemId, Qty> {
-  const stash: Record<ItemId, Qty> = {};
-  for (const item of stashItems) {
-    stash[item.itemId] = (stash[item.itemId] ?? 0) + item.quantity;
+function ownedItemsToRecord(ownedItems: OwnedItemQuantity[]): Record<ItemId, Qty> {
+  const owned: Record<ItemId, Qty> = {};
+  for (const item of ownedItems) {
+    owned[item.itemId] = (owned[item.itemId] ?? 0) + item.quantity;
   }
-  return stash;
+  return owned;
 }
 
 /**
@@ -51,6 +51,24 @@ function sortCraftSteps(steps: PlannerResult['craftPlan']['steps']): PlannerResu
   });
 }
 
+function sortWeaponUpgradeSteps(
+  steps: PlannerResult['weaponUpgradePlan']['steps'],
+): PlannerResult['weaponUpgradePlan']['steps'] {
+  return [...steps].sort((a, b) => {
+    const fromA = itemsTierSortKey(a.fromItemId);
+    const fromB = itemsTierSortKey(b.fromItemId);
+    if (fromA !== fromB) return fromA - fromB;
+    if (a.fromItemId !== b.fromItemId) return a.fromItemId.localeCompare(b.fromItemId);
+    return a.toItemId.localeCompare(b.toItemId);
+  });
+}
+
+function itemsTierSortKey(itemId: string): number {
+  const match = itemId.match(/_(i|ii|iii|iv)$/);
+  if (!match) return 0;
+  return ['i', 'ii', 'iii', 'iv'].indexOf(match[1]) + 1;
+}
+
 /**
  * Main planner computation
  * Takes all inputs and produces deterministic PlannerResult
@@ -58,10 +76,11 @@ function sortCraftSteps(steps: PlannerResult['craftPlan']['steps']): PlannerResu
 export function computePlan(
   itemsMap: ItemsMap,
   lists: StoredList[],
-  stashItems: StashItem[],
-  benchLevels: Record<BenchId, number> = DEFAULT_BENCH_LEVELS
+  ownedItems: OwnedItemQuantity[],
+  benchLevels: Record<BenchId, number> = DEFAULT_BENCH_LEVELS,
+  unlockedBlueprintItemIds: Set<ItemId> = new Set(),
 ): PlannerResult {
-  const stash = stashToRecord(stashItems);
+  const owned = ownedItemsToRecord(ownedItems);
 
   // Step 1: Aggregate required from enabled lists (CR-001, CR-003)
   const { required, targetPriority, requiredSourcesByItemId } = aggregateRequired(lists);
@@ -69,15 +88,24 @@ export function computePlan(
   // Step 2: Compute deficit (CR-MOD-6.2)
   const deficit: Record<ItemId, Qty> = {};
   for (const [itemId, req] of Object.entries(required)) {
-    const d = Math.max(0, req - (stash[itemId] ?? 0));
+    const d = Math.max(0, req - (owned[itemId] ?? 0));
     if (d > 0) deficit[itemId] = d;
   }
 
   // Step 3: Run greedy planner with priority ordering (CR-004)
-  const greedyResult = runGreedyPlanner(itemsMap, required, stash, benchLevels, targetPriority);
+  const greedyResult = runGreedyPlanner(
+    itemsMap,
+    required,
+    owned,
+    benchLevels,
+    targetPriority,
+    unlockedBlueprintItemIds,
+    requiredSourcesByItemId,
+  );
 
   // Step 4: Build sorted craft plan (fully satisfiable only in Craft UI)
   const craftPlan = { steps: sortCraftSteps(greedyResult.craftSteps) };
+  const weaponUpgradePlan = { steps: sortWeaponUpgradeSteps(greedyResult.weaponUpgradeSteps) };
   const recyclePlan = { actions: greedyResult.recycleActions };
 
   // Step 5: Generate loot suggestions (CR-MOD-6.5)
@@ -98,7 +126,7 @@ export function computePlan(
   );
 
   // Step 6: Build plan rows with badges
-  const planRows = buildPlanRows(itemsMap, required, stash, greedyResult);
+  const planRows = buildPlanRows(itemsMap, required, owned, greedyResult);
 
   // Step 7: Build blocker summary
   const blockers = buildBlockerSummary(itemsMap, deficit, greedyResult);
@@ -106,10 +134,12 @@ export function computePlan(
   return {
     required,
     deficit,
+    remainingIngredientDeficits: greedyResult.remainingDeficits,
 
     planRows,
 
     craftPlan,
+    weaponUpgradePlan,
     recyclePlan,
     lootSuggestions,
     inRaidSuggestions,
@@ -124,6 +154,7 @@ export function computePlan(
     totalMissingItemsCount: getMissingItemsCount(deficit),
     totalRecycleActionsCount: recyclePlan.actions.length,
     totalCraftStepsCount: craftPlan.steps.length,
+    totalWeaponUpgradeStepsCount: weaponUpgradePlan.steps.length,
   };
 }
 
@@ -135,8 +166,10 @@ export function createEmptyResult(): PlannerResult {
   return {
     required: {},
     deficit: {},
+    remainingIngredientDeficits: {},
     planRows: [],
     craftPlan: { steps: [] },
+    weaponUpgradePlan: { steps: [] },
     recyclePlan: { actions: [] },
     lootSuggestions: { items: [] },
     inRaidSuggestions: { items: [] },
@@ -153,5 +186,6 @@ export function createEmptyResult(): PlannerResult {
     totalMissingItemsCount: 0,
     totalRecycleActionsCount: 0,
     totalCraftStepsCount: 0,
+    totalWeaponUpgradeStepsCount: 0,
   };
 }

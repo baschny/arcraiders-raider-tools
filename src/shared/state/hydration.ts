@@ -30,6 +30,7 @@ import {
     quartermasterStore,
 } from './stores';
 import { RemoteFetchError } from './userStateStore';
+import { cacheClear, setCacheOwner } from '../services/cacheService';
 
 const API_BASE = (import.meta.env.VITE_API_BASE_URL as string | undefined) ??
     'https://api.raider-tools.app';
@@ -110,6 +111,8 @@ export async function runSignOutWipe(): Promise<void> {
     for (const key of LEGACY_KEYS) {
         try { localStorage.removeItem(key); } catch { /* ignore */ }
     }
+    try { await cacheClear(); } catch { /* best effort */ }
+    try { await setCacheOwner(null); } catch { /* best effort */ }
 }
 
 // ---------------------------------------------------------------------------

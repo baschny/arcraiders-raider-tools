@@ -6,7 +6,7 @@
  * migration) uses the `allStores` array.
  */
 
-import { useSyncExternalStore } from 'react';
+import { useCallback, useSyncExternalStore } from 'react';
 import { UserStateStore } from './userStateStore';
 import { migrateQuestIds } from '../../apps/quests/data/questIdMigration';
 
@@ -117,5 +117,6 @@ export function useStore<T>(store: UserStateStore<T>): [T, (next: T) => void] {
         () => store.get(),
         () => store.get(),
     );
-    return [value, (next: T) => store.set(next)];
+    const setValue = useCallback((next: T) => store.set(next), [store]);
+    return [value, setValue];
 }

@@ -15,6 +15,7 @@ const MAP_ID_MAP = {
   buried_city: 'buried-city',
   the_spaceport: 'the-spaceport',
   the_blue_gate: 'blue-gate',
+  riven_tides: 'riven-tides',
   stella_montis_upper: 'stella-montis',
   stella_montis_lower: 'stella-montis',
 };

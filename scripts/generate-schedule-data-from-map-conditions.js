@@ -16,6 +16,7 @@ const MAP_ORDER = [
   'buried-city',
   'the-spaceport',
   'blue-gate',
+  'riven-tides',
   'stella-montis',
 ];
 const MERGE_HISTORY_WINDOW_SECONDS = 30 * 24 * 60 * 60;
@@ -28,6 +29,7 @@ const KNOWN_MAP_ID_BY_DISPLAY_NAME = {
   Spaceport: 'the-spaceport',
   'Stella Montis': 'stella-montis',
   'The Blue Gate': 'blue-gate',
+  'Riven Tides': 'riven-tides',
 };
 
 function readJson(filePath) {

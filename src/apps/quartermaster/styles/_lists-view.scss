@@ -146,6 +146,54 @@
     }
   }
 
+  &__suggestions {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    right: 0;
+    max-height: 260px;
+    overflow-y: auto;
+    z-index: 100;
+    padding: $spacing-xs;
+    background: #172126;
+    border: 1px solid rgba($text-accent, 0.55);
+    border-radius: $radius-md;
+    box-shadow: 0 12px 32px rgba($bg-dark, 0.45);
+  }
+
+  &__suggestion {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+    padding: $spacing-sm $spacing-md;
+    background: transparent;
+    border: 0;
+    border-radius: $radius-sm;
+    color: $text-primary;
+    cursor: pointer;
+    text-align: left;
+    transition: $transition-default;
+
+    &:hover,
+    &:focus-visible {
+      outline: none;
+      background: rgba($text-accent, 0.16);
+    }
+  }
+
+  &__suggestion-icon {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  &__suggestion-name {
+    font-size: $font-md;
+    line-height: 1.2;
+  }
+
   &__item-list {
     flex: 1;
     overflow-y: auto;

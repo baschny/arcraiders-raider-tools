@@ -2,7 +2,6 @@ import { useState, useEffect, useMemo } from 'react';
 import { Sidebar } from './components/Sidebar';
 import { AccordionList } from './components/AccordionList';
 import { loadAllItems } from './utils/dataLoader';
-import { loadGoalItems, saveGoalItems, loadDisabledItems, saveDisabledItems, loadStashItems, saveStashItems, loadDisabledStashItems, saveDisabledStashItems } from './utils/storage';
 import { buildCraftingTree, buildReverseMap } from './utils/craftingChain';
 import { getActiveStashItems } from './utils/stash';
 import { trackGoalItemAdded, trackGoalItemRemoved, trackGoalItemToggled, trackStashItemAdded, trackStashItemRemoved, trackStashItemToggled } from './utils/analytics';
@@ -12,30 +11,41 @@ import { useLocale } from '../../shared/context/LocaleContext';
 import { LoadingSpinner } from '../../shared/components/LoadingSpinner';
 import { ErrorDisplay } from '../../shared/components/ErrorDisplay';
 import { SignInNudge } from '../../shared/components/SignInNudge';
+import { lootStore, useStore, type LootState } from '../../shared/state/stores';
 import { getItemDisplayName } from './utils/localization';
 import './styles/main.scss';
 import './styles/accordion.scss';
 
 export function LootHelperApp() {
   const { locale, t } = useLocale();
+  const [lootState, setLootState] = useStore(lootStore);
   const [itemsMap, setItemsMap] = useState<ItemsMap | null>(null);
-  const [goalItemIds, setGoalItemIds] = useState<string[]>([]);
-  const [disabledGoalItemIds, setDisabledGoalItemIds] = useState<Set<string>>(new Set());
-  const [stashItemIds, setStashItemIds] = useState<Set<string>>(new Set());
-  const [disabledStashItemIds, setDisabledStashItemIds] = useState<Set<string>>(new Set());
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [reverseMap, setReverseMap] = useState<ReverseMap>(new Map());
+
+  const goalItemIds = lootState.goalItems;
+  const disabledGoalItemIds = useMemo(
+    () => new Set(lootState.disabledItems),
+    [lootState.disabledItems]
+  );
+  const stashItemIds = useMemo(
+    () => new Set(lootState.stashItems),
+    [lootState.stashItems]
+  );
+  const disabledStashItemIds = useMemo(
+    () => new Set(lootState.disabledStashItems),
+    [lootState.disabledStashItems]
+  );
+  const patchLootState = (next: Partial<LootState>) => {
+    setLootState({ ...lootStore.get(), ...next });
+  };
 
   // Load items on mount
   useEffect(() => {
     loadAllItems(locale)
       .then((items) => {
         setItemsMap(items);
-        setGoalItemIds(loadGoalItems());
-        setDisabledGoalItemIds(loadDisabledItems());
-        setStashItemIds(loadStashItems());
-        setDisabledStashItemIds(loadDisabledStashItems());
         setLoading(false);
       })
       .catch((err) => {
@@ -76,8 +86,7 @@ export function LootHelperApp() {
   const handleAddGoalItem = (itemId: string) => {
     if (!goalItemIds.includes(itemId)) {
       const updated = [...goalItemIds, itemId];
-      setGoalItemIds(updated);
-      saveGoalItems(updated);
+      patchLootState({ goalItems: updated });
       
       // Track analytics
       const item = itemsMap?.[itemId];
@@ -89,14 +98,14 @@ export function LootHelperApp() {
 
   const handleRemoveGoalItem = (itemId: string) => {
     const updated = goalItemIds.filter((id) => id !== itemId);
-    setGoalItemIds(updated);
-    saveGoalItems(updated);
     
     // Also remove from disabled set
     const newDisabled = new Set(disabledGoalItemIds);
     newDisabled.delete(itemId);
-    setDisabledGoalItemIds(newDisabled);
-    saveDisabledItems(newDisabled);
+    patchLootState({
+      goalItems: updated,
+      disabledItems: Array.from(newDisabled),
+    });
     
     // Track analytics
     const item = itemsMap?.[itemId];
@@ -113,8 +122,7 @@ export function LootHelperApp() {
     } else {
       newDisabled.add(itemId);
     }
-    setDisabledGoalItemIds(newDisabled);
-    saveDisabledItems(newDisabled);
+    patchLootState({ disabledItems: Array.from(newDisabled) });
     
     // Track analytics
     const item = itemsMap?.[itemId];
@@ -124,20 +132,17 @@ export function LootHelperApp() {
   };
 
   const handleReorderGoalItems = (reorderedIds: string[]) => {
-    setGoalItemIds(reorderedIds);
-    saveGoalItems(reorderedIds);
+    patchLootState({ goalItems: reorderedIds });
   };
 
   const handleEnableAllGoalItems = () => {
     const newDisabled = new Set<string>();
-    setDisabledGoalItemIds(newDisabled);
-    saveDisabledItems(newDisabled);
+    patchLootState({ disabledItems: Array.from(newDisabled) });
   };
 
   const handleDisableAllGoalItems = () => {
     const newDisabled = new Set(goalItemIds);
-    setDisabledGoalItemIds(newDisabled);
-    saveDisabledItems(newDisabled);
+    patchLootState({ disabledItems: Array.from(newDisabled) });
   };
 
   const handleToggleStashItem = (itemId: string) => {
@@ -161,10 +166,10 @@ export function LootHelperApp() {
       newDisabledStash.delete(itemId);
     }
 
-    setStashItemIds(newStash);
-    setDisabledStashItemIds(newDisabledStash);
-    saveStashItems(newStash);
-    saveDisabledStashItems(newDisabledStash);
+    patchLootState({
+      stashItems: Array.from(newStash),
+      disabledStashItems: Array.from(newDisabledStash),
+    });
     
     // Track analytics
     const item = itemsMap?.[itemId];
@@ -190,8 +195,7 @@ export function LootHelperApp() {
       newDisabledStash.add(itemId);
     }
 
-    setDisabledStashItemIds(newDisabledStash);
-    saveDisabledStashItems(newDisabledStash);
+    patchLootState({ disabledStashItems: Array.from(newDisabledStash) });
     
     // Track analytics
     const item = itemsMap?.[itemId];
@@ -207,10 +211,10 @@ export function LootHelperApp() {
     const newDisabledStash = new Set(disabledStashItemIds);
     newDisabledStash.delete(itemId);
 
-    setStashItemIds(newStash);
-    setDisabledStashItemIds(newDisabledStash);
-    saveStashItems(newStash);
-    saveDisabledStashItems(newDisabledStash);
+    patchLootState({
+      stashItems: Array.from(newStash),
+      disabledStashItems: Array.from(newDisabledStash),
+    });
     
     // Track analytics
     const item = itemsMap?.[itemId];

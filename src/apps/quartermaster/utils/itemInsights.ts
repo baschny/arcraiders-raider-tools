@@ -79,9 +79,12 @@ function collectIngredientChainsForTarget(
   const walk = (currentItemId: string, path: string[], depth: number, visited: Set<string>) => {
     if (depth >= maxDepth) return;
     const item = itemsMap[currentItemId];
-    if (!item?.recipe) return;
+    if (!item?.recipe && !item?.upgradeCost) return;
 
-    const ingredientIds = Object.keys(item.recipe).sort();
+    const ingredientIds = Array.from(new Set([
+      ...Object.keys(item.recipe ?? {}),
+      ...Object.keys(item.upgradeCost ?? {}),
+    ])).sort();
     for (const ingredientId of ingredientIds) {
       if (visited.has(ingredientId)) continue;
       const chainItemIds = [...path, ingredientId];
@@ -109,6 +112,9 @@ function buildPlanMissingMap(plannerResult: PlannerResult): Record<string, numbe
   const missingByItemId: Record<string, number> = {};
   for (const row of plannerResult.planRows) {
     missingByItemId[row.itemId] = row.missing;
+  }
+  for (const [itemId, quantity] of Object.entries(plannerResult.remainingIngredientDeficits)) {
+    missingByItemId[itemId] = Math.max(missingByItemId[itemId] ?? 0, quantity);
   }
   return missingByItemId;
 }

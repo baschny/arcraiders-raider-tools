@@ -8,6 +8,7 @@ import {
   Calculator,
   ListTodo,
   Package,
+  ClipboardList,
   UserCircle,
   ChevronLeft,
   ChevronRight,
@@ -20,6 +21,7 @@ const NAV_ITEMS = [
   { path: '/craft-calculator', icon: Calculator, labelKey: 'shared.tools.craftCalculator' },
   { path: '/quests', icon: ListTodo, labelKey: 'shared.tools.quests' },
   { path: '/loot-helper', icon: Package, labelKey: 'shared.tools.lootHelper' },
+  { path: '/quartermaster', icon: ClipboardList, labelKey: 'shared.tools.quartermaster' },
 ];
 
 const BOTTOM_NAV_ITEM = {

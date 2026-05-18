@@ -3,9 +3,9 @@
  * See specification section 7.6
  */
 
-import { RefreshCw, Hammer } from 'lucide-react';
+import { AlertTriangle, RefreshCw, Hammer } from 'lucide-react';
 import type { ItemsMap, BenchId } from '../../types/item';
-import type { CraftPlan, PlannerResult, RecyclePlan } from '../../types/planner';
+import type { CraftPlan, PlannerResult, RecycleAction, RecyclePlan, WeaponUpgradePlan } from '../../types/planner';
 import { BENCH_ORDER } from '../../types/item';
 import { ItemIcon } from '../ItemIcon';
 import type { ItemInsightsMap } from '../../utils/itemInsights';
@@ -15,31 +15,51 @@ import { useLocale } from '../../../../shared/context/LocaleContext';
 interface CraftingViewProps {
   itemsMap: ItemsMap;
   craftPlan: CraftPlan;
+  weaponUpgradePlan: WeaponUpgradePlan;
   recyclePlan: RecyclePlan;
   plannerResult: PlannerResult;
   itemInsights: ItemInsightsMap;
   getOwnedQuantity: (itemId: string) => number | null;
-  onSyncStash: () => void;
-  isSyncing: boolean;
+  onSyncMyItems: () => void;
+  onSyncBlueprints: () => void;
+  isSyncingMyItems: boolean;
+  isSyncingBlueprints: boolean;
+  blueprintsSyncedAt: string | null;
+  blueprintUnlockCount: {
+    unlocked: number;
+    total: number;
+  } | null;
 }
 
 export function CraftingView({
   itemsMap,
   craftPlan,
+  weaponUpgradePlan,
   recyclePlan,
   plannerResult,
   itemInsights,
   getOwnedQuantity,
-  onSyncStash,
-  isSyncing,
+  onSyncMyItems,
+  onSyncBlueprints,
+  isSyncingMyItems,
+  isSyncingBlueprints,
+  blueprintsSyncedAt,
+  blueprintUnlockCount,
 }: CraftingViewProps) {
-  const { t } = useLocale();
-  // Filter to fully satisfiable targets only (CR-ADD-6.X)
+  const { t, tm, formatDate } = useLocale();
+  // Craft steps are executable actions, including partial progress toward a target.
   const satisfiableSteps = craftPlan.steps.filter(step => step.isFullySatisfiable);
   const tooltipContext = {
     itemsMap,
     plannerResult,
     itemInsights,
+  };
+  const formatTimestamp = (isoString: string): string => {
+    try {
+      return formatDate(new Date(isoString), { hour: '2-digit', minute: '2-digit' });
+    } catch {
+      return t('quartermaster.globalHeader.invalid');
+    }
   };
 
   const getCraftWhyEntries = (itemId: string) => {
@@ -69,19 +89,22 @@ export function CraftingView({
     return Array.from(dedupe.values());
   };
 
-  const getRecycleWhyEntries = (itemId: string) => {
-    const insight = itemInsights[itemId];
-    if (!insight) return [];
-    return insight.recycleSalvageNeeds
-      .filter((need) => need.mode === 'recycle')
-      .map((need, index) => ({
-        key: `${need.listId}-${need.targetItemId}-${need.producedItemId}-${index}`,
-        listName: need.listName,
-        targetItemId: need.targetItemId,
-        targetItemName: need.targetItemName,
-        chainLabel: need.chainLabel,
-        isComplete: need.isComplete,
-      }));
+  const getRecycleWhyEntries = (action: RecycleAction) => {
+    const entries = action.reasons.map((reason) => ({
+      key: [
+        reason.listId,
+        reason.targetItemId,
+        reason.producedItemId,
+        reason.chainItemIds.join('>'),
+      ].join('|'),
+      listName: reason.listName,
+      targetItemId: reason.targetItemId,
+      targetItemName: reason.targetItemName,
+      chainLabel: reason.chainLabel,
+    }));
+
+    const dedupe = new Map(entries.map((entry) => [entry.key, entry]));
+    return Array.from(dedupe.values());
   };
 
   const renderWhyEntries = (entries: Array<{
@@ -90,8 +113,10 @@ export function CraftingView({
     targetItemId: string;
     targetItemName: string;
     chainLabel: string;
-    isComplete: boolean;
-  }>) => {
+    isComplete?: boolean;
+  }>, options: { showState?: boolean } = {}) => {
+    const { showState = true } = options;
+
     if (entries.length === 0) {
       return <span className="crafting-view__why-empty">{t('quartermaster.crafting.noImpact')}</span>;
     }
@@ -122,12 +147,36 @@ export function CraftingView({
                 </div>
                 <div className="crafting-view__why-sub">{entry.chainLabel}</div>
               </div>
-              <span className={`crafting-view__why-state ${entry.isComplete ? 'crafting-view__why-state--complete' : 'crafting-view__why-state--needed'}`}>
-                {entry.isComplete ? t('quartermaster.itemTooltip.complete') : t('quartermaster.itemTooltip.needed')}
-              </span>
+              {showState && (
+                <span className={`crafting-view__why-state ${entry.isComplete ? 'crafting-view__why-state--complete' : 'crafting-view__why-state--needed'}`}>
+                  {entry.isComplete ? t('quartermaster.itemTooltip.complete') : t('quartermaster.itemTooltip.needed')}
+                </span>
+              )}
             </div>
           );
         })}
+      </div>
+    );
+  };
+
+  const renderRecyclePriorityWarning = (action: RecycleAction) => {
+    if (action.sourcePriorityGroup !== 'direct_recipe_input' || !action.sourcePriorityWarnings?.length) {
+      return null;
+    }
+
+    const [warning] = action.sourcePriorityWarnings;
+    const remainingCount = action.sourcePriorityWarnings.length - 1;
+
+    return (
+      <div className="crafting-view__why-warning">
+        <AlertTriangle size={14} strokeWidth={2} />
+        <span>
+          {tm('quartermaster.crafting.directInputRecycleWarning', {
+            listName: warning.listName,
+            targetItemName: warning.targetItemName,
+            count: remainingCount,
+          })}
+        </span>
       </div>
     );
   };
@@ -165,21 +214,93 @@ export function CraftingView({
     acc[benchId] = satisfiableSteps.filter(step => step.benchId === benchId);
     return acc;
   }, {} as Record<BenchId, typeof craftPlan.steps>);
+  const groupedRecycleActions = (() => {
+    const grouped = new Map<string, RecycleAction>();
+
+    for (const action of recyclePlan.actions) {
+      const existing = grouped.get(action.srcItemId);
+      if (!existing) {
+        grouped.set(action.srcItemId, {
+          ...action,
+          yields: { ...action.yields },
+          reasons: [...action.reasons],
+          sourcePriorityWarnings: action.sourcePriorityWarnings
+            ? [...action.sourcePriorityWarnings]
+            : undefined,
+        });
+        continue;
+      }
+
+      existing.qtyToRecycle += action.qtyToRecycle;
+      for (const [itemId, quantity] of Object.entries(action.yields)) {
+        existing.yields[itemId] = (existing.yields[itemId] ?? 0) + quantity;
+      }
+      existing.reasons.push(...action.reasons);
+
+      if (action.sourcePriorityWarnings?.length) {
+        existing.sourcePriorityWarnings = [
+          ...(existing.sourcePriorityWarnings ?? []),
+          ...action.sourcePriorityWarnings,
+        ];
+      }
+    }
+
+    for (const action of grouped.values()) {
+      action.reasons = Array.from(new Map(action.reasons.map((reason) => [
+        [
+          reason.listId,
+          reason.targetItemId,
+          reason.producedItemId,
+          reason.chainItemIds.join('>'),
+        ].join('|'),
+        reason,
+      ])).values());
+      action.sourcePriorityWarnings = action.sourcePriorityWarnings
+        ? Array.from(new Map(action.sourcePriorityWarnings.map((warning) => [
+          `${warning.listId}|${warning.targetItemId}`,
+          warning,
+        ])).values())
+        : undefined;
+    }
+
+    return Array.from(grouped.values());
+  })();
 
   const hasRecycleActions = recyclePlan.actions.length > 0;
   const hasCraftSteps = satisfiableSteps.length > 0;
+  const satisfiableUpgradeSteps = weaponUpgradePlan.steps.filter(step => step.isFullySatisfiable);
+  const hasUpgradeSteps = satisfiableUpgradeSteps.length > 0;
+  const hasCraftOrUpgradeSteps = hasCraftSteps || hasUpgradeSteps;
 
   return (
     <div className="crafting-view">
       <div className="crafting-view__controls">
         <button 
           className="qm-button" 
-          onClick={onSyncStash}
-          disabled={isSyncing}
+          onClick={onSyncMyItems}
+          disabled={isSyncingMyItems}
         >
-          <RefreshCw size={14} className={isSyncing ? 'animate-spin' : ''} />
-          {t('quartermaster.common.syncInventory')}
+          <RefreshCw size={14} className={isSyncingMyItems ? 'animate-spin' : ''} />
+          {t('quartermaster.stash.syncMyItems')}
         </button>
+        <button
+          className="qm-button"
+          onClick={onSyncBlueprints}
+          disabled={isSyncingBlueprints}
+        >
+          <RefreshCw size={14} className={isSyncingBlueprints ? 'animate-spin' : ''} />
+          {t('quartermaster.common.syncBlueprints')}
+          {blueprintUnlockCount && (
+            <span className="crafting-view__button-meta">
+              {tm('quartermaster.crafting.blueprintUnlockCount', blueprintUnlockCount)}
+            </span>
+          )}
+        </button>
+        {blueprintsSyncedAt && (
+          <span className="crafting-view__sync-meta">
+            {tm('quartermaster.crafting.blueprintsSynced', { timestamp: formatTimestamp(blueprintsSyncedAt) })}
+          </span>
+        )}
       </div>
 
       {/* Recycle First Section */}
@@ -204,12 +325,12 @@ export function CraftingView({
               </tr>
             </thead>
             <tbody>
-              {recyclePlan.actions.map((action, idx) => {
+              {groupedRecycleActions.map((action) => {
                 const item = itemsMap[action.srcItemId];
                 if (!item) return null;
 
                 return (
-                  <tr key={idx}>
+                  <tr key={action.srcItemId}>
                     <td>
                       <ItemIcon
                         itemId={item.id}
@@ -225,7 +346,10 @@ export function CraftingView({
                     <td><span className="qm-item-name">{item.name}</span></td>
                     <td>{action.qtyToRecycle}</td>
                     <td>{renderMaterialRows(action.yields)}</td>
-                    <td>{renderWhyEntries(getRecycleWhyEntries(action.srcItemId))}</td>
+                    <td>
+                      {renderWhyEntries(getRecycleWhyEntries(action), { showState: false })}
+                      {renderRecyclePriorityWarning(action)}
+                    </td>
                   </tr>
                 );
               })}
@@ -235,7 +359,7 @@ export function CraftingView({
       )}
 
       {/* Craft Plan Section */}
-      {hasCraftSteps ? (
+      {hasCraftOrUpgradeSteps ? (
         <div className="crafting-view__section">
           <h3 className="qm-section-title">
             {hasRecycleActions ? t('quartermaster.crafting.step2') : t('quartermaster.crafting.craftItems')}
@@ -243,68 +367,133 @@ export function CraftingView({
           
           {BENCH_ORDER.map(benchId => {
             const steps = stepsByBench[benchId];
-            if (steps.length === 0) return null;
+            if (steps.length === 0 && (benchId !== 'weapon_bench' || !hasUpgradeSteps)) return null;
 
             return (
               <div key={benchId} className="crafting-view__bench-group">
-                <div className="crafting-view__bench-header">
-                  <Hammer size={16} />
-                  {getLocalizedBenchName(t, benchId)}
-                </div>
-                <table className="qm-table">
-                  <colgroup>
-                    <col className="crafting-view__col-item" />
-                    <col className="crafting-view__col-name" />
-                    <col className="crafting-view__col-qty" />
-                    <col className="crafting-view__col-qty" />
-                    <col />
-                    <col className="crafting-view__col-why" />
-                  </colgroup>
-                  <thead>
-                    <tr>
-                      <th style={{ width: 80 }}>{t('quartermaster.crafting.columns.item')}</th>
-                      <th>{t('quartermaster.crafting.columns.name')}</th>
-                      <th style={{ width: 100 }}>{t('quartermaster.crafting.columns.craftTimes')}</th>
-                      <th style={{ width: 100 }}>{t('quartermaster.crafting.columns.totalOutput')}</th>
-                      <th>{t('quartermaster.crafting.columns.inputsNeeded')}</th>
-                      <th>{t('quartermaster.crafting.columns.why')}</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {steps.map(step => {
-                      const item = itemsMap[step.itemId];
-                      if (!item) return null;
-
-                      const craftTimes = Math.ceil(step.qty / item.craftQuantity);
-
-                      return (
-                        <tr key={step.itemId}>
-                          <td>
-                            <ItemIcon
-                              itemId={item.id}
-                              name={item.name}
-                              icon={item.icon}
-                              rarity={item.rarity}
-                              quantity={getOwnedQuantity(item.id)}
-                              size="sm"
-                              showName={false}
-                              tooltipContext={tooltipContext}
-                            />
-                          </td>
-                          <td><span className="qm-item-name">{item.name}</span></td>
-                          <td>{craftTimes}</td>
-                          <td>{step.qty}</td>
-                          <td>{item.recipe ? renderMaterialRows(
-                            Object.fromEntries(
-                              Object.entries(item.recipe).map(([inputId, qtyPerCraft]) => [inputId, qtyPerCraft * craftTimes]),
-                            ),
-                          ) : null}</td>
-                          <td>{renderWhyEntries(getCraftWhyEntries(step.itemId))}</td>
+                {steps.length > 0 && (
+                  <>
+                    <div className="crafting-view__bench-header">
+                      <Hammer size={16} />
+                      {benchId === 'weapon_bench' ? t('quartermaster.crafting.gunsmithCraft') : getLocalizedBenchName(t, benchId)}
+                    </div>
+                    <table className="qm-table">
+                      <colgroup>
+                        <col className="crafting-view__col-item" />
+                        <col className="crafting-view__col-name" />
+                        <col className="crafting-view__col-qty" />
+                        <col className="crafting-view__col-qty" />
+                        <col />
+                        <col className="crafting-view__col-why" />
+                      </colgroup>
+                      <thead>
+                        <tr>
+                          <th style={{ width: 80 }}>{t('quartermaster.crafting.columns.item')}</th>
+                          <th>{t('quartermaster.crafting.columns.name')}</th>
+                          <th style={{ width: 100 }}>{t('quartermaster.crafting.columns.craftTimes')}</th>
+                          <th style={{ width: 100 }}>{t('quartermaster.crafting.columns.totalOutput')}</th>
+                          <th>{t('quartermaster.crafting.columns.inputsNeeded')}</th>
+                          <th>{t('quartermaster.crafting.columns.why')}</th>
                         </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
+                      </thead>
+                      <tbody>
+                        {steps.map(step => {
+                          const item = itemsMap[step.itemId];
+                          if (!item) return null;
+
+                          const craftTimes = Math.ceil(step.qty / item.craftQuantity);
+
+                          return (
+                            <tr key={step.itemId}>
+                              <td>
+                                <ItemIcon
+                                  itemId={item.id}
+                                  name={item.name}
+                                  icon={item.icon}
+                                  rarity={item.rarity}
+                                  quantity={getOwnedQuantity(item.id)}
+                                  size="sm"
+                                  showName={false}
+                                  tooltipContext={tooltipContext}
+                                />
+                              </td>
+                              <td><span className="qm-item-name">{item.name}</span></td>
+                              <td>{craftTimes}</td>
+                              <td>{step.qty}</td>
+                              <td>{item.recipe ? renderMaterialRows(
+                                Object.fromEntries(
+                                  Object.entries(item.recipe).map(([inputId, qtyPerCraft]) => [inputId, qtyPerCraft * craftTimes]),
+                                ),
+                              ) : null}</td>
+                              <td>{renderWhyEntries(getCraftWhyEntries(step.itemId))}</td>
+                            </tr>
+                          );
+                        })}
+                      </tbody>
+                    </table>
+                  </>
+                )}
+                {benchId === 'weapon_bench' && hasUpgradeSteps && (
+                  <>
+                    <div className="crafting-view__bench-header">
+                      <Hammer size={16} />
+                      {t('quartermaster.crafting.gunsmithUpgradeWeapons')}
+                    </div>
+                    <table className="qm-table">
+                      <colgroup>
+                        <col className="crafting-view__col-item" />
+                        <col className="crafting-view__col-name" />
+                        <col className="crafting-view__col-name" />
+                        <col className="crafting-view__col-qty" />
+                        <col />
+                        <col className="crafting-view__col-why" />
+                      </colgroup>
+                      <thead>
+                        <tr>
+                          <th style={{ width: 80 }}>{t('quartermaster.crafting.columns.item')}</th>
+                          <th>{t('quartermaster.crafting.columns.upgradeFrom')}</th>
+                          <th>{t('quartermaster.crafting.columns.upgradeTo')}</th>
+                          <th style={{ width: 100 }}>{t('quartermaster.crafting.columns.qtyToUpgrade')}</th>
+                          <th>{t('quartermaster.crafting.columns.inputsNeeded')}</th>
+                          <th>{t('quartermaster.crafting.columns.why')}</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {satisfiableUpgradeSteps.map(step => {
+                          const fromItem = itemsMap[step.fromItemId];
+                          const toItem = itemsMap[step.toItemId];
+                          if (!fromItem || !toItem) return null;
+
+                          return (
+                            <tr key={`${step.fromItemId}-${step.toItemId}`}>
+                              <td>
+                                <ItemIcon
+                                  itemId={toItem.id}
+                                  name={toItem.name}
+                                  icon={toItem.icon}
+                                  rarity={toItem.rarity}
+                                  quantity={getOwnedQuantity(toItem.id)}
+                                  size="sm"
+                                  showName={false}
+                                  tooltipContext={tooltipContext}
+                                />
+                              </td>
+                              <td><span className="qm-item-name">{fromItem.name}</span></td>
+                              <td><span className="qm-item-name">{toItem.name}</span></td>
+                              <td>{step.qty}</td>
+                              <td>{renderMaterialRows(
+                                Object.fromEntries(
+                                  Object.entries(step.upgradeCost).map(([inputId, qtyPerUpgrade]) => [inputId, qtyPerUpgrade * step.qty]),
+                                ),
+                              )}</td>
+                              <td>{renderWhyEntries(getCraftWhyEntries(step.toItemId))}</td>
+                            </tr>
+                          );
+                        })}
+                      </tbody>
+                    </table>
+                  </>
+                )}
               </div>
             );
           })}
