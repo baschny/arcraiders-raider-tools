@@ -14,6 +14,7 @@ import {
     exchangeEmbarkCodeForToken,
     fetchEmbarkProfile,
     generateEmbarkState,
+    generateEmbarkSupportId,
     generatePkcePair,
     parseJwtExpirationIso,
 } from "./_lib/embark";
@@ -42,6 +43,7 @@ interface PendingEmbarkAuth {
     verifier: string;
     redirectUri: string;
     returnUrl: string;
+    supportId: string;
     createdAt: string;
     ttl: number;
 }
@@ -74,14 +76,17 @@ async function handleStart(
     sub: string,
     origin: string,
 ): Promise<APIGatewayProxyResultV2> {
+    const supportId = generateEmbarkSupportId();
     const body = parseJsonBody<StartEmbarkBody>(event.body ?? null);
     const provider = body?.provider?.trim().toLowerCase();
     const returnUrl = body?.returnUrl?.trim();
     if (!provider || !SUPPORTED_PROVIDERS.has(provider)) {
-        return jsonResponse(400, { error: "Unsupported provider" }, origin);
+        console.warn("Embark start unsupported provider", { sub, supportId, provider });
+        return errorResponse(400, "Unsupported provider", supportId, origin);
     }
     if (!returnUrl || !isAllowedReturnUrl(returnUrl)) {
-        return jsonResponse(400, { error: "Invalid return URL" }, origin);
+        console.warn("Embark start invalid return URL", { sub, supportId, returnUrl });
+        return errorResponse(400, "Invalid return URL", supportId, origin);
     }
 
     const { verifier, challenge } = generatePkcePair();
@@ -99,6 +104,7 @@ async function handleStart(
             verifier,
             redirectUri,
             returnUrl,
+            supportId,
             createdAt: now,
             ttl: Math.floor(Date.now() / 1000) + PENDING_TTL_SECONDS,
         } satisfies PendingEmbarkAuth,
@@ -106,12 +112,11 @@ async function handleStart(
 
     console.info("Embark start", {
         sub,
+        supportId,
         provider,
         state,
         returnUrl,
         redirectUri,
-        verifierPrefix: verifier.slice(0, 8),
-        challengePrefix: challenge.slice(0, 12),
     });
 
     const authUrl = buildEmbarkAuthorizeUrl({
@@ -121,7 +126,7 @@ async function handleStart(
         redirectUri,
     });
 
-    return jsonResponse(200, { authUrl, state, provider }, origin);
+    return jsonResponse(200, { authUrl, state, provider, supportId }, origin);
 }
 
 async function handleComplete(
@@ -129,11 +134,18 @@ async function handleComplete(
     sub: string,
     origin: string,
 ): Promise<APIGatewayProxyResultV2> {
+    const fallbackSupportId = generateEmbarkSupportId();
     const body = parseJsonBody<CompleteEmbarkBody>(event.body ?? null);
     const code = body?.code?.trim();
     const state = body?.state?.trim();
     if (!code || !state) {
-        return jsonResponse(400, { error: "Missing code or state" }, origin);
+        console.warn("Embark complete missing code or state", {
+            sub,
+            supportId: fallbackSupportId,
+            hasCode: Boolean(code),
+            hasState: Boolean(state),
+        });
+        return errorResponse(400, "Missing code or state", fallbackSupportId, origin);
     }
 
     const tableName = process.env.USER_TABLE_NAME!;
@@ -144,18 +156,35 @@ async function handleComplete(
     }));
     const pending = pendingResp.Item as PendingEmbarkAuth | undefined;
     if (!pending) {
-        console.warn("Embark complete missing pending state", { sub, state });
-        return jsonResponse(400, { error: "Invalid or expired Embark auth state" }, origin);
+        console.warn("Embark complete missing pending state", {
+            sub,
+            state,
+            supportId: fallbackSupportId,
+        });
+        return errorResponse(400, "Invalid or expired Embark auth state", fallbackSupportId, origin);
+    }
+    const supportId = pending.supportId ?? fallbackSupportId;
+    if (pending.ttl <= Math.floor(Date.now() / 1000)) {
+        console.warn("Embark complete expired pending state", {
+            sub,
+            state,
+            supportId,
+            provider: pending.provider,
+        });
+        await ddb.send(new DeleteCommand({
+            TableName: tableName,
+            Key: pendingKey,
+        }));
+        return errorResponse(400, "Invalid or expired Embark auth state", supportId, origin);
     }
 
     const now = new Date().toISOString();
     console.info("Embark complete", {
         sub,
+        supportId,
         state,
-        codePrefix: code.slice(0, 8),
         provider: pending.provider,
         redirectUri: pending.redirectUri,
-        verifierPrefix: pending.verifier.slice(0, 8),
     });
 
     try {
@@ -166,6 +195,7 @@ async function handleComplete(
         );
         console.info("Embark token exchange ok", {
             sub,
+            supportId,
             state,
             provider: pending.provider,
             expiresIn: token.expires_in ?? null,
@@ -174,10 +204,10 @@ async function handleComplete(
         const profile = await fetchEmbarkProfile(token.access_token);
         console.info("Embark profile fetch ok", {
             sub,
+            supportId,
             state,
             accountId: profile.accountId ?? null,
             tenancyUserId: profile.tenancyUserId ?? null,
-            email: profile.email ?? null,
         });
         const encrypted = await encryptToken(JSON.stringify(token), {
             userId: sub,
@@ -196,6 +226,7 @@ async function handleComplete(
                 sk: "LINK#embark",
                 ...encrypted,
                 provider: pending.provider,
+                supportId,
                 expiresAt,
                 linkedAt: now,
                 profileFetchedAt: now,
@@ -204,6 +235,7 @@ async function handleComplete(
         }));
         console.info("Embark link persisted", {
             sub,
+            supportId,
             state,
             provider: pending.provider,
             expiresAt,
@@ -217,32 +249,43 @@ async function handleComplete(
             profileFetchedAt: now,
             expired: expiresAt ? Date.parse(expiresAt) <= Date.now() : false,
             profile,
+            supportId,
         }, origin);
     } catch (err) {
         const message = err instanceof Error ? err.message : "Embark link failed";
         console.error("Embark complete failed", {
             sub,
+            supportId,
             state,
             provider: pending.provider,
             redirectUri: pending.redirectUri,
-            verifierPrefix: pending.verifier.slice(0, 8),
             message,
         });
-        return jsonResponse(502, { error: message }, origin);
+        return errorResponse(502, message, supportId, origin);
     } finally {
         void ddb.send(new DeleteCommand({
             TableName: tableName,
             Key: pendingKey,
         })).then(() => {
-            console.info("Embark pending state deleted", { sub, state });
+            console.info("Embark pending state deleted", { sub, supportId, state });
         }).catch((err) => {
             console.warn("Embark pending state delete failed", {
                 sub,
+                supportId,
                 state,
                 message: err instanceof Error ? err.message : String(err),
             });
         });
     }
+}
+
+function errorResponse(
+    statusCode: number,
+    error: string,
+    supportId: string,
+    origin: string,
+): APIGatewayProxyResultV2 {
+    return jsonResponse(statusCode, { error, supportId }, origin);
 }
 
 function isAllowedReturnUrl(candidate: string): boolean {

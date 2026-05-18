@@ -66,7 +66,7 @@ Row families (all others are reserved — do not invent new `pk` prefixes withou
 |----|----|---------|---------------|
 | `USER#<sub>` | `PROFILE` | display name, locale, signupProvider, `dataMigrationCompleted` flag | `ProfileFn` |
 | `USER#<sub>` | `LINK#arctracker` | envelope-encrypted ArcTracker token | `LinksFn` |
-| `USER#<sub>` | `LINK#embark` | envelope-encrypted Embark token payload + derived metadata (`provider`, `expiresAt`, cached profile snapshot) | `EmbarkLinkFn` / `LinksFn` / `ProfileFn` |
+| `USER#<sub>` | `LINK#embark` | envelope-encrypted Embark token payload + derived metadata (`provider`, `supportId`, `expiresAt`, cached profile snapshot) | `EmbarkLinkFn` / `LinksFn` / `ProfileFn` |
 | `USER#<sub>` | `STATE#quests` | sync'd quest progress | `StateFn` |
 | `USER#<sub>` | `STATE#loot` | sync'd loot-helper selections | `StateFn` |
 | `USER#<sub>` | `STATE#quartermaster` | sync'd quartermaster lists + hideout toggles | `StateFn` |
@@ -117,7 +117,7 @@ GET /me
       links: {
         arctracker: { linked: true, validatedUsername, validatedAt } | { linked: false },
         embark:     { linked: false }
-                  | { linked: true, provider, expiresAt, linkedAt, profileFetchedAt,
+                  | { linked: true, provider, supportId, expiresAt, linkedAt, profileFetchedAt,
                       expired, countdownMinutes, profile }
       }
     }
@@ -126,14 +126,14 @@ GET    /me/links/arctracker               → 200 { linked, validatedUsername?, 
 PUT    /me/links/arctracker  { token }    → 200 { linked: true, validatedUsername, validatedAt }
 DELETE /me/links/arctracker               → 200 { linked: false }
 GET    /me/links/embark                   → 200 { linked: false }
-                                          | 200 { linked: true, provider, expiresAt, linkedAt,
+                                          | 200 { linked: true, provider, supportId, expiresAt, linkedAt,
                                                   profileFetchedAt, expired, countdownMinutes,
                                                   profile }
 DELETE /me/links/embark                   → 200 { linked: false }
 POST   /me/links/embark/start { provider, returnUrl }
-                                          → 200 { authUrl, state, provider }
+                                          → 200 { authUrl, state, provider, supportId }
 POST   /me/links/embark/complete { code, state }
-                                          → 200 { linked: true, provider, expiresAt, linkedAt,
+                                          → 200 { linked: true, provider, supportId, expiresAt, linkedAt,
                                                   profileFetchedAt, expired, profile }
 GET    /me/arctracker/<path>              → ArcTracker response via stored linked token
 GET    /me/state/<domain>                 → 200 { schemaVersion, data, revision, updatedAt } | 404
@@ -294,7 +294,7 @@ Embark is the concrete example in the current codebase, but it intentionally doe
 
 Embark-specific notes:
 - The stored ciphertext is the **raw token JSON response** from Embark, not just the access token string.
-- The `LINK#embark` row also stores unencrypted derived metadata needed for UI and scheduling: `provider`, `expiresAt`, `linkedAt`, `profileFetchedAt`, and `cachedProfile`.
+- The `LINK#embark` row also stores unencrypted derived metadata needed for UI, support, and scheduling: `provider`, `supportId`, `expiresAt`, `linkedAt`, `profileFetchedAt`, and `cachedProfile`.
 - Embark request headers (`User-Agent`, `x-embark-manifest-id`) are operational config stored outside DynamoDB in SSM Parameter Store; they are not per-user state.
 - Embark refresh handling is intentionally **not implemented**. The Embark auth server is currently broken for refresh-token use, even though the flow asks for `offline`. Treat stored Embark tokens as expiring credentials and require re-authentication when they expire. Revisit this after June 2026, once the upstream auth behavior can be checked again.
 - The production Embark redirect URI is the extension loopback URL (`http://127.0.0.1:49176`). If the extension is not installed or not detected, users may still continue and manually rewrite the callback URL domain/host using operator-provided instructions. Do not disable the flow solely because extension detection fails.

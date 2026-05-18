@@ -172,6 +172,7 @@ async function handleArctrackerDelete(
 
 interface EmbarkLinkItem extends EnvelopePayload {
     provider?: string;
+    supportId?: string | null;
     expiresAt?: string | null;
     linkedAt?: string | null;
     profileFetchedAt?: string | null;
@@ -185,6 +186,7 @@ function embarkStatusFromItem(item: EmbarkLinkItem | undefined | null) {
     return {
         linked: true,
         provider: item.provider ?? null,
+        supportId: item.supportId ?? null,
         expiresAt,
         linkedAt: item.linkedAt ?? null,
         profileFetchedAt: item.profileFetchedAt ?? null,

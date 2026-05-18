@@ -12,7 +12,7 @@ import { useEmbarkLinkStatus } from '../../shared/hooks/useEmbarkLinkStatus';
 import { useMinuteTicker } from '../../shared/hooks/useMinuteTicker';
 import { useCognitoAuth } from '../../shared/context/CognitoAuthContext';
 import { useLocale } from '../../shared/context/LocaleContext';
-import { deleteEmbarkLink, startEmbarkLink } from '../../shared/services/userApi';
+import { ApiError, deleteEmbarkLink, startEmbarkLink } from '../../shared/services/userApi';
 import {
   detectEmbarkExtensionInstalled,
   EMBARK_IDP_OPTIONS,
@@ -26,6 +26,7 @@ export function EmbarkSection() {
   const { status, loading, error, refresh } = useEmbarkLinkStatus(Boolean(cognito.user), { pollIntervalMs: null });
   const [submittingProvider, setSubmittingProvider] = useState<string | null>(null);
   const [localError, setLocalError] = useState<string | null>(null);
+  const [errorSupportId, setErrorSupportId] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [unlinking, setUnlinking] = useState(false);
   const extensionDetected = useMemo(() => detectEmbarkExtensionInstalled(), []);
@@ -44,13 +45,16 @@ export function EmbarkSection() {
   async function handleStart(provider: string) {
     setSubmittingProvider(provider);
     setLocalError(null);
+    setErrorSupportId(null);
     setSuccessMessage(null);
     try {
       const returnUrl = `${window.location.origin}/embark-callback`;
       const result = await startEmbarkLink(provider, returnUrl);
+      window.sessionStorage.setItem(`rt_embark_support_${result.state}`, result.supportId);
       window.location.href = result.authUrl;
     } catch (err) {
       setLocalError(err instanceof Error ? err.message : 'Unable to start Embark authentication');
+      setErrorSupportId(err instanceof ApiError ? err.supportId : null);
       setSubmittingProvider(null);
     }
   }
@@ -58,6 +62,7 @@ export function EmbarkSection() {
   async function handleUnlink() {
     setUnlinking(true);
     setLocalError(null);
+    setErrorSupportId(null);
     setSuccessMessage(null);
     try {
       await deleteEmbarkLink();
@@ -100,7 +105,15 @@ export function EmbarkSection() {
         {(localError || error) && (
           <div className="settings-message settings-message--error">
             <AlertCircle size={16} />
-            <span>{localError || error}</span>
+            <span>
+              {localError || error}
+              {errorSupportId && (
+                <>
+                  <br />
+                  {t('pages.profile.embark.supportIdLabel')}: {errorSupportId}
+                </>
+              )}
+            </span>
           </div>
         )}
 
@@ -169,6 +182,12 @@ export function EmbarkSection() {
                 <span className="account-label">{t('pages.profile.embark.providerLabel')}</span>
                 <span className="account-value">{status.provider ?? 'Unknown'}</span>
               </div>
+              {status.supportId && (
+                <div className="account-detail">
+                  <span className="account-label">{t('pages.profile.embark.supportIdLabel')}</span>
+                  <span className="account-value">{status.supportId}</span>
+                </div>
+              )}
               <div className="account-detail">
                 <span className="account-label">{t('pages.profile.embark.expiresLabel')}</span>
                 <span className="account-value">

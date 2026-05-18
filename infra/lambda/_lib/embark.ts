@@ -73,6 +73,10 @@ export function generateEmbarkState(): string {
     return cryptoRandomUrlSafe(24);
 }
 
+export function generateEmbarkSupportId(): string {
+    return `embark-${cryptoRandomUrlSafe(9)}`;
+}
+
 export function parseJwtExpirationIso(token: string | undefined): string | null {
     if (!token) return null;
     const parts = token.split(".");
@@ -192,6 +196,12 @@ export async function fetchEmbarkProfile(accessToken: string): Promise<EmbarkPro
         headers: buildEmbarkApiHeaders(accessToken, config),
     });
     if (!resp.ok) {
+        const body = sanitizeEmbarkErrorBody(await resp.text());
+        console.warn("Embark profile request failed", {
+            status: resp.status,
+            statusText: resp.statusText,
+            body,
+        });
         throw new Error(`Embark profile request failed with HTTP ${resp.status}`);
     }
     const profile = await resp.json() as EmbarkProfile & {
@@ -270,4 +280,39 @@ function normalizeEmbarkProfile(
 function stringifyLargeNumericId(value: number | string | undefined): string | undefined {
     if (value === undefined || value === null) return undefined;
     return typeof value === "string" ? value : String(value);
+}
+
+function sanitizeEmbarkErrorBody(bodyText: string): unknown {
+    const trimmed = bodyText.trim();
+    if (!trimmed) return null;
+    try {
+        return redactSensitiveFields(JSON.parse(trimmed));
+    } catch {
+        return trimmed.slice(0, 500);
+    }
+}
+
+function redactSensitiveFields(value: unknown): unknown {
+    if (Array.isArray(value)) {
+        return value.slice(0, 20).map(redactSensitiveFields);
+    }
+    if (!value || typeof value !== "object") {
+        return value;
+    }
+
+    const sensitiveKeys = new Set([
+        "access_token",
+        "refresh_token",
+        "id_token",
+        "token",
+        "authorization",
+        "email",
+    ]);
+    const redacted: Record<string, unknown> = {};
+    for (const [key, nested] of Object.entries(value)) {
+        redacted[key] = sensitiveKeys.has(key.toLowerCase())
+            ? "[redacted]"
+            : redactSensitiveFields(nested);
+    }
+    return redacted;
 }

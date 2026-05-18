@@ -135,6 +135,7 @@
         "unlink": "Unlink account",
         "unlinked": "Embark account unlinked.",
         "supportText": "The Embark OAuth flow is handled by the external browser extension.",
+        "supportIdLabel": "Support ID",
         "callbackTitle": "Embark Authentication",
         "callbackFailed": "Embark authentication could not be completed.",
         "callbackSignedOut": "You need to be signed in to Raider Tools before completing Embark authentication.",

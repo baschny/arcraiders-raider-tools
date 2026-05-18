@@ -55,6 +55,7 @@ export type EmbarkLinkStatus =
     | {
         linked: true;
         provider: string | null;
+        supportId?: string | null;
         expiresAt: string | null;
         linkedAt: string | null;
         profileFetchedAt: string | null;
@@ -62,6 +63,16 @@ export type EmbarkLinkStatus =
         countdownMinutes?: number | null;
         profile: EmbarkProfileSummary | null;
     };
+
+export class ApiError extends Error {
+    readonly supportId: string | null;
+
+    constructor(message: string, supportId: string | null = null) {
+        super(message);
+        this.name = 'ApiError';
+        this.supportId = supportId;
+    }
+}
 
 async function authedFetch(path: string, init: RequestInit = {}): Promise<Response> {
     const token = await getIdToken();
@@ -77,11 +88,13 @@ async function authedFetch(path: string, init: RequestInit = {}): Promise<Respon
 async function readJson<T>(resp: Response): Promise<T> {
     if (!resp.ok) {
         let message = `${resp.status} ${resp.statusText}`;
+        let supportId: string | null = null;
         try {
-            const body = await resp.json() as { error?: string };
+            const body = await resp.json() as { error?: string; supportId?: string };
             if (body?.error) message = body.error;
+            if (body?.supportId) supportId = body.supportId;
         } catch { /* ignore */ }
-        throw new Error(message);
+        throw new ApiError(message, supportId);
     }
     return resp.json() as Promise<T>;
 }
@@ -123,7 +136,7 @@ export async function deleteEmbarkLink(): Promise<void> {
 export async function startEmbarkLink(
     provider: string,
     returnUrl: string,
-): Promise<{ authUrl: string; state: string; provider: string }> {
+): Promise<{ authUrl: string; state: string; provider: string; supportId: string }> {
     return readJson(await authedFetch('/me/links/embark/start', {
         method: 'POST',
         body: JSON.stringify({ provider, returnUrl }),
@@ -133,8 +146,8 @@ export async function startEmbarkLink(
 export async function completeEmbarkLink(
     code: string,
     state: string,
-): Promise<void> {
-    await readJson(await authedFetch('/me/links/embark/complete', {
+): Promise<{ supportId?: string }> {
+    return readJson(await authedFetch('/me/links/embark/complete', {
         method: 'POST',
         body: JSON.stringify({ code, state }),
     }));

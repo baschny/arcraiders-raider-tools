@@ -129,6 +129,7 @@ async function handleGet(
                 ? {
                     linked: true,
                     provider: embark.provider ?? null,
+                    supportId: embark.supportId ?? null,
                     expiresAt: embarkExpiresAt,
                     linkedAt: embark.linkedAt ?? null,
                     profileFetchedAt: embark.profileFetchedAt ?? null,
