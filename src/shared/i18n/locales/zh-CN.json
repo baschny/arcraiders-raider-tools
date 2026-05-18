@@ -75,11 +75,11 @@
     "title": "奇袭者工具",
     "intro": "欢迎！这是我为 ARC Raiders 制作的个人工具合集。它们最初是为我自己在游戏中使用的私人工具，但实在太实用了，所以我决定分享出来。如果这些工具对你有帮助，欢迎告诉我。请选择下方工具开始使用。",
     "changelog": {
-      "title": "Latest changes",
-      "intro": "Recent updates and additions across Raider Tools.",
-      "affectedApps": "Affected tools",
-      "affectedAppLink": "Open affected tool",
-      "allTools": "All tools"
+      "title": "更新日志",
+      "intro": "奇袭者工具最近更新和添加。",
+      "affectedApps": "受影响的工具",
+      "affectedAppLink": "打开受影响的工具",
+      "allTools": "所有工具"
     },
     "tools": {
       "schedule": "以更清晰的视图展示 ARC Raiders 地图事件时间表，方便你规划对局。",
@@ -153,8 +153,8 @@
     "dialogConfirm": "确认",
     "tooltipObjectives": "目标",
     "tooltipObjectivesOneRound": "一轮",
-    "tooltipRequirements": "Requirements",
-    "tooltipGranted": "Granted items",
+    "tooltipRequirements": "要求",
+    "tooltipGranted": "已批准的物品",
     "tooltipRewards": "奖励"
   },
   "lootHelper": {
@@ -194,51 +194,51 @@
       "expandStash": "展开仓库列表",
       "collapseStash": "折叠仓库列表",
       "noStashItems": "仓库里暂无被标记的物品。",
-      "enableStashItem": "Click to enable this stash item",
-      "disableStashItem": "Click to disable this stash item",
-      "removeStashItem": "Remove from stash"
+      "enableStashItem": "单击以启用此仓库内物品",
+      "disableStashItem": "单击以禁用此仓库内物品",
+      "removeStashItem": "从仓库中移除"
     },
     "filters": {
-      "search": "Search",
-      "searchPlaceholder": "Type to search items...",
-      "type": "Type",
-      "rarity": "Rarity",
-      "location": "Location",
-      "all": "All",
-      "none": "None",
-      "listView": "List View",
-      "gridView": "Grid View"
+      "search": "搜索",
+      "searchPlaceholder": "输入搜索物品...",
+      "type": "类型",
+      "rarity": "稀有度",
+      "location": "位置",
+      "all": "全部",
+      "none": "无",
+      "listView": "列表视图",
+      "gridView": "网格视图"
     },
     "results": {
-      "noItemsNeeded": "No items needed for your goals.",
-      "noSearchResults": "No items found matching \"{query}\"",
-      "noItemsForGroup": "No items in this group."
+      "noItemsNeeded": "您的目标不需要任何物品。",
+      "noSearchResults": "未找到匹配“{query}”的物品",
+      "noItemsForGroup": "此组中没有物品。"
     },
     "itemInfo": {
-      "stackSize": "Stack Size:",
-      "weight": "Weight:",
-      "worth": "Worth:",
-      "foundIn": "Found In:",
-      "craftingRecipe": "Crafting Recipe",
-      "recyclesInto": "Recycles Into",
-      "salvagesInto": "Salvages Into"
+      "stackSize": "堆叠数量：",
+      "weight": "重量：",
+      "worth": "价值：",
+      "foundIn": "发现于：",
+      "craftingRecipe": "合成配方",
+      "recyclesInto": "回收为",
+      "salvagesInto": "拆解为"
     },
     "hierarchy": {
-      "leaf": "This item is not used in any of your goal items.",
-      "recyclesInto": "recycles into",
-      "salvagesInto": "salvages into",
-      "salvagesIntoSafe": "salvages into (safe)",
+      "leaf": "此项目未用于任何目标物品。",
+      "recyclesInto": "回收为",
+      "salvagesInto": "拆解为",
+      "salvagesIntoSafe": "拆解为（安全）",
       "usedToBuild": "used to build"
     },
     "help": {
-      "openTitle": "How to use",
-      "title": "How to Use",
-      "videoTitle": "Video Tutorial",
-      "videoLink": "Watch a quick walkthrough: How to Use the Looting Helper",
-      "step1Title": "1. Set Your Crafting Goals",
-      "step1Body": "Use the search bar to find and add items you want to craft regularly. This builds your master list of requirements.",
-      "step2Title": "2. Identify Loot Priorities",
-      "step2Body": "The app automatically generates a list of all base resources and materials you need to loot to achieve these crafting goals.",
+      "openTitle": "如何使用",
+      "title": "如何使用",
+      "videoTitle": "视频教程",
+      "videoLink": "观看快速演示：如何使用搜刮助手",
+      "step1Title": "1. 设定您的合成目标",
+      "step1Body": "使用搜索栏查找并添加您想要定期制作的物品。这将构建您的需求总列表。",
+      "step2Title": "2. 查明战利品优先级",
+      "step2Body": "该应用会自动生成一个列表，列出为了实现这些制造目标你需要拾取的所有基础资源和材料。",
       "step3Title": "3. Manage Your Stash",
       "step3Body": "Mark items as already covered in your stash when you have enough of them. This reduces the list to what you still actually need.",
       "step4Title": "4. Optimize Your Raids",
