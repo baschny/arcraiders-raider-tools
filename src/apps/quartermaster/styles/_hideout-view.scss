@@ -15,43 +15,20 @@
   }
 
   &__tracking {
-    position: relative;
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+    flex-wrap: wrap;
+    flex: 1;
+    justify-content: flex-end;
   }
 
-  &__tracking-menu {
-    position: absolute;
-    top: calc(100% + #{$spacing-xs});
-    left: 0;
-    z-index: 20;
-    min-width: 230px;
-    padding: $spacing-xs;
-    background: $bg-secondary;
-    border: 1px solid rgba($border-light, 0.45);
-    border-radius: $radius-sm;
-    box-shadow: 0 12px 30px rgba($bg-dark, 0.45);
-
-    button {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      gap: $spacing-sm;
-      padding: $spacing-sm;
-      border: 0;
-      border-radius: $radius-sm;
-      background: transparent;
-      color: $text-primary;
-      font-size: $font-sm;
-      text-align: left;
-      cursor: pointer;
-      transition: $transition-default;
-
-      &:hover,
-      &:focus-visible {
-        outline: none;
-        background: $bg-tertiary;
-        color: $text-accent;
-      }
-    }
+  &__tracking-label {
+    font-size: $font-sm;
+    font-weight: 700;
+    color: $text-secondary;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
   }
 
   &__empty {
