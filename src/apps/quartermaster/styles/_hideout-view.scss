@@ -19,6 +19,12 @@
     align-items: center;
     gap: $spacing-md;
     flex-wrap: wrap;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
     flex: 1;
     justify-content: flex-end;
   }

@@ -218,28 +218,6 @@ export function HideoutView({
           {t('quartermaster.common.syncHideouts')}
         </button>
 
-        <button
-          type="button"
-          className="qm-button"
-          onClick={() => setAllModulesCollapsed(true)}
-          disabled={!cachedHideout}
-          title={t('quartermaster.hideout.collapseAllTooltip')}
-        >
-          <ChevronsUp size={16} />
-          {t('quartermaster.hideout.collapseAll')}
-        </button>
-
-        <button
-          type="button"
-          className="qm-button"
-          onClick={() => setAllModulesCollapsed(false)}
-          disabled={!cachedHideout}
-          title={t('quartermaster.hideout.expandAllTooltip')}
-        >
-          <ChevronsDown size={16} />
-          {t('quartermaster.hideout.expandAll')}
-        </button>
-
         <div className="hideout-view__tracking">
           <span className="hideout-view__tracking-label">{t('quartermaster.hideout.tracking')}</span>
           <div className="qm-segmented-control">
@@ -278,6 +256,30 @@ export function HideoutView({
               {t('quartermaster.hideout.enableAll')}
             </button>
           </div>
+        </div>
+
+        <div className="hideout-view__actions">
+          <button
+            type="button"
+            className="qm-button qm-button--ghost"
+            onClick={() => setAllModulesCollapsed(true)}
+            disabled={!cachedHideout}
+            title={t('quartermaster.hideout.collapseAllTooltip')}
+          >
+            <ChevronsUp size={16} />
+            {t('quartermaster.hideout.collapseAll')}
+          </button>
+
+          <button
+            type="button"
+            className="qm-button qm-button--ghost"
+            onClick={() => setAllModulesCollapsed(false)}
+            disabled={!cachedHideout}
+            title={t('quartermaster.hideout.expandAllTooltip')}
+          >
+            <ChevronsDown size={16} />
+            {t('quartermaster.hideout.expandAll')}
+          </button>
         </div>
       </div>
 
