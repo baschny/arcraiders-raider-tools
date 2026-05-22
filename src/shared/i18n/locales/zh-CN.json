@@ -86,7 +86,7 @@
       "craftCalculator": "计算应制作多少物品，最大化利用你的仓库空间。",
       "quests": "通过交互式任务树追踪你的任务进度。",
       "lootHelper": "可视化制作链，帮助你在对局中判断该拾取什么。",
-      "quartermaster": "在一个页面中规划仓库、装备和藏身处需求。"
+      "quartermaster": "在一个页面中规划仓库、配装和藏身处需求。"
     }
   },
   "pages": {
@@ -242,7 +242,7 @@
       "step3Title": "3. 管理您的仓库",
       "step3Body": "Mark items as already covered in your stash when you have enough of them. This reduces the list to what you still actually need.",
       "step4Title": "4. 优化你的对局",
-      "step4Body": "在对局期间或事后使用列表来快速决定保留、回收、留下或出售的物品。",
+      "step4Body": "在对局期间或事后使用列表来快速决定保留、拆解、留下或出售的物品。",
       "exampleTitle": "示例流程",
       "exampleBody": "If you want to craft a specific gadget, add it as a goal. The visualizer shows the full tree from the final item down to base materials like Circuit Boards or Chemicals. When you find a topside item during a raid, you can quickly check which materials it salvages into and decide whether it is worth the inventory space.",
       "noteLabel": "备注：",
@@ -302,11 +302,11 @@
   "quartermaster": {
     "loading": "Loading item data...",
     "nav": {
-      "welcome": "Welcome",
-      "stash": "My Items",
-      "currentLoadout": "Current Loadout",
-      "lists": "Lists",
-      "hideout": "Hideout",
+      "welcome": "欢迎",
+      "stash": "我的物品",
+      "currentLoadout": "当前配装",
+      "lists": "列表",
+      "hideout": "藏身处",
       "inRaid": "In Raid",
       "crafting": "Crafting"
     },
@@ -372,19 +372,19 @@
       "openCrafting": "打开制造"
     },
     "stash": {
-      "searchPlaceholder": "Search my items...",
+      "searchPlaceholder": "搜索我的物品...",
       "allCategories": "所有类别",
       "allRarities": "所有稀有度",
       "showOnlyRecyclable": "仅显示可回收",
       "totalValue": "总价值",
-      "empty": "未加载任何物品。点击\"同步我的物品\"加载您的仓库和当前背包。",
+      "empty": "未加载任何物品。点击\"同步我的物品\"加载您的仓库和当前配装。",
       "noMatches": "没有匹配筛选器的物品。",
       "missingCount": "{missing}/{required} 缺失",
       "syncMyItems": "同步我的物品",
-      "syncingInventory": "Syncing inventory...",
-      "syncingLoadout": "Syncing loadout...",
+      "syncingInventory": "正在同步物品栏...",
+      "syncingLoadout": "正在同步背包...",
       "inventorySource": "物品栏",
-      "loadoutSource": "背包",
+      "loadoutSource": "配装",
       "incompleteWarning": "Owned inventory is incomplete. Sync missing source: {sources}.",
       "syncSetupHint": "Quartermaster needs {sources} data before it can calculate owned items. Hit \"Sync My Items\" to load your inventory and current loadout.",
       "attachmentsCounted": "Attachments counted separately",
