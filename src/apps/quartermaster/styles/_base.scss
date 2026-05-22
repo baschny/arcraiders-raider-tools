@@ -100,6 +100,34 @@
     padding: $spacing-xs $spacing-sm;
     font-size: 10px;
   }
+
+  &--danger {
+    background: rgba($status-missing, 0.2);
+    border-color: $status-missing;
+    color: $text-primary;
+
+    &:hover {
+      background: rgba($status-missing, 0.3);
+    }
+  }
+
+  &--danger-outline {
+    background: transparent;
+    border-color: rgba($status-missing, 0.5);
+    color: $status-missing;
+
+    &:hover {
+      background: rgba($status-missing, 0.1);
+      border-color: $status-missing;
+    }
+  }
+
+  &--icon {
+    padding: $spacing-xs;
+    min-width: 32px;
+    height: 32px;
+    justify-content: center;
+  }
 }
 
 // Common input styles

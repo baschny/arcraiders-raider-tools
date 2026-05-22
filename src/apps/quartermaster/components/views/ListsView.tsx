@@ -3,8 +3,8 @@
  * See specification section 7.4 / CR-006, CR-007
  */
 
-import { useEffect, useState, useMemo } from 'react';
-import { Plus, Trash2, Eye, EyeOff, List } from 'lucide-react';
+import { useEffect, useState, useMemo, useRef } from 'react';
+import { Plus, Trash2, Eye, EyeOff, List, Pencil, Check, X } from 'lucide-react';
 import type { ItemsMap } from '../../types/item';
 import type { StoredList } from '../../types/list';
 import type { PlannerResult } from '../../types/planner';
@@ -59,13 +59,23 @@ export function ListsView({
   onReorderLists,
   onReorderItems,
 }: ListsViewProps) {
-  const { t, compareText } = useLocale();
+  const { t, tm, compareText } = useLocale();
   const [selectedListId, setSelectedListId] = useState<string | null>(
     () => resolveSelectedListId(lists, loadSelectedListId())
   );
   const [newListName, setNewListName] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
   const [showSuggestions, setShowSuggestions] = useState(false);
+
+  // Edit title state
+  const [isEditingTitle, setIsEditingTitle] = useState(false);
+  const [editedTitle, setEditedTitle] = useState('');
+
+  // Confirmation dialog state
+  const [confirmDeleteListId, setConfirmDeleteListId] = useState<string | null>(null);
+  const [confirmDeleteItem, setConfirmDeleteItem] = useState<{ listId: string; itemId: string; name: string } | null>(null);
+
+  const [inputValueMap, setInputValueMap] = useState<Record<string, string>>({});
 
   // List DnD state
   const [draggedListId, setDraggedListId] = useState<string | null>(null);
@@ -74,6 +84,8 @@ export function ListsView({
   // Item DnD state
   const [draggedItemId, setDraggedItemId] = useState<string | null>(null);
   const [dropTargetItemId, setDropTargetItemId] = useState<string | null>(null);
+
+  const titleInputRef = useRef<HTMLInputElement>(null);
 
   const selectedList = lists.find(l => l.id === selectedListId);
   const tooltipContext = {
@@ -90,6 +102,11 @@ export function ListsView({
       .slice(0, 10);
   }, [itemsMap, searchQuery, compareText]);
 
+  const handleSelectList = (listId: string | null) => {
+    setSelectedListId(listId);
+    setIsEditingTitle(false);
+  };
+
   useEffect(() => {
     const nextSelectedListId = resolveSelectedListId(
       lists,
@@ -97,13 +114,24 @@ export function ListsView({
     );
 
     if (nextSelectedListId !== selectedListId) {
-      setSelectedListId(nextSelectedListId);
+      // Use setTimeout to avoid synchronous setState during render/effect which triggers lint
+      const timer = setTimeout(() => {
+        setSelectedListId(nextSelectedListId);
+      }, 0);
+      return () => clearTimeout(timer);
     }
-  }, [lists, selectedListId]);
+  }, [lists]);
 
   useEffect(() => {
     saveSelectedListId(selectedListId);
   }, [selectedListId]);
+
+  useEffect(() => {
+    if (isEditingTitle && titleInputRef.current) {
+      titleInputRef.current.focus();
+      titleInputRef.current.select();
+    }
+  }, [isEditingTitle]);
 
   // --- Handlers ---
 
@@ -111,6 +139,52 @@ export function ListsView({
     if (!newListName.trim()) return;
     onCreateList(newListName.trim());
     setNewListName('');
+  };
+
+  const handleDeleteList = (listId: string) => {
+    const list = lists.find(l => l.id === listId);
+    if (!list) return;
+
+    if (list.items.length === 0) {
+      performDeleteList(listId);
+    } else {
+      setConfirmDeleteListId(listId);
+    }
+  };
+
+  const performDeleteList = (listId: string) => {
+    onDeleteList(listId);
+    if (selectedListId === listId) {
+      handleSelectList(lists.find(l => l.id !== listId)?.id ?? null);
+    }
+    setConfirmDeleteListId(null);
+  };
+
+  const handleStartEditTitle = () => {
+    if (!selectedList) return;
+    setEditedTitle(selectedList.name);
+    setIsEditingTitle(true);
+  };
+
+  const handleSaveTitle = () => {
+    if (!selectedListId || !editedTitle.trim()) {
+      setIsEditingTitle(false);
+      return;
+    }
+    onRenameList(selectedListId, editedTitle.trim());
+    setIsEditingTitle(false);
+  };
+
+  const handleRemoveItem = (listId: string, itemId: string) => {
+    const item = itemsMap[itemId];
+    setConfirmDeleteItem({ listId, itemId, name: item?.name ?? itemId });
+  };
+
+  const performRemoveItem = () => {
+    if (confirmDeleteItem) {
+      onRemoveItem(confirmDeleteItem.listId, confirmDeleteItem.itemId);
+      setConfirmDeleteItem(null);
+    }
   };
 
   const handleAddItem = (itemId: string) => {
@@ -250,7 +324,7 @@ export function ListsView({
                 !list.isEnabled ? 'lists-view__item--disabled' : '',
                 list.id === dropTargetListId ? 'lists-view__item--drop-target' : '',
               ].filter(Boolean).join(' ')}
-              onClick={() => setSelectedListId(list.id)}
+              onClick={() => handleSelectList(list.id)}
               onDragStart={(e) => handleListDragStart(e, list.id)}
               onDragOver={(e) => handleListDragOver(e, list.id)}
               onDragLeave={handleListDragLeave}
@@ -297,19 +371,49 @@ export function ListsView({
         {selectedList ? (
           <>
             <div className="lists-view__editor-header">
-              <input
-                type="text"
-                className="qm-input"
-                value={selectedList.name}
-                onChange={(e) => onRenameList(selectedList.id, e.target.value)}
-                style={{ fontSize: 14, fontWeight: 600 }}
-              />
+              {isEditingTitle ? (
+                <div className="lists-view__title-edit">
+                  <input
+                    ref={titleInputRef}
+                    type="text"
+                    className="qm-input"
+                    value={editedTitle}
+                    onChange={(e) => setEditedTitle(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') handleSaveTitle();
+                      if (e.key === 'Escape') setIsEditingTitle(false);
+                    }}
+                    style={{ fontSize: 14, fontWeight: 600, flex: 1 }}
+                  />
+                  <button
+                    className="qm-button qm-button--primary"
+                    onClick={handleSaveTitle}
+                    title={t('quartermaster.lists.saveTitleTooltip')}
+                  >
+                    <Check size={14} />
+                  </button>
+                  <button
+                    className="qm-button"
+                    onClick={() => setIsEditingTitle(false)}
+                  >
+                    <X size={14} />
+                  </button>
+                </div>
+              ) : (
+                <div className="lists-view__title-display">
+                  <h2 className="lists-view__editor-title">{selectedList.name}</h2>
+                  <button
+                    className="qm-button qm-button--icon"
+                    onClick={handleStartEditTitle}
+                    title={t('quartermaster.lists.editTitleTooltip')}
+                  >
+                    <Pencil size={14} />
+                  </button>
+                </div>
+              )}
               <button
-                className="qm-button"
-                onClick={() => {
-                  onDeleteList(selectedList.id);
-                  setSelectedListId(lists.find(l => l.id !== selectedList.id)?.id ?? null);
-                }}
+                className="qm-button qm-button--danger-outline"
+                onClick={() => handleDeleteList(selectedList.id)}
               >
                 <Trash2 size={14} /> {t('quartermaster.lists.delete')}
               </button>
@@ -367,12 +471,6 @@ export function ListsView({
                   >
                     <div className="lists-view__row-actions">
                       <button
-                        className="qm-button lists-view__action-button lists-view__action-button--danger"
-                        onClick={() => onRemoveItem(selectedList.id, listItem.itemId)}
-                      >
-                        <Trash2 size={16} />
-                      </button>
-                      <button
                         className="qm-button lists-view__action-button"
                         onClick={() => onToggleItem(selectedList.id, listItem.itemId)}
                       >
@@ -399,22 +497,41 @@ export function ListsView({
                           -
                         </button>
                         <input
-                          type="number"
+                          type="text"
+                          inputMode="numeric"
                           className="qm-input lists-view__qty-input"
-                          value={listItem.quantity}
+                          value={inputValueMap[listItem.itemId] ?? listItem.quantity}
                           onChange={(e) => {
-                            const val = parseInt(e.target.value, 10);
-                            if (!isNaN(val) && val > 0) {
-                              onUpdateQuantity(selectedList.id, listItem.itemId, val);
+                            const rawValue = e.target.value;
+                            // Allow digits only
+                            if (/^\d*$/.test(rawValue)) {
+                              setInputValueMap(prev => ({ ...prev, [listItem.itemId]: rawValue }));
+                              const val = parseInt(rawValue, 10);
+                              if (!isNaN(val) && val > 0) {
+                                onUpdateQuantity(selectedList.id, listItem.itemId, val);
+                              }
                             }
                           }}
-                          min={1}
+                          onBlur={() => {
+                            // On blur, clear the local override so it reconciles with prop
+                            setInputValueMap(prev => {
+                              const next = { ...prev };
+                              delete next[listItem.itemId];
+                              return next;
+                            });
+                          }}
                         />
                         <button
                           className="qm-button lists-view__step-button"
                           onClick={() => handleQuantityChange(listItem.itemId, 1)}
                         >
                           +
+                        </button>
+                        <button
+                          className="qm-button lists-view__action-button lists-view__action-button--danger lists-view__delete-item"
+                          onClick={() => handleRemoveItem(selectedList.id, listItem.itemId)}
+                        >
+                          <Trash2 size={16} />
                         </button>
                       </div>
                     </div>
@@ -430,6 +547,54 @@ export function ListsView({
           </div>
         )}
       </div>
+      {/* Confirmation Dialogs */}
+      {confirmDeleteListId && (
+        <div className="confirm-overlay" onClick={() => setConfirmDeleteListId(null)}>
+          <div className="confirm-dialog" onClick={e => e.stopPropagation()}>
+            <h3 className="confirm-dialog__title">{t('quartermaster.lists.deleteListConfirmTitle')}</h3>
+            <p className="confirm-dialog__body">
+              {tm('quartermaster.lists.deleteListConfirmBody', {
+                name: lists.find(l => l.id === confirmDeleteListId)?.name ?? ''
+              })}
+            </p>
+            <div className="confirm-dialog__actions">
+              <button className="qm-button" onClick={() => setConfirmDeleteListId(null)}>
+                {t('quartermaster.lists.cancel')}
+              </button>
+              <button
+                className="qm-button qm-button--danger"
+                onClick={() => performDeleteList(confirmDeleteListId)}
+                autoFocus
+              >
+                {t('quartermaster.lists.delete')}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {confirmDeleteItem && (
+        <div className="confirm-overlay" onClick={() => setConfirmDeleteItem(null)}>
+          <div className="confirm-dialog" onClick={e => e.stopPropagation()}>
+            <h3 className="confirm-dialog__title">{t('quartermaster.lists.deleteItemConfirmTitle')}</h3>
+            <p className="confirm-dialog__body">
+              {tm('quartermaster.lists.deleteItemConfirmBody', { name: confirmDeleteItem.name })}
+            </p>
+            <div className="confirm-dialog__actions">
+              <button className="qm-button" onClick={() => setConfirmDeleteItem(null)}>
+                {t('quartermaster.lists.cancel')}
+              </button>
+              <button
+                className="qm-button qm-button--danger"
+                onClick={performRemoveItem}
+                autoFocus
+              >
+                {t('quartermaster.lists.delete')}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

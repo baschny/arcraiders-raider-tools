@@ -1481,11 +1481,12 @@ Editing controls must be visually larger:
 - + button
 - − button
 - Hide button
-- Delete button
 
-Buttons must be placed on the **left side** of rows.
+Buttons must be placed on the **left side** of rows, except for the **Delete button**, which must be placed at the **far right** of the row (after the + button).
 
-Padding must be added around numeric input fields to separate them from browser spinner arrows.
+Numerical input fields for item quantities must not display browser-native "up/down" value widgets (spinners). They must be manually editable with immediate updates upon entry and support incremental changes via the + and − buttons. Any non-numeric characters must be ignored during manual entry.
+
+### List Actions
 
 The Lists view must support existing user-list behavior:
 
@@ -1498,6 +1499,19 @@ The Lists view must support existing user-list behavior:
 - reorder items
 - change quantities
 - enable or disable lists and items
+
+### Safety and Confirmation
+
+- **Delete List**: Deleting a list that contains one or more items must require user confirmation. Empty lists may be deleted without confirmation.
+- **Delete Item**: Deleting an item from a list must require user confirmation.
+
+### Title Editing
+
+The title of a list must be displayed as a read-only headline by default.
+- An **Edit** (pencil) button must be displayed next to the title with the tooltip "Edit title".
+- Clicking the Edit button replaces the headline with an input field.
+- A **Save** (check/disk) button must be displayed next to the input field to commit changes.
+- Saving or cancelling the edit returns the title to the read-only headline state.
 
 ---
 
