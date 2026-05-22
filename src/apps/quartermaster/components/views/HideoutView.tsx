@@ -177,6 +177,17 @@ export function HideoutView({
   }
 
   const sortedDefinitions = [...hideoutDefinitions].sort((a, b) => {
+    // 1. Completion status (incomplete first)
+    const aModule = moduleState.get(a.id);
+    const bModule = moduleState.get(b.id);
+    const aComplete = (aModule?.currentLevel ?? 0) >= (aModule?.maxLevel ?? a.maxLevel);
+    const bComplete = (bModule?.currentLevel ?? 0) >= (bModule?.maxLevel ?? b.maxLevel);
+
+    if (aComplete !== bComplete) {
+      return aComplete ? 1 : -1;
+    }
+
+    // 2. Predefined order
     const aIndex = HIDEOUT_MODULE_ORDER.indexOf(a.id);
     const bIndex = HIDEOUT_MODULE_ORDER.indexOf(b.id);
 
@@ -186,6 +197,7 @@ export function HideoutView({
       return aIndex - bIndex;
     }
 
+    // 3. Alphabetical fallback
     return compareText(a.name, b.name);
   });
   const hasPendingUpgrades = hideoutLists.length > 0;
@@ -447,6 +459,8 @@ export function HideoutView({
                               'hideout-view__upgrade',
                               !list.isEnabled ? 'hideout-view__upgrade--disabled' : '',
                               isTierAvailable ? 'hideout-view__upgrade--complete' : '',
+                              isNext ? 'hideout-view__upgrade--next' : '',
+                              list.items.length === 1 ? 'hideout-view__upgrade--single' : '',
                             ].filter(Boolean).join(' ')}
                           >
                             <div className="hideout-view__upgrade-header">
@@ -478,11 +492,6 @@ export function HideoutView({
                                     {t('quartermaster.hideout.completed')}
                                   </span>
                                 )}
-                                {isNext && (
-                                  <span className="hideout-view__next-pill">
-                                    {t('quartermaster.hideout.next')}
-                                  </span>
-                                )}
                               </div>
                             </div>
 
@@ -495,6 +504,7 @@ export function HideoutView({
                                   listItem.itemId,
                                   listItem.quantity,
                                 );
+                                const deficit = plannerResult.deficit[listItem.itemId] ?? 0;
 
                                 return (
                                   <div
@@ -520,28 +530,32 @@ export function HideoutView({
                                       onToggleHideoutItem(parsed.moduleId, parsed.level, listItem.itemId);
                                     }}
                                   >
-                                    {isRequirementAvailable && (
-                                      <span
-                                        className="hideout-view__item-complete"
-                                        title={t('quartermaster.hideout.itemCompleteTooltip')}
-                                        aria-label={t('quartermaster.hideout.itemCompleteTooltip')}
-                                      >
-                                        <CheckCircle2 size={15} />
-                                      </span>
-                                    )}
-                                    <ItemIcon
-                                      itemId={item.id}
-                                      name={item.name}
-                                      icon={item.icon}
-                                      rarity={item.rarity}
-                                      quantity={getOwnedQuantity(item.id)}
-                                      size="sm"
-                                      showName={false}
-                                      tooltipContext={tooltipContext}
-                                    />
-                                    <span className="hideout-view__qty">
-                                      {t('quartermaster.hideout.needQuantity').replace('{quantity}', `${listItem.quantity}x`)}
-                                    </span>
+                                    <div className="hideout-view__item-icon-wrapper">
+                                      <ItemIcon
+                                        itemId={item.id}
+                                        name={item.name}
+                                        icon={item.icon}
+                                        rarity={item.rarity}
+                                        quantity={getOwnedQuantity(item.id)}
+                                        size="sm"
+                                        showName={false}
+                                        tooltipContext={tooltipContext}
+                                      />
+                                      {deficit > 0 && (
+                                        <span className="hideout-view__item-missing-badge">
+                                          {deficit}
+                                        </span>
+                                      )}
+                                      {isRequirementAvailable && (
+                                        <span
+                                          className="hideout-view__item-complete"
+                                          title={t('quartermaster.hideout.itemCompleteTooltip')}
+                                          aria-label={t('quartermaster.hideout.itemCompleteTooltip')}
+                                        >
+                                          <CheckCircle2 size={12} />
+                                        </span>
+                                      )}
+                                    </div>
                                     <span className="hideout-view__item-name qm-item-name">{item.name}</span>
                                   </div>
                                 );
