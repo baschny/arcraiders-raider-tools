@@ -59,6 +59,13 @@ export function getMapAccent(slug: MapSlug): string {
   return MAP_ACCENT_COLORS[slug];
 }
 
+export interface MapIndicatorSegment {
+  slug: MapSlug;
+  name: string;
+  accentColor: string;
+  backgroundImage: string;
+}
+
 export interface QuestMapIndicator {
   /** Unique map slugs after normalization (in input order). */
   slugs: MapSlug[];
@@ -68,6 +75,10 @@ export interface QuestMapIndicator {
   accentColor: string;
   /** Background image URL for the indicator, undefined when multiple. */
   backgroundImage?: string;
+  /** Individual map data for segmented display (2-3 maps). */
+  segments?: MapIndicatorSegment[];
+  /** Total number of unique maps. */
+  mapCount: number;
   /** True when the quest takes place on more than one distinct map. */
   isMultiple: boolean;
 }
@@ -106,13 +117,26 @@ export function getQuestMapIndicator(
     return null;
   }
 
-  const isMultiple = uniqueSlugs.length > 1;
+  const mapCount = uniqueSlugs.length;
+  const isMultiple = mapCount > 1;
 
   if (isMultiple) {
+    const segments: MapIndicatorSegment[] | undefined =
+      mapCount >= 2 && mapCount <= 3
+        ? uniqueSlugs.map((slug, index) => ({
+            slug,
+            name: uniqueNames[index] ?? slug,
+            accentColor: getMapAccent(slug),
+            backgroundImage: getMapImage(slug),
+          }))
+        : undefined;
+
     return {
       slugs: uniqueSlugs,
       names: uniqueNames,
       accentColor: MULTI_ACCENT_COLOR,
+      segments,
+      mapCount,
       isMultiple: true,
     };
   }
@@ -123,6 +147,7 @@ export function getQuestMapIndicator(
     names: uniqueNames,
     accentColor: getMapAccent(onlySlug),
     backgroundImage: getMapImage(onlySlug),
+    mapCount,
     isMultiple: false,
   };
 }

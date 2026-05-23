@@ -16,6 +16,7 @@ The project is organized as a collection of independent tools located in `src/ap
 - **craft-calculator** - Crafting requirements and material calculator
 - **quests** - Interactive quest tracker with dependency tree
 - **loot-helper** - Crafting chain visualizer for optimal looting
+- **quartermaster** - Specification-driven inventory and loadout manager
 
 Each app is self-contained with its own components, utilities, types, and styles, but shares common infrastructure.
 
@@ -251,6 +252,18 @@ This includes:
 - importing the Lambda handler there
 - providing any local-only env fallbacks needed for Secrets Manager, SSM, KMS, or other AWS-backed dependencies
 
+### Quartermaster (Specification-First)
+
+The **quartermaster** app follows a strict **specification-first** development model. Unlike other apps, all functional changes must be documented in the technical specification before implementation.
+
+- **Specifications Location**: `docs/specifications/quartermaster/`
+- **Functional Changes**:
+  1. Before any implementation, the AI agent must plan the change in a new change request file: `docs/specifications/quartermaster/change-XX-xxx.md`.
+  2. This plan must be presented to and approved by the user.
+  3. Once approved, the first step of implementation is to update the main specification files in `docs/specifications/quartermaster/` to reflect the new behavior.
+  4. Only after the specifications are updated should the code changes in `src/apps/quartermaster/` begin.
+- **Single Source of Truth**: When researching existing requirements or behavior for the Quartermaster app, **always refer to the final specification files** (e.g., `specification-quartermaster.md`). Change requests (`change-XX-xxx.md`) are intermediate documents used for the approval process and should not be used for research as they may be outdated or superseded.
+
 ### Adding a New App
 
 1. Create directory structure:
@@ -410,10 +423,11 @@ interface Item {
 When making changes:
 1. Understand which app(s) are affected
 2. Check if changes should be in shared vs app-specific code
-3. Follow existing patterns from the 4 existing apps
-4. Use SCSS files, not inline styles
-5. Write tests for calculations and algorithms
-6. Run `npm run build` to verify compilation
-7. Keep upstream data sync in mind for generation scripts
+3. Follow existing patterns from the existing apps (5 total)
+4. For the **quartermaster** app, strictly follow the specification-first workflow (see section above)
+5. Use SCSS files, not inline styles
+6. Write tests for calculations and algorithms
+7. Run `npm run build` to verify compilation
+8. Keep upstream data sync in mind for generation scripts
 
 When in doubt, examine existing apps for patterns and conventions.

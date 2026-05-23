@@ -94,11 +94,29 @@ const ddb = new DynamoDBClient({
 });
 
 async function ensureTable(): Promise<void> {
-    try {
-        await ddb.send(new DescribeTableCommand({ TableName: TABLE_NAME }));
-        return;
-    } catch (err) {
-        if (!(err instanceof ResourceNotFoundException)) throw err;
+    const maxRetries = 10;
+    const retryDelay = 1000;
+
+    for (let i = 0; i < maxRetries; i++) {
+        try {
+            await ddb.send(new DescribeTableCommand({ TableName: TABLE_NAME }));
+            return;
+        } catch (err) {
+            // If table doesn't exist, we need to create it (proceed after the loop)
+            if (err instanceof ResourceNotFoundException) {
+                break;
+            }
+
+            const error = err as { code?: string; name?: string; message?: string };
+            // If it's a connection error, retry
+            if (error.code === "ECONNRESET" || error.name === "TimeoutError" || error.message?.includes("ECONNRESET") || error.message?.includes("socket hang up")) {
+                console.log(`[local-api] waiting for dynamodb... (attempt ${i + 1}/${maxRetries})`);
+                await new Promise(resolve => setTimeout(resolve, retryDelay));
+                continue;
+            }
+
+            throw err;
+        }
     }
 
     // Minimal schema: pk/sk only. Keep in sync with the CDK table

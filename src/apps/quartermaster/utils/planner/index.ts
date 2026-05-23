@@ -108,7 +108,7 @@ export function computePlan(
   const weaponUpgradePlan = { steps: sortWeaponUpgradeSteps(greedyResult.weaponUpgradeSteps) };
   const recyclePlan = { actions: greedyResult.recycleActions };
 
-  // Step 5: Generate loot suggestions (CR-MOD-6.5)
+  // Step 5: Generate loot suggestions (Final Spec Section 4.5 & 5.1)
   // Merge top-level deficits with remaining ingredient deficits from greedy planner
   const lootDeficits: Record<ItemId, Qty> = { ...deficit };
   for (const [itemId, qty] of Object.entries(greedyResult.remainingDeficits)) {

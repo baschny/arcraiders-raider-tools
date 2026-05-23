@@ -7,6 +7,7 @@
  *   2. Craft-support materials – missing direct/L2 inputs (crafting-relevant only)
  *
  * See change-04 sections CR-004 through CR-016.
+ * See Final Spec Section 6.5
  */
 
 import type { ItemsMap } from '../../types/item';
@@ -19,6 +20,7 @@ import type {
   LootBadge,
   RequiredSource,
 } from '../../types/planner';
+import { calculateProvenance } from './provenance';
 import { NON_RECYCLABLE_CATEGORIES } from '../../types/item';
 
 // ---------------------------------------------------------------------------
@@ -160,9 +162,7 @@ export function generateInRaidSuggestions(
 
     addReason(itemId, 'BRING_HOME_FINAL_TARGET');
 
-    // Attach list provenance
-    const s = getOrCreate(itemId);
-    s.listSources = requiredSourcesByItemId[itemId] ?? [];
+    // Attach list provenance (handled in Finalize for all pipelines)
   }
 
   // -----------------------------------------------------------------------
@@ -206,6 +206,11 @@ export function generateInRaidSuggestions(
   }
 
   // -----------------------------------------------------------------------
+  // Pipeline 3: Pre-compute deep material dependencies for provenance
+  // -----------------------------------------------------------------------
+  const provenanceMap = calculateProvenance(itemsMap, requiredSourcesByItemId, deficits);
+
+  // -----------------------------------------------------------------------
   // Finalize: compute badges, impacted targets, sort reasons
   // -----------------------------------------------------------------------
   const REASON_ORDER: InRaidReason[] = [
@@ -231,58 +236,23 @@ export function generateInRaidSuggestions(
     const isDirectMaterial = suggestion.reasons.includes('BRING_HOME_DIRECT_MATERIAL');
     suggestion.badge = determineBadge(item, neededMaterials, isFinalTarget || isDirectMaterial);
 
-    // Compute impacted target itemIds
-    const impacted = new Set<string>();
+    // Attach listSources and impactedTargetItemIds from the shared provenance
+    const sources = provenanceMap[suggestion.itemId];
+    if (sources && sources.length > 0) {
+      suggestion.listSources = sources as RequiredSource[];
 
-    // If this item is itself a final target
-    if (isFinalTarget) {
-      impacted.add(suggestion.itemId);
-    }
-
-    // Check recycle/salvage yields against missing final targets
-    if (item.recyclesInto) {
-      for (const [yieldId] of Object.entries(item.recyclesInto)) {
-        if ((deficits[yieldId] ?? 0) > 0) {
-          // Find which final targets need this material
-          for (const [targetId, targetReq] of Object.entries(requiredFinal)) {
-            if (targetReq <= 0) continue;
-            const targetItem = itemsMap[targetId];
-            if ((targetItem?.recipe && yieldId in targetItem.recipe)
-              || (targetItem?.upgradeCost && yieldId in targetItem.upgradeCost)) {
-              impacted.add(targetId);
-            }
+      const impacted = new Set<string>();
+      for (const s of sources) {
+        if (s.impactedTargetItemIds) {
+          for (const tid of s.impactedTargetItemIds) {
+            impacted.add(tid);
           }
         }
       }
+      suggestion.impactedTargetItemIds = Array.from(impacted).sort();
+    } else {
+      suggestion.impactedTargetItemIds = [];
     }
-    if (item.salvagesInto) {
-      for (const [yieldId] of Object.entries(item.salvagesInto)) {
-        if ((deficits[yieldId] ?? 0) > 0) {
-          for (const [targetId, targetReq] of Object.entries(requiredFinal)) {
-            if (targetReq <= 0) continue;
-            const targetItem = itemsMap[targetId];
-            if ((targetItem?.recipe && yieldId in targetItem.recipe)
-              || (targetItem?.upgradeCost && yieldId in targetItem.upgradeCost)) {
-              impacted.add(targetId);
-            }
-          }
-        }
-      }
-    }
-
-    // If this item is directly a missing material used in a recipe
-    if (deficits[suggestion.itemId] > 0) {
-      for (const [targetId, targetReq] of Object.entries(requiredFinal)) {
-        if (targetReq <= 0) continue;
-        const targetItem = itemsMap[targetId];
-        if ((targetItem?.recipe && suggestion.itemId in targetItem.recipe)
-          || (targetItem?.upgradeCost && suggestion.itemId in targetItem.upgradeCost)) {
-          impacted.add(targetId);
-        }
-      }
-    }
-
-    suggestion.impactedTargetItemIds = Array.from(impacted).sort();
   }
 
   // -----------------------------------------------------------------------

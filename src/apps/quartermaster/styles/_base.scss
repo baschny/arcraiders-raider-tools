@@ -100,6 +100,78 @@
     padding: $spacing-xs $spacing-sm;
     font-size: 10px;
   }
+
+  &--danger {
+    background: rgba($status-missing, 0.2);
+    border-color: $status-missing;
+    color: $text-primary;
+
+    &:hover {
+      background: rgba($status-missing, 0.3);
+    }
+  }
+
+  &--danger-outline {
+    background: transparent;
+    border-color: rgba($status-missing, 0.5);
+    color: $status-missing;
+
+    &:hover {
+      background: rgba($status-missing, 0.1);
+      border-color: $status-missing;
+    }
+  }
+
+  &--icon {
+    padding: $spacing-xs;
+    min-width: 32px;
+    height: 32px;
+    justify-content: center;
+  }
+}
+
+// Segmented Control
+.qm-segmented-control {
+  display: inline-flex;
+  background: $bg-tertiary;
+  border: 1px solid $border-light;
+  border-radius: $radius-sm;
+  overflow: hidden;
+
+  &__button {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+    padding: $spacing-sm $spacing-md;
+    background: transparent;
+    border: none;
+    border-right: 1px solid rgba($border-light, 0.4);
+    color: $text-secondary;
+    font-size: $font-sm;
+    font-weight: 600;
+    cursor: pointer;
+    transition: $transition-default;
+
+    &:last-child {
+      border-right: none;
+    }
+
+    &:hover:not(:disabled):not(.is-active) {
+      background: rgba($text-accent, 0.08);
+      color: $text-primary;
+    }
+
+    &.is-active {
+      background: $text-accent;
+      color: $bg-primary;
+      cursor: default;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
 }
 
 // Common input styles
