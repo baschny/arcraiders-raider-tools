@@ -37,6 +37,14 @@ export function Sidebar({
   const lockedPercent = totalQuests > 0 ? (lockedCount / totalQuests) * 100 : 0;
   const allMapsUnlocked = mapNodes.length > 0 && mapNodes.every((m) => m.isCompleted);
   const [mapsCollapsed, setMapsCollapsed] = useState<boolean>(allMapsUnlocked);
+  const [prevAllMapsUnlocked, setPrevAllMapsUnlocked] = useState<boolean>(allMapsUnlocked);
+
+  if (allMapsUnlocked && !prevAllMapsUnlocked) {
+    setPrevAllMapsUnlocked(true);
+    setMapsCollapsed(true);
+  } else if (!allMapsUnlocked && prevAllMapsUnlocked) {
+    setPrevAllMapsUnlocked(false);
+  }
   return (
     <div className="available-sidebar">
       <div
