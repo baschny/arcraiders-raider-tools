@@ -504,7 +504,8 @@ export function HideoutView({
                                   listItem.itemId,
                                   listItem.quantity,
                                 );
-                                const deficit = plannerResult.deficit[listItem.itemId] ?? 0;
+                                const owned = getOwnedQuantity(listItem.itemId) ?? 0;
+                                const deficit = Math.max(0, listItem.quantity - owned);
 
                                 return (
                                   <div
