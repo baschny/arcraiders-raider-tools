@@ -253,6 +253,7 @@ The **quartermaster** app follows a strict **specification-first** development m
   2. This plan must be presented to and approved by the user.
   3. Once approved, the first step of implementation is to update the main specification files in `docs/specifications/quartermaster/` to reflect the new behavior.
   4. Only after the specifications are updated should the code changes in `src/apps/quartermaster/` begin.
+- **Single Source of Truth**: When researching existing requirements or behavior for the Quartermaster app, **always refer to the final specification files** (e.g., `specification-quartermaster.md`). Change requests (`change-XX-xxx.md`) are intermediate documents used for the approval process and should not be used for research as they may be outdated or superseded.
 
 ### Adding a New App
 

@@ -1157,6 +1157,38 @@ Planner result must not include recycling or crafting steps solely for `heavy_sh
 
 ---
 
+## 6.5 Loot Suggestion Provenance (Shared Architecture)
+
+The planner uses a shared provenance utility to identify which user lists and target items depend on a given suggested item.
+
+### Provenance Aggregation
+
+1.  **Scope**: Provenance is calculated for:
+    -   **Direct Targets**: Missing final items from user lists.
+    -   **Crafting Materials**: Direct and nested ingredients required for target items.
+    -   **Recycle/Salvage Sources**: Items that yield needed crafting materials or final target items.
+2.  **Logic**:
+    -   Recursive traversal of recipes and upgrade costs (ingredients from both are combined).
+    -   Cycle protection (max depth 20).
+    -   `craftQuantity` math: `numCrafts = ceil(need / craftQuantity)`.
+3.  **Merge Rule**: If an item is both a direct target and a crafting support material, the list sources from both paths must be merged and deduplicated. Impacted target IDs from both paths must be combined.
+4.  **Quantity Semantics**:
+    -   For **direct targets**, the provenance quantity is the quantity of the item requested in that list.
+    -   For **crafting support materials**, the provenance quantity is the **effective requirement**: how many of this material are needed to fulfill the requirements of the supported final target in that list, taking into account the `craftQuantity` of the target.
+    -   For **recycle/salvage sources**, the provenance quantity represents the quantity of the **supported material** that is needed, not the quantity of the source item itself.
+    -   **Mixed Provenance Protection**: If an item is both a direct target and a support material for the same list, the direct provenance takes precedence, and support material quantities are excluded from the total to avoid ambiguous unit mixing (source item count vs. yielded material count).
+5.  **Impacted Targets**: Each list source entry tracks which final target items (`impactedTargetItemIds`) are supported by this item in that specific list.
+
+### Dependency Tracking
+
+Provenance for crafting support must track deep dependencies. An item is considered "impacted" by a final target if:
+
+-   It is a direct ingredient in the target's recipe.
+-   It is a nested ingredient (e.g., ingredient of an ingredient).
+-   It recycles or salvages into a missing ingredient or target (direct or nested).
+
+---
+
 # 7. ASSUMPTIONS
 
 (All previous assumptions remain unchanged.)

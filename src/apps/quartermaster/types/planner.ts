@@ -29,6 +29,7 @@ export interface RequiredSource {
   listId: string;
   listName: string;
   quantity: number;
+  impactedTargetItemIds?: string[];
 }
 
 export interface InRaidSuggestion {

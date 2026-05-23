@@ -1,5 +1,6 @@
 import type { ItemsMap } from '../types/item';
 import type { PlannerResult, RequiredSource } from '../types/planner';
+import { walkDependencies } from './planner/provenance';
 
 export interface ItemFinalListNeed {
   listId: string;
@@ -71,41 +72,8 @@ function getOrCreateInsight(map: ItemInsightsMap, itemId: string): ItemInsight {
 function collectIngredientChainsForTarget(
   itemsMap: ItemsMap,
   targetItemId: string,
-  maxDepth = 6,
 ): DependencyChain[] {
-  const chains: DependencyChain[] = [];
-  const seenKeys = new Set<string>();
-
-  const walk = (currentItemId: string, path: string[], depth: number, visited: Set<string>) => {
-    if (depth >= maxDepth) return;
-    const item = itemsMap[currentItemId];
-    if (!item?.recipe && !item?.upgradeCost) return;
-
-    const ingredientIds = Array.from(new Set([
-      ...Object.keys(item.recipe ?? {}),
-      ...Object.keys(item.upgradeCost ?? {}),
-    ])).sort();
-    for (const ingredientId of ingredientIds) {
-      if (visited.has(ingredientId)) continue;
-      const chainItemIds = [...path, ingredientId];
-      const key = `${targetItemId}|${chainItemIds.join('>')}`;
-      if (!seenKeys.has(key)) {
-        seenKeys.add(key);
-        chains.push({
-          targetItemId,
-          ingredientItemId: ingredientId,
-          chainItemIds,
-        });
-      }
-
-      const nextVisited = new Set(visited);
-      nextVisited.add(ingredientId);
-      walk(ingredientId, chainItemIds, depth + 1, nextVisited);
-    }
-  };
-
-  walk(targetItemId, [targetItemId], 0, new Set([targetItemId]));
-  return chains;
+  return walkDependencies(itemsMap, targetItemId, 6);
 }
 
 function buildPlanMissingMap(plannerResult: PlannerResult): Record<string, number> {

@@ -710,7 +710,7 @@ describe('quartermaster blueprint craftability', () => {
     expect(arcAlloySuggestion).toMatchObject({
       badge: 'BRING_HOME',
       reasons: ['BRING_HOME_DIRECT_MATERIAL', 'SALVAGE_FOR_MATERIAL', 'BRING_HOME_FOR_RECYCLE_YIELD'],
-      impactedTargetItemIds: ['arc_motion_core'],
+      impactedTargetItemIds: ['arc_motion_core', 'metal_parts'],
     });
 
     const insights = buildItemInsights(hideoutItemsMap, result);
