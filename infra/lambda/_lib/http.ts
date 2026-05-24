@@ -72,6 +72,29 @@ export function jwtEmail(event: APIGatewayProxyEventV2WithJWTAuthorizer): string
     return typeof email === "string" ? email : null;
 }
 
+export function jwtGroups(event: APIGatewayProxyEventV2WithJWTAuthorizer): string[] {
+    const claims = event.requestContext.authorizer?.jwt?.claims as
+        | Record<string, string | number | boolean | string[]>
+        | undefined;
+    const groups = claims?.["cognito:groups"];
+    if (Array.isArray(groups)) return groups.filter((group): group is string => typeof group === "string");
+    if (typeof groups === "string") {
+        return groups
+            .split(",")
+            .map(group => group.trim())
+            .filter(Boolean);
+    }
+    return [];
+}
+
+export function hasJwtGroup(
+    event: APIGatewayProxyEventV2WithJWTAuthorizer,
+    group: string,
+): boolean {
+    if (process.env.RAIDER_TOOLS_LOCAL_DEV === "true") return true;
+    return jwtGroups(event).includes(group);
+}
+
 /**
  * Safely parse a JSON body string, returning null on any failure.
  */

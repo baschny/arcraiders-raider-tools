@@ -23,6 +23,7 @@ import {
     pickAllowedOrigin,
     jwtSub,
     jwtEmail,
+    hasJwtGroup,
     parseJsonBody,
 } from "./_lib/http";
 import { computeCountdownMinutes, type EmbarkProfile } from "./_lib/embark";
@@ -30,10 +31,13 @@ import { computeCountdownMinutes, type EmbarkProfile } from "./_lib/embark";
 const ddb = DynamoDBDocumentClient.from(new DynamoDBClient({}));
 
 const SUPPORTED_LOCALES = new Set(["en", "de", "pt-BR"]);
+const GAME_DATA_SOURCES = new Set(["arctracker", "embark"]);
+const EMBARK_PREVIEW_GROUP = "embark-preview";
 
 interface ProfilePatch {
     displayName?: string;
     locale?: string;
+    gameDataSource?: "arctracker" | "embark";
 }
 
 export async function handler(
@@ -53,7 +57,7 @@ export async function handler(
         if (method === "PATCH") {
             const body = parseJsonBody<ProfilePatch>(event.body ?? null);
             if (!body) return jsonResponse(400, { error: "Invalid JSON body" }, origin);
-            return await handlePatch(tableName, sub, body, origin);
+            return await handlePatch(tableName, sub, body, origin, event);
         }
         return jsonResponse(405, { error: "Method not allowed" }, origin);
     } catch (err) {
@@ -108,6 +112,12 @@ async function handleGet(
         }));
     }
 
+    const storedGameDataSource = profile?.gameDataSource === "embark" || profile?.gameDataSource === "arctracker"
+        ? profile.gameDataSource
+        : null;
+    const effectiveGameDataSource = storedGameDataSource
+        ?? (embark && (embarkCountdownMinutes === null || embarkCountdownMinutes > 0) ? "embark" : "arctracker");
+
     return jsonResponse(200, {
         sub,
         email: profile?.email ?? fallbackEmail,
@@ -117,6 +127,7 @@ async function handleGet(
         // Defaults to false when the flag is absent so the client can detect
         // a brand-new user and run the one-shot local→server migration.
         dataMigrationCompleted: profile?.dataMigrationCompleted === true,
+        gameDataSource: effectiveGameDataSource,
         links: {
             arctracker: arc
                 ? {
@@ -147,6 +158,7 @@ async function handlePatch(
     sub: string,
     body: ProfilePatch,
     origin: string,
+    event: APIGatewayProxyEventV2WithJWTAuthorizer,
 ): Promise<APIGatewayProxyResultV2> {
     const updates: Record<string, unknown> = {};
     if (typeof body.displayName === "string") {
@@ -161,6 +173,32 @@ async function handlePatch(
             return jsonResponse(400, { error: "Unsupported locale" }, origin);
         }
         updates.locale = body.locale;
+    }
+    if (typeof body.gameDataSource === "string") {
+        if (!GAME_DATA_SOURCES.has(body.gameDataSource)) {
+            return jsonResponse(400, { error: "Unsupported gameDataSource" }, origin);
+        }
+        if (body.gameDataSource === "embark") {
+            if (!hasJwtGroup(event, EMBARK_PREVIEW_GROUP)) {
+                return jsonResponse(403, { error: "not_enabled" }, origin);
+            }
+            const link = await ddb.send(new BatchGetCommand({
+                RequestItems: {
+                    [tableName]: {
+                        Keys: [{ pk: `USER#${sub}`, sk: "LINK#embark" }],
+                    },
+                },
+            }));
+            const embark = link.Responses?.[tableName]?.[0];
+            if (!embark) {
+                return jsonResponse(400, { error: "not_linked" }, origin);
+            }
+            const expiresAt = typeof embark.expiresAt === "string" ? Date.parse(embark.expiresAt) : NaN;
+            if (Number.isFinite(expiresAt) && expiresAt <= Date.now()) {
+                return jsonResponse(400, { error: "token_expired" }, origin);
+            }
+        }
+        updates.gameDataSource = body.gameDataSource;
     }
     if (Object.keys(updates).length === 0) {
         return jsonResponse(400, { error: "No updatable fields supplied" }, origin);

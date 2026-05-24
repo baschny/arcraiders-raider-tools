@@ -27,6 +27,12 @@ interface StashViewProps {
   syncStep: 'inventory' | 'loadout' | null;
   hasInventoryCache: boolean;
   hasLoadoutCache: boolean;
+  showSyncButton?: boolean;
+  unknownEmbarkItems?: Array<{
+    gameAssetId: number;
+    amount?: number;
+    context: string;
+  }>;
 }
 
 export function StashView({
@@ -40,6 +46,8 @@ export function StashView({
   syncStep,
   hasInventoryCache,
   hasLoadoutCache,
+  showSyncButton = true,
+  unknownEmbarkItems = [],
 }: StashViewProps) {
   const { t, tm, compareText, formatNumber } = useLocale();
   const [searchQuery, setSearchQuery] = useState('');
@@ -196,14 +204,16 @@ export function StashView({
   return (
     <div className="stash-view">
       <div className="stash-view__controls">
-        <button 
-          className="qm-button" 
-          onClick={onSyncMyItems}
-          disabled={isSyncing}
-        >
-          <RefreshCw size={14} className={isSyncing ? 'animate-spin' : ''} />
-          {syncLabel}
-        </button>
+        {showSyncButton && (
+          <button
+            className="qm-button"
+            onClick={onSyncMyItems}
+            disabled={isSyncing}
+          >
+            <RefreshCw size={14} className={isSyncing ? 'animate-spin' : ''} />
+            {syncLabel}
+          </button>
+        )}
 
         <div className="stash-view__search">
           <div style={{ position: 'relative' }}>
@@ -258,6 +268,22 @@ export function StashView({
           {t('quartermaster.stash.totalValue')}: <span>{formatNumber(totalValue)}</span>
         </div>
       </div>
+
+      {unknownEmbarkItems.length > 0 && (
+        <details className="stash-view__unknown-items">
+          <summary>
+            {tm('quartermaster.stash.unknownEmbarkItems', { count: unknownEmbarkItems.length })}
+          </summary>
+          <div className="stash-view__unknown-list">
+            {unknownEmbarkItems.slice(0, 20).map((item, index) => (
+              <span key={`${item.gameAssetId}-${index}`} className="stash-view__unknown-item">
+                {item.context}: {item.gameAssetId}
+                {item.amount ? ` x${item.amount}` : ''}
+              </span>
+            ))}
+          </div>
+        </details>
+      )}
 
       {missingSources.length > 0 && (
         <div className="stash-view__warning">

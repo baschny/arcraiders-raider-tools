@@ -29,6 +29,7 @@ import {
   getCachedBlueprints,
   updateCacheMeta,
   setCacheOwner,
+  setCacheSource,
 } from './cacheService';
 import { getCurrentSession, getIdToken } from '../auth/cognitoClient';
 import { DEFAULT_LOCALE, LOCALE_STORAGE_KEY, type AppLocale } from '../i18n/config';
@@ -156,6 +157,7 @@ async function getRequestAuth(token?: string): Promise<{ baseUrl: string; token:
   if (idToken) {
     const session = await getCurrentSession();
     await setCacheOwner(session?.sub ?? null);
+    await setCacheSource('arctracker');
     return { baseUrl: USER_RELAY_BASE, token: idToken };
   }
 

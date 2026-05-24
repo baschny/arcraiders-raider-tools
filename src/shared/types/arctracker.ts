@@ -134,6 +134,7 @@ export interface CachedHideout {
   modules: CachedHideoutModule[];
   syncedAt: string;
   cachedAt: number;
+  source?: 'arctracker' | 'embark';
 }
 
 // ============================================================================
@@ -172,6 +173,7 @@ export interface CachedBlueprints {
   blueprintsByTargetItemId: Record<string, CachedBlueprint>;
   syncedAt: string;
   cachedAt: number;
+  source?: 'arctracker' | 'embark';
 }
 
 // ============================================================================
@@ -192,18 +194,23 @@ export interface CachedStash {
   slots: ArctrackerStashSlots;
   syncedAt: string;
   cachedAt: number;
+  source?: 'arctracker' | 'embark';
 }
 
 export interface CachedLoadout {
   loadout: ArctrackerLoadoutResponse['data']['loadout'];
   syncedAt: string;
   cachedAt: number;
+  source?: 'arctracker' | 'embark';
 }
 
 export interface CacheMeta {
   lastSyncedAt: number | null;
   version: number;
   userSub: string | null;
+  source?: 'arctracker' | 'embark';
+  embarkInventorySyncedAt?: string | null;
+  embarkUnknownGameAssetIds?: number[];
 }
 
 export type CacheKey = 'profile' | 'stash' | 'loadout' | 'hideout' | 'blueprints' | 'meta';

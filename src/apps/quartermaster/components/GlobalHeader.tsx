@@ -5,11 +5,17 @@
 
 import type { PlannerResult } from '../types/planner';
 import { useLocale } from '../../../shared/context/LocaleContext';
+import { AlertTriangle, RefreshCw } from 'lucide-react';
 
 interface GlobalHeaderProps {
   plannerResult: PlannerResult;
   stashSyncedAt: string | null;
   loadoutSyncedAt: string | null;
+  gameDataSource: 'arctracker' | 'embark';
+  embarkSyncedAt: string | null;
+  embarkUnknownCount: number;
+  isSyncingEmbark: boolean;
+  onSyncEmbark: () => void;
 }
 
 /**
@@ -20,6 +26,11 @@ export function GlobalHeader({
   plannerResult,
   stashSyncedAt,
   loadoutSyncedAt,
+  gameDataSource,
+  embarkSyncedAt,
+  embarkUnknownCount,
+  isSyncingEmbark,
+  onSyncEmbark,
 }: GlobalHeaderProps) {
   const { t, formatDate } = useLocale();
   const {
@@ -67,12 +78,43 @@ export function GlobalHeader({
       </div>
 
       <div className="qm-global-header__timestamps">
-        <div className="qm-global-header__timestamp">
-          {t('quartermaster.globalHeader.stash')}: <span>{formatTimestamp(stashSyncedAt)}</span>
-        </div>
-        <div className="qm-global-header__timestamp">
-          {t('quartermaster.globalHeader.loadout')}: <span>{formatTimestamp(loadoutSyncedAt)}</span>
-        </div>
+        {gameDataSource === 'embark' ? (
+          <>
+            <div className="qm-global-header__timestamp">
+              {t('quartermaster.globalHeader.source')}: <span>Embark</span>
+            </div>
+            <div className="qm-global-header__timestamp">
+              {t('quartermaster.globalHeader.inventory')}: <span>{formatTimestamp(embarkSyncedAt)}</span>
+            </div>
+            {embarkUnknownCount > 0 && (
+              <div className="qm-global-header__timestamp qm-global-header__timestamp--warning">
+                <AlertTriangle size={14} />
+                <span>{embarkUnknownCount}</span>
+              </div>
+            )}
+            <button
+              type="button"
+              className="qm-button qm-button--small"
+              onClick={onSyncEmbark}
+              disabled={isSyncingEmbark}
+              title={t('quartermaster.globalHeader.embarkSyncTooltip')}
+            >
+              <RefreshCw size={14} className={isSyncingEmbark ? 'animate-spin' : ''} />
+              {isSyncingEmbark
+                ? t('quartermaster.globalHeader.syncingInventory')
+                : t('quartermaster.globalHeader.sync')}
+            </button>
+          </>
+        ) : (
+          <>
+            <div className="qm-global-header__timestamp">
+              {t('quartermaster.globalHeader.stash')}: <span>{formatTimestamp(stashSyncedAt)}</span>
+            </div>
+            <div className="qm-global-header__timestamp">
+              {t('quartermaster.globalHeader.loadout')}: <span>{formatTimestamp(loadoutSyncedAt)}</span>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

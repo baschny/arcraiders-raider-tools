@@ -148,6 +148,22 @@ export class RaiderToolsStack extends cdk.Stack {
             autoDeleteObjects: false,
         });
 
+        const embarkSnapshotBucket = new s3.Bucket(this, "EmbarkSnapshotBucket", {
+            blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,
+            encryption: s3.BucketEncryption.S3_MANAGED,
+            enforceSSL: true,
+            versioned: false,
+            removalPolicy: cdk.RemovalPolicy.RETAIN,
+            autoDeleteObjects: false,
+            lifecycleRules: [
+                {
+                    id: "ExpireRawEmbarkSnapshotsAfter14Days",
+                    expiration: cdk.Duration.days(14),
+                    prefix: "embark/inventory/",
+                },
+            ],
+        });
+
         // -----------------------------------------------------------------
         // KMS CMK for envelope-encrypting linked-account tokens.
         // -----------------------------------------------------------------
@@ -443,6 +459,24 @@ export class RaiderToolsStack extends cdk.Stack {
         embarkManifestParam.grantRead(embarkLinkFn);
         embarkUserAgentParam.grantRead(embarkLinkFn);
 
+        const embarkInventoryFn = this.makeLambda("EmbarkInventoryFn", "embark-inventory.ts", {
+            timeout: cdk.Duration.seconds(20),
+            memorySize: 512,
+            environment: {
+                USER_TABLE_NAME: this.userTable.tableName,
+                KMS_KEY_ID: this.kmsKey.keyId,
+                ALLOWED_ORIGINS: props.allowedOrigins.join(","),
+                EMBARK_MANIFEST_PARAM_NAME: embarkManifestParam.parameterName,
+                EMBARK_USER_AGENT_PARAM_NAME: embarkUserAgentParam.parameterName,
+                EMBARK_SNAPSHOT_BUCKET_NAME: embarkSnapshotBucket.bucketName,
+            },
+        });
+        this.userTable.grantReadWriteData(embarkInventoryFn);
+        this.kmsKey.grantEncryptDecrypt(embarkInventoryFn);
+        embarkManifestParam.grantRead(embarkInventoryFn);
+        embarkUserAgentParam.grantRead(embarkInventoryFn);
+        embarkSnapshotBucket.grantReadWrite(embarkInventoryFn);
+
         const stateFn = this.makeLambda("StateFn", "state.ts", {
             timeout: cdk.Duration.seconds(10),
             memorySize: 256,
@@ -591,6 +625,9 @@ export class RaiderToolsStack extends cdk.Stack {
         const embarkLinkIntegration = new integrations.HttpLambdaIntegration(
             "EmbarkLinkIntegration", embarkLinkFn,
         );
+        const embarkInventoryIntegration = new integrations.HttpLambdaIntegration(
+            "EmbarkInventoryIntegration", embarkInventoryFn,
+        );
         this.httpApi.addRoutes({
             path: "/me/state/{domain}",
             methods: [
@@ -619,6 +656,18 @@ export class RaiderToolsStack extends cdk.Stack {
             integration: embarkLinkIntegration,
             authorizer: jwtAuthorizer,
         });
+        this.httpApi.addRoutes({
+            path: "/me/embark/inventory",
+            methods: [apigwv2.HttpMethod.GET],
+            integration: embarkInventoryIntegration,
+            authorizer: jwtAuthorizer,
+        });
+        this.httpApi.addRoutes({
+            path: "/me/embark/inventory/sync",
+            methods: [apigwv2.HttpMethod.POST],
+            integration: embarkInventoryIntegration,
+            authorizer: jwtAuthorizer,
+        });
 
         // -----------------------------------------------------------------
         // Outputs.
@@ -631,6 +680,7 @@ export class RaiderToolsStack extends cdk.Stack {
         new cdk.CfnOutput(this, "UserTableName", { value: this.userTable.tableName });
         new cdk.CfnOutput(this, "UserSecretsKeyArn", { value: this.kmsKey.keyArn });
         new cdk.CfnOutput(this, "ScheduleBucketName", { value: scheduleBucket.bucketName });
+        new cdk.CfnOutput(this, "EmbarkSnapshotBucketName", { value: embarkSnapshotBucket.bucketName });
         new cdk.CfnOutput(this, "DiscordCallbackUrl", { value: `${apiOrigin}/auth/discord/callback` });
         new cdk.CfnOutput(this, "EmbarkOAuthSecretArn", { value: embarkOauthSecret.secretArn });
         new cdk.CfnOutput(this, "EmbarkManifestParamName", { value: embarkManifestParamName });

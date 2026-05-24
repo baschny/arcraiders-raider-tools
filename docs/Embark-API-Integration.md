@@ -22,7 +22,7 @@ The integration must:
 - The user's active game-data source is global: `arctracker` or `embark`.
 - ArcTracker and Embark are not mixed at runtime. If Embark is active, apps use Embark-backed snapshots.
 - Sync is explicit in phase 1. There is no background refresh or scheduled sync.
-- Each resource has its own sync action. There is no combined "sync everything" endpoint.
+- Each top-level Embark resource has its own sync action. For Quartermaster, the top-level resource is `inventory`, and one inventory sync updates stash, loadout, hideout, and blueprints together.
 - Raw Embark responses are stored for 14 days for analysis and debugging.
 - Raw Embark snapshots are not part of user-facing data export in the initial concept.
 - Unlinking Embark deletes the token only. Historical raw snapshots expire by lifecycle policy.
@@ -48,13 +48,13 @@ The ArcTracker linking UI can remain visible. Embark support should not require 
 ## Phase 1 Scope: Quartermaster
 The first application target is Quartermaster, because it is currently the only app that consumes linked game data from ArcTracker.
 
-Phase 1 should make Quartermaster work from Embark inventory data. Required Quartermaster domains:
+Phase 1 should make Quartermaster work from one Embark inventory sync. Required Quartermaster domains decoded from that single response:
 - Stash content.
 - Loadout content.
 - Hideout/chamber tiers.
 - Blueprint unlocks.
 
-The initial Embark endpoint for this work is:
+The Embark endpoint for this work is:
 
 ```text
 GET /v1/pioneer/inventory
@@ -69,7 +69,7 @@ Analysis of `/v1/pioneer/inventory` should happen primarily in the sibling `../e
 - `../embark-api/data/arctracker-blueprints.json`
 - `../embark-api/data/arctracker-projects.json`
 
-The output of that analysis should be a documented mapping from raw inventory nodes and `gameAssetId`s to the four Quartermaster domains above.
+The output of that analysis should be a documented mapping from raw inventory nodes and `gameAssetId`s to the four Quartermaster domains above. Raider Tools ships a generated Lambda mapping artifact at `infra/lambda/data/embark-inventory-mapping.json`, produced from the sibling `../embark-api` mapping files by `npm run generate:embark-inventory-mapping`.
 
 ## Future Embark Resources
 The broader architecture should support additional resources later:
@@ -78,7 +78,7 @@ The broader architecture should support additional resources later:
 - `POST /v1/pioneer/stats/player-v2` for current season, current window, and lifetime player stats.
 - Rounds data, if needed later. This endpoint returns the full rounds list, so it is intentionally out of phase 1.
 
-Each resource should be integrated independently with its own sync endpoint, cache metadata, throttle bucket, decoder, and UI entry point.
+Each future resource should be integrated independently with its own sync endpoint, cache metadata, throttle bucket, decoder, and UI entry point. This does not split Quartermaster's inventory-derived domains into separate Embark syncs.
 
 ## Server-Side Access Pattern
 All Embark calls should go through Raider Tools authenticated API routes.
@@ -135,11 +135,13 @@ Raw snapshots are not included in user-facing export flows for the initial imple
 ### Normalized Snapshots
 Normalized snapshots are the app-facing cache. They should hide Embark API shape complexity from React apps.
 
-Quartermaster should receive data in existing or near-existing ArcTracker-like concepts:
+Quartermaster receives one bundled inventory snapshot that contains existing or near-existing ArcTracker-like concepts:
 - `CachedStash`
 - `CachedLoadout`
 - `CachedHideout`
 - `CachedBlueprints`
+
+The Quartermaster Embark sync should update all four concepts from one server response. ArcTracker mode may keep its current separate stash/loadout/hideout/blueprint sync controls.
 
 The normalized format should include:
 - `source: 'embark'`
@@ -248,11 +250,13 @@ Non-negotiable rules:
 ### Phase 1: Quartermaster Inventory Source
 - Add server-side source selection on the user profile.
 - Add Embark preview group enforcement on Embark data endpoints.
-- Add explicit inventory sync endpoint.
+- Add explicit inventory sync endpoints: `GET /me/embark/inventory` and `POST /me/embark/inventory/sync`.
+- Add `scripts/generate-embark-inventory-mapping.js` and commit `infra/lambda/data/embark-inventory-mapping.json`.
 - Store raw inventory snapshots in compressed S3 with 14-day retention.
 - Persist per-user/resource throttle buckets in DynamoDB.
-- Normalize inventory into Quartermaster cache shapes.
+- Normalize one inventory response into Quartermaster stash, loadout, hideout, and blueprint cache shapes.
 - Update Quartermaster to consume the active global source.
+- In Embark mode, show one global Quartermaster sync button instead of per-view Embark sync buttons.
 - Show unknown game asset ids as unknown items.
 - Show clear token-expired and rate-limited states.
 

@@ -17,6 +17,7 @@ export interface MeResponse {
     locale: string | null;
     signupProvider: string;
     dataMigrationCompleted?: boolean;
+    gameDataSource: 'arctracker' | 'embark';
     links: {
         arctracker:
             | { linked: true; validatedUsername: string | null; validatedAt: string | null }
@@ -103,7 +104,7 @@ export async function getMe(): Promise<MeResponse> {
     return readJson<MeResponse>(await authedFetch('/me'));
 }
 
-export async function patchMe(patch: { displayName?: string; locale?: string }): Promise<void> {
+export async function patchMe(patch: { displayName?: string; locale?: string; gameDataSource?: 'arctracker' | 'embark' }): Promise<void> {
     await readJson(await authedFetch('/me', {
         method: 'PATCH',
         body: JSON.stringify(patch),

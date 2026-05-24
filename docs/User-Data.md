@@ -69,6 +69,9 @@ Row families (all others are reserved — do not invent new `pk` prefixes withou
 | `USER#<sub>` | `PROFILE` | display name, locale, signupProvider, `dataMigrationCompleted` flag | `ProfileFn` |
 | `USER#<sub>` | `LINK#arctracker` | envelope-encrypted ArcTracker token | `LinksFn` |
 | `USER#<sub>` | `LINK#embark` | envelope-encrypted Embark token payload + derived metadata (`provider`, `supportId`, `expiresAt`, cached profile snapshot) | `EmbarkLinkFn` / `LinksFn` / `ProfileFn` |
+| `USER#<sub>` | `EMBARK#INVENTORY#LATEST` | latest normalized Embark inventory snapshot metadata/cache for shared game-data consumers | `EmbarkInventoryFn` |
+| `USER#<sub>` | `THROTTLE#embark#inventory` | per-user persisted token bucket for Embark inventory sync | `EmbarkInventoryFn` |
+| `GLOBAL#embark` | `THROTTLE#inventory` | optional global persisted token bucket for Embark inventory sync | `EmbarkInventoryFn` |
 | `USER#<sub>` | `STATE#quests` | sync'd quest progress | `StateFn` |
 | `USER#<sub>` | `STATE#loot` | sync'd loot-helper selections | `StateFn` |
 | `USER#<sub>` | `STATE#quartermaster` | sync'd quartermaster lists + hideout toggles | `StateFn` |
@@ -115,7 +118,7 @@ Each `STATE#<domain>` row carries a monotonic integer `revision`. Every `PUT /me
 GET /me
   → 200 {
       sub, email, displayName, locale, signupProvider,
-      dataMigrationCompleted,
+      dataMigrationCompleted, gameDataSource,
       links: {
         arctracker: { linked: true, validatedUsername, validatedAt } | { linked: false },
         embark:     { linked: false }
@@ -124,6 +127,7 @@ GET /me
       }
     }
 PATCH /me  { displayName?, locale? }     → 200 { ok: true, updates }
+PATCH /me  { gameDataSource? }            → 200 { ok: true, updates }
 GET    /me/links/arctracker               → 200 { linked, validatedUsername?, validatedAt? }
 PUT    /me/links/arctracker  { token }    → 200 { linked: true, validatedUsername, validatedAt }
 DELETE /me/links/arctracker               → 200 { linked: false }
@@ -137,6 +141,10 @@ POST   /me/links/embark/start { provider, returnUrl }
 POST   /me/links/embark/complete { code, state }
                                           → 200 { linked: true, provider, supportId, expiresAt, linkedAt,
                                                   profileFetchedAt, expired, profile }
+GET    /me/embark/inventory               → 200 { source, syncedAt, stash, loadout, hideout, blueprints, diagnostics }
+                                          | 404 { error: "not_synced" }
+POST   /me/embark/inventory/sync          → 200 { source, syncedAt, stash, loadout, hideout, blueprints, diagnostics }
+                                          | 401/403/429/5xx { error, ...details }
 GET    /me/arctracker/<path>              → ArcTracker response via stored linked token
 GET    /me/state/<domain>                 → 200 { schemaVersion, data, revision, updatedAt } | 404
 PUT    /me/state/<domain>  { schemaVersion, data, revision? }

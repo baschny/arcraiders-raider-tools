@@ -49,14 +49,26 @@
   &__timestamps {
     display: flex;
     gap: $spacing-lg;
+    align-items: center;
   }
 
   &__timestamp {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
     font-size: $font-sm;
     color: $text-secondary;
 
     span {
       color: $text-primary;
+    }
+
+    &--warning {
+      color: $badge-recycle;
+
+      span {
+        color: $badge-recycle;
+      }
     }
   }
 }

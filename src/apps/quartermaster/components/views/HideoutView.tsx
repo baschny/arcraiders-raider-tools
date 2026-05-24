@@ -36,6 +36,7 @@ interface HideoutViewProps {
   getOwnedQuantity: (itemId: string) => number | null;
   onSyncHideout: () => void;
   isSyncingHideout: boolean;
+  showSyncButton?: boolean;
   onToggleHideoutList: (moduleId: string, level: number) => void;
   onSetHideoutModuleListsEnabled: (moduleId: string, levels: number[], isEnabled: boolean) => void;
   onSetHideoutTrackingMode: (mode: 'enable-all' | 'disable-all' | 'next-only') => void;
@@ -107,6 +108,7 @@ export function HideoutView({
   getOwnedQuantity,
   onSyncHideout,
   isSyncingHideout,
+  showSyncButton = true,
   onToggleHideoutList,
   onSetHideoutModuleListsEnabled,
   onSetHideoutTrackingMode,
@@ -220,15 +222,17 @@ export function HideoutView({
   return (
     <div className="hideout-view">
       <div className="hideout-view__controls">
-        <button
-          className="qm-button"
-          onClick={onSyncHideout}
-          disabled={isSyncingHideout}
-          title={t('quartermaster.hideout.syncTooltip')}
-        >
-          <RefreshCw size={16} className={isSyncingHideout ? 'animate-spin' : ''} />
-          {t('quartermaster.common.syncHideouts')}
-        </button>
+        {showSyncButton && (
+          <button
+            className="qm-button"
+            onClick={onSyncHideout}
+            disabled={isSyncingHideout}
+            title={t('quartermaster.hideout.syncTooltip')}
+          >
+            <RefreshCw size={16} className={isSyncingHideout ? 'animate-spin' : ''} />
+            {t('quartermaster.common.syncHideouts')}
+          </button>
+        )}
 
         <div className="hideout-view__tracking">
           <span className="hideout-view__tracking-label">{t('quartermaster.hideout.tracking')}</span>

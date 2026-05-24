@@ -211,6 +211,25 @@ export async function fetchEmbarkProfile(accessToken: string): Promise<EmbarkPro
     return normalizeEmbarkProfile(profile);
 }
 
+export async function fetchEmbarkInventory(accessToken: string): Promise<unknown> {
+    const config = await getEmbarkRequestConfig();
+    const resp = await fetch(`${EMBARK_API_BASE_URL}/v1/pioneer/inventory`, {
+        headers: buildEmbarkApiHeaders(accessToken, config),
+    });
+    if (!resp.ok) {
+        const body = sanitizeEmbarkErrorBody(await resp.text());
+        console.warn("Embark inventory request failed", {
+            status: resp.status,
+            statusText: resp.statusText,
+            body,
+        });
+        const err = new Error(`Embark inventory request failed with HTTP ${resp.status}`);
+        (err as Error & { status?: number }).status = resp.status;
+        throw err;
+    }
+    return resp.json() as Promise<unknown>;
+}
+
 export function buildEmbarkAuthorizeUrl(args: {
     provider: string;
     state: string;

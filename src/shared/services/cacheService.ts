@@ -29,6 +29,7 @@ type CacheValue =
 
 let dbPromise: Promise<IDBPDatabase> | null = null;
 let activeCacheOwnerSub: string | null = null;
+let activeCacheSource: 'arctracker' | 'embark' | null = null;
 
 /**
  * Set the signed-in Raider Tools user that owns ArcTracker cache reads/writes.
@@ -39,9 +40,20 @@ export async function setCacheOwner(userSub: string | null): Promise<void> {
   if (!userSub) return;
 
   const meta = await readRawMeta();
-  if (meta?.userSub !== userSub) {
+  if (meta?.userSub !== userSub || (activeCacheSource && meta?.source && meta.source !== activeCacheSource)) {
     await cacheClear();
   }
+}
+
+export async function setCacheSource(source: 'arctracker' | 'embark' | null): Promise<void> {
+  activeCacheSource = source;
+  if (!activeCacheOwnerSub || !source) return;
+  const meta = await readRawMeta();
+  const sourceMatches = meta?.source === source || (source === 'arctracker' && !meta?.source);
+  if (meta && !sourceMatches) {
+    await cacheClear();
+  }
+  await updateCacheMeta({ source });
 }
 
 /**
@@ -114,6 +126,7 @@ export async function updateCacheMeta(updates: Partial<CacheMeta>): Promise<void
     lastSyncedAt: current?.lastSyncedAt ?? null,
     version: current?.version ?? 1,
     userSub: activeCacheOwnerSub,
+    source: activeCacheSource ?? current?.source,
     ...updates,
   };
   await cacheSet('meta', meta);
@@ -163,7 +176,11 @@ async function cacheBelongsToActiveOwner(): Promise<boolean> {
   if (!activeCacheOwnerSub) return false;
 
   const meta = await readRawMeta();
-  return meta?.userSub === activeCacheOwnerSub;
+  const sourceMatches = !activeCacheSource ||
+    meta?.source === activeCacheSource ||
+    (activeCacheSource === 'arctracker' && !meta?.source);
+  return meta?.userSub === activeCacheOwnerSub &&
+    sourceMatches;
 }
 
 async function prepareCacheWrite(): Promise<boolean> {
@@ -174,6 +191,6 @@ async function prepareCacheWrite(): Promise<boolean> {
     await cacheClear();
   }
 
-  await updateCacheMeta({ userSub: activeCacheOwnerSub });
+  await updateCacheMeta({ userSub: activeCacheOwnerSub, source: activeCacheSource ?? undefined });
   return true;
 }

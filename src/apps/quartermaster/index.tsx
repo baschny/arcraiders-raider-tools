@@ -4,7 +4,7 @@
  * See specification document for full details
  */
 
-import { useState, useEffect, useMemo, useCallback } from 'react';
+import { useState, useEffect, useMemo, useCallback, type ReactNode } from 'react';
 import type { ItemsMap, BenchId } from './types/item';
 import type { StoredList } from './types/list';
 import type { PlannerResult } from './types/planner';
@@ -51,6 +51,7 @@ import { buildItemInsights, type ItemInsightsMap } from './utils/itemInsights';
 import { formatHideoutListName } from './utils/localization';
 import { loadActiveView, saveActiveView } from './utils/preferences';
 import { useAuth } from '../../shared/context/AuthContext';
+import { useCognitoAuth } from '../../shared/context/CognitoAuthContext';
 import { useLocale } from '../../shared/context/LocaleContext';
 import { SignInNudge } from '../../shared/components/SignInNudge';
 import {
@@ -58,6 +59,13 @@ import {
   useStore,
   type QuartermasterState,
 } from '../../shared/state/stores';
+import { getMe } from '../../shared/services/userApi';
+import {
+  getQuartermasterGameDataCache,
+  syncEmbarkInventory,
+  type EmbarkInventoryDiagnostics,
+  type GameDataSource,
+} from '../../shared/services/gameDataApi';
 
 import { Sidebar, type ViewId } from './components/Sidebar';
 import { GlobalHeader } from './components/GlobalHeader';
@@ -108,6 +116,7 @@ function countAvailableNextHideoutUpgrades(
 
 export function QuartermasterApp() {
   const { isAuthenticated, revalidate } = useAuth();
+  const cognito = useCognitoAuth();
   const { locale, t, tm, compareText } = useLocale();
   const [quartermasterState, setQuartermasterState] = useStore(quartermasterStore);
 
@@ -122,6 +131,8 @@ export function QuartermasterApp() {
   const [hideoutDefinitions, setHideoutDefinitions] = useState<HideoutModuleDefinition[]>([]);
   const [cachedHideout, setCachedHideout] = useState<CachedHideout | null>(null);
   const [cachedBlueprints, setCachedBlueprints] = useState<CachedBlueprints | null>(null);
+  const [gameDataSource, setGameDataSource] = useState<GameDataSource>('arctracker');
+  const [embarkDiagnostics, setEmbarkDiagnostics] = useState<EmbarkInventoryDiagnostics | null>(null);
 
   // UI state
   const [activeView, setActiveView] = useState<ViewId>(() => loadActiveView());
@@ -133,6 +144,7 @@ export function QuartermasterApp() {
   const [myItemsSyncStep, setMyItemsSyncStep] = useState<'inventory' | 'loadout' | null>(null);
   const [isSyncingHideout, setIsSyncingHideout] = useState(false);
   const [isSyncingBlueprints, setIsSyncingBlueprints] = useState(false);
+  const [isSyncingEmbarkInventory, setIsSyncingEmbarkInventory] = useState(false);
   const [staleSyncModal, setStaleSyncModal] = useState<{
     sources: string[];
   } | null>(null);
@@ -158,14 +170,27 @@ export function QuartermasterApp() {
         const items = await loadAllItems(locale);
         setItemsMap(items);
 
+        let activeSource: GameDataSource = 'arctracker';
+        if (cognito.user) {
+          try {
+            const me = await getMe();
+            activeSource = me.gameDataSource ?? 'arctracker';
+          } catch (profileErr) {
+            console.warn('Failed to load game data source:', profileErr);
+          }
+        }
+        setGameDataSource(activeSource);
+
+        const cache = await getQuartermasterGameDataCache(activeSource);
+
         // Load cached stash from IndexedDB (per spec 4.2.2)
-        const stash = await getStash();
+        const stash = cache.stash ?? await getStash();
         if (stash) {
           setCachedStash(stash);
         }
 
         // Load cached loadout from IndexedDB (per spec 4.3.2)
-        const loadout = await getLoadout();
+        const loadout = cache.loadout ?? await getLoadout();
         if (loadout) {
           setCachedLoadout(loadout);
         }
@@ -174,12 +199,12 @@ export function QuartermasterApp() {
         const hideoutDefs = await loadHideoutDefinitions(locale);
         setHideoutDefinitions(hideoutDefs);
 
-        const hideout = await getHideout();
+        const hideout = cache.hideout ?? await getHideout();
         if (hideout) {
           setCachedHideout(hideout);
         }
 
-        const blueprints = await getBlueprints();
+        const blueprints = cache.blueprints ?? await getBlueprints();
         if (blueprints) {
           setCachedBlueprints(blueprints);
         }
@@ -192,7 +217,7 @@ export function QuartermasterApp() {
       }
     }
     initialize();
-  }, [locale, t]);
+  }, [cognito.user, locale, t]);
 
   // Derive bench levels from cached hideout (CR-005)
   const benchLevels: Record<BenchId, number> = useMemo(() => {
@@ -264,10 +289,16 @@ export function QuartermasterApp() {
 
   const missingOwnedSources = useMemo(() => {
     const sources: string[] = [];
+    if (gameDataSource === 'embark') {
+      if (!cachedStash || !cachedLoadout || !cachedHideout || !cachedBlueprints) {
+        sources.push(t('quartermaster.globalHeader.embarkInventory'));
+      }
+      return sources;
+    }
     if (!cachedStash) sources.push(t('quartermaster.stash.inventorySource'));
     if (!cachedLoadout) sources.push(t('quartermaster.stash.loadoutSource'));
     return sources;
-  }, [cachedLoadout, cachedStash, t]);
+  }, [cachedBlueprints, cachedHideout, cachedLoadout, cachedStash, gameDataSource, t]);
 
   const itemInsights: ItemInsightsMap = useMemo(() => {
     if (!itemsMap) return {};
@@ -351,6 +382,10 @@ export function QuartermasterApp() {
         } else {
           setSyncError(tm('quartermaster.sync.failed', { operation, message: err.message }));
         }
+      } else if (err.message === 'token_expired') {
+        setSyncError(t('quartermaster.sync.embarkTokenExpired'));
+      } else if (err.message === 'not_enabled') {
+        setSyncError(t('quartermaster.sync.embarkNotEnabled'));
       } else if (err.status === 429 || err.isRetryable) {
         // Show warning for rate limit or retryable errors
         setSyncError(t('quartermaster.sync.rateLimited'));
@@ -369,8 +404,34 @@ export function QuartermasterApp() {
     // Do NOT clear cache on failure (per spec 4.2.3)
   }, [revalidate, t, tm]);
 
+  const handleSyncEmbarkInventory = useCallback(async () => {
+    setIsSyncingEmbarkInventory(true);
+    setSyncError(null);
+    setStaleSyncModal(null);
+    try {
+      const snapshot = await syncEmbarkInventory();
+      setCachedStash(snapshot.stash);
+      setCachedLoadout(snapshot.loadout);
+      setCachedHideout(snapshot.hideout);
+      setCachedBlueprints(snapshot.blueprints);
+      setEmbarkDiagnostics(snapshot.diagnostics);
+
+      const cleaned = cleanupObsoleteToggles(hideoutDefinitions, snapshot.hideout, hideoutToggleState);
+      patchQuartermasterState({ hideoutToggles: cleaned });
+    } catch (err) {
+      console.error('Failed to sync Embark inventory:', err);
+      handleApiError(err, t('quartermaster.globalHeader.embarkInventory'));
+    } finally {
+      setIsSyncingEmbarkInventory(false);
+    }
+  }, [handleApiError, hideoutDefinitions, hideoutToggleState, patchQuartermasterState, t]);
+
   // Sync callbacks using shared arctrackerApi service (spec 4.2.1, 4.3.1)
   const handleSyncMyItems = useCallback(async () => {
+    if (gameDataSource === 'embark') {
+      await handleSyncEmbarkInventory();
+      return;
+    }
     setSyncError(null);
     setStaleSyncModal(null);
     const previousStashSyncedAt = cachedStash?.syncedAt ?? null;
@@ -413,9 +474,13 @@ export function QuartermasterApp() {
     if (unchangedSources.length > 0) {
       setStaleSyncModal({ sources: unchangedSources });
     }
-  }, [cachedLoadout, cachedStash, handleApiError, t]);
+  }, [cachedLoadout, cachedStash, gameDataSource, handleApiError, handleSyncEmbarkInventory, t]);
 
   const handleSyncBlueprints = useCallback(async () => {
+    if (gameDataSource === 'embark') {
+      await handleSyncEmbarkInventory();
+      return;
+    }
     setIsSyncingBlueprints(true);
     setSyncError(null);
     try {
@@ -427,10 +492,14 @@ export function QuartermasterApp() {
     } finally {
       setIsSyncingBlueprints(false);
     }
-  }, [handleApiError, t]);
+  }, [gameDataSource, handleApiError, handleSyncEmbarkInventory, t]);
 
   // Sync hideout (CR-004)
   const handleSyncHideout = useCallback(async () => {
+    if (gameDataSource === 'embark') {
+      await handleSyncEmbarkInventory();
+      return;
+    }
     setIsSyncingHideout(true);
     setSyncError(null);
     setStaleSyncModal(null);
@@ -453,7 +522,7 @@ export function QuartermasterApp() {
     } finally {
       setIsSyncingHideout(false);
     }
-  }, [cachedHideout, hideoutDefinitions, hideoutToggleState, handleApiError, patchQuartermasterState, t]);
+  }, [cachedHideout, gameDataSource, handleApiError, handleSyncEmbarkInventory, hideoutDefinitions, hideoutToggleState, patchQuartermasterState, t]);
 
   // Hideout list toggle handlers (CR-008)
   const handleToggleHideoutList = useCallback((moduleId: string, level: number) => {
@@ -533,14 +602,15 @@ export function QuartermasterApp() {
   // Views requiring stash/loadout are wrapped in AuthGate (per spec section 3.2)
   const renderContent = () => {
     if (!itemsMap) return null;
+    const withGameDataGate = (children: ReactNode) =>
+      gameDataSource === 'embark' ? <>{children}</> : <AuthGate>{children}</AuthGate>;
 
     switch (activeView) {
       case 'welcome':
         return <WelcomeView onViewChange={handleViewChange} />;
 
       case 'stash':
-        return (
-          <AuthGate>
+        return withGameDataGate(
             <StashView
               itemsMap={itemsMap}
               ownedItemRows={ownedItemRows}
@@ -548,12 +618,13 @@ export function QuartermasterApp() {
               itemInsights={itemInsights}
               getOwnedQuantity={getOwnedQuantity}
               onSyncMyItems={handleSyncMyItems}
-              isSyncing={isSyncingStash || isSyncingLoadout}
+              isSyncing={isSyncingStash || isSyncingLoadout || isSyncingEmbarkInventory}
               syncStep={myItemsSyncStep}
               hasInventoryCache={cachedStash !== null}
               hasLoadoutCache={cachedLoadout !== null}
+              showSyncButton={gameDataSource === 'arctracker'}
+              unknownEmbarkItems={embarkDiagnostics?.unknownItemInstances ?? []}
             />
-          </AuthGate>
         );
 
       case 'lists':
@@ -578,8 +649,7 @@ export function QuartermasterApp() {
         );
 
       case 'hideout':
-        return (
-          <AuthGate>
+        return withGameDataGate(
             <HideoutView
               itemsMap={itemsMap}
               hideoutDefinitions={hideoutDefinitions}
@@ -589,30 +659,27 @@ export function QuartermasterApp() {
               itemInsights={itemInsights}
               getOwnedQuantity={getOwnedQuantity}
               onSyncHideout={handleSyncHideout}
-              isSyncingHideout={isSyncingHideout}
+              isSyncingHideout={isSyncingHideout || isSyncingEmbarkInventory}
+              showSyncButton={gameDataSource === 'arctracker'}
               onToggleHideoutList={handleToggleHideoutList}
               onSetHideoutModuleListsEnabled={handleSetHideoutModuleListsEnabled}
               onSetHideoutTrackingMode={handleSetHideoutTrackingMode}
               onToggleHideoutItem={handleToggleHideoutItem}
             />
-          </AuthGate>
         );
 
       case 'in-raid':
-        return (
-          <AuthGate>
+        return withGameDataGate(
             <InRaidView
               itemsMap={itemsMap}
               plannerResult={plannerResult}
               itemInsights={itemInsights}
               getOwnedQuantity={getOwnedQuantity}
             />
-          </AuthGate>
         );
 
       case 'crafting':
-        return (
-          <AuthGate>
+        return withGameDataGate(
             <CraftingView
               itemsMap={itemsMap}
               craftPlan={plannerResult.craftPlan}
@@ -623,12 +690,12 @@ export function QuartermasterApp() {
               getOwnedQuantity={getOwnedQuantity}
               onSyncMyItems={handleSyncMyItems}
               onSyncBlueprints={handleSyncBlueprints}
-              isSyncingMyItems={isSyncingStash || isSyncingLoadout}
-              isSyncingBlueprints={isSyncingBlueprints}
+              isSyncingMyItems={isSyncingStash || isSyncingLoadout || isSyncingEmbarkInventory}
+              isSyncingBlueprints={isSyncingBlueprints || isSyncingEmbarkInventory}
               blueprintsSyncedAt={cachedBlueprints?.syncedAt ?? null}
               blueprintUnlockCount={blueprintUnlockCount}
+              showSyncButtons={gameDataSource === 'arctracker'}
             />
-          </AuthGate>
         );
 
       default:
@@ -667,6 +734,11 @@ export function QuartermasterApp() {
             plannerResult={plannerResult}
             stashSyncedAt={cachedStash?.syncedAt ?? null}
             loadoutSyncedAt={cachedLoadout?.syncedAt ?? null}
+            gameDataSource={gameDataSource}
+            embarkSyncedAt={cachedStash?.source === 'embark' ? cachedStash.syncedAt : null}
+            embarkUnknownCount={embarkDiagnostics?.unknownGameAssetIds.length ?? 0}
+            isSyncingEmbark={isSyncingEmbarkInventory}
+            onSyncEmbark={handleSyncEmbarkInventory}
           />
           {activeView !== 'welcome' && <SignInNudge />}
           {syncError && (
@@ -680,7 +752,7 @@ export function QuartermasterApp() {
               </button>
             </div>
           )}
-          {isAuthenticated && ['in-raid', 'crafting'].includes(activeView) && missingOwnedSources.length > 0 && (
+          {(isAuthenticated || gameDataSource === 'embark') && ['in-raid', 'crafting'].includes(activeView) && missingOwnedSources.length > 0 && (
             <div className="qm-sync-hint">
               <span>
                 {tm('quartermaster.sync.myItemsRequired', { sources: missingOwnedSources.join(', ') })}

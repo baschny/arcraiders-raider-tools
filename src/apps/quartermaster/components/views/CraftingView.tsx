@@ -29,6 +29,7 @@ interface CraftingViewProps {
     unlocked: number;
     total: number;
   } | null;
+  showSyncButtons?: boolean;
 }
 
 export function CraftingView({
@@ -45,6 +46,7 @@ export function CraftingView({
   isSyncingBlueprints,
   blueprintsSyncedAt,
   blueprintUnlockCount,
+  showSyncButtons = true,
 }: CraftingViewProps) {
   const { t, tm, formatDate } = useLocale();
   // Craft steps are executable actions, including partial progress toward a target.
@@ -275,27 +277,31 @@ export function CraftingView({
   return (
     <div className="crafting-view">
       <div className="crafting-view__controls">
-        <button 
-          className="qm-button" 
-          onClick={onSyncMyItems}
-          disabled={isSyncingMyItems}
-        >
-          <RefreshCw size={14} className={isSyncingMyItems ? 'animate-spin' : ''} />
-          {t('quartermaster.stash.syncMyItems')}
-        </button>
-        <button
-          className="qm-button"
-          onClick={onSyncBlueprints}
-          disabled={isSyncingBlueprints}
-        >
-          <RefreshCw size={14} className={isSyncingBlueprints ? 'animate-spin' : ''} />
-          {t('quartermaster.common.syncBlueprints')}
-          {blueprintUnlockCount && (
-            <span className="crafting-view__button-meta">
-              {tm('quartermaster.crafting.blueprintUnlockCount', blueprintUnlockCount)}
-            </span>
-          )}
-        </button>
+        {showSyncButtons && (
+          <>
+            <button
+              className="qm-button"
+              onClick={onSyncMyItems}
+              disabled={isSyncingMyItems}
+            >
+              <RefreshCw size={14} className={isSyncingMyItems ? 'animate-spin' : ''} />
+              {t('quartermaster.stash.syncMyItems')}
+            </button>
+            <button
+              className="qm-button"
+              onClick={onSyncBlueprints}
+              disabled={isSyncingBlueprints}
+            >
+              <RefreshCw size={14} className={isSyncingBlueprints ? 'animate-spin' : ''} />
+              {t('quartermaster.common.syncBlueprints')}
+              {blueprintUnlockCount && (
+                <span className="crafting-view__button-meta">
+                  {tm('quartermaster.crafting.blueprintUnlockCount', blueprintUnlockCount)}
+                </span>
+              )}
+            </button>
+          </>
+        )}
         {blueprintsSyncedAt && (
           <span className="crafting-view__sync-meta">
             {tm('quartermaster.crafting.blueprintsSynced', { timestamp: formatTimestamp(blueprintsSyncedAt) })}
