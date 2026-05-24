@@ -32,7 +32,11 @@ import {
 } from "./_lib/embarkSnapshotStorage";
 import { consumeTokenBucket } from "./_lib/embarkThrottle";
 
-const ddb = DynamoDBDocumentClient.from(new DynamoDBClient({}));
+const ddb = DynamoDBDocumentClient.from(new DynamoDBClient({}), {
+    marshallOptions: {
+        removeUndefinedValues: true,
+    },
+});
 
 const EMBARK_PREVIEW_GROUP = "embark-preview";
 const USER_THROTTLE = {
@@ -104,6 +108,9 @@ async function handleGet(
 ): Promise<APIGatewayProxyResultV2> {
     const row = await getLatestRow(tableName, sub);
     if (!row) return jsonResponse(404, { error: "not_synced" }, origin);
+    if (row.schemaVersion !== 1) {
+        return jsonResponse(404, { error: "snapshot_schema_unsupported" }, origin);
+    }
     const snapshot = await loadSnapshotFromRow(row);
     return jsonResponse(200, snapshot, origin);
 }
@@ -155,7 +162,7 @@ async function handleSync(
     if (!token.access_token) return jsonResponse(401, { error: "not_linked" }, origin);
 
     const config = await getEmbarkRequestConfig();
-    const raw = await fetchEmbarkInventory(token.access_token) as EmbarkRawInventory;
+    const raw = await fetchEmbarkInventory(token.access_token, config) as EmbarkRawInventory;
     if (!raw || !Array.isArray(raw.items)) {
         const err = new Error("Embark inventory response missing items");
         (err as Error & { code?: string }).code = "decode_failed";
@@ -179,7 +186,7 @@ async function handleSync(
         rawSnapshotId,
     });
 
-    const item: LatestInventoryRow = stripUndefined({
+    const item: LatestInventoryRow = stripUndefinedDeep({
             pk: `USER#${sub}`,
             sk: "EMBARK#INVENTORY#LATEST",
             source: "embark",
@@ -193,7 +200,7 @@ async function handleSync(
             snapshot: refs.normalizedSnapshotKey ? undefined : snapshot,
             diagnostics: snapshot.diagnostics,
             updatedAt: syncedAt,
-        } satisfies LatestInventoryRow);
+        } satisfies LatestInventoryRow) as LatestInventoryRow;
 
     await ddb.send(new PutCommand({
         TableName: tableName,
@@ -237,13 +244,21 @@ async function decryptEmbarkToken(link: EmbarkLinkItem, sub: string): Promise<Em
 }
 
 function isExpired(expiresAt: string | null): boolean {
-    if (!expiresAt) return false;
+    if (!expiresAt) return true;
     const expiresMs = Date.parse(expiresAt);
-    return Number.isFinite(expiresMs) && expiresMs <= Date.now();
+    return !Number.isFinite(expiresMs) || expiresMs <= Date.now();
 }
 
-function stripUndefined<T extends Record<string, unknown>>(value: T): T {
+function stripUndefinedDeep(value: unknown): unknown {
+    if (Array.isArray(value)) {
+        return value
+            .filter((nested) => nested !== undefined)
+            .map(stripUndefinedDeep);
+    }
+    if (!value || typeof value !== "object") return value;
     return Object.fromEntries(
-        Object.entries(value).filter(([, nested]) => nested !== undefined),
-    ) as T;
+        Object.entries(value)
+            .filter(([, nested]) => nested !== undefined)
+            .map(([key, nested]) => [key, stripUndefinedDeep(nested)]),
+    );
 }

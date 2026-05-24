@@ -604,6 +604,8 @@ Rules:
 - `arctracker` is the default source for existing users.
 - `embark` may be selected only when the user has an active Embark link and is
   allowed by the Embark preview gate.
+- Completing the Embark linking flow counts as selecting Embark and stores the
+  source on the Raider Tools profile.
 - If Embark is active and the token expires, Quartermaster must prompt the user
   to re-authenticate with Embark.
 - Quartermaster must not silently fall back to ArcTracker when Embark expires.

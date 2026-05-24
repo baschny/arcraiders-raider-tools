@@ -156,6 +156,11 @@ POST   /me/migrate  { quests?, loot?, quartermaster? }
                                           | 409 { migrated: false, reason: "already_migrated" }
 ```
 
+`gameDataSource` defaults to `arctracker` until the user explicitly selects
+Embark or completes the Embark linking flow, which stores `embark` on the
+profile. Existing Embark link rows do not auto-promote the user into Embark
+mode by themselves.
+
 ### 2.6 CORS, JWT, and size caps
 - All routes live behind the shared `HttpJwtAuthorizer` bound to the User Pool + User Pool Client. API Gateway validates JWTs; Lambdas trust `event.requestContext.authorizer.jwt.claims`.
 - `ALLOWED_ORIGINS` env var (comma-separated) drives per-Lambda CORS. See `infra/lambda/_lib/http.ts::pickAllowedOrigin`.

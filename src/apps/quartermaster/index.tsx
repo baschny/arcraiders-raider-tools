@@ -386,11 +386,9 @@ export function QuartermasterApp() {
         setSyncError(t('quartermaster.sync.embarkTokenExpired'));
       } else if (err.message === 'not_enabled') {
         setSyncError(t('quartermaster.sync.embarkNotEnabled'));
-      } else if (err.status === 429 || err.isRetryable) {
-        // Show warning for rate limit or retryable errors
+      } else if (err.status === 429) {
         setSyncError(t('quartermaster.sync.rateLimited'));
       } else {
-        // Other errors
         setSyncError(tm('quartermaster.sync.failed', { operation, message: err.message }));
       }
     } else {
@@ -602,8 +600,9 @@ export function QuartermasterApp() {
   // Views requiring stash/loadout are wrapped in AuthGate (per spec section 3.2)
   const renderContent = () => {
     if (!itemsMap) return null;
+    const hasEmbarkAccess = gameDataSource === 'embark' && Boolean(cognito.user);
     const withGameDataGate = (children: ReactNode) =>
-      gameDataSource === 'embark' ? <>{children}</> : <AuthGate>{children}</AuthGate>;
+      hasEmbarkAccess ? <>{children}</> : <AuthGate>{children}</AuthGate>;
 
     switch (activeView) {
       case 'welcome':
@@ -735,7 +734,9 @@ export function QuartermasterApp() {
             stashSyncedAt={cachedStash?.syncedAt ?? null}
             loadoutSyncedAt={cachedLoadout?.syncedAt ?? null}
             gameDataSource={gameDataSource}
-            embarkSyncedAt={cachedStash?.source === 'embark' ? cachedStash.syncedAt : null}
+            embarkSyncedAt={gameDataSource === 'embark'
+              ? cachedStash?.syncedAt ?? cachedLoadout?.syncedAt ?? cachedHideout?.syncedAt ?? cachedBlueprints?.syncedAt ?? null
+              : null}
             embarkUnknownCount={embarkDiagnostics?.unknownGameAssetIds.length ?? 0}
             isSyncingEmbark={isSyncingEmbarkInventory}
             onSyncEmbark={handleSyncEmbarkInventory}
@@ -752,7 +753,7 @@ export function QuartermasterApp() {
               </button>
             </div>
           )}
-          {(isAuthenticated || gameDataSource === 'embark') && ['in-raid', 'crafting'].includes(activeView) && missingOwnedSources.length > 0 && (
+          {(isAuthenticated || Boolean(cognito.user)) && ['in-raid', 'crafting'].includes(activeView) && missingOwnedSources.length > 0 && (
             <div className="qm-sync-hint">
               <span>
                 {tm('quartermaster.sync.myItemsRequired', { sources: missingOwnedSources.join(', ') })}

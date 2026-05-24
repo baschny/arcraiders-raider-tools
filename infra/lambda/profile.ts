@@ -15,6 +15,7 @@ import type {
 import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 import {
     DynamoDBDocumentClient,
+    GetCommand,
     UpdateCommand,
     BatchGetCommand,
 } from "@aws-sdk/lib-dynamodb";
@@ -52,7 +53,7 @@ export async function handler(
 
     try {
         if (method === "GET") {
-            return await handleGet(tableName, sub, jwtEmail(event), origin);
+            return await handleGet(tableName, sub, jwtEmail(event), origin, event);
         }
         if (method === "PATCH") {
             const body = parseJsonBody<ProfilePatch>(event.body ?? null);
@@ -72,6 +73,7 @@ async function handleGet(
     sub: string,
     fallbackEmail: string | null,
     origin: string,
+    event: APIGatewayProxyEventV2WithJWTAuthorizer,
 ): Promise<APIGatewayProxyResultV2> {
     const r = await ddb.send(new BatchGetCommand({
         RequestItems: {
@@ -115,8 +117,12 @@ async function handleGet(
     const storedGameDataSource = profile?.gameDataSource === "embark" || profile?.gameDataSource === "arctracker"
         ? profile.gameDataSource
         : null;
-    const effectiveGameDataSource = storedGameDataSource
-        ?? (embark && (embarkCountdownMinutes === null || embarkCountdownMinutes > 0) ? "embark" : "arctracker");
+    const effectiveGameDataSource =
+        storedGameDataSource === "embark" && embark && hasJwtGroup(event, EMBARK_PREVIEW_GROUP)
+            ? "embark"
+            : storedGameDataSource === "arctracker"
+                ? "arctracker"
+                : "arctracker";
 
     return jsonResponse(200, {
         sub,
@@ -182,19 +188,16 @@ async function handlePatch(
             if (!hasJwtGroup(event, EMBARK_PREVIEW_GROUP)) {
                 return jsonResponse(403, { error: "not_enabled" }, origin);
             }
-            const link = await ddb.send(new BatchGetCommand({
-                RequestItems: {
-                    [tableName]: {
-                        Keys: [{ pk: `USER#${sub}`, sk: "LINK#embark" }],
-                    },
-                },
+            const link = await ddb.send(new GetCommand({
+                TableName: tableName,
+                Key: { pk: `USER#${sub}`, sk: "LINK#embark" },
             }));
-            const embark = link.Responses?.[tableName]?.[0];
+            const embark = link.Item;
             if (!embark) {
                 return jsonResponse(400, { error: "not_linked" }, origin);
             }
             const expiresAt = typeof embark.expiresAt === "string" ? Date.parse(embark.expiresAt) : NaN;
-            if (Number.isFinite(expiresAt) && expiresAt <= Date.now()) {
+            if (!Number.isFinite(expiresAt) || expiresAt <= Date.now()) {
                 return jsonResponse(400, { error: "token_expired" }, origin);
             }
         }

@@ -8,6 +8,7 @@ import {
     DynamoDBDocumentClient,
     GetCommand,
     PutCommand,
+    UpdateCommand,
 } from "@aws-sdk/lib-dynamodb";
 import {
     buildEmbarkAuthorizeUrl,
@@ -231,6 +232,19 @@ async function handleComplete(
                 linkedAt: now,
                 profileFetchedAt: now,
                 cachedProfile: profile,
+            },
+        }));
+        await ddb.send(new UpdateCommand({
+            TableName: tableName,
+            Key: { pk: `USER#${sub}`, sk: "PROFILE" },
+            UpdateExpression: "SET #gameDataSource = :source, #updatedAt = :now",
+            ExpressionAttributeNames: {
+                "#gameDataSource": "gameDataSource",
+                "#updatedAt": "updatedAt",
+            },
+            ExpressionAttributeValues: {
+                ":source": "embark",
+                ":now": now,
             },
         }));
         console.info("Embark link persisted", {

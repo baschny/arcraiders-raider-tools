@@ -6,6 +6,7 @@
 import type { PlannerResult } from '../types/planner';
 import { useLocale } from '../../../shared/context/LocaleContext';
 import { AlertTriangle, RefreshCw } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 interface GlobalHeaderProps {
   plannerResult: PlannerResult;
@@ -32,13 +33,20 @@ export function GlobalHeader({
   isSyncingEmbark,
   onSyncEmbark,
 }: GlobalHeaderProps) {
-  const { t, formatDate } = useLocale();
+  const { t, tm, formatDate } = useLocale();
+  const [nowMs, setNowMs] = useState(() => Date.now());
   const {
     activeListsCount,
     totalMissingItemsCount,
     totalRecycleActionsCount,
     totalCraftStepsCount,
   } = plannerResult;
+
+  useEffect(() => {
+    if (gameDataSource !== 'embark') return;
+    const intervalId = window.setInterval(() => setNowMs(Date.now()), 15_000);
+    return () => window.clearInterval(intervalId);
+  }, [gameDataSource]);
 
   const formatTimestamp = (isoString: string | null): string => {
     if (!isoString) return t('quartermaster.globalHeader.never');
@@ -47,6 +55,33 @@ export function GlobalHeader({
     } catch {
       return t('quartermaster.globalHeader.invalid');
     }
+  };
+
+  const formatElapsedTimestamp = (isoString: string | null): string => {
+    if (!isoString) return t('quartermaster.globalHeader.never');
+    const syncedMs = Date.parse(isoString);
+    if (!Number.isFinite(syncedMs)) return t('quartermaster.globalHeader.invalid');
+
+    const elapsedSeconds = Math.max(0, Math.floor((nowMs - syncedMs) / 1000));
+    if (elapsedSeconds < 60) {
+      return tm('quartermaster.globalHeader.elapsedSeconds', { count: elapsedSeconds });
+    }
+
+    const elapsedMinutes = Math.floor(elapsedSeconds / 60);
+    if (elapsedMinutes < 60) {
+      return tm('quartermaster.globalHeader.elapsedMinutes', { count: elapsedMinutes });
+    }
+
+    const elapsedHours = Math.floor(elapsedMinutes / 60);
+    const remainingMinutes = elapsedMinutes % 60;
+    if (elapsedHours < 24) {
+      return tm('quartermaster.globalHeader.elapsedHours', {
+        hours: elapsedHours,
+        minutes: String(remainingMinutes).padStart(2, '0'),
+      });
+    }
+
+    return tm('quartermaster.globalHeader.elapsedDays', { count: Math.floor(elapsedHours / 24) });
   };
 
   return (
@@ -84,12 +119,18 @@ export function GlobalHeader({
               {t('quartermaster.globalHeader.source')}: <span>Embark</span>
             </div>
             <div className="qm-global-header__timestamp">
-              {t('quartermaster.globalHeader.inventory')}: <span>{formatTimestamp(embarkSyncedAt)}</span>
+              {t('quartermaster.globalHeader.inventory')}:{' '}
+              <span title={embarkSyncedAt ? formatTimestamp(embarkSyncedAt) : undefined}>
+                {formatElapsedTimestamp(embarkSyncedAt)}
+              </span>
             </div>
             {embarkUnknownCount > 0 && (
-              <div className="qm-global-header__timestamp qm-global-header__timestamp--warning">
+              <div
+                className="qm-global-header__timestamp qm-global-header__timestamp--warning"
+                title={t('quartermaster.globalHeader.unknownEmbarkIdsTooltip')}
+              >
                 <AlertTriangle size={14} />
-                <span>{embarkUnknownCount}</span>
+                <span>{t('quartermaster.globalHeader.unknownEmbarkIds')}: {embarkUnknownCount}</span>
               </div>
             )}
             <button

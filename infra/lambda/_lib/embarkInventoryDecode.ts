@@ -132,6 +132,11 @@ const EMPTY_SLOT: DecodedSlot = {
     durabilityPercent: 100,
 };
 
+type BlueprintDecodeResult = Pick<
+    DecodedEmbarkInventorySnapshot["blueprints"],
+    "unlockedItemIds" | "blueprintsByTargetItemId"
+>;
+
 export function decodeEmbarkInventory(
     raw: EmbarkRawInventory,
     args: { syncedAt: string; cachedAt: number; manifestId: string; rawSnapshotId: string },
@@ -219,21 +224,31 @@ function findDescendantByAssetId(
     ctx: DecodeContext,
     item: EmbarkRawInventoryItem | undefined | null,
     assetId: number,
+    visited = new Set<string>(),
 ): EmbarkRawInventoryItem | null {
     if (!item) return null;
+    if (visited.has(item.instanceId)) return null;
+    visited.add(item.instanceId);
     if (item.gameAssetId === assetId) return item;
     for (const child of childrenOf(ctx, item)) {
-        const found = findDescendantByAssetId(ctx, child, assetId);
+        const found = findDescendantByAssetId(ctx, child, assetId, visited);
         if (found) return found;
     }
     return null;
 }
 
-function collectDescendants(ctx: DecodeContext, item: EmbarkRawInventoryItem | undefined | null): EmbarkRawInventoryItem[] {
+function collectDescendants(
+    ctx: DecodeContext,
+    item: EmbarkRawInventoryItem | undefined | null,
+    visited = new Set<string>(),
+): EmbarkRawInventoryItem[] {
     if (!item) return [];
+    if (visited.has(item.instanceId)) return [];
+    visited.add(item.instanceId);
     const result: EmbarkRawInventoryItem[] = [];
     for (const child of childrenOf(ctx, item)) {
-        result.push(child, ...collectDescendants(ctx, child));
+        if (visited.has(child.instanceId)) continue;
+        result.push(child, ...collectDescendants(ctx, child, visited));
     }
     return result;
 }
@@ -416,7 +431,7 @@ function extractHideout(
 function extractBlueprints(
     allItems: EmbarkRawInventoryItem[],
     ctx: DecodeContext,
-): DecodedEmbarkInventorySnapshot["blueprints"] {
+): BlueprintDecodeResult {
     const blueprintsByTargetItemId: DecodedEmbarkInventorySnapshot["blueprints"]["blueprintsByTargetItemId"] = {};
     const unlockedItemIds = new Set<string>();
     for (const item of allItems) {
@@ -441,8 +456,6 @@ function extractBlueprints(
     return {
         unlockedItemIds: Array.from(unlockedItemIds).sort((a, b) => a.localeCompare(b)),
         blueprintsByTargetItemId,
-        syncedAt: "",
-        cachedAt: 0,
     };
 }
 

@@ -211,10 +211,13 @@ export async function fetchEmbarkProfile(accessToken: string): Promise<EmbarkPro
     return normalizeEmbarkProfile(profile);
 }
 
-export async function fetchEmbarkInventory(accessToken: string): Promise<unknown> {
-    const config = await getEmbarkRequestConfig();
+export async function fetchEmbarkInventory(
+    accessToken: string,
+    config?: EmbarkRequestConfig,
+): Promise<unknown> {
+    const requestConfig = config ?? await getEmbarkRequestConfig();
     const resp = await fetch(`${EMBARK_API_BASE_URL}/v1/pioneer/inventory`, {
-        headers: buildEmbarkApiHeaders(accessToken, config),
+        headers: buildEmbarkApiHeaders(accessToken, requestConfig),
     });
     if (!resp.ok) {
         const body = sanitizeEmbarkErrorBody(await resp.text());

@@ -97,8 +97,9 @@ export async function syncEmbarkInventory(): Promise<EmbarkInventorySnapshot> {
   const snapshot = await readJson<EmbarkInventorySnapshot>(
     await authedFetch('/me/embark/inventory/sync', { method: 'POST' }),
   );
-  await persistEmbarkSnapshot(snapshot);
-  return snapshot;
+  const cachedSnapshot = withEmbarkCacheSource(snapshot);
+  await persistEmbarkSnapshot(cachedSnapshot);
+  return cachedSnapshot;
 }
 
 export async function getEmbarkInventory(): Promise<EmbarkInventorySnapshot | null> {
@@ -106,8 +107,9 @@ export async function getEmbarkInventory(): Promise<EmbarkInventorySnapshot | nu
   const response = await authedFetch('/me/embark/inventory');
   if (response.status === 404) return null;
   const snapshot = await readJson<EmbarkInventorySnapshot>(response);
-  await persistEmbarkSnapshot(snapshot);
-  return snapshot;
+  const cachedSnapshot = withEmbarkCacheSource(snapshot);
+  await persistEmbarkSnapshot(cachedSnapshot);
+  return cachedSnapshot;
 }
 
 export async function getQuartermasterGameDataCache(
@@ -116,12 +118,31 @@ export async function getQuartermasterGameDataCache(
   const session = await getCurrentSession();
   await setCacheOwner(session?.sub ?? null);
   await setCacheSource(source);
-  return {
+  const cache = {
     stash: await getCachedStash(),
     loadout: await getCachedLoadout(),
     hideout: await getCachedHideout(),
     blueprints: await getCachedBlueprints(),
   };
+  if (
+    source === 'embark' &&
+    session &&
+    !cache.stash &&
+    !cache.loadout &&
+    !cache.hideout &&
+    !cache.blueprints
+  ) {
+    const snapshot = await getEmbarkInventory();
+    if (snapshot) {
+      return {
+        stash: snapshot.stash,
+        loadout: snapshot.loadout,
+        hideout: snapshot.hideout,
+        blueprints: snapshot.blueprints,
+      };
+    }
+  }
+  return cache;
 }
 
 async function persistEmbarkSnapshot(snapshot: EmbarkInventorySnapshot): Promise<void> {
@@ -140,4 +161,14 @@ async function persistEmbarkSnapshot(snapshot: EmbarkInventorySnapshot): Promise
     embarkInventorySyncedAt: snapshot.syncedAt,
     embarkUnknownGameAssetIds: snapshot.diagnostics.unknownGameAssetIds,
   });
+}
+
+function withEmbarkCacheSource(snapshot: EmbarkInventorySnapshot): EmbarkInventorySnapshot {
+  return {
+    ...snapshot,
+    stash: { ...snapshot.stash, source: 'embark' },
+    loadout: { ...snapshot.loadout, source: 'embark' },
+    hideout: { ...snapshot.hideout, source: 'embark' },
+    blueprints: { ...snapshot.blueprints, source: 'embark' },
+  };
 }

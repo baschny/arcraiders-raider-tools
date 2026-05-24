@@ -40,6 +40,9 @@ Recommended behavior:
 - Anonymous users keep the existing local-only behavior where applicable.
 - Signed-in users without Embark continue to use ArcTracker where supported.
 - Signed-in users with Embark can select Embark as their active source.
+- Completing the Embark linking flow stores `gameDataSource = "embark"` on the
+  Raider Tools profile. Existing users with an older Embark link but no stored
+  source remain on ArcTracker until they explicitly select or relink Embark.
 - If the active source is Embark and the Embark token expires, the app prompts re-authentication and continues to show stale cached Embark data where available.
 - The app does not silently fall back to ArcTracker when Embark expires. Source fallback should be a user decision.
 
@@ -94,6 +97,9 @@ The request flow should be:
 8. Lambda stores the raw response, updates normalized snapshots, and returns the normalized result or current cache metadata.
 
 The SPA should only receive normalized data and operational metadata. It should not receive the Embark access token.
+
+Local development may bypass the Cognito group check with
+`RAIDER_TOOLS_LOCAL_DEV=true`; production environments must not set that flag.
 
 ## Token Lifecycle
 Embark access tokens expire every 24 hours. Refresh is not available in the current design, so re-authentication is required at least once per day.
