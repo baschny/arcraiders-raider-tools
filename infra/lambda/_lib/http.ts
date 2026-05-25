@@ -79,6 +79,17 @@ export function jwtGroups(event: APIGatewayProxyEventV2WithJWTAuthorizer): strin
     const groups = claims?.["cognito:groups"];
     if (Array.isArray(groups)) return groups.filter((group): group is string => typeof group === "string");
     if (typeof groups === "string") {
+        const trimmed = groups.trim();
+        if (trimmed.startsWith("[")) {
+            try {
+                const parsed = JSON.parse(trimmed) as unknown;
+                if (Array.isArray(parsed)) {
+                    return parsed.filter((group): group is string => typeof group === "string");
+                }
+            } catch {
+                // Fall back to the older comma-split behavior below.
+            }
+        }
         return groups
             .split(",")
             .map(group => group.trim())
