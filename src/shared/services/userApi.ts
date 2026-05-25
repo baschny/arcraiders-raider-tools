@@ -18,6 +18,9 @@ export interface MeResponse {
     signupProvider: string;
     dataMigrationCompleted?: boolean;
     gameDataSource: 'arctracker' | 'embark';
+    features?: {
+        embarkPreview?: boolean;
+    };
     links: {
         arctracker:
             | { linked: true; validatedUsername: string | null; validatedAt: string | null }

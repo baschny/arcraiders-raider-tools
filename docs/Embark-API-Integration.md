@@ -18,7 +18,7 @@ The integration must:
 - The browser must never call Embark API endpoints directly.
 - Embark is a linked account, not a Raider Tools identity provider.
 - Users must sign in to Raider Tools before linking or using Embark data.
-- Embark data access is gated by a Cognito group, initially `embark-preview`.
+- Embark data access is gated by the `embark-auth` Cognito group.
 - The user's active game-data source is global: `arctracker` or `embark`.
 - ArcTracker and Embark are not mixed at runtime. If Embark is active, apps use Embark-backed snapshots.
 - Sync is explicit in phase 1. There is no background refresh or scheduled sync.
@@ -100,6 +100,10 @@ The SPA should only receive normalized data and operational metadata. It should 
 
 Local development may bypass the Cognito group check with
 `RAIDER_TOOLS_LOCAL_DEV=true`; production environments must not set that flag.
+To test group-gated states locally, set `LOCAL_COGNITO_GROUPS` for the local
+API server. For example, `LOCAL_COGNITO_GROUPS=embark-auth` simulates an
+enabled user, while `LOCAL_COGNITO_GROUPS=` simulates a signed-in user with no
+Cognito groups and should produce `not_enabled` on gated Embark endpoints.
 
 ## Token Lifecycle
 Embark access tokens expire every 24 hours. Refresh is not available in the current design, so re-authentication is required at least once per day.

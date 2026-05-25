@@ -1,30 +1,38 @@
-import { ArrowRight, FlaskConical, KeyRound, ListPlus, LogIn, ShieldCheck, Target } from 'lucide-react';
+import { ArrowRight, FlaskConical, KeyRound, ListPlus, LogIn, ShieldCheck, Target, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../../../shared/context/AuthContext';
 import { useCognitoAuth } from '../../../../shared/context/CognitoAuthContext';
+import { useLinkedAccounts } from '../../../../shared/context/LinkedAccountsContext';
 import { useLocale } from '../../../../shared/context/LocaleContext';
 import type { ViewId } from '../Sidebar';
 
 interface WelcomeViewProps {
   onViewChange: (view: ViewId) => void;
+  embarkPreviewEnabled: boolean;
 }
 
-export function WelcomeView({ onViewChange }: WelcomeViewProps) {
+export function WelcomeView({ onViewChange, embarkPreviewEnabled }: WelcomeViewProps) {
   const { t } = useLocale();
   const { isAuthenticated, isValidating, username } = useAuth();
+  const { embark } = useLinkedAccounts();
   const cognito = useCognitoAuth();
   const isSignedIn = !!cognito.user;
   const needsSignIn = !isSignedIn;
-  const needsArcTracker = isSignedIn && !isAuthenticated;
+  const hasEmbarkLink = embark.status?.linked === true;
+  const needsLinkedAccount = isSignedIn && !isAuthenticated && !hasEmbarkLink;
   const setupTitle = needsSignIn
     ? t('quartermaster.welcome.signInLinkTitle')
-    : needsArcTracker
+    : needsLinkedAccount
       ? t('quartermaster.welcome.linkTitle')
-      : t('quartermaster.welcome.arcTrackerTitle');
+      : hasEmbarkLink
+        ? t('quartermaster.welcome.embarkTitle')
+        : t('quartermaster.welcome.arcTrackerTitle');
   const setupBody = needsSignIn
     ? t('quartermaster.welcome.statusSignedOut')
-    : needsArcTracker
-      ? t('quartermaster.welcome.statusNeedsArcTracker')
+    : needsLinkedAccount
+      ? t('quartermaster.welcome.statusNeedsLinkedAccount')
+      : hasEmbarkLink
+        ? t('quartermaster.welcome.statusReadyWithEmbark')
       : username
         ? t('quartermaster.welcome.statusReadyWithName').replace('{username}', username)
         : t('quartermaster.welcome.statusReady');
@@ -43,7 +51,7 @@ export function WelcomeView({ onViewChange }: WelcomeViewProps) {
         <div className="welcome-view__setup-status">
           {needsSignIn ? (
             <LogIn size={24} />
-          ) : needsArcTracker ? (
+          ) : needsLinkedAccount ? (
             <KeyRound size={24} />
           ) : (
             <ShieldCheck size={24} />
@@ -57,10 +65,25 @@ export function WelcomeView({ onViewChange }: WelcomeViewProps) {
           <Link to="/auth/sign-in" className="qm-button qm-button--primary">
             {t('quartermaster.welcome.signIn')}
           </Link>
-        ) : needsArcTracker ? (
-          <Link to="/profile/arctracker" className="qm-button qm-button--primary">
-            {t('quartermaster.welcome.linkArcTracker')}
-          </Link>
+        ) : needsLinkedAccount ? (
+          <div className="welcome-view__link-options">
+            {embarkPreviewEnabled && (
+              <Link to="/profile/embark" className="welcome-view__link-card welcome-view__link-card--primary">
+                <Zap size={20} />
+                <span>
+                  <strong>{t('quartermaster.welcome.linkEmbark')}</strong>
+                  <small>{t('quartermaster.welcome.linkEmbarkBenefit')}</small>
+                </span>
+              </Link>
+            )}
+            <Link to="/profile/arctracker" className="welcome-view__link-card">
+              <KeyRound size={20} />
+              <span>
+                <strong>{t('quartermaster.welcome.linkArcTracker')}</strong>
+                <small>{t('quartermaster.welcome.linkArcTrackerBenefit')}</small>
+              </span>
+            </Link>
+          </div>
         ) : null}
       </section>
 

@@ -33,7 +33,7 @@ const ddb = DynamoDBDocumentClient.from(new DynamoDBClient({}));
 
 const SUPPORTED_LOCALES = new Set(["en", "de", "pt-BR"]);
 const GAME_DATA_SOURCES = new Set(["arctracker", "embark"]);
-const EMBARK_PREVIEW_GROUP = "embark-preview";
+const EMBARK_AUTH_GROUP = "embark-auth";
 
 interface ProfilePatch {
     displayName?: string;
@@ -117,8 +117,9 @@ async function handleGet(
     const storedGameDataSource = profile?.gameDataSource === "embark" || profile?.gameDataSource === "arctracker"
         ? profile.gameDataSource
         : null;
+    const embarkPreviewEnabled = hasJwtGroup(event, EMBARK_AUTH_GROUP);
     const effectiveGameDataSource =
-        storedGameDataSource === "embark" && embark && hasJwtGroup(event, EMBARK_PREVIEW_GROUP)
+        storedGameDataSource === "embark" && embark && embarkPreviewEnabled
             ? "embark"
             : storedGameDataSource === "arctracker"
                 ? "arctracker"
@@ -134,6 +135,9 @@ async function handleGet(
         // a brand-new user and run the one-shot local→server migration.
         dataMigrationCompleted: profile?.dataMigrationCompleted === true,
         gameDataSource: effectiveGameDataSource,
+        features: {
+            embarkPreview: embarkPreviewEnabled,
+        },
         links: {
             arctracker: arc
                 ? {
@@ -185,7 +189,7 @@ async function handlePatch(
             return jsonResponse(400, { error: "Unsupported gameDataSource" }, origin);
         }
         if (body.gameDataSource === "embark") {
-            if (!hasJwtGroup(event, EMBARK_PREVIEW_GROUP)) {
+            if (!hasJwtGroup(event, EMBARK_AUTH_GROUP)) {
                 return jsonResponse(403, { error: "not_enabled" }, origin);
             }
             const link = await ddb.send(new GetCommand({

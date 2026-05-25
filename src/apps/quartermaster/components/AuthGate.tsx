@@ -39,9 +39,9 @@ export function AuthGate({ children }: AuthGateProps) {
 
   if (!isAuthenticated) {
     const isSignedIn = !!cognito.user;
-    const linkTarget = isSignedIn ? '/profile/arctracker' : '/auth/sign-in';
+    const linkTarget = isSignedIn ? '/profile' : '/auth/sign-in';
     const linkLabel = isSignedIn
-      ? t('quartermaster.auth.linkArcTracker')
+      ? t('quartermaster.auth.linkAccount')
       : t('quartermaster.auth.signIn');
     const title = isSignedIn
       ? t('quartermaster.auth.linkRequiredTitle')

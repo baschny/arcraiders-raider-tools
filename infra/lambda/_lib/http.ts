@@ -91,7 +91,12 @@ export function hasJwtGroup(
     event: APIGatewayProxyEventV2WithJWTAuthorizer,
     group: string,
 ): boolean {
-    if (process.env.RAIDER_TOOLS_LOCAL_DEV === "true") return true;
+    if (
+        process.env.RAIDER_TOOLS_LOCAL_DEV === "true"
+        && process.env.LOCAL_COGNITO_GROUPS === undefined
+    ) {
+        return true;
+    }
     return jwtGroups(event).includes(group);
 }
 

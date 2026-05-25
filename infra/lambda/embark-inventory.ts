@@ -38,7 +38,7 @@ const ddb = DynamoDBDocumentClient.from(new DynamoDBClient({}), {
     },
 });
 
-const EMBARK_PREVIEW_GROUP = "embark-preview";
+const EMBARK_AUTH_GROUP = "embark-auth";
 const USER_THROTTLE = {
     capacity: Number(process.env.EMBARK_INVENTORY_USER_BUCKET_CAPACITY ?? 6),
     refillIntervalSeconds: Number(process.env.EMBARK_INVENTORY_USER_REFILL_SECONDS ?? 300),
@@ -76,7 +76,7 @@ export async function handler(
     const origin = pickAllowedOrigin(event);
     const sub = jwtSub(event);
     if (!sub) return jsonResponse(401, { error: "Unauthenticated" }, origin);
-    if (!hasJwtGroup(event, EMBARK_PREVIEW_GROUP)) {
+    if (!hasJwtGroup(event, EMBARK_AUTH_GROUP)) {
         return jsonResponse(403, { error: "not_enabled" }, origin);
     }
 

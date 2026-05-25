@@ -62,6 +62,7 @@ The local API server loads `infra/.env` before applying defaults. Values already
 - `AWS_ENDPOINT_URL_DYNAMODB` — default `http://localhost:8000`.
 - `USER_TABLE_NAME` — default `raider-tools-users`.
 - `ALLOWED_ORIGINS` — default `http://localhost:5173`.
+- `LOCAL_COGNITO_GROUPS` — when unset, local dev bypasses Cognito group gates. Set to a comma-separated list such as `embark-auth` to test exact group membership, or set it to an empty value to test a signed-in user with no groups.
 - `ARC_APP_KEY` — required when linking or syncing ArcTracker data locally. This is the ArcTracker app key injected by the relay, not the user's `arc_u1_*` token.
 - `LOCAL_TOKEN_ENCRYPTION_KEY` — local-only key material used to encrypt linked account tokens in DynamoDB Local when `KMS_KEY_ID` is not set.
 - `EMBARK_OAUTH_CLIENT_SECRET` — required only if you want the local Embark `/start` + `/complete` flow to reach the real Embark OAuth/token endpoints.

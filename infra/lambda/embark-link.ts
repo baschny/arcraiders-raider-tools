@@ -20,10 +20,11 @@ import {
     parseJwtExpirationIso,
 } from "./_lib/embark";
 import { encryptToken } from "./_lib/envelope";
-import { jsonResponse, jwtSub, parseJsonBody, pickAllowedOrigin } from "./_lib/http";
+import { hasJwtGroup, jsonResponse, jwtSub, parseJsonBody, pickAllowedOrigin } from "./_lib/http";
 
 const ddb = DynamoDBDocumentClient.from(new DynamoDBClient({}));
 
+const EMBARK_AUTH_GROUP = "embark-auth";
 const SUPPORTED_PROVIDERS = new Set(["steam", "epic", "playstation", "xbox"]);
 const PENDING_TTL_SECONDS = 10 * 60;
 
@@ -78,6 +79,9 @@ async function handleStart(
     origin: string,
 ): Promise<APIGatewayProxyResultV2> {
     const supportId = generateEmbarkSupportId();
+    if (!hasJwtGroup(event, EMBARK_AUTH_GROUP)) {
+        return errorResponse(403, "not_enabled", supportId, origin);
+    }
     const body = parseJsonBody<StartEmbarkBody>(event.body ?? null);
     const provider = body?.provider?.trim().toLowerCase();
     const returnUrl = body?.returnUrl?.trim();
@@ -136,6 +140,9 @@ async function handleComplete(
     origin: string,
 ): Promise<APIGatewayProxyResultV2> {
     const fallbackSupportId = generateEmbarkSupportId();
+    if (!hasJwtGroup(event, EMBARK_AUTH_GROUP)) {
+        return errorResponse(403, "not_enabled", fallbackSupportId, origin);
+    }
     const body = parseJsonBody<CompleteEmbarkBody>(event.body ?? null);
     const code = body?.code?.trim();
     const state = body?.state?.trim();

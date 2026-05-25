@@ -298,6 +298,12 @@ export class RaiderToolsStack extends cdk.Stack {
             },
         });
 
+        new cognito.CfnUserPoolGroup(this, "EmbarkAuthGroup", {
+            userPoolId: this.userPool.userPoolId,
+            groupName: "embark-auth",
+            description: "Enables Embark account linking and Embark-backed Raider Tools features.",
+        });
+
         const userPoolDomain = this.userPool.addDomain("UserPoolDomain", {
             customDomain: {
                 domainName: props.authDomainName,

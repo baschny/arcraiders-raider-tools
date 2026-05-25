@@ -150,6 +150,7 @@ async function ensureTable(): Promise<void> {
 interface DevClaims {
     sub: string;
     email: string | null;
+    groups: string[] | null;
 }
 
 function parseDevToken(authHeader: string | undefined): DevClaims | null {
@@ -162,12 +163,21 @@ function parseDevToken(authHeader: string | undefined): DevClaims | null {
     const rest = token.slice(4);
     const firstDot = rest.indexOf(".");
     if (firstDot < 0) {
-        return rest.length > 0 ? { sub: rest, email: null } : null;
+        return rest.length > 0 ? { sub: rest, email: null, groups: localCognitoGroups() } : null;
     }
     const sub = rest.slice(0, firstDot);
     const email = rest.slice(firstDot + 1);
     if (!sub) return null;
-    return { sub, email: email || null };
+    return { sub, email: email || null, groups: localCognitoGroups() };
+}
+
+function localCognitoGroups(): string[] | null {
+    const raw = process.env.LOCAL_COGNITO_GROUPS;
+    if (raw === undefined) return null;
+    return raw
+        .split(",")
+        .map(group => group.trim())
+        .filter(Boolean);
 }
 
 // ---------------------------------------------------------------------------
@@ -255,6 +265,7 @@ function buildEvent(
     if (claims) {
         claimsRecord.sub = claims.sub;
         if (claims.email) claimsRecord.email = claims.email;
+        if (claims.groups !== null) claimsRecord["cognito:groups"] = claims.groups.join(",");
     }
 
     return {
@@ -376,7 +387,7 @@ async function handleRequest(req: IncomingMessage, res: ServerResponse): Promise
 
     const claims = route.requiresDevAuth
         ? parseDevToken(req.headers.authorization as string | undefined)
-        : { sub: "local-relay", email: null };
+        : { sub: "local-relay", email: null, groups: localCognitoGroups() };
     if (!claims) {
         writeStructured(res, origin, 401, { error: "Missing or invalid dev token" });
         return;
@@ -423,6 +434,7 @@ async function main(): Promise<void> {
         console.log(`[local-api] user table:        ${TABLE_NAME}`);
         console.log(`[local-api] allowed origins:   ${ALLOWED_ORIGINS}`);
         console.log(`[local-api] local dev crypto:  ${process.env.RAIDER_TOOLS_LOCAL_DEV}`);
+        console.log(`[local-api] local groups:      ${process.env.LOCAL_COGNITO_GROUPS ?? "(bypass)"}`);
     });
 }
 
