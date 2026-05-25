@@ -80,11 +80,11 @@ Rules:
 - If Embark is active and the token expires, Quartermaster must prompt re-authentication and continue showing stale Embark cache when available.
 - Quartermaster must not silently fall back to ArcTracker on Embark token expiry.
 
-## Embark Preview Gate
-All Embark data endpoints must enforce a Cognito group gate, initially:
+## Embark Auth Gate
+All Embark data endpoints must enforce a Cognito group gate:
 
 ```text
-embark-preview
+embark-auth
 ```
 
 The check must happen in Lambda, not only in the UI.
