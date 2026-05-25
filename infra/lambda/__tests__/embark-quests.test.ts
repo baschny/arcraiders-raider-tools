@@ -1,5 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import type { APIGatewayProxyEventV2WithJWTAuthorizer } from "aws-lambda";
+import type {
+    APIGatewayProxyEventV2WithJWTAuthorizer,
+} from "aws-lambda";
 
 const mocks = vi.hoisted(() => ({
     ddbSend: vi.fn(),

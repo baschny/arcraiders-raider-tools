@@ -39,7 +39,6 @@ import * as iam from "aws-cdk-lib/aws-iam";
 import * as lambda from "aws-cdk-lib/aws-lambda";
 import * as nodeLambda from "aws-cdk-lib/aws-lambda-nodejs";
 import * as secretsmanager from "aws-cdk-lib/aws-secretsmanager";
-import * as ssm from "aws-cdk-lib/aws-ssm";
 import * as acm from "aws-cdk-lib/aws-certificatemanager";
 import * as route53 from "aws-cdk-lib/aws-route53";
 import * as route53Targets from "aws-cdk-lib/aws-route53-targets";
@@ -215,16 +214,18 @@ export class RaiderToolsStack extends cdk.Stack {
 
         const embarkManifestParamName = "/raider-tools/embark/manifest-id";
         const embarkUserAgentParamName = "/raider-tools/embark/user-agent";
-        const embarkManifestParam = ssm.StringParameter.fromStringParameterName(
-            this,
-            "EmbarkManifestParam",
-            embarkManifestParamName,
-        );
-        const embarkUserAgentParam = ssm.StringParameter.fromStringParameterName(
-            this,
-            "EmbarkUserAgentParam",
-            embarkUserAgentParamName,
-        );
+        const embarkConfigParamArns = [
+            cdk.Stack.of(this).formatArn({
+                service: "ssm",
+                resource: "parameter",
+                resourceName: embarkManifestParamName.replace(/^\//, ""),
+            }),
+            cdk.Stack.of(this).formatArn({
+                service: "ssm",
+                resource: "parameter",
+                resourceName: embarkUserAgentParamName.replace(/^\//, ""),
+            }),
+        ];
 
         // -----------------------------------------------------------------
         // Cognito custom-auth triggers (Discord-bridged passwordless).
@@ -459,16 +460,23 @@ export class RaiderToolsStack extends cdk.Stack {
                 KMS_KEY_ID: this.kmsKey.keyId,
                 ALLOWED_ORIGINS: props.allowedOrigins.join(","),
                 EMBARK_OAUTH_SECRET_ARN: embarkOauthSecret.secretArn,
-                EMBARK_MANIFEST_PARAM_NAME: embarkManifestParam.parameterName,
-                EMBARK_USER_AGENT_PARAM_NAME: embarkUserAgentParam.parameterName,
+                EMBARK_MANIFEST_PARAM_NAME: embarkManifestParamName,
+                EMBARK_USER_AGENT_PARAM_NAME: embarkUserAgentParamName,
                 EMBARK_LOOPBACK_REDIRECT_URI: "http://127.0.0.1:49176",
             },
         });
         this.userTable.grantReadWriteData(embarkLinkFn);
         this.kmsKey.grantEncryptDecrypt(embarkLinkFn);
         embarkOauthSecret.grantRead(embarkLinkFn);
-        embarkManifestParam.grantRead(embarkLinkFn);
-        embarkUserAgentParam.grantRead(embarkLinkFn);
+        embarkLinkFn.addToRolePolicy(new iam.PolicyStatement({
+            actions: [
+                "ssm:DescribeParameters",
+                "ssm:GetParameter",
+                "ssm:GetParameterHistory",
+                "ssm:GetParameters",
+            ],
+            resources: embarkConfigParamArns,
+        }));
 
         const embarkInventoryFn = this.makeLambda("EmbarkInventoryFn", "embark-inventory.ts", {
             timeout: cdk.Duration.seconds(20),
@@ -477,15 +485,22 @@ export class RaiderToolsStack extends cdk.Stack {
                 USER_TABLE_NAME: this.userTable.tableName,
                 KMS_KEY_ID: this.kmsKey.keyId,
                 ALLOWED_ORIGINS: props.allowedOrigins.join(","),
-                EMBARK_MANIFEST_PARAM_NAME: embarkManifestParam.parameterName,
-                EMBARK_USER_AGENT_PARAM_NAME: embarkUserAgentParam.parameterName,
+                EMBARK_MANIFEST_PARAM_NAME: embarkManifestParamName,
+                EMBARK_USER_AGENT_PARAM_NAME: embarkUserAgentParamName,
                 EMBARK_SNAPSHOT_BUCKET_NAME: embarkSnapshotBucket.bucketName,
             },
         });
         this.userTable.grantReadWriteData(embarkInventoryFn);
         this.kmsKey.grantEncryptDecrypt(embarkInventoryFn);
-        embarkManifestParam.grantRead(embarkInventoryFn);
-        embarkUserAgentParam.grantRead(embarkInventoryFn);
+        embarkInventoryFn.addToRolePolicy(new iam.PolicyStatement({
+            actions: [
+                "ssm:DescribeParameters",
+                "ssm:GetParameter",
+                "ssm:GetParameterHistory",
+                "ssm:GetParameters",
+            ],
+            resources: embarkConfigParamArns,
+        }));
         embarkSnapshotBucket.grantReadWrite(embarkInventoryFn);
 
         const embarkQuestsFn = this.makeLambda("EmbarkQuestsFn", "embark-quests.ts", {
@@ -495,15 +510,22 @@ export class RaiderToolsStack extends cdk.Stack {
                 USER_TABLE_NAME: this.userTable.tableName,
                 KMS_KEY_ID: this.kmsKey.keyId,
                 ALLOWED_ORIGINS: props.allowedOrigins.join(","),
-                EMBARK_MANIFEST_PARAM_NAME: embarkManifestParam.parameterName,
-                EMBARK_USER_AGENT_PARAM_NAME: embarkUserAgentParam.parameterName,
+                EMBARK_MANIFEST_PARAM_NAME: embarkManifestParamName,
+                EMBARK_USER_AGENT_PARAM_NAME: embarkUserAgentParamName,
                 EMBARK_SNAPSHOT_BUCKET_NAME: embarkSnapshotBucket.bucketName,
             },
         });
         this.userTable.grantReadWriteData(embarkQuestsFn);
         this.kmsKey.grantEncryptDecrypt(embarkQuestsFn);
-        embarkManifestParam.grantRead(embarkQuestsFn);
-        embarkUserAgentParam.grantRead(embarkQuestsFn);
+        embarkQuestsFn.addToRolePolicy(new iam.PolicyStatement({
+            actions: [
+                "ssm:DescribeParameters",
+                "ssm:GetParameter",
+                "ssm:GetParameterHistory",
+                "ssm:GetParameters",
+            ],
+            resources: embarkConfigParamArns,
+        }));
         embarkSnapshotBucket.grantReadWrite(embarkQuestsFn);
 
         const stateFn = this.makeLambda("StateFn", "state.ts", {
