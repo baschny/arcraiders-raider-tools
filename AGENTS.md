@@ -238,8 +238,9 @@ Most development focuses on a single app at a time:
 1. Navigate to the app directory: `src/apps/<app-name>/`
 2. Make changes to components, utilities, or types
 3. Update app-specific styles in `src/apps/<app-name>/styles/`
-4. Test in browser (dev server runs continuously in the background)
-5. Run build to verify: `npm run build`
+4. Run build to verify: `npm run build`
+5. Run the tests: `npm test`
+6. DO NOT test in a browser. DO NOT start the local webserver or dev infra. The user will do that!
 
 **Note**: Do NOT run `npm run dev` for testing unless needed - user typically runs it continuously in the background. Use `npm run build` to verify changes compile.
 
