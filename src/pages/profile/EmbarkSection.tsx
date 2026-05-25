@@ -8,22 +8,21 @@ import {
   RefreshCw,
   TriangleAlert,
 } from 'lucide-react';
-import { useEmbarkLinkStatus } from '../../shared/hooks/useEmbarkLinkStatus';
 import { useMinuteTicker } from '../../shared/hooks/useMinuteTicker';
-import { useCognitoAuth } from '../../shared/context/CognitoAuthContext';
+import { useLinkedAccounts } from '../../shared/context/LinkedAccountsContext';
 import { useLocale } from '../../shared/context/LocaleContext';
 import { ApiError, deleteEmbarkLink, startEmbarkLink } from '../../shared/services/userApi';
 import {
   detectEmbarkExtensionInstalled,
   EMBARK_IDP_OPTIONS,
-  getEmbarkCountdownMinutes,
   isEmbarkExpired,
 } from '../../shared/utils/embark';
+import { formatExpirationShort } from '../../shared/utils/expiration';
 
 export function EmbarkSection() {
   const { t, formatDate } = useLocale();
-  const cognito = useCognitoAuth();
-  const { status, loading, error, refresh } = useEmbarkLinkStatus(Boolean(cognito.user), { pollIntervalMs: null });
+  const { embark } = useLinkedAccounts();
+  const { status, loading, error, refresh, setStatus } = embark;
   const [submittingProvider, setSubmittingProvider] = useState<string | null>(null);
   const [localError, setLocalError] = useState<string | null>(null);
   const [errorSupportId, setErrorSupportId] = useState<string | null>(null);
@@ -32,15 +31,10 @@ export function EmbarkSection() {
   const extensionDetected = useMemo(() => detectEmbarkExtensionInstalled(), []);
   const countdownNow = useMinuteTicker(Boolean(status?.linked));
 
-  const countdownMinutes = status?.linked ? getEmbarkCountdownMinutes(status.expiresAt, countdownNow) : null;
   const expired = status?.linked ? isEmbarkExpired(status.expiresAt, countdownNow) : false;
-  const countdownLabel = countdownMinutes === null
-    ? t('pages.profile.embark.unknownExpiry')
-    : countdownMinutes <= 0
-      ? t('pages.profile.embark.expired')
-      : countdownMinutes === 1
-        ? t('pages.profile.embark.oneMinute')
-        : t('pages.profile.embark.minutesRemaining').replace('{minutes}', String(countdownMinutes));
+  const countdownLabel = status?.linked
+    ? formatExpirationShort(status.expiresAt, countdownNow) ?? t('pages.profile.embark.unknownExpiry')
+    : t('pages.profile.embark.unknownExpiry');
 
   async function handleStart(provider: string) {
     setSubmittingProvider(provider);
@@ -66,6 +60,7 @@ export function EmbarkSection() {
     setSuccessMessage(null);
     try {
       await deleteEmbarkLink();
+      setStatus({ linked: false });
       await refresh();
       setSuccessMessage(t('pages.profile.embark.unlinked'));
     } catch (err) {

@@ -169,6 +169,26 @@ mode by themselves.
 
 ---
 ## 3. Client-side abstractions
+### 3.0 Linked-account status and expiration display
+Linked-account status shown in global UI should come from the shared client
+linked-account state (`src/shared/context/LinkedAccountsContext.ts` and
+`src/shared/context/LinkedAccountsProvider.tsx`) instead of each component
+fetching or caching its own copy. This keeps header badges, profile pages, and
+unlink/re-authenticate actions in sync.
+
+Any UI that displays token or session expiration must use the shared expiration
+helpers in `src/shared/utils/expiration.ts`. The standard display is:
+- expired credentials: `Expired`
+- less than one hour remaining: minute precision, e.g. `42m left`
+- one hour or more remaining: compact hour buckets, e.g. `>1h left`, `>5h left`
+- missing or unparsable expiration: omit the timeout or show the local
+  "unknown" label when a value is required
+
+The standard warning threshold is one hour or less remaining. Header and menu
+status colors should use green for valid/connected, yellow for warning or known
+invalid credentials, red for disconnected/expired credentials, and gray for
+services that are simply not configured.
+
 ### 3.1 `UserStateStore<T>` (`src/shared/state/userStateStore.ts`)
 The generic, backend-swappable store every piece of per-user client state goes through. One instance per domain.
 

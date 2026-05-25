@@ -13,21 +13,57 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ChevronDown, LogIn, LogOut, Loader2, User, UserCircle } from 'lucide-react';
+import {
+  ChevronDown,
+  CircleCheck,
+  CircleX,
+  ClockAlert,
+  LogIn,
+  LogOut,
+  Loader2,
+  TriangleAlert,
+  User,
+  UserCircle,
+} from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useCognitoAuth } from '../context/CognitoAuthContext';
+import { useLinkedAccounts, type ArctrackerConnectionState } from '../context/LinkedAccountsContext';
 import { useLocale } from '../context/LocaleContext';
 import { runSignOutWipe } from '../state/hydration';
-import { useEmbarkLinkStatus } from '../hooks/useEmbarkLinkStatus';
 import { useMinuteTicker } from '../hooks/useMinuteTicker';
-import { getEmbarkStatusLabel, isEmbarkExpired } from '../utils/embark';
+import { getEmbarkExpirationState, getEmbarkStatusLabel } from '../utils/embark';
+import type { EmbarkLinkStatus } from '../services/userApi';
+
+type MenuStatusTone = 'neutral' | 'connected' | 'warning' | 'disconnected';
+
+function getArctrackerTone(state: ArctrackerConnectionState): MenuStatusTone {
+  if (state === 'connected') return 'connected';
+  if (state === 'invalid') return 'warning';
+  return 'neutral';
+}
+
+function getEmbarkTone(status: EmbarkLinkStatus | null, nowMs: number): MenuStatusTone {
+  if (!status?.linked) return 'disconnected';
+  const state = getEmbarkExpirationState(status.expiresAt, nowMs);
+  if (state === 'expired') return 'disconnected';
+  if (state === 'warning') return 'warning';
+  return 'connected';
+}
+
+function StatusIcon({ tone }: { tone: MenuStatusTone }) {
+  if (tone === 'connected') return <CircleCheck size={16} />;
+  if (tone === 'warning') return <TriangleAlert size={16} />;
+  if (tone === 'disconnected') return <CircleX size={16} />;
+  return <User size={16} />;
+}
 
 export function LoginButton() {
   const navigate = useNavigate();
   const { t } = useLocale();
   const { username, isValidating } = useAuth();
   const cognito = useCognitoAuth();
-  const { status: embarkStatus } = useEmbarkLinkStatus(Boolean(cognito.user), { pollIntervalMs: null });
+  const { arctracker, embark } = useLinkedAccounts();
+  const embarkStatus = embark.status;
   const countdownNow = useMinuteTicker(Boolean(embarkStatus?.linked));
 
   const [open, setOpen] = useState(false);
@@ -101,8 +137,21 @@ export function LoginButton() {
 
   if (signedIn) {
     const displayName = cognito.user?.email ?? username ?? '';
-    const embarkExpired = embarkStatus?.linked ? isEmbarkExpired(embarkStatus.expiresAt, countdownNow) : false;
     const embarkLabel = getEmbarkStatusLabel(embarkStatus, countdownNow);
+    const arctrackerTone = getArctrackerTone(arctracker.state);
+    const arctrackerStatusLabel = arctracker.state === 'connected'
+      ? t('shared.userMenu.statusLinked')
+      : arctracker.state === 'invalid'
+        ? t('shared.userMenu.statusInvalid')
+        : t('shared.userMenu.statusNotConfigured');
+    const embarkTone = getEmbarkTone(embarkStatus, countdownNow);
+    const embarkStatusLabel = embarkStatus?.linked
+      ? embarkLabel ?? t('shared.userMenu.statusConnected')
+      : t('shared.userMenu.statusNotConnected');
+    const showEmbarkAttention = Boolean(embarkStatus?.linked)
+      && (embarkTone === 'warning' || embarkTone === 'disconnected');
+    const EmbarkAttentionIcon = embarkTone === 'warning' ? ClockAlert : TriangleAlert;
+
     return (
       <div className="header-dropdown" ref={wrapperRef}>
         <button
@@ -113,6 +162,14 @@ export function LoginButton() {
         >
           <UserCircle size={18} />
           {displayName && <span className="login-button__name">{displayName}</span>}
+          {showEmbarkAttention && (
+            <span
+              className={`connection-alert connection-alert--${embarkTone}`}
+              title={`${t('shared.userMenu.embark')}: ${embarkStatusLabel}`}
+            >
+              <EmbarkAttentionIcon size={14} />
+            </span>
+          )}
           <ChevronDown size={14} />
         </button>
         {open && (
@@ -123,13 +180,17 @@ export function LoginButton() {
                 <span className="user-menu__identity-label">
                   {t('shared.userMenu.signedInAs')}
                 </span>
-                <span className="user-menu__identity-value">{displayName}</span>
-                {embarkStatus?.linked && (
-                  <span className={`user-menu__meta${embarkExpired ? ' user-menu__meta--expired' : ''}`}>
-                    {t('shared.userMenu.embarkStatusPrefix')}
-                    {embarkLabel ? ` ${embarkLabel}` : ''}
-                  </span>
-                )}
+                <span className="user-menu__identity-line">
+                  <span className="user-menu__identity-value">{displayName}</span>
+                  {showEmbarkAttention && (
+                    <span
+                      className={`connection-alert connection-alert--${embarkTone}`}
+                      title={`${t('shared.userMenu.embark')}: ${embarkStatusLabel}`}
+                    >
+                      <EmbarkAttentionIcon size={14} />
+                    </span>
+                  )}
+                </span>
               </div>
             </div>
             <button
@@ -137,18 +198,25 @@ export function LoginButton() {
               onClick={handleProfileClick}
               role="menuitem"
             >
-              <User size={16} />
-              <span>{t('shared.userMenu.profile')}</span>
+              <span className={`connection-status connection-status--${arctrackerTone}`}>
+                <StatusIcon tone={arctrackerTone} />
+              </span>
+              <span className="user-menu__item-text">
+                <span>{t('shared.userMenu.arctracker')}</span>
+                <span className="user-menu__item-meta">{arctrackerStatusLabel}</span>
+              </span>
             </button>
             <button
               className="header-menu-item"
               onClick={handleEmbarkClick}
               role="menuitem"
             >
-              <User size={16} />
-              <span>
-                {t('shared.userMenu.embark')}
-                {embarkStatus?.linked && embarkLabel ? ` (${embarkLabel})` : ''}
+              <span className={`connection-status connection-status--${embarkTone}`}>
+                <StatusIcon tone={embarkTone} />
+              </span>
+              <span className="user-menu__item-text">
+                <span>{t('shared.userMenu.embark')}</span>
+                <span className="user-menu__item-meta">{embarkStatusLabel}</span>
               </span>
             </button>
             <button

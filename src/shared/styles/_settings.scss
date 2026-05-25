@@ -309,6 +309,13 @@
     min-width: 0;
   }
 
+  &__identity-line {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+    min-width: 0;
+  }
+
   &__identity-label {
     font-size: $font-sm;
     color: $text-secondary;
@@ -334,6 +341,47 @@
       color: #f44336;
     }
   }
+
+  &__item-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+
+  &__item-meta {
+    color: $text-secondary;
+    font-size: $font-sm;
+    line-height: 1.1;
+  }
+}
+
+.connection-status,
+.connection-alert {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+
+  &--connected {
+    color: $rarity-uncommon;
+  }
+
+  &--warning {
+    color: $action-gold;
+  }
+
+  &--disconnected {
+    color: #f44336;
+  }
+
+  &--neutral {
+    color: $text-secondary;
+  }
+}
+
+.connection-alert {
+  margin-left: 2px;
 }
 
 .header-menu-item--danger {

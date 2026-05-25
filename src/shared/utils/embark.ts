@@ -1,4 +1,10 @@
 import type { EmbarkLinkStatus } from '../services/userApi';
+import {
+  formatExpirationShort,
+  getExpirationRemainingMinutes,
+  getExpirationState,
+  type ExpirationState,
+} from './expiration';
 
 export const EMBARK_IDP_OPTIONS = [
   { id: 'steam', label: 'Steam' },
@@ -11,18 +17,21 @@ export function getEmbarkCountdownMinutes(
   expiresAt: string | null | undefined,
   nowMs: number = Date.now(),
 ): number | null {
-  if (!expiresAt) return null;
-  const expiresMs = Date.parse(expiresAt);
-  if (!Number.isFinite(expiresMs)) return null;
-  return Math.floor((expiresMs - nowMs) / 60_000);
+  return getExpirationRemainingMinutes(expiresAt, nowMs);
 }
 
 export function isEmbarkExpired(
   expiresAt: string | null | undefined,
   nowMs: number = Date.now(),
 ): boolean {
-  const minutes = getEmbarkCountdownMinutes(expiresAt, nowMs);
-  return minutes !== null ? minutes <= 0 : false;
+  return getExpirationState(expiresAt, nowMs) === 'expired';
+}
+
+export function getEmbarkExpirationState(
+  expiresAt: string | null | undefined,
+  nowMs: number = Date.now(),
+): ExpirationState {
+  return getExpirationState(expiresAt, nowMs);
 }
 
 export function getEmbarkStatusLabel(
@@ -30,11 +39,7 @@ export function getEmbarkStatusLabel(
   nowMs: number = Date.now(),
 ): string | null {
   if (!status?.linked) return null;
-  const expired = isEmbarkExpired(status.expiresAt, nowMs);
-  const minutes = getEmbarkCountdownMinutes(status.expiresAt, nowMs);
-  if (minutes === null) return expired ? 'Expired' : 'Connected';
-  if (minutes <= 0) return 'Expired';
-  return minutes === 1 ? '1 min left' : `${minutes} min left`;
+  return formatExpirationShort(status.expiresAt, nowMs) ?? 'Connected';
 }
 
 export function detectEmbarkExtensionInstalled(): boolean {
