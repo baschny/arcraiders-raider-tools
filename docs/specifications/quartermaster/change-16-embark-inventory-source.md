@@ -576,7 +576,8 @@ Validation:
 ## Documentation Updates
 Implementation must update:
 
-- `docs/Embark-API-Integration.md`
+- `docs/specifications/Embark-API.md`
+- `docs/specifications/Embark-API-Future.md`
   - revise Quartermaster phase 1 to one inventory sync, not separate resource syncs
   - mention generated mapping artifact
 - `docs/User-Data.md`
