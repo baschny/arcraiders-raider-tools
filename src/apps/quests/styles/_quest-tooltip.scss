@@ -201,6 +201,10 @@ $rarity-legendary-border: #ff9800;
     li {
       position: relative;
       padding-left: calc(#{$spacing-lg} + 10px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: $gap-sm;
 
       &::before {
         content: '';
@@ -214,7 +218,18 @@ $rarity-legendary-border: #ff9800;
         background: rgba(255, 255, 255, 0.04);
         box-sizing: border-box;
       }
+
+      &.is-completed::before {
+        border-color: rgba($status-completed, 0.9);
+        background: rgba($status-completed, 0.2);
+      }
     }
+  }
+
+  &__objective-progress {
+    flex: 0 0 auto;
+    font-size: $font-sm;
+    color: $text-accent;
   }
 
   &__tiles {

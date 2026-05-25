@@ -81,6 +81,7 @@ const state = require("../lambda/state");
 const links = require("../lambda/links");
 const embarkLink = require("../lambda/embark-link");
 const embarkInventory = require("../lambda/embark-inventory");
+const embarkQuests = require("../lambda/embark-quests");
 const arctrackerUserProxy = require("../lambda/arctracker-user-proxy");
 /* eslint-enable @typescript-eslint/no-require-imports */
 
@@ -209,6 +210,12 @@ function matchRoute(method: string, pathname: string): MatchedRoute | null {
     }
     if (pathname === "/me/embark/inventory/sync" && method === "POST") {
         return { handler: embarkInventory.handler, pathParameters: {}, requiresDevAuth: true };
+    }
+    if (pathname === "/me/embark/quests" && method === "GET") {
+        return { handler: embarkQuests.handler, pathParameters: {}, requiresDevAuth: true };
+    }
+    if (pathname === "/me/embark/quests/sync" && method === "POST") {
+        return { handler: embarkQuests.handler, pathParameters: {}, requiresDevAuth: true };
     }
     if (pathname.startsWith("/me/arctracker/") && method === "GET") {
         return { handler: arctrackerUserProxy.handler, pathParameters: {}, requiresDevAuth: true };

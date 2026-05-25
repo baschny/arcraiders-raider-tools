@@ -173,6 +173,10 @@ $progress-locked: #ff5252;
   }
 }
 
+.available-quest-item.read-only {
+  cursor: pointer;
+}
+
 .sidebar-search {
   padding: $spacing-sm;
   background: $bg-dark;

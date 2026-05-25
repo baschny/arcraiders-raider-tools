@@ -33,7 +33,7 @@ export function QuestSearchOverlay({
       </div>
 
       {hasQuery && (
-        <>
+        <div className="quest-search-overlay-panel">
           <div className="quest-search-overlay-header">
             🔍 {tm('quests.sidebarSearchResults', { count: searchResults.length })}
           </div>
@@ -58,7 +58,7 @@ export function QuestSearchOverlay({
               ))
             )}
           </div>
-        </>
+        </div>
       )}
     </div>
   );

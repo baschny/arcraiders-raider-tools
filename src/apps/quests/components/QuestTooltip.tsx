@@ -4,11 +4,13 @@ import type { Quest, QuestItemEntry } from '../types/quest';
 import { useLocale } from '../../../shared/context/LocaleContext';
 import { getLocalizedTraderName } from '../utils/localization';
 import { getQuestMapIndicator } from '../utils/mapMeta';
+import type { LinkedQuestObjectiveProgress } from '../../../shared/types/linkedQuests';
 
 interface QuestTooltipProps {
   quest: Quest;
   position: { x: number; y: number; maxHeight: number };
   visible: boolean;
+  objectiveProgress?: LinkedQuestObjectiveProgress[];
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
   onContextMenu?: () => void;
@@ -45,6 +47,7 @@ export function QuestTooltip({
   quest,
   position,
   visible,
+  objectiveProgress,
   onMouseEnter,
   onMouseLeave,
   onContextMenu,
@@ -129,9 +132,24 @@ export function QuestTooltip({
               )}
             </h4>
             <ul className="quest-tooltip__objectives">
-              {quest.objectives.map((objective, index) => (
-                <li key={`${objective}-${index}`}>{objective}</li>
-              ))}
+              {quest.objectives.map((objective, index) => {
+                const progressLabel = objectiveProgress?.[index]
+                  ? formatObjectiveProgress(objectiveProgress[index], t('quests.objectiveDone'))
+                  : '';
+                return (
+                <li
+                  key={`${objective}-${index}`}
+                  className={objectiveProgress?.[index]?.completed ? 'is-completed' : undefined}
+                >
+                  <span>{objective}</span>
+                  {progressLabel && (
+                    <span className="quest-tooltip__objective-progress">
+                      {progressLabel}
+                    </span>
+                  )}
+                </li>
+                );
+              })}
             </ul>
           </div>
         )}
@@ -187,4 +205,19 @@ export function QuestTooltip({
     </div>,
     document.body,
   );
+}
+
+function formatObjectiveProgress(
+  progress: LinkedQuestObjectiveProgress,
+  doneLabel: string,
+): string {
+  if (progress.completed) return doneLabel;
+  if (
+    typeof progress.currentAmount === 'number' &&
+    typeof progress.requiredAmount === 'number' &&
+    progress.requiredAmount > 1
+  ) {
+    return `${progress.currentAmount}/${progress.requiredAmount}`;
+  }
+  return '';
 }

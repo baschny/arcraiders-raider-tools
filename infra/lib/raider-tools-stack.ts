@@ -161,6 +161,11 @@ export class RaiderToolsStack extends cdk.Stack {
                     expiration: cdk.Duration.days(14),
                     prefix: "embark/inventory/",
                 },
+                {
+                    id: "ExpireRawEmbarkQuestSnapshotsAfter14Days",
+                    expiration: cdk.Duration.days(14),
+                    prefix: "embark/quests/",
+                },
             ],
         });
 
@@ -483,6 +488,24 @@ export class RaiderToolsStack extends cdk.Stack {
         embarkUserAgentParam.grantRead(embarkInventoryFn);
         embarkSnapshotBucket.grantReadWrite(embarkInventoryFn);
 
+        const embarkQuestsFn = this.makeLambda("EmbarkQuestsFn", "embark-quests.ts", {
+            timeout: cdk.Duration.seconds(20),
+            memorySize: 512,
+            environment: {
+                USER_TABLE_NAME: this.userTable.tableName,
+                KMS_KEY_ID: this.kmsKey.keyId,
+                ALLOWED_ORIGINS: props.allowedOrigins.join(","),
+                EMBARK_MANIFEST_PARAM_NAME: embarkManifestParam.parameterName,
+                EMBARK_USER_AGENT_PARAM_NAME: embarkUserAgentParam.parameterName,
+                EMBARK_SNAPSHOT_BUCKET_NAME: embarkSnapshotBucket.bucketName,
+            },
+        });
+        this.userTable.grantReadWriteData(embarkQuestsFn);
+        this.kmsKey.grantEncryptDecrypt(embarkQuestsFn);
+        embarkManifestParam.grantRead(embarkQuestsFn);
+        embarkUserAgentParam.grantRead(embarkQuestsFn);
+        embarkSnapshotBucket.grantReadWrite(embarkQuestsFn);
+
         const stateFn = this.makeLambda("StateFn", "state.ts", {
             timeout: cdk.Duration.seconds(10),
             memorySize: 256,
@@ -524,6 +547,8 @@ export class RaiderToolsStack extends cdk.Stack {
                     "X-RateLimit-Remaining",
                     "X-RateLimit-Reset",
                     "Retry-After",
+                    "ETag",
+                    "Last-Modified",
                 ],
                 maxAge: cdk.Duration.hours(1),
             },
@@ -634,6 +659,9 @@ export class RaiderToolsStack extends cdk.Stack {
         const embarkInventoryIntegration = new integrations.HttpLambdaIntegration(
             "EmbarkInventoryIntegration", embarkInventoryFn,
         );
+        const embarkQuestsIntegration = new integrations.HttpLambdaIntegration(
+            "EmbarkQuestsIntegration", embarkQuestsFn,
+        );
         this.httpApi.addRoutes({
             path: "/me/state/{domain}",
             methods: [
@@ -672,6 +700,18 @@ export class RaiderToolsStack extends cdk.Stack {
             path: "/me/embark/inventory/sync",
             methods: [apigwv2.HttpMethod.POST],
             integration: embarkInventoryIntegration,
+            authorizer: jwtAuthorizer,
+        });
+        this.httpApi.addRoutes({
+            path: "/me/embark/quests",
+            methods: [apigwv2.HttpMethod.GET],
+            integration: embarkQuestsIntegration,
+            authorizer: jwtAuthorizer,
+        });
+        this.httpApi.addRoutes({
+            path: "/me/embark/quests/sync",
+            methods: [apigwv2.HttpMethod.POST],
+            integration: embarkQuestsIntegration,
             authorizer: jwtAuthorizer,
         });
 

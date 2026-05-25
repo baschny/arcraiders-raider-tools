@@ -169,7 +169,7 @@ describe('state-sync integration: sign-in / sign-out', () => {
     // -----------------------------------------------------------------
     it('pushes local data to the server on first sign-in and swaps to remote', async () => {
         // Pre-populate local state on three domains.
-        questsStore.set({ completedQuestIds: ['q1', 'q2'] });
+        questsStore.set({ mode: 'manual', manualCompletedQuestIds: ['q1', 'q2'] });
         lootStore.set({
             goalItems: ['item_a'],
             disabledItems: [],
@@ -195,12 +195,18 @@ describe('state-sync integration: sign-in / sign-out', () => {
         const migrateCall = server.calls.find(c => c.url.endsWith('/me/migrate') && c.method === 'POST');
         expect(migrateCall).toBeDefined();
         expect(migrateCall!.body).toMatchObject({
-            quests: { schemaVersion: 1, data: { completedQuestIds: ['q1', 'q2'] } },
+            quests: {
+                schemaVersion: 2,
+                data: { mode: 'manual', manualCompletedQuestIds: ['q1', 'q2'] },
+            },
             loot: { schemaVersion: 1, data: { goalItems: ['item_a'] } },
             quartermaster: { schemaVersion: 1 },
         });
         // Server now has the data.
-        expect(server.state.quests?.data).toEqual({ completedQuestIds: ['q1', 'q2'] });
+        expect(server.state.quests?.data).toEqual({
+            mode: 'manual',
+            manualCompletedQuestIds: ['q1', 'q2'],
+        });
         expect(server.state.quartermaster?.data).toMatchObject({ lists: [{ id: 'list_1' }] });
         // And the flag flipped.
         expect(server.me.dataMigrationCompleted).toBe(true);
@@ -209,8 +215,8 @@ describe('state-sync integration: sign-in / sign-out', () => {
     it('skips migration when there is no local data and pulls from the server', async () => {
         server.me.dataMigrationCompleted = true;
         server.state.quests = {
-            schemaVersion: 1,
-            data: { completedQuestIds: ['server-q-1'] },
+            schemaVersion: 2,
+            data: { mode: 'manual', manualCompletedQuestIds: ['server-q-1'] },
             revision: 3,
             updatedAt: 'now',
         };
@@ -223,7 +229,10 @@ describe('state-sync integration: sign-in / sign-out', () => {
         // No /me/migrate call — straight to server-wins GETs.
         const migrateCall = server.calls.find(c => c.url.endsWith('/me/migrate'));
         expect(migrateCall).toBeUndefined();
-        expect(questsStore.get()).toEqual({ completedQuestIds: ['server-q-1'] });
+        expect(questsStore.get()).toEqual({
+            mode: 'manual',
+            manualCompletedQuestIds: ['server-q-1'],
+        });
     });
 
     // -----------------------------------------------------------------
@@ -231,14 +240,14 @@ describe('state-sync integration: sign-in / sign-out', () => {
     // -----------------------------------------------------------------
     it('replaces stale local data on sign-in when the server already has the user migrated', async () => {
         // Device-local stale state:
-        questsStore.set({ completedQuestIds: ['stale-q'] });
+        questsStore.set({ mode: 'manual', manualCompletedQuestIds: ['stale-q'] });
         await questsStore.flush();
 
         // Server has newer data and is already migrated:
         server.me.dataMigrationCompleted = true;
         server.state.quests = {
-            schemaVersion: 1,
-            data: { completedQuestIds: ['fresh-q-1', 'fresh-q-2'] },
+            schemaVersion: 2,
+            data: { mode: 'manual', manualCompletedQuestIds: ['fresh-q-1', 'fresh-q-2'] },
             revision: 7,
             updatedAt: 'now',
         };
@@ -246,14 +255,15 @@ describe('state-sync integration: sign-in / sign-out', () => {
         await runPostSignInSync();
 
         expect(questsStore.get()).toEqual({
-            completedQuestIds: ['fresh-q-1', 'fresh-q-2'],
+            mode: 'manual',
+            manualCompletedQuestIds: ['fresh-q-1', 'fresh-q-2'],
         });
         // Domains the server has no data for reset to their defaults.
         expect(lootStore.get().goalItems).toEqual([]);
     });
 
     it('falls through to server-wins when /me/migrate returns 409', async () => {
-        questsStore.set({ completedQuestIds: ['local-only'] });
+        questsStore.set({ mode: 'manual', manualCompletedQuestIds: ['local-only'] });
         await questsStore.flush();
 
         // Server response says "already migrated" via 409, even though the
@@ -261,8 +271,8 @@ describe('state-sync integration: sign-in / sign-out', () => {
         server.migrateOutcome = '409';
         server.me.dataMigrationCompleted = false;
         server.state.quests = {
-            schemaVersion: 1,
-            data: { completedQuestIds: ['winner-from-other-device'] },
+            schemaVersion: 2,
+            data: { mode: 'manual', manualCompletedQuestIds: ['winner-from-other-device'] },
             revision: 1,
             updatedAt: 'now',
         };
@@ -270,7 +280,8 @@ describe('state-sync integration: sign-in / sign-out', () => {
         await runPostSignInSync();
 
         expect(questsStore.get()).toEqual({
-            completedQuestIds: ['winner-from-other-device'],
+            mode: 'manual',
+            manualCompletedQuestIds: ['winner-from-other-device'],
         });
         for (const store of allStores) {
             expect(store.backendKind).toBe('remote');
@@ -285,7 +296,7 @@ describe('state-sync integration: sign-in / sign-out', () => {
         await questsStore.setBackend('remote');
         await lootStore.setBackend('remote');
         await quartermasterStore.setBackend('remote');
-        await questsStore.setAuthoritative({ completedQuestIds: ['signed-in'] }, 1);
+        await questsStore.setAuthoritative({ mode: 'manual', manualCompletedQuestIds: ['signed-in'] }, 2);
 
         // Legacy keys left over from before phase 2 — these must be wiped too.
         localStorage.setItem('arcraiders-quest-progress-reactflow', '["legacy-q"]');
@@ -298,7 +309,7 @@ describe('state-sync integration: sign-in / sign-out', () => {
         for (const store of allStores) {
             expect(store.backendKind).toBe('local');
         }
-        expect(questsStore.get()).toEqual({ completedQuestIds: [] });
+        expect(questsStore.get()).toEqual({ mode: 'manual', manualCompletedQuestIds: [] });
         expect(lootStore.get().goalItems).toEqual([]);
         expect(quartermasterStore.get().lists).toEqual([]);
 

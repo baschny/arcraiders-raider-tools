@@ -32,6 +32,7 @@ export function BlueprintRewardsOverlay({
         className="blueprint-overlay-toggle"
         onClick={onToggleCollapsed}
         title={isCollapsed ? t('quests.blueprintsToggleShow') : t('quests.blueprintsToggleHide')}
+        aria-expanded={!isCollapsed}
       >
         <span className="blueprint-overlay-toggle-icon">📜</span>
         <span className="blueprint-overlay-toggle-label">

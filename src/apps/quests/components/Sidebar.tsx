@@ -14,6 +14,7 @@ interface SidebarProps {
   mapNodes: MapNodeWithStatus[];
   availableQuests: Quest[];
   completedCount: number;
+  readOnly: boolean;
   onQuestClick: (questId: string) => void;
   onMapToggle: (mapId: string) => void;
   onResetAll: () => void;
@@ -24,6 +25,7 @@ export function Sidebar({
   mapNodes,
   availableQuests,
   completedCount,
+  readOnly,
   onQuestClick,
   onMapToggle,
   onResetAll,
@@ -119,9 +121,21 @@ export function Sidebar({
           {mapNodes.map((mapNode) => (
             <div
               key={mapNode.id}
-              className={`available-quest-item ${mapNode.isCompleted ? 'completed' : ''}`}
-              onClick={() => mapNode.isCompleted ? onQuestClick(mapNode.id) : onMapToggle(mapNode.id)}
-              title={mapNode.isCompleted ? t('quests.sidebarViewMap') : t('quests.sidebarUnlockMap')}
+              className={`available-quest-item ${mapNode.isCompleted ? 'completed' : ''} ${readOnly ? 'read-only' : ''}`}
+              onClick={() => {
+                if (mapNode.isCompleted || readOnly) {
+                  onQuestClick(mapNode.id);
+                  return;
+                }
+                onMapToggle(mapNode.id);
+              }}
+              title={
+                readOnly
+                  ? t('quests.sidebarViewMap')
+                  : mapNode.isCompleted
+                    ? t('quests.sidebarViewMap')
+                    : t('quests.sidebarUnlockMap')
+              }
             >
               <div className="available-quest-name">
                 {getLocalizedMapNodeName(mapNode.id, mapNode.name, locale)}
@@ -134,7 +148,7 @@ export function Sidebar({
 
       <div className="available-sidebar-header">
         <span>⭐ {t('quests.sidebarAvailableHeader')}</span>
-        {completedCount > 0 && (
+        {!readOnly && completedCount > 0 && (
           <button
             className="reset-all-button"
             onClick={onResetAll}

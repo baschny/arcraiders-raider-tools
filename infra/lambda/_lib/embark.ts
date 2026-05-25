@@ -233,6 +233,28 @@ export async function fetchEmbarkInventory(
     return resp.json() as Promise<unknown>;
 }
 
+export async function fetchEmbarkQuests(
+    accessToken: string,
+    config?: EmbarkRequestConfig,
+): Promise<unknown> {
+    const requestConfig = config ?? await getEmbarkRequestConfig();
+    const resp = await fetch(`${EMBARK_API_BASE_URL}/v1/pioneer/quests`, {
+        headers: buildEmbarkApiHeaders(accessToken, requestConfig),
+    });
+    if (!resp.ok) {
+        const body = sanitizeEmbarkErrorBody(await resp.text());
+        console.warn("Embark quests request failed", {
+            status: resp.status,
+            statusText: resp.statusText,
+            body,
+        });
+        const err = new Error(`Embark quests request failed with HTTP ${resp.status}`);
+        (err as Error & { status?: number }).status = resp.status;
+        throw err;
+    }
+    return resp.json() as Promise<unknown>;
+}
+
 export function buildEmbarkAuthorizeUrl(args: {
     provider: string;
     state: string;

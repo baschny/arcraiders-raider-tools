@@ -6,7 +6,7 @@ import { getLocalizedMapNodeName } from '../utils/localization';
 
 export function MapNode({ data }: { data: MapNodeData }) {
   const { locale, t } = useLocale();
-  const { quest, isCompleted, onToggle } = data;
+  const { quest, isCompleted, isInteractive, onToggle } = data;
   const mapImage = MAP_IMAGES[quest.id];
   const displayName = getLocalizedMapNodeName(
     quest.map[0],
@@ -16,12 +16,13 @@ export function MapNode({ data }: { data: MapNodeData }) {
 
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation();
+    if (!isInteractive) return;
     onToggle(quest.id);
   };
 
   return (
     <div
-      className={`map-node ${isCompleted ? 'completed' : ''}`}
+      className={`map-node ${isCompleted ? 'completed' : ''} ${isInteractive ? '' : 'read-only'}`}
       onClick={handleClick}
     >
       <Handle type="target" position={Position.Top} id="target-top" />
