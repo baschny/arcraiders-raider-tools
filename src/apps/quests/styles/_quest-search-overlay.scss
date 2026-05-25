@@ -8,13 +8,14 @@
 }
 
 .quest-search-overlay-input-wrapper {
+  position: relative;
   padding: 0;
 }
 
 .quest-search-overlay-input {
   width: 100%;
   min-height: 44px;
-  padding: 10px $spacing-md;
+  padding: 10px 42px 10px $spacing-md;
   background: rgba(255, 255, 255, 0.05);
   border: $border-width-thin solid $border-light;
   border-radius: $radius-sm;
@@ -30,6 +31,35 @@
 
   &::placeholder {
     color: $text-tertiary;
+  }
+}
+
+.quest-search-overlay-clear {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: $text-secondary;
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: $transition-default;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.14);
+    color: $text-primary;
+  }
+
+  &:focus-visible {
+    outline: 2px solid rgba(79, 195, 247, 0.45);
+    outline-offset: 2px;
   }
 }
 

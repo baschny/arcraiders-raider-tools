@@ -801,6 +801,10 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
     []
   );
 
+  const handleClearSearch = useCallback(() => {
+    setSearchQuery('');
+  }, []);
+
   // Handle search enter key
   const handleSearchKeyDown = useCallback(
     (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -943,15 +947,14 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
                 searchResults={searchResults}
                 onSearchChange={handleSearchChange}
                 onSearchKeyDown={handleSearchKeyDown}
+                onClearSearch={handleClearSearch}
                 onQuestClick={focusOnQuest}
               />
               {blueprintRewardEntries.length > 0 && (
                 <BlueprintRewardsOverlay
                   entries={blueprintRewardEntries}
                   isCollapsed={isBlueprintOverlayCollapsed}
-                  onToggleCollapsed={() =>
-                    setIsBlueprintOverlayCollapsed((collapsed) => !collapsed)
-                  }
+                  onSetCollapsed={setIsBlueprintOverlayCollapsed}
                   onBlueprintClick={focusOnQuest}
                 />
               )}

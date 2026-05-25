@@ -1,3 +1,4 @@
+import { X } from 'lucide-react';
 import { useLocale } from '../../../shared/context/LocaleContext';
 import type { Quest } from '../types/quest';
 
@@ -6,6 +7,7 @@ interface QuestSearchOverlayProps {
   searchResults: Quest[];
   onSearchChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onSearchKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  onClearSearch: () => void;
   onQuestClick: (questId: string) => void;
 }
 
@@ -14,6 +16,7 @@ export function QuestSearchOverlay({
   searchResults,
   onSearchChange,
   onSearchKeyDown,
+  onClearSearch,
   onQuestClick,
 }: QuestSearchOverlayProps) {
   const { t, tm } = useLocale();
@@ -30,6 +33,17 @@ export function QuestSearchOverlay({
           onChange={onSearchChange}
           onKeyDown={onSearchKeyDown}
         />
+        {hasQuery && (
+          <button
+            type="button"
+            className="quest-search-overlay-clear"
+            onClick={onClearSearch}
+            aria-label={t('quests.sidebarClearSearch')}
+            title={t('quests.sidebarClearSearch')}
+          >
+            <X size={16} />
+          </button>
+        )}
       </div>
 
       {hasQuery && (

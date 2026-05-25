@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { useLocale } from '../../../shared/context/LocaleContext';
 
 interface BlueprintRewardListEntry {
@@ -12,25 +13,47 @@ interface BlueprintRewardListEntry {
 interface BlueprintRewardsOverlayProps {
   entries: BlueprintRewardListEntry[];
   isCollapsed: boolean;
-  onToggleCollapsed: () => void;
+  onSetCollapsed: (collapsed: boolean) => void;
   onBlueprintClick: (questId: string) => void;
 }
 
 export function BlueprintRewardsOverlay({
   entries,
   isCollapsed,
-  onToggleCollapsed,
+  onSetCollapsed,
   onBlueprintClick,
 }: BlueprintRewardsOverlayProps) {
   const { t, tm } = useLocale();
   const completedCount = entries.filter((entry) => entry.isCompleted).length;
+  const overlayRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (isCollapsed) return;
+
+    const handlePointerDown = (event: MouseEvent | TouchEvent) => {
+      if (!overlayRef.current?.contains(event.target as Node)) {
+        onSetCollapsed(true);
+      }
+    };
+
+    document.addEventListener('mousedown', handlePointerDown);
+    document.addEventListener('touchstart', handlePointerDown);
+
+    return () => {
+      document.removeEventListener('mousedown', handlePointerDown);
+      document.removeEventListener('touchstart', handlePointerDown);
+    };
+  }, [isCollapsed, onSetCollapsed]);
 
   return (
-    <div className={`blueprint-overlay ${isCollapsed ? 'collapsed' : ''}`}>
+    <div
+      ref={overlayRef}
+      className={`blueprint-overlay ${isCollapsed ? 'collapsed' : ''}`}
+    >
       <button
         type="button"
         className="blueprint-overlay-toggle"
-        onClick={onToggleCollapsed}
+        onClick={() => onSetCollapsed(!isCollapsed)}
         title={isCollapsed ? t('quests.blueprintsToggleShow') : t('quests.blueprintsToggleHide')}
         aria-expanded={!isCollapsed}
       >
