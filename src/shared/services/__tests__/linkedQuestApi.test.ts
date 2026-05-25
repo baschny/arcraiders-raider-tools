@@ -1,10 +1,12 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import {
+  getEmbarkQuestSnapshot,
   buildEmbarkThrottledSnapshot,
   normalizeArctrackerQuestSnapshot,
   syncArctrackerQuestSnapshot,
 } from '../linkedQuestApi';
 import type { LinkedQuestSnapshot } from '../../types/linkedQuests';
+import sampleArctrackerQuests from '../../../../docs/sample/arctracker-api/quests.json';
 
 vi.mock('../../auth/cognitoClient', () => ({
   getCurrentSession: vi.fn().mockResolvedValue({ sub: 'user-sub-1' }),
@@ -36,13 +38,26 @@ describe('linkedQuestApi', () => {
           { id: 'in_my_image', completed: false },
         ],
       },
-    }, headers, null);
+    }, headers);
 
     expect(snapshot.source).toBe('arctracker');
     expect(snapshot.etag).toBe('"quests-v1"');
     expect(snapshot.lastModified).toBe('Mon, 25 May 2026 10:00:00 GMT');
+    expect(snapshot.syncedAt).not.toBe('Mon, 25 May 2026 10:00:00 GMT');
     expect(snapshot.questsById.cold_storage.completed).toBe(true);
     expect(snapshot.questsById.in_my_image.state).toBe('unknown');
+  });
+
+  it('migrates ArcTracker quest ids from the real sample payload', () => {
+    const snapshot = normalizeArctrackerQuestSnapshot(
+      sampleArctrackerQuests,
+      new Headers(),
+    );
+
+    expect(snapshot.questsById.cold_storage?.completed).toBe(true);
+    expect(snapshot.questsById.greasing_her_palms).toBeDefined();
+    expect(snapshot.questsById['12_cold_storage']).toBeUndefined();
+    expect(snapshot.questsById.ss10a).toBeUndefined();
   });
 
   it('sends If-None-Match and If-Modified-Since validators on sync', async () => {
@@ -69,7 +84,7 @@ describe('linkedQuestApi', () => {
 
     const previous: LinkedQuestSnapshot = {
       source: 'arctracker',
-      syncedAt: 'Mon, 25 May 2026 10:00:00 GMT',
+      syncedAt: '2026-05-25T10:00:00.000Z',
       cachedAt: 1,
       etag: '"quests-v1"',
       lastModified: 'Mon, 25 May 2026 10:00:00 GMT',
@@ -79,6 +94,7 @@ describe('linkedQuestApi', () => {
 
     expect(snapshot.etag).toBe('"quests-v2"');
     expect(snapshot.lastModified).toBe('Tue, 26 May 2026 12:00:00 GMT');
+    expect(snapshot.syncedAt).not.toBe(previous.syncedAt);
     expect(snapshot.questsById.cold_storage.completed).toBe(true);
   });
 
@@ -87,7 +103,7 @@ describe('linkedQuestApi', () => {
 
     const previous: LinkedQuestSnapshot = {
       source: 'arctracker',
-      syncedAt: 'Mon, 25 May 2026 10:00:00 GMT',
+      syncedAt: '2026-05-25T10:00:00.000Z',
       cachedAt: 1,
       etag: '"quests-v1"',
       lastModified: 'Mon, 25 May 2026 10:00:00 GMT',
@@ -114,5 +130,30 @@ describe('linkedQuestApi', () => {
 
     expect(snapshot?.nextAllowedAt).toBe('2026-05-25T11:00:00.000Z');
     expect(snapshot?.questsById.cold_storage.completed).toBe(true);
+  });
+
+  it('creates a minimal embark throttle snapshot when there is no cached snapshot yet', () => {
+    const snapshot = buildEmbarkThrottledSnapshot(null, '2026-05-25T11:00:00.000Z');
+
+    expect(snapshot).toEqual(expect.objectContaining({
+      source: 'embark',
+      nextAllowedAt: '2026-05-25T11:00:00.000Z',
+      questsById: {},
+    }));
+  });
+
+  it('rejects invalid embark snapshot payloads instead of caching them', async () => {
+    vi.stubGlobal('fetch', vi.fn(async () => new Response(JSON.stringify({
+      source: 'not-embark',
+      syncedAt: '2026-05-25T10:00:00.000Z',
+      cachedAt: 1,
+      questsById: {},
+    }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    })));
+
+    await expect(getEmbarkQuestSnapshot()).rejects.toThrow('Invalid embark quest snapshot payload');
+    expect(localStorage.getItem('rt_linked_quests_snapshot')).toBeNull();
   });
 });

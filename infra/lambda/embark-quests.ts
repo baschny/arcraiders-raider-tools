@@ -156,22 +156,22 @@ async function handleSync(
     if (!token.access_token) return jsonResponse(401, { error: "not_linked" }, origin);
 
     const config = await getEmbarkRequestConfig();
-    const raw = await fetchEmbarkQuests(token.access_token, config) as EmbarkRawQuestsResponse;
-    if (!raw || !Array.isArray(raw.quests)) {
-        return jsonResponse(500, { error: "decode_failed" }, origin);
-    }
+    const raw = await fetchEmbarkQuests(token.access_token, config) as EmbarkRawQuestsResponse | null;
+    const normalizedRaw: EmbarkRawQuestsResponse = {
+        quests: Array.isArray(raw?.quests) ? raw.quests : [],
+    };
 
     const syncedAt = new Date().toISOString();
     const cachedAt = Date.now();
     const rawSnapshotId = createSnapshotId();
-    const snapshot = decodeEmbarkQuests(raw, {
+    const snapshot = decodeEmbarkQuests(normalizedRaw, {
         syncedAt,
         cachedAt,
         rawSnapshotId,
     });
     const refs = await storeEmbarkQuestSnapshots({
         userId: sub,
-        rawQuests: raw,
+        rawQuests: normalizedRaw,
         normalizedSnapshot: snapshot,
         syncedAt,
         rawSnapshotId,

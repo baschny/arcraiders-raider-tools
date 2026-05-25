@@ -74,6 +74,10 @@ function isMapNodeUnlockedInLinkedMode(
   snapshot: LinkedQuestSnapshot,
 ): boolean {
   if (snapshot.source === 'arctracker') {
+    // ArcTracker only exposes completed/incomplete quest state and does not
+    // provide enough information to model map unlock progression accurately.
+    // Keep map nodes visually available in linked ArcTracker mode rather than
+    // incorrectly locking them behind missing runtime data.
     return true;
   }
 

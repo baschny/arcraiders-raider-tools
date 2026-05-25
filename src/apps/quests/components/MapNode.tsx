@@ -23,7 +23,8 @@ export function MapNode({ data }: { data: MapNodeData }) {
   return (
     <div
       className={`map-node ${isCompleted ? 'completed' : ''} ${isInteractive ? '' : 'read-only'}`}
-      onClick={handleClick}
+      onClick={isInteractive ? handleClick : undefined}
+      aria-disabled={!isInteractive}
     >
       <Handle type="target" position={Position.Top} id="target-top" />
       {mapImage && (

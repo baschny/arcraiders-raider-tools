@@ -864,8 +864,13 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
       ? t('quests.linkedModeEmbarkBody')
       : t('quests.linkedModeArcTrackerBody');
   const linkedSourceLabel = linkedSource === 'embark' ? 'Embark' : 'ArcTracker';
-  const linkedSnapshotTimestamp = activeLinkedSnapshot
-    ? formatDate(new Date(activeLinkedSnapshot.syncedAt), {
+  const linkedUpdatedAtRaw = activeLinkedSnapshot
+    ? activeLinkedSnapshot.source === 'arctracker'
+      ? activeLinkedSnapshot.lastModified ?? activeLinkedSnapshot.syncedAt
+      : activeLinkedSnapshot.syncedAt
+    : null;
+  const linkedSnapshotTimestamp = linkedUpdatedAtRaw
+    ? formatDate(new Date(linkedUpdatedAtRaw), {
         dateStyle: 'medium',
         timeStyle: 'short',
       })
@@ -883,23 +888,23 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
 
     const elapsedSeconds = Math.max(0, Math.floor((nowMs - syncedMs) / 1000));
     if (elapsedSeconds < 60) {
-      return '<1m';
+      return t('quests.syncFreshnessNow');
     }
 
     const elapsedMinutes = Math.floor(elapsedSeconds / 60);
     if (elapsedMinutes < 60) {
-      return `${elapsedMinutes}m`;
+      return tm('quests.syncFreshnessMinutes', { count: elapsedMinutes });
     }
 
     const elapsedHours = Math.floor(elapsedMinutes / 60);
     if (elapsedHours < 24) {
-      return `>${elapsedHours}h`;
+      return tm('quests.syncFreshnessHours', { count: elapsedHours });
     }
 
-    return `>${Math.floor(elapsedHours / 24)}d`;
-  }, [nowMs, t]);
-  const linkedFreshnessLabel = activeLinkedSnapshot
-    ? formatElapsedTimestamp(activeLinkedSnapshot.syncedAt)
+    return tm('quests.syncFreshnessDays', { count: Math.floor(elapsedHours / 24) });
+  }, [nowMs, t, tm]);
+  const linkedFreshnessLabel = linkedUpdatedAtRaw
+    ? formatElapsedTimestamp(linkedUpdatedAtRaw)
     : t('quests.syncNever');
   const shouldDimLinkedTree = isLinkedMode && !linkedSource;
   const isLinkedSyncDisabled =

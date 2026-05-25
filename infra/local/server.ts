@@ -39,6 +39,7 @@ import {
     DescribeTableCommand,
     ResourceNotFoundException,
 } from "@aws-sdk/client-dynamodb";
+import { matchLocalRoutePattern } from "./routes";
 
 // ---------------------------------------------------------------------------
 // Environment defaults
@@ -192,51 +193,28 @@ interface MatchedRoute {
     requiresDevAuth: boolean;
 }
 
-function matchRoute(method: string, pathname: string): MatchedRoute | null {
-    if (pathname === "/me" && (method === "GET" || method === "PATCH")) {
-        return { handler: profile.handler, pathParameters: {}, requiresDevAuth: true };
-    }
-    if (pathname === "/me/migrate" && method === "POST") {
-        return { handler: state.handler, pathParameters: {}, requiresDevAuth: true };
-    }
-    if (pathname === "/me/links/embark/start" && method === "POST") {
-        return { handler: embarkLink.handler, pathParameters: {}, requiresDevAuth: true };
-    }
-    if (pathname === "/me/links/embark/complete" && method === "POST") {
-        return { handler: embarkLink.handler, pathParameters: {}, requiresDevAuth: true };
-    }
-    if (pathname === "/me/embark/inventory" && method === "GET") {
-        return { handler: embarkInventory.handler, pathParameters: {}, requiresDevAuth: true };
-    }
-    if (pathname === "/me/embark/inventory/sync" && method === "POST") {
-        return { handler: embarkInventory.handler, pathParameters: {}, requiresDevAuth: true };
-    }
-    if (pathname === "/me/embark/quests" && method === "GET") {
-        return { handler: embarkQuests.handler, pathParameters: {}, requiresDevAuth: true };
-    }
-    if (pathname === "/me/embark/quests/sync" && method === "POST") {
-        return { handler: embarkQuests.handler, pathParameters: {}, requiresDevAuth: true };
-    }
-    if (pathname.startsWith("/me/arctracker/") && method === "GET") {
-        return { handler: arctrackerUserProxy.handler, pathParameters: {}, requiresDevAuth: true };
-    }
-    const stateMatch = /^\/me\/state\/([^/]+)$/.exec(pathname);
-    if (stateMatch && (method === "GET" || method === "PUT" || method === "DELETE")) {
-        return {
-            handler: state.handler,
-            pathParameters: { domain: decodeURIComponent(stateMatch[1]) },
-            requiresDevAuth: true,
-        };
-    }
-    const linksMatch = /^\/me\/links\/([^/]+)$/.exec(pathname);
-    if (linksMatch && (method === "GET" || method === "PUT" || method === "DELETE")) {
-        return {
-            handler: links.handler,
-            pathParameters: { provider: decodeURIComponent(linksMatch[1]) },
-            requiresDevAuth: true,
-        };
-    }
-    return null;
+export function matchRoute(method: string, pathname: string): MatchedRoute | null {
+    const match = matchLocalRoutePattern(method, pathname);
+    if (!match) return null;
+
+    const handlers: Record<string, Handler> = {
+        profile: profile.handler,
+        migrate: state.handler,
+        state: state.handler,
+        links: links.handler,
+        embarkLink: embarkLink.handler,
+        embarkInventory: embarkInventory.handler,
+        embarkInventorySync: embarkInventory.handler,
+        embarkQuests: embarkQuests.handler,
+        embarkQuestsSync: embarkQuests.handler,
+        arctrackerUserProxy: arctrackerUserProxy.handler,
+    };
+
+    return {
+        handler: handlers[match.key],
+        pathParameters: match.pathParameters,
+        requiresDevAuth: match.requiresDevAuth,
+    };
 }
 
 // ---------------------------------------------------------------------------
@@ -445,10 +423,12 @@ async function main(): Promise<void> {
     });
 }
 
-main().catch(err => {
-    console.error("[local-api] failed to start", err);
-    process.exit(1);
-});
+if (!process.env.VITEST) {
+    main().catch(err => {
+        console.error("[local-api] failed to start", err);
+        process.exit(1);
+    });
+}
 
 function loadLocalEnvFiles(): void {
     const envDir = resolve(__dirname, "..");

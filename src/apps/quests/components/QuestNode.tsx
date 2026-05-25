@@ -115,7 +115,12 @@ export function QuestNode({ data }: { data: QuestNodeData }) {
   };
 
   return (
-    <div className={nodeClass} onClick={handleClick} ref={hoverRef}>
+    <div
+      className={nodeClass}
+      onClick={isInteractive ? handleClick : undefined}
+      ref={hoverRef}
+      aria-disabled={!isInteractive}
+    >
       <Handle type="target" position={Position.Top} id="target-top" />
       {hasBlueprintReward && (
         <div className="blueprint-badge" title={blueprintRewardTooltip}>

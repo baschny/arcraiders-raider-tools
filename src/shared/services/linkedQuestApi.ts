@@ -1,5 +1,6 @@
 import { getCurrentSession, getIdToken } from '../auth/cognitoClient';
 import { notifyArctrackerLinkInvalid } from '../auth/arctrackerLinkEvents';
+import { migrateQuestId } from '../../apps/quests/data/questIdMigration';
 import type {
   LinkedQuestEntry,
   LinkedQuestSnapshot,
@@ -81,18 +82,27 @@ export function buildEmbarkThrottledSnapshot(
   snapshot: LinkedQuestSnapshot | null,
   nextAllowedAt: string | null,
 ): LinkedQuestSnapshot | null {
-  if (!snapshot || snapshot.source !== 'embark') return null;
+  const nowIso = new Date().toISOString();
+  if (snapshot && snapshot.source !== 'embark') return null;
   return {
-    ...snapshot,
+    source: 'embark',
+    syncedAt: snapshot?.source === 'embark' ? snapshot.syncedAt : nowIso,
+    cachedAt: snapshot?.source === 'embark' ? snapshot.cachedAt : Date.now(),
+    questsById: snapshot?.source === 'embark' ? snapshot.questsById : {},
+    ...(snapshot?.source === 'embark'
+      ? {
+          etag: snapshot.etag,
+          lastModified: snapshot.lastModified,
+        }
+      : {}),
     nextAllowedAt,
-    lastCheckedAt: new Date().toISOString(),
+    lastCheckedAt: nowIso,
   };
 }
 
 export function normalizeArctrackerQuestSnapshot(
   payload: ArctrackerQuestResponse,
   headers: Headers,
-  previous: LinkedQuestSnapshot | null,
 ): LinkedQuestSnapshot {
   const nowIso = new Date().toISOString();
   const lastModified = headers.get('Last-Modified');
@@ -100,7 +110,7 @@ export function normalizeArctrackerQuestSnapshot(
   const questsById: Record<string, LinkedQuestEntry> = {};
 
   for (const quest of payload.data.quests ?? []) {
-    questsById[quest.id] = {
+    questsById[migrateQuestId(quest.id)] = {
       state: quest.completed ? 'completed' : 'unknown',
       completed: quest.completed,
     };
@@ -108,16 +118,13 @@ export function normalizeArctrackerQuestSnapshot(
 
   return {
     source: 'arctracker',
-    syncedAt: lastModified ?? nowIso,
+    syncedAt: nowIso,
     cachedAt: Date.now(),
     etag,
     lastModified,
     lastCheckedAt: nowIso,
     nextAllowedAt: null,
     questsById,
-    ...(previous?.source === 'arctracker' && previous.syncedAt && !lastModified
-      ? { syncedAt: previous.syncedAt }
-      : {}),
   };
 }
 
@@ -156,7 +163,7 @@ export async function syncArctrackerQuestSnapshot(
   }
 
   const payload = await response.json() as ArctrackerQuestResponse;
-  const snapshot = normalizeArctrackerQuestSnapshot(payload, response.headers, previous);
+  const snapshot = normalizeArctrackerQuestSnapshot(payload, response.headers);
   writeCachedSnapshot(userSub, snapshot);
   return snapshot;
 }
@@ -170,7 +177,10 @@ export async function getEmbarkQuestSnapshot(): Promise<LinkedQuestSnapshot | nu
   if (response.status === 404) return null;
   if (!response.ok) throw await buildError(response);
 
-  const snapshot = await response.json() as EmbarkQuestResponse;
+  const snapshot = await response.json();
+  if (!isEmbarkSnapshot(snapshot)) {
+    throw new LinkedQuestApiError('Invalid embark quest snapshot payload', 500);
+  }
   const normalized = {
     ...snapshot,
     lastCheckedAt: new Date().toISOString(),
@@ -200,7 +210,10 @@ export async function syncEmbarkQuestSnapshot(
   }
   if (!response.ok) throw await buildError(response);
 
-  const snapshot = await response.json() as EmbarkQuestResponse;
+  const snapshot = await response.json();
+  if (!isEmbarkSnapshot(snapshot)) {
+    throw new LinkedQuestApiError('Invalid embark quest snapshot payload', 500);
+  }
   const normalized = {
     ...snapshot,
     lastCheckedAt: new Date().toISOString(),
@@ -246,4 +259,15 @@ function writeCachedSnapshot(userSub: string, snapshot: LinkedQuestSnapshot): vo
 
   const record: LinkedQuestCacheRecord = { userSub, snapshot };
   window.localStorage.setItem(CACHE_KEY, JSON.stringify(record));
+}
+
+function isEmbarkSnapshot(value: unknown): value is EmbarkQuestResponse {
+  if (!value || typeof value !== 'object') return false;
+  const snapshot = value as Partial<EmbarkQuestResponse>;
+  return snapshot.source === 'embark'
+    && typeof snapshot.syncedAt === 'string'
+    && typeof snapshot.cachedAt === 'number'
+    && !!snapshot.questsById
+    && typeof snapshot.questsById === 'object'
+    && !Array.isArray(snapshot.questsById);
 }

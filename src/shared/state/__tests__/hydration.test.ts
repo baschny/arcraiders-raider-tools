@@ -235,6 +235,22 @@ describe('state-sync integration: sign-in / sign-out', () => {
         });
     });
 
+    it('treats linked quest mode as local quest data for migration purposes', async () => {
+        questsStore.set({ mode: 'linked', manualCompletedQuestIds: [] });
+        await questsStore.flush();
+
+        await runPostSignInSync();
+
+        const migrateCall = server.calls.find(c => c.url.endsWith('/me/migrate') && c.method === 'POST');
+        expect(migrateCall).toBeDefined();
+        expect(migrateCall!.body).toMatchObject({
+            quests: {
+                schemaVersion: 2,
+                data: { mode: 'linked', manualCompletedQuestIds: [] },
+            },
+        });
+    });
+
     // -----------------------------------------------------------------
     // Server-wins on returning devices
     // -----------------------------------------------------------------
