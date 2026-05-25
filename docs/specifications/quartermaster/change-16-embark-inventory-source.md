@@ -74,7 +74,7 @@ The source setting is account-level state and must be stored server-side on the 
 Rules:
 
 - ArcTracker remains the default source for existing users.
-- Embark can be selected only when the user has an active Embark link and is allowed by the Embark preview gate.
+- Embark can be selected only when the user has an active Embark link and is allowed to use Embark.
 - Quartermaster uses exactly one active source at runtime.
 - Quartermaster must not combine ArcTracker and Embark data in one planner run.
 - If Embark is active and the token expires, Quartermaster must prompt re-authentication and continue showing stale Embark cache when available.
@@ -238,7 +238,7 @@ POST /me/embark/inventory/sync
 Both routes require:
 
 - Raider Tools Cognito JWT.
-- Embark preview group.
+- Embark access group.
 - linked Embark token.
 
 Only `POST /sync` consumes throttle budget and calls Embark.
@@ -335,7 +335,7 @@ Use a persisted token bucket for `embark:inventory`.
 Initial policy should support user bursts during stash cleanup:
 
 - per-user bucket for inventory sync
-- global bucket for all preview users
+- global bucket for all Embark-enabled users
 - one in-flight inventory sync per user
 - no background consumers
 
@@ -360,7 +360,7 @@ The Lambda must:
 
 1. Parse route and method.
 2. Resolve user id from JWT.
-3. Enforce preview group.
+3. Enforce Embark access group.
 4. Load `LINK#embark`.
 5. Reject expired tokens before upstream calls.
 6. For GET, return latest normalized snapshot or `404` if none exists.
@@ -473,7 +473,7 @@ Unknown Embark items must be visible enough for preview/debugging:
 - Unknown items appear in diagnostics or a collapsed "Unknown items" section in My Items.
 - Unknown item display should include `gameAssetId`, quantity, and source context where possible.
 
-Do not hide unknown items silently in Embark preview mode.
+Do not hide unknown items silently in Embark mode.
 
 ## Client Services
 Add a source-aware shared game-data service:
@@ -570,7 +570,7 @@ PATCH /me
 Validation:
 
 - `arctracker` is always accepted.
-- `embark` requires linked Embark status and preview group access.
+- `embark` requires linked Embark status and Embark access.
 - If validation fails, return a stable error code.
 
 ## Documentation Updates
@@ -597,7 +597,7 @@ Implementation must update:
 
 ### Backend
 - `GET /me/embark/inventory` returns 404 before first sync.
-- `POST /me/embark/inventory/sync` rejects non-preview users.
+- `POST /me/embark/inventory/sync` rejects users without Embark access.
 - Expired Embark token returns `token_expired` without upstream call.
 - Throttled request returns 429 with retry metadata.
 - Successful sync stores raw compressed S3 snapshot.

@@ -603,7 +603,7 @@ Rules:
 
 - `arctracker` is the default source for existing users.
 - `embark` may be selected only when the user has an active Embark link and is
-  allowed by the Embark preview gate.
+  allowed by the Embark access gate.
 - Completing the Embark linking flow counts as selecting Embark and stores the
   source on the Raider Tools profile.
 - If Embark is active and the token expires, Quartermaster must prompt the user
@@ -641,7 +641,7 @@ Embark inventory sync must:
 
 - run only through Raider Tools API routes
 - require a linked Embark token
-- require the Embark preview gate
+- require Embark access
 - reject expired Embark tokens before calling Embark
 - apply persisted throttling
 - preserve previous cached data on failure

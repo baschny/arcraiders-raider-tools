@@ -133,7 +133,7 @@ export function QuartermasterApp() {
   const [cachedBlueprints, setCachedBlueprints] = useState<CachedBlueprints | null>(null);
   const [gameDataSource, setGameDataSource] = useState<GameDataSource>('arctracker');
   const [embarkDiagnostics, setEmbarkDiagnostics] = useState<EmbarkInventoryDiagnostics | null>(null);
-  const [embarkPreviewEnabled, setEmbarkPreviewEnabled] = useState(false);
+  const [embarkEnabled, setEmbarkEnabled] = useState(false);
 
   // UI state
   const [activeView, setActiveView] = useState<ViewId>(() => loadActiveView());
@@ -176,13 +176,13 @@ export function QuartermasterApp() {
           try {
             const me = await getMe();
             activeSource = me.gameDataSource ?? 'arctracker';
-            setEmbarkPreviewEnabled(me.features?.embarkPreview === true);
+            setEmbarkEnabled(me.features?.embarkEnabled === true);
           } catch (profileErr) {
             console.warn('Failed to load game data source:', profileErr);
-            setEmbarkPreviewEnabled(false);
+            setEmbarkEnabled(false);
           }
         } else {
-          setEmbarkPreviewEnabled(false);
+          setEmbarkEnabled(false);
         }
         setGameDataSource(activeSource);
 
@@ -611,7 +611,7 @@ export function QuartermasterApp() {
 
     switch (activeView) {
       case 'welcome':
-        return <WelcomeView onViewChange={handleViewChange} embarkPreviewEnabled={embarkPreviewEnabled} />;
+        return <WelcomeView onViewChange={handleViewChange} embarkEnabled={embarkEnabled} />;
 
       case 'stash':
         return withGameDataGate(

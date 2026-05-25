@@ -70,7 +70,7 @@ export function EmbarkSection() {
   const [localError, setLocalError] = useState<string | null>(null);
   const [errorSupportId, setErrorSupportId] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
-  const [embarkPreviewEnabled, setEmbarkPreviewEnabled] = useState<boolean | null>(null);
+  const [embarkEnabled, setEmbarkEnabled] = useState<boolean | null>(null);
   const [unlinking, setUnlinking] = useState(false);
   const extensionDetected = useMemo(() => detectEmbarkExtensionInstalled(), []);
   const countdownNow = useMinuteTicker(Boolean(status?.linked));
@@ -120,11 +120,11 @@ export function EmbarkSection() {
     let cancelled = false;
     void getMe()
       .then((me) => {
-        if (!cancelled) setEmbarkPreviewEnabled(me.features?.embarkPreview === true);
+        if (!cancelled) setEmbarkEnabled(me.features?.embarkEnabled === true);
       })
       .catch((err) => {
         if (!cancelled) {
-          setEmbarkPreviewEnabled(false);
+          setEmbarkEnabled(false);
           setLocalError(err instanceof Error ? err.message : 'Unable to load Embark access');
         }
       });
@@ -172,23 +172,23 @@ export function EmbarkSection() {
       <h2 className="settings-title">{t('pages.profile.sections.embark')}</h2>
 
       <div className="settings-section">
-        {embarkPreviewEnabled === null ? (
+        {embarkEnabled === null ? (
           <div className="embark-loading">
             <Loader2 size={18} className="spin" />
             <span>{t('shared.loading')}</span>
           </div>
-        ) : !embarkPreviewEnabled ? (
+        ) : !embarkEnabled ? (
           <div className="embark-access-gate">
             <div className="embark-access-gate__icon">
               <KeyRound size={28} />
             </div>
             <div>
-              <h3>{t('pages.profile.embark.previewGateTitle')}</h3>
-              <p>{t('pages.profile.embark.previewGateBody')}</p>
+              <h3>{t('pages.profile.embark.accessGateTitle')}</h3>
+              <p>{t('pages.profile.embark.accessGateBody')}</p>
               <ul>
-                <li>{t('pages.profile.embark.previewFeatureInventory')}</li>
-                <li>{t('pages.profile.embark.previewFeatureProgress')}</li>
-                <li>{t('pages.profile.embark.previewFeatureQuartermaster')}</li>
+                <li>{t('pages.profile.embark.accessFeatureInventory')}</li>
+                <li>{t('pages.profile.embark.accessFeatureProgress')}</li>
+                <li>{t('pages.profile.embark.accessFeatureQuartermaster')}</li>
               </ul>
               <a
                 className="settings-button settings-button--primary"
@@ -196,7 +196,7 @@ export function EmbarkSection() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {t('pages.profile.embark.contactForAccess')}
+                {t('pages.profile.embark.contactSupport')}
               </a>
             </div>
           </div>

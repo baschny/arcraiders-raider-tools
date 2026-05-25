@@ -117,9 +117,9 @@ async function handleGet(
     const storedGameDataSource = profile?.gameDataSource === "embark" || profile?.gameDataSource === "arctracker"
         ? profile.gameDataSource
         : null;
-    const embarkPreviewEnabled = hasJwtGroup(event, EMBARK_AUTH_GROUP);
+    const embarkAccessEnabled = hasJwtGroup(event, EMBARK_AUTH_GROUP);
     const effectiveGameDataSource =
-        storedGameDataSource === "embark" && embark && embarkPreviewEnabled
+        storedGameDataSource === "embark" && embark && embarkAccessEnabled
             ? "embark"
             : storedGameDataSource === "arctracker"
                 ? "arctracker"
@@ -136,7 +136,7 @@ async function handleGet(
         dataMigrationCompleted: profile?.dataMigrationCompleted === true,
         gameDataSource: effectiveGameDataSource,
         features: {
-            embarkPreview: embarkPreviewEnabled,
+            embarkEnabled: embarkAccessEnabled,
         },
         links: {
             arctracker: arc

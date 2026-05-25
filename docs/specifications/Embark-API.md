@@ -245,7 +245,7 @@ Handled by:
 `GET /me` returns:
 
 - `gameDataSource`
-- `features.embarkPreview`
+- `features.embarkEnabled`
 - `links.embark`
 
 `PATCH /me` allows:

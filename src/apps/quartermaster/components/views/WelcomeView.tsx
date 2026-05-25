@@ -8,10 +8,10 @@ import type { ViewId } from '../Sidebar';
 
 interface WelcomeViewProps {
   onViewChange: (view: ViewId) => void;
-  embarkPreviewEnabled: boolean;
+  embarkEnabled: boolean;
 }
 
-export function WelcomeView({ onViewChange, embarkPreviewEnabled }: WelcomeViewProps) {
+export function WelcomeView({ onViewChange, embarkEnabled }: WelcomeViewProps) {
   const { t } = useLocale();
   const { isAuthenticated, isValidating, username } = useAuth();
   const { embark } = useLinkedAccounts();
@@ -67,7 +67,7 @@ export function WelcomeView({ onViewChange, embarkPreviewEnabled }: WelcomeViewP
           </Link>
         ) : needsLinkedAccount ? (
           <div className="welcome-view__link-options">
-            {embarkPreviewEnabled && (
+            {embarkEnabled && (
               <Link to="/profile/embark" className="welcome-view__link-card welcome-view__link-card--primary">
                 <Zap size={20} />
                 <span>

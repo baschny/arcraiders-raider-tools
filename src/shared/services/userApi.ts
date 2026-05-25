@@ -19,7 +19,7 @@ export interface MeResponse {
     dataMigrationCompleted?: boolean;
     gameDataSource: 'arctracker' | 'embark';
     features?: {
-        embarkPreview?: boolean;
+        embarkEnabled?: boolean;
     };
     links: {
         arctracker:
