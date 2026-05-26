@@ -24,6 +24,7 @@ import {
     pickAllowedOrigin,
     jwtSub,
     jwtEmail,
+    jwtGroups,
     hasJwtGroup,
     parseJsonBody,
 } from "./_lib/http";
@@ -117,7 +118,15 @@ async function handleGet(
     const storedGameDataSource = profile?.gameDataSource === "embark" || profile?.gameDataSource === "arctracker"
         ? profile.gameDataSource
         : null;
+    const rawEmbarkGroups = event.requestContext.authorizer?.jwt?.claims?.["cognito:groups"];
+    const parsedEmbarkGroups = jwtGroups(event);
     const embarkAccessEnabled = hasJwtGroup(event, EMBARK_AUTH_GROUP);
+    console.info("ProfileFn embark gate", {
+        sub,
+        rawGroups: rawEmbarkGroups,
+        parsedGroups: parsedEmbarkGroups,
+        embarkAccessEnabled,
+    });
     const effectiveGameDataSource =
         storedGameDataSource === "embark" && embark && embarkAccessEnabled
             ? "embark"

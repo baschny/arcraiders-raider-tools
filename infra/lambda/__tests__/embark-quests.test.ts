@@ -1,6 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type {
     APIGatewayProxyEventV2WithJWTAuthorizer,
+    APIGatewayProxyStructuredResultV2,
 } from "aws-lambda";
 
 const mocks = vi.hoisted(() => ({
@@ -88,7 +89,12 @@ function makeEvent(method: "GET" | "POST"): APIGatewayProxyEventV2WithJWTAuthori
     } as unknown as APIGatewayProxyEventV2WithJWTAuthorizer;
 }
 
-function parseBody(result: Awaited<ReturnType<typeof handler>>) {
+function asStructuredResult(result: Awaited<ReturnType<typeof handler>>): APIGatewayProxyStructuredResultV2 {
+    expect(typeof result).toBe("object");
+    return result as APIGatewayProxyStructuredResultV2;
+}
+
+function parseBody(result: APIGatewayProxyStructuredResultV2) {
     return JSON.parse(result.body ?? "{}") as Record<string, unknown>;
 }
 
@@ -110,7 +116,7 @@ describe("embark-quests handler", () => {
     it("returns 401 when the user is not linked", async () => {
         mocks.ddbSend.mockResolvedValueOnce({ Item: undefined });
 
-        const result = await handler(makeEvent("POST"));
+        const result = asStructuredResult(await handler(makeEvent("POST")));
 
         expect(result.statusCode).toBe(401);
         expect(parseBody(result)).toEqual({ error: "not_linked" });
@@ -121,7 +127,7 @@ describe("embark-quests handler", () => {
             Item: { expiresAt: "2026-05-25T10:00:00.000Z" },
         });
 
-        const result = await handler(makeEvent("POST"));
+        const result = asStructuredResult(await handler(makeEvent("POST")));
 
         expect(result.statusCode).toBe(401);
         expect(parseBody(result)).toEqual({ error: "token_expired" });
@@ -138,7 +144,7 @@ describe("embark-quests handler", () => {
             remainingTokens: 0,
         });
 
-        const result = await handler(makeEvent("POST"));
+        const result = asStructuredResult(await handler(makeEvent("POST")));
 
         expect(result.statusCode).toBe(429);
         expect(parseBody(result)).toMatchObject({
@@ -160,7 +166,7 @@ describe("embark-quests handler", () => {
                 remainingTokens: 0,
             });
 
-        const result = await handler(makeEvent("POST"));
+        const result = asStructuredResult(await handler(makeEvent("POST")));
 
         expect(result.statusCode).toBe(429);
         expect(parseBody(result)).toMatchObject({
@@ -195,7 +201,7 @@ describe("embark-quests handler", () => {
             normalizedSnapshotKey: "embark/quests/normalized.json",
         });
 
-        const result = await handler(makeEvent("POST"));
+        const result = asStructuredResult(await handler(makeEvent("POST")));
 
         expect(result.statusCode).toBe(200);
         expect(mocks.decodeEmbarkQuests).toHaveBeenCalledWith({
@@ -224,7 +230,7 @@ describe("embark-quests handler", () => {
     it("returns 404 on GET when no latest row exists", async () => {
         mocks.ddbSend.mockResolvedValueOnce({ Item: undefined });
 
-        const result = await handler(makeEvent("GET"));
+        const result = asStructuredResult(await handler(makeEvent("GET")));
 
         expect(result.statusCode).toBe(404);
         expect(parseBody(result)).toEqual({ error: "not_synced" });
@@ -255,7 +261,7 @@ describe("embark-quests handler", () => {
             },
         });
 
-        const result = await handler(makeEvent("GET"));
+        const result = asStructuredResult(await handler(makeEvent("GET")));
 
         expect(result.statusCode).toBe(200);
         expect(parseBody(result)).toEqual(snapshot);

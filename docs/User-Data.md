@@ -333,7 +333,7 @@ Embark-specific notes:
 - Embark request headers (`User-Agent`, `x-embark-manifest-id`) are operational config stored outside DynamoDB in SSM Parameter Store; they are not per-user state.
 - Direct Embark API data access is a server-side, cache-first integration documented in `docs/specifications/Embark-API.md`. Do not add browser-side Embark calls or app-specific Embark fetches outside that architecture.
 - Embark refresh handling is intentionally **not implemented**. The Embark auth server is currently broken for refresh-token use, even though the flow asks for `offline`. Treat stored Embark tokens as expiring credentials and require re-authentication when they expire. Revisit this after June 2026, once the upstream auth behavior can be checked again.
-- The production Embark redirect URI is the extension loopback URL (`http://127.0.0.1:49176`). If the extension is not installed or not detected, users may still continue and manually rewrite the callback URL domain/host using operator-provided instructions. Do not disable the flow solely because extension detection fails.
+- The production Embark redirect URI is the extension loopback URL (`http://127.0.0.1:49174`). Local development keeps `http://127.0.0.1:49176`. If the extension is not installed or not detected, users may still continue and manually rewrite the callback URL domain/host using operator-provided instructions. Do not disable the flow solely because extension detection fails.
 
 ### 5.3 Adding fields to an existing state domain
 - Add the field to the domain's `State` interface in `stores.ts`.

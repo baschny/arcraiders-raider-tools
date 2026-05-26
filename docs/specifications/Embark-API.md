@@ -613,7 +613,8 @@ The local API server mirrors the production Embark routes in:
 Local defaults:
 
 - `RAIDER_TOOLS_LOCAL_DEV=true`
-- `EMBARK_LOOPBACK_REDIRECT_URI=http://127.0.0.1:49176`
+- Production: `EMBARK_LOOPBACK_REDIRECT_URI=http://127.0.0.1:49174`
+- Local development: `EMBARK_LOOPBACK_REDIRECT_URI=http://127.0.0.1:49176`
 - `EMBARK_MANIFEST_ID=local-dev-manifest`
 - `EMBARK_USER_AGENT=RaiderToolsLocalDev/0.1`
 

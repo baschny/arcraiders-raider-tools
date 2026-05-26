@@ -462,7 +462,7 @@ export class RaiderToolsStack extends cdk.Stack {
                 EMBARK_OAUTH_SECRET_ARN: embarkOauthSecret.secretArn,
                 EMBARK_MANIFEST_PARAM_NAME: embarkManifestParamName,
                 EMBARK_USER_AGENT_PARAM_NAME: embarkUserAgentParamName,
-                EMBARK_LOOPBACK_REDIRECT_URI: "http://127.0.0.1:49176",
+                EMBARK_LOOPBACK_REDIRECT_URI: "http://127.0.0.1:49174",
             },
         });
         this.userTable.grantReadWriteData(embarkLinkFn);

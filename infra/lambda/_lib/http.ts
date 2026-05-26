@@ -87,10 +87,16 @@ export function jwtGroups(event: APIGatewayProxyEventV2WithJWTAuthorizer): strin
                     return parsed.filter((group): group is string => typeof group === "string");
                 }
             } catch {
-                // Fall back to the older comma-split behavior below.
+                // Some integrations surface groups as bracketed plain text
+                // like `[embark-auth]` instead of JSON.
+                const unwrapped = trimmed.slice(1, trimmed.endsWith("]") ? -1 : undefined);
+                return unwrapped
+                    .split(",")
+                    .map(group => group.trim().replace(/^['"]|['"]$/g, ""))
+                    .filter(Boolean);
             }
         }
-        return groups
+        return trimmed
             .split(",")
             .map(group => group.trim())
             .filter(Boolean);
