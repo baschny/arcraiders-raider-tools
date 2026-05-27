@@ -667,6 +667,9 @@
       "recyclesInto": "Recycles Into",
       "salvagesInto": "Salvages Into"
     },
+    "itemIcon": {
+      "uncraftable": "Cannot be crafted — requirements not met"
+    },
     "status": {
       "have": "Have",
       "missing": "Missing",

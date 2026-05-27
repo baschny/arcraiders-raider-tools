@@ -1,5 +1,5 @@
 import { createPortal } from 'react-dom';
-import { Backpack, Coins, Home, List, MapPin, PackageSearch, Recycle, Target, Weight, Wrench } from 'lucide-react';
+import { Backpack, CircleCheck, CircleX, Coins, Home, List, MapPin, PackageSearch, Recycle, Target, Weight, Wrench } from 'lucide-react';
 import type { ItemsMap, PlannerItem } from '../types/item';
 import type { ListType, PlannerResult } from '../types/planner';
 import { getEmptyItemInsight, type ItemInsightsMap } from '../utils/itemInsights';
@@ -71,6 +71,7 @@ export function ItemTooltip({
   const ownedQuantityLabel = ownedQuantity === null ? '?' : ownedQuantity;
 
   const missingByItemId = new Map(plannerResult.planRows.map((row) => [row.itemId, row.missing]));
+  const craftability = plannerResult.craftability?.[item.id];
 
   return createPortal(
     <div
@@ -165,6 +166,32 @@ export function ItemTooltip({
           {hasRecipe && (
             <div className="qm-item-tooltip__section">
               <h4>{t('quartermaster.itemTooltip.craftingRecipe')}</h4>
+
+              {craftability && (craftability.bench || craftability.blueprint) && (
+                <div className="qm-item-tooltip__craft-conditions">
+                  {craftability.bench && (
+                    <div className={`qm-item-tooltip__craft-condition ${craftability.bench.satisfied ? 'qm-item-tooltip__craft-condition--met' : 'qm-item-tooltip__craft-condition--unmet'}`}>
+                      {craftability.bench.satisfied
+                        ? <CircleCheck size={14} />
+                        : <CircleX size={14} />
+                      }
+                      <span className="qm-item-tooltip__craft-condition-label">{craftability.bench.label}</span>
+                      <span className="qm-item-tooltip__craft-condition-detail">{craftability.bench.detail}</span>
+                    </div>
+                  )}
+                  {craftability.blueprint && (
+                    <div className={`qm-item-tooltip__craft-condition ${craftability.blueprint.satisfied ? 'qm-item-tooltip__craft-condition--met' : 'qm-item-tooltip__craft-condition--unmet'}`}>
+                      {craftability.blueprint.satisfied
+                        ? <CircleCheck size={14} />
+                        : <CircleX size={14} />
+                      }
+                      <span className="qm-item-tooltip__craft-condition-label">{craftability.blueprint.label}</span>
+                      <span className="qm-item-tooltip__craft-condition-detail">{craftability.blueprint.detail}</span>
+                    </div>
+                  )}
+                </div>
+              )}
+
               <div className="qm-item-tooltip__materials">
                 {Object.entries(item.recipe!).map(([materialId, quantity]) => {
                   const material = itemsMap[materialId];

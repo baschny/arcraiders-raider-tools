@@ -3,7 +3,7 @@
  * See specification section 7.7
  */
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Star } from 'lucide-react';
+import { Lock, Star } from 'lucide-react';
 import type { ItemRarity, ItemsMap } from '../types/item';
 import type { PlannerResult } from '../types/planner';
 import { getEmptyItemInsight, type ItemInsightsMap } from '../utils/itemInsights';
@@ -61,6 +61,8 @@ export function ItemIcon({
   const isPrioritized = prioritizedSet.has(itemId);
   const canShowTooltip = !!tooltipContext && enableTooltip && !!tooltipContext.itemsMap[itemId];
   const canPrioritize = !!tooltipContext;
+  const craftability = tooltipContext?.plannerResult?.craftability?.[itemId];
+  const showRedLock = craftability?.hasRecipe && !craftability?.canCraft;
   const iconRef = useRef<HTMLDivElement | null>(null);
   const { ref: hoverRef, isHovered, handlers } = useHoverIntent<HTMLDivElement>({ delayShow: 350, delayHide: 120 });
   const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0, maxHeight: 420 });
@@ -176,6 +178,12 @@ export function ItemIcon({
             >
               <Star size={14} fill={isPrioritized ? 'currentColor' : 'none'} strokeWidth={2} />
             </button>
+          )}
+
+          {showRedLock && (
+            <span className="item-icon__lock" title={t('quartermaster.itemIcon.uncraftable')}>
+              <Lock size={12} strokeWidth={2.5} />
+            </span>
           )}
 
           {showQuantity && (

@@ -11,6 +11,26 @@ export type Qty = number;
 
 export type UncraftableReason = 'blueprint_locked' | 'insufficient_bench_level' | 'missing_bench' | 'cycle';
 
+export interface CraftConditionStatus {
+  /** Whether this condition is met */
+  satisfied: boolean;
+  /** Human-readable label for the requirement name (e.g. "Explosives Bench") */
+  label: string;
+  /** Human-readable detail (e.g. "Tier 3 required, you have Tier 2") */
+  detail: string;
+}
+
+export interface CraftabilityInfo {
+  /** The item has a recipe at all */
+  hasRecipe: boolean;
+  /** Whether ALL conditions are satisfied (item is craftable right now) */
+  canCraft: boolean;
+  /** Blueprint condition — present only if item.blueprintLocked === true */
+  blueprint?: CraftConditionStatus;
+  /** Bench condition — present only if item has a craftBench */
+  bench?: CraftConditionStatus;
+}
+
 export type LootReason =
   | 'missing_direct'
   | 'recycle_yields_missing'
@@ -173,6 +193,9 @@ export interface PlannerResult {
 
   /** Set of fully satisfiable target itemIds */
   satisfiableTargets: Set<ItemId>;
+
+  /** Per-item craftability status for every recipe-having item */
+  craftability: Record<ItemId, CraftabilityInfo>;
 
   activeListsCount: number;
   totalMissingItemsCount: number;

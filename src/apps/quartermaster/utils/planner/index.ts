@@ -10,7 +10,7 @@ import type { PlannerResult, OwnedItemQuantity, ItemId, Qty } from '../../types/
 import { BENCH_ORDER } from '../../types/item';
 
 import { aggregateRequired, getActiveListsCount } from './aggregation';
-import { runGreedyPlanner } from './greedyPlanner';
+import { runGreedyPlanner, computeCraftability } from './greedyPlanner';
 import { buildPlanRows, getMissingItemsCount, buildBlockerSummary } from './deficit';
 import { generateLootSuggestions } from './lootSuggestions';
 import { generateInRaidSuggestions } from './inRaidSuggestions';
@@ -103,6 +103,9 @@ export function computePlan(
     requiredSourcesByItemId,
   );
 
+  // Step 3b: Compute craftability map for RED LOCK indicator and tooltip conditions
+  const craftability = computeCraftability(itemsMap, benchLevels, unlockedBlueprintItemIds);
+
   // Step 4: Build sorted craft plan (fully satisfiable only in Craft UI)
   const craftPlan = { steps: sortCraftSteps(greedyResult.craftSteps) };
   const weaponUpgradePlan = { steps: sortWeaponUpgradeSteps(greedyResult.weaponUpgradeSteps) };
@@ -150,6 +153,8 @@ export function computePlan(
 
     satisfiableTargets: greedyResult.satisfiableTargets,
 
+    craftability,
+
     activeListsCount: getActiveListsCount(lists),
     totalMissingItemsCount: getMissingItemsCount(deficit),
     totalRecycleActionsCount: recyclePlan.actions.length,
@@ -182,6 +187,7 @@ export function createEmptyResult(): PlannerResult {
       cycleDiagnostics: [],
     },
     satisfiableTargets: new Set(),
+    craftability: {},
     activeListsCount: 0,
     totalMissingItemsCount: 0,
     totalRecycleActionsCount: 0,

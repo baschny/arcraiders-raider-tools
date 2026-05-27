@@ -22,6 +22,7 @@ import type {
   CycleDiagnostic,
   RequiredSource,
   UncraftableReason,
+  CraftabilityInfo,
 } from '../../types/planner';
 import type { TargetPriority } from './aggregation';
 import { NON_RECYCLABLE_CATEGORIES } from '../../types/item';
@@ -1295,4 +1296,72 @@ export function runGreedyPlanner(
     blueprintBlockers: state.blueprintBlockers,
     benchBlockers: state.benchBlockers,
   };
+}
+
+// ---------------------------------------------------------------------------
+// Craftability computation for RED LOCK indicator
+// ---------------------------------------------------------------------------
+
+/**
+ * Compute CraftabilityInfo for every item that has a recipe.
+ * Used by ItemIcon (RED LOCK) and ItemTooltip (craft condition rows).
+ */
+export function computeCraftability(
+  itemsMap: ItemsMap,
+  benchLevels: Record<BenchId, number>,
+  unlockedBlueprintItemIds: Set<ItemId>,
+): Record<ItemId, CraftabilityInfo> {
+  const result: Record<ItemId, CraftabilityInfo> = {};
+
+  for (const [itemId, item] of Object.entries(itemsMap)) {
+    const hasRecipe = !!item.recipe && Object.keys(item.recipe).length > 0;
+
+    if (!hasRecipe) {
+      result[itemId] = { hasRecipe: false, canCraft: true };
+      continue;
+    }
+
+    const { ok, reason } = canCraft(item, benchLevels, unlockedBlueprintItemIds, itemId);
+
+    const info: CraftabilityInfo = {
+      hasRecipe: true,
+      canCraft: ok,
+    };
+
+    // Blueprint condition
+    if (item.blueprintLocked) {
+      const isUnlocked = unlockedBlueprintItemIds.has(itemId);
+      info.blueprint = {
+        satisfied: isUnlocked,
+        label: 'Blueprint',
+        detail: isUnlocked ? 'Learned' : 'Not learned',
+      };
+    }
+
+    // Bench condition
+    if (item.craftBench) {
+      const currentLevel = benchLevels[item.craftBench] ?? 3;
+      const met = currentLevel >= item.stationLevelRequired;
+      const benchName = item.craftBench
+        .replace(/_/g, ' ')
+        .replace(/\b\w/g, (c) => c.toUpperCase());
+      info.bench = {
+        satisfied: met,
+        label: benchName,
+        detail: met
+          ? `Tier ${item.stationLevelRequired} ✓`
+          : `Tier ${item.stationLevelRequired} required, you have Tier ${currentLevel}`,
+      };
+    } else if (reason === 'missing_bench') {
+      info.bench = {
+        satisfied: false,
+        label: 'No workbench',
+        detail: 'Cannot be crafted at any workbench',
+      };
+    }
+
+    result[itemId] = info;
+  }
+
+  return result;
 }
