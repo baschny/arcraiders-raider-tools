@@ -5,6 +5,10 @@
   z-index: 120000;
   width: min(430px, calc(100vw - 24px));
   min-width: 300px;
+
+  &--two-col {
+    width: min(740px, calc(100vw - 24px));
+  }
   background: $bg-secondary;
   border: 1px solid $border-default;
   border-radius: $radius-md;
@@ -156,6 +160,36 @@
     }
   }
 
+  // Two-column body layout (right column is 20% narrower than left)
+  &__body {
+    &--two-col {
+      display: grid;
+      grid-template-columns: 5fr 4fr;
+      gap: $spacing-md;
+
+      @media (max-width: 420px) {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+
+  &__col-left {
+    min-width: 0;
+  }
+
+  &__col-right {
+    min-width: 0;
+    padding-left: $spacing-md;
+    border-left: 1px solid $border-default;
+
+    @media (max-width: 420px) {
+      padding-left: 0;
+      border-left: none;
+      padding-top: $spacing-md;
+      border-top: 1px solid $border-default;
+    }
+  }
+
   &__description {
     margin-bottom: $spacing-md;
     padding-bottom: $spacing-md;
@@ -163,6 +197,12 @@
     color: $text-secondary;
     line-height: 1.45;
     font-style: italic;
+
+    .qm-item-tooltip__body--two-col & {
+      border-bottom: none;
+      margin-bottom: $spacing-sm;
+      padding-bottom: 0;
+    }
   }
 
   &__stats {
@@ -172,6 +212,11 @@
     margin-bottom: $spacing-md;
     padding-bottom: $spacing-md;
     border-bottom: 1px solid $border-default;
+
+    .qm-item-tooltip__body--two-col & {
+      margin-bottom: $spacing-md;
+      padding-bottom: $spacing-md;
+    }
   }
 
   &__stat {
@@ -317,8 +362,8 @@
     }
 
     &--missing {
-      background: rgba($status-missing, 0.2);
-      color: $status-missing;
+      background: rgba($status-missing, 0.9);
+      color: #fff;
     }
   }
 
@@ -421,5 +466,115 @@
     background: rgba(255, 255, 255, 0.12);
     padding: 2px 7px;
     flex-shrink: 0;
+  }
+
+  // Two-column needs grid (lists & crafting)
+  &__needs-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__needs-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: $radius-sm;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 6px 8px;
+  }
+
+  &__needs-left {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 0;
+    color: $text-secondary;
+    font-size: 12px;
+
+    svg {
+      flex-shrink: 0;
+      color: $text-secondary;
+    }
+  }
+
+  &__needs-icon {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    padding: 1px;
+    flex-shrink: 0;
+    background-size: cover;
+    background-position: left center;
+
+    &.rarity-common {
+      border-color: $rarity-common-border;
+      background-image: url('/images/rarities/common_bg.png');
+    }
+    &.rarity-uncommon {
+      border-color: $rarity-uncommon-border;
+      background-image: url('/images/rarities/uncommon_bg.png');
+    }
+    &.rarity-rare {
+      border-color: $rarity-rare-border;
+      background-image: url('/images/rarities/rare_bg.png');
+    }
+    &.rarity-epic {
+      border-color: $rarity-epic-border;
+      background-image: url('/images/rarities/epic_bg.png');
+    }
+    &.rarity-legendary {
+      border-color: $rarity-legendary-border;
+      background-image: url('/images/rarities/legendary_bg.png');
+    }
+  }
+
+  &__needs-name {
+    color: $text-primary;
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__needs-right {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+
+  &__needs-quantity {
+    color: $text-primary;
+    font-weight: 700;
+    font-size: 12px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.12);
+    padding: 2px 7px;
+    flex-shrink: 0;
+  }
+
+  &__needed-badge {
+    border-radius: 999px;
+    padding: 2px 8px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    white-space: nowrap;
+
+    &--complete {
+      background: rgba($status-available, 0.2);
+      color: $status-available;
+    }
+
+    &--missing {
+      background: rgba($status-missing, 0.9);
+      color: #fff;
+    }
   }
 }

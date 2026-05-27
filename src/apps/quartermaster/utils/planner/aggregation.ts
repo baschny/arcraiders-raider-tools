@@ -58,6 +58,7 @@ export function aggregateRequired(lists: StoredList[]): AggregationResult {
           listId: list.id,
           listName: list.name,
           quantity: item.quantity,
+          listType: list.type,
         });
       }
     }

@@ -6,7 +6,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Star } from 'lucide-react';
 import type { ItemRarity, ItemsMap } from '../types/item';
 import type { PlannerResult } from '../types/planner';
-import type { ItemInsightsMap } from '../utils/itemInsights';
+import { getEmptyItemInsight, type ItemInsightsMap } from '../utils/itemInsights';
 import { useHoverIntent } from '../../../shared/hooks/useHoverIntent';
 import { usePrioritizedItems } from '../hooks/usePrioritizedItems';
 import { useLocale } from '../../../shared/context/LocaleContext';
@@ -93,7 +93,13 @@ export function ItemIcon({
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;
     const margin = 12;
-    const estimatedWidth = 430;
+
+    // Determine if tooltip will be two-column (has planning insights)
+    const insight = tooltipContext?.itemInsights
+      ? getEmptyItemInsight(tooltipContext.itemInsights, itemId)
+      : null;
+    const isTwoCol = insight && (insight.finalListNeeds.length > 0 || insight.craftingNeeds.length > 0);
+    const estimatedWidth = isTwoCol ? 740 : 430;
     const estimatedHeight = 560;
 
     let x = rect.right + 10;
@@ -115,7 +121,7 @@ export function ItemIcon({
 
     const maxHeight = Math.max(250, viewportHeight - y - margin);
     setTooltipPosition({ x, y, maxHeight });
-  }, [canShowTooltip]);
+  }, [canShowTooltip, tooltipContext, itemId]);
 
   useEffect(() => {
     if (!isHovered || !canShowTooltip) return;

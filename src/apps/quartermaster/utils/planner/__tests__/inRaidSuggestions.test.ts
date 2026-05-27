@@ -66,8 +66,8 @@ describe('In Raid Suggestions Provenance (P2 Fixes)', () => {
       speaker_component: 1,
     };
     const requiredSourcesByItemId: Record<ItemId, RequiredSource[]> = {
-      photoelectric_cloak: [{ listId: 'list-a', listName: 'List A', quantity: 1 }],
-      speaker_component: [{ listId: 'list-b', listName: 'List B', quantity: 1 }],
+      photoelectric_cloak: [{ listId: 'list-a', listName: 'List A', quantity: 1, listType: 'user' }],
+      speaker_component: [{ listId: 'list-b', listName: 'List B', quantity: 1, listType: 'user' }],
     };
 
     const result = generateInRaidSuggestions(
@@ -102,7 +102,7 @@ describe('In Raid Suggestions Provenance (P2 Fixes)', () => {
       photoelectric_cloak: 2,
     };
     const requiredSourcesByItemId: Record<ItemId, RequiredSource[]> = {
-      photoelectric_cloak: [{ listId: 'list-a', listName: 'List A', quantity: 2 }],
+      photoelectric_cloak: [{ listId: 'list-a', listName: 'List A', quantity: 2, listType: 'user' }],
     };
 
     const result = generateInRaidSuggestions(
@@ -143,8 +143,8 @@ describe('In Raid Suggestions Provenance (P2 Fixes)', () => {
       photoelectric_cloak: 1,
     };
     const requiredSourcesByItemId: Record<ItemId, RequiredSource[]> = {
-      helmet: [{ listId: 'list-a', listName: 'List A', quantity: 1 }],
-      photoelectric_cloak: [{ listId: 'list-a', listName: 'List A', quantity: 1 }],
+      helmet: [{ listId: 'list-a', listName: 'List A', quantity: 1, listType: 'user' }],
+      photoelectric_cloak: [{ listId: 'list-a', listName: 'List A', quantity: 1, listType: 'user' }],
     };
 
     const result = generateInRaidSuggestions(
@@ -189,7 +189,7 @@ describe('In Raid Suggestions Provenance (P2 Fixes)', () => {
       multi_output_item: 6,
     };
     const requiredSourcesByItemId: Record<ItemId, RequiredSource[]> = {
-      multi_output_item: [{ listId: 'list-a', listName: 'List A', quantity: 6 }],
+      multi_output_item: [{ listId: 'list-a', listName: 'List A', quantity: 6, listType: 'user' }],
     };
 
     const result = generateInRaidSuggestions(
@@ -230,7 +230,7 @@ describe('In Raid Suggestions Provenance (P2 Fixes)', () => {
     const deficits: Record<ItemId, Qty> = { item_b: 1 };
     const requiredFinal: Record<ItemId, Qty> = { item_a: 1 };
     const requiredSourcesByItemId: Record<ItemId, RequiredSource[]> = {
-      item_a: [{ listId: 'list-a', listName: 'List A', quantity: 1 }],
+      item_a: [{ listId: 'list-a', listName: 'List A', quantity: 1, listType: 'user' }],
     };
 
     // Should not crash
@@ -262,7 +262,7 @@ describe('In Raid Suggestions Provenance (P2 Fixes)', () => {
     const provenance = calculateProvenance(
       combinedItemsMap,
       {
-        hybrid_item: [{ listId: 'list-a', listName: 'List A', quantity: 1 }],
+        hybrid_item: [{ listId: 'list-a', listName: 'List A', quantity: 1, listType: 'user' }],
       },
       {},
     );
@@ -276,8 +276,8 @@ describe('In Raid Suggestions Provenance (P2 Fixes)', () => {
     const provenance = calculateProvenance(
       itemsMap,
       {
-        helmet: [{ listId: 'list-a', listName: 'List A', quantity: 1 }],
-        scrap_metal: [{ listId: 'list-a', listName: 'List A', quantity: 2 }],
+        helmet: [{ listId: 'list-a', listName: 'List A', quantity: 1, listType: 'user' }],
+        scrap_metal: [{ listId: 'list-a', listName: 'List A', quantity: 2, listType: 'user' }],
       },
       { magnet: 1 },
     );
@@ -303,7 +303,7 @@ describe('In Raid Suggestions Provenance (P2 Fixes)', () => {
     const provenance = calculateProvenance(
       duplicateYieldItemsMap,
       {
-        helmet: [{ listId: 'list-a', listName: 'List A', quantity: 1 }],
+        helmet: [{ listId: 'list-a', listName: 'List A', quantity: 1, listType: 'user' }],
       },
       { magnet: 1 },
     );
@@ -349,8 +349,8 @@ describe('In Raid Suggestions Provenance (P2 Fixes)', () => {
     // Two entries for same list (could happen if list has duplicate items)
     const requiredSourcesByItemId: Record<ItemId, RequiredSource[]> = {
       speaker_component: [
-        { listId: 'list-a', listName: 'List A', quantity: 1 },
-        { listId: 'list-a', listName: 'List A', quantity: 2 },
+        { listId: 'list-a', listName: 'List A', quantity: 1, listType: 'user' },
+        { listId: 'list-a', listName: 'List A', quantity: 2, listType: 'user' },
       ],
     };
 

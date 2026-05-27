@@ -1435,17 +1435,34 @@ Tooltip must NOT appear on:
 
 ## 3.2 Tooltip Layout
 
-Tooltip layout follows the **loot-helper popup style**.
+Tooltip layout follows the **loot-helper popup style**, with a two-column split when planning data is available.
 
-Structure:
+### Header Area (always present)
 
-1. Icon on the left
-2. Title on the right
-3. Type and Rarity badges below the title
-4. Description in italic
-5. Properties list
-6. Crafting information
-7. Quartermaster-specific status information
+1. Icon on the left (with rarity border and background)
+2. Owned quantity pill (backpack icon + number) in top-right corner
+3. Item name and Type/Rarity badges
+4. Horizontal separator line
+
+### Body Area
+
+The body splits into two columns when the item has calculated planning information
+(Needed for Lists or Needed for Crafting). Otherwise, a single-column layout is used.
+
+**Column 1 — Static Information (always present, left column):**
+
+1. Description in italic
+2. Properties list (Stack Size, Weight, Value, Found In locations)
+3. Crafting Recipe section (if applicable)
+4. Recycles Into section (if applicable)
+5. Salvages Into section (if applicable)
+
+**Column 2 — Calculated Information (optional, right column):**
+
+1. Needed for Lists section (if applicable)
+2. Needed for Crafting section (if applicable)
+
+If no column 2 content exists, column 1 spans the full width.
 
 ---
 
@@ -1495,21 +1512,28 @@ Recycle and salvage yield items are displayed as a flat, unhighlighted list. Cra
 
 ## 3.6 Tooltip Status Information
 
-Tooltip must display Quartermaster status context:
+Tooltip must display Quartermaster status context in the right column (Column 2).
 
-### Needed for List
+### Needed for Lists
 
-Display:
+Each list entry shows:
 
-```
-Needed for List "<List Name>" (Quantity)
-```
+- A list-type icon (`List` for user lists, `Home` for hideout lists) followed by the list name
+- A quantity badge (styled like `crafting-view__material-qty`) showing the required amount
+- On the right side: either a "COMPLETE" badge (green) or a "`<qty>` NEEDED" badge
+  - The NEEDED badge is red with white text, styled like `in-raid-view__missing-circle`
+  - The `<qty>` is the missing quantity for this item in this specific list
 
-If requirement is already satisfied:
+### Needed for Crafting
 
-```
-Complete
-```
+Each crafting entry shows:
+
+- A list-type icon (`List` for user lists, `Home` for hideout lists) followed by the list name (no quantities)
+- Below the list name: the target/goal item, prefixed with a small item icon (24px) with rarity border/color and background
+- On the right side: either a "COMPLETE" badge (green) or a "NEEDED" badge (red)
+- Crafting chain text is **not displayed** (reserved for future improvement)
+
+The COMPLETE/NEEDED badge is aligned to the right of the combined list-name + goal-item block, not below it.
 
 ---
 

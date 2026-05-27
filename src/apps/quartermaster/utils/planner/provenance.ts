@@ -97,6 +97,7 @@ export function calculateProvenance(
     itemId: string,
     listId: string,
     listName: string,
+    listType: 'user' | 'hideout',
     quantity: number,
     targetIds: string[],
     isDirect = false,
@@ -133,6 +134,7 @@ export function calculateProvenance(
       provenance[itemId].push({
         listId,
         listName,
+        listType,
         quantity,
         impactedTargetItemIds: [...new Set(targetIds.filter(Boolean))].sort(),
         isDirect,
@@ -148,6 +150,7 @@ export function calculateProvenance(
     visited: Set<ItemId>,
     listId: string,
     listName: string,
+    listType: 'user' | 'hideout',
     originalTargetId: ItemId,
   ) => {
     if (depth >= maxDepth || visited.has(currId)) return;
@@ -166,8 +169,8 @@ export function calculateProvenance(
     const recipeEntries = Object.entries(recipe).sort(([a], [b]) => a.localeCompare(b));
     for (const [ingId, ingQty] of recipeEntries) {
       const totalIngQty = ingQty * numCrafts;
-      addProvenance(ingId, listId, listName, totalIngQty, [originalTargetId], false);
-      walkRecursive(ingId, totalIngQty, depth + 1, nextVisited, listId, listName, originalTargetId);
+      addProvenance(ingId, listId, listName, listType, totalIngQty, [originalTargetId], false);
+      walkRecursive(ingId, totalIngQty, depth + 1, nextVisited, listId, listName, listType, originalTargetId);
     }
   };
 
@@ -177,7 +180,7 @@ export function calculateProvenance(
   for (const targetId of targetIds) {
     const sources = requiredSourcesByItemId[targetId];
     for (const source of sources) {
-      addProvenance(targetId, source.listId, source.listName, source.quantity, [targetId], true);
+      addProvenance(targetId, source.listId, source.listName, source.listType, source.quantity, [targetId], true);
     }
   }
 
@@ -192,6 +195,7 @@ export function calculateProvenance(
         new Set(),
         source.listId,
         source.listName,
+        source.listType,
         targetId,
       );
     }
@@ -231,6 +235,7 @@ export function calculateProvenance(
                 srcItemId,
                 source.listId,
                 source.listName,
+                source.listType,
                 source.quantity,
                 source.impactedTargetItemIds,
                 false,

@@ -1,19 +1,23 @@
 import type { ItemsMap } from '../types/item';
-import type { PlannerResult } from '../types/planner';
+import type { ListType, PlannerResult } from '../types/planner';
 import { walkDependencies } from './planner/provenance';
 
 export interface ItemFinalListNeed {
   listId: string;
   listName: string;
   quantity: number;
+  missing: number;
   isComplete: boolean;
+  listType: ListType;
 }
 
 export interface ItemCraftingNeed {
   listId: string;
   listName: string;
+  listType: ListType;
   targetItemId: string;
   targetItemName: string;
+  targetItemRarity: string;
   chainItemIds: string[];
   chainLabel: string;
   isComplete: boolean;
@@ -71,6 +75,46 @@ function formatChainLabel(chainItemIds: string[], itemsMap: ItemsMap): string {
     .join(' -> ');
 }
 
+/**
+ * Allocate totalMissing across sources proportionally using largest-remainder.
+ * Returns an array of per-source missing quantities that sum to totalMissing.
+ */
+function allocateMissingToSources(
+  sources: { quantity: number }[],
+  totalMissing: number,
+): number[] {
+  if (totalMissing <= 0) return sources.map(() => 0);
+
+  const totalRequired = sources.reduce((sum, s) => sum + s.quantity, 0);
+  if (totalRequired <= 0) return sources.map(() => 0);
+
+  // Calculate proportional allocations with remainders
+  const allocations: { index: number; quotient: number; remainder: number }[] = sources.map(
+    (source, index) => {
+      const exact = (source.quantity / totalRequired) * totalMissing;
+      return {
+        index,
+        quotient: Math.floor(exact),
+        remainder: exact - Math.floor(exact),
+      };
+    },
+  );
+
+  // Distribute remaining units to largest remainders
+  const allocated = allocations.map((a) => a.quotient);
+  const distributed = allocated.reduce((sum, v) => sum + v, 0);
+  const remaining = totalMissing - distributed;
+
+  if (remaining > 0) {
+    const sortedByRemainder = [...allocations].sort((a, b) => b.remainder - a.remainder);
+    for (let i = 0; i < remaining; i++) {
+      allocated[sortedByRemainder[i].index]++;
+    }
+  }
+
+  return allocated;
+}
+
 function addFinalNeeds(
   insights: ItemInsightsMap,
   plannerResult: PlannerResult,
@@ -80,15 +124,20 @@ function addFinalNeeds(
     a.localeCompare(b),
   );
   for (const [itemId, sources] of requiredSourcesEntries) {
-    const isComplete = (missingByItemId[itemId] ?? 0) <= 0;
+    const totalMissing = missingByItemId[itemId] ?? 0;
+    const isComplete = totalMissing <= 0;
     const insight = getOrCreateInsight(insights, itemId);
     const sortedSources = [...sources].sort((a, b) => a.listName.localeCompare(b.listName));
-    for (const source of sortedSources) {
+    const perSourceMissing = allocateMissingToSources(sortedSources, totalMissing);
+    for (let i = 0; i < sortedSources.length; i++) {
+      const source = sortedSources[i];
       insight.finalListNeeds.push({
         listId: source.listId,
         listName: source.listName,
         quantity: source.quantity,
+        missing: perSourceMissing[i],
         isComplete,
+        listType: source.listType,
       });
     }
   }
@@ -133,8 +182,10 @@ function addCraftingNeeds(
         insight.craftingNeeds.push({
           listId: source.listId,
           listName: source.listName,
+          listType: source.listType,
           targetItemId,
           targetItemName: targetItem.name,
+          targetItemRarity: targetItem.rarity ?? '',
           chainItemIds: chain.chainItemIds,
           chainLabel,
           isComplete,

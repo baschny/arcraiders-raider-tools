@@ -25,10 +25,13 @@ export type InRaidReason =
   | 'SALVAGE_FOR_MATERIAL'
   | 'BRING_HOME_FOR_RECYCLE_YIELD';
 
+export type ListType = 'user' | 'hideout';
+
 export interface RequiredSource {
   listId: string;
   listName: string;
   quantity: number;
+  listType: ListType;
   impactedTargetItemIds?: string[];
 }
 
