@@ -56,7 +56,6 @@ export function ItemTooltip({
   const hasRecycles = !!item.recyclesInto && Object.keys(item.recyclesInto).length > 0;
   const hasSalvages = !!item.salvagesInto && Object.keys(item.salvagesInto).length > 0;
   const hasLocations = !!item.foundIn && item.foundIn.length > 0;
-  const activeRecycleSalvageNeeds = insight.recycleSalvageNeeds.filter((need) => !need.isComplete);
   const ownedQuantityLabel = ownedQuantity === null ? '?' : ownedQuantity;
 
   const missingByItemId = new Map(plannerResult.planRows.map((row) => [row.itemId, row.missing]));
@@ -184,25 +183,6 @@ export function ItemTooltip({
         </div>
       )}
 
-      {activeRecycleSalvageNeeds.length > 0 && (
-        <div className="qm-item-tooltip__section">
-          <h4>{t('quartermaster.itemTooltip.neededViaRecycleSalvage')}</h4>
-          <div className="qm-item-tooltip__status-list">
-            {activeRecycleSalvageNeeds.map((need, index) => (
-              <div className="qm-item-tooltip__status-item" key={`${need.mode}-${need.producedItemId}-${need.listId}-${index}`}>
-                <div className="qm-item-tooltip__status-main qm-item-tooltip__status-main--single-row">
-                  <span className={`qm-item-tooltip__mode-badge qm-item-tooltip__mode-badge--${need.mode}`}>
-                    {need.mode === 'recycle' ? t('quartermaster.itemTooltip.recycle') : t('quartermaster.itemTooltip.salvage')}
-                  </span>
-                  <span>{need.listName}</span>
-                  <span className="qm-item-tooltip__status-arrow">→</span>
-                  <span className="qm-item-tooltip__status-chain qm-item-name">{need.chainLabel}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
 
       {hasRecipe && (
         <div className="qm-item-tooltip__section">
@@ -241,17 +221,11 @@ export function ItemTooltip({
             {Object.entries(item.recyclesInto!).map(([materialId, quantity]) => {
               const material = itemsMap[materialId];
               if (!material) return null;
-              const isNeeded = insight.neededRecycleYieldIds.includes(materialId);
               return (
-                <div className={`qm-item-tooltip__material ${isNeeded ? 'qm-item-tooltip__material--needed' : ''}`} key={materialId}>
+                <div className="qm-item-tooltip__material" key={materialId}>
                   <div className="qm-item-tooltip__material-main">
                     <img src={material.icon} alt={material.name} className={`qm-item-tooltip__material-icon ${getRarityClass(material.rarity)}`} />
                     <span className="qm-item-name">{material.name}</span>
-                    {isNeeded && (
-                      <span className="qm-item-tooltip__needed-flag">
-                        <Target size={12} />
-                      </span>
-                    )}
                   </div>
                   <span className="qm-item-tooltip__material-quantity">×{quantity}</span>
                 </div>
@@ -271,17 +245,11 @@ export function ItemTooltip({
             {Object.entries(item.salvagesInto!).map(([materialId, quantity]) => {
               const material = itemsMap[materialId];
               if (!material) return null;
-              const isNeeded = insight.neededSalvageYieldIds.includes(materialId);
               return (
-                <div className={`qm-item-tooltip__material ${isNeeded ? 'qm-item-tooltip__material--needed' : ''}`} key={materialId}>
+                <div className="qm-item-tooltip__material" key={materialId}>
                   <div className="qm-item-tooltip__material-main">
                     <img src={material.icon} alt={material.name} className={`qm-item-tooltip__material-icon ${getRarityClass(material.rarity)}`} />
                     <span className="qm-item-name">{material.name}</span>
-                    {isNeeded && (
-                      <span className="qm-item-tooltip__needed-flag">
-                        <Target size={12} />
-                      </span>
-                    )}
                   </div>
                   <span className="qm-item-tooltip__material-quantity">×{quantity}</span>
                 </div>

@@ -142,12 +142,10 @@ export function StashView({
   };
 
   const getRecycleReasonLabel = (itemId: string): string => {
-    const insight = itemInsights[itemId];
-    if (!insight) return '';
-    const recycleNeeds = insight.recycleSalvageNeeds.filter((need) => need.mode === 'recycle');
-    if (recycleNeeds.length === 0) return '';
-    const firstNeed = recycleNeeds[0];
-    return `${firstNeed.targetItemName} (${firstNeed.listName})`;
+    const action = plannerResult.recyclePlan.actions.find(a => a.srcItemId === itemId);
+    if (!action || action.reasons.length === 0) return '';
+    const reason = action.reasons[0];
+    return `${reason.targetItemName} (${reason.listName})`;
   };
 
   const getRequirementLabel = (listNames: string[]): string => {

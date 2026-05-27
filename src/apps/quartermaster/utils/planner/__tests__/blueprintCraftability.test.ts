@@ -375,21 +375,11 @@ describe('quartermaster blueprint craftability', () => {
       benchLevels,
     );
 
-    const insights = buildItemInsights(itemsMap, result);
-
     expect(result.remainingIngredientDeficits).toEqual({ metal_parts: 2 });
     expect(result.inRaidSuggestions.items.find((suggestion) => suggestion.itemId === 'damaged_heat_sink')).toMatchObject({
       reasons: ['BRING_HOME_FOR_RECYCLE_YIELD'],
       impactedTargetItemIds: ['medium_ammo'],
     });
-    expect(insights.damaged_heat_sink.recycleSalvageNeeds).toContainEqual(
-      expect.objectContaining({
-        mode: 'recycle',
-        producedItemId: 'metal_parts',
-        targetItemId: 'medium_ammo',
-        isComplete: false,
-      }),
-    );
   });
 
   it('uses owned recycle materials to make a target fully craftable', () => {

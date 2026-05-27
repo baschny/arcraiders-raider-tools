@@ -1489,10 +1489,7 @@ Rules:
 - item names displayed
 - quantities aligned to the right
 
-If an output contributes to crafting needs:
-
-- highlight using color
-- include indicator icon
+Recycle and salvage yield items are displayed as a flat, unhighlighted list. Crafting contribution highlighting may be added in a future iteration.
 
 ---
 
@@ -1515,20 +1512,6 @@ Complete
 ```
 
 ---
-
-### Needed for Crafting
-
-Display reasons:
-
-- Needed for crafting via recycling
-- Needed for crafting via salvaging
-- Needed for direct or indirect crafting
-
-Display provenance:
-
-```
-Final Target -> Intermediate -> Current Item
-```
 
 ---
 
