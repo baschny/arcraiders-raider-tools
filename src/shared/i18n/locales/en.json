@@ -618,7 +618,14 @@
       "noYields": "No yields available",
       "empty": "No loot suggestions. Configure lists to see what items to look for.",
       "directTargets": "Direct Targets - Bring Home",
-      "craftingMaterials": "Crafting Materials"
+      "craftingMaterials": "Crafting Materials",
+      "priorityTargets": "Priority Targets",
+      "prioritizeMark": "Mark as Priority Target",
+      "prioritizeRemove": "Remove from Priority Targets",
+      "prioritizeClearAll": "Remove All",
+      "prioritizeClearAllTitle": "Remove all priority targets?",
+      "prioritizeClearAllBody": "This will remove all items from the priority targets list. Items will remain in their lists and hideout requirements.",
+      "prioritizeClearAllConfirm": "Remove All"
     },
     "crafting": {
       "noImpact": "No active target impact",

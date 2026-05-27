@@ -1783,14 +1783,17 @@ Example:
 
 ---
 
+### Priority Targets Section
+
+When prioritized items exist, a dedicated "Priority Targets" section appears above "Direct Targets – Bring Home". The section header uses a filled Star icon in golden color. Prioritized items are de-duplicated and do not appear in lower sections. Prioritized items that the planner did not generate as In-Raid suggestions (e.g., marked from My Items without active lists) appear as synthetic "bring home" targets in the Priority Targets section.
+
 ### Section Spacing
 
 Add visual spacing between:
 
+- PRIORITY TARGETS section
 - DIRECT TARGETS section
 - CRAFTING MATERIALS section
-
----
 
 ## 4.6 Crafting View
 

@@ -182,6 +182,7 @@ describe('state-sync integration: sign-in / sign-out', () => {
         quartermasterStore.set({
             lists: [{ id: 'list_1', name: 'My List', type: 'user', isEnabled: true, items: [] }],
             hideoutToggles: { listEnabled: {}, itemEnabled: {} },
+            prioritizedItemIds: [],
         });
         await Promise.all(allStores.map(s => s.flush()));
 

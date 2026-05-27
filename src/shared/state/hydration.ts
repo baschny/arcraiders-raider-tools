@@ -155,7 +155,8 @@ function anyLocalDataPresent(): boolean {
         || (l.enabledLocations !== null && l.enabledLocations.length > 0);
     const hasQm = qm.lists.length > 0
         || Object.keys(qm.hideoutToggles.listEnabled).length > 0
-        || Object.keys(qm.hideoutToggles.itemEnabled).length > 0;
+        || Object.keys(qm.hideoutToggles.itemEnabled).length > 0
+        || qm.prioritizedItemIds.length > 0;
 
     return hasQuests || hasLoot || hasQm;
 }

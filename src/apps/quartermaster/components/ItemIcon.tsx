@@ -3,10 +3,13 @@
  * See specification section 7.7
  */
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { Star } from 'lucide-react';
 import type { ItemRarity, ItemsMap } from '../types/item';
 import type { PlannerResult } from '../types/planner';
 import type { ItemInsightsMap } from '../utils/itemInsights';
 import { useHoverIntent } from '../../../shared/hooks/useHoverIntent';
+import { usePrioritizedItems } from '../hooks/usePrioritizedItems';
+import { useLocale } from '../../../shared/context/LocaleContext';
 import { ItemTooltip } from './ItemTooltip';
 
 export interface ItemIconBadge {
@@ -53,7 +56,11 @@ export function ItemIcon({
   tooltipContext,
   onClick,
 }: ItemIconProps) {
+  const { t } = useLocale();
+  const { prioritizedSet, togglePrioritize } = usePrioritizedItems();
+  const isPrioritized = prioritizedSet.has(itemId);
   const canShowTooltip = !!tooltipContext && enableTooltip && !!tooltipContext.itemsMap[itemId];
+  const canPrioritize = !!tooltipContext;
   const iconRef = useRef<HTMLDivElement | null>(null);
   const { ref: hoverRef, isHovered, handlers } = useHoverIntent<HTMLDivElement>({ delayShow: 350, delayHide: 120 });
   const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0, maxHeight: 420 });
@@ -63,6 +70,21 @@ export function ItemIcon({
   const rarityClass = `rarity-${rarity.toLowerCase()}`;
   const sizeClass = size !== 'md' ? `item-icon--${size}` : '';
   const quantityLabel = quantity === null ? '?' : quantity;
+
+  const handleTogglePrioritize = useCallback(
+    (e: React.MouseEvent) => {
+      e.stopPropagation();
+      togglePrioritize(itemId);
+    },
+    [itemId, togglePrioritize],
+  );
+
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent) => {
+      e.stopPropagation();
+    },
+    [],
+  );
 
   const updateTooltipPosition = useCallback(() => {
     if (!iconRef.current || !canShowTooltip) return;
@@ -117,6 +139,9 @@ export function ItemIcon({
   );
 
   const tooltipItem = canShowTooltip ? tooltipContext.itemsMap[itemId] : undefined;
+  const prioritizeTitle = isPrioritized
+    ? t('quartermaster.inRaid.prioritizeRemove')
+    : t('quartermaster.inRaid.prioritizeMark');
 
   return (
     <>
@@ -133,6 +158,19 @@ export function ItemIcon({
             alt={name}
             loading="lazy"
           />
+
+          {canPrioritize && (
+            <button
+              type="button"
+              className={`item-icon__prioritize ${isPrioritized ? 'item-icon__prioritize--active' : ''}`}
+              onClick={handleTogglePrioritize}
+              onKeyDown={handleKeyDown}
+              title={prioritizeTitle}
+              aria-label={prioritizeTitle}
+            >
+              <Star size={14} fill={isPrioritized ? 'currentColor' : 'none'} strokeWidth={2} />
+            </button>
+          )}
 
           {showQuantity && (
             <span className={`item-icon__quantity ${quantity === null ? 'item-icon__quantity--unknown' : ''}`}>

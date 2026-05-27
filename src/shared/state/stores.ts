@@ -82,13 +82,28 @@ export interface QuartermasterState {
         listEnabled: Record<string, boolean>;
         itemEnabled: Record<string, boolean>;
     };
+    prioritizedItemIds: string[];
 }
 export const quartermasterStore = new UserStateStore<QuartermasterState>({
     domain: 'quartermaster',
-    schemaVersion: 1,
+    schemaVersion: 2,
     defaultValue: {
         lists: [],
         hideoutToggles: { listEnabled: {}, itemEnabled: {} },
+        prioritizedItemIds: [],
+    },
+    migrate: (raw) => {
+        const r = raw as Partial<QuartermasterState> | null;
+        return {
+            lists: Array.isArray(r?.lists) ? r.lists : [],
+            hideoutToggles: {
+                listEnabled: r?.hideoutToggles?.listEnabled ?? {},
+                itemEnabled: r?.hideoutToggles?.itemEnabled ?? {},
+            },
+            prioritizedItemIds: Array.isArray(r?.prioritizedItemIds)
+                ? r.prioritizedItemIds.filter((id): id is string => typeof id === 'string')
+                : [],
+        };
     },
 });
 

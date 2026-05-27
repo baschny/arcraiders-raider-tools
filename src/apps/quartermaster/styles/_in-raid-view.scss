@@ -5,6 +5,53 @@
     margin-bottom: $spacing-xl * 1.4;
   }
 
+  &__section--prioritized {
+    .qm-section-title {
+      display: flex;
+      align-items: center;
+      gap: $spacing-xs;
+      color: #ffb347;
+    }
+  }
+
+  &__section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid $border-default;
+    padding-bottom: $spacing-sm;
+    margin-bottom: $spacing-md;
+
+    .qm-section-title {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+  }
+
+  &__clear-all {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: $radius-sm;
+    color: $text-secondary;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 8px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    transition: color 0.15s, border-color 0.15s, background-color 0.15s;
+
+    &:hover {
+      color: #e57373;
+      border-color: rgba(229, 115, 115, 0.4);
+      background: rgba(229, 115, 115, 0.08);
+    }
+  }
+
   &__grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
