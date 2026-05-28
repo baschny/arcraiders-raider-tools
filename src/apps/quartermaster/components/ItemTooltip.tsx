@@ -75,7 +75,7 @@ export function ItemTooltip({
 
   return createPortal(
     <div
-      className={`qm-item-tooltip ${(insight.finalListNeeds.length > 0 || insight.craftingNeeds.length > 0) ? 'qm-item-tooltip--two-col' : ''}`}
+      className={`qm-item-tooltip ${(insight.finalListNeeds.length > 0 || insight.craftingNeeds.length > 0 || insight.recycleSalvageUsages.length > 0) ? 'qm-item-tooltip--two-col' : ''}`}
       style={{
         left: `${position.x}px`,
         top: `${position.y}px`,
@@ -111,7 +111,7 @@ export function ItemTooltip({
         </div>
       </div>
 
-      <div className={`qm-item-tooltip__body ${(insight.finalListNeeds.length > 0 || insight.craftingNeeds.length > 0) ? 'qm-item-tooltip__body--two-col' : ''}`}>
+      <div className={`qm-item-tooltip__body ${(insight.finalListNeeds.length > 0 || insight.craftingNeeds.length > 0 || insight.recycleSalvageUsages.length > 0) ? 'qm-item-tooltip__body--two-col' : ''}`}>
         <div className="qm-item-tooltip__col-left">
           {item.description && (
             <div className="qm-item-tooltip__description">{item.description}</div>
@@ -265,7 +265,7 @@ export function ItemTooltip({
           )}
         </div>
 
-        {(insight.finalListNeeds.length > 0 || insight.craftingNeeds.length > 0) && (
+        {(insight.finalListNeeds.length > 0 || insight.craftingNeeds.length > 0 || insight.recycleSalvageUsages.length > 0) && (
           <div className="qm-item-tooltip__col-right">
             {insight.finalListNeeds.length > 0 && (
               <div className="qm-item-tooltip__section">
@@ -307,6 +307,44 @@ export function ItemTooltip({
                         </div>
                         <div className="qm-item-tooltip__needs-right">
                           {renderCompleteBadge(need.isComplete, t)}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
+            {insight.recycleSalvageUsages.length > 0 && (
+              <div className="qm-item-tooltip__section">
+                <h4>{t('quartermaster.itemTooltip.couldBeUsedFor')}</h4>
+                <div className="qm-item-tooltip__needs-grid">
+                  {insight.recycleSalvageUsages.map((usage, index) => {
+                    const targetItem = itemsMap[usage.targetItemId];
+                    const targetIcon = targetItem?.icon ?? '';
+                    const yieldItem = itemsMap[usage.yieldItemId];
+                    const yieldIcon = yieldItem?.icon ?? '';
+                    return (
+                      <div className="qm-item-tooltip__needs-row" key={`${usage.listId}-${usage.targetItemId}-${usage.yieldItemId}-${index}`}>
+                        <div className="qm-item-tooltip__needs-left">
+                          {getListIcon(usage.listType)}
+                          <img
+                            src={yieldIcon}
+                            alt={usage.yieldItemName}
+                            className={`qm-item-tooltip__needs-icon ${getRarityClass('common')}`}
+                          />
+                          <span className="qm-item-tooltip__needs-name">
+                            <span className="qm-item-tooltip__status-arrow">x{usage.yieldQuantity} → </span>
+                            <img
+                              src={targetIcon}
+                              alt={usage.targetItemName}
+                              className={`qm-item-tooltip__needs-icon ${getRarityClass(usage.targetItemRarity)}`}
+                            />
+                            <span className="qm-item-name">{usage.targetItemName}</span>
+                          </span>
+                        </div>
+                        <div className="qm-item-tooltip__needs-right">
+                          {renderCompleteBadge(usage.isComplete, t)}
                         </div>
                       </div>
                     );

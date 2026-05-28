@@ -943,6 +943,148 @@ function planWeaponUpgradeTarget(
 }
 
 // ---------------------------------------------------------------------------
+// Complete target satisfaction (phases B-D + final check + commit)
+// ---------------------------------------------------------------------------
+
+/**
+ * Run phases B through D and the final satisfiability check for a craftable target.
+ * Phase A must have already been run and returned the missing L1 ingredients.
+ * On success, the state is mutated: ingredients consumed, output produced, craft steps recorded, target added to satisfiable.
+ */
+function completeTargetSatisfaction(
+  state: PlannerState,
+  targetId: ItemId,
+  requiredSourcesByItemId: Record<ItemId, RequiredSource[]>,
+  phaseAResult: Record<ItemId, Qty>,
+): boolean {
+  const targetItem = state.itemsMap[targetId];
+  if (!targetItem?.recipe) return false;
+
+  const totalOutput = phaseAResult['_totalOutput'] ?? 0;
+  const craftTimes = phaseAResult['_craftTimes'] ?? 0;
+  delete phaseAResult['_totalOutput'];
+  delete phaseAResult['_craftTimes'];
+
+  const missingL1 = { ...phaseAResult };
+  const directRecycleReasonFactory = buildReasonFactory(
+    state,
+    targetId,
+    requiredSourcesByItemId,
+    Object.fromEntries(Object.keys(missingL1).map((itemId) => [itemId, [targetId, itemId]])),
+  );
+
+  // Phase B: Recycle once for direct (L1) inputs, using non-direct-input sources first.
+  if (Object.keys(missingL1).length > 0) {
+    recycleForNeeded(state, missingL1, directRecycleReasonFactory, {
+      allowDirectRecipeInputSources: false,
+    });
+  }
+
+  // Re-check L1 deficits after recycling
+  const targetRecipe = targetItem.recipe!;
+  const stillMissingL1: Record<ItemId, Qty> = {};
+  for (const [ingId, qtyPerCraft] of Object.entries(targetRecipe)) {
+    const totalNeeded = qtyPerCraft * craftTimes;
+    const have = getAvail(state, ingId);
+    if (have < totalNeeded) {
+      stillMissingL1[ingId] = totalNeeded - have;
+    }
+  }
+
+  // Phase C: Indirect Craft (level 2) for remaining missing L1 ingredients
+  let missingSub: Record<ItemId, Qty> = {};
+  let pendingCrafts: PendingCraft[] = [];
+  if (Object.keys(stillMissingL1).length > 0) {
+    const phaseCResult = phaseC(state, stillMissingL1);
+    missingSub = phaseCResult.missingSub;
+    pendingCrafts = phaseCResult.pendingCrafts;
+  }
+
+  const pendingCraftItemIds = new Set(pendingCrafts.map((craft) => craft.itemId));
+  const missingL1WithoutPendingCrafts = Object.fromEntries(
+    Object.entries(stillMissingL1).filter(([ingId]) => !pendingCraftItemIds.has(ingId)),
+  );
+  if (Object.keys(missingL1WithoutPendingCrafts).length > 0) {
+    recycleForNeeded(state, missingL1WithoutPendingCrafts, directRecycleReasonFactory);
+  }
+
+  const subIngredientChains: Record<ItemId, ItemId[]> = {};
+  for (const craft of pendingCrafts) {
+    for (const subId of Object.keys(craft.recipe)) {
+      subIngredientChains[subId] = [targetId, craft.itemId, subId];
+    }
+  }
+  const subRecycleReasonFactory = buildReasonFactory(
+    state,
+    targetId,
+    requiredSourcesByItemId,
+    subIngredientChains,
+  );
+
+  // Phase D: Recycle once for level-2 sub-ingredients
+  if (Object.keys(missingSub).length > 0) {
+    recycleForNeeded(state, missingSub, subRecycleReasonFactory);
+  }
+
+  let pendingResult = applyPendingCraftsIfPossible(state, pendingCrafts);
+  if (!pendingResult.ok && pendingCrafts.length > 0) {
+    const remainingL1BeforeFallback = getRecipeDeficitsFromAvail(state, targetRecipe, craftTimes);
+    recycleForNeeded(state, remainingL1BeforeFallback, directRecycleReasonFactory);
+    pendingCrafts = [];
+    pendingResult = applyPendingCraftsIfPossible(state, pendingCrafts);
+  }
+
+  // Final check: is this target fully satisfiable?
+  let fullySatisfiable = true;
+  if (!pendingResult.ok) {
+    fullySatisfiable = false;
+  }
+  for (const [ingId, qtyPerCraft] of Object.entries(targetRecipe)) {
+    const totalNeeded = qtyPerCraft * craftTimes;
+    if (getFrom(pendingResult.avail, ingId) < totalNeeded) {
+      fullySatisfiable = false;
+      break;
+    }
+  }
+
+  // If L2 crafts have unmet sub-ingredients, also not satisfiable
+  if (fullySatisfiable && Object.keys(stillMissingL1).length > 0) {
+    for (const [ingId] of Object.entries(stillMissingL1)) {
+      const ingItem = state.itemsMap[ingId];
+      if (!ingItem?.recipe) {
+        if (getAvail(state, ingId) < (targetRecipe[ingId] ?? 0) * craftTimes) {
+          fullySatisfiable = false;
+          break;
+        }
+        continue;
+      }
+      const { ok } = canCraft(ingItem, state.benchLevels, state.unlockedBlueprintItemIds, ingId);
+      if (!ok) {
+        if (getFrom(pendingResult.avail, ingId) < (targetRecipe[ingId] ?? 0) * craftTimes) {
+          fullySatisfiable = false;
+          break;
+        }
+      }
+    }
+  }
+
+  if (!fullySatisfiable) return false;
+
+  // Commit: consume ingredients, produce output, record steps
+  state.avail = pendingResult.avail;
+  for (const [ingId, qtyPerCraft] of Object.entries(targetRecipe)) {
+    consumeAvail(state, ingId, qtyPerCraft * craftTimes);
+  }
+  addAvail(state, targetId, totalOutput);
+  for (const craft of pendingCrafts) {
+    recordCraftStep(state, craft.itemId, craft.totalOutput);
+  }
+  recordCraftStep(state, targetId, totalOutput);
+
+  return true;
+}
+
+// ---------------------------------------------------------------------------
 // Main entry point
 // ---------------------------------------------------------------------------
 
@@ -1076,141 +1218,50 @@ export function runGreedyPlanner(
       continue; // Not craftable
     }
 
-    // Extract metadata
-    const totalOutput = phaseAResult['_totalOutput'] ?? 0;
-    const craftTimes = phaseAResult['_craftTimes'] ?? 0;
-    delete phaseAResult['_totalOutput'];
-    delete phaseAResult['_craftTimes'];
-
-    const missingL1 = { ...phaseAResult };
-    const directRecycleReasonFactory = buildReasonFactory(
-      trialState,
-      targetId,
-      requiredSourcesByItemId,
-      Object.fromEntries(Object.keys(missingL1).map((itemId) => [itemId, [targetId, itemId]])),
-    );
-
-    // Phase B: Recycle once for direct (L1) inputs, using non-direct-input sources first.
-    if (Object.keys(missingL1).length > 0) {
-      recycleForNeeded(trialState, missingL1, directRecycleReasonFactory, {
-        allowDirectRecipeInputSources: false,
-      });
-    }
-
-    // Re-check L1 deficits after recycling
-    const targetRecipe = targetItem.recipe!;
-    const stillMissingL1: Record<ItemId, Qty> = {};
-    for (const [ingId, qtyPerCraft] of Object.entries(targetRecipe)) {
-      const totalNeeded = qtyPerCraft * craftTimes;
-      const have = getAvail(trialState, ingId);
-      if (have < totalNeeded) {
-        stillMissingL1[ingId] = totalNeeded - have;
-      }
-    }
-
-    // Phase C: Indirect Craft (level 2) for remaining missing L1 ingredients
-    let missingSub: Record<ItemId, Qty> = {};
-    let pendingCrafts: PendingCraft[] = [];
-    if (Object.keys(stillMissingL1).length > 0) {
-      const phaseCResult = phaseC(trialState, stillMissingL1);
-      missingSub = phaseCResult.missingSub;
-      pendingCrafts = phaseCResult.pendingCrafts;
-    }
-
-    const pendingCraftItemIds = new Set(pendingCrafts.map((craft) => craft.itemId));
-    const missingL1WithoutPendingCrafts = Object.fromEntries(
-      Object.entries(stillMissingL1).filter(([ingId]) => !pendingCraftItemIds.has(ingId)),
-    );
-    if (Object.keys(missingL1WithoutPendingCrafts).length > 0) {
-      recycleForNeeded(trialState, missingL1WithoutPendingCrafts, directRecycleReasonFactory);
-    }
-
-    const subIngredientChains: Record<ItemId, ItemId[]> = {};
-    for (const craft of pendingCrafts) {
-      for (const subId of Object.keys(craft.recipe)) {
-        subIngredientChains[subId] = [targetId, craft.itemId, subId];
-      }
-    }
-    const subRecycleReasonFactory = buildReasonFactory(
-      trialState,
-      targetId,
-      requiredSourcesByItemId,
-      subIngredientChains,
-    );
-
-    // Phase D: Recycle once for level-2 sub-ingredients
-    if (Object.keys(missingSub).length > 0) {
-      recycleForNeeded(trialState, missingSub, subRecycleReasonFactory);
-    }
-
-    let pendingResult = applyPendingCraftsIfPossible(trialState, pendingCrafts);
-    if (!pendingResult.ok && pendingCrafts.length > 0) {
-      const remainingL1BeforeFallback = getRecipeDeficitsFromAvail(trialState, targetRecipe, craftTimes);
-      recycleForNeeded(trialState, remainingL1BeforeFallback, directRecycleReasonFactory);
-      pendingCrafts = [];
-      pendingResult = applyPendingCraftsIfPossible(trialState, pendingCrafts);
-    }
-
-    // Final check: is this target fully satisfiable?
-    let fullySatisfiable = true;
-    if (!pendingResult.ok) {
-      fullySatisfiable = false;
-    }
-    for (const [ingId, qtyPerCraft] of Object.entries(targetRecipe)) {
-      const totalNeeded = qtyPerCraft * craftTimes;
-      if (getFrom(pendingResult.avail, ingId) < totalNeeded) {
-        fullySatisfiable = false;
-        break;
-      }
-    }
-
-    // If L2 crafts have unmet sub-ingredients, also not satisfiable
-    if (fullySatisfiable && Object.keys(stillMissingL1).length > 0) {
-      for (const [ingId] of Object.entries(stillMissingL1)) {
-        const ingItem = trialState.itemsMap[ingId];
-        if (!ingItem?.recipe) {
-          // Base material still missing
-          if (getAvail(trialState, ingId) < (targetRecipe[ingId] ?? 0) * craftTimes) {
-            fullySatisfiable = false;
-            break;
-          }
-          continue;
-        }
-        // Check if L2 craft sub-ingredients are satisfied
-        const { ok } = canCraft(ingItem, trialState.benchLevels, trialState.unlockedBlueprintItemIds, ingId);
-        if (!ok) {
-          if (getFrom(pendingResult.avail, ingId) < (targetRecipe[ingId] ?? 0) * craftTimes) {
-            fullySatisfiable = false;
-            break;
-          }
-        }
-      }
-    }
-
-    if (fullySatisfiable) {
+    // Attempt full satisfaction with recycling + L2 crafting
+    if (completeTargetSatisfaction(trialState, targetId, requiredSourcesByItemId, phaseAResult)) {
       trialState.satisfiableTargets.add(targetId);
-      trialState.avail = pendingResult.avail;
-
-      // Consume ingredients and produce output
-      for (const [ingId, qtyPerCraft] of Object.entries(targetRecipe)) {
-        consumeAvail(trialState, ingId, qtyPerCraft * craftTimes);
-      }
-      addAvail(trialState, targetId, totalOutput);
-
-      for (const craft of pendingCrafts) {
-        recordCraftStep(trialState, craft.itemId, craft.totalOutput);
-      }
-
-      // Record the L1 craft step
-      recordCraftStep(trialState, targetId, totalOutput);
-
-      // surplus from over-production already in avail from addAvail above
       state = trialState;
-    } else {
-      mergePlannerDiagnostics(state, trialState);
+      continue;
     }
 
-    if (!fullySatisfiable) {
+    // Full need failed — merge diagnostics
+    mergePlannerDiagnostics(state, trialState);
+
+    // Binary search for max satisfiable quantity using full pipeline (recycling + L2)
+    const targetRecipe = targetItem.recipe!;
+    let bestQty = 0;
+    let lo = 0;
+    let hi = need - 1;
+
+    while (lo <= hi) {
+      const mid = Math.ceil((lo + hi) / 2);
+      const testState = clonePlannerState(state);
+      const midPhaseAResult = phaseA(testState, targetId, mid);
+      if (midPhaseAResult && completeTargetSatisfaction(testState, targetId, requiredSourcesByItemId, midPhaseAResult)) {
+        bestQty = mid;
+        lo = mid + 1;
+      } else {
+        hi = mid - 1;
+        if (midPhaseAResult) {
+          mergePlannerDiagnostics(state, testState);
+        }
+      }
+    }
+
+    // Commit the best quantity found via full pipeline
+    if (bestQty > 0) {
+      const commitState = clonePlannerState(state);
+      const commitPhaseAResult = phaseA(commitState, targetId, bestQty);
+      if (commitPhaseAResult && completeTargetSatisfaction(commitState, targetId, requiredSourcesByItemId, commitPhaseAResult)) {
+        state = commitState;
+      }
+    }
+
+    // Partial craft fallback from directly available L1 materials for remaining need
+    if (bestQty < need && targetItem.recipe) {
+      const remaining = need - bestQty;
+      const craftTimes = Math.ceil(remaining / targetItem.craftQuantity);
       const partialCraftTimes = Math.min(craftTimes, getCraftableTimesFromAvail(state, targetRecipe));
       if (partialCraftTimes > 0) {
         const partialOutput = partialCraftTimes * targetItem.craftQuantity;

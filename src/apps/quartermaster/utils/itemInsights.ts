@@ -1,5 +1,5 @@
 import type { ItemsMap } from '../types/item';
-import type { ListType, PlannerResult } from '../types/planner';
+import type { ItemRecycleSalvageUsage, ListType, PlannerResult } from '../types/planner';
 import { walkDependencies } from './planner/provenance';
 
 export interface ItemFinalListNeed {
@@ -26,6 +26,7 @@ export interface ItemCraftingNeed {
 export interface ItemInsight {
   finalListNeeds: ItemFinalListNeed[];
   craftingNeeds: ItemCraftingNeed[];
+  recycleSalvageUsages: ItemRecycleSalvageUsage[];
 }
 
 export type ItemInsightsMap = Record<string, ItemInsight>;
@@ -39,6 +40,7 @@ interface DependencyChain {
 const EMPTY_INSIGHT: ItemInsight = {
   finalListNeeds: [],
   craftingNeeds: [],
+  recycleSalvageUsages: [],
 };
 
 function getOrCreateInsight(map: ItemInsightsMap, itemId: string): ItemInsight {
@@ -46,6 +48,7 @@ function getOrCreateInsight(map: ItemInsightsMap, itemId: string): ItemInsight {
     map[itemId] = {
       finalListNeeds: [],
       craftingNeeds: [],
+      recycleSalvageUsages: [],
     };
   }
   return map[itemId];
@@ -195,6 +198,53 @@ function addCraftingNeeds(
   }
 }
 
+function addRecycleSalvageUsages(
+  insights: ItemInsightsMap,
+  itemsMap: ItemsMap,
+  plannerResult: PlannerResult,
+): void {
+  const dedupe = new Set<string>();
+  const satisfiableTargets = plannerResult.satisfiableTargets;
+
+  for (const action of plannerResult.recyclePlan.actions) {
+    for (const reason of action.reasons) {
+      const targetItem = itemsMap[reason.targetItemId];
+      if (!targetItem) continue;
+
+      const yieldItem = itemsMap[reason.producedItemId];
+      if (!yieldItem) continue;
+
+      const sources = plannerResult.requiredSourcesByItemId[reason.targetItemId] ?? [];
+      const source = sources.find((s) => s.listId === reason.listId);
+      const listType: 'user' | 'hideout' = source?.listType ?? 'user';
+
+      const dedupeKey = [
+        action.srcItemId,
+        reason.listId,
+        reason.targetItemId,
+        reason.producedItemId,
+      ].join('|');
+      if (dedupe.has(dedupeKey)) continue;
+      dedupe.add(dedupeKey);
+
+      const insight = getOrCreateInsight(insights, action.srcItemId);
+      insight.recycleSalvageUsages.push({
+        listId: reason.listId,
+        listName: reason.listName,
+        listType,
+        yieldItemId: reason.producedItemId,
+        yieldItemName: reason.producedItemName,
+        yieldQuantity: reason.quantityCovered,
+        targetItemId: reason.targetItemId,
+        targetItemName: reason.targetItemName,
+        targetItemRarity: targetItem.rarity ?? '',
+        chainLabel: reason.chainLabel,
+        isComplete: satisfiableTargets.has(reason.targetItemId),
+      });
+    }
+  }
+}
+
 
 export function buildItemInsights(itemsMap: ItemsMap, plannerResult: PlannerResult): ItemInsightsMap {
   const insights: ItemInsightsMap = {};
@@ -202,11 +252,17 @@ export function buildItemInsights(itemsMap: ItemsMap, plannerResult: PlannerResu
 
   addFinalNeeds(insights, plannerResult, missingByItemId);
   addCraftingNeeds(insights, itemsMap, plannerResult, missingByItemId);
+  addRecycleSalvageUsages(insights, itemsMap, plannerResult);
 
   // Ensure stable sorting for deterministic rendering
   for (const insight of Object.values(insights)) {
     insight.finalListNeeds.sort((a, b) => a.listName.localeCompare(b.listName));
     insight.craftingNeeds.sort((a, b) => {
+      if (a.listName !== b.listName) return a.listName.localeCompare(b.listName);
+      if (a.targetItemName !== b.targetItemName) return a.targetItemName.localeCompare(b.targetItemName);
+      return a.chainLabel.localeCompare(b.chainLabel);
+    });
+    insight.recycleSalvageUsages.sort((a, b) => {
       if (a.listName !== b.listName) return a.listName.localeCompare(b.listName);
       if (a.targetItemName !== b.targetItemName) return a.targetItemName.localeCompare(b.targetItemName);
       return a.chainLabel.localeCompare(b.chainLabel);

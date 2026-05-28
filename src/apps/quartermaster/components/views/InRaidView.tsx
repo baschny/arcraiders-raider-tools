@@ -139,23 +139,26 @@ export function InRaidView({
     return result.sort((a, b) => a.itemId.localeCompare(b.itemId));
   }, [suggestions, prioritizedSet, itemsMap]);
 
-  // Merge synthetic into existing, then split into three groups:
-  // Priority Targets, Direct Targets (excluding prioritized), Crafting Materials (excluding prioritized).
-  const { prioritized, directTargets, craftSupport } = useMemo(() => {
+  // Merge synthetic into existing, then split into four groups:
+  // Priority Targets, Direct Targets (excluding prioritized), Crafting Materials (excluding prioritized), Craftable Materials (excluding prioritized).
+  const { prioritized, directTargets, craftSupport, craftableIngredients } = useMemo(() => {
     const prio: InRaidSuggestion[] = [...syntheticPrioritized];
     const direct: InRaidSuggestion[] = [];
     const support: InRaidSuggestion[] = [];
+    const craftableIng: InRaidSuggestion[] = [];
 
     for (const s of suggestions) {
       if (prioritizedSet.has(s.itemId)) {
         prio.push(s);
       } else if (s.reasons.includes('BRING_HOME_FINAL_TARGET')) {
         direct.push(s);
+      } else if (s.reasons.includes('CRAFTING_INGREDIENT_FOR_DEFICIT') && s.reasons.length === 1) {
+        craftableIng.push(s);
       } else {
         support.push(s);
       }
     }
-    return { prioritized: prio, directTargets: direct, craftSupport: support };
+    return { prioritized: prio, directTargets: direct, craftSupport: support, craftableIngredients: craftableIng };
   }, [suggestions, prioritizedSet, syntheticPrioritized]);
 
   const renderSuggestionGrid = (items: InRaidSuggestion[]) => (
@@ -295,6 +298,13 @@ export function InRaidView({
           <section className="in-raid-view__section">
             <h3 className="qm-section-title">{t('quartermaster.inRaid.craftingMaterials')}</h3>
             {renderSuggestionGrid(craftSupport)}
+          </section>
+        )}
+
+        {craftableIngredients.length > 0 && (
+          <section className="in-raid-view__section">
+            <h3 className="qm-section-title">{t('quartermaster.inRaid.craftableMaterials')}</h3>
+            {renderSuggestionGrid(craftableIngredients)}
           </section>
         )}
       </div>

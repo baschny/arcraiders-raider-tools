@@ -43,7 +43,8 @@ export type InRaidReason =
   | 'BRING_HOME_FINAL_TARGET'
   | 'BRING_HOME_DIRECT_MATERIAL'
   | 'SALVAGE_FOR_MATERIAL'
-  | 'BRING_HOME_FOR_RECYCLE_YIELD';
+  | 'BRING_HOME_FOR_RECYCLE_YIELD'
+  | 'CRAFTING_INGREDIENT_FOR_DEFICIT';
 
 export type ListType = 'user' | 'hideout';
 
@@ -206,6 +207,21 @@ export interface PlannerResult {
 
 // Advisory badge for legacy planner recommendations (section 7.3.2)
 export type AdvisoryBadge = 'KEEP' | 'RECYCLE' | 'DISCARD';
+
+// Tooltip insight types
+export interface ItemRecycleSalvageUsage {
+  listId: string;
+  listName: string;
+  listType: 'user' | 'hideout';
+  yieldItemId: string;
+  yieldItemName: string;
+  yieldQuantity: number;
+  targetItemId: string;
+  targetItemName: string;
+  targetItemRarity: string;
+  chainLabel: string;
+  isComplete: boolean;
+}
 
 // Stash and API data
 export interface OwnedItemQuantity {

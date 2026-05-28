@@ -211,6 +211,38 @@ export function generateInRaidSuggestions(
   const provenanceMap = calculateProvenance(itemsMap, requiredSourcesByItemId, deficits);
 
   // -----------------------------------------------------------------------
+  // Pipeline 4: Craftable materials — deep ingredients that are not in deficit
+  //   but can be crafted into a needed material
+  // -----------------------------------------------------------------------
+  for (const itemId of allItemIds) {
+    // Skip items already suggested by previous pipelines
+    if (suggestionMap.has(itemId)) continue;
+
+    const item = itemsMap[itemId];
+    if (!item) continue;
+
+    // Check if this item is a deep dependency of a target with a deficit
+    const provenanceSources = provenanceMap[itemId];
+    if (!provenanceSources?.length) continue;
+
+    // Item must NOT already be in deficit (avoid duplicates with BRING_HOME_DIRECT_MATERIAL)
+    if ((deficits[itemId] ?? 0) > 0) continue;
+
+    // Item must not be in non-recyclable categories
+    if (NON_RECYCLABLE_CATEGORIES.has(item.category)) continue;
+
+    // Item must have at least one impacted target with a deficit that is NOT satisfiable
+    const hasImpactedDeficit = provenanceSources.some(
+      (source) => source.impactedTargetItemIds.some(
+        (tid) => (deficits[tid] ?? 0) > 0 && !satisfiableTargets.has(tid),
+      ),
+    );
+    if (!hasImpactedDeficit) continue;
+
+    addReason(itemId, 'CRAFTING_INGREDIENT_FOR_DEFICIT');
+  }
+
+  // -----------------------------------------------------------------------
   // Finalize: compute badges, impacted targets, sort reasons
   // -----------------------------------------------------------------------
   const REASON_ORDER: InRaidReason[] = [
@@ -218,6 +250,7 @@ export function generateInRaidSuggestions(
     'BRING_HOME_DIRECT_MATERIAL',
     'SALVAGE_FOR_MATERIAL',
     'BRING_HOME_FOR_RECYCLE_YIELD',
+    'CRAFTING_INGREDIENT_FOR_DEFICIT',
   ];
 
   const suggestions = Array.from(suggestionMap.values());
@@ -231,10 +264,11 @@ export function generateInRaidSuggestions(
       (a, b) => REASON_ORDER.indexOf(a) - REASON_ORDER.indexOf(b),
     );
 
-    // Badge: keep/direct-material reasons take precedence over recycle/salvage yields.
+    // Badge: keep/direct-material/ingredient reasons take precedence over recycle/salvage yields.
     const isFinalTarget = suggestion.reasons.includes('BRING_HOME_FINAL_TARGET');
     const isDirectMaterial = suggestion.reasons.includes('BRING_HOME_DIRECT_MATERIAL');
-    suggestion.badge = determineBadge(item, neededMaterials, isFinalTarget || isDirectMaterial);
+    const isCraftingIngredient = suggestion.reasons.includes('CRAFTING_INGREDIENT_FOR_DEFICIT');
+    suggestion.badge = determineBadge(item, neededMaterials, isFinalTarget || isDirectMaterial || isCraftingIngredient);
 
     // Attach listSources and impactedTargetItemIds from the shared provenance
     const sources = provenanceMap[suggestion.itemId];
@@ -256,12 +290,15 @@ export function generateInRaidSuggestions(
   }
 
   // -----------------------------------------------------------------------
-  // Sort: missing final targets first, then craft-support, itemId within groups (CR-006)
+  // Sort: missing final targets first, then craft-support, then craftable ingredients, itemId within groups (CR-006)
   // -----------------------------------------------------------------------
   suggestions.sort((a, b) => {
     const aIsFinal = a.reasons.includes('BRING_HOME_FINAL_TARGET') ? 0 : 1;
     const bIsFinal = b.reasons.includes('BRING_HOME_FINAL_TARGET') ? 0 : 1;
     if (aIsFinal !== bIsFinal) return aIsFinal - bIsFinal;
+    const aIsCraftSupport = a.reasons.some((r) => r !== 'CRAFTING_INGREDIENT_FOR_DEFICIT' && r !== 'BRING_HOME_FINAL_TARGET') ? 0 : 1;
+    const bIsCraftSupport = b.reasons.some((r) => r !== 'CRAFTING_INGREDIENT_FOR_DEFICIT' && r !== 'BRING_HOME_FINAL_TARGET') ? 0 : 1;
+    if (aIsCraftSupport !== bIsCraftSupport) return aIsCraftSupport - bIsCraftSupport;
     return a.itemId.localeCompare(b.itemId);
   });
 

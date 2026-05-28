@@ -1247,6 +1247,37 @@ If a target remains blocked after simulation, such as by a missing raid-only ing
 
 Blocked targets must still contribute to remaining ingredient deficits and In Raid guidance, but they must not create Crafting view actions.
 
+### Iterative Partial Satisfaction
+
+When the full deficit quantity of a craftable target cannot be satisfied, the planner uses a **binary search** over decreasing quantities (from `need - 1` down to 0) to find the maximum satisfiable quantity using the full pipeline (recycling + L2 crafting). This prevents valid recycle and craft actions from being discarded just because the full quantity is unreachable.
+
+**Algorithm**:
+
+```
+need = required - owned
+if !trySatisfy(need, state):
+  // binary search for max satisfiable quantity
+  lo = 0, hi = need - 1
+  while lo <= hi:
+    mid = ceil((lo + hi) / 2)
+    if trySatisfy(mid, testState):
+      bestQty = mid; lo = mid + 1
+    else:
+      hi = mid - 1
+
+if bestQty > 0:
+  commit trySatisfy(bestQty, state)  // includes recycle + L2 craft actions
+
+// Fallback: partial craft from directly available L1 materials for remaining need
+remaining = need - bestQty
+if remaining > 0:
+  craftRemainingFromDirectAvail(remaining)
+```
+
+The transactional model is preserved — each `mid` attempt runs in a fresh clone of the current state. Only the successful maximum-quantity attempt is committed. If no quantity is satisfiable (even `quantity=1` fails), only the direct-avail partial craft fallback is used (no recycling).
+
+This ensures that recycle actions for materials like Bastion Cells and Leaper Pulse units can be committed toward partial target satisfaction, rather than being discarded wholesale when the full target quantity fails.
+
 Example:
 
 - Desired list contains `heavy_shield` x1.
@@ -1535,6 +1566,21 @@ Each crafting entry shows:
 
 The COMPLETE/NEEDED badge is aligned to the right of the combined list-name + goal-item block, not below it.
 
+### Could be used for
+
+When the planner recommends recycling an item for yields that contribute to a user's active planning targets, a **"Could be used for"** section appears below "Needed for Crafting" in the right column.
+
+Each entry shows:
+
+- A list-type icon (`List` for user lists, `Home` for hideout lists)
+- The yield item icon + quantity preceded by an arrow (→)
+- The target item icon + name
+- On the right side: either a "COMPLETE" badge (green) or a "NEEDED" badge (red)
+
+The phrasing **"Could be used for"** conveys an advisory tone — the recycle/salvage yield is an optional path toward a goal, not a mandate.
+
+Data source: `ItemInsight.recycleSalvageUsages`, populated from the planner's committed recycle actions (`RecycleAction.reasons`).
+
 ---
 
 ---
@@ -1801,6 +1847,21 @@ Add visual spacing between:
 - PRIORITY TARGETS section
 - DIRECT TARGETS section
 - CRAFTING MATERIALS section
+- CRAFTABLE MATERIALS section
+
+### Craftable Materials Section
+
+A fourth section **"Craftable Materials"** appears below "Crafting Materials" when the planner identifies items that can be crafted into needed materials but are not themselves in deficit.
+
+These items have the `CRAFTING_INGREDIENT_FOR_DEFICIT` InRaidReason and `BRING_HOME` badge.
+
+Selection logic:
+- Item is in the provenance map (deep dependency of a target)
+- Item's deficit is zero (not already suggested as a direct material)
+- Item is not in a non-recyclable category
+- Item has at least one impacted target with a deficit that is NOT fully satisfiable
+
+Items in this section retain provenance (`impactedTargetItemIds` and `listSources` populated).
 
 ## 4.6 Crafting View
 
