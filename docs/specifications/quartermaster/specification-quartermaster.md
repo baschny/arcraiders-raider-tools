@@ -587,11 +587,85 @@ Logout behavior:
 
 ---
 
+## 4.1A Game Data Source Selection
+
+Quartermaster supports two authenticated game-data sources:
+
+```ts
+type GameDataSource = "arctracker" | "embark"
+```
+
+The selected source is global account state stored on the Raider Tools profile.
+Quartermaster must use exactly one active source at runtime and must not combine
+ArcTracker and Embark data in a single planner run.
+
+Rules:
+
+- `arctracker` is the default source for existing users.
+- `embark` may be selected only when the user has an active Embark link and is
+  allowed by the Embark access gate.
+- Completing the Embark linking flow counts as selecting Embark and stores the
+  source on the Raider Tools profile.
+- If Embark is active and the token expires, Quartermaster must prompt the user
+  to re-authenticate with Embark.
+- Quartermaster must not silently fall back to ArcTracker when Embark expires.
+- Source changes must not reuse stale cached data from the previous source as
+  current planner input.
+
+---
+
+## 4.1B Embark Inventory Source
+
+When the active source is Embark, Quartermaster syncs one shared Raider Tools
+resource:
+
+```text
+POST /me/embark/inventory/sync
+```
+
+This route fetches:
+
+```text
+GET /v1/pioneer/inventory
+```
+
+from Embark server-side and normalizes the raw inventory response into the same
+runtime concepts Quartermaster already uses:
+
+- `CachedStash`
+- `CachedLoadout`
+- `CachedHideout`
+- `CachedBlueprints`
+
+Embark inventory sync must:
+
+- run only through Raider Tools API routes
+- require a linked Embark token
+- require Embark access
+- reject expired Embark tokens before calling Embark
+- apply persisted throttling
+- preserve previous cached data on failure
+- expose unknown `gameAssetId` diagnostics without failing the whole sync
+
+The generated Embark mapping artifact used by the Lambda is produced by:
+
+```bash
+npm run generate:embark-inventory-mapping
+```
+
+and committed at:
+
+```text
+infra/lambda/data/embark-inventory-mapping.json
+```
+
+---
+
 ## 4.2 Stash / Inventory Integration
 
 ### 4.2.1 Sync Operation
 
-Inventory sync must call:
+In ArcTracker mode, inventory sync must call:
 
 ```ts
 syncStashAllPages()
@@ -646,7 +720,7 @@ Behavior:
 
 ### 4.3.1 Sync Operation
 
-Loadout sync must call:
+In ArcTracker mode, loadout sync must call:
 
 ```ts
 syncLoadout()
@@ -679,7 +753,8 @@ Same rules as section 4.2.3.
 
 ### 4.3.4 Combined My Items Sync
 
-The My Items view must expose one combined **Sync My Items** action.
+In ArcTracker mode, the My Items view must expose one combined **Sync My Items**
+action.
 
 The combined sync action must:
 
@@ -689,6 +764,32 @@ The combined sync action must:
   - `Syncing inventory...`
   - `Syncing loadout...`
 - preserve individual error handling internally so failures identify the failing operation
+
+---
+
+## 4.3.5 Embark Global Sync UX
+
+When the active source is Embark, Quartermaster must expose one global **Sync**
+action in the app header area.
+
+Behavior:
+
+- Label: `Sync`
+- While syncing: `Syncing inventory...`
+- The action syncs inventory, loadout, hideout, and blueprints from one Embark
+  inventory request.
+- On success, all four cached runtime concepts update together.
+- On failure, the previous cache remains active.
+- Throttle errors must show when sync is next available.
+- Token expiry must show a reconnect action for `/profile/embark`.
+- Unknown Embark items must be visible through diagnostics or a collapsed
+  unknown-items section and must not affect planner calculations.
+
+In Embark mode, per-view sync buttons must not trigger separate Embark resource
+syncs. My Items, Hideout, and Crafting may either hide their local sync buttons
+or delegate them to the global Embark sync action.
+
+ArcTracker mode keeps the existing per-view sync controls.
 
 ---
 
@@ -1157,6 +1258,38 @@ Planner result must not include recycling or crafting steps solely for `heavy_sh
 
 ---
 
+## 6.5 Loot Suggestion Provenance (Shared Architecture)
+
+The planner uses a shared provenance utility to identify which user lists and target items depend on a given suggested item.
+
+### Provenance Aggregation
+
+1.  **Scope**: Provenance is calculated for:
+    -   **Direct Targets**: Missing final items from user lists.
+    -   **Crafting Materials**: Direct and nested ingredients required for target items.
+    -   **Recycle/Salvage Sources**: Items that yield needed crafting materials or final target items.
+2.  **Logic**:
+    -   Recursive traversal of recipes and upgrade costs (ingredients from both are combined).
+    -   Cycle protection (max depth 20).
+    -   `craftQuantity` math: `numCrafts = ceil(need / craftQuantity)`.
+3.  **Merge Rule**: If an item is both a direct target and a crafting support material, the list sources from both paths must be merged and deduplicated. Impacted target IDs from both paths must be combined.
+4.  **Quantity Semantics**:
+    -   For **direct targets**, the provenance quantity is the quantity of the item requested in that list.
+    -   For **crafting support materials**, the provenance quantity is the **effective requirement**: how many of this material are needed to fulfill the requirements of the supported final target in that list, taking into account the `craftQuantity` of the target.
+    -   For **recycle/salvage sources**, the provenance quantity represents the quantity of the **supported material** that is needed, not the quantity of the source item itself.
+    -   **Mixed Provenance Protection**: If an item is both a direct target and a support material for the same list, the direct provenance takes precedence, and support material quantities are excluded from the total to avoid ambiguous unit mixing (source item count vs. yielded material count).
+5.  **Impacted Targets**: Each list source entry tracks which final target items (`impactedTargetItemIds`) are supported by this item in that specific list.
+
+### Dependency Tracking
+
+Provenance for crafting support must track deep dependencies. An item is considered "impacted" by a final target if:
+
+-   It is a direct ingredient in the target's recipe.
+-   It is a nested ingredient (e.g., ingredient of an ingredient).
+-   It recycles or salvages into a missing ingredient or target (direct or nested).
+
+---
+
 # 7. ASSUMPTIONS
 
 (All previous assumptions remain unchanged.)
@@ -1481,11 +1614,12 @@ Editing controls must be visually larger:
 - + button
 - − button
 - Hide button
-- Delete button
 
-Buttons must be placed on the **left side** of rows.
+Buttons must be placed on the **left side** of rows, except for the **Delete button**, which must be placed at the **far right** of the row (after the + button).
 
-Padding must be added around numeric input fields to separate them from browser spinner arrows.
+Numerical input fields for item quantities must not display browser-native "up/down" value widgets (spinners). They must be manually editable with immediate updates upon entry and support incremental changes via the + and − buttons. Any non-numeric characters must be ignored during manual entry.
+
+### List Actions
 
 The Lists view must support existing user-list behavior:
 
@@ -1498,6 +1632,19 @@ The Lists view must support existing user-list behavior:
 - reorder items
 - change quantities
 - enable or disable lists and items
+
+### Safety and Confirmation
+
+- **Delete List**: Deleting a list that contains one or more items must require user confirmation. Empty lists may be deleted without confirmation.
+- **Delete Item**: Deleting an item from a list must require user confirmation.
+
+### Title Editing
+
+The title of a list must be displayed as a read-only headline by default.
+- An **Edit** (pencil) button must be displayed next to the title with the tooltip "Edit title".
+- Clicking the Edit button replaces the headline with an input field.
+- A **Save** (check/disk) button must be displayed next to the input field to commit changes.
+- Saving or cancelling the edit returns the title to the read-only headline state.
 
 ---
 

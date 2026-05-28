@@ -1,39 +1,26 @@
 @use 'variables' as *;
 
 .quest-search-overlay {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  width: 320px;
-  max-height: calc(100% - 24px);
-  background: rgba(26, 26, 26, 0.88);
-  border: $border-width-thin solid $border-light;
-  border-radius: $radius-md;
-  box-shadow: $shadow-default;
-  overflow: hidden;
+  position: relative;
+  width: 280px;
+  max-width: 100%;
   z-index: 15;
-  backdrop-filter: blur(3px);
-  display: flex;
-  flex-direction: column;
 }
 
 .quest-search-overlay-input-wrapper {
-  padding: $spacing-sm;
-  background: $bg-dark;
-
-  .quest-search-overlay.expanded & {
-    border-bottom: $border-width-thin solid $border-default;
-  }
+  position: relative;
+  padding: 0;
 }
 
 .quest-search-overlay-input {
   width: 100%;
-  padding: $spacing-sm $spacing-md;
-  background: $bg-secondary;
-  border: $border-width-thin solid $border-default;
+  min-height: 44px;
+  padding: 10px 42px 10px $spacing-md;
+  background: rgba(255, 255, 255, 0.05);
+  border: $border-width-thin solid $border-light;
   border-radius: $radius-sm;
   color: $text-primary;
-  font-size: $font-lg;
+  font-size: $font-md;
   outline: none;
   transition: $transition-default;
 
@@ -47,6 +34,49 @@
   }
 }
 
+.quest-search-overlay-clear {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: $text-secondary;
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: $transition-default;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.14);
+    color: $text-primary;
+  }
+
+  &:focus-visible {
+    outline: 2px solid rgba(79, 195, 247, 0.45);
+    outline-offset: 2px;
+  }
+}
+
+.quest-search-overlay-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 100%;
+  max-height: min(420px, calc(100vh - 180px));
+  background: rgba(26, 26, 26, 0.96);
+  border: $border-width-thin solid $border-light;
+  border-radius: $radius-md;
+  box-shadow: $shadow-default;
+  overflow: hidden;
+  backdrop-filter: blur(8px);
+}
+
 .quest-search-overlay-header {
   padding: $spacing-sm $spacing-md;
   background: $bg-dark;
@@ -58,7 +88,7 @@
 }
 
 .quest-search-overlay-list {
-  max-height: 300px;
+  max-height: min(360px, calc(100vh - 240px));
   overflow-y: auto;
   padding: $spacing-sm;
 }
@@ -108,4 +138,10 @@
   text-overflow: ellipsis;
   flex: 1;
   min-width: 0;
+}
+
+@media (max-width: 720px) {
+  .quest-search-overlay {
+    width: 100%;
+  }
 }

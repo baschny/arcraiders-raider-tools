@@ -1,4 +1,5 @@
 @use 'variables' as *;
+@use 'sass:color';
 
 .welcome-view {
   display: flex;
@@ -66,6 +67,59 @@
     p {
       margin: 0;
       color: $text-secondary;
+    }
+  }
+
+  &__link-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: $spacing-sm;
+    min-width: min(520px, 100%);
+  }
+
+  &__link-card {
+    display: flex;
+    align-items: flex-start;
+    gap: $spacing-sm;
+    padding: $spacing-md;
+    color: $text-primary;
+    text-decoration: none;
+    background: $bg-tertiary;
+    border: 1px solid $border-light;
+    border-radius: $radius-sm;
+    transition: $transition-default;
+
+    &:hover {
+      border-color: $text-accent;
+      background: color.adjust($bg-tertiary, $lightness: 5%);
+    }
+
+    > svg {
+      flex: 0 0 auto;
+      color: $text-accent;
+      margin-top: 2px;
+    }
+
+    strong,
+    small {
+      display: block;
+    }
+
+    strong {
+      margin-bottom: 3px;
+      color: $text-primary;
+      font-size: $font-md;
+    }
+
+    small {
+      color: $text-secondary;
+      font-size: $font-xs;
+      line-height: 1.35;
+    }
+
+    &--primary {
+      border-color: rgba($text-accent, 0.7);
+      box-shadow: inset 0 0 0 1px rgba($text-accent, 0.25);
     }
   }
 

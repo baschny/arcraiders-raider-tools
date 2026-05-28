@@ -15,7 +15,6 @@ import {
   Home,
   ListChecks,
   RefreshCw,
-  SlidersHorizontal,
 } from 'lucide-react';
 import type { CachedHideout } from '../../../../shared/types/arctracker';
 import { useLocale } from '../../../../shared/context/LocaleContext';
@@ -37,11 +36,14 @@ interface HideoutViewProps {
   getOwnedQuantity: (itemId: string) => number | null;
   onSyncHideout: () => void;
   isSyncingHideout: boolean;
+  showSyncButton?: boolean;
   onToggleHideoutList: (moduleId: string, level: number) => void;
   onSetHideoutModuleListsEnabled: (moduleId: string, levels: number[], isEnabled: boolean) => void;
   onSetHideoutTrackingMode: (mode: 'enable-all' | 'disable-all' | 'next-only') => void;
   onToggleHideoutItem: (moduleId: string, level: number, itemId: string) => void;
 }
+
+type TrackingMode = 'enable-all' | 'disable-all' | 'next-only';
 
 const HIDEOUT_MODULE_ORDER = [
   'scrappy',
@@ -106,6 +108,7 @@ export function HideoutView({
   getOwnedQuantity,
   onSyncHideout,
   isSyncingHideout,
+  showSyncButton = true,
   onToggleHideoutList,
   onSetHideoutModuleListsEnabled,
   onSetHideoutTrackingMode,
@@ -115,11 +118,40 @@ export function HideoutView({
   const [collapsedModules, setCollapsedModules] = useState<Record<string, boolean>>(
     () => loadCollapsedHideoutModules(),
   );
-  const [isTrackingMenuOpen, setIsTrackingMenuOpen] = useState(false);
   const updateCollapsedModules = (next: Record<string, boolean>) => {
     setCollapsedModules(next);
     saveCollapsedHideoutModules(next);
   };
+
+  const moduleLevels = new Map(
+    cachedHideout?.modules.map(module => [module.moduleId, module.currentLevel]) ?? [],
+  );
+
+  const getExpectedEnabledForMode = (mode: TrackingMode, listId: string): boolean => {
+    const parsed = parseHideoutListId(listId);
+    if (!parsed) return false;
+    if (mode === 'enable-all') return true;
+    if (mode === 'disable-all') return false;
+    return parsed.level === (moduleLevels.get(parsed.moduleId) ?? 0) + 1;
+  };
+
+  const currentMode: TrackingMode | 'custom' = (() => {
+    if (hideoutLists.length === 0) return 'disable-all';
+
+    const modes: TrackingMode[] = ['disable-all', 'next-only', 'enable-all'];
+    for (const mode of modes) {
+      const matches = hideoutLists.every(list =>
+        list.isEnabled === getExpectedEnabledForMode(mode, list.id),
+      );
+      if (matches) return mode;
+    }
+    return 'custom';
+  })();
+
+    const isNextRedundant = hideoutLists.length === 0 || hideoutLists.every(list =>
+      getExpectedEnabledForMode('next-only', list.id) === getExpectedEnabledForMode('enable-all', list.id),
+    );
+
   const tooltipContext = {
     itemsMap,
     plannerResult,
@@ -147,6 +179,17 @@ export function HideoutView({
   }
 
   const sortedDefinitions = [...hideoutDefinitions].sort((a, b) => {
+    // 1. Completion status (incomplete first)
+    const aModule = moduleState.get(a.id);
+    const bModule = moduleState.get(b.id);
+    const aComplete = (aModule?.currentLevel ?? 0) >= (aModule?.maxLevel ?? a.maxLevel);
+    const bComplete = (bModule?.currentLevel ?? 0) >= (bModule?.maxLevel ?? b.maxLevel);
+
+    if (aComplete !== bComplete) {
+      return aComplete ? 1 : -1;
+    }
+
+    // 2. Predefined order
     const aIndex = HIDEOUT_MODULE_ORDER.indexOf(a.id);
     const bIndex = HIDEOUT_MODULE_ORDER.indexOf(b.id);
 
@@ -156,6 +199,7 @@ export function HideoutView({
       return aIndex - bIndex;
     }
 
+    // 3. Alphabetical fallback
     return compareText(a.name, b.name);
   });
   const hasPendingUpgrades = hideoutLists.length > 0;
@@ -171,92 +215,87 @@ export function HideoutView({
     }
     updateCollapsedModules(next);
   };
-  const runTrackingAction = (mode: 'enable-all' | 'disable-all' | 'next-only') => {
+  const runTrackingAction = (mode: TrackingMode) => {
     onSetHideoutTrackingMode(mode);
-    setIsTrackingMenuOpen(false);
   };
 
   return (
     <div className="hideout-view">
       <div className="hideout-view__controls">
-        <button
-          className="qm-button"
-          onClick={onSyncHideout}
-          disabled={isSyncingHideout}
-          title={t('quartermaster.hideout.syncTooltip')}
-        >
-          <RefreshCw size={16} className={isSyncingHideout ? 'animate-spin' : ''} />
-          {t('quartermaster.common.syncHideouts')}
-        </button>
-
-        <button
-          type="button"
-          className="qm-button"
-          onClick={() => setAllModulesCollapsed(true)}
-          disabled={!cachedHideout}
-          title={t('quartermaster.hideout.collapseAllTooltip')}
-        >
-          <ChevronsUp size={16} />
-          {t('quartermaster.hideout.collapseAll')}
-        </button>
-
-        <button
-          type="button"
-          className="qm-button"
-          onClick={() => setAllModulesCollapsed(false)}
-          disabled={!cachedHideout}
-          title={t('quartermaster.hideout.expandAllTooltip')}
-        >
-          <ChevronsDown size={16} />
-          {t('quartermaster.hideout.expandAll')}
-        </button>
+        {showSyncButton && (
+          <button
+            className="qm-button"
+            onClick={onSyncHideout}
+            disabled={isSyncingHideout}
+            title={t('quartermaster.hideout.syncTooltip')}
+          >
+            <RefreshCw size={16} className={isSyncingHideout ? 'animate-spin' : ''} />
+            {t('quartermaster.common.syncHideouts')}
+          </button>
+        )}
 
         <div className="hideout-view__tracking">
-          <button
-            type="button"
-            className="qm-button"
-            onClick={() => setIsTrackingMenuOpen(!isTrackingMenuOpen)}
-            disabled={!hasPendingUpgrades}
-            aria-haspopup="menu"
-            aria-expanded={isTrackingMenuOpen}
-            title={t('quartermaster.hideout.trackingTooltip')}
-          >
-            <SlidersHorizontal size={16} />
-            {t('quartermaster.hideout.tracking')}
-            <ChevronDown size={14} />
-          </button>
+          <span className="hideout-view__tracking-label">{t('quartermaster.hideout.tracking')}</span>
+          <div className="qm-segmented-control">
+            <button
+              type="button"
+              className={['qm-segmented-control__button', currentMode === 'disable-all' ? 'is-active' : ''].filter(Boolean).join(' ')}
+              onClick={() => runTrackingAction('disable-all')}
+              disabled={!hasPendingUpgrades}
+              title={t('quartermaster.hideout.disableAllTooltip')}
+            >
+              <EyeOff size={14} />
+              {t('quartermaster.hideout.disableAll')}
+            </button>
 
-          {isTrackingMenuOpen && (
-            <div className="hideout-view__tracking-menu" role="menu">
+            {!isNextRedundant && (
               <button
                 type="button"
-                role="menuitem"
-                onClick={() => runTrackingAction('enable-all')}
-                title={t('quartermaster.hideout.enableAllTooltip')}
-              >
-                <Eye size={15} />
-                <span>{t('quartermaster.hideout.enableAll')}</span>
-              </button>
-              <button
-                type="button"
-                role="menuitem"
-                onClick={() => runTrackingAction('disable-all')}
-                title={t('quartermaster.hideout.disableAllTooltip')}
-              >
-                <EyeOff size={15} />
-                <span>{t('quartermaster.hideout.disableAll')}</span>
-              </button>
-              <button
-                type="button"
-                role="menuitem"
+                className={['qm-segmented-control__button', currentMode === 'next-only' ? 'is-active' : ''].filter(Boolean).join(' ')}
                 onClick={() => runTrackingAction('next-only')}
+                disabled={!hasPendingUpgrades}
                 title={t('quartermaster.hideout.nextOnlyTooltip')}
               >
-                <ListChecks size={15} />
-                <span>{t('quartermaster.hideout.nextOnly')}</span>
+                <ListChecks size={14} />
+                {t('quartermaster.hideout.nextOnly')}
               </button>
-            </div>
-          )}
+            )}
+
+            <button
+              type="button"
+              className={['qm-segmented-control__button', currentMode === 'enable-all' ? 'is-active' : ''].filter(Boolean).join(' ')}
+              onClick={() => runTrackingAction('enable-all')}
+              disabled={!hasPendingUpgrades}
+              title={t('quartermaster.hideout.enableAllTooltip')}
+            >
+              <Eye size={14} />
+              {t('quartermaster.hideout.enableAll')}
+            </button>
+          </div>
+        </div>
+
+        <div className="hideout-view__actions">
+          <button
+            type="button"
+            className="qm-button qm-button--ghost"
+            onClick={() => setAllModulesCollapsed(true)}
+            disabled={!cachedHideout}
+            title={t('quartermaster.hideout.collapseAllTooltip')}
+          >
+            <ChevronsUp size={16} />
+            {t('quartermaster.hideout.collapseAll')}
+          </button>
+
+          <button
+            type="button"
+            className="qm-button qm-button--ghost"
+            onClick={() => setAllModulesCollapsed(false)}
+            disabled={!cachedHideout}
+            title={t('quartermaster.hideout.expandAllTooltip')}
+          >
+            <ChevronsDown size={16} />
+            {t('quartermaster.hideout.expandAll')}
+          </button>
         </div>
       </div>
 
@@ -424,6 +463,8 @@ export function HideoutView({
                               'hideout-view__upgrade',
                               !list.isEnabled ? 'hideout-view__upgrade--disabled' : '',
                               isTierAvailable ? 'hideout-view__upgrade--complete' : '',
+                              isNext ? 'hideout-view__upgrade--next' : '',
+                              list.items.length === 1 ? 'hideout-view__upgrade--single' : '',
                             ].filter(Boolean).join(' ')}
                           >
                             <div className="hideout-view__upgrade-header">
@@ -455,11 +496,6 @@ export function HideoutView({
                                     {t('quartermaster.hideout.completed')}
                                   </span>
                                 )}
-                                {isNext && (
-                                  <span className="hideout-view__next-pill">
-                                    {t('quartermaster.hideout.next')}
-                                  </span>
-                                )}
                               </div>
                             </div>
 
@@ -472,6 +508,8 @@ export function HideoutView({
                                   listItem.itemId,
                                   listItem.quantity,
                                 );
+                                const owned = getOwnedQuantity(listItem.itemId) ?? 0;
+                                const deficit = Math.max(0, listItem.quantity - owned);
 
                                 return (
                                   <div
@@ -497,28 +535,32 @@ export function HideoutView({
                                       onToggleHideoutItem(parsed.moduleId, parsed.level, listItem.itemId);
                                     }}
                                   >
-                                    {isRequirementAvailable && (
-                                      <span
-                                        className="hideout-view__item-complete"
-                                        title={t('quartermaster.hideout.itemCompleteTooltip')}
-                                        aria-label={t('quartermaster.hideout.itemCompleteTooltip')}
-                                      >
-                                        <CheckCircle2 size={15} />
-                                      </span>
-                                    )}
-                                    <ItemIcon
-                                      itemId={item.id}
-                                      name={item.name}
-                                      icon={item.icon}
-                                      rarity={item.rarity}
-                                      quantity={getOwnedQuantity(item.id)}
-                                      size="sm"
-                                      showName={false}
-                                      tooltipContext={tooltipContext}
-                                    />
-                                    <span className="hideout-view__qty">
-                                      {t('quartermaster.hideout.needQuantity').replace('{quantity}', `${listItem.quantity}x`)}
-                                    </span>
+                                    <div className="hideout-view__item-icon-wrapper">
+                                      <ItemIcon
+                                        itemId={item.id}
+                                        name={item.name}
+                                        icon={item.icon}
+                                        rarity={item.rarity}
+                                        quantity={getOwnedQuantity(item.id)}
+                                        size="sm"
+                                        showName={false}
+                                        tooltipContext={tooltipContext}
+                                      />
+                                      {deficit > 0 && (
+                                        <span className="hideout-view__item-missing-badge">
+                                          {deficit}
+                                        </span>
+                                      )}
+                                      {isRequirementAvailable && (
+                                        <span
+                                          className="hideout-view__item-complete"
+                                          title={t('quartermaster.hideout.itemCompleteTooltip')}
+                                          aria-label={t('quartermaster.hideout.itemCompleteTooltip')}
+                                        >
+                                          <CheckCircle2 size={12} />
+                                        </span>
+                                      )}
+                                    </div>
                                     <span className="hideout-view__item-name qm-item-name">{item.name}</span>
                                   </div>
                                 );

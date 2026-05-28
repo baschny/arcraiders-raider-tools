@@ -14,6 +14,7 @@ interface SidebarProps {
   mapNodes: MapNodeWithStatus[];
   availableQuests: Quest[];
   completedCount: number;
+  readOnly: boolean;
   onQuestClick: (questId: string) => void;
   onMapToggle: (mapId: string) => void;
   onResetAll: () => void;
@@ -24,6 +25,7 @@ export function Sidebar({
   mapNodes,
   availableQuests,
   completedCount,
+  readOnly,
   onQuestClick,
   onMapToggle,
   onResetAll,
@@ -37,6 +39,14 @@ export function Sidebar({
   const lockedPercent = totalQuests > 0 ? (lockedCount / totalQuests) * 100 : 0;
   const allMapsUnlocked = mapNodes.length > 0 && mapNodes.every((m) => m.isCompleted);
   const [mapsCollapsed, setMapsCollapsed] = useState<boolean>(allMapsUnlocked);
+  const [prevAllMapsUnlocked, setPrevAllMapsUnlocked] = useState<boolean>(allMapsUnlocked);
+
+  if (allMapsUnlocked && !prevAllMapsUnlocked) {
+    setPrevAllMapsUnlocked(true);
+    setMapsCollapsed(true);
+  } else if (!allMapsUnlocked && prevAllMapsUnlocked) {
+    setPrevAllMapsUnlocked(false);
+  }
   return (
     <div className="available-sidebar">
       <div
@@ -111,9 +121,21 @@ export function Sidebar({
           {mapNodes.map((mapNode) => (
             <div
               key={mapNode.id}
-              className={`available-quest-item ${mapNode.isCompleted ? 'completed' : ''}`}
-              onClick={() => mapNode.isCompleted ? onQuestClick(mapNode.id) : onMapToggle(mapNode.id)}
-              title={mapNode.isCompleted ? t('quests.sidebarViewMap') : t('quests.sidebarUnlockMap')}
+              className={`available-quest-item ${mapNode.isCompleted ? 'completed' : ''} ${readOnly ? 'read-only' : ''}`}
+              onClick={() => {
+                if (mapNode.isCompleted || readOnly) {
+                  onQuestClick(mapNode.id);
+                  return;
+                }
+                onMapToggle(mapNode.id);
+              }}
+              title={
+                readOnly
+                  ? t('quests.sidebarViewMap')
+                  : mapNode.isCompleted
+                    ? t('quests.sidebarViewMap')
+                    : t('quests.sidebarUnlockMap')
+              }
             >
               <div className="available-quest-name">
                 {getLocalizedMapNodeName(mapNode.id, mapNode.name, locale)}
@@ -126,7 +148,7 @@ export function Sidebar({
 
       <div className="available-sidebar-header">
         <span>⭐ {t('quests.sidebarAvailableHeader')}</span>
-        {completedCount > 0 && (
+        {!readOnly && completedCount > 0 && (
           <button
             className="reset-all-button"
             onClick={onResetAll}
@@ -145,14 +167,20 @@ export function Sidebar({
         ) : (
           availableQuests.map((quest) => {
             const mapIndicator = getQuestMapIndicator(quest.map, locale);
-            const indicatorStyle = mapIndicator
-              ? ({
-                  '--map-accent': mapIndicator.accentColor,
-                  ...(mapIndicator.backgroundImage
-                    ? { backgroundImage: `url(${mapIndicator.backgroundImage})` }
-                    : {}),
-                } as CSSProperties)
-              : undefined;
+            const isSplit =
+              mapIndicator?.segments &&
+              mapIndicator.segments.length >= 2 &&
+              mapIndicator.segments.length <= 3;
+
+            const indicatorStyle =
+              mapIndicator && !isSplit
+                ? ({
+                    '--map-accent': mapIndicator.accentColor,
+                    ...(mapIndicator.backgroundImage
+                      ? { backgroundImage: `url(${mapIndicator.backgroundImage})` }
+                      : {}),
+                  } as CSSProperties)
+                : undefined;
             return (
               <div
                 key={quest.id}
@@ -163,13 +191,31 @@ export function Sidebar({
                 <div className="available-quest-name">{quest.name}</div>
                 {mapIndicator && (
                   <div
-                    className={`available-quest-map${mapIndicator.isMultiple ? ' is-multiple' : ''}`}
+                    className={`available-quest-map${mapIndicator.isMultiple ? ' is-multiple' : ''}${isSplit ? ` is-split-${mapIndicator.segments?.length}` : ''}`}
                     style={indicatorStyle}
                     title={mapIndicator.names.join(', ')}
                     aria-label={mapIndicator.names.join(', ')}
                   >
-                    {mapIndicator.isMultiple && (
-                      <MapIcon size={14} aria-hidden="true" />
+                    {isSplit &&
+                      mapIndicator.segments?.map((segment) => (
+                        <div
+                          key={segment.slug}
+                          className="available-quest-map-segment"
+                          style={
+                            {
+                              '--map-accent': segment.accentColor,
+                              backgroundImage: `url(${segment.backgroundImage})`,
+                            } as CSSProperties
+                          }
+                        />
+                      ))}
+                    {mapIndicator.isMultiple && !isSplit && (
+                      <div className="multiple-maps-content">
+                        <MapIcon size={14} aria-hidden="true" />
+                        {mapIndicator.mapCount >= 4 && (
+                          <span className="map-count">{mapIndicator.mapCount}</span>
+                        )}
+                      </div>
                     )}
                   </div>
                 )}

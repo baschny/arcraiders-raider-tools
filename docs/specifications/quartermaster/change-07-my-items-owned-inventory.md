@@ -1,9 +1,9 @@
 # CHANGE REQUEST
 ## Quartermaster Specification Update - My Items and Owned Inventory Aggregation
 
-Document Type: Structured Delta vs Previous Specification  
-Scope: Quartermaster inventory aggregation, navigation, My Items UI, planner inputs, and status wording  
-Impact Level: UX removal plus planner behavior correction  
+Document Type: Structured Delta vs Previous Specification
+Scope: Quartermaster inventory aggregation, navigation, My Items UI, planner inputs, and status wording
+Impact Level: UX removal plus planner behavior correction
 Version: CR-My-Items-Owned-Inventory-v1
 
 ---

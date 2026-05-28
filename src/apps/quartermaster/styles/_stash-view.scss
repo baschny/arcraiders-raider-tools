@@ -54,6 +54,30 @@
     font-size: $font-sm;
   }
 
+  &__unknown-items {
+    margin-bottom: $spacing-md;
+    padding: $spacing-sm $spacing-md;
+    border: 1px solid rgba($badge-recycle, 0.3);
+    background: rgba($badge-recycle, 0.08);
+    color: $text-secondary;
+    font-size: $font-sm;
+  }
+
+  &__unknown-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-xs;
+    margin-top: $spacing-sm;
+  }
+
+  &__unknown-item {
+    padding: 2px 6px;
+    border: 1px solid $border-default;
+    background: $bg-tertiary;
+    color: $text-primary;
+    font-size: 11px;
+  }
+
   &__locations {
     margin-top: 3px;
     color: $text-secondary;

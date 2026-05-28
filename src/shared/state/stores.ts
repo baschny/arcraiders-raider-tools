@@ -14,17 +14,29 @@ import { migrateQuestIds } from '../../apps/quests/data/questIdMigration';
 // Quests
 // ---------------------------------------------------------------------------
 export interface QuestsState {
-    /** Set of completed quest IDs (serialized as an array). */
-    completedQuestIds: string[];
+    mode: 'manual' | 'linked';
+    /** Set of manually completed quest IDs (serialized as an array). */
+    manualCompletedQuestIds: string[];
 }
 export const questsStore = new UserStateStore<QuestsState>({
     domain: 'quests',
-    schemaVersion: 1,
-    defaultValue: { completedQuestIds: [] },
+    schemaVersion: 2,
+    defaultValue: {
+        mode: 'manual',
+        manualCompletedQuestIds: [],
+    },
     migrate: (raw) => {
         const r = raw as Partial<QuestsState> | null;
-        const arr = Array.isArray(r?.completedQuestIds) ? r!.completedQuestIds : [];
-        return { completedQuestIds: migrateQuestIds(arr) };
+        const legacy = raw as { completedQuestIds?: string[] } | null;
+        const arr = Array.isArray(r?.manualCompletedQuestIds)
+            ? r.manualCompletedQuestIds
+            : Array.isArray(legacy?.completedQuestIds)
+                ? legacy.completedQuestIds
+                : [];
+        return {
+            mode: r?.mode === 'linked' ? 'linked' : 'manual',
+            manualCompletedQuestIds: migrateQuestIds(arr),
+        };
     },
 });
 

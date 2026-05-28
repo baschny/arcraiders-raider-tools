@@ -20,7 +20,8 @@ vi.mock('../../auth/cognitoClient', () => ({
 }));
 
 interface QuestsTestState {
-    completedQuestIds: string[];
+    mode: 'manual' | 'linked';
+    manualCompletedQuestIds: string[];
 }
 
 // ---------------------------------------------------------------------------
@@ -93,8 +94,8 @@ function json(value: unknown, status = 200): Response {
 function makeStore(): UserStateStore<QuestsTestState> {
     return new UserStateStore<QuestsTestState>({
         domain: 'quests',
-        schemaVersion: 1,
-        defaultValue: { completedQuestIds: [] },
+        schemaVersion: 2,
+        defaultValue: { mode: 'manual', manualCompletedQuestIds: [] },
         debounceMs: 5,
     });
 }
@@ -120,12 +121,12 @@ describe('optimistic concurrency', () => {
         await store.setBackend('remote');
         expect(store.revision).toBeNull();
 
-        store.set({ completedQuestIds: ['q1'] });
+        store.set({ mode: 'manual', manualCompletedQuestIds: ['q1'] });
         await store.flush();
 
         expect(server.quests).toEqual({
-            schemaVersion: 1,
-            data: { completedQuestIds: ['q1'] },
+            schemaVersion: 2,
+            data: { mode: 'manual', manualCompletedQuestIds: ['q1'] },
             revision: 1,
         });
         expect(store.revision).toBe(1);
@@ -133,8 +134,8 @@ describe('optimistic concurrency', () => {
         // First PUT body must NOT include a revision (new-row semantics).
         const firstPut = server.calls.find(c => c.method === 'PUT')!;
         expect(firstPut.body).toEqual({
-            schemaVersion: 1,
-            data: { completedQuestIds: ['q1'] },
+            schemaVersion: 2,
+            data: { mode: 'manual', manualCompletedQuestIds: ['q1'] },
         });
     });
 
@@ -142,15 +143,15 @@ describe('optimistic concurrency', () => {
         const store = makeStore();
         await store.setBackend('remote');
 
-        store.set({ completedQuestIds: ['a'] });
+        store.set({ mode: 'manual', manualCompletedQuestIds: ['a'] });
         await store.flush();
         expect(store.revision).toBe(1);
 
-        store.set({ completedQuestIds: ['a', 'b'] });
+        store.set({ mode: 'manual', manualCompletedQuestIds: ['a', 'b'] });
         await store.flush();
         expect(store.revision).toBe(2);
 
-        store.set({ completedQuestIds: ['a', 'b', 'c'] });
+        store.set({ mode: 'manual', manualCompletedQuestIds: ['a', 'b', 'c'] });
         await store.flush();
         expect(store.revision).toBe(3);
 
@@ -163,8 +164,8 @@ describe('optimistic concurrency', () => {
     it('adopts the server state when a PUT is rejected with 409', async () => {
         // Seed the server with a row at revision 4.
         server.quests = {
-            schemaVersion: 1,
-            data: { completedQuestIds: ['server-q'] },
+            schemaVersion: 2,
+            data: { mode: 'manual', manualCompletedQuestIds: ['server-q'] },
             revision: 4,
         };
 
@@ -185,25 +186,25 @@ describe('optimistic concurrency', () => {
         // Another device writes and bumps the server to revision 5
         // WITHOUT our store knowing.
         server.quests = {
-            schemaVersion: 1,
-            data: { completedQuestIds: ['other-device-wins'] },
+            schemaVersion: 2,
+            data: { mode: 'manual', manualCompletedQuestIds: ['other-device-wins'] },
             revision: 5,
         };
 
         const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
 
         // Our store makes a local edit and flushes with the stale rev 4.
-        store.set({ completedQuestIds: ['our-attempt'] });
+        store.set({ mode: 'manual', manualCompletedQuestIds: ['our-attempt'] });
         await store.flush();
 
         // Server is unchanged (the write was rejected).
-        expect(server.quests.data).toEqual({ completedQuestIds: ['other-device-wins'] });
+        expect(server.quests.data).toEqual({ mode: 'manual', manualCompletedQuestIds: ['other-device-wins'] });
         expect(server.quests.revision).toBe(5);
         // Store adopted the winner's state + revision.
-        expect(store.get()).toEqual({ completedQuestIds: ['other-device-wins'] });
+        expect(store.get()).toEqual({ mode: 'manual', manualCompletedQuestIds: ['other-device-wins'] });
         expect(store.revision).toBe(5);
         // Conflict was surfaced.
-        expect(store.conflict?.data).toEqual({ completedQuestIds: ['other-device-wins'] });
+        expect(store.conflict?.data).toEqual({ mode: 'manual', manualCompletedQuestIds: ['other-device-wins'] });
         expect(warn).toHaveBeenCalled();
 
         warn.mockRestore();
@@ -212,8 +213,8 @@ describe('optimistic concurrency', () => {
     it('two stores racing the same server row: one wins, the other adopts', async () => {
         // Both stores hydrate from an initial server state.
         server.quests = {
-            schemaVersion: 1,
-            data: { completedQuestIds: ['shared'] },
+            schemaVersion: 2,
+            data: { mode: 'manual', manualCompletedQuestIds: ['shared'] },
             revision: 1,
         };
 
@@ -229,19 +230,19 @@ describe('optimistic concurrency', () => {
         const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
 
         // Both tabs make concurrent edits.
-        storeA.set({ completedQuestIds: ['shared', 'from-A'] });
-        storeB.set({ completedQuestIds: ['shared', 'from-B'] });
+        storeA.set({ mode: 'manual', manualCompletedQuestIds: ['shared', 'from-A'] });
+        storeB.set({ mode: 'manual', manualCompletedQuestIds: ['shared', 'from-B'] });
 
         // Tab A flushes first — it wins.
         await storeA.flush();
-        expect(server.quests.data).toEqual({ completedQuestIds: ['shared', 'from-A'] });
+        expect(server.quests.data).toEqual({ mode: 'manual', manualCompletedQuestIds: ['shared', 'from-A'] });
         expect(server.quests.revision).toBe(2);
         expect(storeA.revision).toBe(2);
 
         // Tab B flushes next with its stale rev 1 — gets 409, adopts A's state.
         await storeB.flush();
-        expect(server.quests.data).toEqual({ completedQuestIds: ['shared', 'from-A'] });
-        expect(storeB.get()).toEqual({ completedQuestIds: ['shared', 'from-A'] });
+        expect(server.quests.data).toEqual({ mode: 'manual', manualCompletedQuestIds: ['shared', 'from-A'] });
+        expect(storeB.get()).toEqual({ mode: 'manual', manualCompletedQuestIds: ['shared', 'from-A'] });
         expect(storeB.revision).toBe(2);
         expect(storeB.conflict).not.toBeNull();
 
@@ -250,8 +251,8 @@ describe('optimistic concurrency', () => {
 
     it('after a conflict the store can write again cleanly with the new revision', async () => {
         server.quests = {
-            schemaVersion: 1,
-            data: { completedQuestIds: ['initial'] },
+            schemaVersion: 2,
+            data: { mode: 'manual', manualCompletedQuestIds: ['initial'] },
             revision: 1,
         };
         const store = makeStore();
@@ -260,24 +261,25 @@ describe('optimistic concurrency', () => {
 
         // Another device bumps.
         server.quests = {
-            schemaVersion: 1,
-            data: { completedQuestIds: ['winner'] },
+            schemaVersion: 2,
+            data: { mode: 'manual', manualCompletedQuestIds: ['winner'] },
             revision: 2,
         };
 
         const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
 
         // Trigger a conflict.
-        store.set({ completedQuestIds: ['doomed'] });
+        store.set({ mode: 'manual', manualCompletedQuestIds: ['doomed'] });
         await store.flush();
         expect(store.revision).toBe(2);
-        expect(store.get()).toEqual({ completedQuestIds: ['winner'] });
+        expect(store.get()).toEqual({ mode: 'manual', manualCompletedQuestIds: ['winner'] });
 
         // New edit now writes successfully on top of the server state.
-        store.set({ completedQuestIds: ['winner', 'added-after-conflict'] });
+        store.set({ mode: 'manual', manualCompletedQuestIds: ['winner', 'added-after-conflict'] });
         await store.flush();
         expect(server.quests?.data).toEqual({
-            completedQuestIds: ['winner', 'added-after-conflict'],
+            mode: 'manual',
+            manualCompletedQuestIds: ['winner', 'added-after-conflict'],
         });
         expect(server.quests?.revision).toBe(3);
         expect(store.revision).toBe(3);

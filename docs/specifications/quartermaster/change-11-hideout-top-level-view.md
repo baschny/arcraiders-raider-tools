@@ -1,9 +1,9 @@
 # CHANGE REQUEST
 ## Quartermaster Specification Update - Promote Hideout Upgrades to Top-Level View
 
-Document Type: Structured Delta vs Previous Specification  
-Scope: Quartermaster navigation, Lists view, Hideout upgrade planning UI, planner aggregation priority, tests  
-Impact Level: UI workflow change plus planner priority adjustment  
+Document Type: Structured Delta vs Previous Specification
+Scope: Quartermaster navigation, Lists view, Hideout upgrade planning UI, planner aggregation priority, tests
+Impact Level: UI workflow change plus planner priority adjustment
 Version: CR-Hideout-View-v1
 
 ---
@@ -482,4 +482,3 @@ Add or update tests for the following scenarios:
 - Do not move user-authored lists out of the Lists view.
 - Do not use fallback bench levels to create hideout upgrade lists.
 - Do not introduce server-side planning or persistence changes.
-

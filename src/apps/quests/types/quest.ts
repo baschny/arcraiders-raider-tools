@@ -1,4 +1,5 @@
 import type { Node } from 'reactflow';
+import type { LinkedQuestObjectiveProgress } from '../../../shared/types/linkedQuests';
 
 export type QuestItemRarity =
   | 'Common'
@@ -47,13 +48,21 @@ export interface QuestNodeData {
   quest: Quest;
   isCompleted: boolean;
   isAvailable: boolean;
+  status: 'completed' | 'active' | 'available' | 'locked' | 'unknown';
+  isInteractive: boolean;
   isHighlighted: boolean;
+  objectiveSummary: {
+    completed: number;
+    total: number;
+  } | null;
+  objectiveProgress?: LinkedQuestObjectiveProgress[];
   onToggle: (questId: string) => void;
 }
 
 export interface MapNodeData {
   quest: Quest;
   isCompleted: boolean;
+  isInteractive: boolean;
   onToggle: (questId: string) => void;
 }
 

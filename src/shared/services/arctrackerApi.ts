@@ -29,8 +29,10 @@ import {
   getCachedBlueprints,
   updateCacheMeta,
   setCacheOwner,
+  setCacheSource,
 } from './cacheService';
 import { getCurrentSession, getIdToken } from '../auth/cognitoClient';
+import { notifyArctrackerLinkInvalid } from '../auth/arctrackerLinkEvents';
 import { DEFAULT_LOCALE, LOCALE_STORAGE_KEY, type AppLocale } from '../i18n/config';
 
 const API_ORIGIN = (import.meta.env.VITE_API_BASE_URL as string | undefined) ??
@@ -110,6 +112,9 @@ async function apiRequest<T>(
 
     if (!response.ok) {
       const isRetryable = response.status >= 500 || response.status === 429;
+      if (response.status === 401 || response.status === 403) {
+        notifyArctrackerLinkInvalid();
+      }
 
       if (isRetryable && retryCount < MAX_RETRIES) {
         // Wait before retry (exponential backoff)
@@ -156,6 +161,7 @@ async function getRequestAuth(token?: string): Promise<{ baseUrl: string; token:
   if (idToken) {
     const session = await getCurrentSession();
     await setCacheOwner(session?.sub ?? null);
+    await setCacheSource('arctracker');
     return { baseUrl: USER_RELAY_BASE, token: idToken };
   }
 

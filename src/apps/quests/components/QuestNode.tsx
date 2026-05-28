@@ -18,7 +18,17 @@ const TOOLTIP_MARGIN = 12;
 
 export function QuestNode({ data }: { data: QuestNodeData }) {
   const { locale, t } = useLocale();
-  const { quest, isCompleted, isAvailable, isHighlighted, onToggle } = data;
+  const {
+    quest,
+    isCompleted,
+    isAvailable,
+    status,
+    isInteractive,
+    isHighlighted,
+    objectiveSummary,
+    objectiveProgress,
+    onToggle,
+  } = data;
   const { ref: hoverRef, isHovered, handlers } = useHoverIntent<HTMLDivElement>({
     delayShow: 400,
     delayHide: 120,
@@ -60,12 +70,15 @@ export function QuestNode({ data }: { data: QuestNodeData }) {
 
   useEffect(() => {
     if (!isHovered) return;
-    updateTooltipPosition();
+    const frameId = window.requestAnimationFrame(() => {
+      updateTooltipPosition();
+    });
 
     const onViewportChange = () => updateTooltipPosition();
     window.addEventListener('resize', onViewportChange);
     window.addEventListener('scroll', onViewportChange, true);
     return () => {
+      window.cancelAnimationFrame(frameId);
       window.removeEventListener('resize', onViewportChange);
       window.removeEventListener('scroll', onViewportChange, true);
     };
@@ -80,17 +93,34 @@ export function QuestNode({ data }: { data: QuestNodeData }) {
       : t('quests.rewardsBlueprint');
 
   const traderClass = getTraderClass(quest.trader);
-  const nodeClass = `quest-node ${hasBlueprintReward ? 'has-blueprint' : ''} ${isCompleted ? 'completed' : ''} ${isAvailable ? 'available' : ''} ${isHighlighted ? 'highlighted' : ''}`;
+  const nodeClass = [
+    'quest-node',
+    hasBlueprintReward ? 'has-blueprint' : '',
+    isCompleted ? 'completed' : '',
+    isAvailable ? 'available' : '',
+    status === 'active' ? 'active' : '',
+    status === 'unknown' ? 'unknown' : '',
+    isInteractive ? '' : 'read-only',
+    isHighlighted ? 'highlighted' : '',
+  ]
+    .filter(Boolean)
+    .join(' ');
   const traderImage = TRADER_IMAGES[quest.trader];
   const traderLabel = getLocalizedTraderName(quest.trader, locale);
 
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation();
+    if (!isInteractive) return;
     onToggle(quest.id);
   };
 
   return (
-    <div className={nodeClass} onClick={handleClick} ref={hoverRef}>
+    <div
+      className={nodeClass}
+      onClick={isInteractive ? handleClick : undefined}
+      ref={hoverRef}
+      aria-disabled={!isInteractive}
+    >
       <Handle type="target" position={Position.Top} id="target-top" />
       {hasBlueprintReward && (
         <div className="blueprint-badge" title={blueprintRewardTooltip}>
@@ -130,16 +160,33 @@ export function QuestNode({ data }: { data: QuestNodeData }) {
       <div className="quest-node-footer">
         <div className="quest-status">
           <span className="status-icon">
-            {isCompleted ? '✓' : isAvailable ? '⭐' : '🔒'}
+            {status === 'completed'
+              ? '✓'
+              : status === 'active' || status === 'available'
+                ? '⭐'
+                : status === 'unknown'
+                  ? '❔'
+                  : '🔒'}
           </span>
           <span>
-            {isCompleted
+            {status === 'completed'
               ? t('quests.statusCompleted')
-              : isAvailable
-                ? t('quests.statusAvailable')
-                : t('quests.statusLocked')}
+              : status === 'active'
+                ? t('quests.statusActive')
+                : status === 'available'
+                  ? t('quests.statusAvailable')
+                  : status === 'unknown'
+                    ? t('quests.statusUnknown')
+                    : t('quests.statusLocked')}
           </span>
         </div>
+        {objectiveSummary && status === 'active' && (
+          <div className="quest-status-summary">
+            {t('quests.objectiveSummary')
+              .replace('{completed}', String(objectiveSummary.completed))
+              .replace('{total}', String(objectiveSummary.total))}
+          </div>
+        )}
         <div className="quest-actions">
           <a
             href={'https://arcraiders.wiki/wiki/' + formatWikiLink(getQuestWikiName(quest))}
@@ -170,6 +217,7 @@ export function QuestNode({ data }: { data: QuestNodeData }) {
         quest={quest}
         position={tooltipPosition}
         visible={isHovered}
+        objectiveProgress={objectiveProgress}
         onMouseEnter={handlers.onMouseEnter}
         onMouseLeave={handlers.onMouseLeave}
         onContextMenu={handlers.onContextMenu}

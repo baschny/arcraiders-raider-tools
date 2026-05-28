@@ -15,6 +15,10 @@
     cursor: pointer;
   }
 
+  &.read-only:hover {
+    cursor: default;
+  }
+
   &.available {
     border-color: $status-available;
     border-width: $border-width-thick;
@@ -46,6 +50,15 @@
 
   &.highlighted {
     animation: highlightPulse $transition-highlight;
+  }
+
+  &.active {
+    border-color: rgba($status-available, 0.9);
+    box-shadow: 0 0 0 1px rgba($status-available, 0.45), $shadow-available;
+  }
+
+  &.unknown {
+    border-color: rgba(255, 193, 7, 0.55);
   }
 }
 
@@ -140,6 +153,7 @@
 
 .quest-node-footer {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   margin-top: 10px;
@@ -161,6 +175,12 @@
 .quest-actions {
   display: flex;
   gap: $gap-xs;
+  margin-left: auto;
+}
+
+.quest-status-summary {
+  font-size: $font-sm;
+  color: $text-accent;
 }
 
 .quest-action-btn {

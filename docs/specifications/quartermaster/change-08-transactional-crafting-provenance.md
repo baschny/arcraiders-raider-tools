@@ -1,9 +1,9 @@
 # CHANGE REQUEST
 ## Quartermaster Specification Update - Transactional Crafting and Recycle Provenance
 
-Document Type: Structured Delta vs Previous Specification  
-Scope: Quartermaster planner, recycle plan output, Crafting view reason display, and tests  
-Impact Level: Planner behavior correction plus UX clarification  
+Document Type: Structured Delta vs Previous Specification
+Scope: Quartermaster planner, recycle plan output, Crafting view reason display, and tests
+Impact Level: Planner behavior correction plus UX clarification
 Version: CR-Transactional-Crafting-Provenance-v1
 
 ---

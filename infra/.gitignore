@@ -5,12 +5,14 @@
 /node_modules/
 /.cache/
 # Generated TypeScript output (source files are .ts)
-/bin/*.js
-/bin/*.js.map
-/lib/*.js
-/lib/*.js.map
-/lambda/*.js
-/lambda/*.js.map
+/bin/**/*.js
+/bin/**/*.js.map
+/lib/**/*.js
+/lib/**/*.js.map
+/lambda/**/*.js
+/lambda/**/*.js.map
+/local/**/*.js
+/local/**/*.js.map
 
 # Files
 *~

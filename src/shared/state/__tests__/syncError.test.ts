@@ -36,14 +36,15 @@ vi.mock('../../auth/cognitoClient', () => ({
 }));
 
 interface QuestsTestState {
-    completedQuestIds: string[];
+    mode: 'manual' | 'linked';
+    manualCompletedQuestIds: string[];
 }
 
 function makeStore(): UserStateStore<QuestsTestState> {
     return new UserStateStore<QuestsTestState>({
         domain: 'quests',
-        schemaVersion: 1,
-        defaultValue: { completedQuestIds: [] },
+        schemaVersion: 2,
+        defaultValue: { mode: 'manual', manualCompletedQuestIds: [] },
         debounceMs: 5,
     });
 }
@@ -79,7 +80,7 @@ describe('UserStateStore error classification', () => {
             throw new TypeError('Failed to fetch');
         }));
 
-        store.set({ completedQuestIds: ['q1'] });
+        store.set({ mode: 'manual', manualCompletedQuestIds: ['q1'] });
         const errSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
         await store.flush();
         errSpy.mockRestore();
@@ -95,7 +96,7 @@ describe('UserStateStore error classification', () => {
         await store.setBackend('remote');
         vi.stubGlobal('fetch', vi.fn(async () => new Response('boom', { status: 503 })));
 
-        store.set({ completedQuestIds: ['q1'] });
+        store.set({ mode: 'manual', manualCompletedQuestIds: ['q1'] });
         const errSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
         await store.flush();
         errSpy.mockRestore();
@@ -109,7 +110,7 @@ describe('UserStateStore error classification', () => {
         await store.setBackend('remote');
         vi.stubGlobal('fetch', vi.fn(async () => new Response('nope', { status: 401 })));
 
-        store.set({ completedQuestIds: ['q1'] });
+        store.set({ mode: 'manual', manualCompletedQuestIds: ['q1'] });
         const errSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
         await store.flush();
         errSpy.mockRestore();
@@ -130,13 +131,13 @@ describe('UserStateStore error classification', () => {
             return json({ ok: true, revision: 1 });
         }));
 
-        store.set({ completedQuestIds: ['q1'] });
+        store.set({ mode: 'manual', manualCompletedQuestIds: ['q1'] });
         const errSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
         await store.flush();
         expect(store.error!.kind).toBe('server');
 
         // Second write against a healthy server clears the error.
-        store.set({ completedQuestIds: ['q1', 'q2'] });
+        store.set({ mode: 'manual', manualCompletedQuestIds: ['q1', 'q2'] });
         await store.flush();
         errSpy.mockRestore();
 
@@ -214,7 +215,7 @@ describe('syncStatus aggregator', () => {
         await questsStore.setBackend('remote');
         vi.stubGlobal('fetch', vi.fn(async () => new Response('err', { status: 500 })));
 
-        questsStore.set({ completedQuestIds: ['q1'] });
+        questsStore.set({ mode: 'manual', manualCompletedQuestIds: ['q1'] });
         const errSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
         await questsStore.flush();
         errSpy.mockRestore();

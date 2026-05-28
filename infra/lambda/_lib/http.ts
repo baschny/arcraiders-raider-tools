@@ -72,6 +72,51 @@ export function jwtEmail(event: APIGatewayProxyEventV2WithJWTAuthorizer): string
     return typeof email === "string" ? email : null;
 }
 
+export function jwtGroups(event: APIGatewayProxyEventV2WithJWTAuthorizer): string[] {
+    const claims = event.requestContext.authorizer?.jwt?.claims as
+        | Record<string, string | number | boolean | string[]>
+        | undefined;
+    const groups = claims?.["cognito:groups"];
+    if (Array.isArray(groups)) return groups.filter((group): group is string => typeof group === "string");
+    if (typeof groups === "string") {
+        const trimmed = groups.trim();
+        if (trimmed.startsWith("[")) {
+            try {
+                const parsed = JSON.parse(trimmed) as unknown;
+                if (Array.isArray(parsed)) {
+                    return parsed.filter((group): group is string => typeof group === "string");
+                }
+            } catch {
+                // Some integrations surface groups as bracketed plain text
+                // like `[embark-auth]` instead of JSON.
+                const unwrapped = trimmed.slice(1, trimmed.endsWith("]") ? -1 : undefined);
+                return unwrapped
+                    .split(",")
+                    .map(group => group.trim().replace(/^['"]|['"]$/g, ""))
+                    .filter(Boolean);
+            }
+        }
+        return trimmed
+            .split(",")
+            .map(group => group.trim())
+            .filter(Boolean);
+    }
+    return [];
+}
+
+export function hasJwtGroup(
+    event: APIGatewayProxyEventV2WithJWTAuthorizer,
+    group: string,
+): boolean {
+    if (
+        process.env.RAIDER_TOOLS_LOCAL_DEV === "true"
+        && process.env.LOCAL_COGNITO_GROUPS === undefined
+    ) {
+        return true;
+    }
+    return jwtGroups(event).includes(group);
+}
+
 /**
  * Safely parse a JSON body string, returning null on any failure.
  */

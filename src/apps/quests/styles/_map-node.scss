@@ -15,6 +15,11 @@
     box-shadow: $shadow-hover;
   }
 
+  &.read-only:hover {
+    cursor: default;
+    box-shadow: $shadow-map-node;
+  }
+
   &.completed {
     opacity: 0.7;
     background: linear-gradient(135deg, $map-node-completed-start, $map-node-completed-end);

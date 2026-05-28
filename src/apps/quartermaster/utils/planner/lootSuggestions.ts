@@ -1,6 +1,6 @@
 /**
  * Loot Suggestions
- * See CR-MOD-6.5
+ * See Final Spec Section 4.5 & 5.1
  */
 
 import type { ItemsMap } from '../../types/item';
@@ -62,7 +62,7 @@ function isCraftingRelevant(
 }
 
 /**
- * Determine loot badge (CR-MOD-6.5)
+ * Determine loot badge (Final Spec Section 4.5)
  * Salvage yields missing → CAN_SALVAGE, otherwise BRING_HOME
  */
 function determineBadge(
@@ -118,7 +118,7 @@ function calculateImpactedTargets(
 
 /**
  * Generate loot suggestions based on deficits
- * Only crafting-relevant items, excluding loadout categories (CR-MOD-6.5)
+ * Only crafting-relevant items, excluding loadout categories (Final Spec Section 5.1)
  */
 export function generateLootSuggestions(
   itemsMap: ItemsMap,

@@ -20,7 +20,7 @@ import {
   useCallback,
   type ReactNode,
 } from 'react';
-import { cacheClear } from '../services/cacheService';
+import { cacheClear, setCacheSource } from '../services/cacheService';
 import { serverTokenLink } from '../auth/tokenLink';
 import { useCognitoAuth } from './CognitoAuthContext';
 
@@ -101,6 +101,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       console.warn('Failed to unlink ArcTracker token', err);
     }
     await cacheClear();
+    await setCacheSource(null);
     setIsAuthenticated(false);
     setUsername(null);
     setError(null);

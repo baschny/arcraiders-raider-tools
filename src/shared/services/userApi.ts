@@ -16,11 +16,16 @@ export interface MeResponse {
     displayName: string | null;
     locale: string | null;
     signupProvider: string;
+    dataMigrationCompleted?: boolean;
+    gameDataSource: 'arctracker' | 'embark';
+    features?: {
+        embarkEnabled?: boolean;
+    };
     links: {
         arctracker:
             | { linked: true; validatedUsername: string | null; validatedAt: string | null }
             | { linked: false };
-        embark: { linked: boolean };
+        embark: EmbarkLinkStatus;
     };
 }
 
@@ -28,6 +33,49 @@ export interface ArctrackerLinkStatus {
     linked: boolean;
     validatedUsername?: string | null;
     validatedAt?: string | null;
+}
+
+export interface EmbarkProfileSummary {
+    accountId?: string;
+    countryCode?: string;
+    createdAt?: number;
+    dateOfBirth?: string;
+    displayName?: {
+        discriminator?: string;
+        name?: string;
+    };
+    displayNameCooldownEndsAt?: number;
+    email?: string;
+    emailIsVerified?: boolean;
+    emailVerifiedAt?: number;
+    isSpender?: boolean;
+    tenancyUserId?: string;
+    thirdPartyLastSeenAccountName?: string;
+    thirdPartyUserId?: string;
+}
+
+export type EmbarkLinkStatus =
+    | { linked: false }
+    | {
+        linked: true;
+        provider: string | null;
+        supportId?: string | null;
+        expiresAt: string | null;
+        linkedAt: string | null;
+        profileFetchedAt: string | null;
+        expired: boolean;
+        countdownMinutes?: number | null;
+        profile: EmbarkProfileSummary | null;
+    };
+
+export class ApiError extends Error {
+    readonly supportId: string | null;
+
+    constructor(message: string, supportId: string | null = null) {
+        super(message);
+        this.name = 'ApiError';
+        this.supportId = supportId;
+    }
 }
 
 async function authedFetch(path: string, init: RequestInit = {}): Promise<Response> {
@@ -44,11 +92,13 @@ async function authedFetch(path: string, init: RequestInit = {}): Promise<Respon
 async function readJson<T>(resp: Response): Promise<T> {
     if (!resp.ok) {
         let message = `${resp.status} ${resp.statusText}`;
+        let supportId: string | null = null;
         try {
-            const body = await resp.json() as { error?: string };
+            const body = await resp.json() as { error?: string; supportId?: string };
             if (body?.error) message = body.error;
+            if (body?.supportId) supportId = body.supportId;
         } catch { /* ignore */ }
-        throw new Error(message);
+        throw new ApiError(message, supportId);
     }
     return resp.json() as Promise<T>;
 }
@@ -57,7 +107,7 @@ export async function getMe(): Promise<MeResponse> {
     return readJson<MeResponse>(await authedFetch('/me'));
 }
 
-export async function patchMe(patch: { displayName?: string; locale?: string }): Promise<void> {
+export async function patchMe(patch: { displayName?: string; locale?: string; gameDataSource?: 'arctracker' | 'embark' }): Promise<void> {
     await readJson(await authedFetch('/me', {
         method: 'PATCH',
         body: JSON.stringify(patch),
@@ -77,4 +127,32 @@ export async function putArctrackerLink(token: string): Promise<ArctrackerLinkSt
 
 export async function deleteArctrackerLink(): Promise<void> {
     await readJson(await authedFetch('/me/links/arctracker', { method: 'DELETE' }));
+}
+
+export async function getEmbarkLink(): Promise<EmbarkLinkStatus> {
+    return readJson<EmbarkLinkStatus>(await authedFetch('/me/links/embark'));
+}
+
+export async function deleteEmbarkLink(): Promise<void> {
+    await readJson(await authedFetch('/me/links/embark', { method: 'DELETE' }));
+}
+
+export async function startEmbarkLink(
+    provider: string,
+    returnUrl: string,
+): Promise<{ authUrl: string; state: string; provider: string; supportId: string }> {
+    return readJson(await authedFetch('/me/links/embark/start', {
+        method: 'POST',
+        body: JSON.stringify({ provider, returnUrl }),
+    }));
+}
+
+export async function completeEmbarkLink(
+    code: string,
+    state: string,
+): Promise<{ supportId?: string }> {
+    return readJson(await authedFetch('/me/links/embark/complete', {
+        method: 'POST',
+        body: JSON.stringify({ code, state }),
+    }));
 }

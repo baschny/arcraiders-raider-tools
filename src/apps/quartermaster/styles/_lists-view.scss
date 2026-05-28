@@ -134,6 +134,37 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: $spacing-lg;
+    gap: $spacing-md;
+  }
+
+  &__title-display {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__editor-title {
+    margin: 0;
+    font-size: $font-lg;
+    font-weight: 700;
+    color: $text-primary;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__title-edit {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+    flex: 1;
+
+    input {
+      font-size: $font-lg;
+      font-weight: 600;
+    }
   }
 
   &__add-item {
@@ -235,8 +266,24 @@
   }
 
   &__qty-input {
-    width: 74px;
+    width: 60px;
     text-align: center;
-    padding-right: 22px;
+    padding: 0 $spacing-xs;
+
+    /* Hide arrows for Chrome, Safari, Edge, Opera */
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    /* Hide arrows for Firefox */
+    &[type=number] {
+      -moz-appearance: textfield;
+    }
+  }
+
+  &__delete-item {
+    margin-left: $spacing-sm;
   }
 }

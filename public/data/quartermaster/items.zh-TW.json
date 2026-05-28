@@ -1435,7 +1435,7 @@
         "value": "藍門沒收室鑰匙",
         "originalEn": "Blue Gate Confiscation Room Key"
       },
-      "description": "解鎖藍門隧道內沒收物品區域的門",
+      "description": "可打開藍門隧道內沒收物品區域的門",
       "icon": "https://cdn.arctracker.io/items/v2/blue_gate_confiscation_room_key.png",
       "rarity": "Epic",
       "type": "Key",
@@ -2142,7 +2142,8 @@
       "icon": "https://cdn.arctracker.io/items/v2/canto_i.png",
       "rarity": "Rare",
       "type": "SMG",
-      "category": "SMG",
+      "category": "Weapon",
+      "subCategory": "SMG",
       "craftBench": "weapon_bench",
       "stationLevelRequired": 3,
       "blueprintLocked": true,
@@ -2172,7 +2173,8 @@
       "icon": "https://cdn.arctracker.io/items/v2/canto_ii.png",
       "rarity": "Rare",
       "type": "SMG",
-      "category": "SMG",
+      "category": "Weapon",
+      "subCategory": "SMG",
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
@@ -2200,7 +2202,8 @@
       "icon": "https://cdn.arctracker.io/items/v2/canto_iii.png",
       "rarity": "Rare",
       "type": "SMG",
-      "category": "SMG",
+      "category": "Weapon",
+      "subCategory": "SMG",
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
@@ -2228,7 +2231,8 @@
       "icon": "https://cdn.arctracker.io/items/v2/canto_iv.png",
       "rarity": "Rare",
       "type": "SMG",
-      "category": "SMG",
+      "category": "Weapon",
+      "subCategory": "SMG",
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
@@ -2807,7 +2811,7 @@
       },
       "description": "解鎖水壩戰場通往管制區的門。",
       "icon": "https://cdn.arctracker.io/items/v2/dam_controlled_access_zone_key.png",
-      "rarity": "Epic",
+      "rarity": "Rare",
       "type": "Key",
       "category": "Key",
       "stationLevelRequired": 1,
@@ -2839,7 +2843,7 @@
         "value": "水壩監控鑰匙",
         "originalEn": "Dam Surveillance Key"
       },
-      "description": "解鎖水壩戰場上水處理控制建築內的一扇門。",
+      "description": "可打開水壩戰場監控室內的一扇門。",
       "icon": "https://cdn.arctracker.io/items/v2/dam_surveillance_key.png",
       "rarity": "Uncommon",
       "type": "Key",
@@ -3807,10 +3811,65 @@
       "value": 1500,
       "weight": 0.5
     },
-    "extended_barrel": {
+    "extended_barrel_i": {
       "name": {
-        "value": "加長槍管",
-        "originalEn": "Extended Barrel"
+        "value": "加長槍管 I",
+        "originalEn": "Extended Barrel I"
+      },
+      "description": "",
+      "icon": "",
+      "rarity": "Common",
+      "type": "Modification",
+      "category": "Modification",
+      "craftBench": "weapon_bench",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "recipe": {
+        "metal_parts": 6,
+        "wires": 3
+      },
+      "recyclesInto": {
+        "metal_parts": 5
+      },
+      "salvagesInto": {
+        "metal_parts": 3
+      },
+      "stackSize": 1,
+      "value": 1000
+    },
+    "extended_barrel_ii": {
+      "name": {
+        "value": "加長槍管 II",
+        "originalEn": "Extended Barrel II"
+      },
+      "description": "",
+      "icon": "",
+      "rarity": "Common",
+      "type": "Modification",
+      "category": "Modification",
+      "craftBench": "weapon_bench",
+      "stationLevelRequired": 2,
+      "blueprintLocked": true,
+      "craftQuantity": 1,
+      "recipe": {
+        "mechanical_components": 3,
+        "wires": 6
+      },
+      "recyclesInto": {
+        "mechanical_components": 1,
+        "wires": 1
+      },
+      "salvagesInto": {
+        "mechanical_components": 1
+      },
+      "stackSize": 1,
+      "value": 3000
+    },
+    "extended_barrel_iii": {
+      "name": {
+        "value": "加長槍管 III",
+        "originalEn": "Extended Barrel III"
       },
       "description": "適度提升子彈速度。相容武器：Tempest、Arpeggio、Ferro、Renegade、Anvil",
       "icon": "https://cdn.arctracker.io/items/v2/extended_barrel.png",
@@ -4650,7 +4709,7 @@
         "rubber_parts": 6
       },
       "stackSize": 1,
-      "value": 100,
+      "value": 660,
       "weight": 1
     },
     "frequency_modulation_box": {
@@ -8209,6 +8268,127 @@
       "value": 100,
       "weight": 0.25
     },
+    "rascal_i": {
+      "name": {
+        "value": "Rascal I",
+        "originalEn": "Rascal I"
+      },
+      "description": "Fires explosive projectiles that only detonate when hitting ARC.",
+      "icon": "https://cdn.arctracker.io/items/v2/rascal.png",
+      "rarity": "Rare",
+      "type": "Special",
+      "category": "Weapon",
+      "subCategory": "Special",
+      "craftBench": "weapon_bench",
+      "stationLevelRequired": 2,
+      "blueprintLocked": true,
+      "craftQuantity": 1,
+      "recipe": {
+        "advanced_mechanical_components": 2,
+        "canister": 5,
+        "heavy_gun_parts": 3
+      },
+      "recyclesInto": {
+        "advanced_mechanical_components": 1,
+        "heavy_gun_parts": 2
+      },
+      "salvagesInto": {
+        "heavy_gun_parts": 2
+      },
+      "stackSize": 1,
+      "value": 7000,
+      "weight": 4
+    },
+    "rascal_ii": {
+      "name": {
+        "value": "Rascal II",
+        "originalEn": "Rascal II"
+      },
+      "description": "Fires explosive projectiles that only detonate when hitting ARC.",
+      "icon": "https://cdn.arctracker.io/items/v2/rascal.png",
+      "rarity": "Rare",
+      "type": "Special",
+      "category": "Weapon",
+      "subCategory": "Special",
+      "craftBench": "weapon_bench",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "upgradeCost": {
+        "advanced_mechanical_components": 1,
+        "heavy_gun_parts": 2
+      },
+      "recyclesInto": {
+        "advanced_mechanical_components": 2,
+        "heavy_gun_parts": 2
+      },
+      "salvagesInto": {
+        "heavy_gun_parts": 2
+      },
+      "stackSize": 1,
+      "value": 10000,
+      "weight": 4
+    },
+    "rascal_iii": {
+      "name": {
+        "value": "Rascal III",
+        "originalEn": "Rascal III"
+      },
+      "description": "Fires explosive projectiles that only detonate when hitting ARC.",
+      "icon": "https://cdn.arctracker.io/items/v2/rascal.png",
+      "rarity": "Rare",
+      "type": "Special",
+      "category": "Weapon",
+      "subCategory": "Special",
+      "craftBench": "weapon_bench",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "upgradeCost": {
+        "advanced_mechanical_components": 1,
+        "heavy_gun_parts": 2
+      },
+      "recyclesInto": {
+        "advanced_mechanical_components": 2,
+        "heavy_gun_parts": 3
+      },
+      "salvagesInto": {
+        "heavy_gun_parts": 3
+      },
+      "stackSize": 1,
+      "value": 13000,
+      "weight": 4
+    },
+    "rascal_iv": {
+      "name": {
+        "value": "Rascal IV",
+        "originalEn": "Rascal IV"
+      },
+      "description": "Fires explosive projectiles that only detonate when hitting ARC.",
+      "icon": "https://cdn.arctracker.io/items/v2/rascal.png",
+      "rarity": "Rare",
+      "type": "Special",
+      "category": "Weapon",
+      "subCategory": "Special",
+      "craftBench": "weapon_bench",
+      "stationLevelRequired": 1,
+      "blueprintLocked": false,
+      "craftQuantity": 1,
+      "upgradeCost": {
+        "advanced_mechanical_components": 2,
+        "heavy_gun_parts": 2
+      },
+      "recyclesInto": {
+        "advanced_mechanical_components": 3,
+        "heavy_gun_parts": 3
+      },
+      "salvagesInto": {
+        "heavy_gun_parts": 3
+      },
+      "stackSize": 1,
+      "value": 17000,
+      "weight": 4
+    },
     "rattler_i": {
       "name": {
         "value": "響尾蛇 I",
@@ -8669,23 +8849,6 @@
       "stackSize": 3,
       "value": 1000,
       "weight": 0.8
-    },
-    "riven_tides_classifed_records_keycard": {
-      "name": {
-        "value": "Riven Tides機密紀錄鑰匙卡",
-        "originalEn": "Riven Tides Classifed Records Keycard"
-      },
-      "description": "可開啟Riven Tides港務局大樓中機密紀錄室的一扇門。",
-      "icon": "https://cdn.arctracker.io/items/v2/riven_tides_classified_records_keycard.png",
-      "rarity": "Uncommon",
-      "type": "Key",
-      "category": "Key",
-      "stationLevelRequired": 1,
-      "blueprintLocked": false,
-      "craftQuantity": 1,
-      "stackSize": 1,
-      "value": 100,
-      "weight": 0.25
     },
     "riven_tides_classified_records_keycard": {
       "name": {

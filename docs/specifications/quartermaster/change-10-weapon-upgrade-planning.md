@@ -1,9 +1,9 @@
 # CHANGE REQUEST
 ## Quartermaster Specification Update - Weapon Upgrade Planning
 
-Document Type: Structured Delta vs Previous Specification  
-Scope: Quartermaster item import, planner, My Items, In Raid, Crafting view, tests  
-Impact Level: Planner behavior extension plus UI workflow addition  
+Document Type: Structured Delta vs Previous Specification
+Scope: Quartermaster item import, planner, My Items, In Raid, Crafting view, tests
+Impact Level: Planner behavior extension plus UI workflow addition
 Version: CR-Weapon-Upgrades-v1
 
 ---

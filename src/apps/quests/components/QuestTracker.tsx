@@ -1,4 +1,6 @@
 import { useState, useCallback, useMemo, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
+import { CircleHelp, RefreshCw } from 'lucide-react';
 import ReactFlow, {
   Controls,
   Background,
@@ -18,8 +20,29 @@ import { Sidebar } from './Sidebar';
 import { ConfirmDialog } from './ConfirmDialog';
 import { migrateQuestIds } from '../data/questIdMigration';
 import { trackQuestMark } from '../../../shared/utils/analytics';
+import { useCognitoAuth } from '../../../shared/context/CognitoAuthContext';
+import { useLinkedAccounts } from '../../../shared/context/LinkedAccountsContext';
 import { useLocale } from '../../../shared/context/LocaleContext';
 import { questsStore, useStore } from '../../../shared/state/stores';
+import {
+  getCachedLinkedQuestSnapshot,
+  getEmbarkQuestSnapshot,
+  LinkedQuestApiError,
+  syncArctrackerQuestSnapshot,
+  syncEmbarkQuestSnapshot,
+} from '../../../shared/services/linkedQuestApi';
+import { getMe } from '../../../shared/services/userApi';
+import type { LinkedQuestSnapshot } from '../../../shared/types/linkedQuests';
+import {
+  buildLinkedCompletedQuestSet,
+  getObjectiveProgressSummary,
+  getQuestDisplayStatus,
+} from '../utils/linkedProgress';
+import {
+  getAllDependents,
+  getAllPrerequisites,
+  isQuestAvailable,
+} from '../utils/questHelpers';
 
 const BLUEPRINT_OVERLAY_COLLAPSED_STORAGE_KEY =
   'raider-tools:quest-tracker-blueprints-collapsed';
@@ -32,35 +55,68 @@ const INITIAL_ZOOM = 0.5;
 // Top padding (in flow coordinates after zoom) between the top edge of
 // the pane and the top-most node on first load.
 const INITIAL_TOP_PADDING = 50;
-import {
-  isQuestAvailable,
-  getAllDependents,
-  getAllPrerequisites,
-} from '../utils/questHelpers';
 
 interface QuestTrackerProps {
   quests: Quest[];
 }
 
 export function QuestTracker({ quests }: QuestTrackerProps) {
-  const { tm, compareText } = useLocale();
-  // Completed quests live in `questsStore` (phase 2). The store is kept
-  // in sync with either localStorage (anonymous) or the server (signed
-  // in) by the shared state subsystem.
+  const cognito = useCognitoAuth();
+  const { arctracker, embark } = useLinkedAccounts();
+  const { t, tm, formatDate, compareText } = useLocale();
   const [questState, setQuestState] = useStore(questsStore);
-  const completedQuests = useMemo(() => {
-    const ids = questState.completedQuestIds ?? [];
+  const [linkedSnapshot, setLinkedSnapshot] = useState<LinkedQuestSnapshot | null>(null);
+  const [embarkEnabled, setEmbarkEnabled] = useState(false);
+  const [isSyncingLinkedSnapshot, setIsSyncingLinkedSnapshot] = useState(false);
+  const [linkedSyncError, setLinkedSyncError] = useState<string | null>(null);
+  const [nowMs, setNowMs] = useState(() => Date.now());
+  const isLinkedMode = questState.mode === 'linked';
+
+  const manualCompletedQuests = useMemo(() => {
+    const ids = questState.manualCompletedQuestIds ?? [];
     return new Set(migrateQuestIds(ids));
-  }, [questState.completedQuestIds]);
+  }, [questState.manualCompletedQuestIds]);
+
+  const linkedSource = useMemo(() => {
+    const embarkUsable = embarkEnabled && embark.status?.linked === true
+      ? embark.status.expired === false
+      : false;
+    if (embarkUsable) return 'embark' as const;
+    if (arctracker.state === 'connected') return 'arctracker' as const;
+    return null;
+  }, [arctracker.state, embark.status, embarkEnabled]);
+
+  const activeLinkedSnapshot = useMemo(() => {
+    if (!linkedSource) return null;
+    return linkedSnapshot?.source === linkedSource ? linkedSnapshot : null;
+  }, [linkedSnapshot, linkedSource]);
+
+  const completedQuests = useMemo(() => {
+    if (!isLinkedMode) return manualCompletedQuests;
+    return buildLinkedCompletedQuestSet(quests, activeLinkedSnapshot);
+  }, [activeLinkedSnapshot, isLinkedMode, manualCompletedQuests, quests]);
 
   const readCompletedQuests = useCallback((): Set<string> => {
-    const ids = questsStore.get().completedQuestIds ?? [];
+    const ids = questsStore.get().manualCompletedQuestIds ?? [];
     return new Set(migrateQuestIds(ids));
   }, []);
 
   const saveCompletedQuests = useCallback(
     (next: Set<string>) => {
-      setQuestState({ completedQuestIds: Array.from(next) });
+      setQuestState({
+        ...questsStore.get(),
+        manualCompletedQuestIds: Array.from(next),
+      });
+    },
+    [setQuestState]
+  );
+
+  const setMode = useCallback(
+    (mode: 'manual' | 'linked') => {
+      setQuestState({
+        ...questsStore.get(),
+        mode,
+      });
     },
     [setQuestState]
   );
@@ -107,6 +163,11 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
   // Ensures the initial top-center positioning only runs once per mount.
   const initialViewportAppliedRef = useRef(false);
 
+  useEffect(() => {
+    const timerId = window.setInterval(() => setNowMs(Date.now()), 15_000);
+    return () => window.clearInterval(timerId);
+  }, []);
+
   // Confirmation dialog state
   const [confirmDialog, setConfirmDialog] = useState<{
     isOpen: boolean;
@@ -123,6 +184,41 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
     showMore: 0,
     onConfirm: () => {},
   });
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadLinkedState() {
+      const cachedSnapshot = await getCachedLinkedQuestSnapshot();
+      if (!cancelled) {
+        setLinkedSnapshot(cachedSnapshot);
+      }
+
+      if (!cognito.user) {
+        if (!cancelled) {
+          setEmbarkEnabled(false);
+        }
+        return;
+      }
+
+      try {
+        const me = await getMe();
+        if (!cancelled) {
+          setEmbarkEnabled(me.features?.embarkEnabled === true);
+        }
+      } catch (error) {
+        console.warn('Failed to load quest linked-mode profile state:', error);
+        if (!cancelled) {
+          setEmbarkEnabled(false);
+        }
+      }
+    }
+
+    void loadLinkedState();
+    return () => {
+      cancelled = true;
+    };
+  }, [cognito.user]);
 
   // Save blueprint overlay collapse state whenever it changes
   useEffect(() => {
@@ -154,6 +250,50 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
     []
   );
 
+  useEffect(() => {
+    if (!cognito.user || linkedSource !== 'embark' || activeLinkedSnapshot) return;
+
+    let cancelled = false;
+    void getEmbarkQuestSnapshot()
+      .then((snapshot) => {
+        if (!cancelled && snapshot) {
+          setLinkedSnapshot(snapshot);
+        }
+      })
+      .catch((error) => {
+        if (!cancelled) {
+          console.warn('Failed to load cached Embark quest snapshot:', error);
+        }
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [activeLinkedSnapshot, cognito.user, linkedSource]);
+
+  const handleSyncLinkedMode = useCallback(async () => {
+    if (!linkedSource) return;
+
+    setIsSyncingLinkedSnapshot(true);
+    setLinkedSyncError(null);
+    try {
+      const snapshot = linkedSource === 'embark'
+        ? await syncEmbarkQuestSnapshot(linkedSnapshot)
+        : await syncArctrackerQuestSnapshot(linkedSnapshot);
+      setLinkedSnapshot(snapshot);
+    } catch (error) {
+      const message = error instanceof Error
+        ? error.message
+        : t('quests.syncUnknownError');
+      setLinkedSyncError(message);
+      if (error instanceof LinkedQuestApiError && error.snapshot) {
+        setLinkedSnapshot(error.snapshot);
+      }
+    } finally {
+      setIsSyncingLinkedSnapshot(false);
+    }
+  }, [linkedSnapshot, linkedSource, t]);
+
   // Node types registration
   const nodeTypes = useMemo(
     () => ({
@@ -172,6 +312,7 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
   // Toggle quest completion
   const toggleQuest = useCallback(
     (questId: string) => {
+      if (isLinkedMode) return;
       const prev = completedQuests;
       const quest = quests.find((q) => q.id === questId);
       if (!quest) return;
@@ -262,6 +403,7 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
     },
     [
       completedQuests,
+      isLinkedMode,
       quests,
       readCompletedQuests,
       saveCompletedQuests,
@@ -372,6 +514,20 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
       const pos = elkPositions.get(quest.id);
       if (!pos) return;
       const isMap = quest.trader === 'Map';
+      const status = isLinkedMode
+        ? getQuestDisplayStatus({
+            quest,
+            linkedSnapshot: activeLinkedSnapshot,
+            linkedCompletedQuests: completedQuests,
+          })
+        : completedQuests.has(quest.id)
+          ? 'completed'
+          : isAvailable(quest)
+            ? 'available'
+            : 'locked';
+      const linkedEntry = activeLinkedSnapshot?.source === 'embark'
+        ? activeLinkedSnapshot.questsById[quest.id]
+        : undefined;
       flowNodes.push({
         id: quest.id,
         type: isMap ? 'mapNode' : 'questNode',
@@ -379,8 +535,12 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
         data: {
           quest,
           isCompleted: completedQuests.has(quest.id),
-          isAvailable: isAvailable(quest),
+          isAvailable: status === 'available' || status === 'active',
+          status,
+          isInteractive: !isLinkedMode,
           isHighlighted: quest.id === highlightedQuestId,
+          objectiveSummary: linkedEntry ? getObjectiveProgressSummary(linkedEntry) : null,
+          objectiveProgress: linkedEntry?.objectives,
           onToggle: toggleQuest,
         },
         draggable: false,
@@ -391,8 +551,19 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
     quests.forEach((quest) => {
       quest.previousQuestIds.forEach((prevId) => {
         const sourceCompleted = completedQuests.has(prevId);
-        const targetCompleted = completedQuests.has(quest.id);
-        const targetAvailable = isAvailable(quest);
+        const targetStatus = isLinkedMode
+          ? getQuestDisplayStatus({
+              quest,
+              linkedSnapshot: activeLinkedSnapshot,
+              linkedCompletedQuests: completedQuests,
+            })
+          : completedQuests.has(quest.id)
+            ? 'completed'
+            : isAvailable(quest)
+              ? 'available'
+              : 'locked';
+        const targetCompleted = targetStatus === 'completed';
+        const targetAvailable = targetStatus === 'available' || targetStatus === 'active';
 
         let className = '';
         if (sourceCompleted && targetCompleted) {
@@ -460,8 +631,10 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
     return { nodes: flowNodes, edges: flowEdges };
   }, [
     elkPositions,
+    activeLinkedSnapshot,
     completedQuests,
     isAvailable,
+    isLinkedMode,
     toggleQuest,
     highlightedQuestId,
     quests,
@@ -485,7 +658,20 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
   const mapNodes = quests
     .filter((q) => q.trader === 'Map')
     .map((q) => ({ ...q, isCompleted: completedQuests.has(q.id) }));
-  const availableQuests = actualQuests.filter((q) => isAvailable(q));
+  const availableQuests = actualQuests.filter((quest) => {
+    if (isLinkedMode) {
+      return getQuestDisplayStatus({
+        quest,
+        linkedSnapshot: activeLinkedSnapshot,
+        linkedCompletedQuests: completedQuests,
+      }) === 'active' || getQuestDisplayStatus({
+        quest,
+        linkedSnapshot: activeLinkedSnapshot,
+        linkedCompletedQuests: completedQuests,
+      }) === 'available';
+    }
+    return isAvailable(quest);
+  });
   const completedCount = actualQuests.filter((q) =>
     completedQuests.has(q.id)
   ).length;
@@ -551,15 +737,17 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
   const onNodeClick = useCallback(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (_event: any, node: Node) => {
+      if (isLinkedMode) return;
       if (node.data.onToggle) {
         node.data.onToggle(node.id);
       }
     },
-    []
+    [isLinkedMode]
   );
 
   // Reset all quests
   const handleResetAll = useCallback(() => {
+    if (isLinkedMode) return;
     const completedQuestsList = actualQuests
       .filter((q) => completedQuests.has(q.id))
       .map((q) => q.name);
@@ -579,7 +767,7 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
         setConfirmDialog((prev) => ({ ...prev, isOpen: false }));
       },
     });
-  }, [actualQuests, completedQuests, saveCompletedQuests, tm]);
+  }, [actualQuests, completedQuests, isLinkedMode, saveCompletedQuests, tm]);
 
   // Focus on a specific quest
   const focusOnQuest = useCallback(
@@ -612,6 +800,10 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
     },
     []
   );
+
+  const handleClearSearch = useCallback(() => {
+    setSearchQuery('');
+  }, []);
 
   // Handle search enter key
   const handleSearchKeyDown = useCallback(
@@ -655,6 +847,73 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
     ] as [[number, number], [number, number]];
   }, [nodes]);
 
+  const nextAllowedAt = activeLinkedSnapshot?.source === 'embark'
+    ? activeLinkedSnapshot.nextAllowedAt ?? null
+    : null;
+  const nextAllowedMs = nextAllowedAt ? Date.parse(nextAllowedAt) : Number.NaN;
+  const syncBlockedUntil = Number.isFinite(nextAllowedMs) && nextAllowedMs > nowMs
+    ? nextAllowedAt
+    : null;
+  const linkedCtaTarget = !cognito.user
+    ? '/auth/sign-in'
+    : embarkEnabled
+      ? '/profile/embark'
+      : '/profile/arctracker';
+  const linkedCtaLabel = !cognito.user
+    ? t('quests.linkedModeSignIn')
+    : t('quests.linkedModeLink');
+  const linkedModeEmptyBody = !cognito.user
+    ? t('quests.linkedModeSignedOutBody')
+    : embarkEnabled
+      ? t('quests.linkedModeEmbarkBody')
+      : t('quests.linkedModeArcTrackerBody');
+  const linkedSourceLabel = linkedSource === 'embark' ? 'Embark' : 'ArcTracker';
+  const linkedUpdatedAtRaw = activeLinkedSnapshot
+    ? activeLinkedSnapshot.source === 'arctracker'
+      ? activeLinkedSnapshot.lastModified ?? activeLinkedSnapshot.syncedAt
+      : activeLinkedSnapshot.syncedAt
+    : null;
+  const linkedSnapshotTimestamp = linkedUpdatedAtRaw
+    ? formatDate(new Date(linkedUpdatedAtRaw), {
+        dateStyle: 'medium',
+        timeStyle: 'short',
+      })
+    : t('quests.syncNever');
+  const syncBlockedUntilLabel = syncBlockedUntil
+    ? formatDate(new Date(syncBlockedUntil), {
+        dateStyle: 'medium',
+        timeStyle: 'short',
+      })
+    : null;
+  const formatElapsedTimestamp = useCallback((isoString: string | null): string => {
+    if (!isoString) return t('quests.syncNever');
+    const syncedMs = Date.parse(isoString);
+    if (!Number.isFinite(syncedMs)) return t('quests.syncNever');
+
+    const elapsedSeconds = Math.max(0, Math.floor((nowMs - syncedMs) / 1000));
+    if (elapsedSeconds < 60) {
+      return t('quests.syncFreshnessNow');
+    }
+
+    const elapsedMinutes = Math.floor(elapsedSeconds / 60);
+    if (elapsedMinutes < 60) {
+      return tm('quests.syncFreshnessMinutes', { count: elapsedMinutes });
+    }
+
+    const elapsedHours = Math.floor(elapsedMinutes / 60);
+    if (elapsedHours < 24) {
+      return tm('quests.syncFreshnessHours', { count: elapsedHours });
+    }
+
+    return tm('quests.syncFreshnessDays', { count: Math.floor(elapsedHours / 24) });
+  }, [nowMs, t, tm]);
+  const linkedFreshnessLabel = linkedUpdatedAtRaw
+    ? formatElapsedTimestamp(linkedUpdatedAtRaw)
+    : t('quests.syncNever');
+  const shouldDimLinkedTree = isLinkedMode && !linkedSource;
+  const isLinkedSyncDisabled =
+    !linkedSource || isSyncingLinkedSnapshot || syncBlockedUntil !== null;
+
   return (
     <>
       <ConfirmDialog
@@ -666,18 +925,123 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
         onConfirm={confirmDialog.onConfirm}
         onCancel={() => setConfirmDialog((prev) => ({ ...prev, isOpen: false }))}
       />
-      <div className="quest-tracker-container">
+      <div
+        className={`quest-tracker-container ${isLinkedMode ? 'quest-tracker-container--linked' : 'quest-tracker-container--manual'} ${shouldDimLinkedTree ? 'quest-tracker-container--disabled' : ''}`}
+      >
         <Sidebar
           actualQuests={actualQuests}
           mapNodes={mapNodes}
           availableQuests={availableQuests}
           completedCount={completedCount}
+          readOnly={isLinkedMode}
           onQuestClick={focusOnQuest}
           onMapToggle={toggleQuest}
           onResetAll={handleResetAll}
         />
 
         <div className="graph-container" ref={graphContainerRef}>
+          <div className="quest-mode-toolbar">
+            <div className="quest-mode-toolbar__left">
+              <QuestSearchOverlay
+                searchQuery={searchQuery}
+                searchResults={searchResults}
+                onSearchChange={handleSearchChange}
+                onSearchKeyDown={handleSearchKeyDown}
+                onClearSearch={handleClearSearch}
+                onQuestClick={focusOnQuest}
+              />
+              {blueprintRewardEntries.length > 0 && (
+                <BlueprintRewardsOverlay
+                  entries={blueprintRewardEntries}
+                  isCollapsed={isBlueprintOverlayCollapsed}
+                  onSetCollapsed={setIsBlueprintOverlayCollapsed}
+                  onBlueprintClick={focusOnQuest}
+                />
+              )}
+            </div>
+            <div className="quest-mode-toolbar__right">
+              <div className="quest-mode-toolbar__status">
+                {isLinkedMode ? (
+                  linkedSource ? (
+                    <>
+                      <button
+                        type="button"
+                        className="quest-mode-toolbar__sync-button"
+                        onClick={handleSyncLinkedMode}
+                        disabled={isLinkedSyncDisabled}
+                        title={`${
+                          isSyncingLinkedSnapshot
+                            ? t('quests.syncing')
+                            : t('quests.sync')
+                        }: ${linkedSourceLabel}`}
+                      >
+                        <RefreshCw size={16} className={isSyncingLinkedSnapshot ? 'animate-spin' : ''} />
+                        <span>
+                          {isSyncingLinkedSnapshot
+                            ? t('quests.syncing')
+                            : `${t('quests.sync')}: ${linkedSourceLabel}`}
+                        </span>
+                      </button>
+                      <span
+                        className="quest-mode-toolbar__freshness"
+                        title={linkedSnapshotTimestamp}
+                      >
+                        {`${t('quests.syncLastUpdated')}: ${linkedFreshnessLabel}`}
+                      </span>
+                      {syncBlockedUntilLabel && (
+                        <span
+                          className="quest-mode-toolbar__freshness quest-mode-toolbar__freshness--warning"
+                          title={`${t('quests.syncAvailableAt')}: ${syncBlockedUntilLabel}`}
+                        >
+                          {t('quests.syncAvailableAt')}
+                        </span>
+                      )}
+                    </>
+                  ) : (
+                    <div className="quest-mode-toolbar__empty">
+                      <span
+                        className="quest-mode-toolbar__help"
+                        title={linkedModeEmptyBody}
+                        aria-label={linkedModeEmptyBody}
+                      >
+                        <CircleHelp size={16} />
+                      </span>
+                      <Link to={linkedCtaTarget} className="quest-mode-toolbar__cta">
+                        {linkedCtaLabel}
+                      </Link>
+                    </div>
+                  )
+                ) : (
+                  <span
+                    className="quest-mode-toolbar__help"
+                    title={t('quests.manualModeHint')}
+                    aria-label={t('quests.manualModeHint')}
+                  >
+                    <CircleHelp size={16} />
+                  </span>
+                )}
+              </div>
+              <div className="quest-mode-toolbar__switch" role="group" aria-label="Quest mode">
+                <button
+                  type="button"
+                  className={`quest-mode-toolbar__switch-option ${!isLinkedMode ? 'is-active' : ''}`}
+                  onClick={() => setMode('manual')}
+                >
+                  {t('quests.modeManual')}
+                </button>
+                <button
+                  type="button"
+                  className={`quest-mode-toolbar__switch-option ${isLinkedMode ? 'is-active' : ''}`}
+                  onClick={() => setMode('linked')}
+                >
+                  {t('quests.modeLinked')}
+                </button>
+              </div>
+            </div>
+          </div>
+          {linkedSyncError && (
+            <div className="quest-mode-toolbar__error">{linkedSyncError}</div>
+          )}
           <ReactFlow
             nodes={flowNodes}
             edges={flowEdges}
@@ -701,23 +1065,6 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
             <Controls showInteractive={false} />
             <Background color="#2c2c2c" gap={16} />
           </ReactFlow>
-          <QuestSearchOverlay
-            searchQuery={searchQuery}
-            searchResults={searchResults}
-            onSearchChange={handleSearchChange}
-            onSearchKeyDown={handleSearchKeyDown}
-            onQuestClick={focusOnQuest}
-          />
-          {blueprintRewardEntries.length > 0 && (
-            <BlueprintRewardsOverlay
-              entries={blueprintRewardEntries}
-              isCollapsed={isBlueprintOverlayCollapsed}
-              onToggleCollapsed={() =>
-                setIsBlueprintOverlayCollapsed((collapsed) => !collapsed)
-              }
-              onBlueprintClick={focusOnQuest}
-            />
-          )}
         </div>
       </div>
     </>

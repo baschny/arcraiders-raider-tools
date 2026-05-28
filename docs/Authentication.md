@@ -155,7 +155,7 @@ Thin wrapper around `amazon-cognito-identity-js`:
 - `src/pages/SignIn.tsx` — dual path (email/password + Discord). Guards `!cognito.available`, auto-redirects to `/settings/profile` if already signed in.
 - `src/pages/SignUp.tsx` — two-stage: register → confirm with email code.
 - `src/pages/AuthCallback.tsx` — consumes the hash fragment via `CognitoAuthContext`'s mount effect, then navigates to `/settings/profile`.
-- `src/pages/ProfileSettings.tsx` — "Identity" section shows signed-in email and a sign-out button; "ArcTracker Integration" is orthogonal and lives in User-Data.md's territory.
+- `src/pages/Profile.tsx` — signed-in profile shell. Linked-account sections such as ArcTracker and Embark live under `src/pages/profile/` and are user-data concerns, not identity concerns.
 
 ---
 ## 4. Recipe: adding a new JWT-protected endpoint
@@ -186,6 +186,8 @@ Use this when you need a new `/me/*` or similar route that just needs authentica
 Use this when you want a new sign-in mechanism (Twitch, GitHub, Epic — anything OAuth-like that isn't natively supported by Cognito's hosted federation).
 
 If the provider also produces a long-lived token you want to store for later use (e.g. calling an API on the user's behalf), **read `docs/User-Data.md` §5.2** *in addition* to this recipe — token storage and envelope encryption live in that doc.
+
+Important: not every OAuth flow belongs here. Embark is intentionally **not** a Raider Tools identity provider in the current architecture; it is a linked-account flow for already-authenticated users and is implemented under `/me/links/embark/*`. If the user must already be signed in with Cognito before starting the flow, that work belongs in `docs/User-Data.md`, not this section.
 
 1. **Secrets Manager** — add a secret `raider-tools/<provider>/oauth` with `{ clientId, clientSecret, stateSigningKey }`. Populate post-deploy (see §7).
 2. **Bridge Lambda** — create `infra/lambda/<provider>-auth.ts`. Mirror the structure of `discord-auth.ts`:
@@ -258,6 +260,9 @@ Client:
 - `src/shared/auth/cognitoClient.ts` — `amazon-cognito-identity-js` wrapper, `getIdToken()`, `acceptTokensFromHash()`.
 - `src/shared/context/CognitoAuthContext.tsx` — identity provider, exposes `useCognitoAuth()`.
 - `src/pages/SignIn.tsx`, `src/pages/SignUp.tsx`, `src/pages/AuthCallback.tsx` — auth UI.
+
+Embark note:
+- The Embark account-link flow is not part of Cognito identity. See `docs/User-Data.md`, `infra/lambda/embark-link.ts`, and `src/pages/profile/EmbarkSection.tsx`.
 - `src/pages/ProfileSettings.tsx` — "Identity" section (sign-in state + sign-out button).
 
 When in doubt: check the tests in `src/shared/state/__tests__/` — they mock the full sign-in flow end-to-end and are the canonical examples of what the client expects from the server.

@@ -4,7 +4,7 @@
  * Mirrors the production API Gateway + Lambda stack on a single Node
  * process by dispatching HTTP requests to the same handlers used in
  * production (`infra/lambda/profile.ts`, `state.ts`, `links.ts`,
- * `arctracker-user-proxy.ts`). The
+ * `embark-link.ts`, `arctracker-user-proxy.ts`). The
  * handlers talk to DynamoDB Local (via `AWS_ENDPOINT_URL_DYNAMODB`)
  * instead of the real DynamoDB, and the JWT authorizer is replaced by
  * a trivial dev-token scheme understood by `src/shared/auth/devAuthClient.ts`.
@@ -39,6 +39,7 @@ import {
     DescribeTableCommand,
     ResourceNotFoundException,
 } from "@aws-sdk/client-dynamodb";
+import { matchLocalRoutePattern } from "./routes";
 
 // ---------------------------------------------------------------------------
 // Environment defaults
@@ -48,7 +49,7 @@ import {
 // set them later the clients would already be pinned to a different
 // (missing) endpoint and would fail to connect to DynamoDB Local.
 // ---------------------------------------------------------------------------
-loadLocalEnv();
+loadLocalEnvFiles();
 
 const LOCAL_API_PORT = Number(process.env.LOCAL_API_PORT ?? 4000);
 const DDB_ENDPOINT = process.env.AWS_ENDPOINT_URL_DYNAMODB ?? "http://localhost:8000";
@@ -64,38 +65,14 @@ process.env.USER_TABLE_NAME = TABLE_NAME;
 process.env.ALLOWED_ORIGINS = ALLOWED_ORIGINS;
 process.env.RAIDER_TOOLS_LOCAL_DEV = "true";
 process.env.LOCAL_TOKEN_ENCRYPTION_KEY = process.env.LOCAL_TOKEN_ENCRYPTION_KEY ?? "raider-tools-local-dev-token-key";
-function loadLocalEnv(): void {
-    const envPath = resolve(__dirname, "..", ".env");
-    if (!existsSync(envPath)) return;
-
-    const lines = readFileSync(envPath, "utf8").split(/\r?\n/);
-    for (const line of lines) {
-        const trimmed = line.trim();
-        if (!trimmed || trimmed.startsWith("#")) continue;
-
-        const equals = trimmed.indexOf("=");
-        if (equals <= 0) continue;
-
-        const key = trimmed.slice(0, equals).trim();
-        if (!/^[A-Za-z_][A-Za-z0-9_]*$/.test(key) || process.env[key] !== undefined) {
-            continue;
-        }
-
-        process.env[key] = parseEnvValue(trimmed.slice(equals + 1).trim());
-    }
-}
-
-function parseEnvValue(raw: string): string {
-    if (
-        (raw.startsWith("\"") && raw.endsWith("\"")) ||
-        (raw.startsWith("'") && raw.endsWith("'"))
-    ) {
-        return raw.slice(1, -1);
-    }
-
-    const comment = raw.indexOf(" #");
-    return (comment >= 0 ? raw.slice(0, comment) : raw).trim();
-}
+process.env.EMBARK_LOOPBACK_REDIRECT_URI =
+    process.env.EMBARK_LOOPBACK_REDIRECT_URI ?? "http://127.0.0.1:49176";
+process.env.EMBARK_OAUTH_CLIENT_SECRET =
+    process.env.EMBARK_OAUTH_CLIENT_SECRET ?? "";
+process.env.EMBARK_MANIFEST_ID =
+    process.env.EMBARK_MANIFEST_ID ?? "local-dev-manifest";
+process.env.EMBARK_USER_AGENT =
+    process.env.EMBARK_USER_AGENT ?? "RaiderToolsLocalDev/0.1";
 
 /* eslint-disable @typescript-eslint/no-require-imports */
 // Imports are intentionally deferred until after env setup so that each
@@ -103,6 +80,9 @@ function parseEnvValue(raw: string): string {
 const profile = require("../lambda/profile");
 const state = require("../lambda/state");
 const links = require("../lambda/links");
+const embarkLink = require("../lambda/embark-link");
+const embarkInventory = require("../lambda/embark-inventory");
+const embarkQuests = require("../lambda/embark-quests");
 const arctrackerUserProxy = require("../lambda/arctracker-user-proxy");
 /* eslint-enable @typescript-eslint/no-require-imports */
 
@@ -117,11 +97,29 @@ const ddb = new DynamoDBClient({
 });
 
 async function ensureTable(): Promise<void> {
-    try {
-        await ddb.send(new DescribeTableCommand({ TableName: TABLE_NAME }));
-        return;
-    } catch (err) {
-        if (!(err instanceof ResourceNotFoundException)) throw err;
+    const maxRetries = 10;
+    const retryDelay = 1000;
+
+    for (let i = 0; i < maxRetries; i++) {
+        try {
+            await ddb.send(new DescribeTableCommand({ TableName: TABLE_NAME }));
+            return;
+        } catch (err) {
+            // If table doesn't exist, we need to create it (proceed after the loop)
+            if (err instanceof ResourceNotFoundException) {
+                break;
+            }
+
+            const error = err as { code?: string; name?: string; message?: string };
+            // If it's a connection error, retry
+            if (error.code === "ECONNRESET" || error.name === "TimeoutError" || error.message?.includes("ECONNRESET") || error.message?.includes("socket hang up")) {
+                console.log(`[local-api] waiting for dynamodb... (attempt ${i + 1}/${maxRetries})`);
+                await new Promise(resolve => setTimeout(resolve, retryDelay));
+                continue;
+            }
+
+            throw err;
+        }
     }
 
     // Minimal schema: pk/sk only. Keep in sync with the CDK table
@@ -154,6 +152,7 @@ async function ensureTable(): Promise<void> {
 interface DevClaims {
     sub: string;
     email: string | null;
+    groups: string[] | null;
 }
 
 function parseDevToken(authHeader: string | undefined): DevClaims | null {
@@ -166,20 +165,27 @@ function parseDevToken(authHeader: string | undefined): DevClaims | null {
     const rest = token.slice(4);
     const firstDot = rest.indexOf(".");
     if (firstDot < 0) {
-        return rest.length > 0 ? { sub: rest, email: null } : null;
+        return rest.length > 0 ? { sub: rest, email: null, groups: localCognitoGroups() } : null;
     }
     const sub = rest.slice(0, firstDot);
     const email = rest.slice(firstDot + 1);
     if (!sub) return null;
-    return { sub, email: email || null };
+    return { sub, email: email || null, groups: localCognitoGroups() };
+}
+
+function localCognitoGroups(): string[] | null {
+    const raw = process.env.LOCAL_COGNITO_GROUPS;
+    if (raw === undefined) return null;
+    return raw
+        .split(",")
+        .map(group => group.trim())
+        .filter(Boolean);
 }
 
 // ---------------------------------------------------------------------------
 // Routing
 // ---------------------------------------------------------------------------
-type Handler = (
-    event: APIGatewayProxyEventV2WithJWTAuthorizer,
-) => Promise<APIGatewayProxyResultV2>;
+type Handler = (event: APIGatewayProxyEventV2WithJWTAuthorizer) => Promise<APIGatewayProxyResultV2>;
 
 interface MatchedRoute {
     handler: Handler;
@@ -187,33 +193,28 @@ interface MatchedRoute {
     requiresDevAuth: boolean;
 }
 
-function matchRoute(method: string, pathname: string): MatchedRoute | null {
-    if (pathname === "/me" && (method === "GET" || method === "PATCH")) {
-        return { handler: profile.handler, pathParameters: {}, requiresDevAuth: true };
-    }
-    if (pathname === "/me/migrate" && method === "POST") {
-        return { handler: state.handler, pathParameters: {}, requiresDevAuth: true };
-    }
-    if (pathname.startsWith("/me/arctracker/") && method === "GET") {
-        return { handler: arctrackerUserProxy.handler, pathParameters: {}, requiresDevAuth: true };
-    }
-    const stateMatch = /^\/me\/state\/([^/]+)$/.exec(pathname);
-    if (stateMatch && (method === "GET" || method === "PUT" || method === "DELETE")) {
-        return {
-            handler: state.handler,
-            pathParameters: { domain: decodeURIComponent(stateMatch[1]) },
-            requiresDevAuth: true,
-        };
-    }
-    const linksMatch = /^\/me\/links\/([^/]+)$/.exec(pathname);
-    if (linksMatch && (method === "GET" || method === "PUT" || method === "DELETE")) {
-        return {
-            handler: links.handler,
-            pathParameters: { provider: decodeURIComponent(linksMatch[1]) },
-            requiresDevAuth: true,
-        };
-    }
-    return null;
+export function matchRoute(method: string, pathname: string): MatchedRoute | null {
+    const match = matchLocalRoutePattern(method, pathname);
+    if (!match) return null;
+
+    const handlers: Record<string, Handler> = {
+        profile: profile.handler,
+        migrate: state.handler,
+        state: state.handler,
+        links: links.handler,
+        embarkLink: embarkLink.handler,
+        embarkInventory: embarkInventory.handler,
+        embarkInventorySync: embarkInventory.handler,
+        embarkQuests: embarkQuests.handler,
+        embarkQuestsSync: embarkQuests.handler,
+        arctrackerUserProxy: arctrackerUserProxy.handler,
+    };
+
+    return {
+        handler: handlers[match.key],
+        pathParameters: match.pathParameters,
+        requiresDevAuth: match.requiresDevAuth,
+    };
 }
 
 // ---------------------------------------------------------------------------
@@ -234,7 +235,7 @@ function buildEvent(
     url: URL,
     pathParameters: Record<string, string>,
     body: string | null,
-    claims: DevClaims,
+    claims: DevClaims | null,
 ): APIGatewayProxyEventV2WithJWTAuthorizer {
     const method = (req.method ?? "GET").toUpperCase();
     const headers: Record<string, string> = {};
@@ -245,8 +246,12 @@ function buildEvent(
     const queryStringParameters: Record<string, string> = {};
     for (const [k, v] of url.searchParams) queryStringParameters[k] = v;
 
-    const claimsRecord: Record<string, string | number | boolean> = { sub: claims.sub };
-    if (claims.email) claimsRecord.email = claims.email;
+    const claimsRecord: Record<string, string | number | boolean> = {};
+    if (claims) {
+        claimsRecord.sub = claims.sub;
+        if (claims.email) claimsRecord.email = claims.email;
+        if (claims.groups !== null) claimsRecord["cognito:groups"] = claims.groups.join(",");
+    }
 
     return {
         version: "2.0",
@@ -280,7 +285,7 @@ function buildEvent(
                 // AWS-provided authorizer typing but the handlers never
                 // read them; we fill them with placeholders so the cast
                 // is type-safe without loosening the handler contract.
-                principalId: claims.sub,
+                principalId: claims?.sub ?? "local-admin",
                 integrationLatency: 0,
                 jwt: {
                     claims: claimsRecord,
@@ -367,7 +372,7 @@ async function handleRequest(req: IncomingMessage, res: ServerResponse): Promise
 
     const claims = route.requiresDevAuth
         ? parseDevToken(req.headers.authorization as string | undefined)
-        : { sub: "local-relay", email: null };
+        : { sub: "local-relay", email: null, groups: localCognitoGroups() };
     if (!claims) {
         writeStructured(res, origin, 401, { error: "Missing or invalid dev token" });
         return;
@@ -413,10 +418,46 @@ async function main(): Promise<void> {
         console.log(`[local-api] dynamodb endpoint: ${DDB_ENDPOINT}`);
         console.log(`[local-api] user table:        ${TABLE_NAME}`);
         console.log(`[local-api] allowed origins:   ${ALLOWED_ORIGINS}`);
+        console.log(`[local-api] local dev crypto:  ${process.env.RAIDER_TOOLS_LOCAL_DEV}`);
+        console.log(`[local-api] local groups:      ${process.env.LOCAL_COGNITO_GROUPS ?? "(bypass)"}`);
     });
 }
 
-main().catch(err => {
-    console.error("[local-api] failed to start", err);
-    process.exit(1);
-});
+if (!process.env.VITEST) {
+    main().catch(err => {
+        console.error("[local-api] failed to start", err);
+        process.exit(1);
+    });
+}
+
+function loadLocalEnvFiles(): void {
+    const envDir = resolve(__dirname, "..");
+    // Match Vite-style precedence: .env first, then .env.local overrides it.
+    loadEnvFile(resolve(envDir, ".env"), false);
+    loadEnvFile(resolve(envDir, ".env.local"), true);
+}
+
+function loadEnvFile(filename: string, override: boolean): void {
+    if (!existsSync(filename)) return;
+    const raw = readFileSync(filename, "utf8");
+    for (const line of raw.split(/\r?\n/)) {
+        const trimmed = line.trim();
+        if (!trimmed || trimmed.startsWith("#")) continue;
+        const idx = trimmed.indexOf("=");
+        if (idx <= 0) continue;
+        const key = trimmed.slice(0, idx).trim();
+        if (!/^[A-Za-z_][A-Za-z0-9_]*$/.test(key)) continue;
+        if (!override && process.env[key] !== undefined) continue;
+        let value = trimmed.slice(idx + 1).trim();
+        if (
+            (value.startsWith('"') && value.endsWith('"'))
+            || (value.startsWith("'") && value.endsWith("'"))
+        ) {
+            value = value.slice(1, -1);
+        } else {
+            const comment = value.indexOf(" #");
+            value = (comment >= 0 ? value.slice(0, comment) : value).trim();
+        }
+        process.env[key] = value;
+    }
+}

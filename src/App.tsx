@@ -4,6 +4,7 @@ import { Layout } from './shared/components/Layout';
 import { LoadingSpinner } from './shared/components/LoadingSpinner';
 import { AuthProvider } from './shared/context/AuthContext';
 import { CognitoAuthProvider } from './shared/context/CognitoAuthContext';
+import { LinkedAccountsProvider } from './shared/context/LinkedAccountsProvider';
 import { LocaleProvider } from './shared/context/LocaleContext';
 import { Dashboard } from './pages/Dashboard';
 import { NotFound } from './pages/NotFound';
@@ -16,6 +17,11 @@ const ArcTrackerSection = lazy(() =>
     default: m.ArcTrackerSection,
   }))
 );
+const EmbarkSection = lazy(() =>
+  import('./pages/profile/EmbarkSection').then((m) => ({
+    default: m.EmbarkSection,
+  }))
+);
 const SignIn = lazy(() =>
   import('./pages/SignIn').then((m) => ({ default: m.SignIn }))
 );
@@ -24,6 +30,9 @@ const SignUp = lazy(() =>
 );
 const AuthCallback = lazy(() =>
   import('./pages/AuthCallback').then((m) => ({ default: m.AuthCallback }))
+);
+const EmbarkCallback = lazy(() =>
+  import('./pages/EmbarkCallback').then((m) => ({ default: m.EmbarkCallback }))
 );
 const ScheduleApp = lazy(() =>
   import('./apps/schedule').then((m) => ({ default: m.ScheduleApp }))
@@ -47,26 +56,30 @@ function App() {
       <LocaleProvider>
         <CognitoAuthProvider>
           <AuthProvider>
-            <Suspense fallback={<LoadingSpinner />}>
-              <Routes>
-                <Route path="/" element={<Layout />}>
-                  <Route index element={<Dashboard />} />
-                  <Route path="schedule" element={<ScheduleApp />} />
-                  <Route path="craft-calculator" element={<CraftCalculatorApp />} />
-                  <Route path="quests" element={<QuestsApp />} />
-                  <Route path="loot-helper" element={<LootHelperApp />} />
-                  <Route path="quartermaster" element={<QuartermasterApp />} />
-                  <Route path="profile" element={<Profile />}>
-                    <Route index element={<Navigate to="arctracker" replace />} />
-                    <Route path="arctracker" element={<ArcTrackerSection />} />
+            <LinkedAccountsProvider>
+              <Suspense fallback={<LoadingSpinner />}>
+                <Routes>
+                  <Route path="/" element={<Layout />}>
+                    <Route index element={<Dashboard />} />
+                    <Route path="schedule" element={<ScheduleApp />} />
+                    <Route path="craft-calculator" element={<CraftCalculatorApp />} />
+                    <Route path="quests" element={<QuestsApp />} />
+                    <Route path="loot-helper" element={<LootHelperApp />} />
+                    <Route path="quartermaster" element={<QuartermasterApp />} />
+                    <Route path="profile" element={<Profile />}>
+                      <Route index element={<Navigate to="arctracker" replace />} />
+                      <Route path="arctracker" element={<ArcTrackerSection />} />
+                      <Route path="embark" element={<EmbarkSection />} />
+                    </Route>
+                    <Route path="auth/sign-in" element={<SignIn />} />
+                    <Route path="auth/sign-up" element={<SignUp />} />
+                    <Route path="auth/callback" element={<AuthCallback />} />
+                    <Route path="embark-callback" element={<EmbarkCallback />} />
+                    <Route path="*" element={<NotFound />} />
                   </Route>
-                  <Route path="auth/sign-in" element={<SignIn />} />
-                  <Route path="auth/sign-up" element={<SignUp />} />
-                  <Route path="auth/callback" element={<AuthCallback />} />
-                  <Route path="*" element={<NotFound />} />
-                </Route>
-              </Routes>
-            </Suspense>
+                </Routes>
+              </Suspense>
+            </LinkedAccountsProvider>
           </AuthProvider>
         </CognitoAuthProvider>
       </LocaleProvider>
