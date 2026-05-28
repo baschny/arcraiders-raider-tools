@@ -3,7 +3,7 @@
  * See specification section 7.2
  */
 
-import { useState, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Info, Paperclip, RefreshCw, Search, Package } from 'lucide-react';
 import type { ItemsMap } from '../../types/item';
 import type { OwnedItemDisplayRow, OwnedItemLocation, PlannerResult } from '../../types/planner';
@@ -14,6 +14,7 @@ import {
   getLocalizedQuartermasterRarity,
   getUncraftableReasonLabel,
 } from '../../utils/localization';
+import { loadStashFilters, saveStashFilters } from '../../utils/preferences';
 import { useLocale } from '../../../../shared/context/LocaleContext';
 
 interface StashViewProps {
@@ -50,10 +51,12 @@ export function StashView({
   unknownEmbarkItems = [],
 }: StashViewProps) {
   const { t, tm, compareText, formatNumber } = useLocale();
-  const [searchQuery, setSearchQuery] = useState('');
-  const [categoryFilter, setCategoryFilter] = useState<string>('all');
-  const [rarityFilter, setRarityFilter] = useState<string>('all');
-  const [showOnlyRecyclable, setShowOnlyRecyclable] = useState(false);
+  const [filters, setFilters] = useState(() => loadStashFilters());
+  const { searchQuery, categoryFilter, rarityFilter, showOnlyUseless } = filters;
+
+  useEffect(() => {
+    saveStashFilters(filters);
+  }, [filters]);
 
   // Build sets for quick lookups
   const recycleItemIds = useMemo(() => {
@@ -62,6 +65,20 @@ export function StashView({
   const upgradeBaseItemIds = useMemo(() => {
     return new Set(plannerResult.weaponUpgradePlan.steps.map(step => step.fromItemId));
   }, [plannerResult.weaponUpgradePlan]);
+
+  const uselessItemIds = useMemo(() => {
+    const ids = new Set<string>();
+    for (const ownedItem of ownedItemRows) {
+      const insight = itemInsights[ownedItem.itemId];
+      const hasRelevance =
+        (insight && (insight.finalListNeeds.length > 0 || insight.craftingNeeds.length > 0 || insight.recycleSalvageUsages.length > 0)) ||
+        upgradeBaseItemIds.has(ownedItem.itemId);
+      if (!hasRelevance) {
+        ids.add(ownedItem.itemId);
+      }
+    }
+    return ids;
+  }, [ownedItemRows, itemInsights, upgradeBaseItemIds]);
 
   // Get unique categories from owned items
   const categories = useMemo(() => {
@@ -97,8 +114,8 @@ export function StashView({
           return false;
         }
 
-        // Recyclable filter
-        if (showOnlyRecyclable && !recycleItemIds.has(ownedItem.itemId)) {
+        // Useless filter — show only items with no planner relevance
+        if (showOnlyUseless && !uselessItemIds.has(ownedItem.itemId)) {
           return false;
         }
 
@@ -109,7 +126,7 @@ export function StashView({
         const itemB = itemsMap[b.itemId];
         return compareText(itemA?.name ?? '', itemB?.name ?? '');
       });
-  }, [ownedItemRows, itemsMap, searchQuery, categoryFilter, rarityFilter, showOnlyRecyclable, recycleItemIds, compareText]);
+  }, [ownedItemRows, itemsMap, searchQuery, categoryFilter, rarityFilter, showOnlyUseless, uselessItemIds, compareText]);
 
   // Calculate total value
   const totalValue = useMemo(() => {
@@ -221,7 +238,7 @@ export function StashView({
               className="qm-input"
               placeholder={t('quartermaster.stash.searchPlaceholder')}
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={(e) => setFilters(prev => ({ ...prev, searchQuery: e.target.value }))}
               style={{ paddingLeft: 28, width: '100%' }}
             />
           </div>
@@ -231,7 +248,7 @@ export function StashView({
           <select
             className="qm-input stash-view__filter"
             value={categoryFilter}
-            onChange={(e) => setCategoryFilter(e.target.value)}
+            onChange={(e) => setFilters(prev => ({ ...prev, categoryFilter: e.target.value }))}
           >
             <option value="all">{t('quartermaster.stash.allCategories')}</option>
             {categories.map(cat => (
@@ -242,7 +259,7 @@ export function StashView({
           <select
             className="qm-input stash-view__filter"
             value={rarityFilter}
-            onChange={(e) => setRarityFilter(e.target.value)}
+            onChange={(e) => setFilters(prev => ({ ...prev, rarityFilter: e.target.value }))}
           >
             <option value="all">{t('quartermaster.stash.allRarities')}</option>
             <option value="Common">{getLocalizedQuartermasterRarity(t, 'Common')}</option>
@@ -252,13 +269,13 @@ export function StashView({
             <option value="Legendary">{getLocalizedQuartermasterRarity(t, 'Legendary')}</option>
           </select>
 
-          <label style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 11, cursor: 'pointer' }}>
+          <label style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 11, cursor: 'pointer' }} title={t('quartermaster.stash.showOnlyUselessTooltip')}>
             <input
               type="checkbox"
-              checked={showOnlyRecyclable}
-              onChange={(e) => setShowOnlyRecyclable(e.target.checked)}
+              checked={showOnlyUseless}
+              onChange={(e) => setFilters(prev => ({ ...prev, showOnlyUseless: e.target.checked }))}
             />
-            {t('quartermaster.stash.showOnlyRecyclable')}
+            {t('quartermaster.stash.showOnlyUseless')}
           </label>
         </div>
 

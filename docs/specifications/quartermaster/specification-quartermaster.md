@@ -1624,6 +1624,28 @@ Top-level weapons with counted attachments must show an indicator that their att
 
 If stash/inventory or loadout has not been synced, the view must warn that owned inventory is incomplete.
 
+### Filtering
+
+My Items supports the following filters (additive — all active filters combine):
+
+- **Search** — text search against item names
+- **Category** — dropdown filter by item category
+- **Rarity** — dropdown filter by item rarity tier
+- **Show Useless** — checkbox toggle that shows only items with **no planner relevance at all**
+
+When "Show Useless" is active, the view shows only items that are:
+
+- Not directly needed by any active list
+- Not an ingredient in any crafting chain for active targets
+- Not a recycle/salvage source
+- Not a weapon upgrade base
+
+This corresponds to the item tooltip's right column (Column 2) being empty. Items matching all these criteria have no crafting or planning value and can be safely sold.
+
+If all items are useful (none are useless), enabling this filter shows the "No items match" empty state.
+
+Filter state (search query, category, rarity, and the "Show Useless" toggle) persists in `localStorage` so it is retained when switching between views or navigating away from and back to the Quartermaster app within the same browser session. Filters are device-local UI preferences and are not synced across devices.
+
 ---
 
 ### Status Indicators
@@ -1635,7 +1657,9 @@ Indicators must display contextual and quantified explanation:
 - **Have** (green) – include owned and required quantities
 - **Needed** (red) – include missing, required, owned, and list context
 - **Recycle** – display target item + list name
+- **Upgrade Base** – item is a weapon upgrade base (from weapon upgrade plan)
 - **Blocked** – display uncraftable reason when applicable
+- **Owned** (no planner relevance) – item has no active requirement or usefulness; shown only when "Show Useless" filter is inactive (useful items are hidden when filter is on)
 
 Examples:
 

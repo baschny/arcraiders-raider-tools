@@ -94,3 +94,46 @@ export function saveCollapsedHideoutModules(collapsedModules: Record<string, boo
     // Preferences are best-effort; the in-memory UI state still works.
   }
 }
+
+// ---------------------------------------------------------------------------
+// Stash view filter preferences
+// ---------------------------------------------------------------------------
+
+export interface StashFilters {
+  searchQuery: string;
+  categoryFilter: string;
+  rarityFilter: string;
+  showOnlyUseless: boolean;
+}
+
+const STASH_FILTERS_KEY = 'quartermaster.ui.stashFilters';
+
+export function loadStashFilters(): StashFilters {
+  const stored = readString(STASH_FILTERS_KEY);
+  if (!stored) return { searchQuery: '', categoryFilter: 'all', rarityFilter: 'all', showOnlyUseless: false };
+
+  try {
+    const parsed = JSON.parse(stored) as unknown;
+    if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
+      return { searchQuery: '', categoryFilter: 'all', rarityFilter: 'all', showOnlyUseless: false };
+    }
+
+    const obj = parsed as Record<string, unknown>;
+    return {
+      searchQuery: typeof obj.searchQuery === 'string' ? obj.searchQuery : '',
+      categoryFilter: typeof obj.categoryFilter === 'string' ? obj.categoryFilter : 'all',
+      rarityFilter: typeof obj.rarityFilter === 'string' ? obj.rarityFilter : 'all',
+      showOnlyUseless: typeof obj.showOnlyUseless === 'boolean' ? obj.showOnlyUseless : false,
+    };
+  } catch {
+    return { searchQuery: '', categoryFilter: 'all', rarityFilter: 'all', showOnlyUseless: false };
+  }
+}
+
+export function saveStashFilters(filters: StashFilters): void {
+  try {
+    window.localStorage.setItem(STASH_FILTERS_KEY, JSON.stringify(filters));
+  } catch {
+    // Preferences are best-effort; the in-memory UI state still works.
+  }
+}
