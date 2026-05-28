@@ -1210,7 +1210,7 @@ export function runGreedyPlanner(
       mergePlannerDiagnostics(state, trialState);
     }
 
-    if (!fullySatisfiable && pendingCrafts.length === 0) {
+    if (!fullySatisfiable) {
       const partialCraftTimes = Math.min(craftTimes, getCraftableTimesFromAvail(state, targetRecipe));
       if (partialCraftTimes > 0) {
         const partialOutput = partialCraftTimes * targetItem.craftQuantity;
