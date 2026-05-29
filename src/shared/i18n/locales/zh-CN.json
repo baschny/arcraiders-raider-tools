@@ -216,7 +216,7 @@
     "sidebarSearchPlaceholder": "搜索所有任务...",
     "sidebarSearchResults": "搜索结果 ({count})",
     "sidebarSearchEmpty": "未找到匹配“{query}”的任务",
-    "sidebarClearSearch": "清除搜索",
+    "sidebarClearSearch": "Clear search",
     "sidebarFocusQuest": "点击聚焦此任务",
     "sidebarViewMap": "点击在任务树中查看",
     "sidebarUnlockMap": "点击解锁此地图",
@@ -619,7 +619,15 @@
       "noYields": "No yields available",
       "empty": "No loot suggestions. Configure lists to see what items to look for.",
       "directTargets": "Direct Targets - Bring Home",
-      "craftingMaterials": "Crafting Materials"
+      "craftingMaterials": "Crafting Materials",
+      "craftableMaterials": "Craftable Materials",
+      "priorityTargets": "Priority Targets",
+      "prioritizeMark": "Mark as Priority Target",
+      "prioritizeRemove": "Remove from Priority Targets",
+      "prioritizeClearAll": "Remove All",
+      "prioritizeClearAllTitle": "Remove all priority targets?",
+      "prioritizeClearAllBody": "This will remove all items from the priority targets list. Items will remain in their lists and hideout requirements.",
+      "prioritizeClearAllConfirm": "Remove All"
     },
     "crafting": {
       "noImpact": "No active target impact",
@@ -655,11 +663,15 @@
       "foundIn": "发现于：",
       "neededForLists": "Needed for Lists",
       "neededForCrafting": "Needed for Crafting (Direct / Indirect)",
+      "couldBeUsedFor": "Could be used for",
       "recycle": "回收",
       "salvage": "拆解",
       "craftingRecipe": "Crafting Recipe",
       "recyclesInto": "回收为",
       "salvagesInto": "拆解为"
+    },
+    "itemIcon": {
+      "uncraftable": "Cannot be crafted — requirements not met"
     },
     "status": {
       "have": "拥有",
