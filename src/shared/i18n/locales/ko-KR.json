@@ -216,7 +216,7 @@
     "sidebarSearchPlaceholder": "전체 퀘스트 검색...",
     "sidebarSearchResults": "검색 결과 ({count})",
     "sidebarSearchEmpty": "\"{query}\"와 일치하는 퀘스트가 없습니다",
-    "sidebarClearSearch": "검색 지우기",
+    "sidebarClearSearch": "Clear search",
     "sidebarFocusQuest": "클릭하여 이 퀘스트에 포커스",
     "sidebarViewMap": "클릭하여 퀘스트 트리에서 보기",
     "sidebarUnlockMap": "클릭하여 이 맵 해금",
@@ -619,7 +619,15 @@
       "noYields": "No yields available",
       "empty": "No loot suggestions. Configure lists to see what items to look for.",
       "directTargets": "Direct Targets - Bring Home",
-      "craftingMaterials": "Crafting Materials"
+      "craftingMaterials": "Crafting Materials",
+      "craftableMaterials": "Craftable Materials",
+      "priorityTargets": "Priority Targets",
+      "prioritizeMark": "Mark as Priority Target",
+      "prioritizeRemove": "Remove from Priority Targets",
+      "prioritizeClearAll": "Remove All",
+      "prioritizeClearAllTitle": "Remove all priority targets?",
+      "prioritizeClearAllBody": "This will remove all items from the priority targets list. Items will remain in their lists and hideout requirements.",
+      "prioritizeClearAllConfirm": "Remove All"
     },
     "crafting": {
       "noImpact": "No active target impact",
@@ -655,11 +663,15 @@
       "foundIn": "Found In:",
       "neededForLists": "Needed for Lists",
       "neededForCrafting": "Needed for Crafting (Direct / Indirect)",
+      "couldBeUsedFor": "Could be used for",
       "recycle": "Recycle",
       "salvage": "Salvage",
       "craftingRecipe": "Crafting Recipe",
       "recyclesInto": "Recycles Into",
       "salvagesInto": "Salvages Into"
+    },
+    "itemIcon": {
+      "uncraftable": "Cannot be crafted — requirements not met"
     },
     "status": {
       "have": "Have",
