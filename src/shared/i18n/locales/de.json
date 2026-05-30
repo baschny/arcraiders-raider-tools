@@ -182,7 +182,11 @@
         "callbackSignedOut": "You need to be signed in to Raider Tools before completing Embark authentication.",
         "callbackMissingParams": "The Embark callback is missing the required code or state parameters.",
         "callbackStatusTimeout": "Embark authentication finished on the server, but the browser could not confirm the linked status. Open the Embark section in your profile to verify it.",
-        "backToProfile": "Back to profile"
+        "backToProfile": "Back to profile",
+        "extensionDownloadTitle": "Download the browser extension",
+        "extensionDownloadChrome": "Add to Chrome",
+        "extensionDownloadFirefox": "Add to Firefox",
+        "extensionDownloadOther": "Only available for Chrome and Firefox"
       }
     }
   },
