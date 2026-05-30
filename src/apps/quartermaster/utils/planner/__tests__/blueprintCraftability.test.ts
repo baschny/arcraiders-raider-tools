@@ -1059,3 +1059,274 @@ describe('quartermaster weapon upgrade planning', () => {
     expect(suggestionIds).not.toContain('anvil_iii');
   });
 });
+
+// ---------------------------------------------------------------------------
+// Hullcracker upgrade chain — verifies that base-tier weapon recipe
+// ingredients are not recycled for upper-tier upgrade costs, which would
+// leave the base craft unsatisfiable.
+// ---------------------------------------------------------------------------
+
+const hullcrackerItemsMap: ItemsMap = {
+  exodus_modules: item({
+    id: 'exodus_modules',
+    name: 'Exodus Modules',
+    stackSize: 10,
+  }),
+  heavy_gun_parts: item({
+    id: 'heavy_gun_parts',
+    name: 'Heavy Gun Parts',
+    stackSize: 50,
+  }),
+  advanced_mechanical_components: item({
+    id: 'advanced_mechanical_components',
+    name: 'Advanced Mechanical Components',
+    stackSize: 50,
+  }),
+  arc_motion_core: item({
+    id: 'arc_motion_core',
+    name: 'ARC Motion Core',
+    stackSize: 10,
+  }),
+  magnetic_accelerator: item({
+    id: 'magnetic_accelerator',
+    name: 'Magnetic Accelerator',
+    category: 'Refined Material',
+    value: 5500,
+    recyclesInto: {
+      advanced_mechanical_components: 1,
+      arc_motion_core: 1,
+    },
+  }),
+  hullcracker_i: item({
+    id: 'hullcracker_i',
+    name: 'Hullcracker I',
+    type: 'Special',
+    category: 'Weapon',
+    craftBench: 'weapon_bench',
+    stationLevelRequired: 3,
+    blueprintLocked: true,
+    recipe: {
+      exodus_modules: 1,
+      heavy_gun_parts: 3,
+      magnetic_accelerator: 1,
+    },
+    upgradesTo: 'hullcracker_ii',
+    weaponBaseId: 'hullcracker_i',
+    weaponTier: 1,
+    value: 10000,
+  }),
+  hullcracker_ii: item({
+    id: 'hullcracker_ii',
+    name: 'Hullcracker II',
+    type: 'Special',
+    category: 'Weapon',
+    craftBench: 'weapon_bench',
+    upgradeCost: {
+      advanced_mechanical_components: 1,
+      heavy_gun_parts: 2,
+    },
+    upgradesFrom: 'hullcracker_i',
+    upgradesTo: 'hullcracker_iii',
+    weaponBaseId: 'hullcracker_i',
+    weaponTier: 2,
+    value: 13000,
+  }),
+  hullcracker_iii: item({
+    id: 'hullcracker_iii',
+    name: 'Hullcracker III',
+    type: 'Special',
+    category: 'Weapon',
+    craftBench: 'weapon_bench',
+    upgradeCost: {
+      advanced_mechanical_components: 2,
+      heavy_gun_parts: 1,
+    },
+    upgradesFrom: 'hullcracker_ii',
+    upgradesTo: 'hullcracker_iv',
+    weaponBaseId: 'hullcracker_i',
+    weaponTier: 3,
+    value: 17000,
+  }),
+  hullcracker_iv: item({
+    id: 'hullcracker_iv',
+    name: 'Hullcracker IV',
+    type: 'Special',
+    category: 'Weapon',
+    craftBench: 'weapon_bench',
+    upgradeCost: {
+      advanced_mechanical_components: 2,
+      heavy_gun_parts: 3,
+    },
+    upgradesFrom: 'hullcracker_iii',
+    weaponBaseId: 'hullcracker_i',
+    weaponTier: 4,
+    value: 22000,
+  }),
+};
+
+const hullcrackerIvGoal: StoredList[] = [{
+  id: 'weapons',
+  name: 'Weapons',
+  type: 'user',
+  isEnabled: true,
+  items: [{ itemId: 'hullcracker_iv', quantity: 1, isEnabled: true }],
+}];
+
+describe('quartermaster hullcracker upgrade planning — recycle protection', () => {
+  it('does NOT recycle base-tier recipe ingredients that are needed for the tier I craft', () => {
+    // 3x magnetic_accelerator, enough exodus_modules + heavy_gun_parts for
+    // the full chain, 0x advanced_mechanical_components.
+    // The planner must reserve 1 MA for the hullcracker_i craft.
+    const result = computePlan(
+      hullcrackerItemsMap,
+      hullcrackerIvGoal,
+      [
+        { itemId: 'magnetic_accelerator', quantity: 3 },
+        { itemId: 'exodus_modules', quantity: 1 },
+        { itemId: 'heavy_gun_parts', quantity: 9 },
+      ],
+      benchLevels,
+      new Set(['hullcracker_i']),
+    );
+
+    // Total AMC needed for upgrades: 1 + 2 + 2 = 5
+    // After crafting hullcracker_i (1 MA consumed), only 2 MA remain.
+    // Recycling 2 MA gives 2 AMC — not enough for all upgrades.
+    // The target should NOT be satisfiable, and NO recycling should be
+    // committed because the upgrade path fails as a whole.
+    expect(result.satisfiableTargets.has('hullcracker_iv')).toBe(false);
+
+    // Crucial: recycling should not be shown if the plan failed,
+    // because the trial state was discarded.
+    const recycledMA = result.recyclePlan.actions.filter(
+      (action) => action.srcItemId === 'magnetic_accelerator',
+    );
+    expect(recycledMA).toEqual([]);
+  });
+
+  it('succeeds when enough magnetic_accelerators exist for both the base craft and all upgrade recycles', () => {
+    // 6x MA — 1 for craft, 5 recycled → 5 AMC covers all upgrades
+    const result = computePlan(
+      hullcrackerItemsMap,
+      hullcrackerIvGoal,
+      [
+        { itemId: 'magnetic_accelerator', quantity: 6 },
+        { itemId: 'exodus_modules', quantity: 1 },
+        { itemId: 'heavy_gun_parts', quantity: 9 },
+      ],
+      benchLevels,
+      new Set(['hullcracker_i']),
+    );
+
+    expect(result.satisfiableTargets.has('hullcracker_iv')).toBe(true);
+    expect(result.craftPlan.steps.map((step) => step.itemId)).toEqual(['hullcracker_i']);
+    expect(result.weaponUpgradePlan.steps.map((step) => step.toItemId)).toEqual([
+      'hullcracker_ii',
+      'hullcracker_iii',
+      'hullcracker_iv',
+    ]);
+
+    const recycledMA = result.recyclePlan.actions.filter(
+      (action) => action.srcItemId === 'magnetic_accelerator',
+    );
+    expect(recycledMA.length).toBeGreaterThan(0);
+    // Total MA recycled should be 5 (5 AMC needed, 1 MA = 1 AMC)
+    const totalRecycled = recycledMA.reduce((sum, action) => sum + action.qtyToRecycle, 0);
+    expect(totalRecycled).toBe(5);
+  });
+
+  it('does not recycle a direct recipe ingredient of a base-tier weapon when the base tier is not itself a list target', () => {
+    // This is the core issue: magnetic_accelerator is an ingredient of
+    // hullcracker_i, but hullcracker_i is not in the user's list (only
+    // hullcracker_iv is).  Therefore buildDirectRecipeInputWarnings() does
+    // not add magnetic_accelerator to activeDirectRecipeInputSet.
+    //
+    // When the upgrade steps call satisfyMaterialNeeds, the
+    // magnetic_accelerator is eligible for recycling because it is not
+    // protected — even though the hullcracker_i craft still needs 1 unit.
+    //
+    // With 3 MA and 0 AMC the upgrade path fails as a whole, so no
+    // recycling is committed.  But the protection gap exists in principle.
+    const result = computePlan(
+      hullcrackerItemsMap,
+      hullcrackerIvGoal,
+      [
+        { itemId: 'magnetic_accelerator', quantity: 3 },
+        { itemId: 'exodus_modules', quantity: 1 },
+        { itemId: 'heavy_gun_parts', quantity: 9 },
+      ],
+      benchLevels,
+      new Set(['hullcracker_i']),
+    );
+
+    // The plan fails because only 2 MA remain after the base craft,
+    // producing only 2 AMC when 5 are needed.
+    expect(result.satisfiableTargets.has('hullcracker_iv')).toBe(false);
+    expect(result.recyclePlan.actions).toEqual([]);
+  });
+
+  it('reproduces user bug: recycles MA for AMC then crafts MA again instead of reserving 1 MA for the base craft', () => {
+    // With 3 MA, 1 EM, 9 HGP and no AMC.
+    // The planner should:
+    // 1. Craft hullcracker_i (uses 1 MA, 1 EM, 3 HGP)
+    // 2. Recycle remaining 2 MA for AMC (→ 2 AMC)
+    // 3. Need more AMC for II→III and III→IV → fail
+    //
+    // recycleEligible must be capped by avail so recycle candidates
+    // do not include MA that was already consumed by the base craft.
+    const result = computePlan(
+      hullcrackerItemsMap,
+      hullcrackerIvGoal,
+      [
+        { itemId: 'magnetic_accelerator', quantity: 3 },
+        { itemId: 'exodus_modules', quantity: 1 },
+        { itemId: 'heavy_gun_parts', quantity: 9 },
+      ],
+      benchLevels,
+      new Set(['hullcracker_i']),
+    );
+
+    // No plan produced — the upgrade path fails and trial state is discarded.
+    expect(result.satisfiableTargets.has('hullcracker_iv')).toBe(false);
+    expect(result.recyclePlan.actions).toEqual([]);
+    expect(result.craftPlan.steps).toEqual([]);
+  });
+
+  it('tests scenario where base craft ingredients ARE missing — planner may recycle before crafting', () => {
+    const result = computePlan(
+      hullcrackerItemsMap,
+      hullcrackerIvGoal,
+      [
+        { itemId: 'magnetic_accelerator', quantity: 3 },
+      ],
+      benchLevels,
+      new Set(['hullcracker_i']),
+    );
+
+    expect(result.satisfiableTargets.has('hullcracker_iv')).toBe(false);
+    expect(result.recyclePlan.actions).toEqual([]);
+  });
+
+  it('correctly fails when only partial AMC exists and not enough MA remain after base craft', () => {
+    // Player has 3 MA, 1 EM, 9 HGP, and 2 AMC.
+    // After craft (1 MA), 2 MA remain. Recycling 2 → 2 AMC. Total AMC: 4.
+    // Still need 1 more AMC for III→IV.
+    // Previously recycleEligible was out of sync with avail, causing the planner
+    // to appear to recycle 3 MA (double-counting the one used for the base craft).
+    const result = computePlan(
+      hullcrackerItemsMap,
+      hullcrackerIvGoal,
+      [
+        { itemId: 'magnetic_accelerator', quantity: 3 },
+        { itemId: 'exodus_modules', quantity: 1 },
+        { itemId: 'heavy_gun_parts', quantity: 9 },
+        { itemId: 'advanced_mechanical_components', quantity: 2 },
+      ],
+      benchLevels,
+      new Set(['hullcracker_i']),
+    );
+
+    expect(result.satisfiableTargets.has('hullcracker_iv')).toBe(false);
+    expect(result.recyclePlan.actions).toEqual([]);
+  });
+});

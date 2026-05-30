@@ -296,6 +296,8 @@ function buildRecycleCandidates(
   for (const srcId of sortedIds) {
     const eligibleQty = state.recycleEligible[srcId] ?? 0;
     if (eligibleQty <= 0) continue;
+    const availableQty = Math.min(eligibleQty, getAvail(state, srcId));
+    if (availableQty <= 0) continue;
     if (state.protectedFromRecycle.has(srcId)) continue;
 
     const item = state.itemsMap[srcId];
@@ -322,7 +324,7 @@ function buildRecycleCandidates(
 
     candidates.push({
       srcItemId: srcId,
-      availableQty: eligibleQty,
+      availableQty,
       recyclesInto: item.recyclesInto,
       effectiveYield,
       coverageCount,
