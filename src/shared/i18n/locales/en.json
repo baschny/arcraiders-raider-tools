@@ -638,6 +638,7 @@
     },
     "crafting": {
       "noImpact": "No active target impact",
+      "repair": "Repair",
       "step1": "Step 1: Recycle First",
       "step2": "Step 2: Craft Items",
       "craftItems": "Craft Items",
@@ -657,7 +658,8 @@
         "inputsNeeded": "Inputs Needed",
         "upgradeFrom": "Upgrade From",
         "upgradeTo": "Upgrade To",
-        "qtyToUpgrade": "Qty to Upgrade"
+        "qtyToUpgrade": "Qty to Upgrade",
+        "durability": "Durability"
       },
       "blueprintUnlockCount": "{unlocked}/{total} unlocked"
     },
@@ -675,7 +677,8 @@
       "salvage": "Salvage",
       "craftingRecipe": "Crafting Recipe",
       "recyclesInto": "Recycles Into",
-      "salvagesInto": "Salvages Into"
+      "salvagesInto": "Salvages Into",
+      "neededForRepair": "Needed for Repair"
     },
     "itemIcon": {
       "uncraftable": "Cannot be crafted — requirements not met"

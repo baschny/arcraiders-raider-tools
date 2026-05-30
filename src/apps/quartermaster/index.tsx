@@ -271,8 +271,8 @@ export function QuartermasterApp() {
     if (!itemsMap) {
       return createEmptyResult();
     }
-    return computePlan(itemsMap, allLists, ownedItemQuantities, benchLevels, unlockedBlueprintItemIds);
-  }, [itemsMap, allLists, ownedItemQuantities, benchLevels, unlockedBlueprintItemIds]);
+    return computePlan(itemsMap, allLists, ownedItemQuantities, benchLevels, unlockedBlueprintItemIds, ownedItemRows);
+  }, [itemsMap, allLists, ownedItemQuantities, benchLevels, unlockedBlueprintItemIds, ownedItemRows]);
 
   const hasOwnedQuantities = cachedStash !== null && cachedLoadout !== null;
   const ownedQuantityByItemId = useMemo(() => {

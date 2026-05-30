@@ -101,6 +101,35 @@
     gap: 4px;
   }
 
+  &__durability {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 5px;
+  }
+
+  &__durability-bar-wrapper {
+    flex: 1;
+    max-width: 120px;
+    height: 8px;
+    background: $bg-tertiary;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  &__durability-bar {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.3s ease;
+  }
+
+  &__durability-label {
+    font-size: 11px;
+    color: $text-secondary;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
   &__indicator {
     display: inline-flex;
     align-items: center;

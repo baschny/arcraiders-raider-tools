@@ -1105,6 +1105,7 @@ export function runGreedyPlanner(
   targetPriority: Record<ItemId, TargetPriority> = {},
   unlockedBlueprintItemIds: Set<ItemId> = new Set(),
   requiredSourcesByItemId: Record<ItemId, RequiredSource[]> = {},
+  repairMaterialIds: Set<ItemId> = new Set(),
 ): GreedyPlanResult {
   // Compute missingFinal (CR-MOD-6.2)
   const missingFinal: Record<ItemId, Qty> = {};
@@ -1161,6 +1162,11 @@ export function runGreedyPlanner(
     }
   }
   for (const itemId of Object.keys(requiredFinal)) {
+    state.protectedFromRecycle.add(itemId);
+  }
+
+  // Protect repair materials from recycling so the repair pre-pass can consume them
+  for (const itemId of repairMaterialIds) {
     state.protectedFromRecycle.add(itemId);
   }
 

@@ -3,7 +3,7 @@
  * See specification section 7.6
  */
 
-import { AlertTriangle, RefreshCw, Hammer } from 'lucide-react';
+import { AlertTriangle, RefreshCw, Hammer, Wrench } from 'lucide-react';
 import type { ItemsMap, BenchId } from '../../types/item';
 import type { CraftPlan, PlannerResult, RecycleAction, RecyclePlan, WeaponUpgradePlan } from '../../types/planner';
 import { BENCH_ORDER } from '../../types/item';
@@ -308,6 +308,75 @@ export function CraftingView({
           </span>
         )}
       </div>
+
+      {/* Repair Section — before Recycle */}
+      {plannerResult.repairPlan.actions.length > 0 && (
+        <div className="crafting-view__section">
+          <h3 className="qm-section-title">
+            <Wrench size={18} />
+            {t('quartermaster.crafting.repair')}
+          </h3>
+          <table className="qm-table">
+            <colgroup>
+              <col className="crafting-view__col-item" />
+              <col className="crafting-view__col-name" />
+              <col className="crafting-view__col-qty" />
+              <col />
+              <col className="crafting-view__col-why" />
+            </colgroup>
+            <thead>
+              <tr>
+                <th style={{ width: 80 }}>{t('quartermaster.crafting.columns.item')}</th>
+                <th>{t('quartermaster.crafting.columns.name')}</th>
+                <th style={{ width: 100 }}>{t('quartermaster.crafting.columns.durability')}</th>
+                <th>{t('quartermaster.crafting.columns.inputsNeeded')}</th>
+                <th>{t('quartermaster.crafting.columns.why')}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {plannerResult.repairPlan.actions.map((action) => {
+                const item = itemsMap[action.itemId];
+                if (!item) return null;
+                const whyEntries = action.listSources.map((source) => ({
+                  key: `${action.itemId}-${source.listId}`,
+                  listName: source.listName,
+                  targetItemId: action.itemId,
+                  targetItemName: item.name,
+                  chainLabel: item.name,
+                }));
+                return (
+                  <tr key={`${action.itemId}-${action.instanceIndex}`}>
+                    <td>
+                      <ItemIcon
+                        itemId={item.id}
+                        name={item.name}
+                        icon={item.icon}
+                        rarity={item.rarity}
+                        quantity={getOwnedQuantity(item.id)}
+                        size="sm"
+                        showName={false}
+                        tooltipContext={tooltipContext}
+                      />
+                    </td>
+                    <td><span className="qm-item-name">{item.name}</span></td>
+                    <td>
+                      <span className="crafting-view__durability" style={{
+                        color: action.durabilityPercent < 30 ? '#e74c3c'
+                          : action.durabilityPercent <= 70 ? '#f0ad4e'
+                          : '#27ae60',
+                      }}>
+                        {action.durabilityPercent.toFixed(1)}%
+                      </span>
+                    </td>
+                    <td>{renderMaterialRows(action.materialsNeeded)}</td>
+                    <td>{renderWhyEntries(whyEntries, { showState: false })}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      )}
 
       {/* Recycle First Section */}
       {hasRecycleActions && (

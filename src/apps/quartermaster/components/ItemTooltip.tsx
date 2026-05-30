@@ -1,5 +1,5 @@
 import { createPortal } from 'react-dom';
-import { Backpack, CircleCheck, CircleX, Coins, Home, List, MapPin, PackageSearch, Recycle, Target, Weight, Wrench } from 'lucide-react';
+import { Backpack, CircleCheck, CircleX, Coins, Home, List, MapPin, PackageSearch, Recycle, Target, Weight, Wrench, Shield } from 'lucide-react';
 import type { ItemsMap, PlannerItem } from '../types/item';
 import type { ListType, PlannerResult } from '../types/planner';
 import { getEmptyItemInsight, type ItemInsightsMap } from '../utils/itemInsights';
@@ -75,7 +75,7 @@ export function ItemTooltip({
 
   return createPortal(
     <div
-      className={`qm-item-tooltip ${(insight.finalListNeeds.length > 0 || insight.craftingNeeds.length > 0 || insight.recycleSalvageUsages.length > 0) ? 'qm-item-tooltip--two-col' : ''}`}
+      className={`qm-item-tooltip ${(insight.finalListNeeds.length > 0 || insight.craftingNeeds.length > 0 || insight.recycleSalvageUsages.length > 0 || insight.repairNeeds.length > 0) ? 'qm-item-tooltip--two-col' : ''}`}
       style={{
         left: `${position.x}px`,
         top: `${position.y}px`,
@@ -111,7 +111,7 @@ export function ItemTooltip({
         </div>
       </div>
 
-      <div className={`qm-item-tooltip__body ${(insight.finalListNeeds.length > 0 || insight.craftingNeeds.length > 0 || insight.recycleSalvageUsages.length > 0) ? 'qm-item-tooltip__body--two-col' : ''}`}>
+      <div className={`qm-item-tooltip__body ${(insight.finalListNeeds.length > 0 || insight.craftingNeeds.length > 0 || insight.recycleSalvageUsages.length > 0 || insight.repairNeeds.length > 0) ? 'qm-item-tooltip__body--two-col' : ''}`}>
         <div className="qm-item-tooltip__col-left">
           {item.description && (
             <div className="qm-item-tooltip__description">{item.description}</div>
@@ -265,7 +265,7 @@ export function ItemTooltip({
           )}
         </div>
 
-        {(insight.finalListNeeds.length > 0 || insight.craftingNeeds.length > 0 || insight.recycleSalvageUsages.length > 0) && (
+        {(insight.finalListNeeds.length > 0 || insight.craftingNeeds.length > 0 || insight.repairNeeds.length > 0 || insight.recycleSalvageUsages.length > 0) && (
           <div className="qm-item-tooltip__col-right">
             {insight.finalListNeeds.length > 0 && (
               <div className="qm-item-tooltip__section">
@@ -307,6 +307,39 @@ export function ItemTooltip({
                         </div>
                         <div className="qm-item-tooltip__needs-right">
                           {renderCompleteBadge(need.isComplete, t)}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
+            {insight.repairNeeds.length > 0 && (
+              <div className="qm-item-tooltip__section">
+                <h4>
+                  <Shield size={14} />
+                  {t('quartermaster.itemTooltip.neededForRepair')}
+                </h4>
+                <div className="qm-item-tooltip__needs-grid">
+                  {insight.repairNeeds.map((need, index) => {
+                    const targetItem = itemsMap[need.targetItemId];
+                    const targetIcon = targetItem?.icon ?? '';
+                    return (
+                      <div className="qm-item-tooltip__needs-row" key={`repair-${need.targetItemId}-${need.listId}-${index}`}>
+                        <div className="qm-item-tooltip__needs-left">
+                          {getListIcon(need.listType)}
+                          <img
+                            src={targetIcon}
+                            alt={need.targetItemName}
+                            className={`qm-item-tooltip__needs-icon ${getRarityClass(targetItem?.rarity?.toLowerCase() ?? 'common')}`}
+                          />
+                          <span className="qm-item-tooltip__needs-name">
+                            {need.targetItemName}
+                          </span>
+                        </div>
+                        <div className="qm-item-tooltip__needs-right">
+                          <span className="qm-item-tooltip__needs-quantity">{need.quantity}×</span>
                         </div>
                       </div>
                     );

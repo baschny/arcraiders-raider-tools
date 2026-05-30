@@ -71,9 +71,10 @@ export function StashView({
     for (const ownedItem of ownedItemRows) {
       const insight = itemInsights[ownedItem.itemId];
       const hasRelevance =
-        (insight && (insight.finalListNeeds.length > 0 || insight.craftingNeeds.length > 0 || insight.recycleSalvageUsages.length > 0)) ||
+        (insight && (insight.finalListNeeds.length > 0 || insight.craftingNeeds.length > 0 || insight.recycleSalvageUsages.length > 0 || insight.repairNeeds.length > 0)) ||
         upgradeBaseItemIds.has(ownedItem.itemId);
       if (!hasRelevance) {
+        // For unstacked items, use itemId without the __suffix
         ids.add(ownedItem.itemId);
       }
     }
@@ -124,7 +125,12 @@ export function StashView({
       .sort((a, b) => {
         const itemA = itemsMap[a.itemId];
         const itemB = itemsMap[b.itemId];
-        return compareText(itemA?.name ?? '', itemB?.name ?? '');
+        const nameCompare = compareText(itemA?.name ?? '', itemB?.name ?? '');
+        if (nameCompare !== 0) return nameCompare;
+        // Secondary sort: durability descending (better condition first)
+        const durabilityA = a.durabilityPercent ?? 100;
+        const durabilityB = b.durabilityPercent ?? 100;
+        return durabilityB - durabilityA;
       });
   }, [ownedItemRows, itemsMap, searchQuery, categoryFilter, rarityFilter, showOnlyUseless, uselessItemIds, compareText]);
 
@@ -163,6 +169,12 @@ export function StashView({
     if (!action || action.reasons.length === 0) return '';
     const reason = action.reasons[0];
     return `${reason.targetItemName} (${reason.listName})`;
+  };
+
+  const getDurabilityColor = (percent: number): string => {
+    if (percent < 30) return '#e74c3c';
+    if (percent <= 70) return '#f0ad4e';
+    return '#27ae60';
   };
 
   const getRequirementLabel = (listNames: string[]): string => {
@@ -346,8 +358,12 @@ export function StashView({
               const locationLabels = getLocationLabels(ownedItem.locations);
               const attachmentsCounted = hasCountedAttachments(ownedItem.locations);
 
+              const rowKey = ownedItem.instanceIndex !== undefined
+                ? `${ownedItem.itemId}__${ownedItem.instanceIndex}`
+                : ownedItem.itemId;
+
               return (
-                <tr key={ownedItem.itemId}>
+                <tr key={rowKey}>
                   <td>
                     <ItemIcon
                       itemId={item.id}
@@ -373,6 +389,22 @@ export function StashView({
                       <div className="stash-view__attachment-note">
                         <Paperclip size={12} />
                         {t('quartermaster.stash.attachmentsCounted')}
+                      </div>
+                    )}
+                    {item.repairCost && ownedItem.durabilityPercent !== undefined && (
+                      <div className="stash-view__durability">
+                        <div className="stash-view__durability-bar-wrapper">
+                          <div
+                            className="stash-view__durability-bar"
+                            style={{
+                              width: `${Math.min(100, Math.max(0, ownedItem.durabilityPercent))}%`,
+                              backgroundColor: getDurabilityColor(ownedItem.durabilityPercent),
+                            }}
+                          />
+                        </div>
+                        <span className="stash-view__durability-label">
+                          {ownedItem.durabilityPercent.toFixed(1)}%
+                        </span>
                       </div>
                     )}
                   </td>

@@ -57,6 +57,8 @@ interface SourceItem {
   upgradesTo?: string;
   recyclesInto?: Record<string, number>;
   salvagesInto?: Record<string, number>;
+  repairCost?: Record<string, number>;
+  repairDurability?: number;
   stackSize?: number;
   value?: number;
   weightKg?: number;
@@ -87,6 +89,8 @@ interface PlannerItem {
   weaponTier?: 1 | 2 | 3 | 4;
   recyclesInto?: Record<string, number>;
   salvagesInto?: Record<string, number>;
+  repairCost?: Record<string, number>;
+  repairDurability?: number;
   stackSize: number;
   value?: number;
   weight?: number;
@@ -269,6 +273,8 @@ function processItem(source: SourceItem, locale: OutputLocale): { id: string; it
     ...(source.upgradesTo && { upgradesTo: source.upgradesTo }),
     ...(source.recyclesInto && Object.keys(source.recyclesInto).length > 0 && { recyclesInto: sortObjectKeys(source.recyclesInto) }),
     ...(source.salvagesInto && Object.keys(source.salvagesInto).length > 0 && { salvagesInto: sortObjectKeys(source.salvagesInto) }),
+    ...(source.repairCost && Object.keys(source.repairCost).length > 0 && { repairCost: sortObjectKeys(source.repairCost) }),
+    ...(source.repairDurability !== undefined && { repairDurability: source.repairDurability }),
     stackSize,
     ...(source.value !== undefined && { value: source.value }),
     ...(source.weightKg !== undefined && { weight: source.weightKg }),

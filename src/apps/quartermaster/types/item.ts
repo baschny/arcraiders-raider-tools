@@ -41,6 +41,8 @@ export interface PlannerItem {
   weaponTier?: 1 | 2 | 3 | 4;
   recyclesInto?: Record<string, number>;
   salvagesInto?: Record<string, number>;
+  repairCost?: Record<string, number>;
+  repairDurability?: number;
 
   stackSize: number;
   value?: number;
@@ -62,6 +64,8 @@ export interface LocalizedPlannerItemData extends Omit<PlannerItem, 'id' | 'name
     value: string;
     originalEn: string;
   };
+  repairCost?: Record<string, number>;
+  repairDurability?: number;
 }
 
 export interface LocalizedItemsData {

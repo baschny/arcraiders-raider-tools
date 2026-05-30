@@ -155,8 +155,25 @@ function addOwnedItem(
   quantity: number,
   location: OwnedItemLocation,
   itemsMap?: ItemsMap,
+  durabilityPercent?: number,
 ): void {
   if (!shouldIncludeItem(itemId, quantity, itemsMap)) return;
+
+  const itemHasRepairCost = !!(itemsMap && itemId && itemsMap[itemId]?.repairCost);
+
+  // For items with repairCost, do NOT aggregate — create separate rows per instance
+  if (itemHasRepairCost) {
+    const instanceIndex = Array.from(rows.values()).filter((r) => r.itemId === itemId).length;
+    const key = `${itemId}__${instanceIndex}`;
+    rows.set(key, {
+      itemId,
+      quantity,
+      locations: [location],
+      durabilityPercent,
+      instanceIndex,
+    });
+    return;
+  }
 
   const existing = rows.get(itemId);
   if (existing) {
@@ -188,7 +205,7 @@ function addAttachments(
       quantity: attachment.quantity,
       parentItemId,
       parentName: parentName || parentItemId,
-    }, itemsMap);
+    }, itemsMap, attachment.durabilityPercent);
   }
 }
 
@@ -203,7 +220,7 @@ function addLoadoutSlot(
     source: 'loadout',
     quantity: slot.quantity,
     hasAttachments: (slot.attachments?.some((attachment) => shouldIncludeItem(attachment.itemId, attachment.quantity, itemsMap)) ?? false),
-  }, itemsMap);
+  }, itemsMap, slot.durabilityPercent);
   addAttachments(rows, slot.attachments, 'loadout_attachment', slot.itemId, slot.name, itemsMap);
 }
 
@@ -222,7 +239,7 @@ export function aggregateOwnedInventory(
       source: 'stash',
       quantity: item.quantity,
       hasAttachments: (item.attachments?.some((attachment) => shouldIncludeItem(attachment.itemId, attachment.quantity, itemsMap)) ?? false),
-    }, itemsMap);
+    }, itemsMap, item.durabilityPercent);
     addAttachments(rows, item.attachments, 'stash_attachment', item.itemId, item.name, itemsMap);
   }
 

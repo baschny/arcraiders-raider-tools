@@ -21,6 +21,11 @@
       "salvagesInto": {
         "wires": 3
       },
+      "repairCost": {
+        "metal_parts": 2,
+        "wires": 3
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 7000,
       "weight": 1
@@ -420,6 +425,11 @@
       "salvagesInto": {
         "simple_gun_parts": 2
       },
+      "repairCost": {
+        "mechanical_components": 2,
+        "simple_gun_parts": 2
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 5000,
       "weight": 5,
@@ -453,6 +463,11 @@
       "salvagesInto": {
         "simple_gun_parts": 3
       },
+      "repairCost": {
+        "mechanical_components": 3,
+        "simple_gun_parts": 3
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 7000,
       "weight": 5,
@@ -487,6 +502,11 @@
       "salvagesInto": {
         "simple_gun_parts": 4
       },
+      "repairCost": {
+        "mechanical_components": 4,
+        "simple_gun_parts": 4
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 10000,
       "weight": 5,
@@ -520,6 +540,11 @@
       "salvagesInto": {
         "simple_gun_parts": 5
       },
+      "repairCost": {
+        "mechanical_components": 5,
+        "simple_gun_parts": 5
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 13000,
       "weight": 5,
@@ -578,6 +603,11 @@
       "salvagesInto": {
         "magnetic_accelerator": 1
       },
+      "repairCost": {
+        "complex_gun_parts": 1,
+        "magnetic_accelerator": 2
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 27500,
       "weight": 14
@@ -871,6 +901,11 @@
       "salvagesInto": {
         "simple_gun_parts": 2
       },
+      "repairCost": {
+        "mechanical_components": 2,
+        "simple_gun_parts": 2
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 5500,
       "weight": 7,
@@ -904,6 +939,11 @@
       "salvagesInto": {
         "simple_gun_parts": 3
       },
+      "repairCost": {
+        "mechanical_components": 3,
+        "simple_gun_parts": 3
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 8000,
       "weight": 7,
@@ -938,6 +978,11 @@
       "salvagesInto": {
         "simple_gun_parts": 4
       },
+      "repairCost": {
+        "mechanical_components": 4,
+        "simple_gun_parts": 4
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 11500,
       "weight": 7,
@@ -971,6 +1016,11 @@
       "salvagesInto": {
         "simple_gun_parts": 5
       },
+      "repairCost": {
+        "mechanical_components": 5,
+        "simple_gun_parts": 5
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 15000,
       "weight": 7,
@@ -1160,6 +1210,11 @@
       "salvagesInto": {
         "advanced_mechanical_components": 1
       },
+      "repairCost": {
+        "advanced_mechanical_components": 1,
+        "heavy_gun_parts": 2
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 8000,
       "weight": 11,
@@ -1193,6 +1248,11 @@
       "salvagesInto": {
         "advanced_mechanical_components": 2
       },
+      "repairCost": {
+        "advanced_mechanical_components": 2,
+        "heavy_gun_parts": 2
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 11000,
       "weight": 11,
@@ -1227,6 +1287,11 @@
       "salvagesInto": {
         "advanced_mechanical_components": 3
       },
+      "repairCost": {
+        "advanced_mechanical_components": 2,
+        "heavy_gun_parts": 3
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 14000,
       "weight": 11,
@@ -1260,6 +1325,11 @@
       "salvagesInto": {
         "advanced_mechanical_components": 4
       },
+      "repairCost": {
+        "advanced_mechanical_components": 3,
+        "heavy_gun_parts": 3
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 18000,
       "weight": 11,
@@ -1320,6 +1390,11 @@
       "salvagesInto": {
         "plastic_parts": 4
       },
+      "repairCost": {
+        "plastic_parts": 4,
+        "rubber_parts": 2
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 640,
       "weight": 0.5
@@ -1520,6 +1595,11 @@
       "salvagesInto": {
         "light_gun_parts": 2
       },
+      "repairCost": {
+        "advanced_mechanical_components": 2,
+        "light_gun_parts": 2
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 13000,
       "weight": 7,
@@ -1553,6 +1633,11 @@
       "salvagesInto": {
         "light_gun_parts": 3
       },
+      "repairCost": {
+        "advanced_mechanical_components": 3,
+        "light_gun_parts": 3
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 17000,
       "weight": 7,
@@ -1587,6 +1672,11 @@
       "salvagesInto": {
         "light_gun_parts": 4
       },
+      "repairCost": {
+        "advanced_mechanical_components": 4,
+        "light_gun_parts": 4
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 22000,
       "weight": 7,
@@ -1620,6 +1710,11 @@
       "salvagesInto": {
         "light_gun_parts": 4
       },
+      "repairCost": {
+        "advanced_mechanical_components": 5,
+        "light_gun_parts": 4
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 27000,
       "weight": 7,
@@ -1878,6 +1973,11 @@
       "salvagesInto": {
         "simple_gun_parts": 2
       },
+      "repairCost": {
+        "mechanical_components": 1,
+        "simple_gun_parts": 2
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 2900,
       "weight": 4,
@@ -1911,6 +2011,11 @@
       "salvagesInto": {
         "simple_gun_parts": 2
       },
+      "repairCost": {
+        "mechanical_components": 2,
+        "simple_gun_parts": 2
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 5000,
       "weight": 4,
@@ -1945,6 +2050,11 @@
       "salvagesInto": {
         "simple_gun_parts": 3
       },
+      "repairCost": {
+        "mechanical_components": 3,
+        "simple_gun_parts": 3
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 7000,
       "weight": 4,
@@ -1978,6 +2088,11 @@
       "salvagesInto": {
         "simple_gun_parts": 4
       },
+      "repairCost": {
+        "mechanical_components": 4,
+        "simple_gun_parts": 4
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 10000,
       "weight": 4,
@@ -2142,8 +2257,7 @@
       "icon": "https://cdn.arctracker.io/items/v2/canto_i.png",
       "rarity": "Rare",
       "type": "SMG",
-      "category": "Weapon",
-      "subCategory": "SMG",
+      "category": "SMG",
       "craftBench": "weapon_bench",
       "stationLevelRequired": 3,
       "blueprintLocked": true,
@@ -2173,8 +2287,7 @@
       "icon": "https://cdn.arctracker.io/items/v2/canto_ii.png",
       "rarity": "Rare",
       "type": "SMG",
-      "category": "Weapon",
-      "subCategory": "SMG",
+      "category": "SMG",
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
@@ -2202,8 +2315,7 @@
       "icon": "https://cdn.arctracker.io/items/v2/canto_iii.png",
       "rarity": "Rare",
       "type": "SMG",
-      "category": "Weapon",
-      "subCategory": "SMG",
+      "category": "SMG",
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
@@ -2231,8 +2343,7 @@
       "icon": "https://cdn.arctracker.io/items/v2/canto_iv.png",
       "rarity": "Rare",
       "type": "SMG",
-      "category": "Weapon",
-      "subCategory": "SMG",
+      "category": "SMG",
       "stationLevelRequired": 1,
       "blueprintLocked": false,
       "craftQuantity": 1,
@@ -2356,6 +2467,11 @@
       "salvagesInto": {
         "plastic_parts": 3
       },
+      "repairCost": {
+        "plastic_parts": 3,
+        "rubber_parts": 3
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 640,
       "weight": 2
@@ -2385,6 +2501,11 @@
       "salvagesInto": {
         "electrical_components": 1
       },
+      "repairCost": {
+        "electrical_components": 1,
+        "magnet": 1
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 2000,
       "weight": 3
@@ -2414,6 +2535,11 @@
       "salvagesInto": {
         "electrical_components": 2
       },
+      "repairCost": {
+        "advanced_electrical_components": 1,
+        "processor": 2
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 5000,
       "weight": 5
@@ -2443,6 +2569,11 @@
       "salvagesInto": {
         "electrical_components": 2
       },
+      "repairCost": {
+        "advanced_electrical_components": 1,
+        "processor": 2
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 5000,
       "weight": 5
@@ -3602,6 +3733,11 @@
       "salvagesInto": {
         "magnetic_accelerator": 1
       },
+      "repairCost": {
+        "complex_gun_parts": 1,
+        "magnetic_accelerator": 2
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 27500,
       "weight": 14
@@ -4239,6 +4375,11 @@
       "salvagesInto": {
         "metal_parts": 2
       },
+      "repairCost": {
+        "metal_parts": 2,
+        "rubber_parts": 1
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 475,
       "weight": 8,
@@ -4271,6 +4412,11 @@
       "salvagesInto": {
         "metal_parts": 4
       },
+      "repairCost": {
+        "metal_parts": 4,
+        "rubber_parts": 3
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 1000,
       "weight": 8,
@@ -4305,6 +4451,11 @@
       "salvagesInto": {
         "simple_gun_parts": 1
       },
+      "repairCost": {
+        "metal_parts": 6,
+        "simple_gun_parts": 1
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 2000,
       "weight": 8,
@@ -4338,6 +4489,11 @@
       "salvagesInto": {
         "simple_gun_parts": 2
       },
+      "repairCost": {
+        "mechanical_components": 1,
+        "simple_gun_parts": 2
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 2900,
       "weight": 8,
@@ -4600,6 +4756,11 @@
       "salvagesInto": {
         "fireball_burner": 1
       },
+      "repairCost": {
+        "canister": 1,
+        "fireball_burner": 1
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 2000,
       "weight": 1
@@ -5047,6 +5208,11 @@
       "salvagesInto": {
         "metal_parts": 2
       },
+      "repairCost": {
+        "metal_parts": 2,
+        "rubber_parts": 1
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 450,
       "weight": 3,
@@ -5079,6 +5245,11 @@
       "salvagesInto": {
         "metal_parts": 4
       },
+      "repairCost": {
+        "metal_parts": 4,
+        "rubber_parts": 3
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 1000,
       "weight": 3,
@@ -5113,6 +5284,11 @@
       "salvagesInto": {
         "simple_gun_parts": 1
       },
+      "repairCost": {
+        "metal_parts": 6,
+        "simple_gun_parts": 1
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 2000,
       "weight": 3,
@@ -5146,6 +5322,11 @@
       "salvagesInto": {
         "simple_gun_parts": 2
       },
+      "repairCost": {
+        "mechanical_components": 1,
+        "simple_gun_parts": 2
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 2900,
       "weight": 3,
@@ -5289,6 +5470,11 @@
       "salvagesInto": {
         "arc_alloy": 4
       },
+      "repairCost": {
+        "arc_circuitry": 2,
+        "voltage_converter": 1
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 5500,
       "weight": 9
@@ -5445,6 +5631,11 @@
       "salvagesInto": {
         "heavy_gun_parts": 2
       },
+      "repairCost": {
+        "advanced_mechanical_components": 2,
+        "heavy_gun_parts": 1
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 10000,
       "weight": 7,
@@ -5478,6 +5669,11 @@
       "salvagesInto": {
         "heavy_gun_parts": 3
       },
+      "repairCost": {
+        "advanced_mechanical_components": 2,
+        "heavy_gun_parts": 2
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 13000,
       "weight": 7,
@@ -5512,6 +5708,11 @@
       "salvagesInto": {
         "heavy_gun_parts": 4
       },
+      "repairCost": {
+        "advanced_mechanical_components": 3,
+        "heavy_gun_parts": 3
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 17000,
       "weight": 7,
@@ -5545,6 +5746,11 @@
       "salvagesInto": {
         "heavy_gun_parts": 5
       },
+      "repairCost": {
+        "advanced_mechanical_components": 4,
+        "heavy_gun_parts": 4
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 22000,
       "weight": 7,
@@ -5632,6 +5838,11 @@
       "salvagesInto": {
         "simple_gun_parts": 2
       },
+      "repairCost": {
+        "mechanical_components": 2,
+        "simple_gun_parts": 2
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 5000,
       "weight": 8,
@@ -5665,6 +5876,11 @@
       "salvagesInto": {
         "simple_gun_parts": 3
       },
+      "repairCost": {
+        "mechanical_components": 3,
+        "simple_gun_parts": 3
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 7000,
       "weight": 8,
@@ -5699,6 +5915,11 @@
       "salvagesInto": {
         "simple_gun_parts": 4
       },
+      "repairCost": {
+        "mechanical_components": 4,
+        "simple_gun_parts": 4
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 10000,
       "weight": 8,
@@ -5732,6 +5953,11 @@
       "salvagesInto": {
         "simple_gun_parts": 5
       },
+      "repairCost": {
+        "mechanical_components": 5,
+        "simple_gun_parts": 5
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 13000,
       "weight": 8,
@@ -5930,6 +6156,11 @@
       "salvagesInto": {
         "advanced_mechanical_components": 3
       },
+      "repairCost": {
+        "complex_gun_parts": 1,
+        "magnetic_accelerator": 2
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 27500,
       "weight": 9
@@ -5961,6 +6192,11 @@
       "salvagesInto": {
         "metal_parts": 3
       },
+      "repairCost": {
+        "metal_parts": 3,
+        "rubber_parts": 2
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 840,
       "weight": 7,
@@ -5994,6 +6230,11 @@
       "salvagesInto": {
         "metal_parts": 6
       },
+      "repairCost": {
+        "metal_parts": 6,
+        "rubber_parts": 6
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 2000,
       "weight": 7,
@@ -6028,6 +6269,11 @@
       "salvagesInto": {
         "simple_gun_parts": 1
       },
+      "repairCost": {
+        "metal_parts": 12,
+        "simple_gun_parts": 1
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 3000,
       "weight": 7,
@@ -6061,6 +6307,11 @@
       "salvagesInto": {
         "simple_gun_parts": 2
       },
+      "repairCost": {
+        "mechanical_components": 2,
+        "simple_gun_parts": 2
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 5000,
       "weight": 7,
@@ -6393,6 +6644,10 @@
       "salvagesInto": {
         "arc_alloy": 1
       },
+      "repairCost": {
+        "plastic_parts": 4
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 640,
       "weight": 5
@@ -6481,6 +6736,11 @@
       "salvagesInto": {
         "plastic_parts": 3
       },
+      "repairCost": {
+        "plastic_parts": 3,
+        "rubber_parts": 3
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 640,
       "weight": 1
@@ -6510,6 +6770,11 @@
       "salvagesInto": {
         "electrical_components": 1
       },
+      "repairCost": {
+        "electrical_components": 1,
+        "magnet": 1
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 2000,
       "weight": 2
@@ -6539,6 +6804,11 @@
       "salvagesInto": {
         "electrical_components": 2
       },
+      "repairCost": {
+        "advanced_electrical_components": 1,
+        "processor": 2
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 5000,
       "weight": 3
@@ -6597,6 +6867,11 @@
       "salvagesInto": {
         "electrical_components": 2
       },
+      "repairCost": {
+        "advanced_electrical_components": 1,
+        "processor": 2
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 5000,
       "weight": 4
@@ -6920,6 +7195,11 @@
       "salvagesInto": {
         "arc_alloy": 2
       },
+      "repairCost": {
+        "arc_circuitry": 1,
+        "battery": 1
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 2000,
       "weight": 7
@@ -7463,6 +7743,11 @@
       "salvagesInto": {
         "medium_gun_parts": 2
       },
+      "repairCost": {
+        "advanced_mechanical_components": 1,
+        "medium_gun_parts": 1
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 7000,
       "weight": 7,
@@ -7496,6 +7781,11 @@
       "salvagesInto": {
         "medium_gun_parts": 2
       },
+      "repairCost": {
+        "advanced_mechanical_components": 2,
+        "medium_gun_parts": 1
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 10000,
       "weight": 7,
@@ -7530,6 +7820,11 @@
       "salvagesInto": {
         "medium_gun_parts": 3
       },
+      "repairCost": {
+        "advanced_mechanical_components": 2,
+        "medium_gun_parts": 3
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 13000,
       "weight": 7,
@@ -7563,6 +7858,11 @@
       "salvagesInto": {
         "medium_gun_parts": 3
       },
+      "repairCost": {
+        "advanced_mechanical_components": 3,
+        "medium_gun_parts": 3
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 17000,
       "weight": 7,
@@ -7665,6 +7965,11 @@
       "salvagesInto": {
         "advanced_electrical_components": 1
       },
+      "repairCost": {
+        "advanced_electrical_components": 1,
+        "speaker_component": 2
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 5000,
       "weight": 3
@@ -8415,6 +8720,11 @@
       "salvagesInto": {
         "metal_parts": 4
       },
+      "repairCost": {
+        "mechanical_components": 1,
+        "rubber_parts": 2
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 1750,
       "weight": 6,
@@ -8447,6 +8757,11 @@
       "salvagesInto": {
         "metal_parts": 8
       },
+      "repairCost": {
+        "mechanical_components": 2,
+        "rubber_parts": 1
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 3000,
       "weight": 6,
@@ -8481,6 +8796,11 @@
       "salvagesInto": {
         "metal_parts": 12
       },
+      "repairCost": {
+        "mechanical_components": 2,
+        "simple_gun_parts": 1
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 5000,
       "weight": 6,
@@ -8514,6 +8834,11 @@
       "salvagesInto": {
         "metal_parts": 14
       },
+      "repairCost": {
+        "mechanical_components": 3,
+        "simple_gun_parts": 2
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 7000,
       "weight": 6,
@@ -8540,6 +8865,10 @@
       "salvagesInto": {
         "plastic_parts": 4
       },
+      "repairCost": {
+        "plastic_parts": 4
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 1000,
       "weight": 0.2,
@@ -8699,6 +9028,11 @@
       "salvagesInto": {
         "medium_gun_parts": 2
       },
+      "repairCost": {
+        "advanced_mechanical_components": 1,
+        "medium_gun_parts": 1
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 7000,
       "weight": 10,
@@ -8732,6 +9066,11 @@
       "salvagesInto": {
         "medium_gun_parts": 2
       },
+      "repairCost": {
+        "advanced_mechanical_components": 2,
+        "medium_gun_parts": 1
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 10000,
       "weight": 10,
@@ -8766,6 +9105,11 @@
       "salvagesInto": {
         "medium_gun_parts": 3
       },
+      "repairCost": {
+        "advanced_mechanical_components": 2,
+        "medium_gun_parts": 3
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 13000,
       "weight": 10,
@@ -8799,6 +9143,11 @@
       "salvagesInto": {
         "medium_gun_parts": 3
       },
+      "repairCost": {
+        "advanced_mechanical_components": 3,
+        "medium_gun_parts": 3
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 17000,
       "weight": 10,
@@ -9746,6 +10095,10 @@
       "salvagesInto": {
         "plastic_parts": 4
       },
+      "repairCost": {
+        "plastic_parts": 4
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 1000,
       "weight": 0.2,
@@ -10290,6 +10643,11 @@
       "salvagesInto": {
         "advanced_electrical_components": 2
       },
+      "repairCost": {
+        "exodus_modules": 1,
+        "power_rod": 1
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 14000,
       "weight": 5
@@ -10820,6 +11178,11 @@
       "salvagesInto": {
         "metal_parts": 3
       },
+      "repairCost": {
+        "metal_parts": 3,
+        "rubber_parts": 2
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 800,
       "weight": 5,
@@ -10853,6 +11216,11 @@
       "salvagesInto": {
         "metal_parts": 6
       },
+      "repairCost": {
+        "metal_parts": 6,
+        "rubber_parts": 6
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 2000,
       "weight": 5,
@@ -10887,6 +11255,11 @@
       "salvagesInto": {
         "simple_gun_parts": 1
       },
+      "repairCost": {
+        "metal_parts": 12,
+        "simple_gun_parts": 1
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 3000,
       "weight": 5,
@@ -10920,6 +11293,11 @@
       "salvagesInto": {
         "simple_gun_parts": 2
       },
+      "repairCost": {
+        "mechanical_components": 2,
+        "simple_gun_parts": 2
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 5000,
       "weight": 5,
@@ -11093,6 +11471,11 @@
       "salvagesInto": {
         "plastic_parts": 3
       },
+      "repairCost": {
+        "plastic_parts": 3,
+        "rubber_parts": 3
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 640,
       "weight": 2
@@ -11122,6 +11505,11 @@
       "salvagesInto": {
         "electrical_components": 1
       },
+      "repairCost": {
+        "electrical_components": 1,
+        "magnet": 1
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 2000,
       "weight": 2
@@ -11151,6 +11539,11 @@
       "salvagesInto": {
         "electrical_components": 2
       },
+      "repairCost": {
+        "advanced_electrical_components": 1,
+        "processor": 2
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 5000,
       "weight": 5
@@ -11180,6 +11573,11 @@
       "salvagesInto": {
         "electrical_components": 2
       },
+      "repairCost": {
+        "advanced_electrical_components": 1,
+        "processor": 2
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 5000,
       "weight": 4
@@ -11238,6 +11636,11 @@
       "salvagesInto": {
         "electrical_components": 2
       },
+      "repairCost": {
+        "advanced_electrical_components": 1,
+        "processor": 2
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 5000,
       "weight": 4
@@ -11379,6 +11782,11 @@
       "salvagesInto": {
         "medium_gun_parts": 2
       },
+      "repairCost": {
+        "advanced_mechanical_components": 2,
+        "medium_gun_parts": 2
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 13000,
       "weight": 11,
@@ -11412,6 +11820,11 @@
       "salvagesInto": {
         "medium_gun_parts": 3
       },
+      "repairCost": {
+        "advanced_mechanical_components": 3,
+        "medium_gun_parts": 3
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 17000,
       "weight": 11,
@@ -11446,6 +11859,11 @@
       "salvagesInto": {
         "medium_gun_parts": 4
       },
+      "repairCost": {
+        "advanced_mechanical_components": 4,
+        "medium_gun_parts": 4
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 22000,
       "weight": 11,
@@ -11479,6 +11897,11 @@
       "salvagesInto": {
         "medium_gun_parts": 5
       },
+      "repairCost": {
+        "advanced_mechanical_components": 5,
+        "medium_gun_parts": 4
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 27000,
       "weight": 11,
@@ -11643,6 +12066,11 @@
       "salvagesInto": {
         "medium_gun_parts": 2
       },
+      "repairCost": {
+        "advanced_mechanical_components": 1,
+        "medium_gun_parts": 1
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 7000,
       "weight": 12,
@@ -11676,6 +12104,11 @@
       "salvagesInto": {
         "medium_gun_parts": 2
       },
+      "repairCost": {
+        "advanced_mechanical_components": 2,
+        "medium_gun_parts": 1
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 10000,
       "weight": 12,
@@ -11710,6 +12143,11 @@
       "salvagesInto": {
         "medium_gun_parts": 3
       },
+      "repairCost": {
+        "advanced_mechanical_components": 2,
+        "medium_gun_parts": 3
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 13000,
       "weight": 12,
@@ -11743,6 +12181,11 @@
       "salvagesInto": {
         "medium_gun_parts": 3
       },
+      "repairCost": {
+        "advanced_mechanical_components": 3,
+        "medium_gun_parts": 3
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 17000,
       "weight": 12,
@@ -12016,6 +12459,11 @@
       "salvagesInto": {
         "medium_gun_parts": 2
       },
+      "repairCost": {
+        "advanced_mechanical_components": 1,
+        "medium_gun_parts": 1
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 7000,
       "weight": 5,
@@ -12049,6 +12497,11 @@
       "salvagesInto": {
         "medium_gun_parts": 2
       },
+      "repairCost": {
+        "advanced_mechanical_components": 2,
+        "medium_gun_parts": 1
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 10000,
       "weight": 5,
@@ -12083,6 +12536,11 @@
       "salvagesInto": {
         "medium_gun_parts": 3
       },
+      "repairCost": {
+        "advanced_mechanical_components": 2,
+        "medium_gun_parts": 3
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 13000,
       "weight": 5,
@@ -12116,6 +12574,11 @@
       "salvagesInto": {
         "medium_gun_parts": 3
       },
+      "repairCost": {
+        "advanced_mechanical_components": 3,
+        "medium_gun_parts": 3
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 17000,
       "weight": 5,
@@ -12287,6 +12750,11 @@
       "salvagesInto": {
         "antiseptic": 1
       },
+      "repairCost": {
+        "antiseptic": 2,
+        "canister": 1
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 3400,
       "weight": 1
@@ -12366,6 +12834,11 @@
       "salvagesInto": {
         "heavy_gun_parts": 2
       },
+      "repairCost": {
+        "advanced_mechanical_components": 2,
+        "heavy_gun_parts": 1
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 10000,
       "weight": 8,
@@ -12399,6 +12872,11 @@
       "salvagesInto": {
         "heavy_gun_parts": 3
       },
+      "repairCost": {
+        "advanced_mechanical_components": 2,
+        "heavy_gun_parts": 2
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 13000,
       "weight": 9.25,
@@ -12433,6 +12911,11 @@
       "salvagesInto": {
         "heavy_gun_parts": 4
       },
+      "repairCost": {
+        "advanced_mechanical_components": 3,
+        "heavy_gun_parts": 3
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 17000,
       "weight": 8,
@@ -12466,6 +12949,11 @@
       "salvagesInto": {
         "heavy_gun_parts": 5
       },
+      "repairCost": {
+        "advanced_mechanical_components": 4,
+        "heavy_gun_parts": 4
+      },
+      "repairDurability": 0.5,
       "stackSize": 1,
       "value": 22000,
       "weight": 8,

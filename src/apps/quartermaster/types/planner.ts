@@ -173,6 +173,21 @@ export interface BlockerSummary {
   cycleDiagnostics: CycleDiagnostic[];
 }
 
+// Repair Plan types
+export interface RepairAction {
+  itemId: ItemId;
+  instanceIndex: number;
+  durabilityPercent: number;
+  materialsNeeded: Record<ItemId, Qty>;
+  listSources: RequiredSource[];
+}
+
+export interface RepairPlan {
+  actions: RepairAction[];
+  committedMaterials: Record<ItemId, Qty>;
+  deficits: Record<ItemId, Qty>;
+}
+
 // Top-Level Planner Result (section 6.8.8)
 export interface PlannerResult {
   required: Record<ItemId, Qty>;
@@ -191,6 +206,8 @@ export interface PlannerResult {
   requiredSourcesByItemId: Record<ItemId, RequiredSource[]>;
 
   blockers: BlockerSummary;
+
+  repairPlan: RepairPlan;
 
   /** Set of fully satisfiable target itemIds */
   satisfiableTargets: Set<ItemId>;
@@ -249,6 +266,8 @@ export type OwnedItemLocation =
 
 export interface OwnedItemDisplayRow extends OwnedItemQuantity {
   locations: OwnedItemLocation[];
+  durabilityPercent?: number;
+  instanceIndex?: number;
 }
 
 export type StashItem = OwnedItemQuantity;

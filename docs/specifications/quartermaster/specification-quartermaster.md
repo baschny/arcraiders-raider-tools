@@ -169,6 +169,8 @@ interface PlannerItem {
     recipe?: Record<string, number>
     recyclesInto?: Record<string, number>
     salvagesInto?: Record<string, number>
+    repairCost?: Record<string, number>
+    repairDurability?: number
 
     stackSize: number
     value?: number
@@ -1230,7 +1232,20 @@ Planner result must include:
 
 Depth-2 craft inputs must be checked before the parent target is marked satisfiable.
 
-## 6.4 Transactional Target Planning
+### 6.3.1 Pre-Planning: Repair Material Reservation (Change-22)
+
+Before the greedy planner runs, a repair pre-pass evaluates owned items with `repairCost` that appear in any enabled list:
+
+1. For each owned item with `repairCost` and `durabilityPercent < 30`, compute repair material requirements from `repairCost`.
+2. Consume repair materials from the shared owned inventory (`avail`) before the greedy planner runs.
+3. If materials are insufficient, record the deficit quantities in `repairPlan.deficits`.
+4. Repair materials (items listed in any `repairCost` for a below-threshold item) are protected from recycling by the greedy planner.
+
+The repair pre-pass modifies the `owned` record passed to `runGreedyPlanner`, reducing available quantities of repair materials.
+
+## 6.4 Material Protection & Transactional Target Planning
+
+Repair materials identified by the pre-pass (section 6.3.1) are added to `protectedFromRecycle` before the greedy planner executes. This prevents the planner from recycling materials needed for repair.
 
 Planning for a single missing final target must be transactional.
 
@@ -1581,6 +1596,18 @@ The phrasing **"Could be used for"** conveys an advisory tone — the recycle/sa
 
 Data source: `ItemInsight.recycleSalvageUsages`, populated from the planner's committed recycle actions (`RecycleAction.reasons`).
 
+### Needed for Repair (Change-22)
+
+When an item is needed for repair (as a repair material or as the item itself needing repair), a **"Needed for Repair"** section appears in the right column.
+
+Each entry shows:
+
+- A list-type icon (`List` for user lists, `Home` for hideout lists)
+- The target item icon + name that needs repair
+- The quantity of this item needed for the repair (for materials) or the list quantity (for the repaired item itself)
+
+Data source: `ItemInsight.repairNeeds`, populated from the repair planner's committed `RepairAction[]`.
+
 ---
 
 ---
@@ -1612,7 +1639,18 @@ The view shows the canonical owned inventory: stash items, current loadout items
 
 Attached items must be displayed as separate owned items.
 
-Rows are aggregated by `itemId`. If an item exists in multiple locations, the row must show summarized location subtext rather than duplicate rows.
+Rows are aggregated by `itemId` **except for items with `repairCost`**. Items with `repairCost` are unstacked: each instance (stash slot, loadout slot) gets its own row, preserving per-instance `durabilityPercent`. Items without `repairCost` are aggregated as before. If an item exists in multiple locations, the row must show summarized location subtext rather than duplicate rows.
+
+### Durability Display (Change-22)
+
+Items with `repairCost` display a durability percentage bar below the item name and location labels:
+
+- A horizontal bar showing fill proportion based on `durabilityPercent` (0–100%)
+- Color coding: `< 30%` = red (`#e74c3c`), `30–70%` = yellow (`#f0ad4e`), `> 70%` = green (`#27ae60`)
+- Percentage label (e.g., `74.4%`) to the right of the bar
+- Items with undefined `durabilityPercent` default to `100%` (no bar shown)
+
+Sort order: items are sorted by name ascending, then by durability descending (better condition first) for items with the same name.
 
 Required location labels:
 
@@ -1639,6 +1677,7 @@ When "Show Useless" is active, the view shows only items that are:
 - Not an ingredient in any crafting chain for active targets
 - Not a recycle/salvage source
 - Not a weapon upgrade base
+- Not needed for repair (as a repair material or as the item repaired)
 
 This corresponds to the item tooltip's right column (Column 2) being empty. Items matching all these criteria have no crafting or planning value and can be safely sold.
 
@@ -1887,7 +1926,21 @@ Selection logic:
 
 Items in this section retain provenance (`impactedTargetItemIds` and `listSources` populated).
 
+### Repair Material Deficits (Change-22)
+
+Repair material deficits from the repair pre-pass are included in `remainingIngredientDeficits`, which feeds the In Raid suggestion pipeline. Items with repair material deficits appear as `BRING_HOME_DIRECT_MATERIAL` suggestions with appropriate list provenance.
+
 ## 4.6 Crafting View
+
+### Repair Section (Change-22)
+
+A **Repair** section appears before the Recycle section when the repair plan has actions. The section header uses the `Wrench` icon and the localized label "Repair".
+
+Each row shows:
+- Item icon + name
+- Current durability percentage (color-coded)
+- Materials needed for repair (icon + name + quantity ×N)
+- "Why" column showing which lists contain the item
 
 ### Sync Controls
 

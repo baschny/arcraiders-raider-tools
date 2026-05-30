@@ -315,6 +315,11 @@
     "advanced_mechanical_components": 2,
     "light_gun_parts": 2
   },
+  "repairCost": {
+    "mechanical_components": 2,
+    "simple_gun_parts": 2
+  },
+  "repairDurability": 0.5,
   "salvagesInto": {
     "light_gun_parts": 2
   },

@@ -23,10 +23,20 @@ export interface ItemCraftingNeed {
   isComplete: boolean;
 }
 
+export interface ItemRepairNeed {
+  listId: string;
+  listName: string;
+  quantity: number;
+  listType: ListType;
+  targetItemId: string;
+  targetItemName: string;
+}
+
 export interface ItemInsight {
   finalListNeeds: ItemFinalListNeed[];
   craftingNeeds: ItemCraftingNeed[];
   recycleSalvageUsages: ItemRecycleSalvageUsage[];
+  repairNeeds: ItemRepairNeed[];
 }
 
 export type ItemInsightsMap = Record<string, ItemInsight>;
@@ -41,6 +51,7 @@ const EMPTY_INSIGHT: ItemInsight = {
   finalListNeeds: [],
   craftingNeeds: [],
   recycleSalvageUsages: [],
+  repairNeeds: [],
 };
 
 function getOrCreateInsight(map: ItemInsightsMap, itemId: string): ItemInsight {
@@ -49,6 +60,7 @@ function getOrCreateInsight(map: ItemInsightsMap, itemId: string): ItemInsight {
       finalListNeeds: [],
       craftingNeeds: [],
       recycleSalvageUsages: [],
+      repairNeeds: [],
     };
   }
   return map[itemId];
@@ -198,6 +210,46 @@ function addCraftingNeeds(
   }
 }
 
+function addRepairNeeds(
+  insights: ItemInsightsMap,
+  itemsMap: ItemsMap,
+  plannerResult: PlannerResult,
+): void {
+  const dedupe = new Set<string>();
+
+  for (const action of plannerResult.repairPlan.actions) {
+    const insight = getOrCreateInsight(insights, action.itemId);
+    for (const source of action.listSources) {
+      const dedupeKey = `${action.itemId}|${source.listId}`;
+      if (dedupe.has(dedupeKey)) continue;
+      dedupe.add(dedupeKey);
+      insight.repairNeeds.push({
+        listId: source.listId,
+        listName: source.listName,
+        quantity: source.quantity,
+        listType: source.listType,
+        targetItemId: action.itemId,
+        targetItemName: itemsMap[action.itemId]?.name ?? action.itemId,
+      });
+    }
+
+    // Also add repair material needs (materials consumed for repair)
+    for (const [materialId, qty] of Object.entries(action.materialsNeeded)) {
+      const matInsight = getOrCreateInsight(insights, materialId);
+      if (!matInsight.repairNeeds.some((r) => r.targetItemId === action.itemId)) {
+        matInsight.repairNeeds.push({
+          listId: action.listSources[0]?.listId ?? '',
+          listName: action.listSources[0]?.listName ?? '',
+          quantity: qty,
+          listType: action.listSources[0]?.listType ?? 'user',
+          targetItemId: action.itemId,
+          targetItemName: itemsMap[action.itemId]?.name ?? action.itemId,
+        });
+      }
+    }
+  }
+}
+
 function addRecycleSalvageUsages(
   insights: ItemInsightsMap,
   itemsMap: ItemsMap,
@@ -252,6 +304,7 @@ export function buildItemInsights(itemsMap: ItemsMap, plannerResult: PlannerResu
 
   addFinalNeeds(insights, plannerResult, missingByItemId);
   addCraftingNeeds(insights, itemsMap, plannerResult, missingByItemId);
+  addRepairNeeds(insights, itemsMap, plannerResult);
   addRecycleSalvageUsages(insights, itemsMap, plannerResult);
 
   // Ensure stable sorting for deterministic rendering
@@ -266,6 +319,11 @@ export function buildItemInsights(itemsMap: ItemsMap, plannerResult: PlannerResu
       if (a.listName !== b.listName) return a.listName.localeCompare(b.listName);
       if (a.targetItemName !== b.targetItemName) return a.targetItemName.localeCompare(b.targetItemName);
       return a.chainLabel.localeCompare(b.chainLabel);
+    });
+    insight.repairNeeds.sort((a, b) => {
+      if (a.listName !== b.listName) return a.listName.localeCompare(b.listName);
+      if (a.targetItemName !== b.targetItemName) return a.targetItemName.localeCompare(b.targetItemName);
+      return a.quantity - b.quantity;
     });
   }
 
