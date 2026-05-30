@@ -423,7 +423,9 @@
       "lists": "Listen",
       "hideout": "Versteck",
       "inRaid": "Im Raid",
-      "crafting": "Crafting"
+      "crafting": "Crafting",
+      "inRaidMissingTooltip": "Items you need to loot during raids",
+      "craftingActionsTooltip": "Recycle and craft actions needed"
     },
     "globalHeader": {
       "activeLists": "Aktive Listen",
@@ -433,6 +435,7 @@
       "stash": "Inventar",
       "loadout": "Ausrüstung",
       "source": "Source",
+      "gameDataLastSync": "Game Data Last Sync",
       "inventory": "Inventory",
       "embarkInventory": "Embark inventory",
       "unknownEmbarkIds": "Unknown IDs",
@@ -441,8 +444,8 @@
       "elapsedMinutes": "{count} min",
       "elapsedHours": "{hours}:{minutes} hour",
       "elapsedDays": "{count} d",
-      "sync": "Sync",
-      "syncingInventory": "Syncing inventory...",
+      "syncGameData": "Spieldaten synchronisieren",
+      "syncingGameData": "Spieldaten synchronisieren...",
       "embarkSyncTooltip": "Sync inventory, loadout, hideout, and blueprints from Embark.",
       "never": "Nie",
       "invalid": "Ungültig"

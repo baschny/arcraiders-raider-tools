@@ -441,8 +441,8 @@
       "elapsedMinutes": "{count} min",
       "elapsedHours": "{hours}:{minutes} hour",
       "elapsedDays": "{count} d",
-      "sync": "Sync",
-      "syncingInventory": "Syncing inventory...",
+      "syncGameData": "Sincronizar dados do jogo",
+      "syncingGameData": "Sincronizando dados do jogo...",
       "embarkSyncTooltip": "Sync inventory, loadout, hideout, and blueprints from Embark.",
       "never": "Nunca",
       "invalid": "Inválido"

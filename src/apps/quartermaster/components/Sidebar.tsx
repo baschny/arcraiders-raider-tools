@@ -12,9 +12,11 @@ interface SidebarProps {
   activeView: ViewId;
   onViewChange: (view: ViewId) => void;
   hideoutAvailableUpgradeCount?: number;
+  inRaidMissingCount?: number;
+  craftingActionsCount?: number;
 }
 
-export function Sidebar({ activeView, onViewChange, hideoutAvailableUpgradeCount = 0 }: SidebarProps) {
+export function Sidebar({ activeView, onViewChange, hideoutAvailableUpgradeCount = 0, inRaidMissingCount = 0, craftingActionsCount = 0 }: SidebarProps) {
   const { t } = useLocale();
   const navItems: { id: ViewId; label: string; icon: React.ReactNode }[] = [
     { id: 'welcome', label: t('quartermaster.nav.welcome'), icon: <Info size={18} /> },
@@ -42,6 +44,22 @@ export function Sidebar({ activeView, onViewChange, hideoutAvailableUpgradeCount
                 title={t('quartermaster.hideout.availableUpgradesTooltip')}
               >
                 {hideoutAvailableUpgradeCount}
+              </span>
+            )}
+            {item.id === 'in-raid' && inRaidMissingCount > 0 && (
+              <span
+                className="qm-sidebar__badge"
+                title={t('quartermaster.nav.inRaidMissingTooltip')}
+              >
+                {inRaidMissingCount}
+              </span>
+            )}
+            {item.id === 'crafting' && craftingActionsCount > 0 && (
+              <span
+                className="qm-sidebar__badge"
+                title={t('quartermaster.nav.craftingActionsTooltip')}
+              >
+                {craftingActionsCount}
               </span>
             )}
           </div>

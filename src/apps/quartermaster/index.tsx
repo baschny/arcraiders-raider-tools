@@ -732,10 +732,11 @@ export function QuartermasterApp() {
           activeView={activeView}
           onViewChange={handleViewChange}
           hideoutAvailableUpgradeCount={availableHideoutUpgradeCount}
+          inRaidMissingCount={plannerResult.totalMissingItemsCount}
+          craftingActionsCount={plannerResult.totalRecycleActionsCount + plannerResult.totalCraftStepsCount}
         />
         <div className="quartermaster-main">
           <GlobalHeader
-            plannerResult={plannerResult}
             stashSyncedAt={cachedStash?.syncedAt ?? null}
             loadoutSyncedAt={cachedLoadout?.syncedAt ?? null}
             gameDataSource={gameDataSource}

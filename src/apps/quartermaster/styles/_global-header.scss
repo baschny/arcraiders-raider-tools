@@ -9,47 +9,11 @@
   border-bottom: 1px solid $border-default;
   min-height: $qm-header-height;
 
-  &__stats {
-    display: flex;
-    gap: $spacing-lg;
-    flex: 1;
-  }
-
-  &__stat {
-    display: flex;
-    align-items: center;
-    gap: $spacing-sm;
-
-    &-label {
-      font-size: $font-sm;
-      color: $text-secondary;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    &-value {
-      font-size: $font-lg;
-      font-weight: 600;
-      color: $text-primary;
-
-      &--warning {
-        color: $badge-recycle;
-      }
-
-      &--error {
-        color: $status-missing;
-      }
-
-      &--success {
-        color: $status-available;
-      }
-    }
-  }
-
   &__timestamps {
     display: flex;
     gap: $spacing-lg;
     align-items: center;
+    flex: 1;
   }
 
   &__timestamp {
