@@ -6,7 +6,7 @@
 
 import type { ItemsMap, BenchId } from '../../types/item';
 import type { StoredList } from '../../types/list';
-import type { PlannerResult, OwnedItemQuantity, OwnedItemDisplayRow, ItemId, Qty } from '../../types/planner';
+import type { PlannerResult, OwnedItemQuantity, OwnedItemDisplayRow, ItemId, Qty, RepairPlan } from '../../types/planner';
 import { BENCH_ORDER } from '../../types/item';
 
 import { aggregateRequired, getActiveListsCount } from './aggregation';
@@ -196,7 +196,7 @@ export function computePlan(
   };
 }
 
-function createEmptyRepairPlan() {
+function createEmptyRepairPlan(): RepairPlan {
   return {
     actions: [],
     committedMaterials: {},
