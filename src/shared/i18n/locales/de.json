@@ -422,6 +422,7 @@
       "currentLoadout": "Aktuelle Ausrüstung",
       "lists": "Listen",
       "hideout": "Versteck",
+      "projects": "Projects",
       "inRaid": "Im Raid",
       "crafting": "Crafting",
       "inRaidMissingTooltip": "Items you need to loot during raids",
@@ -444,8 +445,8 @@
       "elapsedMinutes": "{count} min",
       "elapsedHours": "{hours}:{minutes} hour",
       "elapsedDays": "{count} d",
-      "syncGameData": "Spieldaten synchronisieren",
-      "syncingGameData": "Spieldaten synchronisieren...",
+      "syncGameData": "Sync Game Data",
+      "syncingGameData": "Syncing game data...",
       "embarkSyncTooltip": "Sync inventory, loadout, hideout, and blueprints from Embark.",
       "never": "Nie",
       "invalid": "Ungültig"
@@ -616,6 +617,41 @@
       "disableBenchTooltip": "Deaktiviere das Tracking aller Stufen dieser Werkbank",
       "enableBenchTooltip": "Aktiviere das Tracking aller Stufen dieser Werkbank"
     },
+    "projects": {
+      "subtitle": "Track project required items for community expeditions and seasonal projects.",
+      "syncPrompt": "Hit the \"Sync Projects\" button to load your current project progress.",
+      "allComplete": "All project steps are completed.",
+      "syncTooltip": "Refresh your current project progress from the game.",
+      "collapseAll": "Collapse all",
+      "collapseAllTooltip": "Collapse every project section.",
+      "expandAll": "Expand all",
+      "expandAllTooltip": "Expand every project section with pending steps.",
+      "tracking": "Tracking",
+      "enableAll": "All Pending",
+      "enableAllTooltip": "Track every pending project step.",
+      "disableAll": "Disable All",
+      "disableAllTooltip": "Stop tracking every pending project step.",
+      "nextOnly": "Next Steps Only",
+      "nextOnlyTooltip": "Track only the next incomplete step for each project.",
+      "stepLabel": "Step {step}",
+      "stepName": "Step {step} ({name})",
+      "trackedItems": "{count} ITEMS",
+      "trackedItemsTooltip": "Unique required items currently tracked for enabled steps in this project.",
+      "itemCompleteTooltip": "You have enough of this item.",
+      "submitAvailable": "Submit Available",
+      "submitAvailableTooltip": "You have all required items for the current step of this project.",
+      "availableSubmitTooltip": "Project steps available to submit now.",
+      "disableStepTooltip": "Disable tracking this step.",
+      "enableStepTooltip": "Enable tracking this step.",
+      "disableItemTooltip": "Disable tracking this required item.",
+      "enableItemTooltip": "Enable tracking this required item.",
+      "disableProjectTooltip": "Disable tracking all steps of this project",
+      "enableProjectTooltip": "Enable tracking all steps of this project",
+      "syncProjects": "Sync Projects",
+      "listName": "Step {step} ({name})",
+      "active": "Active",
+      "locked": "Locked"
+    },
     "inRaid": {
       "keep": "Behalten",
       "recycle": "Recyceln",
@@ -638,6 +674,7 @@
     },
     "crafting": {
       "noImpact": "Keine Auswirkungen auf aktive Ziele",
+      "repair": "Repair",
       "step1": "Schritt 1: Zuerst recyceln",
       "step2": "Schritt 2: Gegenstände craften",
       "craftItems": "Gegenstände craften",
@@ -657,7 +694,8 @@
         "inputsNeeded": "Benötigte Eingaben",
         "upgradeFrom": "Upgrade von",
         "upgradeTo": "Upgrade auf",
-        "qtyToUpgrade": "Menge zum Upgrade"
+        "qtyToUpgrade": "Menge zum Upgrade",
+        "durability": "Durability"
       },
       "blueprintUnlockCount": "{unlocked}/{total} entsperrt"
     },
@@ -669,13 +707,14 @@
       "value": "Wert:",
       "foundIn": "Gefunden in:",
       "neededForLists": "Benötigt für Listen",
-      "neededForCrafting": "Benötigt fürs Crafting (direkt / indirekt)",
+      "neededForProject": "Needed for {project}",
       "couldBeUsedFor": "Could be used for",
       "recycle": "Recyceln",
       "salvage": "Zerlegen",
       "craftingRecipe": "Crafting-Rezept",
       "recyclesInto": "Recycelt zu",
-      "salvagesInto": "Zerlegt zu"
+      "salvagesInto": "Zerlegt zu",
+      "neededForRepair": "Needed for Repair"
     },
     "itemIcon": {
       "uncraftable": "Cannot be crafted — requirements not met"
