@@ -46,7 +46,7 @@ export type InRaidReason =
   | 'BRING_HOME_FOR_RECYCLE_YIELD'
   | 'CRAFTING_INGREDIENT_FOR_DEFICIT';
 
-export type ListType = 'user' | 'hideout';
+export type ListType = 'user' | 'hideout' | 'project';
 
 export interface RequiredSource {
   listId: string;
@@ -229,8 +229,7 @@ export type AdvisoryBadge = 'KEEP' | 'RECYCLE' | 'DISCARD';
 export interface ItemRecycleSalvageUsage {
   listId: string;
   listName: string;
-  listType: 'user' | 'hideout';
-  yieldItemId: string;
+  listType: ListType;  yieldItemId: string;
   yieldItemName: string;
   yieldQuantity: number;
   targetItemId: string;

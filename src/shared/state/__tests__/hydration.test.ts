@@ -182,6 +182,7 @@ describe('state-sync integration: sign-in / sign-out', () => {
         quartermasterStore.set({
             lists: [{ id: 'list_1', name: 'My List', type: 'user', isEnabled: true, items: [] }],
             hideoutToggles: { listEnabled: {}, itemEnabled: {} },
+            projectToggles: { listEnabled: {}, itemEnabled: {} },
             prioritizedItemIds: [],
         });
         await Promise.all(allStores.map(s => s.flush()));
@@ -201,7 +202,7 @@ describe('state-sync integration: sign-in / sign-out', () => {
                 data: { mode: 'manual', manualCompletedQuestIds: ['q1', 'q2'] },
             },
             loot: { schemaVersion: 1, data: { goalItems: ['item_a'] } },
-            quartermaster: { schemaVersion: 1 },
+            quartermaster: { schemaVersion: 3 },
         });
         // Server now has the data.
         expect(server.state.quests?.data).toEqual({

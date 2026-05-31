@@ -28,7 +28,8 @@ export function aggregateRequired(lists: StoredList[]): AggregationResult {
   const requiredSourcesByItemId: Record<ItemId, RequiredSource[]> = {};
   const orderedLists = [
     ...lists.filter(list => list.type === 'hideout'),
-    ...lists.filter(list => list.type !== 'hideout'),
+    ...lists.filter(list => list.type === 'project'),
+    ...lists.filter(list => list.type !== 'hideout' && list.type !== 'project'),
   ];
 
   for (let listIndex = 0; listIndex < orderedLists.length; listIndex++) {

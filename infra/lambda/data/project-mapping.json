@@ -1,0 +1,1129 @@
+{
+  "description": "Maps game API project/goal asset IDs to ARCTracker project definitions and item requirements. Incrementally updated from game-data/projects.json.",
+  "generatedAt": "2026-05-03T19:28:25",
+  "projects": {
+    "394019120": {
+      "name": "Weather Monitor System",
+      "arctrackerProjectId": "weather_monitor_system_project",
+      "phases": {
+        "1": {
+          "name": "Atmospheric pressure",
+          "goals": {
+            "588612242": {
+              "itemId": "oil",
+              "itemName": "Oil",
+              "itemGameAssetId": "1741060583",
+              "required": 3
+            },
+            "797595987": {
+              "itemId": "arc_alloy",
+              "itemName": "ARC Alloy",
+              "itemGameAssetId": "1370841463",
+              "required": 5
+            },
+            "813787419": {
+              "itemId": "plastic_parts",
+              "itemName": "Plastic Parts",
+              "itemGameAssetId": "828947161",
+              "required": 25
+            },
+            "870522807": {
+              "itemId": "metal_parts",
+              "itemName": "Metal Parts",
+              "itemGameAssetId": "-1437131902",
+              "required": 15
+            }
+          }
+        },
+        "2": {
+          "name": "Sunlight",
+          "goals": {
+            "421680923": {
+              "itemId": "sensors",
+              "itemName": "Sensors",
+              "itemGameAssetId": "-17247411",
+              "required": 3
+            },
+            "432681472": {
+              "itemId": "wires",
+              "itemName": "Wires",
+              "itemGameAssetId": "-633851525",
+              "required": 3
+            },
+            "571783771": {
+              "itemId": "comet_igniter",
+              "itemName": "Comet Igniter",
+              "itemGameAssetId": "-353362533",
+              "required": 1
+            },
+            "660406575": {
+              "itemId": "snitch_scanner",
+              "itemName": "Snitch Scanner",
+              "itemGameAssetId": "-943023152",
+              "required": 1
+            }
+          }
+        },
+        "3": {
+          "name": "Precipitation",
+          "goals": {
+            "470724328": {
+              "itemId": "fine_wristwatch",
+              "itemName": "Fine Wristwatch",
+              "itemGameAssetId": "-483653282",
+              "required": 1
+            },
+            "561871456": {
+              "itemId": "canister",
+              "itemName": "Canister",
+              "itemGameAssetId": "-668588724",
+              "required": 5
+            },
+            "565897549": {
+              "itemId": "arc_powercell",
+              "itemName": "ARC Powercell",
+              "itemGameAssetId": "-1447314005",
+              "required": 5
+            },
+            "978770905": {
+              "itemId": "steel_spring",
+              "itemName": "Steel Spring",
+              "itemGameAssetId": "-1517601046",
+              "required": 5
+            }
+          }
+        },
+        "4": {
+          "name": "Humidity",
+          "goals": {
+            "185017441": {
+              "itemId": "duct_tape",
+              "itemName": "Duct Tape",
+              "itemGameAssetId": "1224404530",
+              "required": 10
+            },
+            "300191725": {
+              "itemId": "wasp_driver",
+              "itemName": "Wasp Driver",
+              "itemGameAssetId": "-1712774896",
+              "required": 3
+            },
+            "320457546": {
+              "itemId": "water_pump",
+              "itemName": "Water Pump",
+              "itemGameAssetId": "-1637094497",
+              "required": 1
+            },
+            "644059127": {
+              "itemId": "rusted_bolts",
+              "itemName": "Rusted Bolts",
+              "itemGameAssetId": "866985065",
+              "required": 3
+            }
+          }
+        },
+        "5": {
+          "name": "Temperature",
+          "goals": {
+            "121524450": {
+              "itemId": "firefly_burner",
+              "itemName": "Firefly Burner",
+              "itemGameAssetId": "1989094565",
+              "required": 1
+            },
+            "308487177": {
+              "itemId": "camera_lens",
+              "itemName": "Camera Lens",
+              "itemGameAssetId": "285336333",
+              "required": 3
+            },
+            "620029470": {
+              "itemId": "damaged_heat_sink",
+              "itemName": "Damaged Heat Sink",
+              "itemGameAssetId": "2022140331",
+              "required": 1
+            },
+            "973054917": {
+              "itemId": "voltage_converter",
+              "itemName": "Voltage Converter",
+              "itemGameAssetId": "1552920566",
+              "required": 3
+            }
+          }
+        }
+      }
+    },
+    "452196039": {
+      "name": "Expedition Project (Expedition 2)",
+      "arctrackerProjectId": "expedition_project",
+      "phases": {
+        "1": {
+          "name": "Foundation",
+          "goals": {
+            "530718942": {
+              "itemId": "arc_alloy",
+              "itemName": "ARC Alloy",
+              "itemGameAssetId": "1370841463",
+              "required": 80
+            },
+            "672928739": {
+              "itemId": "plastic_parts",
+              "itemName": "Plastic Parts",
+              "itemGameAssetId": "828947161",
+              "required": 200
+            },
+            "732223001": {
+              "itemId": "metal_parts",
+              "itemName": "Metal Parts",
+              "itemGameAssetId": "-1437131902",
+              "required": 150
+            },
+            "966722108": {
+              "itemId": "steel_spring",
+              "itemName": "Steel Spring",
+              "itemGameAssetId": "-1517601046",
+              "required": 15
+            }
+          }
+        },
+        "2": {
+          "name": "Core Systems",
+          "goals": {
+            "283094599": {
+              "itemId": "cooling_coil",
+              "itemName": "Cooling Coil",
+              "itemGameAssetId": "1928875024",
+              "required": 4
+            },
+            "340266276": {
+              "itemId": "durable_cloth",
+              "itemName": "Durable Cloth",
+              "itemGameAssetId": "-799395426",
+              "required": 35
+            },
+            "525441648": {
+              "itemId": "electrical_components",
+              "itemName": "Electrical Components",
+              "itemGameAssetId": "-923201933",
+              "required": 20
+            },
+            "772567827": {
+              "itemId": "wires",
+              "itemName": "Wires",
+              "itemGameAssetId": "-633851525",
+              "required": 25
+            }
+          }
+        },
+        "3": {
+          "name": "Framework",
+          "goals": {
+            "309141094": {
+              "itemId": "light_bulb",
+              "itemName": "Light Bulb",
+              "itemGameAssetId": "1607597452",
+              "required": 4
+            },
+            "464744553": {
+              "itemId": "battery",
+              "itemName": "Battery",
+              "itemGameAssetId": "1039185396",
+              "required": 30
+            },
+            "952733311": {
+              "itemId": "exodus_modules",
+              "itemName": "Exodus Modules",
+              "itemGameAssetId": "-1177716644",
+              "required": 1
+            },
+            "959188726": {
+              "itemId": "shredder_gyro",
+              "itemName": "Shredder Gyro",
+              "itemGameAssetId": "-1407135982",
+              "required": 10
+            }
+          }
+        },
+        "4": {
+          "name": "Outfitting",
+          "goals": {
+            "220535126": {
+              "itemId": "ion_sputter",
+              "itemName": "Ion Sputter",
+              "itemGameAssetId": "134545014",
+              "required": 3
+            },
+            "350731359": {
+              "itemId": "frequency_modulation_box",
+              "itemName": "Frequency Modulation Box",
+              "itemGameAssetId": "-729027837",
+              "required": 5
+            },
+            "787851040": {
+              "itemId": "leaper_pulse_unit",
+              "itemName": "Leaper Pulse Unit",
+              "itemGameAssetId": "1151565517",
+              "required": 3
+            },
+            "848501171": {
+              "itemId": "advanced_electrical_components",
+              "itemName": "Advanced Electrical Components",
+              "itemGameAssetId": "-770265029",
+              "required": 5
+            }
+          }
+        },
+        "5": {
+          "name": "Load Stage",
+          "goals": {},
+          "categoryGoals": {
+            "475295453": {
+              "category": "Combat Items",
+              "required": 200000
+            },
+            "582790260": {
+              "category": "Survival Items",
+              "required": 100000
+            },
+            "735294602": {
+              "category": "Provisions",
+              "required": 150000
+            },
+            "809135795": {
+              "category": "Materials",
+              "required": 300000
+            }
+          }
+        },
+        "6": {
+          "name": "Departure",
+          "goals": {}
+        }
+      }
+    },
+    "530841945": {
+      "name": "Trophy Display",
+      "arctrackerProjectId": "trophy_display_project",
+      "phases": {
+        "1": {
+          "name": "Roaming Threats",
+          "goals": {
+            "147552877": {
+              "itemId": "tick_pod",
+              "itemName": "Tick Pod",
+              "itemGameAssetId": "-505000565",
+              "required": 15
+            },
+            "393217959": {
+              "itemId": "rusted_bolts",
+              "itemName": "Rusted Bolts",
+              "itemGameAssetId": "866985065",
+              "required": 3
+            },
+            "917405210": {
+              "itemId": "surveyor_vault",
+              "itemName": "Surveyor Vault",
+              "itemGameAssetId": "-1333721780",
+              "required": 5
+            },
+            "918471280": {
+              "itemId": "pop_trigger",
+              "itemName": "Pop Trigger",
+              "itemGameAssetId": "1041760181",
+              "required": 15
+            }
+          }
+        },
+        "2": {
+          "name": "Soaring Menaces",
+          "goals": {
+            "391885396": {
+              "itemId": "wasp_driver",
+              "itemName": "Wasp Driver",
+              "itemGameAssetId": "-1712774896",
+              "required": 20
+            },
+            "685135979": {
+              "itemId": "spotter_relay",
+              "itemName": "Spotter Relay",
+              "itemGameAssetId": "-600381599",
+              "required": 10
+            },
+            "869880078": {
+              "itemId": "expired_respirator",
+              "itemName": "Expired Respirator",
+              "itemGameAssetId": "-632888435",
+              "required": 3
+            },
+            "921702705": {
+              "itemId": "hornet_driver",
+              "itemName": "Hornet Driver",
+              "itemGameAssetId": "1004483718",
+              "required": 15
+            }
+          }
+        },
+        "3": {
+          "name": "Ferocious Foes",
+          "goals": {
+            "463221333": {
+              "itemId": "arc_performance_steel",
+              "itemName": "ARC Performance Steel",
+              "itemGameAssetId": "-1068126131",
+              "required": 10
+            },
+            "716853512": {
+              "itemId": "shredder_gyro",
+              "itemName": "Shredder Gyro",
+              "itemGameAssetId": "-1407135982",
+              "required": 5
+            },
+            "846358133": {
+              "itemId": "bastion_cell",
+              "itemName": "Bastion Cell",
+              "itemGameAssetId": "1266019904",
+              "required": 5
+            },
+            "963112302": {
+              "itemId": "leaper_pulse_unit",
+              "itemName": "Leaper Pulse Unit",
+              "itemGameAssetId": "1151565517",
+              "required": 10
+            }
+          }
+        },
+        "4": {
+          "name": "Dominant Dangers",
+          "goals": {
+            "161687326": {
+              "itemId": "arc_synthetic_resin",
+              "itemName": "ARC Synthetic Resin",
+              "itemGameAssetId": "10866537",
+              "required": 10
+            },
+            "448192799": {
+              "itemId": "rocketeer_driver",
+              "itemName": "Rocketeer Driver",
+              "itemGameAssetId": "1352103757",
+              "required": 8
+            },
+            "475160009": {
+              "itemId": "queen_reactor",
+              "itemName": "Queen Reactor",
+              "itemGameAssetId": "-876378926",
+              "required": 3
+            },
+            "787373609": {
+              "itemId": "magnetic_accelerator",
+              "itemName": "Magnetic Accelerator",
+              "itemGameAssetId": "717605649",
+              "required": 10
+            }
+          }
+        },
+        "5": {
+          "name": "Imposing Behemoths",
+          "goals": {
+            "211074257": {
+              "itemId": "exodus_modules",
+              "itemName": "Exodus Modules",
+              "itemGameAssetId": "-1177716644",
+              "required": 5
+            },
+            "543199816": {
+              "itemId": "matriarch_reactor",
+              "itemName": "Matriarch Reactor",
+              "itemGameAssetId": "-752661468",
+              "required": 3
+            },
+            "649673617": {
+              "itemId": "bombardier_cell",
+              "itemName": "Bombardier Cell",
+              "itemGameAssetId": "415465622",
+              "required": 8
+            },
+            "931721318": {
+              "itemId": "geiger_counter",
+              "itemName": "Geiger Counter",
+              "itemGameAssetId": "426624588",
+              "required": 3
+            }
+          }
+        }
+      }
+    },
+    "596959708": {
+      "name": "Expedition Project (Expedition 1)",
+      "arctrackerProjectId": "expedition_project_s1",
+      "phases": {
+        "1": {
+          "name": "Foundation",
+          "goals": {
+            "1952197449": {
+              "itemId": "rubber_parts",
+              "itemName": "Rubber Parts",
+              "itemGameAssetId": "-2048050889",
+              "required": 200
+            },
+            "-391606619": {
+              "itemId": "metal_parts",
+              "itemName": "Metal Parts",
+              "itemGameAssetId": "-1437131902",
+              "required": 150
+            },
+            "-1876183800": {
+              "itemId": "arc_alloy",
+              "itemName": "ARC Alloy",
+              "itemGameAssetId": "1370841463",
+              "required": 80
+            },
+            "-433102163": {
+              "itemId": "steel_spring",
+              "itemName": "Steel Spring",
+              "itemGameAssetId": "-1517601046",
+              "required": 15
+            }
+          }
+        },
+        "2": {
+          "name": "Core Systems",
+          "goals": {
+            "1101599188": {
+              "itemId": "wires",
+              "itemName": "Wires",
+              "itemGameAssetId": "-633851525",
+              "required": 30
+            },
+            "1136002423": {
+              "itemId": "electrical_components",
+              "itemName": "Electrical Components",
+              "itemGameAssetId": "-923201933",
+              "required": 30
+            },
+            "1898420313": {
+              "itemId": "cooling_fan",
+              "itemName": "Cooling Fan",
+              "itemGameAssetId": "1694582967",
+              "required": 5
+            },
+            "1995420702": {
+              "itemId": "durable_cloth",
+              "itemName": "Durable Cloth",
+              "itemGameAssetId": "-799395426",
+              "required": 35
+            }
+          }
+        },
+        "3": {
+          "name": "Framework",
+          "goals": {
+            "2098711024": {
+              "itemId": "battery",
+              "itemName": "Battery",
+              "itemGameAssetId": "1039185396",
+              "required": 30
+            },
+            "-1914682280": {
+              "itemId": "light_bulb",
+              "itemName": "Light Bulb",
+              "itemGameAssetId": "1607597452",
+              "required": 5
+            },
+            "-606840271": {
+              "itemId": "sensors",
+              "itemName": "Sensors",
+              "itemGameAssetId": "-17247411",
+              "required": 20
+            },
+            "-1605954429": {
+              "itemId": "exodus_modules",
+              "itemName": "Exodus Modules",
+              "itemGameAssetId": "-1177716644",
+              "required": 1
+            }
+          }
+        },
+        "4": {
+          "name": "Outfitting",
+          "goals": {
+            "1566909566": {
+              "itemId": "magnetic_accelerator",
+              "itemName": "Magnetic Accelerator",
+              "itemGameAssetId": "717605649",
+              "required": 3
+            },
+            "-1354590760": {
+              "itemId": "humidifier",
+              "itemName": "Humidifier",
+              "itemGameAssetId": "849284640",
+              "required": 5
+            },
+            "-791610341": {
+              "itemId": "advanced_electrical_components",
+              "itemName": "Advanced Electrical Components",
+              "itemGameAssetId": "-770265029",
+              "required": 5
+            },
+            "-1059592899": {
+              "itemId": "leaper_pulse_unit",
+              "itemName": "Leaper Pulse Unit",
+              "itemGameAssetId": "1151565517",
+              "required": 3
+            }
+          }
+        },
+        "5": {
+          "name": "Load Stage",
+          "goals": {},
+          "categoryGoals": {
+            "1606138930": {
+              "category": "Materials",
+              "required": 300000
+            },
+            "1685205248": {
+              "category": "Provisions",
+              "required": 180000
+            },
+            "-823560125": {
+              "category": "Combat Items",
+              "required": 250000
+            },
+            "-1288585705": {
+              "category": "Survival Items",
+              "required": 100000
+            }
+          }
+        },
+        "6": {
+          "name": "Departure",
+          "goals": {}
+        }
+      }
+    },
+    "672886848": {
+      "name": "Avian Alarm",
+      "arctrackerProjectId": "avian_alarm_project",
+      "phases": {
+        "1": {
+          "name": "Initial Flock Intake",
+          "goals": {}
+        },
+        "2": {
+          "name": "Preliminary Signal Birds",
+          "goals": {
+            "393579913": {
+              "itemId": "canister",
+              "itemName": "Canister",
+              "itemGameAssetId": "-668588724",
+              "required": 20
+            },
+            "790698144": {
+              "itemId": "twilight_compass_ship_model",
+              "itemName": "\"Twilight Compass\" Ship Model",
+              "itemGameAssetId": "1867928291",
+              "required": 5
+            },
+            "893148306": {
+              "itemId": "tick_pod",
+              "itemName": "Tick Pod",
+              "itemGameAssetId": "-505000565",
+              "required": 7
+            },
+            "915176920": {
+              "itemId": "moss",
+              "itemName": "Moss",
+              "itemGameAssetId": "1146379657",
+              "required": 12
+            }
+          }
+        },
+        "3": {
+          "name": "Secondary Validation Birds",
+          "goals": {
+            "272385095": {
+              "itemId": "rusted_tools",
+              "itemName": "Rusted Tools",
+              "itemGameAssetId": "-741882707",
+              "required": 8
+            },
+            "589020978": {
+              "itemId": "velocity_ship_model",
+              "itemName": "\"Velocity\" Ship Model",
+              "itemGameAssetId": "1529467338",
+              "required": 5
+            },
+            "764015386": {
+              "itemId": "fertilizer",
+              "itemName": "Fertilizer",
+              "itemGameAssetId": "-894995539",
+              "required": 10
+            },
+            "817294482": {
+              "itemId": "comet_igniter",
+              "itemName": "Comet Igniter",
+              "itemGameAssetId": "-353362533",
+              "required": 3
+            }
+          }
+        },
+        "4": {
+          "name": "Heightened Alert Birds",
+          "goals": {
+            "361271286": {
+              "itemId": "sirena_dorata_ship_model",
+              "itemName": "\"Sirena Dorata\" Ship Model",
+              "itemGameAssetId": "-2064796183",
+              "required": 5
+            },
+            "467621311": {
+              "itemId": "vaporizer_regulator",
+              "itemName": "Vaporizer Regulator",
+              "itemGameAssetId": "1348244387",
+              "required": 1
+            },
+            "732213876": {
+              "itemId": "agave",
+              "itemName": "Agave",
+              "itemGameAssetId": "-127927282",
+              "required": 8
+            },
+            "791790457": {
+              "itemId": "water_filter",
+              "itemName": "Water Filter",
+              "itemGameAssetId": "1393527984",
+              "required": 3
+            }
+          }
+        },
+        "5": {
+          "name": "Critical Warning Birds",
+          "goals": {
+            "365961697": {
+              "itemId": "roots",
+              "itemName": "Roots",
+              "itemGameAssetId": "-1066783360",
+              "required": 4
+            },
+            "395677803": {
+              "itemId": "red_coral_jewelry",
+              "itemName": "Red Coral Jewelry",
+              "itemGameAssetId": "2130940125",
+              "required": 3
+            },
+            "844226097": {
+              "itemId": "leviathans_crown_ship_model",
+              "itemName": "\"Leviathan's Crown\" Ship Model",
+              "itemGameAssetId": "1414923729",
+              "required": 1
+            },
+            "974473951": {
+              "itemId": "turbine_compressor",
+              "itemName": "Turbine Compressor",
+              "itemGameAssetId": "1015139423",
+              "required": 2
+            }
+          }
+        }
+      }
+    },
+    "775439748": {
+      "name": "Expedition (Expedition 3)",
+      "arctrackerProjectId": "expedition_project_s3",
+      "phases": {
+        "1": {
+          "name": "Foundation",
+          "goals": {
+            "182748177": {
+              "itemId": "metal_parts",
+              "itemName": "Metal Parts",
+              "itemGameAssetId": "-1437131902",
+              "required": 150
+            },
+            "345040405": {
+              "itemId": "arc_alloy",
+              "itemName": "ARC Alloy",
+              "itemGameAssetId": "1370841463",
+              "required": 80
+            },
+            "800491660": {
+              "itemId": "chemicals",
+              "itemName": "Chemicals",
+              "itemGameAssetId": "-1565478080",
+              "required": 100
+            },
+            "995968288": {
+              "itemId": "steel_spring",
+              "itemName": "Steel Spring",
+              "itemGameAssetId": "-1517601046",
+              "required": 15
+            }
+          }
+        },
+        "2": {
+          "name": "Core Systems",
+          "goals": {
+            "278774624": {
+              "itemId": "electrical_components",
+              "itemName": "Electrical Components",
+              "itemGameAssetId": "-923201933",
+              "required": 20
+            },
+            "370466158": {
+              "itemId": "industrial_charger",
+              "itemName": "Industrial Charger",
+              "itemGameAssetId": "473499460",
+              "required": 3
+            },
+            "730330623": {
+              "itemId": "wires",
+              "itemName": "Wires",
+              "itemGameAssetId": "-633851525",
+              "required": 25
+            },
+            "882699476": {
+              "itemId": "durable_cloth",
+              "itemName": "Durable Cloth",
+              "itemGameAssetId": "-799395426",
+              "required": 30
+            }
+          }
+        },
+        "3": {
+          "name": "Framework",
+          "goals": {
+            "368642688": {
+              "itemId": "battery",
+              "itemName": "Battery",
+              "itemGameAssetId": "1039185396",
+              "required": 25
+            },
+            "767906871": {
+              "itemId": "firefly_burner",
+              "itemName": "Firefly Burner",
+              "itemGameAssetId": "1989094565",
+              "required": 5
+            },
+            "810635450": {
+              "itemId": "exodus_modules",
+              "itemName": "Exodus Modules",
+              "itemGameAssetId": "-1177716644",
+              "required": 1
+            },
+            "877570815": {
+              "itemId": "coffee_pot",
+              "itemName": "Coffee Pot",
+              "itemGameAssetId": "-51232541",
+              "required": 1
+            }
+          }
+        },
+        "4": {
+          "name": "Outfitting",
+          "goals": {
+            "150398088": {
+              "itemId": "broken_guidance_system",
+              "itemName": "Broken Guidance System",
+              "itemGameAssetId": "-1587726944",
+              "required": 1
+            },
+            "631405812": {
+              "itemId": "breathtaking_snow_globe",
+              "itemName": "Breathtaking Snow Globe",
+              "itemGameAssetId": "919315234",
+              "required": 3
+            },
+            "684156049": {
+              "itemId": "bombardier_cell",
+              "itemName": "Bombardier Cell",
+              "itemGameAssetId": "415465622",
+              "required": 2
+            },
+            "931788737": {
+              "itemId": "advanced_electrical_components",
+              "itemName": "Advanced Electrical Components",
+              "itemGameAssetId": "-770265029",
+              "required": 5
+            }
+          }
+        },
+        "5": {
+          "name": "Load Stage",
+          "goals": {},
+          "categoryGoals": {
+            "154671832": {
+              "category": "Combat Items",
+              "required": 200000
+            },
+            "264324758": {
+              "category": "Survival Items",
+              "required": 100000
+            },
+            "346006765": {
+              "category": "Provisions",
+              "required": 150000
+            },
+            "865576253": {
+              "category": "Materials",
+              "required": 300000
+            }
+          }
+        },
+        "6": {
+          "name": "Departure",
+          "goals": {}
+        }
+      }
+    },
+    "876282783": {
+      "name": "Expedition (Expedition 4)",
+      "arctrackerProjectId": "expedition_project_s4",
+      "phases": {
+        "1": {
+          "name": "Foundation",
+          "goals": {
+            "236922529": {
+              "itemId": "chemicals",
+              "itemName": "Chemicals",
+              "itemGameAssetId": "-1565478080",
+              "required": 100
+            },
+            "566019307": {
+              "itemId": "arc_alloy",
+              "itemName": "ARC Alloy",
+              "itemGameAssetId": "1370841463",
+              "required": 80
+            },
+            "638705484": {
+              "itemId": "metal_parts",
+              "itemName": "Metal Parts",
+              "itemGameAssetId": "-1437131902",
+              "required": 150
+            },
+            "920604054": {
+              "itemId": "canister",
+              "itemName": "Canister",
+              "itemGameAssetId": "-668588724",
+              "required": 15
+            }
+          }
+        },
+        "2": {
+          "name": "Core Systems",
+          "goals": {
+            "133808102": {
+              "itemId": "oil",
+              "itemName": "Oil",
+              "itemGameAssetId": "1741060583",
+              "required": 25
+            },
+            "205494662": {
+              "itemId": "industrial_charger",
+              "itemName": "Industrial Charger",
+              "itemGameAssetId": "473499460",
+              "required": 3
+            },
+            "818417357": {
+              "itemId": "electrical_components",
+              "itemName": "Electrical Components",
+              "itemGameAssetId": "-923201933",
+              "required": 20
+            },
+            "883641224": {
+              "itemId": "durable_cloth",
+              "itemName": "Durable Cloth",
+              "itemGameAssetId": "-799395426",
+              "required": 30
+            }
+          }
+        },
+        "3": {
+          "name": "Framework",
+          "goals": {
+            "147327490": {
+              "itemId": "exodus_modules",
+              "itemName": "Exodus Modules",
+              "itemGameAssetId": "-1177716644",
+              "required": 2
+            },
+            "659699926": {
+              "itemId": "arc_motion_core",
+              "itemName": "ARC Motion Core",
+              "itemGameAssetId": "-900569094",
+              "required": 20
+            },
+            "737829836": {
+              "itemId": "turbine_compressor",
+              "itemName": "Turbine Compressor",
+              "itemGameAssetId": "1015139423",
+              "required": 5
+            },
+            "811231586": {
+              "itemId": "speaker_component",
+              "itemName": "Speaker Component",
+              "itemGameAssetId": "-1622446317",
+              "required": 15
+            }
+          }
+        },
+        "4": {
+          "name": "Outfitting",
+          "goals": {
+            "444851707": {
+              "itemId": "portable_tv",
+              "itemName": "Portable TV",
+              "itemGameAssetId": "1305834322",
+              "required": 1
+            },
+            "532753348": {
+              "itemId": "sirena_dorata_ship_model",
+              "itemName": "\"Sirena Dorata\" Ship Model",
+              "itemGameAssetId": "-2064796183",
+              "required": 2
+            },
+            "617475331": {
+              "itemId": "vaporizer_regulator",
+              "itemName": "Vaporizer Regulator",
+              "itemGameAssetId": "1348244387",
+              "required": 3
+            },
+            "773259476": {
+              "itemId": "advanced_electrical_components",
+              "itemName": "Advanced Electrical Components",
+              "itemGameAssetId": "-770265029",
+              "required": 5
+            }
+          }
+        },
+        "5": {
+          "name": "Load Stage",
+          "goals": {},
+          "categoryGoals": {
+            "119640415": {
+              "category": "Provisions",
+              "required": 150000
+            },
+            "406723271": {
+              "category": "Combat Items",
+              "required": 200000
+            },
+            "792465856": {
+              "category": "Survival Items",
+              "required": 100000
+            },
+            "839055515": {
+              "category": "Materials",
+              "required": 300000
+            }
+          }
+        },
+        "6": {
+          "name": "Departure",
+          "goals": {}
+        }
+      }
+    },
+    "880229966": {
+      "name": "High-Gain Antenna",
+      "arctrackerProjectId": "high_gain_antenna_project",
+      "phases": {
+        "1": {
+          "name": "Sturdy Base",
+          "goals": {
+            "109644816": {
+              "itemId": "arc_performance_steel",
+              "itemName": "ARC Performance Steel",
+              "itemGameAssetId": "-1068126131",
+              "required": 10
+            },
+            "137151926": {
+              "itemId": "arc_flex_rubber",
+              "itemName": "ARC Flex Rubber",
+              "itemGameAssetId": "-994234794",
+              "required": 10
+            },
+            "473971109": {
+              "itemId": "arc_alloy",
+              "itemName": "ARC Alloy",
+              "itemGameAssetId": "1370841463",
+              "required": 50
+            },
+            "506529610": {
+              "itemId": "advanced_arc_powercell",
+              "itemName": "Advanced ARC Powercell",
+              "itemGameAssetId": "246081482",
+              "required": 15
+            }
+          }
+        },
+        "2": {
+          "name": "Data Logger",
+          "goals": {
+            "227734684": {
+              "itemId": "vaporizer_regulator",
+              "itemName": "Vaporizer Regulator",
+              "itemGameAssetId": "1348244387",
+              "required": 4
+            },
+            "334740455": {
+              "itemId": "assessor_matrix",
+              "itemName": "Assessor Matrix",
+              "itemGameAssetId": "431449547",
+              "required": 6
+            },
+            "579419585": {
+              "itemId": "arc_coolant",
+              "itemName": "ARC Coolant",
+              "itemGameAssetId": "421801273",
+              "required": 15
+            },
+            "629410804": {
+              "itemId": "arc_thermo_lining",
+              "itemName": "ARC Thermo Lining",
+              "itemGameAssetId": "1533374440",
+              "required": 15
+            }
+          }
+        },
+        "3": {
+          "name": "Parabolic Dish",
+          "goals": {
+            "240522600": {
+              "itemId": "surveyor_vault",
+              "itemName": "Surveyor Vault",
+              "itemGameAssetId": "-1333721780",
+              "required": 10
+            },
+            "329931743": {
+              "itemId": "arc_synthetic_resin",
+              "itemName": "ARC Synthetic Resin",
+              "itemGameAssetId": "10866537",
+              "required": 20
+            },
+            "615262530": {
+              "itemId": "vaporizer_regulator",
+              "itemName": "Vaporizer Regulator",
+              "itemGameAssetId": "1348244387",
+              "required": 15
+            },
+            "725330929": {
+              "itemId": "assessor_matrix",
+              "itemName": "Assessor Matrix",
+              "itemGameAssetId": "431449547",
+              "required": 18
+            }
+          }
+        }
+      }
+    }
+  },
+  "arctrackerProjects": {
+    "weather_monitor_system_project": "Weather Monitor System",
+    "expedition_project": "Expedition Project (Expedition 2)",
+    "trophy_display_project": "Trophy Display",
+    "expedition_project_s1": "Expedition Project (Expedition 1)",
+    "avian_alarm_project": "Avian Alarm",
+    "expedition_project_s3": "Expedition (Expedition 3)",
+    "expedition_project_s4": "Expedition (Expedition 4)",
+    "high_gain_antenna_project": "High-Gain Antenna"
+  }
+}

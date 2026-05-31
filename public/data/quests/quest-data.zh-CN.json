@@ -755,11 +755,11 @@
         "id": "extended_barrel",
         "quantity": 1,
         "name": {
-          "value": "加长枪管",
-          "originalEn": "Extended Barrel"
+          "value": "extended_barrel",
+          "originalEn": "extended_barrel"
         },
-        "rarity": "Epic",
-        "imageFilename": "https://cdn.arctracker.io/items/v2/extended_barrel.png"
+        "rarity": "Common",
+        "imageFilename": ""
       },
       {
         "id": "heavy_ammo",
@@ -907,7 +907,7 @@
         "id": "pulse_mine",
         "quantity": 3,
         "name": {
-          "value": "跳雷：冲击",
+          "value": "跳雷：冲击（脉冲地雷）",
           "originalEn": "Pulse Mine"
         },
         "rarity": "Uncommon",
@@ -917,7 +917,7 @@
         "id": "gas_mine",
         "quantity": 3,
         "name": {
-          "value": "跳雷：持续流失耐力（跳雷：毒气）",
+          "value": "跳雷：持续流失耐力（毒气地雷）",
           "originalEn": "Gas Mine"
         },
         "rarity": "Common",
@@ -1355,7 +1355,7 @@
         "id": "riven_tides_hotel_keycard_no_107",
         "quantity": 1,
         "name": {
-          "value": "Riven Tides酒店107号钥匙卡",
+          "value": "裂潮镇酒店107号房卡",
           "originalEn": "Riven Tides Hotel Keycard No. 107"
         },
         "rarity": "Common",
@@ -1479,7 +1479,7 @@
         "id": "bombardier_cell",
         "quantity": 1,
         "name": {
-          "value": "投弹手电池",
+          "value": "“投弹手”电池",
           "originalEn": "Bombardier Cell"
         },
         "rarity": "Epic",
@@ -1989,7 +1989,7 @@
         "id": "gas_mine",
         "quantity": 3,
         "name": {
-          "value": "跳雷：持续流失耐力（跳雷：毒气）",
+          "value": "跳雷：持续流失耐力（毒气地雷）",
           "originalEn": "Gas Mine"
         },
         "rarity": "Common",
@@ -2043,7 +2043,7 @@
         "id": "comet_igniter",
         "quantity": 1,
         "name": {
-          "value": "彗星点火器",
+          "value": "“彗星”点火器",
           "originalEn": "Comet Igniter"
         },
         "rarity": "Rare",
@@ -2055,7 +2055,7 @@
         "id": "canto_i",
         "quantity": 1,
         "name": {
-          "value": "Canto I",
+          "value": "颂歌 I",
           "originalEn": "Canto I"
         },
         "rarity": "Rare",
@@ -2147,7 +2147,7 @@
         "id": "spotter_relay",
         "quantity": 1,
         "name": {
-          "value": "侦察中继器",
+          "value": "“侦察员”中继器",
           "originalEn": "Spotter Relay"
         },
         "rarity": "Uncommon",
@@ -3271,7 +3271,7 @@
         "id": "dam_surveillance_key",
         "quantity": 2,
         "name": {
-          "value": "大坝监控钥匙",
+          "value": "大坝监控室钥匙",
           "originalEn": "Dam Surveillance Key"
         },
         "rarity": "Uncommon",
@@ -3654,7 +3654,7 @@
         "id": "leaper_pulse_unit",
         "quantity": 1,
         "name": {
-          "value": "跳跃者脉冲装置",
+          "value": "“跳跃者”脉冲单元",
           "originalEn": "Leaper Pulse Unit"
         },
         "rarity": "Epic",
@@ -3723,7 +3723,7 @@
         "id": "pulse_mine",
         "quantity": 5,
         "name": {
-          "value": "跳雷：冲击",
+          "value": "跳雷：冲击（脉冲地雷）",
           "originalEn": "Pulse Mine"
         },
         "rarity": "Uncommon",
@@ -4890,7 +4890,7 @@
         "id": "rocketeer_driver",
         "quantity": 1,
         "name": {
-          "value": "火箭手引擎",
+          "value": "“火箭手”引擎",
           "originalEn": "Rocketeer Driver"
         },
         "rarity": "Epic",
@@ -5439,7 +5439,7 @@
         "id": "surge_coil",
         "quantity": 1,
         "name": {
-          "value": "Surge Coil",
+          "value": "涌能线圈",
           "originalEn": "Surge Coil"
         },
         "rarity": "Uncommon",
@@ -5665,7 +5665,7 @@
         "id": "dockmasters_detector",
         "quantity": 1,
         "name": {
-          "value": "码头主管的探测器",
+          "value": "码头主管探测器",
           "originalEn": "Dockmaster's Detector"
         },
         "rarity": "Uncommon",
@@ -6050,7 +6050,7 @@
         "id": "project_heartwood_blueprints",
         "quantity": 1,
         "name": {
-          "value": "“芯木计划”蓝图",
+          "value": "常青计划蓝图",
           "originalEn": "Project Heartwood Blueprints"
         },
         "rarity": "Common",
@@ -6227,7 +6227,7 @@
         "id": "spaceport_trench_tower_key",
         "quantity": 1,
         "name": {
-          "value": "太空港战壕塔钥匙",
+          "value": "太空港壕沟塔钥匙",
           "originalEn": "Spaceport Trench Tower Key"
         },
         "rarity": "Uncommon",
@@ -6948,7 +6948,7 @@
         "id": "snitch_scanner",
         "quantity": 2,
         "name": {
-          "value": "告密者扫描器",
+          "value": "“告密者”扫描仪",
           "originalEn": "Snitch Scanner"
         },
         "rarity": "Uncommon",
@@ -7188,7 +7188,7 @@
         "id": "spaceport_trench_tower_key",
         "quantity": 1,
         "name": {
-          "value": "太空港战壕塔钥匙",
+          "value": "太空港壕沟塔钥匙",
           "originalEn": "Spaceport Trench Tower Key"
         },
         "rarity": "Uncommon",

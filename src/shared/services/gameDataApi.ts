@@ -4,6 +4,7 @@ import type {
   CachedBlueprints,
   CachedHideout,
   CachedLoadout,
+  CachedProjects,
   CachedStash,
 } from '../types/arctracker';
 import {
@@ -11,6 +12,7 @@ import {
   getCachedBlueprints,
   getCachedHideout,
   getCachedLoadout,
+  getCachedProjects,
   getCachedStash,
   setCacheOwner,
   setCacheSource,
@@ -171,4 +173,35 @@ function withEmbarkCacheSource(snapshot: EmbarkInventorySnapshot): EmbarkInvento
     hideout: { ...snapshot.hideout, source: 'embark' },
     blueprints: { ...snapshot.blueprints, source: 'embark' },
   };
+}
+
+/**
+ * Fetch latest Embark project progress (read-only, no upstream call).
+ */
+export async function getEmbarkProjects(): Promise<CachedProjects | undefined> {
+  const cached = await getCachedProjects();
+  if (cached?.syncedAt) return cached;
+
+  try {
+    const response = await authedFetch('/me/embark/projects');
+    if (response.status === 404) return undefined;
+    const body = await readJson<CachedProjects>(response);
+    if (body) {
+      await cacheSet('projects', body);
+      return body;
+    }
+  } catch (err) {
+    console.warn('Failed to fetch Embark projects:', err);
+  }
+  return undefined;
+}
+
+/**
+ * Sync Embark project progress from the backend.
+ */
+export async function syncEmbarkProjects(): Promise<CachedProjects> {
+  const response = await authedFetch('/me/embark/projects/sync', { method: 'POST' });
+  const body = await readJson<CachedProjects>(response);
+  await cacheSet('projects', body);
+  return body;
 }

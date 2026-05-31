@@ -604,7 +604,7 @@
   "assessor_matrix": {
     "id": "assessor_matrix",
     "name": {
-      "value": "Assessor Matrix",
+      "value": "“评估者”矩阵",
       "originalEn": "Assessor Matrix"
     },
     "stackSize": 1,
@@ -910,7 +910,7 @@
   "blue_gate_confiscation_room_key": {
     "id": "blue_gate_confiscation_room_key",
     "name": {
-      "value": "蓝门没收室钥匙",
+      "value": "蓝门没收库房钥匙",
       "originalEn": "Blue Gate Confiscation Room Key"
     },
     "stackSize": 1,
@@ -924,7 +924,7 @@
   "blue_gate_village_key": {
     "id": "blue_gate_village_key",
     "name": {
-      "value": "蓝门村庄钥匙",
+      "value": "蓝门村建筑钥匙",
       "originalEn": "Blue Gate Village Key"
     },
     "stackSize": 1,
@@ -1051,7 +1051,7 @@
   "bombardier_cell": {
     "id": "bombardier_cell",
     "name": {
-      "value": "投弹手电池",
+      "value": "“投弹手”电池",
       "originalEn": "Bombardier Cell"
     },
     "stackSize": 3,
@@ -1107,7 +1107,7 @@
   "broken_handheld_radio": {
     "id": "broken_handheld_radio",
     "name": {
-      "value": "损坏的手持无线电",
+      "value": "坏掉的手持无线电",
       "originalEn": "Broken Handheld Radio"
     },
     "stackSize": 3,
@@ -1121,7 +1121,7 @@
   "broken_taser": {
     "id": "broken_taser",
     "name": {
-      "value": "损坏的电击枪",
+      "value": "坏掉的电击枪",
       "originalEn": "Broken Taser"
     },
     "stackSize": 3,
@@ -1163,7 +1163,7 @@
   "buried_city_residential_master_key": {
     "id": "buried_city_residential_master_key",
     "name": {
-      "value": "掩埋废城住宅区万能钥匙",
+      "value": "掩埋废城公寓楼万能钥匙",
       "originalEn": "Buried City Residential Master Key"
     },
     "stackSize": 1,
@@ -1357,7 +1357,7 @@
   "canto_blueprint": {
     "id": "canto_blueprint",
     "name": {
-      "value": "Canto 蓝图",
+      "value": "颂歌蓝图",
       "originalEn": "Canto Blueprint"
     },
     "stackSize": 1,
@@ -1371,7 +1371,7 @@
   "canto_i": {
     "id": "canto_i",
     "name": {
-      "value": "Canto I",
+      "value": "颂歌 I",
       "originalEn": "Canto I"
     },
     "stackSize": 1,
@@ -1389,7 +1389,7 @@
   "canto_ii": {
     "id": "canto_ii",
     "name": {
-      "value": "Canto II",
+      "value": "颂歌 II",
       "originalEn": "Canto II"
     },
     "stackSize": 1,
@@ -1406,7 +1406,7 @@
   "canto_iii": {
     "id": "canto_iii",
     "name": {
-      "value": "Canto III",
+      "value": "颂歌 III",
       "originalEn": "Canto III"
     },
     "stackSize": 1,
@@ -1423,7 +1423,7 @@
   "canto_iv": {
     "id": "canto_iv",
     "name": {
-      "value": "Canto IV",
+      "value": "颂歌 IV",
       "originalEn": "Canto IV"
     },
     "stackSize": 1,
@@ -1592,7 +1592,7 @@
   "comet_igniter": {
     "id": "comet_igniter",
     "name": {
-      "value": "彗星点火器",
+      "value": "“彗星”点火器",
       "originalEn": "Comet Igniter"
     },
     "stackSize": 3,
@@ -1731,7 +1731,7 @@
   "cooling_coil": {
     "id": "cooling_coil",
     "name": {
-      "value": "冷却线圈",
+      "value": "冷却管",
       "originalEn": "Cooling Coil"
     },
     "stackSize": 3,
@@ -1848,7 +1848,7 @@
   "dam_controlled_access_zone_key": {
     "id": "dam_controlled_access_zone_key",
     "name": {
-      "value": "大坝管制区钥匙",
+      "value": "大坝受控访问区钥匙",
       "originalEn": "Dam Controlled Access Zone Key"
     },
     "stackSize": 1,
@@ -1876,7 +1876,7 @@
   "dam_surveillance_key": {
     "id": "dam_surveillance_key",
     "name": {
-      "value": "大坝监控钥匙",
+      "value": "大坝监控室钥匙",
       "originalEn": "Dam Surveillance Key"
     },
     "stackSize": 1,
@@ -1946,7 +1946,7 @@
   "damaged_heat_sink": {
     "id": "damaged_heat_sink",
     "name": {
-      "value": "损坏的散热器",
+      "value": "受损的散热器",
       "originalEn": "Damaged Heat Sink"
     },
     "stackSize": 3,
@@ -2149,7 +2149,7 @@
   "dockmasters_detector": {
     "id": "dockmasters_detector",
     "name": {
-      "value": "码头主管的探测器",
+      "value": "码头主管探测器",
       "originalEn": "Dockmaster's Detector"
     },
     "stackSize": 1,
@@ -2191,7 +2191,7 @@
   "dolabra_blueprint": {
     "id": "dolabra_blueprint",
     "name": {
-      "value": "Dolabra 蓝图",
+      "value": "錾斧蓝图",
       "originalEn": "Dolabra Blueprint"
     },
     "stackSize": 1,
@@ -2205,7 +2205,7 @@
   "dolabra": {
     "id": "dolabra",
     "name": {
-      "value": "Dolabra",
+      "value": "錾斧",
       "originalEn": "Dolabra"
     },
     "stackSize": 1,
@@ -2462,7 +2462,7 @@
   "expired_respirator": {
     "id": "expired_respirator",
     "name": {
-      "value": "过期呼吸器",
+      "value": "过期的防毒面具",
       "originalEn": "Expired Respirator"
     },
     "stackSize": 3,
@@ -2535,11 +2535,59 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "extended_barrel_blueprint": {
-    "id": "extended_barrel_blueprint",
+  "extended_barrel_i": {
+    "id": "extended_barrel_i",
     "name": {
-      "value": "加长枪管 蓝图",
-      "originalEn": "Extended Barrel Blueprint"
+      "value": "加长枪管 I",
+      "originalEn": "Extended Barrel I"
+    },
+    "stackSize": 1,
+    "value": 1000,
+    "imageFilename": null,
+    "isWeapon": null,
+    "recipe": {
+      "metal_parts": 6,
+      "wires": 3
+    },
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "extended_barrel_ii_blueprint": {
+    "id": "extended_barrel_ii_blueprint",
+    "name": {
+      "value": "加长枪管 II 蓝图",
+      "originalEn": "Extended Barrel II Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": null,
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "extended_barrel_ii": {
+    "id": "extended_barrel_ii",
+    "name": {
+      "value": "加长枪管 II",
+      "originalEn": "Extended Barrel II"
+    },
+    "stackSize": 1,
+    "value": 3000,
+    "imageFilename": null,
+    "isWeapon": null,
+    "recipe": {
+      "mechanical_components": 3,
+      "wires": 6
+    },
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "extended_barrel_iii_blueprint": {
+    "id": "extended_barrel_iii_blueprint",
+    "name": {
+      "value": "加长枪管 III 蓝图",
+      "originalEn": "Extended Barrel III Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
@@ -2549,11 +2597,11 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "extended_barrel": {
-    "id": "extended_barrel",
+  "extended_barrel_iii": {
+    "id": "extended_barrel_iii",
     "name": {
-      "value": "加长枪管",
-      "originalEn": "Extended Barrel"
+      "value": "加长枪管 III",
+      "originalEn": "Extended Barrel III"
     },
     "stackSize": 1,
     "value": 5000,
@@ -3152,7 +3200,7 @@
       "originalEn": "Free Loadout Augment"
     },
     "stackSize": 1,
-    "value": 100,
+    "value": 660,
     "imageFilename": "https://cdn.arctracker.io/items/v2/free_loadout_augment.png",
     "isWeapon": null,
     "recipe": null,
@@ -3162,7 +3210,7 @@
   "frequency_modulation_box": {
     "id": "frequency_modulation_box",
     "name": {
-      "value": "频率调制盒",
+      "value": "频率调制箱",
       "originalEn": "Frequency Modulation Box"
     },
     "stackSize": 3,
@@ -3222,7 +3270,7 @@
   "garlic_press": {
     "id": "garlic_press",
     "name": {
-      "value": "大蒜压榨器",
+      "value": "压蒜器",
       "originalEn": "Garlic Press"
     },
     "stackSize": 3,
@@ -3270,7 +3318,7 @@
   "gas_mine_blueprint": {
     "id": "gas_mine_blueprint",
     "name": {
-      "value": "跳雷：持续流失耐力 蓝图（跳雷：毒气 蓝图）",
+      "value": "毒气地雷蓝图",
       "originalEn": "Gas Mine Blueprint"
     },
     "stackSize": 1,
@@ -3284,7 +3332,7 @@
   "gas_mine": {
     "id": "gas_mine",
     "name": {
-      "value": "跳雷：持续流失耐力（跳雷：毒气）",
+      "value": "跳雷：持续流失耐力（毒气地雷）",
       "originalEn": "Gas Mine"
     },
     "stackSize": 3,
@@ -3815,7 +3863,7 @@
   "industrial_battery": {
     "id": "industrial_battery",
     "name": {
-      "value": "工业电池",
+      "value": "工业级电池",
       "originalEn": "Industrial Battery"
     },
     "stackSize": 3,
@@ -3829,7 +3877,7 @@
   "industrial_charger": {
     "id": "industrial_charger",
     "name": {
-      "value": "工业充电器",
+      "value": "工业级充电器",
       "originalEn": "Industrial Charger"
     },
     "stackSize": 3,
@@ -3843,7 +3891,7 @@
   "industrial_magnet": {
     "id": "industrial_magnet",
     "name": {
-      "value": "工业磁铁",
+      "value": "工业级磁铁",
       "originalEn": "Industrial Magnet"
     },
     "stackSize": 3,
@@ -4061,7 +4109,7 @@
   "leaper_pulse_unit": {
     "id": "leaper_pulse_unit",
     "name": {
-      "value": "跳跃者脉冲装置",
+      "value": "“跳跃者”脉冲单元",
       "originalEn": "Leaper Pulse Unit"
     },
     "stackSize": 3,
@@ -4089,7 +4137,7 @@
   "leviathans_crown_ship_model": {
     "id": "leviathans_crown_ship_model",
     "name": {
-      "value": "「Leviathan's Crown」号船模",
+      "value": "“利维坦之冠”舰船模型",
       "originalEn": "\"Leviathan's Crown\" Ship Model"
     },
     "stackSize": 1,
@@ -4718,7 +4766,7 @@
   "motor": {
     "id": "motor",
     "name": {
-      "value": "马达",
+      "value": "发动机",
       "originalEn": "Motor"
     },
     "stackSize": 3,
@@ -5155,7 +5203,7 @@
   "polluted_air_filter": {
     "id": "polluted_air_filter",
     "name": {
-      "value": "污染空气过滤器",
+      "value": "污染的空气滤芯",
       "originalEn": "Polluted Air Filter"
     },
     "stackSize": 3,
@@ -5357,7 +5405,7 @@
   "project_heartwood_blueprints": {
     "id": "project_heartwood_blueprints",
     "name": {
-      "value": "“芯木计划”蓝图",
+      "value": "常青计划蓝图",
       "originalEn": "Project Heartwood Blueprints"
     },
     "stackSize": 1,
@@ -5385,7 +5433,7 @@
   "pulse_mine_blueprint": {
     "id": "pulse_mine_blueprint",
     "name": {
-      "value": "跳雷：冲击蓝图",
+      "value": "脉冲地雷蓝图",
       "originalEn": "Pulse Mine Blueprint"
     },
     "stackSize": 1,
@@ -5399,7 +5447,7 @@
   "pulse_mine": {
     "id": "pulse_mine",
     "name": {
-      "value": "跳雷：冲击",
+      "value": "跳雷：冲击（脉冲地雷）",
       "originalEn": "Pulse Mine"
     },
     "stackSize": 3,
@@ -5498,6 +5546,89 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "rascal_blueprint": {
+    "id": "rascal_blueprint",
+    "name": {
+      "value": "无赖蓝图",
+      "originalEn": "Rascal Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/rascal.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "rascal_i": {
+    "id": "rascal_i",
+    "name": {
+      "value": "无赖 I",
+      "originalEn": "Rascal I"
+    },
+    "stackSize": 1,
+    "value": 7000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/rascal.png",
+    "isWeapon": true,
+    "recipe": {
+      "advanced_mechanical_components": 2,
+      "canister": 5,
+      "heavy_gun_parts": 3
+    },
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "rascal_ii": {
+    "id": "rascal_ii",
+    "name": {
+      "value": "无赖 II",
+      "originalEn": "Rascal II"
+    },
+    "stackSize": 1,
+    "value": 10000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/rascal.png",
+    "isWeapon": true,
+    "recipe": null,
+    "upgradeCost": {
+      "advanced_mechanical_components": 1,
+      "heavy_gun_parts": 2
+    },
+    "craftQuantity": 1
+  },
+  "rascal_iii": {
+    "id": "rascal_iii",
+    "name": {
+      "value": "无赖 III",
+      "originalEn": "Rascal III"
+    },
+    "stackSize": 1,
+    "value": 13000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/rascal.png",
+    "isWeapon": true,
+    "recipe": null,
+    "upgradeCost": {
+      "advanced_mechanical_components": 1,
+      "heavy_gun_parts": 2
+    },
+    "craftQuantity": 1
+  },
+  "rascal_iv": {
+    "id": "rascal_iv",
+    "name": {
+      "value": "无赖 IV",
+      "originalEn": "Rascal IV"
+    },
+    "stackSize": 1,
+    "value": 17000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/rascal.png",
+    "isWeapon": true,
+    "recipe": null,
+    "upgradeCost": {
+      "advanced_mechanical_components": 2,
+      "heavy_gun_parts": 2
+    },
     "craftQuantity": 1
   },
   "rattler_i": {
@@ -5782,24 +5913,10 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "riven_tides_classifed_records_keycard": {
-    "id": "riven_tides_classifed_records_keycard",
-    "name": {
-      "value": "Riven Tides机密记录钥匙卡",
-      "originalEn": "Riven Tides Classifed Records Keycard"
-    },
-    "stackSize": 1,
-    "value": 100,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/riven_tides_classified_records_keycard.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
   "riven_tides_classified_records_keycard": {
     "id": "riven_tides_classified_records_keycard",
     "name": {
-      "value": "Riven Tides机密记录钥匙卡",
+      "value": "裂潮镇机密档案室门禁卡",
       "originalEn": "Riven Tides Classified Records Keycard"
     },
     "stackSize": 1,
@@ -5813,7 +5930,7 @@
   "riven_tides_crane_house_keycard": {
     "id": "riven_tides_crane_house_keycard",
     "name": {
-      "value": "Riven Tides起重机房钥匙卡",
+      "value": "裂潮镇起重机控制室门禁卡",
       "originalEn": "Riven Tides Crane House Keycard"
     },
     "stackSize": 1,
@@ -5827,7 +5944,7 @@
   "riven_tides_hotel_keycard_no_102": {
     "id": "riven_tides_hotel_keycard_no_102",
     "name": {
-      "value": "Riven Tides酒店102号钥匙卡",
+      "value": "裂潮镇酒店102号房卡",
       "originalEn": "Riven Tides Hotel Keycard No. 102"
     },
     "stackSize": 1,
@@ -5841,7 +5958,7 @@
   "riven_tides_hotel_keycard_no_107": {
     "id": "riven_tides_hotel_keycard_no_107",
     "name": {
-      "value": "Riven Tides酒店107号钥匙卡",
+      "value": "裂潮镇酒店107号房卡",
       "originalEn": "Riven Tides Hotel Keycard No. 107"
     },
     "stackSize": 1,
@@ -5855,7 +5972,7 @@
   "riven_tides_hotel_keycard_no_113": {
     "id": "riven_tides_hotel_keycard_no_113",
     "name": {
-      "value": "Riven Tides酒店113号钥匙卡",
+      "value": "裂潮镇酒店113号房卡",
       "originalEn": "Riven Tides Hotel Keycard No. 113"
     },
     "stackSize": 1,
@@ -5869,7 +5986,7 @@
   "riven_tides_hotel_keycard_no_205": {
     "id": "riven_tides_hotel_keycard_no_205",
     "name": {
-      "value": "Riven Tides酒店205号钥匙卡",
+      "value": "裂潮镇酒店205号房卡",
       "originalEn": "Riven Tides Hotel Keycard No. 205"
     },
     "stackSize": 1,
@@ -5883,7 +6000,7 @@
   "riven_tides_hotel_keycard_no_208": {
     "id": "riven_tides_hotel_keycard_no_208",
     "name": {
-      "value": "Riven Tides酒店208号钥匙卡",
+      "value": "裂潮镇酒店208号房卡",
       "originalEn": "Riven Tides Hotel Keycard No. 208"
     },
     "stackSize": 1,
@@ -5897,7 +6014,7 @@
   "riven_tides_hotel_keycard_no_311": {
     "id": "riven_tides_hotel_keycard_no_311",
     "name": {
-      "value": "Riven Tides酒店311号钥匙卡",
+      "value": "裂潮镇酒店311号房卡",
       "originalEn": "Riven Tides Hotel Keycard No. 311"
     },
     "stackSize": 1,
@@ -5911,7 +6028,7 @@
   "riven_tides_hotel_keycard_no_404": {
     "id": "riven_tides_hotel_keycard_no_404",
     "name": {
-      "value": "Riven Tides酒店404号钥匙卡",
+      "value": "裂潮镇酒店404号房卡",
       "originalEn": "Riven Tides Hotel Keycard No. 404"
     },
     "stackSize": 1,
@@ -5925,7 +6042,7 @@
   "riven_tides_secure_storage_keycard": {
     "id": "riven_tides_secure_storage_keycard",
     "name": {
-      "value": "Riven Tides安全仓库钥匙卡",
+      "value": "裂潮镇安全储藏室门禁卡",
       "originalEn": "Riven Tides Secure Storage Keycard"
     },
     "stackSize": 1,
@@ -5953,7 +6070,7 @@
   "rocketeer_driver": {
     "id": "rocketeer_driver",
     "name": {
-      "value": "火箭手引擎",
+      "value": "“火箭手”引擎",
       "originalEn": "Rocketeer Driver"
     },
     "stackSize": 3,
@@ -6093,7 +6210,7 @@
   "ruined_baton": {
     "id": "ruined_baton",
     "name": {
-      "value": "损坏的警棍",
+      "value": "损毁的警棍",
       "originalEn": "Ruined Baton"
     },
     "stackSize": 3,
@@ -6107,7 +6224,7 @@
   "ruined_handcuffs": {
     "id": "ruined_handcuffs",
     "name": {
-      "value": "损坏的手铐",
+      "value": "损毁的手铐",
       "originalEn": "Ruined Handcuffs"
     },
     "stackSize": 3,
@@ -6121,7 +6238,7 @@
   "ruined_parachute": {
     "id": "ruined_parachute",
     "name": {
-      "value": "损毁的降落伞",
+      "value": "坏掉的降落伞",
       "originalEn": "Ruined Parachute"
     },
     "stackSize": 3,
@@ -6334,7 +6451,7 @@
   "sentinel_firing_core": {
     "id": "sentinel_firing_core",
     "name": {
-      "value": "哨兵核心",
+      "value": "“哨卫”发射核心",
       "originalEn": "Sentinel Firing Core"
     },
     "stackSize": 3,
@@ -6690,7 +6807,7 @@
   "sirena_dorata_ship_model": {
     "id": "sirena_dorata_ship_model",
     "name": {
-      "value": "「Sirena Dorata」号船模",
+      "value": "“金色海妖”舰船模型",
       "originalEn": "\"Sirena Dorata\" Ship Model"
     },
     "stackSize": 1,
@@ -6801,7 +6918,7 @@
   "snitch_scanner": {
     "id": "snitch_scanner",
     "name": {
-      "value": "告密者扫描器",
+      "value": "“告密者”扫描仪",
       "originalEn": "Snitch Scanner"
     },
     "stackSize": 3,
@@ -6857,7 +6974,7 @@
   "spaceport_trench_tower_key": {
     "id": "spaceport_trench_tower_key",
     "name": {
-      "value": "太空港战壕塔钥匙",
+      "value": "太空港壕沟塔钥匙",
       "originalEn": "Spaceport Trench Tower Key"
     },
     "stackSize": 1,
@@ -6927,7 +7044,7 @@
   "spotter_relay": {
     "id": "spotter_relay",
     "name": {
-      "value": "侦察中继器",
+      "value": "“侦察员”中继器",
       "originalEn": "Spotter Relay"
     },
     "stackSize": 3,
@@ -7217,7 +7334,7 @@
   "surge_coil_blueprint": {
     "id": "surge_coil_blueprint",
     "name": {
-      "value": "Surge Coil 蓝图",
+      "value": "涌能线圈蓝图",
       "originalEn": "Surge Coil Blueprint"
     },
     "stackSize": 1,
@@ -7231,7 +7348,7 @@
   "surge_coil": {
     "id": "surge_coil",
     "name": {
-      "value": "Surge Coil",
+      "value": "涌能线圈",
       "originalEn": "Surge Coil"
     },
     "stackSize": 3,
@@ -7880,7 +7997,7 @@
   "twilight_compass_ship_model": {
     "id": "twilight_compass_ship_model",
     "name": {
-      "value": "「Twilight Compass」号船模",
+      "value": "“暮光指南针”舰船模型",
       "originalEn": "\"Twilight Compass\" Ship Model"
     },
     "stackSize": 1,
@@ -7908,7 +8025,7 @@
   "vaporizer_regulator": {
     "id": "vaporizer_regulator",
     "name": {
-      "value": "Vaporizer Regulator",
+      "value": "“气化者”调节器",
       "originalEn": "Vaporizer Regulator"
     },
     "stackSize": 3,
@@ -7936,7 +8053,7 @@
   "velocity_ship_model": {
     "id": "velocity_ship_model",
     "name": {
-      "value": "「Velocity」号船模",
+      "value": "“极速”舰船模型",
       "originalEn": "\"Velocity\" Ship Model"
     },
     "stackSize": 1,
@@ -8373,7 +8490,7 @@
   "wind_sprite_ship_model": {
     "id": "wind_sprite_ship_model",
     "name": {
-      "value": "「Wind Sprite」号船模",
+      "value": "“风灵”舰船模型",
       "originalEn": "\"Wind Sprite\" Ship Model"
     },
     "stackSize": 1,

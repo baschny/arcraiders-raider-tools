@@ -755,11 +755,11 @@
         "id": "extended_barrel",
         "quantity": 1,
         "name": {
-          "value": "Cañón extendido",
-          "originalEn": "Extended Barrel"
+          "value": "extended_barrel",
+          "originalEn": "extended_barrel"
         },
-        "rarity": "Epic",
-        "imageFilename": "https://cdn.arctracker.io/items/v2/extended_barrel.png"
+        "rarity": "Common",
+        "imageFilename": ""
       },
       {
         "id": "heavy_ammo",

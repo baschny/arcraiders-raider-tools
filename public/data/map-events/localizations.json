@@ -3,14 +3,15 @@
     "description": "Map event name localizations extracted from ../arcraiders-data/map-events/map-events.json"
   },
   "metadata": {
-    "generatedAt": "2026-05-11T16:59:10.580Z",
+    "generatedAt": "2026-05-31T00:33:24.143Z",
     "source": "../arcraiders-data/map-events/map-events.json"
   },
   "eventTypes": {
     "hurricane": {
       "localizations": {
         "en": "Hurricane",
-        "JP": "台風"
+        "JP": "台風",
+        "zh-CN": "飓风"
       }
     },
     "night-raid": {
@@ -339,7 +340,7 @@
         "it": "Raccolta sulla Spiaggia",
         "ja": "ビーチコーミング",
         "ko-KR": "해변 수색",
-        "zh-CN": "海滩拾荒",
+        "zh-CN": "海滩拾荒点",
         "zh-TW": "海灘拾荒",
         "ru": "Прочёсывание пляжа",
         "tr": "Sahil Taraması",

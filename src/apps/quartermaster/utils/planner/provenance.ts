@@ -97,7 +97,7 @@ export function calculateProvenance(
     itemId: string,
     listId: string,
     listName: string,
-    listType: 'user' | 'hideout',
+    listType: 'user' | 'hideout' | 'project',
     quantity: number,
     targetIds: string[],
     isDirect = false,
@@ -150,7 +150,7 @@ export function calculateProvenance(
     visited: Set<ItemId>,
     listId: string,
     listName: string,
-    listType: 'user' | 'hideout',
+    listType: 'user' | 'hideout' | 'project',
     originalTargetId: ItemId,
   ) => {
     if (depth >= maxDepth || visited.has(currId)) return;

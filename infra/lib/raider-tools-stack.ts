@@ -526,6 +526,29 @@ export class RaiderToolsStack extends cdk.Stack {
             ],
             resources: embarkConfigParamArns,
         }));
+
+        const embarkProjectsFn = this.makeLambda("EmbarkProjectsFn", "embark-projects.ts", {
+            timeout: cdk.Duration.seconds(20),
+            memorySize: 512,
+            environment: {
+                USER_TABLE_NAME: this.userTable.tableName,
+                KMS_KEY_ID: this.kmsKey.keyId,
+                ALLOWED_ORIGINS: props.allowedOrigins.join(","),
+                EMBARK_MANIFEST_PARAM_NAME: embarkManifestParamName,
+                EMBARK_USER_AGENT_PARAM_NAME: embarkUserAgentParamName,
+            },
+        });
+        this.userTable.grantReadWriteData(embarkProjectsFn);
+        this.kmsKey.grantEncryptDecrypt(embarkProjectsFn);
+        embarkProjectsFn.addToRolePolicy(new iam.PolicyStatement({
+            actions: [
+                "ssm:DescribeParameters",
+                "ssm:GetParameter",
+                "ssm:GetParameterHistory",
+                "ssm:GetParameters",
+            ],
+            resources: embarkConfigParamArns,
+        }));
         embarkSnapshotBucket.grantReadWrite(embarkQuestsFn);
 
         const stateFn = this.makeLambda("StateFn", "state.ts", {
@@ -684,6 +707,9 @@ export class RaiderToolsStack extends cdk.Stack {
         const embarkQuestsIntegration = new integrations.HttpLambdaIntegration(
             "EmbarkQuestsIntegration", embarkQuestsFn,
         );
+        const embarkProjectsIntegration = new integrations.HttpLambdaIntegration(
+            "EmbarkProjectsIntegration", embarkProjectsFn,
+        );
         this.httpApi.addRoutes({
             path: "/me/state/{domain}",
             methods: [
@@ -734,6 +760,18 @@ export class RaiderToolsStack extends cdk.Stack {
             path: "/me/embark/quests/sync",
             methods: [apigwv2.HttpMethod.POST],
             integration: embarkQuestsIntegration,
+            authorizer: jwtAuthorizer,
+        });
+        this.httpApi.addRoutes({
+            path: "/me/embark/projects",
+            methods: [apigwv2.HttpMethod.GET],
+            integration: embarkProjectsIntegration,
+            authorizer: jwtAuthorizer,
+        });
+        this.httpApi.addRoutes({
+            path: "/me/embark/projects/sync",
+            methods: [apigwv2.HttpMethod.POST],
+            integration: embarkProjectsIntegration,
             authorizer: jwtAuthorizer,
         });
 

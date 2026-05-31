@@ -66,6 +66,7 @@ The purpose of this module is to support the full gameplay lifecycle of ARC Raid
 - Loot suggestion guidance
 - Craft execution planning
 - Hideout/workbench progression planning
+- Community project progression planning
 
 The system must:
 
@@ -77,6 +78,9 @@ The system must:
 - Allow generated hideout upgrade lists to participate in planner aggregation with higher priority than user-authored lists.
 - Support loot acquisition planning for hideout upgrade materials.
 - Keep generated hideout list composition read-only while preserving per-list and per-item enable/disable control.
+- Generate deterministic project required-item lists based on cached user project progress.
+- Allow generated project lists to participate in planner aggregation with higher priority than user-authored lists but lower than hideout lists.
+- Keep generated project list composition read-only while preserving per-list and per-item enable/disable control.
 - Limit crafting depth to practical real-world gameplay expectations.
 - Avoid unnecessary or confusing steps.
 - Reserve required materials before recycling.
@@ -940,19 +944,140 @@ Unknown hideout modules not present in the imported static dataset must be ignor
 
 ---
 
-## 4.6 Blueprint Integration
+## 4.6 Project Progression Integration
+
+Quartermaster integrates with game project progress through either the ArcTracker or Embark API layer, depending on the user's selected game data source.
+
+### 4.6.1 Data Sources
+
+Static project definitions come from generated locale-specific JSON files:
+
+```
+/data/quartermaster/projects.<locale>.json
+```
+
+Each project contains:
+- `id` — unique project identifier (e.g. `"trophy_display_project"`)
+- `name` — localized project name
+- `phases[]` — ordered steps with `name`, `index` (1-based), and `requirementItemIds[]`
+
+Project progress comes from one of two sync sources:
+- **ArcTracker**: `GET /api/v2/user/projects` — returns step-level completion only (`phase.completed: boolean`)
+- **Embark**: `POST /v1/pioneer/projects/list` — returns per-goal progress (`amount` submitted vs required, `state` per goal)
+
+The active source is determined by the global `gameDataSource` setting: `'arctracker'` or `'embark'`.
+
+### 4.6.2 Sync Operation
+
+The Projects view must provide a **Sync Projects** button.
+
+**ArcTracker sync flow:**
+- Calls `/me/arctracker/v2/user/projects` through the existing ArcTracker proxy
+- Returns step-level completion data
+- For incomplete steps: all required items are considered "needed"
+- For completed steps: step is marked complete, no items are needed
+
+**Embark sync flow:**
+- Calls `POST /me/embark/projects/sync` (new dedicated Lambda)
+- Lambda calls `POST /v1/pioneer/projects/list` upstream with `states: ["IN_PROGRESS","COMPLETED","ABANDONED","DEPARTED"]`
+- Response is decoded through a bundled `project-mapping.json` artifact that maps `projectAssetId`/`goalAssetId` integers to project IDs, step names, and item IDs
+- Returns per-goal progress: `required`, `submitted`, `remaining`, `completed`
+- Cached in DynamoDB under `EMBARK#PROJECTS#LATEST` per user
+- `GET /me/embark/projects` reads latest cached progress
+
+The returned project progress must be cached locally in IndexedDB, analogous to stash and loadout caching.
+
+### 4.6.3 Cached Data Usage
+
+Quartermaster reads cached project progress from local cache.
+
+Project progress cache must contain at least:
+- `projectId` — matches project definition id
+- `projectName` — display name
+- `completed` — whether all steps are complete
+- `steps[]` — per-step progress with `name`, `index`, `completed`, `goals[]`
+- `syncedAt` timestamp
+
+Project progress is considered usable if cache exists and contains valid step data.
+
+If sync fails:
+- previously cached project progress remains available
+- no cache clearing occurs
+
+### 4.6.4 Generation Dependency
+
+Generated project required-item lists are derived from:
+- imported project definitions from `/data/quartermaster/projects.json`
+- cached project progress (from API sync)
+
+If no cached project progress exists:
+- no generated project lists are shown
+- Projects view must display a hint prompting the user to **Sync Projects**
+
+Generated project lists must not be displayed in the Lists view.
+Generated project lists are displayed only in the top-level Projects view.
+
+### 4.6.5 Generated List Rules
+
+For each project, generate one list per step.
+
+Rules:
+- Generate a list for every step regardless of completion status
+- A step is only considered completed when ALL its own goals are COMPLETED AND all previous steps in the project are also COMPLETED
+- Completed steps default to disabled
+- All other steps default to enabled
+- List ID format: `project_<projectId>_<stepIndex>` (stepIndex is 1-based, matching the step's `index` field)
+- List naming: `"Step <N> (<StepName>)"` (project name is shown on the project card header, not repeated in each step row)
+- List type: `'project'`
+- Requirements are non-cumulative (each step list contains only its own requirements)
+- When Embark API progress is available, each item uses the `remaining` quantity from the cached goal data; otherwise falls back to the full static quantity
+- Each item displays a `submitted / required` progress indicator (e.g. `"5 / 10"`) below the item name
+- **No-fallback**: Lists are only generated for projects that exist in both the static definitions AND the cached progress. Projects present in definitions but absent from cached progress are silently skipped and produce no planner targets
+
+**Expired Project Filtering**:
+- Each project definition includes `startDate` and `endDate` as Unix epoch seconds
+- Projects whose `endDate` is earlier than the current time are filtered out — they produce no lists, are not shown in the Projects view, and contribute no planner targets
+- This filtering applies regardless of whether cached progress exists for the expired project
+- Projects with no `endDate` (e.g. permanent projects like Trophy Display) are never filtered
+- **Completed projects**: Completed projects remain visible in the Projects view only while they are not expired. Non-expired completed projects show a green checkmark and do not contribute planner targets. Expired projects are hidden even if fully completed
+
+Available-to-submit detection:
+- A step is "available to submit" only if it is the first incomplete step in its project AND the user owns all required items
+- Future steps beyond the current incomplete step show required items but do NOT trigger available-to-submit
+
+### 4.6.6 Planner Integration
+
+Project lists merge into the planner priority chain after hideout and before user lists:
+
+```
+hideout → project → user
+```
+
+Rules:
+- Enabled project lists contribute planner requirements
+- Disabled project lists do not contribute planner targets
+- Disabled project items do not contribute planner targets
+- Planner prioritizes hideout targets first, then project targets, then user-authored list targets
+- Duplicate item targets sum quantities while retaining list-type priority metadata
+- In Raid suggestions reflect project priority between hideout and user-authored list priority
+- Crafting plan reflects project priority between hideout and user-authored list priority
+- Obsolete project toggle cleanup runs after project progress sync
+
+### 4.6.7 Toggle Persistence
+
+Project toggle state is stored in `quartermasterStore.projectToggles`:
+- `listEnabled`: keyed by `"projectId:stepIndex"`
+- `itemEnabled`: keyed by `"projectId:stepIndex:itemId"`
+
+After project progress sync, `cleanupObsoleteProjectToggles()` removes toggle state for steps that are now completed.
+
+---
+
+## 4.7 Blueprint Integration
 
 Quartermaster integrates with the user blueprints endpoint through the shared Raider Tools API layer.
 
-Upstream ArcTracker endpoint:
-
-```text
-GET https://arctracker.io/api/v2/user/blueprints
-```
-
-Quartermaster must not call `arctracker.io` directly. The request must go through the Raider Tools ArcTracker proxy/service layer.
-
-### 4.6.1 Sync Operation
+### 4.7.1 Sync Operation
 
 The Crafting view must provide a **Sync Unlocked Blueprints** button next to **Sync My Items**.
 
@@ -985,7 +1110,7 @@ interface ArcTrackerBlueprint {
 
 If `learned` is `true`, the item identified by `targetItemId` is considered blueprint-unlocked.
 
-### 4.6.2 Cached Data Usage
+### 4.7.2 Cached Data Usage
 
 Quartermaster reads cached blueprint state from local cache.
 
@@ -1008,7 +1133,7 @@ Rules:
 - Sign-out must wipe cached blueprint state with other ArcTracker user data.
 - Unknown `targetItemId` values must be ignored by planner logic.
 
-### 4.6.3 Craftability Dependency
+### 4.7.3 Craftability Dependency
 
 The planner must receive the learned blueprint target item ids derived from cached blueprint state.
 
@@ -1394,6 +1519,14 @@ Additional validation scenarios:
 - In Raid suggestions reflect generated hideout priority before user-authored list priority.
 - Crafting plan reflects generated hideout priority before user-authored list priority.
 - Obsolete generated hideout toggle cleanup still runs after hideout progression.
+- Generated project required-item lists persist per-project-step toggles.
+- Disabled project lists do not contribute planner targets.
+- Disabled project items do not contribute planner targets.
+- Planner prioritizes generated hideout targets first, then project targets, then user-authored list targets.
+- Duplicate item targets sum quantities while retaining list-type priority metadata.
+- In Raid suggestions reflect project priority between hideout and user-authored list priority.
+- Crafting plan reflects project priority between hideout and user-authored list priority.
+- Obsolete project toggle cleanup runs after project progress sync.
 
 ---
 
@@ -1773,8 +1906,9 @@ The sidebar view order is:
 1. My Items
 2. Lists
 3. Hideout
-4. In Raid
-5. Crafting
+4. Projects
+5. In Raid
+6. Crafting
 
 The Hideout view owns all generated hideout upgrade list presentation and controls.
 
@@ -1855,7 +1989,96 @@ No fallback bench-level assumptions may be used to synthesize hideout upgrade li
 
 ---
 
-## 4.5 In Raid View
+## 4.5 Projects View
+
+The Projects view is a top-level Quartermaster view between Hideout and In Raid.
+
+The Projects view owns all generated project required-item list presentation and controls.
+
+### Sync Controls
+
+The **Sync Projects** button appears at the top of the Projects view.
+
+Rules:
+- If no project progress cache exists, show a prompt explaining that project data must be synced before required-item lists can be generated.
+- While syncing, disable the button and show loading state.
+- The Lists view must not show Sync Projects.
+
+### Project Overview
+
+The Projects view must present only non-expired projects that have synchronized cached progress.
+
+- Projects whose `endDate` has passed are expired and must not be shown
+- Projects with no synchronized progress produce no lists and are not shown
+- Each visible project must show:
+  - project name
+  - completed state when all steps are complete (green checkmark)
+  - tracking count badge (unique required items tracked)
+  - "Submit Available" badge when the current step's items are all owned
+  - generated required-item lists for every step
+
+Completed non-expired projects remain visible and show a completed state with a green checkmark. Expired projects are hidden regardless of completion status.
+
+### Step Lists
+
+Project steps are displayed as full-width rows within the expanded project, one step per line.
+
+Each step row shows:
+- A header line: enable/disable toggle (eye icon), step name (`"Step <N> (<StepName>)"`), completed pill badge, submit-available pill badge
+- An item row below the header: item icons with names and `submitted / required` progress indicators (e.g. `"5 / 10"`)
+- Missing deficit badges and green checkmark overlays on individual items
+- The `submitted / required` indicator always sits at the bottom of the item cell, regardless of how many lines the item name wraps
+
+### Tracking Controls
+
+A segmented control at the top of the view provides bulk tracking modes:
+
+| Mode | Behavior |
+|------|----------|
+| **Disable All** | Disables tracking for every pending project step |
+| **Next Steps Only** | Enables only the first incomplete step for each project |
+| **All Pending** | Enables every incomplete step for all projects |
+
+Individual steps can be toggled via eye icon buttons.
+Individual items within steps can be toggled by clicking on them.
+
+### Generated List Controls
+
+Generated project lists in the Projects view:
+- may be enabled or disabled
+- may have individual items enabled or disabled
+- may not be renamed
+- may not have items added
+- may not have items removed
+- may not be reordered
+- may not have quantities changed
+
+### Empty and Completed States
+
+The Projects view must clearly handle:
+- static data loading
+- no cached project progress
+- sync in progress
+- synced with pending steps
+- synced with all projects completed
+
+No fallback assumptions may be used to synthesize project required-item lists.
+
+### Available-to-Submit Badge
+
+The "Submit Available" badge appears on:
+- A project card header when any of its steps is available to submit
+- The specific step card that is available to submit
+
+A step is available to submit when:
+1. It is the first incomplete step in its project
+2. The user owns all required items in sufficient quantity
+
+The sidebar navigation badge for Projects shows the total count of available-to-submit steps across all projects.
+
+---
+
+## 4.6 In Raid View
 
 ### Grid Layout
 
@@ -1930,7 +2153,7 @@ Items in this section retain provenance (`impactedTargetItemIds` and `listSource
 
 Repair material deficits from the repair pre-pass are included in `remainingIngredientDeficits`, which feeds the In Raid suggestion pipeline. Items with repair material deficits appear as `BRING_HOME_DIRECT_MATERIAL` suggestions with appropriate list provenance.
 
-## 4.6 Crafting View
+## 4.7 Crafting View
 
 ### Repair Section (Change-22)
 

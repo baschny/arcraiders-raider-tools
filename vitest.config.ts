@@ -6,5 +6,12 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'jsdom',
+    exclude: [
+      'node_modules/**',
+      '.kilo/**',
+      'dist/**',
+      'infra/node_modules/**',
+      'infra/**/*.js',
+    ],
   },
 });

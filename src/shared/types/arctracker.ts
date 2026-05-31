@@ -176,6 +176,67 @@ export interface CachedBlueprints {
   source?: 'arctracker' | 'embark';
 }
 
+// ArcTracker Projects API types
+export interface ArctrackerProjectPhase {
+  name: string;
+  completed: boolean;
+}
+
+export interface ArctrackerProject {
+  id: string;
+  name: string;
+  phases: ArctrackerProjectPhase[];
+  completedPhases: number;
+  totalPhases: number;
+  fullyCompleted: boolean;
+}
+
+export interface ArctrackerProjectsResponse {
+  data: {
+    projects: ArctrackerProject[];
+    summary: {
+      totalProjects: number;
+      fullyCompletedProjects: number;
+      incompleteProjects: number;
+    };
+  };
+  meta: {
+    requestId: string;
+  };
+}
+
+// Cached project progress (from API sync)
+export interface CachedProjectGoal {
+  goalAssetId: number;
+  itemId: string;
+  required: number;
+  submitted: number;
+  remaining: number;
+  completed: boolean;
+}
+
+export interface CachedProjectStepProgress {
+  name: string;
+  index: number;
+  completed: boolean;
+  goals: CachedProjectGoal[];
+}
+
+export interface CachedProjectProgress {
+  projectId: string;
+  projectName: string;
+  completed: boolean;
+  steps: CachedProjectStepProgress[];
+  syncedAt: string;
+  cachedAt: number;
+}
+
+export interface CachedProjects {
+  projects: CachedProjectProgress[];
+  syncedAt: string;
+  cachedAt: number;
+}
+
 // ============================================================================
 // Cached Data Types
 // ============================================================================
@@ -213,7 +274,7 @@ export interface CacheMeta {
   embarkUnknownGameAssetIds?: number[];
 }
 
-export type CacheKey = 'profile' | 'stash' | 'loadout' | 'hideout' | 'blueprints' | 'meta';
+export type CacheKey = 'profile' | 'stash' | 'loadout' | 'hideout' | 'blueprints' | 'projects' | 'meta';
 
 // ============================================================================
 // Auth Types

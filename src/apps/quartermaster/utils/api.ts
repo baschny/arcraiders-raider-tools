@@ -18,6 +18,7 @@ import type {
   CachedLoadout,
   CachedHideout,
   CachedBlueprints,
+  CachedProjects,
   ApiError,
 } from '../../../shared/types/arctracker';
 import {
@@ -25,10 +26,12 @@ import {
   syncLoadout,
   syncHideout,
   syncBlueprints,
+  syncProjects,
   getStash,
   getLoadout,
   getHideout,
   getBlueprints,
+  getProjects,
 } from '../../../shared/services/arctrackerApi';
 
 // Re-export for convenience
@@ -37,12 +40,14 @@ export {
   syncLoadout,
   syncHideout,
   syncBlueprints,
+  syncProjects,
   getStash,
   getLoadout,
   getHideout,
   getBlueprints,
+  getProjects,
 };
-export type { CachedStash, CachedLoadout, CachedHideout, CachedBlueprints, ApiError };
+export type { CachedStash, CachedLoadout, CachedHideout, CachedBlueprints, CachedProjects, ApiError };
 
 /**
  * Check if an error is an ApiError

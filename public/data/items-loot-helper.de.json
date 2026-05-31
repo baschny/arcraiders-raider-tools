@@ -3573,7 +3573,7 @@
       "en": "Öffnet eine Tür zur Sperrzone auf dem Damm-Schlachtfeld."
     },
     "type": "Key",
-    "rarity": "Epic",
+    "rarity": "Rare",
     "value": 100,
     "weightKg": 0.25,
     "stackSize": null,
@@ -4887,10 +4887,100 @@
     ]
   },
   {
-    "id": "extended_barrel_blueprint",
+    "id": "extended_barrel_i",
     "name": {
-      "value": "Bauplan: Verlangerter Lauf",
-      "originalEn": "Extended Barrel Blueprint"
+      "value": "Verlängerter Lauf I",
+      "originalEn": "Extended Barrel I"
+    },
+    "description": {
+      "en": ""
+    },
+    "type": "Modification",
+    "rarity": "Common",
+    "value": 1000,
+    "weightKg": null,
+    "stackSize": null,
+    "recyclesInto": {
+      "metal_parts": 5
+    },
+    "recipe": {
+      "metal_parts": 6,
+      "wires": 3
+    },
+    "salvagesInto": {
+      "metal_parts": 3
+    },
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "extended_barrel_ii_blueprint",
+    "name": {
+      "value": "Bauplan: Verlangerter Lauf II",
+      "originalEn": "Extended Barrel II Blueprint"
+    },
+    "description": {
+      "en": ""
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "extended_barrel_ii",
+    "name": {
+      "value": "Verlängerter Lauf II",
+      "originalEn": "Extended Barrel II"
+    },
+    "description": {
+      "en": ""
+    },
+    "type": "Modification",
+    "rarity": "Common",
+    "value": 3000,
+    "weightKg": null,
+    "stackSize": null,
+    "recyclesInto": {
+      "mechanical_components": 1,
+      "wires": 1
+    },
+    "recipe": {
+      "mechanical_components": 3,
+      "wires": 6
+    },
+    "salvagesInto": {
+      "mechanical_components": 1
+    },
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "extended_barrel_iii_blueprint",
+    "name": {
+      "value": "Bauplan: Verlangerter Lauf III",
+      "originalEn": "Extended Barrel III Blueprint"
     },
     "description": {
       "en": "Erhoht die Geschossgeschwindigkeit moderat. Kompatibel mit: Arpeggio, Rattler, Kettle, Ferro, Anvil"
@@ -4912,10 +5002,10 @@
     ]
   },
   {
-    "id": "extended_barrel",
+    "id": "extended_barrel_iii",
     "name": {
-      "value": "Verlängerter Lauf",
-      "originalEn": "Extended Barrel"
+      "value": "Verlängerter Lauf III",
+      "originalEn": "Extended Barrel III"
     },
     "description": {
       "en": "Erhöht die Geschossgeschwindigkeit moderat. Kompatibel mit: Arpeggio, Rattler, Kettle, Ferro, Anvil"
@@ -6054,7 +6144,7 @@
     },
     "type": "Augment",
     "rarity": "Common",
-    "value": 100,
+    "value": 660,
     "weightKg": 1,
     "stackSize": 1,
     "recyclesInto": {
@@ -10590,6 +10680,164 @@
     ]
   },
   {
+    "id": "rascal_blueprint",
+    "name": {
+      "value": "Rascal Blueprint",
+      "originalEn": "Rascal Blueprint"
+    },
+    "description": {
+      "en": "Fires explosive projectiles that only detonate when hitting ARC."
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/rascal.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "rascal_i",
+    "name": {
+      "value": "Rascal I",
+      "originalEn": "Rascal I"
+    },
+    "description": {
+      "en": "Fires explosive projectiles that only detonate when hitting ARC."
+    },
+    "type": "Special",
+    "rarity": "Rare",
+    "value": 7000,
+    "weightKg": 4,
+    "stackSize": null,
+    "recyclesInto": {
+      "advanced_mechanical_components": 1,
+      "heavy_gun_parts": 2
+    },
+    "recipe": {
+      "advanced_mechanical_components": 2,
+      "canister": 5,
+      "heavy_gun_parts": 3
+    },
+    "salvagesInto": {
+      "heavy_gun_parts": 2
+    },
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/rascal.png",
+    "isWeapon": true,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "rascal_ii",
+    "name": {
+      "value": "Rascal II",
+      "originalEn": "Rascal II"
+    },
+    "description": {
+      "en": "Fires explosive projectiles that only detonate when hitting ARC."
+    },
+    "type": "Special",
+    "rarity": "Rare",
+    "value": 10000,
+    "weightKg": 4,
+    "stackSize": null,
+    "recyclesInto": {
+      "advanced_mechanical_components": 2,
+      "heavy_gun_parts": 2
+    },
+    "recipe": null,
+    "salvagesInto": {
+      "heavy_gun_parts": 2
+    },
+    "upgradeCost": {
+      "advanced_mechanical_components": 1,
+      "heavy_gun_parts": 2
+    },
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/rascal.png",
+    "isWeapon": true,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "rascal_iii",
+    "name": {
+      "value": "Rascal III",
+      "originalEn": "Rascal III"
+    },
+    "description": {
+      "en": "Fires explosive projectiles that only detonate when hitting ARC."
+    },
+    "type": "Special",
+    "rarity": "Rare",
+    "value": 13000,
+    "weightKg": 4,
+    "stackSize": null,
+    "recyclesInto": {
+      "advanced_mechanical_components": 2,
+      "heavy_gun_parts": 3
+    },
+    "recipe": null,
+    "salvagesInto": {
+      "heavy_gun_parts": 3
+    },
+    "upgradeCost": {
+      "advanced_mechanical_components": 1,
+      "heavy_gun_parts": 2
+    },
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/rascal.png",
+    "isWeapon": true,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "rascal_iv",
+    "name": {
+      "value": "Rascal IV",
+      "originalEn": "Rascal IV"
+    },
+    "description": {
+      "en": "Fires explosive projectiles that only detonate when hitting ARC."
+    },
+    "type": "Special",
+    "rarity": "Rare",
+    "value": 17000,
+    "weightKg": 4,
+    "stackSize": null,
+    "recyclesInto": {
+      "advanced_mechanical_components": 3,
+      "heavy_gun_parts": 3
+    },
+    "recipe": null,
+    "salvagesInto": {
+      "heavy_gun_parts": 3
+    },
+    "upgradeCost": {
+      "advanced_mechanical_components": 2,
+      "heavy_gun_parts": 2
+    },
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/rascal.png",
+    "isWeapon": true,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
     "id": "rattler_i",
     "name": {
       "value": "Rattler I",
@@ -11127,31 +11375,6 @@
     "upgradeCost": null,
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/v2/ripped_safety_vest.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
-    "id": "riven_tides_classifed_records_keycard",
-    "name": {
-      "value": "Riven Tides-Schlüsselkarte für Geheimakten",
-      "originalEn": "Riven Tides Classifed Records Keycard"
-    },
-    "description": {
-      "en": "Öffnet eine Tür zum Geheimaktenraum im Hafenbehördengebäude in Riven Tides."
-    },
-    "type": "Key",
-    "rarity": "Uncommon",
-    "value": 100,
-    "weightKg": 0.25,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/riven_tides_classified_records_keycard.png",
     "isWeapon": null,
     "foundIn": [
       "Unknown"

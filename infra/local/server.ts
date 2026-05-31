@@ -83,6 +83,7 @@ const links = require("../lambda/links");
 const embarkLink = require("../lambda/embark-link");
 const embarkInventory = require("../lambda/embark-inventory");
 const embarkQuests = require("../lambda/embark-quests");
+const embarkProjects = require("../lambda/embark-projects");
 const arctrackerUserProxy = require("../lambda/arctracker-user-proxy");
 /* eslint-enable @typescript-eslint/no-require-imports */
 
@@ -207,6 +208,8 @@ export function matchRoute(method: string, pathname: string): MatchedRoute | nul
         embarkInventorySync: embarkInventory.handler,
         embarkQuests: embarkQuests.handler,
         embarkQuestsSync: embarkQuests.handler,
+        embarkProjects: embarkProjects.handler,
+        embarkProjectsSync: embarkProjects.handler,
         arctrackerUserProxy: arctrackerUserProxy.handler,
     };
 

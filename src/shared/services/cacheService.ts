@@ -11,6 +11,7 @@ import type {
   CachedLoadout,
   CachedHideout,
   CachedBlueprints,
+  CachedProjects,
   CacheMeta,
   CacheKey,
 } from '../types/arctracker';
@@ -25,6 +26,7 @@ type CacheValue =
   | CachedLoadout
   | CachedHideout
   | CachedBlueprints
+  | CachedProjects
   | CacheMeta;
 
 let dbPromise: Promise<IDBPDatabase> | null = null;
@@ -165,6 +167,13 @@ export async function getCachedHideout(): Promise<CachedHideout | undefined> {
  */
 export async function getCachedBlueprints(): Promise<CachedBlueprints | undefined> {
   return cacheGet<CachedBlueprints>('blueprints');
+}
+
+/**
+ * Get cached project progress.
+ */
+export async function getCachedProjects(): Promise<CachedProjects | undefined> {
+  return cacheGet<CachedProjects>('projects');
 }
 
 async function readRawMeta(): Promise<CacheMeta | undefined> {

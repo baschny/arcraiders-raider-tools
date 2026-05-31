@@ -8,6 +8,8 @@ export type LocalRouteKey =
     | "embarkInventorySync"
     | "embarkQuests"
     | "embarkQuestsSync"
+    | "embarkProjects"
+    | "embarkProjectsSync"
     | "arctrackerUserProxy";
 
 export interface MatchedRoutePattern {
@@ -43,6 +45,12 @@ export function matchLocalRoutePattern(
     }
     if (pathname === "/me/embark/quests/sync" && method === "POST") {
         return { key: "embarkQuestsSync", pathParameters: {}, requiresDevAuth: true };
+    }
+    if (pathname === "/me/embark/projects" && method === "GET") {
+        return { key: "embarkProjects", pathParameters: {}, requiresDevAuth: true };
+    }
+    if (pathname === "/me/embark/projects/sync" && method === "POST") {
+        return { key: "embarkProjectsSync", pathParameters: {}, requiresDevAuth: true };
     }
     if (pathname.startsWith("/me/arctracker/") && method === "GET") {
         return { key: "arctrackerUserProxy", pathParameters: {}, requiresDevAuth: true };

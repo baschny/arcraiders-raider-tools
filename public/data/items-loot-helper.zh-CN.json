@@ -599,7 +599,7 @@
       "originalEn": "Anvil III"
     },
     "description": {
-      "en": "单动式手炮，伤害与爆头伤害高，但操控缓慢。"
+      "en": "伤害高且爆头伤害尤其高，但操作速度较慢。"
     },
     "type": "Hand Cannon",
     "rarity": "Uncommon",
@@ -632,7 +632,7 @@
       "originalEn": "Anvil IV"
     },
     "description": {
-      "en": "单动式手炮，伤害与爆头伤害高，但操控缓慢。"
+      "en": "伤害高且爆头伤害尤其高，但操作速度较慢。"
     },
     "type": "Hand Cannon",
     "rarity": "Uncommon",
@@ -1172,11 +1172,11 @@
   {
     "id": "assessor_matrix",
     "name": {
-      "value": "Assessor Matrix",
+      "value": "“评估者”矩阵",
       "originalEn": "Assessor Matrix"
     },
     "description": {
-      "en": ""
+      "en": "可回收为制作材料。"
     },
     "type": "Recyclable",
     "rarity": "Epic",
@@ -1599,7 +1599,7 @@
       "originalEn": "Blaze Grenade Blueprint"
     },
     "description": {
-      "en": "撞击时引爆的手榴弹，会在区域内产生持续造成伤害的火焰。"
+      "en": "遭受撞击即会爆炸的手雷，会在爆炸范围内产生火焰，造成持续伤害。"
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -1652,7 +1652,7 @@
       "originalEn": "Blaze Grenade"
     },
     "description": {
-      "en": "撞击时引爆的手榴弹，会在区域内产生持续造成伤害的火焰。"
+      "en": "遭受撞击即会爆炸的手雷，会在爆炸范围内产生火焰，造成持续伤害。"
     },
     "type": "Quick Use",
     "rarity": "Rare",
@@ -1711,7 +1711,7 @@
       "originalEn": "Blue Gate Cellar Key"
     },
     "description": {
-      "en": "蓝门地窖的钥匙。"
+      "en": "可打开蓝门附近的地窖门"
     },
     "type": "Key",
     "rarity": "Rare",
@@ -1736,7 +1736,7 @@
       "originalEn": "Blue Gate Communication Tower Key"
     },
     "description": {
-      "en": "解锁蓝门附近通讯塔旁的一扇门"
+      "en": "可打开蓝门附近通讯塔旁边的门"
     },
     "type": "Key",
     "rarity": "Rare",
@@ -1757,11 +1757,11 @@
   {
     "id": "blue_gate_confiscation_room_key",
     "name": {
-      "value": "蓝门没收室钥匙",
+      "value": "蓝门没收库房钥匙",
       "originalEn": "Blue Gate Confiscation Room Key"
     },
     "description": {
-      "en": "解锁蓝门隧道内没收物品区域的门"
+      "en": "可打开蓝门隧道内没收货物区的门"
     },
     "type": "Key",
     "rarity": "Epic",
@@ -1782,11 +1782,11 @@
   {
     "id": "blue_gate_village_key",
     "name": {
-      "value": "蓝门村庄钥匙",
+      "value": "蓝门村建筑钥匙",
       "originalEn": "Blue Gate Village Key"
     },
     "description": {
-      "en": "蓝门村庄内部区域的钥匙。"
+      "en": "可打开蓝门村附近一处村镇建筑的门。"
     },
     "type": "Key",
     "rarity": "Uncommon",
@@ -2021,7 +2021,7 @@
   {
     "id": "bombardier_cell",
     "name": {
-      "value": "投弹手电池",
+      "value": "“投弹手”电池",
       "originalEn": "Bombardier Cell"
     },
     "description": {
@@ -2137,7 +2137,7 @@
   {
     "id": "broken_handheld_radio",
     "name": {
-      "value": "损坏的手持无线电",
+      "value": "坏掉的手持无线电",
       "originalEn": "Broken Handheld Radio"
     },
     "description": {
@@ -2167,7 +2167,7 @@
   {
     "id": "broken_taser",
     "name": {
-      "value": "损坏的电击枪",
+      "value": "坏掉的电击枪",
       "originalEn": "Broken Taser"
     },
     "description": {
@@ -2201,7 +2201,7 @@
       "originalEn": "Buried City Hospital Key"
     },
     "description": {
-      "en": "埋没之城医院内部区域的钥匙。"
+      "en": "可打开掩埋废城中医院内的一扇门。"
     },
     "type": "Key",
     "rarity": "Rare",
@@ -2247,11 +2247,11 @@
   {
     "id": "buried_city_residential_master_key",
     "name": {
-      "value": "掩埋废城住宅区万能钥匙",
+      "value": "掩埋废城公寓楼万能钥匙",
       "originalEn": "Buried City Residential Master Key"
     },
     "description": {
-      "en": "埋没之城住宅区的万能钥匙。"
+      "en": "可打开掩埋废城中的某些公寓房的房门。"
     },
     "type": "Key",
     "rarity": "Uncommon",
@@ -2276,7 +2276,7 @@
       "originalEn": "Buried City Town Hall Key"
     },
     "description": {
-      "en": "开启埋没之城市政厅的门"
+      "en": "可打开掩埋废城中市政厅的门。"
     },
     "type": "Key",
     "rarity": "Epic",
@@ -2623,7 +2623,7 @@
   {
     "id": "canto_blueprint",
     "name": {
-      "value": "Canto 蓝图",
+      "value": "颂歌蓝图",
       "originalEn": "Canto Blueprint"
     },
     "description": {
@@ -2648,11 +2648,11 @@
   {
     "id": "canto_i",
     "name": {
-      "value": "Canto I",
+      "value": "颂歌 I",
       "originalEn": "Canto I"
     },
     "description": {
-      "en": "全自动大口径冲锋枪。"
+      "en": "大口径全自动冲锋枪。"
     },
     "type": "SMG",
     "rarity": "Rare",
@@ -2682,11 +2682,11 @@
   {
     "id": "canto_ii",
     "name": {
-      "value": "Canto II",
+      "value": "颂歌 II",
       "originalEn": "Canto II"
     },
     "description": {
-      "en": "全自动大口径冲锋枪。"
+      "en": "大口径全自动冲锋枪。"
     },
     "type": "SMG",
     "rarity": "Rare",
@@ -2715,11 +2715,11 @@
   {
     "id": "canto_iii",
     "name": {
-      "value": "Canto III",
+      "value": "颂歌 III",
       "originalEn": "Canto III"
     },
     "description": {
-      "en": "全自动大口径冲锋枪。"
+      "en": "大口径全自动冲锋枪。"
     },
     "type": "SMG",
     "rarity": "Rare",
@@ -2748,11 +2748,11 @@
   {
     "id": "canto_iv",
     "name": {
-      "value": "Canto IV",
+      "value": "颂歌 IV",
       "originalEn": "Canto IV"
     },
     "description": {
-      "en": "全自动大口径冲锋枪。"
+      "en": "大口径全自动冲锋枪。"
     },
     "type": "SMG",
     "rarity": "Rare",
@@ -3066,7 +3066,7 @@
   {
     "id": "comet_igniter",
     "name": {
-      "value": "彗星点火器",
+      "value": "“彗星”点火器",
       "originalEn": "Comet Igniter"
     },
     "description": {
@@ -3332,7 +3332,7 @@
   {
     "id": "cooling_coil",
     "name": {
-      "value": "冷却线圈",
+      "value": "冷却管",
       "originalEn": "Cooling Coil"
     },
     "description": {
@@ -3484,7 +3484,7 @@
       "originalEn": "Crude Explosives"
     },
     "description": {
-      "en": "用于制作爆炸物。可回收为制作材料。可制作：发射器弹药、爆炸化合物、速爆手雷、破片手雷、引爆手雷"
+      "en": "用于制作爆炸物。可回收为制作材料。可制作：发射器弹药、炸药混合物、闪爆手雷、碎片手雷、触发式手雷"
     },
     "type": "Refined Material",
     "rarity": "Uncommon",
@@ -3545,7 +3545,7 @@
       "originalEn": "Dam Control Tower Key"
     },
     "description": {
-      "en": "解锁大坝战场上控制塔的门。"
+      "en": "可打开大坝战场中通往控制塔的一扇门。"
     },
     "type": "Key",
     "rarity": "Epic",
@@ -3566,14 +3566,14 @@
   {
     "id": "dam_controlled_access_zone_key",
     "name": {
-      "value": "大坝管制区钥匙",
+      "value": "大坝受控访问区钥匙",
       "originalEn": "Dam Controlled Access Zone Key"
     },
     "description": {
-      "en": "解锁大坝战场通往管制区域的门。"
+      "en": "可打开大坝战场受控访问区内的一扇门。"
     },
     "type": "Key",
-    "rarity": "Epic",
+    "rarity": "Rare",
     "value": 100,
     "weightKg": 0.25,
     "stackSize": null,
@@ -3595,7 +3595,7 @@
       "originalEn": "Dam Staff Room Key"
     },
     "description": {
-      "en": "水坝员工室的钥匙。"
+      "en": "可打开大坝战场科研与行政区大楼内的一扇门。"
     },
     "type": "Key",
     "rarity": "Uncommon",
@@ -3616,11 +3616,11 @@
   {
     "id": "dam_surveillance_key",
     "name": {
-      "value": "大坝监控钥匙",
+      "value": "大坝监控室钥匙",
       "originalEn": "Dam Surveillance Key"
     },
     "description": {
-      "en": "解锁水坝战场上水处理控制建筑内的一扇门。"
+      "en": "可打开大坝战场水处理控制大楼内的一扇门。"
     },
     "type": "Key",
     "rarity": "Uncommon",
@@ -3645,7 +3645,7 @@
       "originalEn": "Dam Testing Annex Key"
     },
     "description": {
-      "en": "解锁大坝战场测试附属建筑中的一扇门。"
+      "en": "可打开大坝战场测试附楼内的一扇门。"
     },
     "type": "Key",
     "rarity": "Rare",
@@ -3670,7 +3670,7 @@
       "originalEn": "Damaged ARC Motion Core"
     },
     "description": {
-      "en": "可以回收为制作材料。"
+      "en": "可回收为制作材料。"
     },
     "type": "Recyclable",
     "rarity": "Uncommon",
@@ -3699,7 +3699,7 @@
       "originalEn": "Damaged ARC Powercell"
     },
     "description": {
-      "en": "可以回收为制作材料。"
+      "en": "可回收为制作材料。"
     },
     "type": "Recyclable",
     "rarity": "Common",
@@ -3728,7 +3728,7 @@
       "originalEn": "Damaged Fireball Burner"
     },
     "description": {
-      "en": "可以回收为制作材料。"
+      "en": "可回收为制作材料。"
     },
     "type": "Recyclable",
     "rarity": "Common",
@@ -3753,7 +3753,7 @@
   {
     "id": "damaged_heat_sink",
     "name": {
-      "value": "损坏的散热器",
+      "value": "受损的散热器",
       "originalEn": "Damaged Heat Sink"
     },
     "description": {
@@ -3787,7 +3787,7 @@
       "originalEn": "Damaged Hornet Driver"
     },
     "description": {
-      "en": "可以回收成制作材料。"
+      "en": "可回收为制作材料。"
     },
     "type": "Recyclable",
     "rarity": "Common",
@@ -3816,7 +3816,7 @@
       "originalEn": "Damaged Rocketeer Driver"
     },
     "description": {
-      "en": "可以回收成制作材料。"
+      "en": "可回收为制作材料。"
     },
     "type": "Recyclable",
     "rarity": "Common",
@@ -3845,7 +3845,7 @@
       "originalEn": "Damaged Snitch Scanner"
     },
     "description": {
-      "en": "可以回收为制作材料。"
+      "en": "可回收为制作材料。"
     },
     "type": "Recyclable",
     "rarity": "Common",
@@ -3899,7 +3899,7 @@
       "originalEn": "Damaged Wasp Driver"
     },
     "description": {
-      "en": "可以回收为制作材料。"
+      "en": "可回收为制作材料。"
     },
     "type": "Recyclable",
     "rarity": "Common",
@@ -3928,7 +3928,7 @@
       "originalEn": "Dart Board"
     },
     "description": {
-      "en": "有些奇袭者用它来练习灵巧度。其他人只是喜欢把东西扔向其他东西。"
+      "en": "有些奇袭者用它来练习手部的灵活性。其他人只是单纯喜欢朝别的东西扔东西。"
     },
     "type": "Trinket",
     "rarity": "Uncommon",
@@ -3954,7 +3954,7 @@
       "originalEn": "Deadline Blueprint"
     },
     "description": {
-      "en": "解锁在爆炸物工作台制造死线的能力。"
+      "en": "一种地雷。会在倒计时结束后对范围内的所有人造成伤害。"
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -3979,7 +3979,7 @@
       "originalEn": "Deadline"
     },
     "description": {
-      "en": "一种在计时器耗尽后对半径内的任何目标造成伤害的地雷。"
+      "en": "一种地雷。会在倒计时结束后对范围内的所有人造成伤害。"
     },
     "type": "Quick Use",
     "rarity": "Epic",
@@ -4155,11 +4155,11 @@
   {
     "id": "dockmasters_detector",
     "name": {
-      "value": "码头主管的探测器",
+      "value": "码头主管探测器",
       "originalEn": "Dockmaster's Detector"
     },
     "description": {
-      "en": "这些探测器似乎能够定位埋藏在Riven Tides周围沙地中的外来物体，尽管它们的确切运作方式尚不清楚。"
+      "en": "这些探测器似乎能找到裂潮镇沙滩下埋藏的外来物品，具体运作原理尚不明确。"
     },
     "type": "Quick Use",
     "rarity": "Uncommon",
@@ -4235,11 +4235,11 @@
   {
     "id": "dolabra_blueprint",
     "name": {
-      "value": "Dolabra 蓝图",
+      "value": "錾斧蓝图",
       "originalEn": "Dolabra Blueprint"
     },
     "description": {
-      "en": "一种实验性武器，既可以发射宽范围的短程冲击，也可以聚焦发射窄范围的中程热能光束。"
+      "en": "实验型武器，可发射大范围近距离冲击波，或聚焦发射中距离热能射线。"
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -4260,11 +4260,11 @@
   {
     "id": "dolabra",
     "name": {
-      "value": "Dolabra",
+      "value": "錾斧",
       "originalEn": "Dolabra"
     },
     "description": {
-      "en": "一种实验性武器，既可以发射宽范围的短程冲击，也可以聚焦发射窄范围的中程热能光束。"
+      "en": "实验型武器，可发射大范围近距离冲击波，或聚焦发射中距离热能射线。"
     },
     "type": "Shotgun",
     "rarity": "Legendary",
@@ -4383,7 +4383,7 @@
       "originalEn": "Duct Tape"
     },
     "description": {
-      "en": "用于制作各种物品。可以回收成制作材料。用于制作：稳定枪托 I、垂直握把 I、倾斜握把 I、垂直握把 II、倾斜握把 II"
+      "en": "用于制作各种物品。可回收为制作材料。用于制作：稳定枪托 I、垂直握把 I、倾斜握把 I、垂直握把 II、倾斜握把 II"
     },
     "type": "Topside Material",
     "rarity": "Uncommon",
@@ -4743,11 +4743,11 @@
   {
     "id": "expired_respirator",
     "name": {
-      "value": "过期呼吸器",
+      "value": "过期的防毒面具",
       "originalEn": "Expired Respirator"
     },
     "description": {
-      "en": "过滤器被沙子和有毒烟雾堵塞。早已超过使用寿命。"
+      "en": "过滤器里塞满了沙子和有毒气体，很早以前就失效了。"
     },
     "type": "Recyclable",
     "rarity": "Rare",
@@ -4887,13 +4887,103 @@
     ]
   },
   {
-    "id": "extended_barrel_blueprint",
+    "id": "extended_barrel_i",
     "name": {
-      "value": "加长枪管 蓝图",
-      "originalEn": "Extended Barrel Blueprint"
+      "value": "加长枪管 I",
+      "originalEn": "Extended Barrel I"
     },
     "description": {
-      "en": "适度提升子弹速度。兼容武器：Tempest、Arpeggio、Ferro、Renegade、Anvil"
+      "en": ""
+    },
+    "type": "Modification",
+    "rarity": "Common",
+    "value": 1000,
+    "weightKg": null,
+    "stackSize": null,
+    "recyclesInto": {
+      "metal_parts": 5
+    },
+    "recipe": {
+      "metal_parts": 6,
+      "wires": 3
+    },
+    "salvagesInto": {
+      "metal_parts": 3
+    },
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "extended_barrel_ii_blueprint",
+    "name": {
+      "value": "加长枪管 II 蓝图",
+      "originalEn": "Extended Barrel II Blueprint"
+    },
+    "description": {
+      "en": ""
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "extended_barrel_ii",
+    "name": {
+      "value": "加长枪管 II",
+      "originalEn": "Extended Barrel II"
+    },
+    "description": {
+      "en": ""
+    },
+    "type": "Modification",
+    "rarity": "Common",
+    "value": 3000,
+    "weightKg": null,
+    "stackSize": null,
+    "recyclesInto": {
+      "mechanical_components": 1,
+      "wires": 1
+    },
+    "recipe": {
+      "mechanical_components": 3,
+      "wires": 6
+    },
+    "salvagesInto": {
+      "mechanical_components": 1
+    },
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": null,
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "extended_barrel_iii_blueprint",
+    "name": {
+      "value": "加长枪管 III 蓝图",
+      "originalEn": "Extended Barrel III Blueprint"
+    },
+    "description": {
+      "en": "大幅度提高子弹初速和伤害衰减触发距离。适配：风暴，贝蒂娜，生铁，叛逆，铁砧"
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -4912,13 +5002,13 @@
     ]
   },
   {
-    "id": "extended_barrel",
+    "id": "extended_barrel_iii",
     "name": {
-      "value": "加长枪管",
-      "originalEn": "Extended Barrel"
+      "value": "加长枪管 III",
+      "originalEn": "Extended Barrel III"
     },
     "description": {
-      "en": "适度提升子弹速度。兼容武器：Tempest、Arpeggio、Ferro、Renegade、Anvil"
+      "en": "大幅度提高子弹初速和伤害衰减触发距离。适配：风暴，贝蒂娜，生铁，叛逆，铁砧"
     },
     "type": "Modification",
     "rarity": "Epic",
@@ -6050,11 +6140,11 @@
       "originalEn": "Free Loadout Augment"
     },
     "description": {
-      "en": "新手奇袭者的基础增强，提供稍多的背包空间和负重能力。"
+      "en": "为新手奇袭者设计的基础强化，提供略大的背包空间与负重上限。"
     },
     "type": "Augment",
     "rarity": "Common",
-    "value": 100,
+    "value": 660,
     "weightKg": 1,
     "stackSize": 1,
     "recyclesInto": {
@@ -6074,7 +6164,7 @@
   {
     "id": "frequency_modulation_box",
     "name": {
-      "value": "频率调制盒",
+      "value": "频率调制箱",
       "originalEn": "Frequency Modulation Box"
     },
     "description": {
@@ -6167,7 +6257,7 @@
       "originalEn": "Frying Pan"
     },
     "description": {
-      "en": "可以回收成制作材料。"
+      "en": "可回收为制作材料。"
     },
     "type": "Recyclable",
     "rarity": "Rare",
@@ -6192,7 +6282,7 @@
   {
     "id": "garlic_press",
     "name": {
-      "value": "大蒜压榨器",
+      "value": "压蒜器",
       "originalEn": "Garlic Press"
     },
     "description": {
@@ -6254,7 +6344,7 @@
       "originalEn": "Gas Grenade"
     },
     "description": {
-      "en": "撞击时释放持续性毒云，消耗效果范围内所有奇袭者耐力的手雷。"
+      "en": "遭受撞击即会爆炸的手雷，会在爆炸范围内释放毒气，消耗范围内奇袭者的耐力。"
     },
     "type": "Quick Use",
     "rarity": "Common",
@@ -6283,11 +6373,11 @@
   {
     "id": "gas_mine_blueprint",
     "name": {
-      "value": "跳雷：持续流失耐力 蓝图（跳雷：毒气 蓝图）",
+      "value": "毒气地雷蓝图",
       "originalEn": "Gas Mine Blueprint"
     },
     "description": {
-      "en": "一种近距离触发的地雷，会弹出并释放快速消耗耐力的毒气云。"
+      "en": "一种近距离触发式地雷，在接近时会弹起并爆炸，释放一团让人迅速消耗完耐力的毒气云。"
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -6308,11 +6398,11 @@
   {
     "id": "gas_mine",
     "name": {
-      "value": "跳雷：持续流失耐力（跳雷：毒气）",
+      "value": "跳雷：持续流失耐力（毒气地雷）",
       "originalEn": "Gas Mine"
     },
     "description": {
-      "en": "一种近距离触发的地雷，会弹出并释放快速消耗耐力的毒气云。"
+      "en": "一种近距离触发式地雷，在接近时会弹起并爆炸，释放一团让人迅速消耗完耐力的毒气云。"
     },
     "type": "Quick Use",
     "rarity": "Common",
@@ -6616,7 +6706,7 @@
       "originalEn": "Headphones"
     },
     "description": {
-      "en": "可以回收成制作材料。"
+      "en": "可回收为制作材料。"
     },
     "type": "Recyclable",
     "rarity": "Rare",
@@ -6675,7 +6765,7 @@
       "originalEn": "Heavy Fuze Grenade"
     },
     "description": {
-      "en": "延迟引爆的手榴弹，在其范围内造成爆炸伤害。"
+      "en": "延迟爆炸的手雷，会在爆炸范围内造成爆炸伤害。"
     },
     "type": "Quick Use",
     "rarity": "Rare",
@@ -7103,7 +7193,7 @@
       "originalEn": "Humidifier"
     },
     "description": {
-      "en": "可以回收成制作材料。"
+      "en": "可回收为制作材料。"
     },
     "type": "Recyclable",
     "rarity": "Rare",
@@ -7319,7 +7409,7 @@
       "originalEn": "Impure ARC Coolant"
     },
     "description": {
-      "en": "可以回收成制作材料。"
+      "en": "可回收为制作材料。"
     },
     "type": "Recyclable",
     "rarity": "Uncommon",
@@ -7344,11 +7434,11 @@
   {
     "id": "industrial_battery",
     "name": {
-      "value": "工业电池",
+      "value": "工业级电池",
       "originalEn": "Industrial Battery"
     },
     "description": {
-      "en": "用于工业设备的大型高容量电池。"
+      "en": "可回收为制作材料。"
     },
     "type": "Recyclable",
     "rarity": "Rare",
@@ -7374,11 +7464,11 @@
   {
     "id": "industrial_charger",
     "name": {
-      "value": "工业充电器",
+      "value": "工业级充电器",
       "originalEn": "Industrial Charger"
     },
     "description": {
-      "en": "可以回收成制作材料。"
+      "en": "可回收为制作材料。"
     },
     "type": "Recyclable",
     "rarity": "Rare",
@@ -7404,11 +7494,11 @@
   {
     "id": "industrial_magnet",
     "name": {
-      "value": "工业磁铁",
+      "value": "工业级磁铁",
       "originalEn": "Industrial Magnet"
     },
     "description": {
-      "en": "可以回收成制作材料。"
+      "en": "可回收为制作材料。"
     },
     "type": "Recyclable",
     "rarity": "Rare",
@@ -7468,7 +7558,7 @@
       "originalEn": "Jolt Mine Blueprint"
     },
     "description": {
-      "en": "一种接近触发的地雷，会弹起并击晕范围内的任何目标。"
+      "en": "一种触发式地雷，在接近时会弹起并爆炸，让范围内的所有人昏迷。"
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -7493,7 +7583,7 @@
       "originalEn": "Jolt Mine"
     },
     "description": {
-      "en": "一种近距离触发的地雷，会弹起并眩晕范围内的所有目标。"
+      "en": "一种触发式地雷，在接近时会弹起并爆炸，让范围内的所有人昏迷。"
     },
     "type": "Quick Use",
     "rarity": "Rare",
@@ -7827,7 +7917,7 @@
   {
     "id": "leaper_pulse_unit",
     "name": {
-      "value": "跳跃者脉冲装置",
+      "value": "“跳跃者”脉冲单元",
       "originalEn": "Leaper Pulse Unit"
     },
     "description": {
@@ -7886,11 +7976,11 @@
   {
     "id": "leviathans_crown_ship_model",
     "name": {
-      "value": "「Leviathan's Crown」号船模",
+      "value": "“利维坦之冠”舰船模型",
       "originalEn": "\"Leviathan's Crown\" Ship Model"
     },
     "description": {
-      "en": "无论哪个时代都堪称壮观，这艘凶悍的商船对玻璃纤维技术带来的空气动力学优势毫不在意。"
+      "en": "这艘强悍商船无论在哪个时代都尽显威严，全然不在意玻璃纤维的“那点”空气动力学优势。"
     },
     "type": "Trinket",
     "rarity": "Legendary",
@@ -7993,7 +8083,7 @@
       "originalEn": "Light Bulb"
     },
     "description": {
-      "en": "没有光，地下生活将不可能。"
+      "en": "要是没有光，人们就不可能在地下生活。"
     },
     "type": "Trinket",
     "rarity": "Uncommon",
@@ -8198,7 +8288,7 @@
       "originalEn": "Li'l Smoke Grenade"
     },
     "description": {
-      "en": "着弹时产生浓密但范围较小的烟雾，阻挡ARC和其他奇袭者的视线。"
+      "en": "撞击时会在爆炸范围内喷出小范围浓密烟雾的手雷，可阻挡ARC及其他奇袭者的视线。"
     },
     "type": "Quick Use",
     "rarity": "Common",
@@ -8446,7 +8536,7 @@
       "originalEn": "Lure Grenade Blueprint"
     },
     "description": {
-      "en": "可粘附在表面的噪音装置，能分散附近ARC机器的注意力并吸引它们的火力。"
+      "en": "会发出噪音的设备，可以粘附在表面上，分散ARC机器的注意力并引开它们的攻击。"
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -8499,7 +8589,7 @@
       "originalEn": "Lure Grenade"
     },
     "description": {
-      "en": "一种可粘附在表面的噪音装置，可分散附近ARC机械的注意力并吸引其火力。"
+      "en": "会发出噪音的设备，可以粘附在表面上，分散ARC机器的注意力并引开它们的攻击。"
     },
     "type": "Quick Use",
     "rarity": "Uncommon",
@@ -8936,7 +9026,7 @@
       "originalEn": "Microscope"
     },
     "description": {
-      "en": "可以回收为制作材料。"
+      "en": "可回收为制作材料。"
     },
     "type": "Recyclable",
     "rarity": "Rare",
@@ -9079,11 +9169,11 @@
   {
     "id": "motor",
     "name": {
-      "value": "马达",
+      "value": "发动机",
       "originalEn": "Motor"
     },
     "description": {
-      "en": "小型电动马达，可用于各种装置。"
+      "en": "可回收为制作材料。"
     },
     "type": "Recyclable",
     "rarity": "Rare",
@@ -9450,7 +9540,7 @@
       "originalEn": "Oil"
     },
     "description": {
-      "en": "用于制作武器和爆炸物。可回收为化学品。用于制作：Renegade、爆炸化合物、火焰手雷"
+      "en": "用于制作武器和爆炸物。可回收为化学品。用于制作：叛逆、炸药混合物、火焰手雷"
     },
     "type": "Topside Material",
     "rarity": "Uncommon",
@@ -9774,7 +9864,7 @@
       "originalEn": "Patrol Car Key"
     },
     "description": {
-      "en": "巡逻车的钥匙。"
+      "en": "解锁巡逻车的后门。"
     },
     "type": "Key",
     "rarity": "Uncommon",
@@ -9799,7 +9889,7 @@
       "originalEn": "Photoelectric Cloak"
     },
     "description": {
-      "en": "能让使用者躲避ARC的装置。"
+      "en": "可以让使用者在ARC视线内“隐形”的小道具。"
     },
     "type": "Quick Use",
     "rarity": "Epic",
@@ -9906,11 +9996,11 @@
   {
     "id": "polluted_air_filter",
     "name": {
-      "value": "污染空气过滤器",
+      "value": "污染的空气滤芯",
       "originalEn": "Polluted Air Filter"
     },
     "description": {
-      "en": "可回收为制作组件。"
+      "en": "可回收为制作材料。"
     },
     "type": "Recyclable",
     "rarity": "Rare",
@@ -9940,7 +10030,7 @@
       "originalEn": "Pop Trigger"
     },
     "description": {
-      "en": "可以回收成制作材料。"
+      "en": "可回收为制作材料。"
     },
     "type": "Recyclable",
     "rarity": "Uncommon",
@@ -9970,7 +10060,7 @@
       "originalEn": "Portable TV"
     },
     "description": {
-      "en": "可以回收成制作材料。"
+      "en": "可回收为制作材料。"
     },
     "type": "Recyclable",
     "rarity": "Rare",
@@ -10173,7 +10263,7 @@
       "originalEn": "Powered Descender Blueprint"
     },
     "description": {
-      "en": "在空中使用时可降低下坠速度，但需要预热时间才能达到全功率。电量耗尽后会关闭"
+      "en": "在空中使用可降低坠落速度，但需短暂蓄力才能达到最大效果。电量耗尽即停止工作。"
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -10198,7 +10288,7 @@
       "originalEn": "Powered Descender"
     },
     "description": {
-      "en": "在空中使用时可降低下坠速度，但需要预热时间才能达到全功率。电量耗尽后会关闭"
+      "en": "在空中使用可降低坠落速度，但需短暂蓄力才能达到最大效果。电量耗尽即停止工作。"
     },
     "type": "Quick Use",
     "rarity": "Epic",
@@ -10311,11 +10401,11 @@
   {
     "id": "project_heartwood_blueprints",
     "name": {
-      "value": "“芯木计划”蓝图",
+      "value": "常青计划蓝图",
       "originalEn": "Project Heartwood Blueprints"
     },
     "description": {
-      "en": "一项名为“芯木计划”的褪色蓝图。无论那是什么，它从未被建成过。"
+      "en": "一项名为“常青计划”的褪色蓝图。无论那是什么，它从未被建成过。"
     },
     "type": "Trinket",
     "rarity": "Common",
@@ -10366,11 +10456,11 @@
   {
     "id": "pulse_mine_blueprint",
     "name": {
-      "value": "跳雷：冲击蓝图",
+      "value": "脉冲地雷蓝图",
       "originalEn": "Pulse Mine Blueprint"
     },
     "description": {
-      "en": "一种近距离触发的地雷，会弹起并击退半径内的任何目标。"
+      "en": "一种近距离触发式地雷，在接近时会弹起并爆炸，击退范围内的所有人。"
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -10391,11 +10481,11 @@
   {
     "id": "pulse_mine",
     "name": {
-      "value": "跳雷：冲击",
+      "value": "跳雷：冲击（脉冲地雷）",
       "originalEn": "Pulse Mine"
     },
     "description": {
-      "en": "一种近距离触发的地雷，会弹起并击退半径内的任何目标。"
+      "en": "一种近距离触发式地雷，在接近时会弹起并爆炸，击退范围内的所有人。"
     },
     "type": "Quick Use",
     "rarity": "Uncommon",
@@ -10487,7 +10577,7 @@
       "originalEn": "Radio"
     },
     "description": {
-      "en": "可回收为制作组件。"
+      "en": "可回收为制作材料。"
     },
     "type": "Recyclable",
     "rarity": "Rare",
@@ -10585,6 +10675,164 @@
     "tier": null,
     "imageFilename": "https://cdn.arctracker.io/items/v2/raiders_refuge_security_code.png",
     "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "rascal_blueprint",
+    "name": {
+      "value": "无赖蓝图",
+      "originalEn": "Rascal Blueprint"
+    },
+    "description": {
+      "en": "可发射爆炸式射弹，仅当命中ARC时，射弹才会引爆。"
+    },
+    "type": "Blueprint",
+    "rarity": "Common",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "recyclesInto": null,
+    "recipe": null,
+    "salvagesInto": null,
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/rascal.png",
+    "isWeapon": null,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "rascal_i",
+    "name": {
+      "value": "无赖 I",
+      "originalEn": "Rascal I"
+    },
+    "description": {
+      "en": "可发射爆炸式射弹，仅当命中ARC时，射弹才会引爆。"
+    },
+    "type": "Special",
+    "rarity": "Rare",
+    "value": 7000,
+    "weightKg": 4,
+    "stackSize": null,
+    "recyclesInto": {
+      "advanced_mechanical_components": 1,
+      "heavy_gun_parts": 2
+    },
+    "recipe": {
+      "advanced_mechanical_components": 2,
+      "canister": 5,
+      "heavy_gun_parts": 3
+    },
+    "salvagesInto": {
+      "heavy_gun_parts": 2
+    },
+    "upgradeCost": null,
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/rascal.png",
+    "isWeapon": true,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "rascal_ii",
+    "name": {
+      "value": "无赖 II",
+      "originalEn": "Rascal II"
+    },
+    "description": {
+      "en": "可发射爆炸式射弹，仅当命中ARC时，射弹才会引爆。"
+    },
+    "type": "Special",
+    "rarity": "Rare",
+    "value": 10000,
+    "weightKg": 4,
+    "stackSize": null,
+    "recyclesInto": {
+      "advanced_mechanical_components": 2,
+      "heavy_gun_parts": 2
+    },
+    "recipe": null,
+    "salvagesInto": {
+      "heavy_gun_parts": 2
+    },
+    "upgradeCost": {
+      "advanced_mechanical_components": 1,
+      "heavy_gun_parts": 2
+    },
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/rascal.png",
+    "isWeapon": true,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "rascal_iii",
+    "name": {
+      "value": "无赖 III",
+      "originalEn": "Rascal III"
+    },
+    "description": {
+      "en": "可发射爆炸式射弹，仅当命中ARC时，射弹才会引爆。"
+    },
+    "type": "Special",
+    "rarity": "Rare",
+    "value": 13000,
+    "weightKg": 4,
+    "stackSize": null,
+    "recyclesInto": {
+      "advanced_mechanical_components": 2,
+      "heavy_gun_parts": 3
+    },
+    "recipe": null,
+    "salvagesInto": {
+      "heavy_gun_parts": 3
+    },
+    "upgradeCost": {
+      "advanced_mechanical_components": 1,
+      "heavy_gun_parts": 2
+    },
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/rascal.png",
+    "isWeapon": true,
+    "foundIn": [
+      "Unknown"
+    ]
+  },
+  {
+    "id": "rascal_iv",
+    "name": {
+      "value": "无赖 IV",
+      "originalEn": "Rascal IV"
+    },
+    "description": {
+      "en": "可发射爆炸式射弹，仅当命中ARC时，射弹才会引爆。"
+    },
+    "type": "Special",
+    "rarity": "Rare",
+    "value": 17000,
+    "weightKg": 4,
+    "stackSize": null,
+    "recyclesInto": {
+      "advanced_mechanical_components": 3,
+      "heavy_gun_parts": 3
+    },
+    "recipe": null,
+    "salvagesInto": {
+      "heavy_gun_parts": 3
+    },
+    "upgradeCost": {
+      "advanced_mechanical_components": 2,
+      "heavy_gun_parts": 2
+    },
+    "tier": null,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/rascal.png",
+    "isWeapon": true,
     "foundIn": [
       "Unknown"
     ]
@@ -11133,38 +11381,13 @@
     ]
   },
   {
-    "id": "riven_tides_classifed_records_keycard",
-    "name": {
-      "value": "Riven Tides机密记录钥匙卡",
-      "originalEn": "Riven Tides Classifed Records Keycard"
-    },
-    "description": {
-      "en": "可开启Riven Tides港务局大楼中机密记录室的一扇门。"
-    },
-    "type": "Key",
-    "rarity": "Uncommon",
-    "value": 100,
-    "weightKg": 0.25,
-    "stackSize": 1,
-    "recyclesInto": null,
-    "recipe": null,
-    "salvagesInto": null,
-    "upgradeCost": null,
-    "tier": null,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/riven_tides_classified_records_keycard.png",
-    "isWeapon": null,
-    "foundIn": [
-      "Unknown"
-    ]
-  },
-  {
     "id": "riven_tides_classified_records_keycard",
     "name": {
-      "value": "Riven Tides机密记录钥匙卡",
+      "value": "裂潮镇机密档案室门禁卡",
       "originalEn": "Riven Tides Classified Records Keycard"
     },
     "description": {
-      "en": "可开启Riven Tides港务局大楼中机密记录室的一扇门。"
+      "en": "可开启裂潮镇港务局大楼机密档案室的门。"
     },
     "type": "Key",
     "rarity": "Uncommon",
@@ -11185,11 +11408,11 @@
   {
     "id": "riven_tides_crane_house_keycard",
     "name": {
-      "value": "Riven Tides起重机房钥匙卡",
+      "value": "裂潮镇起重机控制室门禁卡",
       "originalEn": "Riven Tides Crane House Keycard"
     },
     "description": {
-      "en": "可开启Riven Tides某座起重机房内的一扇门。"
+      "en": "可开启裂潮镇某个起重机控制室的门。"
     },
     "type": "Key",
     "rarity": "Common",
@@ -11210,11 +11433,11 @@
   {
     "id": "riven_tides_hotel_keycard_no_102",
     "name": {
-      "value": "Riven Tides酒店102号钥匙卡",
+      "value": "裂潮镇酒店102号房卡",
       "originalEn": "Riven Tides Hotel Keycard No. 102"
     },
     "description": {
-      "en": "可开启Riven Tides中Panorama Azzurro众多套房之一的房门"
+      "en": "可开启裂潮镇蔚蓝全景酒店某间套房的门。"
     },
     "type": "Key",
     "rarity": "Common",
@@ -11235,11 +11458,11 @@
   {
     "id": "riven_tides_hotel_keycard_no_107",
     "name": {
-      "value": "Riven Tides酒店107号钥匙卡",
+      "value": "裂潮镇酒店107号房卡",
       "originalEn": "Riven Tides Hotel Keycard No. 107"
     },
     "description": {
-      "en": "可开启Riven Tides中Panorama Azzurro众多套房之一的房门"
+      "en": "可开启裂潮镇蔚蓝全景酒店某间套房的门。"
     },
     "type": "Key",
     "rarity": "Common",
@@ -11260,11 +11483,11 @@
   {
     "id": "riven_tides_hotel_keycard_no_113",
     "name": {
-      "value": "Riven Tides酒店113号钥匙卡",
+      "value": "裂潮镇酒店113号房卡",
       "originalEn": "Riven Tides Hotel Keycard No. 113"
     },
     "description": {
-      "en": "可开启Riven Tides中Panorama Azzurro众多套房之一的房门"
+      "en": "可开启裂潮镇蔚蓝全景酒店某间套房的门。"
     },
     "type": "Key",
     "rarity": "Common",
@@ -11285,11 +11508,11 @@
   {
     "id": "riven_tides_hotel_keycard_no_205",
     "name": {
-      "value": "Riven Tides酒店205号钥匙卡",
+      "value": "裂潮镇酒店205号房卡",
       "originalEn": "Riven Tides Hotel Keycard No. 205"
     },
     "description": {
-      "en": "可开启Riven Tides中Panorama Azzurro众多套房之一的房门"
+      "en": "可开启裂潮镇蔚蓝全景酒店某间套房的门。"
     },
     "type": "Key",
     "rarity": "Common",
@@ -11310,11 +11533,11 @@
   {
     "id": "riven_tides_hotel_keycard_no_208",
     "name": {
-      "value": "Riven Tides酒店208号钥匙卡",
+      "value": "裂潮镇酒店208号房卡",
       "originalEn": "Riven Tides Hotel Keycard No. 208"
     },
     "description": {
-      "en": "可开启Riven Tides中Panorama Azzurro众多套房之一的房门"
+      "en": "可开启裂潮镇蔚蓝全景酒店某间套房的门。"
     },
     "type": "Key",
     "rarity": "Common",
@@ -11335,11 +11558,11 @@
   {
     "id": "riven_tides_hotel_keycard_no_311",
     "name": {
-      "value": "Riven Tides酒店311号钥匙卡",
+      "value": "裂潮镇酒店311号房卡",
       "originalEn": "Riven Tides Hotel Keycard No. 311"
     },
     "description": {
-      "en": "可开启Riven Tides中Panorama Azzurro众多套房之一的房门"
+      "en": "可开启裂潮镇蔚蓝全景酒店某间套房的门。"
     },
     "type": "Key",
     "rarity": "Common",
@@ -11360,11 +11583,11 @@
   {
     "id": "riven_tides_hotel_keycard_no_404",
     "name": {
-      "value": "Riven Tides酒店404号钥匙卡",
+      "value": "裂潮镇酒店404号房卡",
       "originalEn": "Riven Tides Hotel Keycard No. 404"
     },
     "description": {
-      "en": "可开启Riven Tides中Panorama Azzurro众多套房之一的房门"
+      "en": "可开启裂潮镇蔚蓝全景酒店某间套房的门。"
     },
     "type": "Key",
     "rarity": "Common",
@@ -11385,11 +11608,11 @@
   {
     "id": "riven_tides_secure_storage_keycard",
     "name": {
-      "value": "Riven Tides安全仓库钥匙卡",
+      "value": "裂潮镇安全储藏室门禁卡",
       "originalEn": "Riven Tides Secure Storage Keycard"
     },
     "description": {
-      "en": "可开启Riven Tides港务局大楼中安全仓库的一扇门"
+      "en": "可开启裂潮镇港务局大楼安全储藏室的门，"
     },
     "type": "Key",
     "rarity": "Epic",
@@ -11440,7 +11663,7 @@
   {
     "id": "rocketeer_driver",
     "name": {
-      "value": "火箭手引擎",
+      "value": "“火箭手”引擎",
       "originalEn": "Rocketeer Driver"
     },
     "description": {
@@ -11503,7 +11726,7 @@
       "originalEn": "Rope"
     },
     "description": {
-      "en": "用于制作。可制作：Zipline、Snap Hook"
+      "en": "用于制作。可制作：滑索，安全钩"
     },
     "type": "Topside Material",
     "rarity": "Rare",
@@ -11559,7 +11782,7 @@
       "originalEn": "Rotary Encoder"
     },
     "description": {
-      "en": "可以回收为制作材料。"
+      "en": "可回收为制作材料。"
     },
     "type": "Recyclable",
     "rarity": "Rare",
@@ -11726,7 +11949,7 @@
   {
     "id": "ruined_baton",
     "name": {
-      "value": "损坏的警棍",
+      "value": "损毁的警棍",
       "originalEn": "Ruined Baton"
     },
     "description": {
@@ -11756,11 +11979,11 @@
   {
     "id": "ruined_handcuffs",
     "name": {
-      "value": "损坏的手铐",
+      "value": "损毁的手铐",
       "originalEn": "Ruined Handcuffs"
     },
     "description": {
-      "en": "可以回收成制作材料。"
+      "en": "可回收为制作材料。"
     },
     "type": "Recyclable",
     "rarity": "Uncommon",
@@ -11785,11 +12008,11 @@
   {
     "id": "ruined_parachute",
     "name": {
-      "value": "损毁的降落伞",
+      "value": "坏掉的降落伞",
       "originalEn": "Ruined Parachute"
     },
     "description": {
-      "en": "可以回收为制作材料。"
+      "en": "可回收为制作材料。"
     },
     "type": "Recyclable",
     "rarity": "Uncommon",
@@ -12132,7 +12355,7 @@
       "originalEn": "Seeker Grenade Blueprint"
     },
     "description": {
-      "en": "解锁追踪手雷的制作蓝图。"
+      "en": "一枚追踪手雷，锁定附近单个ARC并在撞击时造成爆炸伤害。"
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -12216,7 +12439,7 @@
   {
     "id": "sentinel_firing_core",
     "name": {
-      "value": "哨兵核心",
+      "value": "“哨卫”发射核心",
       "originalEn": "Sentinel Firing Core"
     },
     "description": {
@@ -12573,7 +12796,7 @@
       "originalEn": "Showstopper"
     },
     "description": {
-      "en": "延迟引爆的手榴弹，可击晕范围内的敌人。"
+      "en": "延迟爆炸的手雷，会使爆炸范围内的敌人昏迷。"
     },
     "type": "Quick Use",
     "rarity": "Rare",
@@ -12607,7 +12830,7 @@
       "originalEn": "Shrapnel Grenade"
     },
     "description": {
-      "en": "一种简易引信手榴弹，爆炸时会迸发出锋利的碎片。对ARC装甲板效果较弱"
+      "en": "一款应急引信手雷，引爆时会喷射出锋利的碎片。对ARC装甲板效果不佳"
     },
     "type": "Quick Use",
     "rarity": "Uncommon",
@@ -12899,11 +13122,11 @@
   {
     "id": "sirena_dorata_ship_model",
     "name": {
-      "value": "「Sirena Dorata」号船模",
+      "value": "“金色海妖”舰船模型",
       "originalEn": "\"Sirena Dorata\" Ship Model"
     },
     "description": {
-      "en": "地中海的阳光在船身上闪烁，这艘鲜艳的游艇是咸水奢华永恒的典范。"
+      "en": "地中海阳光洒在船身熠熠生辉，这艘明艳游艇是海上风华的永恒典范。"
     },
     "type": "Trinket",
     "rarity": "Epic",
@@ -12928,7 +13151,7 @@
       "originalEn": "Smoke Grenade Blueprint"
     },
     "description": {
-      "en": "撞击时产生持续烟雾云，阻挡 ARC 和其他奇袭者的视线。"
+      "en": "撞击时会在爆炸范围内产生烟雾的手雷，可阻挡ARC及其他奇袭者的视线。"
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -12981,7 +13204,7 @@
       "originalEn": "Smoke Grenade"
     },
     "description": {
-      "en": "撞击时产生持续烟雾云，阻挡 ARC 和其他奇袭者的视线。"
+      "en": "撞击时会在爆炸范围内产生烟雾的手雷，可阻挡ARC及其他奇袭者的视线。"
     },
     "type": "Quick Use",
     "rarity": "Rare",
@@ -13014,7 +13237,7 @@
       "originalEn": "Snap Blast Grenade"
     },
     "description": {
-      "en": "可粘附在表面的手雷，短暂延迟后造成爆炸伤害。"
+      "en": "可以粘附在表面并在短暂延迟后引发爆炸的手雷。"
     },
     "type": "Quick Use",
     "rarity": "Uncommon",
@@ -13102,7 +13325,7 @@
   {
     "id": "snitch_scanner",
     "name": {
-      "value": "告密者扫描器",
+      "value": "“告密者”扫描仪",
       "originalEn": "Snitch Scanner"
     },
     "description": {
@@ -13161,7 +13384,7 @@
       "originalEn": "Spaceport Container Storage Key"
     },
     "description": {
-      "en": "太空港集装箱仓库的钥匙。"
+      "en": "可打开太空港集装箱仓库内的一扇门。"
     },
     "type": "Key",
     "rarity": "Rare",
@@ -13186,7 +13409,7 @@
       "originalEn": "Spaceport Control Tower Key"
     },
     "description": {
-      "en": "解锁太空港控制塔A6的门"
+      "en": "可打开太空港中通往控制塔A6的一扇门"
     },
     "type": "Key",
     "rarity": "Rare",
@@ -13207,11 +13430,11 @@
   {
     "id": "spaceport_trench_tower_key",
     "name": {
-      "value": "太空港战壕塔钥匙",
+      "value": "太空港壕沟塔钥匙",
       "originalEn": "Spaceport Trench Tower Key"
     },
     "description": {
-      "en": "解锁通往太空港战壕塔的门"
+      "en": "可打开太空港中通往壕沟塔的门"
     },
     "type": "Key",
     "rarity": "Uncommon",
@@ -13236,7 +13459,7 @@
       "originalEn": "Spaceport Warehouse Key"
     },
     "description": {
-      "en": "太空港仓库的钥匙。"
+      "en": "可打开太空港货运仓库内的一扇门。"
     },
     "type": "Key",
     "rarity": "Uncommon",
@@ -13261,7 +13484,7 @@
       "originalEn": "Speaker Component"
     },
     "description": {
-      "en": "用于制作。可制作：诱捕手雷、光电斗篷"
+      "en": "用于制作。用于制作：诱捕手雷，光电斗篷"
     },
     "type": "Topside Material",
     "rarity": "Rare",
@@ -13347,7 +13570,7 @@
   {
     "id": "spotter_relay",
     "name": {
-      "value": "侦察中继器",
+      "value": "“侦察员”中继器",
       "originalEn": "Spotter Relay"
     },
     "description": {
@@ -13640,7 +13863,7 @@
       "originalEn": "Stella Montis Archives Key"
     },
     "description": {
-      "en": "解锁星山医学研究区的一扇门"
+      "en": "可打开星辰山档案馆内的一扇门。"
     },
     "type": "Key",
     "rarity": "Epic",
@@ -13665,7 +13888,7 @@
       "originalEn": "Stella Montis Assembly Admin Key"
     },
     "description": {
-      "en": "解锁星山组装区的一扇门"
+      "en": "可打开星辰山组装厂内的一扇门。"
     },
     "type": "Key",
     "rarity": "Uncommon",
@@ -13690,7 +13913,7 @@
       "originalEn": "Stella Montis Medical Storage Key"
     },
     "description": {
-      "en": "解锁星山档案室的一扇门"
+      "en": "可打开星辰山医疗研究区内的一扇门。"
     },
     "type": "Key",
     "rarity": "Uncommon",
@@ -13715,7 +13938,7 @@
       "originalEn": "Stella Montis Security Checkpoint Key"
     },
     "description": {
-      "en": "解锁星山安全检查站的一扇门"
+      "en": "可打开星辰山安全检查站内的一扇门。"
     },
     "type": "Key",
     "rarity": "Rare",
@@ -13901,11 +14124,11 @@
   {
     "id": "surge_coil_blueprint",
     "name": {
-      "value": "Surge Coil 蓝图",
+      "value": "涌能线圈蓝图",
       "originalEn": "Surge Coil Blueprint"
     },
     "description": {
-      "en": "一种可部署的设备，定期使周围区域带电，并短暂击晕其中的任何目标。"
+      "en": "可部署装置，能周期性对周围区域通电，短暂眩晕范围内所有目标。"
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -13926,11 +14149,11 @@
   {
     "id": "surge_coil",
     "name": {
-      "value": "Surge Coil",
+      "value": "涌能线圈",
       "originalEn": "Surge Coil"
     },
     "description": {
-      "en": "一种可部署的设备，定期使周围区域带电，并短暂击晕其中的任何目标。"
+      "en": "可部署装置，能周期性对周围区域通电，短暂眩晕范围内所有目标。"
     },
     "type": "Quick Use",
     "rarity": "Uncommon",
@@ -15050,7 +15273,7 @@
       "originalEn": "Trigger Nade Blueprint"
     },
     "description": {
-      "en": "可粘附在表面和ARC上的遥控引爆手榴弹，触发时造成爆炸伤害。"
+      "en": "遥控引爆的手雷，可以粘附在表面或ARC上，触发时造成爆炸伤害。"
     },
     "type": "Blueprint",
     "rarity": "Common",
@@ -15075,7 +15298,7 @@
       "originalEn": "Trigger 'Nade"
     },
     "description": {
-      "en": "可粘附在表面和ARC上的遥控引爆手雷，触发时造成爆炸伤害。"
+      "en": "遥控引爆的手雷，可以粘附在表面或ARC上，触发时造成爆炸伤害。"
     },
     "type": "Quick Use",
     "rarity": "Rare",
@@ -15163,7 +15386,7 @@
       "originalEn": "Turbo Pump"
     },
     "description": {
-      "en": "可以回收成制作材料。"
+      "en": "可回收为制作材料。"
     },
     "type": "Recyclable",
     "rarity": "Rare",
@@ -15189,11 +15412,11 @@
   {
     "id": "twilight_compass_ship_model",
     "name": {
-      "value": "「Twilight Compass」号船模",
+      "value": "“暮光指南针”舰船模型",
       "originalEn": "\"Twilight Compass\" Ship Model"
     },
     "description": {
-      "en": "这艘充满活力的双桅新秀，以扬帆驶到地平线之外那么一点点而闻名。"
+      "en": "作为意气风发的后起之秀，这艘双桅杆船总能稍稍驶出海平线之外。"
     },
     "type": "Trinket",
     "rarity": "Uncommon",
@@ -15218,7 +15441,7 @@
       "originalEn": "Unusable Weapon"
     },
     "description": {
-      "en": "可以回收为制作材料。"
+      "en": "可回收为制作材料。"
     },
     "type": "Recyclable",
     "rarity": "Rare",
@@ -15244,11 +15467,11 @@
   {
     "id": "vaporizer_regulator",
     "name": {
-      "value": "Vaporizer Regulator",
+      "value": "“气化者”调节器",
       "originalEn": "Vaporizer Regulator"
     },
     "description": {
-      "en": ""
+      "en": "可回收为制作材料。用于制作：錾斧"
     },
     "type": "Recyclable",
     "rarity": "Epic",
@@ -15301,11 +15524,11 @@
   {
     "id": "velocity_ship_model",
     "name": {
-      "value": "「Velocity」号船模",
+      "value": "“极速”舰船模型",
       "originalEn": "\"Velocity\" Ship Model"
     },
     "description": {
-      "en": "为追求性能而优化，这件科技奇迹真心希望你没打算带上一顿特别精致的午餐。"
+      "en": "这台科技杰只为性能极致而造，显然不希望你在上头享用什么精致午餐。"
     },
     "type": "Trinket",
     "rarity": "Rare",
@@ -15636,7 +15859,7 @@
       "originalEn": "Very Comfortable Pillow"
     },
     "description": {
-      "en": "每个奇袭者的梦想。脑袋就像躺在一片特别符合人体工程学的云朵上一样。"
+      "en": "每一个奇袭者的梦想。脑袋就像躺在一片特别符合人体工程学的云朵上一样。"
     },
     "type": "Trinket",
     "rarity": "Uncommon",
@@ -16021,7 +16244,7 @@
       "originalEn": "Water Filter"
     },
     "description": {
-      "en": "用于净化水的便携式过滤装置。"
+      "en": "可回收为制作材料。"
     },
     "type": "Recyclable",
     "rarity": "Rare",
@@ -16051,7 +16274,7 @@
       "originalEn": "Water Pump"
     },
     "description": {
-      "en": "可以回收成制作材料。"
+      "en": "可回收为制作材料。"
     },
     "type": "Recyclable",
     "rarity": "Rare",
@@ -16136,11 +16359,11 @@
   {
     "id": "wind_sprite_ship_model",
     "name": {
-      "value": "「Wind Sprite」号船模",
+      "value": "“风灵”舰船模型",
       "originalEn": "\"Wind Sprite\" Ship Model"
     },
     "description": {
-      "en": "面对更大的同胞毫不退缩，这艘灵活的单桅帆船以敢于挑战哪怕只是略高于平均水平的海浪而闻名。"
+      "en": "这艘灵活的单桅船，在面对体型更大的舰船时毫不畏惧，略高于平均高度的浪涛更是不放在眼里。"
     },
     "type": "Trinket",
     "rarity": "Common",
@@ -16165,7 +16388,7 @@
       "originalEn": "Wires"
     },
     "description": {
-      "en": "用于制作各种物品。可回收为制作材料。可制作：烈焰手雷陷阱、烟雾手雷陷阱、诱捕手雷陷阱、毒气手雷陷阱、枪口制退器I"
+      "en": "用于制作各种物品。可回收为制作材料。可制作：火焰手雷陷阱、烟雾手雷陷阱、诱捕手雷陷阱、毒气手雷陷阱、枪口制退器I"
     },
     "type": "Topside Material",
     "rarity": "Uncommon",

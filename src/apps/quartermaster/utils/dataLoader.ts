@@ -7,9 +7,11 @@ import type { AppLocale } from '../../../shared/i18n/config';
 import { fetchLocalizedJson } from '../../../shared/utils/localizedContent';
 import type { PlannerItem, ItemsMap, LocalizedItemsData } from '../types/item';
 import type { HideoutModuleDefinition, LocalizedHideoutModuleDefinition } from '../types/hideout';
+import type { ProjectDefinition, LocalizedProjectDefinition } from '../types/project';
 
 const ITEMS_URL = '/data/quartermaster/items.json';
 const HIDEOUT_URL = '/data/quartermaster/hideout.json';
+const PROJECTS_URL = '/data/quartermaster/projects.json';
 
 /**
  * Load all items from the generated JSON file
@@ -87,4 +89,25 @@ export function searchItems(itemsMap: ItemsMap, query: string): PlannerItem[] {
   return Object.values(itemsMap)
     .filter(item => item.name.toLowerCase().includes(lowerQuery))
     .sort((a, b) => a.name.localeCompare(b.name));
+}
+
+/**
+ * Load project definitions from the generated JSON file
+ */
+export async function loadProjectDefinitions(locale: AppLocale): Promise<ProjectDefinition[]> {
+  const definitions = await fetchLocalizedJson<LocalizedProjectDefinition[]>(
+    PROJECTS_URL,
+    locale
+  );
+
+  return definitions.map((definition) => ({
+    ...definition,
+    name: definition.name.value,
+    originalNameEn: definition.name.originalEn,
+    phases: definition.phases.map((phase) => ({
+      ...phase,
+      name: phase.name.value,
+      originalNameEn: phase.name.originalEn,
+    })),
+  }));
 }

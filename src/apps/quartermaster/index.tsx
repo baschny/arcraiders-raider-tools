@@ -9,7 +9,8 @@ import type { ItemsMap, BenchId } from './types/item';
 import type { StoredList } from './types/list';
 import type { PlannerResult } from './types/planner';
 import type { HideoutModuleDefinition, HideoutToggleState } from './types/hideout';
-import { loadAllItems, loadHideoutDefinitions } from './utils/dataLoader';
+import type { ProjectDefinition, ProjectToggleState } from './types/project';
+import { loadAllItems, loadHideoutDefinitions, loadProjectDefinitions } from './utils/dataLoader';
 import {
   normalizeStoredLists,
   createNewList,
@@ -28,15 +29,24 @@ import {
   listKey,
   itemKey,
 } from './utils/hideoutStorage';
+import { generateProjectLists } from './utils/projectLists';
+import { formatProjectListName } from './utils/localization';
+import {
+  cleanupObsoleteProjectToggles,
+  listKey as projectListKey,
+  itemKey as projectItemKey,
+} from './utils/projectStorage';
 import {
   syncStashAllPages,
   syncLoadout,
   syncHideout,
   syncBlueprints,
+  syncProjects,
   getStash,
   getLoadout,
   getHideout,
   getBlueprints,
+  getProjects,
   aggregateOwnedInventory,
   toOwnedItemQuantities,
   getBenchLevels,
@@ -46,6 +56,7 @@ import {
   type CachedLoadout,
   type CachedHideout,
   type CachedBlueprints,
+  type CachedProjects,
 } from './utils/api';
 import { buildItemInsights, type ItemInsightsMap } from './utils/itemInsights';
 import { formatHideoutListName } from './utils/localization';
@@ -63,6 +74,8 @@ import { getMe } from '../../shared/services/userApi';
 import {
   getQuartermasterGameDataCache,
   syncEmbarkInventory,
+  getEmbarkProjects,
+  syncEmbarkProjects,
   type EmbarkInventoryDiagnostics,
   type GameDataSource,
 } from '../../shared/services/gameDataApi';
@@ -74,6 +87,7 @@ import { StashView } from './components/views/StashView';
 import { WelcomeView } from './components/views/WelcomeView';
 import { ListsView } from './components/views/ListsView';
 import { HideoutView } from './components/views/HideoutView';
+import { ProjectsView } from './components/views/ProjectsView';
 import { InRaidView } from './components/views/InRaidView';
 import { CraftingView } from './components/views/CraftingView';
 
@@ -114,6 +128,57 @@ function countAvailableNextHideoutUpgrades(
   return availableCount;
 }
 
+function countAvailableProjectSubmissions(
+  projectLists: StoredList[],
+  cachedProjects: CachedProjects | null,
+  getOwnedQuantity: (itemId: string) => number | null,
+): number {
+  if (!cachedProjects) return 0;
+
+  const progressMap = new Map<string, Map<number, boolean>>();
+  for (const pp of cachedProjects.projects) {
+    const stepMap = new Map<number, boolean>();
+    for (const step of pp.steps) {
+      stepMap.set(step.index, step.completed);
+    }
+    progressMap.set(pp.projectId, stepMap);
+  }
+
+  let availableCount = 0;
+
+  for (const list of projectLists) {
+    const match = /^project_(.+)_(\d+)$/.exec(list.id);
+    if (!match) continue;
+    const projectId = match[1];
+    const stepIndex = parseInt(match[2], 10);
+
+    const stepMap = progressMap.get(projectId);
+    if (!stepMap) continue;
+
+    // Find the first incomplete step for this project
+    let currentStepIndex: number | null = null;
+    const sortedIndices = [...stepMap.keys()].sort((a, b) => a - b);
+    for (const idx of sortedIndices) {
+      if (!stepMap.get(idx)) {
+        currentStepIndex = idx;
+        break;
+      }
+    }
+
+    // Only count if this list is the current step AND all items are owned
+    if (stepIndex === currentStepIndex) {
+      if (list.items.every((item) => {
+        const ownedQuantity = getOwnedQuantity(item.itemId);
+        return ownedQuantity !== null && ownedQuantity >= item.quantity;
+      })) {
+        availableCount++;
+      }
+    }
+  }
+
+  return availableCount;
+}
+
 export function QuartermasterApp() {
   const { isAuthenticated, revalidate } = useAuth();
   const cognito = useCognitoAuth();
@@ -131,6 +196,8 @@ export function QuartermasterApp() {
   const [hideoutDefinitions, setHideoutDefinitions] = useState<HideoutModuleDefinition[]>([]);
   const [cachedHideout, setCachedHideout] = useState<CachedHideout | null>(null);
   const [cachedBlueprints, setCachedBlueprints] = useState<CachedBlueprints | null>(null);
+  const [projectDefinitions, setProjectDefinitions] = useState<ProjectDefinition[]>([]);
+  const [cachedProjects, setCachedProjects] = useState<CachedProjects | null>(null);
   const [gameDataSource, setGameDataSource] = useState<GameDataSource>('arctracker');
   const [embarkDiagnostics, setEmbarkDiagnostics] = useState<EmbarkInventoryDiagnostics | null>(null);
   const [embarkEnabled, setEmbarkEnabled] = useState(false);
@@ -146,6 +213,7 @@ export function QuartermasterApp() {
   const [isSyncingHideout, setIsSyncingHideout] = useState(false);
   const [isSyncingBlueprints, setIsSyncingBlueprints] = useState(false);
   const [isSyncingEmbarkInventory, setIsSyncingEmbarkInventory] = useState(false);
+  const [isSyncingProjects, setIsSyncingProjects] = useState(false);
   const [staleSyncModal, setStaleSyncModal] = useState<{
     sources: string[];
   } | null>(null);
@@ -154,6 +222,7 @@ export function QuartermasterApp() {
     [itemsMap, quartermasterState.lists]
   );
   const hideoutToggleState = quartermasterState.hideoutToggles;
+  const projectToggleState = quartermasterState.projectToggles;
   const patchQuartermasterState = useCallback((next: Partial<QuartermasterState>) => {
     setQuartermasterState({ ...quartermasterStore.get(), ...next });
   }, [setQuartermasterState]);
@@ -214,6 +283,17 @@ export function QuartermasterApp() {
           setCachedBlueprints(blueprints);
         }
 
+        // Load project definitions
+        const projectDefs = await loadProjectDefinitions(locale);
+        setProjectDefinitions(projectDefs);
+
+        const cachedProj = activeSource === 'embark'
+          ? await getEmbarkProjects()
+          : await getProjects();
+        if (cachedProj) {
+          setCachedProjects(cachedProj);
+        }
+
         setLoading(false);
       } catch (err) {
         console.error('Failed to initialize:', err);
@@ -252,10 +332,20 @@ export function QuartermasterApp() {
     });
   }, [hideoutDefinitions, cachedHideout, hideoutToggleState, t, compareText]);
 
+  // Generate project required-item lists
+  const projectLists: StoredList[] = useMemo(() => {
+    if (projectDefinitions.length === 0) return [];
+    return generateProjectLists(projectDefinitions, cachedProjects, projectToggleState, {
+      formatListName: (projectName, stepIndex, stepName) =>
+        formatProjectListName(t, projectName, stepIndex, stepName),
+      compareText,
+    });
+  }, [projectDefinitions, cachedProjects, projectToggleState, t, compareText]);
+
   // Merge hideout lists before user lists for planner priority.
   const allLists: StoredList[] = useMemo(() => {
-    return [...hideoutLists, ...lists];
-  }, [lists, hideoutLists]);
+    return [...hideoutLists, ...projectLists, ...lists];
+  }, [lists, hideoutLists, projectLists]);
 
   const ownedItemRows = useMemo(() => {
     if (!itemsMap) return [];
@@ -291,6 +381,10 @@ export function QuartermasterApp() {
   const availableHideoutUpgradeCount = useMemo(() => {
     return countAvailableNextHideoutUpgrades(hideoutLists, cachedHideout, getOwnedQuantity);
   }, [cachedHideout, getOwnedQuantity, hideoutLists]);
+
+  const availableProjectSubmitCount = useMemo(() => {
+    return countAvailableProjectSubmissions(projectLists, cachedProjects, getOwnedQuantity);
+  }, [cachedProjects, getOwnedQuantity, projectLists]);
 
   const missingOwnedSources = useMemo(() => {
     const sources: string[] = [];
@@ -601,6 +695,128 @@ export function QuartermasterApp() {
     patchQuartermasterState({ hideoutToggles: updated });
   }, [hideoutToggleState, patchQuartermasterState]);
 
+  // Project toggle handlers
+  const handleToggleProjectList = useCallback((projectId: string, stepIndex: number) => {
+    const lk = projectListKey(projectId, stepIndex);
+    const updated: ProjectToggleState = {
+      ...projectToggleState,
+      listEnabled: {
+        ...projectToggleState.listEnabled,
+        [lk]: !(projectToggleState.listEnabled[lk] ?? true),
+      },
+    };
+    patchQuartermasterState({ projectToggles: updated });
+  }, [projectToggleState, patchQuartermasterState]);
+
+  const handleSetProjectStepsEnabled = useCallback((
+    projectId: string,
+    stepIndices: number[],
+    isEnabled: boolean,
+  ) => {
+    const nextListEnabled = { ...projectToggleState.listEnabled };
+    for (const stepIndex of stepIndices) {
+      nextListEnabled[projectListKey(projectId, stepIndex)] = isEnabled;
+    }
+
+    patchQuartermasterState({
+      projectToggles: {
+        ...projectToggleState,
+        listEnabled: nextListEnabled,
+      },
+    });
+  }, [projectToggleState, patchQuartermasterState]);
+
+  const handleSetProjectTrackingMode = useCallback((
+    mode: 'enable-all' | 'disable-all' | 'next-only',
+  ) => {
+    const nextListEnabled = { ...projectToggleState.listEnabled };
+
+    for (const list of projectLists) {
+      const match = /^project_(.+)_(\d+)$/.exec(list.id);
+      if (!match) continue;
+
+      const projectId = match[1];
+      const stepIndex = parseInt(match[2], 10);
+
+      let shouldEnable = true;
+      if (mode === 'disable-all') {
+        shouldEnable = false;
+      } else if (mode === 'next-only') {
+        // Find the first incomplete step for this project
+        const stepMap = progressMapForTracking.get(projectId);
+        if (stepMap) {
+          let currentIdx: number | null = null;
+          const sortedIndices = [...stepMap.keys()].sort((a, b) => a - b);
+          for (const idx of sortedIndices) {
+            if (!stepMap.get(idx)) {
+              currentIdx = idx;
+              break;
+            }
+          }
+          shouldEnable = stepIndex === currentIdx;
+        }
+      }
+
+      nextListEnabled[projectListKey(projectId, stepIndex)] = shouldEnable;
+    }
+
+    patchQuartermasterState({
+      projectToggles: {
+        ...projectToggleState,
+        listEnabled: nextListEnabled,
+      },
+    });
+  }, [projectLists, projectToggleState, patchQuartermasterState]);
+
+  const handleToggleProjectItem = useCallback((projectId: string, stepIndex: number, itemId: string) => {
+    const ik = projectItemKey(projectId, stepIndex, itemId);
+    const updated: ProjectToggleState = {
+      ...projectToggleState,
+      itemEnabled: {
+        ...projectToggleState.itemEnabled,
+        [ik]: !(projectToggleState.itemEnabled[ik] ?? true),
+      },
+    };
+    patchQuartermasterState({ projectToggles: updated });
+  }, [projectToggleState, patchQuartermasterState]);
+
+  // Progress map for tracking mode resolution
+  const progressMapForTracking = useMemo(() => {
+    const map = new Map<string, Map<number, boolean>>();
+    if (!cachedProjects) return map;
+    for (const pp of cachedProjects.projects) {
+      const stepMap = new Map<number, boolean>();
+      for (const step of pp.steps) {
+        stepMap.set(step.index, step.completed);
+      }
+      map.set(pp.projectId, stepMap);
+    }
+    return map;
+  }, [cachedProjects]);
+
+  // Sync projects callback
+  const handleSyncProjects = useCallback(async () => {
+    setIsSyncingProjects(true);
+    setSyncError(null);
+    try {
+      let projects: CachedProjects;
+      if (gameDataSource === 'embark') {
+        projects = await syncEmbarkProjects();
+      } else {
+        projects = await syncProjects();
+      }
+      setCachedProjects(projects);
+
+      const cleaned = cleanupObsoleteProjectToggles(projects, projectToggleState);
+      patchQuartermasterState({ projectToggles: cleaned });
+    } catch (err) {
+      console.error('Failed to sync projects:', err);
+      handleApiError(err, t('quartermaster.projects.syncProjects'));
+    } finally {
+      setIsSyncingProjects(false);
+    }
+  }, [gameDataSource, handleApiError, projectToggleState, patchQuartermasterState, t]);
+
   // Render content based on active view
   // Views requiring stash/loadout are wrapped in AuthGate (per spec section 3.2)
   const renderContent = () => {
@@ -672,6 +888,26 @@ export function QuartermasterApp() {
             />
         );
 
+      case 'projects':
+        return withGameDataGate(
+            <ProjectsView
+              itemsMap={itemsMap}
+              projectDefinitions={projectDefinitions}
+              cachedProjects={cachedProjects}
+              projectLists={projectLists}
+              plannerResult={plannerResult}
+              itemInsights={itemInsights}
+              getOwnedQuantity={getOwnedQuantity}
+              onSyncProjects={handleSyncProjects}
+              isSyncingProjects={isSyncingProjects}
+              showSyncButton={true}
+              onToggleProjectList={handleToggleProjectList}
+              onSetProjectStepsEnabled={handleSetProjectStepsEnabled}
+              onSetProjectTrackingMode={handleSetProjectTrackingMode}
+              onToggleProjectItem={handleToggleProjectItem}
+            />
+        );
+
       case 'in-raid':
         return withGameDataGate(
             <InRaidView
@@ -732,6 +968,7 @@ export function QuartermasterApp() {
           activeView={activeView}
           onViewChange={handleViewChange}
           hideoutAvailableUpgradeCount={availableHideoutUpgradeCount}
+          projectAvailableSubmitCount={availableProjectSubmitCount}
           inRaidMissingCount={plannerResult.totalMissingItemsCount}
           craftingActionsCount={plannerResult.totalRecycleActionsCount + plannerResult.totalCraftStepsCount}
         />

@@ -1,0 +1,765 @@
+[
+  {
+    "id": "trophy_display_project",
+    "name": {
+      "value": "トロフィーディスプレイ",
+      "originalEn": "Trophy Display"
+    },
+    "startDate": 1756080000,
+    "endDate": 2524521600,
+    "phases": [
+      {
+        "name": {
+          "value": "這いまわる脅威",
+          "originalEn": "Roaming Threats"
+        },
+        "index": 1,
+        "requirementItemIds": [
+          {
+            "itemId": "rusted_bolts",
+            "quantity": 3
+          },
+          {
+            "itemId": "pop_trigger",
+            "quantity": 15
+          },
+          {
+            "itemId": "tick_pod",
+            "quantity": 15
+          },
+          {
+            "itemId": "surveyor_vault",
+            "quantity": 5
+          }
+        ]
+      },
+      {
+        "name": {
+          "value": "空を舞う脅威",
+          "originalEn": "Soaring Menaces"
+        },
+        "index": 2,
+        "requirementItemIds": [
+          {
+            "itemId": "spotter_relay",
+            "quantity": 10
+          },
+          {
+            "itemId": "expired_respirator",
+            "quantity": 3
+          },
+          {
+            "itemId": "wasp_driver",
+            "quantity": 20
+          },
+          {
+            "itemId": "hornet_driver",
+            "quantity": 15
+          }
+        ]
+      },
+      {
+        "name": {
+          "value": "どう猛な敵",
+          "originalEn": "Ferocious Foes"
+        },
+        "index": 3,
+        "requirementItemIds": [
+          {
+            "itemId": "arc_performance_steel",
+            "quantity": 10
+          },
+          {
+            "itemId": "shredder_gyro",
+            "quantity": 5
+          },
+          {
+            "itemId": "leaper_pulse_unit",
+            "quantity": 10
+          },
+          {
+            "itemId": "bastion_cell",
+            "quantity": 5
+          }
+        ]
+      },
+      {
+        "name": {
+          "value": "圧倒的な危険",
+          "originalEn": "Dominant Dangers"
+        },
+        "index": 4,
+        "requirementItemIds": [
+          {
+            "itemId": "arc_synthetic_resin",
+            "quantity": 10
+          },
+          {
+            "itemId": "magnetic_accelerator",
+            "quantity": 10
+          },
+          {
+            "itemId": "rocketeer_driver",
+            "quantity": 8
+          },
+          {
+            "itemId": "queen_reactor",
+            "quantity": 3
+          }
+        ]
+      },
+      {
+        "name": {
+          "value": "威厳ある巨獣",
+          "originalEn": "Imposing Behemoths"
+        },
+        "index": 5,
+        "requirementItemIds": [
+          {
+            "itemId": "exodus_modules",
+            "quantity": 5
+          },
+          {
+            "itemId": "geiger_counter",
+            "quantity": 3
+          },
+          {
+            "itemId": "bombardier_cell",
+            "quantity": 8
+          },
+          {
+            "itemId": "matriarch_reactor",
+            "quantity": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "expedition_project_s1",
+    "name": {
+      "value": "探検プロジェクト (遠征1)",
+      "originalEn": "Expedition 1"
+    },
+    "startDate": 1761811200,
+    "endDate": 1765958400,
+    "phases": [
+      {
+        "name": {
+          "value": "基礎",
+          "originalEn": "Foundation"
+        },
+        "index": 1,
+        "requirementItemIds": [
+          {
+            "itemId": "metal_parts",
+            "quantity": 150
+          },
+          {
+            "itemId": "rubber_parts",
+            "quantity": 200
+          },
+          {
+            "itemId": "arc_alloy",
+            "quantity": 80
+          },
+          {
+            "itemId": "steel_spring",
+            "quantity": 15
+          }
+        ]
+      },
+      {
+        "name": {
+          "value": "基幹システム",
+          "originalEn": "Core Systems"
+        },
+        "index": 2,
+        "requirementItemIds": [
+          {
+            "itemId": "durable_cloth",
+            "quantity": 35
+          },
+          {
+            "itemId": "wires",
+            "quantity": 30
+          },
+          {
+            "itemId": "electrical_components",
+            "quantity": 30
+          },
+          {
+            "itemId": "cooling_fan",
+            "quantity": 5
+          }
+        ]
+      },
+      {
+        "name": {
+          "value": "フレームワーク",
+          "originalEn": "Framework"
+        },
+        "index": 3,
+        "requirementItemIds": [
+          {
+            "itemId": "light_bulb",
+            "quantity": 5
+          },
+          {
+            "itemId": "battery",
+            "quantity": 30
+          },
+          {
+            "itemId": "sensors",
+            "quantity": 20
+          },
+          {
+            "itemId": "exodus_modules",
+            "quantity": 1
+          }
+        ]
+      },
+      {
+        "name": {
+          "value": "設備",
+          "originalEn": "Outfitting"
+        },
+        "index": 4,
+        "requirementItemIds": [
+          {
+            "itemId": "humidifier",
+            "quantity": 5
+          },
+          {
+            "itemId": "advanced_electrical_components",
+            "quantity": 5
+          },
+          {
+            "itemId": "magnetic_accelerator",
+            "quantity": 3
+          },
+          {
+            "itemId": "leaper_pulse_unit",
+            "quantity": 3
+          }
+        ]
+      },
+      {
+        "name": {
+          "value": "積み入れ場",
+          "originalEn": "Load Stage"
+        },
+        "index": 5,
+        "requirementItemIds": []
+      },
+      {
+        "name": {
+          "value": "旅立ち",
+          "originalEn": "Departure"
+        },
+        "index": 6,
+        "requirementItemIds": []
+      }
+    ]
+  },
+  {
+    "id": "expedition_project",
+    "name": {
+      "value": "探検プロジェクト (遠征2)",
+      "originalEn": "Expedition 2"
+    },
+    "startDate": 1766390400,
+    "endDate": 1772006400,
+    "phases": [
+      {
+        "name": {
+          "value": "基礎",
+          "originalEn": "Foundation"
+        },
+        "index": 1,
+        "requirementItemIds": [
+          {
+            "itemId": "metal_parts",
+            "quantity": 150
+          },
+          {
+            "itemId": "plastic_parts",
+            "quantity": 200
+          },
+          {
+            "itemId": "arc_alloy",
+            "quantity": 80
+          },
+          {
+            "itemId": "steel_spring",
+            "quantity": 15
+          }
+        ]
+      },
+      {
+        "name": {
+          "value": "基幹システム",
+          "originalEn": "Core Systems"
+        },
+        "index": 2,
+        "requirementItemIds": [
+          {
+            "itemId": "durable_cloth",
+            "quantity": 35
+          },
+          {
+            "itemId": "wires",
+            "quantity": 25
+          },
+          {
+            "itemId": "electrical_components",
+            "quantity": 20
+          },
+          {
+            "itemId": "cooling_coil",
+            "quantity": 4
+          }
+        ]
+      },
+      {
+        "name": {
+          "value": "フレームワーク",
+          "originalEn": "Framework"
+        },
+        "index": 3,
+        "requirementItemIds": [
+          {
+            "itemId": "light_bulb",
+            "quantity": 4
+          },
+          {
+            "itemId": "battery",
+            "quantity": 30
+          },
+          {
+            "itemId": "shredder_gyro",
+            "quantity": 10
+          },
+          {
+            "itemId": "exodus_modules",
+            "quantity": 1
+          }
+        ]
+      },
+      {
+        "name": {
+          "value": "設備",
+          "originalEn": "Outfitting"
+        },
+        "index": 4,
+        "requirementItemIds": [
+          {
+            "itemId": "frequency_modulation_box",
+            "quantity": 5
+          },
+          {
+            "itemId": "advanced_electrical_components",
+            "quantity": 5
+          },
+          {
+            "itemId": "ion_sputter",
+            "quantity": 3
+          },
+          {
+            "itemId": "leaper_pulse_unit",
+            "quantity": 3
+          }
+        ]
+      },
+      {
+        "name": {
+          "value": "積み入れ場",
+          "originalEn": "Load Stage"
+        },
+        "index": 5,
+        "requirementItemIds": []
+      },
+      {
+        "name": {
+          "value": "旅立ち",
+          "originalEn": "Departure"
+        },
+        "index": 6,
+        "requirementItemIds": []
+      }
+    ]
+  },
+  {
+    "id": "expedition_project_s3",
+    "name": {
+      "value": "遠征 (遠征 3)",
+      "originalEn": "Expedition 3"
+    },
+    "startDate": 1772438400,
+    "endDate": 1777363200,
+    "phases": [
+      {
+        "name": {
+          "value": "基礎",
+          "originalEn": "Foundation"
+        },
+        "index": 1,
+        "requirementItemIds": [
+          {
+            "itemId": "metal_parts",
+            "quantity": 150
+          },
+          {
+            "itemId": "chemicals",
+            "quantity": 100
+          },
+          {
+            "itemId": "arc_alloy",
+            "quantity": 80
+          },
+          {
+            "itemId": "steel_spring",
+            "quantity": 15
+          }
+        ]
+      },
+      {
+        "name": {
+          "value": "基幹システム",
+          "originalEn": "Core Systems"
+        },
+        "index": 2,
+        "requirementItemIds": [
+          {
+            "itemId": "durable_cloth",
+            "quantity": 30
+          },
+          {
+            "itemId": "wires",
+            "quantity": 25
+          },
+          {
+            "itemId": "electrical_components",
+            "quantity": 20
+          },
+          {
+            "itemId": "industrial_charger",
+            "quantity": 3
+          }
+        ]
+      },
+      {
+        "name": {
+          "value": "フレームワーク",
+          "originalEn": "Framework"
+        },
+        "index": 3,
+        "requirementItemIds": [
+          {
+            "itemId": "coffee_pot",
+            "quantity": 1
+          },
+          {
+            "itemId": "battery",
+            "quantity": 25
+          },
+          {
+            "itemId": "firefly_burner",
+            "quantity": 5
+          },
+          {
+            "itemId": "exodus_modules",
+            "quantity": 1
+          }
+        ]
+      },
+      {
+        "name": {
+          "value": "設備",
+          "originalEn": "Outfitting"
+        },
+        "index": 4,
+        "requirementItemIds": [
+          {
+            "itemId": "broken_guidance_system",
+            "quantity": 1
+          },
+          {
+            "itemId": "advanced_electrical_components",
+            "quantity": 5
+          },
+          {
+            "itemId": "breathtaking_snow_globe",
+            "quantity": 3
+          },
+          {
+            "itemId": "bombardier_cell",
+            "quantity": 2
+          }
+        ]
+      },
+      {
+        "name": {
+          "value": "積み入れ場",
+          "originalEn": "Load Stage"
+        },
+        "index": 5,
+        "requirementItemIds": []
+      },
+      {
+        "name": {
+          "value": "旅立ち",
+          "originalEn": "Departure"
+        },
+        "index": 6,
+        "requirementItemIds": []
+      }
+    ]
+  },
+  {
+    "id": "avian_alarm_project",
+    "name": {
+      "value": "鳥類警報",
+      "originalEn": "Avian Alarm"
+    },
+    "startDate": 1776157200,
+    "endDate": 1779786000,
+    "phases": [
+      {
+        "name": {
+          "value": "最初の群れの受け入れ",
+          "originalEn": "Initial Flock Intake"
+        },
+        "index": 1,
+        "requirementItemIds": []
+      },
+      {
+        "name": {
+          "value": "予備信号の鳥",
+          "originalEn": "Preliminary Signal Birds"
+        },
+        "index": 2,
+        "requirementItemIds": [
+          {
+            "itemId": "tick_pod",
+            "quantity": 7
+          },
+          {
+            "itemId": "canister",
+            "quantity": 20
+          },
+          {
+            "itemId": "moss",
+            "quantity": 12
+          },
+          {
+            "itemId": "twilight_compass_ship_model",
+            "quantity": 5
+          }
+        ]
+      },
+      {
+        "name": {
+          "value": "二次検証の鳥",
+          "originalEn": "Secondary Validation Birds"
+        },
+        "index": 3,
+        "requirementItemIds": [
+          {
+            "itemId": "comet_igniter",
+            "quantity": 3
+          },
+          {
+            "itemId": "fertilizer",
+            "quantity": 10
+          },
+          {
+            "itemId": "rusted_tools",
+            "quantity": 8
+          },
+          {
+            "itemId": "velocity_ship_model",
+            "quantity": 5
+          }
+        ]
+      },
+      {
+        "name": {
+          "value": "厳戒態勢の鳥",
+          "originalEn": "Heightened Alert Birds"
+        },
+        "index": 4,
+        "requirementItemIds": [
+          {
+            "itemId": "vaporizer_regulator",
+            "quantity": 1
+          },
+          {
+            "itemId": "water_filter",
+            "quantity": 3
+          },
+          {
+            "itemId": "agave",
+            "quantity": 8
+          },
+          {
+            "itemId": "sirena_dorata_ship_model",
+            "quantity": 5
+          }
+        ]
+      },
+      {
+        "name": {
+          "value": "重要警告の鳥",
+          "originalEn": "Critical Warning Birds"
+        },
+        "index": 5,
+        "requirementItemIds": [
+          {
+            "itemId": "turbine_compressor",
+            "quantity": 2
+          },
+          {
+            "itemId": "red_coral_jewelry",
+            "quantity": 3
+          },
+          {
+            "itemId": "roots",
+            "quantity": 4
+          },
+          {
+            "itemId": "leviathans_crown_ship_model",
+            "quantity": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "expedition_project_s4",
+    "name": {
+      "value": "遠征 (遠征 4)",
+      "originalEn": "Expedition 4"
+    },
+    "startDate": 1777449600,
+    "endDate": 1782111600,
+    "phases": [
+      {
+        "name": {
+          "value": "基礎",
+          "originalEn": "Foundation"
+        },
+        "index": 1,
+        "requirementItemIds": [
+          {
+            "itemId": "metal_parts",
+            "quantity": 150
+          },
+          {
+            "itemId": "chemicals",
+            "quantity": 100
+          },
+          {
+            "itemId": "arc_alloy",
+            "quantity": 80
+          },
+          {
+            "itemId": "canister",
+            "quantity": 15
+          }
+        ]
+      },
+      {
+        "name": {
+          "value": "基幹システム",
+          "originalEn": "Core Systems"
+        },
+        "index": 2,
+        "requirementItemIds": [
+          {
+            "itemId": "durable_cloth",
+            "quantity": 30
+          },
+          {
+            "itemId": "oil",
+            "quantity": 25
+          },
+          {
+            "itemId": "electrical_components",
+            "quantity": 20
+          },
+          {
+            "itemId": "industrial_charger",
+            "quantity": 3
+          }
+        ]
+      },
+      {
+        "name": {
+          "value": "フレームワーク",
+          "originalEn": "Framework"
+        },
+        "index": 3,
+        "requirementItemIds": [
+          {
+            "itemId": "arc_motion_core",
+            "quantity": 20
+          },
+          {
+            "itemId": "speaker_component",
+            "quantity": 15
+          },
+          {
+            "itemId": "turbine_compressor",
+            "quantity": 5
+          },
+          {
+            "itemId": "exodus_modules",
+            "quantity": 2
+          }
+        ]
+      },
+      {
+        "name": {
+          "value": "設備",
+          "originalEn": "Outfitting"
+        },
+        "index": 4,
+        "requirementItemIds": [
+          {
+            "itemId": "portable_tv",
+            "quantity": 1
+          },
+          {
+            "itemId": "advanced_electrical_components",
+            "quantity": 5
+          },
+          {
+            "itemId": "sirena_dorata_ship_model",
+            "quantity": 2
+          },
+          {
+            "itemId": "vaporizer_regulator",
+            "quantity": 3
+          }
+        ]
+      },
+      {
+        "name": {
+          "value": "積み入れ場",
+          "originalEn": "Load Stage"
+        },
+        "index": 5,
+        "requirementItemIds": []
+      },
+      {
+        "name": {
+          "value": "旅立ち",
+          "originalEn": "Departure"
+        },
+        "index": 6,
+        "requirementItemIds": []
+      }
+    ]
+  }
+]

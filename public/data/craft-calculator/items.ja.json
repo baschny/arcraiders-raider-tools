@@ -2535,11 +2535,59 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "extended_barrel_blueprint": {
-    "id": "extended_barrel_blueprint",
+  "extended_barrel_i": {
+    "id": "extended_barrel_i",
     "name": {
-      "value": "拡張バレル 設計図",
-      "originalEn": "Extended Barrel Blueprint"
+      "value": "拡張バレル I",
+      "originalEn": "Extended Barrel I"
+    },
+    "stackSize": 1,
+    "value": 1000,
+    "imageFilename": null,
+    "isWeapon": null,
+    "recipe": {
+      "metal_parts": 6,
+      "wires": 3
+    },
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "extended_barrel_ii_blueprint": {
+    "id": "extended_barrel_ii_blueprint",
+    "name": {
+      "value": "拡張バレル 設計図 II",
+      "originalEn": "Extended Barrel II Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": null,
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "extended_barrel_ii": {
+    "id": "extended_barrel_ii",
+    "name": {
+      "value": "拡張バレル II",
+      "originalEn": "Extended Barrel II"
+    },
+    "stackSize": 1,
+    "value": 3000,
+    "imageFilename": null,
+    "isWeapon": null,
+    "recipe": {
+      "mechanical_components": 3,
+      "wires": 6
+    },
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "extended_barrel_iii_blueprint": {
+    "id": "extended_barrel_iii_blueprint",
+    "name": {
+      "value": "拡張バレル 設計図 III",
+      "originalEn": "Extended Barrel III Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
@@ -2549,11 +2597,11 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
-  "extended_barrel": {
-    "id": "extended_barrel",
+  "extended_barrel_iii": {
+    "id": "extended_barrel_iii",
     "name": {
-      "value": "拡張バレル",
-      "originalEn": "Extended Barrel"
+      "value": "拡張バレル III",
+      "originalEn": "Extended Barrel III"
     },
     "stackSize": 1,
     "value": 5000,
@@ -3152,7 +3200,7 @@
       "originalEn": "Free Loadout Augment"
     },
     "stackSize": 1,
-    "value": 100,
+    "value": 660,
     "imageFilename": "https://cdn.arctracker.io/items/v2/free_loadout_augment.png",
     "isWeapon": null,
     "recipe": null,
@@ -5500,6 +5548,89 @@
     "upgradeCost": null,
     "craftQuantity": 1
   },
+  "rascal_blueprint": {
+    "id": "rascal_blueprint",
+    "name": {
+      "value": "Rascal Blueprint",
+      "originalEn": "Rascal Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/rascal.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "rascal_i": {
+    "id": "rascal_i",
+    "name": {
+      "value": "Rascal I",
+      "originalEn": "Rascal I"
+    },
+    "stackSize": 1,
+    "value": 7000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/rascal.png",
+    "isWeapon": true,
+    "recipe": {
+      "advanced_mechanical_components": 2,
+      "canister": 5,
+      "heavy_gun_parts": 3
+    },
+    "upgradeCost": null,
+    "craftQuantity": 1
+  },
+  "rascal_ii": {
+    "id": "rascal_ii",
+    "name": {
+      "value": "Rascal II",
+      "originalEn": "Rascal II"
+    },
+    "stackSize": 1,
+    "value": 10000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/rascal.png",
+    "isWeapon": true,
+    "recipe": null,
+    "upgradeCost": {
+      "advanced_mechanical_components": 1,
+      "heavy_gun_parts": 2
+    },
+    "craftQuantity": 1
+  },
+  "rascal_iii": {
+    "id": "rascal_iii",
+    "name": {
+      "value": "Rascal III",
+      "originalEn": "Rascal III"
+    },
+    "stackSize": 1,
+    "value": 13000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/rascal.png",
+    "isWeapon": true,
+    "recipe": null,
+    "upgradeCost": {
+      "advanced_mechanical_components": 1,
+      "heavy_gun_parts": 2
+    },
+    "craftQuantity": 1
+  },
+  "rascal_iv": {
+    "id": "rascal_iv",
+    "name": {
+      "value": "Rascal IV",
+      "originalEn": "Rascal IV"
+    },
+    "stackSize": 1,
+    "value": 17000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/rascal.png",
+    "isWeapon": true,
+    "recipe": null,
+    "upgradeCost": {
+      "advanced_mechanical_components": 2,
+      "heavy_gun_parts": 2
+    },
+    "craftQuantity": 1
+  },
   "rattler_i": {
     "id": "rattler_i",
     "name": {
@@ -5777,20 +5908,6 @@
     "stackSize": 3,
     "value": 1000,
     "imageFilename": "https://cdn.arctracker.io/items/v2/ripped_safety_vest.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "riven_tides_classifed_records_keycard": {
-    "id": "riven_tides_classifed_records_keycard",
-    "name": {
-      "value": "Riven Tides機密記録キーカード",
-      "originalEn": "Riven Tides Classifed Records Keycard"
-    },
-    "stackSize": 1,
-    "value": 100,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/riven_tides_classified_records_keycard.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,

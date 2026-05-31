@@ -1,9 +1,204 @@
 {
-  "error": {
-    "code": "internal_error",
-    "message": "Internal server error"
+  "data": {
+    "projects": [
+      {
+        "id": "trophy_display_project",
+        "name": "Trophy Display",
+        "phases": [
+          {
+            "name": "Roaming Threats",
+            "completed": false
+          },
+          {
+            "name": "Soaring Menaces",
+            "completed": true
+          },
+          {
+            "name": "Ferocious Foes",
+            "completed": true
+          },
+          {
+            "name": "Dominant Dangers",
+            "completed": true
+          },
+          {
+            "name": "Imposing Behemoths",
+            "completed": true
+          }
+        ],
+        "completedPhases": 4,
+        "totalPhases": 5,
+        "fullyCompleted": false
+      },
+      {
+        "id": "expedition_project_s1",
+        "name": "Expedition Project (Expedition 1)",
+        "phases": [
+          {
+            "name": "Foundation",
+            "completed": false
+          },
+          {
+            "name": "Core Systems",
+            "completed": true
+          },
+          {
+            "name": "Framework",
+            "completed": true
+          },
+          {
+            "name": "Outfitting",
+            "completed": true
+          },
+          {
+            "name": "Load Stage",
+            "completed": true
+          },
+          {
+            "name": "Departure",
+            "completed": true
+          }
+        ],
+        "completedPhases": 5,
+        "totalPhases": 6,
+        "fullyCompleted": false
+      },
+      {
+        "id": "expedition_project",
+        "name": "Expedition Project (Expedition 2)",
+        "phases": [
+          {
+            "name": "Foundation",
+            "completed": false
+          },
+          {
+            "name": "Core Systems",
+            "completed": true
+          },
+          {
+            "name": "Framework",
+            "completed": true
+          },
+          {
+            "name": "Outfitting",
+            "completed": true
+          },
+          {
+            "name": "Load Stage",
+            "completed": true
+          },
+          {
+            "name": "Departure",
+            "completed": true
+          }
+        ],
+        "completedPhases": 5,
+        "totalPhases": 6,
+        "fullyCompleted": false
+      },
+      {
+        "id": "expedition_project_s3",
+        "name": "Expedition (Expedition 3)",
+        "phases": [
+          {
+            "name": "Foundation",
+            "completed": false
+          },
+          {
+            "name": "Core Systems",
+            "completed": true
+          },
+          {
+            "name": "Framework",
+            "completed": true
+          },
+          {
+            "name": "Outfitting",
+            "completed": true
+          },
+          {
+            "name": "Load Stage",
+            "completed": true
+          },
+          {
+            "name": "Departure",
+            "completed": true
+          }
+        ],
+        "completedPhases": 5,
+        "totalPhases": 6,
+        "fullyCompleted": false
+      },
+      {
+        "id": "avian_alarm_project",
+        "name": "Avian Alarm",
+        "phases": [
+          {
+            "name": "Initial Flock Intake",
+            "completed": false
+          },
+          {
+            "name": "Preliminary Signal Birds",
+            "completed": true
+          },
+          {
+            "name": "Secondary Validation Birds",
+            "completed": true
+          },
+          {
+            "name": "Heightened Alert Birds",
+            "completed": true
+          },
+          {
+            "name": "Critical Warning Birds",
+            "completed": true
+          }
+        ],
+        "completedPhases": 4,
+        "totalPhases": 5,
+        "fullyCompleted": false
+      },
+      {
+        "id": "expedition_project_s4",
+        "name": "Expedition (Expedition 4)",
+        "phases": [
+          {
+            "name": "Foundation",
+            "completed": false
+          },
+          {
+            "name": "Core Systems",
+            "completed": true
+          },
+          {
+            "name": "Framework",
+            "completed": true
+          },
+          {
+            "name": "Outfitting",
+            "completed": false
+          },
+          {
+            "name": "Load Stage",
+            "completed": false
+          },
+          {
+            "name": "Departure",
+            "completed": false
+          }
+        ],
+        "completedPhases": 2,
+        "totalPhases": 6,
+        "fullyCompleted": false
+      }
+    ],
+    "summary": {
+      "totalProjects": 6,
+      "fullyCompletedProjects": 0,
+      "incompleteProjects": 6
+    }
   },
   "meta": {
-    "requestId": "d0594684-b2e6-4166-9e32-c6013135bdfd"
+    "requestId": "87e63ee3-cd43-45ad-aa58-e270d91eac4c"
   }
 }

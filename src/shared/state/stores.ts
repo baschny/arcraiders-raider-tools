@@ -72,7 +72,7 @@ export const lootStore = new UserStateStore<LootState>({
 export interface QuartermasterStoredList {
     id: string;
     name: string;
-    type: 'user' | 'hideout';
+    type: 'user' | 'hideout' | 'project';
     isEnabled: boolean;
     items: Array<{ itemId: string; quantity: number; isEnabled: boolean }>;
 }
@@ -82,14 +82,19 @@ export interface QuartermasterState {
         listEnabled: Record<string, boolean>;
         itemEnabled: Record<string, boolean>;
     };
+    projectToggles: {
+        listEnabled: Record<string, boolean>;
+        itemEnabled: Record<string, boolean>;
+    };
     prioritizedItemIds: string[];
 }
 export const quartermasterStore = new UserStateStore<QuartermasterState>({
     domain: 'quartermaster',
-    schemaVersion: 2,
+    schemaVersion: 3,
     defaultValue: {
         lists: [],
         hideoutToggles: { listEnabled: {}, itemEnabled: {} },
+        projectToggles: { listEnabled: {}, itemEnabled: {} },
         prioritizedItemIds: [],
     },
     migrate: (raw) => {
@@ -99,6 +104,10 @@ export const quartermasterStore = new UserStateStore<QuartermasterState>({
             hideoutToggles: {
                 listEnabled: r?.hideoutToggles?.listEnabled ?? {},
                 itemEnabled: r?.hideoutToggles?.itemEnabled ?? {},
+            },
+            projectToggles: {
+                listEnabled: r?.projectToggles?.listEnabled ?? {},
+                itemEnabled: r?.projectToggles?.itemEnabled ?? {},
             },
             prioritizedItemIds: Array.isArray(r?.prioritizedItemIds)
                 ? r.prioritizedItemIds.filter((id): id is string => typeof id === 'string')

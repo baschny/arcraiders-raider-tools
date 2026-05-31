@@ -12,6 +12,7 @@ import type {
   ArctrackerLoadoutResponse,
   ArctrackerHideoutResponse,
   ArctrackerBlueprintsResponse,
+  ArctrackerProjectsResponse,
   CachedProfile,
   CachedStash,
   CachedLoadout,
@@ -27,6 +28,7 @@ import {
   getCachedLoadout,
   getCachedHideout,
   getCachedBlueprints,
+  getCachedProjects,
   updateCacheMeta,
   setCacheOwner,
   setCacheSource,
@@ -34,6 +36,7 @@ import {
 import { getCurrentSession, getIdToken } from '../auth/cognitoClient';
 import { notifyArctrackerLinkInvalid } from '../auth/arctrackerLinkEvents';
 import { DEFAULT_LOCALE, LOCALE_STORAGE_KEY, type AppLocale } from '../i18n/config';
+import type { CachedProjects } from '../../apps/quartermaster/types/project';
 
 const API_ORIGIN = (import.meta.env.VITE_API_BASE_URL as string | undefined) ??
   'https://api.raider-tools.app';
@@ -315,6 +318,49 @@ export async function syncBlueprints(): Promise<CachedBlueprints> {
 
   await cacheSet('blueprints', cachedBlueprints);
   return cachedBlueprints;
+}
+
+/**
+ * Sync and cache project progress.
+ */
+export async function syncProjects(): Promise<CachedProjects> {
+  const response = await apiRequest<ArctrackerProjectsResponse>(
+    `/v2/user/projects`
+  );
+
+  const projects = response.data.projects.map((proj) => ({
+    projectId: proj.id,
+    projectName: proj.name,
+    completed: proj.fullyCompleted,
+    steps: proj.phases.map((phase, index) => ({
+      name: phase.name,
+      index: index + 1,
+      completed: phase.completed,
+      goals: [],
+    })),
+    syncedAt: new Date().toISOString(),
+    cachedAt: Date.now(),
+  }));
+
+  const cachedProjects: CachedProjects = {
+    projects: projects.map((proj) => ({
+      ...proj,
+      syncedAt: new Date().toISOString(),
+      cachedAt: Date.now(),
+    })),
+    syncedAt: new Date().toISOString(),
+    cachedAt: Date.now(),
+  };
+
+  await cacheSet('projects', cachedProjects);
+  return cachedProjects;
+}
+
+/**
+ * Get cached project progress (from IndexedDB).
+ */
+export async function getProjects(): Promise<CachedProjects | undefined> {
+  return getCachedProjects();
 }
 
 /**

@@ -129,6 +129,18 @@ export function formatHideoutListName(
   return `${moduleName} ${t('quartermaster.hideout.tierLabel').replace('{level}', String(level))}`;
 }
 
+export function formatProjectListName(
+  t: Translate,
+  projectName: string,
+  stepIndex: number,
+  stepName: string,
+): string {
+  return t('quartermaster.projects.listName')
+    .replace('{project}', projectName)
+    .replace('{step}', String(stepIndex))
+    .replace('{name}', stepName);
+}
+
 export function sortQuartermasterItemsByName<T extends { name: string }>(
   items: T[],
   compareText: (left: string, right: string) => number,

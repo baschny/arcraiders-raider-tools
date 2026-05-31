@@ -7,12 +7,14 @@ export interface ListItem {
   itemId: string;
   quantity: number;
   isEnabled: boolean;
+  submitted?: number;
+  required?: number;
 }
 
 export interface StoredList {
   id: string;
   name: string;
-  type: 'user' | 'hideout';
+  type: 'user' | 'hideout' | 'project';
   isEnabled: boolean;
   items: ListItem[];
 }
