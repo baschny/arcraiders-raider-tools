@@ -648,7 +648,9 @@
       "disableProjectTooltip": "Disable tracking all steps of this project",
       "enableProjectTooltip": "Enable tracking all steps of this project",
       "syncProjects": "Sync Projects",
-      "listName": "Step {step} ({name})"
+      "listName": "Step {step} ({name})",
+      "active": "Active",
+      "locked": "Locked"
     },
     "inRaid": {
       "keep": "Keep",

@@ -223,6 +223,11 @@
       box-shadow: 0 0 8px rgba($text-accent, 0.05);
     }
 
+    &--locked {
+      border-color: rgba($status-missing, 0.4);
+      box-shadow: 0 0 8px rgba($status-missing, 0.05);
+    }
+
     &--complete {
       border-color: rgba($status-available, 0.45);
       opacity: 0.75;
@@ -266,6 +271,36 @@
     border: 1px solid rgba($status-available, 0.35);
   }
 
+  &__active-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-xs;
+    min-height: 28px;
+    padding: 0 $spacing-sm;
+    border-radius: $radius-sm;
+    font-size: $font-xs;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: $text-accent;
+    background: rgba($text-accent, 0.15);
+    border: 1px solid rgba($text-accent, 0.4);
+  }
+
+  &__lock-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-xs;
+    min-height: 28px;
+    padding: 0 $spacing-sm;
+    border-radius: $radius-sm;
+    font-size: $font-xs;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: $status-missing;
+    background: rgba($status-missing, 0.13);
+    border: 1px solid rgba($status-missing, 0.35);
+  }
+
   &__submit-pill {
     display: inline-flex;
     align-items: center;
@@ -295,7 +330,7 @@
     align-items: center;
     gap: $spacing-xs;
     width: 84px;
-    padding: $spacing-xs;
+    padding: $spacing-sm;
     background: rgba($bg-dark, 0.25);
     border-radius: $radius-sm;
     border: 1px solid rgba($border-light, 0.12);
@@ -317,6 +352,17 @@
     &--complete {
       border-color: rgba($status-available, 0.3);
       background: rgba($status-available, 0.04);
+    }
+
+    &--done {
+      opacity: 0.45;
+      cursor: default;
+
+      &:hover,
+      &:focus-visible {
+        border-color: rgba($border-light, 0.12);
+        background: rgba($bg-dark, 0.25);
+      }
     }
   }
 

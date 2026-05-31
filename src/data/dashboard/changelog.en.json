@@ -2,15 +2,18 @@
   "locale": "en",
   "entries": [
     {
+      "date": "2026-05-31",
+      "apps": ["quartermaster"],
+      "title": "Quartermaster project item tracking: You can now track items of the projects (Trophy Display, Expedition). This feature requires linking your account to Embark or ArcTracker for real-time data."
+    },
+    {
       "date": "2026-05-26",
       "apps": ["quartermaster", "quests"],
       "title": "Big new feature: you can now link your account directly to the Embark API so our tools can use real-time game data. Quartermaster can now use that data directly for a much faster experience, without needing to sync through arctracker.io first. The Quest Tracker now supports a new Linked mode. You can still track quests manually, but if you link your account to Embark or ArcTracker, quest statuses can now be marked automatically.",
       "highlights": [
-        "Direct Embark API account linking",
-        "Real-time game data support",
-        "New Linked mode in Quest Tracker",
-        "Quartermaster works directly with Embark data, no ArcTracker sync required",
-        "Automatic quest status updates from linked accounts"
+        "Embark account linking",
+        "Real-time game data",
+        "Quest Tracker Sync"
       ]
     },
     {

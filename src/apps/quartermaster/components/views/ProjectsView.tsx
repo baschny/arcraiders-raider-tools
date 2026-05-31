@@ -14,6 +14,8 @@ import {
   Eye,
   EyeOff,
   ListChecks,
+  Lock,
+  Play,
   RefreshCw,
 } from 'lucide-react';
 import type { ProjectDefinition, CachedProjects } from '../../types/project';
@@ -434,32 +436,49 @@ export function ProjectsView({
                           isItemRequirementAvailable(getOwnedQuantity, li.itemId, li.quantity),
                         );
 
+                        const isFuture = currentStepIndex !== null && stepIndex > currentStepIndex;
+
                         return (
                           <div
                             key={list.id}
                             className={[
                               'projects-view__step-row',
-                              !list.isEnabled ? 'projects-view__step-row--disabled' : '',
+                              !list.isEnabled && !isCompleted ? 'projects-view__step-row--disabled' : '',
                               isCompleted ? 'projects-view__step-row--complete' : '',
                               isCurrent ? 'projects-view__step-row--current' : '',
+                              isFuture ? 'projects-view__step-row--locked' : '',
                             ].filter(Boolean).join(' ')}
                           >
                             <div className="projects-view__step-row-header">
-                              <button
-                                className="qm-button projects-view__icon-button projects-view__step-toggle"
-                                onClick={() => {
-                                  if (parsed) onToggleProjectList(parsed.projectId, parsed.stepIndex);
-                                }}
-                                title={
-                                  list.isEnabled
-                                    ? t('quartermaster.projects.disableStepTooltip')
-                                    : t('quartermaster.projects.enableStepTooltip')
-                                }
-                              >
-                                {list.isEnabled ? <Eye size={16} /> : <EyeOff size={16} />}
-                              </button>
+                              {!isCompleted && (
+                                <button
+                                  className="qm-button projects-view__icon-button projects-view__step-toggle"
+                                  onClick={() => {
+                                    if (parsed) onToggleProjectList(parsed.projectId, parsed.stepIndex);
+                                  }}
+                                  title={
+                                    list.isEnabled
+                                      ? t('quartermaster.projects.disableStepTooltip')
+                                      : t('quartermaster.projects.enableStepTooltip')
+                                  }
+                                >
+                                  {list.isEnabled ? <Eye size={16} /> : <EyeOff size={16} />}
+                                </button>
+                              )}
                               <span className="projects-view__step-title">{list.name}</span>
                               <div className="projects-view__row-badges">
+                                {isCurrent && !isCompleted && (
+                                  <span className="projects-view__active-pill">
+                                    <Play size={12} />
+                                    {t('quartermaster.projects.active')}
+                                  </span>
+                                )}
+                                {currentStepIndex !== null && stepIndex > currentStepIndex && (
+                                  <span className="projects-view__lock-pill">
+                                    <Lock size={12} />
+                                    {t('quartermaster.projects.locked')}
+                                  </span>
+                                )}
                                 {isCompleted && (
                                   <span className="projects-view__complete-pill">
                                     <CheckCircle2 size={12} />
@@ -487,30 +506,33 @@ export function ProjectsView({
                                 const deficit = Math.max(0, listItem.quantity - owned);
                                 const hasProgress = listItem.submitted !== undefined && listItem.required !== undefined;
 
+                                const interactiveItemProps = isCompleted
+                                  ? {}
+                                  : {
+                                      role: 'button' as const,
+                                      tabIndex: 0,
+                                      title: listItem.isEnabled
+                                        ? t('quartermaster.projects.disableItemTooltip')
+                                        : t('quartermaster.projects.enableItemTooltip'),
+                                      onClick: () =>
+                                        onToggleProjectItem(parsed.projectId, parsed.stepIndex, listItem.itemId),
+                                      onKeyDown: (event: React.KeyboardEvent) => {
+                                        if (event.key !== 'Enter' && event.key !== ' ') return;
+                                        event.preventDefault();
+                                        onToggleProjectItem(parsed.projectId, parsed.stepIndex, listItem.itemId);
+                                      },
+                                    };
+
                                 return (
                                   <div
                                     key={`${list.id}-${listItem.itemId}-${idx}`}
                                     className={[
                                       'projects-view__item',
-                                      !listItem.isEnabled ? 'projects-view__item--disabled' : '',
+                                      !listItem.isEnabled && !isCompleted ? 'projects-view__item--disabled' : '',
                                       isRequirementAvailable ? 'projects-view__item--complete' : '',
                                       isCompleted ? 'projects-view__item--done' : '',
                                     ].filter(Boolean).join(' ')}
-                                    role="button"
-                                    tabIndex={0}
-                                    title={
-                                      listItem.isEnabled
-                                        ? t('quartermaster.projects.disableItemTooltip')
-                                        : t('quartermaster.projects.enableItemTooltip')
-                                    }
-                                    onClick={() =>
-                                      onToggleProjectItem(parsed.projectId, parsed.stepIndex, listItem.itemId)
-                                    }
-                                    onKeyDown={(event) => {
-                                      if (event.key !== 'Enter' && event.key !== ' ') return;
-                                      event.preventDefault();
-                                      onToggleProjectItem(parsed.projectId, parsed.stepIndex, listItem.itemId);
-                                    }}
+                                    {...interactiveItemProps}
                                   >
                                     <div className="projects-view__item-icon-wrapper">
                                       <ItemIcon
