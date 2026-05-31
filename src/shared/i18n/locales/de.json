@@ -220,7 +220,7 @@
     "sidebarSearchPlaceholder": "Alle Quests durchsuchen...",
     "sidebarSearchResults": "Suchergebnisse ({count})",
     "sidebarSearchEmpty": "Keine Quests passend zu „{query}“ gefunden",
-    "sidebarClearSearch": "Suche löschen",
+    "sidebarClearSearch": "Clear search",
     "sidebarFocusQuest": "Klicken, um diese Quest zu fokussieren",
     "sidebarViewMap": "Klicken, um sie im Questbaum anzuzeigen",
     "sidebarUnlockMap": "Klicken, um diese Karte freizuschalten",
@@ -514,7 +514,7 @@
       "searchPlaceholder": "Gegenstände suchen...",
       "allCategories": "Alle Kategorien",
       "allRarities": "Alle Seltenheiten",
-      "showOnlyUseless": "Nutzlose anzeigen",
+      "showOnlyUseless": "Show Useless",
       "showOnlyUselessTooltip": "Items which are currently not relevant to achieve any of your goal items (items in your lists, items required for your hideout and crafting materials for those)",
       "totalValue": "Gesamtwert",
       "empty": "Keine Gegenstände geladen. Klicke auf \"Meine Artikel synchronisieren\", um dein Inventar und dein aktuelles Loadout zu laden.",
@@ -626,7 +626,15 @@
       "noYields": "Keine Erträge verfügbar",
       "empty": "Keine Loot-Vorschläge. Konfiguriere Listen, um zu sehen, wonach du suchen solltest.",
       "directTargets": "Direkte Ziele - Mitnehmen",
-      "craftingMaterials": "Crafting-Materialien"
+      "craftingMaterials": "Crafting-Materialien",
+      "craftableMaterials": "Craftable Materials",
+      "priorityTargets": "Priority Targets",
+      "prioritizeMark": "Mark as Priority Target",
+      "prioritizeRemove": "Remove from Priority Targets",
+      "prioritizeClearAll": "Remove All",
+      "prioritizeClearAllTitle": "Remove all priority targets?",
+      "prioritizeClearAllBody": "This will remove all items from the priority targets list. Items will remain in their lists and hideout requirements.",
+      "prioritizeClearAllConfirm": "Remove All"
     },
     "crafting": {
       "noImpact": "Keine Auswirkungen auf aktive Ziele",
@@ -662,11 +670,15 @@
       "foundIn": "Gefunden in:",
       "neededForLists": "Benötigt für Listen",
       "neededForCrafting": "Benötigt fürs Crafting (direkt / indirekt)",
+      "couldBeUsedFor": "Could be used for",
       "recycle": "Recyceln",
       "salvage": "Zerlegen",
       "craftingRecipe": "Crafting-Rezept",
       "recyclesInto": "Recycelt zu",
       "salvagesInto": "Zerlegt zu"
+    },
+    "itemIcon": {
+      "uncraftable": "Cannot be crafted — requirements not met"
     },
     "status": {
       "have": "Vorhanden",

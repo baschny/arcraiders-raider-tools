@@ -220,7 +220,7 @@
     "sidebarSearchPlaceholder": "Pesquisar todas as missões...",
     "sidebarSearchResults": "Resultados da pesquisa ({count})",
     "sidebarSearchEmpty": "Nenhuma missão encontrada para \"{query}\"",
-    "sidebarClearSearch": "Limpar pesquisa",
+    "sidebarClearSearch": "Clear search",
     "sidebarFocusQuest": "Clique para focar nesta missão",
     "sidebarViewMap": "Clique para ver na árvore de missões",
     "sidebarUnlockMap": "Clique para desbloquear este mapa",
@@ -623,7 +623,15 @@
       "noYields": "Nenhum rendimento disponível",
       "empty": "Nenhuma sugestão de loot. Configure listas para ver quais itens procurar.",
       "directTargets": "Alvos diretos - Levar para casa",
-      "craftingMaterials": "Materiais de crafting"
+      "craftingMaterials": "Materiais de crafting",
+      "craftableMaterials": "Craftable Materials",
+      "priorityTargets": "Priority Targets",
+      "prioritizeMark": "Mark as Priority Target",
+      "prioritizeRemove": "Remove from Priority Targets",
+      "prioritizeClearAll": "Remove All",
+      "prioritizeClearAllTitle": "Remove all priority targets?",
+      "prioritizeClearAllBody": "This will remove all items from the priority targets list. Items will remain in their lists and hideout requirements.",
+      "prioritizeClearAllConfirm": "Remove All"
     },
     "crafting": {
       "noImpact": "Nenhum impacto em alvos ativos",
@@ -659,11 +667,15 @@
       "foundIn": "Encontrado em:",
       "neededForLists": "Necessário para listas",
       "neededForCrafting": "Necessário para crafting (direto / indireto)",
+      "couldBeUsedFor": "Could be used for",
       "recycle": "Reciclar",
       "salvage": "Desmontar",
       "craftingRecipe": "Receita de crafting",
       "recyclesInto": "Recicla em",
       "salvagesInto": "Desmonta em"
+    },
+    "itemIcon": {
+      "uncraftable": "Cannot be crafted — requirements not met"
     },
     "status": {
       "have": "Tem",
