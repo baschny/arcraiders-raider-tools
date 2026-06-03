@@ -16,6 +16,14 @@
     flex: 1;
   }
 
+  &__last-sync {
+    font-size: $font-xs;
+    font-weight: 600;
+    color: $text-secondary;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
   &__timestamp {
     display: inline-flex;
     align-items: center;

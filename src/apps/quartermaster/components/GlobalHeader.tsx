@@ -4,12 +4,17 @@
  */
 
 import { useLocale } from '../../../shared/context/LocaleContext';
+import { formatAgeShort } from '../../../shared/utils/ageFormat';
 import { AlertTriangle, RefreshCw } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 interface GlobalHeaderProps {
   stashSyncedAt: string | null;
   loadoutSyncedAt: string | null;
+  hideoutSyncedAt: string | null;
+  blueprintsSyncedAt: string | null;
+  projectsSyncedAt: string | null;
+  questsSyncedAt: string | null;
   gameDataSource: 'arctracker' | 'embark';
   embarkSyncedAt: string | null;
   embarkUnknownCount: number;
@@ -17,63 +22,29 @@ interface GlobalHeaderProps {
   onSyncEmbark: () => void;
 }
 
-/**
- * Format ISO timestamp for display
- * Uses CachedStash.syncedAt / CachedLoadout.syncedAt per spec section 3.4
- */
 export function GlobalHeader({
   stashSyncedAt,
   loadoutSyncedAt,
+  hideoutSyncedAt,
+  blueprintsSyncedAt,
+  projectsSyncedAt,
+  questsSyncedAt,
   gameDataSource,
   embarkSyncedAt,
   embarkUnknownCount,
   isSyncingEmbark,
   onSyncEmbark,
 }: GlobalHeaderProps) {
-  const { t, tm, formatDate } = useLocale();
+  const { t } = useLocale();
   const [nowMs, setNowMs] = useState(() => Date.now());
 
   useEffect(() => {
-    if (gameDataSource !== 'embark') return;
     const intervalId = window.setInterval(() => setNowMs(Date.now()), 15_000);
     return () => window.clearInterval(intervalId);
-  }, [gameDataSource]);
+  }, []);
 
-  const formatTimestamp = (isoString: string | null): string => {
-    if (!isoString) return t('quartermaster.globalHeader.never');
-    try {
-      return formatDate(new Date(isoString), { hour: '2-digit', minute: '2-digit' });
-    } catch {
-      return t('quartermaster.globalHeader.invalid');
-    }
-  };
-
-  const formatElapsedTimestamp = (isoString: string | null): string => {
-    if (!isoString) return t('quartermaster.globalHeader.never');
-    const syncedMs = Date.parse(isoString);
-    if (!Number.isFinite(syncedMs)) return t('quartermaster.globalHeader.invalid');
-
-    const elapsedSeconds = Math.max(0, Math.floor((nowMs - syncedMs) / 1000));
-    if (elapsedSeconds < 60) {
-      return `${tm('quartermaster.globalHeader.elapsedSeconds', { count: elapsedSeconds })} ago`;
-    }
-
-    const elapsedMinutes = Math.floor(elapsedSeconds / 60);
-    if (elapsedMinutes < 60) {
-      return `${tm('quartermaster.globalHeader.elapsedMinutes', { count: elapsedMinutes })} ago`;
-    }
-
-    const elapsedHours = Math.floor(elapsedMinutes / 60);
-    const remainingMinutes = elapsedMinutes % 60;
-    if (elapsedHours < 24) {
-      return `${tm('quartermaster.globalHeader.elapsedHours', {
-        hours: elapsedHours,
-        minutes: String(remainingMinutes).padStart(2, '0'),
-      })} ago`;
-    }
-
-    return `${tm('quartermaster.globalHeader.elapsedDays', { count: Math.floor(elapsedHours / 24) })} ago`;
-  };
+  const ageLabel = (syncedAt: string | null): string =>
+    formatAgeShort(syncedAt, nowMs) ?? t('quartermaster.globalHeader.never');
 
   const syncedMs = embarkSyncedAt ? Date.parse(embarkSyncedAt) : NaN;
   const elapsedSeconds = Number.isFinite(syncedMs)
@@ -106,9 +77,7 @@ export function GlobalHeader({
             </div>
             <div className="qm-global-header__timestamp">
               {t('quartermaster.globalHeader.gameDataLastSync')}:{' '}
-              <span title={embarkSyncedAt ? formatTimestamp(embarkSyncedAt) : undefined}>
-                {formatElapsedTimestamp(embarkSyncedAt)}
-              </span>
+              <span>{ageLabel(embarkSyncedAt)}</span>
             </div>
             {embarkUnknownCount > 0 && (
               <div
@@ -122,11 +91,24 @@ export function GlobalHeader({
           </>
         ) : (
           <>
+            <span className="qm-global-header__last-sync">{t('quartermaster.globalHeader.lastSync')}</span>
             <div className="qm-global-header__timestamp">
-              {t('quartermaster.globalHeader.stash')}: <span>{formatTimestamp(stashSyncedAt)}</span>
+              {t('quartermaster.globalHeader.stash')}: <span>{ageLabel(stashSyncedAt)}</span>
             </div>
             <div className="qm-global-header__timestamp">
-              {t('quartermaster.globalHeader.loadout')}: <span>{formatTimestamp(loadoutSyncedAt)}</span>
+              {t('quartermaster.globalHeader.loadout')}: <span>{ageLabel(loadoutSyncedAt)}</span>
+            </div>
+            <div className="qm-global-header__timestamp">
+              {t('quartermaster.globalHeader.blueprints')}: <span>{ageLabel(blueprintsSyncedAt)}</span>
+            </div>
+            <div className="qm-global-header__timestamp">
+              {t('quartermaster.nav.hideout')}: <span>{ageLabel(hideoutSyncedAt)}</span>
+            </div>
+            <div className="qm-global-header__timestamp">
+              {t('quartermaster.nav.quests')}: <span>{ageLabel(questsSyncedAt)}</span>
+            </div>
+            <div className="qm-global-header__timestamp">
+              {t('quartermaster.nav.projects')}: <span>{ageLabel(projectsSyncedAt)}</span>
             </div>
           </>
         )}

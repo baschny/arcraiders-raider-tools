@@ -1121,6 +1121,10 @@ export function QuartermasterApp() {
           <GlobalHeader
             stashSyncedAt={cachedStash?.syncedAt ?? null}
             loadoutSyncedAt={cachedLoadout?.syncedAt ?? null}
+            hideoutSyncedAt={cachedHideout?.syncedAt ?? null}
+            blueprintsSyncedAt={cachedBlueprints?.syncedAt ?? null}
+            projectsSyncedAt={cachedProjects?.syncedAt ?? null}
+            questsSyncedAt={linkedQuestSnapshot?.syncedAt ?? null}
             gameDataSource={gameDataSource}
             embarkSyncedAt={gameDataSource === 'embark'
               ? cachedStash?.syncedAt ?? cachedLoadout?.syncedAt ?? cachedHideout?.syncedAt ?? cachedBlueprints?.syncedAt ?? null

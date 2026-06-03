@@ -246,6 +246,43 @@ Use these components instead of creating app-specific versions.
 - Search by keyword to find appropriate icons
 - All icons follow the same naming convention (PascalCase)
 
+### Shared Time Formatting Utilities
+
+Two shared utilities in `src/shared/utils/` handle relative time display. Always prefer these over local implementations.
+
+#### `formatAgeShort` (`src/shared/utils/ageFormat.ts`)
+For displaying **past/elapsed time** (how long ago something happened — sync ages, last-updated times):
+
+```ts
+formatAgeShort(isoString: string | null | undefined, nowMs?: number): string | null
+```
+
+| Input | Output |
+|---|---|
+| `null` / invalid date | `null` |
+| `< 60s` | `<1m` |
+| `1m–59m` | `5m`, `30m` |
+| `1h–23h` | `>1h`, `>12h` |
+| `≥ 24h` | `>1d`, `>10d` |
+
+Handles the null/invalid case with `null` — caller decides what fallback to show (e.g. "Never").
+
+#### `formatExpirationShort` (`src/shared/utils/expiration.ts`)
+For displaying **future/remaining time** (countdowns — token expiry, link validity):
+
+```ts
+formatExpirationShort(expiresAt: string | null | undefined, nowMs?: number): string | null
+```
+
+| Input | Output |
+|---|---|
+| `null` / invalid | `null` |
+| expired (`≤ 0ms`) | `Expired` |
+| `< 60m` | `1m left`, `59m left` |
+| `≥ 60m` | `>1h left`, `>5h left` |
+
+Also exports `getExpirationState`, `getExpirationRemainingMs`, `getExpirationRemainingMinutes`.
+
 ## Development Workflow
 
 ### Setup
