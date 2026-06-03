@@ -1,5 +1,5 @@
 import { createPortal } from 'react-dom';
-import { Backpack, BriefcaseBusiness, CircleCheck, CircleX, Coins, Home, List, MapPin, PackageSearch, Recycle, Target, Weight, Wrench, Shield } from 'lucide-react';
+import { Backpack, BriefcaseBusiness, CircleCheck, CircleX, Coins, Home, List, MapPin, PackageSearch, Recycle, ScrollText, Target, Weight, Wrench, Shield } from 'lucide-react';
 import type { ItemsMap, PlannerItem } from '../types/item';
 import type { ListType, PlannerResult } from '../types/planner';
 import { getEmptyItemInsight, type ItemInsightsMap } from '../utils/itemInsights';
@@ -43,6 +43,7 @@ function formatProjectName(projectId: string): string {
 function getListIcon(listType: ListType) {
   if (listType === 'hideout') return <Home size={14} />;
   if (listType === 'project') return <BriefcaseBusiness size={14} />;
+  if (listType === 'quest') return <ScrollText size={14} />;
   return <List size={14} />;
 }
 
@@ -281,7 +282,8 @@ export function ItemTooltip({
         {(insight.finalListNeeds.length > 0 || insight.craftingNeeds.length > 0 || insight.repairNeeds.length > 0 || insight.recycleSalvageUsages.length > 0) && (
           <div className="qm-item-tooltip__col-right">
             {(() => {
-              const nonProjectNeeds = insight.finalListNeeds.filter((n) => n.listType !== 'project');
+              const questNeeds = insight.finalListNeeds.filter((n) => n.listType === 'quest');
+              const genericNeeds = insight.finalListNeeds.filter((n) => n.listType !== 'project' && n.listType !== 'quest');
               const projectNeeds = insight.finalListNeeds.filter((n) => n.listType === 'project');
               const projectGroups = new Map<string, typeof projectNeeds>();
               for (const need of projectNeeds) {
@@ -294,11 +296,30 @@ export function ItemTooltip({
 
               return (
                 <>
-                  {nonProjectNeeds.length > 0 && (
+                  {questNeeds.length > 0 && (
+                    <div className="qm-item-tooltip__section">
+                      <h4>{t('quartermaster.itemTooltip.neededForQuests')}</h4>
+                      <div className="qm-item-tooltip__needs-grid">
+                        {questNeeds.map((need) => (
+                          <div className="qm-item-tooltip__needs-row" key={`${need.listId}-${need.quantity}`}>
+                            <div className="qm-item-tooltip__needs-left">
+                              {getListIcon(need.listType)}
+                              <span className="qm-item-tooltip__needs-name">{need.listName}</span>
+                            </div>
+                            <div className="qm-item-tooltip__needs-right">
+                              <span className="qm-item-tooltip__needs-quantity">{need.quantity}×</span>
+                              {renderNeededBadge(need.missing, t)}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                  {genericNeeds.length > 0 && (
                     <div className="qm-item-tooltip__section">
                       <h4>{t('quartermaster.itemTooltip.neededForLists')}</h4>
                       <div className="qm-item-tooltip__needs-grid">
-                        {nonProjectNeeds.map((need) => (
+                        {genericNeeds.map((need) => (
                           <div className="qm-item-tooltip__needs-row" key={`${need.listId}-${need.quantity}`}>
                             <div className="qm-item-tooltip__needs-left">
                               {getListIcon(need.listType)}

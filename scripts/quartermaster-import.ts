@@ -48,6 +48,7 @@ interface SourceItem {
   type: string;
   rarity: Rarity;
   isWeapon?: boolean;
+  questItem?: boolean;
   craftBench?: string | string[];
   stationLevelRequired?: number;
   blueprintLocked?: boolean;
@@ -95,6 +96,7 @@ interface PlannerItem {
   value?: number;
   weight?: number;
   foundIn?: string[];
+  questItem?: boolean;
 }
 
 interface OutputData {
@@ -279,6 +281,7 @@ function processItem(source: SourceItem, locale: OutputLocale): { id: string; it
     ...(source.value !== undefined && { value: source.value }),
     ...(source.weightKg !== undefined && { weight: source.weightKg }),
     ...(parseFoundIn(source.foundIn) && { foundIn: parseFoundIn(source.foundIn) }),
+    ...(source.questItem === true && { questItem: true }),
   };
 
   return { id: source.id, item };

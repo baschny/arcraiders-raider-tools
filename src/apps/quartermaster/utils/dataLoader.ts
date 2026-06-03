@@ -8,10 +8,12 @@ import { fetchLocalizedJson } from '../../../shared/utils/localizedContent';
 import type { PlannerItem, ItemsMap, LocalizedItemsData } from '../types/item';
 import type { HideoutModuleDefinition, LocalizedHideoutModuleDefinition } from '../types/hideout';
 import type { ProjectDefinition, LocalizedProjectDefinition } from '../types/project';
+import type { QuestDefinition } from '../types/quest';
 
 const ITEMS_URL = '/data/quartermaster/items.json';
 const HIDEOUT_URL = '/data/quartermaster/hideout.json';
 const PROJECTS_URL = '/data/quartermaster/projects.json';
+const QUESTS_URL = '/data/quests/quest-data.json';
 
 /**
  * Load all items from the generated JSON file
@@ -109,5 +111,40 @@ export async function loadProjectDefinitions(locale: AppLocale): Promise<Project
       name: phase.name.value,
       originalNameEn: phase.name.originalEn,
     })),
+  }));
+}
+
+/**
+ * Load quest data from the generated JSON file
+ */
+export async function loadQuestData(locale: AppLocale): Promise<QuestDefinition[]> {
+  interface LocalizedQuestItemName {
+    value: string;
+    originalEn: string;
+  }
+  interface LocalizedQuestItemEntry {
+    id: string;
+    quantity: number;
+    name: LocalizedQuestItemName;
+  }
+  interface LocalizedQuest {
+    id: string;
+    name: LocalizedQuestItemName;
+    requiredItems: LocalizedQuestItemEntry[];
+    previousQuestIds: string[];
+    nextQuestIds: string[];
+  }
+
+  const data = await fetchLocalizedJson<LocalizedQuest[]>(QUESTS_URL, locale);
+
+  return data.map(q => ({
+    id: q.id,
+    name: q.name.value,
+    requiredItems: (q.requiredItems ?? []).map(ri => ({
+      itemId: ri.id,
+      quantity: ri.quantity,
+    })),
+    previousQuestIds: q.previousQuestIds ?? [],
+    nextQuestIds: q.nextQuestIds ?? [],
   }));
 }

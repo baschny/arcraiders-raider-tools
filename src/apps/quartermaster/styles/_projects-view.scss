@@ -331,12 +331,18 @@
     gap: $spacing-xs;
     width: 84px;
     padding: $spacing-sm;
-    background: rgba($bg-dark, 0.25);
+    background: $bg-tertiary;
     border-radius: $radius-sm;
     border: 1px solid rgba($border-light, 0.12);
     text-align: center;
     cursor: pointer;
     transition: $transition-default;
+
+    .item-icon__container {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1;
+    }
 
     &:hover,
     &:focus-visible {
@@ -357,6 +363,7 @@
     &--done {
       opacity: 0.45;
       cursor: default;
+      background: rgba($bg-dark, 0.25);
 
       &:hover,
       &:focus-visible {

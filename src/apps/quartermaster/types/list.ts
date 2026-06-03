@@ -14,7 +14,7 @@ export interface ListItem {
 export interface StoredList {
   id: string;
   name: string;
-  type: 'user' | 'hideout' | 'project';
+  type: 'user' | 'hideout' | 'project' | 'quest';
   isEnabled: boolean;
   items: ListItem[];
 }

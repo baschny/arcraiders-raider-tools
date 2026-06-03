@@ -3425,7 +3425,8 @@
       "craftQuantity": 1,
       "stackSize": 1,
       "value": 100,
-      "weight": 0.5
+      "weight": 0.5,
+      "questItem": true
     },
     "dog_collar": {
       "name": {
@@ -3757,7 +3758,8 @@
       "craftQuantity": 1,
       "stackSize": 1,
       "value": 100,
-      "weight": 0.5
+      "weight": 0.5,
+      "questItem": true
     },
     "esr_analyzer": {
       "name": {
@@ -3774,7 +3776,8 @@
       "craftQuantity": 1,
       "stackSize": 1,
       "value": 100,
-      "weight": 0.25
+      "weight": 0.25,
+      "questItem": true
     },
     "exodus_modules": {
       "name": {
@@ -3818,7 +3821,8 @@
       "craftQuantity": 1,
       "stackSize": 1,
       "value": 100,
-      "weight": 0.25
+      "weight": 0.25,
+      "questItem": true
     },
     "expired_pasta": {
       "name": {
@@ -4696,7 +4700,8 @@
       "craftQuantity": 1,
       "stackSize": 1,
       "value": 100,
-      "weight": 0.25
+      "weight": 0.25,
+      "questItem": true
     },
     "first_wave_rations": {
       "name": {
@@ -4713,7 +4718,8 @@
       "craftQuantity": 1,
       "stackSize": 1,
       "value": 100,
-      "weight": 0.25
+      "weight": 0.25,
+      "questItem": true
     },
     "first_wave_tape": {
       "name": {
@@ -4730,7 +4736,8 @@
       "craftQuantity": 1,
       "stackSize": 1,
       "value": 100,
-      "weight": 0.25
+      "weight": 0.25,
+      "questItem": true
     },
     "flame_spray": {
       "name": {
@@ -6498,7 +6505,8 @@
       "craftQuantity": 1,
       "stackSize": 1,
       "value": 100,
-      "weight": 0.5
+      "weight": 0.5,
+      "questItem": true
     },
     "lidar_scanner": {
       "name": {
@@ -7026,7 +7034,8 @@
       "craftQuantity": 1,
       "stackSize": 1,
       "value": 100,
-      "weight": 0.5
+      "weight": 0.5,
+      "questItem": true
     },
     "major_aivas_patch": {
       "name": {
@@ -7060,7 +7069,8 @@
       "craftQuantity": 1,
       "stackSize": 1,
       "value": 100,
-      "weight": 0.5
+      "weight": 0.5,
+      "questItem": true
     },
     "matriarch_reactor": {
       "name": {
@@ -7355,7 +7365,8 @@
       "craftQuantity": 1,
       "stackSize": 1,
       "value": 100,
-      "weight": 0.25
+      "weight": 0.25,
+      "questItem": true
     },
     "moss": {
       "name": {
@@ -7627,7 +7638,8 @@
       "craftQuantity": 1,
       "stackSize": 1,
       "value": 100,
-      "weight": 0.25
+      "weight": 0.25,
+      "questItem": true
     },
     "official_shutdown_documentation": {
       "name": {
@@ -7644,7 +7656,8 @@
       "craftQuantity": 1,
       "stackSize": 1,
       "value": 100,
-      "weight": 0.5
+      "weight": 0.5,
+      "questItem": true
     },
     "oil": {
       "name": {
@@ -8130,7 +8143,8 @@
       "craftQuantity": 1,
       "stackSize": 1,
       "value": 100,
-      "weight": 0.5
+      "weight": 0.5,
+      "questItem": true
     },
     "poster_of_natural_wonders": {
       "name": {
@@ -8308,7 +8322,8 @@
       "craftQuantity": 1,
       "stackSize": 1,
       "value": 100,
-      "weight": 0.5
+      "weight": 0.5,
+      "questItem": true
     },
     "prickly_pear": {
       "name": {
@@ -8532,7 +8547,8 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "stackSize": 1,
-      "weight": 0.5
+      "weight": 0.5,
+      "questItem": true
     },
     "raider_hatch_key": {
       "name": {
@@ -9231,7 +9247,8 @@
       "craftQuantity": 1,
       "stackSize": 1,
       "value": 100,
-      "weight": 0.25
+      "weight": 0.25,
+      "questItem": true
     },
     "riven_tides_hotel_keycard_no_102": {
       "name": {
@@ -9248,7 +9265,8 @@
       "craftQuantity": 1,
       "stackSize": 1,
       "value": 100,
-      "weight": 0.5
+      "weight": 0.5,
+      "questItem": true
     },
     "riven_tides_hotel_keycard_no_107": {
       "name": {
@@ -9265,7 +9283,8 @@
       "craftQuantity": 1,
       "stackSize": 1,
       "value": 100,
-      "weight": 0.5
+      "weight": 0.5,
+      "questItem": true
     },
     "riven_tides_hotel_keycard_no_113": {
       "name": {
@@ -9282,7 +9301,8 @@
       "craftQuantity": 1,
       "stackSize": 1,
       "value": 100,
-      "weight": 0.5
+      "weight": 0.5,
+      "questItem": true
     },
     "riven_tides_hotel_keycard_no_205": {
       "name": {
@@ -9299,7 +9319,8 @@
       "craftQuantity": 1,
       "stackSize": 1,
       "value": 100,
-      "weight": 0.5
+      "weight": 0.5,
+      "questItem": true
     },
     "riven_tides_hotel_keycard_no_208": {
       "name": {
@@ -9316,7 +9337,8 @@
       "craftQuantity": 1,
       "stackSize": 1,
       "value": 100,
-      "weight": 0.5
+      "weight": 0.5,
+      "questItem": true
     },
     "riven_tides_hotel_keycard_no_311": {
       "name": {
@@ -9333,7 +9355,8 @@
       "craftQuantity": 1,
       "stackSize": 1,
       "value": 100,
-      "weight": 0.5
+      "weight": 0.5,
+      "questItem": true
     },
     "riven_tides_hotel_keycard_no_404": {
       "name": {
@@ -9350,7 +9373,8 @@
       "craftQuantity": 1,
       "stackSize": 1,
       "value": 100,
-      "weight": 0.5
+      "weight": 0.5,
+      "questItem": true
     },
     "riven_tides_secure_storage_keycard": {
       "name": {
@@ -9367,7 +9391,8 @@
       "craftQuantity": 1,
       "stackSize": 1,
       "value": 100,
-      "weight": 0.25
+      "weight": 0.25,
+      "questItem": true
     },
     "rocket_thruster": {
       "name": {
@@ -9952,7 +9977,8 @@
       "craftQuantity": 1,
       "stackSize": 1,
       "value": 100,
-      "weight": 0.5
+      "weight": 0.5,
+      "questItem": true
     },
     "secret_meeting_info": {
       "name": {
@@ -9969,7 +9995,8 @@
       "craftQuantity": 1,
       "stackSize": 1,
       "value": 100,
-      "weight": 0.5
+      "weight": 0.5,
+      "questItem": true
     },
     "seed_vault_box_key": {
       "name": {
@@ -9986,7 +10013,8 @@
       "craftQuantity": 1,
       "stackSize": 1,
       "value": 100,
-      "weight": 0.25
+      "weight": 0.25,
+      "questItem": true
     },
     "seeker_grenade": {
       "name": {
@@ -11004,7 +11032,8 @@
       "craftQuantity": 1,
       "stackSize": 1,
       "value": 100,
-      "weight": 0.5
+      "weight": 0.5,
+      "questItem": true
     },
     "statuette": {
       "name": {

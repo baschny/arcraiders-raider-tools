@@ -10,7 +10,8 @@ import type { StoredList } from './types/list';
 import type { PlannerResult } from './types/planner';
 import type { HideoutModuleDefinition, HideoutToggleState } from './types/hideout';
 import type { ProjectDefinition, ProjectToggleState } from './types/project';
-import { loadAllItems, loadHideoutDefinitions, loadProjectDefinitions } from './utils/dataLoader';
+import type { QuestDefinition } from './types/quest';
+import { loadAllItems, loadHideoutDefinitions, loadProjectDefinitions, loadQuestData } from './utils/dataLoader';
 import {
   normalizeStoredLists,
   createNewList,
@@ -30,6 +31,10 @@ import {
   itemKey,
 } from './utils/hideoutStorage';
 import { generateProjectLists } from './utils/projectLists';
+import {
+  generateQuestLists,
+  itemKey as questItemKey,
+} from './utils/questLists';
 import { formatProjectListName } from './utils/localization';
 import {
   cleanupObsoleteProjectToggles,
@@ -79,6 +84,8 @@ import {
   type EmbarkInventoryDiagnostics,
   type GameDataSource,
 } from '../../shared/services/gameDataApi';
+import { getCachedLinkedQuestSnapshot, syncArctrackerQuestSnapshot, syncEmbarkQuestSnapshot } from '../../shared/services/linkedQuestApi';
+import type { LinkedQuestSnapshot } from '../../shared/types/linkedQuests';
 
 import { Sidebar, type ViewId } from './components/Sidebar';
 import { GlobalHeader } from './components/GlobalHeader';
@@ -90,6 +97,7 @@ import { HideoutView } from './components/views/HideoutView';
 import { ProjectsView } from './components/views/ProjectsView';
 import { InRaidView } from './components/views/InRaidView';
 import { CraftingView } from './components/views/CraftingView';
+import { QuestsView } from './components/views/QuestsView';
 
 import './styles/main.scss';
 
@@ -198,6 +206,11 @@ export function QuartermasterApp() {
   const [cachedBlueprints, setCachedBlueprints] = useState<CachedBlueprints | null>(null);
   const [projectDefinitions, setProjectDefinitions] = useState<ProjectDefinition[]>([]);
   const [cachedProjects, setCachedProjects] = useState<CachedProjects | null>(null);
+
+  // Quest state
+  const [questDefinitions, setQuestDefinitions] = useState<QuestDefinition[]>([]);
+  const [linkedQuestSnapshot, setLinkedQuestSnapshot] = useState<LinkedQuestSnapshot | null>(null);
+
   const [gameDataSource, setGameDataSource] = useState<GameDataSource>('arctracker');
   const [embarkDiagnostics, setEmbarkDiagnostics] = useState<EmbarkInventoryDiagnostics | null>(null);
   const [embarkEnabled, setEmbarkEnabled] = useState(false);
@@ -214,6 +227,7 @@ export function QuartermasterApp() {
   const [isSyncingBlueprints, setIsSyncingBlueprints] = useState(false);
   const [isSyncingEmbarkInventory, setIsSyncingEmbarkInventory] = useState(false);
   const [isSyncingProjects, setIsSyncingProjects] = useState(false);
+  const [isSyncingQuests, setIsSyncingQuests] = useState(false);
   const [staleSyncModal, setStaleSyncModal] = useState<{
     sources: string[];
   } | null>(null);
@@ -287,6 +301,25 @@ export function QuartermasterApp() {
         const projectDefs = await loadProjectDefinitions(locale);
         setProjectDefinitions(projectDefs);
 
+        // Load quest definitions and linked quest snapshot
+        const questDefs = await loadQuestData(locale);
+        setQuestDefinitions(questDefs);
+
+        if (cognito.user) {
+          try {
+            const questSnapshot = await getCachedLinkedQuestSnapshot();
+            if (questSnapshot) {
+              setLinkedQuestSnapshot(questSnapshot);
+            } else {
+              setLinkedQuestSnapshot(null);
+            }
+          } catch {
+            setLinkedQuestSnapshot(null);
+          }
+        } else {
+          setLinkedQuestSnapshot(null);
+        }
+
         const cachedProj = activeSource === 'embark'
           ? await getEmbarkProjects()
           : await getProjects();
@@ -342,10 +375,28 @@ export function QuartermasterApp() {
     });
   }, [projectDefinitions, cachedProjects, projectToggleState, t, compareText]);
 
+  // Derive completed quest IDs from linked snapshot
+  const completedQuestIds: Set<string> = useMemo(() => {
+    if (!linkedQuestSnapshot) return new Set();
+    const set = new Set<string>();
+    for (const [id, entry] of Object.entries(linkedQuestSnapshot.questsById)) {
+      if (entry.state === 'completed') {
+        set.add(id);
+      }
+    }
+    return set;
+  }, [linkedQuestSnapshot]);
+
+  // Generate quest required-item lists
+  const questLists: StoredList[] = useMemo(() => {
+    if (!itemsMap || questDefinitions.length === 0) return [];
+    return generateQuestLists(questDefinitions, completedQuestIds, itemsMap);
+  }, [itemsMap, questDefinitions, completedQuestIds, quartermasterState.questToggles]);
+
   // Merge hideout lists before user lists for planner priority.
   const allLists: StoredList[] = useMemo(() => {
-    return [...hideoutLists, ...projectLists, ...lists];
-  }, [lists, hideoutLists, projectLists]);
+    return [...hideoutLists, ...questLists, ...projectLists, ...lists];
+  }, [lists, hideoutLists, questLists, projectLists]);
 
   const ownedItemRows = useMemo(() => {
     if (!itemsMap) return [];
@@ -385,6 +436,21 @@ export function QuartermasterApp() {
   const availableProjectSubmitCount = useMemo(() => {
     return countAvailableProjectSubmissions(projectLists, cachedProjects, getOwnedQuantity);
   }, [cachedProjects, getOwnedQuantity, projectLists]);
+
+  const questAvailableReadyCount = useMemo(() => {
+    if (!hasOwnedQuantities) return 0;
+    let count = 0;
+    for (const list of questLists) {
+      if (!list.isEnabled) continue;
+      if (list.items.every(item => {
+        const owned = getOwnedQuantity(item.itemId);
+        return owned !== null && owned >= item.quantity;
+      })) {
+        count++;
+      }
+    }
+    return count;
+  }, [hasOwnedQuantities, getOwnedQuantity, questLists]);
 
   const missingOwnedSources = useMemo(() => {
     const sources: string[] = [];
@@ -780,6 +846,66 @@ export function QuartermasterApp() {
     patchQuartermasterState({ projectToggles: updated });
   }, [projectToggleState, patchQuartermasterState]);
 
+  const questToggleState = quartermasterState.questToggles;
+
+  // Quest tracking mode works at item level (not list level)
+  const handleSetQuestTrackingMode = useCallback((
+    mode: 'enable-all' | 'disable-all',
+  ) => {
+    const nextItemEnabled: Record<string, boolean> = {};
+    for (const list of questLists) {
+      const match = /^quest_(.+)$/.exec(list.id);
+      if (!match) continue;
+      const questId = match[1];
+      for (const item of list.items) {
+        nextItemEnabled[questItemKey(questId, item.itemId)] = mode === 'enable-all';
+      }
+    }
+
+    patchQuartermasterState({
+      questToggles: {
+        ...questToggleState,
+        itemEnabled: nextItemEnabled,
+      },
+    });
+  }, [questLists, questToggleState, patchQuartermasterState]);
+
+  const handleToggleQuestItem = useCallback((questId: string, itemId: string) => {
+    const ik = questItemKey(questId, itemId);
+    const updated = {
+      ...questToggleState,
+      itemEnabled: {
+        ...questToggleState.itemEnabled,
+        [ik]: !(questToggleState.itemEnabled[ik] ?? true),
+      },
+    };
+    patchQuartermasterState({ questToggles: updated });
+  }, [questToggleState, patchQuartermasterState]);
+
+  const handleSyncQuests = useCallback(async () => {
+    setIsSyncingQuests(true);
+    try {
+      let snapshot: LinkedQuestSnapshot | null = null;
+
+      if (gameDataSource === 'embark') {
+        try {
+          snapshot = await syncEmbarkQuestSnapshot(linkedQuestSnapshot);
+        } catch {
+          // Embark sync failed (e.g. unlinked) — fall back to ArcTracker
+          snapshot = await syncArctrackerQuestSnapshot(linkedQuestSnapshot);
+        }
+      } else {
+        snapshot = await syncArctrackerQuestSnapshot(linkedQuestSnapshot);
+      }
+
+      setLinkedQuestSnapshot(snapshot);
+    } catch (err) {
+      console.warn('Failed to sync quests:', err);
+    } finally {
+      setIsSyncingQuests(false);
+    }
+  }, [gameDataSource, linkedQuestSnapshot]);
+
   // Progress map for tracking mode resolution
   const progressMapForTracking = useMemo(() => {
     const map = new Map<string, Map<number, boolean>>();
@@ -908,6 +1034,24 @@ export function QuartermasterApp() {
             />
         );
 
+      case 'quests':
+        return (
+          <QuestsView
+            itemsMap={itemsMap}
+            questDefinitions={questDefinitions}
+            questLists={questLists}
+            completedQuestIds={completedQuestIds}
+            getOwnedQuantity={getOwnedQuantity}
+            hasLinkedSnapshot={linkedQuestSnapshot !== null}
+            linkedSource={linkedQuestSnapshot?.source ?? null}
+            gameDataSource={gameDataSource}
+            onSyncQuests={handleSyncQuests}
+            isSyncingQuests={isSyncingQuests}
+            onSetQuestTrackingMode={handleSetQuestTrackingMode}
+            onToggleQuestItem={handleToggleQuestItem}
+          />
+        );
+
       case 'in-raid':
         return withGameDataGate(
             <InRaidView
@@ -969,6 +1113,7 @@ export function QuartermasterApp() {
           onViewChange={handleViewChange}
           hideoutAvailableUpgradeCount={availableHideoutUpgradeCount}
           projectAvailableSubmitCount={availableProjectSubmitCount}
+          questAvailableReadyCount={questAvailableReadyCount}
           inRaidMissingCount={plannerResult.totalMissingItemsCount}
           craftingActionsCount={plannerResult.totalRecycleActionsCount + plannerResult.totalCraftStepsCount}
         />

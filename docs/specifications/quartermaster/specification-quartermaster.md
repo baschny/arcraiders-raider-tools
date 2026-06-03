@@ -67,6 +67,7 @@ The purpose of this module is to support the full gameplay lifecycle of ARC Raid
 - Craft execution planning
 - Hideout/workbench progression planning
 - Community project progression planning
+- Quest required-item tracking
 
 The system must:
 
@@ -81,6 +82,10 @@ The system must:
 - Generate deterministic project required-item lists based on cached user project progress.
 - Allow generated project lists to participate in planner aggregation with higher priority than user-authored lists but lower than hideout lists.
 - Keep generated project list composition read-only while preserving per-list and per-item enable/disable control.
+- Generate deterministic quest required-item lists based on quest definitions and linked quest completion data.
+- Allow generated quest lists to participate in planner aggregation with priority below hideout but above project and user-authored lists.
+- Exclude pure quest tokens (`questItem: true`) from quest required-item lists.
+- Keep generated quest list composition read-only while preserving per-list and per-item enable/disable control.
 - Limit crafting depth to practical real-world gameplay expectations.
 - Avoid unnecessary or confusing steps.
 - Reserve required materials before recycling.
@@ -1503,6 +1508,8 @@ Additional validation scenarios:
 - Planner logic remains deterministic even when quantity placeholder is displayed.
 - Craft provenance chains correctly display `Final -> Intermediate -> Current` when applicable.
 - Sidebar includes Hideout between Lists and In Raid.
+- Sidebar includes Projects between Hideout and In Raid.
+- Sidebar includes Quests between Projects and In Raid.
 - Lists view renders only user-authored lists.
 - Lists view no longer renders generated hideout upgrade lists or Sync Hideouts.
 - Hideout view renders Sync Hideouts at the top.
@@ -1522,6 +1529,15 @@ Additional validation scenarios:
 - Generated project required-item lists persist per-project-step toggles.
 - Disabled project lists do not contribute planner targets.
 - Disabled project items do not contribute planner targets.
+- Generated quest required-item lists use linked quest completion data to filter incomplete quests.
+- Quest required-item lists exclude pure quest tokens (`questItem: true`).
+- Quest list priority: hideout → quest → project → user.
+- Quest lists are always enabled; only per-item toggles exist (no per-quest enable/disable).
+- Quest tracking modes ("Disable All" / "Enable All Pending") operate at the item level.
+- Quests view layout uses flex-wrap grid blocks (not accordions) with Projects-style item cards.
+- Quests view supports two sort modes persisted to localStorage: alphabetical (A-Z) and Next Quests (BFS hop distance from available quests).
+- Quest provenance in item tooltips is grouped under a separate "Needed for Quests" headline.
+- Quest view shows explainer when no linked quest snapshot exists.
 - Planner prioritizes generated hideout targets first, then project targets, then user-authored list targets.
 - Duplicate item targets sum quantities while retaining list-type priority metadata.
 - In Raid suggestions reflect project priority between hideout and user-authored list priority.

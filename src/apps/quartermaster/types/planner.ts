@@ -46,7 +46,7 @@ export type InRaidReason =
   | 'BRING_HOME_FOR_RECYCLE_YIELD'
   | 'CRAFTING_INGREDIENT_FOR_DEFICIT';
 
-export type ListType = 'user' | 'hideout' | 'project';
+export type ListType = 'user' | 'hideout' | 'project' | 'quest';
 
 export interface RequiredSource {
   listId: string;

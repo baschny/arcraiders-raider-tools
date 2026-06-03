@@ -1,5 +1,5 @@
 import type { PlannerItem, ItemsMap } from '../../types/item';
-import type { ItemId, Qty, RequiredSource } from '../../types/planner';
+import type { ItemId, Qty, RequiredSource, ListType } from '../../types/planner';
 
 /**
  * Material requirements for a specific list.
@@ -97,7 +97,7 @@ export function calculateProvenance(
     itemId: string,
     listId: string,
     listName: string,
-    listType: 'user' | 'hideout' | 'project',
+    listType: ListType,
     quantity: number,
     targetIds: string[],
     isDirect = false,
@@ -150,7 +150,7 @@ export function calculateProvenance(
     visited: Set<ItemId>,
     listId: string,
     listName: string,
-    listType: 'user' | 'hideout' | 'project',
+    listType: ListType,
     originalTargetId: ItemId,
   ) => {
     if (depth >= maxDepth || visited.has(currId)) return;

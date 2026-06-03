@@ -268,7 +268,7 @@ function addRecycleSalvageUsages(
 
       const sources = plannerResult.requiredSourcesByItemId[reason.targetItemId] ?? [];
       const source = sources.find((s) => s.listId === reason.listId);
-      const listType: 'user' | 'hideout' | 'project' = source?.listType ?? 'user';
+      const listType = source?.listType ?? 'user';
 
       const dedupeKey = [
         action.srcItemId,

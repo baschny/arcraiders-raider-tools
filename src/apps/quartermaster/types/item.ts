@@ -48,6 +48,7 @@ export interface PlannerItem {
   value?: number;
   weight?: number;
   foundIn?: string[];
+  questItem?: boolean;
 }
 
 export interface ItemsMap {
@@ -66,6 +67,7 @@ export interface LocalizedPlannerItemData extends Omit<PlannerItem, 'id' | 'name
   };
   repairCost?: Record<string, number>;
   repairDurability?: number;
+  questItem?: boolean;
 }
 
 export interface LocalizedItemsData {

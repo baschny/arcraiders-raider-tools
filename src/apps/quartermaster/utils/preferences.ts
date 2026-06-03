@@ -6,11 +6,12 @@
  * data that should sync across devices.
  */
 
-export type QuartermasterViewId = 'welcome' | 'lists' | 'stash' | 'hideout' | 'projects' | 'in-raid' | 'crafting';
+export type QuartermasterViewId = 'welcome' | 'lists' | 'stash' | 'hideout' | 'projects' | 'quests' | 'in-raid' | 'crafting';
 
 const ACTIVE_VIEW_KEY = 'quartermaster.ui.activeView';
 const SELECTED_LIST_KEY = 'quartermaster.ui.selectedListId';
 const COLLAPSED_HIDEOUT_MODULES_KEY = 'quartermaster.ui.collapsedHideoutModules';
+const QUEST_SORT_MODE_KEY = 'quartermaster.ui.questSortMode';
 const LEGACY_SELECTED_LIST_KEY = 'quartermaster.selectedListId';
 
 const VALID_VIEWS = new Set<QuartermasterViewId>([
@@ -19,6 +20,7 @@ const VALID_VIEWS = new Set<QuartermasterViewId>([
   'stash',
   'hideout',
   'projects',
+  'quests',
   'in-raid',
   'crafting',
 ]);
@@ -137,4 +139,15 @@ export function saveStashFilters(filters: StashFilters): void {
   } catch {
     // Preferences are best-effort; the in-memory UI state still works.
   }
+}
+
+export type QuestSortMode = 'alphabetical' | 'next-quests';
+
+export function loadQuestSortMode(): QuestSortMode {
+  const stored = readString(QUEST_SORT_MODE_KEY);
+  return stored === 'next-quests' ? 'next-quests' : 'alphabetical';
+}
+
+export function saveQuestSortMode(mode: QuestSortMode): void {
+  writeString(QUEST_SORT_MODE_KEY, mode);
 }
