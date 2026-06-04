@@ -1,0 +1,101 @@
+@use 'sass:color';
+@use '../../../shared/styles/variables' as *;
+
+.cc-sync-header {
+  display: flex;
+  align-items: center;
+  gap: $spacing-lg;
+  padding: $spacing-md $spacing-lg;
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid $border-default;
+  min-height: 48px;
+  flex-wrap: wrap;
+
+  &__button {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-xs;
+    padding: $spacing-sm $spacing-md;
+    background: $bg-tertiary;
+    border: 1px solid $border-light;
+    border-radius: $radius-sm;
+    color: $text-primary;
+    font-size: $font-sm;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: $transition-default;
+
+    &:hover:not(:disabled) {
+      background: $bg-secondary;
+      border-color: $text-accent;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    &--primary {
+      background: $text-accent;
+      border-color: $text-accent;
+      color: $bg-primary;
+
+      &:hover:not(:disabled) {
+        background: color.adjust($text-accent, $lightness: 10%);
+      }
+    }
+  }
+
+  &__timestamps {
+    display: flex;
+    gap: $spacing-lg;
+    align-items: center;
+    flex: 1;
+    flex-wrap: wrap;
+  }
+
+  &__last-sync {
+    font-size: $font-xs;
+    font-weight: 600;
+    color: $text-secondary;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  &__timestamp {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: $font-sm;
+    color: $text-secondary;
+
+    span {
+      color: $text-primary;
+    }
+  }
+}
+
+.cc-sync-error {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-sm $spacing-md;
+  background: color.adjust(#f44336, $alpha: -0.85);
+  border-bottom: 1px solid #f44336;
+  color: #f44336;
+  font-size: $font-sm;
+
+  &__dismiss {
+    background: none;
+    border: none;
+    color: #f44336;
+    font-size: $font-lg;
+    cursor: pointer;
+    padding: 0 $spacing-xs;
+    line-height: 1;
+
+    &:hover {
+      color: $text-primary;
+    }
+  }
+}

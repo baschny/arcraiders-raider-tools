@@ -876,6 +876,17 @@
     "timePlural": "times",
     "itemSuffix": " ({count} items)",
     "slotSingle": "slot",
-    "slotPlural": "slots"
+    "slotPlural": "slots",
+    "syncHeader": {
+      "syncMyItems": "Sync My Items",
+      "syncingInventory": "Syncing Inventory...",
+      "syncGameData": "Sync Game Data",
+      "syncingGameData": "Syncing Game Data...",
+      "lastSync": "Last Sync",
+      "stash": "Stash",
+      "loadout": "Loadout",
+      "gameDataLastSync": "Game Data Last Sync",
+      "never": "Never"
+    }
   }
 }

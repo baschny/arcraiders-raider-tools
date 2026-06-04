@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import type { StackSize, RequiredItem, CraftingRecipe } from '../types/crafting';
 import type { Item } from '../types/item';
+import type { CachedStash, CachedLoadout } from '../../../shared/types/arctracker';
 import { calculateCrafting } from '../utils/calculations';
 import { CraftingResults } from './CraftingResults';
 import { ItemSearch } from './ItemSearch';
@@ -11,6 +12,7 @@ import type { UpgradeBreakdown } from '../utils/weaponTiers';
 import { UpgradeBreakdown as UpgradeBreakdownComponent } from './UpgradeBreakdown';
 import { useLocale } from '../../../shared/context/LocaleContext';
 import { ItemIcon } from '../../../shared/components/ItemIcon';
+import { aggregateInventoryQuantities } from '../../../shared/utils/inventoryAggregator';
 
 interface RequiredItemWithName extends RequiredItem {
   name?: string;
@@ -19,7 +21,12 @@ interface RequiredItemWithName extends RequiredItem {
   rarity?: string;
 }
 
-export function CraftCalculator() {
+interface CraftCalculatorProps {
+  cachedStash?: CachedStash | null;
+  cachedLoadout?: CachedLoadout | null;
+}
+
+export function CraftCalculator({ cachedStash, cachedLoadout }: CraftCalculatorProps) {
   const { locale, t, tm, formatNumber } = useLocale();
   const [loading, setLoading] = useState(true);
   const [selectedItem, setSelectedItem] = useState<Item | null>(null);
@@ -42,27 +49,28 @@ export function CraftCalculator() {
   const handleItemSelect = (item: Item) => {
     setSelectedItem(item);
     setCraftedStackSize((item.stackSize as StackSize) || 1);
-    setCraftedInStash(0);
 
-    // Track the item selection
+    const inventory = aggregateInventoryQuantities(cachedStash ?? null, cachedLoadout ?? null);
+
+    const ownedCrafted = inventory.get(item.id) ?? 0;
+    setCraftedInStash(ownedCrafted);
+
     trackCraftCalculatorItemSelection(item.name, item.id);
 
-    // Get total materials (either direct recipe or calculated from upgrades)
     const totalMaterials = calculateTotalMaterials(item);
-    
-    // Get upgrade breakdown for tooltip (if applicable)
+
     const breakdown = getUpgradeBreakdown(item);
     setUpgradeBreakdown(breakdown);
 
-    // Map materials to required items
     const materials = Object.entries(totalMaterials).map(([materialId, amount]) => {
       const materialItem = getItem(materialId);
+      const possessed = inventory.get(materialId) ?? 0;
       return {
         id: materialId,
         stackSize: (materialItem?.stackSize as StackSize) || 1,
         amountRequired: amount,
-        amountPossessed: 0,
-        incompleteStackSize: 0,
+        amountPossessed: possessed,
+        incompleteStackSize: possessed % (materialItem?.stackSize || 1),
         name: materialItem?.name || materialId,
         imageUrl: materialItem?.imageFilename,
         value: materialItem?.value,

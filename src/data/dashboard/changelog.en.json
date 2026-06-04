@@ -7,6 +7,11 @@
       "title": "Quartermaster quest items tracking: Now also items that are required in future quests can be tracked, so that you don't sell or recycle that rare Ion Sputter or Flow Controller that you thought you would never need."
     },
     {
+      "date": "2026-06-03",
+      "apps": ["craft-calculator"],
+      "title": "The Craft Calculator now uses your inventory information to pre-fill the In Stash settings, so you just need to type in the item you want to craft. It works using the ArcTracker or the Embark linking. You need an account for this feature to work."
+    },
+    {
       "date": "2026-05-31",
       "apps": ["quartermaster"],
       "title": "Quartermaster project item tracking: You can now track items of the projects (Trophy Display, Expedition). This feature requires linking your account to Embark or ArcTracker for real-time data."
