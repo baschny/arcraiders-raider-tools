@@ -10,7 +10,7 @@ import {
   getLocalizedTraderName,
   getQuestWikiName,
 } from '../utils/localization';
-import { QuestTooltip } from './QuestTooltip';
+import { QuestTooltip } from '../../../shared/components/QuestTooltip';
 
 const TOOLTIP_ESTIMATED_WIDTH = 440;
 const TOOLTIP_ESTIMATED_HEIGHT = 520;

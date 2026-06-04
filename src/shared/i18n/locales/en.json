@@ -655,8 +655,6 @@
     },
     "quests": {
       "title": "Quests",
-      "ready": "Ready",
-      "readyTooltip": "Quests where all required items are owned.",
       "enableAllPending": "Enable All Pending",
       "disableAll": "Disable All",
       "noLinkedData": "Link your ArcTracker or Embark account to track quest items.",
@@ -666,6 +664,7 @@
       "sortBy": "Sort",
       "sortAlphabetical": "A-Z",
       "sortNextQuests": "Next Quests",
+      "viewInQuestTree": "View in Quest Tree",
       "itemCount": "{count} items",
       "hopsAway": "{hops} hops away",
       "now": "Now",

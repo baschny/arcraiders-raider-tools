@@ -119,6 +119,28 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__tree-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: $radius-sm;
+    border: none;
+    background: rgba($text-accent, 0.1);
+    color: $text-accent;
+    cursor: pointer;
+    transition: $transition-default;
+
+    &:hover {
+      background: rgba($text-accent, 0.25);
+      color: $text-accent;
+    }
   }
 
   &__hop-badge {

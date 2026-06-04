@@ -13,12 +13,11 @@ interface SidebarProps {
   onViewChange: (view: ViewId) => void;
   hideoutAvailableUpgradeCount?: number;
   projectAvailableSubmitCount?: number;
-  questAvailableReadyCount?: number;
   inRaidMissingCount?: number;
   craftingActionsCount?: number;
 }
 
-export function Sidebar({ activeView, onViewChange, hideoutAvailableUpgradeCount = 0, projectAvailableSubmitCount = 0, questAvailableReadyCount = 0, inRaidMissingCount = 0, craftingActionsCount = 0 }: SidebarProps) {
+export function Sidebar({ activeView, onViewChange, hideoutAvailableUpgradeCount = 0, projectAvailableSubmitCount = 0, inRaidMissingCount = 0, craftingActionsCount = 0 }: SidebarProps) {
   const { t } = useLocale();
   const navItems: { id: ViewId; label: string; icon: React.ReactNode }[] = [
     { id: 'welcome', label: t('quartermaster.nav.welcome'), icon: <Info size={18} /> },
@@ -56,14 +55,6 @@ export function Sidebar({ activeView, onViewChange, hideoutAvailableUpgradeCount
                 title={t('quartermaster.projects.availableSubmitTooltip')}
               >
                 {projectAvailableSubmitCount}
-              </span>
-            )}
-            {item.id === 'quests' && questAvailableReadyCount > 0 && (
-              <span
-                className="qm-sidebar__badge"
-                title={t('quartermaster.quests.readyTooltip')}
-              >
-                {questAvailableReadyCount}
               </span>
             )}
             {item.id === 'in-raid' && inRaidMissingCount > 0 && (

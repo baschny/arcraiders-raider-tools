@@ -9,6 +9,7 @@ import type { PlannerItem, ItemsMap, LocalizedItemsData } from '../types/item';
 import type { HideoutModuleDefinition, LocalizedHideoutModuleDefinition } from '../types/hideout';
 import type { ProjectDefinition, LocalizedProjectDefinition } from '../types/project';
 import type { QuestDefinition } from '../types/quest';
+import type { Quest, QuestItemEntry } from '../../../shared/types/quest';
 
 const ITEMS_URL = '/data/quartermaster/items.json';
 const HIDEOUT_URL = '/data/quartermaster/hideout.json';
@@ -115,36 +116,97 @@ export async function loadProjectDefinitions(locale: AppLocale): Promise<Project
 }
 
 /**
- * Load quest data from the generated JSON file
+ * Load quest data from the generated JSON file.
+ * Returns both minimal QuestDefinition[] (for list logic) and full Quest[] (for tooltips).
  */
-export async function loadQuestData(locale: AppLocale): Promise<QuestDefinition[]> {
-  interface LocalizedQuestItemName {
+export async function loadQuestData(
+  locale: AppLocale,
+): Promise<{ definitions: QuestDefinition[]; fullQuests: Quest[] }> {
+  interface LocalizedName {
     value: string;
     originalEn: string;
   }
   interface LocalizedQuestItemEntry {
     id: string;
     quantity: number;
-    name: LocalizedQuestItemName;
+    name: LocalizedName;
+    rarity?: string;
+    imageFilename?: string;
+  }
+  interface LocalizedBlueprintReward {
+    id: string;
+    name: LocalizedName;
+    imageFilename?: string;
   }
   interface LocalizedQuest {
     id: string;
-    name: LocalizedQuestItemName;
-    requiredItems: LocalizedQuestItemEntry[];
-    previousQuestIds: string[];
-    nextQuestIds: string[];
+    name: LocalizedName;
+    trader?: string;
+    map?: string[];
+    previousQuestIds?: string[];
+    nextQuestIds?: string[];
+    hasBlueprint?: boolean;
+    blueprintRewards?: LocalizedBlueprintReward[];
+    description?: LocalizedName;
+    objectives?: LocalizedName[];
+    objectivesOneRound?: boolean;
+    otherRequirements?: string[];
+    grantedItems?: LocalizedQuestItemEntry[];
+    requiredItems?: LocalizedQuestItemEntry[];
+    rewardItems?: LocalizedQuestItemEntry[];
   }
 
   const data = await fetchLocalizedJson<LocalizedQuest[]>(QUESTS_URL, locale);
 
-  return data.map(q => ({
-    id: q.id,
-    name: q.name.value,
-    requiredItems: (q.requiredItems ?? []).map(ri => ({
-      itemId: ri.id,
-      quantity: ri.quantity,
-    })),
-    previousQuestIds: q.previousQuestIds ?? [],
-    nextQuestIds: q.nextQuestIds ?? [],
-  }));
+  const definitions: QuestDefinition[] = [];
+  const fullQuests: Quest[] = [];
+
+  const mapQuestItem = (item: LocalizedQuestItemEntry): QuestItemEntry => ({
+    id: item.id,
+    quantity: item.quantity,
+    name: item.name.value,
+    originalNameEn: item.name.originalEn,
+    rarity: (item.rarity ?? 'Common') as QuestItemEntry['rarity'],
+    imageFilename: item.imageFilename ?? '',
+  });
+
+  for (const q of data) {
+    definitions.push({
+      id: q.id,
+      name: q.name.value,
+      requiredItems: (q.requiredItems ?? []).map((ri) => ({
+        itemId: ri.id,
+        quantity: ri.quantity,
+      })),
+      previousQuestIds: q.previousQuestIds ?? [],
+      nextQuestIds: q.nextQuestIds ?? [],
+    });
+
+    fullQuests.push({
+      id: q.id,
+      name: q.name.value,
+      originalNameEn: q.name.originalEn,
+      trader: q.trader ?? 'Unknown',
+      map: q.map ?? [],
+      previousQuestIds: q.previousQuestIds ?? [],
+      nextQuestIds: q.nextQuestIds ?? [],
+      hasBlueprint: q.hasBlueprint ?? false,
+      blueprintRewards: (q.blueprintRewards ?? []).map((b) => ({
+        id: b.id,
+        name: b.name.value,
+        originalNameEn: b.name.originalEn,
+        imageFilename: b.imageFilename ?? '',
+      })),
+      description: q.description?.value ?? '',
+      descriptionOriginalEn: q.description?.originalEn,
+      objectives: (q.objectives ?? []).map((o) => o.value),
+      objectivesOneRound: q.objectivesOneRound ?? false,
+      otherRequirements: q.otherRequirements ?? [],
+      grantedItems: (q.grantedItems ?? []).map(mapQuestItem),
+      requiredItems: (q.requiredItems ?? []).map(mapQuestItem),
+      rewardItems: (q.rewardItems ?? []).map(mapQuestItem),
+    });
+  }
+
+  return { definitions, fullQuests };
 }

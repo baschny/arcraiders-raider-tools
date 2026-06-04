@@ -1,5 +1,5 @@
 import { useState, useCallback, useMemo, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { CircleHelp, RefreshCw } from 'lucide-react';
 import ReactFlow, {
   Controls,
@@ -162,6 +162,8 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
   const graphContainerRef = useRef<HTMLDivElement>(null);
   // Ensures the initial top-center positioning only runs once per mount.
   const initialViewportAppliedRef = useRef(false);
+  const focusParamAppliedRef = useRef(false);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     const timerId = window.setInterval(() => setNowMs(Date.now()), 15_000);
@@ -652,6 +654,29 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
   useEffect(() => {
     setEdges(edges);
   }, [edges, setEdges]);
+
+  // Handle ?focus= questId param (navigated from Quartermaster)
+  useEffect(() => {
+    const focusQuestId = searchParams.get('focus');
+    if (!focusQuestId || !reactFlowInstance || focusParamAppliedRef.current) return;
+
+    const node = flowNodes.find((n) => n.id === focusQuestId);
+    if (node) {
+      reactFlowInstance.setCenter(node.position.x + 150, node.position.y + 70, {
+        zoom: 1.0,
+        duration: 800,
+      });
+      setHighlightedQuestId(focusQuestId);
+      setTimeout(() => {
+        setHighlightedQuestId(null);
+      }, 2000);
+
+      focusParamAppliedRef.current = true;
+      const next = new URLSearchParams(searchParams);
+      next.delete('focus');
+      setSearchParams(next, { replace: true });
+    }
+  }, [reactFlowInstance, flowNodes, searchParams, setSearchParams]);
 
   // Filter out map nodes for statistics
   const actualQuests = quests.filter((q) => q.trader !== 'Map');

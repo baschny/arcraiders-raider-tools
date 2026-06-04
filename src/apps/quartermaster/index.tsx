@@ -11,6 +11,7 @@ import type { PlannerResult } from './types/planner';
 import type { HideoutModuleDefinition, HideoutToggleState } from './types/hideout';
 import type { ProjectDefinition, ProjectToggleState } from './types/project';
 import type { QuestDefinition } from './types/quest';
+import type { Quest } from '../../shared/types/quest';
 import { loadAllItems, loadHideoutDefinitions, loadProjectDefinitions, loadQuestData } from './utils/dataLoader';
 import {
   normalizeStoredLists,
@@ -207,6 +208,7 @@ export function QuartermasterApp() {
 
   // Quest state
   const [questDefinitions, setQuestDefinitions] = useState<QuestDefinition[]>([]);
+  const [fullQuests, setFullQuests] = useState<Quest[]>([]);
   const [linkedQuestSnapshot, setLinkedQuestSnapshot] = useState<LinkedQuestSnapshot | null>(null);
 
   const [gameDataSource, setGameDataSource] = useState<GameDataSource>('arctracker');
@@ -300,8 +302,9 @@ export function QuartermasterApp() {
         setProjectDefinitions(projectDefs);
 
         // Load quest definitions and linked quest snapshot
-        const questDefs = await loadQuestData(locale);
-        setQuestDefinitions(questDefs);
+        const questResult = await loadQuestData(locale);
+        setQuestDefinitions(questResult.definitions);
+        setFullQuests(questResult.fullQuests);
 
         if (cognito.user) {
           try {
@@ -391,6 +394,14 @@ export function QuartermasterApp() {
     return generateQuestLists(questDefinitions, completedQuestIds, itemsMap);
   }, [itemsMap, questDefinitions, completedQuestIds, quartermasterState.questToggles]);
 
+  const fullQuestById = useMemo(() => {
+    const map = new Map<string, Quest>();
+    for (const q of fullQuests) {
+      map.set(q.id, q);
+    }
+    return map;
+  }, [fullQuests]);
+
   // Merge hideout lists before user lists for planner priority.
   const allLists: StoredList[] = useMemo(() => {
     return [...hideoutLists, ...questLists, ...projectLists, ...lists];
@@ -434,21 +445,6 @@ export function QuartermasterApp() {
   const availableProjectSubmitCount = useMemo(() => {
     return countAvailableProjectSubmissions(projectLists, cachedProjects, getOwnedQuantity);
   }, [cachedProjects, getOwnedQuantity, projectLists]);
-
-  const questAvailableReadyCount = useMemo(() => {
-    if (!hasOwnedQuantities) return 0;
-    let count = 0;
-    for (const list of questLists) {
-      if (!list.isEnabled) continue;
-      if (list.items.every(item => {
-        const owned = getOwnedQuantity(item.itemId);
-        return owned !== null && owned >= item.quantity;
-      })) {
-        count++;
-      }
-    }
-    return count;
-  }, [hasOwnedQuantities, getOwnedQuantity, questLists]);
 
   const missingOwnedSources = useMemo(() => {
     const sources: string[] = [];
@@ -1067,6 +1063,7 @@ export function QuartermasterApp() {
           <QuestsView
             itemsMap={itemsMap}
             questDefinitions={questDefinitions}
+            fullQuestById={fullQuestById}
             questLists={questLists}
             completedQuestIds={completedQuestIds}
             plannerResult={plannerResult}
@@ -1143,7 +1140,6 @@ export function QuartermasterApp() {
           onViewChange={handleViewChange}
           hideoutAvailableUpgradeCount={availableHideoutUpgradeCount}
           projectAvailableSubmitCount={availableProjectSubmitCount}
-          questAvailableReadyCount={questAvailableReadyCount}
           inRaidMissingCount={plannerResult.totalMissingItemsCount}
           craftingActionsCount={plannerResult.totalRecycleActionsCount + plannerResult.totalCraftStepsCount}
         />

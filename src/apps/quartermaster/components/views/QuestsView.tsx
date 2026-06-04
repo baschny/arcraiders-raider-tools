@@ -1,15 +1,19 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useCallback, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   ArrowDownAZ,
   CheckCircle2,
   Eye,
   EyeOff,
   ListChecks,
+  Network,
   RefreshCw,
   ScrollText,
 } from 'lucide-react';
 import { useLocale } from '../../../../shared/context/LocaleContext';
 import { ItemIcon } from '../ItemIcon';
+import { QuestTooltip } from '../../../../shared/components/QuestTooltip';
+import type { Quest } from '../../../../shared/types/quest';
 import { loadQuestSortMode, saveQuestSortMode, type QuestSortMode } from '../../utils/preferences';
 import type { ItemsMap } from '../../types/item';
 import type { StoredList } from '../../types/list';
@@ -20,6 +24,7 @@ import type { ItemInsightsMap } from '../../utils/itemInsights';
 interface QuestsViewProps {
   itemsMap: ItemsMap;
   questDefinitions: QuestDefinition[];
+  fullQuestById: Map<string, Quest>;
   questLists: StoredList[];
   completedQuestIds: Set<string>;
   plannerResult: PlannerResult;
@@ -53,7 +58,6 @@ function computeHopDistances(
   const distances = new Map<string, number | null>();
   const incomplete = questDefs.filter(q => !completedQuestIds.has(q.id));
 
-  // Frontier: quests that are "available" (all prereqs done) or "active"
   const frontier: string[] = [];
   for (const q of incomplete) {
     const allPrereqsDone = q.previousQuestIds.length === 0
@@ -64,7 +68,6 @@ function computeHopDistances(
     }
   }
 
-  // BFS through the dependency graph
   const queue = [...frontier];
   const idToDef = new Map(incomplete.map(q => [q.id, q]));
 
@@ -84,7 +87,6 @@ function computeHopDistances(
     }
   }
 
-  // Unreachable quests get null
   for (const q of incomplete) {
     if (!distances.has(q.id)) {
       distances.set(q.id, null);
@@ -94,9 +96,14 @@ function computeHopDistances(
   return distances;
 }
 
+const TOOLTIP_ESTIMATED_WIDTH = 440;
+const TOOLTIP_ESTIMATED_HEIGHT = 520;
+const TOOLTIP_MARGIN = 12;
+
 export function QuestsView({
   itemsMap,
   questDefinitions,
+  fullQuestById,
   questLists,
   completedQuestIds,
   plannerResult,
@@ -109,7 +116,13 @@ export function QuestsView({
   onToggleQuestItem,
 }: QuestsViewProps) {
   const { t, compareText } = useLocale();
+  const navigate = useNavigate();
   const [sortMode, setSortMode] = useState<SortMode>(() => loadQuestSortMode());
+
+  const [hoveredQuestId, setHoveredQuestId] = useState<string | null>(null);
+  const [tooltipPos, setTooltipPos] = useState({ x: 0, y: 0, maxHeight: TOOLTIP_ESTIMATED_HEIGHT });
+  const hoverTimeoutRef = useRef<number | null>(null);
+  const blockRefs = useRef<Map<string, HTMLDivElement>>(new Map());
 
   const tooltipContext = {
     itemsMap,
@@ -117,7 +130,70 @@ export function QuestsView({
     itemInsights,
   };
 
-  // Build map: questId → list
+  const clearHoverTimeout = useCallback(() => {
+    if (hoverTimeoutRef.current !== null) {
+      clearTimeout(hoverTimeoutRef.current);
+      hoverTimeoutRef.current = null;
+    }
+  }, []);
+
+  const showTooltip = useCallback(
+    (questId: string) => {
+      clearHoverTimeout();
+      hoverTimeoutRef.current = window.setTimeout(() => {
+        setHoveredQuestId(questId);
+        const el = blockRefs.current.get(questId);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          const viewportWidth = window.innerWidth;
+          const viewportHeight = window.innerHeight;
+
+          let x = rect.right + 10;
+          let y = rect.top;
+
+          if (x + TOOLTIP_ESTIMATED_WIDTH > viewportWidth - TOOLTIP_MARGIN) {
+            x = rect.left - TOOLTIP_ESTIMATED_WIDTH - 10;
+          }
+          if (x < TOOLTIP_MARGIN) {
+            x = TOOLTIP_MARGIN;
+          }
+          if (y + TOOLTIP_ESTIMATED_HEIGHT > viewportHeight - TOOLTIP_MARGIN) {
+            y = viewportHeight - TOOLTIP_ESTIMATED_HEIGHT - TOOLTIP_MARGIN;
+          }
+          if (y < TOOLTIP_MARGIN) {
+            y = TOOLTIP_MARGIN;
+          }
+
+          const maxHeight = Math.max(260, viewportHeight - y - TOOLTIP_MARGIN);
+          setTooltipPos({ x, y, maxHeight });
+        }
+      }, 400);
+    },
+    [clearHoverTimeout],
+  );
+
+  const hideTooltip = useCallback(() => {
+    clearHoverTimeout();
+    hoverTimeoutRef.current = window.setTimeout(() => {
+      setHoveredQuestId(null);
+    }, 120);
+  }, [clearHoverTimeout]);
+
+  const cancelHide = useCallback(() => {
+    if (hoverTimeoutRef.current !== null) {
+      clearTimeout(hoverTimeoutRef.current);
+      hoverTimeoutRef.current = null;
+    }
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (hoverTimeoutRef.current !== null) {
+        clearTimeout(hoverTimeoutRef.current);
+      }
+    };
+  }, []);
+
   const listByQuestId = useMemo(() => {
     const map = new Map<string, StoredList>();
     for (const list of questLists) {
@@ -134,7 +210,6 @@ export function QuestsView({
     [questDefinitions, completedQuestIds],
   );
 
-  // Sorted quest IDs
   const sortedQuestIds = useMemo(() => {
     const ids = [...listByQuestId.keys()];
     if (sortMode === 'alphabetical') {
@@ -157,6 +232,10 @@ export function QuestsView({
     }
     return ids;
   }, [listByQuestId, sortMode, hopDistances, questDefinitions, compareText]);
+
+  const handleGoToQuestTree = useCallback((questId: string) => {
+    navigate(`/quests?focus=${encodeURIComponent(questId)}`);
+  }, [navigate]);
 
   if (!hasLinkedSnapshot) {
     return (
@@ -189,6 +268,8 @@ export function QuestsView({
   const handleTrackingMode = (mode: TrackingMode) => {
     onSetQuestTrackingMode(mode);
   };
+
+  const hoveredQuest = hoveredQuestId ? fullQuestById.get(hoveredQuestId) : null;
 
   return (
     <div className="quests-view">
@@ -281,15 +362,37 @@ export function QuestsView({
             const list = listByQuestId.get(questId)!;
             const def = questDefinitions.find(d => d.id === questId);
             const hop = hopDistances.get(questId);
+            const questData = fullQuestById.get(questId);
+
+            const handleEnter = () => showTooltip(questId);
+            const handleLeave = () => hideTooltip();
 
             return (
               <div key={questId} className="quests-view__block">
-                <div className="quests-view__block-header">
+                <div
+                  className="quests-view__block-header"
+                  ref={(el) => {
+                    if (el) blockRefs.current.set(questId, el);
+                    else blockRefs.current.delete(questId);
+                  }}
+                  onMouseEnter={handleEnter}
+                  onMouseLeave={handleLeave}
+                >
                   <span className="quests-view__block-name">{def?.name ?? questId}</span>
                   {sortMode === 'next-quests' && hop !== undefined && hop !== null && (
                     <span className="quests-view__hop-badge" title={t('quartermaster.quests.hopsAway').replace('{hops}', String(hop))}>
                       {hop === 0 ? t('quartermaster.quests.now') : hop}
                     </span>
+                  )}
+                  {questData && (
+                    <button
+                      className="quests-view__tree-link"
+                      onClick={() => handleGoToQuestTree(questId)}
+                      title={t('quartermaster.quests.viewInQuestTree')}
+                      aria-label={t('quartermaster.quests.viewInQuestTree')}
+                    >
+                      <Network size={14} />
+                    </button>
                   )}
                 </div>
                 <div className="quests-view__block-items">
@@ -366,6 +469,16 @@ export function QuestsView({
             );
           })}
         </div>
+      )}
+
+      {hoveredQuest && (
+        <QuestTooltip
+          quest={hoveredQuest}
+          position={tooltipPos}
+          visible={true}
+          onMouseEnter={cancelHide}
+          onMouseLeave={hideTooltip}
+        />
       )}
     </div>
   );

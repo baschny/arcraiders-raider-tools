@@ -1,11 +1,11 @@
 import { createPortal } from 'react-dom';
 import type { CSSProperties } from 'react';
 import type { Quest } from '../types/quest';
-import { useLocale } from '../../../shared/context/LocaleContext';
-import { getLocalizedTraderName } from '../utils/localization';
-import { getQuestMapIndicator } from '../utils/mapMeta';
-import type { LinkedQuestObjectiveProgress } from '../../../shared/types/linkedQuests';
-import { ItemIcon } from '../../../shared/components/ItemIcon';
+import { useLocale } from '../context/LocaleContext';
+import { getLocalizedTraderName } from '../utils/questLocalization';
+import { getQuestMapIndicator } from '../utils/questMapMeta';
+import type { LinkedQuestObjectiveProgress } from '../types/linkedQuests';
+import { ItemIcon } from './ItemIcon';
 
 interface QuestTooltipProps {
   quest: Quest;

@@ -36,8 +36,6 @@
     border-bottom: $border-width-thin solid $border-default;
     overflow: hidden;
 
-    // Colored accent bar, glowing in the map accent color — same look as
-    // `.available-quest-map::before` in the sidebar.
     &::before {
       content: '';
       position: absolute;
@@ -52,8 +50,6 @@
       z-index: 2;
     }
 
-    // Darkening gradient on the left side to keep the title readable
-    // against varied map imagery.
     &::after {
       content: '';
       position: absolute;
@@ -246,5 +242,3 @@
     }
   }
 }
-
-
