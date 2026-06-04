@@ -6,7 +6,7 @@
 import type { HideoutModuleDefinition, HideoutToggleState } from '../types/hideout';
 import type { CachedHideout } from '../../../shared/types/arctracker';
 import type { StoredList } from '../types/list';
-import { listKey, itemKey } from './hideoutStorage';
+import { itemKey } from './hideoutStorage';
 
 interface HideoutListLocalizationOptions {
   formatListName: (moduleName: string, level: number, isNext: boolean) => string;
@@ -41,19 +41,19 @@ export function generateHideoutLists(
       const isNext = levelDef.level === currentLevel + 1;
       const name = options.formatListName(def.name, levelDef.level, isNext);
 
-      const lk = listKey(def.id, levelDef.level);
-      const isListEnabled = toggleState.listEnabled[lk] ?? true;
+      const items = levelDef.requirementItemIds.map(req => ({
+        itemId: req.itemId,
+        quantity: req.quantity,
+        isEnabled: toggleState.itemEnabled[itemKey(def.id, levelDef.level, req.itemId)] ?? true,
+      }));
+      const isListEnabled = items.some(item => item.isEnabled);
 
       lists.push({
         id: `hideout_${def.id}_${levelDef.level}`,
         name,
         type: 'hideout',
         isEnabled: isListEnabled,
-        items: levelDef.requirementItemIds.map(req => ({
-          itemId: req.itemId,
-          quantity: req.quantity,
-          isEnabled: toggleState.itemEnabled[itemKey(def.id, levelDef.level, req.itemId)] ?? true,
-        })),
+        items,
       });
     }
   }

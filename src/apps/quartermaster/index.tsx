@@ -27,7 +27,6 @@ import { computePlan, createEmptyResult } from './utils/planner';
 import { generateHideoutLists } from './utils/hideoutLists';
 import {
   cleanupObsoleteToggles,
-  listKey,
   itemKey,
 } from './utils/hideoutStorage';
 import { generateProjectLists } from './utils/projectLists';
@@ -38,7 +37,6 @@ import {
 import { formatProjectListName } from './utils/localization';
 import {
   cleanupObsoleteProjectToggles,
-  listKey as projectListKey,
   itemKey as projectItemKey,
 } from './utils/projectStorage';
 import {
@@ -689,34 +687,47 @@ export function QuartermasterApp() {
 
   // Hideout list toggle handlers (CR-008)
   const handleToggleHideoutList = useCallback((moduleId: string, level: number) => {
-    const lk = listKey(moduleId, level);
-    const updated: HideoutToggleState = {
-      ...hideoutToggleState,
-      listEnabled: {
-        ...hideoutToggleState.listEnabled,
-        [lk]: !(hideoutToggleState.listEnabled[lk] ?? true),
+    const list = hideoutLists.find(l => l.id === `hideout_${moduleId}_${level}`);
+    const anyEnabled = list ? list.items.some(item => item.isEnabled) : true;
+    const nextItemEnabled = { ...hideoutToggleState.itemEnabled };
+
+    if (list) {
+      for (const item of list.items) {
+        nextItemEnabled[itemKey(moduleId, level, item.itemId)] = !anyEnabled;
+      }
+    }
+
+    patchQuartermasterState({
+      hideoutToggles: {
+        ...hideoutToggleState,
+        itemEnabled: nextItemEnabled,
       },
-    };
-    patchQuartermasterState({ hideoutToggles: updated });
-  }, [hideoutToggleState, patchQuartermasterState]);
+    });
+  }, [hideoutLists, hideoutToggleState, patchQuartermasterState]);
 
   const handleSetHideoutModuleListsEnabled = useCallback((
     moduleId: string,
     levels: number[],
     isEnabled: boolean,
   ) => {
-    const nextListEnabled = { ...hideoutToggleState.listEnabled };
+    const nextItemEnabled = { ...hideoutToggleState.itemEnabled };
+
     for (const level of levels) {
-      nextListEnabled[listKey(moduleId, level)] = isEnabled;
+      const list = hideoutLists.find(l => l.id === `hideout_${moduleId}_${level}`);
+      if (list) {
+        for (const item of list.items) {
+          nextItemEnabled[itemKey(moduleId, level, item.itemId)] = isEnabled;
+        }
+      }
     }
 
     patchQuartermasterState({
       hideoutToggles: {
         ...hideoutToggleState,
-        listEnabled: nextListEnabled,
+        itemEnabled: nextItemEnabled,
       },
     });
-  }, [hideoutToggleState, patchQuartermasterState]);
+  }, [hideoutLists, hideoutToggleState, patchQuartermasterState]);
 
   const handleSetHideoutTrackingMode = useCallback((
     mode: 'enable-all' | 'disable-all' | 'next-only',
@@ -724,7 +735,7 @@ export function QuartermasterApp() {
     const moduleLevels = new Map(
       cachedHideout?.modules.map(module => [module.moduleId, module.currentLevel]) ?? [],
     );
-    const nextListEnabled = { ...hideoutToggleState.listEnabled };
+    const nextItemEnabled = { ...hideoutToggleState.itemEnabled };
 
     for (const list of hideoutLists) {
       const match = /^hideout_(.+)_(\d+)$/.exec(list.id);
@@ -738,13 +749,15 @@ export function QuartermasterApp() {
           ? false
           : level === (moduleLevels.get(moduleId) ?? 0) + 1;
 
-      nextListEnabled[listKey(moduleId, level)] = shouldEnable;
+      for (const item of list.items) {
+        nextItemEnabled[itemKey(moduleId, level, item.itemId)] = shouldEnable;
+      }
     }
 
     patchQuartermasterState({
       hideoutToggles: {
         ...hideoutToggleState,
-        listEnabled: nextListEnabled,
+        itemEnabled: nextItemEnabled,
       },
     });
   }, [cachedHideout, hideoutLists, hideoutToggleState, patchQuartermasterState]);
@@ -763,39 +776,52 @@ export function QuartermasterApp() {
 
   // Project toggle handlers
   const handleToggleProjectList = useCallback((projectId: string, stepIndex: number) => {
-    const lk = projectListKey(projectId, stepIndex);
-    const updated: ProjectToggleState = {
-      ...projectToggleState,
-      listEnabled: {
-        ...projectToggleState.listEnabled,
-        [lk]: !(projectToggleState.listEnabled[lk] ?? true),
+    const list = projectLists.find(l => l.id === `project_${projectId}_${stepIndex}`);
+    const anyEnabled = list ? list.items.some(item => item.isEnabled) : true;
+    const nextItemEnabled = { ...projectToggleState.itemEnabled };
+
+    if (list) {
+      for (const item of list.items) {
+        nextItemEnabled[projectItemKey(projectId, stepIndex, item.itemId)] = !anyEnabled;
+      }
+    }
+
+    patchQuartermasterState({
+      projectToggles: {
+        ...projectToggleState,
+        itemEnabled: nextItemEnabled,
       },
-    };
-    patchQuartermasterState({ projectToggles: updated });
-  }, [projectToggleState, patchQuartermasterState]);
+    });
+  }, [projectLists, projectToggleState, patchQuartermasterState]);
 
   const handleSetProjectStepsEnabled = useCallback((
     projectId: string,
     stepIndices: number[],
     isEnabled: boolean,
   ) => {
-    const nextListEnabled = { ...projectToggleState.listEnabled };
+    const nextItemEnabled = { ...projectToggleState.itemEnabled };
+
     for (const stepIndex of stepIndices) {
-      nextListEnabled[projectListKey(projectId, stepIndex)] = isEnabled;
+      const list = projectLists.find(l => l.id === `project_${projectId}_${stepIndex}`);
+      if (list) {
+        for (const item of list.items) {
+          nextItemEnabled[projectItemKey(projectId, stepIndex, item.itemId)] = isEnabled;
+        }
+      }
     }
 
     patchQuartermasterState({
       projectToggles: {
         ...projectToggleState,
-        listEnabled: nextListEnabled,
+        itemEnabled: nextItemEnabled,
       },
     });
-  }, [projectToggleState, patchQuartermasterState]);
+  }, [projectLists, projectToggleState, patchQuartermasterState]);
 
   const handleSetProjectTrackingMode = useCallback((
     mode: 'enable-all' | 'disable-all' | 'next-only',
   ) => {
-    const nextListEnabled = { ...projectToggleState.listEnabled };
+    const nextItemEnabled = { ...projectToggleState.itemEnabled };
 
     for (const list of projectLists) {
       const match = /^project_(.+)_(\d+)$/.exec(list.id);
@@ -823,13 +849,15 @@ export function QuartermasterApp() {
         }
       }
 
-      nextListEnabled[projectListKey(projectId, stepIndex)] = shouldEnable;
+      for (const item of list.items) {
+        nextItemEnabled[projectItemKey(projectId, stepIndex, item.itemId)] = shouldEnable;
+      }
     }
 
     patchQuartermasterState({
       projectToggles: {
         ...projectToggleState,
-        listEnabled: nextListEnabled,
+        itemEnabled: nextItemEnabled,
       },
     });
   }, [projectLists, projectToggleState, patchQuartermasterState]);
@@ -1041,6 +1069,8 @@ export function QuartermasterApp() {
             questDefinitions={questDefinitions}
             questLists={questLists}
             completedQuestIds={completedQuestIds}
+            plannerResult={plannerResult}
+            itemInsights={itemInsights}
             getOwnedQuantity={getOwnedQuantity}
             hasLinkedSnapshot={linkedQuestSnapshot !== null}
             linkedSource={linkedQuestSnapshot?.source ?? null}

@@ -360,6 +360,12 @@
   }
 }
 
+// Accordion open/close animation
+@keyframes qm-accordion-open {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 // Spin animation for loading indicators
 @keyframes qm-spin {
   from { transform: rotate(0deg); }

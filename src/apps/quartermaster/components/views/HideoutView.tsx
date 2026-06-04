@@ -230,7 +230,7 @@ export function HideoutView({
             title={t('quartermaster.hideout.syncTooltip')}
           >
             <RefreshCw size={16} className={isSyncingHideout ? 'animate-spin' : ''} />
-            {t('quartermaster.common.syncHideouts')}
+            <span className="hideout-view__button-text">{t('quartermaster.common.syncHideouts')}</span>
           </button>
         )}
 
@@ -245,7 +245,7 @@ export function HideoutView({
               title={t('quartermaster.hideout.disableAllTooltip')}
             >
               <EyeOff size={14} />
-              {t('quartermaster.hideout.disableAll')}
+              <span className="hideout-view__button-text">{t('quartermaster.hideout.disableAll')}</span>
             </button>
 
             {!isNextRedundant && (
@@ -257,7 +257,7 @@ export function HideoutView({
                 title={t('quartermaster.hideout.nextOnlyTooltip')}
               >
                 <ListChecks size={14} />
-                {t('quartermaster.hideout.nextOnly')}
+                <span className="hideout-view__button-text">{t('quartermaster.hideout.nextOnly')}</span>
               </button>
             )}
 
@@ -269,7 +269,7 @@ export function HideoutView({
               title={t('quartermaster.hideout.enableAllTooltip')}
             >
               <Eye size={14} />
-              {t('quartermaster.hideout.enableAll')}
+              <span className="hideout-view__button-text">{t('quartermaster.hideout.enableAll')}</span>
             </button>
           </div>
         </div>
@@ -283,7 +283,7 @@ export function HideoutView({
             title={t('quartermaster.hideout.collapseAllTooltip')}
           >
             <ChevronsUp size={16} />
-            {t('quartermaster.hideout.collapseAll')}
+            <span className="hideout-view__button-text">{t('quartermaster.hideout.collapseAll')}</span>
           </button>
 
           <button
@@ -294,7 +294,7 @@ export function HideoutView({
             title={t('quartermaster.hideout.expandAllTooltip')}
           >
             <ChevronsDown size={16} />
-            {t('quartermaster.hideout.expandAll')}
+            <span className="hideout-view__button-text">{t('quartermaster.hideout.expandAll')}</span>
           </button>
         </div>
       </div>
@@ -562,6 +562,9 @@ export function HideoutView({
                                       )}
                                     </div>
                                     <span className="hideout-view__item-name qm-item-name">{item.name}</span>
+                                    <span className="hideout-view__item-progress">
+                                      {owned} / {listItem.quantity}
+                                    </span>
                                   </div>
                                 );
                               })}

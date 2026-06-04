@@ -71,9 +71,6 @@ export function generateProjectLists(
       const isCompleted = allPriorStepsComplete && (progressInfo?.completed ?? false);
       const name = options.formatListName(def.name, phase.index, phase.name);
 
-      const lk = listKey(def.id, phase.index);
-      const isListEnabled = toggleState.listEnabled[lk] ?? !isCompleted;
-
       const goalMap = new Map<string, CachedProjectGoal>();
       if (progressInfo) {
         for (const goal of progressInfo.goals) {
@@ -88,11 +85,12 @@ export function generateProjectLists(
         return {
           itemId: req.itemId,
           quantity,
-          isEnabled: toggleState.itemEnabled[itemKey(def.id, phase.index, req.itemId)] ?? true,
+          isEnabled: toggleState.itemEnabled[itemKey(def.id, phase.index, req.itemId)] ?? !isCompleted,
           submitted: goal?.submitted,
           required: goal ? goal.required : req.quantity,
         };
       });
+      const isListEnabled = items.some(item => item.isEnabled);
 
       lists.push({
         id: `project_${def.id}_${phase.index}`,

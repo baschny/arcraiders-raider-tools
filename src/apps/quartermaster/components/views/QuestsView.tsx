@@ -13,12 +13,16 @@ import { loadQuestSortMode, saveQuestSortMode, type QuestSortMode } from '../../
 import type { ItemsMap } from '../../types/item';
 import type { StoredList } from '../../types/list';
 import type { QuestDefinition } from '../../types/quest';
+import type { PlannerResult } from '../../types/planner';
+import type { ItemInsightsMap } from '../../utils/itemInsights';
 
 interface QuestsViewProps {
   itemsMap: ItemsMap;
   questDefinitions: QuestDefinition[];
   questLists: StoredList[];
   completedQuestIds: Set<string>;
+  plannerResult: PlannerResult;
+  itemInsights: ItemInsightsMap;
   getOwnedQuantity: (itemId: string) => number | null;
   hasLinkedSnapshot: boolean;
   linkedSource: string | null;
@@ -94,6 +98,8 @@ export function QuestsView({
   questDefinitions,
   questLists,
   completedQuestIds,
+  plannerResult,
+  itemInsights,
   getOwnedQuantity,
   hasLinkedSnapshot,
   linkedSource,
@@ -105,6 +111,12 @@ export function QuestsView({
 }: QuestsViewProps) {
   const { t, compareText } = useLocale();
   const [sortMode, setSortMode] = useState<SortMode>(() => loadQuestSortMode());
+
+  const tooltipContext = {
+    itemsMap,
+    plannerResult,
+    itemInsights,
+  };
 
   // Build map: questId → list
   const listByQuestId = useMemo(() => {
@@ -322,6 +334,7 @@ export function QuestsView({
                             quantity={getOwnedQuantity(item.id)}
                             size="sm"
                             showName={false}
+                            tooltipContext={tooltipContext}
                           />
                           {deficit > 0 && (
                             <span className="quests-view__item-missing-badge">

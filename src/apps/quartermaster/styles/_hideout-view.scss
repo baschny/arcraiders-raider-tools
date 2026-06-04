@@ -15,18 +15,12 @@
   }
 
   &__tracking {
+    flex: 1;
     display: flex;
     align-items: center;
     gap: $spacing-md;
+    justify-content: center;
     flex-wrap: wrap;
-  }
-
-  &__actions {
-    display: flex;
-    align-items: center;
-    gap: $spacing-sm;
-    flex: 1;
-    justify-content: flex-end;
   }
 
   &__tracking-label {
@@ -35,6 +29,16 @@
     color: $text-secondary;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+  }
+
+  &__button-text {
+    display: inline;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
   }
 
   &__empty {
@@ -69,13 +73,10 @@
     flex-direction: column;
     flex: 0 0 auto;
     min-width: 0;
-    background: $bg-secondary;
-    border: 1px solid rgba($border-default, 0.9);
-    border-radius: $radius-md;
-    overflow: hidden;
+    border-bottom: 1px solid rgba($border-light, 0.18);
 
     &--complete {
-      border-color: rgba($status-available, 0.35);
+      border-bottom-color: rgba($status-available, 0.35);
     }
 
     &--disabled {
@@ -104,7 +105,7 @@
     position: sticky;
     top: 0;
     z-index: 10;
-    background: $bg-secondary;
+    background: rgba($text-accent, 0.05);
 
     &--clickable {
       cursor: pointer;
@@ -113,7 +114,7 @@
       &:hover,
       &:focus-visible {
         outline: none;
-        background: rgba($text-accent, 0.05);
+        background: rgba($text-accent, 0.1);
 
         .hideout-view__module-title,
         .hideout-view__collapse-icon {
@@ -234,7 +235,8 @@
     align-items: stretch;
     justify-content: flex-start;
     gap: $spacing-md;
-    padding: $spacing-lg;
+    padding: $spacing-md 0;
+    animation: qm-accordion-open 0.2s ease;
   }
 
   &__upgrade {
@@ -243,7 +245,7 @@
     flex: 0 0 auto;
     display: flex;
     flex-direction: column;
-    background: $bg-tertiary;
+    background: $bg-secondary;
     border-radius: $radius-sm;
     padding: $spacing-md;
     border: 1px solid rgba($border-light, 0.18);
@@ -335,14 +337,20 @@
     flex-direction: column;
     align-items: center;
     gap: $spacing-xs;
-    width: 84px;
-    padding: $spacing-xs;
-    background: rgba($bg-dark, 0.25);
+    width: 92px;
+    padding: $spacing-sm;
+    background: $bg-tertiary;
     border-radius: $radius-sm;
     border: 1px solid rgba($border-light, 0.12);
     text-align: center;
     cursor: pointer;
     transition: $transition-default;
+
+    .item-icon__container {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1;
+    }
 
     &:hover,
     &:focus-visible {
@@ -424,6 +432,21 @@
     font-weight: 500;
   }
 
+  &__item-progress {
+    display: block;
+    width: 100%;
+    text-align: center;
+    color: $text-secondary;
+    font-size: 9px;
+    font-weight: 700;
+    line-height: 1;
+    margin-top: auto;
+  }
+
+  &__item--complete &__item-progress {
+    color: $status-available;
+  }
+
   &__qty {
     flex-shrink: 0;
     color: $text-secondary;
@@ -452,6 +475,14 @@
     &__tracking,
     &__tracking > .qm-button {
       width: 100%;
+    }
+
+    &__tracking-label {
+      display: none;
+    }
+
+    &__button-text {
+      display: none;
     }
 
     &__tracking-menu {

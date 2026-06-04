@@ -188,6 +188,13 @@ export function ProjectsView({
     return 'custom';
   })();
 
+  const isNextRedundant = projectLists.length === 0 || projectLists.every((list) => {
+    const parsed = parseProjectListId(list.id);
+    if (!parsed) return true;
+    return getExpectedEnabledForMode('next-only', parsed.projectId, parsed.stepIndex)
+      === getExpectedEnabledForMode('enable-all', parsed.projectId, parsed.stepIndex);
+  });
+
   const sortedDefinitions = [...projectDefinitions]
     .filter((def) => listsByProjectId.has(def.id))
     .sort((a, b) => {
@@ -216,7 +223,7 @@ export function ProjectsView({
             title={t('quartermaster.projects.syncTooltip')}
           >
             <RefreshCw size={16} className={isSyncingProjects ? 'animate-spin' : ''} />
-            {t('quartermaster.projects.syncProjects')}
+            <span className="projects-view__button-text">{t('quartermaster.projects.syncProjects')}</span>
           </button>
         )}
 
@@ -231,9 +238,10 @@ export function ProjectsView({
               title={t('quartermaster.projects.disableAllTooltip')}
             >
               <EyeOff size={14} />
-              {t('quartermaster.projects.disableAll')}
+              <span className="projects-view__button-text">{t('quartermaster.projects.disableAll')}</span>
             </button>
 
+            {!isNextRedundant && (
             <button
               type="button"
               className={['qm-segmented-control__button', currentMode === 'next-only' ? 'is-active' : ''].filter(Boolean).join(' ')}
@@ -242,8 +250,9 @@ export function ProjectsView({
               title={t('quartermaster.projects.nextOnlyTooltip')}
             >
               <ListChecks size={14} />
-              {t('quartermaster.projects.nextOnly')}
+              <span className="projects-view__button-text">{t('quartermaster.projects.nextOnly')}</span>
             </button>
+            )}
 
             <button
               type="button"
@@ -253,7 +262,7 @@ export function ProjectsView({
               title={t('quartermaster.projects.enableAllTooltip')}
             >
               <Eye size={14} />
-              {t('quartermaster.projects.enableAll')}
+              <span className="projects-view__button-text">{t('quartermaster.projects.enableAll')}</span>
             </button>
           </div>
         </div>
@@ -267,7 +276,7 @@ export function ProjectsView({
             title={t('quartermaster.projects.collapseAllTooltip')}
           >
             <ChevronsUp size={16} />
-            {t('quartermaster.projects.collapseAll')}
+            <span className="projects-view__button-text">{t('quartermaster.projects.collapseAll')}</span>
           </button>
 
           <button
@@ -278,7 +287,7 @@ export function ProjectsView({
             title={t('quartermaster.projects.expandAllTooltip')}
           >
             <ChevronsDown size={16} />
-            {t('quartermaster.projects.expandAll')}
+            <span className="projects-view__button-text">{t('quartermaster.projects.expandAll')}</span>
           </button>
         </div>
       </div>
