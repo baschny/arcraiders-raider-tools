@@ -446,138 +446,151 @@ export function HideoutView({
                     )}
                   </div>
 
-                  {isExpanded && moduleLists.length > 0 ? (
-                    <div className="hideout-view__upgrade-list">
-                      {moduleLists.map((list, index) => {
-                        const parsed = parseHideoutListId(list.id);
-                        const level = parsed?.level ?? 0;
-                        const isNext = level === currentLevel + 1;
-                        const isTierAvailable = list.items.every(listItem =>
-                          isItemRequirementAvailable(getOwnedQuantity, listItem.itemId, listItem.quantity),
-                        );
+                  {!isComplete && (
+                    <div
+                      className={[
+                        'hideout-view__accordion',
+                        isExpanded ? 'hideout-view__accordion--open' : '',
+                      ].filter(Boolean).join(' ')}
+                      aria-hidden={!isExpanded}
+                      inert={!isExpanded ? true : undefined}
+                    >
+                      <div className="hideout-view__accordion-inner">
+                        {moduleLists.length > 0 ? (
+                          <div className="hideout-view__upgrade-list">
+                            {moduleLists.map((list, index) => {
+                              const parsed = parseHideoutListId(list.id);
+                              const level = parsed?.level ?? 0;
+                              const isNext = level === currentLevel + 1;
+                              const isTierAvailable = list.items.every(listItem =>
+                                isItemRequirementAvailable(getOwnedQuantity, listItem.itemId, listItem.quantity),
+                              );
 
-                        return (
-                          <div
-                            key={list.id}
-                            className={[
-                              'hideout-view__upgrade',
-                              !list.isEnabled ? 'hideout-view__upgrade--disabled' : '',
-                              isTierAvailable ? 'hideout-view__upgrade--complete' : '',
-                              isNext ? 'hideout-view__upgrade--next' : '',
-                              list.items.length === 1 ? 'hideout-view__upgrade--single' : '',
-                            ].filter(Boolean).join(' ')}
-                          >
-                            <div className="hideout-view__upgrade-header">
-                              <div className="hideout-view__upgrade-heading">
-                                <button
-                                  className="qm-button hideout-view__icon-button hideout-view__upgrade-toggle"
-                                  onClick={() => {
-                                    if (parsed) onToggleHideoutList(parsed.moduleId, parsed.level);
-                                  }}
-                                  title={
-                                    list.isEnabled
-                                      ? t('quartermaster.hideout.disableTierTooltip')
-                                      : t('quartermaster.hideout.enableTierTooltip')
-                                  }
+                              return (
+                                <div
+                                  key={list.id}
+                                  className={[
+                                    'hideout-view__upgrade',
+                                    !list.isEnabled ? 'hideout-view__upgrade--disabled' : '',
+                                    isTierAvailable ? 'hideout-view__upgrade--complete' : '',
+                                    isNext ? 'hideout-view__upgrade--next' : '',
+                                    list.items.length === 1 ? 'hideout-view__upgrade--single' : '',
+                                  ].filter(Boolean).join(' ')}
                                 >
-                                  {list.isEnabled ? <Eye size={16} /> : <EyeOff size={16} />}
-                                </button>
-                                <span className="hideout-view__upgrade-title">
-                                  {getUpgradeLabel(
-                                    level,
-                                    t('quartermaster.hideout.unlock'),
-                                    t('quartermaster.hideout.tierLabel'),
-                                  )}
-                                </span>
-                              </div>
-                              <div className="hideout-view__upgrade-badges">
-                                {isTierAvailable && (
-                                  <span className="hideout-view__complete-pill">
-                                    {t('quartermaster.hideout.completed')}
-                                  </span>
-                                )}
-                              </div>
-                            </div>
-
-                            <div className="hideout-view__items">
-                              {list.items.map(listItem => {
-                                const item = itemsMap[listItem.itemId];
-                                if (!item || !parsed) return null;
-                                const isRequirementAvailable = isItemRequirementAvailable(
-                                  getOwnedQuantity,
-                                  listItem.itemId,
-                                  listItem.quantity,
-                                );
-                                const owned = getOwnedQuantity(listItem.itemId) ?? 0;
-                                const deficit = Math.max(0, listItem.quantity - owned);
-
-                                return (
-                                  <div
-                                    key={`${list.id}-${listItem.itemId}-${index}`}
-                                    className={[
-                                      'hideout-view__item',
-                                      !listItem.isEnabled ? 'hideout-view__item--disabled' : '',
-                                      isRequirementAvailable ? 'hideout-view__item--complete' : '',
-                                    ].filter(Boolean).join(' ')}
-                                    role="button"
-                                    tabIndex={0}
-                                    title={
-                                      listItem.isEnabled
-                                        ? t('quartermaster.hideout.disableItemTooltip')
-                                        : t('quartermaster.hideout.enableItemTooltip')
-                                    }
-                                    onClick={() =>
-                                      onToggleHideoutItem(parsed.moduleId, parsed.level, listItem.itemId)
-                                    }
-                                    onKeyDown={(event) => {
-                                      if (event.key !== 'Enter' && event.key !== ' ') return;
-                                      event.preventDefault();
-                                      onToggleHideoutItem(parsed.moduleId, parsed.level, listItem.itemId);
-                                    }}
-                                  >
-                                    <div className="hideout-view__item-icon-wrapper">
-                                      <ItemIcon
-                                        itemId={item.id}
-                                        name={item.name}
-                                        icon={item.icon}
-                                        rarity={item.rarity}
-                                        quantity={getOwnedQuantity(item.id)}
-                                        size="sm"
-                                        showName={false}
-                                        tooltipContext={tooltipContext}
-                                      />
-                                      {deficit > 0 && (
-                                        <span className="hideout-view__item-missing-badge">
-                                          {deficit}
-                                        </span>
-                                      )}
-                                      {isRequirementAvailable && (
-                                        <span
-                                          className="hideout-view__item-complete"
-                                          title={t('quartermaster.hideout.itemCompleteTooltip')}
-                                          aria-label={t('quartermaster.hideout.itemCompleteTooltip')}
-                                        >
-                                          <CheckCircle2 size={12} />
+                                  <div className="hideout-view__upgrade-header">
+                                    <div className="hideout-view__upgrade-heading">
+                                      <button
+                                        className="qm-button hideout-view__icon-button hideout-view__upgrade-toggle"
+                                        onClick={() => {
+                                          if (parsed) onToggleHideoutList(parsed.moduleId, parsed.level);
+                                        }}
+                                        title={
+                                          list.isEnabled
+                                            ? t('quartermaster.hideout.disableTierTooltip')
+                                            : t('quartermaster.hideout.enableTierTooltip')
+                                        }
+                                      >
+                                        {list.isEnabled ? <Eye size={16} /> : <EyeOff size={16} />}
+                                      </button>
+                                      <span className="hideout-view__upgrade-title">
+                                        {getUpgradeLabel(
+                                          level,
+                                          t('quartermaster.hideout.unlock'),
+                                          t('quartermaster.hideout.tierLabel'),
+                                        )}
+                                      </span>
+                                    </div>
+                                    <div className="hideout-view__upgrade-badges">
+                                      {isTierAvailable && (
+                                        <span className="hideout-view__complete-pill">
+                                          {t('quartermaster.hideout.completed')}
                                         </span>
                                       )}
                                     </div>
-                                    <span className="hideout-view__item-name qm-item-name">{item.name}</span>
-                                    <span className="hideout-view__item-progress">
-                                      {owned} / {listItem.quantity}
-                                    </span>
                                   </div>
-                                );
-                              })}
-                            </div>
+
+                                  <div className="hideout-view__items">
+                                    {list.items.map(listItem => {
+                                      const item = itemsMap[listItem.itemId];
+                                      if (!item || !parsed) return null;
+                                      const isRequirementAvailable = isItemRequirementAvailable(
+                                        getOwnedQuantity,
+                                        listItem.itemId,
+                                        listItem.quantity,
+                                      );
+                                      const owned = getOwnedQuantity(listItem.itemId) ?? 0;
+                                      const deficit = Math.max(0, listItem.quantity - owned);
+
+                                      return (
+                                        <div
+                                          key={`${list.id}-${listItem.itemId}-${index}`}
+                                          className={[
+                                            'hideout-view__item',
+                                            !listItem.isEnabled ? 'hideout-view__item--disabled' : '',
+                                            isRequirementAvailable ? 'hideout-view__item--complete' : '',
+                                          ].filter(Boolean).join(' ')}
+                                          role="button"
+                                          tabIndex={0}
+                                          title={
+                                            listItem.isEnabled
+                                              ? t('quartermaster.hideout.disableItemTooltip')
+                                              : t('quartermaster.hideout.enableItemTooltip')
+                                          }
+                                          onClick={() =>
+                                            onToggleHideoutItem(parsed.moduleId, parsed.level, listItem.itemId)
+                                          }
+                                          onKeyDown={(event) => {
+                                            if (event.key !== 'Enter' && event.key !== ' ') return;
+                                            event.preventDefault();
+                                            onToggleHideoutItem(parsed.moduleId, parsed.level, listItem.itemId);
+                                          }}
+                                        >
+                                          <div className="hideout-view__item-icon-wrapper">
+                                            <ItemIcon
+                                              itemId={item.id}
+                                              name={item.name}
+                                              icon={item.icon}
+                                              rarity={item.rarity}
+                                              quantity={getOwnedQuantity(item.id)}
+                                              size="sm"
+                                              showName={false}
+                                              tooltipContext={tooltipContext}
+                                            />
+                                            {deficit > 0 && (
+                                              <span className="hideout-view__item-missing-badge">
+                                                {deficit}
+                                              </span>
+                                            )}
+                                            {isRequirementAvailable && (
+                                              <span
+                                                className="hideout-view__item-complete"
+                                                title={t('quartermaster.hideout.itemCompleteTooltip')}
+                                                aria-label={t('quartermaster.hideout.itemCompleteTooltip')}
+                                              >
+                                                <CheckCircle2 size={12} />
+                                              </span>
+                                            )}
+                                          </div>
+                                          <span className="hideout-view__item-name qm-item-name">{item.name}</span>
+                                          <span className="hideout-view__item-progress">
+                                            {owned} / {listItem.quantity}
+                                          </span>
+                                        </div>
+                                      );
+                                    })}
+                                  </div>
+                                </div>
+                              );
+                            })}
                           </div>
-                        );
-                      })}
+                        ) : (
+                          <div className="hideout-view__module-empty">
+                            {t('quartermaster.hideout.noPendingUpgrades')}
+                          </div>
+                        )}
+                      </div>
                     </div>
-                  ) : isExpanded && !isComplete ? (
-                    <div className="hideout-view__module-empty">
-                      {t('quartermaster.hideout.noPendingUpgrades')}
-                    </div>
-                  ) : null}
+                  )}
                 </section>
               );
             })}

@@ -425,168 +425,181 @@ export function ProjectsView({
                     )}
                   </div>
 
-                  {isExpanded && projLists.length > 0 ? (
-                    <div className="projects-view__step-list">
-                      {projLists.map((list) => {
-                        const parsed = parseProjectListId(list.id);
-                        const stepIndex = parsed?.stepIndex ?? 0;
-                        const isCurrent = stepIndex === currentStepIndex;
-                        const stepCompleted = progressByProjectId.get(definition.id)?.get(stepIndex) ?? false;
-                        const priorIndices = projectDefinitions
-                          .find((d) => d.id === definition.id)?.phases
-                          .filter((p) => p.index < stepIndex)
-                          .map((p) => p.index) ?? [];
-                        const allPriorComplete = priorIndices.every(
-                          (idx) => progressByProjectId.get(definition.id)?.get(idx) ?? false,
-                        );
-                        const isCompleted = allPriorComplete && stepCompleted;
-                        const isStepAvailable = !isCompleted && isCurrent && list.items.every((li) =>
-                          isItemRequirementAvailable(getOwnedQuantity, li.itemId, li.quantity),
-                        );
+                  {!isProjectComplete && (
+                    <div
+                      className={[
+                        'projects-view__accordion',
+                        isExpanded ? 'projects-view__accordion--open' : '',
+                      ].filter(Boolean).join(' ')}
+                      aria-hidden={!isExpanded}
+                      inert={!isExpanded ? true : undefined}
+                    >
+                      <div className="projects-view__accordion-inner">
+                        {projLists.length > 0 ? (
+                          <div className="projects-view__step-list">
+                            {projLists.map((list) => {
+                              const parsed = parseProjectListId(list.id);
+                              const stepIndex = parsed?.stepIndex ?? 0;
+                              const isCurrent = stepIndex === currentStepIndex;
+                              const stepCompleted = progressByProjectId.get(definition.id)?.get(stepIndex) ?? false;
+                              const priorIndices = projectDefinitions
+                                .find((d) => d.id === definition.id)?.phases
+                                .filter((p) => p.index < stepIndex)
+                                .map((p) => p.index) ?? [];
+                              const allPriorComplete = priorIndices.every(
+                                (idx) => progressByProjectId.get(definition.id)?.get(idx) ?? false,
+                              );
+                              const isCompleted = allPriorComplete && stepCompleted;
+                              const isStepAvailable = !isCompleted && isCurrent && list.items.every((li) =>
+                                isItemRequirementAvailable(getOwnedQuantity, li.itemId, li.quantity),
+                              );
 
-                        const isFuture = currentStepIndex !== null && stepIndex > currentStepIndex;
+                              const isFuture = currentStepIndex !== null && stepIndex > currentStepIndex;
 
-                        return (
-                          <div
-                            key={list.id}
-                            className={[
-                              'projects-view__step-row',
-                              !list.isEnabled && !isCompleted ? 'projects-view__step-row--disabled' : '',
-                              isCompleted ? 'projects-view__step-row--complete' : '',
-                              isCurrent ? 'projects-view__step-row--current' : '',
-                              isFuture ? 'projects-view__step-row--locked' : '',
-                            ].filter(Boolean).join(' ')}
-                          >
-                            <div className="projects-view__step-row-header">
-                              {!isCompleted && (
-                                <button
-                                  className="qm-button projects-view__icon-button projects-view__step-toggle"
-                                  onClick={() => {
-                                    if (parsed) onToggleProjectList(parsed.projectId, parsed.stepIndex);
-                                  }}
-                                  title={
-                                    list.isEnabled
-                                      ? t('quartermaster.projects.disableStepTooltip')
-                                      : t('quartermaster.projects.enableStepTooltip')
-                                  }
+                              return (
+                                <div
+                                  key={list.id}
+                                  className={[
+                                    'projects-view__step-row',
+                                    !list.isEnabled && !isCompleted ? 'projects-view__step-row--disabled' : '',
+                                    isCompleted ? 'projects-view__step-row--complete' : '',
+                                    isCurrent ? 'projects-view__step-row--current' : '',
+                                    isFuture ? 'projects-view__step-row--locked' : '',
+                                  ].filter(Boolean).join(' ')}
                                 >
-                                  {list.isEnabled ? <Eye size={16} /> : <EyeOff size={16} />}
-                                </button>
-                              )}
-                              <span className="projects-view__step-title">{list.name}</span>
-                              <div className="projects-view__row-badges">
-                                {isCurrent && !isCompleted && (
-                                  <span className="projects-view__active-pill">
-                                    <Play size={12} />
-                                    {t('quartermaster.projects.active')}
-                                  </span>
-                                )}
-                                {currentStepIndex !== null && stepIndex > currentStepIndex && (
-                                  <span className="projects-view__lock-pill">
-                                    <Lock size={12} />
-                                    {t('quartermaster.projects.locked')}
-                                  </span>
-                                )}
-                                {isCompleted && (
-                                  <span className="projects-view__complete-pill">
-                                    <CheckCircle2 size={12} />
-                                    {t('quartermaster.hideout.completed')}
-                                  </span>
-                                )}
-                                {isStepAvailable && (
-                                  <span className="projects-view__submit-pill">
-                                    {t('quartermaster.projects.submitAvailable')}
-                                  </span>
-                                )}
-                              </div>
-                            </div>
-
-                            <div className="projects-view__items">
-                              {list.items.map((listItem, idx) => {
-                                const item = itemsMap[listItem.itemId];
-                                if (!item || !parsed) return null;
-                                const isRequirementAvailable = isItemRequirementAvailable(
-                                  getOwnedQuantity,
-                                  listItem.itemId,
-                                  listItem.quantity,
-                                );
-                                const owned = getOwnedQuantity(listItem.itemId) ?? 0;
-                                const deficit = Math.max(0, listItem.quantity - owned);
-                                const hasProgress = listItem.submitted !== undefined && listItem.required !== undefined;
-
-                                const interactiveItemProps = isCompleted
-                                  ? {}
-                                  : {
-                                      role: 'button' as const,
-                                      tabIndex: 0,
-                                      title: listItem.isEnabled
-                                        ? t('quartermaster.projects.disableItemTooltip')
-                                        : t('quartermaster.projects.enableItemTooltip'),
-                                      onClick: () =>
-                                        onToggleProjectItem(parsed.projectId, parsed.stepIndex, listItem.itemId),
-                                      onKeyDown: (event: React.KeyboardEvent) => {
-                                        if (event.key !== 'Enter' && event.key !== ' ') return;
-                                        event.preventDefault();
-                                        onToggleProjectItem(parsed.projectId, parsed.stepIndex, listItem.itemId);
-                                      },
-                                    };
-
-                                return (
-                                  <div
-                                    key={`${list.id}-${listItem.itemId}-${idx}`}
-                                    className={[
-                                      'projects-view__item',
-                                      !listItem.isEnabled && !isCompleted ? 'projects-view__item--disabled' : '',
-                                      isRequirementAvailable ? 'projects-view__item--complete' : '',
-                                      isCompleted ? 'projects-view__item--done' : '',
-                                    ].filter(Boolean).join(' ')}
-                                    {...interactiveItemProps}
-                                  >
-                                    <div className="projects-view__item-icon-wrapper">
-                                      <ItemIcon
-                                        itemId={item.id}
-                                        name={item.name}
-                                        icon={item.icon}
-                                        rarity={item.rarity}
-                                        quantity={getOwnedQuantity(item.id)}
-                                        size="sm"
-                                        showName={false}
-                                        tooltipContext={tooltipContext}
-                                      />
-                                      {deficit > 0 && (
-                                        <span className="projects-view__item-missing-badge">
-                                          {deficit}
+                                  <div className="projects-view__step-row-header">
+                                    {!isCompleted && (
+                                      <button
+                                        className="qm-button projects-view__icon-button projects-view__step-toggle"
+                                        onClick={() => {
+                                          if (parsed) onToggleProjectList(parsed.projectId, parsed.stepIndex);
+                                        }}
+                                        title={
+                                          list.isEnabled
+                                            ? t('quartermaster.projects.disableStepTooltip')
+                                            : t('quartermaster.projects.enableStepTooltip')
+                                        }
+                                      >
+                                        {list.isEnabled ? <Eye size={16} /> : <EyeOff size={16} />}
+                                      </button>
+                                    )}
+                                    <span className="projects-view__step-title">{list.name}</span>
+                                    <div className="projects-view__row-badges">
+                                      {isCurrent && !isCompleted && (
+                                        <span className="projects-view__active-pill">
+                                          <Play size={12} />
+                                          {t('quartermaster.projects.active')}
                                         </span>
                                       )}
-                                      {isRequirementAvailable && (
-                                        <span
-                                          className="projects-view__item-complete"
-                                          title={t('quartermaster.projects.itemCompleteTooltip')}
-                                          aria-label={t('quartermaster.projects.itemCompleteTooltip')}
-                                        >
+                                      {currentStepIndex !== null && stepIndex > currentStepIndex && (
+                                        <span className="projects-view__lock-pill">
+                                          <Lock size={12} />
+                                          {t('quartermaster.projects.locked')}
+                                        </span>
+                                      )}
+                                      {isCompleted && (
+                                        <span className="projects-view__complete-pill">
                                           <CheckCircle2 size={12} />
+                                          {t('quartermaster.hideout.completed')}
+                                        </span>
+                                      )}
+                                      {isStepAvailable && (
+                                        <span className="projects-view__submit-pill">
+                                          {t('quartermaster.projects.submitAvailable')}
                                         </span>
                                       )}
                                     </div>
-                                    <span className="projects-view__item-name qm-item-name">{item.name}</span>
-                                    {hasProgress && (
-                                      <span className="projects-view__item-progress">
-                                        {listItem.submitted} / {listItem.required}
-                                      </span>
-                                    )}
                                   </div>
-                                );
-                              })}
-                            </div>
+
+                                  <div className="projects-view__items">
+                                    {list.items.map((listItem, idx) => {
+                                      const item = itemsMap[listItem.itemId];
+                                      if (!item || !parsed) return null;
+                                      const isRequirementAvailable = isItemRequirementAvailable(
+                                        getOwnedQuantity,
+                                        listItem.itemId,
+                                        listItem.quantity,
+                                      );
+                                      const owned = getOwnedQuantity(listItem.itemId) ?? 0;
+                                      const deficit = Math.max(0, listItem.quantity - owned);
+                                      const hasProgress = listItem.submitted !== undefined && listItem.required !== undefined;
+
+                                      const interactiveItemProps = isCompleted
+                                        ? {}
+                                        : {
+                                            role: 'button' as const,
+                                            tabIndex: 0,
+                                            title: listItem.isEnabled
+                                              ? t('quartermaster.projects.disableItemTooltip')
+                                              : t('quartermaster.projects.enableItemTooltip'),
+                                            onClick: () =>
+                                              onToggleProjectItem(parsed.projectId, parsed.stepIndex, listItem.itemId),
+                                            onKeyDown: (event: React.KeyboardEvent) => {
+                                              if (event.key !== 'Enter' && event.key !== ' ') return;
+                                              event.preventDefault();
+                                              onToggleProjectItem(parsed.projectId, parsed.stepIndex, listItem.itemId);
+                                            },
+                                          };
+
+                                      return (
+                                        <div
+                                          key={`${list.id}-${listItem.itemId}-${idx}`}
+                                          className={[
+                                            'projects-view__item',
+                                            !listItem.isEnabled && !isCompleted ? 'projects-view__item--disabled' : '',
+                                            isRequirementAvailable ? 'projects-view__item--complete' : '',
+                                            isCompleted ? 'projects-view__item--done' : '',
+                                          ].filter(Boolean).join(' ')}
+                                          {...interactiveItemProps}
+                                        >
+                                          <div className="projects-view__item-icon-wrapper">
+                                            <ItemIcon
+                                              itemId={item.id}
+                                              name={item.name}
+                                              icon={item.icon}
+                                              rarity={item.rarity}
+                                              quantity={getOwnedQuantity(item.id)}
+                                              size="sm"
+                                              showName={false}
+                                              tooltipContext={tooltipContext}
+                                            />
+                                            {deficit > 0 && (
+                                              <span className="projects-view__item-missing-badge">
+                                                {deficit}
+                                              </span>
+                                            )}
+                                            {isRequirementAvailable && (
+                                              <span
+                                                className="projects-view__item-complete"
+                                                title={t('quartermaster.projects.itemCompleteTooltip')}
+                                                aria-label={t('quartermaster.projects.itemCompleteTooltip')}
+                                              >
+                                                <CheckCircle2 size={12} />
+                                              </span>
+                                            )}
+                                          </div>
+                                          <span className="projects-view__item-name qm-item-name">{item.name}</span>
+                                          {hasProgress && (
+                                            <span className="projects-view__item-progress">
+                                              {listItem.submitted} / {listItem.required}
+                                            </span>
+                                          )}
+                                        </div>
+                                      );
+                                    })}
+                                  </div>
+                                </div>
+                              );
+                            })}
                           </div>
-                        );
-                      })}
+                        ) : (
+                          <div className="projects-view__module-empty">
+                            {t('quartermaster.hideout.noPendingUpgrades')}
+                          </div>
+                        )}
+                      </div>
                     </div>
-                  ) : isExpanded && !isProjectComplete ? (
-                    <div className="projects-view__module-empty">
-                      {t('quartermaster.hideout.noPendingUpgrades')}
-                    </div>
-                  ) : null}
+                  )}
                 </section>
               );
             })}

@@ -198,13 +198,37 @@
     transition: $transition-default;
   }
 
+  &__accordion {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.32s ease;
+  }
+
+  &__accordion--open {
+    grid-template-rows: 1fr;
+  }
+
+  &__accordion-inner {
+    min-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition:
+      opacity 0.22s ease,
+      transform 0.32s ease;
+  }
+
+  &__accordion--open &__accordion-inner {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
   &__step-list {
     display: flex;
     flex-wrap: wrap;
     gap: $spacing-md;
     padding: $spacing-md 0;
     align-content: flex-start;
-    animation: qm-accordion-open 0.2s ease;
   }
 
   &__step-row {
@@ -464,6 +488,19 @@
     border-radius: $radius-sm;
     color: $text-secondary;
     font-size: $font-sm;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .projects-view {
+    &__accordion,
+    &__accordion-inner {
+      transition: none;
+    }
+
+    &__accordion-inner {
+      transform: none;
+    }
   }
 }
 
