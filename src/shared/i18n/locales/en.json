@@ -464,6 +464,7 @@
     "common": {
       "syncInventory": "Sync Inventory",
       "syncLoadout": "Sync Loadout",
+      "sync": "Sync",
       "syncHideout": "Sync Hideout",
       "syncHideouts": "Sync Hideout",
       "syncBlueprints": "Sync Unlocked Blueprints",
@@ -660,7 +661,6 @@
       "disableAll": "Disable All",
       "noLinkedData": "Link your ArcTracker or Embark account to track quest items.",
       "allComplete": "All incomplete quests have no required items to track.",
-      "syncStatus": "Synced via {source}",
       "syncQuests": "Sync Quests",
       "syncTooltip": "Refresh your quest completion data.",
       "sortBy": "Sort",

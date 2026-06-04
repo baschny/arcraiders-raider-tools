@@ -38,6 +38,14 @@
     letter-spacing: 0.5px;
   }
 
+  &__button-text {
+    display: inline;
+
+    &--sync-short {
+      display: none;
+    }
+  }
+
   &__sync-status {
     font-size: $font-xs;
     color: $text-secondary;
@@ -246,5 +254,28 @@
 
   &__item--complete &__item-progress {
     color: $status-available;
+  }
+}
+
+@media (max-width: 1199.98px) {
+  .quests-view {
+    &__tracking-label,
+    &__sort-label,
+    &__button-text--sync-full {
+      display: none;
+    }
+
+    &__button-text--sync-short {
+      display: inline;
+    }
+  }
+}
+
+@media (max-width: 899.98px) {
+  .quests-view {
+    &__button-text--sync-short,
+    &__button-text--secondary {
+      display: none;
+    }
   }
 }

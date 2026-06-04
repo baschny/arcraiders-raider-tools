@@ -489,6 +489,31 @@
   }
 }
 
+@media (max-width: 1199.98px) {
+  .hideout-view {
+    &__tracking-label {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .hideout-view {
+    &__button-text--action {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 899.98px) {
+  .hideout-view {
+    &__button-text--sync-full,
+    &__button-text--secondary {
+      display: none;
+    }
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hideout-view {
     &__accordion,
@@ -505,21 +530,8 @@
 @media (max-width: 760px) {
   .hideout-view {
     &__controls {
-      align-items: stretch;
-      flex-direction: column;
-    }
-
-    &__tracking,
-    &__tracking > .qm-button {
-      width: 100%;
-    }
-
-    &__tracking-label {
-      display: none;
-    }
-
-    &__button-text {
-      display: none;
+      align-items: center;
+      flex-direction: row;
     }
 
     &__tracking-menu {

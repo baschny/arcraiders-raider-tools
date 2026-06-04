@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
 import {
+  ArrowDownAZ,
   CheckCircle2,
   Eye,
   EyeOff,
@@ -102,8 +103,6 @@ export function QuestsView({
   itemInsights,
   getOwnedQuantity,
   hasLinkedSnapshot,
-  linkedSource,
-  gameDataSource,
   onSyncQuests,
   isSyncingQuests,
   onSetQuestTrackingMode,
@@ -191,11 +190,6 @@ export function QuestsView({
     onSetQuestTrackingMode(mode);
   };
 
-  const displaySource = linkedSource ?? gameDataSource;
-  const sourceLabel = displaySource
-    ? displaySource.charAt(0).toUpperCase() + displaySource.slice(1)
-    : '';
-
   return (
     <div className="quests-view">
       <div className="quests-view__controls">
@@ -206,7 +200,12 @@ export function QuestsView({
           title={t('quartermaster.quests.syncTooltip')}
         >
           <RefreshCw size={16} className={isSyncingQuests ? 'animate-spin' : ''} />
-          {t('quartermaster.quests.syncQuests')}
+          <span className="quests-view__button-text quests-view__button-text--sync-full">
+            {t('quartermaster.quests.syncQuests')}
+          </span>
+          <span className="quests-view__button-text quests-view__button-text--sync-short">
+            {t('quartermaster.common.sync')}
+          </span>
         </button>
 
         <div className="quests-view__tracking">
@@ -220,7 +219,9 @@ export function QuestsView({
               title={t('quartermaster.quests.disableAll')}
             >
               <EyeOff size={14} />
-              {t('quartermaster.quests.disableAll')}
+              <span className="quests-view__button-text quests-view__button-text--secondary">
+                {t('quartermaster.quests.disableAll')}
+              </span>
             </button>
             <button
               type="button"
@@ -230,17 +231,14 @@ export function QuestsView({
               title={t('quartermaster.quests.enableAllPending')}
             >
               <Eye size={14} />
-              {t('quartermaster.quests.enableAllPending')}
+              <span className="quests-view__button-text quests-view__button-text--secondary">
+                {t('quartermaster.quests.enableAllPending')}
+              </span>
             </button>
           </div>
         </div>
 
         <div className="quests-view__actions">
-          {sourceLabel && (
-            <span className="quests-view__sync-status">
-              {t('quartermaster.quests.syncStatus').replace('{source}', sourceLabel)}
-            </span>
-          )}
           <div className="quests-view__sort">
             <span className="quests-view__sort-label">{t('quartermaster.quests.sortBy')}</span>
             <div className="qm-segmented-control">
@@ -250,7 +248,10 @@ export function QuestsView({
                 onClick={() => { setSortMode('alphabetical'); saveQuestSortMode('alphabetical'); }}
                 title={t('quartermaster.quests.sortAlphabetical')}
               >
-                {t('quartermaster.quests.sortAlphabetical')}
+                <ArrowDownAZ size={14} />
+                <span className="quests-view__button-text quests-view__button-text--secondary">
+                  {t('quartermaster.quests.sortAlphabetical')}
+                </span>
               </button>
               <button
                 type="button"
@@ -259,7 +260,9 @@ export function QuestsView({
                 title={t('quartermaster.quests.sortNextQuests')}
               >
                 <ListChecks size={14} />
-                {t('quartermaster.quests.sortNextQuests')}
+                <span className="quests-view__button-text quests-view__button-text--secondary">
+                  {t('quartermaster.quests.sortNextQuests')}
+                </span>
               </button>
             </div>
           </div>

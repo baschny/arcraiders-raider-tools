@@ -223,7 +223,12 @@ export function ProjectsView({
             title={t('quartermaster.projects.syncTooltip')}
           >
             <RefreshCw size={16} className={isSyncingProjects ? 'animate-spin' : ''} />
-            <span className="projects-view__button-text">{t('quartermaster.projects.syncProjects')}</span>
+            <span className="projects-view__button-text projects-view__button-text--sync-full">
+              {t('quartermaster.projects.syncProjects')}
+            </span>
+            <span className="projects-view__button-text projects-view__button-text--sync-short">
+              {t('quartermaster.common.sync')}
+            </span>
           </button>
         )}
 
@@ -238,20 +243,24 @@ export function ProjectsView({
               title={t('quartermaster.projects.disableAllTooltip')}
             >
               <EyeOff size={14} />
-              <span className="projects-view__button-text">{t('quartermaster.projects.disableAll')}</span>
+              <span className="projects-view__button-text projects-view__button-text--secondary">
+                {t('quartermaster.projects.disableAll')}
+              </span>
             </button>
 
             {!isNextRedundant && (
-            <button
-              type="button"
-              className={['qm-segmented-control__button', currentMode === 'next-only' ? 'is-active' : ''].filter(Boolean).join(' ')}
-              onClick={() => onSetProjectTrackingMode('next-only')}
-              disabled={!hasPendingSteps}
-              title={t('quartermaster.projects.nextOnlyTooltip')}
-            >
-              <ListChecks size={14} />
-              <span className="projects-view__button-text">{t('quartermaster.projects.nextOnly')}</span>
-            </button>
+              <button
+                type="button"
+                className={['qm-segmented-control__button', currentMode === 'next-only' ? 'is-active' : ''].filter(Boolean).join(' ')}
+                onClick={() => onSetProjectTrackingMode('next-only')}
+                disabled={!hasPendingSteps}
+                title={t('quartermaster.projects.nextOnlyTooltip')}
+              >
+                <ListChecks size={14} />
+                <span className="projects-view__button-text projects-view__button-text--secondary">
+                  {t('quartermaster.projects.nextOnly')}
+                </span>
+              </button>
             )}
 
             <button
@@ -262,7 +271,9 @@ export function ProjectsView({
               title={t('quartermaster.projects.enableAllTooltip')}
             >
               <Eye size={14} />
-              <span className="projects-view__button-text">{t('quartermaster.projects.enableAll')}</span>
+              <span className="projects-view__button-text projects-view__button-text--secondary">
+                {t('quartermaster.projects.enableAll')}
+              </span>
             </button>
           </div>
         </div>
@@ -276,7 +287,9 @@ export function ProjectsView({
             title={t('quartermaster.projects.collapseAllTooltip')}
           >
             <ChevronsUp size={16} />
-            <span className="projects-view__button-text">{t('quartermaster.projects.collapseAll')}</span>
+            <span className="projects-view__button-text projects-view__button-text--action">
+              {t('quartermaster.projects.collapseAll')}
+            </span>
           </button>
 
           <button
@@ -287,7 +300,9 @@ export function ProjectsView({
             title={t('quartermaster.projects.expandAllTooltip')}
           >
             <ChevronsDown size={16} />
-            <span className="projects-view__button-text">{t('quartermaster.projects.expandAll')}</span>
+            <span className="projects-view__button-text projects-view__button-text--action">
+              {t('quartermaster.projects.expandAll')}
+            </span>
           </button>
         </div>
       </div>
