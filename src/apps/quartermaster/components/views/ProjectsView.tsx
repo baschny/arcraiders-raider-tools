@@ -263,7 +263,7 @@ export function ProjectsView({
             type="button"
             className="qm-button qm-button--ghost"
             onClick={() => setAllProjectsCollapsed(true)}
-            disabled={!cachedProjects && projectLists.length === 0}
+            disabled={projectLists.length === 0}
             title={t('quartermaster.projects.collapseAllTooltip')}
           >
             <ChevronsUp size={16} />
@@ -274,7 +274,7 @@ export function ProjectsView({
             type="button"
             className="qm-button qm-button--ghost"
             onClick={() => setAllProjectsCollapsed(false)}
-            disabled={!cachedProjects && projectLists.length === 0}
+            disabled={projectLists.length === 0}
             title={t('quartermaster.projects.expandAllTooltip')}
           >
             <ChevronsDown size={16} />
@@ -288,14 +288,13 @@ export function ProjectsView({
           <BriefcaseBusiness size={48} />
           <p>{t('quartermaster.projects.syncPrompt')}</p>
         </div>
+      ) : projectLists.length === 0 ? (
+        <div className="qm-empty-state projects-view__empty">
+          <BriefcaseBusiness size={48} />
+          <p>{t('quartermaster.projects.noProjectsAvailable')}</p>
+        </div>
       ) : (
         <>
-          {!hasPendingSteps && (
-            <div className="projects-view__complete-banner">
-              <CheckCircle2 size={18} />
-              {t('quartermaster.projects.allComplete')}
-            </div>
-          )}
 
           <div className="projects-view__modules">
             {sortedDefinitions.map((definition) => {
