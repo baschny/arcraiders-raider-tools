@@ -33,12 +33,12 @@ export function generateHideoutLists(
 
   for (const def of definitions) {
     const cached = moduleMap.get(def.id);
-    if (!cached) continue;
+    const currentLevel = cached?.currentLevel ?? 0;
 
     for (const levelDef of def.levels) {
-      if (levelDef.level <= cached.currentLevel) continue;
+      if (levelDef.level <= currentLevel) continue;
 
-      const isNext = levelDef.level === cached.currentLevel + 1;
+      const isNext = levelDef.level === currentLevel + 1;
       const name = options.formatListName(def.name, levelDef.level, isNext);
 
       const lk = listKey(def.id, levelDef.level);
@@ -71,8 +71,10 @@ export function generateHideoutLists(
     const bLevel = parseInt(bIdParts?.[2] ?? '0', 10);
     const aModuleName = definitionMap.get(aModuleId)?.name ?? a.name;
     const bModuleName = definitionMap.get(bModuleId)?.name ?? b.name;
-    const aIsNext = moduleMap.get(aModuleId)?.currentLevel === aLevel - 1;
-    const bIsNext = moduleMap.get(bModuleId)?.currentLevel === bLevel - 1;
+    const aCurrentLevel = moduleMap.get(aModuleId)?.currentLevel ?? 0;
+    const bCurrentLevel = moduleMap.get(bModuleId)?.currentLevel ?? 0;
+    const aIsNext = aCurrentLevel === aLevel - 1;
+    const bIsNext = bCurrentLevel === bLevel - 1;
 
     if (aIsNext !== bIsNext) return aIsNext ? -1 : 1;
 
