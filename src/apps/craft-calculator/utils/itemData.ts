@@ -35,6 +35,7 @@ export async function loadItems(locale: AppLocale): Promise<ItemDatabase> {
             ...item,
             name: item.name.value,
             originalNameEn: item.name.originalEn,
+            rarity: item.rarity,
           },
         ])
       );

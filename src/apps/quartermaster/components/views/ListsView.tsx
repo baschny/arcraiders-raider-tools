@@ -9,6 +9,7 @@ import type { ItemsMap } from '../../types/item';
 import type { StoredList } from '../../types/list';
 import type { PlannerResult } from '../../types/planner';
 import { ItemIcon } from '../ItemIcon';
+import { ItemIcon as SharedItemIcon } from '../../../../shared/components/ItemIcon';
 import { searchItems } from '../../utils/dataLoader';
 import type { ItemInsightsMap } from '../../utils/itemInsights';
 import { loadSelectedListId, saveSelectedListId } from '../../utils/preferences';
@@ -440,7 +441,7 @@ export function ListsView({
                       className="lists-view__suggestion"
                       onClick={() => handleAddItem(item.id)}
                     >
-                      <img className="lists-view__suggestion-icon" src={item.icon} alt="" />
+                      <SharedItemIcon itemId={item.id} name={item.name} icon={item.icon} rarity={item.rarity} showName={false} className="lists-view__suggestion-icon" />
                       <span className="lists-view__suggestion-name qm-item-name">{item.name}</span>
                     </button>
                   ))}

@@ -3,6 +3,7 @@ import { Info } from 'lucide-react';
 import type { UpgradeBreakdown as UpgradeBreakdownType } from '../utils/weaponTiers';
 import { getItem } from '../utils/itemData';
 import { useLocale } from '../../../shared/context/LocaleContext';
+import { ItemIcon } from '../../../shared/components/ItemIcon';
 
 interface UpgradeBreakdownProps {
   breakdown: UpgradeBreakdownType[];
@@ -32,6 +33,7 @@ export function UpgradeBreakdown({ breakdown }: UpgradeBreakdownProps) {
       materialId,
       materialName: material?.name || materialId,
       imageUrl: material?.imageFilename,
+      rarity: material?.rarity,
       tierAmounts,
       total
     };
@@ -65,11 +67,7 @@ export function UpgradeBreakdown({ breakdown }: UpgradeBreakdownProps) {
                 <tr key={row.materialId}>
                   <td className="material-cell">
                     {row.imageUrl && (
-                      <img
-                        src={row.imageUrl}
-                        alt={row.materialName}
-                        className="material-icon"
-                      />
+                      <ItemIcon itemId={row.materialId} name={row.materialName} icon={row.imageUrl} rarity={row.rarity} showName={false} style={{ '--item-icon-size': '24px' } as React.CSSProperties} />
                     )}
                     <span>{row.materialName}</span>
                   </td>

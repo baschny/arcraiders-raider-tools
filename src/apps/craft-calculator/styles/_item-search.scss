@@ -54,13 +54,8 @@
       }
 
       .item-icon {
-        width: 40px;
-        height: 40px;
-        object-fit: contain;
         margin-right: $spacing-md;
-        background: rgba(0, 0, 0, 0.3);
-        border-radius: $radius-sm;
-        padding: $spacing-xs;
+        flex-shrink: 0;
       }
 
       .item-info {

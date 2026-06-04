@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { useLocale } from '../../../shared/context/LocaleContext';
+import { ItemIcon } from '../../../shared/components/ItemIcon';
 
 interface BlueprintRewardListEntry {
   questId: string;
@@ -76,18 +77,16 @@ export function BlueprintRewardsOverlay({
               onClick={() => onBlueprintClick(entry.questId)}
               title={tm('quests.blueprintsJumpToQuest', { quest: entry.questName })}
             >
-              {entry.blueprintImageFilename ? (
-                <img
-                  className="blueprint-overlay-item-icon"
-                  src={entry.blueprintImageFilename}
-                  alt={entry.blueprintName}
-                  loading="lazy"
-                />
-              ) : (
-                <span className="blueprint-overlay-item-icon blueprint-overlay-item-icon-fallback">
-                  📜
-                </span>
-              )}
+              <ItemIcon
+                itemId={entry.blueprintId}
+                name={entry.blueprintName}
+                icon={entry.blueprintImageFilename || undefined}
+                rarity="Common"
+                isBlueprint={true}
+                showName={false}
+                showQuantity={false}
+                style={{ '--item-icon-size': '26px' } as React.CSSProperties}
+              />
 
               <span className="blueprint-overlay-item-text">
                 <span className="blueprint-overlay-item-name">

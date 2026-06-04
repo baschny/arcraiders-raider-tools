@@ -11,6 +11,7 @@ import { useHoverIntent } from '../../../shared/hooks/useHoverIntent';
 import { usePrioritizedItems } from '../hooks/usePrioritizedItems';
 import { useLocale } from '../../../shared/context/LocaleContext';
 import { ItemTooltip } from './ItemTooltip';
+import { ItemIcon as SharedItemIcon } from '../../../shared/components/ItemIcon';
 
 export interface ItemIconBadge {
   key: string;
@@ -69,8 +70,7 @@ export function ItemIcon({
   // Sort badges by priority (ascending)
   const sortedBadges = useMemo(() => [...badges].sort((a, b) => a.priority - b.priority), [badges]);
 
-  const rarityClass = `rarity-${rarity.toLowerCase()}`;
-  const sizeClass = size !== 'md' ? `item-icon--${size}` : '';
+  const sizePx = { xs: '30px', sm: '80px', md: '84px', lg: '108px' }[size];
   const quantityLabel = quantity === null ? '?' : quantity;
 
   const handleTogglePrioritize = useCallback(
@@ -153,61 +153,56 @@ export function ItemIcon({
 
   return (
     <>
-      <div
-        ref={setRefs}
-        className={`item-icon ${rarityClass} ${sizeClass} ${canShowTooltip ? 'item-icon--has-tooltip' : ''}`}
+      <SharedItemIcon
+        itemId={itemId}
+        name={name}
+        icon={icon}
+        rarity={rarity}
+        showName={showName}
+        showQuantity={false}
         onClick={onClick}
-        style={{ cursor: onClick ? 'pointer' : 'default' }}
+        className={`${canShowTooltip ? 'item-icon--has-tooltip' : ''}`}
+        style={{ '--item-icon-size': sizePx } as React.CSSProperties}
+        containerRef={setRefs}
       >
-        <div className="item-icon__container">
-          <img
-            className="item-icon__image"
-            src={icon}
-            alt={name}
-            loading="lazy"
-          />
+        {canPrioritize && (
+          <button
+            type="button"
+            className={`item-icon__prioritize ${isPrioritized ? 'item-icon__prioritize--active' : ''}`}
+            onClick={handleTogglePrioritize}
+            onKeyDown={handleKeyDown}
+            title={prioritizeTitle}
+            aria-label={prioritizeTitle}
+          >
+            <Star size={14} fill={isPrioritized ? 'currentColor' : 'none'} strokeWidth={2} />
+          </button>
+        )}
 
-          {canPrioritize && (
-            <button
-              type="button"
-              className={`item-icon__prioritize ${isPrioritized ? 'item-icon__prioritize--active' : ''}`}
-              onClick={handleTogglePrioritize}
-              onKeyDown={handleKeyDown}
-              title={prioritizeTitle}
-              aria-label={prioritizeTitle}
-            >
-              <Star size={14} fill={isPrioritized ? 'currentColor' : 'none'} strokeWidth={2} />
-            </button>
-          )}
+        {showRedLock && (
+          <span className="item-icon__lock" title={t('quartermaster.itemIcon.uncraftable')}>
+            <Lock size={12} strokeWidth={2.5} />
+          </span>
+        )}
 
-          {showRedLock && (
-            <span className="item-icon__lock" title={t('quartermaster.itemIcon.uncraftable')}>
-              <Lock size={12} strokeWidth={2.5} />
-            </span>
-          )}
+        {showQuantity && (
+          <span className={`item-icon__quantity ${quantity === null ? 'item-icon__quantity--unknown' : ''}`}>
+            {quantityLabel}
+          </span>
+        )}
 
-          {showQuantity && (
-            <span className={`item-icon__quantity ${quantity === null ? 'item-icon__quantity--unknown' : ''}`}>
-              {quantityLabel}
-            </span>
-          )}
-
-          {sortedBadges.length > 0 && (
-            <div className="item-icon__badges">
-              {sortedBadges.map((badge) => (
-                <span
-                  key={badge.key}
-                  className={`item-icon__badge item-icon__badge--${badge.type}`}
-                >
-                  {badge.label || badge.type}
-                </span>
-              ))}
-            </div>
-          )}
-        </div>
-
-        {showName && <span className="item-icon__name qm-item-name">{name}</span>}
-      </div>
+        {sortedBadges.length > 0 && (
+          <div className="item-icon__badges">
+            {sortedBadges.map((badge) => (
+              <span
+                key={badge.key}
+                className={`item-icon__badge item-icon__badge--${badge.type}`}
+              >
+                {badge.label || badge.type}
+              </span>
+            ))}
+          </div>
+        )}
+      </SharedItemIcon>
 
       {tooltipItem && (
         <ItemTooltip

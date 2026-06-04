@@ -1,29 +1,7 @@
 @use 'variables' as *;
+@use '../../../shared/styles/item-icon' as item-icon-shared;
 
 .item-icon {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: $spacing-xs;
-
-  &__container {
-    position: relative;
-    width: $item-icon-md;
-    height: $item-icon-md;
-    border-radius: $radius-sm;
-    border: 1px solid $border-default;
-    background-size: cover;
-    background-position: center;
-    overflow: hidden;
-  }
-
-  &__image {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    padding: 6px;
-  }
-
   &__quantity {
     position: absolute;
     bottom: 3px;
@@ -142,95 +120,12 @@
     }
   }
 
-  &__name {
-    font-size: $font-sm;
-    color: $text-primary;
-    text-align: center;
-    max-width: $item-icon-md + 30px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-
-    // In raid view: allow multiline word-wrap
-    .in-raid-view & {
-      white-space: normal;
-      word-wrap: break-word;
-      overflow-wrap: break-word;
-      line-height: 1.3;
-      max-width: $item-icon-md + 30px;
-      min-height: 3.9em;
-    }
-  }
-
-  // Size variants
-  &--xs {
-    .item-icon__container {
-      width: 30px;
-      height: 30px;
-      border-radius: 3px;
-    }
-    .item-icon__image {
-      padding: 2px;
-    }
-    .item-icon__name {
-      max-width: 54px;
-      font-size: 9px;
-      letter-spacing: 0.6px;
-    }
-    .item-icon__quantity {
-      font-size: 9px;
-      min-width: 14px;
-      padding: 1px 4px;
-    }
-  }
-  &--sm {
-    .item-icon__container {
-      width: $item-icon-sm;
-      height: $item-icon-sm;
-    }
-    .item-icon__name {
-      max-width: $item-icon-sm + 24px;
-      font-size: $font-xs;
-    }
-    .item-icon__quantity {
-      font-size: $font-xs;
-    }
-  }
-
-  &--lg {
-    .item-icon__container {
-      width: $item-icon-lg;
-      height: $item-icon-lg;
-    }
-    .item-icon__name {
-      max-width: $item-icon-lg + 36px;
-      font-size: 13px;
-    }
-  }
-
-  // Rarity variants (spec 7.7.3)
-  &.rarity-common .item-icon__container {
-    border-color: $rarity-common-border;
-    background-image: url('/images/rarities/common_bg.png');
-  }
-
-  &.rarity-uncommon .item-icon__container {
-    border-color: $rarity-uncommon-border;
-    background-image: url('/images/rarities/uncommon_bg.png');
-  }
-
-  &.rarity-rare .item-icon__container {
-    border-color: $rarity-rare-border;
-    background-image: url('/images/rarities/rare_bg.png');
-  }
-
-  &.rarity-epic .item-icon__container {
-    border-color: $rarity-epic-border;
-    background-image: url('/images/rarities/epic_bg.png');
-  }
-
-  &.rarity-legendary .item-icon__container {
-    border-color: $rarity-legendary-border;
-    background-image: url('/images/rarities/legendary_bg.png');
+  // In raid view: allow multiline word-wrap for name
+  .in-raid-view &__name {
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.3;
+    min-height: 3.9em;
   }
 }

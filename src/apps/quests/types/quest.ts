@@ -1,12 +1,8 @@
 import type { Node } from 'reactflow';
 import type { LinkedQuestObjectiveProgress } from '../../../shared/types/linkedQuests';
+import type { ItemRarity } from '../../../shared/types/item';
 
-export type QuestItemRarity =
-  | 'Common'
-  | 'Uncommon'
-  | 'Rare'
-  | 'Epic'
-  | 'Legendary';
+export type QuestItemRarity = ItemRarity;
 
 export interface BlueprintReward {
   id: string;

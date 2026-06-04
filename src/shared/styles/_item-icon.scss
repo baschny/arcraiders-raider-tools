@@ -1,0 +1,100 @@
+@use 'variables' as *;
+
+.item-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-xs;
+
+  &__container {
+    position: relative;
+    border-radius: $radius-sm;
+    border: $border-width-default solid $border-default;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    width: var(--item-icon-size, 56px);
+    height: var(--item-icon-size, 56px);
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: var(--item-icon-padding, 4px);
+  }
+
+  &__name {
+    font-size: $font-sm;
+    color: $text-primary;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__quantity {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.75);
+    color: $text-primary;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 1px 5px;
+    border-radius: 3px;
+  }
+
+  &__quantity--unknown {
+    color: #a6a6a6;
+    font-weight: 500;
+  }
+}
+
+// Blueprint variant
+.item-icon--blueprint .item-icon__container {
+  background-image: url('/images/rarities/blueprint_bg.png');
+  border-color: $rarity-common-border;
+}
+
+// Rarity variants
+.rarity-common .item-icon__container {
+  border-color: $rarity-common-border;
+  background-image: url('/images/rarities/common_bg.png');
+}
+
+.rarity-uncommon .item-icon__container {
+  border-color: $rarity-uncommon-border;
+  background-image: url('/images/rarities/uncommon_bg.png');
+}
+
+.rarity-rare .item-icon__container {
+  border-color: $rarity-rare-border;
+  background-image: url('/images/rarities/rare_bg.png');
+}
+
+.rarity-epic .item-icon__container {
+  border-color: $rarity-epic-border;
+  background-image: url('/images/rarities/epic_bg.png');
+}
+
+.rarity-legendary .item-icon__container {
+  border-color: $rarity-legendary-border;
+  background-image: url('/images/rarities/legendary_bg.png');
+}
+
+// Clickable variant
+.item-icon--clickable {
+  cursor: pointer;
+  user-select: none;
+
+  &:hover .item-icon__container {
+    border-color: $text-accent;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $text-accent;
+    outline-offset: 2px;
+    border-radius: $radius-sm;
+  }
+}

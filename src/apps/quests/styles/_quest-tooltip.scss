@@ -1,14 +1,6 @@
 @use 'sass:color';
 @use 'variables' as *;
 
-// Rarity colors (mirrors the Quartermaster palette so quest tiles feel
-// consistent with the Quartermaster item tiles).
-$rarity-common-border: #9e9e9e;
-$rarity-uncommon-border: #4caf50;
-$rarity-rare-border: #2196f3;
-$rarity-epic-border: #9c27b0;
-$rarity-legendary-border: #ff9800;
-
 .quest-tooltip {
   position: fixed;
   z-index: 12000;
@@ -236,89 +228,23 @@ $rarity-legendary-border: #ff9800;
     display: flex;
     flex-wrap: wrap;
     gap: $spacing-sm;
+
+    .item-icon {
+      width: 72px;
+    }
+
+    .item-icon__name {
+      max-width: 72px;
+      white-space: normal;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      line-height: 1.25;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
   }
 }
 
-.quest-item-tile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: $spacing-xs;
-  width: 72px;
 
-  &__container {
-    position: relative;
-    width: 64px;
-    height: 64px;
-    border-radius: $radius-sm;
-    border: $border-width-default solid $border-default;
-    background-size: cover;
-    background-position: center;
-    overflow: hidden;
-  }
-
-  &__image {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    padding: 4px;
-  }
-
-  &__placeholder {
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.04);
-  }
-
-  &__quantity {
-    position: absolute;
-    bottom: 2px;
-    right: 2px;
-    background: rgba(0, 0, 0, 0.8);
-    color: #ffffff;
-    font-size: 11px;
-    font-weight: 700;
-    padding: 1px 5px;
-    border-radius: 3px;
-    min-width: 20px;
-    text-align: center;
-  }
-
-  &__name {
-    font-size: $font-sm;
-    color: $text-primary;
-    text-align: center;
-    line-height: 1.25;
-    word-break: break-word;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  // Rarity variants (gradient background + colored border)
-  &.rarity-common .quest-item-tile__container {
-    border-color: $rarity-common-border;
-    background-image: url('/images/rarities/common_bg.png');
-  }
-
-  &.rarity-uncommon .quest-item-tile__container {
-    border-color: $rarity-uncommon-border;
-    background-image: url('/images/rarities/uncommon_bg.png');
-  }
-
-  &.rarity-rare .quest-item-tile__container {
-    border-color: $rarity-rare-border;
-    background-image: url('/images/rarities/rare_bg.png');
-  }
-
-  &.rarity-epic .quest-item-tile__container {
-    border-color: $rarity-epic-border;
-    background-image: url('/images/rarities/epic_bg.png');
-  }
-
-  &.rarity-legendary .quest-item-tile__container {
-    border-color: $rarity-legendary-border;
-    background-image: url('/images/rarities/legendary_bg.png');
-  }
-}

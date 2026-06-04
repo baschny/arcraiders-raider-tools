@@ -2398,7 +2398,8 @@
       "craftQuantity": 1,
       "stackSize": 1,
       "value": 100,
-      "weight": 0.25
+      "weight": 0.25,
+      "questItem": true
     },
     "chemicals": {
       "name": {
@@ -3630,7 +3631,8 @@
       "craftQuantity": 1,
       "stackSize": 1,
       "value": 100,
-      "weight": 0
+      "weight": 0,
+      "questItem": true
     },
     "electrical_components": {
       "name": {
@@ -4831,7 +4833,8 @@
       "craftQuantity": 1,
       "stackSize": 1,
       "value": 100,
-      "weight": 0.25
+      "weight": 0.25,
+      "questItem": true
     },
     "fossilized_lightning": {
       "name": {
@@ -6523,7 +6526,8 @@
       "craftQuantity": 1,
       "stackSize": 1,
       "value": 100,
-      "weight": 0.25
+      "weight": 0.25,
+      "questItem": true
     },
     "light_ammo": {
       "name": {
@@ -7052,7 +7056,8 @@
       "craftQuantity": 1,
       "stackSize": 1,
       "value": 100,
-      "weight": 0.25
+      "weight": 0.25,
+      "questItem": true
     },
     "marano_market_business_card": {
       "name": {
@@ -7700,7 +7705,8 @@
       "craftQuantity": 1,
       "stackSize": 1,
       "value": 100,
-      "weight": 0.25
+      "weight": 0.25,
+      "questItem": true
     },
     "olives": {
       "name": {
@@ -8393,7 +8399,8 @@
       "craftQuantity": 1,
       "stackSize": 1,
       "value": 100,
-      "weight": 0
+      "weight": 0,
+      "questItem": true
     },
     "projector": {
       "name": {
@@ -8547,6 +8554,7 @@
       "blueprintLocked": false,
       "craftQuantity": 1,
       "stackSize": 1,
+      "value": 100,
       "weight": 0.5,
       "questItem": true
     },
@@ -9247,8 +9255,7 @@
       "craftQuantity": 1,
       "stackSize": 1,
       "value": 100,
-      "weight": 0.25,
-      "questItem": true
+      "weight": 0.25
     },
     "riven_tides_hotel_keycard_no_102": {
       "name": {
@@ -9265,8 +9272,7 @@
       "craftQuantity": 1,
       "stackSize": 1,
       "value": 100,
-      "weight": 0.5,
-      "questItem": true
+      "weight": 0.5
     },
     "riven_tides_hotel_keycard_no_107": {
       "name": {
@@ -9283,8 +9289,7 @@
       "craftQuantity": 1,
       "stackSize": 1,
       "value": 100,
-      "weight": 0.5,
-      "questItem": true
+      "weight": 0.5
     },
     "riven_tides_hotel_keycard_no_113": {
       "name": {
@@ -9301,8 +9306,7 @@
       "craftQuantity": 1,
       "stackSize": 1,
       "value": 100,
-      "weight": 0.5,
-      "questItem": true
+      "weight": 0.5
     },
     "riven_tides_hotel_keycard_no_205": {
       "name": {
@@ -9319,8 +9323,7 @@
       "craftQuantity": 1,
       "stackSize": 1,
       "value": 100,
-      "weight": 0.5,
-      "questItem": true
+      "weight": 0.5
     },
     "riven_tides_hotel_keycard_no_208": {
       "name": {
@@ -9337,8 +9340,7 @@
       "craftQuantity": 1,
       "stackSize": 1,
       "value": 100,
-      "weight": 0.5,
-      "questItem": true
+      "weight": 0.5
     },
     "riven_tides_hotel_keycard_no_311": {
       "name": {
@@ -9355,8 +9357,7 @@
       "craftQuantity": 1,
       "stackSize": 1,
       "value": 100,
-      "weight": 0.5,
-      "questItem": true
+      "weight": 0.5
     },
     "riven_tides_hotel_keycard_no_404": {
       "name": {
@@ -9373,8 +9374,7 @@
       "craftQuantity": 1,
       "stackSize": 1,
       "value": 100,
-      "weight": 0.5,
-      "questItem": true
+      "weight": 0.5
     },
     "riven_tides_secure_storage_keycard": {
       "name": {
@@ -9391,8 +9391,7 @@
       "craftQuantity": 1,
       "stackSize": 1,
       "value": 100,
-      "weight": 0.25,
-      "questItem": true
+      "weight": 0.25
     },
     "rocket_thruster": {
       "name": {

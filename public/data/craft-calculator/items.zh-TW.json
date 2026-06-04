@@ -11,7 +11,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Legendary"
   },
   "adrenaline_shot": {
     "id": "adrenaline_shot",
@@ -28,7 +29,8 @@
       "plastic_parts": 3
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "advanced_arc_powercell": {
     "id": "advanced_arc_powercell",
@@ -42,7 +44,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "advanced_electrical_components": {
     "id": "advanced_electrical_components",
@@ -59,7 +62,8 @@
       "wires": 3
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "advanced_mechanical_components": {
     "id": "advanced_mechanical_components",
@@ -76,7 +80,23 @@
       "steel_spring": 2
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
+  },
+  "agave": {
+    "id": "agave",
+    "name": {
+      "value": "龍舌蘭",
+      "originalEn": "Agave"
+    },
+    "stackSize": 10,
+    "value": 1000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/agave.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "agave_juice": {
     "id": "agave_juice",
@@ -93,21 +113,8 @@
       "empty_wine_bottle": 1
     },
     "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "agave": {
-    "id": "agave",
-    "name": {
-      "value": "龍舌蘭",
-      "originalEn": "Agave"
-    },
-    "stackSize": 10,
-    "value": 1000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/agave.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "air_freshener": {
     "id": "air_freshener",
@@ -121,7 +128,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "alarm_clock": {
     "id": "alarm_clock",
@@ -135,7 +143,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "alien_duck": {
     "id": "alien_duck",
@@ -149,7 +158,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "ancient_fort_security_code": {
     "id": "ancient_fort_security_code",
@@ -163,7 +173,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "angled_grip_i": {
     "id": "angled_grip_i",
@@ -180,21 +191,8 @@
       "plastic_parts": 6
     },
     "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "angled_grip_ii_blueprint": {
-    "id": "angled_grip_ii_blueprint",
-    "name": {
-      "value": "斜角握把 II 藍圖",
-      "originalEn": "Angled Grip II Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/angled_grip_ii_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "angled_grip_ii": {
     "id": "angled_grip_ii",
@@ -211,21 +209,23 @@
       "mechanical_components": 2
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
-  "angled_grip_iii_blueprint": {
-    "id": "angled_grip_iii_blueprint",
+  "angled_grip_ii_blueprint": {
+    "id": "angled_grip_ii_blueprint",
     "name": {
-      "value": "斜角握把 III 藍圖",
-      "originalEn": "Angled Grip III Blueprint"
+      "value": "斜角握把 II 藍圖",
+      "originalEn": "Angled Grip II Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/angled_grip_iii_blueprint.png",
+    "imageFilename": "https://cdn.arctracker.io/items/v2/angled_grip_ii_blueprint.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "angled_grip_iii": {
     "id": "angled_grip_iii",
@@ -242,7 +242,23 @@
       "mod_components": 2
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
+  },
+  "angled_grip_iii_blueprint": {
+    "id": "angled_grip_iii_blueprint",
+    "name": {
+      "value": "斜角握把 III 藍圖",
+      "originalEn": "Angled Grip III Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/angled_grip_iii_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "antiseptic": {
     "id": "antiseptic",
@@ -259,7 +275,8 @@
       "great_mullein": 2
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "anvil_blueprint": {
     "id": "anvil_blueprint",
@@ -273,7 +290,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "anvil_i": {
     "id": "anvil_i",
@@ -290,7 +308,8 @@
       "simple_gun_parts": 6
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "anvil_ii": {
     "id": "anvil_ii",
@@ -307,7 +326,8 @@
       "mechanical_components": 3,
       "simple_gun_parts": 1
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "anvil_iii": {
     "id": "anvil_iii",
@@ -324,7 +344,8 @@
       "heavy_gun_parts": 1,
       "mechanical_components": 4
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "anvil_iv": {
     "id": "anvil_iv",
@@ -341,7 +362,8 @@
       "heavy_gun_parts": 1,
       "mechanical_components": 4
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "anvil_splitter": {
     "id": "anvil_splitter",
@@ -355,21 +377,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "aphelion_blueprint": {
-    "id": "aphelion_blueprint",
-    "name": {
-      "value": "遠日點藍圖",
-      "originalEn": "Aphelion Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/aphelion_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Legendary"
   },
   "aphelion": {
     "id": "aphelion",
@@ -387,7 +396,23 @@
       "matriarch_reactor": 1
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Legendary"
+  },
+  "aphelion_blueprint": {
+    "id": "aphelion_blueprint",
+    "name": {
+      "value": "遠日點藍圖",
+      "originalEn": "Aphelion Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/aphelion_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "apricot": {
     "id": "apricot",
@@ -401,7 +426,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "arc_alloy": {
     "id": "arc_alloy",
@@ -415,7 +441,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "arc_circuitry": {
     "id": "arc_circuitry",
@@ -431,7 +458,8 @@
       "arc_alloy": 8
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "arc_coolant": {
     "id": "arc_coolant",
@@ -445,7 +473,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "arc_flex_rubber": {
     "id": "arc_flex_rubber",
@@ -459,7 +488,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "arc_motion_core": {
     "id": "arc_motion_core",
@@ -475,7 +505,8 @@
       "arc_alloy": 8
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "arc_performance_steel": {
     "id": "arc_performance_steel",
@@ -489,7 +520,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "arc_powercell": {
     "id": "arc_powercell",
@@ -503,7 +535,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "arc_synthetic_resin": {
     "id": "arc_synthetic_resin",
@@ -517,7 +550,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "arc_thermo_lining": {
     "id": "arc_thermo_lining",
@@ -531,7 +565,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "arpeggio_i": {
     "id": "arpeggio_i",
@@ -548,7 +583,8 @@
       "simple_gun_parts": 6
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "arpeggio_ii": {
     "id": "arpeggio_ii",
@@ -565,7 +601,8 @@
       "mechanical_components": 4,
       "simple_gun_parts": 1
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "arpeggio_iii": {
     "id": "arpeggio_iii",
@@ -582,7 +619,8 @@
       "mechanical_components": 5,
       "medium_gun_parts": 1
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "arpeggio_iv": {
     "id": "arpeggio_iv",
@@ -599,7 +637,8 @@
       "mechanical_components": 5,
       "medium_gun_parts": 1
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "assessor_matrix": {
     "id": "assessor_matrix",
@@ -613,7 +652,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
   "assorted_seeds": {
     "id": "assorted_seeds",
@@ -627,7 +667,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "bandage": {
     "id": "bandage",
@@ -643,21 +684,8 @@
       "fabric": 5
     },
     "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "barricade_kit_blueprint": {
-    "id": "barricade_kit_blueprint",
-    "name": {
-      "value": "路障套組藍圖",
-      "originalEn": "Barricade Kit Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/barricade_kit_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "barricade_kit": {
     "id": "barricade_kit",
@@ -673,7 +701,23 @@
       "mechanical_components": 1
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
+  },
+  "barricade_kit_blueprint": {
+    "id": "barricade_kit_blueprint",
+    "name": {
+      "value": "路障套組藍圖",
+      "originalEn": "Barricade Kit Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/barricade_kit_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "bastion_cell": {
     "id": "bastion_cell",
@@ -687,7 +731,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
   "battery": {
     "id": "battery",
@@ -701,7 +746,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "bettina_blueprint": {
     "id": "bettina_blueprint",
@@ -715,7 +761,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "bettina_i": {
     "id": "bettina_i",
@@ -733,7 +780,8 @@
       "heavy_gun_parts": 3
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
   "bettina_ii": {
     "id": "bettina_ii",
@@ -750,7 +798,8 @@
       "advanced_mechanical_components": 1,
       "heavy_gun_parts": 2
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
   "bettina_iii": {
     "id": "bettina_iii",
@@ -767,7 +816,8 @@
       "advanced_mechanical_components": 1,
       "heavy_gun_parts": 2
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
   "bettina_iv": {
     "id": "bettina_iv",
@@ -784,7 +834,8 @@
       "advanced_mechanical_components": 2,
       "heavy_gun_parts": 2
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
   "bicycle_pump": {
     "id": "bicycle_pump",
@@ -798,7 +849,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "binoculars": {
     "id": "binoculars",
@@ -815,38 +867,8 @@
       "rubber_parts": 4
     },
     "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "blaze_grenade_blueprint": {
-    "id": "blaze_grenade_blueprint",
-    "name": {
-      "value": "烈焰手榴彈藍圖",
-      "originalEn": "Blaze Grenade Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/blaze_grenade_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "blaze_grenade_trap": {
-    "id": "blaze_grenade_trap",
-    "name": {
-      "value": "烈焰手榴彈陷阱",
-      "originalEn": "Blaze Grenade Trap"
-    },
-    "stackSize": 3,
-    "value": 1000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/blaze_grenade_trap.png",
-    "isWeapon": null,
-    "recipe": {
-      "blaze_grenade": 1,
-      "wires": 1
-    },
-    "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "blaze_grenade": {
     "id": "blaze_grenade",
@@ -863,7 +885,41 @@
       "oil": 2
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
+  },
+  "blaze_grenade_blueprint": {
+    "id": "blaze_grenade_blueprint",
+    "name": {
+      "value": "烈焰手榴彈藍圖",
+      "originalEn": "Blaze Grenade Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/blaze_grenade_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1,
+    "rarity": "Common"
+  },
+  "blaze_grenade_trap": {
+    "id": "blaze_grenade_trap",
+    "name": {
+      "value": "烈焰手榴彈陷阱",
+      "originalEn": "Blaze Grenade Trap"
+    },
+    "stackSize": 3,
+    "value": 1000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/blaze_grenade_trap.png",
+    "isWeapon": null,
+    "recipe": {
+      "blaze_grenade": 1,
+      "wires": 1
+    },
+    "upgradeCost": null,
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "bloated_tuna_can": {
     "id": "bloated_tuna_can",
@@ -877,7 +933,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "blue_gate_cellar_key": {
     "id": "blue_gate_cellar_key",
@@ -891,7 +948,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "blue_gate_communication_tower_key": {
     "id": "blue_gate_communication_tower_key",
@@ -905,7 +963,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "blue_gate_confiscation_room_key": {
     "id": "blue_gate_confiscation_room_key",
@@ -919,7 +978,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
   "blue_gate_village_key": {
     "id": "blue_gate_village_key",
@@ -933,21 +993,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "blue_light_stick_blueprint": {
-    "id": "blue_light_stick_blueprint",
-    "name": {
-      "value": "藍色螢光棒藍圖",
-      "originalEn": "Blue Light Stick Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/blue_light_stick_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "blue_light_stick": {
     "id": "blue_light_stick",
@@ -963,7 +1010,23 @@
       "chemicals": 3
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
+  },
+  "blue_light_stick_blueprint": {
+    "id": "blue_light_stick_blueprint",
+    "name": {
+      "value": "藍色螢光棒藍圖",
+      "originalEn": "Blue Light Stick Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/blue_light_stick_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "bobcat_blueprint": {
     "id": "bobcat_blueprint",
@@ -977,7 +1040,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "bobcat_i": {
     "id": "bobcat_i",
@@ -995,7 +1059,8 @@
       "magnetic_accelerator": 1
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
   "bobcat_ii": {
     "id": "bobcat_ii",
@@ -1012,7 +1077,8 @@
       "advanced_mechanical_components": 2,
       "light_gun_parts": 1
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
   "bobcat_iii": {
     "id": "bobcat_iii",
@@ -1029,7 +1095,8 @@
       "advanced_mechanical_components": 2,
       "light_gun_parts": 3
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
   "bobcat_iv": {
     "id": "bobcat_iv",
@@ -1046,7 +1113,8 @@
       "advanced_mechanical_components": 2,
       "light_gun_parts": 3
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
   "bombardier_cell": {
     "id": "bombardier_cell",
@@ -1060,7 +1128,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
   "breathtaking_snow_globe": {
     "id": "breathtaking_snow_globe",
@@ -1074,7 +1143,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
   "broken_flashlight": {
     "id": "broken_flashlight",
@@ -1088,7 +1158,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "broken_guidance_system": {
     "id": "broken_guidance_system",
@@ -1102,7 +1173,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "broken_handheld_radio": {
     "id": "broken_handheld_radio",
@@ -1116,7 +1188,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "broken_taser": {
     "id": "broken_taser",
@@ -1130,7 +1203,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "buried_city_hospital_key": {
     "id": "buried_city_hospital_key",
@@ -1144,7 +1218,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "buried_city_jkv_employee_access_card": {
     "id": "buried_city_jkv_employee_access_card",
@@ -1158,7 +1233,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "buried_city_residential_master_key": {
     "id": "buried_city_residential_master_key",
@@ -1172,7 +1248,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "buried_city_town_hall_key": {
     "id": "buried_city_town_hall_key",
@@ -1186,7 +1263,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
   "burletta_blueprint": {
     "id": "burletta_blueprint",
@@ -1200,7 +1278,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "burletta_i": {
     "id": "burletta_i",
@@ -1217,7 +1296,8 @@
       "simple_gun_parts": 3
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "burletta_ii": {
     "id": "burletta_ii",
@@ -1234,7 +1314,8 @@
       "mechanical_components": 3,
       "simple_gun_parts": 1
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "burletta_iii": {
     "id": "burletta_iii",
@@ -1251,7 +1332,8 @@
       "mechanical_components": 3,
       "simple_gun_parts": 1
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "burletta_iv": {
     "id": "burletta_iv",
@@ -1268,7 +1350,8 @@
       "light_gun_parts": 1,
       "mechanical_components": 4
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "burned_arc_circuitry": {
     "id": "burned_arc_circuitry",
@@ -1282,7 +1365,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "burnt_out_candles": {
     "id": "burnt_out_candles",
@@ -1296,7 +1380,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "camera_lens": {
     "id": "camera_lens",
@@ -1310,7 +1395,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "candle_holder": {
     "id": "candle_holder",
@@ -1324,7 +1410,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "candleberries": {
     "id": "candleberries",
@@ -1338,7 +1425,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "canister": {
     "id": "canister",
@@ -1352,7 +1440,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "canto_blueprint": {
     "id": "canto_blueprint",
@@ -1366,7 +1455,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "canto_i": {
     "id": "canto_i",
@@ -1384,7 +1474,8 @@
       "medium_gun_parts": 3
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "canto_ii": {
     "id": "canto_ii",
@@ -1401,7 +1492,8 @@
       "advanced_mechanical_components": 1,
       "medium_gun_parts": 2
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "canto_iii": {
     "id": "canto_iii",
@@ -1418,7 +1510,8 @@
       "advanced_mechanical_components": 1,
       "medium_gun_parts": 2
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "canto_iv": {
     "id": "canto_iv",
@@ -1435,7 +1528,8 @@
       "advanced_mechanical_components": 2,
       "medium_gun_parts": 2
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "cat_bed": {
     "id": "cat_bed",
@@ -1449,7 +1543,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "celeste_journal": {
     "id": "celeste_journal",
@@ -1463,7 +1558,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "chemicals": {
     "id": "chemicals",
@@ -1477,7 +1573,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "coffee_pot": {
     "id": "coffee_pot",
@@ -1491,7 +1588,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "combat_mk1": {
     "id": "combat_mk1",
@@ -1508,7 +1606,8 @@
       "rubber_parts": 6
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "combat_mk2": {
     "id": "combat_mk2",
@@ -1525,21 +1624,8 @@
       "magnet": 3
     },
     "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "combat_mk3_aggressive_blueprint": {
-    "id": "combat_mk3_aggressive_blueprint",
-    "name": {
-      "value": "戰鬥 Mk. 3（進攻型）藍圖",
-      "originalEn": "Combat Mk. 3 (Aggressive) Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/combat_mk3_aggressive_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "combat_mk3_aggressive": {
     "id": "combat_mk3_aggressive",
@@ -1556,21 +1642,23 @@
       "processor": 3
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
-  "combat_mk3_flanking_blueprint": {
-    "id": "combat_mk3_flanking_blueprint",
+  "combat_mk3_aggressive_blueprint": {
+    "id": "combat_mk3_aggressive_blueprint",
     "name": {
-      "value": "戰鬥 Mk. 3（側翼型）藍圖",
-      "originalEn": "Combat Mk. 3 (Flanking) Blueprint"
+      "value": "戰鬥 Mk. 3（進攻型）藍圖",
+      "originalEn": "Combat Mk. 3 (Aggressive) Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/combat_mk3_flanking_blueprint.png",
+    "imageFilename": "https://cdn.arctracker.io/items/v2/combat_mk3_aggressive_blueprint.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "combat_mk3_flanking": {
     "id": "combat_mk3_flanking",
@@ -1587,7 +1675,23 @@
       "processor": 3
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
+  },
+  "combat_mk3_flanking_blueprint": {
+    "id": "combat_mk3_flanking_blueprint",
+    "name": {
+      "value": "戰鬥 Mk. 3（側翼型）藍圖",
+      "originalEn": "Combat Mk. 3 (Flanking) Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/combat_mk3_flanking_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "comet_igniter": {
     "id": "comet_igniter",
@@ -1601,7 +1705,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "compensator_i": {
     "id": "compensator_i",
@@ -1618,21 +1723,8 @@
       "wires": 1
     },
     "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "compensator_ii_blueprint": {
-    "id": "compensator_ii_blueprint",
-    "name": {
-      "value": "補償器II藍圖",
-      "originalEn": "Compensator II Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/compensator_ii_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "compensator_ii": {
     "id": "compensator_ii",
@@ -1649,21 +1741,23 @@
       "wires": 4
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
-  "compensator_iii_blueprint": {
-    "id": "compensator_iii_blueprint",
+  "compensator_ii_blueprint": {
+    "id": "compensator_ii_blueprint",
     "name": {
-      "value": "補償器 III 藍圖",
-      "originalEn": "Compensator III Blueprint"
+      "value": "補償器II藍圖",
+      "originalEn": "Compensator II Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/compensator_iii_blueprint.png",
+    "imageFilename": "https://cdn.arctracker.io/items/v2/compensator_ii_blueprint.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "compensator_iii": {
     "id": "compensator_iii",
@@ -1680,21 +1774,23 @@
       "wires": 8
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
-  "complex_gun_parts_blueprint": {
-    "id": "complex_gun_parts_blueprint",
+  "compensator_iii_blueprint": {
+    "id": "compensator_iii_blueprint",
     "name": {
-      "value": "複雜槍械零件藍圖",
-      "originalEn": "Complex Gun Parts Blueprint"
+      "value": "補償器 III 藍圖",
+      "originalEn": "Compensator III Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/complex_gun_parts_blueprint.png",
+    "imageFilename": "https://cdn.arctracker.io/items/v2/compensator_iii_blueprint.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "complex_gun_parts": {
     "id": "complex_gun_parts",
@@ -1712,7 +1808,23 @@
       "medium_gun_parts": 2
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
+  },
+  "complex_gun_parts_blueprint": {
+    "id": "complex_gun_parts_blueprint",
+    "name": {
+      "value": "複雜槍械零件藍圖",
+      "originalEn": "Complex Gun Parts Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/complex_gun_parts_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "coolant": {
     "id": "coolant",
@@ -1726,7 +1838,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "cooling_coil": {
     "id": "cooling_coil",
@@ -1740,7 +1853,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "cooling_fan": {
     "id": "cooling_fan",
@@ -1754,7 +1868,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "cracked_bioscanner": {
     "id": "cracked_bioscanner",
@@ -1768,21 +1883,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "crash_mat_blueprint": {
-    "id": "crash_mat_blueprint",
-    "name": {
-      "value": "降落墊藍圖",
-      "originalEn": "Crash Mat Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/crash_mat_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "crash_mat": {
     "id": "crash_mat",
@@ -1799,7 +1901,23 @@
       "electrical_components": 1
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
+  },
+  "crash_mat_blueprint": {
+    "id": "crash_mat_blueprint",
+    "name": {
+      "value": "降落墊藍圖",
+      "originalEn": "Crash Mat Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/crash_mat_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "crude_explosives": {
     "id": "crude_explosives",
@@ -1815,7 +1933,8 @@
       "chemicals": 6
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "crumpled_plastic_bottle": {
     "id": "crumpled_plastic_bottle",
@@ -1829,7 +1948,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "dam_control_tower_key": {
     "id": "dam_control_tower_key",
@@ -1843,7 +1963,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
   "dam_controlled_access_zone_key": {
     "id": "dam_controlled_access_zone_key",
@@ -1857,7 +1978,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "dam_staff_room_key": {
     "id": "dam_staff_room_key",
@@ -1871,7 +1993,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "dam_surveillance_key": {
     "id": "dam_surveillance_key",
@@ -1885,7 +2008,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "dam_testing_annex_key": {
     "id": "dam_testing_annex_key",
@@ -1899,7 +2023,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "damaged_arc_motion_core": {
     "id": "damaged_arc_motion_core",
@@ -1913,7 +2038,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "damaged_arc_powercell": {
     "id": "damaged_arc_powercell",
@@ -1927,7 +2053,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "damaged_fireball_burner": {
     "id": "damaged_fireball_burner",
@@ -1941,7 +2068,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "damaged_heat_sink": {
     "id": "damaged_heat_sink",
@@ -1955,7 +2083,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "damaged_hornet_driver": {
     "id": "damaged_hornet_driver",
@@ -1969,7 +2098,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "damaged_rocketeer_driver": {
     "id": "damaged_rocketeer_driver",
@@ -1983,7 +2113,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "damaged_snitch_scanner": {
     "id": "damaged_snitch_scanner",
@@ -1997,7 +2128,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "damaged_tick_pod": {
     "id": "damaged_tick_pod",
@@ -2011,7 +2143,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "damaged_wasp_driver": {
     "id": "damaged_wasp_driver",
@@ -2025,7 +2158,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "dart_board": {
     "id": "dart_board",
@@ -2039,21 +2173,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "deadline_blueprint": {
-    "id": "deadline_blueprint",
-    "name": {
-      "value": "最後期限藍圖",
-      "originalEn": "Deadline Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/deadline_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "deadline": {
     "id": "deadline",
@@ -2071,21 +2192,23 @@
       "explosive_compound": 3
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
-  "defibrillator_blueprint": {
-    "id": "defibrillator_blueprint",
+  "deadline_blueprint": {
+    "id": "deadline_blueprint",
     "name": {
-      "value": "除顫器藍圖",
-      "originalEn": "Defibrillator Blueprint"
+      "value": "最後期限藍圖",
+      "originalEn": "Deadline Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/defibrillator_blueprint.png",
+    "imageFilename": "https://cdn.arctracker.io/items/v2/deadline_blueprint.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "defibrillator": {
     "id": "defibrillator",
@@ -2102,7 +2225,23 @@
       "plastic_parts": 9
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
+  },
+  "defibrillator_blueprint": {
+    "id": "defibrillator_blueprint",
+    "name": {
+      "value": "除顫器藍圖",
+      "originalEn": "Defibrillator Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/defibrillator_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "deflated_football": {
     "id": "deflated_football",
@@ -2116,7 +2255,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "degraded_arc_rubber": {
     "id": "degraded_arc_rubber",
@@ -2130,7 +2270,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "diving_goggles": {
     "id": "diving_goggles",
@@ -2144,7 +2285,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "dockmasters_detector": {
     "id": "dockmasters_detector",
@@ -2158,7 +2300,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "dodgers_note": {
     "id": "dodgers_note",
@@ -2172,7 +2315,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "dog_collar": {
     "id": "dog_collar",
@@ -2186,21 +2330,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "dolabra_blueprint": {
-    "id": "dolabra_blueprint",
-    "name": {
-      "value": "Dolabra 藍圖",
-      "originalEn": "Dolabra Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/dolabra_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "dolabra": {
     "id": "dolabra",
@@ -2218,7 +2349,23 @@
       "vaporizer_regulator": 2
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Legendary"
+  },
+  "dolabra_blueprint": {
+    "id": "dolabra_blueprint",
+    "name": {
+      "value": "Dolabra 藍圖",
+      "originalEn": "Dolabra Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/dolabra_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "doodly_duck": {
     "id": "doodly_duck",
@@ -2232,7 +2379,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "door_blocker": {
     "id": "door_blocker",
@@ -2249,7 +2397,8 @@
       "rubber_parts": 3
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "dried_out_arc_resin": {
     "id": "dried_out_arc_resin",
@@ -2263,7 +2412,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "duct_tape": {
     "id": "duct_tape",
@@ -2277,7 +2427,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "durable_cloth": {
     "id": "durable_cloth",
@@ -2293,7 +2444,8 @@
       "fabric": 14
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "dusty_film_reel": {
     "id": "dusty_film_reel",
@@ -2307,7 +2459,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "electrical_components": {
     "id": "electrical_components",
@@ -2324,7 +2477,8 @@
       "rubber_parts": 4
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "empty_wine_bottle": {
     "id": "empty_wine_bottle",
@@ -2338,7 +2492,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "energy_clip": {
     "id": "energy_clip",
@@ -2355,21 +2510,8 @@
       "battery": 2
     },
     "upgradeCost": null,
-    "craftQuantity": 5
-  },
-  "equalizer_blueprint": {
-    "id": "equalizer_blueprint",
-    "name": {
-      "value": "均衡者藍圖",
-      "originalEn": "Equalizer Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/equalizer_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 5,
+    "rarity": "Rare"
   },
   "equalizer": {
     "id": "equalizer",
@@ -2387,7 +2529,23 @@
       "queen_reactor": 1
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Legendary"
+  },
+  "equalizer_blueprint": {
+    "id": "equalizer_blueprint",
+    "name": {
+      "value": "均衡者藍圖",
+      "originalEn": "Equalizer Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/equalizer_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "espresso_machine_parts": {
     "id": "espresso_machine_parts",
@@ -2401,7 +2559,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "esr_analyzer": {
     "id": "esr_analyzer",
@@ -2415,7 +2574,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "exodus_modules": {
     "id": "exodus_modules",
@@ -2429,7 +2589,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
   "experimental_seed_sample": {
     "id": "experimental_seed_sample",
@@ -2443,7 +2604,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "expired_pasta": {
     "id": "expired_pasta",
@@ -2457,7 +2619,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "expired_respirator": {
     "id": "expired_respirator",
@@ -2471,7 +2634,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "expired_security_code": {
     "id": "expired_security_code",
@@ -2485,7 +2649,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "explosive_compound": {
     "id": "explosive_compound",
@@ -2502,21 +2667,8 @@
       "oil": 2
     },
     "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "explosive_mine_blueprint": {
-    "id": "explosive_mine_blueprint",
-    "name": {
-      "value": "爆炸地雷 藍圖",
-      "originalEn": "Explosive Mine Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/explosive_mine_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "explosive_mine": {
     "id": "explosive_mine",
@@ -2533,7 +2685,23 @@
       "sensors": 1
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
+  },
+  "explosive_mine_blueprint": {
+    "id": "explosive_mine_blueprint",
+    "name": {
+      "value": "爆炸地雷 藍圖",
+      "originalEn": "Explosive Mine Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/explosive_mine_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "extended_barrel_i": {
     "id": "extended_barrel_i",
@@ -2550,21 +2718,8 @@
       "wires": 3
     },
     "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "extended_barrel_ii_blueprint": {
-    "id": "extended_barrel_ii_blueprint",
-    "name": {
-      "value": "加長槍管 藍圖 II",
-      "originalEn": "Extended Barrel II Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": null,
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "extended_barrel_ii": {
     "id": "extended_barrel_ii",
@@ -2581,21 +2736,23 @@
       "wires": 6
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
-  "extended_barrel_iii_blueprint": {
-    "id": "extended_barrel_iii_blueprint",
+  "extended_barrel_ii_blueprint": {
+    "id": "extended_barrel_ii_blueprint",
     "name": {
-      "value": "加長槍管 藍圖 III",
-      "originalEn": "Extended Barrel III Blueprint"
+      "value": "加長槍管 藍圖 II",
+      "originalEn": "Extended Barrel II Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/extended_barrel_blueprint.png",
+    "imageFilename": null,
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "extended_barrel_iii": {
     "id": "extended_barrel_iii",
@@ -2612,7 +2769,23 @@
       "wires": 8
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
+  },
+  "extended_barrel_iii_blueprint": {
+    "id": "extended_barrel_iii_blueprint",
+    "name": {
+      "value": "加長槍管 藍圖 III",
+      "originalEn": "Extended Barrel III Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/extended_barrel_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "extended_light_mag_i": {
     "id": "extended_light_mag_i",
@@ -2629,21 +2802,8 @@
       "steel_spring": 1
     },
     "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "extended_light_mag_ii_blueprint": {
-    "id": "extended_light_mag_ii_blueprint",
-    "name": {
-      "value": "延長輕型彈匣 II 藍圖",
-      "originalEn": "Extended Light Mag II Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/extended_light_mag_ii_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "extended_light_mag_ii": {
     "id": "extended_light_mag_ii",
@@ -2660,21 +2820,23 @@
       "steel_spring": 3
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
-  "extended_light_mag_iii_blueprint": {
-    "id": "extended_light_mag_iii_blueprint",
+  "extended_light_mag_ii_blueprint": {
+    "id": "extended_light_mag_ii_blueprint",
     "name": {
-      "value": "延長輕型彈匣 III 藍圖",
-      "originalEn": "Extended Light Mag III Blueprint"
+      "value": "延長輕型彈匣 II 藍圖",
+      "originalEn": "Extended Light Mag II Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/extended_light_mag_iii_blueprint.png",
+    "imageFilename": "https://cdn.arctracker.io/items/v2/extended_light_mag_ii_blueprint.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "extended_light_mag_iii": {
     "id": "extended_light_mag_iii",
@@ -2691,7 +2853,23 @@
       "steel_spring": 5
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
+  },
+  "extended_light_mag_iii_blueprint": {
+    "id": "extended_light_mag_iii_blueprint",
+    "name": {
+      "value": "延長輕型彈匣 III 藍圖",
+      "originalEn": "Extended Light Mag III Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/extended_light_mag_iii_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "extended_medium_mag_i": {
     "id": "extended_medium_mag_i",
@@ -2708,21 +2886,8 @@
       "steel_spring": 1
     },
     "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "extended_medium_mag_ii_blueprint": {
-    "id": "extended_medium_mag_ii_blueprint",
-    "name": {
-      "value": "延長中型彈匣II藍圖",
-      "originalEn": "Extended Medium Mag II Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/extended_medium_mag_ii_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "extended_medium_mag_ii": {
     "id": "extended_medium_mag_ii",
@@ -2739,21 +2904,23 @@
       "steel_spring": 3
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
-  "extended_medium_mag_iii_blueprint": {
-    "id": "extended_medium_mag_iii_blueprint",
+  "extended_medium_mag_ii_blueprint": {
+    "id": "extended_medium_mag_ii_blueprint",
     "name": {
-      "value": "延長中型彈匣III藍圖",
-      "originalEn": "Extended Medium Mag III Blueprint"
+      "value": "延長中型彈匣II藍圖",
+      "originalEn": "Extended Medium Mag II Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/extended_medium_mag_iii_blueprint.png",
+    "imageFilename": "https://cdn.arctracker.io/items/v2/extended_medium_mag_ii_blueprint.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "extended_medium_mag_iii": {
     "id": "extended_medium_mag_iii",
@@ -2770,7 +2937,23 @@
       "steel_spring": 5
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
+  },
+  "extended_medium_mag_iii_blueprint": {
+    "id": "extended_medium_mag_iii_blueprint",
+    "name": {
+      "value": "延長中型彈匣III藍圖",
+      "originalEn": "Extended Medium Mag III Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/extended_medium_mag_iii_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "extended_shotgun_mag_i": {
     "id": "extended_shotgun_mag_i",
@@ -2787,21 +2970,8 @@
       "steel_spring": 1
     },
     "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "extended_shotgun_mag_ii_blueprint": {
-    "id": "extended_shotgun_mag_ii_blueprint",
-    "name": {
-      "value": "延長霰彈槍彈匣 II 藍圖",
-      "originalEn": "Extended Shotgun Mag II Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/extended_shotgun_mag_ii_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "extended_shotgun_mag_ii": {
     "id": "extended_shotgun_mag_ii",
@@ -2818,21 +2988,23 @@
       "steel_spring": 3
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
-  "extended_shotgun_mag_iii_blueprint": {
-    "id": "extended_shotgun_mag_iii_blueprint",
+  "extended_shotgun_mag_ii_blueprint": {
+    "id": "extended_shotgun_mag_ii_blueprint",
     "name": {
-      "value": "擴展霰彈槍彈匣 III 藍圖",
-      "originalEn": "Extended Shotgun Mag III Blueprint"
+      "value": "延長霰彈槍彈匣 II 藍圖",
+      "originalEn": "Extended Shotgun Mag II Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/extended_shotgun_mag_iii_blueprint.png",
+    "imageFilename": "https://cdn.arctracker.io/items/v2/extended_shotgun_mag_ii_blueprint.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "extended_shotgun_mag_iii": {
     "id": "extended_shotgun_mag_iii",
@@ -2849,7 +3021,23 @@
       "steel_spring": 5
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
+  },
+  "extended_shotgun_mag_iii_blueprint": {
+    "id": "extended_shotgun_mag_iii_blueprint",
+    "name": {
+      "value": "擴展霰彈槍彈匣 III 藍圖",
+      "originalEn": "Extended Shotgun Mag III Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/extended_shotgun_mag_iii_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "fabric": {
     "id": "fabric",
@@ -2863,7 +3051,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "faded_photograph": {
     "id": "faded_photograph",
@@ -2877,7 +3066,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "familiar_duck": {
     "id": "familiar_duck",
@@ -2891,7 +3081,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
   "ferro_i": {
     "id": "ferro_i",
@@ -2908,7 +3099,8 @@
       "rubber_parts": 2
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "ferro_ii": {
     "id": "ferro_ii",
@@ -2924,7 +3116,8 @@
     "upgradeCost": {
       "metal_parts": 7
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "ferro_iii": {
     "id": "ferro_iii",
@@ -2941,7 +3134,8 @@
       "metal_parts": 9,
       "simple_gun_parts": 1
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "ferro_iv": {
     "id": "ferro_iv",
@@ -2958,7 +3152,8 @@
       "mechanical_components": 1,
       "simple_gun_parts": 1
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "fertilizer": {
     "id": "fertilizer",
@@ -2972,7 +3167,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "film_reel": {
     "id": "film_reel",
@@ -2986,7 +3182,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "fine_wristwatch": {
     "id": "fine_wristwatch",
@@ -3000,7 +3197,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "fireball_burner": {
     "id": "fireball_burner",
@@ -3014,7 +3212,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "firecracker": {
     "id": "firecracker",
@@ -3031,7 +3230,8 @@
       "plastic_parts": 4
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "firefly_burner": {
     "id": "firefly_burner",
@@ -3045,21 +3245,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "fireworks_box_blueprint": {
-    "id": "fireworks_box_blueprint",
-    "name": {
-      "value": "煙火箱藍圖",
-      "originalEn": "Fireworks Box Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/fireworks_box_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "fireworks_box": {
     "id": "fireworks_box",
@@ -3076,7 +3263,23 @@
       "pop_trigger": 3
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
+  },
+  "fireworks_box_blueprint": {
+    "id": "fireworks_box_blueprint",
+    "name": {
+      "value": "煙火箱藍圖",
+      "originalEn": "Fireworks Box Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/fireworks_box_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "first_wave_compass": {
     "id": "first_wave_compass",
@@ -3090,7 +3293,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "first_wave_rations": {
     "id": "first_wave_rations",
@@ -3104,7 +3308,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "first_wave_tape": {
     "id": "first_wave_tape",
@@ -3118,7 +3323,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "flame_spray": {
     "id": "flame_spray",
@@ -3135,7 +3341,8 @@
       "fireball_burner": 1
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "flashy_duck": {
     "id": "flashy_duck",
@@ -3149,7 +3356,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "flow_controller": {
     "id": "flow_controller",
@@ -3163,7 +3371,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "flushing_terminal_key": {
     "id": "flushing_terminal_key",
@@ -3177,7 +3386,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "fossilized_lightning": {
     "id": "fossilized_lightning",
@@ -3191,7 +3401,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
   "free_loadout_augment": {
     "id": "free_loadout_augment",
@@ -3205,7 +3416,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "frequency_modulation_box": {
     "id": "frequency_modulation_box",
@@ -3219,7 +3431,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "fried_motherboard": {
     "id": "fried_motherboard",
@@ -3233,7 +3446,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "fruit_mix": {
     "id": "fruit_mix",
@@ -3251,7 +3465,8 @@
       "prickly_pear": 1
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "frying_pan": {
     "id": "frying_pan",
@@ -3265,7 +3480,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "garlic_press": {
     "id": "garlic_press",
@@ -3279,24 +3495,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "gas_grenade_trap": {
-    "id": "gas_grenade_trap",
-    "name": {
-      "value": "毒氣手榴彈陷阱",
-      "originalEn": "Gas Grenade Trap"
-    },
-    "stackSize": 3,
-    "value": 300,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/gas_grenade_trap.png",
-    "isWeapon": null,
-    "recipe": {
-      "gas_grenade": 1,
-      "wires": 1
-    },
-    "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "gas_grenade": {
     "id": "gas_grenade",
@@ -3313,21 +3513,26 @@
       "rubber_parts": 2
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
-  "gas_mine_blueprint": {
-    "id": "gas_mine_blueprint",
+  "gas_grenade_trap": {
+    "id": "gas_grenade_trap",
     "name": {
-      "value": "毒氣地雷 藍圖",
-      "originalEn": "Gas Mine Blueprint"
+      "value": "毒氣手榴彈陷阱",
+      "originalEn": "Gas Grenade Trap"
     },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/gas_mine_blueprint.png",
+    "stackSize": 3,
+    "value": 300,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/gas_grenade_trap.png",
     "isWeapon": null,
-    "recipe": null,
+    "recipe": {
+      "gas_grenade": 1,
+      "wires": 1
+    },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "gas_mine": {
     "id": "gas_mine",
@@ -3344,7 +3549,23 @@
       "rubber_parts": 2
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
+  },
+  "gas_mine_blueprint": {
+    "id": "gas_mine_blueprint",
+    "name": {
+      "value": "毒氣地雷 藍圖",
+      "originalEn": "Gas Mine Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/gas_mine_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "geiger_counter": {
     "id": "geiger_counter",
@@ -3358,7 +3579,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
   "gentle_duck": {
     "id": "gentle_duck",
@@ -3372,7 +3594,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "great_mullein": {
     "id": "great_mullein",
@@ -3386,21 +3609,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "green_light_stick_blueprint": {
-    "id": "green_light_stick_blueprint",
-    "name": {
-      "value": "綠色螢光棒藍圖",
-      "originalEn": "Green Light Stick Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/green_light_stick_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "green_light_stick": {
     "id": "green_light_stick",
@@ -3416,7 +3626,23 @@
       "chemicals": 3
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
+  },
+  "green_light_stick_blueprint": {
+    "id": "green_light_stick_blueprint",
+    "name": {
+      "value": "綠色螢光棒藍圖",
+      "originalEn": "Green Light Stick Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/green_light_stick_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "hairpin_i": {
     "id": "hairpin_i",
@@ -3433,7 +3659,8 @@
       "plastic_parts": 5
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "hairpin_ii": {
     "id": "hairpin_ii",
@@ -3449,7 +3676,8 @@
     "upgradeCost": {
       "metal_parts": 8
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "hairpin_iii": {
     "id": "hairpin_iii",
@@ -3466,7 +3694,8 @@
       "metal_parts": 9,
       "simple_gun_parts": 1
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "hairpin_iv": {
     "id": "hairpin_iv",
@@ -3483,7 +3712,8 @@
       "mechanical_components": 1,
       "simple_gun_parts": 1
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "headphones": {
     "id": "headphones",
@@ -3497,7 +3727,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "heavy_ammo": {
     "id": "heavy_ammo",
@@ -3514,7 +3745,8 @@
       "metal_parts": 3
     },
     "upgradeCost": null,
-    "craftQuantity": 10
+    "craftQuantity": 10,
+    "rarity": "Common"
   },
   "heavy_fuze_grenade": {
     "id": "heavy_fuze_grenade",
@@ -3531,21 +3763,8 @@
       "explosive_compound": 1
     },
     "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "heavy_gun_parts_blueprint": {
-    "id": "heavy_gun_parts_blueprint",
-    "name": {
-      "value": "重型槍械零件藍圖",
-      "originalEn": "Heavy Gun Parts Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/heavy_gun_parts_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "heavy_gun_parts": {
     "id": "heavy_gun_parts",
@@ -3561,7 +3780,23 @@
       "simple_gun_parts": 4
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
+  },
+  "heavy_gun_parts_blueprint": {
+    "id": "heavy_gun_parts_blueprint",
+    "name": {
+      "value": "重型槍械零件藍圖",
+      "originalEn": "Heavy Gun Parts Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/heavy_gun_parts_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "heavy_shield": {
     "id": "heavy_shield",
@@ -3578,7 +3813,8 @@
       "voltage_converter": 2
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
   "herbal_bandage": {
     "id": "herbal_bandage",
@@ -3595,7 +3831,8 @@
       "great_mullein": 1
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "hidden_bunker_key": {
     "id": "hidden_bunker_key",
@@ -3609,7 +3846,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "horizontal_grip": {
     "id": "horizontal_grip",
@@ -3623,7 +3861,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
   "hornet_driver": {
     "id": "hornet_driver",
@@ -3637,7 +3876,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "household_cleaner": {
     "id": "household_cleaner",
@@ -3651,7 +3891,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "hullcracker_blueprint": {
     "id": "hullcracker_blueprint",
@@ -3665,7 +3906,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "hullcracker_i": {
     "id": "hullcracker_i",
@@ -3683,7 +3925,8 @@
       "magnetic_accelerator": 1
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
   "hullcracker_ii": {
     "id": "hullcracker_ii",
@@ -3700,7 +3943,8 @@
       "advanced_mechanical_components": 1,
       "heavy_gun_parts": 2
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
   "hullcracker_iii": {
     "id": "hullcracker_iii",
@@ -3717,7 +3961,8 @@
       "advanced_mechanical_components": 2,
       "heavy_gun_parts": 1
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
   "hullcracker_iv": {
     "id": "hullcracker_iv",
@@ -3734,7 +3979,8 @@
       "advanced_mechanical_components": 2,
       "heavy_gun_parts": 3
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
   "humidifier": {
     "id": "humidifier",
@@ -3748,7 +3994,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "ice_cream_scooper": {
     "id": "ice_cream_scooper",
@@ -3762,7 +4009,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "il_toro_blueprint": {
     "id": "il_toro_blueprint",
@@ -3776,7 +4024,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "il_toro_i": {
     "id": "il_toro_i",
@@ -3793,7 +4042,8 @@
       "simple_gun_parts": 6
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "il_toro_ii": {
     "id": "il_toro_ii",
@@ -3810,7 +4060,8 @@
       "mechanical_components": 3,
       "simple_gun_parts": 1
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "il_toro_iii": {
     "id": "il_toro_iii",
@@ -3827,7 +4078,8 @@
       "heavy_gun_parts": 1,
       "mechanical_components": 4
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "il_toro_iv": {
     "id": "il_toro_iv",
@@ -3844,7 +4096,8 @@
       "heavy_gun_parts": 1,
       "mechanical_components": 4
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "impure_arc_coolant": {
     "id": "impure_arc_coolant",
@@ -3858,7 +4111,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "industrial_battery": {
     "id": "industrial_battery",
@@ -3872,7 +4126,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "industrial_charger": {
     "id": "industrial_charger",
@@ -3886,7 +4141,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "industrial_magnet": {
     "id": "industrial_magnet",
@@ -3900,7 +4156,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "ion_sputter": {
     "id": "ion_sputter",
@@ -3914,21 +4171,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "jolt_mine_blueprint": {
-    "id": "jolt_mine_blueprint",
-    "name": {
-      "value": "震盪地雷藍圖",
-      "originalEn": "Jolt Mine Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/jolt_mine_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
   "jolt_mine": {
     "id": "jolt_mine",
@@ -3945,21 +4189,23 @@
       "electrical_components": 1
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
-  "jupiter_blueprint": {
-    "id": "jupiter_blueprint",
+  "jolt_mine_blueprint": {
+    "id": "jolt_mine_blueprint",
     "name": {
-      "value": "木星藍圖",
-      "originalEn": "Jupiter Blueprint"
+      "value": "震盪地雷藍圖",
+      "originalEn": "Jolt Mine Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/jupiter_blueprint.png",
+    "imageFilename": "https://cdn.arctracker.io/items/v2/jolt_mine_blueprint.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "jupiter": {
     "id": "jupiter",
@@ -3977,7 +4223,23 @@
       "queen_reactor": 1
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Legendary"
+  },
+  "jupiter_blueprint": {
+    "id": "jupiter_blueprint",
+    "name": {
+      "value": "木星藍圖",
+      "originalEn": "Jupiter Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/jupiter_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "kettle_i": {
     "id": "kettle_i",
@@ -3994,7 +4256,8 @@
       "rubber_parts": 8
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "kettle_ii": {
     "id": "kettle_ii",
@@ -4011,7 +4274,8 @@
       "metal_parts": 8,
       "plastic_parts": 10
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "kettle_iii": {
     "id": "kettle_iii",
@@ -4028,7 +4292,8 @@
       "metal_parts": 10,
       "simple_gun_parts": 1
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "kettle_iv": {
     "id": "kettle_iv",
@@ -4045,7 +4310,8 @@
       "mechanical_components": 3,
       "simple_gun_parts": 1
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "kinetic_converter": {
     "id": "kinetic_converter",
@@ -4059,7 +4325,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Legendary"
   },
   "laboratory_reagents": {
     "id": "laboratory_reagents",
@@ -4073,7 +4340,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "lances_mixtape_5th_edition": {
     "id": "lances_mixtape_5th_edition",
@@ -4087,7 +4355,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
   "launcher_ammo": {
     "id": "launcher_ammo",
@@ -4104,7 +4373,8 @@
       "crude_explosives": 2
     },
     "upgradeCost": null,
-    "craftQuantity": 6
+    "craftQuantity": 6,
+    "rarity": "Rare"
   },
   "leaper_pulse_unit": {
     "id": "leaper_pulse_unit",
@@ -4118,7 +4388,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
   "lemon": {
     "id": "lemon",
@@ -4132,7 +4403,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "leviathans_crown_ship_model": {
     "id": "leviathans_crown_ship_model",
@@ -4146,7 +4418,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Legendary"
   },
   "library_book": {
     "id": "library_book",
@@ -4160,7 +4433,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "lidar_scanner": {
     "id": "lidar_scanner",
@@ -4174,7 +4448,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "light_ammo": {
     "id": "light_ammo",
@@ -4191,7 +4466,8 @@
       "metal_parts": 3
     },
     "upgradeCost": null,
-    "craftQuantity": 25
+    "craftQuantity": 25,
+    "rarity": "Common"
   },
   "light_bulb": {
     "id": "light_bulb",
@@ -4205,21 +4481,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "light_gun_parts_blueprint": {
-    "id": "light_gun_parts_blueprint",
-    "name": {
-      "value": "輕型槍械零件藍圖",
-      "originalEn": "Light Gun Parts Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/light_gun_parts_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "light_gun_parts": {
     "id": "light_gun_parts",
@@ -4235,7 +4498,23 @@
       "simple_gun_parts": 4
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
+  },
+  "light_gun_parts_blueprint": {
+    "id": "light_gun_parts_blueprint",
+    "name": {
+      "value": "輕型槍械零件藍圖",
+      "originalEn": "Light Gun Parts Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/light_gun_parts_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "light_impact_grenade": {
     "id": "light_impact_grenade",
@@ -4252,7 +4531,8 @@
       "plastic_parts": 2
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "light_shield": {
     "id": "light_shield",
@@ -4269,21 +4549,8 @@
       "plastic_parts": 4
     },
     "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "lightweight_stock_blueprint": {
-    "id": "lightweight_stock_blueprint",
-    "name": {
-      "value": "輕量槍托藍圖",
-      "originalEn": "Lightweight Stock Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/lightweight_stock_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "lightweight_stock": {
     "id": "lightweight_stock",
@@ -4300,7 +4567,23 @@
       "mod_components": 2
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
+  },
+  "lightweight_stock_blueprint": {
+    "id": "lightweight_stock_blueprint",
+    "name": {
+      "value": "輕量槍托藍圖",
+      "originalEn": "Lightweight Stock Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/lightweight_stock_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "lil_smoke_grenade": {
     "id": "lil_smoke_grenade",
@@ -4317,7 +4600,8 @@
       "plastic_parts": 1
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "looting_mk1": {
     "id": "looting_mk1",
@@ -4334,7 +4618,8 @@
       "rubber_parts": 6
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "looting_mk2": {
     "id": "looting_mk2",
@@ -4351,7 +4636,8 @@
       "magnet": 3
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "looting_mk3_cautious": {
     "id": "looting_mk3_cautious",
@@ -4368,21 +4654,8 @@
       "processor": 3
     },
     "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "looting_mk3_safekeeper_blueprint": {
-    "id": "looting_mk3_safekeeper_blueprint",
-    "name": {
-      "value": "搜刮 Mk. 3 (保管者) 藍圖",
-      "originalEn": "Looting Mk. 3 (Safekeeper) Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/looting_mk3_safekeeper_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
   "looting_mk3_safekeeper": {
     "id": "looting_mk3_safekeeper",
@@ -4399,21 +4672,23 @@
       "processor": 3
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
-  "looting_mk3_survivor_blueprint": {
-    "id": "looting_mk3_survivor_blueprint",
+  "looting_mk3_safekeeper_blueprint": {
+    "id": "looting_mk3_safekeeper_blueprint",
     "name": {
-      "value": "掠奪 Mk. 3（倖存者）藍圖",
-      "originalEn": "Looting Mk. 3 (Survivor) Blueprint"
+      "value": "搜刮 Mk. 3 (保管者) 藍圖",
+      "originalEn": "Looting Mk. 3 (Safekeeper) Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/looting_mk3_survivor_blueprint.png",
+    "imageFilename": "https://cdn.arctracker.io/items/v2/looting_mk3_safekeeper_blueprint.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "looting_mk3_survivor": {
     "id": "looting_mk3_survivor",
@@ -4430,38 +4705,23 @@
       "processor": 3
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
-  "lure_grenade_blueprint": {
-    "id": "lure_grenade_blueprint",
+  "looting_mk3_survivor_blueprint": {
+    "id": "looting_mk3_survivor_blueprint",
     "name": {
-      "value": "誘餌手榴彈藍圖",
-      "originalEn": "Lure Grenade Blueprint"
+      "value": "掠奪 Mk. 3（倖存者）藍圖",
+      "originalEn": "Looting Mk. 3 (Survivor) Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/lure_grenade_blueprint.png",
+    "imageFilename": "https://cdn.arctracker.io/items/v2/looting_mk3_survivor_blueprint.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "lure_grenade_trap": {
-    "id": "lure_grenade_trap",
-    "name": {
-      "value": "誘餌手榴彈陷阱",
-      "originalEn": "Lure Grenade Trap"
-    },
-    "stackSize": 3,
-    "value": 1000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/lure_grenade_trap.png",
-    "isWeapon": null,
-    "recipe": {
-      "lure_grenade": 1,
-      "wires": 1
-    },
-    "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "lure_grenade": {
     "id": "lure_grenade",
@@ -4478,7 +4738,41 @@
       "speaker_component": 1
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
+  },
+  "lure_grenade_blueprint": {
+    "id": "lure_grenade_blueprint",
+    "name": {
+      "value": "誘餌手榴彈藍圖",
+      "originalEn": "Lure Grenade Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/lure_grenade_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1,
+    "rarity": "Common"
+  },
+  "lure_grenade_trap": {
+    "id": "lure_grenade_trap",
+    "name": {
+      "value": "誘餌手榴彈陷阱",
+      "originalEn": "Lure Grenade Trap"
+    },
+    "stackSize": 3,
+    "value": 1000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/lure_grenade_trap.png",
+    "isWeapon": null,
+    "recipe": {
+      "lure_grenade": 1,
+      "wires": 1
+    },
+    "upgradeCost": null,
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "magnet": {
     "id": "magnet",
@@ -4492,7 +4786,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "magnetic_accelerator": {
     "id": "magnetic_accelerator",
@@ -4509,7 +4804,8 @@
       "arc_motion_core": 2
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
   "magnetron": {
     "id": "magnetron",
@@ -4523,7 +4819,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
   "major_aivas_mementos": {
     "id": "major_aivas_mementos",
@@ -4537,7 +4834,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "major_aivas_patch": {
     "id": "major_aivas_patch",
@@ -4551,7 +4849,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "marano_market_business_card": {
     "id": "marano_market_business_card",
@@ -4565,7 +4864,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "matriarch_reactor": {
     "id": "matriarch_reactor",
@@ -4579,7 +4879,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Legendary"
   },
   "mechanical_components": {
     "id": "mechanical_components",
@@ -4596,7 +4897,8 @@
       "rubber_parts": 3
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "medium_ammo": {
     "id": "medium_ammo",
@@ -4613,21 +4915,8 @@
       "metal_parts": 3
     },
     "upgradeCost": null,
-    "craftQuantity": 20
-  },
-  "medium_gun_parts_blueprint": {
-    "id": "medium_gun_parts_blueprint",
-    "name": {
-      "value": "中型槍械零件藍圖",
-      "originalEn": "Medium Gun Parts Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/medium_gun_parts_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 20,
+    "rarity": "Common"
   },
   "medium_gun_parts": {
     "id": "medium_gun_parts",
@@ -4643,7 +4932,23 @@
       "simple_gun_parts": 4
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
+  },
+  "medium_gun_parts_blueprint": {
+    "id": "medium_gun_parts_blueprint",
+    "name": {
+      "value": "中型槍械零件藍圖",
+      "originalEn": "Medium Gun Parts Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/medium_gun_parts_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "medium_shield": {
     "id": "medium_shield",
@@ -4660,7 +4965,8 @@
       "battery": 4
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "metal_brackets": {
     "id": "metal_brackets",
@@ -4674,7 +4980,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "metal_parts": {
     "id": "metal_parts",
@@ -4688,7 +4995,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "microscope": {
     "id": "microscope",
@@ -4702,7 +5010,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "mini_centrifuge": {
     "id": "mini_centrifuge",
@@ -4716,7 +5025,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "mod_components": {
     "id": "mod_components",
@@ -4733,7 +5043,8 @@
       "steel_spring": 2
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "moisture_meter": {
     "id": "moisture_meter",
@@ -4747,7 +5058,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "moss": {
     "id": "moss",
@@ -4761,7 +5073,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "motor": {
     "id": "motor",
@@ -4775,7 +5088,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "mushroom": {
     "id": "mushroom",
@@ -4789,7 +5103,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "music_album": {
     "id": "music_album",
@@ -4803,7 +5118,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "music_box": {
     "id": "music_box",
@@ -4817,7 +5133,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "muzzle_brake_i": {
     "id": "muzzle_brake_i",
@@ -4834,21 +5151,8 @@
       "wires": 1
     },
     "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "muzzle_brake_ii_blueprint": {
-    "id": "muzzle_brake_ii_blueprint",
-    "name": {
-      "value": "槍口制退器 II 藍圖",
-      "originalEn": "Muzzle Brake II Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/muzzle_brake_ii_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "muzzle_brake_ii": {
     "id": "muzzle_brake_ii",
@@ -4865,21 +5169,23 @@
       "wires": 4
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
-  "muzzle_brake_iii_blueprint": {
-    "id": "muzzle_brake_iii_blueprint",
+  "muzzle_brake_ii_blueprint": {
+    "id": "muzzle_brake_ii_blueprint",
     "name": {
-      "value": "槍口制退器 III 藍圖",
-      "originalEn": "Muzzle Brake III Blueprint"
+      "value": "槍口制退器 II 藍圖",
+      "originalEn": "Muzzle Brake II Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/muzzle_brake_iii_blueprint.png",
+    "imageFilename": "https://cdn.arctracker.io/items/v2/muzzle_brake_ii_blueprint.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "muzzle_brake_iii": {
     "id": "muzzle_brake_iii",
@@ -4896,7 +5202,23 @@
       "wires": 8
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
+  },
+  "muzzle_brake_iii_blueprint": {
+    "id": "muzzle_brake_iii_blueprint",
+    "name": {
+      "value": "槍口制退器 III 藍圖",
+      "originalEn": "Muzzle Brake III Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/muzzle_brake_iii_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "noisemaker": {
     "id": "noisemaker",
@@ -4913,7 +5235,8 @@
       "speaker_component": 1
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "number_plate": {
     "id": "number_plate",
@@ -4927,7 +5250,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "nutrient_meter": {
     "id": "nutrient_meter",
@@ -4941,7 +5265,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "official_shutdown_documentation": {
     "id": "official_shutdown_documentation",
@@ -4955,7 +5280,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "oil": {
     "id": "oil",
@@ -4969,7 +5295,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "old_world_books": {
     "id": "old_world_books",
@@ -4983,7 +5310,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "olives": {
     "id": "olives",
@@ -4997,7 +5325,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "osprey_blueprint": {
     "id": "osprey_blueprint",
@@ -5011,7 +5340,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "osprey_i": {
     "id": "osprey_i",
@@ -5029,7 +5359,8 @@
       "wires": 7
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "osprey_ii": {
     "id": "osprey_ii",
@@ -5046,7 +5377,8 @@
       "advanced_mechanical_components": 1,
       "medium_gun_parts": 2
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "osprey_iii": {
     "id": "osprey_iii",
@@ -5063,7 +5395,8 @@
       "advanced_mechanical_components": 1,
       "medium_gun_parts": 2
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "osprey_iv": {
     "id": "osprey_iv",
@@ -5080,21 +5413,8 @@
       "advanced_mechanical_components": 2,
       "medium_gun_parts": 2
     },
-    "craftQuantity": 1
-  },
-  "padded_stock_blueprint": {
-    "id": "padded_stock_blueprint",
-    "name": {
-      "value": "軟墊槍托藍圖",
-      "originalEn": "Padded Stock Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/padded_stock_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "padded_stock": {
     "id": "padded_stock",
@@ -5111,7 +5431,23 @@
       "mod_components": 2
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
+  },
+  "padded_stock_blueprint": {
+    "id": "padded_stock_blueprint",
+    "name": {
+      "value": "軟墊槍托藍圖",
+      "originalEn": "Padded Stock Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/padded_stock_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "painted_box": {
     "id": "painted_box",
@@ -5125,7 +5461,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "patrol_car_key": {
     "id": "patrol_car_key",
@@ -5139,7 +5476,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "photoelectric_cloak": {
     "id": "photoelectric_cloak",
@@ -5156,7 +5494,8 @@
       "speaker_component": 4
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
   "pilgrims_peak_security_code": {
     "id": "pilgrims_peak_security_code",
@@ -5170,7 +5509,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "plastic_parts": {
     "id": "plastic_parts",
@@ -5184,7 +5524,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "playing_cards": {
     "id": "playing_cards",
@@ -5198,7 +5539,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "polluted_air_filter": {
     "id": "polluted_air_filter",
@@ -5212,7 +5554,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "pop_trigger": {
     "id": "pop_trigger",
@@ -5226,7 +5569,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "portable_tv": {
     "id": "portable_tv",
@@ -5240,7 +5584,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "possibly_toxic_plant": {
     "id": "possibly_toxic_plant",
@@ -5254,7 +5599,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "poster_of_natural_wonders": {
     "id": "poster_of_natural_wonders",
@@ -5268,7 +5614,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "pottery": {
     "id": "pottery",
@@ -5282,7 +5629,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "power_bank": {
     "id": "power_bank",
@@ -5296,7 +5644,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "power_cable": {
     "id": "power_cable",
@@ -5310,7 +5659,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "power_rod": {
     "id": "power_rod",
@@ -5327,21 +5677,8 @@
       "arc_circuitry": 2
     },
     "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "powered_descender_blueprint": {
-    "id": "powered_descender_blueprint",
-    "name": {
-      "value": "動力下降器藍圖",
-      "originalEn": "Powered Descender Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/powered_descender_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
   "powered_descender": {
     "id": "powered_descender",
@@ -5358,7 +5695,23 @@
       "turbine_compressor": 1
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
+  },
+  "powered_descender_blueprint": {
+    "id": "powered_descender_blueprint",
+    "name": {
+      "value": "動力下降器藍圖",
+      "originalEn": "Powered Descender Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/powered_descender_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "precision_gimbal": {
     "id": "precision_gimbal",
@@ -5372,7 +5725,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "prickly_pear": {
     "id": "prickly_pear",
@@ -5386,7 +5740,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "processor": {
     "id": "processor",
@@ -5400,7 +5755,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "project_heartwood_blueprints": {
     "id": "project_heartwood_blueprints",
@@ -5414,7 +5770,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "projector": {
     "id": "projector",
@@ -5428,21 +5785,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "pulse_mine_blueprint": {
-    "id": "pulse_mine_blueprint",
-    "name": {
-      "value": "脈衝地雷藍圖",
-      "originalEn": "Pulse Mine Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/pulse_mine_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "pulse_mine": {
     "id": "pulse_mine",
@@ -5459,7 +5803,23 @@
       "wires": 1
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
+  },
+  "pulse_mine_blueprint": {
+    "id": "pulse_mine_blueprint",
+    "name": {
+      "value": "脈衝地雷藍圖",
+      "originalEn": "Pulse Mine Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/pulse_mine_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "queen_reactor": {
     "id": "queen_reactor",
@@ -5473,21 +5833,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "radio_relay": {
-    "id": "radio_relay",
-    "name": {
-      "value": "無線電中繼器",
-      "originalEn": "Radio Relay"
-    },
-    "stackSize": 3,
-    "value": 3000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/radio_relay.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Legendary"
   },
   "radio": {
     "id": "radio",
@@ -5501,7 +5848,23 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
+  },
+  "radio_relay": {
+    "id": "radio_relay",
+    "name": {
+      "value": "無線電中繼器",
+      "originalEn": "Radio Relay"
+    },
+    "stackSize": 3,
+    "value": 3000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/radio_relay.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "raider_flag": {
     "id": "raider_flag",
@@ -5510,12 +5873,13 @@
       "originalEn": "Raider Flag"
     },
     "stackSize": 1,
-    "value": null,
+    "value": 100,
     "imageFilename": "https://cdn.arctracker.io/items/v2/raider_flag.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "raider_hatch_key": {
     "id": "raider_hatch_key",
@@ -5532,7 +5896,8 @@
       "sensors": 3
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "raiders_refuge_security_code": {
     "id": "raiders_refuge_security_code",
@@ -5546,7 +5911,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "rascal_blueprint": {
     "id": "rascal_blueprint",
@@ -5560,7 +5926,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "rascal_i": {
     "id": "rascal_i",
@@ -5578,7 +5945,8 @@
       "heavy_gun_parts": 3
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "rascal_ii": {
     "id": "rascal_ii",
@@ -5595,7 +5963,8 @@
       "advanced_mechanical_components": 1,
       "heavy_gun_parts": 2
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "rascal_iii": {
     "id": "rascal_iii",
@@ -5612,7 +5981,8 @@
       "advanced_mechanical_components": 1,
       "heavy_gun_parts": 2
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "rascal_iv": {
     "id": "rascal_iv",
@@ -5629,7 +5999,8 @@
       "advanced_mechanical_components": 2,
       "heavy_gun_parts": 2
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "rattler_i": {
     "id": "rattler_i",
@@ -5646,7 +6017,8 @@
       "rubber_parts": 12
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "rattler_ii": {
     "id": "rattler_ii",
@@ -5663,7 +6035,8 @@
       "metal_parts": 10,
       "rubber_parts": 10
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "rattler_iii": {
     "id": "rattler_iii",
@@ -5680,7 +6053,8 @@
       "mechanical_components": 3,
       "simple_gun_parts": 1
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "rattler_iv": {
     "id": "rattler_iv",
@@ -5697,7 +6071,8 @@
       "mechanical_components": 3,
       "simple_gun_parts": 1
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "recorder": {
     "id": "recorder",
@@ -5711,7 +6086,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "red_coral_jewelry": {
     "id": "red_coral_jewelry",
@@ -5725,21 +6101,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "red_light_stick_blueprint": {
-    "id": "red_light_stick_blueprint",
-    "name": {
-      "value": "紅色螢光棒藍圖",
-      "originalEn": "Red Light Stick Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/red_light_stick_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "red_light_stick": {
     "id": "red_light_stick",
@@ -5755,7 +6118,23 @@
       "chemicals": 3
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
+  },
+  "red_light_stick_blueprint": {
+    "id": "red_light_stick_blueprint",
+    "name": {
+      "value": "紅色螢光棒藍圖",
+      "originalEn": "Red Light Stick Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/red_light_stick_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "reinforced_reception_security_code": {
     "id": "reinforced_reception_security_code",
@@ -5769,7 +6148,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "remote_control": {
     "id": "remote_control",
@@ -5783,21 +6163,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "remote_raider_flare_blueprint": {
-    "id": "remote_raider_flare_blueprint",
-    "name": {
-      "value": "遠程掠奪者信號彈藍圖",
-      "originalEn": "Remote Raider Flare Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/remote_raider_flare_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "remote_raider_flare": {
     "id": "remote_raider_flare",
@@ -5814,7 +6181,23 @@
       "rubber_parts": 4
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
+  },
+  "remote_raider_flare_blueprint": {
+    "id": "remote_raider_flare_blueprint",
+    "name": {
+      "value": "遠程掠奪者信號彈藍圖",
+      "originalEn": "Remote Raider Flare Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/remote_raider_flare_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "renegade_i": {
     "id": "renegade_i",
@@ -5832,7 +6215,8 @@
       "oil": 5
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "renegade_ii": {
     "id": "renegade_ii",
@@ -5849,7 +6233,8 @@
       "advanced_mechanical_components": 1,
       "medium_gun_parts": 2
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "renegade_iii": {
     "id": "renegade_iii",
@@ -5866,7 +6251,8 @@
       "advanced_mechanical_components": 1,
       "medium_gun_parts": 2
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "renegade_iv": {
     "id": "renegade_iv",
@@ -5883,7 +6269,8 @@
       "advanced_mechanical_components": 2,
       "medium_gun_parts": 2
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "resin": {
     "id": "resin",
@@ -5897,7 +6284,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "ripped_safety_vest": {
     "id": "ripped_safety_vest",
@@ -5911,7 +6299,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "riven_tides_classified_records_keycard": {
     "id": "riven_tides_classified_records_keycard",
@@ -5925,7 +6314,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "riven_tides_crane_house_keycard": {
     "id": "riven_tides_crane_house_keycard",
@@ -5939,7 +6329,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "riven_tides_hotel_keycard_no_102": {
     "id": "riven_tides_hotel_keycard_no_102",
@@ -5953,7 +6344,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "riven_tides_hotel_keycard_no_107": {
     "id": "riven_tides_hotel_keycard_no_107",
@@ -5967,7 +6359,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "riven_tides_hotel_keycard_no_113": {
     "id": "riven_tides_hotel_keycard_no_113",
@@ -5981,7 +6374,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "riven_tides_hotel_keycard_no_205": {
     "id": "riven_tides_hotel_keycard_no_205",
@@ -5995,7 +6389,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "riven_tides_hotel_keycard_no_208": {
     "id": "riven_tides_hotel_keycard_no_208",
@@ -6009,7 +6404,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "riven_tides_hotel_keycard_no_311": {
     "id": "riven_tides_hotel_keycard_no_311",
@@ -6023,7 +6419,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "riven_tides_hotel_keycard_no_404": {
     "id": "riven_tides_hotel_keycard_no_404",
@@ -6037,7 +6434,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "riven_tides_secure_storage_keycard": {
     "id": "riven_tides_secure_storage_keycard",
@@ -6051,7 +6449,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
   "rocket_thruster": {
     "id": "rocket_thruster",
@@ -6065,7 +6464,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "rocketeer_driver": {
     "id": "rocketeer_driver",
@@ -6079,7 +6479,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
   "roots": {
     "id": "roots",
@@ -6093,7 +6494,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "rope": {
     "id": "rope",
@@ -6107,7 +6509,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "rosary": {
     "id": "rosary",
@@ -6121,7 +6524,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "rotary_encoder": {
     "id": "rotary_encoder",
@@ -6135,7 +6539,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "rubber_duck": {
     "id": "rubber_duck",
@@ -6149,7 +6554,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "rubber_pad": {
     "id": "rubber_pad",
@@ -6163,7 +6569,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "rubber_parts": {
     "id": "rubber_parts",
@@ -6177,7 +6584,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "ruined_accordion": {
     "id": "ruined_accordion",
@@ -6191,7 +6599,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "ruined_augment": {
     "id": "ruined_augment",
@@ -6205,7 +6614,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "ruined_baton": {
     "id": "ruined_baton",
@@ -6219,7 +6629,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "ruined_handcuffs": {
     "id": "ruined_handcuffs",
@@ -6233,7 +6644,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "ruined_parachute": {
     "id": "ruined_parachute",
@@ -6247,7 +6659,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "ruined_riot_shield": {
     "id": "ruined_riot_shield",
@@ -6261,7 +6674,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "ruined_tactical_vest": {
     "id": "ruined_tactical_vest",
@@ -6275,7 +6689,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "rusted_bolts": {
     "id": "rusted_bolts",
@@ -6289,7 +6704,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "rusted_gear": {
     "id": "rusted_gear",
@@ -6303,7 +6719,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "rusted_shut_medical_kit": {
     "id": "rusted_shut_medical_kit",
@@ -6317,7 +6734,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "rusted_tools": {
     "id": "rusted_tools",
@@ -6331,7 +6749,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "rusty_arc_steel": {
     "id": "rusty_arc_steel",
@@ -6345,7 +6764,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "sample_cleaner": {
     "id": "sample_cleaner",
@@ -6359,7 +6779,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "scout_patrol_note": {
     "id": "scout_patrol_note",
@@ -6373,7 +6794,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "secret_meeting_info": {
     "id": "secret_meeting_info",
@@ -6387,7 +6809,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "seed_vault_box_key": {
     "id": "seed_vault_box_key",
@@ -6401,21 +6824,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "seeker_grenade_blueprint": {
-    "id": "seeker_grenade_blueprint",
-    "name": {
-      "value": "追蹤手榴彈藍圖",
-      "originalEn": "Seeker Grenade Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/seeker_grenade_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "seeker_grenade": {
     "id": "seeker_grenade",
@@ -6432,7 +6842,23 @@
       "crude_explosives": 1
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
+  },
+  "seeker_grenade_blueprint": {
+    "id": "seeker_grenade_blueprint",
+    "name": {
+      "value": "追蹤手榴彈藍圖",
+      "originalEn": "Seeker Grenade Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/seeker_grenade_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "sensors": {
     "id": "sensors",
@@ -6446,7 +6872,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "sentinel_firing_core": {
     "id": "sentinel_firing_core",
@@ -6460,7 +6887,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "shaker": {
     "id": "shaker",
@@ -6477,7 +6905,8 @@
       "canister": 1
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "shield_recharger": {
     "id": "shield_recharger",
@@ -6494,7 +6923,8 @@
       "rubber_parts": 5
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "shotgun_ammo": {
     "id": "shotgun_ammo",
@@ -6511,7 +6941,8 @@
       "metal_parts": 3
     },
     "upgradeCost": null,
-    "craftQuantity": 5
+    "craftQuantity": 5,
+    "rarity": "Common"
   },
   "shotgun_choke_i": {
     "id": "shotgun_choke_i",
@@ -6528,21 +6959,8 @@
       "wires": 1
     },
     "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "shotgun_choke_ii_blueprint": {
-    "id": "shotgun_choke_ii_blueprint",
-    "name": {
-      "value": "霰彈槍收束器 II 藍圖",
-      "originalEn": "Shotgun Choke II Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/shotgun_choke_ii_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "shotgun_choke_ii": {
     "id": "shotgun_choke_ii",
@@ -6559,21 +6977,23 @@
       "wires": 4
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
-  "shotgun_choke_iii_blueprint": {
-    "id": "shotgun_choke_iii_blueprint",
+  "shotgun_choke_ii_blueprint": {
+    "id": "shotgun_choke_ii_blueprint",
     "name": {
-      "value": "霰彈槍收束器 III 藍圖",
-      "originalEn": "Shotgun Choke III Blueprint"
+      "value": "霰彈槍收束器 II 藍圖",
+      "originalEn": "Shotgun Choke II Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/shotgun_choke_iii_blueprint.png",
+    "imageFilename": "https://cdn.arctracker.io/items/v2/shotgun_choke_ii_blueprint.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "shotgun_choke_iii": {
     "id": "shotgun_choke_iii",
@@ -6590,21 +7010,23 @@
       "wires": 8
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
-  "shotgun_silencer_blueprint": {
-    "id": "shotgun_silencer_blueprint",
+  "shotgun_choke_iii_blueprint": {
+    "id": "shotgun_choke_iii_blueprint",
     "name": {
-      "value": "霰彈槍消音器 藍圖",
-      "originalEn": "Shotgun Silencer Blueprint"
+      "value": "霰彈槍收束器 III 藍圖",
+      "originalEn": "Shotgun Choke III Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/shotgun_silencer_blueprint.png",
+    "imageFilename": "https://cdn.arctracker.io/items/v2/shotgun_choke_iii_blueprint.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "shotgun_silencer": {
     "id": "shotgun_silencer",
@@ -6621,21 +7043,23 @@
       "wires": 8
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
-  "showstopper_blueprint": {
-    "id": "showstopper_blueprint",
+  "shotgun_silencer_blueprint": {
+    "id": "shotgun_silencer_blueprint",
     "name": {
-      "value": "表演終結者 藍圖",
-      "originalEn": "Showstopper Blueprint"
+      "value": "霰彈槍消音器 藍圖",
+      "originalEn": "Shotgun Silencer Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/showstopper_blueprint.png",
+    "imageFilename": "https://cdn.arctracker.io/items/v2/shotgun_silencer_blueprint.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "showstopper": {
     "id": "showstopper",
@@ -6653,7 +7077,23 @@
       "voltage_converter": 1
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
+  },
+  "showstopper_blueprint": {
+    "id": "showstopper_blueprint",
+    "name": {
+      "value": "表演終結者 藍圖",
+      "originalEn": "Showstopper Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/showstopper_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "shrapnel_grenade": {
     "id": "shrapnel_grenade",
@@ -6670,7 +7110,8 @@
       "steel_spring": 2
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "shredder_gyro": {
     "id": "shredder_gyro",
@@ -6684,7 +7125,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "signal_amplifier": {
     "id": "signal_amplifier",
@@ -6698,21 +7140,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "silencer_i_blueprint": {
-    "id": "silencer_i_blueprint",
-    "name": {
-      "value": "消音器 I 藍圖",
-      "originalEn": "Silencer I Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/silencer_i_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "silencer_i": {
     "id": "silencer_i",
@@ -6729,21 +7158,23 @@
       "wires": 4
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
-  "silencer_ii_blueprint": {
-    "id": "silencer_ii_blueprint",
+  "silencer_i_blueprint": {
+    "id": "silencer_i_blueprint",
     "name": {
-      "value": "消音器 II 藍圖",
-      "originalEn": "Silencer II Blueprint"
+      "value": "消音器 I 藍圖",
+      "originalEn": "Silencer I Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/silencer_ii_blueprint.png",
+    "imageFilename": "https://cdn.arctracker.io/items/v2/silencer_i_blueprint.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "silencer_ii": {
     "id": "silencer_ii",
@@ -6760,7 +7191,23 @@
       "wires": 8
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
+  },
+  "silencer_ii_blueprint": {
+    "id": "silencer_ii_blueprint",
+    "name": {
+      "value": "消音器 II 藍圖",
+      "originalEn": "Silencer II Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/silencer_ii_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "silencer_iii": {
     "id": "silencer_iii",
@@ -6774,7 +7221,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
   "silver_teaspoon_set": {
     "id": "silver_teaspoon_set",
@@ -6788,7 +7236,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "simple_gun_parts": {
     "id": "simple_gun_parts",
@@ -6802,7 +7251,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "sirena_dorata_ship_model": {
     "id": "sirena_dorata_ship_model",
@@ -6816,38 +7266,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "smoke_grenade_blueprint": {
-    "id": "smoke_grenade_blueprint",
-    "name": {
-      "value": "煙霧彈 藍圖",
-      "originalEn": "Smoke Grenade Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/smoke_grenade_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "smoke_grenade_trap": {
-    "id": "smoke_grenade_trap",
-    "name": {
-      "value": "煙霧手榴彈陷阱",
-      "originalEn": "Smoke Grenade Trap"
-    },
-    "stackSize": 3,
-    "value": 640,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/smoke_grenade_trap.png",
-    "isWeapon": null,
-    "recipe": {
-      "smoke_grenade": 1,
-      "wires": 1
-    },
-    "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
   "smoke_grenade": {
     "id": "smoke_grenade",
@@ -6864,7 +7284,41 @@
       "chemicals": 14
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
+  },
+  "smoke_grenade_blueprint": {
+    "id": "smoke_grenade_blueprint",
+    "name": {
+      "value": "煙霧彈 藍圖",
+      "originalEn": "Smoke Grenade Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/smoke_grenade_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1,
+    "rarity": "Common"
+  },
+  "smoke_grenade_trap": {
+    "id": "smoke_grenade_trap",
+    "name": {
+      "value": "煙霧手榴彈陷阱",
+      "originalEn": "Smoke Grenade Trap"
+    },
+    "stackSize": 3,
+    "value": 640,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/smoke_grenade_trap.png",
+    "isWeapon": null,
+    "recipe": {
+      "smoke_grenade": 1,
+      "wires": 1
+    },
+    "upgradeCost": null,
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "snap_blast_grenade": {
     "id": "snap_blast_grenade",
@@ -6881,21 +7335,8 @@
       "magnet": 1
     },
     "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "snap_hook_blueprint": {
-    "id": "snap_hook_blueprint",
-    "name": {
-      "value": "Snap Hook 藍圖",
-      "originalEn": "Snap Hook Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/snap_hook_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "snap_hook": {
     "id": "snap_hook",
@@ -6913,7 +7354,23 @@
       "rope": 3
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Legendary"
+  },
+  "snap_hook_blueprint": {
+    "id": "snap_hook_blueprint",
+    "name": {
+      "value": "Snap Hook 藍圖",
+      "originalEn": "Snap Hook Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/snap_hook_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "snitch_scanner": {
     "id": "snitch_scanner",
@@ -6927,7 +7384,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "snowball": {
     "id": "snowball",
@@ -6941,7 +7399,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "spaceport_container_storage_key": {
     "id": "spaceport_container_storage_key",
@@ -6955,7 +7414,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "spaceport_control_tower_key": {
     "id": "spaceport_control_tower_key",
@@ -6969,7 +7429,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "spaceport_trench_tower_key": {
     "id": "spaceport_trench_tower_key",
@@ -6983,7 +7444,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "spaceport_warehouse_key": {
     "id": "spaceport_warehouse_key",
@@ -6997,7 +7459,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "speaker_component": {
     "id": "speaker_component",
@@ -7011,7 +7474,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "spectrometer": {
     "id": "spectrometer",
@@ -7025,7 +7489,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "spectrum_analyzer": {
     "id": "spectrum_analyzer",
@@ -7039,7 +7504,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
   "spotter_relay": {
     "id": "spotter_relay",
@@ -7053,7 +7519,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "spring_cushion": {
     "id": "spring_cushion",
@@ -7067,7 +7534,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "stable_stock_i": {
     "id": "stable_stock_i",
@@ -7084,21 +7552,8 @@
       "rubber_parts": 7
     },
     "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "stable_stock_ii_blueprint": {
-    "id": "stable_stock_ii_blueprint",
-    "name": {
-      "value": "穩定槍托 II 藍圖",
-      "originalEn": "Stable Stock II Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/stable_stock_ii_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "stable_stock_ii": {
     "id": "stable_stock_ii",
@@ -7115,21 +7570,23 @@
       "mechanical_components": 2
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
-  "stable_stock_iii_blueprint": {
-    "id": "stable_stock_iii_blueprint",
+  "stable_stock_ii_blueprint": {
+    "id": "stable_stock_ii_blueprint",
     "name": {
-      "value": "穩定槍托 III 藍圖",
-      "originalEn": "Stable Stock III Blueprint"
+      "value": "穩定槍托 II 藍圖",
+      "originalEn": "Stable Stock II Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/stable_stock_iii_blueprint.png",
+    "imageFilename": "https://cdn.arctracker.io/items/v2/stable_stock_ii_blueprint.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "stable_stock_iii": {
     "id": "stable_stock_iii",
@@ -7146,7 +7603,23 @@
       "mod_components": 2
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
+  },
+  "stable_stock_iii_blueprint": {
+    "id": "stable_stock_iii_blueprint",
+    "name": {
+      "value": "穩定槍托 III 藍圖",
+      "originalEn": "Stable Stock III Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/stable_stock_iii_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "stack_of_movie_tapes": {
     "id": "stack_of_movie_tapes",
@@ -7160,7 +7633,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "statuette": {
     "id": "statuette",
@@ -7174,7 +7648,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "steel_spring": {
     "id": "steel_spring",
@@ -7188,7 +7663,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "stella_montis_archives_key": {
     "id": "stella_montis_archives_key",
@@ -7202,7 +7678,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
   "stella_montis_assembly_admin_key": {
     "id": "stella_montis_assembly_admin_key",
@@ -7216,7 +7693,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "stella_montis_medical_storage_key": {
     "id": "stella_montis_medical_storage_key",
@@ -7230,7 +7708,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "stella_montis_security_checkpoint_key": {
     "id": "stella_montis_security_checkpoint_key",
@@ -7244,7 +7723,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "sterilized_bandage": {
     "id": "sterilized_bandage",
@@ -7261,7 +7741,8 @@
       "durable_cloth": 2
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "stitcher_i": {
     "id": "stitcher_i",
@@ -7278,7 +7759,8 @@
       "rubber_parts": 4
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "stitcher_ii": {
     "id": "stitcher_ii",
@@ -7295,7 +7777,8 @@
       "metal_parts": 8,
       "rubber_parts": 12
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "stitcher_iii": {
     "id": "stitcher_iii",
@@ -7312,7 +7795,8 @@
       "metal_parts": 10,
       "simple_gun_parts": 1
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "stitcher_iv": {
     "id": "stitcher_iv",
@@ -7329,21 +7813,8 @@
       "mechanical_components": 3,
       "simple_gun_parts": 1
     },
-    "craftQuantity": 1
-  },
-  "surge_coil_blueprint": {
-    "id": "surge_coil_blueprint",
-    "name": {
-      "value": "Surge Coil 藍圖",
-      "originalEn": "Surge Coil Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/surge_coil_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "surge_coil": {
     "id": "surge_coil",
@@ -7361,7 +7832,23 @@
       "sensors": 1
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
+  },
+  "surge_coil_blueprint": {
+    "id": "surge_coil_blueprint",
+    "name": {
+      "value": "Surge Coil 藍圖",
+      "originalEn": "Surge Coil Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/surge_coil_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "surge_shield_recharger": {
     "id": "surge_shield_recharger",
@@ -7378,7 +7865,8 @@
       "electrical_components": 1
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "surveyor_vault": {
     "id": "surveyor_vault",
@@ -7392,7 +7880,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "synthesized_fuel": {
     "id": "synthesized_fuel",
@@ -7406,7 +7895,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "syringe": {
     "id": "syringe",
@@ -7420,7 +7910,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "tactical_mk1": {
     "id": "tactical_mk1",
@@ -7437,7 +7928,8 @@
       "rubber_parts": 6
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "tactical_mk2": {
     "id": "tactical_mk2",
@@ -7454,21 +7946,8 @@
       "magnet": 3
     },
     "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "tactical_mk3_defensive_blueprint": {
-    "id": "tactical_mk3_defensive_blueprint",
-    "name": {
-      "value": "戰術型 Mk. 3（防禦）藍圖",
-      "originalEn": "Tactical Mk. 3 (Defensive) Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/tactical_mk3_defensive_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "tactical_mk3_defensive": {
     "id": "tactical_mk3_defensive",
@@ -7485,21 +7964,23 @@
       "processor": 3
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
-  "tactical_mk3_healing_blueprint": {
-    "id": "tactical_mk3_healing_blueprint",
+  "tactical_mk3_defensive_blueprint": {
+    "id": "tactical_mk3_defensive_blueprint",
     "name": {
-      "value": "戰術 Mk. 3（治療）藍圖",
-      "originalEn": "Tactical Mk. 3 (Healing) Blueprint"
+      "value": "戰術型 Mk. 3（防禦）藍圖",
+      "originalEn": "Tactical Mk. 3 (Defensive) Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/tactical_mk3_healing_blueprint.png",
+    "imageFilename": "https://cdn.arctracker.io/items/v2/tactical_mk3_defensive_blueprint.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "tactical_mk3_healing": {
     "id": "tactical_mk3_healing",
@@ -7516,21 +7997,23 @@
       "processor": 3
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
-  "tactical_mk3_revival_blueprint": {
-    "id": "tactical_mk3_revival_blueprint",
+  "tactical_mk3_healing_blueprint": {
+    "id": "tactical_mk3_healing_blueprint",
     "name": {
-      "value": "戰術 Mk. 3 (復甦) 藍圖",
-      "originalEn": "Tactical Mk. 3 (Revival) Blueprint"
+      "value": "戰術 Mk. 3（治療）藍圖",
+      "originalEn": "Tactical Mk. 3 (Healing) Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/tactical_mk3_revival_blueprint.png",
+    "imageFilename": "https://cdn.arctracker.io/items/v2/tactical_mk3_healing_blueprint.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "tactical_mk3_revival": {
     "id": "tactical_mk3_revival",
@@ -7547,21 +8030,23 @@
       "processor": 3
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
-  "tactical_mk3_smoke_blueprint": {
-    "id": "tactical_mk3_smoke_blueprint",
+  "tactical_mk3_revival_blueprint": {
+    "id": "tactical_mk3_revival_blueprint",
     "name": {
-      "value": "戰術 Mk. 3（煙霧）藍圖",
-      "originalEn": "Tactical Mk. 3 (Smoke) Blueprint"
+      "value": "戰術 Mk. 3 (復甦) 藍圖",
+      "originalEn": "Tactical Mk. 3 (Revival) Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/tactical_mk3_smoke_blueprint.png",
+    "imageFilename": "https://cdn.arctracker.io/items/v2/tactical_mk3_revival_blueprint.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "tactical_mk3_smoke": {
     "id": "tactical_mk3_smoke",
@@ -7578,21 +8063,23 @@
       "processor": 3
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
-  "tagging_grenade_blueprint": {
-    "id": "tagging_grenade_blueprint",
+  "tactical_mk3_smoke_blueprint": {
+    "id": "tactical_mk3_smoke_blueprint",
     "name": {
-      "value": "標記手榴彈 藍圖",
-      "originalEn": "Tagging Grenade Blueprint"
+      "value": "戰術 Mk. 3（煙霧）藍圖",
+      "originalEn": "Tactical Mk. 3 (Smoke) Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/tagging_grenade_blueprint.png",
+    "imageFilename": "https://cdn.arctracker.io/items/v2/tactical_mk3_smoke_blueprint.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "tagging_grenade": {
     "id": "tagging_grenade",
@@ -7609,7 +8096,23 @@
       "sensors": 1
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
+  },
+  "tagging_grenade_blueprint": {
+    "id": "tagging_grenade_blueprint",
+    "name": {
+      "value": "標記手榴彈 藍圖",
+      "originalEn": "Tagging Grenade Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/tagging_grenade_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "tattered_arc_lining": {
     "id": "tattered_arc_lining",
@@ -7623,7 +8126,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "tattered_clothes": {
     "id": "tattered_clothes",
@@ -7637,7 +8141,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "telemetry_transceiver": {
     "id": "telemetry_transceiver",
@@ -7651,7 +8156,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "tempest_blueprint": {
     "id": "tempest_blueprint",
@@ -7665,7 +8171,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "tempest_i": {
     "id": "tempest_i",
@@ -7683,7 +8190,8 @@
       "medium_gun_parts": 3
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
   "tempest_ii": {
     "id": "tempest_ii",
@@ -7700,7 +8208,8 @@
       "advanced_mechanical_components": 2,
       "medium_gun_parts": 1
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
   "tempest_iii": {
     "id": "tempest_iii",
@@ -7717,7 +8226,8 @@
       "advanced_mechanical_components": 2,
       "medium_gun_parts": 3
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
   "tempest_iv": {
     "id": "tempest_iv",
@@ -7734,7 +8244,8 @@
       "advanced_mechanical_components": 2,
       "medium_gun_parts": 3
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
   "thermostat": {
     "id": "thermostat",
@@ -7748,7 +8259,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "tick_pod": {
     "id": "tick_pod",
@@ -7762,7 +8274,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "toaster": {
     "id": "toaster",
@@ -7776,7 +8289,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "torn_blanket": {
     "id": "torn_blanket",
@@ -7790,7 +8304,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "torn_book": {
     "id": "torn_book",
@@ -7804,7 +8319,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "torrente_blueprint": {
     "id": "torrente_blueprint",
@@ -7818,7 +8334,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "torrente_i": {
     "id": "torrente_i",
@@ -7836,7 +8353,8 @@
       "steel_spring": 6
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "torrente_ii": {
     "id": "torrente_ii",
@@ -7853,7 +8371,8 @@
       "advanced_mechanical_components": 1,
       "medium_gun_parts": 2
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "torrente_iii": {
     "id": "torrente_iii",
@@ -7870,7 +8389,8 @@
       "advanced_mechanical_components": 1,
       "medium_gun_parts": 2
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "torrente_iv": {
     "id": "torrente_iv",
@@ -7887,21 +8407,8 @@
       "advanced_mechanical_components": 2,
       "medium_gun_parts": 2
     },
-    "craftQuantity": 1
-  },
-  "trailblazer_blueprint": {
-    "id": "trailblazer_blueprint",
-    "name": {
-      "value": "開拓者藍圖",
-      "originalEn": "Trailblazer Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/trailblazer_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "trailblazer": {
     "id": "trailblazer",
@@ -7919,21 +8426,23 @@
       "synthesized_fuel": 1
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
-  "trigger_nade_blueprint": {
-    "id": "trigger_nade_blueprint",
+  "trailblazer_blueprint": {
+    "id": "trailblazer_blueprint",
     "name": {
-      "value": "觸發手榴彈藍圖",
-      "originalEn": "Trigger Nade Blueprint"
+      "value": "開拓者藍圖",
+      "originalEn": "Trailblazer Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/trigger_nade_blueprint.png",
+    "imageFilename": "https://cdn.arctracker.io/items/v2/trailblazer_blueprint.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "trigger_nade": {
     "id": "trigger_nade",
@@ -7950,7 +8459,23 @@
       "processor": 1
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
+  },
+  "trigger_nade_blueprint": {
+    "id": "trigger_nade_blueprint",
+    "name": {
+      "value": "觸發手榴彈藍圖",
+      "originalEn": "Trigger Nade Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/trigger_nade_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "tropical_duck": {
     "id": "tropical_duck",
@@ -7964,7 +8489,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "turbine_compressor": {
     "id": "turbine_compressor",
@@ -7978,7 +8504,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
   "turbo_pump": {
     "id": "turbo_pump",
@@ -7992,7 +8519,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "twilight_compass_ship_model": {
     "id": "twilight_compass_ship_model",
@@ -8006,7 +8534,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "unusable_weapon": {
     "id": "unusable_weapon",
@@ -8020,7 +8549,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "vaporizer_regulator": {
     "id": "vaporizer_regulator",
@@ -8034,7 +8564,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
   "vase": {
     "id": "vase",
@@ -8048,7 +8579,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "velocity_ship_model": {
     "id": "velocity_ship_model",
@@ -8062,7 +8594,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "venator_blueprint": {
     "id": "venator_blueprint",
@@ -8076,7 +8609,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "venator_i": {
     "id": "venator_i",
@@ -8094,7 +8628,8 @@
       "medium_gun_parts": 3
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "venator_ii": {
     "id": "venator_ii",
@@ -8111,7 +8646,8 @@
       "advanced_mechanical_components": 1,
       "medium_gun_parts": 2
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "venator_iii": {
     "id": "venator_iii",
@@ -8128,7 +8664,8 @@
       "advanced_mechanical_components": 1,
       "medium_gun_parts": 2
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "venator_iv": {
     "id": "venator_iv",
@@ -8145,7 +8682,8 @@
       "advanced_mechanical_components": 2,
       "medium_gun_parts": 2
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "vertical_grip_i": {
     "id": "vertical_grip_i",
@@ -8162,21 +8700,8 @@
       "plastic_parts": 6
     },
     "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "vertical_grip_ii_blueprint": {
-    "id": "vertical_grip_ii_blueprint",
-    "name": {
-      "value": "垂直握把 II 藍圖",
-      "originalEn": "Vertical Grip II Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/vertical_grip_ii_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "vertical_grip_ii": {
     "id": "vertical_grip_ii",
@@ -8193,21 +8718,23 @@
       "mechanical_components": 2
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
-  "vertical_grip_iii_blueprint": {
-    "id": "vertical_grip_iii_blueprint",
+  "vertical_grip_ii_blueprint": {
+    "id": "vertical_grip_ii_blueprint",
     "name": {
-      "value": "垂直握把III 藍圖",
-      "originalEn": "Vertical Grip III Blueprint"
+      "value": "垂直握把 II 藍圖",
+      "originalEn": "Vertical Grip II Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/vertical_grip_iii_blueprint.png",
+    "imageFilename": "https://cdn.arctracker.io/items/v2/vertical_grip_ii_blueprint.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "vertical_grip_iii": {
     "id": "vertical_grip_iii",
@@ -8224,7 +8751,23 @@
       "mod_components": 2
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
+  },
+  "vertical_grip_iii_blueprint": {
+    "id": "vertical_grip_iii_blueprint",
+    "name": {
+      "value": "垂直握把III 藍圖",
+      "originalEn": "Vertical Grip III Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/vertical_grip_iii_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "very_comfortable_pillow": {
     "id": "very_comfortable_pillow",
@@ -8238,21 +8781,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "vita_shot_blueprint": {
-    "id": "vita_shot_blueprint",
-    "name": {
-      "value": "活力注射劑藍圖",
-      "originalEn": "Vita Shot Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/vita_shot_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "vita_shot": {
     "id": "vita_shot",
@@ -8269,21 +8799,23 @@
       "syringe": 1
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
-  "vita_spray_blueprint": {
-    "id": "vita_spray_blueprint",
+  "vita_shot_blueprint": {
+    "id": "vita_shot_blueprint",
     "name": {
-      "value": "生命噴霧藍圖",
-      "originalEn": "Vita Spray Blueprint"
+      "value": "活力注射劑藍圖",
+      "originalEn": "Vita Shot Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/vita_spray_blueprint.png",
+    "imageFilename": "https://cdn.arctracker.io/items/v2/vita_shot_blueprint.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "vita_spray": {
     "id": "vita_spray",
@@ -8301,7 +8833,23 @@
       "tick_pod": 1
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
+  },
+  "vita_spray_blueprint": {
+    "id": "vita_spray_blueprint",
+    "name": {
+      "value": "生命噴霧藍圖",
+      "originalEn": "Vita Spray Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/vita_spray_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "volcanic_rock": {
     "id": "volcanic_rock",
@@ -8315,7 +8863,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "voltage_converter": {
     "id": "voltage_converter",
@@ -8329,7 +8878,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "vulcano_blueprint": {
     "id": "vulcano_blueprint",
@@ -8343,7 +8893,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "vulcano_i": {
     "id": "vulcano_i",
@@ -8361,7 +8912,8 @@
       "magnetic_accelerator": 1
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
   "vulcano_ii": {
     "id": "vulcano_ii",
@@ -8378,7 +8930,8 @@
       "advanced_mechanical_components": 1,
       "heavy_gun_parts": 2
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
   "vulcano_iii": {
     "id": "vulcano_iii",
@@ -8395,7 +8948,8 @@
       "advanced_mechanical_components": 2,
       "heavy_gun_parts": 1
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
   "vulcano_iv": {
     "id": "vulcano_iv",
@@ -8412,7 +8966,8 @@
       "advanced_mechanical_components": 2,
       "heavy_gun_parts": 3
     },
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
   "wasp_driver": {
     "id": "wasp_driver",
@@ -8426,7 +8981,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "water_filter": {
     "id": "water_filter",
@@ -8440,7 +8996,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "water_pump": {
     "id": "water_pump",
@@ -8454,21 +9011,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "white_flag_blueprint": {
-    "id": "white_flag_blueprint",
-    "name": {
-      "value": "白旗藍圖",
-      "originalEn": "White Flag Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/white_flag_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   },
   "white_flag": {
     "id": "white_flag",
@@ -8485,7 +9029,23 @@
       "plastic_parts": 3
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
+  },
+  "white_flag_blueprint": {
+    "id": "white_flag_blueprint",
+    "name": {
+      "value": "白旗藍圖",
+      "originalEn": "White Flag Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/white_flag_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "wind_sprite_ship_model": {
     "id": "wind_sprite_ship_model",
@@ -8499,7 +9059,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "wires": {
     "id": "wires",
@@ -8513,21 +9074,8 @@
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
-  },
-  "wolfpack_blueprint": {
-    "id": "wolfpack_blueprint",
-    "name": {
-      "value": "狼群藍圖",
-      "originalEn": "Wolfpack Blueprint"
-    },
-    "stackSize": 1,
-    "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/wolfpack_blueprint.png",
-    "isWeapon": null,
-    "recipe": null,
-    "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Uncommon"
   },
   "wolfpack": {
     "id": "wolfpack",
@@ -8545,21 +9093,23 @@
       "rocketeer_driver": 1
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Epic"
   },
-  "yellow_light_stick_blueprint": {
-    "id": "yellow_light_stick_blueprint",
+  "wolfpack_blueprint": {
+    "id": "wolfpack_blueprint",
     "name": {
-      "value": "黃色螢光棒",
-      "originalEn": "Yellow Light Stick Blueprint"
+      "value": "狼群藍圖",
+      "originalEn": "Wolfpack Blueprint"
     },
     "stackSize": 1,
     "value": 5000,
-    "imageFilename": "https://cdn.arctracker.io/items/v2/yellow_light_stick_blueprint.png",
+    "imageFilename": "https://cdn.arctracker.io/items/v2/wolfpack_blueprint.png",
     "isWeapon": null,
     "recipe": null,
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "yellow_light_stick": {
     "id": "yellow_light_stick",
@@ -8575,7 +9125,23 @@
       "chemicals": 3
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Common"
+  },
+  "yellow_light_stick_blueprint": {
+    "id": "yellow_light_stick_blueprint",
+    "name": {
+      "value": "黃色螢光棒",
+      "originalEn": "Yellow Light Stick Blueprint"
+    },
+    "stackSize": 1,
+    "value": 5000,
+    "imageFilename": "https://cdn.arctracker.io/items/v2/yellow_light_stick_blueprint.png",
+    "isWeapon": null,
+    "recipe": null,
+    "upgradeCost": null,
+    "craftQuantity": 1,
+    "rarity": "Common"
   },
   "zipline": {
     "id": "zipline",
@@ -8592,6 +9158,7 @@
       "rope": 1
     },
     "upgradeCost": null,
-    "craftQuantity": 1
+    "craftQuantity": 1,
+    "rarity": "Rare"
   }
 }

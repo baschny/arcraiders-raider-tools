@@ -71,36 +71,8 @@
   }
 
   &__icon {
-    width: 80px;
-    height: 80px;
+    --item-icon-size: 80px;
     flex-shrink: 0;
-    border-radius: $radius-sm;
-    border: 2px solid transparent;
-    object-fit: contain;
-    padding: 4px;
-    background-size: cover;
-    background-position: left center;
-
-    &.rarity-common {
-      border-color: $rarity-common-border;
-      background-image: url('/images/rarities/common_bg.png');
-    }
-    &.rarity-uncommon {
-      border-color: $rarity-uncommon-border;
-      background-image: url('/images/rarities/uncommon_bg.png');
-    }
-    &.rarity-rare {
-      border-color: $rarity-rare-border;
-      background-image: url('/images/rarities/rare_bg.png');
-    }
-    &.rarity-epic {
-      border-color: $rarity-epic-border;
-      background-image: url('/images/rarities/epic_bg.png');
-    }
-    &.rarity-legendary {
-      border-color: $rarity-legendary-border;
-      background-image: url('/images/rarities/legendary_bg.png');
-    }
   }
 
   &__title {
@@ -420,36 +392,8 @@
   }
 
   &__material-icon {
-    width: 24px;
-    height: 24px;
-    object-fit: contain;
-    border: 1px solid transparent;
-    border-radius: 3px;
-    padding: 1px;
+    --item-icon-size: 24px;
     flex-shrink: 0;
-    background-size: cover;
-    background-position: left center;
-
-    &.rarity-common {
-      border-color: $rarity-common-border;
-      background-image: url('/images/rarities/common_bg.png');
-    }
-    &.rarity-uncommon {
-      border-color: $rarity-uncommon-border;
-      background-image: url('/images/rarities/uncommon_bg.png');
-    }
-    &.rarity-rare {
-      border-color: $rarity-rare-border;
-      background-image: url('/images/rarities/rare_bg.png');
-    }
-    &.rarity-epic {
-      border-color: $rarity-epic-border;
-      background-image: url('/images/rarities/epic_bg.png');
-    }
-    &.rarity-legendary {
-      border-color: $rarity-legendary-border;
-      background-image: url('/images/rarities/legendary_bg.png');
-    }
   }
 
   &__needed-flag {
@@ -548,36 +492,8 @@
   }
 
   &__needs-icon {
-    width: 22px;
-    height: 22px;
-    object-fit: contain;
-    border: 1px solid transparent;
-    border-radius: 3px;
-    padding: 1px;
+    --item-icon-size: 22px;
     flex-shrink: 0;
-    background-size: cover;
-    background-position: left center;
-
-    &.rarity-common {
-      border-color: $rarity-common-border;
-      background-image: url('/images/rarities/common_bg.png');
-    }
-    &.rarity-uncommon {
-      border-color: $rarity-uncommon-border;
-      background-image: url('/images/rarities/uncommon_bg.png');
-    }
-    &.rarity-rare {
-      border-color: $rarity-rare-border;
-      background-image: url('/images/rarities/rare_bg.png');
-    }
-    &.rarity-epic {
-      border-color: $rarity-epic-border;
-      background-image: url('/images/rarities/epic_bg.png');
-    }
-    &.rarity-legendary {
-      border-color: $rarity-legendary-border;
-      background-image: url('/images/rarities/legendary_bg.png');
-    }
   }
 
   &__needs-name {

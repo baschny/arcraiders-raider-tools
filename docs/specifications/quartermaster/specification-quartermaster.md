@@ -2267,6 +2267,12 @@ Missing and Uncraftable indicators must always be visible when applicable.
 
 All item displays must use the shared **Item Icon Component**.
 
+The quartermaster `ItemIcon` (`src/apps/quartermaster/components/ItemIcon.tsx`) delegates visual rendering (container, image, name, rarity border/background) to the shared `ItemIcon` from `src/shared/components/ItemIcon` (imported as `SharedItemIcon`). App-specific overlays (badges, prioritize star, lock icon, quantity—rendered by quartermaster, not shared) are passed as `children`.
+
+Rarity colors are sourced from shared `_variables.scss` via `$rarity-*-border`. Sizing uses the CSS custom property `--item-icon-size` (mapped from the `size` prop: xs=30px, sm=80px, md=84px, lg=108px).
+
+`ItemTooltip` icon classes (`qm-item-tooltip__icon`, `qm-item-tooltip__material-icon`, `qm-item-tooltip__needs-icon`) use `SharedItemIcon` directly, with per-class sizing via `--item-icon-size` in SCSS.
+
 Consistency rules:
 
 - identical icon container styling

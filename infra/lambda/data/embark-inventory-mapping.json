@@ -344,7 +344,7 @@
     },
     "-12855733": {
       "blueprintAssetId": 1934437826,
-      "name": "Unlock Extended Barrel",
+      "name": "Unlock Extended Barrel III",
       "targetItemId": "extended_barrel_iii"
     },
     "-1295524363": {
@@ -769,7 +769,7 @@
     "1383004532": "seeker_grenade_blueprint",
     "1393527984": "water_filter",
     "1402108763": "silencer_i_blueprint",
-    "1407760402": "extended_barrel",
+    "1407760402": "extended_barrel_iii",
     "1407799927": "burletta_iv",
     "1414923729": "leviathans_crown_ship_model",
     "1426983925": "shotgun_choke_iii_blueprint",
@@ -833,7 +833,7 @@
     "1921518029": "silencer_ii",
     "1923878358": "venator_blueprint",
     "1928875024": "cooling_coil",
-    "1934437826": "extended_barrel_blueprint",
+    "1934437826": "extended_barrel_iii_blueprint",
     "1936847679": "il_toro_blueprint",
     "1946218435": "spaceport_trench_tower_key",
     "1951118983": "anvil_i",
@@ -916,7 +916,7 @@
     "-1271743807": "door_blocker_blueprint",
     "-1275287419": "buried_city_town_hall_key",
     "-127927282": "agave",
-    "-12855733": "extended_barrel_blueprint",
+    "-12855733": "extended_barrel_iii_blueprint",
     "-1286103237": "very_comfortable_pillow",
     "-1295139142": "shotgun_choke_iii",
     "-1295524363": "explosive_mine_blueprint",
@@ -1439,7 +1439,7 @@
     "1383004532": "Seeker Grenade Blueprint",
     "1393527984": "Water Filter",
     "1402108763": "Silencer I Blueprint",
-    "1407760402": "Extended Barrel",
+    "1407760402": "Extended Barrel III",
     "1407799927": "Burletta IV",
     "1414923729": "\"Leviathan's Crown\" Ship Model",
     "1426983925": "Shotgun Choke III Blueprint",
@@ -1503,7 +1503,7 @@
     "1921518029": "Silencer II",
     "1923878358": "Unlock Venator",
     "1928875024": "Cooling Coil",
-    "1934437826": "Extended Barrel Blueprint",
+    "1934437826": "Extended Barrel Blueprint III",
     "1936847679": "Unlock Il Toro",
     "1946218435": "Spaceport Trench Tower Key",
     "1951118983": "Anvil I",
@@ -1587,7 +1587,7 @@
     "-1271743807": "Door Blocker Blueprint (not in game)",
     "-1275287419": "Buried City Town Hall Key",
     "-127927282": "Agave",
-    "-12855733": "Unlock Extended Barrel",
+    "-12855733": "Unlock Extended Barrel III",
     "-1286103237": "Very Comfortable Pillow",
     "-1295139142": "Shotgun Choke III",
     "-1295524363": "Unlock Explosive Mine",
@@ -1892,7 +1892,7 @@
     "-980968159": "Rattler III",
     "-994234794": "ARC Flex Rubber"
   },
-  "generatedAt": "2026-05-31T00:33:23.041Z",
+  "generatedAt": "2026-06-03T23:10:43.558Z",
   "hideoutBenchLevelsByGeneratorAssetId": {
     "81797988": {
       "currentLevel": 3,

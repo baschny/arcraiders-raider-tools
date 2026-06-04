@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import type { Item } from '../types/item';
 import { searchItems } from '../utils/itemData';
 import { useLocale } from '../../../shared/context/LocaleContext';
+import { ItemIcon } from '../../../shared/components/ItemIcon';
 
 interface ItemSearchProps {
   onSelect: (item: Item) => void;
@@ -101,7 +102,7 @@ export function ItemSearch({ onSelect, placeholder = 'Search items...', filter }
               onMouseEnter={() => setSelectedIndex(index)}
             >
               {item.imageFilename && (
-                <img src={item.imageFilename} alt={item.name} className="item-icon" />
+                <ItemIcon itemId={item.id} name={item.name} icon={item.imageFilename} rarity={item.rarity} showName={false} />
               )}
               <div className="item-info">
                 <div className="item-name">{item.name}</div>

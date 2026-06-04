@@ -41,11 +41,11 @@ $qm-sidebar-width: 200px;
 $qm-header-height: 48px;
 
 // Rarity colors (matching spec 7.7.3)
-$rarity-common-border: #9e9e9e;
-$rarity-uncommon-border: #4caf50;
-$rarity-rare-border: #2196f3;
-$rarity-epic-border: #9c27b0;
-$rarity-legendary-border: #ff9800;
+$rarity-common-border: shared.$rarity-common-border;
+$rarity-uncommon-border: shared.$rarity-uncommon-border;
+$rarity-rare-border: shared.$rarity-rare-border;
+$rarity-epic-border: shared.$rarity-epic-border;
+$rarity-legendary-border: shared.$rarity-legendary-border;
 
 // Badge colors
 $badge-keep: #4caf50;

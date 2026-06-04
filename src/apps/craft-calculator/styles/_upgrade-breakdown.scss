@@ -104,15 +104,6 @@ $action-gold: oklch(85% .22 85);
               gap: $spacing-sm;
               color: $text-primary;
 
-              .material-icon {
-                width: 24px;
-                height: 24px;
-                object-fit: contain;
-                background: rgba(0, 0, 0, 0.3);
-                border-radius: $radius-sm;
-                padding: 2px;
-                flex-shrink: 0;
-              }
             }
 
             &.amount-cell {

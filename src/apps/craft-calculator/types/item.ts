@@ -39,6 +39,7 @@ export interface Item {
   recipe?: ItemRecipe;
   upgradeCost?: ItemRecipe;
   craftQuantity?: number;
+  rarity?: string;
 }
 
 export interface LocalizedItem {
@@ -51,6 +52,7 @@ export interface LocalizedItem {
   recipe?: ItemRecipe;
   upgradeCost?: ItemRecipe;
   craftQuantity?: number;
+  rarity?: string;
 }
 
 export interface ItemDatabase {

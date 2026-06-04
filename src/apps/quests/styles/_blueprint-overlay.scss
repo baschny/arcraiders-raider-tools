@@ -79,23 +79,6 @@
   }
 }
 
-.blueprint-overlay-item-icon {
-  width: 26px;
-  height: 26px;
-  object-fit: contain;
-  border-radius: 3px;
-  flex-shrink: 0;
-}
-
-.blueprint-overlay-item-icon-fallback {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: $bg-tertiary;
-  border: $border-width-thin solid $border-light;
-  font-size: $font-md;
-}
-
 .blueprint-overlay-item-text {
   display: flex;
   flex-direction: column;

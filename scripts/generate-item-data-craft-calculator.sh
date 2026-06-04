@@ -46,7 +46,8 @@ for LOCALE in "${LOCALES[@]}"; do
           isWeapon: $item.isWeapon,
           recipe: $item.recipe,
           upgradeCost: $item.upgradeCost,
-          craftQuantity: ($item.craftQuantity // 1)
+          craftQuantity: ($item.craftQuantity // 1),
+          rarity: ($item.rarity // "Common")
         }
       }
     )

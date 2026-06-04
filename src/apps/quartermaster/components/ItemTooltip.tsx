@@ -10,6 +10,8 @@ import {
   getLocalizedQuartermasterType,
 } from '../utils/localization';
 import { useLocale } from '../../../shared/context/LocaleContext';
+import { ItemIcon as SharedItemIcon } from '../../../shared/components/ItemIcon';
+import { getRarityClass } from '../../../shared/utils/rarity';
 
 interface ItemTooltipProps {
   item: PlannerItem;
@@ -22,10 +24,6 @@ interface ItemTooltipProps {
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
   onContextMenu?: () => void;
-}
-
-function getRarityClass(rarity: string): string {
-  return `rarity-${rarity.toLowerCase()}`;
 }
 
 function parseProjectId(listId: string): string | null {
@@ -103,11 +101,7 @@ export function ItemTooltip({
       onMouseUp={(event) => event.stopPropagation()}
     >
       <div className="qm-item-tooltip__header">
-        <img
-          src={item.icon}
-          alt={item.name}
-          className={`qm-item-tooltip__icon ${getRarityClass(item.rarity)}`}
-        />
+        <SharedItemIcon itemId={item.id} name={item.name} icon={item.icon} rarity={item.rarity} showName={false} className="qm-item-tooltip__icon" />
         <div className="qm-item-tooltip__have-pill">
           <Backpack size={13} />
           <span className={`qm-item-tooltip__have-pill-value ${ownedQuantity === null ? 'qm-item-tooltip__have-pill-value--unknown' : ''}`}>
@@ -214,7 +208,7 @@ export function ItemTooltip({
                   return (
                     <div className={`qm-item-tooltip__material ${isNeeded ? 'qm-item-tooltip__material--needed' : ''}`} key={materialId}>
                       <div className="qm-item-tooltip__material-main">
-                        <img src={material.icon} alt={material.name} className={`qm-item-tooltip__material-icon ${getRarityClass(material.rarity)}`} />
+                        <SharedItemIcon itemId={materialId} name={material.name} icon={material.icon} rarity={material.rarity} showName={false} className="qm-item-tooltip__material-icon" />
                         <span className="qm-item-name">{material.name}</span>
                         {isNeeded && (
                           <span className="qm-item-tooltip__needed-flag">
@@ -243,7 +237,7 @@ export function ItemTooltip({
                   return (
                     <div className="qm-item-tooltip__material" key={materialId}>
                       <div className="qm-item-tooltip__material-main">
-                        <img src={material.icon} alt={material.name} className={`qm-item-tooltip__material-icon ${getRarityClass(material.rarity)}`} />
+                        <SharedItemIcon itemId={materialId} name={material.name} icon={material.icon} rarity={material.rarity} showName={false} className="qm-item-tooltip__material-icon" />
                         <span className="qm-item-name">{material.name}</span>
                       </div>
                       <span className="qm-item-tooltip__material-quantity">×{quantity}</span>
@@ -267,7 +261,7 @@ export function ItemTooltip({
                   return (
                     <div className="qm-item-tooltip__material" key={materialId}>
                       <div className="qm-item-tooltip__material-main">
-                        <img src={material.icon} alt={material.name} className={`qm-item-tooltip__material-icon ${getRarityClass(material.rarity)}`} />
+                        <SharedItemIcon itemId={materialId} name={material.name} icon={material.icon} rarity={material.rarity} showName={false} className="qm-item-tooltip__material-icon" />
                         <span className="qm-item-name">{material.name}</span>
                       </div>
                       <span className="qm-item-tooltip__material-quantity">×{quantity}</span>
@@ -368,11 +362,7 @@ export function ItemTooltip({
                       <div className="qm-item-tooltip__needs-row" key={`${need.listId}-${need.targetItemId}-${index}`}>
                         <div className="qm-item-tooltip__needs-left">
                           {getListIcon(need.listType)}
-                          <img
-                            src={targetIcon}
-                            alt={need.targetItemName}
-                            className={`qm-item-tooltip__needs-icon ${getRarityClass(need.targetItemRarity)}`}
-                          />
+                          <SharedItemIcon itemId={need.targetItemId} name={need.targetItemName} icon={targetIcon || undefined} rarity={need.targetItemRarity} showName={false} className="qm-item-tooltip__needs-icon" />
                           <span className="qm-item-tooltip__needs-name">{need.targetItemName}</span>
                         </div>
                         <div className="qm-item-tooltip__needs-right">
@@ -399,11 +389,7 @@ export function ItemTooltip({
                       <div className="qm-item-tooltip__needs-row" key={`repair-${need.targetItemId}-${need.listId}-${index}`}>
                         <div className="qm-item-tooltip__needs-left">
                           {getListIcon(need.listType)}
-                          <img
-                            src={targetIcon}
-                            alt={need.targetItemName}
-                            className={`qm-item-tooltip__needs-icon ${getRarityClass(targetItem?.rarity?.toLowerCase() ?? 'common')}`}
-                          />
+                          <SharedItemIcon itemId={need.targetItemId} name={need.targetItemName} icon={targetIcon || undefined} rarity={targetItem?.rarity} showName={false} className="qm-item-tooltip__needs-icon" />
                           <span className="qm-item-tooltip__needs-name">
                             {need.targetItemName}
                           </span>
@@ -431,18 +417,10 @@ export function ItemTooltip({
                       <div className="qm-item-tooltip__needs-row" key={`${usage.listId}-${usage.targetItemId}-${usage.yieldItemId}-${index}`}>
                         <div className="qm-item-tooltip__needs-left">
                           {getListIcon(usage.listType)}
-                          <img
-                            src={yieldIcon}
-                            alt={usage.yieldItemName}
-                            className={`qm-item-tooltip__needs-icon ${getRarityClass('common')}`}
-                          />
+                          <SharedItemIcon itemId={usage.yieldItemId} name={usage.yieldItemName} icon={yieldIcon || undefined} rarity="Common" showName={false} className="qm-item-tooltip__needs-icon" />
                           <span className="qm-item-tooltip__needs-name">
                             <span className="qm-item-tooltip__status-arrow">x{usage.yieldQuantity} → </span>
-                            <img
-                              src={targetIcon}
-                              alt={usage.targetItemName}
-                              className={`qm-item-tooltip__needs-icon ${getRarityClass(usage.targetItemRarity)}`}
-                            />
+                            <SharedItemIcon itemId={usage.targetItemId} name={usage.targetItemName} icon={targetIcon || undefined} rarity={usage.targetItemRarity} showName={false} className="qm-item-tooltip__needs-icon" />
                             <span className="qm-item-name">{usage.targetItemName}</span>
                           </span>
                         </div>

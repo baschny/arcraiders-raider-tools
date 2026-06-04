@@ -1,10 +1,11 @@
 import { createPortal } from 'react-dom';
 import type { CSSProperties } from 'react';
-import type { Quest, QuestItemEntry } from '../types/quest';
+import type { Quest } from '../types/quest';
 import { useLocale } from '../../../shared/context/LocaleContext';
 import { getLocalizedTraderName } from '../utils/localization';
 import { getQuestMapIndicator } from '../utils/mapMeta';
 import type { LinkedQuestObjectiveProgress } from '../../../shared/types/linkedQuests';
+import { ItemIcon } from '../../../shared/components/ItemIcon';
 
 interface QuestTooltipProps {
   quest: Quest;
@@ -14,33 +15,6 @@ interface QuestTooltipProps {
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
   onContextMenu?: () => void;
-}
-
-function rarityClass(rarity: QuestItemEntry['rarity']): string {
-  return `rarity-${rarity.toLowerCase()}`;
-}
-
-function QuestItemTile({ item }: { item: QuestItemEntry }) {
-  return (
-    <div className={`quest-item-tile ${rarityClass(item.rarity)}`} title={item.name}>
-      <div className="quest-item-tile__container">
-        {item.imageFilename ? (
-          <img
-            className="quest-item-tile__image"
-            src={item.imageFilename}
-            alt={item.name}
-            loading="lazy"
-          />
-        ) : (
-          <div className="quest-item-tile__placeholder" aria-hidden="true" />
-        )}
-        {item.quantity > 1 && (
-          <span className="quest-item-tile__quantity">×{item.quantity}</span>
-        )}
-      </div>
-      <span className="quest-item-tile__name">{item.name}</span>
-    </div>
-  );
 }
 
 export function QuestTooltip({
@@ -169,7 +143,17 @@ export function QuestTooltip({
             {hasRequiredItems && (
               <div className="quest-tooltip__tiles">
                 {quest.requiredItems.map((item) => (
-                  <QuestItemTile key={item.id} item={item} />
+                  <ItemIcon
+                    key={item.id}
+                    itemId={item.id}
+                    name={item.name}
+                    icon={item.imageFilename}
+                    rarity={item.rarity}
+                    showName={true}
+                    showQuantity={item.quantity > 1}
+                    quantity={item.quantity}
+                    style={{ '--item-icon-size': '64px' } as React.CSSProperties}
+                  />
                 ))}
               </div>
             )}
@@ -183,7 +167,17 @@ export function QuestTooltip({
             </h4>
             <div className="quest-tooltip__tiles">
               {quest.grantedItems.map((item) => (
-                <QuestItemTile key={item.id} item={item} />
+                <ItemIcon
+                  key={item.id}
+                  itemId={item.id}
+                  name={item.name}
+                  icon={item.imageFilename}
+                  rarity={item.rarity}
+                  showName={true}
+                  showQuantity={item.quantity > 1}
+                  quantity={item.quantity}
+                  style={{ '--item-icon-size': '64px' } as React.CSSProperties}
+                />
               ))}
             </div>
           </div>
@@ -196,7 +190,17 @@ export function QuestTooltip({
             </h4>
             <div className="quest-tooltip__tiles">
               {quest.rewardItems.map((item) => (
-                <QuestItemTile key={item.id} item={item} />
+                <ItemIcon
+                  key={item.id}
+                  itemId={item.id}
+                  name={item.name}
+                  icon={item.imageFilename}
+                  rarity={item.rarity}
+                  showName={true}
+                  showQuantity={item.quantity > 1}
+                  quantity={item.quantity}
+                  style={{ '--item-icon-size': '64px' } as React.CSSProperties}
+                />
               ))}
             </div>
           </div>

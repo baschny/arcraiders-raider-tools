@@ -12,7 +12,8 @@ export type BenchId =
   | 'weapon_bench'
   | 'workbench';
 
-export type ItemRarity = 'Common' | 'Uncommon' | 'Rare' | 'Epic' | 'Legendary';
+import type { ItemRarity } from '../../../shared/types/item';
+export type { ItemRarity };
 
 export interface PlannerItem {
   id: string;

@@ -214,9 +214,7 @@
   }
 
   &__suggestion-icon {
-    width: 36px;
-    height: 36px;
-    object-fit: contain;
+    --item-icon-size: 36px;
     flex-shrink: 0;
   }
 

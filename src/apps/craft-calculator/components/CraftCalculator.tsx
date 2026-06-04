@@ -10,11 +10,13 @@ import { isCraftableItem, calculateTotalMaterials, getUpgradeBreakdown } from '.
 import type { UpgradeBreakdown } from '../utils/weaponTiers';
 import { UpgradeBreakdown as UpgradeBreakdownComponent } from './UpgradeBreakdown';
 import { useLocale } from '../../../shared/context/LocaleContext';
+import { ItemIcon } from '../../../shared/components/ItemIcon';
 
 interface RequiredItemWithName extends RequiredItem {
   name?: string;
   imageUrl?: string;
   value?: number | null;
+  rarity?: string;
 }
 
 export function CraftCalculator() {
@@ -64,6 +66,7 @@ export function CraftCalculator() {
         name: materialItem?.name || materialId,
         imageUrl: materialItem?.imageFilename,
         value: materialItem?.value,
+        rarity: materialItem?.rarity,
       };
     });
     setRequiredItems(materials);
@@ -132,11 +135,7 @@ export function CraftCalculator() {
           <h2 className="card-title">{t('craftCalculator.craftedItemTitle')}</h2>
           <div className="selected-item-display">
             {selectedItem.imageFilename && (
-              <img
-                src={selectedItem.imageFilename}
-                alt={selectedItem.name}
-                className="selected-item-image"
-              />
+              <ItemIcon itemId={selectedItem.id} name={selectedItem.name} icon={selectedItem.imageFilename} rarity={selectedItem.rarity} showName={false} />
             )}
             <div className="item-header" style={{ flex: 1 }}>
               <div>
@@ -195,18 +194,7 @@ export function CraftCalculator() {
             <div key={item.id} className="required-item">
               <div className="item-header">
                 {item.imageUrl && (
-                  <img
-                    src={item.imageUrl}
-                    alt={item.name || fallbackItemLabel(index + 1)}
-                    style={{
-                      width: '24px',
-                      height: '24px',
-                      objectFit: 'contain',
-                      background: 'rgba(0,0,0,0.3)',
-                      borderRadius: '4px',
-                      padding: '2px',
-                    }}
-                  />
+                  <ItemIcon itemId={item.id} name={item.name || fallbackItemLabel(index + 1)} icon={item.imageUrl} rarity={item.rarity} showName={false} style={{ '--item-icon-size': '40px' } as React.CSSProperties} />
                 )}
                 <div style={{ flex: 1 }}>
                   <h3 style={{ margin: 0 }}>
