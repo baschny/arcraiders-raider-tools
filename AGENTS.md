@@ -34,11 +34,10 @@ Located in `scripts/`, these transform upstream data into app-specific formats:
 
 ```bash
 npm run generate              # Generate all data
+npm run generate:items        # Shared item database (used by all apps)
 npm run generate:quests       # Quest tree data
-npm run generate:items        # Item database
-npm run generate:items-loot-helper  # Loot chain data
-npm run generate:crafting     # Crafting recipes
-npm run generate:schedule     # Event schedule (direct copy)
+npm run generate:hideout      # Hideout module data
+npm run generate:schedule     # Event schedule
 ```
 
 **Important**: The upstream data structure may change as it's community-maintained. Keep generation scripts in sync with schema changes.
@@ -78,9 +77,9 @@ The project is migrating toward a fully localized user experience. Treat localiz
 **Generated Content Localization**:
 - Prefer generating localized data from `../arcraiders-data/` instead of hardcoding translations in React components
 - When practical, generators should emit locale-specific files such as:
-  - `public/data/craft-calculator/items.en.json`
-  - `public/data/craft-calculator/items.de.json`
-  - `public/data/craft-calculator/items.pt-BR.json`
+  - `public/data/items/items.en.json`
+  - `public/data/items/items.de.json`
+  - `public/data/items/items.pt-BR.json`
 - Loaders in the SPA should fetch the active locale first and fall back to English
 
 **English Original Names**:

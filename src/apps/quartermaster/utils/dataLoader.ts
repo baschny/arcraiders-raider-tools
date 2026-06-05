@@ -1,37 +1,113 @@
 /**
  * Data Loader for Quartermaster
- * Loads and transforms item data from public/data/quartermaster/items.json
+ * Loads item data from the shared database at public/data/items/items.json
+ * Applies Quartermaster-specific transformations at load time.
  */
 
 import type { AppLocale } from '../../../shared/i18n/config';
 import { fetchLocalizedJson } from '../../../shared/utils/localizedContent';
-import type { PlannerItem, ItemsMap, LocalizedItemsData } from '../types/item';
+import type { RawItemsOutput, ItemRarity } from '../../../shared/types/item';
+import type { PlannerItem, ItemsMap, BenchId } from '../types/item';
 import type { HideoutModuleDefinition, LocalizedHideoutModuleDefinition } from '../types/hideout';
 import type { ProjectDefinition, LocalizedProjectDefinition } from '../types/project';
 import type { QuestDefinition } from '../types/quest';
 import type { Quest, QuestItemEntry } from '../../../shared/types/quest';
 
-const ITEMS_URL = '/data/quartermaster/items.json';
+const ITEMS_URL = '/data/items/items.json';
 const HIDEOUT_URL = '/data/quartermaster/hideout.json';
 const PROJECTS_URL = '/data/quartermaster/projects.json';
 const QUESTS_URL = '/data/quests/quest-data.json';
 
 /**
- * Load all items from the generated JSON file
- * Transforms the stored format into ItemsMap with id property included
+ * Load all items from the shared item database.
+ * Applies Quartermaster-specific transformations:
+ *   - Excludes Blueprint types
+ *   - Normalizes craftBench from string|string[] to single BenchId
+ *   - Maps category and subCategory
+ *   - Renames imageFilename→icon, weightKg→weight
+ *   - Fills defaults (stationLevelRequired, blueprintLocked, craftQuantity)
  */
 export async function loadAllItems(locale: AppLocale): Promise<ItemsMap> {
-  const data = await fetchLocalizedJson<LocalizedItemsData>(ITEMS_URL, locale);
-  
-  // Transform items to include id property
+  const data = await fetchLocalizedJson<RawItemsOutput>(ITEMS_URL, locale);
   const itemsMap: ItemsMap = {};
-  for (const [id, item] of Object.entries(data.items)) {
-    itemsMap[id] = {
-      ...item,
-      name: item.name.value,
-      originalNameEn: item.name.originalEn,
+  const EXCLUDED_TYPES = new Set(['Blueprint']);
+  const VALID_BENCH_IDS = new Set<string>([
+    'equipment_bench', 'explosives_bench', 'med_station',
+    'refiner', 'utility_bench', 'weapon_bench', 'workbench',
+  ]);
+
+  for (const [id, raw] of Object.entries(data.items)) {
+    if (EXCLUDED_TYPES.has(raw.type)) continue;
+
+    // craftBench normalization
+    let craftBench: BenchId | undefined;
+    if (raw.craftBench !== undefined) {
+      if (typeof raw.craftBench === 'string') {
+        craftBench = raw.craftBench !== 'in_raid' && VALID_BENCH_IDS.has(raw.craftBench)
+          ? (raw.craftBench as BenchId)
+          : undefined;
+      } else {
+        const filtered = raw.craftBench.filter(b => b !== 'workbench' && b !== 'in_raid');
+        for (const bench of filtered) {
+          if (VALID_BENCH_IDS.has(bench)) {
+            craftBench = bench as BenchId;
+            break;
+          }
+        }
+      }
+    }
+
+    // Category mapping
+    let category: string;
+    let subCategory: string | undefined;
+    if (raw.isWeapon === true) {
+      category = 'Weapon';
+      subCategory = raw.type;
+    } else if (raw.type === 'Quick Use') {
+      category = 'Quick Use';
+      if (craftBench === 'explosives_bench') subCategory = 'Explosive';
+      else if (craftBench === 'med_station') subCategory = 'Medicinal';
+      else if (craftBench === 'utility_bench') subCategory = 'Utility';
+    } else {
+      category = raw.type;
+    }
+
+    const item: PlannerItem = {
       id,
-    } as PlannerItem;
+      name: raw.name.value,
+      originalNameEn: raw.name.originalEn,
+      description: raw.description,
+      icon: raw.imageFilename ?? '',
+      rarity: raw.rarity as ItemRarity,
+      type: raw.type,
+      category,
+      ...(subCategory !== undefined && { subCategory }),
+      ...(craftBench !== undefined && { craftBench }),
+      stationLevelRequired: (raw.stationLevelRequired ?? 1) as 1 | 2 | 3,
+      blueprintLocked: raw.blueprintLocked ?? false,
+      craftQuantity: raw.craftQuantity ?? 1,
+      ...(raw.recipe && Object.keys(raw.recipe).length > 0 && { recipe: raw.recipe }),
+      ...(raw.upgradeCost && Object.keys(raw.upgradeCost).length > 0 && { upgradeCost: raw.upgradeCost }),
+      ...(raw.upgradesTo && { upgradesTo: raw.upgradesTo }),
+      ...(raw.upgradesFrom && { upgradesFrom: raw.upgradesFrom }),
+      ...(raw.weaponBaseId && { weaponBaseId: raw.weaponBaseId }),
+      ...(raw.weaponTier !== undefined && { weaponTier: raw.weaponTier as 1 | 2 | 3 | 4 }),
+      ...(raw.recyclesInto && Object.keys(raw.recyclesInto).length > 0 && { recyclesInto: raw.recyclesInto }),
+      ...(raw.salvagesInto && Object.keys(raw.salvagesInto).length > 0 && { salvagesInto: raw.salvagesInto }),
+      ...(raw.repairCost && Object.keys(raw.repairCost).length > 0 && { repairCost: raw.repairCost }),
+      ...(raw.repairDurability !== undefined && { repairDurability: raw.repairDurability }),
+      stackSize: raw.stackSize,
+      ...(raw.value !== undefined && { value: raw.value }),
+      ...(raw.weightKg !== undefined && { weight: raw.weightKg }),
+      ...(raw.foundIn !== undefined && {
+        foundIn: typeof raw.foundIn === 'string'
+          ? raw.foundIn.split(',').map(s => s.trim()).filter(Boolean)
+          : raw.foundIn,
+      }),
+      ...(raw.questItem === true && { questItem: true }),
+    };
+
+    itemsMap[id] = item;
   }
 
   return itemsMap;

@@ -1,6 +1,7 @@
 import type { AppLocale } from '../../../shared/i18n/config';
 import { fetchLocalizedJson } from '../../../shared/utils/localizedContent';
-import type { Item, ItemDatabase, LocalizedItemDatabase } from '../types/item';
+import type { RawItemsOutput } from '../../../shared/types/item';
+import type { Item, ItemDatabase } from '../types/item';
 
 const itemDatabases = new Map<AppLocale, ItemDatabase>();
 const loadingPromises = new Map<AppLocale, Promise<ItemDatabase>>();
@@ -24,18 +25,25 @@ export async function loadItems(locale: AppLocale): Promise<ItemDatabase> {
 
   const nextPromise = (async () => {
     try {
-      const localizedItems = await fetchLocalizedJson<LocalizedItemDatabase>(
-        '/data/craft-calculator/items.json',
+      const data = await fetchLocalizedJson<RawItemsOutput>(
+        '/data/items/items.json',
         locale
       );
       const items: ItemDatabase = Object.fromEntries(
-        Object.entries(localizedItems).map(([itemId, item]) => [
+        Object.entries(data.items).map(([itemId, raw]) => [
           itemId,
           {
-            ...item,
-            name: item.name.value,
-            originalNameEn: item.name.originalEn,
-            rarity: item.rarity,
+            id: itemId,
+            name: raw.name.value,
+            originalNameEn: raw.name.originalEn,
+            stackSize: raw.stackSize,
+            value: raw.value,
+            imageFilename: raw.imageFilename,
+            isWeapon: raw.isWeapon,
+            recipe: raw.recipe,
+            upgradeCost: raw.upgradeCost,
+            craftQuantity: raw.craftQuantity,
+            rarity: raw.rarity,
           },
         ])
       );

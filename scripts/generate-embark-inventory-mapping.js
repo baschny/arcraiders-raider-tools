@@ -9,7 +9,7 @@ const embarkRoot = path.resolve(repoRoot, process.env.EMBARK_API_ROOT ?? '../emb
 const embarkData = path.join(embarkRoot, 'data');
 const embarkMappings = path.join(embarkRoot, 'arcraiders-api-mapping');
 const outputPath = path.join(repoRoot, 'infra/lambda/data/embark-inventory-mapping.json');
-const quartermasterItemsPath = path.join(repoRoot, 'public/data/quartermaster/items.json');
+const sharedItemsPath = path.join(repoRoot, 'public/data/items/items.en.json');
 
 const sourceFiles = {
   arctrackerItems: path.join(embarkData, 'arctracker-items.json'),
@@ -23,7 +23,7 @@ const sourceFiles = {
   blueprintMapping: path.join(embarkMappings, 'blueprint-mapping.json'),
   hideoutMapping: path.join(embarkMappings, 'hideout-mapping.json'),
   embarkConstants: path.join(embarkMappings, 'embark-constants.json'),
-  quartermasterItems: quartermasterItemsPath,
+  quartermasterItems: sharedItemsPath,
 };
 
 function readJson(filePath, required = true) {
@@ -59,7 +59,7 @@ function stripBlueprintSuffix(itemId) {
   return itemId.endsWith('_blueprint') ? itemId.slice(0, -'_blueprint'.length) : itemId;
 }
 
-function resolveBlueprintTargetItemId(blueprintItemId, quartermasterItems) {
+function resolveBlueprintTargetItemId(blueprintItemId, sharedItems) {
   const base = stripBlueprintSuffix(blueprintItemId);
   const candidates = [
     base,
@@ -68,7 +68,7 @@ function resolveBlueprintTargetItemId(blueprintItemId, quartermasterItems) {
   ];
 
   for (const candidate of candidates) {
-    if (quartermasterItems[candidate]) return candidate;
+    if (sharedItems[candidate]) return candidate;
   }
   return candidates[0];
 }
@@ -89,7 +89,7 @@ function main() {
   const blueprintMapping = readJson(sourceFiles.blueprintMapping);
   const hideoutMapping = readJson(sourceFiles.hideoutMapping);
   const embarkConstants = readJson(sourceFiles.embarkConstants, false);
-  const quartermasterItems = readJson(sourceFiles.quartermasterItems).items ?? {};
+  const sharedItems = readJson(sourceFiles.quartermasterItems).items ?? {};
 
   const gameAssetIdToItemId = {};
   const gameAssetIdToItemName = {};
@@ -126,7 +126,7 @@ function main() {
   for (const [tokenAssetId, blueprintItemId] of Object.entries(blueprintMapping)) {
     const blueprintInfo = arctrackerBlueprints[tokenAssetId] ?? {};
     blueprintUnlocksByTokenAssetId[tokenAssetId] = {
-      targetItemId: resolveBlueprintTargetItemId(String(blueprintItemId), quartermasterItems),
+      targetItemId: resolveBlueprintTargetItemId(String(blueprintItemId), sharedItems),
       blueprintAssetId: blueprintInfo.blueprintAssetId ? Number(blueprintInfo.blueprintAssetId) : undefined,
       name: blueprintInfo.name ?? undefined,
     };

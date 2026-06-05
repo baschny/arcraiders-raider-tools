@@ -85,7 +85,7 @@ export function getItemDisplayName(item: Pick<Item, 'name'>): string {
 export const getLootHelperItemName = getItemDisplayName;
 
 export function getLootHelperItemDescription(item: Pick<Item, 'description'>): string | null {
-  return item.description?.en ?? null;
+  return item.description ?? null;
 }
 
 export function getLocalizedLootHelperType(t: Translate, type: string): string {

@@ -9,13 +9,12 @@ QUESTS_DIR="$SCRIPT_DIR/../../arcraiders-data/quests"
 OUTPUT_FILE="$SCRIPT_DIR/../public/data/quests/quest-data.json"
 OUTPUT_DIR="$SCRIPT_DIR/../public/data/quests"
 ITEMS_DIR="$SCRIPT_DIR/../public/data"
-LOCALES=("en" "de" "pt-BR" "es" "fr" "it" "ja" "ko-KR" "pl" "ru" "tr" "zh-CN" "zh-TW")
 
 echo "Generating quest data from $QUESTS_DIR..."
 
-if [ ! -f "$ITEMS_DIR/items-loot-helper.en.json" ]; then
-  echo "Error: Required item data file not found: $ITEMS_DIR/items-loot-helper.en.json"
-  echo "Run npm run generate:items-loot-helper first."
+if [ ! -f "$ITEMS_DIR/items/items.en.json" ]; then
+  echo "Error: Required item data file not found: $ITEMS_DIR/items/items.en.json"
+  echo "Run npm run generate:items first."
   exit 1
 fi
 
@@ -23,7 +22,7 @@ mkdir -p "$OUTPUT_DIR"
 
 for LOCALE in "${LOCALES[@]}"; do
   OUTPUT_FILE="$OUTPUT_DIR/quest-data.$LOCALE.json"
-  ITEMS_FILE="$ITEMS_DIR/items-loot-helper.$LOCALE.json"
+  ITEMS_FILE="$ITEMS_DIR/items/items.$LOCALE.json"
   FALLBACK_LOCALE="en"
   if [ "$LOCALE" = "pt-BR" ]; then
     FALLBACK_LOCALE="pt"
@@ -37,7 +36,7 @@ for LOCALE in "${LOCALES[@]}"; do
       | map(select(. != null and (.itemId // "") != ""))
       | map(
           . as $entry
-          | ($items[0] | map(select(.id == $entry.itemId)) | first) as $item
+          | $items[0].items[$entry.itemId] as $item
           | {
               id: $entry.itemId,
               quantity: ($entry.quantity // 1),
@@ -88,7 +87,7 @@ for LOCALE in "${LOCALES[@]}"; do
         | map(select(test("_blueprint$")))
         | map(
             . as $blueprintId
-            | ($items[0] | map(select(.id == $blueprintId)) | first) as $item
+            | $items[0].items[$blueprintId] as $item
             | {
                 id: $blueprintId,
                 name: {

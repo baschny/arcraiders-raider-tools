@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import type { LocalizedItemsData } from '../../types/item';
-import itemsData from '../../../../../public/data/quartermaster/items.en.json';
+import type { RawItemsOutput } from '../../../../shared/types/item';
+import itemsData from '../../../../../public/data/items/items.en.json';
 
-const data = itemsData as LocalizedItemsData;
+const data = itemsData as RawItemsOutput;
 
 describe('quartermaster weapon upgrade item data', () => {
   it('includes canonical upgrade metadata for weapon chains', () => {

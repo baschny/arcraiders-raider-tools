@@ -15,7 +15,7 @@ export interface Item {
   id: string;
   name: ItemName;
   originalNameEn?: string;
-  description?: ItemName;
+  description?: string;
   type: string;
   rarity: ItemRarity;
   imageFilename?: string;
@@ -28,7 +28,8 @@ export interface Item {
   recyclesInto?: Record<string, number>;
   salvagesInto?: Record<string, number>;
   upgradeCost?: Record<string, number>;
-  tier?: number;
+  weaponBaseId?: string;
+  weaponTier?: 1 | 2 | 3 | 4;
   craftBench?: string;
   stationLevelRequired?: number;
   blueprintLocked?: boolean;

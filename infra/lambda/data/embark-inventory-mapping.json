@@ -445,7 +445,7 @@
     "-356971162": {
       "blueprintAssetId": 723923889,
       "name": "Unlock Rascal",
-      "targetItemId": "rascal"
+      "targetItemId": "rascal_i"
     },
     "-365144095": {
       "blueprintAssetId": -1697595116,
@@ -1892,7 +1892,7 @@
     "-980968159": "Rattler III",
     "-994234794": "ARC Flex Rubber"
   },
-  "generatedAt": "2026-06-03T23:10:43.558Z",
+  "generatedAt": "2026-06-05T00:06:20.645Z",
   "hideoutBenchLevelsByGeneratorAssetId": {
     "81797988": {
       "currentLevel": 3,
@@ -2052,7 +2052,7 @@
     "blueprintMapping": "../embark-api/arcraiders-api-mapping/blueprint-mapping.json",
     "embarkConstants": "../embark-api/arcraiders-api-mapping/embark-constants.json",
     "hideoutMapping": "../embark-api/arcraiders-api-mapping/hideout-mapping.json",
-    "quartermasterItems": "public/data/quartermaster/items.json"
+    "quartermasterItems": "public/data/items/items.en.json"
   },
   "structureNames": {
     "407": "Slot for Workbench",

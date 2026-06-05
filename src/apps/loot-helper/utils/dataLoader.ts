@@ -1,24 +1,23 @@
 import type { Item, ItemsMap, ItemRarity } from '../types/item';
 import type { AppLocale } from '../../../shared/i18n/config';
+import type { RawItemsOutput } from '../../../shared/types/item';
 import { fetchLocalizedJson } from '../../../shared/utils/localizedContent';
 
 /**
  * Consolidates weapon tiers by combining materials from all tiers (I-IV)
- * Returns a new item representing the Tier IV version with consolidated recipe
+ * Returns a new item representing the highest tier version with consolidated recipe
  */
 function consolidateWeaponTiers(items: Item[]): Item[] {
   const weaponGroups = new Map<string, Item[]>();
   const nonWeapons: Item[] = [];
 
-  // Group weapons by base name (without tier suffix)
+  // Group weapons by weaponBaseId
   items.forEach((item) => {
-    if (item.isWeapon && item.tier !== undefined) {
-      // Extract base name by removing tier suffix (I, II, III, IV)
-      const baseName = item.name.en.replace(/\s+(I{1,3}|IV)$/, '');
-      if (!weaponGroups.has(baseName)) {
-        weaponGroups.set(baseName, []);
+    if (item.isWeapon && item.weaponBaseId !== undefined) {
+      if (!weaponGroups.has(item.weaponBaseId)) {
+        weaponGroups.set(item.weaponBaseId, []);
       }
-      weaponGroups.get(baseName)!.push(item);
+      weaponGroups.get(item.weaponBaseId)!.push(item);
     } else {
       nonWeapons.push(item);
     }
@@ -26,28 +25,25 @@ function consolidateWeaponTiers(items: Item[]): Item[] {
 
   const consolidatedWeapons: Item[] = [];
 
-  // For each weapon group, create a consolidated Tier IV item
   weaponGroups.forEach((tiers) => {
-    // Sort by tier
-    tiers.sort((a, b) => (a.tier || 0) - (b.tier || 0));
+    // Sort by weaponTier
+    tiers.sort((a, b) => (a.weaponTier || 0) - (b.weaponTier || 0));
 
-    // Find Tier IV (or highest tier)
-    const tierIV = tiers.find((t) => t.tier === 4) || tiers[tiers.length - 1];
+    // Find highest tier
+    const highestTier = tiers.find((t) => t.weaponTier === 4) || tiers[tiers.length - 1];
 
-    if (!tierIV) return;
+    if (!highestTier) return;
 
     // Accumulate all materials from all tiers
     const consolidatedRecipe: Record<string, number> = {};
 
     tiers.forEach((tier) => {
-      // Add recipe materials (for Tier I)
       if (tier.recipe) {
         Object.entries(tier.recipe).forEach(([materialId, qty]) => {
           consolidatedRecipe[materialId] = (consolidatedRecipe[materialId] || 0) + qty;
         });
       }
 
-      // Add upgrade cost materials (for Tier II-IV)
       if (tier.upgradeCost) {
         Object.entries(tier.upgradeCost).forEach(([materialId, qty]) => {
           consolidatedRecipe[materialId] = (consolidatedRecipe[materialId] || 0) + qty;
@@ -55,11 +51,9 @@ function consolidateWeaponTiers(items: Item[]): Item[] {
       }
     });
 
-    // Create consolidated item based on Tier IV
     const consolidatedItem: Item = {
-      ...tierIV,
+      ...highestTier,
       recipe: consolidatedRecipe,
-      // Keep Tier IV's other properties
     };
 
     consolidatedWeapons.push(consolidatedItem);
@@ -68,31 +62,51 @@ function consolidateWeaponTiers(items: Item[]): Item[] {
   return [...nonWeapons, ...consolidatedWeapons];
 }
 
-interface LocalizedLootHelperItem extends Omit<Item, 'name'> {
-  name: {
-    value: string;
-    originalEn: string;
-  };
+function normalizeFoundIn(foundIn: string | string[] | undefined): string[] | undefined {
+  if (!foundIn) return undefined;
+  if (typeof foundIn === 'string') {
+    return foundIn.split(',').map(s => s.trim()).filter(Boolean);
+  }
+  return foundIn.length > 0 ? foundIn : undefined;
+}
+
+function normalizeCraftBench(craftBench: string | string[] | undefined): string | undefined {
+  if (!craftBench) return undefined;
+  if (typeof craftBench === 'string') return craftBench;
+  const filtered = craftBench.filter(b => b !== 'in_raid' && b !== 'workbench');
+  return filtered[0] ?? undefined;
 }
 
 export async function loadAllItems(locale: AppLocale): Promise<ItemsMap> {
-  const localizedItems = await fetchLocalizedJson<LocalizedLootHelperItem[]>(
-    '/data/items-loot-helper.json',
-    locale
-  );
+  const data = await fetchLocalizedJson<RawItemsOutput>('/data/items/items.json', locale);
 
-  const items: Item[] = localizedItems.map((item) => ({
-    ...item,
-    name: { en: item.name.value },
-    originalNameEn: item.name.originalEn,
+  const items: Item[] = Object.entries(data.items).map(([id, raw]) => ({
+    id,
+    name: { en: raw.name.value },
+    originalNameEn: raw.name.originalEn,
+    description: raw.description,
+    type: raw.type,
+    rarity: raw.rarity as ItemRarity,
+    imageFilename: raw.imageFilename,
+    value: raw.value,
+    weightKg: raw.weightKg,
+    stackSize: raw.stackSize,
+    foundIn: normalizeFoundIn(raw.foundIn),
+    recipe: raw.recipe,
+    recyclesInto: raw.recyclesInto,
+    salvagesInto: raw.salvagesInto,
+    upgradeCost: raw.upgradeCost,
+    isWeapon: raw.isWeapon,
+    craftBench: normalizeCraftBench(raw.craftBench),
+    stationLevelRequired: raw.stationLevelRequired,
+    blueprintLocked: raw.blueprintLocked,
+    weaponBaseId: raw.weaponBaseId,
+    weaponTier: raw.weaponTier,
   }));
-  
-  // Consolidate weapon tiers
-  const consolidatedItems = consolidateWeaponTiers(items);
-  
-  const itemsMap: ItemsMap = {};
 
-  // Build the map
+  const consolidatedItems = consolidateWeaponTiers(items);
+
+  const itemsMap: ItemsMap = {};
   consolidatedItems.forEach((item) => {
     itemsMap[item.id] = item;
   });
