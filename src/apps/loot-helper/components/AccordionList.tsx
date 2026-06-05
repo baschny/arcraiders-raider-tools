@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo, useRef, type ReactNode } from 'react';
-import { ChevronUp, ChevronDown, Filter, LayoutGrid, List, Inbox, Recycle, Wrench } from 'lucide-react';
+import { ChevronUp, ChevronDown, Filter, LayoutGrid, List, Inbox, Recycle, Hammer } from 'lucide-react';
 import type { Item, ItemsMap, ItemRarity } from '../types/item';
 import type { ReverseMap } from '../utils/craftingChain';
 import { ItemHierarchy } from './ItemHierarchy';
@@ -396,7 +396,7 @@ export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds,
           key: 'salvage',
           action: 'salvage' as ItemAction,
           items: buckets.salvage,
-          header: renderHeader('salvage', t('lootHelper.actions.salvage'), Wrench, buckets.salvage.length),
+          header: renderHeader('salvage', t('lootHelper.actions.salvage'), Hammer, buckets.salvage.length),
         },
       ];
     }

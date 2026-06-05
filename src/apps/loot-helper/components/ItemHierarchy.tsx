@@ -3,7 +3,7 @@ import type { ReverseMap } from '../utils/craftingChain';
 import { ItemIconWithInfo } from './ItemIconWithInfo';
 import { getRarityClass } from '../utils/dataLoader';
 import { getItemDisplayName } from '../utils/localization';
-import { Recycle, Wrench } from 'lucide-react';
+import { Recycle, Hammer } from 'lucide-react';
 import { useLocale } from '../../../shared/context/LocaleContext';
 
 /**
@@ -111,7 +111,7 @@ export function ItemHierarchy({
               relationshipText = safeSalvage
                 ? t('lootHelper.hierarchy.salvagesIntoSafe')
                 : t('lootHelper.hierarchy.salvagesInto');
-              relationshipIcon = <Wrench size={14} strokeWidth={2} className="hierarchy-relationship-icon action-salvage" />;
+              relationshipIcon = <Hammer size={14} strokeWidth={2} className="hierarchy-relationship-icon action-salvage" />;
             } else {
               // For recipes: show how many of current material needed to build ONE parent item
               quantityToShow = parentItem.recipe?.[itemId] || 1;

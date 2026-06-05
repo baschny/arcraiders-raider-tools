@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Inbox, Wrench, Recycle } from 'lucide-react';
+import { Inbox, Hammer, Recycle } from 'lucide-react';
 import type { ItemAction } from '../utils/itemAction';
 
 interface ActionIconProps {
@@ -31,7 +31,7 @@ export function ActionIcon({ action, size = 18, className = '' }: ActionIconProp
       colorClass = 'action-keep';
       break;
     case 'salvage':
-      Icon = Wrench;
+      Icon = Hammer;
       tooltipText = 'Salvage this item';
       colorClass = 'action-salvage';
       break;

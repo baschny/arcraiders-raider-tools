@@ -8,7 +8,7 @@ import {
   getLocalizedLootHelperType,
   getLootHelperItemDescription,
 } from '../utils/localization';
-import { PackageSearch, Coins, Weight, Wrench, Recycle, MapPin } from 'lucide-react';
+import { PackageSearch, Coins, Weight, Hammer, Recycle, MapPin } from 'lucide-react';
 import { useLocale } from '../../../shared/context/LocaleContext';
 
 interface ItemInfoBoxProps {
@@ -177,7 +177,7 @@ export function ItemInfoBox({ item, itemsMap, position, visible, onMouseEnter, o
       {hasSalvages && (
         <div className="item-info-section">
           <h4>
-            <Wrench size={16} />
+            <Hammer size={16} />
             {t('lootHelper.itemInfo.salvagesInto')}
           </h4>
           <div className="item-info-materials">
