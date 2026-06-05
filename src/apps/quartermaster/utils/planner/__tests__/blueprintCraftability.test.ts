@@ -1012,7 +1012,7 @@ describe('quartermaster weapon upgrade planning', () => {
       new Set(),
     );
 
-    expect(result.blockers.blueprintBlockers).toEqual(['anvil_i']);
+    expect(result.blockers.blueprintBlockers).toEqual(['anvil_i', 'anvil_iv']);
     expect(result.weaponUpgradePlan.steps).toEqual([]);
     expect(result.satisfiableTargets.has('anvil_iv')).toBe(false);
   });

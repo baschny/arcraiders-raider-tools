@@ -60,6 +60,35 @@ function renderNeededBadge(missing: number, t: (key: string) => string) {
   return <span className="qm-item-tooltip__needed-badge qm-item-tooltip__needed-badge--missing">{missing} {t('quartermaster.itemTooltip.needed')}</span>;
 }
 
+function computeWeaponCumulativeRecipe(item: PlannerItem, itemsMap: ItemsMap): Record<string, number> | null {
+  if (!item.weaponTier || item.weaponTier <= 1 || !item.weaponBaseId) return null;
+
+  const cumulative: Record<string, number> = {};
+
+  const rootItem = itemsMap[item.weaponBaseId];
+  if (rootItem?.recipe) {
+    for (const [matId, qty] of Object.entries(rootItem.recipe)) {
+      cumulative[matId] = (cumulative[matId] ?? 0) + qty;
+    }
+  }
+
+  let currentId: string = item.weaponBaseId;
+  while (currentId !== item.id) {
+    const nextId = itemsMap[currentId]?.upgradesTo;
+    if (!nextId || !itemsMap[nextId]) break;
+    const upgradeCost = itemsMap[nextId]?.upgradeCost;
+    if (upgradeCost) {
+      for (const [matId, qty] of Object.entries(upgradeCost)) {
+        cumulative[matId] = (cumulative[matId] ?? 0) + qty;
+      }
+    }
+    currentId = nextId;
+    if (currentId === item.id) break;
+  }
+
+  return Object.keys(cumulative).length > 0 ? cumulative : null;
+}
+
 export function ItemTooltip({
   item,
   itemsMap,
@@ -77,6 +106,9 @@ export function ItemTooltip({
 
   const insight = getEmptyItemInsight(itemInsights, item.id);
   const hasRecipe = !!item.recipe && Object.keys(item.recipe).length > 0;
+  const cumulativeWeaponRecipe = computeWeaponCumulativeRecipe(item, itemsMap);
+  const displayRecipe = hasRecipe ? item.recipe! : cumulativeWeaponRecipe;
+  const hasDisplayRecipe = !!displayRecipe && Object.keys(displayRecipe).length > 0;
   const hasRecycles = !!item.recyclesInto && Object.keys(item.recyclesInto).length > 0;
   const hasSalvages = !!item.salvagesInto && Object.keys(item.salvagesInto).length > 0;
   const hasLocations = !!item.foundIn && item.foundIn.length > 0;
@@ -171,9 +203,11 @@ export function ItemTooltip({
             )}
           </div>
 
-          {hasRecipe && (
+          {hasDisplayRecipe && (
             <div className="qm-item-tooltip__section">
-              <h4>{t('quartermaster.itemTooltip.craftingRecipe')}</h4>
+              <h4>{cumulativeWeaponRecipe
+                ? t('quartermaster.itemTooltip.craftingRecipeIncludingUpgrades')
+                : t('quartermaster.itemTooltip.craftingRecipe')}</h4>
 
               {craftability && (craftability.bench || craftability.blueprint) && (
                 <div className="qm-item-tooltip__craft-conditions">
@@ -201,7 +235,7 @@ export function ItemTooltip({
               )}
 
               <div className="qm-item-tooltip__materials">
-                {Object.entries(item.recipe!).map(([materialId, quantity]) => {
+                {Object.entries(displayRecipe!).map(([materialId, quantity]) => {
                   const material = itemsMap[materialId];
                   if (!material) return null;
                   const isNeeded = (missingByItemId.get(materialId) ?? 0) > 0;

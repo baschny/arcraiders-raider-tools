@@ -933,6 +933,9 @@ function planWeaponUpgradeTarget(
 
   while (remaining > 0) {
     if (!craftItemFullyForUpgrade(state, rootId, 1, requiredSourcesByItemId, targetId)) {
+      if (state.blueprintBlockers.has(rootId)) {
+        state.blueprintBlockers.add(targetId);
+      }
       return false;
     }
     if (!applyUpgradePath(state, rootId, targetId, 1, requiredSourcesByItemId)) {
@@ -1420,6 +1423,22 @@ export function computeCraftability(
     }
 
     result[itemId] = info;
+  }
+
+  // Propagate blueprint lock and bench info from tier 1 base weapons to higher-tier family members.
+  for (const [itemId, item] of Object.entries(itemsMap)) {
+    if (!item.weaponTier || item.weaponTier <= 1 || !item.weaponBaseId) continue;
+    const baseInfo = result[item.weaponBaseId];
+    const existingInfo = result[itemId];
+    const hasBlueprintLock = baseInfo?.blueprint && !baseInfo.blueprint.satisfied;
+    const hasBenchInfo = !!baseInfo?.bench;
+    if (!hasBlueprintLock && !hasBenchInfo) continue;
+    result[itemId] = {
+      ...(hasBlueprintLock
+        ? { hasRecipe: true as const, canCraft: false as const, blueprint: { ...baseInfo.blueprint! } }
+        : { hasRecipe: existingInfo.hasRecipe, canCraft: existingInfo.canCraft }),
+      ...(hasBenchInfo ? { bench: { ...baseInfo.bench! } } : {}),
+    };
   }
 
   return result;

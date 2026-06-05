@@ -373,6 +373,7 @@ export function StashView({
                       quantity={getOwnedQuantity(item.id)}
                       size="sm"
                       showName={false}
+                      showQuantity={ownedItem.instanceIndex === undefined}
                       tooltipContext={tooltipContext}
                     />
                   </td>

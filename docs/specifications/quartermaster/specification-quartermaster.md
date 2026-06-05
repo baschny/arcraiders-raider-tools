@@ -1311,6 +1311,16 @@ Meaning:
 - If no blueprint cache exists yet, `blueprintLocked: true` items are treated as not locally craftable until blueprints are synced.
 - Blueprint blocker diagnostics are preserved for statically blueprint-locked items absent from the learned blueprint set.
 
+### Weapon Family Blueprint Propagation (Change-26)
+
+For weapons linked by an upgrade chain (`weaponBaseId` + `weaponTier`):
+
+- The tier 1 base weapon owns the `blueprintLocked` flag and the `craftBench` definition.
+- `computeCraftability` propagates the base weapon's **blueprint lock status** and **bench condition** to every higher-tier family member (`weaponTier > 1` with matching `weaponBaseId`).
+- When the base weapon's blueprint is locked, every family member receives `hasRecipe: true`, `canCraft: false`, and the inherited `blueprint` condition — causing the red lock icon to appear on all tiers.
+- The base weapon's bench condition (`label`, `detail`, `satisfied`) is also propagated so the tooltip craft conditions section shows the bench requirement on tier 2+ weapons.
+- `planWeaponUpgradeTarget` adds the target weapon's `itemId` (not just the root) to `blueprintBlockers`, so the StashView status column also shows "Blocked: blueprint not unlocked" for the higher-tier target.
+
 ## 6.3 Depth-Limited Crafting Output Availability
 
 The planner must treat committed depth-2 craft outputs as available to their parent craft.
@@ -1557,6 +1567,8 @@ Definition:
 
 This rule applies consistently across all views.
 
+**Exception — Unstacked items:** Items rendered as individual instances (unstacked rows with `instanceIndex !== undefined`, i.e., items carrying `repairCost` such as weapons) must **not** show the quantity overlay badge. Each unstacked row represents exactly one instance; the aggregate total is visible in the item tooltip instead (Change-26).
+
 If owned quantity is unknown:
 
 - display `"?"` as placeholder
@@ -1671,6 +1683,12 @@ Rules:
 
 Recycle and salvage yield items are displayed as a flat, unhighlighted list. Crafting contribution highlighting may be added in a future iteration.
 
+### Weapon Cumulative Recipe (Change-26)
+
+For weapons with `weaponTier > 1` and a valid `weaponBaseId`, the "Crafting Recipe" section title changes to **"Crafting Recipe (including Upgrades)"**. The displayed materials are the **cumulative recipe**: tier 1 base `recipe` costs plus every `upgradeCost` along the chain from the base weapon to the displayed tier. This gives the player the honest total material investment from scratch.
+
+Tier 1 base weapons and non-weapon items continue to show their direct `recipe` under the standard "Crafting Recipe" header.
+
 ---
 
 ## 3.6 Tooltip Status Information
@@ -1757,6 +1775,8 @@ The view shows the canonical owned inventory: stash items, current loadout items
 Attached items must be displayed as separate owned items.
 
 Rows are aggregated by `itemId` **except for items with `repairCost`**. Items with `repairCost` are unstacked: each instance (stash slot, loadout slot) gets its own row, preserving per-instance `durabilityPercent`. Items without `repairCost` are aggregated as before. If an item exists in multiple locations, the row must show summarized location subtext rather than duplicate rows.
+
+**Unstacked quantity suppression (Change-26):** Unstacked rows (`instanceIndex !== undefined`) suppress the quantity overlay badge on the `ItemIcon`. Each row represents exactly one instance; the aggregate total remains visible in the item tooltip's have-pill.
 
 ### Durability Display (Change-22)
 
