@@ -1,15 +1,228 @@
 @use 'variables' as *;
 
 .in-raid-view {
+  &__filters {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    margin-bottom: $spacing-lg;
+    flex-wrap: wrap;
+  }
+
+  // --- Search bar ---
+  &__search {
+    position: relative;
+    flex: 1;
+    min-width: 180px;
+  }
+
+  &__search-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $text-secondary;
+    pointer-events: none;
+    flex-shrink: 0;
+  }
+
+  &__search-input {
+    width: 100%;
+    padding: 8px 36px 8px 32px;
+    background: $bg-secondary;
+    border: 1px solid $border-default;
+    border-radius: $radius-sm;
+    color: $text-primary;
+    font-size: $font-sm;
+    font-family: 'Urbanist', sans-serif;
+    transition: border-color 0.15s;
+
+    &::placeholder {
+      color: $text-secondary;
+      font-family: 'Urbanist', sans-serif;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $text-accent;
+    }
+  }
+
+  &__search-clear {
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    background: none;
+    border: none;
+    color: $text-secondary;
+    cursor: pointer;
+    border-radius: $radius-sm;
+
+    &:hover {
+      color: $text-primary;
+      background: $bg-tertiary;
+    }
+  }
+
+  // --- Multi-select dropdown ---
+  &__dropdown {
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  &__dropdown-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 10px;
+    background: $bg-secondary;
+    border: 1px solid $border-default;
+    border-radius: $radius-sm;
+    color: $text-secondary;
+    font-size: 13px;
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: border-color 0.15s, color 0.15s;
+    white-space: nowrap;
+
+    &:hover {
+      border-color: $border-light;
+      color: $text-primary;
+    }
+
+    &--open {
+      border-color: $text-accent;
+      color: $text-primary;
+    }
+
+    &--active {
+      color: $text-primary;
+    }
+  }
+
+  &__dropdown-label {
+    font-size: 13px;
+  }
+
+  &__dropdown-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    border-radius: 999px;
+    background: $text-accent;
+    color: $bg-primary;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  &__dropdown-chevron--open {
+    transform: rotate(180deg);
+  }
+
+  &__dropdown-menu {
+    position: absolute;
+    top: calc(100% + 4px);
+    right: 0;
+    z-index: 50;
+    min-width: 200px;
+    max-height: 260px;
+    overflow-y: auto;
+    background: $bg-secondary;
+    border: 1px solid $border-light;
+    border-radius: $radius-sm;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    padding: 4px 0;
+  }
+
+  &__dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: background 0.1s;
+    font-size: 13px;
+
+    &:hover {
+      background: rgba($text-accent, 0.08);
+    }
+  }
+
+  &__dropdown-checkbox {
+    flex-shrink: 0;
+    accent-color: $text-accent;
+    cursor: pointer;
+    width: 14px;
+    height: 14px;
+  }
+
+  &__dropdown-item-label {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: $text-primary;
+  }
+
+  &__dropdown-item-count {
+    flex-shrink: 0;
+    min-width: 20px;
+    text-align: right;
+    font-size: 11px;
+    font-weight: 600;
+    color: $text-secondary;
+  }
+
+  &__dropdown-empty {
+    padding: 8px 12px;
+    text-align: center;
+    color: $text-secondary;
+    font-size: 12px;
+  }
+
+  // --- Clear all filters button ---
+  &__clear-filters {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: $radius-sm;
+    color: $text-secondary;
+    cursor: pointer;
+    transition: color 0.15s, border-color 0.15s, background-color 0.15s;
+    flex-shrink: 0;
+
+    &:hover {
+      color: #e57373;
+      border-color: rgba(229, 115, 115, 0.4);
+      background: rgba(229, 115, 115, 0.08);
+    }
+  }
+
+  // --- Sections ---
   &__section {
     margin-bottom: $spacing-xl * 1.4;
   }
 
   &__section--prioritized {
-    .qm-section-title {
-      display: flex;
-      align-items: center;
-      gap: $spacing-xs;
+    .in-raid-view__section-title {
       color: #ffb347;
     }
   }
@@ -21,8 +234,31 @@
     border-bottom: 1px solid $border-default;
     padding-bottom: $spacing-sm;
     margin-bottom: $spacing-md;
+  }
 
-    .qm-section-title {
+  &__section-title {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+    font-size: $font-md;
+    font-weight: 600;
+    color: $text-secondary;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0 0 $spacing-md;
+    padding: 0 0 $spacing-sm;
+    border-bottom: 1px solid $border-default;
+  }
+
+  &__section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid $border-default;
+    padding-bottom: $spacing-sm;
+    margin-bottom: $spacing-md;
+
+    .in-raid-view__section-title {
       margin-bottom: 0;
       padding-bottom: 0;
       border-bottom: none;
@@ -52,61 +288,93 @@
     }
   }
 
+  // --- Item grid (flex-wrap, compact) ---
   &__grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: $spacing-md;
-  }
-
-  &__item-card {
-    position: relative;
-    border: 1px solid $border-default;
-    border-radius: $radius-sm;
-    background: rgba(255, 255, 255, 0.03);
-    padding: $spacing-sm;
-    min-height: 146px;
-  }
-
-  &__item-main {
     display: flex;
-    align-items: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
     gap: $spacing-sm;
-
-    .item-icon {
-      flex: 1;
-    }
   }
 
-  &__action-stack {
+  // --- Compact item card ---
+  &__item {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 6px;
-    flex-shrink: 0;
-    margin-top: 3px;
-  }
+    gap: 4px;
+    width: 92px;
+    padding: 6px 4px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: $radius-sm;
+    border: 1px solid rgba($border-light, 0.1);
+    text-align: center;
+    transition: border-color 0.15s, background 0.15s;
 
-  &__action-wrapper {
-    position: relative;
+    .item-icon__container {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1;
+    }
 
     &:hover {
-      .in-raid-view__icon-tooltip {
-        opacity: 1;
-        pointer-events: auto;
-        transform: translateY(0);
-      }
+      border-color: rgba($text-accent, 0.3);
+      background: rgba($text-accent, 0.06);
     }
   }
 
-  &__action-icon {
+  &__item-icon-wrapper {
+    position: relative;
+    display: inline-flex;
+    padding: 2px;
+  }
+
+  &__item-missing-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    z-index: 2;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 4px;
+    border-radius: 999px;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 24px;
-    height: 24px;
+    font-size: 10px;
+    font-weight: 800;
+    color: #fff;
+    background: $status-missing;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  &__item-name {
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    color: $text-primary;
+    font-size: 10px;
+    line-height: 1.1;
+    font-weight: 500;
+  }
+
+  &__item-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto;
+    width: 20px;
+    height: 20px;
     border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.22);
-    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(0, 0, 0, 0.3);
     flex-shrink: 0;
 
     &--keep {
@@ -122,104 +390,30 @@
     }
   }
 
-  &__icon-tooltip {
+  // --- Letter marker on first-of-letter item cards ---
+  &__item-letter {
     position: absolute;
-    top: calc(100% + 6px);
-    right: 0;
-    z-index: 40;
-    width: 250px;
-    border: 1px solid $border-default;
-    border-radius: $radius-sm;
-    background: rgba(20, 20, 20, 0.98);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55);
-    padding: 8px 10px;
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(-4px);
-    transition: opacity 0.12s ease, transform 0.12s ease;
-  }
-
-  &__icon-tooltip-title {
-    font-size: 12px;
-    font-weight: 700;
-    color: $text-primary;
+    bottom: 4px;
+    left: 4px;
+    z-index: 3;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 22px;
+    font-weight: 900;
+    color: #eee;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
+    line-height: 1;
+    opacity: 0.4;
+    pointer-events: none;
   }
 
-  &__icon-tooltip-subtitle {
-    margin-top: 2px;
-    margin-bottom: 6px;
-    font-size: 11px;
-    color: $text-secondary;
-  }
-
-  &__icon-tooltip-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  // --- No results ---
+  &__no-results {
     display: flex;
-    flex-direction: column;
-    gap: 4px;
-
-    li {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-      font-size: 11px;
-      color: $text-primary;
-    }
-  }
-
-  &__icon-tooltip-empty {
-    font-size: 11px;
-    color: $text-secondary;
-  }
-
-  &__missing-wrapper {
-    position: relative;
-
-    &:hover {
-      .in-raid-view__mini-tooltip {
-        opacity: 1;
-        pointer-events: auto;
-        transform: translateY(0);
-      }
-    }
-  }
-
-  &__missing-circle {
-    width: 24px;
-    height: 24px;
-    border-radius: 999px;
-    display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 12px;
-    font-weight: 700;
-    color: #fff;
-    border: 1px solid rgba($status-missing, 0.72);
-    background: rgba($status-missing, 0.9);
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-  }
-
-  &__mini-tooltip {
-    position: absolute;
-    top: calc(100% + 6px);
-    right: 0;
-    z-index: 40;
-    border: 1px solid $border-default;
-    border-radius: $radius-sm;
-    background: rgba(20, 20, 20, 0.98);
-    color: $text-primary;
-    padding: 5px 8px;
-    font-size: 11px;
-    white-space: nowrap;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55);
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(-4px);
-    transition: opacity 0.12s ease, transform 0.12s ease;
+    padding: $spacing-xl * 2;
+    color: $text-secondary;
+    font-size: $font-sm;
   }
 }

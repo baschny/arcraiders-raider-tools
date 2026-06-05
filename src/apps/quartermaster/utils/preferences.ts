@@ -141,6 +141,49 @@ export function saveStashFilters(filters: StashFilters): void {
   }
 }
 
+// ---------------------------------------------------------------------------
+// In-Raid view filter preferences
+// ---------------------------------------------------------------------------
+
+export interface InRaidFilters {
+  searchQuery: string;
+  selectedTypes: string[];
+  selectedRarities: string[];
+  selectedLocations: string[];
+}
+
+const IN_RAID_FILTERS_KEY = 'quartermaster.ui.inRaidFilters';
+
+export function loadInRaidFilters(): InRaidFilters {
+  const stored = readString(IN_RAID_FILTERS_KEY);
+  if (!stored) return { searchQuery: '', selectedTypes: [], selectedRarities: [], selectedLocations: [] };
+
+  try {
+    const parsed = JSON.parse(stored) as unknown;
+    if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
+      return { searchQuery: '', selectedTypes: [], selectedRarities: [], selectedLocations: [] };
+    }
+
+    const obj = parsed as Record<string, unknown>;
+    return {
+      searchQuery: typeof obj.searchQuery === 'string' ? obj.searchQuery : '',
+      selectedTypes: Array.isArray(obj.selectedTypes) ? obj.selectedTypes.filter((v): v is string => typeof v === 'string') : [],
+      selectedRarities: Array.isArray(obj.selectedRarities) ? obj.selectedRarities.filter((v): v is string => typeof v === 'string') : [],
+      selectedLocations: Array.isArray(obj.selectedLocations) ? obj.selectedLocations.filter((v): v is string => typeof v === 'string') : [],
+    };
+  } catch {
+    return { searchQuery: '', selectedTypes: [], selectedRarities: [], selectedLocations: [] };
+  }
+}
+
+export function saveInRaidFilters(filters: InRaidFilters): void {
+  try {
+    window.localStorage.setItem(IN_RAID_FILTERS_KEY, JSON.stringify(filters));
+  } catch {
+    // Preferences are best-effort; the in-memory UI state still works.
+  }
+}
+
 export type QuestSortMode = 'alphabetical' | 'next-quests';
 
 export function loadQuestSortMode(): QuestSortMode {
