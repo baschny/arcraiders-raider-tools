@@ -620,6 +620,7 @@
       "subtitle": "Track project required items for community expeditions and seasonal projects.",
       "syncPrompt": "Hit the \"Sync Projects\" button to load your current project progress.",
       "allComplete": "All project steps are completed.",
+      "noProjectsAvailable": "No projects available",
       "syncTooltip": "Refresh your current project progress from the game.",
       "collapseAll": "Collapse all",
       "collapseAllTooltip": "Collapse every project section.",
