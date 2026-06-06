@@ -3,10 +3,10 @@
  * See specification section 7.1.1
  */
 
-import { BriefcaseBusiness, Hammer, Home, Info, List, Package, ScrollText, Target } from 'lucide-react';
+import { BriefcaseBusiness, Crosshair, Hammer, Home, Info, List, Package, ScrollText, Target } from 'lucide-react';
 import { useLocale } from '../../../shared/context/LocaleContext';
 
-export type ViewId = 'welcome' | 'stash' | 'lists' | 'hideout' | 'projects' | 'quests' | 'in-raid' | 'crafting';
+export type ViewId = 'welcome' | 'stash' | 'weapons' | 'lists' | 'hideout' | 'projects' | 'quests' | 'in-raid' | 'crafting';
 
 interface SidebarProps {
   activeView: ViewId;
@@ -22,6 +22,7 @@ export function Sidebar({ activeView, onViewChange, hideoutAvailableUpgradeCount
   const navItems: { id: ViewId; label: string; icon: React.ReactNode }[] = [
     { id: 'welcome', label: t('quartermaster.nav.welcome'), icon: <Info size={18} /> },
     { id: 'stash', label: t('quartermaster.nav.stash'), icon: <Package size={18} /> },
+    { id: 'weapons', label: t('quartermaster.nav.weapons'), icon: <Crosshair size={18} /> },
     { id: 'lists', label: t('quartermaster.nav.lists'), icon: <List size={18} /> },
     { id: 'hideout', label: t('quartermaster.nav.hideout'), icon: <Home size={18} /> },
     { id: 'projects', label: t('quartermaster.nav.projects'), icon: <BriefcaseBusiness size={18} /> },

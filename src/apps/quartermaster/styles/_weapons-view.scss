@@ -1,0 +1,762 @@
+@use 'variables' as *;
+
+.weapons-view {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+
+  &__toggle {
+    align-self: flex-start;
+  }
+
+  &__filters {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: $spacing-sm;
+    margin-bottom: $spacing-md;
+  }
+
+  &__search {
+    position: relative;
+    flex: 1;
+    min-width: 220px;
+
+    svg {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      color: $text-secondary;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+
+    .qm-input {
+      width: 100%;
+      padding-left: 32px;
+    }
+  }
+
+  &__filter {
+    min-width: 160px;
+  }
+
+  &__checkbox {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-xs;
+    color: $text-secondary;
+    font-size: $font-sm;
+    cursor: pointer;
+  }
+
+  &__summary {
+    border: 1px solid $border-default;
+    background: $bg-secondary;
+    border-radius: $radius-sm;
+  }
+
+  &__summary-header {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: $spacing-xs;
+    padding: $spacing-sm $spacing-md;
+    border: 0;
+    background: transparent;
+    color: $text-primary;
+    font-size: $font-sm;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  &__summary-body {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+    padding: 0 $spacing-md $spacing-md;
+  }
+
+  &__summary-message {
+    padding: $spacing-xs $spacing-sm;
+    border: 1px solid rgba($badge-recycle, 0.35);
+    background: rgba($badge-recycle, 0.12);
+    color: $text-primary;
+    font-size: $font-sm;
+  }
+
+  &__summary-item {
+    display: grid;
+    grid-template-columns: minmax(170px, 1fr) minmax(170px, auto) auto auto;
+    gap: $spacing-sm;
+    align-items: center;
+    padding: $spacing-sm;
+    border-left: 3px solid $status-missing;
+    background: $bg-tertiary;
+
+    &--partial {
+      border-left-color: $badge-recycle;
+    }
+
+    &--complete {
+      border-left-color: $status-available;
+    }
+  }
+
+  &__summary-link {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border: 0;
+    background: transparent;
+    color: $text-primary;
+    cursor: pointer;
+
+    span {
+      font-weight: 700;
+    }
+
+    small {
+      color: $text-secondary;
+    }
+  }
+
+  &__summary-status {
+    color: $text-secondary;
+    font-size: $font-sm;
+  }
+
+  &__cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-sm;
+    align-items: stretch;
+  }
+
+  &__card {
+    flex: 0 0 $weapon-card-width;
+    max-width: 100%;
+    padding: $spacing-md;
+    border: 1px solid $border-default;
+    background: $bg-secondary;
+    border-radius: $radius-sm;
+    cursor: pointer;
+    transition: $transition-default;
+
+    &:hover,
+    &:focus {
+      outline: none;
+      border-color: $text-accent;
+      background: $bg-tertiary;
+    }
+
+    &--match-partial {
+      border-color: $weapon-build-gold;
+      box-shadow: inset 3px 0 0 $weapon-build-gold;
+    }
+
+    &--match-full {
+      border-color: $weapon-build-gold-full;
+      box-shadow: inset 3px 0 0 $weapon-build-gold-full;
+    }
+  }
+
+  &__card-main {
+    display: flex;
+    gap: $spacing-md;
+    align-items: flex-start;
+  }
+
+  &__card-icon {
+    flex: 0 0 $weapon-card-icon-size;
+  }
+
+  &__card-info {
+    min-width: 0;
+    flex: 1;
+  }
+
+  &__card-title-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: $spacing-xs;
+
+    .qm-item-name {
+      margin: 0;
+      font-size: $font-lg;
+    }
+  }
+
+  &__source {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 7px;
+    border: 1px solid $border-light;
+    border-radius: $radius-sm;
+    background: $bg-tertiary;
+    color: $text-secondary;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  &__durability {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    margin-top: $spacing-sm;
+    max-width: 220px;
+  }
+
+  &__durability-bar-wrapper {
+    flex: 1;
+    height: 8px;
+    overflow: hidden;
+    border-radius: 4px;
+    background: $bg-tertiary;
+  }
+
+  &__durability-bar {
+    height: 100%;
+    border-radius: 4px;
+
+    &--low {
+      background: #e74c3c;
+    }
+
+    &--medium {
+      background: #f0ad4e;
+    }
+
+    &--high {
+      background: #27ae60;
+    }
+  }
+
+  &__durability-label {
+    color: $text-secondary;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  &__card-slots {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: $spacing-sm;
+    margin-top: $spacing-md;
+  }
+
+  &__card-slot {
+    display: flex;
+    position: relative;
+    min-width: 0;
+    min-height: 96px;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-xs;
+    padding: 7px 5px;
+    text-align: center;
+
+    &:hover,
+    &:focus-within {
+      z-index: 6;
+    }
+
+    &:hover .weapons-view__slot-overlay,
+    &:focus-within .weapons-view__slot-overlay {
+      display: block;
+    }
+  }
+
+  &__card-slot-icon {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+  }
+
+  &__slot-type-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    padding: 2px 6px;
+    border-radius: $radius-sm;
+    background: rgba($bg-tertiary, 0.85);
+    margin-bottom: 2px;
+  }
+
+  &__slot-type-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    opacity: 0.7;
+  }
+
+  &__slot-icon.weapons-view__slot-type-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  &__slot-type-label {
+    color: $text-secondary;
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+
+  &__slot-icon-fallback {
+    display: inline-flex;
+    width: $weapon-slot-icon-size;
+    height: $weapon-slot-icon-size;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    border: 1px dashed $border-light;
+    color: $text-secondary;
+    font-size: 10px;
+    line-height: 1.1;
+    text-align: center;
+  }
+
+  &__card-slot-names {
+    display: -webkit-box;
+    max-width: 100%;
+    overflow: hidden;
+    color: $text-secondary;
+    font-size: 11px;
+    line-height: 1.25;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  &__empty-slot {
+    display: inline-flex;
+    width: 56px;
+    height: 56px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+    border: 1px dashed $border-light;
+    background: $bg-tertiary;
+    color: $text-secondary;
+    opacity: 0.72;
+
+    svg {
+      width: 28px;
+      height: 28px;
+    }
+  }
+
+  &__slot-icon {
+    width: $weapon-slot-icon-size;
+    height: $weapon-slot-icon-size;
+    object-fit: contain;
+
+    &--empty {
+      opacity: 0.4;
+      filter: grayscale(0.4);
+    }
+  }
+
+  &__card-slot .item-icon {
+    --item-icon-size: 56px !important;
+  }
+
+  &__slot-overlay {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    width: min(360px, 80vw);
+    padding: $spacing-sm;
+    border: 1px solid $border-light;
+    background: $bg-dark;
+    box-shadow: $shadow-default;
+    color: $text-primary;
+    text-align: left;
+  }
+
+  &__slot-overlay-title {
+    margin-bottom: $spacing-xs;
+    color: $text-secondary;
+    font-size: $font-xs;
+    font-weight: 700;
+  }
+
+  &__slot-overlay-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: $font-xs;
+
+    th,
+    td {
+      padding: 5px 6px;
+      border-top: 1px solid $border-default;
+      vertical-align: top;
+    }
+
+    th {
+      color: $text-secondary;
+      font-weight: 700;
+      text-align: left;
+    }
+
+    td:first-child {
+      width: 100%;
+    }
+  }
+
+  &__slot-overlay-row--needed {
+    background: rgba($weapon-build-gold, 0.16);
+    box-shadow: inset 3px 0 0 $weapon-build-gold;
+
+    td:first-child {
+      color: $text-primary;
+      font-weight: 700;
+    }
+  }
+
+  &__slot-overlay-row--correct {
+    background: rgba($status-available, 0.16);
+    box-shadow: inset 3px 0 0 $status-available;
+
+    td:first-child {
+      color: $text-primary;
+      font-weight: 700;
+    }
+  }
+
+  &__slot-count {
+    display: table-cell;
+    white-space: nowrap;
+
+    svg {
+      margin-right: 4px;
+      vertical-align: -2px;
+    }
+
+    &--attached {
+      color: $status-missing;
+    }
+
+    &--available {
+      color: $status-available;
+    }
+  }
+
+  &__unmatched {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+    margin-top: $spacing-sm;
+    color: $badge-recycle;
+    font-size: $font-sm;
+  }
+
+  &__build-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-xs;
+    margin-top: $spacing-md;
+  }
+
+  &__card-build-badge {
+    display: inline-flex;
+    padding: 3px 8px;
+    border: 1px solid rgba($weapon-build-gold, 0.45);
+    border-radius: $radius-sm;
+    background: rgba($weapon-build-gold, 0.14);
+    color: $text-primary;
+    font-size: $font-xs;
+    font-weight: 700;
+
+    &--full {
+      border-color: rgba($status-available, 0.5);
+      background: rgba($status-available, 0.16);
+    }
+  }
+
+  &__unattached-section {
+    margin-top: $spacing-lg;
+  }
+
+  &__unattached-header {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    padding-bottom: $spacing-sm;
+    margin-bottom: $spacing-sm;
+    border-bottom: 1px solid $border-default;
+
+    .weapons-view__slot-icon {
+      width: 24px;
+      height: 24px;
+    }
+
+    h3 {
+      margin: 0;
+      font-size: $font-md;
+      font-weight: 700;
+    }
+  }
+
+  &__unattached-count {
+    margin-left: auto;
+    padding: 2px 8px;
+    border-radius: $radius-sm;
+    background: $bg-tertiary;
+    color: $text-secondary;
+    font-size: $font-xs;
+    font-weight: 700;
+  }
+
+  &__unattached-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-sm;
+  }
+
+  &__modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-md;
+    margin-bottom: $spacing-md;
+
+    h2 {
+      margin: 0;
+      font-size: $font-lg;
+    }
+  }
+
+  &__build-modal {
+    width: min(760px, calc(100vw - 32px));
+    max-height: min(760px, calc(100vh - 48px));
+    overflow: auto;
+  }
+
+  &__build-name {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+    margin-bottom: $spacing-md;
+    color: $text-secondary;
+    font-size: $font-sm;
+  }
+
+  &__build-slots {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+  }
+
+  &__build-slot {
+    padding: $spacing-sm;
+    border: 1px solid $border-default;
+    background: $bg-secondary;
+
+    legend {
+      padding: 0 $spacing-xs;
+      color: $text-primary;
+      font-weight: 700;
+    }
+  }
+
+  &__build-slot-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-xs;
+  }
+
+  &__build-option {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: $spacing-xs $spacing-sm;
+    border: 1px solid $border-default;
+    background: $bg-tertiary;
+    color: $text-secondary;
+    font-size: $font-sm;
+    font-weight: 600;
+    cursor: pointer;
+    transition: $transition-default;
+
+    &:hover,
+    &:focus-visible {
+      border-color: $text-accent;
+      color: $text-primary;
+      outline: none;
+    }
+
+    &.is-selected {
+      border-color: $text-accent;
+      background: rgba($text-accent, 0.16);
+      box-shadow: inset 0 0 0 1px rgba($text-accent, 0.35);
+      color: $text-primary;
+    }
+  }
+
+  &__build-option-status {
+    display: inline-flex;
+    align-items: center;
+
+    &--unlocked {
+      color: $status-available;
+    }
+
+    &--locked {
+      color: $status-missing;
+    }
+  }
+}
+
+.mods-view {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+
+  &__group {
+    border-top: 1px solid $border-default;
+    padding-top: $spacing-md;
+  }
+
+  &__group-header {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    margin-bottom: $spacing-sm;
+
+    .weapons-view__slot-icon,
+    .weapons-view__slot-icon-fallback {
+      width: 28px;
+      height: 28px;
+      font-size: 8px;
+    }
+
+    h3 {
+      margin: 0;
+      font-size: $font-md;
+    }
+  }
+
+  &__empty {
+    color: $text-secondary;
+    font-size: $font-sm;
+  }
+
+  &__mod-row {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+    padding: $spacing-md;
+    border: 1px solid $border-default;
+    background: $bg-secondary;
+
+    & + & {
+      margin-top: $spacing-sm;
+    }
+
+    &--unowned {
+      opacity: 0.82;
+    }
+  }
+
+  &__mod-header {
+    display: flex;
+    justify-content: space-between;
+    gap: $spacing-md;
+  }
+
+  &__mod-name {
+    color: $text-primary;
+    font-weight: 700;
+  }
+
+  &__owned-count,
+  &__mod-attachment {
+    color: $text-secondary;
+    font-size: $font-xs;
+  }
+
+  &__mod-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-md;
+    align-items: flex-start;
+  }
+
+  &__mod-instance {
+    display: flex;
+    width: 104px;
+    flex-direction: column;
+    gap: $spacing-xs;
+  }
+
+  &__more-owned,
+  &__mod-fits-badge {
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    padding: 3px 8px;
+    border: 1px solid rgba($text-accent, 0.35);
+    border-radius: $radius-sm;
+    background: rgba($text-accent, 0.12);
+    color: $text-primary;
+    font-size: $font-xs;
+    font-weight: 700;
+  }
+
+  &__mod-fits-badge--warning {
+    border-color: rgba($badge-recycle, 0.45);
+    background: rgba($badge-recycle, 0.16);
+  }
+
+  &__mod-status {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-xs;
+    color: $text-secondary;
+    font-size: $font-sm;
+
+    &--blueprint {
+      color: $text-accent;
+    }
+
+    &--craftable {
+      color: $status-available;
+    }
+
+    &--locked {
+      color: $status-missing;
+    }
+  }
+}
+
+@media (max-width: 720px) {
+  .weapons-view {
+    &__summary-item {
+      grid-template-columns: 1fr auto auto;
+    }
+
+    &__summary-status {
+      grid-column: 1 / -1;
+    }
+
+    &__card-main {
+      flex-direction: column;
+    }
+
+    &__card {
+      flex-basis: 100%;
+    }
+
+    &__card-slots {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: $spacing-xs;
+    }
+
+    &__card-icon {
+      flex-basis: auto;
+    }
+  }
+}

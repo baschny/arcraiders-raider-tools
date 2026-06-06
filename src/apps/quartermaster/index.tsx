@@ -63,6 +63,7 @@ import {
   type CachedProjects,
 } from './utils/api';
 import { buildItemInsights, type ItemInsightsMap } from './utils/itemInsights';
+import { buildModCompatibilityMap, buildOwnedWeaponInstances } from './utils/weaponMods';
 import { formatHideoutListName } from './utils/localization';
 import { loadActiveView, saveActiveView } from './utils/preferences';
 import { useAuth } from '../../shared/context/AuthContext';
@@ -97,6 +98,7 @@ import { ProjectsView } from './components/views/ProjectsView';
 import { InRaidView } from './components/views/InRaidView';
 import { CraftingView } from './components/views/CraftingView';
 import { QuestsView } from './components/views/QuestsView';
+import { WeaponsView } from './components/views/WeaponsView';
 
 import './styles/main.scss';
 
@@ -411,6 +413,16 @@ export function QuartermasterApp() {
     if (!itemsMap) return [];
     return aggregateOwnedInventory(cachedStash, cachedLoadout, itemsMap);
   }, [cachedLoadout, cachedStash, itemsMap]);
+
+  const ownedWeaponInstances = useMemo(() => {
+    if (!itemsMap) return [];
+    return buildOwnedWeaponInstances(cachedStash, cachedLoadout, itemsMap);
+  }, [cachedLoadout, cachedStash, itemsMap]);
+
+  const modCompatibilityMap = useMemo(() => {
+    if (!itemsMap) return {};
+    return buildModCompatibilityMap(itemsMap);
+  }, [itemsMap]);
 
   const ownedItemQuantities = useMemo(() => {
     return toOwnedItemQuantities(ownedItemRows);
@@ -995,6 +1007,22 @@ export function QuartermasterApp() {
               showSyncButton={gameDataSource === 'arctracker'}
               unknownEmbarkItems={embarkDiagnostics?.unknownItemInstances ?? []}
             />
+        );
+
+      case 'weapons':
+        return withGameDataGate(
+          <WeaponsView
+            itemsMap={itemsMap}
+            ownedItemRows={ownedItemRows}
+            ownedWeaponInstances={ownedWeaponInstances}
+            modCompatibilityMap={modCompatibilityMap}
+            plannerResult={plannerResult}
+            itemInsights={itemInsights}
+            weaponBuilds={quartermasterState.weaponBuilds}
+            onWeaponBuildsChange={(weaponBuilds) => patchQuartermasterState({ weaponBuilds })}
+            hasInventoryCache={cachedStash !== null}
+            hasLoadoutCache={cachedLoadout !== null}
+          />
         );
 
       case 'lists':

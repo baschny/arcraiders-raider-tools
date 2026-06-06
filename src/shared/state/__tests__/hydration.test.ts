@@ -185,6 +185,7 @@ describe('state-sync integration: sign-in / sign-out', () => {
             projectToggles: { listEnabled: {}, itemEnabled: {} },
             questToggles: { listEnabled: {}, itemEnabled: {} },
             prioritizedItemIds: [],
+            weaponBuilds: [],
         });
         await Promise.all(allStores.map(s => s.flush()));
 
@@ -203,7 +204,7 @@ describe('state-sync integration: sign-in / sign-out', () => {
                 data: { mode: 'manual', manualCompletedQuestIds: ['q1', 'q2'] },
             },
             loot: { schemaVersion: 1, data: { goalItems: ['item_a'] } },
-            quartermaster: { schemaVersion: 3 },
+            quartermaster: { schemaVersion: 5, data: { weaponBuilds: [] } },
         });
         // Server now has the data.
         expect(server.state.quests?.data).toEqual({

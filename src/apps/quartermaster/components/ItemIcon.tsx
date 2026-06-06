@@ -12,6 +12,7 @@ import { usePrioritizedItems } from '../hooks/usePrioritizedItems';
 import { useLocale } from '../../../shared/context/LocaleContext';
 import { ItemTooltip } from './ItemTooltip';
 import { ItemIcon as SharedItemIcon } from '../../../shared/components/ItemIcon';
+import { getCraftStatus } from '../utils/weaponMods';
 
 export interface ItemIconBadge {
   key: string;
@@ -63,7 +64,7 @@ export function ItemIcon({
   const canShowTooltip = !!tooltipContext && enableTooltip && !!tooltipContext.itemsMap[itemId];
   const canPrioritize = !!tooltipContext;
   const craftability = tooltipContext?.plannerResult?.craftability?.[itemId];
-  const showRedLock = craftability?.hasRecipe && !craftability?.canCraft;
+  const showRedLock = getCraftStatus(craftability) === 'uncraftable';
   const iconRef = useRef<HTMLDivElement | null>(null);
   const { ref: hoverRef, isHovered, handlers } = useHoverIntent<HTMLDivElement>({ delayShow: 350, delayHide: 120 });
   const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0, maxHeight: 420 });

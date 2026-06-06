@@ -6,7 +6,7 @@
  * data that should sync across devices.
  */
 
-export type QuartermasterViewId = 'welcome' | 'lists' | 'stash' | 'hideout' | 'projects' | 'quests' | 'in-raid' | 'crafting';
+export type QuartermasterViewId = 'welcome' | 'lists' | 'stash' | 'weapons' | 'hideout' | 'projects' | 'quests' | 'in-raid' | 'crafting';
 
 const ACTIVE_VIEW_KEY = 'quartermaster.ui.activeView';
 const SELECTED_LIST_KEY = 'quartermaster.ui.selectedListId';
@@ -18,6 +18,7 @@ const VALID_VIEWS = new Set<QuartermasterViewId>([
   'welcome',
   'lists',
   'stash',
+  'weapons',
   'hideout',
   'projects',
   'quests',

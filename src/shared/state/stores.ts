@@ -76,6 +76,14 @@ export interface QuartermasterStoredList {
     isEnabled: boolean;
     items: Array<{ itemId: string; quantity: number; isEnabled: boolean }>;
 }
+export interface WeaponBuild {
+    id: string;
+    name: string;
+    weaponItemId: string;
+    slots: Record<string, string | null>;
+    createdAt: string;
+    updatedAt: string;
+}
 export interface QuartermasterState {
     lists: QuartermasterStoredList[];
     hideoutToggles: {
@@ -91,19 +99,54 @@ export interface QuartermasterState {
         itemEnabled: Record<string, boolean>;
     };
     prioritizedItemIds: string[];
+    weaponBuilds: WeaponBuild[];
 }
 export const quartermasterStore = new UserStateStore<QuartermasterState>({
     domain: 'quartermaster',
-    schemaVersion: 4,
+    schemaVersion: 5,
     defaultValue: {
         lists: [],
         hideoutToggles: { listEnabled: {}, itemEnabled: {} },
         projectToggles: { listEnabled: {}, itemEnabled: {} },
         questToggles: { listEnabled: {}, itemEnabled: {} },
         prioritizedItemIds: [],
+        weaponBuilds: [],
     },
     migrate: (raw) => {
         const r = raw as Partial<QuartermasterState> | null;
+        const unknownState = raw as { weaponBuilds?: unknown } | null;
+        const rawBuilds = Array.isArray(unknownState?.weaponBuilds) ? unknownState.weaponBuilds : [];
+        const weaponBuilds: WeaponBuild[] = rawBuilds.flatMap((rawBuild) => {
+            if (!rawBuild || typeof rawBuild !== 'object') return [];
+            const build = rawBuild as Record<string, unknown>;
+            if (
+                typeof build.id !== 'string' ||
+                typeof build.name !== 'string' ||
+                typeof build.weaponItemId !== 'string' ||
+                !build.slots ||
+                typeof build.slots !== 'object' ||
+                Array.isArray(build.slots)
+            ) {
+                return [];
+            }
+
+            const slots: Record<string, string | null> = {};
+            for (const [slotKey, modItemId] of Object.entries(build.slots)) {
+                if (typeof slotKey === 'string' && (typeof modItemId === 'string' || modItemId === null)) {
+                    slots[slotKey] = modItemId;
+                }
+            }
+            const createdAt = typeof build.createdAt === 'string' ? build.createdAt : new Date(0).toISOString();
+            return [{
+                id: build.id,
+                name: build.name,
+                weaponItemId: build.weaponItemId,
+                slots,
+                createdAt,
+                updatedAt: typeof build.updatedAt === 'string' ? build.updatedAt : createdAt,
+            }];
+        });
+
         return {
             lists: Array.isArray(r?.lists) ? r.lists : [],
             hideoutToggles: {
@@ -121,6 +164,7 @@ export const quartermasterStore = new UserStateStore<QuartermasterState>({
             prioritizedItemIds: Array.isArray(r?.prioritizedItemIds)
                 ? r.prioritizedItemIds.filter((id): id is string => typeof id === 'string')
                 : [],
+            weaponBuilds,
         };
     },
 });

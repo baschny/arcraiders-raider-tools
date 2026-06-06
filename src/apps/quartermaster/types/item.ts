@@ -40,6 +40,7 @@ export interface PlannerItem {
   upgradesFrom?: string;
   weaponBaseId?: string;
   weaponTier?: 1 | 2 | 3 | 4;
+  modSlots?: Record<string, string[]>;
   recyclesInto?: Record<string, number>;
   salvagesInto?: Record<string, number>;
   repairCost?: Record<string, number>;

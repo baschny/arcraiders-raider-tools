@@ -1824,6 +1824,53 @@ Filter state (search query, category, rarity, and the "Show Useless" toggle) per
 
 ---
 
+### My Weapons View
+
+The My Weapons view is a dedicated Quartermaster sidebar view for owned weapons and weapon modifications. It appears directly after My Items and is gated behind the same inventory/auth requirements as My Items.
+
+The view contains a local segmented control with two modes:
+
+- **Weapon View** — shows one card per owned weapon instance from cached stash and current loadout data.
+- **Mods View** — shows all known weapon modifications grouped by slot type.
+
+Weapon cards must be built from exact root weapon instances in `CachedStash.items` and `CachedLoadout.loadout.weapon1/weapon2`. `OwnedItemDisplayRow` must not be used as the weapon-card source because it aggregates attachment locations and cannot preserve exact per-weapon attachment lists. Each owned weapon instance preserves source (`stash` or `loadout`), durability, and its direct nested attachments.
+
+Weapon cards use a fixed width and wrap into rows when horizontal space is available. Only loadout weapons show a source badge; stash weapons do not show an "In stash" badge. The weapon item icon uses the same size and tooltip behavior as My Items, including craftability badges, priority marking, and the shared item tooltip on hover.
+
+Weapon slot data comes from `PlannerItem.modSlots`. Quartermaster must pass through non-empty `modSlots` from the generated item data. Raw slot keys are `muzzle`, `magazine`, `stock`, `grip`, and `special`. Display slot types split raw `magazine` slots into Light, Medium, or Shotgun based on compatible mod IDs and icons. Empty slots are determined by comparing a weapon instance's attached mod item IDs against the compatible mod IDs declared for each slot. Attached mods that cannot be matched to any declared slot are displayed in an unmatched-attachments row and do not fill a declared slot.
+
+Mod slot cards are smaller than weapon cards and four mod slots must fit in a single row within one weapon card. Each slot card always shows the fixed slot-type icon at a consistent position, whether the slot is empty or has an attached mod. Attached mod item icons are smaller than weapon item icons. Empty slots show a placeholder box icon in the same content position as an attached mod icon. Compatible mod names are not shown inline; hovering a slot shows a formatted overlay with a small table of compatible mod names, attached owned count, and available owned count. Attached counts use a locked/red visual treatment; available counts use an unlocked/green visual treatment. When the weapon has a preferred build, the compatible-mod overlay highlights the preferred mod for each slot in yellow if that mod would complete an incomplete build on the current weapon instance, and in green if the preferred mod is already correctly attached.
+
+Weapon View filters:
+
+- text search against weapon name, attached mod names, weapon slot type labels, unattached mod names, and unattached mod slot type labels in the separate unattached-mod list
+- weapon type dropdown from owned weapon `subCategory`
+- "Show Incomplete Only" for weapons with at least one empty mod slot
+
+Weapon sorting:
+
+1. rarity from rarest to most common
+2. localized weapon name
+3. durability descending for same-name weapons
+4. deterministic instance id
+
+Mods View must show all items whose category is `Modification`, grouped by reverse compatibility slot type. Owned mod instances are flattened from `OwnedItemDisplayRow.locations`: direct stash/loadout locations are unattached, and attachment locations preserve their parent weapon name and source. The `fitsEmptySlots` count is computed from owned weapon instances and counts empty compatible slots, not weapons.
+
+Preferred Weapon Builds are synced in Quartermaster user state as `weaponBuilds`. A build is keyed by exact `weaponItemId`, not weapon family, and contains one preferred mod item ID or `null` per slot. Builds may be saved with incomplete slots. When opening the build configuration from a specific weapon card and no saved build exists for that weapon item ID, the overlay defaults each slot to the mods currently attached to that clicked weapon instance. The build configuration overlay shows each compatible mod option as a button-like selectable control with clear selected and unselected states, not as visible radio inputs. It also shows a locked/unlocked craftability indicator next to each compatible mod option. Build matching checks only owned weapon instances with the same exact item ID and displays `matched / total preferred mods` when the build has at least one preferred mod.
+
+Slot icons are served from `/images/weapon-mods/{filename}`. The normalized files are:
+
+- `light-mag.webp`
+- `medium-mag.webp`
+- `muzzle.webp`
+- `shotgun-mag.webp`
+- `shotgun-muzzle.webp`
+- `stock.webp`
+- `tech-mod.webp`
+- `underbarrel.webp`
+
+---
+
 ### Status Indicators
 
 The **Need** column is removed. The status column carries requirement and planner explanation.
@@ -1908,11 +1955,13 @@ The Hideout view is a top-level Quartermaster view between Lists and In Raid.
 The sidebar view order is:
 
 1. My Items
-2. Lists
-3. Hideout
-4. Projects
-5. In Raid
-6. Crafting
+2. My Weapons
+3. Lists
+4. Hideout
+5. Projects
+6. Quests
+7. In Raid
+8. Crafting
 
 The Hideout view owns all generated hideout upgrade list presentation and controls.
 

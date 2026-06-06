@@ -92,6 +92,7 @@ export async function loadAllItems(locale: AppLocale): Promise<ItemsMap> {
       ...(raw.upgradesFrom && { upgradesFrom: raw.upgradesFrom }),
       ...(raw.weaponBaseId && { weaponBaseId: raw.weaponBaseId }),
       ...(raw.weaponTier !== undefined && { weaponTier: raw.weaponTier as 1 | 2 | 3 | 4 }),
+      ...(raw.modSlots && Object.keys(raw.modSlots).length > 0 && { modSlots: raw.modSlots }),
       ...(raw.recyclesInto && Object.keys(raw.recyclesInto).length > 0 && { recyclesInto: raw.recyclesInto }),
       ...(raw.salvagesInto && Object.keys(raw.salvagesInto).length > 0 && { salvagesInto: raw.salvagesInto }),
       ...(raw.repairCost && Object.keys(raw.repairCost).length > 0 && { repairCost: raw.repairCost }),
