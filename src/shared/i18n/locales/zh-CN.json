@@ -419,6 +419,7 @@
     "nav": {
       "welcome": "欢迎",
       "stash": "我的物品",
+      "weapons": "My Weapons",
       "currentLoadout": "当前配装",
       "lists": "列表",
       "hideout": "藏身处",
@@ -549,6 +550,73 @@
         "item": "物品",
         "need": "需求",
         "status": "状态"
+      }
+    },
+    "weapons": {
+      "view": {
+        "weaponView": "Weapon View",
+        "modsView": "Mods View"
+      },
+      "filter": {
+        "searchPlaceholder": "Search weapons and attachments...",
+        "allTypes": "All Types",
+        "showIncompleteOnly": "Show Incomplete Only",
+        "searchModsPlaceholder": "Search mods...",
+        "showRelevantOnly": "Show Relevant Only"
+      },
+      "empty": "No weapons found. Sync your inventory to see your weapons.",
+      "emptySynced": "No weapons found in your synced inventory.",
+      "noMatch": "No weapons match your filters.",
+      "slot": {
+        "muzzle": "Muzzle",
+        "lightMagShort": "Light",
+        "mediumMagShort": "Medium",
+        "shotgunMagShort": "Shotgun",
+        "stock": "Stock",
+        "grip": "Grip",
+        "special": "Special",
+        "empty": "Empty",
+        "unmatchedAttachments": "Unmatched attachments",
+        "craftable": "Craftable",
+        "compatibleTitle": "Compatible mods",
+        "mod": "Mod",
+        "attachedCount": "Attached",
+        "availableCount": "Available"
+      },
+      "mod": {
+        "attached": "Attached: {weapon} ({source})",
+        "unattached": "Unattached",
+        "fitsSlots": "Fits {count} empty slot(s)",
+        "blueprintLearned": "Blueprint learned - Bench {level}",
+        "craftable": "Craftable",
+        "canBeCrafted": "Can be crafted",
+        "cannotBeCrafted": "Cannot be crafted",
+        "notCraftable": "Not craftable",
+        "blueprintLocked": "Blueprint locked",
+        "benchTooLow": "Bench level too low",
+        "ownedCount": "{count} owned",
+        "moreOwned": "+{count} more",
+        "inStash": "In stash",
+        "inLoadout": "In loadout"
+      },
+      "build": {
+        "title": "Configure Build: {weapon}",
+        "nameLabel": "Build Name",
+        "namePlaceholder": "Auto-generated if empty",
+        "slotNone": "None",
+        "save": "Save Build",
+        "cancel": "Cancel",
+        "delete": "Delete Build",
+        "deleteConfirm": "Delete this build?",
+        "matchFull": "Complete - equipped on {weapon}",
+        "matchPartial": "{matched}/{total} mods on {weapon}",
+        "matchEmpty": "No preferred mods set for {weapon}",
+        "matchNone": "No matching weapon",
+        "summaryTitle": "Build Overview",
+        "autoName": "{weapon} Build",
+        "filteredOut": "Weapon is filtered out. Clear filters to see it.",
+        "locked": "Locked",
+        "unlocked": "Unlocked"
       }
     },
     "loadout": {
@@ -747,6 +815,7 @@
       "recycle": "回收",
       "salvage": "拆解",
       "craftingRecipe": "Crafting Recipe",
+      "craftingRecipeIncludingUpgrades": "Crafting Recipe (including Upgrades)",
       "recyclesInto": "回收为",
       "salvagesInto": "拆解为",
       "neededForRepair": "Needed for Repair"
