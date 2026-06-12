@@ -13,6 +13,7 @@ export interface ArctrackerProfileResponse {
     username: string;
     playerLevel: number;
     memberSince: string;
+    isSubscribed?: boolean;
   };
   meta: {
     requestId: string;
@@ -246,6 +247,7 @@ export interface CachedProfile {
   username: string;
   playerLevel: number;
   memberSince: string;
+  isSubscribed?: boolean;
   cachedAt: number;
 }
 

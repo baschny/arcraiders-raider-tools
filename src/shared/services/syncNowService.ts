@@ -1,4 +1,5 @@
 import { getIdToken } from '../auth/cognitoClient';
+import { getCachedProfile } from './cacheService';
 
 const API_BASE = (import.meta.env.VITE_API_BASE_URL as string | undefined) ??
   'https://api.raider-tools.app';
@@ -49,6 +50,11 @@ export async function withSyncNow<T>(
   const target = DOMAIN_TO_TARGET[domain];
 
   if (target !== null) {
+    const profile = await getCachedProfile();
+    if (profile && profile.isSubscribed === false) {
+      return fetchFn();
+    }
+
     const last = lastSyncTime.get(domain) ?? 0;
     const now = Date.now();
 

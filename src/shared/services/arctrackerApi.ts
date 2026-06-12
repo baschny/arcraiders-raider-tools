@@ -182,6 +182,7 @@ export async function syncProfile(): Promise<CachedProfile> {
     username: response.data.username,
     playerLevel: response.data.playerLevel,
     memberSince: response.data.memberSince,
+    isSubscribed: response.data.isSubscribed,
     cachedAt: Date.now(),
   };
 

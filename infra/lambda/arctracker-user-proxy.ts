@@ -56,16 +56,7 @@ export async function handler(
         if (method === "POST" && rawPath.endsWith("/sync-now")) {
             const body = event.body ? JSON.parse(event.body) : {};
             const targets: string[] = Array.isArray(body.targets) ? body.targets : [];
-            const result = await forwardArcTrackerSyncNow(token, targets);
-            if (typeof result !== "string") {
-                result.headers = {
-                    "Access-Control-Allow-Origin": origin,
-                    "Access-Control-Allow-Credentials": "true",
-                    Vary: "Origin",
-                    ...(result.headers ?? {}),
-                };
-            }
-            return result;
+            return forwardArcTrackerSyncNow(token, targets, origin);
         }
 
         const result = await forwardArcTrackerRequest({

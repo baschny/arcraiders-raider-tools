@@ -74,6 +74,7 @@ async function getAppKey(): Promise<string> {
 export async function forwardArcTrackerSyncNow(
     bearerToken: string,
     targets: string[],
+    origin: string,
 ): Promise<APIGatewayProxyResultV2> {
     const upstream = await fetch(`${ARC_BASE}/v2/sync-now`, {
         method: "POST",
@@ -89,6 +90,9 @@ export async function forwardArcTrackerSyncNow(
     return {
         statusCode: upstream.status,
         headers: {
+            "Access-Control-Allow-Origin": origin,
+            "Access-Control-Allow-Credentials": "true",
+            "Vary": "Origin",
             "Content-Type": upstream.headers.get("content-type") ?? "application/json",
         },
         body: await upstream.text(),
