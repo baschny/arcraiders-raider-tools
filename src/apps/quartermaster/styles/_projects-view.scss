@@ -485,6 +485,65 @@
     color: $status-available;
   }
 
+  &__category-requirements {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+    margin-top: $spacing-sm;
+    padding: $spacing-sm;
+    background: rgba($bg-dark, 0.2);
+    border-radius: $radius-sm;
+  }
+
+  &__category-row {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    padding: $spacing-xs 0;
+
+    &--complete {
+      opacity: 0.55;
+    }
+  }
+
+  &__category-label {
+    min-width: 0;
+    flex: 1;
+    font-size: $font-xs;
+    font-weight: 600;
+    color: $text-primary;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__category-counts {
+    flex-shrink: 0;
+    font-size: $font-xs;
+    font-weight: 700;
+    color: $text-secondary;
+  }
+
+  &__category-bar {
+    flex-shrink: 0;
+    width: 80px;
+    height: 8px;
+    background: rgba($border-light, 0.25);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  &__category-bar-fill {
+    height: 100%;
+    background: $text-accent;
+    border-radius: 999px;
+    transition: width 0.3s ease;
+  }
+
+  &__category-row--complete &__category-bar-fill {
+    background: $status-available;
+  }
+
   &__module-empty {
     margin: 0 $spacing-lg $spacing-lg;
     padding: $spacing-md;

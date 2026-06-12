@@ -178,9 +178,24 @@ export interface CachedBlueprints {
 }
 
 // ArcTracker Projects API types
+export interface ArctrackerProjectRequirement {
+  itemId: string;
+  required: number;
+  submitted: number;
+}
+
+export interface ArctrackerProjectCategoryRequirement {
+  category: string;
+  required: number;
+  submitted: number;
+}
+
 export interface ArctrackerProjectPhase {
+  phase: number;
   name: string;
   completed: boolean;
+  requirements?: ArctrackerProjectRequirement[];
+  categoryRequirements?: ArctrackerProjectCategoryRequirement[];
 }
 
 export interface ArctrackerProject {
@@ -208,8 +223,16 @@ export interface ArctrackerProjectsResponse {
 
 // Cached project progress (from API sync)
 export interface CachedProjectGoal {
-  goalAssetId: number;
+  goalAssetId?: number;
   itemId: string;
+  required: number;
+  submitted: number;
+  remaining: number;
+  completed: boolean;
+}
+
+export interface CachedProjectCategoryGoal {
+  category: string;
   required: number;
   submitted: number;
   remaining: number;
@@ -221,6 +244,7 @@ export interface CachedProjectStepProgress {
   index: number;
   completed: boolean;
   goals: CachedProjectGoal[];
+  categoryRequirements?: CachedProjectCategoryGoal[];
 }
 
 export interface CachedProjectProgress {

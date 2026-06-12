@@ -91,7 +91,7 @@ export function ProjectsView({
   onSetProjectTrackingMode,
   onToggleProjectItem,
 }: ProjectsViewProps) {
-  const { t, compareText } = useLocale();
+  const { t, formatNumber, compareText } = useLocale();
   const [collapsedProjects, setCollapsedProjects] = useState<Record<string, boolean>>({});
 
   const toggleProjectCollapsed = (projectId: string) => {
@@ -333,12 +333,21 @@ export function ProjectsView({
 
               const hasAvailableSubmit = projLists.some((list) => {
                 const parsed = parseProjectListId(list.id);
-                return (
-                  parsed?.stepIndex === currentStepIndex &&
-                  list.items.every((li) =>
-                    isItemRequirementAvailable(getOwnedQuantity, li.itemId, li.quantity),
-                  )
-                );
+                if (parsed?.stepIndex !== currentStepIndex) return false;
+
+                const allItemsAvailable = list.items.every((li) => {
+                  const isAlreadySubmitted = li.submitted !== undefined && li.required !== undefined
+                    && li.submitted >= li.required;
+                  if (isAlreadySubmitted) return true;
+                  return isItemRequirementAvailable(getOwnedQuantity, li.itemId, li.quantity);
+                });
+                if (!allItemsAvailable) return false;
+
+                return list.items.some((li) => {
+                  const isAlreadySubmitted = li.submitted !== undefined && li.required !== undefined
+                    && li.submitted >= li.required;
+                  return !isAlreadySubmitted;
+                });
               });
 
               const parsedStepIndices = projLists
@@ -538,8 +547,12 @@ export function ProjectsView({
                                       const owned = getOwnedQuantity(listItem.itemId) ?? 0;
                                       const deficit = Math.max(0, listItem.quantity - owned);
                                       const hasProgress = listItem.submitted !== undefined && listItem.required !== undefined;
+                                      const isFullySubmitted = hasProgress && listItem.submitted! >= listItem.required!;
+                                      const showCheckmark = isRequirementAvailable && !isFullySubmitted;
 
-                                      const interactiveItemProps = isCompleted
+                                      const isItemDone = isCompleted || isFullySubmitted;
+
+                                      const interactiveItemProps = isItemDone
                                         ? {}
                                         : {
                                             role: 'button' as const,
@@ -561,9 +574,9 @@ export function ProjectsView({
                                           key={`${list.id}-${listItem.itemId}-${idx}`}
                                           className={[
                                             'projects-view__item',
-                                            !listItem.isEnabled && !isCompleted ? 'projects-view__item--disabled' : '',
-                                            isRequirementAvailable ? 'projects-view__item--complete' : '',
-                                            isCompleted ? 'projects-view__item--done' : '',
+                                            !listItem.isEnabled && !isItemDone ? 'projects-view__item--disabled' : '',
+                                            isRequirementAvailable && !isFullySubmitted ? 'projects-view__item--complete' : '',
+                                            isItemDone ? 'projects-view__item--done' : '',
                                           ].filter(Boolean).join(' ')}
                                           {...interactiveItemProps}
                                         >
@@ -583,7 +596,7 @@ export function ProjectsView({
                                                 {deficit}
                                               </span>
                                             )}
-                                            {isRequirementAvailable && (
+                                            {showCheckmark && (
                                               <span
                                                 className="projects-view__item-complete"
                                                 title={t('quartermaster.projects.itemCompleteTooltip')}
@@ -603,6 +616,37 @@ export function ProjectsView({
                                       );
                                     })}
                                   </div>
+
+                                  {list.categoryRequirements && list.categoryRequirements.length > 0 && (
+                                    <div className="projects-view__category-requirements">
+                                      {list.categoryRequirements.map((catReq, catIdx) => {
+                                        const pct = catReq.required > 0
+                                          ? Math.round((catReq.submitted / catReq.required) * 100)
+                                          : 0;
+                                        const isCatCompleted = catReq.submitted >= catReq.required;
+                                        return (
+                                          <div
+                                            key={catIdx}
+                                            className={[
+                                              'projects-view__category-row',
+                                              isCatCompleted ? 'projects-view__category-row--complete' : '',
+                                            ].filter(Boolean).join(' ')}
+                                          >
+                                            <span className="projects-view__category-label">{catReq.category}</span>
+                                            <span className="projects-view__category-counts">
+                                              {formatNumber(catReq.submitted)} / {formatNumber(catReq.required)}
+                                            </span>
+                                            <div className="projects-view__category-bar">
+                                              <div
+                                                className="projects-view__category-bar-fill"
+                                                style={{ width: `${Math.min(pct, 100)}%` }}
+                                              />
+                                            </div>
+                                          </div>
+                                        );
+                                      })}
+                                    </div>
+                                  )}
                                 </div>
                               );
                             })}

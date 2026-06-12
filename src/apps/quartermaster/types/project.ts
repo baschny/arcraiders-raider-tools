@@ -6,8 +6,8 @@
  * to keep a single source of truth.
  */
 
-import type { CachedProjects, CachedProjectStepProgress } from '../../../shared/types/arctracker';
-export type { CachedProjects, CachedProjectStepProgress };
+import type { CachedProjects, CachedProjectStepProgress, CachedProjectCategoryGoal } from '../../../shared/types/arctracker';
+export type { CachedProjects, CachedProjectStepProgress, CachedProjectCategoryGoal };
 
 export interface ProjectRequirementItem {
   itemId: string;

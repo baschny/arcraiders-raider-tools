@@ -4,7 +4,7 @@
  */
 
 import type { ProjectDefinition, ProjectToggleState, CachedProjects } from '../types/project';
-import type { CachedProjectGoal } from '../../../shared/types/arctracker';
+import type { CachedProjectGoal, CachedProjectCategoryGoal } from '../../../shared/types/arctracker';
 import type { StoredList } from '../types/list';
 
 interface ProjectListLocalizationOptions {
@@ -44,11 +44,23 @@ export function generateProjectLists(
 ): StoredList[] {
   if (!cachedProjects) return [];
 
-  const progressByProjectId = new Map<string, Map<number, { completed: boolean; goals: CachedProjectGoal[] }>>();
+  const progressByProjectId = new Map<string, Map<number, {
+    completed: boolean;
+    goals: CachedProjectGoal[];
+    categoryRequirements?: CachedProjectCategoryGoal[];
+  }>>();
   for (const projectProgress of cachedProjects.projects) {
-    const stepMap = new Map<number, { completed: boolean; goals: CachedProjectGoal[] }>();
+    const stepMap = new Map<number, {
+      completed: boolean;
+      goals: CachedProjectGoal[];
+      categoryRequirements?: CachedProjectCategoryGoal[];
+    }>();
     for (const step of projectProgress.steps) {
-      stepMap.set(step.index, { completed: step.completed, goals: step.goals });
+      stepMap.set(step.index, {
+        completed: step.completed,
+        goals: step.goals,
+        categoryRequirements: step.categoryRequirements,
+      });
     }
     progressByProjectId.set(projectProgress.projectId, stepMap);
   }
@@ -92,12 +104,22 @@ export function generateProjectLists(
       });
       const isListEnabled = items.some(item => item.isEnabled);
 
+      const catReqs = progressInfo?.categoryRequirements
+        ?.filter((c) => c.required > 0)
+        .map((c) => ({
+          category: c.category,
+          required: c.required,
+          submitted: c.submitted,
+          remaining: c.remaining,
+        }));
+
       lists.push({
         id: `project_${def.id}_${phase.index}`,
         name,
         type: 'project',
         isEnabled: isListEnabled,
         items,
+        categoryRequirements: catReqs?.length ? catReqs : undefined,
       });
     }
   }

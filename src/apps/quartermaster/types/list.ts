@@ -11,10 +11,18 @@ export interface ListItem {
   required?: number;
 }
 
+export interface StoredListCategoryGoal {
+  category: string;
+  required: number;
+  submitted: number;
+  remaining: number;
+}
+
 export interface StoredList {
   id: string;
   name: string;
   type: 'user' | 'hideout' | 'project' | 'quest';
   isEnabled: boolean;
   items: ListItem[];
+  categoryRequirements?: StoredListCategoryGoal[];
 }

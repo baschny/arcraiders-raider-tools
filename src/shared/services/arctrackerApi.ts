@@ -8,16 +8,19 @@
 
 import type {
   ArctrackerProfileResponse,
+  ArctrackerProjectPhase,
+  ArctrackerProjectsResponse,
   ArctrackerStashResponse,
   ArctrackerLoadoutResponse,
   ArctrackerHideoutResponse,
   ArctrackerBlueprintsResponse,
-  ArctrackerProjectsResponse,
   CachedProfile,
   CachedStash,
   CachedLoadout,
   CachedHideout,
   CachedBlueprints,
+  CachedProjectGoal,
+  CachedProjectCategoryGoal,
   ApiError,
   ArctrackerStashItem,
 } from '../types/arctracker';
@@ -324,24 +327,56 @@ export async function syncBlueprints(): Promise<CachedBlueprints> {
 /**
  * Sync and cache project progress.
  */
+function transformPhaseGoals(
+  phase: ArctrackerProjectPhase,
+): { goals: CachedProjectGoal[]; categoryRequirements?: CachedProjectCategoryGoal[] } {
+  const goals: CachedProjectGoal[] = (phase.requirements ?? []).map((req) => ({
+    itemId: req.itemId,
+    required: req.required,
+    submitted: req.submitted,
+    remaining: Math.max(0, req.required - req.submitted),
+    completed: req.submitted >= req.required,
+  }));
+
+  const categoryRequirements: CachedProjectCategoryGoal[] | undefined = phase.categoryRequirements?.length
+    ? phase.categoryRequirements.map((cat) => ({
+        category: cat.category,
+        required: cat.required,
+        submitted: cat.submitted,
+        remaining: Math.max(0, cat.required - cat.submitted),
+        completed: cat.submitted >= cat.required,
+      }))
+    : undefined;
+
+  return { goals, categoryRequirements: categoryRequirements?.length ? categoryRequirements : undefined };
+}
+
 export async function syncProjects(): Promise<CachedProjects> {
   const response = await apiRequest<ArctrackerProjectsResponse>(
     `/v2/user/projects`
   );
 
-  const projects = response.data.projects.map((proj) => ({
-    projectId: proj.id,
-    projectName: proj.name,
-    completed: proj.fullyCompleted,
-    steps: proj.phases.map((phase, index) => ({
-      name: phase.name,
-      index: index + 1,
-      completed: phase.completed,
-      goals: [],
-    })),
-    syncedAt: new Date().toISOString(),
-    cachedAt: Date.now(),
-  }));
+  const projects = response.data.projects.map((proj) => {
+    const stepProgressList = proj.phases.map((phase) => {
+      const { goals, categoryRequirements } = transformPhaseGoals(phase);
+      return {
+        name: phase.name,
+        index: phase.phase,
+        completed: phase.completed,
+        goals,
+        categoryRequirements,
+      };
+    });
+
+    return {
+      projectId: proj.id,
+      projectName: proj.name,
+      completed: proj.fullyCompleted,
+      steps: stepProgressList,
+      syncedAt: new Date().toISOString(),
+      cachedAt: Date.now(),
+    };
+  });
 
   const cachedProjects: CachedProjects = {
     projects: projects.map((proj) => ({

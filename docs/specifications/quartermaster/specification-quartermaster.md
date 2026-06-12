@@ -935,7 +935,7 @@ Each project contains:
 - `phases[]` — ordered steps with `name`, `index` (1-based), and `requirementItemIds[]`
 
 Project progress comes from one of two sync sources:
-- **ArcTracker**: `GET /api/v2/user/projects` — returns step-level completion only (`phase.completed: boolean`)
+- **ArcTracker**: `GET /api/v2/user/projects` — returns per-phase `requirements[]` (`itemId`, `required`, `submitted`) and `categoryRequirements[]` (`category`, `required`, `submitted`) alongside `phase.completed: boolean`
 - **Embark**: `POST /v1/pioneer/projects/list` — returns per-goal progress (`amount` submitted vs required, `state` per goal)
 
 The active source is determined by the global `gameDataSource` setting: `'arctracker'` or `'embark'`.
@@ -946,9 +946,13 @@ The Projects view must provide a **Sync Projects** button.
 
 **ArcTracker sync flow:**
 - Calls `/me/arctracker/v2/user/projects` through the existing ArcTracker proxy
-- Returns step-level completion data
-- For incomplete steps: all required items are considered "needed"
-- For completed steps: step is marked complete, no items are needed
+- Returns per-phase `requirements` and `categoryRequirements` alongside completion data
+- Each requirement is mapped to a `CachedProjectGoal` with `itemId`, `required`, `submitted`, `remaining`, `completed`
+- Each category requirement is mapped to a `CachedProjectCategoryGoal` with `category`, `required`, `submitted`, `remaining`, `completed`
+- `remaining` is computed as `required - submitted` (clamped to ≥ 0)
+- `completed` is `submitted >= required`
+- Unknown `itemId`s (not in static definitions) are skipped
+- Uses the API's `phase` field as the step index directly
 
 **Embark sync flow:**
 - Calls `POST /me/embark/projects/sync` (new dedicated Lambda)
@@ -968,7 +972,7 @@ Project progress cache must contain at least:
 - `projectId` — matches project definition id
 - `projectName` — display name
 - `completed` — whether all steps are complete
-- `steps[]` — per-step progress with `name`, `index`, `completed`, `goals[]`
+- `steps[]` — per-step progress with `name`, `index`, `completed`, `goals[]`, `categoryRequirements[]`
 - `syncedAt` timestamp
 
 Project progress is considered usable if cache exists and contains valid step data.
@@ -1003,8 +1007,10 @@ Rules:
 - List naming: `"Step <N> (<StepName>)"` (project name is shown on the project card header, not repeated in each step row)
 - List type: `'project'`
 - Requirements are non-cumulative (each step list contains only its own requirements)
-- When Embark API progress is available, each item uses the `remaining` quantity from the cached goal data; otherwise falls back to the full static quantity
-- Each item displays a `submitted / required` progress indicator (e.g. `"5 / 10"`) below the item name
+- When cached goal progress is available (from either ArcTracker or Embark), each item uses the `remaining` quantity from the cached goal data; otherwise falls back to the full static quantity
+- Each item displays a `submitted / required` progress indicator (e.g. `"5 / 10"`) below the item name when cached progress is available
+- A green checkmark overlay on an item indicates the user CAN submit it (owns enough in inventory for the remaining quantity), NOT that it is already submitted. When `submitted >= required`, no green checkmark is shown
+- If a step has `categoryRequirements` in cached progress, a category summary section renders below the item grid with per-category progress bars (`formatNumber(submitted) / formatNumber(required)`) and a visual percentage fill. Category requirements are non-interactive and are not tracked for in-raid planning
 - **No-fallback**: Lists are only generated for projects that exist in both the static definitions AND the cached progress. Projects present in definitions but absent from cached progress are silently skipped and produce no planner targets
 
 **Expired Project Filtering**:
@@ -1016,6 +1022,7 @@ Rules:
 
 Available-to-submit detection:
 - A step is "available to submit" only if it is the first incomplete step in its project AND the user owns all required items
+- Items where `submitted >= required` are excluded from this check (they are already submitted and require no further action)
 - Future steps beyond the current incomplete step show required items but do NOT trigger available-to-submit
 
 ### 4.6.6 Planner Integration
