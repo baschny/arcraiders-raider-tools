@@ -52,7 +52,7 @@ export function matchLocalRoutePattern(
     if (pathname === "/me/embark/projects/sync" && method === "POST") {
         return { key: "embarkProjectsSync", pathParameters: {}, requiresDevAuth: true };
     }
-    if (pathname.startsWith("/me/arctracker/") && method === "GET") {
+    if (pathname.startsWith("/me/arctracker/") && (method === "GET" || method === "POST")) {
         return { key: "arctrackerUserProxy", pathParameters: {}, requiresDevAuth: true };
     }
     const stateMatch = /^\/me\/state\/([^/]+)$/.exec(pathname);

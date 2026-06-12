@@ -3,6 +3,7 @@ import type { APIGatewayProxyResultV2 } from "aws-lambda";
 
 const sm = new SecretsManagerClient({});
 const ARC_BASE = "https://arctracker.io/api";
+const SYNC_SECRET = "raidertools123";
 
 let cachedAppKey: string | null = null;
 
@@ -68,6 +69,30 @@ async function getAppKey(): Promise<string> {
 
     cachedAppKey = value;
     return value;
+}
+
+export async function forwardArcTrackerSyncNow(
+    bearerToken: string,
+    targets: string[],
+): Promise<APIGatewayProxyResultV2> {
+    const upstream = await fetch(`${ARC_BASE}/v2/sync-now`, {
+        method: "POST",
+        headers: {
+            "X-App-Key": await getAppKey(),
+            Authorization: `Bearer ${bearerToken}`,
+            "X-Sync-Secret": SYNC_SECRET,
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(targets.length > 0 ? { targets } : {}),
+    });
+
+    return {
+        statusCode: upstream.status,
+        headers: {
+            "Content-Type": upstream.headers.get("content-type") ?? "application/json",
+        },
+        body: await upstream.text(),
+    };
 }
 
 function pickPassThroughHeaders(h: Headers): Record<string, string> {

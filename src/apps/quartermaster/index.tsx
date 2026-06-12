@@ -85,6 +85,7 @@ import {
   type GameDataSource,
 } from '../../shared/services/gameDataApi';
 import { getCachedLinkedQuestSnapshot, syncArctrackerQuestSnapshot, syncEmbarkQuestSnapshot } from '../../shared/services/linkedQuestApi';
+import { withSyncNow } from '../../shared/services/syncNowService';
 import type { LinkedQuestSnapshot } from '../../shared/types/linkedQuests';
 
 import { Sidebar, type ViewId } from './components/Sidebar';
@@ -610,7 +611,7 @@ export function QuartermasterApp() {
     setIsSyncingStash(true);
     setMyItemsSyncStep('inventory');
     try {
-      const stash = await syncStashAllPages();
+      const stash = await withSyncNow('stash', () => syncStashAllPages());
       setCachedStash(stash);
       if (previousStashSyncedAt && stash.syncedAt === previousStashSyncedAt) {
         unchangedSources.push(t('quartermaster.stash.inventorySource'));
@@ -653,7 +654,7 @@ export function QuartermasterApp() {
     setIsSyncingBlueprints(true);
     setSyncError(null);
     try {
-      const blueprints = await syncBlueprints();
+      const blueprints = await withSyncNow('blueprints', () => syncBlueprints());
       setCachedBlueprints(blueprints);
     } catch (err) {
       console.error('Failed to sync blueprints:', err);
@@ -674,7 +675,7 @@ export function QuartermasterApp() {
     setStaleSyncModal(null);
     const previousSyncedAt = cachedHideout?.syncedAt ?? null;
     try {
-      const hideout = await syncHideout();
+      const hideout = await withSyncNow('hideout', () => syncHideout());
       setCachedHideout(hideout);
       if (previousSyncedAt && hideout.syncedAt === previousSyncedAt) {
         setStaleSyncModal({
@@ -927,11 +928,10 @@ export function QuartermasterApp() {
         try {
           snapshot = await syncEmbarkQuestSnapshot(linkedQuestSnapshot);
         } catch {
-          // Embark sync failed (e.g. unlinked) — fall back to ArcTracker
-          snapshot = await syncArctrackerQuestSnapshot(linkedQuestSnapshot);
+          snapshot = await withSyncNow('quests', () => syncArctrackerQuestSnapshot(linkedQuestSnapshot));
         }
       } else {
-        snapshot = await syncArctrackerQuestSnapshot(linkedQuestSnapshot);
+        snapshot = await withSyncNow('quests', () => syncArctrackerQuestSnapshot(linkedQuestSnapshot));
       }
 
       setLinkedQuestSnapshot(snapshot);
@@ -965,7 +965,7 @@ export function QuartermasterApp() {
       if (gameDataSource === 'embark') {
         projects = await syncEmbarkProjects();
       } else {
-        projects = await syncProjects();
+        projects = await withSyncNow('projects', () => syncProjects());
       }
       setCachedProjects(projects);
 

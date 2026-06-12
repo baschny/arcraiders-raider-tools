@@ -7,6 +7,7 @@ import { SignInNudge } from '../../shared/components/SignInNudge';
 import { getMe } from '../../shared/services/userApi';
 import { getCachedStash, getCachedLoadout } from '../../shared/services/cacheService';
 import { syncStashAllPages, syncLoadout } from '../../shared/services/arctrackerApi';
+import { withSyncNow } from '../../shared/services/syncNowService';
 import { syncEmbarkInventory, type GameDataSource } from '../../shared/services/gameDataApi';
 import type { CachedStash, CachedLoadout } from '../../shared/types/arctracker';
 import './styles/main.scss';
@@ -74,7 +75,7 @@ export function CraftCalculatorApp() {
         setCachedStash(snapshot.stash);
         setCachedLoadout(snapshot.loadout);
       } else {
-        const stash = await syncStashAllPages();
+        const stash = await withSyncNow('stash', () => syncStashAllPages());
         setCachedStash(stash);
         try {
           const loadout = await syncLoadout();

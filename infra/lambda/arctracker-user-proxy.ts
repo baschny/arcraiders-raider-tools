@@ -18,7 +18,7 @@ import {
     jwtSub,
 } from "./_lib/http";
 import { decryptToken, type EnvelopePayload } from "./_lib/envelope";
-import { forwardArcTrackerRequest } from "./_lib/arctrackerRelay";
+import { forwardArcTrackerRequest, forwardArcTrackerSyncNow } from "./_lib/arctrackerRelay";
 
 const ddb = DynamoDBDocumentClient.from(new DynamoDBClient({}));
 const PATH_PREFIX = "/me/arctracker";
@@ -31,7 +31,9 @@ export async function handler(
     if (!sub) return jsonResponse(401, { error: "Unauthenticated" }, origin);
 
     const method = event.requestContext.http.method;
-    if (method !== "GET") return jsonResponse(405, { error: "Method not allowed" }, origin);
+    if (method !== "GET" && method !== "POST") {
+        return jsonResponse(405, { error: "Method not allowed" }, origin);
+    }
 
     const rawPath = event.rawPath || "";
     if (!rawPath.startsWith(`${PATH_PREFIX}/`)) {
@@ -50,6 +52,21 @@ export async function handler(
             purpose: "link",
             provider: "arctracker",
         });
+
+        if (method === "POST" && rawPath.endsWith("/sync-now")) {
+            const body = event.body ? JSON.parse(event.body) : {};
+            const targets: string[] = Array.isArray(body.targets) ? body.targets : [];
+            const result = await forwardArcTrackerSyncNow(token, targets);
+            if (typeof result !== "string") {
+                result.headers = {
+                    "Access-Control-Allow-Origin": origin,
+                    "Access-Control-Allow-Credentials": "true",
+                    Vary: "Origin",
+                    ...(result.headers ?? {}),
+                };
+            }
+            return result;
+        }
 
         const result = await forwardArcTrackerRequest({
             subPath: rawPath.substring(PATH_PREFIX.length),

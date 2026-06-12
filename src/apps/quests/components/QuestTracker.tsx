@@ -31,6 +31,7 @@ import {
   syncArctrackerQuestSnapshot,
   syncEmbarkQuestSnapshot,
 } from '../../../shared/services/linkedQuestApi';
+import { withSyncNow } from '../../../shared/services/syncNowService';
 import { getMe } from '../../../shared/services/userApi';
 import type { LinkedQuestSnapshot } from '../../../shared/types/linkedQuests';
 import {
@@ -281,7 +282,7 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
     try {
       const snapshot = linkedSource === 'embark'
         ? await syncEmbarkQuestSnapshot(linkedSnapshot)
-        : await syncArctrackerQuestSnapshot(linkedSnapshot);
+        : await withSyncNow('quests', () => syncArctrackerQuestSnapshot(linkedSnapshot));
       setLinkedSnapshot(snapshot);
     } catch (error) {
       const message = error instanceof Error
