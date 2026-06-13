@@ -13,6 +13,17 @@ body {
   color: $text-primary;
 }
 
+a {
+  color: $text-accent;
+  text-decoration: none;
+  transition: $transition-default;
+
+  &:hover {
+    color: color.adjust($text-accent, $lightness: 10%);
+    text-decoration: underline;
+  }
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: $font-heading;
 }

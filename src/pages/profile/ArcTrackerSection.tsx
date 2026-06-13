@@ -15,8 +15,11 @@ import {
   EyeOff,
   Loader2,
   LogOut,
+  RefreshCw,
+  Sparkles,
 } from 'lucide-react';
 import { useAuth } from '../../shared/context/AuthContext';
+import { useLinkedAccounts } from '../../shared/context/LinkedAccountsContext';
 import { getCacheMeta } from '../../shared/services/cacheService';
 import { useLocale } from '../../shared/context/LocaleContext';
 
@@ -49,18 +52,12 @@ export function ArcTrackerSection() {
     setLocalError(null);
     setSuccessMessage(null);
 
-    // Empty token on an authenticated session == unlink.
-    if (!tokenInput.trim()) {
-      await logout();
-      setSuccessMessage('Logged out successfully.');
-      return;
-    }
-
     setIsSubmitting(true);
     const success = await login(tokenInput.trim());
     setIsSubmitting(false);
 
     if (success) {
+      setTokenInput('');
       setSuccessMessage('Token validated successfully!');
     } else {
       setLocalError('Invalid token. Please check your API token and try again.');
@@ -74,6 +71,8 @@ export function ArcTrackerSection() {
     setSuccessMessage('Logged out successfully. All cached data has been cleared.');
   };
 
+  const { arctracker } = useLinkedAccounts();
+  const { isSubscribed, refreshProfile, profileUpdating } = arctracker;
   const displayError = localError || error;
 
   return (
@@ -117,32 +116,69 @@ export function ArcTrackerSection() {
         </div>
 
         <div className="settings-form">
-          <label htmlFor="api-token" className="settings-label">
-            API Token
-          </label>
-          <div className="token-input-wrapper">
-            <input
-              id="api-token"
-              type={showToken ? 'text' : 'password'}
-              value={tokenInput}
-              onChange={(e) => {
-                setTokenInput(e.target.value);
-                setLocalError(null);
-                setSuccessMessage(null);
-              }}
-              placeholder="arc_u1_xxxxxxxxxx..."
-              className="token-input"
-              disabled={isSubmitting || isValidating}
-            />
-            <button
-              type="button"
-              className="token-toggle"
-              onClick={() => setShowToken(!showToken)}
-              title={showToken ? 'Hide token' : 'Show token'}
-            >
-              {showToken ? <EyeOff size={18} /> : <Eye size={18} />}
-            </button>
-          </div>
+          {isAuthenticated ? (
+            <>
+              <label className="settings-label" style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                <CheckCircle size={16} style={{ color: '#4caf50' }} />
+                API Token Configured
+              </label>
+              <div className="settings-actions">
+                <button
+                  className="settings-button settings-button--danger"
+                  onClick={handleLogout}
+                  disabled={isSubmitting || isValidating}
+                >
+                  <LogOut size={16} />
+                  <span>Unlink</span>
+                </button>
+              </div>
+            </>
+          ) : (
+            <>
+              <label htmlFor="api-token" className="settings-label">
+                API Token
+              </label>
+              <div className="token-input-wrapper">
+                <input
+                  id="api-token"
+                  type={showToken ? 'text' : 'password'}
+                  value={tokenInput}
+                  onChange={(e) => {
+                    setTokenInput(e.target.value);
+                    setLocalError(null);
+                    setSuccessMessage(null);
+                  }}
+                  placeholder="arc_u1_xxxxxxxxxx..."
+                  className="token-input"
+                  disabled={isSubmitting || isValidating}
+                />
+                <button
+                  type="button"
+                  className="token-toggle"
+                  onClick={() => setShowToken(!showToken)}
+                  title={showToken ? 'Hide token' : 'Show token'}
+                >
+                  {showToken ? <EyeOff size={18} /> : <Eye size={18} />}
+                </button>
+              </div>
+              <div className="settings-actions">
+                <button
+                  className="settings-button settings-button--primary"
+                  onClick={handleTokenSubmit}
+                  disabled={isSubmitting || isValidating || !tokenInput.trim()}
+                >
+                  {isSubmitting || isValidating ? (
+                    <>
+                      <Loader2 size={16} className="spin" />
+                      <span>Validating...</span>
+                    </>
+                  ) : (
+                    <span>Save Token</span>
+                  )}
+                </button>
+              </div>
+            </>
+          )}
 
           {displayError && (
             <div className="settings-message settings-message--error">
@@ -157,34 +193,6 @@ export function ArcTrackerSection() {
               <span>{successMessage}</span>
             </div>
           )}
-
-          <div className="settings-actions">
-            <button
-              className="settings-button settings-button--primary"
-              onClick={handleTokenSubmit}
-              disabled={isSubmitting || isValidating}
-            >
-              {isSubmitting || isValidating ? (
-                <>
-                  <Loader2 size={16} className="spin" />
-                  <span>Validating...</span>
-                </>
-              ) : (
-                <span>Save Token</span>
-              )}
-            </button>
-
-            {isAuthenticated && (
-              <button
-                className="settings-button settings-button--danger"
-                onClick={handleLogout}
-                disabled={isSubmitting || isValidating}
-              >
-                <LogOut size={16} />
-                <span>Unlink</span>
-              </button>
-            )}
-          </div>
         </div>
       </div>
 
@@ -204,6 +212,46 @@ export function ArcTrackerSection() {
                 </span>
               </div>
             )}
+            <div className="account-detail" style={{ alignItems: 'flex-start' }}>
+              <span className="account-label">Subscription:</span>
+              {isSubscribed ? (
+                <span className="account-value" style={{ color: '#f59e0b', display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+                  <Sparkles size={16} />
+                  Premium
+                </span>
+              ) : (
+                <span className="account-value" style={{ fontWeight: 400, lineHeight: 1.5 }}>
+                  Having a Premium subscription at{' '}
+                  <a href="https://arctracker.io" target="_blank" rel="noopener noreferrer">
+                    arctracker.io <ExternalLink size={12} />
+                  </a>{' '}
+                  will enable Raider Tools to auto-sync your game data. Without the subscription, you need to
+                  sync your game data on the{' '}
+                  <a href="https://arctracker.io/stash" target="_blank" rel="noopener noreferrer">
+                    arctracker.io/stash <ExternalLink size={12} />
+                  </a>{' '}
+                  page every time before syncing in Raider Tools.{' '}
+                  <a href="https://arctracker.io/subscribe" target="_blank" rel="noopener noreferrer">
+                    Subscribe here <ExternalLink size={12} />
+                  </a>
+                  .
+                </span>
+              )}
+            </div>
+          </div>
+          <div className="settings-actions" style={{ marginTop: 12 }}>
+            <button
+              className="settings-button settings-button--secondary"
+              onClick={refreshProfile}
+              disabled={profileUpdating}
+            >
+              {profileUpdating ? (
+                <Loader2 size={16} className="spin" />
+              ) : (
+                <RefreshCw size={16} />
+              )}
+              <span>Update</span>
+            </button>
           </div>
         </div>
       )}

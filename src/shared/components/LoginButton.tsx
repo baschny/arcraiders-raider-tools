@@ -140,7 +140,9 @@ export function LoginButton() {
     const embarkLabel = getEmbarkStatusLabel(embarkStatus, countdownNow);
     const arctrackerTone = getArctrackerTone(arctracker.state);
     const arctrackerStatusLabel = arctracker.state === 'connected'
-      ? t('shared.userMenu.statusLinked')
+      ? arctracker.isSubscribed
+        ? `${t('shared.userMenu.statusLinked')} * ${t('shared.userMenu.statusSubscribed')}`
+        : t('shared.userMenu.statusLinked')
       : arctracker.state === 'invalid'
         ? t('shared.userMenu.statusInvalid')
         : t('shared.userMenu.statusNotConfigured');

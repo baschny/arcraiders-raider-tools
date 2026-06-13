@@ -10,6 +10,9 @@ export interface LinkedAccountsContextValue {
     loading: boolean;
     refresh: () => Promise<void>;
     markInvalid: () => void;
+    isSubscribed: boolean;
+    refreshProfile: () => Promise<void>;
+    profileUpdating: boolean;
   };
   embark: {
     status: EmbarkLinkStatus | null;

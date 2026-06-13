@@ -218,6 +218,17 @@
       background: rgba(#f44336, 0.1);
     }
   }
+
+  &--secondary {
+    background: $bg-tertiary;
+    color: $text-primary;
+    border-color: $border-light;
+
+    &:hover:not(:disabled) {
+      background: $bg-quaternary;
+      border-color: $border-lighter;
+    }
+  }
 }
 
 .settings-account-info {
