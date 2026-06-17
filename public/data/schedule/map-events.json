@@ -4,7 +4,7 @@
     "format": "Schedule keys are UNIX timestamps (seconds, UTC) at event start; values are event type ids."
   },
   "metadata": {
-    "generatedAt": "2026-06-05T00:06:22.637Z",
+    "generatedAt": "2026-06-17T12:38:01.625Z",
     "sourceFiles": {
       "mapConditionsOverview": "https://arcraiders.com/map-conditions",
       "mapConditionsPerCondition": "https://arcraiders.com/map-conditions/<condition-slug>",
@@ -12,13 +12,13 @@
       "previousSchedule": "public/data/schedule/map-events.json"
     },
     "timestampRange": {
-      "start": 1778515200,
-      "end": 1780707600
+      "start": 1780185600,
+      "end": 1781791200
     },
     "mergedPastEvents": {
       "windowSeconds": 2592000,
-      "now": 1780617982,
-      "count": 229
+      "now": 1781699881,
+      "count": 224
     },
     "ignoredMapNames": [],
     "ignoredEntriesCount": 0
@@ -411,13 +411,6 @@
   "schedule": {
     "dam-battleground": {
       "major": {
-        "1778515200": "night-raid",
-        "1778529600": "close-scrutiny",
-        "1778547600": "hurricane",
-        "1778562000": "electromagnetic-storm",
-        "1778576400": "hurricane",
-        "1778590800": "night-raid",
-        "1778605200": "electromagnetic-storm",
         "1780192800": "electromagnetic-storm",
         "1780207200": "night-raid",
         "1780221600": "electromagnetic-storm",
@@ -429,18 +422,14 @@
         "1780606800": "night-raid",
         "1780657200": "night-raid",
         "1780686000": "electromagnetic-storm",
-        "1780696800": "night-raid"
+        "1780696800": "night-raid",
+        "1781701200": "night-raid",
+        "1781712000": "close-scrutiny",
+        "1781722800": "hurricane",
+        "1781744400": "close-scrutiny",
+        "1781780400": "close-scrutiny"
       },
       "minor": {
-        "1778515200": "harvester",
-        "1778526000": "uncovered-caches",
-        "1778536800": "lush-blooms",
-        "1778551200": "matriarch",
-        "1778562000": "lush-blooms",
-        "1778572800": "uncovered-caches",
-        "1778583600": "lush-blooms",
-        "1778594400": "harvester",
-        "1778605200": "lush-blooms",
         "1780189200": "husk-graveyard",
         "1780200000": "uncovered-caches",
         "1780210800": "matriarch",
@@ -468,17 +457,19 @@
         "1780660800": "harvester",
         "1780671600": "matriarch",
         "1780682400": "uncovered-caches",
-        "1780693200": "matriarch"
+        "1780693200": "matriarch",
+        "1781697600": "husk-graveyard",
+        "1781708400": "lush-blooms",
+        "1781719200": "matriarch",
+        "1781730000": "harvester",
+        "1781748000": "matriarch",
+        "1781758800": "husk-graveyard",
+        "1781769600": "matriarch",
+        "1781787600": "husk-graveyard"
       }
     },
     "buried-city": {
       "major": {
-        "1778522400": "hurricane",
-        "1778536800": "close-scrutiny",
-        "1778554800": "hurricane",
-        "1778569200": "close-scrutiny",
-        "1778583600": "night-raid",
-        "1778598000": "hurricane",
         "1780200000": "close-scrutiny",
         "1780214400": "night-raid",
         "1780228800": "hurricane",
@@ -494,18 +485,13 @@
         "1780650000": "hurricane",
         "1780668000": "night-raid",
         "1780678800": "hurricane",
-        "1780689600": "night-raid"
+        "1780689600": "night-raid",
+        "1781708400": "hurricane",
+        "1781733600": "night-raid",
+        "1781758800": "close-scrutiny",
+        "1781769600": "night-raid"
       },
       "minor": {
-        "1778515200": "lush-blooms",
-        "1778526000": "uncovered-caches",
-        "1778536800": "lush-blooms",
-        "1778551200": "bird-city",
-        "1778562000": "uncovered-caches",
-        "1778569200": "lush-blooms",
-        "1778583600": "uncovered-caches",
-        "1778594400": "lush-blooms",
-        "1778605200": "uncovered-caches",
         "1780185600": "bird-city",
         "1780189200": "husk-graveyard",
         "1780200000": "bird-city",
@@ -530,17 +516,19 @@
         "1780664400": "bird-city",
         "1780675200": "prospecting-probes",
         "1780686000": "bird-city",
-        "1780696800": "prospecting-probes"
+        "1780696800": "prospecting-probes",
+        "1781704800": "husk-graveyard",
+        "1781715600": "bird-city",
+        "1781726400": "husk-graveyard",
+        "1781737200": "bird-city",
+        "1781740800": "bird-city",
+        "1781755200": "bird-city",
+        "1781773200": "lush-blooms",
+        "1781784000": "bird-city"
       }
     },
     "the-spaceport": {
       "major": {
-        "1778518800": "electromagnetic-storm",
-        "1778533200": "close-scrutiny",
-        "1778551200": "night-raid",
-        "1778565600": "close-scrutiny",
-        "1778580000": "hidden-bunker",
-        "1778594400": "hurricane",
         "1780196400": "hidden-bunker",
         "1780210800": "night-raid",
         "1780225200": "electromagnetic-storm",
@@ -557,17 +545,16 @@
         "1780653600": "electromagnetic-storm",
         "1780664400": "hurricane",
         "1780700400": "hurricane",
-        "1780704000": "hurricane"
+        "1780704000": "hurricane",
+        "1781704800": "hidden-bunker",
+        "1781719200": "night-raid",
+        "1781730000": "electromagnetic-storm",
+        "1781748000": "night-raid",
+        "1781762400": "electromagnetic-storm",
+        "1781773200": "hidden-bunker",
+        "1781784000": "electromagnetic-storm"
       },
       "minor": {
-        "1778522400": "harvester",
-        "1778533200": "matriarch",
-        "1778547600": "launch-tower-loot",
-        "1778558400": "harvester",
-        "1778569200": "uncovered-caches",
-        "1778580000": "lush-blooms",
-        "1778590800": "harvester",
-        "1778601600": "matriarch",
         "1780185600": "launch-tower-loot",
         "1780196400": "matriarch",
         "1780207200": "harvester",
@@ -590,18 +577,19 @@
         "1780657200": "matriarch",
         "1780668000": "launch-tower-loot",
         "1780678800": "matriarch",
-        "1780689600": "harvester"
+        "1780689600": "harvester",
+        "1781697600": "lush-blooms",
+        "1781708400": "harvester",
+        "1781722800": "lush-blooms",
+        "1781733600": "husk-graveyard",
+        "1781751600": "harvester",
+        "1781766000": "launch-tower-loot",
+        "1781776800": "matriarch",
+        "1781787600": "lush-blooms"
       }
     },
     "blue-gate": {
       "major": {
-        "1778526000": "electromagnetic-storm",
-        "1778540400": "locked-gate",
-        "1778544000": "electromagnetic-storm",
-        "1778558400": "close-scrutiny",
-        "1778572800": "hurricane",
-        "1778587200": "night-raid",
-        "1778601600": "hurricane",
         "1780189200": "locked-gate",
         "1780203600": "electromagnetic-storm",
         "1780218000": "locked-gate",
@@ -618,18 +606,18 @@
         "1780628400": "hurricane",
         "1780646400": "locked-gate",
         "1780671600": "electromagnetic-storm",
-        "1780682400": "night-raid"
+        "1780682400": "night-raid",
+        "1781697600": "locked-gate",
+        "1781715600": "electromagnetic-storm",
+        "1781726400": "close-scrutiny",
+        "1781737200": "hurricane",
+        "1781740800": "hurricane",
+        "1781755200": "hurricane",
+        "1781766000": "locked-gate",
+        "1781776800": "hurricane",
+        "1781787600": "locked-gate"
       },
       "minor": {
-        "1778518800": "harvester",
-        "1778529600": "matriarch",
-        "1778540400": "harvester",
-        "1778544000": "lush-blooms",
-        "1778554800": "matriarch",
-        "1778565600": "harvester",
-        "1778576400": "matriarch",
-        "1778587200": "uncovered-caches",
-        "1778598000": "harvester",
         "1780192800": "matriarch",
         "1780203600": "husk-graveyard",
         "1780214400": "husk-graveyard",
@@ -655,17 +643,19 @@
         "1780664400": "prospecting-probes",
         "1780675200": "harvester",
         "1780686000": "prospecting-probes",
-        "1780696800": "harvester"
+        "1780696800": "harvester",
+        "1781704800": "matriarch",
+        "1781719200": "harvester",
+        "1781730000": "matriarch",
+        "1781744400": "harvester",
+        "1781751600": "matriarch",
+        "1781762400": "harvester",
+        "1781773200": "husk-graveyard",
+        "1781784000": "harvester"
       }
     },
     "riven-tides": {
       "major": {
-        "1778518800": "night-raid",
-        "1778533200": "night-raid",
-        "1778551200": "night-raid",
-        "1778565600": "night-raid",
-        "1778580000": "night-raid",
-        "1778594400": "night-raid",
         "1780185600": "night-raid",
         "1780196400": "night-raid",
         "1780207200": "night-raid",
@@ -679,7 +669,11 @@
         "1780603200": "night-raid",
         "1780642800": "night-raid",
         "1780675200": "night-raid",
-        "1780693200": "night-raid"
+        "1780693200": "night-raid",
+        "1781708400": "night-raid",
+        "1781726400": "night-raid",
+        "1781751600": "night-raid",
+        "1781773200": "night-raid"
       },
       "minor": {
         "1780189200": "beachcombing",
@@ -707,17 +701,19 @@
         "1780678800": "beachcombing",
         "1780689600": "uncovered-caches",
         "1780700400": "beachcombing",
-        "1780704000": "beachcombing"
+        "1780704000": "beachcombing",
+        "1781701200": "beachcombing",
+        "1781712000": "husk-graveyard",
+        "1781722800": "beachcombing",
+        "1781733600": "lush-blooms",
+        "1781748000": "beachcombing",
+        "1781755200": "lush-blooms",
+        "1781766000": "beachcombing",
+        "1781780400": "lush-blooms"
       }
     },
     "stella-montis": {
       "major": {
-        "1778522400": "night-raid",
-        "1778536800": "night-raid",
-        "1778554800": "night-raid",
-        "1778569200": "night-raid",
-        "1778583600": "night-raid",
-        "1778598000": "night-raid",
         "1780185600": "night-raid",
         "1780192800": "night-raid",
         "1780207200": "night-raid",
@@ -737,7 +733,14 @@
         "1780657200": "night-raid",
         "1780671600": "night-raid",
         "1780686000": "night-raid",
-        "1780700400": "night-raid"
+        "1780700400": "night-raid",
+        "1781697600": "night-raid",
+        "1781712000": "night-raid",
+        "1781726400": "night-raid",
+        "1781740800": "night-raid",
+        "1781748000": "night-raid",
+        "1781762400": "night-raid",
+        "1781776800": "night-raid"
       },
       "minor": {}
     }

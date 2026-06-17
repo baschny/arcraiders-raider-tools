@@ -7543,6 +7543,51 @@
       "updatedAt": "02/24/2026",
       "addedIn": "base"
     },
+    "colorful_shoes_green": {
+      "name": {
+        "value": "Разноцветная обувь (зеленая)",
+        "originalEn": "Colorful Shoes (Green)"
+      },
+      "description": "Эта специализированная обувь украшена яркими церемониальными узорами и создана, чтобы удерживать владельца на земле. Считается, что она принадлежала древним странникам с громкой славой.",
+      "type": "Trinket",
+      "rarity": "Epic",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 7000,
+      "imageFilename": "https://cdn.arctracker.io/items/v2/colorful_shoes_green.png",
+      "updatedAt": "06/17/2026",
+      "addedIn": "1.33"
+    },
+    "colorful_shoes_red": {
+      "name": {
+        "value": "Разноцветная обувь (красная)",
+        "originalEn": "Colorful Shoes (Red)"
+      },
+      "description": "Эта специализированная обувь украшена яркими церемониальными узорами и создана, чтобы удерживать владельца на земле. Считается, что она принадлежала древним странникам с громкой славой.",
+      "type": "Trinket",
+      "rarity": "Rare",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 3000,
+      "imageFilename": "https://cdn.arctracker.io/items/v2/colorful_shoes_red.png",
+      "updatedAt": "06/17/2026",
+      "addedIn": "1.33"
+    },
+    "colorful_shoes_silver": {
+      "name": {
+        "value": "Разноцветная обувь (серебристая)",
+        "originalEn": "Colorful Shoes (Silver)"
+      },
+      "description": "Эта специализированная обувь украшена яркими церемониальными узорами и создана, чтобы удерживать владельца на земле. Считается, что она принадлежала древним странникам с громкой славой.",
+      "type": "Trinket",
+      "rarity": "Legendary",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 10000,
+      "imageFilename": "https://cdn.arctracker.io/items/v2/colorful_shoes_silver.png",
+      "updatedAt": "06/17/2026",
+      "addedIn": "1.33"
+    },
     "combat_mk1": {
       "name": {
         "value": "Бой 1",
@@ -9528,6 +9573,32 @@
       "value": 1000,
       "weightKg": 1,
       "imageFilename": "https://cdn.arctracker.io/items/v2/dockmasters_detector.png",
+      "repairDurability": 0.5,
+      "effects": {
+        "Durability": {
+          "value": "100/100",
+          "da": "Holdbarhed",
+          "de": "Haltbarkeit",
+          "en": "Durability",
+          "es": "Durabilidad",
+          "fr": "Durabilité",
+          "he": "עמידות",
+          "hr": "Izdržljivost",
+          "it": "Tenuta",
+          "ja": "耐久性",
+          "ko-KR": "내구도",
+          "no": "Holdbarhet",
+          "pl": "Wytrzymałość",
+          "pt": "Durabilidade",
+          "pt-BR": "Durabilidade",
+          "ru": "Прочность",
+          "sr": "Izdržljivost",
+          "tr": "Dayanıklılık",
+          "uk": "Міцність",
+          "zh-CN": "耐久度",
+          "zh-TW": "耐久度"
+        }
+      },
       "updatedAt": "04/28/2026",
       "addedIn": "1.26"
     },
@@ -9806,6 +9877,21 @@
       "updatedAt": "03/17/2026",
       "addedIn": "base"
     },
+    "elephant_obelisk": {
+      "name": {
+        "value": "Обелиск слона",
+        "originalEn": "Elephant Obelisk"
+      },
+      "description": "Предмет особого кочевого почитания; некоторые считают, что эти легендарные вьючные звери доставили Башни запуска на место.",
+      "type": "Trinket",
+      "rarity": "Legendary",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 10000,
+      "imageFilename": "https://cdn.arctracker.io/items/v2/elephant_obelisk.png",
+      "updatedAt": "06/17/2026",
+      "addedIn": "1.33"
+    },
     "empty_wine_bottle": {
       "name": {
         "value": "Пустая бутылка из-под вина",
@@ -10000,6 +10086,21 @@
       "imageFilename": "https://cdn.arctracker.io/items/v2/equalizer_blueprint.png",
       "updatedAt": "01/13/2026",
       "addedIn": "base"
+    },
+    "equatorial_sundial": {
+      "name": {
+        "value": "Экваториальные солнечные часы",
+        "originalEn": "Equatorial Sundial"
+      },
+      "description": "Чудо древней изобретательности; тем, кто любит смотреть на звезды, эти завораживающие узоры могут показаться странно знакомыми.",
+      "type": "Trinket",
+      "rarity": "Rare",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 3000,
+      "imageFilename": "https://cdn.arctracker.io/items/v2/equatorial_sundial.png",
+      "updatedAt": "06/17/2026",
+      "addedIn": "1.33"
     },
     "espresso_machine_parts": {
       "name": {
@@ -22828,10 +22929,10 @@
     },
     "rascal_blueprint": {
       "name": {
-        "value": "Rascal Blueprint",
+        "value": "Чертеж Раскала",
         "originalEn": "Rascal Blueprint"
       },
-      "description": "Fires explosive projectiles that only detonate when hitting ARC.",
+      "description": "Стреляет взрывными снарядами, которые взрываются только при попадании в ARC.",
       "type": "Blueprint",
       "rarity": "Common",
       "stackSize": 1,
@@ -22844,10 +22945,10 @@
     },
     "rascal_i": {
       "name": {
-        "value": "Rascal I",
+        "value": "Раскал I",
         "originalEn": "Rascal I"
       },
-      "description": "Fires explosive projectiles that only detonate when hitting ARC.",
+      "description": "Стреляет взрывными снарядами, которые взрываются только при попадании в ARC.",
       "type": "Special",
       "rarity": "Rare",
       "stackSize": 1,
@@ -22993,10 +23094,10 @@
     },
     "rascal_ii": {
       "name": {
-        "value": "Rascal II",
+        "value": "Раскал II",
         "originalEn": "Rascal II"
       },
-      "description": "Fires explosive projectiles that only detonate when hitting ARC.",
+      "description": "Стреляет взрывными снарядами, которые взрываются только при попадании в ARC.",
       "type": "Special",
       "rarity": "Rare",
       "stackSize": 1,
@@ -23022,10 +23123,10 @@
     },
     "rascal_iii": {
       "name": {
-        "value": "Rascal III",
+        "value": "Раскал III",
         "originalEn": "Rascal III"
       },
-      "description": "Fires explosive projectiles that only detonate when hitting ARC.",
+      "description": "Стреляет взрывными снарядами, которые взрываются только при попадании в ARC.",
       "type": "Special",
       "rarity": "Rare",
       "stackSize": 1,
@@ -23051,10 +23152,10 @@
     },
     "rascal_iv": {
       "name": {
-        "value": "Rascal IV",
+        "value": "Раскал IV",
         "originalEn": "Rascal IV"
       },
-      "description": "Fires explosive projectiles that only detonate when hitting ARC.",
+      "description": "Стреляет взрывными снарядами, которые взрываются только при попадании в ARC.",
       "type": "Special",
       "rarity": "Rare",
       "stackSize": 1,
@@ -26026,6 +26127,21 @@
       "updatedAt": "10/30/2025",
       "addedIn": "base"
     },
+    "sextant": {
+      "name": {
+        "value": "Секстант",
+        "originalEn": "Sextant"
+      },
+      "description": "Когда-то его считали примитивным прототипом космического корабля, но Кочевники утверждают, что это изощренный способ документировать свои путешествия.",
+      "type": "Trinket",
+      "rarity": "Uncommon",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 2000,
+      "imageFilename": "https://cdn.arctracker.io/items/v2/sextant.png",
+      "updatedAt": "06/17/2026",
+      "addedIn": "1.33"
+    },
     "shaker": {
       "name": {
         "value": "Шейкер",
@@ -27087,12 +27203,12 @@
       "description": "Когда средиземноморское солнце играет на её корпусе, эта яркая яхта — вневременное воплощение солёного великолепия.",
       "type": "Trinket",
       "rarity": "Epic",
-      "stackSize": 1,
+      "stackSize": 3,
       "craftQuantity": 1,
       "value": 7000,
       "weightKg": 0.5,
       "imageFilename": "https://cdn.arctracker.io/items/v2/sirena_dorata_ship_model.png",
-      "updatedAt": "04/28/2026",
+      "updatedAt": "06/17/2026",
       "addedIn": "1.26"
     },
     "smoke_grenade": {
@@ -30406,6 +30522,21 @@
       "updatedAt": "01/09/2026",
       "addedIn": "1.2"
     },
+    "tellurion": {
+      "name": {
+        "value": "Теллурион",
+        "originalEn": "Tellurion"
+      },
+      "description": "Чудо древней изобретательности; тем, кто любит смотреть на звезды, эти завораживающие узоры могут показаться странно знакомыми.",
+      "type": "Trinket",
+      "rarity": "Epic",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 7000,
+      "imageFilename": "https://cdn.arctracker.io/items/v2/tellurion.png",
+      "updatedAt": "06/17/2026",
+      "addedIn": "1.33"
+    },
     "tempest_blueprint": {
       "name": {
         "value": "Чертеж — Буря",
@@ -32340,6 +32471,21 @@
       "updatedAt": "01/13/2026",
       "addedIn": "1.2"
     },
+    "train_model": {
+      "name": {
+        "value": "Модель поезда",
+        "originalEn": "Train Model"
+      },
+      "description": "Сделанные вручную с полной проработкой днища, эти модели предлагают удивительно сложную схему передвижения времен до Exodus.",
+      "type": "Trinket",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 1000,
+      "imageFilename": "https://cdn.arctracker.io/items/v2/train_model.png",
+      "updatedAt": "06/17/2026",
+      "addedIn": "1.33"
+    },
     "trigger_nade": {
       "name": {
         "value": "Управляемая граната",
@@ -32506,12 +32652,12 @@
       "description": "Энергичный новичок на подъёме, этот двухмачтовик известен тем, что заплывает чуть-чуть за горизонт.",
       "type": "Trinket",
       "rarity": "Uncommon",
-      "stackSize": 1,
+      "stackSize": 5,
       "craftQuantity": 1,
       "value": 1000,
       "weightKg": 0.5,
       "imageFilename": "https://cdn.arctracker.io/items/v2/twilight_compass_ship_model.png",
-      "updatedAt": "04/28/2026",
+      "updatedAt": "06/17/2026",
       "addedIn": "1.26"
     },
     "unusable_weapon": {
@@ -32586,12 +32732,12 @@
       "description": "Оптимизированное для скорости, это чудо техники очень надеется, что вы не планировали взять с собой особенно изысканный обед.",
       "type": "Trinket",
       "rarity": "Rare",
-      "stackSize": 1,
+      "stackSize": 3,
       "craftQuantity": 1,
       "value": 3000,
       "weightKg": 0.5,
       "imageFilename": "https://cdn.arctracker.io/items/v2/velocity_ship_model.png",
-      "updatedAt": "04/28/2026",
+      "updatedAt": "06/17/2026",
       "addedIn": "1.26"
     },
     "venator_blueprint": {
@@ -33769,6 +33915,21 @@
       "foundIn": "Residential, Commercial",
       "updatedAt": "01/13/2026",
       "addedIn": "base"
+    },
+    "vintage_steering_wheel": {
+      "name": {
+        "value": "Винтажный руль",
+        "originalEn": "Vintage Steering Wheel"
+      },
+      "description": "Гармоничный артефакт трехсторонней симметрии; некоторые Кочевники считают, что это древний реликварий, почитающий лунное, солнечное и земное.",
+      "type": "Trinket",
+      "rarity": "Uncommon",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 2000,
+      "imageFilename": "https://cdn.arctracker.io/items/v2/vintage_steering_wheel.png",
+      "updatedAt": "06/17/2026",
+      "addedIn": "1.33"
     },
     "vita_shot": {
       "name": {
@@ -35185,12 +35346,12 @@
       "description": "Непоколебимый перед лицом своих более крупных собратьев, этот проворный одномачтовик известен тем, что бросает вызов даже самым чуть-выше-среднего волнам.",
       "type": "Trinket",
       "rarity": "Common",
-      "stackSize": 1,
+      "stackSize": 10,
       "craftQuantity": 1,
       "value": 1000,
       "weightKg": 0.5,
       "imageFilename": "https://cdn.arctracker.io/items/v2/wind_sprite_ship_model.png",
-      "updatedAt": "04/28/2026",
+      "updatedAt": "06/17/2026",
       "addedIn": "1.26"
     },
     "wires": {

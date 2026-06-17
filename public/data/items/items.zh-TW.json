@@ -7543,6 +7543,51 @@
       "updatedAt": "02/24/2026",
       "addedIn": "base"
     },
+    "colorful_shoes_green": {
+      "name": {
+        "value": "彩色鞋（綠色）",
+        "originalEn": "Colorful Shoes (Green)"
+      },
+      "description": "這雙專用鞋履飾有鮮豔的儀式圖案，旨在將穿戴者錨定於地面。據說它曾屬於聲名顯赫的古代旅人。",
+      "type": "Trinket",
+      "rarity": "Epic",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 7000,
+      "imageFilename": "https://cdn.arctracker.io/items/v2/colorful_shoes_green.png",
+      "updatedAt": "06/17/2026",
+      "addedIn": "1.33"
+    },
+    "colorful_shoes_red": {
+      "name": {
+        "value": "彩色鞋（紅色）",
+        "originalEn": "Colorful Shoes (Red)"
+      },
+      "description": "這雙專用鞋履飾有鮮豔的儀式圖案，旨在將穿戴者錨定於地面。據說它曾屬於聲名顯赫的古代旅人。",
+      "type": "Trinket",
+      "rarity": "Rare",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 3000,
+      "imageFilename": "https://cdn.arctracker.io/items/v2/colorful_shoes_red.png",
+      "updatedAt": "06/17/2026",
+      "addedIn": "1.33"
+    },
+    "colorful_shoes_silver": {
+      "name": {
+        "value": "彩色鞋（銀色）",
+        "originalEn": "Colorful Shoes (Silver)"
+      },
+      "description": "這雙專用鞋履飾有鮮豔的儀式圖案，旨在將穿戴者錨定於地面。據說它曾屬於聲名顯赫的古代旅人。",
+      "type": "Trinket",
+      "rarity": "Legendary",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 10000,
+      "imageFilename": "https://cdn.arctracker.io/items/v2/colorful_shoes_silver.png",
+      "updatedAt": "06/17/2026",
+      "addedIn": "1.33"
+    },
     "combat_mk1": {
       "name": {
         "value": "戰鬥型 Mk. 1",
@@ -9528,6 +9573,32 @@
       "value": 1000,
       "weightKg": 1,
       "imageFilename": "https://cdn.arctracker.io/items/v2/dockmasters_detector.png",
+      "repairDurability": 0.5,
+      "effects": {
+        "Durability": {
+          "value": "100/100",
+          "da": "Holdbarhed",
+          "de": "Haltbarkeit",
+          "en": "Durability",
+          "es": "Durabilidad",
+          "fr": "Durabilité",
+          "he": "עמידות",
+          "hr": "Izdržljivost",
+          "it": "Tenuta",
+          "ja": "耐久性",
+          "ko-KR": "내구도",
+          "no": "Holdbarhet",
+          "pl": "Wytrzymałość",
+          "pt": "Durabilidade",
+          "pt-BR": "Durabilidade",
+          "ru": "Прочность",
+          "sr": "Izdržljivost",
+          "tr": "Dayanıklılık",
+          "uk": "Міцність",
+          "zh-CN": "耐久度",
+          "zh-TW": "耐久度"
+        }
+      },
       "updatedAt": "04/28/2026",
       "addedIn": "1.26"
     },
@@ -9806,6 +9877,21 @@
       "updatedAt": "03/17/2026",
       "addedIn": "base"
     },
+    "elephant_obelisk": {
+      "name": {
+        "value": "大象方尖碑",
+        "originalEn": "Elephant Obelisk"
+      },
+      "description": "這是遊牧民格外著迷的物件；有人相信這些傳奇馱獸曾將發射塔運到位。",
+      "type": "Trinket",
+      "rarity": "Legendary",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 10000,
+      "imageFilename": "https://cdn.arctracker.io/items/v2/elephant_obelisk.png",
+      "updatedAt": "06/17/2026",
+      "addedIn": "1.33"
+    },
     "empty_wine_bottle": {
       "name": {
         "value": "空酒瓶",
@@ -10000,6 +10086,21 @@
       "imageFilename": "https://cdn.arctracker.io/items/v2/equalizer_blueprint.png",
       "updatedAt": "01/13/2026",
       "addedIn": "base"
+    },
+    "equatorial_sundial": {
+      "name": {
+        "value": "赤道日晷",
+        "originalEn": "Equatorial Sundial"
+      },
+      "description": "古老巧思的奇蹟；喜愛觀星的人或許會覺得這些迷人的圖案異常熟悉。",
+      "type": "Trinket",
+      "rarity": "Rare",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 3000,
+      "imageFilename": "https://cdn.arctracker.io/items/v2/equatorial_sundial.png",
+      "updatedAt": "06/17/2026",
+      "addedIn": "1.33"
     },
     "espresso_machine_parts": {
       "name": {
@@ -22828,10 +22929,10 @@
     },
     "rascal_blueprint": {
       "name": {
-        "value": "Rascal Blueprint",
+        "value": "無賴藍圖",
         "originalEn": "Rascal Blueprint"
       },
-      "description": "Fires explosive projectiles that only detonate when hitting ARC.",
+      "description": "可發射爆炸式射彈，僅當命中ARC時，射彈才會引爆。",
       "type": "Blueprint",
       "rarity": "Common",
       "stackSize": 1,
@@ -22844,10 +22945,10 @@
     },
     "rascal_i": {
       "name": {
-        "value": "Rascal I",
+        "value": "無賴 I",
         "originalEn": "Rascal I"
       },
-      "description": "Fires explosive projectiles that only detonate when hitting ARC.",
+      "description": "可發射爆炸式射彈，僅當命中ARC時，射彈才會引爆。",
       "type": "Special",
       "rarity": "Rare",
       "stackSize": 1,
@@ -22993,10 +23094,10 @@
     },
     "rascal_ii": {
       "name": {
-        "value": "Rascal II",
+        "value": "無賴 II",
         "originalEn": "Rascal II"
       },
-      "description": "Fires explosive projectiles that only detonate when hitting ARC.",
+      "description": "可發射爆炸式射彈，僅當命中ARC時，射彈才會引爆。",
       "type": "Special",
       "rarity": "Rare",
       "stackSize": 1,
@@ -23022,10 +23123,10 @@
     },
     "rascal_iii": {
       "name": {
-        "value": "Rascal III",
+        "value": "無賴 III",
         "originalEn": "Rascal III"
       },
-      "description": "Fires explosive projectiles that only detonate when hitting ARC.",
+      "description": "可發射爆炸式射彈，僅當命中ARC時，射彈才會引爆。",
       "type": "Special",
       "rarity": "Rare",
       "stackSize": 1,
@@ -23051,10 +23152,10 @@
     },
     "rascal_iv": {
       "name": {
-        "value": "Rascal IV",
+        "value": "無賴 IV",
         "originalEn": "Rascal IV"
       },
-      "description": "Fires explosive projectiles that only detonate when hitting ARC.",
+      "description": "可發射爆炸式射彈，僅當命中ARC時，射彈才會引爆。",
       "type": "Special",
       "rarity": "Rare",
       "stackSize": 1,
@@ -26026,6 +26127,21 @@
       "updatedAt": "10/30/2025",
       "addedIn": "base"
     },
+    "sextant": {
+      "name": {
+        "value": "六分儀",
+        "originalEn": "Sextant"
+      },
+      "description": "它曾被認為是粗略的太空船原型，但遊牧民聲稱這是一種記錄個人旅程的精巧方法。",
+      "type": "Trinket",
+      "rarity": "Uncommon",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 2000,
+      "imageFilename": "https://cdn.arctracker.io/items/v2/sextant.png",
+      "updatedAt": "06/17/2026",
+      "addedIn": "1.33"
+    },
     "shaker": {
       "name": {
         "value": "沙鈴",
@@ -27087,12 +27203,12 @@
       "description": "地中海的陽光在船身上閃爍，這艘鮮豔的遊艇是鹹水奢華永恆的典範。",
       "type": "Trinket",
       "rarity": "Epic",
-      "stackSize": 1,
+      "stackSize": 3,
       "craftQuantity": 1,
       "value": 7000,
       "weightKg": 0.5,
       "imageFilename": "https://cdn.arctracker.io/items/v2/sirena_dorata_ship_model.png",
-      "updatedAt": "04/28/2026",
+      "updatedAt": "06/17/2026",
       "addedIn": "1.26"
     },
     "smoke_grenade": {
@@ -30406,6 +30522,21 @@
       "updatedAt": "01/09/2026",
       "addedIn": "1.2"
     },
+    "tellurion": {
+      "name": {
+        "value": "特魯里儀",
+        "originalEn": "Tellurion"
+      },
+      "description": "古老巧思的奇蹟；喜愛觀星的人或許會覺得這些迷人的圖案異常熟悉。",
+      "type": "Trinket",
+      "rarity": "Epic",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 7000,
+      "imageFilename": "https://cdn.arctracker.io/items/v2/tellurion.png",
+      "updatedAt": "06/17/2026",
+      "addedIn": "1.33"
+    },
     "tempest_blueprint": {
       "name": {
         "value": "暴風 藍圖",
@@ -32340,6 +32471,21 @@
       "updatedAt": "01/13/2026",
       "addedIn": "1.2"
     },
+    "train_model": {
+      "name": {
+        "value": "火車模型",
+        "originalEn": "Train Model"
+      },
+      "description": "這些手工製作的模型連底盤細節都一應俱全，呈現出一幅關於 Exodus 之前機車運行的驚人複雜示意圖。",
+      "type": "Trinket",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 1000,
+      "imageFilename": "https://cdn.arctracker.io/items/v2/train_model.png",
+      "updatedAt": "06/17/2026",
+      "addedIn": "1.33"
+    },
     "trigger_nade": {
       "name": {
         "value": "遙控手榴彈",
@@ -32506,12 +32652,12 @@
       "description": "這艘充滿活力的雙桅新秀，以揚帆駛到地平線之外那麼一點點而聞名。",
       "type": "Trinket",
       "rarity": "Uncommon",
-      "stackSize": 1,
+      "stackSize": 5,
       "craftQuantity": 1,
       "value": 1000,
       "weightKg": 0.5,
       "imageFilename": "https://cdn.arctracker.io/items/v2/twilight_compass_ship_model.png",
-      "updatedAt": "04/28/2026",
+      "updatedAt": "06/17/2026",
       "addedIn": "1.26"
     },
     "unusable_weapon": {
@@ -32586,12 +32732,12 @@
       "description": "為追求性能而優化，這件科技奇蹟真心希望你沒打算帶上一頓特別精緻的午餐。",
       "type": "Trinket",
       "rarity": "Rare",
-      "stackSize": 1,
+      "stackSize": 3,
       "craftQuantity": 1,
       "value": 3000,
       "weightKg": 0.5,
       "imageFilename": "https://cdn.arctracker.io/items/v2/velocity_ship_model.png",
-      "updatedAt": "04/28/2026",
+      "updatedAt": "06/17/2026",
       "addedIn": "1.26"
     },
     "venator_blueprint": {
@@ -33769,6 +33915,21 @@
       "foundIn": "Residential, Commercial",
       "updatedAt": "01/13/2026",
       "addedIn": "base"
+    },
+    "vintage_steering_wheel": {
+      "name": {
+        "value": "復古方向盤",
+        "originalEn": "Vintage Steering Wheel"
+      },
+      "description": "一件具有三向對稱的和諧造物；一些遊牧民相信它是古代聖物匣，用來禮敬月、日與大地。",
+      "type": "Trinket",
+      "rarity": "Uncommon",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 2000,
+      "imageFilename": "https://cdn.arctracker.io/items/v2/vintage_steering_wheel.png",
+      "updatedAt": "06/17/2026",
+      "addedIn": "1.33"
     },
     "vita_shot": {
       "name": {
@@ -35185,12 +35346,12 @@
       "description": "面對更大的同胞毫不退縮，這艘靈活的單桅帆船以敢於挑戰哪怕只是略高於平均水平的海浪而聞名。",
       "type": "Trinket",
       "rarity": "Common",
-      "stackSize": 1,
+      "stackSize": 10,
       "craftQuantity": 1,
       "value": 1000,
       "weightKg": 0.5,
       "imageFilename": "https://cdn.arctracker.io/items/v2/wind_sprite_ship_model.png",
-      "updatedAt": "04/28/2026",
+      "updatedAt": "06/17/2026",
       "addedIn": "1.26"
     },
     "wires": {

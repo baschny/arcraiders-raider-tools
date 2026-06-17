@@ -7543,6 +7543,51 @@
       "updatedAt": "02/24/2026",
       "addedIn": "base"
     },
+    "colorful_shoes_green": {
+      "name": {
+        "value": "彩色鞋（绿色）",
+        "originalEn": "Colorful Shoes (Green)"
+      },
+      "description": "这双专用鞋履饰有鲜艳的仪式图案，旨在将穿戴者锚定于地面。据说它曾属于声名显赫的古代旅人。",
+      "type": "Trinket",
+      "rarity": "Epic",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 7000,
+      "imageFilename": "https://cdn.arctracker.io/items/v2/colorful_shoes_green.png",
+      "updatedAt": "06/17/2026",
+      "addedIn": "1.33"
+    },
+    "colorful_shoes_red": {
+      "name": {
+        "value": "彩色鞋（红色）",
+        "originalEn": "Colorful Shoes (Red)"
+      },
+      "description": "这双专用鞋履饰有鲜艳的仪式图案，旨在将穿戴者锚定于地面。据说它曾属于声名显赫的古代旅人。",
+      "type": "Trinket",
+      "rarity": "Rare",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 3000,
+      "imageFilename": "https://cdn.arctracker.io/items/v2/colorful_shoes_red.png",
+      "updatedAt": "06/17/2026",
+      "addedIn": "1.33"
+    },
+    "colorful_shoes_silver": {
+      "name": {
+        "value": "彩色鞋（银色）",
+        "originalEn": "Colorful Shoes (Silver)"
+      },
+      "description": "这双专用鞋履饰有鲜艳的仪式图案，旨在将穿戴者锚定于地面。据说它曾属于声名显赫的古代旅人。",
+      "type": "Trinket",
+      "rarity": "Legendary",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 10000,
+      "imageFilename": "https://cdn.arctracker.io/items/v2/colorful_shoes_silver.png",
+      "updatedAt": "06/17/2026",
+      "addedIn": "1.33"
+    },
     "combat_mk1": {
       "name": {
         "value": "战斗 Mk. 1",
@@ -9528,6 +9573,32 @@
       "value": 1000,
       "weightKg": 1,
       "imageFilename": "https://cdn.arctracker.io/items/v2/dockmasters_detector.png",
+      "repairDurability": 0.5,
+      "effects": {
+        "Durability": {
+          "value": "100/100",
+          "da": "Holdbarhed",
+          "de": "Haltbarkeit",
+          "en": "Durability",
+          "es": "Durabilidad",
+          "fr": "Durabilité",
+          "he": "עמידות",
+          "hr": "Izdržljivost",
+          "it": "Tenuta",
+          "ja": "耐久性",
+          "ko-KR": "내구도",
+          "no": "Holdbarhet",
+          "pl": "Wytrzymałość",
+          "pt": "Durabilidade",
+          "pt-BR": "Durabilidade",
+          "ru": "Прочность",
+          "sr": "Izdržljivost",
+          "tr": "Dayanıklılık",
+          "uk": "Міцність",
+          "zh-CN": "耐久度",
+          "zh-TW": "耐久度"
+        }
+      },
       "updatedAt": "04/28/2026",
       "addedIn": "1.26"
     },
@@ -9806,6 +9877,21 @@
       "updatedAt": "03/17/2026",
       "addedIn": "base"
     },
+    "elephant_obelisk": {
+      "name": {
+        "value": "大象方尖碑",
+        "originalEn": "Elephant Obelisk"
+      },
+      "description": "这是游牧民格外痴迷的物件；有人相信这些传奇驮兽曾将发射塔运到位。",
+      "type": "Trinket",
+      "rarity": "Legendary",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 10000,
+      "imageFilename": "https://cdn.arctracker.io/items/v2/elephant_obelisk.png",
+      "updatedAt": "06/17/2026",
+      "addedIn": "1.33"
+    },
     "empty_wine_bottle": {
       "name": {
         "value": "空酒瓶",
@@ -10000,6 +10086,21 @@
       "imageFilename": "https://cdn.arctracker.io/items/v2/equalizer_blueprint.png",
       "updatedAt": "01/13/2026",
       "addedIn": "base"
+    },
+    "equatorial_sundial": {
+      "name": {
+        "value": "赤道日晷",
+        "originalEn": "Equatorial Sundial"
+      },
+      "description": "古老巧思的奇迹；钟爱观星的人或许会觉得这些迷人的图案异常熟悉。",
+      "type": "Trinket",
+      "rarity": "Rare",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 3000,
+      "imageFilename": "https://cdn.arctracker.io/items/v2/equatorial_sundial.png",
+      "updatedAt": "06/17/2026",
+      "addedIn": "1.33"
     },
     "espresso_machine_parts": {
       "name": {
@@ -26026,6 +26127,21 @@
       "updatedAt": "10/30/2025",
       "addedIn": "base"
     },
+    "sextant": {
+      "name": {
+        "value": "六分仪",
+        "originalEn": "Sextant"
+      },
+      "description": "它曾被认为是简陋的宇宙飞船原型，但游牧民声称这是一种记录个人旅程的精巧方法。",
+      "type": "Trinket",
+      "rarity": "Uncommon",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 2000,
+      "imageFilename": "https://cdn.arctracker.io/items/v2/sextant.png",
+      "updatedAt": "06/17/2026",
+      "addedIn": "1.33"
+    },
     "shaker": {
       "name": {
         "value": "摇铃",
@@ -27087,12 +27203,12 @@
       "description": "地中海阳光洒在船身熠熠生辉，这艘明艳游艇是海上风华的永恒典范。",
       "type": "Trinket",
       "rarity": "Epic",
-      "stackSize": 1,
+      "stackSize": 3,
       "craftQuantity": 1,
       "value": 7000,
       "weightKg": 0.5,
       "imageFilename": "https://cdn.arctracker.io/items/v2/sirena_dorata_ship_model.png",
-      "updatedAt": "04/28/2026",
+      "updatedAt": "06/17/2026",
       "addedIn": "1.26"
     },
     "smoke_grenade": {
@@ -30406,6 +30522,21 @@
       "updatedAt": "01/09/2026",
       "addedIn": "1.2"
     },
+    "tellurion": {
+      "name": {
+        "value": "特鲁里仪",
+        "originalEn": "Tellurion"
+      },
+      "description": "古老巧思的奇迹；钟爱观星的人或许会觉得这些迷人的图案异常熟悉。",
+      "type": "Trinket",
+      "rarity": "Epic",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 7000,
+      "imageFilename": "https://cdn.arctracker.io/items/v2/tellurion.png",
+      "updatedAt": "06/17/2026",
+      "addedIn": "1.33"
+    },
     "tempest_blueprint": {
       "name": {
         "value": "风暴蓝图",
@@ -32340,6 +32471,21 @@
       "updatedAt": "01/13/2026",
       "addedIn": "1.2"
     },
+    "train_model": {
+      "name": {
+        "value": "火车模型",
+        "originalEn": "Train Model"
+      },
+      "description": "这些手工制作的模型连底盘细节都一应俱全，呈现出一幅关于 Exodus 之前机车运行的惊人复杂示意图。",
+      "type": "Trinket",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 1000,
+      "imageFilename": "https://cdn.arctracker.io/items/v2/train_model.png",
+      "updatedAt": "06/17/2026",
+      "addedIn": "1.33"
+    },
     "trigger_nade": {
       "name": {
         "value": "触发式手雷",
@@ -32506,12 +32652,12 @@
       "description": "作为意气风发的后起之秀，这艘双桅杆船总能稍稍驶出海平线之外。",
       "type": "Trinket",
       "rarity": "Uncommon",
-      "stackSize": 1,
+      "stackSize": 5,
       "craftQuantity": 1,
       "value": 1000,
       "weightKg": 0.5,
       "imageFilename": "https://cdn.arctracker.io/items/v2/twilight_compass_ship_model.png",
-      "updatedAt": "04/28/2026",
+      "updatedAt": "06/17/2026",
       "addedIn": "1.26"
     },
     "unusable_weapon": {
@@ -32586,12 +32732,12 @@
       "description": "这台科技杰只为性能极致而造，显然不希望你在上头享用什么精致午餐。",
       "type": "Trinket",
       "rarity": "Rare",
-      "stackSize": 1,
+      "stackSize": 3,
       "craftQuantity": 1,
       "value": 3000,
       "weightKg": 0.5,
       "imageFilename": "https://cdn.arctracker.io/items/v2/velocity_ship_model.png",
-      "updatedAt": "04/28/2026",
+      "updatedAt": "06/17/2026",
       "addedIn": "1.26"
     },
     "venator_blueprint": {
@@ -33769,6 +33915,21 @@
       "foundIn": "Residential, Commercial",
       "updatedAt": "01/13/2026",
       "addedIn": "base"
+    },
+    "vintage_steering_wheel": {
+      "name": {
+        "value": "复古方向盘",
+        "originalEn": "Vintage Steering Wheel"
+      },
+      "description": "一件具有三向对称的和谐造物；一些游牧民相信它是古代圣物匣，用来礼敬月、日与大地。",
+      "type": "Trinket",
+      "rarity": "Uncommon",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 2000,
+      "imageFilename": "https://cdn.arctracker.io/items/v2/vintage_steering_wheel.png",
+      "updatedAt": "06/17/2026",
+      "addedIn": "1.33"
     },
     "vita_shot": {
       "name": {
@@ -35185,12 +35346,12 @@
       "description": "这艘灵活的单桅船，在面对体型更大的舰船时毫不畏惧，略高于平均高度的浪涛更是不放在眼里。",
       "type": "Trinket",
       "rarity": "Common",
-      "stackSize": 1,
+      "stackSize": 10,
       "craftQuantity": 1,
       "value": 1000,
       "weightKg": 0.5,
       "imageFilename": "https://cdn.arctracker.io/items/v2/wind_sprite_ship_model.png",
-      "updatedAt": "04/28/2026",
+      "updatedAt": "06/17/2026",
       "addedIn": "1.26"
     },
     "wires": {

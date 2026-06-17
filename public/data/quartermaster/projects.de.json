@@ -517,132 +517,13 @@
     ]
   },
   {
-    "id": "avian_alarm_project",
-    "name": {
-      "value": "Vogelalarm",
-      "originalEn": "Avian Alarm"
-    },
-    "startDate": 1776157200,
-    "endDate": 1779786000,
-    "phases": [
-      {
-        "name": {
-          "value": "Anfangszahl der Tiere",
-          "originalEn": "Initial Flock Intake"
-        },
-        "index": 1,
-        "requirementItemIds": []
-      },
-      {
-        "name": {
-          "value": "Frühalarmvögel",
-          "originalEn": "Preliminary Signal Birds"
-        },
-        "index": 2,
-        "requirementItemIds": [
-          {
-            "itemId": "tick_pod",
-            "quantity": 7
-          },
-          {
-            "itemId": "canister",
-            "quantity": 20
-          },
-          {
-            "itemId": "moss",
-            "quantity": 12
-          },
-          {
-            "itemId": "twilight_compass_ship_model",
-            "quantity": 5
-          }
-        ]
-      },
-      {
-        "name": {
-          "value": "Bestätigungsalarmvögel",
-          "originalEn": "Secondary Validation Birds"
-        },
-        "index": 3,
-        "requirementItemIds": [
-          {
-            "itemId": "comet_igniter",
-            "quantity": 3
-          },
-          {
-            "itemId": "fertilizer",
-            "quantity": 10
-          },
-          {
-            "itemId": "rusted_tools",
-            "quantity": 8
-          },
-          {
-            "itemId": "velocity_ship_model",
-            "quantity": 5
-          }
-        ]
-      },
-      {
-        "name": {
-          "value": "Aufmerksame Alarmvögel",
-          "originalEn": "Heightened Alert Birds"
-        },
-        "index": 4,
-        "requirementItemIds": [
-          {
-            "itemId": "vaporizer_regulator",
-            "quantity": 1
-          },
-          {
-            "itemId": "water_filter",
-            "quantity": 3
-          },
-          {
-            "itemId": "agave",
-            "quantity": 8
-          },
-          {
-            "itemId": "sirena_dorata_ship_model",
-            "quantity": 5
-          }
-        ]
-      },
-      {
-        "name": {
-          "value": "Warnungsvögel",
-          "originalEn": "Critical Warning Birds"
-        },
-        "index": 5,
-        "requirementItemIds": [
-          {
-            "itemId": "turbine_compressor",
-            "quantity": 2
-          },
-          {
-            "itemId": "red_coral_jewelry",
-            "quantity": 3
-          },
-          {
-            "itemId": "roots",
-            "quantity": 4
-          },
-          {
-            "itemId": "leviathans_crown_ship_model",
-            "quantity": 1
-          }
-        ]
-      }
-    ]
-  },
-  {
     "id": "expedition_project_s4",
     "name": {
       "value": "Expedition 4",
       "originalEn": "Expedition 4"
     },
     "startDate": 1777449600,
-    "endDate": 1782111600,
+    "endDate": 1783411200,
     "phases": [
       {
         "name": {
@@ -756,6 +637,133 @@
         "name": {
           "value": "Abreise",
           "originalEn": "Departure"
+        },
+        "index": 6,
+        "requirementItemIds": []
+      }
+    ]
+  },
+  {
+    "id": "converging_paths_project",
+    "name": {
+      "value": "Sich kreuzende Wege",
+      "originalEn": "Converging Paths"
+    },
+    "startDate": 1778497200,
+    "endDate": 1785225600,
+    "phases": [
+      {
+        "name": {
+          "value": "Sorge für einen sicheren Durchgang für die Nomaden",
+          "originalEn": "Secure Safe Passage for the Nomads"
+        },
+        "index": 1,
+        "requirementItemIds": []
+      },
+      {
+        "name": {
+          "value": "Sammle Vorräte",
+          "originalEn": "Collect Supplies"
+        },
+        "index": 2,
+        "requirementItemIds": [
+          {
+            "itemId": "train_model",
+            "quantity": 3
+          },
+          {
+            "itemId": "vintage_steering_wheel",
+            "quantity": 2
+          },
+          {
+            "itemId": "air_freshener",
+            "quantity": 2
+          },
+          {
+            "itemId": "arc_thermo_lining",
+            "quantity": 6
+          }
+        ]
+      },
+      {
+        "name": {
+          "value": "Beschaffe Relikte",
+          "originalEn": "Procure Relics"
+        },
+        "index": 3,
+        "requirementItemIds": [
+          {
+            "itemId": "sextant",
+            "quantity": 4
+          },
+          {
+            "itemId": "equatorial_sundial",
+            "quantity": 3
+          },
+          {
+            "itemId": "metal_brackets",
+            "quantity": 5
+          },
+          {
+            "itemId": "arc_performance_steel",
+            "quantity": 7
+          }
+        ]
+      },
+      {
+        "name": {
+          "value": "Lege Notvorräte an",
+          "originalEn": "Create Emergency Caches"
+        },
+        "index": 4,
+        "requirementItemIds": [
+          {
+            "itemId": "tellurion",
+            "quantity": 3
+          },
+          {
+            "itemId": "elephant_obelisk",
+            "quantity": 1
+          },
+          {
+            "itemId": "light_bulb",
+            "quantity": 6
+          },
+          {
+            "itemId": "arc_coolant",
+            "quantity": 9
+          }
+        ]
+      },
+      {
+        "name": {
+          "value": "Stelle das Kuriositätenkabinett fertig",
+          "originalEn": "Finish the Cabinet of Curiosities"
+        },
+        "index": 5,
+        "requirementItemIds": [
+          {
+            "itemId": "colorful_shoes_rare",
+            "quantity": 6
+          },
+          {
+            "itemId": "colorful_shoes_epic",
+            "quantity": 3
+          },
+          {
+            "itemId": "colorful_shoes_legendary",
+            "quantity": 2
+          },
+          {
+            "itemId": "arc_synthetic_resin",
+            "quantity": 10
+          }
+        ]
+      },
+      {
+        "name": {
+          "value": "Setze Nomadentaktiken ein, um gegen ARC zu kämpfen",
+          "originalEn": "Use Nomad Tactics to Fight ARC"
         },
         "index": 6,
         "requirementItemIds": []

@@ -7543,6 +7543,51 @@
       "updatedAt": "02/24/2026",
       "addedIn": "base"
     },
+    "colorful_shoes_green": {
+      "name": {
+        "value": "Scarpe colorate (verdi)",
+        "originalEn": "Colorful Shoes (Green)"
+      },
+      "description": "Queste calzature specializzate sono adornate con vivaci motivi cerimoniali e progettate per ancorare chi le indossa al suolo. Si ritiene siano appartenute ad antichi viandanti di grande fama.",
+      "type": "Trinket",
+      "rarity": "Epic",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 7000,
+      "imageFilename": "https://cdn.arctracker.io/items/v2/colorful_shoes_green.png",
+      "updatedAt": "06/17/2026",
+      "addedIn": "1.33"
+    },
+    "colorful_shoes_red": {
+      "name": {
+        "value": "Scarpe colorate (rosse)",
+        "originalEn": "Colorful Shoes (Red)"
+      },
+      "description": "Queste calzature specializzate sono adornate con vivaci motivi cerimoniali e progettate per ancorare chi le indossa al suolo. Si ritiene siano appartenute ad antichi viandanti di grande fama.",
+      "type": "Trinket",
+      "rarity": "Rare",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 3000,
+      "imageFilename": "https://cdn.arctracker.io/items/v2/colorful_shoes_red.png",
+      "updatedAt": "06/17/2026",
+      "addedIn": "1.33"
+    },
+    "colorful_shoes_silver": {
+      "name": {
+        "value": "Scarpe colorate (argento)",
+        "originalEn": "Colorful Shoes (Silver)"
+      },
+      "description": "Queste calzature specializzate sono adornate con vivaci motivi cerimoniali e progettate per ancorare chi le indossa al suolo. Si ritiene siano appartenute ad antichi viandanti di grande fama.",
+      "type": "Trinket",
+      "rarity": "Legendary",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 10000,
+      "imageFilename": "https://cdn.arctracker.io/items/v2/colorful_shoes_silver.png",
+      "updatedAt": "06/17/2026",
+      "addedIn": "1.33"
+    },
     "combat_mk1": {
       "name": {
         "value": "Combattimento Mk. 1",
@@ -9528,6 +9573,32 @@
       "value": 1000,
       "weightKg": 1,
       "imageFilename": "https://cdn.arctracker.io/items/v2/dockmasters_detector.png",
+      "repairDurability": 0.5,
+      "effects": {
+        "Durability": {
+          "value": "100/100",
+          "da": "Holdbarhed",
+          "de": "Haltbarkeit",
+          "en": "Durability",
+          "es": "Durabilidad",
+          "fr": "Durabilité",
+          "he": "עמידות",
+          "hr": "Izdržljivost",
+          "it": "Tenuta",
+          "ja": "耐久性",
+          "ko-KR": "내구도",
+          "no": "Holdbarhet",
+          "pl": "Wytrzymałość",
+          "pt": "Durabilidade",
+          "pt-BR": "Durabilidade",
+          "ru": "Прочность",
+          "sr": "Izdržljivost",
+          "tr": "Dayanıklılık",
+          "uk": "Міцність",
+          "zh-CN": "耐久度",
+          "zh-TW": "耐久度"
+        }
+      },
       "updatedAt": "04/28/2026",
       "addedIn": "1.26"
     },
@@ -9806,6 +9877,21 @@
       "updatedAt": "03/17/2026",
       "addedIn": "base"
     },
+    "elephant_obelisk": {
+      "name": {
+        "value": "Obelisco elefante",
+        "originalEn": "Elephant Obelisk"
+      },
+      "description": "Oggetto di particolare fissazione nomade, secondo alcuni queste leggendarie bestie da soma portarono le Launch Towers al loro posto.",
+      "type": "Trinket",
+      "rarity": "Legendary",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 10000,
+      "imageFilename": "https://cdn.arctracker.io/items/v2/elephant_obelisk.png",
+      "updatedAt": "06/17/2026",
+      "addedIn": "1.33"
+    },
     "empty_wine_bottle": {
       "name": {
         "value": "Bottiglia di vino vuota",
@@ -10000,6 +10086,21 @@
       "imageFilename": "https://cdn.arctracker.io/items/v2/equalizer_blueprint.png",
       "updatedAt": "01/13/2026",
       "addedIn": "base"
+    },
+    "equatorial_sundial": {
+      "name": {
+        "value": "Meridiana equatoriale",
+        "originalEn": "Equatorial Sundial"
+      },
+      "description": "Una meraviglia dell'ingegno antico: chi ha un debole per l'osservazione delle stelle potrebbe trovare questi motivi ipnotici stranamente familiari.",
+      "type": "Trinket",
+      "rarity": "Rare",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 3000,
+      "imageFilename": "https://cdn.arctracker.io/items/v2/equatorial_sundial.png",
+      "updatedAt": "06/17/2026",
+      "addedIn": "1.33"
     },
     "espresso_machine_parts": {
       "name": {
@@ -22828,10 +22929,10 @@
     },
     "rascal_blueprint": {
       "name": {
-        "value": "Rascal Blueprint",
+        "value": "Disegno tecnico Rascal",
         "originalEn": "Rascal Blueprint"
       },
-      "description": "Fires explosive projectiles that only detonate when hitting ARC.",
+      "description": "Spara proiettili esplosivi che detonano solo colpendo ARC.",
       "type": "Blueprint",
       "rarity": "Common",
       "stackSize": 1,
@@ -22847,7 +22948,7 @@
         "value": "Rascal I",
         "originalEn": "Rascal I"
       },
-      "description": "Fires explosive projectiles that only detonate when hitting ARC.",
+      "description": "Spara proiettili esplosivi che detonano solo colpendo ARC.",
       "type": "Special",
       "rarity": "Rare",
       "stackSize": 1,
@@ -22996,7 +23097,7 @@
         "value": "Rascal II",
         "originalEn": "Rascal II"
       },
-      "description": "Fires explosive projectiles that only detonate when hitting ARC.",
+      "description": "Spara proiettili esplosivi che detonano solo colpendo ARC.",
       "type": "Special",
       "rarity": "Rare",
       "stackSize": 1,
@@ -23025,7 +23126,7 @@
         "value": "Rascal III",
         "originalEn": "Rascal III"
       },
-      "description": "Fires explosive projectiles that only detonate when hitting ARC.",
+      "description": "Spara proiettili esplosivi che detonano solo colpendo ARC.",
       "type": "Special",
       "rarity": "Rare",
       "stackSize": 1,
@@ -23054,7 +23155,7 @@
         "value": "Rascal IV",
         "originalEn": "Rascal IV"
       },
-      "description": "Fires explosive projectiles that only detonate when hitting ARC.",
+      "description": "Spara proiettili esplosivi che detonano solo colpendo ARC.",
       "type": "Special",
       "rarity": "Rare",
       "stackSize": 1,
@@ -26026,6 +26127,21 @@
       "updatedAt": "10/30/2025",
       "addedIn": "base"
     },
+    "sextant": {
+      "name": {
+        "value": "Sestante",
+        "originalEn": "Sextant"
+      },
+      "description": "Un tempo ritenuto un rudimentale prototipo di astronave, secondo i Nomadi è invece un metodo sofisticato per documentare i propri viaggi.",
+      "type": "Trinket",
+      "rarity": "Uncommon",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 2000,
+      "imageFilename": "https://cdn.arctracker.io/items/v2/sextant.png",
+      "updatedAt": "06/17/2026",
+      "addedIn": "1.33"
+    },
     "shaker": {
       "name": {
         "value": "Shaker",
@@ -27087,12 +27203,12 @@
       "description": "Con il sole mediterraneo che brilla sul suo scafo, questo vivace yacht è l'incarnazione senza tempo dello splendore delle acque salate.",
       "type": "Trinket",
       "rarity": "Epic",
-      "stackSize": 1,
+      "stackSize": 3,
       "craftQuantity": 1,
       "value": 7000,
       "weightKg": 0.5,
       "imageFilename": "https://cdn.arctracker.io/items/v2/sirena_dorata_ship_model.png",
-      "updatedAt": "04/28/2026",
+      "updatedAt": "06/17/2026",
       "addedIn": "1.26"
     },
     "smoke_grenade": {
@@ -30406,6 +30522,21 @@
       "updatedAt": "01/09/2026",
       "addedIn": "1.2"
     },
+    "tellurion": {
+      "name": {
+        "value": "Tellurion",
+        "originalEn": "Tellurion"
+      },
+      "description": "Una meraviglia dell'ingegno antico: chi ha un debole per l'osservazione delle stelle potrebbe trovare questi motivi ipnotici stranamente familiari.",
+      "type": "Trinket",
+      "rarity": "Epic",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 7000,
+      "imageFilename": "https://cdn.arctracker.io/items/v2/tellurion.png",
+      "updatedAt": "06/17/2026",
+      "addedIn": "1.33"
+    },
     "tempest_blueprint": {
       "name": {
         "value": "Progetto Tempesta",
@@ -32340,6 +32471,21 @@
       "updatedAt": "01/13/2026",
       "addedIn": "1.2"
     },
+    "train_model": {
+      "name": {
+        "value": "Modellino di treno",
+        "originalEn": "Train Model"
+      },
+      "description": "Realizzati a mano con dettagli completi del sottoscocca, questi modelli offrono uno schema sorprendentemente intricato della locomozione precedente all'Exodus.",
+      "type": "Trinket",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 1000,
+      "imageFilename": "https://cdn.arctracker.io/items/v2/train_model.png",
+      "updatedAt": "06/17/2026",
+      "addedIn": "1.33"
+    },
     "trigger_nade": {
       "name": {
         "value": "Granata a innesco",
@@ -32506,12 +32652,12 @@
       "description": "Un promettente pieno di vigore, questo bialbero è noto per navigare appena un po' oltre l'orizzonte.",
       "type": "Trinket",
       "rarity": "Uncommon",
-      "stackSize": 1,
+      "stackSize": 5,
       "craftQuantity": 1,
       "value": 1000,
       "weightKg": 0.5,
       "imageFilename": "https://cdn.arctracker.io/items/v2/twilight_compass_ship_model.png",
-      "updatedAt": "04/28/2026",
+      "updatedAt": "06/17/2026",
       "addedIn": "1.26"
     },
     "unusable_weapon": {
@@ -32586,12 +32732,12 @@
       "description": "Ottimizzato per le prestazioni, questo prodigio tecnologico spera davvero che tu non avessi intenzione di portarti un pranzo particolarmente elaborato.",
       "type": "Trinket",
       "rarity": "Rare",
-      "stackSize": 1,
+      "stackSize": 3,
       "craftQuantity": 1,
       "value": 3000,
       "weightKg": 0.5,
       "imageFilename": "https://cdn.arctracker.io/items/v2/velocity_ship_model.png",
-      "updatedAt": "04/28/2026",
+      "updatedAt": "06/17/2026",
       "addedIn": "1.26"
     },
     "venator_blueprint": {
@@ -33769,6 +33915,21 @@
       "foundIn": "Residential, Commercial",
       "updatedAt": "01/13/2026",
       "addedIn": "base"
+    },
+    "vintage_steering_wheel": {
+      "name": {
+        "value": "Volante vintage",
+        "originalEn": "Vintage Steering Wheel"
+      },
+      "description": "Un armonioso manufatto a simmetria triplice: alcuni Nomadi credono che sia un antico reliquiario in onore del lunare, del solare e del terrestre.",
+      "type": "Trinket",
+      "rarity": "Uncommon",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 2000,
+      "imageFilename": "https://cdn.arctracker.io/items/v2/vintage_steering_wheel.png",
+      "updatedAt": "06/17/2026",
+      "addedIn": "1.33"
     },
     "vita_shot": {
       "name": {
@@ -35185,12 +35346,12 @@
       "description": "Imperterrito di fronte ai suoi fratelli più grandi, questo agile monoalbero è noto per affrontare anche le onde appena sopra la media.",
       "type": "Trinket",
       "rarity": "Common",
-      "stackSize": 1,
+      "stackSize": 10,
       "craftQuantity": 1,
       "value": 1000,
       "weightKg": 0.5,
       "imageFilename": "https://cdn.arctracker.io/items/v2/wind_sprite_ship_model.png",
-      "updatedAt": "04/28/2026",
+      "updatedAt": "06/17/2026",
       "addedIn": "1.26"
     },
     "wires": {

@@ -7543,6 +7543,51 @@
       "updatedAt": "02/24/2026",
       "addedIn": "base"
     },
+    "colorful_shoes_green": {
+      "name": {
+        "value": "알록달록한 신발 (녹색)",
+        "originalEn": "Colorful Shoes (Green)"
+      },
+      "description": "이 특수 신발은 선명한 의식용 문양으로 장식되어 있으며 착용자를 땅에 붙들어 두도록 설계되었습니다. 큰 명성을 지닌 고대 방랑자들의 것이었다고 여겨집니다.",
+      "type": "Trinket",
+      "rarity": "Epic",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 7000,
+      "imageFilename": "https://cdn.arctracker.io/items/v2/colorful_shoes_green.png",
+      "updatedAt": "06/17/2026",
+      "addedIn": "1.33"
+    },
+    "colorful_shoes_red": {
+      "name": {
+        "value": "알록달록한 신발 (빨간색)",
+        "originalEn": "Colorful Shoes (Red)"
+      },
+      "description": "이 특수 신발은 선명한 의식용 문양으로 장식되어 있으며 착용자를 땅에 붙들어 두도록 설계되었습니다. 큰 명성을 지닌 고대 방랑자들의 것이었다고 여겨집니다.",
+      "type": "Trinket",
+      "rarity": "Rare",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 3000,
+      "imageFilename": "https://cdn.arctracker.io/items/v2/colorful_shoes_red.png",
+      "updatedAt": "06/17/2026",
+      "addedIn": "1.33"
+    },
+    "colorful_shoes_silver": {
+      "name": {
+        "value": "알록달록한 신발 (은색)",
+        "originalEn": "Colorful Shoes (Silver)"
+      },
+      "description": "이 특수 신발은 선명한 의식용 문양으로 장식되어 있으며 착용자를 땅에 붙들어 두도록 설계되었습니다. 큰 명성을 지닌 고대 방랑자들의 것이었다고 여겨집니다.",
+      "type": "Trinket",
+      "rarity": "Legendary",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 10000,
+      "imageFilename": "https://cdn.arctracker.io/items/v2/colorful_shoes_silver.png",
+      "updatedAt": "06/17/2026",
+      "addedIn": "1.33"
+    },
     "combat_mk1": {
       "name": {
         "value": "전투 마크 1",
@@ -9528,6 +9573,32 @@
       "value": 1000,
       "weightKg": 1,
       "imageFilename": "https://cdn.arctracker.io/items/v2/dockmasters_detector.png",
+      "repairDurability": 0.5,
+      "effects": {
+        "Durability": {
+          "value": "100/100",
+          "da": "Holdbarhed",
+          "de": "Haltbarkeit",
+          "en": "Durability",
+          "es": "Durabilidad",
+          "fr": "Durabilité",
+          "he": "עמידות",
+          "hr": "Izdržljivost",
+          "it": "Tenuta",
+          "ja": "耐久性",
+          "ko-KR": "내구도",
+          "no": "Holdbarhet",
+          "pl": "Wytrzymałość",
+          "pt": "Durabilidade",
+          "pt-BR": "Durabilidade",
+          "ru": "Прочность",
+          "sr": "Izdržljivost",
+          "tr": "Dayanıklılık",
+          "uk": "Міцність",
+          "zh-CN": "耐久度",
+          "zh-TW": "耐久度"
+        }
+      },
       "updatedAt": "04/28/2026",
       "addedIn": "1.26"
     },
@@ -9806,6 +9877,21 @@
       "updatedAt": "03/17/2026",
       "addedIn": "base"
     },
+    "elephant_obelisk": {
+      "name": {
+        "value": "코끼리 오벨리스크",
+        "originalEn": "Elephant Obelisk"
+      },
+      "description": "유목민들이 유독 집착하는 물건으로, 일부는 이 전설적인 짐승들이 발사탑을 제자리로 운반했다고 믿습니다.",
+      "type": "Trinket",
+      "rarity": "Legendary",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 10000,
+      "imageFilename": "https://cdn.arctracker.io/items/v2/elephant_obelisk.png",
+      "updatedAt": "06/17/2026",
+      "addedIn": "1.33"
+    },
     "empty_wine_bottle": {
       "name": {
         "value": "빈 와인병",
@@ -10000,6 +10086,21 @@
       "imageFilename": "https://cdn.arctracker.io/items/v2/equalizer_blueprint.png",
       "updatedAt": "01/13/2026",
       "addedIn": "base"
+    },
+    "equatorial_sundial": {
+      "name": {
+        "value": "적도의 해시계",
+        "originalEn": "Equatorial Sundial"
+      },
+      "description": "고대의 독창성이 빚어낸 경이입니다. 별 관측을 좋아하는 이라면 매혹적인 무늬가 묘하게 익숙하게 느껴질지도 모릅니다.",
+      "type": "Trinket",
+      "rarity": "Rare",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 3000,
+      "imageFilename": "https://cdn.arctracker.io/items/v2/equatorial_sundial.png",
+      "updatedAt": "06/17/2026",
+      "addedIn": "1.33"
     },
     "espresso_machine_parts": {
       "name": {
@@ -22828,10 +22929,10 @@
     },
     "rascal_blueprint": {
       "name": {
-        "value": "Rascal Blueprint",
+        "value": "라스칼 도면",
         "originalEn": "Rascal Blueprint"
       },
-      "description": "Fires explosive projectiles that only detonate when hitting ARC.",
+      "description": "ARC에 충돌했을 때만 폭발하는 폭발投射물을 발사합니다.",
       "type": "Blueprint",
       "rarity": "Common",
       "stackSize": 1,
@@ -22844,10 +22945,10 @@
     },
     "rascal_i": {
       "name": {
-        "value": "Rascal I",
+        "value": "라스칼 I",
         "originalEn": "Rascal I"
       },
-      "description": "Fires explosive projectiles that only detonate when hitting ARC.",
+      "description": "ARC에 충돌했을 때만 폭발하는 폭발投射물을 발사합니다.",
       "type": "Special",
       "rarity": "Rare",
       "stackSize": 1,
@@ -22993,10 +23094,10 @@
     },
     "rascal_ii": {
       "name": {
-        "value": "Rascal II",
+        "value": "라스칼 II",
         "originalEn": "Rascal II"
       },
-      "description": "Fires explosive projectiles that only detonate when hitting ARC.",
+      "description": "ARC에 충돌했을 때만 폭발하는 폭발投射물을 발사합니다.",
       "type": "Special",
       "rarity": "Rare",
       "stackSize": 1,
@@ -23022,10 +23123,10 @@
     },
     "rascal_iii": {
       "name": {
-        "value": "Rascal III",
+        "value": "라스칼 III",
         "originalEn": "Rascal III"
       },
-      "description": "Fires explosive projectiles that only detonate when hitting ARC.",
+      "description": "ARC에 충돌했을 때만 폭발하는 폭발投射물을 발사합니다.",
       "type": "Special",
       "rarity": "Rare",
       "stackSize": 1,
@@ -23051,10 +23152,10 @@
     },
     "rascal_iv": {
       "name": {
-        "value": "Rascal IV",
+        "value": "라스칼 IV",
         "originalEn": "Rascal IV"
       },
-      "description": "Fires explosive projectiles that only detonate when hitting ARC.",
+      "description": "ARC에 충돌했을 때만 폭발하는 폭발投射물을 발사합니다.",
       "type": "Special",
       "rarity": "Rare",
       "stackSize": 1,
@@ -26026,6 +26127,21 @@
       "updatedAt": "10/30/2025",
       "addedIn": "base"
     },
+    "sextant": {
+      "name": {
+        "value": "육분의",
+        "originalEn": "Sextant"
+      },
+      "description": "한때는 원시적인 우주선 시제품으로 여겨졌지만, 노마드들은 이것이 자신의 여정을 기록하는 정교한 방법이라고 주장합니다.",
+      "type": "Trinket",
+      "rarity": "Uncommon",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 2000,
+      "imageFilename": "https://cdn.arctracker.io/items/v2/sextant.png",
+      "updatedAt": "06/17/2026",
+      "addedIn": "1.33"
+    },
     "shaker": {
       "name": {
         "value": "셰이커",
@@ -27087,12 +27203,12 @@
       "description": "지중해의 햇살이 선체에 반짝이는 이 화려한 요트는, 바닷물의 화려함을 상징하는 영원한 전형이다.",
       "type": "Trinket",
       "rarity": "Epic",
-      "stackSize": 1,
+      "stackSize": 3,
       "craftQuantity": 1,
       "value": 7000,
       "weightKg": 0.5,
       "imageFilename": "https://cdn.arctracker.io/items/v2/sirena_dorata_ship_model.png",
-      "updatedAt": "04/28/2026",
+      "updatedAt": "06/17/2026",
       "addedIn": "1.26"
     },
     "smoke_grenade": {
@@ -30406,6 +30522,21 @@
       "updatedAt": "01/09/2026",
       "addedIn": "1.2"
     },
+    "tellurion": {
+      "name": {
+        "value": "텔루리온",
+        "originalEn": "Tellurion"
+      },
+      "description": "고대의 독창성이 빚어낸 경이입니다. 별 관측을 좋아하는 이라면 매혹적인 무늬가 묘하게 익숙하게 느껴질지도 모릅니다.",
+      "type": "Trinket",
+      "rarity": "Epic",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 7000,
+      "imageFilename": "https://cdn.arctracker.io/items/v2/tellurion.png",
+      "updatedAt": "06/17/2026",
+      "addedIn": "1.33"
+    },
     "tempest_blueprint": {
       "name": {
         "value": "템페스트 설계도",
@@ -32340,6 +32471,21 @@
       "updatedAt": "01/13/2026",
       "addedIn": "1.2"
     },
+    "train_model": {
+      "name": {
+        "value": "기차 모형",
+        "originalEn": "Train Model"
+      },
+      "description": "하부 구조까지 세밀하게 손으로 만든 이 모형들은 Exodus 이전 이동 수단의 놀라울 만큼 복잡한 도식을 보여줍니다.",
+      "type": "Trinket",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 1000,
+      "imageFilename": "https://cdn.arctracker.io/items/v2/train_model.png",
+      "updatedAt": "06/17/2026",
+      "addedIn": "1.33"
+    },
     "trigger_nade": {
       "name": {
         "value": "트리거 수류탄",
@@ -32506,12 +32652,12 @@
       "description": "기개 넘치는 신예인 이 이마스트선은 수평선을 아주 살짝 넘어 항해하는 것으로 알려져 있다.",
       "type": "Trinket",
       "rarity": "Uncommon",
-      "stackSize": 1,
+      "stackSize": 5,
       "craftQuantity": 1,
       "value": 1000,
       "weightKg": 0.5,
       "imageFilename": "https://cdn.arctracker.io/items/v2/twilight_compass_ship_model.png",
-      "updatedAt": "04/28/2026",
+      "updatedAt": "06/17/2026",
       "addedIn": "1.26"
     },
     "unusable_weapon": {
@@ -32586,12 +32732,12 @@
       "description": "성능에 최적화된 이 기술의 결정체는, 당신이 특별히 거창한 점심을 챙길 계획이 아니었기를 진심으로 바랄 것이다.",
       "type": "Trinket",
       "rarity": "Rare",
-      "stackSize": 1,
+      "stackSize": 3,
       "craftQuantity": 1,
       "value": 3000,
       "weightKg": 0.5,
       "imageFilename": "https://cdn.arctracker.io/items/v2/velocity_ship_model.png",
-      "updatedAt": "04/28/2026",
+      "updatedAt": "06/17/2026",
       "addedIn": "1.26"
     },
     "venator_blueprint": {
@@ -33769,6 +33915,21 @@
       "foundIn": "Residential, Commercial",
       "updatedAt": "01/13/2026",
       "addedIn": "base"
+    },
+    "vintage_steering_wheel": {
+      "name": {
+        "value": "빈티지 운전대",
+        "originalEn": "Vintage Steering Wheel"
+      },
+      "description": "세 방향 대칭을 이룬 조화로운 유물로, 일부 노마드들은 이것이 달과 태양, 대지를 기리는 고대 성유물함이라고 믿습니다.",
+      "type": "Trinket",
+      "rarity": "Uncommon",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 2000,
+      "imageFilename": "https://cdn.arctracker.io/items/v2/vintage_steering_wheel.png",
+      "updatedAt": "06/17/2026",
+      "addedIn": "1.33"
     },
     "vita_shot": {
       "name": {
@@ -35185,12 +35346,12 @@
       "description": "더 큰 형제들 앞에서도 굴하지 않으며, 이 민첩한 단마스트선은 평균을 약간 웃도는 파도조차 헤쳐 나가는 것으로 유명하다.",
       "type": "Trinket",
       "rarity": "Common",
-      "stackSize": 1,
+      "stackSize": 10,
       "craftQuantity": 1,
       "value": 1000,
       "weightKg": 0.5,
       "imageFilename": "https://cdn.arctracker.io/items/v2/wind_sprite_ship_model.png",
-      "updatedAt": "04/28/2026",
+      "updatedAt": "06/17/2026",
       "addedIn": "1.26"
     },
     "wires": {
