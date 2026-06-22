@@ -53,6 +53,7 @@
       "signedInAs": "Signed in as",
       "statusConnected": "Connected",
       "statusLinked": "Linked",
+      "statusSubscribed": "Subscribed",
       "statusInvalid": "Token invalid",
       "statusNotConfigured": "Not configured",
       "statusNotConnected": "Not connected",
@@ -419,10 +420,12 @@
     "nav": {
       "welcome": "Welcome",
       "stash": "My Items",
+      "weapons": "My Weapons",
       "currentLoadout": "Current Loadout",
       "lists": "Lists",
       "hideout": "Hideout",
       "projects": "Projects",
+      "quests": "Quests",
       "inRaid": "In Raid",
       "crafting": "Crafting",
       "inRaidMissingTooltip": "Items you need to loot during raids",
@@ -435,16 +438,14 @@
       "craftSteps": "Craft Steps",
       "stash": "Inventory",
       "loadout": "Loadout",
+      "blueprints": "Blueprints",
+      "lastSync": "Last sync",
       "source": "Source",
       "gameDataLastSync": "Game Data Last Sync",
       "inventory": "Inventory",
       "embarkInventory": "Embark inventory",
       "unknownEmbarkIds": "Unknown IDs",
       "unknownEmbarkIdsTooltip": "Unique Embark game asset IDs that are not mapped yet.",
-      "elapsedSeconds": "{count} sec",
-      "elapsedMinutes": "{count} min",
-      "elapsedHours": "{hours}:{minutes} hour",
-      "elapsedDays": "{count} d",
       "syncGameData": "Sync Game Data",
       "syncingGameData": "Syncing game data...",
       "embarkSyncTooltip": "Sync inventory, loadout, hideout, and blueprints from Embark.",
@@ -465,6 +466,7 @@
     "common": {
       "syncInventory": "Sync Inventory",
       "syncLoadout": "Sync Loadout",
+      "sync": "Sync",
       "syncHideout": "Sync Hideout",
       "syncHideouts": "Sync Hideout",
       "syncBlueprints": "Sync Unlocked Blueprints",
@@ -551,6 +553,73 @@
         "status": "Status"
       }
     },
+    "weapons": {
+      "view": {
+        "weaponView": "Weapon View",
+        "modsView": "Mods View"
+      },
+      "filter": {
+        "searchPlaceholder": "Search weapons and attachments...",
+        "allTypes": "All Types",
+        "showIncompleteOnly": "Show Incomplete Only",
+        "searchModsPlaceholder": "Search mods...",
+        "showRelevantOnly": "Show Relevant Only"
+      },
+      "empty": "No weapons found. Sync your inventory to see your weapons.",
+      "emptySynced": "No weapons found in your synced inventory.",
+      "noMatch": "No weapons match your filters.",
+      "slot": {
+        "muzzle": "Muzzle",
+        "lightMagShort": "Light",
+        "mediumMagShort": "Medium",
+        "shotgunMagShort": "Shotgun",
+        "stock": "Stock",
+        "grip": "Grip",
+        "special": "Special",
+        "empty": "Empty",
+        "unmatchedAttachments": "Unmatched attachments",
+        "craftable": "Craftable",
+        "compatibleTitle": "Compatible mods",
+        "mod": "Mod",
+        "attachedCount": "Attached",
+        "availableCount": "Available"
+      },
+      "mod": {
+        "attached": "Attached: {weapon} ({source})",
+        "unattached": "Unattached",
+        "fitsSlots": "Fits {count} empty slot(s)",
+        "blueprintLearned": "Blueprint learned - Bench {level}",
+        "craftable": "Craftable",
+        "canBeCrafted": "Can be crafted",
+        "cannotBeCrafted": "Cannot be crafted",
+        "notCraftable": "Not craftable",
+        "blueprintLocked": "Blueprint locked",
+        "benchTooLow": "Bench level too low",
+        "ownedCount": "{count} owned",
+        "moreOwned": "+{count} more",
+        "inStash": "In stash",
+        "inLoadout": "In loadout"
+      },
+      "build": {
+        "title": "Configure Build: {weapon}",
+        "nameLabel": "Build Name",
+        "namePlaceholder": "Auto-generated if empty",
+        "slotNone": "None",
+        "save": "Save Build",
+        "cancel": "Cancel",
+        "delete": "Delete Build",
+        "deleteConfirm": "Delete this build?",
+        "matchFull": "Complete - equipped on {weapon}",
+        "matchPartial": "{matched}/{total} mods on {weapon}",
+        "matchEmpty": "No preferred mods set for {weapon}",
+        "matchNone": "No matching weapon",
+        "summaryTitle": "Build Overview",
+        "autoName": "{weapon} Build",
+        "filteredOut": "Weapon is filtered out. Clear filters to see it.",
+        "locked": "Locked",
+        "unlocked": "Unlocked"
+      }
+    },
     "loadout": {
       "empty": "No loadout synced. Click \"Sync Loadout\" to load your current equipment.",
       "backpackContents": "Backpack Contents"
@@ -621,6 +690,7 @@
       "subtitle": "Track project required items for community expeditions and seasonal projects.",
       "syncPrompt": "Hit the \"Sync Projects\" button to load your current project progress.",
       "allComplete": "All project steps are completed.",
+      "noProjectsAvailable": "No projects available",
       "syncTooltip": "Refresh your current project progress from the game.",
       "collapseAll": "Collapse all",
       "collapseAllTooltip": "Collapse every project section.",
@@ -652,6 +722,25 @@
       "active": "Active",
       "locked": "Locked"
     },
+    "quests": {
+      "title": "Quests",
+      "enableAllPending": "Enable All Pending",
+      "disableAll": "Disable All",
+      "noLinkedData": "Link your ArcTracker or Embark account to track quest items.",
+      "allComplete": "All incomplete quests have no required items to track.",
+      "syncQuests": "Sync Quests",
+      "syncTooltip": "Refresh your quest completion data.",
+      "sortBy": "Sort",
+      "sortAlphabetical": "A-Z",
+      "sortNextQuests": "Next Quests",
+      "viewInQuestTree": "View in Quest Tree",
+      "itemCount": "{count} items",
+      "hopsAway": "{hops} hops away",
+      "now": "Now",
+      "itemCompleteTooltip": "You have enough of this item.",
+      "disableItemTooltip": "Disable tracking this required item.",
+      "enableItemTooltip": "Enable tracking this required item."
+    },
     "inRaid": {
       "keep": "Keep",
       "recycle": "Recycle",
@@ -670,7 +759,20 @@
       "prioritizeClearAll": "Remove All",
       "prioritizeClearAllTitle": "Remove all priority targets?",
       "prioritizeClearAllBody": "This will remove all items from the priority targets list. Items will remain in their lists and hideout requirements.",
-      "prioritizeClearAllConfirm": "Remove All"
+      "prioritizeClearAllConfirm": "Remove All",
+      "searchPlaceholder": "Search items...",
+      "filterType": "Type",
+      "filterRarity": "Rarity",
+      "filterLocation": "Location",
+      "clearFilters": "Clear filters",
+      "allTypes": "All Types",
+      "allRarities": "All Rarities",
+      "allLocations": "All Locations",
+      "noFilterResults": "No items match the current filters.",
+      "keepTooltip": "Bring home — needed for your lists",
+      "salvageTooltip": "Salvage for materials",
+      "recycleTooltip": "Recycle for materials",
+      "missingTooltip": "Need {deficit} more (required: {required})"
     },
     "crafting": {
       "noImpact": "No active target impact",
@@ -707,11 +809,14 @@
       "value": "Value:",
       "foundIn": "Found In:",
       "neededForLists": "Needed for Lists",
+      "neededForQuests": "Needed for Quests",
+      "neededForCrafting": "Needed for Crafting (Direct / Indirect)",
       "neededForProject": "Needed for {project}",
       "couldBeUsedFor": "Could be used for",
       "recycle": "Recycle",
       "salvage": "Salvage",
       "craftingRecipe": "Crafting Recipe",
+      "craftingRecipeIncludingUpgrades": "Crafting Recipe (including Upgrades)",
       "recyclesInto": "Recycles Into",
       "salvagesInto": "Salvages Into",
       "neededForRepair": "Needed for Repair"
@@ -854,6 +959,17 @@
     "timePlural": "回",
     "itemSuffix": "（{count} 個）",
     "slotSingle": "スロット",
-    "slotPlural": "スロット"
+    "slotPlural": "スロット",
+    "syncHeader": {
+      "syncMyItems": "Sync My Items",
+      "syncingInventory": "Syncing Inventory...",
+      "syncGameData": "Sync Game Data",
+      "syncingGameData": "Syncing Game Data...",
+      "lastSync": "Last Sync",
+      "stash": "Stash",
+      "loadout": "Loadout",
+      "gameDataLastSync": "Game Data Last Sync",
+      "never": "Never"
+    }
   }
 }
