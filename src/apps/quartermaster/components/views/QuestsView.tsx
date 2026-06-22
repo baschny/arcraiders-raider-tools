@@ -237,17 +237,6 @@ export function QuestsView({
     navigate(`/quests?focus=${encodeURIComponent(questId)}`);
   }, [navigate]);
 
-  if (!hasLinkedSnapshot) {
-    return (
-      <div className="quests-view">
-        <div className="quests-view__no-data">
-          <ScrollText size={48} />
-          <p>{t('quartermaster.quests.noLinkedData')}</p>
-        </div>
-      </div>
-    );
-  }
-
   const hasPendingItems = questLists.length > 0;
 
   const currentMode: TrackingMode | 'custom' = (() => {
@@ -350,13 +339,16 @@ export function QuestsView({
         </div>
       </div>
 
-      {!hasPendingItems && (
+      {!hasLinkedSnapshot ? (
+        <div className="quests-view__no-data">
+          <ScrollText size={48} />
+          <p>{t('quartermaster.quests.noLinkedData')}</p>
+        </div>
+      ) : !hasPendingItems ? (
         <div className="quests-view__empty">
           <p>{t('quartermaster.quests.allComplete')}</p>
         </div>
-      )}
-
-      {hasPendingItems && (
+      ) : (
         <div className="quests-view__grid">
           {sortedQuestIds.map((questId) => {
             const list = listByQuestId.get(questId)!;
