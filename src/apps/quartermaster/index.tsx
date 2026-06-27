@@ -393,9 +393,9 @@ export function QuartermasterApp() {
 
   // Generate quest required-item lists
   const questLists: StoredList[] = useMemo(() => {
-    if (!itemsMap || questDefinitions.length === 0) return [];
+    if (!linkedQuestSnapshot || !itemsMap || questDefinitions.length === 0) return [];
     return generateQuestLists(questDefinitions, completedQuestIds, itemsMap);
-  }, [itemsMap, questDefinitions, completedQuestIds, quartermasterState.questToggles]);
+  }, [itemsMap, questDefinitions, completedQuestIds, linkedQuestSnapshot, quartermasterState.questToggles]);
 
   const fullQuestById = useMemo(() => {
     const map = new Map<string, Quest>();
