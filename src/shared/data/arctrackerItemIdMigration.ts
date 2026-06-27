@@ -14,3 +14,21 @@ export function migrateArctrackerItemId(itemId: string | null): string | null {
   if (!itemId) return itemId;
   return ARCTRACKER_ITEM_ID_MAP[itemId] ?? itemId;
 }
+
+/**
+ * Reverse map: canonical item ID → ArcTracker API item ID.
+ * Used to construct correct CDN image URLs since the CDN uses ArcTracker's
+ * original item ID naming, not our canonical IDs.
+ */
+const CANONICAL_TO_ARCTRACKER_ID: Record<string, string> = {};
+for (const [apiId, canonicalId] of Object.entries(ARCTRACKER_ITEM_ID_MAP)) {
+  CANONICAL_TO_ARCTRACKER_ID[canonicalId] = apiId;
+}
+
+const CDN_ITEM_URL_PREFIX = 'https://cdn.arctracker.io/items/v2/';
+
+export function fixCdnItemUrl(canonicalItemId: string, imageFilename?: string): string | undefined {
+  const arctrackerId = CANONICAL_TO_ARCTRACKER_ID[canonicalItemId];
+  if (!arctrackerId || !imageFilename) return imageFilename;
+  return `${CDN_ITEM_URL_PREFIX}${arctrackerId}.png`;
+}

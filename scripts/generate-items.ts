@@ -13,6 +13,7 @@
 
 import * as fs from 'fs';
 import * as path from 'path';
+import { fixCdnItemUrl } from '../src/shared/data/arctrackerItemIdMigration';
 
 const LOCALES = [
   'en',
@@ -159,7 +160,7 @@ function processItem(source: SourceItem, locale: OutputLocale): { id: string; it
     ...(source.value !== undefined && { value: source.value }),
     ...(source.weightKg !== undefined && { weightKg: source.weightKg }),
     ...(source.isWeapon !== undefined && { isWeapon: source.isWeapon }),
-    ...(source.imageFilename !== undefined && { imageFilename: source.imageFilename }),
+    ...(source.imageFilename !== undefined && { imageFilename: fixCdnItemUrl(source.id, source.imageFilename) ?? source.imageFilename }),
     ...(source.foundIn !== undefined && { foundIn: source.foundIn }),
     ...(source.craftBench !== undefined && { craftBench: source.craftBench }),
     ...(source.stationLevelRequired !== undefined && { stationLevelRequired: source.stationLevelRequired }),
