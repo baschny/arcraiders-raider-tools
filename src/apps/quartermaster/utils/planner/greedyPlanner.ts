@@ -268,6 +268,28 @@ function canCraft(
 }
 
 /**
+ * Filter a needs map to only include items that are NOT craftable.
+ * Craftable items are excluded because Phase C handles them via crafting
+ * from base materials rather than recycling (CR-029).
+ */
+function filterUncraftableNeeds(
+  state: Pick<PlannerState, 'itemsMap' | 'benchLevels' | 'unlockedBlueprintItemIds'>,
+  needs: Record<ItemId, Qty>,
+): Record<ItemId, Qty> {
+  const uncraftable: Record<ItemId, Qty> = {};
+  for (const [itemId, qty] of Object.entries(needs)) {
+    const item = state.itemsMap[itemId];
+    if (!item?.recipe || !item.craftBench) {
+      uncraftable[itemId] = qty;
+    } else {
+      const { ok } = canCraft(item, state.benchLevels, state.unlockedBlueprintItemIds, itemId);
+      if (!ok) uncraftable[itemId] = qty;
+    }
+  }
+  return uncraftable;
+}
+
+/**
  * Deterministic recycle comparator (CR-009)
  * 1. Non-direct recipe input sources before direct recipe inputs
  * 2. Higher yield toward missing materials
@@ -752,8 +774,9 @@ function satisfyMaterialNeeds(
     Object.fromEntries(Object.keys(needed).map((itemId) => [itemId, [...chainPrefix, itemId]])),
   );
 
-  if (Object.keys(needed).length > 0) {
-    recycleForNeeded(state, needed, directRecycleReasonFactory, {
+  const uncraftableNeeded = filterUncraftableNeeds(state, needed);
+  if (Object.keys(uncraftableNeeded).length > 0) {
+    recycleForNeeded(state, uncraftableNeeded, directRecycleReasonFactory, {
       allowDirectRecipeInputSources: false,
     });
   }
@@ -782,24 +805,89 @@ function satisfyMaterialNeeds(
     recycleForNeeded(state, missingWithoutPendingCrafts, directRecycleReasonFactory);
   }
 
-  const subIngredientChains: Record<ItemId, ItemId[]> = {};
-  for (const craft of pendingCrafts) {
-    for (const subId of Object.keys(craft.recipe)) {
-      subIngredientChains[subId] = [...chainPrefix, craft.itemId, subId];
+  // Check if pending crafts can succeed. If not, try L1 recycling
+  // before Phase D (CR-029: craftable L1 with missing base materials →
+  // fall through to recycle).
+  let pendingResult = applyPendingCraftsIfPossible(state, pendingCrafts);
+  if (!pendingResult.ok && pendingCrafts.length > 0) {
+    // Simulate sequential consumption to classify succeed / fail,
+    // matching applyPendingCraftsIfPossible ordering.
+    const simAvail = { ...state.avail };
+    const succeedingCrafts: PendingCraft[] = [];
+    const failingCraftIds = new Set<ItemId>();
+    for (const craft of pendingCrafts) {
+      let ok = true;
+      for (const [subId, qtyPer] of Object.entries(craft.recipe)) {
+        if ((simAvail[subId] ?? 0) < qtyPer * craft.craftTimes) {
+          ok = false;
+          break;
+        }
+      }
+      if (ok) {
+        succeedingCrafts.push(craft);
+        for (const [subId, qtyPer] of Object.entries(craft.recipe)) {
+          simAvail[subId] -= qtyPer * craft.craftTimes;
+        }
+        simAvail[craft.itemId] = (simAvail[craft.itemId] ?? 0) + craft.totalOutput;
+      } else {
+        failingCraftIds.add(craft.itemId);
+      }
+    }
+
+    if (failingCraftIds.size > 0) {
+      // Only recycle for needed items whose pending craft is failing
+      const failingNeeded: Record<ItemId, Qty> = {};
+      for (const [itemId, qty] of Object.entries(needed)) {
+        if (!failingCraftIds.has(itemId)) continue;
+        const have = getAvail(state, itemId);
+        if (have < qty) failingNeeded[itemId] = qty - have;
+      }
+      recycleForNeeded(state, failingNeeded, directRecycleReasonFactory);
+
+      // Recompute remaining deficits, accounting for outputs of preserved
+      // succeedingCrafts to avoid duplicate crafting.
+      const simAvailAfterRecycle = { ...state.avail };
+      for (const craft of succeedingCrafts) {
+        simAvailAfterRecycle[craft.itemId] =
+          (simAvailAfterRecycle[craft.itemId] ?? 0) + craft.totalOutput;
+      }
+
+      const newStillMissing: Record<ItemId, Qty> = {};
+      for (const [itemId, qty] of Object.entries(needed)) {
+        const have = simAvailAfterRecycle[itemId] ?? 0;
+        if (have < qty) newStillMissing[itemId] = qty - have;
+      }
+
+      pendingCrafts = succeedingCrafts;
+      missingSub = {};
+      if (Object.keys(newStillMissing).length > 0) {
+        const newPhaseCResult = phaseC(state, newStillMissing);
+        missingSub = newPhaseCResult.missingSub;
+        pendingCrafts = [...pendingCrafts, ...newPhaseCResult.pendingCrafts];
+      }
+    } else {
+      pendingCrafts = succeedingCrafts;
     }
   }
-  const subRecycleReasonFactory = buildReasonFactory(
-    state,
-    targetId,
-    requiredSourcesByItemId,
-    subIngredientChains,
-  );
 
-  if (Object.keys(missingSub).length > 0) {
-    recycleForNeeded(state, missingSub, subRecycleReasonFactory);
+  // Phase D: Recycle for sub-ingredients
+  pendingResult = applyPendingCraftsIfPossible(state, pendingCrafts);
+  if (!pendingResult.ok && pendingCrafts.length > 0 && Object.keys(missingSub).length > 0) {
+    const subIngredientChains: Record<ItemId, ItemId[]> = {};
+    for (const craft of pendingCrafts) {
+      for (const subId of Object.keys(craft.recipe)) {
+        subIngredientChains[subId] = [...chainPrefix, craft.itemId, subId];
+      }
+    }
+    recycleForNeeded(state, missingSub, buildReasonFactory(
+      state,
+      targetId,
+      requiredSourcesByItemId,
+      subIngredientChains,
+    ));
+    pendingResult = applyPendingCraftsIfPossible(state, pendingCrafts);
   }
 
-  const pendingResult = applyPendingCraftsIfPossible(state, pendingCrafts);
   if (!pendingResult.ok) return false;
   state.avail = pendingResult.avail;
 
@@ -979,8 +1067,10 @@ function completeTargetSatisfaction(
   );
 
   // Phase B: Recycle once for direct (L1) inputs, using non-direct-input sources first.
-  if (Object.keys(missingL1).length > 0) {
-    recycleForNeeded(state, missingL1, directRecycleReasonFactory, {
+  // Only recycle for L1 inputs that are NOT craftable — craftable inputs are handled by Phase C.
+  const uncraftableL1 = filterUncraftableNeeds(state, missingL1);
+  if (Object.keys(uncraftableL1).length > 0) {
+    recycleForNeeded(state, uncraftableL1, directRecycleReasonFactory, {
       allowDirectRecipeInputSources: false,
     });
   }
@@ -1013,29 +1103,91 @@ function completeTargetSatisfaction(
     recycleForNeeded(state, missingL1WithoutPendingCrafts, directRecycleReasonFactory);
   }
 
-  const subIngredientChains: Record<ItemId, ItemId[]> = {};
-  for (const craft of pendingCrafts) {
-    for (const subId of Object.keys(craft.recipe)) {
-      subIngredientChains[subId] = [targetId, craft.itemId, subId];
-    }
-  }
-  const subRecycleReasonFactory = buildReasonFactory(
-    state,
-    targetId,
-    requiredSourcesByItemId,
-    subIngredientChains,
-  );
-
-  // Phase D: Recycle once for level-2 sub-ingredients
-  if (Object.keys(missingSub).length > 0) {
-    recycleForNeeded(state, missingSub, subRecycleReasonFactory);
-  }
-
+  // Check if pending crafts can succeed.  If not, try the L1 fallback
+  // BEFORE Phase D so that Phase D does not waste items needed as L1
+  // ingredients of the target.  (CR-029 edge case: craftable L1 with
+  // missing base materials → fall through to recycle.)
   let pendingResult = applyPendingCraftsIfPossible(state, pendingCrafts);
   if (!pendingResult.ok && pendingCrafts.length > 0) {
-    const remainingL1BeforeFallback = getRecipeDeficitsFromAvail(state, targetRecipe, craftTimes);
-    recycleForNeeded(state, remainingL1BeforeFallback, directRecycleReasonFactory);
-    pendingCrafts = [];
+    // Simulate sequential consumption to classify succeed / fail,
+    // matching applyPendingCraftsIfPossible ordering.
+    const simAvail = { ...state.avail };
+    const succeedingCrafts: PendingCraft[] = [];
+    const failingCraftIds = new Set<ItemId>();
+    for (const craft of pendingCrafts) {
+      let ok = true;
+      for (const [subId, qtyPer] of Object.entries(craft.recipe)) {
+        if ((simAvail[subId] ?? 0) < qtyPer * craft.craftTimes) {
+          ok = false;
+          break;
+        }
+      }
+      if (ok) {
+        succeedingCrafts.push(craft);
+        for (const [subId, qtyPer] of Object.entries(craft.recipe)) {
+          simAvail[subId] -= qtyPer * craft.craftTimes;
+        }
+        simAvail[craft.itemId] = (simAvail[craft.itemId] ?? 0) + craft.totalOutput;
+      } else {
+        failingCraftIds.add(craft.itemId);
+      }
+    }
+
+    if (failingCraftIds.size > 0) {
+      // Only recycle for L1 deficits whose pending craft is failing
+      const failingL1Deficits: Record<ItemId, Qty> = {};
+      for (const [ingId, qtyPerCraft] of Object.entries(targetRecipe)) {
+        if (!failingCraftIds.has(ingId)) continue;
+        const totalNeeded = qtyPerCraft * craftTimes;
+        const have = getAvail(state, ingId);
+        if (have < totalNeeded) failingL1Deficits[ingId] = totalNeeded - have;
+      }
+      recycleForNeeded(state, failingL1Deficits, directRecycleReasonFactory);
+
+      // Recompute remaining L1 deficits after recycling, accounting for
+      // outputs of preserved succeedingCrafts to avoid duplicate crafting.
+      const simAvailAfterRecycle = { ...state.avail };
+      for (const craft of succeedingCrafts) {
+        simAvailAfterRecycle[craft.itemId] =
+          (simAvailAfterRecycle[craft.itemId] ?? 0) + craft.totalOutput;
+      }
+
+      const newStillMissingL1: Record<ItemId, Qty> = {};
+      for (const [ingId, qtyPerCraft] of Object.entries(targetRecipe)) {
+        const totalNeeded = qtyPerCraft * craftTimes;
+        const have = simAvailAfterRecycle[ingId] ?? 0;
+        if (have < totalNeeded) newStillMissingL1[ingId] = totalNeeded - have;
+      }
+
+      pendingCrafts = succeedingCrafts;
+      missingSub = {};
+      if (Object.keys(newStillMissingL1).length > 0) {
+        const newPhaseCResult = phaseC(state, newStillMissingL1);
+        missingSub = newPhaseCResult.missingSub;
+        pendingCrafts = [...pendingCrafts, ...newPhaseCResult.pendingCrafts];
+      }
+    } else {
+      pendingCrafts = succeedingCrafts;
+    }
+  }
+
+  // Phase D: Recycle once for level-2 sub-ingredients.
+  // Note: no craftability filter here — there is no later phase to
+  // craft sub-ingredients that would be excluded.
+  pendingResult = applyPendingCraftsIfPossible(state, pendingCrafts);
+  if (!pendingResult.ok && pendingCrafts.length > 0 && Object.keys(missingSub).length > 0) {
+    const subIngredientChains: Record<ItemId, ItemId[]> = {};
+    for (const craft of pendingCrafts) {
+      for (const subId of Object.keys(craft.recipe)) {
+        subIngredientChains[subId] = [targetId, craft.itemId, subId];
+      }
+    }
+    recycleForNeeded(state, missingSub, buildReasonFactory(
+      state,
+      targetId,
+      requiredSourcesByItemId,
+      subIngredientChains,
+    ));
     pendingResult = applyPendingCraftsIfPossible(state, pendingCrafts);
   }
 

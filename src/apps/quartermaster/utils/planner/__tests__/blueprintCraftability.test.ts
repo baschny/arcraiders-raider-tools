@@ -498,7 +498,12 @@ describe('quartermaster blueprint craftability', () => {
     expect(result.remainingIngredientDeficits).toEqual({ metal_parts: 2 });
   });
 
-  it('does not commit recycle work or reasons for a target blocked by raid-only ingredients', () => {
+  it('falls back to recycling an L1 ingredient when Phase C cannot craft it from base materials', () => {
+    // CR-029: arc_circuitry has a recipe (8x arc_alloy → 1x arc_circuitry).
+    // Phase B skips it (craftable). Phase C tries to craft from arc_alloy
+    // but arc_alloy is not owned → Phase C fails. The CR-029 fallback then
+    // recycles vaporizer_regulator for arc_circuitry BEFORE Phase D runs,
+    // so comet_igniter (an L1 ingredient of deadline) is preserved.
     const result = computePlan(
       itemsMap,
       [{
@@ -522,8 +527,11 @@ describe('quartermaster blueprint craftability', () => {
       new Set(['deadline']),
     );
 
+    // Deadline IS fully satisfiable via the L1 fallback recycle
     expect(result.satisfiableTargets.has('deadline')).toBe(true);
     expect(result.satisfiableTargets.has('heavy_shield')).toBe(false);
+
+    // vaporizer_regulator is recycled for arc_circuitry in the L1 fallback
     expect(result.recyclePlan.actions).toHaveLength(1);
     expect(result.recyclePlan.actions[0]).toMatchObject({
       srcItemId: 'vaporizer_regulator',
@@ -542,7 +550,11 @@ describe('quartermaster blueprint craftability', () => {
       }),
     ]);
     expect(result.recyclePlan.actions[0].reasons.some((reason) => reason.targetItemId === 'heavy_shield')).toBe(false);
+
+    // Deadline is crafted normally
     expect(result.craftPlan.steps.map((step) => step.itemId)).toEqual(['deadline']);
+
+    // Only heavy_shield raid-only ingredients remain as deficits
     expect(result.remainingIngredientDeficits).toMatchObject({
       power_rod: 1,
       voltage_converter: 2,
