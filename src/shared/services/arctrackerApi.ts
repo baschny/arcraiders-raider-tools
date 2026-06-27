@@ -23,7 +23,9 @@ import type {
   CachedProjectCategoryGoal,
   ApiError,
   ArctrackerStashItem,
+  ArctrackerLoadoutSlot,
 } from '../types/arctracker';
+import { migrateArctrackerItemId } from '../data/arctrackerItemIdMigration';
 import {
   cacheSet,
   getCachedProfile,
@@ -174,6 +176,22 @@ async function getRequestAuth(token?: string): Promise<{ baseUrl: string; token:
   throw createApiError('No authentication token available', 401, false);
 }
 
+function migrateLoadoutSlot(slot: ArctrackerLoadoutSlot): ArctrackerLoadoutSlot {
+  return {
+    ...slot,
+    itemId: migrateArctrackerItemId(slot.itemId),
+    attachments: slot.attachments?.map(migrateLoadoutSlot),
+  };
+}
+
+function migrateStashItem(item: ArctrackerStashItem): ArctrackerStashItem {
+  return {
+    ...item,
+    itemId: migrateArctrackerItemId(item.itemId),
+    attachments: item.attachments?.map(migrateLoadoutSlot),
+  };
+}
+
 /**
  * Sync and cache the user profile.
  */
@@ -212,13 +230,13 @@ export async function syncStashAllPages(): Promise<CachedStash> {
   const firstPage = await fetchStashPage(1);
   const totalPages = firstPage.data.pagination.totalPages;
 
-  // Collect all items
-  let allItems: ArctrackerStashItem[] = [...firstPage.data.items];
+  // Collect all items, applying ArcTracker item ID migration
+  let allItems: ArctrackerStashItem[] = firstPage.data.items.map(migrateStashItem);
 
   // Fetch remaining pages if any
   for (let page = 2; page <= totalPages; page++) {
     const pageData = await fetchStashPage(page);
-    allItems = allItems.concat(pageData.data.items);
+    allItems = allItems.concat(pageData.data.items.map(migrateStashItem));
   }
 
   // Use metadata from the last page (or first if only one page)
@@ -247,8 +265,21 @@ export async function syncLoadout(): Promise<CachedLoadout> {
     `/v2/user/loadout?locale=${locale}`
   );
 
+  const { loadout } = response.data;
+  const migratedLoadout = {
+    augment: migrateLoadoutSlot(loadout.augment),
+    shield: migrateLoadoutSlot(loadout.shield),
+    weapon1: migrateLoadoutSlot(loadout.weapon1),
+    weapon2: migrateLoadoutSlot(loadout.weapon2),
+    backpack: loadout.backpack.map(migrateLoadoutSlot),
+    quickItems: loadout.quickItems.map(migrateLoadoutSlot),
+    safePocket: loadout.safePocket.map(migrateLoadoutSlot),
+    augmentedSlots: loadout.augmentedSlots.map(migrateLoadoutSlot),
+    slotCounts: loadout.slotCounts,
+  };
+
   const cachedLoadout: CachedLoadout = {
-    loadout: response.data.loadout,
+    loadout: migratedLoadout,
     syncedAt: response.data.syncedAt,
     cachedAt: Date.now(),
   };
@@ -299,17 +330,19 @@ export async function syncBlueprints(): Promise<CachedBlueprints> {
   for (const blueprint of response.data.blueprints) {
     if (!blueprint.targetItemId) continue;
 
-    blueprintsByTargetItemId[blueprint.targetItemId] = {
+    const targetItemId = migrateArctrackerItemId(blueprint.targetItemId) as string;
+
+    blueprintsByTargetItemId[targetItemId] = {
       id: blueprint.id,
       name: blueprint.name,
       category: blueprint.category,
       rarity: blueprint.rarity,
       learned: blueprint.learned,
-      targetItemId: blueprint.targetItemId,
+      targetItemId,
     };
 
     if (blueprint.learned) {
-      unlockedItemIds.push(blueprint.targetItemId);
+      unlockedItemIds.push(targetItemId);
     }
   }
 
@@ -331,7 +364,7 @@ function transformPhaseGoals(
   phase: ArctrackerProjectPhase,
 ): { goals: CachedProjectGoal[]; categoryRequirements?: CachedProjectCategoryGoal[] } {
   const goals: CachedProjectGoal[] = (phase.requirements ?? []).map((req) => ({
-    itemId: req.itemId,
+    itemId: migrateArctrackerItemId(req.itemId) as string,
     required: req.required,
     submitted: req.submitted,
     remaining: Math.max(0, req.required - req.submitted),
