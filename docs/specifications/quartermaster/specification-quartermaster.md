@@ -1330,7 +1330,7 @@ For weapons linked by an upgrade chain (`weaponBaseId` + `weaponTier`):
 - For API blueprint targets reported as an unsuffixed weapon family id, craftability matches that family id against the tier 1 base weapon by deriving it from `weaponBaseId`.
 - `computeCraftability` propagates the base weapon's **blueprint lock status** and **bench condition** to every higher-tier family member (`weaponTier > 1` with matching `weaponBaseId`).
 - When the base weapon's blueprint is locked, every family member receives `hasRecipe: true`, `canCraft: false`, and the inherited `blueprint` condition — causing the red lock icon to appear on all tiers.
-- When the base weapon's blueprint is learned, the learned tier I id satisfies the base blueprint condition, so higher tiers must not inherit a locked blueprint condition.
+- When the base weapon's blueprint is learned, every family member still inherits the satisfied `blueprint` condition so the tooltip shows `Blueprint: Learned` on all tiers, but higher tiers must not inherit a locked blueprint condition or red lock icon.
 - The base weapon's bench condition (`label`, `detail`, `satisfied`) is also propagated so the tooltip craft conditions section shows the bench requirement on tier 2+ weapons.
 - `planWeaponUpgradeTarget` adds the target weapon's `itemId` (not just the root) to `blueprintBlockers`, so the StashView status column also shows "Blocked: blueprint not unlocked" for the higher-tier target.
 

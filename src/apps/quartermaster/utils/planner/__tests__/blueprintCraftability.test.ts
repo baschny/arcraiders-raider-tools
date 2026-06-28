@@ -913,7 +913,10 @@ describe('quartermaster weapon upgrade planning', () => {
       satisfied: true,
       detail: 'Learned',
     });
-    expect(result.craftability.anvil_iv.blueprint).toBeUndefined();
+    expect(result.craftability.anvil_iv.blueprint).toMatchObject({
+      satisfied: true,
+      detail: 'Learned',
+    });
   });
 
   it('keeps exact Embark tier I blueprint IDs working for tiered weapons', () => {
@@ -935,7 +938,10 @@ describe('quartermaster weapon upgrade planning', () => {
       satisfied: true,
       detail: 'Learned',
     });
-    expect(result.craftability.anvil_iv.blueprint).toBeUndefined();
+    expect(result.craftability.anvil_iv.blueprint).toMatchObject({
+      satisfied: true,
+      detail: 'Learned',
+    });
   });
 
   it('uses an owned lower-tier weapon as the upgrade base without requiring the tier I blueprint', () => {

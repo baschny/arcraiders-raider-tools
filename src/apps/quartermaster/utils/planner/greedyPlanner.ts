@@ -1604,18 +1604,23 @@ export function computeCraftability(
     result[itemId] = info;
   }
 
-  // Propagate blueprint lock and bench info from tier 1 base weapons to higher-tier family members.
+  // Propagate blueprint and bench info from tier 1 base weapons to higher-tier family members.
   for (const [itemId, item] of Object.entries(itemsMap)) {
     if (!item.weaponTier || item.weaponTier <= 1 || !item.weaponBaseId) continue;
     const baseInfo = result[item.weaponBaseId];
     const existingInfo = result[itemId];
+    const hasBlueprintInfo = !!baseInfo?.blueprint;
     const hasBlueprintLock = baseInfo?.blueprint && !baseInfo.blueprint.satisfied;
     const hasBenchInfo = !!baseInfo?.bench;
-    if (!hasBlueprintLock && !hasBenchInfo) continue;
+    if (!hasBlueprintInfo && !hasBenchInfo) continue;
     result[itemId] = {
       ...(hasBlueprintLock
         ? { hasRecipe: true as const, canCraft: false as const, blueprint: { ...baseInfo.blueprint! } }
-        : { hasRecipe: existingInfo.hasRecipe, canCraft: existingInfo.canCraft }),
+        : {
+            hasRecipe: existingInfo.hasRecipe,
+            canCraft: existingInfo.canCraft,
+            ...(hasBlueprintInfo ? { blueprint: { ...baseInfo.blueprint! } } : {}),
+          }),
       ...(hasBenchInfo ? { bench: { ...baseInfo.bench! } } : {}),
     };
   }

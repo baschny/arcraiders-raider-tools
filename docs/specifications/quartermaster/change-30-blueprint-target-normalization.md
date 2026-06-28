@@ -13,6 +13,7 @@ Quartermaster evaluates blueprint craftability against canonical item ids. This 
 - For weapon-chain items with `weaponBaseId` and `weaponTier`, blueprint craftability also checks the ArcTracker weapon family id derived from the tier I base id by stripping the trailing tier suffix.
 - A learned `hullcracker` blueprint target unlocks `hullcracker_i`; a learned `hullcracker_i` target also remains valid.
 - Higher weapon tiers (`hullcracker_ii`, `hullcracker_iii`, `hullcracker_iv`) inherit the unlocked state through existing weapon family craftability propagation.
+- Higher weapon tiers inherit the satisfied blueprint tooltip condition from tier I, so the details overlay shows `Blueprint: Learned` for every tier when the base blueprint is learned.
 - The red blueprint lock must not be shown on tier II-IV weapons when their tier I base blueprint is learned.
 - Non-weapon blueprint targets, such as weapon mods with `_ii` / `_iii` suffixes, continue to use exact item id matching.
 
