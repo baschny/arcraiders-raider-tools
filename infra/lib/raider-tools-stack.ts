@@ -690,7 +690,13 @@ export class RaiderToolsStack extends cdk.Stack {
         );
         this.httpApi.addRoutes({
             path: "/me/arctracker/{proxy+}",
-            methods: [apigwv2.HttpMethod.GET, apigwv2.HttpMethod.POST],
+            methods: [apigwv2.HttpMethod.GET],
+            integration: arctrackerUserProxyIntegration,
+            authorizer: jwtAuthorizer,
+        });
+        this.httpApi.addRoutes({
+            path: "/me/arctracker/{proxy+}",
+            methods: [apigwv2.HttpMethod.POST],
             integration: arctrackerUserProxyIntegration,
             authorizer: jwtAuthorizer,
         });
