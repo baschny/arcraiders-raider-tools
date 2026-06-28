@@ -1436,7 +1436,9 @@ The planner uses a shared provenance utility to identify which user lists and ta
     -   **Crafting Materials**: Direct and nested ingredients required for target items.
     -   **Recycle/Salvage Sources**: Items that yield needed crafting materials or final target items.
 2.  **Logic**:
-    -   Recursive traversal of recipes and upgrade costs (ingredients from both are combined).
+    -   Recursive traversal of advisory dependency recipes.
+    -   For non-upgrade-chain items, the advisory dependency recipe is the item's recipe plus direct upgrade cost, matching previous provenance behavior.
+    -   For upgrade-chain items, the advisory dependency recipe is a virtual one-step recipe: base item recipe plus each upgrade cost from the base item through the requested target.
     -   Cycle protection (max depth 20).
     -   `craftQuantity` math: `numCrafts = ceil(need / craftQuantity)`.
 3.  **Merge Rule**: If an item is both a direct target and a crafting support material, the list sources from both paths must be merged and deduplicated. Impacted target IDs from both paths must be combined.
@@ -1452,8 +1454,30 @@ The planner uses a shared provenance utility to identify which user lists and ta
 Provenance for crafting support must track deep dependencies. An item is considered "impacted" by a final target if:
 
 -   It is a direct ingredient in the target's recipe.
+-   It is a direct ingredient in the target's advisory upgrade-chain recipe.
 -   It is a nested ingredient (e.g., ingredient of an ingredient).
 -   It recycles or salvages into a missing ingredient or target (direct or nested).
+
+### Advisory Upgrade-Chain Provenance
+
+For provenance, item relevance, and accidental-sell prevention, active upgrade-chain targets are treated as if they can be crafted in one advisory step from scratch.
+
+Rules:
+
+- The advisory dependency recipe walks backward through `upgradesFrom` to the base item.
+- It includes the base item's `recipe`.
+- It walks forward through `upgradesTo` to the requested target.
+- It includes each step target's `upgradeCost` through the requested target.
+- It is generic to upgrade-chain metadata and must not rely only on weapon-specific fields when `upgradesFrom` / `upgradesTo` links are sufficient.
+- It applies to active required targets even when the target is already fully owned.
+- Owned lower-tier items do not reduce advisory provenance.
+- Complete targets remain complete and do not create material deficits solely because advisory dependencies exist.
+
+This advisory recipe is not executable planning. Crafting output, weapon upgrade output, material consumption, and Crafting view instructions remain based on concrete recipes and stepwise upgrade planning.
+
+Direct ingredients from advisory upgrade-chain recipes participate in the same recycle-priority demotion as existing direct recipe inputs. They are avoided while normal recycle candidates exist, but they are not hard-protected and may still be recycled as a fallback under existing direct-recipe-input rules.
+
+Recycle and salvage source items that yield advisory dependency materials receive optional-use provenance for item relevance and the "Could be used for" tooltip section. This does not hard-protect those source items and does not demote them in recycle priority merely because they can yield a useful material.
 
 ---
 
@@ -1731,7 +1755,7 @@ The COMPLETE/NEEDED badge is aligned to the right of the combined list-name + go
 
 ### Could be used for
 
-When the planner recommends recycling an item for yields that contribute to a user's active planning targets, a **"Could be used for"** section appears below "Needed for Crafting" in the right column.
+When an item can recycle or salvage into yields that contribute to a user's active planning targets, a **"Could be used for"** section appears below "Needed for Crafting" in the right column. Entries may come from committed recycle actions or from advisory recycle/salvage provenance.
 
 Each entry shows:
 
@@ -1742,7 +1766,7 @@ Each entry shows:
 
 The phrasing **"Could be used for"** conveys an advisory tone — the recycle/salvage yield is an optional path toward a goal, not a mandate.
 
-Data source: `ItemInsight.recycleSalvageUsages`, populated from the planner's committed recycle actions (`RecycleAction.reasons`).
+Data source: `ItemInsight.recycleSalvageUsages`, populated from committed recycle actions (`RecycleAction.reasons`) and advisory recycle/salvage source provenance. Crafting view recycle instructions and recycle "Why" rows still use committed recycle actions only.
 
 ### Needed for Repair (Change-22)
 

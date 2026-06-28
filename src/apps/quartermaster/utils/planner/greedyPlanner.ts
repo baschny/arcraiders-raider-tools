@@ -26,6 +26,7 @@ import type {
 } from '../../types/planner';
 import type { TargetPriority } from './aggregation';
 import { NON_RECYCLABLE_CATEGORIES } from '../../types/item';
+import { getAdvisoryDependencyRecipe } from './provenance';
 
 // ---------------------------------------------------------------------------
 // Public result
@@ -211,10 +212,11 @@ function buildDirectRecipeInputWarnings(
 
   for (const targetId of Object.keys(requiredFinal).sort()) {
     const targetItem = itemsMap[targetId];
-    if (!targetItem?.recipe) continue;
+    if (!targetItem) continue;
 
     const sources = requiredSourcesByItemId[targetId] ?? [];
-    for (const inputId of Object.keys(targetItem.recipe)) {
+    const recipe = getAdvisoryDependencyRecipe(itemsMap, targetId);
+    for (const inputId of Object.keys(recipe)) {
       inputSet.add(inputId);
       const existing = warnings.get(inputId) ?? [];
       for (const source of sources) {

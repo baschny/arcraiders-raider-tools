@@ -20,7 +20,7 @@ import type {
   LootBadge,
   RequiredSource,
 } from '../../types/planner';
-import { calculateProvenance } from './provenance';
+import { calculateProvenance, getAdvisoryDependencyRecipe } from './provenance';
 import { NON_RECYCLABLE_CATEGORIES } from '../../types/item';
 
 // ---------------------------------------------------------------------------
@@ -36,15 +36,14 @@ function computeRecipeRelevantSet(itemsMap: ItemsMap): Set<ItemId> {
   for (const [itemId, item] of Object.entries(itemsMap)) {
     if (item.recipe && Object.keys(item.recipe).length > 0 && item.craftBench) {
       relevant.add(itemId);
-      for (const ingId of Object.keys(item.recipe)) {
-        relevant.add(ingId);
-      }
     }
     if (item.upgradeCost && Object.keys(item.upgradeCost).length > 0) {
       relevant.add(itemId);
-      for (const ingId of Object.keys(item.upgradeCost)) {
-        relevant.add(ingId);
-      }
+    }
+
+    const recipe = getAdvisoryDependencyRecipe(itemsMap, itemId);
+    for (const ingId of Object.keys(recipe)) {
+      relevant.add(ingId);
     }
   }
 

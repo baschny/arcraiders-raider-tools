@@ -254,9 +254,48 @@ function addRecycleSalvageUsages(
   insights: ItemInsightsMap,
   itemsMap: ItemsMap,
   plannerResult: PlannerResult,
+  missingByItemId: Record<string, number>,
 ): void {
   const dedupe = new Set<string>();
   const satisfiableTargets = plannerResult.satisfiableTargets;
+
+  const addUsage = (
+    srcItemId: string,
+    listId: string,
+    listName: string,
+    listType: ListType,
+    yieldItemId: string,
+    yieldItemName: string,
+    yieldQuantity: number,
+    targetItemId: string,
+    targetItemName: string,
+    targetItemRarity: string,
+    chainLabel: string,
+  ) => {
+    const dedupeKey = [
+      srcItemId,
+      listId,
+      targetItemId,
+      yieldItemId,
+    ].join('|');
+    if (dedupe.has(dedupeKey)) return;
+    dedupe.add(dedupeKey);
+
+    const insight = getOrCreateInsight(insights, srcItemId);
+    insight.recycleSalvageUsages.push({
+      listId,
+      listName,
+      listType,
+      yieldItemId,
+      yieldItemName,
+      yieldQuantity,
+      targetItemId,
+      targetItemName,
+      targetItemRarity,
+      chainLabel,
+      isComplete: (missingByItemId[targetItemId] ?? 0) <= 0 || satisfiableTargets.has(targetItemId),
+    });
+  };
 
   for (const action of plannerResult.recyclePlan.actions) {
     for (const reason of action.reasons) {
@@ -270,29 +309,65 @@ function addRecycleSalvageUsages(
       const source = sources.find((s) => s.listId === reason.listId);
       const listType = source?.listType ?? 'user';
 
-      const dedupeKey = [
+      addUsage(
         action.srcItemId,
         reason.listId,
-        reason.targetItemId,
-        reason.producedItemId,
-      ].join('|');
-      if (dedupe.has(dedupeKey)) continue;
-      dedupe.add(dedupeKey);
-
-      const insight = getOrCreateInsight(insights, action.srcItemId);
-      insight.recycleSalvageUsages.push({
-        listId: reason.listId,
-        listName: reason.listName,
+        reason.listName,
         listType,
-        yieldItemId: reason.producedItemId,
-        yieldItemName: reason.producedItemName,
-        yieldQuantity: reason.quantityCovered,
-        targetItemId: reason.targetItemId,
-        targetItemName: reason.targetItemName,
-        targetItemRarity: targetItem.rarity ?? '',
-        chainLabel: reason.chainLabel,
-        isComplete: satisfiableTargets.has(reason.targetItemId),
-      });
+        reason.producedItemId,
+        reason.producedItemName,
+        reason.quantityCovered,
+        reason.targetItemId,
+        reason.targetItemName,
+        targetItem.rarity ?? '',
+        reason.chainLabel,
+      );
+    }
+  }
+
+  const targetItemIds = Object.keys(plannerResult.requiredSourcesByItemId).sort();
+  const allSourceItemIds = Object.keys(itemsMap).sort();
+  for (const targetItemId of targetItemIds) {
+    const targetItem = itemsMap[targetItemId];
+    if (!targetItem) continue;
+
+    const listSources = plannerResult.requiredSourcesByItemId[targetItemId] ?? [];
+    if (listSources.length === 0) continue;
+
+    const chains = collectIngredientChainsForTarget(itemsMap, targetItemId);
+    for (const chain of chains) {
+      const yieldItem = itemsMap[chain.ingredientItemId];
+      if (!yieldItem) continue;
+
+      for (const srcItemId of allSourceItemIds) {
+        const sourceItem = itemsMap[srcItemId];
+        if (!sourceItem) continue;
+
+        const yields = {
+          ...(sourceItem.recyclesInto ?? {}),
+          ...(sourceItem.salvagesInto ?? {}),
+        };
+        const yieldQuantity = yields[chain.ingredientItemId] ?? 0;
+        if (yieldQuantity <= 0) continue;
+
+        const chainLabel = formatChainLabel(chain.chainItemIds, itemsMap);
+        const sortedSources = [...listSources].sort((a, b) => a.listName.localeCompare(b.listName));
+        for (const source of sortedSources) {
+          addUsage(
+            srcItemId,
+            source.listId,
+            source.listName,
+            source.listType,
+            chain.ingredientItemId,
+            yieldItem.name,
+            yieldQuantity,
+            targetItemId,
+            targetItem.name,
+            targetItem.rarity ?? '',
+            chainLabel,
+          );
+        }
+      }
     }
   }
 }
@@ -305,7 +380,7 @@ export function buildItemInsights(itemsMap: ItemsMap, plannerResult: PlannerResu
   addFinalNeeds(insights, plannerResult, missingByItemId);
   addCraftingNeeds(insights, itemsMap, plannerResult, missingByItemId);
   addRepairNeeds(insights, itemsMap, plannerResult);
-  addRecycleSalvageUsages(insights, itemsMap, plannerResult);
+  addRecycleSalvageUsages(insights, itemsMap, plannerResult, missingByItemId);
 
   // Ensure stable sorting for deterministic rendering
   for (const insight of Object.values(insights)) {

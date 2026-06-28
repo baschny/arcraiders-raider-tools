@@ -272,6 +272,46 @@ describe('In Raid Suggestions Provenance (P2 Fixes)', () => {
     expect(provenance.speaker_component?.[0].quantity).toBe(3);
   });
 
+  it('uses advisory base recipe plus upgrade costs for generic upgrade chains', () => {
+    const genericUpgradeItemsMap: ItemsMap = {
+      ...itemsMap,
+      field_scanner_i: {
+        ...baseItem,
+        id: 'field_scanner_i',
+        name: 'Field Scanner I',
+        category: 'Tool',
+        recipe: { magnet: 2 },
+        craftBench: 'workbench',
+        upgradesTo: 'field_scanner_ii',
+      },
+      field_scanner_ii: {
+        ...baseItem,
+        id: 'field_scanner_ii',
+        name: 'Field Scanner II',
+        category: 'Tool',
+        upgradeCost: { speaker_component: 3 },
+        upgradesFrom: 'field_scanner_i',
+      },
+    };
+
+    const provenance = calculateProvenance(
+      genericUpgradeItemsMap,
+      {
+        field_scanner_ii: [{ listId: 'list-a', listName: 'List A', quantity: 1, listType: 'user' }],
+      },
+      {},
+    );
+
+    expect(provenance.magnet?.[0]).toMatchObject({
+      quantity: 2,
+      impactedTargetItemIds: ['field_scanner_ii'],
+    });
+    expect(provenance.speaker_component?.[0]).toMatchObject({
+      quantity: 3,
+      impactedTargetItemIds: ['field_scanner_ii'],
+    });
+  });
+
   it('keeps direct target quantity when the same item also supports a recycle yield', () => {
     const provenance = calculateProvenance(
       itemsMap,

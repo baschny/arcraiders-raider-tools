@@ -23,18 +23,70 @@ export interface DependencyChain {
   chainItemIds: ItemId[];
 }
 
+function addCost(target: Record<string, number>, cost: Record<string, number> | undefined): void {
+  if (!cost) return;
+  for (const [id, qty] of Object.entries(cost)) {
+    target[id] = (target[id] || 0) + qty;
+  }
+}
+
 function getMergedRecipe(item: PlannerItem): Record<string, number> {
   const recipe: Record<string, number> = {};
-  if (item.recipe) {
-    for (const [id, qty] of Object.entries(item.recipe)) {
-      recipe[id] = (recipe[id] || 0) + (qty as number);
-    }
+  addCost(recipe, item.recipe);
+  addCost(recipe, item.upgradeCost);
+  return recipe;
+}
+
+function findUpgradeChainBase(itemsMap: ItemsMap, item: PlannerItem): PlannerItem | null {
+  let current = item;
+  const visited = new Set<ItemId>([item.id]);
+
+  while (current.upgradesFrom) {
+    const previous = itemsMap[current.upgradesFrom];
+    if (!previous || visited.has(previous.id)) return null;
+    visited.add(previous.id);
+    current = previous;
   }
-  if (item.upgradeCost) {
-    for (const [id, qty] of Object.entries(item.upgradeCost)) {
-      recipe[id] = (recipe[id] || 0) + (qty as number);
+
+  // If we never moved and there is no forward link, this is a standalone
+  // item, not the base of an upgrade chain.
+  return current.id === item.id && !item.upgradesTo ? null : current;
+}
+
+/**
+ * Build the virtual one-step dependency recipe used for advisory provenance.
+ * Executable crafting/upgrading must continue to use concrete recipe and
+ * upgrade-step logic instead.
+ */
+export function getAdvisoryDependencyRecipe(
+  itemsMap: ItemsMap,
+  itemId: ItemId,
+): Record<string, number> {
+  const item = itemsMap[itemId];
+  if (!item) return {};
+
+  const base = findUpgradeChainBase(itemsMap, item);
+  if (!base) return getMergedRecipe(item);
+
+  const recipe: Record<string, number> = {};
+  addCost(recipe, base.recipe);
+
+  let current = base;
+  const visited = new Set<ItemId>([base.id]);
+  while (current.id !== item.id) {
+    const nextId = current.upgradesTo;
+    if (!nextId || visited.has(nextId)) {
+      return getMergedRecipe(item);
     }
+
+    const next = itemsMap[nextId];
+    if (!next) return getMergedRecipe(item);
+
+    addCost(recipe, next.upgradeCost);
+    visited.add(next.id);
+    current = next;
   }
+
   return recipe;
 }
 
@@ -54,7 +106,7 @@ export function walkDependencies(
     const item = itemsMap[currentItemId];
     if (!item) return;
 
-    const recipe = getMergedRecipe(item);
+    const recipe = getAdvisoryDependencyRecipe(itemsMap, currentItemId);
     if (Object.keys(recipe).length === 0) return;
 
     const ingredientIds = Object.keys(recipe).sort();
@@ -157,7 +209,7 @@ export function calculateProvenance(
     const item = itemsMap[currId];
     if (!item) return;
 
-    const recipe = getMergedRecipe(item);
+    const recipe = getAdvisoryDependencyRecipe(itemsMap, currId);
     if (Object.keys(recipe).length === 0) return;
 
     const craftQuantity = item.craftQuantity || 1;

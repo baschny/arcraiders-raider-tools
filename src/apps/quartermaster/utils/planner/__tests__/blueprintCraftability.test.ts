@@ -1159,6 +1159,24 @@ const hullcrackerItemsMap: ItemsMap = {
       arc_motion_core: 1,
     },
   }),
+  magnetron: item({
+    id: 'magnetron',
+    name: 'Magnetron',
+    category: 'Recyclable',
+    value: 3000,
+    recyclesInto: {
+      magnetic_accelerator: 1,
+    },
+  }),
+  amc_scrap: item({
+    id: 'amc_scrap',
+    name: 'AMC Scrap',
+    category: 'Recyclable',
+    value: 9000,
+    recyclesInto: {
+      advanced_mechanical_components: 1,
+    },
+  }),
   hullcracker_i: item({
     id: 'hullcracker_i',
     name: 'Hullcracker I',
@@ -1235,6 +1253,98 @@ const hullcrackerIvGoal: StoredList[] = [{
 }];
 
 describe('quartermaster hullcracker upgrade planning — recycle protection', () => {
+  it('keeps cumulative base recipe materials relevant for complete higher-tier targets', () => {
+    const result = computePlan(
+      hullcrackerItemsMap,
+      [{
+        id: 'weapons',
+        name: 'Weapons',
+        type: 'user',
+        isEnabled: true,
+        items: [{ itemId: 'hullcracker_iv', quantity: 2, isEnabled: true }],
+      }],
+      [{ itemId: 'hullcracker_iv', quantity: 2 }],
+      benchLevels,
+      new Set(['hullcracker_i']),
+    );
+
+    expect(result.craftPlan.steps).toEqual([]);
+    expect(result.weaponUpgradePlan.steps).toEqual([]);
+    expect(result.inRaidSuggestions.items.map((suggestion) => suggestion.itemId)).not.toContain('magnetic_accelerator');
+
+    const insights = buildItemInsights(hullcrackerItemsMap, result);
+    expect(insights.magnetic_accelerator.craftingNeeds).toEqual([
+      expect.objectContaining({
+        listName: 'Weapons',
+        targetItemId: 'hullcracker_iv',
+        targetItemName: 'Hullcracker IV',
+        isComplete: true,
+      }),
+    ]);
+  });
+
+  it('adds advisory recycle provenance for sources of complete higher-tier target materials', () => {
+    const result = computePlan(
+      hullcrackerItemsMap,
+      [{
+        id: 'weapons',
+        name: 'Weapons',
+        type: 'user',
+        isEnabled: true,
+        items: [{ itemId: 'hullcracker_iv', quantity: 2, isEnabled: true }],
+      }],
+      [{ itemId: 'hullcracker_iv', quantity: 2 }],
+      benchLevels,
+      new Set(['hullcracker_i']),
+    );
+
+    const insights = buildItemInsights(hullcrackerItemsMap, result);
+    expect(insights.magnetron.recycleSalvageUsages).toEqual([
+      expect.objectContaining({
+        listName: 'Weapons',
+        yieldItemId: 'magnetic_accelerator',
+        targetItemId: 'hullcracker_iv',
+        targetItemName: 'Hullcracker IV',
+        isComplete: true,
+      }),
+    ]);
+  });
+
+  it('demotes cumulative base recipe ingredients as direct recipe inputs', () => {
+    const result = computePlan(
+      hullcrackerItemsMap,
+      [
+        {
+          id: 'weapons',
+          name: 'Weapons',
+          type: 'user',
+          isEnabled: true,
+          items: [{ itemId: 'hullcracker_iv', quantity: 1, isEnabled: true }],
+        },
+        {
+          id: 'components',
+          name: 'Components',
+          type: 'user',
+          isEnabled: true,
+          items: [{ itemId: 'advanced_mechanical_components', quantity: 1, isEnabled: true }],
+        },
+      ],
+      [
+        { itemId: 'hullcracker_iv', quantity: 1 },
+        { itemId: 'magnetic_accelerator', quantity: 1 },
+        { itemId: 'amc_scrap', quantity: 1 },
+      ],
+      benchLevels,
+      new Set(['hullcracker_i']),
+    );
+
+    expect(result.recyclePlan.actions).toHaveLength(1);
+    expect(result.recyclePlan.actions[0]).toMatchObject({
+      srcItemId: 'amc_scrap',
+      sourcePriorityGroup: 'normal',
+    });
+  });
+
   it('does NOT recycle base-tier recipe ingredients that are needed for the tier I craft', () => {
     // 3x magnetic_accelerator, enough exodus_modules + heavy_gun_parts for
     // the full chain, 0x advanced_mechanical_components.
