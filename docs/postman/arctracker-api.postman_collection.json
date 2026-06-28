@@ -1,0 +1,523 @@
+{
+  "info": {
+    "_postman_id": "2da3f5a7-1d6b-47d0-a4e2-9d38d9ccf208",
+    "name": "ArcTracker API",
+    "description": "Direct Postman collection for debugging ArcTracker API access.\n\nSetup:\n1. Import this collection into Postman.\n2. Edit collection variables.\n3. Set API_KEY to your ArcTracker user API token from https://arctracker.io/settings.\n4. Set APP_KEY to the ArcTracker application key required by direct API calls.\n5. Run the collection or click any request.\n\nNotes:\n- Requests target {{BASE_URL}}, defaulting to https://arctracker.io/api.\n- Authentication is inherited from the collection as Authorization: Bearer {{API_KEY}}.\n- Every direct ArcTracker API request sends X-App-Key: {{APP_KEY}}.\n- sync-now additionally sends X-Sync-Secret: {{SYNC_SECRET}} and uses {{SYNC_TARGETS_JSON}} as its body targets array.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{API_KEY}}",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "const missing = ['API_KEY', 'APP_KEY'].filter((key) => {",
+          "  const value = pm.variables.get(key);",
+          "  return !value || value.startsWith('paste-');",
+          "});",
+          "",
+          "if (missing.length > 0) {",
+          "  console.warn(`ArcTracker collection variables missing or placeholder: ${missing.join(', ')}`);",
+          "}"
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "pm.test('ArcTracker responded', function () {",
+          "  pm.expect(pm.response.code).to.be.above(0);",
+          "});",
+          "",
+          "pm.test('No upstream server error', function () {",
+          "  pm.expect(pm.response.code).to.be.below(500);",
+          "});",
+          "",
+          "const etag = pm.response.headers.get('ETag');",
+          "if (etag) {",
+          "  pm.collectionVariables.set('QUESTS_ETAG', etag);",
+          "}",
+          "",
+          "const lastModified = pm.response.headers.get('Last-Modified');",
+          "if (lastModified) {",
+          "  pm.collectionVariables.set('QUESTS_LAST_MODIFIED', lastModified);",
+          "}",
+          "",
+          "if ((pm.response.headers.get('Content-Type') || '').includes('application/json')) {",
+          "  pm.test('JSON body is parseable', function () {",
+          "    pm.response.json();",
+          "  });",
+          "}"
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "BASE_URL",
+      "value": "https://arctracker.io/api",
+      "type": "string"
+    },
+    {
+      "key": "API_KEY",
+      "value": "paste-your-arctracker-user-api-token",
+      "type": "secret"
+    },
+    {
+      "key": "APP_KEY",
+      "value": "paste-your-arctracker-app-key",
+      "type": "secret"
+    },
+    {
+      "key": "SYNC_SECRET",
+      "value": "raidertools123",
+      "type": "secret"
+    },
+    {
+      "key": "LOCALE",
+      "value": "en",
+      "type": "string"
+    },
+    {
+      "key": "PAGE",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "PER_PAGE",
+      "value": "500",
+      "type": "string"
+    },
+    {
+      "key": "SORT",
+      "value": "slot",
+      "type": "string"
+    },
+    {
+      "key": "SYNC_TARGETS_JSON",
+      "value": "[\"inventory\", \"blueprints\", \"hideout\", \"projects\", \"quests\", \"rounds\", \"stats\"]",
+      "type": "string"
+    },
+    {
+      "key": "QUESTS_ETAG",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "QUESTS_LAST_MODIFIED",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "User Data",
+      "description": "Authenticated ArcTracker user/game-data API endpoints.",
+      "item": [
+        {
+          "name": "Get Profile",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "X-App-Key",
+                "value": "{{APP_KEY}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/v2/user/profile",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "v2",
+                "user",
+                "profile"
+              ]
+            },
+            "description": "Returns basic ArcTracker profile information, including username, level, subscription state, and user id."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Stash",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "X-App-Key",
+                "value": "{{APP_KEY}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/v2/user/stash?locale={{LOCALE}}&page={{PAGE}}&per_page={{PER_PAGE}}&sort={{SORT}}",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "v2",
+                "user",
+                "stash"
+              ],
+              "query": [
+                {
+                  "key": "locale",
+                  "value": "{{LOCALE}}"
+                },
+                {
+                  "key": "page",
+                  "value": "{{PAGE}}"
+                },
+                {
+                  "key": "per_page",
+                  "value": "{{PER_PAGE}}"
+                },
+                {
+                  "key": "sort",
+                  "value": "{{SORT}}"
+                }
+              ]
+            },
+            "description": "Returns paginated stash inventory. Raider Tools uses per_page=500 and sort=slot."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Loadout",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "X-App-Key",
+                "value": "{{APP_KEY}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/v2/user/loadout?locale={{LOCALE}}",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "v2",
+                "user",
+                "loadout"
+              ],
+              "query": [
+                {
+                  "key": "locale",
+                  "value": "{{LOCALE}}"
+                }
+              ]
+            },
+            "description": "Returns currently equipped augment, shield, weapons, backpack, quick items, safe pocket, and augmented slots."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Hideout",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "X-App-Key",
+                "value": "{{APP_KEY}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/v2/user/hideout",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "v2",
+                "user",
+                "hideout"
+              ]
+            },
+            "description": "Returns hideout module progression."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Blueprints",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "X-App-Key",
+                "value": "{{APP_KEY}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/v2/user/blueprints",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "v2",
+                "user",
+                "blueprints"
+              ]
+            },
+            "description": "Returns learned and unlearned blueprint state."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Projects",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "X-App-Key",
+                "value": "{{APP_KEY}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/v2/user/projects",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "v2",
+                "user",
+                "projects"
+              ]
+            },
+            "description": "Returns expedition/project phase progress and submitted requirements."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Quests",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "X-App-Key",
+                "value": "{{APP_KEY}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/v2/user/quests",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "v2",
+                "user",
+                "quests"
+              ]
+            },
+            "description": "Returns quest completion state. If ArcTracker returns ETag or Last-Modified, the collection stores them in QUESTS_ETAG and QUESTS_LAST_MODIFIED."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Quests - Conditional",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "X-App-Key",
+                "value": "{{APP_KEY}}"
+              },
+              {
+                "key": "If-None-Match",
+                "value": "{{QUESTS_ETAG}}",
+                "description": "Populated automatically after Get Quests if ArcTracker returns ETag."
+              },
+              {
+                "key": "If-Modified-Since",
+                "value": "{{QUESTS_LAST_MODIFIED}}",
+                "description": "Populated automatically after Get Quests if ArcTracker returns Last-Modified."
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/v2/user/quests",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "v2",
+                "user",
+                "quests"
+              ]
+            },
+            "description": "Tests ArcTracker conditional GET support for quest snapshots. Expected success statuses are 200 or 304."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Rounds",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "X-App-Key",
+                "value": "{{APP_KEY}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/v2/user/rounds",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "v2",
+                "user",
+                "rounds"
+              ]
+            },
+            "description": "Returns user round/raid history data. This route is present on the live ArcTracker API but is not currently consumed by Raider Tools."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Sync",
+      "description": "ArcTracker sync-now endpoint. This may require a subscribed ArcTracker account and a valid sync secret.",
+      "item": [
+        {
+          "name": "Sync Now - Selected Targets",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-App-Key",
+                "value": "{{APP_KEY}}"
+              },
+              {
+                "key": "X-Sync-Secret",
+                "value": "{{SYNC_SECRET}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"targets\": {{SYNC_TARGETS_JSON}}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/v2/sync-now",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "v2",
+                "sync-now"
+              ]
+            },
+            "description": "Triggers ArcTracker's sync-now job for the configured targets. Default targets mirror the domains Raider Tools knows about: inventory, blueprints, hideout, projects, quests, rounds, and stats."
+          },
+          "response": []
+        },
+        {
+          "name": "Sync Now - All Defaults",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-App-Key",
+                "value": "{{APP_KEY}}"
+              },
+              {
+                "key": "X-Sync-Secret",
+                "value": "{{SYNC_SECRET}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/v2/sync-now",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "v2",
+                "sync-now"
+              ]
+            },
+            "description": "Calls sync-now with an empty body. Raider Tools' proxy uses this shape when no explicit targets are provided."
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
