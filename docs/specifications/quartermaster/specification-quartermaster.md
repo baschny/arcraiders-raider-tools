@@ -1477,7 +1477,7 @@ This advisory recipe is not executable planning. Crafting output, weapon upgrade
 
 Direct ingredients from advisory upgrade-chain recipes participate in the same recycle-priority demotion as existing direct recipe inputs. They are avoided while normal recycle candidates exist, but they are not hard-protected and may still be recycled as a fallback under existing direct-recipe-input rules.
 
-Recycle and salvage source items that yield advisory dependency materials receive optional-use provenance for item relevance and the "Could be used for" tooltip section. This does not hard-protect those source items and does not demote them in recycle priority merely because they can yield a useful material.
+Recycle and salvage source items that yield direct advisory dependency materials receive optional-use provenance for item relevance and the "Could be used for" tooltip section. A yielded material is eligible only when it is a direct entry in the target's advisory dependency recipe, including cumulative upgrade-chain direct materials. Deeper speculative chains are excluded from this section; for example, yielding a base material that could craft an intermediate material which could then craft another intermediate material does not create "Could be used for" provenance for the final target. This does not hard-protect those source items and does not demote them in recycle priority merely because they can yield a useful material.
 
 ---
 
@@ -1666,7 +1666,7 @@ Tooltip layout follows the **loot-helper popup style**, with a two-column split 
 ### Body Area
 
 The body splits into two columns when the item has calculated planning information
-(Needed for Lists or Needed for Crafting). Otherwise, a single-column layout is used.
+(Needed for Lists, Possible Craft Uses, Possible Use After Recycling/Salvage, or Needed for Repair). Otherwise, a single-column layout is used.
 
 **Column 1 — Static Information (always present, left column):**
 
@@ -1679,7 +1679,9 @@ The body splits into two columns when the item has calculated planning informati
 **Column 2 — Calculated Information (optional, right column):**
 
 1. Needed for Lists section (if applicable)
-2. Needed for Crafting section (if applicable)
+2. Possible Craft Uses section (if applicable)
+3. Possible Use After Recycling/Salvage sections (if applicable)
+4. Needed for Repair section (if applicable)
 
 If no column 2 content exists, column 1 spans the full width.
 
@@ -1749,31 +1751,55 @@ Each list entry shows:
   - The NEEDED badge is red with white text, styled like `in-raid-view__missing-circle`
   - The `<qty>` is the missing quantity for this item in this specific list
 
-### Needed for Crafting
+### Possible Craft Uses
 
-Each crafting entry shows:
+When an item appears in the advisory crafting dependency graph for a user's active planning targets, a **"Possible Craft Uses"** section appears below direct list needs in the right column. This section is advisory: it indicates that the item may help craft or upgrade a tracked target, not that the item itself is directly required by a list.
 
-- A list-type icon (`List` for user lists, `Home` for hideout lists) followed by the list name (no quantities)
-- Below the list name: the target/goal item, prefixed with a small item icon (24px) with rarity border/color and background
-- On the right side: either a "COMPLETE" badge (green) or a "NEEDED" badge (red)
-- Crafting chain text is **not displayed** (reserved for future improvement)
+Each target uses the shared advisory target layout:
 
-The COMPLETE/NEEDED badge is aligned to the right of the combined list-name + goal-item block, not below it.
+- A compact target header outside the list-card layout:
+  - target item icon at 18px with a 1px border
+  - target item name in uppercase
+- Under each target header, list cards with:
+  - list-type icon (`List` for user lists, `Home` for hideout lists)
+  - list name
+  - desired quantity badge
+  - on the right side, either a "COMPLETE" badge or a "`<qty>` NEEDED" badge
 
-### Could be used for
+If the tooltip contains both direct list needs and possible-use advisory sections, a single subtle dotted divider appears before the first advisory section. Do not show the divider between individual possible-use sections, and do not show it when the tooltip only has possible-use advisory sections.
 
-When an item can recycle or salvage into yields that contribute to a user's active planning targets, a **"Could be used for"** section appears below "Needed for Crafting" in the right column. Entries may come from committed recycle actions or from advisory recycle/salvage provenance.
+Crafting chain text is **not displayed** (reserved for future improvement).
 
-Each entry shows:
+### Possible Use After Recycling / Salvage
 
-- A list-type icon (`List` for user lists, `Home` for hideout lists)
-- The yield item icon + quantity preceded by an arrow (→)
-- The target item icon + name
-- On the right side: either a "COMPLETE" badge (green) or a "NEEDED" badge (red)
+When an item can recycle or salvage into yields that contribute to a user's active planning targets, action/yield advisory sections appear below "Possible Craft Uses" in the right column. Entries may come from committed recycle actions or from advisory recycle/salvage provenance.
 
-The phrasing **"Could be used for"** conveys an advisory tone — the recycle/salvage yield is an optional path toward a goal, not a mandate.
+Advisory recycle/salvage provenance is intentionally narrow: the hovered item must yield a direct material in the target's advisory dependency recipe. Advisory dependency recipes include cumulative upgrade-chain direct materials, so items that yield a direct upgrade material for a tracked higher-tier target can still appear. Deep chains such as `Recycle -> Craft -> Craft -> Craft` are excluded from this section.
 
-Data source: `ItemInsight.recycleSalvageUsages`, populated from committed recycle actions (`RecycleAction.reasons`) and advisory recycle/salvage source provenance. Crafting view recycle instructions and recycle "Why" rows still use committed recycle actions only.
+Entries are grouped by the first action to perform with the hovered item and the yielded material. The generic **"Could be used for"** headline is not displayed; each action/yield group uses its own advisory headline instead.
+
+Each group headline shows:
+
+- `Possible Use After Recycling: <yield item name>` for recycle groups
+- `Possible Use After Salvage: <yield item name>` for salvage groups
+
+Example headline:
+
+```text
+POSSIBLE USE AFTER RECYCLING: CHEMICALS
+```
+
+If the same item can both recycle and salvage into the same yielded material, only the Recycle group is shown. This duplicate suppression is presentation and advisory-insight behavior only; the static `Salvages Into` section still shows the salvage yield.
+
+Inside each group, targets use the shared advisory target layout without wrapping the whole group in a card.
+
+Self-target suggestions are suppressed in advisory insight generation. For example, if recycling `Deadline` yields materials that could craft `Deadline`, the tooltip must not suggest recycling `Deadline` as a path toward `Deadline`.
+
+The phrasing **"Possible Use After..."** conveys an advisory tone — the recycle/salvage yield is an optional path toward a goal, not a mandate.
+
+Complete targets may still appear in these advisory sections because they also help the player decide whether to keep or sell items for future repeats.
+
+Data source: `ItemInsight.recycleSalvageUsages`, populated from committed recycle actions (`RecycleAction.reasons`) and advisory recycle/salvage source provenance. Each usage includes an `action` discriminator (`recycle` or `salvage`). Crafting view recycle instructions and recycle "Why" rows still use committed recycle actions only.
 
 ### Needed for Repair (Change-22)
 

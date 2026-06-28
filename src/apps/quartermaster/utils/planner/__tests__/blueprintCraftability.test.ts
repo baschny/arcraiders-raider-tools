@@ -1301,6 +1301,7 @@ describe('quartermaster hullcracker upgrade planning — recycle protection', ()
     const insights = buildItemInsights(hullcrackerItemsMap, result);
     expect(insights.magnetron.recycleSalvageUsages).toEqual([
       expect.objectContaining({
+        action: 'recycle',
         listName: 'Weapons',
         yieldItemId: 'magnetic_accelerator',
         targetItemId: 'hullcracker_iv',
@@ -1308,6 +1309,113 @@ describe('quartermaster hullcracker upgrade planning — recycle protection', ()
         isComplete: true,
       }),
     ]);
+  });
+
+  it('does not add self-target recycle provenance', () => {
+    const selfRecycleItemsMap: ItemsMap = {
+      ...itemsMap,
+      deadline: {
+        ...itemsMap.deadline,
+        recyclesInto: {
+          arc_circuitry: 1,
+        },
+        salvagesInto: {
+          arc_circuitry: 1,
+        },
+      },
+    };
+    const result = computePlan(
+      selfRecycleItemsMap,
+      [{
+        id: 'quick-use',
+        name: 'Quick Use',
+        type: 'user',
+        isEnabled: true,
+        items: [{ itemId: 'deadline', quantity: 1, isEnabled: true }],
+      }],
+      [],
+      benchLevels,
+      new Set(['deadline']),
+    );
+
+    const insights = buildItemInsights(selfRecycleItemsMap, result);
+    expect(insights.deadline?.recycleSalvageUsages ?? []).toEqual([]);
+  });
+
+  it('prefers recycle over salvage when both yield the same advisory material', () => {
+    const duplicateYieldItemsMap: ItemsMap = {
+      ...itemsMap,
+      dual_source: item({
+        id: 'dual_source',
+        name: 'Dual Source',
+        category: 'Recyclable',
+        recyclesInto: {
+          arc_circuitry: 1,
+        },
+        salvagesInto: {
+          arc_circuitry: 1,
+        },
+      }),
+    };
+    const result = computePlan(
+      duplicateYieldItemsMap,
+      [{
+        id: 'quick-use',
+        name: 'Quick Use',
+        type: 'user',
+        isEnabled: true,
+        items: [{ itemId: 'deadline', quantity: 1, isEnabled: true }],
+      }],
+      [],
+      benchLevels,
+      new Set(['deadline']),
+    );
+
+    const insights = buildItemInsights(duplicateYieldItemsMap, result);
+    expect(insights.dual_source.recycleSalvageUsages).toEqual([
+      expect.objectContaining({
+        action: 'recycle',
+        yieldItemId: 'arc_circuitry',
+        targetItemId: 'deadline',
+      }),
+    ]);
+  });
+
+  it('only adds advisory recycle provenance for direct target materials', () => {
+    const directOnlyItemsMap: ItemsMap = {
+      ...itemsMap,
+      deep_source: item({
+        id: 'deep_source',
+        name: 'Deep Source',
+        category: 'Recyclable',
+        recyclesInto: {
+          chemicals: 1,
+        },
+      }),
+    };
+    const result = computePlan(
+      directOnlyItemsMap,
+      [{
+        id: 'ammo',
+        name: 'Ammo',
+        type: 'user',
+        isEnabled: true,
+        items: [{ itemId: 'launcher_ammo', quantity: 60, isEnabled: true }],
+      }],
+      [{ itemId: 'launcher_ammo', quantity: 60 }],
+      benchLevels,
+    );
+
+    const insights = buildItemInsights(directOnlyItemsMap, result);
+    expect(insights.spare_recycler.recycleSalvageUsages).toEqual([
+      expect.objectContaining({
+        action: 'recycle',
+        yieldItemId: 'crude_explosives',
+        targetItemId: 'launcher_ammo',
+        isComplete: true,
+      }),
+    ]);
+    expect(insights.deep_source?.recycleSalvageUsages ?? []).toEqual([]);
   });
 
   it('demotes cumulative base recipe ingredients as direct recipe inputs', () => {

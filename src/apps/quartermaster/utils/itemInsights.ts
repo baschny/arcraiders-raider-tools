@@ -1,6 +1,6 @@
 import type { ItemsMap } from '../types/item';
-import type { ItemRecycleSalvageUsage, ListType, PlannerResult } from '../types/planner';
-import { walkDependencies } from './planner/provenance';
+import type { ItemRecycleSalvageAction, ItemRecycleSalvageUsage, ListType, PlannerResult } from '../types/planner';
+import { getAdvisoryDependencyRecipe, walkDependencies } from './planner/provenance';
 
 export interface ItemFinalListNeed {
   listId: string;
@@ -261,6 +261,7 @@ function addRecycleSalvageUsages(
 
   const addUsage = (
     srcItemId: string,
+    action: ItemRecycleSalvageAction,
     listId: string,
     listName: string,
     listType: ListType,
@@ -272,8 +273,11 @@ function addRecycleSalvageUsages(
     targetItemRarity: string,
     chainLabel: string,
   ) => {
+    if (srcItemId === targetItemId) return;
+
     const dedupeKey = [
       srcItemId,
+      action,
       listId,
       targetItemId,
       yieldItemId,
@@ -286,6 +290,7 @@ function addRecycleSalvageUsages(
       listId,
       listName,
       listType,
+      action,
       yieldItemId,
       yieldItemName,
       yieldQuantity,
@@ -311,6 +316,7 @@ function addRecycleSalvageUsages(
 
       addUsage(
         action.srcItemId,
+        'recycle',
         reason.listId,
         reason.listName,
         listType,
@@ -334,31 +340,33 @@ function addRecycleSalvageUsages(
     const listSources = plannerResult.requiredSourcesByItemId[targetItemId] ?? [];
     if (listSources.length === 0) continue;
 
-    const chains = collectIngredientChainsForTarget(itemsMap, targetItemId);
-    for (const chain of chains) {
-      const yieldItem = itemsMap[chain.ingredientItemId];
+    const directAdvisoryRecipe = getAdvisoryDependencyRecipe(itemsMap, targetItemId);
+    const directYieldItemIds = Object.keys(directAdvisoryRecipe).sort();
+    for (const yieldItemId of directYieldItemIds) {
+      const yieldItem = itemsMap[yieldItemId];
       if (!yieldItem) continue;
 
       for (const srcItemId of allSourceItemIds) {
         const sourceItem = itemsMap[srcItemId];
         if (!sourceItem) continue;
 
-        const yields = {
-          ...(sourceItem.recyclesInto ?? {}),
-          ...(sourceItem.salvagesInto ?? {}),
-        };
-        const yieldQuantity = yields[chain.ingredientItemId] ?? 0;
-        if (yieldQuantity <= 0) continue;
+        const recycleQuantity = sourceItem.recyclesInto?.[yieldItemId] ?? 0;
+        const salvageQuantity = sourceItem.salvagesInto?.[yieldItemId] ?? 0;
+        if (recycleQuantity <= 0 && salvageQuantity <= 0) continue;
 
-        const chainLabel = formatChainLabel(chain.chainItemIds, itemsMap);
+        const action: ItemRecycleSalvageAction = recycleQuantity > 0 ? 'recycle' : 'salvage';
+        const yieldQuantity = action === 'recycle' ? recycleQuantity : salvageQuantity;
+
+        const chainLabel = formatChainLabel([targetItemId, yieldItemId], itemsMap);
         const sortedSources = [...listSources].sort((a, b) => a.listName.localeCompare(b.listName));
         for (const source of sortedSources) {
           addUsage(
             srcItemId,
+            action,
             source.listId,
             source.listName,
             source.listType,
-            chain.ingredientItemId,
+            yieldItemId,
             yieldItem.name,
             yieldQuantity,
             targetItemId,
@@ -391,6 +399,8 @@ export function buildItemInsights(itemsMap: ItemsMap, plannerResult: PlannerResu
       return a.chainLabel.localeCompare(b.chainLabel);
     });
     insight.recycleSalvageUsages.sort((a, b) => {
+      if (a.action !== b.action) return a.action === 'recycle' ? -1 : 1;
+      if (a.yieldItemName !== b.yieldItemName) return a.yieldItemName.localeCompare(b.yieldItemName);
       if (a.listName !== b.listName) return a.listName.localeCompare(b.listName);
       if (a.targetItemName !== b.targetItemName) return a.targetItemName.localeCompare(b.targetItemName);
       return a.chainLabel.localeCompare(b.chainLabel);

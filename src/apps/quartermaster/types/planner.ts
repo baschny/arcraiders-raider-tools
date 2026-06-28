@@ -226,10 +226,14 @@ export interface PlannerResult {
 export type AdvisoryBadge = 'KEEP' | 'RECYCLE' | 'DISCARD';
 
 // Tooltip insight types
+export type ItemRecycleSalvageAction = 'recycle' | 'salvage';
+
 export interface ItemRecycleSalvageUsage {
   listId: string;
   listName: string;
-  listType: ListType;  yieldItemId: string;
+  listType: ListType;
+  action: ItemRecycleSalvageAction;
+  yieldItemId: string;
   yieldItemName: string;
   yieldQuantity: number;
   targetItemId: string;

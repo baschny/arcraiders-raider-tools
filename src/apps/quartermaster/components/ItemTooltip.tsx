@@ -1,7 +1,7 @@
 import { createPortal } from 'react-dom';
 import { Backpack, BriefcaseBusiness, CircleCheck, CircleX, Coins, Home, List, MapPin, PackageSearch, Recycle, ScrollText, Star, Target, Weight, Wrench, Shield } from 'lucide-react';
 import type { ItemsMap, PlannerItem } from '../types/item';
-import type { ListType, PlannerResult } from '../types/planner';
+import type { ItemRecycleSalvageUsage, ListType, PlannerResult } from '../types/planner';
 import { getEmptyItemInsight, type ItemInsightsMap } from '../utils/itemInsights';
 import { getLocationIcon } from '../utils/locationIcons';
 import {
@@ -60,6 +60,30 @@ function renderNeededBadge(missing: number, t: (key: string) => string) {
     return <span className="qm-item-tooltip__needed-badge qm-item-tooltip__needed-badge--complete">{t('quartermaster.itemTooltip.complete')}</span>;
   }
   return <span className="qm-item-tooltip__needed-badge qm-item-tooltip__needed-badge--missing">{missing} {t('quartermaster.itemTooltip.needed')}</span>;
+}
+
+interface TooltipListNeedDisplay {
+  listId: string;
+  listName: string;
+  listType: ListType;
+  quantity: number;
+  missing: number | null;
+  isComplete: boolean;
+}
+
+interface TooltipTargetGroup {
+  targetItemId: string;
+  targetItemName: string;
+  targetItemRarity: string;
+  listNeeds: TooltipListNeedDisplay[];
+}
+
+interface TooltipRecycleSalvageGroup {
+  key: string;
+  action: ItemRecycleSalvageUsage['action'];
+  yieldItemId: string;
+  yieldItemName: string;
+  targets: TooltipTargetGroup[];
 }
 
 function computeWeaponCumulativeRecipe(item: PlannerItem, itemsMap: ItemsMap): Record<string, number> | null {
@@ -121,6 +145,108 @@ export function ItemTooltip({
 
   const missingByItemId = new Map(plannerResult.planRows.map((row) => [row.itemId, row.missing]));
   const craftability = plannerResult.craftability?.[item.id];
+  const hasNeededLists = insight.finalListNeeds.length > 0;
+  const getFinalNeedForTarget = (targetItemId: string, listId: string) => (
+    itemInsights[targetItemId]?.finalListNeeds.find((need) => need.listId === listId) ?? null
+  );
+  const getFinalNeedForUsage = (usage: ItemRecycleSalvageUsage) => getFinalNeedForTarget(usage.targetItemId, usage.listId);
+  const craftingTargetGroups = insight.craftingNeeds.reduce<TooltipTargetGroup[]>((groups, need) => {
+    let targetGroup = groups.find((candidate) => candidate.targetItemId === need.targetItemId);
+    if (!targetGroup) {
+      targetGroup = {
+        targetItemId: need.targetItemId,
+        targetItemName: need.targetItemName,
+        targetItemRarity: need.targetItemRarity,
+        listNeeds: [],
+      };
+      groups.push(targetGroup);
+    }
+
+    const finalNeed = getFinalNeedForTarget(need.targetItemId, need.listId);
+    targetGroup.listNeeds.push({
+      listId: need.listId,
+      listName: need.listName,
+      listType: finalNeed?.listType ?? need.listType,
+      quantity: finalNeed?.quantity ?? 1,
+      missing: finalNeed?.missing ?? null,
+      isComplete: finalNeed?.isComplete ?? need.isComplete,
+    });
+
+    return groups;
+  }, []);
+  const recycleSalvageGroups = insight.recycleSalvageUsages.reduce<TooltipRecycleSalvageGroup[]>((groups, usage) => {
+    const groupKey = `${usage.action}:${usage.yieldItemId}`;
+    let group = groups.find((candidate) => candidate.key === groupKey);
+    if (!group) {
+      group = {
+        key: groupKey,
+        action: usage.action,
+        yieldItemId: usage.yieldItemId,
+        yieldItemName: usage.yieldItemName,
+        targets: [],
+      };
+      groups.push(group);
+    }
+
+    let targetGroup = group.targets.find((candidate) => candidate.targetItemId === usage.targetItemId);
+    if (!targetGroup) {
+      targetGroup = {
+        targetItemId: usage.targetItemId,
+        targetItemName: usage.targetItemName,
+        targetItemRarity: usage.targetItemRarity,
+        listNeeds: [],
+      };
+      group.targets.push(targetGroup);
+    }
+
+    const finalNeed = getFinalNeedForUsage(usage);
+    targetGroup.listNeeds.push({
+      listId: usage.listId,
+      listName: usage.listName,
+      listType: finalNeed?.listType ?? usage.listType,
+      quantity: finalNeed?.quantity ?? usage.yieldQuantity,
+      missing: finalNeed?.missing ?? null,
+      isComplete: finalNeed?.isComplete ?? usage.isComplete,
+    });
+
+    return groups;
+  }, []);
+  const hasPossibleUses = craftingTargetGroups.length > 0 || recycleSalvageGroups.length > 0;
+  const shouldSeparatePossibleUses = hasNeededLists && hasPossibleUses;
+
+  const renderAdvisoryTargetGroups = (targets: TooltipTargetGroup[]) => (
+    <div className="qm-item-tooltip__advisory-targets">
+      {targets.map((target) => {
+        const targetItem = itemsMap[target.targetItemId];
+        const targetIcon = targetItem?.icon ?? '';
+        return (
+          <div className="qm-item-tooltip__advisory-target" key={target.targetItemId}>
+            <div className="qm-item-tooltip__advisory-target-heading">
+              <SharedItemIcon itemId={target.targetItemId} name={target.targetItemName} icon={targetIcon || undefined} rarity={targetItem?.rarity ?? target.targetItemRarity} showName={false} className="qm-item-tooltip__advisory-target-icon" />
+              <span className="qm-item-name">{target.targetItemName}</span>
+            </div>
+            <div className="qm-item-tooltip__needs-grid">
+              {target.listNeeds.map((need) => (
+                <div className="qm-item-tooltip__needs-row" key={`${target.targetItemId}-${need.listId}`}>
+                  <div className="qm-item-tooltip__needs-left">
+                    {getListIcon(need.listType)}
+                    <span className="qm-item-tooltip__needs-name">{need.listName}</span>
+                  </div>
+                  <div className="qm-item-tooltip__needs-right">
+                    <span className="qm-item-tooltip__needs-quantity">{need.quantity}×</span>
+                    {need.missing === null
+                      ? renderCompleteBadge(need.isComplete, t)
+                      : renderNeededBadge(need.missing, t)
+                    }
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
 
   return createPortal(
     <div
@@ -407,27 +533,10 @@ export function ItemTooltip({
               );
             })()}
 
-            {insight.craftingNeeds.length > 0 && (
-              <div className="qm-item-tooltip__section">
-                <h4>{t('quartermaster.itemTooltip.neededForCrafting')}</h4>
-                <div className="qm-item-tooltip__needs-grid">
-                  {insight.craftingNeeds.map((need, index) => {
-                    const targetItem = itemsMap[need.targetItemId];
-                    const targetIcon = targetItem?.icon ?? '';
-                    return (
-                      <div className="qm-item-tooltip__needs-row" key={`${need.listId}-${need.targetItemId}-${index}`}>
-                        <div className="qm-item-tooltip__needs-left">
-                          {getListIcon(need.listType)}
-                          <SharedItemIcon itemId={need.targetItemId} name={need.targetItemName} icon={targetIcon || undefined} rarity={need.targetItemRarity} showName={false} className="qm-item-tooltip__needs-icon" />
-                          <span className="qm-item-tooltip__needs-name">{need.targetItemName}</span>
-                        </div>
-                        <div className="qm-item-tooltip__needs-right">
-                          {renderCompleteBadge(need.isComplete, t)}
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
+            {craftingTargetGroups.length > 0 && (
+              <div className={`qm-item-tooltip__section qm-item-tooltip__advisory-section ${shouldSeparatePossibleUses ? 'qm-item-tooltip__advisory-section--separated' : ''}`}>
+                <h4>{t('quartermaster.itemTooltip.possibleCraftUses')}</h4>
+                {renderAdvisoryTargetGroups(craftingTargetGroups)}
               </div>
             )}
 
@@ -460,34 +569,23 @@ export function ItemTooltip({
               </div>
             )}
 
-            {insight.recycleSalvageUsages.length > 0 && (
-              <div className="qm-item-tooltip__section">
-                <h4>{t('quartermaster.itemTooltip.couldBeUsedFor')}</h4>
-                <div className="qm-item-tooltip__needs-grid">
-                  {insight.recycleSalvageUsages.map((usage, index) => {
-                    const targetItem = itemsMap[usage.targetItemId];
-                    const targetIcon = targetItem?.icon ?? '';
-                    const yieldItem = itemsMap[usage.yieldItemId];
-                    const yieldIcon = yieldItem?.icon ?? '';
-                    return (
-                      <div className="qm-item-tooltip__needs-row" key={`${usage.listId}-${usage.targetItemId}-${usage.yieldItemId}-${index}`}>
-                        <div className="qm-item-tooltip__needs-left">
-                          {getListIcon(usage.listType)}
-                          <SharedItemIcon itemId={usage.yieldItemId} name={usage.yieldItemName} icon={yieldIcon || undefined} rarity="Common" showName={false} className="qm-item-tooltip__needs-icon" />
-                          <span className="qm-item-tooltip__needs-name">
-                            <span className="qm-item-tooltip__status-arrow">x{usage.yieldQuantity} → </span>
-                            <SharedItemIcon itemId={usage.targetItemId} name={usage.targetItemName} icon={targetIcon || undefined} rarity={usage.targetItemRarity} showName={false} className="qm-item-tooltip__needs-icon" />
-                            <span className="qm-item-name">{usage.targetItemName}</span>
-                          </span>
-                        </div>
-                        <div className="qm-item-tooltip__needs-right">
-                          {renderCompleteBadge(usage.isComplete, t)}
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
+            {recycleSalvageGroups.length > 0 && (
+              <>
+                {recycleSalvageGroups.map((group, index) => {
+                  const actionLabel = group.action === 'recycle'
+                    ? t('quartermaster.itemTooltip.possibleUseAfterRecycling')
+                    : t('quartermaster.itemTooltip.possibleUseAfterSalvage');
+                  const heading = actionLabel
+                    .replace('{item}', group.yieldItemName);
+                  const isFirstPossibleUse = craftingTargetGroups.length === 0 && index === 0;
+                  return (
+                    <div className={`qm-item-tooltip__section qm-item-tooltip__advisory-section ${shouldSeparatePossibleUses && isFirstPossibleUse ? 'qm-item-tooltip__advisory-section--separated' : ''}`} key={group.key}>
+                      <h4>{heading}</h4>
+                      {renderAdvisoryTargetGroups(group.targets)}
+                    </div>
+                  );
+                })}
+              </>
             )}
           </div>
         )}
