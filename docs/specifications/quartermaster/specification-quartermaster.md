@@ -1606,6 +1606,8 @@ This rule applies consistently across all views.
 
 **Exception — Unstacked items:** Items rendered as individual instances (unstacked rows with `instanceIndex !== undefined`, i.e., items carrying `repairCost` such as weapons) must **not** show the quantity overlay badge. Each unstacked row represents exactly one instance; the aggregate total is visible in the item tooltip instead (Change-26).
 
+**Exception — Crafting table context (Change-32):** Item icons rendered inside Crafting view table "Why", "Inputs Needed", and "Yields" cells suppress the owned-quantity overlay and the priority-star overlay. These table icons use explicit nearby planning text for quantities and may still open the item tooltip.
+
 If owned quantity is unknown:
 
 - display `"?"` as placeholder
@@ -1654,7 +1656,12 @@ Tooltip layout follows the **loot-helper popup style**, with a two-column split 
 1. Icon on the left (with rarity border and background)
 2. Owned quantity pill (backpack icon + number) in top-right corner
 3. Item name and Type/Rarity badges
-4. Horizontal separator line
+4. When planning context is available, an icon-only priority target star below the badges:
+   - "Mark as Priority Target" when the item is not prioritized
+   - "Remove from Priority Targets" when the item is prioritized
+   - The action uses the same priority state as the item icon priority star
+   - The label is exposed through the star button tooltip/accessible label, not visible text
+5. Horizontal separator line
 
 ### Body Area
 
@@ -1794,6 +1801,15 @@ Rules:
 - If tooltip would extend beyond right edge → reposition left.
 
 Tooltip must remain fully visible.
+
+### Outside-Click Close (Change-32)
+
+When an item tooltip is open, clicking any surface outside the tooltip closes it.
+
+- Clicking the source item icon counts as outside the tooltip and closes it.
+- Clicking elsewhere in the page closes it.
+- Clicking inside the tooltip does not close it.
+- Hover behavior may still keep the tooltip open while the pointer is over the tooltip.
 
 ---
 
@@ -2252,8 +2268,8 @@ A **Repair** section appears before the Recycle section when the repair plan has
 Each row shows:
 - Item icon + name
 - Current durability percentage (color-coded)
-- Materials needed for repair (icon + name + quantity ×N)
-- "Why" column showing which lists contain the item
+- Materials needed for repair (icon + name + `Use N / Have M`)
+- "Why" column showing compact list context
 
 ### Sync Controls
 
@@ -2278,15 +2294,27 @@ Recommended implementation:
 
 ### Crafting Reason Display
 
-Each crafting step must include provenance information:
+Each crafting step must include compact provenance information.
 
-```
-List Name → Target Item
-```
+For direct final-list needs, each row shows:
 
-Small icon of target item must be shown.
+- list-type icon
+- list name
+- required quantity badge, for example `3x`
+- missing/needed badge, using the existing red "needed" style when missing
 
-Tooltip for the icon must display the full item tooltip.
+For crafting dependencies that support another target item, the target item is shown as a compact header outside the list card layout. The rows below that header use the same card format as direct final-list needs:
+
+- target item small icon
+- target item name
+- list-type icon
+- list name
+- required quantity badge
+- missing/needed badge
+
+Small item icons in the "Why" column must open the full item tooltip.
+
+The verbose crafting chain text is not shown in the Crafting view "Why" column.
 
 Step 1 Recycle reasons must be based on committed recycle action provenance, not broad dependency matching.
 
@@ -2299,12 +2327,15 @@ The Recycle "Why" column must not show:
 - completed intermediate dependency paths
 - `COMPLETE` status badges
 
-Preferred recycle reason format:
+Recycle rows highlight committed target yield items visually in the "Yields" column instead of showing full chain granularity in "Why". Every yielded item whose item ID appears as a committed recycle reason `producedItemId` receives a subtle accent border/background.
 
-```
-List Name → Target Item
-Target Item → Needed Material
-```
+### Craft Output Column (Change-32)
+
+Normal craft-step tables use one output column instead of separate "Craft Times" and "Total Output" columns.
+
+- Always show total output quantity as the primary value.
+- If craft count equals total output, show only the primary value.
+- If total output is a multiple of craft count and the values differ, show the craft count as a muted secondary line below the primary value, for example `2x crafts`.
 
 ---
 
@@ -2315,7 +2346,7 @@ Each input must be displayed on a separate line.
 Format:
 
 ```
-[small icon] Item Name — Quantity
+[small icon] Item Name — Use 6 / Have 2
 ```
 
 Aligned vertically.

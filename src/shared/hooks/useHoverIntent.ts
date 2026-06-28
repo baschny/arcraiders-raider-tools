@@ -80,6 +80,13 @@ export function useHoverIntent<T extends HTMLElement>(options: UseHoverIntentOpt
     window.addEventListener('mousemove', release, { once: true });
   }, [delayHide]);
 
+  const close = useCallback(() => {
+    clearTimeouts();
+    hoverCountRef.current = 0;
+    contextMenuLockRef.current = false;
+    setIsHovered(false);
+  }, [clearTimeouts]);
+
   useEffect(() => {
     if (!isHovered) {
       hoverCountRef.current = 0;
@@ -111,6 +118,7 @@ export function useHoverIntent<T extends HTMLElement>(options: UseHoverIntentOpt
       onMouseEnter,
       onMouseLeave,
       onContextMenu,
+      close,
     },
   };
 }

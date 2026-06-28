@@ -3,12 +3,12 @@
  * See specification section 7.6
  */
 
-import { AlertTriangle, RefreshCw, Hammer, Wrench } from 'lucide-react';
-import type { ItemsMap, BenchId } from '../../types/item';
-import type { CraftPlan, PlannerResult, RecycleAction, RecyclePlan, WeaponUpgradePlan } from '../../types/planner';
+import { AlertTriangle, BriefcaseBusiness, Hammer, Home, List, RefreshCw, ScrollText, Wrench } from 'lucide-react';
+import type { ItemsMap, BenchId, PlannerItem } from '../../types/item';
+import type { CraftPlan, ListType, PlannerResult, RecycleAction, RecyclePlan, WeaponUpgradePlan } from '../../types/planner';
 import { BENCH_ORDER } from '../../types/item';
 import { ItemIcon } from '../ItemIcon';
-import type { ItemInsightsMap } from '../../utils/itemInsights';
+import type { ItemCraftingNeed, ItemFinalListNeed, ItemInsightsMap } from '../../utils/itemInsights';
 import { getLocalizedBenchName } from '../../utils/localization';
 import { useLocale } from '../../../../shared/context/LocaleContext';
 
@@ -56,6 +56,31 @@ export function CraftingView({
     plannerResult,
     itemInsights,
   };
+
+  const getListIcon = (listType: ListType) => {
+    if (listType === 'hideout') return <Home size={14} />;
+    if (listType === 'project') return <BriefcaseBusiness size={14} />;
+    if (listType === 'quest') return <ScrollText size={14} />;
+    return <List size={14} />;
+  };
+
+  const renderTableItemIcon = (
+    item: PlannerItem,
+    options: { size?: 'xs' | 'table' | 'sm' | 'md' | 'lg' } = {},
+  ) => (
+    <ItemIcon
+      itemId={item.id}
+      name={item.name}
+      icon={item.icon}
+      rarity={item.rarity}
+      quantity={getOwnedQuantity(item.id)}
+      size={options.size ?? 'table'}
+      showName={false}
+      showQuantity={false}
+      showPriorityAction={false}
+      tooltipContext={tooltipContext}
+    />
+  );
   const formatTimestamp = (isoString: string): string => {
     try {
       return formatDate(new Date(isoString), { hour: '2-digit', minute: '2-digit' });
@@ -64,7 +89,27 @@ export function CraftingView({
     }
   };
 
-  const getCraftWhyEntries = (itemId: string) => {
+  interface CraftingWhyEntry {
+    key: string;
+    listName: string;
+    listType: ListType;
+    quantity: number;
+    missing: number;
+    isComplete: boolean;
+    targetItemId?: string;
+    targetItemName?: string;
+  }
+
+  const getFinalListNeed = (targetItemId: string, listId: string): ItemFinalListNeed | null => {
+    const targetInsight = itemInsights[targetItemId];
+    return targetInsight?.finalListNeeds.find((source) => source.listId === listId) ?? null;
+  };
+
+  const getTargetListNeed = (need: ItemCraftingNeed): ItemFinalListNeed | null => {
+    return getFinalListNeed(need.targetItemId, need.listId);
+  };
+
+  const getCraftWhyEntries = (itemId: string): CraftingWhyEntry[] => {
     const insight = itemInsights[itemId];
     if (!insight) return [];
 
@@ -72,91 +117,105 @@ export function CraftingView({
       ...insight.finalListNeeds.map((need) => ({
         key: `${need.listId}-${itemId}-final`,
         listName: need.listName,
-        targetItemId: itemId,
-        targetItemName: itemsMap[itemId]?.name ?? itemId,
-        chainLabel: itemsMap[itemId]?.name ?? itemId,
+        listType: need.listType,
+        quantity: need.quantity,
+        missing: need.missing,
         isComplete: need.isComplete,
       })),
-      ...insight.craftingNeeds.map((need, index) => ({
-        key: `${need.listId}-${need.targetItemId}-${index}`,
-        listName: need.listName,
-        targetItemId: need.targetItemId,
-        targetItemName: need.targetItemName,
-        chainLabel: need.chainLabel,
-        isComplete: need.isComplete,
-      })),
+      ...insight.craftingNeeds.map((need, index) => {
+        const targetNeed = getTargetListNeed(need);
+        return {
+          key: `${need.listId}-${need.targetItemId}-${index}`,
+          listName: need.listName,
+          listType: need.listType,
+          quantity: targetNeed?.quantity ?? 0,
+          missing: targetNeed?.missing ?? (need.isComplete ? 0 : 1),
+          targetItemId: need.targetItemId,
+          targetItemName: need.targetItemName,
+          isComplete: targetNeed?.isComplete ?? need.isComplete,
+        };
+      }),
     ];
 
     const dedupe = new Map(entries.map((entry) => [entry.key, entry]));
     return Array.from(dedupe.values());
   };
 
-  const getRecycleWhyEntries = (action: RecycleAction) => {
-    const entries = action.reasons.map((reason) => ({
-      key: [
-        reason.listId,
-        reason.targetItemId,
-        reason.producedItemId,
-        reason.chainItemIds.join('>'),
-      ].join('|'),
-      listName: reason.listName,
-      targetItemId: reason.targetItemId,
-      targetItemName: reason.targetItemName,
-      chainLabel: reason.chainLabel,
-    }));
+  const getRecycleWhyEntries = (action: RecycleAction): CraftingWhyEntry[] => {
+    const entries = action.reasons.map((reason) => {
+      const targetNeed = getFinalListNeed(reason.targetItemId, reason.listId);
+      return {
+        key: [
+          reason.listId,
+          reason.targetItemId,
+          reason.producedItemId,
+        ].join('|'),
+        listName: reason.listName,
+        listType: targetNeed?.listType ?? 'user',
+        quantity: targetNeed?.quantity ?? reason.quantityCovered,
+        missing: targetNeed?.missing ?? reason.quantityCovered,
+        isComplete: targetNeed?.isComplete ?? false,
+        targetItemId: reason.targetItemId,
+        targetItemName: reason.targetItemName,
+      };
+    });
 
     const dedupe = new Map(entries.map((entry) => [entry.key, entry]));
     return Array.from(dedupe.values());
   };
 
-  const renderWhyEntries = (entries: Array<{
-    key: string;
-    listName: string;
-    targetItemId: string;
-    targetItemName: string;
-    chainLabel: string;
-    isComplete?: boolean;
-  }>, options: { showState?: boolean } = {}) => {
+  const renderWhyEntries = (entries: CraftingWhyEntry[], options: { showState?: boolean } = {}) => {
     const { showState = true } = options;
-
     if (entries.length === 0) {
       return <span className="crafting-view__why-empty">{t('quartermaster.crafting.noImpact')}</span>;
     }
 
+    const groups = entries.reduce<Array<{ key: string; targetItem: PlannerItem | null; targetName: string | null; entries: CraftingWhyEntry[] }>>((acc, entry) => {
+      const targetItem = entry.targetItemId ? itemsMap[entry.targetItemId] : null;
+      const key = targetItem ? targetItem.id : `direct-${entry.key}`;
+      const existing = acc.find((group) => group.key === key);
+      if (existing) {
+        existing.entries.push(entry);
+        return acc;
+      }
+
+      acc.push({
+        key,
+        targetItem,
+        targetName: targetItem ? entry.targetItemName ?? targetItem.name : null,
+        entries: [entry],
+      });
+      return acc;
+    }, []);
+
     return (
       <div className="crafting-view__why-list">
-        {entries.map((entry) => {
-          const targetItem = itemsMap[entry.targetItemId];
-          if (!targetItem) return null;
-
-          return (
-            <div key={entry.key} className="crafting-view__why-item">
-              <ItemIcon
-                itemId={targetItem.id}
-                name={targetItem.name}
-                icon={targetItem.icon}
-                rarity={targetItem.rarity}
-                quantity={getOwnedQuantity(targetItem.id)}
-                size="xs"
-                showName={false}
-                tooltipContext={tooltipContext}
-              />
-              <div className="crafting-view__why-copy">
-                <div className="crafting-view__why-main">
-                  <span>{entry.listName}</span>
-                  <span>→</span>
-                  <span className="qm-item-name">{entry.targetItemName}</span>
-                </div>
-                <div className="crafting-view__why-sub">{entry.chainLabel}</div>
+        {groups.map((group) => (
+          <div key={group.key} className="crafting-view__why-group">
+            {group.targetItem && (
+              <div className="crafting-view__why-target">
+                {renderTableItemIcon(group.targetItem)}
+                <span className="qm-item-name">{group.targetName}</span>
               </div>
-              {showState && (
-                <span className={`crafting-view__why-state ${entry.isComplete ? 'crafting-view__why-state--complete' : 'crafting-view__why-state--needed'}`}>
-                  {entry.isComplete ? t('quartermaster.itemTooltip.complete') : t('quartermaster.itemTooltip.needed')}
-                </span>
-              )}
-            </div>
-          );
-        })}
+            )}
+            {group.entries.map((entry) => (
+              <div key={entry.key} className="crafting-view__why-item">
+                <div className="crafting-view__why-copy">
+                  <div className="crafting-view__why-main">
+                    {getListIcon(entry.listType)}
+                    <span>{entry.listName}</span>
+                    <span className="crafting-view__why-quantity">{entry.quantity}x</span>
+                  </div>
+                </div>
+                {showState && (
+                  <span className={`crafting-view__why-state ${entry.isComplete ? 'crafting-view__why-state--complete' : 'crafting-view__why-state--needed'}`}>
+                    {entry.isComplete ? t('quartermaster.itemTooltip.complete') : `${entry.missing} ${t('quartermaster.itemTooltip.needed')}`}
+                  </span>
+                )}
+              </div>
+            ))}
+          </div>
+        ))}
       </div>
     );
   };
@@ -183,31 +242,48 @@ export function CraftingView({
     );
   };
 
-  const renderMaterialRows = (materials: Record<string, number>) => (
+  const renderMaterialRows = (
+    materials: Record<string, number>,
+    options: {
+      mode?: 'input' | 'yield';
+      highlightedItemIds?: Set<string>;
+    } = {},
+  ) => (
     <div className="crafting-view__materials">
       {Object.entries(materials).map(([materialId, quantity]) => {
         const material = itemsMap[materialId];
         if (!material) return null;
+        const ownedQuantity = getOwnedQuantity(material.id);
+        const isHighlighted = options.highlightedItemIds?.has(materialId) ?? false;
 
         return (
-          <div className="crafting-view__material-row" key={materialId}>
+          <div className={`crafting-view__material-row ${isHighlighted ? 'crafting-view__material-row--highlighted' : ''}`} key={materialId}>
             <div className="crafting-view__material-main">
-              <ItemIcon
-                itemId={material.id}
-                name={material.name}
-                icon={material.icon}
-                rarity={material.rarity}
-                quantity={getOwnedQuantity(material.id)}
-                size="xs"
-                showName={false}
-                tooltipContext={tooltipContext}
-              />
+              {renderTableItemIcon(material)}
               <span className="qm-item-name">{material.name}</span>
             </div>
-            <span className="crafting-view__material-qty">×{quantity}</span>
+            <span className="crafting-view__material-qty">
+              {options.mode === 'input'
+                ? tm('quartermaster.crafting.inputUseHave', {
+                  use: quantity,
+                  have: ownedQuantity === null ? '?' : ownedQuantity,
+                })
+                : `×${quantity}`}
+            </span>
           </div>
         );
       })}
+    </div>
+  );
+
+  const renderOutputQuantity = (totalOutput: number, craftTimes: number) => (
+    <div className="crafting-view__output">
+      <span className="crafting-view__output-total">{totalOutput}</span>
+      {craftTimes !== totalOutput && totalOutput % craftTimes === 0 && (
+        <span className="crafting-view__output-crafts">
+          {tm('quartermaster.crafting.craftCount', { count: craftTimes })}
+        </span>
+      )}
     </div>
   );
 
@@ -340,9 +416,10 @@ export function CraftingView({
                 const whyEntries = action.listSources.map((source) => ({
                   key: `${action.itemId}-${source.listId}`,
                   listName: source.listName,
-                  targetItemId: action.itemId,
-                  targetItemName: item.name,
-                  chainLabel: item.name,
+                  listType: source.listType,
+                  quantity: source.quantity,
+                  missing: 0,
+                  isComplete: true,
                 }));
                 return (
                   <tr key={`${action.itemId}-${action.instanceIndex}`}>
@@ -368,7 +445,7 @@ export function CraftingView({
                         {action.durabilityPercent.toFixed(1)}%
                       </span>
                     </td>
-                    <td>{renderMaterialRows(action.materialsNeeded)}</td>
+                    <td>{renderMaterialRows(action.materialsNeeded, { mode: 'input' })}</td>
                     <td>{renderWhyEntries(whyEntries, { showState: false })}</td>
                   </tr>
                 );
@@ -420,7 +497,10 @@ export function CraftingView({
                     </td>
                     <td><span className="qm-item-name">{item.name}</span></td>
                     <td>{action.qtyToRecycle}</td>
-                    <td>{renderMaterialRows(action.yields)}</td>
+                    <td>{renderMaterialRows(action.yields, {
+                      mode: 'yield',
+                      highlightedItemIds: new Set(action.reasons.map((reason) => reason.producedItemId)),
+                    })}</td>
                     <td>
                       {renderWhyEntries(getRecycleWhyEntries(action), { showState: false })}
                       {renderRecyclePriorityWarning(action)}
@@ -457,7 +537,6 @@ export function CraftingView({
                         <col className="crafting-view__col-item" />
                         <col className="crafting-view__col-name" />
                         <col className="crafting-view__col-qty" />
-                        <col className="crafting-view__col-qty" />
                         <col />
                         <col className="crafting-view__col-why" />
                       </colgroup>
@@ -465,8 +544,7 @@ export function CraftingView({
                         <tr>
                           <th style={{ width: 80 }}>{t('quartermaster.crafting.columns.item')}</th>
                           <th>{t('quartermaster.crafting.columns.name')}</th>
-                          <th style={{ width: 100 }}>{t('quartermaster.crafting.columns.craftTimes')}</th>
-                          <th style={{ width: 100 }}>{t('quartermaster.crafting.columns.totalOutput')}</th>
+                          <th style={{ width: 100 }}>{t('quartermaster.crafting.columns.output')}</th>
                           <th>{t('quartermaster.crafting.columns.inputsNeeded')}</th>
                           <th>{t('quartermaster.crafting.columns.why')}</th>
                         </tr>
@@ -493,12 +571,12 @@ export function CraftingView({
                                 />
                               </td>
                               <td><span className="qm-item-name">{item.name}</span></td>
-                              <td>{craftTimes}</td>
-                              <td>{step.qty}</td>
+                              <td>{renderOutputQuantity(step.qty, craftTimes)}</td>
                               <td>{item.recipe ? renderMaterialRows(
                                 Object.fromEntries(
                                   Object.entries(item.recipe).map(([inputId, qtyPerCraft]) => [inputId, qtyPerCraft * craftTimes]),
                                 ),
+                                { mode: 'input' },
                               ) : null}</td>
                               <td>{renderWhyEntries(getCraftWhyEntries(step.itemId))}</td>
                             </tr>
@@ -560,6 +638,7 @@ export function CraftingView({
                                 Object.fromEntries(
                                   Object.entries(step.upgradeCost).map(([inputId, qtyPerUpgrade]) => [inputId, qtyPerUpgrade * step.qty]),
                                 ),
+                                { mode: 'input' },
                               )}</td>
                               <td>{renderWhyEntries(getCraftWhyEntries(step.toItemId))}</td>
                             </tr>

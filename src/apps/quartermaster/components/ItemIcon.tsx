@@ -33,9 +33,10 @@ export interface ItemIconProps {
   rarity: ItemRarity;
   quantity: number | null;
   badges?: ItemIconBadge[];
-  size?: 'xs' | 'sm' | 'md' | 'lg';
+  size?: 'xs' | 'table' | 'sm' | 'md' | 'lg';
   showName?: boolean;
   showQuantity?: boolean;
+  showPriorityAction?: boolean;
   enableTooltip?: boolean;
   tooltipContext?: ItemIconTooltipContext;
   onClick?: () => void;
@@ -54,6 +55,7 @@ export function ItemIcon({
   size = 'md',
   showName = true,
   showQuantity = true,
+  showPriorityAction = true,
   enableTooltip = true,
   tooltipContext,
   onClick,
@@ -66,12 +68,13 @@ export function ItemIcon({
   const craftability = tooltipContext?.plannerResult?.craftability?.[itemId];
   const showRedLock = getCraftStatus(craftability) === 'uncraftable';
   const iconRef = useRef<HTMLDivElement | null>(null);
+  const tooltipRef = useRef<HTMLDivElement | null>(null);
   const { ref: hoverRef, isHovered, handlers } = useHoverIntent<HTMLDivElement>({ delayShow: 350, delayHide: 120 });
   const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0, maxHeight: 420 });
   // Sort badges by priority (ascending)
   const sortedBadges = useMemo(() => [...badges].sort((a, b) => a.priority - b.priority), [badges]);
 
-  const sizePx = { xs: '30px', sm: '80px', md: '84px', lg: '108px' }[size];
+  const sizePx = { xs: '30px', table: '40px', sm: '80px', md: '84px', lg: '108px' }[size];
   const quantityLabel = quantity === null ? '?' : quantity;
 
   const handleTogglePrioritize = useCallback(
@@ -139,6 +142,23 @@ export function ItemIcon({
     };
   }, [canShowTooltip, isHovered, updateTooltipPosition]);
 
+  useEffect(() => {
+    if (!isHovered || !canShowTooltip) return;
+
+    const onPointerDown = (event: PointerEvent) => {
+      const target = event.target;
+      if (target instanceof Node && tooltipRef.current?.contains(target)) {
+        return;
+      }
+      handlers.close();
+    };
+
+    document.addEventListener('pointerdown', onPointerDown, true);
+    return () => {
+      document.removeEventListener('pointerdown', onPointerDown, true);
+    };
+  }, [canShowTooltip, handlers.close, isHovered]);
+
   const setRefs = useCallback(
     (element: HTMLDivElement | null) => {
       iconRef.current = element;
@@ -166,7 +186,7 @@ export function ItemIcon({
         style={{ '--item-icon-size': sizePx } as React.CSSProperties}
         containerRef={setRefs}
       >
-        {canPrioritize && (
+        {canPrioritize && showPriorityAction && (
           <button
             type="button"
             className={`item-icon__prioritize ${isPrioritized ? 'item-icon__prioritize--active' : ''}`}
@@ -217,6 +237,9 @@ export function ItemIcon({
           onMouseEnter={handlers.onMouseEnter}
           onMouseLeave={handlers.onMouseLeave}
           onContextMenu={handlers.onContextMenu}
+          containerRef={(element) => {
+            tooltipRef.current = element;
+          }}
         />
       )}
     </>

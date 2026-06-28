@@ -1,5 +1,5 @@
 import { createPortal } from 'react-dom';
-import { Backpack, BriefcaseBusiness, CircleCheck, CircleX, Coins, Home, List, MapPin, PackageSearch, Recycle, ScrollText, Target, Weight, Wrench, Shield } from 'lucide-react';
+import { Backpack, BriefcaseBusiness, CircleCheck, CircleX, Coins, Home, List, MapPin, PackageSearch, Recycle, ScrollText, Star, Target, Weight, Wrench, Shield } from 'lucide-react';
 import type { ItemsMap, PlannerItem } from '../types/item';
 import type { ListType, PlannerResult } from '../types/planner';
 import { getEmptyItemInsight, type ItemInsightsMap } from '../utils/itemInsights';
@@ -12,6 +12,7 @@ import {
 import { useLocale } from '../../../shared/context/LocaleContext';
 import { ItemIcon as SharedItemIcon } from '../../../shared/components/ItemIcon';
 import { getRarityClass } from '../../../shared/utils/rarity';
+import { usePrioritizedItems } from '../hooks/usePrioritizedItems';
 
 interface ItemTooltipProps {
   item: PlannerItem;
@@ -24,6 +25,7 @@ interface ItemTooltipProps {
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
   onContextMenu?: () => void;
+  containerRef?: (element: HTMLDivElement | null) => void;
 }
 
 function parseProjectId(listId: string): string | null {
@@ -100,10 +102,13 @@ export function ItemTooltip({
   onMouseEnter,
   onMouseLeave,
   onContextMenu,
+  containerRef,
 }: ItemTooltipProps) {
   const { t } = useLocale();
+  const { prioritizedSet, togglePrioritize } = usePrioritizedItems();
   if (!visible) return null;
 
+  const isPrioritized = prioritizedSet.has(item.id);
   const insight = getEmptyItemInsight(itemInsights, item.id);
   const hasRecipe = !!item.recipe && Object.keys(item.recipe).length > 0;
   const cumulativeWeaponRecipe = computeWeaponCumulativeRecipe(item, itemsMap);
@@ -131,6 +136,7 @@ export function ItemTooltip({
       onClick={(event) => event.stopPropagation()}
       onMouseDown={(event) => event.stopPropagation()}
       onMouseUp={(event) => event.stopPropagation()}
+      ref={containerRef}
     >
       <div className="qm-item-tooltip__header">
         <SharedItemIcon itemId={item.id} name={item.name} icon={item.icon} rarity={item.rarity} showName={false} className="qm-item-tooltip__icon" />
@@ -148,6 +154,22 @@ export function ItemTooltip({
               {getLocalizedQuartermasterRarity(t, item.rarity)}
             </span>
           </div>
+          <button
+            type="button"
+            className={`qm-item-tooltip__priority-action ${isPrioritized ? 'qm-item-tooltip__priority-action--active' : ''}`}
+            title={isPrioritized
+              ? t('quartermaster.inRaid.prioritizeRemove')
+              : t('quartermaster.inRaid.prioritizeMark')}
+            aria-label={isPrioritized
+              ? t('quartermaster.inRaid.prioritizeRemove')
+              : t('quartermaster.inRaid.prioritizeMark')}
+            onClick={(event) => {
+              event.stopPropagation();
+              togglePrioritize(item.id);
+            }}
+          >
+            <Star size={14} fill={isPrioritized ? 'currentColor' : 'none'} strokeWidth={2} />
+          </button>
         </div>
       </div>
 
