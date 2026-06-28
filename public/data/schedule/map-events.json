@@ -4,7 +4,7 @@
     "format": "Schedule keys are UNIX timestamps (seconds, UTC) at event start; values are event type ids."
   },
   "metadata": {
-    "generatedAt": "2026-06-17T12:38:01.625Z",
+    "generatedAt": "2026-06-28T16:40:25.402Z",
     "sourceFiles": {
       "mapConditionsOverview": "https://arcraiders.com/map-conditions",
       "mapConditionsPerCondition": "https://arcraiders.com/map-conditions/<condition-slug>",
@@ -13,12 +13,12 @@
     },
     "timestampRange": {
       "start": 1780185600,
-      "end": 1781791200
+      "end": 1782756000
     },
     "mergedPastEvents": {
       "windowSeconds": 2592000,
-      "now": 1781699881,
-      "count": 224
+      "now": 1782664825,
+      "count": 300
     },
     "ignoredMapNames": [],
     "ignoredEntriesCount": 0
@@ -427,7 +427,14 @@
         "1781712000": "close-scrutiny",
         "1781722800": "hurricane",
         "1781744400": "close-scrutiny",
-        "1781780400": "close-scrutiny"
+        "1781780400": "close-scrutiny",
+        "1782662400": "hurricane",
+        "1782676800": "close-scrutiny",
+        "1782705600": "hurricane",
+        "1782716400": "electromagnetic-storm",
+        "1782723600": "night-raid",
+        "1782738000": "electromagnetic-storm",
+        "1782752400": "hurricane"
       },
       "minor": {
         "1780189200": "husk-graveyard",
@@ -465,7 +472,15 @@
         "1781748000": "matriarch",
         "1781758800": "husk-graveyard",
         "1781769600": "matriarch",
-        "1781787600": "husk-graveyard"
+        "1781787600": "husk-graveyard",
+        "1782673200": "matriarch",
+        "1782684000": "harvester",
+        "1782691200": "harvester",
+        "1782698400": "husk-graveyard",
+        "1782712800": "matriarch",
+        "1782723600": "harvester",
+        "1782734400": "matriarch",
+        "1782745200": "harvester"
       }
     },
     "buried-city": {
@@ -489,7 +504,12 @@
         "1781708400": "hurricane",
         "1781733600": "night-raid",
         "1781758800": "close-scrutiny",
-        "1781769600": "night-raid"
+        "1781769600": "night-raid",
+        "1782669600": "night-raid",
+        "1782680400": "hurricane",
+        "1782698400": "close-scrutiny",
+        "1782730800": "hurricane",
+        "1782748800": "close-scrutiny"
       },
       "minor": {
         "1780185600": "bird-city",
@@ -524,7 +544,16 @@
         "1781740800": "bird-city",
         "1781755200": "bird-city",
         "1781773200": "lush-blooms",
-        "1781784000": "bird-city"
+        "1781784000": "bird-city",
+        "1782684000": "bird-city",
+        "1782694800": "husk-graveyard",
+        "1782705600": "bird-city",
+        "1782720000": "husk-graveyard",
+        "1782727200": "bird-city",
+        "1782734400": "prospecting-probes",
+        "1782741600": "bird-city",
+        "1782745200": "prospecting-probes",
+        "1782752400": "bird-city"
       }
     },
     "the-spaceport": {
@@ -552,7 +581,15 @@
         "1781748000": "night-raid",
         "1781762400": "electromagnetic-storm",
         "1781773200": "hidden-bunker",
-        "1781784000": "electromagnetic-storm"
+        "1781784000": "electromagnetic-storm",
+        "1782669600": "close-scrutiny",
+        "1782687600": "night-raid",
+        "1782691200": "electromagnetic-storm",
+        "1782702000": "night-raid",
+        "1782712800": "hidden-bunker",
+        "1782720000": "hurricane",
+        "1782727200": "close-scrutiny",
+        "1782745200": "night-raid"
       },
       "minor": {
         "1780185600": "launch-tower-loot",
@@ -585,7 +622,16 @@
         "1781751600": "harvester",
         "1781766000": "launch-tower-loot",
         "1781776800": "matriarch",
-        "1781787600": "lush-blooms"
+        "1781787600": "lush-blooms",
+        "1782662400": "lush-blooms",
+        "1782673200": "harvester",
+        "1782694800": "prospecting-probes",
+        "1782705600": "matriarch",
+        "1782709200": "husk-graveyard",
+        "1782716400": "launch-tower-loot",
+        "1782727200": "prospecting-probes",
+        "1782738000": "harvester",
+        "1782748800": "matriarch"
       }
     },
     "blue-gate": {
@@ -615,7 +661,13 @@
         "1781755200": "hurricane",
         "1781766000": "locked-gate",
         "1781776800": "hurricane",
-        "1781787600": "locked-gate"
+        "1781787600": "locked-gate",
+        "1782673200": "electromagnetic-storm",
+        "1782684000": "locked-gate",
+        "1782694800": "locked-gate",
+        "1782709200": "close-scrutiny",
+        "1782734400": "locked-gate",
+        "1782741600": "close-scrutiny"
       },
       "minor": {
         "1780192800": "matriarch",
@@ -651,7 +703,17 @@
         "1781751600": "matriarch",
         "1781762400": "harvester",
         "1781773200": "husk-graveyard",
-        "1781784000": "harvester"
+        "1781784000": "harvester",
+        "1782662400": "matriarch",
+        "1782676800": "lush-blooms",
+        "1782687600": "matriarch",
+        "1782698400": "matriarch",
+        "1782702000": "harvester",
+        "1782712800": "harvester",
+        "1782723600": "matriarch",
+        "1782730800": "matriarch",
+        "1782741600": "husk-graveyard",
+        "1782752400": "harvester"
       }
     },
     "riven-tides": {
@@ -673,7 +735,12 @@
         "1781708400": "night-raid",
         "1781726400": "night-raid",
         "1781751600": "night-raid",
-        "1781773200": "night-raid"
+        "1781773200": "night-raid",
+        "1782676800": "night-raid",
+        "1782694800": "night-raid",
+        "1782712800": "night-raid",
+        "1782730800": "night-raid",
+        "1782748800": "night-raid"
       },
       "minor": {
         "1780189200": "beachcombing",
@@ -709,7 +776,17 @@
         "1781748000": "beachcombing",
         "1781755200": "lush-blooms",
         "1781766000": "beachcombing",
-        "1781780400": "lush-blooms"
+        "1781780400": "lush-blooms",
+        "1782669600": "beachcombing",
+        "1782680400": "uncovered-caches",
+        "1782691200": "beachcombing",
+        "1782702000": "husk-graveyard",
+        "1782709200": "beachcombing",
+        "1782716400": "prospecting-probes",
+        "1782720000": "beachcombing",
+        "1782730800": "husk-graveyard",
+        "1782738000": "beachcombing",
+        "1782748800": "beachcombing"
       }
     },
     "stella-montis": {
@@ -740,7 +817,13 @@
         "1781740800": "night-raid",
         "1781748000": "night-raid",
         "1781762400": "night-raid",
-        "1781776800": "night-raid"
+        "1781776800": "night-raid",
+        "1782669600": "night-raid",
+        "1782684000": "night-raid",
+        "1782698400": "night-raid",
+        "1782712800": "night-raid",
+        "1782727200": "night-raid",
+        "1782741600": "night-raid"
       },
       "minor": {}
     }
