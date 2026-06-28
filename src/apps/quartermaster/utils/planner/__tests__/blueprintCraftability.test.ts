@@ -894,6 +894,50 @@ describe('quartermaster weapon upgrade planning', () => {
     ]);
   });
 
+  it('accepts ArcTracker weapon family blueprint IDs for tiered weapons', () => {
+    const result = computePlan(
+      weaponItemsMap,
+      anvilIvList,
+      [
+        { itemId: 'mechanical_components', quantity: 16 },
+        { itemId: 'simple_gun_parts', quantity: 7 },
+        { itemId: 'heavy_gun_parts', quantity: 2 },
+      ],
+      benchLevels,
+      new Set(['anvil']),
+    );
+
+    expect(result.satisfiableTargets.has('anvil_iv')).toBe(true);
+    expect(result.blockers.blueprintBlockers).toEqual([]);
+    expect(result.craftability.anvil_i.blueprint).toMatchObject({
+      satisfied: true,
+      detail: 'Learned',
+    });
+    expect(result.craftability.anvil_iv.blueprint).toBeUndefined();
+  });
+
+  it('keeps exact Embark tier I blueprint IDs working for tiered weapons', () => {
+    const result = computePlan(
+      weaponItemsMap,
+      anvilIvList,
+      [
+        { itemId: 'mechanical_components', quantity: 16 },
+        { itemId: 'simple_gun_parts', quantity: 7 },
+        { itemId: 'heavy_gun_parts', quantity: 2 },
+      ],
+      benchLevels,
+      new Set(['anvil_i']),
+    );
+
+    expect(result.satisfiableTargets.has('anvil_iv')).toBe(true);
+    expect(result.blockers.blueprintBlockers).toEqual([]);
+    expect(result.craftability.anvil_i.blueprint).toMatchObject({
+      satisfied: true,
+      detail: 'Learned',
+    });
+    expect(result.craftability.anvil_iv.blueprint).toBeUndefined();
+  });
+
   it('uses an owned lower-tier weapon as the upgrade base without requiring the tier I blueprint', () => {
     const result = computePlan(
       weaponItemsMap,

@@ -1090,6 +1090,8 @@ interface ArcTrackerBlueprint {
 
 If `learned` is `true`, the item identified by `targetItemId` is considered blueprint-unlocked.
 
+For tiered weapons, ArcTracker may report an unsuffixed family id such as `hullcracker`, while Raider Tools' canonical craftable base weapon id is `hullcracker_i`. Quartermaster craftability must understand both forms without requiring a static per-weapon mapping table.
+
 ### 4.7.2 Cached Data Usage
 
 Quartermaster reads cached blueprint state from local cache.
@@ -1106,7 +1108,7 @@ interface CachedBlueprints {
 
 Rules:
 
-- `unlockedItemIds` contains only blueprints with `learned === true`.
+- `unlockedItemIds` contains only target ids for blueprints with `learned === true`.
 - `unlockedItemIds` is sorted ASCII ascending.
 - `blueprintsByTargetItemId` is keyed by `targetItemId`.
 - Failed sync must not clear previously cached blueprint state.
@@ -1308,13 +1310,15 @@ if (!item.blueprintLocked) {
   return true
 }
 
-return unlockedBlueprintItemIds.has(item.id)
+return hasBlueprintForItem(item, unlockedBlueprintItemIds)
 ```
 
 Meaning:
 
 - Items not marked `blueprintLocked` in static data remain craftable without blueprint API state.
-- Items marked `blueprintLocked` are craftable only when their `item.id` appears in the learned blueprint cache.
+- Items marked `blueprintLocked` are craftable only when their canonical `item.id` appears in the learned blueprint cache, or when the item is a weapon-chain item and the learned blueprint cache contains its ArcTracker weapon family target id.
+- The ArcTracker weapon family target id is derived from the canonical tier I `weaponBaseId` by stripping a trailing Roman tier suffix (`_i`, `_ii`, `_iii`, `_iv`).
+- Non-weapon items do not use suffix stripping; they require exact target id matching.
 - If no blueprint cache exists yet, `blueprintLocked: true` items are treated as not locally craftable until blueprints are synced.
 - Blueprint blocker diagnostics are preserved for statically blueprint-locked items absent from the learned blueprint set.
 
@@ -1323,8 +1327,10 @@ Meaning:
 For weapons linked by an upgrade chain (`weaponBaseId` + `weaponTier`):
 
 - The tier 1 base weapon owns the `blueprintLocked` flag and the `craftBench` definition.
+- For API blueprint targets reported as an unsuffixed weapon family id, craftability matches that family id against the tier 1 base weapon by deriving it from `weaponBaseId`.
 - `computeCraftability` propagates the base weapon's **blueprint lock status** and **bench condition** to every higher-tier family member (`weaponTier > 1` with matching `weaponBaseId`).
 - When the base weapon's blueprint is locked, every family member receives `hasRecipe: true`, `canCraft: false`, and the inherited `blueprint` condition — causing the red lock icon to appear on all tiers.
+- When the base weapon's blueprint is learned, the learned tier I id satisfies the base blueprint condition, so higher tiers must not inherit a locked blueprint condition.
 - The base weapon's bench condition (`label`, `detail`, `satisfied`) is also propagated so the tooltip craft conditions section shows the bench requirement on tier 2+ weapons.
 - `planWeaponUpgradeTarget` adds the target weapon's `itemId` (not just the root) to `blueprintBlockers`, so the StashView status column also shows "Blocked: blueprint not unlocked" for the higher-tier target.
 

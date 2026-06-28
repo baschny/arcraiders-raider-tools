@@ -64,6 +64,7 @@ describe('quartermaster API utilities', () => {
     const unlocked = getUnlockedBlueprintItemIds(cachedBlueprints);
 
     expect(unlocked.has('anvil')).toBe(true);
+    expect(unlocked.has('hullcracker')).toBe(true);
     expect(unlocked.has('canto')).toBe(false);
   });
 

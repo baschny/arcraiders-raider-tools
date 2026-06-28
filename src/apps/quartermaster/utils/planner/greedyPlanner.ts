@@ -45,6 +45,17 @@ export interface GreedyPlanResult {
 
 type RecycleReasonFactory = (producedItemId: ItemId, quantityCovered: Qty) => RecycleActionReason[];
 
+type BlueprintCraftableItem = {
+  recipe?: Record<string, number>;
+  craftBench?: BenchId;
+  blueprintLocked: boolean;
+  stationLevelRequired: 1 | 2 | 3;
+  weaponBaseId?: ItemId;
+  weaponTier?: 1 | 2 | 3 | 4;
+};
+
+const WEAPON_TIER_SUFFIX_RE = /_(?:i|ii|iii|iv)$/;
+
 // ---------------------------------------------------------------------------
 // Internal state
 // ---------------------------------------------------------------------------
@@ -246,7 +257,7 @@ function buildDirectRecipeInputWarnings(
  * See specification CR-006: formal craftability predicate
  */
 function canCraft(
-  item: { recipe?: Record<string, number>; craftBench?: BenchId; blueprintLocked: boolean; stationLevelRequired: 1 | 2 | 3 },
+  item: BlueprintCraftableItem,
   benchLevels: Record<BenchId, number>,
   unlockedBlueprintItemIds: Set<ItemId>,
   itemId: ItemId,
@@ -257,7 +268,7 @@ function canCraft(
   if (!item.craftBench) {
     return { ok: false, reason: 'missing_bench' };
   }
-  if (item.blueprintLocked && !unlockedBlueprintItemIds.has(itemId)) {
+  if (item.blueprintLocked && !hasBlueprintForItem(item, itemId, unlockedBlueprintItemIds)) {
     return { ok: false, reason: 'blueprint_locked' };
   }
   const currentLevel = benchLevels[item.craftBench] ?? 3;
@@ -265,6 +276,22 @@ function canCraft(
     return { ok: false, reason: 'insufficient_bench_level' };
   }
   return { ok: true };
+}
+
+function getArcTrackerWeaponBlueprintTargetId(item: BlueprintCraftableItem, itemId: ItemId): ItemId | null {
+  if (!item.weaponTier || !item.weaponBaseId) return null;
+  return item.weaponBaseId.replace(WEAPON_TIER_SUFFIX_RE, '') || itemId;
+}
+
+function hasBlueprintForItem(
+  item: BlueprintCraftableItem,
+  itemId: ItemId,
+  unlockedBlueprintItemIds: Set<ItemId>,
+): boolean {
+  if (unlockedBlueprintItemIds.has(itemId)) return true;
+
+  const arctrackerWeaponTargetId = getArcTrackerWeaponBlueprintTargetId(item, itemId);
+  return !!arctrackerWeaponTargetId && unlockedBlueprintItemIds.has(arctrackerWeaponTargetId);
 }
 
 /**
@@ -1544,7 +1571,7 @@ export function computeCraftability(
 
     // Blueprint condition
     if (item.blueprintLocked) {
-      const isUnlocked = unlockedBlueprintItemIds.has(itemId);
+      const isUnlocked = hasBlueprintForItem(item, itemId, unlockedBlueprintItemIds);
       info.blueprint = {
         satisfied: isUnlocked,
         label: 'Blueprint',
