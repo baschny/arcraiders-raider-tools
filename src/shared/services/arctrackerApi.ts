@@ -49,6 +49,7 @@ const USER_RELAY_BASE = `${API_ORIGIN}/me/arctracker`;
 const TIMEOUT_MS = 10000;
 const MAX_RETRIES = 1;
 const STASH_PER_PAGE = 500;
+export const ARCTRACKER_SYNC_REQUIRED_ERROR_MESSAGE = 'ArcTracker data has not been synced yet';
 
 function getApiLocale(): AppLocale {
   if (typeof window === 'undefined') {
@@ -228,6 +229,10 @@ async function fetchStashPage(page: number): Promise<ArctrackerStashResponse> {
 export async function syncStashAllPages(): Promise<CachedStash> {
   // Fetch first page to get pagination info
   const firstPage = await fetchStashPage(1);
+  if (!firstPage.data.syncedAt) {
+    throw createApiError(ARCTRACKER_SYNC_REQUIRED_ERROR_MESSAGE, 409, false);
+  }
+
   const totalPages = firstPage.data.pagination.totalPages;
 
   // Collect all items, applying ArcTracker item ID migration
@@ -241,6 +246,9 @@ export async function syncStashAllPages(): Promise<CachedStash> {
 
   // Use metadata from the last page (or first if only one page)
   const lastPageData = totalPages > 1 ? await fetchStashPage(totalPages) : firstPage;
+  if (!lastPageData.data.syncedAt) {
+    throw createApiError(ARCTRACKER_SYNC_REQUIRED_ERROR_MESSAGE, 409, false);
+  }
 
   const cachedStash: CachedStash = {
     items: allItems,
@@ -266,6 +274,10 @@ export async function syncLoadout(): Promise<CachedLoadout> {
   );
 
   const { loadout } = response.data;
+  if (!response.data.syncedAt || !loadout) {
+    throw createApiError(ARCTRACKER_SYNC_REQUIRED_ERROR_MESSAGE, 409, false);
+  }
+
   const migratedLoadout = {
     augment: migrateLoadoutSlot(loadout.augment),
     shield: migrateLoadoutSlot(loadout.shield),

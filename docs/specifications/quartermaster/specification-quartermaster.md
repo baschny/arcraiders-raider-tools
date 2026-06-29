@@ -656,6 +656,8 @@ Behavior:
 - Aggregates server-side via shared service.
 - Stores result as `CachedStash` in IndexedDB.
 - Returns the synced object.
+- If ArcTracker returns `syncedAt: null`, treat the response as missing upstream
+  ArcTracker data, fail the sync, and do not cache it.
 
 ### 4.2.2 Cached Data Usage
 
@@ -687,6 +689,9 @@ Behavior:
 
 - `status === 401`:
   - Prompt user to re-authenticate.
+- ArcTracker missing-data responses (`syncedAt: null`) must show an actionable
+  error telling the user to sync successfully in ArcTracker first and link to
+  `https://arctracker.io/apps/arctracker-sync`.
 - `status === 429` or `isRetryable === true`:
   - Show warning.
 - Other errors:
@@ -705,6 +710,9 @@ In ArcTracker mode, loadout sync must call:
 syncLoadout()
 ```
 
+If ArcTracker returns `loadout: null` or `syncedAt: null`, treat the response as
+missing upstream ArcTracker data, fail the sync, and do not cache it.
+
 ### 4.3.2 Cached Data Usage
 
 Quartermaster reads loadout using:
@@ -717,6 +725,7 @@ Planner loadout aggregation rules:
 
 - Loadout data is **not used as planner targets**.
 - Loadout data is used as an owned inventory source.
+- Legacy cached records with a null loadout must be ignored instead of throwing.
 - Count valid `attachments` entries as separately owned items.
 - Preserve loadout and attachment parent context for My Items display.
 - Planner logic must ignore `CachedLoadout` when computing `requiredFinal`.

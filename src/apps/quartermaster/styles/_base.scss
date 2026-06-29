@@ -244,14 +244,28 @@
 .qm-sync-error {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: $spacing-sm;
   padding: $spacing-sm $spacing-md;
   background: color.adjust($status-missing, $alpha: -0.85);
   border-bottom: 1px solid $status-missing;
   color: $status-missing;
   font-size: $font-sm;
 
+  &__message {
+    flex: 1 1 auto;
+  }
+
+  &__action {
+    flex: 0 0 auto;
+    color: $text-primary;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
   &__dismiss {
+    flex: 0 0 auto;
     background: none;
     border: none;
     color: $status-missing;

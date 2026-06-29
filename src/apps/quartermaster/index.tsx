@@ -56,6 +56,7 @@ import {
   getBenchLevels,
   getUnlockedBlueprintItemIds,
   isApiError,
+  ARCTRACKER_SYNC_REQUIRED_ERROR_MESSAGE,
   type CachedStash,
   type CachedLoadout,
   type CachedHideout,
@@ -102,6 +103,14 @@ import { QuestsView } from './components/views/QuestsView';
 import { WeaponsView } from './components/views/WeaponsView';
 
 import './styles/main.scss';
+
+type QuartermasterSyncError = {
+  message: string;
+  actionHref?: string;
+  actionLabel?: string;
+};
+
+const ARCTRACKER_SYNC_URL = 'https://arctracker.io/apps/arctracker-sync';
 
 function parseHideoutListId(listId: string): { moduleId: string; level: number } | null {
   const match = /^hideout_(.+)_(\d+)$/.exec(listId);
@@ -222,7 +231,7 @@ export function QuartermasterApp() {
   const [activeView, setActiveView] = useState<ViewId>(() => loadActiveView());
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [syncError, setSyncError] = useState<string | null>(null);
+  const [syncError, setSyncError] = useState<QuartermasterSyncError | null>(null);
   const [isSyncingStash, setIsSyncingStash] = useState(false);
   const [isSyncingLoadout, setIsSyncingLoadout] = useState(false);
   const [myItemsSyncStep, setMyItemsSyncStep] = useState<'inventory' | 'loadout' | null>(null);
@@ -549,27 +558,33 @@ export function QuartermasterApp() {
     if (isApiError(err)) {
       if (err.status === 401) {
         if (err.message === 'No authentication token available') {
-          setSyncError(t('quartermaster.sync.sessionExpired'));
+          setSyncError({ message: t('quartermaster.sync.sessionExpired') });
           revalidate();
         } else {
-          setSyncError(tm('quartermaster.sync.failed', { operation, message: err.message }));
+          setSyncError({ message: tm('quartermaster.sync.failed', { operation, message: err.message }) });
         }
+      } else if (err.message === ARCTRACKER_SYNC_REQUIRED_ERROR_MESSAGE) {
+        setSyncError({
+          message: t('quartermaster.sync.arcTrackerSyncRequired'),
+          actionHref: ARCTRACKER_SYNC_URL,
+          actionLabel: t('quartermaster.sync.openArcTrackerSync'),
+        });
       } else if (err.message === 'token_expired') {
-        setSyncError(t('quartermaster.sync.embarkTokenExpired'));
+        setSyncError({ message: t('quartermaster.sync.embarkTokenExpired') });
       } else if (err.message === 'not_enabled') {
-        setSyncError(t('quartermaster.sync.embarkNotEnabled'));
+        setSyncError({ message: t('quartermaster.sync.embarkNotEnabled') });
       } else if (err.status === 429) {
-        setSyncError(t('quartermaster.sync.rateLimited'));
+        setSyncError({ message: t('quartermaster.sync.rateLimited') });
       } else {
-        setSyncError(tm('quartermaster.sync.failed', { operation, message: err.message }));
+        setSyncError({ message: tm('quartermaster.sync.failed', { operation, message: err.message }) });
       }
     } else {
-      setSyncError(
-        tm('quartermaster.sync.failed', {
+      setSyncError({
+        message: tm('quartermaster.sync.failed', {
           operation,
           message: err instanceof Error ? err.message : t('quartermaster.common.unknownError'),
         }),
-      );
+      });
     }
     // Do NOT clear cache on failure (per spec 4.2.3)
   }, [revalidate, t, tm]);
@@ -1190,10 +1205,21 @@ export function QuartermasterApp() {
           {activeView !== 'welcome' && <SignInNudge />}
           {syncError && (
             <div className="qm-sync-error">
-              {syncError}
+              <span className="qm-sync-error__message">{syncError.message}</span>
+              {syncError.actionHref && syncError.actionLabel && (
+                <a
+                  className="qm-sync-error__action"
+                  href={syncError.actionHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {syncError.actionLabel}
+                </a>
+              )}
               <button 
                 className="qm-sync-error__dismiss" 
                 onClick={() => setSyncError(null)}
+                aria-label={t('quartermaster.sync.close')}
               >
                 ×
               </button>

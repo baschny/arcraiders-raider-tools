@@ -478,9 +478,11 @@
       "embarkNotEnabled": "Embark API access is not enabled for this account.",
       "rateLimited": "Rate limited. Please wait a moment and try again.",
       "failed": "{operation} failed: {message}",
+      "arcTrackerSyncRequired": "ArcTracker does not have synced inventory data for your account yet. Open ArcTracker Sync, sync successfully there first, then come back and sync Quartermaster again.",
       "staleTitle": "ArcTracker data has not updated yet",
       "staleBody": "Quartermaster received the same synced timestamp for {sources}. Open arctracker.io, press \"Sync stash\" there, then come back and sync again.",
       "openArcTrackerStash": "Open arctracker.io Stash",
+      "openArcTrackerSync": "Open ArcTracker Sync",
       "close": "Close",
       "myItemsRequired": "Quartermaster needs {sources} data for this view. Go to My Items and hit \"Sync My Items\" first."
     },

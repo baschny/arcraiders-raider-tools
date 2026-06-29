@@ -54,7 +54,7 @@ export interface ArctrackerStashResponse {
     currencies: ArctrackerStashCurrencies;
     slots: ArctrackerStashSlots;
     pagination: ArctrackerStashPagination;
-    syncedAt: string;
+    syncedAt: string | null;
   };
   meta: {
     requestId: string;
@@ -77,20 +77,22 @@ export interface ArctrackerLoadoutSlotCounts {
   augmentedSlots: number;
 }
 
+export interface ArctrackerLoadout {
+  augment: ArctrackerLoadoutSlot;
+  shield: ArctrackerLoadoutSlot;
+  weapon1: ArctrackerLoadoutSlot;
+  weapon2: ArctrackerLoadoutSlot;
+  backpack: ArctrackerLoadoutSlot[];
+  quickItems: ArctrackerLoadoutSlot[];
+  safePocket: ArctrackerLoadoutSlot[];
+  augmentedSlots: ArctrackerLoadoutSlot[];
+  slotCounts: ArctrackerLoadoutSlotCounts;
+}
+
 export interface ArctrackerLoadoutResponse {
   data: {
-    loadout: {
-      augment: ArctrackerLoadoutSlot;
-      shield: ArctrackerLoadoutSlot;
-      weapon1: ArctrackerLoadoutSlot;
-      weapon2: ArctrackerLoadoutSlot;
-      backpack: ArctrackerLoadoutSlot[];
-      quickItems: ArctrackerLoadoutSlot[];
-      safePocket: ArctrackerLoadoutSlot[];
-      augmentedSlots: ArctrackerLoadoutSlot[];
-      slotCounts: ArctrackerLoadoutSlotCounts;
-    };
-    syncedAt: string;
+    loadout: ArctrackerLoadout | null;
+    syncedAt: string | null;
   };
   meta: {
     requestId: string;
@@ -285,7 +287,7 @@ export interface CachedStash {
 }
 
 export interface CachedLoadout {
-  loadout: ArctrackerLoadoutResponse['data']['loadout'];
+  loadout: ArctrackerLoadout;
   syncedAt: string;
   cachedAt: number;
   source?: 'arctracker' | 'embark';

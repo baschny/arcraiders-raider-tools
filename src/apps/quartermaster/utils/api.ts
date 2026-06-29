@@ -27,6 +27,7 @@ import {
   syncHideout,
   syncBlueprints,
   syncProjects,
+  ARCTRACKER_SYNC_REQUIRED_ERROR_MESSAGE,
   getStash,
   getLoadout,
   getHideout,
@@ -41,6 +42,7 @@ export {
   syncHideout,
   syncBlueprints,
   syncProjects,
+  ARCTRACKER_SYNC_REQUIRED_ERROR_MESSAGE,
   getStash,
   getLoadout,
   getHideout,
@@ -91,6 +93,7 @@ function addQuantity(aggregated: Map<string, number>, itemId: string | null, qua
 export function aggregateLoadoutItems(cachedLoadout: CachedLoadout): CurrentLoadoutItem[] {
   const aggregated = new Map<string, number>();
   const loadout = cachedLoadout.loadout;
+  if (!loadout) return [];
 
   // Helper to add item
   const addItem = (itemId: string | null, quantity: number) => {

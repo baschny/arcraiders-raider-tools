@@ -144,4 +144,14 @@ describe('quartermaster API utilities', () => {
       { source: 'loadout', quantity: 1, hasAttachments: true },
     ]);
   });
+
+  it('ignores legacy cached records with a null loadout', () => {
+    const loadout = {
+      loadout: null,
+      syncedAt: '2026-05-03T00:00:00.000Z',
+      cachedAt: 0,
+    } as unknown as CachedLoadout;
+
+    expect(aggregateOwnedInventory(null, loadout, itemsMap)).toEqual([]);
+  });
 });

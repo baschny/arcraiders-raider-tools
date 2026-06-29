@@ -206,8 +206,8 @@ export function buildOwnedWeaponInstances(
   }
 
   const loadoutSlots = [
-    { slotKey: 'weapon1', slot: cachedLoadout?.loadout.weapon1 },
-    { slotKey: 'weapon2', slot: cachedLoadout?.loadout.weapon2 },
+    { slotKey: 'weapon1', slot: cachedLoadout?.loadout?.weapon1 },
+    { slotKey: 'weapon2', slot: cachedLoadout?.loadout?.weapon2 },
   ] as const;
 
   for (const { slotKey, slot } of loadoutSlots) {
