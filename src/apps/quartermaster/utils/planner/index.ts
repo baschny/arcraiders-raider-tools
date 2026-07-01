@@ -137,23 +137,29 @@ export function computePlan(
   const recyclePlan = { actions: greedyResult.recycleActions };
 
   // Step 5: Generate loot suggestions (Final Spec Section 4.5 & 5.1)
-  // Merge top-level deficits with remaining ingredient deficits from greedy planner
-  // Also include repair deficits
+  // Merge top-level deficits with remaining ingredient deficits from greedy planner.
+  // Zero out satisfiable targets — the planner resolved them via crafting (CR-035).
   const remainingIngredientDeficits: Record<ItemId, Qty> = { ...greedyResult.remainingDeficits };
   for (const [itemId, qty] of Object.entries(repairPlan.deficits)) {
     remainingIngredientDeficits[itemId] = Math.max(remainingIngredientDeficits[itemId] ?? 0, qty);
   }
 
-  const lootDeficits: Record<ItemId, Qty> = { ...deficit };
-  for (const [itemId, qty] of Object.entries(remainingIngredientDeficits)) {
-    lootDeficits[itemId] = Math.max(lootDeficits[itemId] ?? 0, qty);
+  const mergedDeficit: Record<ItemId, Qty> = { ...deficit };
+  for (const targetId of greedyResult.satisfiableTargets) {
+    delete mergedDeficit[targetId];
   }
-  const lootSuggestions = generateLootSuggestions(itemsMap, lootDeficits, required);
+  for (const [itemId, qty] of Object.entries(remainingIngredientDeficits)) {
+    if (qty > 0) {
+      mergedDeficit[itemId] = qty;
+    }
+  }
+
+  const lootSuggestions = generateLootSuggestions(itemsMap, mergedDeficit, required);
 
   // Step 5b: Generate In-Raid acquisition suggestions (CR-005)
   const inRaidSuggestions = generateInRaidSuggestions(
     itemsMap,
-    lootDeficits,
+    mergedDeficit,
     required,
     greedyResult.satisfiableTargets,
     requiredSourcesByItemId,
@@ -162,12 +168,23 @@ export function computePlan(
   // Step 6: Build plan rows with badges
   const planRows = buildPlanRows(itemsMap, required, owned, greedyResult);
 
+  // Step 6b: Compute craftable quantity per item — what the planner satisfied (CR-035)
+  const craftableQty: Record<ItemId, Qty> = {};
+  for (const row of planRows) {
+    const rawShortfall = Math.max(0, row.required - row.have);
+    const unmet = mergedDeficit[row.itemId] ?? 0;
+    const craftable = rawShortfall - unmet;
+    if (craftable > 0) {
+      craftableQty[row.itemId] = craftable;
+    }
+  }
+
   // Step 7: Build blocker summary
-  const blockers = buildBlockerSummary(itemsMap, deficit, greedyResult);
+  const blockers = buildBlockerSummary(itemsMap, mergedDeficit, greedyResult);
 
   return {
     required,
-    deficit,
+    deficit: mergedDeficit,
     remainingIngredientDeficits,
 
     planRows,
@@ -188,8 +205,10 @@ export function computePlan(
 
     craftability,
 
+    craftableQty,
+
     activeListsCount: getActiveListsCount(lists),
-    totalMissingItemsCount: getMissingItemsCount(deficit),
+    totalMissingItemsCount: getMissingItemsCount(mergedDeficit),
     totalRecycleActionsCount: recyclePlan.actions.length,
     totalCraftStepsCount: craftPlan.steps.length,
     totalWeaponUpgradeStepsCount: weaponUpgradePlan.steps.length,
@@ -230,6 +249,7 @@ export function createEmptyResult(): PlannerResult {
     repairPlan: createEmptyRepairPlan(),
     satisfiableTargets: new Set(),
     craftability: {},
+    craftableQty: {},
     activeListsCount: 0,
     totalMissingItemsCount: 0,
     totalRecycleActionsCount: 0,

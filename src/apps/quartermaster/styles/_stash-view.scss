@@ -159,6 +159,11 @@
       color: $status-available;
     }
 
+    &--craftable {
+      background: rgba($status-craftable, 0.25);
+      color: $status-craftable;
+    }
+
     &--owned {
       background: rgba($text-secondary, 0.16);
       color: $text-secondary;

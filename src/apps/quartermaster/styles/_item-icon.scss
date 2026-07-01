@@ -128,4 +128,64 @@
     line-height: 1.3;
     min-height: 3.9em;
   }
+
+  &__deficit-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    z-index: 2;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 4px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 800;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+
+    &--craftable {
+      background: $status-craftable;
+      color: #1a1a1a;
+    }
+
+    &--missing {
+      background: $status-missing;
+    }
+
+    &--split {
+      background: none;
+      padding: 0;
+      gap: 0;
+
+      .item-icon__deficit-badge__half {
+        min-width: 14px;
+        padding: 0 3px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:first-child {
+          background: $status-craftable;
+          color: #1a1a1a;
+          border-radius: 999px 0 0 999px;
+        }
+
+        &:last-child {
+          background: $status-missing;
+          color: #fff;
+          border-radius: 0 999px 999px 0;
+        }
+      }
+    }
+
+    &__half {
+      display: inline-block;
+    }
+  }
 }

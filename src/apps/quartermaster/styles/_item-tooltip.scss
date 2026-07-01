@@ -363,6 +363,11 @@
       color: $status-available;
     }
 
+    &--craftable {
+      background: rgba($status-craftable, 0.9);
+      color: #1a1a1a;
+    }
+
     &--missing {
       background: rgba($status-missing, 0.9);
       color: #fff;
@@ -613,9 +618,20 @@
       color: $status-available;
     }
 
+    &--craftable {
+      background: rgba($status-craftable, 0.9);
+      color: #1a1a1a;
+    }
+
     &--missing {
       background: rgba($status-missing, 0.9);
       color: #fff;
     }
+  }
+
+  &__needed-badge-group {
+    display: inline-flex;
+    gap: 4px;
+    align-items: center;
   }
 }

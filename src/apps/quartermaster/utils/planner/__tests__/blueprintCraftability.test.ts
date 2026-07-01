@@ -375,7 +375,9 @@ describe('quartermaster blueprint craftability', () => {
       benchLevels,
     );
 
-    expect(result.remainingIngredientDeficits).toEqual({ metal_parts: 2 });
+    expect(result.remainingIngredientDeficits).toMatchObject({ metal_parts: 2 });
+    // After CR-035 fix: remainingIngredientDeficits also includes the target's own unmet
+    expect(result.remainingIngredientDeficits['medium_ammo']).toBeGreaterThan(0);
     expect(result.inRaidSuggestions.items.find((suggestion) => suggestion.itemId === 'damaged_heat_sink')).toMatchObject({
       reasons: ['BRING_HOME_FOR_RECYCLE_YIELD'],
       impactedTargetItemIds: ['medium_ammo'],
@@ -495,7 +497,9 @@ describe('quartermaster blueprint craftability', () => {
       itemId: step.itemId,
       qty: step.qty,
     }))).toEqual([{ itemId: 'medium_ammo', qty: 180 }]);
-    expect(result.remainingIngredientDeficits).toEqual({ metal_parts: 2 });
+    expect(result.remainingIngredientDeficits).toMatchObject({ metal_parts: 2 });
+    // After CR-035 fix: remainingIngredientDeficits also includes the target's own unmet
+    expect(result.remainingIngredientDeficits['medium_ammo']).toBeGreaterThan(0);
   });
 
   it('falls back to recycling an L1 ingredient when Phase C cannot craft it from base materials', () => {

@@ -7,6 +7,7 @@ export interface ItemFinalListNeed {
   listName: string;
   quantity: number;
   missing: number;
+  craftable: number;
   isComplete: boolean;
   listType: ListType;
 }
@@ -74,14 +75,7 @@ function collectIngredientChainsForTarget(
 }
 
 function buildPlanMissingMap(plannerResult: PlannerResult): Record<string, number> {
-  const missingByItemId: Record<string, number> = {};
-  for (const row of plannerResult.planRows) {
-    missingByItemId[row.itemId] = row.missing;
-  }
-  for (const [itemId, quantity] of Object.entries(plannerResult.remainingIngredientDeficits)) {
-    missingByItemId[itemId] = Math.max(missingByItemId[itemId] ?? 0, quantity);
-  }
-  return missingByItemId;
+  return { ...plannerResult.deficit };
 }
 
 function formatChainLabel(chainItemIds: string[], itemsMap: ItemsMap): string {
@@ -91,43 +85,34 @@ function formatChainLabel(chainItemIds: string[], itemsMap: ItemsMap): string {
 }
 
 /**
- * Allocate totalMissing across sources proportionally using largest-remainder.
- * Returns an array of per-source missing quantities that sum to totalMissing.
+ * Allocate owned, craftable, and deficit across sources first-come-first-serve
+ * by list priority order (preserved from aggregation insertion order).
+ * Returns arrays of per-source { owned, craftable, missing } that sum to the totals.
  */
-function allocateMissingToSources(
+function allocateFirstComeFirstServe(
   sources: { quantity: number }[],
-  totalMissing: number,
-): number[] {
-  if (totalMissing <= 0) return sources.map(() => 0);
+  ownedQty: number,
+  craftableQty: number,
+  deficitQty: number,
+): Array<{ owned: number; craftable: number; missing: number }> {
+  let ownedRemaining = ownedQty;
+  let craftableRemaining = craftableQty;
+  let deficitRemaining = deficitQty;
 
-  const totalRequired = sources.reduce((sum, s) => sum + s.quantity, 0);
-  if (totalRequired <= 0) return sources.map(() => 0);
+  return sources.map((source) => {
+    const owned = Math.min(ownedRemaining, source.quantity);
+    ownedRemaining -= owned;
+    let unmet = source.quantity - owned;
 
-  // Calculate proportional allocations with remainders
-  const allocations: { index: number; quotient: number; remainder: number }[] = sources.map(
-    (source, index) => {
-      const exact = (source.quantity / totalRequired) * totalMissing;
-      return {
-        index,
-        quotient: Math.floor(exact),
-        remainder: exact - Math.floor(exact),
-      };
-    },
-  );
+    const craftable = Math.min(craftableRemaining, unmet);
+    craftableRemaining -= craftable;
+    unmet -= craftable;
 
-  // Distribute remaining units to largest remainders
-  const allocated = allocations.map((a) => a.quotient);
-  const distributed = allocated.reduce((sum, v) => sum + v, 0);
-  const remaining = totalMissing - distributed;
+    const missing = Math.min(deficitRemaining, unmet);
+    deficitRemaining -= missing;
 
-  if (remaining > 0) {
-    const sortedByRemainder = [...allocations].sort((a, b) => b.remainder - a.remainder);
-    for (let i = 0; i < remaining; i++) {
-      allocated[sortedByRemainder[i].index]++;
-    }
-  }
-
-  return allocated;
+    return { owned, craftable, missing };
+  });
 }
 
 function addFinalNeeds(
@@ -135,22 +120,30 @@ function addFinalNeeds(
   plannerResult: PlannerResult,
   missingByItemId: Record<string, number>,
 ): void {
+  const ownedByItemId = new Map<string, number>();
+  for (const row of plannerResult.planRows) {
+    ownedByItemId.set(row.itemId, row.have);
+  }
+
   const requiredSourcesEntries = Object.entries(plannerResult.requiredSourcesByItemId).sort(([a], [b]) =>
     a.localeCompare(b),
   );
   for (const [itemId, sources] of requiredSourcesEntries) {
     const totalMissing = missingByItemId[itemId] ?? 0;
     const isComplete = totalMissing <= 0;
+    const ownedQty = ownedByItemId.get(itemId) ?? 0;
+    const craftableQty = plannerResult.craftableQty[itemId] ?? 0;
     const insight = getOrCreateInsight(insights, itemId);
-    const sortedSources = [...sources].sort((a, b) => a.listName.localeCompare(b.listName));
-    const perSourceMissing = allocateMissingToSources(sortedSources, totalMissing);
-    for (let i = 0; i < sortedSources.length; i++) {
-      const source = sortedSources[i];
+    // Preserve insertion order from aggregation (hideout → quest → project → user priority)
+    const perSource = allocateFirstComeFirstServe(sources, ownedQty, craftableQty, totalMissing);
+    for (let i = 0; i < sources.length; i++) {
+      const source = sources[i];
       insight.finalListNeeds.push({
         listId: source.listId,
         listName: source.listName,
         quantity: source.quantity,
-        missing: perSourceMissing[i],
+        missing: perSource[i].missing,
+        craftable: perSource[i].craftable,
         isComplete,
         listType: source.listType,
       });

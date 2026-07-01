@@ -138,7 +138,7 @@ export function InRaidView({
   itemInsights,
   getOwnedQuantity,
 }: InRaidViewProps) {
-  const { t, tm, compareText } = useLocale();
+  const { t, compareText } = useLocale();
   const { prioritizedSet, clearAllPrioritized } = usePrioritizedItems();
   const [showClearConfirm, setShowClearConfirm] = useState(false);
   const [filters, setFilters] = useState<InRaidFilters>(() => loadInRaidFilters());
@@ -336,7 +336,6 @@ export function InRaidView({
     if (!item) return null;
 
     const deficit = plannerResult.deficit[suggestion.itemId] ?? 0;
-    const required = plannerResult.required[suggestion.itemId] ?? 0;
     const actionKind = resolveActionKind(suggestion);
     const hasReasons = suggestion.reasons.length > 0;
     const firstLetter = item.name.charAt(0).toUpperCase();
@@ -356,15 +355,11 @@ export function InRaidView({
             size="sm"
             showName={false}
             tooltipContext={tooltipContext}
+            deficitBadge={{
+              craftable: plannerResult.craftableQty[suggestion.itemId] ?? 0,
+              missing: deficit,
+            }}
           />
-          {deficit > 0 && (
-            <span
-              className="in-raid-view__item-missing-badge"
-              title={tm('quartermaster.inRaid.missingTooltip', { deficit, required })}
-            >
-              {deficit}
-            </span>
-          )}
         </div>
         <span className="in-raid-view__item-name qm-item-name">{item.name}</span>
         {hasReasons && (
@@ -555,7 +550,7 @@ export function InRaidView({
         {/* --- Section: Direct Targets --- */}
         {sections.directTargets.length > 0 && (
           <section className="in-raid-view__section">
-            <h3 className="in-raid-view__section-title">{t('quartermaster.inRaid.directTargets')}</h3>
+            <h3 className="in-raid-view__section-title">{t('quartermaster.inRaid.mustLoot')}</h3>
             <div className="in-raid-view__grid">
               {renderSectionItems(sections.directTargets)}
             </div>
@@ -565,7 +560,7 @@ export function InRaidView({
         {/* --- Section: Crafting Materials --- */}
         {sections.craftSupport.length > 0 && (
           <section className="in-raid-view__section">
-            <h3 className="in-raid-view__section-title">{t('quartermaster.inRaid.craftingMaterials')}</h3>
+            <h3 className="in-raid-view__section-title">{t('quartermaster.inRaid.bringHomeForCrafting')}</h3>
             <div className="in-raid-view__grid">
               {renderSectionItems(sections.craftSupport)}
             </div>
@@ -575,7 +570,7 @@ export function InRaidView({
         {/* --- Section: Craftable Materials --- */}
         {sections.craftableIngredients.length > 0 && (
           <section className="in-raid-view__section">
-            <h3 className="in-raid-view__section-title">{t('quartermaster.inRaid.craftableMaterials')}</h3>
+            <h3 className="in-raid-view__section-title">{t('quartermaster.inRaid.craftIntoNeeded')}</h3>
             <div className="in-raid-view__grid">
               {renderSectionItems(sections.craftableIngredients)}
             </div>

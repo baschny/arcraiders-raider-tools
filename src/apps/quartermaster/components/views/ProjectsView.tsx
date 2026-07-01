@@ -580,23 +580,19 @@ export function ProjectsView({
                                           ].filter(Boolean).join(' ')}
                                           {...interactiveItemProps}
                                         >
-                                          <div className="projects-view__item-icon-wrapper">
-                                            <ItemIcon
-                                              itemId={item.id}
-                                              name={item.name}
-                                              icon={item.icon}
-                                              rarity={item.rarity}
-                                              quantity={getOwnedQuantity(item.id)}
-                                              size="sm"
-                                              showName={false}
-                                              tooltipContext={tooltipContext}
-                                            />
-                                            {deficit > 0 && (
-                                              <span className="projects-view__item-missing-badge">
-                                                {deficit}
-                                              </span>
-                                            )}
-                                            {showCheckmark && (
+    <div className="projects-view__item-icon-wrapper">
+      <ItemIcon
+        itemId={item.id}
+        name={item.name}
+        icon={item.icon}
+        rarity={item.rarity}
+        quantity={getOwnedQuantity(item.id)}
+        size="sm"
+        showName={false}
+        tooltipContext={tooltipContext}
+        deficitBadge={deficit > 0 ? { craftable: 0, missing: deficit } : undefined}
+      />
+      {showCheckmark && (
                                               <span
                                                 className="projects-view__item-complete"
                                                 title={t('quartermaster.projects.itemCompleteTooltip')}

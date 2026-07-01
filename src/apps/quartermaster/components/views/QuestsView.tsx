@@ -433,12 +433,8 @@ export function QuestsView({
                             size="sm"
                             showName={false}
                             tooltipContext={tooltipContext}
+                            deficitBadge={deficit > 0 ? { craftable: 0, missing: deficit } : undefined}
                           />
-                          {deficit > 0 && (
-                            <span className="quests-view__item-missing-badge">
-                              {deficit}
-                            </span>
-                          )}
                           {isComplete && (
                             <span
                               className="quests-view__item-complete"

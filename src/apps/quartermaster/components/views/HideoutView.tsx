@@ -557,23 +557,19 @@ export function HideoutView({
                                             onToggleHideoutItem(parsed.moduleId, parsed.level, listItem.itemId);
                                           }}
                                         >
-                                          <div className="hideout-view__item-icon-wrapper">
-                                            <ItemIcon
-                                              itemId={item.id}
-                                              name={item.name}
-                                              icon={item.icon}
-                                              rarity={item.rarity}
-                                              quantity={getOwnedQuantity(item.id)}
-                                              size="sm"
-                                              showName={false}
-                                              tooltipContext={tooltipContext}
-                                            />
-                                            {deficit > 0 && (
-                                              <span className="hideout-view__item-missing-badge">
-                                                {deficit}
-                                              </span>
-                                            )}
-                                            {isRequirementAvailable && (
+    <div className="hideout-view__item-icon-wrapper">
+      <ItemIcon
+        itemId={item.id}
+        name={item.name}
+        icon={item.icon}
+        rarity={item.rarity}
+        quantity={getOwnedQuantity(item.id)}
+        size="sm"
+        showName={false}
+        tooltipContext={tooltipContext}
+        deficitBadge={deficit > 0 ? { craftable: 0, missing: deficit } : undefined}
+      />
+      {isRequirementAvailable && (
                                               <span
                                                 className="hideout-view__item-complete"
                                                 title={t('quartermaster.hideout.itemCompleteTooltip')}

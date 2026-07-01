@@ -375,6 +375,12 @@ export function StashView({
                       showName={false}
                       showQuantity={ownedItem.instanceIndex === undefined}
                       tooltipContext={tooltipContext}
+              deficitBadge={
+                missing > 0 ? {
+                  craftable: plannerResult.craftableQty[ownedItem.itemId] ?? 0,
+                  missing: plannerResult.deficit[ownedItem.itemId] ?? 0,
+                } : undefined
+              }
                     />
                   </td>
                   <td>
@@ -408,29 +414,47 @@ export function StashView({
                         </span>
                       </div>
                     )}
-                  </td>
-                  <td>
-                    <div className="stash-view__status-stack">
-                      {missing === 0 && hasRequirement && (
-                        <span className="stash-view__indicator stash-view__indicator--have">
-                          {tm('quartermaster.stash.status.haveRequired', {
-                            owned: ownedItem.quantity,
-                            required,
-                            source: requirementLabel,
-                          })}
-                        </span>
-                      )}
-                      {missing > 0 && (
-                        <span className="stash-view__indicator stash-view__indicator--missing">
-                          {tm('quartermaster.stash.status.needMore', {
-                            missing,
-                            source: requirementLabel,
-                            required,
-                            owned: ownedItem.quantity,
-                          })}
-                        </span>
-                      )}
-                      {!hasRequirement && (
+                   </td>
+                   <td>
+                     <div className="stash-view__status-stack">
+                       {missing === 0 && hasRequirement && (
+                         <span className="stash-view__indicator stash-view__indicator--have">
+                           {tm('quartermaster.stash.status.haveRequired', {
+                             owned: ownedItem.quantity,
+                             required,
+                             source: requirementLabel,
+                           })}
+                         </span>
+                       )}
+                    {missing > 0 && (() => {
+                      const craftable = plannerResult.craftableQty[ownedItem.itemId] ?? 0;
+                      const deficit = plannerResult.deficit[ownedItem.itemId] ?? 0;
+                      return (
+                           <>
+                             {craftable > 0 && (
+                               <span className="stash-view__indicator stash-view__indicator--craftable">
+                                 {tm('quartermaster.stash.status.canCraftMore', {
+                                   count: craftable,
+                                   source: requirementLabel,
+                                   required,
+                                   owned: ownedItem.quantity,
+                                 })}
+                               </span>
+                             )}
+                             {deficit > 0 && (
+                               <span className="stash-view__indicator stash-view__indicator--missing">
+                                 {tm('quartermaster.stash.status.needMore', {
+                                   missing: deficit,
+                                   source: requirementLabel,
+                                   required,
+                                   owned: ownedItem.quantity,
+                                 })}
+                               </span>
+                             )}
+                           </>
+                         );
+                       })()}
+                       {!hasRequirement && (
                         <span className="stash-view__indicator stash-view__indicator--owned">
                           {tm('quartermaster.stash.status.owned', { owned: ownedItem.quantity })}
                         </span>

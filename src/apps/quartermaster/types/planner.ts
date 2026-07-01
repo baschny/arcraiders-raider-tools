@@ -215,6 +215,9 @@ export interface PlannerResult {
   /** Per-item craftability status for every recipe-having item */
   craftability: Record<ItemId, CraftabilityInfo>;
 
+  /** Quantity the planner can satisfy through crafting/recycling per item (CR-035) */
+  craftableQty: Record<ItemId, Qty>;
+
   activeListsCount: number;
   totalMissingItemsCount: number;
   totalRecycleActionsCount: number;

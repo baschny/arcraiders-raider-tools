@@ -20,6 +20,11 @@ export interface ItemIconBadge {
   type: 'keep' | 'recycle' | 'discard' | 'salvage' | 'bring-home' | 'missing' | 'uncraftable' | 'have' | 'can-craft' | 'direct-target';
   priority: number;
 }
+
+export interface ItemIconDeficitBadge {
+  craftable: number;
+  missing: number;
+}
 export interface ItemIconTooltipContext {
   itemsMap: ItemsMap;
   plannerResult: PlannerResult;
@@ -33,6 +38,7 @@ export interface ItemIconProps {
   rarity: ItemRarity;
   quantity: number | null;
   badges?: ItemIconBadge[];
+  deficitBadge?: ItemIconDeficitBadge;
   size?: 'xs' | 'table' | 'sm' | 'md' | 'lg';
   showName?: boolean;
   showQuantity?: boolean;
@@ -52,6 +58,7 @@ export function ItemIcon({
   rarity,
   quantity,
   badges = [],
+  deficitBadge,
   size = 'md',
   showName = true,
   showQuantity = true,
@@ -174,56 +181,77 @@ export function ItemIcon({
 
   return (
     <>
-      <SharedItemIcon
-        itemId={itemId}
-        name={name}
-        icon={icon}
-        rarity={rarity}
-        showName={showName}
-        showQuantity={false}
-        onClick={onClick}
-        className={`${canShowTooltip ? 'item-icon--has-tooltip' : ''}`}
-        style={{ '--item-icon-size': sizePx } as React.CSSProperties}
-        containerRef={setRefs}
+      <div
+        ref={setRefs}
+        style={{ position: 'relative', display: 'inline-flex' }}
       >
-        {canPrioritize && showPriorityAction && (
-          <button
-            type="button"
-            className={`item-icon__prioritize ${isPrioritized ? 'item-icon__prioritize--active' : ''}`}
-            onClick={handleTogglePrioritize}
-            onKeyDown={handleKeyDown}
-            title={prioritizeTitle}
-            aria-label={prioritizeTitle}
+        <SharedItemIcon
+          itemId={itemId}
+          name={name}
+          icon={icon}
+          rarity={rarity}
+          showName={showName}
+          showQuantity={false}
+          onClick={onClick}
+          className={`${canShowTooltip ? 'item-icon--has-tooltip' : ''}`}
+          style={{ '--item-icon-size': sizePx } as React.CSSProperties}
+        >
+          {canPrioritize && showPriorityAction && (
+            <button
+              type="button"
+              className={`item-icon__prioritize ${isPrioritized ? 'item-icon__prioritize--active' : ''}`}
+              onClick={handleTogglePrioritize}
+              onKeyDown={handleKeyDown}
+              title={prioritizeTitle}
+              aria-label={prioritizeTitle}
+            >
+              <Star size={14} fill={isPrioritized ? 'currentColor' : 'none'} strokeWidth={2} />
+            </button>
+          )}
+
+          {showRedLock && (
+            <span className="item-icon__lock" title={t('quartermaster.itemIcon.uncraftable')}>
+              <Lock size={12} strokeWidth={2.5} />
+            </span>
+          )}
+
+          {showQuantity && (
+            <span className={`item-icon__quantity ${quantity === null ? 'item-icon__quantity--unknown' : ''}`}>
+              {quantityLabel}
+            </span>
+          )}
+
+          {sortedBadges.length > 0 && (
+            <div className="item-icon__badges">
+              {sortedBadges.map((badge) => (
+                <span
+                  key={badge.key}
+                  className={`item-icon__badge item-icon__badge--${badge.type}`}
+                >
+                  {badge.label || badge.type}
+                </span>
+              ))}
+            </div>
+          )}
+        </SharedItemIcon>
+
+        {deficitBadge && (deficitBadge.craftable > 0 || deficitBadge.missing > 0) && (
+          <span
+            className={`item-icon__deficit-badge${
+              deficitBadge.craftable > 0 && deficitBadge.missing > 0 ? ' item-icon__deficit-badge--split'
+              : deficitBadge.craftable > 0 ? ' item-icon__deficit-badge--craftable'
+              : ' item-icon__deficit-badge--missing'
+            }`}
           >
-            <Star size={14} fill={isPrioritized ? 'currentColor' : 'none'} strokeWidth={2} />
-          </button>
-        )}
-
-        {showRedLock && (
-          <span className="item-icon__lock" title={t('quartermaster.itemIcon.uncraftable')}>
-            <Lock size={12} strokeWidth={2.5} />
+            {deficitBadge.craftable > 0 && (
+              <span className="item-icon__deficit-badge__half">{deficitBadge.craftable}</span>
+            )}
+            {deficitBadge.missing > 0 && (
+              <span className="item-icon__deficit-badge__half">{deficitBadge.missing}</span>
+            )}
           </span>
         )}
-
-        {showQuantity && (
-          <span className={`item-icon__quantity ${quantity === null ? 'item-icon__quantity--unknown' : ''}`}>
-            {quantityLabel}
-          </span>
-        )}
-
-        {sortedBadges.length > 0 && (
-          <div className="item-icon__badges">
-            {sortedBadges.map((badge) => (
-              <span
-                key={badge.key}
-                className={`item-icon__badge item-icon__badge--${badge.type}`}
-              >
-                {badge.label || badge.type}
-              </span>
-            ))}
-          </div>
-        )}
-      </SharedItemIcon>
+      </div>
 
       {tooltipItem && (
         <ItemTooltip

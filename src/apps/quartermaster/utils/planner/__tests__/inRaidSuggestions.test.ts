@@ -431,3 +431,195 @@ describe('In Raid Suggestions Provenance (P2 Fixes)', () => {
     expect(speakerSuggestion?.impactedTargetItemIds).toContain('photoelectric_cloak');
   });
 });
+
+// --------------------------------------------------------------------------
+// Satisfiable target exclusion + craftableQty tests (CR-035)
+// --------------------------------------------------------------------------
+describe('Satisfiable target exclusion from In-Raid', () => {
+  const baseItem = {
+    description: '',
+    icon: '',
+    rarity: 'Common' as const,
+    type: 'Material',
+    stationLevelRequired: 1 as const,
+    blueprintLocked: false,
+    craftQuantity: 1,
+    stackSize: 10,
+  };
+
+  const craftingItemsMap: ItemsMap = {
+    antiseptic: {
+      ...baseItem,
+      id: 'antiseptic',
+      name: 'Antiseptic',
+      category: 'Basic Material',
+      recipe: { herbal_compound: 2, sterile_cloth: 1 },
+      craftBench: 'equipment_bench',
+    },
+    herbal_compound: {
+      ...baseItem,
+      id: 'herbal_compound',
+      name: 'Herbal Compound',
+      category: 'Basic Material',
+    },
+    sterile_cloth: {
+      ...baseItem,
+      id: 'sterile_cloth',
+      name: 'Sterile Cloth',
+      category: 'Basic Material',
+    },
+    surveyor_vault: {
+      ...baseItem,
+      id: 'surveyor_vault',
+      name: 'Surveyor Vault',
+      category: 'Other',
+    },
+    rusted_shut_medical_kit: {
+      ...baseItem,
+      id: 'rusted_shut_medical_kit',
+      name: 'Rusted Shut Medical Kit',
+      category: 'Other',
+    },
+  };
+
+  it('excludes fully satisfiable targets from in-raid suggestions', () => {
+    const lists: StoredList[] = [
+      {
+        id: 'medical-lab-tier-3',
+        name: 'Medical Lab Tier 3',
+        type: 'hideout',
+        isEnabled: true,
+        items: [
+          { itemId: 'antiseptic', quantity: 6, isEnabled: true },
+          { itemId: 'surveyor_vault', quantity: 1, isEnabled: true },
+          { itemId: 'rusted_shut_medical_kit', quantity: 1, isEnabled: true },
+        ],
+      },
+    ];
+
+    // Own enough sub-materials to craft all 6 Antiseptic
+    const owned: OwnedItemQuantity[] = [
+      { itemId: 'herbal_compound', quantity: 12 },
+      { itemId: 'sterile_cloth', quantity: 6 },
+    ];
+
+    const result = computePlan(craftingItemsMap, lists, owned);
+
+    // Antiseptic should be fully satisfiable
+    expect(result.satisfiableTargets.has('antiseptic')).toBe(true);
+    // Deficit for Antiseptic should be 0 (post-planner)
+    expect(result.deficit['antiseptic'] ?? 0).toBe(0);
+    // CraftableQty should be 6 (the entire shortfall)
+    expect(result.craftableQty['antiseptic']).toBe(6);
+
+    // Antiseptic should NOT appear in in-raid suggestions
+    const antisepticSuggestion = result.inRaidSuggestions.items.find((s) => s.itemId === 'antiseptic');
+    expect(antisepticSuggestion).toBeUndefined();
+
+    // Surveyor Vault and Rusted Shut Medical Kit (cannot be crafted) SHOULD appear
+    const vaultSuggestion = result.inRaidSuggestions.items.find((s) => s.itemId === 'surveyor_vault');
+    expect(vaultSuggestion).toBeDefined();
+    const kitSuggestion = result.inRaidSuggestions.items.find((s) => s.itemId === 'rusted_shut_medical_kit');
+    expect(kitSuggestion).toBeDefined();
+  });
+
+  it('partially satisfiable targets appear in in-raid when uncraftable portion remains', () => {
+    const lists: StoredList[] = [
+      {
+        id: 'medical-lab-tier-3',
+        name: 'Medical Lab Tier 3',
+        type: 'hideout',
+        isEnabled: true,
+        items: [
+          // Need 3 craftable Antiseptic + 2 must-loot Surveyor Vaults
+          { itemId: 'antiseptic', quantity: 3, isEnabled: true },
+          { itemId: 'surveyor_vault', quantity: 2, isEnabled: true },
+        ],
+      },
+    ];
+
+    // Own enough sub-materials to craft all 3 Antiseptic
+    const owned: OwnedItemQuantity[] = [
+      { itemId: 'herbal_compound', quantity: 6 },
+      { itemId: 'sterile_cloth', quantity: 3 },
+    ];
+
+    const result = computePlan(craftingItemsMap, lists, owned);
+
+    // Antiseptic should be fully satisfiable (need 3, can craft 3)
+    expect(result.satisfiableTargets.has('antiseptic')).toBe(true);
+    // Post-planner deficit for Antiseptic = 0
+    expect(result.deficit['antiseptic'] ?? 0).toBe(0);
+    // CraftableQty should be 3
+    expect(result.craftableQty['antiseptic']).toBe(3);
+
+    // Antiseptic should NOT appear in in-raid (fully satisfied)
+    const antisepticSuggestion = result.inRaidSuggestions.items.find((s) => s.itemId === 'antiseptic');
+    expect(antisepticSuggestion).toBeUndefined();
+
+    // Surveyor Vault (uncraftable) should appear with deficit 2
+    const vaultSuggestion = result.inRaidSuggestions.items.find((s) => s.itemId === 'surveyor_vault');
+    expect(vaultSuggestion).toBeDefined();
+    // Vault should not be satisfiable (can't be crafted)
+    expect(result.satisfiableTargets.has('surveyor_vault')).toBe(false);
+    expect(result.deficit['surveyor_vault']).toBe(2);
+    expect(result.craftableQty['surveyor_vault'] ?? 0).toBe(0);
+  });
+
+  it('craftableQty is 0 when the item has no recipe and is entirely in deficit', () => {
+    const lists: StoredList[] = [
+      {
+        id: 'list-1',
+        name: 'My List',
+        type: 'user',
+        isEnabled: true,
+        items: [
+          { itemId: 'surveyor_vault', quantity: 1, isEnabled: true },
+        ],
+      },
+    ];
+
+    const owned: OwnedItemQuantity[] = [];
+    const result = computePlan(craftingItemsMap, lists, owned);
+
+    // Surveyor Vault cannot be crafted — craftableQty must be 0
+    expect(result.craftableQty['surveyor_vault'] ?? 0).toBe(0);
+    // Deficit must be 1
+    expect(result.deficit['surveyor_vault']).toBe(1);
+    // Appears in In-Raid
+    const vaultSuggestion = result.inRaidSuggestions.items.find((s) => s.itemId === 'surveyor_vault');
+    expect(vaultSuggestion).toBeDefined();
+  });
+
+  it('craftableQty equals full shortfall when partially owned and rest is craftable', () => {
+    const lists: StoredList[] = [
+      {
+        id: 'medical-lab-tier-3',
+        name: 'Medical Lab Tier 3',
+        type: 'hideout',
+        isEnabled: true,
+        items: [
+          { itemId: 'antiseptic', quantity: 8, isEnabled: true },
+        ],
+      },
+    ];
+
+    // Own 2 Antiseptic, and enough mats for 6 more
+    const owned: OwnedItemQuantity[] = [
+      { itemId: 'antiseptic', quantity: 2 },
+      { itemId: 'herbal_compound', quantity: 12 },
+      { itemId: 'sterile_cloth', quantity: 6 },
+    ];
+
+    const result = computePlan(craftingItemsMap, lists, owned);
+
+    // Fully satisfiable (need 8, own 2, craft 6 → all covered)
+    expect(result.satisfiableTargets.has('antiseptic')).toBe(true);
+    // Post-planner deficit = 0
+    expect(result.deficit['antiseptic'] ?? 0).toBe(0);
+    // craftableQty = 6 (the planner produced 6)
+    expect(result.craftableQty['antiseptic']).toBe(6);
+    // Not in In-Raid
+    expect(result.inRaidSuggestions.items.find((s) => s.itemId === 'antiseptic')).toBeUndefined();
+  });
+});

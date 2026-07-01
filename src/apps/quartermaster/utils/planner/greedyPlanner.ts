@@ -1513,12 +1513,12 @@ export function runGreedyPlanner(
 
     if (!item.recipe || !item.craftBench) {
       // Base material, not craftable – deficit is the item itself
-      const d = need - getAvail(state, targetId);
-      if (d > 0) remainingDeficits[targetId] = (remainingDeficits[targetId] ?? 0) + d;
+      if (need > 0) remainingDeficits[targetId] = (remainingDeficits[targetId] ?? 0) + need;
       continue;
     }
 
-    // Craftable target that wasn't fully satisfied – report ingredient deficits
+    // Craftable target that wasn't fully satisfied – add target unmet + ingredient deficits
+    if (need > 0) remainingDeficits[targetId] = (remainingDeficits[targetId] ?? 0) + need;
     const craftTimes = Math.ceil(need / item.craftQuantity);
     for (const [ingId, qtyPerCraft] of Object.entries(item.recipe)) {
       const totalNeeded = qtyPerCraft * craftTimes;

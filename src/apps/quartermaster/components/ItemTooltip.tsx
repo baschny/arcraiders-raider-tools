@@ -47,19 +47,39 @@ function getListIcon(listType: ListType) {
   return <List size={14} />;
 }
 
-function renderCompleteBadge(isComplete: boolean, t: (key: string) => string) {
+function renderCompleteBadge(isComplete: boolean, craftable: number, t: (key: string) => string) {
+  if (isComplete && craftable > 0) {
+    return (
+      <span className="qm-item-tooltip__status-badge qm-item-tooltip__status-badge--craftable">
+        {craftable} {t('quartermaster.itemTooltip.craftable')}
+      </span>
+    );
+  }
   return (
     <span className={`qm-item-tooltip__status-badge ${isComplete ? 'qm-item-tooltip__status-badge--complete' : 'qm-item-tooltip__status-badge--missing'}`}>
-      {isComplete ? t('quartermaster.itemTooltip.complete') : t('quartermaster.itemTooltip.needed')}
+      {isComplete ? t('quartermaster.itemTooltip.complete') : craftable > 0 ? t('quartermaster.itemTooltip.craftable') : t('quartermaster.itemTooltip.missing')}
     </span>
   );
 }
 
-function renderNeededBadge(missing: number, t: (key: string) => string) {
-  if (missing <= 0) {
+function renderNeededBadge(missing: number, craftable: number, t: (key: string) => string) {
+  if (missing <= 0 && craftable <= 0) {
     return <span className="qm-item-tooltip__needed-badge qm-item-tooltip__needed-badge--complete">{t('quartermaster.itemTooltip.complete')}</span>;
   }
-  return <span className="qm-item-tooltip__needed-badge qm-item-tooltip__needed-badge--missing">{missing} {t('quartermaster.itemTooltip.needed')}</span>;
+  return (
+    <span className="qm-item-tooltip__needed-badge-group">
+      {craftable > 0 && (
+        <span className="qm-item-tooltip__needed-badge qm-item-tooltip__needed-badge--craftable">
+          {craftable} {t('quartermaster.itemTooltip.craftable')}
+        </span>
+      )}
+      {missing > 0 && (
+        <span className="qm-item-tooltip__needed-badge qm-item-tooltip__needed-badge--missing">
+          {missing} {t('quartermaster.itemTooltip.missing')}
+        </span>
+      )}
+    </span>
+  );
 }
 
 interface TooltipListNeedDisplay {
@@ -68,6 +88,7 @@ interface TooltipListNeedDisplay {
   listType: ListType;
   quantity: number;
   missing: number | null;
+  craftable: number;
   isComplete: boolean;
 }
 
@@ -169,6 +190,7 @@ export function ItemTooltip({
       listType: finalNeed?.listType ?? need.listType,
       quantity: finalNeed?.quantity ?? 1,
       missing: finalNeed?.missing ?? null,
+      craftable: finalNeed?.craftable ?? 0,
       isComplete: finalNeed?.isComplete ?? need.isComplete,
     });
 
@@ -206,6 +228,7 @@ export function ItemTooltip({
       listType: finalNeed?.listType ?? usage.listType,
       quantity: finalNeed?.quantity ?? usage.yieldQuantity,
       missing: finalNeed?.missing ?? null,
+      craftable: finalNeed?.craftable ?? 0,
       isComplete: finalNeed?.isComplete ?? usage.isComplete,
     });
 
@@ -235,8 +258,8 @@ export function ItemTooltip({
                   <div className="qm-item-tooltip__needs-right">
                     <span className="qm-item-tooltip__needs-quantity">{need.quantity}×</span>
                     {need.missing === null
-                      ? renderCompleteBadge(need.isComplete, t)
-                      : renderNeededBadge(need.missing, t)
+                      ? renderCompleteBadge(need.isComplete, need.craftable, t)
+                      : renderNeededBadge(need.missing, need.craftable, t)
                     }
                   </div>
                 </div>
@@ -484,7 +507,7 @@ export function ItemTooltip({
                             </div>
                             <div className="qm-item-tooltip__needs-right">
                               <span className="qm-item-tooltip__needs-quantity">{need.quantity}×</span>
-                              {renderNeededBadge(need.missing, t)}
+                              {renderNeededBadge(need.missing, need.craftable, t)}
                             </div>
                           </div>
                         ))}
@@ -503,7 +526,7 @@ export function ItemTooltip({
                             </div>
                             <div className="qm-item-tooltip__needs-right">
                               <span className="qm-item-tooltip__needs-quantity">{need.quantity}×</span>
-                              {renderNeededBadge(need.missing, t)}
+                              {renderNeededBadge(need.missing, need.craftable, t)}
                             </div>
                           </div>
                         ))}
@@ -522,7 +545,7 @@ export function ItemTooltip({
                             </div>
                             <div className="qm-item-tooltip__needs-right">
                               <span className="qm-item-tooltip__needs-quantity">{need.quantity}×</span>
-                              {renderNeededBadge(need.missing, t)}
+                              {renderNeededBadge(need.missing, need.craftable, t)}
                             </div>
                           </div>
                         ))}
