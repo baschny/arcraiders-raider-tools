@@ -138,7 +138,21 @@ export function InRaidView({
   itemInsights,
   getOwnedQuantity,
 }: InRaidViewProps) {
-  const { t, compareText } = useLocale();
+  const { t, compareText, locale } = useLocale();
+
+  const CJK_LOCALES = new Set(['ja', 'ko-KR', 'zh-CN', 'zh-TW']);
+  const showInitials = !CJK_LOCALES.has(locale);
+
+  // Strip leading non-alphanumeric chars (quotes, brackets, etc.) for sorting
+  const sortName = (name: string) => name.replace(/^[^\p{L}\p{N}]+/u, '');
+
+  // Extract the effective first letter: strip quotes, NFD-normalize for umlauts
+  const getFirstLetter = (name: string): string => {
+    const stripped = sortName(name);
+    if (!stripped) return '';
+    // NFD decomposes accented chars: Ä → A + combining diaeresis
+    return stripped.normalize('NFD').charAt(0).toUpperCase();
+  };
   const { prioritizedSet, clearAllPrioritized } = usePrioritizedItems();
   const [showClearConfirm, setShowClearConfirm] = useState(false);
   const [filters, setFilters] = useState<InRaidFilters>(() => loadInRaidFilters());
@@ -309,8 +323,8 @@ export function InRaidView({
 
     for (const key of Object.keys(result) as SectionTag[]) {
       result[key].sort((a, b) => {
-        const nameA = itemsMap[a.itemId]?.name ?? '';
-        const nameB = itemsMap[b.itemId]?.name ?? '';
+        const nameA = sortName(itemsMap[a.itemId]?.name ?? '');
+        const nameB = sortName(itemsMap[b.itemId]?.name ?? '');
         return compareText(nameA, nameB);
       });
     }
@@ -331,20 +345,19 @@ export function InRaidView({
     }
   };
 
-  const renderCompactCard = (suggestion: InRaidSuggestion, isFirstOfLetter: boolean) => {
+  const renderCompactCard = (suggestion: InRaidSuggestion, isAltGroup?: boolean) => {
     const item = itemsMap[suggestion.itemId];
     if (!item) return null;
 
     const deficit = plannerResult.deficit[suggestion.itemId] ?? 0;
     const actionKind = resolveActionKind(suggestion);
     const hasReasons = suggestion.reasons.length > 0;
-    const firstLetter = item.name.charAt(0).toUpperCase();
+
+    const itemClasses = ['in-raid-view__item'];
+    if (isAltGroup) itemClasses.push('in-raid-view__item--alt-group');
 
     return (
-      <div key={suggestion.itemId} className="in-raid-view__item">
-        {isFirstOfLetter && (
-          <span className="in-raid-view__item-letter">{firstLetter}</span>
-        )}
+      <div className={itemClasses.join(' ')}>
         <div className="in-raid-view__item-icon-wrapper">
           <ItemIcon
             itemId={item.id}
@@ -379,15 +392,36 @@ export function InRaidView({
   const renderSectionItems = (items: InRaidSuggestion[]) => {
     if (items.length === 0) return null;
 
+    const showLetters = showInitials && items.length > 12;
+
     let lastLetter = '';
+    let groupIdx = -1;
+
     return (
       <>
         {items.map((s) => {
           const name = itemsMap[s.itemId]?.name ?? '';
-          const letter = name.charAt(0).toUpperCase();
-          const isFirstOfLetter = items.length > 12 && letter !== lastLetter;
+          const letter = getFirstLetter(name);
+          const isFirstOfLetter = showLetters && letter !== lastLetter;
+          if (isFirstOfLetter) groupIdx++;
           lastLetter = letter;
-          return renderCompactCard(s, isFirstOfLetter);
+          const isAltGroup = showLetters && groupIdx % 2 === 1;
+
+          const wrapperClasses = ['in-raid-view__item-wrapper'];
+          if (!showLetters) wrapperClasses.push('in-raid-view__item-wrapper--no-letters');
+
+          return (
+            <div key={s.itemId} className={wrapperClasses.join(' ')}>
+              {showLetters && (
+                <div className="in-raid-view__letter-slot">
+                  {isFirstOfLetter && (
+                    <span className="in-raid-view__letter-label">{letter}</span>
+                  )}
+                </div>
+              )}
+              {renderCompactCard(s, isAltGroup)}
+            </div>
+          );
         })}
       </>
     );

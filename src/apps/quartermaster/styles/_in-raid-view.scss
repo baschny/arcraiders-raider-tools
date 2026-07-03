@@ -303,7 +303,7 @@
     flex-direction: column;
     align-items: center;
     gap: 4px;
-    width: 92px;
+    width: 100%;
     padding: 6px 4px;
     background: rgba(255, 255, 255, 0.03);
     border-radius: $radius-sm;
@@ -332,6 +332,7 @@
   &__item-name {
     width: 100%;
     min-width: 0;
+    min-height: 2.2em;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: normal;
@@ -370,21 +371,38 @@
     }
   }
 
-  // --- Letter marker on first-of-letter item cards ---
-  &__item-letter {
-    position: absolute;
-    bottom: 4px;
-    left: 4px;
-    z-index: 3;
+  // --- Item wrapper (grid child, wraps letter-slot + card) ---
+  &__item-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 92px;
+  }
+
+  // --- Reserved letter slot above each card ---
+  &__letter-slot {
+    width: 100%;
+    min-height: 20px;
+    display: flex;
+    align-items: center;
+    padding: 0 4px;
+  }
+
+  &__letter-label {
     font-family: 'Urbanist', sans-serif;
-    font-size: 22px;
-    font-weight: 900;
-    color: #eee;
+    font-size: 16px;
+    font-weight: 800;
+    color: $text-secondary;
     text-transform: uppercase;
     letter-spacing: 1px;
-    line-height: 1;
-    opacity: 0.4;
-    pointer-events: none;
+    line-height: 1.1;
+    opacity: 0.5;
+    user-select: none;
+  }
+
+  // --- Alternating group background on item cards ---
+  &__item--alt-group {
+    background: rgba(255, 255, 255, 0.025);
   }
 
   // --- No results ---
