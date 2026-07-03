@@ -546,6 +546,7 @@
         "owned": "Owned {owned}",
         "haveRequired": "Have {owned} / {required} required for {source}",
         "needMore": "Need {missing} more for {source} ({required} required, {owned} owned)",
+        "canCraftMore": "Can craft {count} more for {source} ({required} required, {owned} owned)",
         "upgradeBase": "Planned as weapon upgrade base"
       },
       "columns": {
@@ -756,6 +757,9 @@
       "craftingMaterials": "Materiais de crafting",
       "craftableMaterials": "Craftable Materials",
       "priorityTargets": "Priority Targets",
+      "mustLoot": "Must Loot in Raid",
+      "bringHomeForCrafting": "Bring Home for Crafting",
+      "craftIntoNeeded": "Craft Into Needed Items",
       "prioritizeMark": "Mark as Priority Target",
       "prioritizeRemove": "Remove from Priority Targets",
       "prioritizeClearAll": "Remove All",
@@ -807,6 +811,8 @@
     "itemTooltip": {
       "complete": "Completo",
       "needed": "Necessário",
+      "craftable": "CRAFTABLE",
+      "missing": "MISSING",
       "stackSize": "Tamanho da pilha:",
       "weight": "Peso:",
       "value": "Valor:",
