@@ -1614,15 +1614,17 @@ export function computeCraftability(
     const hasBlueprintInfo = !!baseInfo?.blueprint;
     const hasBlueprintLock = baseInfo?.blueprint && !baseInfo.blueprint.satisfied;
     const hasBenchInfo = !!baseInfo?.bench;
+    const hasBenchUnsatisfied = baseInfo?.bench && !baseInfo.bench.satisfied;
     if (!hasBlueprintInfo && !hasBenchInfo) continue;
+    const isBlocked = hasBlueprintLock || hasBenchUnsatisfied;
     result[itemId] = {
-      ...(hasBlueprintLock
-        ? { hasRecipe: true as const, canCraft: false as const, blueprint: { ...baseInfo.blueprint! } }
+      ...(isBlocked
+        ? { hasRecipe: true as const, canCraft: false as const }
         : {
             hasRecipe: existingInfo.hasRecipe,
             canCraft: existingInfo.canCraft,
-            ...(hasBlueprintInfo ? { blueprint: { ...baseInfo.blueprint! } } : {}),
           }),
+      ...(hasBlueprintInfo ? { blueprint: { ...baseInfo.blueprint! } } : {}),
       ...(hasBenchInfo ? { bench: { ...baseInfo.bench! } } : {}),
     };
   }
