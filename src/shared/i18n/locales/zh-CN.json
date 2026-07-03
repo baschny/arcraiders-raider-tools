@@ -546,6 +546,7 @@
         "owned": "Owned {owned}",
         "haveRequired": "Have {owned} / {required} required for {source}",
         "needMore": "Need {missing} more for {source} ({required} required, {owned} owned)",
+        "canCraftMore": "Can craft {count} more for {source} ({required} required, {owned} owned)",
         "upgradeBase": "Planned as weapon upgrade base"
       },
       "columns": {
@@ -756,6 +757,9 @@
       "craftingMaterials": "Crafting Materials",
       "craftableMaterials": "Craftable Materials",
       "priorityTargets": "Priority Targets",
+      "mustLoot": "Must Loot in Raid",
+      "bringHomeForCrafting": "Bring Home for Crafting",
+      "craftIntoNeeded": "Craft Into Needed Items",
       "prioritizeMark": "Mark as Priority Target",
       "prioritizeRemove": "Remove from Priority Targets",
       "prioritizeClearAll": "Remove All",
@@ -807,6 +811,8 @@
     "itemTooltip": {
       "complete": "完成",
       "needed": "需要的",
+      "craftable": "CRAFTABLE",
+      "missing": "MISSING",
       "stackSize": "堆叠数量：",
       "weight": "重量：",
       "value": "价值：",
