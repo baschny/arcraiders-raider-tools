@@ -107,6 +107,7 @@ export interface StashFilters {
   searchQuery: string;
   categoryFilter: string;
   rarityFilter: string;
+  recycleTargetId: string | null;
   showOnlyUseless: boolean;
 }
 
@@ -114,12 +115,12 @@ const STASH_FILTERS_KEY = 'quartermaster.ui.stashFilters';
 
 export function loadStashFilters(): StashFilters {
   const stored = readString(STASH_FILTERS_KEY);
-  if (!stored) return { searchQuery: '', categoryFilter: 'all', rarityFilter: 'all', showOnlyUseless: false };
+  if (!stored) return { searchQuery: '', categoryFilter: 'all', rarityFilter: 'all', recycleTargetId: null, showOnlyUseless: false };
 
   try {
     const parsed = JSON.parse(stored) as unknown;
     if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
-      return { searchQuery: '', categoryFilter: 'all', rarityFilter: 'all', showOnlyUseless: false };
+      return { searchQuery: '', categoryFilter: 'all', rarityFilter: 'all', recycleTargetId: null, showOnlyUseless: false };
     }
 
     const obj = parsed as Record<string, unknown>;
@@ -127,10 +128,11 @@ export function loadStashFilters(): StashFilters {
       searchQuery: typeof obj.searchQuery === 'string' ? obj.searchQuery : '',
       categoryFilter: typeof obj.categoryFilter === 'string' ? obj.categoryFilter : 'all',
       rarityFilter: typeof obj.rarityFilter === 'string' ? obj.rarityFilter : 'all',
+      recycleTargetId: typeof obj.recycleTargetId === 'string' ? obj.recycleTargetId : null,
       showOnlyUseless: typeof obj.showOnlyUseless === 'boolean' ? obj.showOnlyUseless : false,
     };
   } catch {
-    return { searchQuery: '', categoryFilter: 'all', rarityFilter: 'all', showOnlyUseless: false };
+    return { searchQuery: '', categoryFilter: 'all', rarityFilter: 'all', recycleTargetId: null, showOnlyUseless: false };
   }
 }
 

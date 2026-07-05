@@ -1894,6 +1894,7 @@ My Items supports the following filters (additive — all active filters combine
 - **Search** — text search against item names
 - **Category** — dropdown filter by item category
 - **Rarity** — dropdown filter by item rarity tier
+- **Recycle Target** — autocomplete search to select an item, then filters owned items to only those that can be recycled into the selected target (directly or via one intermediate, i.e., two-step recycling)
 - **Show Useless** — checkbox toggle that shows only items with **no planner relevance at all**
 
 When "Show Useless" is active, the view shows only items that are:
@@ -1908,7 +1909,21 @@ This corresponds to the item tooltip's right column (Column 2) being empty. Item
 
 If all items are useful (none are useless), enabling this filter shows the "No items match" empty state.
 
-Filter state (search query, category, rarity, and the "Show Useless" toggle) persists in `localStorage` so it is retained when switching between views or navigating away from and back to the Quartermaster app within the same browser session. Filters are device-local UI preferences and are not synced across devices.
+#### Recycle Target
+
+The Recycle Target filter shows which owned items can be recycled into a specific target item. This is useful for quickly identifying sources of raw materials (e.g., finding all items that yield Chemicals when recycled).
+
+**Autocomplete** — Displays as a search input in the filter bar. Typing narrows the list of candidate targets. Only items that appear as a recycle target anywhere in the item database are shown (i.e., items that exist as a key in any item's `recyclesInto` or as a key in the `recyclesInto` of an intermediate item).
+
+**Two-step recycling** — An owned item matches if either:
+- It recycles directly into the selected target (its `recyclesInto` contains the target ID), or
+- It recycles into an intermediate item `I`, and `I`'s `recyclesInto` contains the target ID (two-step chain)
+
+**Selected target chip** — After selection, the search input collapses into a chip in the filter bar showing the target item's icon and name with a clear button (X). Clicking the X or pressing the clear button resets the filter.
+
+**Persistence** — The selected `recycleTargetId` is persisted in `localStorage` alongside other stash filters.
+
+Filter state (search query, category, rarity, recycle target, and the "Show Useless" toggle) persists in `localStorage` so it is retained when switching between views or navigating away from and back to the Quartermaster app within the same browser session. Filters are device-local UI preferences and are not synced across devices.
 
 ---
 

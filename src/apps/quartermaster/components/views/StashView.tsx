@@ -3,11 +3,12 @@
  * See specification section 7.2
  */
 
-import { useState, useEffect, useMemo } from 'react';
-import { Info, Paperclip, RefreshCw, Search, Package } from 'lucide-react';
+import { useState, useEffect, useMemo, useRef, useCallback } from 'react';
+import { Info, Paperclip, RefreshCw, Search, Package, X, Recycle } from 'lucide-react';
 import type { ItemsMap } from '../../types/item';
 import type { OwnedItemDisplayRow, OwnedItemLocation, PlannerResult } from '../../types/planner';
 import { ItemIcon } from '../ItemIcon';
+import { ItemIcon as SharedItemIcon } from '../../../../shared/components/ItemIcon';
 import type { ItemInsightsMap } from '../../utils/itemInsights';
 import {
   getLocalizedQuartermasterCategory,
@@ -15,6 +16,12 @@ import {
   getUncraftableReasonLabel,
 } from '../../utils/localization';
 import { loadStashFilters, saveStashFilters } from '../../utils/preferences';
+import {
+  getRecycleTargetItems,
+  getRecycleSourceItems,
+  getRecycleYieldInfo,
+  type RecycleYieldInfoUnion,
+} from '../../utils/recycleFilter';
 import { useLocale } from '../../../../shared/context/LocaleContext';
 
 interface StashViewProps {
@@ -52,7 +59,21 @@ export function StashView({
 }: StashViewProps) {
   const { t, tm, compareText, formatNumber } = useLocale();
   const [filters, setFilters] = useState(() => loadStashFilters());
-  const { searchQuery, categoryFilter, rarityFilter, showOnlyUseless } = filters;
+  const { searchQuery, categoryFilter, rarityFilter, recycleTargetId, showOnlyUseless } = filters;
+
+  const [recycleSearchQuery, setRecycleSearchQuery] = useState('');
+  const [showRecycleSuggestions, setShowRecycleSuggestions] = useState(false);
+  const recycleSearchRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (recycleSearchRef.current && !recycleSearchRef.current.contains(e.target as Node)) {
+        setShowRecycleSuggestions(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   useEffect(() => {
     saveStashFilters(filters);
@@ -80,6 +101,57 @@ export function StashView({
     }
     return ids;
   }, [ownedItemRows, itemInsights, upgradeBaseItemIds]);
+
+  // Recycle target: all items that are a target of some recycling (direct or 2-step)
+  const recycleTargetItems = useMemo(() => getRecycleTargetItems(itemsMap), [itemsMap]);
+
+  // Given selected recycle target, compute all owned item IDs that recycle into it
+  const recycleSourceItemIds = useMemo(() => {
+    if (!recycleTargetId) return null;
+    return getRecycleSourceItems(itemsMap, recycleTargetId);
+  }, [itemsMap, recycleTargetId]);
+
+  // Filter recycle target items by search query
+  const recycleTargetSuggestions = useMemo(() => {
+    if (!recycleSearchQuery.trim()) return [];
+    const lowerQuery = recycleSearchQuery.toLowerCase();
+    return Array.from(recycleTargetItems.values())
+      .filter(item => item.name.toLowerCase().includes(lowerQuery))
+      .sort((a, b) => compareText(a.name, b.name))
+      .slice(0, 10);
+  }, [recycleTargetItems, recycleSearchQuery, compareText]);
+
+  const selectedRecycleTarget = recycleTargetId ? itemsMap[recycleTargetId] ?? null : null;
+
+  const handleSelectRecycleTarget = useCallback((itemId: string) => {
+    setFilters(prev => ({ ...prev, recycleTargetId: itemId }));
+    setRecycleSearchQuery('');
+    setShowRecycleSuggestions(false);
+  }, []);
+
+  const handleClearRecycleTarget = useCallback(() => {
+    setFilters(prev => ({ ...prev, recycleTargetId: null }));
+  }, []);
+
+  const recycleYieldMap = useMemo(() => {
+    if (!recycleTargetId) return null;
+    const map = new Map<string, RecycleYieldInfoUnion>();
+    for (const ownedItem of ownedItemRows) {
+      const info = getRecycleYieldInfo(itemsMap, ownedItem.itemId, recycleTargetId);
+      if (info) map.set(ownedItem.itemId, info);
+    }
+    return map;
+  }, [itemsMap, ownedItemRows, recycleTargetId]);
+
+  const getRecycleYieldPlainLabel = useCallback((yieldInfo: RecycleYieldInfoUnion, ownedQuantity: number): string => {
+    const targetName = selectedRecycleTarget?.name ?? '';
+    const total = yieldInfo.perItem * ownedQuantity;
+    const totalPart = `${total}x ${t('quartermaster.stash.recycleYields.total')}`;
+    if (yieldInfo.type === 'direct') {
+      return `Recycle:\u00A0→ ${yieldInfo.perItem}x ${targetName} = ${totalPart}`;
+    }
+    return `Recycle:\u00A0→ ${yieldInfo.intermediateYield}x ${yieldInfo.intermediateName} → ${yieldInfo.finalYield}x ${targetName} = ${totalPart}`;
+  }, [selectedRecycleTarget, t]);
 
   // Get unique categories from owned items
   const categories = useMemo(() => {
@@ -115,6 +187,11 @@ export function StashView({
           return false;
         }
 
+        // Recycle target filter — only items that recycle into the selected target
+        if (recycleSourceItemIds && !recycleSourceItemIds.has(ownedItem.itemId)) {
+          return false;
+        }
+
         // Useless filter — show only items with no planner relevance
         if (showOnlyUseless && !uselessItemIds.has(ownedItem.itemId)) {
           return false;
@@ -132,7 +209,7 @@ export function StashView({
         const durabilityB = b.durabilityPercent ?? 100;
         return durabilityB - durabilityA;
       });
-  }, [ownedItemRows, itemsMap, searchQuery, categoryFilter, rarityFilter, showOnlyUseless, uselessItemIds, compareText]);
+  }, [ownedItemRows, itemsMap, searchQuery, categoryFilter, rarityFilter, recycleSourceItemIds, showOnlyUseless, uselessItemIds, compareText]);
 
   // Calculate total value
   const totalValue = useMemo(() => {
@@ -255,6 +332,69 @@ export function StashView({
             />
           </div>
         </div>
+
+        {selectedRecycleTarget ? (
+          <div className="stash-view__recycle-chip" title={selectedRecycleTarget.name}>
+            <Recycle size={13} />
+            <span>{t('quartermaster.stash.recycleTarget')}:</span>
+            <SharedItemIcon
+              itemId={selectedRecycleTarget.id}
+              name={selectedRecycleTarget.name}
+              icon={selectedRecycleTarget.icon}
+              rarity={selectedRecycleTarget.rarity}
+              showName={false}
+              className="stash-view__recycle-chip-icon"
+            />
+            <button
+              type="button"
+              className="stash-view__recycle-chip-clear"
+              onClick={handleClearRecycleTarget}
+              title={t('quartermaster.stash.clearRecycleTarget')}
+            >
+              <X size={14} />
+            </button>
+          </div>
+        ) : (
+          <div className="stash-view__recycle-target" ref={recycleSearchRef}>
+            <div style={{ position: 'relative' }}>
+              <Recycle size={14} style={{ position: 'absolute', left: 8, top: '50%', transform: 'translateY(-50%)', opacity: 0.5 }} />
+              <input
+                type="text"
+                className="qm-input"
+                placeholder={t('quartermaster.stash.recycleTargetPlaceholder')}
+                value={recycleSearchQuery}
+                onChange={(e) => {
+                  setRecycleSearchQuery(e.target.value);
+                  setShowRecycleSuggestions(true);
+                }}
+                onFocus={() => setShowRecycleSuggestions(true)}
+                style={{ paddingLeft: 28, width: 220 }}
+              />
+              {showRecycleSuggestions && recycleTargetSuggestions.length > 0 && (
+                <div className="stash-view__recycle-suggestions">
+                  {recycleTargetSuggestions.map(item => (
+                    <button
+                      type="button"
+                      key={item.id}
+                      className="stash-view__recycle-suggestion"
+                      onClick={() => handleSelectRecycleTarget(item.id)}
+                    >
+                      <SharedItemIcon
+                        itemId={item.id}
+                        name={item.name}
+                        icon={item.icon}
+                        rarity={item.rarity}
+                        showName={false}
+                        className="stash-view__recycle-suggestion-icon"
+                      />
+                      <span className="stash-view__recycle-suggestion-name qm-item-name">{item.name}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        )}
 
         <div className="stash-view__filters">
           <select
@@ -474,6 +614,25 @@ export function StashView({
                           {getUncraftableReasonLabel(t, planRow.uncraftableReason)}
                         </span>
                       )}
+                      {recycleYieldMap && (() => {
+                        const yieldInfo = recycleYieldMap.get(ownedItem.itemId);
+                        if (!yieldInfo) return null;
+                        const targetName = selectedRecycleTarget?.name ?? '';
+                        const total = yieldInfo.perItem * ownedItem.quantity;
+                        const totalLabel = `${total}x ${t('quartermaster.stash.recycleYields.total')}`;
+                        const titleText = getRecycleYieldPlainLabel(yieldInfo, ownedItem.quantity);
+                        return (
+                          <span className="stash-view__indicator stash-view__indicator--recycle-yield" title={titleText}>
+                            <span className="stash-view__indicator-label">{t('quartermaster.stash.recycleYields.prefix')}:&nbsp;</span>
+                            {yieldInfo.type === 'direct' ? (
+                              <>→ {yieldInfo.perItem}x {targetName}</>
+                            ) : (
+                              <>→ {yieldInfo.intermediateYield}x {yieldInfo.intermediateName} → {yieldInfo.finalYield}x {targetName}</>
+                            )}
+                            <span className="stash-view__recycle-yield-total"> = <strong>{totalLabel}</strong></span>
+                          </span>
+                        );
+                      })()}
                     </div>
                   </td>
                 </tr>
