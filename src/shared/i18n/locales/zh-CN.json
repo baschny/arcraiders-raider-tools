@@ -521,6 +521,13 @@
       "allRarities": "所有稀有度",
       "showOnlyUseless": "Show Useless",
       "showOnlyUselessTooltip": "Items which are currently not relevant to achieve any of your goal items (items in your lists, items required for your hideout and crafting materials for those)",
+      "recycleTargetPlaceholder": "Filter by recycle target...",
+      "recycleTarget": "Recycle Target",
+      "clearRecycleTarget": "Clear recycle target filter",
+      "recycleYields": {
+        "prefix": "Recycle",
+        "total": "total"
+      },
       "totalValue": "总价值",
       "empty": "未加载任何物品。点击\"同步我的物品\"加载您的仓库和当前配装。",
       "noMatches": "没有匹配筛选器的物品。",
@@ -769,6 +776,7 @@
       "searchPlaceholder": "Search items...",
       "filterType": "Type",
       "filterRarity": "Rarity",
+      "filterUncraftable": "Uncraftable only",
       "filterLocation": "Location",
       "clearFilters": "Clear filters",
       "allTypes": "All Types",
