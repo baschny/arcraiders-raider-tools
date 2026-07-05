@@ -1382,6 +1382,29 @@ export function runGreedyPlanner(
         state = trialState;
       } else {
         mergePlannerDiagnostics(state, trialState);
+
+        let bestQty = 0;
+        let lo = 0;
+        let hi = need - 1;
+
+        while (lo <= hi) {
+          const mid = Math.ceil((lo + hi) / 2);
+          const testState = clonePlannerState(state);
+          if (planWeaponUpgradeTarget(testState, targetId, mid, requiredSourcesByItemId)) {
+            bestQty = mid;
+            lo = mid + 1;
+          } else {
+            hi = mid - 1;
+            mergePlannerDiagnostics(state, testState);
+          }
+        }
+
+        if (bestQty > 0) {
+          const commitState = clonePlannerState(state);
+          if (planWeaponUpgradeTarget(commitState, targetId, bestQty, requiredSourcesByItemId)) {
+            state = commitState;
+          }
+        }
       }
       continue;
     }
