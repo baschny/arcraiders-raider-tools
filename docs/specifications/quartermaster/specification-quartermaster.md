@@ -2294,6 +2294,35 @@ Items in this section retain provenance (`impactedTargetItemIds` and `listSource
 
 Repair material deficits from the repair pre-pass are included in `remainingIngredientDeficits`, which feeds the In Raid suggestion pipeline. Items with repair material deficits appear as `BRING_HOME_DIRECT_MATERIAL` suggestions with appropriate list provenance.
 
+### Filters (Change-36)
+
+The In Raid filter bar sits above the item grid and contains:
+
+1. **Search input** — text search against item name, free-form, cleared with X button
+2. **Uncraftable Only toggle** — a binary switch that filters out items the user can craft
+3. **Type dropdown** — multi-select filter by item category (Material, Weapon, Quick Use, etc.)
+4. **Rarity dropdown** — multi-select filter by rarity (Common, Uncommon, Rare, Epic, Legendary)
+5. **Location dropdown** — multi-select filter by found-in location
+6. **Clear filters button** — resets all filters to defaults (appears when any filter is active)
+
+#### Uncraftable Only Toggle
+
+Label: `"Uncraftable only"` (i18n key `quartermaster.inRaid.filterUncraftable`).
+
+When active, items matching any of these criteria are **hidden**:
+
+- Item has a recipe AND all crafting conditions are satisfied (blueprint unlocked, bench tier met)
+
+Items matching any of these criteria remain **visible**:
+
+- Item has no recipe (weapons, mods, quick use items, ammunition, etc.)
+- Item has a recipe but is blueprint-locked and the blueprint is not unlocked
+- Item has a recipe but requires a bench tier higher than what the user has
+
+The toggle uses `plannerResult.craftability[itemId]` — the pre-computed `CraftabilityInfo` from the planner. It does not consider ingredient availability since ingredients can be farmed.
+
+Filter state is persisted to `localStorage` under `quartermaster.ui.inRaidFilters`.
+
 ## 4.7 Crafting View
 
 ### Repair Section (Change-22)

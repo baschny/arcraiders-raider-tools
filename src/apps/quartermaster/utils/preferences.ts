@@ -151,18 +151,19 @@ export interface InRaidFilters {
   selectedTypes: string[];
   selectedRarities: string[];
   selectedLocations: string[];
+  showOnlyUncraftable: boolean;
 }
 
 const IN_RAID_FILTERS_KEY = 'quartermaster.ui.inRaidFilters';
 
 export function loadInRaidFilters(): InRaidFilters {
   const stored = readString(IN_RAID_FILTERS_KEY);
-  if (!stored) return { searchQuery: '', selectedTypes: [], selectedRarities: [], selectedLocations: [] };
+  if (!stored) return { searchQuery: '', selectedTypes: [], selectedRarities: [], selectedLocations: [], showOnlyUncraftable: false };
 
   try {
     const parsed = JSON.parse(stored) as unknown;
     if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
-      return { searchQuery: '', selectedTypes: [], selectedRarities: [], selectedLocations: [] };
+      return { searchQuery: '', selectedTypes: [], selectedRarities: [], selectedLocations: [], showOnlyUncraftable: false };
     }
 
     const obj = parsed as Record<string, unknown>;
@@ -171,9 +172,10 @@ export function loadInRaidFilters(): InRaidFilters {
       selectedTypes: Array.isArray(obj.selectedTypes) ? obj.selectedTypes.filter((v): v is string => typeof v === 'string') : [],
       selectedRarities: Array.isArray(obj.selectedRarities) ? obj.selectedRarities.filter((v): v is string => typeof v === 'string') : [],
       selectedLocations: Array.isArray(obj.selectedLocations) ? obj.selectedLocations.filter((v): v is string => typeof v === 'string') : [],
+      showOnlyUncraftable: typeof obj.showOnlyUncraftable === 'boolean' ? obj.showOnlyUncraftable : false,
     };
   } catch {
-    return { searchQuery: '', selectedTypes: [], selectedRarities: [], selectedLocations: [] };
+    return { searchQuery: '', selectedTypes: [], selectedRarities: [], selectedLocations: [], showOnlyUncraftable: false };
   }
 }
 

@@ -4,7 +4,7 @@
  */
 import { useMemo, useState, useRef, useEffect, useCallback } from 'react';
 import { Target, Inbox, Wrench, Recycle, Star, X, Search, ChevronDown } from 'lucide-react';
-import type { ItemsMap, ItemRarity } from '../../types/item';
+import type { ItemsMap, ItemRarity, PlannerItem } from '../../types/item';
 import type { InRaidSuggestion, PlannerResult } from '../../types/planner';
 import type { ItemInsightsMap } from '../../utils/itemInsights';
 import { ItemIcon } from '../ItemIcon';
@@ -36,6 +36,13 @@ interface FilterOption {
   value: string;
   label: string;
   count: number;
+}
+
+function isItemCraftable(item: PlannerItem, plannerResult: PlannerResult): boolean {
+  const ci = plannerResult.craftability[item.id];
+  if (!ci) return false;
+  if (!ci.hasRecipe) return false;
+  return ci.canCraft;
 }
 
 function resolveActionKind(suggestion: InRaidSuggestion): ActionKind {
@@ -246,6 +253,7 @@ export function InRaidView({
           const locs = item.foundIn ?? [];
           if (!locs.some((loc) => filters.selectedLocations.includes(loc))) continue;
         }
+        if (filters.showOnlyUncraftable && isItemCraftable(item, plannerResult)) continue;
 
         if (category === 'type') {
           counts.set(item.category, (counts.get(item.category) ?? 0) + 1);
@@ -284,7 +292,7 @@ export function InRaidView({
               : getLocalizedQuartermasterLocation(t, value),
       }));
     },
-    [itemsMap, filters.selectedRarities, filters.selectedTypes, filters.selectedLocations, compareText, t],
+    [itemsMap, filters.selectedRarities, filters.selectedTypes, filters.selectedLocations, filters.showOnlyUncraftable, compareText, t, plannerResult],
   );
 
   const typeOptions = useMemo(() => computeFilterOptions(searchFilteredItems, 'type'), [computeFilterOptions, searchFilteredItems]);
@@ -303,6 +311,7 @@ export function InRaidView({
         const locs = item.foundIn ?? [];
         if (!locs.some((loc) => filters.selectedLocations.includes(loc))) return false;
       }
+      if (filters.showOnlyUncraftable && isItemCraftable(item, plannerResult)) return false;
 
       return true;
     });
@@ -437,10 +446,11 @@ export function InRaidView({
     filters.searchQuery.trim() !== '' ||
     filters.selectedTypes.length > 0 ||
     filters.selectedRarities.length > 0 ||
-    filters.selectedLocations.length > 0;
+    filters.selectedLocations.length > 0 ||
+    filters.showOnlyUncraftable;
 
   const handleClearFilters = () => {
-    setFilters({ searchQuery: '', selectedTypes: [], selectedRarities: [], selectedLocations: [] });
+    setFilters({ searchQuery: '', selectedTypes: [], selectedRarities: [], selectedLocations: [], showOnlyUncraftable: false });
     searchInputRef.current?.focus();
   };
 
@@ -515,6 +525,22 @@ export function InRaidView({
               </button>
             )}
           </div>
+
+          <label className="in-raid-view__toggle">
+            <span className="in-raid-view__toggle-label">{t('quartermaster.inRaid.filterUncraftable')}</span>
+            <button
+              type="button"
+              role="switch"
+              aria-checked={filters.showOnlyUncraftable}
+              className={[
+                'in-raid-view__toggle-switch',
+                filters.showOnlyUncraftable ? 'in-raid-view__toggle-switch--active' : '',
+              ].filter(Boolean).join(' ')}
+              onClick={() => setFilters((prev) => ({ ...prev, showOnlyUncraftable: !prev.showOnlyUncraftable }))}
+            >
+              <span className="in-raid-view__toggle-knob" />
+            </button>
+          </label>
 
           <MultiSelectDropdown
             label={t('quartermaster.inRaid.filterType')}
