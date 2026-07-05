@@ -521,6 +521,13 @@
       "allRarities": "All Rarities",
       "showOnlyUseless": "Show Useless",
       "showOnlyUselessTooltip": "Items which are currently not relevant to achieve any of your goal items (items in your lists, items required for your hideout and crafting materials for those)",
+      "recycleTargetPlaceholder": "Filter by recycle target...",
+      "recycleTarget": "Recycle Target",
+      "clearRecycleTarget": "Clear recycle target filter",
+      "recycleYields": {
+        "prefix": "Recycle",
+        "total": "total"
+      },
       "totalValue": "Total Value",
       "empty": "No items loaded. Click \"Sync My Items\" to load your inventory and current loadout.",
       "noMatches": "No items match your filters.",
@@ -769,6 +776,7 @@
       "searchPlaceholder": "Search items...",
       "filterType": "Type",
       "filterRarity": "Rarity",
+      "filterUncraftable": "Uncraftable only",
       "filterLocation": "Location",
       "clearFilters": "Clear filters",
       "allTypes": "All Types",
