@@ -521,6 +521,13 @@
       "allRarities": "Alle Seltenheiten",
       "showOnlyUseless": "Nutzlose anzeigen",
       "showOnlyUselessTooltip": "Gegenstände, die momentan nicht relevant sind, um eines deiner Zielgegenstände zu erreichen (Elemente in deinen Listen, benötigte Gegenstände für deine Verstecke und Handwerksmaterialien für diese)",
+      "recycleTargetPlaceholder": "Filter by recycle target...",
+      "recycleTarget": "Recycle Target",
+      "clearRecycleTarget": "Clear recycle target filter",
+      "recycleYields": {
+        "prefix": "Recycle",
+        "total": "total"
+      },
       "totalValue": "Gesamtwert",
       "empty": "Keine Gegenstände geladen. Klicke auf \"Meine Artikel synchronisieren\", um dein Inventar und dein aktuelles Loadout zu laden.",
       "noMatches": "Keine Gegenstände passen zu deinen Filtern.",
@@ -769,6 +776,7 @@
       "searchPlaceholder": "Search items...",
       "filterType": "Type",
       "filterRarity": "Rarity",
+      "filterUncraftable": "Uncraftable only",
       "filterLocation": "Location",
       "clearFilters": "Clear filters",
       "allTypes": "All Types",
