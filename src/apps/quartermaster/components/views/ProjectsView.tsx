@@ -3,7 +3,7 @@
  * Mirrors HideoutView for project required-item tracking
  */
 
-import { useState, type KeyboardEvent } from 'react';
+import type { KeyboardEvent } from 'react';
 import {
   BriefcaseBusiness,
   CheckCircle2,
@@ -30,6 +30,11 @@ import {
   getProjectProgressSummary,
   parseProjectListId,
 } from '../../utils/projectLists';
+import {
+  normalizeCollapsedProjectIds,
+  setProjectCollapsed,
+  setVisibleProjectsCollapsed,
+} from '../../utils/projectViewState';
 
 interface ProjectsViewProps {
   itemsMap: ItemsMap;
@@ -46,6 +51,8 @@ interface ProjectsViewProps {
   onSetProjectStepsEnabled: (projectId: string, stepIndices: number[], isEnabled: boolean) => void;
   onSetProjectTrackingMode: (mode: 'enable-all' | 'disable-all' | 'next-only') => void;
   onToggleProjectItem: (projectId: string, stepIndex: number, itemId: string) => void;
+  collapsedProjectIds: string[];
+  onCollapsedProjectIdsChange: (projectIds: string[]) => void;
 }
 
 type TrackingMode = 'enable-all' | 'disable-all' | 'next-only';
@@ -74,26 +81,30 @@ export function ProjectsView({
   onSetProjectStepsEnabled,
   onSetProjectTrackingMode,
   onToggleProjectItem,
+  collapsedProjectIds,
+  onCollapsedProjectIdsChange,
 }: ProjectsViewProps) {
   const { t, formatNumber, compareText } = useLocale();
-  const [collapsedProjects, setCollapsedProjects] = useState<Record<string, boolean>>({});
+  const normalizedCollapsedProjectIds = normalizeCollapsedProjectIds(collapsedProjectIds);
+  const collapsedProjectIdSet = new Set(normalizedCollapsedProjectIds);
 
   const toggleProjectCollapsed = (projectId: string) => {
-    setCollapsedProjects((prev) => ({
-      ...prev,
-      [projectId]: !prev[projectId],
-    }));
+    onCollapsedProjectIdsChange(setProjectCollapsed(
+      normalizedCollapsedProjectIds,
+      projectId,
+      !collapsedProjectIdSet.has(projectId),
+    ));
   };
 
   const setAllProjectsCollapsed = (isCollapsed: boolean) => {
-    const next: Record<string, boolean> = {};
-    for (const def of projectDefinitions) {
-      const isComplete = getIsProjectComplete(def.id);
-      if (!isComplete) {
-        next[def.id] = isCollapsed;
-      }
-    }
-    setCollapsedProjects(next);
+    const visibleIncompleteProjectIds = sortedDefinitions
+      .filter((definition) => !getIsProjectComplete(definition.id))
+      .map((definition) => definition.id);
+    onCollapsedProjectIdsChange(setVisibleProjectsCollapsed(
+      normalizedCollapsedProjectIds,
+      visibleIncompleteProjectIds,
+      isCollapsed,
+    ));
   };
 
   const progressByProjectId = new Map<string, Map<number, boolean>>();
@@ -316,7 +327,7 @@ export function ProjectsView({
             {sortedDefinitions.map((definition) => {
               const isProjectComplete = getIsProjectComplete(definition.id);
               const projLists = listsByProjectId.get(definition.id) ?? [];
-              const isExpanded = !collapsedProjects[definition.id];
+              const isExpanded = !collapsedProjectIdSet.has(definition.id);
               const toggleableLists = projLists.filter((list) => {
                 const parsed = parseProjectListId(list.id);
                 return parsed !== null && !getIsStepComplete(definition, parsed.stepIndex);
@@ -428,6 +439,14 @@ export function ProjectsView({
                       {!isProjectComplete ? (
                         <>
                           <span
+                            className="projects-view__steps-badge"
+                            title={t('quartermaster.projects.stepsProgressTooltip')}
+                          >
+                            {t('quartermaster.projects.stepProgressLeading')
+                              .replace('{completed}', formatNumber(progressSummary.completedStepCount))
+                              .replace('{total}', formatNumber(progressSummary.totalStepCount))}
+                          </span>
+                          <span
                             className="projects-view__tracking-badge"
                             title={t('quartermaster.projects.trackedItemsTooltip')}
                           >
@@ -440,18 +459,10 @@ export function ProjectsView({
                             className="projects-view__missing-badge"
                             title={t('quartermaster.projects.missingItemsTooltip')}
                           >
-                            {t('quartermaster.projects.missingItems').replace(
+                            {t('quartermaster.projects.missingItemCount').replace(
                               '{count}',
                               formatNumber(progressSummary.missingItemCount),
                             )}
-                          </span>
-                          <span
-                            className="projects-view__steps-badge"
-                            title={t('quartermaster.projects.stepsProgressTooltip')}
-                          >
-                            {t('quartermaster.projects.stepsProgress')
-                              .replace('{completed}', formatNumber(progressSummary.completedStepCount))
-                              .replace('{total}', formatNumber(progressSummary.totalStepCount))}
                           </span>
                         </>
                       ) : (

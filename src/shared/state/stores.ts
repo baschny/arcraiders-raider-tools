@@ -100,6 +100,9 @@ export interface QuartermasterState {
     };
     prioritizedItemIds: string[];
     weaponBuilds: WeaponBuild[];
+    projectView?: {
+        collapsedProjectIds: string[];
+    };
 }
 export const quartermasterStore = new UserStateStore<QuartermasterState>({
     domain: 'quartermaster',
@@ -111,6 +114,7 @@ export const quartermasterStore = new UserStateStore<QuartermasterState>({
         questToggles: { listEnabled: {}, itemEnabled: {} },
         prioritizedItemIds: [],
         weaponBuilds: [],
+        projectView: { collapsedProjectIds: [] },
     },
     migrate: (raw) => {
         const r = raw as Partial<QuartermasterState> | null;
@@ -165,6 +169,13 @@ export const quartermasterStore = new UserStateStore<QuartermasterState>({
                 ? r.prioritizedItemIds.filter((id): id is string => typeof id === 'string')
                 : [],
             weaponBuilds,
+            projectView: {
+                collapsedProjectIds: Array.isArray(r?.projectView?.collapsedProjectIds)
+                    ? [...new Set(r.projectView.collapsedProjectIds.filter(
+                        (id): id is string => typeof id === 'string' && id.length > 0,
+                    ))]
+                    : [],
+            },
         };
     },
 });

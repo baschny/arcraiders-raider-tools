@@ -216,6 +216,40 @@ describe('state-sync integration: sign-in / sign-out', () => {
         expect(server.me.dataMigrationCompleted).toBe(true);
     });
 
+    it('migrates collapse-only Quartermaster state on first sign-in', async () => {
+        quartermasterStore.set({
+            lists: [],
+            hideoutToggles: { listEnabled: {}, itemEnabled: {} },
+            projectToggles: { listEnabled: {}, itemEnabled: {} },
+            questToggles: { listEnabled: {}, itemEnabled: {} },
+            prioritizedItemIds: [],
+            weaponBuilds: [],
+            projectView: { collapsedProjectIds: ['project_alpha'] },
+        });
+        await quartermasterStore.flush();
+
+        await runPostSignInSync();
+
+        const migrateCall = server.calls.find(
+            call => call.url.endsWith('/me/migrate') && call.method === 'POST',
+        );
+        expect(migrateCall?.body).toMatchObject({
+            quartermaster: {
+                schemaVersion: 5,
+                data: {
+                    projectView: {
+                        collapsedProjectIds: ['project_alpha'],
+                    },
+                },
+            },
+        });
+        expect(server.state.quartermaster?.data).toMatchObject({
+            projectView: {
+                collapsedProjectIds: ['project_alpha'],
+            },
+        });
+    });
+
     it('skips migration when there is no local data and pulls from the server', async () => {
         server.me.dataMigrationCompleted = true;
         server.state.quests = {

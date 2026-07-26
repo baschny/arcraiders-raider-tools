@@ -74,7 +74,7 @@ Row families (all others are reserved — do not invent new `pk` prefixes withou
 | `GLOBAL#embark` | `THROTTLE#inventory` | optional global persisted token bucket for Embark inventory sync | `EmbarkInventoryFn` |
 | `USER#<sub>` | `STATE#quests` | sync'd quest progress | `StateFn` |
 | `USER#<sub>` | `STATE#loot` | sync'd loot-helper selections | `StateFn` |
-| `USER#<sub>` | `STATE#quartermaster` | sync'd quartermaster lists + hideout toggles | `StateFn` |
+| `USER#<sub>` | `STATE#quartermaster` | sync'd quartermaster lists, tracking toggles, builds, and view state | `StateFn` |
 | `USER#<sub>` | `QM_SNAPSHOT#<time-sortable-id>` | operator-only Quartermaster tutorial snapshot metadata and summary inputs; full payload is private S3 data | `QuartermasterSnapshotsFn` |
 | `IDP#<provider>#<external_id>` | `USER` | auth-layer concern (see `docs/Authentication.md`) | `DiscordAuthFn` |
 | `NONCE#<hex>` | `NONCE` | auth-layer concern (see `docs/Authentication.md`) | `DiscordAuthFn` + `VerifyAuthFn` |
@@ -215,7 +215,8 @@ Two concrete `Backend<T>` implementations live in the same file:
 Module-level singletons:
 - `questsStore` — `{ completedQuestIds: string[] }`.
 - `lootStore` — goal items, disabled items, stash items, filter prefs.
-- `quartermasterStore` — stored lists + hideout toggle state.
+- `quartermasterStore` — stored lists, generated-list toggles, prioritized items,
+  weapon builds, and sparse per-view state such as collapsed project IDs.
 
 All three are exported via `allStores` (tuple) for orchestration. A `useStore(store)` React hook wraps them with `useSyncExternalStore` for ergonomic use.
 

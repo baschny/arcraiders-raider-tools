@@ -35,6 +35,7 @@ import {
   parseProjectListId,
   setProjectListsEnabled,
 } from './utils/projectLists';
+import { normalizeCollapsedProjectIds } from './utils/projectViewState';
 import {
   generateQuestLists,
   itemKey as questItemKey,
@@ -253,9 +254,19 @@ export function QuartermasterApp() {
   );
   const hideoutToggleState = quartermasterState.hideoutToggles;
   const projectToggleState = quartermasterState.projectToggles;
+  const collapsedProjectIds = normalizeCollapsedProjectIds(
+    quartermasterState.projectView?.collapsedProjectIds,
+  );
   const patchQuartermasterState = useCallback((next: Partial<QuartermasterState>) => {
     setQuartermasterState({ ...quartermasterStore.get(), ...next });
   }, [setQuartermasterState]);
+  const handleCollapsedProjectIdsChange = useCallback((projectIds: string[]) => {
+    patchQuartermasterState({
+      projectView: {
+        collapsedProjectIds: normalizeCollapsedProjectIds(projectIds),
+      },
+    });
+  }, [patchQuartermasterState]);
 
   const handleViewChange = useCallback((view: ViewId) => {
     setActiveView(view);
@@ -1075,6 +1086,8 @@ export function QuartermasterApp() {
               onSetProjectStepsEnabled={handleSetProjectStepsEnabled}
               onSetProjectTrackingMode={handleSetProjectTrackingMode}
               onToggleProjectItem={handleToggleProjectItem}
+              collapsedProjectIds={collapsedProjectIds}
+              onCollapsedProjectIdsChange={handleCollapsedProjectIdsChange}
             />
         );
 

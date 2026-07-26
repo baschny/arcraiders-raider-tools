@@ -2198,9 +2198,9 @@ The Projects view must present only non-expired projects that have synchronized 
 - Each visible project must show:
   - project name
   - completed state when all steps are complete (green checkmark)
+  - step-progress badge (`"STEP <completed>/<total>"`) while incomplete
   - tracking count badge (unique required items tracked)
-  - missing-items badge (distinct item requirement entries not fully submitted)
-  - step-progress badge (`"<completed>/<total> STEPS"`) while incomplete
+  - missing-items badge (`"<count> MISSING ITEMS"`, counting distinct item requirement entries not fully submitted)
   - "Submit Available" badge when the current step's items are all owned
   - generated required-item lists for every step
 
@@ -2216,9 +2216,25 @@ Project progress badge rules:
 - Completed steps contribute no missing requirement entries.
 - Step completion uses synchronized progress and the same effective completion rules as the displayed step rows.
 - The total step count is the number of generated step lists displayed for the project.
-- Step progress uses a neutral/accent treatment; green is reserved for terminal completion.
+- Incomplete-project badges appear in this order after the project name: `STEP`, `ITEMS`, `MISSING ITEMS`.
+- Step progress uses the same white treatment as the Hideout tier badge: tertiary background, primary text, and a light border. Green is reserved for terminal completion.
 - Completed projects replace step progress with a green `"PROJECT COMPLETED"` badge next to the green checkmark.
 - Completed projects hide the redundant zero-value tracking and missing-items badges.
+
+### Expansion State
+
+Each incomplete project's expanded or collapsed state persists through the existing Quartermaster user-state domain.
+
+- Persist only collapsed project IDs under `projectView.collapsedProjectIds`.
+- A project ID absent from the stored set is expanded by default.
+- Newly synchronized or newly released projects therefore start expanded.
+- Individual mouse and keyboard header activation persists the resulting state.
+- Collapse All adds every currently visible incomplete project ID to the stored set.
+- Expand All removes every currently visible incomplete project ID from the stored set.
+- Bulk controls preserve stored IDs for projects that are not currently visible.
+- Anonymous users persist through the Quartermaster store's local backend; signed-in users persist through its remote backend.
+- The state participates in first-sign-in migration, revision conflict handling, lifecycle flushing, and sign-out wiping through `UserStateStore`.
+- Existing schema-version 5 payloads and tutorial snapshots without `projectView` are treated as having no collapsed projects.
 
 ### Step Lists
 

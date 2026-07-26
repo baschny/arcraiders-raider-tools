@@ -177,9 +177,9 @@
   }
 
   &__steps-badge {
-    background: rgba($text-accent, 0.12);
-    color: $text-accent;
-    border: 1px solid rgba($text-accent, 0.32);
+    background: $bg-tertiary;
+    color: $text-primary;
+    border: 1px solid rgba($border-light, 0.35);
   }
 
   &__project-complete-badge {

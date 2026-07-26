@@ -170,6 +170,7 @@ async function restoreSnapshot(sub: string, snapshotId: string, origin: string):
     const restoredData = {
         ...payload.quartermaster,
         weaponBuilds: Array.isArray(currentData.weaponBuilds) ? currentData.weaponBuilds : [],
+        projectView: asObject(currentData.projectView),
     };
     const currentRevision = typeof current.Item?.revision === "number" ? current.Item.revision : 0;
     const now = new Date().toISOString();
