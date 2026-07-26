@@ -769,5 +769,132 @@
         "requirementItemIds": []
       }
     ]
+  },
+  {
+    "id": "expedition_project_s5",
+    "name": {
+      "value": "遠征 (Season 5)",
+      "originalEn": "Expedition (Season 5)"
+    },
+    "startDate": 1783425600,
+    "endDate": 1789974000,
+    "phases": [
+      {
+        "name": {
+          "value": "基礎",
+          "originalEn": "Foundation"
+        },
+        "index": 1,
+        "requirementItemIds": [
+          {
+            "itemId": "metal_parts",
+            "quantity": 150
+          },
+          {
+            "itemId": "plastic_parts",
+            "quantity": 100
+          },
+          {
+            "itemId": "arc_alloy",
+            "quantity": 80
+          },
+          {
+            "itemId": "magnet",
+            "quantity": 15
+          }
+        ]
+      },
+      {
+        "name": {
+          "value": "核心系統",
+          "originalEn": "Core Systems"
+        },
+        "index": 2,
+        "requirementItemIds": [
+          {
+            "itemId": "durable_cloth",
+            "quantity": 30
+          },
+          {
+            "itemId": "duct_tape",
+            "quantity": 25
+          },
+          {
+            "itemId": "mechanical_components",
+            "quantity": 20
+          },
+          {
+            "itemId": "voltage_converter",
+            "quantity": 10
+          }
+        ]
+      },
+      {
+        "name": {
+          "value": "骨架",
+          "originalEn": "Framework"
+        },
+        "index": 3,
+        "requirementItemIds": [
+          {
+            "itemId": "arc_circuitry",
+            "quantity": 20
+          },
+          {
+            "itemId": "speaker_component",
+            "quantity": 15
+          },
+          {
+            "itemId": "bastion_cell",
+            "quantity": 5
+          },
+          {
+            "itemId": "magnetic_accelerator",
+            "quantity": 3
+          }
+        ]
+      },
+      {
+        "name": {
+          "value": "設備",
+          "originalEn": "Outfitting"
+        },
+        "index": 4,
+        "requirementItemIds": [
+          {
+            "itemId": "radio",
+            "quantity": 2
+          },
+          {
+            "itemId": "advanced_mechanical_components",
+            "quantity": 5
+          },
+          {
+            "itemId": "lances_mixtape_5th_edition",
+            "quantity": 2
+          },
+          {
+            "itemId": "rocketeer_driver",
+            "quantity": 3
+          }
+        ]
+      },
+      {
+        "name": {
+          "value": "裝貨階段",
+          "originalEn": "Load Stage"
+        },
+        "index": 5,
+        "requirementItemIds": []
+      },
+      {
+        "name": {
+          "value": "出發",
+          "originalEn": "Departure"
+        },
+        "index": 6,
+        "requirementItemIds": []
+      }
+    ]
   }
 ]
