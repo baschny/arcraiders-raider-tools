@@ -2,6 +2,11 @@
   "locale": "en",
   "entries": [
     {
+      "date": "2026-07-26",
+      "apps": ["craft-calculator", "loot-helper", "quartermaster"],
+      "title": "Updated for Season 5: Added Expedition 5 project, refreshed all item data and translations."
+    },
+    {
       "date": "2026-07-05",
       "apps": ["quartermaster"],
       "title": "Quartermaster In-Raid view: Added alphabetical letter grouping, an uncraftable-only toggle, and craftability indicators for items you still need. My Items view now has a Recycle Target filter to quickly spot what to scrap. Weapon upgrades support partial satisfaction and show learned blueprints."
