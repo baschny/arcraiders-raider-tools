@@ -86,6 +86,9 @@
     &--disabled {
       .projects-view__module-title,
       .projects-view__tracking-badge,
+      .projects-view__missing-badge,
+      .projects-view__steps-badge,
+      .projects-view__project-complete-badge,
       .projects-view__submit-available-badge,
       .projects-view__collapse-icon {
         opacity: 0.5;
@@ -104,7 +107,7 @@
     position: sticky;
     top: 0;
     z-index: 10;
-    background: rgba($text-accent, 0.05);
+    background: $bg-secondary;
 
     &--clickable {
       cursor: pointer;
@@ -113,7 +116,7 @@
       &:hover,
       &:focus-visible {
         outline: none;
-        background: rgba($text-accent, 0.1);
+        background: $bg-tertiary;
 
         .projects-view__module-title,
         .projects-view__collapse-icon {
@@ -147,6 +150,9 @@
   }
 
   &__tracking-badge,
+  &__missing-badge,
+  &__steps-badge,
+  &__project-complete-badge,
   &__submit-available-badge {
     display: inline-flex;
     align-items: center;
@@ -162,6 +168,24 @@
     background: rgba($text-accent, 0.12);
     color: $text-accent;
     border: 1px solid rgba($text-accent, 0.32);
+  }
+
+  &__missing-badge {
+    background: rgba($status-missing, 0.13);
+    color: $status-missing;
+    border: 1px solid rgba($status-missing, 0.35);
+  }
+
+  &__steps-badge {
+    background: rgba($text-accent, 0.12);
+    color: $text-accent;
+    border: 1px solid rgba($text-accent, 0.32);
+  }
+
+  &__project-complete-badge {
+    background: rgba($status-available, 0.12);
+    color: $status-available;
+    border: 1px solid rgba($status-available, 0.35);
   }
 
   &__submit-available-badge {

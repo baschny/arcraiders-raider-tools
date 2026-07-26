@@ -12,12 +12,98 @@ interface ProjectListLocalizationOptions {
   compareText: (left: string, right: string) => number;
 }
 
+export interface ProjectProgressSummary {
+  trackedItemCount: number;
+  missingItemCount: number;
+  completedStepCount: number;
+  totalStepCount: number;
+}
+
 export function listKey(projectId: string, stepIndex: number): string {
   return `${projectId}:${stepIndex}`;
 }
 
 export function itemKey(projectId: string, stepIndex: number, itemId: string): string {
   return `${projectId}:${stepIndex}:${itemId}`;
+}
+
+export function parseProjectListId(listId: string): { projectId: string; stepIndex: number } | null {
+  const match = listId.match(/^project_(.+)_(\d+)$/);
+  if (!match) return null;
+  return { projectId: match[1], stepIndex: parseInt(match[2], 10) };
+}
+
+export function setProjectListsEnabled(
+  toggleState: ProjectToggleState,
+  lists: StoredList[],
+  isEnabled: boolean,
+): ProjectToggleState {
+  const listEnabled = { ...toggleState.listEnabled };
+  const itemEnabled = { ...toggleState.itemEnabled };
+
+  for (const list of lists) {
+    const parsed = parseProjectListId(list.id);
+    if (!parsed) continue;
+
+    listEnabled[listKey(parsed.projectId, parsed.stepIndex)] = isEnabled;
+    for (const item of list.items) {
+      itemEnabled[itemKey(parsed.projectId, parsed.stepIndex, item.itemId)] = isEnabled;
+    }
+  }
+
+  return {
+    listEnabled,
+    itemEnabled,
+  };
+}
+
+export function getProjectBulkToggleTarget(lists: StoredList[]): boolean {
+  const areAllItemsEnabled = lists.length > 0
+    && lists.every((list) => list.items.every((item) => item.isEnabled));
+  return !areAllItemsEnabled;
+}
+
+export function getProjectProgressSummary(
+  lists: StoredList[],
+  isStepCompleted: (stepIndex: number) => boolean,
+): ProjectProgressSummary {
+  const trackedItemIds = new Set<string>();
+  let missingItemCount = 0;
+  let completedStepCount = 0;
+
+  for (const list of lists) {
+    const parsed = parseProjectListId(list.id);
+    const isCompleted = parsed ? isStepCompleted(parsed.stepIndex) : false;
+
+    if (isCompleted) {
+      completedStepCount += 1;
+    }
+
+    if (list.isEnabled) {
+      for (const item of list.items) {
+        if (item.isEnabled) {
+          trackedItemIds.add(item.itemId);
+        }
+      }
+    }
+
+    if (isCompleted) continue;
+
+    for (const item of list.items) {
+      const submitted = item.submitted ?? 0;
+      const required = item.required ?? item.quantity;
+      if (submitted < required) {
+        missingItemCount += 1;
+      }
+    }
+  }
+
+  return {
+    trackedItemCount: trackedItemIds.size,
+    missingItemCount,
+    completedStepCount,
+    totalStepCount: lists.length,
+  };
 }
 
 function isProjectExpired(def: ProjectDefinition): boolean {

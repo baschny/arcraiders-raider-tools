@@ -25,6 +25,11 @@ import type { ItemsMap } from '../../types/item';
 import type { StoredList } from '../../types/list';
 import type { PlannerResult } from '../../types/planner';
 import type { ItemInsightsMap } from '../../utils/itemInsights';
+import {
+  getProjectBulkToggleTarget,
+  getProjectProgressSummary,
+  parseProjectListId,
+} from '../../utils/projectLists';
 
 interface ProjectsViewProps {
   itemsMap: ItemsMap;
@@ -44,27 +49,6 @@ interface ProjectsViewProps {
 }
 
 type TrackingMode = 'enable-all' | 'disable-all' | 'next-only';
-
-function parseProjectListId(listId: string): { projectId: string; stepIndex: number } | null {
-  const match = listId.match(/^project_(.+)_(\d+)$/);
-  if (!match) return null;
-  return { projectId: match[1], stepIndex: parseInt(match[2], 10) };
-}
-
-function getTrackedItemCount(projectLists: StoredList[]): number {
-  const trackedItemIds = new Set<string>();
-
-  for (const list of projectLists) {
-    if (!list.isEnabled) continue;
-    for (const item of list.items) {
-      if (item.isEnabled) {
-        trackedItemIds.add(item.itemId);
-      }
-    }
-  }
-
-  return trackedItemIds.size;
-}
 
 function isItemRequirementAvailable(
   getOwnedQuantity: (itemId: string) => number | null,
@@ -130,6 +114,14 @@ export function ProjectsView({
 
   function getIsProjectComplete(projectId: string): boolean {
     return projectCompletedMap.get(projectId) ?? false;
+  }
+
+  function getIsStepComplete(definition: ProjectDefinition, stepIndex: number): boolean {
+    const stepMap = progressByProjectId.get(definition.id);
+    const allPriorStepsComplete = definition.phases
+      .filter((phase) => phase.index < stepIndex)
+      .every((phase) => stepMap?.get(phase.index) ?? false);
+    return allPriorStepsComplete && (stepMap?.get(stepIndex) ?? false);
   }
 
   function getFirstIncompleteStepIndex(projectId: string): number | null {
@@ -325,11 +317,20 @@ export function ProjectsView({
               const isProjectComplete = getIsProjectComplete(definition.id);
               const projLists = listsByProjectId.get(definition.id) ?? [];
               const isExpanded = !collapsedProjects[definition.id];
-              const areAllListsEnabled = projLists.every((l) => l.isEnabled);
-              const areAllListsDisabled = projLists.every((l) => !l.isEnabled);
-              const isProjectDisabled = !isProjectComplete && projLists.length > 0 && areAllListsDisabled;
+              const toggleableLists = projLists.filter((list) => {
+                const parsed = parseProjectListId(list.id);
+                return parsed !== null && !getIsStepComplete(definition, parsed.stepIndex);
+              });
+              const shouldEnableProject = getProjectBulkToggleTarget(toggleableLists);
+              const areAllListsEnabled = !shouldEnableProject;
+              const areAllListsDisabled = toggleableLists.length > 0
+                && toggleableLists.every((list) => list.items.every((item) => !item.isEnabled));
+              const isProjectDisabled = !isProjectComplete && areAllListsDisabled;
               const currentStepIndex = getFirstIncompleteStepIndex(definition.id);
-              const trackedItemCount = getTrackedItemCount(projLists);
+              const progressSummary = getProjectProgressSummary(
+                projLists,
+                (stepIndex) => getIsStepComplete(definition, stepIndex),
+              );
 
               const hasAvailableSubmit = projLists.some((list) => {
                 const parsed = parseProjectListId(list.id);
@@ -350,7 +351,7 @@ export function ProjectsView({
                 });
               });
 
-              const parsedStepIndices = projLists
+              const parsedStepIndices = toggleableLists
                 .map((l) => parseProjectListId(l.id)?.stepIndex)
                 .filter((s): s is number => typeof s === 'number');
 
@@ -402,7 +403,7 @@ export function ProjectsView({
                             onSetProjectStepsEnabled(
                               definition.id,
                               parsedStepIndices,
-                              !areAllListsEnabled,
+                              shouldEnableProject,
                             );
                           }}
                           onKeyDown={(event) => {
@@ -415,8 +416,8 @@ export function ProjectsView({
                       {isProjectComplete && (
                         <span
                           className="projects-view__icon-button projects-view__project-toggle projects-view__complete-icon"
-                          title={t('quartermaster.hideout.maxTierTooltip')}
-                          aria-label={t('quartermaster.hideout.maxTierTooltip')}
+                          title={t('quartermaster.projects.projectCompletedTooltip')}
+                          aria-label={t('quartermaster.projects.projectCompletedTooltip')}
                           role="img"
                         >
                           <CheckCircle2 size={18} />
@@ -424,12 +425,41 @@ export function ProjectsView({
                       )}
 
                       <span className="projects-view__module-title">{definition.name}</span>
-                      {!isProjectComplete && (
+                      {!isProjectComplete ? (
+                        <>
+                          <span
+                            className="projects-view__tracking-badge"
+                            title={t('quartermaster.projects.trackedItemsTooltip')}
+                          >
+                            {t('quartermaster.projects.trackedItems').replace(
+                              '{count}',
+                              formatNumber(progressSummary.trackedItemCount),
+                            )}
+                          </span>
+                          <span
+                            className="projects-view__missing-badge"
+                            title={t('quartermaster.projects.missingItemsTooltip')}
+                          >
+                            {t('quartermaster.projects.missingItems').replace(
+                              '{count}',
+                              formatNumber(progressSummary.missingItemCount),
+                            )}
+                          </span>
+                          <span
+                            className="projects-view__steps-badge"
+                            title={t('quartermaster.projects.stepsProgressTooltip')}
+                          >
+                            {t('quartermaster.projects.stepsProgress')
+                              .replace('{completed}', formatNumber(progressSummary.completedStepCount))
+                              .replace('{total}', formatNumber(progressSummary.totalStepCount))}
+                          </span>
+                        </>
+                      ) : (
                         <span
-                          className="projects-view__tracking-badge"
-                          title={t('quartermaster.projects.trackedItemsTooltip')}
+                          className="projects-view__project-complete-badge"
+                          title={t('quartermaster.projects.projectCompletedTooltip')}
                         >
-                          {t('quartermaster.projects.trackedItems').replace('{count}', String(trackedItemCount))}
+                          {t('quartermaster.projects.projectCompleted')}
                         </span>
                       )}
                       {hasAvailableSubmit && (
@@ -465,15 +495,7 @@ export function ProjectsView({
                               const parsed = parseProjectListId(list.id);
                               const stepIndex = parsed?.stepIndex ?? 0;
                               const isCurrent = stepIndex === currentStepIndex;
-                              const stepCompleted = progressByProjectId.get(definition.id)?.get(stepIndex) ?? false;
-                              const priorIndices = projectDefinitions
-                                .find((d) => d.id === definition.id)?.phases
-                                .filter((p) => p.index < stepIndex)
-                                .map((p) => p.index) ?? [];
-                              const allPriorComplete = priorIndices.every(
-                                (idx) => progressByProjectId.get(definition.id)?.get(idx) ?? false,
-                              );
-                              const isCompleted = allPriorComplete && stepCompleted;
+                              const isCompleted = getIsStepComplete(definition, stepIndex);
                               const isStepAvailable = !isCompleted && isCurrent && list.items.every((li) =>
                                 isItemRequirementAvailable(getOwnedQuantity, li.itemId, li.quantity),
                               );

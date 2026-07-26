@@ -30,7 +30,11 @@ import {
   cleanupObsoleteToggles,
   itemKey,
 } from './utils/hideoutStorage';
-import { generateProjectLists } from './utils/projectLists';
+import {
+  generateProjectLists,
+  parseProjectListId,
+  setProjectListsEnabled,
+} from './utils/projectLists';
 import {
   generateQuestLists,
   itemKey as questItemKey,
@@ -802,20 +806,12 @@ export function QuartermasterApp() {
   const handleToggleProjectList = useCallback((projectId: string, stepIndex: number) => {
     const list = projectLists.find(l => l.id === `project_${projectId}_${stepIndex}`);
     const anyEnabled = list ? list.items.some(item => item.isEnabled) : true;
-    const nextItemEnabled = { ...projectToggleState.itemEnabled };
-
-    if (list) {
-      for (const item of list.items) {
-        nextItemEnabled[projectItemKey(projectId, stepIndex, item.itemId)] = !anyEnabled;
-      }
-    }
-
-    patchQuartermasterState({
-      projectToggles: {
-        ...projectToggleState,
-        itemEnabled: nextItemEnabled,
-      },
-    });
+    const updated = setProjectListsEnabled(
+      projectToggleState,
+      list ? [list] : [],
+      !anyEnabled,
+    );
+    patchQuartermasterState({ projectToggles: updated });
   }, [projectLists, projectToggleState, patchQuartermasterState]);
 
   const handleSetProjectStepsEnabled = useCallback((
@@ -823,36 +819,24 @@ export function QuartermasterApp() {
     stepIndices: number[],
     isEnabled: boolean,
   ) => {
-    const nextItemEnabled = { ...projectToggleState.itemEnabled };
-
-    for (const stepIndex of stepIndices) {
-      const list = projectLists.find(l => l.id === `project_${projectId}_${stepIndex}`);
-      if (list) {
-        for (const item of list.items) {
-          nextItemEnabled[projectItemKey(projectId, stepIndex, item.itemId)] = isEnabled;
-        }
-      }
-    }
-
-    patchQuartermasterState({
-      projectToggles: {
-        ...projectToggleState,
-        itemEnabled: nextItemEnabled,
-      },
+    const stepIndexSet = new Set(stepIndices);
+    const lists = projectLists.filter((list) => {
+      const parsed = parseProjectListId(list.id);
+      return parsed?.projectId === projectId && stepIndexSet.has(parsed.stepIndex);
     });
+    const updated = setProjectListsEnabled(projectToggleState, lists, isEnabled);
+    patchQuartermasterState({ projectToggles: updated });
   }, [projectLists, projectToggleState, patchQuartermasterState]);
 
   const handleSetProjectTrackingMode = useCallback((
     mode: 'enable-all' | 'disable-all' | 'next-only',
   ) => {
-    const nextItemEnabled = { ...projectToggleState.itemEnabled };
+    let updated = projectToggleState;
 
     for (const list of projectLists) {
-      const match = /^project_(.+)_(\d+)$/.exec(list.id);
-      if (!match) continue;
-
-      const projectId = match[1];
-      const stepIndex = parseInt(match[2], 10);
+      const parsed = parseProjectListId(list.id);
+      if (!parsed) continue;
+      const { projectId, stepIndex } = parsed;
 
       let shouldEnable = true;
       if (mode === 'disable-all') {
@@ -873,17 +857,10 @@ export function QuartermasterApp() {
         }
       }
 
-      for (const item of list.items) {
-        nextItemEnabled[projectItemKey(projectId, stepIndex, item.itemId)] = shouldEnable;
-      }
+      updated = setProjectListsEnabled(updated, [list], shouldEnable);
     }
 
-    patchQuartermasterState({
-      projectToggles: {
-        ...projectToggleState,
-        itemEnabled: nextItemEnabled,
-      },
-    });
+    patchQuartermasterState({ projectToggles: updated });
   }, [projectLists, projectToggleState, patchQuartermasterState]);
 
   const handleToggleProjectItem = useCallback((projectId: string, stepIndex: number, itemId: string) => {

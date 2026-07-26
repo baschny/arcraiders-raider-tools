@@ -2198,10 +2198,26 @@ The Projects view must present only non-expired projects that have synchronized 
   - project name
   - completed state when all steps are complete (green checkmark)
   - tracking count badge (unique required items tracked)
+  - missing-items badge (distinct item requirement entries not fully submitted)
+  - step-progress badge (`"<completed>/<total> STEPS"`) while incomplete
   - "Submit Available" badge when the current step's items are all owned
   - generated required-item lists for every step
 
 Completed non-expired projects remain visible and show a completed state with a green checkmark. Expired projects are hidden regardless of completion status.
+
+Project headers remain sticky while their expanded step content scrolls. The normal, hover, and keyboard-focus header backgrounds must be fully opaque so scrolling content is not visible through the header.
+
+Project progress badge rules:
+- The tracking count is the number of unique enabled required item IDs.
+- A missing item is one item requirement within one step whose synchronized submitted quantity is lower than its required quantity; it is not the sum of missing units.
+- The same item required by two steps counts as two missing requirement entries when both entries are incomplete.
+- Category-based requirements are excluded from the missing-items count.
+- Completed steps contribute no missing requirement entries.
+- Step completion uses synchronized progress and the same effective completion rules as the displayed step rows.
+- The total step count is the number of generated step lists displayed for the project.
+- Step progress uses a neutral/accent treatment; green is reserved for terminal completion.
+- Completed projects replace step progress with a green `"PROJECT COMPLETED"` badge next to the green checkmark.
+- Completed projects hide the redundant zero-value tracking and missing-items badges.
 
 ### Step Lists
 
@@ -2225,6 +2241,12 @@ A segmented control at the top of the view provides bulk tracking modes:
 
 Individual steps can be toggled via eye icon buttons.
 Individual items within steps can be toggled by clicking on them.
+
+The project-header eye button is a bulk equivalent of applying the same state to every individually toggleable incomplete step in that project:
+- when every incomplete step is enabled, it disables every item in every incomplete step
+- when any incomplete step is disabled or partially disabled, it enables every item in every incomplete step
+- other projects remain unchanged
+- activating the project toggle does not collapse or expand the project
 
 ### Generated List Controls
 

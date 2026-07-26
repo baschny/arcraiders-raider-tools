@@ -5,9 +5,15 @@
  */
 
 import { describe, it, expect } from 'vitest';
-import { generateProjectLists } from '../../utils/projectLists';
+import {
+  generateProjectLists,
+  getProjectBulkToggleTarget,
+  getProjectProgressSummary,
+  setProjectListsEnabled,
+} from '../../utils/projectLists';
 import { cleanupObsoleteProjectToggles } from '../../utils/projectStorage';
 import type { ProjectDefinition } from '../../types/project';
+import type { StoredList } from '../../types/list';
 import type { CachedProjects } from '../../../../shared/types/arctracker';
 
 const makeStep = (index: number, goals: Array<{ itemId: string; required: number; remaining: number }>) => {
@@ -361,5 +367,120 @@ describe('projectStorage', () => {
     expect(cleaned.listEnabled['test_project:3']).toBe(true);
     expect(cleaned.itemEnabled['test_project:2:item_c']).toBe(false);
     expect(cleaned.itemEnabled['test_project:3:item_d']).toBe(true);
+  });
+});
+
+describe('project header controls and progress', () => {
+  const makeList = (
+    id: string,
+    items: StoredList['items'],
+  ): StoredList => ({
+    id,
+    name: id,
+    type: 'project',
+    isEnabled: items.some((item) => item.isEnabled),
+    items,
+  });
+
+  it('disables a project when every item in every incomplete step is enabled', () => {
+    const lists = [
+      makeList('project_alpha_1', [
+        { itemId: 'item_a', quantity: 5, isEnabled: true },
+      ]),
+      makeList('project_alpha_2', [
+        { itemId: 'item_b', quantity: 3, isEnabled: true },
+      ]),
+    ];
+
+    const shouldEnable = getProjectBulkToggleTarget(lists);
+    const updated = setProjectListsEnabled(
+      { listEnabled: { 'other:1': true }, itemEnabled: { 'other:1:item_z': true } },
+      lists,
+      shouldEnable,
+    );
+
+    expect(shouldEnable).toBe(false);
+    expect(updated.listEnabled['alpha:1']).toBe(false);
+    expect(updated.listEnabled['alpha:2']).toBe(false);
+    expect(updated.itemEnabled['alpha:1:item_a']).toBe(false);
+    expect(updated.itemEnabled['alpha:2:item_b']).toBe(false);
+    expect(updated.itemEnabled['other:1:item_z']).toBe(true);
+  });
+
+  it('enables a project when every incomplete step is disabled', () => {
+    const lists = [
+      makeList('project_alpha_1', [
+        { itemId: 'item_a', quantity: 5, isEnabled: false },
+      ]),
+      makeList('project_alpha_2', [
+        { itemId: 'item_b', quantity: 3, isEnabled: false },
+      ]),
+    ];
+
+    const shouldEnable = getProjectBulkToggleTarget(lists);
+    const updated = setProjectListsEnabled(
+      { listEnabled: {}, itemEnabled: {} },
+      lists,
+      shouldEnable,
+    );
+
+    expect(shouldEnable).toBe(true);
+    expect(updated.itemEnabled['alpha:1:item_a']).toBe(true);
+    expect(updated.itemEnabled['alpha:2:item_b']).toBe(true);
+  });
+
+  it('enables every item when project tracking is mixed or partial', () => {
+    const lists = [
+      makeList('project_alpha_1', [
+        { itemId: 'item_a', quantity: 5, isEnabled: true },
+        { itemId: 'item_b', quantity: 3, isEnabled: false },
+      ]),
+      makeList('project_alpha_2', [
+        { itemId: 'item_c', quantity: 2, isEnabled: false },
+      ]),
+    ];
+
+    const shouldEnable = getProjectBulkToggleTarget(lists);
+    const updated = setProjectListsEnabled(
+      { listEnabled: {}, itemEnabled: {} },
+      lists,
+      shouldEnable,
+    );
+
+    expect(shouldEnable).toBe(true);
+    expect(updated.itemEnabled['alpha:1:item_a']).toBe(true);
+    expect(updated.itemEnabled['alpha:1:item_b']).toBe(true);
+    expect(updated.itemEnabled['alpha:2:item_c']).toBe(true);
+  });
+
+  it('counts tracked IDs, missing requirement entries, and completed steps', () => {
+    const lists = [
+      makeList('project_alpha_1', [
+        { itemId: 'item_a', quantity: 0, isEnabled: false, submitted: 5, required: 5 },
+      ]),
+      makeList('project_alpha_2', [
+        { itemId: 'item_a', quantity: 3, isEnabled: true, submitted: 2, required: 5 },
+        { itemId: 'item_b', quantity: 1, isEnabled: true, submitted: 0, required: 1 },
+      ]),
+      makeList('project_alpha_3', [
+        { itemId: 'item_c', quantity: 2, isEnabled: true, submitted: 2, required: 4 },
+        { itemId: 'item_d', quantity: 0, isEnabled: false, submitted: 4, required: 4 },
+      ]),
+    ];
+    lists[2].categoryRequirements = [{
+      category: 'Any Fruit',
+      submitted: 0,
+      required: 10,
+      remaining: 10,
+    }];
+
+    const summary = getProjectProgressSummary(lists, (stepIndex) => stepIndex === 1);
+
+    expect(summary).toEqual({
+      trackedItemCount: 3,
+      missingItemCount: 3,
+      completedStepCount: 1,
+      totalStepCount: 3,
+    });
   });
 });
