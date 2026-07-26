@@ -229,4 +229,21 @@ describe('UserStateStore', () => {
 
         vi.unstubAllGlobals();
     });
+
+    it('adopts a server envelope without writing it back', async () => {
+        const store = makeStore();
+        const fetchSpy = vi.fn();
+        vi.stubGlobal('fetch', fetchSpy);
+
+        store.adoptServerEnvelope(
+            { mode: 'linked', manualCompletedQuestIds: ['restored'] },
+            2,
+            7,
+        );
+
+        expect(store.get()).toEqual({ mode: 'linked', manualCompletedQuestIds: ['restored'] });
+        expect(store.revision).toBe(7);
+        expect(fetchSpy).not.toHaveBeenCalled();
+        vi.unstubAllGlobals();
+    });
 });

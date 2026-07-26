@@ -105,6 +105,7 @@ async function createSnapshot(sub: string, raw: string | null, origin: string): 
         KeyConditionExpression: "pk = :pk AND begins_with(sk, :prefix)",
         ExpressionAttributeValues: { ":pk": `USER#${sub}`, ":prefix": PREFIX },
         Select: "COUNT",
+        ConsistentRead: true,
     }));
     if ((existing.Count ?? 0) >= MAX_SNAPSHOTS) {
         return jsonResponse(409, { error: `Snapshot limit of ${MAX_SNAPSHOTS} reached` }, origin);

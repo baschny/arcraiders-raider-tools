@@ -279,6 +279,28 @@ export class UserStateStore<T> {
     }
 
     /**
+     * Adopt a server envelope that was returned by an operation which has
+     * already persisted it. Unlike setAuthoritative(), this never writes it
+     * back through the active backend.
+     */
+    adoptServerEnvelope(next: T, schemaVersion: number, revision: number | null): void {
+        if (this.debounceTimer) {
+            clearTimeout(this.debounceTimer);
+            this.debounceTimer = null;
+        }
+        if (schemaVersion < this.opts.schemaVersion && this.opts.migrate) {
+            this.current = this.opts.migrate(next, schemaVersion);
+        } else {
+            this.current = next;
+        }
+        this.currentRevision = revision;
+        this.dirty = false;
+        this.lastConflict = null;
+        this.clearError();
+        this.notify();
+    }
+
+    /**
      * Replace the snapshot with a freshly-supplied value (e.g. returned by
      * the server) and persist via the current backend without debouncing.
      * Used by sign-in orchestration when the server is authoritative.
@@ -601,4 +623,3 @@ class RemoteBackend<T> implements Backend<T> {
         }
     }
 }
-

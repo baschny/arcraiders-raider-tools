@@ -69,7 +69,11 @@ export async function applyRestoredQuartermasterSnapshot(response: Quartermaster
     restoredAt: restoredAt.getTime(),
   });
   writeLinkedQuestSnapshotForUser(session.sub, payload.gameplay.quests);
-  await quartermasterStore.hydrate();
+  quartermasterStore.adoptServerEnvelope(
+    response.quartermaster.data,
+    response.quartermaster.schemaVersion,
+    response.quartermaster.revision,
+  );
 }
 
 function normalizeFreshness(payload: QuartermasterSnapshotPayload, restoredAt: Date): QuartermasterSnapshotPayload {
