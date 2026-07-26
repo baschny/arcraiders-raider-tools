@@ -64,6 +64,7 @@ process.env.AWS_ENDPOINT_URL_DYNAMODB = DDB_ENDPOINT;
 process.env.USER_TABLE_NAME = TABLE_NAME;
 process.env.ALLOWED_ORIGINS = ALLOWED_ORIGINS;
 process.env.RAIDER_TOOLS_LOCAL_DEV = "true";
+process.env.SNAPSHOT_ALLOWED_EMAIL = process.env.SNAPSHOT_ALLOWED_EMAIL ?? "dev@localhost";
 process.env.LOCAL_TOKEN_ENCRYPTION_KEY = process.env.LOCAL_TOKEN_ENCRYPTION_KEY ?? "raider-tools-local-dev-token-key";
 process.env.EMBARK_LOOPBACK_REDIRECT_URI =
     process.env.EMBARK_LOOPBACK_REDIRECT_URI ?? "http://127.0.0.1:49176";
@@ -85,6 +86,7 @@ const embarkInventory = require("../lambda/embark-inventory");
 const embarkQuests = require("../lambda/embark-quests");
 const embarkProjects = require("../lambda/embark-projects");
 const arctrackerUserProxy = require("../lambda/arctracker-user-proxy");
+const quartermasterSnapshots = require("../lambda/quartermaster-snapshots");
 /* eslint-enable @typescript-eslint/no-require-imports */
 
 // ---------------------------------------------------------------------------
@@ -211,6 +213,7 @@ export function matchRoute(method: string, pathname: string): MatchedRoute | nul
         embarkProjects: embarkProjects.handler,
         embarkProjectsSync: embarkProjects.handler,
         arctrackerUserProxy: arctrackerUserProxy.handler,
+        quartermasterSnapshots: quartermasterSnapshots.handler,
     };
 
     return {

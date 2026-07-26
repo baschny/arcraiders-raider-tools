@@ -6,6 +6,11 @@
  */
 
 import { getIdToken } from '../auth/cognitoClient';
+import type {
+    QuartermasterSnapshotMetadata,
+    QuartermasterSnapshotPayload,
+    QuartermasterSnapshotRestoreResponse,
+} from '../types/quartermasterSnapshots';
 
 const API_BASE = (import.meta.env.VITE_API_BASE_URL as string | undefined) ??
     'https://api.raider-tools.app';
@@ -154,5 +159,37 @@ export async function completeEmbarkLink(
     return readJson(await authedFetch('/me/links/embark/complete', {
         method: 'POST',
         body: JSON.stringify({ code, state }),
+    }));
+}
+
+export async function listQuartermasterSnapshots(): Promise<QuartermasterSnapshotMetadata[]> {
+    const result = await readJson<{ snapshots: QuartermasterSnapshotMetadata[] }>(
+        await authedFetch('/me/quartermaster/snapshots'),
+    );
+    return result.snapshots;
+}
+
+export async function createQuartermasterSnapshot(args: {
+    name: string;
+    description?: string | null;
+    payload: QuartermasterSnapshotPayload;
+}): Promise<QuartermasterSnapshotMetadata> {
+    const result = await readJson<{ snapshot: QuartermasterSnapshotMetadata }>(await authedFetch('/me/quartermaster/snapshots', {
+        method: 'POST',
+        body: JSON.stringify(args),
+    }));
+    return result.snapshot;
+}
+
+export async function restoreQuartermasterSnapshot(snapshotId: string): Promise<QuartermasterSnapshotRestoreResponse> {
+    return readJson<QuartermasterSnapshotRestoreResponse>(await authedFetch(
+        `/me/quartermaster/snapshots/${encodeURIComponent(snapshotId)}/restore`,
+        { method: 'POST' },
+    ));
+}
+
+export async function deleteQuartermasterSnapshot(snapshotId: string): Promise<void> {
+    await readJson(await authedFetch(`/me/quartermaster/snapshots/${encodeURIComponent(snapshotId)}`, {
+        method: 'DELETE',
     }));
 }

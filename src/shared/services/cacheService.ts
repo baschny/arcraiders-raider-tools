@@ -176,6 +176,36 @@ export async function getCachedProjects(): Promise<CachedProjects | undefined> {
   return cacheGet<CachedProjects>('projects');
 }
 
+/** Replace every ArcTracker-backed gameplay cache entry as one IndexedDB transaction. */
+export async function replaceArcTrackerGameplayCache(args: {
+  userSub: string;
+  stash: CachedStash;
+  loadout: CachedLoadout;
+  blueprints: CachedBlueprints;
+  hideout: CachedHideout;
+  projects: CachedProjects;
+  restoredAt: number;
+}): Promise<void> {
+  activeCacheOwnerSub = args.userSub;
+  activeCacheSource = 'arctracker';
+  const db = await getDB();
+  const tx = db.transaction(STORE_NAME, 'readwrite');
+  await Promise.all([
+    tx.store.put(args.stash, 'stash'),
+    tx.store.put(args.loadout, 'loadout'),
+    tx.store.put(args.blueprints, 'blueprints'),
+    tx.store.put(args.hideout, 'hideout'),
+    tx.store.put(args.projects, 'projects'),
+    tx.store.put({
+      lastSyncedAt: args.restoredAt,
+      version: 1,
+      userSub: args.userSub,
+      source: 'arctracker',
+    } satisfies CacheMeta, 'meta'),
+    tx.done,
+  ]);
+}
+
 async function readRawMeta(): Promise<CacheMeta | undefined> {
   const db = await getDB();
   return db.get(STORE_NAME, 'meta') as Promise<CacheMeta | undefined>;

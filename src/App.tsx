@@ -22,6 +22,9 @@ const EmbarkSection = lazy(() =>
     default: m.EmbarkSection,
   }))
 );
+const SnapshotsSection = lazy(() =>
+  import('./pages/profile/SnapshotsSection').then((m) => ({ default: m.SnapshotsSection }))
+);
 const SignIn = lazy(() =>
   import('./pages/SignIn').then((m) => ({ default: m.SignIn }))
 );
@@ -70,6 +73,7 @@ function App() {
                       <Route index element={<Navigate to="arctracker" replace />} />
                       <Route path="arctracker" element={<ArcTrackerSection />} />
                       <Route path="embark" element={<EmbarkSection />} />
+                      <Route path="snapshots" element={<SnapshotsSection />} />
                     </Route>
                     <Route path="auth/sign-in" element={<SignIn />} />
                     <Route path="auth/sign-up" element={<SignUp />} />

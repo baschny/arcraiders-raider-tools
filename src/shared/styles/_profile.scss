@@ -132,6 +132,27 @@
   }
 }
 
+.snapshots-section {
+  &__hint, &__warning { color: $text-secondary; line-height: 1.5; }
+  &__warning { color: $action-gold; }
+  &__description { min-height: 92px; resize: vertical; }
+  &__list { display: flex; flex-direction: column; gap: $spacing-md; }
+  &__card { border: $border-width-thin solid $border-default; border-radius: $radius-sm; padding: $spacing-lg; }
+  &__card-header { display: flex; justify-content: space-between; gap: $spacing-md; }
+  &__card h4 { margin: 0 0 $spacing-xs; @include urbanist-title; }
+  &__card time { color: $text-secondary; font-size: $font-sm; }
+  &__actions { display: flex; gap: $spacing-sm; align-items: flex-start; }
+  &__summary { display: grid; grid-template-columns: max-content 1fr; gap: $spacing-xs $spacing-md; margin: $spacing-md 0; }
+  &__sync-times { display: flex; flex-wrap: wrap; gap: $spacing-sm; margin: 0; }
+  &__sync-times div { display: flex; gap: $spacing-xs; font-size: $font-sm; }
+  &__sync-times dt { color: $text-secondary; }
+  &__sync-times dd { margin: 0; }
+  &__summary dt { color: $text-secondary; }
+  &__summary dd { margin: 0; color: $text-primary; }
+  &__benches { display: flex; flex-wrap: wrap; gap: $spacing-xs; }
+  &__benches span { background: $bg-tertiary; border-radius: $radius-sm; padding: 3px $spacing-sm; font-size: $font-sm; }
+}
+
 @media (max-width: 768px) {
   .profile-page {
     flex-direction: column;

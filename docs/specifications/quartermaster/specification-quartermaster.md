@@ -1062,7 +1062,35 @@ After project progress sync, `cleanupObsoleteProjectToggles()` removes toggle st
 
 ---
 
-## 4.7 Blueprint Integration
+## 4.7 Tutorial Snapshots
+
+An operator-only Profile section at `/profile/snapshots` may store and restore
+complete ArcTracker-backed Quartermaster tutorial situations. The feature is
+visible and server-authorized only for the normalized Cognito email configured
+through the matching server (`SNAPSHOT_ALLOWED_EMAIL`) and SPA
+(`VITE_SNAPSHOT_ALLOWED_EMAIL`) environment variables.
+
+A snapshot stores cached stash, loadout, blueprints, hideout, linked ArcTracker
+quests, projects, optional player level, user lists, generated-list toggle
+state, and prioritized items. It does not store weapon builds. Creation captures
+the current cache without syncing and requires every gameplay domain except the
+optional profile level.
+
+Restore is a Raider Tools-only replay: it never writes to ArcTracker, replaces
+the local gameplay cache and Quartermaster state, preserves current weapon
+builds, sets the active source to ArcTracker, and refreshes visible cache
+timestamps to the restore time. Quartermaster must not show a replay badge or
+other indication that restored data is active. A normal later sync may replace
+restored data.
+
+Snapshots are server-side, owner-scoped, named (1–80 characters), optionally
+described (up to 500 characters), newest-first, and limited to 100 with no
+automatic expiry. Restore and delete require confirmation. The Profile list
+shows the stored timestamp, optional player level, dynamically calculated owned
+item value, dynamic non-map quest completion, and current localized unlocked
+hideout bench tiers.
+
+## 4.8 Blueprint Integration
 
 Quartermaster integrates with the user blueprints endpoint through the shared Raider Tools API layer.
 

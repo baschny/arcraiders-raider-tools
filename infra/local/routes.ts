@@ -10,7 +10,8 @@ export type LocalRouteKey =
     | "embarkQuestsSync"
     | "embarkProjects"
     | "embarkProjectsSync"
-    | "arctrackerUserProxy";
+    | "arctrackerUserProxy"
+    | "quartermasterSnapshots";
 
 export interface MatchedRoutePattern {
     key: LocalRouteKey;
@@ -54,6 +55,25 @@ export function matchLocalRoutePattern(
     }
     if (pathname.startsWith("/me/arctracker/") && (method === "GET" || method === "POST")) {
         return { key: "arctrackerUserProxy", pathParameters: {}, requiresDevAuth: true };
+    }
+    if (pathname === "/me/quartermaster/snapshots" && (method === "GET" || method === "POST")) {
+        return { key: "quartermasterSnapshots", pathParameters: {}, requiresDevAuth: true };
+    }
+    const snapshotMatch = /^\/me\/quartermaster\/snapshots\/([^/]+)$/.exec(pathname);
+    if (snapshotMatch && method === "DELETE") {
+        return {
+            key: "quartermasterSnapshots",
+            pathParameters: { snapshotId: decodeURIComponent(snapshotMatch[1]) },
+            requiresDevAuth: true,
+        };
+    }
+    const snapshotRestoreMatch = /^\/me\/quartermaster\/snapshots\/([^/]+)\/restore$/.exec(pathname);
+    if (snapshotRestoreMatch && method === "POST") {
+        return {
+            key: "quartermasterSnapshots",
+            pathParameters: { snapshotId: decodeURIComponent(snapshotRestoreMatch[1]) },
+            requiresDevAuth: true,
+        };
     }
     const stateMatch = /^\/me\/state\/([^/]+)$/.exec(pathname);
     if (stateMatch && (method === "GET" || method === "PUT" || method === "DELETE")) {

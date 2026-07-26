@@ -11,7 +11,7 @@
  */
 
 import { NavLink, Outlet } from 'react-router-dom';
-import { KeyRound, Link2, Loader2, LogIn, UserCircle } from 'lucide-react';
+import { ArchiveRestore, KeyRound, Link2, Loader2, LogIn, UserCircle } from 'lucide-react';
 import { useLocale } from '../shared/context/LocaleContext';
 import { useCognitoAuth } from '../shared/context/CognitoAuthContext';
 import '../shared/styles/_profile.scss';
@@ -66,6 +66,10 @@ export function Profile() {
 
   const identityLabel =
     cognito.user?.email ?? cognito.user?.sub ?? null;
+  const snapshotAllowedEmail = (import.meta.env.VITE_SNAPSHOT_ALLOWED_EMAIL as string | undefined)?.trim().toLowerCase();
+  const sections = snapshotAllowedEmail && cognito.user?.email?.trim().toLowerCase() === snapshotAllowedEmail
+    ? [...SECTIONS, { path: 'snapshots', labelKey: 'pages.profile.sections.snapshots', icon: ArchiveRestore }]
+    : SECTIONS;
 
   return (
     <div className="profile-page">
@@ -80,7 +84,7 @@ export function Profile() {
           </div>
         </div>
         <nav className="profile-sidebar__nav">
-          {SECTIONS.map((section) => (
+          {sections.map((section) => (
             <NavLink
               key={section.path}
               to={section.path}

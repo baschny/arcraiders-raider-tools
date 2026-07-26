@@ -22,6 +22,7 @@ Create a local env file at the repo root (`.env.local`, gitignored):
 # Turn on dev-auth + point the SPA at the local API server.
 VITE_DEV_AUTH=true
 VITE_API_BASE_URL=http://localhost:4000
+VITE_SNAPSHOT_ALLOWED_EMAIL=dev@localhost
 # Optional: override the local API port (must match LOCAL_API_PORT in infra).
 # VITE_LOCAL_API_PORT=4000
 ```
@@ -68,6 +69,7 @@ The local API server loads `infra/.env` before applying defaults. Values already
 - `EMBARK_OAUTH_CLIENT_SECRET` — required only if you want the local Embark `/start` + `/complete` flow to reach the real Embark OAuth/token endpoints.
 - `EMBARK_MANIFEST_ID` and `EMBARK_USER_AGENT` — required only if you want the local Embark completion flow to fetch `/v1/shared/profile`.
 - `EMBARK_LOOPBACK_REDIRECT_URI` — default `http://127.0.0.1:49176`.
+- `SNAPSHOT_ALLOWED_EMAIL` — defaults to `dev@localhost`; use the same email in the dev bearer token and `VITE_SNAPSHOT_ALLOWED_EMAIL` to exercise tutorial snapshots. Local snapshot payloads are stored in DynamoDB Local rather than S3.
 
 Embark-specific caveats:
 - Refresh-token handling is not available because the upstream Embark auth server is currently broken for refresh use. Re-authenticate after expiry; revisit this after June 2026.

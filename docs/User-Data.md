@@ -75,6 +75,7 @@ Row families (all others are reserved — do not invent new `pk` prefixes withou
 | `USER#<sub>` | `STATE#quests` | sync'd quest progress | `StateFn` |
 | `USER#<sub>` | `STATE#loot` | sync'd loot-helper selections | `StateFn` |
 | `USER#<sub>` | `STATE#quartermaster` | sync'd quartermaster lists + hideout toggles | `StateFn` |
+| `USER#<sub>` | `QM_SNAPSHOT#<time-sortable-id>` | operator-only Quartermaster tutorial snapshot metadata and summary inputs; full payload is private S3 data | `QuartermasterSnapshotsFn` |
 | `IDP#<provider>#<external_id>` | `USER` | auth-layer concern (see `docs/Authentication.md`) | `DiscordAuthFn` |
 | `NONCE#<hex>` | `NONCE` | auth-layer concern (see `docs/Authentication.md`) | `DiscordAuthFn` + `VerifyAuthFn` |
 
@@ -151,6 +152,10 @@ PUT    /me/state/<domain>  { schemaVersion, data, revision? }
                                           → 200 { ok: true, revision }
                                           | 409 { error: "revision_conflict", current }
 DELETE /me/state/<domain>                 → 200 { ok: true }
+GET    /me/quartermaster/snapshots         → 200 { snapshots: [...] } (operator-only)
+POST   /me/quartermaster/snapshots         → 201 { snapshot } (operator-only)
+POST   /me/quartermaster/snapshots/{id}/restore → restore cached ArcTracker replay state (operator-only)
+DELETE /me/quartermaster/snapshots/{id}    → delete snapshot (operator-only)
 POST   /me/migrate  { quests?, loot?, quartermaster? }
                                           → 200 { migrated: true }
                                           | 409 { migrated: false, reason: "already_migrated" }
@@ -401,6 +406,7 @@ Server / infra:
 - `infra/lambda/links.ts` — `/me/links/{provider}` handler (linked-account tokens).
 - `infra/lambda/embark-link.ts` — JWT-protected Embark OAuth start/complete flow.
 - `infra/lambda/state.ts` — `/me/state/{domain}` + `/me/migrate` (per-user app state + optimistic concurrency).
+- `infra/lambda/quartermaster-snapshots.ts` — operator-only server-side tutorial snapshot storage and restore.
 - `infra/lambda/_lib/envelope.ts` — KMS envelope encrypt/decrypt helpers.
 - `infra/lambda/_lib/embark.ts` — Embark OAuth exchange, `/v1/shared/profile`, and SSM-backed request-config helpers.
 - `infra/lambda/_lib/http.ts` — shared JSON/CORS helpers used by all three handlers.

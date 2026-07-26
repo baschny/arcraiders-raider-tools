@@ -168,6 +168,15 @@ export class RaiderToolsStack extends cdk.Stack {
             ],
         });
 
+        const quartermasterSnapshotBucket = new s3.Bucket(this, "QuartermasterSnapshotBucket", {
+            blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,
+            encryption: s3.BucketEncryption.S3_MANAGED,
+            enforceSSL: true,
+            versioned: false,
+            removalPolicy: cdk.RemovalPolicy.RETAIN,
+            autoDeleteObjects: false,
+        });
+
         // -----------------------------------------------------------------
         // KMS CMK for envelope-encrypting linked-account tokens.
         // -----------------------------------------------------------------
@@ -561,6 +570,19 @@ export class RaiderToolsStack extends cdk.Stack {
         });
         this.userTable.grantReadWriteData(stateFn);
 
+        const quartermasterSnapshotsFn = this.makeLambda("QuartermasterSnapshotsFn", "quartermaster-snapshots.ts", {
+            timeout: cdk.Duration.seconds(20),
+            memorySize: 512,
+            environment: {
+                USER_TABLE_NAME: this.userTable.tableName,
+                QUARTERMASTER_SNAPSHOT_BUCKET_NAME: quartermasterSnapshotBucket.bucketName,
+                SNAPSHOT_ALLOWED_EMAIL: process.env.SNAPSHOT_ALLOWED_EMAIL ?? "",
+                ALLOWED_ORIGINS: props.allowedOrigins.join(","),
+            },
+        });
+        this.userTable.grantReadWriteData(quartermasterSnapshotsFn);
+        quartermasterSnapshotBucket.grantReadWrite(quartermasterSnapshotsFn);
+
         // -----------------------------------------------------------------
         // HTTP API + custom domain + Route53 alias.
         // -----------------------------------------------------------------
@@ -704,6 +726,9 @@ export class RaiderToolsStack extends cdk.Stack {
         const stateIntegration = new integrations.HttpLambdaIntegration(
             "StateIntegration", stateFn,
         );
+        const quartermasterSnapshotsIntegration = new integrations.HttpLambdaIntegration(
+            "QuartermasterSnapshotsIntegration", quartermasterSnapshotsFn,
+        );
         const embarkLinkIntegration = new integrations.HttpLambdaIntegration(
             "EmbarkLinkIntegration", embarkLinkFn,
         );
@@ -730,6 +755,24 @@ export class RaiderToolsStack extends cdk.Stack {
             path: "/me/migrate",
             methods: [apigwv2.HttpMethod.POST],
             integration: stateIntegration,
+            authorizer: jwtAuthorizer,
+        });
+        this.httpApi.addRoutes({
+            path: "/me/quartermaster/snapshots",
+            methods: [apigwv2.HttpMethod.GET, apigwv2.HttpMethod.POST],
+            integration: quartermasterSnapshotsIntegration,
+            authorizer: jwtAuthorizer,
+        });
+        this.httpApi.addRoutes({
+            path: "/me/quartermaster/snapshots/{snapshotId}",
+            methods: [apigwv2.HttpMethod.DELETE],
+            integration: quartermasterSnapshotsIntegration,
+            authorizer: jwtAuthorizer,
+        });
+        this.httpApi.addRoutes({
+            path: "/me/quartermaster/snapshots/{snapshotId}/restore",
+            methods: [apigwv2.HttpMethod.POST],
+            integration: quartermasterSnapshotsIntegration,
             authorizer: jwtAuthorizer,
         });
         this.httpApi.addRoutes({

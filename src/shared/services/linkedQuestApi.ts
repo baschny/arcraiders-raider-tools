@@ -78,6 +78,11 @@ export function readCachedSnapshotForUser(userSub: string | null): LinkedQuestSn
   }
 }
 
+/** Write a validated ArcTracker snapshot during an operator snapshot restore. */
+export function writeLinkedQuestSnapshotForUser(userSub: string, snapshot: LinkedQuestSnapshot): void {
+  writeCachedSnapshot(userSub, snapshot);
+}
+
 export function buildEmbarkThrottledSnapshot(
   snapshot: LinkedQuestSnapshot | null,
   nextAllowedAt: string | null,
