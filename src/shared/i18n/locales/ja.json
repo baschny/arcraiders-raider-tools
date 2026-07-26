@@ -105,7 +105,35 @@
       "title": "Profile",
       "sections": {
         "arctracker": "ArcTracker Integration",
-        "embark": "Embark Authentication"
+        "embark": "Embark Authentication",
+        "snapshots": "Tutorial Snapshots"
+      },
+      "snapshots": {
+        "title": "Tutorial Snapshots",
+        "storeTitle": "Store Snapshot",
+        "storeHint": "Captures the currently loaded ArcTracker game state without syncing.",
+        "name": "Name",
+        "description": "Description (optional)",
+        "missing": "Sync these data sources before storing",
+        "notSynced": "Not synced",
+        "limitReached": "You have reached the 100-snapshot limit. Delete a snapshot before storing another.",
+        "store": "Store Snapshot",
+        "stored": "Snapshot stored.",
+        "storeFailed": "Could not store snapshot.",
+        "available": "Available Snapshots",
+        "empty": "No snapshots stored yet.",
+        "restore": "Restore",
+        "delete": "Delete",
+        "level": "Player level",
+        "ownedValue": "Owned item value",
+        "quests": "Quests",
+        "loadFailed": "Could not load snapshots.",
+        "restoreConfirm": "Restore this snapshot? This replaces current inventory, loadout, blueprints, hideout, quests, projects, Quartermaster lists, toggles, and priorities. Weapon builds are kept. Nothing is written to ArcTracker.",
+        "restored": "Snapshot restored.",
+        "restoreFailed": "Could not restore snapshot.",
+        "deleteConfirm": "Delete this snapshot permanently? This does not change the currently loaded state.",
+        "deleted": "Snapshot deleted.",
+        "deleteFailed": "Could not delete snapshot."
       },
       "embark": {
         "description": "Link your Embark account to let Raider Tools read live ARC Raiders data directly from the game APIs.",
