@@ -2127,6 +2127,8 @@ Tier <currentLevel>/<maxLevel>
 
 Fully upgraded benches remain visible and show a completed state next to the tier badge. A green checkmark is the preferred visual treatment.
 
+Bench headers remain sticky while their expanded upgrade content scrolls. The normal, hover, and keyboard-focus header backgrounds must be fully opaque so scrolling content is not visible through the header.
+
 ### Unlock and Tier Lists
 
 The first upgrade level is the bench Unlock tier.
