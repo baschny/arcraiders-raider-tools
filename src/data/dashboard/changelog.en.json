@@ -2,6 +2,16 @@
   "locale": "en",
   "entries": [
     {
+      "date": "2026-07-05",
+      "apps": ["quartermaster"],
+      "title": "Quartermaster In-Raid view: Added alphabetical letter grouping, an uncraftable-only toggle, and craftability indicators for items you still need. My Items view now has a Recycle Target filter to quickly spot what to scrap. Weapon upgrades support partial satisfaction and show learned blueprints."
+    },
+    {
+      "date": "2026-06-28",
+      "apps": ["quartermaster"],
+      "title": "Quartermaster crafting now prefers using lower-tier materials over recycling higher-tier items, tracks upgrade-chain advisory materials, and handles missing ArcTracker sync data more gracefully. Weapon blueprint matching and quest sync reliability improved. Translations updated across all 12 languages."
+    },
+    {
       "date": "2026-06-17",
       "apps": ["all"],
       "title": "Updated for game patch 1.33.0: Added 9 new items (trinkets) and the new project (Converging Paths)."
