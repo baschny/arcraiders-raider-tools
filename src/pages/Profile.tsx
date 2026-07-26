@@ -10,10 +10,12 @@
  * the ArcTracker section so the page is never empty.
  */
 
+import { useEffect, useState } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import { ArchiveRestore, KeyRound, Link2, Loader2, LogIn, UserCircle } from 'lucide-react';
 import { useLocale } from '../shared/context/LocaleContext';
 import { useCognitoAuth } from '../shared/context/CognitoAuthContext';
+import { getMe } from '../shared/services/userApi';
 import '../shared/styles/_profile.scss';
 import '../shared/styles/_settings.scss';
 
@@ -31,6 +33,24 @@ const SECTIONS: ProfileSection[] = [
 export function Profile() {
   const { t } = useLocale();
   const cognito = useCognitoAuth();
+  const [snapshotsEnabled, setSnapshotsEnabled] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+    if (!cognito.user) {
+      setSnapshotsEnabled(false);
+      return () => { cancelled = true; };
+    }
+    setSnapshotsEnabled(false);
+    void getMe()
+      .then(me => {
+        if (!cancelled) setSnapshotsEnabled(me.features?.snapshotsEnabled === true);
+      })
+      .catch(() => {
+        if (!cancelled) setSnapshotsEnabled(false);
+      });
+    return () => { cancelled = true; };
+  }, [cognito.user?.sub]);
 
   // While Cognito is still resolving the cached session, show a spinner
   // instead of flashing the "not signed in" state.
@@ -66,8 +86,7 @@ export function Profile() {
 
   const identityLabel =
     cognito.user?.email ?? cognito.user?.sub ?? null;
-  const snapshotAllowedEmail = (import.meta.env.VITE_SNAPSHOT_ALLOWED_EMAIL as string | undefined)?.trim().toLowerCase();
-  const sections = snapshotAllowedEmail && cognito.user?.email?.trim().toLowerCase() === snapshotAllowedEmail
+  const sections = snapshotsEnabled
     ? [...SECTIONS, { path: 'snapshots', labelKey: 'pages.profile.sections.snapshots', icon: ArchiveRestore }]
     : SECTIONS;
 

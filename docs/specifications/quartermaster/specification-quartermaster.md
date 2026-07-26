@@ -1066,9 +1066,10 @@ After project progress sync, `cleanupObsoleteProjectToggles()` removes toggle st
 
 An operator-only Profile section at `/profile/snapshots` may store and restore
 complete ArcTracker-backed Quartermaster tutorial situations. The feature is
-visible and server-authorized only for the normalized Cognito email configured
-through the matching server (`SNAPSHOT_ALLOWED_EMAIL`) and SPA
-(`VITE_SNAPSHOT_ALLOWED_EMAIL`) environment variables.
+authorized by the normalized Cognito email configured through the server-side
+`SNAPSHOT_ALLOWED_EMAIL` environment variable. The Profile API exposes the
+resulting capability to the browser, which uses it solely to decide whether to
+render the section; the browser never receives the configured email.
 
 A snapshot stores cached stash, loadout, blueprints, hideout, linked ArcTracker
 quests, projects, optional player level, user lists, generated-list toggle

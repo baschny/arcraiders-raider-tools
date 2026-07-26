@@ -17,9 +17,10 @@ Quartermaster so recorded screencasts remain visually pristine.
 ## Decisions
 
 - The feature is available only to the Cognito user whose normalized JWT email
-  matches the configured `SNAPSHOT_ALLOWED_EMAIL` value (and matching SPA
-  `VITE_SNAPSHOT_ALLOWED_EMAIL` value).
-- Authorization is enforced independently in the Profile UI and by the API.
+  matches the configured server-side `SNAPSHOT_ALLOWED_EMAIL` value.
+- The Profile UI obtains its visibility capability from the authenticated
+  Profile API; the API independently enforces authorization for every
+  snapshot operation.
 - Snapshot creation and restoration are available only for the ArcTracker game
   data source.
 - Creation captures the current cached state and never starts an automatic
@@ -306,8 +307,8 @@ Add a nested Profile route and sidebar entry:
 ```
 
 Use a Lucide icon. The entry is present only when the signed-in Cognito email,
-normalized case-insensitively, matches `VITE_SNAPSHOT_ALLOWED_EMAIL`. The section component
-repeats the same guard so direct navigation does not expose its UI.
+is authorized by the Profile API. The API remains the authority for every
+snapshot operation, including direct navigation.
 
 The API remains the authoritative security control.
 

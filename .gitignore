@@ -13,6 +13,7 @@ dist
 dist-ssr
 *.local
 .env
+infra/.env.cdk
 
 # Local DynamoDB persistent volume (see infra/local/docker-compose.yml)
 infra/local/.data

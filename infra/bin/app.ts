@@ -18,8 +18,15 @@
  */
 
 import * as cdk from "aws-cdk-lib";
+import { existsSync, readFileSync } from "node:fs";
+import { resolve } from "node:path";
 import { RaiderToolsStack } from "../lib/raider-tools-stack";
 import { RaiderToolsAuthCertStack } from "../lib/raider-tools-auth-cert-stack";
+
+// CDK normally receives configuration from its parent shell. Load the ignored
+// infra/.env and infra/.env.cdk files too, so deployment settings can be kept
+// alongside the infrastructure project. Explicit shell variables take priority.
+loadInfraEnv();
 
 const app = new cdk.App();
 
@@ -56,3 +63,36 @@ new RaiderToolsStack(app, "RaiderToolsStack", {
     discordSecretName: "raider-tools/discord/oauth",
     authCertificate: authCertStack.certificate,
 });
+
+function loadInfraEnv(): void {
+    const envDir = resolve(__dirname, "..");
+    const shellEnvironment = new Set(Object.keys(process.env));
+    loadInfraEnvFile(resolve(envDir, ".env"), shellEnvironment, false);
+    loadInfraEnvFile(resolve(envDir, ".env.cdk"), shellEnvironment, true);
+}
+
+function loadInfraEnvFile(
+    filename: string,
+    shellEnvironment: ReadonlySet<string>,
+    override: boolean,
+): void {
+    if (!existsSync(filename)) return;
+
+    for (const line of readFileSync(filename, "utf8").split(/\r?\n/)) {
+        const trimmed = line.trim();
+        if (!trimmed || trimmed.startsWith("#")) continue;
+        const separator = trimmed.indexOf("=");
+        if (separator <= 0) continue;
+        const key = trimmed.slice(0, separator).trim();
+        if (!/^[A-Za-z_][A-Za-z0-9_]*$/.test(key) || shellEnvironment.has(key)) continue;
+        if (!override && process.env[key] !== undefined) continue;
+        let value = trimmed.slice(separator + 1).trim();
+        if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith("'") && value.endsWith("'"))) {
+            value = value.slice(1, -1);
+        } else {
+            const comment = value.indexOf(" #");
+            value = (comment >= 0 ? value.slice(0, comment) : value).trim();
+        }
+        process.env[key] = value;
+    }
+}

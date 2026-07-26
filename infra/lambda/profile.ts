@@ -35,6 +35,7 @@ const ddb = DynamoDBDocumentClient.from(new DynamoDBClient({}));
 const SUPPORTED_LOCALES = new Set(["en", "de", "pt-BR"]);
 const GAME_DATA_SOURCES = new Set(["arctracker", "embark"]);
 const EMBARK_AUTH_GROUP = "embark-auth";
+const SNAPSHOT_ALLOWED_EMAIL = (process.env.SNAPSHOT_ALLOWED_EMAIL ?? "").trim().toLowerCase();
 
 interface ProfilePatch {
     displayName?: string;
@@ -121,6 +122,8 @@ async function handleGet(
     const rawEmbarkGroups = event.requestContext.authorizer?.jwt?.claims?.["cognito:groups"];
     const parsedEmbarkGroups = jwtGroups(event);
     const embarkAccessEnabled = hasJwtGroup(event, EMBARK_AUTH_GROUP);
+    const snapshotsEnabled = Boolean(SNAPSHOT_ALLOWED_EMAIL)
+        && fallbackEmail?.trim().toLowerCase() === SNAPSHOT_ALLOWED_EMAIL;
     console.info("ProfileFn embark gate", {
         sub,
         rawGroups: rawEmbarkGroups,
@@ -146,6 +149,7 @@ async function handleGet(
         gameDataSource: effectiveGameDataSource,
         features: {
             embarkEnabled: embarkAccessEnabled,
+            snapshotsEnabled,
         },
         links: {
             arctracker: arc

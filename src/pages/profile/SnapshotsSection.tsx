@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { ArchiveRestore, CheckCircle2, Loader2, Plus, Trash2 } from 'lucide-react';
-import { useCognitoAuth } from '../../shared/context/CognitoAuthContext';
 import { useLocale } from '../../shared/context/LocaleContext';
 import { createQuartermasterSnapshot, deleteQuartermasterSnapshot, listQuartermasterSnapshots, restoreQuartermasterSnapshot } from '../../shared/services/userApi';
 import { applyRestoredQuartermasterSnapshot, captureCurrentQuartermasterSnapshot, type SnapshotCaptureResult } from '../../shared/services/quartermasterSnapshots';
@@ -10,12 +9,8 @@ import type { ItemsMap } from '../../apps/quartermaster/types/item';
 import type { HideoutModuleDefinition } from '../../apps/quartermaster/types/hideout';
 import type { Quest } from '../../shared/types/quest';
 
-const SNAPSHOT_EMAIL = (import.meta.env.VITE_SNAPSHOT_ALLOWED_EMAIL as string | undefined)?.trim().toLowerCase() ?? '';
-
 export function SnapshotsSection() {
-  const { user } = useCognitoAuth();
   const { locale, t } = useLocale();
-  const isAllowed = Boolean(SNAPSHOT_EMAIL) && user?.email?.trim().toLowerCase() === SNAPSHOT_EMAIL;
   const [snapshots, setSnapshots] = useState<QuartermasterSnapshotMetadata[]>([]);
   const [capture, setCapture] = useState<SnapshotCaptureResult>({ payload: null, missing: [], syncTimes: {} });
   const [name, setName] = useState('');
@@ -53,8 +48,8 @@ export function SnapshotsSection() {
   }, [locale, t]);
 
   useEffect(() => {
-    if (isAllowed) void refresh();
-  }, [isAllowed, refresh]);
+    void refresh();
+  }, [refresh]);
 
   const canStore = Boolean(capture.payload) && snapshots.length < 100 && name.trim().length > 0 && name.trim().length <= 80 && description.length <= 500;
 
@@ -115,8 +110,6 @@ export function SnapshotsSection() {
   const summaries = useMemo(() => new Map(snapshots.map(snapshot => [snapshot.snapshotId,
     summarize(snapshot, items, hideoutDefinitions, quests),
   ])), [snapshots, items, hideoutDefinitions, quests]);
-
-  if (!isAllowed) return null;
 
   return (
     <div className="settings-page profile-section snapshots-section">

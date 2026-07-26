@@ -428,6 +428,7 @@ export class RaiderToolsStack extends cdk.Stack {
             memorySize: 256,
             environment: {
                 USER_TABLE_NAME: this.userTable.tableName,
+                SNAPSHOT_ALLOWED_EMAIL: process.env.SNAPSHOT_ALLOWED_EMAIL ?? "",
                 ALLOWED_ORIGINS: props.allowedOrigins.join(","),
             },
         });

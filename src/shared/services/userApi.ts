@@ -25,6 +25,7 @@ export interface MeResponse {
     gameDataSource: 'arctracker' | 'embark';
     features?: {
         embarkEnabled?: boolean;
+        snapshotsEnabled?: boolean;
     };
     links: {
         arctracker:
