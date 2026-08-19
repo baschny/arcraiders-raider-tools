@@ -9,7 +9,7 @@ import {
   ListTodo,
   Package,
   ClipboardList,
-  UserCircle,
+  User,
   ChevronLeft,
   ChevronRight,
 } from 'lucide-react';
@@ -26,7 +26,7 @@ const NAV_ITEMS = [
 
 const BOTTOM_NAV_ITEM = {
   path: '/profile',
-  icon: UserCircle,
+  icon: User,
   labelKey: 'shared.sidebar.profile',
 };
 

@@ -14,7 +14,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
-  ChevronDown,
   CircleCheck,
   CircleX,
   ClockAlert,
@@ -23,7 +22,6 @@ import {
   Loader2,
   TriangleAlert,
   User,
-  UserCircle,
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useCognitoAuth } from '../context/CognitoAuthContext';
@@ -132,7 +130,7 @@ export function LoginButton() {
     );
   }
 
-  // Signed in: user icon + username, clickable dropdown.
+  // Signed in: avatar button opens the account dropdown.
   const signedIn = Boolean(cognito.user) || Boolean(username);
 
   if (signedIn) {
@@ -161,18 +159,9 @@ export function LoginButton() {
           onClick={() => setOpen((v) => !v)}
           aria-haspopup="menu"
           aria-expanded={open}
+          aria-label={t('shared.userMenu.signedInAs')}
         >
-          <UserCircle size={18} />
-          {displayName && <span className="login-button__name">{displayName}</span>}
-          {showEmbarkAttention && (
-            <span
-              className={`connection-alert connection-alert--${embarkTone}`}
-              title={`${t('shared.userMenu.embark')}: ${embarkStatusLabel}`}
-            >
-              <EmbarkAttentionIcon size={14} />
-            </span>
-          )}
-          <ChevronDown size={14} />
+          <User size={18} />
         </button>
         {open && (
           <div className="header-menu user-menu" role="menu">
@@ -273,8 +262,9 @@ export function LoginButton() {
   // Signed out: simple login button → dedicated sign-in page.
   return (
     <button className="login-button" onClick={() => navigate('/auth/sign-in')}>
-      <LogIn size={16} />
-      <span>{t('shared.userMenu.login')}</span>
+      <LogIn className="login-button__desktop-icon" size={16} />
+      <User className="login-button__mobile-icon" size={18} />
+      <span className="login-button__label">{t('shared.userMenu.login')}</span>
     </button>
   );
 }

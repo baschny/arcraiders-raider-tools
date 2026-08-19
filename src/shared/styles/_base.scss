@@ -63,6 +63,17 @@ h1, h2, h3, h4, h5, h6 {
     color: $text-primary;
   }
 
+  .brand-logo {
+    display: none;
+    line-height: 0;
+
+    img {
+      width: 28px;
+      height: 28px;
+      display: block;
+    }
+  }
+
   .separator {
     font-weight: 400;
     color: $text-secondary;
@@ -99,6 +110,10 @@ h1, h2, h3, h4, h5, h6 {
       background: $bg-quaternary;
       border-color: $border-lighter;
     }
+  }
+
+  .tool-switcher-menu-icon {
+    display: none;
   }
 
   .header-actions {
@@ -233,6 +248,98 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+@media (max-width: 700px) {
+  #root {
+    width: 100%;
+    min-height: 100dvh;
+    height: auto;
+    padding-top: 48px;
+  }
+
+  .app-header {
+    height: 48px;
+    padding: $spacing-sm $spacing-md;
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 1100;
+    transition: transform 0.24s ease;
+    will-change: transform;
+
+    &--hidden {
+      transform: translateY(-100%);
+    }
+
+    h1 {
+      min-width: 0;
+      gap: $spacing-sm;
+      font-size: $font-lg;
+    }
+
+    .brand-logo {
+      display: block;
+      flex: 0 0 auto;
+    }
+
+    .brand-name {
+      display: none;
+    }
+
+    .app-name {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .header-actions {
+      flex: 0 0 auto;
+      gap: $spacing-xs;
+    }
+
+    .tool-switcher,
+    .login-button {
+      min-width: 32px;
+      min-height: 32px;
+      justify-content: center;
+      padding: $spacing-sm;
+    }
+
+    .tool-switcher-label,
+    .tool-switcher-chevron {
+      display: none;
+    }
+
+    .tool-switcher-menu-icon {
+      display: block;
+    }
+
+    .header-menu {
+      margin-top: $spacing-xs;
+    }
+
+    .header-dropdown:first-child .header-menu {
+      min-width: 200px;
+    }
+  }
+
+  .footer-content {
+    justify-content: center;
+    flex-wrap: nowrap;
+  }
+
+  .app-footer {
+    padding: $spacing-sm $spacing-md;
+    box-shadow: none;
+  }
+
+  .footer-text {
+    display: none;
+  }
+
+  .footer-discord {
+    gap: $spacing-sm;
+  }
+}
+
 /* Dashboard */
 .dashboard-container {
   width: 100%;
@@ -243,6 +350,8 @@ h1, h2, h3, h4, h5, h6 {
 .content-container {
   padding: $content-padding;
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
   height: 100%;
   box-sizing: border-box;
 }

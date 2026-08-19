@@ -12,7 +12,7 @@
 
 import { useEffect, useState } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
-import { ArchiveRestore, KeyRound, Link2, Loader2, LogIn, UserCircle } from 'lucide-react';
+import { ArchiveRestore, KeyRound, Link2, Loader2, LogIn, User } from 'lucide-react';
 import { useLocale } from '../shared/context/LocaleContext';
 import { useCognitoAuth } from '../shared/context/CognitoAuthContext';
 import { getMe } from '../shared/services/userApi';
@@ -70,7 +70,7 @@ export function Profile() {
     return (
       <div className="content-container">
         <div className="profile-signed-out">
-          <UserCircle size={40} />
+          <User size={40} />
           <h2>{t('pages.profile.title')}</h2>
           <p>{t('shared.userMenu.confirmSignOutBody')}</p>
           {cognito.available && (
@@ -94,7 +94,7 @@ export function Profile() {
     <div className="profile-page">
       <aside className="profile-sidebar">
         <div className="profile-sidebar__header">
-          <UserCircle size={20} />
+          <User size={20} />
           <div className="profile-sidebar__identity">
             <span className="profile-sidebar__title">{t('pages.profile.title')}</span>
             {identityLabel && (

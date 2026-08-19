@@ -299,6 +299,23 @@
     text-overflow: ellipsis;
     white-space: nowrap;
   }
+
+  &__mobile-icon {
+    display: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .login-button {
+    &__desktop-icon,
+    &__label {
+      display: none;
+    }
+
+    &__mobile-icon {
+      display: block;
+    }
+  }
 }
 
 // Header user menu dropdown (extension of .header-menu in _base.scss)
