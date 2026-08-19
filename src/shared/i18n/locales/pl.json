@@ -222,11 +222,22 @@
   "schedule": {
     "loading": "Loading event schedule...",
     "noData": "No data available",
-    "previousDay": "Previous day",
-    "nextDay": "Next day",
-    "goToToday": "Go to today",
-    "updated": "Updated",
-    "mapHeader": "Map"
+    "hideUnselected": "Hide unselected",
+    "conditionShortNames": {
+      "beachcombing": "Beachcomb",
+      "bird-city": "Bird City",
+      "close-scrutiny": "Scrutiny",
+      "electromagnetic-storm": "Elec. Storm",
+      "harvester": "Harvester",
+      "hidden-bunker": "Bunker",
+      "hurricane": "Hurricane",
+      "launch-tower-loot": "Launch Loot",
+      "locked-gate": "Locked Gate",
+      "matriarch": "Matriarch",
+      "night-raid": "Night Raid",
+      "prospecting-probes": "Probes",
+      "uncovered-caches": "Caches"
+    }
   },
   "quests": {
     "loading": "Ładowanie danych zadań...",
