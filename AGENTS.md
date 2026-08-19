@@ -389,6 +389,9 @@ npm run lint          # Run ESLint
 - **Config**: `amplify.yml`
 - No manual deployment steps required
 
+### AWS CLI Profile
+Use `AWS_PROFILE=baschny` for AWS CLI commands related to this repository, including Amplify deployment monitoring and infrastructure operations.
+
 ### Environment Configuration
 - Use `.env` for local configuration (gitignored)
 - `.env.example` provides template with default values

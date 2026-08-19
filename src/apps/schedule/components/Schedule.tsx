@@ -1,5 +1,5 @@
 import { ChevronDown } from 'lucide-react';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { useLocale } from '../../../shared/context/LocaleContext';
 import { getLocalizedEventName, getLocalizedMapName } from '../utils/localization';
 import { TintedIcon } from './TintedIcon';
@@ -27,6 +27,19 @@ interface ScheduleProps {
 }
 
 type MobileFilterGroup = 'regions' | 'major' | 'minor' | null;
+
+interface TouchTooltip {
+  condition: string;
+  region: string;
+  clientX: number;
+  clientY: number;
+}
+
+interface SlotPointer {
+  pointerType: string;
+  clientX: number;
+  clientY: number;
+}
 
 // Toggle movement: all-ON (empty or full) -> single -> multi -> all-ON.
 function toggleIn(selected: string[], id: string, allIds: string[]): string[] {
@@ -73,12 +86,37 @@ export function Schedule({ data }: ScheduleProps) {
   const [hoveredRegion, setHoveredRegion] = useState<string | null>(null);
   const [hideUnselected, setHideUnselected] = useState(false);
   const [expandedMobileFilter, setExpandedMobileFilter] = useState<MobileFilterGroup>(null);
+  const [touchTooltip, setTouchTooltip] = useState<TouchTooltip | null>(null);
   const [now, setNow] = useState(() => new Date());
+  const lastSlotPointer = useRef<SlotPointer | null>(null);
+  const touchTooltipRef = useRef<HTMLButtonElement>(null);
+  const mobileMapHeadersRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const timer = setInterval(() => setNow(new Date()), 60000);
     return () => clearInterval(timer);
   }, []);
+
+  useEffect(() => {
+    if (!touchTooltip) return;
+    const timer = setTimeout(() => setTouchTooltip(null), 2500);
+    return () => clearTimeout(timer);
+  }, [touchTooltip]);
+
+  useLayoutEffect(() => {
+    if (!touchTooltip || !touchTooltipRef.current) return;
+
+    const tooltip = touchTooltipRef.current;
+    const { width } = tooltip.getBoundingClientRect();
+    const horizontalMargin = 8;
+    const left = Math.min(
+      Math.max(touchTooltip.clientX, width / 2 + horizontalMargin),
+      window.innerWidth - width / 2 - horizontalMargin
+    );
+
+    tooltip.style.setProperty('--schedule-tooltip-left', `${left}px`);
+    tooltip.style.setProperty('--schedule-tooltip-top', `${touchTooltip.clientY}px`);
+  }, [touchTooltip]);
 
   const activeConditions = hoveredCondition !== null ? [hoveredCondition] : selectedConditions;
   const anyFilterActive = selectedRegions.length > 0 || activeConditions.length > 0;
@@ -186,6 +224,13 @@ export function Schedule({ data }: ScheduleProps) {
     const translated = t(key);
     return translated === key ? getLocalizedEventName(event, locale) : translated;
   };
+
+  const renderMapHeaders = () =>
+    mapIds.map((mapId) => (
+      <div key={mapId} className="map-col-header" data-map={mapId}>
+        <span className="map-name">{getLocalizedMapName(mapId, data.maps[mapId], locale)}</span>
+      </div>
+    ));
 
   const renderRegionItems = () =>
     REGION_ORDER.map((regionId) => {
@@ -323,19 +368,31 @@ export function Schedule({ data }: ScheduleProps) {
         </div>
       </div>
 
-      <div className="schedule-scroll">
+      <div className="schedule-header-scroll">
+        <div className="schedule-header-row schedule-header-row--mobile">
+          <div className="hour-corner">
+            <span className="hour-corner__time">
+              {now.toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit', hour12: false })}
+            </span>
+          </div>
+          <div className="schedule-map-header-strip" ref={mobileMapHeadersRef}>
+            {renderMapHeaders()}
+          </div>
+        </div>
+      </div>
+      <div
+        className="schedule-scroll"
+        onScroll={(event) => {
+          mobileMapHeadersRef.current?.style.setProperty(
+            '--schedule-scroll-left',
+            `${event.currentTarget.scrollLeft}px`
+          );
+        }}
+      >
         <div className="schedule-grid">
-          <div className="schedule-header-row">
-            <div className="hour-corner">
-              <span className="hour-corner__time">
-                {now.toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit', hour12: false })}
-              </span>
-            </div>
-            {mapIds.map((mapId) => (
-              <div key={mapId} className="map-col-header" data-map={mapId}>
-                <span className="map-name">{getLocalizedMapName(mapId, data.maps[mapId], locale)}</span>
-              </div>
-            ))}
+          <div className="schedule-header-row schedule-header-row--desktop">
+            <div className="hour-corner" />
+            {renderMapHeaders()}
           </div>
 
           {hourDates.map((d, i) => {
@@ -391,13 +448,37 @@ export function Schedule({ data }: ScheduleProps) {
                             onPointerLeave={(pointerEvent) => {
                               if (pointerEvent.pointerType === 'mouse') setHoveredCondition(null);
                             }}
+                            onPointerDown={(pointerEvent) => {
+                              lastSlotPointer.current = {
+                                pointerType: pointerEvent.pointerType,
+                                clientX: pointerEvent.clientX,
+                                clientY: pointerEvent.clientY,
+                              };
+                              if (pointerEvent.pointerType !== 'mouse') clearTouchHover();
+                            }}
                             onTouchStart={clearTouchHover}
-                            onClick={() =>
-                              regionMatch &&
-                              setSelectedConditions(
-                                toggleIn(selectedConditions, entry.eventId, allConditionIds)
-                              )
-                            }
+                            onClick={() => {
+                              const pointer = lastSlotPointer.current;
+                              if (
+                                pointer?.pointerType === 'touch' ||
+                                pointer?.pointerType === 'pen'
+                              ) {
+                                setTouchTooltip({
+                                  condition: event
+                                    ? getLocalizedEventName(event, locale)
+                                    : entry.eventId,
+                                  region: region?.displayName ?? entry.region,
+                                  clientX: pointer.clientX,
+                                  clientY: pointer.clientY,
+                                });
+                                return;
+                              }
+                              if (regionMatch) {
+                                setSelectedConditions(
+                                  toggleIn(selectedConditions, entry.eventId, allConditionIds)
+                                );
+                              }
+                            }}
                             title={
                               event
                                 ? `${getLocalizedEventName(event, locale)} · ${region?.displayName ?? entry.region}`
@@ -434,6 +515,18 @@ export function Schedule({ data }: ScheduleProps) {
           })}
         </div>
       </div>
+      {touchTooltip && (
+        <button
+          ref={touchTooltipRef}
+          type="button"
+          className={`schedule-touch-tooltip ${
+            touchTooltip.clientY < 100 ? 'schedule-touch-tooltip--below' : ''
+          }`}
+          onClick={() => setTouchTooltip(null)}
+        >
+          {touchTooltip.condition} · {touchTooltip.region}
+        </button>
+      )}
     </div>
   );
 }
