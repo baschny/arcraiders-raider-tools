@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useLocale } from '../../../shared/context/LocaleContext';
 import { getLocalizedEventName, getLocalizedMapName } from '../utils/localization';
 import { TintedIcon } from './TintedIcon';
@@ -70,7 +70,6 @@ export function Schedule({ data }: ScheduleProps) {
   const [hoveredRegion, setHoveredRegion] = useState<string | null>(null);
   const [hideUnselected, setHideUnselected] = useState(false);
   const [now, setNow] = useState(() => new Date());
-  const nowRowRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const timer = setInterval(() => setNow(new Date()), 60000);
@@ -156,11 +155,6 @@ export function Schedule({ data }: ScheduleProps) {
     );
     return set;
   }, [occurrencesByHour, selectedRegions]);
-
-  useEffect(() => {
-    nowRowRef.current?.scrollIntoView({ block: 'center', behavior: 'auto' });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const isRegionColored = (regionId: string): boolean =>
     selectedRegions.includes(regionId) || hoveredRegion === regionId;
@@ -286,11 +280,9 @@ export function Schedule({ data }: ScheduleProps) {
           {hourDates.map((d, i) => {
             const isNowRow = d.getTime() === nowHourKey;
             const isFirstOfDay = d.getHours() === 0;
-            const ref = isNowRow ? nowRowRef : null;
             return (
               <div
                 key={d.getTime()}
-                ref={ref}
                 className={`hour-row ${isNowRow ? 'now-row' : ''}`}
               >
                 <div className={`hour-label ${isNowRow ? 'now-row' : ''}`}>

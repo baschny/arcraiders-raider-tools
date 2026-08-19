@@ -51,7 +51,7 @@ export function ScheduleApp() {
   if (!data) return <ErrorDisplay message={t('schedule.noData')} />;
 
   return (
-    <div className="content-container">
+    <div className="content-container schedule-content">
       <Schedule data={data} />
     </div>
   );

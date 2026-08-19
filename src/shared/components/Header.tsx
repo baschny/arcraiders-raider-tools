@@ -43,6 +43,7 @@ export function Header() {
 
   const currentPathname = normalizePathname(location.pathname);
   const currentTool = TOOLS.find((tool) => tool.path === currentPathname) || TOOLS[0];
+  const shouldAutoHideOnScroll = currentPathname !== '/schedule';
   const currentLocaleOption =
     localeOptions.find((option) => option.code === locale) ?? localeOptions[0];
 
@@ -64,6 +65,11 @@ export function Header() {
   }, []);
 
   useEffect(() => {
+    if (!shouldAutoHideOnScroll) {
+      setIsHiddenOnScroll(false);
+      return;
+    }
+
     const mobileQuery = window.matchMedia('(max-width: 700px)');
 
     const reset = () => {
@@ -102,7 +108,7 @@ export function Header() {
       document.removeEventListener('scroll', handleScroll, true);
       mobileQuery.removeEventListener('change', reset);
     };
-  }, []);
+  }, [shouldAutoHideOnScroll]);
 
   const handleToolSelect = (path: string) => {
     navigate(path);
@@ -115,7 +121,7 @@ export function Header() {
   };
 
   return (
-    <div className={`app-header ${isHiddenOnScroll ? 'app-header--hidden' : ''}`}>
+    <div className={`app-header ${isHiddenOnScroll && shouldAutoHideOnScroll ? 'app-header--hidden' : ''}`}>
       <h1>
         <Link className="brand-logo" to="/" aria-label={t('app.name')}>
           <img src="/favicon.svg" alt="" />
