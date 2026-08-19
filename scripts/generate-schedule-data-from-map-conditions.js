@@ -23,6 +23,23 @@ const MERGE_HISTORY_WINDOW_SECONDS = 30 * 24 * 60 * 60;
 const CHANGE_REPORT_PREVIEW_LIMIT = 12;
 const FETCH_TIMEOUT_MS = 20_000;
 
+const REGIONS = [
+  { id: 'europe', displayName: 'Europe', shortCode: 'EU', color: '#c46a6a' },
+  { id: 'north-america', displayName: 'North America', shortCode: 'NA', color: '#5b8bd4' },
+  { id: 'south-america', displayName: 'South America', shortCode: 'SA', color: '#6fae7a' },
+  { id: 'asia', displayName: 'Asia', shortCode: 'AS', color: '#a06bb8' },
+  { id: 'oceania', displayName: 'Oceania', shortCode: 'OC', color: '#4ba3a3' },
+];
+const REGION_ORDER = REGIONS.map((region) => region.id);
+// upstream regionTimestamps keys -> canonical region id (europe uses top-level start/end)
+const REGION_ID_BY_UPSTREAM_KEY = {
+  'north-america': 'north-america',
+  brazil: 'south-america',
+  'east-asia': 'asia',
+  oceania: 'oceania',
+};
+const REGION_BY_ID = Object.fromEntries(REGIONS.map((region) => [region.id, region]));
+
 const KNOWN_MAP_ID_BY_DISPLAY_NAME = {
   'Buried City': 'buried-city',
   'Dam Battlegrounds': 'dam-battleground',
@@ -103,12 +120,16 @@ function sortMapIds(mapIds) {
   });
 }
 
-function ensureScheduleMap(schedule, mapId) {
-  if (!schedule[mapId]) {
-    schedule[mapId] = { major: {}, minor: {} };
+function ensureRegionScheduleMap(schedule, regionId, mapId) {
+  if (!schedule[regionId]) {
+    schedule[regionId] = {};
   }
 
-  return schedule[mapId];
+  if (!schedule[regionId][mapId]) {
+    schedule[regionId][mapId] = { major: {}, minor: {} };
+  }
+
+  return schedule[regionId][mapId];
 }
 
 function toDisplayNameFromEventId(eventId) {
@@ -123,14 +144,16 @@ function collectTimestampRange(schedule, fallbackEndTimestamp) {
   let minTimestamp = Number.POSITIVE_INFINITY;
   let maxTimestamp = Number.NEGATIVE_INFINITY;
 
-  Object.values(schedule).forEach((mapSchedule) => {
-    ['major', 'minor'].forEach((category) => {
-      Object.keys(mapSchedule?.[category] ?? {}).forEach((timestampKey) => {
-        const timestamp = Number(timestampKey);
-        if (Number.isFinite(timestamp)) {
-          minTimestamp = Math.min(minTimestamp, timestamp);
-          maxTimestamp = Math.max(maxTimestamp, timestamp + 3600);
-        }
+  Object.values(schedule).forEach((regionSchedule) => {
+    Object.values(regionSchedule ?? {}).forEach((mapSchedule) => {
+      ['major', 'minor'].forEach((category) => {
+        Object.keys(mapSchedule?.[category] ?? {}).forEach((timestampKey) => {
+          const timestamp = Number(timestampKey);
+          if (Number.isFinite(timestamp)) {
+            minTimestamp = Math.min(minTimestamp, timestamp);
+            maxTimestamp = Math.max(maxTimestamp, timestamp + 3600);
+          }
+        });
       });
     });
   });
@@ -155,20 +178,23 @@ function collectTimestampRange(schedule, fallbackEndTimestamp) {
 function flattenScheduleEntries(schedule, minTimestampInclusive) {
   const entries = [];
 
-  Object.entries(schedule ?? {}).forEach(([mapId, mapSchedule]) => {
-    ['major', 'minor'].forEach((category) => {
-      Object.entries(mapSchedule?.[category] ?? {}).forEach(([timestampKey, eventId]) => {
-        const timestamp = Number(timestampKey);
-        if (!Number.isFinite(timestamp) || timestamp < minTimestampInclusive) {
-          return;
-        }
+  Object.entries(schedule ?? {}).forEach(([regionId, regionSchedule]) => {
+    Object.entries(regionSchedule ?? {}).forEach(([mapId, mapSchedule]) => {
+      ['major', 'minor'].forEach((category) => {
+        Object.entries(mapSchedule?.[category] ?? {}).forEach(([timestampKey, eventId]) => {
+          const timestamp = Number(timestampKey);
+          if (!Number.isFinite(timestamp) || timestamp < minTimestampInclusive) {
+            return;
+          }
 
-        entries.push({
-          mapId,
-          category,
-          timestamp,
-          eventId: String(eventId),
-          key: `${mapId}|${category}|${timestamp}`,
+          entries.push({
+            regionId,
+            mapId,
+            category,
+            timestamp,
+            eventId: String(eventId),
+            key: `${regionId}|${mapId}|${category}|${timestamp}`,
+          });
         });
       });
     });
@@ -182,6 +208,10 @@ function formatUtcTimestamp(timestamp) {
 }
 
 function sortScheduleEntry(a, b) {
+  if (a.regionId !== b.regionId) {
+    return a.regionId.localeCompare(b.regionId);
+  }
+
   if (a.mapId !== b.mapId) {
     return a.mapId.localeCompare(b.mapId);
   }
@@ -217,6 +247,7 @@ function summarizeFutureScheduleChanges(previousSchedule, nextSchedule, nowUnix)
 
     if (nextEntry.eventId !== previousEntry.eventId) {
       replaced.push({
+        regionId: previousEntry.regionId,
         mapId: previousEntry.mapId,
         category: previousEntry.category,
         timestamp: previousEntry.timestamp,
@@ -238,14 +269,14 @@ function summarizeFutureScheduleChanges(previousSchedule, nextSchedule, nowUnix)
   const removalsByGroup = new Map();
 
   rawAdded.forEach((entry) => {
-    const groupKey = `${entry.mapId}|${entry.category}|${entry.eventId}`;
+    const groupKey = `${entry.regionId}|${entry.mapId}|${entry.category}|${entry.eventId}`;
     const group = additionsByGroup.get(groupKey) ?? [];
     group.push(entry);
     additionsByGroup.set(groupKey, group);
   });
 
   rawRemoved.forEach((entry) => {
-    const groupKey = `${entry.mapId}|${entry.category}|${entry.eventId}`;
+    const groupKey = `${entry.regionId}|${entry.mapId}|${entry.category}|${entry.eventId}`;
     const group = removalsByGroup.get(groupKey) ?? [];
     group.push(entry);
     removalsByGroup.set(groupKey, group);
@@ -276,6 +307,9 @@ function summarizeFutureScheduleChanges(previousSchedule, nextSchedule, nowUnix)
   });
 
   moved.sort((a, b) => {
+    if (a.regionId !== b.regionId) {
+      return a.regionId.localeCompare(b.regionId);
+    }
     if (a.mapId !== b.mapId) {
       return a.mapId.localeCompare(b.mapId);
     }
@@ -292,6 +326,9 @@ function summarizeFutureScheduleChanges(previousSchedule, nextSchedule, nowUnix)
   });
 
   replaced.sort((a, b) => {
+    if (a.regionId !== b.regionId) {
+      return a.regionId.localeCompare(b.regionId);
+    }
     if (a.mapId !== b.mapId) {
       return a.mapId.localeCompare(b.mapId);
     }
@@ -340,28 +377,28 @@ function printFutureScheduleChangeReport(changes) {
   printPreviewLines(
     changes.added,
     (entry) =>
-      `${entry.mapId}/${entry.category} ${formatUtcTimestamp(entry.timestamp)} -> ${entry.eventId}`,
+      `${entry.regionId}/${entry.mapId}/${entry.category} ${formatUtcTimestamp(entry.timestamp)} -> ${entry.eventId}`,
     'Added future events'
   );
 
   printPreviewLines(
     changes.removed,
     (entry) =>
-      `${entry.mapId}/${entry.category} ${formatUtcTimestamp(entry.timestamp)} -> ${entry.eventId}`,
+      `${entry.regionId}/${entry.mapId}/${entry.category} ${formatUtcTimestamp(entry.timestamp)} -> ${entry.eventId}`,
     'Removed future events'
   );
 
   printPreviewLines(
     changes.moved,
     (entry) =>
-      `${entry.mapId}/${entry.category} ${entry.eventId}: ${formatUtcTimestamp(entry.fromTimestamp)} -> ${formatUtcTimestamp(entry.toTimestamp)}`,
+      `${entry.regionId}/${entry.mapId}/${entry.category} ${entry.eventId}: ${formatUtcTimestamp(entry.fromTimestamp)} -> ${formatUtcTimestamp(entry.toTimestamp)}`,
     'Moved future events'
   );
 
   printPreviewLines(
     changes.replaced,
     (entry) =>
-      `${entry.mapId}/${entry.category} ${formatUtcTimestamp(entry.timestamp)}: ${entry.fromEventId} -> ${entry.toEventId}`,
+      `${entry.regionId}/${entry.mapId}/${entry.category} ${formatUtcTimestamp(entry.timestamp)}: ${entry.fromEventId} -> ${entry.toEventId}`,
     'Replaced future events at same timestamp'
   );
 }
@@ -451,10 +488,10 @@ async function collectMapConditionEntries() {
   const overviewHtml = await fetchText(MAP_CONDITIONS_URL);
   const conditionItems =
     extractEscapedJsonArray(overviewHtml, '\\\"conditionItems\\\":') ?? [];
+  const liveEntries =
+    extractEscapedJsonArray(overviewHtml, '\\\"liveEntries\\\":') ?? [];
 
-  const conditionEntries = [];
   const conditionTypesByName = new Map();
-
   conditionItems.forEach((conditionItem) => {
     const name = String(conditionItem?.name ?? '').trim();
     const type = String(conditionItem?.type ?? '').trim().toLowerCase();
@@ -465,31 +502,25 @@ async function collectMapConditionEntries() {
     conditionTypesByName.set(name, type);
   });
 
-  for (const [conditionName, conditionCategory] of conditionTypesByName.entries()) {
-    const conditionSlug = slugify(conditionName);
-    if (!conditionSlug) {
-      continue;
+  const conditionEntries = [];
+  liveEntries.forEach((entry) => {
+    const entryConditionName = String(entry?.conditionName ?? '').trim();
+    const resolvedCategory = conditionTypesByName.get(entryConditionName);
+    if (!resolvedCategory) {
+      return;
     }
 
-    const pageUrl = `${MAP_CONDITIONS_URL}/${conditionSlug}`;
-    const html = await fetchText(pageUrl);
-    const entries = extractEscapedJsonArray(html, '\\\"entries\\\":') ?? [];
-
-    entries.forEach((entry) => {
-      const entryConditionName = String(entry?.conditionName ?? '').trim();
-      const resolvedCategory =
-        conditionTypesByName.get(entryConditionName) ?? conditionCategory;
-      conditionEntries.push({
-        conditionName: entryConditionName,
-        mapDisplayName: String(entry?.mapDisplayName ?? '').trim(),
-        startTimestampMs: Number(entry?.startTimestamp),
-        endTimestampMs: Number(entry?.endTimestamp),
-        durationInSeconds: Number(entry?.durationInSeconds),
-        category: resolvedCategory,
-        sourcePage: pageUrl,
-      });
+    conditionEntries.push({
+      conditionName: entryConditionName,
+      mapDisplayName: String(entry?.mapDisplayName ?? '').trim(),
+      startTimestampMs: Number(entry?.startTimestamp),
+      endTimestampMs: Number(entry?.endTimestamp),
+      durationInSeconds: Number(entry?.durationInSeconds),
+      category: resolvedCategory,
+      regionTimestamps: entry?.regionTimestamps ?? {},
+      sourcePage: MAP_CONDITIONS_URL,
     });
-  }
+  });
 
   return {
     conditionTypesByName,
@@ -499,10 +530,16 @@ async function collectMapConditionEntries() {
 
 async function main() {
   const previousOutputData = readJsonIfExists(OUTPUT_PATH) ?? {};
-  const previousSchedule = previousOutputData?.schedule ?? {};
+  const previousOutputSchedule = previousOutputData?.schedule ?? {};
   const previousEventTypes = previousOutputData?.eventTypes ?? {};
   const previousMaps = previousOutputData?.maps ?? {};
   const hadPreviousSchedule = Boolean(previousOutputData && previousOutputData.schedule);
+  // Backward compatibility: pre-region output was a single global (Europe) schedule.
+  const previousSchedule = previousOutputData?.regions
+    ? previousOutputSchedule
+    : Object.keys(previousOutputSchedule).length > 0
+      ? { europe: previousOutputSchedule }
+      : {};
   const eventTypesSourceData = readJsonIfExists(EVENT_TYPES_PATH) ?? {};
   const sourceEventTypes =
     eventTypesSourceData &&
@@ -544,11 +581,6 @@ async function main() {
       return;
     }
 
-    if (!Number.isFinite(startTimestampMs)) {
-      ignoredEntries.push(`invalid start timestamp for ${conditionName} (${mapDisplayName})`);
-      return;
-    }
-
     if (!['major', 'minor'].includes(category)) {
       ignoredEntries.push(`unknown category "${category}" for ${conditionName}`);
       return;
@@ -566,15 +598,57 @@ async function main() {
       return;
     }
 
-    const startTimestamp = Math.floor(startTimestampMs / 1000);
-    const dedupeKey = `${mapId}|${category}|${startTimestamp}|${eventId}`;
-    if (dedupeKeys.has(dedupeKey)) {
+    const fallbackDuration = Number.isFinite(durationInSeconds) && durationInSeconds > 0
+      ? durationInSeconds
+      : 3600;
+
+    const regionTimes = {
+      europe: [startTimestampMs, endTimestampMs],
+    };
+    Object.entries(entry.regionTimestamps ?? {}).forEach(([upstreamKey, regionRange]) => {
+      const regionId = REGION_ID_BY_UPSTREAM_KEY[upstreamKey];
+      if (regionId && Array.isArray(regionRange)) {
+        regionTimes[regionId] = regionRange;
+      }
+    });
+
+    let insertedForEntry = false;
+
+    REGION_ORDER.forEach((regionId) => {
+      const regionRange = regionTimes[regionId];
+      if (!Array.isArray(regionRange)) {
+        return;
+      }
+
+      const regionStartMs = Number(regionRange[0]);
+      if (!Number.isFinite(regionStartMs)) {
+        return;
+      }
+
+      const regionEndMs = Number(regionRange[1]);
+      const regionStartTimestamp = Math.floor(regionStartMs / 1000);
+      const regionEndTimestamp = Number.isFinite(regionEndMs)
+        ? Math.floor(regionEndMs / 1000)
+        : regionStartTimestamp + fallbackDuration;
+
+      const dedupeKey = `${regionId}|${mapId}|${category}|${regionStartTimestamp}|${eventId}`;
+      if (dedupeKeys.has(dedupeKey)) {
+        return;
+      }
+      dedupeKeys.add(dedupeKey);
+
+      ensureRegionScheduleMap(schedule, regionId, mapId);
+      schedule[regionId][mapId][category][String(regionStartTimestamp)] = eventId;
+      insertedForEntry = true;
+
+      minTimestamp = Math.min(minTimestamp, regionStartTimestamp);
+      maxTimestamp = Math.max(maxTimestamp, regionEndTimestamp);
+      includedConditionCount += 1;
+    });
+
+    if (!insertedForEntry) {
       return;
     }
-    dedupeKeys.add(dedupeKey);
-
-    ensureScheduleMap(schedule, mapId);
-    schedule[mapId][category][String(startTimestamp)] = eventId;
 
     if (!discoveredMaps[mapId]) {
       discoveredMaps[mapId] = previousMaps[mapId] ?? { displayName: mapDisplayName };
@@ -610,83 +684,91 @@ async function main() {
         };
       }
     }
-
-    const fallbackDuration = Number.isFinite(durationInSeconds) && durationInSeconds > 0
-      ? durationInSeconds
-      : 3600;
-    const calculatedEndTimestamp = Number.isFinite(endTimestampMs)
-      ? Math.floor(endTimestampMs / 1000)
-      : startTimestamp + fallbackDuration;
-
-    minTimestamp = Math.min(minTimestamp, startTimestamp);
-    maxTimestamp = Math.max(maxTimestamp, calculatedEndTimestamp);
-    includedConditionCount += 1;
   });
 
   const nowUnix = Math.floor(Date.now() / 1000);
   const mergeWindowStart = nowUnix - MERGE_HISTORY_WINDOW_SECONDS;
   let mergedPastEventCount = 0;
 
-  Object.entries(previousSchedule).forEach(([mapId, mapSchedule]) => {
-    ensureScheduleMap(schedule, mapId);
+  Object.entries(previousSchedule).forEach(([regionId, regionSchedule]) => {
+    Object.entries(regionSchedule ?? {}).forEach(([mapId, mapSchedule]) => {
+      ensureRegionScheduleMap(schedule, regionId, mapId);
 
-    if (!discoveredMaps[mapId] && previousMaps[mapId]) {
-      discoveredMaps[mapId] = {
-        displayName: previousMaps[mapId].displayName ?? mapId,
-      };
-    }
+      if (!discoveredMaps[mapId] && previousMaps[mapId]) {
+        discoveredMaps[mapId] = {
+          displayName: previousMaps[mapId].displayName ?? mapId,
+        };
+      }
 
-    ['major', 'minor'].forEach((category) => {
-      const previousCategorySchedule = mapSchedule?.[category] ?? {};
+      ['major', 'minor'].forEach((category) => {
+        const previousCategorySchedule = mapSchedule?.[category] ?? {};
 
-      Object.entries(previousCategorySchedule).forEach(([timestampKey, eventId]) => {
-        const timestamp = Number(timestampKey);
-        if (!Number.isFinite(timestamp)) {
-          return;
-        }
-
-        const isWithinMergeWindow = timestamp >= mergeWindowStart && timestamp < nowUnix;
-        if (!isWithinMergeWindow) {
-          return;
-        }
-
-        const currentEventId = schedule[mapId][category][timestampKey];
-        if (currentEventId) {
-          return;
-        }
-
-        schedule[mapId][category][timestampKey] = eventId;
-        mergedPastEventCount += 1;
-
-        if (!eventTypes[eventId]) {
-          const previousEventType = previousEventTypes[eventId];
-          if (previousEventType && typeof previousEventType === 'object') {
-            eventTypes[eventId] = previousEventType;
-          } else {
-            const fallbackDisplayName = toDisplayNameFromEventId(eventId);
-            eventTypes[eventId] = {
-              displayName: fallbackDisplayName,
-              icon: `https://cdn.arctracker.io/map-events/${String(eventId).replace(/-/g, '_')}.png`,
-              translationKey: toCamelCaseFromKebab(String(eventId)),
-              category,
-              localizations: { en: fallbackDisplayName },
-            };
+        Object.entries(previousCategorySchedule).forEach(([timestampKey, eventId]) => {
+          const timestamp = Number(timestampKey);
+          if (!Number.isFinite(timestamp)) {
+            return;
           }
-        }
+
+          const isWithinMergeWindow = timestamp >= mergeWindowStart && timestamp < nowUnix;
+          if (!isWithinMergeWindow) {
+            return;
+          }
+
+          const currentEventId = schedule[regionId][mapId][category][timestampKey];
+          if (currentEventId) {
+            return;
+          }
+
+          schedule[regionId][mapId][category][timestampKey] = eventId;
+          mergedPastEventCount += 1;
+
+          if (!eventTypes[eventId]) {
+            const previousEventType = previousEventTypes[eventId];
+            if (previousEventType && typeof previousEventType === 'object') {
+              eventTypes[eventId] = previousEventType;
+            } else {
+              const fallbackDisplayName = toDisplayNameFromEventId(eventId);
+              eventTypes[eventId] = {
+                displayName: fallbackDisplayName,
+                icon: `https://cdn.arctracker.io/map-events/${String(eventId).replace(/-/g, '_')}.png`,
+                translationKey: toCamelCaseFromKebab(String(eventId)),
+                category,
+                localizations: { en: fallbackDisplayName },
+              };
+            }
+          }
+        });
       });
     });
   });
 
-  const sortedMapIds = sortMapIds(Object.keys(schedule));
+  const sortedMapIds = sortMapIds(Object.keys(discoveredMaps));
   const sortedMaps = {};
-  const sortedSchedule = {};
-
   sortedMapIds.forEach((mapId) => {
     sortedMaps[mapId] = discoveredMaps[mapId] ?? { displayName: mapId };
-    sortedSchedule[mapId] = {
-      major: sortNumericKeyedRecord(schedule[mapId].major),
-      minor: sortNumericKeyedRecord(schedule[mapId].minor),
-    };
+  });
+
+  const sortedSchedule = {};
+  REGION_ORDER.forEach((regionId) => {
+    const regionSchedule = schedule[regionId];
+    if (!regionSchedule) {
+      return;
+    }
+
+    const sortedRegionSchedule = {};
+    sortedMapIds.forEach((mapId) => {
+      const mapSchedule = regionSchedule[mapId];
+      if (!mapSchedule) {
+        return;
+      }
+
+      sortedRegionSchedule[mapId] = {
+        major: sortNumericKeyedRecord(mapSchedule.major),
+        minor: sortNumericKeyedRecord(mapSchedule.minor),
+      };
+    });
+
+    sortedSchedule[regionId] = sortedRegionSchedule;
   });
 
   const sortedEventTypes = Object.fromEntries(
@@ -704,17 +786,28 @@ async function main() {
     ? summarizeFutureScheduleChanges(previousSchedule, sortedSchedule, nowUnix)
     : null;
 
+  const regions = {};
+  REGION_ORDER.forEach((regionId) => {
+    const region = REGION_BY_ID[regionId];
+    if (region) {
+      regions[regionId] = {
+        displayName: region.displayName,
+        shortCode: region.shortCode,
+        color: region.color,
+      };
+    }
+  });
+
   const output = {
     _readme: {
       description: 'Map events schedule for ARC Raiders generated from arcraiders.com map-conditions',
       format:
-        'Schedule keys are UNIX timestamps (seconds, UTC) at event start; values are event type ids.',
+        'Schedule is keyed by region id, then map id, then major/minor. Schedule keys are UNIX timestamps (seconds, UTC) at event start; values are event type ids.',
     },
     metadata: {
       generatedAt: new Date().toISOString(),
       sourceFiles: {
         mapConditionsOverview: MAP_CONDITIONS_URL,
-        mapConditionsPerCondition: `${MAP_CONDITIONS_URL}/<condition-slug>`,
         eventTypes: 'public/data/schedule/event-types.json',
         previousSchedule: 'public/data/schedule/map-events.json',
       },
@@ -729,6 +822,7 @@ async function main() {
     },
     eventTypes: sortedEventTypes,
     maps: sortedMaps,
+    regions,
     schedule: sortedSchedule,
   };
 
@@ -736,7 +830,7 @@ async function main() {
   fs.writeFileSync(OUTPUT_PATH, `${JSON.stringify(output, null, 2)}\n`, 'utf8');
 
   console.log(`✓ Generated ${OUTPUT_PATH}`);
-  console.log(`  Condition pages scraped: ${conditionTypesByName.size}`);
+  console.log(`  Conditions found: ${conditionTypesByName.size}`);
   console.log(`  Entries scraped: ${conditionEntries.length}`);
   console.log(`  Conditions included: ${includedConditionCount}`);
   console.log(`  Maps included: ${sortedMapIds.length}`);

@@ -107,6 +107,7 @@ export async function loadMapEventsData(): Promise<MapEventsData> {
   return {
     eventTypes: mergedEventTypes,
     maps: mergedMaps,
+    regions: mapEventsData.regions ?? {},
     schedule: mapEventsData.schedule ?? {},
     metadata: mapEventsData.metadata,
   };

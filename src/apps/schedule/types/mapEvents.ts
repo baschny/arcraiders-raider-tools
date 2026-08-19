@@ -12,6 +12,12 @@ export interface MapInfo {
   localizations?: Record<string, string>;
 }
 
+export interface RegionInfo {
+  displayName: string;
+  shortCode: string;
+  color: string;
+}
+
 export interface EventSchedule {
   major: Record<string, string>;
   minor: Record<string, string>;
@@ -36,7 +42,8 @@ export interface ScheduleMetadata {
 export interface MapEventsData {
   eventTypes: Record<string, EventType>;
   maps: Record<string, MapInfo>;
-  schedule: Record<string, EventSchedule>;
+  regions: Record<string, RegionInfo>;
+  schedule: Record<string, Record<string, EventSchedule>>;
   metadata?: ScheduleMetadata;
 }
 

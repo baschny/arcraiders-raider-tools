@@ -1,428 +1,374 @@
-import { useState, useEffect, useMemo } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import type { MapEventsData, EventType } from '../types/mapEvents';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useLocale } from '../../../shared/context/LocaleContext';
 import { getLocalizedEventName, getLocalizedMapName } from '../utils/localization';
+import { TintedIcon } from './TintedIcon';
+import { RegionBadge } from './RegionBadge';
+import type { EventType, MapEventsData } from '../types/mapEvents';
+
+const PAST_HOURS = 1;
+const FUTURE_HOURS = 24;
+const REGION_ORDER = ['europe', 'north-america', 'south-america', 'asia', 'oceania'];
+const CATEGORY_COLORS: Record<'major' | 'minor', string> = {
+  major: '#d9b44a',
+  minor: '#8f7c3f',
+};
+const REGIONS_STORAGE_KEY = 'schedule.selectedRegions';
+
+interface Occurrence {
+  region: string;
+  mapId: string;
+  category: 'major' | 'minor';
+  eventId: string;
+}
 
 interface ScheduleProps {
   data: MapEventsData;
 }
-const HOURS = Array.from({ length: 24 }, (_, hour) => hour);
 
-function getStartOfDay(date: Date): Date {
-  const value = new Date(date);
-  value.setHours(0, 0, 0, 0);
-  return value;
+// Toggle movement: all-ON (empty or full) -> single -> multi -> all-ON.
+function toggleIn(selected: string[], id: string, allIds: string[]): string[] {
+  const allOn = selected.length === 0 || (allIds.length > 0 && selected.length === allIds.length);
+  if (allOn) return [id];
+  const next = selected.includes(id) ? selected.filter((x) => x !== id) : [...selected, id];
+  return next.length === allIds.length ? [] : next;
 }
 
-function addDays(date: Date, days: number): Date {
-  const value = new Date(date);
-  value.setDate(value.getDate() + days);
-  return value;
-}
+function occurrencesForDate(data: MapEventsData, date: Date): Occurrence[] {
+  const tsKey = Math.floor(date.getTime() / 1000).toString();
+  const out: Occurrence[] = [];
 
-function isSameDay(a: Date, b: Date): boolean {
-  return (
-    a.getFullYear() === b.getFullYear() &&
-    a.getMonth() === b.getMonth() &&
-    a.getDate() === b.getDate()
-  );
-}
-
-function clampDateToRange(date: Date, minDateMs: number | null, maxDateMs: number | null): Date {
-  const normalizedDate = getStartOfDay(date);
-  if (minDateMs !== null && normalizedDate.getTime() < minDateMs) {
-    return new Date(minDateMs);
+  for (const region of REGION_ORDER) {
+    const byMap = data.schedule[region];
+    if (!byMap) continue;
+    for (const mapId of Object.keys(byMap)) {
+      const s = byMap[mapId];
+      const majorEventId = s.major?.[tsKey];
+      const minorEventId = s.minor?.[tsKey];
+      if (majorEventId) out.push({ region, mapId, category: 'major', eventId: majorEventId });
+      if (minorEventId) out.push({ region, mapId, category: 'minor', eventId: minorEventId });
+    }
   }
-  if (maxDateMs !== null && normalizedDate.getTime() > maxDateMs) {
-    return new Date(maxDateMs);
-  }
-  return normalizedDate;
+
+  return out;
 }
 
 export function Schedule({ data }: ScheduleProps) {
   const { locale, compareText, t } = useLocale();
+
   const mapIds = useMemo(() => Object.keys(data.maps), [data.maps]);
-  const [currentTime, setCurrentTime] = useState(new Date());
-  const [selectedDate, setSelectedDate] = useState(() => getStartOfDay(new Date()));
-  const [hoveredEventType, setHoveredEventType] = useState<string | null>(null);
-  const [pinnedEventType, setPinnedEventType] = useState<string | null>(null);
-  const scheduleDateRange = useMemo(() => {
-    let minTimestamp = data.metadata?.timestampRange?.start ?? null;
-    let maxTimestamp = data.metadata?.timestampRange?.end ?? null;
 
-    if (!Number.isFinite(minTimestamp ?? Number.NaN) || !Number.isFinite(maxTimestamp ?? Number.NaN)) {
-      let computedMin = Number.POSITIVE_INFINITY;
-      let computedMax = Number.NEGATIVE_INFINITY;
-
-      Object.values(data.schedule).forEach((schedule) => {
-        if (!schedule) {
-          return;
-        }
-
-        Object.keys(schedule.major).forEach((timestamp) => {
-          const parsedTimestamp = Number(timestamp);
-          if (Number.isFinite(parsedTimestamp)) {
-            computedMin = Math.min(computedMin, parsedTimestamp);
-            computedMax = Math.max(computedMax, parsedTimestamp);
-          }
-        });
-
-        Object.keys(schedule.minor).forEach((timestamp) => {
-          const parsedTimestamp = Number(timestamp);
-          if (Number.isFinite(parsedTimestamp)) {
-            computedMin = Math.min(computedMin, parsedTimestamp);
-            computedMax = Math.max(computedMax, parsedTimestamp);
-          }
-        });
-      });
-
-      minTimestamp = Number.isFinite(computedMin) ? computedMin : null;
-      maxTimestamp = Number.isFinite(computedMax) ? computedMax + 3600 : null;
+  const [selectedRegions, setSelectedRegions] = useState<string[]>(() => {
+    try {
+      const raw = localStorage.getItem(REGIONS_STORAGE_KEY);
+      return raw ? (JSON.parse(raw) as string[]) : [];
+    } catch {
+      return [];
     }
+  });
+  const [selectedConditions, setSelectedConditions] = useState<string[]>([]);
+  const [hoveredCondition, setHoveredCondition] = useState<string | null>(null);
+  const [hoveredRegion, setHoveredRegion] = useState<string | null>(null);
+  const [hideUnselected, setHideUnselected] = useState(false);
+  const [now, setNow] = useState(() => new Date());
+  const nowRowRef = useRef<HTMLDivElement | null>(null);
 
-    if (!Number.isFinite(minTimestamp ?? Number.NaN) || !Number.isFinite(maxTimestamp ?? Number.NaN)) {
-      return { minDateMs: null, maxDateMs: null };
-    }
-
-    const minDate = getStartOfDay(new Date((minTimestamp as number) * 1000)).getTime();
-    const maxEffectiveTimestamp = Math.max((maxTimestamp as number) - 1, minTimestamp as number);
-    const maxDate = getStartOfDay(new Date(maxEffectiveTimestamp * 1000)).getTime();
-    return { minDateMs: minDate, maxDateMs: maxDate };
-  }, [data]);
-  // Update current time every minute
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentTime(new Date());
-    }, 60000); // Update every minute
-
+    const timer = setInterval(() => setNow(new Date()), 60000);
     return () => clearInterval(timer);
   }, []);
 
-  // Current local time information
-  const now = currentTime;
-  const currentLocalHour = now.getHours();
-  const activeDate = clampDateToRange(
-    selectedDate,
-    scheduleDateRange.minDateMs,
-    scheduleDateRange.maxDateMs
+  const activeConditions = hoveredCondition !== null ? [hoveredCondition] : selectedConditions;
+  const anyFilterActive = selectedRegions.length > 0 || activeConditions.length > 0;
+  const fixedFilterActive = selectedRegions.length > 0 || selectedConditions.length > 0;
+
+  const persistRegions = (next: string[]) => {
+    setSelectedRegions(next);
+    localStorage.setItem(REGIONS_STORAGE_KEY, JSON.stringify(next));
+  };
+
+  const nowHourKey = useMemo(() => {
+    const d = new Date(now);
+    d.setMinutes(0, 0, 0);
+    return d.getTime();
+  }, [now]);
+
+  const hourDates = useMemo(() => {
+    const base = new Date(nowHourKey);
+    return Array.from({ length: PAST_HOURS + FUTURE_HOURS }, (_, i) => {
+      const d = new Date(base);
+      d.setHours(base.getHours() - PAST_HOURS + i);
+      return d;
+    });
+  }, [nowHourKey]);
+
+  const occurrencesByHour = useMemo(
+    () => hourDates.map((d) => occurrencesForDate(data, d)),
+    [data, hourDates]
   );
-  const isViewingToday = isSameDay(activeDate, now);
 
-  // Format current time for display
-  const formatTime = (date: Date): string => {
-    return date.toLocaleTimeString(locale, {
-      hour: '2-digit',
-      minute: '2-digit',
-      hour12: false,
-    });
-  };
+  const displayedEventIds = useMemo(() => {
+    const ids = new Set<string>();
+    occurrencesByHour.forEach((occ) => occ.forEach((o) => ids.add(o.eventId)));
+    return ids;
+  }, [occurrencesByHour]);
 
-  // Get timezone abbreviation
-  const getTimezone = (): string => {
-    const timezoneName = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    const date = new Date();
-    const shortTz = date.toLocaleTimeString(locale, { timeZoneName: 'short' }).split(' ').pop() || '';
-    return `${timezoneName} (${shortTz})`;
-  };
-  const formatScheduleDate = (date: Date): string => {
-    return date.toLocaleDateString(locale, {
-      weekday: 'short',
-      month: 'short',
-      day: 'numeric',
-      year: 'numeric',
-    });
-  };
+  const eventTypes = useMemo(
+    () =>
+      Object.entries(data.eventTypes)
+        .filter(
+          ([eventId, event]) =>
+            (event.category === 'major' || event.category === 'minor') &&
+            displayedEventIds.has(eventId)
+        )
+        .map(([eventId, event]) => ({ eventId, event }))
+        .sort((a, b) => {
+          if (a.event.category !== b.event.category) return a.event.category === 'major' ? -1 : 1;
+          return compareText(
+            getLocalizedEventName(a.event, locale),
+            getLocalizedEventName(b.event, locale)
+          );
+        }),
+    [data.eventTypes, displayedEventIds, compareText, locale]
+  );
 
-  // Get events for a specific map and hour (local hour)
-  const getEventsForHour = (mapId: string, localHour: number): {
-    major: { event: EventType; eventId: string } | null;
-    minor: { event: EventType; eventId: string } | null;
-  } => {
-    const schedule = data.schedule[mapId];
-    if (!schedule) return { major: null, minor: null };
-    const localDateTime = new Date(activeDate);
-    localDateTime.setHours(localHour, 0, 0, 0);
-    const timestampKey = Math.floor(localDateTime.getTime() / 1000).toString();
+  const eventOrder = useMemo(
+    () => new Map(eventTypes.map(({ eventId }, i) => [eventId, i])),
+    [eventTypes]
+  );
+  const regionOrder = useMemo(() => new Map(REGION_ORDER.map((r, i) => [r, i])), []);
+  const allConditionIds = useMemo(() => eventTypes.map(({ eventId }) => eventId), [eventTypes]);
+  const majorEvents = useMemo(
+    () => eventTypes.filter(({ event }) => event.category === 'major'),
+    [eventTypes]
+  );
+  const minorEvents = useMemo(
+    () => eventTypes.filter(({ event }) => event.category === 'minor'),
+    [eventTypes]
+  );
 
-    const majorEventId = schedule.major?.[timestampKey];
-    const minorEventId = schedule.minor?.[timestampKey];
+  const availableInRegions = useMemo(() => {
+    if (selectedRegions.length === 0) return null;
+    const set = new Set<string>();
+    occurrencesByHour.forEach((occ) =>
+      occ.forEach((o) => {
+        if (selectedRegions.includes(o.region)) set.add(o.eventId);
+      })
+    );
+    return set;
+  }, [occurrencesByHour, selectedRegions]);
 
-    let major = null;
-    let minor = null;
+  useEffect(() => {
+    nowRowRef.current?.scrollIntoView({ block: 'center', behavior: 'auto' });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-    if (majorEventId) {
-      const majorEvent = data.eventTypes[majorEventId];
-      if (majorEvent) {
-        major = { event: majorEvent, eventId: majorEventId };
-      }
-    }
+  const isRegionColored = (regionId: string): boolean =>
+    selectedRegions.includes(regionId) || hoveredRegion === regionId;
 
-    if (minorEventId) {
-      const minorEvent = data.eventTypes[minorEventId];
-      if (minorEvent) {
-        minor = { event: minorEvent, eventId: minorEventId };
-      }
-    }
-
-    return { major, minor };
-  };
-
-  // Convert icon URL to local path
-  const getLocalIconPath = (iconUrl: string): string => {
-    if (!iconUrl) return '';
-    const filename = iconUrl.split('/').pop();
-    return `/images/events/${filename}`;
-  };
-
-  // Get unique active event types for legend
-  const getActiveEventTypes = (): Array<{ eventId: string; event: EventType }> => {
-    const activeEvents = new Set<string>();
-    
-    mapIds.forEach(mapId => {
-      const schedule = data.schedule[mapId];
-      if (schedule) {
-        Object.values(schedule.major || {}).forEach(eventId => activeEvents.add(eventId));
-        Object.values(schedule.minor || {}).forEach(eventId => activeEvents.add(eventId));
-      }
-    });
-
-    return Array.from(activeEvents)
-      .map(eventId => ({ eventId, event: data.eventTypes[eventId] }))
-      .filter(item => item.event)
+  const entriesForCell = (mapId: string, hourIndex: number): Occurrence[] =>
+    occurrencesByHour[hourIndex]
+      .filter((o) => o.mapId === mapId)
       .sort((a, b) => {
-        // Sort by category first (major then minor), then by name
-        if (a.event.category !== b.event.category) {
-          return a.event.category === 'major' ? -1 : 1;
-        }
-        return compareText(
-          getLocalizedEventName(a.event, locale),
-          getLocalizedEventName(b.event, locale)
-        );
+        if (a.category !== b.category) return a.category === 'major' ? -1 : 1;
+        const oa = eventOrder.get(a.eventId) ?? 0;
+        const ob = eventOrder.get(b.eventId) ?? 0;
+        if (oa !== ob) return oa - ob;
+        return (regionOrder.get(a.region) ?? 0) - (regionOrder.get(b.region) ?? 0);
       });
+
+  const hourLabel = (d: Date): string => `${d.getHours().toString().padStart(2, '0')}:00`;
+
+  const getShortName = (eventId: string, event: EventType): string => {
+    const key = `schedule.conditionShortNames.${eventId}`;
+    const translated = t(key);
+    return translated === key ? getLocalizedEventName(event, locale) : translated;
   };
 
-  const activeEventTypes = getActiveEventTypes();
-  const eventsOnActiveDate = useMemo(() => {
-    const availableEvents = new Set<string>();
-
-    mapIds.forEach((mapId) => {
-      const schedule = data.schedule[mapId];
-      if (!schedule) {
-        return;
-      }
-
-      HOURS.forEach((localHour) => {
-        const localDateTime = new Date(activeDate);
-        localDateTime.setHours(localHour, 0, 0, 0);
-        const timestampKey = Math.floor(localDateTime.getTime() / 1000).toString();
-
-        const majorEventId = schedule.major?.[timestampKey];
-        const minorEventId = schedule.minor?.[timestampKey];
-
-        if (majorEventId && data.eventTypes[majorEventId]) {
-          availableEvents.add(majorEventId);
-        }
-
-        if (minorEventId && data.eventTypes[minorEventId]) {
-          availableEvents.add(minorEventId);
-        }
-      });
+  const renderConditionItems = (items: typeof majorEvents) =>
+    items.map(({ eventId, event }) => {
+      const isActive = activeConditions.includes(eventId);
+      const available = availableInRegions === null || availableInRegions.has(eventId);
+      const faded = (!isActive && activeConditions.length > 0) || !available;
+      return (
+        <button
+          key={eventId}
+          type="button"
+          className={`filter-item condition ${isActive ? 'selected' : ''} ${faded ? 'faded' : ''}`}
+          onMouseEnter={() =>
+            selectedConditions.length === 0 && available && setHoveredCondition(eventId)
+          }
+          onMouseLeave={() => setHoveredCondition(null)}
+          onClick={() =>
+            available && setSelectedConditions(toggleIn(selectedConditions, eventId, allConditionIds))
+          }
+        >
+          <TintedIcon
+            iconUrl={event.icon}
+            color={CATEGORY_COLORS[event.category as 'major' | 'minor']}
+            size={16}
+          />
+          <span className="filter-label">{getLocalizedEventName(event, locale)}</span>
+        </button>
+      );
     });
-
-    return availableEvents;
-  }, [activeDate, data.eventTypes, data.schedule, mapIds]);
-
-  // Toggle event type pin/unpin
-  const handleEventToggle = (eventId: string) => {
-    if (pinnedEventType === eventId) {
-      setPinnedEventType(null);
-    } else {
-      setPinnedEventType(eventId);
-    }
-  };
-
-  // Determine active highlighting (pinned takes precedence over hover)
-  const activeEventType = pinnedEventType || hoveredEventType;
-  const canGoToPreviousDay =
-    scheduleDateRange.minDateMs === null || activeDate.getTime() > scheduleDateRange.minDateMs;
-  const canGoToNextDay =
-    scheduleDateRange.maxDateMs === null || activeDate.getTime() < scheduleDateRange.maxDateMs;
 
   return (
     <div className="schedule-container">
-      {/* Current time display and legend on same row */}
-      <div className="header-row">
-        <div className="header-left">
-          <div className="current-time-display">
-            <div className="time">{formatTime(now)}</div>
-            <div className="timezone">{getTimezone()}</div>
+      <div className="schedule-top">
+        <div className="schedule-time">
+          <div className="current-time">
+            {now.toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit', hour12: false })}
           </div>
-          <div className="date-switcher">
-            <button
-              type="button"
-              className="date-switcher-button"
-              disabled={!canGoToPreviousDay}
-              onClick={() => setSelectedDate(addDays(activeDate, -1))}
-              aria-label={t('schedule.previousDay')}
-            >
-              <ChevronLeft size={18} />
-            </button>
-            <button
-              type="button"
-              className={`selected-date ${isViewingToday ? 'is-today' : ''}`}
-              onClick={() => setSelectedDate(getStartOfDay(new Date()))}
-              disabled={isViewingToday}
-              title={t('schedule.goToToday')}
-            >
-              {formatScheduleDate(activeDate)}
-            </button>
-            <button
-              type="button"
-              className="date-switcher-button"
-              disabled={!canGoToNextDay}
-              onClick={() => setSelectedDate(addDays(activeDate, 1))}
-              aria-label={t('schedule.nextDay')}
-            >
-              <ChevronRight size={18} />
-            </button>
-          </div>
-          {data.metadata?.generatedAt && (
-            <div className="generated-at">
-              {t('schedule.updated')}: {new Date(data.metadata.generatedAt).toLocaleString(locale, {
-                month: 'short',
-                day: 'numeric',
-                year: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit',
-                hour12: false,
-              })}
-            </div>
-          )}
+          <div className="current-timezone">{Intl.DateTimeFormat().resolvedOptions().timeZone}</div>
         </div>
 
-        {/* Event Legend */}
-        <div className="event-legend">
-          <div className="legend-items">
-            {activeEventTypes.map(({ eventId, event }) => {
-              const isAvailableOnActiveDate = eventsOnActiveDate.has(eventId);
-              const canInteract = isAvailableOnActiveDate || pinnedEventType === eventId;
-              const localizedEventName = getLocalizedEventName(event, locale);
-
-              return (
-                <div
-                  key={eventId}
-                  className={`legend-item ${event.category} ${
-                    activeEventType === eventId ? 'legend-highlighted' : ''
-                  } ${pinnedEventType === eventId ? 'legend-pinned' : ''} ${
-                    isAvailableOnActiveDate ? '' : 'legend-unavailable'
-                  }`}
-                  onMouseEnter={() => !pinnedEventType && canInteract && setHoveredEventType(eventId)}
-                  onMouseLeave={() => setHoveredEventType(null)}
-                  onClick={() => canInteract && handleEventToggle(eventId)}
-                >
-                  <div className="legend-icon-wrapper">
-                    <img
-                      src={getLocalIconPath(event.icon)}
-                      alt={localizedEventName}
-                      className="legend-icon"
+        <div className="schedule-filters">
+          <div className="filter-bar">
+            <div className="filter-row">
+              {REGION_ORDER.map((regionId) => {
+                const region = data.regions[regionId];
+                if (!region) return null;
+                const isActive = selectedRegions.includes(regionId);
+                const colored = isRegionColored(regionId);
+                return (
+                  <button
+                    key={regionId}
+                    type="button"
+                    className={`filter-item region ${isActive ? 'selected' : ''}`}
+                    onClick={() => persistRegions(toggleIn(selectedRegions, regionId, REGION_ORDER))}
+                    onMouseEnter={() => setHoveredRegion(regionId)}
+                    onMouseLeave={() => setHoveredRegion(null)}
+                    title={region.displayName}
+                  >
+                    <span
+                      className="filter-dot"
+                      style={{ backgroundColor: colored ? region.color : '#8a8a8a' }}
                     />
-                  </div>
-                  <span className="legend-name">{localizedEventName}</span>
-                </div>
-              );
-            })}
+                    <span
+                      className="filter-label"
+                      style={colored ? { color: region.color } : undefined}
+                    >
+                      {region.displayName}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+
+            <div className="filter-row">{renderConditionItems(majorEvents)}</div>
+
+            <div className="filter-row">{renderConditionItems(minorEvents)}</div>
+
+            <div className="filter-row">
+              <button
+                type="button"
+                className={`filter-item hide-unselected ${hideUnselected ? 'selected' : ''}`}
+                onClick={() => setHideUnselected((prev) => !prev)}
+              >
+                <span className="filter-label">{t('schedule.hideUnselected')}</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Schedule grid with connected cells */}
       <div className="schedule-scroll">
         <div className="schedule-grid">
-          {/* Hour labels header */}
-          <div className="schedule-header">
-            <div className="map-label-header">{t('schedule.mapHeader')}</div>
-            <div className="hours-container">
-              {HOURS.map((hour) => (
-                <div key={hour} className={`hour-label ${isViewingToday && hour === currentLocalHour ? 'current-hour' : ''}`}>
-                  {hour.toString().padStart(2, '0')}:00
-                </div>
-              ))}
-            </div>
+          <div className="schedule-header-row">
+            <div className="hour-corner" />
+            {mapIds.map((mapId) => (
+              <div key={mapId} className="map-col-header" data-map={mapId}>
+                <span className="map-name">{getLocalizedMapName(mapId, data.maps[mapId], locale)}</span>
+              </div>
+            ))}
           </div>
 
-          {/* Map rows */}
-          {mapIds.map((mapId) => {
-            const mapInfo = data.maps[mapId];
-            const localizedMapName = getLocalizedMapName(mapId, mapInfo, locale);
+          {hourDates.map((d, i) => {
+            const isNowRow = d.getTime() === nowHourKey;
+            const isFirstOfDay = d.getHours() === 0;
+            const ref = isNowRow ? nowRowRef : null;
             return (
-              <div key={mapId} className="map-row">
-                <div className="map-label" data-map={mapId}>
-                  <span className="map-name-text">{localizedMapName}</span>
+              <div
+                key={d.getTime()}
+                ref={ref}
+                className={`hour-row ${isNowRow ? 'now-row' : ''}`}
+              >
+                <div className={`hour-label ${isNowRow ? 'now-row' : ''}`}>
+                  {isFirstOfDay && (
+                    <span className="hour-day">
+                      {d.toLocaleDateString(locale, { weekday: 'short', day: 'numeric', month: 'short' })}
+                    </span>
+                  )}
+                  <span>{hourLabel(d)}</span>
                 </div>
-                <div className="cells-container">
-                  {HOURS.map((hour, index) => {
-                    const events = getEventsForHour(mapId, hour);
-                    const isMajorHighlighted = events.major && activeEventType === events.major.eventId;
-                    const isMinorHighlighted = events.minor && activeEventType === events.minor.eventId;
-                    const isCurrentHour = isViewingToday && hour === currentLocalHour;
-                    const majorEventName = events.major
-                      ? getLocalizedEventName(events.major.event, locale)
-                      : '';
-                    const minorEventName = events.minor
-                      ? getLocalizedEventName(events.minor.event, locale)
-                      : '';
-                    
-                    return (
-                      <div
-                        key={hour}
-                        className={`hour-cell ${index < HOURS.length - 1 ? 'with-separator' : ''} ${isCurrentHour ? 'current-hour' : ''}`}
-                      >
-                        {/* Major event half (top) */}
-                        <div
-                          className={`cell-half major-half ${
-                            events.major ? 'has-event' : 'no-event'
-                          } ${isMajorHighlighted ? 'highlighted' : ''} ${
-                            isCurrentHour ? 'current-hour' : ''
-                          }`}
-                          onMouseEnter={() => events.major && !pinnedEventType && setHoveredEventType(events.major.eventId)}
-                          onMouseLeave={() => setHoveredEventType(null)}
-                          onClick={() => events.major && handleEventToggle(events.major.eventId)}
-                          title={majorEventName}
-                        >
-                          {events.major && (
-                            <img
-                              src={getLocalIconPath(events.major.event.icon)}
-                              alt={majorEventName}
-                              className="event-icon"
-                            />
-                          )}
-                        </div>
-                        
-                        {/* Minor event half (bottom) */}
-                        <div
-                          className={`cell-half minor-half ${
-                            events.minor ? 'has-event' : 'no-event'
-                          } ${isMinorHighlighted ? 'highlighted' : ''} ${
-                            isCurrentHour ? 'current-hour' : ''
-                          }`}
-                          onMouseEnter={() => events.minor && !pinnedEventType && setHoveredEventType(events.minor.eventId)}
-                          onMouseLeave={() => setHoveredEventType(null)}
-                          onClick={() => events.minor && handleEventToggle(events.minor.eventId)}
-                          title={minorEventName}
-                        >
-                          {events.minor && (
-                            <img
-                              src={getLocalIconPath(events.minor.event.icon)}
-                              alt={minorEventName}
-                              className="event-icon"
-                            />
-                          )}
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
+
+                {mapIds.map((mapId) => {
+                  const entries = entriesForCell(mapId, i);
+                  return (
+                    <div key={mapId} className={`map-cell ${isNowRow ? 'now-row' : ''}`}>
+                      {entries.map((entry) => {
+                        const event = data.eventTypes[entry.eventId];
+                        const region = data.regions[entry.region];
+                        const conditionMatch =
+                          activeConditions.length === 0 || activeConditions.includes(entry.eventId);
+                        const regionMatch =
+                          selectedRegions.length === 0 || selectedRegions.includes(entry.region);
+                        const fixedConditionMatch =
+                          selectedConditions.length === 0 ||
+                          selectedConditions.includes(entry.eventId);
+                        const isMatch = regionMatch && conditionMatch;
+                        const fixedIsMatch = regionMatch && fixedConditionMatch;
+                        if (hideUnselected && fixedFilterActive && !fixedIsMatch) return null;
+                        const highlightSuppressed = hideUnselected && fixedFilterActive;
+                        const highlighted = anyFilterActive && isMatch && !highlightSuppressed;
+                        const dimmed = anyFilterActive && !isMatch;
+                        return (
+                          <div
+                            key={`${entry.region}-${entry.eventId}`}
+                            className={`slot ${highlighted ? 'highlighted' : ''} ${dimmed ? 'dimmed' : ''}`}
+                            onMouseEnter={() =>
+                              selectedConditions.length === 0 &&
+                              regionMatch &&
+                              setHoveredCondition(entry.eventId)
+                            }
+                            onMouseLeave={() => setHoveredCondition(null)}
+                            onClick={() =>
+                              regionMatch &&
+                              setSelectedConditions(
+                                toggleIn(selectedConditions, entry.eventId, allConditionIds)
+                              )
+                            }
+                            title={
+                              event
+                                ? `${getLocalizedEventName(event, locale)} · ${region?.displayName ?? entry.region}`
+                                : entry.eventId
+                            }
+                          >
+                            <span className="slot-main">
+                              {event && (
+                                <TintedIcon
+                                  iconUrl={event.icon}
+                                  color={CATEGORY_COLORS[entry.category]}
+                                  size={20}
+                                />
+                              )}
+                              {event && (
+                                <span className="slot-name">{getShortName(entry.eventId, event)}</span>
+                              )}
+                            </span>
+                            {region && (
+                              <RegionBadge
+                                region={region}
+                                discrete={!isRegionColored(entry.region)}
+                                glow={hoveredRegion === entry.region}
+                              />
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  );
+                })}
               </div>
             );
           })}

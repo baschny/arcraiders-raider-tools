@@ -18,8 +18,26 @@ const MAP_ORDER = [
     "buried-city",
     "the-spaceport",
     "blue-gate",
+    "riven-tides",
     "stella-montis",
 ];
+
+const REGIONS: Array<{ id: string; displayName: string; shortCode: string; color: string }> = [
+    { id: "europe", displayName: "Europe", shortCode: "EU", color: "#c46a6a" },
+    { id: "north-america", displayName: "North America", shortCode: "NA", color: "#5b8bd4" },
+    { id: "south-america", displayName: "South America", shortCode: "SA", color: "#6fae7a" },
+    { id: "asia", displayName: "Asia", shortCode: "AS", color: "#a06bb8" },
+    { id: "oceania", displayName: "Oceania", shortCode: "OC", color: "#4ba3a3" },
+];
+const REGION_ORDER = REGIONS.map((region) => region.id);
+const REGION_BY_ID: Record<string, { displayName: string; shortCode: string; color: string }> =
+    Object.fromEntries(REGIONS.map((region) => [region.id, region]));
+const REGION_ID_BY_UPSTREAM_KEY: Record<string, string> = {
+    "north-america": "north-america",
+    brazil: "south-america",
+    "east-asia": "asia",
+    oceania: "oceania",
+};
 
 const KNOWN_MAP_ID_BY_DISPLAY_NAME: Record<string, string> = {
     "Buried City": "buried-city",
@@ -27,6 +45,7 @@ const KNOWN_MAP_ID_BY_DISPLAY_NAME: Record<string, string> = {
     "Spaceport": "the-spaceport",
     "Stella Montis": "stella-montis",
     "The Blue Gate": "blue-gate",
+    "Riven Tides": "riven-tides",
 };
 
 type EventCategory = "major" | "minor";
@@ -45,12 +64,19 @@ interface EventSchedule {
     minor: Record<string, string>;
 }
 
+interface RegionInfo {
+    displayName: string;
+    shortCode: string;
+    color: string;
+}
+
 interface MapEventsData {
     _readme?: Record<string, string>;
     metadata?: Record<string, unknown>;
     eventTypes?: Record<string, EventTypeDefinition>;
     maps?: Record<string, { displayName: string }>;
-    schedule?: Record<string, EventSchedule>;
+    regions?: Record<string, RegionInfo>;
+    schedule?: Record<string, Record<string, EventSchedule>>;
 }
 
 interface ConditionEntry {
@@ -60,6 +86,7 @@ interface ConditionEntry {
     endTimestampMs: number;
     durationInSeconds: number;
     category: EventCategory;
+    regionTimestamps?: Record<string, [number, number]>;
     sourcePage: string;
 }
 
@@ -69,8 +96,14 @@ export async function handler(): Promise<void> {
     }
 
     const previousData = (await getJsonFromS3<MapEventsData>(SCHEDULE_KEY)) ?? {};
-    const previousSchedule = previousData.schedule ?? {};
+    const previousOutputSchedule = previousData.schedule ?? {};
     const previousMaps = previousData.maps ?? {};
+    // Backward compatibility: pre-region output was a single global (Europe) schedule.
+    const previousSchedule: Record<string, Record<string, EventSchedule>> = previousData.regions
+        ? previousOutputSchedule
+        : Object.keys(previousOutputSchedule).length > 0
+            ? { europe: previousOutputSchedule as unknown as Record<string, EventSchedule> }
+            : {};
 
     const eventTypesSourceData = await fetchJson<unknown>(EVENT_TYPES_URL);
     const sourceEventTypes = normalizeEventTypesPayload(eventTypesSourceData);
@@ -91,7 +124,7 @@ export async function handler(): Promise<void> {
         throw new Error("No condition items found from map-conditions overview");
     }
 
-    const schedule: Record<string, EventSchedule> = {};
+    const schedule: Record<string, Record<string, EventSchedule>> = {};
     const discoveredMaps: Record<string, { displayName: string }> = {};
     const fallbackEventTypes: Record<string, EventTypeDefinition> = {};
     const unknownEventTypeIds = new Set<string>();
@@ -112,11 +145,6 @@ export async function handler(): Promise<void> {
 
         if (!conditionName || !mapDisplayName) {
             ignoredEntries.push(`missing condition/map value from ${entry.sourcePage}`);
-            return;
-        }
-
-        if (!Number.isFinite(startTimestampMs)) {
-            ignoredEntries.push(`invalid start timestamp for ${conditionName} (${mapDisplayName})`);
             return;
         }
 
@@ -148,28 +176,59 @@ export async function handler(): Promise<void> {
             };
         }
 
-        const startTimestamp = Math.floor(startTimestampMs / 1000);
-        const dedupeKey = `${mapId}|${category}|${startTimestamp}|${eventId}`;
-        if (dedupeKeys.has(dedupeKey)) {
+        const safeDuration =
+            Number.isFinite(durationInSeconds) && durationInSeconds > 0 ? durationInSeconds : 3600;
+
+        const regionTimes: Record<string, [number, number]> = {
+            europe: [startTimestampMs, endTimestampMs],
+        };
+        Object.entries(entry.regionTimestamps ?? {}).forEach(([upstreamKey, regionRange]) => {
+            const regionId = REGION_ID_BY_UPSTREAM_KEY[upstreamKey];
+            if (regionId && Array.isArray(regionRange)) {
+                regionTimes[regionId] = regionRange as [number, number];
+            }
+        });
+
+        let insertedForEntry = false;
+
+        REGION_ORDER.forEach((regionId) => {
+            const regionRange = regionTimes[regionId];
+            if (!Array.isArray(regionRange)) {
+                return;
+            }
+
+            const regionStartMs = Number(regionRange[0]);
+            if (!Number.isFinite(regionStartMs)) {
+                return;
+            }
+
+            const regionEndMs = Number(regionRange[1]);
+            const regionStartTimestamp = Math.floor(regionStartMs / 1000);
+            const regionEndTimestamp = Number.isFinite(regionEndMs)
+                ? Math.floor(regionEndMs / 1000)
+                : regionStartTimestamp + safeDuration;
+
+            const dedupeKey = `${regionId}|${mapId}|${category}|${regionStartTimestamp}|${eventId}`;
+            if (dedupeKeys.has(dedupeKey)) {
+                return;
+            }
+            dedupeKeys.add(dedupeKey);
+
+            ensureRegionScheduleMap(schedule, regionId, mapId);
+            schedule[regionId][mapId][category][String(regionStartTimestamp)] = eventId;
+            insertedForEntry = true;
+
+            maxTimestamp = Math.max(maxTimestamp, regionEndTimestamp);
+            includedConditionCount += 1;
+        });
+
+        if (!insertedForEntry) {
             return;
         }
-        dedupeKeys.add(dedupeKey);
-
-        ensureScheduleMap(schedule, mapId);
-        schedule[mapId][category][String(startTimestamp)] = eventId;
 
         if (!discoveredMaps[mapId]) {
             discoveredMaps[mapId] = previousMaps[mapId] ?? { displayName: mapDisplayName };
         }
-
-        const safeDuration =
-            Number.isFinite(durationInSeconds) && durationInSeconds > 0 ? durationInSeconds : 3600;
-        const endTimestamp = Number.isFinite(endTimestampMs)
-            ? Math.floor(endTimestampMs / 1000)
-            : startTimestamp + safeDuration;
-
-        maxTimestamp = Math.max(maxTimestamp, endTimestamp);
-        includedConditionCount += 1;
     });
 
     if (includedConditionCount === 0) {
@@ -180,54 +239,73 @@ export async function handler(): Promise<void> {
     const mergeWindowStart = nowUnix - MERGE_HISTORY_WINDOW_SECONDS;
     let mergedPastEventCount = 0;
 
-    Object.entries(previousSchedule).forEach(([mapId, mapSchedule]) => {
-        ensureScheduleMap(schedule, mapId);
+    Object.entries(previousSchedule).forEach(([regionId, regionSchedule]) => {
+        Object.entries(regionSchedule ?? {}).forEach(([mapId, mapSchedule]) => {
+            ensureRegionScheduleMap(schedule, regionId, mapId);
 
-        if (!discoveredMaps[mapId] && previousMaps[mapId]) {
-            discoveredMaps[mapId] = {
-                displayName: previousMaps[mapId].displayName ?? mapId,
-            };
-        }
+            if (!discoveredMaps[mapId] && previousMaps[mapId]) {
+                discoveredMaps[mapId] = {
+                    displayName: previousMaps[mapId].displayName ?? mapId,
+                };
+            }
 
-        (["major", "minor"] as EventCategory[]).forEach((category) => {
-            const previousCategorySchedule = mapSchedule?.[category] ?? {};
+            (["major", "minor"] as EventCategory[]).forEach((category) => {
+                const previousCategorySchedule = mapSchedule?.[category] ?? {};
 
-            Object.entries(previousCategorySchedule).forEach(([timestampKey, eventId]) => {
-                const timestamp = Number(timestampKey);
-                if (!Number.isFinite(timestamp)) {
-                    return;
-                }
+                Object.entries(previousCategorySchedule).forEach(([timestampKey, eventId]) => {
+                    const timestamp = Number(timestampKey);
+                    if (!Number.isFinite(timestamp)) {
+                        return;
+                    }
 
-                const isWithinMergeWindow = timestamp >= mergeWindowStart && timestamp < nowUnix;
-                if (!isWithinMergeWindow) {
-                    return;
-                }
+                    const isWithinMergeWindow = timestamp >= mergeWindowStart && timestamp < nowUnix;
+                    if (!isWithinMergeWindow) {
+                        return;
+                    }
 
-                const currentEventId = schedule[mapId][category][timestampKey];
-                if (currentEventId) {
-                    return;
-                }
+                    const currentEventId = schedule[regionId][mapId][category][timestampKey];
+                    if (currentEventId) {
+                        return;
+                    }
 
-                schedule[mapId][category][timestampKey] = eventId;
-                mergedPastEventCount += 1;
+                    schedule[regionId][mapId][category][timestampKey] = eventId;
+                    mergedPastEventCount += 1;
+                });
             });
         });
     });
 
-    const sortedMapIds = sortMapIds(Object.keys(schedule));
+    const sortedMapIds = sortMapIds(Object.keys(discoveredMaps));
     if (sortedMapIds.length === 0) {
         throw new Error("Schedule output contains no maps");
     }
 
     const sortedMaps: Record<string, { displayName: string }> = {};
-    const sortedSchedule: Record<string, EventSchedule> = {};
-
     sortedMapIds.forEach((mapId) => {
         sortedMaps[mapId] = discoveredMaps[mapId] ?? { displayName: mapId };
-        sortedSchedule[mapId] = {
-            major: sortNumericKeyedRecord(schedule[mapId].major),
-            minor: sortNumericKeyedRecord(schedule[mapId].minor),
-        };
+    });
+
+    const sortedSchedule: Record<string, Record<string, EventSchedule>> = {};
+    REGION_ORDER.forEach((regionId) => {
+        const regionSchedule = schedule[regionId];
+        if (!regionSchedule) {
+            return;
+        }
+
+        const sortedRegionSchedule: Record<string, EventSchedule> = {};
+        sortedMapIds.forEach((mapId) => {
+            const mapSchedule = regionSchedule[mapId];
+            if (!mapSchedule) {
+                return;
+            }
+
+            sortedRegionSchedule[mapId] = {
+                major: sortNumericKeyedRecord(mapSchedule.major),
+                minor: sortNumericKeyedRecord(mapSchedule.minor),
+            };
+        });
+
+        sortedSchedule[regionId] = sortedRegionSchedule;
     });
 
     const timestampRange = collectTimestampRange(
@@ -235,16 +313,28 @@ export async function handler(): Promise<void> {
         Number.isFinite(maxTimestamp) ? maxTimestamp : null
     );
 
+    const regions: Record<string, RegionInfo> = {};
+    REGION_ORDER.forEach((regionId) => {
+        const region = REGION_BY_ID[regionId];
+        if (region) {
+            regions[regionId] = {
+                displayName: region.displayName,
+                shortCode: region.shortCode,
+                color: region.color,
+            };
+        }
+    });
+
     const mapEventsOutput: MapEventsData = {
         _readme: {
             description: "Map events schedule for ARC Raiders generated by scheduled updater",
-            format: "Schedule keys are UNIX timestamps (seconds, UTC) at event start; values are event type ids.",
+            format:
+                "Schedule is keyed by region id, then map id, then major/minor. Schedule keys are UNIX timestamps (seconds, UTC) at event start; values are event type ids.",
         },
         metadata: {
             generatedAt: new Date().toISOString(),
             sourceFiles: {
                 mapConditionsOverview: MAP_CONDITIONS_URL,
-                mapConditionsPerCondition: `${MAP_CONDITIONS_URL}/<condition-slug>`,
                 eventTypes: EVENT_TYPES_URL,
                 previousScheduleS3Key: SCHEDULE_KEY,
             },
@@ -260,6 +350,7 @@ export async function handler(): Promise<void> {
         },
         eventTypes: fallbackEventTypes,
         maps: sortedMaps,
+        regions,
         schedule: sortedSchedule,
     };
 
@@ -267,7 +358,7 @@ export async function handler(): Promise<void> {
         status: "ok",
         generatedAt: new Date().toISOString(),
         scheduleKey: SCHEDULE_KEY,
-        conditionPagesScraped: conditionTypesByName.size,
+        conditionsFound: conditionTypesByName.size,
         conditionsIncluded: includedConditionCount,
         mapsIncluded: sortedMapIds.length,
         unknownEventTypeCount: unknownEventTypeIds.size,
@@ -307,6 +398,15 @@ async function collectMapConditionEntries(): Promise<{
             name?: string;
             type?: string;
         }>) ?? [];
+    const liveEntries =
+        (extractJsonArrayByPropertyName(overviewHtml, "liveEntries") as Array<{
+            conditionName?: string;
+            mapDisplayName?: string;
+            startTimestamp?: number;
+            endTimestamp?: number;
+            durationInSeconds?: number;
+            regionTimestamps?: Record<string, [number, number]>;
+        }>) ?? [];
 
     const conditionTypesByName = new Map<string, EventCategory>();
     conditionItems.forEach((conditionItem) => {
@@ -321,38 +421,24 @@ async function collectMapConditionEntries(): Promise<{
     });
 
     const conditionEntries: ConditionEntry[] = [];
-    for (const [conditionName, conditionCategory] of conditionTypesByName.entries()) {
-        const conditionSlug = slugify(conditionName);
-        if (!conditionSlug) {
-            continue;
+    liveEntries.forEach((entry) => {
+        const entryConditionName = String(entry?.conditionName ?? "").trim();
+        const resolvedCategory = conditionTypesByName.get(entryConditionName);
+        if (!resolvedCategory) {
+            return;
         }
 
-        const pageUrl = `${MAP_CONDITIONS_URL}/${conditionSlug}`;
-        const html = await fetchText(pageUrl);
-        const entries =
-            (extractJsonArrayByPropertyName(html, "entries") as Array<{
-                conditionName?: string;
-                mapDisplayName?: string;
-                startTimestamp?: number;
-                endTimestamp?: number;
-                durationInSeconds?: number;
-            }>) ?? [];
-
-        entries.forEach((entry) => {
-            const entryConditionName = String(entry?.conditionName ?? "").trim();
-            const resolvedCategory =
-                conditionTypesByName.get(entryConditionName) ?? conditionCategory;
-            conditionEntries.push({
-                conditionName: entryConditionName,
-                mapDisplayName: String(entry?.mapDisplayName ?? "").trim(),
-                startTimestampMs: Number(entry?.startTimestamp),
-                endTimestampMs: Number(entry?.endTimestamp),
-                durationInSeconds: Number(entry?.durationInSeconds),
-                category: resolvedCategory,
-                sourcePage: pageUrl,
-            });
+        conditionEntries.push({
+            conditionName: entryConditionName,
+            mapDisplayName: String(entry?.mapDisplayName ?? "").trim(),
+            startTimestampMs: Number(entry?.startTimestamp),
+            endTimestampMs: Number(entry?.endTimestamp),
+            durationInSeconds: Number(entry?.durationInSeconds),
+            category: resolvedCategory,
+            regionTimestamps: entry?.regionTimestamps ?? {},
+            sourcePage: MAP_CONDITIONS_URL,
         });
-    }
+    });
 
     return {
         conditionTypesByName,
@@ -570,12 +656,20 @@ function canonicalizeMapId(rawMapId: string): string {
     return withHyphens;
 }
 
-function ensureScheduleMap(schedule: Record<string, EventSchedule>, mapId: string): EventSchedule {
-    if (!schedule[mapId]) {
-        schedule[mapId] = { major: {}, minor: {} };
+function ensureRegionScheduleMap(
+    schedule: Record<string, Record<string, EventSchedule>>,
+    regionId: string,
+    mapId: string
+): EventSchedule {
+    if (!schedule[regionId]) {
+        schedule[regionId] = {};
     }
 
-    return schedule[mapId];
+    if (!schedule[regionId][mapId]) {
+        schedule[regionId][mapId] = { major: {}, minor: {} };
+    }
+
+    return schedule[regionId][mapId];
 }
 
 function sortNumericKeyedRecord(record: Record<string, string>): Record<string, string> {
@@ -598,20 +692,22 @@ function sortMapIds(mapIds: string[]): string[] {
 }
 
 function collectTimestampRange(
-    schedule: Record<string, EventSchedule>,
+    schedule: Record<string, Record<string, EventSchedule>>,
     fallbackEndTimestamp: number | null
 ): { start: number | null; end: number | null } {
     let minTimestamp = Number.POSITIVE_INFINITY;
     let maxTimestamp = Number.NEGATIVE_INFINITY;
 
-    Object.values(schedule).forEach((mapSchedule) => {
-        (["major", "minor"] as EventCategory[]).forEach((category) => {
-            Object.keys(mapSchedule?.[category] ?? {}).forEach((timestampKey) => {
-                const timestamp = Number(timestampKey);
-                if (Number.isFinite(timestamp)) {
-                    minTimestamp = Math.min(minTimestamp, timestamp);
-                    maxTimestamp = Math.max(maxTimestamp, timestamp + 3600);
-                }
+    Object.values(schedule).forEach((regionSchedule) => {
+        Object.values(regionSchedule ?? {}).forEach((mapSchedule) => {
+            (["major", "minor"] as EventCategory[]).forEach((category) => {
+                Object.keys(mapSchedule?.[category] ?? {}).forEach((timestampKey) => {
+                    const timestamp = Number(timestampKey);
+                    if (Number.isFinite(timestamp)) {
+                        minTimestamp = Math.min(minTimestamp, timestamp);
+                        maxTimestamp = Math.max(maxTimestamp, timestamp + 3600);
+                    }
+                });
             });
         });
     });

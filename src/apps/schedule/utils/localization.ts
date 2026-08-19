@@ -31,3 +31,9 @@ export function getLocalizedMapName(_mapId: string, mapInfo: MapInfo, locale: Ap
 
   return mapLocalizations.en ?? mapInfo.displayName;
 }
+
+export function getLocalIconPath(iconUrl: string): string {
+  if (!iconUrl) return '';
+  const filename = iconUrl.split('/').pop();
+  return `/images/events/${filename}`;
+}

@@ -12,8 +12,9 @@ It is used by the Schedule app (`src/apps/schedule`).
 Primary scripts:
 - `scripts/generate-schedule-data-from-map-conditions.js`
   - Current source-of-truth generator
-  - Scrapes `https://arcraiders.com/map-conditions` and per-condition pages
+  - Scrapes the `https://arcraiders.com/map-conditions` overview (the live region-aware schedule entries, `liveEntries`)
   - Uses `public/data/schedule/event-types.json` for event metadata/localization fallback
+  - Emits a region-nested schedule: `schedule[region][map][major|minor][timestamp] = eventId`, plus a `regions` block (id -> displayName/shortCode/color)
   - Merges recent past events from the previous output (30-day window) to avoid timeline gaps
   - Writes `public/data/schedule/map-events.json`
 - `scripts/generate-schedule-data.js`
@@ -38,7 +39,7 @@ Defined in:
 Components:
 - `ScheduleUpdateFunction` (Lambda, Node.js 22)
   - Source: `infra/lambda/schedule-updater.ts`
-  - Scrapes map-conditions + fetches event types JSON
+  - Scrapes the map-conditions overview + fetches event types JSON
   - Reads previous schedule from S3 (merge window behavior)
   - Writes:
     - `map-events.json`
@@ -78,7 +79,7 @@ Important environment variables (updater lambda):
 - `MERGE_HISTORY_WINDOW_SECONDS`
 
 ## Category assignment guardrail (important)
-Map-condition detail pages can contain entries for multiple conditions. Category must be resolved from `entry.conditionName` using the overview map, not from the currently scraped page category.
+The overview page exposes `conditionItems` (name -> type) and `liveEntries` (condition occurrences). Category must be resolved from `entry.conditionName` using the overview's `conditionItems` map, not assumed from any other source.
 
 This rule is implemented in both:
 - `scripts/generate-schedule-data-from-map-conditions.js`

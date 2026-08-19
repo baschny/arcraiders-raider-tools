@@ -6,441 +6,321 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  gap: $spacing-lg;
 }
 
-.header-row {
+.schedule-top {
   display: flex;
   align-items: flex-start;
-  gap: $spacing-xl;
-  margin-bottom: $spacing-lg;
+  gap: 8px;
 }
 
-.header-left {
-  display: flex;
-  flex-direction: column;
-  gap: $spacing-sm;
+.schedule-time {
+  width: 96px;
   flex-shrink: 0;
-}
+  overflow: hidden;
 
-.current-time-display {
-  flex-shrink: 0;
-  
-  .time {
-    font-size: 32px;
+  .current-time {
+    font-size: 28px;
     font-weight: 700;
     color: $text-primary;
     font-family: $font-heading;
     letter-spacing: 1px;
+    line-height: 1.1;
   }
 
-  .timezone {
-    font-size: $font-md;
+  .current-timezone {
+    font-size: $font-sm;
     color: $text-secondary;
-    margin-top: $spacing-xs;
+    margin-top: 2px;
   }
 }
 
-.date-switcher {
-  display: flex;
-  align-items: center;
-  gap: $spacing-sm;
-  padding: $spacing-xs;
-  border: $border-width-thin solid $border-default;
-  border-radius: $radius-sm;
-  background: $bg-secondary;
-  flex-shrink: 0;
-}
-
-.generated-at {
-  font-size: $font-sm;
-  color: $text-secondary;
-}
-
-.date-switcher-button {
-  width: 30px;
-  height: 30px;
-  border: $border-width-thin solid $border-light;
-  border-radius: $radius-sm;
-  background: $bg-primary;
-  color: $text-primary;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.15s ease;
-
-  &:hover:not(:disabled) {
-    background: $bg-tertiary;
-    border-color: $border-lighter;
-  }
-
-  &:disabled {
-    opacity: 0.45;
-    cursor: not-allowed;
-  }
-}
-
-.selected-date {
-  min-width: 180px;
-  text-align: center;
-  color: $text-primary;
-  font-size: $font-lg;
-  font-weight: 600;
-  font-family: $font-heading;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: $spacing-xs $spacing-sm;
-  border-radius: $radius-sm;
-  transition: all 0.15s ease;
-
-  &:hover:not(:disabled) {
-    background: $bg-tertiary;
-    color: $text-accent;
-  }
-
-  &:disabled {
-    cursor: default;
-  }
-}
-.event-legend {
+.schedule-filters {
   flex: 1;
+  min-width: 0;
+}
+
+// ---- unified filter bar ----
+.filter-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.filter-row {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
 
-  .legend-items {
-    display: flex;
-    flex-wrap: wrap;
-    gap: $spacing-sm;
-    width: 100%;
+.filter-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 30px;
+  padding: 0 10px;
+  border-radius: 6px;
+  border: 1px solid $border-light;
+  background: $bg-secondary;
+  color: $text-primary;
+  font-size: $font-md;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  &:hover {
+    background: $bg-tertiary;
   }
 
-  .legend-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 6px 12px;
-    border-radius: $radius-sm;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    border: 1px solid transparent;
-    background: transparent;
-
-    &:hover:not(.legend-unavailable) {
-      background: rgba(255, 255, 255, 0.05);
-      transform: translateY(-2px);
-    }
-
-    &.legend-highlighted,
-    &.legend-pinned {
-      background: rgba(255, 255, 255, 0.08);
-      transform: translateY(-2px);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    }
-
-    &.legend-pinned {
-      background: rgba(255, 255, 255, 0.12);
-    }
-
-    &.legend-unavailable {
-      opacity: 0.45;
-      filter: grayscale(100%);
-    }
-
-    &.legend-unavailable:not(.legend-pinned) {
-      cursor: default;
-    }
+  &.selected {
+    background: $bg-quaternary;
   }
 
-  .legend-icon-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 4px;
-    border-radius: $radius-sm;
-    border: 1.5px solid transparent;
-    transition: all 0.15s ease;
+  &.faded {
+    opacity: 0.4;
   }
 
-  .legend-item.major .legend-icon-wrapper {
-    border-color: rgba(255, 215, 0, 0.4);
-    background: rgba(255, 215, 0, 0.05);
-  }
-
-  .legend-item.minor .legend-icon-wrapper {
-    border-color: rgba(79, 195, 247, 0.4);
-    background: rgba(79, 195, 247, 0.05);
-  }
-
-  .legend-item.major.legend-highlighted .legend-icon-wrapper,
-  .legend-item.major.legend-pinned .legend-icon-wrapper {
-    border-color: rgba(255, 215, 0, 0.8);
-    background: rgba(255, 215, 0, 0.15);
-    box-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
-  }
-
-  .legend-item.minor.legend-highlighted .legend-icon-wrapper,
-  .legend-item.minor.legend-pinned .legend-icon-wrapper {
-    border-color: rgba(79, 195, 247, 0.8);
-    background: rgba(79, 195, 247, 0.15);
-    box-shadow: 0 0 8px rgba(79, 195, 247, 0.3);
-  }
-
-  .legend-icon {
-    width: 24px;
-    height: 24px;
-    object-fit: contain;
+  .filter-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
     flex-shrink: 0;
   }
 
-  .legend-name {
-    font-size: 14px;
+  .filter-label {
+    font-size: $font-md;
     color: $text-primary;
-    font-weight: 500;
     white-space: nowrap;
+  }
+
+  &.region .filter-label {
+    font-weight: 700;
+    letter-spacing: 0.5px;
   }
 }
 
+// ---- tinted icon (mask-based) ----
+.schedule-tinted-icon {
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+// ---- region badge ----
+.schedule-region-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+  border-radius: 3px;
+  border: 1px solid;
+  font-size: $font-xs;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+// ---- schedule grid ----
 .schedule-scroll {
   flex: 1;
   overflow: auto;
+  min-height: 0;
 }
 
 .schedule-grid {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 6px;
   min-width: max-content;
 }
 
-.schedule-header {
+.schedule-header-row {
   display: flex;
-  align-items: center;
   position: sticky;
   top: 0;
   background: $bg-primary;
   z-index: 10;
-  padding: $spacing-sm 0;
-  margin-bottom: $spacing-sm;
+  padding-bottom: $spacing-sm;
+  gap: 8px;
 }
 
-.map-label-header {
-  width: 200px;
+.hour-corner {
+  width: 96px;
   flex-shrink: 0;
-  text-align: center;
-  font-size: $font-md;
-  color: $text-secondary;
-  font-weight: 600;
-  padding: $spacing-xs;
-  position: sticky;
-  left: 0;
-  background: $bg-primary;
-  z-index: 20;
 }
 
-.hours-container {
-  flex: 1;
+.map-col-header {
+  width: 156px;
+  height: 72px;
+  flex-shrink: 0;
   display: flex;
-  min-width: 1200px;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-sm $spacing-xs;
+  border-bottom: 2px solid $border-default;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+  }
+
+  .map-name {
+    position: relative;
+    z-index: 2;
+    font-family: $font-heading;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: $font-md;
+    color: $text-primary;
+    text-align: center;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
+  }
+}
+
+.hour-row {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
 }
 
 .hour-label {
-  flex: 1;
-  text-align: center;
-  font-size: $font-sm;
+  width: 96px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  padding: 4px 2px;
+  font-size: $font-lg;
   color: $text-secondary;
-  font-weight: 500;
-  padding: $spacing-xs;
+  font-weight: 600;
+  position: sticky;
+  left: 0;
+  background: $bg-secondary;
+  border: 1px solid $border-default;
+  border-radius: $radius-sm;
+  z-index: 5;
 
-  &.current-hour {
+  .hour-day {
+    font-size: $font-sm;
+    color: $text-tertiary;
+    line-height: 1;
+  }
+
+  &.now-row {
     color: rgb(34, 197, 94);
     font-weight: 700;
   }
 }
 
-.map-row {
-  display: flex;
-  align-items: stretch;
-  position: relative;
-}
-
-.map-label {
-  width: 200px;
-  height: 90px;
+.map-cell {
+  width: 156px;
   flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: $spacing-sm $spacing-md;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: 40px;
+  gap: 6px;
+  padding: 4px;
+  min-height: 40px;
   background: $bg-secondary;
   border: $border-width-thin solid $border-default;
+
+  &.now-row {
+    background: rgba(34, 197, 94, 0.12);
+    border-color: rgba(34, 197, 94, 0.5);
+  }
+}
+
+.slot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+  padding: 3px 5px;
   border-radius: $radius-sm;
-  font-size: $font-md;
-  font-weight: 600;
-  color: $text-primary;
-  font-family: $font-heading;
-  text-transform: uppercase;
-  position: sticky;
-  left: 0;
-  overflow: hidden;
-  background-size: cover;
-  background-position: center;
-  z-index: 5;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.6);
-    z-index: 1;
-  }
-
-  .map-name-text {
-    position: relative;
-    z-index: 2;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-  }
-
-  &[data-map="dam-battleground"] {
-    background-image: url('/images/maps/dam-battleground.webp');
-  }
-
-  &[data-map="buried-city"] {
-    background-image: url('/images/maps/buried-city.webp');
-  }
-
-  &[data-map="the-spaceport"] {
-    background-image: url('/images/maps/the-spaceport.webp');
-  }
-
-  &[data-map="blue-gate"] {
-    background-image: url('/images/maps/blue-gate.webp');
-  }
-
-  &[data-map="riven-tides"] {
-    background-image: url('/images/maps/riven-tides.webp');
-  }
-
-  &[data-map="stella-montis"] {
-    background-image: url('/images/maps/stella-montis.webp');
-  }
-}
-
-.cells-container {
-  flex: 1;
-  display: flex;
-  position: relative;
-  min-width: 1200px;
-  height: 90px;
-}
-
-.hour-cell {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  
-  &.with-separator::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 1px;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.15);
-    z-index: 2;
-  }
-
-  &.current-hour {
-    outline: 1.5px solid rgba(34, 197, 94, 0.6);
-    outline-offset: -1px;
-    z-index: 3;
-  }
-}
-
-.cell-half {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  background: $bg-secondary;
-  border: $border-width-thin solid $border-default;
-  transition: all 0.15s ease;
+  border: 1px solid $border-default;
+  background: rgba(255, 255, 255, 0.02);
   cursor: pointer;
-  
-  // Divider between major and minor halves
-  &.major-half {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-  }
-  
-  &.minor-half {
-    border-top: none; // Remove default top border to avoid double border with major half
-  }
-  
-  &.major-half.has-event {
-    background: rgba(255, 215, 0, 0.05);
-    border-color: rgba(255, 215, 0, 0.4);
-    border-width: 1.5px;
-    border-bottom-width: 1px;
-  }
-  
-  &.minor-half.has-event {
-    background: rgba(79, 195, 247, 0.05);
-    border-color: rgba(79, 195, 247, 0.4);
-    border-width: 1.5px;
-    border-top: 1.5px solid rgba(79, 195, 247, 0.4); // Add colored top border for minor events
-  }
-  
-  &.no-event {
-    opacity: 0.6;
-    cursor: default;
-    
-    &:hover {
-      background: $bg-secondary;
-    }
-  }
-  
-  &.has-event:hover {
+  transition: all 0.15s ease;
+  min-height: 38px;
+
+  &:hover {
     background: $bg-tertiary;
-    transform: scale(1.02);
-    z-index: 3;
   }
-  
-  // Current hour styling
-  &.current-hour {
-    background: rgba(34, 197, 94, 0.15);
-  }
-  
+
   &.highlighted {
-    z-index: 4;
-    
-    &.major-half {
-      background: rgba(255, 215, 0, 0.2);
-      border-color: rgba(255, 215, 0, 0.8);
-      box-shadow: 0 0 12px rgba(255, 215, 0, 0.4);
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(255, 255, 255, 0.45);
+
+    .schedule-tinted-icon {
+      filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.7));
+      transform: scale(1.08);
     }
-    
-    &.minor-half {
-      background: rgba(79, 195, 247, 0.2);
-      border-color: rgba(79, 195, 247, 0.8);
-      box-shadow: 0 0 12px rgba(79, 195, 247, 0.4);
-    }
-    
-    .event-icon {
-      transform: scale(1.15);
-      filter: brightness(1.3);
-    }
+  }
+
+  &.dimmed {
+    opacity: 0.35;
+  }
+
+  .slot-main {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 0;
+  }
+
+  .slot-name {
+    font-size: $font-sm;
+    color: $text-primary;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
-.event-icon {
-  width: 32px;
-  height: 32px;
-  object-fit: contain;
-  transition: all 0.15s ease;
-  pointer-events: none;
+// map background image selectors
+$maps: (
+  'dam-battleground',
+  'buried-city',
+  'the-spaceport',
+  'blue-gate',
+  'riven-tides',
+  'stella-montis'
+);
+@each $map in $maps {
+  .map-col-header[data-map='#{$map}'] {
+    background-image: url('/images/maps/#{$map}.webp');
+  }
+}
+
+// ---- responsive: collapse to icon-only, narrower columns ----
+@media (max-width: 1000px) {
+  .map-col-header {
+    width: 96px;
+    height: 48px;
+  }
+
+  .map-cell {
+    width: 96px;
+  }
+
+  .map-name {
+    font-size: $font-sm;
+    letter-spacing: 0.5px;
+  }
+
+  .slot-name {
+    display: none;
+  }
 }
