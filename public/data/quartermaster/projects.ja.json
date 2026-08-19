@@ -644,140 +644,13 @@
     ]
   },
   {
-    "id": "converging_paths_project",
-    "name": {
-      "value": "交わる道",
-      "originalEn": "Converging Paths"
-    },
-    "startDate": 1778497200,
-    "endDate": 1785225600,
-    "phases": [
-      {
-        "name": {
-          "value": "遊牧民のために安全な通路を確保する",
-          "originalEn": "Secure Safe Passage for the Nomads"
-        },
-        "index": 1,
-        "requirementItemIds": []
-      },
-      {
-        "name": {
-          "value": "物資を集める",
-          "originalEn": "Collect Supplies"
-        },
-        "index": 2,
-        "requirementItemIds": [
-          {
-            "itemId": "train_model",
-            "quantity": 3
-          },
-          {
-            "itemId": "vintage_steering_wheel",
-            "quantity": 2
-          },
-          {
-            "itemId": "air_freshener",
-            "quantity": 2
-          },
-          {
-            "itemId": "arc_thermo_lining",
-            "quantity": 6
-          }
-        ]
-      },
-      {
-        "name": {
-          "value": "遺物を確保する",
-          "originalEn": "Procure Relics"
-        },
-        "index": 3,
-        "requirementItemIds": [
-          {
-            "itemId": "sextant",
-            "quantity": 4
-          },
-          {
-            "itemId": "equatorial_sundial",
-            "quantity": 3
-          },
-          {
-            "itemId": "metal_brackets",
-            "quantity": 5
-          },
-          {
-            "itemId": "arc_performance_steel",
-            "quantity": 7
-          }
-        ]
-      },
-      {
-        "name": {
-          "value": "緊急用の物資貯蔵庫を作る",
-          "originalEn": "Create Emergency Caches"
-        },
-        "index": 4,
-        "requirementItemIds": [
-          {
-            "itemId": "tellurion",
-            "quantity": 3
-          },
-          {
-            "itemId": "elephant_obelisk",
-            "quantity": 1
-          },
-          {
-            "itemId": "light_bulb",
-            "quantity": 6
-          },
-          {
-            "itemId": "arc_coolant",
-            "quantity": 9
-          }
-        ]
-      },
-      {
-        "name": {
-          "value": "「珍品陳列棚」を完了する",
-          "originalEn": "Finish the Cabinet of Curiosities"
-        },
-        "index": 5,
-        "requirementItemIds": [
-          {
-            "itemId": "colorful_shoes_red",
-            "quantity": 6
-          },
-          {
-            "itemId": "colorful_shoes_green",
-            "quantity": 3
-          },
-          {
-            "itemId": "colorful_shoes_silver",
-            "quantity": 2
-          },
-          {
-            "itemId": "arc_synthetic_resin",
-            "quantity": 10
-          }
-        ]
-      },
-      {
-        "name": {
-          "value": "遊牧民の戦術を使ってARCと戦う",
-          "originalEn": "Use Nomad Tactics to Fight ARC"
-        },
-        "index": 6,
-        "requirementItemIds": []
-      }
-    ]
-  },
-  {
     "id": "expedition_project_s5",
     "name": {
       "value": "遠征 (Season 5)",
       "originalEn": "Expedition (Season 5)"
     },
     "startDate": 1783425600,
-    "endDate": 1789974000,
+    "endDate": 1790074800,
     "phases": [
       {
         "name": {
@@ -893,6 +766,110 @@
           "originalEn": "Departure"
         },
         "index": 6,
+        "requirementItemIds": []
+      }
+    ]
+  },
+  {
+    "id": "phantom_targets_project",
+    "name": {
+      "value": "幻の標的",
+      "originalEn": "Phantom Targets"
+    },
+    "startDate": 1785834000,
+    "endDate": 1788771600,
+    "phases": [
+      {
+        "name": {
+          "value": "貨物用エレベーターのアンテナをアップグレードする",
+          "originalEn": "Upgrade Cargo Elevator Antennas"
+        },
+        "index": 1,
+        "requirementItemIds": []
+      },
+      {
+        "name": {
+          "value": "ARCパーツの異常な動作を検査する",
+          "originalEn": "Test ARC Parts for Irregular Behavior"
+        },
+        "index": 2,
+        "requirementItemIds": []
+      },
+      {
+        "name": {
+          "value": "ARCの破壊方法を複数試す",
+          "originalEn": "Test Multiple ARC Destruction Methods"
+        },
+        "index": 3,
+        "requirementItemIds": []
+      }
+    ]
+  },
+  {
+    "id": "phantom_targets_part_2_project",
+    "name": {
+      "value": "幻の標的",
+      "originalEn": "Phantom Targets"
+    },
+    "startDate": 1787043600,
+    "endDate": 1788771600,
+    "phases": [
+      {
+        "name": {
+          "value": "グリッチワスプのパーツを実験用に持ち込む",
+          "originalEn": "Bring In Glitched Wasp Parts for Testing"
+        },
+        "index": 1,
+        "requirementItemIds": [
+          {
+            "itemId": "glitched_arc_power_converter",
+            "quantity": 10
+          },
+          {
+            "itemId": "glitched_arc_transmitter",
+            "quantity": 10
+          },
+          {
+            "itemId": "glitched_arc_phased_array",
+            "quantity": 10
+          },
+          {
+            "itemId": "advanced_arc_powercell",
+            "quantity": 10
+          }
+        ]
+      },
+      {
+        "name": {
+          "value": "グリッチワスプのパーツで最終実験を行う",
+          "originalEn": "Perform Final Tests on Glitched Wasp Parts"
+        },
+        "index": 2,
+        "requirementItemIds": [
+          {
+            "itemId": "glitched_arc_light_ring",
+            "quantity": 10
+          },
+          {
+            "itemId": "glitched_arc_circuitry",
+            "quantity": 10
+          },
+          {
+            "itemId": "arc_thermo_lining",
+            "quantity": 10
+          },
+          {
+            "itemId": "arc_circuitry",
+            "quantity": 10
+          }
+        ]
+      },
+      {
+        "name": {
+          "value": "最後の爆発実験を行う",
+          "originalEn": "Conduct One Final Explosive Test"
+        },
+        "index": 3,
         "requirementItemIds": []
       }
     ]
