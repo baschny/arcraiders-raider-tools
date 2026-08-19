@@ -222,11 +222,22 @@
   "schedule": {
     "loading": "正在加载事件时间表...",
     "noData": "无可用数据",
-    "previousDay": "上一天",
-    "nextDay": "次日",
-    "goToToday": "转到今日",
-    "updated": "已更新",
-    "mapHeader": "地图"
+    "hideUnselected": "Hide unselected",
+    "conditionShortNames": {
+      "beachcombing": "Beachcomb",
+      "bird-city": "Bird City",
+      "close-scrutiny": "Scrutiny",
+      "electromagnetic-storm": "Elec. Storm",
+      "harvester": "Harvester",
+      "hidden-bunker": "Bunker",
+      "hurricane": "Hurricane",
+      "launch-tower-loot": "Launch Loot",
+      "locked-gate": "Locked Gate",
+      "matriarch": "Matriarch",
+      "night-raid": "Night Raid",
+      "prospecting-probes": "Probes",
+      "uncovered-caches": "Caches"
+    }
   },
   "quests": {
     "loading": "正在加载任务数据...",
