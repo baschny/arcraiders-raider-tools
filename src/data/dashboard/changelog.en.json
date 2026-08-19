@@ -2,6 +2,11 @@
   "locale": "en",
   "entries": [
     {
+      "date": "2026-08-19",
+      "apps": ["schedule", "craft-calculator", "loot-helper", "quartermaster"],
+      "title": "Updated for game patch 1.42.0: Map schedule is now split per server region, and added 5 new items plus the Phantom Targets project (parts 1 and 2)."
+    },
+    {
       "date": "2026-07-26",
       "apps": ["craft-calculator", "loot-helper", "quartermaster"],
       "title": "Updated for Season 5: Added Expedition 5 project, refreshed all item data and translations."
