@@ -1,3 +1,4 @@
+import { ChevronDown } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
 import { useLocale } from '../../../shared/context/LocaleContext';
 import { getLocalizedEventName, getLocalizedMapName } from '../utils/localization';
@@ -24,6 +25,8 @@ interface Occurrence {
 interface ScheduleProps {
   data: MapEventsData;
 }
+
+type MobileFilterGroup = 'regions' | 'major' | 'minor' | null;
 
 // Toggle movement: all-ON (empty or full) -> single -> multi -> all-ON.
 function toggleIn(selected: string[], id: string, allIds: string[]): string[] {
@@ -69,6 +72,7 @@ export function Schedule({ data }: ScheduleProps) {
   const [hoveredCondition, setHoveredCondition] = useState<string | null>(null);
   const [hoveredRegion, setHoveredRegion] = useState<string | null>(null);
   const [hideUnselected, setHideUnselected] = useState(false);
+  const [expandedMobileFilter, setExpandedMobileFilter] = useState<MobileFilterGroup>(null);
   const [now, setNow] = useState(() => new Date());
 
   useEffect(() => {
@@ -159,6 +163,11 @@ export function Schedule({ data }: ScheduleProps) {
   const isRegionColored = (regionId: string): boolean =>
     selectedRegions.includes(regionId) || hoveredRegion === regionId;
 
+  const clearTouchHover = () => {
+    setHoveredCondition(null);
+    setHoveredRegion(null);
+  };
+
   const entriesForCell = (mapId: string, hourIndex: number): Occurrence[] =>
     occurrencesByHour[hourIndex]
       .filter((o) => o.mapId === mapId)
@@ -178,6 +187,38 @@ export function Schedule({ data }: ScheduleProps) {
     return translated === key ? getLocalizedEventName(event, locale) : translated;
   };
 
+  const renderRegionItems = () =>
+    REGION_ORDER.map((regionId) => {
+      const region = data.regions[regionId];
+      if (!region) return null;
+      const isActive = selectedRegions.includes(regionId);
+      const colored = isRegionColored(regionId);
+      return (
+        <button
+          key={regionId}
+          type="button"
+          className={`filter-item region ${isActive ? 'selected' : ''}`}
+          onClick={() => persistRegions(toggleIn(selectedRegions, regionId, REGION_ORDER))}
+          onPointerEnter={(event) => {
+            if (event.pointerType === 'mouse') setHoveredRegion(regionId);
+          }}
+          onPointerLeave={(event) => {
+            if (event.pointerType === 'mouse') setHoveredRegion(null);
+          }}
+          onTouchStart={clearTouchHover}
+          title={region.displayName}
+        >
+          <span
+            className="filter-dot"
+            style={{ backgroundColor: colored ? region.color : '#8a8a8a' }}
+          />
+          <span className="filter-label" style={colored ? { color: region.color } : undefined}>
+            {region.displayName}
+          </span>
+        </button>
+      );
+    });
+
   const renderConditionItems = (items: typeof majorEvents) =>
     items.map(({ eventId, event }) => {
       const isActive = activeConditions.includes(eventId);
@@ -188,10 +229,15 @@ export function Schedule({ data }: ScheduleProps) {
           key={eventId}
           type="button"
           className={`filter-item condition ${isActive ? 'selected' : ''} ${faded ? 'faded' : ''}`}
-          onMouseEnter={() =>
-            selectedConditions.length === 0 && available && setHoveredCondition(eventId)
-          }
-          onMouseLeave={() => setHoveredCondition(null)}
+          onPointerEnter={(pointerEvent) => {
+            if (pointerEvent.pointerType === 'mouse' && selectedConditions.length === 0 && available) {
+              setHoveredCondition(eventId);
+            }
+          }}
+          onPointerLeave={(pointerEvent) => {
+            if (pointerEvent.pointerType === 'mouse') setHoveredCondition(null);
+          }}
+          onTouchStart={clearTouchHover}
           onClick={() =>
             available && setSelectedConditions(toggleIn(selectedConditions, eventId, allConditionIds))
           }
@@ -209,45 +255,16 @@ export function Schedule({ data }: ScheduleProps) {
   return (
     <div className="schedule-container">
       <div className="schedule-top">
-        <div className="schedule-time">
+        <div className="schedule-time schedule-time--desktop">
           <div className="current-time">
             {now.toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit', hour12: false })}
           </div>
           <div className="current-timezone">{Intl.DateTimeFormat().resolvedOptions().timeZone}</div>
         </div>
 
-        <div className="schedule-filters">
+        <div className="schedule-filters schedule-filters--desktop">
           <div className="filter-bar">
-            <div className="filter-row">
-              {REGION_ORDER.map((regionId) => {
-                const region = data.regions[regionId];
-                if (!region) return null;
-                const isActive = selectedRegions.includes(regionId);
-                const colored = isRegionColored(regionId);
-                return (
-                  <button
-                    key={regionId}
-                    type="button"
-                    className={`filter-item region ${isActive ? 'selected' : ''}`}
-                    onClick={() => persistRegions(toggleIn(selectedRegions, regionId, REGION_ORDER))}
-                    onMouseEnter={() => setHoveredRegion(regionId)}
-                    onMouseLeave={() => setHoveredRegion(null)}
-                    title={region.displayName}
-                  >
-                    <span
-                      className="filter-dot"
-                      style={{ backgroundColor: colored ? region.color : '#8a8a8a' }}
-                    />
-                    <span
-                      className="filter-label"
-                      style={colored ? { color: region.color } : undefined}
-                    >
-                      {region.displayName}
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
+            <div className="filter-row">{renderRegionItems()}</div>
 
             <div className="filter-row">{renderConditionItems(majorEvents)}</div>
 
@@ -264,12 +281,56 @@ export function Schedule({ data }: ScheduleProps) {
             </div>
           </div>
         </div>
+
+        <div className="schedule-filters schedule-filters--mobile">
+          <div className="mobile-filter-bar">
+            <div className="mobile-filter-tabs">
+              {([
+                ['regions', 'schedule.filters.region'],
+                ['major', 'schedule.filters.major'],
+                ['minor', 'schedule.filters.minor'],
+              ] as const).map(([group, labelKey]) => {
+                const expanded = expandedMobileFilter === group;
+                return (
+                  <button
+                    key={group}
+                    type="button"
+                    className={`mobile-filter-tab ${expanded ? 'expanded' : ''}`}
+                    onClick={() => setExpandedMobileFilter(expanded ? null : group)}
+                    aria-expanded={expanded}
+                  >
+                    <span>{t(labelKey)}</span>
+                    <ChevronDown size={14} />
+                  </button>
+                );
+              })}
+            </div>
+            <button
+              type="button"
+              className={`filter-item hide-unselected mobile-hide-unselected ${hideUnselected ? 'selected' : ''}`}
+              onClick={() => setHideUnselected((prev) => !prev)}
+            >
+              {t('schedule.hideUnselected')}
+            </button>
+          </div>
+          {expandedMobileFilter && (
+            <div className="mobile-filter-panel">
+              {expandedMobileFilter === 'regions' && renderRegionItems()}
+              {expandedMobileFilter === 'major' && renderConditionItems(majorEvents)}
+              {expandedMobileFilter === 'minor' && renderConditionItems(minorEvents)}
+            </div>
+          )}
+        </div>
       </div>
 
       <div className="schedule-scroll">
         <div className="schedule-grid">
           <div className="schedule-header-row">
-            <div className="hour-corner" />
+            <div className="hour-corner">
+              <span className="hour-corner__time">
+                {now.toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit', hour12: false })}
+              </span>
+            </div>
             {mapIds.map((mapId) => (
               <div key={mapId} className="map-col-header" data-map={mapId}>
                 <span className="map-name">{getLocalizedMapName(mapId, data.maps[mapId], locale)}</span>
@@ -318,12 +379,19 @@ export function Schedule({ data }: ScheduleProps) {
                           <div
                             key={`${entry.region}-${entry.eventId}`}
                             className={`slot ${highlighted ? 'highlighted' : ''} ${dimmed ? 'dimmed' : ''}`}
-                            onMouseEnter={() =>
-                              selectedConditions.length === 0 &&
-                              regionMatch &&
-                              setHoveredCondition(entry.eventId)
-                            }
-                            onMouseLeave={() => setHoveredCondition(null)}
+                            onPointerEnter={(pointerEvent) => {
+                              if (
+                                pointerEvent.pointerType === 'mouse' &&
+                                selectedConditions.length === 0 &&
+                                regionMatch
+                              ) {
+                                setHoveredCondition(entry.eventId);
+                              }
+                            }}
+                            onPointerLeave={(pointerEvent) => {
+                              if (pointerEvent.pointerType === 'mouse') setHoveredCondition(null);
+                            }}
+                            onTouchStart={clearTouchHover}
                             onClick={() =>
                               regionMatch &&
                               setSelectedConditions(

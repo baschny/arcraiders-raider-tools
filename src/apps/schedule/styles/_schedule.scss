@@ -50,6 +50,11 @@
   min-width: 0;
 }
 
+.schedule-filters--mobile,
+.hour-corner__time {
+  display: none;
+}
+
 // ---- unified filter bar ----
 .filter-bar {
   display: flex;
@@ -361,6 +366,103 @@ $maps: (
     z-index: 30;
     width: 100%;
     min-width: 0;
+  }
+
+  .schedule-time--desktop,
+  .schedule-filters--desktop {
+    display: none;
+  }
+
+  .schedule-filters--mobile {
+    display: block;
+    width: 100%;
+  }
+
+  .mobile-filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .mobile-filter-tabs {
+    display: flex;
+    flex: 1;
+    align-items: stretch;
+    min-width: 0;
+    border-bottom: 1px solid $border-light;
+  }
+
+  .mobile-filter-tab {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    min-width: 0;
+    height: 34px;
+    padding: 0 6px;
+    border: none;
+    border-bottom: 3px solid transparent;
+    background: transparent;
+    color: $text-primary;
+    font-size: $font-md;
+    font-weight: 600;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+
+    svg {
+      flex: 0 0 auto;
+      transition: transform 0.15s ease;
+    }
+
+    &.expanded {
+      color: $text-accent;
+      border-bottom-color: $text-accent;
+
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  .mobile-hide-unselected {
+    flex: 0 0 auto;
+    height: 30px;
+    padding: 0 8px;
+
+    &.selected {
+      background: $bg-quaternary;
+      border-color: $border-lighter;
+    }
+  }
+
+  .mobile-filter-panel {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 6px;
+  }
+
+  .hour-corner {
+    width: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hour-label {
+    width: 72px;
+    font-size: $font-md;
+  }
+
+  .hour-corner__time {
+    display: block;
+    font-family: $font-heading;
+    font-size: $font-md;
+    font-weight: 700;
+    color: $text-primary;
   }
 
   .schedule-scroll {
