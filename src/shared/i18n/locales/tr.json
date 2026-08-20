@@ -223,6 +223,11 @@
     "loading": "Loading event schedule...",
     "noData": "No data available",
     "hideUnselected": "Hide unselected",
+    "filters": {
+      "region": "Region",
+      "major": "Major",
+      "minor": "Minor"
+    },
     "conditionShortNames": {
       "beachcombing": "Beachcomb",
       "bird-city": "Bird City",
