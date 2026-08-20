@@ -223,6 +223,11 @@
     "loading": "Carregando agenda de eventos...",
     "noData": "Nenhum dado disponível",
     "hideUnselected": "Hide unselected",
+    "filters": {
+      "region": "Region",
+      "major": "Major",
+      "minor": "Minor"
+    },
     "conditionShortNames": {
       "beachcombing": "Beachcomb",
       "bird-city": "Bird City",
