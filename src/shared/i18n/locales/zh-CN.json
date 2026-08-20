@@ -223,6 +223,11 @@
     "loading": "正在加载事件时间表...",
     "noData": "无可用数据",
     "hideUnselected": "Hide unselected",
+    "filters": {
+      "region": "Region",
+      "major": "Major",
+      "minor": "Minor"
+    },
     "conditionShortNames": {
       "beachcombing": "Beachcomb",
       "bird-city": "Bird City",
