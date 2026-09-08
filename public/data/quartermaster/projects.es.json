@@ -771,106 +771,113 @@
     ]
   },
   {
-    "id": "phantom_targets_project",
+    "id": "ascending_the_mountain_project",
     "name": {
-      "value": "Objetivos fantasma",
-      "originalEn": "Phantom Targets"
+      "value": "Subir a la montaña",
+      "originalEn": "Ascending The Mountain"
     },
-    "startDate": 1785834000,
-    "endDate": 1788771600,
+    "startDate": 1788854400,
+    "endDate": 1791331200,
     "phases": [
       {
         "name": {
-          "value": "Mejorar antenas de ascensores de carga",
-          "originalEn": "Upgrade Cargo Elevator Antennas"
-        },
-        "index": 1,
-        "requirementItemIds": []
-      },
-      {
-        "name": {
-          "value": "Prueba piezas ARC en busca de irregularidades",
-          "originalEn": "Test ARC Parts for Irregular Behavior"
-        },
-        "index": 2,
-        "requirementItemIds": []
-      },
-      {
-        "name": {
-          "value": "Prueba varios métodos de destrucción de ARC",
-          "originalEn": "Test Multiple ARC Destruction Methods"
-        },
-        "index": 3,
-        "requirementItemIds": []
-      }
-    ]
-  },
-  {
-    "id": "phantom_targets_part_2_project",
-    "name": {
-      "value": "Objetivos fantasma",
-      "originalEn": "Phantom Targets"
-    },
-    "startDate": 1787043600,
-    "endDate": 1788771600,
-    "phases": [
-      {
-        "name": {
-          "value": "Trae piezas de avispa defectuosa para probarlas",
-          "originalEn": "Bring In Glitched Wasp Parts for Testing"
+          "value": "Investigar la mecánica de gran altitud",
+          "originalEn": "Research High-Altitude Mechanics"
         },
         "index": 1,
         "requirementItemIds": [
           {
-            "itemId": "glitched_arc_power_converter",
+            "itemId": "mechanical_components",
             "quantity": 10
           },
           {
-            "itemId": "glitched_arc_transmitter",
+            "itemId": "pop_trigger",
+            "quantity": 6
+          },
+          {
+            "itemId": "explosive_compound",
             "quantity": 10
           },
           {
-            "itemId": "glitched_arc_phased_array",
-            "quantity": 10
-          },
-          {
-            "itemId": "advanced_arc_powercell",
-            "quantity": 10
+            "itemId": "headphones",
+            "quantity": 2
           }
         ]
       },
       {
         "name": {
-          "value": "Haz las últimas pruebas con las piezas de avispa defectuosa",
-          "originalEn": "Perform Final Tests on Glitched Wasp Parts"
+          "value": "Iniciar las pruebas de ignición",
+          "originalEn": "Begin Ignition Tests"
         },
         "index": 2,
         "requirementItemIds": [
           {
-            "itemId": "glitched_arc_light_ring",
-            "quantity": 10
+            "itemId": "wires",
+            "quantity": 20
           },
           {
-            "itemId": "glitched_arc_circuitry",
-            "quantity": 10
+            "itemId": "voltage_converter",
+            "quantity": 8
           },
           {
-            "itemId": "arc_thermo_lining",
-            "quantity": 10
+            "itemId": "sentinel_firing_core",
+            "quantity": 2
           },
           {
-            "itemId": "arc_circuitry",
-            "quantity": 10
+            "itemId": "rocket_thruster",
+            "quantity": 1
           }
         ]
       },
       {
         "name": {
-          "value": "Haz una última prueba explosiva",
-          "originalEn": "Conduct One Final Explosive Test"
+          "value": "Implementar funciones de aterrizaje",
+          "originalEn": "Implement Landing Capabilities"
         },
         "index": 3,
-        "requirementItemIds": []
+        "requirementItemIds": [
+          {
+            "itemId": "ruined_parachute",
+            "quantity": 2
+          },
+          {
+            "itemId": "crash_mat",
+            "quantity": 10
+          },
+          {
+            "itemId": "shredder_gyro",
+            "quantity": 5
+          },
+          {
+            "itemId": "breathtaking_snow_globe",
+            "quantity": 3
+          }
+        ]
+      },
+      {
+        "name": {
+          "value": "Últimos retoques",
+          "originalEn": "Final Tweaks"
+        },
+        "index": 4,
+        "requirementItemIds": [
+          {
+            "itemId": "sensors",
+            "quantity": 30
+          },
+          {
+            "itemId": "broken_guidance_system",
+            "quantity": 3
+          },
+          {
+            "itemId": "advanced_electrical_components",
+            "quantity": 15
+          },
+          {
+            "itemId": "vaporizer_regulator",
+            "quantity": 3
+          }
+        ]
       }
     ]
   }

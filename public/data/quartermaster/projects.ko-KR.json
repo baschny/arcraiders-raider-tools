@@ -771,106 +771,113 @@
     ]
   },
   {
-    "id": "phantom_targets_project",
+    "id": "ascending_the_mountain_project",
     "name": {
-      "value": "유령 표적",
-      "originalEn": "Phantom Targets"
+      "value": "산을 오르며",
+      "originalEn": "Ascending The Mountain"
     },
-    "startDate": 1785834000,
-    "endDate": 1788771600,
+    "startDate": 1788854400,
+    "endDate": 1791331200,
     "phases": [
       {
         "name": {
-          "value": "화물 승강기 안테나 업그레이드하기",
-          "originalEn": "Upgrade Cargo Elevator Antennas"
-        },
-        "index": 1,
-        "requirementItemIds": []
-      },
-      {
-        "name": {
-          "value": "아크 부품의 이상 행동 테스트하기",
-          "originalEn": "Test ARC Parts for Irregular Behavior"
-        },
-        "index": 2,
-        "requirementItemIds": []
-      },
-      {
-        "name": {
-          "value": "여러 아크 파괴 방법 테스트하기",
-          "originalEn": "Test Multiple ARC Destruction Methods"
-        },
-        "index": 3,
-        "requirementItemIds": []
-      }
-    ]
-  },
-  {
-    "id": "phantom_targets_part_2_project",
-    "name": {
-      "value": "유령 표적",
-      "originalEn": "Phantom Targets"
-    },
-    "startDate": 1787043600,
-    "endDate": 1788771600,
-    "phases": [
-      {
-        "name": {
-          "value": "테스트용 글리치 와스프 부품 가져오기",
-          "originalEn": "Bring In Glitched Wasp Parts for Testing"
+          "value": "고고도 비행 원리 연구하기",
+          "originalEn": "Research High-Altitude Mechanics"
         },
         "index": 1,
         "requirementItemIds": [
           {
-            "itemId": "glitched_arc_power_converter",
+            "itemId": "mechanical_components",
             "quantity": 10
           },
           {
-            "itemId": "glitched_arc_transmitter",
+            "itemId": "pop_trigger",
+            "quantity": 6
+          },
+          {
+            "itemId": "explosive_compound",
             "quantity": 10
           },
           {
-            "itemId": "glitched_arc_phased_array",
-            "quantity": 10
-          },
-          {
-            "itemId": "advanced_arc_powercell",
-            "quantity": 10
+            "itemId": "headphones",
+            "quantity": 2
           }
         ]
       },
       {
         "name": {
-          "value": "글리치 와스프 부품의 최종 테스트 진행하기",
-          "originalEn": "Perform Final Tests on Glitched Wasp Parts"
+          "value": "점화 테스트 시작하기",
+          "originalEn": "Begin Ignition Tests"
         },
         "index": 2,
         "requirementItemIds": [
           {
-            "itemId": "glitched_arc_light_ring",
-            "quantity": 10
+            "itemId": "wires",
+            "quantity": 20
           },
           {
-            "itemId": "glitched_arc_circuitry",
-            "quantity": 10
+            "itemId": "voltage_converter",
+            "quantity": 8
           },
           {
-            "itemId": "arc_thermo_lining",
-            "quantity": 10
+            "itemId": "sentinel_firing_core",
+            "quantity": 2
           },
           {
-            "itemId": "arc_circuitry",
-            "quantity": 10
+            "itemId": "rocket_thruster",
+            "quantity": 1
           }
         ]
       },
       {
         "name": {
-          "value": "마지막 폭발 테스트 진행하기",
-          "originalEn": "Conduct One Final Explosive Test"
+          "value": "착륙 기능 구현하기",
+          "originalEn": "Implement Landing Capabilities"
         },
         "index": 3,
-        "requirementItemIds": []
+        "requirementItemIds": [
+          {
+            "itemId": "ruined_parachute",
+            "quantity": 2
+          },
+          {
+            "itemId": "crash_mat",
+            "quantity": 10
+          },
+          {
+            "itemId": "shredder_gyro",
+            "quantity": 5
+          },
+          {
+            "itemId": "breathtaking_snow_globe",
+            "quantity": 3
+          }
+        ]
+      },
+      {
+        "name": {
+          "value": "최종 조정",
+          "originalEn": "Final Tweaks"
+        },
+        "index": 4,
+        "requirementItemIds": [
+          {
+            "itemId": "sensors",
+            "quantity": 30
+          },
+          {
+            "itemId": "broken_guidance_system",
+            "quantity": 3
+          },
+          {
+            "itemId": "advanced_electrical_components",
+            "quantity": 15
+          },
+          {
+            "itemId": "vaporizer_regulator",
+            "quantity": 3
+          }
+        ]
       }
     ]
   }
