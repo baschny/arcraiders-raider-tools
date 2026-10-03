@@ -185,6 +185,17 @@ function migrateLoadoutSlot(slot: ArctrackerLoadoutSlot): ArctrackerLoadoutSlot 
   };
 }
 
+/**
+ * Migrate a single-slot loadout field (augment/shield/weapon1/weapon2).
+ * ArcTracker returns `null` for empty slots, so preserve null instead of
+ * dereferencing it.
+ */
+function migrateOptionalLoadoutSlot(
+  slot: ArctrackerLoadoutSlot | null | undefined,
+): ArctrackerLoadoutSlot | null {
+  return slot ? migrateLoadoutSlot(slot) : null;
+}
+
 function migrateStashItem(item: ArctrackerStashItem): ArctrackerStashItem {
   return {
     ...item,
@@ -279,10 +290,10 @@ export async function syncLoadout(): Promise<CachedLoadout> {
   }
 
   const migratedLoadout = {
-    augment: migrateLoadoutSlot(loadout.augment),
-    shield: migrateLoadoutSlot(loadout.shield),
-    weapon1: migrateLoadoutSlot(loadout.weapon1),
-    weapon2: migrateLoadoutSlot(loadout.weapon2),
+    augment: migrateOptionalLoadoutSlot(loadout.augment),
+    shield: migrateOptionalLoadoutSlot(loadout.shield),
+    weapon1: migrateOptionalLoadoutSlot(loadout.weapon1),
+    weapon2: migrateOptionalLoadoutSlot(loadout.weapon2),
     backpack: loadout.backpack.map(migrateLoadoutSlot),
     quickItems: loadout.quickItems.map(migrateLoadoutSlot),
     safePocket: loadout.safePocket.map(migrateLoadoutSlot),

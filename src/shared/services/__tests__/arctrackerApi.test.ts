@@ -103,4 +103,49 @@ describe('arctrackerApi', () => {
     });
     expect(cacheSet).not.toHaveBeenCalledWith('loadout', expect.anything());
   });
+
+  it('syncs a loadout that contains null empty slots', async () => {
+    vi.stubGlobal('fetch', vi.fn(async () => new Response(JSON.stringify({
+      data: {
+        loadout: {
+          augment: null,
+          shield: { itemId: 'medium_shield', name: 'Medium Shield', quantity: 1, slotIndex: 1, durabilityPercent: 77 },
+          weapon1: {
+            itemId: 'arpeggio_iv',
+            name: 'Arpeggio IV',
+            quantity: 1,
+            slotIndex: 0,
+            durabilityPercent: 32,
+            attachments: [
+              { itemId: 'extended_barrel_iii', name: 'Extended Barrel III', quantity: 1, slotIndex: 0 },
+            ],
+          },
+          weapon2: null,
+          backpack: [
+            { itemId: 'medium_ammo', name: 'Medium Ammo', quantity: 3, slotIndex: 0 },
+          ],
+          quickItems: [],
+          safePocket: [],
+          augmentedSlots: [],
+          slotCounts: { backpack: 1, quickItems: 0, safePocket: 0, augmentedSlots: 0 },
+        },
+        syncedAt: '2026-10-03T10:57:59.735Z',
+      },
+      meta: { requestId: 'loadout-null-slot' },
+    }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    })));
+
+    const cached = await syncLoadout();
+
+    expect(cached.loadout.weapon2).toBeNull();
+    expect(cached.loadout.augment).toBeNull();
+    expect(cached.loadout.weapon1?.itemId).toBe('arpeggio_iv');
+    expect(cached.loadout.shield?.itemId).toBe('medium_shield');
+    expect(cached.loadout.weapon1?.attachments?.[0].itemId).toBe('extended_barrel_iii');
+    expect(cacheSet).toHaveBeenCalledWith('loadout', expect.objectContaining({
+      syncedAt: '2026-10-03T10:57:59.735Z',
+    }));
+  });
 });

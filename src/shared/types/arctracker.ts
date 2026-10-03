@@ -66,7 +66,7 @@ export interface ArctrackerLoadoutSlot {
   name: string | null;
   quantity: number;
   slotIndex: number;
-  durabilityPercent: number;
+  durabilityPercent?: number;
   attachments?: ArctrackerLoadoutSlot[];
 }
 
@@ -78,10 +78,10 @@ export interface ArctrackerLoadoutSlotCounts {
 }
 
 export interface ArctrackerLoadout {
-  augment: ArctrackerLoadoutSlot;
-  shield: ArctrackerLoadoutSlot;
-  weapon1: ArctrackerLoadoutSlot;
-  weapon2: ArctrackerLoadoutSlot;
+  augment: ArctrackerLoadoutSlot | null;
+  shield: ArctrackerLoadoutSlot | null;
+  weapon1: ArctrackerLoadoutSlot | null;
+  weapon2: ArctrackerLoadoutSlot | null;
   backpack: ArctrackerLoadoutSlot[];
   quickItems: ArctrackerLoadoutSlot[];
   safePocket: ArctrackerLoadoutSlot[];
