@@ -1,0 +1,119 @@
+@use '../../../shared/styles/variables' as *;
+
+// Shared widgets: game icons, condition images, item search.
+.game-icon {
+  display: inline-block;
+  flex-shrink: 0;
+  width: var(--gi-size);
+  height: var(--gi-size);
+  background-color: var(--gi-color, currentColor);
+  mask: var(--gi-url) center / contain no-repeat;
+  -webkit-mask: var(--gi-url) center / contain no-repeat;
+}
+
+.cond-img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  flex-shrink: 0;
+
+  &--normal {
+    display: inline-block;
+    border-radius: 50%;
+    border: 2px solid currentColor;
+    width: 12px;
+    height: 12px;
+    margin: 3px;
+  }
+}
+
+.item-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  background: $bg-primary;
+  border: 1px solid $border-light;
+  border-radius: $radius-md;
+  padding: 0 10px;
+  min-height: 42px;
+
+  &__icon { color: $text-secondary; flex-shrink: 0; }
+
+  input {
+    flex: 1;
+    min-width: 0;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    color: $text-primary;
+    font-size: $font-lg;
+    padding: 10px 0;
+  }
+
+  &__results {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    z-index: 20;
+    list-style: none;
+    background: $bg-secondary;
+    border: 1px solid $border-light;
+    border-radius: $radius-md;
+    box-shadow: $shadow-hover;
+    max-height: 360px;
+    overflow: auto;
+    padding: 4px;
+
+    button {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: $spacing-sm;
+      background: transparent;
+      border: 0;
+      color: $text-primary;
+      padding: 4px 6px;
+      border-radius: $radius-sm;
+      cursor: pointer;
+      text-align: left;
+      font-size: $font-lg;
+
+      &:hover { background: $bg-tertiary; }
+
+      small { margin-left: auto; color: $text-tertiary; font-size: $font-sm; }
+    }
+
+    .item-icon { --item-icon-size: 34px; --item-icon-padding: 2px; flex-shrink: 0; }
+  }
+
+  &--selected {
+    padding: 4px 8px 4px 4px;
+
+    .item-icon { --item-icon-size: 40px; --item-icon-padding: 3px; flex-shrink: 0; }
+  }
+
+  &__name {
+    flex: 1;
+    text-align: left;
+    background: transparent;
+    border: 0;
+    color: $text-primary;
+    font-size: $font-xl;
+    font-weight: 700;
+    cursor: text;
+  }
+
+  &__clear {
+    background: $bg-tertiary;
+    border: 0;
+    color: $text-secondary;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+  }
+}

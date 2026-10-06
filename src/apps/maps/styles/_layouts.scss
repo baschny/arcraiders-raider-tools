@@ -1,0 +1,100 @@
+// Full-bleed map; map and condition switchers float at the top (left-aligned next to the left bar), the left bar
+// floats on the left and collapses to a small button.
+$side: 344px;
+$gap: 10px;
+
+.mx {
+  --mx-side-left: #{$side + $gap * 2};
+
+  &--collapsed { --mx-side-left: 64px; }
+
+  .mx-body { overflow: hidden; }
+
+  .mx-area-map { position: absolute; inset: 0; }
+
+  .mx-area-top {
+    position: absolute;
+    z-index: 3;
+    top: $gap;
+    left: var(--mx-side-left);
+    right: 56px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    pointer-events: none;
+
+    > * { pointer-events: auto; }
+  }
+
+  .mx-mapbar,
+  .mx-conds {
+    max-width: 100%;
+    background: var(--mx-glass);
+    border: 1px solid var(--mx-line);
+    border-radius: 10px;
+    padding: 3px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, .35);
+    backdrop-filter: blur(6px);
+  }
+
+  .mx-mapbar { flex-wrap: wrap; }
+  .mx-conds { flex-wrap: wrap; }
+
+  .mx-area-side {
+    position: absolute;
+    z-index: 3;
+    top: $gap;
+    left: $gap;
+    bottom: $gap;
+    width: $side;
+    display: flex;
+    flex-direction: column;
+    background: var(--mx-glass);
+    border: 1px solid var(--mx-line);
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .45);
+    backdrop-filter: blur(8px);
+    overflow: hidden;
+  }
+
+  .mx-side-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 10px 4px 14px;
+
+    .mx-modes { flex: 1; button { flex: 1; justify-content: center; } }
+  }
+
+  .mx-side-toggle,
+  .mx-side-open {
+    border: 1px solid var(--mx-line);
+    background: var(--mx-panel-2);
+    color: var(--mx-muted);
+    border-radius: 8px;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+
+    &:hover { color: var(--mx-text); border-color: var(--mx-muted); }
+  }
+
+  .mx-side-toggle { width: 32px; height: 32px; flex-shrink: 0; }
+
+  .mx-side-open {
+    position: absolute;
+    z-index: 3;
+    top: $gap;
+    left: $gap;
+    width: 42px;
+    padding: 8px 0;
+    gap: 8px;
+    background: var(--mx-glass);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, .35);
+  }
+
+  .mx-legend { left: var(--mx-side-left); }
+  .mx-layers { top: auto; bottom: 116px; }
+  .mx-maplayers { left: calc(var(--mx-side-left) + (100% - var(--mx-side-left)) / 2); }
+}

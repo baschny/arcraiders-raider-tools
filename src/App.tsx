@@ -49,6 +49,9 @@ const QuestsApp = lazy(() =>
 const LootHelperApp = lazy(() =>
   import('./apps/loot-helper').then((m) => ({ default: m.LootHelperApp }))
 );
+const MapsApp = lazy(() =>
+  import('./apps/maps').then((m) => ({ default: m.MapsApp }))
+);
 const QuartermasterApp = lazy(() =>
   import('./apps/quartermaster').then((m) => ({ default: m.QuartermasterApp }))
 );
@@ -69,6 +72,7 @@ function App() {
                     <Route path="quests" element={<QuestsApp />} />
                     <Route path="loot-helper" element={<LootHelperApp />} />
                     <Route path="quartermaster" element={<QuartermasterApp />} />
+                    <Route path="maps" element={<MapsApp />} />
                     <Route path="profile" element={<Profile />}>
                       <Route index element={<Navigate to="arctracker" replace />} />
                       <Route path="arctracker" element={<ArcTrackerSection />} />

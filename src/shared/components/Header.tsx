@@ -4,6 +4,7 @@ import {
   Calendar,
   ChevronDown,
   ClipboardList,
+  Map as MapIcon,
   Home,
   ListTodo,
   Menu,
@@ -20,6 +21,7 @@ const TOOLS = [
   { path: '/quests', nameKey: 'shared.tools.quests', icon: ListTodo },
   { path: '/loot-helper', nameKey: 'shared.tools.lootHelper', icon: Package },
   { path: '/quartermaster', nameKey: 'shared.tools.quartermaster', icon: ClipboardList },
+  { path: '/maps', nameKey: 'shared.tools.maps', icon: MapIcon },
 ];
 
 const TOOLS_FOR_SWITCHER = TOOLS.filter((tool) => tool.path !== '/');
@@ -43,7 +45,7 @@ export function Header() {
 
   const currentPathname = normalizePathname(location.pathname);
   const currentTool = TOOLS.find((tool) => tool.path === currentPathname) || TOOLS[0];
-  const shouldAutoHideOnScroll = currentPathname !== '/schedule';
+  const shouldAutoHideOnScroll = currentPathname !== '/schedule' && currentPathname !== '/maps';
   const currentLocaleOption =
     localeOptions.find((option) => option.code === locale) ?? localeOptions[0];
 
