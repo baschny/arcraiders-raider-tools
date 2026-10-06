@@ -15,8 +15,9 @@ export function itemShares(index: MapIndex, items: number[]): Record<string, num
   return share;
 }
 
-// Hypothesis: a container only receives items whose Area tag matches its category (Socket.LootContainer.<Cat>.* <->
-// Item.Drop.Category.Area.<Cat>). Plants give only their own item; bird-nest trinkets come from bird nests.
+// Rule (category match): a container only receives items whose Area tag matches its category
+// (Socket.LootContainer.<Cat>.* <-> Item.Drop.Category.Area.<Cat>). Consistent with community finds, not confirmed in
+// the game files. Plants give only their own item; bird-nest trinkets come from bird nests.
 const AREA_ALIASES: Record<string, string> = { Tech: 'Technological' };
 const alnum = (x: string) => x.toLowerCase().replace(/[^a-z]/g, '');
 const sameName = (a: string, b: string) => {
@@ -35,8 +36,7 @@ export function dedicatedContainers(item: LootItem, containerTags: string[]): st
   return [];
 }
 
-function containerFilter(map: MapData, item: LootItem, match: boolean): (containerIdx: number) => boolean {
-  if (!match) return () => true;
+function containerFilter(map: MapData, item: LootItem): (containerIdx: number) => boolean {
   const own = dedicatedContainers(item, map.containers);
   if (own.length) {
     const ok = map.containers.map((c) => own.includes(c));
@@ -64,14 +64,14 @@ export interface MapScore {
   hits: number;
 }
 
-export function scoreMap(index: MapIndex, map: MapData, items: number[], ci: number, match = true, share = itemShares(index, items)): MapScore {
+export function scoreMap(index: MapIndex, map: MapData, items: number[], ci: number, share = itemShares(index, items)): MapScore {
   const hs = map.handlers.map((h) => {
     let v = 0;
     for (const p of h.pools) for (const t of p.tables) if (share[t.t] && t.c.includes(ci)) v += (p.value / p.tables.length) * share[t.t] * (t.x || 1);
     return v;
   });
   const setScore = map.handlerSets.map((set) => set.reduce((a, h) => a + (hs[h] ? hs[h] / map.handlers[h].sockets : 0), 0));
-  const filters = items.map((i) => containerFilter(map, index.items[i], match));
+  const filters = items.map((i) => containerFilter(map, index.items[i]));
   const layers = map.conditions[ci].layers;
   const sockets = new Float64Array(map.sockets.length);
   const pois = map.pois.map(() => ({ score: 0, hits: 0, sockets: 0 }));

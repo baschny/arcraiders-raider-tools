@@ -30,7 +30,7 @@ export class MapLoadError extends Error {
 }
 
 /** Any loader failure as a MapLoadError. */
-export const asLoadError = (e: unknown): MapLoadError =>
+const asLoadError = (e: unknown): MapLoadError =>
   e instanceof MapLoadError ? e
     : e instanceof MapSchemaError ? new MapLoadError('schema', `${DATA_BASE}/index.json`, e.message)
       : new MapLoadError('network', DATA_BASE, e instanceof Error ? e.message : String(e));

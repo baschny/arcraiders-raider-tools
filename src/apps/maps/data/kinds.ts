@@ -143,7 +143,6 @@ export const KIND = new Map(KINDS.map((x) => [x.key, x]));
 export const CATEGORY = new Map(CATEGORIES.map((x) => [x.key, x]));
 for (const kind of KINDS) if (!CATEGORY.has(kind.cat)) throw new Error(`kind ${kind.key}: unknown category ${kind.cat}`);
 export const kindsOf = (cat: string) => KINDS.filter((x) => x.cat === cat);
-export const isSpawned = (kind: SpotKind) => !CATEGORY.get(kind.cat)!.sockets;
 export const isFeature = (kind: SpotKind) => !kind.spawned && !!CATEGORY.get(kind.cat)!.feature;
 
 // ---------------------------------------------------------------- container types
@@ -165,7 +164,7 @@ export const taggedKind = (tag: string) => KINDS.find((x) => x.tag?.test(tag)) ?
  * Filter leaves: the units the user switches on and off. Container kinds split into container types
  * ("t:Industrial.Lockers"); every other kind is one leaf (its key).
  */
-export const typeLeaf = (type: string) => `t:${type}`;
+const typeLeaf = (type: string) => `t:${type}`;
 
 export interface MapClasses {
   /** Kind and leaf of each socket. */

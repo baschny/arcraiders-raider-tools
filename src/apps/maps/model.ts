@@ -11,10 +11,6 @@ import type { LootItem, MapCondition, MapData, MapIndex } from './data/types';
 import { useAllMaps } from './data/useMapData';
 import { condIndex, defaultLayer, englishName, useLootableItems, type MapPatch, type MapState, type Prefs } from './state';
 
-// Containers only take items of their own category (Socket.LootContainer.<Cat> <-> Item.Drop.Category.Area.<Cat>):
-// consistent with community finds, not confirmed in the game files. A constant so it can be switched off to test.
-const MATCH_CATEGORY = true;
-
 export interface Count {
   n: number;
   hit: number;
@@ -92,10 +88,10 @@ export function useExplorer(index: MapIndex, map: MapData, state: MapState, set:
   const enemyP = useMemo(() => map.enemyP?.[ci] ?? [], [map, ci]);
   const loot = state.mode === 'loot';
 
-  const score = useMemo(() => (loot && share ? scoreMap(index, map, lootIdx, ci, MATCH_CATEGORY, share) : null), [loot, share, index, map, lootIdx, ci]);
-  const mapTotals = useMemo(() => (share && allMaps ? new Map(allMaps.map((m) => [m.map, scoreMap(index, m, lootIdx, 0, MATCH_CATEGORY, share).total])) : null),
+  const score = useMemo(() => (loot && share ? scoreMap(index, map, lootIdx, ci, share) : null), [loot, share, index, map, lootIdx, ci]);
+  const mapTotals = useMemo(() => (share && allMaps ? new Map(allMaps.map((m) => [m.map, scoreMap(index, m, lootIdx, 0, share).total])) : null),
     [share, allMaps, index, lootIdx]);
-  const condTotals = useMemo(() => (loot && share ? map.conditions.map((_, i) => scoreMap(index, map, lootIdx, i, MATCH_CATEGORY, share).total) : null),
+  const condTotals = useMemo(() => (loot && share ? map.conditions.map((_, i) => scoreMap(index, map, lootIdx, i, share).total) : null),
     [loot, share, index, map, lootIdx]);
 
   const derived = useMemo(() => {

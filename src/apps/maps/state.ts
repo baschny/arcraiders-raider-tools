@@ -146,13 +146,8 @@ export const condIndex = (map: MapData, key: string) => Math.max(0, map.conditio
 /** Default map layer: the one with most sockets (Stella Montis: the upper floor). */
 export const defaultLayer = (map: MapData) => (map.layers ? map.layers.reduce((b, l, i) => (l.sockets > map.layers![b].sockets ? i : b), 0) : null);
 
-export const MAP_ORDER = ['TheDam_02', 'BuriedCity_01', 'Spaceport_01', 'TheBlueGate_01', 'MountainCompound', 'RivenTides_01'];
+const MAP_ORDER = ['TheDam_02', 'BuriedCity_01', 'Spaceport_01', 'TheBlueGate_01', 'MountainCompound', 'RivenTides_01'];
 export const sortedMaps = (index: MapIndex) => [...index.maps].sort((a, b) => MAP_ORDER.indexOf(a.map) - MAP_ORDER.indexOf(b.map));
-const MAP_THUMBS: Record<string, string> = {
-  BuriedCity_01: 'buried-city', MountainCompound: 'stella-montis', RivenTides_01: 'riven-tides',
-  Spaceport_01: 'the-spaceport', TheBlueGate_01: 'blue-gate', TheDam_02: 'dam-battleground',
-};
-export const mapThumb = (key: string) => `/images/maps/${MAP_THUMBS[key] ?? 'buried-city'}.webp`;
 
 /** English item name (`name.en` holds the name in the site language, see loot-helper loadAllItems). */
 export const englishName = (it: Item) => it.originalNameEn ?? it.name.en;

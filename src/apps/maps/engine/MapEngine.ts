@@ -25,8 +25,8 @@ export interface Heat {
 const MIN_S = 0.5, MAX_S = 40;
 /** Touch: movement (px) below which a touch still counts as a tap; double tap window (ms) and distance (px). */
 const TAP_SLOP = 8, DOUBLE_TAP_MS = 300, DOUBLE_TAP_PX = 30;
-export const RAMP: [number, number, number][] = [[80, 160, 220], [90, 200, 190], [230, 215, 90], [235, 150, 60], [225, 80, 60]];
-export function ramp(t: number, alpha = 1) {
+const RAMP: [number, number, number][] = [[80, 160, 220], [90, 200, 190], [230, 215, 90], [235, 150, 60], [225, 80, 60]];
+function ramp(t: number, alpha = 1) {
   const x = Math.min(0.9999, Math.max(0, t)) * (RAMP.length - 1), i = Math.floor(x), f = x - i;
   const c = RAMP[i].map((v, k) => Math.round(v + (RAMP[i + 1][k] - v) * f));
   return `rgba(${c[0]},${c[1]},${c[2]},${alpha})`;

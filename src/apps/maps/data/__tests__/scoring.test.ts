@@ -2,8 +2,8 @@ import { describe, expect, it } from 'vitest';
 import { dedicatedContainers, fmtScore, itemNote, itemShares, scoreMap } from '../scoring';
 import { CANDLEBERRIES, DEFAULT, DUCK, LEMON, METAL, NIGHT, TINY_INDEX, TINY_MAP, TRINKET, WIRES } from './fixtures/tinyMap';
 
-const score = (items: number[], ci = DEFAULT, match = true) => scoreMap(TINY_INDEX, TINY_MAP, items, ci, match);
-const perSocket = (items: number[], ci = DEFAULT, match = true) => [...score(items, ci, match).sockets];
+const score = (items: number[], ci = DEFAULT) => scoreMap(TINY_INDEX, TINY_MAP, items, ci);
+const perSocket = (items: number[], ci = DEFAULT) => [...score(items, ci).sockets];
 
 describe('itemShares', () => {
   it('splits a table over its entries and an entry over its items', () => {
@@ -64,7 +64,7 @@ describe('scoreMap: pool split', () => {
 });
 
 describe('scoreMap: container categories', () => {
-  it('with matching on, an area-tagged item only goes into containers of its area (and ground loot)', () => {
+  it('an area-tagged item only goes into containers of its area (and ground loot)', () => {
     // METAL (Industrial) is not in the water tank (socket 4) although its set holds the item.
     expect(perSocket([METAL])[4]).toBe(0);
     expect(perSocket([METAL])[7]).toBe(1.875);
@@ -72,12 +72,6 @@ describe('scoreMap: container categories', () => {
 
   it('maps the Tech container category to the Technological area tag', () => {
     expect(perSocket([WIRES])[2]).toBe(1);
-  });
-
-  it('with matching off, every container of a scoring set counts', () => {
-    expect(perSocket([METAL], DEFAULT, false)).toEqual([1.875, 1.875, 0, 0, 1.875, 0, 0, 1.875, 0]);
-    // Sets 1 (H1, 4 · 0.25 · 2 / 4) hold Wires everywhere, plants included.
-    expect(perSocket([WIRES], DEFAULT, false)).toEqual([0.625, 0.625, 1, 1, 1.625, 1, 1, 1.625, 0]);
   });
 
   // DUCK: H0 = 5 · 0.25 (T1) + 5 · 0.25 (T2) = 2.5 / 2 = 1.25; H1 = 4 / 4 = 1; set 2 = 2.25.
@@ -96,7 +90,7 @@ describe('scoreMap: container categories', () => {
 
   it('a socket counts when any of the loot items may go into it', () => {
     // LEMON + DUCK share the plant rule of one and the "anything but nature" rule of the other.
-    const s = scoreMap(TINY_INDEX, TINY_MAP, [LEMON, DUCK], DEFAULT, true);
+    const s = scoreMap(TINY_INDEX, TINY_MAP, [LEMON, DUCK], DEFAULT);
     expect(s.sockets[3]).toBeGreaterThan(0);
     expect(s.sockets[0]).toBeGreaterThan(0);
     expect(s.sockets[6]).toBe(0);
