@@ -115,7 +115,7 @@
   user-select: none;
 
   &:hover,
-  &:focus-visible { color: var(--mx-text); border-color: var(--mx-muted); outline: 0; }
+  &:focus-visible { color: var(--mx-text); border-color: var(--mx-muted); }
 }
 
 // Portal (outside .mx): fixed colors.

@@ -118,7 +118,8 @@ function FilterRow({ tx, depth, sel, open, onOpen, onToggle, icon, label, count,
   return (
     <div className={`mx-row mx-row--d${depth} is-${sel} ${dim ? 'is-dim' : ''} ${strong ? 'mx-row--cat' : ''}`} style={color ? ({ '--kind': color } as CSSProperties) : undefined}>
       {onOpen
-        ? <button className={`mx-row__exp ${open ? 'open' : ''}`} onClick={onOpen} aria-expanded={!!open} title={open ? tx.t('shared.sidebar.collapse') : tx.t('maps.filters.expand')}><ChevronRight size={14} /></button>
+        ? <button className={`mx-row__exp ${open ? 'open' : ''}`} onClick={onOpen} aria-expanded={!!open}
+          aria-label={tx.tm(open ? 'maps.filters.collapseGroup' : 'maps.filters.expandGroup', { group: label })} title={open ? tx.t('shared.sidebar.collapse') : tx.t('maps.filters.expand')}><ChevronRight size={14} /></button>
         : <span className="mx-row__exp" />}
       <button className="mx-row__main" role="checkbox" aria-checked={sel === 'on' ? true : sel === 'partial' ? 'mixed' : false} onClick={onToggle}>
         <span className="mx-check">{sel === 'on' ? <Check size={11} strokeWidth={3} /> : sel === 'partial' ? <Minus size={11} strokeWidth={3} /> : null}</span>

@@ -45,6 +45,16 @@ export function Help({ children, label }: { children: ReactNode; label?: string 
       onPointerLeave={(e) => e.pointerType === 'mouse' && setAt(null)}
       onFocus={(e) => press.current !== 'touch' && show(e.currentTarget)}
       onBlur={() => setAt(null)}
+      onKeyDown={(e) => {
+        if (e.key === 'Escape' && open) {
+          e.stopPropagation();
+          setAt(null);
+        } else if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          if (open) setAt(null);
+          else show(e.currentTarget);
+        }
+      }}
       onClick={(e) => {
         if (press.current === 'touch') {
           if (open) setAt(null);

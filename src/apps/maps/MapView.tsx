@@ -3,6 +3,7 @@ import { useEffect, useImperativeHandle, useMemo, useRef, useState, type CSSProp
 import { Layers, Maximize, Minus, Plus, X } from 'lucide-react';
 import { THREAT, ZONE_COLORS, ZONES, enemyTiming, isFeature, lootZone, tableOptions } from './data/kinds';
 import type { Level } from './data/types';
+import { radioKeys, radioTab } from './radio';
 import { MapEngine, buildHeat, heightCode, type Padding, type Pin, type TipState } from './engine/MapEngine';
 import type { Explorer } from './model';
 import type { Prefs } from './state';
@@ -18,10 +19,11 @@ export function MapView({ ex, handle, fitPadding }: { ex: Explorer; handle?: Ref
   const [engine, setEngine] = useState<MapEngine | null>(null);
   const [tip, setTip] = useState<TipState | null>(null);
   const [layersOpen, setLayersOpen] = useState(false);
+  const layersToggle = useRef<HTMLButtonElement>(null);
   const { map, prefs, score, layer, socketVisible } = ex;
   const heat = useMemo(() => buildHeat(score, map, socketVisible), [score, map, socketVisible]);
   const loot = ex.state.mode === 'loot';
-  const { t, layer: layerName, zone } = useMapText();
+  const { t, tm, layer: layerName, zone } = useMapText();
 
   useEffect(() => {
     const e = new MapEngine(wrap.current!, canvas.current!, setTip);
@@ -44,15 +46,22 @@ export function MapView({ ex, handle, fitPadding }: { ex: Explorer; handle?: Ref
 
   return (
     <div ref={wrap} className="mx-map">
-      <canvas ref={canvas} />
+      {/* The canvas is pointer-only; what it shows is listed (and keyboard operable) in the side bar. */}
+      <canvas ref={canvas} role="img" aria-label={tm('maps.canvas.label', { map: ex.names.of(map) })} />
       {tip && engine && <Tooltip ex={ex} tip={tip} pinned={engine.pinned()} engine={engine} />}
       <div className="mx-zoom">
         <button onClick={() => engine?.zoomCenter(1.6)} title={t('maps.zoom.in')} aria-label={t('maps.zoom.in')}><Plus size={15} /></button>
         <button onClick={() => engine?.zoomCenter(1 / 1.6)} title={t('maps.zoom.out')} aria-label={t('maps.zoom.out')}><Minus size={15} /></button>
         <button onClick={() => engine?.fit()} title={t('maps.zoom.fit')} aria-label={t('maps.zoom.fit')}><Maximize size={14} /></button>
       </div>
-      <div className={`mx-layers ${layersOpen ? 'open' : ''}`}>
-        <button className="mx-layers__toggle" onClick={() => setLayersOpen(!layersOpen)} aria-expanded={layersOpen}><Layers size={14} /> {t('maps.overlays.title')}</button>
+      <div className={`mx-layers ${layersOpen ? 'open' : ''}`} onKeyDown={(e) => {
+        // Esc closes the menu (before it reaches the map, where it unpins).
+        if (e.key !== 'Escape' || !layersOpen) return;
+        e.stopPropagation();
+        setLayersOpen(false);
+        layersToggle.current?.focus();
+      }}>
+        <button ref={layersToggle} className="mx-layers__toggle" onClick={() => setLayersOpen(!layersOpen)} aria-expanded={layersOpen}><Layers size={14} /> {t('maps.overlays.title')}</button>
         {layersOpen && (
           <div className="mx-layers__list">
             {loot && score && layerToggle('heat', t('maps.overlays.heat'))}
@@ -64,9 +73,9 @@ export function MapView({ ex, handle, fitPadding }: { ex: Explorer; handle?: Ref
         )}
       </div>
       {map.layers && (
-        <div className="mx-maplayers" title={t('maps.layers.title')}>
+        <div className="mx-maplayers" title={t('maps.layers.title')} role="radiogroup" aria-label={t('maps.layers.label')} onKeyDown={radioKeys}>
           {map.layers.map((l, i) => (
-            <button key={l.name} className={i === layer ? 'on' : ''} onClick={() => ex.set({ layer: i })}>{layerName(l.name)}</button>
+            <button key={l.name} {...radioTab(i === layer)} className={i === layer ? 'on' : ''} onClick={() => ex.set({ layer: i })}>{layerName(l.name)}</button>
           ))}
         </div>
       )}

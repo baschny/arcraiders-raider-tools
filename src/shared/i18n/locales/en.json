@@ -1061,7 +1061,8 @@
       "normal": "Normal"
     },
     "modes": {
-      "loot": "Loot"
+      "loot": "Loot",
+      "label": "Mode"
     },
     "sidebar": {
       "hide": "Hide the side bar",
@@ -1069,7 +1070,8 @@
       "hideFilters": "Hide filters"
     },
     "mapBar": {
-      "scoreTitle": "{map}: item score {score} (normal conditions)"
+      "scoreTitle": "{map}: item score {score} (normal conditions)",
+      "label": "Map"
     },
     "conditionBar": {
       "normal": "Normal map",
@@ -1078,7 +1080,8 @@
       "majorLive": "Major condition (in the current schedule)",
       "minor": "Minor condition",
       "minorLive": "Minor condition (in the current schedule)",
-      "sameAsNormal": "+ {count} same as {normal}"
+      "sameAsNormal": "+ {count} same as {normal}",
+      "label": "Map condition"
     },
     "help": {
       "label": "Help"
@@ -1127,6 +1130,8 @@
       "showAll": "Show everything",
       "hideAll": "Hide everything",
       "expand": "Expand",
+      "expandGroup": "Expand {group}",
+      "collapseGroup": "Collapse {group}",
       "count": {
         "spotsOne": "{count} spot",
         "spots": "{count} spots",
@@ -1148,6 +1153,9 @@
       "expected": "~{expected} expected per round, of {count} spawners",
       "empty": "No ARC spawners in this condition."
     },
+    "canvas": {
+      "label": "Map of {map}. The spots, areas and enemies drawn here are listed in the side bar."
+    },
     "zoom": {
       "in": "Zoom in",
       "out": "Zoom out",
@@ -1168,7 +1176,8 @@
       "surface": "Surface",
       "underground": "Underground",
       "upperFloor": "Upper floor",
-      "lowerFloor": "Lower floor"
+      "lowerFloor": "Lower floor",
+      "label": "Map layer"
     },
     "legend": {
       "score": "Item score per spot",

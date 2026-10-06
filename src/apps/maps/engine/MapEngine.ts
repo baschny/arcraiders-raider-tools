@@ -89,12 +89,17 @@ export class MapEngine {
   private wrap: HTMLDivElement;
   private canvas: HTMLCanvasElement;
   private onTip: (tip: TipState | null) => void;
+  /** Last tooltip state reported to React. */
+  private tip: TipState | null = null;
   private tiles = new TileLayer(DATA_BASE, () => this.requestDraw(), reportTileError);
 
   constructor(wrap: HTMLDivElement, canvas: HTMLCanvasElement, onTip: (tip: TipState | null) => void) {
     this.wrap = wrap;
     this.canvas = canvas;
-    this.onTip = onTip;
+    this.onTip = (tip) => {
+      this.tip = tip;
+      onTip(tip);
+    };
     const ro = new ResizeObserver(() => this.requestDraw());
     ro.observe(wrap);
     this.cleanup.push(() => ro.disconnect(), onIconsLoaded(() => this.requestDraw()));
@@ -115,11 +120,13 @@ export class MapEngine {
     on(canvas, 'wheel', (e) => this.wheel(e), { passive: false });
     on(canvas, 'pointerleave', (e) => !touch(e) && this.leave());
     on(canvas, 'dblclick', () => this.lastPointer !== 'touch' && this.fit());
+    // Esc unpins, and closes a tooltip card (touch); a hover tooltip stays, with its hint updated.
     on(window, 'keydown', (e) => {
-      if (e.key === 'Escape' && this.pin) {
-        this.pin = null;
-        this.requestDraw();
-      }
+      if (e.key !== 'Escape' || !(this.pin || this.tip?.touch)) return;
+      if (this.tip?.touch) return this.dismissTip();
+      this.pin = null;
+      if (this.tip) this.onTip({ ...this.tip });
+      this.requestDraw();
     });
   }
 
