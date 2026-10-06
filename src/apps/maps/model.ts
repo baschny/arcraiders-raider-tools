@@ -4,7 +4,7 @@ import { useMemo } from 'react';
 import { useLocale } from '../../shared/context/LocaleContext';
 import type { Item, ItemsMap } from '../loot-helper/types/item';
 import { CATEGORIES, enemyColor as enemyTypeColor, KINDS, classify, leavesOf, tableEnemies, tableEnemyProbs, type MapClasses, type SpotKind } from './data/kinds';
-import { itemNote, itemShares, lootItemsFor, scoreMap, type MapScore } from './data/scoring';
+import { itemNote, itemShares, lootItemsFor, scoreMap, type ItemNote, type MapScore } from './data/scoring';
 import { mapNames, type MapNames } from './data/mapStrings';
 import { useMapStrings } from './data/useMapStrings';
 import type { LootItem, MapCondition, MapData, MapIndex } from './data/types';
@@ -44,7 +44,8 @@ export interface Explorer {
   lootIdx: number[];
   lootItem: LootItem | null;
   share: Record<string, number> | null;
-  note: string | null;
+  /** Why the item may not show up: its only containers exist under conditions not offered. */
+  note: ItemNote | null;
   ci: number;
   cond: MapCondition;
   layer: number | null;
@@ -71,9 +72,11 @@ export interface Explorer {
 }
 
 export function useExplorer(index: MapIndex, map: MapData, state: MapState, set: Explorer['set'], prefs: Prefs, setPrefs: Explorer['setPrefs'], items: ItemsMap | null): Explorer {
-  const { locale } = useLocale();
+  const { locale, t } = useLocale();
   const strings = useMapStrings(locale);
-  const names = useMemo(() => mapNames(index, strings), [index, strings]);
+  // The Normal condition has no game string.
+  const normal = t('maps.conditions.normal');
+  const names = useMemo(() => mapNames(index, strings, { Normal: normal }), [index, strings, normal]);
   const areaLabels = useMemo(() => map.areas.map(names.of), [map, names]);
   const lootable = useLootableItems(index, items);
   const item = state.item ? items?.[state.item] ?? null : null;
@@ -165,6 +168,6 @@ export function useExplorer(index: MapIndex, map: MapData, state: MapState, set:
     return { onLayer, counts, shown, socketVisible, spawnerKind, enemyRows, enemyColor, enemyMatch, enemyVisible };
   }, [map, layer, cond, score, cls, spawnP, enemyP, state.show, state.enemies, index]);
 
-  const note = lootItem ? itemNote(index, lootItem, names.condition) : null;
+  const note = useMemo(() => (lootItem ? itemNote(index, lootItem) : null), [index, lootItem]);
   return { index, map, state, set, prefs, setPrefs, names, areaLabels, lootable, item, lootIdx, lootItem, share, note, ci, cond, layer, cls, spawnP, enemyP, score, mapTotals, condTotals, ...derived };
 }

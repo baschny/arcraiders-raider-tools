@@ -1,11 +1,11 @@
 // What the map shows in Loot mode: spot categories, kinds and (for containers) container types, each with a game
 // UI icon and a muted color. Ported from embark-api tools/map-features/index.html (SPOT_CATS / SPOT_KINDS).
-// Sockets map to a kind by container tag, spawners and fixed level actors by class.
+// Sockets map to a kind by container tag, spawners and fixed level actors by class. Categories and kinds carry stable
+// keys only; their labels are UI strings (maps.categories.<key>, maps.kinds.<key>, see ../text.ts).
 import type { MapData, MapIndex } from './types';
 
 export interface SpotCategory {
   key: string;
-  label: string;
   icon: string;
   /** Placed by actor spawners per round (contents unknown to the item search). */
   spawned?: boolean;
@@ -18,7 +18,6 @@ export interface SpotCategory {
 export interface SpotKind {
   key: string;
   cat: string;
-  label: string;
   color: string;
   icon: string;
   /** Placed by actor spawners per round inside a feature category (field crates, ...): drawn and counted as spawned. */
@@ -31,113 +30,113 @@ export interface SpotKind {
 }
 
 export const CATEGORIES: SpotCategory[] = [
-  { key: 'Exits', label: 'Exits & spawns', icon: 'extract-hatch', feature: true },
-  { key: 'Containers', label: 'Containers', icon: 'loot-industrial', sockets: true },
-  { key: 'Nature', label: 'Nature', icon: 'loot-nature', sockets: true },
-  { key: 'RaiderSpawns', label: 'Raider containers', icon: 'raider-cache', spawned: true },
-  { key: 'ArcSpawns', label: 'ARC husks & wrecks', icon: 'arc-wreckage', spawned: true },
-  { key: 'Puzzles', label: 'Puzzles', icon: 'puzzle', feature: true },
-  { key: 'Features', label: 'Map features', icon: 'field-station', feature: true },
+  { key: 'Exits', icon: 'extract-hatch', feature: true },
+  { key: 'Containers', icon: 'loot-industrial', sockets: true },
+  { key: 'Nature', icon: 'loot-nature', sockets: true },
+  { key: 'RaiderSpawns', icon: 'raider-cache', spawned: true },
+  { key: 'ArcSpawns', icon: 'arc-wreckage', spawned: true },
+  { key: 'Puzzles', icon: 'puzzle', feature: true },
+  { key: 'Features', icon: 'field-station', feature: true },
 ];
 
-const k = (cat: string, key: string, label: string, color: string, icon: string, extra: Partial<SpotKind> = {}): SpotKind =>
-  ({ key, cat, label, color, icon, ...extra });
+const k = (cat: string, key: string, color: string, icon: string, extra: Partial<SpotKind> = {}): SpotKind =>
+  ({ key, cat, color, icon, ...extra });
 
 export const KINDS: SpotKind[] = [
   // Exits & spawns
-  k('Exits', 'ExtractMetro', 'Metro extraction', '#5cc49c', 'extract-metro', { major: true, rx: /SalvageExtractionPoint_Metro/ }),
-  k('Exits', 'ExtractLift', 'Elevator extraction', '#5cc49c', 'extract-lift', { major: true, rx: /SalvageExtractionPoint_Elevator/ }),
-  k('Exits', 'ExtractFan', 'Fan extraction', '#5cc49c', 'extract-fan', { major: true, rx: /SalvageExtractionPoint_Fan/ }),
-  k('Exits', 'Hatch', 'Raider hatch (key)', '#9bcf6a', 'extract-hatch', { major: true, rx: /SalvageExtractionPoint_Hatch|RaiderHatchMarker/ }),
-  k('Exits', 'StationEntrance', 'Metro station entrance', '#8fc9b4', 'metro-entrance', { rx: /MetroShutdownBarrier|StreetSign_Metro/ }),
-  k('Exits', 'PlayerStart', 'Player spawn', '#d9d4c7', 'player', { rx: /^PioneerPlayerStart$/ }),
+  k('Exits', 'ExtractMetro', '#5cc49c', 'extract-metro', { major: true, rx: /SalvageExtractionPoint_Metro/ }),
+  k('Exits', 'ExtractLift', '#5cc49c', 'extract-lift', { major: true, rx: /SalvageExtractionPoint_Elevator/ }),
+  k('Exits', 'ExtractFan', '#5cc49c', 'extract-fan', { major: true, rx: /SalvageExtractionPoint_Fan/ }),
+  k('Exits', 'Hatch', '#9bcf6a', 'extract-hatch', { major: true, rx: /SalvageExtractionPoint_Hatch|RaiderHatchMarker/ }),
+  k('Exits', 'StationEntrance', '#8fc9b4', 'metro-entrance', { rx: /MetroShutdownBarrier|StreetSign_Metro/ }),
+  k('Exits', 'PlayerStart', '#d9d4c7', 'player', { rx: /^PioneerPlayerStart$/ }),
   // Containers: socket container category (Socket.LootContainer.<Cat>.*), split further into container types
-  k('Containers', 'Electrical', 'Electrical', '#d6b54a', 'loot-electrical'),
-  k('Containers', 'Industrial', 'Industrial', '#cf8a52', 'loot-industrial'),
-  k('Containers', 'Mechanical', 'Mechanical', '#a98bc9', 'loot-mechanical'),
-  k('Containers', 'Tech', 'Technological', '#8e97d4', 'loot-tech'),
-  k('Containers', 'Commercial', 'Commercial', '#5aaec4', 'loot-commercial'),
-  k('Containers', 'Residential', 'Residential', '#c98ba8', 'loot-household'),
-  k('Containers', 'Medical', 'Medical', '#cf6b63', 'loot-medical'),
-  k('Containers', 'Security', 'Security', '#5bb594', 'loot-military'),
-  k('Containers', 'OldWorld', 'Old World', '#b89a74', 'loot-educational'),
-  k('Containers', 'Exodus', 'Exodus', '#78bdb5', 'loot-exodus'),
-  k('Containers', 'ARC', 'ARC', '#c27cb3', 'loot-arc'),
-  k('Containers', 'Raider', 'Raider', '#d1a04c', 'loot-raider'),
-  k('Containers', 'Generic', 'Generic', '#a3a3a3', 'loot-household'),
-  k('Containers', 'OtherFixed', 'Other', '#8f8f8f', 'loot-household'),
+  k('Containers', 'Electrical', '#d6b54a', 'loot-electrical'),
+  k('Containers', 'Industrial', '#cf8a52', 'loot-industrial'),
+  k('Containers', 'Mechanical', '#a98bc9', 'loot-mechanical'),
+  k('Containers', 'Tech', '#8e97d4', 'loot-tech'),
+  k('Containers', 'Commercial', '#5aaec4', 'loot-commercial'),
+  k('Containers', 'Residential', '#c98ba8', 'loot-household'),
+  k('Containers', 'Medical', '#cf6b63', 'loot-medical'),
+  k('Containers', 'Security', '#5bb594', 'loot-military'),
+  k('Containers', 'OldWorld', '#b89a74', 'loot-educational'),
+  k('Containers', 'Exodus', '#78bdb5', 'loot-exodus'),
+  k('Containers', 'ARC', '#c27cb3', 'loot-arc'),
+  k('Containers', 'Raider', '#d1a04c', 'loot-raider'),
+  k('Containers', 'Generic', '#a3a3a3', 'loot-household'),
+  k('Containers', 'OtherFixed', '#8f8f8f', 'loot-household'),
   // Tagged Socket.LootContainer.Nature.WaterTank, but a regular container (not a plant).
-  k('Containers', 'WaterTank', 'Water tank', '#6aa6c7', 'loot-commercial', { tag: /^Nature\.WaterTank/ }),
-  k('Containers', 'Ground', 'Ground loot', '#d9d6cf', 'pin', { small: true }),
+  k('Containers', 'WaterTank', '#6aa6c7', 'loot-commercial', { tag: /^Nature\.WaterTank/ }),
+  k('Containers', 'Ground', '#d9d6cf', 'pin', { small: true }),
   // Nature: a plant only ever gives its own item
-  k('Nature', 'Apricot', 'Apricot', '#d9a05c', 'harvest', { tag: /^Nature\.Apricot/ }),
-  k('Nature', 'Lemon', 'Lemon', '#d9cc5c', 'harvest', { tag: /^Nature\.Lemon/ }),
-  k('Nature', 'Olive', 'Olive', '#9cb35a', 'harvest', { tag: /^Nature\.Olive/ }),
-  k('Nature', 'NatureFruitBasket', 'Fruit basket', '#d58a96', 'harvest', { tag: /^Nature\.FruitBasket/ }),
-  k('Nature', 'Mushroom', 'Mushroom', '#c9ab8a', 'loot-nature', { tag: /^Nature\.Mushroom/ }),
-  k('Nature', 'Agave', 'Agave', '#63b9a3', 'loot-nature', { tag: /^Nature\.Agave/ }),
-  k('Nature', 'Moss', 'Moss', '#6fb36f', 'loot-nature', { tag: /^Nature\.Moss/ }),
-  k('Nature', 'GreatMullein', 'Great mullein', '#d4c898', 'loot-nature', { tag: /^Nature\.GreatMullein/ }),
-  k('Nature', 'Candleberries', 'Candleberries', '#cf6f82', 'harvest', { tag: /^Nature\.Candleberr/ }),
-  k('Nature', 'Resin', 'Resin (trees)', '#c2944a', 'loot-nature', { tag: /^Nature\.Resin/ }),
-  k('Nature', 'BirdNest', 'Bird nest', '#ab8f74', 'loot-nature', { tag: /^Nature\.BirdNest/ }),
-  k('Nature', 'VolcanicRock', 'Volcanic rock', '#c9714f', 'loot-nature', { tag: /^Nature\.VolcanicRock/ }),
-  k('Nature', 'Roots', 'Roots', '#977354', 'loot-nature', { tag: /^Nature\.Roots/ }),
-  k('Nature', 'Fertilizer', 'Fertilizer', '#9c86c9', 'loot-nature', { tag: /^Nature\.Fertilizer/ }),
-  k('Nature', 'SeedVault', 'Seed vault console', '#78bdb5', 'terminal', { tag: /^Nature\.Seedvault/ }),
-  k('Nature', 'Seedbox', 'Seed box', '#d6b54a', 'loot-nature', { tag: /^Nature\.Seedbox/ }),
-  k('Nature', 'NatureMisc', 'Other', '#a3a3a3', 'loot-nature', { tag: /^Nature\./ }),
+  k('Nature', 'Apricot', '#d9a05c', 'harvest', { tag: /^Nature\.Apricot/ }),
+  k('Nature', 'Lemon', '#d9cc5c', 'harvest', { tag: /^Nature\.Lemon/ }),
+  k('Nature', 'Olive', '#9cb35a', 'harvest', { tag: /^Nature\.Olive/ }),
+  k('Nature', 'NatureFruitBasket', '#d58a96', 'harvest', { tag: /^Nature\.FruitBasket/ }),
+  k('Nature', 'Mushroom', '#c9ab8a', 'loot-nature', { tag: /^Nature\.Mushroom/ }),
+  k('Nature', 'Agave', '#63b9a3', 'loot-nature', { tag: /^Nature\.Agave/ }),
+  k('Nature', 'Moss', '#6fb36f', 'loot-nature', { tag: /^Nature\.Moss/ }),
+  k('Nature', 'GreatMullein', '#d4c898', 'loot-nature', { tag: /^Nature\.GreatMullein/ }),
+  k('Nature', 'Candleberries', '#cf6f82', 'harvest', { tag: /^Nature\.Candleberr/ }),
+  k('Nature', 'Resin', '#c2944a', 'loot-nature', { tag: /^Nature\.Resin/ }),
+  k('Nature', 'BirdNest', '#ab8f74', 'loot-nature', { tag: /^Nature\.BirdNest/ }),
+  k('Nature', 'VolcanicRock', '#c9714f', 'loot-nature', { tag: /^Nature\.VolcanicRock/ }),
+  k('Nature', 'Roots', '#977354', 'loot-nature', { tag: /^Nature\.Roots/ }),
+  k('Nature', 'Fertilizer', '#9c86c9', 'loot-nature', { tag: /^Nature\.Fertilizer/ }),
+  k('Nature', 'SeedVault', '#78bdb5', 'terminal', { tag: /^Nature\.Seedvault/ }),
+  k('Nature', 'Seedbox', '#d6b54a', 'loot-nature', { tag: /^Nature\.Seedbox/ }),
+  k('Nature', 'NatureMisc', '#a3a3a3', 'loot-nature', { tag: /^Nature\./ }),
   // Raider containers and caches (spawned)
-  k('RaiderSpawns', 'CacheStandard', 'Raider cache', '#b394d1', 'raider-cache', { major: true, rx: /RaiderCache_WA/ }),
-  k('RaiderSpawns', 'CacheSelfDestruct', 'Raider cache, self-destructing', '#c27cb3', 'raider-cache', { major: true, rx: /RaiderCacheSelfDestruct/ }),
-  k('RaiderSpawns', 'CacheFrozen', 'Raider cache, frozen', '#9fc4d6', 'raider-cache', { major: true, rx: /RaiderCacheSnow/ }),
-  k('RaiderSpawns', 'CacheFirstWave', 'Raider cache, first wave', '#5bb594', 'raider-cache', { major: true, rx: /RaiderCacheFirstWave/ }),
-  k('RaiderSpawns', 'AmmoBox', 'Ammo box', '#d6b54a', 'ammo', { rx: /AmmoBox.*Dynamic$/ }),
-  k('RaiderSpawns', 'AmmoBoxHigh', 'Ammo box (high tier)', '#d99a3e', 'ammo', { rx: /AmmoBox.*HighTier/ }),
-  k('RaiderSpawns', 'WeaponCase', 'Weapon case', '#cf8a52', 'loot-military', { rx: /WeaponCase.*Dynamic$/ }),
-  k('RaiderSpawns', 'WeaponCaseHigh', 'Weapon case (high tier)', '#c96a4a', 'loot-military', { rx: /WeaponCase.*DynamicHigh/ }),
-  k('RaiderSpawns', 'MedicalBag', 'Medical bag', '#cf7a8f', 'loot-medical', { rx: /MedicalBag/ }),
-  k('RaiderSpawns', 'GrenadeTube', 'Grenade tube', '#8fbf6a', 'attack', { rx: /GrenadeContainer/ }),
-  k('RaiderSpawns', 'Backpack', 'Raider backpack', '#5aaec4', 'loot-raider', { rx: /Raider_Backpack/ }),
-  k('RaiderSpawns', 'WeaponsRack', 'Weapons rack', '#8e97d4', 'loot-military', { rx: /WeaponsRack/ }),
-  k('RaiderSpawns', 'FruitBasket', 'Fruit basket (Lush Blooms)', '#d9cc5c', 'harvest', { rx: /FruitBasket_01_Dynamic$/ }),
-  k('RaiderSpawns', 'FruitBasketWinter', 'Fruit basket (winter)', '#d9d6cf', 'harvest', { rx: /FruitBasket.*WinterEvent/ }),
+  k('RaiderSpawns', 'CacheStandard', '#b394d1', 'raider-cache', { major: true, rx: /RaiderCache_WA/ }),
+  k('RaiderSpawns', 'CacheSelfDestruct', '#c27cb3', 'raider-cache', { major: true, rx: /RaiderCacheSelfDestruct/ }),
+  k('RaiderSpawns', 'CacheFrozen', '#9fc4d6', 'raider-cache', { major: true, rx: /RaiderCacheSnow/ }),
+  k('RaiderSpawns', 'CacheFirstWave', '#5bb594', 'raider-cache', { major: true, rx: /RaiderCacheFirstWave/ }),
+  k('RaiderSpawns', 'AmmoBox', '#d6b54a', 'ammo', { rx: /AmmoBox.*Dynamic$/ }),
+  k('RaiderSpawns', 'AmmoBoxHigh', '#d99a3e', 'ammo', { rx: /AmmoBox.*HighTier/ }),
+  k('RaiderSpawns', 'WeaponCase', '#cf8a52', 'loot-military', { rx: /WeaponCase.*Dynamic$/ }),
+  k('RaiderSpawns', 'WeaponCaseHigh', '#c96a4a', 'loot-military', { rx: /WeaponCase.*DynamicHigh/ }),
+  k('RaiderSpawns', 'MedicalBag', '#cf7a8f', 'loot-medical', { rx: /MedicalBag/ }),
+  k('RaiderSpawns', 'GrenadeTube', '#8fbf6a', 'attack', { rx: /GrenadeContainer/ }),
+  k('RaiderSpawns', 'Backpack', '#5aaec4', 'loot-raider', { rx: /Raider_Backpack/ }),
+  k('RaiderSpawns', 'WeaponsRack', '#8e97d4', 'loot-military', { rx: /WeaponsRack/ }),
+  k('RaiderSpawns', 'FruitBasket', '#d9cc5c', 'harvest', { rx: /FruitBasket_01_Dynamic$/ }),
+  k('RaiderSpawns', 'FruitBasketWinter', '#d9d6cf', 'harvest', { rx: /FruitBasket.*WinterEvent/ }),
   // ARC husks & wrecks. Husk sizes = enemy (small: Wasp, medium: Rocketeer); "Cargo ship" = ARC Courier.
-  k('ArcSpawns', 'WaspHusk', 'Wasp husk', '#c27cb3', 'arc-wreckage', { rx: /ARCHusk_Small/ }),
-  k('ArcSpawns', 'WaspHuskStunning', 'Wasp husk, stunning', '#d6a3cb', 'arc-wreckage', { rx: /StunningHuskSmall/ }),
-  k('ArcSpawns', 'RocketeerHusk', 'Rocketeer husk', '#8e97d4', 'arc-wreckage', { rx: /ARCHusk_Medium/ }),
-  k('ArcSpawns', 'RocketeerHuskStunning', 'Rocketeer husk, stunning', '#b4bae0', 'arc-wreckage', { rx: /StunningHuskMedium/ }),
-  k('ArcSpawns', 'DeforesterHusk', 'Deforester husk', '#cf8a52', 'arc-wreckage', { major: true, rx: /DeforesterHusk/ }),
-  k('ArcSpawns', 'Probes', 'Crashed ARC probe', '#5aaec4', 'arc-probe', { major: true, rx: /ProbeCrashed/ }),
-  k('ArcSpawns', 'Couriers', 'ARC Courier', '#78bdb5', 'payload', { major: true, rx: /CargoShip/ }),
+  k('ArcSpawns', 'WaspHusk', '#c27cb3', 'arc-wreckage', { rx: /ARCHusk_Small/ }),
+  k('ArcSpawns', 'WaspHuskStunning', '#d6a3cb', 'arc-wreckage', { rx: /StunningHuskSmall/ }),
+  k('ArcSpawns', 'RocketeerHusk', '#8e97d4', 'arc-wreckage', { rx: /ARCHusk_Medium/ }),
+  k('ArcSpawns', 'RocketeerHuskStunning', '#b4bae0', 'arc-wreckage', { rx: /StunningHuskMedium/ }),
+  k('ArcSpawns', 'DeforesterHusk', '#cf8a52', 'arc-wreckage', { major: true, rx: /DeforesterHusk/ }),
+  k('ArcSpawns', 'Probes', '#5aaec4', 'arc-probe', { major: true, rx: /ProbeCrashed/ }),
+  k('ArcSpawns', 'Couriers', '#78bdb5', 'payload', { major: true, rx: /CargoShip/ }),
   // Puzzles
-  k('Puzzles', 'PowerSocket', 'Battery / fuel cell socket', '#d6b54a', 'generator', { rx: /PowerStation|BatteryCharger|SignalDropzone|SignalMultiDropzone/ }),
-  k('Puzzles', 'FuelCell', 'Fuel cell / battery', '#d99a3e', 'fuel-cell', { rx: /Carry_FuelCell|CarryableBattery|MultiPowerRack/ }),
-  k('Puzzles', 'PuzzleButton', 'Button / switch / console', '#8fbf6a', 'puzzle', { rx: /PuzzleButton|SignalButton|SignalSwitch|PowerGeneratorSwitch|UnlockConsole/ }),
-  k('Puzzles', 'PuzzleRelay', 'Puzzle relay', '#5bb594', 'puzzle', { rx: /PuzzleRelay|SignalRelay/ }),
-  k('Puzzles', 'CardReader', 'Card reader', '#5aaec4', 'terminal', { rx: /CardReader/ }),
-  k('Puzzles', 'TubeTerminal', 'Color terminal / tube station', '#c27cb3', 'terminal', { rx: /TubeRequestTerminal|TubeDeliveryStation/ }),
-  k('Puzzles', 'PuzzleDoor', 'Puzzle door / gate', '#a98bc9', 'bunker', { rx: /RandomizedSequencePuzzleDoor|RootCellar|InteractiveSecurityDoor|InteractiveGate_|EventBunker|LaunchTowerActivity|ElevatorDoor/ }),
-  k('Puzzles', 'HotelKey', 'Hotel key', '#d9cc5c', 'lock', { rx: /HotelKey|HotelPuzzle/ }),
+  k('Puzzles', 'PowerSocket', '#d6b54a', 'generator', { rx: /PowerStation|BatteryCharger|SignalDropzone|SignalMultiDropzone/ }),
+  k('Puzzles', 'FuelCell', '#d99a3e', 'fuel-cell', { rx: /Carry_FuelCell|CarryableBattery|MultiPowerRack/ }),
+  k('Puzzles', 'PuzzleButton', '#8fbf6a', 'puzzle', { rx: /PuzzleButton|SignalButton|SignalSwitch|PowerGeneratorSwitch|UnlockConsole/ }),
+  k('Puzzles', 'PuzzleRelay', '#5bb594', 'puzzle', { rx: /PuzzleRelay|SignalRelay/ }),
+  k('Puzzles', 'CardReader', '#5aaec4', 'terminal', { rx: /CardReader/ }),
+  k('Puzzles', 'TubeTerminal', '#c27cb3', 'terminal', { rx: /TubeRequestTerminal|TubeDeliveryStation/ }),
+  k('Puzzles', 'PuzzleDoor', '#a98bc9', 'bunker', { rx: /RandomizedSequencePuzzleDoor|RootCellar|InteractiveSecurityDoor|InteractiveGate_|EventBunker|LaunchTowerActivity|ElevatorDoor/ }),
+  k('Puzzles', 'HotelKey', '#d9cc5c', 'lock', { rx: /HotelKey|HotelPuzzle/ }),
   // Map features: level actors (export-maps actors[]); classes picked in build-map-features.js.
-  k('Features', 'FieldDepot', 'Field depot', '#d1a04c', 'field-station', { major: true, rx: /ColonySupplyStation/ }),
+  k('Features', 'FieldDepot', '#d1a04c', 'field-station', { major: true, rx: /ColonySupplyStation/ }),
   // Spawned per round: field crates (carried to a field depot), power cores, supply call stations (the supply drop
   // lands next to the station; no fixed drop spots in the level), snow piles.
-  k('Features', 'FieldCrates', 'Field crate', '#d1a04c', 'field-crate', { major: true, spawned: true, rx: /Carryable_Object|ArcFieldCrate/ }),
-  k('Features', 'SupplyStation', 'Supply call station', '#5aaec4', 'supply-station', { major: true, spawned: true, rx: /SupplyCallStation/ }),
-  k('Features', 'PowerCores', 'Harvester power core', '#78bdb5', 'fusion-core', { major: true, spawned: true, rx: /Husk_Small_PowerCore/ }),
-  k('Features', 'Snowpile', 'Snow pile (Cold Snap)', '#d9d6cf', 'frost', { spawned: true, rx: /Snowpile/ }),
-  k('Features', 'Zipline', 'Zipline (activatable)', '#6aa6c7', 'transmitter', { rx: /ActivatableZipline/ }),
-  k('Features', 'Lift', 'Lift', '#8e97d4', 'enter-surface', { rx: /MovablePlatform_(MastLift|Cargo)/ }),
-  k('Features', 'Bridge', 'Movable bridge', '#a98bc9', 'region', { rx: /MovablePlatform_SpillwayBridge/ }),
-  k('Features', 'BridgeSwitch', 'Bridge / breaker switch', '#c98ba8', 'generator', { rx: /PowerSwitch_Breaker/ }),
+  k('Features', 'FieldCrates', '#d1a04c', 'field-crate', { major: true, spawned: true, rx: /Carryable_Object|ArcFieldCrate/ }),
+  k('Features', 'SupplyStation', '#5aaec4', 'supply-station', { major: true, spawned: true, rx: /SupplyCallStation/ }),
+  k('Features', 'PowerCores', '#78bdb5', 'fusion-core', { major: true, spawned: true, rx: /Husk_Small_PowerCore/ }),
+  k('Features', 'Snowpile', '#d9d6cf', 'frost', { spawned: true, rx: /Snowpile/ }),
+  k('Features', 'Zipline', '#6aa6c7', 'transmitter', { rx: /ActivatableZipline/ }),
+  k('Features', 'Lift', '#8e97d4', 'enter-surface', { rx: /MovablePlatform_(MastLift|Cargo)/ }),
+  k('Features', 'Bridge', '#a98bc9', 'region', { rx: /MovablePlatform_SpillwayBridge/ }),
+  k('Features', 'BridgeSwitch', '#c98ba8', 'generator', { rx: /PowerSwitch_Breaker/ }),
   // Doors: locked rooms (the exploit-prevention volume inside each key room) and locked doors, then ADoorBase start
   // state (export-maps `door`). Barricaded = bStartAsSealed (breach it to open).
-  k('Features', 'LockedRoom', 'Locked room (key)', '#d0605a', 'lock', { major: true, rx: /LockedRoomExploitPreventionArea/ }),
-  k('Features', 'LockedDoor', 'Locked door (key)', '#d98f8a', 'lock', { rx: /^LockedDoor$/ }),
-  k('Features', 'Barricaded', 'Barricaded door (breach)', '#cf6b4f', 'door', { rx: /^Barricaded$/ }),
-  k('Features', 'Door', 'Door / window', '#a68566', 'door', { small: true, rx: /^Door$/ }),
-  k('Features', 'Piano', 'Piano', '#b89a74', 'audio', { small: true, rx: /^BP_Piano$/ }),
+  k('Features', 'LockedRoom', '#d0605a', 'lock', { major: true, rx: /LockedRoomExploitPreventionArea/ }),
+  k('Features', 'LockedDoor', '#d98f8a', 'lock', { rx: /^LockedDoor$/ }),
+  k('Features', 'Barricaded', '#cf6b4f', 'door', { rx: /^Barricaded$/ }),
+  k('Features', 'Door', '#a68566', 'door', { small: true, rx: /^Door$/ }),
+  k('Features', 'Piano', '#b89a74', 'audio', { small: true, rx: /^BP_Piano$/ }),
 ];
 
 export const KIND = new Map(KINDS.map((x) => [x.key, x]));
@@ -152,10 +151,15 @@ export const isFeature = (kind: SpotKind) => !kind.spawned && !!CATEGORY.get(kin
 /** Container type of a socket tag: its first two parts ("Industrial.Lockers.Door" -> "Industrial.Lockers"). */
 export const containerType = (tag: string) => tag.split('.').slice(0, 2).join('.');
 const SPLIT_WORDS = /([a-z])([A-Z0-9])|([A-Z])([A-Z][a-z])/g;
-/** "Industrial.ToolboxLarge" -> "Toolbox Large", "Commercial.Shelf03" -> "Shelf 03". */
+/**
+ * Readable raw container type, the fallback for types without a UI label: "Industrial.ToolboxLarge" -> "Toolbox Large",
+ * "Commercial.Shelf03" -> "Shelf 03".
+ */
 export const containerTypeLabel = (type: string) => (type.split('.')[1] ?? type).replace(SPLIT_WORDS, '$1$3 $2$4').replace(/_/g, ' ');
-/** Full socket tag, readable: "Industrial.Lockers.Door" -> "Industrial › Lockers › Door". */
-export const containerTagLabel = (tag: string) => tag.split('.').map((p) => p.replace(SPLIT_WORDS, '$1$3 $2$4')).join(' › ');
+/** A tag part, readable: "ToolboxLarge" -> "Toolbox Large". */
+export const tagPartLabel = (part: string) => part.replace(SPLIT_WORDS, '$1$3 $2$4');
+/** Kind of a container tag that is matched by tag (plants, water tank, ...), else null. */
+export const taggedKind = (tag: string) => KINDS.find((x) => x.tag?.test(tag)) ?? null;
 
 /**
  * Filter leaves: the units the user switches on and off. Container kinds split into container types
@@ -225,12 +229,10 @@ export function classify(map: MapData): MapClasses {
 /** Leaves of a kind on a map (container types, or the kind itself). */
 export const leavesOf = (cls: MapClasses, kind: SpotKind) => (cls.types.has(kind.key) ? cls.types.get(kind.key)!.map(typeLeaf) : [kind.key]);
 
-/** Readable name of a spawned class ("BP_SocketContainer_Raider_AmmoBox_01_Lid_A_Dynamic" -> "Ammo Box"). */
-export function className(raw: string) {
-  const kind = KINDS.find((x) => x.rx?.test(raw));
-  if (kind) return kind.label;
-  return raw.replace(/^BP_(SocketContainer_)?(Raider_)?/, '').replace(/_C\b/g, '').replace(/_/g, ' ');
-}
+/** Kind of a spawned class ("BP_SocketContainer_Raider_AmmoBox_01_Lid_A_Dynamic" -> AmmoBox), else null. */
+export const classKind = (raw: string) => KINDS.find((x) => x.rx?.test(raw)) ?? null;
+/** Readable raw class name, the fallback for classes without a kind ("BP_Foo_Bar_C" -> "Foo Bar"). */
+export const className = (raw: string) => raw.replace(/^BP_(SocketContainer_)?(Raider_)?/, '').replace(/_C\b/g, '').replace(/_/g, ' ');
 
 // ---------------------------------------------------------------- ARC enemies
 
@@ -290,11 +292,14 @@ export function tableEnemyProbs(index: MapIndex, table: string | null): Map<numb
 const groupText = (g: { kinds: [number, number, number][] }, enemyName: (e: number) => string) =>
   g.kinds.map(([e, min, max]) => `${min === max ? (min > 1 ? `${min}× ` : '') : `${min}–${max}× `}${enemyName(e)}`).join(' + ');
 
-/** Weighted group options of a table: ["Bastion + Firefly + 2× Comet", "33%", tier]; `enemyName` names the enemies. */
+/**
+ * Weighted group options of a table: ["Bastion + Firefly + 2× Comet", 0.33, tier]; `enemyName` names the enemies.
+ * A table missing in the build gives one option with `missing` set and the table name as text.
+ */
 export function tableOptions(index: MapIndex, table: string | null, enemyName = (e: number) => index.enemies[e]?.name ?? '?'):
-  { text: string; share: number | null; tier: number | null }[] {
+  { text: string; share: number | null; tier: number | null; missing?: boolean }[] {
   const t = table ? index.enemyTables[table] : undefined;
-  if (!t) return table ? [{ text: `table ${table} (not exported)`, share: null, tier: null }] : [];
+  if (!t) return table ? [{ text: table, share: null, tier: null, missing: true }] : [];
   const lists = t.lists.length ? t.lists : Object.values(t.byDifficulty ?? {});
   return lists.flatMap((list, li) => {
     const total = list.reduce((a, g) => a + (g.w || 0), 0) || 1;
@@ -302,25 +307,35 @@ export function tableOptions(index: MapIndex, table: string | null, enemyName = 
   });
 }
 
-const secs = (v: number) => (v < 0 ? 'never' : v >= 60 ? `${+(v / 60).toFixed(1)} min` : `${v} s`);
-/** Respawn rules from the spawner settings (class defaults + instance overrides). */
-export function enemyTiming(p: Record<string, number | boolean>): string[] {
+/** One respawn rule of an enemy spawner; times in seconds (negative: never), distance in meters. */
+export type TimingRule =
+  | { t: 'noRespawn' }
+  | { t: 'respawn'; secs: number }
+  | { t: 'randomDelay'; min: number; max: number }
+  | { t: 'noDynamic' }
+  | { t: 'airDrop'; secs: number }
+  | { t: 'sneak'; secs: number; indoors: boolean }
+  | { t: 'activates'; meters: number };
+
+/** Respawn rules from the spawner settings (class defaults + instance overrides); ../text.ts words them. */
+export function enemyTiming(p: Record<string, number | boolean>): TimingRule[] {
   const n = (k: string) => (typeof p[k] === 'number' ? (p[k] as number) : null);
-  const lines: string[] = [];
+  const rules: TimingRule[] = [];
   const dynamic = p.bUseDynamicRespawning !== false;
   const after = n('RespawnAfterDestroyed');
-  if (after != null) lines.push(after < 0 ? 'does not respawn after destroyed' : `respawn ${secs(after)} after destroyed`);
-  if (n('MaxRandomRespawnDelay')) lines.push(`+ ${n('MinRandomRespawnDelay') ?? 0}–${n('MaxRandomRespawnDelay')} s random delay`);
-  if (!dynamic) lines.push('no dynamic respawn');
+  if (after != null) rules.push(after < 0 ? { t: 'noRespawn' } : { t: 'respawn', secs: after });
+  const maxDelay = n('MaxRandomRespawnDelay');
+  if (maxDelay) rules.push({ t: 'randomDelay', min: n('MinRandomRespawnDelay') ?? 0, max: maxDelay });
+  if (!dynamic) rules.push({ t: 'noDynamic' });
   else {
     const air = n('AirStrikeRespawnTimeAfterLastDestroyed');
-    if (p.bAllowDynamicAirRespawn !== false && air != null && air < 9000) lines.push(`air drop ${secs(air)} after the group is destroyed`);
+    if (p.bAllowDynamicAirRespawn !== false && air != null && air < 9000) rules.push({ t: 'airDrop', secs: air });
     const sneak = n('SneakRespawnTime');
-    if (p.bAllowDynamicSneakRespawn !== false && sneak != null) lines.push(`out-of-sight respawn after ${secs(sneak)}${p.bRequireIndoors ? ' (indoors)' : ''}`);
+    if (p.bAllowDynamicSneakRespawn !== false && sneak != null) rules.push({ t: 'sneak', secs: sneak, indoors: !!p.bRequireIndoors });
   }
   const dist = n('SpawnDistance');
-  if (dist != null) lines.push(`activates within ${Math.round(dist / 100)} m`);
-  return lines;
+  if (dist != null) rules.push({ t: 'activates', meters: Math.round(dist / 100) });
+  return rules;
 }
 
 // ---------------------------------------------------------------- loot zones, conditions
@@ -328,7 +343,8 @@ export function enemyTiming(p: Record<string, number | boolean>): string[] {
 export const lootZone = (threat: string | null, themes: string[]) =>
   threat === 'High' ? 'abundant' : threat === 'Medium' ? 'dense' : themes.length ? 'sparse' : null;
 export const ZONE_COLORS: Record<string, string> = { abundant: '214,92,78', dense: '214,181,74', sparse: '160,160,160' };
-export const ZONE_LABELS: Record<string, string> = { abundant: 'Abundant loot', dense: 'Dense loot', sparse: 'Sparse loot' };
+/** Loot zones in legend order (labels: maps.zones.<zone>). */
+export const ZONES = ['abundant', 'dense', 'sparse'] as const;
 
 /** Condition image in public/images/events (snake_case of the English name). */
 export const conditionImage = (name: string) => `/images/events/${name.toLowerCase().replace(/[^a-z]+/g, '_')}.png`;

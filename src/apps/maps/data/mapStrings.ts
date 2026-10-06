@@ -34,15 +34,23 @@ export interface MapNames {
   condition: (englishName: string) => string;
 }
 
-export function mapNames(index: MapIndex, strings: MapStrings): MapNames {
+/**
+ * Display names from the game strings. `ui` translates English names that have no game string (the Normal condition)
+ * with UI strings instead.
+ */
+export function mapNames(index: MapIndex, strings: MapStrings, ui: Readonly<Record<string, string>> = {}): MapNames {
   const conditionKeys = new Map((index.conditions ?? []).map((c) => [c.name, c.nameKey]));
+  const english = (name: string) => (Object.hasOwn(ui, name) ? ui[name] : name);
   return {
-    of: (x) => mapString(strings, x.nameKey, x.name),
+    of: (x) => (x.nameKey ? mapString(strings, x.nameKey, x.name) : english(x.name)),
     poi: (p) => mapString(strings, p.titleKey, p.title),
     enemy: (e) => {
       const t = index.enemies[e];
       return t ? mapString(strings, t.nameKey, t.name) : '?';
     },
-    condition: (name) => mapString(strings, conditionKeys.get(name), name),
+    condition: (name) => {
+      const key = conditionKeys.get(name);
+      return key ? mapString(strings, key, name) : english(name);
+    },
   };
 }

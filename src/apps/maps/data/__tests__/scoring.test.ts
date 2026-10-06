@@ -133,9 +133,10 @@ describe('dedicatedContainers', () => {
 
 describe('itemNote', () => {
   it('explains items whose only containers exist under some conditions', () => {
-    expect(itemNote(TINY_INDEX, TINY_INDEX.items[CANDLEBERRIES])).toBe(
-      'Only harvested from Candleberries, which only exist during: Cold Snap, Hurricane (not in the schedule).',
-    );
+    expect(itemNote(TINY_INDEX, TINY_INDEX.items[CANDLEBERRIES])).toEqual({
+      containers: ['Nature.Candleberries'],
+      conditions: [{ name: 'Cold Snap', why: null }, { name: 'Hurricane', why: 'not in the schedule' }],
+    });
   });
 
   it('is null for containers that always exist and for regular items', () => {
@@ -149,5 +150,11 @@ describe('fmtScore', () => {
     expect(fmtScore(123.4)).toBe('123');
     expect(fmtScore(12.34)).toBe('12.3');
     expect(fmtScore(1.234)).toBe('1.23');
+  });
+
+  it('formats with the given formatter', () => {
+    const de = (v: number, o?: Intl.NumberFormatOptions) => new Intl.NumberFormat('de', o).format(v);
+    expect(fmtScore(12.34, de)).toBe('12,3');
+    expect(fmtScore(1234.5, de)).toBe('1.235');
   });
 });

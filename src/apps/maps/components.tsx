@@ -7,6 +7,7 @@ import { ItemIcon } from '../../shared/components/ItemIcon';
 import { conditionImage } from './data/kinds';
 import { iconUrl } from './data/useMapData';
 import { englishName } from './state';
+import { useMapText } from './text';
 
 /** A game UI icon, tinted via CSS mask. */
 export function GameIcon({ icon, color, size = 18, className }: { icon: string; color?: string; size?: number; className?: string }) {
@@ -18,7 +19,8 @@ export function GameIcon({ icon, color, size = 18, className }: { icon: string; 
  * A "(?)" that explains something on hover or focus, or on tap on touch screens (tap again or elsewhere to close).
  * Portal: the floating panels clip their content.
  */
-export function Help({ children, label = 'Help' }: { children: ReactNode; label?: string }) {
+export function Help({ children, label }: { children: ReactNode; label?: string }) {
+  const { t } = useMapText();
   const [at, setAt] = useState<{ x: number; y: number } | null>(null);
   const el = useRef<HTMLSpanElement>(null);
   // Pointer type of the press in progress: touch opens and closes on tap, not on the focus the tap causes.
@@ -37,7 +39,7 @@ export function Help({ children, label = 'Help' }: { children: ReactNode; label?
     return () => document.removeEventListener('pointerdown', outside);
   }, [open]);
   return (
-    <span ref={el} className="mx-help" tabIndex={0} role="button" aria-label={label} aria-expanded={open}
+    <span ref={el} className="mx-help" tabIndex={0} role="button" aria-label={label ?? t('maps.help.label')} aria-expanded={open}
       onPointerDown={(e) => { press.current = e.pointerType; }}
       onPointerEnter={(e) => e.pointerType === 'mouse' && show(e.currentTarget)}
       onPointerLeave={(e) => e.pointerType === 'mouse' && setAt(null)}
@@ -61,22 +63,23 @@ export function ConditionImage({ name, className }: { name: string; className?: 
   return <img className={`cond-img ${className ?? ''}`} src={conditionImage(name)} alt="" onError={(e) => (e.currentTarget.style.visibility = 'hidden')} />;
 }
 
-export function ItemSearch({ items, value, onChange, placeholder = 'Find an item…', compact }: {
+export function ItemSearch({ items, value, onChange, placeholder, compact }: {
   items: Item[]; value: Item | null; onChange: (it: Item | null) => void; placeholder?: string; compact?: boolean;
 }) {
+  const tx = useMapText();
   const [q, setQ] = useState('');
   const [open, setOpen] = useState(false);
   const hits = useMemo(() => {
     const n = q.trim().toLowerCase();
     if (!n) return [];
-    return items.filter((it) => it.name.en.toLowerCase().includes(n) || englishName(it).toLowerCase().includes(n)).slice(0, 12);
-  }, [q, items]);
+    return items.filter((it) => tx.itemName(it).toLowerCase().includes(n) || englishName(it).toLowerCase().includes(n)).slice(0, 12);
+  }, [q, items, tx]);
   if (value && !open) {
     return (
       <div className={`item-search item-search--selected ${compact ? 'item-search--compact' : ''}`}>
-        <ItemIcon itemId={value.id} name={value.name.en} icon={value.imageFilename} rarity={value.rarity} showName={false} />
-        <button className="item-search__name" onClick={() => setOpen(true)}>{value.name.en}</button>
-        <button className="item-search__clear" title="Clear" onClick={() => onChange(null)}><X size={14} /></button>
+        <ItemIcon itemId={value.id} name={tx.itemName(value)} icon={value.imageFilename} rarity={value.rarity} showName={false} />
+        <button className="item-search__name" onClick={() => setOpen(true)}>{tx.itemName(value)}</button>
+        <button className="item-search__clear" title={tx.t('maps.search.clear')} aria-label={tx.t('maps.search.clear')} onClick={() => onChange(null)}><X size={14} /></button>
       </div>
     );
   }
@@ -86,7 +89,8 @@ export function ItemSearch({ items, value, onChange, placeholder = 'Find an item
       <input
         autoFocus={open}
         value={q}
-        placeholder={placeholder}
+        placeholder={placeholder ?? tx.t('maps.search.placeholder')}
+        aria-label={placeholder ?? tx.t('maps.search.placeholder')}
         onChange={(e) => setQ(e.target.value)}
         onBlur={() => setTimeout(() => setOpen(false), 150)}
         onKeyDown={(e) => {
@@ -99,9 +103,9 @@ export function ItemSearch({ items, value, onChange, placeholder = 'Find an item
           {hits.map((it) => (
             <li key={it.id}>
               <button onMouseDown={(e) => e.preventDefault()} onClick={() => { onChange(it); setQ(''); setOpen(false); }}>
-                <ItemIcon itemId={it.id} name={it.name.en} icon={it.imageFilename} rarity={it.rarity} showName={false} />
-                <span>{it.name.en}</span>
-                <small>{it.type}</small>
+                <ItemIcon itemId={it.id} name={tx.itemName(it)} icon={it.imageFilename} rarity={it.rarity} showName={false} />
+                <span>{tx.itemName(it)}</span>
+                <small>{tx.itemType(it)}</small>
               </button>
             </li>
           ))}

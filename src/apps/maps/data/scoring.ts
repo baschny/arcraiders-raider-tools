@@ -107,13 +107,30 @@ export function hasLootItem(index: MapIndex, itemId: string, englishName: string
   return index.items.some((it) => isLootItemOf(it, itemId, englishName));
 }
 
+/** Why an item has a note: its own containers (tags) only exist under these conditions (English name, reason). */
+export interface ItemNote {
+  containers: string[];
+  conditions: { name: string; why: string | null }[];
+}
+
 /** Items that only come from containers of a condition not offered (e.g. Candleberries: Cold Snap bushes). */
-export function itemNote(index: MapIndex, item: LootItem, conditionName: (english: string) => string = (n) => n): string | null {
+export function itemNote(index: MapIndex, item: LootItem): ItemNote | null {
   const all = Object.keys(index.containerConditions);
   const own = dedicatedContainers(item, all);
   if (!own.length || own.some((c) => index.containerConditions[c] === 'always')) return null;
-  const conds = [...new Set(own.flatMap((c) => Object.entries(index.containerConditions[c] as Record<string, string | null>).map(([n, why]) => (why ? `${conditionName(n)} (${why})` : conditionName(n)))))];
-  return `Only harvested from ${own.map((c) => c.split('.').slice(1).join(' ')).join(', ')}, which only exist during: ${conds.join(', ')}.`;
+  const conditions = new Map<string, ItemNote['conditions'][number]>();
+  for (const c of own) {
+    for (const [name, why] of Object.entries(index.containerConditions[c] as Record<string, string | null>)) conditions.set(`${name}|${why}`, { name, why });
+  }
+  return { containers: own, conditions: [...conditions.values()] };
 }
 
-export const fmtScore = (n: number) => (n >= 100 ? String(Math.round(n)) : n >= 10 ? n.toFixed(1) : n.toFixed(2));
+/** Number formatter (LocaleContext formatNumber); English by default. */
+export type NumberFormat = (value: number, options?: Intl.NumberFormatOptions) => string;
+const formatEn: NumberFormat = (value, options) => new Intl.NumberFormat('en', options).format(value);
+
+/** Score with fewer decimals for bigger numbers. */
+export const fmtScore = (n: number, format: NumberFormat = formatEn) => {
+  const digits = n >= 100 ? 0 : n >= 10 ? 1 : 2;
+  return format(n, { minimumFractionDigits: digits, maximumFractionDigits: digits });
+};

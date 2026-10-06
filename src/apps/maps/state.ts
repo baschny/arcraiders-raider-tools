@@ -2,6 +2,7 @@
 import { useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import type { Item, ItemsMap } from '../loot-helper/types/item';
+import { getItemDisplayName } from '../loot-helper/utils/localization';
 import { hasLootItem } from './data/scoring';
 import type { MapData, MapIndex } from './data/types';
 
@@ -153,6 +154,7 @@ const MAP_THUMBS: Record<string, string> = {
 };
 export const mapThumb = (key: string) => `/images/maps/${MAP_THUMBS[key] ?? 'buried-city'}.webp`;
 
+/** English item name (`name.en` holds the name in the site language, see loot-helper loadAllItems). */
 export const englishName = (it: Item) => it.originalNameEn ?? it.name.en;
 
 /** raider-tools items that can be found in static loot (matched by slug, else by English name). */
@@ -161,6 +163,6 @@ export function useLootableItems(index: MapIndex, items: ItemsMap | null): Item[
     if (!items) return [];
     return Object.values(items)
       .filter((it) => hasLootItem(index, it.id, englishName(it)))
-      .sort((a, b) => a.name.en.localeCompare(b.name.en));
+      .sort((a, b) => getItemDisplayName(a).localeCompare(getItemDisplayName(b)));
   }, [index, items]);
 }

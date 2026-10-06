@@ -2,10 +2,12 @@
 // item); tap the head or drag it up to open it to 60 % of the map height, down to close it.
 import { useRef, useState, type PointerEvent, type ReactNode } from 'react';
 import { ChevronUp } from 'lucide-react';
+import { useLocale } from '../../shared/context/LocaleContext';
 
 export function BottomSheet({ open, onOpenChange, head, children }: {
   open: boolean; onOpenChange: (open: boolean) => void; head: ReactNode; children: ReactNode;
 }) {
+  const { t } = useLocale();
   // Height in px while dragging (null: the CSS height of the open or collapsed sheet).
   const [dragH, setDragH] = useState<number | null>(null);
   const drag = useRef<{ id: number; y0: number; h0: number; min: number; max: number; moved: boolean } | null>(null);
@@ -45,7 +47,7 @@ export function BottomSheet({ open, onOpenChange, head, children }: {
         <span className="mx-sheet__grip" aria-hidden />
         <div className="mx-sheet__row">
           {head}
-          <button className="mx-sheet__toggle" aria-expanded={open} aria-label={open ? 'Hide filters' : 'Show filters'}
+          <button className="mx-sheet__toggle" aria-expanded={open} aria-label={open ? t('maps.sidebar.hideFilters') : t('maps.sidebar.showFilters')}
             onClick={() => onOpenChange(!open)}><ChevronUp size={18} /></button>
         </div>
       </div>

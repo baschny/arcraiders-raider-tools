@@ -14,6 +14,7 @@ import type { ItemsMap } from '../loot-helper/types/item';
 import { DATA_BASE, MapLoadError, reloadMapData, useMap, useMapIndex } from './data/useMapData';
 import type { MapData, MapIndex } from './data/types';
 import { useExplorer } from './model';
+import { useMapText } from './text';
 import { MapView, type MapViewHandle } from './MapView';
 import { Sidebar } from './Sidebar';
 import { BottomSheet } from './BottomSheet';
@@ -66,7 +67,7 @@ function LoadError({ error, mapName }: { error: MapLoadError; mapName: string | 
 }
 
 function Explorer({ index, map, state, set, items }: { index: MapIndex; map: MapData; state: MapState; set: (p: MapPatch) => void; items: ItemsMap | null }) {
-  const { t } = useLocale();
+  const { t, itemName } = useMapText();
   const [prefs, setPrefs] = usePrefs();
   const ex = useExplorer(index, map, state, set, prefs, setPrefs, items);
   const mapView = useRef<MapViewHandle>(null);
@@ -98,8 +99,8 @@ function Explorer({ index, map, state, set, items }: { index: MapIndex; map: Map
               <ModeSwitch ex={ex} />
               {item && (
                 <span className="mx-sheet__item">
-                  <ItemIcon itemId={item.id} name={item.name.en} icon={item.imageFilename} rarity={item.rarity} showName={false} />
-                  <span>{item.name.en}</span>
+                  <ItemIcon itemId={item.id} name={itemName(item)} icon={item.imageFilename} rarity={item.rarity} showName={false} />
+                  <span>{itemName(item)}</span>
                 </span>
               )}
             </>
@@ -110,12 +111,12 @@ function Explorer({ index, map, state, set, items }: { index: MapIndex; map: Map
           <div className="mx-area-side">
             <div className="mx-side-head">
               <ModeSwitch ex={ex} />
-              <button className="mx-side-toggle" onClick={() => setPrefs({ side: false })} title="Hide the side bar"><PanelLeftClose size={16} /></button>
+              <button className="mx-side-toggle" onClick={() => setPrefs({ side: false })} title={t('maps.sidebar.hide')} aria-label={t('maps.sidebar.hide')}><PanelLeftClose size={16} /></button>
             </div>
             <Sidebar ex={ex} onFocusPoi={focusPoi} />
           </div>
         ) : (
-          <button className="mx-side-open" onClick={() => setPrefs({ side: true })} title="Show filters">
+          <button className="mx-side-open" onClick={() => setPrefs({ side: true })} title={t('maps.sidebar.showFilters')} aria-label={t('maps.sidebar.showFilters')}>
             <PanelLeftOpen size={18} />
             {state.mode === 'loot' ? <Package size={16} /> : <Crosshair size={16} />}
           </button>

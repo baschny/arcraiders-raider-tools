@@ -54,6 +54,14 @@ describe('mapNames', () => {
     expect(names.condition('Unknown')).toBe('Unknown');
   });
 
+  it('translates names without a game string with the UI names', () => {
+    const ui = mapNames(index, {}, { Normal: 'Normal (de)' });
+    expect(ui.condition('Normal')).toBe('Normal (de)');
+    expect(ui.of({ name: 'Normal' })).toBe('Normal (de)');
+    expect(ui.of({ name: 'Normal', nameKey: 'ST_Location/A' })).toBe('Normal');
+    expect(ui.condition('Night Raid')).toBe('Night Raid');
+  });
+
   it('keeps English names for builds without a condition list', () => {
     const old = mapNames({ ...index, conditions: undefined }, { 'ST_MapCondition/NIGHTRAID': 'Nacht-Raid' });
     expect(old.condition('Night Raid')).toBe('Night Raid');
