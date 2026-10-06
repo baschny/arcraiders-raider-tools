@@ -39,14 +39,17 @@ export function MapsApp() {
   const { map, error: mapError } = useMap(index, index?.maps.length ? preState.map : null);
   const fix = index ? sanitizeState(urlState, index, map, items, DEFAULT_MAP) : null;
   const state = fix ? { ...urlState, ...fix } : urlState;
+  const [shown, setShown] = useState<MapData | null>(null);
+  if (map && map !== shown) setShown(map);
   useEffect(() => {
     if (fix) set(fix);
   });
 
   const error = indexError ?? mapError ?? (index && !index.maps.length ? new MapLoadError('missing', `${DATA_BASE}/index.json`, 'no maps') : null);
   if (error) return <LoadError error={error} mapName={index?.maps.find((m) => m.map === error.map)?.name ?? error.map} />;
-  if (!index || !map) return <LoadingSpinner />;
-  return <Explorer index={index} map={map} state={state} set={set} items={items} />;
+  if (!index || !shown) return <LoadingSpinner />;
+  // While the next map loads, the previous one stays (no spinner flash, keyboard focus stays in the map bar).
+  return <Explorer index={index} map={shown} state={shown === map ? state : { ...state, map: shown.map }} set={set} items={items} />;
 }
 
 /** Load failure with a retry (a page reload when the data format changed: this page is older than the data). */
