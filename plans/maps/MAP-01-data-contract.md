@@ -28,5 +28,5 @@ breaks on renames and localized names. Committed data that changes per game patc
 
 - `node scripts/build-map-features.js` runs and writes the new fields; the count of unmapped items is printed
   and is 0 or each case is explained in the report.
-- raider-tools `npm run sync:map-proto && npm run build && npm run lint && npm test` pass.
+- raider-tools `npm run generate:maps && npm run build && npm run lint && npm test` pass.
 - Searching an item whose localized name differs from English still scores the same as before.

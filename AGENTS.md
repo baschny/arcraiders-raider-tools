@@ -17,6 +17,7 @@ The project is organized as a collection of independent tools located in `src/ap
 - **quests** - Interactive quest tracker with dependency tree
 - **loot-helper** - Crafting chain visualizer for optimal looting
 - **quartermaster** - Specification-driven inventory and loadout manager
+- **maps** - Interactive maps: where to loot an item and where ARC enemies spawn (see `docs/Maps.md`)
 
 Each app is self-contained with its own components, utilities, types, and styles, but shares common infrastructure.
 
@@ -42,7 +43,7 @@ npm run generate:schedule     # Event schedule
 
 `npm run generate:maps` (map page data into `public/data/map-data/`) is not part of `npm run generate`: it reads
 the map features build of embark-api (env `EMBARK_API_DIR`, default `../embark-api`) and is rerun, then committed,
-after a game patch. See the header of `scripts/generate-maps-data.mjs`.
+after a game patch. See `docs/Maps.md` and the header of `scripts/generate-maps-data.mjs`.
 
 **Important**: The upstream data structure may change as it's community-maintained. Keep generation scripts in sync with schema changes.
 
@@ -501,7 +502,7 @@ interface Item {
 When making changes:
 1. Understand which app(s) are affected
 2. Check if changes should be in shared vs app-specific code
-3. Follow existing patterns from the existing apps (5 total)
+3. Follow existing patterns from the existing apps (6 total)
 4. For the **quartermaster** app, strictly follow the specification-first workflow (see section above)
 5. Use SCSS files, not inline styles
 6. Write tests for calculations and algorithms
