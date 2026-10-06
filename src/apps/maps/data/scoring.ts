@@ -93,10 +93,18 @@ export function scoreMap(index: MapIndex, map: MapData, items: number[], ci: num
   return { sockets, pois, total, max, hits };
 }
 
-/** Loot item indexes for an English item name (one name can have several assets). */
-export function lootItemsByName(index: MapIndex, englishName: string): number[] {
-  const n = englishName.trim().toLowerCase();
-  return index.items.map((it, i) => (it.name.toLowerCase() === n ? i : -1)).filter((i) => i >= 0);
+/** Does a loot item stand for the raider-tools item? By slug; loot items without one (no mapping) by English name. */
+const isLootItemOf = (it: LootItem, itemId: string, englishName: string) =>
+  it.slug ? it.slug === itemId : it.name.toLowerCase() === englishName.trim().toLowerCase();
+
+/** Loot item indexes for a raider-tools item (one item can have several assets). */
+export function lootItemsFor(index: MapIndex, itemId: string, englishName: string): number[] {
+  return index.items.map((it, i) => (isLootItemOf(it, itemId, englishName) ? i : -1)).filter((i) => i >= 0);
+}
+
+/** Can the raider-tools item be found in static loot? */
+export function hasLootItem(index: MapIndex, itemId: string, englishName: string): boolean {
+  return index.items.some((it) => isLootItemOf(it, itemId, englishName));
 }
 
 /** Items that only come from containers of a condition not offered (e.g. Candleberries: Cold Snap bushes). */

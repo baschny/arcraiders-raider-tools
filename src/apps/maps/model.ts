@@ -3,7 +3,7 @@
 import { useMemo } from 'react';
 import type { Item, ItemsMap } from '../loot-helper/types/item';
 import { CATEGORIES, enemyColor as enemyTypeColor, KINDS, classify, leavesOf, tableEnemies, tableEnemyProbs, type MapClasses, type SpotKind } from './data/kinds';
-import { itemNote, itemShares, lootItemsByName, scoreMap, type MapScore } from './data/scoring';
+import { itemNote, itemShares, lootItemsFor, scoreMap, type MapScore } from './data/scoring';
 import type { LootItem, MapCondition, MapData, MapIndex } from './data/types';
 import { useAllMaps } from './data/useMapData';
 import { condIndex, defaultLayer, englishName, useLootableItems, type MapPatch, type MapState, type Prefs } from './state';
@@ -66,7 +66,7 @@ export interface Explorer {
 export function useExplorer(index: MapIndex, map: MapData, state: MapState, set: Explorer['set'], prefs: Prefs, setPrefs: Explorer['setPrefs'], items: ItemsMap | null): Explorer {
   const lootable = useLootableItems(index, items);
   const item = state.item ? items?.[state.item] ?? null : null;
-  const lootIdx = useMemo(() => (item ? lootItemsByName(index, englishName(item)) : []), [index, item]);
+  const lootIdx = useMemo(() => (item ? lootItemsFor(index, item.id, englishName(item)) : []), [index, item]);
   const lootItem = lootIdx.length ? index.items[lootIdx[0]] : null;
   const share = useMemo(() => (lootIdx.length ? itemShares(index, lootIdx) : null), [index, lootIdx]);
   const allMaps = useAllMaps(state.mode === 'loot' && share ? index : null);

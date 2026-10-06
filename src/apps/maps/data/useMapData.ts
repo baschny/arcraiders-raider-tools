@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { checkSchemaVersion } from './schema';
 import type { MapData, MapIndex } from './types';
 
 export const DATA_BASE = '/data/map-proto';
@@ -13,8 +14,9 @@ const fetchJson = async <T,>(url: string): Promise<T> => {
   return res.json() as Promise<T>;
 };
 
+/** The map index; rejects with MapSchemaError when its format version is unknown. */
 export function loadIndex(): Promise<MapIndex> {
-  indexPromise ??= fetchJson<MapIndex>(`${DATA_BASE}/index.json`);
+  indexPromise ??= fetchJson<MapIndex>(`${DATA_BASE}/index.json`).then(checkSchemaVersion);
   return indexPromise;
 }
 

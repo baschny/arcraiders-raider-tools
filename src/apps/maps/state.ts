@@ -2,6 +2,7 @@
 import { useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import type { Item, ItemsMap } from '../loot-helper/types/item';
+import { hasLootItem } from './data/scoring';
 import type { MapData, MapIndex } from './data/types';
 
 export type Mode = 'loot' | 'arc';
@@ -111,13 +112,12 @@ export const mapThumb = (key: string) => `/images/maps/${MAP_THUMBS[key] ?? 'bur
 
 export const englishName = (it: Item) => it.originalNameEn ?? it.name.en;
 
-/** raider-tools items that can be found in static loot (matched by English name). */
+/** raider-tools items that can be found in static loot (matched by slug, else by English name). */
 export function useLootableItems(index: MapIndex, items: ItemsMap | null): Item[] {
   return useMemo(() => {
     if (!items) return [];
-    const names = new Set(index.items.map((it) => it.name.toLowerCase()));
     return Object.values(items)
-      .filter((it) => names.has(englishName(it).toLowerCase()))
+      .filter((it) => hasLootItem(index, it.id, englishName(it)))
       .sort((a, b) => a.name.en.localeCompare(b.name.en));
   }, [index, items]);
 }
