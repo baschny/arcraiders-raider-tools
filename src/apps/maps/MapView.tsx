@@ -97,7 +97,7 @@ function Tooltip({ ex, tip, pinned, engine }: { ex: Explorer; tip: TipState; pin
     if (!el) return;
     setPos({ left: Math.max(4, Math.min(x + 14, tip.w - el.offsetWidth - 8)), top: Math.max(4, Math.min(y + 14, tip.h - el.offsetHeight - 8)) });
   }, [x, y, tip.w, tip.h, target]);
-  const { map, index } = ex;
+  const { map, index, names } = ex;
   const world = (u: number, v: number, z?: number) => {
     const [x0, y0, sx, sy] = map.world ?? [0, 0, 0, 0];
     return sx ? `${Math.round(x0 + u * sx)}, ${Math.round(y0 + v * sy)}${z != null ? `, ${z}` : ''}` : '';
@@ -122,7 +122,7 @@ function Tooltip({ ex, tip, pinned, engine }: { ex: Explorer; tip: TipState; pin
     const server = map.handlerSets[s[4]].reduce((n, h) => n + (map.handlers[h]?.serverTables || 0), 0);
     body = [
       ex.score ? `score ${fmtScore(ex.score.sockets[target.i])}` : null,
-      p ? `${p.title}${id ? `  ${id}` : ''}` : null,
+      p ? `${names.poi(p)}${id ? `  ${id}` : ''}` : null,
       world(s[0], s[1], s[2]),
       heightLine(map.levels.sockets[target.i]),
       server ? `+ ${server} server-side loot table${server > 1 ? 's' : ''} (contents not in the files)` : null,
@@ -134,7 +134,7 @@ function Tooltip({ ex, tip, pinned, engine }: { ex: Explorer; tip: TipState; pin
     kindLabel = CATEGORY.get(shown.cat)?.label ?? 'Spawn point';
     title = `${kinds.length > 1 ? 'One of: ' : ''}${kinds.map(([k, sh]) => `${k.label}${kinds.length > 1 ? ` ${Math.round(sh * 100)}%` : ''}`).join(', ')}`;
     keys = ex.cls.spawnerKeys[target.i];
-    const at = feature && map.spawnerPois[target.i] >= 0 ? map.pois[map.spawnerPois[target.i]].title : null;
+    const at = feature && map.spawnerPois[target.i] >= 0 ? names.poi(map.pois[map.spawnerPois[target.i]]) : null;
     const detail = map.spawnerClasses[s[2]].split(' | ').filter((c) => !/^(Barricaded|Door|LockedDoor)$|^Key:/.test(c)).map(className);
     const p = ex.spawnP[target.i], g = groupOf('spawner', target.i);
     body = [
@@ -151,7 +151,7 @@ function Tooltip({ ex, tip, pinned, engine }: { ex: Explorer; tip: TipState; pin
     color = ex.state.enemies.size && en != null && en >= 0 ? ex.enemyColor(en) : THREAT;
     kindLabel = 'ARC spawner';
     title = s[4] ? s[4].replace(/^StaticWorld_/, '').replace(/_/g, ' ') : 'Enemy spawner';
-    options = tableOptions(index, s[4]).slice(0, 8);
+    options = tableOptions(index, s[4], names.enemy).slice(0, 8);
     const g = groupOf('enemy', target.i);
     body = [
       map.enemyClasses[s[3]],
@@ -164,7 +164,7 @@ function Tooltip({ ex, tip, pinned, engine }: { ex: Explorer; tip: TipState; pin
   } else {
     const p = map.pois[target.i], sc = ex.score?.pois[target.i], z = lootZone(p.threat, p.themes);
     kindLabel = 'Area';
-    title = p.title;
+    title = names.poi(p);
     body = [
       p.ids.join(', '),
       sc ? `score ${fmtScore(sc.score)} · ${sc.hits}/${sc.sockets} spots` : null,

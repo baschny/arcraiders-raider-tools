@@ -433,16 +433,17 @@ export class MapEngine {
       ctx.font = '600 12px Urbanist, "Segoe UI", sans-serif';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      for (const a of m.areas) {
-        if (this.view.s < (a.zoom >= 2 ? 1.8 : a.zoom >= 1 ? 1.2 : 0)) continue;
-        if (e.layer != null && (a.layer ?? 0) !== e.layer) continue;
+      m.areas.forEach((a, i) => {
+        if (this.view.s < (a.zoom >= 2 ? 1.8 : a.zoom >= 1 ? 1.2 : 0)) return;
+        if (e.layer != null && (a.layer ?? 0) !== e.layer) return;
         const [x, y] = toScreen(a.uv[0], a.uv[1]);
+        const label = e.areaLabels[i] ?? a.name; // localized by the model
         ctx.lineWidth = 3;
         ctx.strokeStyle = 'rgba(0,0,0,.75)';
-        ctx.strokeText(a.name, x, y);
+        ctx.strokeText(label, x, y);
         ctx.fillStyle = '#f0ebe0';
-        ctx.fillText(a.name, x, y);
-      }
+        ctx.fillText(label, x, y);
+      });
     }
   }
 

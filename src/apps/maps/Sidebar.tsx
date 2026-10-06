@@ -72,7 +72,7 @@ function LootPanel({ ex, onFocusPoi }: { ex: Explorer; onFocusPoi: (i: number) =
       {best.length > 0 && (
         <section className="mx-sec">
           <div className="mx-sec__head">
-            <h3>Best areas · {ex.cond.name}</h3>
+            <h3>Best areas · {ex.names.of(ex.cond)}</h3>
             <Help label="About the score">
               The score is the loot value that can go to the item: each loot handler's pool, split over its tables, entries and
               items, spread over its spots. It compares places; it is not a drop chance. Conditions with the same static loot as
@@ -84,7 +84,7 @@ function LootPanel({ ex, onFocusPoi }: { ex: Explorer; onFocusPoi: (i: number) =
               const z = lootZone(r.p.threat, r.p.themes);
               return (
                 <button key={r.i} onClick={() => onFocusPoi(r.i)}>
-                  <span className="mx-best__top"><b>{r.p.title}</b><em>{fmtScore(r.score)}</em></span>
+                  <span className="mx-best__top"><b>{ex.names.poi(r.p)}</b><em>{fmtScore(r.score)}</em></span>
                   <span className="mx-best__sub">{r.hits}/{r.sockets} spots · {fmtScore(r.score / r.sockets)} per spot{z ? ` · ${ZONE_LABELS[z]}` : ''}</span>
                   <span className="mx-bar"><i style={{ width: `${(r.rel * 100).toFixed(1)}%` }} /></span>
                 </button>
@@ -234,7 +234,7 @@ function ArcPanel({ ex }: { ex: Explorer }) {
   return (
     <section className="mx-sec">
       <div className="mx-sec__head">
-        <h3>ARC enemies · {ex.cond.name}</h3>
+        <h3>ARC enemies · {ex.names.of(ex.cond)}</h3>
         <Help label="About ARC spawners">
           Expected number of spawners that can produce each enemy in this condition. Pick enemies to show only their spawners and
           patrol paths (several at once, each in its color). Filled markers patrol a path. Hover a spawner for its group and respawn
@@ -246,13 +246,13 @@ function ArcPanel({ ex }: { ex: Explorer }) {
       </div>
       <div className={`mx-enemies ${state.enemies.size ? '' : 'all'}`}>
         {enemyRows.map((r) => {
-          const name = index.enemies[r.e]?.name ?? '?';
+          const name = index.enemies[r.e]?.name ?? '?'; // English: icon lookup
           const on = state.enemies.has(r.e);
           return (
             <button key={r.e} className={on ? 'on' : ''} style={{ '--kind': r.color } as CSSProperties} onClick={() => toggle(r.e)} role="checkbox" aria-checked={on}>
               <span className="mx-check">{on && <Check size={11} strokeWidth={3} />}</span>
               <span className="mx-enemies__icon"><GameIcon icon={enemyIcon(name)} size={15} /></span>
-              <span className="mx-enemies__name">{name}</span>
+              <span className="mx-enemies__name">{ex.names.enemy(r.e)}</span>
               <span className="mx-row__n" title={`~${fmtExp(r.expected)} expected per round, of ${r.spots} spawners`}>~{fmtExp(r.expected)}<small>/{r.spots}</small></span>
             </button>
           );

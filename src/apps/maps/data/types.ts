@@ -1,6 +1,8 @@
 // Shapes of the map features build (embark-api scripts/build-map-features.js, docs/Map-Features.md there).
 // Positions are UV coordinates on the map texture (0..1), heights in cm. Index-based references (container, handler
 // set, POI, enemy, ...) point into the arrays of the same file; -1 means "none".
+// Names are English; `nameKey` / `titleKey` is the game string ("<table>/<key>") translated in
+// map-strings.<locale>.json (see mapStrings.ts), missing when the game has no string for the name.
 
 /** Position on the map texture: 0..1 from the left / top edge. */
 export type UV = [u: number, v: number];
@@ -16,6 +18,7 @@ export interface TileSet {
 export interface MapIndexEntry {
   map: string;
   name: string;
+  nameKey?: string;
   difficulty: number | null;
   file: string;
   image: TileSet;
@@ -45,6 +48,7 @@ export interface LootTableEntry {
 export interface EnemyType {
   key: string;
   name: string;
+  nameKey?: string;
   fly: boolean;
 }
 
@@ -94,11 +98,24 @@ export interface MapIndex {
   /** Container tag -> 'always' or the conditions (name -> excluded reason | null) whose data layer holds it. */
   containerConditions: Record<string, 'always' | Record<string, string | null>>;
   quests: Quest[];
+  /** All conditions, offered and excluded (missing in older builds): look up the names used in `also` and item conditions. */
+  conditions?: ConditionInfo[];
+}
+
+/** A map condition of the whole game (MapIndex.conditions). */
+export interface ConditionInfo {
+  key: string;
+  name: string;
+  nameKey?: string;
+  category: 'normal' | 'major' | 'minor';
+  /** Why it is not offered (not in rotation, ...). */
+  excluded?: string;
 }
 
 export interface MapCondition {
   key: string;
   name: string;
+  nameKey?: string;
   category: 'normal' | 'major' | 'minor';
   /** In the live schedule. */
   live: boolean;
@@ -120,6 +137,7 @@ export interface LootHandler {
 
 export interface Poi {
   title: string;
+  titleKey?: string;
   themes: string[];
   threat: string | null;
   ids: string[];
@@ -178,6 +196,7 @@ export interface QuestMarker {
 /** Area label of the in-game map. */
 export interface MapArea {
   name: string;
+  nameKey?: string;
   uv: UV;
   zoom: number;
   /** Map layer (see Level). */
@@ -201,6 +220,7 @@ export interface ActivityGroup {
 export interface MapData {
   map: string;
   name: string;
+  nameKey?: string;
   image: TileSet;
   /** World position and size (cm) of the texture. */
   world: [x: number, y: number, sizeX: number, sizeY: number];

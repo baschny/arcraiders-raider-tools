@@ -108,11 +108,11 @@ export function hasLootItem(index: MapIndex, itemId: string, englishName: string
 }
 
 /** Items that only come from containers of a condition not offered (e.g. Candleberries: Cold Snap bushes). */
-export function itemNote(index: MapIndex, item: LootItem): string | null {
+export function itemNote(index: MapIndex, item: LootItem, conditionName: (english: string) => string = (n) => n): string | null {
   const all = Object.keys(index.containerConditions);
   const own = dedicatedContainers(item, all);
   if (!own.length || own.some((c) => index.containerConditions[c] === 'always')) return null;
-  const conds = [...new Set(own.flatMap((c) => Object.entries(index.containerConditions[c] as Record<string, string | null>).map(([n, why]) => (why ? `${n} (${why})` : n))))];
+  const conds = [...new Set(own.flatMap((c) => Object.entries(index.containerConditions[c] as Record<string, string | null>).map(([n, why]) => (why ? `${conditionName(n)} (${why})` : conditionName(n)))))];
   return `Only harvested from ${own.map((c) => c.split('.').slice(1).join(' ')).join(', ')}, which only exist during: ${conds.join(', ')}.`;
 }
 

@@ -1,9 +1,12 @@
 // Everything derived from the page state for the open map: scores, filter counts, visibility, enemy matching.
 // One object so that the sidebar, the bars and the map agree on what is shown.
 import { useMemo } from 'react';
+import { useLocale } from '../../shared/context/LocaleContext';
 import type { Item, ItemsMap } from '../loot-helper/types/item';
 import { CATEGORIES, enemyColor as enemyTypeColor, KINDS, classify, leavesOf, tableEnemies, tableEnemyProbs, type MapClasses, type SpotKind } from './data/kinds';
 import { itemNote, itemShares, lootItemsFor, scoreMap, type MapScore } from './data/scoring';
+import { mapNames, type MapNames } from './data/mapStrings';
+import { useMapStrings } from './data/useMapStrings';
 import type { LootItem, MapCondition, MapData, MapIndex } from './data/types';
 import { useAllMaps } from './data/useMapData';
 import { condIndex, defaultLayer, englishName, useLootableItems, type MapPatch, type MapState, type Prefs } from './state';
@@ -32,6 +35,10 @@ export interface Explorer {
   set: (p: MapPatch) => void;
   prefs: Prefs;
   setPrefs: (p: Partial<Prefs>) => void;
+  /** Localized names (map, condition, area, enemy) of the site locale; English when untranslated. */
+  names: MapNames;
+  /** Localized label per map area (MapData.areas), for the canvas. */
+  areaLabels: string[];
   lootable: Item[];
   item: Item | null;
   lootIdx: number[];
@@ -64,6 +71,10 @@ export interface Explorer {
 }
 
 export function useExplorer(index: MapIndex, map: MapData, state: MapState, set: Explorer['set'], prefs: Prefs, setPrefs: Explorer['setPrefs'], items: ItemsMap | null): Explorer {
+  const { locale } = useLocale();
+  const strings = useMapStrings(locale);
+  const names = useMemo(() => mapNames(index, strings), [index, strings]);
+  const areaLabels = useMemo(() => map.areas.map(names.of), [map, names]);
   const lootable = useLootableItems(index, items);
   const item = state.item ? items?.[state.item] ?? null : null;
   const lootIdx = useMemo(() => (item ? lootItemsFor(index, item.id, englishName(item)) : []), [index, item]);
@@ -154,6 +165,6 @@ export function useExplorer(index: MapIndex, map: MapData, state: MapState, set:
     return { onLayer, counts, shown, socketVisible, spawnerKind, enemyRows, enemyColor, enemyMatch, enemyVisible };
   }, [map, layer, cond, score, cls, spawnP, enemyP, state.show, state.enemies, index]);
 
-  const note = lootItem ? itemNote(index, lootItem) : null;
-  return { index, map, state, set, prefs, setPrefs, lootable, item, lootIdx, lootItem, share, note, ci, cond, layer, cls, spawnP, enemyP, score, mapTotals, condTotals, ...derived };
+  const note = lootItem ? itemNote(index, lootItem, names.condition) : null;
+  return { index, map, state, set, prefs, setPrefs, names, areaLabels, lootable, item, lootIdx, lootItem, share, note, ci, cond, layer, cls, spawnP, enemyP, score, mapTotals, condTotals, ...derived };
 }

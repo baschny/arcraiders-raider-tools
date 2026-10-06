@@ -287,17 +287,18 @@ export function tableEnemyProbs(index: MapIndex, table: string | null): Map<numb
   return p;
 }
 
-const groupText = (index: MapIndex, g: { kinds: [number, number, number][] }) =>
-  g.kinds.map(([e, min, max]) => `${min === max ? (min > 1 ? `${min}× ` : '') : `${min}–${max}× `}${index.enemies[e]?.name ?? '?'}`).join(' + ');
+const groupText = (g: { kinds: [number, number, number][] }, enemyName: (e: number) => string) =>
+  g.kinds.map(([e, min, max]) => `${min === max ? (min > 1 ? `${min}× ` : '') : `${min}–${max}× `}${enemyName(e)}`).join(' + ');
 
-/** Weighted group options of a table: ["Bastion + Firefly + 2× Comet", "33%", tier]. */
-export function tableOptions(index: MapIndex, table: string | null): { text: string; share: number | null; tier: number | null }[] {
+/** Weighted group options of a table: ["Bastion + Firefly + 2× Comet", "33%", tier]; `enemyName` names the enemies. */
+export function tableOptions(index: MapIndex, table: string | null, enemyName = (e: number) => index.enemies[e]?.name ?? '?'):
+  { text: string; share: number | null; tier: number | null }[] {
   const t = table ? index.enemyTables[table] : undefined;
   if (!t) return table ? [{ text: `table ${table} (not exported)`, share: null, tier: null }] : [];
   const lists = t.lists.length ? t.lists : Object.values(t.byDifficulty ?? {});
   return lists.flatMap((list, li) => {
     const total = list.reduce((a, g) => a + (g.w || 0), 0) || 1;
-    return list.map((g) => ({ text: groupText(index, g), share: list.length > 1 ? (g.w || 0) / total : null, tier: lists.length > 1 ? li + 1 : null }));
+    return list.map((g) => ({ text: groupText(g, enemyName), share: list.length > 1 ? (g.w || 0) / total : null, tier: lists.length > 1 ? li + 1 : null }));
   });
 }
 
