@@ -1,15 +1,31 @@
-// Map texture tiles for the map page, cut at sync time: a pyramid of 512 px WebP tiles per texture, from the whole map
-// in one tile (level 0) down to the texture's full resolution (level 3 for the game's 4096² map textures). The page
-// loads only the tiles in view at the level that matches the zoom.
+// Map texture tiles for the map page, cut at generation time: a pyramid of 512 px WebP tiles per texture, from the
+// whole map in one tile (level 0) down to the texture's full resolution (level 3 for the game's 4096² map textures).
+// The page loads only the tiles in view at the level that matches the zoom.
 //
-//   tiles/<name>/meta.json       { size, levels, source } (also the cache key: rebuilt when the source changes)
-//   tiles/<name>/<z>/<x>-<y>.webp
+//   tiles/<name>-<hash>/meta.json       { size, levels, source, tiles, bytes }
+//   tiles/<name>-<hash>/<z>/<x>-<y>.webp
+//
+// <hash> is a short content hash of the source texture and the tiling settings, so a changed texture (or encoding)
+// gets a new URL and the tile folders can be served as immutable. A folder that already holds a meta.json was cut
+// from exactly that input and is reused as it is.
+import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
 
 export const TILE = 512;
 const QUALITY = 78;
+/** Bump when the tile encoding changes in a way the settings below do not capture (new URLs for every tile set). */
+const TILES_VERSION = 1;
+
+/** Short content hash of a source texture and the tiling settings (the `<hash>` of its tile folder). */
+export function tilesHash(src) {
+  return crypto.createHash('sha256')
+    .update(`tiles v${TILES_VERSION} ${TILE} q${QUALITY}\n`)
+    .update(fs.readFileSync(src))
+    .digest('hex')
+    .slice(0, 10);
+}
 
 /** Small grey thumbnail, to find the source texture of a built map image by its content. */
 const thumb = (file) => sharp(file).resize(48, 48, { fit: 'fill' }).greyscale().raw().toBuffer();
@@ -36,15 +52,16 @@ export async function findSource(image, index, maxDiff = 6) {
   return best && best.d <= maxDiff ? best.file : null;
 }
 
-/** Cut the tile pyramid of `src` into `dir` (skipped when meta.json says it was cut from the same source). */
+/**
+ * Cut the tile pyramid of `src` into `dir` (`<name>-<hash>`, see tilesHash). Skipped when `dir` already holds a complete set
+ * (meta.json is written last).
+ */
 export async function writeTiles(src, dir) {
-  const stat = fs.statSync(src);
-  const source = `${path.basename(src)} ${stat.size} ${Math.round(stat.mtimeMs)}`;
   const metaFile = path.join(dir, 'meta.json');
   try {
     const meta = JSON.parse(fs.readFileSync(metaFile, 'utf8'));
-    if (meta.source === source) return { ...meta, cached: true };
-  } catch { /* not built yet */ }
+    if (meta.size && meta.levels && meta.tiles) return { ...meta, cached: true };
+  } catch { /* not cut yet, or cut was interrupted */ }
 
   fs.rmSync(dir, { recursive: true, force: true });
   const img = sharp(src, { limitInputPixels: false });
@@ -72,7 +89,7 @@ export async function writeTiles(src, dir) {
       }
     }
   }
-  const meta = { size: width, levels, source, tiles: count, bytes };
-  fs.writeFileSync(metaFile, JSON.stringify(meta));
+  const meta = { size: width, levels, source: path.basename(src), tiles: count, bytes };
+  fs.writeFileSync(metaFile, `${JSON.stringify(meta)}\n`);
   return meta;
 }

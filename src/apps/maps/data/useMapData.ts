@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { checkSchemaVersion } from './schema';
 import type { MapData, MapIndex } from './types';
 
-export const DATA_BASE = '/data/map-proto';
+export const DATA_BASE = '/data/map-data';
 export const iconUrl = (key: string) => `${DATA_BASE}/icons/${key}.png`;
 
 let indexPromise: Promise<MapIndex> | null = null;

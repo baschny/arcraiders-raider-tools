@@ -40,6 +40,10 @@ npm run generate:hideout      # Hideout module data
 npm run generate:schedule     # Event schedule
 ```
 
+`npm run generate:maps` (map page data into `public/data/map-data/`) is not part of `npm run generate`: it reads
+the map features build of embark-api (env `EMBARK_API_DIR`, default `../embark-api`) and is rerun, then committed,
+after a game patch. See the header of `scripts/generate-maps-data.mjs`.
+
 **Important**: The upstream data structure may change as it's community-maintained. Keep generation scripts in sync with schema changes.
 
 Generated files are placed in `public/data/<app-name>/` and loaded at runtime via fetch.

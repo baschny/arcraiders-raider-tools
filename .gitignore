@@ -29,6 +29,3 @@ infra/local/.data
 *.sln
 *.sw?
 *~
-
-# Map prototype data (game art, synced from ../embark-api: npm run sync:map-proto)
-public/data/map-proto/
