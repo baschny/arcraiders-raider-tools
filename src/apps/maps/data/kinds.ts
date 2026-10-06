@@ -277,8 +277,11 @@ export function tableEnemyProbs(index: MapIndex, table: string | null): Map<numb
   const t = table ? index.enemyTables[table] : undefined;
   const lists = t ? (t.lists.length ? t.lists : Object.values(t.byDifficulty ?? {})) : [];
   for (const list of lists) {
-    const total = list.reduce((a, g) => a + (g.w || 0), 0) || list.length;
-    for (const g of list) for (const e of new Set(g.kinds.map((x) => x[0]))) p.set(e, (p.get(e) ?? 0) + (total ? (g.w || (total === list.length ? 1 : 0)) / total : 0) / lists.length);
+    // Groups without weights count as equally likely; otherwise zero-weight groups never spawn.
+    const weighted = list.some((g) => g.w > 0);
+    const weight = (g: { w: number }) => (weighted ? g.w || 0 : 1);
+    const total = list.reduce((a, g) => a + weight(g), 0);
+    for (const g of list) for (const e of new Set(g.kinds.map((x) => x[0]))) p.set(e, (p.get(e) ?? 0) + (total ? weight(g) / total : 0) / lists.length);
   }
   byTable.set(key, p);
   return p;

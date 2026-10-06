@@ -106,6 +106,10 @@ describe('tableEnemyProbs', () => {
     expect(probs('C')).toEqual({ 1: 0.5, 2: 0.5 });
   });
 
+  it('gives zero-weight groups no chance when others are weighted', () => {
+    expect(probs('E')).toEqual({ 0: 1, 1: 0 });
+  });
+
   it('counts an enemy once per group', () => {
     expect(probs('D')).toEqual({ 0: 1 });
   });

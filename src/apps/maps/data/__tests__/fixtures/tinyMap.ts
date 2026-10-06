@@ -45,6 +45,8 @@ export const TINY_INDEX: MapIndex = {
     C: { lists: [], byDifficulty: { 1: [{ w: 0, kinds: [[1, 1, 1]] }, { w: 0, kinds: [[2, 1, 1]] }] } },
     // The same enemy twice in a group counts once.
     D: { lists: [[{ w: 5, kinds: [[0, 1, 1], [0, 2, 2]] }]] },
+    // Weights 2:0 (total equals the group count): the zero-weight group never spawns.
+    E: { lists: [[{ w: 2, kinds: [[0, 1, 1]] }, { w: 0, kinds: [[1, 1, 1]] }]] },
   },
   containerConditions: {
     'Industrial.Lockers.Door': 'always',
