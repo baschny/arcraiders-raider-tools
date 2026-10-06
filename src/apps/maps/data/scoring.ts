@@ -43,7 +43,12 @@ function containerFilter(map: MapData, item: LootItem, match: boolean): (contain
     return (c) => c >= 0 && ok[c];
   }
   const areas = (item.tags ?? []).filter((t) => t.startsWith('Category.Area.')).map((t) => t.split('.')[2]);
-  if (!areas.length) return () => true;
+  // No area tag: any container, but not the nature spots (plants, mushrooms, ...): they give only their own item.
+  // Water tanks are tagged Nature.WaterTank but are regular containers.
+  if (!areas.length) {
+    const nature = map.containers.map((c) => c.startsWith('Nature.') && !c.startsWith('Nature.WaterTank'));
+    return (c) => c < 0 || !nature[c];
+  }
   const ok = map.containers.map((c) => {
     const cat = c.split('.')[0];
     return areas.includes(AREA_ALIASES[cat] ?? cat);
