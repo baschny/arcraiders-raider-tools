@@ -3,7 +3,7 @@
 // and map features as game icons, ARC spawners with patrol paths, and the activity group of the hovered or
 // pinned spawner (ringed members + area hull). React feeds it the Explorer model; it reports tooltip targets.
 import { THREAT, ZONE_COLORS, enemyIcon, isFeature, lootZone } from '../data/kinds';
-import { DATA_BASE } from '../data/useMapData';
+import { DATA_BASE, reportTileError } from '../data/useMapData';
 import type { Level, MapData, UV } from '../data/types';
 import type { MapScore } from '../data/scoring';
 import { bbox, convexHull, inPoly, inRings, polyArea, ringsArea } from '../geometry';
@@ -89,7 +89,7 @@ export class MapEngine {
   private wrap: HTMLDivElement;
   private canvas: HTMLCanvasElement;
   private onTip: (tip: TipState | null) => void;
-  private tiles = new TileLayer(DATA_BASE, () => this.requestDraw());
+  private tiles = new TileLayer(DATA_BASE, () => this.requestDraw(), reportTileError);
 
   constructor(wrap: HTMLDivElement, canvas: HTMLCanvasElement, onTip: (tip: TipState | null) => void) {
     this.wrap = wrap;
@@ -132,6 +132,8 @@ export class MapEngine {
 
   update(ex: Explorer, heat: Heat, padding: Padding = {}) {
     const fresh = !this.ex || this.ex.map !== ex.map;
+    // A reloaded copy of the same map (new tile folders after a deploy) keeps the view.
+    const refit = !this.ex || this.ex.map.map !== ex.map.map;
     const reset = fresh || this.ex.state.mode !== ex.state.mode || this.ex.ci !== ex.ci;
     this.ex = ex;
     this.heat = heat;
@@ -141,7 +143,7 @@ export class MapEngine {
       this.hover = null;
       this.hideTip();
     }
-    if (fresh) this.fit();
+    if (refit) this.fit();
     else this.requestDraw();
   }
 

@@ -169,3 +169,35 @@
   color: var(--mx-muted);
   white-space: nowrap;
 }
+
+// Load failure (data/useMapData.ts): the shared error text with a retry button below.
+.mx-load-error {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-lg;
+  padding: $spacing-lg;
+  text-align: center;
+
+  .error-container {
+    height: auto;
+  }
+
+  &__retry {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border: 1px solid $border-default;
+    border-radius: $radius-md;
+    background: $bg-secondary;
+    color: $text-primary;
+    cursor: pointer;
+
+    &:hover {
+      background: $bg-tertiary;
+    }
+  }
+}

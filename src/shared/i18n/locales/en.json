@@ -1040,5 +1040,21 @@
       "gameDataLastSync": "Game Data Last Sync",
       "never": "Never"
     }
+  },
+  "maps": {
+    "header": {
+      "gameData": "Game data {version} · {date}",
+      "gameDataTitle": "Steam manifest {manifest}, map data built {date}"
+    },
+    "loader": {
+      "retry": "Retry",
+      "reloadPage": "Reload page",
+      "error": {
+        "network": "The map data could not be loaded. Check your connection and try again.",
+        "missing": "The map data is not available right now. Try again in a moment.",
+        "missingMap": "The data for the map {map} is missing. Try again in a moment.",
+        "schema": "The map data was updated and needs a newer version of this page. Reload the page."
+      }
+    }
   }
 }

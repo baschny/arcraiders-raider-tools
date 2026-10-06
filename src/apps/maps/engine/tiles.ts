@@ -38,10 +38,13 @@ export class TileLayer {
   private cache = new Map<string, HTMLImageElement>();
   private base: string;
   private onLoad: () => void;
+  private onError: () => void;
 
-  constructor(base: string, onLoad: () => void) {
+  /** `onError`: a tile failed to load (e.g. its hashed folder was replaced by a newer build). */
+  constructor(base: string, onLoad: () => void, onError: () => void = () => {}) {
     this.base = base;
     this.onLoad = onLoad;
+    this.onError = onError;
   }
 
   private url(set: TileSet, z: number, x: number, y: number) {
@@ -59,6 +62,7 @@ export class TileLayer {
       img = new Image();
       img.decoding = 'async';
       img.onload = () => this.onLoad();
+      img.onerror = () => this.onError();
       img.src = key;
       this.cache.set(key, img);
       this.evict();
@@ -70,6 +74,7 @@ export class TileLayer {
     for (const [key, img] of this.cache) {
       if (this.cache.size <= MAX_TILES) break;
       if (/\/[01]\/\d+-\d+\.webp$/.test(key)) continue; // keep the coarse levels: fallback for everything
+      img.onload = img.onerror = null; // clearing src fires error in some browsers
       img.src = '';
       this.cache.delete(key);
     }
