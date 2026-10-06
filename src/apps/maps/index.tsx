@@ -1,4 +1,4 @@
-// Maps — PROTOTYPE. The embark-api map features page (Loot and ARC modes) on a full-bleed map: map and condition
+// Maps tool (docs/Maps.md). The embark-api map features page (Loot and ARC modes) on a full-bleed map: map and condition
 // switchers float at the top, the collapsible left bar holds the mode switch and the filters (on phones: a bottom
 // sheet).
 // Data: embark-api map features build, generated with npm run generate:maps (data/useMapData.ts). State lives in the
@@ -66,6 +66,7 @@ function LoadError({ error, mapName }: { error: MapLoadError; mapName: string | 
 }
 
 function Explorer({ index, map, state, set, items }: { index: MapIndex; map: MapData; state: MapState; set: (p: MapPatch) => void; items: ItemsMap | null }) {
+  const { t } = useLocale();
   const [prefs, setPrefs] = usePrefs();
   const ex = useExplorer(index, map, state, set, prefs, setPrefs, items);
   const mapView = useRef<MapViewHandle>(null);
@@ -82,7 +83,7 @@ function Explorer({ index, map, state, set, items }: { index: MapIndex; map: Map
   return (
     <div className={`maps-app mx ${open ? '' : 'mx--collapsed'} ${mobile && sheet ? 'mx--sheet-open' : ''}`}>
       <header className="mx-head">
-        <h1>Maps <span className="mx-head__badge">Prototype</span></h1>
+        <h1>{t('shared.tools.maps')}</h1>
         <GameDataVersion index={index} />
       </header>
       <div className="mx-body">
