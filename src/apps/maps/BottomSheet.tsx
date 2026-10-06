@@ -1,6 +1,6 @@
 // Phone layout: the left bar as a bottom sheet. Collapsed it shows only its head (drag handle, mode switch, current
 // item); tap the head or drag it up to open it to 60 % of the map height, down to close it.
-import { useRef, useState, type PointerEvent, type ReactNode } from 'react';
+import { useRef, useState, type CSSProperties, type PointerEvent, type ReactNode } from 'react';
 import { ChevronUp } from 'lucide-react';
 import { useLocale } from '../../shared/context/LocaleContext';
 
@@ -42,7 +42,7 @@ export function BottomSheet({ open, onOpenChange, head, children }: {
 
   return (
     <div className={`mx-area-side mx-sheet ${open ? 'mx-sheet--open' : ''} ${dragH != null ? 'mx-sheet--drag' : ''}`}
-      style={dragH != null ? { height: dragH } : undefined}>
+      style={dragH != null ? ({ '--mx-sheet-drag': `${dragH}px` } as CSSProperties) : undefined}>
       <div className="mx-sheet__head" onPointerDown={down} onPointerMove={move} onPointerUp={(e) => up(e, true)} onPointerCancel={(e) => up(e, false)}>
         <span className="mx-sheet__grip" aria-hidden />
         <div className="mx-sheet__row">

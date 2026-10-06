@@ -121,6 +121,8 @@
 // Portal (outside .mx): fixed colors.
 .mx-help-tip {
   position: fixed;
+  left: var(--help-x);
+  top: var(--help-y);
   z-index: 1000;
   width: 300px;
   padding: 9px 11px;
@@ -319,7 +321,7 @@
   overflow: hidden;
   margin-top: 4px;
 
-  i { display: block; height: 100%; background: linear-gradient(90deg, var(--mx-accent), var(--mx-arc)); }
+  i { display: block; width: var(--rel); height: 100%; background: linear-gradient(90deg, var(--mx-accent), var(--mx-arc)); }
 }
 
 // ---- enemies

@@ -63,14 +63,14 @@ export function Help({ children, label }: { children: ReactNode; label?: string 
         press.current = '';
       }}>
       ?
-      {at && createPortal(<div className="mx-help-tip" role="tooltip" style={{ left: at.x, top: at.y }}>{children}</div>, document.body)}
+      {at && createPortal(<div className="mx-help-tip" role="tooltip" style={{ '--help-x': `${at.x}px`, '--help-y': `${at.y}px` } as CSSProperties}>{children}</div>, document.body)}
     </span>
   );
 }
 
 export function ConditionImage({ name, className }: { name: string; className?: string }) {
   if (name === 'Normal') return <span className={`cond-img cond-img--normal ${className ?? ''}`} />;
-  return <img className={`cond-img ${className ?? ''}`} src={conditionImage(name)} alt="" onError={(e) => (e.currentTarget.style.visibility = 'hidden')} />;
+  return <img className={`cond-img ${className ?? ''}`} src={conditionImage(name)} alt="" onError={(e) => e.currentTarget.classList.add('cond-img--missing')} />;
 }
 
 export function ItemSearch({ items, value, onChange, placeholder, compact }: {

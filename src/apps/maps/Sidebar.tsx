@@ -93,7 +93,7 @@ function LootPanel({ ex, onFocusPoi }: { ex: Explorer; onFocusPoi: (i: number) =
                     {[tx.plural('maps.best.spots', r.sockets, { hits: tx.num(r.hits) }), tx.tm('maps.best.perSpot', { score: tx.score(r.score / r.sockets) }), z ? tx.zone(z) : null]
                       .filter(Boolean).join(' · ')}
                   </span>
-                  <span className="mx-bar"><i style={{ width: `${(r.rel * 100).toFixed(1)}%` }} /></span>
+                  <span className="mx-bar"><i style={{ '--rel': `${(r.rel * 100).toFixed(1)}%` } as CSSProperties} /></span>
                 </button>
               );
             })}

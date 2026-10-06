@@ -88,7 +88,7 @@ export function MapView({ ex, handle, fitPadding }: { ex: Explorer; handle?: Ref
       )}
       {prefs.zones && !(loot && score) && (
         <div className="mx-legend mx-legend--zones">
-          {ZONES.map((z) => <span key={z}><b style={{ background: `rgb(${ZONE_COLORS[z]})` }} />{zone(z)}</span>)}
+          {ZONES.map((z) => <span key={z}><b style={{ '--zone': `rgb(${ZONE_COLORS[z]})` } as CSSProperties} />{zone(z)}</span>)}
         </div>
       )}
     </div>

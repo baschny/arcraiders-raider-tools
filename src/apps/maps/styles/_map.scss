@@ -125,7 +125,7 @@
     flex-direction: row;
     gap: 10px;
 
-    b { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; }
+    b { display: inline-block; width: 9px; height: 9px; background: var(--zone); border-radius: 2px; margin-right: 5px; vertical-align: -1px; }
   }
 }
 

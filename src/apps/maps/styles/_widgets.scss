@@ -17,6 +17,9 @@
   object-fit: contain;
   flex-shrink: 0;
 
+  // No image for this condition (onError).
+  &--missing { visibility: hidden; }
+
   &--normal {
     display: inline-block;
     border-radius: 50%;

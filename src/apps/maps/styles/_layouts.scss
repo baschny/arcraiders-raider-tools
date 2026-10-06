@@ -193,7 +193,7 @@ $gap: 10px;
       padding-bottom: env(safe-area-inset-bottom, 0px);
       transition: height .22s ease;
 
-      &--drag { transition: none; }
+      &--drag { height: var(--mx-sheet-drag); transition: none; }
     }
 
     .mx-sheet__head {
