@@ -1,0 +1,203 @@
+// Map canvas and its overlays (zoom, layers, map layer switch, legend, tooltip).
+.mx-map {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #0b0c0d;
+
+  canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: grab;
+    touch-action: none;
+
+    &.dragging { cursor: grabbing; }
+  }
+}
+
+%mx-float {
+  background: var(--mx-glass);
+  border: 1px solid var(--mx-line);
+  border-radius: 8px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .35);
+}
+
+.mx-zoom {
+  @extend %mx-float;
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  button {
+    width: 30px;
+    height: 30px;
+    border: 0;
+    background: transparent;
+    color: var(--mx-text);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+
+    &:hover { background: var(--mx-panel-2); }
+    & + button { border-top: 1px solid var(--mx-line); }
+  }
+}
+
+.mx-layers {
+  @extend %mx-float;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 12.5px;
+
+  &__toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: 0;
+    background: transparent;
+    color: var(--mx-text);
+    padding: 6px 12px;
+    cursor: pointer;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    padding: 0 12px 8px;
+    gap: 4px;
+
+    label { display: flex; gap: 8px; align-items: center; white-space: nowrap; cursor: pointer; }
+    input { accent-color: var(--mx-accent); }
+  }
+}
+
+.mx-maplayers {
+  @extend %mx-float;
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 2px;
+  padding: 3px;
+
+  button {
+    border: 0;
+    background: transparent;
+    color: var(--mx-muted);
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 12.5px;
+    cursor: pointer;
+
+    &:hover { color: var(--mx-text); }
+    &.on { background: var(--mx-cool); color: #08181c; font-weight: 600; }
+  }
+}
+
+.mx-legend {
+  @extend %mx-float;
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  padding: 7px 10px;
+  font-size: 11px;
+  color: var(--mx-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+
+  > i {
+    width: 170px;
+    height: 7px;
+    border-radius: 4px;
+    background: linear-gradient(90deg, rgb(80, 160, 220), rgb(90, 200, 190), rgb(230, 215, 90), rgb(235, 150, 60), rgb(225, 80, 60));
+  }
+
+  &__ends { display: flex; justify-content: space-between; }
+
+  &--zones {
+    flex-direction: row;
+    gap: 10px;
+
+    b { display: inline-block; width: 9px; height: 9px; background: var(--zone); border-radius: 2px; margin-right: 5px; vertical-align: -1px; }
+  }
+}
+
+.mx-tip {
+  --tip-c: var(--mx-accent);
+  position: absolute;
+  left: var(--tip-x);
+  top: var(--tip-y);
+  z-index: 5;
+  pointer-events: none;
+  max-width: 340px;
+  padding: 7px 10px;
+  background: rgba(16, 18, 20, .96);
+  border: 1px solid var(--mx-line);
+  border-left: 3px solid var(--tip-c);
+  border-radius: 6px;
+  font-size: 12px;
+  color: var(--mx-text);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .45);
+
+  &--enemy { --tip-c: var(--mx-arc); }
+  &--poi { --tip-c: #b9c0c7; border-left-style: dashed; }
+
+  &__kind {
+    font: 600 9.5px/1 ui-monospace, Menlo, monospace;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--tip-c);
+    margin-bottom: 5px;
+  }
+
+  strong { display: block; color: #fff; font-weight: 600; margin-bottom: 2px; }
+
+  .m { font-family: ui-monospace, Menlo, monospace; color: var(--mx-muted); font-size: 11px; }
+
+  &__opt { font-size: 11.5px; }
+
+  &__key {
+    margin: 4px 0 3px;
+    padding: 3px 7px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, .08);
+    border-left: 3px solid var(--tip-c);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+
+    &--none { color: var(--mx-muted); font-weight: 500; font-size: 12px; }
+  }
+
+  &__hint { margin-top: 3px; font-style: italic; }
+
+  // Opened by a tap: takes touches, closes with the button (or a tap on empty map).
+  &--card {
+    pointer-events: auto;
+    padding-right: 34px;
+  }
+
+  &__close {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 28px;
+    height: 28px;
+    display: grid;
+    place-items: center;
+    border: 0;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--mx-muted);
+    cursor: pointer;
+
+    &:hover { color: var(--mx-text); background: var(--mx-panel-2); }
+  }
+}

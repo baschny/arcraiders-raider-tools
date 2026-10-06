@@ -9,6 +9,7 @@ import {
   ListTodo,
   Package,
   ClipboardList,
+  Map as MapIcon,
   User,
   ChevronLeft,
   ChevronRight,
@@ -22,6 +23,7 @@ const NAV_ITEMS = [
   { path: '/quests', icon: ListTodo, labelKey: 'shared.tools.quests' },
   { path: '/loot-helper', icon: Package, labelKey: 'shared.tools.lootHelper' },
   { path: '/quartermaster', icon: ClipboardList, labelKey: 'shared.tools.quartermaster' },
+  { path: '/maps', icon: MapIcon, labelKey: 'shared.tools.maps' },
 ];
 
 const BOTTOM_NAV_ITEM = {

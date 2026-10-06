@@ -51,8 +51,8 @@
   }
 }
 
-// Blueprint variant
-.item-icon--blueprint .item-icon__container {
+// Blueprint variant (beats the rarity backgrounds below)
+.item-icon.item-icon--blueprint .item-icon__container {
   background-image: url('/images/rarities/blueprint_bg.png');
   border-color: $rarity-common-border;
 }

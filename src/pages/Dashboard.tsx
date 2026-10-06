@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Calendar, Calculator, ListTodo, Package, History, ClipboardList } from 'lucide-react';
+import { Calendar, Calculator, ListTodo, Package, History, ClipboardList, Map as MapIcon } from 'lucide-react';
 import { trackNavigation } from '../shared/utils/analytics';
 import { useLocale } from '../shared/context/LocaleContext';
 
@@ -34,6 +34,12 @@ const TOOL_METADATA = {
     nameKey: 'shared.tools.quartermaster',
     descriptionKey: 'dashboard.tools.quartermaster',
   },
+  maps: {
+    path: '/maps',
+    icon: MapIcon,
+    nameKey: 'shared.tools.maps',
+    descriptionKey: 'dashboard.tools.maps',
+  },
 } as const;
 
 type ToolId = keyof typeof TOOL_METADATA;
@@ -45,6 +51,7 @@ const TOOLS = [
   TOOL_METADATA.quests,
   TOOL_METADATA['loot-helper'],
   TOOL_METADATA.quartermaster,
+  TOOL_METADATA.maps,
 ];
 
 interface ChangelogEntry {

@@ -19,7 +19,8 @@
     "generate:maps-localizations": "node ./scripts/generate-map-localizations.js",
     "generate:map-events-localizations": "node ./scripts/generate-map-event-localizations.js",
     "generate:schedule": "npm run generate:maps-localizations && npm run generate:map-events-localizations && node ./scripts/generate-schedule-data-from-map-conditions.js",
-    "generate:projects-quartermaster": "npx tsx ./scripts/generate-quartermaster-projects.ts"
+    "generate:projects-quartermaster": "npx tsx ./scripts/generate-quartermaster-projects.ts",
+    "generate:maps": "node ./scripts/generate-maps-data.mjs"
   },
   "dependencies": {
     "amazon-cognito-identity-js": "^6.3.16",
@@ -39,12 +40,14 @@
     "@types/react": "^19.2.5",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.1",
+    "clipper2-js": "^1.2.4",
     "eslint": "^9.39.1",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
     "jsdom": "^29.0.2",
     "sass": "^1.97.2",
+    "sharp": "^0.35.5",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.46.4",
     "vite": "^7.2.4",
