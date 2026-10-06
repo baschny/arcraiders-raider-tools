@@ -8,6 +8,32 @@ export const TILE = 512;
 const SLACK = 1.2;
 const MAX_TILES = 160;
 
+export interface TileRange {
+  /** Pyramid level to draw. */
+  z: number;
+  /** Tiles per side at that level. */
+  n: number;
+  /** Tile size in CSS px. */
+  ts: number;
+  /** Visible tiles, inclusive (empty when x0 > x1 or y0 > y1). */
+  x0: number;
+  x1: number;
+  y0: number;
+  y1: number;
+}
+
+/**
+ * Level and visible tiles for a texture of `levels` levels drawn at (ox, oy), S CSS px wide, in a w×h CSS px view:
+ * the coarsest level whose tiles are at most SLACK times softer than the device pixels, clamped to the pyramid.
+ */
+export function tileRange(levels: number, ox: number, oy: number, S: number, w: number, h: number, dpr: number): TileRange {
+  const z = Math.max(0, Math.min(levels - 1, Math.ceil(Math.log2((S * dpr) / TILE / SLACK))));
+  const n = 2 ** z, ts = S / n;
+  const x0 = Math.max(0, Math.floor(-ox / ts)), x1 = Math.min(n - 1, Math.floor((w - ox) / ts));
+  const y0 = Math.max(0, Math.floor(-oy / ts)), y1 = Math.min(n - 1, Math.floor((h - oy) / ts));
+  return { z, n, ts, x0, x1, y0, y1 };
+}
+
 export class TileLayer {
   private cache = new Map<string, HTMLImageElement>();
   private base: string;
@@ -54,10 +80,7 @@ export class TileLayer {
    * rounded tile edges, so neighbouring tiles meet without seams.
    */
   draw(ctx: CanvasRenderingContext2D, set: TileSet, ox: number, oy: number, S: number, w: number, h: number, dpr: number) {
-    const target = Math.max(0, Math.min(set.levels - 1, Math.ceil(Math.log2((S * dpr) / TILE / SLACK))));
-    const n = 2 ** target, ts = S / n;
-    const x0 = Math.max(0, Math.floor(-ox / ts)), x1 = Math.min(n - 1, Math.floor((w - ox) / ts));
-    const y0 = Math.max(0, Math.floor(-oy / ts)), y1 = Math.min(n - 1, Math.floor((h - oy) / ts));
+    const { z: target, ts, x0, x1, y0, y1 } = tileRange(set.levels, ox, oy, S, w, h, dpr);
     this.get(set, 0, 0, 0, true);
     ctx.save();
     ctx.setTransform(1, 0, 0, 1, 0, 0);

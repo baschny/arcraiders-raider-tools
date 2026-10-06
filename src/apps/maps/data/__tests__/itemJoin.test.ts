@@ -35,6 +35,10 @@ describe('lootItemsFor', () => {
     expect(lootItemsFor(index, 'wind_sprite_ship_model', '"Wind Sprite" Ship Model')).toEqual([1, 2]);
   });
 
+  it('matches names ignoring case and surrounding spaces', () => {
+    expect(lootItemsFor(index, 'wind_sprite', ' "WIND SPRITE" ship model ')).toEqual([1]);
+  });
+
   it('does not match slugged loot items by name', () => {
     expect(lootItemsFor(index, 'colorful_shoes', 'Colorful Shoes')).toEqual([]);
     expect(hasLootItem(index, 'colorful_shoes', 'Colorful Shoes')).toBe(false);

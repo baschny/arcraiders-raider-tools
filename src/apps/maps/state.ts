@@ -25,7 +25,8 @@ export interface MapState {
 
 type Patch = Partial<MapState> | ((s: MapState) => Partial<MapState>);
 
-function parseState(params: URLSearchParams, defaultMap: string): MapState {
+/** Page state from URL params (missing or unknown values fall back to the defaults). */
+export function parseState(params: URLSearchParams, defaultMap: string): MapState {
   return {
     mode: params.get('mode') === 'arc' ? 'arc' : 'loot',
     map: params.get('map') ?? defaultMap,
@@ -37,7 +38,8 @@ function parseState(params: URLSearchParams, defaultMap: string): MapState {
   };
 }
 
-function serializeState(next: MapState): URLSearchParams {
+/** URL params for a state; default values are left out. */
+export function serializeState(next: MapState): URLSearchParams {
   const q = new URLSearchParams();
   if (next.mode !== 'loot') q.set('mode', next.mode);
   q.set('map', next.map);
@@ -74,17 +76,20 @@ export interface Prefs {
   /** Left bar expanded. */
   side: boolean;
 }
-const DEFAULT_PREFS: Prefs = { heat: true, height: true, pois: true, zones: false, bounds: true, side: true };
-const PREFS_KEY = 'raider-tools:maps-prefs';
+export const DEFAULT_PREFS: Prefs = { heat: true, height: true, pois: true, zones: false, bounds: true, side: true };
+export const PREFS_KEY = 'raider-tools:maps-prefs';
+
+/** Stored prefs over the defaults; the defaults when storage is unreadable or corrupt. */
+export function loadPrefs(): Prefs {
+  try {
+    return { ...DEFAULT_PREFS, ...JSON.parse(localStorage.getItem(PREFS_KEY) ?? '{}') };
+  } catch {
+    return DEFAULT_PREFS;
+  }
+}
 
 export function usePrefs(): [Prefs, (p: Partial<Prefs>) => void] {
-  const [prefs, setPrefs] = useState<Prefs>(() => {
-    try {
-      return { ...DEFAULT_PREFS, ...JSON.parse(localStorage.getItem(PREFS_KEY) ?? '{}') };
-    } catch {
-      return DEFAULT_PREFS;
-    }
-  });
+  const [prefs, setPrefs] = useState<Prefs>(loadPrefs);
   const update = (p: Partial<Prefs>) => {
     const next = { ...prefs, ...p };
     setPrefs(next);
