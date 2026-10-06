@@ -1,5 +1,5 @@
 // Components shared by the map page.
-import { useMemo, useState, type CSSProperties, type ReactNode } from 'react';
+import { useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 import { Search, X } from 'lucide-react';
 import type { Item } from '../loot-helper/types/item';
@@ -14,16 +14,42 @@ export function GameIcon({ icon, color, size = 18, className }: { icon: string; 
   return <span className={`game-icon ${className ?? ''}`} style={style} aria-hidden />;
 }
 
-/** A "(?)" that explains something on hover or focus (portal: the floating panels clip their content). */
+/**
+ * A "(?)" that explains something on hover or focus, or on tap on touch screens (tap again or elsewhere to close).
+ * Portal: the floating panels clip their content.
+ */
 export function Help({ children, label = 'Help' }: { children: ReactNode; label?: string }) {
   const [at, setAt] = useState<{ x: number; y: number } | null>(null);
-  const show = (el: HTMLElement) => {
-    const r = el.getBoundingClientRect();
+  const el = useRef<HTMLSpanElement>(null);
+  // Pointer type of the press in progress: touch opens and closes on tap, not on the focus the tap causes.
+  const press = useRef('');
+  const show = (target: HTMLElement) => {
+    const r = target.getBoundingClientRect();
     setAt({ x: Math.max(8, Math.min(r.left + r.width / 2 - 150, window.innerWidth - 308)), y: r.bottom + 6 });
   };
+  const open = at != null;
+  useEffect(() => {
+    if (!open) return;
+    const outside = (e: PointerEvent) => {
+      if (!(e.target instanceof Node && el.current?.contains(e.target))) setAt(null);
+    };
+    document.addEventListener('pointerdown', outside);
+    return () => document.removeEventListener('pointerdown', outside);
+  }, [open]);
   return (
-    <span className="mx-help" tabIndex={0} role="button" aria-label={label}
-      onMouseEnter={(e) => show(e.currentTarget)} onMouseLeave={() => setAt(null)} onFocus={(e) => show(e.currentTarget)} onBlur={() => setAt(null)}>
+    <span ref={el} className="mx-help" tabIndex={0} role="button" aria-label={label} aria-expanded={open}
+      onPointerDown={(e) => { press.current = e.pointerType; }}
+      onPointerEnter={(e) => e.pointerType === 'mouse' && show(e.currentTarget)}
+      onPointerLeave={(e) => e.pointerType === 'mouse' && setAt(null)}
+      onFocus={(e) => press.current !== 'touch' && show(e.currentTarget)}
+      onBlur={() => setAt(null)}
+      onClick={(e) => {
+        if (press.current === 'touch') {
+          if (open) setAt(null);
+          else show(e.currentTarget);
+        }
+        press.current = '';
+      }}>
       ?
       {at && createPortal(<div className="mx-help-tip" role="tooltip" style={{ left: at.x, top: at.y }}>{children}</div>, document.body)}
     </span>

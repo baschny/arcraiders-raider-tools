@@ -1,6 +1,6 @@
 // The map: canvas (engine/MapEngine.ts) plus its overlays — zoom, layers menu, map layer switch, legend, tooltip.
 import { useEffect, useImperativeHandle, useMemo, useRef, useState, type CSSProperties, type Ref } from 'react';
-import { Layers, Maximize, Minus, Plus } from 'lucide-react';
+import { Layers, Maximize, Minus, Plus, X } from 'lucide-react';
 import { CATEGORY, THREAT, ZONE_COLORS, ZONE_LABELS, className, containerTagLabel, enemyTiming, isFeature, lootZone, tableOptions } from './data/kinds';
 import { fmtScore } from './data/scoring';
 import type { Level } from './data/types';
@@ -111,6 +111,7 @@ function Tooltip({ ex, tip, pinned, engine }: { ex: Explorer; tip: TipState; pin
   };
   let kindLabel = '', color: string | undefined, title = '', body: (string | null)[] = [], keys: string[] | null = null, options: { text: string; share: number | null; tier: number | null }[] = [];
   let hint: string | null = null;
+  const act = tip.touch ? 'tap' : 'click';
 
   if (target.t === 'socket') {
     const s = map.sockets[target.i], kind = ex.cls.socketKind[target.i];
@@ -144,7 +145,7 @@ function Tooltip({ ex, tip, pinned, engine }: { ex: Explorer; tip: TipState; pin
       heightLine(map.levels.spawners[target.i]),
       world(s[0], s[1]),
     ];
-    if (g) hint = pinned?.t === 'spawner' && pinned.i === target.i ? 'click to unpin the group' : 'click to pin the group';
+    if (g) hint = pinned?.t === 'spawner' && pinned.i === target.i ? `${act} to unpin the group` : `${act} to pin the group`;
   } else if (target.t === 'enemy') {
     const s = map.enemySpawners[target.i], en = ex.enemyMatch(target.i);
     color = ex.state.enemies.size && en != null && en >= 0 ? ex.enemyColor(en) : THREAT;
@@ -159,7 +160,7 @@ function Tooltip({ ex, tip, pinned, engine }: { ex: Explorer; tip: TipState; pin
       ...enemyTiming(map.enemyProfiles[s[5]] ?? {}),
       heightLine(map.levels.enemies[target.i]),
     ];
-    if (g) hint = pinned?.t === 'enemy' && pinned.i === target.i ? 'click to unpin the group' : 'click to pin the group';
+    if (g) hint = pinned?.t === 'enemy' && pinned.i === target.i ? `${act} to unpin the group` : `${act} to pin the group`;
   } else {
     const p = map.pois[target.i], sc = ex.score?.pois[target.i], z = lootZone(p.threat, p.themes);
     kindLabel = 'Area';
@@ -173,7 +174,10 @@ function Tooltip({ ex, tip, pinned, engine }: { ex: Explorer; tip: TipState; pin
   }
 
   return (
-    <div ref={ref} className={`mx-tip mx-tip--${target.t}`} style={{ left: pos.left, top: pos.top, ...(color ? { '--tip-c': color } : {}) } as CSSProperties}>
+    // A tap opens the tooltip as a card (no hover on touch): it takes touches and has a close button.
+    <div ref={ref} className={`mx-tip mx-tip--${target.t} ${tip.touch ? 'mx-tip--card' : ''}`}
+      style={{ '--tip-x': `${pos.left}px`, '--tip-y': `${pos.top}px`, ...(color ? { '--tip-c': color } : {}) } as CSSProperties}>
+      {tip.touch && <button className="mx-tip__close" onClick={() => engine.dismissTip()} aria-label="Close"><X size={14} /></button>}
       <div className="mx-tip__kind">{kindLabel}</div>
       <strong>{title}</strong>
       {keys && (keys.length ? keys.map((k) => <div key={k} className="mx-tip__key">🔑 {k}</div>) : <div className="mx-tip__key mx-tip__key--none">no key item (opens another way)</div>)}

@@ -1,3 +1,5 @@
+@use '../../../shared/styles/variables' as *;
+
 // Full-bleed map; map and condition switchers float at the top (left-aligned next to the left bar), the left bar
 // floats on the left and collapses to a small button.
 $side: 344px;
@@ -97,4 +99,172 @@ $gap: 10px;
   .mx-legend { left: var(--mx-side-left); }
   .mx-layers { top: auto; bottom: 116px; }
   .mx-maplayers { left: calc(var(--mx-side-left) + (100% - var(--mx-side-left)) / 2); }
+}
+
+// ---- phones: bottom sheet instead of the left bar, one scrolling row per bar, overlays above the sheet
+
+// Touch screens: a bigger hit area for the small "(?)".
+@media (pointer: coarse) {
+  .mx-help {
+    position: relative;
+
+    &::after { content: ''; position: absolute; inset: -10px; }
+  }
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .mx {
+    // Height of the collapsed sheet (its head) and of the sheet as it is now; overlays sit above it.
+    --mx-sheet-min: calc(64px + env(safe-area-inset-bottom, 0px));
+    --mx-sheet: var(--mx-sheet-min);
+    --mx-side-left: #{$gap - 2px};
+
+    // The page shell grows with its content on phones: fill the screen below the fixed site header instead, and
+    // keep touches on the panels from scrolling or zooming the page.
+    height: calc(100dvh - 48px);
+    touch-action: pan-x pan-y;
+
+    &--sheet-open { --mx-sheet: 60%; }
+
+    .mx-head {
+      touch-action: none;
+      padding-left: max(#{$spacing-lg}, env(safe-area-inset-left, 0px));
+      padding-right: max(#{$spacing-lg}, env(safe-area-inset-right, 0px));
+    }
+
+    .mx-area-top {
+      left: max(var(--mx-side-left), env(safe-area-inset-left, 0px));
+      right: max(var(--mx-side-left), env(safe-area-inset-right, 0px));
+    }
+
+    .mx-mapbar,
+    .mx-conds {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      overscroll-behavior-x: contain;
+      touch-action: pan-x;
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar { display: none; }
+
+      button { flex-shrink: 0; }
+    }
+
+    .mx-map > :not(canvas, .mx-tip) { touch-action: none; }
+
+    .mx-zoom { bottom: calc(var(--mx-sheet) + 12px); right: max(12px, env(safe-area-inset-right, 0px)); }
+    .mx-layers { bottom: calc(var(--mx-sheet) + 116px); right: max(12px, env(safe-area-inset-right, 0px)); }
+
+    .mx-legend {
+      left: max(var(--mx-side-left), env(safe-area-inset-left, 0px));
+      bottom: calc(var(--mx-sheet) + 12px);
+
+      > i { width: 120px; }
+    }
+
+    // Above the legend, left-aligned: centered it would run into the legend on a narrow screen.
+    .mx-maplayers {
+      left: max(var(--mx-side-left), env(safe-area-inset-left, 0px));
+      bottom: calc(var(--mx-sheet) + 64px);
+      transform: none;
+    }
+
+    // Tooltip card docked above the sheet, full width.
+    .mx-tip--card {
+      left: 8px;
+      right: 8px;
+      top: auto;
+      bottom: calc(var(--mx-sheet) + 8px);
+      max-width: none;
+      max-height: 45%;
+      overflow-y: auto;
+    }
+
+    .mx-sheet {
+      top: auto;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      width: auto;
+      height: var(--mx-sheet);
+      max-height: 90%;
+      border-bottom: 0;
+      border-radius: 14px 14px 0 0;
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+      transition: height .22s ease;
+
+      &--drag { transition: none; }
+    }
+
+    .mx-sheet__head {
+      flex-shrink: 0;
+      padding: 4px max(#{$gap}, env(safe-area-inset-right, 0px)) 8px max(#{$gap}, env(safe-area-inset-left, 0px));
+      touch-action: none;
+      cursor: grab;
+    }
+
+    .mx-sheet__grip {
+      display: block;
+      width: 36px;
+      height: 4px;
+      margin: 2px auto 6px;
+      border-radius: 2px;
+      background: var(--mx-line);
+    }
+
+    .mx-sheet__row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+    }
+
+    .mx-sheet__item {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+
+      > span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+      .item-icon { --item-icon-size: 28px; --item-icon-padding: 2px; flex-shrink: 0; }
+    }
+
+    .mx-sheet__toggle {
+      margin-left: auto;
+      width: 36px;
+      height: 36px;
+      flex-shrink: 0;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--mx-line);
+      border-radius: 8px;
+      background: var(--mx-panel-2);
+      color: var(--mx-muted);
+      cursor: pointer;
+
+      svg { transition: transform .22s ease; }
+    }
+
+    &--sheet-open .mx-sheet__toggle svg { transform: rotate(180deg); }
+
+    .mx-sheet__body {
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mx-side {
+      overscroll-behavior: contain;
+      padding-bottom: 16px;
+    }
+
+    .mx-modes button { padding: 8px 14px; }
+
+    // 16 px: iOS zooms the page into smaller inputs on focus.
+    .item-search input { font-size: 16px; }
+  }
 }

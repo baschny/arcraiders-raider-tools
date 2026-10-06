@@ -132,6 +132,8 @@
 .mx-tip {
   --tip-c: var(--mx-accent);
   position: absolute;
+  left: var(--tip-x);
+  top: var(--tip-y);
   z-index: 5;
   pointer-events: none;
   max-width: 340px;
@@ -175,4 +177,27 @@
   }
 
   &__hint { margin-top: 3px; font-style: italic; }
+
+  // Opened by a tap: takes touches, closes with the button (or a tap on empty map).
+  &--card {
+    pointer-events: auto;
+    padding-right: 34px;
+  }
+
+  &__close {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 28px;
+    height: 28px;
+    display: grid;
+    place-items: center;
+    border: 0;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--mx-muted);
+    cursor: pointer;
+
+    &:hover { color: var(--mx-text); background: var(--mx-panel-2); }
+  }
 }

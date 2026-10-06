@@ -13,8 +13,8 @@ import { TileLayer } from './tiles';
 
 export type Target = { t: 'socket' | 'spawner' | 'enemy' | 'poi'; i: number };
 export type Pin = { t: 'spawner' | 'enemy'; i: number };
-/** Tooltip target at a position, with the map's size for keeping the tooltip inside. */
-export type TipState = { target: Target; x: number; y: number; w: number; h: number };
+/** Tooltip target at a position, with the map's size for keeping the tooltip inside; touch: opened by a tap. */
+export type TipState = { target: Target; x: number; y: number; w: number; h: number; touch?: boolean };
 export type Padding = { left?: number; right?: number; top?: number; bottom?: number };
 export interface Heat {
   canvas: HTMLCanvasElement | null;
@@ -23,6 +23,8 @@ export interface Heat {
 }
 
 const MIN_S = 0.5, MAX_S = 40;
+/** Touch: movement (px) below which a touch still counts as a tap; double tap window (ms) and distance (px). */
+const TAP_SLOP = 8, DOUBLE_TAP_MS = 300, DOUBLE_TAP_PX = 30;
 export const RAMP: [number, number, number][] = [[80, 160, 220], [90, 200, 190], [230, 215, 90], [235, 150, 60], [225, 80, 60]];
 export function ramp(t: number, alpha = 1) {
   const x = Math.min(0.9999, Math.max(0, t)) * (RAMP.length - 1), i = Math.floor(x), f = x - i;
@@ -77,6 +79,12 @@ export class MapEngine {
   private tipShown = false;
   private tipTimer = 0;
   private drag: { x: number; y: number; vx: number; vy: number } | null = null;
+  // Touch: active pointers, pinch start (finger distance, scale, map point under the midpoint), tap tracking.
+  private touches = new Map<number, { x: number; y: number }>();
+  private pinch: { d0: number; s0: number; u: number; v: number } | null = null;
+  private tapOk = false;
+  private lastTap = { t: 0, x: 0, y: 0 };
+  private lastPointer = 'mouse';
   private cleanup: (() => void)[] = [];
   private wrap: HTMLDivElement;
   private canvas: HTMLCanvasElement;
@@ -94,12 +102,19 @@ export class MapEngine {
       el.addEventListener(ev, fn as EventListener, opts);
       this.cleanup.push(() => el.removeEventListener(ev, fn as EventListener));
     };
-    on(canvas, 'pointerdown', (e) => this.down(e));
-    on(canvas, 'pointerup', (e) => this.up(e));
-    on(canvas, 'pointermove', (e) => this.move(e));
+    // Touch has its own handlers (pan, pinch, taps); mouse and pen keep hover, drag and click.
+    const touch = (e: PointerEvent) => e.pointerType === 'touch';
+    on(canvas, 'pointerdown', (e) => {
+      this.lastPointer = e.pointerType;
+      if (touch(e)) this.touchDown(e);
+      else this.down(e);
+    });
+    on(canvas, 'pointerup', (e) => (touch(e) ? this.touchUp(e, true) : this.up(e)));
+    on(canvas, 'pointercancel', (e) => touch(e) && this.touchUp(e, false));
+    on(canvas, 'pointermove', (e) => (touch(e) ? this.touchMove(e) : this.move(e)));
     on(canvas, 'wheel', (e) => this.wheel(e), { passive: false });
-    on(canvas, 'pointerleave', () => this.leave());
-    on(canvas, 'dblclick', () => this.fit());
+    on(canvas, 'pointerleave', (e) => !touch(e) && this.leave());
+    on(canvas, 'dblclick', () => this.lastPointer !== 'touch' && this.fit());
     on(window, 'keydown', (e) => {
       if (e.key === 'Escape' && this.pin) {
         this.pin = null;
@@ -132,6 +147,14 @@ export class MapEngine {
 
   pinned() {
     return this.pin;
+  }
+
+  /** Close the tooltip card (touch) and drop the highlighted and pinned spot. */
+  dismissTip() {
+    this.hideTip();
+    this.hover = null;
+    this.pin = null;
+    this.requestDraw();
   }
 
   // ---------------------------------------------------------------- view
@@ -634,6 +657,91 @@ export class MapEngine {
   private leave() {
     this.hideTip();
     this.hover = null;
+    this.requestDraw();
+  }
+
+  // ---------------------------------------------------------------- touch
+  // One finger pans, two fingers pinch-zoom around their midpoint (and pan with it), a tap opens the tooltip card of
+  // the spot under it (or closes it on empty map), a double tap zooms in. The card stays open while panning.
+  private touchDown(e: PointerEvent) {
+    this.zoom.active = false;
+    this.canvas.setPointerCapture(e.pointerId);
+    this.touches.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (this.touches.size === 1) {
+      this.tapOk = true;
+      this.drag = { x: e.clientX, y: e.clientY, vx: this.view.x, vy: this.view.y };
+    } else {
+      this.tapOk = false;
+      this.startPinch();
+    }
+  }
+  private startPinch() {
+    const [a, b] = [...this.touches.values()];
+    const mid = this.local({ clientX: (a.x + b.x) / 2, clientY: (a.y + b.y) / 2 });
+    const [u, v] = this.toUv(mid.x, mid.y);
+    this.drag = null;
+    this.pinch = { d0: Math.max(1, Math.hypot(a.x - b.x, a.y - b.y)), s0: this.view.s, u, v };
+  }
+  private touchMove(e: PointerEvent) {
+    const t = this.touches.get(e.pointerId);
+    if (!t) return;
+    t.x = e.clientX;
+    t.y = e.clientY;
+    const p = this.pinch;
+    if (p && this.touches.size >= 2) {
+      const [a, b] = [...this.touches.values()];
+      const mid = this.local({ clientX: (a.x + b.x) / 2, clientY: (a.y + b.y) / 2 });
+      this.view.s = Math.min(MAX_S, Math.max(MIN_S, (p.s0 * Math.hypot(a.x - b.x, a.y - b.y)) / p.d0));
+      const s = this.base() * this.view.s;
+      this.view.x = mid.x - p.u * s;
+      this.view.y = mid.y - p.v * s;
+      this.requestDraw();
+      return;
+    }
+    const d = this.drag;
+    if (!d) return;
+    if (this.tapOk && Math.hypot(e.clientX - d.x, e.clientY - d.y) < TAP_SLOP) return;
+    this.tapOk = false;
+    this.view.x = d.vx + e.clientX - d.x;
+    this.view.y = d.vy + e.clientY - d.y;
+    this.requestDraw();
+  }
+  private touchUp(e: PointerEvent, released: boolean) {
+    if (!this.touches.delete(e.pointerId)) return;
+    if (this.pinch) {
+      if (this.touches.size >= 2) this.startPinch();
+      else if (this.touches.size === 1) {
+        // Back to one finger: keep panning with it from here.
+        const [t] = [...this.touches.values()];
+        this.pinch = null;
+        this.drag = { x: t.x, y: t.y, vx: this.view.x, vy: this.view.y };
+      }
+      return;
+    }
+    if (this.touches.size) return;
+    this.drag = null;
+    if (released && this.tapOk) this.tap(this.local(e));
+    this.tapOk = false;
+  }
+  private tap({ x, y }: { x: number; y: number }) {
+    const now = performance.now(), last = this.lastTap;
+    if (now - last.t < DOUBLE_TAP_MS && Math.hypot(x - last.x, y - last.y) < DOUBLE_TAP_PX) {
+      this.lastTap = { t: 0, x: 0, y: 0 };
+      this.zoomBy(2, x, y);
+      return;
+    }
+    this.lastTap = { t: now, x, y };
+    const target = this.hitTest(x, y);
+    // Like a click: tapping a spawner pins its group (tap it again to unpin); empty map closes and unpins.
+    const pin: Pin | null = target && (target.t === 'spawner' || target.t === 'enemy') ? { t: target.t, i: target.i } : null;
+    this.pin = pin && !(this.pin?.t === pin.t && this.pin.i === pin.i) ? pin : null;
+    this.hover = target;
+    if (target) {
+      clearTimeout(this.tipTimer);
+      this.tipKey = `${target.t}${target.i}`;
+      this.tipShown = true;
+      this.onTip({ target, x, y, ...this.size(), touch: true });
+    } else this.hideTip();
     this.requestDraw();
   }
 }
