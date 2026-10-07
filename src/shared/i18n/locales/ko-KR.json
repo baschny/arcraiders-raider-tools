@@ -77,7 +77,8 @@
       "craftCalculator": "제작 계산기",
       "quests": "퀘스트 추적기",
       "lootHelper": "루팅 도우미",
-      "quartermaster": "병참 관리"
+      "quartermaster": "병참 관리",
+      "maps": "Maps"
     }
   },
   "dashboard": {
@@ -95,7 +96,8 @@
       "craftCalculator": "보관함 공간을 최대한 활용하기 위해 아이템을 몇 개 제작해야 하는지 계산합니다.",
       "quests": "인터랙티브 퀘스트 트리로 퀘스트 진행 상황을 추적합니다.",
       "lootHelper": "제작 체인을 시각화해 레이드 중 무엇을 루팅해야 하는지 판단할 수 있습니다.",
-      "quartermaster": "보관함, 장비, 은신처 요구사항을 한 곳에서 계획합니다."
+      "quartermaster": "보관함, 장비, 은신처 요구사항을 한 곳에서 계획합니다.",
+      "maps": "Find where to loot an item and where ARC enemies spawn on every map and map condition."
     }
   },
   "pages": {
@@ -1038,6 +1040,357 @@
       "loadout": "Loadout",
       "gameDataLastSync": "Game Data Last Sync",
       "never": "Never"
+    }
+  },
+  "maps": {
+    "header": {
+      "gameData": "Game data {version} · {date}",
+      "gameDataTitle": "Steam manifest {manifest}, map data built {date}"
+    },
+    "loader": {
+      "retry": "Retry",
+      "reloadPage": "Reload page",
+      "error": {
+        "network": "The map data could not be loaded. Check your connection and try again.",
+        "missing": "The map data is not available right now. Try again in a moment.",
+        "missingMap": "The data for the map {map} is missing. Try again in a moment.",
+        "schema": "The map data was updated and needs a newer version of this page. Reload the page."
+      }
+    },
+    "conditions": {
+      "normal": "Normal"
+    },
+    "modes": {
+      "loot": "Loot",
+      "label": "Mode"
+    },
+    "sidebar": {
+      "hide": "Hide the side bar",
+      "showFilters": "Show filters",
+      "hideFilters": "Hide filters"
+    },
+    "mapBar": {
+      "scoreTitle": "{map}: item score {score} (normal conditions)",
+      "label": "Map"
+    },
+    "conditionBar": {
+      "normal": "Normal map",
+      "normalAlso": "Normal map — same static loot and spawns as: {conditions}",
+      "major": "Major condition",
+      "majorLive": "Major condition (in the current schedule)",
+      "minor": "Minor condition",
+      "minorLive": "Minor condition (in the current schedule)",
+      "sameAsNormal": "+ {count} same as {normal}",
+      "label": "Map condition"
+    },
+    "help": {
+      "label": "Help"
+    },
+    "search": {
+      "placeholder": "Find an item…",
+      "clear": "Clear"
+    },
+    "loot": {
+      "searchPlaceholder": "Search an item, e.g. Motor",
+      "goalsTitle": "Your Looting Helper goals",
+      "tablesTitle": "Share of each static loot table that goes to this item",
+      "noTables": "in no static loot table",
+      "notInLoot": "This item is not in any static loot table.",
+      "onlyHarvested": "Only harvested from {containers}, which only exist during: {conditions}.",
+      "conditionWhy": "{condition} ({reason})"
+    },
+    "conditionReasons": {
+      "onHiatus": "on hiatus",
+      "neverReleased": "never released",
+      "tutorial": "tutorial",
+      "practiceRange": "practice range",
+      "notInSchedule": "not in the schedule"
+    },
+    "item": {
+      "tiers": {
+        "low": "Low",
+        "mid": "Mid",
+        "high": "High"
+      }
+    },
+    "best": {
+      "title": "Best areas · {condition}",
+      "helpLabel": "About the score",
+      "help": "The score is the loot value that can go to the item: each loot handler's pool, split over its tables, entries and items, spread over its spots. It compares places; it is not a drop chance. Conditions with the same static loot as Normal are folded into it.",
+      "spotsOne": "{hits}/{count} spot",
+      "spots": "{hits}/{count} spots",
+      "perSpot": "{score} per spot"
+    },
+    "filters": {
+      "title": "Spawn spots",
+      "helpLabel": "About the filters",
+      "help": "The arrow opens a group; the rest of the row shows or hides it on the map. With an item selected and nothing picked, all spots that can hold the item are shown. Containers count only when their category matches the item's (Mechanical items in Mechanical containers; plants give only their own item). Spawned containers (ammo boxes, caches, husks) roll server-side tables, shown as “?”.",
+      "auto": "auto",
+      "autoTitle": "Showing all spots that can hold the item",
+      "showAll": "Show everything",
+      "hideAll": "Hide everything",
+      "expand": "Expand",
+      "expandGroup": "Expand {group}",
+      "collapseGroup": "Collapse {group}",
+      "count": {
+        "spotsOne": "{count} spot",
+        "spots": "{count} spots",
+        "hitsOne": "{hits} of {count} spot can hold the item",
+        "hits": "{hits} of {count} spots can hold the item",
+        "noHitsOne": "The {count} spot cannot hold the item",
+        "noHits": "None of the {count} spots can hold the item",
+        "serverSide": "Contents are rolled server-side and not in the game files",
+        "expectedOne": "~{expected} expected per round, of {count} possible spot",
+        "expected": "~{expected} expected per round, of {count} possible spots"
+      }
+    },
+    "arc": {
+      "title": "ARC enemies · {condition}",
+      "helpLabel": "About ARC spawners",
+      "help": "Expected number of spawners that can produce each enemy in this condition. Pick enemies to show only their spawners and patrol paths (several at once, each in its color). Filled markers patrol a path. Hover a spawner for its group and respawn timers; click it to pin its spawn group.",
+      "showAll": "Show all enemies",
+      "expectedOne": "~{expected} expected per round, of {count} spawner",
+      "expected": "~{expected} expected per round, of {count} spawners",
+      "empty": "No ARC spawners in this condition."
+    },
+    "canvas": {
+      "label": "Map of {map}. The spots, areas and enemies drawn here are listed in the side bar."
+    },
+    "zoom": {
+      "in": "Zoom in",
+      "out": "Zoom out",
+      "fit": "Fit map (double-click)"
+    },
+    "overlays": {
+      "title": "Layers",
+      "heat": "Heat map",
+      "height": "Height marks",
+      "heightTitle": "A point on top: more than 3.5 m above the estimated ground (upper floor, roof); underneath: more than 3.5 m below (basement, tunnel). Estimated from the heightmap; not on Stella Montis.",
+      "pois": "Areas & names",
+      "zones": "Loot zones",
+      "zonesTitle": "In-game loot zones: red = abundant, yellow = dense, grey = sparse.",
+      "bounds": "Playable area"
+    },
+    "layers": {
+      "title": "Map layer: the in-game map switches when you enter these areas",
+      "surface": "Surface",
+      "underground": "Underground",
+      "upperFloor": "Upper floor",
+      "lowerFloor": "Lower floor",
+      "label": "Map layer"
+    },
+    "legend": {
+      "score": "Item score per spot",
+      "low": "low",
+      "high": "high"
+    },
+    "zones": {
+      "abundant": "Abundant loot",
+      "dense": "Dense loot",
+      "sparse": "Sparse loot"
+    },
+    "tooltip": {
+      "score": "score {score}",
+      "serverTablesOne": "+ {count} server-side loot table (contents not in the files)",
+      "serverTables": "+ {count} server-side loot tables (contents not in the files)",
+      "oneOf": "One of: {kinds}",
+      "inArea": "in {area}",
+      "spawnChance": "spawn chance ~{chance}",
+      "notScored": "contents server-side (not scored)",
+      "group": "group",
+      "groupSpotsOne": "{group}: {min} of {count} spot (ringed)",
+      "groupSpots": "{group}: {min} of {count} spots (ringed)",
+      "groupSpawnersOne": "{group}: {min} of {count} spawner (ringed)",
+      "groupSpawners": "{group}: {min} of {count} spawners (ringed)",
+      "tapPin": "tap to pin the group",
+      "tapUnpin": "tap to unpin the group",
+      "clickPin": "click to pin the group",
+      "clickUnpin": "click to unpin the group",
+      "arcSpawner": "ARC spawner",
+      "enemySpawner": "Enemy spawner",
+      "patrols": "patrols a path",
+      "tableNotExported": "table {table} (not exported)",
+      "tier": "tier {tier}",
+      "area": "Area",
+      "height": "≈ {height} m vs ground",
+      "covered": "covered",
+      "openSky": "open sky",
+      "noKey": "no key item (opens another way)"
+    },
+    "timing": {
+      "noRespawn": "does not respawn after destroyed",
+      "respawn": "respawn {time} after destroyed",
+      "randomDelay": "+ {min}–{max} s random delay",
+      "noDynamic": "no dynamic respawn",
+      "airDrop": "air drop {time} after the group is destroyed",
+      "sneak": "out-of-sight respawn after {time}",
+      "sneakIndoors": "out-of-sight respawn after {time} (indoors)",
+      "activates": "activates within {distance} m"
+    },
+    "units": {
+      "seconds": "{n} s",
+      "minutes": "{n} min",
+      "never": "never"
+    },
+    "categories": {
+      "Exits": "Exits & spawns",
+      "Containers": "Containers",
+      "RaiderSpawns": "Raider containers",
+      "ArcSpawns": "ARC husks & wrecks",
+      "Puzzles": "Puzzles",
+      "Features": "Map features"
+    },
+    "kinds": {
+      "ExtractMetro": "Metro extraction",
+      "ExtractLift": "Elevator extraction",
+      "ExtractFan": "Fan extraction",
+      "Hatch": "Raider hatch (key)",
+      "StationEntrance": "Metro station entrance",
+      "PlayerStart": "Player spawn",
+      "Generic": "Generic",
+      "OtherFixed": "Other",
+      "WaterTank": "Water tank",
+      "Ground": "Ground loot",
+      "Apricot": "Apricot",
+      "Lemon": "Lemon",
+      "Olive": "Olive",
+      "NatureFruitBasket": "Fruit basket",
+      "Mushroom": "Mushroom",
+      "Agave": "Agave",
+      "Moss": "Moss",
+      "GreatMullein": "Great mullein",
+      "Candleberries": "Candleberries",
+      "Resin": "Resin (trees)",
+      "BirdNest": "Bird nest",
+      "VolcanicRock": "Volcanic rock",
+      "Roots": "Roots",
+      "Fertilizer": "Fertilizer",
+      "SeedVault": "Seed vault console",
+      "Seedbox": "Seed box",
+      "CacheStandard": "Raider cache",
+      "CacheSelfDestruct": "Raider cache, self-destructing",
+      "CacheFrozen": "Raider cache, frozen",
+      "CacheFirstWave": "Raider cache, first wave",
+      "AmmoBox": "Ammo box",
+      "AmmoBoxHigh": "Ammo box (high tier)",
+      "WeaponCase": "Weapon case",
+      "WeaponCaseHigh": "Weapon case (high tier)",
+      "MedicalBag": "Medical bag",
+      "GrenadeTube": "Grenade tube",
+      "Backpack": "Raider backpack",
+      "WeaponsRack": "Weapons rack",
+      "FruitBasket": "Fruit basket (Lush Blooms)",
+      "FruitBasketWinter": "Fruit basket (winter)",
+      "WaspHusk": "Wasp husk",
+      "WaspHuskStunning": "Wasp husk, stunning",
+      "RocketeerHusk": "Rocketeer husk",
+      "RocketeerHuskStunning": "Rocketeer husk, stunning",
+      "DeforesterHusk": "Deforester husk",
+      "Probes": "Crashed ARC probe",
+      "Couriers": "ARC Courier",
+      "PowerSocket": "Battery / fuel cell socket",
+      "FuelCell": "Fuel cell / battery",
+      "PuzzleButton": "Button / switch / console",
+      "PuzzleRelay": "Puzzle relay",
+      "CardReader": "Card reader",
+      "TubeTerminal": "Color terminal / tube station",
+      "PuzzleDoor": "Puzzle door / gate",
+      "HotelKey": "Hotel key",
+      "FieldDepot": "Field depot",
+      "FieldCrates": "Field crate",
+      "SupplyStation": "Supply call station",
+      "PowerCores": "Harvester power core",
+      "Snowpile": "Snow pile (Cold Snap)",
+      "Zipline": "Zipline (activatable)",
+      "Lift": "Lift",
+      "Bridge": "Movable bridge",
+      "BridgeSwitch": "Bridge / breaker switch",
+      "LockedRoom": "Locked room (key)",
+      "LockedDoor": "Locked door (key)",
+      "Barricaded": "Barricaded door (breach)",
+      "Door": "Door / window",
+      "Piano": "Piano"
+    },
+    "containerTypes": {
+      "Android": "Android",
+      "AntennaSet": "Antenna set",
+      "Bus": "Bus",
+      "ButtonPanel": "Button panel",
+      "CabinetDoor": "Cabinet",
+      "Car01": "Car 1",
+      "Car02": "Car 2",
+      "Car03": "Car 3",
+      "CashRegister": "Cash register",
+      "Centerbench": "Center bench",
+      "Closet": "Closet",
+      "Closet02": "Closet 2",
+      "Cmr": "Wall unit",
+      "CoffeeMachine01": "Coffee machine",
+      "CompressorTrailer": "Compressor trailer",
+      "Computer01": "Computer 1",
+      "Computer02": "Computer 2",
+      "Computer03": "Computer 3",
+      "Coms": "Comms console",
+      "Console_03": "Console",
+      "Crate": "Crate",
+      "CrateCart": "Crate cart",
+      "CupboardCafe": "Café cupboard",
+      "CupboardKitchen": "Kitchen cupboard",
+      "Drawer": "Drawer",
+      "DrawerMedical": "Medicine drawer",
+      "Dumpster": "Dumpster",
+      "FloodLight": "Floodlight",
+      "Freezer": "Freezer",
+      "Fridge": "Fridge",
+      "Fusebox": "Fuse box",
+      "Fusebox2": "Fuse box 2",
+      "GeneratorM02": "Generator",
+      "Gvt": "Government trash bin",
+      "GvtDesk": "Government desk",
+      "HighwayAntenna": "Highway antenna",
+      "InformationTerminal": "Information terminal",
+      "KitchenBench": "Kitchen counter",
+      "Locker01": "Locker",
+      "LockerMedical01": "Medical locker",
+      "Lockers": "Lockers",
+      "MuseumCrate_01": "Museum crate 1",
+      "MuseumCrate_02": "Museum crate 2",
+      "Parasitic": "Parasitic growth",
+      "PressureMonitor": "Pressure monitor",
+      "Refrigerator_01": "Refrigerator",
+      "RoadBarrier03": "Road barrier",
+      "Rocketparts_01": "Rocket parts 1",
+      "Rocketparts_02": "Rocket parts 2",
+      "Rover": "Rover",
+      "Rsr": "Research cabinet",
+      "RsrCabinetS": "Small research cabinet",
+      "RsrCartShelf": "Research cart shelf",
+      "RsrMachineM01": "Research machine",
+      "SecurityCamera01": "Security camera",
+      "Server": "Server",
+      "Shelf03": "Shelf",
+      "SolarPanel03": "Solar panel",
+      "SosBooth_01": "SOS booth",
+      "StreetSweeper": "Street sweeper",
+      "Suitcase": "Suitcase",
+      "SupportStructure": "Support structure",
+      "TVUnit": "TV unit",
+      "TapeDrive01": "Tape drive 1",
+      "TapeDrive02": "Tape drive 2",
+      "TapeDrive04": "Tape drive 4",
+      "Transformer": "Transformer",
+      "TrashCan_01": "Trash can",
+      "Trashbin": "Trash bin",
+      "TruckScannerLeft01": "Truck scanner (left)",
+      "TruckScannerRight01": "Truck scanner (right)",
+      "UtilityTruck": "Utility truck",
+      "VentMachineLarge": "Large vent machine",
+      "VentMachineLarge01": "Large vent machine 2",
+      "Workbench_01": "Workbench 1",
+      "Workbench_02": "Workbench 2",
+      "Wreck03": "ARC wreck",
+      "Wrh": "Warehouse furniture",
+      "vent03": "Vent"
     }
   }
 }
