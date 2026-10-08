@@ -4,8 +4,7 @@
     "format": "Keys are event type ids and values contain display name, icon, category and localizations."
   },
   "metadata": {
-    "generatedAt": "2026-04-11T18:03:47.665Z",
-    "source": "scripts/generate-schedule-data-from-map-conditions.js"
+    "source": "arc-data/overlay/event-types.json"
   },
   "eventTypes": {
     "close-scrutiny": {
