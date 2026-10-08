@@ -40,30 +40,42 @@ const SECTIONS: Record<SectionAnchor, (props: SectionProps) => React.JSX.Element
   changes: ChangesSection,
 };
 
-/** Highlights the anchor of the section currently in view. */
+/** The nearest scrolling ancestor (the layout's main content on desktop), or null for the window. */
+function findScrollParent(el: HTMLElement | null): HTMLElement | null {
+  for (let node = el?.parentElement ?? null; node; node = node.parentElement) {
+    const { overflowY } = getComputedStyle(node);
+    if ((overflowY === 'auto' || overflowY === 'scroll') && node.scrollHeight > node.clientHeight) return node;
+  }
+  return null;
+}
+
+/** Distance below the scroll container's top at which a section counts as the current one. */
+const ACTIVE_OFFSET = 160;
+
+/** Highlights the anchor of the section currently in view (last one whose top is above the offset). */
 function useActiveSection(anchors: readonly string[], enabled: boolean): string {
   const [active, setActive] = useState(anchors[0]);
   useEffect(() => {
-    if (!enabled || typeof IntersectionObserver === 'undefined') return;
-    const visible = new Set<string>();
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          const id = entry.target.id;
-          if (entry.isIntersecting) visible.add(id);
-          else visible.delete(id);
-        }
-        const first = anchors.find((a) => visible.has(a));
-        if (first) setActive(first);
-      },
-      // a band near the top of the viewport counts as "in view"
-      { rootMargin: '-80px 0px -60% 0px' },
-    );
-    for (const anchor of anchors) {
-      const el = document.getElementById(anchor);
-      if (el) observer.observe(el.closest('section') ?? el);
-    }
-    return () => observer.disconnect();
+    if (!enabled) return;
+    const first = document.getElementById(anchors[0]);
+    const scroller = findScrollParent(first);
+    const target: HTMLElement | Window = scroller ?? window;
+    const update = () => {
+      const base = scroller ? scroller.getBoundingClientRect().top : 0;
+      let current = anchors[0];
+      for (const anchor of anchors) {
+        const el = document.getElementById(anchor);
+        if (el && el.getBoundingClientRect().top - base <= ACTIVE_OFFSET) current = anchor;
+      }
+      setActive(current);
+    };
+    update();
+    target.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    return () => {
+      target.removeEventListener('scroll', update);
+      window.removeEventListener('resize', update);
+    };
   }, [anchors, enabled]);
   return active;
 }

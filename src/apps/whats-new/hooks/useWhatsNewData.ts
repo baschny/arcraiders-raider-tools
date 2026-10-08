@@ -40,6 +40,15 @@ export function toItemRef(catalog: ItemCatalog, slug: string): ItemRef {
 }
 
 /**
+ * Display reference of what a blueprint unlocks (name and icon of that item), falling back to the
+ * blueprint item itself. Render it with the blueprint frame (`isBlueprint`).
+ */
+export function toUnlockedRef(catalog: ItemCatalog, blueprintSlug: string, unlocksItemId?: string): ItemRef {
+  const target = unlocksItemId;
+  return toItemRef(catalog, target && catalog.items[catalog.aliases[target] ?? target] ? target : blueprintSlug);
+}
+
+/**
  * Loads the `whats-new` domain; a missing or invalid file yields null so the page can fall back.
  */
 async function loadWhatsNew(locale: string): Promise<WhatsNewData | null> {
@@ -51,13 +60,19 @@ async function loadWhatsNew(locale: string): Promise<WhatsNewData | null> {
   }
 }
 
+interface Settled {
+  /** Locale the result belongs to; a different current locale means a request is pending. */
+  locale: string;
+  data: WhatsNewPageData | null;
+  error: string | null;
+}
+
 export function useWhatsNewData(): WhatsNewDataState {
   const { locale } = useLocale();
-  const [state, setState] = useState<WhatsNewDataState>({ data: null, loading: true, error: null });
+  const [settled, setSettled] = useState<Settled | null>(null);
 
   useEffect(() => {
     let cancelled = false;
-    setState((prev) => ({ ...prev, loading: true, error: null }));
     Promise.all([
       loadItemCatalog(locale),
       loadDomain('outpost', locale),
@@ -74,21 +89,23 @@ export function useWhatsNewData(): WhatsNewDataState {
       .then(
         ([catalog, outpost, research, blueprints, stencils, amplification, trades, benches, skilltree, recipes, whatsNew]) => {
           if (cancelled) return;
-          setState({
+          setSettled({
+            locale,
             data: { catalog, outpost, research, blueprints, stencils, amplification, trades, benches, skilltree, recipes, whatsNew },
-            loading: false,
             error: null,
           });
         },
       )
       .catch((err: unknown) => {
         if (cancelled) return;
-        setState({ data: null, loading: false, error: err instanceof Error ? err.message : String(err) });
+        setSettled({ locale, data: null, error: err instanceof Error ? err.message : String(err) });
       });
     return () => {
       cancelled = true;
     };
   }, [locale]);
 
-  return state;
+  // Loading is derived: the stored result belongs to another locale (or nothing arrived yet).
+  if (!settled || settled.locale !== locale) return { data: null, loading: true, error: null };
+  return { data: settled.data, loading: false, error: settled.error };
 }

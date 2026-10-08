@@ -7,7 +7,7 @@ import type { SectionProps } from './types';
 import { RefIcon } from './shared/RefIcon';
 import { resolveTarget, resolveVia } from './shared/refs';
 import { systemInfo } from './shared/systems';
-import { capList, collapseRows, countBy, filterNewItems, groupBySystem, sortNewItems, VERDICT_ORDER } from './shared/uses';
+import { capList, collapseRows, mergeAmountRows, countBy, filterNewItems, groupBySystem, sortNewItems, VERDICT_ORDER } from './shared/uses';
 
 const ANCHOR = 'new-items';
 const GROUPS = ['material', 'gadget', 'study', 'key', 'module', 'perkPart', 'quest', 'blueprint', 'other'];
@@ -50,12 +50,12 @@ function UsePanel({ item, data, onClose }: { item: WhatsNewNewItem; data: WhatsN
               {t(info.labelKey)}
             </span>
             <div className="wn-new-items__rows">
-              {collapseRows(uses).map((row) => {
+              {mergeAmountRows(system, collapseRows(uses)).map((row) => {
                 const via = resolveVia(data, row.use);
                 const { shown, more } = capList(row.targets, MAX_TARGETS);
                 return (
-                  <div className="wn-new-items__use" key={`${row.amount}|${row.use.via ? JSON.stringify(row.use.via) : ''}`}>
-                    <span className="wn-new-items__amount">{row.amount}×</span>
+                  <div className="wn-new-items__use" key={`${row.amount}-${row.amountMax ?? ''}|${row.use.via ? JSON.stringify(row.use.via) : ''}`}>
+                    <span className="wn-new-items__amount">{row.amountMax !== undefined && row.amountMax !== row.amount ? `${row.amount}–${row.amountMax}` : row.amount}×</span>
                     <span aria-hidden="true">→</span>
                     <span className="wn-new-items__targets">
                       {shown.map((target) => {

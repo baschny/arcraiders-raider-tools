@@ -12,6 +12,10 @@ export interface ItemChipProps {
   /** Rendered inside the icon tile (e.g. a corner VerdictBadge). */
   children?: React.ReactNode;
   className?: string;
+  /** Draw the blueprint frame around the icon. */
+  isBlueprint?: boolean;
+  /** Native tooltip; defaults to the item name. */
+  title?: string;
 }
 
 const SIZES: Record<ChipSize, number> = { sm: 36, md: 52, lg: 72 };
@@ -25,6 +29,8 @@ export function ItemChip({
   marker,
   children,
   className,
+  isBlueprint,
+  title,
 }: ItemChipProps) {
   const style = { '--item-icon-size': `${SIZES[size]}px` } as React.CSSProperties;
   return (
@@ -35,6 +41,8 @@ export function ItemChip({
       rarity={item.rarity}
       showName={showName}
       showQuantity={false}
+      isBlueprint={isBlueprint}
+      title={title ?? item.name}
       onClick={onClick}
       className={['wn-chip', `wn-chip--${size}`, className ?? ''].filter(Boolean).join(' ')}
       style={style}

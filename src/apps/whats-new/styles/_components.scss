@@ -208,6 +208,7 @@ $verdict-sell: #9e9e9e;
   line-height: 1.4;
   white-space: nowrap;
   color: #111;
+  gap: 4px;
 
   &--keep { background: $verdict-keep; }
   &--optional { background: $verdict-optional; }

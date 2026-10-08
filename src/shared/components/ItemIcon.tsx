@@ -10,6 +10,8 @@ export interface ItemIconProps {
   showName?: boolean;
   showQuantity?: boolean;
   isBlueprint?: boolean;
+  /** Native tooltip on the tile. */
+  title?: string;
   onClick?: () => void;
   className?: string;
   style?: React.CSSProperties;
@@ -29,6 +31,7 @@ export function ItemIcon({
   showName = true,
   showQuantity = false,
   isBlueprint = false,
+  title,
   onClick,
   className,
   style,
@@ -63,6 +66,7 @@ export function ItemIcon({
       onKeyDown={handleKeyDown}
       data-rarity={normalizedRarity?.toLowerCase()}
       data-item-id={itemId}
+      title={title}
       style={style}
       ref={containerRef}
     >

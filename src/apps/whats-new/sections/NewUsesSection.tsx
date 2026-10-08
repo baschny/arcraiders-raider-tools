@@ -46,7 +46,15 @@ export function NewUsesSection({ data }: SectionProps) {
   const { t, tm } = useLocale();
   const [showAll, setShowAll] = useState(false);
   const all = data.whatsNew?.versions['frozen-trail']?.existingItems;
-  const sorted = useMemo(() => sortByImpact(all ?? [], (id) => toItemRef(data.catalog, id)), [all, data.catalog]);
+  const sorted = useMemo(() => {
+    // Currencies (coin sinks, stash tiers, trader prices) are covered by the What changed section.
+    const isStash = (u: WhatsNewUse) => typeof u.target === 'object' && 'stashSlots' in u.target;
+    const items = (all ?? [])
+      .filter((i) => data.catalog.items[data.catalog.aliases[i.id] ?? i.id]?.category !== 'Currency')
+      .map((i) => ({ ...i, gained: i.gained?.filter((u) => !isStash(u)), lost: i.lost?.filter((u) => !isStash(u)) }))
+      .filter((i) => (i.gained?.length ?? 0) + (i.lost?.length ?? 0) > 0);
+    return sortByImpact(items, (id) => toItemRef(data.catalog, id));
+  }, [all, data.catalog]);
   const rows = showAll ? sorted : sorted.slice(0, TOP);
 
   return (

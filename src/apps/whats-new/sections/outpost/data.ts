@@ -1,7 +1,7 @@
 import { nameOf } from '../../../../shared/gamedata/loader';
 import type { Amount, Requirement } from '../../../../shared/gamedata/types';
 import type { AmountRef, ItemRef } from '../../components';
-import { toItemRef, type WhatsNewPageData } from '../../hooks/useWhatsNewData';
+import { toItemRef, toUnlockedRef, type WhatsNewPageData } from '../../hooks/useWhatsNewData';
 
 export interface RoomOption {
   item: ItemRef;
@@ -135,12 +135,13 @@ export function designExample(data: WhatsNewPageData): { design: ItemRef; furnit
 
 /** Examples for the "learn here" row: a few designs and blueprints. */
 export function learnExamples(data: WhatsNewPageData, perKind = 3): { designs: ItemRef[]; blueprints: ItemRef[] } {
+  // designs show the furniture piece they unlock, blueprints the item they unlock
   const designs = Object.values(data.outpost.structure.designs)
     .slice(0, perKind)
-    .map((d) => toItemRef(data.catalog, d.id));
+    .map((d) => toItemRef(data.catalog, d.unlocks?.[0] ?? d.id));
   const blueprints = Object.values(data.blueprints.structure.blueprints)
     .slice(0, perKind)
-    .map((b) => toItemRef(data.catalog, b.blueprintItemId));
+    .map((b) => toUnlockedRef(data.catalog, b.blueprintItemId, b.unlocksItemId));
   return { designs, blueprints };
 }
 

@@ -19,7 +19,7 @@ export function VerdictBadge({ verdict, label, count, corner = false }: VerdictB
       data-verdict={verdict}
     >
       {label ?? verdict}
-      {count !== undefined && <span className="wn-verdict__count"> {count}</span>}
+      {count !== undefined && <span className="wn-verdict__count">{count}</span>}
     </span>
   );
 }

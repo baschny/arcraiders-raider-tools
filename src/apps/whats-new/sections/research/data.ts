@@ -1,5 +1,5 @@
 import type { WhatsNewPageData } from '../../hooks/useWhatsNewData';
-import { toItemRef } from '../../hooks/useWhatsNewData';
+import { toItemRef, toUnlockedRef } from '../../hooks/useWhatsNewData';
 import type { AmountRef, ItemRef } from '../../components';
 
 export const RESEARCH_BENCH = 'research_station';
@@ -21,6 +21,8 @@ export interface StationLevel {
 export interface ResearchedBlueprint {
   offerId: string;
   item: ItemRef;
+  /** The item the blueprint unlocks (icon and name for display). */
+  unlocks: ItemRef;
   rp: number;
   level: number;
   isNew: boolean;
@@ -40,6 +42,7 @@ export interface ResearchData {
   /** One representative reward icon per track. */
   samples: { blueprint?: ItemRef; design?: ItemRef; amplified?: ItemRef };
   craftable: ResearchedBlueprint[];
+  /** Blueprints that cannot be researched, shown as the item they unlock. */
   findOnly: ItemRef[];
 }
 
@@ -76,6 +79,8 @@ export function buildResearchData(data: WhatsNewPageData): ResearchData {
 
   // Classify the research offers by what they reward.
   const blueprintItems = new Set(Object.values(data.blueprints.structure.blueprints).map((b) => b.blueprintItemId));
+  const unlockedBy = new Map(Object.values(data.blueprints.structure.blueprints).map((b) => [b.blueprintItemId, b.unlocksItemId]));
+  const unlocked = (slug: string) => toUnlockedRef(catalog, slug, unlockedBy.get(slug));
   const craftable: ResearchedBlueprint[] = [];
   let designCount = 0;
   let amplifiedCount = 0;
@@ -98,6 +103,7 @@ export function buildResearchData(data: WhatsNewPageData): ResearchData {
       craftable.push({
         offerId: o.id,
         item: ref(reward),
+        unlocks: unlocked(reward),
         rp: rpAmount,
         level: o.benchLevel,
         isNew: (catalog.items[catalog.aliases[reward] ?? reward]?.addedIn ?? '') === '2.0',
@@ -111,7 +117,7 @@ export function buildResearchData(data: WhatsNewPageData): ResearchData {
   const researched = new Set(craftable.map((c) => c.item.id));
   const findOnly = [...blueprintItems]
     .filter((id) => !researched.has(id))
-    .map(ref)
+    .map(unlocked)
     .sort((a, b) => a.name.localeCompare(b.name));
 
   return {

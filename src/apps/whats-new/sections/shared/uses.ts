@@ -76,6 +76,32 @@ export interface UseRow {
   use: WhatsNewUse;
   /** Distinct targets in input order. */
   targets: WhatsNewRef[];
+  /** Set on a merged row: the amounts span `amount`..`amountMax`. */
+  amountMax?: number;
+}
+
+/** More distinct amounts than this in one system collapse into a single range row. */
+export const MAX_AMOUNT_ROWS = 3;
+
+/**
+ * Collapses the per-amount rows of a system into one range row ("5–50× → targets") when it has
+ * too many distinct amounts or is furniture (one row per amount is noise there).
+ */
+export function mergeAmountRows(system: WhatsNewSystem, rows: UseRow[]): UseRow[] {
+  if (rows.length === 0 || (system !== 'outpostFurniture' && rows.length <= MAX_AMOUNT_ROWS)) return rows;
+  const amounts = rows.map((r) => r.amount);
+  const targets = rows
+    .flatMap((r) => r.targets)
+    .filter((t, i, all) => all.findIndex((o) => refKey(o) === refKey(t)) === i);
+  const sameVia = rows.every((r) => viaKey(r.use) === viaKey(rows[0].use));
+  const merged: UseRow = {
+    amount: Math.min(...amounts),
+    amountMax: Math.max(...amounts),
+    via: sameVia ? rows[0].via : undefined,
+    use: sameVia ? rows[0].use : { ...rows[0].use, via: undefined },
+    targets,
+  };
+  return [merged];
 }
 
 /** Collapses uses of one system into rows sharing amount and via, with duplicate targets removed. */

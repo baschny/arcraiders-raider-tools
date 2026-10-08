@@ -136,8 +136,11 @@ export function OutpostSection({ data, variant }: SectionProps) {
         <div className="wn-outpost__block wn-outpost__learn">
           <h3 className="wn-outpost__block-title">{t('whatsNew.outpost.learnHere')}</h3>
           <div className="wn-outpost__row wn-outpost__row--scroll">
-            {[...learn.blueprints, ...learn.designs].map((item) => (
-              <ItemChip key={item.id} item={item} size="sm" />
+            {learn.blueprints.map((item) => (
+              <ItemChip key={`bp-${item.id}`} item={item} isBlueprint size="sm" />
+            ))}
+            {learn.designs.map((item) => (
+              <ItemChip key={`design-${item.id}`} item={item} size="sm" />
             ))}
           </div>
         </div>
@@ -145,7 +148,7 @@ export function OutpostSection({ data, variant }: SectionProps) {
         <div className="wn-outpost__block wn-outpost__furniture">
           <div className="wn-outpost__block-head">
             <h3 className="wn-outpost__block-title">{t('whatsNew.outpost.furnitureTitle')}</h3>
-            <Counter label={t('whatsNew.outpost.pieces')} value={furniture.length} total={furnitureCount(data)} />
+            <Counter label={t('whatsNew.outpost.pieces')} total={furnitureCount(data)} />
           </div>
           <div className="wn-outpost__row wn-outpost__row--scroll">
             {furniture.map((f) => (

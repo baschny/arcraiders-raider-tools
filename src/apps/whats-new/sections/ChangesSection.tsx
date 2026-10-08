@@ -6,6 +6,7 @@ import {
   TRADER_PORTRAITS,
   benchTierRef,
   buildAnvilRows,
+  anvilBaseName,
   buildStashTiers,
   compactNumber,
   groupRecycling,
@@ -57,7 +58,7 @@ function AnvilCard({ rows, resolve, t }: { rows: AnvilRow[]; resolve: Resolve; t
     <div className="wn-changes__card wn-changes__card--anvil">
       <div className="wn-changes__card-head">
         <ItemChip item={resolve('anvil_i')} size="md" showName={false} />
-        <span className="wn-changes__card-title">Anvil</span>
+        <span className="wn-changes__card-title">{anvilBaseName(resolve('anvil_i').name)}</span>
       </div>
       {kinds.map((kind) => {
         const list = rows.filter((r) => r.kind === kind);
@@ -119,7 +120,7 @@ export function ChangesSection({ data }: SectionProps) {
               ))}
               {recycling.anvilUniform ? (
                 <BeforeAfterRow
-                  title={{ ...resolve('anvil_i'), name: 'Anvil I–IV' }}
+                  title={{ ...resolve('anvil_i'), name: `${anvilBaseName(resolve('anvil_i').name)} ${romanTier(1)}–${romanTier(4)}` }}
                   before={refs(resolve, recycling.anvil[0].before)}
                   after={refs(resolve, recycling.anvil[0].after)}
                 />
@@ -127,7 +128,7 @@ export function ChangesSection({ data }: SectionProps) {
                 recycling.anvil.map((r) => (
                   <BeforeAfterRow
                     key={r.id}
-                    title={{ ...resolve(r.id), name: `Anvil ${romanTier(r.tier)}` }}
+                    title={{ ...resolve(r.id), name: resolve(r.id).name }}
                     before={refs(resolve, r.before)}
                     after={refs(resolve, r.after)}
                   />

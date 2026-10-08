@@ -36,6 +36,11 @@ export function romanTier(tier: number): string {
   return ROMAN[tier] ?? String(tier);
 }
 
+/** Localized name of the Anvil family: the tier item's name without its trailing roman numeral. */
+export function anvilBaseName(tierName: string): string {
+  return tierName.replace(/\s+(?:I{1,3}|IV|V|VI)$/, '') || tierName;
+}
+
 export type AnvilRowKind = 'craft' | 'upgrade' | 'repair';
 
 export interface AnvilRow {

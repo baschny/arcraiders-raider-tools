@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import stencilsJson from '../../../../../public/data/game/stencils.json';
-import { buildStencilGroups } from '../StencilsSection';
+import { buildStencilGroups } from '../stencils/data';
 import type { StencilsStructure } from '../../../../shared/gamedata/types';
 
 describe('stencils section data', () => {

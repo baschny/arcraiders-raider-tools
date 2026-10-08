@@ -75,7 +75,7 @@ function Tracks({ rd, t, tm }: { rd: ResearchData; t: T; tm: Tm }) {
 function BlueprintLists({ rd, t }: { rd: ResearchData; t: T }) {
   const [selected, setSelected] = useState<string | null>(null);
   const current: ResearchedBlueprint | undefined = rd.craftable.find((c) => c.offerId === selected);
-  const outputs: AmountRef[] = current ? [{ item: current.item }] : [];
+  const outputs: AmountRef[] = current ? [{ item: current.unlocks }] : [];
   return (
     <div className="wn-research__lists">
       <div className="wn-research__list">
@@ -84,7 +84,8 @@ function BlueprintLists({ rd, t }: { rd: ResearchData; t: T }) {
           {rd.craftable.map((c) => (
             <ItemChip
               key={c.offerId}
-              item={c.item}
+              item={c.unlocks}
+              isBlueprint
               size="md"
               marker={c.isNew ? 'new' : undefined}
               className={c.offerId === selected ? 'wn-research__chip--selected' : undefined}
@@ -97,7 +98,7 @@ function BlueprintLists({ rd, t }: { rd: ResearchData; t: T }) {
         </div>
         {current && (
           <div className="wn-research__recipe">
-            <RecipeRow inputs={current.inputs} outputs={outputs} label={current.item.name} />
+            <RecipeRow inputs={current.inputs} outputs={outputs} label={current.unlocks.name} />
           </div>
         )}
       </div>
@@ -105,7 +106,7 @@ function BlueprintLists({ rd, t }: { rd: ResearchData; t: T }) {
         <h3 className="wn-research__heading">{t('whatsNew.research.findOnly')}</h3>
         <div className="wn-research__grid">
           {rd.findOnly.map((item: ItemRef) => (
-            <ItemChip key={item.id} item={item} size="md" />
+            <ItemChip key={item.id} item={item} isBlueprint size="md" />
           ))}
         </div>
       </div>

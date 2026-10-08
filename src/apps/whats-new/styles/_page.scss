@@ -44,6 +44,15 @@
     font-size: $font-sm;
     color: $text-secondary;
   }
+
+  @media (max-width: $breakpoint-mobile) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing-sm;
+
+    &__tile { padding: $spacing-sm; gap: 2px; }
+    &__value { font-size: 20px; }
+    &__label { font-size: 11px; line-height: 1.2; }
+  }
 }
 
 .wn-chipbar {
@@ -61,6 +70,11 @@
   scrollbar-width: none;
 
   &::-webkit-scrollbar { display: none; }
+
+  // Below the breakpoint the window scrolls and the app header is fixed on top.
+  @media (max-width: $breakpoint-mobile) {
+    top: 48px;
+  }
 
   &__chip {
     flex: 0 0 auto;
@@ -84,6 +98,9 @@
 
 .wn-section {
   margin-bottom: $spacing-xl;
+
+  // keep anchored headers clear of the sticky chip bar
+  .wn-section-header { scroll-margin-top: 112px; }
 
   &__body--placeholder {
     padding: $spacing-lg;
