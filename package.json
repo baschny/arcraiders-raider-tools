@@ -20,7 +20,9 @@
     "generate:map-events-localizations": "node ./scripts/generate-map-event-localizations.js",
     "generate:schedule": "npm run generate:maps-localizations && npm run generate:map-events-localizations && node ./scripts/generate-schedule-data-from-map-conditions.js",
     "generate:projects-quartermaster": "npx tsx ./scripts/generate-quartermaster-projects.ts",
-    "generate:maps": "node ./scripts/generate-maps-data.mjs"
+    "generate:maps": "node ./scripts/generate-maps-data.mjs",
+    "generate:game-data": "npx tsx ./scripts/generate-game-data.ts",
+    "typecheck:scripts": "tsc -p tsconfig.scripts.json"
   },
   "dependencies": {
     "amazon-cognito-identity-js": "^6.3.16",
