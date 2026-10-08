@@ -4,7 +4,7 @@
     "format": "Schedule is keyed by region id, then map id, then major/minor. Schedule keys are UNIX timestamps (seconds, UTC) at event start; values are event type ids."
   },
   "metadata": {
-    "generatedAt": "2026-10-08T14:32:33.288Z",
+    "generatedAt": "2026-10-08T17:45:33.640Z",
     "sourceFiles": {
       "mapConditionsOverview": "https://arcraiders.com/map-conditions",
       "eventTypes": "public/data/schedule/event-types.json",
@@ -12,12 +12,12 @@
     },
     "timestampRange": {
       "start": 1791410400,
-      "end": 1791619200
+      "end": 1791630000
     },
     "mergedPastEvents": {
       "windowSeconds": 2592000,
-      "now": 1791469953,
-      "count": 0
+      "now": 1791481533,
+      "count": 56
     },
     "ignoredMapNames": [],
     "ignoredEntriesCount": 0
@@ -360,7 +360,8 @@
           "1791550800": "arc-frigate",
           "1791561600": "arc-frigate",
           "1791572400": "electromagnetic-storm",
-          "1791586800": "arc-frigate"
+          "1791586800": "arc-frigate",
+          "1791597600": "arc-frigate"
         },
         "minor": {
           "1791442800": "uncovered-caches",
@@ -379,7 +380,8 @@
           "1791568800": "harvester",
           "1791579600": "prospecting-probes",
           "1791583200": "prospecting-probes",
-          "1791590400": "prospecting-probes"
+          "1791590400": "prospecting-probes",
+          "1791601200": "uncovered-caches"
         }
       },
       "buried-city": {
@@ -414,7 +416,8 @@
           "1791550800": "bird-city",
           "1791561600": "bird-city",
           "1791572400": "bird-city",
-          "1791586800": "bird-city"
+          "1791586800": "bird-city",
+          "1791597600": "bird-city"
         }
       },
       "the-spaceport": {
@@ -437,7 +440,8 @@
           "1791565200": "electromagnetic-storm",
           "1791576000": "arc-frigate",
           "1791583200": "electromagnetic-storm",
-          "1791590400": "electromagnetic-storm"
+          "1791590400": "electromagnetic-storm",
+          "1791601200": "arc-frigate"
         },
         "minor": {
           "1791446400": "prospecting-probes",
@@ -450,7 +454,8 @@
           "1791529200": "launch-tower-loot",
           "1791536400": "prospecting-probes",
           "1791547200": "matriarch",
-          "1791586800": "harvester"
+          "1791586800": "harvester",
+          "1791594000": "matriarch"
         }
       },
       "blue-gate": {
@@ -469,7 +474,8 @@
           "1791558000": "arc-frigate",
           "1791568800": "arc-frigate",
           "1791579600": "arc-frigate",
-          "1791583200": "arc-frigate"
+          "1791583200": "arc-frigate",
+          "1791594000": "night-raid"
         },
         "minor": {
           "1791442800": "harvester",
@@ -486,7 +492,9 @@
           "1791554400": "prospecting-probes",
           "1791561600": "matriarch",
           "1791572400": "matriarch",
-          "1791576000": "harvester"
+          "1791576000": "harvester",
+          "1791597600": "harvester",
+          "1791601200": "harvester"
         }
       },
       "riven-tides": {
@@ -495,7 +503,8 @@
           "1791478800": "night-raid",
           "1791511200": "night-raid",
           "1791540000": "night-raid",
-          "1791568800": "night-raid"
+          "1791568800": "night-raid",
+          "1791601200": "night-raid"
         },
         "minor": {
           "1791446400": "beachcombing",
@@ -513,7 +522,8 @@
           "1791565200": "uncovered-caches",
           "1791568800": "beachcombing",
           "1791579600": "beachcombing",
-          "1791583200": "beachcombing"
+          "1791583200": "beachcombing",
+          "1791594000": "beachcombing"
         }
       },
       "pendola-pass": {
@@ -531,7 +541,8 @@
           "1791547200": "arc-frigate",
           "1791561600": "night-raid",
           "1791572400": "arc-frigate",
-          "1791586800": "night-raid"
+          "1791586800": "night-raid",
+          "1791594000": "arc-frigate"
         },
         "minor": {
           "1791468000": "redirection",
@@ -552,7 +563,8 @@
           "1791529200": "night-raid",
           "1791550800": "night-raid",
           "1791579600": "night-raid",
-          "1791583200": "night-raid"
+          "1791583200": "night-raid",
+          "1791597600": "night-raid"
         },
         "minor": {}
       }
@@ -573,7 +585,8 @@
           "1791576000": "arc-frigate",
           "1791586800": "arc-frigate",
           "1791597600": "electromagnetic-storm",
-          "1791612000": "arc-frigate"
+          "1791612000": "arc-frigate",
+          "1791622800": "arc-frigate"
         },
         "minor": {
           "1791468000": "uncovered-caches",
@@ -592,7 +605,8 @@
           "1791594000": "harvester",
           "1791604800": "prospecting-probes",
           "1791608400": "prospecting-probes",
-          "1791615600": "prospecting-probes"
+          "1791615600": "prospecting-probes",
+          "1791626400": "uncovered-caches"
         }
       },
       "buried-city": {
@@ -627,7 +641,8 @@
           "1791576000": "bird-city",
           "1791586800": "bird-city",
           "1791597600": "bird-city",
-          "1791612000": "bird-city"
+          "1791612000": "bird-city",
+          "1791622800": "bird-city"
         }
       },
       "the-spaceport": {
@@ -650,7 +665,8 @@
           "1791590400": "electromagnetic-storm",
           "1791601200": "arc-frigate",
           "1791608400": "electromagnetic-storm",
-          "1791615600": "electromagnetic-storm"
+          "1791615600": "electromagnetic-storm",
+          "1791626400": "arc-frigate"
         },
         "minor": {
           "1791471600": "prospecting-probes",
@@ -663,7 +679,8 @@
           "1791554400": "launch-tower-loot",
           "1791561600": "prospecting-probes",
           "1791572400": "matriarch",
-          "1791612000": "harvester"
+          "1791612000": "harvester",
+          "1791619200": "matriarch"
         }
       },
       "blue-gate": {
@@ -682,7 +699,8 @@
           "1791583200": "arc-frigate",
           "1791594000": "arc-frigate",
           "1791604800": "arc-frigate",
-          "1791608400": "arc-frigate"
+          "1791608400": "arc-frigate",
+          "1791619200": "night-raid"
         },
         "minor": {
           "1791468000": "harvester",
@@ -699,7 +717,9 @@
           "1791579600": "prospecting-probes",
           "1791586800": "matriarch",
           "1791597600": "matriarch",
-          "1791601200": "harvester"
+          "1791601200": "harvester",
+          "1791622800": "harvester",
+          "1791626400": "harvester"
         }
       },
       "riven-tides": {
@@ -708,7 +728,8 @@
           "1791504000": "night-raid",
           "1791536400": "night-raid",
           "1791565200": "night-raid",
-          "1791594000": "night-raid"
+          "1791594000": "night-raid",
+          "1791626400": "night-raid"
         },
         "minor": {
           "1791471600": "beachcombing",
@@ -726,7 +747,8 @@
           "1791590400": "uncovered-caches",
           "1791594000": "beachcombing",
           "1791604800": "beachcombing",
-          "1791608400": "beachcombing"
+          "1791608400": "beachcombing",
+          "1791619200": "beachcombing"
         }
       },
       "pendola-pass": {
@@ -744,7 +766,8 @@
           "1791572400": "arc-frigate",
           "1791586800": "night-raid",
           "1791597600": "arc-frigate",
-          "1791612000": "night-raid"
+          "1791612000": "night-raid",
+          "1791619200": "arc-frigate"
         },
         "minor": {}
       },
@@ -757,7 +780,8 @@
           "1791554400": "night-raid",
           "1791576000": "night-raid",
           "1791604800": "night-raid",
-          "1791608400": "night-raid"
+          "1791608400": "night-raid",
+          "1791622800": "night-raid"
         },
         "minor": {}
       }
@@ -778,7 +802,8 @@
           "1791572400": "arc-frigate",
           "1791583200": "arc-frigate",
           "1791594000": "electromagnetic-storm",
-          "1791608400": "arc-frigate"
+          "1791608400": "arc-frigate",
+          "1791619200": "arc-frigate"
         },
         "minor": {
           "1791464400": "uncovered-caches",
@@ -797,7 +822,8 @@
           "1791590400": "harvester",
           "1791601200": "prospecting-probes",
           "1791604800": "prospecting-probes",
-          "1791612000": "prospecting-probes"
+          "1791612000": "prospecting-probes",
+          "1791622800": "uncovered-caches"
         }
       },
       "buried-city": {
@@ -832,7 +858,8 @@
           "1791572400": "bird-city",
           "1791583200": "bird-city",
           "1791594000": "bird-city",
-          "1791608400": "bird-city"
+          "1791608400": "bird-city",
+          "1791619200": "bird-city"
         }
       },
       "the-spaceport": {
@@ -855,7 +882,8 @@
           "1791586800": "electromagnetic-storm",
           "1791597600": "arc-frigate",
           "1791604800": "electromagnetic-storm",
-          "1791612000": "electromagnetic-storm"
+          "1791612000": "electromagnetic-storm",
+          "1791622800": "arc-frigate"
         },
         "minor": {
           "1791468000": "prospecting-probes",
@@ -868,7 +896,8 @@
           "1791550800": "launch-tower-loot",
           "1791558000": "prospecting-probes",
           "1791568800": "matriarch",
-          "1791608400": "harvester"
+          "1791608400": "harvester",
+          "1791615600": "matriarch"
         }
       },
       "blue-gate": {
@@ -887,7 +916,8 @@
           "1791579600": "arc-frigate",
           "1791590400": "arc-frigate",
           "1791601200": "arc-frigate",
-          "1791604800": "arc-frigate"
+          "1791604800": "arc-frigate",
+          "1791615600": "night-raid"
         },
         "minor": {
           "1791464400": "harvester",
@@ -904,7 +934,9 @@
           "1791576000": "prospecting-probes",
           "1791583200": "matriarch",
           "1791594000": "matriarch",
-          "1791597600": "harvester"
+          "1791597600": "harvester",
+          "1791619200": "harvester",
+          "1791622800": "harvester"
         }
       },
       "riven-tides": {
@@ -913,7 +945,8 @@
           "1791500400": "night-raid",
           "1791532800": "night-raid",
           "1791561600": "night-raid",
-          "1791590400": "night-raid"
+          "1791590400": "night-raid",
+          "1791622800": "night-raid"
         },
         "minor": {
           "1791468000": "beachcombing",
@@ -931,7 +964,8 @@
           "1791586800": "uncovered-caches",
           "1791590400": "beachcombing",
           "1791601200": "beachcombing",
-          "1791604800": "beachcombing"
+          "1791604800": "beachcombing",
+          "1791615600": "beachcombing"
         }
       },
       "pendola-pass": {
@@ -949,7 +983,8 @@
           "1791568800": "arc-frigate",
           "1791583200": "night-raid",
           "1791594000": "arc-frigate",
-          "1791608400": "night-raid"
+          "1791608400": "night-raid",
+          "1791615600": "arc-frigate"
         },
         "minor": {}
       },
@@ -962,7 +997,8 @@
           "1791550800": "night-raid",
           "1791572400": "night-raid",
           "1791601200": "night-raid",
-          "1791604800": "night-raid"
+          "1791604800": "night-raid",
+          "1791619200": "night-raid"
         },
         "minor": {}
       }
@@ -983,7 +1019,8 @@
           "1791532800": "arc-frigate",
           "1791543600": "arc-frigate",
           "1791554400": "electromagnetic-storm",
-          "1791568800": "arc-frigate"
+          "1791568800": "arc-frigate",
+          "1791579600": "arc-frigate"
         },
         "minor": {
           "1791424800": "uncovered-caches",
@@ -1002,7 +1039,8 @@
           "1791550800": "harvester",
           "1791561600": "prospecting-probes",
           "1791565200": "prospecting-probes",
-          "1791572400": "prospecting-probes"
+          "1791572400": "prospecting-probes",
+          "1791583200": "uncovered-caches"
         }
       },
       "buried-city": {
@@ -1037,7 +1075,8 @@
           "1791532800": "bird-city",
           "1791543600": "bird-city",
           "1791554400": "bird-city",
-          "1791568800": "bird-city"
+          "1791568800": "bird-city",
+          "1791579600": "bird-city"
         }
       },
       "the-spaceport": {
@@ -1060,7 +1099,8 @@
           "1791547200": "electromagnetic-storm",
           "1791558000": "arc-frigate",
           "1791565200": "electromagnetic-storm",
-          "1791572400": "electromagnetic-storm"
+          "1791572400": "electromagnetic-storm",
+          "1791583200": "arc-frigate"
         },
         "minor": {
           "1791428400": "prospecting-probes",
@@ -1073,7 +1113,8 @@
           "1791511200": "launch-tower-loot",
           "1791518400": "prospecting-probes",
           "1791529200": "matriarch",
-          "1791568800": "harvester"
+          "1791568800": "harvester",
+          "1791576000": "matriarch"
         }
       },
       "blue-gate": {
@@ -1092,7 +1133,8 @@
           "1791540000": "arc-frigate",
           "1791550800": "arc-frigate",
           "1791561600": "arc-frigate",
-          "1791565200": "arc-frigate"
+          "1791565200": "arc-frigate",
+          "1791576000": "night-raid"
         },
         "minor": {
           "1791424800": "harvester",
@@ -1109,7 +1151,9 @@
           "1791536400": "prospecting-probes",
           "1791543600": "matriarch",
           "1791554400": "matriarch",
-          "1791558000": "harvester"
+          "1791558000": "harvester",
+          "1791579600": "harvester",
+          "1791583200": "harvester"
         }
       },
       "riven-tides": {
@@ -1118,7 +1162,8 @@
           "1791460800": "night-raid",
           "1791493200": "night-raid",
           "1791522000": "night-raid",
-          "1791550800": "night-raid"
+          "1791550800": "night-raid",
+          "1791583200": "night-raid"
         },
         "minor": {
           "1791428400": "beachcombing",
@@ -1136,7 +1181,8 @@
           "1791547200": "uncovered-caches",
           "1791550800": "beachcombing",
           "1791561600": "beachcombing",
-          "1791565200": "beachcombing"
+          "1791565200": "beachcombing",
+          "1791576000": "beachcombing"
         }
       },
       "pendola-pass": {
@@ -1154,7 +1200,8 @@
           "1791529200": "arc-frigate",
           "1791543600": "night-raid",
           "1791554400": "arc-frigate",
-          "1791568800": "night-raid"
+          "1791568800": "night-raid",
+          "1791576000": "arc-frigate"
         },
         "minor": {}
       },
@@ -1167,7 +1214,8 @@
           "1791511200": "night-raid",
           "1791532800": "night-raid",
           "1791561600": "night-raid",
-          "1791565200": "night-raid"
+          "1791565200": "night-raid",
+          "1791579600": "night-raid"
         },
         "minor": {}
       }
@@ -1188,7 +1236,8 @@
           "1791518400": "arc-frigate",
           "1791529200": "arc-frigate",
           "1791540000": "electromagnetic-storm",
-          "1791554400": "arc-frigate"
+          "1791554400": "arc-frigate",
+          "1791565200": "arc-frigate"
         },
         "minor": {
           "1791410400": "uncovered-caches",
@@ -1207,7 +1256,8 @@
           "1791536400": "harvester",
           "1791547200": "prospecting-probes",
           "1791550800": "prospecting-probes",
-          "1791558000": "prospecting-probes"
+          "1791558000": "prospecting-probes",
+          "1791568800": "uncovered-caches"
         }
       },
       "buried-city": {
@@ -1242,7 +1292,8 @@
           "1791518400": "bird-city",
           "1791529200": "bird-city",
           "1791540000": "bird-city",
-          "1791554400": "bird-city"
+          "1791554400": "bird-city",
+          "1791565200": "bird-city"
         }
       },
       "the-spaceport": {
@@ -1265,7 +1316,8 @@
           "1791532800": "electromagnetic-storm",
           "1791543600": "arc-frigate",
           "1791550800": "electromagnetic-storm",
-          "1791558000": "electromagnetic-storm"
+          "1791558000": "electromagnetic-storm",
+          "1791568800": "arc-frigate"
         },
         "minor": {
           "1791414000": "prospecting-probes",
@@ -1278,7 +1330,8 @@
           "1791496800": "launch-tower-loot",
           "1791504000": "prospecting-probes",
           "1791514800": "matriarch",
-          "1791554400": "harvester"
+          "1791554400": "harvester",
+          "1791561600": "matriarch"
         }
       },
       "blue-gate": {
@@ -1297,7 +1350,8 @@
           "1791525600": "arc-frigate",
           "1791536400": "arc-frigate",
           "1791547200": "arc-frigate",
-          "1791550800": "arc-frigate"
+          "1791550800": "arc-frigate",
+          "1791561600": "night-raid"
         },
         "minor": {
           "1791410400": "harvester",
@@ -1314,7 +1368,9 @@
           "1791522000": "prospecting-probes",
           "1791529200": "matriarch",
           "1791540000": "matriarch",
-          "1791543600": "harvester"
+          "1791543600": "harvester",
+          "1791565200": "harvester",
+          "1791568800": "harvester"
         }
       },
       "riven-tides": {
@@ -1323,7 +1379,8 @@
           "1791446400": "night-raid",
           "1791478800": "night-raid",
           "1791507600": "night-raid",
-          "1791536400": "night-raid"
+          "1791536400": "night-raid",
+          "1791568800": "night-raid"
         },
         "minor": {
           "1791414000": "beachcombing",
@@ -1341,7 +1398,8 @@
           "1791532800": "uncovered-caches",
           "1791536400": "beachcombing",
           "1791547200": "beachcombing",
-          "1791550800": "beachcombing"
+          "1791550800": "beachcombing",
+          "1791561600": "beachcombing"
         }
       },
       "pendola-pass": {
@@ -1359,7 +1417,8 @@
           "1791514800": "arc-frigate",
           "1791529200": "night-raid",
           "1791540000": "arc-frigate",
-          "1791554400": "night-raid"
+          "1791554400": "night-raid",
+          "1791561600": "arc-frigate"
         },
         "minor": {}
       },
@@ -1372,7 +1431,8 @@
           "1791496800": "night-raid",
           "1791518400": "night-raid",
           "1791547200": "night-raid",
-          "1791550800": "night-raid"
+          "1791550800": "night-raid",
+          "1791565200": "night-raid"
         },
         "minor": {}
       }
