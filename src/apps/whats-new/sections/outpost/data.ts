@@ -41,16 +41,6 @@ export interface CelesteTrade {
 /** Room thumbnails by room slug. Filled when the room images exist (see ticket W2). */
 export const ROOM_IMAGES: Record<string, string> = {};
 
-/**
- * The domain has no offers for the first expansion (Level 1 to 2). Cost confirmed in game:
- * 20 Sheet Metal, 3 Steel Cable, 3 Cable Stripper; every non-base room may be chosen.
- */
-const TIER1_FALLBACK_COST: Amount[] = [
-  { itemId: 'sheet_metal', quantity: 20 },
-  { itemId: 'steel_cable', quantity: 3 },
-  { itemId: 'frozen_trail_mechanical_1', quantity: 3 },
-];
-
 /** Furniture categories of the game grouped into six display groups, in display order. */
 export const FURNITURE_GROUPS: { id: string; categories: string[] }[] = [
   { id: 'beds', categories: ['Bed'] },
@@ -96,24 +86,20 @@ export function buildExpansionTiers(data: WhatsNewPageData): ExpansionTier[] {
   const unlocks = unlocksByLevel(data);
   const maxLevel = Math.max(1, ...levels.map((l) => l.level));
   const byTier = new Map<number, { cost: Amount[]; rooms: RoomOption[] }>();
+  // Each room has one build offer per outpost level it can be installed at (from level N to N+1).
   for (const room of Object.values(rooms)) {
-    if (!room.craft || !('items' in room.craft.cost)) continue;
-    const tier = outpostLevelOf(room.craft.requires);
-    if (tier === undefined) continue;
-    const entry = byTier.get(tier) ?? { cost: room.craft.cost.items, rooms: [] };
-    entry.rooms.push({
-      item: toItemRef(catalog, room.id),
-      image: ROOM_IMAGES[room.id],
-      special: room.id === 'studious_room',
-    });
-    byTier.set(tier, entry);
-  }
-  if (!byTier.has(1) && maxLevel >= 2) {
-    const all = Object.values(rooms).filter((r) => r.id !== 'base_room' && r.id !== 'studious_room');
-    byTier.set(1, {
-      cost: TIER1_FALLBACK_COST,
-      rooms: all.map((r) => ({ item: toItemRef(catalog, r.id), image: ROOM_IMAGES[r.id] })),
-    });
+    for (const craft of room.crafts ?? []) {
+      if (!('items' in craft.cost)) continue;
+      const tier = outpostLevelOf(craft.requires);
+      if (tier === undefined || tier >= maxLevel) continue;
+      const entry = byTier.get(tier) ?? { cost: craft.cost.items, rooms: [] };
+      entry.rooms.push({
+        item: toItemRef(catalog, room.id),
+        image: ROOM_IMAGES[room.id],
+        special: (room.crafts?.length ?? 0) === 1,
+      });
+      byTier.set(tier, entry);
+    }
   }
   return [...byTier.keys()]
     .sort((a, b) => a - b)

@@ -244,7 +244,8 @@ export interface OutpostRoom {
   id: string;
   nameEn: string;
   slots?: string[];
-  craft?: { offerId: string; cost: Cost; requires?: Requirement[] };
+  /** Build offers, one per outpost level the room can be installed at (sorted by required level). */
+  crafts?: { offerId: string; cost: Cost; requires?: Requirement[] }[];
 }
 
 export interface OutpostSlot {

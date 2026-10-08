@@ -14,6 +14,10 @@ import type { DomainModule } from './types';
 /** Outpost rooms group: levels by number of installed rooms. */
 const OUTPOST_ROOMS_GROUP = '807616292';
 
+/** Required outpost level of a craft (0 when none). */
+const outpostLevelOf = (requires?: { kind: string; id: string }[]) =>
+  Number(requires?.find((r) => r.kind === 'outpostLevel')?.id ?? 0);
+
 const tagValue = (tags: string[], prefix: string): string | undefined =>
   tags.find((t) => t.startsWith(prefix))?.slice(prefix.length);
 
@@ -42,7 +46,10 @@ const module: DomainModule = {
       return m;
     };
     const furnitureCraft = byReward('outpost:furniture');
-    const roomCraft = byReward('outpost:room');
+    // A room can be built at several expansion levels (one offer per level): keep all of them.
+    const roomCrafts = new Map<number, CanonOffer[]>();
+    for (const o of offersOfClass(ctx, 'outpost:room'))
+      for (const r of o.rewards.items) roomCrafts.set(r.id, [...(roomCrafts.get(r.id) ?? []), o]);
 
     // design learning: unlock asset → design item (consumed)
     const designOfUnlock = new Map<number, { design: number; offer: CanonOffer }>();
@@ -59,8 +66,12 @@ const module: DomainModule = {
         id: slug,
         nameEn: r.name!.en,
         slots: [...new Set(slotIds.map(slugOf))].sort(),
-        craft: craftOf(ctx, 'outpost', roomCraft.get(r.id)),
       };
+      const crafts = (roomCrafts.get(r.id) ?? [])
+        .map((o) => craftOf(ctx, 'outpost', o))
+        .filter((c): c is NonNullable<typeof c> => !!c)
+        .sort((a, b) => outpostLevelOf(a.requires) - outpostLevelOf(b.requires) || a.offerId.localeCompare(b.offerId));
+      if (crafts.length) rooms[slug].crafts = crafts;
       ctx.text.add('outpost', slug, 'name', r.name);
     }
 
