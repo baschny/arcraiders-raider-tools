@@ -12,7 +12,6 @@ import type { DomainModule } from './types';
  */
 export const SHIPPED_ITEM_TYPES = new Set([
   'GameItem',
-  'Modification',
   'OutpostFurniture',
   'OutpostRoom',
   'OutpostSlot',
