@@ -2,3 +2,12 @@
 
 // Page layout. Section partials (_section-<name>.scss) are appended below by their tickets.
 @use 'page';
+@use 'section-research';
+@use 'section-outpost';
+@use 'section-amplified';
+@use 'section-stencils';
+@use 'section-gateway';
+@use 'section-field-crafting';
+@use 'section-new-items';
+@use 'section-new-uses';
+@use 'section-changes';
