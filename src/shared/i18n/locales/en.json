@@ -1326,6 +1326,15 @@
     }
   },
   "whatsNew": {
+    "amplified": {
+      "rooms": "rooms",
+      "roomsHint": "Outpost rooms required to build Gunsmith 4",
+      "repair": "repair",
+      "module": "Module",
+      "recycleHint": "An Amplification Module recycles into Amplified Fragments",
+      "perkParts": "Perk parts",
+      "weapons": "weapons"
+    },
     "title": "Frozen Trail — what’s new",
     "subtitle": "What the 2.0 update adds, what to keep, and what changed since 1.45",
     "loading": "Loading what’s new...",
@@ -1349,6 +1358,22 @@
       "new-items": "New items",
       "new-uses": "New uses",
       "changes": "What changed"
+    },
+    "research": {
+      "acquire": "Acquire Research Points",
+      "station": "Research Station",
+      "build": "Build at Posh",
+      "level": "Level {n}",
+      "rooms": "{n} Outpost rooms",
+      "blueprintCrafting": "Blueprint crafting",
+      "designCrafting": "Design crafting",
+      "amplifiedResearch": "Amplified research",
+      "plans": "{n} plans",
+      "requiresLevel": "Requires station level {n}",
+      "craftable": "Craftable via research",
+      "findOnly": "Still to be found",
+      "show": "Show blueprints",
+      "hide": "Hide blueprints"
     },
     "section": {
       "outpost": {
@@ -1387,6 +1412,37 @@
         "title": "What changed",
         "subtitle": "Recipes, recycling, traders and stash: before and after"
       }
+    },
+    "stencils": {
+      "counter": "stencils",
+      "hold": "Hold",
+      "partsHint": "Needed to apply any stencil",
+      "cost": "{count} Stencil Parts",
+      "foundInRaid": "Found in raid",
+      "compatible": "Compatible with"
+    },
+    "gateway": {
+      "requires": "Needs blueprint"
+    },
+    "outpost": {
+      "expand": "Expand Outpost — Level {from} ▸ {to}",
+      "materials": "Materials",
+      "chooseRoom": "Pick a room",
+      "unlocks": "Unlocks",
+      "rooms": "{count} rooms",
+      "canUpgrade": "Can upgrade {bench} to level {level}",
+      "newRoom": "New Outpost room",
+      "special": "Special",
+      "learnHere": "Learn blueprints and designs here",
+      "furnitureTitle": "Furniture",
+      "pieces": "Pieces",
+      "design": "Design",
+      "designSource": "Found or researched",
+      "learn": "Learn",
+      "consumed": "Consumed at the Outpost",
+      "build": "Build",
+      "furniture": "Furniture",
+      "celeste": "{name} now trades seeds for materials"
     }
   }
 }
