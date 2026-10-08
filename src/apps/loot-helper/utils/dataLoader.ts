@@ -2,7 +2,6 @@ import type { Item, ItemsMap, ItemRarity } from '../types/item';
 import type { AppLocale } from '../../../shared/i18n/config';
 import type { RawItemsOutput } from '../../../shared/types/item';
 import { fetchLocalizedJson } from '../../../shared/utils/localizedContent';
-import { fixCdnItemUrl } from '../../../shared/data/arctrackerItemIdMigration';
 
 /**
  * Consolidates weapon tiers by combining materials from all tiers (I-IV)
@@ -88,7 +87,7 @@ export async function loadAllItems(locale: AppLocale): Promise<ItemsMap> {
     description: raw.description,
     type: raw.type,
     rarity: raw.rarity as ItemRarity,
-    imageFilename: fixCdnItemUrl(raw.imageFilename),
+    imageFilename: raw.imageFilename,
     value: raw.value,
     weightKg: raw.weightKg,
     stackSize: raw.stackSize,

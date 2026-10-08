@@ -25,7 +25,7 @@ import type {
   ArctrackerStashItem,
   ArctrackerLoadoutSlot,
 } from '../types/arctracker';
-import { migrateArctrackerItemId } from '../data/arctrackerItemIdMigration';
+import { ensureArctrackerAliases, migrateArctrackerItemId } from '../data/arctrackerItemIdMigration';
 import {
   cacheSet,
   getCachedProfile,
@@ -106,6 +106,8 @@ async function apiRequest<T>(
   token?: string,
   retryCount = 0
 ): Promise<T> {
+  // item ids in responses are translated with migrateArctrackerItemId (needs the alias table)
+  await ensureArctrackerAliases();
   const auth = await getRequestAuth(token);
 
   const url = `${auth.baseUrl}${endpoint}`;

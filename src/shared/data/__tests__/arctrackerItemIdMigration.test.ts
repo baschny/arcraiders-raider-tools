@@ -1,14 +1,11 @@
 import { describe, expect, it } from 'vitest';
+import { migrateArctrackerItemId, setArctrackerAliases } from '../arctrackerItemIdMigration';
 
-import {
-  fixCdnItemUrl,
-  migrateArctrackerItemId,
-} from '../arctrackerItemIdMigration';
-
-describe('ArcTracker item ID migration', () => {
-  it('keeps generic item migration separate from weapon blueprint matching', () => {
-    expect(migrateArctrackerItemId('hullcracker')).toBe('hullcracker');
-    expect(fixCdnItemUrl('https://cdn.arctracker.io/items/v2/hullcracker_i.png'))
-      .toBe('https://cdn.arctracker.io/items/v2/hullcracker_i.png');
+describe('migrateArctrackerItemId', () => {
+  it('translates arctracker ids through the generated alias table', () => {
+    setArctrackerAliases({ arctracker_name: 'our_slug' });
+    expect(migrateArctrackerItemId('arctracker_name')).toBe('our_slug');
+    expect(migrateArctrackerItemId('anvil_i')).toBe('anvil_i');
+    expect(migrateArctrackerItemId(null)).toBeNull();
   });
 });

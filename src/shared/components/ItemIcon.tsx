@@ -1,6 +1,5 @@
 import React from 'react';
 import { normalizeItemRarity, getRarityClass } from '../utils/rarity';
-import { fixCdnItemUrl } from '../data/arctrackerItemIdMigration';
 
 export interface ItemIconProps {
   itemId: string;
@@ -71,7 +70,7 @@ export function ItemIcon({
         {icon && (
           <img
             className="item-icon__image"
-            src={fixCdnItemUrl(icon) ?? icon}
+            src={icon}
             alt={name}
             loading="lazy"
           />
