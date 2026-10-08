@@ -3,14 +3,8 @@
  * See specification section 2.1.2 for schema definition
  */
 
-export type BenchId =
-  | 'equipment_bench'
-  | 'explosives_bench'
-  | 'med_station'
-  | 'refiner'
-  | 'utility_bench'
-  | 'weapon_bench'
-  | 'workbench';
+/** Bench slug; the valid set comes from the `benches` game-data domain (see dataLoader). */
+export type BenchId = string;
 
 import type { ItemRarity } from '../../../shared/types/item';
 export type { ItemRarity };
@@ -29,7 +23,7 @@ export interface PlannerItem {
   subCategory?: string;
 
   craftBench?: BenchId;
-  stationLevelRequired: 1 | 2 | 3;
+  stationLevelRequired: number;
   blueprintLocked: boolean;
 
   craftQuantity: number;
@@ -38,6 +32,7 @@ export interface PlannerItem {
   upgradeCost?: Record<string, number>;
   upgradesTo?: string;
   upgradesFrom?: string;
+  /** v2 `baseId` of the weapon chain (kept under the old name; semantics unchanged). */
   weaponBaseId?: string;
   weaponTier?: 1 | 2 | 3 | 4;
   modSlots?: Record<string, string[]>;
@@ -57,26 +52,6 @@ export interface ItemsMap {
   [itemId: string]: PlannerItem;
 }
 
-export interface ItemsData {
-  version: number;
-  items: Record<string, Omit<PlannerItem, 'id'>>;
-}
-
-export interface LocalizedPlannerItemData extends Omit<PlannerItem, 'id' | 'name'> {
-  name: {
-    value: string;
-    originalEn: string;
-  };
-  repairCost?: Record<string, number>;
-  repairDurability?: number;
-  questItem?: boolean;
-}
-
-export interface LocalizedItemsData {
-  version: number;
-  items: Record<string, LocalizedPlannerItemData>;
-}
-
 /**
  * Canonical bench order for craft plan grouping (section 6.9)
  */
@@ -88,6 +63,7 @@ export const BENCH_ORDER: BenchId[] = [
   'utility_bench',
   'weapon_bench',
   'workbench',
+  'research_station',
 ];
 
 /**

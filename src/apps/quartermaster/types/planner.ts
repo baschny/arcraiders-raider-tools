@@ -84,7 +84,7 @@ export interface CraftStep {
   benchId: BenchId;
   itemId: ItemId;
   qty: Qty;
-  stationLevelRequired: 1 | 2 | 3;
+  stationLevelRequired: number;
   blueprintLocked: boolean;
   isFullySatisfiable: boolean;
 }
@@ -100,7 +100,7 @@ export interface WeaponUpgradeStep {
   toItemId: ItemId;
   qty: Qty;
   upgradeCost: Record<ItemId, Qty>;
-  stationLevelRequired: 1 | 2 | 3;
+  stationLevelRequired: number;
   isFullySatisfiable: boolean;
 }
 

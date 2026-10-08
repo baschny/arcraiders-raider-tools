@@ -3,7 +3,9 @@
  * See specification CR-002, CR-004, CR-007, CR-008
  */
 
-// Static hideout definitions (from public/data/quartermaster/hideout.json)
+// Static hideout definitions (from the `benches` game-data domain)
+
+import type { Requirement } from '../../../shared/gamedata/types';
 
 export interface HideoutRequirementItem {
   itemId: string;
@@ -14,6 +16,8 @@ export interface HideoutLevelDefinition {
   level: number;
   image: string | null;
   requirementItemIds: HideoutRequirementItem[];
+  /** Gates from the benches domain (e.g. Outpost level, other bench level). Not rendered yet. */
+  requires?: Requirement[];
 }
 
 export interface HideoutModuleDefinition {
@@ -22,14 +26,6 @@ export interface HideoutModuleDefinition {
   originalNameEn?: string;
   maxLevel: number;
   levels: HideoutLevelDefinition[];
-}
-
-export interface LocalizedHideoutModuleDefinition
-  extends Omit<HideoutModuleDefinition, 'name'> {
-  name: {
-    value: string;
-    originalEn: string;
-  };
 }
 
 // Cached hideout state (from API sync, stored in IndexedDB)

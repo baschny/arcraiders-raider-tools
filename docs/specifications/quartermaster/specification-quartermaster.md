@@ -119,6 +119,22 @@ The system must:
 
 ## 2.1 Static Dataset (Client-Side)
 
+> **Game data v2 (current).** The app no longer reads `public/data/items`, `public/data/quartermaster`
+> or `public/data/quests`. `src/apps/quartermaster/utils/dataLoader.ts` builds the in-memory models
+> from the shared `public/data/game/*` domains (`src/shared/gamedata`):
+>
+> - items: `loadItemCatalog` (items + recipes + research); the schema in 2.1.2 is the mapped
+>   `PlannerItem`. `weaponBaseId`/`weaponTier` come from the explicit `baseId`/`tier` (same root slugs),
+>   `upgradeCost` is the cost to reach the item from its previous tier. Items only unlocked by research have no craft bench.
+> - hideout: `benches` domain (build cost per level, icon, `requires` gates such as Outpost level).
+>   Research Station is a regular module; `VALID_BENCH_IDS` is the set of bench slugs in the data.
+> - projects: `projects` domain; phases and steps are flattened into 1-based step indices (persisted keys unchanged),
+>   item goals become the requirement list, other goal types are kept as `otherGoals` (not yet shown).
+> - quests: `quests` domain; required items are the Deliver/Obtain objectives, rewards from `rewards`.
+>
+> All ids are the unchanged slugs, so saved lists, toggles and weapon builds load without migration.
+> The sections below describe the original arctracker-based import and are kept for background.
+
 ### 2.1.1 Source
 
 Raw source data is provided by the arctracker.io data repository checked out locally at:

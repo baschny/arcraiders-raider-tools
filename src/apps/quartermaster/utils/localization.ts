@@ -69,7 +69,7 @@ const rarityKeys: Record<ItemRarity, string> = {
   Legendary: 'quartermaster.rarities.legendary',
 };
 
-const benchKeys: Record<BenchId, string> = {
+const benchKeys: Record<string, string> = {
   refiner: 'quartermaster.benches.refiner',
   equipment_bench: 'quartermaster.benches.equipmentBench',
   explosives_bench: 'quartermaster.benches.explosivesBench',
@@ -102,8 +102,17 @@ export function getLocalizedQuartermasterRarity(t: Translate, rarity: ItemRarity
   return t(rarityKeys[rarity]);
 }
 
+/** Localized bench names from the benches game-data domain (fallback for benches without i18n key). */
+const dataBenchNames = new Map<string, string>();
+
+export function registerBenchNames(names: Record<string, string>): void {
+  for (const [id, name] of Object.entries(names)) dataBenchNames.set(id, name);
+}
+
 export function getLocalizedBenchName(t: Translate, benchId: BenchId): string {
-  return t(benchKeys[benchId]);
+  const key = benchKeys[benchId];
+  if (key) return t(key);
+  return dataBenchNames.get(benchId) ?? benchId;
 }
 
 export function getUncraftableReasonLabel(

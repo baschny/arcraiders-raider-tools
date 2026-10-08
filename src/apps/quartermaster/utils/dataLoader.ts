@@ -1,116 +1,122 @@
 /**
  * Data Loader for Quartermaster
- * Loads item data from the shared database at public/data/items/items.json
- * Applies Quartermaster-specific transformations at load time.
+ * Reads the v2 game-data domains (items/recipes/research, benches, projects, quests) via the
+ * shared gamedata loader and maps them to the Quartermaster models. Ids are the v2 slugs, which
+ * are identical to the 1.x ids, so persisted state keeps working unchanged.
  */
 
 import type { AppLocale } from '../../../shared/i18n/config';
-import { fetchLocalizedJson } from '../../../shared/utils/localizedContent';
-import type { RawItemsOutput, ItemRarity } from '../../../shared/types/item';
+import { loadItemCatalog, type CatalogItem } from '../../../shared/gamedata/catalog';
+import { loadDomain, nameOf } from '../../../shared/gamedata/loader';
+import type {
+  ObjectiveNode,
+  Project,
+  ProjectGoal,
+  Quest as GameQuest,
+  Reward,
+  TextEntry,
+} from '../../../shared/gamedata/types';
 import type { PlannerItem, ItemsMap, BenchId } from '../types/item';
-import type { HideoutModuleDefinition, LocalizedHideoutModuleDefinition } from '../types/hideout';
-import type { ProjectDefinition, LocalizedProjectDefinition } from '../types/project';
+import type { ItemRarity } from '../../../shared/types/item';
+import type { HideoutModuleDefinition } from '../types/hideout';
+import type { ProjectDefinition, ProjectOtherGoal, ProjectRequirementItem, ProjectStep } from '../types/project';
 import type { QuestDefinition } from '../types/quest';
 import type { Quest, QuestItemEntry } from '../../../shared/types/quest';
+import { registerBenchNames } from './localization';
 
-const ITEMS_URL = '/data/items/items.json';
-const HIDEOUT_URL = '/data/quartermaster/hideout.json';
-const PROJECTS_URL = '/data/quartermaster/projects.json';
-const QUESTS_URL = '/data/quests/quest-data.json';
+const EXCLUDED_TYPES = new Set(['Blueprint']);
+
+/** Bench slugs that can craft items, read from the benches domain by loadAllItems/loadHideoutDefinitions. */
+export let VALID_BENCH_IDS: ReadonlySet<string> = new Set<string>();
+
+async function loadBenches(locale: AppLocale) {
+  const benches = await loadDomain('benches', locale);
+  VALID_BENCH_IDS = new Set(Object.keys(benches.structure.benches));
+  registerBenchNames(
+    Object.fromEntries(
+      Object.values(benches.structure.benches).map((b) => [b.id, nameOf(benches, b.id, b.nameEn)]),
+    ),
+  );
+  return benches;
+}
 
 /**
- * Load all items from the shared item database.
- * Applies Quartermaster-specific transformations:
- *   - Excludes Blueprint types
- *   - Normalizes craftBench from string|string[] to single BenchId
- *   - Maps category and subCategory
- *   - Renames imageFilename→icon, weightKg→weight
- *   - Fills defaults (stationLevelRequired, blueprintLocked, craftQuantity)
+ * Cost to upgrade INTO this item (planner semantics), taken from the previous tier's ungated
+ * upgrade entry. The catalog's own `upgradeCost` is the cost to the next tier.
  */
-export async function loadAllItems(locale: AppLocale): Promise<ItemsMap> {
-  const data = await fetchLocalizedJson<RawItemsOutput>(ITEMS_URL, locale);
-  const itemsMap: ItemsMap = {};
-  const EXCLUDED_TYPES = new Set(['Blueprint']);
-  const VALID_BENCH_IDS = new Set<string>([
-    'equipment_bench', 'explosives_bench', 'med_station',
-    'refiner', 'utility_bench', 'weapon_bench', 'workbench',
-  ]);
+function costToReach(c: CatalogItem, all: Record<string, CatalogItem>): Record<string, number> | undefined {
+  const prev = c.upgradesFrom ? all[c.upgradesFrom] : undefined;
+  return prev?.upgradesTo === c.id ? prev.upgradeCost : undefined;
+}
 
-  for (const [id, raw] of Object.entries(data.items)) {
-    if (EXCLUDED_TYPES.has(raw.type)) continue;
+function plannerItemFromCatalog(c: CatalogItem, all: Record<string, CatalogItem>): PlannerItem {
+  // Items that are only unlocked via Research Station research are not crafted at a bench.
+  const crafted = c.researchId === undefined;
+  const craftBench: BenchId | undefined =
+    crafted && c.craftBench && c.craftBench !== 'in_raid' && VALID_BENCH_IDS.has(c.craftBench)
+      ? c.craftBench
+      : undefined;
 
-    // craftBench normalization
-    let craftBench: BenchId | undefined;
-    if (raw.craftBench !== undefined) {
-      if (typeof raw.craftBench === 'string') {
-        craftBench = raw.craftBench !== 'in_raid' && VALID_BENCH_IDS.has(raw.craftBench)
-          ? (raw.craftBench as BenchId)
-          : undefined;
-      } else {
-        const filtered = raw.craftBench.filter(b => b !== 'workbench' && b !== 'in_raid');
-        for (const bench of filtered) {
-          if (VALID_BENCH_IDS.has(bench)) {
-            craftBench = bench as BenchId;
-            break;
-          }
-        }
-      }
-    }
-
-    // Category mapping
-    let category: string;
-    let subCategory: string | undefined;
-    if (raw.isWeapon === true) {
-      category = 'Weapon';
-      subCategory = raw.type;
-    } else if (raw.type === 'Quick Use') {
-      category = 'Quick Use';
-      if (craftBench === 'explosives_bench') subCategory = 'Explosive';
-      else if (craftBench === 'med_station') subCategory = 'Medicinal';
-      else if (craftBench === 'utility_bench') subCategory = 'Utility';
-    } else {
-      category = raw.type;
-    }
-
-    const item: PlannerItem = {
-      id,
-      name: raw.name.value,
-      originalNameEn: raw.name.originalEn,
-      description: raw.description,
-      icon: raw.imageFilename ?? '',
-      rarity: raw.rarity as ItemRarity,
-      type: raw.type,
-      category,
-      ...(subCategory !== undefined && { subCategory }),
-      ...(craftBench !== undefined && { craftBench }),
-      stationLevelRequired: (raw.stationLevelRequired ?? 1) as 1 | 2 | 3,
-      blueprintLocked: raw.blueprintLocked ?? false,
-      craftQuantity: raw.craftQuantity ?? 1,
-      ...(raw.recipe && Object.keys(raw.recipe).length > 0 && { recipe: raw.recipe }),
-      ...(raw.upgradeCost && Object.keys(raw.upgradeCost).length > 0 && { upgradeCost: raw.upgradeCost }),
-      ...(raw.upgradesTo && { upgradesTo: raw.upgradesTo }),
-      ...(raw.upgradesFrom && { upgradesFrom: raw.upgradesFrom }),
-      ...(raw.weaponBaseId && { weaponBaseId: raw.weaponBaseId }),
-      ...(raw.weaponTier !== undefined && { weaponTier: raw.weaponTier as 1 | 2 | 3 | 4 }),
-      ...(raw.modSlots && Object.keys(raw.modSlots).length > 0 && { modSlots: raw.modSlots }),
-      ...(raw.recyclesInto && Object.keys(raw.recyclesInto).length > 0 && { recyclesInto: raw.recyclesInto }),
-      ...(raw.salvagesInto && Object.keys(raw.salvagesInto).length > 0 && { salvagesInto: raw.salvagesInto }),
-      ...(raw.repairCost && Object.keys(raw.repairCost).length > 0 && { repairCost: raw.repairCost }),
-      ...(raw.repairDurability !== undefined && { repairDurability: raw.repairDurability }),
-      stackSize: raw.stackSize,
-      ...(raw.value !== undefined && { value: raw.value }),
-      ...(raw.weightKg !== undefined && { weight: raw.weightKg }),
-      ...(raw.foundIn !== undefined && {
-        foundIn: typeof raw.foundIn === 'string'
-          ? raw.foundIn.split(',').map(s => s.trim()).filter(Boolean)
-          : raw.foundIn,
-      }),
-      ...(raw.questItem === true && { questItem: true }),
-    };
-
-    itemsMap[id] = item;
+  let category: string;
+  let subCategory: string | undefined;
+  if (c.isWeapon) {
+    category = 'Weapon';
+    subCategory = c.type;
+  } else if (c.type === 'Quick Use') {
+    category = 'Quick Use';
+    if (craftBench === 'explosives_bench') subCategory = 'Explosive';
+    else if (craftBench === 'med_station') subCategory = 'Medicinal';
+    else if (craftBench === 'utility_bench') subCategory = 'Utility';
+  } else {
+    category = c.type;
   }
 
+  const has = (r?: Record<string, number>) => r && Object.keys(r).length > 0;
+  return {
+    id: c.id,
+    name: c.name,
+    originalNameEn: c.nameEn,
+    description: c.description,
+    icon: c.icon,
+    rarity: c.rarity as ItemRarity,
+    type: c.type,
+    category,
+    ...(subCategory !== undefined && { subCategory }),
+    ...(craftBench !== undefined && { craftBench }),
+    stationLevelRequired: crafted ? (c.stationLevelRequired ?? 1) : 1,
+    blueprintLocked: c.blueprintLocked,
+    craftQuantity: crafted ? c.craftQuantity : 1,
+    ...(crafted && has(c.recipe) && { recipe: c.recipe }),
+    ...(has(costToReach(c, all)) && { upgradeCost: costToReach(c, all) }),
+    ...(c.upgradesTo && { upgradesTo: c.upgradesTo }),
+    ...(c.upgradesFrom && { upgradesFrom: c.upgradesFrom }),
+    // v2 baseId/tier replace weaponBaseId/weaponTier; same root slugs. Only weapons carry them here.
+    ...(c.isWeapon && c.baseId && { weaponBaseId: c.baseId }),
+    ...(c.isWeapon && c.tier !== undefined && { weaponTier: c.tier as 1 | 2 | 3 | 4 }),
+    ...(c.modSlots && Object.keys(c.modSlots).length > 0 && { modSlots: c.modSlots }),
+    ...(has(c.recyclesInto) && { recyclesInto: c.recyclesInto }),
+    ...(has(c.salvagesInto) && { salvagesInto: c.salvagesInto }),
+    ...(has(c.repairCost) && { repairCost: c.repairCost }),
+    ...(c.repairDurability !== undefined && { repairDurability: c.repairDurability }),
+    stackSize: c.stackSize,
+    ...(c.value !== undefined && { value: c.value }),
+    ...(c.weightKg !== undefined && { weight: c.weightKg }),
+    ...(c.foundIn !== undefined && { foundIn: c.foundIn }),
+    ...(c.questItem === true && { questItem: true }),
+  };
+}
+
+/**
+ * Load all items from the v2 item catalog (items + recipes + research).
+ * Excludes Blueprint types; resolves the craft bench from the explicit recipe data.
+ */
+export async function loadAllItems(locale: AppLocale): Promise<ItemsMap> {
+  const [catalog] = await Promise.all([loadItemCatalog(locale), loadBenches(locale)]);
+  const itemsMap: ItemsMap = {};
+  for (const c of Object.values(catalog.items)) {
+    if (EXCLUDED_TYPES.has(c.type)) continue;
+    itemsMap[c.id] = plannerItemFromCatalog(c, catalog.items);
+  }
   return itemsMap;
 }
 
@@ -146,19 +152,29 @@ export function getItemsByCategory(itemsMap: ItemsMap, category: string): Planne
 }
 
 /**
- * Load hideout module definitions from the generated JSON file
+ * Load hideout module definitions from the benches domain (Research Station included; its
+ * level gates are carried in `requires`). Benches without any build cost (Workbench) are omitted
+ * like before.
  */
 export async function loadHideoutDefinitions(locale: AppLocale): Promise<HideoutModuleDefinition[]> {
-  const definitions = await fetchLocalizedJson<LocalizedHideoutModuleDefinition[]>(
-    HIDEOUT_URL,
-    locale
-  );
-
-  return definitions.map((definition) => ({
-    ...definition,
-    name: definition.name.value,
-    originalNameEn: definition.name.originalEn,
-  }));
+  const benches = await loadBenches(locale);
+  const out: HideoutModuleDefinition[] = [];
+  for (const bench of Object.values(benches.structure.benches)) {
+    if (!bench.levels.some((l) => l.buildCost?.length || l.requires?.length)) continue;
+    out.push({
+      id: bench.id,
+      name: nameOf(benches, bench.id, bench.nameEn),
+      originalNameEn: bench.nameEn,
+      maxLevel: bench.maxLevel,
+      levels: bench.levels.map((l) => ({
+        level: l.level,
+        image: l.icon,
+        requirementItemIds: (l.buildCost ?? []).map(({ itemId, quantity }) => ({ itemId, quantity })),
+        ...(l.requires?.length && { requires: l.requires }),
+      })),
+    });
+  }
+  return out;
 }
 
 /**
@@ -171,117 +187,177 @@ export function searchItems(itemsMap: ItemsMap, query: string): PlannerItem[] {
     .sort((a, b) => a.name.localeCompare(b.name));
 }
 
-/**
- * Load project definitions from the generated JSON file
- */
-export async function loadProjectDefinitions(locale: AppLocale): Promise<ProjectDefinition[]> {
-  const definitions = await fetchLocalizedJson<LocalizedProjectDefinition[]>(
-    PROJECTS_URL,
-    locale
-  );
+const toSeconds = (iso?: string): number | undefined => {
+  if (!iso) return undefined;
+  const ms = Date.parse(iso);
+  return Number.isNaN(ms) ? undefined : Math.floor(ms / 1000);
+};
 
-  return definitions.map((definition) => ({
-    ...definition,
-    name: definition.name.value,
-    originalNameEn: definition.name.originalEn,
-    phases: definition.phases.map((phase) => ({
-      ...phase,
-      name: phase.name.value,
-      originalNameEn: phase.name.originalEn,
-    })),
-  }));
+/** Text lookup for nested keys like '0.1' → text.steps['0']['1']. */
+function nestedText(entry: TextEntry | undefined, field: string, key: string): Record<string, string> | undefined {
+  let cur: unknown = entry?.[field];
+  for (const part of key.split('.')) {
+    if (!cur || typeof cur !== 'object') return undefined;
+    cur = (cur as Record<string, unknown>)[part];
+  }
+  return cur && typeof cur === 'object' ? (cur as Record<string, string>) : undefined;
+}
+
+function mapProject(project: Project, text: TextEntry | undefined, textEn: TextEntry | undefined): ProjectDefinition {
+  const steps: ProjectStep[] = [];
+  let index = 0;
+  for (const phase of project.phases ?? []) {
+    for (const step of phase.steps ?? []) {
+      index += 1;
+      const requirements = new Map<string, number>();
+      const otherGoals: ProjectOtherGoal[] = [];
+      for (const goal of step.goals ?? []) {
+        const goalName = nestedText(text, 'goals', goal.key)?.name;
+        if (goal.goalType === 'items' && goal.itemIds?.length === 1) {
+          requirements.set(goal.itemIds[0], (requirements.get(goal.itemIds[0]) ?? 0) + goal.amount);
+        } else {
+          otherGoals.push(toOtherGoal(goal, goalName));
+        }
+      }
+      const requirementItemIds: ProjectRequirementItem[] = [...requirements].map(([itemId, quantity]) => ({ itemId, quantity }));
+      steps.push({
+        name: nestedText(text, 'steps', step.key)?.name ?? `Step ${index}`,
+        originalNameEn: nestedText(textEn, 'steps', step.key)?.name,
+        index,
+        requirementItemIds,
+        ...(otherGoals.length > 0 && { otherGoals }),
+      });
+    }
+  }
+  return {
+    id: project.id,
+    name: text?.name ?? project.nameEn,
+    originalNameEn: project.nameEn,
+    startDate: toSeconds(project.start),
+    endDate: toSeconds(project.end),
+    phases: steps,
+  };
+}
+
+function toOtherGoal(goal: ProjectGoal, name: string | undefined): ProjectOtherGoal {
+  return {
+    key: goal.key,
+    goalType: goal.goalType,
+    amount: goal.amount,
+    required: goal.required,
+    ...(goal.repeatable && { repeatable: true }),
+    ...(name && { name }),
+    ...(goal.tags?.length && { tags: goal.tags }),
+  };
 }
 
 /**
- * Load quest data from the generated JSON file.
+ * Load project definitions from the projects domain. Phases and steps are flattened into one
+ * running step list (1-based `index`, as in persisted keys and API progress); item goals become
+ * the requirement list, other goal types (value, complete_quests, photo, ...) are kept as
+ * `otherGoals`. Community events (type 'event') are not tracked by the project API and skipped.
+ */
+export async function loadProjectDefinitions(locale: AppLocale): Promise<ProjectDefinition[]> {
+  const [projects, projectsEn] = await Promise.all([
+    loadDomain('projects', locale),
+    locale === 'en' ? undefined : loadDomain('projects', 'en'),
+  ]);
+  return Object.values(projects.structure.projects)
+    .filter((p) => p.type !== 'event')
+    .map((p) => mapProject(p, projects.text[p.id], (projectsEn ?? projects).text[p.id]));
+}
+
+function leafObjectives(node: ObjectiveNode, out: ObjectiveNode[] = []): ObjectiveNode[] {
+  if (node.children?.length) node.children.forEach((c) => leafObjectives(c, out));
+  else if (!node.hidden) out.push(node);
+  return out;
+}
+
+function allActions(node: ObjectiveNode, out: NonNullable<ObjectiveNode['action']>[] = []) {
+  if (node.action) out.push(node.action);
+  node.children?.forEach((c) => allActions(c, out));
+  return out;
+}
+
+const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+
+/**
+ * Load quest data from the quests domain.
  * Returns both minimal QuestDefinition[] (for list logic) and full Quest[] (for tooltips).
+ * Required items are the Deliver/Obtain objectives; granted items are the accept rewards.
  */
 export async function loadQuestData(
   locale: AppLocale,
 ): Promise<{ definitions: QuestDefinition[]; fullQuests: Quest[] }> {
-  interface LocalizedName {
-    value: string;
-    originalEn: string;
-  }
-  interface LocalizedQuestItemEntry {
-    id: string;
-    quantity: number;
-    name: LocalizedName;
-    rarity?: string;
-    imageFilename?: string;
-  }
-  interface LocalizedBlueprintReward {
-    id: string;
-    name: LocalizedName;
-    imageFilename?: string;
-  }
-  interface LocalizedQuest {
-    id: string;
-    name: LocalizedName;
-    trader?: string;
-    map?: string[];
-    previousQuestIds?: string[];
-    nextQuestIds?: string[];
-    hasBlueprint?: boolean;
-    blueprintRewards?: LocalizedBlueprintReward[];
-    description?: LocalizedName;
-    objectives?: LocalizedName[];
-    objectivesOneRound?: boolean;
-    otherRequirements?: string[];
-    grantedItems?: LocalizedQuestItemEntry[];
-    requiredItems?: LocalizedQuestItemEntry[];
-    rewardItems?: LocalizedQuestItemEntry[];
-  }
+  const [quests, catalog] = await Promise.all([loadDomain('quests', locale), loadItemCatalog(locale)]);
 
-  const data = await fetchLocalizedJson<LocalizedQuest[]>(QUESTS_URL, locale);
+  const entry = (itemId: string, quantity: number): QuestItemEntry => {
+    const item = catalog.items[itemId];
+    return {
+      id: itemId,
+      quantity,
+      name: item?.name ?? itemId,
+      originalNameEn: item?.nameEn ?? itemId,
+      rarity: (item?.rarity ?? 'Common') as QuestItemEntry['rarity'],
+      imageFilename: item?.icon ?? '',
+    };
+  };
+  const fromRewards = (rewards?: Reward[]) => (rewards ?? []).map((r) => entry(r.itemId, r.quantity));
 
   const definitions: QuestDefinition[] = [];
   const fullQuests: Quest[] = [];
 
-  const mapQuestItem = (item: LocalizedQuestItemEntry): QuestItemEntry => ({
-    id: item.id,
-    quantity: item.quantity,
-    name: item.name.value,
-    originalNameEn: item.name.originalEn,
-    rarity: (item.rarity ?? 'Common') as QuestItemEntry['rarity'],
-    imageFilename: item.imageFilename ?? '',
-  });
+  for (const q of Object.values(quests.structure.quests) as GameQuest[]) {
+    const text = quests.text[q.id];
+    const objectiveText = (text?.objectives ?? {}) as Record<string, string>;
+    const required = new Map<string, number>();
+    for (const a of allActions(q.objective)) {
+      if ((a.type === 'Deliver' || a.type === 'Obtain') && a.itemId) {
+        required.set(a.itemId, (required.get(a.itemId) ?? 0) + a.amount);
+      }
+    }
+    const requiredItems = [...required].map(([itemId, quantity]) => entry(itemId, quantity));
+    const previousQuestIds = (q.requires ?? []).flatMap((r) => (r.questId ? [r.questId] : []));
+    const nextQuestIds = q.next ?? [];
+    const name = nameOf(quests, q.id, q.nameEn);
+    const blueprintRewards = (q.rewards?.complete ?? [])
+      .filter((r) => catalog.items[r.itemId]?.type === 'Blueprint')
+      .map((r) => ({
+        id: r.itemId,
+        name: catalog.items[r.itemId]?.name ?? r.itemId,
+        originalNameEn: catalog.items[r.itemId]?.nameEn,
+        imageFilename: catalog.items[r.itemId]?.icon ?? '',
+      }));
 
-  for (const q of data) {
     definitions.push({
       id: q.id,
-      name: q.name.value,
-      requiredItems: (q.requiredItems ?? []).map((ri) => ({
-        itemId: ri.id,
-        quantity: ri.quantity,
-      })),
-      previousQuestIds: q.previousQuestIds ?? [],
-      nextQuestIds: q.nextQuestIds ?? [],
+      name,
+      requiredItems: requiredItems.map((ri) => ({ itemId: ri.id, quantity: ri.quantity })),
+      previousQuestIds,
+      nextQuestIds,
     });
 
     fullQuests.push({
       id: q.id,
-      name: q.name.value,
-      originalNameEn: q.name.originalEn,
-      trader: q.trader ?? 'Unknown',
-      map: q.map ?? [],
-      previousQuestIds: q.previousQuestIds ?? [],
-      nextQuestIds: q.nextQuestIds ?? [],
-      hasBlueprint: q.hasBlueprint ?? false,
-      blueprintRewards: (q.blueprintRewards ?? []).map((b) => ({
-        id: b.id,
-        name: b.name.value,
-        originalNameEn: b.name.originalEn,
-        imageFilename: b.imageFilename ?? '',
-      })),
-      description: q.description?.value ?? '',
-      descriptionOriginalEn: q.description?.originalEn,
-      objectives: (q.objectives ?? []).map((o) => o.value),
-      objectivesOneRound: q.objectivesOneRound ?? false,
-      otherRequirements: q.otherRequirements ?? [],
-      grantedItems: (q.grantedItems ?? []).map(mapQuestItem),
-      requiredItems: (q.requiredItems ?? []).map(mapQuestItem),
-      rewardItems: (q.rewardItems ?? []).map(mapQuestItem),
+      name,
+      originalNameEn: q.nameEn,
+      trader: q.traderId ? capitalize(q.traderId) : 'Unknown',
+      map: q.mapIds ?? [],
+      previousQuestIds,
+      nextQuestIds,
+      hasBlueprint: blueprintRewards.length > 0,
+      blueprintRewards,
+      description: text?.description ?? '',
+      objectives: leafObjectives(q.objective)
+        .map((n) => objectiveText[n.key])
+        .filter((v): v is string => !!v),
+      objectivesOneRound: !!q.objective.oneRound,
+      otherRequirements: [],
+      grantedItems: fromRewards(q.rewards?.accept),
+      requiredItems,
+      rewardItems: fromRewards(q.rewards?.complete),
+      addedIn: q.addedIn ?? null,
+      ...(q.rewards?.xp !== undefined && { xp: q.rewards.xp }),
     });
   }
 

@@ -280,8 +280,9 @@ const DEFAULT_BENCH_LEVELS: Record<BenchId, number> = {
   med_station: 3,
   refiner: 3,
   utility_bench: 3,
-  weapon_bench: 3,
+  weapon_bench: 4,
   workbench: 3,
+  research_station: 4,
 };
 
 const BENCH_IDS = new Set<string>(Object.keys(DEFAULT_BENCH_LEVELS));

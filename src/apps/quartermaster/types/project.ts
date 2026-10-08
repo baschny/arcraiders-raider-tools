@@ -14,11 +14,27 @@ export interface ProjectRequirementItem {
   quantity: number;
 }
 
+/** A goal that is not an item delivery (goalType 'value', 'complete_quests', photo goals, ...). */
+export interface ProjectOtherGoal {
+  key: string;
+  goalType: string;
+  amount: number;
+  required: boolean;
+  repeatable?: boolean;
+  /** Localized goal name, when the text file has one. */
+  name?: string;
+  /** Item classification tags a 'value' goal counts (Embark tag strings). */
+  tags?: string[];
+}
+
 export interface ProjectStep {
   name: string;
   originalNameEn?: string;
+  /** 1-based running index over all steps of the project (matches persisted keys and API progress). */
   index: number;
   requirementItemIds: ProjectRequirementItem[];
+  /** Non-item goals. TODO: the projects view does not render them yet. */
+  otherGoals?: ProjectOtherGoal[];
 }
 
 export interface ProjectDefinition {
@@ -28,26 +44,6 @@ export interface ProjectDefinition {
   startDate?: number;
   endDate?: number;
   phases: ProjectStep[];
-}
-
-export interface LocalizedProjectStep {
-  name: {
-    value: string;
-    originalEn: string;
-  };
-  index: number;
-  requirementItemIds: ProjectRequirementItem[];
-}
-
-export interface LocalizedProjectDefinition
-  extends Omit<ProjectDefinition, 'name' | 'phases'> {
-  name: {
-    value: string;
-    originalEn: string;
-  };
-  startDate?: number;
-  endDate?: number;
-  phases: LocalizedProjectStep[];
 }
 
 // Toggle persistence (mirrors hideout structure)

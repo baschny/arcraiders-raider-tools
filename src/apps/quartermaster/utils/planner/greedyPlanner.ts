@@ -50,7 +50,7 @@ type BlueprintCraftableItem = {
   recipe?: Record<string, number>;
   craftBench?: BenchId;
   blueprintLocked: boolean;
-  stationLevelRequired: 1 | 2 | 3;
+  stationLevelRequired: number;
   weaponBaseId?: ItemId;
   weaponTier?: 1 | 2 | 3 | 4;
 };

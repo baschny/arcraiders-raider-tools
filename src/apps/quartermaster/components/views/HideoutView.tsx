@@ -54,6 +54,7 @@ const HIDEOUT_MODULE_ORDER = [
   'utility_bench',
   'explosives_bench',
   'weapon_bench',
+  'research_station',
 ];
 
 function parseHideoutListId(listId: string): { moduleId: string; level: number } | null {
