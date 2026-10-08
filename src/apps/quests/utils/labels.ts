@@ -1,38 +1,28 @@
 import type { AppLocale } from '../../../shared/i18n/config';
-import { getLocaleCandidates } from '../../../shared/i18n/config';
+import { getLocaleFallbackChain } from '../../../shared/i18n/config';
+import { getTranslationValue } from '../../../shared/i18n/translations';
 
-type LabelKey = 'oneOf' | 'nOf' | 'oneRound' | 'optional' | 'sideQuest' | 'raids';
+const KEYS = {
+  oneOf: 'quests.objectiveOneOf',
+  nOf: 'quests.objectiveNOf',
+  oneRound: 'quests.objectiveOneRound',
+  optional: 'quests.objectiveOptional',
+  sideQuest: 'quests.sideQuestBadge',
+  raids: 'quests.requirementRaids',
+} as const;
 
-const LABELS: Record<string, Partial<Record<LabelKey, string>>> = {
-  en: {
-    oneOf: 'One of',
-    nOf: '{count} of',
-    oneRound: 'One round',
-    optional: 'Optional',
-    sideQuest: 'Side quest',
-    raids: '{count} raids',
-  },
-  de: {
-    oneOf: 'Eines von',
-    nOf: '{count} von',
-    oneRound: 'Eine Runde',
-    optional: 'Optional',
-    sideQuest: 'Nebenquest',
-    raids: '{count} Raids',
-  },
-};
+type LabelKey = keyof typeof KEYS;
 
-/** Small app-local strings for the objective tree (en fallback). */
+/** Objective-tree strings from the shared locale files (usable outside React, e.g. in buildQuests). */
 export function questLabel(
   key: LabelKey,
   locale: AppLocale,
   params: Record<string, string | number> = {},
 ): string {
   let text: string | undefined;
-  for (const candidate of getLocaleCandidates(locale)) {
-    text = LABELS[candidate]?.[key];
+  for (const candidate of getLocaleFallbackChain(locale)) {
+    text = getTranslationValue(candidate, KEYS[key]);
     if (text) break;
   }
-  text ??= LABELS.en[key] ?? key;
-  return text.replace(/\{(\w+)\}/g, (_, name: string) => String(params[name] ?? ''));
+  return (text ?? KEYS[key]).replace(/\{(\w+)\}/g, (_, name: string) => String(params[name] ?? ''));
 }

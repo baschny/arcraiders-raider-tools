@@ -317,7 +317,13 @@
     "linkedModeEmbarkBody": "Link your Embark account to use linked quest progress.",
     "linkedModeArcTrackerBody": "Link your ArcTracker account to use linked quest progress.",
     "objectiveSummary": "{completed}/{total} done",
-    "objectiveDone": "Done"
+    "objectiveDone": "Done",
+    "objectiveOneOf": "One of",
+    "objectiveNOf": "{count} of",
+    "objectiveOneRound": "One round",
+    "objectiveOptional": "Optional",
+    "sideQuestBadge": "Side quest",
+    "requirementRaids": "{count} raids"
   },
   "lootHelper": {
     "loading": "Loading item data...",

@@ -271,7 +271,13 @@
     "linkedModeEmbarkBody": "Verbinden Sie Ihr Einbark-Konto, um den Questfortschritt automatisch zu laden.",
     "linkedModeArcTrackerBody": "Verbinde dein ArcTracker Konto, um den Questfortschritt automatisch zu laden.",
     "objectiveSummary": "{completed}/{total} erledigt",
-    "objectiveDone": "Erledigt"
+    "objectiveDone": "Erledigt",
+    "objectiveOneOf": "Eines von",
+    "objectiveNOf": "{count} von",
+    "objectiveOneRound": "Eine Runde",
+    "objectiveOptional": "Optional",
+    "sideQuestBadge": "Nebenquest",
+    "requirementRaids": "{count} Raids"
   },
   "lootHelper": {
     "loading": "Gegenstandsdaten werden geladen...",
