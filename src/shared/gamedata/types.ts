@@ -11,7 +11,8 @@
  *   file per locale `<domain>.text.<locale>.json`. loadDomain() merges them.
  * - English names needed for search/sorting regardless of locale live in the structure
  *   (`nameEn`), localized text only in the text files.
- * - Optional fields are omitted when empty (no empty arrays/objects in the files).
+ * - Empty arrays/objects are always omitted by the writer, so every list field is optional;
+ *   consumers treat a missing list as empty.
  */
 
 export const GAME_DATA_SCHEMA_VERSION = 2;
@@ -134,7 +135,7 @@ export interface Offer {
   id: string;
   cost: Cost;
   requires?: Requirement[];
-  rewards: Reward[];
+  rewards?: Reward[];
   durationSeconds?: number;
   visible: boolean;
 }
@@ -187,7 +188,7 @@ export interface TradesStructure {
 export interface BenchLevel {
   level: number;
   icon: string | null;
-  buildCost: Amount[];
+  buildCost?: Amount[];
   requires?: Requirement[];
   recipes?: string[];
   research?: string[];
@@ -210,13 +211,13 @@ export interface BenchesStructure {
 export interface OutpostRoom {
   id: string;
   nameEn: string;
-  slots: string[];
+  slots?: string[];
 }
 
 export interface OutpostSlot {
   id: string;
   nameEn: string;
-  allowedCategories: string[];
+  allowedCategories?: string[];
   allowedFurniture?: string[];
 }
 
@@ -234,7 +235,7 @@ export interface OutpostDesign {
   /** Same slug as the design item in `items`. */
   id: string;
   learn?: { offerId: string; cost: Cost; requires?: Requirement[] };
-  unlocks: string[];
+  unlocks?: string[];
   researchedBy?: string[];
 }
 
@@ -267,7 +268,7 @@ export interface Stencil {
 export interface StencilSlot {
   id: string;
   nameEn: string;
-  allowed: string[];
+  allowed?: string[];
 }
 
 export interface StencilsStructure {
@@ -294,13 +295,13 @@ export interface ProjectGoal {
 
 export interface ProjectStep {
   key: string;
-  goals: ProjectGoal[];
+  goals?: ProjectGoal[];
   rewards?: Reward[];
 }
 
 export interface ProjectPhase {
   key: string;
-  steps: ProjectStep[];
+  steps?: ProjectStep[];
 }
 
 export interface Project {
@@ -311,7 +312,7 @@ export interface Project {
   end?: string;
   /** Expedition number for type 'expedition'. */
   expedition?: number;
-  phases: ProjectPhase[];
+  phases?: ProjectPhase[];
   rewards?: Reward[];
 }
 
@@ -356,10 +357,10 @@ export interface Quest {
   category: QuestCategory;
   traderId?: string;
   mapIds?: string[];
-  requires: QuestRequirement[];
-  next: string[];
+  requires?: QuestRequirement[];
+  next?: string[];
   objective: ObjectiveNode;
-  rewards: { accept?: Reward[]; complete: Reward[]; optionals?: Reward[]; xp?: number };
+  rewards?: { accept?: Reward[]; complete?: Reward[]; optionals?: Reward[]; xp?: number };
   hidden?: boolean;
   addedIn?: string;
 }
@@ -375,8 +376,8 @@ export interface SkillNode {
   id: string;
   nameEn: string;
   category: string;
-  parents: string[];
-  children: string[];
+  parents?: string[];
+  children?: string[];
   maxLevel: number;
   minTotalInvestment: number;
   requireAllParents: boolean;
@@ -409,7 +410,7 @@ export interface AmplifiedWeapon {
   id: string;
   /** Weapon item the amplification starts from (usually the highest tier). */
   fromItemId: string;
-  variants: string[];
+  variants?: string[];
   graph: Record<string, AmplificationBranch[]>;
   repairItemId?: string;
 }

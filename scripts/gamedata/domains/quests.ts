@@ -186,7 +186,7 @@ const module: DomainModule = {
         if (maps.length) node.action.mapIds = maps;
       }
       const text = n.name?.en ? n.name : n.description?.en ? n.description : null;
-      if (text) ctx.text.add('quests', slug, `objectives.${key}`, withAmount(text, a?.amount));
+      if (text) ctx.text.add('quests', slug, ['objectives', key], withAmount(text, a?.amount));
       if (n.children?.length) node.children = n.children.map((c, i) => buildNode(c, `${key}.${i}`, slug));
       return node;
     };
@@ -258,7 +258,7 @@ const module: DomainModule = {
 
     // dangling check (graph must be closed)
     for (const q of Object.values(quests)) {
-      for (const r of q.requires) if (r.questId && !quests[r.questId]) report.add('quests:dangling', `${q.id} -> ${r.questId}`);
+      for (const r of q.requires ?? []) if (r.questId && !quests[r.questId]) report.add('quests:dangling', `${q.id} -> ${r.questId}`);
     }
     return { quests };
   },

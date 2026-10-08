@@ -12,10 +12,12 @@ export class TextCollector {
   private data = new Map<string, Map<string, Map<string, Partial<Record<Locale, string>>>>>();
 
   /**
-   * Adds a text. `field` may be dotted for nested entries, e.g. 'objectives.0.1'.
-   * Plain strings are treated as English-only text.
+   * Adds a text. A string `field` is split on dots into nested entries ('phases.0.name');
+   * pass an array to keep dots inside a key (['objectives', '0.1'] → objectives['0.1']).
+   * Plain-string texts are treated as English-only.
    */
-  add(domain: string, slug: string, field: string, text: Text): void {
+  add(domain: string, slug: string, field: string | string[], text: Text): void {
+    const fieldKey = JSON.stringify(Array.isArray(field) ? field : field.split('.'));
     if (text == null) return;
     const values: Partial<Record<Locale, string>> = typeof text === 'string' ? { en: text } : (text as Partial<Record<Locale, string>>);
     if (!values.en && !LOCALES.some((l) => values[l])) return;
@@ -23,12 +25,13 @@ export class TextCollector {
     if (!d) this.data.set(domain, (d = new Map()));
     let s = d.get(slug);
     if (!s) d.set(slug, (s = new Map()));
-    s.set(field, values);
+    s.set(fieldKey, values);
   }
 
   /** English text of a field, if collected. */
-  en(domain: string, slug: string, field = 'name'): string | undefined {
-    return this.data.get(domain)?.get(slug)?.get(field)?.en || undefined;
+  en(domain: string, slug: string, field: string | string[] = 'name'): string | undefined {
+    const fieldKey = JSON.stringify(Array.isArray(field) ? field : field.split('.'));
+    return this.data.get(domain)?.get(slug)?.get(fieldKey)?.en || undefined;
   }
 
   has(domain: string): boolean {
@@ -47,7 +50,7 @@ export class TextCollector {
         const v = fields.get(field)!;
         const value = v[locale] || v.en || LOCALES.map((l) => v[l]).find(Boolean) || '';
         if (!value) continue;
-        setPath(entry, field.split('.'), value);
+        setPath(entry, JSON.parse(field) as string[], value);
       }
       out[slug] = entry;
     }
