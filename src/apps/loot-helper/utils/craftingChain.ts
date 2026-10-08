@@ -1,4 +1,5 @@
 import type { ItemsMap } from '../types/item';
+import { isExcludedFromLootList } from './lootableItems';
 
 export interface CraftingNode {
   itemId: string;
@@ -121,7 +122,7 @@ function findSalvageableSources(
     }
     
     // Skip weapons and modifications
-    if (item.isWeapon || item.group === 'Modifications') {
+    if (isExcludedFromLootList(item)) {
       continue;
     }
 

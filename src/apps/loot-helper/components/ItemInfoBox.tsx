@@ -1,11 +1,10 @@
 import { createPortal } from 'react-dom';
 import type { Item, ItemsMap } from '../types/item';
-import { getRarityClass, getLocationIcon } from '../utils/dataLoader';
+import { getRarityClass } from '../utils/dataLoader';
+import { getThemeIcon } from '../../../shared/gamedata/classificationFilters';
 import {
   getItemDisplayName,
-  getLocalizedLootHelperLocation,
   getLocalizedLootHelperRarity,
-  getLocalizedLootHelperType,
   getLootHelperItemDescription,
 } from '../utils/localization';
 import { PackageSearch, Coins, Weight, Hammer, Recycle, MapPin } from 'lucide-react';
@@ -29,6 +28,7 @@ export function ItemInfoBox({ item, itemsMap, position, visible, onMouseEnter, o
   const hasRecipe = item.recipe && Object.keys(item.recipe).length > 0;
   const hasRecycles = item.recyclesInto && Object.keys(item.recyclesInto).length > 0;
   const hasSalvages = item.salvagesInto && Object.keys(item.salvagesInto).length > 0;
+  const hasEffects = !!item.effects && item.effects.length > 0;
   const hasLocations = item.foundIn && item.foundIn.length > 0;
 
   return createPortal(
@@ -57,12 +57,14 @@ export function ItemInfoBox({ item, itemsMap, position, visible, onMouseEnter, o
         <div className="item-info-title">
           <h3>{getItemDisplayName(item)}</h3>
           <div className="item-info-badges">
-            <span className={`badge badge-type ${item.type.toLowerCase().replace(/\s+/g, '-')}`}>
-              {getLocalizedLootHelperType(t, item.type)}
-            </span>
-            <span className={`badge badge-rarity ${getRarityClass(item.rarity)}`}>
-              {getLocalizedLootHelperRarity(t, item.rarity)}
-            </span>
+            {item.categoryName && (
+              <span className="badge badge-type">{item.categoryName}</span>
+            )}
+            {item.rarity && (
+              <span className={`badge badge-rarity ${getRarityClass(item.rarity)}`}>
+                {getLocalizedLootHelperRarity(t, item.rarity)}
+              </span>
+            )}
           </div>
         </div>
       </div>
@@ -101,13 +103,13 @@ export function ItemInfoBox({ item, itemsMap, position, visible, onMouseEnter, o
             <span className="stat-label">{t('lootHelper.itemInfo.foundIn')}</span>
             <span className="stat-value">
               {item.foundIn!.map((location, index) => {
-                const iconFile = getLocationIcon(location);
-                const localizedLocation = getLocalizedLootHelperLocation(t, location);
+                const iconFile = getThemeIcon(location);
+                const localizedLocation = item.foundInNames?.[index] ?? location;
                 return (
                   <span key={location} className="location-tag">
                     {iconFile && (
                       <img 
-                        src={`/images/locations/${iconFile}`} 
+                        src={iconFile} 
                         alt={localizedLocation}
                         className="location-tag-icon"
                       />
@@ -120,6 +122,23 @@ export function ItemInfoBox({ item, itemsMap, position, visible, onMouseEnter, o
           </div>
         )}
       </div>
+
+      {hasEffects && (
+        <ul className="item-info-effects">
+          {item.effects!.map((effect, index) => (
+            <li key={index} className={effect.positive ? undefined : 'item-info-effect--negative'}>
+              {effect.value ? (
+                <>
+                  <span className="effect-label">{effect.label}</span>
+                  <span className="effect-value">{effect.value}</span>
+                </>
+              ) : (
+                <span className="effect-label">{effect.label}</span>
+              )}
+            </li>
+          ))}
+        </ul>
+      )}
 
       {hasRecipe && (
         <div className="item-info-section">

@@ -22,8 +22,8 @@ function item(overrides: Partial<PlannerItem> & Pick<PlannerItem, 'id' | 'name'>
     description: '',
     icon: '',
     rarity: 'Common',
-    type: 'Topside Material',
-    category: 'Topside Material',
+    category: 'CraftingMaterial.Topside',
+    group: 'CraftingItems',
     stationLevelRequired: 1,
     blueprintLocked: false,
     craftQuantity: 1,
@@ -49,7 +49,8 @@ const itemsMap: ItemsMap = {
   comet_igniter: item({
     id: 'comet_igniter',
     name: 'Comet Igniter',
-    category: 'Recyclable',
+    category: 'CraftingMaterial.Recyclable',
+    group: 'CraftingItems',
     value: 1000,
     recyclesInto: {
       arc_alloy: 2,
@@ -59,7 +60,8 @@ const itemsMap: ItemsMap = {
   explosive_compound: item({
     id: 'explosive_compound',
     name: 'Explosive Compound',
-    category: 'Refined Material',
+    category: 'CraftingMaterial.Refined',
+    group: 'CraftingItems',
     value: 1000,
     recyclesInto: {
       crude_explosives: 2,
@@ -69,17 +71,20 @@ const itemsMap: ItemsMap = {
   advanced_electrical_components: item({
     id: 'advanced_electrical_components',
     name: 'Advanced Electrical Components',
-    category: 'Refined Material',
+    category: 'CraftingMaterial.Refined',
+    group: 'CraftingItems',
   }),
   voltage_converter: item({
     id: 'voltage_converter',
     name: 'Voltage Converter',
-    category: 'Topside Material',
+    category: 'CraftingMaterial.Topside',
+    group: 'CraftingItems',
   }),
   vaporizer_regulator: item({
     id: 'vaporizer_regulator',
     name: 'Vaporizer Regulator',
-    category: 'Recyclable',
+    category: 'CraftingMaterial.Recyclable',
+    group: 'CraftingItems',
     recyclesInto: {
       advanced_electrical_components: 2,
       arc_circuitry: 2,
@@ -97,8 +102,8 @@ const itemsMap: ItemsMap = {
   heavy_shield: item({
     id: 'heavy_shield',
     name: 'Heavy Shield',
-    type: 'Shield',
-    category: 'Shield',
+    category: 'Armor',
+    group: 'Armor',
     craftBench: 'equipment_bench',
     recipe: {
       power_rod: 1,
@@ -108,8 +113,8 @@ const itemsMap: ItemsMap = {
   deadline: item({
     id: 'deadline',
     name: 'Deadline',
-    type: 'Quick Use',
-    category: 'Quick Use',
+    category: 'Utility.Grenade',
+    group: 'Utilities',
     craftBench: 'explosives_bench',
     stationLevelRequired: 3,
     blueprintLocked: true,
@@ -141,8 +146,8 @@ const itemsMap: ItemsMap = {
   launcher_ammo: item({
     id: 'launcher_ammo',
     name: 'Launcher Ammo',
-    type: 'Ammunition',
-    category: 'Ammunition',
+    category: 'RiflePayload',
+    group: 'Ammunition',
     craftBench: 'workbench',
     craftQuantity: 60,
     recipe: {
@@ -154,7 +159,8 @@ const itemsMap: ItemsMap = {
   spare_recycler: item({
     id: 'spare_recycler',
     name: 'Spare Recycler',
-    category: 'Recyclable',
+    category: 'CraftingMaterial.Recyclable',
+    group: 'CraftingItems',
     value: 900,
     recyclesInto: {
       crude_explosives: 2,
@@ -163,7 +169,8 @@ const itemsMap: ItemsMap = {
   bargain_recycler: item({
     id: 'bargain_recycler',
     name: 'Bargain Recycler',
-    category: 'Recyclable',
+    category: 'CraftingMaterial.Recyclable',
+    group: 'CraftingItems',
     value: 500,
     recyclesInto: {
       crude_explosives: 2,
@@ -172,7 +179,8 @@ const itemsMap: ItemsMap = {
   premium_recycler: item({
     id: 'premium_recycler',
     name: 'Premium Recycler',
-    category: 'Recyclable',
+    category: 'CraftingMaterial.Recyclable',
+    group: 'CraftingItems',
     value: 1500,
     recyclesInto: {
       crude_explosives: 2,
@@ -181,13 +189,15 @@ const itemsMap: ItemsMap = {
   fabric: item({
     id: 'fabric',
     name: 'Fabric',
-    category: 'Basic Material',
+    category: 'CraftingMaterial.Basic',
+    group: 'CraftingItems',
     stackSize: 50,
   }),
   durable_cloth: item({
     id: 'durable_cloth',
     name: 'Durable Cloth',
-    category: 'Refined Material',
+    category: 'CraftingMaterial.Refined',
+    group: 'CraftingItems',
     craftBench: 'refiner',
     recipe: {
       fabric: 14,
@@ -201,7 +211,8 @@ const itemsMap: ItemsMap = {
   arc_thermo_lining: item({
     id: 'arc_thermo_lining',
     name: 'ARC Thermo Lining',
-    category: 'Recyclable',
+    category: 'CraftingMaterial.Recyclable',
+    group: 'CraftingItems',
     recyclesInto: {
       fabric: 16,
     },
@@ -210,7 +221,8 @@ const itemsMap: ItemsMap = {
   torn_blanket: item({
     id: 'torn_blanket',
     name: 'Torn Blanket',
-    category: 'Recyclable',
+    category: 'CraftingMaterial.Recyclable',
+    group: 'CraftingItems',
     recyclesInto: {
       fabric: 12,
     },
@@ -219,7 +231,8 @@ const itemsMap: ItemsMap = {
   tattered_clothes: item({
     id: 'tattered_clothes',
     name: 'Tattered Clothes',
-    category: 'Recyclable',
+    category: 'CraftingMaterial.Recyclable',
+    group: 'CraftingItems',
     recyclesInto: {
       fabric: 11,
     },
@@ -228,7 +241,8 @@ const itemsMap: ItemsMap = {
   damaged_heat_sink: item({
     id: 'damaged_heat_sink',
     name: 'Damaged Heat Sink',
-    category: 'Recyclable',
+    category: 'CraftingMaterial.Recyclable',
+    group: 'CraftingItems',
     recyclesInto: {
       metal_parts: 6,
       wires: 2,
@@ -237,7 +251,8 @@ const itemsMap: ItemsMap = {
   rusted_tools: item({
     id: 'rusted_tools',
     name: 'Rusted Tools',
-    category: 'Recyclable',
+    category: 'CraftingMaterial.Recyclable',
+    group: 'CraftingItems',
     recyclesInto: {
       metal_parts: 8,
       steel_spring: 1,
@@ -251,8 +266,8 @@ const itemsMap: ItemsMap = {
   medium_ammo: item({
     id: 'medium_ammo',
     name: 'Medium Ammo',
-    type: 'Ammunition',
-    category: 'Ammunition',
+    category: 'RiflePayload',
+    group: 'Ammunition',
     craftBench: 'workbench',
     craftQuantity: 20,
     recipe: {
@@ -677,14 +692,16 @@ describe('quartermaster blueprint craftability', () => {
       arc_alloy: item({
         id: 'arc_alloy',
         name: 'ARC Alloy',
-        category: 'Topside Material',
+        category: 'CraftingMaterial.Topside',
+        group: 'CraftingItems',
         recyclesInto: { metal_parts: 2 },
         salvagesInto: { metal_parts: 1 },
       }),
       arc_motion_core: item({
         id: 'arc_motion_core',
         name: 'ARC Motion Core',
-        category: 'Refined Material',
+        category: 'CraftingMaterial.Refined',
+        group: 'CraftingItems',
         craftBench: 'refiner',
         recipe: { arc_alloy: 9 },
       }),
@@ -785,7 +802,8 @@ const weaponItemsMap: ItemsMap = {
   rusted_tools: item({
     id: 'rusted_tools',
     name: 'Rusted Tools',
-    category: 'Recyclable',
+    category: 'CraftingMaterial.Recyclable',
+    group: 'CraftingItems',
     recyclesInto: {
       heavy_gun_parts: 1,
       metal_parts: 8,
@@ -803,8 +821,7 @@ const weaponItemsMap: ItemsMap = {
   anvil_i: item({
     id: 'anvil_i',
     name: 'Anvil I',
-    type: 'Hand Cannon',
-    category: 'Weapon',
+    category: 'Firearm.AssaultRifle',
     craftBench: 'weapon_bench',
     blueprintLocked: true,
     recipe: {
@@ -818,8 +835,7 @@ const weaponItemsMap: ItemsMap = {
   anvil_ii: item({
     id: 'anvil_ii',
     name: 'Anvil II',
-    type: 'Hand Cannon',
-    category: 'Weapon',
+    category: 'Firearm.AssaultRifle',
     craftBench: 'weapon_bench',
     upgradeCost: {
       mechanical_components: 3,
@@ -833,8 +849,7 @@ const weaponItemsMap: ItemsMap = {
   anvil_iii: item({
     id: 'anvil_iii',
     name: 'Anvil III',
-    type: 'Hand Cannon',
-    category: 'Weapon',
+    category: 'Firearm.AssaultRifle',
     craftBench: 'weapon_bench',
     upgradeCost: {
       heavy_gun_parts: 1,
@@ -848,8 +863,7 @@ const weaponItemsMap: ItemsMap = {
   anvil_iv: item({
     id: 'anvil_iv',
     name: 'Anvil IV',
-    type: 'Hand Cannon',
-    category: 'Weapon',
+    category: 'Firearm.AssaultRifle',
     craftBench: 'weapon_bench',
     upgradeCost: {
       heavy_gun_parts: 1,
@@ -1156,7 +1170,8 @@ const hullcrackerItemsMap: ItemsMap = {
   magnetic_accelerator: item({
     id: 'magnetic_accelerator',
     name: 'Magnetic Accelerator',
-    category: 'Refined Material',
+    category: 'CraftingMaterial.Refined',
+    group: 'CraftingItems',
     value: 5500,
     recyclesInto: {
       advanced_mechanical_components: 1,
@@ -1166,7 +1181,8 @@ const hullcrackerItemsMap: ItemsMap = {
   magnetron: item({
     id: 'magnetron',
     name: 'Magnetron',
-    category: 'Recyclable',
+    category: 'CraftingMaterial.Recyclable',
+    group: 'CraftingItems',
     value: 3000,
     recyclesInto: {
       magnetic_accelerator: 1,
@@ -1175,7 +1191,8 @@ const hullcrackerItemsMap: ItemsMap = {
   amc_scrap: item({
     id: 'amc_scrap',
     name: 'AMC Scrap',
-    category: 'Recyclable',
+    category: 'CraftingMaterial.Recyclable',
+    group: 'CraftingItems',
     value: 9000,
     recyclesInto: {
       advanced_mechanical_components: 1,
@@ -1184,8 +1201,7 @@ const hullcrackerItemsMap: ItemsMap = {
   hullcracker_i: item({
     id: 'hullcracker_i',
     name: 'Hullcracker I',
-    type: 'Special',
-    category: 'Weapon',
+    category: 'Firearm.AssaultRifle',
     craftBench: 'weapon_bench',
     stationLevelRequired: 3,
     blueprintLocked: true,
@@ -1202,8 +1218,7 @@ const hullcrackerItemsMap: ItemsMap = {
   hullcracker_ii: item({
     id: 'hullcracker_ii',
     name: 'Hullcracker II',
-    type: 'Special',
-    category: 'Weapon',
+    category: 'Firearm.AssaultRifle',
     craftBench: 'weapon_bench',
     upgradeCost: {
       advanced_mechanical_components: 1,
@@ -1218,8 +1233,7 @@ const hullcrackerItemsMap: ItemsMap = {
   hullcracker_iii: item({
     id: 'hullcracker_iii',
     name: 'Hullcracker III',
-    type: 'Special',
-    category: 'Weapon',
+    category: 'Firearm.AssaultRifle',
     craftBench: 'weapon_bench',
     upgradeCost: {
       advanced_mechanical_components: 2,
@@ -1234,8 +1248,7 @@ const hullcrackerItemsMap: ItemsMap = {
   hullcracker_iv: item({
     id: 'hullcracker_iv',
     name: 'Hullcracker IV',
-    type: 'Special',
-    category: 'Weapon',
+    category: 'Firearm.AssaultRifle',
     craftBench: 'weapon_bench',
     upgradeCost: {
       advanced_mechanical_components: 2,
@@ -1352,7 +1365,8 @@ describe('quartermaster hullcracker upgrade planning — recycle protection', ()
       dual_source: item({
         id: 'dual_source',
         name: 'Dual Source',
-        category: 'Recyclable',
+        category: 'CraftingMaterial.Recyclable',
+        group: 'CraftingItems',
         recyclesInto: {
           arc_circuitry: 1,
         },
@@ -1391,7 +1405,8 @@ describe('quartermaster hullcracker upgrade planning — recycle protection', ()
       deep_source: item({
         id: 'deep_source',
         name: 'Deep Source',
-        category: 'Recyclable',
+        category: 'CraftingMaterial.Recyclable',
+        group: 'CraftingItems',
         recyclesInto: {
           chemicals: 1,
         },

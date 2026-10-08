@@ -140,6 +140,9 @@
   &.rarity-legendary .item-node-icon-wrapper {
     border-color: $rarity-legendary;
   }
+  &.rarity-amplified .item-node-icon-wrapper {
+    border-color: $rarity-amplified;
+  }
 }
 
 // Apply rarity colors to autocomplete and goal list icons
@@ -163,5 +166,8 @@
 
   &.rarity-legendary {
     border-color: $rarity-legendary;
+  }
+  &.rarity-amplified {
+    border-color: $rarity-amplified;
   }
 }

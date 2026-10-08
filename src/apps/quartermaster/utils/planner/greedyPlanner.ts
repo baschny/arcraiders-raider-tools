@@ -25,7 +25,7 @@ import type {
   CraftabilityInfo,
 } from '../../types/planner';
 import type { TargetPriority } from './aggregation';
-import { NON_RECYCLABLE_CATEGORIES } from '../../types/item';
+import { isNonRecyclable } from '../../types/item';
 import { getAdvisoryDependencyRecipe } from './provenance';
 
 // ---------------------------------------------------------------------------
@@ -357,7 +357,7 @@ function buildRecycleCandidates(
       ? 'direct_recipe_input'
       : 'normal';
     if (!allowDirectRecipeInputSources && sourcePriorityGroup === 'direct_recipe_input') continue;
-    if (NON_RECYCLABLE_CATEGORIES.has(item.category)) continue;
+    if (isNonRecyclable(item)) continue;
     if (!item.recyclesInto || Object.keys(item.recyclesInto).length === 0) continue;
 
     let effectiveYield = 0;
@@ -1343,7 +1343,7 @@ export function runGreedyPlanner(
   // Protect all non-recyclable-category items and required final items from recycling (CR-005, CR-009)
   for (const itemId of Object.keys(owned)) {
     const item = itemsMap[itemId];
-    if (item && NON_RECYCLABLE_CATEGORIES.has(item.category)) {
+    if (item && isNonRecyclable(item)) {
       state.protectedFromRecycle.add(itemId);
     }
   }

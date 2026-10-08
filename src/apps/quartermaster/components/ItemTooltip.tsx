@@ -3,12 +3,8 @@ import { Backpack, BriefcaseBusiness, CircleCheck, CircleX, Coins, Home, List, M
 import type { ItemsMap, PlannerItem } from '../types/item';
 import type { ItemRecycleSalvageUsage, ListType, PlannerResult } from '../types/planner';
 import { getEmptyItemInsight, type ItemInsightsMap } from '../utils/itemInsights';
-import { getLocationIcon } from '../utils/locationIcons';
-import {
-  getLocalizedQuartermasterLocation,
-  getLocalizedQuartermasterRarity,
-  getLocalizedQuartermasterType,
-} from '../utils/localization';
+import { getThemeIcon } from '../../../shared/gamedata/classificationFilters';
+import { getLocalizedQuartermasterRarity } from '../utils/localization';
 import { useLocale } from '../../../shared/context/LocaleContext';
 import { ItemIcon as SharedItemIcon } from '../../../shared/components/ItemIcon';
 import { getRarityClass } from '../../../shared/utils/rarity';
@@ -298,10 +294,14 @@ export function ItemTooltip({
         <div className="qm-item-tooltip__title">
           <h3 className="qm-item-name">{item.name}</h3>
           <div className="qm-item-tooltip__badges">
-            <span className="qm-item-tooltip__badge qm-item-tooltip__badge--type">{getLocalizedQuartermasterType(t, item.type)}</span>
-            <span className={`qm-item-tooltip__badge qm-item-tooltip__badge--rarity ${getRarityClass(item.rarity)}`}>
-              {getLocalizedQuartermasterRarity(t, item.rarity)}
-            </span>
+            {item.categoryName && (
+              <span className="qm-item-tooltip__badge qm-item-tooltip__badge--type">{item.categoryName}</span>
+            )}
+            {item.rarity && (
+              <span className={`qm-item-tooltip__badge qm-item-tooltip__badge--rarity ${getRarityClass(item.rarity)}`}>
+                {getLocalizedQuartermasterRarity(t, item.rarity)}
+              </span>
+            )}
           </div>
           <button
             type="button"
@@ -353,9 +353,9 @@ export function ItemTooltip({
                 <MapPin size={15} />
                 <span className="qm-item-tooltip__stat-label">{t('quartermaster.itemTooltip.foundIn')}</span>
                 <span className="qm-item-tooltip__stat-value qm-item-tooltip__stat-value--locations">
-                  {item.foundIn!.map((location) => {
-                    const locationIcon = getLocationIcon(location);
-                    const localizedLocation = getLocalizedQuartermasterLocation(t, location);
+                  {item.foundIn!.map((location, index) => {
+                    const locationIcon = getThemeIcon(location);
+                    const localizedLocation = item.foundInNames?.[index] ?? location;
                     return (
                       <span className="qm-item-tooltip__location" key={location}>
                         {locationIcon && (
@@ -373,6 +373,20 @@ export function ItemTooltip({
               </div>
             )}
           </div>
+
+          {item.effects && item.effects.length > 0 && (
+            <ul className="qm-item-tooltip__effects">
+              {item.effects.map((effect, index) => (
+                <li
+                  key={index}
+                  className={`qm-item-tooltip__effect ${effect.positive ? '' : 'qm-item-tooltip__effect--negative'}`}
+                >
+                  <span className="qm-item-tooltip__effect-label">{effect.label}</span>
+                  {effect.value && <span className="qm-item-tooltip__effect-value">{effect.value}</span>}
+                </li>
+              ))}
+            </ul>
+          )}
 
           {hasDisplayRecipe && (
             <div className="qm-item-tooltip__section">

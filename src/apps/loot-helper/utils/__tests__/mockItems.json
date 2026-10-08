@@ -2,7 +2,8 @@
   "raider_hatch_key": {
     "id": "raider_hatch_key",
     "name": { "en": "Raider Hatch Key" },
-    "type": "Key",
+    "category": "Utility.Key",
+    "group": "Keys",
     "rarity": "Rare",
     "recipe": {
       "advanced_electrical_components": 1,
@@ -12,7 +13,8 @@
   "heavy_shield": {
     "id": "heavy_shield",
     "name": { "en": "Heavy Shield" },
-    "type": "Shield",
+    "category": "Armor",
+    "group": "Armor",
     "rarity": "Epic",
     "recipe": {
       "power_rod": 1,
@@ -29,7 +31,8 @@
   "power_rod": {
     "id": "power_rod",
     "name": { "en": "Power Rod" },
-    "type": "Refined Material",
+    "category": "CraftingMaterial.Refined",
+    "group": "CraftingItems",
     "rarity": "Epic",
     "recipe": {
       "advanced_electrical_components": 2,
@@ -46,7 +49,8 @@
   "voltage_converter": {
     "id": "voltage_converter",
     "name": { "en": "Voltage Converter" },
-    "type": "Topside Material",
+    "category": "CraftingMaterial.Topside",
+    "group": "CraftingItems",
     "rarity": "Rare",
     "recyclesInto": {
       "wires": 1,
@@ -59,7 +63,8 @@
   "advanced_electrical_components": {
     "id": "advanced_electrical_components",
     "name": { "en": "Advanced Electrical Components" },
-    "type": "Refined Material",
+    "category": "CraftingMaterial.Refined",
+    "group": "CraftingItems",
     "rarity": "Rare",
     "recipe": {
       "wires": 3,
@@ -77,19 +82,22 @@
   "arc_circuitry": {
     "id": "arc_circuitry",
     "name": { "en": "ARC Circuitry" },
-    "type": "Topside Material",
+    "category": "CraftingMaterial.Topside",
+    "group": "CraftingItems",
     "rarity": "Rare"
   },
   "sensor": {
     "id": "sensor",
     "name": { "en": "Sensor" },
-    "type": "Topside Material",
+    "category": "CraftingMaterial.Topside",
+    "group": "CraftingItems",
     "rarity": "Rare"
   },
   "broken_handheld_radio": {
     "id": "broken_handheld_radio",
     "name": { "en": "Broken Handheld Radio" },
-    "type": "Recyclable",
+    "category": "CraftingMaterial.Recyclable",
+    "group": "CraftingItems",
     "rarity": "Uncommon",
     "salvagesInto": {
       "sensor": 2
@@ -98,7 +106,8 @@
   "broken_taser": {
     "id": "broken_taser",
     "name": { "en": "Broken Taser" },
-    "type": "Recyclable",
+    "category": "CraftingMaterial.Recyclable",
+    "group": "CraftingItems",
     "rarity": "Rare",
     "recyclesInto": {
       "battery": 2,
@@ -111,7 +120,8 @@
   "wires": {
     "id": "wires",
     "name": { "en": "Wires" },
-    "type": "Topside Material",
+    "category": "CraftingMaterial.Topside",
+    "group": "CraftingItems",
     "rarity": "Uncommon",
     "recyclesInto": {
       "rubber_parts": 3
@@ -123,25 +133,29 @@
   "electrical_components": {
     "id": "electrical_components",
     "name": { "en": "Electrical Components" },
-    "type": "Basic Material",
+    "category": "CraftingMaterial.Basic",
+    "group": "CraftingItems",
     "rarity": "Common"
   },
   "battery": {
     "id": "battery",
     "name": { "en": "Battery" },
-    "type": "Basic Material",
+    "category": "CraftingMaterial.Basic",
+    "group": "CraftingItems",
     "rarity": "Common"
   },
   "rubber_parts": {
     "id": "rubber_parts",
     "name": { "en": "Rubber Parts" },
-    "type": "Basic Material",
+    "category": "CraftingMaterial.Basic",
+    "group": "CraftingItems",
     "rarity": "Common"
   },
   "arc_alloy": {
     "id": "arc_alloy",
     "name": { "en": "ARC Alloy" },
-    "type": "Basic Material",
+    "category": "CraftingMaterial.Basic",
+    "group": "CraftingItems",
     "rarity": "Common"
   }
 }

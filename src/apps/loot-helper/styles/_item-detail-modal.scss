@@ -92,6 +92,9 @@
     border-color: #ff9800;
     background-image: url('/images/rarities/legendary_bg.png');
   }
+  &.rarity-amplified {
+    border-color: $rarity-amplified;
+  }
 }
 
 .modal-close {

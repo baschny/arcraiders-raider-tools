@@ -7,6 +7,8 @@
 export type BenchId = string;
 
 import type { ItemRarity } from '../../../shared/types/item';
+import type { CatalogEffect } from '../../../shared/gamedata/catalog';
+import { isWeaponCategory } from '../../../shared/gamedata/classificationFilters';
 export type { ItemRarity };
 
 export interface PlannerItem {
@@ -15,12 +17,20 @@ export interface PlannerItem {
   originalNameEn?: string;
   description: string;
   icon: string;
-  rarity: ItemRarity;
+  /** Undefined = the game gives the item no rarity. */
+  rarity?: ItemRarity;
 
-  type: string;
-
-  category: string;
-  subCategory?: string;
+  /**
+   * Game classification: item category tag (`Utility.Grenade`, `Firearm.Pistol`), stash group
+   * (`Utilities`, `Weapons`) and subgroup, with their localized names. Logic and persisted filters
+   * use the ids, the UI shows the names (`categoryName` is the item card label, e.g. "Quick Use").
+   */
+  category?: string;
+  group?: string;
+  subgroup?: string;
+  categoryName?: string;
+  groupName?: string;
+  subgroupName?: string;
 
   craftBench?: BenchId;
   stationLevelRequired: number;
@@ -44,7 +54,11 @@ export interface PlannerItem {
   stackSize: number;
   value?: number;
   weight?: number;
+  /** Theme ids and their localized names (same order). */
   foundIn?: string[];
+  foundInNames?: string[];
+  /** Item stats, formatted for display, in game order. */
+  effects?: CatalogEffect[];
   questItem?: boolean;
 }
 
@@ -66,14 +80,29 @@ export const BENCH_ORDER: BenchId[] = [
   'research_station',
 ];
 
+/** True for firearms (game category `Firearm.*`). */
+export function isWeaponItem(item: Pick<PlannerItem, 'category'>): boolean {
+  return isWeaponCategory(item.category);
+}
+
+/** True for weapon mods (stash group `Modifications`, categories `Modification.*`). */
+export function isModItem(item: Pick<PlannerItem, 'group'>): boolean {
+  return item.group === 'Modifications';
+}
+
 /**
- * Categories that cannot be recycled (section 5.1)
+ * Stash groups that cannot be recycled (section 5.1): ammunition, augments, shields (`Armor`),
+ * weapon mods and quick use items (`Utilities`). Weapons are excluded via {@link isWeaponItem}.
  */
-export const NON_RECYCLABLE_CATEGORIES = new Set([
-  'Weapon',
+export const NON_RECYCLABLE_GROUPS = new Set([
   'Ammunition',
   'Augment',
-  'Modification',
-  'Quick Use',
-  'Shield',
+  'Modifications',
+  'Utilities',
+  'Armor',
 ]);
+
+/** True when the item can never be recycled or salvaged (weapons and the groups above). */
+export function isNonRecyclable(item: Pick<PlannerItem, 'category' | 'group'>): boolean {
+  return isWeaponItem(item) || (!!item.group && NON_RECYCLABLE_GROUPS.has(item.group));
+}

@@ -29,8 +29,8 @@ function item(overrides: Partial<PlannerItem> & Pick<PlannerItem, 'id' | 'name'>
     description: '',
     icon: '',
     rarity: 'Common',
-    type: 'Topside Material',
-    category: 'Topside Material',
+    category: 'CraftingMaterial.Topside',
+    group: 'CraftingItems',
     stationLevelRequired: 1,
     blueprintLocked: false,
     craftQuantity: 1,
@@ -91,7 +91,8 @@ const itemsMap: ItemsMap = {
   magnetic_accelerator: item({
     id: 'magnetic_accelerator',
     name: 'Magnetic Accelerator',
-    category: 'Refined Material',
+    category: 'CraftingMaterial.Refined',
+    group: 'CraftingItems',
     value: 5500,
     recyclesInto: {
       advanced_mechanical_components: 1,
@@ -103,7 +104,8 @@ const itemsMap: ItemsMap = {
   advanced_mechanical_components: item({
     id: 'advanced_mechanical_components',
     name: 'Advanced Mechanical Components',
-    category: 'Refined Material',
+    category: 'CraftingMaterial.Refined',
+    group: 'CraftingItems',
     stackSize: 10,
   }),
 };
@@ -270,7 +272,8 @@ describe('craft before recycle — non-weapon targets', () => {
       universal_scrap: item({
         id: 'universal_scrap',
         name: 'Universal Scrap',
-        category: 'Recyclable',
+        category: 'CraftingMaterial.Recyclable',
+        group: 'CraftingItems',
         value: 500,
         recyclesInto: {
           arc_motion_core: 2,
@@ -375,7 +378,8 @@ describe('craft before recycle — weapon upgrade path', () => {
       advanced_mechanical_components: item({
         id: 'advanced_mechanical_components',
         name: 'Advanced Mechanical Components',
-        category: 'Refined Material',
+        category: 'CraftingMaterial.Refined',
+        group: 'CraftingItems',
         craftBench: 'refiner',
         stationLevelRequired: 3,
         recipe: { mechanical_components: 3 },
@@ -385,7 +389,8 @@ describe('craft before recycle — weapon upgrade path', () => {
       magnetic_accelerator: item({
         id: 'magnetic_accelerator',
         name: 'Magnetic Accelerator',
-        category: 'Refined Material',
+        category: 'CraftingMaterial.Refined',
+        group: 'CraftingItems',
         value: 5500,
         craftBench: 'refiner',
         stationLevelRequired: 3,
@@ -396,7 +401,8 @@ describe('craft before recycle — weapon upgrade path', () => {
       old_gear: item({
         id: 'old_gear',
         name: 'Old Gear',
-        category: 'Recyclable',
+        category: 'CraftingMaterial.Recyclable',
+        group: 'CraftingItems',
         value: 200,
         recyclesInto: { advanced_mechanical_components: 1 },
         stackSize: 5,
@@ -405,7 +411,7 @@ describe('craft before recycle — weapon upgrade path', () => {
       weapon_i: item({
         id: 'weapon_i',
         name: 'Weapon I',
-        category: 'Weapon',
+        category: 'Firearm.AssaultRifle',
         craftBench: 'weapon_bench',
         stationLevelRequired: 3,
         blueprintLocked: false,
@@ -418,7 +424,7 @@ describe('craft before recycle — weapon upgrade path', () => {
       weapon_ii: item({
         id: 'weapon_ii',
         name: 'Weapon II',
-        category: 'Weapon',
+        category: 'Firearm.AssaultRifle',
         craftBench: 'weapon_bench',
         upgradeCost: { advanced_mechanical_components: 1 },
         upgradesFrom: 'weapon_i',
@@ -430,7 +436,7 @@ describe('craft before recycle — weapon upgrade path', () => {
       weapon_iv: item({
         id: 'weapon_iv',
         name: 'Weapon IV',
-        category: 'Weapon',
+        category: 'Firearm.AssaultRifle',
         craftBench: 'weapon_bench',
         upgradeCost: { advanced_mechanical_components: 1 },
         upgradesFrom: 'weapon_ii',

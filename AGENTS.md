@@ -50,6 +50,11 @@ Public data files contain slugs only — never Embark asset ids or internal asse
 game data live in `src/shared/gamedata/types.ts`; apps load data with `loadDomain()` /
 `loadItemCatalog()` from `src/shared/gamedata/`.
 
+Items carry the game classification (`category`, `group`, `subgroup` ids, `rarity` that may be absent,
+`foundIn` theme ids): apps use the ids for logic, filters and stored preferences and the catalog's
+localized names for display. There is no English `type` string; filters are built from
+`catalog.classification.groups` in game order (see `docs/Game-Data.md`).
+
 Generated game data is placed in `public/data/game/` and loaded at runtime via fetch.
 For schedule-specific generation, AWS automation, and dependency details, see `docs/Schedule-Update.md`.
 

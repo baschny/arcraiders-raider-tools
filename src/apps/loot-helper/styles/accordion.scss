@@ -157,6 +157,9 @@
     border-color: #ff9800;
     background-image: url('/images/rarities/legendary_bg.png');
   }
+  &.rarity-amplified {
+    border-color: $rarity-amplified;
+  }
 }
 
 .item-group-count {
@@ -289,6 +292,9 @@
     border-color: #ff9800;
     background-image: url('/images/rarities/legendary_bg.png');
   }
+  &.rarity-amplified {
+    border-color: $rarity-amplified;
+  }
 }
 
 .grid-item-title {
@@ -418,6 +424,11 @@
     &.rarity-legendary {
       background: #ff9800;
       border-color: #ff9800;
+      color: #1a1a1a;
+    }
+    &.rarity-amplified {
+      background: $rarity-amplified;
+      border-color: $rarity-amplified;
       color: #1a1a1a;
     }
   }
@@ -581,6 +592,14 @@
 
       &.enabled {
         background: #ff9800;
+        color: #1a1a1a;
+      }
+    }
+    &.rarity-amplified {
+      border-color: $rarity-amplified;
+
+      &.enabled {
+        background: $rarity-amplified;
         color: #1a1a1a;
       }
     }
@@ -818,6 +837,9 @@
     border-color: #ff9800;
     background-image: url('/images/rarities/legendary_bg.png');
   }
+  &.rarity-amplified {
+    border-color: $rarity-amplified;
+  }
 }
 
 .accordion-item-name {
@@ -972,6 +994,9 @@
   &.rarity-legendary {
     border-color: #ff9800;
     background-image: url('/images/rarities/legendary_bg.png');
+  }
+  &.rarity-amplified {
+    border-color: $rarity-amplified;
   }
 }
 

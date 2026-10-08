@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import type { ItemsMap } from '../../types/item';
+import { isExcludedFromLootList } from '../lootableItems';
 
 describe('Filter counts should not include Basic Materials', () => {
   it('should not count Basic Materials in filter badges when goal only requires Basic Materials', () => {
@@ -8,7 +9,8 @@ describe('Filter counts should not include Basic Materials', () => {
       heavy_ammo: {
         id: 'heavy_ammo',
         name: { en: 'Heavy Ammo' },
-        type: 'Ammunition',
+        category: 'RiflePayload',
+        group: 'Ammunition',
         rarity: 'Common',
         recipe: {
           chemicals: 2,
@@ -19,14 +21,16 @@ describe('Filter counts should not include Basic Materials', () => {
       chemicals: {
         id: 'chemicals',
         name: { en: 'Chemicals' },
-        type: 'Basic Material',
+        category: 'CraftingMaterial.Basic',
+        group: 'CraftingItems',
         rarity: 'Common',
         foundIn: ['Medical', 'Residential', 'Mechanical'],
       },
       metal_parts: {
         id: 'metal_parts',
         name: { en: 'Metal Parts' },
-        type: 'Basic Material',
+        category: 'CraftingMaterial.Basic',
+        group: 'CraftingItems',
         rarity: 'Common',
         foundIn: ['Mechanical', 'Industrial', 'Electrical', 'Technological'],
       },
@@ -55,9 +59,7 @@ describe('Filter counts should not include Basic Materials', () => {
       .map(id => itemsMap[id])
       .filter(item => {
         if (!item) return false;
-        if (item.type === 'Basic Material') return false;
-        if (item.isWeapon || item.type === 'Modification') return false;
-        return true;
+        return !isExcludedFromLootList(item);
       });
     
     const correctRarityMatchCounts = new Map();
@@ -76,14 +78,16 @@ describe('Filter counts should not include Basic Materials', () => {
       electronics: {
         id: 'electronics',
         name: { en: 'Electronics' },
-        type: 'Topside Material',
+        category: 'CraftingMaterial.Topside',
+        group: 'CraftingItems',
         rarity: 'Uncommon',
         foundIn: ['Technological'],
       },
       chemicals: {
         id: 'chemicals',
         name: { en: 'Chemicals' },
-        type: 'Basic Material',
+        category: 'CraftingMaterial.Basic',
+        group: 'CraftingItems',
         rarity: 'Common',
         foundIn: ['Medical'],
       },
@@ -96,9 +100,7 @@ describe('Filter counts should not include Basic Materials', () => {
       .map(id => itemsMap[id])
       .filter(item => {
         if (!item) return false;
-        if (item.type === 'Basic Material') return false;
-        if (item.isWeapon || item.type === 'Modification') return false;
-        return true;
+        return !isExcludedFromLootList(item);
       });
 
     const rarityMatchCounts = new Map();
@@ -111,5 +113,25 @@ describe('Filter counts should not include Basic Materials', () => {
     expect(sortedItems[0].id).toBe('electronics');
     expect(rarityMatchCounts.get('Uncommon')).toBe(1);
     expect(rarityMatchCounts.get('Common')).toBeUndefined();
+  });
+
+  it('excludes basic materials, weapons and weapon mods by game classification', () => {
+    expect(isExcludedFromLootList({ category: 'CraftingMaterial.Basic', group: 'CraftingItems' })).toBe(true);
+    expect(isExcludedFromLootList({ category: 'Firearm.Pistol', group: 'Weapons', isWeapon: true })).toBe(true);
+    expect(isExcludedFromLootList({ category: 'Modification.Firearm.Muzzle', group: 'Modifications' })).toBe(true);
+    expect(isExcludedFromLootList({ category: 'CraftingMaterial.Topside', group: 'CraftingItems' })).toBe(false);
+    expect(isExcludedFromLootList({})).toBe(false);
+  });
+
+  it('keeps items without rarity out of the rarity counts', () => {
+    const itemsMap: ItemsMap = {
+      blueprint: { id: 'blueprint', name: { en: 'Blueprint' }, category: 'Recipe', group: 'Misc' },
+      electronics: { id: 'electronics', name: { en: 'Electronics' }, category: 'CraftingMaterial.Topside', rarity: 'Uncommon' },
+    };
+    const counts = new Map<string, number>();
+    Object.values(itemsMap).forEach((item) => {
+      if (item.rarity) counts.set(item.rarity, (counts.get(item.rarity) || 0) + 1);
+    });
+    expect([...counts.entries()]).toEqual([['Uncommon', 1]]);
   });
 });

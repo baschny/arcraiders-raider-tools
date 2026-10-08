@@ -10,7 +10,7 @@
  * See Final Spec Section 6.5
  */
 
-import type { ItemsMap } from '../../types/item';
+import type { ItemsMap, PlannerItem } from '../../types/item';
 import type {
   ItemId,
   Qty,
@@ -21,7 +21,7 @@ import type {
   RequiredSource,
 } from '../../types/planner';
 import { calculateProvenance, getAdvisoryDependencyRecipe } from './provenance';
-import { NON_RECYCLABLE_CATEGORIES } from '../../types/item';
+import { isNonRecyclable } from '../../types/item';
 
 // ---------------------------------------------------------------------------
 // Helpers (carried over from lootSuggestions.ts)
@@ -52,14 +52,14 @@ function computeRecipeRelevantSet(itemsMap: ItemsMap): Set<ItemId> {
 
 /**
  * Check if an item is crafting-relevant (section 6.3.3).
- * Not in nonRecyclableCategories AND (in recipeRelevantSet OR recycles into recipeRelevantSet).
+ * Not in non-recyclable groups AND (in recipeRelevantSet OR recycles into recipeRelevantSet).
  */
 function isCraftingRelevant(
   itemId: ItemId,
-  item: { category: string; recyclesInto?: Record<string, number> },
+  item: Pick<PlannerItem, 'category' | 'group' | 'recyclesInto'>,
   recipeRelevantSet: Set<ItemId>,
 ): boolean {
-  if (NON_RECYCLABLE_CATEGORIES.has(item.category)) return false;
+  if (isNonRecyclable(item)) return false;
   if (recipeRelevantSet.has(itemId)) return true;
   if (item.recyclesInto) {
     for (const yieldId of Object.keys(item.recyclesInto)) {
@@ -150,7 +150,7 @@ export function generateInRaidSuggestions(
   // -----------------------------------------------------------------------
   // Pipeline 1: Direct loot targets (CR-004)
   //   Missing final targets not locally satisfiable.
-  //   Included regardless of crafting-relevance and nonRecyclableCategories.
+  //   Included regardless of crafting-relevance and non-recyclable groups.
   // -----------------------------------------------------------------------
   for (const itemId of Object.keys(requiredFinal).sort()) {
     if ((deficits[itemId] ?? 0) <= 0) continue;
@@ -166,7 +166,7 @@ export function generateInRaidSuggestions(
 
   // -----------------------------------------------------------------------
   // Pipeline 2: Craft-support materials
-  //   Only crafting-relevant items (existing logic), but nonRecyclableCategories
+  //   Only crafting-relevant items (existing logic), but non-recyclable groups
   //   exclusion applies only to recycle/salvage paths, not direct-target inclusion.
   // -----------------------------------------------------------------------
   const allItemIds = Object.keys(itemsMap).sort();
@@ -179,8 +179,8 @@ export function generateInRaidSuggestions(
       addReason(itemId, 'BRING_HOME_DIRECT_MATERIAL');
     }
 
-    // Salvage yields missing material (skip nonRecyclableCategories for salvage path)
-    if (!NON_RECYCLABLE_CATEGORIES.has(item.category) && item.salvagesInto) {
+    // Salvage yields missing material (skip non-recyclable groups for salvage path)
+    if (!isNonRecyclable(item) && item.salvagesInto) {
       for (const [matId, qty] of Object.entries(item.salvagesInto)) {
         if (qty > 0 && neededMaterials.has(matId)) {
           if (isCraftingRelevant(itemId, item, recipeRelevantSet)) {
@@ -191,8 +191,8 @@ export function generateInRaidSuggestions(
       }
     }
 
-    // Recycle yields missing material (skip nonRecyclableCategories for recycle path)
-    if (!NON_RECYCLABLE_CATEGORIES.has(item.category) && item.recyclesInto) {
+    // Recycle yields missing material (skip non-recyclable groups for recycle path)
+    if (!isNonRecyclable(item) && item.recyclesInto) {
       for (const [matId, qty] of Object.entries(item.recyclesInto)) {
         if (qty > 0 && neededMaterials.has(matId)) {
           if (isCraftingRelevant(itemId, item, recipeRelevantSet)) {
@@ -228,7 +228,7 @@ export function generateInRaidSuggestions(
     if ((deficits[itemId] ?? 0) > 0) continue;
 
     // Item must not be in non-recyclable categories
-    if (NON_RECYCLABLE_CATEGORIES.has(item.category)) continue;
+    if (isNonRecyclable(item)) continue;
 
     // Item must have at least one impacted target with a deficit that is NOT satisfiable
     const hasImpactedDeficit = provenanceSources.some(

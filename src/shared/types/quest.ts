@@ -14,7 +14,8 @@ export interface QuestItemEntry {
   quantity: number;
   name: string;
   originalNameEn?: string;
-  rarity: QuestItemRarity;
+  /** Absent = the game gives the item no rarity. */
+  rarity?: QuestItemRarity;
   imageFilename: string;
 }
 

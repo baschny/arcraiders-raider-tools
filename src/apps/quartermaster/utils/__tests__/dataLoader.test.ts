@@ -44,7 +44,40 @@ describe('quartermaster v2 data loader', () => {
       expect(BENCH_ORDER).toContain(b);
     }
     expect(items.bandage?.craftBench).toBe('med_station');
-    expect(Object.values(items).some((i) => i.type === 'Blueprint')).toBe(false);
+    expect(Object.values(items).some((i) => i.category === 'Recipe')).toBe(false);
+  });
+
+  it('carries the game classification instead of English type strings', () => {
+    const yank = items.yank_grenade;
+    expect(yank).toMatchObject({
+      category: 'Utility.Grenade',
+      group: 'Utilities',
+      subgroup: 'Utility.Grenade',
+      categoryName: 'Quick Use',
+      groupName: 'Quick Use',
+      subgroupName: 'Grenades',
+      rarity: 'Uncommon',
+    });
+    expect(yank.effects).toEqual([
+      { label: 'Radius', value: '8.5m', positive: true },
+      { label: 'Tether Duration', value: '1s', positive: true },
+    ]);
+    expect(items.bandage.subgroup).toBe('Utility.Regenerative');
+    expect(Object.values(items).every((i) => !('type' in i) && !('subCategory' in i))).toBe(true);
+  });
+
+  it('keeps Amplified and leaves items without rarity without one', () => {
+    expect(items.amplification_material_bettina_hullcracker.rarity).toBe('Amplified');
+    const unrated = Object.values(items).filter((i) => i.rarity === undefined);
+    expect(unrated.length).toBeGreaterThan(0);
+    expect(unrated.every((i) => !('rarity' in i))).toBe(true);
+  });
+
+  it('exposes localized found-in names next to the theme ids', () => {
+    const withThemes = Object.values(items).find((i) => i.foundIn?.includes('OldWorld'));
+    expect(withThemes).toBeDefined();
+    const index = withThemes!.foundIn!.indexOf('OldWorld');
+    expect(withThemes!.foundInNames![index]).toBe('Old World');
   });
 
   it('maps hideout benches with costs, icons and level gates', () => {

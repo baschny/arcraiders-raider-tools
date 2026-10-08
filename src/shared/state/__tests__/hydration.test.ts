@@ -203,7 +203,7 @@ describe('state-sync integration: sign-in / sign-out', () => {
                 schemaVersion: 2,
                 data: { mode: 'manual', manualCompletedQuestIds: ['q1', 'q2'] },
             },
-            loot: { schemaVersion: 1, data: { goalItems: ['item_a'] } },
+            loot: { schemaVersion: 2, data: { goalItems: ['item_a'] } },
             quartermaster: { schemaVersion: 5, data: { weaponBuilds: [] } },
         });
         // Server now has the data.

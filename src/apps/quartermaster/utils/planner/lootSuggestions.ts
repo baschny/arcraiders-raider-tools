@@ -3,9 +3,9 @@
  * See Final Spec Section 4.5 & 5.1
  */
 
-import type { ItemsMap } from '../../types/item';
+import type { ItemsMap, PlannerItem } from '../../types/item';
 import type { ItemId, Qty, LootSuggestion, LootReason, LootBadge, LootSuggestionList } from '../../types/planner';
-import { NON_RECYCLABLE_CATEGORIES } from '../../types/item';
+import { isNonRecyclable } from '../../types/item';
 
 /**
  * Fixed enum order for reasons
@@ -48,10 +48,10 @@ function computeRecipeRelevantSet(itemsMap: ItemsMap): Set<ItemId> {
  */
 function isCraftingRelevant(
   itemId: ItemId,
-  item: { category: string; recyclesInto?: Record<string, number> },
+  item: Pick<PlannerItem, 'category' | 'group' | 'recyclesInto'>,
   recipeRelevantSet: Set<ItemId>,
 ): boolean {
-  if (NON_RECYCLABLE_CATEGORIES.has(item.category)) return false;
+  if (isNonRecyclable(item)) return false;
   if (recipeRelevantSet.has(itemId)) return true;
   if (item.recyclesInto) {
     for (const yieldId of Object.keys(item.recyclesInto)) {
@@ -150,7 +150,7 @@ export function generateLootSuggestions(
     const item = itemsMap[itemId];
 
     // Skip non-recyclable category items entirely (CR-005)
-    if (NON_RECYCLABLE_CATEGORIES.has(item.category)) continue;
+    if (isNonRecyclable(item)) continue;
 
     // Skip non-crafting-relevant items
     if (!isCraftingRelevant(itemId, item, recipeRelevantSet)) continue;

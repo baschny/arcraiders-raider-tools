@@ -1,6 +1,6 @@
 import type { Item, ItemsMap, ItemRarity } from '../types/item';
 import type { AppLocale } from '../../../shared/i18n/config';
-import { loadItemCatalog, type ItemCatalog } from '../../../shared/gamedata/catalog';
+import { loadItemCatalog, type CatalogClassification, type ItemCatalog } from '../../../shared/gamedata/catalog';
 
 /**
  * Consolidates weapon tiers by combining materials from all tiers (I-IV)
@@ -73,16 +73,18 @@ export function catalogToItems(catalog: ItemCatalog): Item[] {
       name: { en: c.name },
       originalNameEn: c.nameEn,
       description: c.description,
-      type: c.categoryName ?? '',
       category: c.category,
       group: c.group,
-      rarity: c.rarity ?? 'Common',
+      subgroup: c.subgroup,
+      categoryName: c.categoryName,
+      rarity: c.rarity,
       imageFilename: c.icon,
       value: c.value,
       weightKg: c.weightKg,
       stackSize: c.stackSize,
-      // theme ids → the app's location keys (only 'OldWorld' differs)
-      foundIn: c.foundIn?.length ? c.foundIn.map((id) => (id === 'OldWorld' ? 'Old World' : id)) : undefined,
+      foundIn: c.foundIn?.length ? c.foundIn : undefined,
+      foundInNames: c.foundIn?.length ? c.foundInNames : undefined,
+      effects: c.effects,
       recipe: c.recipe,
       recyclesInto: c.recyclesInto,
       salvagesInto: c.salvagesInto,
@@ -106,24 +108,11 @@ export async function loadAllItems(locale: AppLocale): Promise<ItemsMap> {
   return itemsMap;
 }
 
-export function getRarityClass(rarity: ItemRarity | undefined): string {
-  return rarity ? `rarity-${rarity.toLowerCase()}` : '';
+/** Game classification of the locale (groups in stash tab order, rarities, names) for the filters. */
+export async function loadClassification(locale: AppLocale): Promise<CatalogClassification> {
+  return (await loadItemCatalog(locale)).classification;
 }
 
-export function getLocationIcon(location: string): string | null {
-  const iconMap: Record<string, string> = {
-    'ARC': 'arc.webp',
-    'Commercial': 'commercial.webp',
-    'Electrical': 'electrical.webp',
-    'Exodus': 'exodus.webp',
-    'Industrial': 'industrial.webp',
-    'Mechanical': 'mechanical.webp',
-    'Medical': 'medical.webp',
-    'Old World': 'old_world.webp',
-    'Raider': 'raider.webp',
-    'Residential': 'residential.webp',
-    'Security': 'security.webp',
-    'Technological': 'technological.webp',
-  };
-  return iconMap[location] || null;
+export function getRarityClass(rarity: ItemRarity | undefined): string {
+  return rarity ? `rarity-${rarity.toLowerCase()}` : '';
 }

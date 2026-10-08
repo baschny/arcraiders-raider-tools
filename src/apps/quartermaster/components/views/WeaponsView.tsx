@@ -23,7 +23,6 @@ import {
   getSlotIcon,
   getSlotLabelKey,
   getWeaponSlotDefinitions,
-  getWeaponTypeSortIndex,
   hasEmptyWeaponSlot,
   matchWeaponSlots,
   WEAPON_SLOT_ORDER,
@@ -32,7 +31,8 @@ import {
   type OwnedWeaponInstance,
   type WeaponSlotType,
 } from '../../utils/weaponMods';
-import { getLocalizedQuartermasterType } from '../../utils/localization';
+import { useItemClassification } from '../../../../shared/hooks/useItemClassification';
+import { buildGroupFilters, compareRarityDesc, itemFilterSubgroup } from '../../../../shared/gamedata/classificationFilters';
 import type { ItemInsightsMap } from '../../utils/itemInsights';
 
 interface WeaponsViewProps {
@@ -54,14 +54,6 @@ interface BuildMatch {
   total: number;
   complete: boolean;
 }
-
-const RARITY_SORT_ORDER = new Map([
-  ['Legendary', 0],
-  ['Epic', 1],
-  ['Rare', 2],
-  ['Uncommon', 3],
-  ['Common', 4],
-]);
 
 function getDurabilityTone(percent: number): 'low' | 'medium' | 'high' {
   if (percent < 30) return 'low';
@@ -228,6 +220,7 @@ export function WeaponsView({
   hasLoadoutCache,
 }: WeaponsViewProps) {
   const { t, tm, compareText } = useLocale();
+  const classification = useItemClassification();
   const [weaponSearch, setWeaponSearch] = useState('');
   const [weaponTypeFilter, setWeaponTypeFilter] = useState('all');
   const [showIncompleteOnly, setShowIncompleteOnly] = useState(false);
@@ -244,19 +237,13 @@ export function WeaponsView({
     itemInsights,
   }), [itemInsights, itemsMap, plannerResult]);
 
+  // Weapon classes (subgroups of the Weapons stash group) of the owned weapons, in game order
   const weaponTypes = useMemo(() => {
-    const types = new Set<string>();
-    for (const instance of ownedWeaponInstances) {
-      const type = itemsMap[instance.itemId]?.subCategory;
-      if (type) types.add(type);
-    }
-    return Array.from(types).sort((left, right) => {
-      const leftIndex = getWeaponTypeSortIndex(left);
-      const rightIndex = getWeaponTypeSortIndex(right);
-      if (leftIndex !== rightIndex) return leftIndex - rightIndex;
-      return compareText(getLocalizedQuartermasterType(t, left), getLocalizedQuartermasterType(t, right));
-    });
-  }, [compareText, itemsMap, ownedWeaponInstances, t]);
+    const owned = ownedWeaponInstances
+      .map((instance) => itemsMap[instance.itemId])
+      .filter((item): item is NonNullable<typeof item> => !!item);
+    return buildGroupFilters(classification, owned).find((g) => g.id === 'Weapons')?.subgroups ?? [];
+  }, [classification, itemsMap, ownedWeaponInstances]);
 
   const filteredWeapons = useMemo(() => {
     const search = weaponSearch.trim().toLowerCase();
@@ -275,14 +262,14 @@ export function WeaponsView({
           );
           if (!nameMatch && !modMatch && !slotTypeMatch) return false;
         }
-        if (weaponTypeFilter !== 'all' && weapon.subCategory !== weaponTypeFilter) return false;
+        if (weaponTypeFilter !== 'all' && itemFilterSubgroup(weapon) !== weaponTypeFilter) return false;
         if (showIncompleteOnly && !hasEmptyWeaponSlot(weapon, instance)) return false;
         return true;
       })
       .sort((left, right) => {
         const leftItem = itemsMap[left.itemId];
         const rightItem = itemsMap[right.itemId];
-        const rarityCompare = (RARITY_SORT_ORDER.get(leftItem?.rarity ?? '') ?? 99) - (RARITY_SORT_ORDER.get(rightItem?.rarity ?? '') ?? 99);
+        const rarityCompare = compareRarityDesc(leftItem?.rarity, rightItem?.rarity);
         if (rarityCompare !== 0) return rarityCompare;
         const nameCompare = compareText(leftItem?.name ?? '', rightItem?.name ?? '');
         if (nameCompare !== 0) return nameCompare;
@@ -436,8 +423,8 @@ export function WeaponsView({
         >
           <option value="all">{t('quartermaster.weapons.filter.allTypes')}</option>
           {weaponTypes.map((type) => (
-            <option key={type} value={type}>
-              {getLocalizedQuartermasterType(t, type)}
+            <option key={type.id} value={type.id}>
+              {type.name}
             </option>
           ))}
         </select>

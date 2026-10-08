@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
-import { questsStore } from '../stores';
+import { lootStore, questsStore } from '../stores';
 
 const QUESTS_LOCAL_KEY = 'rt_state_quests';
 
@@ -52,6 +52,47 @@ describe('questsStore concrete behavior', () => {
     expect(questsStore.get()).toEqual({
       mode: 'manual',
       manualCompletedQuestIds: ['cold_storage', 'in_my_image'],
+    });
+  });
+});
+
+describe('lootStore schema v2 (game classification filters)', () => {
+  beforeEach(async () => {
+    localStorage.clear();
+    await lootStore.setBackend('local');
+    await lootStore.clearAll();
+  });
+
+  afterEach(async () => {
+    await lootStore.setBackend('local');
+    await lootStore.clearAll();
+    localStorage.clear();
+  });
+
+  it('drops type and location filters stored with English names, keeps goals and rarities', async () => {
+    localStorage.setItem('rt_state_loot', JSON.stringify({
+      schemaVersion: 1,
+      data: {
+        goalItems: ['anvil'],
+        disabledItems: [],
+        stashItems: ['bandage'],
+        disabledStashItems: [],
+        enabledTypes: ['Quick Use', 'Topside Material'],
+        enabledRarities: ['Common', 'Rare'],
+        enabledLocations: ['Old World', 'Medical'],
+      },
+    }));
+
+    await lootStore.hydrate();
+
+    expect(lootStore.get()).toEqual({
+      goalItems: ['anvil'],
+      disabledItems: [],
+      stashItems: ['bandage'],
+      disabledStashItems: [],
+      enabledTypes: null,
+      enabledRarities: ['Common', 'Rare'],
+      enabledLocations: null,
     });
   });
 });

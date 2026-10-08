@@ -35,7 +35,7 @@ export interface ItemIconProps {
   itemId: string;
   name: string;
   icon: string;
-  rarity: ItemRarity;
+  rarity?: ItemRarity;
   quantity: number | null;
   badges?: ItemIconBadge[];
   deficitBadge?: ItemIconDeficitBadge;

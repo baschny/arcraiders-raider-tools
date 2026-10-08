@@ -6,17 +6,17 @@ import { ItemHierarchy } from './ItemHierarchy';
 import { ItemIconWithInfo } from './ItemIconWithInfo';
 import { ItemDetailModal } from './ItemDetailModal';
 import { ActionIcon } from './ActionIcon';
-import { getRarityClass, getLocationIcon } from '../utils/dataLoader';
+import { getRarityClass } from '../utils/dataLoader';
+import { isExcludedFromLootList } from '../utils/lootableItems';
 import { getItemAction, type ItemAction } from '../utils/itemAction';
 import {
   getItemDisplayName,
-  getLocalizedLootHelperLocation,
   getLocalizedLootHelperRarity,
-  getLocalizedLootHelperType,
   getLootHelperItemName,
-  LOOT_HELPER_LOCATION_ORDER,
-  LOOT_HELPER_RARITY_ORDER,
 } from '../utils/localization';
+import type { CatalogClassification } from '../../../shared/gamedata/catalog';
+import { RARITIES } from '../../../shared/gamedata/types';
+import { buildGroupFilters, getThemeIcon, itemFilterGroup } from '../../../shared/gamedata/classificationFilters';
 import { useLocale } from '../../../shared/context/LocaleContext';
 import { lootStore, useStore } from '../../../shared/state/stores';
 
@@ -40,13 +40,15 @@ interface ItemGroup {
 
 interface AccordionListProps {
   itemsMap: ItemsMap;
+  /** Game classification (stash groups in game order, theme names) for the filters. */
+  classification: CatalogClassification;
   goalItemIds: string[];
   reverseMap: ReverseMap;
   stashItemIds: Set<string>;
   onToggleStashItem: (itemId: string) => void;
 }
 
-export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds, onToggleStashItem }: AccordionListProps) {
+export function AccordionList({ itemsMap, classification, goalItemIds, reverseMap, stashItemIds, onToggleStashItem }: AccordionListProps) {
   const { t, tm, compareText } = useLocale();
   const [lootState, setLootState] = useStore(lootStore);
   const [searchTerm, setSearchTerm] = useState('');
@@ -85,11 +87,8 @@ export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds,
   // Get all possible items from the entire itemsMap (for filter options)
   // Use the same filter logic as findSalvageableSources in craftingChain.ts
   const allPossibleItems = Object.values(itemsMap).filter((item) => {
-    // Skip Basic Materials
-    if (item.category === 'CraftingMaterial.Basic') return false;
-    
-    // Skip weapons and modifications
-    if (item.isWeapon || item.group === 'Modifications') return false;
+    // Skip basic materials, weapons and modifications
+    if (isExcludedFromLootList(item)) return false;
     
     // Include items that can be salvaged, recycled, or used in recipes
     const hasSalvage = item.salvagesInto && Object.keys(item.salvagesInto).length > 0;
@@ -103,30 +102,19 @@ export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds,
     return hasSalvage || hasRecycle || isUsedInRecipe;
   });
 
-  // Get all unique types, rarities, and locations from all items
-  const rarityOrder: ItemRarity[] = LOOT_HELPER_RARITY_ORDER;
-  const locationOrder = LOOT_HELPER_LOCATION_ORDER;
-  
-  const allPossibleTypes = Array.from(
-    new Set(allPossibleItems.map((item) => item.type))
-  ).sort((a, b) => compareText(getLocalizedLootHelperType(t, a), getLocalizedLootHelperType(t, b)));
+  // Filter options from the game classification. Types are the stash groups in game order,
+  // rarities in level order, locations (themes) by localized name. Persisted values are ids.
+  const groupFilters = buildGroupFilters(classification, allPossibleItems);
+  const allPossibleTypes = groupFilters.map((g) => g.id);
+  const typeNames = new Map(groupFilters.map((g) => [g.id, g.name]));
 
-  const allPossibleRarities = Array.from(
-    new Set(allPossibleItems.map((item) => item.rarity))
-  ).sort((a, b) => rarityOrder.indexOf(a) - rarityOrder.indexOf(b));
+  const usedRarities = new Set(allPossibleItems.map((item) => item.rarity));
+  const allPossibleRarities: ItemRarity[] = RARITIES.filter((r) => usedRarities.has(r));
 
+  const locationName = (id: string) => classification.themeName(id) ?? id;
   const allPossibleLocations = Array.from(
     new Set(allPossibleItems.flatMap((item) => item.foundIn || []))
-  ).sort((a, b) => {
-    const indexA = locationOrder.indexOf(a);
-    const indexB = locationOrder.indexOf(b);
-    if (indexA === -1 && indexB === -1) {
-      return compareText(getLocalizedLootHelperLocation(t, a), getLocalizedLootHelperLocation(t, b));
-    }
-    if (indexA === -1) return 1;
-    if (indexB === -1) return -1;
-    return indexA - indexB;
-  });
+  ).sort((a, b) => compareText(locationName(a), locationName(b)));
 
   const enabledTypes = useMemo(
     () => new Set(lootState.enabledTypes ?? allPossibleTypes),
@@ -154,10 +142,8 @@ export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds,
     .map((id) => itemsMap[id])
     .filter((item) => {
       if (!item) return false;
-      // Skip Basic Materials
-      if (item.category === 'CraftingMaterial.Basic') return false;
-      // Skip weapons and modifications
-      if (item.isWeapon || item.group === 'Modifications') return false;
+      // Skip basic materials, weapons and modifications
+      if (isExcludedFromLootList(item)) return false;
       return true;
     })
     .sort((a, b) => compareText(getItemDisplayName(a), getItemDisplayName(b)));
@@ -181,11 +167,12 @@ export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds,
   const locationMatchCounts = new Map<string, number>();
 
   sortedItems.forEach((item) => {
-    // Count types
-    typeMatchCounts.set(item.type, (typeMatchCounts.get(item.type) || 0) + 1);
-    
-    // Count rarities
-    rarityMatchCounts.set(item.rarity, (rarityMatchCounts.get(item.rarity) || 0) + 1);
+    // Count types (stash groups)
+    const group = itemFilterGroup(item);
+    if (group) typeMatchCounts.set(group, (typeMatchCounts.get(group) || 0) + 1);
+
+    // Count rarities (items without rarity are not counted)
+    if (item.rarity) rarityMatchCounts.set(item.rarity, (rarityMatchCounts.get(item.rarity) || 0) + 1);
     
     // Count locations
     if (item.foundIn) {
@@ -201,12 +188,13 @@ export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds,
     if (searchTerm.trim() && !getItemDisplayName(item).toLowerCase().includes(searchTerm.toLowerCase())) {
       return false;
     }
-    // Filter by type
-    if (!enabledTypes.has(item.type)) {
+    // Filter by type (stash group); items outside the stash have no group and always pass
+    const group = itemFilterGroup(item);
+    if (group && !enabledTypes.has(group)) {
       return false;
     }
-    // Filter by rarity
-    if (!enabledRarities.has(item.rarity)) {
+    // Filter by rarity; items without rarity always pass
+    if (item.rarity && !enabledRarities.has(item.rarity)) {
       return false;
     }
     // Filter by location - item must have at least one enabled location
@@ -571,9 +559,9 @@ export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds,
           <span className="filter-summary-none">{t('lootHelper.filters.none')}</span>
         ) : enabledTypes.size < allPossibleTypes.length ? (
           <div className="filter-summary-badges">
-            {Array.from(enabledTypes).sort().map((type) => (
+            {allPossibleTypes.filter((type) => enabledTypes.has(type)).map((type) => (
               <span key={type} className={`filter-summary-badge type-badge ${filtersExpanded ? 'faded' : ''}`}>
-                {getLocalizedLootHelperType(t, type)}
+                {typeNames.get(type) ?? type}
               </span>
             ))}
           </div>
@@ -583,9 +571,7 @@ export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds,
           <span className="filter-summary-none">{t('lootHelper.filters.none')}</span>
         ) : enabledRarities.size < allPossibleRarities.length ? (
           <div className="filter-summary-badges">
-            {Array.from(enabledRarities).sort((a, b) => 
-              rarityOrder.indexOf(a) - rarityOrder.indexOf(b)
-            ).map((rarity) => (
+            {allPossibleRarities.filter((rarity) => enabledRarities.has(rarity)).map((rarity) => (
               <span 
                 key={rarity} 
                 className={`filter-summary-badge rarity-badge rarity-${rarity.toLowerCase()} ${filtersExpanded ? 'faded' : ''}`}
@@ -600,27 +586,18 @@ export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds,
           <span className="filter-summary-none">{t('lootHelper.filters.none')}</span>
         ) : enabledLocations.size < allPossibleLocations.length ? (
           <div className="filter-summary-badges">
-            {Array.from(enabledLocations).sort((a, b) => {
-              const indexA = locationOrder.indexOf(a);
-              const indexB = locationOrder.indexOf(b);
-              if (indexA === -1 && indexB === -1) {
-                return compareText(getLocalizedLootHelperLocation(t, a), getLocalizedLootHelperLocation(t, b));
-              }
-              if (indexA === -1) return 1;
-              if (indexB === -1) return -1;
-              return indexA - indexB;
-            }).map((location) => {
-              const iconFile = getLocationIcon(location);
+            {allPossibleLocations.filter((location) => enabledLocations.has(location)).map((location) => {
+              const iconFile = getThemeIcon(location);
               return (
                 <span 
                   key={location} 
                   className={`filter-summary-badge location-badge ${filtersExpanded ? 'faded' : ''}`}
-                  title={getLocalizedLootHelperLocation(t, location)}
+                  title={locationName(location)}
                 >
                   {iconFile ? (
                     <img 
-                      src={`/images/locations/${iconFile}`} 
-                      alt={getLocalizedLootHelperLocation(t, location)}
+                      src={iconFile} 
+                      alt={locationName(location)}
                       className="location-badge-icon"
                     />
                   ) : (
@@ -725,7 +702,7 @@ export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds,
                           enabledTypes.has(type) ? 'enabled' : 'disabled'
                         } ${count === 0 ? 'no-matches' : 'has-matches'}`}
                       >
-                        {getLocalizedLootHelperType(t, type)}
+                        {typeNames.get(type) ?? type}
                         <span className="filter-button-badge">{count}</span>
                       </button>
                     );
@@ -790,7 +767,7 @@ export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds,
                     {t('lootHelper.filters.none')}
                   </button>
                   {allPossibleLocations.map((location) => {
-                    const iconFile = getLocationIcon(location);
+                    const iconFile = getThemeIcon(location);
                     const count = locationMatchCounts.get(location) || 0;
                     return (
                       <button
@@ -799,12 +776,12 @@ export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds,
                         className={`filter-button filter-location ${
                           enabledLocations.has(location) ? 'enabled' : 'disabled'
                         } ${count === 0 ? 'no-matches' : 'has-matches'}`}
-                        title={getLocalizedLootHelperLocation(t, location)}
+                        title={locationName(location)}
                       >
                         {iconFile ? (
                           <img 
-                            src={`/images/locations/${iconFile}`} 
-                            alt={getLocalizedLootHelperLocation(t, location)}
+                            src={iconFile} 
+                            alt={locationName(location)}
                             className="location-filter-icon"
                           />
                         ) : (

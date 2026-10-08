@@ -3,7 +3,7 @@
  * See specification section 7.2
  */
 
-import { useState, useEffect, useMemo, useRef, useCallback } from 'react';
+import { Fragment, useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import { Info, Paperclip, RefreshCw, Search, Package, X, Recycle } from 'lucide-react';
 import type { ItemsMap } from '../../types/item';
 import type { OwnedItemDisplayRow, OwnedItemLocation, PlannerResult } from '../../types/planner';
@@ -11,7 +11,6 @@ import { ItemIcon } from '../ItemIcon';
 import { ItemIcon as SharedItemIcon } from '../../../../shared/components/ItemIcon';
 import type { ItemInsightsMap } from '../../utils/itemInsights';
 import {
-  getLocalizedQuartermasterCategory,
   getLocalizedQuartermasterRarity,
   getUncraftableReasonLabel,
 } from '../../utils/localization';
@@ -23,6 +22,14 @@ import {
   type RecycleYieldInfoUnion,
 } from '../../utils/recycleFilter';
 import { useLocale } from '../../../../shared/context/LocaleContext';
+import { useItemClassification } from '../../../../shared/hooks/useItemClassification';
+import {
+  buildGroupFilters,
+  groupFilterValue,
+  matchesGroupFilter,
+  subgroupFilterValue,
+} from '../../../../shared/gamedata/classificationFilters';
+import { RARITIES } from '../../../../shared/gamedata/types';
 
 interface StashViewProps {
   itemsMap: ItemsMap;
@@ -58,6 +65,7 @@ export function StashView({
   unknownEmbarkItems = [],
 }: StashViewProps) {
   const { t, tm, compareText, formatNumber } = useLocale();
+  const classification = useItemClassification();
   const [filters, setFilters] = useState(() => loadStashFilters());
   const { searchQuery, categoryFilter, rarityFilter, recycleTargetId, showOnlyUseless } = filters;
 
@@ -153,17 +161,14 @@ export function StashView({
     return `Recycle:\u00A0→ ${yieldInfo.intermediateYield}x ${yieldInfo.intermediateName} → ${yieldInfo.finalYield}x ${targetName} = ${totalPart}`;
   }, [selectedRecycleTarget, t]);
 
-  // Get unique categories from owned items
-  const categories = useMemo(() => {
-    const cats = new Set<string>();
-    for (const item of ownedItemRows) {
-      const plannerItem = itemsMap[item.itemId];
-      if (plannerItem) {
-        cats.add(plannerItem.category);
-      }
-    }
-    return Array.from(cats).sort((a, b) => compareText(getLocalizedQuartermasterCategory(t, a), getLocalizedQuartermasterCategory(t, b)));
-  }, [ownedItemRows, itemsMap, compareText, t]);
+  // Type filter: the game's stash groups (and their subgroups) of the owned items, in game order
+  const groupFilters = useMemo(
+    () => buildGroupFilters(
+      classification,
+      ownedItemRows.map((row) => itemsMap[row.itemId]).filter((item): item is NonNullable<typeof item> => !!item),
+    ),
+    [ownedItemRows, itemsMap, classification],
+  );
 
   // Filter and sort owned items
   const filteredItems = useMemo(() => {
@@ -178,7 +183,7 @@ export function StashView({
         }
 
         // Category filter
-        if (categoryFilter !== 'all' && item.category !== categoryFilter) {
+        if (!matchesGroupFilter(categoryFilter, item)) {
           return false;
         }
 
@@ -403,8 +408,13 @@ export function StashView({
             onChange={(e) => setFilters(prev => ({ ...prev, categoryFilter: e.target.value }))}
           >
             <option value="all">{t('quartermaster.stash.allCategories')}</option>
-            {categories.map(cat => (
-              <option key={cat} value={cat}>{getLocalizedQuartermasterCategory(t, cat)}</option>
+            {groupFilters.map(group => (
+              <Fragment key={group.id}>
+                <option value={groupFilterValue(group.id)}>{group.name}</option>
+                {group.subgroups.length > 1 && group.subgroups.map(sub => (
+                  <option key={sub.id} value={subgroupFilterValue(sub.id)}>{`\u00A0\u00A0${sub.name}`}</option>
+                ))}
+              </Fragment>
             ))}
           </select>
 
@@ -414,11 +424,9 @@ export function StashView({
             onChange={(e) => setFilters(prev => ({ ...prev, rarityFilter: e.target.value }))}
           >
             <option value="all">{t('quartermaster.stash.allRarities')}</option>
-            <option value="Common">{getLocalizedQuartermasterRarity(t, 'Common')}</option>
-            <option value="Uncommon">{getLocalizedQuartermasterRarity(t, 'Uncommon')}</option>
-            <option value="Rare">{getLocalizedQuartermasterRarity(t, 'Rare')}</option>
-            <option value="Epic">{getLocalizedQuartermasterRarity(t, 'Epic')}</option>
-            <option value="Legendary">{getLocalizedQuartermasterRarity(t, 'Legendary')}</option>
+            {RARITIES.map(rarity => (
+              <option key={rarity} value={rarity}>{getLocalizedQuartermasterRarity(t, rarity)}</option>
+            ))}
           </select>
 
           <label style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 11, cursor: 'pointer' }} title={t('quartermaster.stash.showOnlyUselessTooltip')}>

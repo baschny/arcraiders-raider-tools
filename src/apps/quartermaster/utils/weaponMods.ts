@@ -1,5 +1,6 @@
 import type { CachedLoadout, CachedStash } from './api';
 import type { ItemsMap, PlannerItem } from '../types/item';
+import { isModItem, isWeaponItem } from '../types/item';
 import type { OwnedItemDisplayRow } from '../types/planner';
 import type { CraftabilityInfo } from '../types/planner';
 
@@ -88,17 +89,6 @@ export const WEAPON_SLOT_ORDER: WeaponSlotType[] = [
   'grip',
   'special',
 ];
-
-export const WEAPON_TYPE_ORDER = [
-  'Assault Rifle',
-  'Battle Rifle',
-  'SMG',
-  'Shotgun',
-  'Hand Cannon',
-  'Pistol',
-  'Sniper Rifle',
-  'Launcher',
-] as const;
 
 function isRawWeaponSlotKey(slotKey: string): slotKey is RawWeaponSlotKey {
   return slotKey === 'muzzle' || slotKey === 'magazine' || slotKey === 'stock' || slotKey === 'grip' || slotKey === 'special';
@@ -192,7 +182,7 @@ export function buildOwnedWeaponInstances(
 
   for (const stashItem of cachedStash?.items ?? []) {
     if (!isKnownItem(stashItem.itemId, itemsMap) || stashItem.quantity <= 0) continue;
-    if (itemsMap[stashItem.itemId].category !== 'Weapon') continue;
+    if (!isWeaponItem(itemsMap[stashItem.itemId])) continue;
 
     const ordinal = nextOrdinal('stash', stashItem.itemId);
     instances.push({
@@ -212,7 +202,7 @@ export function buildOwnedWeaponInstances(
 
   for (const { slotKey, slot } of loadoutSlots) {
     if (!slot || !isKnownItem(slot.itemId, itemsMap) || slot.quantity <= 0) continue;
-    if (itemsMap[slot.itemId].category !== 'Weapon') continue;
+    if (!isWeaponItem(itemsMap[slot.itemId])) continue;
 
     const ordinal = nextOrdinal('loadout', slot.itemId);
     instances.push({
@@ -330,7 +320,7 @@ export function flattenOwnedModInstances(ownedItemRows: OwnedItemDisplayRow[], i
 
   for (const row of ownedItemRows) {
     const item = itemsMap[row.itemId];
-    if (!item || item.category !== 'Modification') continue;
+    if (!item || !isModItem(item)) continue;
 
     for (const location of row.locations) {
       for (let index = 0; index < location.quantity; index++) {
@@ -356,10 +346,4 @@ export function flattenOwnedModInstances(ownedItemRows: OwnedItemDisplayRow[], i
   }
 
   return instances;
-}
-
-export function getWeaponTypeSortIndex(type: string | undefined): number {
-  if (!type) return WEAPON_TYPE_ORDER.length;
-  const index = (WEAPON_TYPE_ORDER as readonly string[]).indexOf(type);
-  return index >= 0 ? index : WEAPON_TYPE_ORDER.length;
 }

@@ -1,12 +1,13 @@
 import { useState, useEffect, useMemo } from 'react';
 import { Sidebar } from './components/Sidebar';
 import { AccordionList } from './components/AccordionList';
-import { loadAllItems } from './utils/dataLoader';
+import { loadAllItems, loadClassification } from './utils/dataLoader';
 import { buildCraftingTree, buildReverseMap } from './utils/craftingChain';
 import { getActiveStashItems } from './utils/stash';
 import { trackGoalItemAdded, trackGoalItemRemoved, trackGoalItemToggled, trackStashItemAdded, trackStashItemRemoved, trackStashItemToggled } from './utils/analytics';
 import type { ItemsMap } from './types/item';
 import type { ReverseMap } from './utils/craftingChain';
+import type { CatalogClassification } from '../../shared/gamedata/catalog';
 import { useLocale } from '../../shared/context/LocaleContext';
 import { LoadingSpinner } from '../../shared/components/LoadingSpinner';
 import { ErrorDisplay } from '../../shared/components/ErrorDisplay';
@@ -20,6 +21,7 @@ export function LootHelperApp() {
   const { locale, t } = useLocale();
   const [lootState, setLootState] = useStore(lootStore);
   const [itemsMap, setItemsMap] = useState<ItemsMap | null>(null);
+  const [classification, setClassification] = useState<CatalogClassification | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [reverseMap, setReverseMap] = useState<ReverseMap>(new Map());
@@ -43,9 +45,10 @@ export function LootHelperApp() {
 
   // Load items on mount
   useEffect(() => {
-    loadAllItems(locale)
-      .then((items) => {
+    Promise.all([loadAllItems(locale), loadClassification(locale)])
+      .then(([items, classified]) => {
         setItemsMap(items);
+        setClassification(classified);
         setLoading(false);
       })
       .catch((err) => {
@@ -91,7 +94,7 @@ export function LootHelperApp() {
       // Track analytics
       const item = itemsMap?.[itemId];
       if (item) {
-        trackGoalItemAdded(itemId, getItemDisplayName(item), item.rarity);
+        trackGoalItemAdded(itemId, getItemDisplayName(item), item.rarity ?? 'none');
       }
     }
   };
@@ -110,7 +113,7 @@ export function LootHelperApp() {
     // Track analytics
     const item = itemsMap?.[itemId];
     if (item) {
-      trackGoalItemRemoved(itemId, getItemDisplayName(item), item.rarity);
+      trackGoalItemRemoved(itemId, getItemDisplayName(item), item.rarity ?? 'none');
     }
   };
 
@@ -127,7 +130,7 @@ export function LootHelperApp() {
     // Track analytics
     const item = itemsMap?.[itemId];
     if (item) {
-      trackGoalItemToggled(itemId, getItemDisplayName(item), item.rarity, wasDisabled);
+      trackGoalItemToggled(itemId, getItemDisplayName(item), item.rarity ?? 'none', wasDisabled);
     }
   };
 
@@ -175,9 +178,9 @@ export function LootHelperApp() {
     const item = itemsMap?.[itemId];
     if (item) {
       if (wasInStash && !newStash.has(itemId)) {
-        trackStashItemRemoved(itemId, getItemDisplayName(item), item.rarity);
+        trackStashItemRemoved(itemId, getItemDisplayName(item), item.rarity ?? 'none');
       } else if (!wasInStash && newStash.has(itemId)) {
-        trackStashItemAdded(itemId, getItemDisplayName(item), item.rarity);
+        trackStashItemAdded(itemId, getItemDisplayName(item), item.rarity ?? 'none');
       }
     }
   };
@@ -200,7 +203,7 @@ export function LootHelperApp() {
     // Track analytics
     const item = itemsMap?.[itemId];
     if (item) {
-      trackStashItemToggled(itemId, getItemDisplayName(item), item.rarity, wasDisabled);
+      trackStashItemToggled(itemId, getItemDisplayName(item), item.rarity ?? 'none', wasDisabled);
     }
   };
 
@@ -219,7 +222,7 @@ export function LootHelperApp() {
     // Track analytics
     const item = itemsMap?.[itemId];
     if (item) {
-      trackStashItemRemoved(itemId, getItemDisplayName(item), item.rarity);
+      trackStashItemRemoved(itemId, getItemDisplayName(item), item.rarity ?? 'none');
     }
   };
 
@@ -232,7 +235,7 @@ export function LootHelperApp() {
     return <ErrorDisplay message={error} />;
   }
 
-  if (!itemsMap) {
+  if (!itemsMap || !classification) {
     return <ErrorDisplay message={t('lootHelper.noData')} />;
   }
 
@@ -263,6 +266,7 @@ export function LootHelperApp() {
           ) : (
             <AccordionList
               itemsMap={itemsMap}
+              classification={classification}
               goalItemIds={goalItemIds.filter((id) => !disabledGoalItemIds.has(id))}
               reverseMap={reverseMap}
               stashItemIds={activeStashItemIds}

@@ -102,8 +102,8 @@ describe('craftingChain calculations', () => {
     it('prevents infinite recursion for circular dependencies', () => {
       // Create a circular dependency in a local items map
       const circularMap: ItemsMap = {
-        'item_a': { id: 'item_a', name: { en: 'A' }, type: 'Material', rarity: 'Common', recipe: { 'item_b': 1 } },
-        'item_b': { id: 'item_b', name: { en: 'B' }, type: 'Material', rarity: 'Common', recipe: { 'item_a': 1 } }
+        'item_a': { id: 'item_a', name: { en: 'A' }, category: 'Misc', rarity: 'Common', recipe: { 'item_b': 1 } },
+        'item_b': { id: 'item_b', name: { en: 'B' }, category: 'Misc', rarity: 'Common', recipe: { 'item_a': 1 } }
       } as unknown as ItemsMap;
       
       const tree = buildCraftingTree('item_a', circularMap, ['item_a']);

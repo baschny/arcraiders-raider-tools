@@ -69,7 +69,7 @@ import type { ItemRarity } from '../shared/types/item';
 | `itemId` | `string` | — | Yes | Unique item identifier (for `data-item-id` attribute) |
 | `name` | `string` | — | Yes | Display name (used in `alt` text and optional name span) |
 | `icon` | `string \| null` | — | No | Image URL. When missing/null, renders empty container with rarity background |
-| `rarity` | `string \| null` | — | No | Normalized via `normalizeItemRarity()`. Falls back to `'Common'` |
+| `rarity` | `string \| null` | — | No | Normalized via `normalizeItemRarity()`. Missing / unknown = the game gives the item no rarity: no rarity class, neutral border |
 | `quantity` | `number \| null` | — | No | Quantity for the badge. `null` displays `?` |
 | `showName` | `boolean` | `true` | No | Render name span below the container |
 | `showQuantity` | `boolean` | `false` | No | Render quantity badge in bottom-right |
@@ -111,6 +111,7 @@ Quartermaster maps its own `size` prop (`xs`|`sm`|`md`|`lg`) to `--item-icon-siz
 | Rare | `#2196f3` | `/images/rarities/rare_bg.png` |
 | Epic | `#9c27b0` | `/images/rarities/epic_bg.png` |
 | Legendary | `#ff9800` | `/images/rarities/legendary_bg.png` |
+| Amplified | `$rarity-amplified-border` | none (border only) |
 
 Blueprint items use `/images/rarities/blueprint_bg.png` with common border color.
 

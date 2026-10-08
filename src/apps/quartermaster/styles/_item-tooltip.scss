@@ -159,6 +159,10 @@
         background: rgba($rarity-legendary-border, 0.2);
         color: $rarity-legendary-border;
       }
+      &.rarity-amplified {
+        background: rgba($rarity-amplified-border, 0.2);
+        color: $rarity-amplified-border;
+      }
     }
   }
 
@@ -204,6 +208,38 @@
       border-bottom: none;
       margin-bottom: $spacing-sm;
       padding-bottom: 0;
+    }
+  }
+
+  // Item stats from the game (compact label / value list; negative stats muted red)
+  &__effects {
+    list-style: none;
+    margin: 0 0 $spacing-md;
+    padding: 0 0 $spacing-md;
+    border-bottom: 1px solid $border-default;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-size: 12px;
+  }
+
+  &__effect {
+    display: flex;
+    justify-content: space-between;
+    gap: $spacing-md;
+    color: $text-primary;
+
+    &-label {
+      color: $text-secondary;
+    }
+
+    &-value {
+      font-weight: 600;
+    }
+
+    &--negative &-label,
+    &--negative &-value {
+      color: #ef6c6c;
     }
   }
 

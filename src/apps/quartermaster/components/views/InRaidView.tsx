@@ -10,11 +10,10 @@ import type { ItemInsightsMap } from '../../utils/itemInsights';
 import { ItemIcon } from '../ItemIcon';
 import { usePrioritizedItems } from '../../hooks/usePrioritizedItems';
 import { useLocale } from '../../../../shared/context/LocaleContext';
-import {
-  getLocalizedQuartermasterCategory,
-  getLocalizedQuartermasterRarity,
-  getLocalizedQuartermasterLocation,
-} from '../../utils/localization';
+import { getLocalizedQuartermasterRarity } from '../../utils/localization';
+import { useItemClassification } from '../../../../shared/hooks/useItemClassification';
+import { itemFilterGroup } from '../../../../shared/gamedata/classificationFilters';
+import { RARITIES } from '../../../../shared/gamedata/types';
 import { loadInRaidFilters, saveInRaidFilters, type InRaidFilters } from '../../utils/preferences';
 
 interface InRaidViewProps {
@@ -146,6 +145,7 @@ export function InRaidView({
   getOwnedQuantity,
 }: InRaidViewProps) {
   const { t, compareText, locale } = useLocale();
+  const classification = useItemClassification();
 
   const CJK_LOCALES = new Set(['ja', 'ko-KR', 'zh-CN', 'zh-TW']);
   const showInitials = !CJK_LOCALES.has(locale);
@@ -247,8 +247,8 @@ export function InRaidView({
         if (!item) continue;
 
         // Apply OTHER active filters but not this one
-        if (category !== 'rarity' && filters.selectedRarities.length > 0 && !filters.selectedRarities.includes(item.rarity)) continue;
-        if (category !== 'type' && filters.selectedTypes.length > 0 && !filters.selectedTypes.includes(item.category)) continue;
+        if (category !== 'rarity' && filters.selectedRarities.length > 0 && !(item.rarity && filters.selectedRarities.includes(item.rarity))) continue;
+        if (category !== 'type' && filters.selectedTypes.length > 0 && !filters.selectedTypes.includes(itemFilterGroup(item) ?? '')) continue;
         if (category !== 'location' && filters.selectedLocations.length > 0) {
           const locs = item.foundIn ?? [];
           if (!locs.some((loc) => filters.selectedLocations.includes(loc))) continue;
@@ -256,9 +256,10 @@ export function InRaidView({
         if (filters.showOnlyUncraftable && isItemCraftable(item, plannerResult)) continue;
 
         if (category === 'type') {
-          counts.set(item.category, (counts.get(item.category) ?? 0) + 1);
+          const group = itemFilterGroup(item);
+          if (group) counts.set(group, (counts.get(group) ?? 0) + 1);
         } else if (category === 'rarity') {
-          counts.set(item.rarity, (counts.get(item.rarity) ?? 0) + 1);
+          if (item.rarity) counts.set(item.rarity, (counts.get(item.rarity) ?? 0) + 1);
         } else {
           const locs = item.foundIn ?? [];
           for (const loc of locs) {
@@ -267,18 +268,17 @@ export function InRaidView({
         }
       }
 
-      let entries = Array.from(counts.entries());
+      const entries = Array.from(counts.entries());
+      // Types are the stash groups in game order, rarities in level order, locations by name
+      const groupNames = new Map(classification.groups.map((g) => [g.id, g.name]));
+      const groupOrder = classification.groups.map((g) => g.id);
+      const themeName = (id: string) => classification.themeName(id) ?? id;
       if (category === 'type') {
-        entries.sort((a, b) =>
-          compareText(getLocalizedQuartermasterCategory(t, a[0]), getLocalizedQuartermasterCategory(t, b[0])),
-        );
+        entries.sort((a, b) => groupOrder.indexOf(a[0]) - groupOrder.indexOf(b[0]));
       } else if (category === 'rarity') {
-        const order = ['Common', 'Uncommon', 'Rare', 'Epic', 'Legendary'];
-        entries.sort((a, b) => order.indexOf(a[0]) - order.indexOf(b[0]));
+        entries.sort((a, b) => RARITIES.indexOf(a[0] as ItemRarity) - RARITIES.indexOf(b[0] as ItemRarity));
       } else {
-        entries.sort((a, b) =>
-          compareText(getLocalizedQuartermasterLocation(t, a[0]), getLocalizedQuartermasterLocation(t, b[0])),
-        );
+        entries.sort((a, b) => compareText(themeName(a[0]), themeName(b[0])));
       }
 
       return entries.map(([value, count]) => ({
@@ -286,13 +286,13 @@ export function InRaidView({
         count,
         label:
           category === 'type'
-            ? getLocalizedQuartermasterCategory(t, value)
+            ? (groupNames.get(value) ?? value)
             : category === 'rarity'
               ? getLocalizedQuartermasterRarity(t, value as ItemRarity)
-              : getLocalizedQuartermasterLocation(t, value),
+              : themeName(value),
       }));
     },
-    [itemsMap, filters.selectedRarities, filters.selectedTypes, filters.selectedLocations, filters.showOnlyUncraftable, compareText, t, plannerResult],
+    [itemsMap, filters.selectedRarities, filters.selectedTypes, filters.selectedLocations, filters.showOnlyUncraftable, compareText, t, plannerResult, classification],
   );
 
   const typeOptions = useMemo(() => computeFilterOptions(searchFilteredItems, 'type'), [computeFilterOptions, searchFilteredItems]);
@@ -305,8 +305,8 @@ export function InRaidView({
       const item = itemsMap[si.suggestion.itemId];
       if (!item) return false;
 
-      if (filters.selectedTypes.length > 0 && !filters.selectedTypes.includes(item.category)) return false;
-      if (filters.selectedRarities.length > 0 && !filters.selectedRarities.includes(item.rarity)) return false;
+      if (filters.selectedTypes.length > 0 && !filters.selectedTypes.includes(itemFilterGroup(item) ?? '')) return false;
+      if (filters.selectedRarities.length > 0 && !(item.rarity && filters.selectedRarities.includes(item.rarity))) return false;
       if (filters.selectedLocations.length > 0) {
         const locs = item.foundIn ?? [];
         if (!locs.some((loc) => filters.selectedLocations.includes(loc))) return false;

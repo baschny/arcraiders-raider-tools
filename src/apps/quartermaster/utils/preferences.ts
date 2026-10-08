@@ -111,7 +111,8 @@ export interface StashFilters {
   showOnlyUseless: boolean;
 }
 
-const STASH_FILTERS_KEY = 'quartermaster.ui.stashFilters';
+// v2: filters hold game classification ids; values stored under the old key (English type names) are ignored
+const STASH_FILTERS_KEY = 'quartermaster.ui.stashFilters.v2';
 
 export function loadStashFilters(): StashFilters {
   const stored = readString(STASH_FILTERS_KEY);
@@ -156,7 +157,8 @@ export interface InRaidFilters {
   showOnlyUncraftable: boolean;
 }
 
-const IN_RAID_FILTERS_KEY = 'quartermaster.ui.inRaidFilters';
+// v2: filters hold game classification ids; values stored under the old key (English type names) are ignored
+const IN_RAID_FILTERS_KEY = 'quartermaster.ui.inRaidFilters.v2';
 
 export function loadInRaidFilters(): InRaidFilters {
   const stored = readString(IN_RAID_FILTERS_KEY);

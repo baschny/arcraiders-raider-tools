@@ -4,7 +4,7 @@
 import { useMemo } from 'react';
 import { useLocale } from '../../shared/context/LocaleContext';
 import { getIntlLocale } from '../../shared/i18n/config';
-import { getItemDisplayName, getLocalizedLootHelperLocation, getLocalizedLootHelperRarity, getLocalizedLootHelperType } from '../loot-helper/utils/localization';
+import { getItemDisplayName, getLocalizedLootHelperRarity } from '../loot-helper/utils/localization';
 import type { Item, ItemRarity } from '../loot-helper/types/item';
 import { CATEGORY, classKind, className, containerTypeLabel, KIND, tagPartLabel, taggedKind, type SpotKind, type TimingRule } from './data/kinds';
 import { fmtScore } from './data/scoring';
@@ -20,8 +20,14 @@ const KIND_KEYS: Record<string, string> = {
   Medical: 'lootHelper.locations.medical', Security: 'lootHelper.locations.security', OldWorld: 'lootHelper.locations.oldWorld',
   Exodus: 'lootHelper.locations.exodus', ARC: 'lootHelper.locations.arc', Raider: 'lootHelper.locations.raider',
 };
-/** Socket tag categories and item area tags ("OldWorld", "Tech") -> Looting Helper location names. */
-const LOCATIONS: Record<string, string> = { OldWorld: 'Old World', Tech: 'Technological' };
+/** Socket tag categories and item area tags ("OldWorld", "Tech") -> label of the Looting Helper location. */
+const LOCATION_KEYS: Record<string, string> = {
+  ARC: 'lootHelper.locations.arc', Commercial: 'lootHelper.locations.commercial', Electrical: 'lootHelper.locations.electrical',
+  Exodus: 'lootHelper.locations.exodus', Industrial: 'lootHelper.locations.industrial', Mechanical: 'lootHelper.locations.mechanical',
+  Medical: 'lootHelper.locations.medical', Nature: 'lootHelper.locations.nature', OldWorld: 'lootHelper.locations.oldWorld',
+  Raider: 'lootHelper.locations.raider', Residential: 'lootHelper.locations.residential', Security: 'lootHelper.locations.security',
+  Tech: 'lootHelper.locations.technological', Technological: 'lootHelper.locations.technological', Unknown: 'lootHelper.locations.unknown',
+};
 /** Categories named like a Looting Helper location (the others: maps.categories.<key>). */
 const CATEGORY_KEYS: Record<string, string> = { Nature: 'lootHelper.locations.nature' };
 /**
@@ -53,7 +59,7 @@ export function makeText(t: (key: string) => string, tm: (key: string, r: Record
   /** `<key>One` for a singular count, else `<key>`; `{count}` is the formatted count. */
   const plural = (key: string, count: number, r: Record<string, string | number> = {}) =>
     tm(rules.select(count) === 'one' ? `${key}One` : key, { ...r, count: formatNumber(count) });
-  const location = (name: string) => getLocalizedLootHelperLocation(t, LOCATIONS[name] ?? name);
+  const location = (name: string) => (LOCATION_KEYS[name] ? t(LOCATION_KEYS[name]) : name);
   const kind = (k: SpotKind) => t(KIND_KEYS[k.key] ?? `maps.kinds.${k.key}`);
   const category = (key: string) => (CATEGORY.has(key) ? t(CATEGORY_KEYS[key] ?? `maps.categories.${key}`) : key);
   /** Container type ("Industrial.Wrh") -> label of its second part, raw tag part as fallback. */
@@ -125,7 +131,8 @@ export function makeText(t: (key: string) => string, tm: (key: string, r: Record
       }
     },
     itemName: (it: Item) => getItemDisplayName(it),
-    itemType: (it: Item) => getLocalizedLootHelperType(t, it.type),
+    /** Item card label from the game ("Quick Use", "Research Item"). */
+    itemType: (it: Item) => it.categoryName ?? '',
   };
 }
 

@@ -3,33 +3,32 @@ export interface ItemName {
   [key: string]: string;
 }
 
-export interface ItemEffect {
-  en: string;
-  value: string | number;
-  [key: string]: string | number;
-}
-
 export type { Rarity as ItemRarity } from '../../../shared/gamedata/types';
 import type { Rarity as ItemRarity } from '../../../shared/gamedata/types';
+import type { CatalogEffect } from '../../../shared/gamedata/catalog';
 
 export interface Item {
   id: string;
   name: ItemName;
   originalNameEn?: string;
   description?: string;
-  /** Localized game category name (display and filter key). */
-  type: string;
-  /** Game category / stash group ids (logic). */
+  /** Game classification ids (logic): category tag, stash group and subgroup. */
   category?: string;
   group?: string;
-  /** The game gives some items no rarity; the app shows those as Common for now. */
-  rarity: ItemRarity;
+  subgroup?: string;
+  /** Localized item card label (e.g. "Quick Use", "Research Item"). */
+  categoryName?: string;
+  /** Undefined = the game gives the item no rarity. */
+  rarity?: ItemRarity;
   imageFilename?: string;
   value?: number;
   weightKg?: number;
   stackSize?: number;
+  /** Theme ids and their localized names (same order). */
   foundIn?: string[];
-  effects?: Record<string, ItemEffect>;
+  foundInNames?: string[];
+  /** Item stats, formatted for display. */
+  effects?: CatalogEffect[];
   recipe?: Record<string, number>;
   recyclesInto?: Record<string, number>;
   salvagesInto?: Record<string, number>;

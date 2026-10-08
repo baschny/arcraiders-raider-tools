@@ -1,8 +1,8 @@
 import type { Node } from 'reactflow';
 import type { LinkedQuestObjectiveProgress } from '../../../shared/types/linkedQuests';
-import type { QuestCategory } from '../../../shared/gamedata/types';
+import type { QuestCategory, Rarity } from '../../../shared/gamedata/types';
 
-export type QuestItemRarity = 'Common' | 'Uncommon' | 'Rare' | 'Epic' | 'Legendary';
+export type QuestItemRarity = Rarity;
 
 export interface BlueprintReward {
   id: string;
@@ -14,7 +14,8 @@ export interface QuestItemEntry {
   id: string;
   quantity: number;
   name: string;
-  rarity: QuestItemRarity;
+  /** Absent = the game gives the item no rarity. */
+  rarity?: QuestItemRarity;
   imageFilename: string;
   /** Chance (0..1) for entries of random reward pools. */
   chance?: number;

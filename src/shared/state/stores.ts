@@ -54,7 +54,9 @@ export interface LootState {
 }
 export const lootStore = new UserStateStore<LootState>({
     domain: 'loot',
-    schemaVersion: 1,
+    // v2: enabledTypes holds stash group ids and enabledLocations theme ids (game classification)
+    // instead of English type / location names. Old filter values are dropped (all enabled).
+    schemaVersion: 2,
     defaultValue: {
         goalItems: [],
         disabledItems: [],
@@ -63,6 +65,20 @@ export const lootStore = new UserStateStore<LootState>({
         enabledTypes: null,
         enabledRarities: null,
         enabledLocations: null,
+    },
+    migrate: (raw, fromVersion) => {
+        const r = (raw ?? {}) as Partial<LootState>;
+        const strings = (v: unknown): string[] =>
+            Array.isArray(v) ? v.filter((x): x is string => typeof x === 'string') : [];
+        return {
+            goalItems: strings(r.goalItems),
+            disabledItems: strings(r.disabledItems),
+            stashItems: strings(r.stashItems),
+            disabledStashItems: strings(r.disabledStashItems),
+            enabledTypes: fromVersion < 2 || !Array.isArray(r.enabledTypes) ? null : strings(r.enabledTypes),
+            enabledRarities: Array.isArray(r.enabledRarities) ? strings(r.enabledRarities) : null,
+            enabledLocations: fromVersion < 2 || !Array.isArray(r.enabledLocations) ? null : strings(r.enabledLocations),
+        };
     },
 });
 

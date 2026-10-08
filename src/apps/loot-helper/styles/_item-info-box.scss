@@ -81,6 +81,9 @@
     border-color: #ff9800;
     background-image: url('/images/rarities/legendary_bg.png');
   }
+  &.rarity-amplified {
+    border-color: $rarity-amplified;
+  }
 }
 
 .item-info-title {
@@ -138,6 +141,10 @@
       background: rgba($rarity-legendary, 0.2);
       color: $rarity-legendary;
     }
+    &.rarity-amplified {
+      background: rgba($rarity-amplified, 0.2);
+      color: $rarity-amplified;
+    }
   }
 }
 
@@ -158,6 +165,40 @@
   margin-bottom: $spacing-md;
   padding-bottom: $spacing-md;
   border-bottom: 1px solid $border-default;
+}
+
+.item-info-effects {
+  list-style: none;
+  margin: 0 0 $spacing-md;
+  padding: 0 0 $spacing-md;
+  border-bottom: 1px solid $border-default;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 0.85rem;
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    gap: $spacing-md;
+    color: $text-primary;
+  }
+
+  .effect-label {
+    color: $text-secondary;
+  }
+
+  .effect-value {
+    font-weight: 600;
+  }
+
+  // Negative stats (e.g. a longer reload) are muted red
+  .item-info-effect--negative {
+    .effect-label,
+    .effect-value {
+      color: #ef6c6c;
+    }
+  }
 }
 
 .item-stat {
@@ -273,6 +314,9 @@
   &.rarity-legendary {
     border-color: #ff9800;
     background-image: url('/images/rarities/legendary_bg.png');
+  }
+  &.rarity-amplified {
+    border-color: $rarity-amplified;
   }
 }
 

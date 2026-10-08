@@ -12,7 +12,6 @@ import type {
   ObjectiveView,
   Quest,
   QuestItemEntry,
-  QuestItemRarity,
 } from '../types/quest';
 import { questLabel } from './labels';
 
@@ -48,7 +47,7 @@ function toEntry(reward: Reward, catalog: ItemCatalog): QuestItemEntry {
     id: reward.itemId,
     quantity: reward.quantity,
     name: item?.name ?? reward.itemId,
-    rarity: (item?.rarity ?? 'Common') as QuestItemRarity,
+    rarity: item?.rarity,
     imageFilename: item?.icon ?? '',
     ...(reward.chance !== undefined ? { chance: reward.chance } : {}),
   };

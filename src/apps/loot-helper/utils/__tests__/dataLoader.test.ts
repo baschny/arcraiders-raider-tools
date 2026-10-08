@@ -10,7 +10,7 @@ const catalog = {
     w_one: ci('w_one', { baseId: 'w_one', tier: 1, recipe: { metal: 5 }, craftBench: 'gunsmith', upgradeCost: { gears: 1 } }),
     w_two: ci('w_two', { baseId: 'w_one', tier: 2, upgradesFrom: 'w_one', upgradeCost: { gears: 2 } }),
     w_three: ci('w_three', { baseId: 'w_one', tier: 3, upgradesFrom: 'w_two' }),
-    junk: ci('junk', { category: 'Misc', categoryName: 'Misc', isWeapon: false, baseId: 'junk', tier: 1 }),
+    junk: ci('junk', { category: 'Misc', group: 'Misc', subgroup: 'Misc', categoryName: 'Misc', isWeapon: false, baseId: 'junk', tier: 1, rarity: undefined, foundIn: ['OldWorld'], foundInNames: ['Old World'], effects: [{ label: 'Radius', value: '5m', positive: true }] }),
   },
   recipes: {}, research: {}, arctrackerAliases: {}, aliases: {},
 } as unknown as ItemCatalog;
@@ -22,6 +22,21 @@ describe('loot-helper catalog mapping', () => {
     expect(j.originalNameEn).toBe('E junk');
     expect(j.imageFilename).toBe('junk.png');
     expect(j.weaponBaseId).toBeUndefined();
+  });
+
+  it('keeps the game classification: ids for logic, localized names for display', () => {
+    const j = catalogToItems(catalog).find((i) => i.id === 'junk')!;
+    expect(j).toMatchObject({ category: 'Misc', group: 'Misc', subgroup: 'Misc', categoryName: 'Misc' });
+    expect('type' in j).toBe(false);
+    expect(j.foundIn).toEqual(['OldWorld']);
+    expect(j.foundInNames).toEqual(['Old World']);
+    expect(j.effects).toEqual([{ label: 'Radius', value: '5m', positive: true }]);
+  });
+
+  it('leaves the rarity empty when the game gives the item none', () => {
+    const items = catalogToItems(catalog);
+    expect(items.find((i) => i.id === 'junk')!.rarity).toBeUndefined();
+    expect(items.find((i) => i.id === 'w_one')!.rarity).toBe('Rare');
   });
 
   it('consolidates weapon tiers by baseId into the highest tier', () => {

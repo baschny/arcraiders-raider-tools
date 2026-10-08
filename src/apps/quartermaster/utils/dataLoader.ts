@@ -25,46 +25,8 @@ import type { QuestDefinition } from '../types/quest';
 import type { Quest, QuestItemEntry } from '../../../shared/types/quest';
 import { registerBenchNames } from './localization';
 
-const FIREARM_TYPES: Record<string, string> = {
-  'Firearm.AssaultRifle': 'Assault Rifle',
-  'Firearm.BattleRifle': 'Battle Rifle',
-  'Firearm.HandCannon': 'Hand Cannon',
-  'Firearm.LMG': 'LMG',
-  'Firearm.Pistol': 'Pistol',
-  'Firearm.SMG': 'SMG',
-  'Firearm.Shotgun': 'Shotgun',
-  'Firearm.SniperRifle': 'Sniper Rifle',
-  'Firearm.Special': 'Special',
-};
-
-/**
- * English planner type of an item. The planner keys logic, persisted filters and its own
- * translations on these strings (old site `type`); they are derived from the game classification
- * until the app is reworked to use category / group ids directly.
- */
-function plannerType(c: CatalogItem): string {
-  if (c.category && FIREARM_TYPES[c.category]) return FIREARM_TYPES[c.category];
-  switch (c.group) {
-    case 'Ammunition': return 'Ammunition';
-    case 'Armor': return 'Shield';
-    case 'Augment': return 'Augment';
-    case 'Keys': return 'Key';
-    case 'Modifications': return 'Modification';
-    case 'Utilities': return 'Quick Use';
-  }
-  switch (c.category) {
-    case 'CraftingMaterial.Basic': return 'Basic Material';
-    case 'CraftingMaterial.Recyclable': return 'Recyclable';
-    case 'CraftingMaterial.Refined': return 'Refined Material';
-    case 'CraftingMaterial.Topside': return 'Topside Material';
-    case 'Misc.Trinket': return 'Trinket';
-    case 'Misc.Nature': return 'Nature';
-    case 'Recipe': return 'Blueprint';
-  }
-  return c.categoryName ?? 'Misc';
-}
-
-const EXCLUDED_TYPES = new Set(['Blueprint']);
+/** Game category of blueprints: not planner items (their recipes are read through the unlock). */
+const EXCLUDED_CATEGORIES = new Set(['Recipe']);
 
 /** Bench slugs that can craft items, read from the benches domain by loadAllItems/loadHideoutDefinitions. */
 export let VALID_BENCH_IDS: ReadonlySet<string> = new Set<string>();
@@ -97,21 +59,6 @@ function plannerItemFromCatalog(c: CatalogItem, all: Record<string, CatalogItem>
       ? c.craftBench
       : undefined;
 
-  const type = plannerType(c);
-  let category: string;
-  let subCategory: string | undefined;
-  if (c.isWeapon) {
-    category = 'Weapon';
-    subCategory = type;
-  } else if (type === 'Quick Use') {
-    category = 'Quick Use';
-    if (craftBench === 'explosives_bench') subCategory = 'Explosive';
-    else if (craftBench === 'med_station') subCategory = 'Medicinal';
-    else if (craftBench === 'utility_bench') subCategory = 'Utility';
-  } else {
-    category = type;
-  }
-
   const has = (r?: Record<string, number>) => r && Object.keys(r).length > 0;
   return {
     id: c.id,
@@ -119,10 +66,13 @@ function plannerItemFromCatalog(c: CatalogItem, all: Record<string, CatalogItem>
     originalNameEn: c.nameEn,
     description: c.description,
     icon: c.icon,
-    rarity: (c.rarity ?? 'Common') as ItemRarity,
-    type,
-    category,
-    ...(subCategory !== undefined && { subCategory }),
+    ...(c.rarity !== undefined && { rarity: c.rarity as ItemRarity }),
+    ...(c.category !== undefined && { category: c.category }),
+    ...(c.group !== undefined && { group: c.group }),
+    ...(c.subgroup !== undefined && { subgroup: c.subgroup }),
+    ...(c.categoryName !== undefined && { categoryName: c.categoryName }),
+    ...(c.groupName !== undefined && { groupName: c.groupName }),
+    ...(c.subgroupName !== undefined && { subgroupName: c.subgroupName }),
     ...(craftBench !== undefined && { craftBench }),
     stationLevelRequired: crafted ? (c.stationLevelRequired ?? 1) : 1,
     blueprintLocked: c.blueprintLocked,
@@ -142,21 +92,22 @@ function plannerItemFromCatalog(c: CatalogItem, all: Record<string, CatalogItem>
     stackSize: c.stackSize,
     ...(c.value !== undefined && { value: c.value }),
     ...(c.weightKg !== undefined && { weight: c.weightKg }),
-    // theme ids → the app's location keys (only 'OldWorld' differs)
-    ...(c.foundIn !== undefined && { foundIn: c.foundIn.map((id) => (id === 'OldWorld' ? 'Old World' : id)) }),
+    ...(c.foundIn !== undefined && { foundIn: c.foundIn }),
+    ...(c.foundInNames !== undefined && { foundInNames: c.foundInNames }),
+    ...(c.effects !== undefined && { effects: c.effects }),
     ...(c.questItem === true && { questItem: true }),
   };
 }
 
 /**
  * Load all items from the v2 item catalog (items + recipes + research).
- * Excludes Blueprint types; resolves the craft bench from the explicit recipe data.
+ * Excludes blueprints (category `Recipe`); resolves the craft bench from the explicit recipe data.
  */
 export async function loadAllItems(locale: AppLocale): Promise<ItemsMap> {
   const [catalog] = await Promise.all([loadItemCatalog(locale), loadBenches(locale)]);
   const itemsMap: ItemsMap = {};
   for (const c of Object.values(catalog.items)) {
-    if (EXCLUDED_TYPES.has(plannerType(c))) continue;
+    if (c.category && EXCLUDED_CATEGORIES.has(c.category)) continue;
     itemsMap[c.id] = plannerItemFromCatalog(c, catalog.items);
   }
   return itemsMap;
@@ -345,7 +296,7 @@ export async function loadQuestData(
       quantity,
       name: item?.name ?? itemId,
       originalNameEn: item?.nameEn ?? itemId,
-      rarity: (item?.rarity ?? 'Common') as QuestItemEntry['rarity'],
+      rarity: item?.rarity,
       imageFilename: item?.icon ?? '',
     };
   };

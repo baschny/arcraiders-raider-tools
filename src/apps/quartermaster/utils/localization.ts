@@ -2,65 +2,6 @@ import type { BenchId, ItemRarity, PlannerItem } from '../types/item';
 
 type Translate = (key: string) => string;
 
-const categoryKeys: Record<string, string> = {
-  Ammunition: 'quartermaster.categories.ammunition',
-  Augment: 'quartermaster.categories.augment',
-  'Basic Material': 'quartermaster.categories.basicMaterial',
-  Key: 'quartermaster.categories.key',
-  Misc: 'quartermaster.categories.misc',
-  Modification: 'quartermaster.categories.modification',
-  Nature: 'quartermaster.categories.nature',
-  'Quick Use': 'quartermaster.categories.quickUse',
-  Recyclable: 'quartermaster.categories.recyclable',
-  'Refined Material': 'quartermaster.categories.refinedMaterial',
-  SMG: 'quartermaster.categories.smg',
-  Shield: 'quartermaster.categories.shield',
-  'Topside Material': 'quartermaster.categories.topsideMaterial',
-  Trinket: 'quartermaster.categories.trinket',
-  Weapon: 'quartermaster.categories.weapon',
-};
-
-const typeKeys: Record<string, string> = {
-  Ammunition: 'quartermaster.types.ammunition',
-  'Assault Rifle': 'quartermaster.types.assaultRifle',
-  Augment: 'quartermaster.types.augment',
-  'Basic Material': 'quartermaster.types.basicMaterial',
-  'Battle Rifle': 'quartermaster.types.battleRifle',
-  'Hand Cannon': 'quartermaster.types.handCannon',
-  Key: 'quartermaster.types.key',
-  LMG: 'quartermaster.types.lmg',
-  Misc: 'quartermaster.types.misc',
-  Modification: 'quartermaster.types.modification',
-  Nature: 'quartermaster.types.nature',
-  Pistol: 'quartermaster.types.pistol',
-  'Quick Use': 'quartermaster.types.quickUse',
-  Recyclable: 'quartermaster.types.recyclable',
-  'Refined Material': 'quartermaster.types.refinedMaterial',
-  SMG: 'quartermaster.types.smg',
-  Shield: 'quartermaster.types.shield',
-  Shotgun: 'quartermaster.types.shotgun',
-  'Sniper Rifle': 'quartermaster.types.sniperRifle',
-  Special: 'quartermaster.types.special',
-  'Topside Material': 'quartermaster.types.topsideMaterial',
-  Trinket: 'quartermaster.types.trinket',
-};
-
-const locationKeys: Record<string, string> = {
-  ARC: 'quartermaster.locations.arc',
-  Commercial: 'quartermaster.locations.commercial',
-  Electrical: 'quartermaster.locations.electrical',
-  Exodus: 'quartermaster.locations.exodus',
-  Industrial: 'quartermaster.locations.industrial',
-  Mechanical: 'quartermaster.locations.mechanical',
-  Medical: 'quartermaster.locations.medical',
-  Nature: 'quartermaster.locations.nature',
-  'Old World': 'quartermaster.locations.oldWorld',
-  Raider: 'quartermaster.locations.raider',
-  Residential: 'quartermaster.locations.residential',
-  Security: 'quartermaster.locations.security',
-  Technological: 'quartermaster.locations.technological',
-};
-
 const rarityKeys: Record<ItemRarity, string> = {
   Common: 'quartermaster.rarities.common',
   Uncommon: 'quartermaster.rarities.uncommon',
@@ -86,18 +27,6 @@ const uncraftableReasonKeys = {
   missing_bench: 'quartermaster.status.noCraftBench',
   cycle: 'quartermaster.status.craftCycle',
 } as const;
-
-export function getLocalizedQuartermasterCategory(t: Translate, category: string): string {
-  return categoryKeys[category] ? t(categoryKeys[category]) : category;
-}
-
-export function getLocalizedQuartermasterType(t: Translate, type: string): string {
-  return typeKeys[type] ? t(typeKeys[type]) : type;
-}
-
-export function getLocalizedQuartermasterLocation(t: Translate, location: string): string {
-  return locationKeys[location] ? t(locationKeys[location]) : location;
-}
 
 export function getLocalizedQuartermasterRarity(t: Translate, rarity: ItemRarity): string {
   return t(rarityKeys[rarity]);

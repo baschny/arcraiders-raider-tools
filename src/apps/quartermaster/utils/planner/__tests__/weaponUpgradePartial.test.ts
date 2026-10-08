@@ -21,8 +21,8 @@ function item(overrides: Partial<PlannerItem> & Pick<PlannerItem, 'id' | 'name'>
     description: '',
     icon: '',
     rarity: 'Common',
-    type: 'Material',
-    category: 'Basic Material',
+    category: 'CraftingMaterial.Basic',
+    group: 'CraftingItems',
     stationLevelRequired: 1,
     blueprintLocked: false,
     craftQuantity: 1,
@@ -47,7 +47,7 @@ const itemsMap: ItemsMap = {
   weapon_i: item({
     id: 'weapon_i',
     name: 'Weapon I',
-    category: 'Weapon',
+    category: 'Firearm.AssaultRifle',
     craftBench: 'weapon_bench',
     stationLevelRequired: 3,
     blueprintLocked: false,
@@ -61,7 +61,7 @@ const itemsMap: ItemsMap = {
   weapon_ii: item({
     id: 'weapon_ii',
     name: 'Weapon II',
-    category: 'Weapon',
+    category: 'Firearm.AssaultRifle',
     craftBench: 'weapon_bench',
     upgradeCost: { upgrade_mat: 1 },
     upgradesFrom: 'weapon_i',
@@ -74,7 +74,7 @@ const itemsMap: ItemsMap = {
   weapon_iv: item({
     id: 'weapon_iv',
     name: 'Weapon IV',
-    category: 'Weapon',
+    category: 'Firearm.AssaultRifle',
     craftBench: 'weapon_bench',
     upgradeCost: { upgrade_mat: 2 },
     upgradesFrom: 'weapon_ii',

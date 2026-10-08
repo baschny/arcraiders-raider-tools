@@ -107,6 +107,18 @@ const catalog = await loadItemCatalog(locale); // items + recipes + research, pe
   (may be undefined) and formatted `effects` (`formatItemEffects`: `{ label, value, positive }`).
   `catalog.classification` holds rarities (with game colors and names) and the stash groups with
   subgroups in game order, for filters.
+- **Apps use the classification directly** (no English type strings, no `'Common'` default, no
+  `Old World` mapping): ids drive logic, filters and persisted preferences (category `Utility.Grenade`,
+  group `Utilities`, subgroup, theme `OldWorld`); localized names are only for display (item card label
+  = `categoryName`, "Found in" = `foundInNames`). Filters are built with `buildGroupFilters()`
+  (`src/shared/gamedata/classificationFilters.ts`) from `catalog.classification.groups`, i.e. the
+  stash tabs in game order with their subgroups; `useItemClassification()` gives a component the
+  classification of the active locale. Items without a group (Amplified weapon rows, currency) are
+  filed under `Weapons` when they are firearms (`itemFilterGroup`), else belong to no group and are
+  not matched by a group filter. Items without rarity are not subject to rarity filters (loot helper)
+  or are excluded by an explicit rarity selection (quartermaster); sorting by rarity puts them after
+  Common (`compareRarityDesc`). Persisted filter values are versioned (`lootStore` schema 2,
+  quartermaster `*.v2` localStorage keys), so old English values are dropped silently.
 - Translate arctracker API item ids with `migrateArctrackerItemId`
   (`src/shared/data/arctrackerItemIdMigration.ts`).
 
