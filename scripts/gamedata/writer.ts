@@ -28,6 +28,7 @@ export const BUDGETS_KB: Record<GameDomain, [number, number]> = {
   amplification: [100, 0],
   maps: [20, 10],
   classification: [20, 20],
+  'whats-new': [100, 0],
 };
 
 /** Recursively sorts object keys of maps keyed by slug (records keep their field order). */

@@ -92,6 +92,7 @@ export const DOMAINS_WITHOUT_TEXT: ReadonlySet<GameDomain> = new Set<GameDomain>
   'recipes',
   'blueprints',
   'amplification',
+  'whats-new',
 ]);
 
 /** Resolves a possibly renamed slug (persisted state, old URLs) to the current slug. */

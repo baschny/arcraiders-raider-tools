@@ -13,6 +13,7 @@ import quests from './quests';
 import skilltree from './skilltree';
 import maps from './maps';
 import classification from './classification';
+import whatsNew from './whats-new';
 
 /** Build order. `items` must be first (decides which items ship); `classification` reads the shipped items. */
 export const DOMAIN_MODULES: DomainModule[] = [
@@ -30,4 +31,5 @@ export const DOMAIN_MODULES: DomainModule[] = [
   skilltree,
   maps,
   classification,
+  whatsNew,
 ];

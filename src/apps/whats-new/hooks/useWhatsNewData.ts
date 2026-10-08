@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 import { useLocale } from '../../../shared/context/LocaleContext';
 import { loadItemCatalog, type ItemCatalog } from '../../../shared/gamedata/catalog';
 import { loadDomain } from '../../../shared/gamedata/loader';
-import type { GameDomain, LoadedDomain } from '../../../shared/gamedata/types';
+import type { LoadedDomain, WhatsNewStructure } from '../../../shared/gamedata/types';
 import type { ItemRef } from '../components';
 
-/** TODO(W4): replace with `WhatsNewStructure` from shared/gamedata/types.ts once the domain exists. */
-export type WhatsNewData = unknown;
+/** The generated `whats-new` domain (versions keyed by slug, e.g. `frozen-trail`). */
+export type WhatsNewData = WhatsNewStructure;
 
 export interface WhatsNewDomains {
   outpost: LoadedDomain<'outpost'>;
@@ -40,13 +40,11 @@ export function toItemRef(catalog: ItemCatalog, slug: string): ItemRef {
 }
 
 /**
- * Loads the `whats-new` domain without requiring it to be typed or present. Fetched directly
- * because it is not a registered GameDomain yet (W4); any failure yields null.
+ * Loads the `whats-new` domain; a missing or invalid file yields null so the page can fall back.
  */
 async function loadWhatsNew(locale: string): Promise<WhatsNewData | null> {
   try {
-    // The cast keeps this compiling until W4 registers the domain in GameDomain.
-    const loaded = await loadDomain('whats-new' as GameDomain, locale);
+    const loaded = await loadDomain('whats-new', locale);
     return loaded.structure;
   } catch {
     return null;
