@@ -16,20 +16,13 @@ function tempImages(files: string[]): string {
 describe('itemIconUrl', () => {
   it('returns the local WebP when it exists', () => {
     const imagesDir = tempImages(['items/anvil_splitter.webp']);
-    expect(itemIconUrl('anvil_splitter', { imagesDir, arctrackerId: 'anvil_splitter' })).toBe('/images/items/anvil_splitter.webp');
+    expect(itemIconUrl('anvil_splitter', { imagesDir })).toBe('/images/items/anvil_splitter.webp');
   });
 
-  it('falls back to the arctracker CDN when no local file exists', () => {
+  it('returns an empty string when no local file exists (no arctracker CDN fallback)', () => {
     const imagesDir = tempImages([]);
-    expect(itemIconUrl('anvil_splitter', { imagesDir, arctrackerId: 'anvil_splitter' })).toBe(
-      'https://cdn.arctracker.io/items/v2/anvil_splitter.png',
-    );
-  });
-
-  it('returns an empty string when neither a local file nor an arctracker id exists', () => {
-    const imagesDir = tempImages([]);
+    expect(itemIconUrl('anvil_splitter', { imagesDir })).toBe('');
     expect(itemIconUrl('unknown_item', { imagesDir })).toBe('');
-    expect(itemIconUrl('unknown_item', { imagesDir, arctrackerId: null })).toBe('');
   });
 
   it('does not match a file with a different extension', () => {

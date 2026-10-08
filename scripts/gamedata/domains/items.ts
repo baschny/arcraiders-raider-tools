@@ -230,7 +230,7 @@ const module: DomainModule = {
         ...(item.stashGroup ? { group: shortGroup(item.stashGroup) } : {}),
         ...(item.stashSubgroup ? { subgroup: shortCategory(item.stashSubgroup) } : {}),
         ...(itemRarity ? { rarity: itemRarity } : {}),
-        icon: itemIconUrl(slug, { arctrackerId }),
+        icon: itemIconUrl(slug),
         value: item.value,
         stackSize: item.maxStack || 1,
         ...(item.weightKg != null ? { weightKg: item.weightKg } : {}),

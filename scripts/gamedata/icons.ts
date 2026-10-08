@@ -24,14 +24,13 @@ function listing(dir: string): Set<string> {
 }
 
 /**
- * Item icon URL for a slug: the local WebP when generated, else the arctracker CDN image when the
- * arctracker id is known, else an empty string.
+ * Item icon URL for a slug: the local WebP when generated, else an empty string. Icons are produced
+ * from the game textures by scripts/generate-item-icons.ts; the site does not load item images from
+ * arctracker's CDN.
  */
-export function itemIconUrl(slug: string, opts: { imagesDir?: string; arctrackerId?: string | null } = {}): string {
+export function itemIconUrl(slug: string, opts: { imagesDir?: string } = {}): string {
   const dir = path.join(opts.imagesDir ?? defaultImagesDir(), 'items');
-  if (listing(dir).has(`${slug}.webp`)) return `/images/items/${slug}.webp`;
-  if (opts.arctrackerId) return `https://cdn.arctracker.io/items/v2/${opts.arctrackerId}.png`;
-  return '';
+  return listing(dir).has(`${slug}.webp`) ? `/images/items/${slug}.webp` : '';
 }
 
 /** Bench level icon URL, or null when no generated WebP exists for that bench and level. */

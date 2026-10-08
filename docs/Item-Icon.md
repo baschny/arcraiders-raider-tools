@@ -17,8 +17,8 @@ the item records from `arc-data`. For each item, the first source that converts 
    `embark-api/data-game-extract/current/textures/PioneerGame/Content/` (`.png`). Populated by `scripts/extract-all` (ticket A11).
 2. Asset index: the `image` column of `embark-api/asset-index-data/asset_index.csv` for the item's asset id,
    resolved relative to `asset-index-data/`.
-3. None: the generator logs the item as a fallback. Items without a source use the arctracker CDN at
-   runtime (`https://cdn.arctracker.io/items/v2/<arctrackerId>.png`).
+3. None: the generator logs the item as a fallback and no image is written; `itemIconUrl` then
+   returns `''`. The site never loads item images from arctracker's CDN.
 
 Images are resized to fit 256x256 (no enlargement) and encoded as WebP quality 90 with `sharp`.
 Output is deterministic: files are only rewritten when their content changes. `.webp` files in the
@@ -43,8 +43,8 @@ npm run generate:item-icons    # 2. WebP files into public/images/{items,benches
 npm run generate:game-data     # 3. regenerate so icon URLs point at the new files
 ```
 
-`scripts/gamedata/icons.ts` resolves the URLs: `itemIconUrl(slug, { arctrackerId })` returns
-`/images/items/<slug>.webp` when the file exists, else the CDN URL, else `''`.
+`scripts/gamedata/icons.ts` resolves the URLs: `itemIconUrl(slug)` returns
+`/images/items/<slug>.webp` when the file exists, else `''`.
 `benchIconUrl(benchId, level)` returns `/images/benches/<benchId>-tier<level>.webp` or `null`.
 
 The generator prints counts per source and a list of fallbacks (up to 30 lines) with the reason for each.
