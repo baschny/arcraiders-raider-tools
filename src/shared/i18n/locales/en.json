@@ -1443,6 +1443,70 @@
       "build": "Build",
       "furniture": "Furniture",
       "celeste": "{name} now trades seeds for materials"
+    },
+    "field-crafting": {
+      "before": "Before",
+      "after": "2.0",
+      "new": "New",
+      "newCrafts": "New in-raid crafts",
+      "unchanged": "{n} unchanged"
+    },
+    "changes": {
+      "recipes": "Recipes",
+      "recycling": "Recycling",
+      "traders": "Traders",
+      "stash": "Stash",
+      "craft": "Craft",
+      "upgrade": "Upgrade",
+      "repair": "Repair",
+      "new": "New",
+      "gone": "Gone",
+      "priceChanged": "Price changed",
+      "slots": "slots",
+      "newTier": "New"
+    },
+    "new-items": {
+      "all": "All",
+      "close": "Close",
+      "noUse": "No use",
+      "recycles": "Recycles into",
+      "verdict": {
+        "keep": "Keep",
+        "quest": "Quest",
+        "optional": "Optional",
+        "sell": "Sell"
+      },
+      "group": {
+        "material": "Material",
+        "gadget": "Gadget",
+        "study": "Study",
+        "key": "Key",
+        "module": "Module",
+        "perkPart": "Perk part",
+        "quest": "Quest",
+        "blueprint": "Blueprint",
+        "other": "Other"
+      },
+      "system": {
+        "outpostRoom": "Room",
+        "outpostFurniture": "Furniture",
+        "researchStation": "Research Station",
+        "benchUpgrade": "Upgrade",
+        "research": "Research",
+        "amplify": "Amplify",
+        "amplifyPerk": "Perk",
+        "repair": "Repair",
+        "craft": "Craft",
+        "fieldCraft": "Field craft",
+        "stencil": "Stencil",
+        "trade": "Trade",
+        "project": "Project",
+        "quest": "Quest"
+      }
+    },
+    "new-uses": {
+      "showAll": "Show all {n}",
+      "showLess": "Show less"
     }
   }
 }
