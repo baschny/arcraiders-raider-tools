@@ -146,13 +146,14 @@ describe('items domain: game classification', () => {
     expect(en.effects['0']).toEqual({ title: 'Radius', format: '{0}m' });
   });
 
-  it('ignores type/rarity/weight/foundIn of the overlay but keeps questItem, modSlots and fallback effects', () => {
+  it('ignores type/rarity/weight/foundIn/modSlots of the overlay but keeps questItem and fallback effects', () => {
     const noEffects = canonItem(5, 'Shield', { category: `${CAT}Utility`, rarity: 4 });
     const { items: out, ctx } = run([noEffects, yank()], {
       '5': { type: 'Trinket', rarity: 'Common', weightKg: 99, foundIn: ['ARC'], questItem: true, modSlots: { grip: ['g'] }, effects: { Durability: { value: '100/100', label: loc('Durability') }, Flag: { value: '', label: loc('Flag') } } },
       '1': { effects: { Ignored: { value: 1, label: loc('Ignored') } } },
     });
-    expect(out.shield).toMatchObject({ rarity: 'Epic', questItem: true, modSlots: { grip: ['g'] }, effects: [{ valueText: '100/100' }, {}] });
+    expect(out.shield.modSlots).toBeUndefined();
+    expect(out.shield).toMatchObject({ rarity: 'Epic', questItem: true, effects: [{ valueText: '100/100' }, {}] });
     expect(out.shield.weightKg).toBeUndefined();
     expect(out.shield.foundIn).toBeUndefined();
     expect(ctx.text.build('items', 'en').shield).toMatchObject({ effects: { '0': { title: 'Durability' }, '1': { title: 'Flag' } } });
@@ -202,5 +203,29 @@ describe('classification domain', () => {
 
   it('parses the rarity colors of the shared SCSS variables', () => {
     expect(parseRarityColors('$rarity-common: #6c6c6c;\n$rarity-amplified: #E88629;\n$rarity-legendary-border: #fff000;')).toEqual({ Common: '#6C6C6C', Amplified: '#E88629' });
+  });
+});
+
+describe('items domain: mod slots from the game', () => {
+  const MS = 'Online.Item.ModSlot.Firearm.';
+  it('maps game slots to site keys, resolves mod slugs, merges muzzle variants and keeps -1 slots', () => {
+    const mod = (id: number, name: string) => canonItem(id, name, { category: `${CAT}Recipe` });
+    const gun = canonItem(10, 'Gun', {
+      modSlots: [
+        { slot: `${MS}Muzzle`, unlocksAtQuality: 0, mods: [11] },
+        { slot: `${MS}Muzzle.Shotgun`, unlocksAtQuality: 0, mods: [12] },
+        { slot: `${MS}UnderBarrel`, unlocksAtQuality: -1, mods: [13, 999] },
+        { slot: `${MS}Magazine.Medium`, unlocksAtQuality: 0, mods: [14] },
+      ],
+    });
+    const { items: out } = run([gun, mod(11, 'Silencer'), mod(12, 'Choke'), mod(13, 'Grip'), mod(14, 'Mag')]);
+    expect(out.gun.modSlots).toEqual({ grip: ['grip'], magazine: ['mag'], muzzle: ['choke', 'silencer'] });
+    expect(Object.keys(out.gun.modSlots!)).toEqual(['grip', 'magazine', 'muzzle']);
+    expect(out.silencer.modSlots).toBeUndefined();
+  });
+
+  it('ignores overlay modSlots', () => {
+    const { items: out } = run([canonItem(20, 'Old Gun')], { 20: { modSlots: { muzzle: ['x'] } } });
+    expect(out.old_gun.modSlots).toBeUndefined();
   });
 });

@@ -83,6 +83,14 @@ export interface CanonItem extends CanonRecord {
   effects?: CanonEffect[];
   stashGroup?: string | null;
   stashSubgroup?: string | null;
+  modSlots?: CanonModSlot[];
+}
+
+/** Weapon mod slot: slot persistence tag, unlock tier (-1 = no requirement), compatible mod ids. */
+export interface CanonModSlot {
+  slot: string;
+  unlocksAtQuality: number;
+  mods: number[];
 }
 
 export interface CanonEffect {

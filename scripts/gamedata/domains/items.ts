@@ -22,13 +22,46 @@ export const SHIPPED_ITEM_TYPES = new Set([
 
 /**
  * Overlay arc-data/overlay/item-properties.json (embark-api docs/Item-Classification.md): since
- * S18 only `questItem`, `modSlots` and the `effects` of items without game effect data are read.
- * Type, rarity, weight and "found in" come from the game (canonical item fields).
+ * S18 only `questItem` and the `effects` of items without game effect data are read. Type,
+ * rarity, weight, "found in" and mod slots come from the game (canonical item fields).
  */
 interface ItemProperties {
   questItem?: boolean;
-  modSlots?: Record<string, string[]>;
   effects?: Record<string, { value: unknown; label: Localization }>;
+}
+
+/** Site slot key of a canonical mod slot tag (Online.Item.ModSlot.Firearm.<Slot>[.<Variant>]). */
+const MOD_SLOT_KEYS: Record<string, string> = {
+  Muzzle: 'muzzle',
+  UnderBarrel: 'grip',
+  Stock: 'stock',
+  Magazine: 'magazine',
+  Tech: 'special',
+};
+
+export function modSlotKey(slot: string): string | undefined {
+  const m = /^Online\.Item\.ModSlot\.Firearm\.([A-Za-z]+)/.exec(slot) ?? /DA_ModSlot_Firearm_([A-Za-z]+)/.exec(slot);
+  return m ? MOD_SLOT_KEYS[m[1]] : undefined;
+}
+
+/**
+ * Site mod slots (slot key → compatible shipped mod slugs) from the canonical game slots. A slot with
+ * `unlocksAtQuality` -1 (UE's "none") has no tier requirement and counts as present. Muzzle and shotgun
+ * muzzle share the `muzzle` key (a weapon has only one of them).
+ */
+export function siteModSlots(ctx: GenContext, item: CanonItem): Record<string, string[]> | undefined {
+  const out: Record<string, string[]> = {};
+  for (const s of item.modSlots ?? []) {
+    const key = modSlotKey(s.slot);
+    if (!key) {
+      ctx.report.add('unknownModSlot', `${item.id} ${s.slot}`);
+      continue;
+    }
+    const slugs = s.mods.map((id) => ctx.shippedItems.get(id)).filter((x): x is string => !!x);
+    out[key] = [...new Set([...(out[key] ?? []), ...slugs])].sort();
+  }
+  const keys = Object.keys(out).sort();
+  return keys.length ? Object.fromEntries(keys.map((k) => [k, out[k]])) : undefined;
 }
 
 /** Decides shipping and registers ctx.shippedItems (asset id → slug). Runs before every other domain. */
@@ -188,6 +221,7 @@ const module: DomainModule = {
       const category = item.category ? shortCategory(item.category) : undefined;
       if (!category) unclassified.set(item.type ?? '?', (unclassified.get(item.type ?? '?') ?? 0) + 1);
       const themes = (item.themes ?? []).map(shortTheme);
+      const modSlots = siteModSlots(ctx, item);
 
       items[slug] = {
         id: slug,
@@ -207,7 +241,7 @@ const module: DomainModule = {
         salvagesInto: salvage.get(item.id),
         repairCost: ctx.amounts(item.repair.cost, `repair ${slug}`),
         ...(item.repair.durability ? { repairDurability: item.repair.durability } : {}),
-        ...(p?.modSlots ? { modSlots: p.modSlots } : {}),
+        ...(modSlots ? { modSlots } : {}),
         ...(effects.length ? { effects } : {}),
         ...(themes.length ? { foundIn: themes } : {}),
         ...(p?.questItem ? { questItem: true } : {}),
