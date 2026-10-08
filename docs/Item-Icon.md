@@ -2,6 +2,53 @@
 
 Quick reference for rendering item icons across all apps.
 
+## Icon Files and Pipeline
+
+Item and bench icons are local WebP files generated from game textures:
+
+- `public/images/items/<slug>.webp`: one per shipped item
+- `public/images/benches/<benchSlug>-tier<level>.webp`: one per bench level (Generator chains)
+
+Generation is done by `scripts/generate-item-icons.ts` (`npm run generate:item-icons`).
+It reads the shipped item slugs from `public/data/game/items.json` (or `GAME_DATA_OUT`) and
+the item records from `arc-data`. For each item, the first source that converts wins:
+
+1. Own texture export: `arc-data` `icon` path under
+   `embark-api/data-game-extract/current/textures/PioneerGame/Content/` (`.png`). Populated by `scripts/extract-all` (ticket A11).
+2. Asset index: the `image` column of `embark-api/asset-index-data/asset_index.csv` for the item's asset id,
+   resolved relative to `asset-index-data/`.
+3. None: the generator logs the item as a fallback. Items without a source use the arctracker CDN at
+   runtime (`https://cdn.arctracker.io/items/v2/<arctrackerId>.png`).
+
+Images are resized to fit 256x256 (no enlargement) and encoded as WebP quality 90 with `sharp`.
+Output is deterministic: files are only rewritten when their content changes. `.webp` files in the
+two output directories that the run did not produce are deleted.
+
+Environment variables:
+
+| Variable | Default | Purpose |
+| --- | --- | --- |
+| `GAME_DATA_OUT` | `public/data/game` | Where `items.json` is read from |
+| `GAME_DATA_DIR` | `embark-api/arc-data` | arc-data source |
+| `IMAGES_OUT` | `public/images` | Image output root (also read by `itemIconUrl` / `benchIconUrl`) |
+| `EMBARK_API_DIR` | `../embark-api` | Location of the embark-api checkout |
+
+### Run Order
+
+Icon URLs in the generated game data depend on which files exist, so the order matters:
+
+```sh
+npm run generate:game-data     # 1. domain JSON (items.json, benches.json, ...)
+npm run generate:item-icons    # 2. WebP files into public/images/{items,benches}
+npm run generate:game-data     # 3. regenerate so icon URLs point at the new files
+```
+
+`scripts/gamedata/icons.ts` resolves the URLs: `itemIconUrl(slug, { arctrackerId })` returns
+`/images/items/<slug>.webp` when the file exists, else the CDN URL, else `''`.
+`benchIconUrl(benchId, level)` returns `/images/benches/<benchId>-tier<level>.webp` or `null`.
+
+The generator prints counts per source and a list of fallbacks (up to 30 lines) with the reason for each.
+
 ## Quick Reference
 
 ```tsx

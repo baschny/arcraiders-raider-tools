@@ -22,6 +22,7 @@
     "generate:projects-quartermaster": "npx tsx ./scripts/generate-quartermaster-projects.ts",
     "generate:maps": "node ./scripts/generate-maps-data.mjs",
     "generate:game-data": "npx tsx ./scripts/generate-game-data.ts",
+    "generate:item-icons": "npx tsx ./scripts/generate-item-icons.ts",
     "typecheck:scripts": "tsc -p tsconfig.scripts.json"
   },
   "dependencies": {
