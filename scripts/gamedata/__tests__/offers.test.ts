@@ -163,7 +163,7 @@ describe('offer domains', () => {
       offer(4, 'FieldCrafting', 510, [2]),
       offer(5, 'Crafting', 20, [2]),
     ]);
-    const { recipes: r } = recipes.build(ctx) as { recipes: Record<string, any> };
+    const { recipes: r } = recipes.build(ctx) as { recipes: Record<string, Record<string, unknown>> };
     expect(Object.keys(r)).toEqual(['recipes:rifle', 'recipes:rifle-2', 'recipes:rifle-3']);
     expect(r['recipes:rifle']).toMatchObject({ station: 'bench', benchId: 'gunsmith', benchLevel: 1, cost: { items: [{ itemId: 'metal_parts', quantity: 4 }] } });
     expect(r['recipes:rifle-2'].station).toBe('in_raid');
@@ -172,7 +172,7 @@ describe('offer domains', () => {
 
   it('extracts research points and uses the reward name as title', () => {
     const ctx = fixture([offer(1, 'Crafting', 10, [3], { cost: rpCost(3000, [1, 2]) }), offer(2, 'Crafting', 11, [50])]);
-    const { research: r } = research.build(ctx) as { research: Record<string, any> };
+    const { research: r } = research.build(ctx) as { research: Record<string, Record<string, unknown>> };
     expect(Object.keys(r)).toEqual(['research:rifle_blueprint']); // unnamed reward is skipped
     expect(r['research:rifle_blueprint']).toMatchObject({ benchId: 'research_station', benchLevel: 1, researchPoints: 3000 });
     expect(ctx.text.en('research', 'research:rifle_blueprint')).toBe('Rifle Blueprint');
@@ -184,14 +184,14 @@ describe('offer domains', () => {
       offer(6, 'Chamber', 800, [50], { cost: { type: 'itemAmounts', items: [{ id: 3, amount: 1 }] }, requires: [{ id: 3, amount: 1 }] }),
       offer(3, 'Crafting', 20, [2], { requires: [{ id: 50, amount: 1 }] }),
     ]);
-    const { blueprints: b } = blueprints.build(ctx) as { blueprints: Record<string, any> };
+    const { blueprints: b } = blueprints.build(ctx) as { blueprints: Record<string, Record<string, unknown>> };
     expect(b['blueprints:rifle_blueprint']).toMatchObject({ blueprintItemId: 'rifle_blueprint', unlocksItemId: 'rifle', rewards: [{ itemId: 'rifle', quantity: 1 }] });
     expect(b['blueprints:rifle_blueprint'].requires).toBeUndefined();
   });
 
   it('builds trades with trader slug, limit and trader map', () => {
     const ctx = fixture([offer(13, 'NPC', 30, [2], { cost: { type: 'itemAmounts', items: [{ id: 5, amount: 900 }] }, limit: { max: 3, refreshSeconds: 60 } })]);
-    const res = trades.build(ctx) as { trades: Record<string, any>; traders: Record<string, any> };
+    const res = trades.build(ctx) as { trades: Record<string, Record<string, unknown>>; traders: Record<string, Record<string, unknown>> };
     expect(res.trades['trades:rifle']).toMatchObject({ traderId: 'lance', limit: { max: 3, refreshSeconds: 60 } });
     expect(res.traders).toEqual({ lance: { id: 'lance', nameEn: 'Lance' } });
   });

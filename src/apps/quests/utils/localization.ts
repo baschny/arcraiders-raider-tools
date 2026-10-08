@@ -13,15 +13,18 @@ export function setMapLocalizations(maps: LoadedDomain<'maps'>): void {
   );
 }
 
-export function getLocalizedMapName(mapId: string, _locale?: AppLocale): string {
+// `locale` is kept for call-site compatibility: names are loaded for the active locale.
+export function getLocalizedMapName(mapId: string, locale?: AppLocale): string {
+  void locale;
   return mapNames[mapId] ?? mapId;
 }
 
 export function getLocalizedMapNodeName(
   mapId: string | undefined,
   fallbackName: string,
-  _locale?: AppLocale,
+  locale?: AppLocale,
 ): string {
+  void locale;
   if (!mapId) return fallbackName;
   return mapNames[mapId] ?? fallbackName;
 }
