@@ -24,15 +24,15 @@ export interface MapIndexEntry {
   image: TileSet;
 }
 
+/**
+ * A loot item of the game's loot tables. Public data holds no asset ids or internal names: the item is identified by
+ * its raider-tools slug (only loot items with one are shipped).
+ */
 export interface LootItem {
-  /** English display name (the data asset name when the game files have none). */
-  name: string;
-  /** Data asset name (DA_Item_...). */
-  asset: string;
-  /** Embark asset id. */
-  id?: string;
-  /** arctracker item id = raider-tools item id; missing when the asset has no mapping (then join by `name`). */
-  slug?: string;
+  /** English display name; missing when the game files have none. */
+  name?: string;
+  /** raider-tools item id (slug): the join key to the items of the site. */
+  slug: string;
   /** Drop tags without the Item.Drop. prefix. */
   tags?: string[];
   conditions: Record<string, { excluded: string | null; maps: string[] }>;
@@ -46,7 +46,6 @@ export interface LootTableEntry {
 }
 
 export interface EnemyType {
-  key: string;
   name: string;
   nameKey?: string;
   fly: boolean;
@@ -69,11 +68,10 @@ export interface EnemyTable {
 export interface QuestObjective {
   text: string;
   type: string | null;
-  assets: string[];
+  amount?: number;
 }
 
 export interface Quest {
-  id: number;
   name: string;
   owner: string;
   cadence: string;
@@ -175,12 +173,8 @@ export type Level = [layer: number, height: number | null, covered: number];
 export interface QuestMarker {
   /** Kind: quest area (outline), interactable or quest item spawn. */
   k: 'area' | 'interact' | 'spawn';
-  /** Quest assets (DA_QuestArea_* / DA_InteractQuest_*). */
-  a: string[];
   uv: UV;
   z: number;
-  /** Level actor (or POI) id. */
-  id: string;
   cls?: string;
   prompt?: string;
   title?: string;

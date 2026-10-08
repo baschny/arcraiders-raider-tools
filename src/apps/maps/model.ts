@@ -9,7 +9,7 @@ import { mapNames, type MapNames } from './data/mapStrings';
 import { useMapStrings } from './data/useMapStrings';
 import type { LootItem, MapCondition, MapData, MapIndex } from './data/types';
 import { useAllMaps } from './data/useMapData';
-import { condIndex, defaultLayer, englishName, useLootableItems, type MapPatch, type MapState, type Prefs } from './state';
+import { condIndex, defaultLayer, useLootableItems, type MapPatch, type MapState, type Prefs } from './state';
 
 export interface Count {
   n: number;
@@ -76,7 +76,7 @@ export function useExplorer(index: MapIndex, map: MapData, state: MapState, set:
   const areaLabels = useMemo(() => map.areas.map(names.of), [map, names]);
   const lootable = useLootableItems(index, items);
   const item = state.item ? items?.[state.item] ?? null : null;
-  const lootIdx = useMemo(() => (item ? lootItemsFor(index, item.id, englishName(item)) : []), [index, item]);
+  const lootIdx = useMemo(() => (item ? lootItemsFor(index, item.id) : []), [index, item]);
   const lootItem = lootIdx.length ? index.items[lootIdx[0]] : null;
   const share = useMemo(() => (lootIdx.length ? itemShares(index, lootIdx) : null), [index, lootIdx]);
   const allMaps = useAllMaps(state.mode === 'loot' && share ? index : null);

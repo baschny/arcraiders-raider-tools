@@ -3,7 +3,7 @@ import { hasLootItem, lootItemsFor } from '../scoring';
 import { checkSchemaVersion, MAP_SCHEMA_VERSION, MapSchemaError } from '../schema';
 import type { LootItem, MapIndex } from '../types';
 
-const item = (name: string, asset: string, slug?: string): LootItem => ({ name, asset, slug, conditions: {} });
+const item = (name: string | undefined, slug: string): LootItem => ({ name, slug, conditions: {} });
 
 const index = {
   schemaVersion: MAP_SCHEMA_VERSION,
@@ -12,11 +12,12 @@ const index = {
   built: '2026-10-06T00:00:00Z',
   maps: [],
   items: [
-    item('Burnt-out Candles', 'DA_Item_Salvage_Trinket_BurntoutCandles', 'burnt_out_candles'),
-    item('"Wind Sprite" Ship Model', 'DA_Item_Salvage_Trinket_BoatModel_A'),
-    item('"Wind Sprite" Ship Model', 'DA_Item_Salvage_Trinket_BoatModel_A_02', 'wind_sprite_ship_model'),
-    item('Colorful Shoes', 'DA_Item_Salvage_ColorfulShoes_Red', 'colorful_shoes_red'),
-    item('Colorful Shoes', 'DA_Item_Salvage_ColorfulShoes_Green', 'colorful_shoes_green'),
+    item('Burnt-out Candles', 'burnt_out_candles'),
+    // Two loot items of one raider-tools item (several assets).
+    item('"Wind Sprite" Ship Model', 'wind_sprite_ship_model'),
+    item('"Wind Sprite" Ship Model', 'wind_sprite_ship_model'),
+    // No English name in the game files.
+    item(undefined, 'colorful_shoes_red'),
   ],
   tables: {},
   enemies: [],
@@ -26,23 +27,24 @@ const index = {
 } satisfies MapIndex;
 
 describe('lootItemsFor', () => {
-  it('joins by slug, whatever the names', () => {
-    expect(lootItemsFor(index, 'burnt_out_candles', 'Burnt-Out Candles')).toEqual([0]);
-    expect(lootItemsFor(index, 'colorful_shoes_green', 'Colorful Shoes (Green)')).toEqual([4]);
+  it('joins by slug only, whatever the names', () => {
+    expect(lootItemsFor(index, 'burnt_out_candles')).toEqual([0]);
+    expect(lootItemsFor(index, 'colorful_shoes_red')).toEqual([3]);
   });
 
-  it('adds loot items without a slug by English name', () => {
-    expect(lootItemsFor(index, 'wind_sprite_ship_model', '"Wind Sprite" Ship Model')).toEqual([1, 2]);
+  it('returns every loot item of the raider-tools item', () => {
+    expect(lootItemsFor(index, 'wind_sprite_ship_model')).toEqual([1, 2]);
   });
 
-  it('matches names ignoring case and surrounding spaces', () => {
-    expect(lootItemsFor(index, 'wind_sprite', ' "WIND SPRITE" ship model ')).toEqual([1]);
+  it('does not join by English name', () => {
+    expect(lootItemsFor(index, 'Burnt-out Candles')).toEqual([]);
+    expect(lootItemsFor(index, 'burnt-out_candles')).toEqual([]);
+    expect(hasLootItem(index, 'Wind Sprite Ship Model')).toBe(false);
   });
 
-  it('does not match slugged loot items by name', () => {
-    expect(lootItemsFor(index, 'colorful_shoes', 'Colorful Shoes')).toEqual([]);
-    expect(hasLootItem(index, 'colorful_shoes', 'Colorful Shoes')).toBe(false);
-    expect(hasLootItem(index, 'colorful_shoes_red', 'Colorful Shoes (Red)')).toBe(true);
+  it('reports whether an item is in static loot', () => {
+    expect(hasLootItem(index, 'colorful_shoes_red')).toBe(true);
+    expect(hasLootItem(index, 'colorful_shoes')).toBe(false);
   });
 });
 
@@ -53,6 +55,7 @@ describe('checkSchemaVersion', () => {
 
   it('rejects unknown or missing versions with MapSchemaError', () => {
     expect(() => checkSchemaVersion({ ...index, schemaVersion: MAP_SCHEMA_VERSION + 1 })).toThrow(MapSchemaError);
+    expect(() => checkSchemaVersion({ ...index, schemaVersion: 1 })).toThrow(MapSchemaError);
     const old: Partial<MapIndex> = { ...index };
     delete old.schemaVersion;
     expect(() => checkSchemaVersion(old as MapIndex)).toThrow(MapSchemaError);

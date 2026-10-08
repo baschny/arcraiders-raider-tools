@@ -3,7 +3,7 @@
 import { MAP_SCHEMA_VERSION } from '../../schema';
 import type { LootItem, MapData, MapIndex, Socket } from '../../types';
 
-const item = (name: string, slug: string | undefined, tags: string[]): LootItem => ({ name, asset: `DA_Item_${name.replace(/\W/g, '')}`, slug, tags, conditions: {} });
+const item = (name: string, slug: string, tags: string[]): LootItem => ({ name, slug, tags, conditions: {} });
 
 /** Item indexes into TINY_INDEX.items. */
 export const LEMON = 0, METAL = 1, WIRES = 2, DUCK = 3, TRINKET = 4, CANDLEBERRIES = 5;
@@ -22,8 +22,8 @@ export const TINY_INDEX: MapIndex = {
     item('Rubber Duck', 'rubber_duck', []),
     // Bird-nest trinket: its name does not match a container, the Birdnest tag sends it to bird nests.
     item('Shiny Trinket', 'shiny_trinket', ['Category.Area.Nature', 'Trinket.Birdnest']),
-    // No slug: joined by English name.
-    item('Candleberries', undefined, ['Category.Area.Nature']),
+    // In no table: scores nothing.
+    item('Candleberries', 'candleberries', ['Category.Area.Nature']),
   ],
   tables: {
     // METAL: 1/2 + 1/2 · 1/2 = 0.75, DUCK: 1/2 · 1/2 = 0.25
@@ -32,9 +32,9 @@ export const TINY_INDEX: MapIndex = {
     T2: [{ q: 'c', items: [WIRES] }, { q: 'd', items: [LEMON] }, { q: 'e', items: [DUCK] }, { q: 'f', items: [TRINKET] }],
   },
   enemies: [
-    { key: 'Wasp', name: 'Wasp', fly: true },
-    { key: 'Hornet', name: 'Hornet', fly: true },
-    { key: 'Rocketeer', name: 'Rocketeer', fly: true },
+    { name: 'Wasp', fly: true },
+    { name: 'Hornet', fly: true },
+    { name: 'Rocketeer', fly: true },
   ],
   enemyTables: {
     // One list, weights 3:1.

@@ -30,7 +30,7 @@ const sameName = (a: string, b: string) => {
 export function dedicatedContainers(item: LootItem, containerTags: string[]): string[] {
   const tags = item.tags ?? [];
   if (!tags.includes('Category.Area.Nature')) return [];
-  const own = containerTags.filter((c) => c.startsWith('Nature.') && sameName(c.split('.')[1], item.name));
+  const own = containerTags.filter((c) => c.startsWith('Nature.') && sameName(c.split('.')[1], item.name ?? ''));
   if (own.length) return own;
   if (tags.some((t) => t.endsWith('Trinket.Birdnest'))) return containerTags.filter((c) => c.startsWith('Nature.BirdNest'));
   return [];
@@ -93,18 +93,14 @@ export function scoreMap(index: MapIndex, map: MapData, items: number[], ci: num
   return { sockets, pois, total, max, hits };
 }
 
-/** Does a loot item stand for the raider-tools item? By slug; loot items without one (no mapping) by English name. */
-const isLootItemOf = (it: LootItem, itemId: string, englishName: string) =>
-  it.slug ? it.slug === itemId : it.name.toLowerCase() === englishName.trim().toLowerCase();
-
-/** Loot item indexes for a raider-tools item (one item can have several assets). */
-export function lootItemsFor(index: MapIndex, itemId: string, englishName: string): number[] {
-  return index.items.map((it, i) => (isLootItemOf(it, itemId, englishName) ? i : -1)).filter((i) => i >= 0);
+/** Loot item indexes for a raider-tools item, by slug (one item can have several loot items). */
+export function lootItemsFor(index: MapIndex, itemId: string): number[] {
+  return index.items.map((it, i) => (it.slug === itemId ? i : -1)).filter((i) => i >= 0);
 }
 
 /** Can the raider-tools item be found in static loot? */
-export function hasLootItem(index: MapIndex, itemId: string, englishName: string): boolean {
-  return index.items.some((it) => isLootItemOf(it, itemId, englishName));
+export function hasLootItem(index: MapIndex, itemId: string): boolean {
+  return index.items.some((it) => it.slug === itemId);
 }
 
 /** Why an item has a note: its own containers (tags) only exist under these conditions (English name, reason). */

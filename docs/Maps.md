@@ -38,26 +38,46 @@ raider-tools npm run generate:maps               -> public/data/map-data/       
 ```
 
 `scripts/generate-maps-data.mjs` (`npm run generate:maps`, not part of `npm run generate`) reads the embark-api
-build (env `EMBARK_API_DIR`, default the sibling `../embark-api`) and writes:
+build (env `EMBARK_API_DIR`, default the sibling `../embark-api`) and writes the public form:
 
 | Path | Content |
 | --- | --- |
-| `index.json` | map list, items, loot tables, enemies, quests, `schemaVersion`, `manifest`, `gameVersion`, `built` |
+| `index.json` | map list, items (by slug), loot tables, enemies, quests, `schemaVersion`, `manifest`, `gameVersion`, `built` |
 | `maps/<map>.json` | one per map; area pieces replaced by merged outlines |
 | `map-strings.<locale>.json` | localized map strings, when the build has them |
 | `icons/<key>.png` | game UI icons (white on transparent, tinted in the browser) |
 | `tiles/<Texture>-<hash>/` | tile pyramids, cut from the full-size game textures (fallback: the build's 2048 px images) |
 
-The output is deterministic (same build, same bytes) and no file may exceed 5 MB. The data is committed like the
+The output is deterministic (same build, same bytes) and no file may exceed 5 MB. The public files hold no Embark asset
+ids and no internal names (`DA_...`): loot items are identified by their raider-tools slug only (see
+[Public form](#public-form)).
+
+### Public form
+
+`toPublicIndex` and `toPublicMap` in `generate-maps-data.mjs` turn the build into the committed form (schemaVersion
+`PUBLIC_SCHEMA_VERSION`, currently 2):
+
+- `items[]`: `id` (Embark asset id) and `asset` (`DA_...`) are dropped; `slug` is required. Loot items without a slug
+  are excluded (the generator logs the count and names), and the `tables` indexes are renumbered. A `name` that is
+  only the asset name (no English name in the game files) is dropped too.
+- `enemies[]`: `key` (`DA_EnemyType_...`) is dropped.
+- `quests[]`: `id` and `prev` (Embark ids) and the objective `assets` are dropped; `maps/<map>.json` quest markers
+  lose `a` (quest assets) and `id` (level actor id). The page does not use any of them.
+- Not changed: the `manifest` (a Steam depot id, a build identifier) and `cls` (the spawned class names of quest
+  markers).
+
+The client reads the item identity as follows: an item is `slug`, the join with raider-tools items is `item.slug ===
+LootItem.slug` (`scoring.ts`, `lootItemsFor`, `hasLootItem`). There is no English-name fallback.
+ The data is committed like the
 other generated game data, game art included (as with item images). Tile folders are named by a content hash of
 their source, so `amplify.yml` serves `data/map-data/tiles/**` with an immutable `Cache-Control`; JSON and icons
 use the default revalidation.
 
 The client (`src/apps/maps/data/useMapData.ts`) loads `index.json`, then the open map (all maps only when the map
-bar needs scores). `data/schema.ts` checks `schemaVersion` (`SCHEMA_VERSION` in `build-map-features.js`) and asks
+bar needs scores). `data/schema.ts` checks `schemaVersion` (`MAP_SCHEMA_VERSION`, the public format) and asks
 for a page reload when data and client come from different releases. The positional arrays of the map files are
-documented in `src/apps/maps/data/types.ts`. Items are joined to raider-tools items by slug (the arctracker id,
-mapped from the Embark asset id in embark-api); loot items without a mapping fall back to their English name.
+documented in `src/apps/maps/data/types.ts`. Items are joined to raider-tools items by slug only (the arctracker id,
+mapped from the Embark asset id in embark-api at build time).
 
 ## Per-patch runbook
 
@@ -75,9 +95,10 @@ npm run build && npm test
 git add public/data/map-data && git commit   # then push: Amplify deploys
 ```
 
-Check the generator output for warnings (missing full-size textures, items without a mapping). When the build's
-`schemaVersion` changed, update `MAP_SCHEMA_VERSION` in `src/apps/maps/data/schema.ts` and the readers in the same
-commit. Unknown URL values from old links (a removed map, condition, layer, item or enemy) are dropped by
+Check the generator output for warnings (missing full-size textures) and the item count it logs (items without a
+slug are excluded). When the build's data changes shape, update `toPublicIndex` / `toPublicMap`; when the public
+format changes, bump `PUBLIC_SCHEMA_VERSION` in the generator and `MAP_SCHEMA_VERSION` in
+`src/apps/maps/data/schema.ts` and the readers in the same commit. Unknown URL values from old links (a removed map, condition, layer, item or enemy) are dropped by
 `sanitizeState` in `state.ts`.
 
 ## URL and preferences

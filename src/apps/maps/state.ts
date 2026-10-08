@@ -152,12 +152,12 @@ export const sortedMaps = (index: MapIndex) => [...index.maps].sort((a, b) => MA
 /** English item name (`name.en` holds the name in the site language, see loot-helper loadAllItems). */
 export const englishName = (it: Item) => it.originalNameEn ?? it.name.en;
 
-/** raider-tools items that can be found in static loot (matched by slug, else by English name). */
+/** raider-tools items that can be found in static loot (matched by slug). */
 export function useLootableItems(index: MapIndex, items: ItemsMap | null): Item[] {
   return useMemo(() => {
     if (!items) return [];
     return Object.values(items)
-      .filter((it) => hasLootItem(index, it.id, englishName(it)))
+      .filter((it) => hasLootItem(index, it.id))
       .sort((a, b) => getItemDisplayName(a).localeCompare(getItemDisplayName(b)));
   }, [index, items]);
 }

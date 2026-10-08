@@ -26,6 +26,8 @@ import { outlineRings } from './lib/area-outlines.mjs';
 import { findSource, sourceIndex, tilesHash, writeTiles } from './lib/map-tiles.mjs';
 
 const MAX_FILE_BYTES = 5 * 1024 * 1024;
+/** Format of the public files: items and references by slug only (see toPublicIndex). Client: MAP_SCHEMA_VERSION. */
+const PUBLIC_SCHEMA_VERSION = 2;
 
 const root = path.resolve(import.meta.dirname, '..');
 const embarkApi = path.resolve(process.env.EMBARK_API_DIR || path.join(root, '..', 'embark-api'));
@@ -87,9 +89,54 @@ async function tileSet(image) {
   return tileSets.get(image);
 }
 
+/**
+ * The public form of index.json: no Embark asset ids and no internal names (DA_...). Loot items are referenced by
+ * their raider-tools slug only; loot items without a slug are dropped (and the table indexes renumbered, entries
+ * left without an item removed). Enemy keys, quest ids, prerequisite ids and quest assets are not used by the page.
+ */
+function toPublicIndex(index) {
+  const remap = [];
+  const items = [];
+  index.items.forEach((item, i) => {
+    if (!item.slug) {
+      remap[i] = -1;
+      return;
+    }
+    remap[i] = items.length;
+    const { asset, id, ...rest } = item;
+    // Some items have no English name in the game files; their name is the asset name (DA_...): leave it out.
+    if (rest.name?.startsWith('DA_')) delete rest.name;
+    items.push(rest);
+  });
+  const tables = Object.fromEntries(
+    Object.entries(index.tables).map(([name, entries]) => [
+      name,
+      entries
+        .map((e) => ({ ...e, items: e.items.filter((i) => remap[i] >= 0).map((i) => remap[i]) }))
+        .filter((e) => e.items.length),
+    ]),
+  );
+  const excluded = index.items.length - items.length;
+  console.log(`items: ${items.length} with a slug kept, ${excluded} without a slug excluded (${index.items.filter((it) => !it.slug).map((it) => it.name).join(', ') || 'none'})`);
+  return {
+    ...index,
+    schemaVersion: PUBLIC_SCHEMA_VERSION,
+    items,
+    tables,
+    enemies: index.enemies.map(({ key, ...rest }) => rest),
+    quests: index.quests.map(({ id, prev, objectives, ...rest }) => ({
+      ...rest,
+      objectives: objectives.map(({ assets, ...objective }) => objective),
+    })),
+  };
+}
+
+/** Public form of maps/<map>.json: quest markers without their quest assets and level actor id. */
+const toPublicMap = (map) => ({ ...map, quests: map.quests.map(({ a, id, ...marker }) => marker) });
+
 const index = JSON.parse(fs.readFileSync(path.join(build, 'index.json'), 'utf8'));
 for (const m of index.maps) m.image = await tileSet(m.image);
-writeJson('index.json', index);
+writeJson('index.json', toPublicIndex(index));
 
 // ---- maps: area (POI) pieces are replaced by their merged outline (scripts/lib/area-outlines.mjs).
 const r4 = (x) => Math.round(x * 1e4) / 1e4;
@@ -106,7 +153,7 @@ for (const file of fs.readdirSync(path.join(build, 'maps')).filter((f) => f.ends
     delete poi.polygons;
     delete poi.polyIds;
   }
-  writeJson(`maps/${file}`, map);
+  writeJson(`maps/${file}`, toPublicMap(map));
 }
 console.log(`area outlines: ${pieces} pieces -> ${rings} rings`);
 
@@ -240,7 +287,7 @@ for (const f of files(out)) {
   if (bytes > MAX_FILE_BYTES) tooLarge.push(`${f} (${mb(bytes)})`);
 }
 const cut = [...usedTiles.values()].filter((m) => !m.cached).length;
-console.log(`map data -> ${path.relative(root, out)}/ (built ${index.built ?? '?'})`);
+console.log(`map data -> ${path.relative(root, out)}/ (built ${index.built ?? '?'}, schemaVersion ${PUBLIC_SCHEMA_VERSION})`);
 for (const [g, { n, bytes }] of Object.entries(groups)) console.log(`  ${g.padEnd(6)} ${String(n).padStart(5)} files  ${mb(bytes).padStart(8)}`);
 console.log(`  total  ${mb(Object.values(groups).reduce((a, g) => a + g.bytes, 0)).padStart(20)}  (${usedTiles.size} tile sets, ${cut} cut)`);
 if (tooLarge.length) {
