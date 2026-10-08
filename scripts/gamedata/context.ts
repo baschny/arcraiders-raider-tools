@@ -190,9 +190,19 @@ export function createContext(arc: ArcData, slugs: SlugStore): GenContext {
         const bpSlug = bp ? shippedItems.get(bp.id) : undefined;
         if (bpSlug) return { kind: 'unlock', id: bpSlug };
       }
+      const gateItem = arc.items.get(gate.id);
+      if (gateItem?.type === 'CharacterSkill') {
+        const skillId = ctx.slugFor('skills', gate.id, gateItem);
+        if (skillId) return { kind: 'skill', id: skillId };
+      }
       const itemSlug = shippedItems.get(gate.id);
       if (itemSlug) return { kind: 'item', id: itemSlug, amount: gate.amount };
       if (lg) return { kind: 'unlock', id: `levelGroup:${lg.group}:${lg.level}` };
+      if (gateItem && !gateItem.name?.en) {
+        // Known asset without a name yet (game files lag behind the API): not a data error.
+        report.add('requirementsPendingNames', `${gate.id} ${gateItem.type}${context ? ` in ${context}` : ''}`);
+        return null;
+      }
       report.add('unresolvedRequirements', `${gate.id}${context ? ` in ${context}` : ''}`);
       return null;
     },

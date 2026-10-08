@@ -61,12 +61,12 @@ export type Cost =
   | { items: Amount[] }
   | { scrapValue: number; itemIds?: string[]; tags?: string[] };
 
-export type RequirementKind = 'item' | 'unlock' | 'bench' | 'outpostLevel' | 'project' | 'quest';
+export type RequirementKind = 'item' | 'unlock' | 'bench' | 'outpostLevel' | 'project' | 'quest' | 'skill';
 
 /**
  * A gate resolved into meaning ("needs Gunsmith 4", "needs Outpost level 2", "needs research
  * quest X"). `id` is a slug of the domain implied by `kind` (bench → benches, quest → quests,
- * item/unlock → items, project → projects); for outpostLevel `id` is the level as string.
+ * item/unlock → items, project → projects, skill → skilltree); for outpostLevel `id` is the level as string.
  */
 export interface Requirement {
   kind: RequirementKind;

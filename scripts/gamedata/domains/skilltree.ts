@@ -41,7 +41,10 @@ export function buildSkilltree(ctx: GenContext): SkilltreeStructure {
 
   const slugOf = new Map<number, string>();
   for (const n of [...nodes].sort((a, b) => Number(a.id) - Number(b.id))) {
-    const slug = ctx.slugFor('skills', n.id, n);
+    // Skill slugs are keyed by the CharacterSkill asset (n.skillId) so requirements on skills
+    // (context.requirement, kind 'skill') and tree nodes share one slug.
+    const skillId = (n as { skillId?: number }).skillId ?? n.id;
+    const slug = ctx.slugFor('skills', skillId, n.name?.en ? n : ctx.arc.items.get(Number(skillId)) ?? n);
     if (slug) slugOf.set(Number(n.id), slug);
   }
   const ref = (id: number, context: string): string | null => {
