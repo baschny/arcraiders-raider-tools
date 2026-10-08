@@ -18,6 +18,9 @@ import type { ArcData, CanonAmount, CanonCost, CanonItem, CanonOffer, CanonRecor
 import type { SlugKind, SlugStore } from './slugs';
 import { TextCollector } from './text';
 
+/** Canonical item types that are cosmetics (never shipped as site items). */
+const COSMETIC_TYPES = new Set(['CharacterItem', 'Emote', 'CharacterExpressionStructure', 'MusicTrack']);
+
 export class Report {
   readonly sections = new Map<string, string[]>();
   add(section: string, message: string): void {
@@ -138,7 +141,12 @@ export function createContext(arc: ArcData, slugs: SlugStore): GenContext {
 
     itemRef(assetId, context) {
       const slug = shippedItems.get(assetId);
-      if (!slug) report.add('droppedItemRefs', `${assetId}${context ? ` in ${context}` : ''}`);
+      if (!slug) {
+        // Cosmetics never ship (spec-site.md#items); everything else dropped is worth a look.
+        const t = arc.items.get(assetId)?.type ?? '';
+        const section = COSMETIC_TYPES.has(t) ? 'droppedCosmeticRefs' : 'droppedItemRefs';
+        report.add(section, `${assetId}${t ? ` ${t}` : ''}${context ? ` in ${context}` : ''}`);
+      }
       return slug ?? null;
     },
 

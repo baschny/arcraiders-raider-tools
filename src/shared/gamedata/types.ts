@@ -102,8 +102,11 @@ export interface Item {
   salvagesInto?: Reward[];
   repairCost?: Amount[];
   repairDurability?: number;
-  modSlots?: string[];
+  /** Slot type (muzzle, special, …) → compatible mod item slugs. */
+  modSlots?: Record<string, string[]>;
+  /** English effect label → value; localized labels in the text file under `effects.<label>`. */
   effects?: Record<string, unknown>;
+  questItem?: boolean;
   // precomputed reverse lookups
   craftedBy?: string[];
   researchedBy?: string[];
