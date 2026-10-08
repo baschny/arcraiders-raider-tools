@@ -1,1 +1,60 @@
 // Styles for the stencils section (BEM prefix wn-stencils).
+@use '../../../shared/styles/variables' as *;
+
+.wn-stencils {
+  &__parts { display: flex; align-items: center; gap: $gap-md; margin-bottom: $spacing-md; }
+  &__parts-hint { font-size: $font-md; color: $text-light; }
+
+  &__group { margin-bottom: $spacing-md; }
+  &__group-head { display: flex; align-items: center; gap: $gap-sm; margin-bottom: $spacing-xs; }
+  &__group-cost { font-size: $font-md; font-weight: 600; color: $text-light; }
+
+  &__tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: $gap-sm; }
+
+  &__tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-xs;
+    padding: $spacing-sm;
+    background: $bg-secondary;
+    border: $border-width-thin solid $border-default;
+    border-radius: $radius-md;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+
+    &--active { border-color: $text-light; }
+  }
+
+  &__swatch {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img { max-width: 100%; max-height: 100%; object-fit: contain; }
+  }
+  &__swatch-fallback {
+    width: 100%;
+    height: 100%;
+    border-radius: $radius-sm;
+    background: repeating-linear-gradient(45deg, $bg-tertiary 0 6px, $bg-secondary 6px 12px);
+  }
+  &__name { font-size: $font-md; text-align: center; }
+  &__found { font-size: $font-sm; color: $text-light; text-transform: uppercase; }
+
+  &__compat {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: $gap-md;
+    margin-top: $spacing-xs;
+    padding: $spacing-sm $spacing-md;
+    background: $bg-secondary;
+    border: $border-width-thin solid $border-default;
+    border-radius: $radius-md;
+  }
+  &__compat-label { font-size: $font-md; font-weight: 600; color: $text-light; text-transform: uppercase; }
+  &__compat-icons { display: flex; gap: $gap-sm; overflow-x: auto; max-width: 100%; }
+}

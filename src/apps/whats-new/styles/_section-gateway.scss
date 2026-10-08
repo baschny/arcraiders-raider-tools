@@ -1,1 +1,8 @@
 // Styles for the gateway section (BEM prefix wn-gateway).
+@use '../../../shared/styles/variables' as *;
+
+.wn-gateway {
+  &__row { display: flex; flex-direction: column; gap: $gap-md; }
+  &__blueprint { display: flex; align-items: center; gap: $gap-md; }
+  &__blueprint-label { font-size: $font-md; font-weight: 600; color: $text-light; text-transform: uppercase; }
+}
