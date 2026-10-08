@@ -10,7 +10,7 @@ import { GAME_DATA_SCHEMA_VERSION, type GameDomain } from '../../src/shared/game
 import { LOCALES, repoRoot } from './arcData';
 import type { TextCollector } from './text';
 
-export const OUTPUT_DIR = path.join(repoRoot, 'public', 'data', 'game');
+export const OUTPUT_DIR = path.resolve(process.env.GAME_DATA_OUT ?? path.join(repoRoot, 'public', 'data', 'game'));
 
 /** gzip budgets in KB: [structure, text per locale]. */
 export const BUDGETS_KB: Record<GameDomain, [number, number]> = {

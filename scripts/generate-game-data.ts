@@ -18,7 +18,7 @@ import { createContext } from './gamedata/context';
 import { DOMAIN_MODULES } from './gamedata/domains';
 import { crossref } from './gamedata/domains/crossref';
 import { openSlugStore, type SlugKind } from './gamedata/slugs';
-import { removeStale, writeDomain } from './gamedata/writer';
+import { OUTPUT_DIR, removeStale, writeDomain } from './gamedata/writer';
 
 /** Slug table whose aliases a domain file carries (for resolving renamed slugs in saved state). */
 const ALIAS_KINDS: Partial<Record<GameDomain, SlugKind[]>> = {
@@ -73,7 +73,7 @@ function main(): void {
   const newSlugFiles = slugs.save();
 
   ctx.report.print();
-  console.log(`wrote ${written.length} file(s) to public/data/game/`);
+  console.log(`wrote ${written.length} file(s) to ${OUTPUT_DIR}`);
   if (newSlugFiles.length) console.log(`new slugs appended to arc-data: ${newSlugFiles.join(', ')} — commit them in arc-data`);
   for (const o of overBudget) console.log(`OVER BUDGET ${o}`);
 
