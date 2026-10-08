@@ -154,7 +154,7 @@ function processItem(source: SourceItem, locale: OutputLocale): { id: string; it
     },
     description: getLocalizedValue(source.description, locale),
     type: source.type,
-    rarity: source.rarity,
+    rarity: source.rarity ?? 'Common', // new items may not have a known rarity yet
     stackSize: source.stackSize ?? 1,
     craftQuantity: source.craftQuantity ?? 1,
     ...(source.value !== undefined && { value: source.value }),
@@ -228,7 +228,7 @@ function addWeaponChainMetadata(items: Record<string, GeneratedItem>): void {
 function main(): void {
   const scriptPath = path.resolve(process.argv[1] ?? './scripts/generate-items.ts');
   const scriptDir = path.dirname(scriptPath);
-  const sourceDir = path.resolve(scriptDir, '../../arcraiders-data/items');
+  const sourceDir = path.resolve(process.env.ARCRAIDERS_DATA_DIR || path.resolve(scriptDir, '../../arcraiders-data'), 'items');
   const destDir = path.resolve(scriptDir, '../public/data/items');
 
   if (!fs.existsSync(sourceDir)) {

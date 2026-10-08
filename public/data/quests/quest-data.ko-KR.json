@@ -27,6 +27,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -100,6 +102,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -149,7 +153,8 @@
       "buried_city",
       "the_spaceport",
       "the_blue_gate",
-      "dam_battlegrounds"
+      "dam_battlegrounds",
+      "riven_tides"
     ],
     "previousQuestIds": [
       "the_right_tool"
@@ -172,6 +177,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -241,7 +248,7 @@
         "originalEn": "Find a way into into the locked room in the Security Wing"
       },
       {
-        "value": "잠긴 방에서 에버그린 프로젝트 관련 기록 수색하기",
+        "value": "잠긴 방에서 하트우드 프로젝트 관련 기록 수색하기",
         "originalEn": "Search the locked room for any records on Project Heartwood"
       },
       {
@@ -254,6 +261,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 8000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -261,7 +270,7 @@
         "id": "dusty_film_reel",
         "quantity": 1,
         "name": {
-          "value": "Dusty Film Reel",
+          "value": "먼지 쌓인 필름 릴",
           "originalEn": "Dusty Film Reel"
         },
         "rarity": "Common",
@@ -323,6 +332,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [
       "18x Raids"
     ],
@@ -413,6 +424,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -493,6 +506,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 2500,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -533,6 +548,119 @@
     "blueprintRewards": []
   },
   {
+    "id": "a_path_not_yours",
+    "name": {
+      "value": "당신의 것이 아닌 길",
+      "originalEn": "A Path Not Yours"
+    },
+    "trader": "Ermal",
+    "map": [
+      "the_blue_gate"
+    ],
+    "previousQuestIds": [
+      "taking_stock"
+    ],
+    "nextQuestIds": [],
+    "description": {
+      "value": "우리의 길이 달라지기 전, 우리는 한동안 블루 게이트 근처에 머물렀소. 그 시절의 옛길이 아직 남아 있다고 믿소. 그 끝에는 우리 것이 아직 남아 있을지도 모르오.",
+      "originalEn": "Before our paths changed, we lingered by the Blue Gate for some time. We believe there is an old trail from those days, and something belonging to us may still lie at its end."
+    },
+    "objectives": [
+      {
+        "value": "붕괴된 고속도로 아래에서 유랑민 이동 경로의 시작점 찾기",
+        "originalEn": "Find the start of the Nomad trail under the Highway Collapse"
+      },
+      {
+        "value": "경로 표식을 따라 유랑민 은신처로 이동하기",
+        "originalEn": "Follow the trail markers to the Nomad hideout"
+      },
+      {
+        "value": "은신처 아래 파묻힌 은닉물에서 빌군의 선물 찾기",
+        "originalEn": "Find Bilguun's gift at the buried cache under the hideout"
+      },
+      {
+        "value": "빌군의 은신처에서 비밀 보관함 노획하기",
+        "originalEn": "Loot the secret stash in Bilguun's hideout"
+      },
+      {
+        "value": "유랑 사절단에게 망가진 나침반 전달하기",
+        "originalEn": "Deliver the Broken Compass to the Nomadic Envoy"
+      }
+    ],
+    "objectivesOneRound": true,
+    "addedIn": "2.0",
+    "xp": 2500,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "zipline",
+        "quantity": 2,
+        "name": {
+          "value": "집라인",
+          "originalEn": "Zipline"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/zipline.png"
+      }
+    ],
+    "requiredItems": [
+      {
+        "id": "broken_compass",
+        "quantity": 1,
+        "name": {
+          "value": "",
+          "originalEn": "Broken Compass"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "tellurion",
+        "quantity": 1,
+        "name": {
+          "value": "텔루리온",
+          "originalEn": "Tellurion"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/tellurion.png"
+      },
+      {
+        "id": "magnet",
+        "quantity": 2,
+        "name": {
+          "value": "자석",
+          "originalEn": "Magnet"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/magnet.png"
+      },
+      {
+        "id": "battery",
+        "quantity": 2,
+        "name": {
+          "value": "배터리",
+          "originalEn": "Battery"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/battery.png"
+      },
+      {
+        "id": "power_cable",
+        "quantity": 2,
+        "name": {
+          "value": "전력 케이블",
+          "originalEn": "Power Cable"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/power_cable.png"
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
     "id": "a_prime_specimen",
     "name": {
       "value": "최상급 표본",
@@ -565,6 +693,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 8000,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -646,6 +776,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 2500,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -701,7 +833,7 @@
     ],
     "nextQuestIds": [],
     "description": {
-      "value": "여기 기록을 보니, 에버그린 프로젝트가 취소된 직후, 댐에 있던 현장 감독이 스카우트됐더군요. 대규모 재건 프로젝트의 책임자가 됐대요.",
+      "value": "여기 기록을 보니, 하트우드 프로젝트가 취소된 직후, 댐에 있던 현장 감독이 스카우트됐더군요. 대규모 재건 프로젝트의 책임자가 됐대요.",
       "originalEn": "Says here there was a foreman at The Dam, who got recruited right after they canceled Project Heartwood. Got put in charge of some big reconstruction project."
     },
     "objectives": [
@@ -727,6 +859,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -752,14 +886,14 @@
         "imageFilename": "https://cdn.arctracker.io/items/v2/anvil_splitter.png"
       },
       {
-        "id": "extended_barrel",
+        "id": "extended_barrel_iii",
         "quantity": 1,
         "name": {
-          "value": "extended_barrel",
-          "originalEn": "extended_barrel"
+          "value": "확장형 총열 III",
+          "originalEn": "Extended Barrel III"
         },
-        "rarity": "Common",
-        "imageFilename": ""
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/extended_barrel.png"
       },
       {
         "id": "heavy_ammo",
@@ -812,6 +946,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -879,6 +1015,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -966,6 +1104,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -1017,7 +1157,9 @@
     "previousQuestIds": [
       "safe_harbor"
     ],
-    "nextQuestIds": [],
+    "nextQuestIds": [
+      "home_to_roost"
+    ],
     "description": {
       "value": "그 불만은 결국 우주 기지의 지상 직원들에게까지 번진 모양이에요. 엑소더스 한복판에서 반란의 불씨가 커지고 있었던 거죠.",
       "originalEn": "Looks like the resentment ended up reaching the ground staff of the Spaceport itself. A mutiny brewing, right in the heart of the Exodus."
@@ -1033,6 +1175,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -1092,6 +1236,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 2500,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -1200,6 +1346,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 8000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -1272,6 +1420,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [
       "18x Raids"
     ],
@@ -1313,6 +1463,117 @@
     "blueprintRewards": []
   },
   {
+    "id": "bait_fetch_blast",
+    "name": {
+      "value": "유인, 회수, 폭발",
+      "originalEn": "Bait, Fetch, Blast"
+    },
+    "trader": "Apollo",
+    "map": [
+      "pendola_pass"
+    ],
+    "previousQuestIds": [
+      "tracks_of_the_beast"
+    ],
+    "nextQuestIds": [],
+    "description": {
+      "value": "불리는 정말 상대하기 까다롭습니다. 그래도 파괴할 수 없는 건 없잖아요. 통할 만한 방법을 몇 가지 들었는데, 한번 시험해 보실래요?",
+      "originalEn": "Tough nuts to crack, those Bullies. But you know, nothing’s indestructible. I’ve heard of a few tricks that might just work, care to put them to a test?"
+    },
+    "objectives": [
+      {
+        "value": "불리 파괴하기",
+        "originalEn": "Destroy a Bully"
+      },
+      {
+        "value": "아폴로에게 불리 파편탄 전달하기",
+        "originalEn": "Deliver a Bully Fragmenter to Apollo"
+      }
+    ],
+    "objectivesOneRound": false,
+    "addedIn": "2.0",
+    "xp": 10000,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "showstopper",
+        "quantity": 3,
+        "name": {
+          "value": "쇼스토퍼",
+          "originalEn": "Showstopper"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/showstopper.png"
+      },
+      {
+        "id": "barricade_kit",
+        "quantity": 2,
+        "name": {
+          "value": "바리케이드 키트",
+          "originalEn": "Barricade Kit"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/barricade_kit.png"
+      },
+      {
+        "id": "medium_shield",
+        "quantity": 1,
+        "name": {
+          "value": "준중량 실드",
+          "originalEn": "Medium Shield"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/medium_shield.png"
+      },
+      {
+        "id": "looting_mk3_survivor",
+        "quantity": 1,
+        "name": {
+          "value": "노획 마크(생존자)",
+          "originalEn": "Looting Mk. 3 (Survivor)"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/looting_mk3_survivor.png"
+      }
+    ],
+    "requiredItems": [
+      {
+        "id": "bully_fragmenter",
+        "quantity": 1,
+        "name": {
+          "value": "",
+          "originalEn": "Bully Fragmenter"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "bully_fragmenter",
+        "quantity": 1,
+        "name": {
+          "value": "",
+          "originalEn": "Bully Fragmenter"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      },
+      {
+        "id": "wolfpack",
+        "quantity": 1,
+        "name": {
+          "value": "울프팩",
+          "originalEn": "Wolfpack"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/wolfpack.png"
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
     "id": "battening_down",
     "name": {
       "value": "철저한 대비",
@@ -1345,6 +1606,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [
       "20x Raids"
     ],
@@ -1406,6 +1669,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 2500,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -1446,6 +1711,258 @@
     "blueprintRewards": []
   },
   {
+    "id": "belly_of_the_beast",
+    "name": {
+      "value": "괴수의 뱃속",
+      "originalEn": "Belly of the Beast"
+    },
+    "trader": "Shani",
+    "map": [
+      "pendola_pass"
+    ],
+    "previousQuestIds": [
+      "tracks_of_the_beast",
+      "sizing_things_up"
+    ],
+    "nextQuestIds": [],
+    "description": {
+      "value": "아크가 꿀에 꼬인 파리 떼처럼 쓰러진 엠퍼러에 몰려들고 있습니다. 러스트 벨트 저 너머에서 오는 신호까지 잡히는데, 줄어들 기미가 없네요.",
+      "originalEn": "ARC’s been swarming that fallen Emperor like flies on honey. I’m picking up signals from far beyond the Rust Belt, and they’re not slowing down."
+    },
+    "objectives": [
+      {
+        "value": "엠퍼러 게이트웨이 도관 획득하기",
+        "originalEn": "Acquire an Emperor Gateway Conduit"
+      },
+      {
+        "value": "엠퍼러 안으로 들어가기",
+        "originalEn": "Enter the Emperor"
+      },
+      {
+        "value": "엠퍼러 내부의 전력이 어디서 공급되는지 알아내기",
+        "originalEn": "Find where the power inside the Emperor comes from"
+      },
+      {
+        "value": "엠퍼러 안으로 들어간 채취기 화물이 어떻게 되는지 알아내기",
+        "originalEn": "Find out what happens to the Harvester Payloads that enter the Emperor"
+      },
+      {
+        "value": "엠퍼러로 보내진 채취기 화물이 보관되는 곳 찾기",
+        "originalEn": "Find where the Harvester Payloads sent to the Emperor are stored"
+      },
+      {
+        "value": "엠퍼러 안에서 컨테이너 5개 수색하기",
+        "originalEn": "Search 5 containers inside the Emperor"
+      },
+      {
+        "value": "엠퍼러 고유 전리품 획득하기",
+        "originalEn": "Obtain a unique piece of Emperor loot"
+      }
+    ],
+    "objectivesOneRound": false,
+    "addedIn": "2.0",
+    "xp": 10000,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "grapple_hook",
+        "quantity": 1,
+        "name": {
+          "value": "",
+          "originalEn": "Grapple Hook"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
+    "requiredItems": [
+      {
+        "id": "wires",
+        "quantity": 1,
+        "name": {
+          "value": "전선",
+          "originalEn": "Wires"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/wires.png"
+      },
+      {
+        "id": "collector_material_1",
+        "quantity": 1,
+        "name": {
+          "value": "",
+          "originalEn": "Collector Material 1"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "snap_hook",
+        "quantity": 1,
+        "name": {
+          "value": "스냅 훅",
+          "originalEn": "Snap Hook"
+        },
+        "rarity": "Legendary",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/snap_hook.png"
+      },
+      {
+        "id": "shield_recharger",
+        "quantity": 3,
+        "name": {
+          "value": "실드 충전기",
+          "originalEn": "Shield Recharger"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/shield_recharger.png"
+      },
+      {
+        "id": "sterilized_bandage",
+        "quantity": 3,
+        "name": {
+          "value": "멸균 붕대",
+          "originalEn": "Sterilized Bandage"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/sterilized_bandage.png"
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "boarding_the_frigate",
+    "name": {
+      "value": "프리깃 탑승",
+      "originalEn": "Boarding the Frigate"
+    },
+    "trader": "Celeste",
+    "map": [],
+    "previousQuestIds": [
+      "off_the_radar"
+    ],
+    "nextQuestIds": [
+      "disrupting_the_frigate"
+    ],
+    "description": {
+      "value": "저 프리깃들을 상대로는 예전 전술이 하나도 통하지 않습니다. 도망칠 수도, 숨을 수도 없어요. 사라질 때까지 버티는 것도 불가능하죠. 과감하게 행동해야 해요. 바로 지금요.",
+      "originalEn": "None of our old tactics work, facing those Frigates. We can’t run. We can’t hide. And there’s no waiting them out.\r\n\r\nWe need to take bold action, and we need to do it now."
+    },
+    "objectives": [
+      {
+        "value": "프리깃 위로 올라갈 방법 찾기",
+        "originalEn": "Find a way on top of the Frigate"
+      },
+      {
+        "value": "히드라에 대미지 주기",
+        "originalEn": "Damage a Hydra"
+      },
+      {
+        "value": "베이퍼라이저에 대미지 주기",
+        "originalEn": "Damage a Vaporizer"
+      },
+      {
+        "value": "로켓티어에 대미지 주기",
+        "originalEn": "Damage a Rocketeer"
+      }
+    ],
+    "objectivesOneRound": false,
+    "addedIn": "2.0",
+    "xp": 10000,
+    "otherRequirements": [
+      "25x Raids"
+    ],
+    "grantedItems": [
+      {
+        "id": "seeker_grenade",
+        "quantity": 1,
+        "name": {
+          "value": "추적 수류탄",
+          "originalEn": "Seeker Grenade"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/seeker_grenade.png"
+      },
+      {
+        "id": "grapple_hook",
+        "quantity": 1,
+        "name": {
+          "value": "",
+          "originalEn": "Grapple Hook"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      },
+      {
+        "id": "barricade_kit",
+        "quantity": 1,
+        "name": {
+          "value": "바리케이드 키트",
+          "originalEn": "Barricade Kit"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/barricade_kit.png"
+      },
+      {
+        "id": "lure_grenade",
+        "quantity": 2,
+        "name": {
+          "value": "유인 수류탄",
+          "originalEn": "Lure Grenade"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/lure_grenade.png"
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "snap_hook",
+        "quantity": 1,
+        "name": {
+          "value": "스냅 훅",
+          "originalEn": "Snap Hook"
+        },
+        "rarity": "Legendary",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/snap_hook.png"
+      },
+      {
+        "id": "wolfpack",
+        "quantity": 1,
+        "name": {
+          "value": "울프팩",
+          "originalEn": "Wolfpack"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/wolfpack.png"
+      },
+      {
+        "id": "rascal_i",
+        "quantity": 1,
+        "name": {
+          "value": "라스칼 I",
+          "originalEn": "Rascal I"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/rascal.png"
+      },
+      {
+        "id": "launcher_ammo",
+        "quantity": 3,
+        "name": {
+          "value": "발사기 탄약",
+          "originalEn": "Launcher Ammo"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/launcher_ammo.png"
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
     "id": "bombing_run",
     "name": {
       "value": "폭격 작전",
@@ -1472,6 +1989,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 10000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -1532,20 +2051,20 @@
         "originalEn": "Search for a compass near the broken-down vehicles"
       },
       {
-        "value": "원형 컨테이너 근처에서 비디오 테이프 찾기",
-        "originalEn": "Search for the video tape near the cylindrical containers"
+        "value": "티안 웬에게 1차 침공 나침반 전달하기",
+        "originalEn": "Deliver First Wave Compass to Tian Wen"
       },
       {
-        "value": "레이더 캠프에서 오래된 야전 배식 찾기",
-        "originalEn": "Search for the old field rations in the Raider camp"
+        "value": "원형 컨테이너 근처에서 비디오 테이프 찾기",
+        "originalEn": "Search for the video tape near the cylindrical containers"
       },
       {
         "value": "티안 웬에게 1차 침공 테이프 전달하기",
         "originalEn": "Deliver the First Wave Tape to Tian Wen"
       },
       {
-        "value": "티안 웬에게 1차 침공 나침반 전달하기",
-        "originalEn": "Deliver First Wave Compass to Tian Wen"
+        "value": "레이더 캠프에서 오래된 야전 배식 찾기",
+        "originalEn": "Search for the old field rations in the Raider camp"
       },
       {
         "value": "티안 웬에게 1차 침공 식량 전달하기",
@@ -1553,19 +2072,11 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
-      {
-        "id": "first_wave_tape",
-        "quantity": 1,
-        "name": {
-          "value": "1차 침공 테이프",
-          "originalEn": "First Wave Tape"
-        },
-        "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/v2/first_wave_tape.png"
-      },
       {
         "id": "first_wave_compass",
         "quantity": 1,
@@ -1575,6 +2086,16 @@
         },
         "rarity": "Common",
         "imageFilename": "https://cdn.arctracker.io/items/v2/first_wave_compass.png"
+      },
+      {
+        "id": "first_wave_tape",
+        "quantity": 1,
+        "name": {
+          "value": "1차 침공 테이프",
+          "originalEn": "First Wave Tape"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/first_wave_tape.png"
       },
       {
         "id": "first_wave_rations",
@@ -1665,6 +2186,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 2500,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -1715,6 +2238,65 @@
     "blueprintRewards": []
   },
   {
+    "id": "celestes_childhood_drawings",
+    "name": {
+      "value": "셀레스테의 어린 시절 그림",
+      "originalEn": "Celeste’s Childhood Drawings"
+    },
+    "trader": "Lance",
+    "map": [
+      "riven_tides"
+    ],
+    "previousQuestIds": [
+      "shoring_up_defenses"
+    ],
+    "nextQuestIds": [
+      "celestes_teenage_rebellion"
+    ],
+    "description": {
+      "value": "그런데 말이에요, 친구. 요즘 셀레스테가 좀 풀이 죽어 보이지 않나요? \r\n\r\n기분을 좀 풀어줄 만한 게 생각났어요. 갈라진 물결 근처 호텔 알죠?",
+      "originalEn": "Say, pal, has Celeste seemed a bit down, to you? \r\n\r\nListen, I think I know something that might brighten her day. Do you know the hotel around Riven Tides?"
+    },
+    "objectives": [
+      {
+        "value": "호텔 파노라마 아주로에서 어린 셀레스테가 지내던 방 찾기",
+        "originalEn": "Find young Celeste’s room in Hotel Panorama Azzurro"
+      },
+      {
+        "value": "셀레스테의 방에서 중요한 물건 찾기",
+        "originalEn": "Search for anything significant in Celeste's Room"
+      },
+      {
+        "value": "세 번째 세관 지붕에서 그림 찾기",
+        "originalEn": "Find the drawing on the roof of the third Customs House"
+      },
+      {
+        "value": "안벽에서 그림 찾기",
+        "originalEn": "Find the drawing at the Quay"
+      }
+    ],
+    "objectivesOneRound": false,
+    "addedIn": "2.0",
+    "xp": 5000,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "sterilized_bandage",
+        "quantity": 3,
+        "name": {
+          "value": "멸균 붕대",
+          "originalEn": "Sterilized Bandage"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/sterilized_bandage.png"
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
     "id": "celestes_journals",
     "name": {
       "value": "셀레스테의 일지",
@@ -1749,6 +2331,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -1799,6 +2383,89 @@
     "blueprintRewards": []
   },
   {
+    "id": "celestes_teenage_rebellion",
+    "name": {
+      "value": "셀레스테의 반항기",
+      "originalEn": "Celeste's Teenage Rebellion"
+    },
+    "trader": "Celeste",
+    "map": [
+      "riven_tides"
+    ],
+    "previousQuestIds": [
+      "celestes_childhood_drawings"
+    ],
+    "nextQuestIds": [],
+    "description": {
+      "value": "하늘에 떠 있는 저 프리깃들을 보니... 어린 시절 이후로 처음 느껴보는 오싹함이 밀려왔어요. 우리도 적응해야 한다는 건 알아요. 하지만 그때 배운 교훈은 지금이야말로 어느 때보다 중요해요.",
+      "originalEn": "Those Frigates looming in the sky… It made me feel shivers I haven’t felt since I was a girl. \r\n\r\nWe need to adapt, I know. But the lessons we learned then? They're more relevant now than ever."
+    },
+    "objectives": [
+      {
+        "value": "중앙 언덕의 감시탑에 도달하기",
+        "originalEn": "Reach the lookout tower on Mulatierra Hill"
+      },
+      {
+        "value": "탑 꼭대기에서 위치 전송하기",
+        "originalEn": "Transmit the location from the top of the tower"
+      },
+      {
+        "value": "감시탑에서 아크 3개 발견하기",
+        "originalEn": "Spot 3 ARC from the Lookout Tower"
+      },
+      {
+        "value": "해변이 내려다보이는 호텔 근처의 옛 레이더 캠프에 도달하기",
+        "originalEn": "Reach the old Raider Camp near the hotel, overlooking the beach"
+      },
+      {
+        "value": "레이더 캠프에서 무선 송신기 찾기",
+        "originalEn": "Search for a radio transmitter at the Raider Camp"
+      },
+      {
+        "value": "갈라진 물결 항구가 내려다보이는 대형 안테나 찾기",
+        "originalEn": "Find the large antenna overlooking Riven Tides harbor"
+      },
+      {
+        "value": "고장 난 발전기 용접하기",
+        "originalEn": "Weld the broken generator"
+      },
+      {
+        "value": "송신기 가동하기",
+        "originalEn": "Start the transmitter"
+      }
+    ],
+    "objectivesOneRound": false,
+    "addedIn": "2.0",
+    "xp": 5000,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "heavy_shield",
+        "quantity": 1,
+        "name": {
+          "value": "중량 실드",
+          "originalEn": "Heavy Shield"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/heavy_shield.png"
+      },
+      {
+        "id": "looting_mk2",
+        "quantity": 1,
+        "name": {
+          "value": "노획 마크 2",
+          "originalEn": "Looting Mk. 2"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/looting_mk2.png"
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
     "id": "clamoring_for_attention",
     "name": {
       "value": "관심 끌기",
@@ -1831,6 +2498,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [
       "18x Raids"
     ],
@@ -1872,6 +2541,98 @@
     "blueprintRewards": []
   },
   {
+    "id": "clean_hands",
+    "name": {
+      "value": "깨끗한 손",
+      "originalEn": "Clean Hands"
+    },
+    "trader": "Ermal",
+    "map": [
+      "pendola_pass"
+    ],
+    "previousQuestIds": [
+      "off_the_radar"
+    ],
+    "nextQuestIds": [
+      "taking_stock"
+    ],
+    "description": {
+      "value": "펜돌라 고개에는 원래 우리 손으로 매듭지었어야 할 일이 남아 있소. 이제 그 길은 우리에게 열려 있지 않으니, 다른 이에게 부탁할 수밖에 없소.",
+      "originalEn": "A matter remains at Pendola Pass which should have been settled by our own hands. That path is no longer open to us, so we must ask another."
+    },
+    "objectives": [
+      {
+        "value": "철도 차량기지 아래에서 유랑민 캠프 찾기",
+        "originalEn": "Find the Nomad Camp under the Railyard"
+      },
+      {
+        "value": "유랑민 캠프에서 오염된 물건 찾기",
+        "originalEn": "Search for the polluted item in the Nomad camp"
+      },
+      {
+        "value": "구시가지 교회 꼭대기로 적도식 해시계 가져가기",
+        "originalEn": "Bring the Equatiorial Sundial to the top of the Church in Old Town"
+      },
+      {
+        "value": "유랑 사절단에게 적도식 해시계 전달하기",
+        "originalEn": "Deliver the Equatorial Sundial to the Nomadic Envoy"
+      }
+    ],
+    "objectivesOneRound": true,
+    "addedIn": "2.0",
+    "xp": 5000,
+    "otherRequirements": [
+      "25x Raids"
+    ],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "equatorial_sundial",
+        "quantity": 1,
+        "name": {
+          "value": "적도의 해시계",
+          "originalEn": "Equatorial Sundial"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/equatorial_sundial.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "sextant",
+        "quantity": 1,
+        "name": {
+          "value": "육분의",
+          "originalEn": "Sextant"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/sextant.png"
+      },
+      {
+        "id": "shield_recharger",
+        "quantity": 1,
+        "name": {
+          "value": "실드 충전기",
+          "originalEn": "Shield Recharger"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/shield_recharger.png"
+      },
+      {
+        "id": "battered_paperback",
+        "quantity": 1,
+        "name": {
+          "value": "",
+          "originalEn": "Battered Paperback"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
     "id": "clearer_skies",
     "name": {
       "value": "더 맑은 하늘",
@@ -1900,6 +2661,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 1000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -1970,6 +2733,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 8000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -2036,6 +2801,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -2043,7 +2810,7 @@
         "id": "comet_igniter",
         "quantity": 1,
         "name": {
-          "value": "Comet Igniter",
+          "value": "코멧 점화기",
           "originalEn": "Comet Igniter"
         },
         "rarity": "Rare",
@@ -2129,6 +2896,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 8000,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -2222,6 +2991,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -2285,6 +3056,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -2345,6 +3118,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -2368,6 +3143,90 @@
         },
         "rarity": "Rare",
         "imageFilename": "https://cdn.arctracker.io/items/v2/speaker_component.png"
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "disrupting_the_frigate",
+    "name": {
+      "value": "프리깃 교란",
+      "originalEn": "Disrupting the Frigate"
+    },
+    "trader": "Celeste",
+    "map": [],
+    "previousQuestIds": [
+      "boarding_the_frigate"
+    ],
+    "nextQuestIds": [],
+    "description": {
+      "value": "저 프리깃들이 마음대로 돌아다니게 두면 언젠가는 톨레도도 공격할 거예요. 위에서 주의를 끌 만한 걸 본 건 없나요?",
+      "originalEn": "If we let those Frigates roam freely, they’ll hit Toledo sooner or later. Was there anything you spotted on top that could cause a distraction?"
+    },
+    "objectives": [
+      {
+        "value": "프리깃 위의 전력 코어 파괴하기",
+        "originalEn": "Destroy the Power Cores on top of the Frigate"
+      },
+      {
+        "value": "프리깃의 화물에 접근할 방법 찾기",
+        "originalEn": "Find a way to access the Frigate's cargo"
+      },
+      {
+        "value": "프리깃의 화물 노획하기",
+        "originalEn": "Loot the Frigate's cargo"
+      },
+      {
+        "value": "히드라 파괴하기",
+        "originalEn": "Destroy a Hydra"
+      },
+      {
+        "value": "로켓티어 2개 파괴하기",
+        "originalEn": "Destroy 2 Rocketeers"
+      },
+      {
+        "value": "베이퍼라이저 2개 파괴하기",
+        "originalEn": "Destroy 2 Vaporizers"
+      }
+    ],
+    "objectivesOneRound": false,
+    "addedIn": "2.0",
+    "xp": 10000,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "powered_descender",
+        "quantity": 1,
+        "name": {
+          "value": "동력 강하기",
+          "originalEn": "Powered Descender"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/powered_descender.png"
+      },
+      {
+        "id": "vita_spray",
+        "quantity": 1,
+        "name": {
+          "value": "회복 스프레이",
+          "originalEn": "Vita Spray"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/vita_spray.png"
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "hullcracker_i",
+        "quantity": 1,
+        "name": {
+          "value": "헐크래커 I",
+          "originalEn": "Hullcracker I"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/hullcracker_i.png"
       }
     ],
     "hasBlueprint": false,
@@ -2407,9 +3266,15 @@
       {
         "value": "우단담배풀 1개 획득하기",
         "originalEn": "Obtain 1 Great Mullein"
+      },
+      {
+        "value": "레이더 치료하기",
+        "originalEn": "Heal any Raider"
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 2500,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -2521,6 +3386,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 2500,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -2559,7 +3426,8 @@
     "map": [
       "buried_city",
       "the_spaceport",
-      "dam_battlegrounds"
+      "dam_battlegrounds",
+      "riven_tides"
     ],
     "previousQuestIds": [
       "hatch_repairs"
@@ -2586,6 +3454,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -2673,6 +3543,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 8000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -2726,6 +3598,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -2776,6 +3650,97 @@
     "blueprintRewards": []
   },
   {
+    "id": "empathetic_prototypes",
+    "name": {
+      "value": "공감형 시제품",
+      "originalEn": "Empathetic Prototypes"
+    },
+    "trader": "Lance",
+    "map": [
+      "the_spaceport"
+    ],
+    "previousQuestIds": [
+      "someone_elses_shoes"
+    ],
+    "nextQuestIds": [
+      "when_everything_falls"
+    ],
+    "description": {
+      "value": "내 동족이 화물 상자에 매달려 있다니... 이 무슨 참극인가요! 말로 다할 수 없는 참극이에요!",
+      "originalEn": "To think I may have kin just dangling in a shipment crate… What horror! What unspeakable horror!"
+    },
+    "objectives": [
+      {
+        "value": "우주 기지 도랑의 도랑 탑에 도달하기",
+        "originalEn": "Reach the Trench Towers in the Spaceport Trench"
+      },
+      {
+        "value": "화물 상자를 고정한 자기식 잠금장치 해제하기",
+        "originalEn": "Disable the Magnetic Lock holding the Cargo Crate"
+      },
+      {
+        "value": "화물 상자 수색하기",
+        "originalEn": "Search the Cargo Crate"
+      },
+      {
+        "value": "랜스에게 파토스 프로젝트 공감 코어 전달하기",
+        "originalEn": "Deliver the Project Pathos Empathy Core to Lance"
+      }
+    ],
+    "objectivesOneRound": true,
+    "addedIn": "2.0",
+    "xp": 5000,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "grapple_hook",
+        "quantity": 1,
+        "name": {
+          "value": "",
+          "originalEn": "Grapple Hook"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
+    "requiredItems": [
+      {
+        "id": "project_pathos_empathy_core",
+        "quantity": 1,
+        "name": {
+          "value": "",
+          "originalEn": "Project Pathos Empathy Core"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "canto_i",
+        "quantity": 1,
+        "name": {
+          "value": "칸토 I",
+          "originalEn": "Canto I"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/canto_i.png"
+      },
+      {
+        "id": "vita_shot",
+        "quantity": 2,
+        "name": {
+          "value": "회복 주사기",
+          "originalEn": "Vita Shot"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/vita_shot.png"
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
     "id": "espresso",
     "name": {
       "value": "에스프레소",
@@ -2806,6 +3771,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 2500,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -2840,6 +3807,99 @@
         },
         "rarity": "Common",
         "imageFilename": "https://cdn.arctracker.io/items/v2/adrenaline_shot.png"
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "exploring_pendola_pass",
+    "name": {
+      "value": "펜돌라 고개 탐험",
+      "originalEn": "Exploring Pendola Pass"
+    },
+    "trader": "Celeste",
+    "map": [
+      "pendola_pass"
+    ],
+    "previousQuestIds": [
+      "off_the_radar"
+    ],
+    "nextQuestIds": [
+      "wires_crossed",
+      "tracks_of_the_beast"
+    ],
+    "description": {
+      "value": "아크는 원래도 총성과 소란에 잘 이끌리지만, 펜돌라 고개처럼 한곳에 이렇게 몰려드는 건 처음 봐요.",
+      "originalEn": "ARC’s always been drawn to gunfire and commotion, but we’ve never seen them quite converge on a place like they have at Pendola Pass."
+    },
+    "objectives": [
+      {
+        "value": "아크 적 20개 파괴하기",
+        "originalEn": "Destroy 20 ARC enemies"
+      },
+      {
+        "value": "치엘로 세레노 천문대 제어실에서 전원 찾기",
+        "originalEn": "Search the control room at the Cielo Sereno Observatory for power"
+      },
+      {
+        "value": "전선 1개로 철도 차량기지에서 가장 높은 탑 꼭대기의 안테나에 연결하기",
+        "originalEn": "Use 1 Wire to patch into the antenna on top of the tallest tower in the Railyard"
+      },
+      {
+        "value": "부대 슈퍼마켓 안에서 컨테이너 3개 수색하기",
+        "originalEn": "Search 3 containers inside the Commissary Supermarket"
+      }
+    ],
+    "objectivesOneRound": false,
+    "addedIn": "2.0",
+    "xp": 5000,
+    "otherRequirements": [
+      "25x Raids"
+    ],
+    "grantedItems": [
+      {
+        "id": "zipline",
+        "quantity": 3,
+        "name": {
+          "value": "집라인",
+          "originalEn": "Zipline"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/zipline.png"
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "breathtaking_snow_globe",
+        "quantity": 1,
+        "name": {
+          "value": "숨막히게 멋진 스노우 글로브",
+          "originalEn": "Breathtaking Snow Globe"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/breathtaking_snow_globe.png"
+      },
+      {
+        "id": "medium_shield",
+        "quantity": 1,
+        "name": {
+          "value": "준중량 실드",
+          "originalEn": "Medium Shield"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/medium_shield.png"
+      },
+      {
+        "id": "osprey_i",
+        "quantity": 1,
+        "name": {
+          "value": "오스프레이 I",
+          "originalEn": "Osprey I"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/osprey_i.png"
       }
     ],
     "hasBlueprint": false,
@@ -2884,6 +3944,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 8000,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -2964,6 +4026,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 2500,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -3042,6 +4106,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 8000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -3117,6 +4183,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -3188,6 +4256,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 8000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -3265,6 +4335,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -3363,6 +4435,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -3417,6 +4491,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 2500,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -3440,6 +4516,97 @@
         },
         "rarity": "Common",
         "imageFilename": "https://cdn.arctracker.io/items/v2/binoculars.png"
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "home_to_roost",
+    "name": {
+      "value": "보금자리로 돌아오다",
+      "originalEn": "Home to Roost"
+    },
+    "trader": "Shani",
+    "map": [
+      "the_blue_gate"
+    ],
+    "previousQuestIds": [
+      "a_wrench_in_the_works"
+    ],
+    "nextQuestIds": [
+      "someone_elses_shoes"
+    ],
+    "description": {
+      "value": "이 오래된 로그에는 하나같이 만티코어가 반란을 진압했다는 기록이 있어요... 그러다 갑자기, 아무것도 없어요. 엑소더스 몇 주 전을 마지막으로 기록이 뚝 끊겼습니다.",
+      "originalEn": "All of these old logs mention mutinies being repressed by MANTIKOR… Then suddenly, nothing. The entries just stop, a few weeks before the Exodus."
+    },
+    "objectives": [
+      {
+        "value": "블루 게이트 터널 깊숙한 곳에 도달하기",
+        "originalEn": "Reach the back of the Blue Gate tunnels"
+      },
+      {
+        "value": "교통 터널 깊숙한 곳에서 안드로이드 스캔하기",
+        "originalEn": "Scan any Android in the back of the Traffic Tunnels"
+      },
+      {
+        "value": "만티코어 라커룸으로 이동하기",
+        "originalEn": "Head to the MANTIKOR locker room"
+      },
+      {
+        "value": "라커룸에서 단서 찾기",
+        "originalEn": "Search the locker room for any clues"
+      },
+      {
+        "value": "마지막 차량 계량 로그 읽기",
+        "originalEn": "Read the last vehicle weighing logs"
+      },
+      {
+        "value": "압수품 보관실에 들어가기",
+        "originalEn": "Enter the Confiscation Room"
+      },
+      {
+        "value": "샤니에게 만티코어의 마지막 보안 녹음 기록 전송하기",
+        "originalEn": "Transmit MANTIKOR’s security last recordings to Shani"
+      }
+    ],
+    "objectivesOneRound": false,
+    "addedIn": "2.0",
+    "xp": 5000,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "surge_shield_recharger",
+        "quantity": 1,
+        "name": {
+          "value": "급속 실드 충전기",
+          "originalEn": "Surge Shield Recharger"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/surge_shield_recharger.png"
+      },
+      {
+        "id": "sterilized_bandage",
+        "quantity": 2,
+        "name": {
+          "value": "멸균 붕대",
+          "originalEn": "Sterilized Bandage"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/sterilized_bandage.png"
+      },
+      {
+        "id": "antiseptic",
+        "quantity": 2,
+        "name": {
+          "value": "소독약",
+          "originalEn": "Antiseptic"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/antiseptic.png"
       }
     ],
     "hasBlueprint": false,
@@ -3477,6 +4644,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [
       "24x Raids"
     ],
@@ -3553,6 +4722,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -3622,7 +4793,8 @@
       "buried_city",
       "the_spaceport",
       "the_blue_gate",
-      "dam_battlegrounds"
+      "dam_battlegrounds",
+      "riven_tides"
     ],
     "previousQuestIds": [
       "water_troubles",
@@ -3642,11 +4814,17 @@
         "originalEn": "Destroy a Leaper"
       },
       {
+        "value": "리퍼 다리 4개 파괴하기",
+        "originalEn": "Destroy 4 Leaper legs"
+      },
+      {
         "value": "리퍼 펄스 유닛 획득하기",
         "originalEn": "Obtain a Leaper Pulse Unit"
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 10000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -3715,6 +4893,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -3778,6 +4958,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -3833,8 +5015,8 @@
       "line_in_the_sand"
     ],
     "description": {
-      "value": "만티코어에 대한 언급이 더 늘었고, 연구자들 사이에 반발 조짐도 더욱 뚜렷해졌습니다. 결국 긴장이 크게 고조됐던 것 같네요.",
-      "originalEn": "More mentions of Mantikor, and more clear signs of dissent among the researchers. I suspect tensions eventually escalated."
+      "value": "만티코어에 대한 언급이 더 늘었고, 연구자들 사이에 반발 조짐도 더욱 뚜렷해졌습니다. 결국 긴장이 고조됐던 것 같네요.",
+      "originalEn": "More mentions of MANTIKOR, and more clear signs of dissent among the researchers. I suspect tensions eventually escalated."
     },
     "objectives": [
       {
@@ -3859,6 +5041,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -3924,23 +5108,25 @@
         "originalEn": "Find the Arbusto Farmacia by the collapsed highway"
       },
       {
-        "value": "약사의 취미 기록하기",
-        "originalEn": "Document the pharmacist’s hobbies"
-      },
-      {
-        "value": "약사의 가족 기록하기",
-        "originalEn": "Document the pharmacist’s family"
+        "value": "약사의 기술 기록하기",
+        "originalEn": "Document the pharmacist’s skills"
       },
       {
         "value": "약사의 취향 기록하기",
         "originalEn": "Document the pharmacist’s taste"
       },
       {
-        "value": "약사의 기술 기록하기",
-        "originalEn": "Document the pharmacist’s skills"
+        "value": "약사의 가족 기록하기",
+        "originalEn": "Document the pharmacist’s family"
+      },
+      {
+        "value": "약사의 취미 기록하기",
+        "originalEn": "Document the pharmacist’s hobbies"
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 2500,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -4013,11 +5199,13 @@
         "originalEn": "Find out where the thruster valves were stashed"
       },
       {
-        "value": "상인의 근처 아파트 지하실 수색하기",
+        "value": "상인 근처 아파트의 지하실 수색하기",
         "originalEn": "Search the basement of the merchant’s nearby apartment"
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 8000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -4091,6 +5279,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -4155,6 +5345,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -4214,6 +5406,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -4289,6 +5483,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 2500,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -4328,7 +5524,8 @@
       "buried_city",
       "the_spaceport",
       "the_blue_gate",
-      "dam_battlegrounds"
+      "dam_battlegrounds",
+      "riven_tides"
     ],
     "previousQuestIds": [
       "dormant_barons"
@@ -4349,6 +5546,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 8000,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -4416,7 +5615,9 @@
       "originalEn": "Movie Night"
     },
     "trader": "Apollo",
-    "map": [],
+    "map": [
+      "stella_montis"
+    ],
     "previousQuestIds": [
       "with_a_view"
     ],
@@ -4440,6 +5641,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -4530,15 +5733,21 @@
     "map": [
       "buried_city",
       "the_spaceport",
-      "dam_battlegrounds"
+      "dam_battlegrounds",
+      "riven_tides"
     ],
     "previousQuestIds": [
       "clearer_skies",
       "trash_into_treasure"
     ],
     "nextQuestIds": [
+      "to_the_skies",
       "a_first_foothold",
+      "clean_hands",
+      "exploring_pendola_pass",
+      "sizing_things_up",
       "shoring_up_defenses",
+      "boarding_the_frigate",
       "battening_down",
       "a_bad_feeling"
     ],
@@ -4557,6 +5766,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 2500,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -4626,6 +5837,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -4705,6 +5918,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -4789,6 +6004,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -4838,7 +6055,8 @@
       "buried_city",
       "the_spaceport",
       "the_blue_gate",
-      "dam_battlegrounds"
+      "dam_battlegrounds",
+      "riven_tides"
     ],
     "previousQuestIds": [
       "a_symbol_of_unification",
@@ -4862,6 +6080,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 10000,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -4910,17 +6130,7 @@
       },
       {
         "id": "wolfpack",
-        "quantity": 1,
-        "name": {
-          "value": "울프팩",
-          "originalEn": "Wolfpack"
-        },
-        "rarity": "Epic",
-        "imageFilename": "https://cdn.arctracker.io/items/v2/wolfpack.png"
-      },
-      {
-        "id": "wolfpack",
-        "quantity": 1,
+        "quantity": 2,
         "name": {
           "value": "울프팩",
           "originalEn": "Wolfpack"
@@ -4967,6 +6177,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -5047,6 +6259,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -5092,7 +6306,14 @@
       "originalEn": "Picking Up The Pieces"
     },
     "trader": "Shani",
-    "map": [],
+    "map": [
+      "dam_battlegrounds",
+      "the_blue_gate",
+      "the_spaceport",
+      "riven_tides",
+      "stella_montis",
+      "buried_city"
+    ],
     "previousQuestIds": [
       "map_dam_battleground"
     ],
@@ -5115,6 +6336,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 1000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -5182,6 +6405,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -5255,6 +6480,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 2500,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -5332,6 +6559,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -5382,6 +6611,100 @@
     "blueprintRewards": []
   },
   {
+    "id": "ruins_and_reverberations",
+    "name": {
+      "value": "폐허와 메아리",
+      "originalEn": "Ruins and Reverberations"
+    },
+    "trader": "Celeste",
+    "map": [
+      "pendola_pass"
+    ],
+    "previousQuestIds": [
+      "wires_crossed"
+    ],
+    "nextQuestIds": [],
+    "description": {
+      "value": "그 엠퍼러가 그냥 발을 헛디뎌 넘어진 게 아닙니다... 누군가 쓰러뜨린 거죠. 어떻게 한 건지에 대한 유력한 가설도 있고요.",
+      "originalEn": "That Emperor didn’t just trip and fall… It was brought down. And I have a leading theory about how that happened."
+    },
+    "objectives": [
+      {
+        "value": " 치엘로 세레노 천문대 지붕의 안테나에 스포터 릴레이 연결하기",
+        "originalEn": " Connect a Spotter Relay to the antenna on the roof of the Cielo Sereno Observatory"
+      },
+      {
+        "value": "제어실 아래 좁은 통로에서 전선을 용접해 전력 우회하기",
+        "originalEn": "Weld the wires in the crawlspace under the control room to redirect power"
+      },
+      {
+        "value": "안테나의 스포터 릴레이 다시 활성화하기",
+        "originalEn": "Activate the Spotter Relay at the antenna again"
+      }
+    ],
+    "objectivesOneRound": true,
+    "addedIn": "2.0",
+    "xp": 5000,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "grapple_hook",
+        "quantity": 1,
+        "name": {
+          "value": "",
+          "originalEn": "Grapple Hook"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "smoke_grenade",
+        "quantity": 2,
+        "name": {
+          "value": "연막탄",
+          "originalEn": "Smoke Grenade"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/smoke_grenade.png"
+      },
+      {
+        "id": "looting_mk3_safekeeper",
+        "quantity": 1,
+        "name": {
+          "value": "노획 마크 3 (수호자)",
+          "originalEn": "Looting Mk. 3 (Safekeeper)"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/looting_mk3_safekeeper.png"
+      },
+      {
+        "id": "electrical_components",
+        "quantity": 3,
+        "name": {
+          "value": "전기 부품",
+          "originalEn": "Electrical Components"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/electrical_components.png"
+      },
+      {
+        "id": "speaker_component",
+        "quantity": 2,
+        "name": {
+          "value": "스피커 부품",
+          "originalEn": "Speaker Component"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/speaker_component.png"
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
     "id": "safe_harbor",
     "name": {
       "value": "안식의 항구",
@@ -5420,6 +6743,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -5495,6 +6820,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -5591,6 +6918,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 10000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -5633,7 +6962,9 @@
     "previousQuestIds": [
       "off_the_radar"
     ],
-    "nextQuestIds": [],
+    "nextQuestIds": [
+      "celestes_childhood_drawings"
+    ],
     "description": {
       "value": "사방이 트인 해안선은 예전엔 위험 그 자체였지만, 이제는 러스트 벨트로 유입되는 새로운 위협을 감시할 수 있는 유일한 장소입니다.\r\n\r\n그러니 우리가 직접 엄폐물을 만들고, 남아 있는 얼마 안 되는 방어 시설도 보강해야 합니다.",
       "originalEn": "The wide-open coastline used to mean danger, but now it's the only place we can spot new threats moving into the Rust Belt.\r\n\r\nSo we'll have to make our own cover, and reinforce what few defenses we can find."
@@ -5648,7 +6979,7 @@
         "originalEn": "Destroy 3 Fireflies"
       },
       {
-        "value": "적치장 크레인 아무 곳의 꼭대기에 있는 레이더 구조물을 아크 합금 1개로 보강하기",
+        "value": "적치장 내 크레인의 꼭대기에 있는 레이더 구조물을 아크 합금 1개로 보강하기",
         "originalEn": "Use 1 ARC Alloy to reinforce the Raider structure on top of any Stacking Yard crane"
       },
       {
@@ -5657,6 +6988,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [
       "20x Raids"
     ],
@@ -5709,6 +7042,115 @@
     "blueprintRewards": []
   },
   {
+    "id": "sizing_things_up",
+    "name": {
+      "value": "상황 파악",
+      "originalEn": "Sizing Things Up"
+    },
+    "trader": "Celeste",
+    "map": [
+      "pendola_pass"
+    ],
+    "previousQuestIds": [
+      "off_the_radar"
+    ],
+    "nextQuestIds": [
+      "belly_of_the_beast"
+    ],
+    "description": {
+      "value": "엠퍼러는 멀리서 볼 때도 위압적이었는데, 이렇게 가까이 갈 수 있다니... 이럴 때일수록 정말 조심해야 해요.",
+      "originalEn": "Those Emperors were imposing enough from a distance, but to be able to get so up close… If there was ever a time to tread carefully, this would be it."
+    },
+    "objectives": [
+      {
+        "value": "엠퍼러 몸체에 도달하기",
+        "originalEn": "Reach the base of the Emperor"
+      },
+      {
+        "value": "파묻힌 채취기 화물 수색하기",
+        "originalEn": "Search the Buried Harvester Payload"
+      },
+      {
+        "value": "셀레스테에게 아크 전도성 커플러 전달하기",
+        "originalEn": "Deliver the ARC Conductive Coupler to Celeste"
+      }
+    ],
+    "objectivesOneRound": true,
+    "addedIn": "2.0",
+    "xp": 5000,
+    "otherRequirements": [
+      "25x Raids"
+    ],
+    "grantedItems": [
+      {
+        "id": "basic_camera",
+        "quantity": 1,
+        "name": {
+          "value": "",
+          "originalEn": "Basic Camera"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
+    "requiredItems": [
+      {
+        "id": "arc_conductive_coupler",
+        "quantity": 1,
+        "name": {
+          "value": "",
+          "originalEn": "ARC Conductive Coupler"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "adrenaline_shot",
+        "quantity": 3,
+        "name": {
+          "value": "아드레날린 주사",
+          "originalEn": "Adrenaline Shot"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/adrenaline_shot.png"
+      },
+      {
+        "id": "research_item_03",
+        "quantity": 1,
+        "name": {
+          "value": "",
+          "originalEn": "Research Item 03"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      },
+      {
+        "id": "bettina_i",
+        "quantity": 1,
+        "name": {
+          "value": "베티나 I",
+          "originalEn": "Bettina I"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/bettina_i.png"
+      },
+      {
+        "id": "heavy_ammo",
+        "quantity": 60,
+        "name": {
+          "value": "중량 총기 탄약",
+          "originalEn": "Heavy Ammo"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/heavy_ammo.png"
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
     "id": "snap_and_salvage",
     "name": {
       "value": "사진 촬영 및 부품 분해",
@@ -5748,6 +7190,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 2500,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -5818,6 +7262,81 @@
     "blueprintRewards": []
   },
   {
+    "id": "someone_elses_shoes",
+    "name": {
+      "value": "타인의 입장에서",
+      "originalEn": "Someone Else's Shoes"
+    },
+    "trader": "Celeste",
+    "map": [
+      "stella_montis"
+    ],
+    "previousQuestIds": [
+      "home_to_roost"
+    ],
+    "nextQuestIds": [
+      "empathetic_prototypes"
+    ],
+    "description": {
+      "value": "스텔라 몬티스의 안드로이드들 말이에요... 조수이면서 동시에 실험 대상이기도 했던 모양입니다. 암호화된 연구 기록이 있는데... 파토스 프로젝트에 관한 거예요.",
+      "originalEn": "Those androids around Stella Montis… It seems they were test subjects as much as they were assistants. There’s some encrypted research notes about a… Project Pathos."
+    },
+    "objectives": [
+      {
+        "value": "스텔라 몬티스에서 안드로이드 스캔하기",
+        "originalEn": "Scan any Android on Stella Montis"
+      },
+      {
+        "value": "의료 구역의 3번 연구소에서 안드로이드 찾기",
+        "originalEn": "Find the Android in Research Lab 3 in the Medical Bay"
+      },
+      {
+        "value": "서쪽 터널의 제어실에 도달해 단서 찾기",
+        "originalEn": "Reach the Control Room in the Western Tunnels and search for clues"
+      }
+    ],
+    "objectivesOneRound": false,
+    "addedIn": "2.0",
+    "xp": 5000,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "stella_montis_medical_storage_key",
+        "quantity": 1,
+        "name": {
+          "value": "스텔라 몬티스 의료 창고 열쇠",
+          "originalEn": "Stella Montis Medical Storage Key"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/stella_montis_medical_storage_key.png"
+      },
+      {
+        "id": "herbal_bandage",
+        "quantity": 3,
+        "name": {
+          "value": "약초 붕대",
+          "originalEn": "Herbal Bandage"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/herbal_bandage.png"
+      },
+      {
+        "id": "shield_recharger",
+        "quantity": 2,
+        "name": {
+          "value": "실드 충전기",
+          "originalEn": "Shield Recharger"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/shield_recharger.png"
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
     "id": "source_of_the_contamination",
     "name": {
       "value": "오염의 근원",
@@ -5852,6 +7371,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -5911,11 +7432,17 @@
     },
     "objectives": [
       {
+        "value": "아무 수류탄으로 호넷 파괴하기",
+        "originalEn": "Destroy a Hornet using any Grenade"
+      },
+      {
         "value": "트리거 수류탄 또는 스냅 블래스트로 호넷 파괴하기",
         "originalEn": "Destroy a Hornet with a Trigger 'Nade or Snap Blast"
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -5952,16 +7479,6 @@
     "requiredItems": [],
     "rewardItems": [
       {
-        "id": "trigger_nade_blueprint",
-        "quantity": 1,
-        "name": {
-          "value": "트리거 수류탄 설계도",
-          "originalEn": "Trigger Nade Blueprint"
-        },
-        "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/v2/trigger_nade_blueprint.png"
-      },
-      {
         "id": "crude_explosives",
         "quantity": 4,
         "name": {
@@ -5980,19 +7497,20 @@
         },
         "rarity": "Rare",
         "imageFilename": "https://cdn.arctracker.io/items/v2/processor.png"
+      },
+      {
+        "id": "seeker_grenade",
+        "quantity": 2,
+        "name": {
+          "value": "추적 수류탄",
+          "originalEn": "Seeker Grenade"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/seeker_grenade.png"
       }
     ],
-    "hasBlueprint": true,
-    "blueprintRewards": [
-      {
-        "id": "trigger_nade_blueprint",
-        "name": {
-          "value": "트리거 수류탄 설계도",
-          "originalEn": "Trigger Nade Blueprint"
-        },
-        "imageFilename": "https://cdn.arctracker.io/items/v2/trigger_nade_blueprint.png"
-      }
-    ]
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "stable_housing",
@@ -6030,7 +7548,7 @@
         "originalEn": "Use the Access Card Printer to print a key to the safe"
       },
       {
-        "value": "금고로 들어갈 다른 길 수색하기",
+        "value": "금고를 열 다른 방법 수색하기",
         "originalEn": "Search for alternate ways into the safe"
       },
       {
@@ -6038,11 +7556,13 @@
         "originalEn": "Retrieve the contents of the safe"
       },
       {
-        "value": "티안 웬에게 에버그린 프로젝트 설계도 전달하기",
+        "value": "티안 웬에게 하트우드 프로젝트 설계도 전달하기",
         "originalEn": "Deliver the Project Heartwood Blueprints to Tian Wen"
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 8000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -6050,7 +7570,7 @@
         "id": "project_heartwood_blueprints",
         "quantity": 1,
         "name": {
-          "value": "Project Heartwood Blueprints",
+          "value": "프로젝트 하트우드 설계도",
           "originalEn": "Project Heartwood Blueprints"
         },
         "rarity": "Common",
@@ -6139,6 +7659,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -6206,7 +7728,7 @@
     ],
     "description": {
       "value": "우주 기지 아래에 급수장이 있어요. 거기서 물을 끌어온다면 오염을 제거할 시간을 벌 수 있을 거예요.",
-      "originalEn": "There is a reservoir beneath the Spaceport; if we manage to rout that water here, that should buy us time to deal with the contamination."
+      "originalEn": "There is a reservoir beneath the Spaceport; if we manage to route that water here, that should buy us time to deal with the contamination."
     },
     "objectives": [
       {
@@ -6219,6 +7741,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -6242,6 +7766,96 @@
         },
         "rarity": "Rare",
         "imageFilename": "https://cdn.arctracker.io/items/v2/synthesized_fuel.png"
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "taking_stock",
+    "name": {
+      "value": "상황 점검",
+      "originalEn": "Taking Stock"
+    },
+    "trader": "Ermal",
+    "map": [
+      "stella_montis",
+      "the_spaceport",
+      "dam_battlegrounds",
+      "buried_city"
+    ],
+    "previousQuestIds": [
+      "clean_hands"
+    ],
+    "nextQuestIds": [
+      "a_path_not_yours"
+    ],
+    "description": {
+      "value": "지상에서 우리를 좀처럼 마주칠 수 없는 건 일부러 피하기 때문이오. 당신들은 우리가 감당할 수 없을 만큼 이목을 끌고 다니니 말이오.",
+      "originalEn": "On the surface, our paths seldom cross by design. After all, your presence draws more eyes than ours can afford."
+    },
+    "objectives": [
+      {
+        "value": "스텔라 몬티스에서 아트리움의 조각상 촬영하기",
+        "originalEn": "On Stella Montis, take a photo of the sculpture in the Atrium"
+      },
+      {
+        "value": "우주 기지에서 바론 잔해 촬영하기 ",
+        "originalEn": "On Spaceport, take a photo of a Baron Husk "
+      },
+      {
+        "value": "유랑 사절단에게 산업용 배터리 3개 전달하기",
+        "originalEn": "Deliver 3 Industrial Batteries to the Nomadic Envoy"
+      }
+    ],
+    "objectivesOneRound": false,
+    "addedIn": "2.0",
+    "xp": 8000,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "basic_camera",
+        "quantity": 1,
+        "name": {
+          "value": "",
+          "originalEn": "Basic Camera"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
+    "requiredItems": [
+      {
+        "id": "industrial_battery",
+        "quantity": 3,
+        "name": {
+          "value": "산업용 배터리",
+          "originalEn": "Industrial Battery"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/industrial_battery.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "jolt_mine",
+        "quantity": 2,
+        "name": {
+          "value": "충격 지뢰",
+          "originalEn": "Jolt Mine"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/jolt_mine.png"
+      },
+      {
+        "id": "advanced_electrical_components",
+        "quantity": 1,
+        "name": {
+          "value": "고급 전기 부품",
+          "originalEn": "Advanced Electrical Components"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/advanced_electrical_components.png"
       }
     ],
     "hasBlueprint": false,
@@ -6282,6 +7896,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 2500,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -6309,7 +7925,7 @@
         "id": "firefly_burner",
         "quantity": 1,
         "name": {
-          "value": "Firefly Burner",
+          "value": "파이어플라이 버너",
           "originalEn": "Firefly Burner"
         },
         "rarity": "Rare",
@@ -6385,12 +8001,16 @@
     },
     "objectives": [
       {
-        "value": "우주 기지의 지하 터널에서 컨테이너 4개 수색하기",
-        "originalEn": "On Spaceport, search 4 containers in the underground tunnels"
+        "value": "우주 기지에서 지하 터널 찾기",
+        "originalEn": "On Spaceport, find the underground tunnels"
       },
       {
         "value": "터널에서 아무 여과 시스템을 찾아 모니터링하기",
         "originalEn": "Find and monitor any Filtration System in the tunnels"
+      },
+      {
+        "value": "우주 기지의 지하 터널에서 컨테이너 2개 수색하기",
+        "originalEn": "On Spaceport, search 2 containers in the underground tunnels"
       },
       {
         "value": "블루 게이트에서 정비 벙커 들르기",
@@ -6401,11 +8021,17 @@
         "originalEn": "Monitor the Purification System in the bunker"
       },
       {
-        "value": "벙커에서 설계도를 찾아 촬영하기",
-        "originalEn": "Find and photograph the blueprints in the bunker"
+        "value": "벙커에서 정화 시스템 설계도 찾기",
+        "originalEn": "Find the Purification System Blueprint in the Bunker"
+      },
+      {
+        "value": "아폴로에게 정화 시스템 설계도 전달하기",
+        "originalEn": "Deliver the Purification System Blueprint to Apollo"
       }
     ],
-    "objectivesOneRound": false,
+    "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -6419,7 +8045,18 @@
         "imageFilename": "https://cdn.arctracker.io/items/v2/blue_light_stick.png"
       }
     ],
-    "requiredItems": [],
+    "requiredItems": [
+      {
+        "id": "purification_system_blueprint",
+        "quantity": 1,
+        "name": {
+          "value": "",
+          "originalEn": "Purification System Blueprint"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
     "rewardItems": [
       {
         "id": "deadline",
@@ -6495,6 +8132,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -6596,6 +8235,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 2500,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -6667,6 +8308,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 2500,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -6751,6 +8394,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 8000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -6821,6 +8466,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 8000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -6885,31 +8532,33 @@
     },
     "objectives": [
       {
-        "value": "와스프 파괴하기",
-        "originalEn": "Destroy a Wasp"
+        "value": "스니치 2개 파괴하기",
+        "originalEn": "Destroy 2 Snitches"
       },
       {
-        "value": "샤니에게 줄 와스프 드라이버 구하기",
-        "originalEn": "Get a Wasp Driver for Shani"
+        "value": "와스프 2개 파괴하기",
+        "originalEn": "Destroy 2 Wasps"
       },
       {
-        "value": "호넷 파괴하기",
-        "originalEn": "Destroy a Hornet"
+        "value": "호넷 2개 파괴하기",
+        "originalEn": "Destroy 2 Hornets"
       },
       {
-        "value": "샤니에게 줄 호넷 드라이버 구하기",
-        "originalEn": "Get a Hornet Driver for Shani"
+        "value": "와스프 추진기 2개 파괴하기",
+        "originalEn": "Destroy 2 Wasp thrusters"
       },
       {
-        "value": "스니치 파괴하기",
-        "originalEn": "Destroy a Snitch"
+        "value": "호넷 추진기 4개 파괴하기",
+        "originalEn": "Destroy 4 Hornet thrusters"
       },
       {
-        "value": "샤니를 위한 스니치 스캐너 구하기",
-        "originalEn": "Get a Snitch Scanner for Shani"
+        "value": "파이어플라이 연료 탱크 파괴하기",
+        "originalEn": "Destroy a Firefly fuel tank"
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -6923,38 +8572,7 @@
         "imageFilename": "https://cdn.arctracker.io/items/v2/remote_raider_flare.png"
       }
     ],
-    "requiredItems": [
-      {
-        "id": "wasp_driver",
-        "quantity": 2,
-        "name": {
-          "value": "와스프 드라이버",
-          "originalEn": "Wasp Driver"
-        },
-        "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/v2/wasp_driver.png"
-      },
-      {
-        "id": "hornet_driver",
-        "quantity": 2,
-        "name": {
-          "value": "호넷 드라이버",
-          "originalEn": "Hornet Driver"
-        },
-        "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/v2/hornet_driver.png"
-      },
-      {
-        "id": "snitch_scanner",
-        "quantity": 2,
-        "name": {
-          "value": "스니치 스캐너",
-          "originalEn": "Snitch Scanner"
-        },
-        "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/v2/snitch_scanner.png"
-      }
-    ],
+    "requiredItems": [],
     "rewardItems": [
       {
         "id": "raider_hatch_key",
@@ -6991,6 +8609,185 @@
     "blueprintRewards": []
   },
   {
+    "id": "to_the_skies",
+    "name": {
+      "value": "하늘로",
+      "originalEn": "To The Skies"
+    },
+    "trader": "Apollo",
+    "map": [],
+    "previousQuestIds": [
+      "off_the_radar"
+    ],
+    "nextQuestIds": [],
+    "description": {
+      "value": "샤니는 산을 오르내릴 수만 있으면 곤돌라로 충분하다고 하지만, 페로비아 엔지니어들 중에는 좀 더 위험을 감수해 보자는 사람들이 있어요. 전 그쪽이 마음에 드네요.",
+      "originalEn": "Shani’s content for the gondolas to get us up and down the mountain, but we have some engineers from Ferrovia more willing to take a risk. I can get behind that."
+    },
+    "objectives": [
+      {
+        "value": "추락한 아크 탐사기 스캔하기",
+        "originalEn": "Scan any Crashed ARC Probe"
+      },
+      {
+        "value": "아크 운반기 스캔하기",
+        "originalEn": "Scan any ARC Courier"
+      }
+    ],
+    "objectivesOneRound": false,
+    "addedIn": "2.0",
+    "xp": 8000,
+    "otherRequirements": [
+      "25x Raids"
+    ],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "arc_performance_steel",
+        "quantity": 3,
+        "name": {
+          "value": "아크 고강도 강철",
+          "originalEn": "ARC Performance Steel"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/arc_performance_steel.png"
+      },
+      {
+        "id": "arc_thermo_lining",
+        "quantity": 3,
+        "name": {
+          "value": "아크 발열 안감",
+          "originalEn": "ARC Thermo Lining"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/arc_thermo_lining.png"
+      },
+      {
+        "id": "arc_synthetic_resin",
+        "quantity": 3,
+        "name": {
+          "value": "아크 합성 수지",
+          "originalEn": "ARC Synthetic Resin"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/arc_synthetic_resin.png"
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "tracks_of_the_beast",
+    "name": {
+      "value": "괴수의 발자취",
+      "originalEn": "Tracks of the Beast"
+    },
+    "trader": "Shani",
+    "map": [
+      "pendola_pass"
+    ],
+    "previousQuestIds": [
+      "exploring_pendola_pass"
+    ],
+    "nextQuestIds": [
+      "belly_of_the_beast",
+      "bait_fetch_blast"
+    ],
+    "description": {
+      "value": "북부 철로에서 엠퍼러까지 이어지는 구간에 처음 보는 아크 유닛이 득실거립니다. 놈들을 직접 확인해야 해요. 안 그러면 엠퍼러에 진입하기도 전에 죽음의 함정 속으로 걸어 들어갈 수 있으니까요.",
+      "originalEn": "The stretch from the Northern tracks to the Emperor is crawling with unfamiliar ARC units. I need eyes on them, or we might be stepping into a death trap before we can even begin to breach the Emperor."
+    },
+    "objectives": [
+      {
+        "value": "펜돌라 고개에서 북쪽 철로로 이동하기",
+        "originalEn": "On Pendola Pass, head to the Northern Tracks"
+      },
+      {
+        "value": "선로 끝에서 파괴된 역 찾기",
+        "originalEn": "Find the destroyed station at the end of the tracks"
+      },
+      {
+        "value": "불리에 핑하기",
+        "originalEn": "Ping a Bully"
+      },
+      {
+        "value": "스컬커에 핑하기",
+        "originalEn": "Ping a Skulker"
+      },
+      {
+        "value": "스컬커 3개 파괴하기",
+        "originalEn": "Destroy 3 Skulkers"
+      },
+      {
+        "value": "샤니에게 스컬커 조준기 전달하기",
+        "originalEn": "Deliver a Skulker Targeter to Shani"
+      }
+    ],
+    "objectivesOneRound": true,
+    "addedIn": "2.0",
+    "xp": 5000,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "lure_grenade",
+        "quantity": 2,
+        "name": {
+          "value": "유인 수류탄",
+          "originalEn": "Lure Grenade"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/lure_grenade.png"
+      },
+      {
+        "id": "adrenaline_shot",
+        "quantity": 3,
+        "name": {
+          "value": "아드레날린 주사",
+          "originalEn": "Adrenaline Shot"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/adrenaline_shot.png"
+      }
+    ],
+    "requiredItems": [
+      {
+        "id": "skulker_targeter",
+        "quantity": 1,
+        "name": {
+          "value": "",
+          "originalEn": "Skulker Targeter"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "showstopper",
+        "quantity": 3,
+        "name": {
+          "value": "쇼스토퍼",
+          "originalEn": "Showstopper"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/showstopper.png"
+      },
+      {
+        "id": "grapple_hook",
+        "quantity": 1,
+        "name": {
+          "value": "",
+          "originalEn": "Grapple Hook"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
     "id": "trash_into_treasure",
     "name": {
       "value": "쓰레기를 보물로",
@@ -7019,6 +8816,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 1000,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -7104,6 +8903,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 2500,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -7182,6 +8983,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -7269,6 +9072,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -7363,6 +9168,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 8000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -7434,6 +9241,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 8000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -7509,6 +9318,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -7572,6 +9383,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 2500,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -7648,6 +9461,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 2500,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -7681,6 +9496,207 @@
         },
         "rarity": "Uncommon",
         "imageFilename": "https://cdn.arctracker.io/items/v2/stable_stock_ii.png"
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "when_everything_falls",
+    "name": {
+      "value": "모든 것이 무너질 때",
+      "originalEn": "When Everything Falls"
+    },
+    "trader": "Shani",
+    "map": [
+      "the_spaceport"
+    ],
+    "previousQuestIds": [
+      "empathetic_prototypes"
+    ],
+    "nextQuestIds": [],
+    "description": {
+      "value": "만티코어 시설에서 찾은 상자에는 위치 태그로 암호화된 특수 무전기가 들어 있었어요. 그리고 좌표가... 반란군이 무기를 숨긴 바로 그곳에서 시작하네요.",
+      "originalEn": "The box you found in the MANTIKOR facility contained specialized radios, encrypted using geotags.\r\n\r\nAnd the coordinates… They start right where the mutineers stashed their weapons."
+    },
+    "objectives": [
+      {
+        "value": "급수탑으로 이동하기",
+        "originalEn": "Go to the Water Towers"
+      },
+      {
+        "value": "경비 초소 촬영하기",
+        "originalEn": "Photograph a Security Booth"
+      },
+      {
+        "value": "강화 버스 촬영하기",
+        "originalEn": "Photograph a reinforced bus"
+      },
+      {
+        "value": "장벽의 파손 부위 촬영하기",
+        "originalEn": "Photograph the breach in the walls"
+      },
+      {
+        "value": " 도착동의 보안실 촬영하기",
+        "originalEn": " Photograph the Arrival Building security room"
+      },
+      {
+        "value": "발사탑 A 포트 촬영하기",
+        "originalEn": "Photograph Port A of the Launch Towers"
+      },
+      {
+        "value": " 발사탑의 제어실 촬영하기",
+        "originalEn": " Photograph the Launch Towers control room"
+      },
+      {
+        "value": "발사대 촬영하기",
+        "originalEn": "Photograph the launch platform"
+      }
+    ],
+    "objectivesOneRound": false,
+    "addedIn": "2.0",
+    "xp": 5000,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "basic_camera",
+        "quantity": 1,
+        "name": {
+          "value": "",
+          "originalEn": "Basic Camera"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "stiletto_i",
+        "quantity": 1,
+        "name": {
+          "value": "",
+          "originalEn": "Stiletto I"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      },
+      {
+        "id": "light_ammo",
+        "quantity": 100,
+        "name": {
+          "value": "경량 탄약",
+          "originalEn": "Light Ammo"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/light_ammo.png"
+      },
+      {
+        "id": "adrenaline_shot",
+        "quantity": 3,
+        "name": {
+          "value": "아드레날린 주사",
+          "originalEn": "Adrenaline Shot"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/adrenaline_shot.png"
+      },
+      {
+        "id": "silencer_i",
+        "quantity": 1,
+        "name": {
+          "value": "소음기 I",
+          "originalEn": "Silencer I"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/silencer_i.png"
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "wires_crossed",
+    "name": {
+      "value": "뒤엉킨 전선",
+      "originalEn": "Wires Crossed"
+    },
+    "trader": "Celeste",
+    "map": [
+      "buried_city",
+      "the_spaceport",
+      "the_blue_gate"
+    ],
+    "previousQuestIds": [
+      "exploring_pendola_pass"
+    ],
+    "nextQuestIds": [
+      "ruins_and_reverberations"
+    ],
+    "description": {
+      "value": "천문대에서 찾은 그 장치... 읽을 수 있는 데이터는 거의 남지 않았지만, 신호는 틀림없이 아크 것이었어요.",
+      "originalEn": "That contraption you found at the Observatory… There wasn’t much data left to read, but the signature was undeniably ARC’s."
+    },
+    "objectives": [
+      {
+        "value": "블루 게이트에서 순례자의 봉우리에 있는 안테나에 스니치 스캐너 장착하기",
+        "originalEn": "On The Blue Gate, attach a Snitch Scanner to the antenna at Pilgrim’s Peak"
+      },
+      {
+        "value": "우주 기지에서 발사탑 꼭대기의 안테나에 서베이어 볼트 장착하기",
+        "originalEn": "On Spaceport, attach a Surveyor Vault to the antenna on top of the Launch Towers"
+      },
+      {
+        "value": "파묻힌 도시에서 그란디오소 아파트 지붕의 안테나에 센티넬 발사 코어 장착하기",
+        "originalEn": "On Buried City, attach a Sentinel Firing Core to the antenna at the roof of the Grandioso Apartments"
+      }
+    ],
+    "objectivesOneRound": false,
+    "addedIn": "2.0",
+    "xp": 8000,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "electrical_components",
+        "quantity": 3,
+        "name": {
+          "value": "전기 부품",
+          "originalEn": "Electrical Components"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/electrical_components.png"
+      },
+      {
+        "id": "renegade_i",
+        "quantity": 1,
+        "name": {
+          "value": "레니게이드 I",
+          "originalEn": "Renegade I"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/renegade_i.png"
+      },
+      {
+        "id": "zipline",
+        "quantity": 2,
+        "name": {
+          "value": "집라인",
+          "originalEn": "Zipline"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/zipline.png"
+      },
+      {
+        "id": "crash_mat",
+        "quantity": 2,
+        "name": {
+          "value": "착지 매트",
+          "originalEn": "Crash Mat"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/crash_mat.png"
       }
     ],
     "hasBlueprint": false,
@@ -7726,6 +9742,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -7757,7 +9775,7 @@
   {
     "id": "with_a_view",
     "name": {
-      "value": "전망을 감상하며",
+      "value": "별을 관측하며",
       "originalEn": "With a View"
     },
     "trader": "Shani",
@@ -7798,6 +9816,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -7891,7 +9911,7 @@
         "originalEn": "Bring the Battery Prototype to the Industrial Recharger"
       },
       {
-        "value": "기계를 사용해 배터리 충전하기",
+        "value": "충전기를 사용해 배터리 충전하기",
         "originalEn": "Use the machinery to charge the battery"
       },
       {
@@ -7900,6 +9920,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 8000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],

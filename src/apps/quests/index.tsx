@@ -50,6 +50,15 @@ export function QuestsApp() {
             originalNameEn: item.name.originalEn,
           })),
         }));
+        // Flag quests introduced in the newest game version found in the data
+        const newestVersion = localizedQuests
+          .map((quest) => quest.addedIn)
+          .filter((version): version is string => Boolean(version))
+          .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
+          .at(-1);
+        for (const quest of localizedQuests) {
+          quest.isNew = Boolean(newestVersion) && quest.addedIn === newestVersion;
+        }
         // Combine MAP_NODES with loaded quest data
         const allQuests = [...MAP_NODES, ...localizedQuests];
         setQuestData(allQuests);

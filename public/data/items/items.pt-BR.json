@@ -26,18 +26,7 @@
         "wires": 3
       },
       "repairDurability": 0.5,
-      "vendors": [
-        {
-          "cost": {
-            "creds": 70
-          },
-          "limit": 1,
-          "refreshSeconds": 86400,
-          "requiredLevel": 12,
-          "trader": "Shani"
-        }
-      ],
-      "updatedAt": "03/22/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "1.2"
     },
     "adrenaline_shot": {
@@ -142,7 +131,7 @@
       },
       "craftSkills": {
         "in_raid": [
-          "surv_3r"
+          "in_round_crafting"
         ]
       },
       "vendors": [
@@ -153,7 +142,7 @@
           "trader": "Lance"
         }
       ],
-      "updatedAt": "05/30/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "advanced_arc_powercell": {
@@ -178,6 +167,59 @@
       },
       "updatedAt": "01/13/2026",
       "addedIn": "base"
+    },
+    "advanced_camera": {
+      "name": {
+        "value": "",
+        "originalEn": "Advanced Camera"
+      },
+      "description": "",
+      "type": "Quick Use",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 1000,
+      "craftBench": "utility_bench",
+      "stationLevelRequired": 1,
+      "blueprintLocked": true,
+      "recipe": {
+        "camera_lens": 1,
+        "electrical_components": 1,
+        "frozen_trail_tech_2": 1
+      },
+      "recyclesInto": {
+        "frozen_trail_tech_2": 1
+      },
+      "salvagesInto": {
+        "plastic_parts": 5
+      },
+      "vendors": [
+        {
+          "cost": {
+            "coins": 3000
+          },
+          "limit": 3,
+          "refreshSeconds": 86400,
+          "requiredLevel": 12,
+          "trader": "Shani"
+        }
+      ],
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
+    "advanced_camera_blueprint": {
+      "name": {
+        "value": "",
+        "originalEn": "Advanced Camera Blueprint"
+      },
+      "description": "",
+      "type": "Blueprint",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 5000,
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
     },
     "advanced_electrical_components": {
       "name": {
@@ -450,10 +492,10 @@
       },
       "craftSkills": {
         "in_raid": [
-          "surv_3r"
+          "in_round_crafting"
         ]
       },
-      "updatedAt": "05/30/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "air_freshener": {
@@ -512,6 +554,161 @@
       "imageFilename": "https://cdn.arctracker.io/items/v2/alien_duck.png",
       "updatedAt": "03/17/2026",
       "addedIn": "1.13"
+    },
+    "amplification_material_anvil_canto_osprey_rascal_renegade": {
+      "name": {
+        "value": "",
+        "originalEn": "Amplification Material (Anvil, Canto, Osprey, Rascal, Renegade)"
+      },
+      "description": "",
+      "type": "Refined Material",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 7000,
+      "recyclesInto": {
+        "amplified_fragments": 7
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
+    "amplification_material_aphelion_equalizer_jupiter": {
+      "name": {
+        "value": "",
+        "originalEn": "Amplification Material (Aphelion, Equalizer, Jupiter)"
+      },
+      "description": "",
+      "type": "Refined Material",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 7000,
+      "recyclesInto": {
+        "amplified_fragments": 7
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
+    "amplification_material_bettina_hullcracker": {
+      "name": {
+        "value": "",
+        "originalEn": "Amplification Material (Bettina, Hullcracker)"
+      },
+      "description": "",
+      "type": "Refined Material",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 7000,
+      "recyclesInto": {
+        "amplified_fragments": 7
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
+    "amplification_material_burletta_il_toro": {
+      "name": {
+        "value": "",
+        "originalEn": "Amplification Material (Burletta, Il Toro)"
+      },
+      "description": "",
+      "type": "Refined Material",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 7000,
+      "recyclesInto": {
+        "amplified_fragments": 7
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
+    "amplification_material_hairpin_kettle_rattler": {
+      "name": {
+        "value": "",
+        "originalEn": "Amplification Material (Hairpin, Kettle, Rattler)"
+      },
+      "description": "",
+      "type": "Refined Material",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 7000,
+      "recyclesInto": {
+        "amplified_fragments": 7
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
+    "amplified_fragments": {
+      "name": {
+        "value": "",
+        "originalEn": "Amplified Fragments"
+      },
+      "description": "",
+      "type": "Refined Material",
+      "rarity": "Common",
+      "stackSize": 50,
+      "craftQuantity": 1,
+      "value": 500,
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
+    "amplified_upgrade_part_a": {
+      "name": {
+        "value": "",
+        "originalEn": "Amplified Upgrade Part A"
+      },
+      "description": "",
+      "type": "Refined Material",
+      "rarity": "Common",
+      "stackSize": 3,
+      "craftQuantity": 1,
+      "value": 5000,
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
+    "amplified_upgrade_part_b": {
+      "name": {
+        "value": "",
+        "originalEn": "Amplified Upgrade Part B"
+      },
+      "description": "",
+      "type": "Refined Material",
+      "rarity": "Common",
+      "stackSize": 3,
+      "craftQuantity": 1,
+      "value": 5000,
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
+    "amplified_upgrade_part_c": {
+      "name": {
+        "value": "",
+        "originalEn": "Amplified Upgrade Part C"
+      },
+      "description": "",
+      "type": "Refined Material",
+      "rarity": "Common",
+      "stackSize": 3,
+      "craftQuantity": 1,
+      "value": 5000,
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
+    "amplified_upgrade_part_d": {
+      "name": {
+        "value": "",
+        "originalEn": "Amplified Upgrade Part D"
+      },
+      "description": "",
+      "type": "Refined Material",
+      "rarity": "Common",
+      "stackSize": 3,
+      "craftQuantity": 1,
+      "value": 5000,
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
     },
     "ancient_fort_security_code": {
       "name": {
@@ -648,14 +845,15 @@
       "vendors": [
         {
           "cost": {
-            "creds": 100
+            "coins": 6000
           },
-          "limit": 2,
+          "limit": 5,
           "refreshSeconds": 86400,
-          "trader": "Shani"
+          "requiredLevel": 7,
+          "trader": "Tian Wen"
         }
       ],
-      "updatedAt": "03/22/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "angled_grip_ii_blueprint": {
@@ -671,7 +869,14 @@
       "value": 5000,
       "weightKg": 0,
       "imageFilename": "https://cdn.arctracker.io/items/v2/angled_grip_ii_blueprint.png",
-      "updatedAt": "12/07/2025",
+      "craftBench": "research_station",
+      "stationLevelRequired": 2,
+      "recipe": {
+        "arc_flex_rubber": 5,
+        "mechanical_components": 1,
+        "research_points": 3000
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "angled_grip_iii": {
@@ -779,6 +984,44 @@
       "updatedAt": "12/07/2025",
       "addedIn": "base"
     },
+    "anti_shield_research": {
+      "name": {
+        "value": "",
+        "originalEn": "Anti-Shield Research"
+      },
+      "description": "",
+      "type": "Blueprint",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "craftBench": "research_station",
+      "stationLevelRequired": 4,
+      "recipe": {
+        "matriarch_reactor": 2,
+        "research_points": 5000
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
+    "anti_weak_point_research": {
+      "name": {
+        "value": "",
+        "originalEn": "Anti-Weak Point Research"
+      },
+      "description": "",
+      "type": "Blueprint",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "craftBench": "research_station",
+      "stationLevelRequired": 4,
+      "recipe": {
+        "fireball_burner": 20,
+        "research_points": 5000
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
     "antiseptic": {
       "name": {
         "value": "Antisséptico",
@@ -821,7 +1064,14 @@
       "value": 5000,
       "weightKg": 0,
       "imageFilename": "https://cdn.arctracker.io/items/v2/anvil_blueprint.png",
-      "updatedAt": "11/03/2025",
+      "craftBench": "research_station",
+      "stationLevelRequired": 2,
+      "recipe": {
+        "bully_fragmenter": 5,
+        "research_points": 3000,
+        "rusted_tools": 1
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "anvil_i": {
@@ -842,16 +1092,17 @@
       "stationLevelRequired": 1,
       "blueprintLocked": true,
       "recipe": {
-        "mechanical_components": 5,
-        "simple_gun_parts": 6
+        "advanced_mechanical_components": 2,
+        "frozen_trail_mechanical_2": 3,
+        "heavy_gun_parts": 3
       },
       "upgradesTo": "anvil_ii",
       "recyclesInto": {
-        "mechanical_components": 2,
-        "simple_gun_parts": 2
+        "advanced_mechanical_components": 1,
+        "heavy_gun_parts": 2
       },
       "salvagesInto": {
-        "simple_gun_parts": 2
+        "heavy_gun_parts": 2
       },
       "repairCost": {
         "mechanical_components": 2,
@@ -994,18 +1245,7 @@
           "anvil_splitter"
         ]
       },
-      "vendors": [
-        {
-          "cost": {
-            "coins": 15000
-          },
-          "limit": 3,
-          "refreshSeconds": 86400,
-          "requiredLevel": 7,
-          "trader": "Tian Wen"
-        }
-      ],
-      "updatedAt": "03/22/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base",
       "weaponBaseId": "anvil_i",
       "weaponTier": 1
@@ -1026,16 +1266,16 @@
       "imageFilename": "https://cdn.arctracker.io/items/v2/anvil_ii.png",
       "craftBench": "weapon_bench",
       "upgradeCost": {
-        "mechanical_components": 3,
-        "simple_gun_parts": 1
+        "advanced_mechanical_components": 1,
+        "heavy_gun_parts": 1
       },
       "upgradesTo": "anvil_iii",
       "recyclesInto": {
-        "mechanical_components": 3,
-        "simple_gun_parts": 3
+        "advanced_mechanical_components": 2,
+        "heavy_gun_parts": 2
       },
       "salvagesInto": {
-        "simple_gun_parts": 3
+        "heavy_gun_parts": 3
       },
       "repairCost": {
         "mechanical_components": 3,
@@ -1224,7 +1464,7 @@
           "anvil_splitter"
         ]
       },
-      "updatedAt": "03/17/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base",
       "upgradesFrom": "anvil_i",
       "weaponBaseId": "anvil_i",
@@ -1246,16 +1486,16 @@
       "imageFilename": "https://cdn.arctracker.io/items/v2/anvil_iii.png",
       "craftBench": "weapon_bench",
       "upgradeCost": {
-        "heavy_gun_parts": 1,
-        "mechanical_components": 4
+        "advanced_mechanical_components": 1,
+        "heavy_gun_parts": 1
       },
       "upgradesTo": "anvil_iv",
       "recyclesInto": {
-        "mechanical_components": 4,
-        "simple_gun_parts": 4
+        "advanced_mechanical_components": 2,
+        "heavy_gun_parts": 3
       },
       "salvagesInto": {
-        "simple_gun_parts": 4
+        "heavy_gun_parts": 4
       },
       "repairCost": {
         "mechanical_components": 4,
@@ -1444,7 +1684,7 @@
           "anvil_splitter"
         ]
       },
-      "updatedAt": "02/24/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base",
       "upgradesFrom": "anvil_ii",
       "weaponBaseId": "anvil_i",
@@ -1466,15 +1706,15 @@
       "imageFilename": "https://cdn.arctracker.io/items/v2/anvil_iv.png",
       "craftBench": "weapon_bench",
       "upgradeCost": {
-        "heavy_gun_parts": 1,
-        "mechanical_components": 4
+        "advanced_mechanical_components": 2,
+        "heavy_gun_parts": 1
       },
       "recyclesInto": {
-        "mechanical_components": 5,
-        "simple_gun_parts": 5
+        "advanced_mechanical_components": 3,
+        "heavy_gun_parts": 3
       },
       "salvagesInto": {
-        "simple_gun_parts": 5
+        "heavy_gun_parts": 5
       },
       "repairCost": {
         "mechanical_components": 5,
@@ -1663,7 +1903,7 @@
           "anvil_splitter"
         ]
       },
-      "updatedAt": "02/24/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base",
       "upgradesFrom": "anvil_iii",
       "weaponBaseId": "anvil_i",
@@ -1683,11 +1923,10 @@
       "weightKg": 0.5,
       "imageFilename": "https://cdn.arctracker.io/items/v2/anvil_splitter.png",
       "recyclesInto": {
-        "mod_components": 1,
-        "processor": 1
+        "amplified_fragments": 5
       },
       "salvagesInto": {
-        "mechanical_components": 2
+        "amplified_fragments": 2
       },
       "effects": {
         "Projectiles Per Shot": {
@@ -1737,7 +1976,7 @@
           "zh-TW": "彈體傷害降低"
         }
       },
-      "updatedAt": "01/09/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "aphelion": {
@@ -2028,6 +2267,20 @@
       "updatedAt": "03/17/2026",
       "addedIn": "base"
     },
+    "arc_conductive_coupler": {
+      "name": {
+        "value": "",
+        "originalEn": "ARC Conductive Coupler"
+      },
+      "description": "",
+      "type": "Key",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 100,
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
     "arc_coolant": {
       "name": {
         "value": "Líquido de Arrefecimento ARC",
@@ -2259,6 +2512,22 @@
       "updatedAt": "11/03/2025",
       "addedIn": "base"
     },
+    "arcade_duck": {
+      "name": {
+        "value": "Pato do Fliper",
+        "originalEn": "Arcade Duck"
+      },
+      "description": "Pode usar para arremessar e gerar barulho.",
+      "type": "Trinket",
+      "rarity": "Epic",
+      "stackSize": 15,
+      "craftQuantity": 1,
+      "value": 7000,
+      "weightKg": 0.3,
+      "imageFilename": "https://cdn.arctracker.io/items/v2/arcade_duck.png",
+      "updatedAt": "09/08/2026",
+      "addedIn": "1.45"
+    },
     "arpeggio_i": {
       "name": {
         "value": "Arpeggio I",
@@ -2447,7 +2716,18 @@
           "stable_stock_iii"
         ]
       },
-      "updatedAt": "03/17/2026",
+      "vendors": [
+        {
+          "cost": {
+            "coins": 16500
+          },
+          "limit": 3,
+          "refreshSeconds": 86400,
+          "requiredLevel": 7,
+          "trader": "Tian Wen"
+        }
+      ],
+      "updatedAt": "10/08/2026",
       "addedIn": "base",
       "weaponBaseId": "arpeggio_i",
       "weaponTier": 1
@@ -3182,13 +3462,13 @@
       "weightKg": 0.5,
       "imageFilename": "https://cdn.arctracker.io/items/v2/assessor_matrix.png",
       "recyclesInto": {
-        "advanced_arc_powercell": 3,
+        "advanced_arc_powercell": 4,
         "advanced_mechanical_components": 1
       },
       "salvagesInto": {
         "advanced_arc_powercell": 2
       },
-      "updatedAt": "04/28/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "1.22"
     },
     "assorted_seeds": {
@@ -3309,7 +3589,7 @@
       },
       "craftSkills": {
         "in_raid": [
-          "surv_3r"
+          "in_round_crafting"
         ]
       },
       "vendors": [
@@ -3320,8 +3600,188 @@
           "trader": "Lance"
         }
       ],
-      "updatedAt": "05/30/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
+    },
+    "banjo": {
+      "name": {
+        "value": "",
+        "originalEn": "Banjo"
+      },
+      "description": "",
+      "type": "Quick Use",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 2000,
+      "craftBench": "workbench",
+      "stationLevelRequired": 1,
+      "blueprintLocked": true,
+      "recipe": {
+        "planks": 6,
+        "steel_cable": 3
+      },
+      "recyclesInto": {
+        "steel_cable": 3
+      },
+      "salvagesInto": {
+        "planks": 6
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
+    "banjo_blueprint": {
+      "name": {
+        "value": "",
+        "originalEn": "Banjo Blueprint"
+      },
+      "description": "",
+      "type": "Blueprint",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "addedIn": "2.0"
+    },
+    "bantam_blueprint": {
+      "name": {
+        "value": "",
+        "originalEn": "Bantam Blueprint"
+      },
+      "description": "",
+      "type": "Blueprint",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 5000,
+      "craftBench": "research_station",
+      "stationLevelRequired": 1,
+      "recipe": {
+        "hornet_driver": 8,
+        "research_points": 3000
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
+    "bantam_i": {
+      "name": {
+        "value": "",
+        "originalEn": "Bantam I"
+      },
+      "description": "",
+      "type": "Hand Cannon",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 3800,
+      "isWeapon": true,
+      "craftBench": "weapon_bench",
+      "stationLevelRequired": 1,
+      "blueprintLocked": true,
+      "recipe": {
+        "mechanical_components": 4,
+        "simple_gun_parts": 4
+      },
+      "recyclesInto": {
+        "mechanical_components": 1,
+        "simple_gun_parts": 2
+      },
+      "salvagesInto": {
+        "simple_gun_parts": 2
+      },
+      "vendors": [
+        {
+          "cost": {
+            "coins": 11400
+          },
+          "limit": 3,
+          "refreshSeconds": 86400,
+          "requiredLevel": 7,
+          "trader": "Tian Wen"
+        }
+      ],
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
+    "bantam_ii": {
+      "name": {
+        "value": "",
+        "originalEn": "Bantam II"
+      },
+      "description": "",
+      "type": "Hand Cannon",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 6000,
+      "isWeapon": true,
+      "craftBench": "weapon_bench",
+      "upgradeCost": {
+        "mechanical_components": 3,
+        "simple_gun_parts": 1
+      },
+      "recyclesInto": {
+        "mechanical_components": 2,
+        "simple_gun_parts": 2
+      },
+      "salvagesInto": {
+        "simple_gun_parts": 2
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
+    "bantam_iii": {
+      "name": {
+        "value": "",
+        "originalEn": "Bantam III"
+      },
+      "description": "",
+      "type": "Hand Cannon",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 8000,
+      "isWeapon": true,
+      "craftBench": "weapon_bench",
+      "upgradeCost": {
+        "mechanical_components": 3,
+        "simple_gun_parts": 1
+      },
+      "recyclesInto": {
+        "mechanical_components": 3,
+        "simple_gun_parts": 3
+      },
+      "salvagesInto": {
+        "simple_gun_parts": 3
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
+    "bantam_iv": {
+      "name": {
+        "value": "",
+        "originalEn": "Bantam IV"
+      },
+      "description": "",
+      "type": "Hand Cannon",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 11000,
+      "isWeapon": true,
+      "craftBench": "weapon_bench",
+      "upgradeCost": {
+        "heavy_gun_parts": 1,
+        "mechanical_components": 4
+      },
+      "recyclesInto": {
+        "mechanical_components": 4,
+        "simple_gun_parts": 4
+      },
+      "salvagesInto": {
+        "simple_gun_parts": 4
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
     },
     "barricade_kit": {
       "name": {
@@ -3423,8 +3883,45 @@
       "value": 5000,
       "weightKg": 0,
       "imageFilename": "https://cdn.arctracker.io/items/v2/barricade_kit_blueprint.png",
-      "updatedAt": "11/13/2025",
+      "craftBench": "research_station",
+      "stationLevelRequired": 1,
+      "recipe": {
+        "research_points": 1000,
+        "rusty_arc_steel": 3
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
+    },
+    "basic_camera": {
+      "name": {
+        "value": "",
+        "originalEn": "Basic Camera"
+      },
+      "description": "",
+      "type": "Quick Use",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 640,
+      "craftBench": "workbench",
+      "stationLevelRequired": 1,
+      "recipe": {
+        "plastic_parts": 8,
+        "wires": 1
+      },
+      "recyclesInto": {
+        "plastic_parts": 5
+      },
+      "vendors": [
+        {
+          "cost": {
+            "coins": 1920
+          },
+          "trader": "Shani"
+        }
+      ],
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
     },
     "bastion_cell": {
       "name": {
@@ -3449,6 +3946,20 @@
       },
       "updatedAt": "01/13/2026",
       "addedIn": "base"
+    },
+    "battered_paperback": {
+      "name": {
+        "value": "",
+        "originalEn": "Battered Paperback"
+      },
+      "description": "",
+      "type": "Trinket",
+      "rarity": "Common",
+      "stackSize": 5,
+      "craftQuantity": 1,
+      "value": 270,
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
     },
     "battery": {
       "name": {
@@ -3497,7 +4008,14 @@
       "value": 5000,
       "weightKg": 0,
       "imageFilename": "https://cdn.arctracker.io/items/v2/bettina_blueprint.png",
-      "updatedAt": "12/07/2025",
+      "craftBench": "research_station",
+      "stationLevelRequired": 3,
+      "recipe": {
+        "complex_gun_parts": 1,
+        "research_points": 4500,
+        "rocketeer_driver": 5
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "bettina_i": {
@@ -4474,12 +4992,12 @@
       "vendors": [
         {
           "cost": {
-            "creds": 20
+            "coins": 1920
           },
           "trader": "Shani"
         }
       ],
-      "updatedAt": "03/22/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "blaze_grenade": {
@@ -4495,12 +5013,17 @@
       "value": 1600,
       "weightKg": 0.2,
       "imageFilename": "https://cdn.arctracker.io/items/v2/blaze_grenade.png",
-      "craftBench": "explosives_bench",
+      "craftBench": [
+        "explosives_bench",
+        "research_station",
+        "in_raid"
+      ],
       "stationLevelRequired": 3,
       "blueprintLocked": true,
       "recipe": {
-        "explosive_compound": 1,
-        "oil": 2
+        "fireball_burner": 3,
+        "impure_arc_coolant": 5,
+        "research_points": 2000
       },
       "recyclesInto": {
         "metal_parts": 4,
@@ -4580,7 +5103,24 @@
           "zh-TW": "半徑"
         }
       },
-      "updatedAt": "02/24/2026",
+      "craftSkills": {
+        "in_raid": [
+          "skill_1693112598",
+          "in_round_crafting"
+        ]
+      },
+      "vendors": [
+        {
+          "cost": {
+            "coins": 4800
+          },
+          "limit": 3,
+          "refreshSeconds": 86400,
+          "requiredLevel": 12,
+          "trader": "Apollo"
+        }
+      ],
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "blaze_grenade_blueprint": {
@@ -4671,14 +5211,14 @@
       },
       "craftSkills": {
         "in_raid": [
-          "surv_5c",
-          "surv_3r"
+          "traveling_tinkerer",
+          "in_round_crafting"
         ],
         "workbench": [
           "surv_5c"
         ]
       },
-      "updatedAt": "05/30/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "bloated_tuna_can": {
@@ -4886,18 +5426,12 @@
       "vendors": [
         {
           "cost": {
-            "coins": 450
-          },
-          "trader": "Apollo"
-        },
-        {
-          "cost": {
-            "creds": 10
+            "coins": 3000
           },
           "trader": "Shani"
         }
       ],
-      "updatedAt": "03/22/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "blue_light_stick_blueprint": {
@@ -6505,6 +7039,20 @@
       "updatedAt": "01/13/2026",
       "addedIn": "base"
     },
+    "broken_compass": {
+      "name": {
+        "value": "",
+        "originalEn": "Broken Compass"
+      },
+      "description": "",
+      "type": "Key",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "questItem": true,
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
     "broken_flashlight": {
       "name": {
         "value": "Lanterna Quebrada",
@@ -6600,6 +7148,43 @@
       "updatedAt": "01/09/2026",
       "addedIn": "base"
     },
+    "bronze_statuette": {
+      "name": {
+        "value": "Estatueta de Bronze",
+        "originalEn": "Bronze Statuette"
+      },
+      "description": "Uma estatueta de bronze antiga, porém linda. Dizem que o Emissário Nômade coleciona isso.",
+      "type": "Trinket",
+      "rarity": "Legendary",
+      "stackSize": 25,
+      "craftQuantity": 1,
+      "value": 10000,
+      "weightKg": 0.5,
+      "imageFilename": "https://cdn.arctracker.io/items/v2/bronze_statuette.png",
+      "updatedAt": "09/29/2026",
+      "addedIn": "1.45"
+    },
+    "bully_fragmenter": {
+      "name": {
+        "value": "",
+        "originalEn": "Bully Fragmenter"
+      },
+      "description": "",
+      "type": "Recyclable",
+      "rarity": "Common",
+      "stackSize": 3,
+      "craftQuantity": 1,
+      "value": 5000,
+      "recyclesInto": {
+        "arc_alloy": 1,
+        "explosive_compound": 1
+      },
+      "salvagesInto": {
+        "crude_explosives": 2
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
     "buried_city_hospital_key": {
       "name": {
         "value": "Chave do Hospital da Cidade Soterrada",
@@ -6676,7 +7261,13 @@
       "craftQuantity": 1,
       "value": 5000,
       "imageFilename": "https://cdn.arctracker.io/items/v2/burletta_blueprint.png",
-      "updatedAt": "02/24/2026",
+      "craftBench": "research_station",
+      "stationLevelRequired": 1,
+      "recipe": {
+        "research_points": 2000,
+        "simple_gun_parts": 8
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "burletta_i": {
@@ -7083,6 +7674,25 @@
       "updatedAt": "12/16/2025",
       "addedIn": "base"
     },
+    "burst_fire_research": {
+      "name": {
+        "value": "",
+        "originalEn": "Burst Fire Research"
+      },
+      "description": "",
+      "type": "Blueprint",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "craftBench": "research_station",
+      "stationLevelRequired": 4,
+      "recipe": {
+        "pop_trigger": 20,
+        "research_points": 5000
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
     "camera_lens": {
       "name": {
         "value": "Lente de Câmera",
@@ -7196,7 +7806,14 @@
       "value": 5000,
       "weightKg": 0,
       "imageFilename": "https://cdn.arctracker.io/items/v2/canto_blueprint.png",
-      "updatedAt": "03/31/2026",
+      "craftBench": "research_station",
+      "stationLevelRequired": 2,
+      "recipe": {
+        "research_points": 2000,
+        "skulker_targeter": 10,
+        "steel_spring": 5
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "1.22"
     },
     "canto_i": {
@@ -7283,6 +7900,7 @@
       "weightKg": 6.5,
       "isWeapon": true,
       "imageFilename": "https://cdn.arctracker.io/items/v2/canto_ii.png",
+      "craftBench": "weapon_bench",
       "upgradeCost": {
         "advanced_mechanical_components": 1,
         "medium_gun_parts": 2
@@ -7332,7 +7950,7 @@
           "stable_stock_iii"
         ]
       },
-      "updatedAt": "03/31/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "1.22"
     },
     "canto_iii": {
@@ -7349,6 +7967,7 @@
       "weightKg": 6.5,
       "isWeapon": true,
       "imageFilename": "https://cdn.arctracker.io/items/v2/canto_iii.png",
+      "craftBench": "weapon_bench",
       "upgradeCost": {
         "advanced_mechanical_components": 1,
         "medium_gun_parts": 2
@@ -7398,7 +8017,7 @@
           "stable_stock_iii"
         ]
       },
-      "updatedAt": "03/31/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "1.22"
     },
     "canto_iv": {
@@ -7415,6 +8034,7 @@
       "weightKg": 6.5,
       "isWeapon": true,
       "imageFilename": "https://cdn.arctracker.io/items/v2/canto_iv.png",
+      "craftBench": "weapon_bench",
       "upgradeCost": {
         "advanced_mechanical_components": 2,
         "medium_gun_parts": 2
@@ -7464,7 +8084,7 @@
           "stable_stock_iii"
         ]
       },
-      "updatedAt": "03/31/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "1.22"
     },
     "cat_bed": {
@@ -7500,6 +8120,25 @@
       "questItem": true,
       "updatedAt": "06/03/2026",
       "addedIn": "base"
+    },
+    "charged_burst_research": {
+      "name": {
+        "value": "",
+        "originalEn": "Charged Burst Research"
+      },
+      "description": "",
+      "type": "Blueprint",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "craftBench": "research_station",
+      "stationLevelRequired": 4,
+      "recipe": {
+        "leaper_pulse_unit": 5,
+        "research_points": 5000
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
     },
     "chemicals": {
       "name": {
@@ -7542,6 +8181,87 @@
       "foundIn": "Residential",
       "updatedAt": "02/24/2026",
       "addedIn": "base"
+    },
+    "collector_key": {
+      "name": {
+        "value": "",
+        "originalEn": "Collector Key"
+      },
+      "description": "",
+      "type": "Key",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 1000,
+      "craftBench": "workbench",
+      "stationLevelRequired": 1,
+      "blueprintLocked": true,
+      "recipe": {
+        "arc_conductive_coupler": 1,
+        "collector_key_part_1": 1,
+        "collector_key_part_2": 1
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
+    "collector_key_blueprint": {
+      "name": {
+        "value": "",
+        "originalEn": "Collector Key Blueprint"
+      },
+      "description": "",
+      "type": "Blueprint",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 5000,
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
+    "collector_key_part_1": {
+      "name": {
+        "value": "",
+        "originalEn": "Collector Key Part 1"
+      },
+      "description": "",
+      "type": "Key",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 100,
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
+    "collector_key_part_2": {
+      "name": {
+        "value": "",
+        "originalEn": "Collector Key Part 2"
+      },
+      "description": "",
+      "type": "Key",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 100,
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
+    "collector_material_1": {
+      "name": {
+        "value": "",
+        "originalEn": "Collector Material 1"
+      },
+      "description": "",
+      "type": "Recyclable",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 7000,
+      "salvagesInto": {
+        "arc_motion_core": 2
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
     },
     "colorful_shoes_green": {
       "name": {
@@ -7835,15 +8555,6 @@
       "vendors": [
         {
           "cost": {
-            "creds": 100
-          },
-          "limit": 2,
-          "refreshSeconds": 86400,
-          "requiredLevel": 7,
-          "trader": "Shani"
-        },
-        {
-          "cost": {
             "coins": 6000
           },
           "limit": 1,
@@ -7852,7 +8563,7 @@
           "trader": "Lance"
         }
       ],
-      "updatedAt": "03/22/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "combat_mk3_aggressive": {
@@ -8310,7 +9021,18 @@
           "zh-TW": "重量限制"
         }
       },
-      "updatedAt": "03/17/2026",
+      "vendors": [
+        {
+          "cost": {
+            "coins": 15000
+          },
+          "limit": 1,
+          "refreshSeconds": 86400,
+          "requiredLevel": 12,
+          "trader": "Lance"
+        }
+      ],
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "combat_mk3_flanking_blueprint": {
@@ -8326,7 +9048,14 @@
       "value": 5000,
       "weightKg": 0,
       "imageFilename": "https://cdn.arctracker.io/items/v2/combat_mk3_flanking_blueprint.png",
-      "updatedAt": "01/13/2026",
+      "craftBench": "research_station",
+      "stationLevelRequired": 3,
+      "recipe": {
+        "arc_circuitry": 5,
+        "mechanical_components": 3,
+        "research_points": 3000
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "comet_igniter": {
@@ -8426,18 +9155,7 @@
           "zh-TW": "降低每發擴散度"
         }
       },
-      "vendors": [
-        {
-          "cost": {
-            "coins": 1920
-          },
-          "limit": 5,
-          "refreshSeconds": 86400,
-          "requiredLevel": 7,
-          "trader": "Tian Wen"
-        }
-      ],
-      "updatedAt": "03/22/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "compensator_ii": {
@@ -8515,17 +9233,7 @@
           "zh-TW": "每次射擊擴散度降低"
         }
       },
-      "vendors": [
-        {
-          "cost": {
-            "creds": 100
-          },
-          "limit": 2,
-          "refreshSeconds": 86400,
-          "trader": "Shani"
-        }
-      ],
-      "updatedAt": "03/22/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "compensator_ii_blueprint": {
@@ -8541,7 +9249,14 @@
       "value": 5000,
       "weightKg": 0,
       "imageFilename": "https://cdn.arctracker.io/items/v2/compensator_ii_blueprint.png",
-      "updatedAt": "11/01/2025",
+      "craftBench": "research_station",
+      "stationLevelRequired": 2,
+      "recipe": {
+        "cooling_coil": 1,
+        "research_points": 2000,
+        "rusty_arc_steel": 5
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "compensator_iii": {
@@ -8716,7 +9431,14 @@
       "value": 5000,
       "weightKg": 0,
       "imageFilename": "https://cdn.arctracker.io/items/v2/complex_gun_parts_blueprint.png",
-      "updatedAt": "11/12/2025",
+      "craftBench": "research_station",
+      "stationLevelRequired": 3,
+      "recipe": {
+        "advanced_mechanical_components": 1,
+        "complex_gun_parts": 2,
+        "research_points": 3000
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "coolant": {
@@ -8828,7 +9550,10 @@
       "value": 1200,
       "weightKg": 0.6,
       "imageFilename": "https://cdn.arctracker.io/items/v2/crash_mat.png",
-      "craftBench": "utility_bench",
+      "craftBench": [
+        "utility_bench",
+        "in_raid"
+      ],
       "stationLevelRequired": 2,
       "blueprintLocked": true,
       "recipe": {
@@ -8842,7 +9567,14 @@
       "salvagesInto": {
         "fabric": 4
       },
-      "updatedAt": "04/28/2026",
+      "craftSkills": {
+        "in_raid": [
+          "skill_1693112598",
+          "in_round_crafting",
+          "surv_3r"
+        ]
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "1.26"
     },
     "crash_mat_blueprint": {
@@ -8858,7 +9590,13 @@
       "value": 5000,
       "weightKg": 0,
       "imageFilename": "https://cdn.arctracker.io/items/v2/crash_mat_blueprint.png",
-      "updatedAt": "04/28/2026",
+      "craftBench": "research_station",
+      "stationLevelRequired": 1,
+      "recipe": {
+        "durable_cloth": 5,
+        "research_points": 1000
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "1.26"
     },
     "crude_explosives": {
@@ -8989,7 +9727,8 @@
       "value": 100,
       "weightKg": 0.25,
       "imageFilename": "https://cdn.arctracker.io/items/v2/dam_controlled_access_zone_key.png",
-      "updatedAt": "02/24/2026"
+      "updatedAt": "10/08/2026",
+      "addedIn": "1.17"
     },
     "dam_staff_room_key": {
       "name": {
@@ -9357,18 +10096,7 @@
           "zh-TW": "計時器持續時間"
         }
       },
-      "vendors": [
-        {
-          "cost": {
-            "coins": 18000
-          },
-          "limit": 1,
-          "refreshSeconds": 86400,
-          "requiredLevel": 20,
-          "trader": "Apollo"
-        }
-      ],
-      "updatedAt": "03/22/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "1.2"
     },
     "deadline_blueprint": {
@@ -9384,7 +10112,14 @@
       "value": 5000,
       "weightKg": 0,
       "imageFilename": "https://cdn.arctracker.io/items/v2/deadline_blueprint.png",
-      "updatedAt": "11/20/2025",
+      "craftBench": "research_station",
+      "stationLevelRequired": 3,
+      "recipe": {
+        "comet_igniter": 5,
+        "fossilized_lightning": 1,
+        "research_points": 3000
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "1.2"
     },
     "defibrillator": {
@@ -9400,7 +10135,10 @@
       "value": 1000,
       "weightKg": 0.75,
       "imageFilename": "https://cdn.arctracker.io/items/v2/defibrillator.png",
-      "craftBench": "med_station",
+      "craftBench": [
+        "med_station",
+        "in_raid"
+      ],
       "stationLevelRequired": 2,
       "blueprintLocked": true,
       "recipe": {
@@ -9462,6 +10200,12 @@
           "zh-TW": "使用時間"
         }
       },
+      "craftSkills": {
+        "in_raid": [
+          "skill_1693112598",
+          "in_round_crafting"
+        ]
+      },
       "vendors": [
         {
           "cost": {
@@ -9471,7 +10215,7 @@
           "trader": "Lance"
         }
       ],
-      "updatedAt": "03/22/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "defibrillator_blueprint": {
@@ -9487,7 +10231,14 @@
       "value": 5000,
       "weightKg": 0,
       "imageFilename": "https://cdn.arctracker.io/items/v2/defibrillator_blueprint.png",
-      "updatedAt": "11/12/2025",
+      "craftBench": "research_station",
+      "stationLevelRequired": 2,
+      "recipe": {
+        "adrenaline_shot": 5,
+        "research_points": 2000,
+        "syringe": 3
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "deflated_football": {
@@ -9599,7 +10350,18 @@
           "zh-TW": "耐久度"
         }
       },
-      "updatedAt": "04/28/2026",
+      "vendors": [
+        {
+          "cost": {
+            "coins": 1920
+          },
+          "limit": 2,
+          "refreshSeconds": 86400,
+          "requiredLevel": 7,
+          "trader": "Apollo"
+        }
+      ],
+      "updatedAt": "10/08/2026",
       "addedIn": "1.26"
     },
     "dodgers_note": {
@@ -9736,13 +10498,10 @@
           "cost": {
             "coins": 810
           },
-          "limit": 6,
-          "refreshSeconds": 86400,
-          "requiredLevel": 7,
           "trader": "Apollo"
         }
       ],
-      "updatedAt": "03/22/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "dried_out_arc_resin": {
@@ -9767,6 +10526,25 @@
       },
       "updatedAt": "01/09/2026",
       "addedIn": "base"
+    },
+    "drum_mag_research": {
+      "name": {
+        "value": "",
+        "originalEn": "Drum Mag Research"
+      },
+      "description": "",
+      "type": "Blueprint",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "craftBench": "research_station",
+      "stationLevelRequired": 4,
+      "recipe": {
+        "bastion_cell": 5,
+        "research_points": 5000
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
     },
     "duct_tape": {
       "name": {
@@ -9933,11 +10711,13 @@
           "cost": {
             "coins": 3000
           },
+          "limit": 20,
+          "refreshSeconds": 86400,
           "requiredLevel": 12,
           "trader": "Tian Wen"
         }
       ],
-      "updatedAt": "03/22/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "equalizer": {
@@ -10413,7 +11193,14 @@
       "value": 5000,
       "weightKg": 0,
       "imageFilename": "https://cdn.arctracker.io/items/v2/explosive_mine_blueprint.png",
-      "updatedAt": "12/07/2025",
+      "craftBench": "research_station",
+      "stationLevelRequired": 2,
+      "recipe": {
+        "comet_igniter": 3,
+        "research_points": 2000,
+        "sensors": 2
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "extended_barrel_i": {
@@ -10578,7 +11365,14 @@
       "craftQuantity": 1,
       "value": 5000,
       "weightKg": 0,
-      "updatedAt": "05/19/2026",
+      "craftBench": "research_station",
+      "stationLevelRequired": 2,
+      "recipe": {
+        "research_points": 2000,
+        "rusty_arc_steel": 5,
+        "steel_cable": 1
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "1.29"
     },
     "extended_barrel_iii": {
@@ -10794,14 +11588,6 @@
       "vendors": [
         {
           "cost": {
-            "creds": 100
-          },
-          "limit": 2,
-          "refreshSeconds": 86400,
-          "trader": "Shani"
-        },
-        {
-          "cost": {
             "coins": 6000
           },
           "limit": 3,
@@ -10810,7 +11596,7 @@
           "trader": "Tian Wen"
         }
       ],
-      "updatedAt": "03/22/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "extended_light_mag_ii_blueprint": {
@@ -10826,7 +11612,14 @@
       "value": 5000,
       "weightKg": 0,
       "imageFilename": "https://cdn.arctracker.io/items/v2/extended_light_mag_ii_blueprint.png",
-      "updatedAt": "12/07/2025",
+      "craftBench": "research_station",
+      "stationLevelRequired": 2,
+      "recipe": {
+        "dried_out_arc_resin": 5,
+        "research_points": 2000,
+        "wires": 5
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "extended_light_mag_iii": {
@@ -10950,18 +11743,7 @@
           "zh-TW": "彈匣容量"
         }
       },
-      "vendors": [
-        {
-          "cost": {
-            "coins": 1920
-          },
-          "limit": 5,
-          "refreshSeconds": 86400,
-          "requiredLevel": 7,
-          "trader": "Tian Wen"
-        }
-      ],
-      "updatedAt": "03/22/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "extended_medium_mag_ii": {
@@ -11019,14 +11801,15 @@
       "vendors": [
         {
           "cost": {
-            "creds": 100
+            "coins": 6000
           },
-          "limit": 2,
+          "limit": 5,
           "refreshSeconds": 86400,
-          "trader": "Shani"
+          "requiredLevel": 7,
+          "trader": "Tian Wen"
         }
       ],
-      "updatedAt": "03/22/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "extended_medium_mag_ii_blueprint": {
@@ -11042,7 +11825,14 @@
       "value": 5000,
       "weightKg": 0,
       "imageFilename": "https://cdn.arctracker.io/items/v2/extended_medium_mag_ii_blueprint.png",
-      "updatedAt": "11/12/2025",
+      "craftBench": "research_station",
+      "stationLevelRequired": 2,
+      "recipe": {
+        "canister": 3,
+        "dried_out_arc_resin": 5,
+        "research_points": 2000
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "extended_medium_mag_iii": {
@@ -11191,18 +11981,7 @@
           "zh-TW": "彈匣容量"
         }
       },
-      "vendors": [
-        {
-          "cost": {
-            "coins": 1920
-          },
-          "limit": 5,
-          "refreshSeconds": 86400,
-          "requiredLevel": 7,
-          "trader": "Tian Wen"
-        }
-      ],
-      "updatedAt": "03/22/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "extended_shotgun_mag_ii": {
@@ -11273,7 +12052,14 @@
       "value": 5000,
       "weightKg": 0,
       "imageFilename": "https://cdn.arctracker.io/items/v2/extended_shotgun_mag_ii_blueprint.png",
-      "updatedAt": "11/12/2025",
+      "craftBench": "research_station",
+      "stationLevelRequired": 2,
+      "recipe": {
+        "dried_out_arc_resin": 5,
+        "mechanical_components": 1,
+        "research_points": 2000
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "extended_shotgun_mag_iii": {
@@ -12282,12 +13068,12 @@
           "cost": {
             "coins": 8700
           },
-          "limit": 1,
+          "limit": 3,
           "refreshSeconds": 86400,
           "trader": "Tian Wen"
         }
       ],
-      "updatedAt": "02/24/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base",
       "upgradesFrom": "ferro_iii",
       "weaponBaseId": "ferro_i",
@@ -12498,12 +13284,12 @@
       "vendors": [
         {
           "cost": {
-            "creds": 20
+            "coins": 810
           },
           "trader": "Shani"
         }
       ],
-      "updatedAt": "03/22/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "1.7"
     },
     "firefly_burner": {
@@ -12559,14 +13345,15 @@
       "vendors": [
         {
           "cost": {
-            "creds": 60
+            "coins": 6000
           },
           "limit": 3,
           "refreshSeconds": 86400,
+          "requiredLevel": 12,
           "trader": "Shani"
         }
       ],
-      "updatedAt": "03/22/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "1.7"
     },
     "fireworks_box_blueprint": {
@@ -12716,10 +13503,10 @@
       },
       "craftSkills": {
         "in_raid": [
-          "surv_3r"
+          "in_round_crafting"
         ]
       },
-      "updatedAt": "05/30/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "flashy_duck": {
@@ -12897,6 +13684,248 @@
       "updatedAt": "12/07/2025",
       "addedIn": "base"
     },
+    "frigate_material_1": {
+      "name": {
+        "value": "",
+        "originalEn": "Frigate Material 1"
+      },
+      "description": "",
+      "type": "Recyclable",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 7000,
+      "recyclesInto": {
+        "advanced_arc_powercell": 2,
+        "arc_circuitry": 2
+      },
+      "salvagesInto": {
+        "arc_circuitry": 2
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
+    "frosty_duck": {
+      "name": {
+        "value": "Pato das Neves",
+        "originalEn": "Frosty Duck"
+      },
+      "description": "Pode usar para arremessar e gerar barulho.",
+      "type": "Trinket",
+      "rarity": "Rare",
+      "stackSize": 15,
+      "craftQuantity": 1,
+      "value": 3000,
+      "weightKg": 0.3,
+      "imageFilename": "https://cdn.arctracker.io/items/v2/frosty_duck.png",
+      "updatedAt": "09/08/2026",
+      "addedIn": "1.45"
+    },
+    "frozen_trail_material_2": {
+      "name": {
+        "value": "",
+        "originalEn": "Frozen Trail Material 2"
+      },
+      "description": "",
+      "type": "Topside Material",
+      "rarity": "Common",
+      "stackSize": 5,
+      "craftQuantity": 1,
+      "value": 1000,
+      "recyclesInto": {
+        "chemicals": 8
+      },
+      "salvagesInto": {
+        "chemicals": 4
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
+    "frozen_trail_material_3": {
+      "name": {
+        "value": "",
+        "originalEn": "Frozen Trail Material 3"
+      },
+      "description": "",
+      "type": "Topside Material",
+      "rarity": "Common",
+      "stackSize": 3,
+      "craftQuantity": 1,
+      "value": 3000,
+      "recyclesInto": {
+        "durable_cloth": 2
+      },
+      "salvagesInto": {
+        "fabric": 6
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
+    "frozen_trail_mechanical_1": {
+      "name": {
+        "value": "",
+        "originalEn": "Frozen Trail Mechanical 1"
+      },
+      "description": "",
+      "type": "Topside Material",
+      "rarity": "Common",
+      "stackSize": 15,
+      "craftQuantity": 1,
+      "value": 270,
+      "recyclesInto": {
+        "metal_parts": 2
+      },
+      "salvagesInto": {
+        "metal_parts": 1
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
+    "frozen_trail_mechanical_2": {
+      "name": {
+        "value": "",
+        "originalEn": "Frozen Trail Mechanical 2"
+      },
+      "description": "",
+      "type": "Topside Material",
+      "rarity": "Common",
+      "stackSize": 3,
+      "craftQuantity": 1,
+      "value": 640,
+      "recyclesInto": {
+        "mechanical_components": 1
+      },
+      "salvagesInto": {
+        "metal_parts": 2
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
+    "frozen_trail_mechanical_3": {
+      "name": {
+        "value": "",
+        "originalEn": "Frozen Trail Mechanical 3"
+      },
+      "description": "",
+      "type": "Topside Material",
+      "rarity": "Common",
+      "stackSize": 3,
+      "craftQuantity": 1,
+      "value": 2000,
+      "recyclesInto": {
+        "mechanical_components": 2,
+        "steel_spring": 2
+      },
+      "salvagesInto": {
+        "mechanical_components": 1
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
+    "frozen_trail_mechanical_4": {
+      "name": {
+        "value": "",
+        "originalEn": "Frozen Trail Mechanical 4"
+      },
+      "description": "",
+      "type": "Topside Material",
+      "rarity": "Common",
+      "stackSize": 3,
+      "craftQuantity": 1,
+      "value": 3000,
+      "recyclesInto": {
+        "advanced_mechanical_components": 1
+      },
+      "salvagesInto": {
+        "mechanical_components": 1
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
+    "frozen_trail_tech_1": {
+      "name": {
+        "value": "",
+        "originalEn": "Frozen Trail Tech 1"
+      },
+      "description": "",
+      "type": "Topside Material",
+      "rarity": "Common",
+      "stackSize": 5,
+      "craftQuantity": 1,
+      "value": 640,
+      "recyclesInto": {
+        "plastic_parts": 2,
+        "sensors": 1
+      },
+      "salvagesInto": {
+        "plastic_parts": 2
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
+    "frozen_trail_tech_2": {
+      "name": {
+        "value": "",
+        "originalEn": "Frozen Trail Tech 2"
+      },
+      "description": "",
+      "type": "Topside Material",
+      "rarity": "Common",
+      "stackSize": 3,
+      "craftQuantity": 1,
+      "value": 640,
+      "recyclesInto": {
+        "plastic_parts": 2,
+        "wires": 1
+      },
+      "salvagesInto": {
+        "rubber_parts": 2
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
+    "frozen_trail_tech_3": {
+      "name": {
+        "value": "",
+        "originalEn": "Frozen Trail Tech 3"
+      },
+      "description": "",
+      "type": "Topside Material",
+      "rarity": "Common",
+      "stackSize": 3,
+      "craftQuantity": 1,
+      "value": 1000,
+      "recyclesInto": {
+        "speaker_component": 1,
+        "wires": 2
+      },
+      "salvagesInto": {
+        "wires": 1
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
+    "frozen_trail_tech_4": {
+      "name": {
+        "value": "",
+        "originalEn": "Frozen Trail Tech 4"
+      },
+      "description": "",
+      "type": "Topside Material",
+      "rarity": "Common",
+      "stackSize": 3,
+      "craftQuantity": 1,
+      "value": 3000,
+      "recyclesInto": {
+        "electrical_components": 2,
+        "frozen_trail_tech_2": 2
+      },
+      "salvagesInto": {
+        "electrical_components": 1
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
     "fruit_mix": {
       "name": {
         "value": "Mix de Frutas",
@@ -12989,10 +14018,10 @@
       },
       "craftSkills": {
         "in_raid": [
-          "surv_3r"
+          "in_round_crafting"
         ]
       },
-      "updatedAt": "05/30/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "frying_pan": {
@@ -13143,13 +14172,10 @@
           "cost": {
             "coins": 810
           },
-          "limit": 6,
-          "refreshSeconds": 86400,
-          "requiredLevel": 7,
           "trader": "Apollo"
         }
       ],
-      "updatedAt": "03/22/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "gas_grenade_trap": {
@@ -13247,14 +14273,14 @@
       },
       "craftSkills": {
         "in_raid": [
-          "surv_5c",
-          "surv_3r"
+          "traveling_tinkerer",
+          "in_round_crafting"
         ],
         "workbench": [
           "surv_5c"
         ]
       },
-      "updatedAt": "05/30/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "gas_mine": {
@@ -13355,15 +14381,7 @@
           "zh-TW": "耐力消耗"
         }
       },
-      "vendors": [
-        {
-          "cost": {
-            "coins": 810
-          },
-          "trader": "Apollo"
-        }
-      ],
-      "updatedAt": "01/13/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "1.2"
     },
     "gas_mine_blueprint": {
@@ -13379,7 +14397,13 @@
       "value": 5000,
       "weightKg": 0,
       "imageFilename": "https://cdn.arctracker.io/items/v2/gas_mine_blueprint.png",
-      "updatedAt": "01/13/2026",
+      "craftBench": "research_station",
+      "stationLevelRequired": 1,
+      "recipe": {
+        "household_cleaner": 3,
+        "research_points": 1000
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "1.2"
     },
     "geiger_counter": {
@@ -13526,6 +14550,64 @@
       "updatedAt": "08/19/2026",
       "addedIn": "1.42"
     },
+    "grapple_hook": {
+      "name": {
+        "value": "",
+        "originalEn": "Grapple Hook"
+      },
+      "description": "",
+      "type": "Quick Use",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 1200,
+      "craftBench": [
+        "utility_bench",
+        "in_raid"
+      ],
+      "stationLevelRequired": 1,
+      "blueprintLocked": true,
+      "recipe": {
+        "frozen_trail_mechanical_1": 1,
+        "mechanical_components": 1,
+        "rope": 2
+      },
+      "recyclesInto": {
+        "frozen_trail_mechanical_1": 1,
+        "rope": 1
+      },
+      "salvagesInto": {
+        "rope": 1
+      },
+      "craftSkills": {
+        "in_raid": [
+          "skill_1693112598",
+          "in_round_crafting"
+        ]
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
+    "grapple_hook_blueprint": {
+      "name": {
+        "value": "",
+        "originalEn": "Grapple Hook Blueprint"
+      },
+      "description": "",
+      "type": "Blueprint",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 5000,
+      "craftBench": "research_station",
+      "stationLevelRequired": 1,
+      "recipe": {
+        "research_points": 2000,
+        "rope": 10
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
     "great_mullein": {
       "name": {
         "value": "Grande Verbasco",
@@ -13636,18 +14718,12 @@
       "vendors": [
         {
           "cost": {
-            "coins": 450
-          },
-          "trader": "Apollo"
-        },
-        {
-          "cost": {
-            "creds": 10
+            "coins": 3000
           },
           "trader": "Shani"
         }
       ],
-      "updatedAt": "03/22/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "green_light_stick_blueprint": {
@@ -13849,15 +14925,7 @@
           "extended_light_mag_iii"
         ]
       },
-      "vendors": [
-        {
-          "cost": {
-            "coins": 1350
-          },
-          "trader": "Tian Wen"
-        }
-      ],
-      "updatedAt": "03/17/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base",
       "weaponBaseId": "hairpin_i",
       "weaponTier": 1
@@ -14553,6 +15621,26 @@
       "weaponBaseId": "hairpin_i",
       "weaponTier": 4
     },
+    "harmonica": {
+      "name": {
+        "value": "",
+        "originalEn": "Harmonica"
+      },
+      "description": "",
+      "type": "Quick Use",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 1000,
+      "recyclesInto": {
+        "metal_parts": 4
+      },
+      "salvagesInto": {
+        "metal_parts": 2
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
     "headphones": {
       "name": {
         "value": "Fones de Ouvido",
@@ -14590,11 +15678,20 @@
       "value": 12,
       "weightKg": 0.05,
       "imageFilename": "https://cdn.arctracker.io/items/v2/heavy_ammo.png",
-      "craftBench": "workbench",
+      "craftBench": [
+        "workbench",
+        "in_raid"
+      ],
       "stationLevelRequired": 1,
       "recipe": {
         "chemicals": 2,
         "metal_parts": 3
+      },
+      "craftSkills": {
+        "in_raid": [
+          "skill_1693112598",
+          "in_round_crafting"
+        ]
       },
       "vendors": [
         {
@@ -14604,7 +15701,7 @@
           "trader": "Tian Wen"
         }
       ],
-      "updatedAt": "04/28/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "heavy_fuze_grenade": {
@@ -14681,7 +15778,18 @@
           "zh-TW": "範圍"
         }
       },
-      "updatedAt": "02/24/2026",
+      "vendors": [
+        {
+          "cost": {
+            "coins": 4800
+          },
+          "limit": 3,
+          "refreshSeconds": 86400,
+          "requiredLevel": 12,
+          "trader": "Apollo"
+        }
+      ],
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "heavy_gun_parts": {
@@ -14737,7 +15845,14 @@
       "value": 5000,
       "weightKg": 0,
       "imageFilename": "https://cdn.arctracker.io/items/v2/heavy_gun_parts_blueprint.png",
-      "updatedAt": "11/12/2025",
+      "craftBench": "research_station",
+      "stationLevelRequired": 2,
+      "recipe": {
+        "research_points": 2000,
+        "simple_gun_parts": 5,
+        "unusable_weapon": 1
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "heavy_shield": {
@@ -14981,8 +16096,8 @@
       },
       "craftSkills": {
         "in_raid": [
-          "surv_5c",
-          "surv_3r"
+          "traveling_tinkerer",
+          "in_round_crafting"
         ]
       },
       "vendors": [
@@ -14996,7 +16111,7 @@
           "trader": "Lance"
         }
       ],
-      "updatedAt": "05/30/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "hidden_bunker_key": {
@@ -15240,7 +16355,14 @@
       "value": 5000,
       "weightKg": 0,
       "imageFilename": "https://cdn.arctracker.io/items/v2/hullcracker_blueprint.png",
-      "updatedAt": "11/16/2025",
+      "craftBench": "research_station",
+      "stationLevelRequired": 3,
+      "recipe": {
+        "bombardier_cell": 5,
+        "complex_gun_parts": 1,
+        "research_points": 4500
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "hullcracker_i": {
@@ -15414,18 +16536,7 @@
           "stable_stock_iii"
         ]
       },
-      "vendors": [
-        {
-          "cost": {
-            "coins": 30000
-          },
-          "limit": 1,
-          "refreshSeconds": 86400,
-          "requiredLevel": 20,
-          "trader": "Tian Wen"
-        }
-      ],
-      "updatedAt": "03/22/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base",
       "weaponBaseId": "hullcracker_i",
       "weaponTier": 1
@@ -16080,7 +17191,13 @@
       "value": 5000,
       "weightKg": 0,
       "imageFilename": "https://cdn.arctracker.io/items/v2/il_toro_blueprint.png",
-      "updatedAt": "01/13/2026",
+      "craftBench": "research_station",
+      "stationLevelRequired": 1,
+      "recipe": {
+        "research_points": 1500,
+        "shredder_gyro": 5
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "il_toro_i": {
@@ -16926,6 +18043,63 @@
       "updatedAt": "01/13/2026",
       "addedIn": "base"
     },
+    "incendiary_grenades_research": {
+      "name": {
+        "value": "",
+        "originalEn": "Incendiary Grenades Research"
+      },
+      "description": "",
+      "type": "Blueprint",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "craftBench": "research_station",
+      "stationLevelRequired": 4,
+      "recipe": {
+        "bombardier_cell": 5,
+        "research_points": 5000
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
+    "incendiary_rounds_research": {
+      "name": {
+        "value": "",
+        "originalEn": "Incendiary Rounds Research"
+      },
+      "description": "",
+      "type": "Blueprint",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "craftBench": "research_station",
+      "stationLevelRequired": 4,
+      "recipe": {
+        "firefly_burner": 5,
+        "research_points": 5000
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
+    "increased_burst_research": {
+      "name": {
+        "value": "",
+        "originalEn": "Increased Burst Research"
+      },
+      "description": "",
+      "type": "Blueprint",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "craftBench": "research_station",
+      "stationLevelRequired": 4,
+      "recipe": {
+        "comet_igniter": 10,
+        "research_points": 5000
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
     "industrial_battery": {
       "name": {
         "value": "Bateria Industrial",
@@ -17120,18 +18294,7 @@
           "zh-TW": "掠奪者暈眩持續時間"
         }
       },
-      "vendors": [
-        {
-          "cost": {
-            "coins": 2550
-          },
-          "limit": 3,
-          "refreshSeconds": 86400,
-          "requiredLevel": 7,
-          "trader": "Apollo"
-        }
-      ],
-      "updatedAt": "03/22/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "jolt_mine_blueprint": {
@@ -17147,7 +18310,14 @@
       "value": 5000,
       "weightKg": 0,
       "imageFilename": "https://cdn.arctracker.io/items/v2/jolt_mine_blueprint.png",
-      "updatedAt": "01/13/2026",
+      "craftBench": "research_station",
+      "stationLevelRequired": 2,
+      "recipe": {
+        "advanced_arc_powercell": 3,
+        "industrial_battery": 1,
+        "research_points": 2000
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "jupiter": {
@@ -18170,11 +19340,13 @@
           "cost": {
             "coins": 4500
           },
+          "limit": 15,
+          "refreshSeconds": 86400,
           "requiredLevel": 12,
           "trader": "Tian Wen"
         }
       ],
-      "updatedAt": "03/22/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "leaper_pulse_unit": {
@@ -18382,11 +19554,20 @@
       "value": 4,
       "weightKg": 0.017,
       "imageFilename": "https://cdn.arctracker.io/items/v2/light_ammo.png",
-      "craftBench": "workbench",
+      "craftBench": [
+        "workbench",
+        "in_raid"
+      ],
       "stationLevelRequired": 1,
       "recipe": {
         "chemicals": 2,
         "metal_parts": 3
+      },
+      "craftSkills": {
+        "in_raid": [
+          "skill_1693112598",
+          "in_round_crafting"
+        ]
       },
       "vendors": [
         {
@@ -18396,7 +19577,7 @@
           "trader": "Tian Wen"
         }
       ],
-      "updatedAt": "02/24/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "light_bulb": {
@@ -18469,7 +19650,14 @@
       "value": 5000,
       "weightKg": 0,
       "imageFilename": "https://cdn.arctracker.io/items/v2/light_gun_parts_blueprint.png",
-      "updatedAt": "11/12/2025",
+      "craftBench": "research_station",
+      "stationLevelRequired": 2,
+      "recipe": {
+        "research_points": 2000,
+        "simple_gun_parts": 5,
+        "unusable_weapon": 1
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "light_impact_grenade": {
@@ -18552,7 +19740,7 @@
       },
       "craftSkills": {
         "in_raid": [
-          "surv_3r"
+          "in_round_crafting"
         ]
       },
       "vendors": [
@@ -18563,7 +19751,7 @@
           "trader": "Apollo"
         }
       ],
-      "updatedAt": "05/30/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "light_shield": {
@@ -18922,10 +20110,10 @@
       },
       "craftSkills": {
         "in_raid": [
-          "surv_3r"
+          "in_round_crafting"
         ]
       },
-      "updatedAt": "05/30/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "looting_mk1": {
@@ -19161,18 +20349,9 @@
           "refreshSeconds": 86400,
           "requiredLevel": 7,
           "trader": "Lance"
-        },
-        {
-          "cost": {
-            "creds": 100
-          },
-          "limit": 2,
-          "refreshSeconds": 86400,
-          "requiredLevel": 7,
-          "trader": "Shani"
         }
       ],
-      "updatedAt": "03/22/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "looting_mk3_cautious": {
@@ -19277,7 +20456,18 @@
           "zh-TW": "護盾相容性"
         }
       },
-      "updatedAt": "03/17/2026",
+      "vendors": [
+        {
+          "cost": {
+            "coins": 15000
+          },
+          "limit": 1,
+          "refreshSeconds": 86400,
+          "requiredLevel": 12,
+          "trader": "Lance"
+        }
+      ],
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "looting_mk3_safekeeper": {
@@ -19394,7 +20584,14 @@
       "value": 5000,
       "weightKg": 0,
       "imageFilename": "https://cdn.arctracker.io/items/v2/looting_mk3_safekeeper_blueprint.png",
-      "updatedAt": "02/02/2026",
+      "craftBench": "research_station",
+      "stationLevelRequired": 3,
+      "recipe": {
+        "arc_circuitry": 5,
+        "canister": 5,
+        "research_points": 3000
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "1.13"
     },
     "looting_mk3_survivor": {
@@ -19410,7 +20607,10 @@
       "value": 5000,
       "weightKg": 4,
       "imageFilename": "https://cdn.arctracker.io/items/v2/looting_mk3_survivor.png",
-      "craftBench": "equipment_bench",
+      "craftBench": [
+        "equipment_bench",
+        "research_station"
+      ],
       "stationLevelRequired": 3,
       "blueprintLocked": true,
       "recipe": {
@@ -19500,7 +20700,7 @@
           "zh-TW": "護盾相容性"
         }
       },
-      "updatedAt": "02/24/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "looting_mk3_survivor_blueprint": {
@@ -19561,7 +20761,13 @@
       "value": 5000,
       "weightKg": 0,
       "imageFilename": "https://cdn.arctracker.io/items/v2/lure_grenade_blueprint.png",
-      "updatedAt": "01/13/2026",
+      "craftBench": "research_station",
+      "stationLevelRequired": 1,
+      "recipe": {
+        "arc_circuitry": 6,
+        "research_points": 1000
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "lure_grenade_trap": {
@@ -19636,14 +20842,14 @@
       },
       "craftSkills": {
         "in_raid": [
-          "surv_5c",
-          "surv_3r"
+          "traveling_tinkerer",
+          "in_round_crafting"
         ],
         "workbench": [
           "surv_5c"
         ]
       },
-      "updatedAt": "05/30/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "magnet": {
@@ -19876,11 +21082,20 @@
       "value": 6,
       "weightKg": 0.025,
       "imageFilename": "https://cdn.arctracker.io/items/v2/medium_ammo.png",
-      "craftBench": "workbench",
+      "craftBench": [
+        "workbench",
+        "in_raid"
+      ],
       "stationLevelRequired": 1,
       "recipe": {
         "chemicals": 2,
         "metal_parts": 3
+      },
+      "craftSkills": {
+        "in_raid": [
+          "skill_1693112598",
+          "in_round_crafting"
+        ]
       },
       "vendors": [
         {
@@ -19890,7 +21105,7 @@
           "trader": "Tian Wen"
         }
       ],
-      "updatedAt": "02/24/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "medium_gun_parts": {
@@ -19946,7 +21161,14 @@
       "value": 5000,
       "weightKg": 0,
       "imageFilename": "https://cdn.arctracker.io/items/v2/medium_gun_parts_blueprint.png",
-      "updatedAt": "11/12/2025",
+      "craftBench": "research_station",
+      "stationLevelRequired": 2,
+      "recipe": {
+        "research_points": 2000,
+        "simple_gun_parts": 5,
+        "unusable_weapon": 1
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "medium_shield": {
@@ -20359,6 +21581,22 @@
       "updatedAt": "02/24/2026",
       "addedIn": "base"
     },
+    "mri_duck": {
+      "name": {
+        "value": "Pato Raio-X",
+        "originalEn": "MRI Duck"
+      },
+      "description": "Pode usar para arremessar e gerar barulho.",
+      "type": "Trinket",
+      "rarity": "Legendary",
+      "stackSize": 15,
+      "craftQuantity": 1,
+      "value": 10000,
+      "weightKg": 0.3,
+      "imageFilename": "https://cdn.arctracker.io/items/v2/mri_duck.png",
+      "updatedAt": "09/08/2026",
+      "addedIn": "1.45"
+    },
     "mushroom": {
       "name": {
         "value": "Cogumelo",
@@ -20636,6 +21874,13 @@
       "value": 5000,
       "weightKg": 0,
       "imageFilename": "https://cdn.arctracker.io/items/v2/muzzle_brake_ii_blueprint.png",
+      "craftBench": "research_station",
+      "stationLevelRequired": 2,
+      "recipe": {
+        "research_points": 2000,
+        "rusty_arc_steel": 5,
+        "steel_cable": 1
+      },
       "effects": {
         "Reduced Horizontal Recoil": {
           "value": "20%",
@@ -20684,7 +21929,7 @@
           "zh-TW": "降低垂直後座力"
         }
       },
-      "updatedAt": "11/12/2025",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "muzzle_brake_iii": {
@@ -20878,8 +22123,8 @@
       },
       "craftSkills": {
         "in_raid": [
-          "surv_5c",
-          "surv_3r"
+          "traveling_tinkerer",
+          "in_round_crafting"
         ]
       },
       "vendors": [
@@ -20887,12 +22132,10 @@
           "cost": {
             "coins": 1920
           },
-          "limit": 6,
-          "refreshSeconds": 86400,
           "trader": "Apollo"
         }
       ],
-      "updatedAt": "05/30/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "number_plate": {
@@ -21087,7 +22330,14 @@
       "value": 5000,
       "weightKg": 0,
       "imageFilename": "https://cdn.arctracker.io/items/v2/osprey_blueprint.png",
-      "updatedAt": "01/13/2026",
+      "craftBench": "research_station",
+      "stationLevelRequired": 2,
+      "recipe": {
+        "camera_lens": 1,
+        "research_points": 3000,
+        "sentinel_firing_core": 3
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "osprey_i": {
@@ -21303,7 +22553,18 @@
           "stable_stock_iii"
         ]
       },
-      "updatedAt": "03/17/2026",
+      "vendors": [
+        {
+          "cost": {
+            "coins": 21000
+          },
+          "limit": 1,
+          "refreshSeconds": 86400,
+          "requiredLevel": 12,
+          "trader": "Tian Wen"
+        }
+      ],
+      "updatedAt": "10/08/2026",
       "addedIn": "base",
       "weaponBaseId": "osprey_i",
       "weaponTier": 1
@@ -22399,6 +23660,28 @@
       "updatedAt": "02/06/2026",
       "addedIn": "base"
     },
+    "planks": {
+      "name": {
+        "value": "",
+        "originalEn": "Planks"
+      },
+      "description": "",
+      "type": "Basic Material",
+      "rarity": "Common",
+      "stackSize": 50,
+      "craftQuantity": 1,
+      "value": 100,
+      "vendors": [
+        {
+          "cost": {
+            "assorted_seeds": 3
+          },
+          "trader": "Celeste"
+        }
+      ],
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
     "plastic_parts": {
       "name": {
         "value": "Peças Plásticas",
@@ -22684,7 +23967,14 @@
       "value": 5000,
       "weightKg": 0,
       "imageFilename": "https://cdn.arctracker.io/items/v2/powered_descender_blueprint.png",
-      "updatedAt": "04/28/2026",
+      "craftBench": "research_station",
+      "stationLevelRequired": 3,
+      "recipe": {
+        "advanced_electrical_components": 1,
+        "cooling_fan": 2,
+        "research_points": 3000
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "1.26"
     },
     "precision_gimbal": {
@@ -22779,6 +24069,20 @@
       "updatedAt": "06/03/2026",
       "addedIn": "1.17"
     },
+    "project_pathos_empathy_core": {
+      "name": {
+        "value": "",
+        "originalEn": "Project Pathos Empathy Core"
+      },
+      "description": "",
+      "type": "Key",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "questItem": true,
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
     "projector": {
       "name": {
         "value": "Projetor",
@@ -22859,13 +24163,13 @@
           "cost": {
             "coins": 1410
           },
-          "limit": 6,
+          "limit": 3,
           "refreshSeconds": 86400,
           "requiredLevel": 7,
           "trader": "Apollo"
         }
       ],
-      "updatedAt": "03/22/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "1.2"
     },
     "pulse_mine_blueprint": {
@@ -22881,8 +24185,28 @@
       "value": 5000,
       "weightKg": 0,
       "imageFilename": "https://cdn.arctracker.io/items/v2/pulse_mine_blueprint.png",
-      "updatedAt": "01/13/2026",
+      "craftBench": "research_station",
+      "stationLevelRequired": 1,
+      "recipe": {
+        "industrial_battery": 3,
+        "research_points": 1000
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "1.2"
+    },
+    "purification_system_blueprint": {
+      "name": {
+        "value": "",
+        "originalEn": "Purification System Blueprint"
+      },
+      "description": "",
+      "type": "Key",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "questItem": true,
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
     },
     "queen_reactor": {
       "name": {
@@ -22997,14 +24321,14 @@
       },
       "craftSkills": {
         "in_raid": [
-          "surv_5c",
-          "surv_3r"
+          "traveling_tinkerer",
+          "in_round_crafting"
         ]
       },
       "vendors": [
         {
           "cost": {
-            "creds": 100
+            "coins": 9000
           },
           "limit": 2,
           "refreshSeconds": 86400,
@@ -23012,7 +24336,7 @@
           "trader": "Shani"
         }
       ],
-      "updatedAt": "05/30/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "raiders_refuge_security_code": {
@@ -23031,6 +24355,25 @@
       "updatedAt": "02/06/2026",
       "addedIn": "base"
     },
+    "ramping_damage_research": {
+      "name": {
+        "value": "",
+        "originalEn": "Ramping Damage Research"
+      },
+      "description": "",
+      "type": "Blueprint",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "craftBench": "research_station",
+      "stationLevelRequired": 4,
+      "recipe": {
+        "queen_reactor": 2,
+        "research_points": 5000
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
     "rascal_blueprint": {
       "name": {
         "value": "Plano do Rascal",
@@ -23044,7 +24387,14 @@
       "value": 5000,
       "weightKg": 0,
       "imageFilename": "https://cdn.arctracker.io/items/v2/rascal.png",
-      "updatedAt": "05/19/2026",
+      "craftBench": "research_station",
+      "stationLevelRequired": 2,
+      "recipe": {
+        "arc_alloy": 15,
+        "bombardier_cell": 2,
+        "research_points": 3000
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "1.29"
     },
     "rascal_i": {
@@ -23193,7 +24543,18 @@
           "zh-TW": "彈匣容量"
         }
       },
-      "updatedAt": "05/19/2026",
+      "vendors": [
+        {
+          "cost": {
+            "coins": 21000
+          },
+          "limit": 2,
+          "refreshSeconds": 86400,
+          "requiredLevel": 12,
+          "trader": "Tian Wen"
+        }
+      ],
+      "updatedAt": "10/08/2026",
       "addedIn": "1.29"
     },
     "rascal_ii": {
@@ -23305,7 +24666,8 @@
       },
       "upgradesTo": "rattler_ii",
       "recyclesInto": {
-        "metal_parts": 8
+        "metal_parts": 8,
+        "rubber_parts": 4
       },
       "salvagesInto": {
         "metal_parts": 4
@@ -23465,7 +24827,7 @@
           "stable_stock_iii"
         ]
       },
-      "updatedAt": "03/17/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base",
       "weaponBaseId": "rattler_i",
       "weaponTier": 1
@@ -23491,7 +24853,8 @@
       },
       "upgradesTo": "rattler_iii",
       "recyclesInto": {
-        "metal_parts": 12
+        "metal_parts": 12,
+        "rubber_parts": 10
       },
       "salvagesInto": {
         "metal_parts": 8
@@ -23651,7 +25014,7 @@
           "stable_stock_iii"
         ]
       },
-      "updatedAt": "03/17/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base",
       "upgradesFrom": "rattler_i",
       "weaponBaseId": "rattler_i",
@@ -24111,18 +25474,11 @@
           },
           "limit": 6,
           "refreshSeconds": 86400,
+          "requiredLevel": 7,
           "trader": "Apollo"
-        },
-        {
-          "cost": {
-            "creds": 50
-          },
-          "limit": 3,
-          "refreshSeconds": 86400,
-          "trader": "Shani"
         }
       ],
-      "updatedAt": "03/22/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "red_coral_jewelry": {
@@ -24218,18 +25574,12 @@
       "vendors": [
         {
           "cost": {
-            "coins": 450
-          },
-          "trader": "Apollo"
-        },
-        {
-          "cost": {
-            "creds": 10
+            "coins": 3000
           },
           "trader": "Shani"
         }
       ],
-      "updatedAt": "03/22/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "red_light_stick_blueprint": {
@@ -24320,11 +25670,10 @@
           "cost": {
             "coins": 810
           },
-          "requiredLevel": 7,
-          "trader": "Apollo"
+          "trader": "Shani"
         }
       ],
-      "updatedAt": "03/22/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "remote_raider_flare_blueprint": {
@@ -24340,7 +25689,13 @@
       "value": 5000,
       "weightKg": 0,
       "imageFilename": "https://cdn.arctracker.io/items/v2/remote_raider_flare_blueprint.png",
-      "updatedAt": "01/13/2026",
+      "craftBench": "research_station",
+      "stationLevelRequired": 1,
+      "recipe": {
+        "chemicals": 25,
+        "research_points": 500
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "renegade_i": {
@@ -25228,6 +26583,62 @@
       "weaponBaseId": "renegade_i",
       "weaponTier": 4
     },
+    "research_item_02": {
+      "name": {
+        "value": "",
+        "originalEn": "Research Item 02"
+      },
+      "description": "",
+      "type": "Trinket",
+      "rarity": "Common",
+      "stackSize": 5,
+      "craftQuantity": 1,
+      "value": 640,
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
+    "research_item_03": {
+      "name": {
+        "value": "",
+        "originalEn": "Research Item 03"
+      },
+      "description": "",
+      "type": "Trinket",
+      "rarity": "Common",
+      "stackSize": 5,
+      "craftQuantity": 1,
+      "value": 1000,
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
+    "research_item_04": {
+      "name": {
+        "value": "",
+        "originalEn": "Research Item 04"
+      },
+      "description": "",
+      "type": "Trinket",
+      "rarity": "Common",
+      "stackSize": 3,
+      "craftQuantity": 1,
+      "value": 2000,
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
+    "research_item_05": {
+      "name": {
+        "value": "",
+        "originalEn": "Research Item 05"
+      },
+      "description": "",
+      "type": "Trinket",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 3000,
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
     "resin": {
       "name": {
         "value": "Resina",
@@ -25580,12 +26991,12 @@
       "rarity": "Rare",
       "stackSize": 5,
       "craftQuantity": 1,
-      "value": 500,
+      "value": 300,
       "weightKg": 0.3,
       "imageFilename": "https://cdn.arctracker.io/items/v2/rope.png",
       "foundIn": "Residential, Commercial",
       "recyclesInto": {
-        "fabric": 5
+        "fabric": 3
       },
       "salvagesInto": {
         "fabric": 2
@@ -25601,7 +27012,7 @@
           "trader": "Celeste"
         }
       ],
-      "updatedAt": "03/22/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "rosary": {
@@ -26017,6 +27428,25 @@
       "updatedAt": "01/09/2026",
       "addedIn": "1.2"
     },
+    "scoped_research": {
+      "name": {
+        "value": "",
+        "originalEn": "Scoped Research"
+      },
+      "description": "",
+      "type": "Blueprint",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "craftBench": "research_station",
+      "stationLevelRequired": 4,
+      "recipe": {
+        "research_points": 5000,
+        "snitch_scanner": 14
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
     "scout_patrol_note": {
       "name": {
         "value": "Bilhete da Patrulha de Reconhecimento",
@@ -26169,8 +27599,33 @@
       "value": 5000,
       "weightKg": 0,
       "imageFilename": "https://cdn.arctracker.io/items/v2/seeker_grenade_blueprint.png",
-      "updatedAt": "01/13/2026",
+      "craftBench": "research_station",
+      "stationLevelRequired": 1,
+      "recipe": {
+        "research_points": 1000,
+        "rocketeer_driver": 1
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "1.2"
+    },
+    "semi_auto_research": {
+      "name": {
+        "value": "",
+        "originalEn": "Semi-Auto Research"
+      },
+      "description": "",
+      "type": "Blueprint",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "craftBench": "research_station",
+      "stationLevelRequired": 4,
+      "recipe": {
+        "research_points": 5000,
+        "vaporizer_regulator": 4
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
     },
     "sensors": {
       "name": {
@@ -26277,21 +27732,33 @@
       "repairDurability": 0.5,
       "craftSkills": {
         "in_raid": [
-          "surv_3r"
+          "in_round_crafting"
         ]
       },
+      "updatedAt": "10/08/2026",
+      "addedIn": "1.7"
+    },
+    "sheet_metal": {
+      "name": {
+        "value": "",
+        "originalEn": "Sheet Metal"
+      },
+      "description": "",
+      "type": "Basic Material",
+      "rarity": "Common",
+      "stackSize": 50,
+      "craftQuantity": 1,
+      "value": 100,
       "vendors": [
         {
           "cost": {
-            "creds": 40
+            "assorted_seeds": 3
           },
-          "limit": 3,
-          "refreshSeconds": 86400,
-          "trader": "Shani"
+          "trader": "Celeste"
         }
       ],
-      "updatedAt": "05/30/2026",
-      "addedIn": "1.7"
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
     },
     "shield_recharger": {
       "name": {
@@ -26395,7 +27862,7 @@
       },
       "craftSkills": {
         "in_raid": [
-          "surv_3r"
+          "in_round_crafting"
         ]
       },
       "vendors": [
@@ -26406,7 +27873,7 @@
           "trader": "Lance"
         }
       ],
-      "updatedAt": "05/30/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "shotgun_ammo": {
@@ -26422,11 +27889,20 @@
       "value": 20,
       "weightKg": 0.085,
       "imageFilename": "https://cdn.arctracker.io/items/v2/shotgun_ammo.png",
-      "craftBench": "workbench",
+      "craftBench": [
+        "workbench",
+        "in_raid"
+      ],
       "stationLevelRequired": 1,
       "recipe": {
         "chemicals": 2,
         "metal_parts": 3
+      },
+      "craftSkills": {
+        "in_raid": [
+          "skill_1693112598",
+          "in_round_crafting"
+        ]
       },
       "vendors": [
         {
@@ -26436,7 +27912,7 @@
           "trader": "Tian Wen"
         }
       ],
-      "updatedAt": "02/24/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "shotgun_choke_i": {
@@ -26489,18 +27965,7 @@
           "zh-TW": "降低基礎散布"
         }
       },
-      "vendors": [
-        {
-          "cost": {
-            "coins": 1920
-          },
-          "limit": 5,
-          "refreshSeconds": 86400,
-          "requiredLevel": 7,
-          "trader": "Tian Wen"
-        }
-      ],
-      "updatedAt": "03/22/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "shotgun_choke_ii": {
@@ -26582,7 +28047,14 @@
       "value": 5000,
       "weightKg": 0,
       "imageFilename": "https://cdn.arctracker.io/items/v2/shotgun_choke_ii_blueprint.png",
-      "updatedAt": "12/07/2025",
+      "craftBench": "research_station",
+      "stationLevelRequired": 2,
+      "recipe": {
+        "heavy_gun_parts": 1,
+        "research_points": 2000,
+        "rusty_arc_steel": 5
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "shotgun_choke_iii": {
@@ -26888,7 +28360,14 @@
       "value": 5000,
       "weightKg": 0,
       "imageFilename": "https://cdn.arctracker.io/items/v2/showstopper_blueprint.png",
-      "updatedAt": "12/07/2025",
+      "craftBench": "research_station",
+      "stationLevelRequired": 2,
+      "recipe": {
+        "hornet_driver": 5,
+        "industrial_battery": 3,
+        "research_points": 2000
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "shrapnel_grenade": {
@@ -26904,7 +28383,10 @@
       "value": 800,
       "weightKg": 0.15,
       "imageFilename": "https://cdn.arctracker.io/items/v2/shrapnel_grenade.png",
-      "craftBench": "explosives_bench",
+      "craftBench": [
+        "explosives_bench",
+        "in_raid"
+      ],
       "stationLevelRequired": 2,
       "recipe": {
         "crude_explosives": 1,
@@ -26965,7 +28447,24 @@
           "zh-TW": "半徑"
         }
       },
-      "updatedAt": "02/24/2026",
+      "craftSkills": {
+        "in_raid": [
+          "skill_1693112598",
+          "in_round_crafting"
+        ]
+      },
+      "vendors": [
+        {
+          "cost": {
+            "coins": 2400
+          },
+          "limit": 3,
+          "refreshSeconds": 86400,
+          "requiredLevel": 7,
+          "trader": "Apollo"
+        }
+      ],
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "shredder_gyro": {
@@ -27071,14 +28570,6 @@
       "vendors": [
         {
           "cost": {
-            "creds": 100
-          },
-          "limit": 1,
-          "refreshSeconds": 86400,
-          "trader": "Shani"
-        },
-        {
-          "cost": {
             "coins": 6000
           },
           "limit": 1,
@@ -27087,7 +28578,7 @@
           "trader": "Tian Wen"
         }
       ],
-      "updatedAt": "03/22/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "silencer_i_blueprint": {
@@ -27103,7 +28594,14 @@
       "value": 5000,
       "weightKg": 0,
       "imageFilename": "https://cdn.arctracker.io/items/v2/silencer_i_blueprint.png",
-      "updatedAt": "01/13/2026",
+      "craftBench": "research_station",
+      "stationLevelRequired": 2,
+      "recipe": {
+        "cooling_coil": 1,
+        "research_points": 2000,
+        "rusty_arc_steel": 5
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "silencer_ii": {
@@ -27174,7 +28672,14 @@
       "value": 5000,
       "weightKg": 0,
       "imageFilename": "https://cdn.arctracker.io/items/v2/silencer_ii_blueprint.png",
-      "updatedAt": "01/13/2026",
+      "craftBench": "research_station",
+      "stationLevelRequired": 3,
+      "recipe": {
+        "advanced_mechanical_components": 1,
+        "arc_performance_steel": 5,
+        "research_points": 3000
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "silencer_iii": {
@@ -27315,6 +28820,46 @@
       "updatedAt": "06/17/2026",
       "addedIn": "1.26"
     },
+    "skulker_targeter": {
+      "name": {
+        "value": "",
+        "originalEn": "Skulker Targeter"
+      },
+      "description": "",
+      "type": "Recyclable",
+      "rarity": "Common",
+      "stackSize": 3,
+      "craftQuantity": 1,
+      "value": 1000,
+      "recyclesInto": {
+        "arc_alloy": 1,
+        "simple_gun_parts": 1
+      },
+      "salvagesInto": {
+        "arc_alloy": 1
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
+    "slug_rounds_research": {
+      "name": {
+        "value": "",
+        "originalEn": "Slug Rounds Research"
+      },
+      "description": "",
+      "type": "Blueprint",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "craftBench": "research_station",
+      "stationLevelRequired": 4,
+      "recipe": {
+        "research_points": 5000,
+        "tick_pod": 20
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
     "smoke_grenade": {
       "name": {
         "value": "Granada de Fumaça",
@@ -27397,11 +28942,11 @@
           },
           "limit": 6,
           "refreshSeconds": 86400,
-          "requiredLevel": 7,
+          "requiredLevel": 12,
           "trader": "Apollo"
         }
       ],
-      "updatedAt": "03/22/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "smoke_grenade_blueprint": {
@@ -27417,7 +28962,14 @@
       "value": 5000,
       "weightKg": 0,
       "imageFilename": "https://cdn.arctracker.io/items/v2/smoke_grenade_blueprint.png",
-      "updatedAt": "01/13/2026",
+      "craftBench": "research_station",
+      "stationLevelRequired": 2,
+      "recipe": {
+        "gas_grenade": 3,
+        "household_cleaner": 1,
+        "research_points": 2000
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "smoke_grenade_trap": {
@@ -27492,14 +29044,14 @@
       },
       "craftSkills": {
         "in_raid": [
-          "surv_5c",
-          "surv_3r"
+          "traveling_tinkerer",
+          "in_round_crafting"
         ],
         "workbench": [
           "surv_5c"
         ]
       },
-      "updatedAt": "05/30/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "snap_blast_grenade": {
@@ -27609,7 +29161,7 @@
       "recipe": {
         "exodus_modules": 1,
         "power_rod": 2,
-        "rope": 3
+        "steel_cable": 2
       },
       "recyclesInto": {
         "power_rod": 1,
@@ -27671,7 +29223,7 @@
           "zh-TW": "範圍"
         }
       },
-      "updatedAt": "02/24/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "snap_hook_blueprint": {
@@ -27926,6 +29478,39 @@
       "updatedAt": "11/04/2025",
       "addedIn": "base"
     },
+    "sprint_shooting_research": {
+      "name": {
+        "value": "",
+        "originalEn": "Sprint Shooting Research"
+      },
+      "description": "",
+      "type": "Blueprint",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "craftBench": "research_station",
+      "stationLevelRequired": 4,
+      "recipe": {
+        "research_points": 5000,
+        "sprint_shooting_research_material": 20
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
+    "sprint_shooting_research_material": {
+      "name": {
+        "value": "",
+        "originalEn": "Sprint Shooting Research Material"
+      },
+      "description": "",
+      "type": "Recyclable",
+      "rarity": "Common",
+      "stackSize": 3,
+      "craftQuantity": 1,
+      "value": 1000,
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
     "stable_stock_i": {
       "name": {
         "value": "Coronha Estável I",
@@ -28100,26 +29685,7 @@
           "zh-TW": "降低後座力恢復時間"
         }
       },
-      "vendors": [
-        {
-          "cost": {
-            "creds": 100
-          },
-          "limit": 2,
-          "refreshSeconds": 86400,
-          "trader": "Shani"
-        },
-        {
-          "cost": {
-            "coins": 6000
-          },
-          "limit": 2,
-          "refreshSeconds": 86400,
-          "requiredLevel": 7,
-          "trader": "Tian Wen"
-        }
-      ],
-      "updatedAt": "03/22/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "stable_stock_ii_blueprint": {
@@ -28135,7 +29701,14 @@
       "value": 5000,
       "weightKg": 0,
       "imageFilename": "https://cdn.arctracker.io/items/v2/stable_stock_ii_blueprint.png",
-      "updatedAt": "12/07/2025",
+      "craftBench": "research_station",
+      "stationLevelRequired": 2,
+      "recipe": {
+        "arc_flex_rubber": 5,
+        "research_points": 2000,
+        "rubber_pad": 1
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "stable_stock_iii": {
@@ -28259,7 +29832,18 @@
           "zh-TW": "後座力恢復時間減少50%"
         }
       },
-      "updatedAt": "01/09/2026",
+      "vendors": [
+        {
+          "cost": {
+            "coins": 15000
+          },
+          "limit": 2,
+          "refreshSeconds": 86400,
+          "requiredLevel": 7,
+          "trader": "Tian Wen"
+        }
+      ],
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "stable_stock_iii_blueprint": {
@@ -28311,6 +29895,37 @@
       "foundIn": "Old World, Residential",
       "updatedAt": "03/17/2026",
       "addedIn": "base"
+    },
+    "steel_cable": {
+      "name": {
+        "value": "",
+        "originalEn": "Steel Cable"
+      },
+      "description": "",
+      "type": "Topside Material",
+      "rarity": "Common",
+      "stackSize": 5,
+      "craftQuantity": 1,
+      "value": 270,
+      "recyclesInto": {
+        "wires": 1
+      },
+      "salvagesInto": {
+        "rubber_parts": 1
+      },
+      "vendors": [
+        {
+          "cost": {
+            "assorted_seeds": 20
+          },
+          "limit": 5,
+          "refreshSeconds": 86400,
+          "requiredLevel": 12,
+          "trader": "Celeste"
+        }
+      ],
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
     },
     "steel_spring": {
       "name": {
@@ -28560,14 +30175,6 @@
       "vendors": [
         {
           "cost": {
-            "creds": 40
-          },
-          "limit": 3,
-          "refreshSeconds": 86400,
-          "trader": "Shani"
-        },
-        {
-          "cost": {
             "coins": 6000
           },
           "limit": 3,
@@ -28576,8 +30183,138 @@
           "trader": "Lance"
         }
       ],
-      "updatedAt": "03/22/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
+    },
+    "stiletto_blueprint": {
+      "name": {
+        "value": "",
+        "originalEn": "Stiletto Blueprint"
+      },
+      "description": "",
+      "type": "Blueprint",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 5000,
+      "craftBench": "research_station",
+      "stationLevelRequired": 1,
+      "recipe": {
+        "research_points": 3000,
+        "wasp_driver": 15
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
+    "stiletto_i": {
+      "name": {
+        "value": "",
+        "originalEn": "Stiletto I"
+      },
+      "description": "",
+      "type": "Battle Rifle",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 3800,
+      "isWeapon": true,
+      "craftBench": "weapon_bench",
+      "stationLevelRequired": 1,
+      "blueprintLocked": true,
+      "recipe": {
+        "mechanical_components": 4,
+        "simple_gun_parts": 4
+      },
+      "recyclesInto": {
+        "mechanical_components": 1,
+        "simple_gun_parts": 2
+      },
+      "salvagesInto": {
+        "simple_gun_parts": 2
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
+    "stiletto_ii": {
+      "name": {
+        "value": "",
+        "originalEn": "Stiletto II"
+      },
+      "description": "",
+      "type": "Battle Rifle",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 6000,
+      "isWeapon": true,
+      "craftBench": "weapon_bench",
+      "upgradeCost": {
+        "mechanical_components": 3,
+        "simple_gun_parts": 1
+      },
+      "recyclesInto": {
+        "mechanical_components": 2,
+        "simple_gun_parts": 2
+      },
+      "salvagesInto": {
+        "simple_gun_parts": 2
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
+    "stiletto_iii": {
+      "name": {
+        "value": "",
+        "originalEn": "Stiletto III"
+      },
+      "description": "",
+      "type": "Battle Rifle",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 8000,
+      "isWeapon": true,
+      "craftBench": "weapon_bench",
+      "upgradeCost": {
+        "mechanical_components": 3,
+        "simple_gun_parts": 1
+      },
+      "recyclesInto": {
+        "mechanical_components": 3,
+        "simple_gun_parts": 3
+      },
+      "salvagesInto": {
+        "simple_gun_parts": 3
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
+    "stiletto_iv": {
+      "name": {
+        "value": "",
+        "originalEn": "Stiletto IV"
+      },
+      "description": "",
+      "type": "Battle Rifle",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 11000,
+      "isWeapon": true,
+      "craftBench": "weapon_bench",
+      "upgradeCost": {
+        "light_gun_parts": 1,
+        "mechanical_components": 4
+      },
+      "recyclesInto": {
+        "mechanical_components": 4,
+        "simple_gun_parts": 4
+      },
+      "salvagesInto": {
+        "simple_gun_parts": 4
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
     },
     "stitcher_i": {
       "name": {
@@ -29499,6 +31236,25 @@
       "weaponBaseId": "stitcher_i",
       "weaponTier": 4
     },
+    "straight_bolt_research": {
+      "name": {
+        "value": "",
+        "originalEn": "Straight Bolt Research"
+      },
+      "description": "",
+      "type": "Blueprint",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "craftBench": "research_station",
+      "stationLevelRequired": 4,
+      "recipe": {
+        "research_points": 5000,
+        "sentinel_firing_core": 8
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
     "surge_coil": {
       "name": {
         "value": "Surge Coil",
@@ -29527,7 +31283,18 @@
       "salvagesInto": {
         "electrical_components": 1
       },
-      "updatedAt": "03/31/2026",
+      "vendors": [
+        {
+          "cost": {
+            "coins": 6300
+          },
+          "limit": 3,
+          "refreshSeconds": 86400,
+          "requiredLevel": 12,
+          "trader": "Apollo"
+        }
+      ],
+      "updatedAt": "10/08/2026",
       "addedIn": "1.22"
     },
     "surge_coil_blueprint": {
@@ -29543,7 +31310,14 @@
       "value": 5000,
       "weightKg": 0,
       "imageFilename": "https://cdn.arctracker.io/items/v2/surge_coil_blueprint.png",
-      "updatedAt": "03/31/2026",
+      "craftBench": "research_station",
+      "stationLevelRequired": 2,
+      "recipe": {
+        "battery": 10,
+        "hornet_driver": 3,
+        "research_points": 2000
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "1.22"
     },
     "surge_shield_recharger": {
@@ -29622,14 +31396,6 @@
       "vendors": [
         {
           "cost": {
-            "creds": 40
-          },
-          "limit": 5,
-          "refreshSeconds": 86400,
-          "trader": "Shani"
-        },
-        {
-          "cost": {
             "coins": 3600
           },
           "limit": 5,
@@ -29638,7 +31404,7 @@
           "trader": "Lance"
         }
       ],
-      "updatedAt": "03/22/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "surveyor_vault": {
@@ -29965,18 +31731,9 @@
           "refreshSeconds": 86400,
           "requiredLevel": 7,
           "trader": "Lance"
-        },
-        {
-          "cost": {
-            "creds": 100
-          },
-          "limit": 2,
-          "refreshSeconds": 86400,
-          "requiredLevel": 7,
-          "trader": "Shani"
         }
       ],
-      "updatedAt": "03/22/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "tactical_mk3_defensive": {
@@ -30098,7 +31855,14 @@
       "value": 5000,
       "weightKg": 0,
       "imageFilename": "https://cdn.arctracker.io/items/v2/tactical_mk3_defensive_blueprint.png",
-      "updatedAt": "12/07/2025",
+      "craftBench": "research_station",
+      "stationLevelRequired": 3,
+      "recipe": {
+        "advanced_arc_powercell": 2,
+        "arc_circuitry": 5,
+        "research_points": 3000
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "tactical_mk3_healing": {
@@ -30204,7 +31968,18 @@
           "zh-TW": "護盾相容性"
         }
       },
-      "updatedAt": "03/17/2026",
+      "vendors": [
+        {
+          "cost": {
+            "coins": 15000
+          },
+          "limit": 1,
+          "refreshSeconds": 86400,
+          "requiredLevel": 12,
+          "trader": "Lance"
+        }
+      ],
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "tactical_mk3_healing_blueprint": {
@@ -30337,7 +32112,14 @@
       "value": 5000,
       "weightKg": 0,
       "imageFilename": "https://cdn.arctracker.io/items/v2/tactical_mk3_revival_blueprint.png",
-      "updatedAt": "02/02/2026",
+      "craftBench": "research_station",
+      "stationLevelRequired": 3,
+      "recipe": {
+        "antiseptic": 3,
+        "arc_circuitry": 5,
+        "research_points": 3000
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "1.13"
     },
     "tactical_mk3_smoke": {
@@ -30353,7 +32135,10 @@
       "value": 5000,
       "weightKg": 4,
       "imageFilename": "https://cdn.arctracker.io/items/v2/tactical_mk3_smoke.png",
-      "craftBench": "equipment_bench",
+      "craftBench": [
+        "equipment_bench",
+        "research_station"
+      ],
       "stationLevelRequired": 3,
       "blueprintLocked": true,
       "recipe": {
@@ -30443,8 +32228,8 @@
           "zh-TW": "護盾相容性"
         }
       },
-      "updatedAt": "04/28/2026",
-      "addedIn": "1.26"
+      "updatedAt": "10/08/2026",
+      "addedIn": "base"
     },
     "tactical_mk3_smoke_blueprint": {
       "name": {
@@ -30537,7 +32322,18 @@
           "zh-TW": "半徑"
         }
       },
-      "updatedAt": "11/10/2025",
+      "vendors": [
+        {
+          "cost": {
+            "coins": 3000
+          },
+          "limit": 3,
+          "refreshSeconds": 86400,
+          "requiredLevel": 12,
+          "trader": "Apollo"
+        }
+      ],
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "tagging_grenade_blueprint": {
@@ -30553,7 +32349,14 @@
       "value": 5000,
       "weightKg": 0,
       "imageFilename": "https://cdn.arctracker.io/items/v2/tagging_grenade_blueprint.png",
-      "updatedAt": "12/07/2025",
+      "craftBench": "research_station",
+      "stationLevelRequired": 2,
+      "recipe": {
+        "broken_guidance_system": 2,
+        "research_points": 2000,
+        "sensors": 2
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "tattered_arc_lining": {
@@ -31536,6 +33339,56 @@
       "weaponBaseId": "tempest_i",
       "weaponTier": 4
     },
+    "tether_gun": {
+      "name": {
+        "value": "",
+        "originalEn": "Tether Gun"
+      },
+      "description": "",
+      "type": "Quick Use",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 3000,
+      "craftBench": "utility_bench",
+      "stationLevelRequired": 2,
+      "blueprintLocked": true,
+      "recipe": {
+        "advanced_electrical_components": 1,
+        "frozen_trail_tech_2": 1,
+        "steel_cable": 2
+      },
+      "recyclesInto": {
+        "mechanical_components": 1,
+        "steel_cable": 1
+      },
+      "salvagesInto": {
+        "steel_cable": 1
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
+    "tether_gun_blueprint": {
+      "name": {
+        "value": "",
+        "originalEn": "Tether Gun Blueprint"
+      },
+      "description": "",
+      "type": "Blueprint",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 5000,
+      "craftBench": "research_station",
+      "stationLevelRequired": 2,
+      "recipe": {
+        "research_points": 2000,
+        "steel_cable": 3,
+        "unusable_weapon": 1
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
     "thermostat": {
       "name": {
         "value": "Termostato",
@@ -31661,7 +33514,14 @@
       "value": 5000,
       "weightKg": 0,
       "imageFilename": "https://cdn.arctracker.io/items/v2/torrente_blueprint.png",
-      "updatedAt": "01/13/2026",
+      "craftBench": "research_station",
+      "stationLevelRequired": 2,
+      "recipe": {
+        "bastion_cell": 3,
+        "cooling_fan": 1,
+        "research_points": 3000
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "torrente_i": {
@@ -31845,7 +33705,18 @@
           "stable_stock_iii"
         ]
       },
-      "updatedAt": "03/17/2026",
+      "vendors": [
+        {
+          "cost": {
+            "coins": 21000
+          },
+          "limit": 1,
+          "refreshSeconds": 86400,
+          "requiredLevel": 12,
+          "trader": "Tian Wen"
+        }
+      ],
+      "updatedAt": "10/08/2026",
       "addedIn": "base",
       "weaponBaseId": "torrente_i",
       "weaponTier": 1
@@ -32545,18 +34416,7 @@
           "zh-TW": "半徑"
         }
       },
-      "vendors": [
-        {
-          "cost": {
-            "coins": 6600
-          },
-          "limit": 3,
-          "refreshSeconds": 86400,
-          "requiredLevel": 7,
-          "trader": "Apollo"
-        }
-      ],
-      "updatedAt": "03/22/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "1.2"
     },
     "trailblazer_blueprint": {
@@ -32572,7 +34432,14 @@
       "value": 5000,
       "weightKg": 0,
       "imageFilename": "https://cdn.arctracker.io/items/v2/trailblazer_blueprint.png",
-      "updatedAt": "01/13/2026",
+      "craftBench": "research_station",
+      "stationLevelRequired": 2,
+      "recipe": {
+        "crude_explosives": 5,
+        "research_points": 2000,
+        "turbine_compressor": 1
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "1.2"
     },
     "train_model": {
@@ -32665,7 +34532,18 @@
           "zh-TW": "範圍"
         }
       },
-      "updatedAt": "02/24/2026",
+      "vendors": [
+        {
+          "cost": {
+            "coins": 3000
+          },
+          "limit": 3,
+          "refreshSeconds": 86400,
+          "requiredLevel": 12,
+          "trader": "Apollo"
+        }
+      ],
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "trigger_nade_blueprint": {
@@ -32681,7 +34559,14 @@
       "value": 5000,
       "weightKg": 0,
       "imageFilename": "https://cdn.arctracker.io/items/v2/trigger_nade_blueprint.png",
-      "updatedAt": "01/13/2026",
+      "craftBench": "research_station",
+      "stationLevelRequired": 2,
+      "recipe": {
+        "pop_trigger": 2,
+        "radio": 2,
+        "research_points": 2000
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "tropical_duck": {
@@ -32788,6 +34673,27 @@
       "updatedAt": "02/24/2026",
       "addedIn": "base"
     },
+    "upgraded_detector": {
+      "name": {
+        "value": "",
+        "originalEn": "Upgraded Detector"
+      },
+      "description": "",
+      "type": "Quick Use",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 2000,
+      "craftBench": "workbench",
+      "stationLevelRequired": 1,
+      "recipe": {
+        "dockmasters_detector": 1,
+        "frozen_trail_tech_2": 2,
+        "magnet": 3
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
     "vaporizer_regulator": {
       "name": {
         "value": "Vaporizer Regulator",
@@ -32856,7 +34762,14 @@
       "craftQuantity": 1,
       "value": 5000,
       "imageFilename": "https://cdn.arctracker.io/items/v2/venator_blueprint.png",
-      "updatedAt": "01/13/2026",
+      "craftBench": "research_station",
+      "stationLevelRequired": 2,
+      "recipe": {
+        "leaper_pulse_unit": 3,
+        "mechanical_components": 1,
+        "research_points": 3000
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "venator_i": {
@@ -33824,18 +35737,7 @@
           "zh-TW": "降低垂直後座力"
         }
       },
-      "vendors": [
-        {
-          "cost": {
-            "coins": 1920
-          },
-          "limit": 5,
-          "refreshSeconds": 86400,
-          "requiredLevel": 7,
-          "trader": "Tian Wen"
-        }
-      ],
-      "updatedAt": "03/22/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "vertical_grip_ii": {
@@ -33890,7 +35792,18 @@
           "zh-TW": "降低垂直後座力"
         }
       },
-      "updatedAt": "01/13/2026",
+      "vendors": [
+        {
+          "cost": {
+            "coins": 6000
+          },
+          "limit": 5,
+          "refreshSeconds": 86400,
+          "requiredLevel": 7,
+          "trader": "Tian Wen"
+        }
+      ],
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "vertical_grip_ii_blueprint": {
@@ -33906,7 +35819,14 @@
       "value": 5000,
       "weightKg": 0,
       "imageFilename": "https://cdn.arctracker.io/items/v2/vertical_grip_ii_blueprint.png",
-      "updatedAt": "01/13/2026",
+      "craftBench": "research_station",
+      "stationLevelRequired": 2,
+      "recipe": {
+        "arc_flex_rubber": 5,
+        "mechanical_components": 1,
+        "research_points": 2000
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "vertical_grip_iii": {
@@ -34000,7 +35920,14 @@
       "value": 5000,
       "weightKg": 0,
       "imageFilename": "https://cdn.arctracker.io/items/v2/vertical_grip_iii_blueprint.png",
-      "updatedAt": "01/13/2026",
+      "craftBench": "research_station",
+      "stationLevelRequired": 3,
+      "recipe": {
+        "advanced_mechanical_components": 1,
+        "arc_motion_core": 6,
+        "research_points": 3000
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "very_comfortable_pillow": {
@@ -34126,7 +36053,14 @@
       "value": 5000,
       "weightKg": 0,
       "imageFilename": "https://cdn.arctracker.io/items/v2/vita_shot_blueprint.png",
-      "updatedAt": "01/13/2026",
+      "craftBench": "research_station",
+      "stationLevelRequired": 2,
+      "recipe": {
+        "microscope": 2,
+        "research_points": 2000,
+        "syringe": 2
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "vita_spray": {
@@ -34248,7 +36182,14 @@
       "craftQuantity": 1,
       "value": 5000,
       "imageFilename": "https://cdn.arctracker.io/items/v2/vita_spray_blueprint.png",
-      "updatedAt": "11/12/2025",
+      "craftBench": "research_station",
+      "stationLevelRequired": 3,
+      "recipe": {
+        "antiseptic": 5,
+        "chemicals": 50,
+        "research_points": 3000
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "volcanic_rock": {
@@ -35420,10 +37361,10 @@
       },
       "craftSkills": {
         "in_raid": [
-          "surv_3r"
+          "in_round_crafting"
         ]
       },
-      "updatedAt": "05/30/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "1.26"
     },
     "white_flag_blueprint": {
@@ -35439,7 +37380,13 @@
       "value": 5000,
       "weightKg": 0,
       "imageFilename": "https://cdn.arctracker.io/items/v2/white_flag_blueprint.png",
-      "updatedAt": "04/28/2026",
+      "craftBench": "research_station",
+      "stationLevelRequired": 1,
+      "recipe": {
+        "planks": 5,
+        "research_points": 500
+      },
+      "updatedAt": "10/08/2026",
       "addedIn": "1.26"
     },
     "wind_sprite_ship_model": {
@@ -35587,6 +37534,72 @@
       "updatedAt": "11/12/2025",
       "addedIn": "base"
     },
+    "x_rounds_research": {
+      "name": {
+        "value": "",
+        "originalEn": "X-Rounds Research"
+      },
+      "description": "",
+      "type": "Blueprint",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "craftBench": "research_station",
+      "stationLevelRequired": 4,
+      "recipe": {
+        "research_points": 5000,
+        "rocketeer_driver": 5
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
+    "yank_grenade": {
+      "name": {
+        "value": "",
+        "originalEn": "Yank Grenade"
+      },
+      "description": "",
+      "type": "Quick Use",
+      "rarity": "Common",
+      "stackSize": 3,
+      "craftQuantity": 1,
+      "value": 550,
+      "craftBench": "explosives_bench",
+      "stationLevelRequired": 2,
+      "blueprintLocked": true,
+      "recipe": {
+        "crude_explosives": 1,
+        "rope": 1
+      },
+      "recyclesInto": {
+        "rope": 1
+      },
+      "salvagesInto": {
+        "fabric": 3
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
+    "yank_grenade_blueprint": {
+      "name": {
+        "value": "",
+        "originalEn": "Yank Grenade Blueprint"
+      },
+      "description": "",
+      "type": "Blueprint",
+      "rarity": "Common",
+      "stackSize": 1,
+      "craftQuantity": 1,
+      "value": 5000,
+      "craftBench": "research_station",
+      "stationLevelRequired": 1,
+      "recipe": {
+        "research_points": 1000,
+        "steel_cable": 8
+      },
+      "updatedAt": "10/08/2026",
+      "addedIn": "2.0"
+    },
     "yellow_light_stick": {
       "name": {
         "value": "Bastão Luminoso Amarela",
@@ -35663,18 +37676,12 @@
       "vendors": [
         {
           "cost": {
-            "coins": 450
-          },
-          "trader": "Apollo"
-        },
-        {
-          "cost": {
-            "creds": 10
+            "coins": 3000
           },
           "trader": "Shani"
         }
       ],
-      "updatedAt": "03/22/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     },
     "yellow_light_stick_blueprint": {
@@ -35706,31 +37713,39 @@
       "value": 1000,
       "weightKg": 0.4,
       "imageFilename": "https://cdn.arctracker.io/items/v2/zipline.png",
-      "craftBench": "utility_bench",
+      "craftBench": [
+        "utility_bench",
+        "in_raid"
+      ],
       "stationLevelRequired": 2,
       "recipe": {
         "mechanical_components": 1,
-        "rope": 1
+        "steel_cable": 1
       },
       "recyclesInto": {
-        "metal_parts": 1,
-        "rope": 1
+        "steel_cable": 1
       },
       "salvagesInto": {
-        "rope": 1
+        "metal_parts": 4
+      },
+      "craftSkills": {
+        "in_raid": [
+          "skill_1693112598",
+          "in_round_crafting"
+        ]
       },
       "vendors": [
         {
           "cost": {
             "coins": 3000
           },
-          "limit": 3,
+          "limit": 2,
           "refreshSeconds": 86400,
           "requiredLevel": 12,
           "trader": "Apollo"
         }
       ],
-      "updatedAt": "03/22/2026",
+      "updatedAt": "10/08/2026",
       "addedIn": "base"
     }
   }

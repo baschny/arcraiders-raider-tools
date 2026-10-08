@@ -5,7 +5,8 @@
 set -e
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-QUESTS_DIR="$SCRIPT_DIR/../../arcraiders-data/quests"
+QUESTS_DIR="${ARCRAIDERS_DATA_DIR:-$SCRIPT_DIR/../../arcraiders-data}/quests"
+LOCALES=(en de pt-BR es fr it ja ko-KR pl ru tr zh-CN zh-TW)
 OUTPUT_FILE="$SCRIPT_DIR/../public/data/quests/quest-data.json"
 OUTPUT_DIR="$SCRIPT_DIR/../public/data/quests"
 ITEMS_DIR="$SCRIPT_DIR/../public/data"
@@ -70,6 +71,8 @@ for LOCALE in "${LOCALES[@]}"; do
           })
       ),
       objectivesOneRound: (.objectivesOneRound // false),
+      addedIn: (.addedIn // null),
+      xp: (.xp // 0),
       otherRequirements: (.otherRequirements // []),
       grantedItems: resolveItemList(.grantedItemIds),
       requiredItems: resolveItemList(.requiredItemIds),

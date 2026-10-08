@@ -27,6 +27,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -100,6 +102,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -149,7 +153,8 @@
       "buried_city",
       "the_spaceport",
       "the_blue_gate",
-      "dam_battlegrounds"
+      "dam_battlegrounds",
+      "riven_tides"
     ],
     "previousQuestIds": [
       "the_right_tool"
@@ -172,6 +177,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -241,7 +248,7 @@
         "originalEn": "Find a way into into the locked room in the Security Wing"
       },
       {
-        "value": "Durchsuche den verschlossenen Raum nach Unterlagen zum Projekt Immergrün.",
+        "value": "Durchsuche den verschlossenen Raum nach Unterlagen zum Projekt Heartwood.",
         "originalEn": "Search the locked room for any records on Project Heartwood"
       },
       {
@@ -254,6 +261,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 8000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -323,6 +332,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [
       "18x Raids"
     ],
@@ -413,6 +424,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -493,6 +506,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 2500,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -533,6 +548,119 @@
     "blueprintRewards": []
   },
   {
+    "id": "a_path_not_yours",
+    "name": {
+      "value": "Dieser Weg ist nicht deiner",
+      "originalEn": "A Path Not Yours"
+    },
+    "trader": "Ermal",
+    "map": [
+      "the_blue_gate"
+    ],
+    "previousQuestIds": [
+      "taking_stock"
+    ],
+    "nextQuestIds": [],
+    "description": {
+      "value": "Bevor sich unsere Wege trennten, blieben wir noch eine Weile am Blauen Tor stehen. Wir glauben, dass es dort einen alten Pfad aus jener Zeit gibt und dass an seinem Ende vielleicht noch etwas liegt, das uns gehört.",
+      "originalEn": "Before our paths changed, we lingered by the Blue Gate for some time. We believe there is an old trail from those days, and something belonging to us may still lie at its end."
+    },
+    "objectives": [
+      {
+        "value": "Finde den Anfang des Nomadenpfads im Schnellstraßen-Einsturzgebiet.",
+        "originalEn": "Find the start of the Nomad trail under the Highway Collapse"
+      },
+      {
+        "value": "Folge den Wegmarkierungen zum Versteck der Nomaden.",
+        "originalEn": "Follow the trail markers to the Nomad hideout"
+      },
+      {
+        "value": "Finde Bilguuns Geschenk im vergrabenen Geheimvorrat unter dem Versteck.",
+        "originalEn": "Find Bilguun's gift at the buried cache under the hideout"
+      },
+      {
+        "value": "Plündere das geheime Lager in Bilguuns Versteck.",
+        "originalEn": "Loot the secret stash in Bilguun's hideout"
+      },
+      {
+        "value": "Bring den kaputten Kompass zum nomadischen Gesandten.",
+        "originalEn": "Deliver the Broken Compass to the Nomadic Envoy"
+      }
+    ],
+    "objectivesOneRound": true,
+    "addedIn": "2.0",
+    "xp": 2500,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "zipline",
+        "quantity": 2,
+        "name": {
+          "value": "Seilrutsche",
+          "originalEn": "Zipline"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/zipline.png"
+      }
+    ],
+    "requiredItems": [
+      {
+        "id": "broken_compass",
+        "quantity": 1,
+        "name": {
+          "value": "",
+          "originalEn": "Broken Compass"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "tellurion",
+        "quantity": 1,
+        "name": {
+          "value": "Tellurion",
+          "originalEn": "Tellurion"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/tellurion.png"
+      },
+      {
+        "id": "magnet",
+        "quantity": 2,
+        "name": {
+          "value": "Magnet",
+          "originalEn": "Magnet"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/magnet.png"
+      },
+      {
+        "id": "battery",
+        "quantity": 2,
+        "name": {
+          "value": "Akku",
+          "originalEn": "Battery"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/battery.png"
+      },
+      {
+        "id": "power_cable",
+        "quantity": 2,
+        "name": {
+          "value": "Stromkabel",
+          "originalEn": "Power Cable"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/power_cable.png"
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
     "id": "a_prime_specimen",
     "name": {
       "value": "Ein erstklassiges Exemplar",
@@ -565,6 +693,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 8000,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -646,6 +776,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 2500,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -701,7 +833,7 @@
     ],
     "nextQuestIds": [],
     "description": {
-      "value": "Hier steht, dass es beim Damm einen Vorarbeiter gab, der gleich nach der Einstellung von Projekt Immergrün eingestellt wurde. Er wurde für ein großes Wiederaufbauprojekt verantwortlich gemacht.",
+      "value": "Hier steht, dass es beim Damm einen Vorarbeiter gab, der gleich nach der Einstellung von Projekt Heartwood eingestellt wurde. Er wurde für ein großes Wiederaufbauprojekt verantwortlich gemacht.",
       "originalEn": "Says here there was a foreman at The Dam, who got recruited right after they canceled Project Heartwood. Got put in charge of some big reconstruction project."
     },
     "objectives": [
@@ -727,6 +859,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -752,14 +886,14 @@
         "imageFilename": "https://cdn.arctracker.io/items/v2/anvil_splitter.png"
       },
       {
-        "id": "extended_barrel",
+        "id": "extended_barrel_iii",
         "quantity": 1,
         "name": {
-          "value": "extended_barrel",
-          "originalEn": "extended_barrel"
+          "value": "Verlängerter Lauf III",
+          "originalEn": "Extended Barrel III"
         },
-        "rarity": "Common",
-        "imageFilename": ""
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/extended_barrel.png"
       },
       {
         "id": "heavy_ammo",
@@ -812,6 +946,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -879,6 +1015,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -966,6 +1104,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -1017,7 +1157,9 @@
     "previousQuestIds": [
       "safe_harbor"
     ],
-    "nextQuestIds": [],
+    "nextQuestIds": [
+      "home_to_roost"
+    ],
     "description": {
       "value": "Es sieht so aus, als hätte sich der Unmut schließlich bis zum Bodenpersonal des Raumhafens selbst ausgebreitet. Eine Meuterei bahnte sich an, mitten im Herzen des Exodus.",
       "originalEn": "Looks like the resentment ended up reaching the ground staff of the Spaceport itself. A mutiny brewing, right in the heart of the Exodus."
@@ -1033,6 +1175,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -1092,6 +1236,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 2500,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -1200,6 +1346,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 8000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -1272,6 +1420,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [
       "18x Raids"
     ],
@@ -1313,6 +1463,117 @@
     "blueprintRewards": []
   },
   {
+    "id": "bait_fetch_blast",
+    "name": {
+      "value": "Ködern, Ranholen, Sprengen",
+      "originalEn": "Bait, Fetch, Blast"
+    },
+    "trader": "Apollo",
+    "map": [
+      "pendola_pass"
+    ],
+    "previousQuestIds": [
+      "tracks_of_the_beast"
+    ],
+    "nextQuestIds": [],
+    "description": {
+      "value": "Diese Bullys sind schwer zu knacken. Aber nichts ist unzerstörbar. Ich hab von ein paar Tricks gehört, die funktionieren könnten. Lust, sie zu testen?",
+      "originalEn": "Tough nuts to crack, those Bullies. But you know, nothing’s indestructible. I’ve heard of a few tricks that might just work, care to put them to a test?"
+    },
+    "objectives": [
+      {
+        "value": "Zerstöre einen Bully.",
+        "originalEn": "Destroy a Bully"
+      },
+      {
+        "value": "Bring einen Bully-Fragmentierer zu Apollo.",
+        "originalEn": "Deliver a Bully Fragmenter to Apollo"
+      }
+    ],
+    "objectivesOneRound": false,
+    "addedIn": "2.0",
+    "xp": 10000,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "showstopper",
+        "quantity": 3,
+        "name": {
+          "value": "Showstopper",
+          "originalEn": "Showstopper"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/showstopper.png"
+      },
+      {
+        "id": "barricade_kit",
+        "quantity": 2,
+        "name": {
+          "value": "Barrikadenset",
+          "originalEn": "Barricade Kit"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/barricade_kit.png"
+      },
+      {
+        "id": "medium_shield",
+        "quantity": 1,
+        "name": {
+          "value": "Mittlerer Schild",
+          "originalEn": "Medium Shield"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/medium_shield.png"
+      },
+      {
+        "id": "looting_mk3_survivor",
+        "quantity": 1,
+        "name": {
+          "value": "Beute-Marke 3 (Überleben)",
+          "originalEn": "Looting Mk. 3 (Survivor)"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/looting_mk3_survivor.png"
+      }
+    ],
+    "requiredItems": [
+      {
+        "id": "bully_fragmenter",
+        "quantity": 1,
+        "name": {
+          "value": "",
+          "originalEn": "Bully Fragmenter"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "bully_fragmenter",
+        "quantity": 1,
+        "name": {
+          "value": "",
+          "originalEn": "Bully Fragmenter"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      },
+      {
+        "id": "wolfpack",
+        "quantity": 1,
+        "name": {
+          "value": "Wolfpack",
+          "originalEn": "Wolfpack"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/wolfpack.png"
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
     "id": "battening_down",
     "name": {
       "value": "Auf das Schlimmste vorbereiten",
@@ -1345,6 +1606,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [
       "20x Raids"
     ],
@@ -1406,6 +1669,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 2500,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -1446,6 +1711,258 @@
     "blueprintRewards": []
   },
   {
+    "id": "belly_of_the_beast",
+    "name": {
+      "value": "Im Bauch der Bestie",
+      "originalEn": "Belly of the Beast"
+    },
+    "trader": "Shani",
+    "map": [
+      "pendola_pass"
+    ],
+    "previousQuestIds": [
+      "tracks_of_the_beast",
+      "sizing_things_up"
+    ],
+    "nextQuestIds": [],
+    "description": {
+      "value": "Die ARC schwärmen um diesen Gefallenen Kaiser herum wie Fliegen um Honig. Ich empfange Signale von weit jenseits des Rostgürtels, und sie lassen nicht nach.",
+      "originalEn": "ARC’s been swarming that fallen Emperor like flies on honey. I’m picking up signals from far beyond the Rust Belt, and they’re not slowing down."
+    },
+    "objectives": [
+      {
+        "value": "Erhalte einen Kaiser-Portalleiter.",
+        "originalEn": "Acquire an Emperor Gateway Conduit"
+      },
+      {
+        "value": "Betritt den Kaiser.",
+        "originalEn": "Enter the Emperor"
+      },
+      {
+        "value": "Finde heraus, woher die Energie innerhalb des Kaisers kommt.",
+        "originalEn": "Find where the power inside the Emperor comes from"
+      },
+      {
+        "value": "Finde heraus, was mit der Ernter-Fracht passiert, die in den Kaiser gelangt.",
+        "originalEn": "Find out what happens to the Harvester Payloads that enter the Emperor"
+      },
+      {
+        "value": "Finde heraus, wo die Ernter-Fracht lagert, die zum Kaiser gesandt wurde.",
+        "originalEn": "Find where the Harvester Payloads sent to the Emperor are stored"
+      },
+      {
+        "value": "Durchsuche 5 Container im Kaiser.",
+        "originalEn": "Search 5 containers inside the Emperor"
+      },
+      {
+        "value": "Erhalte ein einzigartiges Teil aus Kaiser-Beute.",
+        "originalEn": "Obtain a unique piece of Emperor loot"
+      }
+    ],
+    "objectivesOneRound": false,
+    "addedIn": "2.0",
+    "xp": 10000,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "grapple_hook",
+        "quantity": 1,
+        "name": {
+          "value": "",
+          "originalEn": "Grapple Hook"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
+    "requiredItems": [
+      {
+        "id": "wires",
+        "quantity": 1,
+        "name": {
+          "value": "Kabel",
+          "originalEn": "Wires"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/wires.png"
+      },
+      {
+        "id": "collector_material_1",
+        "quantity": 1,
+        "name": {
+          "value": "",
+          "originalEn": "Collector Material 1"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "snap_hook",
+        "quantity": 1,
+        "name": {
+          "value": "Karabinerhaken",
+          "originalEn": "Snap Hook"
+        },
+        "rarity": "Legendary",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/snap_hook.png"
+      },
+      {
+        "id": "shield_recharger",
+        "quantity": 3,
+        "name": {
+          "value": "Schildauflader",
+          "originalEn": "Shield Recharger"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/shield_recharger.png"
+      },
+      {
+        "id": "sterilized_bandage",
+        "quantity": 3,
+        "name": {
+          "value": "Steriler Verband",
+          "originalEn": "Sterilized Bandage"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/sterilized_bandage.png"
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "boarding_the_frigate",
+    "name": {
+      "value": "Die Fregatte entern",
+      "originalEn": "Boarding the Frigate"
+    },
+    "trader": "Celeste",
+    "map": [],
+    "previousQuestIds": [
+      "off_the_radar"
+    ],
+    "nextQuestIds": [
+      "disrupting_the_frigate"
+    ],
+    "description": {
+      "value": "Gegen diese Fregatten funktionieren unsere alten Taktiken nicht mehr. Wir können nicht weglaufen. Wir können uns nicht verstecken. Und wir können nicht einfach abwarten, bis sie weg sind. Wir müssen mutig handeln, und zwar sofort.",
+      "originalEn": "None of our old tactics work, facing those Frigates. We can’t run. We can’t hide. And there’s no waiting them out.\r\n\r\nWe need to take bold action, and we need to do it now."
+    },
+    "objectives": [
+      {
+        "value": "Finde einen Weg auf die Fregatte.",
+        "originalEn": "Find a way on top of the Frigate"
+      },
+      {
+        "value": "Beschädige eine Hydra.",
+        "originalEn": "Damage a Hydra"
+      },
+      {
+        "value": "Beschädige einen Verdampfer.",
+        "originalEn": "Damage a Vaporizer"
+      },
+      {
+        "value": "Beschädige einen Raketenkanonier.",
+        "originalEn": "Damage a Rocketeer"
+      }
+    ],
+    "objectivesOneRound": false,
+    "addedIn": "2.0",
+    "xp": 10000,
+    "otherRequirements": [
+      "25x Raids"
+    ],
+    "grantedItems": [
+      {
+        "id": "seeker_grenade",
+        "quantity": 1,
+        "name": {
+          "value": "Suchgranate",
+          "originalEn": "Seeker Grenade"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/seeker_grenade.png"
+      },
+      {
+        "id": "grapple_hook",
+        "quantity": 1,
+        "name": {
+          "value": "",
+          "originalEn": "Grapple Hook"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      },
+      {
+        "id": "barricade_kit",
+        "quantity": 1,
+        "name": {
+          "value": "Barrikadenset",
+          "originalEn": "Barricade Kit"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/barricade_kit.png"
+      },
+      {
+        "id": "lure_grenade",
+        "quantity": 2,
+        "name": {
+          "value": "Ködergranate",
+          "originalEn": "Lure Grenade"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/lure_grenade.png"
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "snap_hook",
+        "quantity": 1,
+        "name": {
+          "value": "Karabinerhaken",
+          "originalEn": "Snap Hook"
+        },
+        "rarity": "Legendary",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/snap_hook.png"
+      },
+      {
+        "id": "wolfpack",
+        "quantity": 1,
+        "name": {
+          "value": "Wolfpack",
+          "originalEn": "Wolfpack"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/wolfpack.png"
+      },
+      {
+        "id": "rascal_i",
+        "quantity": 1,
+        "name": {
+          "value": "Rascal I",
+          "originalEn": "Rascal I"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/rascal.png"
+      },
+      {
+        "id": "launcher_ammo",
+        "quantity": 3,
+        "name": {
+          "value": "Werfermunition",
+          "originalEn": "Launcher Ammo"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/launcher_ammo.png"
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
     "id": "bombing_run",
     "name": {
       "value": "Bombenlauf",
@@ -1472,6 +1989,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 10000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -1532,20 +2051,20 @@
         "originalEn": "Search for a compass near the broken-down vehicles"
       },
       {
-        "value": "Suche das Videoband in der Nähe der zylindrischen Container.",
-        "originalEn": "Search for the video tape near the cylindrical containers"
+        "value": "Übergib Tian Wen den Erste-Welle-Kompass.",
+        "originalEn": "Deliver First Wave Compass to Tian Wen"
       },
       {
-        "value": "Suche im Raider-Lager nach den alten Feldrationen.",
-        "originalEn": "Search for the old field rations in the Raider camp"
+        "value": "Suche das Videoband in der Nähe der zylindrischen Container.",
+        "originalEn": "Search for the video tape near the cylindrical containers"
       },
       {
         "value": "Übergib Tian Wen die Aufnahme der Ersten Welle.",
         "originalEn": "Deliver the First Wave Tape to Tian Wen"
       },
       {
-        "value": "Übergib Tian Wen den Erste-Welle-Kompass.",
-        "originalEn": "Deliver First Wave Compass to Tian Wen"
+        "value": "Suche im Raider-Lager nach den alten Feldrationen.",
+        "originalEn": "Search for the old field rations in the Raider camp"
       },
       {
         "value": "Übergib Tian Wen die Erste-Welle-Rationen.",
@@ -1553,19 +2072,11 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
-      {
-        "id": "first_wave_tape",
-        "quantity": 1,
-        "name": {
-          "value": "Erste-Welle-Band",
-          "originalEn": "First Wave Tape"
-        },
-        "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/v2/first_wave_tape.png"
-      },
       {
         "id": "first_wave_compass",
         "quantity": 1,
@@ -1575,6 +2086,16 @@
         },
         "rarity": "Common",
         "imageFilename": "https://cdn.arctracker.io/items/v2/first_wave_compass.png"
+      },
+      {
+        "id": "first_wave_tape",
+        "quantity": 1,
+        "name": {
+          "value": "Erste-Welle-Band",
+          "originalEn": "First Wave Tape"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/first_wave_tape.png"
       },
       {
         "id": "first_wave_rations",
@@ -1665,6 +2186,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 2500,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -1715,6 +2238,65 @@
     "blueprintRewards": []
   },
   {
+    "id": "celestes_childhood_drawings",
+    "name": {
+      "value": "Celestes Kinderzeichnungen",
+      "originalEn": "Celeste’s Childhood Drawings"
+    },
+    "trader": "Lance",
+    "map": [
+      "riven_tides"
+    ],
+    "previousQuestIds": [
+      "shoring_up_defenses"
+    ],
+    "nextQuestIds": [
+      "celestes_teenage_rebellion"
+    ],
+    "description": {
+      "value": "Sag mal, Kumpel, kommt dir Celeste nicht auch ein bisschen niedergeschlagen vor?\r\n\r\nHör mal, ich glaube, ich weiß was, das ihr den Tag verschönern könnte. Kennst du das Hotel in der Nähe von Riven Tides?",
+      "originalEn": "Say, pal, has Celeste seemed a bit down, to you? \r\n\r\nListen, I think I know something that might brighten her day. Do you know the hotel around Riven Tides?"
+    },
+    "objectives": [
+      {
+        "value": "Finde das Zimmer der jungen Celeste im Hotel Panorama Azzurro.",
+        "originalEn": "Find young Celeste’s room in Hotel Panorama Azzurro"
+      },
+      {
+        "value": "Suche in Celestes Zimmer nach etwas, das von Bedeutung sein könnte.",
+        "originalEn": "Search for anything significant in Celeste's Room"
+      },
+      {
+        "value": "Finde die Zeichnung auf dem Dach des dritten Zollhauses.",
+        "originalEn": "Find the drawing on the roof of the third Customs House"
+      },
+      {
+        "value": "Finde die Zeichnung am Kai.",
+        "originalEn": "Find the drawing at the Quay"
+      }
+    ],
+    "objectivesOneRound": false,
+    "addedIn": "2.0",
+    "xp": 5000,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "sterilized_bandage",
+        "quantity": 3,
+        "name": {
+          "value": "Steriler Verband",
+          "originalEn": "Sterilized Bandage"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/sterilized_bandage.png"
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
     "id": "celestes_journals",
     "name": {
       "value": "Celestes Tagebücher",
@@ -1749,6 +2331,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -1799,6 +2383,89 @@
     "blueprintRewards": []
   },
   {
+    "id": "celestes_teenage_rebellion",
+    "name": {
+      "value": "Celestes Teenagerrebellion",
+      "originalEn": "Celeste's Teenage Rebellion"
+    },
+    "trader": "Celeste",
+    "map": [
+      "riven_tides"
+    ],
+    "previousQuestIds": [
+      "celestes_childhood_drawings"
+    ],
+    "nextQuestIds": [],
+    "description": {
+      "value": "Diese Fregatten, die am Himmel auftauchten … Da lief mir ein Schauer über den Rücken, wie ich ihn seit meiner Kindheit nicht mehr gespürt habe. Wir müssen uns anpassen, das weiß ich. Aber die Lektionen, die wir damals gelernt haben? Die sind heute aktueller denn je.",
+      "originalEn": "Those Frigates looming in the sky… It made me feel shivers I haven’t felt since I was a girl. \r\n\r\nWe need to adapt, I know. But the lessons we learned then? They're more relevant now than ever."
+    },
+    "objectives": [
+      {
+        "value": "Erreiche den Aussichtsturm in Central Hill.",
+        "originalEn": "Reach the lookout tower on Mulatierra Hill"
+      },
+      {
+        "value": "Übermittle den Standort von der Spitze des Turms.",
+        "originalEn": "Transmit the location from the top of the tower"
+      },
+      {
+        "value": "Erspähe 3 ARC vom Aussichtsturm aus.",
+        "originalEn": "Spot 3 ARC from the Lookout Tower"
+      },
+      {
+        "value": "Erreiche das alte Raider-Lager nahe dem Hotel am Strand.",
+        "originalEn": "Reach the old Raider Camp near the hotel, overlooking the beach"
+      },
+      {
+        "value": "Suche im Raider-Lager nach einem Funksender.",
+        "originalEn": "Search for a radio transmitter at the Raider Camp"
+      },
+      {
+        "value": "Finde die große Antenne über dem Hafen von Riven Tides.",
+        "originalEn": "Find the large antenna overlooking Riven Tides harbor"
+      },
+      {
+        "value": "Schweiße den kaputten Generator.",
+        "originalEn": "Weld the broken generator"
+      },
+      {
+        "value": "Starte den Sender.",
+        "originalEn": "Start the transmitter"
+      }
+    ],
+    "objectivesOneRound": false,
+    "addedIn": "2.0",
+    "xp": 5000,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "heavy_shield",
+        "quantity": 1,
+        "name": {
+          "value": "Schwerer Schild",
+          "originalEn": "Heavy Shield"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/heavy_shield.png"
+      },
+      {
+        "id": "looting_mk2",
+        "quantity": 1,
+        "name": {
+          "value": "Beute-Marke 2",
+          "originalEn": "Looting Mk. 2"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/looting_mk2.png"
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
     "id": "clamoring_for_attention",
     "name": {
       "value": "Um Aufmerksamkeit buhlen",
@@ -1826,11 +2493,13 @@
         "originalEn": "Use a Battery to start the boom box in the Village"
       },
       {
-        "value": "Aktiviere eine beliebige Bushupe bei der Sicherheitskontrolle.",
+        "value": "Lass eine beliebige Bushupe bei der Sicherheitskontrolle ertönen.",
         "originalEn": "Sound any bus horn by the Checkpoint"
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [
       "18x Raids"
     ],
@@ -1872,6 +2541,98 @@
     "blueprintRewards": []
   },
   {
+    "id": "clean_hands",
+    "name": {
+      "value": "Saubere Hände",
+      "originalEn": "Clean Hands"
+    },
+    "trader": "Ermal",
+    "map": [
+      "pendola_pass"
+    ],
+    "previousQuestIds": [
+      "off_the_radar"
+    ],
+    "nextQuestIds": [
+      "taking_stock"
+    ],
+    "description": {
+      "value": "Am Pendola-Pass gibt es noch eine Angelegenheit, die wir eigentlich selbst hätten regeln sollen. Da uns dieser Weg nun versperrt ist, müssen wir jemand anderen darum bitten.",
+      "originalEn": "A matter remains at Pendola Pass which should have been settled by our own hands. That path is no longer open to us, so we must ask another."
+    },
+    "objectives": [
+      {
+        "value": "Finde das Nomadenlager unter dem Rangierbahnhof.",
+        "originalEn": "Find the Nomad Camp under the Railyard"
+      },
+      {
+        "value": "Suche im Nomadenlager nach dem verunreinigten Gegenstand.",
+        "originalEn": "Search for the polluted item in the Nomad camp"
+      },
+      {
+        "value": "Bring die Äquatorial-Sonnenuhr zur Turmspitze der Kirche in der Altstadt.",
+        "originalEn": "Bring the Equatiorial Sundial to the top of the Church in Old Town"
+      },
+      {
+        "value": "Bring die Äquatorial-Sonnenuhr zum nomadischen Gesandten.",
+        "originalEn": "Deliver the Equatorial Sundial to the Nomadic Envoy"
+      }
+    ],
+    "objectivesOneRound": true,
+    "addedIn": "2.0",
+    "xp": 5000,
+    "otherRequirements": [
+      "25x Raids"
+    ],
+    "grantedItems": [],
+    "requiredItems": [
+      {
+        "id": "equatorial_sundial",
+        "quantity": 1,
+        "name": {
+          "value": "Äquatoriale Sonnenuhr",
+          "originalEn": "Equatorial Sundial"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/equatorial_sundial.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "sextant",
+        "quantity": 1,
+        "name": {
+          "value": "Sextant",
+          "originalEn": "Sextant"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/sextant.png"
+      },
+      {
+        "id": "shield_recharger",
+        "quantity": 1,
+        "name": {
+          "value": "Schildauflader",
+          "originalEn": "Shield Recharger"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/shield_recharger.png"
+      },
+      {
+        "id": "battered_paperback",
+        "quantity": 1,
+        "name": {
+          "value": "",
+          "originalEn": "Battered Paperback"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
     "id": "clearer_skies",
     "name": {
       "value": "Klarer Himmel",
@@ -1900,6 +2661,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 1000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -1970,6 +2733,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 8000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -2036,6 +2801,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -2129,6 +2896,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 8000,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -2222,6 +2991,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -2285,6 +3056,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -2345,6 +3118,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -2368,6 +3143,90 @@
         },
         "rarity": "Rare",
         "imageFilename": "https://cdn.arctracker.io/items/v2/speaker_component.png"
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "disrupting_the_frigate",
+    "name": {
+      "value": "Die Fregatte außer Gefecht setzen",
+      "originalEn": "Disrupting the Frigate"
+    },
+    "trader": "Celeste",
+    "map": [],
+    "previousQuestIds": [
+      "boarding_the_frigate"
+    ],
+    "nextQuestIds": [],
+    "description": {
+      "value": "Wenn wir diese Fregatten einfach frei umherstreifen lassen, werden sie früher oder später Toledo angreifen. Hast du da oben irgendwas entdeckt, das als Ablenkung dienen könnte?",
+      "originalEn": "If we let those Frigates roam freely, they’ll hit Toledo sooner or later. Was there anything you spotted on top that could cause a distraction?"
+    },
+    "objectives": [
+      {
+        "value": "Zerstöre die Energiekerne oben auf der Fregatte.",
+        "originalEn": "Destroy the Power Cores on top of the Frigate"
+      },
+      {
+        "value": "Finde einen Weg, an die Fracht der Fregatte zu kommen.",
+        "originalEn": "Find a way to access the Frigate's cargo"
+      },
+      {
+        "value": "Plündere die Fracht der Fregatte.",
+        "originalEn": "Loot the Frigate's cargo"
+      },
+      {
+        "value": "Zerstöre eine Hydra.",
+        "originalEn": "Destroy a Hydra"
+      },
+      {
+        "value": "Zerstöre 2 Raketenkanoniere.",
+        "originalEn": "Destroy 2 Rocketeers"
+      },
+      {
+        "value": "Zerstöre 2 Verdampfer.",
+        "originalEn": "Destroy 2 Vaporizers"
+      }
+    ],
+    "objectivesOneRound": false,
+    "addedIn": "2.0",
+    "xp": 10000,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "powered_descender",
+        "quantity": 1,
+        "name": {
+          "value": "Motorisierter Abseiler",
+          "originalEn": "Powered Descender"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/powered_descender.png"
+      },
+      {
+        "id": "vita_spray",
+        "quantity": 1,
+        "name": {
+          "value": "Vita-Spray",
+          "originalEn": "Vita Spray"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/vita_spray.png"
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "hullcracker_i",
+        "quantity": 1,
+        "name": {
+          "value": "Hüllenbrecher I",
+          "originalEn": "Hullcracker I"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/hullcracker_i.png"
       }
     ],
     "hasBlueprint": false,
@@ -2407,9 +3266,15 @@
       {
         "value": "Beschaffe 1 Kleinblütige Königskerze.",
         "originalEn": "Obtain 1 Great Mullein"
+      },
+      {
+        "value": "Heile einen Raider.",
+        "originalEn": "Heal any Raider"
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 2500,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -2521,6 +3386,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 2500,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -2559,7 +3426,8 @@
     "map": [
       "buried_city",
       "the_spaceport",
-      "dam_battlegrounds"
+      "dam_battlegrounds",
+      "riven_tides"
     ],
     "previousQuestIds": [
       "hatch_repairs"
@@ -2586,6 +3454,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -2673,6 +3543,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 8000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -2726,6 +3598,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -2776,6 +3650,97 @@
     "blueprintRewards": []
   },
   {
+    "id": "empathetic_prototypes",
+    "name": {
+      "value": "Empathische Prototypen",
+      "originalEn": "Empathetic Prototypes"
+    },
+    "trader": "Lance",
+    "map": [
+      "the_spaceport"
+    ],
+    "previousQuestIds": [
+      "someone_elses_shoes"
+    ],
+    "nextQuestIds": [
+      "when_everything_falls"
+    ],
+    "description": {
+      "value": "Wenn man bedenkt, dass vielleicht Verwandte von mir einfach so in einer Transportkiste herumhängen … Was für ein Grauen! Was für ein unaussprechliches Grauen!",
+      "originalEn": "To think I may have kin just dangling in a shipment crate… What horror! What unspeakable horror!"
+    },
+    "objectives": [
+      {
+        "value": "Erreiche die Grabentürme im Raumhafen-Graben.",
+        "originalEn": "Reach the Trench Towers in the Spaceport Trench"
+      },
+      {
+        "value": "Deaktiviere die Magnetverriegelung, die die Frachtkiste festhält.",
+        "originalEn": "Disable the Magnetic Lock holding the Cargo Crate"
+      },
+      {
+        "value": "Durchsuche die Frachtkiste.",
+        "originalEn": "Search the Cargo Crate"
+      },
+      {
+        "value": "Bring den Empathie-Kern von Projekt Pathos zu Lance",
+        "originalEn": "Deliver the Project Pathos Empathy Core to Lance"
+      }
+    ],
+    "objectivesOneRound": true,
+    "addedIn": "2.0",
+    "xp": 5000,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "grapple_hook",
+        "quantity": 1,
+        "name": {
+          "value": "",
+          "originalEn": "Grapple Hook"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
+    "requiredItems": [
+      {
+        "id": "project_pathos_empathy_core",
+        "quantity": 1,
+        "name": {
+          "value": "",
+          "originalEn": "Project Pathos Empathy Core"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "canto_i",
+        "quantity": 1,
+        "name": {
+          "value": "Canto I",
+          "originalEn": "Canto I"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/canto_i.png"
+      },
+      {
+        "id": "vita_shot",
+        "quantity": 2,
+        "name": {
+          "value": "Vita-Spritze",
+          "originalEn": "Vita Shot"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/vita_shot.png"
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
     "id": "espresso",
     "name": {
       "value": "Espresso",
@@ -2806,6 +3771,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 2500,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -2840,6 +3807,99 @@
         },
         "rarity": "Common",
         "imageFilename": "https://cdn.arctracker.io/items/v2/adrenaline_shot.png"
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "exploring_pendola_pass",
+    "name": {
+      "value": "Den Pendola-Pass erkunden",
+      "originalEn": "Exploring Pendola Pass"
+    },
+    "trader": "Celeste",
+    "map": [
+      "pendola_pass"
+    ],
+    "previousQuestIds": [
+      "off_the_radar"
+    ],
+    "nextQuestIds": [
+      "wires_crossed",
+      "tracks_of_the_beast"
+    ],
+    "description": {
+      "value": "Die ARC haben sich schon immer zu Schießereien und Tumult hingezogen gefühlt, aber wir haben noch nie erlebt, dass sie so stark an einem Ort zusammenströmen wie am Pendola-Pass.",
+      "originalEn": "ARC’s always been drawn to gunfire and commotion, but we’ve never seen them quite converge on a place like they have at Pendola Pass."
+    },
+    "objectives": [
+      {
+        "value": "20 ARC-Gegner zerstören",
+        "originalEn": "Destroy 20 ARC enemies"
+      },
+      {
+        "value": "Suche im Kontrollraum des Observatoriums Cielo Sereno nach Energie.",
+        "originalEn": "Search the control room at the Cielo Sereno Observatory for power"
+      },
+      {
+        "value": "Verwende 1 Kabel, um eine Verbindung zur Antenne oben auf dem höchsten Turm im Rangierbahnhof herzustellen.",
+        "originalEn": "Use 1 Wire to patch into the antenna on top of the tallest tower in the Railyard"
+      },
+      {
+        "value": "Durchsuche 3 Container im Militärsupermarkt.",
+        "originalEn": "Search 3 containers inside the Commissary Supermarket"
+      }
+    ],
+    "objectivesOneRound": false,
+    "addedIn": "2.0",
+    "xp": 5000,
+    "otherRequirements": [
+      "25x Raids"
+    ],
+    "grantedItems": [
+      {
+        "id": "zipline",
+        "quantity": 3,
+        "name": {
+          "value": "Seilrutsche",
+          "originalEn": "Zipline"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/zipline.png"
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "breathtaking_snow_globe",
+        "quantity": 1,
+        "name": {
+          "value": "Entzückende Schneekugel",
+          "originalEn": "Breathtaking Snow Globe"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/breathtaking_snow_globe.png"
+      },
+      {
+        "id": "medium_shield",
+        "quantity": 1,
+        "name": {
+          "value": "Mittlerer Schild",
+          "originalEn": "Medium Shield"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/medium_shield.png"
+      },
+      {
+        "id": "osprey_i",
+        "quantity": 1,
+        "name": {
+          "value": "Osprey I",
+          "originalEn": "Osprey I"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/osprey_i.png"
       }
     ],
     "hasBlueprint": false,
@@ -2884,6 +3944,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 8000,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -2964,6 +4026,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 2500,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -3042,6 +4106,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 8000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -3117,6 +4183,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -3188,6 +4256,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 8000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -3265,6 +4335,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -3363,6 +4435,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -3417,6 +4491,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 2500,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -3440,6 +4516,97 @@
         },
         "rarity": "Common",
         "imageFilename": "https://cdn.arctracker.io/items/v2/binoculars.png"
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "home_to_roost",
+    "name": {
+      "value": "Aufgeschlagenes Quartier",
+      "originalEn": "Home to Roost"
+    },
+    "trader": "Shani",
+    "map": [
+      "the_blue_gate"
+    ],
+    "previousQuestIds": [
+      "a_wrench_in_the_works"
+    ],
+    "nextQuestIds": [
+      "someone_elses_shoes"
+    ],
+    "description": {
+      "value": "In all diesen alten Protokollen wird erwähnt, dass Meutereien von MANTIKOR niedergeschlagen wurden … Und dann plötzlich nichts mehr. Die Einträge hören einfach auf, ein paar Wochen vor dem Exodus.",
+      "originalEn": "All of these old logs mention mutinies being repressed by MANTIKOR… Then suddenly, nothing. The entries just stop, a few weeks before the Exodus."
+    },
+    "objectives": [
+      {
+        "value": "Erreiche den hinteren Bereich der Tunnel beim Blauen Tor.",
+        "originalEn": "Reach the back of the Blue Gate tunnels"
+      },
+      {
+        "value": "Scanne einen Androiden im hinteren Bereich der Verkehrstunnel.",
+        "originalEn": "Scan any Android in the back of the Traffic Tunnels"
+      },
+      {
+        "value": "Gehe zum MANTIKOR-Umkleideraum.",
+        "originalEn": "Head to the MANTIKOR locker room"
+      },
+      {
+        "value": "Suche im Umkleideraum nach Hinweisen.",
+        "originalEn": "Search the locker room for any clues"
+      },
+      {
+        "value": "Lies die letzten Fahrzeug-Wiegeprotokolle.",
+        "originalEn": "Read the last vehicle weighing logs"
+      },
+      {
+        "value": "Betritt die Konfiszierungskammer.",
+        "originalEn": "Enter the Confiscation Room"
+      },
+      {
+        "value": "Übertrage MANTIKORs letzte Sicherheitsaufzeichnungen an Shani.",
+        "originalEn": "Transmit MANTIKOR’s security last recordings to Shani"
+      }
+    ],
+    "objectivesOneRound": false,
+    "addedIn": "2.0",
+    "xp": 5000,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "surge_shield_recharger",
+        "quantity": 1,
+        "name": {
+          "value": "Sofort-Schildauflader",
+          "originalEn": "Surge Shield Recharger"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/surge_shield_recharger.png"
+      },
+      {
+        "id": "sterilized_bandage",
+        "quantity": 2,
+        "name": {
+          "value": "Steriler Verband",
+          "originalEn": "Sterilized Bandage"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/sterilized_bandage.png"
+      },
+      {
+        "id": "antiseptic",
+        "quantity": 2,
+        "name": {
+          "value": "Desinfektionsmittel",
+          "originalEn": "Antiseptic"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/antiseptic.png"
       }
     ],
     "hasBlueprint": false,
@@ -3477,6 +4644,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [
       "24x Raids"
     ],
@@ -3553,6 +4722,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -3622,7 +4793,8 @@
       "buried_city",
       "the_spaceport",
       "the_blue_gate",
-      "dam_battlegrounds"
+      "dam_battlegrounds",
+      "riven_tides"
     ],
     "previousQuestIds": [
       "water_troubles",
@@ -3642,11 +4814,17 @@
         "originalEn": "Destroy a Leaper"
       },
       {
+        "value": "Zerstöre 4 Springer-Beine.",
+        "originalEn": "Destroy 4 Leaper legs"
+      },
+      {
         "value": "Beschaffe eine Springer-Impulseinheit.",
         "originalEn": "Obtain a Leaper Pulse Unit"
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 10000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -3715,6 +4893,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -3778,6 +4958,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -3833,8 +5015,8 @@
       "line_in_the_sand"
     ],
     "description": {
-      "value": "Mehr Erwähnungen von Mantikor und deutlichere Anzeichen von Uneinigkeit unter den Forschern. Ich denke, dass die Spannungen irgendwann eskaliert sind.",
-      "originalEn": "More mentions of Mantikor, and more clear signs of dissent among the researchers. I suspect tensions eventually escalated."
+      "value": "Mehr Erwähnungen von MANTIKOR und deutlichere Anzeichen von Uneinigkeit unter den Forschern. Ich denke, dass die Spannungen irgendwann eskaliert sind.",
+      "originalEn": "More mentions of MANTIKOR, and more clear signs of dissent among the researchers. I suspect tensions eventually escalated."
     },
     "objectives": [
       {
@@ -3854,11 +5036,13 @@
         "originalEn": "Search the seed deposit box"
       },
       {
-        "value": "Bringe die offiziellen Abschaltunterlagen zu Shani.",
+        "value": "Bringe die offiziellen Unterlagen zur Einstellung des Projekts zu Shani.",
         "originalEn": "Bring the Official Shutdown Documentation to Shani"
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -3924,23 +5108,25 @@
         "originalEn": "Find the Arbusto Farmacia by the collapsed highway"
       },
       {
-        "value": "Die Hobbys der Apothekerin dokumentieren",
-        "originalEn": "Document the pharmacist’s hobbies"
-      },
-      {
-        "value": "Die Familie der Apothekerin dokumentieren",
-        "originalEn": "Document the pharmacist’s family"
+        "value": "Die Fähigkeiten der Apothekerin dokumentieren",
+        "originalEn": "Document the pharmacist’s skills"
       },
       {
         "value": "Den Geschmack der Apothekerin dokumentieren",
         "originalEn": "Document the pharmacist’s taste"
       },
       {
-        "value": "Die Fähigkeiten der Apothekerin dokumentieren",
-        "originalEn": "Document the pharmacist’s skills"
+        "value": "Die Familie der Apothekerin dokumentieren",
+        "originalEn": "Document the pharmacist’s family"
+      },
+      {
+        "value": "Die Hobbys der Apothekerin dokumentieren",
+        "originalEn": "Document the pharmacist’s hobbies"
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 2500,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -3996,7 +5182,7 @@
       "safe_harbor"
     ],
     "description": {
-      "value": "Auf dieser Festplatte aus Stella Montis befanden sich nicht nur die Unterlagen zur Stilllegung, sondern auch die Transportpläne für einige ziemlich wichtige Exodus-Komponenten.",
+      "value": "Auf dieser Festplatte aus Stella Montis befanden sich nicht nur die Unterlagen zur Einstellung des Projekts, sondern auch die Transportpläne für einige ziemlich wichtige Exodus-Komponenten.",
       "originalEn": "That Stella Montis hard drive contained more than just the shutdown documentation - it also had the transport schedules of some pretty critical Exodus components."
     },
     "objectives": [
@@ -4018,6 +5204,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 8000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -4091,6 +5279,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -4155,6 +5345,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -4214,6 +5406,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -4289,6 +5483,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 2500,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -4328,7 +5524,8 @@
       "buried_city",
       "the_spaceport",
       "the_blue_gate",
-      "dam_battlegrounds"
+      "dam_battlegrounds",
+      "riven_tides"
     ],
     "previousQuestIds": [
       "dormant_barons"
@@ -4349,6 +5546,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 8000,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -4416,7 +5615,9 @@
       "originalEn": "Movie Night"
     },
     "trader": "Apollo",
-    "map": [],
+    "map": [
+      "stella_montis"
+    ],
     "previousQuestIds": [
       "with_a_view"
     ],
@@ -4440,6 +5641,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -4530,15 +5733,21 @@
     "map": [
       "buried_city",
       "the_spaceport",
-      "dam_battlegrounds"
+      "dam_battlegrounds",
+      "riven_tides"
     ],
     "previousQuestIds": [
       "clearer_skies",
       "trash_into_treasure"
     ],
     "nextQuestIds": [
+      "to_the_skies",
       "a_first_foothold",
+      "clean_hands",
+      "exploring_pendola_pass",
+      "sizing_things_up",
       "shoring_up_defenses",
+      "boarding_the_frigate",
       "battening_down",
       "a_bad_feeling"
     ],
@@ -4557,6 +5766,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 2500,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -4626,6 +5837,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -4705,6 +5918,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -4789,6 +6004,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -4838,7 +6055,8 @@
       "buried_city",
       "the_spaceport",
       "the_blue_gate",
-      "dam_battlegrounds"
+      "dam_battlegrounds",
+      "riven_tides"
     ],
     "previousQuestIds": [
       "a_symbol_of_unification",
@@ -4862,6 +6080,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 10000,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -4910,17 +6130,7 @@
       },
       {
         "id": "wolfpack",
-        "quantity": 1,
-        "name": {
-          "value": "Wolfpack",
-          "originalEn": "Wolfpack"
-        },
-        "rarity": "Epic",
-        "imageFilename": "https://cdn.arctracker.io/items/v2/wolfpack.png"
-      },
-      {
-        "id": "wolfpack",
-        "quantity": 1,
+        "quantity": 2,
         "name": {
           "value": "Wolfpack",
           "originalEn": "Wolfpack"
@@ -4954,7 +6164,7 @@
     },
     "objectives": [
       {
-        "value": "Suche Dodgers Geheimvorrat im Verkehrstunnel.",
+        "value": "Suche Dodgers Vorrat im Verkehrstunnel.",
         "originalEn": "Search for Dodger's stash inside the Traffic Tunnel"
       },
       {
@@ -4967,6 +6177,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -5047,6 +6259,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -5092,7 +6306,14 @@
       "originalEn": "Picking Up The Pieces"
     },
     "trader": "Shani",
-    "map": [],
+    "map": [
+      "dam_battlegrounds",
+      "the_blue_gate",
+      "the_spaceport",
+      "riven_tides",
+      "stella_montis",
+      "buried_city"
+    ],
     "previousQuestIds": [
       "map_dam_battleground"
     ],
@@ -5115,6 +6336,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 1000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -5182,6 +6405,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -5255,6 +6480,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 2500,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -5332,6 +6559,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -5382,6 +6611,100 @@
     "blueprintRewards": []
   },
   {
+    "id": "ruins_and_reverberations",
+    "name": {
+      "value": "Ruinen und Rückhall",
+      "originalEn": "Ruins and Reverberations"
+    },
+    "trader": "Celeste",
+    "map": [
+      "pendola_pass"
+    ],
+    "previousQuestIds": [
+      "wires_crossed"
+    ],
+    "nextQuestIds": [],
+    "description": {
+      "value": "Dieser Kaiser ist nicht einfach so gestolpert und hingefallen … Er wurde zu Fall gebracht. Und ich habe eine Theorie dazu, wie das passiert ist.",
+      "originalEn": "That Emperor didn’t just trip and fall… It was brought down. And I have a leading theory about how that happened."
+    },
+    "objectives": [
+      {
+        "value": " Verbinde ein Aufklärer-Relais mit der Antenne auf dem Dach des Observatoriums Cielo Sereno.",
+        "originalEn": " Connect a Spotter Relay to the antenna on the roof of the Cielo Sereno Observatory"
+      },
+      {
+        "value": "Schweiße die Kabel im Kriechkeller unter dem Kontrollraum zusammen, um die Energie umzuleiten.",
+        "originalEn": "Weld the wires in the crawlspace under the control room to redirect power"
+      },
+      {
+        "value": "Aktiviere das Aufklärer-Relais an der Antenne erneut.",
+        "originalEn": "Activate the Spotter Relay at the antenna again"
+      }
+    ],
+    "objectivesOneRound": true,
+    "addedIn": "2.0",
+    "xp": 5000,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "grapple_hook",
+        "quantity": 1,
+        "name": {
+          "value": "",
+          "originalEn": "Grapple Hook"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "smoke_grenade",
+        "quantity": 2,
+        "name": {
+          "value": "Rauchgranate",
+          "originalEn": "Smoke Grenade"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/smoke_grenade.png"
+      },
+      {
+        "id": "looting_mk3_safekeeper",
+        "quantity": 1,
+        "name": {
+          "value": "Beute-Marke 3 (Hüter)",
+          "originalEn": "Looting Mk. 3 (Safekeeper)"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/looting_mk3_safekeeper.png"
+      },
+      {
+        "id": "electrical_components",
+        "quantity": 3,
+        "name": {
+          "value": "Elektrische Komponenten",
+          "originalEn": "Electrical Components"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/electrical_components.png"
+      },
+      {
+        "id": "speaker_component",
+        "quantity": 2,
+        "name": {
+          "value": "Lautsprecher-Komponente",
+          "originalEn": "Speaker Component"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/speaker_component.png"
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
     "id": "safe_harbor",
     "name": {
       "value": "Sicherer Hafen",
@@ -5420,6 +6743,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -5495,6 +6820,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -5591,6 +6918,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 10000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -5633,7 +6962,9 @@
     "previousQuestIds": [
       "off_the_radar"
     ],
-    "nextQuestIds": [],
+    "nextQuestIds": [
+      "celestes_childhood_drawings"
+    ],
     "description": {
       "value": "Früher war die weitläufige Küste ein Ort der Gefahr, doch heute ist sie der einzige Ort, von dem aus wir neue Bedrohungen ausmachen können, die in den Rostgürtel vordringen.\r\n\r\nAlso müssen wir uns selbst Deckung schaffen und die wenigen Verteidigungsanlagen verstärken, die wir finden können.",
       "originalEn": "The wide-open coastline used to mean danger, but now it's the only place we can spot new threats moving into the Rust Belt.\r\n\r\nSo we'll have to make our own cover, and reinforce what few defenses we can find."
@@ -5657,6 +6988,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [
       "20x Raids"
     ],
@@ -5709,6 +7042,115 @@
     "blueprintRewards": []
   },
   {
+    "id": "sizing_things_up",
+    "name": {
+      "value": "Die Lage einschätzen",
+      "originalEn": "Sizing Things Up"
+    },
+    "trader": "Celeste",
+    "map": [
+      "pendola_pass"
+    ],
+    "previousQuestIds": [
+      "off_the_radar"
+    ],
+    "nextQuestIds": [
+      "belly_of_the_beast"
+    ],
+    "description": {
+      "value": "Diese Kaiser waren schon aus der Ferne beeindruckend genug, aber ihnen so nahe zu kommen … Wenn es eine Situation gibt, um „Sei bloß vorsichtig!“ zu sagen, dann diese.",
+      "originalEn": "Those Emperors were imposing enough from a distance, but to be able to get so up close… If there was ever a time to tread carefully, this would be it."
+    },
+    "objectives": [
+      {
+        "value": "Erreiche die Basis des Kaisers.",
+        "originalEn": "Reach the base of the Emperor"
+      },
+      {
+        "value": "Durchsuche die begrabene Ernter-Fracht.",
+        "originalEn": "Search the Buried Harvester Payload"
+      },
+      {
+        "value": "Bring die ARC-Leitfähigkeitskupplung zu Celeste.",
+        "originalEn": "Deliver the ARC Conductive Coupler to Celeste"
+      }
+    ],
+    "objectivesOneRound": true,
+    "addedIn": "2.0",
+    "xp": 5000,
+    "otherRequirements": [
+      "25x Raids"
+    ],
+    "grantedItems": [
+      {
+        "id": "basic_camera",
+        "quantity": 1,
+        "name": {
+          "value": "",
+          "originalEn": "Basic Camera"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
+    "requiredItems": [
+      {
+        "id": "arc_conductive_coupler",
+        "quantity": 1,
+        "name": {
+          "value": "",
+          "originalEn": "ARC Conductive Coupler"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "adrenaline_shot",
+        "quantity": 3,
+        "name": {
+          "value": "Adrenalinspritze",
+          "originalEn": "Adrenaline Shot"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/adrenaline_shot.png"
+      },
+      {
+        "id": "research_item_03",
+        "quantity": 1,
+        "name": {
+          "value": "",
+          "originalEn": "Research Item 03"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      },
+      {
+        "id": "bettina_i",
+        "quantity": 1,
+        "name": {
+          "value": "Bettina I",
+          "originalEn": "Bettina I"
+        },
+        "rarity": "Epic",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/bettina_i.png"
+      },
+      {
+        "id": "heavy_ammo",
+        "quantity": 60,
+        "name": {
+          "value": "Schwere Munition",
+          "originalEn": "Heavy Ammo"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/heavy_ammo.png"
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
     "id": "snap_and_salvage",
     "name": {
       "value": "Schnappen und Ausschlachten",
@@ -5748,6 +7190,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 2500,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -5818,6 +7262,81 @@
     "blueprintRewards": []
   },
   {
+    "id": "someone_elses_shoes",
+    "name": {
+      "value": "In fremden Schuhen",
+      "originalEn": "Someone Else's Shoes"
+    },
+    "trader": "Celeste",
+    "map": [
+      "stella_montis"
+    ],
+    "previousQuestIds": [
+      "home_to_roost"
+    ],
+    "nextQuestIds": [
+      "empathetic_prototypes"
+    ],
+    "description": {
+      "value": "Diese Androiden in Stella Montis … Sie waren anscheinend ebenso sehr Versuchsobjekte wie Assistenten. Es gibt einige verschlüsselte Forschungsnotizen über ein … Projekt Pathos.",
+      "originalEn": "Those androids around Stella Montis… It seems they were test subjects as much as they were assistants. There’s some encrypted research notes about a… Project Pathos."
+    },
+    "objectives": [
+      {
+        "value": "Scanne einen Androiden in Stella Montis.",
+        "originalEn": "Scan any Android on Stella Montis"
+      },
+      {
+        "value": "Finde den Androiden im Forschungslabor 3 der Krankenstation.",
+        "originalEn": "Find the Android in Research Lab 3 in the Medical Bay"
+      },
+      {
+        "value": "Erreiche den Kontrollraum in den westlichen Tunneln und suche nach Hinweisen.",
+        "originalEn": "Reach the Control Room in the Western Tunnels and search for clues"
+      }
+    ],
+    "objectivesOneRound": false,
+    "addedIn": "2.0",
+    "xp": 5000,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "stella_montis_medical_storage_key",
+        "quantity": 1,
+        "name": {
+          "value": "Schlüssel zum medizinischen Lagerraum in Stella Montis",
+          "originalEn": "Stella Montis Medical Storage Key"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/stella_montis_medical_storage_key.png"
+      },
+      {
+        "id": "herbal_bandage",
+        "quantity": 3,
+        "name": {
+          "value": "Kräuterverband",
+          "originalEn": "Herbal Bandage"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/herbal_bandage.png"
+      },
+      {
+        "id": "shield_recharger",
+        "quantity": 2,
+        "name": {
+          "value": "Schildauflader",
+          "originalEn": "Shield Recharger"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/shield_recharger.png"
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
     "id": "source_of_the_contamination",
     "name": {
       "value": "Quelle der Kontamination",
@@ -5852,6 +7371,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -5911,11 +7432,17 @@
     },
     "objectives": [
       {
+        "value": "Zerstöre eine Hornisse mit einer beliebigen Granate.",
+        "originalEn": "Destroy a Hornet using any Grenade"
+      },
+      {
         "value": "Eine Hornisse mit einer Abzuggranate vernichten",
         "originalEn": "Destroy a Hornet with a Trigger 'Nade or Snap Blast"
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -5952,16 +7479,6 @@
     "requiredItems": [],
     "rewardItems": [
       {
-        "id": "trigger_nade_blueprint",
-        "quantity": 1,
-        "name": {
-          "value": "Bauplan: Abzuggranate",
-          "originalEn": "Trigger Nade Blueprint"
-        },
-        "rarity": "Common",
-        "imageFilename": "https://cdn.arctracker.io/items/v2/trigger_nade_blueprint.png"
-      },
-      {
         "id": "crude_explosives",
         "quantity": 4,
         "name": {
@@ -5980,19 +7497,20 @@
         },
         "rarity": "Rare",
         "imageFilename": "https://cdn.arctracker.io/items/v2/processor.png"
+      },
+      {
+        "id": "seeker_grenade",
+        "quantity": 2,
+        "name": {
+          "value": "Suchgranate",
+          "originalEn": "Seeker Grenade"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/seeker_grenade.png"
       }
     ],
-    "hasBlueprint": true,
-    "blueprintRewards": [
-      {
-        "id": "trigger_nade_blueprint",
-        "name": {
-          "value": "Bauplan: Abzuggranate",
-          "originalEn": "Trigger Nade Blueprint"
-        },
-        "imageFilename": "https://cdn.arctracker.io/items/v2/trigger_nade_blueprint.png"
-      }
-    ]
+    "hasBlueprint": false,
+    "blueprintRewards": []
   },
   {
     "id": "stable_housing",
@@ -6038,11 +7556,13 @@
         "originalEn": "Retrieve the contents of the safe"
       },
       {
-        "value": "Übergib Tian Wen die Baupläne für Projekt Immergrün.",
+        "value": "Übergib Tian Wen die Baupläne für Projekt Heartwood.",
         "originalEn": "Deliver the Project Heartwood Blueprints to Tian Wen"
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 8000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -6139,6 +7659,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -6206,7 +7728,7 @@
     ],
     "description": {
       "value": "Unter dem Raumhafen ist ein Reservoir – wenn wir Wasser von da ableiten könnten, würden wir Zeit gewinnen, um uns um die Kontamination zu kümmern.",
-      "originalEn": "There is a reservoir beneath the Spaceport; if we manage to rout that water here, that should buy us time to deal with the contamination."
+      "originalEn": "There is a reservoir beneath the Spaceport; if we manage to route that water here, that should buy us time to deal with the contamination."
     },
     "objectives": [
       {
@@ -6219,6 +7741,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -6242,6 +7766,96 @@
         },
         "rarity": "Rare",
         "imageFilename": "https://cdn.arctracker.io/items/v2/synthesized_fuel.png"
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "taking_stock",
+    "name": {
+      "value": "Bestandsaufnahme",
+      "originalEn": "Taking Stock"
+    },
+    "trader": "Ermal",
+    "map": [
+      "stella_montis",
+      "the_spaceport",
+      "dam_battlegrounds",
+      "buried_city"
+    ],
+    "previousQuestIds": [
+      "clean_hands"
+    ],
+    "nextQuestIds": [
+      "a_path_not_yours"
+    ],
+    "description": {
+      "value": "An der Oberfläche kreuzen sich unsere Wege bewusst nur selten. Deine Anwesenheit zieht mehr Blicke auf sich, als wir uns leisten können.",
+      "originalEn": "On the surface, our paths seldom cross by design. After all, your presence draws more eyes than ours can afford."
+    },
+    "objectives": [
+      {
+        "value": "Mach in Stella Montis ein Foto von der Skulptur im Atrium.",
+        "originalEn": "On Stella Montis, take a photo of the sculpture in the Atrium"
+      },
+      {
+        "value": "Mach im Raumhafen ein Foto von einer Baronhülle. ",
+        "originalEn": "On Spaceport, take a photo of a Baron Husk "
+      },
+      {
+        "value": "Bring 3 Industrie-Akkus zum nomadischen Gesandten.",
+        "originalEn": "Deliver 3 Industrial Batteries to the Nomadic Envoy"
+      }
+    ],
+    "objectivesOneRound": false,
+    "addedIn": "2.0",
+    "xp": 8000,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "basic_camera",
+        "quantity": 1,
+        "name": {
+          "value": "",
+          "originalEn": "Basic Camera"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
+    "requiredItems": [
+      {
+        "id": "industrial_battery",
+        "quantity": 3,
+        "name": {
+          "value": "Industrie-Akku",
+          "originalEn": "Industrial Battery"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/industrial_battery.png"
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "jolt_mine",
+        "quantity": 2,
+        "name": {
+          "value": "Schockmine",
+          "originalEn": "Jolt Mine"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/jolt_mine.png"
+      },
+      {
+        "id": "advanced_electrical_components",
+        "quantity": 1,
+        "name": {
+          "value": "Fortschrittliche elektrische Komponenten",
+          "originalEn": "Advanced Electrical Components"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/advanced_electrical_components.png"
       }
     ],
     "hasBlueprint": false,
@@ -6282,6 +7896,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 2500,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -6385,12 +8001,16 @@
     },
     "objectives": [
       {
-        "value": "Durchsuche 4 Container in den unterirdischen Tunneln beim Raumhafen.",
-        "originalEn": "On Spaceport, search 4 containers in the underground tunnels"
+        "value": "Finde im Raumhafen die unterirdischen Tunnel.",
+        "originalEn": "On Spaceport, find the underground tunnels"
       },
       {
         "value": "Finde und überwache ein beliebiges Filtersystem in den Tunneln.",
         "originalEn": "Find and monitor any Filtration System in the tunnels"
+      },
+      {
+        "value": "Durchsuche 2 Container in den unterirdischen Tunneln beim Raumhafen.",
+        "originalEn": "On Spaceport, search 2 containers in the underground tunnels"
       },
       {
         "value": "Gehe zum Wartungsbunker beim Blauen Tor.",
@@ -6401,11 +8021,17 @@
         "originalEn": "Monitor the Purification System in the bunker"
       },
       {
-        "value": "Finde und fotografiere die Baupläne im Bunker.",
-        "originalEn": "Find and photograph the blueprints in the bunker"
+        "value": "Finde den Bauplan des Reinigungssystems im Bunker.",
+        "originalEn": "Find the Purification System Blueprint in the Bunker"
+      },
+      {
+        "value": "Bring den Bauplan des Reinigungssystems zu Apollo.",
+        "originalEn": "Deliver the Purification System Blueprint to Apollo"
       }
     ],
-    "objectivesOneRound": false,
+    "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -6419,7 +8045,18 @@
         "imageFilename": "https://cdn.arctracker.io/items/v2/blue_light_stick.png"
       }
     ],
-    "requiredItems": [],
+    "requiredItems": [
+      {
+        "id": "purification_system_blueprint",
+        "quantity": 1,
+        "name": {
+          "value": "",
+          "originalEn": "Purification System Blueprint"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
     "rewardItems": [
       {
         "id": "deadline",
@@ -6495,6 +8132,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -6596,6 +8235,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 2500,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -6667,6 +8308,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 2500,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -6751,6 +8394,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 8000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -6821,6 +8466,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 8000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -6885,31 +8532,33 @@
     },
     "objectives": [
       {
-        "value": "Eine Wespe zerstören",
-        "originalEn": "Destroy a Wasp"
+        "value": "Zerstöre 2 Spitzel.",
+        "originalEn": "Destroy 2 Snitches"
       },
       {
-        "value": "Einen Wespentreiber für Shani besorgen",
-        "originalEn": "Get a Wasp Driver for Shani"
+        "value": "Zerstöre 2 Wespen.",
+        "originalEn": "Destroy 2 Wasps"
       },
       {
-        "value": "Eine Hornisse zerstören",
-        "originalEn": "Destroy a Hornet"
+        "value": "Zerstöre 2 Hornissen.",
+        "originalEn": "Destroy 2 Hornets"
       },
       {
-        "value": "Einen Hornissentreiber für Shani besorgen",
-        "originalEn": "Get a Hornet Driver for Shani"
+        "value": "Zerstöre 2 Wespen-Schubdüsen.",
+        "originalEn": "Destroy 2 Wasp thrusters"
       },
       {
-        "value": "Einen Spitzel zerstören",
-        "originalEn": "Destroy a Snitch"
+        "value": "Zerstöre 4 Hornissen-Schubdüsen.",
+        "originalEn": "Destroy 4 Hornet thrusters"
       },
       {
-        "value": "Einen Spitzel-Scanner für Shani besorgen",
-        "originalEn": "Get a Snitch Scanner for Shani"
+        "value": "Zerstöre den Treibstofftank eines Glühwürmchens.",
+        "originalEn": "Destroy a Firefly fuel tank"
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -6923,38 +8572,7 @@
         "imageFilename": "https://cdn.arctracker.io/items/v2/remote_raider_flare.png"
       }
     ],
-    "requiredItems": [
-      {
-        "id": "wasp_driver",
-        "quantity": 2,
-        "name": {
-          "value": "Wespentreiber",
-          "originalEn": "Wasp Driver"
-        },
-        "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/v2/wasp_driver.png"
-      },
-      {
-        "id": "hornet_driver",
-        "quantity": 2,
-        "name": {
-          "value": "Hornissentreiber",
-          "originalEn": "Hornet Driver"
-        },
-        "rarity": "Rare",
-        "imageFilename": "https://cdn.arctracker.io/items/v2/hornet_driver.png"
-      },
-      {
-        "id": "snitch_scanner",
-        "quantity": 2,
-        "name": {
-          "value": "Spitzel-Scanner",
-          "originalEn": "Snitch Scanner"
-        },
-        "rarity": "Uncommon",
-        "imageFilename": "https://cdn.arctracker.io/items/v2/snitch_scanner.png"
-      }
-    ],
+    "requiredItems": [],
     "rewardItems": [
       {
         "id": "raider_hatch_key",
@@ -6991,6 +8609,185 @@
     "blueprintRewards": []
   },
   {
+    "id": "to_the_skies",
+    "name": {
+      "value": "Gen Himmel",
+      "originalEn": "To The Skies"
+    },
+    "trader": "Apollo",
+    "map": [],
+    "previousQuestIds": [
+      "off_the_radar"
+    ],
+    "nextQuestIds": [],
+    "description": {
+      "value": "Shani ist mit den Gondeln zufrieden, die uns den Berg hinauf- und hinunterbringen, aber wir haben ein paar Ingenieure aus Ferrovia, die eher bereit sind, ein Risiko einzugehen. Da kann ich mich anschließen.",
+      "originalEn": "Shani’s content for the gondolas to get us up and down the mountain, but we have some engineers from Ferrovia more willing to take a risk. I can get behind that."
+    },
+    "objectives": [
+      {
+        "value": "Scanne eine abgestürzte ARC-Sonde.",
+        "originalEn": "Scan any Crashed ARC Probe"
+      },
+      {
+        "value": "Scanne einen ARC-Kurier.",
+        "originalEn": "Scan any ARC Courier"
+      }
+    ],
+    "objectivesOneRound": false,
+    "addedIn": "2.0",
+    "xp": 8000,
+    "otherRequirements": [
+      "25x Raids"
+    ],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "arc_performance_steel",
+        "quantity": 3,
+        "name": {
+          "value": "ARC-Hochleistungsstahl",
+          "originalEn": "ARC Performance Steel"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/arc_performance_steel.png"
+      },
+      {
+        "id": "arc_thermo_lining",
+        "quantity": 3,
+        "name": {
+          "value": "ARC-Thermofütterung",
+          "originalEn": "ARC Thermo Lining"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/arc_thermo_lining.png"
+      },
+      {
+        "id": "arc_synthetic_resin",
+        "quantity": 3,
+        "name": {
+          "value": "ARC-Kunstharz",
+          "originalEn": "ARC Synthetic Resin"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/arc_synthetic_resin.png"
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "tracks_of_the_beast",
+    "name": {
+      "value": "Spuren der Bestie",
+      "originalEn": "Tracks of the Beast"
+    },
+    "trader": "Shani",
+    "map": [
+      "pendola_pass"
+    ],
+    "previousQuestIds": [
+      "exploring_pendola_pass"
+    ],
+    "nextQuestIds": [
+      "belly_of_the_beast",
+      "bait_fetch_blast"
+    ],
+    "description": {
+      "value": "Der Abschnitt von den nördlichen Gleisen bis zum Kaiser wimmelt nur so von unbekannten ARC-Einheiten. Ich brauche jemanden, der sie im Auge behält, sonst geraten wir vielleicht in eine Todesfalle, noch bevor wir überhaupt anfangen können, den Kaiser aufzubrechen.",
+      "originalEn": "The stretch from the Northern tracks to the Emperor is crawling with unfamiliar ARC units. I need eyes on them, or we might be stepping into a death trap before we can even begin to breach the Emperor."
+    },
+    "objectives": [
+      {
+        "value": "Gehe am Pendola-Pass zu den nördlichen Gleisen.",
+        "originalEn": "On Pendola Pass, head to the Northern Tracks"
+      },
+      {
+        "value": "Finde die zerstörte Station am Ende der Gleise.",
+        "originalEn": "Find the destroyed station at the end of the tracks"
+      },
+      {
+        "value": "Pinge einen Bully.",
+        "originalEn": "Ping a Bully"
+      },
+      {
+        "value": "Pinge einen Skulker.",
+        "originalEn": "Ping a Skulker"
+      },
+      {
+        "value": "Zerstöre 3 Skulker.",
+        "originalEn": "Destroy 3 Skulkers"
+      },
+      {
+        "value": "Bring ein Skulker-Zielgerät zu Shani.",
+        "originalEn": "Deliver a Skulker Targeter to Shani"
+      }
+    ],
+    "objectivesOneRound": true,
+    "addedIn": "2.0",
+    "xp": 5000,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "lure_grenade",
+        "quantity": 2,
+        "name": {
+          "value": "Ködergranate",
+          "originalEn": "Lure Grenade"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/lure_grenade.png"
+      },
+      {
+        "id": "adrenaline_shot",
+        "quantity": 3,
+        "name": {
+          "value": "Adrenalinspritze",
+          "originalEn": "Adrenaline Shot"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/adrenaline_shot.png"
+      }
+    ],
+    "requiredItems": [
+      {
+        "id": "skulker_targeter",
+        "quantity": 1,
+        "name": {
+          "value": "",
+          "originalEn": "Skulker Targeter"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
+    "rewardItems": [
+      {
+        "id": "showstopper",
+        "quantity": 3,
+        "name": {
+          "value": "Showstopper",
+          "originalEn": "Showstopper"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/showstopper.png"
+      },
+      {
+        "id": "grapple_hook",
+        "quantity": 1,
+        "name": {
+          "value": "",
+          "originalEn": "Grapple Hook"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
     "id": "trash_into_treasure",
     "name": {
       "value": "Des einen Müll ist des anderen Schatz",
@@ -7019,6 +8816,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 1000,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -7104,6 +8903,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 2500,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -7182,6 +8983,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -7269,6 +9072,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -7363,6 +9168,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 8000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -7434,6 +9241,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 8000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -7509,6 +9318,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -7572,6 +9383,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 2500,
     "otherRequirements": [],
     "grantedItems": [
       {
@@ -7648,6 +9461,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 2500,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -7681,6 +9496,207 @@
         },
         "rarity": "Uncommon",
         "imageFilename": "https://cdn.arctracker.io/items/v2/stable_stock_ii.png"
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "when_everything_falls",
+    "name": {
+      "value": "Wenn alles fällt",
+      "originalEn": "When Everything Falls"
+    },
+    "trader": "Shani",
+    "map": [
+      "the_spaceport"
+    ],
+    "previousQuestIds": [
+      "empathetic_prototypes"
+    ],
+    "nextQuestIds": [],
+    "description": {
+      "value": "Die Kiste, die du in der MANTIKOR-Anlage gefunden hast, enthielt Spezialfunkgeräte, die mit Geotags verschlüsselt waren. Und die Koordinaten … Die fangen genau dort an, wo die Meuterer ihre Waffen versteckt haben.",
+      "originalEn": "The box you found in the MANTIKOR facility contained specialized radios, encrypted using geotags.\r\n\r\nAnd the coordinates… They start right where the mutineers stashed their weapons."
+    },
+    "objectives": [
+      {
+        "value": "Gehe zu den Wassertürmen.",
+        "originalEn": "Go to the Water Towers"
+      },
+      {
+        "value": "Fotografiere ein Sicherheitshäuschen.",
+        "originalEn": "Photograph a Security Booth"
+      },
+      {
+        "value": "Fotografiere einen verstärkten Bus.",
+        "originalEn": "Photograph a reinforced bus"
+      },
+      {
+        "value": "Fotografiere die Mauerlücke.",
+        "originalEn": "Photograph the breach in the walls"
+      },
+      {
+        "value": " Fotografiere den Sicherheitsraum im Ankunftsgebäude.",
+        "originalEn": " Photograph the Arrival Building security room"
+      },
+      {
+        "value": "Fotografiere Hafen A der Starttürme.",
+        "originalEn": "Photograph Port A of the Launch Towers"
+      },
+      {
+        "value": " Fotografiere den Kontrollraum der Starttürme.",
+        "originalEn": " Photograph the Launch Towers control room"
+      },
+      {
+        "value": "Fotografiere die Startplattform.",
+        "originalEn": "Photograph the launch platform"
+      }
+    ],
+    "objectivesOneRound": false,
+    "addedIn": "2.0",
+    "xp": 5000,
+    "otherRequirements": [],
+    "grantedItems": [
+      {
+        "id": "basic_camera",
+        "quantity": 1,
+        "name": {
+          "value": "",
+          "originalEn": "Basic Camera"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      }
+    ],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "stiletto_i",
+        "quantity": 1,
+        "name": {
+          "value": "",
+          "originalEn": "Stiletto I"
+        },
+        "rarity": "Common",
+        "imageFilename": ""
+      },
+      {
+        "id": "light_ammo",
+        "quantity": 100,
+        "name": {
+          "value": "Leichte Munition",
+          "originalEn": "Light Ammo"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/light_ammo.png"
+      },
+      {
+        "id": "adrenaline_shot",
+        "quantity": 3,
+        "name": {
+          "value": "Adrenalinspritze",
+          "originalEn": "Adrenaline Shot"
+        },
+        "rarity": "Common",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/adrenaline_shot.png"
+      },
+      {
+        "id": "silencer_i",
+        "quantity": 1,
+        "name": {
+          "value": "Schalldämpfer I",
+          "originalEn": "Silencer I"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/silencer_i.png"
+      }
+    ],
+    "hasBlueprint": false,
+    "blueprintRewards": []
+  },
+  {
+    "id": "wires_crossed",
+    "name": {
+      "value": "Kabelkreuzung",
+      "originalEn": "Wires Crossed"
+    },
+    "trader": "Celeste",
+    "map": [
+      "buried_city",
+      "the_spaceport",
+      "the_blue_gate"
+    ],
+    "previousQuestIds": [
+      "exploring_pendola_pass"
+    ],
+    "nextQuestIds": [
+      "ruins_and_reverberations"
+    ],
+    "description": {
+      "value": "Dieses Ding, das du im Observatorium gefunden hast … Es waren zwar nicht mehr viele Daten zu entnehmen, aber die Signatur stammte zweifellos von ARC.",
+      "originalEn": "That contraption you found at the Observatory… There wasn’t much data left to read, but the signature was undeniably ARC’s."
+    },
+    "objectives": [
+      {
+        "value": "Bring in Blaues Tor einen Spitzel-Scanner an der Antenne auf dem Pilgergipfel an.",
+        "originalEn": "On The Blue Gate, attach a Snitch Scanner to the antenna at Pilgrim’s Peak"
+      },
+      {
+        "value": "Bring im Raumhafen einen Beobachtertresor an der Antenne oben auf den Starttürmen an.",
+        "originalEn": "On Spaceport, attach a Surveyor Vault to the antenna on top of the Launch Towers"
+      },
+      {
+        "value": "Bring in der Begrabenen Stadt einen Wächter-Feuerkern an der Antenne auf dem Dach der Grandioso-Apartments an.",
+        "originalEn": "On Buried City, attach a Sentinel Firing Core to the antenna at the roof of the Grandioso Apartments"
+      }
+    ],
+    "objectivesOneRound": false,
+    "addedIn": "2.0",
+    "xp": 8000,
+    "otherRequirements": [],
+    "grantedItems": [],
+    "requiredItems": [],
+    "rewardItems": [
+      {
+        "id": "electrical_components",
+        "quantity": 3,
+        "name": {
+          "value": "Elektrische Komponenten",
+          "originalEn": "Electrical Components"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/electrical_components.png"
+      },
+      {
+        "id": "renegade_i",
+        "quantity": 1,
+        "name": {
+          "value": "Renegade I",
+          "originalEn": "Renegade I"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/renegade_i.png"
+      },
+      {
+        "id": "zipline",
+        "quantity": 2,
+        "name": {
+          "value": "Seilrutsche",
+          "originalEn": "Zipline"
+        },
+        "rarity": "Rare",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/zipline.png"
+      },
+      {
+        "id": "crash_mat",
+        "quantity": 2,
+        "name": {
+          "value": "Sturzmatte",
+          "originalEn": "Crash Mat"
+        },
+        "rarity": "Uncommon",
+        "imageFilename": "https://cdn.arctracker.io/items/v2/crash_mat.png"
       }
     ],
     "hasBlueprint": false,
@@ -7726,6 +9742,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],
@@ -7798,6 +9816,8 @@
       }
     ],
     "objectivesOneRound": false,
+    "addedIn": null,
+    "xp": 5000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [
@@ -7860,7 +9880,7 @@
   {
     "id": "worth_your_salt",
     "name": {
-      "value": "Dein Geld wert",
+      "value": "Das Salz wert",
       "originalEn": "Worth Your Salt"
     },
     "trader": "Celeste",
@@ -7900,6 +9920,8 @@
       }
     ],
     "objectivesOneRound": true,
+    "addedIn": null,
+    "xp": 8000,
     "otherRequirements": [],
     "grantedItems": [],
     "requiredItems": [],

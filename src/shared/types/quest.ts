@@ -36,4 +36,10 @@ export interface Quest {
   grantedItems: QuestItemEntry[];
   requiredItems: QuestItemEntry[];
   rewardItems: QuestItemEntry[];
+  /** Game version that introduced the quest (arcraiders-data `addedIn`), if known. */
+  addedIn?: string | null;
+  /** XP rewarded on completion (since 2.0). */
+  xp?: number;
+  /** True when the quest was added in the newest version present in the data. */
+  isNew?: boolean;
 }

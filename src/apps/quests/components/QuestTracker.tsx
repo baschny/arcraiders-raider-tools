@@ -414,6 +414,27 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
     ]
   );
 
+  // "Filter <version>": show only quests of the newest version plus their direct
+  // predecessors, so the new content and where it hooks in are easy to spot.
+  const [showNewOnly, setShowNewOnly] = useState(false);
+  const newestVersion = useMemo(
+    () => quests.find((quest) => quest.isNew)?.addedIn ?? null,
+    [quests]
+  );
+  const graphQuests = useMemo(() => {
+    if (!showNewOnly || !newestVersion) return quests;
+    const visibleIds = new Set<string>();
+    quests.forEach((quest) => {
+      if (!quest.isNew) return;
+      visibleIds.add(quest.id);
+      quest.previousQuestIds.forEach((prevId) => visibleIds.add(prevId));
+    });
+    return quests.filter((quest) => visibleIds.has(quest.id));
+  }, [quests, showNewOnly, newestVersion]);
+  // Set when the filter is toggled; the view is refitted once the new layout is shown
+  const fitAfterLayoutRef = useRef(false);
+  const [pendingFit, setPendingFit] = useState(false);
+
   // Compute node positions with ELK. The layout only depends on the graph
   // shape (quests + their prerequisite links), so we recompute it only when
   // `quests` changes, not on every completion toggle.
@@ -425,6 +446,7 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
   useEffect(() => {
     let cancelled = false;
     const elk = new ELK();
+    const graphIds = new Set(graphQuests.map((quest) => quest.id));
 
     const graph: ElkNode = {
       id: 'root',
@@ -438,13 +460,13 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
         'elk.layered.mergeEdges': 'true',
         'elk.edgeRouting': 'SPLINES',
       },
-      children: quests.map((quest) => ({
+      children: graphQuests.map((quest) => ({
         id: quest.id,
         width: 300,
         height: quest.trader === 'Map' ? 110 : 140,
       })),
-      edges: quests.flatMap((quest) =>
-        quest.previousQuestIds.map((prevId) => ({
+      edges: graphQuests.flatMap((quest) =>
+        quest.previousQuestIds.filter((prevId) => graphIds.has(prevId)).map((prevId) => ({
           id: `${prevId}-${quest.id}`,
           sources: [prevId],
           targets: [quest.id],
@@ -463,6 +485,10 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
           }
         });
         setElkPositions(positions);
+        if (fitAfterLayoutRef.current) {
+          fitAfterLayoutRef.current = false;
+          setPendingFit(true);
+        }
       })
       .catch((err) => {
         console.error('ELK layout failed:', err);
@@ -471,7 +497,7 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
     return () => {
       cancelled = true;
     };
-  }, [quests]);
+  }, [graphQuests]);
 
   // On first load (no saved viewport), position the pane horizontally
   // centered on the graph and aligned with its top edge. We run this
@@ -513,7 +539,8 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
     const NODE_WIDTH = 300;
 
     const flowNodes: Node[] = [];
-    quests.forEach((quest) => {
+    const graphIds = new Set(graphQuests.map((quest) => quest.id));
+    graphQuests.forEach((quest) => {
       const pos = elkPositions.get(quest.id);
       if (!pos) return;
       const isMap = quest.trader === 'Map';
@@ -551,8 +578,9 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
     });
 
     const flowEdges: Edge[] = [];
-    quests.forEach((quest) => {
+    graphQuests.forEach((quest) => {
       quest.previousQuestIds.forEach((prevId) => {
+        if (!graphIds.has(prevId)) return;
         const sourceCompleted = completedQuests.has(prevId);
         const targetStatus = isLinkedMode
           ? getQuestDisplayStatus({
@@ -640,12 +668,33 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
     isLinkedMode,
     toggleQuest,
     highlightedQuestId,
-    quests,
+    graphQuests,
   ]);
 
   // Initialize state hooks with the computed nodes and edges
   const [flowNodes, setNodes, onNodesChange] = useNodesState(nodes);
   const [flowEdges, setEdges, onEdgesChange] = useEdgesState(edges);
+
+  // Refit the view after toggling the version filter. Fits the ELK layout bounds
+  // directly: fitView would need the re-created nodes to be measured first.
+  useEffect(() => {
+    if (!pendingFit || !reactFlowInstance || !elkPositions || elkPositions.size === 0) return;
+    let minX = Infinity;
+    let minY = Infinity;
+    let maxX = -Infinity;
+    let maxY = -Infinity;
+    elkPositions.forEach((pos) => {
+      minX = Math.min(minX, pos.x);
+      minY = Math.min(minY, pos.y);
+      maxX = Math.max(maxX, pos.x + NODE_WIDTH);
+      maxY = Math.max(maxY, pos.y + 160);
+    });
+    reactFlowInstance.fitBounds(
+      { x: minX, y: minY, width: maxX - minX, height: maxY - minY },
+      { padding: 0.1, duration: 400 }
+    );
+    setPendingFit(false);
+  }, [pendingFit, reactFlowInstance, elkPositions]);
 
   // Update nodes and edges when completedQuests changes
   useEffect(() => {
@@ -862,14 +911,16 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
       minX = Math.min(minX, node.position.x);
       minY = Math.min(minY, node.position.y);
       maxX = Math.max(maxX, node.position.x + 300); // node width
-      maxY = Math.max(maxY, node.position.y + 140); // node height
+      maxY = Math.max(maxY, node.position.y + 220); // tallest node (multi-map quests)
     });
 
-    // Add padding
+    // Add padding. The bottom gets extra room so the last quests can be dragged
+    // up past the page footer that overlaps the canvas.
     const padding = 100;
+    const bottomPadding = 400;
     return [
       [minX - padding, minY - padding],
-      [maxX + padding, maxY + padding],
+      [maxX + padding, maxY + bottomPadding],
     ] as [[number, number], [number, number]];
   }, [nodes]);
 
@@ -1047,6 +1098,20 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
                   </span>
                 )}
               </div>
+              {newestVersion && (
+                <button
+                  type="button"
+                  className={`quest-mode-toolbar__version-filter ${showNewOnly ? 'is-active' : ''}`}
+                  aria-pressed={showNewOnly}
+                  title={`Show only quests added in ${newestVersion} and their direct predecessors`}
+                  onClick={() => {
+                    fitAfterLayoutRef.current = true;
+                    setShowNewOnly((value) => !value);
+                  }}
+                >
+                  Filter {newestVersion}
+                </button>
+              )}
               <div className="quest-mode-toolbar__switch" role="group" aria-label="Quest mode">
                 <button
                   type="button"

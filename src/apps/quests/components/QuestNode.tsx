@@ -15,6 +15,8 @@ import { QuestTooltip } from '../../../shared/components/QuestTooltip';
 const TOOLTIP_ESTIMATED_WIDTH = 440;
 const TOOLTIP_ESTIMATED_HEIGHT = 520;
 const TOOLTIP_MARGIN = 12;
+// XP at which the XP pill is fully filled (highest quest reward in 2.0)
+const XP_FULL_SCALE = 10000;
 
 export function QuestNode({ data }: { data: QuestNodeData }) {
   const { locale, t } = useLocale();
@@ -84,6 +86,7 @@ export function QuestNode({ data }: { data: QuestNodeData }) {
     };
   }, [isHovered, updateTooltipPosition]);
   const hasBlueprintReward = quest.hasBlueprint;
+  const xp = quest.xp ?? 0;
   const blueprintRewardTooltip =
     quest.blueprintRewards.length > 0
       ? t('quests.rewardsList').replace(
@@ -96,6 +99,7 @@ export function QuestNode({ data }: { data: QuestNodeData }) {
   const nodeClass = [
     'quest-node',
     hasBlueprintReward ? 'has-blueprint' : '',
+    quest.isNew ? 'is-new' : '',
     isCompleted ? 'completed' : '',
     isAvailable ? 'available' : '',
     status === 'active' ? 'active' : '',
@@ -122,6 +126,11 @@ export function QuestNode({ data }: { data: QuestNodeData }) {
       aria-disabled={!isInteractive}
     >
       <Handle type="target" position={Position.Top} id="target-top" />
+      {quest.isNew && (
+        <div className="new-badge" title={`New in ${quest.addedIn}`}>
+          NEW {quest.addedIn}
+        </div>
+      )}
       {hasBlueprintReward && (
         <div className="blueprint-badge" title={blueprintRewardTooltip}>
           📜 BP
@@ -148,9 +157,20 @@ export function QuestNode({ data }: { data: QuestNodeData }) {
           )}
         </div>
           <div className="quest-info">
-            {quest.map && quest.map.length > 0 && (
-              <div className="quest-map-info">
-                {quest.map.map((mapId) => getLocalizedMapName(mapId, locale)).join(', ')}
+            {((quest.map && quest.map.length > 0) || xp > 0) && (
+              <div className="quest-meta-row">
+                <div className="quest-map-info">
+                  {(quest.map ?? []).map((mapId) => getLocalizedMapName(mapId, locale)).join(', ')}
+                </div>
+                {xp > 0 && (
+                  <div
+                    className="quest-xp"
+                    style={{ '--xp-fill': `${Math.min(100, (xp / XP_FULL_SCALE) * 100)}%` } as React.CSSProperties}
+                    title={`${xp.toLocaleString(locale)} XP`}
+                  >
+                    +{xp.toLocaleString(locale)} XP
+                  </div>
+                )}
               </div>
             )}
             <div className="quest-name">{quest.name}</div>

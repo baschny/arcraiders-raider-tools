@@ -16,6 +16,8 @@ export function normalizeMapId(mapId: string): string {
       return 'blue-gate';
     case 'riven_tides':
       return 'riven-tides';
+    case 'pendola_pass':
+      return 'pendola-pass';
     case 'stella_montis':
     case 'stella_montis_upper':
     case 'stella_montis_lower':

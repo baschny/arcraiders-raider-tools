@@ -3,7 +3,7 @@
     "description": "Map name localizations extracted from ../arcraiders-data/maps.json"
   },
   "metadata": {
-    "generatedAt": "2026-08-19T00:54:16.218Z",
+    "generatedAt": "2026-10-07T23:54:11.618Z",
     "source": "../arcraiders-data/maps.json"
   },
   "maps": {
@@ -144,6 +144,30 @@
         "uk": "Бурхливі потоки",
         "zh-CN": "裂潮镇",
         "zh-TW": "裂潮鎮"
+      }
+    },
+    "pendola-pass": {
+      "localizations": {
+        "da": "",
+        "de": "Pendola-Pass",
+        "en": "Pendola Pass",
+        "es": "Paso Pendola",
+        "fr": "Col de Pendola",
+        "he": "",
+        "hr": "",
+        "it": "Passo di Pendola",
+        "ja": "ペンドラ・パス",
+        "ko-KR": "펜돌라 고개",
+        "no": "",
+        "pl": "Przełęcz Pendola",
+        "pt": "Passagem Pendola",
+        "pt-BR": "Passagem Pendola",
+        "ru": "Перевал Пендола",
+        "sr": "",
+        "tr": "Pendola Geçidi",
+        "uk": "",
+        "zh-CN": "彭多拉山口",
+        "zh-TW": "彭多拉隘口"
       }
     }
   }

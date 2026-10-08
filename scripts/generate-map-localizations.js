@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const MAPS_SOURCE_PATH = path.resolve(__dirname, '../../arcraiders-data/maps.json');
+const MAPS_SOURCE_PATH = path.resolve(process.env.ARCRAIDERS_DATA_DIR || path.resolve(__dirname, '../../arcraiders-data'), 'maps.json');
 const OUTPUT_PATH = path.resolve(__dirname, '../public/data/maps/localizations.json');
 
 const MAP_ID_MAP = {
@@ -16,6 +16,7 @@ const MAP_ID_MAP = {
   the_spaceport: 'the-spaceport',
   the_blue_gate: 'blue-gate',
   riven_tides: 'riven-tides',
+  pendola_pass: 'pendola-pass',
   stella_montis_upper: 'stella-montis',
   stella_montis_lower: 'stella-montis',
 };
