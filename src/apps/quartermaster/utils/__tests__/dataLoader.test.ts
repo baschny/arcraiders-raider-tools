@@ -51,7 +51,7 @@ describe('quartermaster v2 data loader', () => {
     const rs = hideout.find((m) => m.id === 'research_station');
     expect(rs).toBeDefined();
     expect(rs!.maxLevel).toBe(4);
-    expect(rs!.levels[0].image).toBeNull();
+    expect(rs!.levels[0].image).toBe('/images/benches/research_station-tier1.webp');
     expect(rs!.levels[0].requirementItemIds.length).toBeGreaterThan(0);
     expect(rs!.levels[1].requires).toEqual([{ kind: 'outpostLevel', id: '2' }]);
     expect(hideout.find((m) => m.id === 'refiner')!.levels[0].requirementItemIds).toContainEqual({

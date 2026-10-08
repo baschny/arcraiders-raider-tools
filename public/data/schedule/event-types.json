@@ -7,6 +7,28 @@
     "source": "arc-data/overlay/event-types.json"
   },
   "eventTypes": {
+    "arc-frigate": {
+      "displayName": "ARC Frigate",
+      "icon": "https://cdn.arctracker.io/map-events/arc_frigate.png",
+      "translationKey": "arcFrigate",
+      "category": "major",
+      "localizations": {
+        "en": "ARC Frigate",
+        "de": "ARC-Fregatte",
+        "fr": "Frégate ARC",
+        "es": "Fragata ARC",
+        "pt": "Fragata ARC",
+        "pt-BR": "Fragata ARC",
+        "pl": "Fregata ARC",
+        "it": "Fregata ARC",
+        "ja": "ARC フリゲート",
+        "ko": "아크 프리깃",
+        "zh-CN": "ARC“护卫者”",
+        "zh-TW": "ARC巡防艦",
+        "ru": "«Фрегат» ARC",
+        "tr": "ARC Fırkateyni"
+      }
+    },
     "close-scrutiny": {
       "displayName": "Close Scrutiny",
       "icon": "https://cdn.arctracker.io/map-events/close_scrutiny.png",
@@ -368,6 +390,28 @@
         "hr": "Sonde za istraživanje",
         "sr": "Sonde za istraživanje",
         "he": "Probes"
+      }
+    },
+    "redirection": {
+      "displayName": "Redirection",
+      "icon": "https://cdn.arctracker.io/map-events/redirection.png",
+      "translationKey": "redirection",
+      "category": "minor",
+      "localizations": {
+        "en": "Redirection",
+        "de": "Weiterleitung",
+        "fr": "Redirection",
+        "es": "Redirección",
+        "pt": "Redirecionamento",
+        "pt-BR": "Redirecionamento",
+        "pl": "Przekierowanie",
+        "it": "Deviazione",
+        "ja": "誘導",
+        "ko": "경로 변경",
+        "zh-CN": "航向重定向",
+        "zh-TW": "重新導向",
+        "ru": "Смена маршрута",
+        "tr": "Yeniden Yönlendirme"
       }
     },
     "uncovered-caches": {
