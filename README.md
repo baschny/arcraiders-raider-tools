@@ -94,4 +94,4 @@ MIT
 
 ## Credits
 
-Data provided by [RaidTheory/arcraiders-data](https://github.com/RaidTheory/arcraiders-data) and [arctracker.io](https://arctracker.io).
+Game data from the Embark API and the game files; item ids compatible with [arctracker.io](https://arctracker.io).

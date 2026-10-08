@@ -28,14 +28,13 @@ A specialized calculator for ARC Raiders to help players optimize stash space wh
 
 ## Updating Game Data
 
-The application relies on item data that can be synced from the [RaidTheory/arcraiders-data](https://github.com/RaidTheory/arcraiders-data) repository.
+Item and recipe data come from the shared game data (`public/data/game/`), generated from arc-data:
 
-1. Ensure you have the `arcraiders-data` repository cloned in the same parent directory as this project.
-2. Run the update script:
-   ```bash
-   npm run generate:crafting
-   ```
-   This will sync JSON definitions and regenerate the items database in `public/items.json`.
+```bash
+npm run generate:game-data
+```
+
+See `docs/Game-Data.md`.
 
 ---
 

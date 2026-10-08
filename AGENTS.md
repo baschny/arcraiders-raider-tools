@@ -24,30 +24,33 @@ Each app is self-contained with its own components, utilities, types, and styles
 ## Data Source & Generation
 
 ### Upstream Data
-All game data comes from the community-maintained repository:
-- **Source**: https://github.com/RaidTheory/arcraiders-data
-- **Location**: Must be cloned as a sibling directory: `../arcraiders-data/`
-- **Format**: Individual JSON files per game entity
+All game data comes from **arc-data**, the canonical game data built in the embark-api project
+(`../embark-api/arc-data`, override with `GAME_DATA_DIR` / `EMBARK_API_DIR`) from the Embark API and
+the game files. See `docs/Game-Data.md` and embark-api `docs/arc-data.md`.
 
 ### Data Generation Scripts
 
-Located in `scripts/`, these transform upstream data into app-specific formats:
-
 ```bash
-npm run generate              # Generate all data
-npm run generate:items        # Shared item database (used by all apps)
-npm run generate:quests       # Quest tree data
-npm run generate:hideout      # Hideout module data
-npm run generate:schedule     # Event schedule
+npm run generate                  # everything below, in order
+npm run generate:game-data        # public/data/game/ (site schema v2: structure + text per locale)
+npm run generate:item-icons       # public/images/items/, public/images/benches/
+npm run generate:server-mappings  # infra/lambda/data/game-mappings.json (Embark asset id → slug)
+npm run generate:schedule         # event schedule
 ```
+
+`generate` runs game-data twice (before and after the icons, so items pick up new icon files).
+New slugs created by the generators are written to `../embark-api/arc-data/slugs/` and must be
+committed there. Run `npx tsx scripts/generate-game-data.ts --strict` before a release.
 
 `npm run generate:maps` (map page data into `public/data/map-data/`) is not part of `npm run generate`: it reads
 the map features build of embark-api (env `EMBARK_API_DIR`, default `../embark-api`) and is rerun, then committed,
 after a game patch. See `docs/Maps.md` and the header of `scripts/generate-maps-data.mjs`.
 
-**Important**: The upstream data structure may change as it's community-maintained. Keep generation scripts in sync with schema changes.
+Public data files contain slugs only — never Embark asset ids or internal asset names. Types of all
+game data live in `src/shared/gamedata/types.ts`; apps load data with `loadDomain()` /
+`loadItemCatalog()` from `src/shared/gamedata/`.
 
-Generated files are placed in `public/data/<app-name>/` and loaded at runtime via fetch.
+Generated game data is placed in `public/data/game/` and loaded at runtime via fetch.
 For schedule-specific generation, AWS automation, and dependency details, see `docs/Schedule-Update.md`.
 
 ### Authentication
@@ -80,7 +83,7 @@ The project is migrating toward a fully localized user experience. Treat localiz
 - New user-facing labels should not be hardcoded inline if they are part of the site chrome or app UI
 
 **Generated Content Localization**:
-- Prefer generating localized data from `../arcraiders-data/` instead of hardcoding translations in React components
+- Prefer localized game data from `public/data/game/*.text.<locale>.json` (generated from arc-data) instead of hardcoding translations in React components
 - When practical, generators should emit locale-specific files such as:
   - `public/data/items/items.en.json`
   - `public/data/items/items.de.json`
@@ -98,7 +101,7 @@ The project is migrating toward a fully localized user experience. Treat localiz
 - Do **not** duplicate English prose for all text fields unless there is a concrete need
 
 **Current Preference Order**:
-1. Prefer upstream localized data from `../arcraiders-data/`
+1. Prefer localized game data (`public/data/game/`, generated from arc-data)
 2. If missing, preserve locale fallback behavior in generators/loaders
 3. Only use app-local translation maps for stable UI copy or as a temporary bridge
 
@@ -294,10 +297,8 @@ Also exports `getExpirationState`, `getExpirationRemainingMs`, `getExpirationRem
 # Install dependencies
 npm install
 
-# Ensure arcraiders-data repo is cloned in parent directory
-cd ..
-git clone https://github.com/RaidTheory/arcraiders-data.git
-cd raider-tools
+# Generation reads the canonical game data from ../embark-api/arc-data
+# (set GAME_DATA_DIR / EMBARK_API_DIR when it lives elsewhere)
 
 # Generate all data files
 npm run generate
@@ -487,13 +488,12 @@ interface Item {
 - [ ] Set up coverage reporting
 
 ### Data Pipeline
-- [ ] Add validation for upstream data format changes
 - [ ] Create automated checks for data generation
 - [ ] Document data schema expectations
 
 ## External Resources
 
-- **Game Data**: https://github.com/RaidTheory/arcraiders-data
+- **Game Data**: Embark API and game files, via arc-data (embark-api project); item ids compatible with arctracker.io
 - **Community Tracker**: https://arctracker.io
 - **Production Site**: https://raider-tools.app
 
