@@ -11,7 +11,7 @@ import './styles/main.scss';
 const REFETCH_INTERVAL_MS = 5 * 60 * 1000;
 
 export function ScheduleApp() {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
   const [data, setData] = useState<MapEventsData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -19,7 +19,7 @@ export function ScheduleApp() {
   useEffect(() => {
     let active = true;
 
-    loadMapEventsData()
+    loadMapEventsData(locale)
       .then((loadedData) => {
         if (active) {
           setData(loadedData);
@@ -35,7 +35,7 @@ export function ScheduleApp() {
       });
 
     const timer = setInterval(() => {
-      loadMapEventsData()
+      loadMapEventsData(locale)
         .then((loadedData) => setData(loadedData))
         .catch((err) => console.error('Schedule refetch failed:', err));
     }, REFETCH_INTERVAL_MS);
@@ -44,7 +44,7 @@ export function ScheduleApp() {
       active = false;
       clearInterval(timer);
     };
-  }, []);
+  }, [locale]);
 
   if (loading) return <LoadingSpinner message={t('schedule.loading')} />;
   if (error) return <ErrorDisplay message={error} />;

@@ -3,13 +3,11 @@ export interface EventType {
   icon: string;
   translationKey: string;
   category: 'major' | 'minor' | 'none';
-  localizations?: Record<string, string>;
   disabled?: boolean;
 }
 
 export interface MapInfo {
   displayName: string;
-  localizations?: Record<string, string>;
 }
 
 export interface RegionInfo {
@@ -45,17 +43,4 @@ export interface MapEventsData {
   regions: Record<string, RegionInfo>;
   schedule: Record<string, Record<string, EventSchedule>>;
   metadata?: ScheduleMetadata;
-}
-
-export interface ScheduleLocalizationsData {
-  maps?: Record<string, { localizations?: Record<string, string> }>;
-  eventTypes?: Record<string, { localizations?: Record<string, string> }>;
-}
-
-export interface MapLocalizationsData {
-  maps?: Record<string, { localizations?: Record<string, string> }>;
-}
-
-export interface MapEventLocalizationsData {
-  eventTypes?: Record<string, { localizations?: Record<string, string> }>;
 }

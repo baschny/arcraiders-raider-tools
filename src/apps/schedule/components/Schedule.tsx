@@ -1,7 +1,6 @@
 import { ChevronDown } from 'lucide-react';
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { useLocale } from '../../../shared/context/LocaleContext';
-import { getLocalizedEventName, getLocalizedMapName } from '../utils/localization';
 import { TintedIcon } from './TintedIcon';
 import { RegionBadge } from './RegionBadge';
 import type { EventType, MapEventsData } from '../types/mapEvents';
@@ -164,12 +163,9 @@ export function Schedule({ data }: ScheduleProps) {
         .map(([eventId, event]) => ({ eventId, event }))
         .sort((a, b) => {
           if (a.event.category !== b.event.category) return a.event.category === 'major' ? -1 : 1;
-          return compareText(
-            getLocalizedEventName(a.event, locale),
-            getLocalizedEventName(b.event, locale)
-          );
+          return compareText(a.event.displayName, b.event.displayName);
         }),
-    [data.eventTypes, displayedEventIds, compareText, locale]
+    [data.eventTypes, displayedEventIds, compareText]
   );
 
   const eventOrder = useMemo(
@@ -222,13 +218,13 @@ export function Schedule({ data }: ScheduleProps) {
   const getShortName = (eventId: string, event: EventType): string => {
     const key = `schedule.conditionShortNames.${eventId}`;
     const translated = t(key);
-    return translated === key ? getLocalizedEventName(event, locale) : translated;
+    return translated === key ? event.displayName : translated;
   };
 
   const renderMapHeaders = () =>
     mapIds.map((mapId) => (
       <div key={mapId} className="map-col-header" data-map={mapId}>
-        <span className="map-name">{getLocalizedMapName(mapId, data.maps[mapId], locale)}</span>
+        <span className="map-name">{data.maps[mapId].displayName}</span>
       </div>
     ));
 
@@ -292,7 +288,7 @@ export function Schedule({ data }: ScheduleProps) {
             color={CATEGORY_COLORS[event.category as 'major' | 'minor']}
             size={16}
           />
-          <span className="filter-label">{getLocalizedEventName(event, locale)}</span>
+          <span className="filter-label">{event.displayName}</span>
         </button>
       );
     });
@@ -464,9 +460,7 @@ export function Schedule({ data }: ScheduleProps) {
                                 pointer?.pointerType === 'pen'
                               ) {
                                 setTouchTooltip({
-                                  condition: event
-                                    ? getLocalizedEventName(event, locale)
-                                    : entry.eventId,
+                                  condition: event ? event.displayName : entry.eventId,
                                   region: region?.displayName ?? entry.region,
                                   clientX: pointer.clientX,
                                   clientY: pointer.clientY,
@@ -481,7 +475,7 @@ export function Schedule({ data }: ScheduleProps) {
                             }}
                             title={
                               event
-                                ? `${getLocalizedEventName(event, locale)} · ${region?.displayName ?? entry.region}`
+                                ? `${event.displayName} · ${region?.displayName ?? entry.region}`
                                 : entry.eventId
                             }
                           >
