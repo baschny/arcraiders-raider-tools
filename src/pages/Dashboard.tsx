@@ -116,6 +116,11 @@ export function Dashboard() {
           <div>
             <h2 id="dashboard-changelog-title">{t('dashboard.changelog.title')}</h2>
             <p>{t('dashboard.changelog.intro')}</p>
+            <p>
+              <Link to="/whats-new/frozen-trail" className="dashboard-whats-new-link">
+                {t('dashboard.changelog.whatsNewLink')} &rarr;
+              </Link>
+            </p>
           </div>
         </div>
 

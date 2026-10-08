@@ -1,1 +1,4 @@
 @use 'components';
+
+// Page layout. Section partials (_section-<name>.scss) are appended below by their tickets.
+@use 'page';

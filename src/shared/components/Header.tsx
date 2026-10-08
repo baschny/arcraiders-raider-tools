@@ -9,6 +9,7 @@ import {
   ListTodo,
   Menu,
   Package,
+  Sparkles,
 } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
 import { LoginButton } from './LoginButton';
@@ -22,6 +23,7 @@ const TOOLS = [
   { path: '/loot-helper', nameKey: 'shared.tools.lootHelper', icon: Package },
   { path: '/quartermaster', nameKey: 'shared.tools.quartermaster', icon: ClipboardList },
   { path: '/maps', nameKey: 'shared.tools.maps', icon: MapIcon },
+  { path: '/whats-new', nameKey: 'shared.tools.whatsNew', icon: Sparkles },
 ];
 
 const TOOLS_FOR_SWITCHER = TOOLS.filter((tool) => tool.path !== '/');
@@ -44,7 +46,11 @@ export function Header() {
   const scrollTargetRef = useRef<EventTarget | null>(null);
 
   const currentPathname = normalizePathname(location.pathname);
-  const currentTool = TOOLS.find((tool) => tool.path === currentPathname) || TOOLS[0];
+  const currentTool = TOOLS.find(
+    (tool) =>
+      tool.path === currentPathname ||
+      (tool.path !== '/' && currentPathname.startsWith(`${tool.path}/`)),
+  ) || TOOLS[0];
   const shouldAutoHideOnScroll = currentPathname !== '/schedule' && currentPathname !== '/maps';
   const currentLocaleOption =
     localeOptions.find((option) => option.code === locale) ?? localeOptions[0];

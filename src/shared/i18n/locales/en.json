@@ -78,7 +78,8 @@
       "quests": "Quest Tracker",
       "lootHelper": "Looting Helper",
       "quartermaster": "Quartermaster",
-      "maps": "Maps"
+      "maps": "Maps",
+      "whatsNew": "What’s new"
     }
   },
   "dashboard": {
@@ -89,7 +90,8 @@
       "intro": "Recent updates and additions across Raider Tools.",
       "affectedApps": "Affected tools",
       "affectedAppLink": "Open affected tool",
-      "allTools": "All tools"
+      "allTools": "All tools",
+      "whatsNewLink": "What’s new in Frozen Trail"
     },
     "tools": {
       "schedule": "Visualize the ARC Raiders map events schedule in a better overview to plan your raids.",
@@ -1321,6 +1323,70 @@
       "Wreck03": "ARC wreck",
       "Wrh": "Warehouse furniture",
       "vent03": "Vent"
+    }
+  },
+  "whatsNew": {
+    "title": "Frozen Trail — what’s new",
+    "subtitle": "What the 2.0 update adds, what to keep, and what changed since 1.45",
+    "loading": "Loading what’s new...",
+    "navLabel": "Sections",
+    "placeholder": "Coming soon",
+    "summary": {
+      "newItems": "New items",
+      "newSystems": "New systems",
+      "researchOffers": "Research offers",
+      "researchPoints": "Research Points",
+      "stashTiers": "New stash tiers",
+      "pending": "Data not generated yet"
+    },
+    "nav": {
+      "outpost": "Outpost",
+      "research": "Research",
+      "amplified": "Amplified",
+      "stencils": "Stencils",
+      "field-crafting": "Field crafting",
+      "gateway": "Gateway key",
+      "new-items": "New items",
+      "new-uses": "New uses",
+      "changes": "What changed"
+    },
+    "section": {
+      "outpost": {
+        "title": "Outpost",
+        "subtitle": "Expand your Outpost with rooms, furniture and new stations"
+      },
+      "research": {
+        "title": "Research Station",
+        "subtitle": "Turn found items into Research Points, then research blueprints and designs"
+      },
+      "amplified": {
+        "title": "Amplified weapons",
+        "subtitle": "Upgrade max-level weapons into Amplified variants"
+      },
+      "stencils": {
+        "title": "Stencils",
+        "subtitle": "Weapon paint stencils, found in raids and applied with Stencil Parts"
+      },
+      "field-crafting": {
+        "title": "Field crafting",
+        "subtitle": "New in-raid crafts and the skills that unlock them"
+      },
+      "gateway": {
+        "title": "Emperor Gateway key",
+        "subtitle": "Craft the Emperor Gateway Conduit key"
+      },
+      "new-items": {
+        "title": "New items",
+        "subtitle": "Every new item and what to keep it for"
+      },
+      "new-uses": {
+        "title": "Old items, new uses",
+        "subtitle": "Old items with new uses"
+      },
+      "changes": {
+        "title": "What changed",
+        "subtitle": "Recipes, recycling, traders and stash: before and after"
+      }
     }
   }
 }

@@ -10,6 +10,7 @@ import {
   Package,
   ClipboardList,
   Map as MapIcon,
+  Sparkles,
   User,
   ChevronLeft,
   ChevronRight,
@@ -24,6 +25,7 @@ const NAV_ITEMS = [
   { path: '/loot-helper', icon: Package, labelKey: 'shared.tools.lootHelper' },
   { path: '/quartermaster', icon: ClipboardList, labelKey: 'shared.tools.quartermaster' },
   { path: '/maps', icon: MapIcon, labelKey: 'shared.tools.maps' },
+  { path: '/whats-new', icon: Sparkles, labelKey: 'shared.tools.whatsNew' },
 ];
 
 const BOTTOM_NAV_ITEM = {

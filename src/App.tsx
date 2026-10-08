@@ -55,6 +55,9 @@ const MapsApp = lazy(() =>
 const QuartermasterApp = lazy(() =>
   import('./apps/quartermaster').then((m) => ({ default: m.QuartermasterApp }))
 );
+const WhatsNewApp = lazy(() =>
+  import('./apps/whats-new').then((m) => ({ default: m.WhatsNewApp }))
+);
 
 function App() {
   return (
@@ -73,6 +76,7 @@ function App() {
                     <Route path="loot-helper" element={<LootHelperApp />} />
                     <Route path="quartermaster" element={<QuartermasterApp />} />
                     <Route path="maps" element={<MapsApp />} />
+                    <Route path="whats-new/:version?" element={<WhatsNewApp />} />
                     <Route path="profile" element={<Profile />}>
                       <Route index element={<Navigate to="arctracker" replace />} />
                       <Route path="arctracker" element={<ArcTrackerSection />} />

@@ -1,0 +1,95 @@
+@use '../../../shared/styles/variables' as *;
+
+.wn-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: $spacing-lg $spacing-md $spacing-xl;
+
+  &__title {
+    margin: 0 0 $spacing-xs;
+    font-size: 28px;
+    font-weight: 700;
+    color: $text-primary;
+  }
+
+  &__subtitle {
+    margin: 0 0 $spacing-lg;
+    color: $text-secondary;
+  }
+}
+
+.wn-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: $spacing-md;
+  margin-bottom: $spacing-lg;
+
+  &__tile {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+    padding: $spacing-md;
+    background: $bg-secondary;
+    border: 1px solid $border-default;
+    border-radius: $radius-md;
+  }
+
+  &__value {
+    font-size: 26px;
+    font-weight: 700;
+    color: $text-accent;
+  }
+
+  &__label {
+    font-size: $font-sm;
+    color: $text-secondary;
+  }
+}
+
+.wn-chipbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  gap: $spacing-sm;
+  margin: 0 (-$spacing-md) $spacing-lg;
+  padding: $spacing-sm $spacing-md;
+  overflow-x: auto;
+  white-space: nowrap;
+  background: $bg-primary;
+  border-bottom: 1px solid $border-default;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar { display: none; }
+
+  &__chip {
+    flex: 0 0 auto;
+    padding: $spacing-xs $spacing-md;
+    border: 1px solid $border-default;
+    border-radius: 999px;
+    background: $bg-secondary;
+    color: $text-light;
+    font-size: $font-base;
+    text-decoration: none;
+
+    &:hover { border-color: $border-lighter; }
+
+    &--active {
+      color: $bg-primary;
+      background: $text-accent;
+      border-color: $text-accent;
+    }
+  }
+}
+
+.wn-section {
+  margin-bottom: $spacing-xl;
+
+  &__body--placeholder {
+    padding: $spacing-lg;
+    border: 1px dashed $border-default;
+    border-radius: $radius-md;
+    color: $text-tertiary;
+    text-align: center;
+  }
+}
