@@ -1,9 +1,71 @@
 import type { Node } from 'reactflow';
 import type { LinkedQuestObjectiveProgress } from '../../../shared/types/linkedQuests';
-import type { Quest, BlueprintReward, QuestItemEntry } from '../../../shared/types/quest';
+import type { QuestCategory } from '../../../shared/gamedata/types';
 
-export type { QuestItemRarity } from '../../../shared/types/quest';
-export type { Quest, BlueprintReward, QuestItemEntry };
+export type QuestItemRarity = 'Common' | 'Uncommon' | 'Rare' | 'Epic' | 'Legendary';
+
+export interface BlueprintReward {
+  id: string;
+  name: string;
+  imageFilename: string;
+}
+
+export interface QuestItemEntry {
+  id: string;
+  quantity: number;
+  name: string;
+  rarity: QuestItemRarity;
+  imageFilename: string;
+  /** Chance (0..1) for entries of random reward pools. */
+  chance?: number;
+}
+
+/**
+ * Objective node as displayed. Hidden nodes are already removed; `text` is missing when the
+ * game text has no entry for the node (the node title is skipped, children still render).
+ */
+export interface ObjectiveView {
+  key: string;
+  kind: 'atomic' | 'sequence' | 'allOf' | 'anyOf' | 'anyOfExclusive' | 'nOf';
+  text?: string;
+  /** For 'nOf'. */
+  requiredCount?: number;
+  oneRound: boolean;
+  optional: boolean;
+  /** Position among the visible atomic leaves (matches linked-progress objective order). */
+  leafIndex?: number;
+  children: ObjectiveView[];
+}
+
+/** Quest (or map prerequisite node, `trader === 'Map'`) as the quests app renders it. */
+export interface Quest {
+  id: string;
+  name: string;
+  /** English name (wiki link). */
+  originalNameEn?: string;
+  category: QuestCategory | 'map';
+  trader: string;
+  map: string[];
+  previousQuestIds: string[];
+  nextQuestIds: string[];
+  hasBlueprint: boolean;
+  blueprintRewards: BlueprintReward[];
+  description: string;
+  /** Visible objective tree; null when the quest has no visible objectives. */
+  objectiveTree: ObjectiveView | null;
+  /** Texts of the visible atomic leaves in tree order. */
+  objectives: string[];
+  /** True when the whole objective tree has to be done in a single round. */
+  objectivesOneRound: boolean;
+  otherRequirements: string[];
+  grantedItems: QuestItemEntry[];
+  requiredItems: QuestItemEntry[];
+  rewardItems: QuestItemEntry[];
+  optionalRewardItems: QuestItemEntry[];
+  addedIn?: string | null;
+  xp?: number;
+  isNew?: boolean;
+}
 
 export interface QuestNodeData {
   quest: Quest;
@@ -29,44 +91,3 @@ export interface MapNodeData {
 
 export type QuestNode = Node<QuestNodeData>;
 export type MapNode = Node<MapNodeData>;
-
-export interface LocalizedBlueprintReward extends Omit<BlueprintReward, 'name'> {
-  name: {
-    value: string;
-    originalEn: string;
-  };
-}
-
-export interface LocalizedQuestItemEntry extends Omit<QuestItemEntry, 'name'> {
-  name: {
-    value: string;
-    originalEn: string;
-  };
-}
-
-export interface LocalizedQuest
-  extends Omit<
-    Quest,
-    | 'name'
-    | 'blueprintRewards'
-    | 'description'
-    | 'descriptionOriginalEn'
-    | 'objectives'
-    | 'grantedItems'
-    | 'requiredItems'
-    | 'rewardItems'
-  > {
-  name: {
-    value: string;
-    originalEn: string;
-  };
-  blueprintRewards: LocalizedBlueprintReward[];
-  description: {
-    value: string;
-    originalEn: string;
-  };
-  objectives: Array<{ value: string; originalEn: string }>;
-  grantedItems: LocalizedQuestItemEntry[];
-  requiredItems: LocalizedQuestItemEntry[];
-  rewardItems: LocalizedQuestItemEntry[];
-}

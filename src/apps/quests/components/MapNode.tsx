@@ -1,16 +1,16 @@
 import { Handle, Position } from 'reactflow';
 import type { MapNodeData } from '../types/quest';
-import { MAP_IMAGES } from '../data/static-data';
+import { getMapNodeImage } from '../data/static-data';
 import { useLocale } from '../../../shared/context/LocaleContext';
 import { getLocalizedMapNodeName } from '../utils/localization';
 
 export function MapNode({ data }: { data: MapNodeData }) {
   const { locale, t } = useLocale();
   const { quest, isCompleted, isInteractive, onToggle } = data;
-  const mapImage = MAP_IMAGES[quest.id];
+  const mapImage = getMapNodeImage(quest.map[0]);
   const displayName = getLocalizedMapNodeName(
     quest.map[0],
-    quest.name.replace('🗺️ ', ''),
+    quest.name,
     locale
   );
 

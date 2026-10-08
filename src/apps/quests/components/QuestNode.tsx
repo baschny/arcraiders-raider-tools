@@ -7,10 +7,10 @@ import { useLocale } from '../../../shared/context/LocaleContext';
 import { useHoverIntent } from '../../../shared/hooks/useHoverIntent';
 import {
   getLocalizedMapName,
-  getLocalizedTraderName,
   getQuestWikiName,
 } from '../utils/localization';
-import { QuestTooltip } from '../../../shared/components/QuestTooltip';
+import { QuestTooltip } from './QuestTooltip';
+import { questLabel } from '../utils/labels';
 
 const TOOLTIP_ESTIMATED_WIDTH = 440;
 const TOOLTIP_ESTIMATED_HEIGHT = 520;
@@ -110,7 +110,7 @@ export function QuestNode({ data }: { data: QuestNodeData }) {
     .filter(Boolean)
     .join(' ');
   const traderImage = TRADER_IMAGES[quest.trader];
-  const traderLabel = getLocalizedTraderName(quest.trader, locale);
+  const traderLabel = quest.trader;
 
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -130,6 +130,9 @@ export function QuestNode({ data }: { data: QuestNodeData }) {
         <div className="new-badge" title={`New in ${quest.addedIn}`}>
           NEW {quest.addedIn}
         </div>
+      )}
+      {quest.category === 'side' && (
+        <div className="side-badge">{questLabel('sideQuest', locale)}</div>
       )}
       {hasBlueprintReward && (
         <div className="blueprint-badge" title={blueprintRewardTooltip}>

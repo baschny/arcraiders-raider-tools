@@ -138,7 +138,7 @@ export function Sidebar({
               }
             >
               <div className="available-quest-name">
-                {getLocalizedMapNodeName(mapNode.id, mapNode.name, locale)}
+                {getLocalizedMapNodeName(mapNode.map[0], mapNode.name, locale)}
               </div>
               {mapNode.isCompleted && <span className="map-check">✓</span>}
             </div>

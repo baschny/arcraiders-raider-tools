@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import { QuestTracker } from './components/QuestTracker';
-import type { LocalizedQuest, Quest } from './types/quest';
-import { MAP_NODES } from './data/static-data';
+import type { Quest } from './types/quest';
 import { LoadingSpinner } from '../../shared/components/LoadingSpinner';
 import { ErrorDisplay } from '../../shared/components/ErrorDisplay';
 import { useLocale } from '../../shared/context/LocaleContext';
-import { fetchLocalizedJson } from '../../shared/utils/localizedContent';
-import { loadQuestMapLocalizations } from './utils/localization';
+import { loadDomain, loadStructure } from '../../shared/gamedata/loader';
+import { loadItemCatalog } from '../../shared/gamedata/catalog';
+import { setMapLocalizations } from './utils/localization';
+import { buildQuests } from './utils/buildQuests';
 import { SignInNudge } from '../../shared/components/SignInNudge';
 import './styles/main.scss';
 
@@ -17,57 +18,30 @@ export function QuestsApp() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    let cancelled = false;
     Promise.all([
-      loadQuestMapLocalizations(),
-      fetchLocalizedJson<LocalizedQuest[]>('/data/quests/quest-data.json', locale),
+      loadDomain('quests', locale),
+      loadDomain('maps', locale),
+      loadItemCatalog(locale),
+      loadStructure('trades'),
     ])
-      .then(([, data]) => {
-        const localizedQuests: Quest[] = data.map((quest) => ({
-          ...quest,
-          name: quest.name.value,
-          originalNameEn: quest.name.originalEn,
-          description: quest.description.value,
-          descriptionOriginalEn: quest.description.originalEn,
-          objectives: quest.objectives.map((objective) => objective.value),
-          blueprintRewards: quest.blueprintRewards.map((reward) => ({
-            ...reward,
-            name: reward.name.value,
-            originalNameEn: reward.name.originalEn,
-          })),
-          grantedItems: quest.grantedItems.map((item) => ({
-            ...item,
-            name: item.name.value,
-            originalNameEn: item.name.originalEn,
-          })),
-          requiredItems: quest.requiredItems.map((item) => ({
-            ...item,
-            name: item.name.value,
-            originalNameEn: item.name.originalEn,
-          })),
-          rewardItems: quest.rewardItems.map((item) => ({
-            ...item,
-            name: item.name.value,
-            originalNameEn: item.name.originalEn,
-          })),
-        }));
-        // Flag quests introduced in the newest game version found in the data
-        const newestVersion = localizedQuests
-          .map((quest) => quest.addedIn)
-          .filter((version): version is string => Boolean(version))
-          .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
-          .at(-1);
-        for (const quest of localizedQuests) {
-          quest.isNew = Boolean(newestVersion) && quest.addedIn === newestVersion;
-        }
-        // Combine MAP_NODES with loaded quest data
-        const allQuests = [...MAP_NODES, ...localizedQuests];
-        setQuestData(allQuests);
+      .then(([quests, maps, catalog, trades]) => {
+        if (cancelled) return;
+        setMapLocalizations(maps);
+        const traderNames = Object.fromEntries(
+          Object.values(trades.traders).map((trader) => [trader.id, trader.nameEn]),
+        );
+        setQuestData(buildQuests({ quests, maps, catalog, traderNames, locale }));
         setLoading(false);
       })
-      .catch((err) => {
+      .catch((err: Error) => {
+        if (cancelled) return;
         setError(err.message);
         setLoading(false);
       });
+    return () => {
+      cancelled = true;
+    };
   }, [locale]);
 
   if (loading) {

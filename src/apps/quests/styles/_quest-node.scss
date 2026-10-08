@@ -290,3 +290,37 @@ $xp-accent: #ffc857;
   letter-spacing: 0.3px;
   white-space: nowrap;
 }
+
+.side-badge {
+  position: absolute;
+  top: -10px;
+  right: $spacing-sm;
+  padding: 2px $gap-xs;
+  border-radius: 3px;
+  background: rgba(120, 130, 150, 0.9);
+  color: #fff;
+  font-size: $font-xs;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  pointer-events: none;
+}
+
+// Objective tree additions in the quest tooltip (rendered into document.body)
+.quest-tooltip__objectives--nested {
+  margin-top: 4px;
+  padding-left: 14px;
+  border-left: 2px solid rgba(255, 255, 255, 0.15);
+}
+
+.quest-tooltip__badge {
+  margin-left: 6px;
+
+  &--choice {
+    background: rgba(255, 193, 7, 0.2);
+    color: #ffc107;
+  }
+}
+
+.quest-tooltip__objectives .is-optional > span:first-child {
+  font-style: italic;
+}

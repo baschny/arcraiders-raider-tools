@@ -1,5 +1,4 @@
 import { describe, expect, it } from 'vitest';
-import { MAP_NODES } from '../../data/static-data';
 import type { Quest } from '../../types/quest';
 import {
   buildLinkedCompletedQuestSet,
@@ -7,41 +6,49 @@ import {
   getQuestDisplayStatus,
 } from '../linkedProgress';
 
+const base = {
+  category: 'main' as const,
+  hasBlueprint: false,
+  blueprintRewards: [],
+  description: '',
+  objectiveTree: null,
+  objectives: [],
+  objectivesOneRound: false,
+  otherRequirements: [],
+  grantedItems: [],
+  requiredItems: [],
+  rewardItems: [],
+  optionalRewardItems: [],
+};
+
 const TEST_QUESTS: Quest[] = [
-  ...MAP_NODES,
   {
+    ...base,
+    id: 'map_dam_battleground',
+    name: 'Dam Battlegrounds',
+    category: 'map',
+    trader: 'Map',
+    map: ['dam-battleground'],
+    previousQuestIds: [],
+    nextQuestIds: ['picking_up_the_pieces'],
+  },
+  {
+    ...base,
     id: 'picking_up_the_pieces',
     name: 'Picking Up The Pieces',
     trader: 'Shani',
-    map: ['dam_battlegrounds'],
+    map: ['dam-battleground'],
     previousQuestIds: ['map_dam_battleground'],
     nextQuestIds: ['cold_storage'],
-    hasBlueprint: false,
-    blueprintRewards: [],
-    description: '',
-    objectives: [],
-    objectivesOneRound: false,
-    otherRequirements: [],
-    grantedItems: [],
-    requiredItems: [],
-    rewardItems: [],
   },
   {
+    ...base,
     id: 'cold_storage',
     name: 'Cold Storage',
     trader: 'Shani',
-    map: ['dam_battlegrounds'],
+    map: ['dam-battleground'],
     previousQuestIds: ['picking_up_the_pieces'],
     nextQuestIds: [],
-    hasBlueprint: false,
-    blueprintRewards: [],
-    description: '',
-    objectives: [],
-    objectivesOneRound: false,
-    otherRequirements: [],
-    grantedItems: [],
-    requiredItems: [],
-    rewardItems: [],
   },
 ];
 
@@ -59,7 +66,7 @@ describe('linked quest progress helpers', () => {
 
     expect(completed.has('map_dam_battleground')).toBe(true);
     expect(getQuestDisplayStatus({
-      quest: TEST_QUESTS[3],
+      quest: TEST_QUESTS[1],
       linkedSnapshot: {
         source: 'arctracker',
         syncedAt: '2026-05-25T10:00:00.000Z',
@@ -91,7 +98,7 @@ describe('linked quest progress helpers', () => {
     };
 
     expect(getQuestDisplayStatus({
-      quest: TEST_QUESTS[3],
+      quest: TEST_QUESTS[1],
       linkedSnapshot: snapshot,
       linkedCompletedQuests: buildLinkedCompletedQuestSet(TEST_QUESTS, snapshot),
     })).toBe('active');
