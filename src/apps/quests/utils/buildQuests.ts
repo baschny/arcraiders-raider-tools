@@ -55,7 +55,7 @@ function toEntry(reward: Reward, catalog: ItemCatalog): QuestItemEntry {
 }
 
 function isBlueprint(item: CatalogItem | undefined): boolean {
-  return !!item && (item.type === 'Blueprint' || !!item.item.blueprintFor);
+  return !!item && (item.category === 'Recipe' || !!item.item.blueprintFor);
 }
 
 /** Visible objective tree (hidden nodes removed) with the localized texts. */

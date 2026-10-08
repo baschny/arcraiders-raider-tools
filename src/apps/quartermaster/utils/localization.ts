@@ -67,6 +67,7 @@ const rarityKeys: Record<ItemRarity, string> = {
   Rare: 'quartermaster.rarities.rare',
   Epic: 'quartermaster.rarities.epic',
   Legendary: 'quartermaster.rarities.legendary',
+  Amplified: 'quartermaster.rarities.amplified',
 };
 
 const benchKeys: Record<string, string> = {

@@ -17,19 +17,21 @@ $text-tertiary: #666;
 $text-accent: #4fc3f7;
 $text-light: #b0bec5;
 
-// Colors - Rarity
-$rarity-common: #888888;
-$rarity-uncommon: #4caf50;
-$rarity-rare: #2196f3;
-$rarity-epic: #9c27b0;
-$rarity-legendary: #ffd700;
+// Colors - Rarity (the game's colors, arc-data rarities.json; the game-data generator reports drift)
+$rarity-common: #6C6C6C;
+$rarity-uncommon: #26BF57;
+$rarity-rare: #00A9F2;
+$rarity-epic: #CC3099;
+$rarity-legendary: #FFC600;
+$rarity-amplified: #E88629;
 
 // Colors - Rarity Borders (used by item-icon for colored borders)
 $rarity-common-border: #9e9e9e;
-$rarity-uncommon-border: #4caf50;
-$rarity-rare-border: #2196f3;
-$rarity-epic-border: #9c27b0;
-$rarity-legendary-border: #ff9800;
+$rarity-uncommon-border: $rarity-uncommon;
+$rarity-rare-border: $rarity-rare;
+$rarity-epic-border: $rarity-epic;
+$rarity-legendary-border: $rarity-legendary;
+$rarity-amplified-border: $rarity-amplified;
 
 // Colors - Status
 $status-available: #ffd700;

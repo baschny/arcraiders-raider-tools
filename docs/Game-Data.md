@@ -45,6 +45,7 @@ embark-api/arc-data ──► scripts/generate-game-data.ts ──► public/dat
 | `skilltree` | Skill nodes and choice groups. |
 | `amplification` | Amplified weapon variants and the upgrade graph. |
 | `maps` | Map slugs and names, map event types. |
+| `classification` | Rarities (level + game color), stash groups in game order with subgroups, and the categories/themes used by shipped items with their parents. Texts: `rarities`, `groups`, `subgroups`, `categories`, `themes` (by id). |
 
 `Requirement` turns the game's gate items into meaning. Its `kind` is one of `bench` (with
 `level`), `outpostLevel`, `quest`, `skill`, `unlock` (a learned blueprint or design) or `item`.
@@ -56,12 +57,35 @@ Generic arc-data offers are sorted into domains by one ordered rule table:
 as `unclassifiedOffers`, and `--strict` fails on it. Supporting a new mechanic usually means adding
 one rule and, if needed, one domain module in `scripts/gamedata/domains/`.
 
-### Item properties not in the API
+### Item classification (from the game)
 
-Site type, rarity, weight, effects, mod slots, "found in" and the quest flag are not served by the
-API. They come from `arc-data/overlay/item-properties.json`, seeded from the last arcraiders-data
-snapshot. Items without an entry get a type derived from their kind and name, and rarity `Common`;
-the generator reports how many. This will be replaced by game-file item data (embark-api `docs/tickets/A15-item-data-assets.md`).
+Everything an item shows about its classification comes from the game files via arc-data (embark-api
+`docs/Item-Classification.md`); the overlay never overrides it.
+
+| `Item` field | Source (arc-data item) | Notes |
+| --- | --- | --- |
+| `category` | `category` | Short id: `Utility.Grenade`, `Firearm.SniperRifle`, `Misc.StudyItem`, `Recipe`. The in-game item card label is `classification` text `categories.<id>` ("Quick Use", "Research Item"). |
+| `group`, `subgroup` | `stashGroup`, `stashSubgroup` | Stash tab (`Utilities`, `Weapons`, `Furniture.Seating`) and its subgroup (a category id). Names: `groups.<id>`, `subgroups.<id>` (may differ from the category name, e.g. "Grenades"). Absent for items outside the stash (Amplified weapon rows, currency, stations). |
+| `rarity` | `rarity` 1-6 | `Common` … `Legendary`, `Amplified`. **Absent = the game gives no rarity** (blueprints, currency, some trinkets); apps show no rarity color, no default. |
+| `foundIn` | `themes` | Theme short ids (`Residential`, `OldWorld`, `ARC`); labels in `themes.<id>`. |
+| `weightKg` | `weightKg` | Omitted when `null`. |
+| `tier`, `baseId`, `amplifiedFrom` | computed | From the upgrade graph, as before. |
+| `effects` | `effects` | `[{ value?, valueText?, showSign?, positive? }]` (defaults omitted). Per item text `effects.<index>.{title,format}` (an object keyed by index, not an array). Render `format` with `{0}` = value (`+` when `showSign`), colored by `positive`. |
+
+Short ids are the game tags without their prefix (`UI.ItemClassification.Category.`, `…Theme.`,
+`UI.Inventory.CategoryFilter.`); see `scripts/gamedata/domains/classification-ids.ts`.
+
+`arc-data/overlay/item-properties.json` is now read only for `questItem`, `modSlots` and, for
+items whose game `effects` are empty (shields, augments, …), the old label → value `effects`
+(converted: title = label, `valueText` = value, no format). Its type, rarity, weight and foundIn
+are ignored.
+
+`classification` structure: `rarities` (`level`, `color` #RRGGBB, the game's colors), `groups`
+(`id`, `order`, `subgroups[]`; stash tabs in game order without "All"; only groups and subgroups with
+shipped items), `categories` (id → `{ parent? }` for categories and themes in use plus ancestors).
+The generator reports `rarityColorMismatch` when `$rarity-*` in `src/shared/styles/_variables.scss`
+differs from the game colors, and `itemsWithoutCategory` (count per canonical type; stencil and
+outpost rows are expected).
 
 ## Loading data in apps
 
@@ -78,7 +102,11 @@ const catalog = await loadItemCatalog(locale); // items + recipes + research, pe
 - `CatalogItem` derives the fields most apps need: the primary recipe (specialized bench before
   the Workbench, research for research-only items), `craftBench`, `stationLevelRequired`,
   `blueprintLocked`, the next tier (`upgradesTo`/`upgradeCost` = the cost to reach the next tier)
-  and `isWeapon`.
+  and `isWeapon` (category `Firearm.*`). It also carries the classification: `category`/`group`/`subgroup`
+  ids with localized `categoryName`/`groupName`/`subgroupName`, `foundInNames` (theme labels), `rarity`
+  (may be undefined) and formatted `effects` (`formatItemEffects`: `{ label, value, positive }`).
+  `catalog.classification` holds rarities (with game colors and names) and the stash groups with
+  subgroups in game order, for filters.
 - Translate arctracker API item ids with `migrateArctrackerItemId`
   (`src/shared/data/arctrackerItemIdMigration.ts`).
 
@@ -95,5 +123,6 @@ The generator prints a report:
 - items without a name yet (the game files lag behind the API)
 - offers without a shippable reward
 - unresolved requirements
+- items without a category, rarity colors that differ from the game, unknown rarity levels
 
 Map data (`npm run generate:maps`) is separate; see `docs/Maps.md`.

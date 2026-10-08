@@ -25,6 +25,45 @@ import type { QuestDefinition } from '../types/quest';
 import type { Quest, QuestItemEntry } from '../../../shared/types/quest';
 import { registerBenchNames } from './localization';
 
+const FIREARM_TYPES: Record<string, string> = {
+  'Firearm.AssaultRifle': 'Assault Rifle',
+  'Firearm.BattleRifle': 'Battle Rifle',
+  'Firearm.HandCannon': 'Hand Cannon',
+  'Firearm.LMG': 'LMG',
+  'Firearm.Pistol': 'Pistol',
+  'Firearm.SMG': 'SMG',
+  'Firearm.Shotgun': 'Shotgun',
+  'Firearm.SniperRifle': 'Sniper Rifle',
+  'Firearm.Special': 'Special',
+};
+
+/**
+ * English planner type of an item. The planner keys logic, persisted filters and its own
+ * translations on these strings (old site `type`); they are derived from the game classification
+ * until the app is reworked to use category / group ids directly.
+ */
+function plannerType(c: CatalogItem): string {
+  if (c.category && FIREARM_TYPES[c.category]) return FIREARM_TYPES[c.category];
+  switch (c.group) {
+    case 'Ammunition': return 'Ammunition';
+    case 'Armor': return 'Shield';
+    case 'Augment': return 'Augment';
+    case 'Keys': return 'Key';
+    case 'Modifications': return 'Modification';
+    case 'Utilities': return 'Quick Use';
+  }
+  switch (c.category) {
+    case 'CraftingMaterial.Basic': return 'Basic Material';
+    case 'CraftingMaterial.Recyclable': return 'Recyclable';
+    case 'CraftingMaterial.Refined': return 'Refined Material';
+    case 'CraftingMaterial.Topside': return 'Topside Material';
+    case 'Misc.Trinket': return 'Trinket';
+    case 'Misc.Nature': return 'Nature';
+    case 'Recipe': return 'Blueprint';
+  }
+  return c.categoryName ?? 'Misc';
+}
+
 const EXCLUDED_TYPES = new Set(['Blueprint']);
 
 /** Bench slugs that can craft items, read from the benches domain by loadAllItems/loadHideoutDefinitions. */
@@ -58,18 +97,19 @@ function plannerItemFromCatalog(c: CatalogItem, all: Record<string, CatalogItem>
       ? c.craftBench
       : undefined;
 
+  const type = plannerType(c);
   let category: string;
   let subCategory: string | undefined;
   if (c.isWeapon) {
     category = 'Weapon';
-    subCategory = c.type;
-  } else if (c.type === 'Quick Use') {
+    subCategory = type;
+  } else if (type === 'Quick Use') {
     category = 'Quick Use';
     if (craftBench === 'explosives_bench') subCategory = 'Explosive';
     else if (craftBench === 'med_station') subCategory = 'Medicinal';
     else if (craftBench === 'utility_bench') subCategory = 'Utility';
   } else {
-    category = c.type;
+    category = type;
   }
 
   const has = (r?: Record<string, number>) => r && Object.keys(r).length > 0;
@@ -79,8 +119,8 @@ function plannerItemFromCatalog(c: CatalogItem, all: Record<string, CatalogItem>
     originalNameEn: c.nameEn,
     description: c.description,
     icon: c.icon,
-    rarity: c.rarity as ItemRarity,
-    type: c.type,
+    rarity: (c.rarity ?? 'Common') as ItemRarity,
+    type,
     category,
     ...(subCategory !== undefined && { subCategory }),
     ...(craftBench !== undefined && { craftBench }),
@@ -102,7 +142,8 @@ function plannerItemFromCatalog(c: CatalogItem, all: Record<string, CatalogItem>
     stackSize: c.stackSize,
     ...(c.value !== undefined && { value: c.value }),
     ...(c.weightKg !== undefined && { weight: c.weightKg }),
-    ...(c.foundIn !== undefined && { foundIn: c.foundIn }),
+    // theme ids → the app's location keys (only 'OldWorld' differs)
+    ...(c.foundIn !== undefined && { foundIn: c.foundIn.map((id) => (id === 'OldWorld' ? 'Old World' : id)) }),
     ...(c.questItem === true && { questItem: true }),
   };
 }
@@ -115,7 +156,7 @@ export async function loadAllItems(locale: AppLocale): Promise<ItemsMap> {
   const [catalog] = await Promise.all([loadItemCatalog(locale), loadBenches(locale)]);
   const itemsMap: ItemsMap = {};
   for (const c of Object.values(catalog.items)) {
-    if (EXCLUDED_TYPES.has(c.type)) continue;
+    if (EXCLUDED_TYPES.has(plannerType(c))) continue;
     itemsMap[c.id] = plannerItemFromCatalog(c, catalog.items);
   }
   return itemsMap;
@@ -327,7 +368,7 @@ export async function loadQuestData(
     const nextQuestIds = q.next ?? [];
     const name = nameOf(quests, q.id, q.nameEn);
     const blueprintRewards = (q.rewards?.complete ?? [])
-      .filter((r) => catalog.items[r.itemId]?.type === 'Blueprint')
+      .filter((r) => catalog.items[r.itemId]?.category === 'Recipe')
       .map((r) => ({
         id: r.itemId,
         name: catalog.items[r.itemId]?.name ?? r.itemId,

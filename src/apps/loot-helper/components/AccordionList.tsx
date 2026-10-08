@@ -86,10 +86,10 @@ export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds,
   // Use the same filter logic as findSalvageableSources in craftingChain.ts
   const allPossibleItems = Object.values(itemsMap).filter((item) => {
     // Skip Basic Materials
-    if (item.type === 'Basic Material') return false;
+    if (item.category === 'CraftingMaterial.Basic') return false;
     
     // Skip weapons and modifications
-    if (item.isWeapon || item.type === 'Modification') return false;
+    if (item.isWeapon || item.group === 'Modifications') return false;
     
     // Include items that can be salvaged, recycled, or used in recipes
     const hasSalvage = item.salvagesInto && Object.keys(item.salvagesInto).length > 0;
@@ -155,9 +155,9 @@ export function AccordionList({ itemsMap, goalItemIds, reverseMap, stashItemIds,
     .filter((item) => {
       if (!item) return false;
       // Skip Basic Materials
-      if (item.type === 'Basic Material') return false;
+      if (item.category === 'CraftingMaterial.Basic') return false;
       // Skip weapons and modifications
-      if (item.isWeapon || item.type === 'Modification') return false;
+      if (item.isWeapon || item.group === 'Modifications') return false;
       return true;
     })
     .sort((a, b) => compareText(getItemDisplayName(a), getItemDisplayName(b)));

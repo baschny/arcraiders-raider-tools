@@ -5,19 +5,105 @@
  */
 import type { AppLocale } from '../i18n/config';
 import { loadDomain, nameOf } from './loader';
-import type { Amount, Item, LoadedDomain, Recipe, Research, Reward, TextEntry } from './types';
+import {
+  RARITIES,
+  type Amount,
+  type ClassificationStructure,
+  type Item,
+  type ItemEffect,
+  type LoadedDomain,
+  type Rarity,
+  type Recipe,
+  type Research,
+  type Reward,
+  type TextEntry,
+  type TextFile,
+} from './types';
 
-export const WEAPON_TYPES: ReadonlySet<string> = new Set([
-  'Assault Rifle',
-  'Battle Rifle',
-  'Hand Cannon',
-  'LMG',
-  'Pistol',
-  'SMG',
-  'Shotgun',
-  'Sniper Rifle',
-  'Special',
-]);
+/** One rendered item stat. `value` is '' for stats that are only a label. */
+export interface CatalogEffect {
+  label: string;
+  value: string;
+  positive: boolean;
+}
+
+/**
+ * Formats item stats for display. Game effects: localized `title` and `format` (`{0}` = value,
+ * `+` prefix when `showSign` and value >= 0). A stat without title shows the formatted format as
+ * label. Stats from the overlay (no format) show `valueText`.
+ */
+export function formatItemEffects(
+  effects: ItemEffect[] | undefined,
+  text: TextEntry | undefined,
+  locale: string,
+): CatalogEffect[] | undefined {
+  if (!effects?.length) return undefined;
+  const texts = (text?.effects ?? {}) as Record<string, { title?: string; format?: string } | undefined>;
+  let numberFormat: Intl.NumberFormat;
+  try {
+    numberFormat = new Intl.NumberFormat(locale, { maximumFractionDigits: 2 });
+  } catch {
+    numberFormat = new Intl.NumberFormat('en', { maximumFractionDigits: 2 });
+  }
+  return effects.map((e, i) => {
+    const { title, format } = texts[String(i)] ?? {};
+    const positive = e.positive !== false;
+    if (e.value == null) return { label: title ?? '', value: e.valueText ?? '', positive };
+    const n = `${e.showSign && e.value >= 0 ? '+' : ''}${numberFormat.format(e.value)}`;
+    const formatted = format ? format.replace('{0}', n) : n;
+    return title ? { label: title, value: formatted, positive } : { label: formatted, value: '', positive };
+  });
+}
+
+/** Classification texts of a locale resolved against the structure (names in game order). */
+export interface CatalogClassification {
+  /** Rarities in level order with game color and localized name. */
+  rarities: { rarity: Rarity; level: number; color: string; name: string }[];
+  /** Stash tabs in game order (without "All"); only groups and subgroups with shipped items. */
+  groups: { id: string; name: string; subgroups: { id: string; name: string }[] }[];
+  /** Category / theme id → parent id. */
+  parents: Record<string, string | undefined>;
+  categoryName(id: string | undefined): string | undefined;
+  themeName(id: string | undefined): string | undefined;
+  groupName(id: string | undefined): string | undefined;
+  subgroupName(id: string | undefined): string | undefined;
+}
+
+type NameMap = Record<string, string>;
+
+/** Classification without any data (tests, fallbacks). */
+export function emptyClassification(): CatalogClassification {
+  return buildClassification({ rarities: {} as ClassificationStructure['rarities'], groups: [], categories: {} }, {});
+}
+
+export function buildClassification(structure: ClassificationStructure, text: TextFile): CatalogClassification {
+  const names = (field: string): NameMap => (text[field] ?? {}) as NameMap;
+  const rarityNames = names('rarities');
+  const groupNames = names('groups');
+  const subgroupNames = names('subgroups');
+  const categoryNames = names('categories');
+  const themeNames = names('themes');
+  return {
+    rarities: RARITIES.filter((r) => structure.rarities[r]).map((r) => ({
+      rarity: r,
+      level: structure.rarities[r].level,
+      color: structure.rarities[r].color,
+      name: rarityNames[r] ?? r,
+    })),
+    groups: [...structure.groups]
+      .sort((a, b) => a.order - b.order)
+      .map((g) => ({
+        id: g.id,
+        name: groupNames[g.id] ?? g.id,
+        subgroups: (g.subgroups ?? []).map((id) => ({ id, name: subgroupNames[id] ?? categoryNames[id] ?? id })),
+      })),
+    parents: Object.fromEntries(Object.entries(structure.categories).map(([id, c]) => [id, c.parent])),
+    categoryName: (id) => (id ? (categoryNames[id] ?? subgroupNames[id]) : undefined),
+    themeName: (id) => (id ? (themeNames[id] ?? categoryNames[id]) : undefined),
+    groupName: (id) => (id ? groupNames[id] : undefined),
+    subgroupName: (id) => (id ? (subgroupNames[id] ?? categoryNames[id]) : undefined),
+  };
+}
 
 export interface CatalogItem {
   id: string;
@@ -25,13 +111,23 @@ export interface CatalogItem {
   name: string;
   nameEn: string;
   description: string;
-  type: string;
-  rarity: Item['rarity'];
+  /** Game classification ids (see the `classification` domain) and their localized names. */
+  category?: string;
+  group?: string;
+  subgroup?: string;
+  /** Localized item card label (e.g. "Quick Use", "Research Item"). */
+  categoryName?: string;
+  groupName?: string;
+  subgroupName?: string;
+  /** Undefined = the game gives the item no rarity. */
+  rarity?: Rarity;
   icon: string;
   value: number;
   weightKg?: number;
   stackSize: number;
+  /** Theme ids and their localized names (same order). */
   foundIn?: string[];
+  foundInNames?: string[];
   addedIn?: string;
   questItem?: boolean;
   isWeapon: boolean;
@@ -61,8 +157,8 @@ export interface CatalogItem {
   repairCost?: Record<string, number>;
   repairDurability?: number;
   modSlots?: Record<string, string[]>;
-  /** Effect label (localized) → value. */
-  effects?: Record<string, { label: string; value: unknown }>;
+  /** Item stats, formatted for display, in game order. */
+  effects?: CatalogEffect[];
   /** The full v2 item. */
   item: Item;
 }
@@ -75,6 +171,8 @@ export interface ItemCatalog {
   arctrackerAliases: Record<string, string>;
   /** Old slug → current slug (renames). */
   aliases: Record<string, string>;
+  /** Groups (stash tabs in game order), rarities and category names for filters and labels. */
+  classification: CatalogClassification;
 }
 
 const toRecord = (list: (Amount | Reward)[] | undefined): Record<string, number> | undefined => {
@@ -108,6 +206,8 @@ export function buildCatalogItem(
   text: TextEntry | undefined,
   recipes: Record<string, Recipe>,
   research: Record<string, Research> = {},
+  classification?: CatalogClassification,
+  locale = 'en',
 ): CatalogItem {
   const crafted = primaryRecipe(item, recipes);
   const researched = crafted ? undefined : primaryResearch(item, research);
@@ -117,21 +217,26 @@ export function buildCatalogItem(
     ? item.upgradesTo?.find((u) => !u.requires?.length && 'items' in u.cost)
     : undefined;
   const previousTier = item.tier && item.tier > 1 ? item.upgradesFrom?.[0] : undefined;
-  const effectLabels = (text?.effects ?? {}) as Record<string, string>;
-  const isWeapon = WEAPON_TYPES.has(item.type) && !!(item.baseId || item.amplifiedFrom);
+  const isWeapon = !!item.category?.startsWith('Firearm.');
 
   return {
     id: item.id,
     name: (typeof text?.name === 'string' && text.name) || item.nameEn,
     nameEn: item.nameEn,
     description: typeof text?.description === 'string' ? text.description : '',
-    type: item.type,
+    category: item.category,
+    group: item.group,
+    subgroup: item.subgroup,
+    categoryName: classification?.categoryName(item.category),
+    groupName: classification?.groupName(item.group),
+    subgroupName: classification?.subgroupName(item.subgroup),
     rarity: item.rarity,
     icon: item.icon,
     value: item.value,
     weightKg: item.weightKg,
     stackSize: item.stackSize,
     foundIn: item.foundIn,
+    foundInNames: item.foundIn?.map((id) => classification?.themeName(id) ?? id),
     addedIn: item.addedIn,
     questItem: item.questItem,
     isWeapon,
@@ -155,11 +260,7 @@ export function buildCatalogItem(
     repairCost: toRecord(item.repairCost),
     repairDurability: item.repairDurability,
     modSlots: item.modSlots,
-    effects: item.effects
-      ? Object.fromEntries(
-          Object.entries(item.effects).map(([labelEn, value]) => [labelEn, { label: effectLabels[labelEn] || labelEn, value }]),
-        )
-      : undefined,
+    effects: formatItemEffects(item.effects, text, locale),
     item,
   };
 }
@@ -179,11 +280,29 @@ const catalogs = new Map<string, Promise<ItemCatalog>>();
 export function loadItemCatalog(locale: AppLocale | string): Promise<ItemCatalog> {
   let pending = catalogs.get(locale);
   if (!pending) {
-    pending = Promise.all([loadDomain('items', locale), loadDomain('recipes', locale), loadDomain('research', locale)]).then(
-      ([items, recipes, research]: [LoadedDomain<'items'>, LoadedDomain<'recipes'>, LoadedDomain<'research'>]) => {
+    pending = Promise.all([
+      loadDomain('items', locale),
+      loadDomain('recipes', locale),
+      loadDomain('research', locale),
+      loadDomain('classification', locale),
+    ]).then(
+      ([items, recipes, research, classified]: [
+        LoadedDomain<'items'>,
+        LoadedDomain<'recipes'>,
+        LoadedDomain<'research'>,
+        LoadedDomain<'classification'>,
+      ]) => {
+        const classification = buildClassification(classified.structure, classified.text);
         const out: Record<string, CatalogItem> = {};
         for (const item of Object.values(items.structure.items)) {
-          out[item.id] = buildCatalogItem(item, items.text[item.id], recipes.structure.recipes, research.structure.research);
+          out[item.id] = buildCatalogItem(
+            item,
+            items.text[item.id],
+            recipes.structure.recipes,
+            research.structure.research,
+            classification,
+            String(locale),
+          );
         }
         inheritTierBench(out);
         return {
@@ -192,6 +311,7 @@ export function loadItemCatalog(locale: AppLocale | string): Promise<ItemCatalog
           research: research.structure.research,
           arctrackerAliases: items.structure.arctrackerAliases ?? {},
           aliases: items.structure.aliases ?? {},
+          classification,
         };
       },
     );

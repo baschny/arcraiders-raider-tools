@@ -83,6 +83,11 @@
   background-image: url('/images/rarities/legendary_bg.png');
 }
 
+// The game has no background art for Amplified items: border only
+.rarity-amplified .item-icon__container {
+  border-color: $rarity-amplified-border;
+}
+
 // Clickable variant
 .item-icon--clickable {
   cursor: pointer;

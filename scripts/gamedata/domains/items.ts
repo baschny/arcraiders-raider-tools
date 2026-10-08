@@ -1,8 +1,9 @@
-import type { Item, Rarity } from '../../../src/shared/gamedata/types';
+import { RARITIES, type Item, type ItemEffect } from '../../../src/shared/gamedata/types';
 import type { CanonItem, Localization } from '../arcData';
 import type { GenContext } from '../context';
 import { itemIconUrl } from '../icons';
 import { offersOfClass } from '../offer-classes';
+import { shortCategory, shortGroup, shortTheme } from './classification-ids';
 import type { DomainModule } from './types';
 
 /**
@@ -20,42 +21,14 @@ export const SHIPPED_ITEM_TYPES = new Set([
 ]);
 
 /**
- * Site item properties the API does not carry (S02 decision, docs/Game-Data.md): standalone
- * overlay data file arc-data/overlay/item-properties.json, seeded from the last arcraiders-data
- * snapshot. Replaced by game-file item data later.
+ * Overlay arc-data/overlay/item-properties.json (embark-api docs/Item-Classification.md): since
+ * S18 only `questItem`, `modSlots` and the `effects` of items without game effect data are read.
+ * Type, rarity, weight and "found in" come from the game (canonical item fields).
  */
 interface ItemProperties {
-  type?: string;
-  rarity?: Rarity;
-  weightKg?: number;
   questItem?: boolean;
-  foundIn?: string[];
   modSlots?: Record<string, string[]>;
   effects?: Record<string, { value: unknown; label: Localization }>;
-}
-
-/** Site type for items without seeded properties (new content). */
-function fallbackType(item: CanonItem, currencyIds: Set<number>): string {
-  if (currencyIds.has(item.id)) return 'Currency';
-  switch (item.type) {
-    case 'OutpostFurniture':
-      return 'Furniture';
-    case 'OutpostRoom':
-      return 'Outpost Room';
-    case 'OutpostSlot':
-      return 'Outpost Slot';
-    case 'ItemSkin':
-      return 'Stencil';
-    case 'ItemSkinSlot':
-      return 'Stencil Slot';
-    case 'Modification':
-      return 'Modification';
-  }
-  const name = item.name?.en ?? '';
-  if (/ Blueprint$/.test(name)) return 'Blueprint';
-  if (/^Furniture Design: /.test(name) || /Design$/.test(name)) return 'Design';
-  if (item.slots?.discriminator === 'arraySlot' || item.slots?.discriminator === 'singleSlot') return 'Weapon';
-  return 'Misc';
 }
 
 /** Decides shipping and registers ctx.shippedItems (asset id → slug). Runs before every other domain. */
@@ -139,11 +112,48 @@ export function withTier<T extends Localization | null | undefined>(name: T, tie
   return out as T;
 }
 
+/**
+ * Effects and rarity of a canonical item. Game effects (title/format/value) win; the overlay
+ * effects (label → value) are used only for items without game effects. Texts go to
+ * `effects.<index>.{title,format}`.
+ */
+function buildEffectsAndRarity(
+  ctx: GenContext,
+  slug: string,
+  item: CanonItem,
+  p: ItemProperties | undefined,
+): { effects: ItemEffect[]; itemRarity: Item['rarity'] } {
+  const effects: ItemEffect[] = [];
+  const game = item.effects ?? [];
+  if (game.length) {
+    game.forEach((e, i) => {
+      effects.push({
+        ...(e.value != null ? { value: e.value } : {}),
+        ...(e.showSign ? { showSign: true as const } : {}),
+        ...(e.positive === false ? { positive: false as const } : {}),
+      });
+      ctx.text.add('items', slug, ['effects', String(i), 'title'], e.title);
+      ctx.text.add('items', slug, ['effects', String(i), 'format'], e.format);
+    });
+  } else {
+    Object.values(p?.effects ?? {}).forEach((e, i) => {
+      const valueText = e.value == null || e.value === '' ? undefined : String(e.value);
+      effects.push(valueText ? { valueText } : {});
+      ctx.text.add('items', slug, ['effects', String(i), 'title'], e.label);
+    });
+  }
+  let itemRarity: Item['rarity'];
+  if (item.rarity != null) {
+    itemRarity = RARITIES[item.rarity - 1];
+    if (!itemRarity) ctx.report.add('unknownRarityLevel', `${slug}: ${item.rarity}`);
+  }
+  return { effects, itemRarity };
+}
+
 const module: DomainModule = {
   domain: 'items',
   build(ctx) {
     const shipped = registerShippedItems(ctx);
-    const currencyIds = new Set(Object.values(ctx.arc.constants.currencies));
     const props = ctx.arc.json<{ items: Record<string, ItemProperties> }>('overlay/item-properties.json')?.items ?? {};
     const chains = computeChains(ctx, shipped);
     const chainLength = new Map<string, number>();
@@ -158,11 +168,10 @@ const module: DomainModule = {
 
     const items: Record<string, Item> = {};
     const arctrackerAliases: Record<string, string> = {};
-    let defaulted = 0;
+    const unclassified = new Map<string, number>();
     for (const item of shipped) {
       const slug = ctx.shippedItems.get(item.id)!;
       const p = props[String(item.id)];
-      if (!p) defaulted++;
       const chain = chains.get(item.id) ?? {};
       const name = withTier(item.name, chain.tier, chain.baseId ? (chainLength.get(chain.baseId) ?? 0) : 0)!;
       const arctrackerId = ctx.slugs.get('items', item.id)?.arctrackerId ?? null;
@@ -175,21 +184,22 @@ const module: DomainModule = {
           return { itemId: ctx.shippedItems.get(u.next)!, cost: ctx.cost(u.cost, `upgrade ${slug}`), ...(requires.length ? { requires } : {}) };
         });
 
-      const effects: Record<string, unknown> = {};
-      for (const [labelEn, e] of Object.entries(p?.effects ?? {})) {
-        effects[labelEn] = e.value;
-        ctx.text.add('items', slug, ['effects', labelEn], e.label);
-      }
+      const { effects, itemRarity } = buildEffectsAndRarity(ctx, slug, item, p);
+      const category = item.category ? shortCategory(item.category) : undefined;
+      if (!category) unclassified.set(item.type ?? '?', (unclassified.get(item.type ?? '?') ?? 0) + 1);
+      const themes = (item.themes ?? []).map(shortTheme);
 
       items[slug] = {
         id: slug,
         nameEn: name.en,
-        type: p?.type ?? fallbackType(item, currencyIds),
-        rarity: p?.rarity ?? 'Common',
+        ...(category ? { category } : {}),
+        ...(item.stashGroup ? { group: shortGroup(item.stashGroup) } : {}),
+        ...(item.stashSubgroup ? { subgroup: shortCategory(item.stashSubgroup) } : {}),
+        ...(itemRarity ? { rarity: itemRarity } : {}),
         icon: itemIconUrl(slug, { arctrackerId }),
         value: item.value,
         stackSize: item.maxStack || 1,
-        ...(p?.weightKg != null ? { weightKg: p.weightKg } : {}),
+        ...(item.weightKg != null ? { weightKg: item.weightKg } : {}),
         ...(item.addedIn ? { addedIn: item.addedIn } : {}),
         ...chain,
         upgradesTo,
@@ -198,14 +208,14 @@ const module: DomainModule = {
         repairCost: ctx.amounts(item.repair.cost, `repair ${slug}`),
         ...(item.repair.durability ? { repairDurability: item.repair.durability } : {}),
         ...(p?.modSlots ? { modSlots: p.modSlots } : {}),
-        ...(Object.keys(effects).length ? { effects } : {}),
-        ...(p?.foundIn?.length ? { foundIn: p.foundIn } : {}),
+        ...(effects.length ? { effects } : {}),
+        ...(themes.length ? { foundIn: themes } : {}),
         ...(p?.questItem ? { questItem: true } : {}),
       };
       ctx.text.add('items', slug, 'name', name);
       ctx.text.add('items', slug, 'description', item.description);
     }
-    if (defaulted) ctx.report.add('itemsWithDefaultProperties', `${defaulted} items without seeded properties (type from fallback, rarity Common)`);
+    for (const [type, n] of unclassified) ctx.report.add('itemsWithoutCategory', `${n} ${type}`);
 
     // upgradesFrom (reverse of upgradesTo)
     for (const it of Object.values(items)) {

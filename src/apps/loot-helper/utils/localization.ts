@@ -33,6 +33,7 @@ const rarityKeys: Record<ItemRarity, string> = {
   Rare: 'lootHelper.rarities.rare',
   Epic: 'lootHelper.rarities.epic',
   Legendary: 'lootHelper.rarities.legendary',
+  Amplified: 'lootHelper.rarities.amplified',
 };
 
 const locationKeys: Record<string, string> = {

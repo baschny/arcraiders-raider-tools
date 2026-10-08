@@ -99,14 +99,14 @@ function findSalvageableSources(
   
   // Check if the target material is a Basic Material
   const targetItem = itemsMap[targetMaterialId];
-  if (targetItem && targetItem.type === 'Basic Material') {
+  if (targetItem && targetItem.category === 'CraftingMaterial.Basic') {
     // Don't show salvageable sources for Basic Materials
     return sources;
   }
 
   for (const item of Object.values(itemsMap)) {
     // Skip if this item is a Basic Material
-    if (item.type === 'Basic Material') {
+    if (item.category === 'CraftingMaterial.Basic') {
       continue;
     }
 
@@ -121,7 +121,7 @@ function findSalvageableSources(
     }
     
     // Skip weapons and modifications
-    if (item.isWeapon || item.type === 'Modification') {
+    if (item.isWeapon || item.group === 'Modifications') {
       continue;
     }
 

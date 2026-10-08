@@ -27,6 +27,7 @@ export const BUDGETS_KB: Record<GameDomain, [number, number]> = {
   skilltree: [50, 30],
   amplification: [100, 0],
   maps: [20, 10],
+  classification: [20, 20],
 };
 
 /** Recursively sorts object keys of maps keyed by slug (records keep their field order). */

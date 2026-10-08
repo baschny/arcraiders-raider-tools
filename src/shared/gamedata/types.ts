@@ -30,7 +30,8 @@ export type GameDomain =
   | 'quests'
   | 'skilltree'
   | 'amplification'
-  | 'maps';
+  | 'maps'
+  | 'classification';
 
 /** Text file of a domain: slug → text fields (all strings already localized, en fallback applied). */
 export type TextFile = Record<string, TextEntry>;
@@ -39,13 +40,16 @@ export interface TextEntry {
   name?: string;
   description?: string;
   /** Nested texts, e.g. quest objectives by node key, project phases/steps/goals by key. */
-  [field: string]: string | Record<string, string> | undefined;
+  [field: string]: string | Record<string, string | Record<string, string>> | undefined;
 }
 
 // ---------------------------------------------------------------------------------------------
 // Shared value types
 
-export type Rarity = 'Common' | 'Uncommon' | 'Rare' | 'Epic' | 'Legendary';
+export type Rarity = 'Common' | 'Uncommon' | 'Rare' | 'Epic' | 'Legendary' | 'Amplified';
+
+/** Rarity names in level order (level = index + 1). */
+export const RARITIES: readonly Rarity[] = ['Common', 'Uncommon', 'Rare', 'Epic', 'Legendary', 'Amplified'];
 
 export interface Amount {
   itemId: string;
@@ -79,11 +83,32 @@ export interface Requirement {
 // ---------------------------------------------------------------------------------------------
 // items
 
+/**
+ * One game-defined item stat. Texts (title, format) are in the text file under
+ * `effects.<index>.{title,format}`; `value` is rendered into the format (`{0}`).
+ * Defaults are omitted: `showSign` false, `positive` true. Overlay-sourced effects have no format
+ * and carry their display value in `valueText`.
+ */
+export interface ItemEffect {
+  value?: number;
+  valueText?: string;
+  showSign?: true;
+  positive?: false;
+}
+
 export interface Item {
   id: string;
   nameEn: string;
-  type: string;
-  rarity: Rarity;
+  /**
+   * Classification from the game (short ids, see the `classification` domain): item category tag
+   * (`Utility.Grenade`), stash group (`Utilities`) and subgroup (`Utility.Grenade`). Absent when the
+   * game does not classify the item (or does not list it in the stash).
+   */
+  category?: string;
+  group?: string;
+  subgroup?: string;
+  /** Absent = the game gives the item no rarity. */
+  rarity?: Rarity;
   icon: string;
   value: number;
   stackSize: number;
@@ -104,8 +129,8 @@ export interface Item {
   repairDurability?: number;
   /** Slot type (muzzle, special, …) → compatible mod item slugs. */
   modSlots?: Record<string, string[]>;
-  /** English effect label → value; localized labels in the text file under `effects.<label>`. */
-  effects?: Record<string, unknown>;
+  /** Item stats in game order; texts in the text file under `effects.<index>`. */
+  effects?: ItemEffect[];
   questItem?: boolean;
   // precomputed reverse lookups
   craftedBy?: string[];
@@ -122,6 +147,7 @@ export interface Item {
   soldBy?: string[];
   recycledFrom?: string[];
   rewardedBy?: { quests?: string[]; projects?: string[] };
+  /** Theme ids (`Residential`, `OldWorld`, `ARC`); labels in `classification` text `themes.<id>`. */
   foundIn?: string[];
 }
 
@@ -448,7 +474,17 @@ export interface MapsStructure {
 // ---------------------------------------------------------------------------------------------
 // domain → structure mapping
 
+export interface ClassificationStructure {
+  /** Level 1..6 and the in-game color (#RRGGBB) per rarity. */
+  rarities: Record<Rarity, { level: number; color: string }>;
+  /** Stash tabs in game order (without "All"), with subgroups; only groups with shipped items. */
+  groups: { id: string; order: number; subgroups?: string[] }[];
+  /** Categories and themes used by shipped items, plus their ancestors. */
+  categories: Record<string, { parent?: string }>;
+}
+
 export interface DomainStructures {
+  classification: ClassificationStructure;
   items: ItemsStructure;
   recipes: RecipesStructure;
   research: ResearchStructure;

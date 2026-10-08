@@ -12,8 +12,9 @@ import projects from './projects';
 import quests from './quests';
 import skilltree from './skilltree';
 import maps from './maps';
+import classification from './classification';
 
-/** Build order. `items` must be first (decides which items ship). */
+/** Build order. `items` must be first (decides which items ship); `classification` reads the shipped items. */
 export const DOMAIN_MODULES: DomainModule[] = [
   items,
   amplification,
@@ -28,4 +29,5 @@ export const DOMAIN_MODULES: DomainModule[] = [
   quests,
   skilltree,
   maps,
+  classification,
 ];

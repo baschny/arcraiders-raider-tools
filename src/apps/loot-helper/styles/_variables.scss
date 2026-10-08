@@ -1,3 +1,5 @@
+@use '../../../shared/styles/variables' as shared;
+
 // Colors - Background
 $bg-primary: #1a1a1a;
 $bg-secondary: #2c2c2c;
@@ -18,11 +20,12 @@ $text-accent: #4fc3f7;
 $text-light: #b0bec5;
 
 // Colors - Rarity
-$rarity-common: #888888;
-$rarity-uncommon: #4caf50;
-$rarity-rare: #2196f3;
-$rarity-epic: #9c27b0;
-$rarity-legendary: #ffd700;
+$rarity-common: shared.$rarity-common;
+$rarity-uncommon: shared.$rarity-uncommon;
+$rarity-rare: shared.$rarity-rare;
+$rarity-epic: shared.$rarity-epic;
+$rarity-legendary: shared.$rarity-legendary;
+$rarity-amplified: shared.$rarity-amplified;
 
 // Colors - Status
 $status-available: #ffd700;

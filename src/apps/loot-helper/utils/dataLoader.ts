@@ -73,13 +73,16 @@ export function catalogToItems(catalog: ItemCatalog): Item[] {
       name: { en: c.name },
       originalNameEn: c.nameEn,
       description: c.description,
-      type: c.type,
-      rarity: c.rarity as ItemRarity,
+      type: c.categoryName ?? '',
+      category: c.category,
+      group: c.group,
+      rarity: c.rarity ?? 'Common',
       imageFilename: c.icon,
       value: c.value,
       weightKg: c.weightKg,
       stackSize: c.stackSize,
-      foundIn: c.foundIn?.length ? c.foundIn : undefined,
+      // theme ids → the app's location keys (only 'OldWorld' differs)
+      foundIn: c.foundIn?.length ? c.foundIn.map((id) => (id === 'OldWorld' ? 'Old World' : id)) : undefined,
       recipe: c.recipe,
       recyclesInto: c.recyclesInto,
       salvagesInto: c.salvagesInto,
@@ -103,8 +106,8 @@ export async function loadAllItems(locale: AppLocale): Promise<ItemsMap> {
   return itemsMap;
 }
 
-export function getRarityClass(rarity: ItemRarity): string {
-  return `rarity-${rarity.toLowerCase()}`;
+export function getRarityClass(rarity: ItemRarity | undefined): string {
+  return rarity ? `rarity-${rarity.toLowerCase()}` : '';
 }
 
 export function getLocationIcon(location: string): string | null {

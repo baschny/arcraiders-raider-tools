@@ -74,6 +74,23 @@ export interface CanonItem extends CanonRecord {
   repair: { cost: CanonAmount[]; durability: number };
   slots: { discriminator: string; [k: string]: unknown };
   upgrades: CanonUpgrade[];
+  /** Game classification (embark-api docs/Item-Classification.md). */
+  category?: string | null;
+  themes?: string[];
+  rarity?: number | null;
+  tier?: number | null;
+  weightKg?: number | null;
+  effects?: CanonEffect[];
+  stashGroup?: string | null;
+  stashSubgroup?: string | null;
+}
+
+export interface CanonEffect {
+  title: Localization | null;
+  format: Localization | null;
+  value: number | null;
+  showSign: boolean;
+  positive: boolean;
 }
 
 export interface CanonOffer extends CanonRecord {

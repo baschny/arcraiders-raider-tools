@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import type { ItemCatalog } from '../../../../shared/gamedata/catalog';
-import { buildCatalogItem } from '../../../../shared/gamedata/catalog';
+import { buildCatalogItem, emptyClassification } from '../../../../shared/gamedata/catalog';
 import type { LoadedDomain } from '../../../../shared/gamedata/types';
 import questsStructure from '../../../../../public/data/game/quests.json';
 import questsText from '../../../../../public/data/game/quests.text.en.json';
@@ -30,6 +30,7 @@ function catalog(): ItemCatalog {
     research: {},
     arctrackerAliases: {},
     aliases: {},
+    classification: emptyClassification(),
   };
 }
 

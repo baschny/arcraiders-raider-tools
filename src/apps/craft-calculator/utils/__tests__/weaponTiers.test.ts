@@ -2,7 +2,7 @@ import { describe, it, expect, vi, beforeAll } from 'vitest';
 import type { ItemCatalog, CatalogItem } from '../../../../shared/gamedata/catalog';
 
 const ci = (id: string, extra: Partial<CatalogItem>): CatalogItem =>
-  ({ id, name: id, nameEn: id, description: '', type: 'LMG', rarity: 'Rare', icon: '', value: 1, stackSize: 1, craftQuantity: 1, isWeapon: true, inRaidCraftable: false, blueprintLocked: false, ...extra }) as CatalogItem;
+  ({ id, name: id, nameEn: id, description: '', category: 'Firearm.LMG', rarity: 'Rare', icon: '', value: 1, stackSize: 1, craftQuantity: 1, isWeapon: true, inRaidCraftable: false, blueprintLocked: false, ...extra }) as CatalogItem;
 
 // Deliberately slug-shape-free ids: tiers come from baseId/tier only.
 const catalog = {
@@ -15,7 +15,7 @@ const catalog = {
   research: {},
   arctrackerAliases: {},
   aliases: {},
-} as ItemCatalog;
+} as unknown as ItemCatalog;
 
 vi.mock('../../../../shared/gamedata/catalog', () => ({ loadItemCatalog: async () => catalog }));
 

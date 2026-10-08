@@ -3,7 +3,7 @@ import { vi } from 'vitest';
 // Real generated v2 files (structure + English text only), bundled by vite for the tests.
 const files = import.meta.glob(
   [
-    '../../../../../public/data/game/{items,recipes,research,blueprints,trades,benches,outpost,stencils,projects,quests,skilltree,amplification,maps}.json',
+    '../../../../../public/data/game/{items,recipes,research,blueprints,trades,benches,outpost,stencils,projects,quests,skilltree,amplification,maps,classification}.json',
     '../../../../../public/data/game/*.text.en.json',
   ],
   { eager: true, import: 'default' },

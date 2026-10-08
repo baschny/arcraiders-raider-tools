@@ -61,7 +61,7 @@ export function ItemIcon({
       tabIndex={onClick ? 0 : undefined}
       onClick={onClick}
       onKeyDown={handleKeyDown}
-      data-rarity={normalizedRarity.toLowerCase()}
+      data-rarity={normalizedRarity?.toLowerCase()}
       data-item-id={itemId}
       style={style}
       ref={containerRef}
