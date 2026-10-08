@@ -1,5 +1,6 @@
 import type { AppLocale } from '../i18n/config';
-import { getLocaleCandidates } from '../i18n/config';
+import { getLocaleCandidates, SUPPORTED_LOCALES } from '../i18n/config';
+import { loadText } from '../gamedata/loader';
 import type { Quest } from '../types/quest';
 
 let mapNameLocalizations: Record<string, Record<string, string>> = {};
@@ -105,20 +106,16 @@ export function getQuestWikiName(quest: Pick<Quest, 'name' | 'originalNameEn'>):
   return quest.originalNameEn ?? quest.name;
 }
 
+/** Loads map names of all locales from the v2 maps domain (small text files). */
 export async function loadQuestMapLocalizations(): Promise<void> {
-  const response = await fetch('/data/maps/localizations.json');
-  if (!response.ok) {
-    throw new Error(`Failed to load map localizations: ${response.statusText}`);
-  }
-
-  const data = (await response.json()) as {
-    maps?: Record<string, { localizations?: Record<string, string> }>;
-  };
-
-  mapNameLocalizations = Object.fromEntries(
-    Object.entries(data.maps ?? {}).map(([mapId, value]) => [
-      mapId,
-      value.localizations ?? {},
-    ]),
+  const texts = await Promise.all(
+    SUPPORTED_LOCALES.map(async (locale) => [locale, await loadText('maps', locale)] as const),
   );
+  const next: Record<string, Record<string, string>> = {};
+  for (const [locale, text] of texts) {
+    for (const [mapId, entry] of Object.entries(text)) {
+      if (typeof entry.name === 'string' && entry.name) (next[mapId] ??= {})[locale] = entry.name;
+    }
+  }
+  mapNameLocalizations = next;
 }

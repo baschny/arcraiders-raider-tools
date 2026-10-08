@@ -8,6 +8,7 @@
 import type { AppLocale } from '../../../shared/i18n/config';
 import { loadItemCatalog, type CatalogItem } from '../../../shared/gamedata/catalog';
 import { loadDomain, loadStructure, nameOf } from '../../../shared/gamedata/loader';
+import { loadQuestMapLocalizations } from '../../../shared/utils/questLocalization';
 import type {
   ObjectiveNode,
   Project,
@@ -288,7 +289,13 @@ function allActions(node: ObjectiveNode, out: NonNullable<ObjectiveNode['action'
 export async function loadQuestData(
   locale: AppLocale,
 ): Promise<{ definitions: QuestDefinition[]; fullQuests: Quest[] }> {
-  const [quests, catalog, trades] = await Promise.all([loadDomain('quests', locale), loadItemCatalog(locale), loadStructure('trades')]);
+  // map names for the shared QuestTooltip (map indicators)
+  const [quests, catalog, trades] = await Promise.all([
+    loadDomain('quests', locale),
+    loadItemCatalog(locale),
+    loadStructure('trades'),
+    loadQuestMapLocalizations().catch((error: unknown) => console.error('Failed to load map names:', error)),
+  ]);
 
   const entry = (itemId: string, quantity: number): QuestItemEntry => {
     const item = catalog.items[itemId];
