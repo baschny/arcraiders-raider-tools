@@ -1,0 +1,257 @@
+@use '../../../shared/styles/variables' as *;
+
+$verdict-keep: #4caf50;
+$verdict-optional: #4fc3f7;
+$verdict-quest: #ffd700;
+$verdict-sell: #9e9e9e;
+
+.wn-chip {
+  position: relative;
+
+  &--sm { --item-icon-padding: 2px; }
+  &--lg .item-icon__name { font-size: $font-md; }
+
+  &__qty {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.8);
+    color: $text-primary;
+    font-size: $font-base;
+    font-weight: 700;
+    padding: 0 4px;
+    border-radius: $radius-sm 0 0 0;
+    line-height: 1.4;
+  }
+
+  &--sm &__qty { font-size: $font-sm; padding: 0 3px; }
+
+  &__marker {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    width: 8px;
+    height: 8px;
+    border-radius: $radius-circle;
+    background: $rarity-amplified;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.6);
+  }
+}
+
+.wn-recipe {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: $gap-md;
+  padding: $spacing-sm $spacing-md;
+  background: $bg-secondary;
+  border: $border-width-thin solid $border-default;
+  border-radius: $radius-md;
+
+  &--compact { gap: $gap-sm; padding: $spacing-xs $spacing-sm; }
+
+  &__label {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-xs;
+    font-size: $font-md;
+    font-weight: 600;
+    color: $text-light;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    flex-basis: 100%;
+  }
+
+  &__label-img { width: 24px; height: 24px; object-fit: contain; }
+
+  &__group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: $gap-sm;
+  }
+
+  &__arrow { font-size: $font-3xl; color: $text-secondary; }
+}
+
+.wn-ba {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: $gap-md;
+  padding: $spacing-sm $spacing-md;
+  background: $bg-secondary;
+  border: $border-width-thin solid $border-default;
+  border-radius: $radius-md;
+
+  &__title { margin-right: $spacing-sm; }
+
+  &__side { display: flex; flex-wrap: wrap; align-items: center; gap: $gap-sm; }
+
+  &__arrow { font-size: $font-3xl; color: $text-secondary; }
+
+  &__price { font-size: $font-xl; font-weight: 700; color: $text-primary; }
+
+  &__removed {
+    opacity: 0.45;
+
+    .item-icon__container::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top right, transparent calc(50% - 1px), #e57373 50%, transparent calc(50% + 1px));
+      pointer-events: none;
+    }
+  }
+
+  &__added .item-icon__container {
+    box-shadow: 0 0 0 2px $status-completed;
+  }
+}
+
+.wn-flow {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: $gap-md;
+
+  &__step { display: flex; align-items: center; gap: $gap-md; }
+
+  &__arrow { font-size: $font-3xl; color: $text-secondary; }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+    padding: $spacing-sm $spacing-md;
+    background: $bg-secondary;
+    border: $border-width-thin solid $border-default;
+    border-radius: $radius-md;
+    height: 100%;
+    box-sizing: border-box;
+  }
+
+  &__title { font-size: $font-md; font-weight: 600; color: $text-light; }
+
+  &__image { max-width: 160px; max-height: 100px; border-radius: $radius-sm; object-fit: cover; }
+
+  &__items { display: flex; flex-wrap: wrap; gap: $gap-sm; }
+
+  &__note { font-size: $font-md; color: $text-secondary; }
+
+  @media (max-width: $breakpoint-mobile) {
+    flex-direction: column;
+    align-items: stretch;
+
+    &__step { flex-direction: column; align-items: stretch; }
+    &__arrow { align-self: center; transform: rotate(90deg); }
+  }
+}
+
+.wn-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: $gap-md;
+  padding: $spacing-lg;
+  background: $bg-secondary center / cover no-repeat;
+  border: $border-width-default solid $border-default;
+  border-radius: $radius-lg;
+  overflow: hidden;
+
+  &--image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(26, 26, 26, 0.55), rgba(26, 26, 26, 0.9));
+    pointer-events: none;
+  }
+
+  > * { position: relative; }
+
+  &__head { display: flex; align-items: center; justify-content: space-between; gap: $gap-md; }
+
+  &__title { @include urbanist-title; margin: 0; font-size: $font-2xl; color: $text-primary; }
+
+  &__counter {
+    font-size: $font-lg;
+    font-weight: 700;
+    color: $text-light;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 2px $spacing-sm;
+    border-radius: $radius-lg;
+  }
+
+  &__lock {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-sm;
+    font-size: $font-md;
+    color: $text-secondary;
+  }
+
+  &--locked &__body { opacity: 0.5; filter: grayscale(0.6); }
+}
+
+.wn-verdict {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 6px;
+  border-radius: $radius-sm;
+  font-size: $font-sm;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  line-height: 1.4;
+  white-space: nowrap;
+  color: #111;
+
+  &--keep { background: $verdict-keep; }
+  &--optional { background: $verdict-optional; }
+  &--quest { background: $verdict-quest; }
+  &--sell { background: $verdict-sell; }
+
+  &--corner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 0 0 $radius-sm 0;
+    z-index: 1;
+  }
+}
+
+.wn-counter {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: $bg-tertiary;
+  border: $border-width-thin solid $border-light;
+  font-size: $font-md;
+  color: $text-light;
+
+  &__value { font-weight: 700; color: $text-primary; }
+
+  &--done {
+    border-color: $status-completed;
+    .wn-counter__value { color: $status-completed; }
+  }
+}
+
+.wn-section-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: $gap-md;
+  margin: $spacing-xl 0 $spacing-md;
+  scroll-margin-top: $header-height + $spacing-lg;
+
+  &__title { @include urbanist-title; margin: 0; font-size: $font-3xl; color: $text-primary; }
+
+  &__subtitle { margin: 2px 0 0; font-size: $font-lg; color: $text-secondary; }
+}
