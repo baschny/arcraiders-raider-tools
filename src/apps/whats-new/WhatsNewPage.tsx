@@ -88,13 +88,15 @@ export function WhatsNewPage({ version }: WhatsNewPageProps) {
     history.replaceState(null, '', `#${anchor}`);
   };
 
-  const summaryTiles = [
-    'newItems',
-    'newSystems',
-    'researchOffers',
-    'researchPoints',
-    'stashTiers',
-  ] as const;
+  const summary = data.whatsNew?.versions[version]?.summary;
+  const compact = (n: number) => (n >= 10000 ? `${Math.round(n / 1000)}k` : String(n));
+  const summaryTiles: { key: string; value?: number }[] = [
+    { key: 'newItems', value: summary?.newItemsListed ?? summary?.newItems },
+    { key: 'newSystems', value: summary?.newSystems },
+    { key: 'researchOffers', value: summary?.researchOffers },
+    { key: 'researchPoints', value: summary?.researchPointsTotal },
+    { key: 'stashTiers', value: summary?.newStashTiers },
+  ];
 
   return (
     <div className="wn-page" data-version={version} data-variant={variant}>
@@ -103,12 +105,11 @@ export function WhatsNewPage({ version }: WhatsNewPageProps) {
         <p className="wn-page__subtitle">{t('whatsNew.subtitle')}</p>
       </header>
 
-      {/* TODO(W12): fill from data.whatsNew.summary once the domain exists */}
       <div className="wn-summary" role="list">
         {summaryTiles.map((tile) => (
-          <div className="wn-summary__tile" role="listitem" key={tile}>
-            <span className="wn-summary__value">&mdash;</span>
-            <span className="wn-summary__label">{t(`whatsNew.summary.${tile}`)}</span>
+          <div className="wn-summary__tile" role="listitem" key={tile.key}>
+            <span className="wn-summary__value">{tile.value != null ? compact(tile.value) : '—'}</span>
+            <span className="wn-summary__label">{t(`whatsNew.summary.${tile.key}`)}</span>
           </div>
         ))}
       </div>
