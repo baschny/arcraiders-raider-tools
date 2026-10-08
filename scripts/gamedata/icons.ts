@@ -1,5 +1,5 @@
 /**
- * Icon URL resolution for the site (spec-site.md#icons, ticket S09).
+ * Icon URL resolution for the site (docs/Game-Data.md).
  * Local files are produced by scripts/generate-item-icons.ts into public/images/{items,benches}.
  * Directory listings are cached per directory for the lifetime of the process.
  */

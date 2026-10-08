@@ -1,6 +1,6 @@
 /**
  * Offer classification: ONE ordered rule table that assigns every canonical offer to a site
- * domain (spec-site.md#offer-classification). First matching rule wins. Owner ids come from
+ * domain (docs/Game-Data.md). First matching rule wins. Owner ids come from
  * arc-data constants (never literals); "owner is a bench level" goes through ctx.benchLevel().
  *
  * Offers that match no rule are reported under `unclassifiedOffers` (fails --strict) and are
@@ -209,7 +209,7 @@ export function primaryRewardId(ctx: GenContext, offer: CanonOffer): number | nu
 }
 
 /**
- * Frozen offer slug `<prefix>:<reward-item-slug>[-n]` (spec-site.md#offer-slugs). Callers must
+ * Frozen offer slug `<prefix>:<reward-item-slug>[-n]` (docs/Game-Data.md). Callers must
  * process their offers in ascending offer id order. `baseItemId` overrides the reward item (used by
  * blueprints, whose reward is an unnamed unlock). Returns null (reported) without a shippable item.
  */

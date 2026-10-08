@@ -2,7 +2,7 @@ import type { AmplificationBranch, AmplifiedWeapon, Item } from '../../../src/sh
 import type { DomainModule } from './types';
 
 /**
- * Amplified weapons (spec-site.md#amplification), derived from the items domain: variants are items
+ * Amplified weapons (docs/Game-Data.md), derived from the items domain: variants are items
  * with `amplifiedFrom`; the graph holds every upgrade edge leaving the weapon's tier chain into the
  * variants and between variants. Must run after `items`.
  */

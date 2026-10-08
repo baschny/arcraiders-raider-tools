@@ -20,7 +20,7 @@ interface CanonSkillGroup extends CanonRecord {
 }
 
 /**
- * Domain 'skilltree' (spec-site.md#skilltree). A node without an English name gets no slug (so
+ * Domain 'skilltree' (docs/Game-Data.md). A node without an English name gets no slug (so
  * nothing placeholder-ish is ever frozen). A tree with unnamed nodes would dangle parents and
  * children, so the whole domain is emitted empty and reported under `skilltreeIncomplete` until
  * every node has a name.

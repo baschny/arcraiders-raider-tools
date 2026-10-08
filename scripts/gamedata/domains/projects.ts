@@ -4,7 +4,7 @@ import type { GenContext } from '../context';
 import type { DomainModule } from './types';
 
 /**
- * Domain 'projects' (spec-site.md#projects). Phases → steps → goals are kept unflattened.
+ * Domain 'projects' (docs/Game-Data.md). Phases → steps → goals are kept unflattened.
  *
  * Keys (index paths, never asset ids), shared by structure and text file:
  *   phase key  '<i>'          step key '<i>.<j>'          goal key '<i>.<j>.<k>'

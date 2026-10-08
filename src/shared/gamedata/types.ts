@@ -2,7 +2,7 @@
  * Game data v2 — the site schema (layer 2). Single source of truth for the files under
  * public/data/game/ written by scripts/generate-game-data.ts and read by loadDomain().
  *
- * Spec: embark-api docs/arc-data/spec-site.md
+ * Spec: docs/Game-Data.md
  *
  * Conventions
  * - Every public ID is a slug. A slug is unique within its domain; reference fields name the

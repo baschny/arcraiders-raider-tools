@@ -5,7 +5,7 @@ import { offersOfClass } from '../offer-classes';
 import type { DomainModule } from './types';
 
 /**
- * Benches (spec-site.md#benches): one entry per Generator chain (ctx.benchLevel). Level 1 is built
+ * Benches (docs/Game-Data.md): one entry per Generator chain (ctx.benchLevel). Level 1 is built
  * by a 'benches:build' Chamber offer that rewards the level-1 generator; every further level costs
  * the previous level's upgrade. Gates come from the build offer's / upgrade's requirements.
  * Scrappy levels list what they produce per round ('benches:scrappy', RoundCrafting by owner).

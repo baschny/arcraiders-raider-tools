@@ -3,7 +3,7 @@
  * Game data v2 generator: reads the canonical game data (embark-api arc-data/) and writes the site
  * schema to public/data/game/ (structure + per-locale text files).
  *
- * Spec: embark-api docs/arc-data/spec-site.md
+ * Spec: docs/Game-Data.md
  *
  * Usage: npx tsx scripts/generate-game-data.ts [--strict] [--only <domain,…>]
  *   --strict  fail on unclassified offers, unresolved requirements or files over budget

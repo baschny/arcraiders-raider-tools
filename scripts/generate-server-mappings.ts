@@ -1,7 +1,7 @@
 #!/usr/bin/env npx tsx
 /**
  * Server mapping generator: writes infra/lambda/data/game-mappings.json, the only place where
- * Embark asset ids and site slugs meet outside arc-data (spec-site.md#server-side-mapping-tables).
+ * Embark asset ids and site slugs meet outside arc-data (docs/Game-Data.md).
  * The Embark Lambdas (inventory, quests, projects) bundle this file.
  *
  * Inputs: arc-data (embark-api/arc-data, canonical), its frozen slug tables (read-only, nothing is

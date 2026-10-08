@@ -1,6 +1,6 @@
 /**
  * Read access to the canonical game data (embark-api arc-data/, layer 1).
- * Spec: embark-api docs/arc-data/spec-canonical.md
+ * Spec: (docs/arc-data.md)
  *
  * Canonical records are typed loosely here (Canon*): the binding definition is the arc-data
  * JSON Schema. Only fields the site generators use are declared.

@@ -4,7 +4,7 @@ import type { DomainModule } from './types';
 
 /**
  * Domain 'research': Research Station offers. `researchPoints` is the Research Points amount of
- * the cost. The display title is the reward item's localized name (spec-site.md#open-points).
+ * the cost. The display title is the reward item's localized name (docs/Game-Data.md).
  */
 const module: DomainModule = {
   domain: 'research',

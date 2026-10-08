@@ -4,7 +4,7 @@ import { offersOfClass, offerSlug } from '../offer-classes';
 import type { DomainModule } from './types';
 
 /**
- * Stencils (spec-site.md#stencils): ItemSkin items, applied through ItemSkinSlot items (one slot per
+ * Stencils (docs/Game-Data.md): ItemSkin items, applied through ItemSkinSlot items (one slot per
  * weapon/item; `allowedSlotAssetIds` lists the stencils). A 'stencils:learn' Chamber offer consumes a
  * stencil design item and rewards an unlock; the 'stencils:craft' offer requires that unlock and
  * costs stencil currency. Both are folded into `craft` (cost of crafting, requires the learn step).

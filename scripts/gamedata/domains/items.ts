@@ -20,9 +20,9 @@ export const SHIPPED_ITEM_TYPES = new Set([
 ]);
 
 /**
- * Site item properties the API does not carry (S02 decision, spec-site.md#open-points): standalone
+ * Site item properties the API does not carry (S02 decision, docs/Game-Data.md): standalone
  * overlay data file arc-data/overlay/item-properties.json, seeded from the last arcraiders-data
- * snapshot. Replaced by game-file item data later (ticket A15).
+ * snapshot. Replaced by game-file item data later.
  */
 interface ItemProperties {
   type?: string;

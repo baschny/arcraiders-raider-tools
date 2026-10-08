@@ -26,7 +26,7 @@ function craftOf(ctx: GenContext, prefix: string, offer: CanonOffer | undefined,
 }
 
 /**
- * Outpost (spec-site.md#outpost). Rooms, slots, furniture and designs are items (same slugs).
+ * Outpost (docs/Game-Data.md). Rooms, slots, furniture and designs are items (same slugs).
  * Design chain: a design item is consumed by an 'outpost:design' offer that rewards an unlock; the
  * furniture's 'outpost:furniture' craft offer requires that unlock.
  */

@@ -87,7 +87,7 @@ export async function loadDomain<D extends GameDomain>(
   return { structure, text, locale };
 }
 
-/** Domains whose display text comes from `items` (spec-site.md "Files" table). */
+/** Domains whose display text comes from `items` (docs/Game-Data.md "Files" table). */
 export const DOMAINS_WITHOUT_TEXT: ReadonlySet<GameDomain> = new Set<GameDomain>([
   'recipes',
   'blueprints',

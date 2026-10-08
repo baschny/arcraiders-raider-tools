@@ -61,8 +61,7 @@ one rule and, if needed, one domain module in `scripts/gamedata/domains/`.
 Site type, rarity, weight, effects, mod slots, "found in" and the quest flag are not served by the
 API. They come from `arc-data/overlay/item-properties.json`, seeded from the last arcraiders-data
 snapshot. Items without an entry get a type derived from their kind and name, and rarity `Common`;
-the generator reports how many. This will be replaced by game-file item data (embark-api ticket
-A15).
+the generator reports how many. This will be replaced by game-file item data (embark-api `docs/tickets/A15-item-data-assets.md`).
 
 ## Loading data in apps
 

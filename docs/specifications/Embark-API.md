@@ -383,7 +383,7 @@ and wired into:
 - `package.json`
   - `npm run generate:server-mappings` (part of `npm run generate`, after `generate:game-data`)
 
-It replaces `embark-inventory-mapping.json`, `project-mapping.json` and `embarkQuestMapping.ts`. It is the only place where Embark asset IDs and site slugs meet outside arc-data (`embark-api/docs/arc-data/spec-site.md#server-side-mapping-tables`).
+It replaces `embark-inventory-mapping.json`, `project-mapping.json` and `embarkQuestMapping.ts`. It is the only place where Embark asset IDs and site slugs meet outside arc-data (`embark-api/docs/Game-Data.md`).
 
 ### Generator inputs
 

@@ -1,6 +1,6 @@
 /**
  * Slug resolver: wraps the frozen slug tables in arc-data/slugs (embark-api lib/canonical/slugs.js,
- * spec-canonical.md#slugs). New slugs created here are appended to arc-data and must be committed
+ * docs/arc-data.md). New slugs created here are appended to arc-data and must be committed
  * there together with the generated site files.
  */
 import * as path from 'path';

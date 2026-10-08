@@ -146,7 +146,7 @@ export function createContext(arc: ArcData, slugs: SlugStore): GenContext {
     itemRef(assetId, context) {
       const slug = shippedItems.get(assetId);
       if (!slug) {
-        // Cosmetics never ship (spec-site.md#items); everything else dropped is worth a look.
+        // Cosmetics never ship (docs/Game-Data.md); everything else dropped is worth a look.
         const t = arc.items.get(assetId)?.type ?? '';
         const section = COSMETIC_TYPES.has(t) ? 'droppedCosmeticRefs' : UNLOCK_TYPES.has(t) ? 'droppedUnlockRefs' : 'droppedItemRefs';
         report.add(section, `${assetId}${t ? ` ${t}` : ''}${context ? ` in ${context}` : ''}`);

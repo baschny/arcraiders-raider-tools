@@ -1,5 +1,5 @@
 /**
- * Generates WebP icons for shipped items and bench levels (spec-site.md#icons, ticket S09).
+ * Generates WebP icons for shipped items and bench levels (docs/Game-Data.md).
  *
  * Inputs:  GAME_DATA_OUT/items.json (shipped item slugs), GAME_DATA_DIR/items + benches slugs,
  *          EMBARK_API_DIR textures export and asset-index-data (image column of asset_index.csv).

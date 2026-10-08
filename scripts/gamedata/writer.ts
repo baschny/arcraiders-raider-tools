@@ -1,7 +1,7 @@
 /**
  * Writes domain files under public/data/game/: `<domain>.json` (structure with envelope) and
  * `<domain>.text.<locale>.json`. Output is compact JSON with sorted record keys (deterministic).
- * Enforces gzip size budgets (spec-site.md#files).
+ * Enforces gzip size budgets (docs/Game-Data.md).
  */
 import * as fs from 'fs';
 import * as path from 'path';

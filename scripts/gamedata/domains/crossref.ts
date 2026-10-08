@@ -7,7 +7,7 @@ const costItems = (c: Cost | undefined): string[] => (c && 'items' in c ? c.item
 const rewardItems = (r: Reward[] | undefined): string[] => (r ?? []).map((x) => x.itemId);
 
 /**
- * Cross-domain pass after all domains are built (spec-site.md principle 4): fills the precomputed
+ * Cross-domain pass after all domains are built (docs/Game-Data.md principle 4): fills the precomputed
  * reverse lookups on items — craftedBy, researchedBy, usedIn, soldBy, recycledFrom, rewardedBy,
  * blueprintFor/blueprintId — from ctx.results. Each list is sorted and deduplicated.
  */
