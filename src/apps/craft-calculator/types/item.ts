@@ -14,6 +14,9 @@ export interface Item {
   upgradeCost?: ItemRecipe;
   craftQuantity?: number;
   rarity?: string;
+  /** Weapon chain base item id and tier (explicit catalog fields). */
+  baseId?: string;
+  tier?: number;
 }
 
 export interface ItemDatabase {

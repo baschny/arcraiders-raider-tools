@@ -1,6 +1,5 @@
 import type { AppLocale } from '../../../shared/i18n/config';
-import { fetchLocalizedJson } from '../../../shared/utils/localizedContent';
-import type { RawItemsOutput } from '../../../shared/types/item';
+import { loadItemCatalog } from '../../../shared/gamedata/catalog';
 import type { Item, ItemDatabase } from '../types/item';
 
 const itemDatabases = new Map<AppLocale, ItemDatabase>();
@@ -25,27 +24,28 @@ export async function loadItems(locale: AppLocale): Promise<ItemDatabase> {
 
   const nextPromise = (async () => {
     try {
-      const data = await fetchLocalizedJson<RawItemsOutput>(
-        '/data/items/items.json',
-        locale
-      );
+      const catalog = await loadItemCatalog(locale);
+      // Catalog `upgradeCost` is the cost to the NEXT tier; the app wants the cost to REACH an item.
       const items: ItemDatabase = Object.fromEntries(
-        Object.entries(data.items).map(([itemId, raw]) => [
-          itemId,
-          {
-            id: itemId,
-            name: raw.name.value,
-            originalNameEn: raw.name.originalEn,
-            stackSize: raw.stackSize,
-            value: raw.value,
-            imageFilename: raw.imageFilename,
-            isWeapon: raw.isWeapon,
-            recipe: raw.recipe,
-            upgradeCost: raw.upgradeCost,
-            craftQuantity: raw.craftQuantity,
-            rarity: raw.rarity,
-          },
-        ])
+        Object.values(catalog.items).map((c) => {
+          const previous = c.upgradesFrom ? catalog.items[c.upgradesFrom] : undefined;
+          const item: Item = {
+            id: c.id,
+            name: c.name,
+            originalNameEn: c.nameEn,
+            stackSize: c.stackSize,
+            value: c.value,
+            imageFilename: c.icon,
+            isWeapon: c.isWeapon,
+            recipe: c.recipe,
+            upgradeCost: previous?.upgradeCost,
+            craftQuantity: c.craftQuantity,
+            rarity: c.rarity,
+            baseId: c.baseId,
+            tier: c.tier,
+          };
+          return [c.id, item];
+        })
       );
       itemDatabases.set(locale, items);
       return items;
@@ -113,4 +113,17 @@ export function getCraftableItems(): Item[] {
  */
 export function isLoaded(): boolean {
   return itemDatabases.has(activeLocale);
+}
+
+/**
+ * Weapon tier chain for a base id: tier number -> item (explicit catalog baseId/tier).
+ */
+export function getTierChain(baseId: string): Map<number, Item> {
+  const chain = new Map<number, Item>();
+  const itemDatabase = itemDatabases.get(activeLocale);
+  if (!itemDatabase) return chain;
+  for (const item of Object.values(itemDatabase)) {
+    if (item.baseId === baseId && item.tier) chain.set(item.tier, item);
+  }
+  return chain;
 }

@@ -1,5 +1,5 @@
 import type { Item, ItemRecipe } from '../types/item';
-import { getItem } from './itemData';
+import { getItem, getTierChain } from './itemData';
 
 export interface UpgradeBreakdown {
   tier: number;
@@ -8,55 +8,16 @@ export interface UpgradeBreakdown {
   materials: ItemRecipe;
 }
 
-const TIER_SUFFIXES = ['_i', '_ii', '_iii', '_iv'];
-
 /**
- * Extract the base weapon name without tier suffix
- * e.g., "torrente_iv" -> "torrente"
- */
-function getBaseWeaponName(itemId: string): string {
-  for (const suffix of TIER_SUFFIXES) {
-    if (itemId.endsWith(suffix)) {
-      return itemId.slice(0, -suffix.length);
-    }
-  }
-  return itemId;
-}
-
-/**
- * Get the tier number from an item ID
- * e.g., "torrente_iv" -> 4, "torrente_i" -> 1
- */
-export function getTierNumber(itemId: string): number {
-  if (itemId.endsWith('_iv')) return 4;
-  if (itemId.endsWith('_iii')) return 3;
-  if (itemId.endsWith('_ii')) return 2;
-  if (itemId.endsWith('_i')) return 1;
-  return 0;
-}
-
-/**
- * Get the base weapon ID (tier I version)
- * e.g., "torrente_iv" -> "torrente_i"
- */
-export function getBaseWeaponId(itemId: string): string {
-  const baseName = getBaseWeaponName(itemId);
-  return `${baseName}_i`;
-}
-
-/**
- * Check if an item is craftable (has recipe or has upgradeCost with valid base weapon)
+ * Check if an item is craftable (has recipe or is an upgrade tier whose chain base has a recipe)
  */
 export function isCraftableItem(item: Item): boolean {
-  // Has direct recipe
   if (item.recipe && Object.keys(item.recipe).length > 0) {
     return true;
   }
 
-  // Has upgradeCost - check if base weapon exists and has recipe
-  if (item.upgradeCost && Object.keys(item.upgradeCost).length > 0) {
-    const baseWeaponId = getBaseWeaponId(item.id);
-    const baseWeapon = getItem(baseWeaponId);
+  if (item.upgradeCost && Object.keys(item.upgradeCost).length > 0 && item.baseId) {
+    const baseWeapon = getItem(item.baseId);
     return !!(baseWeapon?.recipe && Object.keys(baseWeapon.recipe).length > 0);
   }
 
@@ -88,14 +49,13 @@ export function calculateTotalMaterials(item: Item): ItemRecipe {
     return {};
   }
 
-  const targetTier = getTierNumber(item.id);
-  if (targetTier <= 1) {
+  const targetTier = item.tier ?? 0;
+  if (targetTier <= 1 || !item.baseId) {
     return {};
   }
 
-  const baseName = getBaseWeaponName(item.id);
-  const baseWeaponId = `${baseName}_i`;
-  const baseWeapon = getItem(baseWeaponId);
+  const baseWeapon = getItem(item.baseId);
+  const chain = getTierChain(item.baseId);
 
   if (!baseWeapon?.recipe) {
     return {};
@@ -106,9 +66,7 @@ export function calculateTotalMaterials(item: Item): ItemRecipe {
 
   // Add upgrade costs from tier II up to target tier
   for (let tier = 2; tier <= targetTier; tier++) {
-    const tierSuffix = TIER_SUFFIXES[tier - 1];
-    const tieredWeaponId = `${baseName}${tierSuffix}`;
-    const tieredWeapon = getItem(tieredWeaponId);
+    const tieredWeapon = chain.get(tier);
 
     if (tieredWeapon?.upgradeCost) {
       addMaterials(totalMaterials, tieredWeapon.upgradeCost);
@@ -140,14 +98,13 @@ export function getUpgradeBreakdown(item: Item): UpgradeBreakdown[] {
     return breakdown;
   }
 
-  const targetTier = getTierNumber(item.id);
-  if (targetTier <= 1) {
+  const targetTier = item.tier ?? 0;
+  if (targetTier <= 1 || !item.baseId) {
     return breakdown;
   }
 
-  const baseName = getBaseWeaponName(item.id);
-  const baseWeaponId = `${baseName}_i`;
-  const baseWeapon = getItem(baseWeaponId);
+  const baseWeapon = getItem(item.baseId);
+  const chain = getTierChain(item.baseId);
 
   if (!baseWeapon?.recipe) {
     return breakdown;
@@ -163,9 +120,7 @@ export function getUpgradeBreakdown(item: Item): UpgradeBreakdown[] {
 
   // Add each upgrade tier
   for (let tier = 2; tier <= targetTier; tier++) {
-    const tierSuffix = TIER_SUFFIXES[tier - 1];
-    const tieredWeaponId = `${baseName}${tierSuffix}`;
-    const tieredWeapon = getItem(tieredWeaponId);
+    const tieredWeapon = chain.get(tier);
 
     if (tieredWeapon?.upgradeCost) {
       breakdown.push({
