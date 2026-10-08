@@ -47,6 +47,8 @@ export const KINDS: SpotKind[] = [
   k('Exits', 'ExtractMetro', '#5cc49c', 'extract-metro', { major: true, rx: /SalvageExtractionPoint_Metro/ }),
   k('Exits', 'ExtractLift', '#5cc49c', 'extract-lift', { major: true, rx: /SalvageExtractionPoint_Elevator/ }),
   k('Exits', 'ExtractFan', '#5cc49c', 'extract-fan', { major: true, rx: /SalvageExtractionPoint_Fan/ }),
+  // Pendola Pass: a terminal that calls the gondola (placed by spawners; the ping uses the terminal icon).
+  k('Exits', 'ExtractGondola', '#5cc49c', 'terminal', { major: true, spawned: true, rx: /SalvageExtractionPoint_MultiProbe/ }),
   k('Exits', 'Hatch', '#9bcf6a', 'extract-hatch', { major: true, rx: /SalvageExtractionPoint_Hatch|RaiderHatchMarker/ }),
   k('Exits', 'StationEntrance', '#8fc9b4', 'metro-entrance', { rx: /MetroShutdownBarrier|StreetSign_Metro/ }),
   k('Exits', 'PlayerStart', '#d9d4c7', 'player', { rx: /^PioneerPlayerStart$/ }),
@@ -89,7 +91,8 @@ export const KINDS: SpotKind[] = [
   // Raider containers and caches (spawned)
   k('RaiderSpawns', 'CacheStandard', '#b394d1', 'raider-cache', { major: true, rx: /RaiderCache_WA/ }),
   k('RaiderSpawns', 'CacheSelfDestruct', '#c27cb3', 'raider-cache', { major: true, rx: /RaiderCacheSelfDestruct/ }),
-  k('RaiderSpawns', 'CacheFrozen', '#9fc4d6', 'raider-cache', { major: true, rx: /RaiderCacheSnow/ }),
+  k('RaiderSpawns', 'CacheFrozen', '#9fc4d6', 'raider-cache', { major: true, rx: /RaiderCacheSnow|RaiderCacheFrozenTrail/ }),
+  k('RaiderSpawns', 'NomadCache', '#78bdb5', 'raider-cache', { major: true, rx: /NomadCache/ }),
   k('RaiderSpawns', 'CacheFirstWave', '#5bb594', 'raider-cache', { major: true, rx: /RaiderCacheFirstWave/ }),
   k('RaiderSpawns', 'AmmoBox', '#d6b54a', 'ammo', { rx: /AmmoBox.*Dynamic$/ }),
   k('RaiderSpawns', 'AmmoBoxHigh', '#d99a3e', 'ammo', { rx: /AmmoBox.*HighTier/ }),
@@ -125,6 +128,7 @@ export const KINDS: SpotKind[] = [
   k('Features', 'FieldCrates', '#d1a04c', 'field-crate', { major: true, spawned: true, rx: /Carryable_Object|ArcFieldCrate/ }),
   k('Features', 'SupplyStation', '#5aaec4', 'supply-station', { major: true, spawned: true, rx: /SupplyCallStation/ }),
   k('Features', 'PowerCores', '#78bdb5', 'fusion-core', { major: true, spawned: true, rx: /Husk_Small_PowerCore/ }),
+  k('Features', 'MetalDetector', '#d6b54a', 'metal-detector', { spawned: true, rx: /Pickup_MetalDetector/ }),
   k('Features', 'Snowpile', '#d9d6cf', 'frost', { spawned: true, rx: /Snowpile/ }),
   k('Features', 'Zipline', '#6aa6c7', 'transmitter', { rx: /ActivatableZipline/ }),
   k('Features', 'Lift', '#8e97d4', 'enter-surface', { rx: /MovablePlatform_(MastLift|Cargo)/ }),
@@ -240,6 +244,7 @@ const ENEMY_ICONS: Record<string, string> = {
   Firefly: 'e-firefly', Bastion: 'e-bastion', Fireball: 'e-fireball', Leaper: 'e-leaper', Bombardier: 'e-bombardier',
   'ARC Surveyor': 'e-surveyor', Tick: 'e-tick', Queen: 'e-queen', Pop: 'e-pop', Comet: 'e-comet', 'ARC Turbine': 'e-turbine',
   Matriarch: 'e-matriarch', Shredder: 'e-shredder', Sentinel: 'e-sentinel', Turret: 'e-turret',
+  Skulker: 'e-skulker', 'ARC Reclaimer': 'e-reclaimer', Hydra: 'e-hydra', 'Frigate Cannon': 'e-frigate', Bully: 'e-bully',
 };
 export const enemyIcon = (name: string) => ENEMY_ICONS[name] ?? 'warning';
 // One fixed color per enemy type, the same on every map and condition (drones cool, ground units warm, bosses red).
@@ -248,6 +253,7 @@ const ENEMY_COLOR: Record<string, string> = {
   Spotter: '#78bdb5', Sentinel: '#5bb594', Turret: '#a3a3a3', Tick: '#b5cf5a', Pop: '#d6a3cb', Fireball: '#cf8a52',
   Comet: '#e3ded2', Leaper: '#8fbf6a', 'ARC Surveyor': '#9fc4d6', Bombardier: '#c2944a', Bastion: '#c27cb3', Shredder: '#d9798f',
   'ARC Turbine': '#9a8cd9', Queen: '#e0604f', Matriarch: '#c9714f',
+  Skulker: '#a98bc9', 'ARC Reclaimer': '#6aa6c7', Hydra: '#d0605a', 'Frigate Cannon': '#b3564a', Bully: '#c98ba8',
 };
 const FALLBACK_COLORS = ['#e0604f', '#d9a03e', '#5aaec4', '#8fbf6a', '#c27cb3', '#d9cc5c', '#8e97d4', '#5bb594', '#cf8a52', '#b394d1'];
 /** Color of an enemy type by name (unknown names get a stable color from their name). */

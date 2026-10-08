@@ -19,6 +19,7 @@ const MAP_ORDER = [
     "the-spaceport",
     "blue-gate",
     "riven-tides",
+    "pendola-pass",
     "stella-montis",
 ];
 
@@ -46,6 +47,7 @@ const KNOWN_MAP_ID_BY_DISPLAY_NAME: Record<string, string> = {
     "Stella Montis": "stella-montis",
     "The Blue Gate": "blue-gate",
     "Riven Tides": "riven-tides",
+    "Pendola Pass": "pendola-pass",
 };
 
 type EventCategory = "major" | "minor";

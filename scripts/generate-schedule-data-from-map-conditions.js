@@ -17,6 +17,7 @@ const MAP_ORDER = [
   'the-spaceport',
   'blue-gate',
   'riven-tides',
+  'pendola-pass',
   'stella-montis',
 ];
 const MERGE_HISTORY_WINDOW_SECONDS = 30 * 24 * 60 * 60;
@@ -47,6 +48,7 @@ const KNOWN_MAP_ID_BY_DISPLAY_NAME = {
   'Stella Montis': 'stella-montis',
   'The Blue Gate': 'blue-gate',
   'Riven Tides': 'riven-tides',
+  'Pendola Pass': 'pendola-pass',
 };
 
 function readJson(filePath) {

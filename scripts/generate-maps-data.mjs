@@ -216,6 +216,7 @@ const icons = {
   region: `${ICONS}T_UI_Icon_Map_Region.png`,
   'locked-gate': `${ICONS}Map_Conditions/T_UI_Icon_LockedGate.png`,
   frost: `${ICONS}Map_Conditions/T_Icon_MapCondition_Frost.png`,
+  'metal-detector': `${ICONS}T_UI_Ping_MetalDetector.png`,
   audio: `${PING}T_UI_Ping_HeardAudio.png`,
   attack: `${PING}T_UI_Ping_Attack.png`,
   warning: `${PING}T_UI_Ping_Warning.png`,
@@ -243,6 +244,11 @@ const icons = {
   'e-vaporizer': `${ENEMY2}T_UI_Ping_Enemy_Rocketeer_Laser.png`,
   'e-sentinel': `${ENEMY2}T_UI_Ping_Enemy_Sniper.png`,
   'e-shredder': `${ICONS}T_UI_Ping_Enemy_Shredder.png`,
+  'e-skulker': `${ENEMY2}T_UI_Ping_Enemy_Meerkat.png`,
+  'e-reclaimer': `${ENEMY2}T_UI_Ping_Enemy_Courier.png`,
+  'e-hydra': `${ENEMY2}T_UI_Ping_Enemy_Kebab.png`,
+  'e-frigate': `${ENEMY2}T_UI_Ping_Enemy_Frigate.png`,
+  'e-bully': `${ENEMY2}T_UI_Ping_Enemy_Tarragon.png`,
 };
 // Icons missing in the game export (not mounted, not exported) keep their previous output, like the tile fallback.
 const missing = [], kept = [];
