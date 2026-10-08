@@ -7,7 +7,7 @@
 
 import type { AppLocale } from '../../../shared/i18n/config';
 import { loadItemCatalog, type CatalogItem } from '../../../shared/gamedata/catalog';
-import { loadDomain, nameOf } from '../../../shared/gamedata/loader';
+import { loadDomain, loadStructure, nameOf } from '../../../shared/gamedata/loader';
 import type {
   ObjectiveNode,
   Project,
@@ -279,7 +279,6 @@ function allActions(node: ObjectiveNode, out: NonNullable<ObjectiveNode['action'
   return out;
 }
 
-const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
 /**
  * Load quest data from the quests domain.
@@ -289,7 +288,7 @@ const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 export async function loadQuestData(
   locale: AppLocale,
 ): Promise<{ definitions: QuestDefinition[]; fullQuests: Quest[] }> {
-  const [quests, catalog] = await Promise.all([loadDomain('quests', locale), loadItemCatalog(locale)]);
+  const [quests, catalog, trades] = await Promise.all([loadDomain('quests', locale), loadItemCatalog(locale), loadStructure('trades')]);
 
   const entry = (itemId: string, quantity: number): QuestItemEntry => {
     const item = catalog.items[itemId];
@@ -341,7 +340,7 @@ export async function loadQuestData(
       id: q.id,
       name,
       originalNameEn: q.nameEn,
-      trader: q.traderId ? capitalize(q.traderId) : 'Unknown',
+      trader: q.traderId ? (trades.traders[q.traderId]?.nameEn ?? q.traderId) : 'Unknown',
       map: q.mapIds ?? [],
       previousQuestIds,
       nextQuestIds,
