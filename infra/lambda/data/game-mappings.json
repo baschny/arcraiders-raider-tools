@@ -1,0 +1,6265 @@
+{
+  "schemaVersion": 2,
+  "gameVersion": "2.0",
+  "generatedFrom": "b1b02c0",
+  "items": {
+    "7507512": "music_album",
+    "10866537": "arc_synthetic_resin",
+    "19040794": "emperor_beacon",
+    "19342400": "polished_diner_chair",
+    "20541809": "chambers_lamp",
+    "27010880": "burnt_out_candles",
+    "30472313": "osprey_iii",
+    "31661159": "sirena_dorata_ship_model_salvage_trinket_boatmodel_e",
+    "36123868": "dam_control_tower_key",
+    "41179326": "battered_lab_cabinet_wide",
+    "42589958": "flow_controller",
+    "50992628": "combat_mk1",
+    "60246639": "weather_station_chair_design",
+    "61134851": "lab_ceiling_light",
+    "61587001": "base_room",
+    "67839673": "stencil_slot_bobcat",
+    "75778531": "extended_medium_mag_iii_blueprint",
+    "85698488": "ruined_emperor_beacon",
+    "98698078": "riven_tides_hotel_keycard_no_107",
+    "106628713": "broken_taser",
+    "118780215": "bulwark_itemskin_outlander",
+    "123861488": "jupiter_amplified_bigger_mag_scoped_straight_bolt",
+    "130254116": "rope",
+    "134545014": "ion_sputter",
+    "134844346": "damaged_fireball_burner",
+    "144683837": "chandelier",
+    "149941307": "bloated_tuna_can",
+    "166538264": "torn_book",
+    "168902929": "venator_iv",
+    "172268554": "sacrifice",
+    "184929121": "aphelion_amplified_bigger_mag_charged_burst",
+    "189050774": "stella_montis_medical_storage_key",
+    "191704511": "expired_pasta",
+    "200993014": "rattler_amplified_incendiary_rounds_more_reload",
+    "203993527": "heavy_shield",
+    "207988713": "polished_weapon_rack",
+    "209734646": "kettle_i",
+    "211788372": "possibly_toxic_plant",
+    "216155276": "faculty_dresser",
+    "226834931": "il_toro_iii",
+    "231864220": "potted_plant",
+    "246081482": "advanced_arc_powercell",
+    "266335884": "lure_grenade_blueprint",
+    "269867465": "il_toro_ii",
+    "275205902": "tether_gun_blueprint",
+    "276503907": "burletta_iii",
+    "278799395": "combat_mk3_aggressive_blueprint",
+    "285336333": "camera_lens",
+    "287464378": "rusted_gear",
+    "287758734": "battered_den_shelf_design",
+    "303320919": "processor",
+    "303567898": "looting_mk3_survivor",
+    "305351814": "lure_grenade_trap",
+    "307322161": "scout_patrol_note",
+    "310795600": "diner_ceiling_lamp",
+    "313013500": "medium_ammo",
+    "313149189": "power_rod",
+    "313683762": "wind_sprite_ship_model_salvage_trinket_boatmodel_a",
+    "313938846": "bicycle_pump",
+    "315544479": "husk_lily",
+    "322214579": "study_ceiling_lamp_design",
+    "323524490": "stencil_slot_bettina",
+    "327409590": "frozen_trail_tech_3",
+    "331271227": "il_toro_iv",
+    "331753631": "stencil_parts",
+    "332223513": "console_chest_design",
+    "334814973": "stack_of_movie_tapes",
+    "341892685": "burned_arc_circuitry",
+    "346923872": "angled_grip_i",
+    "350642212": "outpost_slot_ceiling_5_items",
+    "352204774": "osprey_iv",
+    "352582521": "first_wave_rations",
+    "353263469": "x_rounds_research",
+    "358214703": "merits_currency_liveevent03",
+    "371744513": "equalizer_amplified_bigger_mag_ramping_damage",
+    "373384136": "plastic_trash",
+    "373551009": "silver_teaspoon_set",
+    "380840341": "grapple_hook_blueprint",
+    "382202455": "osprey_amplified_straight_bolt",
+    "387322523": "il_toro_amplified_slug_rounds",
+    "392764783": "bettina_ii",
+    "393222286": "sturdy_bureau_sofa_design",
+    "394517119": "spaceport_warehouse_key",
+    "394882160": "aphelion_amplified_incendiary_rounds",
+    "400537418": "equatorial_sundial",
+    "409593267": "deadline",
+    "411757406": "raider_tool",
+    "412920729": "light_gun_parts_blueprint",
+    "413701142": "multicolored_geometric_sofa",
+    "415465622": "bombardier_cell",
+    "421801273": "arc_coolant",
+    "423997188": "rubber_pad",
+    "424739364": "polluted_air_filter",
+    "426624588": "geiger_counter",
+    "427544984": "geometric_fabric_chair_design",
+    "429230350": "study_piano_design",
+    "431449547": "assessor_matrix",
+    "433079423": "looting_mk3_cautious",
+    "436475618": "rattler_amplified_drum_mag_incendiary_rounds_more_reload",
+    "438920241": "glitched_arc_light_ring",
+    "441667500": "holly_bush",
+    "443470960": "remote_control",
+    "447242639": "dart_board",
+    "455445602": "sturdy_den_bed_design",
+    "457875543": "glass_ceiling_lamp",
+    "458133629": "gas_mine",
+    "459407886": "extended_light_mag_iii_blueprint",
+    "464233263": "mod_components",
+    "464538122": "il_toro_blueprint",
+    "467622101": "printed_fabric_chair",
+    "473499460": "industrial_charger",
+    "481338536": "archive_floor_lamp",
+    "483596378": "stencil_slot_arpeggio",
+    "483899737": "arpeggio_blueprint",
+    "490501208": "merits_currency_liveevent06",
+    "498674386": "ornate_stash",
+    "503000984": "bantam_blueprint",
+    "504267914": "weather_station_table_design",
+    "505647652": "burletta_amplified_burst_fire_increased_burst_sprint_shooting",
+    "517463307": "degraded_arc_rubber",
+    "524538760": "cracked_bioscanner",
+    "525937097": "outpost_slot_unknown_5_items",
+    "526200910": "battered_faculty_table_design",
+    "529109749": "ornate_den_shelf_design",
+    "534667454": "sturdy_den_shelf",
+    "537092188": "tagging_grenade",
+    "540945881": "battered_bureau_chair_design",
+    "542524924": "padded_stock_blueprint",
+    "543011561": "battered_aviary_table_design",
+    "545423693": "bully_fragmenter",
+    "546579311": "glitched_arc_circuitry",
+    "549375413": "rattler_i",
+    "561161842": "fruit_mix",
+    "562831704": "launcher_ammo",
+    "571949089": "food_wrapper",
+    "573822120": "rounds_extracted",
+    "577329604": "aphelion_amplified_bigger_mag_incendiary_rounds",
+    "577885066": "first_wave_tape",
+    "583877119": "bandage",
+    "586879420": "stencil_slot_aphelion",
+    "592639485": "extended_shotgun_mag_ii",
+    "593277545": "rusted_shut_medical_kit",
+    "599997416": "lemon",
+    "600159119": "marano_market_business_card",
+    "605473838": "burletta_amplified_sprint_shooting",
+    "615382317": "aphelion_amplified_charged_burst_increased_burst",
+    "623809795": "il_toro_amplified_more_reload_slug_rounds",
+    "628543086": "industrial_magnet",
+    "634094223": "pendola_pass_observatory_key",
+    "634832190": "chambers_nightstand",
+    "637354931": "bobcat_i",
+    "638038388": "fortuna_recipe_itemskin_stationmaster",
+    "646572303": "heavy_gun_parts_blueprint",
+    "650412891": "kettle_amplified_full_auto",
+    "651527351": "outpost_slot_floor_83_items",
+    "655391702": "twilight_compass_ship_model_salvage_trinket_boatmodel_b",
+    "658979353": "barstool_design",
+    "660474078": "anti_weak_point_research",
+    "664292705": "canto_amplified_incendiary_rounds",
+    "665256998": "sturdy_wardrobe",
+    "668021707": "kinetic_converter",
+    "697558734": "blaze_grenade",
+    "697800354": "spectrometer",
+    "701162118": "turbo_pump",
+    "708062176": "arc_insulated_coupler",
+    "708897469": "bobcat_iii",
+    "708929135": "renegade_amplified_more_reload",
+    "713324351": "frozen_trail_mechanical_4",
+    "717605649": "magnetic_accelerator",
+    "721769094": "prickly_pear",
+    "723923889": "rascal_blueprint",
+    "728190402": "thermostat",
+    "731997966": "signal_amplifier",
+    "732670678": "holly_bush_design",
+    "733706452": "rascal_amplified_incendiary_grenades_sprint_shooting",
+    "735654483": "expired_security_code",
+    "736160231": "rattler_amplified",
+    "737182316": "vulcano_iii",
+    "739516999": "yank_grenade",
+    "744641056": "canto_blueprint",
+    "747891994": "torrente_iv",
+    "748113121": "rascal_amplified_incendiary_grenades",
+    "748926448": "fried_motherboard",
+    "751359821": "green_lab_sofa_design",
+    "753263571": "snap_blast_grenade",
+    "755284931": "stencil_slot_canto",
+    "756732693": "canto_ii",
+    "757288947": "battered_lab_chair_design",
+    "758430792": "sturdy_weapon_rack",
+    "759834985": "warehouse_dresser_design",
+    "762060615": "bettina_blueprint",
+    "762762439": "binoculars",
+    "763561997": "verdigris_itemskin_commonblue",
+    "764539470": "red_study_sofa_design",
+    "765400921": "renegade_amplified_scoped",
+    "767696737": "panoramic_room",
+    "772095082": "shotgun_parts",
+    "775298648": "stable_stock_i",
+    "784941499": "emperor_gateway_conduit_blueprint",
+    "787027311": "heavy_fuze_grenade",
+    "793992947": "zipline",
+    "794012045": "dusty_camo",
+    "797011751": "incendiary_grenades_research",
+    "803195009": "wind_sprite_ship_model",
+    "805925311": "clinic_medical_cabinet",
+    "824459810": "dragons_breath_recipe_itemskin_renzo",
+    "824934098": "riven_tides_classified_records_keycard",
+    "827960562": "ruined_baton",
+    "828947161": "plastic_parts",
+    "849260833": "diner_table",
+    "849284640": "humidifier",
+    "849314605": "polished_den_shelf_design",
+    "865158241": "magnetron",
+    "866643291": "gas_grenade",
+    "866985065": "rusted_bolts",
+    "868114690": "study_piano",
+    "877778759": "light_impact_grenade",
+    "878298795": "fireworks_box_blueprint",
+    "879765414": "pendola_pass_old_town_key",
+    "886788187": "gas_mine_blueprint",
+    "893137827": "dusty_film_reel",
+    "897279399": "rotary_encoder",
+    "901535629": "yellow_light_stick_blueprint",
+    "915052893": "projector",
+    "919315234": "breathtaking_snow_globe",
+    "920673300": "looting_mk3_safekeeper_blueprint",
+    "922097959": "extended_shotgun_mag_iii",
+    "922990939": "archive_desk_lamp",
+    "923438116": "adrenaline_shot",
+    "924213697": "security_chair",
+    "928384146": "stencil_slot_anvil",
+    "932357606": "battered_lab_cabinet_design",
+    "934978758": "milky_terraccota_recipe_itemskin_duststrokecamo",
+    "937482096": "damaged_rocketeer_driver",
+    "939927216": "outpost_slot_floor_13_items",
+    "941631263": "raider_tokens",
+    "944123268": "sturdy_aviary_table",
+    "947411243": "looting_mk3_safekeeper",
+    "951222740": "empyrean_recipe_itemskin_banshee",
+    "951468812": "sterilized_bandage",
+    "955405569": "stiletto_iv",
+    "966773769": "tactical_mk1",
+    "983493340": "console_chest",
+    "984123027": "smoke_grenade",
+    "986133328": "deflated_football",
+    "988724345": "major_aivas_mementos",
+    "989020743": "pilgrims_peak_security_code",
+    "991302970": "alpine_wardrobe",
+    "1004246812": "explosive_compound",
+    "1004483718": "hornet_driver",
+    "1004484926": "sturdy_bureau_sofa",
+    "1005967689": "aphelion_amplified_bigger_mag_charged_burst_increased_burst",
+    "1009016353": "solid_green_chair_design",
+    "1011082201": "empty_slot_for_a_shotgun_magazine_mod",
+    "1013182792": "horizontal_grip",
+    "1015139423": "turbine_compressor",
+    "1018894577": "frozen_trail_mechanical_1",
+    "1039185396": "battery",
+    "1041760181": "pop_trigger",
+    "1049453236": "riven_tides_hotel_keycard_no_205",
+    "1051518749": "assorted_seeds",
+    "1051968888": "unarmed",
+    "1055806817": "emperor_gateway_conduit",
+    "1071717430": "burst_fire_research",
+    "1076186770": "stencil_slot_ferro",
+    "1079420612": "dusty_camo_recipe_itemskin_organicisland",
+    "1082962588": "surge_coil_blueprint",
+    "1084445573": "venetian_dresser",
+    "1086410133": "planks",
+    "1089253156": "rascal_amplified_high_velocity_incendiary_grenades_sprint_shooting",
+    "1101815928": "tactical_mk3_defensive",
+    "1102110705": "complex_gun_parts_blueprint",
+    "1107192907": "arc_circuitry",
+    "1117029558": "remote_raider_flare",
+    "1117674957": "smoke_grenade_trap",
+    "1120274981": "anti_shield_research",
+    "1123609629": "vulcano_i",
+    "1125489375": "diving_goggles",
+    "1126068155": "venetian_dresser_design",
+    "1133659467": "sacrifice_itemskin_bells",
+    "1143818817": "ferro_iii",
+    "1144930413": "rascal_iii",
+    "1145275220": "espresso_machine_parts",
+    "1146379657": "moss",
+    "1148851826": "damaged_snitch_scanner",
+    "1150155793": "sturdy_faculty_chair",
+    "1150280080": "alien_duck",
+    "1151468237": "pendola_pass_train_station_key",
+    "1151565517": "leaper_pulse_unit",
+    "1158822220": "merits_currency_liveeventcurrency",
+    "1176597168": "battered_den_bed_design",
+    "1177675775": "straight_bolt_research",
+    "1199315081": "increased_burst_research",
+    "1200348024": "buried_city_hospital_key",
+    "1206014721": "research_points",
+    "1207683912": "sturdy_shelf_design",
+    "1210921538": "reward_pass_points_currency_milestonepoints",
+    "1215657786": "amplification_material_burletta_il_toro",
+    "1219069540": "apricot",
+    "1224404530": "duct_tape",
+    "1228913912": "explosive_mine",
+    "1228968705": "empty_slot_for_a_tech_mod",
+    "1237209984": "medium_shield",
+    "1241477026": "outpost_slot_floor_19_items",
+    "1246914991": "recorder",
+    "1249031667": "dolabra",
+    "1251242227": "integrated_binoculars",
+    "1252047436": "amplified_upgrade_part_c",
+    "1261688505": "shaker",
+    "1266019904": "bastion_cell",
+    "1266735983": "explosive_mine_blueprint",
+    "1268725318": "draped_debris_g_design",
+    "1276485143": "kettle_amplified_x_rounds",
+    "1278703202": "basic_camera",
+    "1282834879": "venator_blueprint",
+    "1287783108": "stable_stock_ii",
+    "1288046830": "il_toro_amplified",
+    "1288425767": "stable_stock_ii_blueprint",
+    "1289134227": "integrated_defibrillator",
+    "1295783213": "merits_currency_liveevent05",
+    "1298944170": "bettina_amplified_semi_auto",
+    "1299206296": "blaze_grenade_blueprint",
+    "1305834322": "portable_tv",
+    "1316261334": "torrente_i",
+    "1320478108": "hullcracker_amplified_incendiary_grenades",
+    "1321775249": "polished_faculty_chair_design",
+    "1324388575": "jupiter_amplified_scoped_straight_bolt",
+    "1327395612": "chambers_shelf",
+    "1329608921": "solid_green_chair",
+    "1332241414": "antiseptic",
+    "1340631445": "aphelion_amplified",
+    "1341452512": "merits_currency_subwaypromob",
+    "1343472835": "hullcracker_iv",
+    "1348244387": "vaporizer_regulator",
+    "1349673826": "kettle_iv",
+    "1351205294": "riven_tides_hotel_keycard_no_404",
+    "1352103757": "rocketeer_driver",
+    "1358208668": "amplified_fragments",
+    "1360195619": "charged_burst_research",
+    "1363078343": "muzzle_brake_ii",
+    "1364313874": "laboratory_reagents",
+    "1369039748": "frozen_trail_material_3",
+    "1369416424": "free_loadout_augment",
+    "1370600620": "hairpin_iii",
+    "1370841463": "arc_alloy",
+    "1376381141": "aphelion_amplified_bigger_mag_charged_burst_incendiary_rounds_increased_burst",
+    "1378686431": "battered_lab_chair",
+    "1380531218": "trigger_nade_blueprint",
+    "1381640423": "riven_tides_crane_house_keycard",
+    "1383004532": "seeker_grenade_blueprint",
+    "1383707321": "diner_cupboard_design",
+    "1386009155": "polished_round_sofa",
+    "1393527984": "water_filter",
+    "1399905984": "stiletto_i",
+    "1400014392": "chandelier_design",
+    "1402108763": "silencer_i_blueprint",
+    "1405711333": "rascal_amplified_high_velocity_sprint_shooting",
+    "1407760402": "extended_barrel_iii",
+    "1407799927": "burletta_iv",
+    "1414923729": "leviathans_crown_ship_model",
+    "1415875854": "empty_slot_for_a_stock_mod",
+    "1426983925": "shotgun_choke_iii_blueprint",
+    "1427950994": "kettle_amplified_anti_shield",
+    "1430881421": "draped_debris_c_design",
+    "1433303640": "tempest_i",
+    "1443595066": "renegade_i",
+    "1449330526": "blue_light_stick_blueprint",
+    "1451196113": "polished_faculty_table",
+    "1451324326": "polished_stash",
+    "1457589142": "polished_study_sofa",
+    "1461131489": "amplification_material_anvil_canto_osprey_rascal_renegade",
+    "1472476772": "rascal_ii",
+    "1478008581": "battered_den_shelf",
+    "1482804312": "osprey_amplified_tracker_rounds",
+    "1488541747": "floor_lamp",
+    "1500502224": "chalet_room",
+    "1502122136": "power_cable",
+    "1503033239": "hairpin_amplified",
+    "1505999062": "light_shield",
+    "1506939307": "bettina_iv",
+    "1516184045": "stitcher_iv",
+    "1529467338": "velocity_ship_model",
+    "1533374440": "arc_thermo_lining",
+    "1543921826": "bettina_amplified",
+    "1544051420": "hullcracker_amplified",
+    "1545024611": "fossilized_lightning",
+    "1549911570": "stitcher_ii",
+    "1552741460": "renegade_amplified_more_reload_scoped",
+    "1552920566": "voltage_converter",
+    "1556487611": "stencil_slot_hullcracker",
+    "1558483939": "vertical_grip_ii_blueprint",
+    "1563998477": "stencil_slot_burletta",
+    "1573490930": "bureau_ceiling_lamp_design",
+    "1591496508": "floor_lamp_design",
+    "1594809987": "battered_diner_chair_design",
+    "1603607589": "equalizer_amplified_anti_weak_point",
+    "1604440024": "polished_den_bed",
+    "1605827260": "ornate_den_bed_design",
+    "1607597452": "light_bulb",
+    "1608603820": "complex_gun_parts",
+    "1613837394": "diner_cupboard",
+    "1616284588": "dam_controlled_access_zone_key",
+    "1619184001": "energy_clip",
+    "1622100049": "battered_paperback",
+    "1625205858": "crude_explosives",
+    "1629645384": "tempest_iv",
+    "1635523061": "study_tv_stand",
+    "1640126922": "osprey_ii",
+    "1642478286": "ochre",
+    "1648154470": "agave_juice",
+    "1648351174": "stiletto_iii",
+    "1648661258": "battered_bureau_chair",
+    "1650182822": "renegade_iv",
+    "1655934613": "first_wave_compass",
+    "1657712312": "arpeggio_iv",
+    "1665323061": "equalizer_amplified",
+    "1670090314": "extended_medium_mag_iii",
+    "1671732587": "barricade_kit",
+    "1672558715": "xp",
+    "1677346789": "hairpin_amplified_semi_auto",
+    "1680345707": "ornate_wardrobe",
+    "1680690244": "looting_mk1",
+    "1681573463": "polished_stash_design",
+    "1682428740": "padded_stock",
+    "1685024765": "diner_sofa",
+    "1685415852": "ramping_damage_research",
+    "1690849950": "bettina_amplified_bigger_mag",
+    "1692859528": "battered_faculty_table",
+    "1694333592": "sturdy_bureau_chair",
+    "1694582967": "cooling_fan",
+    "1700565870": "doodly_duck",
+    "1704802225": "tellurion",
+    "1717341406": "study_armchair_design_outpostfurniturerecipe_res_sofa_01_y150_a",
+    "1721473694": "extended_barrel_ii_blueprint",
+    "1724523134": "sprint_shooting_research",
+    "1729534311": "impure_arc_coolant",
+    "1733948477": "restaurant_table_design",
+    "1734409822": "studious_room",
+    "1738639721": "rubber_duck",
+    "1741043838": "archive_floor_lamp_design",
+    "1741060583": "oil",
+    "1742317181": "household_cleaner",
+    "1742442408": "jupiter_amplified",
+    "1746435740": "barstool",
+    "1751488415": "desk_lamp",
+    "1753562592": "stencil_slot_osprey",
+    "1755646795": "dam_staff_room_key",
+    "1758552349": "polished_weapon_rack_design",
+    "1766749662": "rattler_ii",
+    "1768889427": "bobcat_ii",
+    "1775816331": "winter_table",
+    "1782410237": "playing_cards",
+    "1788730605": "aphelion_amplified_bigger_mag_charged_burst_incendiary_rounds",
+    "1790245539": "il_toro_amplified_more_reload",
+    "1793382961": "cat_bed",
+    "1794284710": "printed_fabric_chair_design",
+    "1795670982": "vita_spray",
+    "1817122194": "sturdy_aviary_table_design",
+    "1822998958": "study_armchair_outpostfurniture_res_sofa_01_y150_a",
+    "1826903696": "hairpin_amplified_incendiary_rounds",
+    "1827408349": "herbal_bandage",
+    "1830584054": "equalizer_amplified_anti_weak_point_bigger_mag",
+    "1831661159": "outpost_slot_floor_48_items",
+    "1841777015": "polished_den_shelf",
+    "1853323517": "skill_points",
+    "1858816158": "venator_i",
+    "1867928291": "twilight_compass_ship_model",
+    "1876196827": "muzzle_brake_ii_blueprint",
+    "1877975004": "rascal_amplified",
+    "1878997366": "warehouse_desk_design",
+    "1902251599": "rosary",
+    "1910585576": "ochre_recipe_itemskin_commonyellow",
+    "1913523666": "kettle_amplified",
+    "1918606019": "warehouse_desk",
+    "1920326798": "hairpin_iv",
+    "1921518029": "silencer_ii",
+    "1923062356": "research_item_04",
+    "1923562737": "bureau_desk_lamp",
+    "1924565068": "red_study_sofa",
+    "1928875024": "cooling_coil",
+    "1931019514": "arcade_duck",
+    "1934437826": "extended_barrel_iii_blueprint",
+    "1935108407": "green_geometric_sofa_design",
+    "1939949915": "small_lab_cabinet_design",
+    "1946218435": "spaceport_trench_tower_key",
+    "1946410718": "stencil_slot_venator",
+    "1951118983": "anvil_i",
+    "1956363264": "experimental_seed_sample",
+    "1958396827": "snowball",
+    "1959573223": "mechanical_components",
+    "1962618186": "resin",
+    "1963805812": "sturdy_lab_chair_design",
+    "1965364423": "yank_grenade_blueprint",
+    "1967335777": "red_light_stick",
+    "1978622898": "diner_stool",
+    "1979925731": "cred",
+    "1979977597": "bettina_amplified_semi_auto_x_rounds",
+    "1983365204": "stencil_slot_stitcher",
+    "1984849488": "rattler_iv",
+    "1989094565": "firefly_burner",
+    "1990928664": "blue_lab_cabinet_design",
+    "1991556890": "sturdy_lab_chair",
+    "1992585880": "hairpin_ii",
+    "2001531087": "stencil_slot_stiletto",
+    "2011274164": "radio",
+    "2014440646": "warehouse_chair_design",
+    "2018078062": "riven_tides_hotel_keycard_no_208",
+    "2022140331": "damaged_heat_sink",
+    "2022667991": "draped_debris_e",
+    "2023489275": "burletta_blueprint",
+    "2023639655": "serac_recipe_itemskin_yeti",
+    "2024651392": "hairpin_amplified_tracker_rounds",
+    "2025599214": "bar_table",
+    "2026040918": "stiletto_ii",
+    "2028871781": "noisemaker",
+    "2038694529": "celeste_journal",
+    "2041238290": "vita_shot",
+    "2043518144": "green_geometric_chair",
+    "2055948010": "unknown_arc_circuitry",
+    "2058762606": "photoelectric_cloak",
+    "2060851155": "equalizer_blueprint",
+    "2066859179": "painted_box",
+    "2073299339": "sturdy_faculty_table_design",
+    "2080959971": "burletta_amplified_full_auto",
+    "2082313613": "hullcracker_amplified_incendiary_grenades_mag_reload",
+    "2086312520": "skulker_targeter",
+    "2088452509": "sturdy_den_shelf_design",
+    "2088772304": "amplification_material_bettina_hullcracker",
+    "2096837185": "industrial_battery",
+    "2099640885": "canto_iv",
+    "2101826983": "amplified_upgrade_part_b",
+    "2120838292": "incendiary_rounds_research",
+    "2121538320": "shrapnel_grenade",
+    "2125834231": "torrente_iii",
+    "2129769166": "blue_gate_confiscation_room_key",
+    "2130940125": "red_coral_jewelry",
+    "2132104320": "snap_hook_blueprint",
+    "2133595346": "blue_gate_communication_tower_key",
+    "2141216040": "ruined_handcuffs",
+    "-2134681974": "ancient_fort_security_code",
+    "-2130292638": "anvil_splitter",
+    "-2124548786": "tattered_arc_lining",
+    "-2121770441": "lab_stool",
+    "-2118305709": "extended_shotgun_mag_iii_blueprint",
+    "-2113309921": "angled_grip_iii_blueprint",
+    "-2113221072": "dried_out_arc_resin",
+    "-2103368401": "stella_montis_security_checkpoint_key",
+    "-2095596285": "lightweight_stock",
+    "-2089523165": "coolant",
+    "-2087334800": "statuette",
+    "-2085450547": "crash_mat",
+    "-2082046880": "major_aivas_patch",
+    "-2074531633": "pulse_mine_blueprint",
+    "-2067768957": "silencer_ii_blueprint",
+    "-2064796183": "sirena_dorata_ship_model",
+    "-2055223675": "burletta_amplified_burst_fire",
+    "-2054621793": "burletta_ii",
+    "-2051562803": "printed_lab_sofa_design",
+    "-2048050889": "rubber_parts",
+    "-2047792735": "stella_montis_assembly_admin_key",
+    "-2042598006": "sturdy_faculty_chair_design",
+    "-2035840261": "showstopper",
+    "-2032729793": "diner_ceiling_lamp_design",
+    "-2019875683": "raider_flag",
+    "-2015224878": "merits",
+    "-2014230306": "mushroom",
+    "-2007835076": "stitcher_iii",
+    "-2006529502": "amplified_upgrade_part_a",
+    "-1997972866": "faculty_closet",
+    "-1997648523": "sample_cleaner",
+    "-1996442482": "blaze_grenade_trap",
+    "-1994200966": "damaged_arc_powercell",
+    "-1989368385": "jupiter_amplified_bigger_mag",
+    "-1983989674": "official_shutdown_documentation",
+    "-1983820470": "amplification_material_hairpin_kettle_rattler",
+    "-1974459892": "anvil_ii",
+    "-1970406783": "osprey_amplified_anti_weak_point_straight_bolt",
+    "-1966576692": "sturdy_den_bed",
+    "-1964961535": "multicolored_geometric_sofa_design",
+    "-1963108876": "snap_hook",
+    "-1950087911": "polished_wardrobe_design",
+    "-1947855047": "frigate_material_1",
+    "-1941576392": "renegade_amplified",
+    "-1940041036": "burletta_amplified_burst_fire_sprint_shooting",
+    "-1936762493": "sturdy_lab_cabinet_wide",
+    "-1936062178": "moisture_meter",
+    "-1934265965": "red_light_stick_blueprint",
+    "-1927851982": "outpost_slot_wall_10_items",
+    "-1923186072": "empty_slot_for_an_underbarrel_mod",
+    "-1921925959": "burletta_i",
+    "-1920319269": "buried_city_jkv_employee_access_card",
+    "-1916425237": "hidden_bunker_key",
+    "-1915974299": "broken_handheld_radio",
+    "-1915685401": "extended_light_mag_iii",
+    "-1913549078": "draped_debris_f",
+    "-1913188016": "weather_station_table",
+    "-1903407680": "heavy_gun_parts",
+    "-1889342238": "geometric_fabric_chair",
+    "-1888542545": "compensator_i",
+    "-1884805671": "bettina_iii",
+    "-1878378455": "garnet",
+    "-1875547390": "light_ammo",
+    "-1873522360": "shotgun_ammo",
+    "-1872918924": "steel_cable",
+    "-1870158637": "diner_sofa_design",
+    "-1869396984": "rounds_played",
+    "-1868876009": "hullcracker_i",
+    "-1858367047": "hullcracker_ii",
+    "-1849975777": "blue_lab_cabinet",
+    "-1845464234": "stella_montis_archives_key",
+    "-1841323035": "nutrient_meter",
+    "-1833440778": "esr_analyzer",
+    "-1812397153": "blown_fuses",
+    "-1804268766": "tactical_mk3_revival_blueprint",
+    "-1791271375": "winter_table_design",
+    "-1789285630": "toaster",
+    "-1783980284": "compensator_ii_blueprint",
+    "-1783409882": "equalizer_amplified_bigger_mag",
+    "-1776135328": "tether_gun",
+    "-1764906318": "buried_city_residential_master_key",
+    "-1739142570": "reward_pass_points",
+    "-1734532604": "mri_duck",
+    "-1729529998": "frozen_trail_tech_1",
+    "-1726424272": "dog_collar",
+    "-1721999567": "slug_rounds_research",
+    "-1720108062": "battered_lab_cabinet_wide_design",
+    "-1714941150": "draped_debris_f_design",
+    "-1712774896": "wasp_driver",
+    "-1708115302": "white_flag",
+    "-1706988078": "battered_bureau_sofa",
+    "-1704970052": "sturdy_stash_design",
+    "-1697595116": "muzzle_brake_iii_blueprint",
+    "-1696771493": "hotel_chair",
+    "-1695051538": "stencil_slot_torrente",
+    "-1688501435": "defibrillator",
+    "-1682300422": "shotgun_choke_ii",
+    "-1681764101": "glitched_arc_phased_array",
+    "-1681246336": "angled_grip_ii",
+    "-1679535671": "ornate_den_bed",
+    "-1675953758": "draped_debris_g",
+    "-1672729571": "weather_station_chair",
+    "-1670118133": "ruined_riot_shield",
+    "-1666910412": "extended_light_mag_ii",
+    "-1663649157": "warehouse_dresser",
+    "-1662947648": "cloud_of_renewal",
+    "-1657587966": "battered_stash",
+    "-1647256886": "slipstream",
+    "-1644779904": "alpine_wardrobe_design",
+    "-1642636068": "cafeteria_table",
+    "-1637094497": "water_pump",
+    "-1631078332": "bobcat_iv",
+    "-1627612951": "amplification_material_aphelion_equalizer_jupiter",
+    "-1626453129": "stencil_slot_rattler",
+    "-1622446317": "speaker_component",
+    "-1618907492": "glitched_arc_transmitter",
+    "-1617680963": "tortoise",
+    "-1616698820": "fireworks_box",
+    "-1607668389": "canto_amplified",
+    "-1605165530": "tactical_mk3_defensive_blueprint",
+    "-1599427903": "milky_terraccota",
+    "-1599426473": "candle_holder",
+    "-1592298341": "mini_centrifuge",
+    "-1587726944": "broken_guidance_system",
+    "-1580377729": "stencil_slot_il_toro",
+    "-1580114534": "fabric",
+    "-1575948275": "ripped_safety_vest",
+    "-1570319542": "shotgun_choke_i",
+    "-1565478080": "chemicals",
+    "-1561038837": "tactical_mk3_healing",
+    "-1560296593": "work_light",
+    "-1557112845": "vita_spray_blueprint",
+    "-1554462158": "kettle_amplified_anti_shield_full_auto",
+    "-1547707894": "research_item_03",
+    "-1526934024": "colorful_shoes_red",
+    "-1520827186": "renegade_iii",
+    "-1517601046": "steel_spring",
+    "-1511047275": "medium_gun_parts_blueprint",
+    "-1509481691": "research_item_05",
+    "-1506763647": "empty_wine_bottle",
+    "-1504635614": "purification_system_blueprint",
+    "-1503671306": "rocket_thruster",
+    "-1503501168": "canto_amplified_carbine_conversion_incendiary_rounds",
+    "-1494495857": "jupiter_amplified_bigger_mag_scoped",
+    "-1489261627": "combat_mk2",
+    "-1488022955": "empyrean",
+    "-1483497543": "aphelion",
+    "-1475885807": "old_world_books",
+    "-1472796710": "frozen_trail_material_2",
+    "-1452719935": "security_chair_design",
+    "-1447314005": "arc_powercell",
+    "-1446627584": "rascal_iv",
+    "-1442608039": "film_reel",
+    "-1441495265": "equalizer",
+    "-1437131902": "metal_parts",
+    "-1435588212": "osprey_i",
+    "-1430705425": "reward_pass_points_currency_baserewardpasspoints",
+    "-1426003438": "fireball_burner",
+    "-1423582397": "frying_pan",
+    "-1420208036": "canto_amplified_incendiary_rounds_sprint_shooting",
+    "-1418602101": "tagging_grenade_blueprint",
+    "-1415839150": "empty_slot_for_a_shotgun_muzzle_mod",
+    "-1413417818": "vintage_steering_wheel",
+    "-1411069838": "blue_light_stick",
+    "-1407886517": "sprint_shooting_research_material",
+    "-1407135982": "shredder_gyro",
+    "-1404148784": "vertical_grip_i",
+    "-1403641624": "damaged_tick_pod",
+    "-1402996741": "cerulean",
+    "-1402742438": "heavy_ammo",
+    "-1399585910": "ornate_den_shelf",
+    "-1396353093": "crash_mat_blueprint",
+    "-1396333213": "scoped_research",
+    "-1395484519": "headphones",
+    "-1393457868": "lances_mixtape_5th_edition",
+    "-1391465999": "jupiter_amplified_bigger_mag_straight_bolt",
+    "-1390698012": "draped_debris_e_design",
+    "-1390078682": "hullcracker_iii",
+    "-1385889770": "light_gun_parts",
+    "-1382689142": "bureau_ceiling_lamp",
+    "-1379349900": "green_geometric_chair_design",
+    "-1376425844": "familiar_duck",
+    "-1374119783": "kettle_iii",
+    "-1371890901": "battered_weapon_rack_design",
+    "-1366436198": "osprey_amplified",
+    "-1362534625": "sextant",
+    "-1356433806": "sturdy_faculty_table",
+    "-1351919028": "faculty_closet_design",
+    "-1347969810": "ferro_ii",
+    "-1337209565": "empty_slot_for_a_light_magazine_mod",
+    "-1333721780": "surveyor_vault",
+    "-1333261430": "dodgers_note",
+    "-1332317712": "battered_stash_design",
+    "-1331806078": "dam_testing_annex_key",
+    "-1331678428": "canto_amplified_sprint_shooting",
+    "-1328695953": "tactical_mk3_revival",
+    "-1322084093": "broken_flashlight",
+    "-1318412075": "green_light_stick",
+    "-1313541807": "outpost_slot_unknown_114_items",
+    "-1311488653": "unusable_weapon",
+    "-1307194301": "tufted_sofa",
+    "-1305521720": "outpost_slot_floor_75_items",
+    "-1300343709": "ferro_i",
+    "-1298184560": "torn_blanket",
+    "-1296677344": "study_armchair",
+    "-1295139142": "shotgun_choke_iii",
+    "-1286522686": "battered_shelf_design",
+    "-1286103237": "very_comfortable_pillow",
+    "-1275287419": "buried_city_town_hall_key",
+    "-1271743807": "door_blocker_blueprint",
+    "-1268138127": "lil_smoke_grenade",
+    "-1266917745": "outpost_slot_floor_4_items",
+    "-1260920556": "bobcat_blueprint",
+    "-1259129540": "tempest_ii",
+    "-1249556696": "faculty_dresser_design",
+    "-1248799183": "chambers_nightstand_design",
+    "-1243897466": "number_plate",
+    "-1240487285": "tactical_mk2",
+    "-1236612582": "bettina_i",
+    "-1234113868": "defibrillator_blueprint",
+    "-1233893659": "jupiter_blueprint",
+    "-1226112249": "riven_tides_hotel_keycard_no_102",
+    "-1222702989": "banjo",
+    "-1206702059": "garnet_recipe_itemskin_commonred",
+    "-1203253669": "elephant_obelisk",
+    "-1202416011": "extended_medium_mag_ii_blueprint",
+    "-1194664805": "chambers_shelf_design",
+    "-1191443357": "pendola_pass_railyard_key",
+    "-1184915542": "damaged_leaper_pulse_unit",
+    "-1181910131": "verdigris",
+    "-1177848683": "clinic_medical_cabinet_design",
+    "-1177716644": "exodus_modules",
+    "-1174500500": "arpeggio_i",
+    "-1171747672": "ornate_wardrobe_design",
+    "-1170955422": "ruined_parachute",
+    "-1167788899": "riven_tides_secure_storage_keycard",
+    "-1167553430": "diner_shelf",
+    "-1164379577": "serac",
+    "-1156830089": "looting_mk2",
+    "-1153261528": "advanced_camera",
+    "-1131982378": "angled_grip_iii",
+    "-1127816138": "osprey_amplified_straight_bolt_tracker_rounds",
+    "-1124468078": "polished_faculty_table_design",
+    "-1123417641": "il_toro_i",
+    "-1119818372": "hairpin_i",
+    "-1119384332": "aphelion_amplified_charged_burst",
+    "-1116709774": "sentinel_firing_core",
+    "-1113070540": "muzzle_brake_iii",
+    "-1099421936": "outpost_slot_unknown_27_items",
+    "-1097499674": "volcanic_rock",
+    "-1091154214": "leviathans_crown_ship_model_salvage_trinket_boatmodel_c",
+    "-1090682625": "tactical_mk3_smoke_blueprint",
+    "-1089964398": "velocity_ship_model_salvage_trinket_boatmodel_d",
+    "-1088151347": "colorful_shoes_silver",
+    "-1084994886": "damaged_arc_motion_core",
+    "-1082992123": "precision_gimbal",
+    "-1077562019": "rattler_amplified_incendiary_rounds",
+    "-1074924798": "vertical_grip_iii",
+    "-1074160440": "wolfpack",
+    "-1072384644": "compensator_ii",
+    "-1071320066": "drum_mag_research",
+    "-1068447725": "combat_mk3_flanking",
+    "-1068126131": "arc_performance_steel",
+    "-1067724027": "outpost_slot_unknown_2_items",
+    "-1066783360": "roots",
+    "-1065915967": "raiders_refuge_security_code",
+    "-1061946916": "smoke_grenade_blueprint",
+    "-1061683355": "collector_material_1",
+    "-1060316735": "bent_clothes_hanger",
+    "-1051786623": "ornate_stash_design",
+    "-1045427620": "diner_stool_design",
+    "-1040556465": "burletta_amplified",
+    "-1037599627": "lab_stool_design",
+    "-1035193710": "ruined_tactical_vest",
+    "-1034612605": "music_box",
+    "-1018214374": "bronze_statuette",
+    "-1015722571": "sturdy_lab_cabinet",
+    "-1010165368": "arpeggio_ii",
+    "-1007498315": "polished_study_sofa_design",
+    "-1004600142": "battered_den_bed",
+    "-1000171212": "polished_round_sofa_design",
+    "-999111494": "lab_ceiling_light_design",
+    "-994234794": "arc_flex_rubber",
+    "-990601137": "outpost_slot_floor_76_items",
+    "-982824351": "polished_wardrobe",
+    "-980968159": "rattler_iii",
+    "-980443450": "draped_debris_a",
+    "-979896315": "frosty_duck",
+    "-979794626": "dolabra_blueprint",
+    "-977121851": "extended_barrel_i",
+    "-976232170": "spaceport_container_storage_key",
+    "-969924004": "damaged_wasp_driver",
+    "-961903907": "shotgun_silencer_blueprint",
+    "-959674358": "metal_brackets",
+    "-952298863": "outpost_rooms_installed",
+    "-948786800": "jupiter_amplified_scoped",
+    "-946162568": "library_book",
+    "-944742704": "olives",
+    "-943023152": "snitch_scanner",
+    "-926389249": "advanced_mechanical_components",
+    "-923201933": "electrical_components",
+    "-922576224": "aphelion_amplified_bigger_mag",
+    "-922322200": "seeker_grenade",
+    "-921338830": "arc_plated_coupler",
+    "-908419085": "burletta_amplified_full_auto_sprint_shooting",
+    "-905418227": "tufted_sofa_design",
+    "-902952774": "raider_hatch_key",
+    "-900569094": "arc_motion_core",
+    "-898439395": "coins",
+    "-894995539": "fertilizer",
+    "-887700247": "pottery",
+    "-882500659": "white_flag_blueprint",
+    "-878539336": "stencil_slot_bantam",
+    "-876778121": "anvil_amplified",
+    "-876378926": "queen_reactor",
+    "-871523219": "gas_grenade_trap",
+    "-868064320": "arpeggio_iii",
+    "-867333101": "bantam_iv",
+    "-863904193": "magnet",
+    "-857337823": "extended_light_mag_ii_blueprint",
+    "-856566460": "hullcracker_amplified_mag_reload",
+    "-855264654": "faded_photograph",
+    "-853744599": "venator_ii",
+    "-853193179": "trigger_nade",
+    "-844558311": "outpost_slot_floor_36_items",
+    "-844032381": "blue_gate_village_key",
+    "-842559056": "cerulean_itemskin_muraltree",
+    "-836975388": "stencil_slot_renegade",
+    "-834343704": "merits_currency_subwaypromoa",
+    "-828855343": "showstopper_blueprint",
+    "-828363534": "battered_diner_chair",
+    "-828273506": "surge_coil",
+    "-823752633": "firecracker",
+    "-816199752": "radio_relay",
+    "-814658911": "extended_shotgun_mag_i",
+    "-799395426": "durable_cloth",
+    "-798506121": "bantam_iii",
+    "-794870135": "remote_raider_flare_blueprint",
+    "-770265029": "advanced_electrical_components",
+    "-769633243": "rattler_amplified_drum_mag_more_reload",
+    "-766577743": "riven_tides_hotel_keycard_no_113",
+    "-764908128": "canto_i",
+    "-752661468": "matriarch_reactor",
+    "-748938986": "stiletto_blueprint",
+    "-741882707": "rusted_tools",
+    "-735920468": "tactical_mk3_smoke",
+    "-735181706": "harmonica",
+    "-734190498": "motor",
+    "-730174445": "sheet_metal",
+    "-729404256": "integrated_shield_recharger",
+    "-729027837": "frequency_modulation_box",
+    "-728135783": "extended_medium_mag_ii",
+    "-726035866": "sturdy_lab_cabinet_wide_design",
+    "-709850700": "angled_grip_ii_blueprint",
+    "-701560967": "draped_debris_c",
+    "-700849739": "reinforced_reception_security_code",
+    "-699310837": "door_blocker",
+    "-696524280": "project_pathos_empathy_core",
+    "-692617228": "stable_stock_iii_blueprint",
+    "-692327830": "aphelion_blueprint",
+    "-691510602": "reward_pass_points_currency_legacyrewardpasspoints",
+    "-682293968": "small_lab_cabinet",
+    "-674121740": "project_heartwood_blueprints",
+    "-673170998": "tempest_blueprint",
+    "-672186450": "tempest_iii",
+    "-669388363": "outpost_slot_floor_67_items",
+    "-668588724": "canister",
+    "-660832239": "rubber_bands",
+    "-658614890": "tactical_mk3_healing_blueprint",
+    "-656772288": "vertical_grip_iii_blueprint",
+    "-655092666": "rascal_amplified_sprint_shooting",
+    "-652794821": "vase",
+    "-647887968": "syringe",
+    "-644916964": "work_light_design",
+    "-643480722": "tattered_clothes",
+    "-643273323": "jolt_mine",
+    "-641513441": "rascal_i",
+    "-637598838": "medium_gun_parts",
+    "-633851525": "wires",
+    "-632888435": "expired_respirator",
+    "-631032368": "great_mullein",
+    "-630279513": "vulcano_iv",
+    "-624801890": "kettle_ii",
+    "-621597590": "silencer_iii",
+    "-617782294": "aphelion_amplified_charged_burst_incendiary_rounds",
+    "-612170862": "jupiter_amplified_straight_bolt",
+    "-606557836": "flashy_duck",
+    "-605737193": "frozen_trail_mechanical_2",
+    "-600381599": "spotter_relay",
+    "-595215449": "renegade_ii",
+    "-595016198": "torrente_ii",
+    "-594367886": "printed_lab_sofa",
+    "-591000325": "semi_auto_research",
+    "-590183530": "grapple_hook",
+    "-580815802": "warehouse_chair",
+    "-574262619": "simple_gun_parts",
+    "-568820750": "stencil_slot_vulcano",
+    "-568686660": "sturdy_lab_cabinet_design",
+    "-566520716": "extended_medium_mag_i",
+    "-565150469": "aphelion_amplified_charged_burst_incendiary_rounds_increased_burst",
+    "-561477069": "poster_of_natural_wonders",
+    "-558241643": "wolfpack_blueprint",
+    "-553283088": "combat_mk3_flanking_blueprint",
+    "-546555615": "merits_currency_liveevent04",
+    "-543601975": "torrente_blueprint",
+    "-542705583": "sturdy_stash",
+    "-537864771": "study_ceiling_lamp",
+    "-537173438": "jupiter",
+    "-535817636": "lidar_scanner",
+    "-530397603": "rattler_blueprint",
+    "-518918363": "sturdy_wardrobe_design",
+    "-518509289": "compensator_iii",
+    "-505000565": "tick_pod",
+    "-504807066": "frozen_trail_tech_4",
+    "-503792599": "synthesized_fuel",
+    "-503731201": "fortuna",
+    "-500829351": "bulwark",
+    "-497440258": "upgraded_detector",
+    "-490530563": "equalizer_amplified_ramping_damage",
+    "-486869295": "draped_debris_b_design",
+    "-486727826": "lure_grenade",
+    "-486305029": "ruined_augment",
+    "-486136037": "colorful_shoes_green",
+    "-483653282": "fine_wristwatch",
+    "-468025815": "combat_mk3_aggressive",
+    "-466793302": "study_armchair_design",
+    "-462994574": "jolt_mine_blueprint",
+    "-459566791": "hullcracker_blueprint",
+    "-457443735": "bar_table_design",
+    "-455105948": "battered_bureau_sofa_design",
+    "-452108960": "battered_aviary_table",
+    "-450689218": "muzzle_brake_i",
+    "-434119966": "green_geometric_sofa",
+    "-428713325": "alarm_clock",
+    "-427130921": "spaceport_control_tower_key",
+    "-424524475": "gentle_duck",
+    "-423565474": "vita_shot_blueprint",
+    "-409081322": "silencer_i",
+    "-397545725": "anvil_amplified_anvil_splitter",
+    "-396572827": "bantam_i",
+    "-392493295": "dam_surveillance_key",
+    "-388702456": "train_model",
+    "-386705321": "deadline_blueprint",
+    "-384403080": "crumpled_plastic_bottle",
+    "-383338494": "banjo_blueprint",
+    "-380904160": "sturdy_bureau_chair_design",
+    "-380745354": "surge_shield_recharger",
+    "-377848428": "empty_slot_for_a_muzzle_mod",
+    "-376351167": "hotel_chair_design",
+    "-373735433": "battered_lab_cabinet",
+    "-373456351": "nomad_tech_item",
+    "-373455872": "candleberries",
+    "-370235435": "green_lab_sofa",
+    "-368335591": "restaurant_table",
+    "-365598365": "shotgun_choke_ii_blueprint",
+    "-353819882": "research_item_02",
+    "-353362533": "comet_igniter",
+    "-348089449": "anvil_blueprint",
+    "-348004054": "stencil_slot_tempest",
+    "-347916641": "polished_den_bed_design",
+    "-342323638": "draped_debris_a_design",
+    "-334400698": "outpost_slot_unknown_182_items",
+    "-331809182": "chambers_lamp_design",
+    "-330931193": "hairpin_amplified_semi_auto_sprint_shooting",
+    "-323832101": "rascal_amplified_high_velocity",
+    "-323339863": "stencil_slot_hairpin",
+    "-320978515": "damaged_hornet_driver",
+    "-320739876": "osprey_blueprint",
+    "-319966965": "shotgun_silencer",
+    "-318995282": "flushing_terminal_key",
+    "-317226830": "broken_compass",
+    "-315100731": "frozen_trail_tech_2",
+    "-306187180": "stencil_slot_kettle",
+    "-302696283": "stitcher_i",
+    "-300660362": "looting_mk3_survivor_blueprint",
+    "-299391245": "tropical_duck",
+    "-297618087": "dragons_breath",
+    "-295158634": "vertical_grip_ii",
+    "-287542830": "powered_descender",
+    "-285476202": "canto_amplified_carbine_conversion",
+    "-283948665": "extended_light_mag_i",
+    "-275547481": "glitched_arc_power_converter",
+    "-271134673": "burletta_amplified_burst_fire_increased_burst",
+    "-265967374": "expedition_rewards",
+    "-264043335": "sturdy_weapon_rack_design",
+    "-262336922": "amplified_upgrade_part_d",
+    "-257685517": "osprey_amplified_anti_weak_point",
+    "-255420364": "extended_shotgun_mag_ii_blueprint",
+    "-253593691": "tortoise_itemskin_tortoiseshell",
+    "-246046071": "anvil_amplified_x_rounds",
+    "-240163355": "spectrum_analyzer",
+    "-237588358": "yellow_light_stick",
+    "-236284933": "frozen_trail_mechanical_3",
+    "-232177978": "outpost_slot_floor_61_items",
+    "-229932290": "acoustic_guitar",
+    "-224268867": "arc_conductive_coupler",
+    "-218898552": "advanced_camera_blueprint",
+    "-218262343": "riven_tides_hotel_keycard_no_311",
+    "-213988730": "powered_descender_blueprint",
+    "-208510453": "compensator_iii_blueprint",
+    "-196900720": "vulcano_blueprint",
+    "-195670371": "seed_vault_box_key",
+    "-185822933": "glass_ceiling_lamp_design",
+    "-184462684": "slipstream_recipe_itemskin_corto01",
+    "-182223087": "lightweight_stock_blueprint",
+    "-175424615": "rascal_amplified_high_velocity_incendiary_grenades",
+    "-174734319": "rusty_arc_steel",
+    "-171972741": "bantam_ii",
+    "-166771228": "polished_diner_chair_design",
+    "-163859490": "anvil_iv",
+    "-163606457": "sturdy_shelf",
+    "-161813741": "polished_faculty_chair",
+    "-157659864": "microscope",
+    "-153748567": "trailblazer",
+    "-141877207": "ruined_accordion",
+    "-137346285": "battered_shelf",
+    "-133724223": "canto_iii",
+    "-131543983": "vulcano_ii",
+    "-127927282": "agave",
+    "-123856886": "stable_stock_iii",
+    "-119018899": "venator_iii",
+    "-113802073": "blue_gate_cellar_key",
+    "-109120658": "garlic_press",
+    "-100594742": "pulse_mine",
+    "-97135557": "cafeteria_table_design",
+    "-93272200": "trailblazer_blueprint",
+    "-92200197": "study_tv_stand_design",
+    "-88669682": "flame_spray",
+    "-88515549": "empty_slot_for_a_medium_magazine_mod",
+    "-86227440": "merits_currency_winterevent",
+    "-85434166": "draped_debris_b",
+    "-78542304": "timeless_room",
+    "-77932300": "power_bank",
+    "-76165441": "outpost_slot_ceiling_6_items",
+    "-75288973": "barricade_kit_blueprint",
+    "-53041115": "extended_barrel_ii",
+    "-51232541": "coffee_pot",
+    "-46535668": "air_freshener",
+    "-45536706": "rattler_amplified_more_reload",
+    "-45026278": "green_light_stick_blueprint",
+    "-44588806": "ice_cream_scooper",
+    "-39940538": "anvil_iii",
+    "-35372151": "diner_table_design",
+    "-34507507": "shield_recharger",
+    "-28450091": "dockmasters_detector",
+    "-25914444": "telemetry_transceiver",
+    "-23348055": "secret_meeting_info",
+    "-17247411": "sensors",
+    "-16809548": "patrol_car_key",
+    "-14963185": "ferro_iv",
+    "-4062788": "diner_shelf_design",
+    "-3791881": "spring_cushion",
+    "-1758756": "battered_weapon_rack"
+  },
+  "blueprintUnlocks": {
+    "28032992": {
+      "blueprintItemId": "tactical_mk3_smoke_blueprint",
+      "itemId": "tactical_mk3_smoke"
+    },
+    "40017501": {
+      "blueprintItemId": "seeker_grenade_blueprint",
+      "itemId": "seeker_grenade"
+    },
+    "59893416": {
+      "blueprintItemId": "hullcracker_blueprint",
+      "itemId": "hullcracker_i"
+    },
+    "123865075": {
+      "blueprintItemId": "remote_raider_flare_blueprint",
+      "itemId": "remote_raider_flare"
+    },
+    "175876657": {
+      "blueprintItemId": "light_gun_parts_blueprint",
+      "itemId": "light_gun_parts"
+    },
+    "206763501": {
+      "blueprintItemId": "blaze_grenade_blueprint",
+      "itemId": "blaze_grenade"
+    },
+    "214361268": {
+      "blueprintItemId": "stiletto_blueprint",
+      "itemId": "stiletto_i"
+    },
+    "218815019": {
+      "blueprintItemId": "bettina_blueprint",
+      "itemId": "bettina_i"
+    },
+    "302973322": {
+      "blueprintItemId": "fireworks_box_blueprint",
+      "itemId": "fireworks_box"
+    },
+    "326105550": {
+      "blueprintItemId": "burletta_blueprint",
+      "itemId": "burletta_i"
+    },
+    "367109846": {
+      "blueprintItemId": "looting_mk3_safekeeper_blueprint",
+      "itemId": "looting_mk3_safekeeper"
+    },
+    "413288544": {
+      "blueprintItemId": "complex_gun_parts_blueprint",
+      "itemId": "complex_gun_parts"
+    },
+    "466149401": {
+      "blueprintItemId": "showstopper_blueprint",
+      "itemId": "showstopper"
+    },
+    "509253783": {
+      "blueprintItemId": "blue_light_stick_blueprint",
+      "itemId": "blue_light_stick"
+    },
+    "579100210": {
+      "blueprintItemId": "banjo_blueprint",
+      "itemId": "banjo"
+    },
+    "614092262": {
+      "blueprintItemId": "gas_mine_blueprint",
+      "itemId": "gas_mine"
+    },
+    "627013108": {
+      "blueprintItemId": "surge_coil_blueprint",
+      "itemId": "surge_coil"
+    },
+    "638715068": {
+      "blueprintItemId": "deadline_blueprint",
+      "itemId": "deadline"
+    },
+    "651368508": {
+      "blueprintItemId": "lightweight_stock_blueprint",
+      "itemId": "lightweight_stock"
+    },
+    "686731287": {
+      "blueprintItemId": "extended_light_mag_ii_blueprint",
+      "itemId": "extended_light_mag_ii"
+    },
+    "751299797": {
+      "blueprintItemId": "tactical_mk3_revival_blueprint",
+      "itemId": "tactical_mk3_revival"
+    },
+    "756742443": {
+      "blueprintItemId": "medium_gun_parts_blueprint",
+      "itemId": "medium_gun_parts"
+    },
+    "970997170": {
+      "blueprintItemId": "anvil_blueprint",
+      "itemId": "anvil_i"
+    },
+    "1012255499": {
+      "blueprintItemId": "barricade_kit_blueprint",
+      "itemId": "barricade_kit"
+    },
+    "1042923286": {
+      "blueprintItemId": "extended_medium_mag_iii_blueprint",
+      "itemId": "extended_medium_mag_iii"
+    },
+    "1139039647": {
+      "blueprintItemId": "tether_gun_blueprint",
+      "itemId": "tether_gun"
+    },
+    "1237171517": {
+      "blueprintItemId": "extended_shotgun_mag_ii_blueprint",
+      "itemId": "extended_shotgun_mag_ii"
+    },
+    "1249311809": {
+      "blueprintItemId": "extended_light_mag_iii_blueprint",
+      "itemId": "extended_light_mag_iii"
+    },
+    "1302277907": {
+      "blueprintItemId": "tactical_mk3_healing_blueprint",
+      "itemId": "tactical_mk3_healing"
+    },
+    "1429254806": {
+      "blueprintItemId": "vertical_grip_ii_blueprint",
+      "itemId": "vertical_grip_ii"
+    },
+    "1435428724": {
+      "blueprintItemId": "shotgun_choke_iii_blueprint",
+      "itemId": "shotgun_choke_iii"
+    },
+    "1519179755": {
+      "blueprintItemId": "angled_grip_ii_blueprint",
+      "itemId": "angled_grip_ii"
+    },
+    "1526462764": {
+      "blueprintItemId": "canto_blueprint",
+      "itemId": "canto_i"
+    },
+    "1626855254": {
+      "blueprintItemId": "wolfpack_blueprint",
+      "itemId": "wolfpack"
+    },
+    "1685354223": {
+      "blueprintItemId": "extended_medium_mag_ii_blueprint",
+      "itemId": "extended_medium_mag_ii"
+    },
+    "1733423557": {
+      "blueprintItemId": "compensator_ii_blueprint",
+      "itemId": "compensator_ii"
+    },
+    "1736836885": {
+      "blueprintItemId": "jolt_mine_blueprint",
+      "itemId": "jolt_mine"
+    },
+    "1871561407": {
+      "blueprintItemId": "advanced_camera_blueprint",
+      "itemId": "advanced_camera"
+    },
+    "1881542680": {
+      "blueprintItemId": "jupiter_blueprint",
+      "itemId": "jupiter"
+    },
+    "1923878358": {
+      "blueprintItemId": "venator_blueprint",
+      "itemId": "venator_i"
+    },
+    "1936847679": {
+      "blueprintItemId": "il_toro_blueprint",
+      "itemId": "il_toro_i"
+    },
+    "1992886157": {
+      "blueprintItemId": "red_light_stick_blueprint",
+      "itemId": "red_light_stick"
+    },
+    "1993745530": {
+      "blueprintItemId": "grapple_hook_blueprint",
+      "itemId": "grapple_hook"
+    },
+    "2012717296": {
+      "blueprintItemId": "looting_mk3_survivor_blueprint",
+      "itemId": "looting_mk3_survivor"
+    },
+    "2037633526": {
+      "blueprintItemId": "yank_grenade_blueprint",
+      "itemId": "yank_grenade"
+    },
+    "2120820417": {
+      "blueprintItemId": "vulcano_blueprint",
+      "itemId": "vulcano_i"
+    },
+    "-2117381160": {
+      "blueprintItemId": "vita_spray_blueprint",
+      "itemId": "vita_spray"
+    },
+    "-2025344611": {
+      "blueprintItemId": "extended_shotgun_mag_iii_blueprint",
+      "itemId": "extended_shotgun_mag_iii"
+    },
+    "-1981166839": {
+      "blueprintItemId": "tempest_blueprint",
+      "itemId": "tempest_i"
+    },
+    "-1954932051": {
+      "blueprintItemId": "vita_shot_blueprint",
+      "itemId": "vita_shot"
+    },
+    "-1952490497": {
+      "blueprintItemId": "angled_grip_iii_blueprint",
+      "itemId": "angled_grip_iii"
+    },
+    "-1822172140": {
+      "blueprintItemId": "compensator_iii_blueprint",
+      "itemId": "compensator_iii"
+    },
+    "-1780991008": {
+      "blueprintItemId": "shotgun_silencer_blueprint",
+      "itemId": "shotgun_silencer"
+    },
+    "-1713082013": {
+      "blueprintItemId": "trailblazer_blueprint",
+      "itemId": "trailblazer"
+    },
+    "-1640506554": {
+      "blueprintItemId": "tactical_mk3_defensive_blueprint",
+      "itemId": "tactical_mk3_defensive"
+    },
+    "-1579789796": {
+      "blueprintItemId": "padded_stock_blueprint",
+      "itemId": "padded_stock"
+    },
+    "-1409265407": {
+      "blueprintItemId": "white_flag_blueprint",
+      "itemId": "white_flag"
+    },
+    "-1390739979": {
+      "blueprintItemId": "shotgun_choke_ii_blueprint",
+      "itemId": "shotgun_choke_ii"
+    },
+    "-1389069418": {
+      "blueprintItemId": "green_light_stick_blueprint",
+      "itemId": "green_light_stick"
+    },
+    "-1360643404": {
+      "blueprintItemId": "combat_mk3_aggressive_blueprint",
+      "itemId": "combat_mk3_aggressive"
+    },
+    "-1295524363": {
+      "blueprintItemId": "explosive_mine_blueprint",
+      "itemId": "explosive_mine"
+    },
+    "-1190614673": {
+      "blueprintItemId": "tagging_grenade_blueprint",
+      "itemId": "tagging_grenade"
+    },
+    "-1022136874": {
+      "blueprintItemId": "dolabra_blueprint",
+      "itemId": "dolabra"
+    },
+    "-1010295066": {
+      "blueprintItemId": "silencer_i_blueprint",
+      "itemId": "silencer_i"
+    },
+    "-1006059188": {
+      "blueprintItemId": "crash_mat_blueprint",
+      "itemId": "crash_mat"
+    },
+    "-964057226": {
+      "blueprintItemId": "heavy_gun_parts_blueprint",
+      "itemId": "heavy_gun_parts"
+    },
+    "-937208525": {
+      "blueprintItemId": "pulse_mine_blueprint",
+      "itemId": "pulse_mine"
+    },
+    "-915275875": {
+      "blueprintItemId": "trigger_nade_blueprint",
+      "itemId": "trigger_nade"
+    },
+    "-913017921": {
+      "blueprintItemId": "emperor_gateway_conduit_blueprint",
+      "itemId": "emperor_gateway_conduit"
+    },
+    "-909352526": {
+      "blueprintItemId": "aphelion_blueprint",
+      "itemId": "aphelion"
+    },
+    "-895252912": {
+      "blueprintItemId": "vertical_grip_iii_blueprint",
+      "itemId": "vertical_grip_iii"
+    },
+    "-894917334": {
+      "blueprintItemId": "powered_descender_blueprint",
+      "itemId": "powered_descender"
+    },
+    "-870082893": {
+      "blueprintItemId": "stable_stock_ii_blueprint",
+      "itemId": "stable_stock_ii"
+    },
+    "-803736734": {
+      "blueprintItemId": "smoke_grenade_blueprint",
+      "itemId": "smoke_grenade"
+    },
+    "-801495741": {
+      "blueprintItemId": "lure_grenade_blueprint",
+      "itemId": "lure_grenade"
+    },
+    "-730785741": {
+      "blueprintItemId": "combat_mk3_flanking_blueprint",
+      "itemId": "combat_mk3_flanking"
+    },
+    "-663779021": {
+      "blueprintItemId": "silencer_ii_blueprint",
+      "itemId": "silencer_ii"
+    },
+    "-588372902": {
+      "blueprintItemId": "defibrillator_blueprint",
+      "itemId": "defibrillator"
+    },
+    "-531703784": {
+      "blueprintItemId": "snap_hook_blueprint",
+      "itemId": "snap_hook"
+    },
+    "-487031458": {
+      "blueprintItemId": "bantam_blueprint",
+      "itemId": "bantam_i"
+    },
+    "-450846842": {
+      "blueprintItemId": "bobcat_blueprint",
+      "itemId": "bobcat_i"
+    },
+    "-416709269": {
+      "blueprintItemId": "osprey_blueprint",
+      "itemId": "osprey_i"
+    },
+    "-384208594": {
+      "blueprintItemId": "yellow_light_stick_blueprint",
+      "itemId": "yellow_light_stick"
+    },
+    "-365144095": {
+      "blueprintItemId": "muzzle_brake_iii_blueprint",
+      "itemId": "muzzle_brake_iii"
+    },
+    "-356971162": {
+      "blueprintItemId": "rascal_blueprint",
+      "itemId": "rascal_i"
+    },
+    "-306697197": {
+      "blueprintItemId": "stable_stock_iii_blueprint",
+      "itemId": "stable_stock_iii"
+    },
+    "-242574218": {
+      "blueprintItemId": "equalizer_blueprint",
+      "itemId": "equalizer"
+    },
+    "-157133671": {
+      "blueprintItemId": "muzzle_brake_ii_blueprint",
+      "itemId": "muzzle_brake_ii"
+    },
+    "-151136134": {
+      "blueprintItemId": "extended_barrel_ii_blueprint",
+      "itemId": "extended_barrel_ii"
+    },
+    "-55292130": {
+      "blueprintItemId": "torrente_blueprint",
+      "itemId": "torrente_i"
+    },
+    "-12855733": {
+      "blueprintItemId": "extended_barrel_iii_blueprint",
+      "itemId": "extended_barrel_iii"
+    }
+  },
+  "benches": {
+    "81797988": {
+      "benchId": "refiner",
+      "level": 3
+    },
+    "117037428": {
+      "benchId": "research_station",
+      "level": 1
+    },
+    "291196846": {
+      "benchId": "weapon_bench",
+      "level": 1
+    },
+    "348416871": {
+      "benchId": "weapon_bench",
+      "level": 2
+    },
+    "875476422": {
+      "benchId": "research_station",
+      "level": 3
+    },
+    "1140794731": {
+      "benchId": "utility_bench",
+      "level": 1
+    },
+    "1157010858": {
+      "benchId": "med_station",
+      "level": 3
+    },
+    "1160802326": {
+      "benchId": "utility_bench",
+      "level": 3
+    },
+    "1415022693": {
+      "benchId": "equipment_bench",
+      "level": 1
+    },
+    "1434069496": {
+      "benchId": "scrappy",
+      "level": 3
+    },
+    "1517102401": {
+      "benchId": "refiner",
+      "level": 2
+    },
+    "1553081706": {
+      "benchId": "utility_bench",
+      "level": 2
+    },
+    "1657228973": {
+      "benchId": "scrappy",
+      "level": 1
+    },
+    "1781867314": {
+      "benchId": "scrappy",
+      "level": 5
+    },
+    "2041317243": {
+      "benchId": "scrappy",
+      "level": 2
+    },
+    "2080275953": {
+      "benchId": "scrappy",
+      "level": 4
+    },
+    "-1996890959": {
+      "benchId": "research_station",
+      "level": 2
+    },
+    "-1861284649": {
+      "benchId": "research_station",
+      "level": 4
+    },
+    "-1840090314": {
+      "benchId": "med_station",
+      "level": 1
+    },
+    "-1491724845": {
+      "benchId": "weapon_bench",
+      "level": 4
+    },
+    "-1409422086": {
+      "benchId": "med_station",
+      "level": 2
+    },
+    "-1312166725": {
+      "benchId": "recycle_station",
+      "level": 1
+    },
+    "-1093740163": {
+      "benchId": "equipment_bench",
+      "level": 3
+    },
+    "-1091338374": {
+      "benchId": "weapon_bench",
+      "level": 3
+    },
+    "-935249204": {
+      "benchId": "refiner",
+      "level": 1
+    },
+    "-834400146": {
+      "benchId": "workbench",
+      "level": 1
+    },
+    "-815789211": {
+      "benchId": "explosives_bench",
+      "level": 3
+    },
+    "-518683794": {
+      "benchId": "explosives_bench",
+      "level": 1
+    },
+    "-92567848": {
+      "benchId": "equipment_bench",
+      "level": 2
+    },
+    "-44778840": {
+      "benchId": "explosives_bench",
+      "level": 2
+    }
+  },
+  "structures": {
+    "12511734": "Augment Setup: Combat Mk. 3 (Flanking)",
+    "21248711": "Augment Setup: Free Loadout",
+    "22040762": "Backpack",
+    "44376610": "Melee",
+    "48591233": "Quick Use",
+    "54581186": "DA_Inventory_BonusStashContainer_T0",
+    "56420823": "Melee",
+    "59742319": "DA_Inventory_LF_Utility_T3_Smoke_ContainerItem_Backpack",
+    "63236990": "Primary Weapon",
+    "79414042": "DA_Inventory_LF_Medic_ContainerItem_Armor",
+    "125599708": "DA_Inventory_LF_Utility_T3_Smoke_ContainerSlot_Armor",
+    "128044143": "Melee",
+    "129021826": "DA_Inventory_LF_ColonyRun_ContainerSlot_Belt",
+    "129937576": "Current Augment",
+    "133015196": "Safe Pocket Items (2 Slots)",
+    "134970818": "Melee",
+    "135833769": "Shield",
+    "150477168": "DA_Inventory_LF_Rookie_ContainerSlot_Weapon2",
+    "151269142": "DA_Inventory_SecretStashContainer_T3",
+    "164826333": "DA_Inventory_LF_Transport_ContainerItem_Backpack",
+    "168163875": "Melee",
+    "184018578": "Shield",
+    "189229164": "Augment",
+    "202906145": "Backpack",
+    "213461731": "Melee",
+    "239815824": "DA_Inventory_LF_Rookie_ContainerSlot_Weapon1",
+    "249424010": "DA_Inventory_LF_Combat_ContainerItem_Weapon1",
+    "253259076": "DA_Inventory_LF_Medic_ContainerSlot_Backpack",
+    "260494636": "Safe Pocket",
+    "266643302": "Safe Pocket",
+    "272104212": "Augment",
+    "282172005": "DA_Inventory_BonusStashContainer_T5",
+    "288053018": "DA_Inventory_LF_Medic_ContainerSlot_Gadget",
+    "288976668": "Melee",
+    "301923184": "Shield",
+    "316624680": "Shield",
+    "327584912": "Augment",
+    "338187155": "DA_Inventory_LF_ColonyRun_ContainerItem_Belt",
+    "343472510": "Shield",
+    "347232696": "DA_Inventory_LF_Defensive_ContainerItem_Melee",
+    "365599956": "Stash extra 36-slot",
+    "372389825": "DA_Inventory_LF_Defensive_ContainerItem_Armor",
+    "374660481": "Secondary Weapon",
+    "377672765": "DA_Inventory_LF_Mobility_ContainerSlot_SafePocket",
+    "390629643": "DA_Inventory_LF_Transport_ContainerItem_SafePocket",
+    "391964100": "DA_Inventory_LF_ColonyRun_ContainerSlot_Firearm2",
+    "411623810": "Quick Use",
+    "421044591": "Shield",
+    "425375516": "Backpack",
+    "425584754": "DA_Inventory_LF_Combat_ContainerSlot_Gadget",
+    "451810634": "DA_Inventory_LF_Combat_ContainerItem_Belt",
+    "457412718": "Safe Pocket",
+    "459629608": "Stash 136-slot",
+    "463219795": "DA_Inventory_LF_Transport_ContainerSlot_Gadget",
+    "482160762": "DA_Inventory_LF_Transport_ContainerSlot_SafePocket",
+    "485800788": "DA_Inventory_LF_Combat_T1",
+    "492007013": "Shield",
+    "492462603": "Stash 184-slot",
+    "495350374": "Backpack",
+    "505681848": "Secondary Weapon",
+    "513462606": "DA_Inventory_LF_Rookie_ContainerSlot_SafePocket",
+    "515825495": "Primary Weapon",
+    "520155642": "Shield",
+    "521178632": "DA_Inventory_LF_Defensive_ContainerItem_SafePocket",
+    "523579804": "Safe Pocket",
+    "530062629": "Secondary Weapon",
+    "546658969": "DA_Inventory_SecretStashContainer_T1",
+    "552633086": "DA_Inventory_LF_Rookie_ContainerItem_Gadget",
+    "554150035": "Backpack",
+    "563421940": "Primary Weapon",
+    "563889130": "Backpack",
+    "585522494": "Safe Pocket",
+    "591271901": "Safe Pocket",
+    "600209794": "Quick Use",
+    "616907284": "DA_Inventory_LF_ColonyRun_ContainerSlot_Melee",
+    "620880725": "Primary Weapon",
+    "622605322": "Safe Pocket Items (2 Slots)",
+    "634463115": "Primary Weapon",
+    "634916076": "Safe Pocket Items (1 Slot)",
+    "644089104": "Backpack",
+    "662320250": "Empty slot for grenades",
+    "667102115": "DA_Inventory_LF_Medic_ContainerItem_SafePocket",
+    "670024569": "Stash 88-slot",
+    "674016041": "DA_Inventory_LF_Combat_ContainerItem_Armor",
+    "678297130": "Stash extra 60-slot",
+    "686076007": "Stash 232-slot",
+    "691653340": "Melee",
+    "707085701": "Backpack",
+    "708676214": "Secondary Weapon",
+    "713048728": "Weapon 2 Mount: Looting Mk. 1",
+    "719434862": "Empty slot for light or medium shields",
+    "739335902": "DA_Inventory_LF_Combat_ContainerItem_Melee",
+    "742274453": "Safe Pocket Items (1 Slot)",
+    "753492342": "Primary Weapon",
+    "754959887": "Shield",
+    "757733679": "Secondary Weapon",
+    "771048769": "Secondary Weapon",
+    "789222533": "Loadout: Weapon 2 Mount",
+    "805875451": "Backpack",
+    "819401007": "Melee",
+    "819785143": "Quick Use",
+    "824056675": "DA_Inventory_LF_ColonyRun_ContainerItem_Melee",
+    "824256753": "Stash 280-slot",
+    "838324696": "Quick Use 4 Slots",
+    "844328403": "Primary Weapon",
+    "848476837": "DA_Inventory_LF_Rookie_ContainerItem_Armor",
+    "850386344": "Backpack",
+    "874940549": "Secondary Weapon",
+    "876095175": "DA_Inventory_LF_Looting_T2",
+    "890005505": "Backpack",
+    "891719871": "DA_Inventory_SecretStashContainer_T5",
+    "912802676": "Augment",
+    "926668988": "Melee",
+    "927728497": "DA_Inventory_LF_Defensive_ContainerItem_Gadget",
+    "934912309": "DA_Inventory_LF_Combat_ContainerSlot_Belt",
+    "935293732": "DA_Inventory_BonusStashContainer_T3",
+    "945916638": "Primary Weapon",
+    "952446854": "Stash Expansion",
+    "958345526": "Empty slot for a gadget",
+    "969393157": "Secondary Weapon",
+    "974676317": "Quick Use",
+    "980573866": "Melee",
+    "988684217": "Safe Pocket",
+    "991393122": "DA_Inventory_LF_ColonyRun_ContainerSlot_Firearm1",
+    "997098278": "Augment",
+    "997787584": "DA_Inventory_LF_Defensive_ContainerItem_Backpack",
+    "1010380638": "DA_Inventory_LF_Standard_ContainerItem_Gadget",
+    "1011082201": "Empty slot for a shotgun magazine mod.",
+    "1017051366": "Safe Pocket",
+    "1028949793": "Shield",
+    "1029107900": "DA_Inventory_LF_Utility_T2",
+    "1033916320": "Quick Use",
+    "1040316064": "Quick Use",
+    "1076082116": "DA_Inventory_LF_Raider_03",
+    "1078822883": "DA_Inventory_SecretStashContainer_T8",
+    "1090010970": "Safe Pocket",
+    "1126817659": "Quick Use",
+    "1129923159": "DA_Inventory_LF_Defensive_ContainerSlot_Belt",
+    "1143107268": "DA_Inventory_LF_Combat_ContainerItem_SafePocket",
+    "1143970783": "DA_Inventory_LF_Utility_T3_Smoke_ContainerSlot_Melee",
+    "1146535368": "Augment",
+    "1147042865": "Primary Weapon",
+    "1147763118": "Secondary Weapon",
+    "1173010504": "DA_Inventory_TreeRoot",
+    "1178465550": "Safe Pocket",
+    "1182756597": "Melee",
+    "1185506783": "Empty slot for light, medium or heavy shields",
+    "1196619463": "Safe Pocket",
+    "1203548207": "Secondary Weapon",
+    "1205507629": "DA_Inventory_LF_Mobility_ContainerSlot_Belt",
+    "1214177327": "DA_Inventory_LF_ColonyRun_ContainerSlot_Armor",
+    "1225596861": "DA_Inventory_LF_Transport_ContainerSlot_Backpack",
+    "1228968705": "Empty slot for a tech mod.",
+    "1232658973": "DA_Inventory_SecretStashContainer_T6",
+    "1251573558": "Empty slot for healing items",
+    "1258778631": "Backpack",
+    "1284133896": "Primary Weapon",
+    "1291280677": "DA_Inventory_SecretStashContainer_T7",
+    "1295046744": "Secondary Weapon",
+    "1295057931": "DA_Inventory_LF_Raider_T4_Safekeeper",
+    "1306999712": "Secondary Weapon",
+    "1326799221": "Backpack",
+    "1326891585": "DA_Inventory_LF_Mobility",
+    "1333258560": "Primary Weapon",
+    "1333996162": "Shield",
+    "1349034416": "DA_Inventory_LF_Medic_ContainerSlot_Weapon1",
+    "1356345166": "Safe Pocket",
+    "1360021217": "Secondary Weapon",
+    "1364293158": "Primary Weapon",
+    "1371736356": "DA_Inventory_LF_ColonyRun_ContainerItem_Firearm2",
+    "1381051701": "Safe Pocket",
+    "1387650648": "Melee",
+    "1396280748": "Quick Use",
+    "1402437787": "Shield",
+    "1409280010": "Backpack",
+    "1413630316": "Melee",
+    "1415875854": "Empty slot for a stock mod.",
+    "1435250577": "DA_Inventory_LF_Medic_ContainerItem_Gadget",
+    "1440007245": "Slot for Regular Items (526 item types)",
+    "1442945311": "Safe Pocket",
+    "1450686663": "Backpack",
+    "1454995512": "Quick Use",
+    "1455287433": "DA_Inventory_LF_Rookie_ContainerItem_Weapon1",
+    "1456383354": "Secondary Weapon",
+    "1459766980": "Quick Use",
+    "1466788008": "Stash 160-slot",
+    "1487115454": "Melee",
+    "1488174973": "Safe Pocket",
+    "1490539827": "DA_Inventory_LF_Defensive_ContainerSlot_Backpack",
+    "1505327333": "Quick Use",
+    "1508621632": "Backpack",
+    "1512852984": "Quick Use",
+    "1514558783": "DA_Inventory_LF_Defensive_ContainerItem_Belt",
+    "1524465805": "DA_Inventory_LF_Rookie",
+    "1537829106": "Primary Weapon",
+    "1544130241": "Melee",
+    "1552042079": "Quick Use",
+    "1557183276": "Melee",
+    "1566232021": "DA_Inventory_LF_Raider_01",
+    "1583304067": "Augment",
+    "1586617626": "Backpack",
+    "1593302090": "DA_Inventory_LF_Mobility_ContainerSlot_Weapon1",
+    "1594334574": "DA_Inventory_LF_Defensive_ContainerItem_Weapon1",
+    "1606341178": "DA_Inventory_LF_Medic_ContainerSlot_Melee",
+    "1607578113": "Backpack",
+    "1615602760": "DA_Inventory_StashContainer_T12",
+    "1618363823": "Secondary Weapon",
+    "1621193574": "Melee",
+    "1637565526": "Secondary Weapon",
+    "1638597279": "Primary Weapon",
+    "1648244636": "Primary Weapon",
+    "1661767536": "Backpack",
+    "1687384280": "Quick Use",
+    "1690033074": "DA_Inventory_LF_ColonyRun_ContainerSlot_Gadget",
+    "1694398732": "Backpack",
+    "1704537990": "Augment",
+    "1723187391": "Backpack",
+    "1724084783": "Secondary Weapon",
+    "1744401859": "Backpack",
+    "1749845632": "Primary Weapon",
+    "1756036395": "Melee",
+    "1757650828": "DA_Inventory_LF_Mobility_ContainerSlot_Melee",
+    "1757735240": "Backpack",
+    "1759229282": "Safe Pocket",
+    "1768491383": "DA_Inventory_SecretStashContainer_T4",
+    "1772514935": "DA_Inventory_LF_Medic_ContainerSlot_Armor",
+    "1789913677": "Secondary Weapon",
+    "1795979974": "DA_Inventory_LF_Mobility_ContainerItem_Melee",
+    "1797852311": "DA_Inventory_LF_ColonyRun_ContainerSlot_Backpack",
+    "1833604446": "Secondary Weapon",
+    "1837781043": "Quick Use",
+    "1849558571": "Melee",
+    "1860171114": "Quick Use",
+    "1862864628": "Shield",
+    "1868802276": "Primary Weapon",
+    "1897376358": "DA_Inventory_LF_Combat",
+    "1898865666": "Quick Use",
+    "1908430814": "Secondary Weapon",
+    "1909266089": "Shield Container (Light)",
+    "1937219300": "DA_Inventory_LF_Mobility_ContainerItem_Belt",
+    "1943868668": "DA_Inventory_SecretStashContainer_T9",
+    "1962051170": "Melee",
+    "1962848692": "Secondary Weapon",
+    "1965448171": "Safe Pocket",
+    "1966717441": "Quick Use",
+    "1968366773": "DA_Inventory_LF_Defensive_ContainerSlot_Melee",
+    "1975428721": "Shield",
+    "2023518072": "Secondary Weapon",
+    "2039479872": "Primary Weapon",
+    "2040446547": "Shield",
+    "2050477803": "Quick Use",
+    "2061864078": "DA_Inventory_LF_Rookie_ContainerItem_Melee",
+    "2068130183": "DA_Inventory_LF_Rookie_ContainerSlot_Belt",
+    "2116860288": "Empty slot for any item. Item will be kept even if you get knocked out.",
+    "2129766118": "DA_Inventory_LF_Transport_ContainerItem_Armor",
+    "2131231514": "Secondary Weapon",
+    "2135242484": "Shield",
+    "2138865075": "Melee",
+    "2146070025": "DA_Inventory_LF_Rookie_ContainerSlot_Gadget",
+    "2146419713": "Primary Weapon",
+    "-2144802109": "Shield",
+    "-2143848294": "Safe Pocket",
+    "-2143608986": "DA_Inventory_LF_Utility_T3_Smoke_ContainerItem_SafePocket",
+    "-2142772724": "Primary Weapon",
+    "-2140017279": "DA_Inventory_LF_Transport_ContainerItem_Weapon1",
+    "-2129845066": "Primary Weapon",
+    "-2121050171": "Stash",
+    "-2114213383": "Secondary Weapon",
+    "-2109745799": "DA_Inventory_LF_Standard",
+    "-2105475031": "Safe Pocket",
+    "-2104108661": "DA_Inventory_LF_Mobility_ContainerSlot_Backpack",
+    "-2091412102": "Primary Weapon",
+    "-2088267260": "Quick Use",
+    "-2076477526": "DA_Inventory_LF_Utility_T3_Smoke_ContainerItem_Weapon1",
+    "-2076001543": "DA_Inventory_LF_Rookie_ContainerSlot_Melee",
+    "-2075359538": "DA_Inventory_LF_Medic_ContainerItem_Weapon1",
+    "-2052547103": "Melee",
+    "-2049110600": "Backpack",
+    "-2018598597": "Stash extra 12-slot",
+    "-2004748456": "Safe Pocket",
+    "-1990983588": "Primary Weapon",
+    "-1990910379": "Backpack",
+    "-1989158897": "Melee",
+    "-1978047578": "Melee",
+    "-1976323623": "DA_Inventory_LF_Medic_ContainerSlot_SafePocket",
+    "-1966427791": "DA_Inventory_BonusStashContainer_T2",
+    "-1951392437": "Primary Weapon",
+    "-1941499140": "Safe Pocket",
+    "-1935122902": "Backpack",
+    "-1924099796": "Shield",
+    "-1923982250": "DA_Inventory_LF_Mobility_ContainerItem_Backpack",
+    "-1923186072": "Empty slot for an underbarrel mod.",
+    "-1911884959": "DA_Inventory_LF_Combat_ContainerItem_Weapon2",
+    "-1887396248": "Secondary Weapon",
+    "-1883258404": "Shield",
+    "-1827322245": "DA_Inventory_LF_Utility_T3_Smoke_ContainerSlot_Weapon1",
+    "-1808818063": "Safe Pocket",
+    "-1800388036": "DA_Inventory_LF_ColonyRun_ContainerItem_Armor",
+    "-1799813225": "DA_Inventory_LF_Looting_T3_DBNO",
+    "-1787034734": "Backpack",
+    "-1779768591": "Quick Use",
+    "-1777974120": "Shield",
+    "-1773924766": "DA_Inventory_BonusStashContainer_T4",
+    "-1772888028": "Unknown Mount: Combat Mk. 3 (Aggressive)",
+    "-1762977188": "DA_Inventory_LF_ColonyRun",
+    "-1758317677": "DA_Inventory_LF_Mobility_ContainerItem_Armor",
+    "-1742030003": "Safe Pocket",
+    "-1738331839": "DA_Inventory_LF_Rookie_ContainerItem_Backpack",
+    "-1731892715": "Backpack",
+    "-1722188527": "Shield",
+    "-1719992727": "Primary Weapon",
+    "-1719547500": "Melee",
+    "-1714382640": "DA_Inventory_LF_Rookie_ContainerItem_SafePocket",
+    "-1711433724": "Primary Weapon",
+    "-1690579747": "Backpack",
+    "-1667769874": "Melee",
+    "-1657530589": "Quick Use",
+    "-1640916197": "DA_Inventory_LF_Utility_T3_Defensive",
+    "-1639434077": "Shield Mount: Looting Mk. 3 (Light)",
+    "-1599478955": "Augment",
+    "-1597227626": "DA_Inventory_LF_Utility_T3_Smoke_ContainerItem_Armor",
+    "-1594514317": "Backpack Mount: Looting Mk. 2 (22 Slots)",
+    "-1590818865": "DA_Inventory_LF_Standard_ContainerSlot_Gadget",
+    "-1573505189": "Secondary Weapon",
+    "-1571463867": "Safe Pocket",
+    "-1554681840": "Secondary Weapon",
+    "-1551192654": "DA_Inventory_LF_Raider_04",
+    "-1537698006": "Empty slot for light shields",
+    "-1509746014": "Shield",
+    "-1508859667": "DA_Inventory_LF_Utility_T3_Smoke_ContainerSlot_SafePocket",
+    "-1494771194": "Melee",
+    "-1489428350": "DA_Inventory_LF_Combat_ContainerItem_Gadget",
+    "-1475517378": "Backpack",
+    "-1462218276": "Secondary Weapon",
+    "-1451151083": "DA_Inventory_LF_Utility_T3_Smoke_ContainerSlot_Belt",
+    "-1449979565": "Loadout: Weapon 1 Container <arraySlot, capacity=1, slotAssetId=-620731692 Weapon Slot>",
+    "-1444511024": "Safe Pocket",
+    "-1442723526": "Shield Mount: Combat Mk. 3 (Flanking) (Light)",
+    "-1438462535": "Quick Use",
+    "-1425626814": "DA_Inventory_LF_Utility_T3_Smoke_ContainerItem_Auxiliary",
+    "-1419234392": "Shield",
+    "-1415839150": "Empty slot for a shotgun muzzle mod.",
+    "-1407713155": "DA_Inventory_LF_Standard_ContainerSlot_Augment",
+    "-1406187830": "Quick Use",
+    "-1399416027": "Augment",
+    "-1397350467": "Primary Weapon",
+    "-1379879497": "DA_Inventory_LoadoutFrameSlot",
+    "-1356651917": "DA_Inventory_LF_Defensive_ContainerSlot_SafePocket",
+    "-1351184816": "Backpack",
+    "-1347093084": "Shield",
+    "-1339707137": "Secondary Weapon",
+    "-1337209565": "Empty slot for a light magazine mod.",
+    "-1337009080": "DA_Inventory_LF_Mobility_ContainerItem_SafePocket",
+    "-1328608435": "DA_Inventory_LF_Raider_T4_Revival",
+    "-1328409862": "DA_Inventory_LF_Rookie_ContainerSlot_Backpack",
+    "-1328258283": "DA_Inventory_LF_Transport_ContainerItem_Melee",
+    "-1324415871": "Melee",
+    "-1320735319": "Primary Weapon",
+    "-1314674456": "Stash extra 24-slot",
+    "-1302027751": "DA_Inventory_LF_Looting_T3_Cautious",
+    "-1300323133": "DA_Inventory_LF_Utility_T3_Smoke_ContainerItem_Melee",
+    "-1291005066": "Quick Use",
+    "-1281829892": "Augment",
+    "-1277506061": "Empty slot for a quick equip item",
+    "-1236777016": "Augment",
+    "-1234136827": "Shield",
+    "-1231864196": "Melee",
+    "-1226397626": "Shield",
+    "-1213453526": "DA_Inventory_LF_Utility_T3_Smoke_ContainerSlot_Weapon2",
+    "-1193825975": "Secondary Weapon",
+    "-1188582677": "Quick Use",
+    "-1167814970": "Primary Weapon",
+    "-1167511681": "Primary Weapon",
+    "-1154815572": "Shield",
+    "-1152999066": "DA_Inventory_LF_Mobility_ContainerSlot_Gadget",
+    "-1134924405": "Melee",
+    "-1130290743": "Melee",
+    "-1129262472": "DA_Inventory_LF_Defensive_ContainerSlot_Weapon1",
+    "-1128650882": "DA_Inventory_LF_Transport_ContainerSlot_Weapon1",
+    "-1127267396": "DA_Inventory_LF_Utility_T3_Smoke_ContainerSlot_Auxiliary",
+    "-1101416870": "Augment",
+    "-1090486732": "DA_Inventory_LF_Combat_ContainerSlot_SafePocket",
+    "-1090245720": "Secondary Weapon",
+    "-1088427979": "Backpack",
+    "-1087285259": "DA_Inventory_LF_Combat_ContainerSlot_Armor",
+    "-1071672769": "Shield",
+    "-1071655990": "Shield",
+    "-1049378004": "Melee",
+    "-1044109275": "DA_Inventory_LF_ColonyRun_ContainerItem_Backpack",
+    "-1043144034": "Shield",
+    "-1040353317": "Augment",
+    "-1036236112": "Quick Use",
+    "-1030933935": "Secondary Weapon",
+    "-970014776": "Melee",
+    "-964635257": "Primary Weapon",
+    "-960125620": "DA_Inventory_LF_Defensive",
+    "-958796171": "Backpack",
+    "-949153946": "DA_Inventory_LF_Medic_ContainerSlot_Belt",
+    "-935651405": "Stash 112-slot",
+    "-926472631": "Primary Weapon",
+    "-916654694": "Secondary Weapon",
+    "-911450229": "Quick Use",
+    "-907783154": "Shield",
+    "-904081899": "Secondary Weapon",
+    "-901902086": "Backpack",
+    "-900626342": "Backpack",
+    "-894400556": "DA_Inventory_LF_Medic_ContainerItem_Backpack",
+    "-891583501": "Primary Weapon",
+    "-890187561": "Quick Use",
+    "-883535668": "Shield",
+    "-875777364": "Empty slot for an augment",
+    "-855189248": "Safe Pocket",
+    "-848973549": "Stash 64-slot",
+    "-835379180": "Backpack",
+    "-827056206": "DA_Inventory_LF_Utility_T3_Smoke_ContainerItem_Belt",
+    "-801279261": "Melee",
+    "-789319588": "DA_Inventory_LF_Combat_ContainerItem_Backpack",
+    "-778848173": "Backpack",
+    "-774039738": "DA_Inventory_LF_Rookie_ContainerItem_Belt",
+    "-762891989": "Quick Use",
+    "-758207090": "DA_Inventory_LF_ColonyRun_ContainerItem_Gadget",
+    "-750977077": "DA_Inventory_LF_Medic",
+    "-729631616": "Empty slot for shields",
+    "-726767961": "Primary Weapon",
+    "-720305360": "Primary Weapon",
+    "-703605522": "DA_Inventory_LF_Transport_ContainerSlot_Melee",
+    "-682383645": "Primary Weapon",
+    "-669280345": "DA_Inventory_SecretStashContainer_T2",
+    "-668596565": "Primary Weapon",
+    "-666604429": "DA_Inventory_ContentSlot_MeleeWeapon_Generic",
+    "-664777054": "Shield",
+    "-655883216": "Safe Pocket",
+    "-646163377": "Quick Use",
+    "-636707363": "DA_Inventory_LF_Utility_T1",
+    "-627920101": "DA_Inventory_SecretStashContainer_T0",
+    "-620731692": "Empty slot for a weapon",
+    "-602102392": "Primary Weapon",
+    "-593179952": "DA_Inventory_LF_Transport_ContainerSlot_Belt",
+    "-591389027": "DA_Inventory_LF_Transport",
+    "-588056456": "Melee",
+    "-587167077": "Shield",
+    "-584971121": "DA_Inventory_StashContainer_T11",
+    "-560375781": "Safe Pocket",
+    "-560137962": "Quick Use",
+    "-556335631": "DA_Inventory_LF_Transport_ContainerItem_Belt",
+    "-554598184": "Melee",
+    "-550664907": "DA_Inventory_LF_Utility_T3_Smoke_ContainerItem_Weapon2",
+    "-545241760": "DA_Inventory_LF_Transport_ContainerItem_Gadget",
+    "-531431256": "Secondary Weapon",
+    "-527650128": "DA_Inventory_LF_Rookie_ContainerItem_Weapon2",
+    "-524130849": "DA_Inventory_LF_Utility_T3_Smoke_ContainerSlot_Backpack",
+    "-516143994": "Melee",
+    "-515738777": "DA_Inventory_SecretStashContainer_T10",
+    "-512942385": "DA_Inventory_LF_Mobility_ContainerItem_Gadget",
+    "-511039215": "DA_Inventory_LF_Combat_FreeLoadout",
+    "-509905146": "DA_Inventory_LF_Combat_T2",
+    "-502457539": "Primary Weapon",
+    "-487042564": "Melee",
+    "-481313555": "Secondary Weapon",
+    "-477910135": "Melee",
+    "-477387041": "Quick Use",
+    "-473806797": "Augment",
+    "-461470305": "Secondary Weapon",
+    "-452616269": "Shield",
+    "-451662226": "Safe Pocket",
+    "-451505170": "Backpack",
+    "-449948883": "Expedition Vault",
+    "-448345380": "DA_Inventory_LF_Looting_T1",
+    "-446262057": "Safe Pocket",
+    "-441538728": "Shield",
+    "-431519544": "Safe Pocket",
+    "-428021115": "DA_Inventory_LF_Medic_ContainerItem_Melee",
+    "-427223281": "Secondary Weapon",
+    "-415441839": "Secondary Weapon",
+    "-409024475": "Primary Weapon",
+    "-402660824": "Shield",
+    "-385432610": "Quick Use",
+    "-385059589": "Empty slot for trinkets",
+    "-379442490": "DA_Inventory_BonusStashContainer_T1",
+    "-377848428": "Empty slot for a muzzle mod.",
+    "-374140647": "DA_Inventory_LF_Standard_ContainerItem_Augment",
+    "-372950412": "Quick Use",
+    "-366662263": "Safe Pocket",
+    "-366139984": "Quick Use",
+    "-349718283": "DA_Inventory_LF_Defensive_ContainerSlot_Armor",
+    "-349134473": "DA_Inventory_LF_Utility_T3_Healing",
+    "-344103425": "DA_Inventory_LF_Looting_FreeLoadout",
+    "-306087719": "Quick Use",
+    "-288107141": "DA_Inventory_LF_Mobility_ContainerSlot_Armor",
+    "-264756260": "Safe Pocket",
+    "-250309798": "Backpack",
+    "-250016123": "Stash extra 48-slot",
+    "-248857798": "DA_Inventory_LF_Medic_ContainerItem_Belt",
+    "-248702078": "Backpack",
+    "-248326389": "Quick Use",
+    "-236286992": "DA_Inventory_LF_Combat_ContainerSlot_Weapon1",
+    "-231897926": "DA_Inventory_LF_Combat_ContainerSlot_Backpack",
+    "-223459290": "Stash 208-slot",
+    "-213901314": "Secondary Weapon",
+    "-206583984": "Melee",
+    "-205714511": "Extra Stash Root",
+    "-171297932": "Secondary Weapon",
+    "-166008386": "Quick Use",
+    "-163423842": "DA_Inventory_LF_ColonyRun_ContainerItem_Firearm1",
+    "-161869282": "DA_Inventory_LF_Combat_ContainerSlot_Melee",
+    "-140762359": "DA_Inventory_LF_Raider_02",
+    "-140402977": "Quick Use",
+    "-119785392": "Primary Weapon",
+    "-119691948": "DA_Inventory_LF_Transport_ContainerSlot_Armor",
+    "-119273512": "DA_Inventory_LF_Defensive_ContainerSlot_Gadget",
+    "-108142172": "Backpack",
+    "-106529686": "DA_Inventory_LF_Combat_ContainerSlot_Weapon2",
+    "-92162265": "Quick Use",
+    "-92123513": "Safe Pocket",
+    "-89981619": "DA_Inventory_LF_Combat_T3_Aggressive",
+    "-89748338": "DA_Inventory_LF_Utility_T3_Smoke",
+    "-88948473": "Augment",
+    "-88527392": "DA_Inventory_LF_Mobility_ContainerItem_Weapon1",
+    "-88515549": "Empty slot for a medium magazine mod.",
+    "-85911258": "Backpack",
+    "-83808680": "Secondary Weapon",
+    "-80826819": "Shield",
+    "-75777223": "DA_Inventory_LF_Rookie_ContainerSlot_Armor",
+    "-61772393": "Melee",
+    "-58446991": "Backpack",
+    "-55455485": "Augment",
+    "-47408010": "Stash 256-slot",
+    "-42312299": "Primary Weapon",
+    "-36502079": "Melee",
+    "-35282746": "Shield",
+    "-30637509": "Shield",
+    "-25855644": "Quick Use",
+    "-22259425": "Empty slot for deployable utility items",
+    "-11339742": "Primary Weapon",
+    "-3680536": "Empty slot for most items, except weapons and shields. Item will be kept even if you get knocked out.",
+    "-3167236": "Shield"
+  },
+  "augmentLoadouts": {
+    "50992628": {
+      "loadoutFrameAssetId": 485800788,
+      "backpackSlots": 16,
+      "quickUseSlots": 4,
+      "safePocketSlots": 1,
+      "auxiliarySlots": 0,
+      "name": "Combat Mk. 1"
+    },
+    "303567898": {
+      "loadoutFrameAssetId": -1799813225,
+      "backpackSlots": 20,
+      "quickUseSlots": 5,
+      "safePocketSlots": 3,
+      "auxiliarySlots": 1,
+      "name": "Looting Mk. 3 (Survivor)"
+    },
+    "433079423": {
+      "loadoutFrameAssetId": -1302027751,
+      "backpackSlots": 24,
+      "quickUseSlots": 5,
+      "safePocketSlots": 2,
+      "auxiliarySlots": 0,
+      "name": "Looting Mk. 3 (Cautious)"
+    },
+    "947411243": {
+      "loadoutFrameAssetId": 1295057931,
+      "backpackSlots": 18,
+      "quickUseSlots": 4,
+      "safePocketSlots": 1,
+      "auxiliarySlots": 2,
+      "name": "Raider Mk. 3 (Safekeeper)"
+    },
+    "966773769": {
+      "loadoutFrameAssetId": -636707363,
+      "backpackSlots": 15,
+      "quickUseSlots": 5,
+      "safePocketSlots": 1,
+      "auxiliarySlots": 0,
+      "name": "Tactical Mk. 1"
+    },
+    "1101815928": {
+      "loadoutFrameAssetId": -1640916197,
+      "backpackSlots": 20,
+      "quickUseSlots": 5,
+      "safePocketSlots": 1,
+      "auxiliarySlots": 0,
+      "name": "Tactical Mk. 3 (Defence)"
+    },
+    "1369416424": {
+      "loadoutFrameAssetId": -344103425,
+      "backpackSlots": 14,
+      "quickUseSlots": 4,
+      "safePocketSlots": 0,
+      "auxiliarySlots": 0,
+      "name": "Free Loadout Augment"
+    },
+    "1680690244": {
+      "loadoutFrameAssetId": -448345380,
+      "backpackSlots": 18,
+      "quickUseSlots": 4,
+      "safePocketSlots": 1,
+      "auxiliarySlots": 0,
+      "name": "Looting Mk. 1"
+    },
+    "-1561038837": {
+      "loadoutFrameAssetId": -349134473,
+      "backpackSlots": 16,
+      "quickUseSlots": 4,
+      "safePocketSlots": 3,
+      "auxiliarySlots": 3,
+      "name": "Tactical Mk. 3 (Healing)"
+    },
+    "-1489261627": {
+      "loadoutFrameAssetId": -509905146,
+      "backpackSlots": 18,
+      "quickUseSlots": 4,
+      "safePocketSlots": 1,
+      "auxiliarySlots": 1,
+      "name": "Combat Mk. 2"
+    },
+    "-1328695953": {
+      "loadoutFrameAssetId": -1328608435,
+      "backpackSlots": 16,
+      "quickUseSlots": 5,
+      "safePocketSlots": 1,
+      "auxiliarySlots": 0,
+      "name": "Raider Mk. 3 (Revival)"
+    },
+    "-1240487285": {
+      "loadoutFrameAssetId": 1029107900,
+      "backpackSlots": 17,
+      "quickUseSlots": 5,
+      "safePocketSlots": 1,
+      "auxiliarySlots": 1,
+      "name": "Tactical Mk. 2"
+    },
+    "-1156830089": {
+      "loadoutFrameAssetId": 876095175,
+      "backpackSlots": 22,
+      "quickUseSlots": 4,
+      "safePocketSlots": 2,
+      "auxiliarySlots": 3,
+      "name": "Looting Mk. 2"
+    },
+    "-1068447725": {
+      "loadoutFrameAssetId": 12511734,
+      "backpackSlots": 20,
+      "quickUseSlots": 5,
+      "safePocketSlots": 2,
+      "auxiliarySlots": 3,
+      "name": "Combat Mk. 3 (Flanking)"
+    },
+    "-468025815": {
+      "loadoutFrameAssetId": -89981619,
+      "backpackSlots": 18,
+      "quickUseSlots": 4,
+      "safePocketSlots": 1,
+      "auxiliarySlots": 2,
+      "name": "Combat Mk. 3 (Aggressive)"
+    }
+  },
+  "quests": {
+    "100025892": {
+      "questId": "greasing_her_palms",
+      "objectives": {
+        "171308922": "0.2",
+        "227149379": "0",
+        "258301750": "0.3",
+        "328134666": "0.1",
+        "746761220": "0.0"
+      },
+      "required": {
+        "171308922": 1,
+        "258301750": 1,
+        "328134666": 1,
+        "746761220": 1
+      }
+    },
+    "105616378": {
+      "questId": "the_majors_footlocker",
+      "objectives": {
+        "164609545": "0.0",
+        "910722181": "0.1",
+        "981472747": "0"
+      },
+      "required": {
+        "164609545": 1,
+        "910722181": 1
+      }
+    },
+    "112215912": {
+      "questId": "cold_storage",
+      "objectives": {
+        "497420419": "0",
+        "659970249": "0.1",
+        "958797715": "0.0"
+      },
+      "required": {
+        "659970249": 1,
+        "958797715": 1
+      }
+    },
+    "116730936": {
+      "questId": "empathetic_prototypes",
+      "objectives": {
+        "126007040": "0.1.0",
+        "199226457": "0.1",
+        "297781400": "0.2",
+        "400641624": "0.2.0",
+        "492651700": "0.2.1",
+        "704158555": "0",
+        "820027795": "0.1.1",
+        "884930977": "0.0"
+      },
+      "required": {
+        "126007040": 1,
+        "400641624": 1,
+        "492651700": 1,
+        "820027795": 1,
+        "884930977": 1
+      }
+    },
+    "120673543": {
+      "questId": "a_toxic_trail",
+      "objectives": {
+        "105864008": "0.2",
+        "328387723": "0.1",
+        "706763449": "0.0",
+        "806039580": "0.3",
+        "960337415": "0"
+      },
+      "required": {
+        "105864008": 1,
+        "328387723": 1,
+        "706763449": 1,
+        "806039580": 1
+      }
+    },
+    "121882227": {
+      "questId": "sprint_shooting",
+      "objectives": {
+        "106429215": "0.2",
+        "116698100": "0.6",
+        "420819656": "0.0",
+        "462802640": "0",
+        "700378022": "0.4",
+        "849724867": "0.5",
+        "879782326": "0.3",
+        "883078418": "0.1"
+      },
+      "required": {
+        "106429215": 1,
+        "116698100": 1,
+        "420819656": 1,
+        "700378022": 1,
+        "849724867": 1,
+        "879782326": 1,
+        "883078418": 1
+      }
+    },
+    "130976098": {
+      "questId": "a_rising_tide",
+      "objectives": {
+        "193799889": "0.0",
+        "271399207": "0.4",
+        "387250484": "0.3",
+        "640884048": "0.2",
+        "742977025": "0",
+        "818803537": "0.1"
+      },
+      "required": {
+        "193799889": 1,
+        "271399207": 1,
+        "387250484": 1,
+        "640884048": 1,
+        "818803537": 1
+      }
+    },
+    "135036089": {
+      "questId": "damage_dealt_to_pops",
+      "objectives": {
+        "215846448": "0"
+      },
+      "required": {
+        "215846448": 60
+      }
+    },
+    "141020924": {
+      "questId": "wires_crossed",
+      "objectives": {
+        "661415079": "0.1",
+        "780499474": "0.0",
+        "817892514": "0.2",
+        "901357140": "0"
+      },
+      "required": {
+        "661415079": 1,
+        "780499474": 1,
+        "817892514": 1
+      }
+    },
+    "141631847": {
+      "questId": "blue_gate_content_unlock",
+      "objectives": {
+        "217342512": "0"
+      },
+      "required": {
+        "217342512": 18
+      }
+    },
+    "143024168": {
+      "questId": "damage_raiders",
+      "objectives": {
+        "783548740": "0.0",
+        "-143024168": "0"
+      },
+      "required": {
+        "783548740": 1
+      }
+    },
+    "154252362": {
+      "questId": "pops_destroyed",
+      "objectives": {
+        "126658172": "0"
+      },
+      "required": {
+        "126658172": 3
+      }
+    },
+    "156503065": {
+      "questId": "high_voltage_exposure",
+      "objectives": {
+        "302356188": "0.0",
+        "748779371": "0"
+      },
+      "required": {
+        "302356188": 5
+      }
+    },
+    "161267425": {
+      "questId": "turnabout",
+      "objectives": {
+        "190326401": "0.2",
+        "559887608": "0.1",
+        "820397480": "0.0",
+        "852848415": "0"
+      },
+      "required": {
+        "190326401": 1,
+        "559887608": 1,
+        "820397480": 1
+      }
+    },
+    "164174939": {
+      "questId": "waking_the_grid",
+      "objectives": {
+        "335563382": "0.1",
+        "435605344": "0",
+        "436894399": "0.2",
+        "661313137": "0.0"
+      },
+      "required": {
+        "335563382": 1,
+        "436894399": 1,
+        "661313137": 1
+      }
+    },
+    "168157402": {
+      "questId": "test_case",
+      "objectives": {
+        "309888343": "0.3",
+        "535162542": "0.0",
+        "566564592": "0",
+        "821581707": "0.2",
+        "998564217": "0.1"
+      },
+      "required": {
+        "309888343": 1,
+        "535162542": 1,
+        "821581707": 1,
+        "998564217": 1
+      }
+    },
+    "174909036": {
+      "questId": "milestone_1",
+      "objectives": {
+        "395615519": "0"
+      },
+      "required": {
+        "395615519": 12
+      }
+    },
+    "178594494": {
+      "questId": "shield_stress_testing",
+      "objectives": {
+        "180674205": "0.0",
+        "234958277": "0"
+      },
+      "required": {
+        "180674205": 700
+      }
+    },
+    "179311908": {
+      "questId": "a_symbol_of_unification",
+      "objectives": {
+        "181111146": "0.2",
+        "796928471": "0.1",
+        "823865271": "0",
+        "944976227": "0.0"
+      },
+      "required": {
+        "181111146": 1,
+        "796928471": 1,
+        "944976227": 1
+      }
+    },
+    "180856656": {
+      "questId": "digging_up_dirt",
+      "objectives": {
+        "533204271": "0",
+        "774880720": "0.1",
+        "883931911": "0.0"
+      },
+      "required": {
+        "774880720": 1,
+        "883931911": 1
+      }
+    },
+    "184227996": {
+      "questId": "disrupting_the_frigate",
+      "objectives": {
+        "279526734": "0.2",
+        "429335775": "0.1.1",
+        "557838337": "0.2.2",
+        "706797699": "0.0",
+        "721123772": "0.2.1",
+        "734565768": "0.2.0",
+        "755934592": "0.1",
+        "864787274": "0.1.0",
+        "966136935": "0"
+      },
+      "required": {
+        "429335775": 1,
+        "557838337": 2,
+        "706797699": 3,
+        "721123772": 2,
+        "734565768": 3,
+        "864787274": 1
+      }
+    },
+    "185762867": {
+      "questId": "industrial_espionage",
+      "objectives": {
+        "220079717": "0.0",
+        "302524492": "0.2",
+        "438690932": "0",
+        "761391164": "0.1"
+      },
+      "required": {
+        "220079717": 1,
+        "302524492": 1,
+        "761391164": 1
+      }
+    },
+    "186625142": {
+      "questId": "top_mounted_optics_retrofittings",
+      "objectives": {
+        "270291433": "0.1",
+        "677680021": "0.0",
+        "932740928": "0"
+      },
+      "required": {
+        "270291433": 1000,
+        "677680021": 1
+      }
+    },
+    "191928981": {
+      "questId": "the_league",
+      "objectives": {
+        "120039895": "0",
+        "168665505": "0.0",
+        "253837455": "0.3",
+        "430857349": "0.4",
+        "758525685": "0.5",
+        "867817917": "0.1",
+        "875809315": "0.2"
+      },
+      "required": {
+        "168665505": 1,
+        "253837455": 1,
+        "430857349": 1,
+        "758525685": 1,
+        "867817917": 1,
+        "875809315": 1
+      }
+    },
+    "193819413": {
+      "questId": "water_troubles",
+      "objectives": {
+        "232246758": "0.0",
+        "455704880": "0.2",
+        "597880232": "0.1",
+        "874026144": "0"
+      },
+      "required": {
+        "232246758": 1,
+        "455704880": 1,
+        "597880232": 1
+      }
+    },
+    "197077812": {
+      "questId": "content_drop_1",
+      "objectives": {
+        "949922116": "0"
+      },
+      "required": {
+        "949922116": 24
+      }
+    },
+    "198850633": {
+      "questId": "after_rain_comes",
+      "objectives": {
+        "325561543": "0",
+        "419508061": "0.1",
+        "574220103": "0.0"
+      },
+      "required": {
+        "419508061": 1,
+        "574220103": 1
+      }
+    },
+    "202825635": {
+      "questId": "the_stench_of_corruption",
+      "objectives": {
+        "124804015": "0.4",
+        "258292951": "0.2",
+        "420564252": "0",
+        "639160523": "0.0",
+        "646573470": "0.1",
+        "864014512": "0.3"
+      },
+      "required": {
+        "124804015": 1,
+        "258292951": 1,
+        "639160523": 1,
+        "646573470": 1,
+        "864014512": 1
+      }
+    },
+    "204277157": {
+      "questId": "search_weapon_cases",
+      "objectives": {
+        "452682470": "0.0",
+        "-204277157": "0"
+      },
+      "required": {
+        "452682470": 1
+      }
+    },
+    "209896683": {
+      "questId": "down_to_earth",
+      "objectives": {
+        "186623212": "0.0",
+        "264765067": "0",
+        "553272648": "0.1",
+        "592145610": "0.2"
+      },
+      "required": {
+        "186623212": 1,
+        "553272648": 1,
+        "592145610": 1
+      }
+    },
+    "210354076": {
+      "questId": "a_warm_place_to_rest",
+      "objectives": {
+        "138213350": "0.1",
+        "147685956": "0.3",
+        "219784506": "0",
+        "270197256": "0.2",
+        "856252550": "0.0"
+      },
+      "required": {
+        "138213350": 1,
+        "147685956": 1,
+        "270197256": 1,
+        "856252550": 1
+      }
+    },
+    "214188785": {
+      "questId": "to_the_skies",
+      "objectives": {
+        "108876128": "0.1.2.2",
+        "120061977": "0.1.0.1.3",
+        "149943075": "0.1.1.1.3",
+        "215658284": "0.1.3.1.1",
+        "302501732": "0.0.0",
+        "330497776": "0.1.3.1.3",
+        "347766763": "0.1.0.1.2",
+        "348513519": "0.1.3.1.2",
+        "360478485": "0.1.1.2",
+        "364664969": "0.1.0",
+        "385418326": "0.1",
+        "386172361": "0",
+        "433497709": "0.1.0.1.0",
+        "449687809": "0.1.2",
+        "485522059": "0.0",
+        "571521533": "0.1.1.1.2",
+        "587749617": "0.1.0.0",
+        "612710540": "0.1.2.1",
+        "630628537": "0.0.1",
+        "638097326": "0.1.3.2",
+        "660296722": "0.1.2.0",
+        "748910829": "0.1.3",
+        "761967976": "0.1.1.1.1",
+        "774265477": "0.1.3.0",
+        "777392778": "0.1.2.1.1",
+        "784892026": "0.1.3.1",
+        "788768512": "0.1.3.1.0",
+        "827966999": "0.1.0.2",
+        "829692148": "0.1.1.1",
+        "852014522": "0.1.1.1.0",
+        "879591109": "0.1.0.1.1",
+        "935833307": "0.1.0.1",
+        "952748688": "0.1.2.1.3",
+        "968334249": "0.1.1",
+        "982608586": "0.1.2.1.0",
+        "990881024": "0.1.1.0",
+        "993704755": "0.1.2.1.2"
+      },
+      "required": {
+        "108876128": 1,
+        "120061977": 1,
+        "149943075": 1,
+        "215658284": 1,
+        "302501732": 1,
+        "330497776": 1,
+        "347766763": 1,
+        "348513519": 1,
+        "360478485": 1,
+        "433497709": 1,
+        "571521533": 1,
+        "587749617": 1,
+        "630628537": 1,
+        "638097326": 1,
+        "660296722": 1,
+        "761967976": 1,
+        "774265477": 1,
+        "777392778": 1,
+        "788768512": 1,
+        "827966999": 1,
+        "852014522": 1,
+        "879591109": 1,
+        "952748688": 1,
+        "982608586": 1,
+        "990881024": 1,
+        "993704755": 1
+      }
+    },
+    "215191236": {
+      "questId": "rocketeers_destroyed",
+      "objectives": {
+        "623231642": "0"
+      },
+      "required": {
+        "623231642": 1
+      }
+    },
+    "222271531": {
+      "questId": "line_in_the_sand",
+      "objectives": {
+        "180931228": "0.2",
+        "515535644": "0.3",
+        "671974965": "0.0",
+        "725022563": "0",
+        "777183327": "0.1"
+      },
+      "required": {
+        "180931228": 1,
+        "515535644": 1,
+        "671974965": 1,
+        "777183327": 1
+      }
+    },
+    "222509894": {
+      "questId": "on_the_map",
+      "objectives": {
+        "394414512": "0",
+        "406072130": "0.3",
+        "589825152": "0.4",
+        "622288957": "0.2",
+        "762528455": "0.1",
+        "823154133": "0.0"
+      },
+      "required": {
+        "406072130": 1,
+        "589825152": 1,
+        "622288957": 1,
+        "762528455": 1,
+        "823154133": 1
+      }
+    },
+    "222974352": {
+      "questId": "a_first_foothold",
+      "objectives": {
+        "135773504": "0.3",
+        "200262756": "0",
+        "510696834": "0.1",
+        "548502638": "0.0",
+        "915994656": "0.2"
+      },
+      "required": {
+        "135773504": 1,
+        "510696834": 1,
+        "548502638": 1,
+        "915994656": 1
+      }
+    },
+    "224744082": {
+      "questId": "fragmented_logs",
+      "objectives": {
+        "270984839": "0.1",
+        "625084632": "0.2",
+        "697804536": "0",
+        "877013735": "0.0"
+      },
+      "required": {
+        "270984839": 1,
+        "625084632": 1,
+        "877013735": 1
+      }
+    },
+    "228013753": {
+      "questId": "unopened_containers_searched",
+      "objectives": {
+        "300574016": "0"
+      },
+      "required": {
+        "300574016": 30
+      }
+    },
+    "229271627": {
+      "questId": "thermite_tipped_rounds",
+      "objectives": {
+        "241514841": "0",
+        "287283287": "0.0"
+      },
+      "required": {
+        "287283287": 30
+      }
+    },
+    "234220522": {
+      "questId": "mixed_signals",
+      "objectives": {
+        "362684613": "0",
+        "459660741": "0.1",
+        "988069135": "0.0"
+      },
+      "required": {
+        "459660741": 1,
+        "988069135": 1
+      }
+    },
+    "240175093": {
+      "questId": "damage_rocketeers",
+      "objectives": {
+        "861880200": "0.0",
+        "-240175093": "0"
+      },
+      "required": {
+        "861880200": 1
+      }
+    },
+    "242691618": {
+      "questId": "a_triumphant_exit",
+      "objectives": {
+        "223971774": "0.0",
+        "660764232": "0.3",
+        "674404648": "0.4",
+        "699824162": "0.1",
+        "838444839": "0.2",
+        "-242691618": "0"
+      },
+      "required": {
+        "223971774": 5000,
+        "660764232": 50000,
+        "674404648": 100000,
+        "699824162": 10000,
+        "838444839": 30000
+      }
+    },
+    "250322893": {
+      "questId": "a_triumphant_exit_2",
+      "objectives": {
+        "198303270": "0.1",
+        "470374091": "0.2",
+        "509171908": "0.0",
+        "811307152": "0.4",
+        "911329201": "0.3",
+        "-250322893": "0"
+      },
+      "required": {
+        "198303270": 10000,
+        "470374091": 30000,
+        "509171908": 5000,
+        "811307152": 100000,
+        "911329201": 50000
+      }
+    },
+    "252130520": {
+      "questId": "eyes_in_the_sky",
+      "objectives": {
+        "206328703": "0.0",
+        "372826829": "0.1",
+        "460206788": "0.2",
+        "549108190": "0"
+      },
+      "required": {
+        "206328703": 1,
+        "372826829": 1,
+        "460206788": 1
+      }
+    },
+    "255619263": {
+      "questId": "tracks_of_the_beast",
+      "objectives": {
+        "109739910": "0.5",
+        "278551611": "0.3",
+        "310611692": "0.1",
+        "398535336": "0",
+        "732210375": "0.2",
+        "837363602": "0.4",
+        "899724564": "0.0"
+      },
+      "required": {
+        "109739910": 1,
+        "278551611": 1,
+        "310611692": 1,
+        "732210375": 1,
+        "837363602": 3,
+        "899724564": 1
+      }
+    },
+    "270411957": {
+      "questId": "the_first_nomads_unlock",
+      "objectives": {
+        "819093792": "0"
+      },
+      "required": {
+        "819093792": 1
+      }
+    },
+    "272426288": {
+      "questId": "belly_of_the_beast",
+      "objectives": {
+        "105787410": "0.1.1.4",
+        "219804499": "0.1.0",
+        "345018053": "0.1.1.1",
+        "446898887": "0.1.1.2",
+        "542716166": "0",
+        "749593724": "0.1.1.0",
+        "841056378": "0.1",
+        "852822709": "0.0",
+        "918455371": "0.1.1.3",
+        "960749137": "0.1.1"
+      },
+      "required": {
+        "105787410": 1,
+        "219804499": 1,
+        "345018053": 1,
+        "446898887": 1,
+        "749593724": 1,
+        "852822709": 1,
+        "918455371": 5
+      }
+    },
+    "273689184": {
+      "questId": "our_presence_up_there",
+      "objectives": {
+        "234439923": "0",
+        "491492960": "0.0",
+        "761956038": "0.1",
+        "870246635": "0.2"
+      },
+      "required": {
+        "491492960": 1,
+        "761956038": 1,
+        "870246635": 1
+      }
+    },
+    "275303650": {
+      "questId": "returned_safely_to_speranza",
+      "objectives": {
+        "628067491": "0"
+      },
+      "required": {
+        "628067491": 2
+      }
+    },
+    "286317394": {
+      "questId": "test_arc_parts_for_inconsistencies",
+      "objectives": {
+        "351331122": "0.1",
+        "507930247": "0.2",
+        "510514440": "0.0",
+        "-286317394": "0"
+      },
+      "required": {
+        "351331122": 500,
+        "507930247": 1000,
+        "510514440": 50
+      }
+    },
+    "295197451": {
+      "questId": "market_correction",
+      "objectives": {
+        "116081675": "0.0",
+        "263334058": "0",
+        "835212949": "0.1"
+      },
+      "required": {
+        "116081675": 1,
+        "835212949": 1
+      }
+    },
+    "298419926": {
+      "questId": "damage_dealt_to_rocketeers",
+      "objectives": {
+        "458361556": "0"
+      },
+      "required": {
+        "458361556": 400
+      }
+    },
+    "301224792": {
+      "questId": "off_the_radar",
+      "objectives": {
+        "199555443": "0.1",
+        "606313603": "0.0",
+        "880134641": "0"
+      },
+      "required": {
+        "199555443": 1,
+        "606313603": 1
+      }
+    },
+    "302726312": {
+      "questId": "nothing_ventured",
+      "objectives": {
+        "167661008": "0.6",
+        "249776905": "0.1",
+        "258386209": "0.5",
+        "270767921": "0.2",
+        "272203398": "0.7",
+        "601530207": "0",
+        "648567798": "0.8",
+        "770546079": "0.4",
+        "796511917": "0.3",
+        "850697582": "0.0"
+      },
+      "required": {
+        "167661008": 6,
+        "249776905": 5,
+        "258386209": 6,
+        "270767921": 2,
+        "272203398": 1,
+        "648567798": 1,
+        "770546079": 3,
+        "796511917": 3,
+        "850697582": 3
+      }
+    },
+    "303574271": {
+      "questId": "clean_hands",
+      "objectives": {
+        "118306442": "0.1",
+        "123690036": "0",
+        "280537839": "0.3",
+        "557471473": "0.0",
+        "905604001": "0.2"
+      },
+      "required": {
+        "118306442": 1,
+        "280537839": 1,
+        "557471473": 1,
+        "905604001": 1
+      }
+    },
+    "317873421": {
+      "questId": "unexpected_initiative",
+      "objectives": {
+        "259123726": "0.3",
+        "375968768": "0.5",
+        "474912560": "0",
+        "638405411": "0.1",
+        "731948804": "0.2",
+        "819874136": "0.4",
+        "885540539": "0.0"
+      },
+      "required": {
+        "259123726": 1,
+        "375968768": 1,
+        "638405411": 1,
+        "731948804": 1,
+        "819874136": 1,
+        "885540539": 1
+      }
+    },
+    "319610871": {
+      "questId": "taking_stock",
+      "objectives": {
+        "211731595": "0.3",
+        "338264736": "0.0",
+        "394985142": "0.2",
+        "568005133": "0.2.0",
+        "599948421": "0",
+        "764009776": "0.1",
+        "990227960": "0.2.1"
+      },
+      "required": {
+        "211731595": 3,
+        "338264736": 1,
+        "568005133": 1,
+        "764009776": 1,
+        "990227960": 1
+      }
+    },
+    "319892220": {
+      "questId": "deciphering_the_data",
+      "objectives": {
+        "230540239": "0.1",
+        "532729124": "0.2",
+        "763994958": "0",
+        "798795400": "0.0"
+      },
+      "required": {
+        "230540239": 1,
+        "532729124": 1,
+        "798795400": 1
+      }
+    },
+    "326917285": {
+      "questId": "a_path_not_yours",
+      "objectives": {
+        "429901944": "0.2.0",
+        "436986856": "0.2.1",
+        "449488196": "0.1",
+        "460229677": "0",
+        "624066045": "0.3",
+        "795754596": "0.2",
+        "893038469": "0.0"
+      },
+      "required": {
+        "429901944": 1,
+        "436986856": 1,
+        "449488196": 1,
+        "624066045": 1,
+        "893038469": 1
+      }
+    },
+    "332431490": {
+      "questId": "armored_transports",
+      "objectives": {
+        "118769899": "0",
+        "340202078": "0.2",
+        "461888142": "0.1",
+        "884051266": "0.3",
+        "929107940": "0.4",
+        "949329988": "0.0"
+      },
+      "required": {
+        "340202078": 1,
+        "461888142": 1,
+        "884051266": 1,
+        "929107940": 1,
+        "949329988": 1
+      }
+    },
+    "335754272": {
+      "questId": "nothing_gained",
+      "objectives": {
+        "535632640": "0.1",
+        "903841388": "0",
+        "927773315": "0.0",
+        "928226615": "0.3",
+        "932972952": "0.2"
+      },
+      "required": {
+        "535632640": 1,
+        "927773315": 1,
+        "928226615": 1,
+        "932972952": 1
+      }
+    },
+    "339761933": {
+      "questId": "search_arc_enemies",
+      "objectives": {
+        "596933765": "0.0",
+        "-339761933": "0"
+      },
+      "required": {
+        "596933765": 1
+      }
+    },
+    "342509563": {
+      "questId": "untended_garden",
+      "objectives": {
+        "379514750": "0",
+        "499659056": "0.0",
+        "760242413": "0.2",
+        "982624383": "0.1"
+      },
+      "required": {
+        "499659056": 1,
+        "760242413": 1,
+        "982624383": 1
+      }
+    },
+    "351231222": {
+      "questId": "marked_for_death",
+      "objectives": {
+        "143064174": "0.1",
+        "240913124": "0.2",
+        "275929315": "0.0",
+        "766715157": "0"
+      },
+      "required": {
+        "143064174": 1,
+        "240913124": 1,
+        "275929315": 1
+      }
+    },
+    "351481873": {
+      "questId": "arc_machines_destroyed",
+      "objectives": {
+        "353919429": "0"
+      },
+      "required": {
+        "353919429": 5
+      }
+    },
+    "354096271": {
+      "questId": "leapers_destroyed",
+      "objectives": {
+        "795173174": "0"
+      },
+      "required": {
+        "795173174": 1
+      }
+    },
+    "359965960": {
+      "questId": "unlock_nomad_envoy_questgiver",
+      "objectives": {
+        "556377989": "0"
+      },
+      "required": {
+        "556377989": 1
+      }
+    },
+    "360621921": {
+      "questId": "celestes_teenage_rebellion",
+      "objectives": {
+        "102743907": "0.1.0",
+        "184971635": "0.0.0",
+        "273618837": "0.1.2.1.1",
+        "293611178": "0.1.2.1",
+        "305899928": "0.1",
+        "324261945": "0.1.1",
+        "430201596": "0.0.1",
+        "467508441": "0",
+        "523416023": "0.1.2",
+        "541846170": "0.1.2.1.0",
+        "720025264": "0.0.1.1",
+        "789421638": "0.1.2.0",
+        "855660349": "0.0.1.0",
+        "899013715": "0.0"
+      },
+      "required": {
+        "102743907": 1,
+        "184971635": 1,
+        "273618837": 1,
+        "324261945": 1,
+        "541846170": 1,
+        "720025264": 3,
+        "789421638": 1,
+        "855660349": 1
+      }
+    },
+    "360858026": {
+      "questId": "search_probes_couriers_or_husks",
+      "objectives": {
+        "392233665": "0.0",
+        "-360858026": "0"
+      },
+      "required": {
+        "392233665": 1
+      }
+    },
+    "370879218": {
+      "questId": "sparks_fly",
+      "objectives": {
+        "142010260": "0.0",
+        "826225862": "0.1",
+        "880755088": "0"
+      },
+      "required": {
+        "142010260": 1,
+        "826225862": 1
+      }
+    },
+    "373106585": {
+      "questId": "dormant_barons",
+      "objectives": {
+        "250129521": "0"
+      },
+      "required": {
+        "250129521": 1
+      }
+    },
+    "376492192": {
+      "questId": "worth_your_salt",
+      "objectives": {
+        "191464578": "0.1",
+        "408105891": "0",
+        "586336019": "0.4",
+        "657618896": "0.3",
+        "675583994": "0.2",
+        "934278857": "0.0"
+      },
+      "required": {
+        "191464578": 1,
+        "586336019": 1,
+        "657618896": 1,
+        "675583994": 1,
+        "934278857": 1
+      }
+    },
+    "377635383": {
+      "questId": "fireballs_destroyed",
+      "objectives": {
+        "979151679": "0"
+      },
+      "required": {
+        "979151679": 3
+      }
+    },
+    "387008177": {
+      "questId": "what_goes_around",
+      "objectives": {
+        "287050823": "0"
+      },
+      "required": {
+        "287050823": 1
+      }
+    },
+    "396599068": {
+      "questId": "exploring_pendola_pass",
+      "objectives": {
+        "135313426": "0.2",
+        "186030124": "0.3",
+        "417304395": "0.1",
+        "591539553": "0",
+        "659465808": "0.0"
+      },
+      "required": {
+        "135313426": 1,
+        "186030124": 3,
+        "417304395": 1,
+        "659465808": 20
+      }
+    },
+    "404803322": {
+      "questId": "returned_safely_to_speranza_2",
+      "objectives": {
+        "103169466": "0"
+      },
+      "required": {
+        "103169466": 1
+      }
+    },
+    "408596240": {
+      "questId": "switching_the_supply",
+      "objectives": {
+        "155265620": "0.1",
+        "300169719": "0.0",
+        "565199362": "0"
+      },
+      "required": {
+        "155265620": 1,
+        "300169719": 1
+      }
+    },
+    "411112619": {
+      "questId": "in_my_image",
+      "objectives": {
+        "292964935": "0",
+        "492609098": "0.0",
+        "719256869": "0.1"
+      },
+      "required": {
+        "492609098": 1,
+        "719256869": 3
+      }
+    },
+    "429063948": {
+      "questId": "sizing_things_up",
+      "objectives": {
+        "226567572": "0.0",
+        "314882164": "0.1.0",
+        "380402761": "0.0.2",
+        "397006565": "0",
+        "455827868": "0.0.1",
+        "510547583": "0.0.1.0",
+        "519543960": "0.0.1.1",
+        "603033564": "0.1.2",
+        "755554369": "0.0.0",
+        "857089062": "0.1.1",
+        "972381536": "0.1"
+      },
+      "required": {
+        "314882164": 1,
+        "380402761": 1,
+        "510547583": 1,
+        "519543960": 1,
+        "603033564": 1,
+        "755554369": 1,
+        "857089062": 1
+      }
+    },
+    "431784727": {
+      "questId": "a_triumphant_exit_3",
+      "objectives": {
+        "627880376": "0.4",
+        "685623799": "0.2",
+        "714861485": "0.0",
+        "897833688": "0.1",
+        "981381873": "0.3",
+        "-431784727": "0"
+      },
+      "required": {
+        "627880376": 100000,
+        "685623799": 30000,
+        "714861485": 5000,
+        "897833688": 10000,
+        "981381873": 50000
+      }
+    },
+    "436091514": {
+      "questId": "compact_combustion_charges",
+      "objectives": {
+        "132724150": "0",
+        "354062823": "0.0"
+      },
+      "required": {
+        "354062823": 3000
+      }
+    },
+    "438988440": {
+      "questId": "damage_dealt_to_shredders",
+      "objectives": {
+        "100814234": "0"
+      },
+      "required": {
+        "100814234": 400
+      }
+    },
+    "438994396": {
+      "questId": "extended_burst_cycles",
+      "objectives": {
+        "527327788": "0.0",
+        "662550687": "0"
+      },
+      "required": {
+        "527327788": 10000
+      }
+    },
+    "439361251": {
+      "questId": "fight_arc_with_nomad_tactics",
+      "objectives": {
+        "344181785": "0.0",
+        "-439361251": "0"
+      },
+      "required": {
+        "344181785": 950
+      }
+    },
+    "441508419": {
+      "questId": "when_everything_falls",
+      "objectives": {
+        "192349032": "0.1.0",
+        "213135053": "0.0",
+        "274346698": "0.1.1",
+        "315791387": "0.1",
+        "343279834": "0.1.2",
+        "388747632": "0.1.4",
+        "426480138": "0",
+        "734178439": "0.1.3",
+        "801061272": "0.1.5",
+        "889845294": "0.1.6"
+      },
+      "required": {
+        "192349032": 1,
+        "213135053": 1,
+        "274346698": 1,
+        "343279834": 1,
+        "388747632": 1,
+        "734178439": 1,
+        "801061272": 1,
+        "889845294": 1
+      }
+    },
+    "459265580": {
+      "questId": "test_multiple_arc_destruction_methods",
+      "objectives": {
+        "353986579": "0.1",
+        "500018966": "0.0",
+        "852266469": "0.2",
+        "-459265580": "0"
+      },
+      "required": {
+        "353986579": 3,
+        "500018966": 1500,
+        "852266469": 20
+      }
+    },
+    "462726304": {
+      "questId": "secure_safe_passage_for_the_nomads",
+      "objectives": {
+        "763222036": "0.0",
+        "-462726304": "0"
+      },
+      "required": {
+        "763222036": 1200
+      }
+    },
+    "466797679": {
+      "questId": "doctors_orders",
+      "objectives": {
+        "139216492": "0.0",
+        "295221532": "0",
+        "335612654": "0.3",
+        "344965038": "0.4",
+        "418709717": "0.1",
+        "764416448": "0.2"
+      },
+      "required": {
+        "139216492": 1,
+        "335612654": 1,
+        "344965038": 1,
+        "418709717": 2,
+        "764416448": 1
+      }
+    },
+    "478018499": {
+      "questId": "power_out",
+      "objectives": {
+        "477044528": "0.3",
+        "487706771": "0",
+        "794485563": "0.0",
+        "864995278": "0.1",
+        "950329607": "0.2"
+      },
+      "required": {
+        "477044528": 1,
+        "794485563": 1,
+        "864995278": 1,
+        "950329607": 1
+      }
+    },
+    "478622901": {
+      "questId": "communication_hideout",
+      "objectives": {
+        "354645154": "0.1",
+        "538957620": "0.0",
+        "540652513": "0.2",
+        "556802998": "0.4",
+        "559295409": "0.3",
+        "807246013": "0"
+      },
+      "required": {
+        "354645154": 1,
+        "538957620": 1,
+        "540652513": 1,
+        "556802998": 1,
+        "559295409": 1
+      }
+    },
+    "478790277": {
+      "questId": "reduced_to_rubble",
+      "objectives": {
+        "340843276": "0.2",
+        "394672312": "0.3",
+        "633254959": "0.0",
+        "721171236": "0.1",
+        "996345259": "0"
+      },
+      "required": {
+        "340843276": 1,
+        "394672312": 1,
+        "633254959": 1,
+        "721171236": 1
+      }
+    },
+    "479028826": {
+      "questId": "safe_passage",
+      "objectives": {
+        "324158970": "0"
+      },
+      "required": {
+        "324158970": 2
+      }
+    },
+    "483446731": {
+      "questId": "shoring_up_defenses",
+      "objectives": {
+        "280873296": "0",
+        "324145092": "0.3",
+        "371899392": "0.0",
+        "475242069": "0.1",
+        "817910250": "0.2"
+      },
+      "required": {
+        "324145092": 1,
+        "371899392": 5,
+        "475242069": 3,
+        "817910250": 1
+      }
+    },
+    "485628306": {
+      "questId": "life_of_a_pharmacist",
+      "objectives": {
+        "297861065": "0.0",
+        "468314282": "0.1.0",
+        "513484629": "0",
+        "593609288": "0.1.2",
+        "621044717": "0.1.3",
+        "743272290": "0.1.1",
+        "813835997": "0.1"
+      },
+      "required": {
+        "297861065": 1,
+        "468314282": 1,
+        "593609288": 1,
+        "621044717": 1,
+        "743272290": 1
+      }
+    },
+    "488980959": {
+      "questId": "celestes_childhood_drawings",
+      "objectives": {
+        "136899862": "0.1.1",
+        "336089804": "0.1.1.0",
+        "494741266": "0.0",
+        "668243212": "0.0.1",
+        "737880653": "0.0.0",
+        "748330066": "0",
+        "807268356": "0.1.0",
+        "944900153": "0.1",
+        "992982386": "0.1.0.0"
+      },
+      "required": {
+        "336089804": 1,
+        "668243212": 1,
+        "737880653": 1,
+        "992982386": 1
+      }
+    },
+    "490756846": {
+      "questId": "boarding_the_frigate",
+      "objectives": {
+        "204275663": "0",
+        "462003205": "0.1.2",
+        "514589778": "0.1.0",
+        "527060816": "0.0",
+        "726475207": "0.1.1",
+        "737198432": "0.1"
+      },
+      "required": {
+        "462003205": 100,
+        "514589778": 100,
+        "527060816": 1,
+        "726475207": 100
+      }
+    },
+    "492900488": {
+      "questId": "espresso",
+      "objectives": {
+        "614744839": "0.1",
+        "951516885": "0",
+        "956702000": "0.0"
+      },
+      "required": {
+        "614744839": 1,
+        "956702000": 1
+      }
+    },
+    "493724775": {
+      "questId": "groundbreaking",
+      "objectives": {
+        "163039909": "0.0",
+        "240574614": "0.1",
+        "478445196": "0.4",
+        "580874998": "0",
+        "583499895": "0.3",
+        "605515647": "0.2"
+      },
+      "required": {
+        "163039909": 1,
+        "240574614": 1,
+        "478445196": 1,
+        "583499895": 1,
+        "605515647": 1
+      }
+    },
+    "506560305": {
+      "questId": "a_balanced_harvest",
+      "objectives": {
+        "429399642": "0.1",
+        "448892484": "0.0",
+        "612238099": "0.2",
+        "973653818": "0"
+      },
+      "required": {
+        "429399642": 1,
+        "448892484": 1,
+        "612238099": 1
+      }
+    },
+    "508668827": {
+      "questId": "medical_merchandise",
+      "objectives": {
+        "695544225": "0.2",
+        "750110673": "0.1",
+        "787440155": "0.0",
+        "799685270": "0"
+      },
+      "required": {
+        "695544225": 2,
+        "750110673": 3,
+        "787440155": 2
+      }
+    },
+    "512319151": {
+      "questId": "trigger_reset_systems",
+      "objectives": {
+        "266952707": "0",
+        "434778155": "0.0"
+      },
+      "required": {
+        "434778155": 5
+      }
+    },
+    "515224125": {
+      "questId": "with_a_trace",
+      "objectives": {
+        "325250181": "0.2",
+        "443156459": "0.3",
+        "609003871": "0.1",
+        "621469837": "0",
+        "681391922": "0.0"
+      },
+      "required": {
+        "325250181": 1,
+        "443156459": 1,
+        "609003871": 1,
+        "681391922": 1
+      }
+    },
+    "516774870": {
+      "questId": "collision_course",
+      "objectives": {
+        "392047856": "0",
+        "446891237": "0.0",
+        "717685727": "0.1"
+      },
+      "required": {
+        "446891237": 1,
+        "717685727": 1
+      }
+    },
+    "533149302": {
+      "questId": "settled_in_full",
+      "objectives": {
+        "331487632": "0",
+        "740065036": "0.0",
+        "755940989": "0.1"
+      },
+      "required": {
+        "740065036": 1,
+        "755940989": 1
+      }
+    },
+    "533396966": {
+      "questId": "into_the_fray",
+      "objectives": {
+        "206038446": "0.1",
+        "535088898": "0",
+        "670681042": "0.0",
+        "812909728": "0.2"
+      },
+      "required": {
+        "206038446": 4,
+        "670681042": 1,
+        "812909728": 1
+      }
+    },
+    "534743530": {
+      "questId": "the_clean_dream",
+      "objectives": {
+        "145250570": "0",
+        "589321937": "0.4",
+        "599491604": "0.1",
+        "610817801": "0.0",
+        "631683729": "0.3",
+        "773267933": "0.5",
+        "775857714": "0.5.0",
+        "823052397": "0.5.1",
+        "837015412": "0.2"
+      },
+      "required": {
+        "589321937": 1,
+        "599491604": 1,
+        "610817801": 1,
+        "631683729": 1,
+        "775857714": 1,
+        "823052397": 1,
+        "837015412": 2
+      }
+    },
+    "535895416": {
+      "questId": "beam_resonance_tech",
+      "objectives": {
+        "514323988": "0.0",
+        "600327202": "0"
+      },
+      "required": {
+        "514323988": 1500
+      }
+    },
+    "538209273": {
+      "questId": "unopened_containers_searched_2",
+      "objectives": {
+        "566154275": "0"
+      },
+      "required": {
+        "566154275": 10
+      }
+    },
+    "539055021": {
+      "questId": "a_better_use",
+      "objectives": {
+        "912001812": "0.1",
+        "991668151": "0",
+        "991756828": "0.0"
+      },
+      "required": {
+        "912001812": 1,
+        "991756828": 1
+      }
+    },
+    "555509751": {
+      "questId": "battening_down",
+      "objectives": {
+        "107585490": "0.2",
+        "188919370": "0",
+        "462921581": "0.0",
+        "469977854": "0.1"
+      },
+      "required": {
+        "107585490": 1,
+        "462921581": 1,
+        "469977854": 1
+      }
+    },
+    "559873504": {
+      "questId": "clamoring_for_attention",
+      "objectives": {
+        "143105588": "0.1",
+        "343023344": "0",
+        "394292300": "0.0",
+        "405035891": "0.2"
+      },
+      "required": {
+        "143105588": 1,
+        "394292300": 1,
+        "405035891": 1
+      }
+    },
+    "560330958": {
+      "questId": "picking_up_the_pieces",
+      "objectives": {
+        "228130706": "0",
+        "508265794": "0.0",
+        "588563237": "0.1"
+      },
+      "required": {
+        "508265794": 1,
+        "588563237": 3
+      }
+    },
+    "572303562": {
+      "questId": "damage_dealt_to_fireballs",
+      "objectives": {
+        "198654021": "0"
+      },
+      "required": {
+        "198654021": 70
+      }
+    },
+    "573974277": {
+      "questId": "bombing_run",
+      "objectives": {
+        "118514346": "0",
+        "600365040": "0.0",
+        "701818161": "0.1"
+      },
+      "required": {
+        "600365040": 1,
+        "701818161": 1
+      }
+    },
+    "577199311": {
+      "questId": "the_right_tool",
+      "objectives": {
+        "146106090": "0.0",
+        "742076727": "0.2",
+        "869886405": "0.1",
+        "998695324": "0"
+      },
+      "required": {
+        "146106090": 1,
+        "742076727": 1,
+        "869886405": 1
+      }
+    },
+    "613705920": {
+      "questId": "straight_record",
+      "objectives": {
+        "260994007": "0.5",
+        "583897570": "0.0",
+        "604761918": "0.2",
+        "746694693": "0.4",
+        "788182320": "0.3",
+        "815573572": "0",
+        "918003994": "0.1"
+      },
+      "required": {
+        "260994007": 1,
+        "583897570": 1,
+        "604761918": 1,
+        "746694693": 1,
+        "788182320": 1,
+        "918003994": 1
+      }
+    },
+    "615947722": {
+      "questId": "on_deaf_ears",
+      "objectives": {
+        "169981854": "0",
+        "514039974": "0.0",
+        "817773228": "0.2",
+        "839725353": "0.1",
+        "844747289": "0.3"
+      },
+      "required": {
+        "514039974": 1,
+        "817773228": 1,
+        "839725353": 1,
+        "844747289": 1
+      }
+    },
+    "621055153": {
+      "questId": "one_final_test",
+      "objectives": {
+        "929864869": "0.0",
+        "-621055153": "0"
+      },
+      "required": {
+        "929864869": 100
+      }
+    },
+    "621141089": {
+      "questId": "vaporizers_destroyed",
+      "objectives": {
+        "593107139": "0"
+      },
+      "required": {
+        "593107139": 1
+      }
+    },
+    "622180896": {
+      "questId": "a_new_type_of_plant",
+      "objectives": {
+        "266158103": "0.0",
+        "402010761": "0",
+        "418184108": "0.1"
+      },
+      "required": {
+        "266158103": 1,
+        "418184108": 1
+      }
+    },
+    "623087552": {
+      "questId": "celestes_journals",
+      "objectives": {
+        "135566996": "0.0",
+        "527409763": "0.1",
+        "596846319": "0.2",
+        "865278450": "0"
+      },
+      "required": {
+        "135566996": 1,
+        "527409763": 1,
+        "596846319": 2
+      }
+    },
+    "624910346": {
+      "questId": "arc_machines_destroyed_2",
+      "objectives": {
+        "351017849": "0"
+      },
+      "required": {
+        "351017849": 10
+      }
+    },
+    "634129221": {
+      "questId": "someone_elses_shoes",
+      "objectives": {
+        "334462051": "0.0",
+        "426305807": "0.1",
+        "431783346": "0.2",
+        "691926649": "0"
+      },
+      "required": {
+        "334462051": 1,
+        "426305807": 1,
+        "431783346": 1
+      }
+    },
+    "636314828": {
+      "questId": "damage_dealt_to_arc_enemies",
+      "objectives": {
+        "476091168": "0"
+      },
+      "required": {
+        "476091168": 500
+      }
+    },
+    "642072897": {
+      "questId": "a_reveal_in_ruins",
+      "objectives": {
+        "289943492": "0",
+        "527350623": "0.0",
+        "592092300": "0.1"
+      },
+      "required": {
+        "527350623": 1,
+        "592092300": 1
+      }
+    },
+    "643896928": {
+      "questId": "last_entry",
+      "objectives": {
+        "244845729": "0.1",
+        "266088076": "0.3",
+        "312464590": "0",
+        "456135631": "0.0",
+        "732242291": "0.4",
+        "745976432": "0.2"
+      },
+      "required": {
+        "244845729": 1,
+        "266088076": 1,
+        "456135631": 1,
+        "732242291": 1,
+        "745976432": 1
+      }
+    },
+    "644143631": {
+      "questId": "a_lay_of_the_land",
+      "objectives": {
+        "331828231": "0",
+        "528973266": "0.1",
+        "592690496": "0.2",
+        "615250850": "0.0",
+        "728505542": "0.3"
+      },
+      "required": {
+        "528973266": 1,
+        "592690496": 1,
+        "615250850": 1,
+        "728505542": 1
+      }
+    },
+    "649550390": {
+      "questId": "flickering_threat",
+      "objectives": {
+        "178298404": "0.1",
+        "312402975": "0.3",
+        "441138830": "0",
+        "545592406": "0.2",
+        "588322446": "0.0"
+      },
+      "required": {
+        "178298404": 1,
+        "312402975": 1,
+        "545592406": 1,
+        "588322446": 1
+      }
+    },
+    "654194932": {
+      "questId": "keeping_the_memory",
+      "objectives": {
+        "673401049": "0",
+        "757686232": "0.1",
+        "840727893": "0.0",
+        "949668812": "0.2"
+      },
+      "required": {
+        "757686232": 1,
+        "840727893": 1,
+        "949668812": 1
+      }
+    },
+    "657368972": {
+      "questId": "lost_in_transmission",
+      "objectives": {
+        "105764690": "0.2",
+        "395493699": "0.1",
+        "469989148": "0.3",
+        "780543559": "0",
+        "867461005": "0.0"
+      },
+      "required": {
+        "105764690": 1,
+        "395493699": 1,
+        "469989148": 1,
+        "867461005": 1
+      }
+    },
+    "657515992": {
+      "questId": "upgrade_cargo_elevator_antennas",
+      "objectives": {
+        "529441475": "0.0",
+        "-657515992": "0"
+      },
+      "required": {
+        "529441475": 3
+      }
+    },
+    "665128450": {
+      "questId": "a_dead_end",
+      "objectives": {
+        "384682950": "0.0",
+        "454543824": "0.4",
+        "595703757": "0.2",
+        "657552984": "0",
+        "694653338": "0.1",
+        "728121333": "0.3"
+      },
+      "required": {
+        "384682950": 1,
+        "454543824": 1,
+        "595703757": 1,
+        "694653338": 1,
+        "728121333": 1
+      }
+    },
+    "669785596": {
+      "questId": "building_a_library",
+      "objectives": {
+        "199046709": "0.1",
+        "370831344": "0.0",
+        "492159890": "0.4",
+        "499375109": "0.3",
+        "582871023": "0.2",
+        "613509838": "0"
+      },
+      "required": {
+        "199046709": 1,
+        "370831344": 1,
+        "492159890": 3,
+        "499375109": 1,
+        "582871023": 1
+      }
+    },
+    "674698992": {
+      "questId": "a_triumphant_exit_4",
+      "objectives": {
+        "119390259": "0.2",
+        "253918107": "0.3",
+        "734099594": "0.4",
+        "741646868": "0.0",
+        "851923516": "0.1",
+        "-674698992": "0"
+      },
+      "required": {
+        "119390259": 30000,
+        "253918107": 50000,
+        "734099594": 100000,
+        "741646868": 5000,
+        "851923516": 10000
+      }
+    },
+    "677711889": {
+      "questId": "a_wrench_in_the_works",
+      "objectives": {
+        "290236841": "0",
+        "425430404": "0.1",
+        "446581916": "0.0"
+      },
+      "required": {
+        "425430404": 1,
+        "446581916": 1
+      }
+    },
+    "689514526": {
+      "questId": "embedded_blast_engineering",
+      "objectives": {
+        "184554227": "0.2",
+        "296415957": "0.3",
+        "542516208": "0.0",
+        "550036869": "0.1",
+        "783888272": "0"
+      },
+      "required": {
+        "184554227": 1000,
+        "296415957": 1000,
+        "542516208": 1000,
+        "550036869": 1000
+      }
+    },
+    "690671917": {
+      "questId": "targeted_component_trial",
+      "objectives": {
+        "511895883": "0.0",
+        "609877973": "0"
+      },
+      "required": {
+        "511895883": 40
+      }
+    },
+    "693361492": {
+      "questId": "prescriptions_of_the_past",
+      "objectives": {
+        "139231587": "0",
+        "330815350": "0.2",
+        "390256977": "0.1",
+        "984628661": "0.0"
+      },
+      "required": {
+        "330815350": 1,
+        "390256977": 1,
+        "984628661": 1
+      }
+    },
+    "695075203": {
+      "questId": "echoes_of_victory_ridge",
+      "objectives": {
+        "315021597": "0.1",
+        "558226649": "0.2",
+        "580483577": "0.0",
+        "965349273": "0"
+      },
+      "required": {
+        "315021597": 1,
+        "558226649": 1,
+        "580483577": 1
+      }
+    },
+    "696735836": {
+      "questId": "queens_pve_quest_unlock",
+      "objectives": {
+        "220311921": "0"
+      },
+      "required": {
+        "220311921": 100
+      }
+    },
+    "700237150": {
+      "questId": "tribute_to_toledo",
+      "objectives": {
+        "524585535": "0"
+      },
+      "required": {
+        "524585535": 1
+      }
+    },
+    "710757590": {
+      "questId": "clearer_skies",
+      "objectives": {
+        "231678539": "0.1",
+        "860956647": "0.0",
+        "890532018": "0"
+      },
+      "required": {
+        "231678539": 3,
+        "860956647": 3
+      }
+    },
+    "719538477": {
+      "questId": "action_economy",
+      "objectives": {
+        "721816809": "0.0",
+        "979711813": "0"
+      },
+      "required": {
+        "721816809": 1000
+      }
+    },
+    "734193008": {
+      "questId": "a_triumphant_exit_5",
+      "objectives": {
+        "327133738": "0",
+        "602239168": "0.3",
+        "769248779": "0.0",
+        "852517400": "0.1",
+        "861681252": "0.2",
+        "878098740": "0.4"
+      },
+      "required": {
+        "602239168": 50000,
+        "769248779": 5000,
+        "852517400": 10000,
+        "861681252": 30000,
+        "878098740": 100000
+      }
+    },
+    "750121707": {
+      "questId": "damage_dealt_to_queen_or_matriarch",
+      "objectives": {
+        "196780165": "0"
+      },
+      "required": {
+        "196780165": 5000
+      }
+    },
+    "750429985": {
+      "questId": "hatch_repairs",
+      "objectives": {
+        "335565950": "0.0",
+        "605984496": "0",
+        "619170200": "0.1"
+      },
+      "required": {
+        "335565950": 1,
+        "619170200": 1
+      }
+    },
+    "759452831": {
+      "questId": "ruins_and_reverberations",
+      "objectives": {
+        "370162971": "0",
+        "422194552": "0.2",
+        "598834333": "0.1",
+        "615110719": "0.0"
+      },
+      "required": {
+        "422194552": 1,
+        "598834333": 1,
+        "615110719": 1
+      }
+    },
+    "762194558": {
+      "questId": "keeping_an_eye_out",
+      "objectives": {
+        "154647171": "0.0",
+        "297144641": "0.1",
+        "955036891": "0"
+      },
+      "required": {
+        "154647171": 1,
+        "297144641": 1
+      }
+    },
+    "763577164": {
+      "questId": "snap_and_salvage",
+      "objectives": {
+        "561015547": "0",
+        "590851747": "0.0",
+        "646928268": "0.1",
+        "749157460": "0.3",
+        "811421166": "0.2"
+      },
+      "required": {
+        "590851747": 1,
+        "646928268": 1,
+        "749157460": 1,
+        "811421166": 1
+      }
+    },
+    "765803928": {
+      "questId": "wasps_destroyed",
+      "objectives": {
+        "441071922": "0"
+      },
+      "required": {
+        "441071922": 3
+      }
+    },
+    "781629168": {
+      "questId": "damage_dealt_to_arc_enemies_using_medium_ammo_weapons",
+      "objectives": {
+        "413306068": "0"
+      },
+      "required": {
+        "413306068": 400
+      }
+    },
+    "787146537": {
+      "questId": "lockers_searched",
+      "objectives": {
+        "329094800": "0"
+      },
+      "required": {
+        "329094800": 5
+      }
+    },
+    "796315392": {
+      "questId": "multiple_arc_destroyed_with_one_wolfpack",
+      "objectives": {
+        "738684296": "0"
+      },
+      "required": {
+        "738684296": 4
+      }
+    },
+    "797680199": {
+      "questId": "stable_housing",
+      "objectives": {
+        "179272459": "0.4",
+        "235938368": "0",
+        "237538343": "0.5",
+        "249704814": "0.2",
+        "425521566": "0.1",
+        "762181889": "0.3",
+        "864728751": "0.6",
+        "974647361": "0.0"
+      },
+      "required": {
+        "179272459": 1,
+        "237538343": 1,
+        "249704814": 1,
+        "425521566": 1,
+        "762181889": 1,
+        "864728751": 1,
+        "974647361": 1
+      }
+    },
+    "798320872": {
+      "questId": "home_to_roost",
+      "objectives": {
+        "129077102": "0.3",
+        "273934751": "0.2",
+        "390263048": "0.6",
+        "515240122": "0.1",
+        "556785988": "0.0",
+        "664097185": "0.7",
+        "738776849": "0.4",
+        "925424486": "0",
+        "975153678": "0.5"
+      },
+      "required": {
+        "129077102": 1,
+        "273934751": 1,
+        "390263048": 1,
+        "515240122": 1,
+        "556785988": 1,
+        "664097185": 1,
+        "738776849": 1,
+        "975153678": 1
+      }
+    },
+    "799875949": {
+      "questId": "safe_harbor",
+      "objectives": {
+        "207638940": "0.2",
+        "643087511": "0.1",
+        "710049858": "0",
+        "815869655": "0.0",
+        "899608935": "0.3"
+      },
+      "required": {
+        "207638940": 1,
+        "643087511": 1,
+        "815869655": 1,
+        "899608935": 1
+      }
+    },
+    "800313646": {
+      "questId": "burst_assembly_recovery",
+      "objectives": {
+        "678214281": "0.0",
+        "756651479": "0"
+      },
+      "required": {
+        "678214281": 3
+      }
+    },
+    "806390138": {
+      "questId": "milestone_1_2",
+      "objectives": {
+        "966577668": "0"
+      },
+      "required": {
+        "966577668": 4
+      }
+    },
+    "814280836": {
+      "questId": "melee_damage_dealt_to_arc",
+      "objectives": {
+        "119463447": "0"
+      },
+      "required": {
+        "119463447": 500
+      }
+    },
+    "819934763": {
+      "questId": "damage_dealt_to_fireflies",
+      "objectives": {
+        "735092056": "0"
+      },
+      "required": {
+        "735092056": 400
+      }
+    },
+    "824772961": {
+      "questId": "broken_monument",
+      "objectives": {
+        "177463940": "0.1",
+        "415048302": "0.1.1.0",
+        "472119047": "0.1.1.1",
+        "613950395": "0.1.2.1",
+        "621436041": "0.1.0.0",
+        "746196816": "0.0",
+        "822159546": "0.1.2.0",
+        "890873642": "0.1.1",
+        "908447356": "0.1.2",
+        "926477900": "0.1.0.1",
+        "937802930": "0.1.0",
+        "987615537": "0"
+      },
+      "required": {
+        "415048302": 1,
+        "472119047": 1,
+        "613950395": 1,
+        "621436041": 1,
+        "746196816": 1,
+        "822159546": 1,
+        "926477900": 1
+      }
+    },
+    "835091017": {
+      "questId": "back_on_top",
+      "objectives": {
+        "318693055": "0.2",
+        "343758042": "0.1",
+        "419576924": "0.0",
+        "640525550": "0",
+        "946224627": "0.3"
+      },
+      "required": {
+        "318693055": 1,
+        "343758042": 1,
+        "419576924": 1,
+        "946224627": 1
+      }
+    },
+    "843166722": {
+      "questId": "damage_dealt_to_arc_turbine",
+      "objectives": {
+        "359677368": "0"
+      },
+      "required": {
+        "359677368": 2000
+      }
+    },
+    "845565317": {
+      "questId": "damage_dealt_to_arc_using_hullcracker",
+      "objectives": {
+        "241748594": "0"
+      },
+      "required": {
+        "241748594": 2500
+      }
+    },
+    "848824044": {
+      "questId": "the_first_nomads",
+      "objectives": {
+        "112210673": "0.1.0.3",
+        "127000913": "0.1.1.1",
+        "155809737": "0.1.1.1.3",
+        "177486743": "0.1.0.2",
+        "217656973": "0.0.0",
+        "320817981": "0.0.1",
+        "361721095": "0.1.1.1.2",
+        "379000193": "0.1.0.5",
+        "388150871": "0.1.1.0",
+        "424554729": "0.1.1.1.4",
+        "520792556": "0.1.1.1.0",
+        "524356920": "0.1.1.1.1",
+        "583244045": "0.1.0.4",
+        "666916320": "0.0.1.1",
+        "682713018": "0.0.1.0",
+        "709537569": "0.0.0.2",
+        "730067002": "0.1.0.0",
+        "740891423": "0.0",
+        "761813802": "0.1.1",
+        "826319019": "0.0.0.0",
+        "867782503": "0.1.0.1",
+        "902238665": "0",
+        "928940915": "0.1.0",
+        "943777629": "0.1",
+        "952965110": "0.0.0.1"
+      },
+      "required": {
+        "112210673": 1,
+        "155809737": 1,
+        "177486743": 1,
+        "361721095": 1,
+        "379000193": 1,
+        "388150871": 1,
+        "424554729": 1,
+        "520792556": 5,
+        "524356920": 1,
+        "583244045": 1,
+        "666916320": 1,
+        "682713018": 1,
+        "709537569": 1,
+        "730067002": 1,
+        "826319019": 1,
+        "867782503": 1,
+        "952965110": 1
+      }
+    },
+    "849510744": {
+      "questId": "bastions_destroyed",
+      "objectives": {
+        "207311095": "0"
+      },
+      "required": {
+        "207311095": 1
+      }
+    },
+    "849774815": {
+      "questId": "eyes_on_the_prize",
+      "objectives": {
+        "374610367": "0",
+        "504573198": "0.0",
+        "789913538": "0.1"
+      },
+      "required": {
+        "504573198": 1,
+        "789913538": 1
+      }
+    },
+    "850529208": {
+      "questId": "out_of_the_shadows",
+      "objectives": {
+        "139848811": "0",
+        "581053001": "0.0",
+        "743670051": "0.1"
+      },
+      "required": {
+        "581053001": 1,
+        "743670051": 1
+      }
+    },
+    "852915255": {
+      "questId": "outstanding_balance",
+      "objectives": {
+        "485646711": "0",
+        "613292534": "0.2",
+        "746694964": "0.1",
+        "878382401": "0.0"
+      },
+      "required": {
+        "613292534": 1,
+        "746694964": 1,
+        "878382401": 1
+      }
+    },
+    "853848342": {
+      "questId": "furtive_meetings",
+      "objectives": {
+        "157403069": "0.0",
+        "724578860": "0",
+        "767345315": "0.2",
+        "901535506": "0.1",
+        "910234676": "0.4",
+        "941375138": "0.3"
+      },
+      "required": {
+        "157403069": 1,
+        "767345315": 1,
+        "901535506": 1,
+        "910234676": 1,
+        "941375138": 1
+      }
+    },
+    "856795931": {
+      "questId": "study_old_outposts",
+      "objectives": {
+        "249183902": "0.0",
+        "591046550": "0"
+      },
+      "required": {
+        "249183902": 1
+      }
+    },
+    "873347407": {
+      "questId": "a_prime_specimen",
+      "objectives": {
+        "489115498": "0.0",
+        "562853337": "0.1",
+        "679863162": "0.2",
+        "879373845": "0"
+      },
+      "required": {
+        "489115498": 2,
+        "562853337": 1,
+        "679863162": 1
+      }
+    },
+    "878733116": {
+      "questId": "trash_into_treasure",
+      "objectives": {
+        "381455608": "0.0",
+        "543647154": "0",
+        "564486504": "0.1"
+      },
+      "required": {
+        "381455608": 6,
+        "564486504": 1
+      }
+    },
+    "883343469": {
+      "questId": "damage_dealt_to_arc_enemies_2",
+      "objectives": {
+        "597663301": "0"
+      },
+      "required": {
+        "597663301": 1000
+      }
+    },
+    "885124859": {
+      "questId": "bees",
+      "objectives": {
+        "750171339": "0.1",
+        "887697778": "0",
+        "946584260": "0.0"
+      },
+      "required": {
+        "750171339": 1,
+        "946584260": 1
+      }
+    },
+    "886039554": {
+      "questId": "a_bad_feeling",
+      "objectives": {
+        "175882517": "0"
+      },
+      "required": {
+        "175882517": 1
+      }
+    },
+    "898820789": {
+      "questId": "with_a_view",
+      "objectives": {
+        "246024572": "0.3",
+        "271728770": "0",
+        "300657555": "0.4",
+        "347632786": "0.0",
+        "470744569": "0.1",
+        "538374320": "0.2"
+      },
+      "required": {
+        "246024572": 1,
+        "300657555": 1,
+        "347632786": 1,
+        "470744569": 1,
+        "538374320": 1
+      }
+    },
+    "911150185": {
+      "questId": "the_root_of_the_matter",
+      "objectives": {
+        "361341331": "0.0",
+        "512245151": "0.2",
+        "864952362": "0.1",
+        "920827769": "0"
+      },
+      "required": {
+        "361341331": 1,
+        "512245151": 1,
+        "864952362": 1
+      }
+    },
+    "913507320": {
+      "questId": "bait_fetch_blast",
+      "objectives": {
+        "123075314": "0.0",
+        "523084814": "0.0.2",
+        "567429259": "0.0.1",
+        "778222852": "0.0.0",
+        "866967725": "0.1",
+        "948436721": "0"
+      },
+      "required": {
+        "523084814": 4,
+        "567429259": 1,
+        "778222852": 1,
+        "866967725": 1
+      }
+    },
+    "915133299": {
+      "questId": "magazine_geometry_101",
+      "objectives": {
+        "225054651": "0.0",
+        "528725554": "0",
+        "926344026": "0.1"
+      },
+      "required": {
+        "225054651": 15000,
+        "926344026": 1
+      }
+    },
+    "922473218": {
+      "questId": "frozen_trail_unlock",
+      "objectives": {
+        "704283656": "0"
+      },
+      "required": {
+        "704283656": 25
+      }
+    },
+    "939192838": {
+      "questId": "damage_dealt_to_wasps",
+      "objectives": {
+        "266688170": "0"
+      },
+      "required": {
+        "266688170": 200
+      }
+    },
+    "944118504": {
+      "questId": "damage_dealt_to_hornets",
+      "objectives": {
+        "121453260": "0"
+      },
+      "required": {
+        "121453260": 400
+      }
+    },
+    "945884303": {
+      "questId": "bombardiers_destroyed",
+      "objectives": {
+        "336736060": "0"
+      },
+      "required": {
+        "336736060": 1
+      }
+    },
+    "950629788": {
+      "questId": "dust_on_the_wires",
+      "objectives": {
+        "208572743": "0.0",
+        "304708070": "0.1",
+        "311309429": "0.5",
+        "474412604": "0.4",
+        "566289093": "0.2",
+        "773845162": "0",
+        "978660572": "0.3"
+      },
+      "required": {
+        "208572743": 1,
+        "304708070": 1,
+        "311309429": 1,
+        "474412604": 1,
+        "566289093": 1,
+        "978660572": 1
+      }
+    },
+    "952912004": {
+      "questId": "movie_night",
+      "objectives": {
+        "109444482": "0",
+        "597021011": "0.1",
+        "605889078": "0.0",
+        "946220771": "0.2"
+      },
+      "required": {
+        "597021011": 1,
+        "605889078": 1,
+        "946220771": 1
+      }
+    },
+    "953948966": {
+      "questId": "source_of_the_contamination",
+      "objectives": {
+        "217876834": "0.0",
+        "241650744": "0.1",
+        "670431201": "0.2",
+        "780601159": "0"
+      },
+      "required": {
+        "217876834": 1,
+        "241650744": 1,
+        "670431201": 1
+      }
+    },
+    "955906488": {
+      "questId": "milestone_1_3",
+      "objectives": {
+        "161521916": "0"
+      },
+      "required": {
+        "161521916": 8
+      }
+    },
+    "962332206": {
+      "questId": "combat_recon",
+      "objectives": {
+        "120834770": "0.1",
+        "141028126": "0.4",
+        "443392258": "0",
+        "504101410": "0.0",
+        "628041279": "0.3",
+        "828200157": "0.2"
+      },
+      "required": {
+        "120834770": 1,
+        "141028126": 1,
+        "504101410": 1,
+        "628041279": 2,
+        "828200157": 1
+      }
+    },
+    "978218518": {
+      "questId": "paving_the_way",
+      "objectives": {
+        "291665986": "0.0",
+        "355400033": "0.1",
+        "392356656": "0",
+        "459156430": "0.3",
+        "654022203": "0.2"
+      },
+      "required": {
+        "291665986": 1,
+        "355400033": 1,
+        "459156430": 1,
+        "654022203": 1
+      }
+    },
+    "979746386": {
+      "questId": "the_trifecta",
+      "objectives": {
+        "122930781": "0.4",
+        "246833053": "0.5",
+        "311434390": "0.1",
+        "593233217": "0.3",
+        "663109242": "0.2",
+        "737257877": "0.0",
+        "790303754": "0"
+      },
+      "required": {
+        "122930781": 4,
+        "246833053": 1,
+        "311434390": 2,
+        "593233217": 2,
+        "663109242": 2,
+        "737257877": 2
+      }
+    },
+    "983340906": {
+      "questId": "what_we_left_behind",
+      "objectives": {
+        "250478850": "0.0",
+        "294246043": "0",
+        "347251857": "0.1",
+        "942450046": "0.2"
+      },
+      "required": {
+        "250478850": 2,
+        "347251857": 1,
+        "942450046": 1
+      }
+    },
+    "994952001": {
+      "questId": "solid_core_casting_tech",
+      "objectives": {
+        "562087690": "0.0",
+        "691123321": "0"
+      },
+      "required": {
+        "562087690": 50
+      }
+    },
+    "995122859": {
+      "questId": "distract_and_destroy_arc_enemies",
+      "objectives": {
+        "355090320": "0.1",
+        "425771247": "0.0",
+        "735192627": "0"
+      },
+      "required": {
+        "355090320": 300,
+        "425771247": 800
+      }
+    },
+    "998102360": {
+      "questId": "damage_dealt_to_arc_enemies_using_heavy_ammo_weapons",
+      "objectives": {
+        "456332032": "0"
+      },
+      "required": {
+        "456332032": 400
+      }
+    }
+  },
+  "projects": {
+    "119640415": {
+      "projectId": "expedition_project_s4",
+      "key": "0.4.2",
+      "required": 150000
+    },
+    "120077453": {
+      "projectId": "expedition_project_s5",
+      "key": "0.1.2",
+      "required": 20,
+      "itemId": "mechanical_components"
+    },
+    "121178686": {
+      "projectId": "expedition_project_s5",
+      "key": "0.4.3",
+      "required": 300000
+    },
+    "124297115": {
+      "projectId": "ascending_the_mountain_project",
+      "key": "0.2.0",
+      "required": 2,
+      "itemId": "ruined_parachute"
+    },
+    "125972386": {
+      "projectId": "sheltered_retreat_project",
+      "key": "0.1.3",
+      "required": 3,
+      "itemId": "advanced_electrical_components"
+    },
+    "133808102": {
+      "projectId": "expedition_project_s4",
+      "key": "0.1.1",
+      "required": 25,
+      "itemId": "oil"
+    },
+    "147327490": {
+      "projectId": "expedition_project_s4",
+      "key": "0.2.3",
+      "required": 2,
+      "itemId": "exodus_modules"
+    },
+    "147552877": {
+      "projectId": "trophy_display_project",
+      "key": "0.0.2",
+      "required": 15,
+      "itemId": "tick_pod"
+    },
+    "150398088": {
+      "projectId": "expedition_project_s3",
+      "key": "0.3.0",
+      "required": 1,
+      "itemId": "broken_guidance_system"
+    },
+    "154671832": {
+      "projectId": "expedition_project_s3",
+      "key": "0.4.0",
+      "required": 200000
+    },
+    "158085152": {
+      "projectId": "sheltered_retreat_project",
+      "key": "0.1.0",
+      "required": 3,
+      "itemId": "planks"
+    },
+    "159215689": {
+      "projectId": "expedition_project_s5",
+      "key": "0.4",
+      "name": "Load Stage"
+    },
+    "161687326": {
+      "projectId": "trophy_display_project",
+      "key": "0.3.0",
+      "required": 10,
+      "itemId": "arc_synthetic_resin"
+    },
+    "179592077": {
+      "projectId": "ascending_the_mountain_project",
+      "key": "0.3.3",
+      "required": 3,
+      "itemId": "vaporizer_regulator"
+    },
+    "182748177": {
+      "projectId": "expedition_project_s3",
+      "key": "0.0.0",
+      "required": 150,
+      "itemId": "metal_parts"
+    },
+    "200524492": {
+      "projectId": "trophy_display_project",
+      "key": "0"
+    },
+    "200968907": {
+      "projectId": "expedition_project_s5",
+      "key": "0.0",
+      "name": "Foundation"
+    },
+    "205494662": {
+      "projectId": "expedition_project_s4",
+      "key": "0.1.3",
+      "required": 3,
+      "itemId": "industrial_charger"
+    },
+    "211074257": {
+      "projectId": "trophy_display_project",
+      "key": "0.4.0",
+      "required": 5,
+      "itemId": "exodus_modules"
+    },
+    "220535126": {
+      "projectId": "expedition_project",
+      "key": "0.3.2",
+      "required": 3,
+      "itemId": "ion_sputter"
+    },
+    "232132413": {
+      "projectId": "expedition_project_s5",
+      "key": "0.0.1",
+      "required": 100,
+      "itemId": "plastic_parts"
+    },
+    "236922529": {
+      "projectId": "expedition_project_s4",
+      "key": "0.0.1",
+      "required": 100,
+      "itemId": "chemicals"
+    },
+    "253787469": {
+      "projectId": "ascending_the_mountain_project",
+      "key": "0.2",
+      "name": "Implement Landing Capabilities"
+    },
+    "264324758": {
+      "projectId": "expedition_project_s3",
+      "key": "0.4.1",
+      "required": 100000
+    },
+    "272720151": {
+      "projectId": "expedition_project_s5",
+      "key": "0.2",
+      "name": "Framework"
+    },
+    "278774624": {
+      "projectId": "expedition_project_s3",
+      "key": "0.1.2",
+      "required": 20,
+      "itemId": "electrical_components"
+    },
+    "280238862": {
+      "projectId": "expedition_project",
+      "key": "0.5",
+      "name": "Departure"
+    },
+    "283094599": {
+      "projectId": "expedition_project",
+      "key": "0.1.3",
+      "required": 4,
+      "itemId": "cooling_coil"
+    },
+    "290679434": {
+      "projectId": "expedition_project_s1",
+      "key": "0.5",
+      "name": "Departure"
+    },
+    "301683892": {
+      "projectId": "expedition_project_s5",
+      "key": "0.1.1",
+      "required": 25,
+      "itemId": "duct_tape"
+    },
+    "304514342": {
+      "projectId": "sheltered_retreat_project",
+      "name": "Sheltered Retreat"
+    },
+    "305720641": {
+      "projectId": "expedition_project_s4",
+      "key": "0.2",
+      "name": "Framework"
+    },
+    "309141094": {
+      "projectId": "expedition_project",
+      "key": "0.2.0",
+      "required": 4,
+      "itemId": "light_bulb"
+    },
+    "319939081": {
+      "projectId": "expedition_project_s5",
+      "key": "0"
+    },
+    "340266276": {
+      "projectId": "expedition_project",
+      "key": "0.1.0",
+      "required": 35,
+      "itemId": "durable_cloth"
+    },
+    "344004192": {
+      "projectId": "sheltered_retreat_project",
+      "key": "0"
+    },
+    "344485563": {
+      "projectId": "expedition_project_s5",
+      "key": "0.4.0",
+      "required": 200000
+    },
+    "345040405": {
+      "projectId": "expedition_project_s3",
+      "key": "0.0.2",
+      "required": 80,
+      "itemId": "arc_alloy"
+    },
+    "346006765": {
+      "projectId": "expedition_project_s3",
+      "key": "0.4.2",
+      "required": 150000
+    },
+    "348554433": {
+      "projectId": "expedition_project_s4",
+      "key": "0.4",
+      "name": "Load Stage"
+    },
+    "350731359": {
+      "projectId": "expedition_project",
+      "key": "0.3.0",
+      "required": 5,
+      "itemId": "frequency_modulation_box"
+    },
+    "362665197": {
+      "projectId": "expedition_project_s3",
+      "key": "0.3",
+      "name": "Outfitting"
+    },
+    "368642688": {
+      "projectId": "expedition_project_s3",
+      "key": "0.2.1",
+      "required": 25,
+      "itemId": "battery"
+    },
+    "370466158": {
+      "projectId": "expedition_project_s3",
+      "key": "0.1.3",
+      "required": 3,
+      "itemId": "industrial_charger"
+    },
+    "371938494": {
+      "projectId": "expedition_project",
+      "key": "0.2",
+      "name": "Framework"
+    },
+    "372256744": {
+      "projectId": "sheltered_retreat_project",
+      "key": "0.1.1",
+      "required": 5,
+      "itemId": "sheet_metal"
+    },
+    "375910531": {
+      "projectId": "expedition_project_s3",
+      "key": "0"
+    },
+    "383322000": {
+      "projectId": "expedition_project",
+      "key": "0.4",
+      "name": "Load Stage"
+    },
+    "391885396": {
+      "projectId": "trophy_display_project",
+      "key": "0.1.2",
+      "required": 20,
+      "itemId": "wasp_driver"
+    },
+    "393217959": {
+      "projectId": "trophy_display_project",
+      "key": "0.0.0",
+      "required": 3,
+      "itemId": "rusted_bolts"
+    },
+    "406076358": {
+      "projectId": "trophy_display_project",
+      "key": "0.2",
+      "name": "Ferocious Foes"
+    },
+    "406723271": {
+      "projectId": "expedition_project_s4",
+      "key": "0.4.0",
+      "required": 200000
+    },
+    "424197532": {
+      "projectId": "expedition_project_s3",
+      "key": "0.0",
+      "name": "Foundation"
+    },
+    "431739755": {
+      "projectId": "expedition_project_s4",
+      "key": "0.5.0",
+      "required": 1
+    },
+    "433147451": {
+      "projectId": "expedition_project_s3",
+      "key": "0.2",
+      "name": "Framework"
+    },
+    "433389216": {
+      "projectId": "ascending_the_mountain_project",
+      "key": "0.2.3",
+      "required": 3,
+      "itemId": "breathtaking_snow_globe"
+    },
+    "434258468": {
+      "projectId": "expedition_project_s4",
+      "key": "0.3",
+      "name": "Outfitting"
+    },
+    "442803649": {
+      "projectId": "ascending_the_mountain_project",
+      "key": "0.2.2",
+      "required": 5,
+      "itemId": "shredder_gyro"
+    },
+    "444851707": {
+      "projectId": "expedition_project_s4",
+      "key": "0.3.0",
+      "required": 1,
+      "itemId": "portable_tv"
+    },
+    "448192799": {
+      "projectId": "trophy_display_project",
+      "key": "0.3.2",
+      "required": 8,
+      "itemId": "rocketeer_driver"
+    },
+    "452196039": {
+      "projectId": "expedition_project",
+      "name": "Expedition 2"
+    },
+    "459388293": {
+      "projectId": "expedition_project_s5",
+      "key": "0.2.0",
+      "required": 20,
+      "itemId": "arc_circuitry"
+    },
+    "463221333": {
+      "projectId": "trophy_display_project",
+      "key": "0.2.0",
+      "required": 10,
+      "itemId": "arc_performance_steel"
+    },
+    "464744553": {
+      "projectId": "expedition_project",
+      "key": "0.2.1",
+      "required": 30,
+      "itemId": "battery"
+    },
+    "475160009": {
+      "projectId": "trophy_display_project",
+      "key": "0.3.3",
+      "required": 3,
+      "itemId": "queen_reactor"
+    },
+    "475295453": {
+      "projectId": "expedition_project",
+      "key": "0.4.0",
+      "required": 200000
+    },
+    "477586838": {
+      "projectId": "expedition_project_s5",
+      "key": "0.4.1",
+      "required": 100000
+    },
+    "496108427": {
+      "projectId": "ascending_the_mountain_project",
+      "key": "0.1.1",
+      "required": 8,
+      "itemId": "voltage_converter"
+    },
+    "502206925": {
+      "projectId": "ascending_the_mountain_project",
+      "key": "0.0.2",
+      "required": 10,
+      "itemId": "explosive_compound"
+    },
+    "504246639": {
+      "projectId": "ascending_the_mountain_project",
+      "key": "0.1",
+      "name": "Begin Ignition Tests"
+    },
+    "520206061": {
+      "projectId": "expedition_project_s5",
+      "key": "0.5",
+      "name": "Departure"
+    },
+    "524106841": {
+      "projectId": "expedition_project_s5",
+      "key": "0.1.0",
+      "required": 30,
+      "itemId": "durable_cloth"
+    },
+    "524307474": {
+      "projectId": "ascending_the_mountain_project",
+      "key": "0"
+    },
+    "524887900": {
+      "projectId": "ascending_the_mountain_project",
+      "key": "0.1.2",
+      "required": 2,
+      "itemId": "sentinel_firing_core"
+    },
+    "525441648": {
+      "projectId": "expedition_project",
+      "key": "0.1.2",
+      "required": 20,
+      "itemId": "electrical_components"
+    },
+    "529980425": {
+      "projectId": "expedition_project_s4",
+      "key": "0.0",
+      "name": "Foundation"
+    },
+    "530718942": {
+      "projectId": "expedition_project",
+      "key": "0.0.2",
+      "required": 80,
+      "itemId": "arc_alloy"
+    },
+    "530841945": {
+      "projectId": "trophy_display_project",
+      "name": "Trophy Display"
+    },
+    "531155677": {
+      "projectId": "ascending_the_mountain_project",
+      "name": "Ascending The Mountain"
+    },
+    "532155757": {
+      "projectId": "expedition_project_s5",
+      "key": "0.3.0",
+      "required": 2,
+      "itemId": "radio"
+    },
+    "532753348": {
+      "projectId": "expedition_project_s4",
+      "key": "0.3.2",
+      "required": 2,
+      "itemId": "sirena_dorata_ship_model"
+    },
+    "534432016": {
+      "projectId": "ascending_the_mountain_project",
+      "key": "0.3.2",
+      "required": 15,
+      "itemId": "advanced_electrical_components"
+    },
+    "543199816": {
+      "projectId": "trophy_display_project",
+      "key": "0.4.3",
+      "required": 3,
+      "itemId": "matriarch_reactor"
+    },
+    "545964142": {
+      "projectId": "expedition_project_s5",
+      "key": "0.3",
+      "name": "Outfitting"
+    },
+    "560219336": {
+      "projectId": "ascending_the_mountain_project",
+      "key": "0.3.0",
+      "required": 30,
+      "itemId": "sensors"
+    },
+    "561116569": {
+      "projectId": "expedition_project_s1",
+      "key": "0.2",
+      "name": "Framework"
+    },
+    "566019307": {
+      "projectId": "expedition_project_s4",
+      "key": "0.0.2",
+      "required": 80,
+      "itemId": "arc_alloy"
+    },
+    "568114347": {
+      "projectId": "sheltered_retreat_project",
+      "key": "0.1",
+      "name": "Gather building materials"
+    },
+    "571345760": {
+      "projectId": "expedition_project",
+      "key": "0.5.0",
+      "required": 1
+    },
+    "574553715": {
+      "projectId": "sheltered_retreat_project",
+      "key": "0.2.0",
+      "required": 1
+    },
+    "580265345": {
+      "projectId": "expedition_project_s5",
+      "key": "0.0.2",
+      "required": 80,
+      "itemId": "arc_alloy"
+    },
+    "582790260": {
+      "projectId": "expedition_project",
+      "key": "0.4.1",
+      "required": 100000
+    },
+    "593871874": {
+      "projectId": "expedition_project",
+      "key": "0.0",
+      "name": "Foundation"
+    },
+    "596959708": {
+      "projectId": "expedition_project_s1",
+      "name": "Expedition 1"
+    },
+    "616690281": {
+      "projectId": "expedition_project",
+      "key": "0"
+    },
+    "617475331": {
+      "projectId": "expedition_project_s4",
+      "key": "0.3.3",
+      "required": 3,
+      "itemId": "vaporizer_regulator"
+    },
+    "631405812": {
+      "projectId": "expedition_project_s3",
+      "key": "0.3.2",
+      "required": 3,
+      "itemId": "breathtaking_snow_globe"
+    },
+    "633309216": {
+      "projectId": "ascending_the_mountain_project",
+      "key": "0.0.0",
+      "required": 10,
+      "itemId": "mechanical_components"
+    },
+    "636878717": {
+      "projectId": "expedition_project_s3",
+      "key": "0.1",
+      "name": "Core Systems"
+    },
+    "637052699": {
+      "projectId": "trophy_display_project",
+      "key": "0.3",
+      "name": "Dominant Dangers"
+    },
+    "638705484": {
+      "projectId": "expedition_project_s4",
+      "key": "0.0.0",
+      "required": 150,
+      "itemId": "metal_parts"
+    },
+    "642763943": {
+      "projectId": "ascending_the_mountain_project",
+      "key": "0.1.0",
+      "required": 20,
+      "itemId": "wires"
+    },
+    "649673617": {
+      "projectId": "trophy_display_project",
+      "key": "0.4.2",
+      "required": 8,
+      "itemId": "bombardier_cell"
+    },
+    "651585624": {
+      "projectId": "expedition_project_s4",
+      "key": "0.5",
+      "name": "Departure"
+    },
+    "659699926": {
+      "projectId": "expedition_project_s4",
+      "key": "0.2.0",
+      "required": 20,
+      "itemId": "arc_motion_core"
+    },
+    "660174771": {
+      "projectId": "expedition_project_s4",
+      "key": "0"
+    },
+    "671621638": {
+      "projectId": "expedition_project_s1",
+      "key": "0"
+    },
+    "672928739": {
+      "projectId": "expedition_project",
+      "key": "0.0.1",
+      "required": 200,
+      "itemId": "plastic_parts"
+    },
+    "676315975": {
+      "projectId": "ascending_the_mountain_project",
+      "key": "0.0.3",
+      "required": 2,
+      "itemId": "headphones"
+    },
+    "679011741": {
+      "projectId": "expedition_project_s3",
+      "key": "0.5.0",
+      "required": 1
+    },
+    "684156049": {
+      "projectId": "expedition_project_s3",
+      "key": "0.3.3",
+      "required": 2,
+      "itemId": "bombardier_cell"
+    },
+    "685135979": {
+      "projectId": "trophy_display_project",
+      "key": "0.1.0",
+      "required": 10,
+      "itemId": "spotter_relay"
+    },
+    "690614805": {
+      "projectId": "ascending_the_mountain_project",
+      "key": "0.3",
+      "name": "Final Tweaks"
+    },
+    "700372512": {
+      "projectId": "trophy_display_project",
+      "key": "0.4",
+      "name": "Imposing Behemoths"
+    },
+    "702337228": {
+      "projectId": "expedition_project_s5",
+      "key": "0.1.3",
+      "required": 10,
+      "itemId": "voltage_converter"
+    },
+    "716853512": {
+      "projectId": "trophy_display_project",
+      "key": "0.2.1",
+      "required": 5,
+      "itemId": "shredder_gyro"
+    },
+    "722366895": {
+      "projectId": "expedition_project_s4",
+      "key": "0.1",
+      "name": "Core Systems"
+    },
+    "729873576": {
+      "projectId": "expedition_project_s5",
+      "key": "0.2.1",
+      "required": 15,
+      "itemId": "speaker_component"
+    },
+    "730330623": {
+      "projectId": "expedition_project_s3",
+      "key": "0.1.1",
+      "required": 25,
+      "itemId": "wires"
+    },
+    "732223001": {
+      "projectId": "expedition_project",
+      "key": "0.0.0",
+      "required": 150,
+      "itemId": "metal_parts"
+    },
+    "734866505": {
+      "projectId": "expedition_project_s5",
+      "key": "0.5.0",
+      "required": 3000000
+    },
+    "735294602": {
+      "projectId": "expedition_project",
+      "key": "0.4.2",
+      "required": 150000
+    },
+    "737829836": {
+      "projectId": "expedition_project_s4",
+      "key": "0.2.2",
+      "required": 5,
+      "itemId": "turbine_compressor"
+    },
+    "740585520": {
+      "projectId": "expedition_project_s3",
+      "key": "0.4",
+      "name": "Load Stage"
+    },
+    "753790957": {
+      "projectId": "sheltered_retreat_project",
+      "key": "0.0",
+      "name": "Research topside living conditions"
+    },
+    "759779314": {
+      "projectId": "expedition_project_s5",
+      "key": "0.3.3",
+      "required": 3,
+      "itemId": "rocketeer_driver"
+    },
+    "767906871": {
+      "projectId": "expedition_project_s3",
+      "key": "0.2.2",
+      "required": 5,
+      "itemId": "firefly_burner"
+    },
+    "771231524": {
+      "projectId": "expedition_project",
+      "key": "0.3",
+      "name": "Outfitting"
+    },
+    "772567827": {
+      "projectId": "expedition_project",
+      "key": "0.1.1",
+      "required": 25,
+      "itemId": "wires"
+    },
+    "773259476": {
+      "projectId": "expedition_project_s4",
+      "key": "0.3.1",
+      "required": 5,
+      "itemId": "advanced_electrical_components"
+    },
+    "773393411": {
+      "projectId": "expedition_project_s5",
+      "key": "0.1",
+      "name": "Core Systems"
+    },
+    "775439748": {
+      "projectId": "expedition_project_s3",
+      "name": "Expedition 3"
+    },
+    "787373609": {
+      "projectId": "trophy_display_project",
+      "key": "0.3.1",
+      "required": 10,
+      "itemId": "magnetic_accelerator"
+    },
+    "787851040": {
+      "projectId": "expedition_project",
+      "key": "0.3.3",
+      "required": 3,
+      "itemId": "leaper_pulse_unit"
+    },
+    "792465856": {
+      "projectId": "expedition_project_s4",
+      "key": "0.4.1",
+      "required": 100000
+    },
+    "794545762": {
+      "projectId": "expedition_project_s5",
+      "key": "0.4.2",
+      "required": 150000
+    },
+    "800491660": {
+      "projectId": "expedition_project_s3",
+      "key": "0.0.1",
+      "required": 100,
+      "itemId": "chemicals"
+    },
+    "807916605": {
+      "projectId": "trophy_display_project",
+      "key": "0.1",
+      "name": "Soaring Menaces"
+    },
+    "808709563": {
+      "projectId": "expedition_project_s5",
+      "key": "0.0.3",
+      "required": 15,
+      "itemId": "magnet"
+    },
+    "809135795": {
+      "projectId": "expedition_project",
+      "key": "0.4.3",
+      "required": 300000
+    },
+    "810635450": {
+      "projectId": "expedition_project_s3",
+      "key": "0.2.3",
+      "required": 1,
+      "itemId": "exodus_modules"
+    },
+    "811231586": {
+      "projectId": "expedition_project_s4",
+      "key": "0.2.1",
+      "required": 15,
+      "itemId": "speaker_component"
+    },
+    "818417357": {
+      "projectId": "expedition_project_s4",
+      "key": "0.1.2",
+      "required": 20,
+      "itemId": "electrical_components"
+    },
+    "824639428": {
+      "projectId": "ascending_the_mountain_project",
+      "key": "0.0.1",
+      "required": 6,
+      "itemId": "pop_trigger"
+    },
+    "830681421": {
+      "projectId": "sheltered_retreat_project",
+      "key": "0.0.0",
+      "required": 1
+    },
+    "836142269": {
+      "projectId": "expedition_project_s5",
+      "key": "0.0.0",
+      "required": 150,
+      "itemId": "metal_parts"
+    },
+    "839055515": {
+      "projectId": "expedition_project_s4",
+      "key": "0.4.3",
+      "required": 300000
+    },
+    "846358133": {
+      "projectId": "trophy_display_project",
+      "key": "0.2.3",
+      "required": 5,
+      "itemId": "bastion_cell"
+    },
+    "848501171": {
+      "projectId": "expedition_project",
+      "key": "0.3.1",
+      "required": 5,
+      "itemId": "advanced_electrical_components"
+    },
+    "860493777": {
+      "projectId": "expedition_project_s1",
+      "key": "0.0",
+      "name": "Foundation"
+    },
+    "865576253": {
+      "projectId": "expedition_project_s3",
+      "key": "0.4.3",
+      "required": 300000
+    },
+    "869877111": {
+      "projectId": "expedition_project_s3",
+      "key": "0.5",
+      "name": "Departure"
+    },
+    "869880078": {
+      "projectId": "trophy_display_project",
+      "key": "0.1.1",
+      "required": 3,
+      "itemId": "expired_respirator"
+    },
+    "876282783": {
+      "projectId": "expedition_project_s4",
+      "name": "Expedition 4"
+    },
+    "877545843": {
+      "projectId": "ascending_the_mountain_project",
+      "key": "0.3.1",
+      "required": 3,
+      "itemId": "broken_guidance_system"
+    },
+    "877570815": {
+      "projectId": "expedition_project_s3",
+      "key": "0.2.0",
+      "required": 1,
+      "itemId": "coffee_pot"
+    },
+    "882575904": {
+      "projectId": "ascending_the_mountain_project",
+      "key": "0.0",
+      "name": "Research High-Altitude Mechanics"
+    },
+    "882699476": {
+      "projectId": "expedition_project_s3",
+      "key": "0.1.0",
+      "required": 30,
+      "itemId": "durable_cloth"
+    },
+    "883641224": {
+      "projectId": "expedition_project_s4",
+      "key": "0.1.0",
+      "required": 30,
+      "itemId": "durable_cloth"
+    },
+    "884406421": {
+      "projectId": "expedition_project_s5",
+      "name": "Expedition 5"
+    },
+    "892178673": {
+      "projectId": "trophy_display_project",
+      "key": "0.0",
+      "name": "Roaming Threats"
+    },
+    "897275222": {
+      "projectId": "expedition_project_s5",
+      "key": "0.2.2",
+      "required": 5,
+      "itemId": "bastion_cell"
+    },
+    "902145888": {
+      "projectId": "sheltered_retreat_project",
+      "key": "0.2",
+      "name": "Safeguard the building site"
+    },
+    "908429746": {
+      "projectId": "expedition_project",
+      "key": "0.1",
+      "name": "Core Systems"
+    },
+    "917405210": {
+      "projectId": "trophy_display_project",
+      "key": "0.0.3",
+      "required": 5,
+      "itemId": "surveyor_vault"
+    },
+    "918471280": {
+      "projectId": "trophy_display_project",
+      "key": "0.0.1",
+      "required": 15,
+      "itemId": "pop_trigger"
+    },
+    "920604054": {
+      "projectId": "expedition_project_s4",
+      "key": "0.0.3",
+      "required": 15,
+      "itemId": "canister"
+    },
+    "921702705": {
+      "projectId": "trophy_display_project",
+      "key": "0.1.3",
+      "required": 15,
+      "itemId": "hornet_driver"
+    },
+    "931721318": {
+      "projectId": "trophy_display_project",
+      "key": "0.4.1",
+      "required": 3,
+      "itemId": "geiger_counter"
+    },
+    "931788737": {
+      "projectId": "expedition_project_s3",
+      "key": "0.3.1",
+      "required": 5,
+      "itemId": "advanced_electrical_components"
+    },
+    "934471821": {
+      "projectId": "ascending_the_mountain_project",
+      "key": "0.1.3",
+      "required": 1,
+      "itemId": "rocket_thruster"
+    },
+    "941061574": {
+      "projectId": "ascending_the_mountain_project",
+      "key": "0.2.1",
+      "required": 10,
+      "itemId": "crash_mat"
+    },
+    "941428741": {
+      "projectId": "expedition_project_s5",
+      "key": "0.3.1",
+      "required": 5,
+      "itemId": "advanced_mechanical_components"
+    },
+    "943144793": {
+      "projectId": "expedition_project_s5",
+      "key": "0.2.3",
+      "required": 3,
+      "itemId": "magnetic_accelerator"
+    },
+    "952733311": {
+      "projectId": "expedition_project",
+      "key": "0.2.3",
+      "required": 1,
+      "itemId": "exodus_modules"
+    },
+    "957784232": {
+      "projectId": "sheltered_retreat_project",
+      "key": "0.1.2",
+      "required": 10,
+      "itemId": "arc_alloy"
+    },
+    "959188726": {
+      "projectId": "expedition_project",
+      "key": "0.2.2",
+      "required": 10,
+      "itemId": "shredder_gyro"
+    },
+    "963112302": {
+      "projectId": "trophy_display_project",
+      "key": "0.2.2",
+      "required": 10,
+      "itemId": "leaper_pulse_unit"
+    },
+    "966722108": {
+      "projectId": "expedition_project",
+      "key": "0.0.3",
+      "required": 15,
+      "itemId": "steel_spring"
+    },
+    "994519567": {
+      "projectId": "expedition_project_s5",
+      "key": "0.3.2",
+      "required": 2,
+      "itemId": "lances_mixtape_5th_edition"
+    },
+    "995968288": {
+      "projectId": "expedition_project_s3",
+      "key": "0.0.3",
+      "required": 15,
+      "itemId": "steel_spring"
+    },
+    "1101599188": {
+      "projectId": "expedition_project_s1",
+      "key": "0.1.1",
+      "required": 30,
+      "itemId": "wires"
+    },
+    "1136002423": {
+      "projectId": "expedition_project_s1",
+      "key": "0.1.2",
+      "required": 30,
+      "itemId": "electrical_components"
+    },
+    "1463148901": {
+      "projectId": "expedition_project_s1",
+      "key": "0.4",
+      "name": "Load Stage"
+    },
+    "1566909566": {
+      "projectId": "expedition_project_s1",
+      "key": "0.3.2",
+      "required": 3,
+      "itemId": "magnetic_accelerator"
+    },
+    "1606138930": {
+      "projectId": "expedition_project_s1",
+      "key": "0.4.3",
+      "required": 300000
+    },
+    "1685205248": {
+      "projectId": "expedition_project_s1",
+      "key": "0.4.2",
+      "required": 180000
+    },
+    "1898420313": {
+      "projectId": "expedition_project_s1",
+      "key": "0.1.3",
+      "required": 5,
+      "itemId": "cooling_fan"
+    },
+    "1952197449": {
+      "projectId": "expedition_project_s1",
+      "key": "0.0.1",
+      "required": 200,
+      "itemId": "rubber_parts"
+    },
+    "1995420702": {
+      "projectId": "expedition_project_s1",
+      "key": "0.1.0",
+      "required": 35,
+      "itemId": "durable_cloth"
+    },
+    "2098711024": {
+      "projectId": "expedition_project_s1",
+      "key": "0.2.1",
+      "required": 30,
+      "itemId": "battery"
+    },
+    "-2077976552": {
+      "projectId": "expedition_project_s1",
+      "key": "0.5.0",
+      "required": 1
+    },
+    "-1914682280": {
+      "projectId": "expedition_project_s1",
+      "key": "0.2.0",
+      "required": 5,
+      "itemId": "light_bulb"
+    },
+    "-1876183800": {
+      "projectId": "expedition_project_s1",
+      "key": "0.0.2",
+      "required": 80,
+      "itemId": "arc_alloy"
+    },
+    "-1694858904": {
+      "projectId": "expedition_project_s1",
+      "key": "0.1",
+      "name": "Core Systems"
+    },
+    "-1605954429": {
+      "projectId": "expedition_project_s1",
+      "key": "0.2.3",
+      "required": 1,
+      "itemId": "exodus_modules"
+    },
+    "-1354590760": {
+      "projectId": "expedition_project_s1",
+      "key": "0.3.0",
+      "required": 5,
+      "itemId": "humidifier"
+    },
+    "-1288585705": {
+      "projectId": "expedition_project_s1",
+      "key": "0.4.1",
+      "required": 100000
+    },
+    "-1059592899": {
+      "projectId": "expedition_project_s1",
+      "key": "0.3.3",
+      "required": 3,
+      "itemId": "leaper_pulse_unit"
+    },
+    "-1045479352": {
+      "projectId": "expedition_project_s1",
+      "key": "0.3",
+      "name": "Outfitting"
+    },
+    "-823560125": {
+      "projectId": "expedition_project_s1",
+      "key": "0.4.0",
+      "required": 250000
+    },
+    "-791610341": {
+      "projectId": "expedition_project_s1",
+      "key": "0.3.1",
+      "required": 5,
+      "itemId": "advanced_electrical_components"
+    },
+    "-606840271": {
+      "projectId": "expedition_project_s1",
+      "key": "0.2.2",
+      "required": 20,
+      "itemId": "sensors"
+    },
+    "-433102163": {
+      "projectId": "expedition_project_s1",
+      "key": "0.0.3",
+      "required": 15,
+      "itemId": "steel_spring"
+    },
+    "-391606619": {
+      "projectId": "expedition_project_s1",
+      "key": "0.0.0",
+      "required": 150,
+      "itemId": "metal_parts"
+    }
+  },
+  "arctracker": {
+    "items": {
+      "arpeggio_iv": "arpeggio_blueprint",
+      "looting_mk3_survivor": "looting_mk3_survivor_blueprint",
+      "torn_book": "library_book"
+    },
+    "quests": {
+      "12_cold_storage": "cold_storage",
+      "12_in_my_image": "in_my_image",
+      "12_snap_and_salvage": "snap_and_salvage",
+      "ss1": "picking_up_the_pieces",
+      "ss10": "a_better_use",
+      "ss10a": "greasing_her_palms",
+      "ss10b": "dormant_barons",
+      "ss10c": "doctors_orders",
+      "ss10d": "mixed_signals",
+      "ss10e": "what_we_left_behind",
+      "ss10f": "medical_merchandise",
+      "ss10g": "a_reveal_in_ruins",
+      "ss10h": "broken_monument",
+      "ss10i": "marked_for_death",
+      "ss10j": "straight_record",
+      "ss10k": "a_lay_of_the_land",
+      "ss10l": "market_correction",
+      "ss10m": "eyes_on_the_prize",
+      "ss10n": "industrial_espionage",
+      "ss10o": "keeping_the_memory",
+      "ss10p": "echoes_of_victory_ridge",
+      "ss10q": "unexpected_initiative",
+      "ss10r": "a_symbol_of_unification",
+      "ss10s": "eyes_in_the_sky",
+      "ss10t": "celestes_journals",
+      "ss10u": "the_majors_footlocker",
+      "ss10v": "out_of_the_shadows",
+      "ss10w": "back_on_top",
+      "ss10x": "a_balanced_harvest",
+      "ss10x10": "power_out",
+      "ss10x11": "flickering_threat",
+      "ss10x12": "bees",
+      "ss10x13": "espresso",
+      "ss10x14": "life_of_a_pharmacist",
+      "ss10x15": "tribute_to_toledo",
+      "ss10x16": "digging_up_dirt",
+      "ss10x17": "turnabout",
+      "ss10x18": "building_a_library",
+      "ss10x19": "a_new_type_of_plant",
+      "ss10x2": "untended_garden",
+      "ss10x20": "armored_transports",
+      "ss10x3": "the_root_of_the_matter",
+      "ss10x4": "water_troubles",
+      "ss10x5": "into_the_fray",
+      "ss10x6": "source_of_the_contamination",
+      "ss10x7": "switching_the_supply",
+      "ss10x8": "a_warm_place_to_rest",
+      "ss10x9": "prescriptions_of_the_past",
+      "ss10y": "after_rain_comes",
+      "ss10z": "our_presence_up_there",
+      "ss11": "a_first_foothold",
+      "ss11a": "reduced_to_rubble",
+      "ss11b": "lost_in_transmission",
+      "ss11b2": "communication_hideout",
+      "ss11bx": "with_a_trace",
+      "ss2": "clearer_skies",
+      "ss3": "trash_into_treasure",
+      "ss4": "off_the_radar",
+      "ss5": "a_bad_feeling",
+      "ss5a": "hatch_repairs",
+      "ss6": "down_to_earth",
+      "ss7": "the_right_tool",
+      "ss8": "safe_passage",
+      "ss8a": "what_goes_around",
+      "ss8b": "sparks_fly",
+      "ss9": "the_trifecta"
+    },
+    "projects": {},
+    "benches": {}
+  },
+  "constants": {
+    "currencies": {
+      "coins": -898439395,
+      "raiderTokens": 941631263,
+      "creds": 1979925731,
+      "xp": 1672558715,
+      "researchPoints": 1206014721,
+      "stencilCurrency": 331753631,
+      "rewardPassFrozenTrail": -1739142570,
+      "rewardPassLegacy": -691510602,
+      "rewardPassPointsFromFeats": -1430705425,
+      "featRewardPoints": 1210921538
+    },
+    "owners": {
+      "inRaidCrafting": 510,
+      "salvage": 511,
+      "workbenchGenerator": 1529697069,
+      "blueprintLearning": 1580756609,
+      "furnitureDesigns": -1558549277,
+      "stencils": 966739750
+    },
+    "stash": {
+      "mainStash": 1466788008,
+      "bonusStash": [
+        -2018598597,
+        -1314674456,
+        365599956,
+        -250016123,
+        678297130
+      ],
+      "slotWrapper": 1440007245,
+      "emptySlotMarkers": [
+        -666604429,
+        -3680536
+      ]
+    },
+    "inventory": {
+      "inventoryRoot": 1173010504,
+      "currentAugment": 129937576,
+      "regularItemSlot": 1440007245,
+      "weaponSlot": -620731692,
+      "quickUseSlot": -1277506061,
+      "safePocketSlot": -3680536,
+      "meleeSlot": -666604429,
+      "workshopRoot": -1264657974,
+      "workshopBenchSlot": 407,
+      "mainStashRoot": -2121050171,
+      "extraStashRoot": -205714511,
+      "loadoutFrameSlot": -1379879497
+    }
+  }
+}

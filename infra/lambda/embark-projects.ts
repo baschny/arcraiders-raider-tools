@@ -22,6 +22,7 @@ import {
     pickAllowedOrigin,
 } from "./_lib/http";
 import { consumeTokenBucket } from "./_lib/embarkThrottle";
+import { gameMappings } from "./_lib/gameMappings";
 
 const ddb = DynamoDBDocumentClient.from(new DynamoDBClient({}), {
     marshallOptions: {
@@ -95,30 +96,6 @@ interface EmbarkProjectsListResponse {
     projects: EmbarkProjectResponse[];
 }
 
-interface ProjectMappingGoal {
-    itemId: string;
-    itemName: string;
-    itemGameAssetId: string;
-    required: number;
-}
-
-interface ProjectMappingPhase {
-    name: string;
-    goals: Record<string, ProjectMappingGoal>;
-}
-
-interface ProjectMappingEntry {
-    name: string;
-    arctrackerProjectId: string;
-    phases: Record<string, ProjectMappingPhase>;
-}
-
-interface ProjectMappingData {
-    description: string;
-    generatedAt: string;
-    projects: Record<string, ProjectMappingEntry>;
-}
-
 interface LatestProjectsRow {
     pk: string;
     sk: string;
@@ -131,14 +108,65 @@ interface LatestProjectsRow {
     updatedAt: string;
 }
 
-import projectMappingData from "./data/project-mapping.json";
+interface ProjectIndexStep {
+    key: string;
+    name: string;
+    goals: Array<{ goalAssetId: number; key: string; itemId: string; required: number }>;
+}
 
-let projectMapping: ProjectMappingData | null = null;
+interface ProjectIndexEntry {
+    projectId: string;
+    projectName: string;
+    steps: ProjectIndexStep[];
+}
 
-function getProjectMapping(): ProjectMappingData {
-    if (projectMapping) return projectMapping;
-    projectMapping = projectMappingData as unknown as ProjectMappingData;
-    return projectMapping;
+let projectIndex: Map<string, ProjectIndexEntry> | null = null;
+
+/** Groups the flat asset-id table of game-mappings.json by project (key paths 'i.j' / 'i.j.k'). */
+function getProjectIndex(): Map<string, ProjectIndexEntry> {
+    if (projectIndex) return projectIndex;
+    const bySlug = new Map<string, ProjectIndexEntry>();
+    const byAssetId = new Map<string, ProjectIndexEntry>();
+    const entries = Object.entries(gameMappings.projects);
+    for (const [assetId, entry] of entries) {
+        if (entry.key !== undefined) continue;
+        const project = { projectId: entry.projectId, projectName: entry.name ?? entry.projectId, steps: [] };
+        bySlug.set(entry.projectId, project);
+        byAssetId.set(assetId, project);
+    }
+    const steps = new Map<string, ProjectIndexStep>();
+    for (const [, entry] of entries) {
+        if (entry.key === undefined || entry.key.split(".").length !== 2) continue;
+        const step = { key: entry.key, name: entry.name ?? entry.key, goals: [] };
+        steps.set(`${entry.projectId}/${entry.key}`, step);
+        bySlug.get(entry.projectId)?.steps.push(step);
+    }
+    for (const [assetId, entry] of entries) {
+        if (entry.key === undefined || entry.key.split(".").length !== 3 || !entry.itemId) continue;
+        const stepKey = entry.key.split(".").slice(0, 2).join(".");
+        steps.get(`${entry.projectId}/${stepKey}`)?.goals.push({
+            goalAssetId: Number(assetId),
+            key: entry.key,
+            itemId: entry.itemId,
+            required: entry.required ?? 0,
+        });
+    }
+    for (const project of bySlug.values()) {
+        project.steps.sort((a, b) => compareKeys(a.key, b.key));
+        for (const step of project.steps) step.goals.sort((a, b) => compareKeys(a.key, b.key));
+    }
+    projectIndex = byAssetId;
+    return projectIndex;
+}
+
+function compareKeys(a: string, b: string): number {
+    const pa = a.split(".").map(Number);
+    const pb = b.split(".").map(Number);
+    for (let i = 0; i < Math.max(pa.length, pb.length); i++) {
+        const d = (pa[i] ?? -1) - (pb[i] ?? -1);
+        if (d !== 0) return d;
+    }
+    return 0;
 }
 
 function decodeProjects(
@@ -146,13 +174,13 @@ function decodeProjects(
     syncedAt: string,
     cachedAt: number,
 ): CachedProjects {
-    const mapping = getProjectMapping();
+    const index = getProjectIndex();
 
     const projects: CachedProjectProgress[] = [];
 
     for (const rawProj of raw.projects) {
         const projectAssetId = String(rawProj.projectAssetId);
-        const mappingEntry = mapping.projects[projectAssetId];
+        const mappingEntry = index.get(projectAssetId);
         if (!mappingEntry) {
             console.warn(`No project mapping for projectAssetId ${projectAssetId}`);
             continue;
@@ -161,23 +189,12 @@ function decodeProjects(
         const steps: CachedProjectStepProgress[] = [];
         let allStepsComplete = true;
 
-        // Index phases by phase number
-        const phaseKeys = Object.keys(mappingEntry.phases)
-            .map(Number)
-            .sort((a, b) => a - b);
-
-        for (let i = 0; i < phaseKeys.length; i++) {
-            const phaseNum = phaseKeys[i];
-            const phaseKey = String(phaseNum);
-            const phaseMapping = mappingEntry.phases[phaseKey];
-            if (!phaseMapping) continue;
-
+        mappingEntry.steps.forEach((stepMapping, i) => {
             const stepGoals: CachedProjectGoal[] = [];
             let stepComplete = true;
 
-            for (const [goalAssetIdStr, goalMapping] of Object.entries(phaseMapping.goals)) {
-                const goalAssetId = Number(goalAssetIdStr);
-                const rawGoal = rawProj.goals.find((g) => g.goalAssetId === goalAssetId);
+            for (const goalMapping of stepMapping.goals) {
+                const rawGoal = rawProj.goals.find((g) => g.goalAssetId === goalMapping.goalAssetId);
 
                 const required = goalMapping.required;
                 const submitted = rawGoal ? rawGoal.amount : 0;
@@ -186,7 +203,7 @@ function decodeProjects(
                 if (!completed) stepComplete = false;
 
                 stepGoals.push({
-                    goalAssetId,
+                    goalAssetId: goalMapping.goalAssetId,
                     itemId: goalMapping.itemId,
                     required,
                     submitted,
@@ -198,16 +215,16 @@ function decodeProjects(
             if (!stepComplete) allStepsComplete = false;
 
             steps.push({
-                name: phaseMapping.name,
+                name: stepMapping.name,
                 index: i + 1,
                 completed: stepComplete,
                 goals: stepGoals,
             });
-        }
+        });
 
         projects.push({
-            projectId: mappingEntry.arctrackerProjectId,
-            projectName: mappingEntry.name,
+            projectId: mappingEntry.projectId,
+            projectName: mappingEntry.projectName,
             completed: allStepsComplete,
             steps,
             syncedAt,

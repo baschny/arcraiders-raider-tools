@@ -1,33 +1,4 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
-const mapping = require("../data/embark-inventory-mapping.json") as EmbarkInventoryMappingFile;
-/* eslint-enable @typescript-eslint/no-require-imports */
-
-export interface EmbarkInventoryMappingFile {
-    version: number;
-    gameAssetIdToItemId: Record<string, string>;
-    gameAssetIdToItemName: Record<string, string>;
-    structureNames: Record<string, string>;
-    blueprintUnlocksByTokenAssetId: Record<string, {
-        targetItemId: string;
-        blueprintAssetId?: number;
-        name?: string;
-    }>;
-    hideoutBenchLevelsByGeneratorAssetId: Record<string, {
-        moduleId: string;
-        currentLevel: number;
-        maxLevel: number;
-        name?: string;
-    }>;
-    augmentLoadoutsByAugmentAssetId: Record<string, {
-        loadoutFrameAssetId: number;
-        backpackSlots: number;
-        quickUseSlots: number;
-        safePocketSlots: number;
-        auxiliarySlots: number;
-        name?: string;
-    }>;
-    constants: Record<string, number>;
-}
+import { gameMappings as mapping } from "./gameMappings";
 
 export interface EmbarkRawInventory {
     items: EmbarkRawInventoryItem[];
@@ -117,6 +88,16 @@ export interface DecodedEmbarkInventorySnapshot {
     };
 }
 
+/**
+ * Item slug of a game asset. Inventory structures (empty slot markers, containers) are also
+ * shipped as items but are never actual items in a stash or loadout.
+ */
+function itemIdOf(gameAssetId: number): string | undefined {
+    const key = String(gameAssetId);
+    if (key in mapping.structures) return undefined;
+    return mapping.items[key];
+}
+
 interface DecodeContext {
     byInstanceId: Map<string, EmbarkRawInventoryItem>;
     referencedIds: Set<string>;
@@ -142,17 +123,17 @@ export function decodeEmbarkInventory(
     args: { syncedAt: string; cachedAt: number; manifestId: string; rawSnapshotId: string },
 ): DecodedEmbarkInventorySnapshot {
     const ctx = buildContext(raw);
-    const inventoryRoot = raw.items.find(item => item.gameAssetId === mapping.constants.inventoryRootAssetId);
+    const inventoryRoot = raw.items.find(item => item.gameAssetId === mapping.constants.inventory.inventoryRoot);
 
     const stashItems = inventoryRoot ? extractStash(ctx, inventoryRoot) : [];
     const loadout = extractLoadout(ctx, raw.items, inventoryRoot);
     const hideout = extractHideout(raw.items, ctx);
-    const blueprints = extractBlueprints(raw.items, ctx);
+    const blueprints = extractBlueprints(raw.items);
     const currencies = extractCurrencies(raw.items);
 
     const maxStashSlots = countRegularSlots(ctx, inventoryRoot, [
-        mapping.constants.mainStashRootAssetId,
-        mapping.constants.extraStashRootAssetId,
+        mapping.constants.inventory.mainStashRoot,
+        mapping.constants.inventory.extraStashRoot,
     ]);
 
     return {
@@ -208,7 +189,7 @@ function buildContext(raw: EmbarkRawInventory): DecodeContext {
         diagnostics: {
             unknownGameAssetIds: [],
             unknownItemInstances: [],
-            mappingVersion: mapping.version,
+            mappingVersion: mapping.schemaVersion,
         },
     };
 }
@@ -258,11 +239,11 @@ function extractStash(
     inventoryRoot: EmbarkRawInventoryItem,
 ): Array<DecodedSlot & { itemId: string | null; name: string; slotIndex: number }> {
     const roots = [
-        findDescendantByAssetId(ctx, inventoryRoot, mapping.constants.mainStashRootAssetId),
-        findDescendantByAssetId(ctx, inventoryRoot, mapping.constants.extraStashRootAssetId),
+        findDescendantByAssetId(ctx, inventoryRoot, mapping.constants.inventory.mainStashRoot),
+        findDescendantByAssetId(ctx, inventoryRoot, mapping.constants.inventory.extraStashRoot),
     ];
     const slots = roots.flatMap(root => collectDescendants(ctx, root)
-        .filter(item => item.gameAssetId === mapping.constants.regularItemSlotAssetId));
+        .filter(item => item.gameAssetId === mapping.constants.inventory.regularItemSlot));
 
     const rows: Array<DecodedSlot & { itemId: string | null; name: string; slotIndex: number }> = [];
     slots.forEach((slot, slotIndex) => {
@@ -286,7 +267,7 @@ function extractStash(
 function firstActualItem(ctx: DecodeContext, slot: EmbarkRawInventoryItem): EmbarkRawInventoryItem | null {
     const direct = childrenOf(ctx, slot);
     if (direct.length === 0) return null;
-    return direct.find(child => mapping.gameAssetIdToItemId[String(child.gameAssetId)]) ?? direct[0] ?? null;
+    return direct.find(child => itemIdOf(child.gameAssetId)) ?? direct[0] ?? null;
 }
 
 function decodeActualItem(
@@ -295,8 +276,8 @@ function decodeActualItem(
     slotIndex: number,
     context: "stash" | "loadout",
 ): DecodedSlot {
-    const itemId = mapping.gameAssetIdToItemId[String(item.gameAssetId)] ?? null;
-    const name = mapping.gameAssetIdToItemName[String(item.gameAssetId)] ?? itemId;
+    const itemId = itemIdOf(item.gameAssetId) ?? null;
+    const name = itemId;
     const attachments = collectAttachments(ctx, item, context);
     return {
         itemId,
@@ -318,7 +299,7 @@ function collectAttachments(
     let slotIndex = 0;
     for (const descendant of descendants) {
         if (descendant.instanceId === item.instanceId) continue;
-        const itemId = mapping.gameAssetIdToItemId[String(descendant.gameAssetId)];
+        const itemId = itemIdOf(descendant.gameAssetId);
         if (!itemId) continue;
         attachments.push(decodeActualItem(ctx, descendant, slotIndex++, context));
     }
@@ -331,13 +312,13 @@ function extractLoadout(
     inventoryRoot: EmbarkRawInventoryItem | undefined,
 ): DecodedEmbarkInventorySnapshot["loadout"]["loadout"] {
     const selectedAugment = inventoryRoot
-        ? findDescendantByAssetId(ctx, inventoryRoot, mapping.constants.currentAugmentAssetId)
+        ? findDescendantByAssetId(ctx, inventoryRoot, mapping.constants.inventory.currentAugment)
         : null;
     const selectedAugmentItem = selectedAugment
-        ? collectDescendants(ctx, selectedAugment).find(item => mapping.augmentLoadoutsByAugmentAssetId[String(item.gameAssetId)])
+        ? collectDescendants(ctx, selectedAugment).find(item => mapping.augmentLoadouts[String(item.gameAssetId)])
         : null;
     const augmentMapping = selectedAugmentItem
-        ? mapping.augmentLoadoutsByAugmentAssetId[String(selectedAugmentItem.gameAssetId)]
+        ? mapping.augmentLoadouts[String(selectedAugmentItem.gameAssetId)]
         : null;
     const frame = augmentMapping
         ? allItems.find(item => item.gameAssetId === augmentMapping.loadoutFrameAssetId)
@@ -385,7 +366,7 @@ function extractLoadout(
 function collectMountSlots(ctx: DecodeContext, mount: EmbarkRawInventoryItem, mountIndex: number): DecodedSlot[] {
     const leafSlots = collectDescendants(ctx, mount)
         .filter(item => item.slots && item.slots.length > 0)
-        .filter(item => childrenOf(ctx, item).some(child => mapping.gameAssetIdToItemId[String(child.gameAssetId)]));
+        .filter(item => childrenOf(ctx, item).some(child => itemIdOf(child.gameAssetId)));
     const decoded: DecodedSlot[] = [];
     leafSlots.forEach((slot, index) => {
         const item = firstActualItem(ctx, slot);
@@ -407,51 +388,52 @@ function extractHideout(
 ): Array<{ moduleId: string; currentLevel: number; maxLevel: number }> {
     const modules = new Map<string, { moduleId: string; currentLevel: number; maxLevel: number }>();
     for (const item of allItems) {
-        const mapped = mapping.hideoutBenchLevelsByGeneratorAssetId[String(item.gameAssetId)];
+        const mapped = mapping.benches[String(item.gameAssetId)];
         if (!mapped) continue;
-        const existing = modules.get(mapped.moduleId);
-        if (!existing || mapped.currentLevel > existing.currentLevel) {
-            modules.set(mapped.moduleId, {
-                moduleId: mapped.moduleId,
-                currentLevel: mapped.currentLevel,
-                maxLevel: mapped.maxLevel,
+        const existing = modules.get(mapped.benchId);
+        if (!existing || mapped.level > existing.currentLevel) {
+            modules.set(mapped.benchId, {
+                moduleId: mapped.benchId,
+                currentLevel: mapped.level,
+                maxLevel: maxBenchLevel(mapped.benchId),
             });
         }
     }
     if (modules.size === 0) {
         for (const item of allItems) {
-            if (item.gameAssetId === mapping.constants.workshopRootAssetId) continue;
-            if (String(item.gameAssetId) in mapping.structureNames) continue;
+            if (item.gameAssetId === mapping.constants.inventory.workshopRoot) continue;
+            if (String(item.gameAssetId) in mapping.structures) continue;
             recordUnknown(ctx, item, "hideout");
         }
     }
     return Array.from(modules.values()).sort((a, b) => a.moduleId.localeCompare(b.moduleId));
 }
 
-function extractBlueprints(
-    allItems: EmbarkRawInventoryItem[],
-    ctx: DecodeContext,
-): BlueprintDecodeResult {
+const maxLevels = new Map<string, number>();
+function maxBenchLevel(benchId: string): number {
+    if (maxLevels.size === 0) {
+        for (const bench of Object.values(mapping.benches)) {
+            maxLevels.set(bench.benchId, Math.max(maxLevels.get(bench.benchId) ?? 0, bench.level));
+        }
+    }
+    return maxLevels.get(benchId) ?? 0;
+}
+
+function extractBlueprints(allItems: EmbarkRawInventoryItem[]): BlueprintDecodeResult {
     const blueprintsByTargetItemId: DecodedEmbarkInventorySnapshot["blueprints"]["blueprintsByTargetItemId"] = {};
     const unlockedItemIds = new Set<string>();
     for (const item of allItems) {
-        const mapped = mapping.blueprintUnlocksByTokenAssetId[String(item.gameAssetId)];
+        const mapped = mapping.blueprintUnlocks[String(item.gameAssetId)];
         if (!mapped) continue;
-        unlockedItemIds.add(mapped.targetItemId);
-        blueprintsByTargetItemId[mapped.targetItemId] = {
-            id: mapped.targetItemId,
-            name: mapped.name ?? mapped.targetItemId,
+        unlockedItemIds.add(mapped.itemId);
+        blueprintsByTargetItemId[mapped.itemId] = {
+            id: mapped.itemId,
+            name: mapped.itemId,
             category: "Embark",
             rarity: "",
             learned: true,
-            targetItemId: mapped.targetItemId,
+            targetItemId: mapped.itemId,
         };
-    }
-    for (const item of allItems) {
-        const maybeBlueprintName = mapping.gameAssetIdToItemName[String(item.gameAssetId)] ?? "";
-        if (maybeBlueprintName.toLowerCase().includes("unlock") && !mapping.blueprintUnlocksByTokenAssetId[String(item.gameAssetId)]) {
-            recordUnknown(ctx, item, "blueprint");
-        }
     }
     return {
         unlockedItemIds: Array.from(unlockedItemIds).sort((a, b) => a.localeCompare(b)),
@@ -461,12 +443,12 @@ function extractBlueprints(
 
 function extractCurrencies(allItems: EmbarkRawInventoryItem[]): { credits: number; cred: number; raiderTokens: number; xp: number } {
     const currencies = { credits: 0, cred: 0, raiderTokens: 0, xp: 0 };
+    const ids = mapping.constants.currencies;
     for (const item of allItems) {
-        const itemId = mapping.gameAssetIdToItemId[String(item.gameAssetId)];
-        if (itemId === "coins") currencies.credits = item.amount ?? 0;
-        if (itemId === "cred") currencies.cred = item.amount ?? 0;
-        if (itemId === "raider_tokens") currencies.raiderTokens = item.amount ?? 0;
-        if (itemId === "xp") currencies.xp = item.amount ?? 0;
+        if (item.gameAssetId === ids.coins) currencies.credits = item.amount ?? 0;
+        if (item.gameAssetId === ids.creds) currencies.cred = item.amount ?? 0;
+        if (item.gameAssetId === ids.raiderTokens) currencies.raiderTokens = item.amount ?? 0;
+        if (item.gameAssetId === ids.xp) currencies.xp = item.amount ?? 0;
     }
     return currencies;
 }
@@ -480,7 +462,7 @@ function countRegularSlots(
     return rootAssetIds
         .map(assetId => findDescendantByAssetId(ctx, inventoryRoot, assetId))
         .flatMap(root => collectDescendants(ctx, root))
-        .filter(item => item.gameAssetId === mapping.constants.regularItemSlotAssetId)
+        .filter(item => item.gameAssetId === mapping.constants.inventory.regularItemSlot)
         .length;
 }
 
@@ -494,7 +476,7 @@ function recordUnknown(
     item: EmbarkRawInventoryItem,
     context: "stash" | "loadout" | "blueprint" | "hideout" | "other",
 ): void {
-    if (mapping.gameAssetIdToItemId[String(item.gameAssetId)]) return;
+    if (itemIdOf(item.gameAssetId)) return;
     if (!ctx.diagnostics.unknownGameAssetIds.includes(item.gameAssetId)) {
         ctx.diagnostics.unknownGameAssetIds.push(item.gameAssetId);
     }
