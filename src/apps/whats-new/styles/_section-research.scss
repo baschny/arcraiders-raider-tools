@@ -1,1 +1,145 @@
 // Styles for the research section (BEM prefix wn-research).
+@use '../../../shared/styles/variables' as *;
+
+.wn-research {
+  &__heading {
+    margin: 0 0 $spacing-sm;
+    font-size: $font-md;
+    font-weight: 600;
+    color: $text-light;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  &__acquire,
+  &__levels,
+  &__tracks,
+  &__lists,
+  &__tiles {
+    margin-top: $spacing-lg;
+  }
+
+  &__study {
+    display: flex;
+    gap: $gap-md;
+    overflow-x: auto;
+    padding-bottom: $spacing-xs;
+  }
+
+  &__study-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-xs;
+    flex: 0 0 auto;
+  }
+
+  &__badge {
+    font-size: $font-md;
+    font-weight: 700;
+    color: $text-primary;
+    background: $bg-tertiary;
+    border-radius: $radius-lg;
+    padding: 1px $spacing-sm;
+    white-space: nowrap;
+  }
+
+  &__tag {
+    font-size: $font-base;
+    color: $text-light;
+    border: $border-width-thin solid $border-light;
+    border-radius: $radius-sm;
+    padding: 0 $spacing-xs;
+    white-space: nowrap;
+  }
+
+  &__level-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: $gap-md;
+  }
+
+  &__level {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+    padding: $spacing-sm $spacing-md;
+    background: $bg-secondary;
+    border: $border-width-thin solid $border-default;
+    border-radius: $radius-md;
+  }
+
+  &__level-head { display: flex; align-items: center; gap: $gap-sm; flex-wrap: wrap; }
+
+  &__level-img { width: 40px; height: 40px; object-fit: contain; }
+
+  &__level-name { font-weight: 700; color: $text-primary; margin-right: auto; }
+
+  &__level-cost { display: flex; flex-wrap: wrap; gap: $gap-sm; }
+
+  &__tracks {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: $gap-md;
+  }
+
+  &__track {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: $gap-sm;
+    padding: $spacing-sm $spacing-md;
+    background: $bg-secondary;
+    border: $border-width-thin solid $border-default;
+    border-radius: $radius-md;
+
+    &--locked { opacity: 0.6; }
+  }
+
+  &__track-name { font-weight: 600; color: $text-primary; margin-right: auto; }
+
+  &__lists { display: flex; flex-direction: column; gap: $spacing-lg; }
+
+  &__grid { display: flex; flex-wrap: wrap; gap: $gap-sm; }
+
+  &__chip-rp,
+  &__chip-level {
+    position: absolute;
+    font-size: $font-sm;
+    font-weight: 700;
+    line-height: 1.4;
+    padding: 0 3px;
+    background: rgba(0, 0, 0, 0.8);
+    color: $text-primary;
+    pointer-events: none;
+  }
+
+  &__chip-rp { bottom: 0; right: 0; border-radius: $radius-sm 0 0 0; }
+
+  &__chip-level { top: 0; left: 0; border-radius: 0 0 $radius-sm 0; color: $text-accent; }
+
+  &__chip--selected .item-icon__container { box-shadow: 0 0 0 2px $status-highlight; }
+
+  &__recipe { margin-top: $spacing-sm; }
+
+  &__tiles {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $gap-md;
+
+    @media (max-width: $breakpoint-mobile) { grid-template-columns: 1fr; }
+  }
+
+  &__toggle {
+    align-self: flex-start;
+    background: $bg-tertiary;
+    color: $text-primary;
+    border: $border-width-thin solid $border-light;
+    border-radius: $radius-md;
+    padding: $spacing-xs $spacing-md;
+    cursor: pointer;
+  }
+}
