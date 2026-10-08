@@ -21,6 +21,9 @@ import { TextCollector } from './text';
 /** Canonical item types that are cosmetics (never shipped as site items). */
 const COSMETIC_TYPES = new Set(['CharacterItem', 'Emote', 'CharacterExpressionStructure', 'MusicTrack']);
 
+/** Internal unlock flags (rewards that only flip a state; meaning comes from ctx.requirement). */
+const UNLOCK_TYPES = new Set(['OnlineItem', 'LevelUnlock']);
+
 export class Report {
   readonly sections = new Map<string, string[]>();
   add(section: string, message: string): void {
@@ -122,7 +125,8 @@ export function createContext(arc: ArcData, slugs: SlugStore): GenContext {
     for (const pkg of Object.values(rewards)) for (const r of pkg?.items ?? []) questGate.set(r.id, key);
   }
   const OUTPOST_ROOMS_GROUP = 807616292;
-  const blueprintLearning = arc.constants.owners.blueprintLearning;
+  const { blueprintLearning, furnitureDesigns, stencils: stencilOwner } = arc.constants.owners;
+  const learningOwners = new Set([blueprintLearning, furnitureDesigns, stencilOwner]);
 
   const ctx: GenContext = {
     arc,
@@ -144,7 +148,7 @@ export function createContext(arc: ArcData, slugs: SlugStore): GenContext {
       if (!slug) {
         // Cosmetics never ship (spec-site.md#items); everything else dropped is worth a look.
         const t = arc.items.get(assetId)?.type ?? '';
-        const section = COSMETIC_TYPES.has(t) ? 'droppedCosmeticRefs' : 'droppedItemRefs';
+        const section = COSMETIC_TYPES.has(t) ? 'droppedCosmeticRefs' : UNLOCK_TYPES.has(t) ? 'droppedUnlockRefs' : 'droppedItemRefs';
         report.add(section, `${assetId}${t ? ` ${t}` : ''}${context ? ` in ${context}` : ''}`);
       }
       return slug ?? null;
@@ -192,7 +196,9 @@ export function createContext(arc: ArcData, slugs: SlugStore): GenContext {
         const questId = slugs.slugOf('quests', questKey) ?? ctx.slugFor('quests', questKey, arc.file('quests').get(questKey));
         if (questId) return { kind: 'quest', id: questId };
       }
-      const learn = rewardIndex.get(gate.id)?.find((o) => o.type === 'Chamber' && o.owner === blueprintLearning);
+      // Unlocks learned by consuming an item (blueprints, furniture designs, stencil designs):
+      // the requirement is the consumed item.
+      const learn = rewardIndex.get(gate.id)?.find((o) => o.type === 'Chamber' && learningOwners.has(o.owner));
       if (learn) {
         const bp = learn.cost.type === 'itemAmounts' ? (learn.cost as { items: CanonAmount[] }).items[0] : undefined;
         const bpSlug = bp ? shippedItems.get(bp.id) : undefined;

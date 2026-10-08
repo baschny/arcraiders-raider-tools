@@ -195,6 +195,8 @@ export interface BenchLevel {
   requires?: Requirement[];
   recipes?: string[];
   research?: string[];
+  /** Scrappy: what the level can produce per round (RoundCrafting offers). */
+  produces?: Reward[];
 }
 
 export interface Bench {
@@ -215,6 +217,7 @@ export interface OutpostRoom {
   id: string;
   nameEn: string;
   slots?: string[];
+  craft?: { offerId: string; cost: Cost; requires?: Requirement[] };
 }
 
 export interface OutpostSlot {
