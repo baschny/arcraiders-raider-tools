@@ -6,6 +6,9 @@
     &__panel > * + * { margin-top: 24px; }
 
     &__heading {
+      display: flex;
+      align-items: center;
+      gap: 8px;
       margin: 0 0 8px;
       font-size: $font-xl;
       font-weight: 600;
@@ -30,6 +33,10 @@
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 24px;
+
+      @media (max-width: $breakpoint-mobile) {
+        grid-template-columns: 1fr;
+      }
     }
 
     &__skills {
@@ -42,10 +49,20 @@
     }
 
     &__skill {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px 12px;
+      min-width: 0;
       padding: 12px 16px;
       background: $bg-tertiary;
       border-radius: 8px;
       font-size: $font-xl;
+      color: $text-primary;
+    }
+
+    &__skill-icon {
+      flex: 0 0 auto;
       color: $text-primary;
     }
 

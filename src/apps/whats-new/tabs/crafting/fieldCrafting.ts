@@ -1,13 +1,27 @@
 import { toItemRef, type WhatsNewPageData } from '../../hooks/useWhatsNewData';
-import type { ItemRef, TileSpec } from '../../components';
+import type { GlyphName, ItemRef, TileSpec } from '../../components';
 import type { WhatsNewFieldRecipe } from '../../../../shared/gamedata/types';
 
 export interface SkillPill {
   id: string;
   name: string;
-  icon?: string;
+  /** Skill icon from the game files (skill tree icon). */
+  glyph?: GlyphName;
   isNew: boolean;
 }
+
+/** The field-crafting skills in skill-tree order (base skill first) and their game icons. */
+export const SKILL_ORDER = ['in_round_crafting', 'traveling_tinkerer', 'nomadic_crafting'] as const;
+const SKILL_GLYPHS: Record<string, GlyphName> = {
+  in_round_crafting: 'skill-in-round-crafting',
+  traveling_tinkerer: 'skill-traveling-tinkerer',
+  nomadic_crafting: 'skill-nomadic-crafting',
+};
+const skillRank = (id: string) => {
+  const i = (SKILL_ORDER as readonly string[]).indexOf(id);
+  return i < 0 ? SKILL_ORDER.length : i;
+};
+const bySkillOrder = (a: string, b: string) => skillRank(a) - skillRank(b);
 
 export interface CraftRecipe {
   result: ItemRef;
@@ -23,7 +37,7 @@ export interface SkillGroup {
 export interface FieldCraftingData {
   before: SkillPill[];
   after: SkillPill[];
-  /** New (and changed) crafts, grouped by their gating skill, newest skill first. */
+  /** New (and changed) crafts, grouped by their gating skill, in skill-tree order. */
   added: SkillGroup[];
   addedCount: number;
   unchanged: SkillGroup[];
@@ -70,8 +84,8 @@ export function buildFieldCraftingData(data: WhatsNewPageData): FieldCraftingDat
 
   const pill = (rawId: string): SkillPill => {
     const id = normalizeSkillId(rawId);
-    const node = nodes[id] as (typeof nodes)[string] & { icon?: string } | undefined;
-    return { id, name: text[id]?.name ?? node?.nameEn ?? id, icon: node?.icon, isNew: newIds.has(id) };
+    const node = nodes[id];
+    return { id, name: text[id]?.name ?? node?.nameEn ?? id, glyph: SKILL_GLYPHS[id], isNew: newIds.has(id) };
   };
 
   const all = (fc?.recipes ?? []).map((r) => ({
@@ -89,19 +103,15 @@ export function buildFieldCraftingData(data: WhatsNewPageData): FieldCraftingDat
   const toGroups = (subset: typeof all): SkillGroup[] =>
     [...groupRecipesBySkill(subset, counts, newIds)]
       .map(([id, rs]) => ({ skill: pill(id), recipes: rs.map((r) => r.recipe) }))
-      .sort(
-        (a, b) =>
-          Number(b.skill.isNew) - Number(a.skill.isNew) ||
-          (counts.get(a.skill.id) ?? 0) - (counts.get(b.skill.id) ?? 0),
-      );
+      .sort((a, b) => bySkillOrder(a.skill.id, b.skill.id));
 
   const addedSrc = all.filter((r) => r.recipe.status !== 'unchanged');
   const unchangedSrc = all.filter((r) => r.recipe.status === 'unchanged');
   const unchanged = toGroups(unchangedSrc);
 
   return {
-    before: beforeIds.map(pill),
-    after: afterIds.map(pill),
+    before: [...beforeIds].sort(bySkillOrder).map(pill),
+    after: [...afterIds].sort(bySkillOrder).map(pill),
     added: toGroups(addedSrc),
     addedCount: addedSrc.length,
     unchanged,

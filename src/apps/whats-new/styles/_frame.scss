@@ -44,6 +44,7 @@ $wn-tab-height: 44px;
 
   @media (max-width: $breakpoint-mobile) {
     top: 48px;
+    transition: top 0.24s ease;
   }
 
   &__list {
@@ -134,4 +135,10 @@ $wn-tab-height: 44px;
   border-radius: 12px;
   color: $text-tertiary;
   text-align: center;
+}
+
+// On mobile the app header slides away while scrolling down: the tab bar then sticks to the very top
+// (same timing as the header's transform, so there is no gap and no overlap).
+@media (max-width: $breakpoint-mobile) {
+  body:has(.app-header--hidden) .wn-tabbar { top: 0; }
 }

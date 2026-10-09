@@ -32,6 +32,9 @@ const GLYPHS: Record<string, string> = {
   key: 'UI/Assets/ItemCategories/T_UI_Utility_Key.png',
   beacon: 'UI/Assets/Icons/T_UI_Icon_Transmitter.png',
   trade: 'UI/Assets/Icons/T_UI_Icon_Exchange.png',
+  'skill-in-round-crafting': 'UI/Assets/Icons/Progression/T_UI_CharProg_InroundCraft.T_UI_CharProg_InRoundCraft.png',
+  'skill-traveling-tinkerer': 'UI/Assets/Icons/Progression/T_UI_CharProg_InroundCraftMore.png',
+  'skill-nomadic-crafting': 'UI/Assets/Icons/Progression/T_UI_CharProg_SuperFieldCrafting.png',
 };
 
 async function main(): Promise<void> {

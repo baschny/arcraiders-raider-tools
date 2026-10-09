@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { ChevronDown, ChevronRight } from 'lucide-react';
 import { useLocale } from '../../../shared/context/LocaleContext';
 import { toItemRef, type WhatsNewPageData } from '../hooks/useWhatsNewData';
-import { ItemGrid, ItemTile, NeedsCard, Panel, TabIntro } from '../components';
+import { GlyphIcon, ItemGrid, ItemTile, NeedsCard, Panel, TabIntro } from '../components';
 import { buildFieldCraftingData, type SkillGroup, type SkillPill } from './crafting/fieldCrafting';
 import { buildGatewayCard } from './crafting/gateway';
 import { PARTS_ID, STENCIL_IMAGES, stencilGroups, weaponRef, type StencilEntry } from './crafting/stencils';
@@ -19,6 +19,7 @@ function SkillList({ title, skills, newLabel }: { title: string; skills: SkillPi
       <ul className="wn-crafting__skills">
         {skills.map((s) => (
           <li key={s.id} className="wn-crafting__skill">
+            {s.glyph && <GlyphIcon name={s.glyph} size={28} className="wn-crafting__skill-icon" />}
             <span>{s.name}</span>
             {s.isNew && <span className="wn-crafting__new">{newLabel}</span>}
           </li>
@@ -35,6 +36,7 @@ function SkillGroups({ groups }: { groups: SkillGroup[] }) {
       {groups.map((g) => (
         <div className="wn-crafting__group" key={g.skill.id}>
           <h4 className="wn-crafting__heading">
+            {g.skill.glyph && <GlyphIcon name={g.skill.glyph} size={24} className="wn-crafting__skill-icon" />}
             {g.skill.name}
             {g.skill.isNew && <span className="wn-crafting__new">{t('whatsNew.crafting.new')}</span>}
           </h4>

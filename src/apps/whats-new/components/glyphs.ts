@@ -15,6 +15,9 @@ export const GLYPH_NAMES = [
   'key',
   'beacon',
   'trade',
+  'skill-in-round-crafting',
+  'skill-traveling-tinkerer',
+  'skill-nomadic-crafting',
 ] as const;
 
 export type GlyphName = (typeof GLYPH_NAMES)[number];

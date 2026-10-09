@@ -30,8 +30,8 @@ describe('GlyphIcon', () => {
     expect(out).toContain('-webkit-mask-image:url(&quot;/images/whats-new/icons/trade.webp&quot;)');
   });
 
-  it('exposes the 15 glyph names and their urls', () => {
-    expect(GLYPH_NAMES).toHaveLength(15);
+  it('exposes the 18 glyph names and their urls', () => {
+    expect(GLYPH_NAMES).toHaveLength(18);
     expect(glyphUrl('beacon')).toBe('/images/whats-new/icons/beacon.webp');
   });
 });
