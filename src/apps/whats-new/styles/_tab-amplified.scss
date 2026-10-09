@@ -49,9 +49,26 @@
     &__group-head { display: flex; align-items: center; gap: 16px; }
     &__group-name { margin: 0; font-size: $font-2xl; color: $text-primary; }
 
-    &__detail { display: flex; flex-direction: column; gap: 16px; }
+    // Graph top left, the weapon workflow (weapon + module -> Amplified) top right, the cards below.
+    &__detail {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 16px 24px;
+      align-items: start;
+
+      > .wn-pick { display: contents; }
+      > .wn-amp__flow { grid-column: 2; grid-row: 1; padding-right: 40px; }
+      > .wn-pick > .wn-graph { grid-column: 1; grid-row: 1; }
+      > .wn-pick > .wn-pick__cards { grid-column: 1 / -1; }
+
+      @media (max-width: $breakpoint-mobile) {
+        grid-template-columns: minmax(0, 1fr);
+        > .wn-amp__flow { grid-column: 1; grid-row: 1; padding-right: 32px; }
+        > .wn-pick > .wn-graph { grid-column: 1; grid-row: 2; }
+      }
+    }
     // Workflow: weapon + module -> Amplified weapon, icons on one line, names below.
-    &__flow { display: flex; align-items: flex-start; gap: 4px 8px; padding-right: 40px; }
+    &__flow { display: flex; align-items: flex-start; gap: 4px 8px; }
     &__flow > .wn-tile { width: 96px; }
     &__op { display: flex; align-items: center; justify-content: center; align-self: flex-start; height: 72px; min-width: 16px; font-size: $font-xl; color: $text-secondary; }
 
@@ -256,6 +273,13 @@
       border: 1px solid #5a606a;
       border-radius: 50%;
       transform: translateX(-50%);
+    }
+
+    // The hexagon in the "How it works" step: static, 64 px, chosen look.
+    &--step {
+      --hex: 64px;
+      position: static;
+      .wn-hex__shape { cursor: default; }
     }
 
     // The small hexagon of a card: static, in flow.

@@ -235,6 +235,9 @@ $green: #4caf50;
 
   &__img { max-width: 64px; max-height: 64px; object-fit: contain; }
 
+  // four steps: 2 × 2 instead of 3 + 1 (or four narrow columns)
+  &--four:not(&--list) &__steps { grid-template-columns: repeat(auto-fit, minmax(max(280px, calc(50% - 16px)), 1fr)); }
+
   &--list &__steps { grid-template-columns: 1fr; gap: $wn-s1; }
   &--list &__text { max-width: 72ch; }
 

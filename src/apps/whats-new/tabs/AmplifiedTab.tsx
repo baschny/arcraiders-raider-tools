@@ -6,6 +6,7 @@ import { toItemRef, type WhatsNewPageData } from '../hooks/useWhatsNewData';
 import { fragmentInfo, groupByModule } from './amplified/model';
 import type { WeaponRow } from './amplified/derive';
 import { AmplificationPicker } from './amplified/AmplificationPicker';
+import { HexGlyph } from './amplified/AmplificationGraph';
 import type { AmplifiedWeapon, TextTree } from '../../../shared/gamedata/types';
 
 export interface AmplifiedTabProps {
@@ -53,10 +54,20 @@ export function AmplifiedTab({ data }: AmplifiedTabProps) {
     bench && level4 ? { id: `${bench.id}-level-4`, name: `${bench.nameEn} ${t('whatsNew.amplified.level')} 4`, icon: level4.icon ?? undefined } : undefined;
   const { fragmentsId, recycles } = fragmentInfo(data.amplification.structure, catalog, allWeapons[0]?.moduleId);
 
+  const researchLevel4 = data.benches.structure.benches.research_station?.levels.find((l) => l.level === 4);
+  const sampleAmp = data.amplification.structure.weapons[selected?.baseId ?? '']?.amplifications?.find((a) => a.icon);
   const steps = [
     { image: level4?.icon ?? undefined, text: t('whatsNew.amplified.step1') },
     ...(selected ? [{ item: amplified(ref(selected.amplifiedId)), text: t('whatsNew.amplified.step2') }] : []),
-    { item: ref('amplified_upgrade_part_a'), text: t('whatsNew.amplified.step3') },
+    { image: researchLevel4?.icon ?? undefined, text: t('whatsNew.amplified.stepResearch') },
+    {
+      media: (
+        <span className="wn-hex is-chosen wn-hex--step" aria-hidden="true">
+          <span className="wn-hex__shape"><HexGlyph icon={sampleAmp?.icon} /></span>
+        </span>
+      ),
+      text: t('whatsNew.amplified.step3'),
+    },
   ];
 
   return (
