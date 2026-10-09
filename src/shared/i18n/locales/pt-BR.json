@@ -2,6 +2,28 @@
   "app": {
     "name": "ARC Raiders Tools"
   },
+  "seo": {
+    "home": "Ferramentas gratuitas de ARC Raiders: agenda de eventos dos mapas, mapas interativos de saque e de surgimento de ARC, rastreador de missões, calculadora de craft e mais.",
+    "schedule": "Agenda de eventos de ARC Raiders: veja quais condições do mapa, como Incursão Noturna ou Tempestade Eletromagnética, estão ativas em cada mapa agora e quais vêm a seguir.",
+    "craftCalculator": "Calculadora de craft de ARC Raiders: descubra quantos itens fabricar com seus materiais para aproveitar ao máximo o espaço do seu armazenamento.",
+    "quests": "Rastreador de missões de ARC Raiders: todas as missões dos comerciantes em uma árvore interativa, com os mapas onde acontecem e as recompensas de esquemas.",
+    "lootHelper": "Assistente de loot de ARC Raiders: siga as cadeias de fabricação de cada item e saiba quais materiais valem a pena saquear durante as incursões.",
+    "quartermaster": "Quartermaster de ARC Raiders: planeje seu armazenamento, seus armamentos e os requisitos do hideout em um só lugar.",
+    "maps": "Mapas interativos de ARC Raiders: descubra onde saquear qualquer item e onde inimigos ARC surgem, em cada mapa e em cada condição do mapa.",
+    "mapSizes": "Qual o tamanho de cada mapa de ARC Raiders? A área jogável de cada mapa medida em metros e desenhada lado a lado na mesma escala.",
+    "whatsNew": {
+      "frozen-trail": {
+        "title": "Trilha Congelada: as novidades de ARC Raiders 2.0",
+        "description": "Tudo o que há de novo em ARC Raiders 2.0 Trilha Congelada: para que serve cada item novo, o posto avançado, a Estação de Pesquisa, as armas amplificadas e o que mudou."
+      },
+      "old-items": "Quais itens de ARC Raiders que você já conhece ganharam novos usos em 2.0 Trilha Congelada e para que são necessários agora.",
+      "outpost": "Como expandir seu posto avançado em ARC Raiders 2.0 Trilha Congelada: os materiais de cada expansão e os espaços que você pode escolher para cada nova vaga.",
+      "research": "Como funciona a Estação de Pesquisa em ARC Raiders 2.0 Trilha Congelada: estude itens para ganhar Pontos de Pesquisa e gaste-os em esquemas e projetos.",
+      "amplified": "Como funcionam as armas amplificadas em ARC Raiders 2.0 Trilha Congelada: aprimore o Armeiro e transforme uma arma de nível máximo em uma arma amplificada.",
+      "crafting": "O que há de novo para fabricar em ARC Raiders 2.0 Trilha Congelada: fabricações durante a incursão, estampas de arma e a chave da Entrada de Imperador.",
+      "changes": "O que mudou em ARC Raiders 2.0 Trilha Congelada desde a 1.45: receitas, reciclagem, estoque dos comerciantes e tamanhos de armazenamento."
+    }
+  },
   "shared": {
     "language": "Idioma",
     "loading": "Carregando...",

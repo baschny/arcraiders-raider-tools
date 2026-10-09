@@ -2,6 +2,28 @@
   "app": {
     "name": "ARC Raiders Tools"
   },
+  "seo": {
+    "home": "Outils gratuits pour ARC Raiders : planning des événements, cartes interactives du butin et des apparitions d’ARC, suivi de quêtes, calculateur de craft et plus.",
+    "schedule": "Planning des événements d’ARC Raiders : voyez quelles conditions de carte, comme Raid nocturne ou Tempête électromagnétique, sont actives sur chaque carte et lesquelles suivent.",
+    "craftCalculator": "Calculateur de craft d’ARC Raiders : calculez combien d’objets fabriquer avec vos matériaux pour optimiser l’espace de votre réserve.",
+    "quests": "Suivi de quêtes d’ARC Raiders : toutes les quêtes des commerçants dans un arbre interactif, avec leurs cartes et leurs schémas en récompense. Suivez votre progression.",
+    "lootHelper": "Assistant de loot d’ARC Raiders : suivez les chaînes de craft de chaque objet pour savoir quels matériaux valent la peine d’être récupérés en raid.",
+    "quartermaster": "Intendant d’ARC Raiders : planifiez votre réserve, votre équipement et les besoins de votre repaire au même endroit.",
+    "maps": "Cartes interactives d’ARC Raiders : trouvez où récupérer chaque objet et où apparaissent les ennemis ARC, sur chaque carte et dans chaque condition de carte.",
+    "mapSizes": "Quelle est la taille de chaque carte d’ARC Raiders ? La zone jouable de chaque carte mesurée en mètres et dessinée côte à côte à la même échelle.",
+    "whatsNew": {
+      "frozen-trail": {
+        "title": "Traînée gelée : les nouveautés d’ARC Raiders 2.0",
+        "description": "Toutes les nouveautés d’ARC Raiders 2.0 Traînée gelée : à quoi sert chaque nouvel objet, l’avant-poste, la station de recherche, les armes amplifiées et ce qui a changé."
+      },
+      "old-items": "Quels objets d’ARC Raiders que vous connaissez déjà ont de nouveaux usages dans la 2.0 Traînée gelée, et à quoi ils servent désormais.",
+      "outpost": "Comment agrandir votre avant-poste dans ARC Raiders 2.0 Traînée gelée : les matériaux de chaque agrandissement et les pièces à choisir pour chaque nouvel emplacement.",
+      "research": "Comment fonctionne la station de recherche dans ARC Raiders 2.0 Traînée gelée : étudiez des objets pour des points de recherche, puis dépensez-les en schémas et designs.",
+      "amplified": "Comment fonctionnent les armes amplifiées dans ARC Raiders 2.0 Traînée gelée : améliorez l’armurier, puis transformez une arme de niveau maximum en arme amplifiée.",
+      "crafting": "Ce que vous pouvez fabriquer de nouveau dans ARC Raiders 2.0 Traînée gelée : fabrications en partie, décorations d’armes et clé de la passerelle de l’Empereur.",
+      "changes": "Ce qui a changé dans ARC Raiders 2.0 Traînée gelée depuis la 1.45 : recettes, recyclage, stocks des commerçants et tailles de réserve."
+    }
+  },
   "shared": {
     "language": "Language",
     "loading": "Loading...",

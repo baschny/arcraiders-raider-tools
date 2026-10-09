@@ -2,6 +2,28 @@
   "app": {
     "name": "ARC Raiders Tools"
   },
+  "seo": {
+    "home": "Kostenlose ARC Raiders Tools: Karten-Ereignisplan, interaktive Karten für Beute und ARC-Spawns, Quest-Tracker, Crafting-Rechner, Loot-Helfer und Lagerplaner.",
+    "schedule": "ARC Raiders Ereignisplan: Welche Kartenbedingungen wie Nächtliche Plünderung oder Elektromagnetischer Sturm jetzt auf jeder Karte aktiv sind und was als Nächstes kommt.",
+    "craftCalculator": "ARC Raiders Crafting-Rechner: Berechne, wie viele Gegenstände du aus deinen Materialien herstellen solltest, um den Platz in deinem Lager optimal zu nutzen.",
+    "quests": "ARC Raiders Quest-Tracker: Alle Trader-Quests in einem interaktiven Baum, mit ihren Karten und Bauplan-Belohnungen. Verfolge deinen Fortschritt.",
+    "lootHelper": "ARC Raiders Loot-Helfer: Folge den Herstellungsketten hinter jedem Gegenstand und erfahre, welche Materialien sich in Raids zu looten lohnen.",
+    "quartermaster": "ARC Raiders Quartermaster: Plane Lager, Ausrüstung und Hideout-Anforderungen an einem Ort.",
+    "maps": "Interaktive ARC Raiders Karten: Finde heraus, wo du jeden Gegenstand looten kannst und wo ARC-Gegner auftauchen – auf jeder Karte und bei jeder Kartenbedingung.",
+    "mapSizes": "Wie groß ist jede ARC Raiders Karte? Die spielbare Fläche jeder Raid-Karte in Metern gemessen und im gleichen Maßstab nebeneinander gezeigt.",
+    "whatsNew": {
+      "frozen-trail": {
+        "title": "Überfrorener Pfad: Was ist neu in ARC Raiders 2.0",
+        "description": "Alles Neue in ARC Raiders 2.0 Überfrorener Pfad: wofür jeder neue Gegenstand da ist, der Außenposten, die Forschungsstation, verstärkte Waffen und was sich geändert hat."
+      },
+      "old-items": "Welche bekannten ARC Raiders Gegenstände in 2.0 Überfrorener Pfad neue Verwendungen haben und wofür sie jetzt gebraucht werden.",
+      "outpost": "So erweiterst du deinen Außenposten in ARC Raiders 2.0 Überfrorener Pfad: die Materialien jeder Erweiterung und die Räume, die du für jeden neuen Platz wählen kannst.",
+      "research": "So funktioniert die Forschungsstation in ARC Raiders 2.0 Überfrorener Pfad: Untersuche Gegenstände für Forschungspunkte und gib sie für Baupläne und Entwürfe aus.",
+      "amplified": "So funktionieren verstärkte Waffen in ARC Raiders 2.0 Überfrorener Pfad: Verbessere die Waffenstation und mache aus einer Waffe auf max. Stufe eine verstärkte Waffe.",
+      "crafting": "Was du in ARC Raiders 2.0 Überfrorener Pfad neu herstellen kannst: Herstellung im Raid, Waffenschablonen und der Schlüssel zum Kaiser-Portal.",
+      "changes": "Was sich in ARC Raiders 2.0 Überfrorener Pfad seit 1.45 geändert hat: Rezepte, Recycling, Händlerangebot und Lagergrößen."
+    }
+  },
   "shared": {
     "language": "Sprache",
     "loading": "Wird geladen...",

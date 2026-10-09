@@ -2,6 +2,28 @@
   "app": {
     "name": "ARC Raiders Tools"
   },
+  "seo": {
+    "home": "免費的 ARC Raiders 工具：地圖活動時程、搜刮品與 ARC 出現位置互動地圖、任務追蹤器、製作計算器、戰利品助手與倉庫規劃。",
+    "schedule": "ARC Raiders 活動時程：查看夜間劫掠、電磁風暴等地圖條件目前在哪張地圖上生效，以及接下來會出現什麼。",
+    "craftCalculator": "ARC Raiders 製作計算器：根據你的材料計算應製作多少物品，以最大化儲藏箱空間。",
+    "quests": "ARC Raiders 任務追蹤器：以互動式任務樹顯示所有商人任務，包含任務所在地圖與藍圖獎勵，並追蹤你的進度。",
+    "lootHelper": "ARC Raiders 戰利品助手：沿著每件物品的製作鏈查看，了解突襲中哪些材料值得拾取。",
+    "quartermaster": "ARC Raiders 軍需官：在同一個地方規劃儲藏箱、配備與藏身處需求。",
+    "maps": "ARC Raiders 互動地圖：查詢每張地圖與地圖條件下，物品的搜刮地點和 ARC 敵人的出現位置。",
+    "mapSizes": "ARC Raiders 的每張地圖有多大？以公尺為單位測量每張地圖的可遊玩區域，並以相同比例並排顯示。",
+    "whatsNew": {
+      "frozen-trail": {
+        "title": "《冰凍小徑》：ARC Raiders 2.0 新內容",
+        "description": "ARC Raiders 2.0《冰凍小徑》全部新內容：每件新物品的用途、哨站、研究站、增幅武器，以及有哪些變動。"
+      },
+      "old-items": "在 ARC Raiders 2.0《冰凍小徑》中有了新用途的舊物品，以及它們現在的用處。",
+      "outpost": "如何在 ARC Raiders 2.0《冰凍小徑》中擴建哨站：每次擴建所需的材料，以及每個新欄位可選擇的房間。",
+      "research": "ARC Raiders 2.0《冰凍小徑》研究站如何運作：研究物品以獲得研究點數，再用來兌換藍圖與設計。",
+      "amplified": "ARC Raiders 2.0《冰凍小徑》增幅武器如何運作：先升級槍械站，再將滿級武器轉為增幅武器。",
+      "crafting": "ARC Raiders 2.0《冰凍小徑》新的製作內容：劫掠中製作、武器貼膜，以及皇帝通道鑰匙。",
+      "changes": "ARC Raiders 2.0《冰凍小徑》與 1.45 不同之處：配方、回收、商人庫存與儲藏箱大小。"
+    }
+  },
   "shared": {
     "language": "Language",
     "loading": "Loading...",

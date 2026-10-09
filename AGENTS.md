@@ -48,12 +48,18 @@ after a game patch. See `docs/Maps.md` and the header of `scripts/generate-maps-
 
 ### SEO and Link Previews
 
-Public pages are listed in `src/shared/seo/pages.ts` (title key, description key `seo.*` in `en.json`,
-preview image). At build time `scripts/seo/vitePlugin.ts` writes a `dist/<route>/index.html` per page with
-its title, description, canonical URL and Open Graph / Twitter tags (the host serves `/quests` as
-`/quests/` → `quests/index.html`, so every public route answers 200), plus `sitemap.xml` and `robots.txt`.
-When adding a public route, add it to `pages.ts`, add its `seo.*` description and run
-`npm run generate:og-images` (writes `public/images/og/*.jpg` and the app icons; commit them).
+Every language has its own URLs: English without prefix (`/quests`), others under their locale code
+(`/de/quests`, `/pt-BR/quests`). The router's basename is that prefix (`LocaleRouter` in `src/App.tsx`),
+so app code keeps using prefix-free paths; never build URLs with a locale prefix by hand. Without a
+prefix, a public page moves to the prefix of the chosen or browser language (`LocaleContext`).
+
+Public pages are listed in `src/shared/seo/pages.ts` (title key, description key `seo.*`, preview
+image). At build time `scripts/seo/vitePlugin.ts` writes a `dist/<locale>/<route>/index.html` per page
+and language with its title, description, canonical URL, `hreflang` alternates and Open Graph / Twitter
+tags (the host serves `/quests` as `/quests/` → `quests/index.html`, so every public route answers 200),
+plus `sitemap.xml` and `robots.txt`. When adding a public route, add it to `pages.ts`, add its `seo.*`
+texts in every locale file and run `npm run generate:og-images` (writes `public/images/og/*.jpg` and the
+app icons; commit them). Preview images are English for all languages.
 Response headers (CSP, caching) live in `customHttp.yml`; Amplify ignores headers in `amplify.yml`.
 
 Public data files contain slugs only — never Embark asset ids or internal asset names. Types of all

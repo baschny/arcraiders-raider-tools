@@ -4,9 +4,11 @@ import { Footer } from './Footer';
 import { Sidebar } from './Sidebar';
 import { SyncErrorBanner } from './SyncErrorBanner';
 import { usePageTitle } from '../hooks/usePageTitle';
+import { useLocalePrefix } from '../hooks/useLocalePrefix';
 
 export function Layout() {
   usePageTitle();
+  useLocalePrefix();
 
   return (
     <>

@@ -2,6 +2,28 @@
   "app": {
     "name": "ARC Raiders Tools"
   },
+  "seo": {
+    "home": "무료 ARC Raiders 도구: 맵 이벤트 일정, 노획품과 ARC 출현 위치를 보여 주는 인터랙티브 지도, 퀘스트 추적기, 제작 계산기 등.",
+    "schedule": "ARC Raiders 이벤트 일정: 야간 습격, 전자기 폭풍 같은 맵 환경이 지금 어느 맵에서 진행 중인지, 다음에는 무엇이 오는지 확인하세요.",
+    "craftCalculator": "ARC Raiders 제작 계산기: 가진 재료로 아이템을 몇 개 제작해야 보관함 공간을 가장 잘 활용할 수 있는지 계산합니다.",
+    "quests": "ARC Raiders 퀘스트 추적기: 모든 상인 퀘스트를 인터랙티브 트리로 보여 주며, 퀘스트가 진행되는 맵과 설계도 보상도 함께 확인할 수 있습니다.",
+    "lootHelper": "ARC Raiders 루팅 도우미: 아이템마다 제작 체인을 따라가며 레이드 중 어떤 재료를 루팅할 가치가 있는지 알아보세요.",
+    "quartermaster": "ARC Raiders 병참 관리: 보관함, 로드아웃, 은신처 요구사항을 한 곳에서 계획하세요.",
+    "maps": "ARC Raiders 인터랙티브 지도: 모든 맵과 맵 환경에서 아이템을 어디서 노획할 수 있는지, ARC 적이 어디에 나타나는지 찾아보세요.",
+    "mapSizes": "ARC Raiders 맵은 얼마나 클까요? 모든 레이드 맵의 플레이 가능 영역을 미터 단위로 측정해 같은 축척으로 나란히 보여 줍니다.",
+    "whatsNew": {
+      "frozen-trail": {
+        "title": "얼어붙은 산길: ARC Raiders 2.0의 새로운 점",
+        "description": "ARC Raiders 2.0 얼어붙은 산길의 모든 새 소식: 새 아이템의 용도, 전초 기지, 연구 스테이션, 증폭 무기, 그리고 바뀐 점."
+      },
+      "old-items": "ARC Raiders 2.0 얼어붙은 산길에서 새로운 용도가 생긴 기존 아이템과 지금 필요한 곳.",
+      "outpost": "ARC Raiders 2.0 얼어붙은 산길에서 전초 기지를 확장하는 방법: 확장마다 필요한 재료와 새 슬롯마다 고를 수 있는 방.",
+      "research": "ARC Raiders 2.0 얼어붙은 산길의 연구 스테이션 작동 방식: 아이템을 조사해 연구 포인트를 얻고 설계도와 디자인에 사용하세요.",
+      "amplified": "ARC Raiders 2.0 얼어붙은 산길의 증폭 무기 작동 방식: 총기 제작대를 업그레이드한 뒤 최대 레벨 무기를 증폭 무기로 바꾸세요.",
+      "crafting": "ARC Raiders 2.0 얼어붙은 산길에서 새로 제작할 수 있는 것: 레이드 중 제작, 무기 스텐실, 엠퍼러 게이트웨이 열쇠.",
+      "changes": "ARC Raiders 2.0 얼어붙은 산길에서 1.45 이후 바뀐 점: 제작법, 재활용, 상인 판매 품목, 보관함 크기."
+    }
+  },
   "shared": {
     "language": "Language",
     "loading": "Loading...",

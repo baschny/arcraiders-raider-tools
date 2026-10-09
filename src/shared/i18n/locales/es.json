@@ -2,6 +2,28 @@
   "app": {
     "name": "ARC Raiders Tools"
   },
+  "seo": {
+    "home": "Herramientas gratuitas de ARC Raiders: agenda de eventos, mapas interactivos de botín y de aparición de ARC, rastreador de misiones, calculadora de fabricación y más.",
+    "schedule": "Agenda de eventos de ARC Raiders: mira qué condiciones del mapa, como Incursión nocturna o Tormenta electromagnética, están activas en cada mapa y cuáles vienen después.",
+    "craftCalculator": "Calculadora de fabricación de ARC Raiders: calcula cuántos objetos fabricar con tus materiales para aprovechar al máximo el espacio de tu alijo.",
+    "quests": "Rastreador de misiones de ARC Raiders: todas las misiones de los comerciantes en un árbol interactivo, con sus mapas y sus recompensas de proyectos.",
+    "lootHelper": "Asistente de botín de ARC Raiders: sigue las cadenas de fabricación de cada objeto para saber qué materiales merece la pena recoger en las incursiones.",
+    "quartermaster": "Intendente de ARC Raiders: planifica tu alijo, tu armamento y los requisitos del escondite en un solo lugar.",
+    "maps": "Mapas interactivos de ARC Raiders: descubre dónde conseguir cualquier objeto y dónde aparecen los enemigos ARC en cada mapa y condición del mapa.",
+    "mapSizes": "¿Qué tamaño tiene cada mapa de ARC Raiders? El área jugable de cada mapa medida en metros y dibujada lado a lado a la misma escala.",
+    "whatsNew": {
+      "frozen-trail": {
+        "title": "Sendero helado: novedades de ARC Raiders 2.0",
+        "description": "Todo lo nuevo de ARC Raiders 2.0 Sendero helado: para qué sirve cada objeto nuevo, el Puesto, la Estación de investigación, las armas amplificadas y lo que ha cambiado."
+      },
+      "old-items": "Qué objetos de ARC Raiders que ya conoces tienen usos nuevos en 2.0 Sendero helado y para qué se necesitan ahora.",
+      "outpost": "Cómo ampliar tu Puesto en ARC Raiders 2.0 Sendero helado: los materiales de cada ampliación y las salas que puedes elegir para cada espacio nuevo.",
+      "research": "Cómo funciona la Estación de investigación en ARC Raiders 2.0 Sendero helado: estudia objetos para conseguir puntos de investigación y gástalos en proyectos y diseños.",
+      "amplified": "Cómo funcionan las armas amplificadas en ARC Raiders 2.0 Sendero helado: mejora el Armero y convierte un arma de nivel máximo en una amplificada.",
+      "crafting": "Qué puedes fabricar de nuevo en ARC Raiders 2.0 Sendero helado: fabricaciones durante la incursión, modelos de armas y la llave del Acceso del emperador.",
+      "changes": "Qué ha cambiado en ARC Raiders 2.0 Sendero helado desde la 1.45: recetas, reciclaje, stock de comerciantes y tamaños de alijo."
+    }
+  },
   "shared": {
     "language": "Language",
     "loading": "Loading...",

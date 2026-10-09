@@ -2,6 +2,28 @@
   "app": {
     "name": "ARC Raiders Tools"
   },
+  "seo": {
+    "home": "Strumenti gratuiti per ARC Raiders: programma eventi, mappe interattive di bottino e comparsa degli ARC, tracker missioni, calcolatore crafting e altro.",
+    "schedule": "Programma eventi di ARC Raiders: scopri quali condizioni mappa, come Raid notturno o Tempesta elettromagnetica, sono attive su ogni mappa ora e quali arriveranno.",
+    "craftCalculator": "Calcolatore crafting di ARC Raiders: calcola quanti oggetti creare con i tuoi materiali per sfruttare al meglio lo spazio del tuo deposito.",
+    "quests": "Tracker missioni di ARC Raiders: tutte le missioni dei mercanti in un albero interattivo, con le mappe in cui si svolgono e i progetti in ricompensa.",
+    "lootHelper": "Assistente loot di ARC Raiders: segui le catene di crafting di ogni oggetto per sapere quali materiali vale la pena raccogliere durante i raid.",
+    "quartermaster": "Quartiermastro di ARC Raiders: pianifica deposito, equipaggiamento e requisiti del rifugio in un unico posto.",
+    "maps": "Mappe interattive di ARC Raiders: scopri dove trovare ogni oggetto e dove compaiono i nemici ARC, su ogni mappa e in ogni condizione mappa.",
+    "mapSizes": "Quanto è grande ogni mappa di ARC Raiders? L'area giocabile di ogni mappa misurata in metri e disegnata fianco a fianco alla stessa scala.",
+    "whatsNew": {
+      "frozen-trail": {
+        "title": "Sentiero gelido: le novità di ARC Raiders 2.0",
+        "description": "Tutte le novità di ARC Raiders 2.0 Sentiero gelido: a cosa serve ogni oggetto nuovo, l'Avamposto, la Postazione di ricerca, le armi amplificate e cosa è cambiato."
+      },
+      "old-items": "Quali oggetti di ARC Raiders che già conosci hanno nuovi usi in 2.0 Sentiero gelido e a cosa servono ora.",
+      "outpost": "Come ampliare l'Avamposto in ARC Raiders 2.0 Sentiero gelido: i materiali di ogni ampliamento e le stanze che puoi scegliere per ogni nuovo spazio.",
+      "research": "Come funziona la Postazione di ricerca in ARC Raiders 2.0 Sentiero gelido: studia gli oggetti per ottenere Punti ricerca e spendili per progetti e design.",
+      "amplified": "Come funzionano le armi amplificate in ARC Raiders 2.0 Sentiero gelido: migliora il Banco delle armi e trasforma un'arma al livello massimo in un'arma amplificata.",
+      "crafting": "Cosa puoi creare di nuovo in ARC Raiders 2.0 Sentiero gelido: creazioni durante il raid, stencil per armi e la chiave del Varco dell'Imperatore.",
+      "changes": "Cosa è cambiato in ARC Raiders 2.0 Sentiero gelido rispetto alla 1.45: ricette, riciclo, merce dei mercanti e dimensioni del deposito."
+    }
+  },
   "shared": {
     "language": "Language",
     "loading": "Loading...",

@@ -2,6 +2,28 @@
   "app": {
     "name": "ARC Raiders 工具"
   },
+  "seo": {
+    "home": "免费的 ARC Raiders 工具：地图活动时间表、战利品与 ARC 刷新位置互动地图、任务追踪器、合成计算器、战利品助手和仓库规划。",
+    "schedule": "ARC Raiders 活动时间表：查看夜间奇袭、电磁风暴等地图条件当前在哪张地图上生效，以及接下来会出现什么。",
+    "craftCalculator": "ARC Raiders 合成计算器：根据你的材料计算应制作多少物品，最大化利用储备箱空间。",
+    "quests": "ARC Raiders 任务追踪器：以交互式任务树展示所有商人任务，包括任务所在地图和蓝图奖励，并追踪你的进度。",
+    "lootHelper": "ARC Raiders 战利品助手：沿着每件物品的制作链查看，了解对局中哪些材料值得拾取。",
+    "quartermaster": "ARC Raiders 军需官：在一个页面中规划储备箱、配装和藏身处需求。",
+    "maps": "ARC Raiders 互动地图：查找每张地图及每种地图条件下可搜刮物品的位置，以及 ARC 敌人的刷新位置。",
+    "mapSizes": "ARC Raiders 的每张地图有多大？以米为单位测量每张地图的可游玩区域，并按相同比例并排展示。",
+    "whatsNew": {
+      "frozen-trail": {
+        "title": "《霜痕小径》：ARC Raiders 2.0 新内容",
+        "description": "ARC Raiders 2.0《霜痕小径》全部新内容：每件新物品的用途、哨站、研究站、增强武器以及有哪些变化。"
+      },
+      "old-items": "在 ARC Raiders 2.0《霜痕小径》中有了新用途的旧物品，以及它们现在的用处。",
+      "outpost": "如何在 ARC Raiders 2.0《霜痕小径》中扩建哨站：每次扩建所需的材料，以及每个新栏位可选择的房间。",
+      "research": "ARC Raiders 2.0《霜痕小径》研究站如何运作：研究物品获取研究点数，再用点数兑换蓝图和设计图。",
+      "amplified": "ARC Raiders 2.0《霜痕小径》增强武器如何运作：升级武器工作台，然后将满级武器转化为增强武器。",
+      "crafting": "ARC Raiders 2.0《霜痕小径》新增的可制作内容：局内制作、武器贴花以及“帝王”通道导管钥匙。",
+      "changes": "ARC Raiders 2.0《霜痕小径》相比 1.45 的变化：配方、回收、商人库存和储备箱大小。"
+    }
+  },
   "shared": {
     "language": "语言",
     "loading": "加载中...",

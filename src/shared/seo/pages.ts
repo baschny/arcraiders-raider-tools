@@ -8,6 +8,7 @@ import {
   WHATS_NEW_VERSIONS,
   whatsNewPath,
 } from '../../apps/whats-new/routing';
+import { DEFAULT_LOCALE, localizePath, type AppLocale } from '../i18n/localeCodes';
 
 export const SITE_URL = 'https://raider-tools.app';
 
@@ -81,15 +82,16 @@ export function findSeoPage(pathname: string): SeoPage | undefined {
 }
 
 /**
- * Absolute URL of a path as the host serves it without a redirect: the pre-rendered
+ * Absolute URL of a path in a locale as the host serves it without a redirect: the pre-rendered
  * `<path>/index.html` is reached through the trailing-slash URL.
  */
-export function absoluteUrl(path: string): string {
-  return path === '/' ? `${SITE_URL}/` : `${SITE_URL}${path}/`;
+export function absoluteUrl(path: string, locale: AppLocale = DEFAULT_LOCALE): string {
+  const localized = localizePath(path, locale);
+  return localized === '/' ? `${SITE_URL}/` : `${SITE_URL}${localized}/`;
 }
 
-export function canonicalUrl(page: SeoPage): string {
-  return absoluteUrl(page.canonicalPath ?? page.path);
+export function canonicalUrl(page: SeoPage, locale: AppLocale = DEFAULT_LOCALE): string {
+  return absoluteUrl(page.canonicalPath ?? page.path, locale);
 }
 
 export function imageUrl(page: SeoPage): string {

@@ -5,7 +5,7 @@ import { LoadingSpinner } from './shared/components/LoadingSpinner';
 import { AuthProvider } from './shared/context/AuthContext';
 import { CognitoAuthProvider } from './shared/context/CognitoAuthContext';
 import { LinkedAccountsProvider } from './shared/context/LinkedAccountsProvider';
-import { LocaleProvider } from './shared/context/LocaleContext';
+import { LocaleProvider, useLocale } from './shared/context/LocaleContext';
 import { Dashboard } from './pages/Dashboard';
 import { NotFound } from './pages/NotFound';
 
@@ -62,44 +62,55 @@ const WhatsNewApp = lazy(() =>
   import('./apps/whats-new').then((m) => ({ default: m.WhatsNewApp }))
 );
 
+/**
+ * The router of the current language: its basename is the language's URL prefix (`/de`), so app
+ * paths and links stay prefix-free. Switching the language remounts it at the new prefix.
+ */
+function LocaleRouter() {
+  const { basename } = useLocale();
+  return (
+    <BrowserRouter key={basename} basename={basename || '/'}>
+      <Suspense fallback={<LoadingSpinner />}>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Dashboard />} />
+            <Route path="schedule" element={<ScheduleApp />} />
+            <Route path="craft-calculator" element={<CraftCalculatorApp />} />
+            <Route path="quests" element={<QuestsApp />} />
+            <Route path="loot-helper" element={<LootHelperApp />} />
+            <Route path="quartermaster" element={<QuartermasterApp />} />
+            <Route path="maps" element={<MapsApp />} />
+            <Route path="map-sizes" element={<MapSizesApp />} />
+            <Route path="whats-new/:version?/:tab?" element={<WhatsNewApp />} />
+            <Route path="profile" element={<Profile />}>
+              <Route index element={<Navigate to="arctracker" replace />} />
+              <Route path="arctracker" element={<ArcTrackerSection />} />
+              <Route path="embark" element={<EmbarkSection />} />
+              <Route path="snapshots" element={<SnapshotsSection />} />
+            </Route>
+            <Route path="auth/sign-in" element={<SignIn />} />
+            <Route path="auth/sign-up" element={<SignUp />} />
+            <Route path="auth/callback" element={<AuthCallback />} />
+            <Route path="embark-callback" element={<EmbarkCallback />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>
+      </Suspense>
+    </BrowserRouter>
+  );
+}
+
 function App() {
   return (
-    <BrowserRouter>
-      <LocaleProvider>
-        <CognitoAuthProvider>
-          <AuthProvider>
-            <LinkedAccountsProvider>
-              <Suspense fallback={<LoadingSpinner />}>
-                <Routes>
-                  <Route path="/" element={<Layout />}>
-                    <Route index element={<Dashboard />} />
-                    <Route path="schedule" element={<ScheduleApp />} />
-                    <Route path="craft-calculator" element={<CraftCalculatorApp />} />
-                    <Route path="quests" element={<QuestsApp />} />
-                    <Route path="loot-helper" element={<LootHelperApp />} />
-                    <Route path="quartermaster" element={<QuartermasterApp />} />
-                    <Route path="maps" element={<MapsApp />} />
-                    <Route path="map-sizes" element={<MapSizesApp />} />
-                    <Route path="whats-new/:version?/:tab?" element={<WhatsNewApp />} />
-                    <Route path="profile" element={<Profile />}>
-                      <Route index element={<Navigate to="arctracker" replace />} />
-                      <Route path="arctracker" element={<ArcTrackerSection />} />
-                      <Route path="embark" element={<EmbarkSection />} />
-                      <Route path="snapshots" element={<SnapshotsSection />} />
-                    </Route>
-                    <Route path="auth/sign-in" element={<SignIn />} />
-                    <Route path="auth/sign-up" element={<SignUp />} />
-                    <Route path="auth/callback" element={<AuthCallback />} />
-                    <Route path="embark-callback" element={<EmbarkCallback />} />
-                    <Route path="*" element={<NotFound />} />
-                  </Route>
-                </Routes>
-              </Suspense>
-            </LinkedAccountsProvider>
-          </AuthProvider>
-        </CognitoAuthProvider>
-      </LocaleProvider>
-    </BrowserRouter>
+    <LocaleProvider>
+      <CognitoAuthProvider>
+        <AuthProvider>
+          <LinkedAccountsProvider>
+            <LocaleRouter />
+          </LinkedAccountsProvider>
+        </AuthProvider>
+      </CognitoAuthProvider>
+    </LocaleProvider>
   );
 }
 
