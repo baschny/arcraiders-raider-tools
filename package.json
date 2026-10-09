@@ -18,6 +18,7 @@
     "generate:game-data": "npx tsx ./scripts/generate-game-data.ts",
     "generate:item-icons": "npx tsx ./scripts/generate-item-icons.ts",
     "generate:whats-new-icons": "npx tsx ./scripts/generate-whats-new-icons.ts",
+    "generate:stencil-swatches": "npx tsx ./scripts/generate-stencil-swatches.ts",
     "typecheck:scripts": "tsc -p tsconfig.scripts.json"
   },
   "dependencies": {

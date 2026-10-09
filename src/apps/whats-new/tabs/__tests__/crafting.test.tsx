@@ -52,7 +52,7 @@ describe('crafting tab', () => {
     expect(out).toContain('17 recipes unchanged');
     expect(out).toContain('2 Stencil Parts');
     expect(out).toContain('15 Stencil Parts');
-    expect(out.match(/wn-stencil-tile__swatch/g)).toHaveLength(14);
+    expect(out.match(/\/images\/whats-new\/stencils\/[a-z_]+\.webp/g)).toHaveLength(14);
     expect(out).toContain('Emperor Gateway Conduit');
   });
 });
