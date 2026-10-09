@@ -10,6 +10,7 @@ const PAGE_TITLE_KEYS: Record<string, string> = {
   '/loot-helper': 'shared.tools.lootHelper',
   '/quartermaster': 'shared.tools.quartermaster',
   '/maps': 'shared.tools.maps',
+  '/map-sizes': 'maps.sizes.viewSizes',
 };
 
 // Prefix-based title keys for nested routes that share a common title.

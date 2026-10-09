@@ -1,0 +1,466 @@
+@use '../../../shared/styles/variables' as *;
+
+// "Map sizes" view (MapSizes.tsx): site-styled cards, Urbanist headings, on the normal site background.
+
+.mx--sizes {
+  background: $bg-primary;
+}
+
+// Header switch between the map explorer and the size view (MapsHeader.tsx).
+.mx-viewswitch {
+  display: inline-flex;
+  gap: 2px;
+  padding: 3px;
+  background: $bg-dark;
+  border: $border-width-thin solid $border-default;
+  border-radius: $radius-md;
+
+  a {
+    all: unset;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 5px 14px;
+    border-radius: $radius-sm;
+    font-family: $font-heading;
+    font-weight: 700;
+    letter-spacing: 1.1px;
+    text-transform: uppercase;
+    font-size: $font-md;
+    color: $text-light;
+    text-decoration: none;
+
+    &:hover { color: $text-primary; }
+
+    &:focus-visible {
+      outline: 2px solid $text-accent;
+      outline-offset: -2px;
+    }
+
+    &.on {
+      background: $text-accent;
+      color: #0d1b22;
+    }
+  }
+}
+
+.mx-sizes {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  background: $bg-primary;
+  color: $text-primary;
+  font-size: $font-lg;
+
+  &--loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+// Left-aligned, contained column like the What's New page (.wn-page): the same 1120 px measure and 24/16/64 spacing.
+.mz-wrap {
+  max-width: 1120px;
+  margin: 0;
+  padding: $spacing-xl $spacing-lg 64px;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xl;
+}
+
+// ---- hero
+.mz-hero {
+  &__title {
+    font-family: $font-heading;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0 0 $spacing-sm;
+  }
+
+  &__subtitle {
+    margin: 0;
+    color: $text-light;
+    font-size: $font-xl;
+    line-height: 1.5;
+    max-width: 72ch;
+  }
+}
+
+// ---- stat cards
+.mz-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: $spacing-md;
+}
+
+.mz-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: $spacing-lg;
+  background: $bg-secondary;
+  border-radius: $radius-lg;
+  min-width: 0;
+
+  &__label {
+    @include section-title;
+    font-size: $font-sm;
+  }
+
+  &__value {
+    font-family: $font-heading;
+    font-size: $font-3xl;
+    font-weight: 700;
+    line-height: 1.15;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__sub {
+    color: $text-light;
+    font-size: $font-md;
+  }
+}
+
+// ---- panels
+.mz-panel {
+  background: $bg-secondary;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  min-width: 0;
+
+  &__head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: $spacing-lg;
+    margin-bottom: $spacing-md;
+  }
+
+  &__title {
+    font-family: $font-heading;
+    font-size: $font-3xl;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  &__hint {
+    margin: 4px 0 0;
+    color: $text-light;
+    font-size: $font-lg;
+  }
+}
+
+.mz-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  padding: 8px 14px;
+  border: $border-width-thin solid $border-light;
+  border-radius: $radius-md;
+  background: $bg-tertiary;
+  color: $text-primary;
+  font: inherit;
+  font-size: $font-lg;
+  cursor: pointer;
+
+  &:hover { background: $bg-quaternary; }
+  &:focus-visible { outline: 2px solid $text-accent; outline-offset: 1px; }
+}
+
+// ---- overlay stage + map list
+.mz-overlay {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 240px;
+  gap: $spacing-md;
+}
+
+.mz-stage {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: $bg-dark;
+  border-radius: $radius-md;
+}
+
+.mz-gridline {
+  stroke: #333;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+
+  &--major { stroke: #414141; }
+}
+
+.mz-origin { fill: $text-tertiary; }
+
+.mz-shape {
+  polygon {
+    fill-opacity: 0.16;
+    stroke-width: 2;
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
+  }
+
+  &.is-hot polygon { fill-opacity: 0.34; }
+  &.is-dim { opacity: 0.14; }
+}
+
+.mz-label {
+  font-family: $font-heading;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  text-anchor: middle;
+  paint-order: stroke;
+  stroke: rgba(0, 0, 0, 0.65);
+  stroke-width: 3px;
+}
+
+.mz-scalebar {
+  line { stroke: $text-primary; stroke-width: 1.4; fill: none; }
+  text { fill: $text-light; font-size: 11px; font-family: 'Courier New', monospace; }
+}
+
+.mz-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  button {
+    all: unset;
+    display: grid;
+    grid-template-columns: 14px minmax(0, 1fr) auto 16px;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 8px;
+    border-radius: $radius-md;
+    cursor: pointer;
+    color: $text-primary;
+
+    &:hover { background: $bg-tertiary; }
+    &:focus-visible { outline: 2px solid $text-accent; outline-offset: -2px; }
+  }
+
+  .is-off button { color: $text-tertiary; }
+}
+
+.mz-swatch {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  vertical-align: middle;
+}
+
+.mz-list__name {
+  font-size: $font-lg;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mz-list__val {
+  font-family: 'Courier New', monospace;
+  font-size: $font-md;
+  color: $text-light;
+}
+
+// ---- same scale, one tile per map
+.mz-multiples {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: $spacing-md;
+}
+
+.mz-tile {
+  margin: 0;
+  background: $bg-dark;
+  border-radius: $radius-md;
+  overflow: hidden;
+
+  svg { display: block; width: 100%; height: auto; }
+
+  polygon {
+    fill-opacity: 0.2;
+    stroke-width: 1.6;
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
+  }
+
+  figcaption { padding: 8px 10px 10px; }
+
+  &__name {
+    display: block;
+    font-family: $font-heading;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    font-size: $font-xl;
+  }
+
+  &__area {
+    display: block;
+    margin-top: 4px;
+    font-family: $font-heading;
+    font-size: $font-2xl;
+    font-weight: 700;
+    line-height: 1.1;
+    color: $text-primary;
+  }
+
+  &__dims {
+    display: block;
+    margin-top: 2px;
+    font-family: 'Courier New', monospace;
+    font-size: $font-md;
+    color: $text-light;
+    white-space: nowrap;
+  }
+}
+
+.mz-ref {
+  fill: none;
+  stroke: #3a3a3a;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+// ---- bar charts
+.mz-charts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $spacing-lg;
+}
+
+.mz-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: $spacing-md;
+}
+
+.mz-bar {
+  display: grid;
+  grid-template-columns: 140px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+
+  &__label {
+    font-size: $font-lg;
+    color: $text-light;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__track {
+    position: relative;
+    height: 20px;
+    background: $bg-dark;
+    border-radius: $radius-sm;
+    overflow: hidden;
+  }
+
+  &__fill {
+    position: absolute;
+    inset: 0 auto 0 0;
+
+    &--length { background: $text-accent; }
+  }
+
+  &__inner {
+    position: absolute;
+    inset: 0 auto 0 0;
+    background: #e0604f;
+  }
+
+  &__val {
+    font-family: 'Courier New', monospace;
+    font-size: $font-md;
+    color: $text-primary;
+    text-align: right;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.mz-key {
+  display: flex;
+  gap: 16px;
+  margin-top: $spacing-md;
+  font-size: $font-md;
+  color: $text-light;
+
+  &__swatch {
+    display: inline-block;
+    width: 20px;
+    height: 8px;
+    border-radius: 2px;
+    margin-right: 6px;
+    vertical-align: middle;
+
+    &--length { background: $text-accent; }
+    &--width { background: #e0604f; }
+  }
+}
+
+// ---- table
+.mz-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: $font-lg;
+
+  th {
+    @include section-title;
+    font-size: $font-sm;
+    text-align: right;
+    padding: 0 10px 10px;
+    border-bottom: $border-width-thin solid $border-default;
+
+    &:first-child { text-align: left; }
+  }
+
+  td {
+    text-align: right;
+    padding: 9px 10px;
+    border-bottom: $border-width-thin solid $bg-tertiary;
+    font-family: 'Courier New', monospace;
+    font-size: $font-md;
+    color: $text-light;
+
+    &:first-child {
+      text-align: left;
+      font-family: inherit;
+      font-size: $font-lg;
+      color: $text-primary;
+    }
+
+    &.is-hi { color: $text-accent; font-weight: 700; font-family: inherit; font-size: $font-lg; }
+  }
+
+  tr:last-child td { border-bottom: 0; }
+}
+
+.mz-footnote {
+  margin: $spacing-md 0 0;
+  color: $text-tertiary;
+  font-size: $font-md;
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .mz-wrap { padding: $spacing-lg $spacing-md 48px; }
+  .mz-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .mz-overlay { grid-template-columns: 1fr; }
+  .mz-charts { grid-template-columns: 1fr; }
+  .mz-bar { grid-template-columns: 104px minmax(0, 1fr) auto; }
+  .mz-table th, .mz-table td { padding: 7px 6px; }
+}

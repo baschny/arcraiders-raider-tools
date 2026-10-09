@@ -23,6 +23,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { outlineRings } from './lib/area-outlines.mjs';
+import { computeSizes } from './lib/map-sizes.mjs';
 import { findSource, sourceIndex, tilesHash, writeTiles } from './lib/map-tiles.mjs';
 
 const MAX_FILE_BYTES = 5 * 1024 * 1024;
@@ -141,6 +142,7 @@ writeJson('index.json', toPublicIndex(index));
 // ---- maps: area (POI) pieces are replaced by their merged outline (scripts/lib/area-outlines.mjs).
 const r4 = (x) => Math.round(x * 1e4) / 1e4;
 let pieces = 0, rings = 0;
+const allMaps = [];
 for (const file of fs.readdirSync(path.join(build, 'maps')).filter((f) => f.endsWith('.json')).sort()) {
   const map = JSON.parse(fs.readFileSync(path.join(build, 'maps', file), 'utf8'));
   map.image = await tileSet(map.image);
@@ -153,9 +155,15 @@ for (const file of fs.readdirSync(path.join(build, 'maps')).filter((f) => f.ends
     delete poi.polygons;
     delete poi.polyIds;
   }
+  allMaps.push(map);
   writeJson(`maps/${file}`, toPublicMap(map));
 }
 console.log(`area outlines: ${pieces} pieces -> ${rings} rings`);
+
+// ---- playable-area sizes of every map (scripts/lib/map-sizes.mjs), measured from the same build.
+const sizes = computeSizes(allMaps, index);
+writeJson('sizes.json', { schemaVersion: PUBLIC_SCHEMA_VERSION, maps: sizes });
+console.log(`sizes: ${sizes.length} maps measured (largest ${sizes[0]?.name} ${sizes[0]?.areaKm2} km²)`);
 
 // ---- localized map strings (MAP-02), when the build has them
 const stringFiles = fs.readdirSync(build).filter((f) => /^map-strings\..+\.json$/.test(f)).sort();

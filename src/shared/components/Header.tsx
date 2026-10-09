@@ -46,10 +46,12 @@ export function Header() {
   const scrollTargetRef = useRef<EventTarget | null>(null);
 
   const currentPathname = normalizePathname(location.pathname);
+  // Map sizes lives at its own route but belongs to the Maps tool.
+  const toolPathname = currentPathname === '/map-sizes' ? '/maps' : currentPathname;
   const currentTool = TOOLS.find(
     (tool) =>
-      tool.path === currentPathname ||
-      (tool.path !== '/' && currentPathname.startsWith(`${tool.path}/`)),
+      tool.path === toolPathname ||
+      (tool.path !== '/' && toolPathname.startsWith(`${tool.path}/`)),
   ) || TOOLS[0];
   const shouldAutoHideOnScroll = currentPathname !== '/schedule' && currentPathname !== '/maps';
   const currentLocaleOption =
@@ -153,7 +155,7 @@ export function Header() {
                 key={tool.path}
                 onClick={() => handleToolSelect(tool.path)}
                 className={`header-menu-item ${
-                  tool.path === currentPathname ? 'header-menu-item--active' : ''
+                  tool.path === toolPathname ? 'header-menu-item--active' : ''
                 }`}
               >
                 <ToolIcon size={18} />

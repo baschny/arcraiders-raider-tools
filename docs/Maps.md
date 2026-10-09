@@ -1,9 +1,12 @@
 # Maps
 
-The `/maps` tool (`src/apps/maps/`) shows the ARC Raiders maps full-bleed with what the game files say about them:
-where an item can be looted and where ARC enemies spawn, per map and map condition. It is a port of the map
-features page of embark-api (`tools/map-features/`); the game-side background (loot handlers, spawners,
-transforms, map layers, what is server-only) is documented there in `docs/Map-Features.md`.
+The Maps tool (`src/apps/maps/`) has two routes, switched by the tab bar in its header:
+
+- `/maps` — the ARC Raiders maps full-bleed with what the game files say about them: where an item can be looted and
+  where ARC enemies spawn, per map and map condition. It is a port of the map features page of embark-api
+  (`tools/map-features/`); the game-side background (loot handlers, spawners, transforms, map layers, what is
+  server-only) is documented there in `docs/Map-Features.md`.
+- `/map-sizes` — the playable area of every map compared to scale (see [Map sizes](#map-sizes)).
 
 ## What the page does
 
@@ -29,6 +32,29 @@ The map image is a WebP tile pyramid (512 px tiles); the page loads only the vis
 matches the zoom. Markers are drawn on a Canvas 2D engine of our own (`src/apps/maps/engine/`, no map library: the
 maps have up to 16k spots, too many for DOM markers). Everything is computed in the browser; there is no API.
 
+## Map sizes
+
+The `/map-sizes` route (`MapSizes.tsx`) compares the playable area of every map. The numbers are generated, not
+computed in the browser: `npm run generate:maps` measures each map's `bounds` (playable outlines, in UV of the map
+texture) through its `world` size in cm — 1 UV unit = `worldSize / 100` m, so areas and distances are exact — and
+writes the committed `public/data/map-data/sizes.json`. The measurement lives in `scripts/lib/map-sizes.mjs`
+(`computeSizes`, unit-tested in the same folder), next to the area-outline generation; the client only loads and
+renders the file (`MapSizes.tsx`, `useMapSizes` in `data/useMapData.ts`). The source is the same embark-api map
+features build as the explorer (`data-game-extract/current/map-features/`); `arc-data` has no playable boundary.
+
+The page shows, in one left-aligned column:
+
+- a stat row (map count, total playable area, largest map, largest/smallest ratio);
+- **Overlay to scale** — every outline stacked on its own centroid, on a 100 m grid with a scale bar; the list on
+  the right shows/hides a map (hovering a row or an outline highlights it and shows its name);
+- **Same scale** — one tile per map at a shared scale, with a 1 km reference square;
+- bar charts and a table of area, bounding box, oriented length × width, diameter and fill (playable area as a share
+  of the map texture; Stella Montis reads above 100 % because its limiter reaches past its smaller map widget).
+
+Per-map colours are presentation and live in `MapSizes.tsx`; the route shows the shared `ErrorDisplay` when
+`sizes.json` cannot be loaded. After a game patch, run `npm run generate:maps` and commit `sizes.json` with the rest
+of `public/data/map-data/` (see the runbook above).
+
 ## Data flow
 
 ```
@@ -44,6 +70,7 @@ build (env `EMBARK_API_DIR`, default the sibling `../embark-api`) and writes the
 | --- | --- |
 | `index.json` | map list, items (by slug), loot tables, enemies, quests, `schemaVersion`, `manifest`, `gameVersion`, `built` |
 | `maps/<map>.json` | one per map; area pieces replaced by merged outlines |
+| `sizes.json` | playable-area size of every map, measured by `scripts/lib/map-sizes.mjs` (the `/map-sizes` page) |
 | `map-strings.<locale>.json` | localized map strings, when the build has them |
 | `icons/<key>.png` | game UI icons (white on transparent, tinted in the browser) |
 | `tiles/<Texture>-<hash>/` | tile pyramids, cut from the full-size game textures (fallback: the build's 2048 px images) |
@@ -74,7 +101,7 @@ their source, so `amplify.yml` serves `data/map-data/tiles/**` with an immutable
 use the default revalidation.
 
 The client (`src/apps/maps/data/useMapData.ts`) loads `index.json`, then the open map (all maps only when the map
-bar needs scores). `data/schema.ts` checks `schemaVersion` (`MAP_SCHEMA_VERSION`, the public format) and asks
+bar needs scores) and, for `/map-sizes`, `sizes.json`. `data/schema.ts` checks `schemaVersion` (`MAP_SCHEMA_VERSION`, the public format) and asks
 for a page reload when data and client come from different releases. The positional arrays of the map files are
 documented in `src/apps/maps/data/types.ts`. Items are joined to raider-tools items by slug only (the arctracker id,
 mapped from the Embark asset id in embark-api at build time).
@@ -117,7 +144,7 @@ Everything that makes a view shareable is in the URL (`state.ts`); default value
 
 Changing the map resets `cond` and `layer`. Display preferences (heat map, height marks, area labels, loot zones,
 playable area, left bar open) live in `localStorage` under `raider-tools:maps-prefs`; unreadable or invalid values
-fall back to the defaults.
+fall back to the defaults. `/map-sizes` carries no state (there is nothing to share but the comparison itself).
 
 ## Scoring
 
@@ -153,13 +180,15 @@ Not shown, on purpose:
 
 | Path | Role |
 | --- | --- |
-| `index.tsx` | page, loading and error states, layout (left bar or bottom sheet) |
+| `index.tsx` | `/maps` page (`MapsApp`) and `/map-sizes` (`MapSizesApp`), loading and error states, layout (left bar or bottom sheet) |
+| `MapsHeader.tsx` | header tab bar linking `/maps` and `/map-sizes` |
+| `MapSizes.tsx`, `styles/_sizes.scss` | the `/map-sizes` comparison view |
 | `state.ts` | URL state, sanitizing, preferences |
 | `model.ts` | everything derived from the state for the open map: scores, filter counts, visibility, enemies |
 | `Bars.tsx`, `Sidebar.tsx`, `components.tsx`, `BottomSheet.tsx` | UI |
 | `MapView.tsx`, `engine/` | canvas: `MapEngine` (drawing, input), `tiles.ts`, `iconAtlas.ts` |
 | `data/` | loader, schema check, data types, spot kinds, scoring |
-| `scripts/generate-maps-data.mjs`, `scripts/lib/map-tiles.mjs`, `scripts/lib/area-outlines.mjs` | data generation |
+| `scripts/generate-maps-data.mjs`, `scripts/lib/map-tiles.mjs`, `scripts/lib/area-outlines.mjs`, `scripts/lib/map-sizes.mjs` | data generation |
 
 Imperative canvas code stays in `engine/` classes (the React Compiler lint forbids ref access during render).
 Unit tests live in `__tests__/` folders next to the code. Ideas for later: `plans/maps-integration.md`.

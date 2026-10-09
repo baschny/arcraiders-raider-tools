@@ -258,3 +258,34 @@ export interface MapData {
   /** Level per socket, spawner, enemy spawner and quest marker; map layer per POI. */
   levels: { sockets: Level[]; spawners: Level[]; enemies: Level[]; quests: Level[]; pois: number[] };
 }
+
+/**
+ * Playable-area size of one map, measured at sync time (scripts/lib/map-sizes.mjs) from the map features build of
+ * embark-api. `rings` are the playable outlines in meters, centered on the map's centroid, so the page can stack
+ * them; `bbox` is their bounding box [minX, minY, maxX, maxY] in meters.
+ */
+export interface MapSize {
+  map: string;
+  name: string;
+  nameKey?: string;
+  difficulty: number | null;
+  rings: [x: number, y: number][][];
+  bbox: [minX: number, minY: number, maxX: number, maxY: number];
+  areaKm2: number;
+  bboxW: number;
+  bboxH: number;
+  /** Longest side of the minimum-area bounding rectangle (m). */
+  lengthM: number;
+  /** Short side of the minimum-area bounding rectangle (m). */
+  widthM: number;
+  /** Widest point-to-point span of the outline (m). */
+  diameterM: number;
+  /** Playable area as a share of the map texture (%). */
+  fillPct: number;
+}
+
+/** Shape of public/data/map-data/sizes.json (schemaVersion shares MAP_SCHEMA_VERSION). */
+export interface MapSizesData {
+  schemaVersion: number;
+  maps: MapSize[];
+}

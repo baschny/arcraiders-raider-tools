@@ -1,6 +1,6 @@
-// Maps tool (docs/Maps.md). The embark-api map features page (Loot and ARC modes) on a full-bleed map: map and condition
-// switchers float at the top, the collapsible left bar holds the mode switch and the filters (on phones: a bottom
-// sheet).
+// Maps tool (docs/Maps.md). `/maps` is the embark-api map features page (Loot and ARC modes) on a full-bleed map:
+// map and condition switchers float at the top, the collapsible left bar holds the mode switch and the filters (on
+// phones: a bottom sheet). `/map-sizes` is the playable-area comparison (MapSizes.tsx), switched by MapsHeader.
 // Data: embark-api map features build, generated with npm run generate:maps (data/useMapData.ts). State lives in the
 // URL.
 import { useEffect, useRef, useState } from 'react';
@@ -16,6 +16,8 @@ import type { MapData, MapIndex } from './data/types';
 import { useExplorer } from './model';
 import { useMapText } from './text';
 import { MapView, type MapViewHandle } from './MapView';
+import { MapSizes } from './MapSizes';
+import { MapsHeader } from './MapsHeader';
 import { Sidebar } from './Sidebar';
 import { BottomSheet } from './BottomSheet';
 import { useMobile } from './useMobile';
@@ -52,6 +54,20 @@ export function MapsApp() {
   return <Explorer index={index} map={shown} state={shown === map ? state : { ...state, map: shown.map }} set={set} items={items} />;
 }
 
+/** Route `/map-sizes`: the same index load, then the size comparison (no map state). */
+export function MapSizesApp() {
+  const { index, error: indexError } = useMapIndex();
+  const error = indexError ?? (index && !index.maps.length ? new MapLoadError('missing', `${DATA_BASE}/index.json`, 'no maps') : null);
+  if (error) return <LoadError error={error} mapName={index?.maps.find((m) => m.map === error.map)?.name ?? error.map} />;
+  if (!index) return <LoadingSpinner />;
+  return (
+    <div className="maps-app mx mx--sizes">
+      <MapsHeader active="sizes" index={index} />
+      <MapSizes />
+    </div>
+  );
+}
+
 /** Load failure with a retry (a page reload when the data format changed: this page is older than the data). */
 function LoadError({ error, mapName }: { error: MapLoadError; mapName: string | null }) {
   const { t, tm } = useLocale();
@@ -86,10 +102,7 @@ function Explorer({ index, map, state, set, items }: { index: MapIndex; map: Map
 
   return (
     <div className={`maps-app mx ${open ? '' : 'mx--collapsed'} ${mobile && sheet ? 'mx--sheet-open' : ''}`}>
-      <header className="mx-head">
-        <h1>{t('shared.tools.maps')}</h1>
-        <GameDataVersion index={index} />
-      </header>
+      <MapsHeader active="maps" index={index} />
       <div className="mx-body">
         <div className="mx-area-map"><MapView ex={ex} handle={mapView} fitPadding={fitPadding} /></div>
         <div className="mx-area-top">
@@ -126,18 +139,5 @@ function Explorer({ index, map, state, set, items }: { index: MapIndex; map: Map
         )}
       </div>
     </div>
-  );
-}
-
-/** Game data version (game version when known, else the Steam manifest) and build date of the map data. */
-function GameDataVersion({ index }: { index: MapIndex }) {
-  const { tm, formatDate } = useLocale();
-  const built = new Date(index.built);
-  const ok = !Number.isNaN(built.getTime());
-  const date = ok ? formatDate(built, { dateStyle: 'medium' }) : index.built;
-  return (
-    <span className="mx-head__version" title={tm('maps.header.gameDataTitle', { manifest: index.manifest, date: ok ? formatDate(built, { dateStyle: 'medium', timeStyle: 'short' }) : index.built })}>
-      {tm('maps.header.gameData', { version: index.gameVersion ?? index.manifest, date })}
-    </span>
   );
 }

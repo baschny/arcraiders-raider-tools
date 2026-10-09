@@ -52,6 +52,9 @@ const LootHelperApp = lazy(() =>
 const MapsApp = lazy(() =>
   import('./apps/maps').then((m) => ({ default: m.MapsApp }))
 );
+const MapSizesApp = lazy(() =>
+  import('./apps/maps').then((m) => ({ default: m.MapSizesApp }))
+);
 const QuartermasterApp = lazy(() =>
   import('./apps/quartermaster').then((m) => ({ default: m.QuartermasterApp }))
 );
@@ -76,6 +79,7 @@ function App() {
                     <Route path="loot-helper" element={<LootHelperApp />} />
                     <Route path="quartermaster" element={<QuartermasterApp />} />
                     <Route path="maps" element={<MapsApp />} />
+                    <Route path="map-sizes" element={<MapSizesApp />} />
                     <Route path="whats-new/:version?/:tab?" element={<WhatsNewApp />} />
                     <Route path="profile" element={<Profile />}>
                       <Route index element={<Navigate to="arctracker" replace />} />

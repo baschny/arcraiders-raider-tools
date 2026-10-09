@@ -3,7 +3,7 @@
 // them (retry button, or tile folders replaced by a deploy while the page was open).
 import { useEffect, useState, useSyncExternalStore } from 'react';
 import { checkSchemaVersion, MapSchemaError } from './schema';
-import type { MapData, MapIndex } from './types';
+import type { MapData, MapIndex, MapSize, MapSizesData } from './types';
 
 export const DATA_BASE = '/data/map-data';
 export const iconUrl = (key: string) => `${DATA_BASE}/icons/${key}.png`;
@@ -84,6 +84,25 @@ export function loadMap(index: MapIndex, key: string): Promise<MapData> {
   return p;
 }
 
+// ---- playable-area sizes of every map (scripts/lib/map-sizes.mjs): one small file, loaded by the /map-sizes view.
+let sizesPromise: Promise<MapSizesData> | null = null;
+
+/** The size comparison of every map (`sizes.json`, computed at sync time from the embark-api build). */
+export function loadMapSizes(): Promise<MapSizesData> {
+  if (!sizesPromise) {
+    const p = fetchJson<MapSizesData>(`${DATA_BASE}/sizes.json`).then((data) => {
+      try {
+        return checkSchemaVersion(data);
+      } catch (e) {
+        throw asLoadError(e);
+      }
+    });
+    p.catch(() => sizesPromise === p && (sizesPromise = null)); // fetched again on the next try
+    sizesPromise = p;
+  }
+  return sizesPromise;
+}
+
 // Data generation: bumped by reloadMapData(); the hooks refetch when it changes.
 let generation = 0;
 const listeners = new Set<() => void>();
@@ -99,6 +118,7 @@ const useGeneration = () => useSyncExternalStore(subscribe, () => generation);
 export function reloadMapData() {
   indexPromise = null;
   mapPromises.clear();
+  sizesPromise = null;
   revalidate = true;
   generation++;
   listeners.forEach((fn) => fn());
@@ -173,4 +193,26 @@ export function useAllMaps(index: MapIndex | null) {
     Promise.all(index.maps.map((m) => loadMap(index, m.map))).then(setMaps, (e) => console.error(e));
   }, [index]);
   return maps;
+}
+
+/** Every map's playable-area size (`/map-sizes`), or the error that keeps the view from showing it. */
+export function useMapSizes(): { sizes: MapSize[] | null; error: MapLoadError | null } {
+  const gen = useGeneration();
+  const [res, setRes] = useState<{ gen: number; sizes: MapSize[] | null; error: MapLoadError | null }>({ gen: -1, sizes: null, error: null });
+  useEffect(() => {
+    let live = true;
+    loadMapSizes().then(
+      (data) => live && setRes({ gen, sizes: data.maps, error: null }),
+      (e: unknown) => {
+        const error = asLoadError(e);
+        console.error(error);
+        if (live) setRes((r) => ({ gen, sizes: r.sizes, error }));
+      },
+    );
+    return () => {
+      live = false;
+    };
+  }, [gen]);
+  const error = res.gen === gen && res.error && !res.sizes ? res.error : null;
+  return { sizes: error ? null : res.sizes, error };
 }

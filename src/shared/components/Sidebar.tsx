@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useLocale } from '../context/LocaleContext';
 import { useCognitoAuth } from '../context/CognitoAuthContext';
@@ -38,6 +38,7 @@ const SIDEBAR_STORAGE_KEY = 'raider-tools:sidebar-collapsed';
 
 export function Sidebar() {
   const { t } = useLocale();
+  const { pathname } = useLocation();
   const cognito = useCognitoAuth();
   const [collapsed, setCollapsed] = useState(() => {
     try {
@@ -74,11 +75,13 @@ export function Sidebar() {
         <ul className="sidebar-nav-list">
           {NAV_ITEMS.map((item) => {
             const label = t(item.labelKey);
+            // Map sizes is its own route but belongs to the Maps item.
+            const mapsAlias = item.path === '/maps' && pathname === '/map-sizes';
             return (
               <li key={item.path} className="sidebar-nav-item">
                 <NavLink
                   to={item.path}
-                  className={({ isActive }) => (isActive ? 'active' : '')}
+                  className={({ isActive }) => (isActive || mapsAlias ? 'active' : '')}
                   title={collapsed ? label : undefined}
                   onClick={() => trackNavigation(label, 'sidebar')}
                 >
