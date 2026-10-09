@@ -2,6 +2,28 @@
   "app": {
     "name": "ARC Raiders Tools"
   },
+  "seo": {
+    "home": "Darmowe narzędzia do ARC Raiders: harmonogram wydarzeń, interaktywne mapy łupów i pojawiania się ARC, śledzenie zadań, kalkulator craftingu i więcej.",
+    "schedule": "Harmonogram wydarzeń ARC Raiders: sprawdź, które warunki mapy, takie jak Nocny rajd czy Burza elektromagnetyczna, są teraz aktywne na każdej mapie i co będzie dalej.",
+    "craftCalculator": "Kalkulator craftingu ARC Raiders: oblicz, ile przedmiotów wytworzyć z twoich materiałów, aby najlepiej wykorzystać miejsce w skrytce.",
+    "quests": "Śledzenie zadań ARC Raiders: wszystkie zadania handlarzy w interaktywnym drzewie, z mapami, na których się odbywają, i planami w nagrodę. Śledź swoje postępy.",
+    "lootHelper": "Pomocnik łupu ARC Raiders: śledź łańcuchy wytwarzania każdego przedmiotu, aby wiedzieć, które materiały warto zbierać podczas rajdów.",
+    "quartermaster": "Kwatermistrz ARC Raiders: planuj skrytkę, rynsztunek i wymagania kryjówki w jednym miejscu.",
+    "maps": "Interaktywne mapy ARC Raiders: znajdź, gdzie zdobyć każdy przedmiot i gdzie pojawiają się wrogie ARC, na każdej mapie i w każdym warunku mapy.",
+    "mapSizes": "Jak duża jest każda mapa ARC Raiders? Obszar gry każdej mapy zmierzony w metrach i narysowany obok siebie w tej samej skali.",
+    "whatsNew": {
+      "frozen-trail": {
+        "title": "Mroźny szlak: co nowego w ARC Raiders 2.0",
+        "description": "Wszystko, co nowe w ARC Raiders 2.0 Mroźny szlak: do czego służy każdy nowy przedmiot, posterunek, Stacja badawcza, wzmocnione bronie i co się zmieniło."
+      },
+      "old-items": "Które znane przedmioty z ARC Raiders dostały nowe zastosowania w wersji 2.0 Mroźny szlak i do czego są teraz potrzebne.",
+      "outpost": "Jak rozbudować posterunek w ARC Raiders 2.0 Mroźny szlak: materiały na każdą rozbudowę i pomieszczenia do wyboru dla każdego nowego miejsca.",
+      "research": "Jak działa Stacja badawcza w ARC Raiders 2.0 Mroźny szlak: badaj przedmioty, aby zdobywać Punkty badań, i wydawaj je na plany i projekty.",
+      "amplified": "Jak działają wzmocnione bronie w ARC Raiders 2.0 Mroźny szlak: ulepsz Stację rusznikarską i zamień broń na maksymalnym poziomie we wzmocnioną.",
+      "crafting": "Co nowego możesz wytwarzać w ARC Raiders 2.0 Mroźny szlak: wytwory używane podczas rajdu, szablony broni i klucz do Bramy cesarza.",
+      "changes": "Co zmieniło się w ARC Raiders 2.0 Mroźny szlak od wersji 1.45: przepisy, przetwarzanie, asortyment handlarzy i rozmiary skrytek."
+    }
+  },
   "shared": {
     "language": "Language",
     "loading": "Loading...",

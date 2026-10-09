@@ -2,6 +2,28 @@
   "app": {
     "name": "ARC Raiders Tools"
   },
+  "seo": {
+    "home": "Ücretsiz ARC Raiders araçları: etkinlik takvimi, ganimet ve ARC doğma noktaları için etkileşimli haritalar, görev takibi, craft hesaplayıcı ve daha fazlası.",
+    "schedule": "ARC Raiders etkinlik takvimi: Gece Baskını veya Elektromanyetik Fırtına gibi harita koşullarından hangisinin şu an hangi haritada aktif olduğunu ve sırada ne olduğunu gör.",
+    "craftCalculator": "ARC Raiders craft hesaplayıcı: zulandaki alanı en iyi şekilde kullanmak için malzemelerinden kaç eşya üretmen gerektiğini hesapla.",
+    "quests": "ARC Raiders görev takibi: tüm tüccar görevleri, geçtikleri haritalar ve taslak ödülleriyle birlikte etkileşimli bir ağaçta. İlerlemeni takip et.",
+    "lootHelper": "ARC Raiders yağma yardımcısı: her eşyanın üretim zincirini takip et ve baskınlarda hangi malzemeleri toplamaya değer olduğunu öğren.",
+    "quartermaster": "ARC Raiders Levazım: zulanı, teçhizatını ve sığınak gereksinimlerini tek bir yerde planla.",
+    "maps": "Etkileşimli ARC Raiders haritaları: her haritada ve her harita koşulunda bir eşyayı nerede bulacağını ve ARC düşmanlarının nerede doğduğunu bul.",
+    "mapSizes": "ARC Raiders haritaları ne kadar büyük? Her baskın haritasının oynanabilir alanı metre cinsinden ölçülüp aynı ölçekte yan yana çizildi.",
+    "whatsNew": {
+      "frozen-trail": {
+        "title": "Donmuş Patika: ARC Raiders 2.0'daki yenilikler",
+        "description": "ARC Raiders 2.0 Donmuş Patika'daki tüm yenilikler: her yeni eşyanın ne işe yaradığı, Karakol, Araştırma İstasyonu, Güçlendirilmiş silahlar ve neyin değiştiği."
+      },
+      "old-items": "Zaten bildiğin hangi ARC Raiders eşyalarının 2.0 Donmuş Patika'da yeni kullanım kazandığı ve artık ne için gerektiği.",
+      "outpost": "ARC Raiders 2.0 Donmuş Patika'da Karakolunu nasıl genişletirsin: her genişletmenin malzemeleri ve her yeni yuva için seçebileceğin odalar.",
+      "research": "ARC Raiders 2.0 Donmuş Patika'da Araştırma İstasyonu nasıl çalışır: Araştırma Puanı için eşyaları incele ve bunları taslak ve tasarımlara harca.",
+      "amplified": "ARC Raiders 2.0 Donmuş Patika'da Güçlendirilmiş silahlar nasıl çalışır: Silahçıyı yükselt, sonra maksimum seviyedeki bir silahı Güçlendirilmiş silaha çevir.",
+      "crafting": "ARC Raiders 2.0 Donmuş Patika'da yeni neler üretebilirsin: baskın içi üretimler, silah çıkartmaları ve İmparator Ağ Geçidi anahtarı.",
+      "changes": "ARC Raiders 2.0 Donmuş Patika'da 1.45'ten bu yana neler değişti: tarifler, geri dönüştürme, tüccar stokları ve zula boyutları."
+    }
+  },
   "shared": {
     "language": "Language",
     "loading": "Loading...",

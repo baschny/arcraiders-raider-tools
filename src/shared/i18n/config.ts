@@ -1,22 +1,16 @@
-export const SUPPORTED_LOCALES = [
-  'en',
-  'de',
-  'pt-BR',
-  'es',
-  'fr',
-  'it',
-  'ja',
-  'ko-KR',
-  'pl',
-  'ru',
-  'tr',
-  'zh-CN',
-  'zh-TW',
-] as const;
+import { DEFAULT_LOCALE, isSupportedLocale, type AppLocale } from './localeCodes';
 
-export type AppLocale = (typeof SUPPORTED_LOCALES)[number];
+export {
+  DEFAULT_LOCALE,
+  SUPPORTED_LOCALES,
+  getIntlLocale,
+  isSupportedLocale,
+  localePrefix,
+  localizePath,
+  splitLocalePath,
+  type AppLocale,
+} from './localeCodes';
 
-export const DEFAULT_LOCALE: AppLocale = 'en';
 export const LOCALE_STORAGE_KEY = 'raider-tools-locale';
 
 export interface LocaleOption {
@@ -49,10 +43,6 @@ export const LOCALE_OPTIONS: LocaleOption[] = [
   { code: 'zh-TW', label: 'Chinese (Traditional)', nativeLabel: '繁體中文', flag: '🇹🇼', upstreamKeys: ['zh-TW', 'en'] },
 ];
 
-export function isSupportedLocale(value: string): value is AppLocale {
-  return SUPPORTED_LOCALES.includes(value as AppLocale);
-}
-
 export function getLocaleOption(locale: AppLocale): LocaleOption {
   return LOCALE_OPTIONS.find((option) => option.code === locale) ?? LOCALE_OPTIONS[0];
 }
@@ -63,37 +53,6 @@ export function getLocaleFallbackChain(locale: AppLocale): AppLocale[] {
 
 export function getLocaleCandidates(locale: AppLocale): string[] {
   return getLocaleOption(locale).upstreamKeys;
-}
-
-export function getIntlLocale(locale: AppLocale): string {
-  switch (locale) {
-    case 'pt-BR':
-      return 'pt-BR';
-    case 'de':
-      return 'de-DE';
-    case 'es':
-      return 'es-ES';
-    case 'fr':
-      return 'fr-FR';
-    case 'it':
-      return 'it-IT';
-    case 'ja':
-      return 'ja-JP';
-    case 'ko-KR':
-      return 'ko-KR';
-    case 'pl':
-      return 'pl-PL';
-    case 'ru':
-      return 'ru-RU';
-    case 'tr':
-      return 'tr-TR';
-    case 'zh-CN':
-      return 'zh-CN';
-    case 'zh-TW':
-      return 'zh-TW';
-    default:
-      return 'en-US';
-  }
 }
 
 export function detectInitialLocale(): AppLocale {

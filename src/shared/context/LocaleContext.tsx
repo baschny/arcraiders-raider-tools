@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
+import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
 import {
   DEFAULT_LOCALE,
   detectInitialLocale,
@@ -6,13 +6,24 @@ import {
   getLocaleFallbackChain,
   LOCALE_OPTIONS,
   LOCALE_STORAGE_KEY,
+  localePrefix,
+  localizePath,
+  splitLocalePath,
   type AppLocale,
   type LocaleOption,
 } from '../i18n/config';
 import { getTranslationValue } from '../i18n/translations';
+import { findSeoPage } from '../seo/pages';
 
 interface LocaleContextValue {
   locale: AppLocale;
+  /** Router basename: the URL prefix of the locale (`/de`), or '' when the URL has none. */
+  basename: string;
+  /**
+   * Moves the current URL to the prefix of the current locale, for a public page reached without
+   * one (e.g. `/` after signing in while German is the chosen language).
+   */
+  adoptLocalePrefix: () => void;
   localeOptions: LocaleOption[];
   setLocale: (locale: AppLocale) => void;
   t: (key: string) => string;
@@ -24,13 +35,54 @@ interface LocaleContextValue {
 
 const LocaleContext = createContext<LocaleContextValue | null>(null);
 
+interface LocaleState {
+  locale: AppLocale;
+  basename: string;
+}
+
+/** Replaces the browser URL (keeping the router's history state) with the app path in a locale. */
+function replaceUrlLocale(path: string, locale: AppLocale): void {
+  const url = `${localizePath(path, locale)}${window.location.search}${window.location.hash}`;
+  window.history.replaceState(window.history.state, '', url);
+}
+
+/**
+ * The locale of the URL prefix (`/de/quests`) wins. Without a prefix the chosen or browser language
+ * applies, and a public page moves to that language's prefix, so every public URL shows one language.
+ */
+function initialLocaleState(): LocaleState {
+  if (typeof window === 'undefined') return { locale: DEFAULT_LOCALE, basename: '' };
+  const { locale, path, nonCanonical } = splitLocalePath(window.location.pathname);
+  if (locale) {
+    if (nonCanonical) replaceUrlLocale(path, locale);
+    return { locale, basename: localePrefix(locale) };
+  }
+  if (nonCanonical) replaceUrlLocale(path, DEFAULT_LOCALE);
+  const preferred = detectInitialLocale();
+  if (preferred !== DEFAULT_LOCALE && findSeoPage(path)) {
+    replaceUrlLocale(path, preferred);
+    return { locale: preferred, basename: localePrefix(preferred) };
+  }
+  return { locale: preferred, basename: '' };
+}
+
 export function LocaleProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocaleState] = useState<AppLocale>(detectInitialLocale);
+  const [{ locale, basename }, setState] = useState<LocaleState>(initialLocaleState);
 
   useEffect(() => {
     window.localStorage.setItem(LOCALE_STORAGE_KEY, locale);
     document.documentElement.lang = locale;
   }, [locale]);
+
+  // Switching the language moves the current page to the new language's URL.
+  const setLocale = useCallback((next: AppLocale) => {
+    replaceUrlLocale(splitLocalePath(window.location.pathname).path, next);
+    setState({ locale: next, basename: localePrefix(next) });
+  }, []);
+
+  const adoptLocalePrefix = useCallback(() => {
+    setLocale(locale);
+  }, [locale, setLocale]);
 
   const value = useMemo<LocaleContextValue>(() => {
     const fallbackChain = getLocaleFallbackChain(locale);
@@ -38,8 +90,10 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
 
     return {
       locale,
+      basename,
+      adoptLocalePrefix,
       localeOptions: LOCALE_OPTIONS,
-      setLocale: setLocaleState,
+      setLocale,
       t: (key: string) => {
         for (const currentLocale of fallbackChain) {
           const translated = getTranslationValue(currentLocale, key);
@@ -70,7 +124,7 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
       formatNumber: (value, options) => new Intl.NumberFormat(intlLocale, options).format(value),
       compareText: (left, right) => left.localeCompare(right, intlLocale),
     };
-  }, [locale]);
+  }, [locale, basename, adoptLocalePrefix, setLocale]);
 
   return <LocaleContext.Provider value={value}>{children}</LocaleContext.Provider>;
 }
