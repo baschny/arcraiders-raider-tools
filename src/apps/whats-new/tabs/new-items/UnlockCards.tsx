@@ -1,6 +1,5 @@
 import { ListTodo } from 'lucide-react';
-import { useLocale } from '../../../../shared/context/LocaleContext';
-import { GlyphIcon, ItemTile } from '../../components';
+import { GlyphIcon } from '../../components';
 import { HoverTile } from './HoverTile';
 import type { HoverContext, HoverSource } from './hover';
 import type { UnlockCard } from './model';
@@ -13,7 +12,6 @@ export interface UnlockCardsProps {
 
 /** One-time unlocks: per unlock a card with the items it needs (80 px tiles, amount under the icon). */
 export function UnlockCards({ ctx, cards, sources }: UnlockCardsProps) {
-  const { t } = useLocale();
   return (
     <div className="wn-uc-grid">
       {cards.map((card) => (
@@ -35,16 +33,6 @@ export function UnlockCards({ ctx, cards, sources }: UnlockCardsProps) {
               <HoverTile key={item.id} ctx={ctx} source={sources.get(item.id) ?? { id: item.id }} size={80} amount={item.amount} />
             ))}
           </div>
-          {card.rooms && card.rooms.length > 0 && (
-            <div className="wn-uc__rooms">
-              <span className="wn-uc__rooms-label">{t('whatsNew.outpost.pickOne')}</span>
-              <div className="wn-uc__rooms-list">
-                {card.rooms.map((room) => (
-                  <ItemTile key={room.id} item={room} size={48} />
-                ))}
-              </div>
-            </div>
-          )}
         </article>
       ))}
     </div>

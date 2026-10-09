@@ -35,10 +35,9 @@ export function ResearchPointsExtras({ ctx, model }: ResearchPointsExtrasProps) 
                 <li className="wn-callout__item" key={id}>
                   <ItemIcon itemId={item.id} name={item.name} icon={item.icon} rarity={item.rarity} showName={false} showQuantity={false} className="wn-callout__icon" />
                   <span>
-                    {tm('whatsNew.new-items.rp.calloutUse', {
-                      item: item.name,
-                      uses: rows.map((r) => `${r.amount ?? ''} ${r.label}`.trim()).join(', '),
-                    })}
+                    {rows
+                      .map((r) => tm('whatsNew.new-items.rp.calloutUse', { amount: r.amount ?? '', item: item.name, use: r.label }).trim())
+                      .join('; ')}
                   </span>
                 </li>
               );
@@ -59,11 +58,6 @@ export function ResearchPointsExtras({ ctx, model }: ResearchPointsExtrasProps) 
               </li>
             ))}
           </ol>
-          {rpScale.topStudy && (
-            <p className="wn-rpscale__hint">
-              {tm('whatsNew.new-items.rp.conversion', { item: rpScale.topStudy.item.name, rp: formatRp(rpScale.topStudy.rp) })}
-            </p>
-          )}
         </section>
       )}
     </>

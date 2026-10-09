@@ -14,6 +14,13 @@ export interface NewItemsTabProps {
   data: WhatsNewPageData;
 }
 
+/** Groups that have a tab with more details. */
+const MORE_TAB: Partial<Record<string, 'research' | 'amplified'>> = {
+  researchPoints: 'research',
+  researchBlueprints: 'research',
+  amplified: 'amplified',
+};
+
 export function NewItemsTab({ data }: NewItemsTabProps) {
   const { t } = useLocale();
   const ctx = useHoverContext(data);
@@ -27,7 +34,7 @@ export function NewItemsTab({ data }: NewItemsTabProps) {
         </GroupSection>
       )}
       {model.groups.map((group) => (
-        <GroupSection key={group.id} id={group.id}>
+        <GroupSection key={group.id} id={group.id} moreTab={MORE_TAB[group.id]}>
           {group.id === 'fallenEmperor' && <FallenEmperorGuide data={data} />}
           <ItemGrid>
             {group.entries.map((e) => (

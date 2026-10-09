@@ -1,3 +1,4 @@
+import { MemoryRouter } from 'react-router-dom';
 import { describe, it, expect } from 'vitest';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { LocaleProvider } from '../../../../shared/context/LocaleContext';
@@ -143,20 +144,21 @@ describe('new items model', () => {
     }
   });
 
-  it('puts the one-time unlock cards first: outpost levels with rooms, station, Gunsmith, quests', () => {
+  it('puts the one-time unlock cards first: outpost levels, station, Gunsmith (no quests)', () => {
     const { model: m } = model();
     const titles = m.cards.map((c) => c.id);
     expect(titles.slice(0, 3)).toEqual(['outpost-1', 'outpost-2', 'outpost-3']);
-    expect(titles).toEqual(expect.arrayContaining(['station-1', 'station-2', 'station-3', 'station-4', 'gunsmith-4', 'quest-items']));
+    expect(titles).toEqual(expect.arrayContaining(['station-1', 'station-2', 'station-3', 'station-4', 'gunsmith-4']));
+    expect(m.cards.some((c) => c.quest)).toBe(false);
     const outpost1 = m.cards[0];
-    expect(outpost1.rooms?.length).toBeGreaterThan(1);
     expect(outpost1.items).toEqual([
       { id: 'steel_cable', amount: 3 },
       { id: 'sheet_metal', amount: 20 },
       { id: 'frozen_trail_mechanical_1', amount: 3 },
     ]);
-    expect(m.cards.find((c) => c.id === 'quest-items')?.items.map((i) => i.id)).toEqual(['nomad_tech_item', 'unknown_arc_circuitry']);
-    expect(m.cards.some((c) => c.quest && c.id.startsWith('quest-') && c.id !== 'quest-items')).toBe(true);
+    // quest items are not shown anywhere in this tab
+    const shownIds = m.groups.flatMap((g) => g.entries.map((e) => e.id));
+    for (const id of ['nomad_tech_item', 'unknown_arc_circuitry', 'broken_compass']) expect(shownIds).not.toContain(id);
   });
 
   it('has the curated Fallen Emperor group', () => {
@@ -272,14 +274,16 @@ describe('tabs', () => {
   it('render group headers, unlock cards and tiles with hover triggers', () => {
     const data = fakeData();
     const html = renderToStaticMarkup(
-      <LocaleProvider>
-        <NewItemsTab data={data} />
-        <OldItemsTab data={data} />
-      </LocaleProvider>,
+      <MemoryRouter>
+        <LocaleProvider>
+          <NewItemsTab data={data} />
+          <OldItemsTab data={data} />
+        </LocaleProvider>
+      </MemoryRouter>,
     );
     expect(html).toContain('One-time unlocks');
     expect(html).toContain('Outpost level 1 to 2');
-    expect(html).toContain('Pick one room');
+    expect(html).not.toContain('Pick one room');
     expect(html).toContain('Research Station build');
     expect(html).toContain('New weapons and gear');
     expect(html).toContain('Fallen Emperor');
@@ -300,14 +304,17 @@ describe('tabs', () => {
   it('lists the other uses of study items in the Research Points callout', () => {
     const data = fakeData();
     const html = renderToStaticMarkup(
-      <LocaleProvider>
-        <NewItemsTab data={data} />
-      </LocaleProvider>,
+      <MemoryRouter>
+        <LocaleProvider>
+          <NewItemsTab data={data} />
+        </LocaleProvider>
+      </MemoryRouter>,
     );
     expect(html).toContain('Several of these are also needed to build and upgrade the Research Station');
-    expect(html).toContain('Raider Logbook: 3× Research Station level 2');
+    expect(html).toContain('3× Raider Logbook for Research Station level 2');
     expect(html).toContain('Plans cost 500–5,000 RP');
-    expect(html).toContain('1 Frigate Diagnostic Node = 1,000 RP');
+    expect(html).not.toContain('1 Frigate Diagnostic Node = 1,000 RP');
+    expect(html).toContain('More about research in the Research tab');
     expect(html).toContain('Cheapest plan');
   });
 });

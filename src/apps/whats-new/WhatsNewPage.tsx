@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useLocale } from '../../shared/context/LocaleContext';
 import { LoadingSpinner } from '../../shared/components/LoadingSpinner';
 import { ErrorDisplay } from '../../shared/components/ErrorDisplay';
@@ -24,6 +25,12 @@ export interface WhatsNewPageProps {
 export function WhatsNewPage({ version, tab }: WhatsNewPageProps) {
   const { t, locale } = useLocale();
   const { data, loading, error } = useWhatsNewData();
+
+  // A new tab starts at the top (the page scrolls in the layout's content area on desktop, the window on mobile).
+  useEffect(() => {
+    document.querySelector('.main-content')?.scrollTo({ top: 0 });
+    window.scrollTo({ top: 0 });
+  }, [tab]);
 
   if (loading) return <LoadingSpinner message={t('whatsNew.loading')} />;
   if (error || !data) return <ErrorDisplay message={error ?? t('shared.errorPrefix')} />;

@@ -1507,16 +1507,19 @@
         "tradeFor": "Pays for {item}",
         "upgrades": "Perk upgrades: {n}"
       },
+      "more": {
+        "research": "More about research in the Research tab",
+        "amplified": "More about Amplified weapons in the Amplified tab"
+      },
       "rp": {
         "calloutTitle": "Other uses of study items",
         "callout": "Several of these are also needed to build and upgrade the Research Station — keep enough before you study them.",
-        "calloutUse": "{item}: {uses}",
+        "calloutUse": "{amount} {item} for {use}",
         "scaleLabel": "Research Points scale",
         "scaleTitle": "Plans cost {min}–{max} RP",
         "scaleMin": "Cheapest plan: {name}",
         "scaleMedian": "Typical plan",
-        "scaleMax": "Most expensive plan: {name}",
-        "conversion": "1 {item} = {rp} RP"
+        "scaleMax": "Most expensive plan: {name}"
       },
       "emperor": {
         "title": "How to open the Fallen Emperor",
@@ -1543,7 +1546,7 @@
     },
     "intro": {
       "new-items": {
-        "title": "What are my new items for?",
+        "title": "What are the new items for?",
         "sentence": "Every new item, grouped by what it’s used for. Items with several uses appear in several groups."
       },
       "old-items": {

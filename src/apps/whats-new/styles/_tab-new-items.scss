@@ -181,3 +181,14 @@
     svg { flex: none; margin-top: 2px; color: $text-accent; }
   }
 }
+
+.wn-group-more {
+  margin: 16px 0 0;
+  font-size: $font-lg;
+
+  a {
+    color: $text-accent;
+    text-decoration: none;
+    &:hover, &:focus-visible { text-decoration: underline; }
+  }
+}

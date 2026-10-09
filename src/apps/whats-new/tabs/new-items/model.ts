@@ -1,4 +1,3 @@
-import { nameOf } from '../../../../shared/gamedata/loader';
 import type { WhatsNewKeepPath } from '../../../../shared/gamedata/types';
 import type { GlyphName, ItemRef } from '../../components';
 import { toItemRef, type WhatsNewPageData } from '../../hooks/useWhatsNewData';
@@ -19,8 +18,8 @@ export const RP_ITEM = 'research_points';
 /** Ids of the groups below the unlock cards, in display order. */
 export const NEW_GROUP_ORDER = [
   'researchPoints',
-  'amplified',
   'researchBlueprints',
+  'amplified',
   'newGear',
   'fallenEmperor',
   'crafting',
@@ -115,8 +114,8 @@ function roomsAt(data: WhatsNewPageData, level: number): ItemRef[] {
     .map((room) => toItemRef(data.catalog, room.id));
 }
 
-function unlockCards(data: WhatsNewPageData, ctx: HoverContext, shown: HoverSource[]): UnlockCard[] {
-  const { t, tm } = ctx;
+function unlockCards(data: WhatsNewPageData, ctx: HoverContext): UnlockCard[] {
+  const { tm } = ctx;
   const paths = data.whatsNew?.versions[VERSION]?.keepPaths ?? [];
   const path = (id: string) => paths.find((p) => p.id === id);
   const cards: UnlockCard[] = [];
@@ -157,30 +156,6 @@ function unlockCards(data: WhatsNewPageData, ctx: HoverContext, shown: HoverSour
     });
   });
 
-  // One card per quest / project that needs one of the new items.
-  const byTarget = new Map<string, { title: string; items: UnlockCard['items'] }>();
-  for (const source of shown) {
-    for (const use of source.uses ?? []) {
-      if ((use.system !== 'quest' && use.system !== 'project') || typeof use.target !== 'string') continue;
-      const domain = use.system === 'quest' ? data.quests : data.projects;
-      const entry = use.system === 'quest' ? data.quests?.structure.quests[use.target] : data.projects?.structure.projects[use.target];
-      const key = `${use.system}-${use.target}`;
-      const card = byTarget.get(key) ?? {
-        title: domain ? nameOf(domain, use.target, entry?.nameEn ?? use.target) : use.target,
-        items: [],
-      };
-      if (!card.items.some((i) => i.id === source.id)) card.items.push({ id: source.id, amount: use.amount });
-      byTarget.set(key, card);
-    }
-  }
-  [...byTarget.entries()]
-    .sort((a, b) => a[1].title.localeCompare(b[1].title))
-    .forEach(([key, card]) => cards.push({ id: key, title: card.title, quest: true, items: card.items }));
-
-  const questItems = QUEST_ITEMS_WITHOUT_OBJECTIVE.filter((id) => shown.some((s) => s.id === id));
-  if (questItems.length > 0) {
-    cards.push({ id: 'quest-items', title: t('whatsNew.new-items.unlocks.questItems'), quest: true, items: questItems.map((id) => ({ id })) });
-  }
   return cards;
 }
 
@@ -258,21 +233,24 @@ export function buildNewItemsModel(data: WhatsNewPageData, ctx: HoverContext): N
     entries.forEach((e) => placed.add(e.id));
   };
 
-  const cards = unlockCards(data, ctx, shown);
+  const cards = unlockCards(data, ctx);
   cards.forEach((c) => c.items.forEach((i) => placed.add(i.id)));
+  // Quest items are not part of this overview: items only needed for quests, and quest items without objective.
+  const questOnly = (s: HoverSource) => usesOf(s).length > 0 && usesOf(s).every((u) => u.system === 'quest' || u.system === 'project');
+  shown.filter((s) => questOnly(s) || QUEST_ITEMS_WITHOUT_OBJECTIVE.includes(s.id)).forEach((s) => placed.add(s.id));
 
   // Research Points: the study items, cheapest first.
   const study = shown.filter((s) => groupOf.get(s.id) === 'study').sort((a, b) => (ctx.rpGiven.get(a.id) ?? 0) - (ctx.rpGiven.get(b.id) ?? 0));
   add('researchPoints', study.map((s) => ({ id: s.id, amount: `+${ctx.tm('whatsNew.research.rpAmount', { n: ctx.rpGiven.get(s.id) ?? 0 })}` })));
 
+  // Researching blueprints: materials of research offers (not the Research Points conversion).
+  const researching = shown.filter((s) => usesOf(s).some((u) => u.system === 'research' && u.target !== RP_ITEM)).sort((a, b) => compare(a.id, b.id));
+  add('researchBlueprints', ids(researching).map((id) => ({ id })));
+
   // Amplified: modules, then perk parts, then the rest.
   const ampRank = (id: string) => (groupOf.get(id) === 'module' ? 0 : groupOf.get(id) === 'perkPart' ? 1 : 2);
   const amplified = shown.filter((s) => purposes(s).has('amplified')).sort((a, b) => ampRank(a.id) - ampRank(b.id) || compare(a.id, b.id));
   add('amplified', ids(amplified).map((id) => ({ id })));
-
-  // Researching blueprints: materials of research offers (not the Research Points conversion).
-  const researching = shown.filter((s) => usesOf(s).some((u) => u.system === 'research' && u.target !== RP_ITEM)).sort((a, b) => compare(a.id, b.id));
-  add('researchBlueprints', ids(researching).map((id) => ({ id })));
 
   // Fallen Emperor first claims its items so the gear derivation leaves them out.
   const emperor = FALLEN_EMPEROR_ITEMS.filter(exists);
