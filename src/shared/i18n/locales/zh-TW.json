@@ -77,7 +77,9 @@
       "craftCalculator": "合成计算器",
       "quests": "任務追蹤器",
       "lootHelper": "戰利品助手",
-      "quartermaster": "軍需官"
+      "quartermaster": "軍需官",
+      "maps": "地圖",
+      "whatsNew": "更新內容"
     }
   },
   "dashboard": {
@@ -90,12 +92,17 @@
       "affectedAppLink": "Open affected tool",
       "allTools": "All tools"
     },
+    "whatsNew": {
+      "title": "冰凍小徑的更新內容",
+      "description": "從 1.x 回來了？看看新物品的用途、研究與增幅武器如何運作，以及配方、回收和商人有哪些變動。"
+    },
     "tools": {
       "schedule": "以更清楚的方式顯示 ARC Raiders 地圖活動時程，方便你規劃突襲。",
       "craftCalculator": "計算你應該製作多少物品，以最大化倉庫空間利用率。",
       "quests": "透過互動式任務樹追蹤你的任務進度。",
       "lootHelper": "視覺化製作鏈，幫助你在突襲中判斷該拾取什麼。",
-      "quartermaster": "在同一個地方規劃倉庫、裝備與藏身處需求。"
+      "quartermaster": "在同一個地方規劃倉庫、裝備與藏身處需求。",
+      "maps": "查詢每張地圖與地圖條件下，物品的搜刮地點和 ARC 敵人的出現位置。"
     }
   },
   "pages": {
@@ -767,13 +774,13 @@
         "qtyToRecycle": "Qty to Recycle",
         "yields": "Yields",
         "why": "Why",
-        "craftTimes": "Craft Times",
-        "totalOutput": "Total Output",
         "inputsNeeded": "Inputs Needed",
         "upgradeFrom": "Upgrade From",
         "upgradeTo": "Upgrade To",
         "qtyToUpgrade": "Qty to Upgrade",
-        "durability": "Durability"
+        "durability": "Durability",
+        "craftTimes": "Craft Times",
+        "totalOutput": "Total Output"
       },
       "blueprintUnlockCount": "{unlocked}/{total} unlocked"
     },
@@ -786,16 +793,16 @@
       "foundIn": "Found In:",
       "neededForLists": "Needed for Lists",
       "neededForQuests": "Needed for Quests",
-      "neededForCrafting": "Needed for Crafting (Direct / Indirect)",
       "neededForProject": "Needed for {project}",
-      "couldBeUsedFor": "Could be used for",
       "recycle": "Recycle",
       "salvage": "Salvage",
       "craftingRecipe": "Crafting Recipe",
       "craftingRecipeIncludingUpgrades": "Crafting Recipe (including Upgrades)",
       "recyclesInto": "Recycles Into",
       "salvagesInto": "Salvages Into",
-      "neededForRepair": "Needed for Repair"
+      "neededForRepair": "Needed for Repair",
+      "neededForCrafting": "Needed for Crafting (Direct / Indirect)",
+      "couldBeUsedFor": "Could be used for"
     },
     "itemIcon": {
       "uncraftable": "Cannot be crafted — requirements not met"
@@ -891,6 +898,655 @@
       "loadout": "Loadout",
       "gameDataLastSync": "Game Data Last Sync",
       "never": "Never"
+    }
+  },
+  "maps": {
+    "header": {
+      "gameData": "遊戲資料 {version} · {date}",
+      "gameDataTitle": "Steam 清單 {manifest}，地圖資料建置於 {date}"
+    },
+    "loader": {
+      "retry": "重試",
+      "reloadPage": "重新載入頁面",
+      "error": {
+        "network": "無法載入地圖資料。請檢查網路連線後再試一次。",
+        "missing": "目前無法取得地圖資料。請稍後再試。",
+        "missingMap": "缺少地圖 {map} 的資料。請稍後再試。",
+        "schema": "地圖資料已更新，需要此頁面的新版本。請重新載入頁面。"
+      }
+    },
+    "conditions": {
+      "normal": "一般"
+    },
+    "modes": {
+      "loot": "搜刮",
+      "label": "模式"
+    },
+    "sidebar": {
+      "hide": "隱藏側邊欄",
+      "showFilters": "顯示篩選",
+      "hideFilters": "隱藏篩選"
+    },
+    "mapBar": {
+      "scoreTitle": "{map}：物品分數 {score}（一般條件）",
+      "label": "地圖"
+    },
+    "conditionBar": {
+      "normal": "一般地圖",
+      "normalAlso": "一般地圖：靜態搜刮與生成點與以下條件相同：{conditions}",
+      "major": "主要條件",
+      "majorLive": "主要條件（目前時程中）",
+      "minor": "次要條件",
+      "minorLive": "次要條件（目前時程中）",
+      "sameAsNormal": "+ {count} 個與 {normal} 相同",
+      "label": "地圖條件"
+    },
+    "help": {
+      "label": "說明"
+    },
+    "search": {
+      "placeholder": "尋找物品…",
+      "clear": "清除"
+    },
+    "loot": {
+      "searchPlaceholder": "搜尋物品，例如：馬達",
+      "goalsTitle": "你的搜刮助手目標",
+      "tablesTitle": "此物品在每個靜態搜刮表中所佔的比例",
+      "noTables": "不在任何靜態搜刮表中",
+      "notInLoot": "此物品不在任何靜態搜刮表中。",
+      "onlyHarvested": "只能從 {containers} 採集取得，這些容器僅在以下條件期間出現：{conditions}。",
+      "conditionWhy": "{condition}（{reason}）"
+    },
+    "conditionReasons": {
+      "onHiatus": "暫停中",
+      "neverReleased": "從未推出",
+      "tutorial": "教學",
+      "practiceRange": "練習場",
+      "notInSchedule": "不在時程中"
+    },
+    "item": {
+      "tiers": {
+        "low": "低",
+        "mid": "中",
+        "high": "高"
+      }
+    },
+    "best": {
+      "title": "最佳區域 · {condition}",
+      "helpLabel": "關於分數",
+      "help": "分數是此物品可能獲得的戰利品價值：每個戰利品處理器的池，會分配到其搜刮表、項目與物品，再平均分散到各個位置。它用來比較地點，並非掉落機率。與一般條件有相同靜態搜刮的條件，會併入一般條件計算。",
+      "spotsOne": "{hits}/{count} 個位置",
+      "spots": "{hits}/{count} 個位置",
+      "perSpot": "每個位置 {score}"
+    },
+    "filters": {
+      "title": "生成點",
+      "helpLabel": "關於篩選",
+      "help": "箭頭可展開群組；該列其餘部分則可在地圖上顯示或隱藏此群組。選取物品且未勾選任何項目時，會顯示所有可容納此物品的位置。容器只有在類別與物品相符時才會計入（機械物品放在機械容器中；植物只會給出自己的物品）。生成的容器（彈藥箱、藏貨、機殼）會由伺服器端的搜刮表決定內容，並以「?」表示。",
+      "auto": "自動",
+      "autoTitle": "顯示所有可容納此物品的位置",
+      "showAll": "全部顯示",
+      "hideAll": "全部隱藏",
+      "expand": "展開",
+      "expandGroup": "展開{group}",
+      "collapseGroup": "收合{group}",
+      "count": {
+        "spotsOne": "{count} 個位置",
+        "spots": "{count} 個位置",
+        "hitsOne": "{count} 個位置中有 {hits} 個可容納此物品",
+        "hits": "{count} 個位置中有 {hits} 個可容納此物品",
+        "noHitsOne": "此位置無法容納此物品",
+        "noHits": "{count} 個位置都無法容納此物品",
+        "serverSide": "內容由伺服器隨機決定，不在遊戲檔案中",
+        "expectedOne": "每回合預期約 ~{expected}（可能位置共 {count} 個）",
+        "expected": "每回合預期約 ~{expected}（可能位置共 {count} 個）"
+      }
+    },
+    "arc": {
+      "title": "ARC 敵人 · {condition}",
+      "helpLabel": "關於 ARC 生成器",
+      "help": "此條件下，每種敵人可能由生成器產生的預期數量。選取敵人後，只會顯示其生成器與巡邏路徑（可同時選多種，各以不同顏色標示）。實心標記代表沿路徑巡邏。將游標移到生成器上可查看其群組與重生計時；點擊則可固定其生成群組。",
+      "showAll": "顯示所有敵人",
+      "expectedOne": "每回合預期約 ~{expected}（共 {count} 個生成器）",
+      "expected": "每回合預期約 ~{expected}（共 {count} 個生成器）",
+      "empty": "此條件下沒有 ARC 生成器。"
+    },
+    "canvas": {
+      "label": "{map}地圖。此處繪製的位置、區域與敵人都列在側邊欄中。"
+    },
+    "zoom": {
+      "in": "放大",
+      "out": "縮小",
+      "fit": "符合地圖大小（連按兩下）"
+    },
+    "overlays": {
+      "title": "圖層",
+      "heat": "熱度圖",
+      "height": "高度標記",
+      "heightTitle": "上方標記：高於估計地面 3.5 公尺以上（上層、屋頂）；下方標記：低於估計地面 3.5 公尺以上（地下室、隧道）。依高度圖估算，星辰山不適用。",
+      "pois": "區域與名稱",
+      "zones": "搜刮區",
+      "zonesTitle": "遊戲內的搜刮區：紅色 = 豐富，黃色 = 密集，灰色 = 稀疏。",
+      "bounds": "可遊玩範圍"
+    },
+    "layers": {
+      "title": "地圖圖層：進入這些區域時，遊戲內地圖會切換",
+      "surface": "地表",
+      "underground": "地下",
+      "upperFloor": "上層",
+      "lowerFloor": "下層",
+      "label": "地圖圖層"
+    },
+    "legend": {
+      "score": "每個位置的物品分數",
+      "low": "低",
+      "high": "高"
+    },
+    "zones": {
+      "abundant": "豐富搜刮",
+      "dense": "密集搜刮",
+      "sparse": "稀疏搜刮"
+    },
+    "tooltip": {
+      "score": "分數 {score}",
+      "serverTablesOne": "+ {count} 個伺服器端搜刮表（內容不在遊戲檔案中）",
+      "serverTables": "+ {count} 個伺服器端搜刮表（內容不在遊戲檔案中）",
+      "oneOf": "其中之一：{kinds}",
+      "inArea": "位於{area}",
+      "spawnChance": "出現機率約 {chance}",
+      "notScored": "內容由伺服器決定（不計分）",
+      "group": "群組",
+      "groupSpotsOne": "{group}：{min}/{count} 個位置（圈出）",
+      "groupSpots": "{group}：{min}/{count} 個位置（圈出）",
+      "groupSpawnersOne": "{group}：{min}/{count} 個生成器（圈出）",
+      "groupSpawners": "{group}：{min}/{count} 個生成器（圈出）",
+      "tapPin": "點按以固定群組",
+      "tapUnpin": "點按以取消固定群組",
+      "clickPin": "點擊以固定群組",
+      "clickUnpin": "點擊以取消固定群組",
+      "arcSpawner": "ARC 生成器",
+      "enemySpawner": "敵人生成器",
+      "patrols": "沿路徑巡邏",
+      "tableNotExported": "搜刮表 {table}（未匯出）",
+      "tier": "等級 {tier}",
+      "area": "區域",
+      "height": "≈ 距地面 {height} m",
+      "covered": "有遮蔽",
+      "openSky": "露天",
+      "noKey": "不需要鑰匙（以其他方式開啟）"
+    },
+    "timing": {
+      "noRespawn": "被摧毀後不會重生",
+      "respawn": "被摧毀後 {time} 重生",
+      "randomDelay": "+ {min}–{max} 秒隨機延遲",
+      "noDynamic": "無動態重生",
+      "airDrop": "群組被摧毀後 {time} 空投",
+      "sneak": "脫離視線後 {time} 重生",
+      "sneakIndoors": "脫離視線後 {time} 重生（室內）",
+      "activates": "{distance} m 內啟動"
+    },
+    "units": {
+      "seconds": "{n} 秒",
+      "minutes": "{n} 分鐘",
+      "never": "永不"
+    },
+    "categories": {
+      "Exits": "撤離點與生成點",
+      "Containers": "容器",
+      "RaiderSpawns": "掠手容器",
+      "ArcSpawns": "ARC 機殼與殘骸",
+      "Puzzles": "解謎",
+      "Features": "地圖特徵"
+    },
+    "kinds": {
+      "ExtractMetro": "地鐵撤離",
+      "ExtractLift": "電梯撤離",
+      "ExtractFan": "風扇撤離",
+      "ExtractGondola": "彈道纜車撤離",
+      "Hatch": "掠手出入口（需鑰匙）",
+      "StationEntrance": "地鐵站入口",
+      "PlayerStart": "玩家出生點",
+      "Generic": "一般",
+      "OtherFixed": "其他",
+      "WaterTank": "水箱",
+      "Ground": "地面搜刮",
+      "Apricot": "杏子",
+      "Lemon": "檸檬",
+      "Olive": "橄欖",
+      "NatureFruitBasket": "水果籃",
+      "Mushroom": "蘑菇",
+      "Agave": "龍舌蘭",
+      "Moss": "苔蘚",
+      "GreatMullein": "毛蕊花",
+      "Candleberries": "蠟楊梅",
+      "Resin": "樹脂（樹木）",
+      "BirdNest": "鳥巢",
+      "VolcanicRock": "火山岩",
+      "Roots": "樹根",
+      "Fertilizer": "肥料",
+      "SeedVault": "種子庫控制台",
+      "Seedbox": "種子箱",
+      "CacheStandard": "掠手藏貨",
+      "CacheSelfDestruct": "掠手藏貨（自毀）",
+      "CacheFrozen": "掠手藏貨（冰凍）",
+      "NomadCache": "遊牧者藏貨",
+      "CacheFirstWave": "掠手藏貨（第一波）",
+      "AmmoBox": "彈藥箱",
+      "AmmoBoxHigh": "彈藥箱（高級）",
+      "WeaponCase": "武器盒",
+      "WeaponCaseHigh": "武器盒（高級）",
+      "MedicalBag": "醫藥袋",
+      "GrenadeTube": "手榴彈筒",
+      "Backpack": "掠手背包",
+      "WeaponsRack": "武器架",
+      "FruitBasket": "水果籃（豐收季節）",
+      "FruitBasketWinter": "水果籃（冬季）",
+      "WaspHusk": "黃蜂機殼",
+      "WaspHuskStunning": "黃蜂機殼（擊暈）",
+      "RocketeerHusk": "火箭兵機殼",
+      "RocketeerHuskStunning": "火箭兵機殼（擊暈）",
+      "DeforesterHusk": "森林砍伐機機殼",
+      "Probes": "墜毀的 ARC 探測機",
+      "Couriers": "ARC 運輸機",
+      "PowerSocket": "電池／燃料電池插座",
+      "FuelCell": "燃料電池／電池",
+      "PuzzleButton": "按鈕／開關／控制台",
+      "PuzzleRelay": "解謎中繼器",
+      "CardReader": "讀卡機",
+      "TubeTerminal": "色彩終端／管道站",
+      "PuzzleDoor": "解謎門／閘門",
+      "HotelKey": "飯店鑰匙",
+      "FieldDepot": "實地倉庫",
+      "FieldCrates": "實地貨箱",
+      "SupplyStation": "物資呼叫站",
+      "PowerCores": "收割機動力核心",
+      "MetalDetector": "登山者探測器",
+      "Snowpile": "雪堆（寒流）",
+      "Zipline": "溜索（可啟動）",
+      "Lift": "升降梯",
+      "Bridge": "可移動橋",
+      "BridgeSwitch": "橋樑／斷路器開關",
+      "LockedRoom": "上鎖房間（需鑰匙）",
+      "LockedDoor": "上鎖的門（需鑰匙）",
+      "Barricaded": "封鎖的門（需破壞）",
+      "Door": "門／窗",
+      "Piano": "鋼琴"
+    },
+    "containerTypes": {
+      "Android": "仿生人",
+      "AntennaSet": "天線組",
+      "Bus": "巴士",
+      "ButtonPanel": "按鈕面板",
+      "CabinetDoor": "櫥櫃",
+      "Car01": "車輛 1",
+      "Car02": "車輛 2",
+      "Car03": "車輛 3",
+      "CashRegister": "收銀機",
+      "Centerbench": "中央長椅",
+      "Closet": "衣櫃",
+      "Closet02": "衣櫃 2",
+      "Cmr": "壁掛櫃",
+      "CoffeeMachine01": "咖啡機",
+      "CompressorTrailer": "壓縮機拖車",
+      "Computer01": "電腦 1",
+      "Computer02": "電腦 2",
+      "Computer03": "電腦 3",
+      "Coms": "通訊控制台",
+      "Console_03": "控制台",
+      "Crate": "木箱",
+      "CrateCart": "箱子推車",
+      "CupboardCafe": "咖啡廳櫥櫃",
+      "CupboardKitchen": "廚房櫥櫃",
+      "Drawer": "抽屜",
+      "DrawerMedical": "藥品抽屜",
+      "Dumpster": "大型垃圾箱",
+      "FloodLight": "泛光燈",
+      "Freezer": "冷凍櫃",
+      "Fridge": "冰箱",
+      "Fusebox": "保險絲盒",
+      "Fusebox2": "保險絲盒 2",
+      "GeneratorM02": "發電機",
+      "Gvt": "政府垃圾桶",
+      "GvtDesk": "政府辦公桌",
+      "HighwayAntenna": "公路天線",
+      "InformationTerminal": "資訊終端",
+      "KitchenBench": "廚房流理台",
+      "Locker01": "置物櫃",
+      "LockerMedical01": "醫療置物櫃",
+      "Lockers": "置物櫃群",
+      "MuseumCrate_01": "博物館箱 1",
+      "MuseumCrate_02": "博物館箱 2",
+      "Parasitic": "寄生增生物",
+      "PressureMonitor": "壓力監測器",
+      "Refrigerator_01": "冰箱",
+      "RoadBarrier03": "路障",
+      "Rocketparts_01": "火箭零件 1",
+      "Rocketparts_02": "火箭零件 2",
+      "Rover": "探測車",
+      "Rsr": "研究櫃",
+      "RsrCabinetS": "小型研究櫃",
+      "RsrCartShelf": "研究推車架",
+      "RsrMachineM01": "研究機器",
+      "SecurityCamera01": "監視攝影機",
+      "Server": "伺服器",
+      "Shelf03": "架子",
+      "SolarPanel03": "太陽能板",
+      "SosBooth_01": "SOS 亭",
+      "StreetSweeper": "掃街車",
+      "Suitcase": "行李箱",
+      "SupportStructure": "支撐結構",
+      "TVUnit": "電視櫃",
+      "TapeDrive01": "磁帶機 1",
+      "TapeDrive02": "磁帶機 2",
+      "TapeDrive04": "磁帶機 4",
+      "Transformer": "變壓器",
+      "TrashCan_01": "垃圾桶",
+      "Trashbin": "垃圾桶",
+      "TruckScannerLeft01": "卡車掃描器（左）",
+      "TruckScannerRight01": "卡車掃描器（右）",
+      "UtilityTruck": "工程車",
+      "VentMachineLarge": "大型通風機",
+      "VentMachineLarge01": "大型通風機 2",
+      "Workbench_01": "工作台 1",
+      "Workbench_02": "工作台 2",
+      "Wreck03": "ARC 殘骸",
+      "Wrh": "倉庫家具",
+      "vent03": "通風口"
+    }
+  },
+  "whatsNew": {
+    "amplified": {
+      "step1": "將槍械站升級到 4 級",
+      "step2": "將滿級武器與增幅模組組合",
+      "step3": "用零件加入增幅",
+      "researchSubtitle": "增幅研究",
+      "researchTask": "解鎖：{name}",
+      "researchThen": "接著進行研究",
+      "researchWhere": "研究站 {level} 級",
+      "stepResearch": "完成研究任務（一項任務）即可解鎖，然後在 4 級研究站進行研究",
+      "pickerTitle": "選擇一把武器",
+      "pickerSentence": "武器依所需的增幅模組分組。",
+      "amplification": "增幅",
+      "research": "研究",
+      "noResearch": "不需要研究",
+      "repairLine": "增幅武器需要使用增幅碎片修理。",
+      "recycleLine": "回收一個模組可獲得 {n} 個增幅碎片。",
+      "roomsNote": "需要 {n} 間哨站房間",
+      "requires": "需要 {name}",
+      "cantCombine": "無法與 {names} 組合",
+      "lockedRequires": "需要先有 {name}",
+      "lockedExcluded": "無法與 {name} 同時選擇",
+      "lockedUnavailable": "此選擇下無法使用",
+      "needsResearch": "需要研究"
+    },
+    "title": "冰凍小徑的更新內容",
+    "subtitle": "給回歸掠手的 2.0 更新一覽",
+    "loading": "正在載入更新內容...",
+    "navLabel": "更新內容分頁",
+    "research": {
+      "build": "在哨站建造",
+      "level": "{n} 級",
+      "blueprintCrafting": "藍圖製作",
+      "designCrafting": "設計製作",
+      "amplifiedResearch": "增幅研究",
+      "plans": "{n} 項方案",
+      "rpAmount": "{n} RP",
+      "step1": "研究你找到的物品",
+      "step2": "取得研究點數",
+      "step3": "用點數與材料兌換方案",
+      "step4": "在哨站學會該方案",
+      "pointsTitle": "研究點數",
+      "pointsText": "在研究站研究這些物品即可獲得點數。",
+      "stationTitle": "研究站",
+      "stationText": "在哨站建造{bench}，然後將其升級三次。",
+      "needsRoom": "需要 {n} 間哨站房間",
+      "needsRooms": "需要 {n} 間哨站房間",
+      "needsStationLevel": "需要研究站 {n} 級",
+      "listCraftable": "可研究的藍圖",
+      "listFindOnly": "只能找到的藍圖",
+      "listDesigns": "可研究的設計",
+      "listFindOnlyDesigns": "只能找到的設計",
+      "hoverTitle": "研究",
+      "browseTitle": "可研究的內容",
+      "benchLevel": "{bench} {n} 級"
+    },
+    "outpost": {
+      "unlocks": "解鎖",
+      "special": "特殊選項",
+      "furnitureTitle": "家具",
+      "celeste": "莎莉絲特",
+      "expansion": "{from} 級至 {to} 級",
+      "pickOne": "選擇一間房間",
+      "benchLevel": "{bench} {level} 級",
+      "step1": "收集建材",
+      "step2": "擴建哨站並選擇一間房間",
+      "step3": "每間新房間都會解鎖設施升級",
+      "slots": "房間欄位",
+      "slotsText": "你的哨站有四個欄位。第一格放基本房間，之後每次擴建都會填入下一格。",
+      "slot": "欄位 {n}",
+      "furnitureText": "用床、椅子、燈具等家具布置你的房間。",
+      "furnitureCount": "{count} 件家具",
+      "furnitureHow": "家具如何運作",
+      "furnStep1": "找到或研究一份設計",
+      "furnStep2": "在哨站學會它",
+      "furnStep3": "用木板、金屬板等材料建造",
+      "celesteText": "{name} 現在會用種子交換建材。"
+    },
+    "changes": {
+      "recipes": "配方",
+      "recipesHint": "這些配方需要的材料與以前不同。",
+      "gadgets": "道具",
+      "anvilCraft": "{name}：製作與升級",
+      "anvilRepair": "{name}：修理",
+      "recycling": "回收",
+      "recyclingHint": "這些物品回收後會得到不同的材料。",
+      "traders": "商人",
+      "tradersHint": "選擇商人即可查看他們新增或停售的商品，以及價格有變動的項目。",
+      "stash": "儲藏箱",
+      "stashHint": "各儲藏箱擴充的費用，並標示新的等級。",
+      "craft": "製作",
+      "upgrade": "從 {from} 升級到 {to}",
+      "repair": "修理 {tier}",
+      "tradeNew": "新增",
+      "tradeGone": "已停止販售",
+      "tradePrice": "新價格",
+      "scrapValue": "廢料價值 {value}",
+      "expansion": "擴充",
+      "slotCount": "{count} 格",
+      "newTier": "新"
+    },
+    "new-items": {
+      "recycles": "回收成",
+      "purpose": {
+        "outpost": {
+          "title": "擴建哨站",
+          "sentence": "建造新房間來擴建你的哨站。"
+        },
+        "researchStation": {
+          "title": "研究站",
+          "sentence": "建造並升級新的研究站。"
+        },
+        "researchPoints": {
+          "title": "研究點數",
+          "sentence": "在研究站研究這些物品即可獲得研究點數。"
+        },
+        "gunsmith4": {
+          "title": "槍械站 4 級",
+          "sentence": "新的槍械站等級所需，可解鎖增幅武器。"
+        },
+        "amplified": {
+          "title": "增幅武器",
+          "sentence": "將滿級武器轉為增幅武器，並加入增幅。"
+        },
+        "researchBlueprints": {
+          "title": "研究藍圖",
+          "sentence": "在研究站消耗這些物品來研究藍圖與設計。"
+        },
+        "furniture": {
+          "title": "家具",
+          "sentence": "為哨站房間製作家具。"
+        },
+        "crafting": {
+          "title": "製作",
+          "sentence": "武器、道具與劫掠中物品的製作配方。"
+        },
+        "stencils": {
+          "title": "武器貼膜",
+          "sentence": "替武器套用塗裝貼膜。"
+        },
+        "quests": {
+          "title": "任務與計畫",
+          "sentence": "任務或計畫所需。"
+        },
+        "trades": {
+          "title": "交易",
+          "sentence": "商人會接受這些物品作為付款。"
+        },
+        "noUse": {
+          "title": "尚無用途",
+          "sentence": "目前沒有任何需求：請販售或回收。"
+        },
+        "unlocks": {
+          "title": "一次性解鎖",
+          "sentence": "只需交付一次即可解鎖新的哨站房間、研究站、4 級槍械站與任務。"
+        },
+        "newGear": {
+          "title": "新武器與裝備",
+          "sentence": "2.0 新增，每項後面都附上解鎖它的藍圖。"
+        },
+        "fallenEmperor": {
+          "title": "倒地的皇帝",
+          "sentence": "在彭多拉隘口開啟「倒地的皇帝」地城所需的一切。"
+        },
+        "furnitureDecoration": {
+          "title": "家具與裝飾",
+          "sentence": "用這些材料製作家具，並在哨站中放置裝飾物品。"
+        },
+        "keys": {
+          "title": "彭多拉隘口鑰匙",
+          "sentence": "開啟彭多拉隘口上的上鎖房間。"
+        }
+      },
+      "unlocks": {
+        "outpost": "哨站 {from} 級至 {to} 級",
+        "questItems": "任務物品"
+      },
+      "hover": {
+        "build": "{bench}建造",
+        "unlocks": "解鎖",
+        "craft": "用於製作",
+        "research": "可研究",
+        "amplified": "增幅",
+        "furniture": "家具（{n}）",
+        "quests": "任務與計畫",
+        "traders": "商人",
+        "gives": "產出",
+        "fieldCraft": "實地製作",
+        "repair": "修理",
+        "researchDetail": "{level} 級 · {rp} RP",
+        "researchLevel": "{level} 級",
+        "tradeFor": "可換取 {item}",
+        "upgrades": "增幅升級：{n}"
+      },
+      "more": {
+        "research": "研究分頁中有更多關於研究的說明",
+        "amplified": "增幅分頁中有更多關於增幅武器的說明"
+      },
+      "rp": {
+        "calloutTitle": "研究物品的其他用途",
+        "callout": "其中有幾項也需要用來建造與升級研究站，研究前請先留夠數量。",
+        "calloutUse": "{use}需要 {amount} 個{item}",
+        "scaleLabel": "研究點數範圍",
+        "scaleTitle": "研究方案成本 {min}–{max} RP",
+        "scaleMin": "最便宜的研究方案：{name}",
+        "scaleMedian": "一般的研究方案",
+        "scaleMax": "最昂貴的研究方案：{name}"
+      },
+      "emperor": {
+        "title": "如何開啟倒地的皇帝",
+        "step1": "在「重新導向」活動期間，啟動一個損壞的皇帝中繼器並取得其中的皇帝信標。",
+        "step2": "將信標放在地上，然後躲好：碎片會落下。",
+        "step3": "擊破大型部件。其中可能含有皇帝通道導管藍圖（藍圖也可能在巡防艦活動期間落在地上）。",
+        "step4": "在工作台用 ARC電鍍接頭、ARC絕緣接頭與 ARC導電接頭製作皇帝通道導管。",
+        "step5": "使用導管在彭多拉隘口開啟「倒地的皇帝」地城。",
+        "note": "如果你帶著皇帝信標撤離，它會變成損毀的皇帝信標。"
+      },
+      "detail": {
+        "level": "{bench} {level} 級",
+        "slots": "{n} 格"
+      }
+    },
+    "tabs": {
+      "new-items": "新物品",
+      "old-items": "舊物品",
+      "outpost": "哨站",
+      "research": "研究",
+      "amplified": "增幅",
+      "crafting": "製作",
+      "changes": "變動"
+    },
+    "intro": {
+      "new-items": {
+        "title": "新物品有什麼用？",
+        "sentence": "所有新物品，依用途分類。有多種用途的物品會出現在多個分類中。"
+      },
+      "old-items": {
+        "title": "哪些舊物品有了新用途？",
+        "sentence": "你已經認識的物品，在 2.0 中有了新的用途。"
+      },
+      "outpost": {
+        "title": "如何擴建哨站？",
+        "sentence": "收集材料、擴建哨站，並為每個新欄位選擇一間房間。"
+      },
+      "research": {
+        "title": "研究站如何運作？",
+        "sentence": "研究物品以獲得研究點數，再用來兌換藍圖與設計。"
+      },
+      "amplified": {
+        "title": "增幅武器如何運作？",
+        "sentence": "先升級槍械站，再將滿級武器轉為增幅武器。"
+      },
+      "crafting": {
+        "title": "有哪些新的製作內容？",
+        "sentence": "新的劫掠中製作、武器貼膜，以及皇帝通道鑰匙。"
+      },
+      "changes": {
+        "title": "我已經熟悉的東西有哪些變動？",
+        "sentence": "配方、回收、商人庫存與儲藏箱大小，與 1.45 不同之處。"
+      }
+    },
+    "common": {
+      "howItWorks": "運作方式",
+      "needs": "需要",
+      "alsoNeeds": "另外也需要",
+      "where": "位置",
+      "before": "2.0 之前",
+      "now": "冰凍小徑",
+      "close": "關閉",
+      "more": "還有 +{count}"
+    },
+    "crafting": {
+      "new": "新",
+      "field": {
+        "title": "實地製作",
+        "sentence": "在劫掠途中，使用技能樹中的技能進行製作。",
+        "newCrafts": "新的劫掠中製作",
+        "unchanged": "{n} 個配方未變"
+      },
+      "stencils": {
+        "title": "武器貼膜",
+        "sentence": "貼膜會改變武器的外觀，製作時需要貼膜零件。",
+        "partsHint": "套用任何貼膜都需要",
+        "cost": "{count} 個貼膜零件",
+        "worksWith": "適用於"
+      },
+      "gateway": {
+        "title": "皇帝通道鑰匙",
+        "sentence": "在工作台製作導管，即可開啟皇帝通道。"
+      }
+    },
+    "old-items": {
+      "noLonger": "不再用於"
     }
   }
 }
