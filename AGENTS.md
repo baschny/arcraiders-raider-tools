@@ -117,39 +117,39 @@ The project is migrating toward a fully localized user experience. Treat localiz
 - Keep the client payload self-sufficient when a future bilingual feature is likely
 - When translating domain language, follow `src/shared/i18n/glossary.ts` first instead of inventing new terminology ad hoc
 
-### Translation Files — Strict Workflow Rules
+### Translation Files — Workflow Rules
 
-The translation dictionary files in `src/shared/i18n/locales/` are synced with **Crowdin**, where volunteer translators handle non-English locales. To avoid data loss and unnecessary re-translation, follow these rules:
+The translation dictionary files in `src/shared/i18n/locales/` are maintained
+directly in this repository. Crowdin is **not in use** for now (`crowdin.yml` is
+kept for when volunteer translators join again; restore Crowdin rules here then).
 
-**Canonical Source of Truth**:
-- `en.json` is the **only** locale file that agents and developers should modify directly.
-- All other locale files (`de.json`, `fr.json`, `pt-BR.json`, etc.) are managed by Crowdin — **never edit them manually**.
-- When Crowdin syncs, it uses `en.json` as the base to diff against.
+**Source of truth and editing**:
+- `en.json` is the source: every key exists there first.
+- Other locale files (`de.json`, `pt-BR.json`, …) may be edited directly, e.g.
+  when translating a feature. German and Portuguese are reviewed by the
+  maintainer; other languages are translated without native review, so follow
+  the glossary and the game's own wording closely.
+- Keep the key order and formatting of `en.json` in every locale file.
 
-**Adding Keys (t() / tm() calls in code)**:
-- Every new `t('...')` or `tm('...')` call in code **must** have a corresponding entry in `en.json` added in the same change.
-- The runtime fallback chain does not cover missing keys gracefully — missing keys will render an empty string or throw.
+**Adding keys (t() / tm() calls in code)**:
+- Every new `t('...')` or `tm('...')` call in code **must** have an entry in
+  `en.json` in the same change. Missing keys in other locales fall back to
+  English (pt-BR: `pt-BR -> pt -> en`).
+- Keep placeholders (`{name}`, `{count}`, …) unchanged in every translation.
 
-**Never Remove Keys Still Used in Code**:
-- Before removing a key from `en.json`, verify with `grep` that no `t()` or `tm()` call references it anywhere in `src/`.
-- Accidental removal causes the key to be deleted from Crowdin when it syncs, breaking all translations for that key. The current analysis found `quartermaster.itemTooltip.neededForCrafting` was removed from en.json but still actively used in `ItemTooltip.tsx:341`.
+**Changing or removing keys**:
+- Changing the English value of a key: update or remove the key's translations
+  in the other locale files in the same change, so no stale translation stays.
+- Before removing a key from `en.json`, verify with `grep` that no `t()` or
+  `tm()` call references it anywhere in `src/`; then remove it from all locale
+  files. Do not leave orphaned keys.
+- Reuse existing keys when a string appears in multiple contexts.
 
-**Never Change Values of Existing Keys**:
-- Changing the English value of an existing key invalidates every volunteer translation for that key across all languages.
-- If you need different wording or context, **add a new key** with a distinct name and deprecate the old one.
-- Reuse existing values when a string appears in multiple contexts to reduce translator workload. For example, if "Needed for Lists" already exists, reference the same key instead of adding a duplicate.
-
-**Deleting Unused Keys**:
-- When you remove a `t()`/`tm()` call from code, **also delete** the corresponding entry from `en.json`.
-- Crowdin will pick up the deletion on the next sync and remove the key from all locale files.
-- Do not leave orphaned keys in `en.json` — they waste translator effort and accumulate dead data.
-
-**Verification Checklist** (before every change touching i18n):
+**Verification checklist** (before every change touching i18n):
 1. Every `t()`/`tm()` key in changed code has an entry in `en.json`
-2. No `t()`/`tm()` key was removed from `en.json` without first removing all code references
-3. No changes to any locale file other than `en.json`
-4. No existing key values were changed (only additions or deletions)
-5. Run `npm run build` to verify the JSON is valid and the keys compile
+2. No key was removed while still referenced in code
+3. Changed English values have no stale translations left
+4. Run `npm run build` to verify the JSON is valid and the keys compile
 
 ## Architecture & Patterns
 
