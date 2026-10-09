@@ -48,33 +48,6 @@
     &__module { display: flex; align-items: center; gap: 8px; }
     &__heading { font-size: $font-lg; font-weight: 600; color: $text-secondary; }
 
-    &__table { display: flex; flex-direction: column; }
-    &__row {
-      display: grid;
-      grid-template-columns: minmax(130px, 0.7fr) minmax(0, 1.4fr) minmax(0, 1fr);
-      align-items: center;
-      gap: 8px 24px;
-      padding: 6px 0;
-
-      & + & { border-top: 1px solid $bg-quaternary; }
-      &--head { padding: 0 0 4px; font-size: $font-lg; font-weight: 600; color: $text-secondary; }
-    }
-    &__amp-name { font-size: $font-xl; font-weight: 600; color: $text-primary; }
-    &__cell { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; min-width: 0; }
-    &__cell .wn-tile { width: auto; }
-    &__none { color: $text-secondary; font-size: $font-lg; }
-
-    @media (max-width: $breakpoint-mobile) {
-      &__row { grid-template-columns: 1fr; gap: 4px; padding: 10px 0; }
-      &__row--head { display: none; }
-      &__cell::before {
-        content: attr(data-label);
-        flex: 0 0 100%;
-        font-size: $font-md;
-        color: $text-secondary;
-      }
-    }
-
     &__footer {
       display: flex;
       align-items: center;
@@ -82,6 +55,144 @@
       margin: 40px 0 0;
       font-size: $font-xl;
       color: $text-light;
+    }
+  }
+
+  // ---- Amplification picker ----------------------------------------------------------------
+  .wn-pick {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &__head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 16px; }
+    &__title { margin: 0; font-size: $font-xl; font-weight: 700; color: $text-primary; }
+    &__count { margin-left: auto; font-size: $font-lg; color: $text-secondary; }
+    &__reset {
+      padding: 4px 12px;
+      font: inherit;
+      font-size: $font-lg;
+      color: $text-primary;
+      background: none;
+      border: 1px solid $border-light;
+      border-radius: 6px;
+      cursor: pointer;
+
+      &:hover { border-color: $rarity-amplified; }
+    }
+
+    &__cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+
+    &__card {
+      position: relative;
+      background: $bg-secondary;
+      border: 2px solid $border-default;
+      border-radius: 8px;
+      transition: border-color 0.15s;
+
+      &:not(.is-locked):hover { border-color: $border-lighter; }
+      &.is-chosen { border-color: $rarity-amplified; }
+      &.is-locked .wn-pick__body > :not(.wn-pick__reason) { opacity: 0.45; }
+      &.is-locked .wn-pick__select { cursor: not-allowed; }
+    }
+
+    // The whole card is the button; the content sits above it and lets clicks through.
+    &__select {
+      position: absolute;
+      inset: 0;
+      padding: 0;
+      background: none;
+      border: 0;
+      border-radius: 6px;
+      cursor: pointer;
+
+      &:focus-visible { outline: 2px solid $rarity-amplified; outline-offset: 2px; }
+    }
+    &__body {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 12px;
+      pointer-events: none;
+    }
+    &__more { pointer-events: auto; }
+
+    &__top { display: flex; align-items: center; gap: 12px; }
+    &__glyph {
+      display: grid;
+      flex: none;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      color: #fff;
+      background: rgba($rarity-amplified, 0.28);
+      border: 1px solid rgba($rarity-amplified, 0.6);
+      border-radius: 6px;
+    }
+    &__glyph-img {
+      width: 32px;
+      height: 32px;
+      background-color: currentColor;
+      mask-size: contain;
+      mask-repeat: no-repeat;
+      mask-position: center;
+      -webkit-mask-size: contain;
+      -webkit-mask-repeat: no-repeat;
+      -webkit-mask-position: center;
+    }
+    &__name { flex: 1; min-width: 0; font-size: $font-xl; font-weight: 600; color: $text-primary; }
+    &__check { font-size: $font-xl; font-weight: 700; color: $rarity-amplified; }
+    &__desc { margin: 0; font-size: $font-lg; color: $text-light; }
+
+    &__effects { display: flex; flex-direction: column; gap: 2px; margin: 0; padding: 0; list-style: none; font-size: $font-lg; }
+    .is-positive { color: #6fcf73; }
+    .is-negative { color: #ef6a6a; }
+    &__sign { display: inline-block; width: 1.1em; font-weight: 700; }
+    &__more {
+      align-self: flex-start;
+      padding: 0;
+      font: inherit;
+      font-size: $font-lg;
+      color: $text-accent;
+      background: none;
+      border: 0;
+      cursor: pointer;
+
+      &:hover { text-decoration: underline; }
+    }
+
+    &__rules { display: flex; flex-wrap: wrap; gap: 6px; }
+    &__chip {
+      padding: 2px 8px;
+      font-size: $font-md;
+      color: $text-light;
+      background: $bg-primary;
+      border: 1px solid $border-default;
+      border-radius: 999px;
+    }
+    &__reason { margin: 0; font-size: $font-lg; font-weight: 600; color: $rarity-amplified; }
+
+    &__needs { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; }
+    &__label { min-width: 64px; font-size: $font-lg; font-weight: 600; color: $text-secondary; }
+    &__tiles { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; }
+    &__needs .wn-tile { width: auto; }
+    &__none { font-size: $font-lg; color: $text-secondary; }
+
+    &__summary {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 12px;
+      background: $bg-secondary;
+      border: 1px solid $rarity-amplified;
+      border-radius: 8px;
+    }
+    &__build { margin: 0; font-size: $font-xl; color: $text-primary; }
+    &__variant { color: $text-secondary; }
+
+    @media (max-width: $breakpoint-mobile) {
+      &__cards { grid-template-columns: 1fr; }
+      &__count { margin-left: 0; }
     }
   }
 }

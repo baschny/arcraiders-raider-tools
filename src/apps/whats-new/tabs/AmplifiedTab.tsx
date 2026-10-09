@@ -5,6 +5,8 @@ import type { ItemRef, TileSpec } from '../components';
 import { toItemRef, type WhatsNewPageData } from '../hooks/useWhatsNewData';
 import { fragmentInfo, groupByModule } from './amplified/model';
 import type { WeaponRow } from './amplified/derive';
+import { AmplificationPicker } from './amplified/AmplificationPicker';
+import type { AmplifiedWeapon, TextTree } from '../../../shared/gamedata/types';
 
 export interface AmplifiedTabProps {
   data: WhatsNewPageData;
@@ -15,7 +17,7 @@ type RefFn = (slug: string) => ItemRef;
 /** Amplified variants always carry the Amplified (orange) rarity frame. */
 const amplified = (item: ItemRef): ItemRef => ({ ...item, rarity: 'Amplified' });
 
-function WeaponDetail({ weapon, ref_ }: { weapon: WeaponRow; ref_: RefFn }) {
+function WeaponDetail({ weapon, ref_, structure, text }: { weapon: WeaponRow; ref_: RefFn; structure?: AmplifiedWeapon; text?: TextTree }) {
   const { t } = useLocale();
   const base = ref_(weapon.fromItemId);
   return (
@@ -32,33 +34,7 @@ function WeaponDetail({ weapon, ref_ }: { weapon: WeaponRow; ref_: RefFn }) {
           </div>
         </div>
       </header>
-      <div className="wn-amp__table" role="table">
-        <div className="wn-amp__row wn-amp__row--head" role="row">
-          <span role="columnheader">{t('whatsNew.amplified.amplification')}</span>
-          <span role="columnheader">{t('whatsNew.common.needs')}</span>
-          <span role="columnheader">{t('whatsNew.amplified.research')}</span>
-        </div>
-        {weapon.amplifications.map((amp) => {
-          const research = amp.researchId ? ref_(amp.researchId) : undefined;
-          return (
-            <div className="wn-amp__row" role="row" key={`${amp.name}-${amp.researchId ?? ''}`}>
-              <span className="wn-amp__amp-name" role="rowheader">{research?.name ?? amp.name}</span>
-              <div className="wn-amp__cell" role="cell" data-label={t('whatsNew.common.needs')}>
-                {amp.parts.map((p) => (
-                  <ItemTile key={p.itemId} item={ref_(p.itemId)} size={48} amount={p.quantity} />
-                ))}
-              </div>
-              <div className="wn-amp__cell" role="cell" data-label={t('whatsNew.amplified.research')}>
-                {research ? (
-                  <ItemTile item={research} size={48} />
-                ) : (
-                  <span className="wn-amp__none">{t('whatsNew.amplified.noResearch')}</span>
-                )}
-              </div>
-            </div>
-          );
-        })}
-      </div>
+      {structure && <AmplificationPicker key={weapon.baseId} weapon={structure} text={text} ref_={ref_} />}
     </div>
   );
 }
@@ -124,7 +100,14 @@ export function AmplifiedTab({ data }: AmplifiedTabProps) {
                     onClick={toggle}
                   />
                 )}
-                renderDetail={(w) => <WeaponDetail weapon={w} ref_={ref} />}
+                renderDetail={(w) => (
+                  <WeaponDetail
+                    weapon={w}
+                    ref_={ref}
+                    structure={data.amplification.structure.weapons[w.baseId]}
+                    text={data.amplification.text?.[w.baseId] as TextTree | undefined}
+                  />
+                )}
               />
             </section>
           ))}

@@ -91,7 +91,6 @@ export async function loadDomain<D extends GameDomain>(
 export const DOMAINS_WITHOUT_TEXT: ReadonlySet<GameDomain> = new Set<GameDomain>([
   'recipes',
   'blueprints',
-  'amplification',
   'whats-new',
 ]);
 
