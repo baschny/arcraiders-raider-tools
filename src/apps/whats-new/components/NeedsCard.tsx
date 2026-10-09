@@ -18,16 +18,19 @@ export interface NeedsCardProps {
    * 'compact': result tile (name under it) on the left, a divider, the "Needs" list on the right — for grids of recipes.
    */
   layout?: 'full' | 'compact';
+  /** Compact only: a headline across the card (the result tile then shows no name). */
+  title?: React.ReactNode;
   className?: string;
 }
 
-export function NeedsCard({ result, where, needs, alsoNeeds, note, layout = 'full', className }: NeedsCardProps) {
+export function NeedsCard({ result, where, needs, alsoNeeds, note, layout = 'full', title, className }: NeedsCardProps) {
   const { t } = useLocale();
   if (layout === 'compact') {
     return (
-      <article className={['wn-needs', 'wn-needs--compact', className ?? ''].filter(Boolean).join(' ')}>
+      <article className={['wn-needs', 'wn-needs--compact', title ? 'wn-needs--titled' : '', className ?? ''].filter(Boolean).join(' ')}>
+        {title && <h4 className="wn-needs__headline">{title}</h4>}
         <div className="wn-needs__result">
-          <ItemTile item={result.item} size={80} amount={result.amount} isBlueprint={result.isBlueprint} />
+          <ItemTile item={result.item} size={80} amount={result.amount} isBlueprint={result.isBlueprint} hideName={!!title} />
         </div>
         <div className="wn-needs__block">
           <h5 className="wn-needs__heading">{t('whatsNew.common.needs')}</h5>

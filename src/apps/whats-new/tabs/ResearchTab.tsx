@@ -103,6 +103,16 @@ export function ResearchTab({ data }: ResearchTabProps) {
               key={l.level}
               layout="compact"
               result={{ item: levelItem(l.level) }}
+              title={
+                l.level === 1 ? (
+                  t('whatsNew.research.build')
+                ) : (
+                  <>
+                    <span className="wn-needs__headline-pre">{benchName}</span>
+                    {tm('whatsNew.research.level', { n: l.level })}
+                  </>
+                )
+              }
               needs={l.cost.map((a) => ({ item: a.item, amount: a.quantity }))}
               note={l.rooms !== undefined ? tm(l.rooms === 1 ? 'whatsNew.research.needsRoom' : 'whatsNew.research.needsRooms', { n: l.rooms }) : undefined}
             />

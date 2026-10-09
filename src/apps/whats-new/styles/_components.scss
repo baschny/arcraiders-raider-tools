@@ -342,6 +342,19 @@ $green: #4caf50;
   }
 
   // one material per line (icon with "3× name" beside it), the same in every card
+  // Optional headline across a compact card (e.g. "Research Station · Level 2")
+  &__headline {
+    grid-column: 1 / -1;
+    margin: 0;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    font-size: $font-2xl;
+    font-weight: 700;
+    color: $text-primary;
+  }
+  &__headline-pre { font-size: $font-lg; font-weight: 500; color: $text-secondary; }
+
   &--compact &__row { flex-direction: column; flex-wrap: nowrap; align-items: flex-start; gap: $wn-s1; }
 
   @media (max-width: $breakpoint-mobile) {
