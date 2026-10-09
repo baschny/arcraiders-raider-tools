@@ -1532,10 +1532,10 @@
         "callout": "Several of these are also needed to build and upgrade the Research Station — keep enough before you study them.",
         "calloutUse": "{amount} {item} for {use}",
         "scaleLabel": "Research Points scale",
-        "scaleTitle": "Plans cost {min}–{max} RP",
-        "scaleMin": "Cheapest plan: {name}",
-        "scaleMedian": "Typical plan",
-        "scaleMax": "Most expensive plan: {name}"
+        "scaleTitle": "Research plan cost {min}–{max} RP",
+        "scaleMin": "Cheapest research plan: {name}",
+        "scaleMedian": "Typical research plan",
+        "scaleMax": "Most expensive research plan: {name}"
       },
       "emperor": {
         "title": "How to open the Fallen Emperor",
