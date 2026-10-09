@@ -94,7 +94,7 @@ describe('ResearchTab', () => {
     expect(out).not.toContain('data-has-whats-new');
     expect(out).toContain('wn-tile--112');
     expect(out).toContain('50 RP');
-    expect(out).toContain('Build at Posh');
+    expect(out).toContain('Build at the Outpost');
     expect(out).toContain('Research Station level 2');
     expect(out).toContain('wn-needs--compact');
     expect(out).toContain('Needs station level 4');

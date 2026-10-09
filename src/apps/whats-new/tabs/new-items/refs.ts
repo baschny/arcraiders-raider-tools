@@ -83,7 +83,7 @@ export function resolveTargetView(
   return { kind: 'generic', key, label: prettify(target), icon: 'other' };
 }
 
-/** Where a use happens: bench level, trader, or Posh for outpost uses without `via`. */
+/** Where a use happens: bench level, trader, or the Outpost for outpost uses without `via`. */
 export function resolveWhere(data: WhatsNewPageData, use: WhatsNewUse, labels: RefLabels, poshLabel: string): WhereView | null {
   const via = use.via;
   if (!via) {

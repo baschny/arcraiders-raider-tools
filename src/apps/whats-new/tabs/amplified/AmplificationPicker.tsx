@@ -7,7 +7,6 @@ import { humanize } from './derive';
 import { AmplificationGraph, HexGlyph } from './AmplificationGraph';
 import { canSelect, excludesOf, requiresOf, toggle } from './picker';
 
-const MAX_EFFECTS = 4;
 
 type RefFn = (slug: string) => ItemRef;
 
@@ -35,8 +34,8 @@ interface EffectLine {
   body: string;
 }
 
-function EffectList({ lines, expanded }: { lines: EffectLine[]; expanded: boolean }) {
-  const shown = expanded ? lines : lines.slice(0, MAX_EFFECTS);
+function EffectList({ lines }: { lines: EffectLine[] }) {
+  const shown = lines;
   return (
     <ul className="wn-pick__effects">
       {shown.map((line, i) => (
@@ -52,7 +51,6 @@ function EffectList({ lines, expanded }: { lines: EffectLine[]; expanded: boolea
 export function AmplificationPicker({ weapon, text, ref_, root }: AmplificationPickerProps) {
   const { t, tm, formatNumber } = useLocale();
   const [selected, setSelected] = useState<string[]>([]);
-  const [expanded, setExpanded] = useState<Set<string>>(new Set());
   const [hovered, setHovered] = useState<string | null>(null);
 
   const nameOf = (id: string) => textAt(text, ['amplifications', id, 'name']) ?? humanize(id);
@@ -90,7 +88,6 @@ export function AmplificationPicker({ weapon, text, ref_, root }: AmplificationP
           const check = canSelect(selected, amp, weapon);
           const blocked = !chosen && !check.ok && check.reason !== 'requires';
           const lines = effectLines(amp);
-          const open = expanded.has(amp.id);
           const description = textAt(text, ['amplifications', amp.id, 'description']);
           const cost = amp.variantStep?.cost && 'items' in amp.variantStep.cost ? amp.variantStep.cost.items : [];
           const researchRef = amp.researchItemId ? ref_(amp.researchItemId) : undefined;
@@ -110,23 +107,7 @@ export function AmplificationPicker({ weapon, text, ref_, root }: AmplificationP
                   <span className="wn-pick__name">{nameOf(amp.id)}</span>
                 </div>
                 {description && <p className="wn-pick__desc">{description}</p>}
-                {lines.length > 0 && <EffectList lines={lines} expanded={open} />}
-                {lines.length > MAX_EFFECTS && (
-                  <button
-                    type="button"
-                    className="wn-pick__more"
-                    aria-expanded={open}
-                    onClick={() =>
-                      setExpanded((s) => {
-                        const next = new Set(s);
-                        if (!next.delete(amp.id)) next.add(amp.id);
-                        return next;
-                      })
-                    }
-                  >
-                    {open ? t('whatsNew.amplified.showLess') : tm('whatsNew.amplified.moreEffects', { n: lines.length - MAX_EFFECTS })}
-                  </button>
-                )}
+                {lines.length > 0 && <EffectList lines={lines} />}
                 {(requiresOf(amp).length > 0 || excludes.length > 0) && (
                   <div className="wn-pick__rules">
                     {requiresOf(amp).length > 0 && (

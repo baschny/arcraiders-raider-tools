@@ -1331,7 +1331,7 @@
       "step1": "Upgrade the Gunsmith to level 4",
       "step2": "Combine a max-level weapon with an Amplification Module",
       "step3": "Add Amplifications with parts",
-      "stepResearch": "Finish Posh's quest to unlock the research, then research it at the Research Station level 4",
+      "stepResearch": "Complete the research task (a quest) to unlock it, then research it at the Research Station level 4",
       "pickerTitle": "Pick a weapon",
       "pickerSentence": "Weapons are grouped by the Amplification Module they need.",
       "amplification": "Amplification",
@@ -1345,8 +1345,6 @@
       "lockedRequires": "Requires {name} first",
       "lockedExcluded": "Not with {name}",
       "lockedUnavailable": "Not available with this choice",
-      "moreEffects": "+{n} more effects",
-      "showLess": "Show less",
       "needsResearch": "Needs research"
     },
     "title": "What’s new in Frozen Trail",
@@ -1354,7 +1352,7 @@
     "loading": "Loading what’s new...",
     "navLabel": "What’s new tabs",
     "research": {
-      "build": "Build at Posh",
+      "build": "Build at the Outpost",
       "level": "Level {n}",
       "blueprintCrafting": "Blueprint crafting",
       "designCrafting": "Design crafting",
@@ -1368,7 +1366,7 @@
       "pointsTitle": "Research Points",
       "pointsText": "Study these items at the Research Station to earn points.",
       "stationTitle": "Research Station",
-      "stationText": "Build the {bench} at Posh, then upgrade it three times.",
+      "stationText": "Build the {bench} at the Outpost, then upgrade it three times.",
       "needsRoom": "Needs {n} Outpost room",
       "needsRooms": "Needs {n} Outpost rooms",
       "needsStationLevel": "Needs station level {n}",
@@ -1389,7 +1387,7 @@
       "pickOne": "Pick one room",
       "benchLevel": "{bench} level {level}",
       "step1": "Collect building materials",
-      "step2": "Expand at Posh and pick a room",
+      "step2": "Expand the Outpost and pick a room",
       "step3": "Each new room unlocks station upgrades",
       "slots": "Room slots",
       "slotsText": "Your Outpost has four slots. The first holds the base room, each expansion fills the next.",
@@ -1427,7 +1425,7 @@
       "purpose": {
         "outpost": {
           "title": "Expanding the Outpost",
-          "sentence": "Build new rooms at Posh to expand your Outpost."
+          "sentence": "Build new rooms to expand your Outpost."
         },
         "researchStation": {
           "title": "Research Station",
@@ -1563,7 +1561,7 @@
       },
       "outpost": {
         "title": "How do I expand my Outpost?",
-        "sentence": "Collect materials, expand at Posh and pick a room for each new slot."
+        "sentence": "Collect materials, expand the Outpost and pick a room for each new slot."
       },
       "research": {
         "title": "How does the Research Station work?",
