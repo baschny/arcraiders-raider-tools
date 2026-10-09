@@ -18,9 +18,12 @@ export function HoverTile({ ctx, source, size = 80, amount, isBlueprint }: Hover
   const item = toItemRef(ctx.data.catalog, source.id);
   const { subtitle, sections } = buildHover(ctx, source);
   const blueprint = isBlueprint ?? isBlueprintItem(ctx.data, source.id, ctx.blueprintUnlocks);
+  // A blueprint tile shows what it unlocks (in the blueprint frame), keeping the blueprint's own name.
+  const unlocked = blueprint ? ctx.blueprintUnlocks.get(source.id) : undefined;
+  const tileItem = unlocked ? { ...item, icon: toItemRef(ctx.data.catalog, unlocked).icon ?? item.icon } : item;
   return (
     <ItemHoverCard item={item} subtitle={subtitle} sections={sections}>
-      <ItemTile item={item} size={size} amount={amount} isBlueprint={blueprint} />
+      <ItemTile item={tileItem} size={size} amount={amount} isBlueprint={blueprint} />
     </ItemHoverCard>
   );
 }

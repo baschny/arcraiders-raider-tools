@@ -224,6 +224,11 @@ $green: #4caf50;
 
   &__img { max-width: 64px; max-height: 64px; object-fit: contain; }
 
+  &--list &__steps { grid-template-columns: 1fr; gap: $wn-s1; }
+  &--list &__step { padding: $wn-s2 $wn-s3 $wn-s2 48px; }
+  &--list &__num { top: 50%; transform: translateY(-50%); }
+  &--list &__text { max-width: 72ch; }
+
   &__text {
     font-size: $font-xl;
     line-height: 1.4;

@@ -17,12 +17,14 @@ export interface HowItWorksProps {
   steps: readonly HowItWorksStep[];
   /** Heading; defaults to "How it works". */
   title?: string;
+  /** 'row' (default): short steps side by side. 'list': one step per line, for longer instructions. */
+  layout?: 'row' | 'list';
 }
 
-export function HowItWorks({ steps, title }: HowItWorksProps) {
+export function HowItWorks({ steps, title, layout = 'row' }: HowItWorksProps) {
   const { t } = useLocale();
   return (
-    <section className="wn-how" aria-label={title ?? t('whatsNew.common.howItWorks')}>
+    <section className={`wn-how wn-how--${layout}`} aria-label={title ?? t('whatsNew.common.howItWorks')}>
       <h3 className="wn-how__title">{title ?? t('whatsNew.common.howItWorks')}</h3>
       <ol className="wn-how__steps">
         {steps.map((step, index) => (

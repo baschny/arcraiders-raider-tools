@@ -191,11 +191,16 @@ export function ItemHoverCard({ item, subtitle, badges, sections, children, disa
   useLayoutEffect(() => {
     if (!open) return;
     place();
+    // Page scrolling moves the trigger away: close instead of chasing it (scrolling inside the card is fine).
+    const onScroll = (e: Event) => {
+      if (cardRef.current && e.target instanceof Node && cardRef.current.contains(e.target)) return;
+      setActive(null);
+    };
     window.addEventListener('resize', place);
-    window.addEventListener('scroll', place, true);
+    window.addEventListener('scroll', onScroll, true);
     return () => {
       window.removeEventListener('resize', place);
-      window.removeEventListener('scroll', place, true);
+      window.removeEventListener('scroll', onScroll, true);
       setPos(null);
     };
   }, [open, place]);
