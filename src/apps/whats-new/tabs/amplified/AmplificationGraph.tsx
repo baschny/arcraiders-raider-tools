@@ -1,8 +1,7 @@
 import type { CSSProperties } from 'react';
-import { Lock } from 'lucide-react';
 import { useLocale } from '../../../../shared/context/LocaleContext';
 import type { AmplifiedWeapon } from '../../../../shared/gamedata/types';
-import { ItemTile } from '../../components';
+import { GlyphIcon, ItemTile } from '../../components';
 import type { ItemRef } from '../../components';
 import { layoutGraph, type GraphEdge } from './graph';
 import { canSelect, type CanSelect } from './picker';
@@ -108,7 +107,7 @@ export function AmplificationGraph({ weapon, selected, root, nameOf, onToggle, h
               </button>
               {amp.researchItemId && (
                 <span className="wn-hex__lock" title={t('whatsNew.amplified.needsResearch')}>
-                  <Lock size={10} aria-hidden="true" />
+                  <GlyphIcon name="research" size={12} />
                 </span>
               )}
             </div>
