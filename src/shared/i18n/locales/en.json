@@ -1504,7 +1504,8 @@
         "repair": "Repair",
         "researchDetail": "Level {level} · {rp} RP",
         "researchLevel": "Level {level}",
-        "tradeFor": "Pays for {item}"
+        "tradeFor": "Pays for {item}",
+        "upgrades": "Perk upgrades: {n}"
       },
       "rp": {
         "calloutTitle": "Other uses of study items",

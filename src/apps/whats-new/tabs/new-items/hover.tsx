@@ -142,6 +142,36 @@ export interface HoverContent {
   sections: HoverSection[];
 }
 
+/**
+ * One row per Amplified weapon instead of one per perk permutation
+ * (`osprey_amplified_scoped_x` → `osprey_amplified`): the amount range and how many upgrades use it.
+ */
+function byAmplifiedWeapon(
+  rows: HoverRow[],
+  ref: (slug: string) => ItemRef,
+  tm: HoverContext['tm'],
+): HoverRow[] {
+  const groups = new Map<string, { row: HoverRow; amounts: number[]; repair: boolean }>();
+  for (const row of rows) {
+    const slug = row.key.replace(/^repair-/, '');
+    const cut = slug.indexOf('_amplified');
+    const base = cut >= 0 ? slug.slice(0, cut + '_amplified'.length) : slug;
+    const repair = row.key.startsWith('repair-');
+    const key = `${repair ? 'repair-' : ''}${base}`;
+    const g = groups.get(key) ?? { row: { ...row, key, item: ref(base), label: ref(base).name }, amounts: [], repair };
+    const n = Number.parseInt(row.amount ?? '', 10);
+    if (Number.isFinite(n)) g.amounts.push(n);
+    groups.set(key, g);
+  }
+  return [...groups.values()].map(({ row, amounts, repair }) => {
+    const min = Math.min(...amounts);
+    const max = Math.max(...amounts);
+    const amount = amounts.length ? (min === max ? `${min}×` : `${min}–${max}×`) : row.amount;
+    const detail = repair ? row.detail : tm('whatsNew.new-items.hover.upgrades', { n: amounts.length || 1 });
+    return { ...row, amount, detail };
+  });
+}
+
 /** All hover sections of an item, built from every one of its uses. */
 export function buildHover(ctx: HoverContext, source: HoverSource): HoverContent {
   const { data, t, tm } = ctx;
@@ -267,7 +297,7 @@ export function buildHover(ctx: HoverContext, source: HoverSource): HoverContent
     { key: 'unlocks', title: t('whatsNew.new-items.hover.unlocks'), rows: unlockRows(ctx, source) },
     { key: 'craft', title: t('whatsNew.new-items.hover.craft'), ...capped(dedupe(craft), MAX_ROWS) },
     { key: 'research', title: t('whatsNew.new-items.hover.research'), ...capped(dedupe(research), MAX_RESEARCH_ROWS) },
-    { key: 'amplified', title: t('whatsNew.new-items.hover.amplified'), ...capped(dedupe(amplified), MAX_ROWS) },
+    { key: 'amplified', title: t('whatsNew.new-items.hover.amplified'), ...capped(byAmplifiedWeapon(amplified, ref, tm), MAX_ROWS) },
     { key: 'furniture', title: tm('whatsNew.new-items.hover.furniture', { n: furnitureRows.length }), ...capped(furnitureRows, MAX_ROWS) },
     { key: 'quests', title: t('whatsNew.new-items.hover.quests'), ...capped(dedupe(quests), MAX_ROWS) },
     { key: 'traders', title: t('whatsNew.new-items.hover.traders'), ...capped(dedupe(traders), MAX_ROWS) },
