@@ -78,7 +78,8 @@
       "quests": "Görev Takibi",
       "lootHelper": "Yağma Yardımcısı",
       "quartermaster": "Levazım",
-      "maps": "Maps"
+      "maps": "Maps",
+      "whatsNew": "Frozen Trail items"
     }
   },
   "dashboard": {
@@ -90,6 +91,10 @@
       "affectedApps": "Affected tools",
       "affectedAppLink": "Open affected tool",
       "allTools": "All tools"
+    },
+    "whatsNew": {
+      "title": "New items in Frozen Trail",
+      "description": "Coming from 1.x? See what each new item is for, which old items got new uses, and what changed in recipes, recycling and traders."
     },
     "tools": {
       "schedule": "ARC Raiders harita etkinlik takvimini daha iyi bir görünümle göstererek baskınlarını planlamanı sağlar.",
@@ -1321,6 +1326,301 @@
       "Wreck03": "ARC wreck",
       "Wrh": "Warehouse furniture",
       "vent03": "Vent"
+    }
+  },
+  "whatsNew": {
+    "amplified": {
+      "step1": "Upgrade the Gunsmith to level 4",
+      "step2": "Combine a max-level weapon with an Amplification Module",
+      "step3": "Add Amplifications with parts",
+      "researchSubtitle": "Amplified research",
+      "researchTask": "Unlock: {name}",
+      "researchThen": "Then research it",
+      "researchWhere": "Research Station level {level}",
+      "stepResearch": "Complete the research task (a quest) to unlock it, then research it at the Research Station level 4",
+      "pickerTitle": "Pick a weapon",
+      "pickerSentence": "Weapons are grouped by the Amplification Module they need.",
+      "amplification": "Amplification",
+      "research": "Research",
+      "noResearch": "No research needed",
+      "repairLine": "Amplified weapons are repaired with Amplified Fragments.",
+      "recycleLine": "Recycling a module gives {n} Amplified Fragments.",
+      "roomsNote": "Needs {n} Outpost rooms",
+      "requires": "Requires {name}",
+      "cantCombine": "Can’t combine with {names}",
+      "lockedRequires": "Requires {name} first",
+      "lockedExcluded": "Not with {name}",
+      "lockedUnavailable": "Not available with this choice",
+      "needsResearch": "Needs research"
+    },
+    "title": "New items in Frozen Trail",
+    "subtitle": "What the 2.0 items are for and where you use them. The new map, skill tree and ARC enemies are not covered here.",
+    "loading": "Loading the new items...",
+    "navLabel": "Item guide tabs",
+    "research": {
+      "build": "Build at the Outpost",
+      "level": "Level {n}",
+      "blueprintCrafting": "Blueprint crafting",
+      "designCrafting": "Design crafting",
+      "amplifiedResearch": "Amplified research",
+      "plans": "{n} plans",
+      "rpAmount": "{n} RP",
+      "step1": "Study items you find",
+      "step2": "Get Research Points",
+      "step3": "Spend points and materials on plans",
+      "step4": "Learn the plan at the Outpost",
+      "pointsTitle": "Research Points",
+      "pointsText": "Study these items at the Research Station to earn points.",
+      "stationTitle": "Research Station",
+      "stationText": "Build the {bench} at the Outpost, then upgrade it three times.",
+      "needsRoom": "Needs {n} Outpost room",
+      "needsRooms": "Needs {n} Outpost rooms",
+      "needsStationLevel": "Needs station level {n}",
+      "listCraftable": "Blueprints you can research",
+      "listFindOnly": "Blueprints you must find",
+      "listDesigns": "Designs you can research",
+      "listFindOnlyDesigns": "Designs you can only find",
+      "hoverTitle": "Research",
+      "browseTitle": "What you can research",
+      "benchLevel": "{bench} level {n}"
+    },
+    "outpost": {
+      "unlocks": "Unlocks",
+      "special": "Special option",
+      "furnitureTitle": "Furniture",
+      "celeste": "Celeste",
+      "expansion": "Level {from} to {to}",
+      "pickOne": "Pick one room",
+      "benchLevel": "{bench} level {level}",
+      "step1": "Collect building materials",
+      "step2": "Expand the Outpost and pick a room",
+      "step3": "Each new room unlocks station upgrades",
+      "slots": "Room slots",
+      "slotsText": "Your Outpost has four slots. The first holds the base room, each expansion fills the next.",
+      "slot": "Slot {n}",
+      "furnitureText": "Furnish your rooms with beds, chairs, lamps and more.",
+      "furnitureCount": "{count} pieces of furniture",
+      "furnitureHow": "How furniture works",
+      "furnStep1": "Find or research a design",
+      "furnStep2": "Learn it at the Outpost",
+      "furnStep3": "Build it with Planks, Sheet Metal and more",
+      "celesteText": "{name} now trades seeds for building materials."
+    },
+    "changes": {
+      "recipes": "Recipes",
+      "recipesHint": "These recipes need different materials than before.",
+      "gadgets": "Gadgets",
+      "anvilCraft": "{name}: craft and upgrade",
+      "anvilRepair": "{name}: repair",
+      "recycling": "Recycling",
+      "recyclingHint": "These items give different materials when you recycle them.",
+      "traders": "Traders",
+      "tradersHint": "Pick a trader to see what they started or stopped selling and which prices changed.",
+      "stash": "Stash",
+      "stashHint": "What each stash expansion costs, with the new tiers marked.",
+      "craft": "Craft",
+      "upgrade": "Upgrade {from} to {to}",
+      "repair": "Repair {tier}",
+      "tradeNew": "New",
+      "tradeGone": "No longer sold",
+      "tradePrice": "New price",
+      "scrapValue": "{value} scrap value",
+      "expansion": "Expansion",
+      "slotCount": "{count} slots",
+      "newTier": "New"
+    },
+    "new-items": {
+      "recycles": "Recycles into",
+      "purpose": {
+        "outpost": {
+          "title": "Expanding the Outpost",
+          "sentence": "Build new rooms to expand your Outpost."
+        },
+        "researchStation": {
+          "title": "Research Station",
+          "sentence": "Build and upgrade the new Research Station."
+        },
+        "researchPoints": {
+          "title": "Research Points",
+          "sentence": "Study these at the Research Station to earn Research Points."
+        },
+        "gunsmith4": {
+          "title": "Gunsmith level 4",
+          "sentence": "Needed for the new Gunsmith level, which unlocks Amplified weapons."
+        },
+        "amplified": {
+          "title": "Amplified weapons",
+          "sentence": "Turn max-level weapons into Amplified ones and add Amplifications."
+        },
+        "researchBlueprints": {
+          "title": "Researching blueprints",
+          "sentence": "Spent at the Research Station to research blueprints and designs."
+        },
+        "furniture": {
+          "title": "Furniture",
+          "sentence": "Build furniture for your Outpost rooms."
+        },
+        "crafting": {
+          "title": "Crafting",
+          "sentence": "Crafting recipes for weapons, gadgets and in-raid items."
+        },
+        "stencils": {
+          "title": "Weapon stencils",
+          "sentence": "Apply paint stencils to your weapons."
+        },
+        "quests": {
+          "title": "Quests and projects",
+          "sentence": "Needed for quests or projects."
+        },
+        "trades": {
+          "title": "Trades",
+          "sentence": "Traders accept these as payment."
+        },
+        "noUse": {
+          "title": "No use yet",
+          "sentence": "Nothing needs these yet: sell or recycle them."
+        },
+        "unlocks": {
+          "title": "One-time unlocks",
+          "sentence": "Hand these over once to unlock the new Outpost rooms, the Research Station, Gunsmith level 4 and quests."
+        },
+        "newGear": {
+          "title": "New weapons and gear",
+          "sentence": "New in 2.0, each followed by the blueprint that unlocks it."
+        },
+        "fallenEmperor": {
+          "title": "Fallen Emperor",
+          "sentence": "Everything you need to open the Fallen Emperor dungeon on Pendola Pass."
+        },
+        "furnitureDecoration": {
+          "title": "Furniture and decoration",
+          "sentence": "Build furniture from these materials and place the decoration items in your Outpost."
+        },
+        "keys": {
+          "title": "Pendola Pass keys",
+          "sentence": "Open locked rooms on Pendola Pass."
+        }
+      },
+      "unlocks": {
+        "outpost": "Outpost level {from} to {to}",
+        "questItems": "Quest items"
+      },
+      "hover": {
+        "build": "{bench} build",
+        "unlocks": "Unlocks",
+        "craft": "Used to craft",
+        "research": "Researches",
+        "amplified": "Amplified",
+        "furniture": "Furniture ({n})",
+        "quests": "Quests and projects",
+        "traders": "Traders",
+        "gives": "Gives",
+        "fieldCraft": "Field craft",
+        "repair": "Repair",
+        "researchDetail": "Level {level} · {rp} RP",
+        "researchLevel": "Level {level}",
+        "tradeFor": "Pays for {item}",
+        "upgrades": "Amplification upgrades: {n}"
+      },
+      "more": {
+        "research": "More about research in the Research tab",
+        "amplified": "More about Amplified weapons in the Amplified tab"
+      },
+      "rp": {
+        "calloutTitle": "Other uses of study items",
+        "callout": "Several of these are also needed to build and upgrade the Research Station — keep enough before you study them.",
+        "calloutUse": "{amount} {item} for {use}",
+        "scaleLabel": "Research Points scale",
+        "scaleTitle": "Research plan cost {min}–{max} RP",
+        "scaleMin": "Cheapest research plan: {name}",
+        "scaleMedian": "Typical research plan",
+        "scaleMax": "Most expensive research plan: {name}"
+      },
+      "emperor": {
+        "title": "How to open the Fallen Emperor",
+        "step1": "During the Redirection event, activate a Damaged Emperor Relay and take the Emperor Beacon from it.",
+        "step2": "Place the beacon on the ground and take cover: debris rains down.",
+        "step3": "Breach the large part. It may contain the Emperor Gateway Conduit Blueprint (the blueprint can also lie on the ground during the Frigate event).",
+        "step4": "Craft the Emperor Gateway Conduit at the Workbench from the ARC Plated, Insulated and Conductive Couplers.",
+        "step5": "Use the conduit to open the Fallen Emperor dungeon on Pendola Pass.",
+        "note": "If you extract with the Emperor Beacon, it turns into a Ruined Emperor Beacon."
+      },
+      "detail": {
+        "level": "{bench} level {level}",
+        "slots": "{n} slots"
+      }
+    },
+    "tabs": {
+      "new-items": "New items",
+      "old-items": "Old items",
+      "outpost": "Outpost",
+      "research": "Research",
+      "amplified": "Amplified",
+      "crafting": "Crafting",
+      "changes": "Changes"
+    },
+    "intro": {
+      "new-items": {
+        "title": "What are the new items for?",
+        "sentence": "Every new item, grouped by what it’s used for. Items with several uses appear in several groups."
+      },
+      "old-items": {
+        "title": "Which old items got new uses?",
+        "sentence": "Items you already know that are needed for something new in 2.0."
+      },
+      "outpost": {
+        "title": "How do I expand my Outpost?",
+        "sentence": "Collect materials, expand the Outpost and pick a room for each new slot."
+      },
+      "research": {
+        "title": "How does the Research Station work?",
+        "sentence": "Study items for Research Points, then spend them on blueprints and designs."
+      },
+      "amplified": {
+        "title": "How do Amplified weapons work?",
+        "sentence": "Upgrade the Gunsmith, then turn a max-level weapon into an Amplified one."
+      },
+      "crafting": {
+        "title": "What can I craft that’s new?",
+        "sentence": "New in-raid crafts, weapon stencils and the Emperor Gateway key."
+      },
+      "changes": {
+        "title": "What changed for things I already know?",
+        "sentence": "Recipes, recycling, trader stock and stash sizes that differ from 1.45."
+      }
+    },
+    "common": {
+      "howItWorks": "How it works",
+      "needs": "Needs",
+      "alsoNeeds": "Also needs",
+      "where": "Where",
+      "before": "Before 2.0",
+      "now": "Frozen Trail",
+      "close": "Close",
+      "more": "+{count} more"
+    },
+    "crafting": {
+      "new": "New",
+      "field": {
+        "title": "Field crafting",
+        "sentence": "Craft in the middle of a raid with skills from the skill tree.",
+        "newCrafts": "New in-raid crafts",
+        "unchanged": "{n} recipes unchanged"
+      },
+      "stencils": {
+        "title": "Weapon stencils",
+        "sentence": "Stencils change how a weapon looks and cost Stencil Parts to craft.",
+        "partsHint": "Needed to apply any stencil",
+        "cost": "{count} Stencil Parts",
+        "worksWith": "Works with"
+      },
+      "gateway": {
+        "title": "Emperor Gateway key",
+        "sentence": "Craft the Conduit at the Workbench to open the Emperor Gateway."
+      }
+    },
+    "old-items": {
+      "noLonger": "No longer used for"
     }
   }
 }
