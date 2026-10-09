@@ -77,7 +77,9 @@
       "craftCalculator": "제작 계산기",
       "quests": "퀘스트 추적기",
       "lootHelper": "루팅 도우미",
-      "quartermaster": "병참 관리"
+      "quartermaster": "병참 관리",
+      "maps": "지도",
+      "whatsNew": "새로운 소식"
     }
   },
   "dashboard": {
@@ -90,12 +92,17 @@
       "affectedAppLink": "Open affected tool",
       "allTools": "All tools"
     },
+    "whatsNew": {
+      "title": "얼어붙은 산길의 새로운 소식",
+      "description": "1.x에서 돌아오셨나요? 새 아이템의 용도, 연구와 증폭 무기의 작동 방식, 그리고 제작법, 재활용, 상인의 변경 사항을 확인하세요."
+    },
     "tools": {
       "schedule": "ARC Raiders 맵 이벤트 일정을 더 보기 좋은 화면으로 보여 주어 레이드 계획을 세우기 쉽습니다.",
       "craftCalculator": "보관함 공간을 최대한 활용하기 위해 아이템을 몇 개 제작해야 하는지 계산합니다.",
       "quests": "인터랙티브 퀘스트 트리로 퀘스트 진행 상황을 추적합니다.",
       "lootHelper": "제작 체인을 시각화해 레이드 중 무엇을 루팅해야 하는지 판단할 수 있습니다.",
-      "quartermaster": "보관함, 장비, 은신처 요구사항을 한 곳에서 계획합니다."
+      "quartermaster": "보관함, 장비, 은신처 요구사항을 한 곳에서 계획합니다.",
+      "maps": "모든 지도와 맵 환경에서 아이템을 어디서 노획할 수 있는지, ARC 적이 어디에 나타나는지 찾아보세요."
     }
   },
   "pages": {
@@ -767,13 +774,13 @@
         "qtyToRecycle": "Qty to Recycle",
         "yields": "Yields",
         "why": "Why",
-        "craftTimes": "Craft Times",
-        "totalOutput": "Total Output",
         "inputsNeeded": "Inputs Needed",
         "upgradeFrom": "Upgrade From",
         "upgradeTo": "Upgrade To",
         "qtyToUpgrade": "Qty to Upgrade",
-        "durability": "Durability"
+        "durability": "Durability",
+        "craftTimes": "Craft Times",
+        "totalOutput": "Total Output"
       },
       "blueprintUnlockCount": "{unlocked}/{total} unlocked"
     },
@@ -786,16 +793,16 @@
       "foundIn": "Found In:",
       "neededForLists": "Needed for Lists",
       "neededForQuests": "Needed for Quests",
-      "neededForCrafting": "Needed for Crafting (Direct / Indirect)",
       "neededForProject": "Needed for {project}",
-      "couldBeUsedFor": "Could be used for",
       "recycle": "Recycle",
       "salvage": "Salvage",
       "craftingRecipe": "Crafting Recipe",
       "craftingRecipeIncludingUpgrades": "Crafting Recipe (including Upgrades)",
       "recyclesInto": "Recycles Into",
       "salvagesInto": "Salvages Into",
-      "neededForRepair": "Needed for Repair"
+      "neededForRepair": "Needed for Repair",
+      "neededForCrafting": "Needed for Crafting (Direct / Indirect)",
+      "couldBeUsedFor": "Could be used for"
     },
     "itemIcon": {
       "uncraftable": "Cannot be crafted — requirements not met"
@@ -891,6 +898,655 @@
       "loadout": "Loadout",
       "gameDataLastSync": "Game Data Last Sync",
       "never": "Never"
+    }
+  },
+  "maps": {
+    "header": {
+      "gameData": "게임 데이터 {version} · {date}",
+      "gameDataTitle": "Steam 매니페스트 {manifest}, 지도 데이터 빌드 {date}"
+    },
+    "loader": {
+      "retry": "다시 시도",
+      "reloadPage": "페이지 새로고침",
+      "error": {
+        "network": "지도 데이터를 불러올 수 없습니다. 연결을 확인하고 다시 시도하세요.",
+        "missing": "지도 데이터를 지금은 사용할 수 없습니다. 잠시 후 다시 시도하세요.",
+        "missingMap": "{map} 지도의 데이터가 없습니다. 잠시 후 다시 시도하세요.",
+        "schema": "지도 데이터가 업데이트되어 이 페이지의 새 버전이 필요합니다. 페이지를 새로고침하세요."
+      }
+    },
+    "conditions": {
+      "normal": "일반"
+    },
+    "modes": {
+      "loot": "노획",
+      "label": "모드"
+    },
+    "sidebar": {
+      "hide": "사이드바 숨기기",
+      "showFilters": "필터 표시",
+      "hideFilters": "필터 숨기기"
+    },
+    "mapBar": {
+      "scoreTitle": "{map}: 아이템 점수 {score} (일반 환경)",
+      "label": "지도"
+    },
+    "conditionBar": {
+      "normal": "일반 지도",
+      "normalAlso": "일반 지도 — 고정 노획과 생성 위치가 동일: {conditions}",
+      "major": "주요 환경",
+      "majorLive": "주요 환경 (현재 일정)",
+      "minor": "부가 환경",
+      "minorLive": "부가 환경 (현재 일정)",
+      "sameAsNormal": "+ {count}개 동일 ({normal} 기준)",
+      "label": "맵 환경"
+    },
+    "help": {
+      "label": "도움말"
+    },
+    "search": {
+      "placeholder": "아이템 찾기…",
+      "clear": "지우기"
+    },
+    "loot": {
+      "searchPlaceholder": "아이템 검색, 예: 모터",
+      "goalsTitle": "루팅 도우미 목표",
+      "tablesTitle": "각 고정 노획 테이블에서 이 아이템에 배정되는 비율",
+      "noTables": "어떤 고정 노획 테이블에도 없음",
+      "notInLoot": "이 아이템은 어떤 고정 노획 테이블에도 없습니다.",
+      "onlyHarvested": "{containers}에서만 채집되며, 다음 환경에서만 존재합니다: {conditions}.",
+      "conditionWhy": "{condition} ({reason})"
+    },
+    "conditionReasons": {
+      "onHiatus": "중단 상태",
+      "neverReleased": "출시되지 않음",
+      "tutorial": "튜토리얼",
+      "practiceRange": "연습장",
+      "notInSchedule": "일정에 없음"
+    },
+    "item": {
+      "tiers": {
+        "low": "낮음",
+        "mid": "중간",
+        "high": "높음"
+      }
+    },
+    "best": {
+      "title": "최적 지역 · {condition}",
+      "helpLabel": "점수 설명",
+      "help": "점수는 이 아이템에 배정될 수 있는 노획 가치입니다. 각 노획 핸들러의 풀을 테이블, 항목, 아이템에 나누고 그 지점들에 분배한 값입니다. 장소를 비교하기 위한 값이며 드롭 확률이 아닙니다. 일반과 같은 고정 노획을 가진 환경은 일반에 포함됩니다.",
+      "spotsOne": "{hits}/{count} 지점",
+      "spots": "{hits}/{count} 지점",
+      "perSpot": "지점당 {score}"
+    },
+    "filters": {
+      "title": "생성 지점",
+      "helpLabel": "필터 설명",
+      "help": "화살표는 그룹을 펼칩니다. 나머지 행은 지도에서 그룹을 표시하거나 숨깁니다. 아이템을 선택했고 아무것도 고르지 않았다면, 이 아이템을 담을 수 있는 모든 지점이 표시됩니다. 컨테이너는 카테고리가 아이템과 일치할 때만 계산됩니다(기계 아이템은 기계 컨테이너에만, 식물은 자기 아이템만 제공). 생성되는 컨테이너(탄약 상자, 은닉물, 잔해)는 서버 측 테이블을 굴리며 “?”로 표시됩니다.",
+      "auto": "자동",
+      "autoTitle": "이 아이템을 담을 수 있는 모든 지점을 표시하는 중",
+      "showAll": "모두 표시",
+      "hideAll": "모두 숨기기",
+      "expand": "펼치기",
+      "expandGroup": "{group} 펼치기",
+      "collapseGroup": "{group} 접기",
+      "count": {
+        "spotsOne": "지점 {count}개",
+        "spots": "지점 {count}개",
+        "hitsOne": "지점 {count}곳 중 {hits}곳에 이 아이템이 들어갈 수 있음",
+        "hits": "지점 {count}곳 중 {hits}곳에 이 아이템이 들어갈 수 있음",
+        "noHitsOne": "이 유일한 지점은 이 아이템을 담을 수 없음",
+        "noHits": "지점 {count}곳 모두 이 아이템을 담을 수 없음",
+        "serverSide": "내용물은 서버에서 결정되며 게임 파일에는 없음",
+        "expectedOne": "라운드당 약 {expected}개 예상 (가능한 지점 {count}곳 중)",
+        "expected": "라운드당 약 {expected}개 예상 (가능한 지점 {count}곳 중)"
+      }
+    },
+    "arc": {
+      "title": "ARC 적 · {condition}",
+      "helpLabel": "ARC 생성기 설명",
+      "help": "이 환경에서 각 적을 생성할 수 있는 생성기의 예상 개수입니다. 적을 선택하면 해당 생성기와 순찰 경로만 표시됩니다(여러 개를 동시에 선택할 수 있으며 각각 다른 색으로 표시). 채워진 마커는 경로를 순찰합니다. 생성기에 마우스를 올리면 그룹과 재생성 타이머가 보이고, 클릭하면 생성 그룹이 고정됩니다.",
+      "showAll": "모든 적 표시",
+      "expectedOne": "라운드당 약 {expected}개 예상 (생성기 {count}개 중)",
+      "expected": "라운드당 약 {expected}개 예상 (생성기 {count}개 중)",
+      "empty": "이 환경에는 ARC 생성기가 없습니다."
+    },
+    "canvas": {
+      "label": "{map} 지도. 여기 그려진 지점, 구역, 적은 사이드바에 나열되어 있습니다."
+    },
+    "zoom": {
+      "in": "확대",
+      "out": "축소",
+      "fit": "지도 맞춤 (더블 클릭)"
+    },
+    "overlays": {
+      "title": "레이어",
+      "heat": "히트맵",
+      "height": "높이 표시",
+      "heightTitle": "위쪽 점: 추정 지면보다 3.5 m 이상 위(상층, 지붕). 아래쪽: 3.5 m 이상 아래(지하, 터널). 높이 지도로 추정하며, 스텔라 몬티스에서는 표시되지 않습니다.",
+      "pois": "구역 및 이름",
+      "zones": "노획 구역",
+      "zonesTitle": "게임 내 노획 구역: 빨강 = 풍부, 노랑 = 밀집, 회색 = 희박.",
+      "bounds": "플레이 가능 영역"
+    },
+    "layers": {
+      "title": "지도 레이어: 이 구역에 들어가면 게임 내 지도가 전환됩니다",
+      "surface": "지상",
+      "underground": "지하",
+      "upperFloor": "상층",
+      "lowerFloor": "하층",
+      "label": "지도 레이어"
+    },
+    "legend": {
+      "score": "지점별 아이템 점수",
+      "low": "낮음",
+      "high": "높음"
+    },
+    "zones": {
+      "abundant": "풍부한 노획",
+      "dense": "밀집 노획",
+      "sparse": "희박한 노획"
+    },
+    "tooltip": {
+      "score": "점수 {score}",
+      "serverTablesOne": "+ 서버 측 노획 테이블 {count}개 (내용은 파일에 없음)",
+      "serverTables": "+ 서버 측 노획 테이블 {count}개 (내용은 파일에 없음)",
+      "oneOf": "다음 중 하나: {kinds}",
+      "inArea": "{area} 내",
+      "spawnChance": "생성 확률 약 {chance}",
+      "notScored": "서버 측 내용물 (점수에 미포함)",
+      "group": "그룹",
+      "groupSpotsOne": "{group}: 지점 {count}곳 중 {min}곳 (원으로 표시)",
+      "groupSpots": "{group}: 지점 {count}곳 중 {min}곳 (원으로 표시)",
+      "groupSpawnersOne": "{group}: 생성기 {count}개 중 {min}개 (원으로 표시)",
+      "groupSpawners": "{group}: 생성기 {count}개 중 {min}개 (원으로 표시)",
+      "tapPin": "탭하여 그룹 고정",
+      "tapUnpin": "탭하여 그룹 고정 해제",
+      "clickPin": "클릭하여 그룹 고정",
+      "clickUnpin": "클릭하여 그룹 고정 해제",
+      "arcSpawner": "ARC 생성기",
+      "enemySpawner": "적 생성기",
+      "patrols": "경로를 순찰함",
+      "tableNotExported": "테이블 {table} (내보내지 않음)",
+      "tier": "등급 {tier}",
+      "area": "구역",
+      "height": "지면 대비 ≈ {height} m",
+      "covered": "덮임",
+      "openSky": "노출됨",
+      "noKey": "열쇠 아이템 없음 (다른 방법으로 열림)"
+    },
+    "timing": {
+      "noRespawn": "파괴 후 재생성되지 않음",
+      "respawn": "파괴 후 {time} 뒤 재생성",
+      "randomDelay": "+ {min}–{max}초 무작위 지연",
+      "noDynamic": "동적 재생성 없음",
+      "airDrop": "그룹 파괴 후 {time} 뒤 보급품 드롭",
+      "sneak": "시야 밖 재생성: {time} 후",
+      "sneakIndoors": "시야 밖 재생성: {time} 후 (실내)",
+      "activates": "{distance} m 이내에서 작동"
+    },
+    "units": {
+      "seconds": "{n}초",
+      "minutes": "{n}분",
+      "never": "없음"
+    },
+    "categories": {
+      "Exits": "탈출구 및 생성",
+      "Containers": "컨테이너",
+      "RaiderSpawns": "레이더 컨테이너",
+      "ArcSpawns": "ARC 잔해 및 파손물",
+      "Puzzles": "퍼즐",
+      "Features": "지도 요소"
+    },
+    "kinds": {
+      "ExtractMetro": "지하철 탈출",
+      "ExtractLift": "승강기 탈출",
+      "ExtractFan": "팬 탈출",
+      "ExtractGondola": "탄도 곤돌라 탈출",
+      "Hatch": "레이더 해치 (열쇠)",
+      "StationEntrance": "지하철역 입구",
+      "PlayerStart": "플레이어 시작 지점",
+      "Generic": "일반",
+      "OtherFixed": "기타",
+      "WaterTank": "물탱크",
+      "Ground": "지면 노획",
+      "Apricot": "살구",
+      "Lemon": "레몬",
+      "Olive": "올리브",
+      "NatureFruitBasket": "과일 바구니",
+      "Mushroom": "버섯",
+      "Agave": "아가베",
+      "Moss": "이끼",
+      "GreatMullein": "우단담배풀",
+      "Candleberries": "캔들베리",
+      "Resin": "수지 (나무)",
+      "BirdNest": "새 둥지",
+      "VolcanicRock": "화산암",
+      "Roots": "뿌리",
+      "Fertilizer": "비료",
+      "SeedVault": "씨앗 보관고 콘솔",
+      "Seedbox": "씨앗 상자",
+      "CacheStandard": "레이더 은닉물",
+      "CacheSelfDestruct": "레이더 은닉물, 자폭형",
+      "CacheFrozen": "레이더 은닉물, 얼어붙은 형",
+      "NomadCache": "유랑민 은닉물",
+      "CacheFirstWave": "레이더 은닉물, 1차 침공",
+      "AmmoBox": "탄약 상자",
+      "AmmoBoxHigh": "탄약 상자 (상급)",
+      "WeaponCase": "무기 케이스",
+      "WeaponCaseHigh": "무기 케이스 (상급)",
+      "MedicalBag": "의료 가방",
+      "GrenadeTube": "수류탄 통",
+      "Backpack": "레이더 배낭",
+      "WeaponsRack": "무기 선반",
+      "FruitBasket": "과일 바구니 (수확의 계절)",
+      "FruitBasketWinter": "과일 바구니 (겨울)",
+      "WaspHusk": "와스프 잔해",
+      "WaspHuskStunning": "와스프 잔해, 기절형",
+      "RocketeerHusk": "로켓티어 잔해",
+      "RocketeerHuskStunning": "로켓티어 잔해, 기절형",
+      "DeforesterHusk": "디포레스터 잔해",
+      "Probes": "추락한 ARC 탐사기",
+      "Couriers": "ARC 운반기",
+      "PowerSocket": "배터리/연료전지 소켓",
+      "FuelCell": "연료전지 / 배터리",
+      "PuzzleButton": "버튼 / 스위치 / 콘솔",
+      "PuzzleRelay": "퍼즐 중계기",
+      "CardReader": "카드 리더기",
+      "TubeTerminal": "컬러 단말기 / 튜브 역",
+      "PuzzleDoor": "퍼즐 문 / 게이트",
+      "HotelKey": "호텔 열쇠",
+      "FieldDepot": "필드 창고",
+      "FieldCrates": "필드 상자",
+      "SupplyStation": "보급 요청 스테이션",
+      "PowerCores": "채취기 전력 코어",
+      "MetalDetector": "등산가의 탐지기",
+      "Snowpile": "눈더미 (한파)",
+      "Zipline": "집라인 (작동식)",
+      "Lift": "리프트",
+      "Bridge": "이동식 다리",
+      "BridgeSwitch": "다리 / 차단기 스위치",
+      "LockedRoom": "잠긴 방 (열쇠)",
+      "LockedDoor": "잠긴 문 (열쇠)",
+      "Barricaded": "바리케이드 문 (강제 개방)",
+      "Door": "문 / 창문",
+      "Piano": "피아노"
+    },
+    "containerTypes": {
+      "Android": "안드로이드",
+      "AntennaSet": "안테나 세트",
+      "Bus": "버스",
+      "ButtonPanel": "버튼 패널",
+      "CabinetDoor": "캐비닛",
+      "Car01": "자동차 1",
+      "Car02": "자동차 2",
+      "Car03": "자동차 3",
+      "CashRegister": "금전 등록기",
+      "Centerbench": "중앙 벤치",
+      "Closet": "옷장",
+      "Closet02": "옷장 2",
+      "Cmr": "벽걸이 유닛",
+      "CoffeeMachine01": "커피 머신",
+      "CompressorTrailer": "압축기 트레일러",
+      "Computer01": "컴퓨터 1",
+      "Computer02": "컴퓨터 2",
+      "Computer03": "컴퓨터 3",
+      "Coms": "통신 콘솔",
+      "Console_03": "콘솔",
+      "Crate": "상자",
+      "CrateCart": "상자 수레",
+      "CupboardCafe": "카페 찬장",
+      "CupboardKitchen": "주방 찬장",
+      "Drawer": "서랍",
+      "DrawerMedical": "약품 서랍",
+      "Dumpster": "대형 쓰레기통",
+      "FloodLight": "투광등",
+      "Freezer": "냉동고",
+      "Fridge": "냉장고",
+      "Fusebox": "퓨즈함",
+      "Fusebox2": "퓨즈함 2",
+      "GeneratorM02": "발전기",
+      "Gvt": "관공서 쓰레기통",
+      "GvtDesk": "관공서 책상",
+      "HighwayAntenna": "고속도로 안테나",
+      "InformationTerminal": "안내 단말기",
+      "KitchenBench": "주방 조리대",
+      "Locker01": "사물함",
+      "LockerMedical01": "의료 사물함",
+      "Lockers": "사물함",
+      "MuseumCrate_01": "박물관 상자 1",
+      "MuseumCrate_02": "박물관 상자 2",
+      "Parasitic": "기생 성장체",
+      "PressureMonitor": "압력 모니터",
+      "Refrigerator_01": "냉장고",
+      "RoadBarrier03": "도로 차단막",
+      "Rocketparts_01": "로켓 부품 1",
+      "Rocketparts_02": "로켓 부품 2",
+      "Rover": "탐사차",
+      "Rsr": "연구 캐비닛",
+      "RsrCabinetS": "소형 연구 캐비닛",
+      "RsrCartShelf": "연구 수레 선반",
+      "RsrMachineM01": "연구 기계",
+      "SecurityCamera01": "보안 카메라",
+      "Server": "서버",
+      "Shelf03": "선반",
+      "SolarPanel03": "태양광 패널",
+      "SosBooth_01": "SOS 부스",
+      "StreetSweeper": "도로 청소차",
+      "Suitcase": "여행 가방",
+      "SupportStructure": "지지 구조물",
+      "TVUnit": "TV 장",
+      "TapeDrive01": "테이프 드라이브 1",
+      "TapeDrive02": "테이프 드라이브 2",
+      "TapeDrive04": "테이프 드라이브 4",
+      "Transformer": "변압기",
+      "TrashCan_01": "쓰레기통",
+      "Trashbin": "쓰레기통",
+      "TruckScannerLeft01": "트럭 스캐너 (왼쪽)",
+      "TruckScannerRight01": "트럭 스캐너 (오른쪽)",
+      "UtilityTruck": "유틸리티 트럭",
+      "VentMachineLarge": "대형 환기 장치",
+      "VentMachineLarge01": "대형 환기 장치 2",
+      "Workbench_01": "작업대 1",
+      "Workbench_02": "작업대 2",
+      "Wreck03": "ARC 잔해",
+      "Wrh": "창고 가구",
+      "vent03": "환기구"
+    }
+  },
+  "whatsNew": {
+    "amplified": {
+      "step1": "총기 제작대를 레벨 4로 업그레이드",
+      "step2": "최대 레벨 무기를 증폭 모듈과 조합",
+      "step3": "부품으로 증폭 추가",
+      "researchSubtitle": "증폭 무기 연구",
+      "researchTask": "해금: {name}",
+      "researchThen": "그다음 연구하기",
+      "researchWhere": "연구 스테이션 레벨 {level}",
+      "stepResearch": "연구 과제(퀘스트)를 완료해 해금한 뒤, 레벨 4 연구 스테이션에서 연구하세요",
+      "pickerTitle": "무기 선택",
+      "pickerSentence": "무기는 필요한 증폭 모듈별로 묶여 있습니다.",
+      "amplification": "증폭",
+      "research": "연구",
+      "noResearch": "연구 필요 없음",
+      "repairLine": "증폭 무기는 Amplified Fragments로 수리합니다.",
+      "recycleLine": "모듈을 재활용하면 Amplified Fragments {n}개를 얻습니다.",
+      "roomsNote": "전초 기지 방 {n}개 필요",
+      "requires": "{name} 필요",
+      "cantCombine": "함께 사용할 수 없음: {names}",
+      "lockedRequires": "먼저 {name} 필요",
+      "lockedExcluded": "{name} 선택 시 불가",
+      "lockedUnavailable": "이 선택지에서는 사용할 수 없음",
+      "needsResearch": "연구 필요"
+    },
+    "title": "얼어붙은 산길의 새로운 소식",
+    "subtitle": "복귀한 레이더를 위한 2.0 업데이트 한눈에 보기",
+    "loading": "새로운 소식을 불러오는 중...",
+    "navLabel": "새로운 소식 탭",
+    "research": {
+      "build": "전초 기지에서 제작",
+      "level": "레벨 {n}",
+      "blueprintCrafting": "설계도 제작",
+      "designCrafting": "디자인 제작",
+      "amplifiedResearch": "증폭 무기 연구",
+      "plans": "계획 {n}개",
+      "rpAmount": "{n} RP",
+      "step1": "발견한 아이템을 조사하세요",
+      "step2": "연구 포인트를 얻으세요",
+      "step3": "포인트와 재료로 계획을 고르세요",
+      "step4": "전초 기지에서 계획을 익히세요",
+      "pointsTitle": "연구 포인트",
+      "pointsText": "이 아이템을 연구 스테이션에서 조사하면 연구 포인트를 얻습니다.",
+      "stationTitle": "연구 스테이션",
+      "stationText": "전초 기지에서 {bench} 건설 후 세 번 업그레이드하세요.",
+      "needsRoom": "전초 기지 방 {n}개 필요",
+      "needsRooms": "전초 기지 방 {n}개 필요",
+      "needsStationLevel": "스테이션 레벨 {n} 필요",
+      "listCraftable": "연구할 수 있는 설계도",
+      "listFindOnly": "찾아야만 하는 설계도",
+      "listDesigns": "연구할 수 있는 디자인",
+      "listFindOnlyDesigns": "찾아야만 하는 디자인",
+      "hoverTitle": "연구",
+      "browseTitle": "연구 가능한 항목",
+      "benchLevel": "{bench} 레벨 {n}"
+    },
+    "outpost": {
+      "unlocks": "해금",
+      "special": "특별 선택지",
+      "furnitureTitle": "가구",
+      "celeste": "셀레스테",
+      "expansion": "레벨 {from} → {to}",
+      "pickOne": "방 하나 선택",
+      "benchLevel": "{bench} 레벨 {level}",
+      "step1": "건설 재료 모으기",
+      "step2": "전초 기지를 확장하고 방을 선택",
+      "step3": "새 방마다 시설 업그레이드가 해금됩니다",
+      "slots": "방 슬롯",
+      "slotsText": "전초 기지에는 슬롯이 네 개 있습니다. 첫 번째 슬롯에는 기본 방이 들어가고, 확장할 때마다 다음 슬롯이 채워집니다.",
+      "slot": "슬롯 {n}",
+      "furnitureText": "침대, 의자, 램프 등으로 방을 꾸미세요.",
+      "furnitureCount": "가구 {count}개",
+      "furnitureHow": "가구 작동 방식",
+      "furnStep1": "디자인을 찾거나 연구하세요",
+      "furnStep2": "전초 기지에서 디자인을 익히세요",
+      "furnStep3": "판자, 판금 등으로 제작하세요",
+      "celesteText": "{name}: 이제 씨앗을 건설 재료와 교환합니다."
+    },
+    "changes": {
+      "recipes": "제작법",
+      "recipesHint": "이 제작법은 이전과 다른 재료가 필요합니다.",
+      "gadgets": "가젯",
+      "anvilCraft": "{name}: 제작 및 업그레이드",
+      "anvilRepair": "{name}: 수리",
+      "recycling": "재활용",
+      "recyclingHint": "다음 아이템은 재활용하면 얻는 재료가 달라집니다.",
+      "traders": "상인",
+      "tradersHint": "상인을 선택하면 판매를 시작하거나 중단한 품목과 바뀐 가격을 확인할 수 있습니다.",
+      "stash": "보관함",
+      "stashHint": "보관함 확장마다 비용과 새로 추가된 등급을 표시합니다.",
+      "craft": "제작",
+      "upgrade": "{from}에서 {to}(으)로 업그레이드",
+      "repair": "{tier} 수리",
+      "tradeNew": "신규",
+      "tradeGone": "더 이상 판매하지 않음",
+      "tradePrice": "새 가격",
+      "scrapValue": "분해 가치 {value}",
+      "expansion": "확장",
+      "slotCount": "슬롯 {count}개",
+      "newTier": "신규"
+    },
+    "new-items": {
+      "recycles": "재활용 시 다음으로",
+      "purpose": {
+        "outpost": {
+          "title": "전초 기지 확장",
+          "sentence": "새 방을 지어 전초 기지를 확장하세요."
+        },
+        "researchStation": {
+          "title": "연구 스테이션",
+          "sentence": "새 연구 스테이션을 짓고 업그레이드하세요."
+        },
+        "researchPoints": {
+          "title": "연구 포인트",
+          "sentence": "연구 스테이션에서 이것들을 조사해 연구 포인트를 얻으세요."
+        },
+        "gunsmith4": {
+          "title": "총기 제작대 레벨 4",
+          "sentence": "증폭 무기를 해금하는 새 총기 제작대 레벨에 필요합니다."
+        },
+        "amplified": {
+          "title": "증폭 무기",
+          "sentence": "최대 레벨 무기를 증폭 무기로 바꾸고 증폭을 추가하세요."
+        },
+        "researchBlueprints": {
+          "title": "설계도 연구",
+          "sentence": "연구 스테이션에서 설계도와 디자인을 연구할 때 사용합니다."
+        },
+        "furniture": {
+          "title": "가구",
+          "sentence": "전초 기지 방에 놓을 가구를 만드세요."
+        },
+        "crafting": {
+          "title": "제작",
+          "sentence": "무기, 가젯, 레이드 중 아이템의 제작법."
+        },
+        "stencils": {
+          "title": "무기 스텐실",
+          "sentence": "무기에 페인트 스텐실을 적용하세요."
+        },
+        "quests": {
+          "title": "퀘스트와 프로젝트",
+          "sentence": "퀘스트나 프로젝트에 필요합니다."
+        },
+        "trades": {
+          "title": "거래",
+          "sentence": "상인이 대금으로 받는 아이템입니다."
+        },
+        "noUse": {
+          "title": "아직 쓸 곳 없음",
+          "sentence": "아직 필요한 곳이 없습니다. 판매하거나 재활용하세요."
+        },
+        "unlocks": {
+          "title": "1회성 해금 아이템",
+          "sentence": "한 번 건네면 새 전초 기지 방, 연구 스테이션, 총기 제작대 레벨 4와 퀘스트가 해금됩니다."
+        },
+        "newGear": {
+          "title": "새 무기와 장비",
+          "sentence": "2.0에서 새로 추가되었으며, 각 항목은 해금하는 설계도와 함께 표시됩니다."
+        },
+        "fallenEmperor": {
+          "title": "쓰러진 엠퍼러",
+          "sentence": "펜돌라 고개의 쓰러진 엠퍼러 던전을 여는 데 필요한 모든 것."
+        },
+        "furnitureDecoration": {
+          "title": "가구와 장식",
+          "sentence": "이 재료로 가구를 만들고 장식 아이템을 전초 기지에 배치하세요."
+        },
+        "keys": {
+          "title": "펜돌라 고개 열쇠",
+          "sentence": "펜돌라 고개의 잠긴 방을 여세요."
+        }
+      },
+      "unlocks": {
+        "outpost": "전초 기지 레벨 {from} → {to}",
+        "questItems": "퀘스트 아이템"
+      },
+      "hover": {
+        "build": "{bench} 건설",
+        "unlocks": "해금",
+        "craft": "제작에 사용",
+        "research": "연구 대상",
+        "amplified": "증폭",
+        "furniture": "가구 ({n})",
+        "quests": "퀘스트와 프로젝트",
+        "traders": "상인",
+        "gives": "제공",
+        "fieldCraft": "필드 제작",
+        "repair": "수리",
+        "researchDetail": "레벨 {level} · {rp} RP",
+        "researchLevel": "레벨 {level}",
+        "tradeFor": "{item} 대금",
+        "upgrades": "증폭 업그레이드: {n}"
+      },
+      "more": {
+        "research": "연구 탭에서 연구에 대해 더 알아보기",
+        "amplified": "증폭 탭에서 증폭 무기에 대해 더 알아보기"
+      },
+      "rp": {
+        "calloutTitle": "연구 대상 아이템의 다른 용도",
+        "callout": "이 중 여러 아이템은 연구 스테이션을 짓고 업그레이드하는 데도 필요합니다. 연구하기 전에 충분히 남겨 두세요.",
+        "calloutUse": "{use}에 {item} {amount}개",
+        "scaleLabel": "연구 포인트 규모",
+        "scaleTitle": "연구 계획 비용 {min}–{max} RP",
+        "scaleMin": "가장 저렴한 연구 계획: {name}",
+        "scaleMedian": "일반적인 연구 계획",
+        "scaleMax": "가장 비싼 연구 계획: {name}"
+      },
+      "emperor": {
+        "title": "쓰러진 엠퍼러를 여는 방법",
+        "step1": "경로 변경 이벤트 중 손상된 엠퍼러 중계기를 작동시키고 엠퍼러 신호기를 가져가세요.",
+        "step2": "신호기를 땅에 놓고 엄폐하세요. 잔해가 쏟아집니다.",
+        "step3": "큰 부분을 파괴하세요. 엠퍼러 게이트웨이 도관 설계도가 들어 있을 수 있습니다(프리깃 이벤트 중에는 설계도가 바닥에 떨어져 있기도 합니다).",
+        "step4": "작업대에서 아크 도금 커플러, 아크 절연 커플러, 아크 전도성 커플러로 엠퍼러 게이트웨이 도관을 제작하세요.",
+        "step5": "도관을 사용해 펜돌라 고개의 쓰러진 엠퍼러 던전을 여세요.",
+        "note": "엠퍼러 신호기를 가진 채로 탈출하면 파손된 엠퍼러 신호기가 됩니다."
+      },
+      "detail": {
+        "level": "{bench} 레벨 {level}",
+        "slots": "슬롯 {n}개"
+      }
+    },
+    "tabs": {
+      "new-items": "새 아이템",
+      "old-items": "기존 아이템",
+      "outpost": "전초 기지",
+      "research": "연구",
+      "amplified": "증폭",
+      "crafting": "제작",
+      "changes": "변경 사항"
+    },
+    "intro": {
+      "new-items": {
+        "title": "새 아이템은 무엇에 쓰나요?",
+        "sentence": "모든 새 아이템을 용도별로 묶었습니다. 여러 용도가 있는 아이템은 여러 그룹에 나타납니다."
+      },
+      "old-items": {
+        "title": "기존 아이템에 새로운 용도가 생겼나요?",
+        "sentence": "이미 알고 있는 아이템 중 2.0에서 새로 필요해진 것들입니다."
+      },
+      "outpost": {
+        "title": "전초 기지는 어떻게 확장하나요?",
+        "sentence": "재료를 모으고 전초 기지를 확장한 뒤, 새 슬롯마다 방을 고르세요."
+      },
+      "research": {
+        "title": "연구 스테이션은 어떻게 작동하나요?",
+        "sentence": "아이템을 조사해 연구 포인트를 얻고, 이를 설계도와 디자인에 사용하세요."
+      },
+      "amplified": {
+        "title": "증폭 무기는 어떻게 작동하나요?",
+        "sentence": "총기 제작대를 업그레이드한 뒤, 최대 레벨 무기를 증폭 무기로 바꾸세요."
+      },
+      "crafting": {
+        "title": "새로 제작할 수 있는 것은 무엇인가요?",
+        "sentence": "새 레이드 중 제작, 무기 스텐실, 엠퍼러 게이트웨이 열쇠."
+      },
+      "changes": {
+        "title": "이미 알던 것들은 무엇이 바뀌었나요?",
+        "sentence": "1.45와 다른 제작법, 재활용, 상인 판매 품목, 보관함 크기."
+      }
+    },
+    "common": {
+      "howItWorks": "작동 방식",
+      "needs": "필요",
+      "alsoNeeds": "추가로 필요",
+      "where": "위치",
+      "before": "2.0 이전",
+      "now": "얼어붙은 산길",
+      "close": "닫기",
+      "more": "+{count}개 더"
+    },
+    "crafting": {
+      "new": "신규",
+      "field": {
+        "title": "필드 제작",
+        "sentence": "스킬 트리의 스킬로 레이드 한가운데에서 제작하세요.",
+        "newCrafts": "레이드 중 새 제작 항목",
+        "unchanged": "제작법 {n}개 변경 없음"
+      },
+      "stencils": {
+        "title": "무기 스텐실",
+        "sentence": "스텐실은 무기의 외형을 바꾸며, 제작에 스텐실 부품이 필요합니다.",
+        "partsHint": "모든 스텐실 적용에 필요",
+        "cost": "스텐실 부품 {count}개",
+        "worksWith": "호환"
+      },
+      "gateway": {
+        "title": "엠퍼러 게이트웨이 열쇠",
+        "sentence": "작업대에서 도관을 제작해 엠퍼러 게이트웨이를 여세요."
+      }
+    },
+    "old-items": {
+      "noLonger": "다음 용도에 더 이상 쓰이지 않음"
     }
   }
 }
