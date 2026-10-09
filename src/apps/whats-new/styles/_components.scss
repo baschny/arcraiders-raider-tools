@@ -423,3 +423,18 @@ $green: #4caf50;
 
   &__img { width: 32px; height: 32px; border-radius: $radius-circle; object-fit: cover; }
 }
+
+// ---- GlyphIcon ---------------------------------------------------------------------------
+// Tinted white game glyph: the mask url and size are set inline, the colour comes from currentColor.
+.wn-glyph {
+  display: inline-block;
+  flex: none;
+  vertical-align: middle;
+  background-color: currentColor;
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+}
