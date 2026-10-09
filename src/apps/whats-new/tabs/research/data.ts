@@ -1,6 +1,7 @@
 import type { WhatsNewPageData } from '../../hooks/useWhatsNewData';
 import { toItemRef, toUnlockedRef } from '../../hooks/useWhatsNewData';
 import type { ItemRef } from '../../components';
+import { RARITIES } from '../../../../shared/gamedata/types';
 
 export interface AmountRef {
   item: ItemRef;
@@ -167,4 +168,50 @@ export function buildResearchData(data: WhatsNewPageData): ResearchData {
     craftable,
     findOnly,
   };
+}
+
+/** One researchable entry (blueprint or design) as the browse lists show it. */
+export interface ResearchOffer {
+  offerId: string;
+  item: ItemRef;
+  rp: number;
+  level: number;
+  inputs: AmountRef[];
+}
+
+export interface PriceGroup<T extends ResearchOffer> {
+  rp: number;
+  offers: T[];
+}
+
+export interface LevelGroup<T extends ResearchOffer> {
+  level: number;
+  prices: PriceGroup<T>[];
+}
+
+/** Groups offers by station level, then by RP price, both ascending; empty groups do not exist. */
+export function groupByLevelAndPrice<T extends ResearchOffer>(offers: readonly T[]): LevelGroup<T>[] {
+  const levels = new Map<number, Map<number, T[]>>();
+  for (const o of offers) {
+    const prices = levels.get(o.level) ?? new Map<number, T[]>();
+    prices.set(o.rp, [...(prices.get(o.rp) ?? []), o]);
+    levels.set(o.level, prices);
+  }
+  return [...levels.entries()]
+    .sort(([a], [b]) => a - b)
+    .map(([level, prices]) => ({
+      level,
+      prices: [...prices.entries()]
+        .sort(([a], [b]) => a - b)
+        .map(([rp, list]) => ({ rp, offers: [...list].sort((a, b) => a.item.name.localeCompare(b.item.name)) })),
+    }));
+}
+
+/** Rarity Common to Legendary, then alphabetical by (localized) name; items without a rarity come last. */
+export function sortByRarityThenName(items: readonly ItemRef[]): ItemRef[] {
+  const rank = (i: ItemRef) => {
+    const idx = RARITIES.indexOf(i.rarity as (typeof RARITIES)[number]);
+    return idx < 0 ? RARITIES.length : idx;
+  };
+  return [...items].sort((a, b) => rank(a) - rank(b) || a.name.localeCompare(b.name));
 }

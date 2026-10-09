@@ -1,35 +1,25 @@
 import { useMemo, useState } from 'react';
 import { Lock } from 'lucide-react';
 import { useLocale } from '../../../shared/context/LocaleContext';
-import { HowItWorks, ItemGrid, ItemTile, NeedsCard, Panel, SegmentedControl, TabIntro } from '../components';
-import type { ItemRef, TileSpec } from '../components';
+import { formatAmount, GlyphIcon, HowItWorks, ItemGrid, ItemHoverCard, ItemTile, NeedsCard, Panel, SegmentedControl, TabIntro } from '../components';
+import type { HoverRow, ItemRef } from '../components';
 import type { WhatsNewPageData } from '../hooks/useWhatsNewData';
-import { buildResearchData, RESEARCH_BENCH, type AmountRef, type ResearchData } from './research/data';
+import {
+  buildResearchData,
+  groupByLevelAndPrice,
+  RESEARCH_BENCH,
+  sortByRarityThenName,
+  type ResearchOffer,
+} from './research/data';
 
 export interface ResearchTabProps {
   data: WhatsNewPageData;
 }
 
-type ListId = 'craftable' | 'findOnly' | 'designs';
+type ListId = 'craftable' | 'findOnly' | 'designs' | 'findOnlyDesigns';
 
-/** One tile of the browse grid; `offer` is present for researchable entries. */
-interface Entry {
-  key: string;
-  item: ItemRef;
-  isBlueprint: boolean;
-  offer?: { rp: number; level: number; inputs: AmountRef[] };
-}
-
-function entriesFor(rd: ResearchData, list: ListId): Entry[] {
-  if (list === 'craftable') {
-    return rd.craftable.map((c) => ({ key: c.offerId, item: c.unlocks, isBlueprint: true, offer: c }));
-  }
-  if (list === 'findOnly') return rd.findOnly.map((item) => ({ key: item.id, item, isBlueprint: true }));
-  return [
-    ...rd.designs.map((d) => ({ key: d.offerId, item: d.item, isBlueprint: false, offer: d })),
-    ...rd.findOnlyDesigns.map((item) => ({ key: `found-${item.id}`, item, isBlueprint: false })),
-  ];
-}
+const TILE = 80;
+const GRID_MIN = 96;
 
 export function ResearchTab({ data }: ResearchTabProps) {
   const { t, tm } = useLocale();
@@ -38,8 +28,23 @@ export function ResearchTab({ data }: ResearchTabProps) {
 
   const benchName = data.benches.text[RESEARCH_BENCH]?.name ?? data.benches.structure.benches[RESEARCH_BENCH]?.nameEn ?? '';
   const levelIcon = (level: number) => rd.levels.find((l) => l.level === level)?.icon;
-  const entries = useMemo(() => entriesFor(rd, list), [rd, list]);
-  const rpText = (rp: number) => tm('whatsNew.research.rpAmount', { n: rp });
+  const rpText = (rp: number) => tm('whatsNew.research.rpAmount', { n: rp.toLocaleString('en-US') });
+  const benchLevelText = (n: number) => tm('whatsNew.research.benchLevel', { bench: benchName, n });
+
+  // The researchable lists show the unlocked item (blueprints: in the blueprint frame; designs: the furniture).
+  const blueprintOffers = useMemo<ResearchOffer[]>(
+    () => rd.craftable.map((c) => ({ offerId: c.offerId, item: c.unlocks, rp: c.rp, level: c.level, inputs: c.inputs })),
+    [rd],
+  );
+  const groups = useMemo(
+    () => groupByLevelAndPrice(list === 'craftable' ? blueprintOffers : list === 'designs' ? rd.designs : []),
+    [list, blueprintOffers, rd],
+  );
+  const findOnly = useMemo(
+    () => sortByRarityThenName(list === 'findOnly' ? rd.findOnly : list === 'findOnlyDesigns' ? rd.findOnlyDesigns : []),
+    [list, rd],
+  );
+  const isBlueprint = list === 'craftable' || list === 'findOnly';
 
   const steps = [
     { item: rd.study[0]?.item, text: t('whatsNew.research.step1') },
@@ -48,13 +53,11 @@ export function ResearchTab({ data }: ResearchTabProps) {
     { image: levelIcon(1), text: t('whatsNew.research.step4') },
   ];
 
-  const needsOf = (offer: NonNullable<Entry['offer']>): TileSpec[] =>
-    offer.inputs.map((a) => ({ item: a.item, amount: a.item.id === rd.rp.id ? rpText(a.quantity ?? 0) : a.quantity }));
-
   const options = [
     { value: 'craftable' as const, label: t('whatsNew.research.listCraftable') },
     { value: 'findOnly' as const, label: t('whatsNew.research.listFindOnly') },
     { value: 'designs' as const, label: t('whatsNew.research.listDesigns') },
+    { value: 'findOnlyDesigns' as const, label: t('whatsNew.research.listFindOnlyDesigns') },
   ];
 
   const tracks = [
@@ -63,10 +66,20 @@ export function ResearchTab({ data }: ResearchTabProps) {
     { id: 'amplified', title: t('whatsNew.research.amplifiedResearch'), count: rd.amplifiedCount, item: rd.samples.amplified, isBlueprint: false, locked: true },
   ];
 
-  const sublabelOf = (entry: Entry): string | undefined => {
-    if (entry.offer) return tm('whatsNew.research.rpLevel', { rp: entry.offer.rp, n: entry.offer.level });
-    return list === 'designs' ? t('whatsNew.research.foundOnly') : undefined;
+  const hoverSections = (o: ResearchOffer) => {
+    const rows: HoverRow[] = [...o.inputs]
+      .sort((a, b) => Number(b.item.id === rd.rp.id) - Number(a.item.id === rd.rp.id))
+      .map((a, i) => ({
+        key: `${a.item.id}-${i}`,
+        item: a.item,
+        label: a.item.name,
+        amount: a.item.id === rd.rp.id ? rpText(a.quantity ?? o.rp) : formatAmount(a.quantity ?? 1),
+      }));
+    rows.push({ key: 'where', image: levelIcon(o.level), label: benchLevelText(o.level), detail: t('whatsNew.common.where') });
+    return [{ key: 'research', title: t('whatsNew.research.hoverTitle'), rows }];
   };
+
+  const levelItem = (level: number): ItemRef => ({ id: `${RESEARCH_BENCH}-${level}`, name: level === 1 ? t('whatsNew.research.build') : benchLevelText(level), icon: levelIcon(level) });
 
   return (
     <div className="wn-tab wn-tab-research">
@@ -74,39 +87,33 @@ export function ResearchTab({ data }: ResearchTabProps) {
       <HowItWorks steps={steps.filter((s) => s.item || s.image)} />
 
       <Panel title={t('whatsNew.research.pointsTitle')} description={t('whatsNew.research.pointsText')}>
-        <div className="wn-research__points">
+        <div className="wn-research__units">
           {rd.study.map((s) => (
-            <ItemTile key={s.item.id} item={s.item} size={112} amount={rpText(s.rp)} />
+            <div className="wn-research__unit" key={s.item.id}>
+              <ItemTile item={s.item} size={112} amount={rpText(s.rp)} />
+            </div>
           ))}
         </div>
       </Panel>
 
       <Panel title={t('whatsNew.research.stationTitle')} description={tm('whatsNew.research.stationText', { bench: benchName })}>
-        <div className="wn-research__levels">
+        <div className="wn-research__cards">
           {rd.levels.map((l) => (
-            <div className="wn-research__level" key={l.level}>
-              {l.icon && <img className="wn-research__level-img" src={l.icon} alt="" loading="lazy" />}
-              <h4 className="wn-research__level-name">
-                {l.level === 1 ? t('whatsNew.research.build') : tm('whatsNew.research.level', { n: l.level })}
-              </h4>
-              <div className="wn-research__level-cost">
-                {l.cost.map((a) => (
-                  <ItemTile key={a.item.id} item={a.item} size={48} amount={a.quantity} />
-                ))}
-              </div>
-              {l.rooms !== undefined && (
-                <span className="wn-research__level-rooms">
-                  {tm(l.rooms === 1 ? 'whatsNew.research.needsRoom' : 'whatsNew.research.needsRooms', { n: l.rooms })}
-                </span>
-              )}
-            </div>
+            <NeedsCard
+              key={l.level}
+              layout="compact"
+              result={{ item: levelItem(l.level) }}
+              needs={l.cost.map((a) => ({ item: a.item, amount: a.quantity }))}
+              note={l.rooms !== undefined ? tm(l.rooms === 1 ? 'whatsNew.research.needsRoom' : 'whatsNew.research.needsRooms', { n: l.rooms }) : undefined}
+            />
           ))}
         </div>
       </Panel>
 
       <div className="wn-research__tracks">
         {tracks.map((track) => (
-          <Panel key={track.id} title={track.title} className={`wn-research__track wn-research__track--${track.id}${track.locked ? ' wn-research__track--locked' : ''}`}>
+          <article key={track.id} className={`wn-research__track wn-research__track--${track.id}${track.locked ? ' wn-research__track--locked' : ''}`}>
+            <h4 className="wn-research__track-title">{track.title}</h4>
             {track.item && <ItemTile item={track.item} size={64} isBlueprint={track.isBlueprint} hideName />}
             <span className="wn-research__track-count">{tm('whatsNew.research.plans', { n: track.count })}</span>
             {track.locked && (
@@ -114,7 +121,7 @@ export function ResearchTab({ data }: ResearchTabProps) {
                 <Lock size={16} aria-hidden="true" /> {tm('whatsNew.research.needsStationLevel', { n: rd.amplifiedLevel })}
               </span>
             )}
-          </Panel>
+          </article>
         ))}
       </div>
 
@@ -123,32 +130,42 @@ export function ResearchTab({ data }: ResearchTabProps) {
           <h3 className="wn-research__browse-title">{t('whatsNew.research.browseTitle')}</h3>
           <SegmentedControl options={options} value={list} onChange={setList} ariaLabel={t('whatsNew.research.browseTitle')} />
         </div>
-        <ItemGrid
-          key={list}
-          minTile={112}
-          items={entries}
-          getKey={(e) => e.key}
-          getDetailLabel={(e) => e.item.name}
-          renderTile={(e, { selected, toggle }) => (
-            <ItemTile
-              item={e.item}
-              size={80}
-              isBlueprint={e.isBlueprint}
-              sublabel={sublabelOf(e)}
-              selected={selected}
-              onClick={e.offer ? toggle : undefined}
-            />
-          )}
-          renderDetail={(e) =>
-            e.offer ? (
-              <NeedsCard
-                result={{ item: e.item, isBlueprint: e.isBlueprint }}
-                where={{ image: levelIcon(e.offer.level), label: tm('whatsNew.research.benchLevel', { bench: benchName, n: e.offer.level }) }}
-                needs={needsOf(e.offer)}
-              />
-            ) : null
-          }
-        />
+
+        {groups.map((g) => (
+          <section className="wn-research__level-group" key={g.level}>
+            <h4 className="wn-research__level-heading">
+              <GlyphIcon name="research-station" size={28} />
+              {tm('whatsNew.research.level', { n: g.level })}
+            </h4>
+            {g.prices.map((p) => (
+              <div className="wn-research__price-group" key={p.rp}>
+                <h5 className="wn-research__price-heading">
+                  <GlyphIcon name="research-points" size={20} />
+                  {rpText(p.rp)}
+                </h5>
+                <ItemGrid minTile={GRID_MIN}>
+                  {p.offers.map((o) => (
+                    <ItemHoverCard key={o.offerId} item={o.item} sections={hoverSections(o)}>
+                      <ItemTile item={o.item} size={TILE} isBlueprint={isBlueprint} />
+                    </ItemHoverCard>
+                  ))}
+                </ItemGrid>
+              </div>
+            ))}
+          </section>
+        ))}
+
+        {findOnly.length > 0 && (
+          <section className="wn-research__level-group">
+            <div className="wn-research__price-group">
+              <ItemGrid minTile={GRID_MIN}>
+                {findOnly.map((item) => (
+                  <ItemTile key={item.id} item={item} size={TILE} isBlueprint={isBlueprint} />
+                ))}
+              </ItemGrid>
+            </div>
+          </section>
+        )}
       </section>
     </div>
   );

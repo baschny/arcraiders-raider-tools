@@ -1353,7 +1353,6 @@
       "amplifiedResearch": "Amplified research",
       "plans": "{n} plans",
       "rpAmount": "{n} RP",
-      "rpLevel": "{rp} RP · Level {n}",
       "step1": "Study items you find",
       "step2": "Get Research Points",
       "step3": "Spend points and materials on plans",
@@ -1367,9 +1366,10 @@
       "needsStationLevel": "Needs station level {n}",
       "listCraftable": "Blueprints you can research",
       "listFindOnly": "Blueprints you must find",
-      "listDesigns": "Designs",
+      "listDesigns": "Designs you can research",
+      "listFindOnlyDesigns": "Designs you can only find",
+      "hoverTitle": "Research",
       "browseTitle": "What you can research",
-      "foundOnly": "Found only",
       "benchLevel": "{bench} level {n}"
     },
     "outpost": {
