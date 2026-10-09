@@ -5,6 +5,7 @@ import { ItemTile } from '../../components';
 import type { ItemRef } from '../../components';
 import { humanize } from './derive';
 import { AmplificationGraph, HexGlyph } from './AmplificationGraph';
+import { ResearchHover } from './ResearchHoverCard';
 import { canSelect, excludesOf, requiresOf, toggle } from './picker';
 
 
@@ -128,7 +129,11 @@ export function AmplificationPicker({ weapon, text, ref_, root }: AmplificationP
                 </div>
                 <div className="wn-pick__needs">
                   <span className="wn-pick__label">{t('whatsNew.amplified.research')}</span>
-                  {researchRef ? <ItemTile item={researchRef} size={48} /> : <span className="wn-pick__none">{t('whatsNew.amplified.noResearch')}</span>}
+                  {researchRef && amp.researchItemId ? (
+                    <ResearchHover researchItemId={amp.researchItemId}>
+                      <ItemTile item={researchRef} size={48} />
+                    </ResearchHover>
+                  ) : <span className="wn-pick__none">{t('whatsNew.amplified.noResearch')}</span>}
                 </div>
               </div>
             </div>

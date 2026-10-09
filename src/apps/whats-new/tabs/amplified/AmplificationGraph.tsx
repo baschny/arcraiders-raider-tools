@@ -4,6 +4,7 @@ import type { AmplifiedWeapon } from '../../../../shared/gamedata/types';
 import { GlyphIcon, ItemTile } from '../../components';
 import type { ItemRef } from '../../components';
 import { layoutGraph, type GraphEdge } from './graph';
+import { ResearchHover } from './ResearchHoverCard';
 import { canSelect, type CanSelect } from './picker';
 
 export interface AmplificationGraphProps {
@@ -106,9 +107,11 @@ export function AmplificationGraph({ weapon, selected, root, nameOf, onToggle, h
                 <HexGlyph icon={amp.icon} />
               </button>
               {amp.researchItemId && (
-                <span className="wn-hex__lock" title={t('whatsNew.amplified.needsResearch')}>
-                  <GlyphIcon name="research" size={12} />
-                </span>
+                <ResearchHover researchItemId={amp.researchItemId}>
+                  <span className="wn-hex__lock" aria-label={t('whatsNew.amplified.needsResearch')}>
+                    <GlyphIcon name="research" size={12} />
+                  </span>
+                </ResearchHover>
               )}
             </div>
           );

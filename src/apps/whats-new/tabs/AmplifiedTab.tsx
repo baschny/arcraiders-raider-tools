@@ -7,6 +7,7 @@ import { fragmentInfo, groupByModule } from './amplified/model';
 import type { WeaponRow } from './amplified/derive';
 import { AmplificationPicker } from './amplified/AmplificationPicker';
 import { HexGlyph } from './amplified/AmplificationGraph';
+import { buildResearchHover, ResearchHoverContext } from './amplified/researchHoverData';
 import type { AmplifiedWeapon, TextTree } from '../../../shared/gamedata/types';
 
 export interface AmplifiedTabProps {
@@ -36,7 +37,8 @@ function WeaponDetail({ weapon, ref_, structure, text }: { weapon: WeaponRow; re
 }
 
 export function AmplifiedTab({ data }: AmplifiedTabProps) {
-  const { t } = useLocale();
+  const { t, tm } = useLocale();
+  const researchHover = useMemo(() => (id: string) => buildResearchHover(data, tm, id), [data, tm]);
   const { catalog } = data;
   const ref = (slug: string) => toItemRef(catalog, slug);
 
@@ -71,6 +73,7 @@ export function AmplifiedTab({ data }: AmplifiedTabProps) {
   ];
 
   return (
+    <ResearchHoverContext.Provider value={researchHover}>
     <div className="wn-tab wn-tab-amplified">
       <TabIntro title={t('whatsNew.intro.amplified.title')} sentence={t('whatsNew.intro.amplified.sentence')} />
       <HowItWorks steps={steps} />
@@ -131,5 +134,6 @@ export function AmplifiedTab({ data }: AmplifiedTabProps) {
         </div>
       )}
     </div>
+    </ResearchHoverContext.Provider>
   );
 }
