@@ -128,7 +128,7 @@ describe('whats-new components', () => {
       />,
     );
     expect(out).toContain('Before 2.0');
-    expect(out).toContain('>Now<');
+    expect(out).toContain('Frozen Trail');
     expect(out).toContain('wn-compare__row--removed');
     expect(out).toContain('wn-compare__cost--added');
     expect(out).toContain('wn-compare__cost--removed');
