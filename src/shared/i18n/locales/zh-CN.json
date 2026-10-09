@@ -77,7 +77,9 @@
       "craftCalculator": "合成计算器",
       "quests": "任务追踪器",
       "lootHelper": "战利品助手",
-      "quartermaster": "军需官"
+      "quartermaster": "军需官",
+      "maps": "地图",
+      "whatsNew": "更新内容"
     }
   },
   "dashboard": {
@@ -90,12 +92,17 @@
       "affectedAppLink": "打开受影响的工具",
       "allTools": "所有工具"
     },
+    "whatsNew": {
+      "title": "《霜痕小径》更新内容",
+      "description": "从 1.x 版本回归？了解新物品的用途、研究与增强武器的运作方式，以及配方、回收和商人的变化。"
+    },
     "tools": {
       "schedule": "以更清晰的视图展示 ARC Raiders 地图事件时间表，方便你规划对局。",
       "craftCalculator": "计算应制作多少物品，最大化利用你的仓库空间。",
       "quests": "通过交互式任务树追踪你的任务进度。",
       "lootHelper": "可视化制作链，帮助你在对局中判断该拾取什么。",
-      "quartermaster": "在一个页面中规划仓库、配装和藏身处需求。"
+      "quartermaster": "在一个页面中规划仓库、配装和藏身处需求。",
+      "maps": "查找每张地图及每种地图条件下可搜刮物品的位置，以及 ARC 敌人的刷新位置。"
     }
   },
   "pages": {
@@ -767,13 +774,13 @@
         "qtyToRecycle": "Qty to Recycle",
         "yields": "Yields",
         "why": "为什么",
-        "craftTimes": "Craft Times",
-        "totalOutput": "Total Output",
         "inputsNeeded": "Inputs Needed",
         "upgradeFrom": "升级自",
         "upgradeTo": "升级为",
         "qtyToUpgrade": "Qty to Upgrade",
-        "durability": "Durability"
+        "durability": "Durability",
+        "craftTimes": "Craft Times",
+        "totalOutput": "Total Output"
       },
       "blueprintUnlockCount": "{unlocked}/{total} unlocked"
     },
@@ -786,16 +793,16 @@
       "foundIn": "发现于：",
       "neededForLists": "Needed for Lists",
       "neededForQuests": "Needed for Quests",
-      "neededForCrafting": "Needed for Crafting (Direct / Indirect)",
       "neededForProject": "Needed for {project}",
-      "couldBeUsedFor": "Could be used for",
       "recycle": "回收",
       "salvage": "拆解",
       "craftingRecipe": "Crafting Recipe",
       "craftingRecipeIncludingUpgrades": "Crafting Recipe (including Upgrades)",
       "recyclesInto": "回收为",
       "salvagesInto": "拆解为",
-      "neededForRepair": "Needed for Repair"
+      "neededForRepair": "Needed for Repair",
+      "neededForCrafting": "Needed for Crafting (Direct / Indirect)",
+      "couldBeUsedFor": "Could be used for"
     },
     "itemIcon": {
       "uncraftable": "Cannot be crafted — requirements not met"
@@ -891,6 +898,655 @@
       "loadout": "Loadout",
       "gameDataLastSync": "Game Data Last Sync",
       "never": "Never"
+    }
+  },
+  "maps": {
+    "header": {
+      "gameData": "游戏数据 {version} · {date}",
+      "gameDataTitle": "Steam 清单 {manifest}，地图数据构建于 {date}"
+    },
+    "loader": {
+      "retry": "重试",
+      "reloadPage": "重新加载页面",
+      "error": {
+        "network": "无法加载地图数据。请检查网络连接后重试。",
+        "missing": "地图数据暂时不可用。请稍后再试。",
+        "missingMap": "地图 {map} 的数据缺失。请稍后再试。",
+        "schema": "地图数据已更新，需要此页面的新版本。请重新加载页面。"
+      }
+    },
+    "conditions": {
+      "normal": "普通"
+    },
+    "modes": {
+      "loot": "战利品",
+      "label": "模式"
+    },
+    "sidebar": {
+      "hide": "隐藏侧边栏",
+      "showFilters": "显示筛选",
+      "hideFilters": "隐藏筛选"
+    },
+    "mapBar": {
+      "scoreTitle": "{map}：物品评分 {score}（普通条件）",
+      "label": "地图"
+    },
+    "conditionBar": {
+      "normal": "普通地图",
+      "normalAlso": "普通地图，静态战利品与刷新内容与以下相同：{conditions}",
+      "major": "重大条件",
+      "majorLive": "重大条件（当前时间表中）",
+      "minor": "次要条件",
+      "minorLive": "次要条件（当前时间表中）",
+      "sameAsNormal": "+ {count} 个与{normal}相同",
+      "label": "地图条件"
+    },
+    "help": {
+      "label": "帮助"
+    },
+    "search": {
+      "placeholder": "查找物品…",
+      "clear": "清除"
+    },
+    "loot": {
+      "searchPlaceholder": "搜索物品，例如 发动机",
+      "goalsTitle": "你的战利品助手目标",
+      "tablesTitle": "此物品在每个静态战利品表中所占的比例",
+      "noTables": "不在任何静态战利品表中",
+      "notInLoot": "此物品不在任何静态战利品表中。",
+      "onlyHarvested": "仅可从{containers}中获取，且只在以下条件下存在：{conditions}。",
+      "conditionWhy": "{condition}（{reason}）"
+    },
+    "conditionReasons": {
+      "onHiatus": "暂停中",
+      "neverReleased": "从未发布",
+      "tutorial": "教程",
+      "practiceRange": "练习场",
+      "notInSchedule": "不在时间表中"
+    },
+    "item": {
+      "tiers": {
+        "low": "低",
+        "mid": "中",
+        "high": "高"
+      }
+    },
+    "best": {
+      "title": "最佳区域 · {condition}",
+      "helpLabel": "关于评分",
+      "help": "评分指的是可能产出该物品的战利品价值：每个战利品处理器的奖池，按其表、条目和物品分配，再分摊到各个刷新点。它用于比较地点，并非掉落概率。与普通条件拥有相同静态战利品的条件已合并到普通中。",
+      "spotsOne": "{hits}/{count} 个点",
+      "spots": "{hits}/{count} 个点",
+      "perSpot": "每点 {score}"
+    },
+    "filters": {
+      "title": "刷新点",
+      "helpLabel": "关于筛选",
+      "help": "箭头用于展开分组；该行其余部分用于在地图上显示或隐藏此分组。选中物品且未勾选任何项时，将显示所有可容纳该物品的刷新点。容器仅在类别与物品匹配时计入（机械物品对应机械容器；植物只产出自身物品）。刷新的容器（弹药箱、储备点、残骸）由服务器端表决定内容，以“?”表示。",
+      "auto": "自动",
+      "autoTitle": "正在显示所有可容纳该物品的刷新点",
+      "showAll": "全部显示",
+      "hideAll": "全部隐藏",
+      "expand": "展开",
+      "expandGroup": "展开{group}",
+      "collapseGroup": "收起{group}",
+      "count": {
+        "spotsOne": "{count} 个点",
+        "spots": "{count} 个点",
+        "hitsOne": "{count} 个点中有 {hits} 个可容纳该物品",
+        "hits": "{count} 个点中有 {hits} 个可容纳该物品",
+        "noHitsOne": "该点无法容纳该物品",
+        "noHits": "{count} 个点均无法容纳该物品",
+        "serverSide": "内容由服务器端决定，不在游戏文件中",
+        "expectedOne": "每局预计约 {expected} 个，可能的点共 {count} 个",
+        "expected": "每局预计约 {expected} 个，可能的点共 {count} 个"
+      }
+    },
+    "arc": {
+      "title": "ARC 敌人 · {condition}",
+      "helpLabel": "关于 ARC 刷怪器",
+      "help": "在此条件下，每种敌人可能由多少个刷怪器产出（预期数量）。选择敌人后，仅显示其刷怪器与巡逻路线（可同时选择多个，各以其颜色显示）。实心标记表示沿路线巡逻。将鼠标悬停在刷怪器上可查看其组别与重生计时；点击可固定其刷新组。",
+      "showAll": "显示所有敌人",
+      "expectedOne": "每局预计约 {expected} 个，共 {count} 个刷怪器",
+      "expected": "每局预计约 {expected} 个，共 {count} 个刷怪器",
+      "empty": "此条件下没有 ARC 刷怪器。"
+    },
+    "canvas": {
+      "label": "{map}地图。此处绘制的刷新点、区域和敌人均列在侧边栏中。"
+    },
+    "zoom": {
+      "in": "放大",
+      "out": "缩小",
+      "fit": "适应地图（双击）"
+    },
+    "overlays": {
+      "title": "图层",
+      "heat": "热力图",
+      "height": "高度标记",
+      "heightTitle": "上方的点：比估计地面高出 3.5 米以上（上层、屋顶）；下方的点：比地面低 3.5 米以上（地下室、隧道）。根据高度图估算；星辰山不适用。",
+      "pois": "区域与名称",
+      "zones": "战利品区域",
+      "zonesTitle": "游戏内战利品区域：红色为丰富，黄色为密集，灰色为稀疏。",
+      "bounds": "可游玩区域"
+    },
+    "layers": {
+      "title": "地图图层：进入这些区域时，游戏内地图会切换",
+      "surface": "地面",
+      "underground": "地下",
+      "upperFloor": "上层",
+      "lowerFloor": "下层",
+      "label": "地图图层"
+    },
+    "legend": {
+      "score": "每个点的物品评分",
+      "low": "低",
+      "high": "高"
+    },
+    "zones": {
+      "abundant": "丰富战利品",
+      "dense": "密集战利品",
+      "sparse": "稀疏战利品"
+    },
+    "tooltip": {
+      "score": "评分 {score}",
+      "serverTablesOne": "+ {count} 个服务器端战利品表（内容不在游戏文件中）",
+      "serverTables": "+ {count} 个服务器端战利品表（内容不在游戏文件中）",
+      "oneOf": "其中之一：{kinds}",
+      "inArea": "位于{area}",
+      "spawnChance": "刷新概率约 {chance}",
+      "notScored": "内容由服务器端决定（不计分）",
+      "group": "组",
+      "groupSpotsOne": "{group}：从 {count} 个点中取 {min} 个（已圈出）",
+      "groupSpots": "{group}：从 {count} 个点中取 {min} 个（已圈出）",
+      "groupSpawnersOne": "{group}：从 {count} 个刷怪器中取 {min} 个（已圈出）",
+      "groupSpawners": "{group}：从 {count} 个刷怪器中取 {min} 个（已圈出）",
+      "tapPin": "点击以固定该组",
+      "tapUnpin": "点击以取消固定该组",
+      "clickPin": "点击以固定该组",
+      "clickUnpin": "点击以取消固定该组",
+      "arcSpawner": "ARC 刷怪器",
+      "enemySpawner": "敌人刷怪器",
+      "patrols": "沿路线巡逻",
+      "tableNotExported": "表 {table}（未导出）",
+      "tier": "{tier} 级",
+      "area": "区域",
+      "height": "≈ 距地面 {height} 米",
+      "covered": "有遮蔽",
+      "openSky": "露天",
+      "noKey": "无需钥匙（通过其他方式开启）"
+    },
+    "timing": {
+      "noRespawn": "被摧毁后不会重生",
+      "respawn": "被摧毁后 {time} 重生",
+      "randomDelay": "+ {min}–{max} 秒随机延迟",
+      "noDynamic": "无动态重生",
+      "airDrop": "整组被摧毁后 {time} 空投",
+      "sneak": "脱离视线后 {time} 重生",
+      "sneakIndoors": "脱离视线后 {time} 重生（室内）",
+      "activates": "{distance} 米内激活"
+    },
+    "units": {
+      "seconds": "{n} 秒",
+      "minutes": "{n} 分钟",
+      "never": "从不"
+    },
+    "categories": {
+      "Exits": "撤离与刷新",
+      "Containers": "容器",
+      "RaiderSpawns": "奇袭者容器",
+      "ArcSpawns": "ARC 残骸与废料",
+      "Puzzles": "谜题",
+      "Features": "地图要素"
+    },
+    "kinds": {
+      "ExtractMetro": "地铁撤离",
+      "ExtractLift": "升降机撤离",
+      "ExtractFan": "风扇撤离",
+      "ExtractGondola": "弹道吊舱撤离",
+      "Hatch": "奇袭者暗门（钥匙）",
+      "StationEntrance": "地铁站入口",
+      "PlayerStart": "玩家出生点",
+      "Generic": "通用",
+      "OtherFixed": "其他",
+      "WaterTank": "水箱",
+      "Ground": "地面战利品",
+      "Apricot": "杏子",
+      "Lemon": "柠檬",
+      "Olive": "橄榄",
+      "NatureFruitBasket": "水果篮",
+      "Mushroom": "蘑菇",
+      "Agave": "龙舌兰",
+      "Moss": "苔藓",
+      "GreatMullein": "大毛蕊花",
+      "Candleberries": "烛莓",
+      "Resin": "树脂（树木）",
+      "BirdNest": "鸟巢",
+      "VolcanicRock": "火山岩",
+      "Roots": "植物的根",
+      "Fertilizer": "肥料",
+      "SeedVault": "种子库控制台",
+      "Seedbox": "种子箱",
+      "CacheStandard": "奇袭者箱",
+      "CacheSelfDestruct": "奇袭者箱（自毁）",
+      "CacheFrozen": "奇袭者箱（冰冻）",
+      "NomadCache": "游民储备箱",
+      "CacheFirstWave": "奇袭者箱（第一波）",
+      "AmmoBox": "弹药箱",
+      "AmmoBoxHigh": "弹药箱（高级）",
+      "WeaponCase": "武器箱",
+      "WeaponCaseHigh": "武器箱（高级）",
+      "MedicalBag": "医疗包",
+      "GrenadeTube": "手雷管",
+      "Backpack": "奇袭者背包",
+      "WeaponsRack": "武器架",
+      "FruitBasket": "水果篮（收获季节）",
+      "FruitBasketWinter": "水果篮（冬季）",
+      "WaspHusk": "“黄蜂”残骸",
+      "WaspHuskStunning": "“黄蜂”残骸（眩晕）",
+      "RocketeerHusk": "“火箭手”残骸",
+      "RocketeerHuskStunning": "“火箭手”残骸（眩晕）",
+      "DeforesterHusk": "“伐木手”残骸",
+      "Probes": "坠毁的ARC探测器",
+      "Couriers": "ARC运输机",
+      "PowerSocket": "电池 / 燃料电池插槽",
+      "FuelCell": "燃料电池 / 电池",
+      "PuzzleButton": "按钮 / 开关 / 控制台",
+      "PuzzleRelay": "谜题中继器",
+      "CardReader": "读卡器",
+      "TubeTerminal": "彩色终端 / 暗道站",
+      "PuzzleDoor": "谜题门 / 闸门",
+      "HotelKey": "酒店房卡",
+      "FieldDepot": "前线仓库",
+      "FieldCrates": "箱子",
+      "SupplyStation": "补给呼叫站",
+      "PowerCores": "收割者动力核心",
+      "MetalDetector": "登山者探测器",
+      "Snowpile": "雪堆（寒潮）",
+      "Zipline": "滑索（可激活）",
+      "Lift": "升降梯",
+      "Bridge": "可移动过道桥",
+      "BridgeSwitch": "过道桥 / 断路器开关",
+      "LockedRoom": "上锁房间（钥匙）",
+      "LockedDoor": "上锁的门（钥匙）",
+      "Barricaded": "路障门（需破门）",
+      "Door": "门 / 窗",
+      "Piano": "钢琴"
+    },
+    "containerTypes": {
+      "Android": "仿生人",
+      "AntennaSet": "天线组",
+      "Bus": "公交车",
+      "ButtonPanel": "按钮面板",
+      "CabinetDoor": "橱柜",
+      "Car01": "汽车 1",
+      "Car02": "汽车 2",
+      "Car03": "汽车 3",
+      "CashRegister": "收银机",
+      "Centerbench": "中央长椅",
+      "Closet": "衣柜",
+      "Closet02": "衣柜 2",
+      "Cmr": "壁挂机组",
+      "CoffeeMachine01": "咖啡机",
+      "CompressorTrailer": "压缩机拖车",
+      "Computer01": "电脑 1",
+      "Computer02": "电脑 2",
+      "Computer03": "电脑 3",
+      "Coms": "通讯控制台",
+      "Console_03": "控制台",
+      "Crate": "箱子",
+      "CrateCart": "箱子推车",
+      "CupboardCafe": "咖啡厅橱柜",
+      "CupboardKitchen": "厨房橱柜",
+      "Drawer": "抽屉",
+      "DrawerMedical": "药品抽屉",
+      "Dumpster": "大型垃圾箱",
+      "FloodLight": "泛光灯",
+      "Freezer": "冷冻柜",
+      "Fridge": "冰箱",
+      "Fusebox": "保险丝盒",
+      "Fusebox2": "保险丝盒 2",
+      "GeneratorM02": "发电机",
+      "Gvt": "政府垃圾桶",
+      "GvtDesk": "政府办公桌",
+      "HighwayAntenna": "高速公路天线",
+      "InformationTerminal": "信息终端",
+      "KitchenBench": "厨房台面",
+      "Locker01": "储物柜",
+      "LockerMedical01": "医疗储物柜",
+      "Lockers": "储物柜组",
+      "MuseumCrate_01": "博物馆箱 1",
+      "MuseumCrate_02": "博物馆箱 2",
+      "Parasitic": "寄生增生物",
+      "PressureMonitor": "压力监测仪",
+      "Refrigerator_01": "冷藏柜",
+      "RoadBarrier03": "路障",
+      "Rocketparts_01": "火箭零件 1",
+      "Rocketparts_02": "火箭零件 2",
+      "Rover": "探测车",
+      "Rsr": "研究柜",
+      "RsrCabinetS": "小型研究柜",
+      "RsrCartShelf": "研究推车货架",
+      "RsrMachineM01": "研究机器",
+      "SecurityCamera01": "监控摄像头",
+      "Server": "服务器",
+      "Shelf03": "货架",
+      "SolarPanel03": "太阳能板",
+      "SosBooth_01": "求救亭",
+      "StreetSweeper": "街道清扫车",
+      "Suitcase": "行李箱",
+      "SupportStructure": "支撑结构",
+      "TVUnit": "电视柜",
+      "TapeDrive01": "磁带驱动器 1",
+      "TapeDrive02": "磁带驱动器 2",
+      "TapeDrive04": "磁带驱动器 4",
+      "Transformer": "变压器",
+      "TrashCan_01": "垃圾桶",
+      "Trashbin": "垃圾箱",
+      "TruckScannerLeft01": "货车扫描仪（左）",
+      "TruckScannerRight01": "货车扫描仪（右）",
+      "UtilityTruck": "工程车",
+      "VentMachineLarge": "大型通风机",
+      "VentMachineLarge01": "大型通风机 2",
+      "Workbench_01": "工作台 1",
+      "Workbench_02": "工作台 2",
+      "Wreck03": "ARC 残骸",
+      "Wrh": "仓库家具",
+      "vent03": "通风口"
+    }
+  },
+  "whatsNew": {
+    "amplified": {
+      "step1": "将武器工作台升级至 4 级",
+      "step2": "将满级武器与增强模块组合",
+      "step3": "用零件添加增强效果",
+      "researchSubtitle": "增强武器研究",
+      "researchTask": "解锁：{name}",
+      "researchThen": "然后进行研究",
+      "researchWhere": "研究站 {level} 级",
+      "stepResearch": "完成研究任务（一项任务）以解锁它，然后在 4 级研究站进行研究",
+      "pickerTitle": "选择一把武器",
+      "pickerSentence": "武器按所需的增强模块分组。",
+      "amplification": "增强",
+      "research": "研究",
+      "noResearch": "无需研究",
+      "repairLine": "增强武器使用增强碎片进行修理。",
+      "recycleLine": "回收一个模块可获得 {n} 个增强碎片。",
+      "roomsNote": "需要 {n} 个哨站房间",
+      "requires": "需要 {name}",
+      "cantCombine": "无法与 {names} 同时使用",
+      "lockedRequires": "需先拥有 {name}",
+      "lockedExcluded": "不能与 {name} 同时选择",
+      "lockedUnavailable": "当前选择下不可用",
+      "needsResearch": "需要研究"
+    },
+    "title": "《霜痕小径》更新内容",
+    "subtitle": "为回归奇袭者准备的 2.0 更新速览",
+    "loading": "正在加载更新内容...",
+    "navLabel": "更新内容标签页",
+    "research": {
+      "build": "在哨站建造",
+      "level": "{n} 级",
+      "blueprintCrafting": "蓝图制作",
+      "designCrafting": "设计图制作",
+      "amplifiedResearch": "增强武器研究",
+      "plans": "{n} 个方案",
+      "rpAmount": "{n} RP",
+      "step1": "研究你找到的物品",
+      "step2": "获取研究点数",
+      "step3": "用点数和材料兑换方案",
+      "step4": "在哨站学习方案",
+      "pointsTitle": "研究点数",
+      "pointsText": "在研究站研究这些物品即可获得研究点数。",
+      "stationTitle": "研究站",
+      "stationText": "在哨站建造{bench}，然后将其升级三次。",
+      "needsRoom": "需要 {n} 个哨站房间",
+      "needsRooms": "需要 {n} 个哨站房间",
+      "needsStationLevel": "需要研究站 {n} 级",
+      "listCraftable": "可研究的蓝图",
+      "listFindOnly": "只能找到的蓝图",
+      "listDesigns": "可研究的设计图",
+      "listFindOnlyDesigns": "只能找到的设计图",
+      "hoverTitle": "研究",
+      "browseTitle": "可研究的内容",
+      "benchLevel": "{bench} {n} 级"
+    },
+    "outpost": {
+      "unlocks": "解锁内容",
+      "special": "特殊选项",
+      "furnitureTitle": "家具",
+      "celeste": "塞莱斯特",
+      "expansion": "{from} 级升至 {to} 级",
+      "pickOne": "选择一个房间",
+      "benchLevel": "{bench} {level} 级",
+      "step1": "收集建筑材料",
+      "step2": "扩建哨站并选择一个房间",
+      "step3": "每个新房间都会解锁研究站的升级",
+      "slots": "房间栏位",
+      "slotsText": "你的哨站有四个栏位。第一个放基础房间，之后每次扩建都会填入下一个栏位。",
+      "slot": "栏位 {n}",
+      "furnitureText": "用床、椅子、灯具等家具布置你的房间。",
+      "furnitureCount": "{count} 件家具",
+      "furnitureHow": "家具的运作方式",
+      "furnStep1": "找到或研究一份设计图",
+      "furnStep2": "在哨站学习它",
+      "furnStep3": "用木板、金属板等材料制作",
+      "celesteText": "{name}现在会用种子交换建筑材料。"
+    },
+    "changes": {
+      "recipes": "配方",
+      "recipesHint": "这些配方所需的材料与以前不同。",
+      "gadgets": "小道具",
+      "anvilCraft": "{name}：制作与升级",
+      "anvilRepair": "{name}：修理",
+      "recycling": "回收",
+      "recyclingHint": "回收这些物品时获得的材料有所不同。",
+      "traders": "商人",
+      "tradersHint": "选择一位商人，查看其新增或停售的商品以及价格变化。",
+      "stash": "储备箱",
+      "stashHint": "每次储备箱扩容的费用，新档位已标注。",
+      "craft": "制作",
+      "upgrade": "将 {from} 升级至 {to}",
+      "repair": "修理 {tier}",
+      "tradeNew": "新增",
+      "tradeGone": "已不再出售",
+      "tradePrice": "新价格",
+      "scrapValue": "{value} 废料价值",
+      "expansion": "扩建",
+      "slotCount": "{count} 个栏位",
+      "newTier": "新"
+    },
+    "new-items": {
+      "recycles": "可回收为",
+      "purpose": {
+        "outpost": {
+          "title": "扩建哨站",
+          "sentence": "建造新房间以扩建你的哨站。"
+        },
+        "researchStation": {
+          "title": "研究站",
+          "sentence": "建造并升级新的研究站。"
+        },
+        "researchPoints": {
+          "title": "研究点数",
+          "sentence": "在研究站研究这些物品即可获得研究点数。"
+        },
+        "gunsmith4": {
+          "title": "武器工作台 4 级",
+          "sentence": "新的武器工作台等级所需，用于解锁增强武器。"
+        },
+        "amplified": {
+          "title": "增强武器",
+          "sentence": "将满级武器转化为增强武器，并添加增强效果。"
+        },
+        "researchBlueprints": {
+          "title": "研究蓝图",
+          "sentence": "在研究站消耗，用于研究蓝图和设计图。"
+        },
+        "furniture": {
+          "title": "家具",
+          "sentence": "为哨站房间制作家具。"
+        },
+        "crafting": {
+          "title": "制作",
+          "sentence": "武器、小道具和局内物品的制作配方。"
+        },
+        "stencils": {
+          "title": "武器贴花",
+          "sentence": "为武器套用涂装贴花。"
+        },
+        "quests": {
+          "title": "任务与计划",
+          "sentence": "完成任务或计划所需。"
+        },
+        "trades": {
+          "title": "交易",
+          "sentence": "商人接受这些物品作为支付。"
+        },
+        "noUse": {
+          "title": "暂无用途",
+          "sentence": "目前没有任何东西需要它们：请出售或回收。"
+        },
+        "unlocks": {
+          "title": "一次性解锁物",
+          "sentence": "一次性交付即可解锁新的哨站房间、研究站、4 级武器工作台和任务。"
+        },
+        "newGear": {
+          "title": "新武器与装备",
+          "sentence": "2.0 新增，每项后附有解锁它的蓝图。"
+        },
+        "fallenEmperor": {
+          "title": "倒下的“帝王”",
+          "sentence": "开启彭多拉山口上“倒下的‘帝王’”地下城所需的全部物品。"
+        },
+        "furnitureDecoration": {
+          "title": "家具与装饰",
+          "sentence": "用这些材料制作家具，并将装饰物放置在你的哨站中。"
+        },
+        "keys": {
+          "title": "彭多拉山口钥匙",
+          "sentence": "用于打开彭多拉山口上的上锁房间。"
+        }
+      },
+      "unlocks": {
+        "outpost": "哨站 {from} 级升至 {to} 级",
+        "questItems": "任务物品"
+      },
+      "hover": {
+        "build": "{bench} 建造",
+        "unlocks": "解锁",
+        "craft": "用于制作",
+        "research": "可研究",
+        "amplified": "增强",
+        "furniture": "家具（{n}）",
+        "quests": "任务与计划",
+        "traders": "商人",
+        "gives": "产出",
+        "fieldCraft": "局内制作",
+        "repair": "修理",
+        "researchDetail": "{level} 级 · {rp} RP",
+        "researchLevel": "{level} 级",
+        "tradeFor": "收购 {item}",
+        "upgrades": "增强升级：{n}"
+      },
+      "more": {
+        "research": "更多研究内容请见“研究”标签页",
+        "amplified": "更多增强武器内容请见“增强”标签页"
+      },
+      "rp": {
+        "calloutTitle": "研究物品的其他用途",
+        "callout": "其中部分物品也是建造和升级研究站所需的，研究它们之前请保留足够的数量。",
+        "calloutUse": "{amount} 个{item}，用于{use}",
+        "scaleLabel": "研究点数范围",
+        "scaleTitle": "研究方案消耗 {min}–{max} RP",
+        "scaleMin": "最便宜的研究方案：{name}",
+        "scaleMedian": "典型研究方案",
+        "scaleMax": "最贵的研究方案：{name}"
+      },
+      "emperor": {
+        "title": "如何开启“倒下的‘帝王’”",
+        "step1": "在“航向重定向”事件期间，启动一个受损的“帝王”中继器，并从中取得“帝王”信标。",
+        "step2": "将信标放在地上并找掩护：碎片会从天而降。",
+        "step3": "撬开大型部件。其中可能含有“帝王”通道导管蓝图（该蓝图也可能在“护卫者”事件期间散落在地上）。",
+        "step4": "在工作台用 ARC镀层耦合器、ARC绝缘耦合器和 ARC导电耦合器制作“帝王”通道导管。",
+        "step5": "使用导管开启彭多拉山口上“倒下的‘帝王’”地下城。",
+        "note": "如果携带“帝王”信标撤离，它会变成损毁的“帝王”信标。"
+      },
+      "detail": {
+        "level": "{bench} {level} 级",
+        "slots": "{n} 个栏位"
+      }
+    },
+    "tabs": {
+      "new-items": "新物品",
+      "old-items": "旧物品",
+      "outpost": "哨站",
+      "research": "研究",
+      "amplified": "增强",
+      "crafting": "制作",
+      "changes": "变化"
+    },
+    "intro": {
+      "new-items": {
+        "title": "新物品有什么用？",
+        "sentence": "每件新物品，按用途分组。用途多的物品会出现在多个分组中。"
+      },
+      "old-items": {
+        "title": "哪些旧物品有了新用途？",
+        "sentence": "你已经认识的、在 2.0 中又有新用途的物品。"
+      },
+      "outpost": {
+        "title": "如何扩建哨站？",
+        "sentence": "收集材料，扩建哨站，并为每个新栏位选择一个房间。"
+      },
+      "research": {
+        "title": "研究站如何运作？",
+        "sentence": "研究物品获取研究点数，再用点数兑换蓝图和设计图。"
+      },
+      "amplified": {
+        "title": "增强武器如何运作？",
+        "sentence": "升级武器工作台，然后将满级武器转化为增强武器。"
+      },
+      "crafting": {
+        "title": "有哪些新的可制作内容？",
+        "sentence": "新的局内制作、武器贴花以及“帝王”通道导管钥匙。"
+      },
+      "changes": {
+        "title": "已知物品有哪些变化？",
+        "sentence": "与 1.45 相比，配方、回收、商人库存和储备箱大小的变化。"
+      }
+    },
+    "common": {
+      "howItWorks": "运作方式",
+      "needs": "需要",
+      "alsoNeeds": "另外需要",
+      "where": "位置",
+      "before": "2.0 之前",
+      "now": "霜痕小径",
+      "close": "关闭",
+      "more": "另有 {count} 个"
+    },
+    "crafting": {
+      "new": "新",
+      "field": {
+        "title": "局内制作",
+        "sentence": "在局内使用技能树中的技能进行制作。",
+        "newCrafts": "新的局内制作",
+        "unchanged": "{n} 个配方未变"
+      },
+      "stencils": {
+        "title": "武器贴花",
+        "sentence": "贴花会改变武器外观，制作时需要贴花组件。",
+        "partsHint": "套用任何贴花都需要",
+        "cost": "{count} 个贴花组件",
+        "worksWith": "适用于"
+      },
+      "gateway": {
+        "title": "“帝王”通道钥匙",
+        "sentence": "在工作台制作导管，即可开启“帝王”通道。"
+      }
+    },
+    "old-items": {
+      "noLonger": "不再用于"
     }
   }
 }
