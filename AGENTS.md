@@ -46,6 +46,16 @@ committed there. Run `npx tsx scripts/generate-game-data.ts --strict` before a r
 the map features build of embark-api (env `EMBARK_API_DIR`, default `../embark-api`) and is rerun, then committed,
 after a game patch. See `docs/Maps.md` and the header of `scripts/generate-maps-data.mjs`.
 
+### SEO and Link Previews
+
+Public pages are listed in `src/shared/seo/pages.ts` (title key, description key `seo.*` in `en.json`,
+preview image). At build time `scripts/seo/vitePlugin.ts` writes a `dist/<route>/index.html` per page with
+its title, description, canonical URL and Open Graph / Twitter tags (the host serves `/quests` as
+`/quests/` → `quests/index.html`, so every public route answers 200), plus `sitemap.xml` and `robots.txt`.
+When adding a public route, add it to `pages.ts`, add its `seo.*` description and run
+`npm run generate:og-images` (writes `public/images/og/*.jpg` and the app icons; commit them).
+Response headers (CSP, caching) live in `customHttp.yml`; Amplify ignores headers in `amplify.yml`.
+
 Public data files contain slugs only — never Embark asset ids or internal asset names. Types of all
 game data live in `src/shared/gamedata/types.ts`; apps load data with `loadDomain()` /
 `loadItemCatalog()` from `src/shared/gamedata/`.

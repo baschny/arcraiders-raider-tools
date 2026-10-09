@@ -14,6 +14,6 @@
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true
   },
-  "include": ["scripts/gamedata/**/*.ts", "scripts/generate-game-data.ts", "src/shared/gamedata/types.ts"],
+  "include": ["scripts/gamedata/**/*.ts", "scripts/generate-game-data.ts", "scripts/generate-og-images.ts", "src/shared/gamedata/types.ts"],
   "exclude": ["scripts/gamedata/**/__tests__/**"]
 }

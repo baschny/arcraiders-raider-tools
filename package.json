@@ -20,6 +20,7 @@
     "generate:whats-new-icons": "npx tsx ./scripts/generate-whats-new-icons.ts",
     "generate:stencil-swatches": "npx tsx ./scripts/generate-stencil-swatches.ts",
     "generate:glossary": "npx tsx ./scripts/generate-glossary.ts",
+    "generate:og-images": "npx tsx ./scripts/generate-og-images.ts",
     "typecheck:scripts": "tsc -p tsconfig.scripts.json"
   },
   "dependencies": {
@@ -35,8 +36,10 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
+    "@fontsource/urbanist": "^5.3.0",
     "@types/dagre": "^0.7.53",
     "@types/node": "^24.10.1",
+    "@types/opentype.js": "^1.3.10",
     "@types/react": "^19.2.5",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.1",
@@ -46,6 +49,7 @@
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
     "jsdom": "^29.0.2",
+    "opentype.js": "^1.3.4",
     "sass": "^1.97.2",
     "sharp": "^0.35.5",
     "typescript": "~5.9.3",

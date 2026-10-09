@@ -1,48 +1,44 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useLocale } from '../context/LocaleContext';
+import { findSeoPage, formatPageTitle } from '../seo/pages';
 
-const PAGE_TITLE_KEYS: Record<string, string> = {
-  '/': 'app.name',
-  '/schedule': 'shared.tools.schedule',
-  '/craft-calculator': 'shared.tools.craftCalculator',
-  '/quests': 'shared.tools.quests',
-  '/loot-helper': 'shared.tools.lootHelper',
-  '/quartermaster': 'shared.tools.quartermaster',
-  '/maps': 'shared.tools.maps',
-  '/map-sizes': 'maps.sizes.viewSizes',
-};
-
-// Prefix-based title keys for nested routes that share a common title.
-const PAGE_TITLE_PREFIXES: Array<{ prefix: string; key: string }> = [
-  { prefix: '/whats-new', key: 'shared.tools.whatsNew' },
+// Titles of the pages that are not public (see src/shared/seo/pages.ts), by path prefix.
+const PRIVATE_PAGE_TITLES: Array<{ prefix: string; key: string }> = [
   { prefix: '/profile', key: 'pages.profile.title' },
   { prefix: '/auth/sign-in', key: 'pages.profileSettings' },
   { prefix: '/auth/sign-up', key: 'pages.profileSettings' },
 ];
 
-function resolvePageKey(pathname: string): string | undefined {
-  const normalizedPathname =
-    pathname.length > 1 ? pathname.replace(/\/+$/, '') : pathname;
-
-  if (PAGE_TITLE_KEYS[normalizedPathname]) {
-    return PAGE_TITLE_KEYS[normalizedPathname];
-  }
-  const prefixMatch = PAGE_TITLE_PREFIXES.find(({ prefix }) =>
-    normalizedPathname === prefix || normalizedPathname.startsWith(`${prefix}/`),
-  );
-  return prefixMatch?.key;
+function privatePageKey(pathname: string): string | undefined {
+  const path = pathname.length > 1 ? pathname.replace(/\/+$/, '') : pathname;
+  return PRIVATE_PAGE_TITLES.find(({ prefix }) => path === prefix || path.startsWith(`${prefix}/`))?.key;
 }
 
+/** Keeps search engines off a page that is not public, e.g. the profile or a not found page. */
+function setNoIndex(noIndex: boolean): void {
+  let meta = document.head.querySelector<HTMLMetaElement>('meta[name="robots"]');
+  if (!noIndex) {
+    meta?.remove();
+    return;
+  }
+  if (!meta) {
+    meta = document.createElement('meta');
+    meta.name = 'robots';
+    document.head.appendChild(meta);
+  }
+  meta.content = 'noindex';
+}
+
+/** Sets the document title of the current route, and keeps non-public routes out of search engines. */
 export function usePageTitle() {
   const location = useLocation();
   const { t } = useLocale();
 
   useEffect(() => {
-    const appName = t('app.name');
-    const pageKey = resolvePageKey(location.pathname);
-    const pageTitle = pageKey ? t(pageKey) : t('pages.notFound');
-    const title = pageKey === 'app.name' ? appName : `${appName}: ${pageTitle}`;
-    document.title = title;
+    const page = findSeoPage(location.pathname);
+    const pageKey = page ? page.titleKey : (privatePageKey(location.pathname) ?? 'pages.notFound');
+    document.title = formatPageTitle(t('app.name'), pageKey ? t(pageKey) : undefined);
+    setNoIndex(!page);
   }, [location.pathname, t]);
 }

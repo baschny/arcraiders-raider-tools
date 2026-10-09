@@ -1,0 +1,19 @@
+# Response headers of the Amplify hosting (read from the repository root on every build;
+# custom headers in amplify.yml are no longer applied).
+customHeaders:
+  - pattern: '**/*'
+    headers:
+      # Report-only until the browser console of the live site shows no violations; then rename the key to
+      # Content-Security-Policy. Allows Google Analytics (gtag), Google Fonts, the API and Cognito sign-in.
+      - key: Content-Security-Policy-Report-Only
+        value: "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.raider-tools.app https://cognito-idp.eu-central-1.amazonaws.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; worker-src 'self' blob:; object-src 'none'; base-uri 'self'"
+  # Map tile folders are named by a content hash of their texture (scripts/lib/map-tiles.mjs): never revalidate.
+  - pattern: 'data/map-data/tiles/**'
+    headers:
+      - key: Cache-Control
+        value: 'public, max-age=31536000, immutable'
+  # Link preview images are fetched by every chat app that unfurls a link.
+  - pattern: 'images/og/*'
+    headers:
+      - key: Cache-Control
+        value: 'public, max-age=86400'
