@@ -1333,7 +1333,20 @@
       "module": "Module",
       "recycleHint": "An Amplification Module recycles into Amplified Fragments",
       "perkParts": "Perk parts",
-      "weapons": "weapons"
+      "weapons": "weapons",
+      "level": "level",
+      "step1": "Upgrade the Gunsmith to level 4",
+      "step2": "Combine a max-level weapon with an Amplification Module",
+      "step3": "Add perks with parts and research",
+      "pickerTitle": "Pick a weapon",
+      "pickerSentence": "Weapons are grouped by the Amplification Module they need.",
+      "becomes": "becomes",
+      "perk": "Perk",
+      "research": "Research",
+      "noResearch": "No research needed",
+      "repairLine": "Amplified weapons are repaired with Amplified Fragments.",
+      "recycleLine": "Recycling a module gives {n} Amplified Fragments.",
+      "roomsNote": "Needs {n} Outpost rooms"
     },
     "title": "What’s new in Frozen Trail",
     "subtitle": "The 2.0 update at a glance for returning raiders",
@@ -1354,7 +1367,26 @@
       "craftable": "Craftable via research",
       "findOnly": "Still to be found",
       "show": "Show blueprints",
-      "hide": "Hide blueprints"
+      "hide": "Hide blueprints",
+      "rpAmount": "{n} RP",
+      "rpLevel": "{rp} RP · Level {n}",
+      "step1": "Study items you find",
+      "step2": "Get Research Points",
+      "step3": "Spend points and materials on plans",
+      "step4": "Learn the plan at the Outpost",
+      "pointsTitle": "Research Points",
+      "pointsText": "Study these items at the Research Station to earn points.",
+      "stationTitle": "Research Station",
+      "stationText": "Build the {bench} at Posh, then upgrade it three times.",
+      "needsRoom": "Needs {n} Outpost room",
+      "needsRooms": "Needs {n} Outpost rooms",
+      "needsStationLevel": "Needs station level {n}",
+      "listCraftable": "Blueprints you can research",
+      "listFindOnly": "Blueprints you must find",
+      "listDesigns": "Designs",
+      "browseTitle": "What you can research",
+      "foundOnly": "Found only",
+      "benchLevel": "{bench} level {n}"
     },
     "section": {
       "outpost": {
@@ -1413,7 +1445,7 @@
       "rooms": "{count} rooms",
       "canUpgrade": "Can upgrade {bench} to level {level}",
       "newRoom": "New Outpost room",
-      "special": "Special",
+      "special": "Special option",
       "learnHere": "Learn blueprints and designs here",
       "furnitureTitle": "Furniture",
       "pieces": "Pieces",
@@ -1423,7 +1455,23 @@
       "consumed": "Consumed at the Outpost",
       "build": "Build",
       "furniture": "Furniture",
-      "celeste": "{name} now trades seeds for materials"
+      "celeste": "Celeste",
+      "expansion": "Level {from} to {to}",
+      "pickOne": "Pick one room",
+      "benchLevel": "{bench} level {level}",
+      "step1": "Collect building materials",
+      "step2": "Expand at Posh and pick a room",
+      "step3": "Each new room unlocks station upgrades",
+      "slots": "Room slots",
+      "slotsText": "Your Outpost has four slots. The first holds the base room, each expansion fills the next.",
+      "slot": "Slot {n}",
+      "furnitureText": "Furnish your rooms with beds, chairs, lamps and more.",
+      "furnitureCount": "{count} pieces of furniture",
+      "furnitureHow": "How furniture works",
+      "furnStep1": "Find or research a design",
+      "furnStep2": "Learn it at the Outpost",
+      "furnStep3": "Build it with Planks, Sheet Metal and more",
+      "celesteText": "{name} now trades seeds for building materials."
     },
     "field-crafting": {
       "before": "Before",
@@ -1434,16 +1482,22 @@
     },
     "changes": {
       "recipes": "Recipes",
+      "recipesHint": "These recipes need different materials than before.",
       "recycling": "Recycling",
+      "recyclingHint": "These items give different materials when you recycle them.",
       "traders": "Traders",
+      "tradersHint": "Pick a trader to see what they started or stopped selling and which prices changed.",
       "stash": "Stash",
+      "stashHint": "What each stash expansion costs, with the new tiers marked.",
       "craft": "Craft",
-      "upgrade": "Upgrade",
-      "repair": "Repair",
-      "new": "New",
-      "gone": "Gone",
-      "priceChanged": "Price changed",
-      "slots": "slots",
+      "upgrade": "Upgrade {from} to {to}",
+      "repair": "Repair {tier}",
+      "tradeNew": "New",
+      "tradeGone": "No longer sold",
+      "tradePrice": "New price",
+      "scrapValue": "{value} scrap value",
+      "expansion": "Expansion",
+      "slotCount": "{count} slots",
       "newTier": "New"
     },
     "new-items": {
@@ -1483,6 +1537,64 @@
         "trade": "Trade",
         "project": "Project",
         "quest": "Quest"
+      },
+      "purpose": {
+        "outpost": {
+          "title": "Expanding the Outpost",
+          "sentence": "Build new rooms at Posh to expand your Outpost."
+        },
+        "researchStation": {
+          "title": "Research Station",
+          "sentence": "Build and upgrade the new Research Station."
+        },
+        "researchPoints": {
+          "title": "Research Points",
+          "sentence": "Study these at the Research Station to earn Research Points."
+        },
+        "gunsmith4": {
+          "title": "Gunsmith level 4",
+          "sentence": "Needed for the new Gunsmith level, which unlocks Amplified weapons."
+        },
+        "amplified": {
+          "title": "Amplified weapons",
+          "sentence": "Turn max-level weapons into Amplified ones and add perks."
+        },
+        "researchBlueprints": {
+          "title": "Researching blueprints",
+          "sentence": "Spent at the Research Station to research blueprints and designs."
+        },
+        "furniture": {
+          "title": "Furniture",
+          "sentence": "Build furniture for your Outpost rooms."
+        },
+        "crafting": {
+          "title": "Crafting",
+          "sentence": "Crafting recipes for weapons, gadgets and in-raid items."
+        },
+        "stencils": {
+          "title": "Weapon stencils",
+          "sentence": "Apply paint stencils to your weapons."
+        },
+        "quests": {
+          "title": "Quests and projects",
+          "sentence": "Needed for quests or projects."
+        },
+        "trades": {
+          "title": "Trades",
+          "sentence": "Traders accept these as payment."
+        },
+        "noUse": {
+          "title": "No use yet",
+          "sentence": "Nothing needs these yet: sell or recycle them."
+        }
+      },
+      "detail": {
+        "study": "Study it at the Research Station to earn Research Points.",
+        "noUse": "Nothing needs this item yet. Sell it or recycle it.",
+        "posh": "Posh",
+        "more": "+{n} more",
+        "level": "{bench} level {level}",
+        "slots": "{n} slots"
       }
     },
     "new-uses": {
@@ -1536,6 +1648,29 @@
       "before": "Before 2.0",
       "now": "Now",
       "close": "Close"
+    },
+    "crafting": {
+      "new": "New",
+      "field": {
+        "title": "Field crafting",
+        "sentence": "Craft in the middle of a raid with skills from the skill tree.",
+        "newCrafts": "New in-raid crafts",
+        "unchanged": "{n} recipes unchanged"
+      },
+      "stencils": {
+        "title": "Weapon stencils",
+        "sentence": "Stencils change how a weapon looks and cost Stencil Parts to craft.",
+        "partsHint": "Needed to apply any stencil",
+        "cost": "{count} Stencil Parts",
+        "worksWith": "Works with"
+      },
+      "gateway": {
+        "title": "Emperor Gateway key",
+        "sentence": "Craft the Conduit at the Workbench to open the Emperor Gateway."
+      }
+    },
+    "old-items": {
+      "noLonger": "No longer used for"
     }
   }
 }
