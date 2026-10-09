@@ -1,3 +1,4 @@
+import { NowLabel } from './NowLabel';
 import { useLocale } from '../../../shared/context/LocaleContext';
 import { ItemTile } from './ItemTile';
 import type { TileSpec } from './types';
@@ -55,15 +56,15 @@ export function CompareRows({ rows, beforeLabel, nowLabel, itemLabel, className 
     <div className={['wn-compare', className ?? ''].filter(Boolean).join(' ')} role="table">
       <div className="wn-compare__head" role="row">
         <span className={itemLabel ? 'wn-compare__col' : 'wn-compare__col wn-compare__col--hidden'} role="columnheader">{itemLabel ?? ''}</span>
-        <span className="wn-compare__col" role="columnheader">{beforeLabel ?? t('whatsNew.common.before')}</span>
-        <span className="wn-compare__col" role="columnheader">{nowLabel ?? t('whatsNew.common.now')}</span>
+        <span className="wn-compare__col wn-old" role="columnheader">{beforeLabel ?? t('whatsNew.common.before')}</span>
+        <span className="wn-compare__col" role="columnheader">{nowLabel ?? <NowLabel />}</span>
       </div>
       {rows.map((row) => (
         <div className={`wn-compare__row${row.status ? ` wn-compare__row--${row.status}` : ''}`} role="row" key={row.key}>
           <div className="wn-compare__item" role="cell">
             <ItemTile item={row.item.item} size={64} amount={row.item.amount} sublabel={row.item.sublabel} isBlueprint={row.item.isBlueprint} />
           </div>
-          <div className="wn-compare__cell" role="cell">
+          <div className="wn-compare__cell wn-old" role="cell">
             <Costs costs={row.before} text={row.beforeText} />
           </div>
           <div className="wn-compare__cell" role="cell">

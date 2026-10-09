@@ -525,3 +525,14 @@ $green: #4caf50;
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-position: center;
 }
+
+// ---- Before / now -------------------------------------------------------------------------
+// Old state (Before 2.0) is shown faded, the current state is labelled "Frozen Trail" with a sparkle.
+.wn-old { opacity: 0.55; }
+.wn-now-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: $text-accent;
+  font-weight: 600;
+}

@@ -1407,6 +1407,9 @@
     "changes": {
       "recipes": "Recipes",
       "recipesHint": "These recipes need different materials than before.",
+      "gadgets": "Gadgets",
+      "anvilCraft": "{name}: craft and upgrade",
+      "anvilRepair": "{name}: repair",
       "recycling": "Recycling",
       "recyclingHint": "These items give different materials when you recycle them.",
       "traders": "Traders",
@@ -1590,7 +1593,7 @@
       "alsoNeeds": "Also needs",
       "where": "Where",
       "before": "Before 2.0",
-      "now": "Now",
+      "now": "Frozen Trail",
       "close": "Close"
     },
     "crafting": {
