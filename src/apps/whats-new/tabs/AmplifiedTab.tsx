@@ -115,14 +115,14 @@ export function AmplifiedTab({ data }: AmplifiedTabProps) {
       </Panel>
 
       {fragmentsId && (
-        <p className="wn-amp__footer">
+        <div className="wn-amp__footer">
           <ItemTile item={ref(fragmentsId)} size={48} hideName />
           <ItemTile item={ref(selected?.moduleId ?? allWeapons[0]?.moduleId ?? '')} size={48} hideName />
           <span>
             {t('whatsNew.amplified.repairLine')}{' '}
             {recycles ? t('whatsNew.amplified.recycleLine').replace('{n}', String(recycles)) : ''}
           </span>
-        </p>
+        </div>
       )}
     </div>
   );

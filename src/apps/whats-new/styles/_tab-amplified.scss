@@ -90,7 +90,8 @@
       transition: border-color 0.15s;
 
       &:not(.is-locked):hover { border-color: $border-lighter; }
-      &.is-chosen { border-color: $rarity-amplified; }
+      // chosen wins over hover
+      &.is-chosen, &.is-chosen:hover { border-color: $rarity-amplified; background: rgba($rarity-amplified, 0.08); }
       &.is-locked .wn-pick__body > :not(.wn-pick__reason) { opacity: 0.45; }
       &.is-locked .wn-pick__select { cursor: not-allowed; }
     }

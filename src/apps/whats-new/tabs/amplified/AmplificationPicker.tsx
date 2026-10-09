@@ -4,7 +4,7 @@ import type { Amplification, AmplificationEffect, AmplifiedWeapon, TextTree } fr
 import { ItemTile } from '../../components';
 import type { ItemRef } from '../../components';
 import { humanize } from './derive';
-import { canSelect, excludesOf, requiresOf, researchNeeded, resultingVariant, toggle, totalParts, type LockReason } from './picker';
+import { canSelect, excludesOf, requiresOf, researchNeeded, toggle, totalParts, type LockReason } from './picker';
 
 const MAX_EFFECTS = 4;
 
@@ -85,7 +85,6 @@ export function AmplificationPicker({ weapon, text, ref_ }: AmplificationPickerP
 
   const total = totalParts(selected, weapon);
   const research = researchNeeded(selected, weapon);
-  const variantId = selected.length ? resultingVariant(selected, weapon) : undefined;
 
   return (
     <section className="wn-pick" aria-label={t('whatsNew.amplified.amplification')}>
@@ -179,7 +178,6 @@ export function AmplificationPicker({ weapon, text, ref_ }: AmplificationPickerP
         <div className="wn-pick__summary">
           <p className="wn-pick__build">
             <span className="wn-pick__label">{t('whatsNew.amplified.yourBuild')}</span> {selected.map(nameOf).join(' + ')}
-            {variantId && <span className="wn-pick__variant"> · {ref_(variantId).name}</span>}
           </p>
           {total.length > 0 && (
             <div className="wn-pick__needs">
