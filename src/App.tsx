@@ -76,7 +76,7 @@ function App() {
                     <Route path="loot-helper" element={<LootHelperApp />} />
                     <Route path="quartermaster" element={<QuartermasterApp />} />
                     <Route path="maps" element={<MapsApp />} />
-                    <Route path="whats-new/:version?" element={<WhatsNewApp />} />
+                    <Route path="whats-new/:version?/:tab?" element={<WhatsNewApp />} />
                     <Route path="profile" element={<Profile />}>
                       <Route index element={<Navigate to="arctracker" replace />} />
                       <Route path="arctracker" element={<ArcTrackerSection />} />

@@ -1335,30 +1335,11 @@
       "perkParts": "Perk parts",
       "weapons": "weapons"
     },
-    "title": "Frozen Trail — what’s new",
-    "subtitle": "What the 2.0 update adds, what to keep, and what changed since 1.45",
+    "title": "What’s new in Frozen Trail",
+    "subtitle": "The 2.0 update at a glance for returning raiders",
     "loading": "Loading what’s new...",
-    "navLabel": "Sections",
+    "navLabel": "What’s new tabs",
     "placeholder": "Coming soon",
-    "summary": {
-      "newItems": "New items",
-      "newSystems": "New systems",
-      "researchOffers": "Research offers",
-      "researchPoints": "Research Points",
-      "stashTiers": "New stash tiers",
-      "pending": "Data not generated yet"
-    },
-    "nav": {
-      "outpost": "Outpost",
-      "research": "Research",
-      "amplified": "Amplified",
-      "stencils": "Stencils",
-      "field-crafting": "Field crafting",
-      "gateway": "Gateway key",
-      "new-items": "New items",
-      "new-uses": "New uses",
-      "changes": "What changed"
-    },
     "research": {
       "acquire": "Acquire Research Points",
       "station": "Research Station",
@@ -1507,6 +1488,54 @@
     "new-uses": {
       "showAll": "Show all {n}",
       "showLess": "Show less"
+    },
+    "tabs": {
+      "new-items": "New items",
+      "old-items": "Old items",
+      "outpost": "Outpost",
+      "research": "Research",
+      "amplified": "Amplified",
+      "crafting": "Crafting",
+      "changes": "Changes"
+    },
+    "intro": {
+      "new-items": {
+        "title": "What are my new items for?",
+        "sentence": "Every new item, grouped by what it’s used for. Items with several uses appear in several groups."
+      },
+      "old-items": {
+        "title": "Which old items got new uses?",
+        "sentence": "Items you already know that are needed for something new in 2.0."
+      },
+      "outpost": {
+        "title": "How do I expand my Outpost?",
+        "sentence": "Collect materials, expand at Posh and pick a room for each new slot."
+      },
+      "research": {
+        "title": "How does the Research Station work?",
+        "sentence": "Study items for Research Points, then spend them on blueprints and designs."
+      },
+      "amplified": {
+        "title": "How do Amplified weapons work?",
+        "sentence": "Upgrade the Gunsmith, then turn a max-level weapon into an Amplified one."
+      },
+      "crafting": {
+        "title": "What can I craft that’s new?",
+        "sentence": "New in-raid crafts, weapon stencils and the Emperor Gateway key."
+      },
+      "changes": {
+        "title": "What changed for things I already know?",
+        "sentence": "Recipes, recycling, trader stock and stash sizes that differ from 1.45."
+      }
+    },
+    "common": {
+      "howItWorks": "How it works",
+      "needs": "Needs",
+      "alsoNeeds": "Also needs",
+      "where": "Where",
+      "before": "Before 2.0",
+      "now": "Now",
+      "close": "Close"
     }
   }
 }

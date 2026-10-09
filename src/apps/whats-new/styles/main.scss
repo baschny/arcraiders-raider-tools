@@ -1,13 +1,10 @@
+// Frame (page header, tab bar, tab intro) and shared components, then one partial per tab.
+@use 'frame';
 @use 'components';
-
-// Page layout. Section partials (_section-<name>.scss) are appended below by their tickets.
-@use 'page';
-@use 'section-research';
-@use 'section-outpost';
-@use 'section-amplified';
-@use 'section-stencils';
-@use 'section-gateway';
-@use 'section-field-crafting';
-@use 'section-new-items';
-@use 'section-new-uses';
-@use 'section-changes';
+@use 'tab-new-items';
+@use 'tab-old-items';
+@use 'tab-outpost';
+@use 'tab-research';
+@use 'tab-amplified';
+@use 'tab-crafting';
+@use 'tab-changes';

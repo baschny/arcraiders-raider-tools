@@ -1,258 +1,422 @@
 @use '../../../shared/styles/variables' as *;
 
-$verdict-keep: #4caf50;
-$verdict-optional: #4fc3f7;
-$verdict-quest: #ffd700;
-$verdict-sell: #9e9e9e;
+// Shared what's-new components. Spacing scale 8 / 16 / 24 / 40 / 64 (see _frame.scss).
+$wn-s1: 8px;
+$wn-s2: 16px;
+$wn-s3: 24px;
+$wn-s4: 40px;
+$green: #4caf50;
 
-.wn-chip {
-  position: relative;
-
-  &--sm { --item-icon-padding: 2px; }
-  &--lg .item-icon__name { font-size: $font-md; }
-
-  &__qty {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.8);
-    color: $text-primary;
-    font-size: $font-base;
-    font-weight: 700;
-    padding: 0 4px;
-    border-radius: $radius-sm 0 0 0;
-    line-height: 1.4;
-  }
-
-  &--sm &__qty { font-size: $font-sm; padding: 0 3px; }
-
-  &__marker {
-    position: absolute;
-    top: 3px;
-    right: 3px;
-    width: 8px;
-    height: 8px;
-    border-radius: $radius-circle;
-    background: $rarity-amplified;
-    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.6);
-  }
-}
-
-.wn-recipe {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: $gap-md;
-  padding: $spacing-sm $spacing-md;
-  background: $bg-secondary;
-  border: $border-width-thin solid $border-default;
-  border-radius: $radius-md;
-
-  &--compact { gap: $gap-sm; padding: $spacing-xs $spacing-sm; }
-
-  &__label {
-    display: inline-flex;
-    align-items: center;
-    gap: $spacing-xs;
-    font-size: $font-md;
-    font-weight: 600;
-    color: $text-light;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    flex-basis: 100%;
-  }
-
-  &__label-img { width: 24px; height: 24px; object-fit: contain; }
-
-  &__group {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    gap: $gap-sm;
-  }
-
-  &__arrow { font-size: $font-3xl; color: $text-secondary; }
-}
-
-.wn-ba {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: $gap-md;
-  padding: $spacing-sm $spacing-md;
-  background: $bg-secondary;
-  border: $border-width-thin solid $border-default;
-  border-radius: $radius-md;
-
-  &__title { margin-right: $spacing-sm; }
-
-  &__side { display: flex; flex-wrap: wrap; align-items: center; gap: $gap-sm; }
-
-  &__arrow { font-size: $font-3xl; color: $text-secondary; }
-
-  &__price { font-size: $font-xl; font-weight: 700; color: $text-primary; }
-
-  &__removed {
-    opacity: 0.45;
-
-    .item-icon__container::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top right, transparent calc(50% - 1px), #e57373 50%, transparent calc(50% + 1px));
-      pointer-events: none;
-    }
-  }
-
-  &__added .item-icon__container {
-    box-shadow: 0 0 0 2px $status-completed;
-  }
-}
-
-.wn-flow {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: stretch;
-  gap: $gap-md;
-
-  &__step { display: flex; align-items: center; gap: $gap-md; }
-
-  &__arrow { font-size: $font-3xl; color: $text-secondary; }
-
-  &__body {
-    display: flex;
-    flex-direction: column;
-    gap: $spacing-xs;
-    padding: $spacing-sm $spacing-md;
-    background: $bg-secondary;
-    border: $border-width-thin solid $border-default;
-    border-radius: $radius-md;
-    height: 100%;
-    box-sizing: border-box;
-  }
-
-  &__title { font-size: $font-md; font-weight: 600; color: $text-light; }
-
-  &__image { max-width: 160px; max-height: 100px; border-radius: $radius-sm; object-fit: cover; }
-
-  &__items { display: flex; flex-wrap: wrap; gap: $gap-sm; }
-
-  &__note { font-size: $font-md; color: $text-secondary; }
-
-  @media (max-width: $breakpoint-mobile) {
-    flex-direction: column;
-    align-items: stretch;
-
-    &__step { flex-direction: column; align-items: stretch; }
-    &__arrow { align-self: center; transform: rotate(90deg); }
-  }
-}
-
-.wn-panel {
-  position: relative;
+// ---- ItemTile ----------------------------------------------------------------------------
+.wn-tile {
   display: flex;
   flex-direction: column;
-  gap: $gap-md;
-  padding: $spacing-lg;
-  background: $bg-secondary center / cover no-repeat;
-  border: $border-width-default solid $border-default;
-  border-radius: $radius-lg;
-  overflow: hidden;
+  align-items: center;
+  gap: 4px;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  padding: 4px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: $text-primary;
+  font: inherit;
+  text-align: center;
 
-  &--image::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, rgba(26, 26, 26, 0.55), rgba(26, 26, 26, 0.9));
-    pointer-events: none;
-  }
+  &--48 { --item-icon-padding: 2px; max-width: 80px; }
+  &--64 { max-width: 96px; }
+  &--80 { max-width: 112px; }
+  &--112 { max-width: 140px; }
 
-  > * { position: relative; }
-
-  &__head { display: flex; align-items: center; justify-content: space-between; gap: $gap-md; }
-
-  &__title { @include urbanist-title; margin: 0; font-size: $font-2xl; color: $text-primary; }
-
-  &__counter {
-    font-size: $font-lg;
+  &__amount {
+    font-size: $font-xl;
     font-weight: 700;
-    color: $text-light;
-    background: rgba(0, 0, 0, 0.5);
-    padding: 2px $spacing-sm;
-    border-radius: $radius-lg;
+    color: $text-primary;
+    line-height: 1.2;
   }
 
-  &__lock {
+  &--48 &__amount { font-size: $font-lg; }
+
+  &__name {
+    max-width: 100%;
+    font-size: $font-lg;
+    line-height: 1.25;
+    color: $text-light;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow-wrap: anywhere;
+  }
+
+  &--48 &__name { font-size: $font-md; }
+
+  &__sub {
+    font-size: $font-md;
+    color: $text-secondary;
+    line-height: 1.2;
+  }
+
+  &--button {
+    cursor: pointer;
+    transition: background 0.15s;
+
+    &:hover { background: $bg-tertiary; }
+    &:focus-visible { outline: 2px solid $text-accent; outline-offset: 2px; }
+  }
+
+  &.is-selected {
+    background: $bg-tertiary;
+    box-shadow: inset 0 0 0 1px $text-accent;
+  }
+}
+
+// ---- ItemGrid / DetailPanel -----------------------------------------------------------------
+.wn-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--wn-grid-min, 112px), 1fr));
+  gap: $wn-s2;
+
+  &__cell {
+    display: flex;
+    justify-content: center;
+    min-width: 0;
+  }
+}
+
+.wn-detail {
+  grid-column: 1 / -1;
+  box-sizing: border-box;
+  padding: $wn-s3;
+  background: $bg-tertiary;
+  border-radius: 12px;
+  box-shadow: inset 0 0 0 1px $text-accent;
+
+  &__bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $wn-s2;
+    margin-bottom: $wn-s1;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: $font-2xl;
+    color: $text-primary;
+  }
+
+  &__close {
     display: inline-flex;
     align-items: center;
-    gap: $spacing-sm;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    margin-left: auto;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: $text-light;
+    cursor: pointer;
+
+    &:hover { background: $bg-quaternary; color: $text-primary; }
+    &:focus-visible { outline: 2px solid $text-accent; }
+  }
+}
+
+// ---- Panel ----------------------------------------------------------------------------------
+.wn-panel {
+  box-sizing: border-box;
+  padding: $wn-s3;
+  background: $bg-secondary;
+  border-radius: 12px;
+
+  &--highlighted { box-shadow: inset 0 0 0 1px $text-accent; }
+
+  &__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: $wn-s2;
+    margin-bottom: $wn-s2;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: $font-3xl;
+    font-weight: 700;
+    color: $text-primary;
+  }
+
+  &__aside { color: $text-light; font-size: $font-lg; }
+
+  &__desc {
+    margin: 0 0 $wn-s3;
+    font-size: $font-xl;
+    line-height: 1.5;
+    color: $text-light;
+  }
+
+  &__head + &__desc { margin-top: -$wn-s1; }
+}
+
+// Panels stack 40px apart.
+.wn-panel + .wn-panel { margin-top: $wn-s4; }
+
+// ---- HowItWorks ---------------------------------------------------------------------------
+.wn-how {
+  &__title {
+    margin: 0 0 $wn-s2;
+    font-size: $font-2xl;
+    color: $text-primary;
+  }
+
+  &__steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: $wn-s2;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    @media (max-width: $breakpoint-mobile) { grid-template-columns: 1fr; }
+  }
+
+  &__step {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: $wn-s2;
+    padding: $wn-s3;
+    background: $bg-secondary;
+    border-radius: 12px;
+  }
+
+  &__num {
+    position: absolute;
+    top: $wn-s1;
+    left: $wn-s1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: $radius-circle;
+    background: $bg-quaternary;
+    color: $text-primary;
     font-size: $font-md;
+    font-weight: 700;
+  }
+
+  &__media {
+    flex: 0 0 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+  }
+
+  &__img { max-width: 64px; max-height: 64px; object-fit: contain; }
+
+  &__text {
+    font-size: $font-xl;
+    line-height: 1.4;
+    color: $text-primary;
+  }
+}
+
+// ---- NeedsCard ----------------------------------------------------------------------------
+.wn-needs {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: $wn-s3;
+  padding: $wn-s3;
+  background: $bg-secondary;
+  border-radius: 12px;
+
+  &__head {
+    display: flex;
+    align-items: center;
+    gap: $wn-s3;
+  }
+
+  &__title {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+  }
+
+  &__name {
+    margin: 0;
+    font-size: $font-3xl;
+    font-weight: 700;
+    line-height: 1.2;
+    color: $text-primary;
+  }
+
+  &__sub, &__note { font-size: $font-lg; color: $text-secondary; }
+
+  &__where {
+    display: inline-flex;
+    align-items: center;
+    gap: $wn-s1;
+    font-size: $font-xl;
+    color: $text-light;
+  }
+
+  &__where-label { color: $text-secondary; }
+  &__where-img { width: 32px; height: 32px; object-fit: contain; }
+
+  &__block { display: flex; flex-direction: column; gap: $wn-s1; }
+
+  &__heading {
+    margin: 0;
+    font-size: $font-lg;
+    font-weight: 600;
     color: $text-secondary;
   }
 
-  &--locked &__body { opacity: 0.5; filter: grayscale(0.6); }
-}
+  &__row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: $wn-s2;
 
-.wn-verdict {
-  display: inline-flex;
-  align-items: center;
-  padding: 1px 6px;
-  border-radius: $radius-sm;
-  font-size: $font-sm;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.4px;
-  line-height: 1.4;
-  white-space: nowrap;
-  color: #111;
-  gap: 4px;
-
-  &--keep { background: $verdict-keep; }
-  &--optional { background: $verdict-optional; }
-  &--quest { background: $verdict-quest; }
-  &--sell { background: $verdict-sell; }
-
-  &--corner {
-    position: absolute;
-    top: 0;
-    left: 0;
-    border-radius: 0 0 $radius-sm 0;
-    z-index: 1;
+    .wn-tile { width: auto; }
+    .wn-tile--64 { width: 96px; }
+    .wn-tile--48 { width: 80px; }
   }
 }
 
-.wn-counter {
-  display: inline-flex;
-  align-items: center;
-  gap: $spacing-xs;
-  padding: 2px 10px;
-  border-radius: 999px;
-  background: $bg-tertiary;
-  border: $border-width-thin solid $border-light;
-  font-size: $font-md;
-  color: $text-light;
-
-  &__value { font-weight: 700; color: $text-primary; }
-
-  &--done {
-    border-color: $status-completed;
-    .wn-counter__value { color: $status-completed; }
-  }
-}
-
-.wn-section-header {
+// ---- CompareRows --------------------------------------------------------------------------
+.wn-compare {
+  --wn-compare-cols: minmax(120px, 0.8fr) minmax(0, 1.2fr) minmax(0, 1.2fr);
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: $gap-md;
-  margin: $spacing-xl 0 $spacing-md;
-  scroll-margin-top: $header-height + $spacing-lg;
+  flex-direction: column;
+  gap: $wn-s2;
 
-  &__title { @include urbanist-title; margin: 0; font-size: $font-3xl; color: $text-primary; }
+  &__head, &__row {
+    display: grid;
+    grid-template-columns: var(--wn-compare-cols);
+    gap: $wn-s3;
+    align-items: center;
+  }
 
-  &__subtitle { margin: 2px 0 0; font-size: $font-lg; color: $text-secondary; }
+  &__head {
+    padding: 0 $wn-s2;
+    font-size: $font-lg;
+    font-weight: 600;
+    color: $text-secondary;
+  }
+
+  &__col--hidden { visibility: hidden; }
+
+  &__row {
+    padding: $wn-s2;
+    background: $bg-secondary;
+    border-radius: 12px;
+
+    &--removed { opacity: 0.5; }
+    &--added { box-shadow: inset 0 0 0 1px $green; }
+  }
+
+  &__costs {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: $wn-s1;
+  }
+
+  &__cost {
+    width: 80px;
+    &--added { box-shadow: inset 0 0 0 1px $green; }
+    &--removed { opacity: 0.5; }
+  }
+
+  &__none { color: $text-tertiary; }
+}
+
+// ---- PurposeGroup -------------------------------------------------------------------------
+.wn-group {
+  &__head {
+    display: flex;
+    align-items: center;
+    gap: $wn-s2;
+    margin-bottom: $wn-s3;
+  }
+
+  &__icon {
+    flex: 0 0 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+  }
+
+  &__img { max-width: 80px; max-height: 80px; object-fit: contain; }
+
+  &__title {
+    margin: 0;
+    font-size: $font-3xl;
+    font-weight: 700;
+    color: $text-primary;
+  }
+
+  &__sentence {
+    margin: 4px 0 0;
+    font-size: $font-xl;
+    line-height: 1.4;
+    color: $text-light;
+  }
+}
+
+// Groups stack 64px apart.
+.wn-group + .wn-group { margin-top: 64px; }
+
+// ---- SegmentedControl ---------------------------------------------------------------------
+.wn-segmented {
+  display: inline-flex;
+  max-width: 100%;
+  padding: 4px;
+  gap: 4px;
+  background: $bg-dark;
+  border-radius: 12px;
+  overflow-x: auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar { display: none; }
+
+  &__option {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    gap: $wn-s1;
+    min-height: 44px;
+    padding: 0 $wn-s2;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: $text-light;
+    font: inherit;
+    font-size: $font-xl;
+    white-space: nowrap;
+    cursor: pointer;
+
+    &:hover { background: $bg-tertiary; }
+    &:focus-visible { outline: 2px solid $text-accent; outline-offset: -2px; }
+
+    &.is-active {
+      background: $bg-tertiary;
+      color: $text-primary;
+      box-shadow: inset 0 0 0 1px $text-accent;
+    }
+  }
+
+  &__img { width: 32px; height: 32px; border-radius: $radius-circle; object-fit: cover; }
 }
