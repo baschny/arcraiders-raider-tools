@@ -45,7 +45,7 @@
       "lootHelper": "Assistente de loot",
       "quartermaster": "Quartermaster",
       "maps": "Mapas",
-      "whatsNew": "Novidades"
+      "whatsNew": "Itens de Trilha Congelada"
     }
   },
   "dashboard": {
@@ -59,8 +59,8 @@
       "allTools": "Todas as ferramentas"
     },
     "whatsNew": {
-      "title": "Novidades em Trilha Congelada",
-      "description": "Vem da versão 1.x? Veja para que servem os novos itens, como funcionam a pesquisa e as armas amplificadas e o que mudou em receitas, reciclagem e comerciantes."
+      "title": "Itens novos em Trilha Congelada",
+      "description": "Vem da versão 1.x? Veja para que serve cada item novo, quais itens antigos ganharam novos usos e o que mudou em receitas, reciclagem e comerciantes."
     },
     "tools": {
       "schedule": "Visualize a agenda de eventos dos mapas de ARC Raiders em uma visão melhor para planejar seus raids.",
@@ -902,10 +902,10 @@
       "lockedUnavailable": "Indisponível com esta escolha",
       "needsResearch": "Requer pesquisa"
     },
-    "title": "Novidades em Trilha Congelada",
-    "subtitle": "A atualização 2.0 em resumo para raiders que estão voltando",
-    "loading": "Carregando novidades...",
-    "navLabel": "Abas de novidades",
+    "title": "Itens novos em Trilha Congelada",
+    "subtitle": "Para que servem os itens da 2.0 e onde você os usa. O novo mapa, a árvore de habilidade e os novos inimigos ARC não estão incluídos aqui.",
+    "loading": "Carregando os itens novos...",
+    "navLabel": "Abas do guia de itens",
     "research": {
       "build": "Construir no posto avançado",
       "level": "Nível {n}",
@@ -1134,7 +1134,7 @@
         "sentence": "Novas fabricações durante a incursão, estampas de arma e a chave da Entrada de Imperador."
       },
       "changes": {
-        "title": "O que mudou no que eu já conheço?",
+        "title": "O que mudou nos itens que eu já conheço?",
         "sentence": "Receitas, reciclagem, estoque dos comerciantes e tamanhos de armazenamento diferentes da 1.45."
       }
     },

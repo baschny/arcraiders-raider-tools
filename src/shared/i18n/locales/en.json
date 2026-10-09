@@ -79,7 +79,7 @@
       "lootHelper": "Looting Helper",
       "quartermaster": "Quartermaster",
       "maps": "Maps",
-      "whatsNew": "What’s new"
+      "whatsNew": "Frozen Trail items"
     }
   },
   "dashboard": {
@@ -93,8 +93,8 @@
       "allTools": "All tools"
     },
     "whatsNew": {
-      "title": "What’s new in Frozen Trail",
-      "description": "Coming from 1.x? See what the new items are for, how research and Amplified weapons work, and what changed in recipes, recycling and traders."
+      "title": "New items in Frozen Trail",
+      "description": "Coming from 1.x? See what each new item is for, which old items got new uses, and what changed in recipes, recycling and traders."
     },
     "tools": {
       "schedule": "Visualize the ARC Raiders map events schedule in a better overview to plan your raids.",
@@ -1353,10 +1353,10 @@
       "lockedUnavailable": "Not available with this choice",
       "needsResearch": "Needs research"
     },
-    "title": "What’s new in Frozen Trail",
-    "subtitle": "The 2.0 update at a glance for returning raiders",
-    "loading": "Loading what’s new...",
-    "navLabel": "What’s new tabs",
+    "title": "New items in Frozen Trail",
+    "subtitle": "What the 2.0 items are for and where you use them. The new map, skill tree and ARC enemies are not covered here.",
+    "loading": "Loading the new items...",
+    "navLabel": "Item guide tabs",
     "research": {
       "build": "Build at the Outpost",
       "level": "Level {n}",
@@ -1585,7 +1585,7 @@
         "sentence": "New in-raid crafts, weapon stencils and the Emperor Gateway key."
       },
       "changes": {
-        "title": "What changed for things I already know?",
+        "title": "What changed for items I already know?",
         "sentence": "Recipes, recycling, trader stock and stash sizes that differ from 1.45."
       }
     },

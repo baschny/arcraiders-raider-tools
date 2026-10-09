@@ -79,7 +79,7 @@
       "lootHelper": "Loot-Helfer",
       "quartermaster": "Quartermaster",
       "maps": "Karten",
-      "whatsNew": "Neuigkeiten"
+      "whatsNew": "Gegenstände in Überfrorener Pfad"
     }
   },
   "dashboard": {
@@ -93,8 +93,8 @@
       "allTools": "Alle Tools"
     },
     "whatsNew": {
-      "title": "Neu in Überfrorener Pfad",
-      "description": "Du kennst 1.x? Hier siehst du, wofür die neuen Gegenstände da sind, wie Forschung und verstärkte Waffen funktionieren und was sich bei Rezepten, Recycling und Händlern geändert hat."
+      "title": "Neue Gegenstände in Überfrorener Pfad",
+      "description": "Du kennst 1.x? Hier siehst du, wofür jeder neue Gegenstand da ist, welche alten Gegenstände neue Verwendungen haben und was sich bei Rezepten, Recycling und Händlern geändert hat."
     },
     "tools": {
       "schedule": "Visualisiere den ARC Raiders Karten-Ereignisplan in einer besseren Übersicht, um deine Raids zu planen.",
@@ -1285,10 +1285,10 @@
       "lockedUnavailable": "Mit dieser Auswahl nicht verfügbar",
       "needsResearch": "Braucht Forschung"
     },
-    "title": "Neu in Überfrorener Pfad",
-    "subtitle": "Das Update 2.0 auf einen Blick für zurückkehrende Raider",
-    "loading": "Neuigkeiten werden geladen...",
-    "navLabel": "Neuigkeiten-Tabs",
+    "title": "Neue Gegenstände in Überfrorener Pfad",
+    "subtitle": "Wofür die Gegenstände aus 2.0 da sind und wo du sie verwendest. Die neue Karte, der Fertigkeitsbaum und die neuen ARC-Gegner sind hier nicht enthalten.",
+    "loading": "Neue Gegenstände werden geladen...",
+    "navLabel": "Tabs des Gegenstands-Guides",
     "research": {
       "build": "Im Außenposten bauen",
       "level": "Stufe {n}",
@@ -1517,7 +1517,7 @@
         "sentence": "Neue Herstellung im Raid, Waffenschablonen und der Schlüssel zum Kaiser-Portal."
       },
       "changes": {
-        "title": "Was hat sich bei Bekanntem geändert?",
+        "title": "Was hat sich bei bekannten Gegenständen geändert?",
         "sentence": "Rezepte, Recycling, Händlerangebot und Lagergrößen, die sich von 1.45 unterscheiden."
       }
     },
