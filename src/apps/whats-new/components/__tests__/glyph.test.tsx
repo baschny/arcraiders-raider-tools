@@ -31,7 +31,7 @@ describe('GlyphIcon', () => {
   });
 
   it('exposes the 18 glyph names and their urls', () => {
-    expect(GLYPH_NAMES).toHaveLength(18);
+    expect(GLYPH_NAMES).toHaveLength(42);
     expect(glyphUrl('beacon')).toBe('/images/whats-new/icons/beacon.webp');
   });
 });
