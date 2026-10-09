@@ -1,3 +1,4 @@
 @use '../../../shared/styles/variables' as *;
 
-// Styles of the old-items tab (.wn-tab-old-items).
+// Styles of the old-items tab (.wn-tab-old-items). It shares the purpose groups and detail panel
+// styles (.wn-nitems-*) with the new-items tab, see _tab-new-items.scss.

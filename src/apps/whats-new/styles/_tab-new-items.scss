@@ -1,3 +1,94 @@
 @use '../../../shared/styles/variables' as *;
 
-// Styles of the new-items tab (.wn-tab-new-items).
+// Styles of the new-items tab (.wn-tab-new-items). The detail panel classes (.wn-nitems-*) are
+// shared with the old-items tab.
+
+.wn-nitems-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-right: 8px;
+
+  &__name {
+    margin: 0;
+    font-size: $font-3xl;
+    font-weight: 700;
+    color: $text-primary;
+  }
+
+  &__note {
+    margin: 0;
+    font-size: $font-xl;
+    line-height: 1.4;
+    color: $text-light;
+  }
+}
+
+.wn-nitems-block {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__heading {
+    margin: 0;
+    font-size: $font-lg;
+    font-weight: 600;
+    color: $text-secondary;
+  }
+
+  &--lost {
+    padding-top: 16px;
+    border-top: $border-width-thin solid $border-default;
+  }
+}
+
+.wn-nitems-use {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 240px;
+  gap: 24px;
+  align-items: start;
+
+  @media (max-width: $breakpoint-mobile) {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  &__targets {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 16px;
+
+    .wn-tile { width: auto; }
+    .wn-tile--64 { width: 96px; }
+    .wn-tile--48 { width: 80px; }
+  }
+
+  &__more {
+    align-self: center;
+    font-size: $font-xl;
+    color: $text-secondary;
+  }
+
+  &__where {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 64px;
+    font-size: $font-xl;
+    color: $text-light;
+  }
+
+  &__where-label { color: $text-secondary; }
+  &__where-img { width: 48px; height: 48px; object-fit: contain; }
+}
+
+.wn-nitems-generic {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border-radius: 8px;
+  background: $bg-quaternary;
+  color: $text-light;
+}
