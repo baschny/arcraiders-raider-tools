@@ -4,6 +4,7 @@ import {
 import type { ReactElement, ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 import { ItemIcon } from '../../../shared/components/ItemIcon';
+import { useLocale } from '../../../shared/context/LocaleContext';
 import type { ItemRef } from './types';
 
 export interface HoverRow {
@@ -91,6 +92,7 @@ export interface ItemHoverCardBodyProps {
 
 /** The card content without positioning; rendered inside the portal. */
 export function ItemHoverCardBody({ item, subtitle, badges, sections }: ItemHoverCardBodyProps) {
+  const { tm } = useLocale();
   const shown = sections.filter((s) => s.rows.length > 0);
   return (
     <>
@@ -132,7 +134,7 @@ export function ItemHoverCardBody({ item, subtitle, badges, sections }: ItemHove
             ))}
           </div>
           {section.more !== undefined && section.more > 0 && (
-            <div className="wn-hc__more">+{section.more} more</div>
+            <div className="wn-hc__more">{tm('whatsNew.common.more', { count: section.more })}</div>
           )}
         </div>
       ))}

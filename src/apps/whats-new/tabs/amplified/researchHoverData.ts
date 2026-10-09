@@ -24,7 +24,12 @@ function leafKeys(o: ObjectiveNode | undefined): string[] {
  * Hover content of an Amplified research item: the research task (quest) that unlocks it with its exact
  * objectives, then what researching it costs and where.
  */
-export function buildResearchHover(data: WhatsNewPageData, tm: Translate, researchItemId: string): ResearchHoverContent | undefined {
+export function buildResearchHover(
+  data: WhatsNewPageData,
+  tm: Translate,
+  formatNumber: (value: number) => string,
+  researchItemId: string,
+): ResearchHoverContent | undefined {
   const offer = Object.values(data.research?.structure.research ?? {}).find((o) => o.rewards?.some((r) => r.itemId === researchItemId));
   if (!offer) return undefined;
   const item = toItemRef(data.catalog, researchItemId);
@@ -51,7 +56,7 @@ export function buildResearchHover(data: WhatsNewPageData, tm: Translate, resear
     const rows: HoverRow[] = offer.cost.items.map((a) => {
       const ref = toItemRef(data.catalog, a.itemId);
       // Research Points are a currency: plain number, no "×"
-      const amount = a.itemId === 'research_points' ? a.quantity.toLocaleString() : `${a.quantity.toLocaleString()}×`;
+      const amount = a.itemId === 'research_points' ? formatNumber(a.quantity) : `${formatNumber(a.quantity)}×`;
       return { key: a.itemId, item: ref, label: ref.name, amount };
     });
     rows.push({

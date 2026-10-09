@@ -31,6 +31,8 @@ export interface HoverContext {
   offers: Map<string, { rp: number; level: number }>;
   /** Study item to the Research Points it gives. */
   rpGiven: Map<string, number>;
+  /** Formats a Research Points amount in the page language ("1,500", "1.500"). */
+  formatRp: (rp: number) => string;
 }
 
 const RP_ITEM = 'research_points';
@@ -41,7 +43,12 @@ function costItems(cost: unknown): Amount[] {
   return cost && typeof cost === 'object' && 'items' in cost ? ((cost as { items: Amount[] }).items ?? []) : [];
 }
 
-export function createHoverContext(data: WhatsNewPageData, t: T, tm: TM): HoverContext {
+export function createHoverContext(
+  data: WhatsNewPageData,
+  t: T,
+  tm: TM,
+  formatNumber: (value: number) => string = (value) => value.toLocaleString('en-US'),
+): HoverContext {
   const labels: RefLabels = {
     level: (bench, level) => tm('whatsNew.new-items.detail.level', { bench, level }),
     slots: (slots) => tm('whatsNew.new-items.detail.slots', { n: slots }),
@@ -60,10 +67,9 @@ export function createHoverContext(data: WhatsNewPageData, t: T, tm: TM): HoverC
     offers.set(reward.itemId, { rp: items.find((a) => a.itemId === RP_ITEM)?.quantity ?? o.researchPoints, level: o.benchLevel });
   }
   const designUnlocks = new Map(Object.values(data.outpost?.structure.designs ?? {}).map((d) => [d.id, d.unlocks?.[0]]));
-  return { data, t, tm, labels, blueprintUnlocks: data.blueprints ? unlockMap(data) : new Map(), designUnlocks, offers, rpGiven };
+  return { data, t, tm, labels, blueprintUnlocks: data.blueprints ? unlockMap(data) : new Map(), designUnlocks, offers, rpGiven, formatRp: formatNumber };
 }
 
-export const formatRp = (rp: number): string => rp.toLocaleString('en-US');
 
 /** "Research Station level 2", "Research Station build" for level 1. */
 export function benchLevelLabel(ctx: HoverContext, bench: string, level: number): string {
@@ -232,7 +238,7 @@ export function buildHover(ctx: HoverContext, source: HoverSource): HoverContent
           label: shown.name,
           detail: level
             ? offer
-              ? tm('whatsNew.new-items.hover.researchDetail', { level, rp: formatRp(offer.rp) })
+              ? tm('whatsNew.new-items.hover.researchDetail', { level, rp: ctx.formatRp(offer.rp) })
               : tm('whatsNew.new-items.hover.researchLevel', { level })
             : undefined,
           amount: times(use.amount),

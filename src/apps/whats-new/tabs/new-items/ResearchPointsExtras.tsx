@@ -2,7 +2,7 @@ import { Info } from 'lucide-react';
 import { useLocale } from '../../../../shared/context/LocaleContext';
 import { ItemIcon } from '../../../../shared/components/ItemIcon';
 import { toItemRef } from '../../hooks/useWhatsNewData';
-import { formatRp, type HoverContext } from './hover';
+import type { HoverContext } from './hover';
 import type { NewItemsModel } from './model';
 
 export interface ResearchPointsExtrasProps {
@@ -48,12 +48,12 @@ export function ResearchPointsExtras({ ctx, model }: ResearchPointsExtrasProps) 
       {scale.length > 0 && rpScale.min && rpScale.max && (
         <section className="wn-rpscale" aria-label={t('whatsNew.new-items.rp.scaleLabel')}>
           <h4 className="wn-rpscale__title">
-            {tm('whatsNew.new-items.rp.scaleTitle', { min: formatRp(rpScale.min.rp), max: formatRp(rpScale.max.rp) })}
+            {tm('whatsNew.new-items.rp.scaleTitle', { min: ctx.formatRp(rpScale.min.rp), max: ctx.formatRp(rpScale.max.rp) })}
           </h4>
           <ol className="wn-rpscale__steps">
             {scale.map((s) => (
               <li className="wn-rpscale__step" key={s.id}>
-                <span className="wn-rpscale__value">{tm('whatsNew.research.rpAmount', { n: formatRp(s.rp) })}</span>
+                <span className="wn-rpscale__value">{tm('whatsNew.research.rpAmount', { n: ctx.formatRp(s.rp) })}</span>
                 <span className="wn-rpscale__label">{s.label}</span>
               </li>
             ))}

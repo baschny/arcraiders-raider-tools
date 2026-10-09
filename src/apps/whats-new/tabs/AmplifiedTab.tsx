@@ -37,8 +37,8 @@ function WeaponDetail({ weapon, ref_, structure, text }: { weapon: WeaponRow; re
 }
 
 export function AmplifiedTab({ data }: AmplifiedTabProps) {
-  const { t, tm } = useLocale();
-  const researchHover = useMemo(() => (id: string) => buildResearchHover(data, tm, id), [data, tm]);
+  const { t, tm, formatNumber } = useLocale();
+  const researchHover = useMemo(() => (id: string) => buildResearchHover(data, tm, formatNumber, id), [data, tm, formatNumber]);
   const { catalog } = data;
   const ref = (slug: string) => toItemRef(catalog, slug);
 

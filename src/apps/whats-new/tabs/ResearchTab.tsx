@@ -22,13 +22,13 @@ const TILE = 80;
 const GRID_MIN = 96;
 
 export function ResearchTab({ data }: ResearchTabProps) {
-  const { t, tm } = useLocale();
+  const { t, tm, formatNumber } = useLocale();
   const rd = useMemo(() => buildResearchData(data), [data]);
   const [list, setList] = useState<ListId>('craftable');
 
   const benchName = data.benches.text[RESEARCH_BENCH]?.name ?? data.benches.structure.benches[RESEARCH_BENCH]?.nameEn ?? '';
   const levelIcon = (level: number) => rd.levels.find((l) => l.level === level)?.icon;
-  const rpText = (rp: number) => tm('whatsNew.research.rpAmount', { n: rp.toLocaleString('en-US') });
+  const rpText = (rp: number) => tm('whatsNew.research.rpAmount', { n: formatNumber(rp) });
   const benchLevelText = (n: number) => tm('whatsNew.research.benchLevel', { bench: benchName, n });
 
   // The researchable lists show the unlocked item (blueprints: in the blueprint frame; designs: the furniture).
