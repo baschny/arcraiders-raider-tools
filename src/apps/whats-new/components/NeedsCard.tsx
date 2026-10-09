@@ -13,11 +13,40 @@ export interface NeedsCardProps {
   alsoNeeds?: readonly TileSpec[];
   /** Extra line under the heading block, e.g. "Needs 4 Outpost rooms". */
   note?: React.ReactNode;
+  /**
+   * 'full' (default): big result tile with its name beside it, the lists below.
+   * 'compact': result tile (name under it) on the left, a divider, the "Needs" list on the right — for grids of recipes.
+   */
+  layout?: 'full' | 'compact';
   className?: string;
 }
 
-export function NeedsCard({ result, where, needs, alsoNeeds, note, className }: NeedsCardProps) {
+export function NeedsCard({ result, where, needs, alsoNeeds, note, layout = 'full', className }: NeedsCardProps) {
   const { t } = useLocale();
+  if (layout === 'compact') {
+    return (
+      <article className={['wn-needs', 'wn-needs--compact', className ?? ''].filter(Boolean).join(' ')}>
+        <div className="wn-needs__result">
+          <ItemTile item={result.item} size={80} amount={result.amount} isBlueprint={result.isBlueprint} />
+        </div>
+        <div className="wn-needs__block">
+          <h5 className="wn-needs__heading">{t('whatsNew.common.needs')}</h5>
+          <div className="wn-needs__row">
+            {needs.map((need, i) => (
+              <ItemTile key={`${need.item.id}-${i}`} item={need.item} size={48} amount={need.amount} sublabel={need.sublabel} isBlueprint={need.isBlueprint} />
+            ))}
+          </div>
+          {(where || note) && (
+            <span className="wn-needs__sub">
+              {where?.label}
+              {where && note ? ' · ' : ''}
+              {note}
+            </span>
+          )}
+        </div>
+      </article>
+    );
+  }
   return (
     <article className={['wn-needs', className ?? ''].filter(Boolean).join(' ')}>
       <header className="wn-needs__head">

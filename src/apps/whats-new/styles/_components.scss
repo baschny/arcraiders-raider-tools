@@ -305,6 +305,37 @@ $green: #4caf50;
     .wn-tile--64 { width: 96px; }
     .wn-tile--48 { width: 80px; }
   }
+
+  // Compact: [result + name] | [Needs list], aligned at the top, same structure in every card of a grid.
+  &--compact {
+    display: grid;
+    grid-template-columns: 112px minmax(0, 1fr);
+    align-items: start;
+    gap: $wn-s2;
+    height: 100%;
+    padding: $wn-s2;
+    // compact cards sit inside a panel: one step lighter so each recipe reads as its own unit
+    background: $bg-tertiary;
+    border-radius: 10px;
+  }
+
+  &--compact &__result {
+    display: flex;
+    justify-content: center;
+    padding-right: $wn-s2;
+    border-right: $border-width-thin solid $border-default;
+    min-height: 100%;
+
+    .wn-tile { width: 112px; }
+  }
+
+  &--compact &__row { gap: $wn-s1; }
+
+  @media (max-width: $breakpoint-mobile) {
+    &--compact { grid-template-columns: 88px minmax(0, 1fr); }
+    &--compact &__result .wn-tile { width: 88px; }
+    &--compact &__row .wn-tile--48 { width: 64px; }
+  }
 }
 
 // ---- CompareRows --------------------------------------------------------------------------

@@ -42,7 +42,7 @@ function SkillGroups({ groups }: { groups: SkillGroup[] }) {
           </h4>
           <div className="wn-crafting__cards">
             {g.recipes.map((r) => (
-              <NeedsCard key={r.result.id} result={{ item: r.result }} needs={r.cost} />
+              <NeedsCard key={r.result.id} layout="compact" result={{ item: r.result }} needs={r.cost} />
             ))}
           </div>
         </div>
