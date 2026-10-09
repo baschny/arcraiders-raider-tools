@@ -9,6 +9,7 @@ import {
   ListTodo,
   Menu,
   Package,
+  Sparkles,
 } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
 import { LoginButton } from './LoginButton';
@@ -16,6 +17,7 @@ import { useLocale } from '../context/LocaleContext';
 
 const TOOLS = [
   { path: '/', nameKey: 'app.name', icon: Home },
+  { path: '/whats-new', nameKey: 'shared.tools.whatsNew', icon: Sparkles },
   { path: '/schedule', nameKey: 'shared.tools.schedule', icon: Calendar },
   { path: '/craft-calculator', nameKey: 'shared.tools.craftCalculator', icon: Calculator },
   { path: '/quests', nameKey: 'shared.tools.quests', icon: ListTodo },
@@ -44,7 +46,11 @@ export function Header() {
   const scrollTargetRef = useRef<EventTarget | null>(null);
 
   const currentPathname = normalizePathname(location.pathname);
-  const currentTool = TOOLS.find((tool) => tool.path === currentPathname) || TOOLS[0];
+  const currentTool = TOOLS.find(
+    (tool) =>
+      tool.path === currentPathname ||
+      (tool.path !== '/' && currentPathname.startsWith(`${tool.path}/`)),
+  ) || TOOLS[0];
   const shouldAutoHideOnScroll = currentPathname !== '/schedule' && currentPathname !== '/maps';
   const currentLocaleOption =
     localeOptions.find((option) => option.code === locale) ?? localeOptions[0];

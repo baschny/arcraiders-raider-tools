@@ -77,7 +77,9 @@
       "craftCalculator": "クラフト計算機",
       "quests": "クエストトラッカー",
       "lootHelper": "ルートヘルパー",
-      "quartermaster": "補給管理"
+      "quartermaster": "補給管理",
+      "maps": "マップ",
+      "whatsNew": "凍った道のアイテム"
     }
   },
   "dashboard": {
@@ -90,12 +92,17 @@
       "affectedAppLink": "Open affected tool",
       "allTools": "All tools"
     },
+    "whatsNew": {
+      "title": "凍った道の新アイテム",
+      "description": "1.x から戻ってきましたか？新アイテムの用途、既存アイテムの新しい使い道、レシピ・リサイクル・トレーダーの変更点をご覧ください。"
+    },
     "tools": {
       "schedule": "ARC Raiders のマップイベントスケジュールを見やすく表示し、レイド計画を立てやすくします。",
       "craftCalculator": "スタッシュの空き容量を最大化するために、何個クラフトすべきかを計算します。",
       "quests": "インタラクティブなクエストツリーでクエスト進行を追跡します。",
       "lootHelper": "クラフトチェーンを可視化し、レイド中に何を拾うべきか判断できます。",
-      "quartermaster": "スタッシュ、装備、隠れ家要件を一か所で管理できます。"
+      "quartermaster": "スタッシュ、装備、隠れ家要件を一か所で管理できます。",
+      "maps": "すべてのマップとマップ条件で、アイテムをどこでルートできるか、ARC の敵がどこに出現するかを調べられます。"
     }
   },
   "pages": {
@@ -767,13 +774,13 @@
         "qtyToRecycle": "Qty to Recycle",
         "yields": "Yields",
         "why": "Why",
-        "craftTimes": "Craft Times",
-        "totalOutput": "Total Output",
         "inputsNeeded": "Inputs Needed",
         "upgradeFrom": "Upgrade From",
         "upgradeTo": "Upgrade To",
         "qtyToUpgrade": "Qty to Upgrade",
-        "durability": "Durability"
+        "durability": "Durability",
+        "craftTimes": "Craft Times",
+        "totalOutput": "Total Output"
       },
       "blueprintUnlockCount": "{unlocked}/{total} unlocked"
     },
@@ -786,16 +793,16 @@
       "foundIn": "Found In:",
       "neededForLists": "Needed for Lists",
       "neededForQuests": "Needed for Quests",
-      "neededForCrafting": "Needed for Crafting (Direct / Indirect)",
       "neededForProject": "Needed for {project}",
-      "couldBeUsedFor": "Could be used for",
       "recycle": "Recycle",
       "salvage": "Salvage",
       "craftingRecipe": "Crafting Recipe",
       "craftingRecipeIncludingUpgrades": "Crafting Recipe (including Upgrades)",
       "recyclesInto": "Recycles Into",
       "salvagesInto": "Salvages Into",
-      "neededForRepair": "Needed for Repair"
+      "neededForRepair": "Needed for Repair",
+      "neededForCrafting": "Needed for Crafting (Direct / Indirect)",
+      "couldBeUsedFor": "Could be used for"
     },
     "itemIcon": {
       "uncraftable": "Cannot be crafted — requirements not met"
@@ -891,6 +898,655 @@
       "loadout": "Loadout",
       "gameDataLastSync": "Game Data Last Sync",
       "never": "Never"
+    }
+  },
+  "maps": {
+    "header": {
+      "gameData": "ゲームデータ {version} · {date}",
+      "gameDataTitle": "Steam マニフェスト {manifest}、マップデータのビルド {date}"
+    },
+    "loader": {
+      "retry": "再試行",
+      "reloadPage": "ページを再読み込み",
+      "error": {
+        "network": "マップデータを読み込めませんでした。接続を確認して、もう一度お試しください。",
+        "missing": "現在マップデータを利用できません。少し待ってから、もう一度お試しください。",
+        "missingMap": "マップ {map} のデータがありません。少し待ってから、もう一度お試しください。",
+        "schema": "マップデータが更新されたため、このページの新しいバージョンが必要です。ページを再読み込みしてください。"
+      }
+    },
+    "conditions": {
+      "normal": "通常"
+    },
+    "modes": {
+      "loot": "ルート",
+      "label": "モード"
+    },
+    "sidebar": {
+      "hide": "サイドバーを隠す",
+      "showFilters": "フィルターを表示",
+      "hideFilters": "フィルターを隠す"
+    },
+    "mapBar": {
+      "scoreTitle": "{map}: アイテムスコア {score}（通常条件）",
+      "label": "マップ"
+    },
+    "conditionBar": {
+      "normal": "通常マップ",
+      "normalAlso": "通常マップ — 固定ルートと出現が次と同じ: {conditions}",
+      "major": "主要条件",
+      "majorLive": "主要条件（現在のスケジュール中）",
+      "minor": "副次条件",
+      "minorLive": "副次条件（現在のスケジュール中）",
+      "sameAsNormal": "+ {count} 件は {normal} と同じ",
+      "label": "マップ条件"
+    },
+    "help": {
+      "label": "ヘルプ"
+    },
+    "search": {
+      "placeholder": "アイテムを検索…",
+      "clear": "クリア"
+    },
+    "loot": {
+      "searchPlaceholder": "アイテムを検索（例: モーター）",
+      "goalsTitle": "ルートヘルパーの目標",
+      "tablesTitle": "各固定ルートテーブルのうち、このアイテムに割り当てられる割合",
+      "noTables": "どの固定ルートテーブルにも含まれない",
+      "notInLoot": "このアイテムはどの固定ルートテーブルにも含まれていません。",
+      "onlyHarvested": "{containers} からのみ入手でき、これらは次の条件中にだけ存在します: {conditions}。",
+      "conditionWhy": "{condition}（{reason}）"
+    },
+    "conditionReasons": {
+      "onHiatus": "休止中",
+      "neverReleased": "未実装",
+      "tutorial": "チュートリアル",
+      "practiceRange": "練習場",
+      "notInSchedule": "スケジュールにない"
+    },
+    "item": {
+      "tiers": {
+        "low": "低",
+        "mid": "中",
+        "high": "高"
+      }
+    },
+    "best": {
+      "title": "ベストエリア · {condition}",
+      "helpLabel": "スコアについて",
+      "help": "スコアとは、そのアイテムに振り分けられうるルートの価値です。各ルートハンドラーのプールを、そのテーブル・エントリ・アイテムに分配し、スポットごとに割り振ったものです。場所同士を比べるための指標で、ドロップ確率ではありません。通常と同じ固定ルートの条件は、通常にまとめられています。",
+      "spotsOne": "{hits}/{count} スポット",
+      "spots": "{hits}/{count} スポット",
+      "perSpot": "スポットあたり {score}"
+    },
+    "filters": {
+      "title": "出現スポット",
+      "helpLabel": "フィルターについて",
+      "help": "矢印を押すとグループが開きます。行の残りの部分で、マップ上にグループを表示・非表示にします。アイテムを選び何も選択していない場合は、そのアイテムを置けるスポットがすべて表示されます。コンテナは、そのカテゴリがアイテムのカテゴリと一致する場合のみ数えられます（機械アイテムは機械コンテナ、植物は自分の種類のアイテムのみ）。スポーンするコンテナ（弾薬箱、隠匿物、残骸）はサーバー側のテーブルを抽選し、「?」で表示されます。",
+      "auto": "自動",
+      "autoTitle": "そのアイテムを置けるスポットをすべて表示中",
+      "showAll": "すべて表示",
+      "hideAll": "すべて非表示",
+      "expand": "展開",
+      "expandGroup": "{group} を展開",
+      "collapseGroup": "{group} を折りたたむ",
+      "count": {
+        "spotsOne": "{count} スポット",
+        "spots": "{count} スポット",
+        "hitsOne": "{count} スポットのうち {hits} 箇所にアイテムを置ける",
+        "hits": "{count} スポットのうち {hits} 箇所にアイテムを置ける",
+        "noHitsOne": "唯一のスポットにはアイテムを置けない",
+        "noHits": "{count} スポットのいずれにもアイテムを置けない",
+        "serverSide": "中身はサーバー側で抽選され、ゲームファイルには含まれない",
+        "expectedOne": "1ラウンドで期待値 ~{expected}（候補 {count} スポット中）",
+        "expected": "1ラウンドで期待値 ~{expected}（候補 {count} スポット中）"
+      }
+    },
+    "arc": {
+      "title": "ARC の敵 · {condition}",
+      "helpLabel": "ARC スポナーについて",
+      "help": "この条件で各敵を出現させられるスポナーの期待数です。敵を選ぶと、その敵のスポナーと巡回ルートだけを表示します（複数同時に選択可能、それぞれ別の色）。塗りつぶしのマーカーは巡回ルートを持ちます。スポナーにカーソルを合わせるとグループと再出現タイマーが表示され、クリックするとそのスポーングループを固定できます。",
+      "showAll": "すべての敵を表示",
+      "expectedOne": "1ラウンドで期待値 ~{expected}（スポナー {count} 個中）",
+      "expected": "1ラウンドで期待値 ~{expected}（スポナー {count} 個中）",
+      "empty": "この条件には ARC スポナーがありません。"
+    },
+    "canvas": {
+      "label": "{map} のマップ。ここに描かれているスポット、エリア、敵はサイドバーに一覧されています。"
+    },
+    "zoom": {
+      "in": "拡大",
+      "out": "縮小",
+      "fit": "マップに合わせる（ダブルクリック）"
+    },
+    "overlays": {
+      "title": "レイヤー",
+      "heat": "ヒートマップ",
+      "height": "高さマーク",
+      "heightTitle": "上に表示される点: 推定地表より 3.5 m 以上高い（上階・屋根）。下に表示される点: 3.5 m 以上低い（地下・トンネル）。高さマップから推定したもので、ステラ・モンティスでは表示されません。",
+      "pois": "エリアと名称",
+      "zones": "ルートゾーン",
+      "zonesTitle": "ゲーム内のルートゾーン: 赤 = 豊富、黄 = 密集、灰 = まばら。",
+      "bounds": "プレイ可能エリア"
+    },
+    "layers": {
+      "title": "マップレイヤー: これらのエリアに入ると、ゲーム内マップが切り替わります",
+      "surface": "地上",
+      "underground": "地下",
+      "upperFloor": "上階",
+      "lowerFloor": "下階",
+      "label": "マップレイヤー"
+    },
+    "legend": {
+      "score": "スポットあたりのアイテムスコア",
+      "low": "低",
+      "high": "高"
+    },
+    "zones": {
+      "abundant": "豊富なルート",
+      "dense": "密集したルート",
+      "sparse": "まばらなルート"
+    },
+    "tooltip": {
+      "score": "スコア {score}",
+      "serverTablesOne": "+ サーバー側のルートテーブル {count} 件（中身はファイルにない）",
+      "serverTables": "+ サーバー側のルートテーブル {count} 件（中身はファイルにない）",
+      "oneOf": "いずれか: {kinds}",
+      "inArea": "{area} 内",
+      "spawnChance": "出現確率 ~{chance}",
+      "notScored": "中身はサーバー側（スコアなし）",
+      "group": "グループ",
+      "groupSpotsOne": "{group}: {count} スポットのうち {min}（囲み表示）",
+      "groupSpots": "{group}: {count} スポットのうち {min}（囲み表示）",
+      "groupSpawnersOne": "{group}: {count} 個のスポナーのうち {min}（囲み表示）",
+      "groupSpawners": "{group}: {count} 個のスポナーのうち {min}（囲み表示）",
+      "tapPin": "タップしてグループを固定",
+      "tapUnpin": "タップしてグループの固定を解除",
+      "clickPin": "クリックしてグループを固定",
+      "clickUnpin": "クリックしてグループの固定を解除",
+      "arcSpawner": "ARC スポナー",
+      "enemySpawner": "敵スポナー",
+      "patrols": "巡回ルートあり",
+      "tableNotExported": "テーブル {table}（未エクスポート）",
+      "tier": "ティア {tier}",
+      "area": "エリア",
+      "height": "≈ 地表より {height} m",
+      "covered": "屋根あり",
+      "openSky": "屋外",
+      "noKey": "鍵アイテムなし（別の方法で開く）"
+    },
+    "timing": {
+      "noRespawn": "破壊後に再出現しない",
+      "respawn": "破壊後 {time} で再出現",
+      "randomDelay": "+ {min}–{max} s のランダムな遅延",
+      "noDynamic": "動的な再出現なし",
+      "airDrop": "グループ破壊後 {time} で投下",
+      "sneak": "視界外での再出現まで {time}",
+      "sneakIndoors": "視界外での再出現まで {time}（屋内）",
+      "activates": "{distance} m 以内で起動"
+    },
+    "units": {
+      "seconds": "{n} s",
+      "minutes": "{n} min",
+      "never": "なし"
+    },
+    "categories": {
+      "Exits": "脱出地点と出現地点",
+      "Containers": "コンテナ",
+      "RaiderSpawns": "レイダーのコンテナ",
+      "ArcSpawns": "ARC の残骸と墜落機",
+      "Puzzles": "パズル",
+      "Features": "マップの要素"
+    },
+    "kinds": {
+      "ExtractMetro": "メトロからの脱出",
+      "ExtractLift": "エレベーターからの脱出",
+      "ExtractFan": "ファンからの脱出",
+      "ExtractGondola": "バリスティック・ゴンドラからの脱出",
+      "Hatch": "レイダーハッチ（鍵）",
+      "StationEntrance": "メトロ駅の入口",
+      "PlayerStart": "プレイヤーの出現地点",
+      "Generic": "汎用",
+      "OtherFixed": "その他",
+      "WaterTank": "給水タンク",
+      "Ground": "地面のルート",
+      "Apricot": "アプリコット",
+      "Lemon": "レモン",
+      "Olive": "オリーブ",
+      "NatureFruitBasket": "フルーツバスケット",
+      "Mushroom": "キノコ",
+      "Agave": "アガベ",
+      "Moss": "コケ",
+      "GreatMullein": "ビロードモウズイカ",
+      "Candleberries": "キャンドルベリー",
+      "Resin": "樹脂（木）",
+      "BirdNest": "鳥の巣",
+      "VolcanicRock": "火山岩",
+      "Roots": "根",
+      "Fertilizer": "肥料",
+      "SeedVault": "種子保管庫のコンソール",
+      "Seedbox": "種の箱",
+      "CacheStandard": "レイダーの隠匿物",
+      "CacheSelfDestruct": "レイダーの隠匿物（自爆式）",
+      "CacheFrozen": "レイダーの隠匿物（凍結）",
+      "NomadCache": "遊牧民の宝",
+      "CacheFirstWave": "レイダーの隠匿物（ファーストウェーブ）",
+      "AmmoBox": "弾薬箱",
+      "AmmoBoxHigh": "弾薬箱（高ティア）",
+      "WeaponCase": "武器ケース",
+      "WeaponCaseHigh": "武器ケース（高ティア）",
+      "MedicalBag": "医療バッグ",
+      "GrenadeTube": "グレネードチューブ",
+      "Backpack": "レイダーのリュック",
+      "WeaponsRack": "武器ラック",
+      "FruitBasket": "フルーツバスケット（収穫の季節）",
+      "FruitBasketWinter": "フルーツバスケット（冬）",
+      "WaspHusk": "ワスプの残骸",
+      "WaspHuskStunning": "ワスプの残骸、スタン",
+      "RocketeerHusk": "ロケッティアの残骸",
+      "RocketeerHuskStunning": "ロケッティアの残骸、スタン",
+      "DeforesterHusk": "デフォレスターの残骸",
+      "Probes": "墜落した ARC プローブ",
+      "Couriers": "ARC クーリエ",
+      "PowerSocket": "バッテリー / 燃料電池のソケット",
+      "FuelCell": "燃料電池 / バッテリー",
+      "PuzzleButton": "ボタン / スイッチ / コンソール",
+      "PuzzleRelay": "パズル用リレー",
+      "CardReader": "カードリーダー",
+      "TubeTerminal": "カラーターミナル / チューブ駅",
+      "PuzzleDoor": "パズルのドア / ゲート",
+      "HotelKey": "ホテルの鍵",
+      "FieldDepot": "フィールドデポ",
+      "FieldCrates": "フィールド・クレート",
+      "SupplyStation": "補給要請ステーション",
+      "PowerCores": "ハーベスターの動力コア",
+      "MetalDetector": "登山家の探知機",
+      "Snowpile": "雪の山（寒波）",
+      "Zipline": "ジップライン（起動式）",
+      "Lift": "リフト",
+      "Bridge": "可動橋",
+      "BridgeSwitch": "橋 / ブレーカースイッチ",
+      "LockedRoom": "施錠された部屋（鍵）",
+      "LockedDoor": "施錠されたドア（鍵）",
+      "Barricaded": "バリケードのドア（破壊）",
+      "Door": "ドア / 窓",
+      "Piano": "ピアノ"
+    },
+    "containerTypes": {
+      "Android": "アンドロイド",
+      "AntennaSet": "アンテナセット",
+      "Bus": "バス",
+      "ButtonPanel": "ボタンパネル",
+      "CabinetDoor": "キャビネット",
+      "Car01": "車 1",
+      "Car02": "車 2",
+      "Car03": "車 3",
+      "CashRegister": "レジ",
+      "Centerbench": "中央のベンチ",
+      "Closet": "クローゼット",
+      "Closet02": "クローゼット 2",
+      "Cmr": "壁面ユニット",
+      "CoffeeMachine01": "コーヒーマシン",
+      "CompressorTrailer": "コンプレッサートレーラー",
+      "Computer01": "コンピューター 1",
+      "Computer02": "コンピューター 2",
+      "Computer03": "コンピューター 3",
+      "Coms": "通信コンソール",
+      "Console_03": "コンソール",
+      "Crate": "クレート",
+      "CrateCart": "クレートカート",
+      "CupboardCafe": "カフェの戸棚",
+      "CupboardKitchen": "キッチンの戸棚",
+      "Drawer": "引き出し",
+      "DrawerMedical": "薬の引き出し",
+      "Dumpster": "大型ゴミ箱",
+      "FloodLight": "投光器",
+      "Freezer": "冷凍庫",
+      "Fridge": "冷蔵庫",
+      "Fusebox": "ヒューズボックス",
+      "Fusebox2": "ヒューズボックス 2",
+      "GeneratorM02": "発電機",
+      "Gvt": "役所のゴミ箱",
+      "GvtDesk": "役所の机",
+      "HighwayAntenna": "幹線道路のアンテナ",
+      "InformationTerminal": "案内端末",
+      "KitchenBench": "キッチンカウンター",
+      "Locker01": "ロッカー",
+      "LockerMedical01": "医療用ロッカー",
+      "Lockers": "ロッカー群",
+      "MuseumCrate_01": "博物館のクレート 1",
+      "MuseumCrate_02": "博物館のクレート 2",
+      "Parasitic": "寄生性の成長物",
+      "PressureMonitor": "圧力モニター",
+      "Refrigerator_01": "冷蔵庫",
+      "RoadBarrier03": "道路バリケード",
+      "Rocketparts_01": "ロケット部品 1",
+      "Rocketparts_02": "ロケット部品 2",
+      "Rover": "ローバー",
+      "Rsr": "研究キャビネット",
+      "RsrCabinetS": "小型研究キャビネット",
+      "RsrCartShelf": "研究カートの棚",
+      "RsrMachineM01": "研究機器",
+      "SecurityCamera01": "防犯カメラ",
+      "Server": "サーバー",
+      "Shelf03": "棚",
+      "SolarPanel03": "ソーラーパネル",
+      "SosBooth_01": "SOS ボックス",
+      "StreetSweeper": "道路清掃車",
+      "Suitcase": "スーツケース",
+      "SupportStructure": "支持構造物",
+      "TVUnit": "テレビ台",
+      "TapeDrive01": "テープドライブ 1",
+      "TapeDrive02": "テープドライブ 2",
+      "TapeDrive04": "テープドライブ 4",
+      "Transformer": "変圧器",
+      "TrashCan_01": "ゴミ箱",
+      "Trashbin": "ゴミ入れ",
+      "TruckScannerLeft01": "トラックスキャナー（左）",
+      "TruckScannerRight01": "トラックスキャナー（右）",
+      "UtilityTruck": "作業用トラック",
+      "VentMachineLarge": "大型換気装置",
+      "VentMachineLarge01": "大型換気装置 2",
+      "Workbench_01": "ワークベンチ 1",
+      "Workbench_02": "ワークベンチ 2",
+      "Wreck03": "ARC の残骸",
+      "Wrh": "倉庫の家具",
+      "vent03": "換気口"
+    }
+  },
+  "whatsNew": {
+    "amplified": {
+      "step1": "ガンスミスをレベル 4 にアップグレード",
+      "step2": "最大レベルの武器を強化モジュールと組み合わせる",
+      "step3": "パーツで強化を追加する",
+      "researchSubtitle": "強化武器の研究",
+      "researchTask": "解放: {name}",
+      "researchThen": "そのあと研究する",
+      "researchWhere": "研究ステーション レベル {level}",
+      "stepResearch": "研究タスク（クエスト）を完了して解放し、研究ステーションのレベル 4 で研究する",
+      "pickerTitle": "武器を選ぶ",
+      "pickerSentence": "武器は、必要な強化モジュールごとにまとめられています。",
+      "amplification": "強化",
+      "research": "研究",
+      "noResearch": "研究は不要",
+      "repairLine": "強化武器は Amplified Fragments で修理します。",
+      "recycleLine": "強化モジュールをリサイクルすると Amplified Fragments が {n} 個手に入ります。",
+      "roomsNote": "前哨基地の部屋が {n} 室必要",
+      "requires": "{name} が必要",
+      "cantCombine": "{names} とは組み合わせられない",
+      "lockedRequires": "先に {name} が必要",
+      "lockedExcluded": "{name} とは併用不可",
+      "lockedUnavailable": "この選択では利用できない",
+      "needsResearch": "研究が必要"
+    },
+    "title": "凍った道の新アイテム",
+    "subtitle": "2.0 の新アイテムの用途と、それを使う場所をまとめています。新しいマップ、スキルツリー、ARC の敵はここには含まれません。",
+    "loading": "新アイテムを読み込み中...",
+    "navLabel": "アイテムガイドのタブ",
+    "research": {
+      "build": "前哨基地で製作",
+      "level": "レベル {n}",
+      "blueprintCrafting": "設計図の製作",
+      "designCrafting": "デザインの製作",
+      "amplifiedResearch": "強化武器の研究",
+      "plans": "{n} 件のプラン",
+      "rpAmount": "{n} RP",
+      "step1": "見つけたアイテムを研究する",
+      "step2": "研究ポイントを獲得する",
+      "step3": "ポイントと素材を使ってプランを選ぶ",
+      "step4": "前哨基地でプランを習得する",
+      "pointsTitle": "研究ポイント",
+      "pointsText": "研究ステーションでこれらのアイテムを研究すると、ポイントが手に入ります。",
+      "stationTitle": "研究ステーション",
+      "stationText": "前哨基地に {bench} を建設し、3 回アップグレードする。",
+      "needsRoom": "前哨基地の部屋が {n} 室必要",
+      "needsRooms": "前哨基地の部屋が {n} 室必要",
+      "needsStationLevel": "研究ステーションのレベル {n} が必要",
+      "listCraftable": "研究できる設計図",
+      "listFindOnly": "見つける必要がある設計図",
+      "listDesigns": "研究できるデザイン",
+      "listFindOnlyDesigns": "見つけることしかできないデザイン",
+      "hoverTitle": "研究",
+      "browseTitle": "研究できるもの",
+      "benchLevel": "{bench} レベル {n}"
+    },
+    "outpost": {
+      "unlocks": "解放",
+      "special": "特別な選択肢",
+      "furnitureTitle": "家具",
+      "celeste": "セレステ",
+      "expansion": "レベル {from} から {to}",
+      "pickOne": "部屋を 1 つ選ぶ",
+      "benchLevel": "{bench} レベル {level}",
+      "step1": "建築素材を集める",
+      "step2": "前哨基地を拡張して部屋を選ぶ",
+      "step3": "新しい部屋ごとにステーションのアップグレードが解放される",
+      "slots": "部屋のスロット",
+      "slotsText": "前哨基地にはスロットが 4 つあります。最初のスロットにはベースルームが入り、拡張するたびに次のスロットが埋まります。",
+      "slot": "スロット {n}",
+      "furnitureText": "ベッド、椅子、ランプなどで部屋を飾りましょう。",
+      "furnitureCount": "家具 {count} 点",
+      "furnitureHow": "家具の仕組み",
+      "furnStep1": "デザインを見つけるか研究する",
+      "furnStep2": "前哨基地でデザインを習得する",
+      "furnStep3": "厚板、板金などで製作する",
+      "celesteText": "{name} が種を建築素材と交換するようになりました。"
+    },
+    "changes": {
+      "recipes": "レシピ",
+      "recipesHint": "これらのレシピは以前と異なる素材が必要です。",
+      "gadgets": "ガジェット",
+      "anvilCraft": "{name}: 製作とアップグレード",
+      "anvilRepair": "{name}: 修理",
+      "recycling": "リサイクル",
+      "recyclingHint": "これらのアイテムは、リサイクルすると以前と異なる素材が手に入ります。",
+      "traders": "トレーダー",
+      "tradersHint": "トレーダーを選ぶと、販売を開始・終了した品目と変更された価格がわかります。",
+      "stash": "保管庫",
+      "stashHint": "保管庫の各拡張にかかる費用。新しいティアは印付きで表示します。",
+      "craft": "製作",
+      "upgrade": "{from} から {to} へアップグレード",
+      "repair": "修理 {tier}",
+      "tradeNew": "新規",
+      "tradeGone": "販売終了",
+      "tradePrice": "新価格",
+      "scrapValue": "スクラップ価値 {value}",
+      "expansion": "拡張",
+      "slotCount": "スロット {count}",
+      "newTier": "新"
+    },
+    "new-items": {
+      "recycles": "リサイクル後：",
+      "purpose": {
+        "outpost": {
+          "title": "前哨基地の拡張",
+          "sentence": "新しい部屋を建設して前哨基地を広げます。"
+        },
+        "researchStation": {
+          "title": "研究ステーション",
+          "sentence": "新しい研究ステーションを建設してアップグレードします。"
+        },
+        "researchPoints": {
+          "title": "研究ポイント",
+          "sentence": "研究ステーションでこれらを研究して研究ポイントを獲得します。"
+        },
+        "gunsmith4": {
+          "title": "ガンスミス レベル 4",
+          "sentence": "新しいガンスミスのレベルに必要で、強化武器が解放されます。"
+        },
+        "amplified": {
+          "title": "強化武器",
+          "sentence": "最大レベルの武器を強化武器にして、強化を追加します。"
+        },
+        "researchBlueprints": {
+          "title": "設計図の研究",
+          "sentence": "研究ステーションで消費して、設計図とデザインを研究します。"
+        },
+        "furniture": {
+          "title": "家具",
+          "sentence": "前哨基地の部屋に置く家具を製作します。"
+        },
+        "crafting": {
+          "title": "製作",
+          "sentence": "武器、ガジェット、レイド中アイテムの製作レシピ。"
+        },
+        "stencils": {
+          "title": "武器デカール",
+          "sentence": "武器にペイントのデカールを適用します。"
+        },
+        "quests": {
+          "title": "クエストとプロジェクト",
+          "sentence": "クエストやプロジェクトに必要です。"
+        },
+        "trades": {
+          "title": "取引",
+          "sentence": "トレーダーはこれらを支払いとして受け取ります。"
+        },
+        "noUse": {
+          "title": "まだ用途なし",
+          "sentence": "今のところ必要なものはありません。売るかリサイクルしてください。"
+        },
+        "unlocks": {
+          "title": "一度きりの解放",
+          "sentence": "新しい前哨基地の部屋、研究ステーション、ガンスミス レベル 4、クエストを解放するため、一度だけ提出します。"
+        },
+        "newGear": {
+          "title": "新しい武器と装備",
+          "sentence": "2.0 で新登場。それぞれ、解放する設計図とともに掲載しています。"
+        },
+        "fallenEmperor": {
+          "title": "落ちたエンペラー",
+          "sentence": "ペンドラ峠の落ちたエンペラーのダンジョンを開くために必要なものすべて。"
+        },
+        "furnitureDecoration": {
+          "title": "家具と装飾",
+          "sentence": "これらの素材で家具を製作し、装飾アイテムを前哨基地に置きます。"
+        },
+        "keys": {
+          "title": "ペンドラ峠の鍵",
+          "sentence": "ペンドラ峠の施錠された部屋を開けます。"
+        }
+      },
+      "unlocks": {
+        "outpost": "前哨基地 レベル {from} から {to}",
+        "questItems": "クエストアイテム"
+      },
+      "hover": {
+        "build": "{bench} で製作",
+        "unlocks": "解放",
+        "craft": "製作に使用",
+        "research": "研究できる",
+        "amplified": "強化",
+        "furniture": "家具 ({n})",
+        "quests": "クエストとプロジェクト",
+        "traders": "トレーダー",
+        "gives": "入手",
+        "fieldCraft": "フィールド製作",
+        "repair": "修理",
+        "researchDetail": "レベル {level} · {rp} RP",
+        "researchLevel": "レベル {level}",
+        "tradeFor": "{item} の支払いに使える",
+        "upgrades": "強化の改良: {n}"
+      },
+      "more": {
+        "research": "研究タブでさらに詳しく",
+        "amplified": "強化タブで強化武器の詳細を見る"
+      },
+      "rp": {
+        "calloutTitle": "研究対象アイテムのその他の用途",
+        "callout": "これらの一部は研究ステーションの建設とアップグレードにも必要です。研究する前に十分な数を残しておいてください。",
+        "calloutUse": "{amount} {item} を {use} に使用",
+        "scaleLabel": "研究ポイントの目安",
+        "scaleTitle": "研究プランのコスト {min}–{max} RP",
+        "scaleMin": "最も安い研究プラン: {name}",
+        "scaleMedian": "一般的な研究プラン",
+        "scaleMax": "最も高い研究プラン: {name}"
+      },
+      "emperor": {
+        "title": "落ちたエンペラーを開く方法",
+        "step1": "「誘導」イベント中に傷んだエンペラーリレーを起動し、そこからエンペラービーコンを手に入れる。",
+        "step2": "ビーコンを地面に置き、身を隠す。瓦礫が降ってくる。",
+        "step3": "大きな部分を破壊する。エンペラーゲートウェイコンジットの設計図が入っていることがある（フリゲートイベント中に地面に落ちていることもある）。",
+        "step4": "ワークベンチで、メッキARCカプラー、絶縁ARCカプラー、導電ARCカプラーからエンペラーゲートウェイコンジットを製作する。",
+        "step5": "コンジットを使って、ペンドラ峠の落ちたエンペラーのダンジョンを開く。",
+        "note": "エンペラービーコンを持ったまま脱出すると、壊れたエンペラービーコンに変わります。"
+      },
+      "detail": {
+        "level": "{bench} レベル {level}",
+        "slots": "スロット {n}"
+      }
+    },
+    "tabs": {
+      "new-items": "新アイテム",
+      "old-items": "既存アイテム",
+      "outpost": "前哨基地",
+      "research": "研究",
+      "amplified": "強化",
+      "crafting": "製作",
+      "changes": "変更点"
+    },
+    "intro": {
+      "new-items": {
+        "title": "新アイテムは何に使う？",
+        "sentence": "新しいアイテムをすべて、用途別にまとめています。複数の用途があるアイテムは、複数のグループに表示されます。"
+      },
+      "old-items": {
+        "title": "既存アイテムの新しい用途は？",
+        "sentence": "すでに知っているアイテムのうち、2.0 で新しく必要になったもの。"
+      },
+      "outpost": {
+        "title": "前哨基地はどう拡張する？",
+        "sentence": "素材を集めて前哨基地を拡張し、新しいスロットごとに部屋を選びます。"
+      },
+      "research": {
+        "title": "研究ステーションはどう機能する？",
+        "sentence": "アイテムを研究して研究ポイントを獲得し、それを設計図やデザインに使います。"
+      },
+      "amplified": {
+        "title": "強化武器はどう機能する？",
+        "sentence": "ガンスミスをアップグレードし、最大レベルの武器を強化武器にします。"
+      },
+      "crafting": {
+        "title": "新しく製作できるものは？",
+        "sentence": "レイド中の新しい製作、武器デカール、エンペラーゲートウェイの鍵。"
+      },
+      "changes": {
+        "title": "既存アイテムはどう変わった？",
+        "sentence": "1.45 から変わったレシピ、リサイクル、トレーダーの在庫、保管庫のサイズ。"
+      }
+    },
+    "common": {
+      "howItWorks": "仕組み",
+      "needs": "必要なもの",
+      "alsoNeeds": "ほかに必要なもの",
+      "where": "入手場所",
+      "before": "2.0 以前",
+      "now": "凍った道",
+      "close": "閉じる",
+      "more": "+{count} 件"
+    },
+    "crafting": {
+      "new": "新規",
+      "field": {
+        "title": "フィールド製作",
+        "sentence": "スキルツリーのスキルを使って、レイドの途中で製作する。",
+        "newCrafts": "レイド中の新しい製作",
+        "unchanged": "{n} 件のレシピは変更なし"
+      },
+      "stencils": {
+        "title": "武器デカール",
+        "sentence": "デカールは武器の見た目を変え、製作にはデカールパーツが必要です。",
+        "partsHint": "どのデカールを適用するにも必要",
+        "cost": "デカールパーツ {count} 個",
+        "worksWith": "対応"
+      },
+      "gateway": {
+        "title": "エンペラーゲートウェイの鍵",
+        "sentence": "ワークベンチでコンジットを製作し、エンペラーゲートウェイを開く。"
+      }
+    },
+    "old-items": {
+      "noLonger": "もう使わない用途"
     }
   }
 }

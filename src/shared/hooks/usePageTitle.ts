@@ -14,6 +14,7 @@ const PAGE_TITLE_KEYS: Record<string, string> = {
 
 // Prefix-based title keys for nested routes that share a common title.
 const PAGE_TITLE_PREFIXES: Array<{ prefix: string; key: string }> = [
+  { prefix: '/whats-new', key: 'shared.tools.whatsNew' },
   { prefix: '/profile', key: 'pages.profile.title' },
   { prefix: '/auth/sign-in', key: 'pages.profileSettings' },
   { prefix: '/auth/sign-up', key: 'pages.profileSettings' },

@@ -101,6 +101,41 @@ export interface CanonEffect {
   positive: boolean;
 }
 
+/** One effect line of an Amplification: `text` has "{0}" for the value; `type` is the game's EffectType. */
+export interface CanonAmpEffect {
+  text: Localization;
+  value: number | null;
+  type: string;
+}
+
+export interface CanonAmplification {
+  /** Node suffix; equals the suffix of the permutation items (DA_Item_<W>_<A>_<B>). */
+  id: string;
+  name: Localization;
+  description: Localization;
+  effects: CanonAmpEffect[];
+  /** Game texture path (T_UI_Icon_Upgrade_*). */
+  icon: string | null;
+  requires: string[];
+  /** Effective exclusions (inherited), as Amplification ids. */
+  excludes: string[];
+  research: string | null;
+  researchId: number | null;
+  researchSlug: string | null;
+  modSlotModifications?: unknown;
+}
+
+/** arc-data amplifications.json entry, keyed by the weapon's internal base name. */
+export interface CanonAmplifiedWeapon {
+  weaponSlug: string;
+  amplifiedItemId: number;
+  amplifiedSlug: string;
+  baseEffects: CanonAmpEffect[];
+  maxAmplifications: number;
+  combinations: number;
+  amplifications: CanonAmplification[];
+}
+
 export interface CanonOffer extends CanonRecord {
   id: number;
   owner: number;
@@ -134,6 +169,8 @@ export interface ArcData {
   offers: Map<number, CanonOffer>;
   /** Other record files by file name without .json (quests, projects, maps, skill-trees, …). */
   file<T extends CanonRecord = CanonRecord>(name: string): Map<string, T>;
+  /** amplifications.json (Amplified weapons by internal base name); empty when the file is missing. */
+  amplifications(): Record<string, CanonAmplifiedWeapon>;
   /** Plain JSON file (e.g. overlay/event-types.json); null when missing. */
   json<T>(relPath: string): T | null;
 }
@@ -177,6 +214,10 @@ export function loadArcData(dir: string = GAME_DATA_DIR): ArcData {
         cache.set(name, new Map(Object.entries(data)));
       }
       return cache.get(name) as Map<string, T>;
+    },
+    amplifications() {
+      const file = path.join(dir, 'amplifications.json');
+      return fs.existsSync(file) ? readJson<Record<string, CanonAmplifiedWeapon>>(file) : {};
     },
     json<T>(relPath: string): T | null {
       const file = path.join(dir, relPath);

@@ -1,0 +1,51 @@
+/** White game glyphs shipped as public/images/whats-new/icons/<name>.webp (see scripts/generate-whats-new-icons.ts). */
+export const GLYPH_NAMES = [
+  'outpost',
+  'research-station',
+  'research-points',
+  'research',
+  'blueprint',
+  'amplified',
+  'gunsmith',
+  'crafting',
+  'workbench',
+  'stencil',
+  'decoration',
+  'gadget',
+  'key',
+  'beacon',
+  'trade',
+  'skill-in-round-crafting',
+  'skill-traveling-tinkerer',
+  'skill-nomadic-crafting',
+  'amp-anti-shield',
+  'amp-anti-weak-point',
+  'amp-burst-fire',
+  'amp-increased-burst',
+  'amp-carbine-conversion',
+  'amp-drum-mag',
+  'amp-x-rounds',
+  'amp-full-auto',
+  'amp-incendiary-rounds',
+  'amp-incendiary-grenades',
+  'amp-high-velocity',
+  'amp-increased-burst-plus',
+  'amp-bigger-mag',
+  'amp-mag-reload',
+  'amp-charged-burst',
+  'amp-more-reload',
+  'amp-anvil-splitter',
+  'amp-ramping-damage',
+  'amp-scoped',
+  'amp-semi-auto',
+  'amp-slug-rounds',
+  'amp-sprint-shooting',
+  'amp-straight-bolt',
+  'amp-tracker-rounds',
+] as const;
+
+export type GlyphName = (typeof GLYPH_NAMES)[number];
+
+export function glyphUrl(name: GlyphName): string {
+  return `/images/whats-new/icons/${name}.webp`;
+}

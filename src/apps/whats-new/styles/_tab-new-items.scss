@@ -1,0 +1,226 @@
+@use '../../../shared/styles/variables' as *;
+
+// Styles of the new-items tab (.wn-tab-new-items): unlock cards, the Research Points callout and
+// scale, and the Fallen Emperor guide. The group header band lives in _components.scss.
+
+// ---- one-time unlock cards ----------------------------------------------------------------
+.wn-uc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+  gap: 16px;
+}
+
+.wn-uc {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-sizing: border-box;
+  min-width: 0;
+  padding: 16px 16px 24px;
+  border-radius: 12px;
+  background: $bg-secondary;
+
+  &__head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__media {
+    flex: 0 0 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    color: var(--wn-accent, #{$text-accent});
+  }
+
+  &__img { max-width: 48px; max-height: 48px; object-fit: contain; }
+
+  &__title {
+    margin: 0;
+    font-size: $font-2xl;
+    font-weight: 600;
+    color: $text-primary;
+  }
+
+  &__items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+
+    .wn-hc-trigger { width: 96px; }
+  }
+
+  &__rooms {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 16px;
+    border-top: $border-width-thin solid $border-default;
+  }
+
+  &__rooms-label {
+    font-size: $font-lg;
+    color: $text-secondary;
+  }
+
+  &__rooms-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    .wn-tile { width: 80px; }
+  }
+}
+
+// ---- Research Points: callout and scale ------------------------------------------------------
+.wn-callout {
+  margin-top: 24px;
+  padding: 16px 24px;
+  border-radius: 12px;
+  background: $bg-secondary;
+  border-left: 4px solid $text-accent;
+
+  &__text {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin: 0;
+    font-size: $font-xl;
+    line-height: 1.4;
+    color: $text-primary;
+
+    svg { flex: none; margin-top: 2px; color: $text-accent; }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 16px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: $font-xl;
+    color: $text-light;
+  }
+
+  &__icon {
+    --item-icon-size: 40px;
+    --item-icon-padding: 2px;
+    flex: none;
+  }
+}
+
+.wn-rpscale {
+  margin-top: 24px;
+  padding: 16px 24px 24px;
+  border-radius: 12px;
+  background: $bg-secondary;
+
+  &__title {
+    margin: 0 0 16px;
+    font-size: $font-2xl;
+    font-weight: 600;
+    color: $text-primary;
+  }
+
+  &__steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__step {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__value {
+    font-size: $font-3xl;
+    font-weight: 700;
+    color: $text-primary;
+  }
+
+  &__label {
+    font-size: $font-lg;
+    color: $text-light;
+  }
+
+  &__hint {
+    margin: 16px 0 0;
+    font-size: $font-xl;
+    color: $text-light;
+  }
+}
+
+// ---- Fallen Emperor guide ---------------------------------------------------------------------
+.wn-emperor {
+  margin-bottom: 24px;
+
+  &__note {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin: 16px 0 0;
+    font-size: $font-xl;
+    line-height: 1.4;
+    color: $text-light;
+
+    svg { flex: none; margin-top: 2px; color: $text-accent; }
+  }
+}
+
+.wn-group-more {
+  margin: 16px 0 0;
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px 10px 12px;
+    border: 1px solid color-mix(in srgb, var(--wn-accent, #{$text-accent}) 45%, transparent);
+    border-radius: $radius-md;
+    background: color-mix(in srgb, var(--wn-accent, #{$text-accent}) 10%, transparent);
+    color: $text-primary;
+    font-size: $font-lg;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.15s ease, border-color 0.15s ease;
+
+    &:hover,
+    &:focus-visible {
+      background: color-mix(in srgb, var(--wn-accent, #{$text-accent}) 18%, transparent);
+      border-color: var(--wn-accent, #{$text-accent});
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--wn-accent, #{$text-accent});
+      outline-offset: 2px;
+    }
+
+    &:hover .wn-group-more__arrow,
+    &:focus-visible .wn-group-more__arrow { transform: translateX(3px); }
+  }
+
+  &__icon { flex: none; color: var(--wn-accent, #{$text-accent}); }
+
+  &__arrow {
+    flex: none;
+    color: $text-secondary;
+    transition: transform 0.15s ease;
+
+    @media (prefers-reduced-motion: reduce) { transition: none; }
+  }
+}

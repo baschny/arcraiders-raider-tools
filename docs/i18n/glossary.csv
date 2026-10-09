@@ -1,0 +1,97 @@
+id,en,de,pt-BR,es,fr,it,ja,ko-KR,pl,ru,tr,zh-CN,zh-TW,source,notes
+topside,Topside,An der Oberfläche,Superfície,Superficie,Surface,Superficie,上層,지상,Powierzchnia,Поверхность,Yeryüzü,上层,頂層,game:ST_Onboarding_Tooltips/ID_ONBOARDINGTOOLTIPS_TOPSIDE_TITLE,The surface where raids take place.
+raiderDen,Raider Den,Raider-Höhle,Toca de Raider,Guarida de Raiders,Repaire de Raider,Covo Raider,レイダーのアジト,레이더 은신처,Kryjówka łupieżcy,Рейдерская база,Raider İni,奇袭者巢穴,掠手小窩,game:ST_RaiderProjects/ID_RAIDER_PROJECTS_EXPLANATION_DETAILS_RESET_8,The player's underground home base.
+workshop,Workshop,Werkstatt,Oficina,Taller,Atelier,Officina,ワークショップ,작업장,Warsztat,Мастерская,Atölye,工坊,工坊,game:ST_Chambers/ID_CHAMBERS_TITLE,"Where the crafting benches are; replaced the old ""Hideout"" wording."
+outpost,Outpost,Außenposten,Posto Avançado,Puesto,Avant-poste,Avamposto,前哨基地,전초 기지,Posterunek,Аванпост,Karakol,哨站,哨站,game:ST_Outpost/ID_OUTPOST_TAB,Since 2.0 Frozen Trail: the expandable base with rooms and furniture.
+rooms,Rooms,Räume,Espaços,Salas,Pièces,Stanze,部屋,방,Pomieszczenia,Комнаты,Odalar,房间,房間,game:ST_Outpost/ID_OUTPOST_MODULES,The expansion slots of the Outpost.
+furniture,Furniture,Möbel,Mobília,Muebles,Meubles,Arredamento,家具,가구,Meble,Мебель,Mobilya,家具,家具,game:ST_Outpost/ID_OUTPOST_MENU_FURNITURE,
+decoration,Decoration,Dekoration,Decoração,Decoración,Décoration,Decorazione,装飾,장식,Dekoracja,Украшения,Dekorasyon,装饰物,裝飾,game:ST_Outpost_Furniture/ID_OUTPOST_FURNITURE_DECORATION,
+stash,Stash,Lager,Armazenamento,Alijo,Réserve,Deposito,保管庫,보관함,Skrytka,Хранилище,Zula,储备箱,儲藏箱,game:ST_Inventory/ID_INVENTORY_STASH_HEADER,The player storage between raids.
+loadout,Loadout,Loadout,Armamento,Armamento,Arsenal,Dotazione,ロードアウト,로드아웃,Rynsztunek,Снаряжение,Mühimmat,配装,配備,game:ST_Inventory/ID_INVENTORY_LOADOUT_HEADER,The kit taken into a raid.
+inventory,Inventory,Inventar,Inventário,Inventario,Inventaire,Inventario,インベントリ,인벤토리,Ekwipunek,Инвентарь,Envanter,物品栏,物品欄,game:ST_Frontend/ID_FRONTEND_TAB_INVENTORY,
+backpack,Backpack,Rucksack,Mochila,Mochila,Sac à dos,Zaino,リュック,배낭,Plecak,Рюкзак,Sırt Çantası,背包,背包,game:ST_ItemCategory/ID_ITEMCATEGORY_BACKPACK,
+safePocket,Safe Pocket,Sicherheitstasche,Bolso seguro,Bolsillo seguro,Poche sécurisée,Spazio sicuro,安全ポケット,안전 포켓,Bezpieczna kieszeń,Потайной карман,Güvenli Cep,安全口袋,安全口袋,game:ST_IngameInventoryScreen/ID_INGAME_INVENTORY_SAFE_POCKET,
+raider,Raider,Raider,Raider,Raider,Raider,Raider,レイダー,레이더,Łupieżca,Рейдер,Raider,奇袭者,掠手,game:ST_CharacterScreen/SLOT_RAIDER,The player character.
+arc,ARC,ARC,ARC,ARC,ARC,ARC,ARC,아크,ARC,ARC,ARC,ARC,ARC,game:ST_ItemDisplayTags/ID_ITEMDISPLAYTAG_ARC,The hostile machines; always upper case.
+quests,Quests,Quests,Missões,Misiones,Quêtes,Missioni,クエスト,퀘스트,Zadania,Задания,Görevler,任务,任務,game:ST_Frontend/ID_FRONTEND_TAB_QUESTS,
+quest,Quest,Quest,Missão,Encargo,Quête,Missione,クエスト,퀘스트,Zadanie,Задание,Görev,任务,任務,game:ST_Onboarding_Tooltips/ID_ONBOARDINGTOOLTIPS_QUEST_TITLE,
+traders,Traders,Trader,Comerciantes,Comerciantes,Commerçants,Mercanti,トレーダー,상인,Handlarze,Торговцы,Tüccarlar,商人,商人,game:ST_Frontend/ID_FRONTEND_TAB_TRADERS,"The NPC vendors (Celeste, Lance, …)."
+trader,Trader,Trader,Comerciante,Comercio,Trader,Mercante,トレーダー,상인,Handlarz,Торговец,Tüccar,商人,商人,game:ST_ItemDisplayTags/ID_ITEMDISPLAYTAG_TRADERCOMPONENT,
+trade,Trade,Traden,Negociação,Comercio,Échanger,Commercio,取引,거래,Handel,Обменять,Takas,交易,交易,game:ST_Offers/ID_OFFERS_TRADE,
+projects,Projects,Projekte,Projetos,Proyectos,Projets,Progetti,プロジェクト,프로젝트,Projekty,Проекты,Projeler,计划,計畫,game:ST_RaiderProjects/ID_RAIDER_PROJECTS_TITLE,Community/season projects with item requirements.
+expedition,Expedition,Expedition,Expedição,Expedición,Expédition,Spedizione,遠征,원정,Wyprawa,Экспедиция,Sefer,远征,遠征,game:ST_RaiderProjects/ID_RAIDER_PROJECTS_EXPEDITION_TITLE,
+trials,Trials,Prüfungen,Desafios,Pruebas,Épreuves,Prove,トライアル,시련,Próby,Испытания,Denemeler,试炼,考驗,game:ST_Frontend/ID_MASTERY_TITLE,
+skillTree,Skill Tree,Fertigkeitsbaum,Árvore de Habilidade,Árbol de habilidades,Arbre de compétences,Albero delle abilità,スキルツリー,스킬 트리,Drzewko umiejętności,Древо навыков,Yetenek Ağacı,技能树,技能樹,game:ST_SkillTrees/ID_SKILLTREES_SCREEN_TITLE,
+level,Level,Stufe,Nível,Nivel,Niveau,Livello,レベル,레벨,Poziom,Уровень,Seviye,等级,等級,game:ST_Chambers/ID_CHAMBERS_ROOM_LEVEL,Bench / room level.
+coins,Coins,Münzen,Moedas,Monedas,Pièces,Monete,コイン,코인,Monety,Монеты,Para,钱币,錢幣,game:ST_Currency/ID_CURRENCY_COINS,
+cred,Cred,Misskredit,Créditos,Cred,Points de renommée (PR),Nomea,クレド,평판 점수,Renoma,Кредиты,Şöhret,信用点,積分,game:ST_Currency/ID_CURRENCY_BATTLEPASS_POINTS,
+raiderTokens,Raider Tokens,Raider-Token,Fichas de Raider,Monedas de Raider,Jetons Raider,Gettoni Raider,レイダートークン,레이더 토큰,Żetony łupieżcy,Рейдерские жетоны,Raider Jetonları,奇袭者代币,掠手代幣,game:ST_Currency/ID_CURRENCY_HARD_LONG,
+store,Store,Shop,Loja,Tienda,Boutique,Negozio,ストア,상점,Sklep,Магазин,Mağaza,商店,商店,game:ST_Frontend/ID_FRONTEND_TAB_STORE,
+craft,Craft,Herstellen,Fabricar,Fabricar,Artisanat,Crea,製作,제작,Wytwórz,Создание предметов,Üret,制作,製作,game:ST_Frontend/ID_FRONTEND_TAB_CRAFT,
+crafting,Crafting,Herstellen,Fabricação,Fabricación,Artisanat,Creazione,製作,제작,Wytwarzanie,Создание предметов,Üretim,制作,製作,game:ST_IngameMenu/ID_INGAME_TAB_CRAFTING,
+inRoundCrafting,In-Round Crafting,Herstellung in der Runde,Fabricação Durante a Rodada,Fabricación durante una ronda,Fabrication en cours de partie,Creazione durante un turno,ラウンド中制作,라운드 중 제작,Wytwarzanie podczas rundy,Создание предметов в поле,Turda Üretim,局内制作,回合中製作,game:ST_CharacterSkills/ID_SKILL_TITLE_INROUNDCRAFTING,Crafting during a raid (skill).
+fieldCrafting,Field Crafting,Herstellung im Feld,Fabricação em campo,Fabricación sobre el terreno,Artisanat de terrain,Creazione sul campo,フィールド製作,필드 제작,Wytwarzanie w terenie,Создание предметов в поле,Saha üretimi,现场制作,實地製作,game:ST_Onboarding_Tooltips/ID_ONBOARDINGTOOLTIPS_INGAME_PROMPT_FIELDCRAFTING_TITLE,
+recycle,Recycle,Recyceln,Reciclar,Reciclar,Recycler,Ricicla,リサイクル,재활용,Przetwórz,Переработать,Geri Dönüştür,回收,回收,game:ST_Inventory/ID_INVENTORY_RECYCLE_BUTTON,
+recyclesInto,Recycles into,Wird recycelt zu,Ao reciclar,Al reciclar obtendrás,Recyclage en,Si può riciclare in:,リサイクル後：,다음으로 재활용:,Przetwarzanie na:,Результат переработки,Şuna Geri Dönüşür:,可回收为,回收成,game:ST_Inventory/ID_INVENTORY_RECYCLE_HEADER,
+salvage,Salvage,Ausschlachten,Desmontar,Desguazar,Récupérer,Recupera,回収,부품으로 분해,Rozłóż,Разобрать,Parçala,拆解回收,拆解,game:ST_IngameInventoryScreen/ID_INGAME_INVENTORY_SALVAGE_BUTTON,
+salvagesInto,Salvages into,Wird ausgeschlachtet zu,Desmonta para,Al desguazar obtendrás,Recyclage en,Trasforma in,回収後：,다음으로 분해,Rozłożenie na:,Результат разборки,Şuna Parçalanır:,拆解回收为,拆解成,game:ST_Inventory/ID_INVENTORY_SALVAGE_HEADER,
+upgrade,Upgrade,Verbessern,Aprimorar,Mejorar,Améliorer,Migliora,アップグレード,업그레이드,Ulepsz,Улучшить,Yükselt,升级,升級,game:ST_Inventory/ID_INVENTORY_UPGRADE_BUTTON,
+repair,Repair,Reparieren,Consertar,Reparar,Réparer,Ripara,修理,수리,Napraw,Отремонтировать,Tamir Et,修理,修理,game:ST_Inventory/ID_INVENTORY_REPAIR_BUTTON,
+durability,Durability,Haltbarkeit,Durabilidade,Vida útil,Durabilité,Tenuta,耐久力,내구도,Trwałość,Прочность,Dayanıklılık,耐用性,耐久度,game:ST_Stats/ID_STATS_DURABILITY,
+blueprint,Blueprint,Bauplan,Esquema,Proyecto,Schéma,Progetto,設計図,설계도,Plan,Чертеж,Taslak,蓝图,藍圖,game:ST_ItemDisplayTags/ID_ITEMDISPLAYTAG_GENERATOR_BLUEPRINT,Item that unlocks a crafting recipe.
+blueprints,Blueprints,Baupläne,Esquemas,Proyectos,Schémas,Progetti,設計図,설계도,Plany,Чертежи,Taslaklar,蓝图,藍圖,game:ST_Chambers/ID_CHAMBERS_BLUEPRINTS,
+design,Design,Entwurf,Projeto,Diseño,Design,Design,デザイン,디자인,Projekt,Схема,Tasarım,设计图,設計,game:ST_ItemDisplayTags/ID_ITEMDISPLAYTAG_RECIPE_OUTPOSTFURNITURE,Since 2.0: item that unlocks an Outpost furniture.
+designs,Designs,Entwürfe,Projetos,Diseños,Designs,Design,デザイン,디자인,Projekty,Схемы,Tasarımlar,设计图,設計,game:ST_CHAMBERSTATIONS/ID_CHAMBERSTATIONS_RESEARCH_STATION_SUB_NAV_DESIGNS,
+workbench,Workbench,Werkbank,Bancada,Mesa de trabajo,Établi,Banco da lavoro,ワークベンチ,작업대,Stół warsztatowy,Верстак,Tezgâh,工作台,工作台,game:ST_CHAMBERSTATIONS/ID_CHAMBERSTATIONS_BASIC_BENCH,
+gunsmith,Gunsmith,Waffenstation,Armeiro,Armero,Armurier,Banco delle armi,ガンスミス,총기 제작대,Stacja rusznikarska,Оружейный верстак,Silahçı,武器工作台,槍械站,game:ST_CHAMBERSTATIONS/ID_CHAMBERSTATIONS_WEAPON_BENCH,
+gearBench,Gear Bench,Ausrüstungsbank,Bancada de Equipamentos,Mesa de equipamiento,Établi à matériel,Banco dell'equipaggiamento,装備ベンチ,장비 작업대,Stół do prac nad sprzętem,Верстак для снаряжения,Teçhizat Tezgâhı,装备工作台,裝備台,game:ST_CHAMBERSTATIONS/ID_CHAMBERSTATIONS_ARMOR_BENCH,
+medicalLab,Medical Lab,Medizinisches Labor,Laboratório Médico,Laboratorio médico,Laboratoire médical,Laboratorio medico,医療ラボ,의약품 연구대,Laboratorium medyczne,Медицинская лаборатория,Tıp Laboratuvarı,医疗实验室,醫療實驗站,game:ST_CHAMBERSTATIONS/ID_CHAMBERSTATIONS_MED_STATION,
+explosivesStation,Explosives Station,Sprengstoffstation,Estação de Explosivos,Puesto de explosivos,Station à explosifs,Postazione degli esplosivi,爆発物ステーション,폭발물 스테이션,Stacja materiałów wybuchowych,Верстак для взрывчатки,Patlayıcı İstasyonu,爆炸物工作台,爆裂物站,game:ST_CHAMBERSTATIONS/ID_CHAMBERSTATIONS_EXPLOSIVES_BENCH,
+utilityStation,Utility Station,Gebrauchsgegenstand-Station,Estação de Utilidades,Puesto de utilidad,Station utilitaire,Postazione di funzionalità,ユーティリティステーション,유틸리티 스테이션,Stacja przedmiotów użytkowych,Верстак для инструментов,Alet İstasyonu,工具工作台,功能物品站,game:ST_CHAMBERSTATIONS/ID_CHAMBERSTATIONS_UTILITY_BENCH,
+refiner,Refiner,Veredler,Refinador,Refinadora,Raffineur,Rifinitore,精錬機,가공기,Stacja usprawnień,Очиститель,Dönüştürücü,精加工机,精煉機,game:ST_CHAMBERSTATIONS/ID_CHAMBERSTATIONS_REFINER,
+scrappy,Scrappy,Scrappy,Sucatinha,Chatarrín,Coquillard,Scartino,スクラッピー,꼬꼬,Złomek,Плюшкин,Hurdacı,废品仔,鬥哥,game:ST_CharacterScreen/ID_CHARACTERSCREEN_SCRAPPY,The rooster that gathers materials.
+research,Research,Forschung,Pesquisas,Investigación,Recherche,Ricerca,研究所,연구,Badania,Исследование,Araştırma,研究,研究,game:ST_CHAMBERSTATIONS/ID_CHAMBERSTATIONS_RESEARCH_STATION_HEADER_RESEARCH,
+researchStation,Research Station,Forschungsstation,Estação de Pesquisa,Estación de investigación,Station de recherche,Postazione di ricerca,研究ステーション,연구 스테이션,Stacja badawcza,Исследовательская станция,Araştırma İstasyonu,研究站,研究站,game:ST_CHAMBERSTATIONS/ID_CHAMBERSTATIONS_RESEARCH_STATION,
+researchPoints,Research Points,Forschungspunkte,Pontos de Pesquisa,Puntos de investigación,Points de recherche,Punti ricerca,研究ポイント,연구 포인트,Punkty badań,Очки исследований,Araştırma Puanları,研究点数,研究點數,game:ST_Currency/ID_CURRENCY_RESEARCH_POINTS,"Currency for research; abbreviated ""RP"" on the site."
+amplification,Amplification,Verstärkung,Amplificação,Amplificación,Amplification,Amplificazione,強化,증폭,Wzmocnienie,Совершенствование,Güçlendirme,增强,增幅,game:ST_CHAMBERSTATIONS/ID_CHAMBERSTATIONS_RESEARCH_STATION_SUB_NAV_AMPLIFICATION,"One upgrade option of an Amplified weapon; plural ""Amplifications"" on the site."
+amplificationModule,Amplification Module,Verstärkermodul,Módulo de Amplificação,Módulo de amplificación,Module d'amplification,Modulo di amplificazione,強化モジュール,증폭 모듈,Moduł wzmacniający,Совершенствующий модуль,Güçlendirme Modülü,增强模块,增幅模組,game:ST_Inventory/ID_INVENTORY_AMPLIFICATION_MODULE,
+amplified,Amplified,Verstärkt,Amplificado(a),Amplificado,Arme amplifiée,Amplificato,強化,증폭됨,Wzmocniona,Усоверш.,Güçlendirilmiş,已增强,增幅,game:ST_Rarity/ID_RARITY_AMPLIFIED,The weapon tier above Legendary.
+stencil,Stencil,Schablone,Estampa,Modelo,Décoration,Stencil,テンプレート,스텐실,Szablon,Раскраска,Çıkartma,贴花,貼膜,game:ST_ItemSkins/ID_ITEMSKINS_DISPLAY_TAG,Weapon paint scheme.
+stencils,Stencils,Schablonen,Estampas,Modelos,Décorations,Stencil,テンプレート,스텐실,Szablony,Раскраски,Çıkartmalar,贴花,貼膜,game:ST_ItemSkins/ID_ITEMSKINS_TABNAME,
+weapons,Weapons,Waffen,Armas,Armas,Armes,Armi,武器,무기,Bronie,Оружие,Silahlar,武器,武器,game:ST_Inventory/ID_INVENTORY_FILTER_WEAPONS,
+weaponMods,Weapon Mods,Waffen-Mods,Modificações de Arma,Modificadores de arma,Mods d'arme,Mod per armi,武器モジュール,무기 모드,Modyfikacje broni,Модификации оружия,Silah Modları,武器改装,武器模組,game:ST_Inventory/ID_INVENTORY_FILTER_WEAPONMODS,
+mods,Mods,Mods,Modificações,Modificadores,Mods,Mod,モジュール,모드,Modyfikacje,Модификации,Modlar,改装,模組,game:ST_Onboarding_Tooltips/ID_ONBOARDINGTOOLTIPS_MODS_TITLE,
+augment,Augment,Augment,Aperfeiçoamento,Aumento,Module,Potenziamento,オーグメント,증강물,Przeróbka,Усилитель,Yükseltici,强化,強化,game:ST_ItemDisplayTags/ID_ITEMDISPLAYTAG_AUGMENT,
+shield,Shield,Schild,Escudo,Escudo,Bouclier,Scudo,シールド,실드,Osłona,Щит,Kalkan,护盾,護盾,game:ST_IngameInventoryScreen/ID_INGAME_INVENTORY_ARMOR,
+gadget,Gadget,Gadget,Acessório,Artilugio,Gadget,Gadget,ガジェット,가젯,Gadżet,Гаджет,Cihaz,小道具,道具,game:ST_ItemDisplayTags/ID_ITEMDISPLAYTAG_GADGET,
+quickUse,Quick Use,Schnelleinsatz,Uso Rápido,Uso rápido,Utilisation rapide,Uso rapido,クイック使用,빠른 사용,Szybkie użycie,Быстрое использование,Hızlı Kullanım,快速使用,快速使用,game:ST_Inventory/ID_INVENTORY_FILTER_QUICKUSE,
+ammo,Ammo,Munition,Munição,Munición,Munitions,Munizioni,弾薬,탄약,Amunicja,Патроны,Cephane,弹药,彈藥,game:ST_RaiderProjects/ID_RAIDER_PROJECTS_EXPEDITION_STEP_5_TYPE_1_AMMO,
+key,Key,Schlüssel,Chave,Llave,Clé,Chiave,キー,열쇠,Klucz,Ключ,Anahtar,钥匙,鑰匙,game:ST_ItemDisplayTags/ID_ITEMDISPLAYTAG_KEY,
+keys,Keys,Schlüssel,Chaves,Llaves,Clés,Chiavi,鍵,열쇠,Klucze,Ключи,Anahtarlar,钥匙,鑰匙,game:ST_Inventory/ID_INVENTORY_FILTER_KEYS,
+trinket,Trinket,Wertloser Gegenstand,Bugiganga,Quincalla,Babiole,Gingillo,ガラクタ,잡화,Błyskotka,Безделушка,Ivır Zıvır,饰品,飾品,game:ST_ItemDisplayTags/ID_ITEMDISPLAYTAG_JUNK,"Items only worth selling (and, since 2.0, decoration)."
+topsideMaterial,Topside Material,Oberflächenmaterial,Material da superfície,Materiales de la superficie,Matériau de la Surface,Materiale della Superficie,上層素材,지상 재료,Materiał z powierzchni,Материал с Поверхности,Yeryüzü Materyali,上层材料,頂層材料,game:ST_ItemDisplayTags/ID_ITEMDISPLAYTAG_CRAFTINGMATERIAL_TOPSIDE,
+common,Common,Gewöhnlich,Comum,Común,Commun,Comune,コモン,일반,Powszechne,Обычный,Yaygın,普通,普通,game:ST_Rarity/RARITY_COMMON,
+uncommon,Uncommon,Ungewöhnlich,Incomum,Inusual,Inhabituel,Non comune,アンコモン,고급,Niepospolite,Необычный,Sıra Dışı,罕见,罕見,game:ST_Rarity/RARITY_UNCOMMON,
+rare,Rare,Selten,Raro,Poco común,Rare,Raro,レア,희귀,Rzadkie,Редкий,Nadir,稀有,稀有,game:ST_Rarity/RARITY_RARE,
+epic,Epic,Episch,Épico,Excepcional,Épique,Epico,エピック,에픽,Epickie,Эпический,Destansı,史诗,史詩,game:ST_Rarity/RARITY_EPIC,
+legendary,Legendary,Legendär,Lendário,Legendario,Légendaire,Leggendario,レジェンダリー,전설,Legendarne,Легендарный,Efsanevi,传奇,傳奇,game:ST_Rarity/RARITY_LEGENDARY,
+map,Map,Karte,Mapa,Mapa,Carte,Mappa,マップ,맵,Mapa,Карта,Harita,地图,地圖,game:ST_IngameMenu/ID_INGAME_TAB_MAP,
+mapConditions,Map Conditions,Kartenbedingungen,Condições do mapa,Condiciones del mapa,Conditions de la carte,Condizioni mappa,マップ条件,맵 환경,Warunki mapy,Условия на карте,Harita koşulları,地图条件,地圖條件,game:ST_Onboarding_Tooltips/ID_ONBOARDINGTOOLTIPS_MAPCONDITIONS_TITLE,"Events/modifiers a map runs with (Night Raid, …)."
+loot,Loot,Beute,Saque,Botín,Butin,Bottino,ルート,노획,Łupy,Добыча,Ganimet,战利品,搜刮品,game:ST_Map/ID_LEGEND_CATEGORY_LOOT,
+raiderHatch,Raider Hatch,Raider-Luke,Escotilha de Raider,Trampilla de Raider,Trappe de Raider,Botola del Raider,レイダーハッチ,레이더 해치,Właz łupieżcy,Рейдерский люк,Raider Geçidi,奇袭者暗门,掠手出入口,game:ST_Map/ID_MARKER_EXTRACTION_HATCH,
+raiderCache,Raider Cache,Raider-Geheimvorrat,Estoque de Raider,Alijo de Raider,Cache de Raider,Scorta Raider,レイダーの隠匿物,레이더 은닉물,Skrytka łupieżców,Тайник рейдеров,Raider Zulası,奇袭者箱,掠手藏貨,game:ST_WorldObjects/ID_WORLDOBJECT_RAIDERCACHE,
+supplyDrop,Supply Drop,Vorratsabwurf,Entrega de Suprimentos,Entrega de suministros,Largage d'approvisionnement,Carico aereo,投下物資,보급품 드롭,Dostawa zaopatrzenia,Ящик с припасами,İkmal Teslimatı,补给投放点,空投物資,game:ST_Map/ID_MARKER_SUPPLY_DROP,
+fieldCrate,Field Crate,Feldkiste,Caixa de Campo,Caja de campo,Caisse de terrain,Cassa di campo,フィールド・クレート,필드 상자,Skrzynka polowa,Ящик,Saha Kasası,箱子,實地貨箱,game:ST_Map/ID_MARKER_FIELD_CRATE,
+arcProbe,ARC Probe,ARC-Sonde,Sonda ARC,Sonda ARC,Sonde ARC,Sonda ARC,ARC プローブ,아크 탐사기,Sonda ARC,Зонд ARC,ARC Roketi,ARC探测器,ARC探測機,game:ST_Map/ID_MARKER_ARC_PROBE,
+damBattlegrounds,Dam Battlegrounds,Damm-Schlachtfelder,Campos de Batalha da Represa,Campos de batalla de la Presa,Champ de bataille du Barrage,Campo di battaglia della Diga,ダム戦場,댐 전장,Pole bitwy na terenie Zapory,Поле битвы у дамбы,Baraj Savaş Alanı,大坝战场,大壩戰場,game:ST_MapSelection/ID_MAPSELECTION_DAM_FULL,
+buriedCity,Buried City,Begrabene Stadt,Cidade Soterrada,Ciudad enterrada,Ville enfouie,Città sepolta,埋もれた街,파묻힌 도시,Pogrzebane Miasto,Погребенный город,Gömülü Şehir,掩埋废城,埋藏都市,game:ST_MapSelection/ID_MAPSELECTION_BURIEDCITY_FULL,
+spaceport,Spaceport,Raumhafen,Espaçoporto,Puerto espacial,Port spatial,Spazioporto,宇宙港,우주 기지,Port kosmiczny,Космопорт,Uzaylimanı,太空港,太空港,game:ST_MapSelection/ID_MAPSELECTION_SPACEPORT_TITLE,
+blueGate,The Blue Gate,Das Blaue Tor,O Portão Azul,La Puerta azul,Le Portail bleu,Il Varco blu,ブルーゲート,블루 게이트,Błękitna Brama,Синие ворота,Mavi Kapı,蓝门,藍色大門,game:ST_MapSelection/ID_MAPSELECTION_THEBLUEGATE_FULL,
+stellaMontis,Stella Montis,Stella Montis,Stella Montis,Stella Montis,Stella Montis,Stella Montis,ステラ・モンティス,스텔라 몬티스,Stella Montis,Стелла Монтис,Stella Montis,星辰山,星辰山,game:ST_Location_MountainCompound/ID_LOCATION_MOUNTAINCOMPOUND_STELLA_MONTIS,
+pendolaPass,Pendola Pass,Pendola-Pass,Passagem Pendola,Paso Pendola,Col de Pendola,Passo di Pendola,ペンドラ・パス,펜돌라 고개,Przełęcz Pendola,Перевал Пендола,Pendola Geçidi,彭多拉山口,彭多拉隘口,game:ST_MapSelection/ID_MAPSELECTION_FROZENTRAIL_TITLE,
+frozenTrail,Frozen Trail,Überfrorener Pfad,Trilha Congelada,Sendero helado,Traînée gelée,Sentiero gelido,凍った道,얼어붙은 산길,Mroźny szlak,Морозная тропа,Donmuş Patika,霜痕小径,冰凍小徑,game:ST_BattlePass/ID_BATTLEPASS_CARD_FROZEN_TRAIL_HEADER,Name of the 2.0 update.
+nightRaid,Night Raid,Nächtliche Plünderung,Incursão Noturna,Incursión nocturna,Raid nocturne,Raid notturno,夜襲,야간 습격,Nocny rajd,Ночной рейд,Gece Baskını,夜间奇袭,夜間劫掠,game:ST_MapCondition/ID_MAPCONDITION_NIGHTRAID,
+electromagneticStorm,Electromagnetic Storm,Elektromagnetischer Sturm,Tempestade Eletromagnética,Tormenta electromagnética,Tempête électromagnétique,Tempesta elettromagnetica,電磁嵐,전자기 폭풍,Burza elektromagnetyczna,Электромагнитная буря,Elektromanyetik Fırtına,电磁风暴,電磁風暴,game:ST_MapCondition/ID_MAPCONDITION_ELECTROMAGNETIC_STORM,
+solo,Solo,Solo,solo,en solitario,solo,solitaria,ソロ,솔로,solo,одиночка,tekli,单人,單人,game:ST_MatchMaking/ID_MATCHMAKING_SOLO,
+squad,Squad,Squad,time,pelotón,escouade,squadra,チーム,스쿼드,oddział,команда,ekip,小队,小隊,game:ST_MatchMaking/ID_MATCHMAKING_SQUAD,
+raid,Raid,Raid,Incursão,,,,,,,,,,,manual,One round topside. No game text of its own; other languages: follow existing site usage.

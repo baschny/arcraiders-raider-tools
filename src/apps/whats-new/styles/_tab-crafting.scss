@@ -1,0 +1,127 @@
+@use '../../../shared/styles/variables' as *;
+
+// Styles of the crafting tab (.wn-tab-crafting). Spacing scale 8 / 16 / 24 / 40.
+.wn-tab-crafting {
+  .wn-crafting {
+    &__panel > * + * { margin-top: 24px; }
+
+    &__heading {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 8px;
+      font-size: $font-xl;
+      font-weight: 600;
+      color: $text-light;
+    }
+
+    &__subtitle {
+      margin: 0 0 16px;
+      font-size: $font-2xl;
+      font-weight: 600;
+      color: $text-primary;
+    }
+
+    &__new {
+      margin-left: 8px;
+      font-size: $font-lg;
+      font-weight: 600;
+      color: $text-accent;
+    }
+
+    &__skillcols {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+
+      @media (max-width: $breakpoint-mobile) {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    &__skills {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    &__skill {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px 12px;
+      min-width: 0;
+      padding: 12px 16px;
+      background: $bg-tertiary;
+      border-radius: 8px;
+      font-size: $font-xl;
+      color: $text-primary;
+    }
+
+    &__skill-icon {
+      flex: 0 0 auto;
+      color: $text-primary;
+    }
+
+    &__cards {
+      display: grid;
+      // compact recipe cards: result | needs; as many columns as fit, never squeezed
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 380px), 1fr));
+      gap: 16px;
+    }
+
+    &__group + &__group { margin-top: 24px; }
+
+    &__toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 44px;
+      margin-bottom: 16px;
+      padding: 0 8px 0 0;
+      border: 0;
+      background: transparent;
+      color: $text-light;
+      font: inherit;
+      font-size: $font-xl;
+      cursor: pointer;
+
+      &:hover { color: $text-primary; }
+      &:focus-visible { outline: 2px solid $text-accent; outline-offset: 2px; }
+    }
+
+    &__parts {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    &__parts-hint {
+      margin: 0;
+      font-size: $font-xl;
+      color: $text-light;
+    }
+
+    &__weapons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+  }
+
+  // Neutral swatch for stencils without an image.
+  .wn-stencil-tile__swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    background: $bg-tertiary;
+    box-shadow: inset 0 0 0 1px $border-default;
+  }
+
+  @media (max-width: 640px) {
+    .wn-crafting__skillcols { gap: 16px; }
+  }
+}

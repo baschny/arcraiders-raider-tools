@@ -31,16 +31,22 @@ export type GameDomain =
   | 'skilltree'
   | 'amplification'
   | 'maps'
-  | 'classification';
+  | 'classification'
+  | 'whats-new';
 
 /** Text file of a domain: slug → text fields (all strings already localized, en fallback applied). */
 export type TextFile = Record<string, TextEntry>;
+
+/** Nested text maps (arbitrary depth), e.g. amplifications.<id>.effects.<index>. */
+export interface TextTree {
+  [key: string]: string | TextTree;
+}
 
 export interface TextEntry {
   name?: string;
   description?: string;
   /** Nested texts, e.g. quest objectives by node key, project phases/steps/goals by key. */
-  [field: string]: string | Record<string, string | Record<string, string>> | undefined;
+  [field: string]: string | TextTree | undefined;
 }
 
 // ---------------------------------------------------------------------------------------------
@@ -243,7 +249,8 @@ export interface OutpostRoom {
   id: string;
   nameEn: string;
   slots?: string[];
-  craft?: { offerId: string; cost: Cost; requires?: Requirement[] };
+  /** Build offers, one per outpost level the room can be installed at (sorted by required level). */
+  crafts?: { offerId: string; cost: Cost; requires?: Requirement[] }[];
 }
 
 export interface OutpostSlot {
@@ -437,6 +444,32 @@ export interface AmplificationBranch {
   requires?: Requirement[];
 }
 
+/** One effect line of an Amplification. Text: `format` with `{0}` = value, under `effects.<index>`. */
+export interface AmplificationEffect {
+  /** Game text key (ID_ITEMSTATS_MODIFIERS_*), stable across locales. */
+  key: string;
+  value: number | null;
+  /** 'positive' | 'negative' as colored in the game UI. */
+  type: 'positive' | 'negative' | string;
+}
+
+/** An Amplification (game: "Ascended upgrade"): a module added to an Amplified weapon. */
+export interface Amplification {
+  /** Node id, e.g. `MoreReload`; equals the suffix of the variant items. Text: `amplifications.<id>.{name,description,effects.<index>}`. */
+  id: string;
+  /** Public url of the matching `amp-*` glyph (/images/whats-new/icons/…); absent when the texture has no glyph. */
+  icon?: string;
+  effects: AmplificationEffect[];
+  /** Amplification ids that must be applied first (the parent node). */
+  requires: string[];
+  /** Amplification ids that cannot be combined with this one (effective, inherited). */
+  excludes: string[];
+  /** Item that unlocks this Amplification; absent when it is available right after Amplifying. */
+  researchItemId?: string;
+  /** Cost (and gates) of adding this Amplification, from the graph edge that adds it. */
+  variantStep?: { cost: Cost; requires?: Requirement[] };
+}
+
 export interface AmplifiedWeapon {
   /** baseId of the weapon chain. */
   id: string;
@@ -445,6 +478,13 @@ export interface AmplifiedWeapon {
   variants?: string[];
   graph: Record<string, AmplificationBranch[]>;
   repairItemId?: string;
+  /** Largest valid selection of Amplifications. */
+  maxAmplifications: number;
+  /** The Amplified base weapon item (no Amplification applied). */
+  amplifiedItemId: string;
+  /** Effects of the Amplified base weapon itself. Text: `baseEffects.<index>`. */
+  baseEffects?: AmplificationEffect[];
+  amplifications: Amplification[];
 }
 
 export interface AmplificationStructure {
@@ -498,6 +538,7 @@ export interface DomainStructures {
   skilltree: SkilltreeStructure;
   amplification: AmplificationStructure;
   maps: MapsStructure;
+  'whats-new': WhatsNewStructure;
 }
 
 export interface FileEnvelope {
@@ -514,4 +555,152 @@ export interface LoadedDomain<D extends GameDomain> {
   structure: DomainFile<D>;
   text: TextFile;
   locale: string;
+}
+
+// ---------------------------------------------------------------------------------------------
+// whats-new (domain 'whats-new'): the diff between two game versions, keyed by version slug.
+// Built from embark-api arc-data/whats-new/<version>.json. Locale-independent; names come from
+// the items catalog. Current-state system data lives in the outpost, research, blueprints,
+// stencils, amplification, trades, benches and skilltree domains.
+
+/** A bench level (research station level, Gunsmith 4, …); `bench` is a benches domain id. */
+export interface WhatsNewBenchRef {
+  bench: string;
+  level: number;
+}
+
+/** A stash tier, identified by its slot count. */
+export interface WhatsNewStashRef {
+  stashSlots: number;
+}
+
+/**
+ * What a use's `target` / `via` points at, by `system`:
+ *  - item slug (items domain): most targets and `via`s (amplify, amplifyPerk, craft, outpostFurniture,
+ *    outpostRoom, repair, research, stencil, trade, fieldCraft targets, craft `via` recipes)
+ *  - WhatsNewBenchRef: `via` of craft/research/researchStation, `target` of benchUpgrade/researchStation
+ *  - trader slug (trades domain): `via` of outpostFurniture, outpostRoom, trade, researchStation (NPC)
+ *  - skill id (skilltree domain): field crafting skills (fieldCrafting only)
+ *  - quest id (quests domain) / project id (projects domain): `target` of quest / project
+ *  - WhatsNewStashRef: `target`/`via` of benchUpgrade for stash upgrades
+ */
+export type WhatsNewRef = string | WhatsNewBenchRef | WhatsNewStashRef;
+
+export type WhatsNewSystem =
+  | 'outpostRoom'
+  | 'outpostFurniture'
+  | 'researchStation'
+  | 'benchUpgrade'
+  | 'research'
+  | 'amplify'
+  | 'amplifyPerk'
+  | 'repair'
+  | 'craft'
+  | 'fieldCraft'
+  | 'stencil'
+  | 'trade'
+  | 'project'
+  | 'quest';
+
+/** `amount` units of the item are consumed by `target` (a price for `trade`). */
+export interface WhatsNewUse {
+  system: WhatsNewSystem;
+  target: WhatsNewRef;
+  amount: number;
+  /** The recipe / bench / NPC through which the use happens; absent for repair, quest, project. */
+  via?: WhatsNewRef;
+}
+
+export type WhatsNewVerdict = 'keep' | 'optional' | 'quest' | 'sell';
+export type WhatsNewItemGroup = 'material' | 'gadget' | 'study' | 'key' | 'module' | 'perkPart' | 'quest' | 'blueprint' | 'other';
+
+export interface WhatsNewNewItem {
+  /** Item slug (items domain). */
+  id: string;
+  group: WhatsNewItemGroup;
+  /** keep: needed by a fixed path; optional: research/furniture/craft only; quest; sell: no use. */
+  verdict: WhatsNewVerdict;
+  /** keep only: amount over the fixed paths (4 outpost installs, Research Station, Gunsmith 4, Amplify). */
+  keepCount?: number;
+  uses?: WhatsNewUse[];
+  recyclesInto?: Amount[];
+}
+
+export interface WhatsNewExistingItem {
+  id: string;
+  gained?: WhatsNewUse[];
+  lost?: WhatsNewUse[];
+}
+
+export type WhatsNewKeepPathId = 'outpostExpansions' | 'researchStation' | 'gunsmith4' | 'amplify';
+
+export interface WhatsNewKeepPath {
+  id: WhatsNewKeepPathId | string;
+  /** Step key as written by the diff (Tier01, Build, Level 2, Gunsmith 4, "Amplification Module MK. I"). */
+  steps: { label: string; cost: Amount[] }[];
+}
+
+export interface WhatsNewFieldRecipe {
+  result: string;
+  cost: Amount[];
+  costBefore?: Amount[];
+  /** Skill ids (skilltree domain) required now / before. */
+  skills?: string[];
+  skillsBefore?: string[];
+  status: 'new' | 'unchanged' | 'changed';
+}
+
+/** A trade in a trader diff: paid with items, or with a scrap value (optionally limited to `scrapItems`). */
+export interface WhatsNewTradeLine {
+  result: string;
+  cost?: Amount[];
+  scrapValue?: number;
+  scrapItems?: string[];
+}
+
+export interface WhatsNewTraderChange {
+  /** Trader slug (trades domain). */
+  npc: string;
+  added?: WhatsNewTradeLine[];
+  removed?: WhatsNewTradeLine[];
+  priceChanged?: { result: string; before?: Amount[]; after?: Amount[] }[];
+}
+
+export interface WhatsNewChanges {
+  recipes?: { result: string; bench: WhatsNewBenchRef; before?: Amount[]; after?: Amount[] }[];
+  upgrades?: { from: string; to: string; before?: Amount[]; after?: Amount[] }[];
+  repairs?: { id: string; before?: Amount[]; after?: Amount[] }[];
+  recycling?: { id: string; before?: Amount[]; after?: Amount[] }[];
+  traders?: WhatsNewTraderChange[];
+  /** Stash tier upgrades by slot count; `before`/`after` are the upgrade costs. */
+  stash?: { from: number; to: number; before?: Amount[]; after?: Amount[] }[];
+}
+
+export interface WhatsNewVersion {
+  /** Version slug, e.g. 'frozen-trail'. */
+  slug: string;
+  /** Game version of the current state, e.g. '2.0'. */
+  gameVersion: string;
+  baselineLabel: string;
+  summary: {
+    newItems: number;
+    newItemsListed?: number;
+    newSystems: number;
+    researchOffers: number;
+    researchPointsTotal: number;
+    newStashTiers: number;
+  };
+  /** Listed new items (verdict + uses). Cosmetics, Juanito and FieldSalvage are excluded. */
+  newItems?: WhatsNewNewItem[];
+  /** Existing items that gained or lost uses. */
+  existingItems?: WhatsNewExistingItem[];
+  keepPaths?: WhatsNewKeepPath[];
+  blueprints?: { newlyResearchable?: string[]; findOnly?: string[] };
+  designs?: { newlyResearchable?: string[]; findOnly?: string[] };
+  fieldCrafting?: { skillsBefore?: string[]; skillsAfter?: string[]; recipes?: WhatsNewFieldRecipe[] };
+  changes?: WhatsNewChanges;
+}
+
+export interface WhatsNewStructure {
+  versions: Record<string, WhatsNewVersion>;
 }

@@ -1,0 +1,120 @@
+@use '../../../shared/styles/variables' as *;
+
+// Styles of the research tab (.wn-tab-research).
+.wn-tab-research {
+  // sets of units sit as lighter boxes (one step above the panel), like the crafting recipe cards
+  .wn-research__units {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .wn-research__unit {
+    padding: 16px;
+    background: $bg-tertiary;
+    border-radius: 10px;
+
+    .wn-tile { width: 112px; }
+  }
+
+  .wn-research__cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 380px), 1fr));
+    gap: 16px;
+  }
+
+  .wn-research__tracks {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+
+    @media (max-width: $breakpoint-mobile) { grid-template-columns: 1fr; }
+  }
+
+  .wn-research__track {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 16px;
+    background: $bg-tertiary;
+    border-radius: 10px;
+
+    &--locked { opacity: 0.7; }
+  }
+
+  .wn-research__track-title {
+    margin: 0;
+    font-size: $font-2xl;
+    font-weight: 600;
+    color: $text-primary;
+  }
+
+  .wn-research__track-count {
+    font-size: $font-3xl;
+    font-weight: 700;
+    color: $text-primary;
+  }
+
+  .wn-research__track-note {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: $font-lg;
+    color: $text-secondary;
+  }
+
+  .wn-research__level-group {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px;
+    background: $bg-secondary;
+    border-radius: 12px;
+  }
+
+  .wn-research__level-heading {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    font-size: $font-2xl;
+    font-weight: 700;
+    color: $text-primary;
+  }
+
+  .wn-research__price-group {
+    padding: 16px;
+    background: $bg-tertiary;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .wn-research__price-heading {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    font-size: $font-xl;
+    font-weight: 600;
+    color: $text-light;
+  }
+
+  .wn-research__browse { display: flex; flex-direction: column; gap: 24px; }
+
+  .wn-research__browse-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .wn-research__browse-title {
+    margin: 0;
+    font-size: $font-3xl;
+    color: $text-primary;
+  }
+}

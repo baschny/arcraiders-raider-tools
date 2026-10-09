@@ -1,0 +1,144 @@
+@use '../../../shared/styles/variables' as *;
+
+// Spacing scale: 8 / 16 / 24 / 40 / 64.
+$wn-s1: 8px;
+$wn-s2: 16px;
+$wn-s3: 24px;
+$wn-s4: 40px;
+$wn-s5: 64px;
+$wn-max-width: 1120px;
+$wn-tab-height: 44px;
+
+.wn-page {
+  max-width: $wn-max-width;
+  margin: 0; // left aligned
+  padding: $wn-s3 $wn-s2 $wn-s5;
+
+  &__header { margin-bottom: $wn-s3; }
+
+  &__title {
+    margin: 0 0 $wn-s1;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: $text-primary;
+  }
+
+  &__subtitle {
+    margin: 0;
+    font-size: $font-xl;
+    color: $text-secondary;
+  }
+}
+
+// Sticky tab bar. `top: 0` sticks to the layout's scrolling content area on desktop; below the
+// breakpoint the window scrolls and the app header (48px) is fixed on top.
+.wn-tabbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  margin: 0 (-$wn-s2) $wn-s4;
+  padding: 0 $wn-s2;
+  background: $bg-primary;
+  border-bottom: $border-width-thin solid $border-default;
+
+  @media (max-width: $breakpoint-mobile) {
+    top: 48px;
+    transition: top 0.24s ease;
+  }
+
+  &__list {
+    display: flex;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow-x: auto;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar { display: none; }
+  }
+
+  &__item { flex: 0 0 auto; }
+
+  &__tab {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: $wn-s1;
+    height: $wn-tab-height;
+    padding: 0 $wn-s1;
+    color: $text-light;
+    font-size: $font-xl;
+    white-space: nowrap;
+    text-decoration: none;
+
+    &:hover { color: $text-primary; }
+
+    &:focus-visible {
+      outline: 2px solid $text-accent;
+      outline-offset: -2px;
+      border-radius: $radius-md;
+    }
+
+    &.is-active {
+      color: $text-primary;
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 4px;
+        right: 4px;
+        bottom: -1px;
+        height: 3px;
+        background: $text-accent;
+        border-radius: 2px 2px 0 0;
+      }
+
+      svg { color: $text-accent; }
+    }
+  }
+}
+
+// A tab's content: blocks are 64px apart.
+.wn-tab {
+  display: flex;
+  flex-direction: column;
+  gap: $wn-s5;
+
+  @media (max-width: $breakpoint-mobile) {
+    gap: $wn-s4;
+  }
+}
+
+.wn-intro {
+  &__title {
+    margin: 0 0 $wn-s1;
+    font-size: 22px;
+    font-weight: 700;
+    color: $text-primary;
+  }
+
+  &__sentence {
+    margin: 0;
+    font-size: $font-xl;
+    line-height: 1.5;
+    color: $text-light;
+    max-width: 720px;
+  }
+}
+
+.wn-placeholder {
+  margin: 0;
+  padding: $wn-s4;
+  border: $border-width-thin dashed $border-default;
+  border-radius: 12px;
+  color: $text-tertiary;
+  text-align: center;
+}
+
+// On mobile the app header slides away while scrolling down: the tab bar then sticks to the very top
+// (same timing as the header's transform, so there is no gap and no overlap).
+@media (max-width: $breakpoint-mobile) {
+  body:has(.app-header--hidden) .wn-tabbar { top: 0; }
+}

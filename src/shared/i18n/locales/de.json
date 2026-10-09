@@ -77,7 +77,9 @@
       "craftCalculator": "Crafting-Rechner",
       "quests": "Quest-Tracker",
       "lootHelper": "Loot-Helfer",
-      "quartermaster": "Quartermaster"
+      "quartermaster": "Quartermaster",
+      "maps": "Karten",
+      "whatsNew": "Gegenstände in Überfrorener Pfad"
     }
   },
   "dashboard": {
@@ -90,12 +92,17 @@
       "affectedAppLink": "Betroffenes Werkzeug öffnen",
       "allTools": "Alle Tools"
     },
+    "whatsNew": {
+      "title": "Neue Gegenstände in Überfrorener Pfad",
+      "description": "Du kennst 1.x? Hier siehst du, wofür jeder neue Gegenstand da ist, welche alten Gegenstände neue Verwendungen haben und was sich bei Rezepten, Recycling und Händlern geändert hat."
+    },
     "tools": {
       "schedule": "Visualisiere den ARC Raiders Karten-Ereignisplan in einer besseren Übersicht, um deine Raids zu planen.",
       "craftCalculator": "Berechne, wie viele Gegenstände du craften solltest, um den Platz in deinem Lager optimal zu nutzen.",
       "quests": "Verfolge deinen Questfortschritt mit einem interaktiven Questbaum.",
       "lootHelper": "Visualisiere Crafting-Ketten, um zu wissen, was du in Raids looten solltest.",
-      "quartermaster": "Plane Lager, Ausrüstung und Hideout-Anforderungen an einem Ort."
+      "quartermaster": "Plane Lager, Ausrüstung und Hideout-Anforderungen an einem Ort.",
+      "maps": "Finde heraus, wo du einen Gegenstand looten kannst und wo ARC-Gegner auf jeder Karte und bei jeder Kartenbedingung auftauchen."
     }
   },
   "pages": {
@@ -773,13 +780,13 @@
         "qtyToRecycle": "Zu recycelnde Menge",
         "yields": "Erträge",
         "why": "Warum",
-        "craftTimes": "Craft-Vorgänge",
-        "totalOutput": "Gesamtausgabe",
         "inputsNeeded": "Benötigte Eingaben",
         "upgradeFrom": "Upgrade von",
         "upgradeTo": "Upgrade auf",
         "qtyToUpgrade": "Menge zum Upgrade",
-        "durability": "Haltbarkeit"
+        "durability": "Haltbarkeit",
+        "craftTimes": "Craft-Vorgänge",
+        "totalOutput": "Gesamtausgabe"
       },
       "blueprintUnlockCount": "{unlocked}/{total} entsperrt"
     },
@@ -792,16 +799,16 @@
       "foundIn": "Gefunden in:",
       "neededForLists": "Benötigt für Listen",
       "neededForQuests": "Needed for Quests",
-      "neededForCrafting": "Benötigt fürs Crafting (direkt / indirekt)",
       "neededForProject": "Benötigt für {project}",
-      "couldBeUsedFor": "Kann verwendet werden für",
       "recycle": "Recyceln",
       "salvage": "Zerlegen",
       "craftingRecipe": "Crafting-Rezept",
       "craftingRecipeIncludingUpgrades": "Crafting Recipe (including Upgrades)",
       "recyclesInto": "Recycelt zu",
       "salvagesInto": "Zerlegt zu",
-      "neededForRepair": "Für Reparatur benötigt"
+      "neededForRepair": "Für Reparatur benötigt",
+      "neededForCrafting": "Benötigt fürs Crafting (direkt / indirekt)",
+      "couldBeUsedFor": "Kann verwendet werden für"
     },
     "itemIcon": {
       "uncraftable": "Kann nicht hergestellt werden — Anforderungen nicht erfüllt"
@@ -897,6 +904,655 @@
       "loadout": "Loadout",
       "gameDataLastSync": "Game Data Last Sync",
       "never": "Never"
+    }
+  },
+  "maps": {
+    "header": {
+      "gameData": "Spieldaten {version} · {date}",
+      "gameDataTitle": "Steam-Manifest {manifest}, Kartendaten erstellt am {date}"
+    },
+    "loader": {
+      "retry": "Erneut versuchen",
+      "reloadPage": "Seite neu laden",
+      "error": {
+        "network": "Die Kartendaten konnten nicht geladen werden. Prüfe deine Verbindung und versuche es erneut.",
+        "missing": "Die Kartendaten sind gerade nicht verfügbar. Versuche es gleich noch einmal.",
+        "missingMap": "Die Daten für die Karte {map} fehlen. Versuche es gleich noch einmal.",
+        "schema": "Die Kartendaten wurden aktualisiert und brauchen eine neuere Version dieser Seite. Lade die Seite neu."
+      }
+    },
+    "conditions": {
+      "normal": "Normal"
+    },
+    "modes": {
+      "loot": "Beute",
+      "label": "Modus"
+    },
+    "sidebar": {
+      "hide": "Seitenleiste ausblenden",
+      "showFilters": "Filter anzeigen",
+      "hideFilters": "Filter ausblenden"
+    },
+    "mapBar": {
+      "scoreTitle": "{map}: Gegenstandswertung {score} (normale Bedingungen)",
+      "label": "Karte"
+    },
+    "conditionBar": {
+      "normal": "Normale Karte",
+      "normalAlso": "Normale Karte – gleiche feste Beute und Spawns wie: {conditions}",
+      "major": "Große Bedingung",
+      "majorLive": "Große Bedingung (im aktuellen Ereignisplan)",
+      "minor": "Kleine Bedingung",
+      "minorLive": "Kleine Bedingung (im aktuellen Ereignisplan)",
+      "sameAsNormal": "+ {count} gleich wie {normal}",
+      "label": "Kartenbedingung"
+    },
+    "help": {
+      "label": "Hilfe"
+    },
+    "search": {
+      "placeholder": "Gegenstand suchen…",
+      "clear": "Leeren"
+    },
+    "loot": {
+      "searchPlaceholder": "Gegenstand suchen, z. B. Motor",
+      "goalsTitle": "Deine Ziele im Loot-Helfer",
+      "tablesTitle": "Anteil jeder festen Beutetabelle, der auf diesen Gegenstand fällt",
+      "noTables": "in keiner festen Beutetabelle",
+      "notInLoot": "Dieser Gegenstand ist in keiner festen Beutetabelle.",
+      "onlyHarvested": "Wird nur aus {containers} gesammelt, die es nur hier gibt: {conditions}.",
+      "conditionWhy": "{condition} ({reason})"
+    },
+    "conditionReasons": {
+      "onHiatus": "pausiert",
+      "neverReleased": "nie veröffentlicht",
+      "tutorial": "Tutorial",
+      "practiceRange": "Übungsplatz",
+      "notInSchedule": "nicht im Ereignisplan"
+    },
+    "item": {
+      "tiers": {
+        "low": "Niedrig",
+        "mid": "Mittel",
+        "high": "Hoch"
+      }
+    },
+    "best": {
+      "title": "Beste Gebiete · {condition}",
+      "helpLabel": "Über die Wertung",
+      "help": "Die Wertung ist der Beutewert, der auf den Gegenstand fallen kann: der Pool jedes Beute-Handlers, aufgeteilt auf seine Tabellen, Einträge und Gegenstände und verteilt auf seine Punkte. Sie vergleicht Orte; sie ist keine Drop-Chance. Bedingungen mit derselben festen Beute wie Normal sind darin zusammengefasst.",
+      "spotsOne": "{hits}/{count} Punkt",
+      "spots": "{hits}/{count} Punkte",
+      "perSpot": "{score} pro Punkt"
+    },
+    "filters": {
+      "title": "Spawn-Punkte",
+      "helpLabel": "Über die Filter",
+      "help": "Der Pfeil öffnet eine Gruppe; der Rest der Zeile blendet sie auf der Karte ein oder aus. Ist ein Gegenstand gewählt und nichts ausgewählt, werden alle Punkte gezeigt, die den Gegenstand enthalten können. Behälter zählen nur, wenn ihre Kategorie zu der des Gegenstands passt (mechanische Gegenstände in mechanischen Behältern; Pflanzen ergeben nur ihren eigenen Gegenstand). Gespawnte Behälter (Munitionsboxen, Geheimvorräte, Hüllen) würfeln Tabellen auf dem Server aus, angezeigt als „?“.",
+      "auto": "auto",
+      "autoTitle": "Zeigt alle Punkte, die den Gegenstand enthalten können",
+      "showAll": "Alles anzeigen",
+      "hideAll": "Alles ausblenden",
+      "expand": "Aufklappen",
+      "expandGroup": "{group} aufklappen",
+      "collapseGroup": "{group} zuklappen",
+      "count": {
+        "spotsOne": "{count} Punkt",
+        "spots": "{count} Punkte",
+        "hitsOne": "{hits} von {count} Punkt kann den Gegenstand enthalten",
+        "hits": "{hits} von {count} Punkten können den Gegenstand enthalten",
+        "noHitsOne": "Der einzige Punkt kann den Gegenstand nicht enthalten",
+        "noHits": "Keiner der {count} Punkte kann den Gegenstand enthalten",
+        "serverSide": "Inhalt wird auf dem Server ausgewürfelt und steht nicht in den Spieldateien",
+        "expectedOne": "~{expected} pro Runde erwartet, von {count} möglichen Punkt",
+        "expected": "~{expected} pro Runde erwartet, von {count} möglichen Punkten"
+      }
+    },
+    "arc": {
+      "title": "ARC-Gegner · {condition}",
+      "helpLabel": "Über ARC-Spawner",
+      "help": "Erwartete Anzahl der Spawner, die jeden Gegner bei dieser Bedingung erzeugen können. Wähle Gegner aus, um nur ihre Spawner und Patrouillenwege zu zeigen (mehrere gleichzeitig, jeder in seiner Farbe). Gefüllte Markierungen patrouillieren einen Weg. Fahre über einen Spawner für seine Gruppe und Respawn-Zeiten; klicke ihn an, um seine Spawn-Gruppe festzuhalten.",
+      "showAll": "Alle Gegner anzeigen",
+      "expectedOne": "~{expected} pro Runde erwartet, von {count} Spawner",
+      "expected": "~{expected} pro Runde erwartet, von {count} Spawnern",
+      "empty": "Keine ARC-Spawner bei dieser Bedingung."
+    },
+    "canvas": {
+      "label": "Karte von {map}. Die hier eingezeichneten Punkte, Gebiete und Gegner sind in der Seitenleiste aufgelistet."
+    },
+    "zoom": {
+      "in": "Hineinzoomen",
+      "out": "Herauszoomen",
+      "fit": "Karte einpassen (Doppelklick)"
+    },
+    "overlays": {
+      "title": "Ebenen",
+      "heat": "Heatmap",
+      "height": "Höhenmarken",
+      "heightTitle": "Ein Punkt oben: mehr als 3,5 m über dem geschätzten Boden (Obergeschoss, Dach); unten: mehr als 3,5 m darunter (Keller, Tunnel). Aus der Höhenkarte geschätzt; nicht auf Stella Montis.",
+      "pois": "Gebiete & Namen",
+      "zones": "Beutezonen",
+      "zonesTitle": "Beutezonen im Spiel: rot = reichlich, gelb = dicht, grau = spärlich.",
+      "bounds": "Spielbereich"
+    },
+    "layers": {
+      "title": "Kartenebene: Die Karte im Spiel wechselt, wenn du diese Gebiete betrittst",
+      "surface": "Oberfläche",
+      "underground": "Unterirdisch",
+      "upperFloor": "Obergeschoss",
+      "lowerFloor": "Untergeschoss",
+      "label": "Kartenebene"
+    },
+    "legend": {
+      "score": "Gegenstandswertung pro Punkt",
+      "low": "niedrig",
+      "high": "hoch"
+    },
+    "zones": {
+      "abundant": "Reichlich Beute",
+      "dense": "Dichte Beute",
+      "sparse": "Spärliche Beute"
+    },
+    "tooltip": {
+      "score": "Wertung {score}",
+      "serverTablesOne": "+ {count} Beutetabelle auf dem Server (Inhalt nicht in den Dateien)",
+      "serverTables": "+ {count} Beutetabellen auf dem Server (Inhalt nicht in den Dateien)",
+      "oneOf": "Eines von: {kinds}",
+      "inArea": "in {area}",
+      "spawnChance": "Spawn-Chance ~{chance}",
+      "notScored": "Inhalt auf dem Server (nicht gewertet)",
+      "group": "Gruppe",
+      "groupSpotsOne": "{group}: {min} von {count} Punkt (umrandet)",
+      "groupSpots": "{group}: {min} von {count} Punkten (umrandet)",
+      "groupSpawnersOne": "{group}: {min} von {count} Spawner (umrandet)",
+      "groupSpawners": "{group}: {min} von {count} Spawnern (umrandet)",
+      "tapPin": "tippen, um die Gruppe festzuhalten",
+      "tapUnpin": "tippen, um die Gruppe zu lösen",
+      "clickPin": "klicken, um die Gruppe festzuhalten",
+      "clickUnpin": "klicken, um die Gruppe zu lösen",
+      "arcSpawner": "ARC-Spawner",
+      "enemySpawner": "Gegner-Spawner",
+      "patrols": "patrouilliert einen Weg",
+      "tableNotExported": "Tabelle {table} (nicht exportiert)",
+      "tier": "Stufe {tier}",
+      "area": "Gebiet",
+      "height": "≈ {height} m zum Boden",
+      "covered": "überdacht",
+      "openSky": "unter freiem Himmel",
+      "noKey": "kein Schlüsselgegenstand (öffnet sich anders)"
+    },
+    "timing": {
+      "noRespawn": "respawnt nicht nach der Zerstörung",
+      "respawn": "Respawn {time} nach der Zerstörung",
+      "randomDelay": "+ {min}–{max} s zufällige Verzögerung",
+      "noDynamic": "kein dynamischer Respawn",
+      "airDrop": "Luftabwurf {time} nach Zerstörung der Gruppe",
+      "sneak": "Respawn außer Sicht nach {time}",
+      "sneakIndoors": "Respawn außer Sicht nach {time} (drinnen)",
+      "activates": "aktiviert sich innerhalb von {distance} m"
+    },
+    "units": {
+      "seconds": "{n} s",
+      "minutes": "{n} min",
+      "never": "nie"
+    },
+    "categories": {
+      "Exits": "Ausgänge & Spawns",
+      "Containers": "Behälter",
+      "RaiderSpawns": "Raider-Behälter",
+      "ArcSpawns": "ARC-Hüllen & Wracks",
+      "Puzzles": "Rätsel",
+      "Features": "Kartenelemente"
+    },
+    "kinds": {
+      "ExtractMetro": "Extraktion per U-Bahn",
+      "ExtractLift": "Extraktion per Aufzug",
+      "ExtractFan": "Extraktion per Ventilator",
+      "ExtractGondola": "Extraktion per Schleudergondel",
+      "Hatch": "Raider-Luke (Schlüssel)",
+      "StationEntrance": "Eingang U-Bahn-Station",
+      "PlayerStart": "Spieler-Spawn",
+      "Generic": "Allgemein",
+      "OtherFixed": "Sonstige",
+      "WaterTank": "Wassertank",
+      "Ground": "Beute am Boden",
+      "Apricot": "Aprikose",
+      "Lemon": "Zitrone",
+      "Olive": "Olive",
+      "NatureFruitBasket": "Obstkorb",
+      "Mushroom": "Pilz",
+      "Agave": "Agave",
+      "Moss": "Moos",
+      "GreatMullein": "Kleinblütige Königskerze",
+      "Candleberries": "Kerzenbeeren",
+      "Resin": "Harz (Bäume)",
+      "BirdNest": "Vogelnest",
+      "VolcanicRock": "Vulkangestein",
+      "Roots": "Wurzeln",
+      "Fertilizer": "Dünger",
+      "SeedVault": "Konsole des Saatguttresors",
+      "Seedbox": "Saatgutkiste",
+      "CacheStandard": "Raider-Geheimvorrat",
+      "CacheSelfDestruct": "Raider-Geheimvorrat, selbstzerstörend",
+      "CacheFrozen": "Raider-Geheimvorrat, gefroren",
+      "NomadCache": "Nomaden-Geheimvorrat",
+      "CacheFirstWave": "Raider-Geheimvorrat, Erste Welle",
+      "AmmoBox": "Munitionsbox",
+      "AmmoBoxHigh": "Munitionsbox (hohe Stufe)",
+      "WeaponCase": "Waffentasche",
+      "WeaponCaseHigh": "Waffentasche (hohe Stufe)",
+      "MedicalBag": "Medizinische Tasche",
+      "GrenadeTube": "Granatenrohr",
+      "Backpack": "Raider-Rucksack",
+      "WeaponsRack": "Waffenständer",
+      "FruitBasket": "Obstkorb (Blütezeit)",
+      "FruitBasketWinter": "Obstkorb (Winter)",
+      "WaspHusk": "Wespen-Hülle",
+      "WaspHuskStunning": "Wespen-Hülle, betäubend",
+      "RocketeerHusk": "Raketenkanonier-Hülle",
+      "RocketeerHuskStunning": "Raketenkanonier-Hülle, betäubend",
+      "DeforesterHusk": "Abholzer-Hülle",
+      "Probes": "Abgestürzte ARC-Sonde",
+      "Couriers": "ARC-Kurier",
+      "PowerSocket": "Steckplatz für Akku / Brennstoffzelle",
+      "FuelCell": "Brennstoffzelle / Akku",
+      "PuzzleButton": "Knopf / Schalter / Konsole",
+      "PuzzleRelay": "Rätsel-Relais",
+      "CardReader": "Kartenleser",
+      "TubeTerminal": "Farbterminal / Röhrenstation",
+      "PuzzleDoor": "Rätseltür / -tor",
+      "HotelKey": "Hotelschlüssel",
+      "FieldDepot": "Felddepot",
+      "FieldCrates": "Feldkiste",
+      "SupplyStation": "Vorratsanforderungsstation",
+      "PowerCores": "Energiekern des Ernters",
+      "MetalDetector": "Bergsteiger-Detektor",
+      "Snowpile": "Schneehaufen (Kältewelle)",
+      "Zipline": "Seilrutsche (aktivierbar)",
+      "Lift": "Aufzug",
+      "Bridge": "Bewegliche Brücke",
+      "BridgeSwitch": "Brücken- / Sicherungsschalter",
+      "LockedRoom": "Verschlossener Raum (Schlüssel)",
+      "LockedDoor": "Verschlossene Tür (Schlüssel)",
+      "Barricaded": "Verbarrikadierte Tür (aufbrechen)",
+      "Door": "Tür / Fenster",
+      "Piano": "Klavier"
+    },
+    "containerTypes": {
+      "Android": "Android",
+      "AntennaSet": "Antennenanlage",
+      "Bus": "Bus",
+      "ButtonPanel": "Tastenfeld",
+      "CabinetDoor": "Schrank",
+      "Car01": "Auto 1",
+      "Car02": "Auto 2",
+      "Car03": "Auto 3",
+      "CashRegister": "Kasse",
+      "Centerbench": "Mittelbank",
+      "Closet": "Kleiderschrank",
+      "Closet02": "Kleiderschrank 2",
+      "Cmr": "Wandschrank",
+      "CoffeeMachine01": "Kaffeemaschine",
+      "CompressorTrailer": "Kompressoranhänger",
+      "Computer01": "Computer 1",
+      "Computer02": "Computer 2",
+      "Computer03": "Computer 3",
+      "Coms": "Funkkonsole",
+      "Console_03": "Konsole",
+      "Crate": "Kiste",
+      "CrateCart": "Kistenwagen",
+      "CupboardCafe": "Café-Schrank",
+      "CupboardKitchen": "Küchenschrank",
+      "Drawer": "Schublade",
+      "DrawerMedical": "Medikamentenschublade",
+      "Dumpster": "Müllcontainer",
+      "FloodLight": "Flutlicht",
+      "Freezer": "Gefriertruhe",
+      "Fridge": "Kühlschrank",
+      "Fusebox": "Sicherungskasten",
+      "Fusebox2": "Sicherungskasten 2",
+      "GeneratorM02": "Generator",
+      "Gvt": "Behörden-Mülleimer",
+      "GvtDesk": "Behördenschreibtisch",
+      "HighwayAntenna": "Autobahnantenne",
+      "InformationTerminal": "Informationsterminal",
+      "KitchenBench": "Küchenzeile",
+      "Locker01": "Spind",
+      "LockerMedical01": "Medizinischer Spind",
+      "Lockers": "Spinde",
+      "MuseumCrate_01": "Museumskiste 1",
+      "MuseumCrate_02": "Museumskiste 2",
+      "Parasitic": "Parasitärer Bewuchs",
+      "PressureMonitor": "Druckmonitor",
+      "Refrigerator_01": "Kühlschrank",
+      "RoadBarrier03": "Straßensperre",
+      "Rocketparts_01": "Raketenteile 1",
+      "Rocketparts_02": "Raketenteile 2",
+      "Rover": "Rover",
+      "Rsr": "Forschungsschrank",
+      "RsrCabinetS": "Kleiner Forschungsschrank",
+      "RsrCartShelf": "Regal des Forschungswagens",
+      "RsrMachineM01": "Forschungsmaschine",
+      "SecurityCamera01": "Überwachungskamera",
+      "Server": "Server",
+      "Shelf03": "Regal",
+      "SolarPanel03": "Solarmodul",
+      "SosBooth_01": "SOS-Säule",
+      "StreetSweeper": "Kehrmaschine",
+      "Suitcase": "Koffer",
+      "SupportStructure": "Stützkonstruktion",
+      "TVUnit": "TV-Schrank",
+      "TapeDrive01": "Bandlaufwerk 1",
+      "TapeDrive02": "Bandlaufwerk 2",
+      "TapeDrive04": "Bandlaufwerk 4",
+      "Transformer": "Transformator",
+      "TrashCan_01": "Mülleimer",
+      "Trashbin": "Abfalleimer",
+      "TruckScannerLeft01": "LKW-Scanner (links)",
+      "TruckScannerRight01": "LKW-Scanner (rechts)",
+      "UtilityTruck": "Werkstattwagen",
+      "VentMachineLarge": "Große Lüftungsmaschine",
+      "VentMachineLarge01": "Große Lüftungsmaschine 2",
+      "Workbench_01": "Werkbank 1",
+      "Workbench_02": "Werkbank 2",
+      "Wreck03": "ARC-Wrack",
+      "Wrh": "Lagerhallenmöbel",
+      "vent03": "Lüftung"
+    }
+  },
+  "whatsNew": {
+    "amplified": {
+      "step1": "Verbessere die Waffenstation auf Stufe 4",
+      "step2": "Kombiniere eine Waffe auf max. Stufe mit einem Verstärkermodul",
+      "step3": "Füge Verstärkungen mit Bauteilen hinzu",
+      "researchSubtitle": "Verstärkungsforschung",
+      "researchTask": "Freischalten: {name}",
+      "researchThen": "Dann erforschen",
+      "researchWhere": "Forschungsstation Stufe {level}",
+      "stepResearch": "Schließe die Forschungsaufgabe (eine Quest) ab, um sie freizuschalten, und erforsche sie dann an der Forschungsstation Stufe 4",
+      "pickerTitle": "Wähle eine Waffe",
+      "pickerSentence": "Die Waffen sind nach dem Verstärkermodul gruppiert, das sie brauchen.",
+      "amplification": "Verstärkung",
+      "research": "Forschung",
+      "noResearch": "Keine Forschung nötig",
+      "repairLine": "Verstärkte Waffen werden mit Amplified Fragments repariert.",
+      "recycleLine": "Ein recyceltes Modul ergibt {n} Amplified Fragments.",
+      "roomsNote": "Braucht {n} Außenpostenräume",
+      "requires": "Erfordert {name}",
+      "cantCombine": "Nicht kombinierbar mit {names}",
+      "lockedRequires": "Erfordert zuerst {name}",
+      "lockedExcluded": "Nicht mit {name}",
+      "lockedUnavailable": "Mit dieser Auswahl nicht verfügbar",
+      "needsResearch": "Braucht Forschung"
+    },
+    "title": "Neue Gegenstände in Überfrorener Pfad",
+    "subtitle": "Wofür die Gegenstände aus 2.0 da sind und wo du sie verwendest. Die neue Karte, der Fertigkeitsbaum und die neuen ARC-Gegner sind hier nicht enthalten.",
+    "loading": "Neue Gegenstände werden geladen...",
+    "navLabel": "Tabs des Gegenstands-Guides",
+    "research": {
+      "build": "Im Außenposten bauen",
+      "level": "Stufe {n}",
+      "blueprintCrafting": "Baupläne herstellen",
+      "designCrafting": "Entwürfe herstellen",
+      "amplifiedResearch": "Verstärkungsforschung",
+      "plans": "{n} Pläne",
+      "rpAmount": "{n} FP",
+      "step1": "Untersuche gefundene Gegenstände",
+      "step2": "Erhalte Forschungspunkte",
+      "step3": "Gib Punkte und Materialien für Pläne aus",
+      "step4": "Lerne den Plan im Außenposten",
+      "pointsTitle": "Forschungspunkte",
+      "pointsText": "Untersuche diese Gegenstände an der Forschungsstation, um Punkte zu verdienen.",
+      "stationTitle": "Forschungsstation",
+      "stationText": "Baue die {bench} im Außenposten und verbessere sie dann dreimal.",
+      "needsRoom": "Braucht {n} Außenpostenraum",
+      "needsRooms": "Braucht {n} Außenpostenräume",
+      "needsStationLevel": "Braucht Stationsstufe {n}",
+      "listCraftable": "Baupläne, die du erforschen kannst",
+      "listFindOnly": "Baupläne, die du finden musst",
+      "listDesigns": "Entwürfe, die du erforschen kannst",
+      "listFindOnlyDesigns": "Entwürfe, die du nur finden kannst",
+      "hoverTitle": "Forschung",
+      "browseTitle": "Was du erforschen kannst",
+      "benchLevel": "{bench} Stufe {n}"
+    },
+    "outpost": {
+      "unlocks": "Schaltet frei",
+      "special": "Sonderoption",
+      "furnitureTitle": "Möbel",
+      "celeste": "Celeste",
+      "expansion": "Stufe {from} auf {to}",
+      "pickOne": "Wähle einen Raum",
+      "benchLevel": "{bench} Stufe {level}",
+      "step1": "Sammle Baumaterialien",
+      "step2": "Erweitere den Außenposten und wähle einen Raum",
+      "step3": "Jeder neue Raum schaltet Stationsverbesserungen frei",
+      "slots": "Raumplätze",
+      "slotsText": "Dein Außenposten hat vier Plätze. Der erste enthält den Basisraum, jede Erweiterung belegt den nächsten.",
+      "slot": "Platz {n}",
+      "furnitureText": "Richte deine Räume mit Betten, Stühlen, Lampen und mehr ein.",
+      "furnitureCount": "{count} Möbelstücke",
+      "furnitureHow": "So funktionieren Möbel",
+      "furnStep1": "Finde oder erforsche einen Entwurf",
+      "furnStep2": "Lerne ihn im Außenposten",
+      "furnStep3": "Baue das Möbelstück aus Brettern, Blech und mehr",
+      "celesteText": "{name} tauscht jetzt Saatgut gegen Baumaterialien."
+    },
+    "changes": {
+      "recipes": "Rezepte",
+      "recipesHint": "Diese Rezepte brauchen andere Materialien als vorher.",
+      "gadgets": "Gadgets",
+      "anvilCraft": "{name}: herstellen und verbessern",
+      "anvilRepair": "{name}: reparieren",
+      "recycling": "Recycling",
+      "recyclingHint": "Diese Gegenstände ergeben beim Recyceln andere Materialien.",
+      "traders": "Händler",
+      "tradersHint": "Wähle einen Händler, um zu sehen, was er neu oder nicht mehr verkauft und welche Preise sich geändert haben.",
+      "stash": "Lager",
+      "stashHint": "Was jede Lagererweiterung kostet; die neuen Stufen sind markiert.",
+      "craft": "Herstellen",
+      "upgrade": "Verbessern von {from} auf {to}",
+      "repair": "{tier} reparieren",
+      "tradeNew": "Neu",
+      "tradeGone": "Nicht mehr im Angebot",
+      "tradePrice": "Neuer Preis",
+      "scrapValue": "{value} Schrottwert",
+      "expansion": "Erweiterung",
+      "slotCount": "{count} Plätze",
+      "newTier": "Neu"
+    },
+    "new-items": {
+      "recycles": "Wird recycelt zu",
+      "purpose": {
+        "outpost": {
+          "title": "Außenposten erweitern",
+          "sentence": "Baue neue Räume, um deinen Außenposten zu erweitern."
+        },
+        "researchStation": {
+          "title": "Forschungsstation",
+          "sentence": "Baue und verbessere die neue Forschungsstation."
+        },
+        "researchPoints": {
+          "title": "Forschungspunkte",
+          "sentence": "Untersuche diese an der Forschungsstation, um Forschungspunkte zu verdienen."
+        },
+        "gunsmith4": {
+          "title": "Waffenstation Stufe 4",
+          "sentence": "Nötig für die neue Stufe der Waffenstation, die verstärkte Waffen freischaltet."
+        },
+        "amplified": {
+          "title": "Verstärkte Waffen",
+          "sentence": "Mache aus Waffen auf max. Stufe verstärkte Waffen und füge Verstärkungen hinzu."
+        },
+        "researchBlueprints": {
+          "title": "Baupläne erforschen",
+          "sentence": "Werden an der Forschungsstation ausgegeben, um Baupläne und Entwürfe zu erforschen."
+        },
+        "furniture": {
+          "title": "Möbel",
+          "sentence": "Baue Möbel für die Räume deines Außenpostens."
+        },
+        "crafting": {
+          "title": "Herstellung",
+          "sentence": "Rezepte für Waffen, Gadgets und Gegenstände für den Raid."
+        },
+        "stencils": {
+          "title": "Waffenschablonen",
+          "sentence": "Bringe Farbschablonen auf deinen Waffen an."
+        },
+        "quests": {
+          "title": "Quests und Projekte",
+          "sentence": "Werden für Quests oder Projekte gebraucht."
+        },
+        "trades": {
+          "title": "Tauschgeschäfte",
+          "sentence": "Händler nehmen diese als Bezahlung an."
+        },
+        "noUse": {
+          "title": "Noch keine Verwendung",
+          "sentence": "Noch wird nichts davon gebraucht: verkaufen oder recyceln."
+        },
+        "unlocks": {
+          "title": "Einmalige Freischaltungen",
+          "sentence": "Gib diese einmal ab, um die neuen Außenpostenräume, die Forschungsstation, Waffenstation Stufe 4 und Quests freizuschalten."
+        },
+        "newGear": {
+          "title": "Neue Waffen und Ausrüstung",
+          "sentence": "Neu in 2.0, jeweils gefolgt vom Bauplan, der sie freischaltet."
+        },
+        "fallenEmperor": {
+          "title": "Gefallener Kaiser",
+          "sentence": "Alles, was du brauchst, um den Dungeon Gefallener Kaiser auf dem Pendola-Pass zu öffnen."
+        },
+        "furnitureDecoration": {
+          "title": "Möbel und Dekoration",
+          "sentence": "Baue Möbel aus diesen Materialien und stelle die Dekorationsgegenstände in deinem Außenposten auf."
+        },
+        "keys": {
+          "title": "Schlüssel für den Pendola-Pass",
+          "sentence": "Öffnen verschlossene Räume auf dem Pendola-Pass."
+        }
+      },
+      "unlocks": {
+        "outpost": "Außenposten Stufe {from} auf {to}",
+        "questItems": "Quest-Gegenstände"
+      },
+      "hover": {
+        "build": "{bench} bauen",
+        "unlocks": "Schaltet frei",
+        "craft": "Zum Herstellen von",
+        "research": "Erforscht",
+        "amplified": "Verstärkt",
+        "furniture": "Möbel ({n})",
+        "quests": "Quests und Projekte",
+        "traders": "Händler",
+        "gives": "Ergibt",
+        "fieldCraft": "Herstellung im Feld",
+        "repair": "Reparieren",
+        "researchDetail": "Stufe {level} · {rp} FP",
+        "researchLevel": "Stufe {level}",
+        "tradeFor": "Bezahlt {item}",
+        "upgrades": "Verstärkungs-Verbesserungen: {n}"
+      },
+      "more": {
+        "research": "Mehr zur Forschung im Tab Forschung",
+        "amplified": "Mehr zu verstärkten Waffen im Tab Verstärkt"
+      },
+      "rp": {
+        "calloutTitle": "Andere Verwendungen der Forschungsgegenstände",
+        "callout": "Einige davon brauchst du auch zum Bauen und Verbessern der Forschungsstation – behalte genug, bevor du sie untersuchst.",
+        "calloutUse": "{amount} {item} für {use}",
+        "scaleLabel": "Skala der Forschungspunkte",
+        "scaleTitle": "Forschungspläne kosten {min}–{max} FP",
+        "scaleMin": "Günstigster Forschungsplan: {name}",
+        "scaleMedian": "Typischer Forschungsplan",
+        "scaleMax": "Teuerster Forschungsplan: {name}"
+      },
+      "emperor": {
+        "title": "So öffnest du den Gefallenen Kaiser",
+        "step1": "Aktiviere während des Events Weiterleitung ein Beschädigtes Kaiser-Relais und nimm das Kaiser-Leuchtfeuer heraus.",
+        "step2": "Stelle das Leuchtfeuer auf den Boden und geh in Deckung: Trümmer regnen herab.",
+        "step3": "Brich das große Teil auf. Es kann den Bauplan: Kaiser-Portalleiter enthalten (der Bauplan kann auch während des Fregatte-Events auf dem Boden liegen).",
+        "step4": "Stelle die Kaiser-Portalleiter an der Werkbank aus der ARC-Kupplung mit Beschichtung, der ARC-Isolierkupplung und der ARC-Leitfähigkeitskupplung her.",
+        "step5": "Öffne mit dem Leiter den Dungeon Gefallener Kaiser auf dem Pendola-Pass.",
+        "note": "Wenn du mit dem Kaiser-Leuchtfeuer extrahierst, wird es zu einem Ruinierten Kaiser-Leuchtfeuer."
+      },
+      "detail": {
+        "level": "{bench} Stufe {level}",
+        "slots": "{n} Plätze"
+      }
+    },
+    "tabs": {
+      "new-items": "Neue Gegenstände",
+      "old-items": "Alte Gegenstände",
+      "outpost": "Außenposten",
+      "research": "Forschung",
+      "amplified": "Verstärkt",
+      "crafting": "Herstellen",
+      "changes": "Änderungen"
+    },
+    "intro": {
+      "new-items": {
+        "title": "Wofür sind die neuen Gegenstände?",
+        "sentence": "Alle neuen Gegenstände, gruppiert nach ihrer Verwendung. Gegenstände mit mehreren Verwendungen erscheinen in mehreren Gruppen."
+      },
+      "old-items": {
+        "title": "Welche alten Gegenstände haben neue Verwendungen?",
+        "sentence": "Bekannte Gegenstände, die in 2.0 für etwas Neues gebraucht werden."
+      },
+      "outpost": {
+        "title": "Wie erweitere ich meinen Außenposten?",
+        "sentence": "Sammle Materialien, erweitere den Außenposten und wähle für jeden neuen Platz einen Raum."
+      },
+      "research": {
+        "title": "Wie funktioniert die Forschungsstation?",
+        "sentence": "Untersuche Gegenstände für Forschungspunkte und gib sie dann für Baupläne und Entwürfe aus."
+      },
+      "amplified": {
+        "title": "Wie funktionieren verstärkte Waffen?",
+        "sentence": "Verbessere die Waffenstation und mache dann aus einer Waffe auf max. Stufe eine verstärkte Waffe."
+      },
+      "crafting": {
+        "title": "Was kann ich neu herstellen?",
+        "sentence": "Neue Herstellung im Raid, Waffenschablonen und der Schlüssel zum Kaiser-Portal."
+      },
+      "changes": {
+        "title": "Was hat sich bei bekannten Gegenständen geändert?",
+        "sentence": "Rezepte, Recycling, Händlerangebot und Lagergrößen, die sich von 1.45 unterscheiden."
+      }
+    },
+    "common": {
+      "howItWorks": "So funktioniert’s",
+      "needs": "Braucht",
+      "alsoNeeds": "Braucht außerdem",
+      "where": "Wo",
+      "before": "Vor 2.0",
+      "now": "Überfrorener Pfad",
+      "close": "Schließen",
+      "more": "+{count} weitere"
+    },
+    "crafting": {
+      "new": "Neu",
+      "field": {
+        "title": "Herstellung im Feld",
+        "sentence": "Stelle mitten im Raid her, mit Fertigkeiten aus dem Fertigkeitsbaum.",
+        "newCrafts": "Neue Herstellung im Raid",
+        "unchanged": "{n} Rezepte unverändert"
+      },
+      "stencils": {
+        "title": "Waffenschablonen",
+        "sentence": "Schablonen ändern das Aussehen einer Waffe und kosten Schablonenteile in der Herstellung.",
+        "partsHint": "Für jede Schablone nötig",
+        "cost": "{count} Schablonenteile",
+        "worksWith": "Passt zu"
+      },
+      "gateway": {
+        "title": "Schlüssel zum Kaiser-Portal",
+        "sentence": "Stelle den Leiter an der Werkbank her, um das Kaiser-Portal zu öffnen."
+      }
+    },
+    "old-items": {
+      "noLonger": "Nicht mehr verwendet für"
     }
   }
 }

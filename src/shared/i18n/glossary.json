@@ -1,0 +1,1983 @@
+{
+  "gameVersion": "2026-10-08_6919821819756184879",
+  "terms": {
+    "topside": {
+      "text": {
+        "en": "Topside",
+        "de": "An der Oberfläche",
+        "pt-BR": "Superfície",
+        "es": "Superficie",
+        "fr": "Surface",
+        "it": "Superficie",
+        "ja": "上層",
+        "ko-KR": "지상",
+        "pl": "Powierzchnia",
+        "ru": "Поверхность",
+        "tr": "Yeryüzü",
+        "zh-CN": "上层",
+        "zh-TW": "頂層"
+      },
+      "source": "game:ST_Onboarding_Tooltips/ID_ONBOARDINGTOOLTIPS_TOPSIDE_TITLE",
+      "notes": "The surface where raids take place.",
+      "variants": {
+        "ru": [
+          "На Поверхности"
+        ]
+      }
+    },
+    "raiderDen": {
+      "text": {
+        "en": "Raider Den",
+        "de": "Raider-Höhle",
+        "pt-BR": "Toca de Raider",
+        "es": "Guarida de Raiders",
+        "fr": "Repaire de Raider",
+        "it": "Covo Raider",
+        "ja": "レイダーのアジト",
+        "ko-KR": "레이더 은신처",
+        "pl": "Kryjówka łupieżcy",
+        "ru": "Рейдерская база",
+        "tr": "Raider İni",
+        "zh-CN": "奇袭者巢穴",
+        "zh-TW": "掠手小窩"
+      },
+      "source": "game:ST_RaiderProjects/ID_RAIDER_PROJECTS_EXPLANATION_DETAILS_RESET_8",
+      "notes": "The player's underground home base."
+    },
+    "workshop": {
+      "text": {
+        "en": "Workshop",
+        "de": "Werkstatt",
+        "pt-BR": "Oficina",
+        "es": "Taller",
+        "fr": "Atelier",
+        "it": "Officina",
+        "ja": "ワークショップ",
+        "ko-KR": "작업장",
+        "pl": "Warsztat",
+        "ru": "Мастерская",
+        "tr": "Atölye",
+        "zh-CN": "工坊",
+        "zh-TW": "工坊"
+      },
+      "source": "game:ST_Chambers/ID_CHAMBERS_TITLE",
+      "notes": "Where the crafting benches are; replaced the old \"Hideout\" wording."
+    },
+    "outpost": {
+      "text": {
+        "en": "Outpost",
+        "de": "Außenposten",
+        "pt-BR": "Posto Avançado",
+        "es": "Puesto",
+        "fr": "Avant-poste",
+        "it": "Avamposto",
+        "ja": "前哨基地",
+        "ko-KR": "전초 기지",
+        "pl": "Posterunek",
+        "ru": "Аванпост",
+        "tr": "Karakol",
+        "zh-CN": "哨站",
+        "zh-TW": "哨站"
+      },
+      "source": "game:ST_Outpost/ID_OUTPOST_TAB",
+      "notes": "Since 2.0 Frozen Trail: the expandable base with rooms and furniture."
+    },
+    "rooms": {
+      "text": {
+        "en": "Rooms",
+        "de": "Räume",
+        "pt-BR": "Espaços",
+        "es": "Salas",
+        "fr": "Pièces",
+        "it": "Stanze",
+        "ja": "部屋",
+        "ko-KR": "방",
+        "pl": "Pomieszczenia",
+        "ru": "Комнаты",
+        "tr": "Odalar",
+        "zh-CN": "房间",
+        "zh-TW": "房間"
+      },
+      "source": "game:ST_Outpost/ID_OUTPOST_MODULES",
+      "notes": "The expansion slots of the Outpost."
+    },
+    "furniture": {
+      "text": {
+        "en": "Furniture",
+        "de": "Möbel",
+        "pt-BR": "Mobília",
+        "es": "Muebles",
+        "fr": "Meubles",
+        "it": "Arredamento",
+        "ja": "家具",
+        "ko-KR": "가구",
+        "pl": "Meble",
+        "ru": "Мебель",
+        "tr": "Mobilya",
+        "zh-CN": "家具",
+        "zh-TW": "家具"
+      },
+      "source": "game:ST_Outpost/ID_OUTPOST_MENU_FURNITURE"
+    },
+    "decoration": {
+      "text": {
+        "en": "Decoration",
+        "de": "Dekoration",
+        "pt-BR": "Decoração",
+        "es": "Decoración",
+        "fr": "Décoration",
+        "it": "Decorazione",
+        "ja": "装飾",
+        "ko-KR": "장식",
+        "pl": "Dekoracja",
+        "ru": "Украшения",
+        "tr": "Dekorasyon",
+        "zh-CN": "装饰物",
+        "zh-TW": "裝飾"
+      },
+      "source": "game:ST_Outpost_Furniture/ID_OUTPOST_FURNITURE_DECORATION"
+    },
+    "stash": {
+      "text": {
+        "en": "Stash",
+        "de": "Lager",
+        "pt-BR": "Armazenamento",
+        "es": "Alijo",
+        "fr": "Réserve",
+        "it": "Deposito",
+        "ja": "保管庫",
+        "ko-KR": "보관함",
+        "pl": "Skrytka",
+        "ru": "Хранилище",
+        "tr": "Zula",
+        "zh-CN": "储备箱",
+        "zh-TW": "儲藏箱"
+      },
+      "source": "game:ST_Inventory/ID_INVENTORY_STASH_HEADER",
+      "notes": "The player storage between raids."
+    },
+    "loadout": {
+      "text": {
+        "en": "Loadout",
+        "de": "Loadout",
+        "pt-BR": "Armamento",
+        "es": "Armamento",
+        "fr": "Arsenal",
+        "it": "Dotazione",
+        "ja": "ロードアウト",
+        "ko-KR": "로드아웃",
+        "pl": "Rynsztunek",
+        "ru": "Снаряжение",
+        "tr": "Mühimmat",
+        "zh-CN": "配装",
+        "zh-TW": "配備"
+      },
+      "source": "game:ST_Inventory/ID_INVENTORY_LOADOUT_HEADER",
+      "notes": "The kit taken into a raid.",
+      "variants": {
+        "pl": [
+          "Ekwipunek"
+        ]
+      }
+    },
+    "inventory": {
+      "text": {
+        "en": "Inventory",
+        "de": "Inventar",
+        "pt-BR": "Inventário",
+        "es": "Inventario",
+        "fr": "Inventaire",
+        "it": "Inventario",
+        "ja": "インベントリ",
+        "ko-KR": "인벤토리",
+        "pl": "Ekwipunek",
+        "ru": "Инвентарь",
+        "tr": "Envanter",
+        "zh-CN": "物品栏",
+        "zh-TW": "物品欄"
+      },
+      "source": "game:ST_Frontend/ID_FRONTEND_TAB_INVENTORY"
+    },
+    "backpack": {
+      "text": {
+        "en": "Backpack",
+        "de": "Rucksack",
+        "pt-BR": "Mochila",
+        "es": "Mochila",
+        "fr": "Sac à dos",
+        "it": "Zaino",
+        "ja": "リュック",
+        "ko-KR": "배낭",
+        "pl": "Plecak",
+        "ru": "Рюкзак",
+        "tr": "Sırt Çantası",
+        "zh-CN": "背包",
+        "zh-TW": "背包"
+      },
+      "source": "game:ST_ItemCategory/ID_ITEMCATEGORY_BACKPACK"
+    },
+    "safePocket": {
+      "text": {
+        "en": "Safe Pocket",
+        "de": "Sicherheitstasche",
+        "pt-BR": "Bolso seguro",
+        "es": "Bolsillo seguro",
+        "fr": "Poche sécurisée",
+        "it": "Spazio sicuro",
+        "ja": "安全ポケット",
+        "ko-KR": "안전 포켓",
+        "pl": "Bezpieczna kieszeń",
+        "ru": "Потайной карман",
+        "tr": "Güvenli Cep",
+        "zh-CN": "安全口袋",
+        "zh-TW": "安全口袋"
+      },
+      "source": "game:ST_IngameInventoryScreen/ID_INGAME_INVENTORY_SAFE_POCKET"
+    },
+    "raider": {
+      "text": {
+        "en": "Raider",
+        "de": "Raider",
+        "pt-BR": "Raider",
+        "es": "Raider",
+        "fr": "Raider",
+        "it": "Raider",
+        "ja": "レイダー",
+        "ko-KR": "레이더",
+        "pl": "Łupieżca",
+        "ru": "Рейдер",
+        "tr": "Raider",
+        "zh-CN": "奇袭者",
+        "zh-TW": "掠手"
+      },
+      "source": "game:ST_CharacterScreen/SLOT_RAIDER",
+      "notes": "The player character."
+    },
+    "arc": {
+      "text": {
+        "en": "ARC",
+        "de": "ARC",
+        "pt-BR": "ARC",
+        "es": "ARC",
+        "fr": "ARC",
+        "it": "ARC",
+        "ja": "ARC",
+        "ko-KR": "아크",
+        "pl": "ARC",
+        "ru": "ARC",
+        "tr": "ARC",
+        "zh-CN": "ARC",
+        "zh-TW": "ARC"
+      },
+      "source": "game:ST_ItemDisplayTags/ID_ITEMDISPLAYTAG_ARC",
+      "notes": "The hostile machines; always upper case."
+    },
+    "quests": {
+      "text": {
+        "en": "Quests",
+        "de": "Quests",
+        "pt-BR": "Missões",
+        "es": "Misiones",
+        "fr": "Quêtes",
+        "it": "Missioni",
+        "ja": "クエスト",
+        "ko-KR": "퀘스트",
+        "pl": "Zadania",
+        "ru": "Задания",
+        "tr": "Görevler",
+        "zh-CN": "任务",
+        "zh-TW": "任務"
+      },
+      "source": "game:ST_Frontend/ID_FRONTEND_TAB_QUESTS",
+      "variants": {
+        "es": [
+          "Encargos"
+        ]
+      }
+    },
+    "quest": {
+      "text": {
+        "en": "Quest",
+        "de": "Quest",
+        "pt-BR": "Missão",
+        "es": "Encargo",
+        "fr": "Quête",
+        "it": "Missione",
+        "ja": "クエスト",
+        "ko-KR": "퀘스트",
+        "pl": "Zadanie",
+        "ru": "Задание",
+        "tr": "Görev",
+        "zh-CN": "任务",
+        "zh-TW": "任務"
+      },
+      "source": "game:ST_Onboarding_Tooltips/ID_ONBOARDINGTOOLTIPS_QUEST_TITLE"
+    },
+    "traders": {
+      "text": {
+        "en": "Traders",
+        "de": "Trader",
+        "pt-BR": "Comerciantes",
+        "es": "Comerciantes",
+        "fr": "Commerçants",
+        "it": "Mercanti",
+        "ja": "トレーダー",
+        "ko-KR": "상인",
+        "pl": "Handlarze",
+        "ru": "Торговцы",
+        "tr": "Tüccarlar",
+        "zh-CN": "商人",
+        "zh-TW": "商人"
+      },
+      "source": "game:ST_Frontend/ID_FRONTEND_TAB_TRADERS",
+      "notes": "The NPC vendors (Celeste, Lance, …)."
+    },
+    "trader": {
+      "text": {
+        "en": "Trader",
+        "de": "Trader",
+        "pt-BR": "Comerciante",
+        "es": "Comercio",
+        "fr": "Trader",
+        "it": "Mercante",
+        "ja": "トレーダー",
+        "ko-KR": "상인",
+        "pl": "Handlarz",
+        "ru": "Торговец",
+        "tr": "Tüccar",
+        "zh-CN": "商人",
+        "zh-TW": "商人"
+      },
+      "source": "game:ST_ItemDisplayTags/ID_ITEMDISPLAYTAG_TRADERCOMPONENT"
+    },
+    "trade": {
+      "text": {
+        "en": "Trade",
+        "de": "Traden",
+        "pt-BR": "Negociação",
+        "es": "Comercio",
+        "fr": "Échanger",
+        "it": "Commercio",
+        "ja": "取引",
+        "ko-KR": "거래",
+        "pl": "Handel",
+        "ru": "Обменять",
+        "tr": "Takas",
+        "zh-CN": "交易",
+        "zh-TW": "交易"
+      },
+      "source": "game:ST_Offers/ID_OFFERS_TRADE",
+      "variants": {
+        "es": [
+          "Comerciar"
+        ],
+        "ru": [
+          "Торговля"
+        ]
+      }
+    },
+    "projects": {
+      "text": {
+        "en": "Projects",
+        "de": "Projekte",
+        "pt-BR": "Projetos",
+        "es": "Proyectos",
+        "fr": "Projets",
+        "it": "Progetti",
+        "ja": "プロジェクト",
+        "ko-KR": "프로젝트",
+        "pl": "Projekty",
+        "ru": "Проекты",
+        "tr": "Projeler",
+        "zh-CN": "计划",
+        "zh-TW": "計畫"
+      },
+      "source": "game:ST_RaiderProjects/ID_RAIDER_PROJECTS_TITLE",
+      "notes": "Community/season projects with item requirements."
+    },
+    "expedition": {
+      "text": {
+        "en": "Expedition",
+        "de": "Expedition",
+        "pt-BR": "Expedição",
+        "es": "Expedición",
+        "fr": "Expédition",
+        "it": "Spedizione",
+        "ja": "遠征",
+        "ko-KR": "원정",
+        "pl": "Wyprawa",
+        "ru": "Экспедиция",
+        "tr": "Sefer",
+        "zh-CN": "远征",
+        "zh-TW": "遠征"
+      },
+      "source": "game:ST_RaiderProjects/ID_RAIDER_PROJECTS_EXPEDITION_TITLE",
+      "variants": {
+        "ko-KR": [
+          "탐험"
+        ]
+      }
+    },
+    "trials": {
+      "text": {
+        "en": "Trials",
+        "de": "Prüfungen",
+        "pt-BR": "Desafios",
+        "es": "Pruebas",
+        "fr": "Épreuves",
+        "it": "Prove",
+        "ja": "トライアル",
+        "ko-KR": "시련",
+        "pl": "Próby",
+        "ru": "Испытания",
+        "tr": "Denemeler",
+        "zh-CN": "试炼",
+        "zh-TW": "考驗"
+      },
+      "source": "game:ST_Frontend/ID_MASTERY_TITLE",
+      "variants": {
+        "tr": [
+          "Deneme"
+        ]
+      }
+    },
+    "skillTree": {
+      "text": {
+        "en": "Skill Tree",
+        "de": "Fertigkeitsbaum",
+        "pt-BR": "Árvore de Habilidade",
+        "es": "Árbol de habilidades",
+        "fr": "Arbre de compétences",
+        "it": "Albero delle abilità",
+        "ja": "スキルツリー",
+        "ko-KR": "스킬 트리",
+        "pl": "Drzewko umiejętności",
+        "ru": "Древо навыков",
+        "tr": "Yetenek Ağacı",
+        "zh-CN": "技能树",
+        "zh-TW": "技能樹"
+      },
+      "source": "game:ST_SkillTrees/ID_SKILLTREES_SCREEN_TITLE"
+    },
+    "level": {
+      "text": {
+        "en": "Level",
+        "de": "Stufe",
+        "pt-BR": "Nível",
+        "es": "Nivel",
+        "fr": "Niveau",
+        "it": "Livello",
+        "ja": "レベル",
+        "ko-KR": "레벨",
+        "pl": "Poziom",
+        "ru": "Уровень",
+        "tr": "Seviye",
+        "zh-CN": "等级",
+        "zh-TW": "等級"
+      },
+      "source": "game:ST_Chambers/ID_CHAMBERS_ROOM_LEVEL",
+      "notes": "Bench / room level."
+    },
+    "coins": {
+      "text": {
+        "en": "Coins",
+        "de": "Münzen",
+        "pt-BR": "Moedas",
+        "es": "Monedas",
+        "fr": "Pièces",
+        "it": "Monete",
+        "ja": "コイン",
+        "ko-KR": "코인",
+        "pl": "Monety",
+        "ru": "Монеты",
+        "tr": "Para",
+        "zh-CN": "钱币",
+        "zh-TW": "錢幣"
+      },
+      "source": "game:ST_Currency/ID_CURRENCY_COINS",
+      "variants": {
+        "tr": [
+          "Paralar"
+        ]
+      }
+    },
+    "cred": {
+      "text": {
+        "en": "Cred",
+        "de": "Misskredit",
+        "pt-BR": "Créditos",
+        "es": "Cred",
+        "fr": "Points de renommée (PR)",
+        "it": "Nomea",
+        "ja": "クレド",
+        "ko-KR": "평판 점수",
+        "pl": "Renoma",
+        "ru": "Кредиты",
+        "tr": "Şöhret",
+        "zh-CN": "信用点",
+        "zh-TW": "積分"
+      },
+      "source": "game:ST_Currency/ID_CURRENCY_BATTLEPASS_POINTS",
+      "variants": {
+        "fr": [
+          "Points de renommée"
+        ]
+      }
+    },
+    "raiderTokens": {
+      "text": {
+        "en": "Raider Tokens",
+        "de": "Raider-Token",
+        "pt-BR": "Fichas de Raider",
+        "es": "Monedas de Raider",
+        "fr": "Jetons Raider",
+        "it": "Gettoni Raider",
+        "ja": "レイダートークン",
+        "ko-KR": "레이더 토큰",
+        "pl": "Żetony łupieżcy",
+        "ru": "Рейдерские жетоны",
+        "tr": "Raider Jetonları",
+        "zh-CN": "奇袭者代币",
+        "zh-TW": "掠手代幣"
+      },
+      "source": "game:ST_Currency/ID_CURRENCY_HARD_LONG"
+    },
+    "store": {
+      "text": {
+        "en": "Store",
+        "de": "Shop",
+        "pt-BR": "Loja",
+        "es": "Tienda",
+        "fr": "Boutique",
+        "it": "Negozio",
+        "ja": "ストア",
+        "ko-KR": "상점",
+        "pl": "Sklep",
+        "ru": "Магазин",
+        "tr": "Mağaza",
+        "zh-CN": "商店",
+        "zh-TW": "商店"
+      },
+      "source": "game:ST_Frontend/ID_FRONTEND_TAB_STORE"
+    },
+    "craft": {
+      "text": {
+        "en": "Craft",
+        "de": "Herstellen",
+        "pt-BR": "Fabricar",
+        "es": "Fabricar",
+        "fr": "Artisanat",
+        "it": "Crea",
+        "ja": "製作",
+        "ko-KR": "제작",
+        "pl": "Wytwórz",
+        "ru": "Создание предметов",
+        "tr": "Üret",
+        "zh-CN": "制作",
+        "zh-TW": "製作"
+      },
+      "source": "game:ST_Frontend/ID_FRONTEND_TAB_CRAFT",
+      "variants": {
+        "fr": [
+          "Fabriquer"
+        ],
+        "ru": [
+          "Создать"
+        ]
+      }
+    },
+    "crafting": {
+      "text": {
+        "en": "Crafting",
+        "de": "Herstellen",
+        "pt-BR": "Fabricação",
+        "es": "Fabricación",
+        "fr": "Artisanat",
+        "it": "Creazione",
+        "ja": "製作",
+        "ko-KR": "제작",
+        "pl": "Wytwarzanie",
+        "ru": "Создание предметов",
+        "tr": "Üretim",
+        "zh-CN": "制作",
+        "zh-TW": "製作"
+      },
+      "source": "game:ST_IngameMenu/ID_INGAME_TAB_CRAFTING",
+      "variants": {
+        "de": [
+          "Herstellung"
+        ],
+        "pt-BR": [
+          "Fabricando"
+        ],
+        "es": [
+          "Fabricando"
+        ],
+        "fr": [
+          "Fabrication"
+        ],
+        "it": [
+          "Crea"
+        ],
+        "ja": [
+          "製作中"
+        ],
+        "ko-KR": [
+          "제작 중"
+        ],
+        "ru": [
+          "Создает предметы"
+        ],
+        "tr": [
+          "Üretim Yapıyor"
+        ],
+        "zh-CN": [
+          "正在制作"
+        ],
+        "zh-TW": [
+          "製作中"
+        ]
+      }
+    },
+    "inRoundCrafting": {
+      "text": {
+        "en": "In-Round Crafting",
+        "de": "Herstellung in der Runde",
+        "pt-BR": "Fabricação Durante a Rodada",
+        "es": "Fabricación durante una ronda",
+        "fr": "Fabrication en cours de partie",
+        "it": "Creazione durante un turno",
+        "ja": "ラウンド中制作",
+        "ko-KR": "라운드 중 제작",
+        "pl": "Wytwarzanie podczas rundy",
+        "ru": "Создание предметов в поле",
+        "tr": "Turda Üretim",
+        "zh-CN": "局内制作",
+        "zh-TW": "回合中製作"
+      },
+      "source": "game:ST_CharacterSkills/ID_SKILL_TITLE_INROUNDCRAFTING",
+      "notes": "Crafting during a raid (skill)."
+    },
+    "fieldCrafting": {
+      "text": {
+        "en": "Field Crafting",
+        "de": "Herstellung im Feld",
+        "pt-BR": "Fabricação em campo",
+        "es": "Fabricación sobre el terreno",
+        "fr": "Artisanat de terrain",
+        "it": "Creazione sul campo",
+        "ja": "フィールド製作",
+        "ko-KR": "필드 제작",
+        "pl": "Wytwarzanie w terenie",
+        "ru": "Создание предметов в поле",
+        "tr": "Saha üretimi",
+        "zh-CN": "现场制作",
+        "zh-TW": "實地製作"
+      },
+      "source": "game:ST_Onboarding_Tooltips/ID_ONBOARDINGTOOLTIPS_INGAME_PROMPT_FIELDCRAFTING_TITLE"
+    },
+    "recycle": {
+      "text": {
+        "en": "Recycle",
+        "de": "Recyceln",
+        "pt-BR": "Reciclar",
+        "es": "Reciclar",
+        "fr": "Recycler",
+        "it": "Ricicla",
+        "ja": "リサイクル",
+        "ko-KR": "재활용",
+        "pl": "Przetwórz",
+        "ru": "Переработать",
+        "tr": "Geri Dönüştür",
+        "zh-CN": "回收",
+        "zh-TW": "回收"
+      },
+      "source": "game:ST_Inventory/ID_INVENTORY_RECYCLE_BUTTON",
+      "variants": {
+        "es": [
+          "Reciclaje"
+        ],
+        "pl": [
+          "Wykorzystaj ponownie"
+        ],
+        "ru": [
+          "Переработка"
+        ]
+      }
+    },
+    "recyclesInto": {
+      "text": {
+        "en": "Recycles into",
+        "de": "Wird recycelt zu",
+        "pt-BR": "Ao reciclar",
+        "es": "Al reciclar obtendrás",
+        "fr": "Recyclage en",
+        "it": "Si può riciclare in:",
+        "ja": "リサイクル後：",
+        "ko-KR": "다음으로 재활용:",
+        "pl": "Przetwarzanie na:",
+        "ru": "Результат переработки",
+        "tr": "Şuna Geri Dönüşür:",
+        "zh-CN": "可回收为",
+        "zh-TW": "回收成"
+      },
+      "source": "game:ST_Inventory/ID_INVENTORY_RECYCLE_HEADER"
+    },
+    "salvage": {
+      "text": {
+        "en": "Salvage",
+        "de": "Ausschlachten",
+        "pt-BR": "Desmontar",
+        "es": "Desguazar",
+        "fr": "Récupérer",
+        "it": "Recupera",
+        "ja": "回収",
+        "ko-KR": "부품으로 분해",
+        "pl": "Rozłóż",
+        "ru": "Разобрать",
+        "tr": "Parçala",
+        "zh-CN": "拆解回收",
+        "zh-TW": "拆解"
+      },
+      "source": "game:ST_IngameInventoryScreen/ID_INGAME_INVENTORY_SALVAGE_BUTTON"
+    },
+    "salvagesInto": {
+      "text": {
+        "en": "Salvages into",
+        "de": "Wird ausgeschlachtet zu",
+        "pt-BR": "Desmonta para",
+        "es": "Al desguazar obtendrás",
+        "fr": "Recyclage en",
+        "it": "Trasforma in",
+        "ja": "回収後：",
+        "ko-KR": "다음으로 분해",
+        "pl": "Rozłożenie na:",
+        "ru": "Результат разборки",
+        "tr": "Şuna Parçalanır:",
+        "zh-CN": "拆解回收为",
+        "zh-TW": "拆解成"
+      },
+      "source": "game:ST_Inventory/ID_INVENTORY_SALVAGE_HEADER"
+    },
+    "upgrade": {
+      "text": {
+        "en": "Upgrade",
+        "de": "Verbessern",
+        "pt-BR": "Aprimorar",
+        "es": "Mejorar",
+        "fr": "Améliorer",
+        "it": "Migliora",
+        "ja": "アップグレード",
+        "ko-KR": "업그레이드",
+        "pl": "Ulepsz",
+        "ru": "Улучшить",
+        "tr": "Yükselt",
+        "zh-CN": "升级",
+        "zh-TW": "升級"
+      },
+      "source": "game:ST_Inventory/ID_INVENTORY_UPGRADE_BUTTON"
+    },
+    "repair": {
+      "text": {
+        "en": "Repair",
+        "de": "Reparieren",
+        "pt-BR": "Consertar",
+        "es": "Reparar",
+        "fr": "Réparer",
+        "it": "Ripara",
+        "ja": "修理",
+        "ko-KR": "수리",
+        "pl": "Napraw",
+        "ru": "Отремонтировать",
+        "tr": "Tamir Et",
+        "zh-CN": "修理",
+        "zh-TW": "修理"
+      },
+      "source": "game:ST_Inventory/ID_INVENTORY_REPAIR_BUTTON",
+      "variants": {
+        "pt-BR": [
+          "Reparar"
+        ],
+        "it": [
+          "Riparazioni"
+        ],
+        "pl": [
+          "Naprawa"
+        ],
+        "ru": [
+          "Ремонт"
+        ],
+        "tr": [
+          "Tamir"
+        ]
+      }
+    },
+    "durability": {
+      "text": {
+        "en": "Durability",
+        "de": "Haltbarkeit",
+        "pt-BR": "Durabilidade",
+        "es": "Vida útil",
+        "fr": "Durabilité",
+        "it": "Tenuta",
+        "ja": "耐久力",
+        "ko-KR": "내구도",
+        "pl": "Trwałość",
+        "ru": "Прочность",
+        "tr": "Dayanıklılık",
+        "zh-CN": "耐用性",
+        "zh-TW": "耐久度"
+      },
+      "source": "game:ST_Stats/ID_STATS_DURABILITY"
+    },
+    "blueprint": {
+      "text": {
+        "en": "Blueprint",
+        "de": "Bauplan",
+        "pt-BR": "Esquema",
+        "es": "Proyecto",
+        "fr": "Schéma",
+        "it": "Progetto",
+        "ja": "設計図",
+        "ko-KR": "설계도",
+        "pl": "Plan",
+        "ru": "Чертеж",
+        "tr": "Taslak",
+        "zh-CN": "蓝图",
+        "zh-TW": "藍圖"
+      },
+      "source": "game:ST_ItemDisplayTags/ID_ITEMDISPLAYTAG_GENERATOR_BLUEPRINT",
+      "notes": "Item that unlocks a crafting recipe."
+    },
+    "blueprints": {
+      "text": {
+        "en": "Blueprints",
+        "de": "Baupläne",
+        "pt-BR": "Esquemas",
+        "es": "Proyectos",
+        "fr": "Schémas",
+        "it": "Progetti",
+        "ja": "設計図",
+        "ko-KR": "설계도",
+        "pl": "Plany",
+        "ru": "Чертежи",
+        "tr": "Taslaklar",
+        "zh-CN": "蓝图",
+        "zh-TW": "藍圖"
+      },
+      "source": "game:ST_Chambers/ID_CHAMBERS_BLUEPRINTS"
+    },
+    "design": {
+      "text": {
+        "en": "Design",
+        "de": "Entwurf",
+        "pt-BR": "Projeto",
+        "es": "Diseño",
+        "fr": "Design",
+        "it": "Design",
+        "ja": "デザイン",
+        "ko-KR": "디자인",
+        "pl": "Projekt",
+        "ru": "Схема",
+        "tr": "Tasarım",
+        "zh-CN": "设计图",
+        "zh-TW": "設計"
+      },
+      "source": "game:ST_ItemDisplayTags/ID_ITEMDISPLAYTAG_RECIPE_OUTPOSTFURNITURE",
+      "notes": "Since 2.0: item that unlocks an Outpost furniture."
+    },
+    "designs": {
+      "text": {
+        "en": "Designs",
+        "de": "Entwürfe",
+        "pt-BR": "Projetos",
+        "es": "Diseños",
+        "fr": "Designs",
+        "it": "Design",
+        "ja": "デザイン",
+        "ko-KR": "디자인",
+        "pl": "Projekty",
+        "ru": "Схемы",
+        "tr": "Tasarımlar",
+        "zh-CN": "设计图",
+        "zh-TW": "設計"
+      },
+      "source": "game:ST_CHAMBERSTATIONS/ID_CHAMBERSTATIONS_RESEARCH_STATION_SUB_NAV_DESIGNS"
+    },
+    "workbench": {
+      "text": {
+        "en": "Workbench",
+        "de": "Werkbank",
+        "pt-BR": "Bancada",
+        "es": "Mesa de trabajo",
+        "fr": "Établi",
+        "it": "Banco da lavoro",
+        "ja": "ワークベンチ",
+        "ko-KR": "작업대",
+        "pl": "Stół warsztatowy",
+        "ru": "Верстак",
+        "tr": "Tezgâh",
+        "zh-CN": "工作台",
+        "zh-TW": "工作台"
+      },
+      "source": "game:ST_CHAMBERSTATIONS/ID_CHAMBERSTATIONS_BASIC_BENCH"
+    },
+    "gunsmith": {
+      "text": {
+        "en": "Gunsmith",
+        "de": "Waffenstation",
+        "pt-BR": "Armeiro",
+        "es": "Armero",
+        "fr": "Armurier",
+        "it": "Banco delle armi",
+        "ja": "ガンスミス",
+        "ko-KR": "총기 제작대",
+        "pl": "Stacja rusznikarska",
+        "ru": "Оружейный верстак",
+        "tr": "Silahçı",
+        "zh-CN": "武器工作台",
+        "zh-TW": "槍械站"
+      },
+      "source": "game:ST_CHAMBERSTATIONS/ID_CHAMBERSTATIONS_WEAPON_BENCH"
+    },
+    "gearBench": {
+      "text": {
+        "en": "Gear Bench",
+        "de": "Ausrüstungsbank",
+        "pt-BR": "Bancada de Equipamentos",
+        "es": "Mesa de equipamiento",
+        "fr": "Établi à matériel",
+        "it": "Banco dell'equipaggiamento",
+        "ja": "装備ベンチ",
+        "ko-KR": "장비 작업대",
+        "pl": "Stół do prac nad sprzętem",
+        "ru": "Верстак для снаряжения",
+        "tr": "Teçhizat Tezgâhı",
+        "zh-CN": "装备工作台",
+        "zh-TW": "裝備台"
+      },
+      "source": "game:ST_CHAMBERSTATIONS/ID_CHAMBERSTATIONS_ARMOR_BENCH"
+    },
+    "medicalLab": {
+      "text": {
+        "en": "Medical Lab",
+        "de": "Medizinisches Labor",
+        "pt-BR": "Laboratório Médico",
+        "es": "Laboratorio médico",
+        "fr": "Laboratoire médical",
+        "it": "Laboratorio medico",
+        "ja": "医療ラボ",
+        "ko-KR": "의약품 연구대",
+        "pl": "Laboratorium medyczne",
+        "ru": "Медицинская лаборатория",
+        "tr": "Tıp Laboratuvarı",
+        "zh-CN": "医疗实验室",
+        "zh-TW": "醫療實驗站"
+      },
+      "source": "game:ST_CHAMBERSTATIONS/ID_CHAMBERSTATIONS_MED_STATION"
+    },
+    "explosivesStation": {
+      "text": {
+        "en": "Explosives Station",
+        "de": "Sprengstoffstation",
+        "pt-BR": "Estação de Explosivos",
+        "es": "Puesto de explosivos",
+        "fr": "Station à explosifs",
+        "it": "Postazione degli esplosivi",
+        "ja": "爆発物ステーション",
+        "ko-KR": "폭발물 스테이션",
+        "pl": "Stacja materiałów wybuchowych",
+        "ru": "Верстак для взрывчатки",
+        "tr": "Patlayıcı İstasyonu",
+        "zh-CN": "爆炸物工作台",
+        "zh-TW": "爆裂物站"
+      },
+      "source": "game:ST_CHAMBERSTATIONS/ID_CHAMBERSTATIONS_EXPLOSIVES_BENCH"
+    },
+    "utilityStation": {
+      "text": {
+        "en": "Utility Station",
+        "de": "Gebrauchsgegenstand-Station",
+        "pt-BR": "Estação de Utilidades",
+        "es": "Puesto de utilidad",
+        "fr": "Station utilitaire",
+        "it": "Postazione di funzionalità",
+        "ja": "ユーティリティステーション",
+        "ko-KR": "유틸리티 스테이션",
+        "pl": "Stacja przedmiotów użytkowych",
+        "ru": "Верстак для инструментов",
+        "tr": "Alet İstasyonu",
+        "zh-CN": "工具工作台",
+        "zh-TW": "功能物品站"
+      },
+      "source": "game:ST_CHAMBERSTATIONS/ID_CHAMBERSTATIONS_UTILITY_BENCH"
+    },
+    "refiner": {
+      "text": {
+        "en": "Refiner",
+        "de": "Veredler",
+        "pt-BR": "Refinador",
+        "es": "Refinadora",
+        "fr": "Raffineur",
+        "it": "Rifinitore",
+        "ja": "精錬機",
+        "ko-KR": "가공기",
+        "pl": "Stacja usprawnień",
+        "ru": "Очиститель",
+        "tr": "Dönüştürücü",
+        "zh-CN": "精加工机",
+        "zh-TW": "精煉機"
+      },
+      "source": "game:ST_CHAMBERSTATIONS/ID_CHAMBERSTATIONS_REFINER",
+      "variants": {
+        "fr": [
+          "Raffiner"
+        ]
+      }
+    },
+    "scrappy": {
+      "text": {
+        "en": "Scrappy",
+        "de": "Scrappy",
+        "pt-BR": "Sucatinha",
+        "es": "Chatarrín",
+        "fr": "Coquillard",
+        "it": "Scartino",
+        "ja": "スクラッピー",
+        "ko-KR": "꼬꼬",
+        "pl": "Złomek",
+        "ru": "Плюшкин",
+        "tr": "Hurdacı",
+        "zh-CN": "废品仔",
+        "zh-TW": "鬥哥"
+      },
+      "source": "game:ST_CharacterScreen/ID_CHARACTERSCREEN_SCRAPPY",
+      "notes": "The rooster that gathers materials."
+    },
+    "research": {
+      "text": {
+        "en": "Research",
+        "de": "Forschung",
+        "pt-BR": "Pesquisas",
+        "es": "Investigación",
+        "fr": "Recherche",
+        "it": "Ricerca",
+        "ja": "研究所",
+        "ko-KR": "연구",
+        "pl": "Badania",
+        "ru": "Исследование",
+        "tr": "Araştırma",
+        "zh-CN": "研究",
+        "zh-TW": "研究"
+      },
+      "source": "game:ST_CHAMBERSTATIONS/ID_CHAMBERSTATIONS_RESEARCH_STATION_HEADER_RESEARCH",
+      "variants": {
+        "de": [
+          "Forschungseinrichtung"
+        ],
+        "pt-BR": [
+          "Pesquisa"
+        ],
+        "fr": [
+          "Zone de recherche"
+        ],
+        "ja": [
+          "研究"
+        ],
+        "ko-KR": [
+          "연구동"
+        ],
+        "pl": [
+          "Placówka badawcza"
+        ],
+        "ru": [
+          "Лаборатория"
+        ],
+        "tr": [
+          "Araştırma Merkezi"
+        ],
+        "zh-CN": [
+          "研究所"
+        ],
+        "zh-TW": [
+          "研究設施"
+        ]
+      }
+    },
+    "researchStation": {
+      "text": {
+        "en": "Research Station",
+        "de": "Forschungsstation",
+        "pt-BR": "Estação de Pesquisa",
+        "es": "Estación de investigación",
+        "fr": "Station de recherche",
+        "it": "Postazione di ricerca",
+        "ja": "研究ステーション",
+        "ko-KR": "연구 스테이션",
+        "pl": "Stacja badawcza",
+        "ru": "Исследовательская станция",
+        "tr": "Araştırma İstasyonu",
+        "zh-CN": "研究站",
+        "zh-TW": "研究站"
+      },
+      "source": "game:ST_CHAMBERSTATIONS/ID_CHAMBERSTATIONS_RESEARCH_STATION"
+    },
+    "researchPoints": {
+      "text": {
+        "en": "Research Points",
+        "de": "Forschungspunkte",
+        "pt-BR": "Pontos de Pesquisa",
+        "es": "Puntos de investigación",
+        "fr": "Points de recherche",
+        "it": "Punti ricerca",
+        "ja": "研究ポイント",
+        "ko-KR": "연구 포인트",
+        "pl": "Punkty badań",
+        "ru": "Очки исследований",
+        "tr": "Araştırma Puanları",
+        "zh-CN": "研究点数",
+        "zh-TW": "研究點數"
+      },
+      "source": "game:ST_Currency/ID_CURRENCY_RESEARCH_POINTS",
+      "notes": "Currency for research; abbreviated \"RP\" on the site."
+    },
+    "amplification": {
+      "text": {
+        "en": "Amplification",
+        "de": "Verstärkung",
+        "pt-BR": "Amplificação",
+        "es": "Amplificación",
+        "fr": "Amplification",
+        "it": "Amplificazione",
+        "ja": "強化",
+        "ko-KR": "증폭",
+        "pl": "Wzmocnienie",
+        "ru": "Совершенствование",
+        "tr": "Güçlendirme",
+        "zh-CN": "增强",
+        "zh-TW": "增幅"
+      },
+      "source": "game:ST_CHAMBERSTATIONS/ID_CHAMBERSTATIONS_RESEARCH_STATION_SUB_NAV_AMPLIFICATION",
+      "notes": "One upgrade option of an Amplified weapon; plural \"Amplifications\" on the site."
+    },
+    "amplificationModule": {
+      "text": {
+        "en": "Amplification Module",
+        "de": "Verstärkermodul",
+        "pt-BR": "Módulo de Amplificação",
+        "es": "Módulo de amplificación",
+        "fr": "Module d'amplification",
+        "it": "Modulo di amplificazione",
+        "ja": "強化モジュール",
+        "ko-KR": "증폭 모듈",
+        "pl": "Moduł wzmacniający",
+        "ru": "Совершенствующий модуль",
+        "tr": "Güçlendirme Modülü",
+        "zh-CN": "增强模块",
+        "zh-TW": "增幅模組"
+      },
+      "source": "game:ST_Inventory/ID_INVENTORY_AMPLIFICATION_MODULE"
+    },
+    "amplified": {
+      "text": {
+        "en": "Amplified",
+        "de": "Verstärkt",
+        "pt-BR": "Amplificado(a)",
+        "es": "Amplificado",
+        "fr": "Arme amplifiée",
+        "it": "Amplificato",
+        "ja": "強化",
+        "ko-KR": "증폭됨",
+        "pl": "Wzmocniona",
+        "ru": "Усоверш.",
+        "tr": "Güçlendirilmiş",
+        "zh-CN": "已增强",
+        "zh-TW": "增幅"
+      },
+      "source": "game:ST_Rarity/ID_RARITY_AMPLIFIED",
+      "notes": "The weapon tier above Legendary."
+    },
+    "stencil": {
+      "text": {
+        "en": "Stencil",
+        "de": "Schablone",
+        "pt-BR": "Estampa",
+        "es": "Modelo",
+        "fr": "Décoration",
+        "it": "Stencil",
+        "ja": "テンプレート",
+        "ko-KR": "스텐실",
+        "pl": "Szablon",
+        "ru": "Раскраска",
+        "tr": "Çıkartma",
+        "zh-CN": "贴花",
+        "zh-TW": "貼膜"
+      },
+      "source": "game:ST_ItemSkins/ID_ITEMSKINS_DISPLAY_TAG",
+      "notes": "Weapon paint scheme."
+    },
+    "stencils": {
+      "text": {
+        "en": "Stencils",
+        "de": "Schablonen",
+        "pt-BR": "Estampas",
+        "es": "Modelos",
+        "fr": "Décorations",
+        "it": "Stencil",
+        "ja": "テンプレート",
+        "ko-KR": "스텐실",
+        "pl": "Szablony",
+        "ru": "Раскраски",
+        "tr": "Çıkartmalar",
+        "zh-CN": "贴花",
+        "zh-TW": "貼膜"
+      },
+      "source": "game:ST_ItemSkins/ID_ITEMSKINS_TABNAME"
+    },
+    "weapons": {
+      "text": {
+        "en": "Weapons",
+        "de": "Waffen",
+        "pt-BR": "Armas",
+        "es": "Armas",
+        "fr": "Armes",
+        "it": "Armi",
+        "ja": "武器",
+        "ko-KR": "무기",
+        "pl": "Bronie",
+        "ru": "Оружие",
+        "tr": "Silahlar",
+        "zh-CN": "武器",
+        "zh-TW": "武器"
+      },
+      "source": "game:ST_Inventory/ID_INVENTORY_FILTER_WEAPONS"
+    },
+    "weaponMods": {
+      "text": {
+        "en": "Weapon Mods",
+        "de": "Waffen-Mods",
+        "pt-BR": "Modificações de Arma",
+        "es": "Modificadores de arma",
+        "fr": "Mods d'arme",
+        "it": "Mod per armi",
+        "ja": "武器モジュール",
+        "ko-KR": "무기 모드",
+        "pl": "Modyfikacje broni",
+        "ru": "Модификации оружия",
+        "tr": "Silah Modları",
+        "zh-CN": "武器改装",
+        "zh-TW": "武器模組"
+      },
+      "source": "game:ST_Inventory/ID_INVENTORY_FILTER_WEAPONMODS"
+    },
+    "mods": {
+      "text": {
+        "en": "Mods",
+        "de": "Mods",
+        "pt-BR": "Modificações",
+        "es": "Modificadores",
+        "fr": "Mods",
+        "it": "Mod",
+        "ja": "モジュール",
+        "ko-KR": "모드",
+        "pl": "Modyfikacje",
+        "ru": "Модификации",
+        "tr": "Modlar",
+        "zh-CN": "改装",
+        "zh-TW": "模組"
+      },
+      "source": "game:ST_Onboarding_Tooltips/ID_ONBOARDINGTOOLTIPS_MODS_TITLE"
+    },
+    "augment": {
+      "text": {
+        "en": "Augment",
+        "de": "Augment",
+        "pt-BR": "Aperfeiçoamento",
+        "es": "Aumento",
+        "fr": "Module",
+        "it": "Potenziamento",
+        "ja": "オーグメント",
+        "ko-KR": "증강물",
+        "pl": "Przeróbka",
+        "ru": "Усилитель",
+        "tr": "Yükseltici",
+        "zh-CN": "强化",
+        "zh-TW": "強化"
+      },
+      "source": "game:ST_ItemDisplayTags/ID_ITEMDISPLAYTAG_AUGMENT"
+    },
+    "shield": {
+      "text": {
+        "en": "Shield",
+        "de": "Schild",
+        "pt-BR": "Escudo",
+        "es": "Escudo",
+        "fr": "Bouclier",
+        "it": "Scudo",
+        "ja": "シールド",
+        "ko-KR": "실드",
+        "pl": "Osłona",
+        "ru": "Щит",
+        "tr": "Kalkan",
+        "zh-CN": "护盾",
+        "zh-TW": "護盾"
+      },
+      "source": "game:ST_IngameInventoryScreen/ID_INGAME_INVENTORY_ARMOR",
+      "variants": {
+        "pl": [
+          "Tarcza"
+        ]
+      }
+    },
+    "gadget": {
+      "text": {
+        "en": "Gadget",
+        "de": "Gadget",
+        "pt-BR": "Acessório",
+        "es": "Artilugio",
+        "fr": "Gadget",
+        "it": "Gadget",
+        "ja": "ガジェット",
+        "ko-KR": "가젯",
+        "pl": "Gadżet",
+        "ru": "Гаджет",
+        "tr": "Cihaz",
+        "zh-CN": "小道具",
+        "zh-TW": "道具"
+      },
+      "source": "game:ST_ItemDisplayTags/ID_ITEMDISPLAYTAG_GADGET"
+    },
+    "quickUse": {
+      "text": {
+        "en": "Quick Use",
+        "de": "Schnelleinsatz",
+        "pt-BR": "Uso Rápido",
+        "es": "Uso rápido",
+        "fr": "Utilisation rapide",
+        "it": "Uso rapido",
+        "ja": "クイック使用",
+        "ko-KR": "빠른 사용",
+        "pl": "Szybkie użycie",
+        "ru": "Быстрое использование",
+        "tr": "Hızlı Kullanım",
+        "zh-CN": "快速使用",
+        "zh-TW": "快速使用"
+      },
+      "source": "game:ST_Inventory/ID_INVENTORY_FILTER_QUICKUSE"
+    },
+    "ammo": {
+      "text": {
+        "en": "Ammo",
+        "de": "Munition",
+        "pt-BR": "Munição",
+        "es": "Munición",
+        "fr": "Munitions",
+        "it": "Munizioni",
+        "ja": "弾薬",
+        "ko-KR": "탄약",
+        "pl": "Amunicja",
+        "ru": "Патроны",
+        "tr": "Cephane",
+        "zh-CN": "弹药",
+        "zh-TW": "彈藥"
+      },
+      "source": "game:ST_RaiderProjects/ID_RAIDER_PROJECTS_EXPEDITION_STEP_5_TYPE_1_AMMO"
+    },
+    "key": {
+      "text": {
+        "en": "Key",
+        "de": "Schlüssel",
+        "pt-BR": "Chave",
+        "es": "Llave",
+        "fr": "Clé",
+        "it": "Chiave",
+        "ja": "キー",
+        "ko-KR": "열쇠",
+        "pl": "Klucz",
+        "ru": "Ключ",
+        "tr": "Anahtar",
+        "zh-CN": "钥匙",
+        "zh-TW": "鑰匙"
+      },
+      "source": "game:ST_ItemDisplayTags/ID_ITEMDISPLAYTAG_KEY"
+    },
+    "keys": {
+      "text": {
+        "en": "Keys",
+        "de": "Schlüssel",
+        "pt-BR": "Chaves",
+        "es": "Llaves",
+        "fr": "Clés",
+        "it": "Chiavi",
+        "ja": "鍵",
+        "ko-KR": "열쇠",
+        "pl": "Klucze",
+        "ru": "Ключи",
+        "tr": "Anahtarlar",
+        "zh-CN": "钥匙",
+        "zh-TW": "鑰匙"
+      },
+      "source": "game:ST_Inventory/ID_INVENTORY_FILTER_KEYS"
+    },
+    "trinket": {
+      "text": {
+        "en": "Trinket",
+        "de": "Wertloser Gegenstand",
+        "pt-BR": "Bugiganga",
+        "es": "Quincalla",
+        "fr": "Babiole",
+        "it": "Gingillo",
+        "ja": "ガラクタ",
+        "ko-KR": "잡화",
+        "pl": "Błyskotka",
+        "ru": "Безделушка",
+        "tr": "Ivır Zıvır",
+        "zh-CN": "饰品",
+        "zh-TW": "飾品"
+      },
+      "source": "game:ST_ItemDisplayTags/ID_ITEMDISPLAYTAG_JUNK",
+      "notes": "Items only worth selling (and, since 2.0, decoration)."
+    },
+    "topsideMaterial": {
+      "text": {
+        "en": "Topside Material",
+        "de": "Oberflächenmaterial",
+        "pt-BR": "Material da superfície",
+        "es": "Materiales de la superficie",
+        "fr": "Matériau de la Surface",
+        "it": "Materiale della Superficie",
+        "ja": "上層素材",
+        "ko-KR": "지상 재료",
+        "pl": "Materiał z powierzchni",
+        "ru": "Материал с Поверхности",
+        "tr": "Yeryüzü Materyali",
+        "zh-CN": "上层材料",
+        "zh-TW": "頂層材料"
+      },
+      "source": "game:ST_ItemDisplayTags/ID_ITEMDISPLAYTAG_CRAFTINGMATERIAL_TOPSIDE"
+    },
+    "common": {
+      "text": {
+        "en": "Common",
+        "de": "Gewöhnlich",
+        "pt-BR": "Comum",
+        "es": "Común",
+        "fr": "Commun",
+        "it": "Comune",
+        "ja": "コモン",
+        "ko-KR": "일반",
+        "pl": "Powszechne",
+        "ru": "Обычный",
+        "tr": "Yaygın",
+        "zh-CN": "普通",
+        "zh-TW": "普通"
+      },
+      "source": "game:ST_Rarity/RARITY_COMMON"
+    },
+    "uncommon": {
+      "text": {
+        "en": "Uncommon",
+        "de": "Ungewöhnlich",
+        "pt-BR": "Incomum",
+        "es": "Inusual",
+        "fr": "Inhabituel",
+        "it": "Non comune",
+        "ja": "アンコモン",
+        "ko-KR": "고급",
+        "pl": "Niepospolite",
+        "ru": "Необычный",
+        "tr": "Sıra Dışı",
+        "zh-CN": "罕见",
+        "zh-TW": "罕見"
+      },
+      "source": "game:ST_Rarity/RARITY_UNCOMMON"
+    },
+    "rare": {
+      "text": {
+        "en": "Rare",
+        "de": "Selten",
+        "pt-BR": "Raro",
+        "es": "Poco común",
+        "fr": "Rare",
+        "it": "Raro",
+        "ja": "レア",
+        "ko-KR": "희귀",
+        "pl": "Rzadkie",
+        "ru": "Редкий",
+        "tr": "Nadir",
+        "zh-CN": "稀有",
+        "zh-TW": "稀有"
+      },
+      "source": "game:ST_Rarity/RARITY_RARE",
+      "variants": {
+        "ru": [
+          "Редк."
+        ]
+      }
+    },
+    "epic": {
+      "text": {
+        "en": "Epic",
+        "de": "Episch",
+        "pt-BR": "Épico",
+        "es": "Excepcional",
+        "fr": "Épique",
+        "it": "Epico",
+        "ja": "エピック",
+        "ko-KR": "에픽",
+        "pl": "Epickie",
+        "ru": "Эпический",
+        "tr": "Destansı",
+        "zh-CN": "史诗",
+        "zh-TW": "史詩"
+      },
+      "source": "game:ST_Rarity/RARITY_EPIC",
+      "variants": {
+        "pt-BR": [
+          "Épica"
+        ],
+        "it": [
+          "Epica"
+        ],
+        "pl": [
+          "Epicka"
+        ],
+        "ru": [
+          "Эпические",
+          "Эпическое"
+        ]
+      }
+    },
+    "legendary": {
+      "text": {
+        "en": "Legendary",
+        "de": "Legendär",
+        "pt-BR": "Lendário",
+        "es": "Legendario",
+        "fr": "Légendaire",
+        "it": "Leggendario",
+        "ja": "レジェンダリー",
+        "ko-KR": "전설",
+        "pl": "Legendarne",
+        "ru": "Легендарный",
+        "tr": "Efsanevi",
+        "zh-CN": "传奇",
+        "zh-TW": "傳奇"
+      },
+      "source": "game:ST_Rarity/RARITY_LEGENDARY",
+      "variants": {
+        "ru": [
+          "Легендарные"
+        ]
+      }
+    },
+    "map": {
+      "text": {
+        "en": "Map",
+        "de": "Karte",
+        "pt-BR": "Mapa",
+        "es": "Mapa",
+        "fr": "Carte",
+        "it": "Mappa",
+        "ja": "マップ",
+        "ko-KR": "맵",
+        "pl": "Mapa",
+        "ru": "Карта",
+        "tr": "Harita",
+        "zh-CN": "地图",
+        "zh-TW": "地圖"
+      },
+      "source": "game:ST_IngameMenu/ID_INGAME_TAB_MAP"
+    },
+    "mapConditions": {
+      "text": {
+        "en": "Map Conditions",
+        "de": "Kartenbedingungen",
+        "pt-BR": "Condições do mapa",
+        "es": "Condiciones del mapa",
+        "fr": "Conditions de la carte",
+        "it": "Condizioni mappa",
+        "ja": "マップ条件",
+        "ko-KR": "맵 환경",
+        "pl": "Warunki mapy",
+        "ru": "Условия на карте",
+        "tr": "Harita koşulları",
+        "zh-CN": "地图条件",
+        "zh-TW": "地圖條件"
+      },
+      "source": "game:ST_Onboarding_Tooltips/ID_ONBOARDINGTOOLTIPS_MAPCONDITIONS_TITLE",
+      "notes": "Events/modifiers a map runs with (Night Raid, …)."
+    },
+    "loot": {
+      "text": {
+        "en": "Loot",
+        "de": "Beute",
+        "pt-BR": "Saque",
+        "es": "Botín",
+        "fr": "Butin",
+        "it": "Bottino",
+        "ja": "ルート",
+        "ko-KR": "노획",
+        "pl": "Łupy",
+        "ru": "Добыча",
+        "tr": "Ganimet",
+        "zh-CN": "战利品",
+        "zh-TW": "搜刮品"
+      },
+      "source": "game:ST_Map/ID_LEGEND_CATEGORY_LOOT",
+      "variants": {
+        "de": [
+          "Plündern"
+        ],
+        "pt-BR": [
+          "Saquear"
+        ],
+        "es": [
+          "Saquear"
+        ],
+        "fr": [
+          "Piller"
+        ],
+        "it": [
+          "Saccheggia"
+        ],
+        "ja": [
+          "戦利品",
+          "略奪"
+        ],
+        "ko-KR": [
+          "전리품"
+        ],
+        "pl": [
+          "Złupienie"
+        ],
+        "ru": [
+          "Собрать добычу"
+        ],
+        "tr": [
+          "Yağmala"
+        ],
+        "zh-CN": [
+          "搜刮"
+        ],
+        "zh-TW": [
+          "搜刮"
+        ]
+      }
+    },
+    "raiderHatch": {
+      "text": {
+        "en": "Raider Hatch",
+        "de": "Raider-Luke",
+        "pt-BR": "Escotilha de Raider",
+        "es": "Trampilla de Raider",
+        "fr": "Trappe de Raider",
+        "it": "Botola del Raider",
+        "ja": "レイダーハッチ",
+        "ko-KR": "레이더 해치",
+        "pl": "Właz łupieżcy",
+        "ru": "Рейдерский люк",
+        "tr": "Raider Geçidi",
+        "zh-CN": "奇袭者暗门",
+        "zh-TW": "掠手出入口"
+      },
+      "source": "game:ST_Map/ID_MARKER_EXTRACTION_HATCH"
+    },
+    "raiderCache": {
+      "text": {
+        "en": "Raider Cache",
+        "de": "Raider-Geheimvorrat",
+        "pt-BR": "Estoque de Raider",
+        "es": "Alijo de Raider",
+        "fr": "Cache de Raider",
+        "it": "Scorta Raider",
+        "ja": "レイダーの隠匿物",
+        "ko-KR": "레이더 은닉물",
+        "pl": "Skrytka łupieżców",
+        "ru": "Тайник рейдеров",
+        "tr": "Raider Zulası",
+        "zh-CN": "奇袭者箱",
+        "zh-TW": "掠手藏貨"
+      },
+      "source": "game:ST_WorldObjects/ID_WORLDOBJECT_RAIDERCACHE"
+    },
+    "supplyDrop": {
+      "text": {
+        "en": "Supply Drop",
+        "de": "Vorratsabwurf",
+        "pt-BR": "Entrega de Suprimentos",
+        "es": "Entrega de suministros",
+        "fr": "Largage d'approvisionnement",
+        "it": "Carico aereo",
+        "ja": "投下物資",
+        "ko-KR": "보급품 드롭",
+        "pl": "Dostawa zaopatrzenia",
+        "ru": "Ящик с припасами",
+        "tr": "İkmal Teslimatı",
+        "zh-CN": "补给投放点",
+        "zh-TW": "空投物資"
+      },
+      "source": "game:ST_Map/ID_MARKER_SUPPLY_DROP"
+    },
+    "fieldCrate": {
+      "text": {
+        "en": "Field Crate",
+        "de": "Feldkiste",
+        "pt-BR": "Caixa de Campo",
+        "es": "Caja de campo",
+        "fr": "Caisse de terrain",
+        "it": "Cassa di campo",
+        "ja": "フィールド・クレート",
+        "ko-KR": "필드 상자",
+        "pl": "Skrzynka polowa",
+        "ru": "Ящик",
+        "tr": "Saha Kasası",
+        "zh-CN": "箱子",
+        "zh-TW": "實地貨箱"
+      },
+      "source": "game:ST_Map/ID_MARKER_FIELD_CRATE"
+    },
+    "arcProbe": {
+      "text": {
+        "en": "ARC Probe",
+        "de": "ARC-Sonde",
+        "pt-BR": "Sonda ARC",
+        "es": "Sonda ARC",
+        "fr": "Sonde ARC",
+        "it": "Sonda ARC",
+        "ja": "ARC プローブ",
+        "ko-KR": "아크 탐사기",
+        "pl": "Sonda ARC",
+        "ru": "Зонд ARC",
+        "tr": "ARC Roketi",
+        "zh-CN": "ARC探测器",
+        "zh-TW": "ARC探測機"
+      },
+      "source": "game:ST_Map/ID_MARKER_ARC_PROBE"
+    },
+    "damBattlegrounds": {
+      "text": {
+        "en": "Dam Battlegrounds",
+        "de": "Damm-Schlachtfelder",
+        "pt-BR": "Campos de Batalha da Represa",
+        "es": "Campos de batalla de la Presa",
+        "fr": "Champ de bataille du Barrage",
+        "it": "Campo di battaglia della Diga",
+        "ja": "ダム戦場",
+        "ko-KR": "댐 전장",
+        "pl": "Pole bitwy na terenie Zapory",
+        "ru": "Поле битвы у дамбы",
+        "tr": "Baraj Savaş Alanı",
+        "zh-CN": "大坝战场",
+        "zh-TW": "大壩戰場"
+      },
+      "source": "game:ST_MapSelection/ID_MAPSELECTION_DAM_FULL"
+    },
+    "buriedCity": {
+      "text": {
+        "en": "Buried City",
+        "de": "Begrabene Stadt",
+        "pt-BR": "Cidade Soterrada",
+        "es": "Ciudad enterrada",
+        "fr": "Ville enfouie",
+        "it": "Città sepolta",
+        "ja": "埋もれた街",
+        "ko-KR": "파묻힌 도시",
+        "pl": "Pogrzebane Miasto",
+        "ru": "Погребенный город",
+        "tr": "Gömülü Şehir",
+        "zh-CN": "掩埋废城",
+        "zh-TW": "埋藏都市"
+      },
+      "source": "game:ST_MapSelection/ID_MAPSELECTION_BURIEDCITY_FULL"
+    },
+    "spaceport": {
+      "text": {
+        "en": "Spaceport",
+        "de": "Raumhafen",
+        "pt-BR": "Espaçoporto",
+        "es": "Puerto espacial",
+        "fr": "Port spatial",
+        "it": "Spazioporto",
+        "ja": "宇宙港",
+        "ko-KR": "우주 기지",
+        "pl": "Port kosmiczny",
+        "ru": "Космопорт",
+        "tr": "Uzaylimanı",
+        "zh-CN": "太空港",
+        "zh-TW": "太空港"
+      },
+      "source": "game:ST_MapSelection/ID_MAPSELECTION_SPACEPORT_TITLE"
+    },
+    "blueGate": {
+      "text": {
+        "en": "The Blue Gate",
+        "de": "Das Blaue Tor",
+        "pt-BR": "O Portão Azul",
+        "es": "La Puerta azul",
+        "fr": "Le Portail bleu",
+        "it": "Il Varco blu",
+        "ja": "ブルーゲート",
+        "ko-KR": "블루 게이트",
+        "pl": "Błękitna Brama",
+        "ru": "Синие ворота",
+        "tr": "Mavi Kapı",
+        "zh-CN": "蓝门",
+        "zh-TW": "藍色大門"
+      },
+      "source": "game:ST_MapSelection/ID_MAPSELECTION_THEBLUEGATE_FULL",
+      "variants": {
+        "es": [
+          "Puerta azul"
+        ]
+      }
+    },
+    "stellaMontis": {
+      "text": {
+        "en": "Stella Montis",
+        "de": "Stella Montis",
+        "pt-BR": "Stella Montis",
+        "es": "Stella Montis",
+        "fr": "Stella Montis",
+        "it": "Stella Montis",
+        "ja": "ステラ・モンティス",
+        "ko-KR": "스텔라 몬티스",
+        "pl": "Stella Montis",
+        "ru": "Стелла Монтис",
+        "tr": "Stella Montis",
+        "zh-CN": "星辰山",
+        "zh-TW": "星辰山"
+      },
+      "source": "game:ST_Location_MountainCompound/ID_LOCATION_MOUNTAINCOMPOUND_STELLA_MONTIS"
+    },
+    "pendolaPass": {
+      "text": {
+        "en": "Pendola Pass",
+        "de": "Pendola-Pass",
+        "pt-BR": "Passagem Pendola",
+        "es": "Paso Pendola",
+        "fr": "Col de Pendola",
+        "it": "Passo di Pendola",
+        "ja": "ペンドラ・パス",
+        "ko-KR": "펜돌라 고개",
+        "pl": "Przełęcz Pendola",
+        "ru": "Перевал Пендола",
+        "tr": "Pendola Geçidi",
+        "zh-CN": "彭多拉山口",
+        "zh-TW": "彭多拉隘口"
+      },
+      "source": "game:ST_MapSelection/ID_MAPSELECTION_FROZENTRAIL_TITLE"
+    },
+    "frozenTrail": {
+      "text": {
+        "en": "Frozen Trail",
+        "de": "Überfrorener Pfad",
+        "pt-BR": "Trilha Congelada",
+        "es": "Sendero helado",
+        "fr": "Traînée gelée",
+        "it": "Sentiero gelido",
+        "ja": "凍った道",
+        "ko-KR": "얼어붙은 산길",
+        "pl": "Mroźny szlak",
+        "ru": "Морозная тропа",
+        "tr": "Donmuş Patika",
+        "zh-CN": "霜痕小径",
+        "zh-TW": "冰凍小徑"
+      },
+      "source": "game:ST_BattlePass/ID_BATTLEPASS_CARD_FROZEN_TRAIL_HEADER",
+      "notes": "Name of the 2.0 update."
+    },
+    "nightRaid": {
+      "text": {
+        "en": "Night Raid",
+        "de": "Nächtliche Plünderung",
+        "pt-BR": "Incursão Noturna",
+        "es": "Incursión nocturna",
+        "fr": "Raid nocturne",
+        "it": "Raid notturno",
+        "ja": "夜襲",
+        "ko-KR": "야간 습격",
+        "pl": "Nocny rajd",
+        "ru": "Ночной рейд",
+        "tr": "Gece Baskını",
+        "zh-CN": "夜间奇袭",
+        "zh-TW": "夜間劫掠"
+      },
+      "source": "game:ST_MapCondition/ID_MAPCONDITION_NIGHTRAID"
+    },
+    "electromagneticStorm": {
+      "text": {
+        "en": "Electromagnetic Storm",
+        "de": "Elektromagnetischer Sturm",
+        "pt-BR": "Tempestade Eletromagnética",
+        "es": "Tormenta electromagnética",
+        "fr": "Tempête électromagnétique",
+        "it": "Tempesta elettromagnetica",
+        "ja": "電磁嵐",
+        "ko-KR": "전자기 폭풍",
+        "pl": "Burza elektromagnetyczna",
+        "ru": "Электромагнитная буря",
+        "tr": "Elektromanyetik Fırtına",
+        "zh-CN": "电磁风暴",
+        "zh-TW": "電磁風暴"
+      },
+      "source": "game:ST_MapCondition/ID_MAPCONDITION_ELECTROMAGNETIC_STORM"
+    },
+    "solo": {
+      "text": {
+        "en": "Solo",
+        "de": "Solo",
+        "pt-BR": "solo",
+        "es": "en solitario",
+        "fr": "solo",
+        "it": "solitaria",
+        "ja": "ソロ",
+        "ko-KR": "솔로",
+        "pl": "solo",
+        "ru": "одиночка",
+        "tr": "tekli",
+        "zh-CN": "单人",
+        "zh-TW": "單人"
+      },
+      "source": "game:ST_MatchMaking/ID_MATCHMAKING_SOLO",
+      "variants": {
+        "es": [
+          "Individual"
+        ],
+        "it": [
+          "In solitaria"
+        ],
+        "tr": [
+          "Tek Başına"
+        ]
+      }
+    },
+    "squad": {
+      "text": {
+        "en": "Squad",
+        "de": "Squad",
+        "pt-BR": "time",
+        "es": "pelotón",
+        "fr": "escouade",
+        "it": "squadra",
+        "ja": "チーム",
+        "ko-KR": "스쿼드",
+        "pl": "oddział",
+        "ru": "команда",
+        "tr": "ekip",
+        "zh-CN": "小队",
+        "zh-TW": "小隊"
+      },
+      "source": "game:ST_MatchMaking/ID_MATCHMAKING_SQUAD"
+    },
+    "raid": {
+      "text": {
+        "en": "Raid",
+        "de": "Raid",
+        "pt-BR": "Incursão"
+      },
+      "source": "manual",
+      "notes": "One round topside. No game text of its own; other languages: follow existing site usage."
+    }
+  }
+}

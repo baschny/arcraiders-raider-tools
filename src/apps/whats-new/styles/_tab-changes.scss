@@ -1,0 +1,56 @@
+@use '../../../shared/styles/variables' as *;
+
+// Styles of the changes tab (.wn-tab-changes).
+.wn-tab-changes {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  .wn-changes__group {
+    margin-top: 24px;
+  }
+
+  .wn-changes__subhead {
+    margin: 0 0 16px;
+    font-size: $font-xl;
+    font-weight: 600;
+    color: $text-light;
+  }
+
+  .wn-segmented {
+    margin-bottom: 8px;
+  }
+}
+
+.wn-stash {
+  display: flex;
+  flex-direction: column;
+
+  &__row {
+    display: grid;
+    grid-template-columns: minmax(96px, 1fr) minmax(0, 2fr) minmax(0, 2fr);
+    gap: 16px;
+    padding: 12px 0;
+    border-top: 1px solid $bg-tertiary;
+    color: $text-primary;
+
+    &--head {
+      border-top: 0;
+      font-size: $font-md;
+      color: $text-secondary;
+    }
+
+    &--same {
+      opacity: 0.55;
+    }
+  }
+
+  &__slots {
+    font-weight: 600;
+  }
+
+  &__new {
+    font-size: $font-md;
+    color: $text-accent;
+  }
+}

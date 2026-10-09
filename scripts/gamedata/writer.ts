@@ -25,9 +25,10 @@ export const BUDGETS_KB: Record<GameDomain, [number, number]> = {
   projects: [100, 50],
   quests: [200, 100],
   skilltree: [50, 30],
-  amplification: [100, 0],
+  amplification: [100, 30],
   maps: [20, 10],
   classification: [20, 20],
+  'whats-new': [100, 0],
 };
 
 /** Recursively sorts object keys of maps keyed by slug (records keep their field order). */

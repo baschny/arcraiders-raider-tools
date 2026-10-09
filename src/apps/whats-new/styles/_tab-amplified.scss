@@ -1,0 +1,298 @@
+@use '../../../shared/styles/variables' as *;
+
+// Styles of the amplified tab (.wn-tab-amplified).
+.wn-tab-amplified {
+  // The opened weapon card reads as the tab of the selected tile: the tile takes the card's colour
+  // and frame (open at the bottom) and a strip bridges the gap to the card's top edge.
+  // Weapon tabs: the tile fills its grid cell (so a tab at the first or last column lines up with the
+  // card edge) and the space above the icon equals the space left and right of it.
+  .wn-amp__group .wn-grid__cell > .wn-tile {
+    max-width: none;
+    padding-top: max(4px, calc((100% - var(--item-icon-size)) / 2));
+  }
+
+  .wn-tile.is-selected {
+    position: relative;
+    z-index: 1;
+    background: $bg-tertiary;
+    border-radius: 8px 8px 0 0;
+    box-shadow: inset 1px 0 0 $text-accent, inset -1px 0 0 $text-accent, inset 0 1px 0 $text-accent;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 100%;
+      height: 17px; // grid gap (16) + the card's top border
+      background: $bg-tertiary;
+      box-shadow: inset 1px 0 0 $text-accent, inset -1px 0 0 $text-accent;
+    }
+  }
+
+  .wn-detail {
+    position: relative;
+    // A tab at the left or right edge continues the card's side, so that corner is square.
+    &--first { border-top-left-radius: 0; }
+    &--last { border-top-right-radius: 0; }
+    padding: 16px;
+    border: 1px solid $text-accent;
+    box-shadow: none;
+
+    &__bar { position: absolute; top: 4px; right: 4px; margin: 0; }
+    &__close { width: 32px; height: 32px; }
+  }
+
+  .wn-amp {
+    &__groups { display: flex; flex-direction: column; gap: 40px; margin-top: 24px; }
+    &__group { display: flex; flex-direction: column; gap: 16px; }
+    &__group-head { display: flex; align-items: center; gap: 16px; }
+    &__group-name { margin: 0; font-size: $font-2xl; color: $text-primary; }
+
+    // Graph top left, the weapon workflow (weapon + module -> Amplified) top right, the cards below.
+    &__detail {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 16px 24px;
+      align-items: start;
+
+      > .wn-pick { display: contents; }
+      > .wn-amp__flow { grid-column: 2; grid-row: 1; padding-right: 40px; }
+      > .wn-pick > .wn-graph { grid-column: 1; grid-row: 1; }
+      > .wn-pick > .wn-pick__cards { grid-column: 1 / -1; }
+
+      @media (max-width: $breakpoint-mobile) {
+        grid-template-columns: minmax(0, 1fr);
+        > .wn-amp__flow { grid-column: 1; grid-row: 1; padding-right: 32px; }
+        > .wn-pick > .wn-graph { grid-column: 1; grid-row: 2; }
+      }
+    }
+    // Workflow: weapon + module -> Amplified weapon, icons on one line, names below.
+    &__flow { display: flex; align-items: flex-start; gap: 4px 8px; }
+    &__flow > .wn-tile { width: 96px; }
+    &__op { display: flex; align-items: center; justify-content: center; align-self: flex-start; height: 72px; min-width: 16px; font-size: $font-xl; color: $text-secondary; }
+
+    &__footer {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 40px 0 0;
+      font-size: $font-xl;
+      color: $text-light;
+    }
+  }
+
+  // ---- Amplification picker ----------------------------------------------------------------
+  .wn-pick {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &__cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+
+    // Static cards: choosing only recolours the border, a blocked card is slightly faded.
+    &__card {
+      background: $bg-secondary;
+      border: 2px solid $border-default;
+      border-radius: 8px;
+      transition: border-color 0.15s, opacity 0.15s;
+
+      &.is-hover { border-color: $border-lighter; }
+      &.is-chosen, &.is-chosen.is-hover { border-color: $rarity-amplified; }
+      &.is-blocked { opacity: 0.6; }
+    }
+    &__body { display: flex; flex-direction: column; gap: 8px; padding: 12px; }
+
+    &__top { display: flex; align-items: center; gap: 12px; }
+    &__name { flex: 1; min-width: 0; font-size: $font-xl; font-weight: 600; color: $text-primary; }
+    &__desc { margin: 0; font-size: $font-lg; color: $text-light; }
+
+    &__effects { display: flex; flex-direction: column; gap: 2px; margin: 0; padding: 0; list-style: none; font-size: $font-lg; }
+    .is-positive { color: #6fcf73; }
+    .is-negative { color: #ef6a6a; }
+    &__sign { display: inline-block; width: 1.1em; font-weight: 700; }
+    &__more {
+      align-self: flex-start;
+      padding: 0;
+      font: inherit;
+      font-size: $font-lg;
+      color: $text-accent;
+      background: none;
+      border: 0;
+      cursor: pointer;
+
+      &:hover { text-decoration: underline; }
+    }
+
+    &__rules { display: flex; flex-wrap: wrap; gap: 6px; }
+    &__chip {
+      padding: 2px 8px;
+      font-size: $font-md;
+      color: $text-light;
+      background: $bg-primary;
+      border: 1px solid $border-default;
+      border-radius: 999px;
+    }
+
+    &__needs { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; }
+    &__label { min-width: 64px; font-size: $font-lg; font-weight: 600; color: $text-secondary; }
+    &__tiles { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; }
+    &__needs .wn-tile { width: auto; }
+    &__none { font-size: $font-lg; color: $text-secondary; }
+
+    @media (max-width: $breakpoint-mobile) {
+      &__cards { grid-template-columns: 1fr; }
+    }
+  }
+
+  // ---- Amplification graph ------------------------------------------------------------------
+  // All sizes derive from three variables, so the mobile override only has to change those.
+  .wn-graph {
+    --node: 56px;
+    --px: 112px; // column pitch
+    --py: 72px; // row pitch
+    --line: 3px;
+    max-width: 100%;
+    overflow-x: auto;
+
+    &__canvas {
+      position: relative;
+      width: calc((var(--cols) - 1) * var(--px) + var(--node));
+      height: calc((var(--rows) - 1) * var(--py) + var(--node));
+      margin: 4px;
+    }
+
+    &__root {
+      position: absolute;
+      left: calc(var(--c) * var(--px));
+      top: calc(var(--r) * var(--py));
+      width: var(--node);
+      height: var(--node);
+      z-index: 1;
+      .wn-tile { width: var(--node); padding: 4px; }
+    }
+
+    // One edge = up to three line segments; the parent's right side to the child's left side.
+    &__edge {
+      --x1: calc(var(--c1) * var(--px) + var(--node));
+      --x2: calc(var(--c2) * var(--px));
+      --xm: calc(var(--x2) - (var(--px) - var(--node)) / 2);
+      --y1: calc(var(--r1) * var(--py) + var(--node) / 2 - var(--line) / 2);
+      --y2: calc(var(--r2) * var(--py) + var(--node) / 2 - var(--line) / 2);
+      position: absolute;
+      inset: 0;
+      color: #4a4f57;
+      pointer-events: none;
+
+      > span { position: absolute; background: currentColor; }
+      &.is-chosen { color: #e9e4d8; }
+      &.is-blocked { color: #c0392b; }
+      &.is-hover:not(.is-chosen):not(.is-blocked) { color: #6c727c; }
+    }
+    &__h1 { left: var(--x1); top: var(--y1); width: calc(var(--x2) - var(--x1)); height: var(--line); }
+    // With a row change the first and last segments stop at the bend instead.
+    &__h1.is-bent { width: calc(var(--xm) - var(--x1) + var(--line)); }
+    &__v {
+      left: calc(var(--xm));
+      top: min(var(--y1), var(--y2));
+      width: var(--line);
+      height: calc(max(var(--y1), var(--y2)) - min(var(--y1), var(--y2)) + var(--line));
+    }
+    &__h2 { left: var(--xm); top: var(--y2); width: calc(var(--x2) - var(--xm)); height: var(--line); }
+  }
+
+  // ---- Hexagon (pointy top and bottom, flat sides) -------------------------------------------
+  .wn-hex {
+    --hex: var(--node, 56px);
+    --hex-bg: #3b3f46;
+    --hex-edge: #5a606a;
+    --hex-clip: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+    position: absolute;
+    left: calc(var(--c) * var(--px));
+    top: calc(var(--r) * var(--py));
+    width: var(--hex);
+    height: var(--hex);
+    color: #fff;
+    z-index: 1;
+
+    &__shape {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      color: inherit;
+      background: var(--hex-edge);
+      border: 0;
+      clip-path: var(--hex-clip);
+      cursor: pointer;
+      transition: background 0.15s;
+
+      // inner fill, inset to leave a 2px edge
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 2px;
+        background: var(--hex-bg);
+        clip-path: var(--hex-clip);
+        transition: background 0.15s;
+      }
+      &:focus-visible { outline: 2px solid $rarity-amplified; outline-offset: -2px; }
+    }
+
+    &__glyph {
+      position: relative;
+      width: 56%;
+      height: 56%;
+      background-color: currentColor;
+      mask-size: contain;
+      mask-repeat: no-repeat;
+      mask-position: center;
+      -webkit-mask-size: contain;
+      -webkit-mask-repeat: no-repeat;
+      -webkit-mask-position: center;
+    }
+
+    &.is-hover:not(.is-chosen) { --hex-bg: #4a4f57; --hex-edge: #8a909a; }
+    &.is-chosen { --hex-bg: #{$rarity-amplified}; --hex-edge: #{lighten($rarity-amplified, 12%)}; }
+    &.is-locked .wn-hex__shape { cursor: default; }
+    &.is-blocked { --hex-bg: #2b2e33; --hex-edge: #3c4047; color: #7b818b; }
+
+    // Small info badge on top of a hexagon whose Amplification needs research.
+    &__lock {
+      position: absolute;
+      top: -4px;
+      left: 50%;
+      display: grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      color: #fff;
+      background: #14161a;
+      border: 1px solid #5a606a;
+      border-radius: 50%;
+      transform: translateX(-50%);
+    }
+
+    // The hexagon in the "How it works" step: static, 64 px, chosen look.
+    &--step {
+      --hex: 64px;
+      position: static;
+      .wn-hex__shape { cursor: default; }
+    }
+
+    // The small hexagon of a card: static, in flow.
+    &--small {
+      --hex: 40px;
+      position: static;
+      flex: none;
+      .wn-hex__shape { cursor: default; }
+    }
+  }
+  .wn-pick__card.is-chosen .wn-hex--small { --hex-bg: #{$rarity-amplified}; --hex-edge: #{lighten($rarity-amplified, 12%)}; }
+
+  @media (max-width: $breakpoint-mobile) {
+    .wn-graph { --node: 44px; --px: 76px; --py: 56px; --line: 2px; }
+  }
+}

@@ -1,9 +1,16 @@
 import { Link } from 'react-router-dom';
-import { Calendar, Calculator, ListTodo, Package, History, ClipboardList, Map as MapIcon } from 'lucide-react';
+import { Calendar, Calculator, ListTodo, Package, History, ClipboardList, Map as MapIcon, Sparkles } from 'lucide-react';
 import { trackNavigation } from '../shared/utils/analytics';
 import { useLocale } from '../shared/context/LocaleContext';
 
 const TOOL_METADATA = {
+  'whats-new': {
+    path: '/whats-new/frozen-trail',
+    icon: Sparkles,
+    nameKey: 'shared.tools.whatsNew',
+    cardNameKey: 'dashboard.whatsNew.title',
+    descriptionKey: 'dashboard.whatsNew.description',
+  },
   schedule: {
     path: '/schedule',
     icon: Calendar,
@@ -45,7 +52,8 @@ const TOOL_METADATA = {
 type ToolId = keyof typeof TOOL_METADATA;
 type ChangelogAppId = ToolId | 'all';
 
-const TOOLS = [
+const TOOLS: Array<(typeof TOOL_METADATA)[ToolId]> = [
+  TOOL_METADATA['whats-new'],
   TOOL_METADATA.schedule,
   TOOL_METADATA['craft-calculator'],
   TOOL_METADATA.quests,
@@ -93,7 +101,7 @@ export function Dashboard() {
 
       <div className="dashboard-tools-grid">
         {TOOLS.map((tool) => {
-          const toolName = t(tool.nameKey);
+          const toolName = t('cardNameKey' in tool ? tool.cardNameKey : tool.nameKey);
 
           return (
             <Link

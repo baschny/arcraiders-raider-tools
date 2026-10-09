@@ -1,0 +1,11 @@
+// Frame (page header, tab bar, tab intro) and shared components, then one partial per tab.
+@use 'frame';
+@use 'components';
+@use 'tab-new-items';
+@use 'tab-old-items';
+@use 'tab-outpost';
+@use 'tab-research';
+@use 'tab-amplified';
+@use 'tab-crafting';
+@use 'tab-changes';
+@use 'hovercard';
