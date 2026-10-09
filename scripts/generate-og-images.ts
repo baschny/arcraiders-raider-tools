@@ -30,7 +30,7 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 import { SEO_PAGES } from '../src/shared/seo/pages';
-import { WHATS_NEW_TAB_IDS, type WhatsNewTab } from '../src/apps/whats-new/routing';
+import { type DEFAULT_WHATS_NEW_TAB, type WhatsNewTab } from '../src/apps/whats-new/routing';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const PUBLIC = path.join(ROOT, 'public');
@@ -706,11 +706,10 @@ async function mapSizesCard(): Promise<Card> {
   };
 }
 
-const WHATS_NEW_ART: Record<WhatsNewTab, { hub: string | LucideIcon; orbit: string[] }> = {
-  'new-items': {
-    hub: Sparkles,
-    orbit: ['gadget', 'beacon', 'key', 'stencil', 'research', 'decoration', 'amplified'],
-  },
+type WhatsNewArt = { hub: string | LucideIcon; orbit: string[] };
+
+/** Art of the tab pages; the default tab is the version's own page (see frozenTrailCard). */
+const WHATS_NEW_ART: Record<Exclude<WhatsNewTab, typeof DEFAULT_WHATS_NEW_TAB>, WhatsNewArt> = {
   'old-items': {
     hub: History,
     orbit: ['../../items/arc_alloy', '../../items/battery', '../../items/metal_parts', '../../items/fabric', '../../items/chemicals', '../../items/arc_circuitry'],
@@ -725,24 +724,47 @@ const WHATS_NEW_ART: Record<WhatsNewTab, { hub: string | LucideIcon; orbit: stri
   changes: { hub: GitCompareArrows, orbit: ['workbench', 'trade', 'crafting', 'blueprint', 'gunsmith'] },
 };
 
-async function whatsNewCard(tab: WhatsNewTab, backdrop: string): Promise<Card> {
-  const intro = (EN.whatsNew as { intro: Record<string, { title: string; sentence: string }> }).intro[tab];
-  const art = WHATS_NEW_ART[tab];
+function whatsNewGlyph(name: string): string {
+  if (name.startsWith('../../items/')) return `images/items/${name.slice('../../items/'.length)}.webp`;
+  if (name.startsWith('../../events/')) return `images/events/${name.slice('../../events/'.length)}.png`;
+  return `images/whats-new/icons/${name}.webp`;
+}
+
+async function whatsNewArt(art: WhatsNewArt): Promise<string> {
   const cx = ART.x + ART.w / 2;
   const cy = ART.y + ART.h / 2;
-  const glyph = (name: string) =>
-    name.startsWith('../../items/') ? `images/items/${name.slice('../../items/'.length)}.webp` : `images/whats-new/icons/${name}.webp`;
   const parts = [
-    await orbit(art.orbit.map(glyph), cx, cy, 190, COLOR.cyan),
-    await hub(typeof art.hub === 'string' ? glyph(art.hub) : art.hub, cx, cy, 82, COLOR.cyan),
+    await orbit(art.orbit.map(whatsNewGlyph), cx, cy, 190, COLOR.cyan),
+    await hub(typeof art.hub === 'string' ? whatsNewGlyph(art.hub) : art.hub, cx, cy, 82, COLOR.cyan),
   ];
+  return parts.join('\n  ');
+}
+
+/** The Frozen Trail page: the entry point to the update, showing its new items. */
+async function frozenTrailCard(backdrop: string): Promise<Card> {
+  return {
+    file: 'whats-new-frozen-trail.jpg',
+    accent: COLOR.cyan,
+    kicker: 'ARC RAIDERS 2.0 UPDATE',
+    title: 'Frozen Trail: what\u2019s new',
+    tagline: 'Every new item, the Outpost, Research, Amplified weapons and what changed.',
+    art: await whatsNewArt({
+      hub: '../../events/cold_snap',
+      orbit: ['gadget', 'outpost', 'research-station', 'amplified', 'crafting', 'beacon', 'stencil'],
+    }),
+    backdrop,
+  };
+}
+
+async function whatsNewCard(tab: keyof typeof WHATS_NEW_ART, backdrop: string): Promise<Card> {
+  const intro = (EN.whatsNew as { intro: Record<string, { title: string; sentence: string }> }).intro[tab];
   return {
     file: `whats-new-${tab}.jpg`,
     accent: COLOR.cyan,
-    kicker: 'ARC RAIDERS 2.0 · FROZEN TRAIL',
+    kicker: 'ARC RAIDERS 2.0 \u00b7 FROZEN TRAIL',
     title: intro.title,
     tagline: intro.sentence,
-    art: parts.join('\n  '),
+    art: await whatsNewArt(WHATS_NEW_ART[tab]),
     backdrop,
   };
 }
@@ -777,7 +799,10 @@ async function main(): Promise<void> {
     await quartermasterCard(),
     await mapsCard(),
     await mapSizesCard(),
-    ...(await Promise.all(WHATS_NEW_TAB_IDS.map((tab) => whatsNewCard(tab, backdrop)))),
+    await frozenTrailCard(backdrop),
+    ...(await Promise.all(
+      (Object.keys(WHATS_NEW_ART) as Array<keyof typeof WHATS_NEW_ART>).map((tab) => whatsNewCard(tab, backdrop)),
+    )),
   ];
   console.log('OG images:');
   for (const card of cards) await writeCard(card);

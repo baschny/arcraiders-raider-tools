@@ -6,6 +6,7 @@ import {
   DEFAULT_WHATS_NEW_VERSION,
   WHATS_NEW_TAB_IDS,
   WHATS_NEW_VERSIONS,
+  whatsNewPath,
 } from '../../apps/whats-new/routing';
 
 export const SITE_URL = 'https://raider-tools.app';
@@ -22,8 +23,6 @@ export interface SeoPage {
   /** Path of the page search engines should index instead; such pages stay out of the sitemap. */
   canonicalPath?: string;
 }
-
-const WHATS_NEW_DEFAULT_PATH = `/whats-new/${DEFAULT_WHATS_NEW_VERSION}/${DEFAULT_WHATS_NEW_TAB}`;
 
 export const SEO_PAGES: readonly SeoPage[] = [
   { path: '/', descriptionKey: 'seo.home', image: 'home.jpg' },
@@ -44,21 +43,30 @@ export const SEO_PAGES: readonly SeoPage[] = [
   },
   { path: '/maps', titleKey: 'shared.tools.maps', descriptionKey: 'seo.maps', image: 'maps.jpg' },
   { path: '/map-sizes', titleKey: 'maps.sizes.viewSizes', descriptionKey: 'seo.mapSizes', image: 'map-sizes.jpg' },
-  // The bare what's-new paths redirect to the default tab in the app.
-  ...['/whats-new', ...WHATS_NEW_VERSIONS.map((version) => `/whats-new/${version}`)].map((path) => ({
-    path,
-    titleKey: 'whatsNew.title',
-    descriptionKey: `seo.whatsNew.${DEFAULT_WHATS_NEW_TAB}`,
-    image: `whats-new-${DEFAULT_WHATS_NEW_TAB}.jpg`,
-    canonicalPath: WHATS_NEW_DEFAULT_PATH,
+  // A version's own page shows its default tab: the entry point to the update.
+  ...WHATS_NEW_VERSIONS.map((version) => ({
+    path: whatsNewPath(version),
+    titleKey: `seo.whatsNew.${version}.title`,
+    descriptionKey: `seo.whatsNew.${version}.description`,
+    image: `whats-new-${version}.jpg`,
   })),
   ...WHATS_NEW_VERSIONS.flatMap((version) =>
-    WHATS_NEW_TAB_IDS.map((tab) => ({
-      path: `/whats-new/${version}/${tab}`,
+    WHATS_NEW_TAB_IDS.filter((tab) => tab !== DEFAULT_WHATS_NEW_TAB).map((tab) => ({
+      path: whatsNewPath(version, tab),
       titleKey: `whatsNew.intro.${tab}.title`,
       descriptionKey: `seo.whatsNew.${tab}`,
       image: `whats-new-${tab}.jpg`,
     })),
+  ),
+  // Paths the app redirects to a version's own page.
+  ...['/whats-new', ...WHATS_NEW_VERSIONS.map((version) => `/whats-new/${version}/${DEFAULT_WHATS_NEW_TAB}`)].map(
+    (path) => ({
+      path,
+      titleKey: `seo.whatsNew.${DEFAULT_WHATS_NEW_VERSION}.title`,
+      descriptionKey: `seo.whatsNew.${DEFAULT_WHATS_NEW_VERSION}.description`,
+      image: `whats-new-${DEFAULT_WHATS_NEW_VERSION}.jpg`,
+      canonicalPath: whatsNewPath(DEFAULT_WHATS_NEW_VERSION),
+    }),
   ),
 ];
 

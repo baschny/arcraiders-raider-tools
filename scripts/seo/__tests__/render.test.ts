@@ -47,9 +47,18 @@ describe('renderPageHtml', () => {
     expect(html).toContain('"@type":"WebSite"');
   });
 
-  it('points the bare what-is-new paths to the default tab', () => {
-    const html = renderPageHtml(INDEX_HTML, page('/whats-new'), t);
-    expect(html).toContain('href="https://raider-tools.app/whats-new/frozen-trail/new-items/"');
+  it('makes the version page the entry point of the update', () => {
+    const html = renderPageHtml(INDEX_HTML, page('/whats-new/frozen-trail'), t);
+    expect(html).toContain("<title>Frozen Trail: what's new in ARC Raiders 2.0 | ARC Raiders Tools</title>");
+    expect(html).toContain('href="https://raider-tools.app/whats-new/frozen-trail/"');
+    expect(html).toContain('/images/og/whats-new-frozen-trail.jpg');
+  });
+
+  it('points the redirected what-is-new paths to the version page', () => {
+    for (const path of ['/whats-new', '/whats-new/frozen-trail/new-items']) {
+      const html = renderPageHtml(INDEX_HTML, page(path), t);
+      expect(html).toContain('<link rel="canonical" href="https://raider-tools.app/whats-new/frozen-trail/" />');
+    }
   });
 
   it('escapes text in attributes', () => {
@@ -67,7 +76,9 @@ describe('sitemap and robots', () => {
     const sitemap = renderSitemap();
     expect(sitemap).toContain('<loc>https://raider-tools.app/</loc>');
     expect(sitemap).toContain('<loc>https://raider-tools.app/whats-new/frozen-trail/research/</loc>');
+    expect(sitemap).toContain('<loc>https://raider-tools.app/whats-new/frozen-trail/</loc>');
     expect(sitemap).not.toContain('<loc>https://raider-tools.app/whats-new/</loc>');
+    expect(sitemap).not.toContain('new-items');
     expect(sitemap).not.toContain('profile');
   });
 

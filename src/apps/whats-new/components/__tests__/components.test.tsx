@@ -77,7 +77,7 @@ describe('whats-new components', () => {
   it('TabBar links every tab and marks the active one', () => {
     const out = html(<TabBar version="frozen-trail" active="outpost" />);
     expect(out.match(/wn-tabbar__tab/g)?.length).toBeGreaterThanOrEqual(7);
-    expect(out).toContain('href="/whats-new/frozen-trail/new-items"');
+    expect(out).toContain('href="/whats-new/frozen-trail"');
     expect(out).toContain('href="/whats-new/frozen-trail/changes"');
     expect(out.match(/aria-current="page"/g)).toHaveLength(1);
     expect(out).toContain('Outpost');

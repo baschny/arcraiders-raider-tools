@@ -4,6 +4,7 @@ import { ArrowRight, ListTodo } from 'lucide-react';
 import { useLocale } from '../../../../shared/context/LocaleContext';
 import { PurposeGroup } from '../../components';
 import { WHATS_NEW_TABS } from '../../tabConfig';
+import { whatsNewPath } from '../../routing';
 import { BLUEPRINT_BG, groupStyle } from './curated';
 
 export interface GroupSectionProps {
@@ -33,7 +34,7 @@ export function GroupSection({ id, children, moreTab }: GroupSectionProps) {
       {children}
       {MoreIcon && (
         <p className="wn-group-more">
-          <Link to={`/whats-new/${version}/${moreTab}`} className="wn-group-more__link">
+          <Link to={whatsNewPath(version, moreTab)} className="wn-group-more__link">
             <MoreIcon size={20} aria-hidden="true" className="wn-group-more__icon" />
             <span>{t(`whatsNew.new-items.more.${moreTab}`)}</span>
             <ArrowRight size={18} aria-hidden="true" className="wn-group-more__arrow" />
