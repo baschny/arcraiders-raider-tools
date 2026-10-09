@@ -312,9 +312,9 @@ describe('tabs', () => {
     );
     expect(html).toContain('Several of these are also needed to build and upgrade the Research Station');
     expect(html).toContain('3× Raider Logbook for Research Station level 2');
-    expect(html).toContain('Plans cost 500–5,000 RP');
+    expect(html).toContain('Research plan cost 500–5,000 RP');
     expect(html).not.toContain('1 Frigate Diagnostic Node = 1,000 RP');
     expect(html).toContain('More about research in the Research tab');
-    expect(html).toContain('Cheapest plan');
+    expect(html).toContain('Cheapest research plan');
   });
 });
