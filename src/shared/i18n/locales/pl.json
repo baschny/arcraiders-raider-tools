@@ -77,7 +77,9 @@
       "craftCalculator": "Kalkulator craftingu",
       "quests": "Śledzenie zadań",
       "lootHelper": "Pomocnik łupu",
-      "quartermaster": "Kwatermistrz"
+      "quartermaster": "Kwatermistrz",
+      "maps": "Mapy",
+      "whatsNew": "Co nowego"
     }
   },
   "dashboard": {
@@ -90,12 +92,17 @@
       "affectedAppLink": "Open affected tool",
       "allTools": "All tools"
     },
+    "whatsNew": {
+      "title": "Co nowego w Mroźnym szlaku",
+      "description": "Wracasz z wersji 1.x? Sprawdź, do czego służą nowe przedmioty, jak działają badania i wzmocnione bronie oraz co zmieniło się w przepisach, przetwarzaniu i u handlarzy."
+    },
     "tools": {
       "schedule": "Zobacz harmonogram wydarzeń map ARC Raiders w czytelniejszym widoku i łatwiej planuj rajdy.",
       "craftCalculator": "Oblicz, ile przedmiotów warto wytworzyć, aby najlepiej wykorzystać miejsce w schowku.",
       "quests": "Śledź postępy zadań dzięki interaktywnemu drzewu zadań.",
       "lootHelper": "Wizualizuj łańcuchy craftingu, aby wiedzieć, co zbierać podczas rajdów.",
-      "quartermaster": "Planuj schowek, wyposażenie i wymagania kryjówki w jednym miejscu."
+      "quartermaster": "Planuj schowek, wyposażenie i wymagania kryjówki w jednym miejscu.",
+      "maps": "Znajdź, gdzie zdobyć dany przedmiot i gdzie pojawiają się wrogie ARC na każdej mapie i w każdym warunku mapy."
     }
   },
   "pages": {
@@ -767,13 +774,13 @@
         "qtyToRecycle": "Qty to Recycle",
         "yields": "Yields",
         "why": "Why",
-        "craftTimes": "Craft Times",
-        "totalOutput": "Total Output",
         "inputsNeeded": "Inputs Needed",
         "upgradeFrom": "Upgrade From",
         "upgradeTo": "Upgrade To",
         "qtyToUpgrade": "Qty to Upgrade",
-        "durability": "Durability"
+        "durability": "Durability",
+        "craftTimes": "Craft Times",
+        "totalOutput": "Total Output"
       },
       "blueprintUnlockCount": "{unlocked}/{total} unlocked"
     },
@@ -786,16 +793,16 @@
       "foundIn": "Found In:",
       "neededForLists": "Needed for Lists",
       "neededForQuests": "Needed for Quests",
-      "neededForCrafting": "Needed for Crafting (Direct / Indirect)",
       "neededForProject": "Needed for {project}",
-      "couldBeUsedFor": "Could be used for",
       "recycle": "Recycle",
       "salvage": "Salvage",
       "craftingRecipe": "Crafting Recipe",
       "craftingRecipeIncludingUpgrades": "Crafting Recipe (including Upgrades)",
       "recyclesInto": "Recycles Into",
       "salvagesInto": "Salvages Into",
-      "neededForRepair": "Needed for Repair"
+      "neededForRepair": "Needed for Repair",
+      "neededForCrafting": "Needed for Crafting (Direct / Indirect)",
+      "couldBeUsedFor": "Could be used for"
     },
     "itemIcon": {
       "uncraftable": "Cannot be crafted — requirements not met"
@@ -891,6 +898,655 @@
       "loadout": "Loadout",
       "gameDataLastSync": "Game Data Last Sync",
       "never": "Never"
+    }
+  },
+  "maps": {
+    "header": {
+      "gameData": "Dane gry {version} · {date}",
+      "gameDataTitle": "Manifest Steam {manifest}, dane mapy zbudowane {date}"
+    },
+    "loader": {
+      "retry": "Ponów",
+      "reloadPage": "Przeładuj stronę",
+      "error": {
+        "network": "Nie udało się wczytać danych mapy. Sprawdź połączenie i spróbuj ponownie.",
+        "missing": "Dane mapy są teraz niedostępne. Spróbuj ponownie za chwilę.",
+        "missingMap": "Brakuje danych dla mapy {map}. Spróbuj ponownie za chwilę.",
+        "schema": "Dane mapy zostały zaktualizowane i wymagają nowszej wersji tej strony. Przeładuj stronę."
+      }
+    },
+    "conditions": {
+      "normal": "Normalne"
+    },
+    "modes": {
+      "loot": "Łupy",
+      "label": "Tryb"
+    },
+    "sidebar": {
+      "hide": "Ukryj pasek boczny",
+      "showFilters": "Pokaż filtry",
+      "hideFilters": "Ukryj filtry"
+    },
+    "mapBar": {
+      "scoreTitle": "{map}: wynik przedmiotu {score} (normalne warunki)",
+      "label": "Mapa"
+    },
+    "conditionBar": {
+      "normal": "Normalna mapa",
+      "normalAlso": "Normalna mapa — te same stałe łupy i pojawienia co: {conditions}",
+      "major": "Poważny warunek",
+      "majorLive": "Poważny warunek (w bieżącym harmonogramie)",
+      "minor": "Drobny warunek",
+      "minorLive": "Drobny warunek (w bieżącym harmonogramie)",
+      "sameAsNormal": "+ {count} takich samych jak {normal}",
+      "label": "Warunek mapy"
+    },
+    "help": {
+      "label": "Pomoc"
+    },
+    "search": {
+      "placeholder": "Znajdź przedmiot…",
+      "clear": "Wyczyść"
+    },
+    "loot": {
+      "searchPlaceholder": "Szukaj przedmiotu, np. Silnik",
+      "goalsTitle": "Cele twojego Pomocnika łupów",
+      "tablesTitle": "Udział każdej stałej tabeli łupów, który trafia do tego przedmiotu",
+      "noTables": "w żadnej stałej tabeli łupów",
+      "notInLoot": "Tego przedmiotu nie ma w żadnej stałej tabeli łupów.",
+      "onlyHarvested": "Zbierany tylko z: {containers}, które istnieją wyłącznie podczas: {conditions}.",
+      "conditionWhy": "{condition} ({reason})"
+    },
+    "conditionReasons": {
+      "onHiatus": "wstrzymany",
+      "neverReleased": "nigdy nie wydany",
+      "tutorial": "samouczek",
+      "practiceRange": "strzelnica treningowa",
+      "notInSchedule": "nie ma w harmonogramie"
+    },
+    "item": {
+      "tiers": {
+        "low": "Niski",
+        "mid": "Średni",
+        "high": "Wysoki"
+      }
+    },
+    "best": {
+      "title": "Najlepsze miejsca · {condition}",
+      "helpLabel": "O wyniku",
+      "help": "Wynik to wartość łupów, które mogą trafić do przedmiotu: pula każdego obsługiwanego przez moduł łupów, podzielona na tabele, wpisy i przedmioty, rozłożona na miejsca. Porównuje miejsca; nie jest szansą na upuszczenie. Warunki z tymi samymi stałymi łupami co Normalne są do niego wliczone.",
+      "spotsOne": "{hits}/{count} miejsce",
+      "spots": "Miejsca: {hits}/{count}",
+      "perSpot": "{score} na miejsce"
+    },
+    "filters": {
+      "title": "Miejsca pojawiania się",
+      "helpLabel": "O filtrach",
+      "help": "Strzałka otwiera grupę; reszta wiersza pokazuje lub ukrywa ją na mapie. Gdy wybrano przedmiot i nic nie zaznaczono, pokazywane są wszystkie miejsca, które mogą go zawierać. Pojemniki liczą się tylko wtedy, gdy ich kategoria pasuje do kategorii przedmiotu (przedmioty mechaniczne w pojemnikach mechanicznych; rośliny dają tylko swój przedmiot). Pojemniki pojawiające się (skrzynie z amunicją, skrytki, wraki) losują tabele po stronie serwera i są oznaczone „?”.",
+      "auto": "auto",
+      "autoTitle": "Pokazywanie wszystkich miejsc, które mogą zawierać przedmiot",
+      "showAll": "Pokaż wszystko",
+      "hideAll": "Ukryj wszystko",
+      "expand": "Rozwiń",
+      "expandGroup": "Rozwiń: {group}",
+      "collapseGroup": "Zwiń: {group}",
+      "count": {
+        "spotsOne": "{count} miejsce",
+        "spots": "Miejsca: {count}",
+        "hitsOne": "{hits} z {count} miejsca może zawierać przedmiot",
+        "hits": "Miejsca, które mogą zawierać przedmiot: {hits} z {count}",
+        "noHitsOne": "Jedyne miejsce nie może zawierać przedmiotu",
+        "noHits": "Żadne z miejsc nie może zawierać przedmiotu (łącznie: {count})",
+        "serverSide": "Zawartość losowana po stronie serwera, nie ma jej w plikach gry",
+        "expectedOne": "~{expected} oczekiwane na rajd, z {count} możliwego miejsca",
+        "expected": "~{expected} oczekiwane na rajd, z {count} możliwych miejsc"
+      }
+    },
+    "arc": {
+      "title": "Wrogie ARC · {condition}",
+      "helpLabel": "O generatorach ARC",
+      "help": "Oczekiwana liczba generatorów, które mogą wytworzyć danego wroga w tym warunku. Wybierz wrogów, aby pokazać tylko ich generatory i ścieżki patrolu (kilku naraz, każdy w swoim kolorze). Wypełnione znaczniki patrolują ścieżkę. Najedź na generator, aby zobaczyć jego grupę i czasy odrodzenia; kliknij, aby przypiąć jego grupę pojawiania się.",
+      "showAll": "Pokaż wszystkich wrogów",
+      "expectedOne": "~{expected} oczekiwane na rajd, z {count} generatora",
+      "expected": "~{expected} oczekiwane na rajd, z {count} generatorów",
+      "empty": "Brak generatorów ARC w tym warunku."
+    },
+    "canvas": {
+      "label": "Mapa: {map}. Miejsca, obszary i wrogowie narysowani tutaj są wymienieni na pasku bocznym."
+    },
+    "zoom": {
+      "in": "Przybliż",
+      "out": "Oddal",
+      "fit": "Dopasuj mapę (dwuklik)"
+    },
+    "overlays": {
+      "title": "Warstwy",
+      "heat": "Mapa ciepła",
+      "height": "Znaczniki wysokości",
+      "heightTitle": "Punkt na górze: ponad 3,5 m nad szacowanym gruntem (wyższe piętro, dach); na dole: ponad 3,5 m pod nim (piwnica, tunel). Szacowane na podstawie mapy wysokości; nie dotyczy Stella Montis.",
+      "pois": "Obszary i nazwy",
+      "zones": "Strefy łupów",
+      "zonesTitle": "Strefy łupów z gry: czerwona = obfite, żółta = gęste, szara = rzadkie.",
+      "bounds": "Obszar do gry"
+    },
+    "layers": {
+      "title": "Warstwa mapy: mapa w grze zmienia się po wejściu w te obszary",
+      "surface": "Powierzchnia",
+      "underground": "Podziemia",
+      "upperFloor": "Wyższe piętro",
+      "lowerFloor": "Niższe piętro",
+      "label": "Warstwa mapy"
+    },
+    "legend": {
+      "score": "Wynik przedmiotu na miejsce",
+      "low": "niski",
+      "high": "wysoki"
+    },
+    "zones": {
+      "abundant": "Obfite łupy",
+      "dense": "Gęste łupy",
+      "sparse": "Rzadkie łupy"
+    },
+    "tooltip": {
+      "score": "wynik {score}",
+      "serverTablesOne": "+ {count} tabela łupów po stronie serwera (zawartość nie jest w plikach)",
+      "serverTables": "+ tabel łupów po stronie serwera: {count} (zawartości nie ma w plikach)",
+      "oneOf": "Jedno z: {kinds}",
+      "inArea": "w: {area}",
+      "spawnChance": "szansa pojawienia ~{chance}",
+      "notScored": "zawartość po stronie serwera (bez wyniku)",
+      "group": "grupa",
+      "groupSpotsOne": "{group}: {min} z {count} miejsca (w kółku)",
+      "groupSpots": "{group}: {min} z {count} miejsc (w kółku)",
+      "groupSpawnersOne": "{group}: {min} z {count} generatora (w kółku)",
+      "groupSpawners": "{group}: {min} z {count} generatorów (w kółku)",
+      "tapPin": "dotknij, aby przypiąć grupę",
+      "tapUnpin": "dotknij, aby odpiąć grupę",
+      "clickPin": "kliknij, aby przypiąć grupę",
+      "clickUnpin": "kliknij, aby odpiąć grupę",
+      "arcSpawner": "Generator ARC",
+      "enemySpawner": "Generator wrogów",
+      "patrols": "patroluje ścieżkę",
+      "tableNotExported": "tabela {table} (nie wyeksportowano)",
+      "tier": "poziom {tier}",
+      "area": "Obszar",
+      "height": "≈ {height} m nad ziemią",
+      "covered": "zadaszone",
+      "openSky": "otwarte niebo",
+      "noKey": "bez przedmiotu-klucza (otwiera się inaczej)"
+    },
+    "timing": {
+      "noRespawn": "nie odradza się po zniszczeniu",
+      "respawn": "odrodzenie {time} po zniszczeniu",
+      "randomDelay": "+ losowe opóźnienie {min}–{max} s",
+      "noDynamic": "bez dynamicznego odradzania",
+      "airDrop": "zrzut z powietrza {time} po zniszczeniu grupy",
+      "sneak": "odrodzenie poza zasięgiem wzroku po {time}",
+      "sneakIndoors": "odrodzenie poza zasięgiem wzroku po {time} (w budynku)",
+      "activates": "aktywuje się w promieniu {distance} m"
+    },
+    "units": {
+      "seconds": "{n} s",
+      "minutes": "{n} min",
+      "never": "nigdy"
+    },
+    "categories": {
+      "Exits": "Wyjścia i pojawienia się",
+      "Containers": "Pojemniki",
+      "RaiderSpawns": "Pojemniki łupieżców",
+      "ArcSpawns": "Wraki i szczątki ARC",
+      "Puzzles": "Zagadki",
+      "Features": "Elementy mapy"
+    },
+    "kinds": {
+      "ExtractMetro": "Wyjście metrem",
+      "ExtractLift": "Wyjście windą",
+      "ExtractFan": "Wyjście wentylatorem",
+      "ExtractGondola": "Wyjście gondolą balistyczną",
+      "Hatch": "Właz łupieżcy (klucz)",
+      "StationEntrance": "Wejście na stację metra",
+      "PlayerStart": "Miejsce startu gracza",
+      "Generic": "Ogólne",
+      "OtherFixed": "Inne",
+      "WaterTank": "Zbiornik wody",
+      "Ground": "Łupy na ziemi",
+      "Apricot": "Morela",
+      "Lemon": "Cytryna",
+      "Olive": "Oliwka",
+      "NatureFruitBasket": "Kosz owoców",
+      "Mushroom": "Grzyb",
+      "Agave": "Agawa",
+      "Moss": "Mech",
+      "GreatMullein": "Dziewanna drobnokwiatowa",
+      "Candleberries": "Owoce woskownicy",
+      "Resin": "Żywica (drzewa)",
+      "BirdNest": "Gniazdo ptaka",
+      "VolcanicRock": "Skała wulkaniczna",
+      "Roots": "Korzenie",
+      "Fertilizer": "Nawóz",
+      "SeedVault": "Konsola banku nasion",
+      "Seedbox": "Pudełko z nasionami",
+      "CacheStandard": "Skrytka łupieżców",
+      "CacheSelfDestruct": "Skrytka łupieżców, samozniszczenie",
+      "CacheFrozen": "Skrytka łupieżców, zamrożona",
+      "NomadCache": "Skrytka koczowników",
+      "CacheFirstWave": "Skrytka z czasów Pierwszej Fali",
+      "AmmoBox": "Skrzynia z amunicją",
+      "AmmoBoxHigh": "Skrzynia z amunicją (wyższy poziom)",
+      "WeaponCase": "Futerał na broń",
+      "WeaponCaseHigh": "Futerał na broń (wyższy poziom)",
+      "MedicalBag": "Apteczka",
+      "GrenadeTube": "Tuba na granaty",
+      "Backpack": "Plecak łupieżcy",
+      "WeaponsRack": "Stojak na broń",
+      "FruitBasket": "Kosz owoców (Pora żniw)",
+      "FruitBasketWinter": "Kosz owoców (zima)",
+      "WaspHusk": "Wrak osy",
+      "WaspHuskStunning": "Wrak osy, ogłuszający",
+      "RocketeerHusk": "Wrak rakietowca",
+      "RocketeerHuskStunning": "Wrak rakietowca, ogłuszający",
+      "DeforesterHusk": "Wrak karczownika",
+      "Probes": "Rozbita sonda ARC",
+      "Couriers": "Kurier ARC",
+      "PowerSocket": "Gniazdo baterii / ogniwa",
+      "FuelCell": "Ogniwo paliwowe / bateria",
+      "PuzzleButton": "Przycisk / przełącznik / konsola",
+      "PuzzleRelay": "Przekaźnik zagadki",
+      "CardReader": "Czytnik kart",
+      "TubeTerminal": "Terminal kolorów / stacja rurowa",
+      "PuzzleDoor": "Drzwi / brama zagadki",
+      "HotelKey": "Klucz do hotelu",
+      "FieldDepot": "Skład polowy",
+      "FieldCrates": "Skrzynka polowa",
+      "SupplyStation": "Stacja łączności zaopatrzeniowej",
+      "PowerCores": "Rdzeń zasilający kombajnu",
+      "MetalDetector": "Wykrywacz alpinisty",
+      "Snowpile": "Kupa śniegu (Nagłe ochłodzenie)",
+      "Zipline": "Tyrolka (aktywowana)",
+      "Lift": "Winda",
+      "Bridge": "Ruchomy most",
+      "BridgeSwitch": "Przełącznik mostu / wyłącznik",
+      "LockedRoom": "Zamknięty pokój (klucz)",
+      "LockedDoor": "Zamknięte drzwi (klucz)",
+      "Barricaded": "Zabarykadowane drzwi (wyważenie)",
+      "Door": "Drzwi / okno",
+      "Piano": "Fortepian"
+    },
+    "containerTypes": {
+      "Android": "Android",
+      "AntennaSet": "Zestaw anten",
+      "Bus": "Autobus",
+      "ButtonPanel": "Panel z przyciskami",
+      "CabinetDoor": "Szafka",
+      "Car01": "Samochód 1",
+      "Car02": "Samochód 2",
+      "Car03": "Samochód 3",
+      "CashRegister": "Kasa",
+      "Centerbench": "Ławka centralna",
+      "Closet": "Szafa",
+      "Closet02": "Szafa 2",
+      "Cmr": "Szafka ścienna",
+      "CoffeeMachine01": "Ekspres do kawy",
+      "CompressorTrailer": "Przyczepa kompresora",
+      "Computer01": "Komputer 1",
+      "Computer02": "Komputer 2",
+      "Computer03": "Komputer 3",
+      "Coms": "Konsola łączności",
+      "Console_03": "Konsola",
+      "Crate": "Skrzynia",
+      "CrateCart": "Wózek ze skrzyniami",
+      "CupboardCafe": "Szafka kawiarni",
+      "CupboardKitchen": "Szafka kuchenna",
+      "Drawer": "Szuflada",
+      "DrawerMedical": "Szuflada z lekami",
+      "Dumpster": "Kontener na śmieci",
+      "FloodLight": "Reflektor",
+      "Freezer": "Zamrażarka",
+      "Fridge": "Lodówka",
+      "Fusebox": "Skrzynka bezpieczników",
+      "Fusebox2": "Skrzynka bezpieczników 2",
+      "GeneratorM02": "Generator",
+      "Gvt": "Rządowy kosz na śmieci",
+      "GvtDesk": "Rządowe biurko",
+      "HighwayAntenna": "Antena autostradowa",
+      "InformationTerminal": "Terminal informacyjny",
+      "KitchenBench": "Blat kuchenny",
+      "Locker01": "Szafka",
+      "LockerMedical01": "Szafka medyczna",
+      "Lockers": "Szafki",
+      "MuseumCrate_01": "Skrzynia muzealna 1",
+      "MuseumCrate_02": "Skrzynia muzealna 2",
+      "Parasitic": "Pasożytnicze narośla",
+      "PressureMonitor": "Monitor ciśnienia",
+      "Refrigerator_01": "Lodówka",
+      "RoadBarrier03": "Bariera drogowa",
+      "Rocketparts_01": "Części rakiet 1",
+      "Rocketparts_02": "Części rakiet 2",
+      "Rover": "Łazik",
+      "Rsr": "Szafa badawcza",
+      "RsrCabinetS": "Mała szafa badawcza",
+      "RsrCartShelf": "Półka na wózku badawczym",
+      "RsrMachineM01": "Maszyna badawcza",
+      "SecurityCamera01": "Kamera monitoringu",
+      "Server": "Serwer",
+      "Shelf03": "Regał",
+      "SolarPanel03": "Panel słoneczny",
+      "SosBooth_01": "Budka SOS",
+      "StreetSweeper": "Zamiatarka uliczna",
+      "Suitcase": "Walizka",
+      "SupportStructure": "Konstrukcja nośna",
+      "TVUnit": "Szafka RTV",
+      "TapeDrive01": "Napęd taśmowy 1",
+      "TapeDrive02": "Napęd taśmowy 2",
+      "TapeDrive04": "Napęd taśmowy 4",
+      "Transformer": "Transformator",
+      "TrashCan_01": "Kosz na śmieci",
+      "Trashbin": "Kosz na śmieci",
+      "TruckScannerLeft01": "Skaner ciężarówki (lewy)",
+      "TruckScannerRight01": "Skaner ciężarówki (prawy)",
+      "UtilityTruck": "Ciężarówka służbowa",
+      "VentMachineLarge": "Duża maszyna wentylacyjna",
+      "VentMachineLarge01": "Duża maszyna wentylacyjna 2",
+      "Workbench_01": "Stół warsztatowy 1",
+      "Workbench_02": "Stół warsztatowy 2",
+      "Wreck03": "Wrak ARC",
+      "Wrh": "Meble magazynowe",
+      "vent03": "Wentylacja"
+    }
+  },
+  "whatsNew": {
+    "amplified": {
+      "step1": "Ulepsz stację rusznikarską do poziomu 4",
+      "step2": "Połącz broń na maksymalnym poziomie z Modułem wzmacniającym",
+      "step3": "Dodaj wzmocnienia, używając części",
+      "researchSubtitle": "Badania broni wzmocnionej",
+      "researchTask": "Odblokowanie: {name}",
+      "researchThen": "Następnie przeprowadź badania",
+      "researchWhere": "Stacja badawcza, poziom {level}",
+      "stepResearch": "Wykonaj zadanie badawcze (zadanie), aby je odblokować, a potem przeprowadź badania na Stacji badawczej na poziomie 4",
+      "pickerTitle": "Wybierz broń",
+      "pickerSentence": "Bronie są pogrupowane według Modułu wzmacniającego, którego wymagają.",
+      "amplification": "Wzmocnienie",
+      "research": "Badania",
+      "noResearch": "Nie wymaga badań",
+      "repairLine": "Wzmocnione bronie naprawia się przy użyciu Amplified Fragments.",
+      "recycleLine": "Przetworzenie modułu daje: {n} Amplified Fragments.",
+      "roomsNote": "Wymaga pomieszczeń posterunku: {n}",
+      "requires": "Wymaga: {name}",
+      "cantCombine": "Nie można połączyć z: {names}",
+      "lockedRequires": "Najpierw wymaga: {name}",
+      "lockedExcluded": "Nie razem z: {name}",
+      "lockedUnavailable": "Niedostępne przy tym wyborze",
+      "needsResearch": "Wymaga badań"
+    },
+    "title": "Co nowego w Mroźnym szlaku",
+    "subtitle": "Aktualizacja 2.0 w skrócie dla powracających łupieżców",
+    "loading": "Ładowanie informacji o nowościach...",
+    "navLabel": "Karty: co nowego",
+    "research": {
+      "build": "Zbuduj na posterunku",
+      "level": "Poziom {n}",
+      "blueprintCrafting": "Wytwarzanie z planów",
+      "designCrafting": "Wytwarzanie z projektów",
+      "amplifiedResearch": "Badania broni wzmocnionej",
+      "plans": "Plany: {n}",
+      "rpAmount": "{n} PB",
+      "step1": "Badaj znalezione przedmioty",
+      "step2": "Zdobywaj Punkty badań",
+      "step3": "Wydaj punkty i materiały na plany",
+      "step4": "Naucz się planu na posterunku",
+      "pointsTitle": "Punkty badań",
+      "pointsText": "Badaj te przedmioty na Stacji badawczej, aby zdobywać punkty.",
+      "stationTitle": "Stacja badawcza",
+      "stationText": "Zbuduj {bench} na posterunku, a potem ulepsz ją trzy razy.",
+      "needsRoom": "Wymaga pomieszczenia posterunku: {n}",
+      "needsRooms": "Wymaga pomieszczeń posterunku: {n}",
+      "needsStationLevel": "Wymaga poziomu stacji: {n}",
+      "listCraftable": "Plany, które możesz zbadać",
+      "listFindOnly": "Plany, które musisz znaleźć",
+      "listDesigns": "Projekty, które możesz zbadać",
+      "listFindOnlyDesigns": "Projekty, które możesz tylko znaleźć",
+      "hoverTitle": "Badania",
+      "browseTitle": "Co możesz zbadać",
+      "benchLevel": "{bench}, poziom {n}"
+    },
+    "outpost": {
+      "unlocks": "Odblokowuje",
+      "special": "Opcja specjalna",
+      "furnitureTitle": "Meble",
+      "celeste": "Celeste",
+      "expansion": "Poziom od {from} do {to}",
+      "pickOne": "Wybierz jedno pomieszczenie",
+      "benchLevel": "{bench}, poziom {level}",
+      "step1": "Zbieraj materiały budowlane",
+      "step2": "Rozbuduj posterunek i wybierz pomieszczenie",
+      "step3": "Każde nowe pomieszczenie odblokowuje ulepszenia stacji",
+      "slots": "Miejsca na pomieszczenia",
+      "slotsText": "Twój posterunek ma cztery miejsca. Pierwsze zajmuje pomieszczenie podstawowe, a każda rozbudowa zapełnia następne.",
+      "slot": "Miejsce {n}",
+      "furnitureText": "Urządź pomieszczenia łóżkami, krzesłami, lampami i nie tylko.",
+      "furnitureCount": "Mebli: {count}",
+      "furnitureHow": "Jak działają meble",
+      "furnStep1": "Znajdź lub zbadaj projekt",
+      "furnStep2": "Naucz się go na posterunku",
+      "furnStep3": "Zbuduj go z desek, blachy i innych materiałów",
+      "celesteText": "{name} wymienia teraz nasiona na materiały budowlane."
+    },
+    "changes": {
+      "recipes": "Przepisy",
+      "recipesHint": "Te przepisy wymagają innych materiałów niż wcześniej.",
+      "gadgets": "Gadżety",
+      "anvilCraft": "{name}: wytwarzanie i ulepszanie",
+      "anvilRepair": "{name}: naprawa",
+      "recycling": "Przetwarzanie",
+      "recyclingHint": "Te przedmioty dają inne materiały po przetworzeniu.",
+      "traders": "Handlarze",
+      "tradersHint": "Wybierz handlarza, aby zobaczyć, co zaczął lub przestał sprzedawać i które ceny się zmieniły.",
+      "stash": "Skrytka",
+      "stashHint": "Koszt każdego rozszerzenia skrytki, z oznaczonymi nowymi poziomami.",
+      "craft": "Wytwórz",
+      "upgrade": "Ulepsz z {from} do {to}",
+      "repair": "Napraw {tier}",
+      "tradeNew": "Nowe",
+      "tradeGone": "Już nie sprzedawane",
+      "tradePrice": "Nowa cena",
+      "scrapValue": "Wartość na złom: {value}",
+      "expansion": "Rozbudowa",
+      "slotCount": "Miejsca: {count}",
+      "newTier": "Nowe"
+    },
+    "new-items": {
+      "recycles": "Przetwarzanie na:",
+      "purpose": {
+        "outpost": {
+          "title": "Rozbudowa posterunku",
+          "sentence": "Buduj nowe pomieszczenia, aby rozbudować posterunek."
+        },
+        "researchStation": {
+          "title": "Stacja badawcza",
+          "sentence": "Buduj i ulepszaj nową Stację badawczą."
+        },
+        "researchPoints": {
+          "title": "Punkty badań",
+          "sentence": "Badaj te przedmioty na Stacji badawczej, aby zdobywać Punkty badań."
+        },
+        "gunsmith4": {
+          "title": "Stacja rusznikarska, poziom 4",
+          "sentence": "Potrzebne do nowego poziomu Stacji rusznikarskiej, który odblokowuje wzmocnione bronie."
+        },
+        "amplified": {
+          "title": "Wzmocnione bronie",
+          "sentence": "Zamieniaj bronie na maksymalnym poziomie we wzmocnione i dodawaj wzmocnienia."
+        },
+        "researchBlueprints": {
+          "title": "Badanie planów",
+          "sentence": "Wydawane na Stacji badawczej do badania planów i projektów."
+        },
+        "furniture": {
+          "title": "Meble",
+          "sentence": "Buduj meble do pomieszczeń posterunku."
+        },
+        "crafting": {
+          "title": "Wytwarzanie",
+          "sentence": "Przepisy na broń, gadżety i przedmioty używane podczas rajdu."
+        },
+        "stencils": {
+          "title": "Szablony broni",
+          "sentence": "Nakładaj na broń szablony malowania."
+        },
+        "quests": {
+          "title": "Zadania i projekty",
+          "sentence": "Potrzebne do zadań lub projektów."
+        },
+        "trades": {
+          "title": "Handel",
+          "sentence": "Handlarze przyjmują je jako zapłatę."
+        },
+        "noUse": {
+          "title": "Na razie bez zastosowania",
+          "sentence": "Nic na razie tego nie potrzebuje: sprzedaj je lub przetwórz."
+        },
+        "unlocks": {
+          "title": "Jednorazowe odblokowania",
+          "sentence": "Przekaż je jednorazowo, aby odblokować nowe pomieszczenia posterunku, Stację badawczą, Stację rusznikarską na poziomie 4 i zadania."
+        },
+        "newGear": {
+          "title": "Nowe bronie i sprzęt",
+          "sentence": "Nowości w wersji 2.0, każda z planem, który je odblokowuje."
+        },
+        "fallenEmperor": {
+          "title": "Upadły Cesarz",
+          "sentence": "Wszystko, czego potrzebujesz, aby otworzyć loch Upadłego Cesarza na Przełęczy Pendola."
+        },
+        "furnitureDecoration": {
+          "title": "Meble i dekoracje",
+          "sentence": "Buduj meble z tych materiałów i ustawiaj przedmioty dekoracyjne na posterunku."
+        },
+        "keys": {
+          "title": "Klucze z Przełęczy Pendola",
+          "sentence": "Otwierają zamknięte pomieszczenia na Przełęczy Pendola."
+        }
+      },
+      "unlocks": {
+        "outpost": "Posterunek, poziom od {from} do {to}",
+        "questItems": "Przedmioty do zadań"
+      },
+      "hover": {
+        "build": "Budowa: {bench}",
+        "unlocks": "Odblokowuje",
+        "craft": "Używany do wytwarzania",
+        "research": "Można zbadać",
+        "amplified": "Wzmocnione",
+        "furniture": "Meble ({n})",
+        "quests": "Zadania i projekty",
+        "traders": "Handlarze",
+        "gives": "Daje",
+        "fieldCraft": "Wytwarzanie w terenie",
+        "repair": "Naprawa",
+        "researchDetail": "Poziom {level} · {rp} PB",
+        "researchLevel": "Poziom {level}",
+        "tradeFor": "Płaci za: {item}",
+        "upgrades": "Ulepszenia wzmocnienia: {n}"
+      },
+      "more": {
+        "research": "Więcej o badaniach w karcie Badania",
+        "amplified": "Więcej o wzmocnionych broniach w karcie Wzmocnione"
+      },
+      "rp": {
+        "calloutTitle": "Inne zastosowania przedmiotów do badań",
+        "callout": "Kilka z nich jest też potrzebnych do budowy i ulepszania Stacji badawczej, więc zachowaj wystarczająco dużo, zanim je zbadasz.",
+        "calloutUse": "{amount} {item} na: {use}",
+        "scaleLabel": "Skala Punktów badań",
+        "scaleTitle": "Koszt planu badań: {min}–{max} PB",
+        "scaleMin": "Najtańszy plan badań: {name}",
+        "scaleMedian": "Typowy plan badań",
+        "scaleMax": "Najdroższy plan badań: {name}"
+      },
+      "emperor": {
+        "title": "Jak otworzyć Upadłego Cesarza",
+        "step1": "Podczas wydarzenia Przekierowanie aktywuj Uszkodzony przekaźnik cesarza i zabierz z niego Nadajnik cesarza.",
+        "step2": "Połóż nadajnik na ziemi i schowaj się: spadają odłamki.",
+        "step3": "Sforsuj dużą część. Może zawierać plan Łącznika bramy cesarza (plan może też leżeć na ziemi podczas wydarzenia Fregata).",
+        "step4": "Wytwórz Łącznik bramy cesarza na Stole warsztatowym z Sprzęgaczy ARC: z powłoką, z izolacją i przewodzącego.",
+        "step5": "Użyj łącznika, aby otworzyć loch Upadłego Cesarza na Przełęczy Pendola.",
+        "note": "Jeśli wyjdziesz z rajdu z Nadajnikiem cesarza, zamieni się on w Zniszczony nadajnik cesarza."
+      },
+      "detail": {
+        "level": "{bench}, poziom {level}",
+        "slots": "Miejsca: {n}"
+      }
+    },
+    "tabs": {
+      "new-items": "Nowe przedmioty",
+      "old-items": "Stare przedmioty",
+      "outpost": "Posterunek",
+      "research": "Badania",
+      "amplified": "Wzmocnione",
+      "crafting": "Wytwarzanie",
+      "changes": "Zmiany"
+    },
+    "intro": {
+      "new-items": {
+        "title": "Do czego służą nowe przedmioty?",
+        "sentence": "Każdy nowy przedmiot, pogrupowany według zastosowania. Przedmioty z kilkoma zastosowaniami pojawiają się w kilku grupach."
+      },
+      "old-items": {
+        "title": "Które stare przedmioty dostały nowe zastosowania?",
+        "sentence": "Przedmioty, które już znasz i które są potrzebne do czegoś nowego w wersji 2.0."
+      },
+      "outpost": {
+        "title": "Jak rozbudować posterunek?",
+        "sentence": "Zbierz materiały, rozbuduj posterunek i wybierz pomieszczenie dla każdego nowego miejsca."
+      },
+      "research": {
+        "title": "Jak działa Stacja badawcza?",
+        "sentence": "Badaj przedmioty, aby zdobywać Punkty badań, a potem wydawaj je na plany i projekty."
+      },
+      "amplified": {
+        "title": "Jak działają wzmocnione bronie?",
+        "sentence": "Ulepsz Stację rusznikarską, a potem zamień broń na maksymalnym poziomie we wzmocnioną."
+      },
+      "crafting": {
+        "title": "Co nowego mogę wytwarzać?",
+        "sentence": "Nowe wytwory używane podczas rajdu, szablony broni i klucz do Bramy cesarza."
+      },
+      "changes": {
+        "title": "Co zmieniło się w rzeczach, które już znasz?",
+        "sentence": "Przepisy, przetwarzanie, asortyment handlarzy i rozmiary skrytek, które różnią się od wersji 1.45."
+      }
+    },
+    "common": {
+      "howItWorks": "Jak to działa",
+      "needs": "Wymaga",
+      "alsoNeeds": "Wymaga też",
+      "where": "Gdzie",
+      "before": "Przed 2.0",
+      "now": "Mroźny szlak",
+      "close": "Zamknij",
+      "more": "+{count} więcej"
+    },
+    "crafting": {
+      "new": "Nowe",
+      "field": {
+        "title": "Wytwarzanie w terenie",
+        "sentence": "Wytwarzaj w środku rajdu, korzystając z umiejętności z drzewka umiejętności.",
+        "newCrafts": "Nowe wytwory podczas rajdu",
+        "unchanged": "Przepisy bez zmian: {n}"
+      },
+      "stencils": {
+        "title": "Szablony broni",
+        "sentence": "Szablony zmieniają wygląd broni, a ich wytworzenie kosztuje Części szablonu.",
+        "partsHint": "Potrzebne do nałożenia dowolnego szablonu",
+        "cost": "Części szablonu: {count}",
+        "worksWith": "Działa z"
+      },
+      "gateway": {
+        "title": "Klucz do Bramy cesarza",
+        "sentence": "Wytwórz Łącznik na Stole warsztatowym, aby otworzyć Bramę cesarza."
+      }
+    },
+    "old-items": {
+      "noLonger": "Już nie używane do"
     }
   }
 }
