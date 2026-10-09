@@ -184,11 +184,43 @@
 
 .wn-group-more {
   margin: 16px 0 0;
-  font-size: $font-lg;
 
-  a {
-    color: $text-accent;
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px 10px 12px;
+    border: 1px solid color-mix(in srgb, var(--wn-accent, #{$text-accent}) 45%, transparent);
+    border-radius: $radius-md;
+    background: color-mix(in srgb, var(--wn-accent, #{$text-accent}) 10%, transparent);
+    color: $text-primary;
+    font-size: $font-lg;
+    font-weight: 600;
     text-decoration: none;
-    &:hover, &:focus-visible { text-decoration: underline; }
+    transition: background 0.15s ease, border-color 0.15s ease;
+
+    &:hover,
+    &:focus-visible {
+      background: color-mix(in srgb, var(--wn-accent, #{$text-accent}) 18%, transparent);
+      border-color: var(--wn-accent, #{$text-accent});
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--wn-accent, #{$text-accent});
+      outline-offset: 2px;
+    }
+
+    &:hover .wn-group-more__arrow,
+    &:focus-visible .wn-group-more__arrow { transform: translateX(3px); }
+  }
+
+  &__icon { flex: none; color: var(--wn-accent, #{$text-accent}); }
+
+  &__arrow {
+    flex: none;
+    color: $text-secondary;
+    transition: transform 0.15s ease;
+
+    @media (prefers-reduced-motion: reduce) { transition: none; }
   }
 }

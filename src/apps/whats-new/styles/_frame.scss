@@ -49,7 +49,7 @@ $wn-tab-height: 44px;
 
   &__list {
     display: flex;
-    gap: $wn-s1;
+    gap: 0;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -67,7 +67,7 @@ $wn-tab-height: 44px;
     align-items: center;
     gap: $wn-s1;
     height: $wn-tab-height;
-    padding: 0 $wn-s2;
+    padding: 0 $wn-s1;
     color: $text-light;
     font-size: $font-xl;
     white-space: nowrap;
@@ -87,8 +87,8 @@ $wn-tab-height: 44px;
       &::after {
         content: '';
         position: absolute;
-        left: $wn-s1;
-        right: $wn-s1;
+        left: 4px;
+        right: 4px;
         bottom: -1px;
         height: 3px;
         background: $text-accent;

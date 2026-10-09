@@ -1,8 +1,9 @@
 import type { ReactNode } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { ListTodo } from 'lucide-react';
+import { ArrowRight, ListTodo } from 'lucide-react';
 import { useLocale } from '../../../../shared/context/LocaleContext';
 import { PurposeGroup } from '../../components';
+import { WHATS_NEW_TABS } from '../../tabConfig';
 import { BLUEPRINT_BG, groupStyle } from './curated';
 
 export interface GroupSectionProps {
@@ -18,6 +19,7 @@ export function GroupSection({ id, children, moreTab }: GroupSectionProps) {
   const { t } = useLocale();
   const { version = 'frozen-trail' } = useParams();
   const style = groupStyle(id);
+  const MoreIcon = moreTab ? WHATS_NEW_TABS.find((tab) => tab.id === moreTab)?.icon : undefined;
   return (
     <PurposeGroup
       id={`wn-purpose-${id}`}
@@ -29,9 +31,13 @@ export function GroupSection({ id, children, moreTab }: GroupSectionProps) {
       glyphBackground={style.blueprint ? BLUEPRINT_BG : undefined}
     >
       {children}
-      {moreTab && (
+      {MoreIcon && (
         <p className="wn-group-more">
-          <Link to={`/whats-new/${version}/${moreTab}`}>{t(`whatsNew.new-items.more.${moreTab}`)}</Link>
+          <Link to={`/whats-new/${version}/${moreTab}`} className="wn-group-more__link">
+            <MoreIcon size={20} aria-hidden="true" className="wn-group-more__icon" />
+            <span>{t(`whatsNew.new-items.more.${moreTab}`)}</span>
+            <ArrowRight size={18} aria-hidden="true" className="wn-group-more__arrow" />
+          </Link>
         </p>
       )}
     </PurposeGroup>
