@@ -1,3 +1,4 @@
+@use 'sass:color';
 @use '../../../shared/styles/variables' as *;
 
 // Styles of the amplified tab (.wn-tab-amplified).
@@ -255,7 +256,7 @@
     }
 
     &.is-hover:not(.is-chosen) { --hex-bg: #4a4f57; --hex-edge: #8a909a; }
-    &.is-chosen { --hex-bg: #{$rarity-amplified}; --hex-edge: #{lighten($rarity-amplified, 12%)}; }
+    &.is-chosen { --hex-bg: #{$rarity-amplified}; --hex-edge: #{color.adjust($rarity-amplified, $lightness: 12%)}; }
     &.is-locked .wn-hex__shape { cursor: default; }
     &.is-blocked { --hex-bg: #2b2e33; --hex-edge: #3c4047; color: #7b818b; }
 
@@ -290,7 +291,7 @@
       .wn-hex__shape { cursor: default; }
     }
   }
-  .wn-pick__card.is-chosen .wn-hex--small { --hex-bg: #{$rarity-amplified}; --hex-edge: #{lighten($rarity-amplified, 12%)}; }
+  .wn-pick__card.is-chosen .wn-hex--small { --hex-bg: #{$rarity-amplified}; --hex-edge: #{color.adjust($rarity-amplified, $lightness: 12%)}; }
 
   @media (max-width: $breakpoint-mobile) {
     .wn-graph { --node: 44px; --px: 76px; --py: 56px; --line: 2px; }
