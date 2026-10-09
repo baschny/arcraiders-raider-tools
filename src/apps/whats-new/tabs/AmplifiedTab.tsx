@@ -52,8 +52,11 @@ export function AmplifiedTab({ data }: AmplifiedTabProps) {
   const bench = data.benches.structure.benches.weapon_bench;
   const level4 = bench?.levels.find((l) => l.level === 4);
   const rooms = level4?.requires?.find((r) => r.kind === 'outpostLevel')?.id;
+  const benchName = bench ? data.benches.text?.[bench.id]?.name ?? bench.nameEn : '';
   const benchRef: ItemRef | undefined =
-    bench && level4 ? { id: `${bench.id}-level-4`, name: `${bench.nameEn} ${t('whatsNew.amplified.level')} 4`, icon: level4.icon ?? undefined } : undefined;
+    bench && level4
+      ? { id: `${bench.id}-level-4`, name: tm('whatsNew.new-items.detail.level', { bench: benchName, level: 4 }), icon: level4.icon ?? undefined }
+      : undefined;
   const { fragmentsId, recycles } = fragmentInfo(data.amplification.structure, catalog, allWeapons[0]?.moduleId);
 
   const researchLevel4 = data.benches.structure.benches.research_station?.levels.find((l) => l.level === 4);
@@ -81,7 +84,7 @@ export function AmplifiedTab({ data }: AmplifiedTabProps) {
       {benchRef && level4 && (
         <NeedsCard
           result={{ item: benchRef }}
-          where={{ image: level4.icon ?? undefined, label: bench.nameEn }}
+          where={{ image: level4.icon ?? undefined, label: benchName }}
           needs={(level4.buildCost ?? []).map((c): TileSpec => ({ item: ref(c.itemId), amount: c.quantity }))}
           note={rooms ? t('whatsNew.amplified.roomsNote').replace('{n}', rooms) : undefined}
         />
