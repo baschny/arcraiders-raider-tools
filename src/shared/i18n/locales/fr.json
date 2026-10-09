@@ -77,7 +77,9 @@
       "craftCalculator": "Calculateur de craft",
       "quests": "Suivi de quêtes",
       "lootHelper": "Assistant de loot",
-      "quartermaster": "Intendant"
+      "quartermaster": "Intendant",
+      "maps": "Cartes",
+      "whatsNew": "Nouveautés"
     }
   },
   "dashboard": {
@@ -90,12 +92,17 @@
       "affectedAppLink": "Open affected tool",
       "allTools": "All tools"
     },
+    "whatsNew": {
+      "title": "Nouveautés de Traînée gelée",
+      "description": "Vous revenez de la 1.x ? Découvrez à quoi servent les nouveaux objets, comment fonctionnent la recherche et les armes amplifiées, et ce qui a changé dans les recettes, le recyclage et chez les commerçants."
+    },
     "tools": {
       "schedule": "Visualisez le planning des événements des cartes ARC Raiders avec une vue plus claire pour planifier vos raids.",
       "craftCalculator": "Calculez combien d’objets fabriquer pour optimiser l’espace de votre réserve.",
       "quests": "Suivez votre progression de quêtes avec un arbre de quêtes interactif.",
       "lootHelper": "Visualisez les chaînes de craft pour savoir quoi looter pendant les raids.",
-      "quartermaster": "Planifiez votre réserve, votre équipement et les besoins de votre repaire au même endroit."
+      "quartermaster": "Planifiez votre réserve, votre équipement et les besoins de votre repaire au même endroit.",
+      "maps": "Trouvez où récupérer un objet et où apparaissent les ARC sur chaque carte et dans chaque condition de carte."
     }
   },
   "pages": {
@@ -767,13 +774,13 @@
         "qtyToRecycle": "Qty to Recycle",
         "yields": "Yields",
         "why": "Why",
-        "craftTimes": "Craft Times",
-        "totalOutput": "Total Output",
         "inputsNeeded": "Inputs Needed",
         "upgradeFrom": "Upgrade From",
         "upgradeTo": "Upgrade To",
         "qtyToUpgrade": "Qty to Upgrade",
-        "durability": "Durability"
+        "durability": "Durability",
+        "craftTimes": "Craft Times",
+        "totalOutput": "Total Output"
       },
       "blueprintUnlockCount": "{unlocked}/{total} unlocked"
     },
@@ -786,16 +793,16 @@
       "foundIn": "Found In:",
       "neededForLists": "Needed for Lists",
       "neededForQuests": "Needed for Quests",
-      "neededForCrafting": "Needed for Crafting (Direct / Indirect)",
       "neededForProject": "Needed for {project}",
-      "couldBeUsedFor": "Could be used for",
       "recycle": "Recycle",
       "salvage": "Salvage",
       "craftingRecipe": "Crafting Recipe",
       "craftingRecipeIncludingUpgrades": "Crafting Recipe (including Upgrades)",
       "recyclesInto": "Recycles Into",
       "salvagesInto": "Salvages Into",
-      "neededForRepair": "Needed for Repair"
+      "neededForRepair": "Needed for Repair",
+      "neededForCrafting": "Needed for Crafting (Direct / Indirect)",
+      "couldBeUsedFor": "Could be used for"
     },
     "itemIcon": {
       "uncraftable": "Cannot be crafted — requirements not met"
@@ -891,6 +898,655 @@
       "loadout": "Loadout",
       "gameDataLastSync": "Game Data Last Sync",
       "never": "Never"
+    }
+  },
+  "maps": {
+    "header": {
+      "gameData": "Données du jeu {version} · {date}",
+      "gameDataTitle": "Manifeste Steam {manifest}, données de carte générées le {date}"
+    },
+    "loader": {
+      "retry": "Réessayer",
+      "reloadPage": "Recharger la page",
+      "error": {
+        "network": "Les données de la carte n’ont pas pu être chargées. Vérifiez votre connexion et réessayez.",
+        "missing": "Les données de la carte ne sont pas disponibles pour le moment. Réessayez dans un instant.",
+        "missingMap": "Les données de la carte {map} sont manquantes. Réessayez dans un instant.",
+        "schema": "Les données de la carte ont été mises à jour et nécessitent une version plus récente de cette page. Rechargez la page."
+      }
+    },
+    "conditions": {
+      "normal": "Normale"
+    },
+    "modes": {
+      "loot": "Butin",
+      "label": "Mode"
+    },
+    "sidebar": {
+      "hide": "Masquer la barre latérale",
+      "showFilters": "Afficher les filtres",
+      "hideFilters": "Masquer les filtres"
+    },
+    "mapBar": {
+      "scoreTitle": "{map} : score d’objet {score} (conditions normales)",
+      "label": "Carte"
+    },
+    "conditionBar": {
+      "normal": "Carte normale",
+      "normalAlso": "Carte normale : même butin statique et mêmes apparitions que : {conditions}",
+      "major": "Condition majeure",
+      "majorLive": "Condition majeure (dans le planning actuel)",
+      "minor": "Condition mineure",
+      "minorLive": "Condition mineure (dans le planning actuel)",
+      "sameAsNormal": "+ {count} identique à {normal}",
+      "label": "Condition de carte"
+    },
+    "help": {
+      "label": "Aide"
+    },
+    "search": {
+      "placeholder": "Trouver un objet…",
+      "clear": "Effacer"
+    },
+    "loot": {
+      "searchPlaceholder": "Rechercher un objet, p. ex. Moteur",
+      "goalsTitle": "Vos objectifs de l’Assistant de loot",
+      "tablesTitle": "Part de chaque table de butin statique qui revient à cet objet",
+      "noTables": "dans aucune table de butin statique",
+      "notInLoot": "Cet objet ne figure dans aucune table de butin statique.",
+      "onlyHarvested": "Récolté uniquement dans {containers}, qui n’existent que pendant : {conditions}.",
+      "conditionWhy": "{condition} ({reason})"
+    },
+    "conditionReasons": {
+      "onHiatus": "en pause",
+      "neverReleased": "jamais sorti",
+      "tutorial": "tutoriel",
+      "practiceRange": "stand d’entraînement",
+      "notInSchedule": "absent du planning"
+    },
+    "item": {
+      "tiers": {
+        "low": "Bas",
+        "mid": "Moyen",
+        "high": "Haut"
+      }
+    },
+    "best": {
+      "title": "Meilleures zones · {condition}",
+      "helpLabel": "À propos du score",
+      "help": "Le score est la valeur de butin qui peut revenir à l’objet : le pool de chaque gestionnaire de butin, réparti entre ses tables, entrées et objets, puis entre ses emplacements. Il compare des endroits ; ce n’est pas une probabilité de drop. Les conditions au butin statique identique à la condition normale sont regroupées avec elle.",
+      "spotsOne": "{hits}/{count} emplacement",
+      "spots": "{hits}/{count} emplacements",
+      "perSpot": "{score} par emplacement"
+    },
+    "filters": {
+      "title": "Emplacements d’apparition",
+      "helpLabel": "À propos des filtres",
+      "help": "La flèche ouvre un groupe ; le reste de la ligne affiche ou masque ce groupe sur la carte. Avec un objet sélectionné et rien de coché, tous les emplacements pouvant contenir l’objet sont affichés. Les contenants ne comptent que si leur catégorie correspond à celle de l’objet (objets mécaniques dans les contenants mécaniques ; les plantes ne donnent que leur propre objet). Les contenants apparus (boîtes de munitions, caches, épaves) tirent leur contenu côté serveur et sont marqués « ? ».",
+      "auto": "auto",
+      "autoTitle": "Affichage de tous les emplacements pouvant contenir l’objet",
+      "showAll": "Tout afficher",
+      "hideAll": "Tout masquer",
+      "expand": "Développer",
+      "expandGroup": "Développer {group}",
+      "collapseGroup": "Réduire {group}",
+      "count": {
+        "spotsOne": "{count} emplacement",
+        "spots": "{count} emplacements",
+        "hitsOne": "{hits} emplacement sur {count} peut contenir l’objet",
+        "hits": "{hits} emplacements sur {count} peuvent contenir l’objet",
+        "noHitsOne": "Cet emplacement ne peut pas contenir l’objet",
+        "noHits": "Aucun des {count} emplacements ne peut contenir l’objet",
+        "serverSide": "Le contenu est tiré côté serveur et ne figure pas dans les fichiers du jeu",
+        "expectedOne": "~{expected} attendu par manche, sur {count} emplacement possible",
+        "expected": "~{expected} attendus par manche, sur {count} emplacements possibles"
+      }
+    },
+    "arc": {
+      "title": "Ennemis ARC · {condition}",
+      "helpLabel": "À propos des générateurs ARC",
+      "help": "Nombre attendu de générateurs pouvant produire chaque ennemi dans cette condition. Choisissez des ennemis pour n’afficher que leurs générateurs et chemins de patrouille (plusieurs à la fois, chacun dans sa couleur). Les marqueurs pleins patrouillent sur un chemin. Survolez un générateur pour voir son groupe et ses délais de réapparition ; cliquez dessus pour épingler son groupe d’apparition.",
+      "showAll": "Afficher tous les ennemis",
+      "expectedOne": "~{expected} attendu par manche, sur {count} générateur",
+      "expected": "~{expected} attendus par manche, sur {count} générateurs",
+      "empty": "Aucun générateur ARC dans cette condition."
+    },
+    "canvas": {
+      "label": "Carte de {map}. Les emplacements, zones et ennemis dessinés ici sont listés dans la barre latérale."
+    },
+    "zoom": {
+      "in": "Zoomer",
+      "out": "Dézoomer",
+      "fit": "Ajuster la carte (double-clic)"
+    },
+    "overlays": {
+      "title": "Calques",
+      "heat": "Carte de chaleur",
+      "height": "Repères de hauteur",
+      "heightTitle": "Un point en haut : plus de 3,5 m au-dessus du sol estimé (étage supérieur, toit) ; en bas : plus de 3,5 m sous le sol (sous-sol, tunnel). Estimé à partir de la carte d’altitude ; non disponible pour Stella Montis.",
+      "pois": "Zones & noms",
+      "zones": "Zones de butin",
+      "zonesTitle": "Zones de butin du jeu : rouge = abondant, jaune = dense, gris = clairsemé.",
+      "bounds": "Zone jouable"
+    },
+    "layers": {
+      "title": "Calque de carte : la carte du jeu change quand vous entrez dans ces zones",
+      "surface": "Surface",
+      "underground": "Sous-sol",
+      "upperFloor": "Étage supérieur",
+      "lowerFloor": "Étage inférieur",
+      "label": "Calque de carte"
+    },
+    "legend": {
+      "score": "Score d’objet par emplacement",
+      "low": "faible",
+      "high": "élevé"
+    },
+    "zones": {
+      "abundant": "Butin abondant",
+      "dense": "Butin dense",
+      "sparse": "Butin clairsemé"
+    },
+    "tooltip": {
+      "score": "score {score}",
+      "serverTablesOne": "+ {count} table de butin côté serveur (contenu absent des fichiers)",
+      "serverTables": "+ {count} tables de butin côté serveur (contenu absent des fichiers)",
+      "oneOf": "Un parmi : {kinds}",
+      "inArea": "dans {area}",
+      "spawnChance": "chance d’apparition ~{chance}",
+      "notScored": "contenu côté serveur (non noté)",
+      "group": "groupe",
+      "groupSpotsOne": "{group} : {min} emplacement sur {count} (entouré)",
+      "groupSpots": "{group} : {min} emplacements sur {count} (entourés)",
+      "groupSpawnersOne": "{group} : {min} générateur sur {count} (entouré)",
+      "groupSpawners": "{group} : {min} générateurs sur {count} (entourés)",
+      "tapPin": "touchez pour épingler le groupe",
+      "tapUnpin": "touchez pour désépingler le groupe",
+      "clickPin": "cliquez pour épingler le groupe",
+      "clickUnpin": "cliquez pour désépingler le groupe",
+      "arcSpawner": "Générateur ARC",
+      "enemySpawner": "Générateur d’ennemis",
+      "patrols": "patrouille sur un chemin",
+      "tableNotExported": "table {table} (non exportée)",
+      "tier": "niveau {tier}",
+      "area": "Zone",
+      "height": "≈ {height} m par rapport au sol",
+      "covered": "couvert",
+      "openSky": "ciel dégagé",
+      "noKey": "aucun objet-clé (s’ouvre autrement)"
+    },
+    "timing": {
+      "noRespawn": "ne réapparaît pas une fois détruit",
+      "respawn": "réapparition {time} après destruction",
+      "randomDelay": "+ {min}–{max} s de délai aléatoire",
+      "noDynamic": "pas de réapparition dynamique",
+      "airDrop": "largage aérien {time} après destruction du groupe",
+      "sneak": "réapparition hors de vue après {time}",
+      "sneakIndoors": "réapparition hors de vue après {time} (en intérieur)",
+      "activates": "s’active dans un rayon de {distance} m"
+    },
+    "units": {
+      "seconds": "{n} s",
+      "minutes": "{n} min",
+      "never": "jamais"
+    },
+    "categories": {
+      "Exits": "Sorties & apparitions",
+      "Containers": "Contenants",
+      "RaiderSpawns": "Contenants de Raiders",
+      "ArcSpawns": "Épaves & carcasses ARC",
+      "Puzzles": "Énigmes",
+      "Features": "Éléments de la carte"
+    },
+    "kinds": {
+      "ExtractMetro": "Extraction par métro",
+      "ExtractLift": "Extraction par ascenseur",
+      "ExtractFan": "Extraction par ventilateur",
+      "ExtractGondola": "Extraction par télécabine balistique",
+      "Hatch": "Trappe de Raider (clé)",
+      "StationEntrance": "Entrée de station de métro",
+      "PlayerStart": "Apparition du joueur",
+      "Generic": "Générique",
+      "OtherFixed": "Autre",
+      "WaterTank": "Réservoir d’eau",
+      "Ground": "Butin au sol",
+      "Apricot": "Abricot",
+      "Lemon": "Citron",
+      "Olive": "Olive",
+      "NatureFruitBasket": "Panier de fruits",
+      "Mushroom": "Champignon",
+      "Agave": "Agave",
+      "Moss": "Mousse",
+      "GreatMullein": "Grande molène",
+      "Candleberries": "Baies‑bougies",
+      "Resin": "Résine (arbres)",
+      "BirdNest": "Nid d’oiseau",
+      "VolcanicRock": "Roche volcanique",
+      "Roots": "Racines",
+      "Fertilizer": "Engrais",
+      "SeedVault": "Console du coffre à graines",
+      "Seedbox": "Boîte à graines",
+      "CacheStandard": "Cache de Raider",
+      "CacheSelfDestruct": "Cache de Raider, à autodestruction",
+      "CacheFrozen": "Cache de Raider, gelée",
+      "NomadCache": "Cache de nomade",
+      "CacheFirstWave": "Cache de Raider, Première vague",
+      "AmmoBox": "Boîte de munitions",
+      "AmmoBoxHigh": "Boîte de munitions (niveau élevé)",
+      "WeaponCase": "Caisse d’armes",
+      "WeaponCaseHigh": "Caisse d’armes (niveau élevé)",
+      "MedicalBag": "Sac médical",
+      "GrenadeTube": "Tube à grenades",
+      "Backpack": "Sac à dos de Raider",
+      "WeaponsRack": "Râtelier d’armes",
+      "FruitBasket": "Panier de fruits (Saison des récoltes)",
+      "FruitBasketWinter": "Panier de fruits (hiver)",
+      "WaspHusk": "Épave de Guêpe",
+      "WaspHuskStunning": "Épave de Guêpe, étourdissante",
+      "RocketeerHusk": "Épave d’Artificier",
+      "RocketeerHuskStunning": "Épave d’Artificier, étourdissante",
+      "DeforesterHusk": "Épave de Déforestateur",
+      "Probes": "Sonde ARC écrasée",
+      "Couriers": "Convoyeur ARC",
+      "PowerSocket": "Prise de batterie / pile à combustible",
+      "FuelCell": "Pile à combustible / batterie",
+      "PuzzleButton": "Bouton / interrupteur / console",
+      "PuzzleRelay": "Relais d’énigme",
+      "CardReader": "Lecteur de carte",
+      "TubeTerminal": "Terminal de couleur / station de tube",
+      "PuzzleDoor": "Porte / grille d’énigme",
+      "HotelKey": "Clé d’hôtel",
+      "FieldDepot": "Dépôt de terrain",
+      "FieldCrates": "Caisse de terrain",
+      "SupplyStation": "Station d’appel de ravitaillement",
+      "PowerCores": "Noyau d’alimentation de Récolteur",
+      "MetalDetector": "Détecteur d’alpiniste",
+      "Snowpile": "Tas de neige (Vague de froid)",
+      "Zipline": "Tyrolienne (activable)",
+      "Lift": "Ascenseur",
+      "Bridge": "Pont mobile",
+      "BridgeSwitch": "Interrupteur de pont / disjoncteur",
+      "LockedRoom": "Pièce verrouillée (clé)",
+      "LockedDoor": "Porte verrouillée (clé)",
+      "Barricaded": "Porte barricadée (à forcer)",
+      "Door": "Porte / fenêtre",
+      "Piano": "Piano"
+    },
+    "containerTypes": {
+      "Android": "Androïde",
+      "AntennaSet": "Ensemble d’antennes",
+      "Bus": "Bus",
+      "ButtonPanel": "Panneau de boutons",
+      "CabinetDoor": "Armoire",
+      "Car01": "Voiture 1",
+      "Car02": "Voiture 2",
+      "Car03": "Voiture 3",
+      "CashRegister": "Caisse enregistreuse",
+      "Centerbench": "Banc central",
+      "Closet": "Placard",
+      "Closet02": "Placard 2",
+      "Cmr": "Meuble mural",
+      "CoffeeMachine01": "Machine à café",
+      "CompressorTrailer": "Remorque compresseur",
+      "Computer01": "Ordinateur 1",
+      "Computer02": "Ordinateur 2",
+      "Computer03": "Ordinateur 3",
+      "Coms": "Console de communication",
+      "Console_03": "Console",
+      "Crate": "Caisse",
+      "CrateCart": "Chariot à caisses",
+      "CupboardCafe": "Placard du café",
+      "CupboardKitchen": "Placard de cuisine",
+      "Drawer": "Tiroir",
+      "DrawerMedical": "Tiroir à médicaments",
+      "Dumpster": "Benne",
+      "FloodLight": "Projecteur",
+      "Freezer": "Congélateur",
+      "Fridge": "Réfrigérateur",
+      "Fusebox": "Boîte à fusibles",
+      "Fusebox2": "Boîte à fusibles 2",
+      "GeneratorM02": "Générateur",
+      "Gvt": "Poubelle administrative",
+      "GvtDesk": "Bureau administratif",
+      "HighwayAntenna": "Antenne d’autoroute",
+      "InformationTerminal": "Terminal d’information",
+      "KitchenBench": "Plan de travail de cuisine",
+      "Locker01": "Casier",
+      "LockerMedical01": "Casier médical",
+      "Lockers": "Casiers",
+      "MuseumCrate_01": "Caisse de musée 1",
+      "MuseumCrate_02": "Caisse de musée 2",
+      "Parasitic": "Excroissance parasite",
+      "PressureMonitor": "Moniteur de pression",
+      "Refrigerator_01": "Réfrigérateur",
+      "RoadBarrier03": "Barrière de route",
+      "Rocketparts_01": "Pièces de fusée 1",
+      "Rocketparts_02": "Pièces de fusée 2",
+      "Rover": "Rover",
+      "Rsr": "Armoire de recherche",
+      "RsrCabinetS": "Petite armoire de recherche",
+      "RsrCartShelf": "Étagère de chariot de recherche",
+      "RsrMachineM01": "Machine de recherche",
+      "SecurityCamera01": "Caméra de sécurité",
+      "Server": "Serveur",
+      "Shelf03": "Étagère",
+      "SolarPanel03": "Panneau solaire",
+      "SosBooth_01": "Borne SOS",
+      "StreetSweeper": "Balayeuse",
+      "Suitcase": "Valise",
+      "SupportStructure": "Structure de soutien",
+      "TVUnit": "Meuble TV",
+      "TapeDrive01": "Lecteur de bandes 1",
+      "TapeDrive02": "Lecteur de bandes 2",
+      "TapeDrive04": "Lecteur de bandes 4",
+      "Transformer": "Transformateur",
+      "TrashCan_01": "Poubelle",
+      "Trashbin": "Poubelle",
+      "TruckScannerLeft01": "Scanner de camion (gauche)",
+      "TruckScannerRight01": "Scanner de camion (droite)",
+      "UtilityTruck": "Camion utilitaire",
+      "VentMachineLarge": "Grande machine de ventilation",
+      "VentMachineLarge01": "Grande machine de ventilation 2",
+      "Workbench_01": "Établi 1",
+      "Workbench_02": "Établi 2",
+      "Wreck03": "Épave ARC",
+      "Wrh": "Mobilier d’entrepôt",
+      "vent03": "Grille d’aération"
+    }
+  },
+  "whatsNew": {
+    "amplified": {
+      "step1": "Améliorez l’armurier au niveau 4",
+      "step2": "Associez une arme de niveau maximum à un module d’amplification",
+      "step3": "Ajoutez des amplifications avec des pièces",
+      "researchSubtitle": "Recherche d’armes amplifiées",
+      "researchTask": "Déblocage : {name}",
+      "researchThen": "Puis recherchez-la",
+      "researchWhere": "Station de recherche niveau {level}",
+      "stepResearch": "Accomplissez la tâche de recherche (une quête) pour la débloquer, puis recherchez-la à la station de recherche niveau 4",
+      "pickerTitle": "Choisissez une arme",
+      "pickerSentence": "Les armes sont regroupées selon le module d’amplification dont elles ont besoin.",
+      "amplification": "Amplification",
+      "research": "Recherche",
+      "noResearch": "Aucune recherche nécessaire",
+      "repairLine": "Les armes amplifiées se réparent avec des Amplified Fragments.",
+      "recycleLine": "Recycler un module donne {n} Amplified Fragments.",
+      "roomsNote": "Nécessite {n} pièces de l’avant-poste",
+      "requires": "Nécessite {name}",
+      "cantCombine": "Incompatible avec {names}",
+      "lockedRequires": "Nécessite d’abord {name}",
+      "lockedExcluded": "Incompatible avec {name}",
+      "lockedUnavailable": "Non disponible avec ce choix",
+      "needsResearch": "Recherche nécessaire"
+    },
+    "title": "Nouveautés de Traînée gelée",
+    "subtitle": "La mise à jour 2.0 en un coup d’œil, pour les Raiders de retour",
+    "loading": "Chargement des nouveautés…",
+    "navLabel": "Onglets des nouveautés",
+    "research": {
+      "build": "Construire à l’avant-poste",
+      "level": "Niveau {n}",
+      "blueprintCrafting": "Fabrication de schémas",
+      "designCrafting": "Fabrication de designs",
+      "amplifiedResearch": "Recherche d’armes amplifiées",
+      "plans": "{n} plans",
+      "rpAmount": "{n} PdR",
+      "step1": "Étudiez les objets que vous trouvez",
+      "step2": "Obtenez des points de recherche",
+      "step3": "Dépensez points et matériaux pour des plans",
+      "step4": "Apprenez le plan à l’avant-poste",
+      "pointsTitle": "Points de recherche",
+      "pointsText": "Étudiez ces objets à la station de recherche pour gagner des points.",
+      "stationTitle": "Station de recherche",
+      "stationText": "Construisez la {bench} à l’avant-poste, puis améliorez-la trois fois.",
+      "needsRoom": "Nécessite {n} pièce de l’avant-poste",
+      "needsRooms": "Nécessite {n} pièces de l’avant-poste",
+      "needsStationLevel": "Nécessite la station de recherche niveau {n}",
+      "listCraftable": "Schémas que vous pouvez rechercher",
+      "listFindOnly": "Schémas à trouver uniquement",
+      "listDesigns": "Designs que vous pouvez rechercher",
+      "listFindOnlyDesigns": "Designs à trouver uniquement",
+      "hoverTitle": "Recherche",
+      "browseTitle": "Ce que vous pouvez rechercher",
+      "benchLevel": "{bench} niveau {n}"
+    },
+    "outpost": {
+      "unlocks": "Débloque",
+      "special": "Option spéciale",
+      "furnitureTitle": "Meubles",
+      "celeste": "Celeste",
+      "expansion": "Niveau {from} à {to}",
+      "pickOne": "Choisissez une pièce",
+      "benchLevel": "{bench} niveau {level}",
+      "step1": "Collectez des matériaux de construction",
+      "step2": "Agrandissez l’avant-poste et choisissez une pièce",
+      "step3": "Chaque nouvelle pièce débloque des améliorations de station",
+      "slots": "Emplacements de pièce",
+      "slotsText": "Votre avant-poste compte quatre emplacements. Le premier accueille la pièce principale, chaque extension remplit le suivant.",
+      "slot": "Emplacement {n}",
+      "furnitureText": "Meublez vos pièces avec des lits, des chaises, des lampes et plus encore.",
+      "furnitureCount": "{count} meubles",
+      "furnitureHow": "Comment fonctionnent les meubles",
+      "furnStep1": "Trouvez ou recherchez un design",
+      "furnStep2": "Apprenez-le à l’avant-poste",
+      "furnStep3": "Construisez-le avec des planches, de la tôle et plus encore",
+      "celesteText": "{name} échange désormais des graines contre des matériaux de construction."
+    },
+    "changes": {
+      "recipes": "Recettes",
+      "recipesHint": "Ces recettes demandent des matériaux différents de ceux d’avant.",
+      "gadgets": "Gadgets",
+      "anvilCraft": "{name} : fabrication et amélioration",
+      "anvilRepair": "{name} : réparation",
+      "recycling": "Recyclage",
+      "recyclingHint": "Ces objets donnent d’autres matériaux lorsque vous les recyclez.",
+      "traders": "Commerçants",
+      "tradersHint": "Choisissez un commerçant pour voir ce qu’il a commencé ou arrêté de vendre et quels prix ont changé.",
+      "stash": "Réserve",
+      "stashHint": "Le coût de chaque extension de réserve, avec les nouveaux paliers signalés.",
+      "craft": "Fabrication",
+      "upgrade": "Améliorer de {from} à {to}",
+      "repair": "Réparer {tier}",
+      "tradeNew": "Nouveau",
+      "tradeGone": "Plus vendu",
+      "tradePrice": "Nouveau prix",
+      "scrapValue": "Valeur de récupération : {value}",
+      "expansion": "Extension",
+      "slotCount": "{count} emplacements",
+      "newTier": "Nouveau"
+    },
+    "new-items": {
+      "recycles": "Recyclage en",
+      "purpose": {
+        "outpost": {
+          "title": "Agrandir l’avant-poste",
+          "sentence": "Construisez de nouvelles pièces pour agrandir votre avant-poste."
+        },
+        "researchStation": {
+          "title": "Station de recherche",
+          "sentence": "Construisez et améliorez la nouvelle station de recherche."
+        },
+        "researchPoints": {
+          "title": "Points de recherche",
+          "sentence": "Étudiez-les à la station de recherche pour gagner des points de recherche."
+        },
+        "gunsmith4": {
+          "title": "Armurier niveau 4",
+          "sentence": "Nécessaire au nouveau niveau de l’armurier, qui débloque les armes amplifiées."
+        },
+        "amplified": {
+          "title": "Armes amplifiées",
+          "sentence": "Transformez les armes de niveau maximum en armes amplifiées et ajoutez-leur des amplifications."
+        },
+        "researchBlueprints": {
+          "title": "Recherche de schémas",
+          "sentence": "Dépensés à la station de recherche pour rechercher des schémas et des designs."
+        },
+        "furniture": {
+          "title": "Meubles",
+          "sentence": "Construisez des meubles pour les pièces de votre avant-poste."
+        },
+        "crafting": {
+          "title": "Fabrication",
+          "sentence": "Recettes pour les armes, les gadgets et les objets utilisables en partie."
+        },
+        "stencils": {
+          "title": "Décorations d’armes",
+          "sentence": "Appliquez des décorations peintes sur vos armes."
+        },
+        "quests": {
+          "title": "Quêtes et projets",
+          "sentence": "Nécessaires pour des quêtes ou des projets."
+        },
+        "trades": {
+          "title": "Échanges",
+          "sentence": "Les commerçants acceptent ces objets en paiement."
+        },
+        "noUse": {
+          "title": "Pas encore utile",
+          "sentence": "Rien n’en a encore besoin : vendez-les ou recyclez-les."
+        },
+        "unlocks": {
+          "title": "Déblocages uniques",
+          "sentence": "Remettez-les une seule fois pour débloquer les nouvelles pièces de l’avant-poste, la station de recherche, l’armurier niveau 4 et des quêtes."
+        },
+        "newGear": {
+          "title": "Nouvelles armes et équipements",
+          "sentence": "Nouveautés de la 2.0, chacune suivie du schéma qui la débloque."
+        },
+        "fallenEmperor": {
+          "title": "Empereur à l’arrêt",
+          "sentence": "Tout ce qu’il faut pour ouvrir le donjon de l’Empereur à l’arrêt, au Col de Pendola."
+        },
+        "furnitureDecoration": {
+          "title": "Meubles et décorations",
+          "sentence": "Construisez des meubles avec ces matériaux et placez les objets de décoration dans votre avant-poste."
+        },
+        "keys": {
+          "title": "Clés du Col de Pendola",
+          "sentence": "Ouvrent les pièces verrouillées du Col de Pendola."
+        }
+      },
+      "unlocks": {
+        "outpost": "Avant-poste niveau {from} à {to}",
+        "questItems": "Objets de quête"
+      },
+      "hover": {
+        "build": "Construction : {bench}",
+        "unlocks": "Débloque",
+        "craft": "Utilisé pour fabriquer",
+        "research": "Permet de rechercher",
+        "amplified": "Amplifiées",
+        "furniture": "Meubles ({n})",
+        "quests": "Quêtes et projets",
+        "traders": "Commerçants",
+        "gives": "Donne",
+        "fieldCraft": "Artisanat de terrain",
+        "repair": "Réparation",
+        "researchDetail": "Niveau {level} · {rp} PdR",
+        "researchLevel": "Niveau {level}",
+        "tradeFor": "Paie pour {item}",
+        "upgrades": "Améliorations d’amplification : {n}"
+      },
+      "more": {
+        "research": "Plus d’infos sur la recherche dans l’onglet Recherche",
+        "amplified": "Plus d’infos sur les armes amplifiées dans l’onglet Amplifiées"
+      },
+      "rp": {
+        "calloutTitle": "Autres usages des objets à étudier",
+        "callout": "Plusieurs de ces objets servent aussi à construire et à améliorer la station de recherche : gardez-en assez avant de les étudier.",
+        "calloutUse": "{amount} {item} pour {use}",
+        "scaleLabel": "Échelle des points de recherche",
+        "scaleTitle": "Coût des plans de recherche : {min} à {max} PdR",
+        "scaleMin": "Plan de recherche le moins cher : {name}",
+        "scaleMedian": "Plan de recherche typique",
+        "scaleMax": "Plan de recherche le plus cher : {name}"
+      },
+      "emperor": {
+        "title": "Comment ouvrir l’Empereur à l’arrêt",
+        "step1": "Pendant l’événement Redirection, activez un Relais d’Empereur endommagé et prenez-en la Balise d’Empereur.",
+        "step2": "Posez la balise au sol et mettez-vous à l’abri : des débris tombent.",
+        "step3": "Forcez la grande partie. Elle peut contenir le schéma du Conduit de passerelle de l’Empereur (il peut aussi traîner au sol pendant l’événement Frégate).",
+        "step4": "Fabriquez le Conduit de passerelle de l’Empereur à l’établi, à partir des coupleurs plaqué, isolé et conducteur ARC.",
+        "step5": "Utilisez le conduit pour ouvrir le donjon de l’Empereur à l’arrêt, au Col de Pendola.",
+        "note": "Si vous extrayez avec la Balise d’Empereur, elle se transforme en Balise d’Empereur inopérante."
+      },
+      "detail": {
+        "level": "{bench} niveau {level}",
+        "slots": "{n} emplacements"
+      }
+    },
+    "tabs": {
+      "new-items": "Nouveaux objets",
+      "old-items": "Anciens objets",
+      "outpost": "Avant-poste",
+      "research": "Recherche",
+      "amplified": "Amplifiées",
+      "crafting": "Fabrication",
+      "changes": "Changements"
+    },
+    "intro": {
+      "new-items": {
+        "title": "À quoi servent les nouveaux objets ?",
+        "sentence": "Chaque nouvel objet, regroupé selon son usage. Les objets qui ont plusieurs usages apparaissent dans plusieurs groupes."
+      },
+      "old-items": {
+        "title": "Quels anciens objets ont reçu de nouveaux usages ?",
+        "sentence": "Des objets que vous connaissez déjà et dont la 2.0 fait un nouvel usage."
+      },
+      "outpost": {
+        "title": "Comment agrandir mon avant-poste ?",
+        "sentence": "Collectez des matériaux, agrandissez l’avant-poste et choisissez une pièce pour chaque nouvel emplacement."
+      },
+      "research": {
+        "title": "Comment fonctionne la station de recherche ?",
+        "sentence": "Étudiez des objets pour obtenir des points de recherche, puis dépensez-les pour des schémas et des designs."
+      },
+      "amplified": {
+        "title": "Comment fonctionnent les armes amplifiées ?",
+        "sentence": "Améliorez l’armurier, puis transformez une arme de niveau maximum en arme amplifiée."
+      },
+      "crafting": {
+        "title": "Que puis-je fabriquer de nouveau ?",
+        "sentence": "Nouvelles fabrications en partie, décorations d’armes et clé de la passerelle de l’Empereur."
+      },
+      "changes": {
+        "title": "Qu’est-ce qui a changé pour ce que je connais déjà ?",
+        "sentence": "Recettes, recyclage, stocks des commerçants et tailles de réserve qui diffèrent de la 1.45."
+      }
+    },
+    "common": {
+      "howItWorks": "Fonctionnement",
+      "needs": "Nécessite",
+      "alsoNeeds": "Nécessite aussi",
+      "where": "Où",
+      "before": "Avant la 2.0",
+      "now": "Traînée gelée",
+      "close": "Fermer",
+      "more": "+{count} de plus"
+    },
+    "crafting": {
+      "new": "Nouveau",
+      "field": {
+        "title": "Artisanat de terrain",
+        "sentence": "Fabriquez au milieu d’une partie grâce aux compétences de l’arbre de compétences.",
+        "newCrafts": "Nouvelles fabrications en partie",
+        "unchanged": "{n} recettes inchangées"
+      },
+      "stencils": {
+        "title": "Décorations d’armes",
+        "sentence": "Les décorations changent l’apparence d’une arme et coûtent des pièces de décoration à fabriquer.",
+        "partsHint": "Nécessaires pour appliquer n’importe quelle décoration",
+        "cost": "{count} pièces de décoration",
+        "worksWith": "Compatible avec"
+      },
+      "gateway": {
+        "title": "Clé de la passerelle de l’Empereur",
+        "sentence": "Fabriquez le conduit à l’établi pour ouvrir la passerelle de l’Empereur."
+      }
+    },
+    "old-items": {
+      "noLonger": "N’est plus utilisé pour"
     }
   }
 }
