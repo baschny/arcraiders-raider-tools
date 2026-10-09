@@ -345,29 +345,50 @@ $green: #4caf50;
 }
 
 // ---- PurposeGroup -------------------------------------------------------------------------
+// Header band: left accent stripe, 56px tinted glyph square, title and sentence. The group's
+// accent colour comes in as --wn-accent.
 .wn-group {
+  --wn-accent: #{$text-accent};
+
   &__head {
     display: flex;
     align-items: center;
     gap: $wn-s2;
-    margin-bottom: 16px;
+    box-sizing: border-box;
+    width: 100%;
+    margin-bottom: $wn-s2;
+    padding: $wn-s2 $wn-s3 $wn-s2 20px;
+    border-left: 4px solid var(--wn-accent);
+    border-radius: 12px;
+    background: $bg-secondary;
   }
 
-  &__icon {
-    flex: 0 0 80px;
+  &__square {
+    flex: 0 0 56px;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 80px;
-    height: 80px;
+    box-sizing: border-box;
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    background-color: color-mix(in srgb, var(--wn-accent) 22%, transparent);
+    color: var(--wn-accent);
+
+    &--bg {
+      background-color: transparent;
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+    }
   }
 
-  &__img { max-width: 80px; max-height: 80px; object-fit: contain; }
+  &__text { min-width: 0; }
 
   &__title {
     margin: 0;
     font-size: $font-3xl;
-    font-weight: 700;
+    font-weight: 600;
     color: $text-primary;
   }
 

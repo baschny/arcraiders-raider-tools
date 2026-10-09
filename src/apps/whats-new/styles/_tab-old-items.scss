@@ -1,4 +1,2 @@
-@use '../../../shared/styles/variables' as *;
-
-// Styles of the old-items tab (.wn-tab-old-items). It shares the purpose groups and detail panel
-// styles (.wn-nitems-*) with the new-items tab, see _tab-new-items.scss.
+// Styles of the old-items tab (.wn-tab-old-items). It shares the group header band
+// (_components.scss) and the hover card (_hovercard.scss); nothing of its own yet.

@@ -1416,22 +1416,6 @@
     },
     "new-items": {
       "recycles": "Recycles into",
-      "system": {
-        "outpostRoom": "Room",
-        "outpostFurniture": "Furniture",
-        "researchStation": "Research Station",
-        "benchUpgrade": "Upgrade",
-        "research": "Research",
-        "amplify": "Amplify",
-        "amplifyPerk": "Perk",
-        "repair": "Repair",
-        "craft": "Craft",
-        "fieldCraft": "Field craft",
-        "stencil": "Stencil",
-        "trade": "Trade",
-        "project": "Project",
-        "quest": "Quest"
-      },
       "purpose": {
         "outpost": {
           "title": "Expanding the Outpost",
@@ -1480,15 +1464,69 @@
         "noUse": {
           "title": "No use yet",
           "sentence": "Nothing needs these yet: sell or recycle them."
+        },
+        "unlocks": {
+          "title": "One-time unlocks",
+          "sentence": "Hand these over once to unlock the new Outpost rooms, the Research Station, Gunsmith level 4 and quests."
+        },
+        "newGear": {
+          "title": "New weapons and gear",
+          "sentence": "New in 2.0, each followed by the blueprint that unlocks it."
+        },
+        "fallenEmperor": {
+          "title": "Fallen Emperor",
+          "sentence": "Everything you need to open the Fallen Emperor dungeon on Pendola Pass."
+        },
+        "furnitureDecoration": {
+          "title": "Furniture and decoration",
+          "sentence": "Build furniture from these materials and place the decoration items in your Outpost."
+        },
+        "keys": {
+          "title": "Pendola Pass keys",
+          "sentence": "Open locked rooms on Pendola Pass."
         }
       },
+      "unlocks": {
+        "outpost": "Outpost level {from} to {to}",
+        "questItems": "Quest items"
+      },
+      "hover": {
+        "build": "{bench} build",
+        "unlocks": "Unlocks",
+        "craft": "Used to craft",
+        "research": "Researches",
+        "amplified": "Amplified",
+        "furniture": "Furniture ({n})",
+        "quests": "Quests and projects",
+        "traders": "Traders",
+        "gives": "Gives",
+        "fieldCraft": "Field craft",
+        "repair": "Repair",
+        "researchDetail": "Level {level} · {rp} RP",
+        "researchLevel": "Level {level}",
+        "tradeFor": "Pays for {item}"
+      },
+      "rp": {
+        "calloutTitle": "Other uses of study items",
+        "callout": "Several of these are also needed to build and upgrade the Research Station — keep enough before you study them.",
+        "calloutUse": "{item}: {uses}",
+        "scaleLabel": "Research Points scale",
+        "scaleTitle": "Plans cost {min}–{max} RP",
+        "scaleMin": "Cheapest plan: {name}",
+        "scaleMedian": "Typical plan",
+        "scaleMax": "Most expensive plan: {name}",
+        "conversion": "1 {item} = {rp} RP"
+      },
+      "emperor": {
+        "title": "How to open the Fallen Emperor",
+        "step1": "During the Redirection event, activate a Damaged Emperor Relay and take the Emperor Beacon from it.",
+        "step2": "Place the beacon on the ground and take cover: debris rains down.",
+        "step3": "Breach the large part. It may contain the Emperor Gateway Conduit Blueprint (the blueprint can also lie on the ground during the Frigate event).",
+        "step4": "Craft the Emperor Gateway Conduit at the Workbench from the ARC Plated, Insulated and Conductive Couplers.",
+        "step5": "Use the conduit to open the Fallen Emperor dungeon on Pendola Pass.",
+        "note": "If you extract with the Emperor Beacon, it turns into a Ruined Emperor Beacon."
+      },
       "detail": {
-        "study": "Study it at the Research Station to earn Research Points.",
-        "noUse": "Nothing needs this item yet. Sell it or recycle it.",
-        "posh": "Posh",
-        "each": "{n}× each",
-        "at": "at {where}",
-        "more": "+{n} more",
         "level": "{bench} level {level}",
         "slots": "{n} slots"
       }

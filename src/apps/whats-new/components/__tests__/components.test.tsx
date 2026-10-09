@@ -136,13 +136,15 @@ describe('whats-new components', () => {
     expect(html(<CompareRows rows={[{ key: 'x', item: { item: a }, before: [], now: [{ item: b }], status: 'added' }]} />)).toContain('—');
   });
 
-  it('PurposeGroup shows icon, title, sentence and children', () => {
-    const out = html(<PurposeGroup id="g" title="Gunsmith level 4" sentence="Needed for the level." iconImage="/bench.webp"><b>kids</b></PurposeGroup>);
+  it('PurposeGroup shows glyph square, title, sentence, accent and children', () => {
+    const out = html(<PurposeGroup id="g" title="Gunsmith level 4" sentence="Needed for the level." glyph="gunsmith" accent="#ef6c00"><b>kids</b></PurposeGroup>);
     expect(out).toContain('Gunsmith level 4');
     expect(out).toContain('Needed for the level.');
-    expect(out).toContain('/bench.webp');
+    expect(out).toContain('/images/whats-new/icons/gunsmith.webp');
+    expect(out).toContain('--wn-accent:#ef6c00');
     expect(out).toContain('kids');
-    expect(html(<PurposeGroup title="T" iconItem={a}>k</PurposeGroup>)).toContain('alt="Alpha"');
+    expect(html(<PurposeGroup title="T" glyph="blueprint" glyphBackground="/bg.png">k</PurposeGroup>)).toContain('wn-group__square--bg');
+    expect(html(<PurposeGroup title="T" icon={<i className="ic" />}>k</PurposeGroup>)).toContain('class="ic"');
   });
 
   it('SegmentedControl is a radiogroup with one checked option', () => {
