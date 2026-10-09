@@ -1,3 +1,163 @@
 @use '../../../shared/styles/variables' as *;
 
 // Styles of the outpost tab (.wn-tab-outpost).
+// All expansion panels use the same fixed column template, so Needs | Pick one room | Unlocks line up.
+.wn-tab-outpost {
+  .wn-outpost__slots {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .wn-outpost__slot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 128px;
+  }
+
+  .wn-outpost__slot-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 128px;
+    height: 128px;
+    border: $border-width-thin dashed $border-default;
+    border-radius: 12px;
+  }
+
+  .is-filled .wn-outpost__slot-box { border-style: solid; }
+
+  .wn-outpost__slot-num {
+    font-size: 32px;
+    font-weight: 700;
+    color: $text-tertiary;
+  }
+
+  .wn-outpost__slot-label {
+    font-size: $font-lg;
+    color: $text-light;
+    text-align: center;
+  }
+
+  .wn-outpost__ladder {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .wn-outpost__ladder .wn-panel + .wn-panel { margin-top: 0; }
+
+  .wn-outpost__cols {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr) 260px;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .wn-outpost__col-title {
+    margin: 0 0 16px;
+    font-size: $font-xl;
+    font-weight: 700;
+    color: $text-primary;
+  }
+
+  .wn-outpost__tiles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .wn-outpost__room {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .wn-outpost__room .wn-tile { width: 112px; }
+
+  .wn-outpost__special {
+    font-size: $font-md;
+    color: $text-secondary;
+  }
+
+  .wn-outpost__unlocks {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .wn-outpost__unlock {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: $font-lg;
+    color: $text-light;
+  }
+
+  .wn-outpost__unlock-img {
+    width: 64px;
+    height: 64px;
+    flex: none;
+    object-fit: contain;
+  }
+
+  .wn-outpost__examples {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(112px, 1fr));
+    gap: 16px;
+    justify-items: center;
+  }
+
+  .wn-outpost__count {
+    margin: 16px 0 24px;
+    font-size: $font-lg;
+    color: $text-secondary;
+  }
+
+  .wn-outpost__celeste-head {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .wn-outpost__portrait {
+    width: 80px;
+    height: 80px;
+    flex: none;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .wn-outpost__celeste-text {
+    margin: 0;
+    font-size: $font-xl;
+    color: $text-light;
+  }
+
+  .wn-outpost__trades {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    .wn-outpost__cols,
+    .wn-outpost__trades {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 24px;
+    }
+
+    .wn-outpost__slots { gap: 16px; }
+  }
+}
