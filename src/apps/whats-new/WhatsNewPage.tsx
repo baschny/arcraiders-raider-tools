@@ -22,7 +22,7 @@ export interface WhatsNewPageProps {
 }
 
 export function WhatsNewPage({ version, tab }: WhatsNewPageProps) {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
   const { data, loading, error } = useWhatsNewData();
 
   if (loading) return <LoadingSpinner message={t('whatsNew.loading')} />;
@@ -30,7 +30,7 @@ export function WhatsNewPage({ version, tab }: WhatsNewPageProps) {
 
   const Tab = TAB_COMPONENTS[tab];
   return (
-    <div className="wn-page" data-version={version} data-tab={tab}>
+    <div className="wn-page" lang={locale} data-version={version} data-tab={tab}>
       <header className="wn-page__header">
         <h1 className="wn-page__title">{t('whatsNew.title')}</h1>
         <p className="wn-page__subtitle">{t('whatsNew.subtitle')}</p>

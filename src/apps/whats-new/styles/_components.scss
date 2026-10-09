@@ -47,7 +47,10 @@ $green: #4caf50;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
-    overflow-wrap: anywhere;
+    word-break: normal;
+    overflow-wrap: normal;
+    hyphens: auto;
+    text-overflow: ellipsis;
   }
 
   &--48 &__name { font-size: $font-md; }
@@ -347,7 +350,7 @@ $green: #4caf50;
     display: flex;
     align-items: center;
     gap: $wn-s2;
-    margin-bottom: $wn-s3;
+    margin-bottom: 16px;
   }
 
   &__icon {
@@ -376,8 +379,8 @@ $green: #4caf50;
   }
 }
 
-// Groups stack 64px apart.
-.wn-group + .wn-group { margin-top: 64px; }
+// Groups stack 40px apart.
+.wn-group + .wn-group { margin-top: 40px; }
 
 // ---- SegmentedControl ---------------------------------------------------------------------
 .wn-segmented {

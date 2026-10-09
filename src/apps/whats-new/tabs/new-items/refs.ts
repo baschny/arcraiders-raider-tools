@@ -66,7 +66,11 @@ export function resolveTargetView(
     return { kind: 'tile', key, item: { id: key, name: label, icon: benchLevelImage(data, target.bench, target.level) } };
   }
   if (use.system === 'quest' || use.system === 'project') {
-    return { kind: 'generic', key, label: prettify(target), icon: use.system };
+    const quest = use.system === 'quest';
+    const domain = quest ? data.quests : data.projects;
+    const entry = quest ? data.quests?.structure.quests[target] : data.projects?.structure.projects[target];
+    const label = domain ? nameOf(domain, target, entry?.nameEn ?? prettify(target)) : prettify(target);
+    return { kind: 'generic', key, label, icon: use.system };
   }
   if (use.system === 'research' && unlocks.has(target)) {
     return { kind: 'tile', key, item: toUnlockedRef(data.catalog, target, unlocks.get(target)), isBlueprint: true };

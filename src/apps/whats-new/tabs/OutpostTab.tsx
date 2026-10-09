@@ -25,7 +25,7 @@ function ExpansionPanel({ tier, data }: { tier: ExpansionTier; data: WhatsNewPag
   const { t, tm } = useLocale();
   const unlocks = sortUnlocks(data, tier.unlocks);
   return (
-    <Panel title={tm('whatsNew.outpost.expansion', { from: tier.from, to: tier.to })}>
+    <Panel className="wn-outpost__panel" title={tm('whatsNew.outpost.expansion', { from: tier.from, to: tier.to })}>
       <div className="wn-outpost__cols">
         <section className="wn-outpost__col" aria-label={t('whatsNew.common.needs')}>
           <h4 className="wn-outpost__col-title">{t('whatsNew.common.needs')}</h4>

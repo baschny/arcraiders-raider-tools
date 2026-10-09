@@ -101,23 +101,25 @@ function UseDetail({ data, entry, groupId, mode, labels, unlocks }: DetailProps)
           {rows.map((row) => {
             const where = resolveWhere(data, row.use, labels, t('whatsNew.new-items.detail.posh'));
             const { shown, more } = capList(row.targets, MAX_TARGETS);
-            const amount = formatRowAmount(row.amount, row.amountMax);
+            const range = row.amountMax !== undefined && row.amountMax !== row.amount;
+            const base = formatRowAmount(row.amount, row.amountMax);
+            const label = !range && row.targets.length > 1 ? tm('whatsNew.new-items.detail.each', { n: row.amount }) : base;
             return (
               <div className="wn-nitems-use" key={`${row.amount}-${row.amountMax ?? ''}|${row.use.via ? JSON.stringify(row.use.via) : ''}`}>
+                <span className="wn-nitems-use__amount">{label}</span>
                 <div className="wn-nitems-use__targets">
                   {shown.map((target) => {
                     const view = resolveTargetView(data, { ...row.use, target }, target, unlocks, labels);
-                    return <TargetTile key={view.key} view={view} amount={amount} size={64} />;
+                    return <TargetTile key={view.key} view={view} size={64} />;
                   })}
                   {more > 0 && <span className="wn-nitems-use__more">{tm('whatsNew.new-items.detail.more', { n: more })}</span>}
+                  {where && (
+                    <span className="wn-nitems-use__where">
+                      {where.image && <img className="wn-nitems-use__where-img" src={where.image} alt="" loading="lazy" />}
+                      <span>{tm('whatsNew.new-items.detail.at', { where: where.label })}</span>
+                    </span>
+                  )}
                 </div>
-                {where && (
-                  <div className="wn-nitems-use__where">
-                    <span className="wn-nitems-use__where-label">{t('whatsNew.common.where')}</span>
-                    {where.image && <img className="wn-nitems-use__where-img" src={where.image} alt="" loading="lazy" />}
-                    <span>{where.label}</span>
-                  </div>
-                )}
               </div>
             );
           })}

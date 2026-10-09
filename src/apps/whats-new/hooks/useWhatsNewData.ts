@@ -18,6 +18,8 @@ export interface WhatsNewDomains {
   benches: LoadedDomain<'benches'>;
   skilltree: LoadedDomain<'skilltree'>;
   recipes: LoadedDomain<'recipes'>;
+  quests: LoadedDomain<'quests'>;
+  projects: LoadedDomain<'projects'>;
 }
 
 export interface WhatsNewPageData extends WhatsNewDomains {
@@ -84,14 +86,16 @@ export function useWhatsNewData(): WhatsNewDataState {
       loadDomain('benches', locale),
       loadDomain('skilltree', locale),
       loadDomain('recipes', locale),
+      loadDomain('quests', locale),
+      loadDomain('projects', locale),
       loadWhatsNew(locale),
     ])
       .then(
-        ([catalog, outpost, research, blueprints, stencils, amplification, trades, benches, skilltree, recipes, whatsNew]) => {
+        ([catalog, outpost, research, blueprints, stencils, amplification, trades, benches, skilltree, recipes, quests, projects, whatsNew]) => {
           if (cancelled) return;
           setSettled({
             locale,
-            data: { catalog, outpost, research, blueprints, stencils, amplification, trades, benches, skilltree, recipes, whatsNew },
+            data: { catalog, outpost, research, blueprints, stencils, amplification, trades, benches, skilltree, recipes, quests, projects, whatsNew },
             error: null,
           });
         },

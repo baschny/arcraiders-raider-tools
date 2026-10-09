@@ -1592,6 +1592,8 @@
         "study": "Study it at the Research Station to earn Research Points.",
         "noUse": "Nothing needs this item yet. Sell it or recycle it.",
         "posh": "Posh",
+        "each": "{n}× each",
+        "at": "at {where}",
         "more": "+{n} more",
         "level": "{bench} level {level}",
         "slots": "{n} slots"

@@ -53,11 +53,22 @@
 
   .wn-outpost__ladder .wn-panel + .wn-panel { margin-top: 0; }
 
+  // Each level panel is a container: wide panels get three aligned columns, narrow ones stack.
+  .wn-outpost__panel { container-type: inline-size; }
+
   .wn-outpost__cols {
-    display: grid;
-    grid-template-columns: 260px minmax(0, 1fr) 260px;
-    gap: 40px;
-    align-items: start;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  @container (min-width: 820px) {
+    .wn-outpost__cols {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 40px;
+      align-items: start;
+    }
   }
 
   .wn-outpost__col-title {
@@ -152,7 +163,6 @@
   }
 
   @media (max-width: $breakpoint-mobile) {
-    .wn-outpost__cols,
     .wn-outpost__trades {
       grid-template-columns: minmax(0, 1fr);
       gap: 24px;

@@ -4,9 +4,63 @@ import { HowItWorks, ItemGrid, ItemTile, NeedsCard, Panel, TabIntro } from '../c
 import type { ItemRef, TileSpec } from '../components';
 import { toItemRef, type WhatsNewPageData } from '../hooks/useWhatsNewData';
 import { fragmentInfo, groupByModule } from './amplified/model';
+import type { WeaponRow } from './amplified/derive';
 
 export interface AmplifiedTabProps {
   data: WhatsNewPageData;
+}
+
+type RefFn = (slug: string) => ItemRef;
+
+function WeaponDetail({ weapon, ref_ }: { weapon: WeaponRow; ref_: RefFn }) {
+  const { t } = useLocale();
+  return (
+    <div className="wn-amp__detail">
+      <h4 className="wn-amp__detail-name">{ref_(weapon.fromItemId).name}</h4>
+      <div className="wn-amp__top">
+        <ItemTile item={ref_(weapon.fromItemId)} size={112} />
+        <span className="wn-amp__becomes">{t('whatsNew.amplified.becomes')}</span>
+        <ItemTile item={ref_(weapon.amplifiedId)} size={112} />
+        <div className="wn-amp__module">
+          <h5 className="wn-amp__heading">{t('whatsNew.common.needs')}</h5>
+          <ItemTile item={ref_(weapon.moduleId)} size={64} />
+        </div>
+      </div>
+      <table className="wn-amp__perks">
+        <thead>
+          <tr>
+            <th scope="col">{t('whatsNew.amplified.perk')}</th>
+            <th scope="col">{t('whatsNew.common.needs')}</th>
+            <th scope="col">{t('whatsNew.amplified.research')}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {weapon.perks.map((perk) => {
+            const research = perk.researchId ? ref_(perk.researchId) : undefined;
+            return (
+              <tr key={`${perk.name}-${perk.researchId ?? ''}`}>
+                <th scope="row" className="wn-amp__perk-name">{research?.name ?? perk.name}</th>
+                <td>
+                  <div className="wn-amp__cell">
+                    {perk.parts.map((p) => (
+                      <ItemTile key={p.itemId} item={ref_(p.itemId)} size={48} amount={p.quantity} />
+                    ))}
+                  </div>
+                </td>
+                <td>
+                  {research ? (
+                    <ItemTile item={research} size={48} />
+                  ) : (
+                    <span className="wn-amp__none">{t('whatsNew.amplified.noResearch')}</span>
+                  )}
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  );
 }
 
 export function AmplifiedTab({ data }: AmplifiedTabProps) {
@@ -16,8 +70,10 @@ export function AmplifiedTab({ data }: AmplifiedTabProps) {
 
   const groups = useMemo(() => groupByModule(data.amplification.structure, catalog), [data.amplification.structure, catalog]);
   const allWeapons = useMemo(() => groups.flatMap((g) => g.weapons), [groups]);
-  const [selectedId, setSelectedId] = useState<string | null>(null);
-  const selected = allWeapons.find((w) => w.baseId === selectedId) ?? allWeapons[0];
+  // undefined = nothing chosen yet, so the first weapon is open; null = the user closed the panel.
+  const [selectedId, setSelectedId] = useState<string | null | undefined>(undefined);
+  const openId = selectedId === undefined ? allWeapons[0]?.baseId ?? null : selectedId;
+  const selected = allWeapons.find((w) => w.baseId === openId) ?? allWeapons[0];
 
   const bench = data.benches.structure.benches.weapon_bench;
   const level4 = bench?.levels.find((l) => l.level === 4);
@@ -54,68 +110,26 @@ export function AmplifiedTab({ data }: AmplifiedTabProps) {
                 <ItemTile item={ref(moduleId)} size={64} hideName />
                 <h4 className="wn-amp__group-name">{ref(moduleId).name}</h4>
               </header>
-              <ItemGrid>
-                {weapons.map((w) => (
+              <ItemGrid
+                items={weapons}
+                getKey={(w) => w.baseId}
+                getDetailLabel={(w) => ref(w.fromItemId).name}
+                selectedKey={openId}
+                onSelectedKeyChange={setSelectedId}
+                renderTile={(w, { selected: isSelected, toggle }) => (
                   <ItemTile
-                    key={w.baseId}
                     item={{ ...ref(w.amplifiedId), name: ref(w.fromItemId).name }}
                     size={80}
-                    selected={selected?.baseId === w.baseId}
-                    onClick={() => setSelectedId(w.baseId)}
+                    selected={isSelected}
+                    onClick={toggle}
                   />
-                ))}
-              </ItemGrid>
+                )}
+                renderDetail={(w) => <WeaponDetail weapon={w} ref_={ref} />}
+              />
             </section>
           ))}
         </div>
       </Panel>
-
-      {selected && (
-        <Panel className="wn-amp__detail" highlighted title={ref(selected.fromItemId).name}>
-          <div className="wn-amp__top">
-            <ItemTile item={ref(selected.fromItemId)} size={112} />
-            <span className="wn-amp__becomes">{t('whatsNew.amplified.becomes')}</span>
-            <ItemTile item={ref(selected.amplifiedId)} size={112} />
-            <div className="wn-amp__module">
-              <h5 className="wn-amp__heading">{t('whatsNew.common.needs')}</h5>
-              <ItemTile item={ref(selected.moduleId)} size={64} />
-            </div>
-          </div>
-          <table className="wn-amp__perks">
-            <thead>
-              <tr>
-                <th scope="col">{t('whatsNew.amplified.perk')}</th>
-                <th scope="col">{t('whatsNew.common.needs')}</th>
-                <th scope="col">{t('whatsNew.amplified.research')}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {selected.perks.map((perk) => {
-                const research = perk.researchId ? ref(perk.researchId) : undefined;
-                return (
-                  <tr key={`${perk.name}-${perk.researchId ?? ''}`}>
-                    <th scope="row" className="wn-amp__perk-name">{research?.name ?? perk.name}</th>
-                    <td>
-                      <div className="wn-amp__cell">
-                        {perk.parts.map((p) => (
-                          <ItemTile key={p.itemId} item={ref(p.itemId)} size={48} amount={p.quantity} />
-                        ))}
-                      </div>
-                    </td>
-                    <td>
-                      {research ? (
-                        <ItemTile item={research} size={48} />
-                      ) : (
-                        <span className="wn-amp__none">{t('whatsNew.amplified.noResearch')}</span>
-                      )}
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </Panel>
-      )}
 
       {fragmentsId && (
         <p className="wn-amp__footer">
