@@ -1327,13 +1327,6 @@
   },
   "whatsNew": {
     "amplified": {
-      "rooms": "rooms",
-      "roomsHint": "Outpost rooms required to build Gunsmith 4",
-      "repair": "repair",
-      "module": "Module",
-      "recycleHint": "An Amplification Module recycles into Amplified Fragments",
-      "perkParts": "Perk parts",
-      "weapons": "weapons",
       "level": "level",
       "step1": "Upgrade the Gunsmith to level 4",
       "step2": "Combine a max-level weapon with an Amplification Module",
@@ -1352,22 +1345,13 @@
     "subtitle": "The 2.0 update at a glance for returning raiders",
     "loading": "Loading what’s new...",
     "navLabel": "What’s new tabs",
-    "placeholder": "Coming soon",
     "research": {
-      "acquire": "Acquire Research Points",
-      "station": "Research Station",
       "build": "Build at Posh",
       "level": "Level {n}",
-      "rooms": "{n} Outpost rooms",
       "blueprintCrafting": "Blueprint crafting",
       "designCrafting": "Design crafting",
       "amplifiedResearch": "Amplified research",
       "plans": "{n} plans",
-      "requiresLevel": "Requires station level {n}",
-      "craftable": "Craftable via research",
-      "findOnly": "Still to be found",
-      "show": "Show blueprints",
-      "hide": "Hide blueprints",
       "rpAmount": "{n} RP",
       "rpLevel": "{rp} RP · Level {n}",
       "step1": "Study items you find",
@@ -1388,73 +1372,10 @@
       "foundOnly": "Found only",
       "benchLevel": "{bench} level {n}"
     },
-    "section": {
-      "outpost": {
-        "title": "Outpost",
-        "subtitle": "Expand your Outpost with rooms, furniture and new stations"
-      },
-      "research": {
-        "title": "Research Station",
-        "subtitle": "Turn found items into Research Points, then research blueprints and designs"
-      },
-      "amplified": {
-        "title": "Amplified weapons",
-        "subtitle": "Upgrade max-level weapons into Amplified variants"
-      },
-      "stencils": {
-        "title": "Stencils",
-        "subtitle": "Weapon paint stencils, found in raids and applied with Stencil Parts"
-      },
-      "field-crafting": {
-        "title": "Field crafting",
-        "subtitle": "New in-raid crafts and the skills that unlock them"
-      },
-      "gateway": {
-        "title": "Emperor Gateway key",
-        "subtitle": "Craft the Emperor Gateway Conduit key"
-      },
-      "new-items": {
-        "title": "New items",
-        "subtitle": "Every new item and what to keep it for"
-      },
-      "new-uses": {
-        "title": "Old items, new uses",
-        "subtitle": "Old items with new uses"
-      },
-      "changes": {
-        "title": "What changed",
-        "subtitle": "Recipes, recycling, traders and stash: before and after"
-      }
-    },
-    "stencils": {
-      "counter": "stencils",
-      "hold": "Hold",
-      "partsHint": "Needed to apply any stencil",
-      "cost": "{count} Stencil Parts",
-      "foundInRaid": "Found in raid",
-      "compatible": "Compatible with"
-    },
-    "gateway": {
-      "requires": "Needs blueprint"
-    },
     "outpost": {
-      "expand": "Expand Outpost — Level {from} ▸ {to}",
-      "materials": "Materials",
-      "chooseRoom": "Pick a room",
       "unlocks": "Unlocks",
-      "rooms": "{count} rooms",
-      "canUpgrade": "Can upgrade {bench} to level {level}",
-      "newRoom": "New Outpost room",
       "special": "Special option",
-      "learnHere": "Learn blueprints and designs here",
       "furnitureTitle": "Furniture",
-      "pieces": "Pieces",
-      "design": "Design",
-      "designSource": "Found or researched",
-      "learn": "Learn",
-      "consumed": "Consumed at the Outpost",
-      "build": "Build",
-      "furniture": "Furniture",
       "celeste": "Celeste",
       "expansion": "Level {from} to {to}",
       "pickOne": "Pick one room",
@@ -1472,13 +1393,6 @@
       "furnStep2": "Learn it at the Outpost",
       "furnStep3": "Build it with Planks, Sheet Metal and more",
       "celesteText": "{name} now trades seeds for building materials."
-    },
-    "field-crafting": {
-      "before": "Before",
-      "after": "2.0",
-      "new": "New",
-      "newCrafts": "New in-raid crafts",
-      "unchanged": "{n} unchanged"
     },
     "changes": {
       "recipes": "Recipes",
@@ -1501,27 +1415,7 @@
       "newTier": "New"
     },
     "new-items": {
-      "all": "All",
-      "close": "Close",
-      "noUse": "No use",
       "recycles": "Recycles into",
-      "verdict": {
-        "keep": "Keep",
-        "quest": "Quest",
-        "optional": "Optional",
-        "sell": "Sell"
-      },
-      "group": {
-        "material": "Material",
-        "gadget": "Gadget",
-        "study": "Study",
-        "key": "Key",
-        "module": "Module",
-        "perkPart": "Perk part",
-        "quest": "Quest",
-        "blueprint": "Blueprint",
-        "other": "Other"
-      },
       "system": {
         "outpostRoom": "Room",
         "outpostFurniture": "Furniture",
@@ -1598,10 +1492,6 @@
         "level": "{bench} level {level}",
         "slots": "{n} slots"
       }
-    },
-    "new-uses": {
-      "showAll": "Show all {n}",
-      "showLess": "Show less"
     },
     "tabs": {
       "new-items": "New items",
