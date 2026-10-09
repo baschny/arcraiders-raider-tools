@@ -1,7 +1,7 @@
-import { nameOf } from '../../../../../shared/gamedata/loader';
-import type { Amount, Requirement } from '../../../../../shared/gamedata/types';
+import { nameOf } from '../../../../shared/gamedata/loader';
+import type { Amount, Requirement } from '../../../../shared/gamedata/types';
 import type { AmountRef, ItemRef } from '../../components';
-import { toItemRef, toUnlockedRef, type WhatsNewPageData } from '../../../hooks/useWhatsNewData';
+import { toItemRef, toUnlockedRef, type WhatsNewPageData } from '../../hooks/useWhatsNewData';
 
 export interface RoomOption {
   item: ItemRef;

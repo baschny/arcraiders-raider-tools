@@ -1,7 +1,7 @@
-import { nameOf } from '../../../../../shared/gamedata/loader';
-import type { Amount, WhatsNewChanges, WhatsNewTraderChange } from '../../../../../shared/gamedata/types';
+import { nameOf } from '../../../../shared/gamedata/loader';
+import type { Amount, WhatsNewChanges, WhatsNewTraderChange } from '../../../../shared/gamedata/types';
 import type { ItemRef } from '../../components';
-import { toItemRef, type WhatsNewPageData } from '../../../hooks/useWhatsNewData';
+import { toItemRef, type WhatsNewPageData } from '../../hooks/useWhatsNewData';
 
 /** Display order of trader diffs. */
 export const TRADER_ORDER = ['celeste', 'shani', 'tian_wen', 'apollo', 'lance'];

@@ -1,6 +1,6 @@
 import type { ItemCatalog } from '../../../../shared/gamedata/catalog';
 import type { AmplificationStructure } from '../../../../shared/gamedata/types';
-import { moduleOrder, weaponRows, type WeaponRow } from '../../legacy/sections/amplified/derive';
+import { moduleOrder, weaponRows, type WeaponRow } from './derive';
 
 export interface ModuleGroup {
   moduleId: string;

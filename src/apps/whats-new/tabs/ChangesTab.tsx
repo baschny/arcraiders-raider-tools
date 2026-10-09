@@ -5,7 +5,7 @@ import type { WhatsNewTradeLine } from '../../../shared/gamedata/types';
 import { CompareRows, ItemGrid, ItemTile, Panel, SegmentedControl, TabIntro } from '../components';
 import type { ItemRef } from '../components';
 import { toItemRef, type WhatsNewPageData } from '../hooks/useWhatsNewData';
-import { TRADER_PORTRAITS, anvilBaseName, orderTraders } from '../legacy/sections/changes/data';
+import { TRADER_PORTRAITS, anvilBaseName, orderTraders } from './changes/data';
 import {
   buildRecipeRows,
   buildRecyclingRows,

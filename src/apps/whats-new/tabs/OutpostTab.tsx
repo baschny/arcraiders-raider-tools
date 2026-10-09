@@ -11,7 +11,7 @@ import {
   furnitureCount,
   pickFurnitureExamples,
   type ExpansionTier,
-} from '../legacy/sections/outpost/data';
+} from './outpost/data';
 import { sortUnlocks, unlockBenchName } from './outpost/helpers';
 
 export interface OutpostTabProps {

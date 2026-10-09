@@ -5,7 +5,7 @@ import type {
   WhatsNewSystem,
   WhatsNewUse,
   WhatsNewVerdict,
-} from '../../../../../shared/gamedata/types';
+} from '../../../../shared/gamedata/types';
 import { SYSTEM_ORDER } from './systems';
 
 export const VERDICT_ORDER: WhatsNewVerdict[] = ['keep', 'quest', 'optional', 'sell'];

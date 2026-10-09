@@ -22,4 +22,4 @@ export { PurposeGroup } from './PurposeGroup';
 export type { PurposeGroupProps } from './PurposeGroup';
 export { SegmentedControl } from './SegmentedControl';
 export type { SegmentedControlProps, SegmentedOption } from './SegmentedControl';
-export type { ItemRef, TileSize, TileSpec, WhereRef } from './types';
+export type { AmountRef, ItemRef, TileSize, TileSpec, WhereRef } from './types';

@@ -18,3 +18,6 @@ export interface WhereRef {
   image?: string;
   label: string;
 }
+
+/** An item with an optional quantity. */
+export type AmountRef = { item: ItemRef; quantity?: number };

@@ -1,4 +1,4 @@
-import type { StencilsStructure } from '../../../../../shared/gamedata/types';
+import type { StencilsStructure } from '../../../../shared/gamedata/types';
 
 export const PARTS_ID = 'stencil_parts';
 const SLOT_PREFIX = 'stencil_slot_';

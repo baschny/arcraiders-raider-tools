@@ -1,6 +1,6 @@
 import { nameOf } from '../../../../shared/gamedata/loader';
 import type { WhatsNewPageData } from '../../hooks/useWhatsNewData';
-import type { UnlockRef } from '../../legacy/sections/outpost/data';
+import type { UnlockRef } from './data';
 
 /** Localized bench name of an unlock ("Research Station"), separate from its level. */
 export function unlockBenchName(data: WhatsNewPageData, unlock: UnlockRef): string {

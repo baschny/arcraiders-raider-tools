@@ -2,9 +2,9 @@ import type { StencilsStructure } from '../../../../shared/gamedata/types';
 import type { ItemCatalog } from '../../../../shared/gamedata/catalog';
 import { toItemRef } from '../../hooks/useWhatsNewData';
 import type { ItemRef } from '../../components';
-import { buildStencilGroups, type StencilEntry } from '../../legacy/sections/stencils/data';
+import { buildStencilGroups, type StencilEntry } from './stencilData';
 
-export { PARTS_ID, STENCIL_IMAGES } from '../../legacy/sections/stencils/data';
+export { PARTS_ID, STENCIL_IMAGES } from './stencilData';
 export type { StencilEntry };
 
 /** The 14 stencils grouped by Stencil Parts cost, ascending. */

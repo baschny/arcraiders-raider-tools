@@ -1,6 +1,6 @@
 import type { Amount, WhatsNewTradeLine } from '../../../../shared/gamedata/types';
 import type { CompareCost, CompareRow, ItemRef } from '../../components';
-import { anvilTier, buildAnvilRows, otherRecipes, romanTier, type AnvilRow } from '../../legacy/sections/changes/data';
+import { anvilTier, buildAnvilRows, otherRecipes, romanTier, type AnvilRow } from './data';
 import type { WhatsNewChanges } from '../../../../shared/gamedata/types';
 
 export type RefOf = (slug: string) => ItemRef;

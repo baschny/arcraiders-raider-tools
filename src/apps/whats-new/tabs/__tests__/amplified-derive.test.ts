@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
-import ampJson from '../../../../../../public/data/game/amplification.json';
+import ampJson from '../../../../../public/data/game/amplification.json';
 import { weaponRows, moduleOrder } from '../amplified/derive';
-import type { AmplificationStructure } from '../../../../../shared/gamedata/types';
+import type { AmplificationStructure } from '../../../../shared/gamedata/types';
 
 describe('amplified section data', () => {
   const rows = weaponRows(ampJson as unknown as AmplificationStructure);

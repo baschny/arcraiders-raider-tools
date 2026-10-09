@@ -3,7 +3,7 @@ import { Rocket, ScrollText, Package } from 'lucide-react';
 import { useLocale } from '../../../../shared/context/LocaleContext';
 import { ItemGrid, ItemTile, PurposeGroup, type ItemRef } from '../../components';
 import { toItemRef, type WhatsNewPageData } from '../../hooks/useWhatsNewData';
-import { capList, collapseRows, groupBySystem, mergeAmountRows, rarityRank } from '../../legacy/sections/shared/uses';
+import { capList, collapseRows, groupBySystem, mergeAmountRows, rarityRank } from './uses';
 import {
   GUNSMITH_BENCH,
   RESEARCH_BENCH,

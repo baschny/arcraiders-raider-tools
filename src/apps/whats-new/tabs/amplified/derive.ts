@@ -1,4 +1,4 @@
-import type { AmplificationStructure, AmplifiedWeapon, Cost } from '../../../../../shared/gamedata/types';
+import type { AmplificationStructure, AmplifiedWeapon, Cost } from '../../../../shared/gamedata/types';
 
 export interface PerkInfo {
   /** Perk name derived from the variant id (e.g. "Bigger Mag"). */
