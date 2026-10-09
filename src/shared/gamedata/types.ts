@@ -37,11 +37,16 @@ export type GameDomain =
 /** Text file of a domain: slug → text fields (all strings already localized, en fallback applied). */
 export type TextFile = Record<string, TextEntry>;
 
+/** Nested text maps (arbitrary depth), e.g. amplifications.<id>.effects.<index>. */
+export interface TextTree {
+  [key: string]: string | TextTree;
+}
+
 export interface TextEntry {
   name?: string;
   description?: string;
   /** Nested texts, e.g. quest objectives by node key, project phases/steps/goals by key. */
-  [field: string]: string | Record<string, string | Record<string, string>> | undefined;
+  [field: string]: string | TextTree | undefined;
 }
 
 // ---------------------------------------------------------------------------------------------
@@ -439,6 +444,32 @@ export interface AmplificationBranch {
   requires?: Requirement[];
 }
 
+/** One effect line of an Amplification. Text: `format` with `{0}` = value, under `effects.<index>`. */
+export interface AmplificationEffect {
+  /** Game text key (ID_ITEMSTATS_MODIFIERS_*), stable across locales. */
+  key: string;
+  value: number | null;
+  /** 'positive' | 'negative' as colored in the game UI. */
+  type: 'positive' | 'negative' | string;
+}
+
+/** An Amplification (game: "Ascended upgrade"): a module added to an Amplified weapon. */
+export interface Amplification {
+  /** Node id, e.g. `MoreReload`; equals the suffix of the variant items. Text: `amplifications.<id>.{name,description,effects.<index>}`. */
+  id: string;
+  /** Public url of the matching `amp-*` glyph (/images/whats-new/icons/…); absent when the texture has no glyph. */
+  icon?: string;
+  effects: AmplificationEffect[];
+  /** Amplification ids that must be applied first (the parent node). */
+  requires: string[];
+  /** Amplification ids that cannot be combined with this one (effective, inherited). */
+  excludes: string[];
+  /** Item that unlocks this Amplification; absent when it is available right after Amplifying. */
+  researchItemId?: string;
+  /** Cost (and gates) of adding this Amplification, from the graph edge that adds it. */
+  variantStep?: { cost: Cost; requires?: Requirement[] };
+}
+
 export interface AmplifiedWeapon {
   /** baseId of the weapon chain. */
   id: string;
@@ -447,6 +478,13 @@ export interface AmplifiedWeapon {
   variants?: string[];
   graph: Record<string, AmplificationBranch[]>;
   repairItemId?: string;
+  /** Largest valid selection of Amplifications. */
+  maxAmplifications: number;
+  /** The Amplified base weapon item (no Amplification applied). */
+  amplifiedItemId: string;
+  /** Effects of the Amplified base weapon itself. Text: `baseEffects.<index>`. */
+  baseEffects?: AmplificationEffect[];
+  amplifications: Amplification[];
 }
 
 export interface AmplificationStructure {

@@ -43,13 +43,36 @@ embark-api/arc-data ──► scripts/generate-game-data.ts ──► public/dat
 | `projects` | Projects with phases → steps → goals, unflattened, all goal types. Expeditions are numbered. |
 | `quests` | Quests with full objective trees (keys `'0'`, `'0.1'`, …), `category`, `requires` (quests, maps, raids) and `next`. |
 | `skilltree` | Skill nodes and choice groups. |
-| `amplification` | Amplified weapon variants and the upgrade graph. |
+| `amplification` | Amplified weapon variants and the upgrade graph, plus the Amplifications of each weapon (names, effects, requires/excludes, research, cost). |
 | `maps` | Map slugs and names, map event types. |
 | `classification` | Rarities (level + game color), stash groups in game order with subgroups, and the categories/themes used by shipped items with their parents. Texts: `rarities`, `groups`, `subgroups`, `categories`, `themes` (by id). |
 | `whats-new` | Version diff keyed by version slug (`versions.frozen-trail`): new items with verdicts and uses, gained/lost uses, keep paths, researchable vs. find-only blueprints/designs, field crafting, before/after changes. From `arc-data/whats-new/<version>.json`; no text file (names come from `items`). |
 
 `Requirement` turns the game's gate items into meaning. Its `kind` is one of `bench` (with
 `level`), `outpostLevel`, `quest`, `skill`, `unlock` (a learned blueprint or design) or `item`.
+
+### Amplifications
+
+`amplification.json` holds `weapons[baseSlug]` (the key of the weapon's tier chain, e.g. `il_toro_i`):
+`fromItemId`, `variants` and `graph` (the upgrade edges into the Amplified items), `repairItemId`, and, from
+`arc-data/amplifications.json` (optional; without it these fields are absent): `maxAmplifications`,
+`amplifiedItemId` (the Amplified base weapon), `baseEffects[]` and `amplifications[]`.
+
+An `Amplification` is `{ id, icon?, effects[], requires[], excludes[], researchItemId?, variantStep? }`:
+- `id` is the game's node id (`MoreReload`), equal to the suffix of the variant items. `requires` and `excludes`
+  list Amplification ids (`excludes` is effective: inherited from prerequisites). A selection is valid when it
+  satisfies both and has at most `maxAmplifications` entries.
+- `effects[]` is `{ key, value, type }`: `key` the game text key, `value` the number for `{0}` (or `null`),
+  `type` `positive`/`negative` (the UI color; a "negative" effect can be a benefit such as fewer pellets).
+- `icon` is the public url of the matching `amp-*` glyph (`/images/whats-new/icons/…`), mapped from the game
+  texture via `scripts/gamedata/ampIcons.ts` (shared with `scripts/generate-whats-new-icons.ts`).
+- `researchItemId` is the research item slug that unlocks the Amplification; absent when none is needed.
+- `variantStep` is the cost (and gates) of adding the Amplification, taken from the graph edge that adds it
+  (the same on every such edge; the generator reports `amplificationStepMismatch` otherwise).
+
+Texts are keyed by the weapon's base slug in `amplification.text.<locale>.json`:
+`<baseSlug>.amplifications.<id>.{name,description}`, `<baseSlug>.amplifications.<id>.effects.<index>` (the format
+string with `{0}`) and `<baseSlug>.baseEffects.<index>`; indexes are the positions in `effects` / `baseEffects`.
 
 ### Offer classification
 
