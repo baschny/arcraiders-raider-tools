@@ -228,13 +228,3 @@
     gap: $spacing-xs;
   }
 }
-
-.dashboard-whats-new-link {
-  color: $text-accent;
-  font-size: $font-md;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
-}

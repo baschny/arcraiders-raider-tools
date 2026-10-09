@@ -19,13 +19,13 @@ import { trackNavigation } from '../utils/analytics';
 
 const NAV_ITEMS = [
   { path: '/', icon: Home, labelKey: 'shared.tools.home' },
+  { path: '/whats-new', icon: Sparkles, labelKey: 'shared.tools.whatsNew' },
   { path: '/schedule', icon: Calendar, labelKey: 'shared.tools.schedule' },
   { path: '/craft-calculator', icon: Calculator, labelKey: 'shared.tools.craftCalculator' },
   { path: '/quests', icon: ListTodo, labelKey: 'shared.tools.quests' },
   { path: '/loot-helper', icon: Package, labelKey: 'shared.tools.lootHelper' },
   { path: '/quartermaster', icon: ClipboardList, labelKey: 'shared.tools.quartermaster' },
   { path: '/maps', icon: MapIcon, labelKey: 'shared.tools.maps' },
-  { path: '/whats-new', icon: Sparkles, labelKey: 'shared.tools.whatsNew' },
 ];
 
 const BOTTOM_NAV_ITEM = {

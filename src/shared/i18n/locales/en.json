@@ -90,8 +90,11 @@
       "intro": "Recent updates and additions across Raider Tools.",
       "affectedApps": "Affected tools",
       "affectedAppLink": "Open affected tool",
-      "allTools": "All tools",
-      "whatsNewLink": "What’s new in Frozen Trail"
+      "allTools": "All tools"
+    },
+    "whatsNew": {
+      "title": "What’s new in Frozen Trail",
+      "description": "Coming from 1.x? See what the new items are for, how research and Amplified weapons work, and what changed in recipes, recycling and traders."
     },
     "tools": {
       "schedule": "Visualize the ARC Raiders map events schedule in a better overview to plan your raids.",

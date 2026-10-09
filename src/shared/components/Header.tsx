@@ -17,13 +17,13 @@ import { useLocale } from '../context/LocaleContext';
 
 const TOOLS = [
   { path: '/', nameKey: 'app.name', icon: Home },
+  { path: '/whats-new', nameKey: 'shared.tools.whatsNew', icon: Sparkles },
   { path: '/schedule', nameKey: 'shared.tools.schedule', icon: Calendar },
   { path: '/craft-calculator', nameKey: 'shared.tools.craftCalculator', icon: Calculator },
   { path: '/quests', nameKey: 'shared.tools.quests', icon: ListTodo },
   { path: '/loot-helper', nameKey: 'shared.tools.lootHelper', icon: Package },
   { path: '/quartermaster', nameKey: 'shared.tools.quartermaster', icon: ClipboardList },
   { path: '/maps', nameKey: 'shared.tools.maps', icon: MapIcon },
-  { path: '/whats-new', nameKey: 'shared.tools.whatsNew', icon: Sparkles },
 ];
 
 const TOOLS_FOR_SWITCHER = TOOLS.filter((tool) => tool.path !== '/');

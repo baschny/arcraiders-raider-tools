@@ -2,6 +2,31 @@
   "locale": "en",
   "entries": [
     {
+      "date": "2026-10-09",
+      "apps": ["whats-new"],
+      "title": "New page: What’s new in Frozen Trail. For everyone coming from 1.x: what the new items are for, how in-round crafting, research and Amplified weapons work, and what changed in recipes, recycling, traders and the stash."
+    },
+    {
+      "date": "2026-10-08",
+      "apps": ["all"],
+      "title": "Updated for ARC Raiders 2.0 Frozen Trail: added the new items, resources, workbenches, crafting recipes and quests to Quartermaster, Quest Tracker, Craft Calculator and Looting Helper, and the Pendola Pass map with its events and new ARC enemies to the Schedule and Maps. Item data and icons now come straight from the game files.",
+      "highlights": [
+        "Frozen Trail items and recipes",
+        "Pendola Pass map",
+        "Frozen Trail quests"
+      ]
+    },
+    {
+      "date": "2026-10-07",
+      "apps": ["maps"],
+      "title": "New tool: Maps. Find where to loot an item and where ARC enemies spawn on every map and map condition. Works on phones too."
+    },
+    {
+      "date": "2026-09-08",
+      "apps": ["quartermaster"],
+      "title": "Updated for game patch 1.45: added the Ascending The Mountain project."
+    },
+    {
       "date": "2026-08-19",
       "apps": ["schedule", "craft-calculator", "loot-helper", "quartermaster"],
       "title": "Updated for game patch 1.42.0: Map schedule is now split per server region, and added 5 new items plus the Phantom Targets project (parts 1 and 2)."
