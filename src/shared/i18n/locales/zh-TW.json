@@ -79,7 +79,7 @@
       "lootHelper": "戰利品助手",
       "quartermaster": "軍需官",
       "maps": "地圖",
-      "whatsNew": "更新內容"
+      "whatsNew": "《冰凍小徑》物品"
     }
   },
   "dashboard": {
@@ -93,8 +93,8 @@
       "allTools": "All tools"
     },
     "whatsNew": {
-      "title": "冰凍小徑的更新內容",
-      "description": "從 1.x 回來了？看看新物品的用途、研究與增幅武器如何運作，以及配方、回收和商人有哪些變動。"
+      "title": "冰凍小徑的新物品",
+      "description": "從 1.x 回來了？看看每件新物品的用途、哪些舊物品有了新用途，以及配方、回收和商人有哪些變動。"
     },
     "tools": {
       "schedule": "以更清楚的方式顯示 ARC Raiders 地圖活動時程，方便你規劃突襲。",
@@ -1279,10 +1279,10 @@
       "lockedUnavailable": "此選擇下無法使用",
       "needsResearch": "需要研究"
     },
-    "title": "冰凍小徑的更新內容",
-    "subtitle": "給回歸掠手的 2.0 更新一覽",
-    "loading": "正在載入更新內容...",
-    "navLabel": "更新內容分頁",
+    "title": "冰凍小徑的新物品",
+    "subtitle": "2.0 新物品的用途與使用位置。新地圖、技能樹和 ARC 敵人不在此列。",
+    "loading": "正在載入新物品...",
+    "navLabel": "物品指南分頁",
     "research": {
       "build": "在哨站建造",
       "level": "{n} 級",
@@ -1511,7 +1511,7 @@
         "sentence": "新的劫掠中製作、武器貼膜，以及皇帝通道鑰匙。"
       },
       "changes": {
-        "title": "我已經熟悉的東西有哪些變動？",
+        "title": "我已經熟悉的物品有哪些變動？",
         "sentence": "配方、回收、商人庫存與儲藏箱大小，與 1.45 不同之處。"
       }
     },

@@ -79,7 +79,7 @@
       "lootHelper": "Assistente loot",
       "quartermaster": "Quartiermastro",
       "maps": "Mappe",
-      "whatsNew": "Novità"
+      "whatsNew": "Oggetti di Sentiero gelido"
     }
   },
   "dashboard": {
@@ -93,8 +93,8 @@
       "allTools": "All tools"
     },
     "whatsNew": {
-      "title": "Novità in Sentiero gelido",
-      "description": "Vieni dalla 1.x? Scopri a cosa servono i nuovi oggetti, come funzionano le ricerche e le armi amplificate e cosa è cambiato in ricette, riciclo e mercanti."
+      "title": "Nuovi oggetti in Sentiero gelido",
+      "description": "Vieni dalla 1.x? Scopri a cosa servono i nuovi oggetti, quali oggetti vecchi hanno nuovi usi e cosa è cambiato in ricette, riciclo e mercanti."
     },
     "tools": {
       "schedule": "Visualizza il programma eventi delle mappe di ARC Raiders in una vista più chiara per pianificare i raid.",
@@ -1279,10 +1279,10 @@
       "lockedUnavailable": "Non disponibile con questa scelta",
       "needsResearch": "Richiede la ricerca"
     },
-    "title": "Novità in Sentiero gelido",
-    "subtitle": "L'aggiornamento 2.0 in breve, per i Raider che tornano",
-    "loading": "Caricamento delle novità...",
-    "navLabel": "Schede delle novità",
+    "title": "Nuovi oggetti in Sentiero gelido",
+    "subtitle": "A cosa servono gli oggetti della 2.0 e dove usarli. La nuova mappa, l'albero delle abilità e i nemici ARC non sono inclusi qui.",
+    "loading": "Caricamento dei nuovi oggetti...",
+    "navLabel": "Schede della guida agli oggetti",
     "research": {
       "build": "Costruisci all'Avamposto",
       "level": "Livello {n}",
@@ -1511,7 +1511,7 @@
         "sentence": "Nuove creazioni durante il raid, stencil per armi e la chiave del Varco dell'Imperatore."
       },
       "changes": {
-        "title": "Cosa è cambiato per ciò che già conosci?",
+        "title": "Cosa è cambiato per gli oggetti che già conosci?",
         "sentence": "Ricette, riciclo, merce dei mercanti e dimensioni del deposito diverse dalla 1.45."
       }
     },

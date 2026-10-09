@@ -79,7 +79,7 @@
       "lootHelper": "Assistant de loot",
       "quartermaster": "Intendant",
       "maps": "Cartes",
-      "whatsNew": "Nouveautés"
+      "whatsNew": "Objets de Traînée gelée"
     }
   },
   "dashboard": {
@@ -93,8 +93,8 @@
       "allTools": "All tools"
     },
     "whatsNew": {
-      "title": "Nouveautés de Traînée gelée",
-      "description": "Vous revenez de la 1.x ? Découvrez à quoi servent les nouveaux objets, comment fonctionnent la recherche et les armes amplifiées, et ce qui a changé dans les recettes, le recyclage et chez les commerçants."
+      "title": "Nouveaux objets de Traînée gelée",
+      "description": "Vous revenez de la 1.x ? Découvrez à quoi servent les nouveaux objets, quels anciens objets ont de nouveaux usages, et ce qui a changé dans les recettes, le recyclage et chez les commerçants."
     },
     "tools": {
       "schedule": "Visualisez le planning des événements des cartes ARC Raiders avec une vue plus claire pour planifier vos raids.",
@@ -1279,10 +1279,10 @@
       "lockedUnavailable": "Non disponible avec ce choix",
       "needsResearch": "Recherche nécessaire"
     },
-    "title": "Nouveautés de Traînée gelée",
-    "subtitle": "La mise à jour 2.0 en un coup d’œil, pour les Raiders de retour",
-    "loading": "Chargement des nouveautés…",
-    "navLabel": "Onglets des nouveautés",
+    "title": "Nouveaux objets de Traînée gelée",
+    "subtitle": "À quoi servent les objets de la 2.0 et où les utiliser. La nouvelle carte, l’arbre de compétences et les ennemis ARC ne sont pas couverts ici.",
+    "loading": "Chargement des nouveaux objets…",
+    "navLabel": "Onglets du guide des objets",
     "research": {
       "build": "Construire à l’avant-poste",
       "level": "Niveau {n}",
@@ -1511,7 +1511,7 @@
         "sentence": "Nouvelles fabrications en partie, décorations d’armes et clé de la passerelle de l’Empereur."
       },
       "changes": {
-        "title": "Qu’est-ce qui a changé pour ce que je connais déjà ?",
+        "title": "Qu’est-ce qui a changé pour les objets que je connais déjà ?",
         "sentence": "Recettes, recyclage, stocks des commerçants et tailles de réserve qui diffèrent de la 1.45."
       }
     },

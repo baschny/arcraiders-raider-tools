@@ -79,7 +79,7 @@
       "lootHelper": "Asistente de botín",
       "quartermaster": "Intendente",
       "maps": "Mapas",
-      "whatsNew": "Novedades"
+      "whatsNew": "Objetos de Sendero helado"
     }
   },
   "dashboard": {
@@ -93,8 +93,8 @@
       "allTools": "All tools"
     },
     "whatsNew": {
-      "title": "Novedades de Sendero helado",
-      "description": "¿Vienes de la 1.x? Mira para qué sirven los objetos nuevos, cómo funcionan la investigación y las armas amplificadas, y qué ha cambiado en las recetas, el reciclaje y los comerciantes."
+      "title": "Objetos nuevos de Sendero helado",
+      "description": "¿Vienes de la 1.x? Mira para qué sirven los objetos nuevos, qué objetos antiguos tienen usos nuevos y qué ha cambiado en las recetas, el reciclaje y los comerciantes."
     },
     "tools": {
       "schedule": "Visualiza el horario de eventos de los mapas de ARC Raiders en una vista más clara para planificar tus incursiones.",
@@ -1279,10 +1279,10 @@
       "lockedUnavailable": "No disponible con esta opción",
       "needsResearch": "Necesita investigación"
     },
-    "title": "Novedades de Sendero helado",
-    "subtitle": "La actualización 2.0 de un vistazo, para los raiders que vuelven",
-    "loading": "Cargando novedades...",
-    "navLabel": "Pestañas de novedades",
+    "title": "Objetos nuevos de Sendero helado",
+    "subtitle": "Para qué sirven los objetos de la 2.0 y dónde los usas. El nuevo mapa, el árbol de habilidades y los enemigos ARC no están incluidos aquí.",
+    "loading": "Cargando los objetos nuevos...",
+    "navLabel": "Pestañas de la guía de objetos",
     "research": {
       "build": "Construir en el Puesto",
       "level": "Nivel {n}",
@@ -1511,7 +1511,7 @@
         "sentence": "Nuevas fabricaciones durante la incursión, modelos de armas y la llave del Acceso del emperador."
       },
       "changes": {
-        "title": "¿Qué ha cambiado en lo que ya conozco?",
+        "title": "¿Qué ha cambiado en los objetos que ya conozco?",
         "sentence": "Recetas, reciclaje, stock de comerciantes y tamaños de alijo que difieren de la 1.45."
       }
     },

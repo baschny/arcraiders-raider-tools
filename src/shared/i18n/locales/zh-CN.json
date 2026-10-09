@@ -79,7 +79,7 @@
       "lootHelper": "战利品助手",
       "quartermaster": "军需官",
       "maps": "地图",
-      "whatsNew": "更新内容"
+      "whatsNew": "《霜痕小径》物品"
     }
   },
   "dashboard": {
@@ -93,8 +93,8 @@
       "allTools": "所有工具"
     },
     "whatsNew": {
-      "title": "《霜痕小径》更新内容",
-      "description": "从 1.x 版本回归？了解新物品的用途、研究与增强武器的运作方式，以及配方、回收和商人的变化。"
+      "title": "《霜痕小径》新物品",
+      "description": "从 1.x 版本回归？了解每件新物品的用途、哪些旧物品有了新用途，以及配方、回收和商人方面的变化。"
     },
     "tools": {
       "schedule": "以更清晰的视图展示 ARC Raiders 地图事件时间表，方便你规划对局。",
@@ -1279,10 +1279,10 @@
       "lockedUnavailable": "当前选择下不可用",
       "needsResearch": "需要研究"
     },
-    "title": "《霜痕小径》更新内容",
-    "subtitle": "为回归奇袭者准备的 2.0 更新速览",
-    "loading": "正在加载更新内容...",
-    "navLabel": "更新内容标签页",
+    "title": "《霜痕小径》新物品",
+    "subtitle": "2.0 新物品的用途及使用位置。新地图、技能树和 ARC 敌人不在此列。",
+    "loading": "正在加载新物品...",
+    "navLabel": "物品指南标签页",
     "research": {
       "build": "在哨站建造",
       "level": "{n} 级",

@@ -79,7 +79,7 @@
       "lootHelper": "Yağma Yardımcısı",
       "quartermaster": "Levazım",
       "maps": "Haritalar",
-      "whatsNew": "Yenilikler"
+      "whatsNew": "Donmuş Patika eşyaları"
     }
   },
   "dashboard": {
@@ -93,8 +93,8 @@
       "allTools": "All tools"
     },
     "whatsNew": {
-      "title": "Donmuş Patika'daki yenilikler",
-      "description": "1.x sürümünden mi geliyorsun? Yeni eşyaların ne işe yaradığını, araştırma ve Güçlendirilmiş silahların nasıl çalıştığını ve tarifler, geri dönüştürme ile tüccarlarda neyin değiştiğini gör."
+      "title": "Donmuş Patika'daki yeni eşyalar",
+      "description": "1.x sürümünden mi geliyorsun? Her yeni eşyanın ne işe yaradığını, hangi eski eşyaların yeni kullanımlar kazandığını ve tariflerde, geri dönüştürmede ve tüccarlarda neyin değiştiğini gör."
     },
     "tools": {
       "schedule": "ARC Raiders harita etkinlik takvimini daha iyi bir görünümle göstererek baskınlarını planlamanı sağlar.",
@@ -1279,10 +1279,10 @@
       "lockedUnavailable": "Bu seçimle kullanılamaz",
       "needsResearch": "Araştırma gerekir"
     },
-    "title": "Donmuş Patika'daki yenilikler",
-    "subtitle": "Geri dönen raider'lar için 2.0 güncellemesine genel bakış",
-    "loading": "Yenilikler yükleniyor...",
-    "navLabel": "Yenilikler sekmeleri",
+    "title": "Donmuş Patika'daki yeni eşyalar",
+    "subtitle": "2.0 eşyalarının ne işe yaradığı ve nerede kullanıldığı. Yeni harita, yetenek ağacı ve ARC düşmanları burada yer almıyor.",
+    "loading": "Yeni eşyalar yükleniyor...",
+    "navLabel": "Eşya rehberi sekmeleri",
     "research": {
       "build": "Karakol'da inşa et",
       "level": "Seviye {n}",
@@ -1511,7 +1511,7 @@
         "sentence": "Yeni raid içi üretimler, silah çıkartmaları ve İmparator Ağ Geçidi anahtarı."
       },
       "changes": {
-        "title": "Bildiğim şeylerde neler değişti?",
+        "title": "Bildiğim eşyalarda neler değişti?",
         "sentence": "1.45'ten farklı tarifler, geri dönüştürme, tüccar stokları ve zula boyutları."
       }
     },

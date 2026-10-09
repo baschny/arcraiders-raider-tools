@@ -79,7 +79,7 @@
       "lootHelper": "Pomocnik łupu",
       "quartermaster": "Kwatermistrz",
       "maps": "Mapy",
-      "whatsNew": "Co nowego"
+      "whatsNew": "Przedmioty w Mroźnym szlaku"
     }
   },
   "dashboard": {
@@ -93,8 +93,8 @@
       "allTools": "All tools"
     },
     "whatsNew": {
-      "title": "Co nowego w Mroźnym szlaku",
-      "description": "Wracasz z wersji 1.x? Sprawdź, do czego służą nowe przedmioty, jak działają badania i wzmocnione bronie oraz co zmieniło się w przepisach, przetwarzaniu i u handlarzy."
+      "title": "Nowe przedmioty w Mroźnym szlaku",
+      "description": "Wracasz z wersji 1.x? Sprawdź, do czego służą nowe przedmioty, które stare przedmioty dostały nowe zastosowania i co zmieniło się w przepisach, przetwarzaniu i u handlarzy."
     },
     "tools": {
       "schedule": "Zobacz harmonogram wydarzeń map ARC Raiders w czytelniejszym widoku i łatwiej planuj rajdy.",
@@ -1279,10 +1279,10 @@
       "lockedUnavailable": "Niedostępne przy tym wyborze",
       "needsResearch": "Wymaga badań"
     },
-    "title": "Co nowego w Mroźnym szlaku",
-    "subtitle": "Aktualizacja 2.0 w skrócie dla powracających łupieżców",
-    "loading": "Ładowanie informacji o nowościach...",
-    "navLabel": "Karty: co nowego",
+    "title": "Nowe przedmioty w Mroźnym szlaku",
+    "subtitle": "Do czego służą przedmioty z aktualizacji 2.0 i gdzie ich używasz. Nowa mapa, drzewko umiejętności i wrogowie ARC nie są tu omówieni.",
+    "loading": "Ładowanie nowych przedmiotów...",
+    "navLabel": "Karty przewodnika po przedmiotach",
     "research": {
       "build": "Zbuduj na posterunku",
       "level": "Poziom {n}",
@@ -1511,7 +1511,7 @@
         "sentence": "Nowe wytwory używane podczas rajdu, szablony broni i klucz do Bramy cesarza."
       },
       "changes": {
-        "title": "Co zmieniło się w rzeczach, które już znasz?",
+        "title": "Co zmieniło się w znanych przedmiotach?",
         "sentence": "Przepisy, przetwarzanie, asortyment handlarzy i rozmiary skrytek, które różnią się od wersji 1.45."
       }
     },
