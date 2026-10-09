@@ -1,3 +1,101 @@
 @use '../../../shared/styles/variables' as *;
 
 // Styles of the research tab (.wn-tab-research).
+.wn-tab-research {
+  .wn-research__points {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .wn-research__points .wn-tile { width: 140px; }
+
+  .wn-research__levels {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+
+    @media (max-width: $breakpoint-mobile) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  .wn-research__level {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .wn-research__level-img { width: 80px; height: 80px; object-fit: contain; }
+
+  .wn-research__level-name {
+    margin: 0;
+    font-size: $font-2xl;
+    font-weight: 700;
+    color: $text-primary;
+  }
+
+  .wn-research__level-cost {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    min-height: 96px;
+    align-content: flex-start;
+  }
+
+  .wn-research__level-rooms {
+    margin-top: auto;
+    font-size: $font-lg;
+    color: $text-secondary;
+  }
+
+  .wn-research__tracks {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+
+    @media (max-width: $breakpoint-mobile) { grid-template-columns: 1fr; }
+
+    .wn-panel + .wn-panel { margin-top: 0; }
+  }
+
+  .wn-research__track {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+
+    &--locked { opacity: 0.7; }
+  }
+
+  .wn-research__track-count {
+    font-size: $font-3xl;
+    font-weight: 700;
+    color: $text-primary;
+  }
+
+  .wn-research__track-note {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: $font-lg;
+    color: $text-secondary;
+  }
+
+  .wn-research__browse { display: flex; flex-direction: column; gap: 24px; }
+
+  .wn-research__browse-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .wn-research__browse-title {
+    margin: 0;
+    font-size: $font-3xl;
+    color: $text-primary;
+  }
+}
