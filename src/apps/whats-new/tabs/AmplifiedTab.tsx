@@ -18,23 +18,18 @@ type RefFn = (slug: string) => ItemRef;
 const amplified = (item: ItemRef): ItemRef => ({ ...item, rarity: 'Amplified' });
 
 function WeaponDetail({ weapon, ref_, structure, text }: { weapon: WeaponRow; ref_: RefFn; structure?: AmplifiedWeapon; text?: TextTree }) {
-  const { t } = useLocale();
   const base = ref_(weapon.fromItemId);
+  const result = amplified(ref_(weapon.amplifiedId));
   return (
     <div className="wn-amp__detail">
-      <header className="wn-amp__top">
-        <ItemTile item={base} size={64} hideName />
-        <span className="wn-amp__becomes">{t('whatsNew.amplified.becomes')}</span>
-        <ItemTile item={amplified(ref_(weapon.amplifiedId))} size={64} hideName />
-        <div className="wn-amp__title">
-          <h4 className="wn-amp__detail-name">{base.name}</h4>
-          <div className="wn-amp__module">
-            <span className="wn-amp__heading">{t('whatsNew.common.needs')}</span>
-            <ItemTile item={ref_(weapon.moduleId)} size={48} />
-          </div>
-        </div>
-      </header>
-      {structure && <AmplificationPicker key={weapon.baseId} weapon={structure} text={text} ref_={ref_} />}
+      <div className="wn-amp__flow">
+        <ItemTile item={base} size={64} />
+        <span className="wn-amp__op" aria-hidden="true">+</span>
+        <ItemTile item={ref_(weapon.moduleId)} size={64} />
+        <span className="wn-amp__op" aria-hidden="true">→</span>
+        <ItemTile item={result} size={64} />
+      </div>
+      {structure && <AmplificationPicker key={weapon.baseId} weapon={structure} text={text} ref_={ref_} root={result} />}
     </div>
   );
 }

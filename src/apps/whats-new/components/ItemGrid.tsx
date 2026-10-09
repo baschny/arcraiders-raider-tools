@@ -71,8 +71,11 @@ export function ItemGrid<T>(props: ItemGridProps<T>) {
         ];
         if (idx === panelAfter && renderDetail) {
           const open = items[selIndex];
+          // Lets the panel square the corner under a tab that sits at the grid's left or right edge.
+          const col = selIndex % cols;
+          const edge = [col === 0 ? 'wn-detail--first' : '', col === cols - 1 ? 'wn-detail--last' : ''].filter(Boolean).join(' ');
           nodes.push(
-            <DetailPanel key={`detail-${selected}`} title={getDetailLabel?.(open) ?? getKey(open)} onClose={() => select(null)}>
+            <DetailPanel key={`detail-${selected}`} className={edge} title={getDetailLabel?.(open) ?? getKey(open)} onClose={() => select(null)}>
               {renderDetail(open, () => select(null))}
             </DetailPanel>,
           );

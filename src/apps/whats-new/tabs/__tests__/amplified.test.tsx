@@ -39,6 +39,8 @@ describe('AmplifiedTab', () => {
     expect(out).toContain('aria-pressed="false"');
     expect(out).not.toContain('wn-amp__table');
     expect(out).toContain('rarity-amplified');
-    expect(out).not.toContain('→');
+    expect(out).not.toContain('Choose up to');
+    expect(out).not.toContain('wn-pick__summary');
+    expect(out).not.toContain('wn-pick__reset');
   });
 });

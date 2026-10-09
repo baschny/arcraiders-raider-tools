@@ -4,6 +4,13 @@
 .wn-tab-amplified {
   // The opened weapon card reads as the tab of the selected tile: the tile takes the card's colour
   // and frame (open at the bottom) and a strip bridges the gap to the card's top edge.
+  // Weapon tabs: the tile fills its grid cell (so a tab at the first or last column lines up with the
+  // card edge) and the space above the icon equals the space left and right of it.
+  .wn-amp__group .wn-grid__cell > .wn-tile {
+    max-width: none;
+    padding-top: max(4px, calc((100% - var(--item-icon-size)) / 2));
+  }
+
   .wn-tile.is-selected {
     position: relative;
     z-index: 1;
@@ -25,6 +32,9 @@
 
   .wn-detail {
     position: relative;
+    // A tab at the left or right edge continues the card's side, so that corner is square.
+    &--first { border-top-left-radius: 0; }
+    &--last { border-top-right-radius: 0; }
     padding: 16px;
     border: 1px solid $text-accent;
     box-shadow: none;
@@ -40,13 +50,10 @@
     &__group-name { margin: 0; font-size: $font-2xl; color: $text-primary; }
 
     &__detail { display: flex; flex-direction: column; gap: 16px; }
-    &__top { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; padding-right: 40px; }
-    &__top > .wn-tile { width: 64px; }
-    &__title { display: flex; flex-direction: column; gap: 4px; min-width: 0; margin-left: 8px; }
-    &__detail-name { margin: 0; font-size: $font-2xl; font-weight: 700; color: $text-primary; }
-    &__becomes { font-size: $font-lg; color: $text-secondary; }
-    &__module { display: flex; align-items: center; gap: 8px; }
-    &__heading { font-size: $font-lg; font-weight: 600; color: $text-secondary; }
+    // Workflow: weapon + module -> Amplified weapon, icons on one line, names below.
+    &__flow { display: flex; align-items: flex-start; gap: 4px 8px; padding-right: 40px; }
+    &__flow > .wn-tile { width: 96px; }
+    &__op { display: flex; align-items: center; justify-content: center; align-self: flex-start; height: 72px; min-width: 16px; font-size: $font-xl; color: $text-secondary; }
 
     &__footer {
       display: flex;
@@ -64,85 +71,23 @@
     flex-direction: column;
     gap: 16px;
 
-    &__head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 16px; }
-    &__title { margin: 0; font-size: $font-xl; font-weight: 700; color: $text-primary; }
-    &__count { margin-left: auto; font-size: $font-lg; color: $text-secondary; }
-    &__reset {
-      padding: 4px 12px;
-      font: inherit;
-      font-size: $font-lg;
-      color: $text-primary;
-      background: none;
-      border: 1px solid $border-light;
-      border-radius: 6px;
-      cursor: pointer;
-
-      &:hover { border-color: $rarity-amplified; }
-    }
-
     &__cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 
+    // Static cards: choosing only recolours the border, a blocked card is slightly faded.
     &__card {
-      position: relative;
       background: $bg-secondary;
       border: 2px solid $border-default;
       border-radius: 8px;
-      transition: border-color 0.15s;
+      transition: border-color 0.15s, opacity 0.15s;
 
-      &:not(.is-locked):hover { border-color: $border-lighter; }
-      // chosen wins over hover
-      &.is-chosen, &.is-chosen:hover { border-color: $rarity-amplified; background: rgba($rarity-amplified, 0.08); }
-      &.is-locked .wn-pick__body > :not(.wn-pick__reason) { opacity: 0.45; }
-      &.is-locked .wn-pick__select { cursor: not-allowed; }
+      &.is-hover { border-color: $border-lighter; }
+      &.is-chosen, &.is-chosen.is-hover { border-color: $rarity-amplified; }
+      &.is-blocked { opacity: 0.6; }
     }
-
-    // The whole card is the button; the content sits above it and lets clicks through.
-    &__select {
-      position: absolute;
-      inset: 0;
-      padding: 0;
-      background: none;
-      border: 0;
-      border-radius: 6px;
-      cursor: pointer;
-
-      &:focus-visible { outline: 2px solid $rarity-amplified; outline-offset: 2px; }
-    }
-    &__body {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      padding: 12px;
-      pointer-events: none;
-    }
-    &__more { pointer-events: auto; }
+    &__body { display: flex; flex-direction: column; gap: 8px; padding: 12px; }
 
     &__top { display: flex; align-items: center; gap: 12px; }
-    &__glyph {
-      display: grid;
-      flex: none;
-      place-items: center;
-      width: 48px;
-      height: 48px;
-      color: #fff;
-      background: rgba($rarity-amplified, 0.28);
-      border: 1px solid rgba($rarity-amplified, 0.6);
-      border-radius: 6px;
-    }
-    &__glyph-img {
-      width: 32px;
-      height: 32px;
-      background-color: currentColor;
-      mask-size: contain;
-      mask-repeat: no-repeat;
-      mask-position: center;
-      -webkit-mask-size: contain;
-      -webkit-mask-repeat: no-repeat;
-      -webkit-mask-position: center;
-    }
     &__name { flex: 1; min-width: 0; font-size: $font-xl; font-weight: 600; color: $text-primary; }
-    &__check { font-size: $font-xl; font-weight: 700; color: $rarity-amplified; }
     &__desc { margin: 0; font-size: $font-lg; color: $text-light; }
 
     &__effects { display: flex; flex-direction: column; gap: 2px; margin: 0; padding: 0; list-style: none; font-size: $font-lg; }
@@ -171,7 +116,6 @@
       border: 1px solid $border-default;
       border-radius: 999px;
     }
-    &__reason { margin: 0; font-size: $font-lg; font-weight: 600; color: $rarity-amplified; }
 
     &__needs { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; }
     &__label { min-width: 64px; font-size: $font-lg; font-weight: 600; color: $text-secondary; }
@@ -179,21 +123,152 @@
     &__needs .wn-tile { width: auto; }
     &__none { font-size: $font-lg; color: $text-secondary; }
 
-    &__summary {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      padding: 12px;
-      background: $bg-secondary;
-      border: 1px solid $rarity-amplified;
-      border-radius: 8px;
-    }
-    &__build { margin: 0; font-size: $font-xl; color: $text-primary; }
-    &__variant { color: $text-secondary; }
-
     @media (max-width: $breakpoint-mobile) {
       &__cards { grid-template-columns: 1fr; }
-      &__count { margin-left: 0; }
     }
+  }
+
+  // ---- Amplification graph ------------------------------------------------------------------
+  // All sizes derive from three variables, so the mobile override only has to change those.
+  .wn-graph {
+    --node: 56px;
+    --px: 112px; // column pitch
+    --py: 72px; // row pitch
+    --line: 3px;
+    max-width: 100%;
+    overflow-x: auto;
+
+    &__canvas {
+      position: relative;
+      width: calc((var(--cols) - 1) * var(--px) + var(--node));
+      height: calc((var(--rows) - 1) * var(--py) + var(--node));
+      margin: 4px;
+    }
+
+    &__root {
+      position: absolute;
+      left: calc(var(--c) * var(--px));
+      top: calc(var(--r) * var(--py));
+      width: var(--node);
+      height: var(--node);
+      z-index: 1;
+      .wn-tile { width: var(--node); padding: 4px; }
+    }
+
+    // One edge = up to three line segments; the parent's right side to the child's left side.
+    &__edge {
+      --x1: calc(var(--c1) * var(--px) + var(--node));
+      --x2: calc(var(--c2) * var(--px));
+      --xm: calc(var(--x2) - (var(--px) - var(--node)) / 2);
+      --y1: calc(var(--r1) * var(--py) + var(--node) / 2 - var(--line) / 2);
+      --y2: calc(var(--r2) * var(--py) + var(--node) / 2 - var(--line) / 2);
+      position: absolute;
+      inset: 0;
+      color: #4a4f57;
+      pointer-events: none;
+
+      > span { position: absolute; background: currentColor; }
+      &.is-chosen { color: #e9e4d8; }
+      &.is-blocked { color: #c0392b; }
+      &.is-hover:not(.is-chosen):not(.is-blocked) { color: #6c727c; }
+    }
+    &__h1 { left: var(--x1); top: var(--y1); width: calc(var(--x2) - var(--x1)); height: var(--line); }
+    // With a row change the first and last segments stop at the bend instead.
+    &__h1.is-bent { width: calc(var(--xm) - var(--x1) + var(--line)); }
+    &__v {
+      left: calc(var(--xm));
+      top: min(var(--y1), var(--y2));
+      width: var(--line);
+      height: calc(max(var(--y1), var(--y2)) - min(var(--y1), var(--y2)) + var(--line));
+    }
+    &__h2 { left: var(--xm); top: var(--y2); width: calc(var(--x2) - var(--xm)); height: var(--line); }
+  }
+
+  // ---- Hexagon (pointy top and bottom, flat sides) -------------------------------------------
+  .wn-hex {
+    --hex: var(--node, 56px);
+    --hex-bg: #3b3f46;
+    --hex-edge: #5a606a;
+    --hex-clip: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+    position: absolute;
+    left: calc(var(--c) * var(--px));
+    top: calc(var(--r) * var(--py));
+    width: var(--hex);
+    height: var(--hex);
+    color: #fff;
+    z-index: 1;
+
+    &__shape {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      color: inherit;
+      background: var(--hex-edge);
+      border: 0;
+      clip-path: var(--hex-clip);
+      cursor: pointer;
+      transition: background 0.15s;
+
+      // inner fill, inset to leave a 2px edge
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 2px;
+        background: var(--hex-bg);
+        clip-path: var(--hex-clip);
+        transition: background 0.15s;
+      }
+      &:focus-visible { outline: 2px solid $rarity-amplified; outline-offset: -2px; }
+    }
+
+    &__glyph {
+      position: relative;
+      width: 56%;
+      height: 56%;
+      background-color: currentColor;
+      mask-size: contain;
+      mask-repeat: no-repeat;
+      mask-position: center;
+      -webkit-mask-size: contain;
+      -webkit-mask-repeat: no-repeat;
+      -webkit-mask-position: center;
+    }
+
+    &.is-hover:not(.is-chosen) { --hex-bg: #4a4f57; --hex-edge: #8a909a; }
+    &.is-chosen { --hex-bg: #{$rarity-amplified}; --hex-edge: #{lighten($rarity-amplified, 12%)}; }
+    &.is-locked .wn-hex__shape { cursor: default; }
+    &.is-blocked { --hex-bg: #2b2e33; --hex-edge: #3c4047; color: #7b818b; }
+
+    // Small info badge on top of a hexagon whose Amplification needs research.
+    &__lock {
+      position: absolute;
+      top: -4px;
+      left: 50%;
+      display: grid;
+      place-items: center;
+      width: 18px;
+      height: 18px;
+      color: #fff;
+      background: #14161a;
+      border: 1px solid #5a606a;
+      border-radius: 50%;
+      transform: translateX(-50%);
+    }
+
+    // The small hexagon of a card: static, in flow.
+    &--small {
+      --hex: 40px;
+      position: static;
+      flex: none;
+      .wn-hex__shape { cursor: default; }
+    }
+  }
+  .wn-pick__card.is-chosen .wn-hex--small { --hex-bg: #{$rarity-amplified}; --hex-edge: #{lighten($rarity-amplified, 12%)}; }
+
+  @media (max-width: $breakpoint-mobile) {
+    .wn-graph { --node: 44px; --px: 76px; --py: 56px; --line: 2px; }
   }
 }
