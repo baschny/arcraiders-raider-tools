@@ -35,8 +35,9 @@ describe('AmplifiedTab', () => {
     expect(out).toContain('wn-needs');
     expect(out.match(/wn-amp__group"/g)).toHaveLength(5);
     expect(out.match(/wn-tile--80[^"]*is-selected/g)).toHaveLength(1);
-    expect(out).toContain('wn-amp__perks');
-    expect(out).toContain('scope="col"');
+    expect(out).toContain('wn-amp__table');
+    expect(out).toContain('role="columnheader"');
+    expect(out).toContain('rarity-amplified');
     expect(out).not.toContain('→');
   });
 });

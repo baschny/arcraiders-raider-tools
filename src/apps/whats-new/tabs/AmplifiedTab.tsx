@@ -12,53 +12,53 @@ export interface AmplifiedTabProps {
 
 type RefFn = (slug: string) => ItemRef;
 
+/** Amplified variants always carry the Amplified (orange) rarity frame. */
+const amplified = (item: ItemRef): ItemRef => ({ ...item, rarity: 'Amplified' });
+
 function WeaponDetail({ weapon, ref_ }: { weapon: WeaponRow; ref_: RefFn }) {
   const { t } = useLocale();
+  const base = ref_(weapon.fromItemId);
   return (
     <div className="wn-amp__detail">
-      <h4 className="wn-amp__detail-name">{ref_(weapon.fromItemId).name}</h4>
-      <div className="wn-amp__top">
-        <ItemTile item={ref_(weapon.fromItemId)} size={112} />
+      <header className="wn-amp__top">
+        <ItemTile item={base} size={64} hideName />
         <span className="wn-amp__becomes">{t('whatsNew.amplified.becomes')}</span>
-        <ItemTile item={ref_(weapon.amplifiedId)} size={112} />
-        <div className="wn-amp__module">
-          <h5 className="wn-amp__heading">{t('whatsNew.common.needs')}</h5>
-          <ItemTile item={ref_(weapon.moduleId)} size={64} />
+        <ItemTile item={amplified(ref_(weapon.amplifiedId))} size={64} hideName />
+        <div className="wn-amp__title">
+          <h4 className="wn-amp__detail-name">{base.name}</h4>
+          <div className="wn-amp__module">
+            <span className="wn-amp__heading">{t('whatsNew.common.needs')}</span>
+            <ItemTile item={ref_(weapon.moduleId)} size={48} />
+          </div>
         </div>
+      </header>
+      <div className="wn-amp__table" role="table">
+        <div className="wn-amp__row wn-amp__row--head" role="row">
+          <span role="columnheader">{t('whatsNew.amplified.amplification')}</span>
+          <span role="columnheader">{t('whatsNew.common.needs')}</span>
+          <span role="columnheader">{t('whatsNew.amplified.research')}</span>
+        </div>
+        {weapon.amplifications.map((amp) => {
+          const research = amp.researchId ? ref_(amp.researchId) : undefined;
+          return (
+            <div className="wn-amp__row" role="row" key={`${amp.name}-${amp.researchId ?? ''}`}>
+              <span className="wn-amp__amp-name" role="rowheader">{research?.name ?? amp.name}</span>
+              <div className="wn-amp__cell" role="cell" data-label={t('whatsNew.common.needs')}>
+                {amp.parts.map((p) => (
+                  <ItemTile key={p.itemId} item={ref_(p.itemId)} size={48} amount={p.quantity} />
+                ))}
+              </div>
+              <div className="wn-amp__cell" role="cell" data-label={t('whatsNew.amplified.research')}>
+                {research ? (
+                  <ItemTile item={research} size={48} />
+                ) : (
+                  <span className="wn-amp__none">{t('whatsNew.amplified.noResearch')}</span>
+                )}
+              </div>
+            </div>
+          );
+        })}
       </div>
-      <table className="wn-amp__perks">
-        <thead>
-          <tr>
-            <th scope="col">{t('whatsNew.amplified.perk')}</th>
-            <th scope="col">{t('whatsNew.common.needs')}</th>
-            <th scope="col">{t('whatsNew.amplified.research')}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {weapon.perks.map((perk) => {
-            const research = perk.researchId ? ref_(perk.researchId) : undefined;
-            return (
-              <tr key={`${perk.name}-${perk.researchId ?? ''}`}>
-                <th scope="row" className="wn-amp__perk-name">{research?.name ?? perk.name}</th>
-                <td>
-                  <div className="wn-amp__cell">
-                    {perk.parts.map((p) => (
-                      <ItemTile key={p.itemId} item={ref_(p.itemId)} size={48} amount={p.quantity} />
-                    ))}
-                  </div>
-                </td>
-                <td>
-                  {research ? (
-                    <ItemTile item={research} size={48} />
-                  ) : (
-                    <span className="wn-amp__none">{t('whatsNew.amplified.noResearch')}</span>
-                  )}
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
     </div>
   );
 }
@@ -84,7 +84,7 @@ export function AmplifiedTab({ data }: AmplifiedTabProps) {
 
   const steps = [
     { image: level4?.icon ?? undefined, text: t('whatsNew.amplified.step1') },
-    ...(selected ? [{ item: ref(selected.amplifiedId), text: t('whatsNew.amplified.step2') }] : []),
+    ...(selected ? [{ item: amplified(ref(selected.amplifiedId)), text: t('whatsNew.amplified.step2') }] : []),
     { item: ref('amplified_upgrade_part_a'), text: t('whatsNew.amplified.step3') },
   ];
 
@@ -118,7 +118,7 @@ export function AmplifiedTab({ data }: AmplifiedTabProps) {
                 onSelectedKeyChange={setSelectedId}
                 renderTile={(w, { selected: isSelected, toggle }) => (
                   <ItemTile
-                    item={{ ...ref(w.amplifiedId), name: ref(w.fromItemId).name }}
+                    item={ref(w.fromItemId)}
                     size={80}
                     selected={isSelected}
                     onClick={toggle}

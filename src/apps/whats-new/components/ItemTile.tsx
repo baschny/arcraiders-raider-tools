@@ -19,6 +19,11 @@ export interface ItemTileProps {
   /** Native tooltip; defaults to the item name. */
   title?: string;
   className?: string;
+  /**
+   * 'inline': amount and name to the right of the icon (default for sizes up to 48 px, where a name
+   * under the icon would truncate). 'stack': centred under the icon (default for larger sizes).
+   */
+  layout?: 'stack' | 'inline';
 }
 
 export function ItemTile({
@@ -32,8 +37,10 @@ export function ItemTile({
   hideName = false,
   title,
   className,
+  layout,
 }: ItemTileProps) {
-  const classes = ['wn-tile', `wn-tile--${size}`, selected ? 'is-selected' : '', onClick ? 'wn-tile--button' : '', className ?? '']
+  const resolved = layout ?? (size <= 48 ? 'inline' : 'stack');
+  const classes = ['wn-tile', `wn-tile--${size}`, `wn-tile--${resolved}`, selected ? 'is-selected' : '', onClick ? 'wn-tile--button' : '', className ?? '']
     .filter(Boolean)
     .join(' ');
   const style = { '--item-icon-size': `${size}px` } as React.CSSProperties;
@@ -49,9 +56,23 @@ export function ItemTile({
         showQuantity={false}
         className="wn-tile__icon"
       />
-      {amount !== undefined && <span className="wn-tile__amount">{formatAmount(amount)}</span>}
-      {!hideName && <span className="wn-tile__name">{item.name}</span>}
-      {sublabel && <span className="wn-tile__sub">{sublabel}</span>}
+      {resolved === 'inline' ? (
+        (amount !== undefined || !hideName || sublabel) && (
+          <span className="wn-tile__text">
+            <span className="wn-tile__line">
+              {amount !== undefined && <span className="wn-tile__amount">{formatAmount(amount)}</span>}
+              {!hideName && <span className="wn-tile__name">{item.name}</span>}
+            </span>
+            {sublabel && <span className="wn-tile__sub">{sublabel}</span>}
+          </span>
+        )
+      ) : (
+        <>
+          {amount !== undefined && <span className="wn-tile__amount">{formatAmount(amount)}</span>}
+          {!hideName && <span className="wn-tile__name">{item.name}</span>}
+          {sublabel && <span className="wn-tile__sub">{sublabel}</span>}
+        </>
+      )}
     </>
   );
   if (onClick) {

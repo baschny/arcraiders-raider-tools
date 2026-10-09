@@ -1,10 +1,10 @@
 import type { AmplificationStructure, AmplifiedWeapon, Cost } from '../../../../shared/gamedata/types';
 
-export interface PerkInfo {
-  /** Perk name derived from the variant id (e.g. "Bigger Mag"). */
+export interface AmplificationInfo {
+  /** Amplification name derived from the variant id (e.g. "Bigger Mag"). */
   name: string;
   parts: { itemId: string; quantity: number }[];
-  /** Research unlock item slug, absent for perks without a research gate. */
+  /** Research unlock item slug, absent for amplifications without a research gate. */
   researchId?: string;
 }
 
@@ -13,7 +13,7 @@ export interface WeaponRow {
   fromItemId: string;
   amplifiedId: string;
   moduleId: string;
-  perks: PerkInfo[];
+  amplifications: AmplificationInfo[];
 }
 
 const ROMAN: Record<string, number> = { I: 1, II: 2, III: 3, IV: 4, V: 5, VI: 6, VII: 7, VIII: 8 };
@@ -28,11 +28,11 @@ export function humanize(slug: string): string {
 
 const partsOf = (cost: Cost) => ('items' in cost ? cost.items : []);
 
-/** Distinct perks of one weapon: every permutation edge is one perk, deduplicated by cost + research. */
-export function perksOf(weapon: AmplifiedWeapon): PerkInfo[] {
+/** Distinct Amplifications of one weapon: every permutation edge is one Amplification, deduplicated by cost + research. */
+export function amplificationsOf(weapon: AmplifiedWeapon): AmplificationInfo[] {
   const root = weapon.graph[weapon.fromItemId]?.[0];
   if (!root) return [];
-  const perks = new Map<string, PerkInfo>();
+  const found = new Map<string, AmplificationInfo>();
   const seen = new Set<string>([root.itemId]);
   const queue = [root.itemId];
   while (queue.length) {
@@ -41,11 +41,11 @@ export function perksOf(weapon: AmplifiedWeapon): PerkInfo[] {
       const parts = partsOf(branch.cost);
       const research = branch.requires?.find((r) => r.kind === 'item')?.id;
       const key = `${research ?? ''}|${parts.map((p) => `${p.itemId}x${p.quantity}`).join(',')}`;
-      if (!perks.has(key) && parts.length) {
+      if (!found.has(key) && parts.length) {
         const name = branch.itemId.startsWith(`${source}_`)
           ? humanize(branch.itemId.slice(source.length + 1))
           : humanize(research?.replace(/_research$/, '') ?? branch.itemId);
-        perks.set(key, { name, parts: parts.map((p) => ({ itemId: p.itemId, quantity: p.quantity })), researchId: research });
+        found.set(key, { name, parts: parts.map((p) => ({ itemId: p.itemId, quantity: p.quantity })), researchId: research });
       }
       if (!seen.has(branch.itemId)) {
         seen.add(branch.itemId);
@@ -53,7 +53,7 @@ export function perksOf(weapon: AmplifiedWeapon): PerkInfo[] {
       }
     }
   }
-  return [...perks.values()];
+  return [...found.values()];
 }
 
 export function weaponRows(structure: AmplificationStructure): WeaponRow[] {
@@ -67,7 +67,7 @@ export function weaponRows(structure: AmplificationStructure): WeaponRow[] {
       fromItemId: weapon.fromItemId,
       amplifiedId: root.itemId,
       moduleId: module.itemId,
-      perks: perksOf(weapon),
+      amplifications: amplificationsOf(weapon),
     });
   }
   return rows;

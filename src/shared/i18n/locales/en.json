@@ -1330,11 +1330,11 @@
       "level": "level",
       "step1": "Upgrade the Gunsmith to level 4",
       "step2": "Combine a max-level weapon with an Amplification Module",
-      "step3": "Add perks with parts and research",
+      "step3": "Add Amplifications with parts and research",
       "pickerTitle": "Pick a weapon",
       "pickerSentence": "Weapons are grouped by the Amplification Module they need.",
       "becomes": "becomes",
-      "perk": "Perk",
+      "amplification": "Amplification",
       "research": "Research",
       "noResearch": "No research needed",
       "repairLine": "Amplified weapons are repaired with Amplified Fragments.",
@@ -1435,7 +1435,7 @@
         },
         "amplified": {
           "title": "Amplified weapons",
-          "sentence": "Turn max-level weapons into Amplified ones and add perks."
+          "sentence": "Turn max-level weapons into Amplified ones and add Amplifications."
         },
         "researchBlueprints": {
           "title": "Researching blueprints",
@@ -1505,7 +1505,7 @@
         "researchDetail": "Level {level} · {rp} RP",
         "researchLevel": "Level {level}",
         "tradeFor": "Pays for {item}",
-        "upgrades": "Perk upgrades: {n}"
+        "upgrades": "Amplification upgrades: {n}"
       },
       "more": {
         "research": "More about research in the Research tab",
