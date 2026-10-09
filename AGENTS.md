@@ -443,6 +443,9 @@ Use `AWS_PROFILE=baschny` for AWS CLI commands related to this repository, inclu
 
 ### SCSS
 - Use `@use 'sass:color'` when using color functions (don't forget this import!)
+- Use the module functions (`color.adjust($c, $lightness: 10%)`, `color.scale(...)`), never the
+  deprecated globals `lighten()`, `darken()`, `transparentize()` etc.: the build fails on Sass
+  `color-functions` and `global-builtin` deprecations (`css.preprocessorOptions.scss` in `vite.config.ts`)
 - Organize partials by feature/component
 - Import all partials in `main.scss`
 - Use 2-space indentation

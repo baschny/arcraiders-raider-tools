@@ -28,6 +28,12 @@ export default defineConfig(({ mode }) => {
       global: 'globalThis',
     },
     server: { proxy },
+    css: {
+      preprocessorOptions: {
+        // Deprecated global color functions (lighten(), darken(), ...) fail the build: use sass:color.
+        scss: { fatalDeprecations: ['color-functions', 'global-builtin'] },
+      },
+    },
     build: {
       outDir: 'dist',
       sourcemap: false,
