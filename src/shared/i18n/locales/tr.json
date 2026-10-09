@@ -77,7 +77,9 @@
       "craftCalculator": "Craft Hesaplayıcı",
       "quests": "Görev Takibi",
       "lootHelper": "Yağma Yardımcısı",
-      "quartermaster": "Levazım"
+      "quartermaster": "Levazım",
+      "maps": "Haritalar",
+      "whatsNew": "Yenilikler"
     }
   },
   "dashboard": {
@@ -90,12 +92,17 @@
       "affectedAppLink": "Open affected tool",
       "allTools": "All tools"
     },
+    "whatsNew": {
+      "title": "Donmuş Patika'daki yenilikler",
+      "description": "1.x sürümünden mi geliyorsun? Yeni eşyaların ne işe yaradığını, araştırma ve Güçlendirilmiş silahların nasıl çalıştığını ve tarifler, geri dönüştürme ile tüccarlarda neyin değiştiğini gör."
+    },
     "tools": {
       "schedule": "ARC Raiders harita etkinlik takvimini daha iyi bir görünümle göstererek baskınlarını planlamanı sağlar.",
       "craftCalculator": "Zulanda en iyi alan verimini almak için kaç eşya craft etmen gerektiğini hesapla.",
       "quests": "Etkileşimli görev ağacı ile görev ilerlemeni takip et.",
       "lootHelper": "Craft zincirlerini görselleştirerek baskınlarda ne toplayacağını öğren.",
-      "quartermaster": "Zulanı, teçhizatını ve sığınak gereksinimlerini tek bir yerde planla."
+      "quartermaster": "Zulanı, teçhizatını ve sığınak gereksinimlerini tek bir yerde planla.",
+      "maps": "Her harita ve harita koşulunda bir eşyanın nerede yağmalanabileceğini ve ARC düşmanlarının nerede doğduğunu bul."
     }
   },
   "pages": {
@@ -767,13 +774,13 @@
         "qtyToRecycle": "Qty to Recycle",
         "yields": "Yields",
         "why": "Why",
-        "craftTimes": "Craft Times",
-        "totalOutput": "Total Output",
         "inputsNeeded": "Inputs Needed",
         "upgradeFrom": "Upgrade From",
         "upgradeTo": "Upgrade To",
         "qtyToUpgrade": "Qty to Upgrade",
-        "durability": "Durability"
+        "durability": "Durability",
+        "craftTimes": "Craft Times",
+        "totalOutput": "Total Output"
       },
       "blueprintUnlockCount": "{unlocked}/{total} unlocked"
     },
@@ -786,16 +793,16 @@
       "foundIn": "Found In:",
       "neededForLists": "Needed for Lists",
       "neededForQuests": "Needed for Quests",
-      "neededForCrafting": "Needed for Crafting (Direct / Indirect)",
       "neededForProject": "Needed for {project}",
-      "couldBeUsedFor": "Could be used for",
       "recycle": "Recycle",
       "salvage": "Salvage",
       "craftingRecipe": "Crafting Recipe",
       "craftingRecipeIncludingUpgrades": "Crafting Recipe (including Upgrades)",
       "recyclesInto": "Recycles Into",
       "salvagesInto": "Salvages Into",
-      "neededForRepair": "Needed for Repair"
+      "neededForRepair": "Needed for Repair",
+      "neededForCrafting": "Needed for Crafting (Direct / Indirect)",
+      "couldBeUsedFor": "Could be used for"
     },
     "itemIcon": {
       "uncraftable": "Cannot be crafted — requirements not met"
@@ -891,6 +898,655 @@
       "loadout": "Loadout",
       "gameDataLastSync": "Game Data Last Sync",
       "never": "Never"
+    }
+  },
+  "maps": {
+    "header": {
+      "gameData": "Oyun verisi {version} · {date}",
+      "gameDataTitle": "Steam manifesto {manifest}, harita verisi {date} tarihinde oluşturuldu"
+    },
+    "loader": {
+      "retry": "Yeniden dene",
+      "reloadPage": "Sayfayı yenile",
+      "error": {
+        "network": "Harita verisi yüklenemedi. Bağlantını kontrol edip yeniden dene.",
+        "missing": "Harita verisi şu anda kullanılamıyor. Birazdan yeniden dene.",
+        "missingMap": "{map} haritasının verisi eksik. Birazdan yeniden dene.",
+        "schema": "Harita verisi güncellendi ve bu sayfanın daha yeni bir sürümünü gerektiriyor. Sayfayı yenile."
+      }
+    },
+    "conditions": {
+      "normal": "Normal"
+    },
+    "modes": {
+      "loot": "Yağma",
+      "label": "Mod"
+    },
+    "sidebar": {
+      "hide": "Kenar çubuğunu gizle",
+      "showFilters": "Filtreleri göster",
+      "hideFilters": "Filtreleri gizle"
+    },
+    "mapBar": {
+      "scoreTitle": "{map}: eşya puanı {score} (normal koşullar)",
+      "label": "Harita"
+    },
+    "conditionBar": {
+      "normal": "Normal harita",
+      "normalAlso": "Normal harita: aynı sabit yağma ve doğuşlar: {conditions}",
+      "major": "Büyük koşul",
+      "majorLive": "Büyük koşul (mevcut programda)",
+      "minor": "Küçük koşul",
+      "minorLive": "Küçük koşul (mevcut programda)",
+      "sameAsNormal": "+ {count} tanesi {normal} ile aynı",
+      "label": "Harita koşulu"
+    },
+    "help": {
+      "label": "Yardım"
+    },
+    "search": {
+      "placeholder": "Bir eşya bul…",
+      "clear": "Temizle"
+    },
+    "loot": {
+      "searchPlaceholder": "Bir eşya ara, ör. Motor",
+      "goalsTitle": "Yağma Yardımcısı hedeflerin",
+      "tablesTitle": "Her sabit yağma tablosunun bu eşyaya giden payı",
+      "noTables": "hiçbir sabit yağma tablosunda yok",
+      "notInLoot": "Bu eşya hiçbir sabit yağma tablosunda yok.",
+      "onlyHarvested": "Yalnızca şunlardan toplanır: {containers}; bunlar yalnızca şu koşullarda bulunur: {conditions}.",
+      "conditionWhy": "{condition} ({reason})"
+    },
+    "conditionReasons": {
+      "onHiatus": "ara verildi",
+      "neverReleased": "hiç yayımlanmadı",
+      "tutorial": "eğitim",
+      "practiceRange": "antrenman alanı",
+      "notInSchedule": "programda değil"
+    },
+    "item": {
+      "tiers": {
+        "low": "Düşük",
+        "mid": "Orta",
+        "high": "Yüksek"
+      }
+    },
+    "best": {
+      "title": "En iyi bölgeler · {condition}",
+      "helpLabel": "Puan hakkında",
+      "help": "Puan, eşyaya gidebilecek yağma değeridir: her yağma işleyicisinin havuzu, tabloları, girdileri ve eşyaları arasında bölünüp yerlerine yayılır. Yerleri karşılaştırır; düşme şansı değildir. Normal ile aynı sabit yağmaya sahip koşullar buna dahil edilir.",
+      "spotsOne": "{hits}/{count} nokta",
+      "spots": "{hits}/{count} nokta",
+      "perSpot": "nokta başına {score}"
+    },
+    "filters": {
+      "title": "Doğuş noktaları",
+      "helpLabel": "Filtreler hakkında",
+      "help": "Ok bir grubu açar; satırın geri kalanı grubu haritada gösterir veya gizler. Bir eşya seçili ve hiçbir şey işaretlenmemişse, o eşyayı tutabilen tüm noktalar gösterilir. Konteynerler yalnızca kategorileri eşyanın kategorisiyle eşleştiğinde sayılır (Mekanik eşyalar Mekanik konteynerlerde; bitkiler yalnızca kendi eşyalarını verir). Doğan konteynerler (cephane kutuları, zulalar, kabuklar) sunucu tarafı tablolarını çeker ve “?” ile gösterilir.",
+      "auto": "otomatik",
+      "autoTitle": "Eşyayı tutabilen tüm noktalar gösteriliyor",
+      "showAll": "Hepsini göster",
+      "hideAll": "Hepsini gizle",
+      "expand": "Genişlet",
+      "expandGroup": "{group} grubunu genişlet",
+      "collapseGroup": "{group} grubunu daralt",
+      "count": {
+        "spotsOne": "{count} nokta",
+        "spots": "{count} nokta",
+        "hitsOne": "{count} noktadan {hits} tanesi eşyayı tutabilir",
+        "hits": "{count} noktadan {hits} tanesi eşyayı tutabilir",
+        "noHitsOne": "Bu tek nokta eşyayı tutamaz",
+        "noHits": "{count} noktanın hiçbiri eşyayı tutamaz",
+        "serverSide": "İçerik sunucu tarafında belirlenir ve oyun dosyalarında yoktur",
+        "expectedOne": "Tur başına ~{expected} beklenir, {count} olası noktadan",
+        "expected": "Tur başına ~{expected} beklenir, {count} olası noktadan"
+      }
+    },
+    "arc": {
+      "title": "ARC düşmanları · {condition}",
+      "helpLabel": "ARC doğurucular hakkında",
+      "help": "Bu koşulda her düşmanı üretebilecek doğurucuların beklenen sayısı. Yalnızca doğuracakları ve devriye yollarını görmek için düşman seç (aynı anda birkaçı, her biri kendi renginde). Dolu işaretçiler bir yol üzerinde devriye gezer. Grubunu ve yeniden doğuş zamanlayıcılarını görmek için bir doğurucunun üzerine gel; doğuş grubunu sabitlemek için tıkla.",
+      "showAll": "Tüm düşmanları göster",
+      "expectedOne": "Tur başına ~{expected} beklenir, {count} doğurucudan",
+      "expected": "Tur başına ~{expected} beklenir, {count} doğurucudan",
+      "empty": "Bu koşulda ARC doğurucusu yok."
+    },
+    "canvas": {
+      "label": "{map} haritası. Burada çizilen noktalar, bölgeler ve düşmanlar kenar çubuğunda listelenir."
+    },
+    "zoom": {
+      "in": "Yakınlaştır",
+      "out": "Uzaklaştır",
+      "fit": "Haritayı sığdır (çift tıkla)"
+    },
+    "overlays": {
+      "title": "Katmanlar",
+      "heat": "Isı haritası",
+      "height": "Yükseklik işaretleri",
+      "heightTitle": "Üstte bir nokta: tahmini zeminin 3,5 m'den fazla üstünde (üst kat, çatı); altta: 3,5 m'den fazla altında (bodrum, tünel). Yükseklik haritasından tahmin edilir; Stella Montis'te yoktur.",
+      "pois": "Bölgeler ve adlar",
+      "zones": "Yağma bölgeleri",
+      "zonesTitle": "Oyun içi yağma bölgeleri: kırmızı = bol, sarı = yoğun, gri = seyrek.",
+      "bounds": "Oynanabilir alan"
+    },
+    "layers": {
+      "title": "Harita katmanı: bu alanlara girdiğinde oyun içi harita değişir",
+      "surface": "Yüzey",
+      "underground": "Yeraltı",
+      "upperFloor": "Üst kat",
+      "lowerFloor": "Alt kat",
+      "label": "Harita katmanı"
+    },
+    "legend": {
+      "score": "Nokta başına eşya puanı",
+      "low": "düşük",
+      "high": "yüksek"
+    },
+    "zones": {
+      "abundant": "Bol yağma",
+      "dense": "Yoğun yağma",
+      "sparse": "Seyrek yağma"
+    },
+    "tooltip": {
+      "score": "puan {score}",
+      "serverTablesOne": "+ {count} sunucu tarafı yağma tablosu (içerik dosyalarda yok)",
+      "serverTables": "+ {count} sunucu tarafı yağma tablosu (içerik dosyalarda yok)",
+      "oneOf": "Şunlardan biri: {kinds}",
+      "inArea": "{area} içinde",
+      "spawnChance": "doğma şansı ~{chance}",
+      "notScored": "içerik sunucu tarafında (puanlanmaz)",
+      "group": "grup",
+      "groupSpotsOne": "{group}: {min} / {count} nokta (halkalı)",
+      "groupSpots": "{group}: {min} / {count} nokta (halkalı)",
+      "groupSpawnersOne": "{group}: {min} / {count} doğurucu (halkalı)",
+      "groupSpawners": "{group}: {min} / {count} doğurucu (halkalı)",
+      "tapPin": "grubu sabitlemek için dokun",
+      "tapUnpin": "grubun sabitlemesini kaldırmak için dokun",
+      "clickPin": "grubu sabitlemek için tıkla",
+      "clickUnpin": "grubun sabitlemesini kaldırmak için tıkla",
+      "arcSpawner": "ARC doğurucu",
+      "enemySpawner": "Düşman doğurucu",
+      "patrols": "bir yol üzerinde devriye gezer",
+      "tableNotExported": "{table} tablosu (dışa aktarılmadı)",
+      "tier": "kademe {tier}",
+      "area": "Bölge",
+      "height": "≈ {height} m zeminden",
+      "covered": "kapalı",
+      "openSky": "açık gökyüzü",
+      "noKey": "anahtar eşya yok (başka yoldan açılır)"
+    },
+    "timing": {
+      "noRespawn": "yok edildikten sonra yeniden doğmaz",
+      "respawn": "yok edildikten {time} sonra yeniden doğar",
+      "randomDelay": "+ {min}–{max} sn rastgele gecikme",
+      "noDynamic": "dinamik yeniden doğuş yok",
+      "airDrop": "grup yok edildikten {time} sonra hava bırakması",
+      "sneak": "görüş dışında yeniden doğuş: {time} sonra",
+      "sneakIndoors": "görüş dışında yeniden doğuş: {time} sonra (kapalı alanda)",
+      "activates": "{distance} m içinde etkinleşir"
+    },
+    "units": {
+      "seconds": "{n} sn",
+      "minutes": "{n} dk",
+      "never": "asla"
+    },
+    "categories": {
+      "Exits": "Çıkışlar ve doğuşlar",
+      "Containers": "Konteynerler",
+      "RaiderSpawns": "Raider konteynerleri",
+      "ArcSpawns": "ARC kabukları ve harabeleri",
+      "Puzzles": "Bulmacalar",
+      "Features": "Harita öğeleri"
+    },
+    "kinds": {
+      "ExtractMetro": "Metro çıkışı",
+      "ExtractLift": "Asansör çıkışı",
+      "ExtractFan": "Fan çıkışı",
+      "ExtractGondola": "Balistik Gondol çıkışı",
+      "Hatch": "Raider geçidi (anahtar)",
+      "StationEntrance": "Metro istasyonu girişi",
+      "PlayerStart": "Oyuncu doğuşu",
+      "Generic": "Temel",
+      "OtherFixed": "Diğer",
+      "WaterTank": "Su deposu",
+      "Ground": "Yerdeki yağma",
+      "Apricot": "Kayısı",
+      "Lemon": "Limon",
+      "Olive": "Zeytin",
+      "NatureFruitBasket": "Meyve sepeti",
+      "Mushroom": "Mantar",
+      "Agave": "Agave",
+      "Moss": "Yosun",
+      "GreatMullein": "Sığırkuyruğu",
+      "Candleberries": "Mum meyveleri",
+      "Resin": "Reçine (ağaçlar)",
+      "BirdNest": "Kuş yuvası",
+      "VolcanicRock": "Volkanik taş",
+      "Roots": "Kökler",
+      "Fertilizer": "Gübre",
+      "SeedVault": "Tohum kasası konsolu",
+      "Seedbox": "Tohum kutusu",
+      "CacheStandard": "Raider zulası",
+      "CacheSelfDestruct": "Raider zulası, kendini imha eden",
+      "CacheFrozen": "Raider zulası, donmuş",
+      "NomadCache": "Göçebe zulası",
+      "CacheFirstWave": "Raider zulası, ilk dalga",
+      "AmmoBox": "Cephane kutusu",
+      "AmmoBoxHigh": "Cephane kutusu (yüksek kademe)",
+      "WeaponCase": "Silah kutusu",
+      "WeaponCaseHigh": "Silah kutusu (yüksek kademe)",
+      "MedicalBag": "Tıbbi çanta",
+      "GrenadeTube": "Bomba borusu",
+      "Backpack": "Raider sırt çantası",
+      "WeaponsRack": "Silah rafı",
+      "FruitBasket": "Meyve sepeti (Hasat Sezonu)",
+      "FruitBasketWinter": "Meyve sepeti (kış)",
+      "WaspHusk": "Arı kabuğu",
+      "WaspHuskStunning": "Arı kabuğu, sersemletici",
+      "RocketeerHusk": "Roketçi kabuğu",
+      "RocketeerHuskStunning": "Roketçi kabuğu, sersemletici",
+      "DeforesterHusk": "Ormansızlaştırma Makinesi kabuğu",
+      "Probes": "Düşmüş ARC Roketi",
+      "Couriers": "ARC Kuryesi",
+      "PowerSocket": "Pil / yakıt hücresi yuvası",
+      "FuelCell": "Yakıt hücresi / pil",
+      "PuzzleButton": "Düğme / anahtar / konsol",
+      "PuzzleRelay": "Bulmaca rölesi",
+      "CardReader": "Kart okuyucu",
+      "TubeTerminal": "Renkli terminal / tüp istasyonu",
+      "PuzzleDoor": "Bulmaca kapısı / geçit",
+      "HotelKey": "Otel anahtarı",
+      "FieldDepot": "Saha deposu",
+      "FieldCrates": "Saha kasası",
+      "SupplyStation": "İkmal çağrı istasyonu",
+      "PowerCores": "Biçerdöver güç çekirdeği",
+      "MetalDetector": "Dağcı'nın Dedektörü",
+      "Snowpile": "Kar yığını (Ani Soğuk)",
+      "Zipline": "Halat makarası (etkinleştirilebilir)",
+      "Lift": "Asansör",
+      "Bridge": "Hareketli köprü",
+      "BridgeSwitch": "Köprü / şalter anahtarı",
+      "LockedRoom": "Kilitli oda (anahtar)",
+      "LockedDoor": "Kilitli kapı (anahtar)",
+      "Barricaded": "Barikatlı kapı (kırılır)",
+      "Door": "Kapı / pencere",
+      "Piano": "Piyano"
+    },
+    "containerTypes": {
+      "Android": "Android",
+      "AntennaSet": "Anten seti",
+      "Bus": "Otobüs",
+      "ButtonPanel": "Düğme paneli",
+      "CabinetDoor": "Kabinet",
+      "Car01": "Araba 1",
+      "Car02": "Araba 2",
+      "Car03": "Araba 3",
+      "CashRegister": "Kasa",
+      "Centerbench": "Orta bank",
+      "Closet": "Gardırop",
+      "Closet02": "Gardırop 2",
+      "Cmr": "Duvar ünitesi",
+      "CoffeeMachine01": "Kahve makinesi",
+      "CompressorTrailer": "Kompresör römork",
+      "Computer01": "Bilgisayar 1",
+      "Computer02": "Bilgisayar 2",
+      "Computer03": "Bilgisayar 3",
+      "Coms": "İletişim konsolu",
+      "Console_03": "Konsol",
+      "Crate": "Sandık",
+      "CrateCart": "Sandık arabası",
+      "CupboardCafe": "Kafe dolabı",
+      "CupboardKitchen": "Mutfak dolabı",
+      "Drawer": "Çekmece",
+      "DrawerMedical": "İlaç çekmecesi",
+      "Dumpster": "Çöp konteyneri",
+      "FloodLight": "Projektör",
+      "Freezer": "Dondurucu",
+      "Fridge": "Buzdolabı",
+      "Fusebox": "Sigorta kutusu",
+      "Fusebox2": "Sigorta kutusu 2",
+      "GeneratorM02": "Jeneratör",
+      "Gvt": "Devlet çöp kutusu",
+      "GvtDesk": "Devlet masası",
+      "HighwayAntenna": "Otoyol anteni",
+      "InformationTerminal": "Bilgi terminali",
+      "KitchenBench": "Mutfak tezgâhı",
+      "Locker01": "Kilitli dolap",
+      "LockerMedical01": "Tıbbi dolap",
+      "Lockers": "Dolaplar",
+      "MuseumCrate_01": "Müze sandığı 1",
+      "MuseumCrate_02": "Müze sandığı 2",
+      "Parasitic": "Parazit büyümesi",
+      "PressureMonitor": "Basınç monitörü",
+      "Refrigerator_01": "Soğutucu",
+      "RoadBarrier03": "Yol bariyeri",
+      "Rocketparts_01": "Roket parçaları 1",
+      "Rocketparts_02": "Roket parçaları 2",
+      "Rover": "Gezgin",
+      "Rsr": "Araştırma dolabı",
+      "RsrCabinetS": "Küçük araştırma dolabı",
+      "RsrCartShelf": "Araştırma arabası rafı",
+      "RsrMachineM01": "Araştırma makinesi",
+      "SecurityCamera01": "Güvenlik kamerası",
+      "Server": "Sunucu",
+      "Shelf03": "Raf",
+      "SolarPanel03": "Güneş paneli",
+      "SosBooth_01": "SOS kulübesi",
+      "StreetSweeper": "Yol süpürgesi",
+      "Suitcase": "Bavul",
+      "SupportStructure": "Destek yapısı",
+      "TVUnit": "TV ünitesi",
+      "TapeDrive01": "Teyp sürücüsü 1",
+      "TapeDrive02": "Teyp sürücüsü 2",
+      "TapeDrive04": "Teyp sürücüsü 4",
+      "Transformer": "Transformatör",
+      "TrashCan_01": "Çöp kutusu",
+      "Trashbin": "Çöp kovası",
+      "TruckScannerLeft01": "Kamyon tarayıcısı (sol)",
+      "TruckScannerRight01": "Kamyon tarayıcısı (sağ)",
+      "UtilityTruck": "Hizmet kamyonu",
+      "VentMachineLarge": "Büyük havalandırma makinesi",
+      "VentMachineLarge01": "Büyük havalandırma makinesi 2",
+      "Workbench_01": "Tezgâh 1",
+      "Workbench_02": "Tezgâh 2",
+      "Wreck03": "ARC harabesi",
+      "Wrh": "Depo mobilyası",
+      "vent03": "Havalandırma"
+    }
+  },
+  "whatsNew": {
+    "amplified": {
+      "step1": "Silahçıyı 4. seviyeye yükselt",
+      "step2": "Maksimum seviyedeki bir silahı bir Güçlendirme Modülü ile birleştir",
+      "step3": "Parçalarla Güçlendirmeler ekle",
+      "researchSubtitle": "Güçlendirilmiş araştırma",
+      "researchTask": "Kilidi aç: {name}",
+      "researchThen": "Sonra bunu araştır",
+      "researchWhere": "Araştırma İstasyonu seviye {level}",
+      "stepResearch": "Kilidini açmak için araştırma görevini (bir görev) tamamla, sonra Araştırma İstasyonu'nda 4. seviyede araştır",
+      "pickerTitle": "Bir silah seç",
+      "pickerSentence": "Silahlar, ihtiyaç duydukları Güçlendirme Modülüne göre gruplanır.",
+      "amplification": "Güçlendirme",
+      "research": "Araştırma",
+      "noResearch": "Araştırma gerekmez",
+      "repairLine": "Güçlendirilmiş silahlar Amplified Fragments ile tamir edilir.",
+      "recycleLine": "Bir modülü geri dönüştürmek {n} Amplified Fragments verir.",
+      "roomsNote": "{n} Karakol odası gerekir",
+      "requires": "Gerekli: {name}",
+      "cantCombine": "{names} ile birleştirilemez",
+      "lockedRequires": "Önce {name} gerekli",
+      "lockedExcluded": "{name} ile olmaz",
+      "lockedUnavailable": "Bu seçimle kullanılamaz",
+      "needsResearch": "Araştırma gerekir"
+    },
+    "title": "Donmuş Patika'daki yenilikler",
+    "subtitle": "Geri dönen raider'lar için 2.0 güncellemesine genel bakış",
+    "loading": "Yenilikler yükleniyor...",
+    "navLabel": "Yenilikler sekmeleri",
+    "research": {
+      "build": "Karakol'da inşa et",
+      "level": "Seviye {n}",
+      "blueprintCrafting": "Taslak üretimi",
+      "designCrafting": "Tasarım üretimi",
+      "amplifiedResearch": "Güçlendirilmiş araştırma",
+      "plans": "{n} plan",
+      "rpAmount": "{n} AP",
+      "step1": "Bulduğun eşyaları incele",
+      "step2": "Araştırma Puanı kazan",
+      "step3": "Puanları ve malzemeleri planlara harca",
+      "step4": "Planı Karakol'da öğren",
+      "pointsTitle": "Araştırma Puanları",
+      "pointsText": "Puan kazanmak için bu eşyaları Araştırma İstasyonu'nda incele.",
+      "stationTitle": "Araştırma İstasyonu",
+      "stationText": "Karakol'da {bench} inşa et, sonra üç kez yükselt.",
+      "needsRoom": "{n} Karakol odası gerekir",
+      "needsRooms": "{n} Karakol odası gerekir",
+      "needsStationLevel": "İstasyon seviye {n} gerekir",
+      "listCraftable": "Araştırabileceğin taslaklar",
+      "listFindOnly": "Bulmak zorunda olduğun taslaklar",
+      "listDesigns": "Araştırabileceğin tasarımlar",
+      "listFindOnlyDesigns": "Yalnızca bulabileceğin tasarımlar",
+      "hoverTitle": "Araştırma",
+      "browseTitle": "Araştırabileceklerin",
+      "benchLevel": "{bench} seviye {n}"
+    },
+    "outpost": {
+      "unlocks": "Açar",
+      "special": "Özel seçenek",
+      "furnitureTitle": "Mobilya",
+      "celeste": "Celeste",
+      "expansion": "Seviye {from} → {to}",
+      "pickOne": "Bir oda seç",
+      "benchLevel": "{bench} seviye {level}",
+      "step1": "Yapı malzemeleri topla",
+      "step2": "Karakol'u genişlet ve bir oda seç",
+      "step3": "Her yeni oda istasyon yükseltmelerinin kilidini açar",
+      "slots": "Oda yuvaları",
+      "slotsText": "Karakolunun dört yuvası var. İlki Üs Odası'nı tutar, her genişletme bir sonraki yuvayı doldurur.",
+      "slot": "Yuva {n}",
+      "furnitureText": "Odalarını yataklar, sandalyeler, lambalar ve daha fazlasıyla döşe.",
+      "furnitureCount": "{count} mobilya parçası",
+      "furnitureHow": "Mobilya nasıl çalışır",
+      "furnStep1": "Bir tasarım bul veya araştır",
+      "furnStep2": "Karakol'da öğren",
+      "furnStep3": "Tahtalar, Sac Metal ve daha fazlasıyla inşa et",
+      "celesteText": "{name} artık yapı malzemeleri karşılığında tohum takas ediyor."
+    },
+    "changes": {
+      "recipes": "Tarifler",
+      "recipesHint": "Bu tarifler öncekinden farklı malzemeler gerektirir.",
+      "gadgets": "Cihazlar",
+      "anvilCraft": "{name}: üret ve yükselt",
+      "anvilRepair": "{name}: tamir et",
+      "recycling": "Geri dönüştürme",
+      "recyclingHint": "Bu eşyaları geri dönüştürdüğünde farklı malzemeler verir.",
+      "traders": "Tüccarlar",
+      "tradersHint": "Bir tüccar seçerek neyi satmaya başladığını veya bıraktığını ve hangi fiyatların değiştiğini gör.",
+      "stash": "Zula",
+      "stashHint": "Her zula genişletmesinin maliyeti; yeni kademeler işaretli.",
+      "craft": "Üret",
+      "upgrade": "{from} → {to} yükselt",
+      "repair": "Tamir {tier}",
+      "tradeNew": "Yeni",
+      "tradeGone": "Artık satılmıyor",
+      "tradePrice": "Yeni fiyat",
+      "scrapValue": "{value} hurda değeri",
+      "expansion": "Genişletme",
+      "slotCount": "{count} yuva",
+      "newTier": "Yeni"
+    },
+    "new-items": {
+      "recycles": "Şuna Geri Dönüşür:",
+      "purpose": {
+        "outpost": {
+          "title": "Karakolu genişletme",
+          "sentence": "Karakolunu genişletmek için yeni odalar inşa et."
+        },
+        "researchStation": {
+          "title": "Araştırma İstasyonu",
+          "sentence": "Yeni Araştırma İstasyonu'nu inşa et ve yükselt."
+        },
+        "researchPoints": {
+          "title": "Araştırma Puanları",
+          "sentence": "Araştırma Puanı kazanmak için bunları Araştırma İstasyonu'nda incele."
+        },
+        "gunsmith4": {
+          "title": "Silahçı seviye 4",
+          "sentence": "Güçlendirilmiş silahların kilidini açan yeni Silahçı seviyesi için gerekli."
+        },
+        "amplified": {
+          "title": "Güçlendirilmiş silahlar",
+          "sentence": "Maksimum seviyedeki silahları Güçlendirilmiş silahlara çevir ve Güçlendirmeler ekle."
+        },
+        "researchBlueprints": {
+          "title": "Taslakları araştırma",
+          "sentence": "Taslak ve tasarımları araştırmak için Araştırma İstasyonu'nda harcanır."
+        },
+        "furniture": {
+          "title": "Mobilya",
+          "sentence": "Karakol odaların için mobilya yap."
+        },
+        "crafting": {
+          "title": "Üretim",
+          "sentence": "Silahlar, cihazlar ve raid içi eşyalar için üretim tarifleri."
+        },
+        "stencils": {
+          "title": "Silah çıkartmaları",
+          "sentence": "Silahlarına boya çıkartmaları uygula."
+        },
+        "quests": {
+          "title": "Görevler ve projeler",
+          "sentence": "Görevler veya projeler için gerekli."
+        },
+        "trades": {
+          "title": "Takaslar",
+          "sentence": "Tüccarlar bunları ödeme olarak kabul eder."
+        },
+        "noUse": {
+          "title": "Henüz kullanımı yok",
+          "sentence": "Bunlara henüz ihtiyaç yok: sat veya geri dönüştür."
+        },
+        "unlocks": {
+          "title": "Tek seferlik açılışlar",
+          "sentence": "Yeni Karakol odalarının, Araştırma İstasyonu'nun, Silahçı seviye 4'ün ve görevlerin kilidini açmak için bunları bir kez teslim et."
+        },
+        "newGear": {
+          "title": "Yeni silahlar ve donanım",
+          "sentence": "2.0'da yeni; her birinin kilidini açan taslağıyla birlikte."
+        },
+        "fallenEmperor": {
+          "title": "Düşmüş İmparator",
+          "sentence": "Pendola Geçidi'ndeki Düşmüş İmparator zindanını açmak için ihtiyacın olan her şey."
+        },
+        "furnitureDecoration": {
+          "title": "Mobilya ve dekorasyon",
+          "sentence": "Bu malzemelerden mobilya yap ve dekorasyon eşyalarını Karakol'una yerleştir."
+        },
+        "keys": {
+          "title": "Pendola Geçidi anahtarları",
+          "sentence": "Pendola Geçidi'ndeki kilitli odaları aç."
+        }
+      },
+      "unlocks": {
+        "outpost": "Karakol seviye {from} → {to}",
+        "questItems": "Görev eşyaları"
+      },
+      "hover": {
+        "build": "{bench} inşası",
+        "unlocks": "Açar",
+        "craft": "Üretimde kullanılır",
+        "research": "Araştırır",
+        "amplified": "Güçlendirilmiş",
+        "furniture": "Mobilya ({n})",
+        "quests": "Görevler ve projeler",
+        "traders": "Tüccarlar",
+        "gives": "Verir",
+        "fieldCraft": "Saha üretimi",
+        "repair": "Tamir",
+        "researchDetail": "Seviye {level} · {rp} AP",
+        "researchLevel": "Seviye {level}",
+        "tradeFor": "{item} için öder",
+        "upgrades": "Güçlendirme yükseltmeleri: {n}"
+      },
+      "more": {
+        "research": "Araştırma sekmesinde araştırma hakkında daha fazlası",
+        "amplified": "Güçlendirilmiş sekmesinde Güçlendirilmiş silahlar hakkında daha fazlası"
+      },
+      "rp": {
+        "calloutTitle": "İnceleme eşyalarının diğer kullanımları",
+        "callout": "Bunlardan birkaçı Araştırma İstasyonu'nu inşa etmek ve yükseltmek için de gerekir; incelemeden önce yeterince sakla.",
+        "calloutUse": "{amount} {item}: {use} için",
+        "scaleLabel": "Araştırma Puanı ölçeği",
+        "scaleTitle": "Araştırma planı maliyeti {min}–{max} AP",
+        "scaleMin": "En ucuz araştırma planı: {name}",
+        "scaleMedian": "Tipik araştırma planı",
+        "scaleMax": "En pahalı araştırma planı: {name}"
+      },
+      "emperor": {
+        "title": "Düşmüş İmparator nasıl açılır",
+        "step1": "Yeniden Yönlendirme etkinliği sırasında Hasarlı İmparator Rölesi'ni etkinleştir ve ondan İmparator Feneri'ni al.",
+        "step2": "Feneri yere koy ve siper al: enkaz yağmur gibi yağar.",
+        "step3": "Büyük parçayı kır. İçinde İmparator Ağ Geçidi Kanalı Taslağı olabilir (taslak, Fırkateyn etkinliği sırasında yerde de bulunabilir).",
+        "step4": "Tezgâhta ARC Kaplamalı, Yalıtımlı ve İletken Bağlama Kollarından İmparator Ağ Geçidi Kanalı üret.",
+        "step5": "Kanalı kullanarak Pendola Geçidi'ndeki Düşmüş İmparator zindanını aç.",
+        "note": "İmparator Feneri ile çıkış yaparsan Mahvolmuş İmparator Feneri'ne dönüşür."
+      },
+      "detail": {
+        "level": "{bench} seviye {level}",
+        "slots": "{n} yuva"
+      }
+    },
+    "tabs": {
+      "new-items": "Yeni eşyalar",
+      "old-items": "Eski eşyalar",
+      "outpost": "Karakol",
+      "research": "Araştırma",
+      "amplified": "Güçlendirilmiş",
+      "crafting": "Üretim",
+      "changes": "Değişiklikler"
+    },
+    "intro": {
+      "new-items": {
+        "title": "Yeni eşyalar ne işe yarıyor?",
+        "sentence": "Her yeni eşya, ne için kullanıldığına göre gruplanmış. Birden fazla kullanımı olan eşyalar birden fazla grupta görünür."
+      },
+      "old-items": {
+        "title": "Hangi eski eşyalar yeni kullanım kazandı?",
+        "sentence": "Zaten bildiğin ve 2.0'da yeni bir şey için gerekli olan eşyalar."
+      },
+      "outpost": {
+        "title": "Karakolumu nasıl genişletirim?",
+        "sentence": "Malzemeleri topla, Karakol'u genişlet ve her yeni yuva için bir oda seç."
+      },
+      "research": {
+        "title": "Araştırma İstasyonu nasıl çalışır?",
+        "sentence": "Araştırma Puanı için eşyaları incele, sonra bunları taslak ve tasarımlara harca."
+      },
+      "amplified": {
+        "title": "Güçlendirilmiş silahlar nasıl çalışır?",
+        "sentence": "Silahçıyı yükselt, sonra maksimum seviyedeki bir silahı Güçlendirilmiş bir silaha çevir."
+      },
+      "crafting": {
+        "title": "Yeni neler üretebilirim?",
+        "sentence": "Yeni raid içi üretimler, silah çıkartmaları ve İmparator Ağ Geçidi anahtarı."
+      },
+      "changes": {
+        "title": "Bildiğim şeylerde neler değişti?",
+        "sentence": "1.45'ten farklı tarifler, geri dönüştürme, tüccar stokları ve zula boyutları."
+      }
+    },
+    "common": {
+      "howItWorks": "Nasıl çalışır",
+      "needs": "Gerekli",
+      "alsoNeeds": "Ayrıca gerekli",
+      "where": "Nerede",
+      "before": "2.0 öncesi",
+      "now": "Donmuş Patika",
+      "close": "Kapat",
+      "more": "+{count} daha"
+    },
+    "crafting": {
+      "new": "Yeni",
+      "field": {
+        "title": "Saha üretimi",
+        "sentence": "Yetenek ağacındaki yeteneklerle raidin ortasında üret.",
+        "newCrafts": "Yeni raid içi üretimler",
+        "unchanged": "{n} tarif değişmedi"
+      },
+      "stencils": {
+        "title": "Silah çıkartmaları",
+        "sentence": "Çıkartmalar bir silahın görünümünü değiştirir ve üretimleri için Şablon Parçaları gerektirir.",
+        "partsHint": "Herhangi bir çıkartmayı uygulamak için gerekli",
+        "cost": "{count} Şablon Parçası",
+        "worksWith": "Şununla çalışır"
+      },
+      "gateway": {
+        "title": "İmparator Ağ Geçidi anahtarı",
+        "sentence": "İmparator Ağ Geçidi'ni açmak için Tezgâh'ta Kanalı üret."
+      }
+    },
+    "old-items": {
+      "noLonger": "Artık şunun için kullanılmıyor"
     }
   }
 }
