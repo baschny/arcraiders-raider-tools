@@ -2,6 +2,28 @@
   "app": {
     "name": "ARC Raiders Tools"
   },
+  "seo": {
+    "home": "Free ARC Raiders tools: map event schedule, interactive loot and ARC spawn maps, quest tracker, craft calculator, looting helper and stash planner.",
+    "schedule": "ARC Raiders map event schedule: see which map conditions like Night Raid or Electromagnetic Storm are active on each map now and which come next.",
+    "craftCalculator": "ARC Raiders craft calculator: work out how many items to craft from your materials to squeeze the most space out of your stash.",
+    "quests": "ARC Raiders quest tracker: every trader quest in an interactive tree, with the maps they take place on and their blueprint rewards. Track your progress.",
+    "lootHelper": "ARC Raiders looting helper: follow the crafting chains behind each item to know which materials are worth looting during raids.",
+    "quartermaster": "ARC Raiders Quartermaster: plan your stash, loadouts and hideout upgrade requirements in one place.",
+    "maps": "Interactive ARC Raiders maps: find where to loot any item and where ARC enemies spawn, on every map and for every map condition.",
+    "mapSizes": "How big is each ARC Raiders map? The playable area of every raid map measured in meters and drawn side by side at the same scale.",
+    "whatsNew": {
+      "frozen-trail": {
+        "title": "Frozen Trail: what's new in ARC Raiders 2.0",
+        "description": "Everything new in ARC Raiders 2.0 Frozen Trail: what each new item is for, the Outpost, Research Station, Amplified weapons and what changed."
+      },
+      "old-items": "Which ARC Raiders items you already know got new uses in 2.0 Frozen Trail, and what they are needed for now.",
+      "outpost": "How to expand your Outpost in ARC Raiders 2.0 Frozen Trail: the materials each expansion needs and the rooms you can pick for each new slot.",
+      "research": "How the Research Station works in ARC Raiders 2.0 Frozen Trail: study items for Research Points and spend them on blueprints and designs.",
+      "amplified": "How Amplified weapons work in ARC Raiders 2.0 Frozen Trail: upgrade the Gunsmith, then turn a max-level weapon into an Amplified one.",
+      "crafting": "What is new to craft in ARC Raiders 2.0 Frozen Trail: in-raid crafts, weapon stencils and the Emperor Gateway key.",
+      "changes": "What changed in ARC Raiders 2.0 Frozen Trail since 1.45: recipes, recycling, trader stock and stash sizes."
+    }
+  },
   "shared": {
     "language": "Idioma",
     "loading": "Carregando...",
@@ -1326,6 +1348,37 @@
       "Wreck03": "ARC wreck",
       "Wrh": "Warehouse furniture",
       "vent03": "Vent"
+    },
+    "sizes": {
+      "viewLabel": "View",
+      "viewSizes": "Map sizes",
+      "loading": "Measuring the maps…",
+      "loadError": "The map data could not be loaded. Try again in a moment.",
+      "empty": "No map data to measure.",
+      "title": "How big is each map?",
+      "subtitle": "Every raid map measured from its in-game map widget: the playable boundary in meters, drawn at the same scale. One grid square is 100 m.",
+      "statMaps": "maps",
+      "statTotal": "total playable",
+      "statLargest": "largest",
+      "statRatio": "largest / smallest",
+      "overlayTitle": "Overlay to scale",
+      "overlayLabel": "All maps' playable areas overlaid to scale",
+      "overlayToggleHint": "Show or hide this map.",
+      "multiplesTitle": "Same scale",
+      "multiplesHint": "One kilometer square for reference.",
+      "areaTitle": "Playable area",
+      "areaHint": "Square kilometers of walkable surface.",
+      "dimTitle": "Edge to edge",
+      "dimHint": "Longest oriented span, with the short span inside.",
+      "length": "length",
+      "width": "width",
+      "colMap": "Map",
+      "colArea": "Area km²",
+      "colBbox": "BBox W × H (m)",
+      "colLw": "Length × width (m)",
+      "colDiameter": "Diameter (m)",
+      "colFill": "Fill",
+      "footnote": "Stella Montis lies inside a mountain; its playable boundary reaches past its smaller map widget, so its fill reads above 100%."
     }
   },
   "whatsNew": {
