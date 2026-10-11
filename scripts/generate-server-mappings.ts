@@ -171,7 +171,8 @@ function main(): void {
   const structures = new Map<string, string>();
   for (const item of arc.items.values() as IterableIterator<CanonItem>) {
     if (item.type !== 'InventoryStructure' && !item.internalName?.startsWith('DA_ModSlot_')) continue;
-    const name = itemName(item);
+    // No authored/generated names (arc-data A36): fall back to internalName, then tag.
+    const name = itemName(item) || item.internalName || item.tag;
     if (name) structures.set(String(item.id), name);
   }
 
