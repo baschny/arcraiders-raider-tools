@@ -1,5 +1,6 @@
 import { toItemRef, type WhatsNewPageData } from '../../hooks/useWhatsNewData';
 import type { GlyphName, ItemRef, TileSpec } from '../../components';
+import { nameKey } from '../../../../shared/gamedata/loader';
 import type { WhatsNewFieldRecipe } from '../../../../shared/gamedata/types';
 
 export interface SkillPill {
@@ -10,7 +11,7 @@ export interface SkillPill {
   isNew: boolean;
 }
 
-/** The field-crafting skills in skill-tree order (base skill first) and their game icons. */
+/** The field-crafting skills in skill-tree order (base skill first) and their game icons, by skill name key (`nameKey`). */
 export const SKILL_ORDER = ['in_round_crafting', 'traveling_tinkerer', 'nomadic_crafting'] as const;
 const SKILL_GLYPHS: Record<string, GlyphName> = {
   in_round_crafting: 'skill-in-round-crafting',
@@ -21,7 +22,6 @@ const skillRank = (id: string) => {
   const i = (SKILL_ORDER as readonly string[]).indexOf(id);
   return i < 0 ? SKILL_ORDER.length : i;
 };
-const bySkillOrder = (a: string, b: string) => skillRank(a) - skillRank(b);
 
 export interface CraftRecipe {
   result: ItemRef;
@@ -82,10 +82,12 @@ export function buildFieldCraftingData(data: WhatsNewPageData): FieldCraftingDat
   const afterIds = [...new Set((fc?.skillsAfter ?? []).map(normalizeSkillId))];
   const newIds = new Set(afterIds.filter((id) => !beforeIds.includes(id)));
 
+  const keyOf = (id: string) => nameKey(nodes[id]?.nameEn) || id;
+  const bySkillOrder = (a: string, b: string) => skillRank(keyOf(a)) - skillRank(keyOf(b));
   const pill = (rawId: string): SkillPill => {
     const id = normalizeSkillId(rawId);
     const node = nodes[id];
-    return { id, name: text[id]?.name ?? node?.nameEn ?? id, glyph: SKILL_GLYPHS[id], isNew: newIds.has(id) };
+    return { id, name: text[id]?.name ?? node?.nameEn ?? id, glyph: SKILL_GLYPHS[keyOf(id)], isNew: newIds.has(id) };
   };
 
   const all = (fc?.recipes ?? []).map((r) => ({

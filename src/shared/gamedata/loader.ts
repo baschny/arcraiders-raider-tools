@@ -99,6 +99,19 @@ export function textOf(loaded: { text: TextFile }, slug: string): TextEntry | un
 }
 
 /** Localized name with the structure's English name as fallback. */
+/**
+ * Stable code key of a record from its English name ("Tian Wen" → tian_wen). Traders and skills
+ * have numeric ids; the site keys portraits, glyphs and display orders by this instead.
+ */
+export function nameKey(nameEn: string | null | undefined): string {
+  return (nameEn ?? '')
+    .toLowerCase()
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '_')
+    .replace(/^_+|_+$/g, '');
+}
+
 export function nameOf(
   loaded: { text: TextFile },
   slug: string,

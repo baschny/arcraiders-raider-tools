@@ -17,6 +17,7 @@ import type {
   WhatsNewVerdict,
   WhatsNewVersion,
 } from '../../../src/shared/gamedata/types';
+import type { CanonRecord } from '../arcData';
 import type { GenContext } from '../context';
 import type { DomainModule } from './types';
 
@@ -131,6 +132,28 @@ function skillList(ctx: GenContext, ids: number[] | undefined, where: string): s
     else ctx.report.add(DROP_REFS, `${id} skill (${where})`);
   }
   return out;
+}
+
+/**
+ * Pre-2.0 skills are other CharacterSkill assets than the current tree's (DA_CharacterSkill_X vs
+ * DA_CharacterSkill_X_OctTree). Each is mapped onto the current tree skill with the same English
+ * name, so the site can show it as that node; unmatched ones stay as they are.
+ */
+function skillListBefore(ctx: GenContext, ids: number[] | undefined, where: string): string[] {
+  const current = new Map<string, string>();
+  for (const n of ctx.arc.file<CanonRecord & { skillId?: number }>('skill-trees').values()) {
+    if (n.kind !== 'skillNode' || n.skillId == null) continue;
+    const en = ctx.arc.items.get(n.skillId)?.name?.en;
+    if (en && !current.has(en)) current.set(en, String(n.skillId));
+  }
+  return [
+    ...new Set(
+      skillList(ctx, ids, where).map((id) => {
+        const en = ctx.arc.items.get(Number(id))?.name?.en;
+        return (en && current.get(en)) || id;
+      }),
+    ),
+  ];
 }
 
 /** `via` is optional context (unlock items without a slug): dropped alone, the use stays. */
@@ -263,7 +286,7 @@ export function buildWhatsNewVersion(ctx: GenContext, raw: RawWhatsNew): WhatsNe
       cost: amounts(ctx, r.cost, 'fieldCrafting'),
       costBefore: amounts(ctx, r.costBefore, 'fieldCrafting'),
       skills: skillList(ctx, r.skills, 'fieldCrafting'),
-      skillsBefore: skillList(ctx, r.skillsBefore, 'fieldCrafting'),
+      skillsBefore: skillListBefore(ctx, r.skillsBefore, 'fieldCrafting'),
       status: r.status,
     });
   }
@@ -282,7 +305,7 @@ export function buildWhatsNewVersion(ctx: GenContext, raw: RawWhatsNew): WhatsNe
     blueprints: lists(raw.blueprints, 'blueprints'),
     designs: lists(raw.designs, 'designs'),
     fieldCrafting: {
-      skillsBefore: skillList(ctx, fc?.skillsBefore, 'fieldCrafting'),
+      skillsBefore: skillListBefore(ctx, fc?.skillsBefore, 'fieldCrafting'),
       skillsAfter: skillList(ctx, fc?.skillsAfter, 'fieldCrafting'),
       recipes: fieldRecipes,
     },

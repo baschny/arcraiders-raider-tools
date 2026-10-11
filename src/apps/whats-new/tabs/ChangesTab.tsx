@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { useLocale } from '../../../shared/context/LocaleContext';
-import { nameOf } from '../../../shared/gamedata/loader';
+import { nameKey, nameOf } from '../../../shared/gamedata/loader';
 import type { WhatsNewTradeLine } from '../../../shared/gamedata/types';
 import { Package, Recycle } from 'lucide-react';
 import { CompareRows, ItemGrid, ItemTile, PurposeGroup, SegmentedControl, TabIntro } from '../components';
@@ -57,7 +57,8 @@ export function ChangesTab({ data }: ChangesTabProps) {
   const recipes = buildRecipeRows(changes, refOf, labels);
   const recycling = buildRecyclingRows(changes, refOf);
   const stash = buildStashRows(changes, refOf, formatNumber);
-  const traders = orderTraders(changes?.traders);
+  const traderKey = (npc: string) => nameKey(data.trades?.structure.traders[npc]?.nameEn) || npc;
+  const traders = orderTraders(changes?.traders, traderKey);
   const [trader, setTrader] = useState<string>(traders[0]?.npc ?? '');
   const current = traders.find((x) => x.npc === trader) ?? traders[0];
   const traderName = (npc: string) => (data.trades ? nameOf(data.trades, npc, npc) : npc);
@@ -106,7 +107,7 @@ export function ChangesTab({ data }: ChangesTabProps) {
             ariaLabel={t('whatsNew.changes.traders')}
             value={current.npc}
             onChange={setTrader}
-            options={traders.map((x) => ({ value: x.npc, label: traderName(x.npc), image: TRADER_PORTRAITS[x.npc] }))}
+            options={traders.map((x) => ({ value: x.npc, label: traderName(x.npc), image: TRADER_PORTRAITS[traderKey(x.npc)] }))}
           />
           <TradeGroup title={t('whatsNew.changes.tradeNew')} lines={current.added ?? []} refOf={refOf} priceOf={priceOf} />
           <TradeGroup title={t('whatsNew.changes.tradeGone')} lines={current.removed ?? []} refOf={refOf} priceOf={priceOf} />

@@ -1,5 +1,5 @@
 import { useLocale } from '../../../shared/context/LocaleContext';
-import { nameOf } from '../../../shared/gamedata/loader';
+import { nameKey, nameOf } from '../../../shared/gamedata/loader';
 import { HowItWorks, ItemTile, NeedsCard, Panel, TabIntro } from '../components';
 import type { HowItWorksStep, ItemRef } from '../components';
 import type { WhatsNewPageData } from '../hooks/useWhatsNewData';
@@ -80,7 +80,8 @@ export function OutpostTab({ data }: OutpostTabProps) {
   const design = designExample(data);
   const trades = celesteTrades(data);
   const base = toItemRef(catalog, 'base_room');
-  const celesteName = nameOf(data.trades, 'celeste', 'Celeste');
+  const celesteId = Object.values(data.trades.structure.traders).find((x) => nameKey(x.nameEn) === 'celeste')?.id ?? '';
+  const celesteName = nameOf(data.trades, celesteId, 'Celeste');
   const stationIcon = tiers.flatMap((x) => x.unlocks).find((u) => u.benchId === 'research_station')?.item.icon;
 
   const steps: HowItWorksStep[] = [

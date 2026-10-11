@@ -18,7 +18,7 @@ function makeCtx(): GenContext {
   ]);
   const slugTable: Record<string, Record<number, string>> = { quests: { 50: 'q_one' } };
   return {
-    arc: { items } as never,
+    arc: { items, file: () => new Map() } as never,
     slugs: { slugOf: (k: string, key: number) => slugTable[k]?.[Number(key)] ?? null } as never,
     report: new Report(),
     shippedItems: new Map([

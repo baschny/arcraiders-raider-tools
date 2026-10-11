@@ -3,7 +3,7 @@ import type { Amount, WhatsNewChanges, WhatsNewTraderChange } from '../../../../
 import type { ItemRef } from '../../components';
 import { toItemRef, type WhatsNewPageData } from '../../hooks/useWhatsNewData';
 
-/** Display order of trader diffs. */
+/** Display order of trader diffs, by trader name key (`nameKey`). */
 export const TRADER_ORDER = ['celeste', 'shani', 'tian_wen', 'apollo', 'lance'];
 
 export const TRADER_PORTRAITS: Record<string, string> = {
@@ -14,10 +14,10 @@ export const TRADER_PORTRAITS: Record<string, string> = {
   tian_wen: '/images/trader/tian_wen.png',
 };
 
-/** Traders in display order; unknown traders follow in their original order. */
-export function orderTraders<T extends { npc: string }>(traders: T[] = []): T[] {
+/** Traders in display order; unknown traders follow in their original order. `keyOf` maps an npc id to its name key. */
+export function orderTraders<T extends { npc: string }>(traders: T[] = [], keyOf: (npc: string) => string = (npc) => npc): T[] {
   const rank = (npc: string) => {
-    const i = TRADER_ORDER.indexOf(npc);
+    const i = TRADER_ORDER.indexOf(keyOf(npc));
     return i === -1 ? TRADER_ORDER.length : i;
   };
   return traders.map((t, i) => ({ t, i })).sort((a, b) => rank(a.t.npc) - rank(b.t.npc) || a.i - b.i).map((x) => x.t);
