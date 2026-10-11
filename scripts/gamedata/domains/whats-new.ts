@@ -22,7 +22,7 @@ import type { DomainModule } from './types';
 
 /**
  * Domain 'whats-new': the diff between two game versions, from arc-data/whats-new/<version>.json
- * (written by embark-api scripts/build-whats-new.js, verdict overlay already applied). Keyed by
+ * (written by embark-api scripts/build/build-whats-new.js, verdict overlay already applied). Keyed by
  * version slug. Asset ids become slugs; references without a slug are dropped and reported under
  * `whatsNew:*` (the file stays locale independent: names come from the items text).
  */

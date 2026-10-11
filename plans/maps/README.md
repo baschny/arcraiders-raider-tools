@@ -51,7 +51,7 @@ before the next wave starts.
   (or deleting keys whose code references were removed). Never change existing values.
 - Do not start the dev server or a browser; verify with `npm run build`, `npm run lint` and `npm test`.
 - embark-api: never edit `asset-index-data/` or `asset-index-code/`; never print or commit `aes-public.txt`;
-  never run `scripts/download-game`. The external drive `/Volumes/ZWO-T` may be missing: code must degrade
+  never run `scripts/extract/download-game`. The external drive `/Volumes/ZWO-T` may be missing: code must degrade
   (the tile step already falls back to the 2048 px build images).
 - zsh has `noclobber`: use `>|` to overwrite files; `rm` is interactive, use `/bin/rm`.
 - Imperative canvas code stays in `engine/` classes (React Compiler lint forbids ref access during render).

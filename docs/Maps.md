@@ -58,7 +58,7 @@ of `public/data/map-data/` (see the runbook above).
 ## Data flow
 
 ```
-embark-api  scripts/build-map-features.js        -> data-game-extract/current/map-features/  (index.json, maps/*.json)
+embark-api  scripts/build/build-map-features.js        -> data-game-extract/current/map-features/  (index.json, maps/*.json)
 raider-tools npm run generate:maps               -> public/data/map-data/                      (committed to git)
             git push to main                     -> Amplify deploy, served at /data/map-data/
 ```
@@ -112,9 +112,9 @@ After a game patch, once embark-api has the new game files:
 
 ```sh
 # in embark-api
-scripts/extract-all            # maps, map textures, map features build
+scripts/extract/extract-all            # maps, map textures, map features build
 # the UI icons are not in extract-all yet (only needed when icons changed):
-scripts/arc-explorer export-textures '(Pioneer/UI/Assets/Icons/(T_|Map/|Map_Conditions/)|Core/UI/UI_Elements/Icons/(Map|Enemies|Ping)/|Pioneer/UI/Assets/Enemies/)'
+scripts/extract/arc-explorer export-textures '(Pioneer/UI/Assets/Icons/(T_|Map/|Map_Conditions/)|Core/UI/UI_Elements/Icons/(Map|Enemies|Ping)/|Pioneer/UI/Assets/Enemies/)'
 
 # in raider-tools
 npm run generate:maps          # EMBARK_API_DIR=... when not a sibling checkout (e.g. in a worktree)

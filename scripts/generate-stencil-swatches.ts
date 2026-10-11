@@ -2,7 +2,7 @@
  * Generates the weapon-stencil colour swatches shown on the what's-new crafting tab as WebP (quality 90).
  *
  * The swatches are composed from the game's stencil icon materials by embark-api's
- * `scripts/compose-stencil-swatches.py` (colours, patterns and coverage come from the real
+ * `scripts/extract/compose-stencil-swatches.py` (colours, patterns and coverage come from the real
  * `MI_<Skin>_Icon` instances; the diagonal layout is a reconstruction, see that script's header).
  *
  * Input:  EMBARK_API_DIR/data-game-extract/current/ui/stencils/<Skin>.png
@@ -51,7 +51,7 @@ async function main(): Promise<void> {
     console.log(`${slug}.webp  ${buf.length} bytes`);
   }
 
-  if (missing.length) throw new Error(`Stencil swatches not found (run embark-api scripts/compose-stencil-swatches.py):\n${missing.join('\n')}`);
+  if (missing.length) throw new Error(`Stencil swatches not found (run embark-api scripts/extract/compose-stencil-swatches.py):\n${missing.join('\n')}`);
   console.log(`Wrote ${Object.keys(STENCILS).length} stencil swatches to ${outDir}`);
 }
 

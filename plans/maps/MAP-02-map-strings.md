@@ -10,7 +10,7 @@ treats game content as generated, per-locale data (`items.<locale>.json`) and UI
 ## Scope
 
 1. Find the game string-table keys behind map, condition, area and enemy names in the map features build
-   (`build-map-features.js`); emit the keys (not only English text) in `index.json` / `maps/*.json`.
+   (`scripts/build/build-map-features.js`); emit the keys (not only English text) in `index.json` / `maps/*.json`.
 2. Emit `map-strings.<locale>.json` (key → text) for the 20 locales the site supports, from the game
    localization (`ArcRaidersAssets/Localization/Languages/<lang>/Game.json` or the CUE4Parse export, whichever
    holds these tables). Locale codes as in `src/shared/i18n` (fallback `pt-BR → pt → en`).

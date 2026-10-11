@@ -8,7 +8,7 @@ Repo: raider-tools. Depends on MAP-05.
    comments, scripts and `.gitignore`.
 2. Dashboard: a Maps card in `src/pages/Dashboard.tsx` (keys `dashboard.tools.maps` in `en.json`, new key only).
    Check Header and Sidebar nav entries and `usePageTitle` (already present).
-3. Docs: `docs/Maps.md` — what the tool does, the data flow (embark-api `build-map-features.js` →
+3. Docs: `docs/Maps.md` — what the tool does, the data flow (embark-api `scripts/build/build-map-features.js` →
    `generate:maps` → committed `public/data/map-data/` → Amplify deploy), the per-patch runbook, the URL params (`mode`, `map`,
    `cond`, `layer`, `item`, `show`, `enemies`) and prefs key `raider-tools:maps-prefs`, and the scoring rules
    (pool split, category match, plants, nature spots; no drop-rate estimates, no blueprints and why).

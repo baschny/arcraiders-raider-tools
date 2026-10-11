@@ -1,6 +1,6 @@
 # MAP-01 Data contract: schema version, documented arrays, item ids
 
-Repos: embark-api (`scripts/build-map-features.js`), raider-tools (`src/apps/maps/data/`).
+Repos: embark-api (`scripts/build/build-map-features.js`), raider-tools (`src/apps/maps/data/`).
 
 ## Why
 
@@ -10,7 +10,7 @@ breaks on renames and localized names. Committed data that changes per game patc
 
 ## Scope
 
-1. embark-api `build-map-features.js`:
+1. embark-api `scripts/build/build-map-features.js`:
    - Add to `index.json`: `schemaVersion: 1`, `manifest` (game manifest id), `gameVersion` (if known), `built`
      (ISO date).
    - Per loot item in `index.items`: add `slug` = arctracker item id from
@@ -26,7 +26,7 @@ breaks on renames and localized names. Committed data that changes per game patc
 
 ## Acceptance
 
-- `node scripts/build-map-features.js` runs and writes the new fields; the count of unmapped items is printed
+- `node scripts/build/build-map-features.js` runs and writes the new fields; the count of unmapped items is printed
   and is 0 or each case is explained in the report.
 - raider-tools `npm run generate:maps && npm run build && npm run lint && npm test` pass.
 - Searching an item whose localized name differs from English still scores the same as before.

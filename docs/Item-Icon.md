@@ -14,7 +14,7 @@ It reads the shipped item slugs from `public/data/game/items.json` (or `GAME_DAT
 the item records from `arc-data`. For each item, the first source that converts wins:
 
 1. Own texture export: `arc-data` `icon` path under
-   `embark-api/data-game-extract/current/textures/PioneerGame/Content/` (`.png`). Populated by `scripts/extract-all` (ticket A11).
+   `embark-api/data-game-extract/current/textures/PioneerGame/Content/` (`.png`). Populated by `scripts/extract/extract-all` (ticket A11).
 2. Asset index: the `image` column of `embark-api/asset-index-data/asset_index.csv` for the item's asset id,
    resolved relative to `asset-index-data/`.
 3. None: the generator logs the item as a fallback and no image is written; `itemIconUrl` then

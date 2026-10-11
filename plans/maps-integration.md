@@ -21,7 +21,7 @@ decided or not built yet.
 ## Hosting, if the data outgrows git
 
 v1 commits the generated data (about 37 MB, 32 MB of it tiles) and regenerates it per patch. If the churn in git
-becomes a problem, the alternative considered was: `build-map-features.js` publishes versioned data
+becomes a problem, the alternative considered was: `scripts/build/build-map-features.js` publishes versioned data
 (`maps/<manifest>/…` plus a small `maps/latest.json` pointer) to the S3/CloudFront setup behind
 `api.raider-tools.app`, with immutable caching per manifest, so a game update needs no app release. The CSP
 already allows `connect-src https://api.raider-tools.app` and `img-src https:`.

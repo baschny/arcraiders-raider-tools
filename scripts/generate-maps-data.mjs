@@ -3,7 +3,7 @@
 // The output is committed like the other generated game data (a game patch means: rebuild in embark-api,
 // regenerate here, commit, deploy). It is not part of `npm run generate`, because it needs the embark-api build.
 //
-//   (in embark-api) node scripts/build-map-features.js
+//   (in embark-api) node scripts/build/build-map-features.js
 //   npm run generate:maps
 //
 // embark-api is found through the env var EMBARK_API_DIR, by default as the sibling directory ../embark-api of this
@@ -47,7 +47,7 @@ if (!fs.existsSync(embarkApi)) {
   process.exit(1);
 }
 if (!fs.existsSync(path.join(build, 'index.json'))) {
-  console.error(`No map features build in ${build} — run node scripts/build-map-features.js in embark-api first.`);
+  console.error(`No map features build in ${build} — run node scripts/build/build-map-features.js in embark-api first.`);
   process.exit(1);
 }
 
@@ -198,7 +198,7 @@ for (const f of stringFiles) writeJson(f, JSON.parse(fs.readFileSync(path.join(b
 if (stringFiles.length) console.log(`map strings: ${stringFiles.length} locales`);
 
 // Game UI icons (white on transparent, tinted in the browser). Export them in embark-api with:
-//   scripts/arc-explorer export-textures '(Pioneer/UI/Assets/Icons/(T_|Map/|Map_Conditions/)|Core/UI/UI_Elements/Icons/(Map|Enemies|Ping)/|Pioneer/UI/Assets/Enemies/)'
+//   scripts/extract/arc-explorer export-textures '(Pioneer/UI/Assets/Icons/(T_|Map/|Map_Conditions/)|Core/UI/UI_Elements/Icons/(Map|Enemies|Ping)/|Pioneer/UI/Assets/Enemies/)'
 const MAP = 'Core/UI/UI_Elements/Icons/Map/';
 const PING = 'Core/UI/UI_Elements/Icons/Ping/';
 const ENEMY = 'Core/UI/UI_Elements/Icons/Enemies/';
