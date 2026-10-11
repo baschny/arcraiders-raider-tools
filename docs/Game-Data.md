@@ -46,7 +46,7 @@ embark-api/arc-data ──► scripts/generate-game-data.ts ──► public/dat
 | `amplification` | Amplified weapon variants and the upgrade graph, plus the Amplifications of each weapon (names, effects, requires/excludes, research, cost). |
 | `maps` | Map slugs and names, map event types. |
 | `classification` | Rarities (level + game color), stash groups in game order with subgroups, and the categories/themes used by shipped items with their parents. Texts: `rarities`, `groups`, `subgroups`, `categories`, `themes` (by id). |
-| `whats-new` | Version diff keyed by version slug (`versions.frozen-trail`): new items with verdicts and uses, gained/lost uses, keep paths, researchable vs. find-only blueprints/designs, field crafting, before/after changes. From `arc-data/whats-new/<version>.json`; no text file (names come from `items`). |
+| `whats-new` | Version diff keyed by version slug (`versions.frozen-trail`): new items with verdicts and uses, gained/lost uses, keep paths, researchable vs. find-only blueprints/designs, field crafting, before/after changes. From `arc-data/derived/whats-new/<version>.json`; no text file (names come from `items`). |
 
 `Requirement` turns the game's gate items into meaning. Its `kind` is one of `bench` (with
 `level`), `outpostLevel`, `quest`, `skill`, `unlock` (a learned blueprint or design) or `item`.
@@ -55,7 +55,7 @@ embark-api/arc-data ──► scripts/generate-game-data.ts ──► public/dat
 
 `amplification.json` holds `weapons[baseSlug]` (the key of the weapon's tier chain, e.g. `il_toro_i`):
 `fromItemId`, `variants` and `graph` (the upgrade edges into the Amplified items), `repairItemId`, and, from
-`arc-data/amplifications.json` (optional; without it these fields are absent): `maxAmplifications`,
+`arc-data/derived/amplifications.json` (optional; without it these fields are absent): `maxAmplifications`,
 `amplifiedItemId` (the Amplified base weapon), `baseEffects[]` and `amplifications[]`.
 
 An `Amplification` is `{ id, icon?, effects[], requires[], excludes[], researchItemId?, variantStep? }`:

@@ -39,7 +39,7 @@ const TYPE_ALIASES: Record<string, string> = { Lockers_02: 'Lockers', Crate01: '
 const RARITIES = new Set<string>(['Common', 'Uncommon', 'Rare', 'Epic', 'Legendary']);
 /** Map layers by their English name in the data (no game string). */
 const LAYER_KEYS: Record<string, string> = { Surface: 'surface', Underground: 'underground', 'Upper floor': 'upperFloor', 'Lower floor': 'lowerFloor' };
-/** Why a condition is not offered (embark-api scripts/build/build-map-features.js EXCLUDED, plus the schedule). */
+/** Why a condition is not offered (embark-api lib/derived/map-features.js EXCLUDED, plus the schedule). */
 const REASON_KEYS: Record<string, string> = {
   'on hiatus': 'onHiatus', 'never released': 'neverReleased', tutorial: 'tutorial', 'practice range': 'practiceRange',
   'not in the schedule': 'notInSchedule',

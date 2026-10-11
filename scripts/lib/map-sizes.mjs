@@ -1,5 +1,5 @@
 // Playable-area sizes of the raid maps, computed at sync time instead of in the browser (like the area outlines in
-// area-outlines.mjs). The input is the map features build of embark-api (data-game-extract/current/map-features/):
+// area-outlines.mjs). The input is the map features build of embark-api (embark-api arc-data/derived/map-features/):
 // each map carries `world` [worldPosition.X, worldPosition.Y, worldSize.X, worldSize.Y] (cm) of the map texture and
 // `bounds`, the playable-area outlines in UV of that texture. Converting UV to meters is exact:
 //   1 UV unit = worldSize / 100 m.  The playable area scales by worldSize.X * worldSize.Y / 10000.

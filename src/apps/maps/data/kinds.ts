@@ -121,7 +121,7 @@ export const KINDS: SpotKind[] = [
   k('Puzzles', 'TubeTerminal', '#c27cb3', 'terminal', { rx: /TubeRequestTerminal|TubeDeliveryStation/ }),
   k('Puzzles', 'PuzzleDoor', '#a98bc9', 'bunker', { rx: /RandomizedSequencePuzzleDoor|RootCellar|InteractiveSecurityDoor|InteractiveGate_|EventBunker|LaunchTowerActivity|ElevatorDoor/ }),
   k('Puzzles', 'HotelKey', '#d9cc5c', 'lock', { rx: /HotelKey|HotelPuzzle/ }),
-  // Map features: level actors (export-maps actors[]); classes picked in scripts/build/build-map-features.js.
+  // Map features: level actors (export-maps actors[]); classes picked in lib/derived/map-features.js.
   k('Features', 'FieldDepot', '#d1a04c', 'field-station', { major: true, rx: /ColonySupplyStation/ }),
   // Spawned per round: field crates (carried to a field depot), power cores, supply call stations (the supply drop
   // lands next to the station; no fixed drop spots in the level), snow piles.

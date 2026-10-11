@@ -21,8 +21,8 @@ import type { GenContext } from '../context';
 import type { DomainModule } from './types';
 
 /**
- * Domain 'whats-new': the diff between two game versions, from arc-data/whats-new/<version>.json
- * (written by embark-api scripts/build/build-whats-new.js, verdict overlay already applied). Keyed by
+ * Domain 'whats-new': the diff between two game versions, from arc-data/derived/whats-new/<version>.json
+ * (written by embark-api lib/derived/whats-new.js, verdict overlay already applied). Keyed by
  * version slug. Asset ids become slugs; references without a slug are dropped and reported under
  * `whatsNew:*` (the file stays locale independent: names come from the items text).
  */
@@ -294,7 +294,7 @@ export function buildWhatsNewVersion(ctx: GenContext, raw: RawWhatsNew): WhatsNe
 const module: DomainModule = {
   domain: 'whats-new',
   build(ctx) {
-    const dir = path.join(ctx.arc.dir, 'whats-new');
+    const dir = path.join(ctx.arc.dir, 'derived', 'whats-new');
     const versions: Record<string, WhatsNewVersion> = {};
     if (fs.existsSync(dir)) {
       for (const f of fs.readdirSync(dir).sort()) {

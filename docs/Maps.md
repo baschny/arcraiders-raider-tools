@@ -40,7 +40,7 @@ texture) through its `world` size in cm — 1 UV unit = `worldSize / 100` m, so 
 writes the committed `public/data/map-data/sizes.json`. The measurement lives in `scripts/lib/map-sizes.mjs`
 (`computeSizes`, unit-tested in the same folder), next to the area-outline generation; the client only loads and
 renders the file (`MapSizes.tsx`, `useMapSizes` in `data/useMapData.ts`). The source is the same embark-api map
-features build as the explorer (`data-game-extract/current/map-features/`); `arc-data` has no playable boundary.
+features output as the explorer (`arc-data/derived/map-features/`); `arc-data` has no playable boundary.
 
 The page shows, in one left-aligned column:
 
@@ -58,7 +58,8 @@ of `public/data/map-data/` (see the runbook above).
 ## Data flow
 
 ```
-embark-api  scripts/build/build-map-features.js        -> data-game-extract/current/map-features/  (index.json, maps/*.json)
+embark-api  scripts/build/build-canonical.js (derived)  -> arc-data/derived/map-features/  (index.json, maps/*.json, map-strings.*.json)
+                                                        -> data-game-extract/current/map-features/img/  (2048 px images, git-ignored)
 raider-tools npm run generate:maps               -> public/data/map-data/                      (committed to git)
             git push to main                     -> Amplify deploy, served at /data/map-data/
 ```
@@ -112,7 +113,8 @@ After a game patch, once embark-api has the new game files:
 
 ```sh
 # in embark-api
-scripts/extract/extract-all            # maps, map textures, map features build
+scripts/extract/extract-all            # maps, map textures; ends with build-canonical --only-derived (map features)
+node scripts/build/build-canonical.js --commit   # rebuilds canonical + arc-data/derived/ (commit lands in arc-data)
 # the UI icons are not in extract-all yet (only needed when icons changed):
 scripts/extract/arc-explorer export-textures '(Pioneer/UI/Assets/Icons/(T_|Map/|Map_Conditions/)|Core/UI/UI_Elements/Icons/(Map|Enemies|Ping)/|Pioneer/UI/Assets/Enemies/)'
 

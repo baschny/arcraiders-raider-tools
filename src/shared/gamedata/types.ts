@@ -559,7 +559,7 @@ export interface LoadedDomain<D extends GameDomain> {
 
 // ---------------------------------------------------------------------------------------------
 // whats-new (domain 'whats-new'): the diff between two game versions, keyed by version slug.
-// Built from embark-api arc-data/whats-new/<version>.json. Locale-independent; names come from
+// Built from embark-api arc-data/derived/whats-new/<version>.json. Locale-independent; names come from
 // the items catalog. Current-state system data lives in the outpost, research, blueprints,
 // stencils, amplification, trades, benches and skilltree domains.
 

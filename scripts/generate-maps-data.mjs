@@ -3,12 +3,14 @@
 // The output is committed like the other generated game data (a game patch means: rebuild in embark-api,
 // regenerate here, commit, deploy). It is not part of `npm run generate`, because it needs the embark-api build.
 //
-//   (in embark-api) node scripts/build/build-map-features.js
+//   (in embark-api) node scripts/build/build-canonical.js   # derived outputs: arc-data/derived/map-features/
 //   npm run generate:maps
 //
 // embark-api is found through the env var EMBARK_API_DIR, by default as the sibling directory ../embark-api of this
 // checkout (set it when working in a git worktree, e.g. EMBARK_API_DIR=~/src/embark-api npm run generate:maps).
-// Map slugs (the page URLs /maps/<slug>) come from arc-data (GAME_DATA_DIR, default <embark-api>/arc-data).
+// Map slugs (the page URLs /maps/<slug>) come from arc-data (GAME_DATA_DIR, default <embark-api>/arc-data), and so
+// does the map features JSON (arc-data/derived/map-features/); only the map images (data-game-extract/current/
+// map-features/img, game art) and the full-size textures come from the game export.
 //
 // Output (public/data/map-data/):
 //   index.json                     map list, items, loot tables, enemies, quests (`built` comes from the build)
@@ -37,17 +39,18 @@ const PUBLIC_SCHEMA_VERSION = 3;
 const root = path.resolve(import.meta.dirname, '..');
 const embarkApi = path.resolve(process.env.EMBARK_API_DIR || path.join(root, '..', 'embark-api'));
 const extract = path.join(embarkApi, 'data-game-extract', 'current');
-const build = path.join(extract, 'map-features');
+const buildImages = path.join(extract, 'map-features'); // img/<Map>.jpg: 2048 px images (git-ignored game art)
 const textures = path.join(extract, 'textures', 'PioneerGame', 'Content', 'Pioneer');
 const out = path.join(root, 'public', 'data', 'map-data');
 const arcData = path.resolve(process.env.GAME_DATA_DIR || path.join(embarkApi, 'arc-data'));
+const build = path.join(arcData, 'derived', 'map-features'); // index.json, maps/*.json, map-strings.*.json
 
 if (!fs.existsSync(embarkApi)) {
   console.error(`embark-api not found at ${embarkApi}.\nSet EMBARK_API_DIR to your embark-api checkout (default: the sibling directory ../embark-api).`);
   process.exit(1);
 }
 if (!fs.existsSync(path.join(build, 'index.json'))) {
-  console.error(`No map features build in ${build} — run node scripts/build/build-map-features.js in embark-api first.`);
+  console.error(`No map features in ${build} — run node scripts/build/build-canonical.js in embark-api first.`);
   process.exit(1);
 }
 
@@ -76,7 +79,7 @@ const usedTiles = new Map(); // tile set name -> meta
 async function tileSet(image) {
   if (!tileSets.has(image)) {
     tileSets.set(image, (async () => {
-      const built = path.join(build, image);
+      const built = path.join(buildImages, image);
       const src = (await findSource(built, sources)) ?? built;
       if (sources.length && src === built) console.warn(`WARNING: ${image}: no matching game texture, tiling the build image`);
       const hash = tilesHash(src);

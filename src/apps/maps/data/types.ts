@@ -1,4 +1,4 @@
-// Shapes of the map features build (embark-api scripts/build/build-map-features.js, docs/Map-Features.md there).
+// Shapes of the map features build (embark-api lib/derived/map-features.js, arc-data/derived/map-features/, docs/Map-Features.md there).
 // Positions are UV coordinates on the map texture (0..1), heights in cm. Index-based references (container, handler
 // set, POI, enemy, ...) point into the arrays of the same file; -1 means "none".
 // Names are English; `nameKey` / `titleKey` is the game string ("<table>/<key>") translated in

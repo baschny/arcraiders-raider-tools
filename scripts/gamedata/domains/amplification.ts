@@ -23,7 +23,7 @@ function effectsOf(list: CanonAmpEffect[] | undefined): AmplificationEffect[] {
 }
 
 /**
- * Adds Amplification names, effects and rules (arc-data amplifications.json, optional) to the
+ * Adds Amplification names, effects and rules (arc-data derived/amplifications.json, optional) to the
  * weapons. Weapons are matched by their Amplified item; the cost of an Amplification is the
  * graph edge that adds it (same on every such edge; reported otherwise).
  */
@@ -101,7 +101,7 @@ function addAmplifications(ctx: GenContext, weapons: Record<string, AmplifiedWea
  * Amplified weapons (docs/Game-Data.md), derived from the items domain: variants are items
  * with `amplifiedFrom`; the graph holds every upgrade edge leaving the weapon's tier chain into the
  * variants and between variants. Must run after `items`. Amplification names, effects and rules
- * come from arc-data amplifications.json when present.
+ * come from arc-data derived/amplifications.json when present.
  */
 const module: DomainModule = {
   domain: 'amplification',

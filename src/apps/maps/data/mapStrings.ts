@@ -1,6 +1,6 @@
 // Localized map names (maps, conditions, areas, enemies). The data carries English names plus the game string they
 // come from (`nameKey` / `titleKey`, "<table>/<key>"); map-strings.<locale>.json maps those keys to the game's
-// translation (embark-api scripts/build/build-map-features.js). English needs no file: it is the data itself.
+// translation (embark-api lib/derived/map-features.js). English needs no file: it is the data itself.
 import { getLocaleCandidates, type AppLocale } from '../../../shared/i18n/config';
 import type { MapIndex } from './types';
 

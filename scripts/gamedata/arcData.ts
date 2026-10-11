@@ -125,7 +125,7 @@ export interface CanonAmplification {
   modSlotModifications?: unknown;
 }
 
-/** arc-data amplifications.json entry, keyed by the weapon's internal base name. */
+/** arc-data derived/amplifications.json entry, keyed by the weapon's internal base name. */
 export interface CanonAmplifiedWeapon {
   weaponSlug: string;
   amplifiedItemId: number;
@@ -169,7 +169,7 @@ export interface ArcData {
   offers: Map<number, CanonOffer>;
   /** Other record files by file name without .json (quests, projects, maps, skill-trees, …). */
   file<T extends CanonRecord = CanonRecord>(name: string): Map<string, T>;
-  /** amplifications.json (Amplified weapons by internal base name); empty when the file is missing. */
+  /** derived/amplifications.json (Amplified weapons by internal base name); empty when the file is missing. */
   amplifications(): Record<string, CanonAmplifiedWeapon>;
   /** Plain JSON file (e.g. overlay/event-types.json); null when missing. */
   json<T>(relPath: string): T | null;
@@ -216,7 +216,7 @@ export function loadArcData(dir: string = GAME_DATA_DIR): ArcData {
       return cache.get(name) as Map<string, T>;
     },
     amplifications() {
-      const file = path.join(dir, 'amplifications.json');
+      const file = path.join(dir, 'derived', 'amplifications.json');
       return fs.existsSync(file) ? readJson<Record<string, CanonAmplifiedWeapon>>(file) : {};
     },
     json<T>(relPath: string): T | null {
