@@ -1,4 +1,4 @@
-// Relative item score per socket and POI (ported from embark-api tools/map-features/index.html). Covers the
+// Relative item score per socket and POI (originally ported from the embark-api map features build). Covers the
 // shipped value pools only: for every handler active under the condition, each pool's value is split over its
 // tables, a table's share over its entries and an entry's share over its items, then spread over the handler's
 // sockets. Not a drop chance: rolls and item values are server-side.

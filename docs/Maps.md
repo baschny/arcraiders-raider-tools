@@ -3,8 +3,8 @@
 The Maps tool (`src/apps/maps/`) has two routes, switched by the tab bar in its header:
 
 - `/maps`, `/maps/<map slug>` (e.g. `/maps/pendola-pass`) — the ARC Raiders maps full-bleed with what the game files say about them: where an item can be looted and
-  where ARC enemies spawn, per map and map condition. It is a port of the map features page of embark-api
-  (`tools/map-features/`); the game-side background (loot handlers, spawners, transforms, map layers, what is
+  where ARC enemies spawn, per map and map condition. It renders the map features build of embark-api
+  (`arc-data/derived/map-features/`); the game-side background (loot handlers, spawners, transforms, map layers, what is
   server-only) is documented there in `docs/Map-Features.md`.
 - `/map-sizes` — the playable area of every map compared to scale (see [Map sizes](#map-sizes)).
 
@@ -39,8 +39,8 @@ computed in the browser: `npm run generate:maps` measures each map's `bounds` (p
 texture) through its `world` size in cm — 1 UV unit = `worldSize / 100` m, so areas and distances are exact — and
 writes the committed `public/data/map-data/sizes.json`. The measurement lives in `scripts/lib/map-sizes.mjs`
 (`computeSizes`, unit-tested in the same folder), next to the area-outline generation; the client only loads and
-renders the file (`MapSizes.tsx`, `useMapSizes` in `data/useMapData.ts`). The source is the same embark-api map
-features output as the explorer (`arc-data/derived/map-features/`); `arc-data` has no playable boundary.
+renders the file (`MapSizes.tsx`, `useMapSizes` in `data/useMapData.ts`). The source is the embark-api map
+features output (`arc-data/derived/map-features/`); `arc-data` has no playable boundary.
 
 The page shows, in one left-aligned column:
 

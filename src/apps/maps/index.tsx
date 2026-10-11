@@ -1,4 +1,4 @@
-// Maps tool (docs/Maps.md). `/maps` is the embark-api map features page (Loot and ARC modes) on a full-bleed map:
+// Maps tool (docs/Maps.md). `/maps` renders the embark-api map features build (Loot and ARC modes) on a full-bleed map:
 // map and condition switchers float at the top, the collapsible left bar holds the mode switch and the filters (on
 // phones: a bottom sheet). `/map-sizes` is the playable-area comparison (MapSizes.tsx), switched by MapsHeader.
 // Data: embark-api map features build, generated with npm run generate:maps (data/useMapData.ts). State lives in the

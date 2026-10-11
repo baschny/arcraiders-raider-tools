@@ -1,4 +1,4 @@
-// Imperative canvas engine for the map (ported from embark-api tools/map-features/index.html): map texture,
+// Imperative canvas engine for the map (originally ported from the embark-api map features UI): map texture,
 // playable area, POIs and loot zones, item heat map, loot sockets as dots (icons when zoomed in), spawned spots
 // and map features as game icons, ARC spawners with patrol paths, and the activity group of the hovered or
 // pinned spawner (ringed members + area hull). React feeds it the Explorer model; it reports tooltip targets.

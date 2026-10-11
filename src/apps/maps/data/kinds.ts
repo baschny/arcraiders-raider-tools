@@ -1,5 +1,5 @@
 // What the map shows in Loot mode: spot categories, kinds and (for containers) container types, each with a game
-// UI icon and a muted color. Ported from embark-api tools/map-features/index.html (SPOT_CATS / SPOT_KINDS).
+// UI icon and a muted color. Originally ported from the embark-api map features kinds (SPOT_CATS / SPOT_KINDS).
 // Sockets map to a kind by container tag, spawners and fixed level actors by class. Categories and kinds carry stable
 // keys only; their labels are UI strings (maps.categories.<key>, maps.kinds.<key>, see ../text.ts).
 import type { MapData, MapIndex } from './types';
