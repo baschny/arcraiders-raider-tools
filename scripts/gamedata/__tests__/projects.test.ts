@@ -90,11 +90,11 @@ describe('projects domain', () => {
     const offer = (id: number, order: number, item: number) => ({ id, type: 'CommunityEvent', owner: 5, title: `Give ${id}`, order, cost: { type: 'itemAmounts', items: [{ id: item, amount: 5 }] }, rewards: pkg(2) });
     const ctx = fakeCtx([], [offer(1, 2, 1), offer(2, 1, 2)]);
     const { projects: out } = projects.build(ctx) as { projects: Record<string, Project> };
-    const ev = out.community_event_event_5;
+    const ev = out.community_event;
     expect(ev.type).toBe('event');
     const goals = ev.phases[0].steps[0].goals;
     expect(goals.map((g: ProjectGoal) => g.itemIds)).toEqual([['metal'], ['planks']]);
     expect(goals[0]).toMatchObject({ key: '0.0.0', goalType: 'items', amount: 5, repeatable: true });
-    expect(ctx.text.en('projects', 'community_event_event_5', 'goals.0.0.0.name')).toBe('Give 2');
+    expect(ctx.text.en('projects', 'community_event', 'goals.0.0.0.name')).toBe('Give 2');
   });
 });

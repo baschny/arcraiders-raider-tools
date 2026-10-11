@@ -14,8 +14,9 @@ function makeCtx(): GenContext {
     [11, item('NPC')],
     [12, item('InventoryStructure', { slots: { numberOfSlots: 112 } })],
     [13, item('InventoryStructure', { slots: { numberOfSlots: 136 } })],
+    [60, item('CharacterSkill')],
   ]);
-  const slugTable: Record<string, Record<number, string>> = { traders: { 11: 'celeste' }, quests: { 50: 'q_one' }, skills: { 60: 'skill_a' } };
+  const slugTable: Record<string, Record<number, string>> = { quests: { 50: 'q_one' } };
   return {
     arc: { items } as never,
     slugs: { slugOf: (k: string, key: number) => slugTable[k]?.[Number(key)] ?? null } as never,
@@ -63,7 +64,7 @@ describe('whats-new', () => {
     expect(v.newItems?.[0]).toMatchObject({ id: 'iron', verdict: 'keep', keepCount: 3 });
     expect(v.newItems?.[0].uses).toEqual([
       { system: 'research', target: 'wire', amount: 5, via: { bench: 'research_station', level: 2 } },
-      { system: 'outpostRoom', target: 'wire', amount: 1, via: 'celeste' },
+      { system: 'outpostRoom', target: 'wire', amount: 1, via: '11' },
       { system: 'benchUpgrade', target: { stashSlots: 136 }, amount: 1, via: { stashSlots: 112 } },
       { system: 'quest', target: 'q_one', amount: 1 },
     ]);
@@ -107,8 +108,8 @@ describe('whats-new', () => {
         fieldCrafting: { skillsAfter: [60, 61], recipes: [{ result: 1, cost: [{ id: 2, amount: 1 }], skills: [60], status: 'new' }] },
       }),
     );
-    expect(v.changes?.traders?.[0]).toMatchObject({ npc: 'celeste', added: [{ result: 'iron', scrapValue: 500, scrapItems: ['wire'] }] });
-    expect(v.fieldCrafting?.skillsAfter).toEqual(['skill_a']);
-    expect(v.fieldCrafting?.recipes?.[0]).toMatchObject({ result: 'iron', skills: ['skill_a'], status: 'new' });
+    expect(v.changes?.traders?.[0]).toMatchObject({ npc: '11', added: [{ result: 'iron', scrapValue: 500, scrapItems: ['wire'] }] });
+    expect(v.fieldCrafting?.skillsAfter).toEqual(['60']);
+    expect(v.fieldCrafting?.recipes?.[0]).toMatchObject({ result: 'iron', skills: ['60'], status: 'new' });
   });
 });

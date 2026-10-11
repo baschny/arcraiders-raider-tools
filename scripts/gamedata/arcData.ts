@@ -47,6 +47,10 @@ export interface CanonRecord {
   id: number | string;
   kind: string;
   type: string | null;
+  /** Public id, written by the arc-data build on items, quests, projects, maps and bench base generators. */
+  slug?: string;
+  slugAliases?: string[];
+  arctrackerId?: string;
   internalName?: string | null;
   assetPath?: string | null;
   tag?: string | null;
@@ -149,6 +153,8 @@ export interface CanonOffer extends CanonRecord {
   end: string | null;
   visible: boolean;
   order: number;
+  /** Mechanic of the offer (embark-api lib/canonical/offer-class.js); null = unclassified. */
+  class?: string | null;
 }
 
 export interface CanonConstants {

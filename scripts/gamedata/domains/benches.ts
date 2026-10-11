@@ -73,7 +73,7 @@ const module: DomainModule = {
         continue;
       }
       const first = members[0].item;
-      const nameEn = first.name?.en || ctx.slugs.get('benches', String(first.baseId || first.id))?.name || benchId;
+      const nameEn = first.name?.en || benchId;
       benches[benchId] = { id: benchId, nameEn, maxLevel: levels.length, levels };
       ctx.text.add('benches', benchId, 'name', first.name?.en ? first.name : nameEn);
       ctx.text.add('benches', benchId, 'description', first.description);

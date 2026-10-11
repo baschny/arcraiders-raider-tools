@@ -15,7 +15,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { EMBARK_API_DIR, loadArcData, repoRoot, type CanonItem, type CanonRecord } from './gamedata/arcData';
 import { createContext } from './gamedata/context';
-import { openSlugStore, type SlugKind, type SlugStore } from './gamedata/slugs';
+import { openSlugStore, type SlugKind } from './gamedata/slugs';
 
 const SITE_DIR = path.join(repoRoot, 'public', 'data', 'game');
 const OUTPUT = path.join(repoRoot, 'infra', 'lambda', 'data', 'game-mappings.json');
@@ -85,18 +85,6 @@ function textAt(text: Record<string, unknown> | undefined, segments: string[]): 
 
 // --- helpers --------------------------------------------------------------------------------------
 
-/** Read-only view of the slug tables: lookups only, never creates or saves a slug. */
-function readOnlySlugs(store: SlugStore): SlugStore {
-  return new Proxy(store, {
-    get(target, prop) {
-      if (prop === 'getOrCreate') return () => null;
-      if (prop === 'save') return () => [];
-      const v = (target as unknown as Record<string | symbol, unknown>)[prop];
-      return typeof v === 'function' ? (v as (...a: unknown[]) => unknown).bind(target) : v;
-    },
-  });
-}
-
 function sortKeys<T>(map: Map<string, T> | Record<string, T>): Record<string, T> {
   const entries = map instanceof Map ? [...map] : Object.entries(map);
   const numeric = (k: string) => /^-?\d+$/.test(k);
@@ -119,7 +107,7 @@ function itemName(item: CanonRecord | undefined): string | null {
 
 function main(): void {
   const arc = loadArcData();
-  const slugs = readOnlySlugs(openSlugStore(arc.dir));
+  const slugs = openSlugStore(arc);
   const ctx = createContext(arc, slugs);
   const warnings: string[] = [];
 

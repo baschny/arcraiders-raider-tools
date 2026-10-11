@@ -127,7 +127,7 @@ async function main(): Promise<void> {
   fs.mkdirSync(benchesDir, { recursive: true });
 
   const arc = loadArcData();
-  const slugs = openSlugStore();
+  const slugs = openSlugStore(arc);
   const csvImages = loadAssetIndexImages();
   const sourcesFor = (icon: string | null | undefined, assetId: string): IconSource[] => {
     const sources: IconSource[] = [];

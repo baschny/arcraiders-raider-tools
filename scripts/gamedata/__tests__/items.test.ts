@@ -79,8 +79,10 @@ function fixtureCtx(list: CanonItem[], overlay: Record<string, unknown> = {}): G
   } as unknown as ArcData;
   const slugs = {
     get: () => null,
-    slugOf: () => null,
-    getOrCreate: (_k: string, key: string | number, o: { name?: string | null }) => (o.name ?? String(key)).toLowerCase().replace(/\W+/g, '_'),
+    slugOf: (_k: string, key: string | number) => {
+      const name = list.find((i) => i.id === Number(key))?.name?.en;
+      return name ? name.toLowerCase().replace(/\W+/g, '_') : null;
+    },
   };
   return createContext(arc, slugs as never);
 }

@@ -8,7 +8,7 @@ import type {
 } from '../../../src/shared/gamedata/types';
 import type { CanonAmount, CanonOffer, CanonRewardPackage } from '../arcData';
 import type { GenContext } from '../context';
-import { offersOfClass, offerSlug } from '../offer-classes';
+import { offersOfClass, offerRef } from '../offer-classes';
 import { fallbackNameEn } from './items';
 import type { DomainModule } from './types';
 
@@ -24,7 +24,7 @@ const tagValue = (tags: string[], prefix: string): string | undefined =>
 
 function craftOf(ctx: GenContext, prefix: string, offer: CanonOffer | undefined, baseItemId?: number) {
   if (!offer) return undefined;
-  const offerId = offerSlug(ctx, prefix, offer, baseItemId);
+  const offerId = offerRef(ctx, prefix, offer, baseItemId);
   if (!offerId) return undefined;
   const requires = ctx.requirements(offer.requires, `offer ${offerId}`);
   return { offerId, cost: ctx.cost(offer.cost, `offer ${offerId}`), ...(requires.length ? { requires } : {}) };

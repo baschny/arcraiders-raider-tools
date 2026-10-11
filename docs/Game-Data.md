@@ -14,11 +14,15 @@ embark-api/arc-data ──► scripts/generate-game-data.ts ──► public/dat
 
 ## Rules
 
-- **Slugs only in public files.** No Embark asset ids or internal asset names (`DA_…`) under
-  `public/`. Slugs are frozen in `arc-data/slugs/<kind>.json`. They equal arctracker.io's ids for
+- **Slugs for items, quests, projects, maps and benches; numeric ids for the rest.** No other Embark
+  asset ids or internal asset names (`DA_…`) under `public/`. Slugs are fields of the arc-data records
+  (`slug`, `slugAliases`, `arctrackerId`), frozen and created by the arc-data build, never here; the
+  generators only read them (`scripts/gamedata/slugs.ts`). They equal arctracker.io's ids for
   everything that existed before, so saved user state, URLs (`?item=`, `?focus=`) and arctracker
-  links stay valid. Generators create slugs for new entities and append them there — **commit
-  them in arc-data together with the regenerated site files.**
+  links stay valid. A record of a shipped type without a slug is reported (`noSlug:<kind>`).
+  Offers (recipes, research, blueprints, trades, crafts), traders and skills have no slugs: their id is
+  the numeric Embark id as a string (opaque, never parse it; find a trader by `nameEn`, a recipe by its
+  reward). The community event project keeps the constant slug `community_event`.
 - **Structure and text are split.** `<domain>.json` is locale-independent, and `<domain>.text.<locale>.json`
   holds names and descriptions. English is filled in where a translation is missing.
 - **Explicit relationships instead of slug heuristics.** Use `baseId`/`tier`, `upgradesTo`,
@@ -76,10 +80,11 @@ string with `{0}`) and `<baseSlug>.baseEffects.<index>`; indexes are the positio
 
 ### Offer classification
 
-Generic arc-data offers are sorted into domains by one ordered rule table:
-`scripts/gamedata/offer-classes.ts`. An offer that matches no rule is not shipped and is reported
-as `unclassifiedOffers`, and `--strict` fails on it. Supporting a new mechanic usually means adding
-one rule and, if needed, one domain module in `scripts/gamedata/domains/`.
+Generic arc-data offers carry a `class` (research, recipes:bench, trades, …) assigned by the arc-data
+build (embark-api `lib/canonical/offer-class.js`, ordered rule table). `scripts/gamedata/offer-classes.ts`
+maps each class to its site domain (`offersOfClass`, `offersOfDomain`). An offer with `class: null` is not
+shipped and is reported as `unclassifiedOffers`, and `--strict` fails on it. Supporting a new mechanic
+means adding one rule in the build and, if needed, one domain module in `scripts/gamedata/domains/`.
 
 ### Item classification (from the game)
 

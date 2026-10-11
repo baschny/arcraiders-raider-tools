@@ -4,7 +4,6 @@ import {
   loadDomain,
   nameOf,
   resetGameDataCache,
-  resolveSlug,
 } from '../loader';
 import { GAME_DATA_SCHEMA_VERSION } from '../types';
 
@@ -71,9 +70,7 @@ describe('gamedata loader', () => {
     expect(calls).toEqual(['/data/game/recipes.json']);
   });
 
-  it('resolves aliases and falls back to the English name', () => {
-    expect(resolveSlug(items, 'old_anvil')).toBe('anvil_i');
-    expect(resolveSlug(items, 'anvil_i')).toBe('anvil_i');
+  it('falls back to the English name', () => {
     expect(nameOf({ text: {} }, 'x', 'X')).toBe('X');
   });
 });

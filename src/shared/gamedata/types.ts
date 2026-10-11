@@ -5,8 +5,10 @@
  * Spec: docs/Game-Data.md
  *
  * Conventions
- * - Every public ID is a slug. A slug is unique within its domain; reference fields name the
- *   domain they point to (itemId, benchId, questId, …). No Embark asset IDs in public files.
+ * - Public IDs of items, quests, projects, maps and benches are slugs (unique within their domain).
+ *   Offers (recipes, research, blueprints, trades, outpost/stencil crafts), traders and skills use
+ *   their numeric Embark ids as strings; never parse them. Reference fields name the domain they
+ *   point to (itemId, benchId, questId, …).
  * - Each domain is split into a locale-independent structure file `<domain>.json` and one text
  *   file per locale `<domain>.text.<locale>.json`. loadDomain() merges them.
  * - English names needed for search/sorting regardless of locale live in the structure
@@ -579,7 +581,7 @@ export interface WhatsNewStashRef {
  *  - item slug (items domain): most targets and `via`s (amplify, amplifyPerk, craft, outpostFurniture,
  *    outpostRoom, repair, research, stencil, trade, fieldCraft targets, craft `via` recipes)
  *  - WhatsNewBenchRef: `via` of craft/research/researchStation, `target` of benchUpgrade/researchStation
- *  - trader slug (trades domain): `via` of outpostFurniture, outpostRoom, trade, researchStation (NPC)
+ *  - trader id (trades domain): `via` of outpostFurniture, outpostRoom, trade, researchStation (NPC)
  *  - skill id (skilltree domain): field crafting skills (fieldCrafting only)
  *  - quest id (quests domain) / project id (projects domain): `target` of quest / project
  *  - WhatsNewStashRef: `target`/`via` of benchUpgrade for stash upgrades
@@ -659,7 +661,7 @@ export interface WhatsNewTradeLine {
 }
 
 export interface WhatsNewTraderChange {
-  /** Trader slug (trades domain). */
+  /** Trader id (trades domain). */
   npc: string;
   added?: WhatsNewTradeLine[];
   removed?: WhatsNewTradeLine[];

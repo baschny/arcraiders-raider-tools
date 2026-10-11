@@ -389,7 +389,7 @@ It replaces `embark-inventory-mapping.json`, `project-mapping.json` and `embarkQ
 
 ```text
 ../embark-api/arc-data/              canonical game data (items, offers, quests, projects, constants.json)
-../embark-api/arc-data/slugs/*.json  frozen slug tables (read-only here; the generator never creates slugs)
+../embark-api/arc-data/*.json, items/  records carry frozen `slug` fields (read-only here; the generator never creates slugs)
 public/data/game/*.json              generated site data (items, blueprints, quests, projects, projects.text.en)
 ../embark-api/arcraiders-api-mapping/augment-loadout-mapping.json   (augmentLoadouts only)
 ```

@@ -134,7 +134,7 @@ a test compares the list with `index.json`).
 ## URL and preferences
 
 Everything that makes a view shareable is in the URL (`state.ts`): the map in the path, `/maps/<map slug>` (the
-arc-data slug of the map, `slugs/maps.json`, which the generator adds to the maps of `index.json`), the rest in
+`slug` of the map record in arc-data `maps.json`, which the generator adds to the maps of `index.json`), the rest in
 params; default values are left out. `/maps` without a slug shows the Dam (`dam-battleground`). Old links with
 `?map=<level name>` (e.g. `?map=FrozenTrail_01`) are moved to the map's slug URL.
 

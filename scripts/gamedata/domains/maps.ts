@@ -75,11 +75,6 @@ export function shippedMaps(ctx: GenContext): { maps: CanonMap[]; skipped: strin
     if (referenced.has(Number(m.id)) || live) maps.push(m);
     else skipped.push(`${m.id} ${m.mapName} (no live scenario, not referenced by quests)`);
   }
-  // Slug-table entries without a canonical record are superseded duplicates (e.g. the old Dam).
-  const known = new Set(ctx.arc.file('maps').keys());
-  for (const [key, entry] of Object.entries(ctx.slugs.table('maps'))) {
-    if (!known.has(key)) skipped.push(`${key} ${entry.slug} (slug without canonical map, superseded)`);
-  }
   return { maps, skipped };
 }
 
@@ -93,8 +88,7 @@ export function buildMaps(ctx: GenContext): { structure: MapsStructure; legacy: 
       ctx.report.add('mapsWithoutSlug', `${m.id} ${m.mapName}`);
       continue;
     }
-    // Overlay fill names are not always merged into maps.json yet; the frozen slug table keeps the label.
-    const nameEn = m.name?.en || ctx.slugs.get('maps', String(m.id))?.name;
+    const nameEn = m.name?.en;
     if (!nameEn) {
       ctx.report.add('mapsWithoutName', `${m.id} ${m.mapName}`);
       continue;

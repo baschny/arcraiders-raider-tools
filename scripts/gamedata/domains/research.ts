@@ -1,5 +1,5 @@
 import type { Research } from '../../../src/shared/gamedata/types';
-import { baseOffer, costAmountOf, offerSlug, offersOfClass, primaryRewardId } from '../offer-classes';
+import { baseOffer, costAmountOf, offerRef, offersOfClass, primaryRewardId } from '../offer-classes';
 import type { DomainModule } from './types';
 
 /**
@@ -12,7 +12,7 @@ const module: DomainModule = {
     const research: Record<string, Research> = {};
     const rp = ctx.arc.constants.currencies.researchPoints;
     for (const offer of offersOfClass(ctx, 'research')) {
-      const slug = offerSlug(ctx, 'research', offer);
+      const slug = offerRef(ctx, 'research', offer);
       if (!slug) continue;
       const bench = ctx.benchLevel(offer.owner);
       if (!bench?.benchId) continue; // cannot happen: rule 1 needs a bench

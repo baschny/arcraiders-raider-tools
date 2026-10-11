@@ -1,6 +1,7 @@
 import type { Project, ProjectGoal, ProjectPhase, ProjectStep, ProjectType } from '../../../src/shared/gamedata/types';
 import type { CanonCost, CanonOffer, CanonRecord, CanonRewardPackage, Localization } from '../arcData';
 import type { GenContext } from '../context';
+import { COMMUNITY_EVENT_SLUG } from '../slugs';
 import type { DomainModule } from './types';
 
 /**
@@ -131,15 +132,10 @@ function buildEvents(ctx: GenContext, projects: Record<string, Project>): void {
     if (o.type !== 'CommunityEvent') continue;
     byOwner.set(o.owner, [...(byOwner.get(o.owner) ?? []), o]);
   }
+  let events = 0;
   for (const [owner, offers] of [...byOwner].sort((a, b) => a[0] - b[0])) {
-    const slug = ctx.slugFor('projects', `event:${owner}`, {
-      id: `event:${owner}`,
-      kind: 'project',
-      type: null,
-      sources: [],
-      name: { key: null, en: 'Community Event' } as Localization,
-    });
-    if (!slug) continue;
+    const slug = events === 0 ? COMMUNITY_EVENT_SLUG : `${COMMUNITY_EVENT_SLUG}_${owner}`;
+    if (events++ > 0) ctx.report.add('projects', `several community event owners: ${owner} ships as ${slug}`);
     const goals: ProjectGoal[] = [];
     for (const o of [...offers].sort((a, b) => a.order - b.order || a.id - b.id)) {
       const cost = ctx.cost(o.cost as CanonCost, `event ${slug}`);

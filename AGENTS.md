@@ -39,8 +39,8 @@ npm run generate:schedule         # event schedule
 ```
 
 `generate` runs game-data twice (before and after the icons, so items pick up new icon files).
-New slugs created by the generators are written to `../embark-api/arc-data/slugs/` and must be
-committed there. Run `npx tsx scripts/generate-game-data.ts --strict` before a release.
+The generators only read arc-data: slugs (items, quests, projects, maps, benches) are created by the
+arc-data build and live in the records; offers, traders and skills use numeric ids. Run `npx tsx scripts/generate-game-data.ts --strict` before a release.
 
 `npm run generate:maps` (map page data into `public/data/map-data/`) is not part of `npm run generate`: it reads
 the map features build of embark-api (env `EMBARK_API_DIR`, default `../embark-api`) and is rerun, then committed,
@@ -62,7 +62,8 @@ texts in every locale file and run `npm run generate:og-images` (writes `public/
 app icons; commit them). Preview images are English for all languages.
 Response headers (CSP, caching) live in `customHttp.yml`; Amplify ignores headers in `amplify.yml`.
 
-Public data files contain slugs only — never Embark asset ids or internal asset names. Types of all
+Public data files contain slugs (items, quests, projects, maps, benches) or numeric offer/trader/skill ids as
+strings — never other Embark asset ids or internal asset names. Types of all
 game data live in `src/shared/gamedata/types.ts`; apps load data with `loadDomain()` /
 `loadItemCatalog()` from `src/shared/gamedata/`.
 

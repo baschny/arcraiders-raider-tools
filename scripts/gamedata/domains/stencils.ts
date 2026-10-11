@@ -1,6 +1,6 @@
 import type { Stencil, StencilSlot } from '../../../src/shared/gamedata/types';
 import type { CanonAmount, CanonOffer } from '../arcData';
-import { offersOfClass, offerSlug } from '../offer-classes';
+import { offersOfClass, offerRef } from '../offer-classes';
 import { fallbackNameEn } from './items';
 import type { DomainModule } from './types';
 
@@ -41,7 +41,7 @@ const module: DomainModule = {
       const offer = craftByReward.get(st.id);
       let craft: Stencil['craft'];
       if (offer) {
-        const offerId = offerSlug(ctx, 'stencils', offer);
+        const offerId = offerRef(ctx, 'stencils', offer);
         if (offerId) {
           const requires = ctx.requirements(offer.requires, `offer ${offerId}`);
           // the learn step: requirement on the consumed design item instead of the unnamed unlock

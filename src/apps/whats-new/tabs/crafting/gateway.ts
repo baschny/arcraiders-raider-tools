@@ -1,12 +1,13 @@
 import type { NeedsCardProps } from '../../components';
 import { toItemRef, toUnlockedRef, type WhatsNewPageData } from '../../hooks/useWhatsNewData';
 
-export const GATEWAY_RECIPE_ID = 'recipes:emperor_gateway_conduit';
+/** Item crafted by the gateway recipe; recipe ids are numeric offer ids, so the recipe is found by its reward. */
+export const GATEWAY_ITEM_ID = 'emperor_gateway_conduit';
 
 /** Props of the NeedsCard for the Emperor Gateway key, or null when the recipe is missing. */
 export function buildGatewayCard(data: WhatsNewPageData): NeedsCardProps | null {
   const { catalog } = data;
-  const recipe = data.recipes.structure.recipes[GATEWAY_RECIPE_ID];
+  const recipe = Object.values(data.recipes.structure.recipes).find((r) => (r.rewards ?? []).some((x) => x.itemId === GATEWAY_ITEM_ID));
   if (!recipe) return null;
   const bench = recipe.benchId ? data.benches.structure.benches[recipe.benchId] : undefined;
   const level = bench?.levels.find((l) => l.level === (recipe.benchLevel ?? 1)) ?? bench?.levels[0];

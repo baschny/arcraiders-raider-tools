@@ -218,7 +218,7 @@ const module: DomainModule = {
       const p = props[String(item.id)];
       const chain = chains.get(item.id) ?? {};
       const name = withTier(item.name, chain.tier, chain.baseId ? (chainLength.get(chain.baseId) ?? 0) : 0);
-      const arctrackerId = ctx.slugs.get('items', item.id)?.arctrackerId ?? null;
+      const arctrackerId = item.arctrackerId ?? null;
       if (arctrackerId && arctrackerId !== slug) arctrackerAliases[arctrackerId] = slug;
 
       const upgradesTo = item.upgrades

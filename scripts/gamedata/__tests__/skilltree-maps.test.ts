@@ -7,8 +7,7 @@ import { buildSkilltree } from '../domains/skilltree';
 
 const loc = (en: string) => ({ key: null, en }) as never;
 
-function makeCtx(files: Record<string, Record<string, unknown>>, overlay: Record<string, OverlayEventType> | null, slugTable: Record<string, Record<string, { slug: string; name?: string }>> = {}): GenContext {
-  const created: Record<string, string> = {};
+function makeCtx(files: Record<string, Record<string, unknown>>, overlay: Record<string, OverlayEventType> | null, slugTable: Record<string, Record<string, { slug: string }>> = {}): GenContext {
   const arc = {
     file: (n: string) => new Map(Object.entries(files[n] ?? {})) as Map<string, CanonRecord>,
     json: () => overlay,
@@ -16,8 +15,7 @@ function makeCtx(files: Record<string, Record<string, unknown>>, overlay: Record
   const slugs = {
     table: (k: string) => slugTable[k] ?? {},
     get: (k: string, key: string) => slugTable[k]?.[key] ?? null,
-    slugOf: (k: string, key: string) => slugTable[k]?.[key]?.slug ?? created[`${k}:${key}`] ?? null,
-    getOrCreate: (k: string, key: string, o: { name?: string | null }) => (created[`${k}:${key}`] ??= String(o.name ?? '').toLowerCase().replace(/\W+/g, '_')),
+    slugOf: (k: string, key: string) => slugTable[k]?.[key]?.slug ?? null,
   };
   const report = new Report();
   return {
@@ -25,8 +23,6 @@ function makeCtx(files: Record<string, Record<string, unknown>>, overlay: Record
     slugs,
     report,
     text: new TextCollector(),
-    slugFor: (k: string, key: string | number, rec?: CanonRecord | null) =>
-      rec?.name?.en ? slugs.getOrCreate(k, String(key), { name: rec.name.en }) : null,
   } as unknown as GenContext;
 }
 
@@ -42,7 +38,7 @@ describe('skilltree', () => {
     expect(ctx.report.count('skilltreeIncomplete')).toBe(1);
   });
 
-  it('builds nodes, roots and groups by slug when all are named', () => {
+  it('builds nodes, roots and groups by skill id when all are named', () => {
     const ctx = makeCtx(
       {
         'skill-trees': {
@@ -55,11 +51,11 @@ describe('skilltree', () => {
       null,
     );
     const out = buildSkilltree(ctx);
-    expect(out.nodes.alpha).toMatchObject({ root: true, children: ['beta', 'gamma'], nameEn: 'Alpha' });
-    expect(out.nodes.beta.root).toBeUndefined();
-    expect(out.nodes.gamma.maxLevel).toBe(5);
-    expect(out.groups).toEqual({ group_beta: { id: 'group_beta', nodes: ['gamma', 'beta'], maxSelectable: 1, minTotalInvestmentOverridePerUnlock: [10] } });
-    expect(ctx.text.en('skilltree', 'beta')).toBe('Beta');
+    expect(out.nodes['1']).toMatchObject({ root: true, children: ['2', '3'], nameEn: 'Alpha' });
+    expect(out.nodes['2'].root).toBeUndefined();
+    expect(out.nodes['3'].maxLevel).toBe(5);
+    expect(out.groups).toEqual({ group_2: { id: 'group_2', nodes: ['3', '2'], maxSelectable: 1, minTotalInvestmentOverridePerUnlock: [10] } });
+    expect(ctx.text.en('skilltree', '2')).toBe('Beta');
   });
 });
 
@@ -72,23 +68,22 @@ describe('maps', () => {
   const files = {
     maps: {
       '1': { id: 1, kind: 'map', mapName: 'A', name: loc('Alpha Map'), scenarios: [scen('Salvage')] },
-      '2': { id: 2, kind: 'map', mapName: 'B', name: null, scenarios: [scen('Salvage')] },
+      '2': { id: 2, kind: 'map', mapName: 'B', name: loc('Label B'), scenarios: [scen('Salvage')] },
       '3': { id: 3, kind: 'map', mapName: 'Practice', name: loc('Practice'), scenarios: [scen('PracticeRangeArray')] },
       '4': { id: 4, kind: 'map', mapName: 'Quest only', name: loc('Quest Map'), scenarios: [scen('X', false)] },
     },
     quests: { q: { id: 'q', mapIds: [4] } },
   };
-  const table = { maps: { 1: { slug: 'alpha-map' }, 2: { slug: 'b-map', name: 'Label B' }, 3: { slug: 'practice' }, 4: { slug: 'quest-map' }, 99: { slug: 'old-dup' } } };
+  const table = { maps: { 1: { slug: 'alpha-map' }, 2: { slug: 'b-map', name: 'Label B' }, 3: { slug: 'practice' }, 4: { slug: 'quest-map' } } };
 
-  it('ships live or quest-referenced maps with existing slugs and skips the rest', () => {
+  it('ships live or quest-referenced maps with the record slugs and skips the rest', () => {
     const ctx = makeCtx(files, overlay, table);
     const { structure } = buildMaps(ctx);
     expect(Object.keys(structure.maps).sort()).toEqual(['alpha-map', 'b-map', 'quest-map']);
     expect(structure.maps['b-map'].nameEn).toBe('Label B');
     const skipped = ctx.report.sections.get('skippedMaps')!;
     expect(skipped.some((s) => s.startsWith('3 '))).toBe(true);
-    expect(skipped.some((s) => s.startsWith('99 '))).toBe(true);
-    expect(skipped).toHaveLength(2);
+    expect(skipped).toHaveLength(1);
   });
 
   it('builds event types with major flag and text', () => {

@@ -147,7 +147,13 @@ export function learnExamples(data: WhatsNewPageData, perKind = 3): { designs: I
 
 /** Celeste's seed trades for the given reward items (Planks, Sheet Metal, Steel Cable). */
 export function celesteTrades(data: WhatsNewPageData, rewardIds = ['planks', 'sheet_metal', 'steel_cable']): CelesteTrade[] {
-  const trades = Object.values(data.trades.structure.trades).filter((t) => t.traderId === 'celeste');
+  // Trader ids are numeric asset ids (A40); Celeste is identified by her English name.
+  const celesteIds = new Set(
+    Object.values(data.trades.structure.traders)
+      .filter((t) => t.nameEn === 'Celeste')
+      .map((t) => t.id),
+  );
+  const trades = Object.values(data.trades.structure.trades).filter((t) => celesteIds.has(t.traderId));
   const out: CelesteTrade[] = [];
   for (const id of rewardIds) {
     const trade = trades.find((t) => t.rewards?.[0]?.itemId === id && 'items' in t.cost);

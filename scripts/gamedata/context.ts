@@ -2,8 +2,9 @@
  * Generator context shared by all domain modules (scripts/gamedata/domains/*).
  *
  * Rules every module follows:
- * - Public output contains slugs only. Convert every asset reference through the helpers here;
- *   references that do not resolve are dropped and reported (never emit an asset id).
+ * - Public output contains slugs (items, quests, projects, maps, benches) or numeric ids (offers,
+ *   traders, skills) only. Convert every asset reference through the helpers here;
+ *   references that do not resolve are dropped and reported (never emit an asset id for a slugged kind).
  * - Items must be built first: `ctx.shippedItems` decides which items exist on the site.
  * - Text goes through `ctx.text.add(domain, slug, field, localization)`.
  */
@@ -45,8 +46,8 @@ export class Report {
 }
 
 export interface BenchLevelRef {
-  benchKey: string; // slug-table key (chain base asset id)
-  benchId: string | null; // slug
+  benchKey: string; // chain base asset id
+  benchId: string | null; // slug of the chain base Generator record
   level: number;
 }
 
@@ -59,7 +60,7 @@ export interface GenContext {
   results: Partial<Record<GameDomain, Record<string, unknown>>>;
   /** Shipped items: asset id → slug. Filled by the items module. */
   shippedItems: Map<number, string>;
-  /** Slug for any canonical record (creates one from its English name when missing). */
+  /** Slug of a canonical record (written by the arc-data build); null and reported (`noSlug:<kind>`) when missing. */
   slugFor(kind: SlugKind, key: string | number, rec?: CanonRecord | null): string | null;
   /** Slug of a shipped item; null (and reported under `context`) otherwise. */
   itemRef(assetId: number, context?: string): string | null;
@@ -137,8 +138,7 @@ export function createContext(arc: ArcData, slugs: SlugStore): GenContext {
     shippedItems,
 
     slugFor(kind, key, rec) {
-      const name = rec?.name?.en || null;
-      const slug = slugs.getOrCreate(kind, String(key), { name, internalName: rec?.internalName ?? null });
+      const slug = slugs.slugOf(kind, key);
       if (!slug) report.add(`noSlug:${kind}`, `${key}${rec?.internalName ? ` (${rec.internalName})` : ''}`);
       return slug;
     },
@@ -193,7 +193,7 @@ export function createContext(arc: ArcData, slugs: SlugStore): GenContext {
       if (lg?.group === OUTPOST_ROOMS_GROUP) return { kind: 'outpostLevel', id: String(lg.level) };
       const questKey = questGate.get(gate.id);
       if (questKey) {
-        const questId = slugs.slugOf('quests', questKey) ?? ctx.slugFor('quests', questKey, arc.file('quests').get(questKey));
+        const questId = ctx.slugFor('quests', questKey, arc.file('quests').get(questKey));
         if (questId) return { kind: 'quest', id: questId };
       }
       // Unlocks learned by consuming an item (blueprints, furniture designs, stencil designs):
@@ -206,8 +206,7 @@ export function createContext(arc: ArcData, slugs: SlugStore): GenContext {
       }
       const gateItem = arc.items.get(gate.id);
       if (gateItem?.type === 'CharacterSkill') {
-        const skillId = ctx.slugFor('skills', gate.id, gateItem);
-        if (skillId) return { kind: 'skill', id: skillId };
+        return { kind: 'skill', id: String(gate.id) };
       }
       const itemSlug = shippedItems.get(gate.id);
       if (itemSlug) return { kind: 'item', id: itemSlug, amount: gate.amount };
@@ -230,7 +229,7 @@ export function createContext(arc: ArcData, slugs: SlugStore): GenContext {
       if (!ref) return null;
       if (ref.benchId === null) {
         const base = arc.items.get(Number(ref.benchKey));
-        ref.benchId = slugs.slugOf('benches', ref.benchKey) ?? ctx.slugFor('benches', ref.benchKey, base ?? null);
+        ref.benchId = ctx.slugFor('benches', ref.benchKey, base ?? null);
       }
       return ref;
     },

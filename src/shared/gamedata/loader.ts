@@ -94,11 +94,6 @@ export const DOMAINS_WITHOUT_TEXT: ReadonlySet<GameDomain> = new Set<GameDomain>
   'whats-new',
 ]);
 
-/** Resolves a possibly renamed slug (persisted state, old URLs) to the current slug. */
-export function resolveSlug(file: { aliases?: Record<string, string> }, slug: string): string {
-  return file.aliases?.[slug] ?? slug;
-}
-
 export function textOf(loaded: { text: TextFile }, slug: string): TextEntry | undefined {
   return loaded.text[slug];
 }

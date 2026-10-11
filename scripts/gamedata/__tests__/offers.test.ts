@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import type { ArcData, CanonItem, CanonOffer, CanonRecord } from '../arcData';
 import { createContext, type GenContext } from '../context';
-import type { SlugEntry, SlugKind, SlugStore } from '../slugs';
-import { classifyOffer, classCounts, offersOfClass } from '../offer-classes';
+import { openSlugStore } from '../slugs';
+import { classCounts, offersOfClass, offersOfDomain } from '../offer-classes';
 import recipes from '../domains/recipes';
 import research from '../domains/research';
 import blueprints from '../domains/blueprints';
@@ -10,41 +10,30 @@ import trades from '../domains/trades';
 
 const loc = (en: string) => ({ key: null, en }) as never;
 
-function memorySlugs(seed: Partial<Record<SlugKind, Record<string, string>>> = {}): SlugStore {
-  const tables = new Map<string, Record<string, SlugEntry>>();
-  const table = (k: string) => tables.get(k) ?? (tables.set(k, {}), tables.get(k)!);
-  for (const [kind, entries] of Object.entries(seed)) for (const [key, slug] of Object.entries(entries)) table(kind)[key] = { slug };
-  const taken = (kind: string, slug: string) => Object.values(table(kind)).some((e) => e.slug === slug);
-  const slugify = (n: string) => n.toLowerCase().replace(/[^a-z0-9 ]/g, '').replace(/ +/g, '_');
-  return {
-    get: (k, key) => table(k)[String(key)] ?? null,
-    slugOf: (k, key) => table(k)[String(key)]?.slug ?? null,
-    lookup: () => null,
-    getOrCreate(kind, key, { name, base, numericSep = '_' }) {
-      const ex = table(kind)[String(key)];
-      if (ex) return ex.slug;
-      const root = base || (name ? slugify(name) : '');
-      if (!root) return null;
-      let slug = root;
-      for (let n = 2; taken(kind, slug); n++) slug = `${root}${numericSep}${n}`;
-      table(kind)[String(key)] = { slug };
-      return slug;
-    },
-    aliases: () => ({}),
-    table,
-    save: () => [],
-  };
-}
-
 const OWNERS = { inRaidCrafting: 510, salvage: 511, workbenchGenerator: 900, blueprintLearning: 800, furnitureDesigns: 700, stencils: 600 };
 const RP = 1000;
 
+const slugOfName = (n: string) => n.toLowerCase().replace(/[^a-z0-9 ]/g, '').replace(/ +/g, '_');
+
+// Slug fields are what the arc-data build writes: items get their name's slug, the chain base Generators their bench slug.
 const item = (id: number, type: string, name: string | null, extra: Partial<CanonItem> = {}): CanonItem =>
-  ({ id, baseId: id, kind: 'item', type, name: name ? loc(name) : null, sources: [], upgrades: [], tags: [], ...extra }) as unknown as CanonItem;
+  ({
+    id,
+    baseId: id,
+    kind: 'item',
+    type,
+    name: name ? loc(name) : null,
+    sources: [],
+    upgrades: [],
+    tags: [],
+    ...(name && !['NPC'].includes(type) ? { slug: slugOfName(name) } : {}),
+    ...extra,
+  }) as unknown as CanonItem;
 
 const offer = (id: number, type: string, owner: number, rewardIds: number[], extra: Partial<CanonOffer> = {}): CanonOffer =>
   ({
     id,
+    class: null,
     kind: 'offer',
     type,
     owner,
@@ -66,9 +55,9 @@ function fixture(offers: CanonOffer[]): GenContext {
     item(3, 'GameItem', 'Rifle Blueprint'),
     item(4, 'GameItem', 'Research Points'),
     item(5, 'GameItem', 'Raider Coins'),
-    item(10, 'Generator', 'Research Station', { baseId: 10, upgrades: [{ next: 11 }] as never }),
-    item(11, 'Generator', 'Research Station', { baseId: 10 }),
-    item(20, 'Generator', 'Gunsmith', { baseId: 20 }),
+    item(10, 'Generator', 'Research Station', { slug: 'research_station', baseId: 10, upgrades: [{ next: 11 }] as never }),
+    item(11, 'Generator', null, { baseId: 10 }),
+    item(20, 'Generator', 'Gunsmith', { slug: 'gunsmith', baseId: 20 }),
     item(30, 'NPC', 'Lance'),
     item(31, 'CharacterItem', null),
     item(40, 'OutpostFurniture', 'Chair'),
@@ -88,7 +77,7 @@ function fixture(offers: CanonOffer[]): GenContext {
     file: () => new Map<string, CanonRecord>(),
     json: () => null,
   } as unknown as ArcData;
-  const ctx = createContext(arc, memorySlugs());
+  const ctx = createContext(arc, openSlugStore(arc));
   for (const i of items) if (i.name && !['Generator', 'NPC'].includes(i.type!)) ctx.shippedItems.set(i.id, ctx.slugFor('items', i.id, i)!);
   // research points is the currency with asset id RP; map it to the fixture item 4
   ctx.shippedItems.set(RP, 'research_points');
@@ -102,97 +91,73 @@ const rpCost = (rp: number, ...items: [number, number][]) => ({
 
 describe('offer classification', () => {
   const offers = [
-    offer(1, 'Crafting', 10, [3], { cost: rpCost(3000, [1, 2]) }), // research
-    offer(2, 'Crafting', 11, [2]), // research level 2
-    offer(3, 'Crafting', 20, [2], { cost: { type: 'itemAmounts', items: [{ id: 1, amount: 4 }] } }), // bench recipe
-    offer(4, 'FieldCrafting', 510, [2]), // in raid
-    offer(5, 'FieldCrafting', 511, [1]), // salvage
-    offer(6, 'Chamber', 800, [50], { cost: { type: 'itemAmounts', items: [{ id: 3, amount: 1 }] }, requires: [{ id: 3, amount: 1 }] }), // blueprint
-    offer(7, 'Chamber', 900, [20]), // bench build
-    offer(8, 'Chamber', 900, [40]), // furniture
-    offer(9, 'Chamber', 900, [41]), // room
-    offer(10, 'Chamber', 700, [50]), // design
-    offer(11, 'Chamber', 600, [50]), // stencil learn
-    offer(12, 'Crafting', 600, [2]), // stencil craft
-    offer(13, 'NPC', 30, [2], { cost: { type: 'itemAmounts', items: [{ id: 5, amount: 900 }] }, limit: { max: 3, refreshSeconds: 60 } }), // trade
-    offer(14, 'NPC', 31, [2]), // excluded promo
-    offer(15, 'RoundCrafting', 77, [1]), // scrappy
-    offer(16, 'CommunityEvent', 800, [1]), // project event
-    offer(17, 'Chamber', 900, [1]), // unclassified: no generator/furniture/room reward
-    offer(18, 'Mystery', 5, [1]), // unclassified type
+    offer(1, 'Crafting', 10, [3], { class: 'research', cost: rpCost(3000, [1, 2]) }),
+    offer(2, 'Crafting', 11, [2], { class: 'research' }),
+    offer(3, 'Crafting', 20, [2], { class: 'recipes:bench' }),
+    offer(4, 'FieldCrafting', 510, [2], { class: 'recipes:in_raid' }),
+    offer(13, 'NPC', 30, [2], { class: 'trades' }),
+    offer(14, 'NPC', 31, [2], { class: 'excluded:promo' }),
+    offer(17, 'Chamber', 900, [1]), // unclassified: class null
+    offer(18, 'Mystery', 5, [1], { class: 'made_up' as never }), // unknown class
   ];
 
-  it('applies rules 1-12 in order and reports unclassified offers', () => {
-    const ctx = fixture(offers);
-    const cls = (id: number) => classifyOffer(ctx, ctx.arc.offers.get(id)!)?.cls ?? null;
-    expect([1, 2].map(cls)).toEqual(['research', 'research']);
-    expect(cls(3)).toBe('recipes:bench');
-    expect(cls(4)).toBe('recipes:in_raid');
-    expect(cls(5)).toBe('items:salvage');
-    expect(cls(6)).toBe('blueprints');
-    expect(cls(7)).toBe('benches:build');
-    expect(cls(8)).toBe('outpost:furniture');
-    expect(cls(9)).toBe('outpost:room');
-    expect(cls(10)).toBe('outpost:design');
-    expect([cls(11), cls(12)]).toEqual(['stencils:learn', 'stencils:craft']);
-    expect(cls(13)).toBe('trades');
-    expect(cls(14)).toBe('excluded:promo');
-    expect(cls(15)).toBe('benches:scrappy');
-    expect(cls(16)).toBe('projects:event');
-    expect(cls(17)).toBeNull();
-    expect(cls(18)).toBeNull();
-    expect(ctx.report.sections.get('unclassifiedOffers')).toEqual([
-      '17 Chamber owner=900 "Offer 17"',
-      '18 Mystery owner=5 "Offer 18"',
-    ]);
-  });
-
-  it('memoizes per-class lists in ascending offer id and reports unclassified once', () => {
+  it('groups offers by their class, ascending offer id, and reports unclassified ones once', () => {
     const ctx = fixture(offers);
     expect(offersOfClass(ctx, 'research').map((o) => o.id)).toEqual([1, 2]);
     expect(offersOfClass(ctx, 'research')).toBe(offersOfClass(ctx, 'research'));
-    expect(classCounts(ctx).trades).toBe(1);
-    expect(ctx.report.count('unclassifiedOffers')).toBe(2);
+    expect(offersOfClass(ctx, 'outpost:room')).toEqual([]);
+    expect(classCounts(ctx)).toEqual({ research: 2, 'recipes:bench': 1, 'recipes:in_raid': 1, trades: 1, 'excluded:promo': 1 });
+    expect(ctx.report.sections.get('unclassifiedOffers')).toEqual([
+      '17 Chamber owner=900 "Offer 17"',
+      '18 Mystery owner=5 "Offer 18" class=made_up',
+    ]);
+  });
+
+  it('collects the offers of a domain; known-but-not-shipped classes belong to none', () => {
+    const ctx = fixture(offers);
+    expect(offersOfDomain(ctx, 'recipes').map((o) => o.id)).toEqual([3, 4]);
+    expect(offersOfDomain(ctx, 'trades').map((o) => o.id)).toEqual([13]);
+    expect(offersOfDomain(ctx, 'projects')).toEqual([]);
   });
 });
 
 describe('offer domains', () => {
-  it('builds recipes (bench + in_raid) with frozen-style slugs and numeric suffixes', () => {
+  it('builds recipes (bench + in_raid) keyed by offer id', () => {
     const ctx = fixture([
-      offer(3, 'Crafting', 20, [2], { cost: { type: 'itemAmounts', items: [{ id: 1, amount: 4 }] } }),
-      offer(4, 'FieldCrafting', 510, [2]),
-      offer(5, 'Crafting', 20, [2]),
+      offer(3, 'Crafting', 20, [2], { class: 'recipes:bench', cost: { type: 'itemAmounts', items: [{ id: 1, amount: 4 }] } }),
+      offer(4, 'FieldCrafting', 510, [2], { class: 'recipes:in_raid' }),
+      offer(5, 'Crafting', 20, [2], { class: 'recipes:bench' }),
     ]);
     const { recipes: r } = recipes.build(ctx) as { recipes: Record<string, Record<string, unknown>> };
-    expect(Object.keys(r)).toEqual(['recipes:rifle', 'recipes:rifle-2', 'recipes:rifle-3']);
-    expect(r['recipes:rifle']).toMatchObject({ station: 'bench', benchId: 'gunsmith', benchLevel: 1, cost: { items: [{ itemId: 'metal_parts', quantity: 4 }] } });
-    expect(r['recipes:rifle-2'].station).toBe('in_raid');
-    expect(r['recipes:rifle-2'].benchId).toBeUndefined();
+    expect(Object.keys(r)).toEqual(['3', '4', '5']);
+    expect(r['3']).toMatchObject({ id: '3', station: 'bench', benchId: 'gunsmith', benchLevel: 1, cost: { items: [{ itemId: 'metal_parts', quantity: 4 }] } });
+    expect(r['4'].station).toBe('in_raid');
+    expect(r['4'].benchId).toBeUndefined();
   });
 
   it('extracts research points and uses the reward name as title', () => {
-    const ctx = fixture([offer(1, 'Crafting', 10, [3], { cost: rpCost(3000, [1, 2]) }), offer(2, 'Crafting', 11, [50])]);
+    const ctx = fixture([offer(1, 'Crafting', 10, [3], { class: 'research', cost: rpCost(3000, [1, 2]) }), offer(2, 'Crafting', 11, [50], { class: 'research' })]);
     const { research: r } = research.build(ctx) as { research: Record<string, Record<string, unknown>> };
-    expect(Object.keys(r)).toEqual(['research:rifle_blueprint']); // unnamed reward is skipped
-    expect(r['research:rifle_blueprint']).toMatchObject({ benchId: 'research_station', benchLevel: 1, researchPoints: 3000 });
-    expect(ctx.text.en('research', 'research:rifle_blueprint')).toBe('Rifle Blueprint');
+    expect(Object.keys(r)).toEqual(['1']); // unnamed reward is skipped
+    expect(r['1']).toMatchObject({ benchId: 'research_station', benchLevel: 1, researchPoints: 3000 });
+    expect(ctx.text.en('research', '1')).toBe('Rifle Blueprint');
     expect(ctx.report.count('offersWithoutReward')).toBe(1);
   });
 
   it('links blueprint learning to the unlocked recipe item', () => {
     const ctx = fixture([
-      offer(6, 'Chamber', 800, [50], { cost: { type: 'itemAmounts', items: [{ id: 3, amount: 1 }] }, requires: [{ id: 3, amount: 1 }] }),
-      offer(3, 'Crafting', 20, [2], { requires: [{ id: 50, amount: 1 }] }),
+      offer(6, 'Chamber', 800, [50], { class: 'blueprints', cost: { type: 'itemAmounts', items: [{ id: 3, amount: 1 }] }, requires: [{ id: 3, amount: 1 }] }),
+      offer(3, 'Crafting', 20, [2], { class: 'recipes:bench', requires: [{ id: 50, amount: 1 }] }),
     ]);
     const { blueprints: b } = blueprints.build(ctx) as { blueprints: Record<string, Record<string, unknown>> };
-    expect(b['blueprints:rifle_blueprint']).toMatchObject({ blueprintItemId: 'rifle_blueprint', unlocksItemId: 'rifle', rewards: [{ itemId: 'rifle', quantity: 1 }] });
-    expect(b['blueprints:rifle_blueprint'].requires).toBeUndefined();
+    expect(b['6']).toMatchObject({ blueprintItemId: 'rifle_blueprint', unlocksItemId: 'rifle', rewards: [{ itemId: 'rifle', quantity: 1 }] });
+    expect(b['6'].requires).toBeUndefined();
   });
 
-  it('builds trades with trader slug, limit and trader map', () => {
-    const ctx = fixture([offer(13, 'NPC', 30, [2], { cost: { type: 'itemAmounts', items: [{ id: 5, amount: 900 }] }, limit: { max: 3, refreshSeconds: 60 } })]);
+  it('builds trades with trader id, limit and trader map', () => {
+    const ctx = fixture([offer(13, 'NPC', 30, [2], { class: 'trades', cost: { type: 'itemAmounts', items: [{ id: 5, amount: 900 }] }, limit: { max: 3, refreshSeconds: 60 } })]);
     const res = trades.build(ctx) as { trades: Record<string, Record<string, unknown>>; traders: Record<string, Record<string, unknown>> };
-    expect(res.trades['trades:rifle']).toMatchObject({ traderId: 'lance', limit: { max: 3, refreshSeconds: 60 } });
-    expect(res.traders).toEqual({ lance: { id: 'lance', nameEn: 'Lance' } });
+    expect(res.trades['13']).toMatchObject({ traderId: '30', limit: { max: 3, refreshSeconds: 60 } });
+    expect(res.traders).toEqual({ '30': { id: '30', nameEn: 'Lance' } });
   });
 });

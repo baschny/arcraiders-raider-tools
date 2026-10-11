@@ -145,14 +145,13 @@ const toPublicMap = (map) => ({ ...map, quests: map.quests.map(({ a, id, ...mark
 
 /**
  * Slug of each map of the build (`FrozenTrail_01` -> `pendola-pass`): arc-data maps.json gives the level of a map id
- * (`FrozenTrail_01_P`, the persistent level of the build's map), slugs/maps.json the slug of the id.
+ * (`FrozenTrail_01_P`, the persistent level of the build's map) and the `slug` of the record.
  */
 function mapSlugs() {
-  const read = (rel) => JSON.parse(fs.readFileSync(path.join(arcData, rel), 'utf8'));
-  const slugs = read('slugs/maps.json');
+  const maps = JSON.parse(fs.readFileSync(path.join(arcData, 'maps.json'), 'utf8'));
   const byLevel = new Map();
-  for (const [id, m] of Object.entries(read('maps.json'))) {
-    if (slugs[id]?.slug) byLevel.set(m.mapName.replace(/_P$/, ''), slugs[id].slug);
+  for (const m of Object.values(maps)) {
+    if (m.slug) byLevel.set(m.mapName.replace(/_P$/, ''), m.slug);
   }
   return byLevel;
 }
@@ -162,7 +161,7 @@ const slugs = mapSlugs();
 for (const m of index.maps) {
   m.slug = slugs.get(m.map);
   if (!m.slug) {
-    console.error(`No slug for map ${m.map} in ${arcData} (maps.json + slugs/maps.json).`);
+    console.error(`No slug for map ${m.map} in ${arcData} (maps.json `slug`).`);
     process.exit(1);
   }
   m.image = await tileSet(m.image);

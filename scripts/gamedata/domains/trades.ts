@@ -1,10 +1,10 @@
 import type { Trade, Trader } from '../../../src/shared/gamedata/types';
-import { baseOffer, offerSlug, offersOfClass } from '../offer-classes';
+import { baseOffer, offerRef, offersOfClass } from '../offer-classes';
 import type { DomainModule } from './types';
 
 /**
- * Domain 'trades': NPC offers (buy and scrap-value sell offers), keyed `trades:<reward-slug>[-n]`.
- * The trader is the slug of the NPC owner (slug kind 'traders'); `traders` maps slug → name.
+ * Domain 'trades': NPC offers (buy and scrap-value sell offers), keyed by offer id.
+ * The trader is the NPC owner's asset id as a string; `traders` maps it to the name.
  */
 const module: DomainModule = {
   domain: 'trades',
@@ -12,11 +12,10 @@ const module: DomainModule = {
     const trades: Record<string, Trade> = {};
     const traders: Record<string, Trader> = {};
     for (const offer of offersOfClass(ctx, 'trades')) {
-      const slug = offerSlug(ctx, 'trades', offer);
+      const slug = offerRef(ctx, 'trades', offer);
       if (!slug) continue;
       const npc = ctx.arc.items.get(offer.owner) ?? null;
-      const traderId = ctx.slugFor('traders', offer.owner, npc);
-      if (!traderId) continue;
+      const traderId = String(offer.owner);
       if (!traders[traderId]) {
         traders[traderId] = { id: traderId, nameEn: npc?.name?.en ?? traderId };
         ctx.text.add('trades', traderId, 'name', npc?.name);

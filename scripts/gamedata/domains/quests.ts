@@ -229,7 +229,7 @@ const module: DomainModule = {
       const optionals = ctx.rewards(withoutXp(q.rewards?.optionals), `${slug} optionals`);
 
       const owner = q.owner ? arc.items.get(q.owner) : undefined;
-      const traderId = owner && owner.id !== workbench ? ctx.slugFor('traders', owner.id, owner) : null;
+      const traderId = owner && owner.id !== workbench ? String(owner.id) : null;
       const mapIds = mapSlugs(q.mapIds, slug);
 
       quests[slug] = {

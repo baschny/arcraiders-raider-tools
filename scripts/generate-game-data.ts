@@ -9,8 +9,6 @@
  *   --strict  fail on unclassified offers, unresolved requirements or files over budget
  *   GAME_DATA_DIR / EMBARK_API_DIR override the input locations.
  *
- * New slugs are appended to arc-data/slugs/*.json — commit them in arc-data together with the
- * regenerated site files.
  */
 import type { GameDomain } from '../src/shared/gamedata/types';
 import { loadArcData } from './gamedata/arcData';
@@ -20,18 +18,13 @@ import { crossref } from './gamedata/domains/crossref';
 import { openSlugStore, type SlugKind } from './gamedata/slugs';
 import { OUTPUT_DIR, removeStale, writeDomain } from './gamedata/writer';
 
-/** Slug table whose aliases a domain file carries (for resolving renamed slugs in saved state). */
+/** Slug kind whose aliases a domain file carries (for resolving renamed slugs in saved state). */
 const ALIAS_KINDS: Partial<Record<GameDomain, SlugKind[]>> = {
   items: ['items'],
   quests: ['quests'],
   benches: ['benches'],
   projects: ['projects'],
   maps: ['maps'],
-  trades: ['offers', 'traders'],
-  research: ['offers'],
-  outpost: ['outpost'],
-  stencils: ['stencils'],
-  skilltree: ['skills'],
 };
 
 /** Report sections that fail a --strict run. */
@@ -44,7 +37,7 @@ function main(): void {
   const only = onlyIdx >= 0 ? new Set(args[onlyIdx + 1].split(',')) : null;
 
   const arc = loadArcData();
-  const slugs = openSlugStore(arc.dir);
+  const slugs = openSlugStore(arc);
   const ctx = createContext(arc, slugs);
 
   for (const mod of DOMAIN_MODULES) {
@@ -70,11 +63,9 @@ function main(): void {
     const removed = removeStale(written);
     if (removed.length) console.log(`removed stale: ${removed.join(', ')}`);
   }
-  const newSlugFiles = slugs.save();
 
   ctx.report.print();
   console.log(`wrote ${written.length} file(s) to ${OUTPUT_DIR}`);
-  if (newSlugFiles.length) console.log(`new slugs appended to arc-data: ${newSlugFiles.join(', ')} — commit them in arc-data`);
   for (const o of overBudget) console.log(`OVER BUDGET ${o}`);
 
   const strictFailures = STRICT_SECTIONS.filter((s) => ctx.report.count(s) > 0);

@@ -1,7 +1,7 @@
 import type { Blueprint } from '../../../src/shared/gamedata/types';
 import type { CanonAmount, CanonOffer } from '../arcData';
 import type { GenContext } from '../context';
-import { baseOffer, offerSlug, offersOfClass, primaryRewardId } from '../offer-classes';
+import { baseOffer, offerRef, offersOfClass, primaryRewardId } from '../offer-classes';
 import type { DomainModule } from './types';
 
 function costItems(offer: CanonOffer): CanonAmount[] {
@@ -32,7 +32,7 @@ const module: DomainModule = {
     const gated = craftingByRequirement(ctx);
     for (const offer of offersOfClass(ctx, 'blueprints')) {
       const bpAsset = costItems(offer).find((c) => ctx.shippedItems.has(c.id))?.id ?? null;
-      const slug = offerSlug(ctx, 'blueprints', offer, bpAsset);
+      const slug = offerRef(ctx, 'blueprints', offer, bpAsset);
       if (!slug) continue;
       const blueprintItemId = ctx.shippedItems.get(bpAsset!)!;
 

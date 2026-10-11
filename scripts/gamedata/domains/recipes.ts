@@ -1,5 +1,5 @@
 import type { Recipe } from '../../../src/shared/gamedata/types';
-import { baseOffer, offerSlug, offersOfClass } from '../offer-classes';
+import { baseOffer, offerRef, offersOfClass } from '../offer-classes';
 import type { DomainModule } from './types';
 
 /**
@@ -12,7 +12,7 @@ const module: DomainModule = {
     const recipes: Record<string, Recipe> = {};
     const offers = [...offersOfClass(ctx, 'recipes:bench'), ...offersOfClass(ctx, 'recipes:in_raid')].sort((a, b) => a.id - b.id);
     for (const offer of offers) {
-      const slug = offerSlug(ctx, 'recipes', offer);
+      const slug = offerRef(ctx, 'recipes', offer);
       if (!slug) continue;
       const inRaid = offer.type === 'FieldCrafting';
       const recipe: Recipe = { ...baseOffer(ctx, offer, slug), station: inRaid ? 'in_raid' : 'bench' };

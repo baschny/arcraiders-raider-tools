@@ -94,7 +94,7 @@ describe('quests domain', () => {
     expect(out.daily.category).toBe('daily');
     expect(out.trigger.hidden).toBe(true);
     expect(out.research.traderId).toBeUndefined();
-    expect(out.first.traderId).toBe('trader');
+    expect(out.first.traderId).toBe('5');
   });
 
   it('builds requires with raids and map prerequisites, and next', () => {

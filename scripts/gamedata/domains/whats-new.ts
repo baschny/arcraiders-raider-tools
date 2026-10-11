@@ -93,13 +93,13 @@ function resolveRef(ctx: GenContext, id: number, system: string, where: string):
       return ref?.benchId ? { bench: ref.benchId, level: ref.level } : fail();
     }
     case 'NPC':
-      return ctx.slugs.slugOf('traders', id) ?? fail();
+      return String(id);
     case 'InventoryStructure': {
       const n = slotsOf(ctx, id);
       return n != null ? { stashSlots: n } : fail();
     }
     case 'CharacterSkill':
-      return ctx.slugs.slugOf('skills', id) ?? fail();
+      return String(id);
     default:
       return fail();
   }
@@ -127,8 +127,7 @@ function slugList(ctx: GenContext, ids: number[] | undefined, where: string): st
 function skillList(ctx: GenContext, ids: number[] | undefined, where: string): string[] {
   const out: string[] = [];
   for (const id of ids ?? []) {
-    const slug = ctx.slugs.slugOf('skills', id);
-    if (slug) out.push(slug);
+    if (ctx.arc.items.get(id)?.type === 'CharacterSkill') out.push(String(id));
     else ctx.report.add(DROP_REFS, `${id} skill (${where})`);
   }
   return out;
@@ -198,11 +197,11 @@ function changes(ctx: GenContext, c: NonNullable<RawWhatsNew['changes']>): Whats
   }
   out.traders = [];
   for (const t of c.traders ?? []) {
-    const npc = ctx.slugs.slugOf('traders', t.npc);
-    if (!npc) {
+    if (ctx.arc.items.get(t.npc)?.type !== 'NPC') {
       ctx.report.add(DROP_REFS, `${t.npc} trader (changes.traders)`);
       continue;
     }
+    const npc = String(t.npc);
     const where = `changes.traders ${npc}`;
     const row: WhatsNewTraderChange = { npc };
     row.added = (t.added ?? []).map((l) => tradeLine(ctx, l, where)).filter((l): l is WhatsNewTradeLine => !!l);
