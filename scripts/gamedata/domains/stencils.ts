@@ -1,6 +1,7 @@
 import type { Stencil, StencilSlot } from '../../../src/shared/gamedata/types';
 import type { CanonAmount, CanonOffer } from '../arcData';
 import { offersOfClass, offerSlug } from '../offer-classes';
+import { fallbackNameEn } from './items';
 import type { DomainModule } from './types';
 
 /**
@@ -30,8 +31,8 @@ const module: DomainModule = {
       const slug = ctx.shippedItems.get(s.id)!;
       const allowedIds = ((s.slots.allowedSlotAssetIds as number[] | undefined) ?? []).filter((id) => ctx.shippedItems.has(id));
       for (const id of allowedIds) if (!slotOfStencil.has(id)) slotOfStencil.set(id, slug);
-      slots[slug] = { id: slug, nameEn: s.name!.en, allowed: allowedIds.map((id) => ctx.shippedItems.get(id)!).sort() };
-      ctx.text.add('stencils', slug, 'name', s.name);
+      slots[slug] = { id: slug, nameEn: fallbackNameEn(s), allowed: allowedIds.map((id) => ctx.shippedItems.get(id)!).sort() };
+      if (s.name) ctx.text.add('stencils', slug, 'name', s.name);
     }
 
     const stencils: Record<string, Stencil> = {};

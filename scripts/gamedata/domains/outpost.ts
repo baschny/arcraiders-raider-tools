@@ -9,6 +9,7 @@ import type {
 import type { CanonAmount, CanonOffer, CanonRewardPackage } from '../arcData';
 import type { GenContext } from '../context';
 import { offersOfClass, offerSlug } from '../offer-classes';
+import { fallbackNameEn } from './items';
 import type { DomainModule } from './types';
 
 /** Outpost rooms group: levels by number of installed rooms. */
@@ -115,8 +116,8 @@ const module: DomainModule = {
       const allowedIds = (s.slots.allowedSlotAssetIds as number[] | undefined) ?? [];
       const allowedFurniture = allowedIds.filter((id) => furnitureCategory.has(id)).map(slugOf).sort();
       const allowedCategories = [...new Set(allowedIds.map((id) => furnitureCategory.get(id)).filter((c): c is string => !!c))].sort();
-      slots[slug] = { id: slug, nameEn: s.name!.en, allowedCategories, allowedFurniture };
-      ctx.text.add('outpost', slug, 'name', s.name);
+      slots[slug] = { id: slug, nameEn: fallbackNameEn(s), allowedCategories, allowedFurniture };
+      if (s.name) ctx.text.add('outpost', slug, 'name', s.name);
     }
 
     const levels: OutpostLevel[] = [];

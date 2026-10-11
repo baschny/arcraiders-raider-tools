@@ -9,7 +9,7 @@ import type { DomainModule } from './types';
 /**
  * Canonical item types that ship to the site. Everything referenced by site domains must be in
  * here (benches/Generators are modelled in `benches`, not as items). Items without an English name
- * never ship (no slug).
+ * never ship (no slug), except the structural types in NAMELESS_ITEM_TYPES.
  */
 export const SHIPPED_ITEM_TYPES = new Set([
   'GameItem',
@@ -64,13 +64,24 @@ export function siteModSlots(ctx: GenContext, item: CanonItem): Record<string, s
   return keys.length ? Object.fromEntries(keys.map((k) => [k, out[k]])) : undefined;
 }
 
+/**
+ * Structural items that ship without a game name (arc-data has names only from the game and the API):
+ * they are identified by `internalName` / `tag`, see `fallbackNameEn`.
+ */
+export const NAMELESS_ITEM_TYPES = new Set(['OutpostSlot', 'ItemSkinSlot']);
+
+/** English display name: the game name, else the record's internalName, else its tag. */
+export function fallbackNameEn(rec: { name?: { en?: string | null } | null; internalName?: string | null; tag?: string | null }): string {
+  return rec.name?.en || rec.internalName || rec.tag || '';
+}
+
 /** Decides shipping and registers ctx.shippedItems (asset id → slug). Runs before every other domain. */
 export function registerShippedItems(ctx: GenContext): CanonItem[] {
   const currencyIds = new Set(Object.values(ctx.arc.constants.currencies));
   const shipped: CanonItem[] = [];
   for (const item of [...ctx.arc.items.values()].sort((a, b) => a.id - b.id)) {
     if (!SHIPPED_ITEM_TYPES.has(item.type ?? '') && !currencyIds.has(item.id)) continue;
-    if (!item.name?.en) {
+    if (!item.name?.en && !NAMELESS_ITEM_TYPES.has(item.type ?? '')) {
       ctx.report.add('itemsWithoutName', `${item.id} ${item.type}${item.internalName ? ` ${item.internalName}` : ''}`);
       continue;
     }
@@ -206,7 +217,7 @@ const module: DomainModule = {
       const slug = ctx.shippedItems.get(item.id)!;
       const p = props[String(item.id)];
       const chain = chains.get(item.id) ?? {};
-      const name = withTier(item.name, chain.tier, chain.baseId ? (chainLength.get(chain.baseId) ?? 0) : 0)!;
+      const name = withTier(item.name, chain.tier, chain.baseId ? (chainLength.get(chain.baseId) ?? 0) : 0);
       const arctrackerId = ctx.slugs.get('items', item.id)?.arctrackerId ?? null;
       if (arctrackerId && arctrackerId !== slug) arctrackerAliases[arctrackerId] = slug;
 
@@ -225,7 +236,7 @@ const module: DomainModule = {
 
       items[slug] = {
         id: slug,
-        nameEn: name.en,
+        nameEn: name?.en || fallbackNameEn(item),
         ...(category ? { category } : {}),
         ...(item.stashGroup ? { group: shortGroup(item.stashGroup) } : {}),
         ...(item.stashSubgroup ? { subgroup: shortCategory(item.stashSubgroup) } : {}),
@@ -246,7 +257,7 @@ const module: DomainModule = {
         ...(themes.length ? { foundIn: themes } : {}),
         ...(p?.questItem ? { questItem: true } : {}),
       };
-      ctx.text.add('items', slug, 'name', name);
+      if (name) ctx.text.add('items', slug, 'name', name);
       ctx.text.add('items', slug, 'description', item.description);
     }
     for (const [type, n] of unclassified) ctx.report.add('itemsWithoutCategory', `${n} ${type}`);
