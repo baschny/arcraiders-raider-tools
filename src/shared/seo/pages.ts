@@ -1,6 +1,7 @@
 // Public pages of the site: the single source for page titles, search snippets, link previews,
 // the pre-rendered HTML of each route and the sitemap (see scripts/seo/). Kept free of React
 // and DOM types so the build can import it.
+import { MAP_SLUGS } from '../../apps/maps/routing';
 import {
   DEFAULT_WHATS_NEW_TAB,
   DEFAULT_WHATS_NEW_VERSION,
@@ -43,6 +44,14 @@ export const SEO_PAGES: readonly SeoPage[] = [
     image: 'quartermaster.jpg',
   },
   { path: '/maps', titleKey: 'shared.tools.maps', descriptionKey: 'seo.maps', image: 'maps.jpg' },
+  // Each map has its own URL; search engines index the tool page.
+  ...MAP_SLUGS.map((slug) => ({
+    path: `/maps/${slug}`,
+    titleKey: 'shared.tools.maps',
+    descriptionKey: 'seo.maps',
+    image: 'maps.jpg',
+    canonicalPath: '/maps',
+  })),
   { path: '/map-sizes', titleKey: 'maps.sizes.viewSizes', descriptionKey: 'seo.mapSizes', image: 'map-sizes.jpg' },
   // A version's own page shows its default tab: the entry point to the update.
   ...WHATS_NEW_VERSIONS.map((version) => ({

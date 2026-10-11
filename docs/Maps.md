@@ -2,7 +2,7 @@
 
 The Maps tool (`src/apps/maps/`) has two routes, switched by the tab bar in its header:
 
-- `/maps` — the ARC Raiders maps full-bleed with what the game files say about them: where an item can be looted and
+- `/maps`, `/maps/<map slug>` (e.g. `/maps/pendola-pass`) — the ARC Raiders maps full-bleed with what the game files say about them: where an item can be looted and
   where ARC enemies spawn, per map and map condition. It is a port of the map features page of embark-api
   (`tools/map-features/`); the game-side background (loot handlers, spawners, transforms, map layers, what is
   server-only) is documented there in `docs/Map-Features.md`.
@@ -126,16 +126,19 @@ Check the generator output for warnings (missing full-size textures) and the ite
 slug are excluded). When the build's data changes shape, update `toPublicIndex` / `toPublicMap`; when the public
 format changes, bump `PUBLIC_SCHEMA_VERSION` in the generator and `MAP_SCHEMA_VERSION` in
 `src/apps/maps/data/schema.ts` and the readers in the same commit. Unknown URL values from old links (a removed map, condition, layer, item or enemy) are dropped by
-`sanitizeState` in `state.ts`.
+`sanitizeState` in `state.ts`. A new map needs its slug in `src/apps/maps/routing.ts` (pre-rendered page per map;
+a test compares the list with `index.json`).
 
 ## URL and preferences
 
-Everything that makes a view shareable is in the URL (`state.ts`); default values are left out:
+Everything that makes a view shareable is in the URL (`state.ts`): the map in the path, `/maps/<map slug>` (the
+arc-data slug of the map, `slugs/maps.json`, which the generator adds to the maps of `index.json`), the rest in
+params; default values are left out. `/maps` without a slug shows the Dam (`dam-battleground`). Old links with
+`?map=<level name>` (e.g. `?map=FrozenTrail_01`) are moved to the map's slug URL.
 
 | Param | Meaning | Default |
 | --- | --- | --- |
 | `mode` | `loot` or `arc` | `loot` |
-| `map` | map key, e.g. `TheDam_02` | `TheDam_02` |
 | `cond` | map condition key | `Default` (Normal) |
 | `layer` | map layer index | the map's default layer |
 | `item` | raider-tools item id (slug) | none |

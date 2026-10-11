@@ -2,7 +2,7 @@
 // map and condition switchers float at the top, the collapsible left bar holds the mode switch and the filters (on
 // phones: a bottom sheet). `/map-sizes` is the playable-area comparison (MapSizes.tsx), switched by MapsHeader.
 // Data: embark-api map features build, generated with npm run generate:maps (data/useMapData.ts). State lives in the
-// URL.
+// URL: /maps/<map slug>?<params> (state.ts).
 import { useEffect, useRef, useState } from 'react';
 import { Crosshair, Package, PanelLeftClose, PanelLeftOpen, RotateCw } from 'lucide-react';
 import { useLocale } from '../../shared/context/LocaleContext';
@@ -22,10 +22,10 @@ import { Sidebar } from './Sidebar';
 import { BottomSheet } from './BottomSheet';
 import { useMobile } from './useMobile';
 import { ConditionBar, MapBar, ModeSwitch } from './Bars';
-import { sanitizeState, useMapState, usePrefs, type MapPatch, type MapState } from './state';
+import { mapEntry, sanitizeState, useMapState, usePrefs, type MapPatch, type MapState } from './state';
 import './styles/main.scss';
 
-const DEFAULT_MAP = 'TheDam_02';
+const DEFAULT_MAP = 'dam-battleground';
 
 export function MapsApp() {
   const { locale } = useLocale();
@@ -38,7 +38,7 @@ export function MapsApp() {
   // URL values the data does not know: render with the defaults at once, then clean the URL.
   const preFix = index ? sanitizeState(urlState, index, null, items, DEFAULT_MAP) : null;
   const preState = preFix ? { ...urlState, ...preFix } : urlState;
-  const { map, error: mapError } = useMap(index, index?.maps.length ? preState.map : null);
+  const { map, error: mapError } = useMap(index, (index && mapEntry(index, preState.map)?.map) ?? null);
   const fix = index ? sanitizeState(urlState, index, map, items, DEFAULT_MAP) : null;
   const state = fix ? { ...urlState, ...fix } : urlState;
   const [shown, setShown] = useState<MapData | null>(null);
@@ -51,7 +51,8 @@ export function MapsApp() {
   if (error) return <LoadError error={error} mapName={index?.maps.find((m) => m.map === error.map)?.name ?? error.map} />;
   if (!index || !shown) return <LoadingSpinner />;
   // While the next map loads, the previous one stays (no spinner flash, keyboard focus stays in the map bar).
-  return <Explorer index={index} map={shown} state={shown === map ? state : { ...state, map: shown.map }} set={set} items={items} />;
+  const shownSlug = index.maps.find((m) => m.map === shown.map)?.slug ?? state.map;
+  return <Explorer index={index} map={shown} state={shown === map ? state : { ...state, map: shownSlug }} set={set} items={items} />;
 }
 
 /** Route `/map-sizes`: the same index load, then the size comparison (no map state). */

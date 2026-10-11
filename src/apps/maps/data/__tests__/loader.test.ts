@@ -54,7 +54,7 @@ describe('loadMap', () => {
     vi.unstubAllGlobals();
   });
 
-  const index = { ...TINY_INDEX, maps: [{ map: 'A', name: 'A', difficulty: 1, file: 'maps/A.json', image: { tiles: 't', size: 1, levels: 1 } }] };
+  const index = { ...TINY_INDEX, maps: [{ map: 'A', slug: 'a', name: 'A', difficulty: 1, file: 'maps/A.json', image: { tiles: 't', size: 1, levels: 1 } }] };
 
   it('reports a missing map file with its map key, and retries it next time', async () => {
     const fetch = mockFetch(json({}, 404), json({ map: 'A' }));

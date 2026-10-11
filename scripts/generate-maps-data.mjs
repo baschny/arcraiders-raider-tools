@@ -8,6 +8,7 @@
 //
 // embark-api is found through the env var EMBARK_API_DIR, by default as the sibling directory ../embark-api of this
 // checkout (set it when working in a git worktree, e.g. EMBARK_API_DIR=~/src/embark-api npm run generate:maps).
+// Map slugs (the page URLs /maps/<slug>) come from arc-data (GAME_DATA_DIR, default <embark-api>/arc-data).
 //
 // Output (public/data/map-data/):
 //   index.json                     map list, items, loot tables, enemies, quests (`built` comes from the build)
@@ -27,8 +28,11 @@ import { computeSizes } from './lib/map-sizes.mjs';
 import { findSource, sourceIndex, tilesHash, writeTiles } from './lib/map-tiles.mjs';
 
 const MAX_FILE_BYTES = 5 * 1024 * 1024;
-/** Format of the public files: items and references by slug only (see toPublicIndex). Client: MAP_SCHEMA_VERSION. */
-const PUBLIC_SCHEMA_VERSION = 2;
+/**
+ * Format of the public files: items and references by slug only (see toPublicIndex), maps with their slug.
+ * Client: MAP_SCHEMA_VERSION.
+ */
+const PUBLIC_SCHEMA_VERSION = 3;
 
 const root = path.resolve(import.meta.dirname, '..');
 const embarkApi = path.resolve(process.env.EMBARK_API_DIR || path.join(root, '..', 'embark-api'));
@@ -36,6 +40,7 @@ const extract = path.join(embarkApi, 'data-game-extract', 'current');
 const build = path.join(extract, 'map-features');
 const textures = path.join(extract, 'textures', 'PioneerGame', 'Content', 'Pioneer');
 const out = path.join(root, 'public', 'data', 'map-data');
+const arcData = path.resolve(process.env.GAME_DATA_DIR || path.join(embarkApi, 'arc-data'));
 
 if (!fs.existsSync(embarkApi)) {
   console.error(`embark-api not found at ${embarkApi}.\nSet EMBARK_API_DIR to your embark-api checkout (default: the sibling directory ../embark-api).`);
@@ -135,8 +140,30 @@ function toPublicIndex(index) {
 /** Public form of maps/<map>.json: quest markers without their quest assets and level actor id. */
 const toPublicMap = (map) => ({ ...map, quests: map.quests.map(({ a, id, ...marker }) => marker) });
 
+/**
+ * Slug of each map of the build (`FrozenTrail_01` -> `pendola-pass`): arc-data maps.json gives the level of a map id
+ * (`FrozenTrail_01_P`, the persistent level of the build's map), slugs/maps.json the slug of the id.
+ */
+function mapSlugs() {
+  const read = (rel) => JSON.parse(fs.readFileSync(path.join(arcData, rel), 'utf8'));
+  const slugs = read('slugs/maps.json');
+  const byLevel = new Map();
+  for (const [id, m] of Object.entries(read('maps.json'))) {
+    if (slugs[id]?.slug) byLevel.set(m.mapName.replace(/_P$/, ''), slugs[id].slug);
+  }
+  return byLevel;
+}
+
 const index = JSON.parse(fs.readFileSync(path.join(build, 'index.json'), 'utf8'));
-for (const m of index.maps) m.image = await tileSet(m.image);
+const slugs = mapSlugs();
+for (const m of index.maps) {
+  m.slug = slugs.get(m.map);
+  if (!m.slug) {
+    console.error(`No slug for map ${m.map} in ${arcData} (maps.json + slugs/maps.json).`);
+    process.exit(1);
+  }
+  m.image = await tileSet(m.image);
+}
 writeJson('index.json', toPublicIndex(index));
 
 // ---- maps: area (POI) pieces are replaced by their merged outline (scripts/lib/area-outlines.mjs).

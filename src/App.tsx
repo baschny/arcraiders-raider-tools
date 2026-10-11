@@ -79,7 +79,7 @@ function LocaleRouter() {
             <Route path="quests" element={<QuestsApp />} />
             <Route path="loot-helper" element={<LootHelperApp />} />
             <Route path="quartermaster" element={<QuartermasterApp />} />
-            <Route path="maps" element={<MapsApp />} />
+            <Route path="maps/:mapSlug?" element={<MapsApp />} />
             <Route path="map-sizes" element={<MapSizesApp />} />
             <Route path="whats-new/:version?/:tab?" element={<WhatsNewApp />} />
             <Route path="profile" element={<Profile />}>

@@ -16,7 +16,7 @@ export function MapBar({ ex }: { ex: Explorer }) {
       {sortedMaps(ex.index).map((m) => {
         const sc = totals?.get(m.map);
         return (
-          <button key={m.map} {...radioTab(m.map === ex.map.map)} className={`${m.map === ex.map.map ? 'active' : ''} ${sc && sc === best ? 'best' : ''}`} onClick={() => ex.set({ map: m.map })}
+          <button key={m.map} {...radioTab(m.map === ex.map.map)} className={`${m.map === ex.map.map ? 'active' : ''} ${sc && sc === best ? 'best' : ''}`} onClick={() => ex.set({ map: m.slug })}
             title={totals ? tx.tm('maps.mapBar.scoreTitle', { map: name(m), score: sc ? tx.score(sc) : '–' }) : name(m)}>
             <span>{name(m)}</span>
             {totals && <small>{sc ? tx.score(sc) : '–'}</small>}

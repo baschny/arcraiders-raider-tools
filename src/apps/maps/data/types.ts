@@ -16,7 +16,10 @@ export interface TileSet {
 }
 
 export interface MapIndexEntry {
+  /** Level name of the map in the build (`FrozenTrail_01`): the key of the map in the data. */
   map: string;
+  /** Map slug of the site (`pendola-pass`): the map in the page URL, /maps/<slug>. */
+  slug: string;
   name: string;
   nameKey?: string;
   difficulty: number | null;

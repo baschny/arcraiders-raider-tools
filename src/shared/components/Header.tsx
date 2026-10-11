@@ -53,7 +53,7 @@ export function Header() {
       tool.path === toolPathname ||
       (tool.path !== '/' && toolPathname.startsWith(`${tool.path}/`)),
   ) || TOOLS[0];
-  const shouldAutoHideOnScroll = currentPathname !== '/schedule' && currentPathname !== '/maps';
+  const shouldAutoHideOnScroll = currentPathname !== '/schedule' && currentPathname !== '/maps' && !currentPathname.startsWith('/maps/');
   const currentLocaleOption =
     localeOptions.find((option) => option.code === locale) ?? localeOptions[0];
 

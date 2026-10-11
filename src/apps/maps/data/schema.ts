@@ -1,7 +1,7 @@
 // Version check of the public map data (public/data/map-data, written by scripts/generate-maps-data.mjs). The build
 // in embark-api has its own SCHEMA_VERSION; the public format bumps this one whenever its shape changes.
-/** The public data format this client reads (2: items and references by slug only). */
-export const MAP_SCHEMA_VERSION = 2;
+/** The public data format this client reads (2: items and references by slug only, 3: maps with their slug). */
+export const MAP_SCHEMA_VERSION = 3;
 
 /** The map data has a format version this client does not know (data and client from different releases). */
 export class MapSchemaError extends Error {

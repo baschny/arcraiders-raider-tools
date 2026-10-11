@@ -2,20 +2,20 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 import { TINY_INDEX, TINY_MAP } from '../data/__tests__/fixtures/tinyMap';
 import type { ItemsMap } from '../../loot-helper/types/item';
 import type { MapData, MapIndex } from '../data/types';
-import { condIndex, DEFAULT_PREFS, defaultLayer, loadPrefs, parseState, PREFS_KEY, sanitizeState, serializeState, type MapState } from '../state';
+import { condIndex, DEFAULT_PREFS, defaultLayer, loadPrefs, mapPath, parseState, pathMap, PREFS_KEY, sanitizeState, serializeState, type MapState } from '../state';
 
-const parse = (q: string) => parseState(new URLSearchParams(q), 'TheDam_02');
+const parse = (q: string, map?: string) => parseState(new URLSearchParams(q), map, 'dam-battleground');
 
 describe('parseState', () => {
   it('falls back to the defaults', () => {
     expect(parse('')).toEqual({
-      mode: 'loot', map: 'TheDam_02', cond: 'Default', layer: null, item: null, show: new Set(), enemies: new Set(),
+      mode: 'loot', map: 'dam-battleground', cond: 'Default', layer: null, item: null, show: new Set(), enemies: new Set(),
     });
   });
 
-  it('reads every param', () => {
-    expect(parse('mode=arc&map=Spaceport_01&cond=Night&layer=1&item=lemon&show=t:Industrial.Lockers,Lemon&enemies=3,0')).toEqual({
-      mode: 'arc', map: 'Spaceport_01', cond: 'Night', layer: 1, item: 'lemon', show: new Set(['t:Industrial.Lockers', 'Lemon']), enemies: new Set([3, 0]),
+  it('reads the map of the path and every param', () => {
+    expect(parse('mode=arc&cond=Night&layer=1&item=lemon&show=t:Industrial.Lockers,Lemon&enemies=3,0', 'the-spaceport')).toEqual({
+      mode: 'arc', map: 'the-spaceport', cond: 'Night', layer: 1, item: 'lemon', show: new Set(['t:Industrial.Lockers', 'Lemon']), enemies: new Set([3, 0]),
     });
   });
 
@@ -32,8 +32,27 @@ describe('parseState', () => {
     expect(parse('enemies=x,2,-1,1.5,NaN,0').enemies).toEqual(new Set([2, 0]));
   });
 
+  it('reads the map param of old links when the path has no map', () => {
+    expect(parse('map=Spaceport_01').map).toBe('Spaceport_01');
+    expect(parse('map=Spaceport_01', 'blue-gate').map).toBe('blue-gate');
+  });
+
   it('treats empty map, cond and item params as missing', () => {
-    expect(parse('map=&cond=&item=')).toMatchObject({ map: 'TheDam_02', cond: 'Default', item: null });
+    expect(parse('map=&cond=&item=', '')).toMatchObject({ map: 'dam-battleground', cond: 'Default', item: null });
+  });
+});
+
+describe('pathMap', () => {
+  it('reads the map slug of a page path', () => {
+    expect(pathMap('/maps/pendola-pass')).toBe('pendola-pass');
+    expect(pathMap('/de/maps/pendola-pass/')).toBe('pendola-pass');
+    expect(pathMap('/maps')).toBeNull();
+    expect(pathMap('/maps/')).toBeNull();
+    expect(pathMap('/map-sizes')).toBeNull();
+  });
+
+  it('round-trips with mapPath', () => {
+    expect(pathMap(mapPath('pendola-pass'))).toBe('pendola-pass');
   });
 });
 
@@ -41,22 +60,26 @@ describe('sanitizeState', () => {
   const index: MapIndex = {
     ...TINY_INDEX,
     maps: [
-      { map: 'TheDam_02', name: 'Dam Battlegrounds', difficulty: 1, file: 'maps/TheDam_02.json', image: TINY_MAP.image },
-      { map: TINY_MAP.map, name: TINY_MAP.name, difficulty: 2, file: `maps/${TINY_MAP.map}.json`, image: TINY_MAP.image },
+      { map: 'TheDam_02', slug: 'dam-battleground', name: 'Dam Battlegrounds', difficulty: 1, file: 'maps/TheDam_02.json', image: TINY_MAP.image },
+      { map: TINY_MAP.map, slug: 'tiny', name: TINY_MAP.name, difficulty: 2, file: `maps/${TINY_MAP.map}.json`, image: TINY_MAP.image },
     ],
   };
-  const base: MapState = { ...parse(''), map: TINY_MAP.map };
+  const base: MapState = { ...parse(''), map: 'tiny' };
   const items = { lemon: {} } as unknown as ItemsMap;
-  const fix = (s: Partial<MapState>, map: MapData | null = TINY_MAP, its: ItemsMap | null = items) => sanitizeState({ ...base, ...s }, index, map, its, 'TheDam_02');
+  const fix = (s: Partial<MapState>, map: MapData | null = TINY_MAP, its: ItemsMap | null = items) => sanitizeState({ ...base, ...s }, index, map, its, 'dam-battleground');
 
   it('leaves valid state alone', () => {
     expect(fix({ cond: 'Night', item: 'lemon', enemies: new Set([0, 2]) })).toBeNull();
   });
 
   it('replaces an unknown map by the default map with its defaults', () => {
-    expect(fix({ map: 'Gone_01', cond: 'Night', layer: 1 }, null)).toEqual({ map: 'TheDam_02', cond: 'Default', layer: null });
+    expect(fix({ map: 'gone', cond: 'Night', layer: 1 }, null)).toEqual({ map: 'dam-battleground', cond: 'Default', layer: null });
     const noDefault = { ...index, maps: index.maps.slice(1) };
-    expect(sanitizeState({ ...base, map: 'Gone_01' }, noDefault, null, null, 'TheDam_02')?.map).toBe(TINY_MAP.map);
+    expect(sanitizeState({ ...base, map: 'gone' }, noDefault, null, null, 'dam-battleground')?.map).toBe('tiny');
+  });
+
+  it('replaces the level name of an old link by the slug of the same map', () => {
+    expect(fix({ map: TINY_MAP.map, cond: 'Night', layer: 1 }, null)).toEqual({ map: 'tiny', cond: 'Night', layer: 1 });
   });
 
   it('drops conditions and layers the loaded map does not have', () => {
@@ -81,25 +104,25 @@ describe('sanitizeState', () => {
 
 describe('serializeState', () => {
   const state: MapState = {
-    mode: 'loot', map: 'TheDam_02', cond: 'Default', layer: null, item: null, show: new Set(), enemies: new Set(),
+    mode: 'loot', map: 'dam-battleground', cond: 'Default', layer: null, item: null, show: new Set(), enemies: new Set(),
   };
 
-  it('writes only the map for the default state', () => {
-    expect(serializeState(state).toString()).toBe('map=TheDam_02');
+  it('writes no params for the default state (the map is in the path)', () => {
+    expect(serializeState(state).toString()).toBe('');
   });
 
   it('round-trips through parseState', () => {
     const full: MapState = {
-      mode: 'arc', map: 'MountainCompound', cond: 'Night', layer: 0, item: 'wires', show: new Set(['Lemon', 't:Tech.Computer']), enemies: new Set([1, 4]),
+      mode: 'arc', map: 'stella-montis', cond: 'Night', layer: 0, item: 'wires', show: new Set(['Lemon', 't:Tech.Computer']), enemies: new Set([1, 4]),
     };
     for (const s of [state, full, { ...state, layer: 0 }, { ...state, show: new Set(['Ground']) }]) {
-      expect(parseState(serializeState(s), 'TheDam_02')).toEqual(s);
+      expect(parseState(serializeState(s), s.map, 'dam-battleground')).toEqual(s);
     }
   });
 
   it('round-trips the other way for canonical URLs', () => {
-    const q = 'mode=arc&map=BuriedCity_01&cond=Night&layer=1&item=lemon&show=Lemon%2CGround&enemies=2%2C5';
-    expect(serializeState(parse(q)).toString()).toBe(q);
+    const q = 'mode=arc&cond=Night&layer=1&item=lemon&show=Lemon%2CGround&enemies=2%2C5';
+    expect(serializeState(parse(q, 'buried-city')).toString()).toBe(q);
   });
 });
 
