@@ -176,6 +176,16 @@
     &--none { color: var(--mx-muted); font-weight: 500; font-size: 12px; }
   }
 
+  &__mech {
+    margin: 3px 0;
+    padding: 3px 7px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, .05);
+    color: var(--mx-text);
+    font-size: 11.5px;
+    line-height: 1.35;
+  }
+
   &__hint { margin-top: 3px; font-style: italic; }
 
   // Opened by a tap: takes touches, closes with the button (or a tap on empty map).

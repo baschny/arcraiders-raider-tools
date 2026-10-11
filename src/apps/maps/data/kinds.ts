@@ -27,6 +27,14 @@ export interface SpotKind {
   small?: boolean;
   tag?: RegExp;
   rx?: RegExp;
+  /** Kind-specific mechanics shown in the tooltip (i18n keys under maps.mechanics), like the door key line. */
+  mechanics?: Mechanic[];
+}
+
+/** One tooltip mechanic line: an i18n key under maps.mechanics plus its {placeholders}. */
+export interface Mechanic {
+  key: string;
+  values?: Record<string, string | number>;
 }
 
 export const CATEGORIES: SpotCategory[] = [
@@ -49,6 +57,8 @@ export const KINDS: SpotKind[] = [
   k('Exits', 'ExtractFan', '#5cc49c', 'extract-fan', { major: true, rx: /SalvageExtractionPoint_Fan/ }),
   // Pendola Pass: a terminal that calls the gondola (placed by spawners; the ping uses the terminal icon).
   k('Exits', 'ExtractGondola', '#5cc49c', 'terminal', { major: true, spawned: true, rx: /SalvageExtractionPoint_MultiProbe/ }),
+  // Pendola Pass: the landing sites of the gondolas the terminals call (embark-api docs/Map-Corrections.md).
+  k('Exits', 'ExtractGondolaLanding', '#5cc49c', 'extract-lift', { major: true, rx: /SalvageExtractionSpawnPoint_MultiProbe/ }),
   k('Exits', 'Hatch', '#9bcf6a', 'extract-hatch', { major: true, rx: /SalvageExtractionPoint_Hatch|RaiderHatchMarker/ }),
   k('Exits', 'StationEntrance', '#8fc9b4', 'metro-entrance', { rx: /MetroShutdownBarrier|StreetSign_Metro/ }),
   k('Exits', 'PlayerStart', '#d9d4c7', 'player', { rx: /^PioneerPlayerStart$/ }),
@@ -87,12 +97,13 @@ export const KINDS: SpotKind[] = [
   k('Nature', 'Fertilizer', '#9c86c9', 'loot-nature', { tag: /^Nature\.Fertilizer/ }),
   k('Nature', 'SeedVault', '#78bdb5', 'terminal', { tag: /^Nature\.Seedvault/ }),
   k('Nature', 'Seedbox', '#d6b54a', 'loot-nature', { tag: /^Nature\.Seedbox/ }),
+  // Ground-loot sockets Socket.Loot.Nature.Cactus are the Prickly Pear plant (docs/Map-Corrections.md C01).
+  k('Nature', 'PricklyPear', '#d98f6a', 'harvest', { tag: /^Nature\.Cactus/ }),
   k('Nature', 'NatureMisc', '#a3a3a3', 'loot-nature', { tag: /^Nature\./ }),
   // Raider containers and caches (spawned)
-  k('RaiderSpawns', 'CacheStandard', '#b394d1', 'raider-cache', { major: true, rx: /RaiderCache_WA/ }),
+  k('RaiderSpawns', 'CacheStandard', '#b394d1', 'raider-cache', { major: true, rx: /RaiderCache_WA|NomadCache/ }),
   k('RaiderSpawns', 'CacheSelfDestruct', '#c27cb3', 'raider-cache', { major: true, rx: /RaiderCacheSelfDestruct/ }),
   k('RaiderSpawns', 'CacheFrozen', '#9fc4d6', 'raider-cache', { major: true, rx: /RaiderCacheSnow|RaiderCacheFrozenTrail/ }),
-  k('RaiderSpawns', 'NomadCache', '#78bdb5', 'raider-cache', { major: true, rx: /NomadCache/ }),
   k('RaiderSpawns', 'CacheFirstWave', '#5bb594', 'raider-cache', { major: true, rx: /RaiderCacheFirstWave/ }),
   k('RaiderSpawns', 'AmmoBox', '#d6b54a', 'ammo', { rx: /AmmoBox.*Dynamic$/ }),
   k('RaiderSpawns', 'AmmoBoxHigh', '#d99a3e', 'ammo', { rx: /AmmoBox.*HighTier/ }),
@@ -111,6 +122,13 @@ export const KINDS: SpotKind[] = [
   k('ArcSpawns', 'RocketeerHuskStunning', '#b4bae0', 'arc-wreckage', { rx: /StunningHuskMedium/ }),
   k('ArcSpawns', 'DeforesterHusk', '#cf8a52', 'arc-wreckage', { major: true, rx: /DeforesterHusk/ }),
   k('ArcSpawns', 'Probes', '#5aaec4', 'arc-probe', { major: true, rx: /ProbeCrashed/ }),
+  // Potential ARC Probe landing sites (markers tagged ARCCargoDrop / ArcRaid; docs/Map-Corrections.md C02).
+  // Cadence from DA_ARCProbeDrop_Normal/_HighTier (Min/MaxTimeBetweenDrops 190–240 s); unbreached probes depart,
+  // a breached one stays.
+  k('ArcSpawns', 'ArcProbe', '#5aaec4', 'arc-probe', {
+    major: true, rx: /ArcProbeMarker/,
+    mechanics: [{ key: 'probeSite' }, { key: 'probeCadence', values: { min: 3, max: 4 } }],
+  }),
   k('ArcSpawns', 'Couriers', '#78bdb5', 'payload', { major: true, rx: /CargoShip/ }),
   // Puzzles
   k('Puzzles', 'PowerSocket', '#d6b54a', 'generator', { rx: /PowerStation|BatteryCharger|SignalDropzone|SignalMultiDropzone/ }),
@@ -123,6 +141,18 @@ export const KINDS: SpotKind[] = [
   k('Puzzles', 'HotelKey', '#d9cc5c', 'lock', { rx: /HotelKey|HotelPuzzle/ }),
   // Map features: level actors (export-maps actors[]); classes picked in lib/derived/map-features.js.
   k('Features', 'FieldDepot', '#d1a04c', 'field-station', { major: true, rx: /ColonySupplyStation/ }),
+  // Interactable POIs: the androids on Stella Montis / Pendola Pass and the AED stations on Blue Gate
+  // (embark-api docs/Map-Corrections.md).
+  k('Features', 'Android', '#78bdb5', 'terminal', { rx: /SM_Android/ }),
+  k('Features', 'AEDStation', '#cf6b63', 'loot-medical', { rx: /AEDStation/ }),
+  // Pendola Pass emergency shelters (one marker per shelter, at the roof hatch) and their Frostbite ("Flash Freeze")
+  // area of effect. Always active: they live in the base FrozenTrail_01_FlashFreeze data layer, not a round condition
+  // (embark-api docs/Map-Corrections.md C04). Timings: BP_FlashFreeze (start 300–600 s, wait 250–500 s, 1–3 zones).
+  k('Features', 'EmergencyShelter', '#d9d6cf', 'frost', { rx: /FlashFreezeHatch/, mechanics: [{ key: 'shelterOpen' }] }),
+  k('Features', 'FlashFreeze', '#9fc4d6', 'frost', {
+    rx: /FlashFreezeArea/,
+    mechanics: [{ key: 'zone' }, { key: 'zoneCadence', values: { min: 1, max: 3 } }],
+  }),
   // Spawned per round: field crates (carried to a field depot), power cores, supply call stations (the supply drop
   // lands next to the station; no fixed drop spots in the level), snow piles.
   k('Features', 'FieldCrates', '#d1a04c', 'field-crate', { major: true, spawned: true, rx: /Carryable_Object|ArcFieldCrate/ }),

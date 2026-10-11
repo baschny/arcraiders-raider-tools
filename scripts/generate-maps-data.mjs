@@ -161,7 +161,7 @@ const slugs = mapSlugs();
 for (const m of index.maps) {
   m.slug = slugs.get(m.map);
   if (!m.slug) {
-    console.error(`No slug for map ${m.map} in ${arcData} (maps.json `slug`).`);
+    console.error(`No slug for map ${m.map} in ${arcData} (maps.json 'slug').`);
     process.exit(1);
   }
   m.image = await tileSet(m.image);

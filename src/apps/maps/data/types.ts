@@ -245,6 +245,8 @@ export interface MapData {
   /** Share of each class in spawnerClasses (1 each for map features). */
   spawnerShares: number[][];
   spawners: Spawner[];
+  /** World radius (cm) of each spawner's area of effect, parallel to `spawners` (0 = none). */
+  spawnerRadius?: number[];
   enemyClasses: string[];
   enemyProfiles: Record<string, number | boolean>[];
   enemySpawners: EnemySpawner[];

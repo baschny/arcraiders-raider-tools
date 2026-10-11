@@ -123,6 +123,16 @@ describe('dedicatedContainers', () => {
   it('a nature item without its own container has none', () => {
     expect(dedicatedContainers(it_(CANDLEBERRIES), tags)).toEqual([]);
   });
+
+  it('resolves nature spots whose name differs from the item (Cactus -> Prickly Pear)', () => {
+    const prickly = { ...it_(LEMON), name: 'Prickly Pear', tags: ['Category.Area.Nature', 'Trinket.Birdnest'] };
+    expect(dedicatedContainers(prickly, ['Nature.Cactus', 'Nature.Apricot', 'Nature.BirdNest'])).toEqual(['Nature.Cactus']);
+  });
+
+  it('leaves a nature item with no resolvable own spot without nature spots (not all of them)', () => {
+    const lily = { ...it_(LEMON), name: 'Husk Lily', tags: ['Category.Area.Nature', 'Type.Salvage.Trinket'] };
+    expect(dedicatedContainers(lily, ['Nature.Apricot', 'Nature.Agave'])).toEqual([]);
+  });
 });
 
 describe('itemNote', () => {

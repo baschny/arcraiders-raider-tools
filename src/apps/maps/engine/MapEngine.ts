@@ -23,6 +23,8 @@ export interface Heat {
 }
 
 const MIN_S = 0.5, MAX_S = 40;
+/** Distinct, high-contrast hues for area-of-effect discs (the snow/terrain swallows pale colours); one per zone. */
+const AREA_COLORS = ['#ff4fa3', '#ffb020', '#3ddc7f', '#ff7a3d', '#a86bff', '#28c9e6', '#ff4d5e', '#c6e82b', '#ff8fd6'];
 /** Touch: movement (px) below which a touch still counts as a tap; double tap window (ms) and distance (px). */
 const TAP_SLOP = 8, DOUBLE_TAP_MS = 300, DOUBLE_TAP_PX = 30;
 const RAMP: [number, number, number][] = [[80, 160, 220], [90, 200, 190], [230, 215, 90], [235, 150, 60], [225, 80, 60]];
@@ -363,6 +365,29 @@ export class MapEngine {
     const socketIcons = this.view.s >= 4.5;
     const hcode = (lv: Level | undefined) => (P.height ? heightCode(lv) : 0);
     if (isLoot) {
+      // Area-of-effect circles for spawners that carry a radius (e.g. the Pendola Flash Freeze zones): a soft disc
+      // under the markers, in the kind's color.
+      let areaOrdinal = -1;
+      m.spawners.forEach((s, i) => {
+        const rad = m.spawnerRadius?.[i] ?? 0;
+        if (rad <= 0) return;
+        areaOrdinal++; // stable per-disc colour, independent of which kinds are shown
+        const kind = e.spawnerKind(i);
+        if (!kind) return;
+        const [x, y] = toScreen(s[0], s[1]);
+        const rp = (rad / (m.world?.[2] || 1)) * S;
+        if (x + rp < 0 || y + rp < 0 || x - rp > w || y - rp > h) return;
+        // A distinct, high-contrast hue per zone; the hovered or pinned one brightens.
+        const color = AREA_COLORS[areaOrdinal % AREA_COLORS.length];
+        const active = (hv?.t === 'spawner' && hv.i === i) || (this.pin?.t === 'spawner' && this.pin.i === i);
+        ctx.beginPath();
+        ctx.arc(x, y, rp, 0, Math.PI * 2);
+        ctx.fillStyle = active ? `${color}47` : `${color}24`;
+        ctx.fill();
+        ctx.strokeStyle = active ? '#ffffff' : `${color}cc`;
+        ctx.lineWidth = active ? 2.2 : 1.5;
+        ctx.stroke();
+      });
       this.drawGroups(ctx, 'spawner');
       const drawSpawners = (features: boolean) => m.spawners.forEach((s, i) => {
         const kind = e.spawnerKind(i);
@@ -580,18 +605,33 @@ export class MapEngine {
       const so = nearest(m.sockets.length, (j) => e.socketVisible(j), (j) => [m.sockets[j][0], m.sockets[j][1]], 9);
       if (so != null) return { t: 'socket', i: so };
     }
-    if (!e.prefs.pois) return null;
     const uv = this.toUv(mx, my);
     if (m.bounds?.length && !m.bounds.some((poly) => inPoly(uv, poly))) return null;
-    let poi: number | null = null, bestA = Infinity;
-    m.pois.forEach((p, i) => {
-      const a = ringsArea(p.outline);
-      if (a < bestA && e.onLayer('pois', i) && inRings(uv, p.outline)) {
-        bestA = a;
-        poi = i;
+    if (e.prefs.pois) {
+      let poi: number | null = null, bestA = Infinity;
+      m.pois.forEach((p, i) => {
+        const a = ringsArea(p.outline);
+        if (a < bestA && e.onLayer('pois', i) && inRings(uv, p.outline)) {
+          bestA = a;
+          poi = i;
+        }
+      });
+      if (poi != null) return { t: 'poi', i: poi };
+    }
+    // Area-of-effect discs (e.g. Flash Freeze zones): a fallback target when no marker, socket or POI is under the
+    // cursor. The nearest disc centre wins, so overlapping zones can be told apart. Loot mode only.
+    if (e.state.mode !== 'loot') return null;
+    let area: number | null = null, areaD = Infinity;
+    m.spawners.forEach((s, i) => {
+      const r = m.spawnerRadius?.[i] ?? 0;
+      if (r <= 0 || !e.spawnerKind(i)) return;
+      const d = Math.hypot(s[0] - uv[0], s[1] - uv[1]);
+      if (d <= r / m.world[2] && d < areaD) {
+        areaD = d;
+        area = i;
       }
     });
-    return poi != null ? { t: 'poi', i: poi } : null;
+    return area != null ? { t: 'spawner', i: area } : null;
   }
 
   private hideTip() {

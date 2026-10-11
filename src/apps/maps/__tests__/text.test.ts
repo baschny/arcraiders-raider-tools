@@ -40,6 +40,11 @@ describe('en.json', () => {
     expect(CATEGORIES.map((c) => tx.category(c.key)).filter(isKey)).toEqual([]);
     expect(KINDS.map((k) => tx.kind(k)).filter(isKey)).toEqual([]);
   });
+
+  it('has a string for every kind mechanic', () => {
+    const keys = KINDS.flatMap((k) => (k.mechanics ?? []).map((m) => `maps.mechanics.${m.key}`));
+    expect(keys.filter((k) => getTranslationValue('en', k) === undefined)).toEqual([]);
+  });
 });
 
 describe('makeText', () => {

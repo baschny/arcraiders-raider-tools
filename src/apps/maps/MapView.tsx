@@ -121,7 +121,7 @@ function Tooltip({ ex, tip, pinned, engine }: { ex: Explorer; tip: TipState; pin
     if (lv[1] != null) parts.push(tm('maps.tooltip.height', { height: tx.meters(lv[1]) }), t(lv[2] ? 'maps.tooltip.covered' : 'maps.tooltip.openSky'));
     return parts.length ? `${['', '▲ ', '▼ '].at(heightCode(lv))}${parts.join(' · ')}` : null;
   };
-  let kindLabel = '', color: string | undefined, title = '', body: (string | null)[] = [], keys: string[] | null = null, options: { text: string; share: number | null; tier: number | null }[] = [];
+  let kindLabel = '', color: string | undefined, title = '', body: (string | null)[] = [], keys: string[] | null = null, options: { text: string; share: number | null; tier: number | null }[] = [], mechanics: string[] = [];
   let hint: string | null = null;
   const groupLine = (g: { label: string; min: number; max: number; n: number }, key: 'maps.tooltip.groupSpots' | 'maps.tooltip.groupSpawners') =>
     plural(key, g.n, { group: g.label || t('maps.tooltip.group'), min: g.min === g.max ? tx.num(g.min) : `${tx.num(g.min)}–${tx.num(g.max)}` });
@@ -150,6 +150,10 @@ function Tooltip({ ex, tip, pinned, engine }: { ex: Explorer; tip: TipState; pin
     const kindList = tx.list(kinds.map(([k, sh]) => `${tx.kind(k)}${kinds.length > 1 ? ` ${tx.pct(sh)}` : ''}`));
     title = kinds.length > 1 ? tm('maps.tooltip.oneOf', { kinds: kindList }) : kindList;
     keys = ex.cls.spawnerKeys[target.i];
+    // Kind mechanics (i18n) plus the spawner's area radius when it has one (areas without a brush, e.g. Flash Freeze).
+    mechanics = (shown.mechanics ?? []).map((mech) => tm(`maps.mechanics.${mech.key}`, mech.values ?? {}));
+    const radius = map.spawnerRadius?.[target.i] ?? 0;
+    if (radius > 0) mechanics.push(tm('maps.mechanics.zoneRadius', { radius: tx.num(Math.round(radius / 100)) }));
     const at = feature && map.spawnerPois[target.i] >= 0 ? names.poi(map.pois[map.spawnerPois[target.i]]) : null;
     const detail = tx.list(map.spawnerClasses[s[2]].split(' | ').filter((c) => !/^(Barricaded|Door|LockedDoor)$|^Key:/.test(c)).map(tx.className));
     const p = ex.spawnP[target.i], g = groupOf('spawner', target.i);
@@ -197,6 +201,7 @@ function Tooltip({ ex, tip, pinned, engine }: { ex: Explorer; tip: TipState; pin
       <div className="mx-tip__kind">{kindLabel}</div>
       <strong>{title}</strong>
       {keys && (keys.length ? keys.map((k) => <div key={k} className="mx-tip__key">🔑 {k}</div>) : <div className="mx-tip__key mx-tip__key--none">{t('maps.tooltip.noKey')}</div>)}
+      {mechanics.map((l, i) => <div key={`mech${i}`} className="mx-tip__mech">ⓘ {l}</div>)}
       {options.map((o, i) => (
         <div key={i} className="mx-tip__opt">{o.tier != null && <span className="m">{tm('maps.tooltip.tier', { tier: tx.num(o.tier) })} </span>}{o.text}{o.share != null && <span className="m"> {tx.pct(o.share)}</span>}</div>
       ))}

@@ -26,11 +26,17 @@ const sameName = (a: string, b: string) => {
   return a.length >= 4 && b.length >= 4 && (a.startsWith(b) || b.startsWith(a));
 };
 
-/** Nature containers that are an item's only source (Lemon tree -> Lemon). */
+// Nature spots whose name differs from the item they give (the game's dispenser names): container tag part -> item
+// name. Cactus is the Prickly Pear (docs/Map-Corrections.md C01); the seed box/vault give Assorted Seeds.
+const NATURE_ALIASES: Record<string, string> = { cactus: 'Prickly Pear', seedbox_01: 'Assorted Seeds', seedvault: 'Assorted Seeds' };
+
+/** Nature containers that are an item's only source (Lemon tree -> Lemon, Cactus -> Prickly Pear). */
 export function dedicatedContainers(item: LootItem, containerTags: string[]): string[] {
   const tags = item.tags ?? [];
   if (!tags.includes('Category.Area.Nature')) return [];
-  const own = containerTags.filter((c) => c.startsWith('Nature.') && sameName(c.split('.')[1], item.name ?? ''));
+  const name = item.name ?? '';
+  const own = containerTags.filter((c) => c.startsWith('Nature.')
+    && (sameName(c.split('.')[1], name) || sameName(NATURE_ALIASES[c.split('.')[1].toLowerCase()] ?? '', name)));
   if (own.length) return own;
   if (tags.some((t) => t.endsWith('Trinket.Birdnest'))) return containerTags.filter((c) => c.startsWith('Nature.BirdNest'));
   return [];
@@ -43,16 +49,13 @@ function containerFilter(map: MapData, item: LootItem): (containerIdx: number) =
     return (c) => c >= 0 && ok[c];
   }
   const areas = (item.tags ?? []).filter((t) => t.startsWith('Category.Area.')).map((t) => t.split('.')[2]);
-  // No area tag: any container, but not the nature spots (plants, mushrooms, ...): they give only their own item.
-  // Water tanks are tagged Nature.WaterTank but are regular containers.
-  if (!areas.length) {
-    const nature = map.containers.map((c) => c.startsWith('Nature.') && !c.startsWith('Nature.WaterTank'));
-    return (c) => c < 0 || !nature[c];
-  }
-  const ok = map.containers.map((c) => {
-    const cat = c.split('.')[0];
-    return areas.includes(AREA_ALIASES[cat] ?? cat);
-  });
+  // Nature spots are dispensers: each gives only its own item, never another nature item whose plant we could not
+  // resolve. Water tanks are tagged Nature.WaterTank but are regular containers.
+  const isNature = map.containers.map((c) => c.startsWith('Nature.') && !c.startsWith('Nature.WaterTank'));
+  // No area tag: any container, except the nature spots.
+  if (!areas.length) return (c) => c < 0 || !isNature[c];
+  // An area tag and no own plant: only non-nature containers of that area (a nature item never falls back to all plants).
+  const ok = map.containers.map((c, i) => !isNature[i] && areas.includes(AREA_ALIASES[c.split('.')[0]] ?? c.split('.')[0]));
   return (c) => c < 0 || ok[c];
 }
 
