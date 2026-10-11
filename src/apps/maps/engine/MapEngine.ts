@@ -23,8 +23,8 @@ export interface Heat {
 }
 
 const MIN_S = 0.5, MAX_S = 40;
-/** Distinct, high-contrast hues for area-of-effect discs (the snow/terrain swallows pale colours); one per zone. */
-const AREA_COLORS = ['#ff4fa3', '#ffb020', '#3ddc7f', '#ff7a3d', '#a86bff', '#28c9e6', '#ff4d5e', '#c6e82b', '#ff8fd6'];
+/** Distinct, high-contrast COLD hues for area-of-effect discs (the snowy terrain swallows pale colours); one per zone. */
+const AREA_HUES = [205, 235, 265, 295, 175, 190, 220, 250, 280];
 /** Touch: movement (px) below which a touch still counts as a tap; double tap window (ms) and distance (px). */
 const TAP_SLOP = 8, DOUBLE_TAP_MS = 300, DOUBLE_TAP_PX = 30;
 const RAMP: [number, number, number][] = [[80, 160, 220], [90, 200, 190], [230, 215, 90], [235, 150, 60], [225, 80, 60]];
@@ -377,14 +377,14 @@ export class MapEngine {
         const [x, y] = toScreen(s[0], s[1]);
         const rp = (rad / (m.world?.[2] || 1)) * S;
         if (x + rp < 0 || y + rp < 0 || x - rp > w || y - rp > h) return;
-        // A distinct, high-contrast hue per zone; the hovered or pinned one brightens.
-        const color = AREA_COLORS[areaOrdinal % AREA_COLORS.length];
+        // A distinct, high-contrast cold hue per zone; the hovered or pinned one brightens.
+        const hue = AREA_HUES[areaOrdinal % AREA_HUES.length];
         const active = (hv?.t === 'spawner' && hv.i === i) || (this.pin?.t === 'spawner' && this.pin.i === i);
         ctx.beginPath();
         ctx.arc(x, y, rp, 0, Math.PI * 2);
-        ctx.fillStyle = active ? `${color}47` : `${color}24`;
+        ctx.fillStyle = `hsla(${hue}, 70%, 50%, ${active ? 0.34 : 0.17})`;
         ctx.fill();
-        ctx.strokeStyle = active ? '#ffffff' : `${color}cc`;
+        ctx.strokeStyle = active ? '#ffffff' : `hsla(${hue}, 90%, 60%, .95)`;
         ctx.lineWidth = active ? 2.2 : 1.5;
         ctx.stroke();
       });
