@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'react';
 import { X } from 'lucide-react';
 import type { GuideAction, PuzzleGuide } from './data/types';
-import { available, layoutColor, selectedGuide, stageActionGroups, symbolOf, toggleLayout, type GuideSelection } from './data/puzzles';
+import { available, layoutColor, selectedGuide, stageActionGroups, symbolOf, toggleLayout, visibleGroups, visibleSteps, stepColor, stepTargets, type GuidePin, type GuideTargets, type GuideSelection } from './data/puzzles';
 import { symbolUrl } from './data/useMapData';
 import { GameIcon } from './components';
 import type { Explorer } from './model';
@@ -32,7 +32,23 @@ export function actionDescription(ex: Explorer, guide: PuzzleGuide, action: Guid
   ];
 }
 
-export function GuidePanel({ ex, selection, onSelection }: { ex: Explorer; selection: GuideSelection; onSelection: (selection: GuideSelection | null) => void }) {
+/** One functional title and only the useful item/group/alternative information. */
+export function guideActionTooltip(ex: Explorer, guide: PuzzleGuide, pin: GuidePin, tx: MapText) {
+  const { action, location } = pin;
+  const pool = guide.pools.find((p) => p.id === action.poolId);
+  const name = guideItemName(ex, guide, action.outputItem ?? action.inputItem, action);
+  const alternatives = action.locations.filter((l) => available(l, ex.cond) && l.candidate).length;
+  return {
+    title: tx.t(action.type === 'print' ? 'maps.guides.workflow.printer' : actionKey(action.type)),
+    body: [name,
+      action.type === 'print' && alternatives > 1 ? tx.tm('maps.guides.workflow.printerCandidates', { count: alternatives }) : null,
+      pool ? poolLabel(guide, pool, tx) : null,
+      location.candidate && action.type !== 'print' ? tx.t('maps.guides.workflow.possibleLocation') : null,
+    ],
+  };
+}
+
+export function GuidePanel({ ex, selection, onSelection, onFocus, onHighlight }: { ex: Explorer; selection: GuideSelection; onSelection: (selection: GuideSelection | null) => void; onFocus?: (targets: GuideTargets) => void; onHighlight?: (targets: GuideTargets | null) => void }) {
   const tx = useMapText(), guide = selectedGuide(ex.map, ex.cond, ex.prefs.puzzleDoors, selection);
   if (!guide) return null;
   const local = (key: string, fallback: string) => { const text = tx.t(key); return text === key ? fallback : text; };
@@ -66,6 +82,49 @@ export function GuidePanel({ ex, selection, onSelection }: { ex: Explorer; selec
           <i style={{ '--c': layoutColor(guide, layout.id) } as CSSProperties} />{layoutName(layout.id)}
         </button>)}
       </div>
+    </section>;
+  }
+  if (guide.presentation) {
+    const steps = visibleSteps(guide, ex.cond, selection.layoutId);
+    const groups = visibleGroups(guide, ex.cond, selection.layoutId).filter((group) => group.kind !== 'layout');
+    const instruction = (step: typeof steps[number]) => {
+      const required = guide.stages.find((stage) => step.stageIds.includes(stage.id))?.required;
+      const activation = guide.stages.find((stage) => step.stageIds.includes(stage.id))?.activation;
+      if (step.role === 'find-buttons') return required != null ? tx.tm('maps.guides.workflow.findCount', { count: required }) : tx.t('maps.guides.workflow.findButtons');
+      if (step.role === 'activate-buttons' && required != null && activation === 'unordered' && !steps.some((s) => s.role === 'find-buttons')) return tx.tm('maps.guides.workflow.findPressCount', { count: required });
+      if (step.role === 'activate-buttons') return tx.t(activation === 'unordered' ? 'maps.guides.workflow.pressAny' : activation === 'ordered' ? 'maps.guides.workflow.pressOrdered' : 'maps.guides.workflow.press');
+      if (step.role === 'print-codes') return tx.tm('maps.guides.workflow.printCodes', { count: step.actionIds.length });
+      if (step.role === 'deliver-codes') return tx.t('maps.guides.workflow.insertCodes');
+      if (step.role === 'deliver-fuel') return tx.t('maps.guides.workflow.fuel');
+      if (step.role === 'outcome') return tx.t('maps.guides.workflow.open');
+      return guide.stages.find((stage) => step.stageIds.includes(stage.id))?.title ?? tx.t('maps.guides.workflow.interact');
+    };
+    const links = (targets: GuideTargets, label: string) => targets.locationIds.length + targets.entranceIds.length > 0 ? <button type="button" className="mx-guide__map-link"
+      onMouseEnter={() => onHighlight?.(targets)} onMouseLeave={() => onHighlight?.(null)} onFocus={() => onHighlight?.(targets)} onBlur={() => onHighlight?.(null)} onClick={() => { onHighlight?.(targets); onFocus?.(targets); }}>
+      {label}
+    </button> : null;
+    return <section className="mx-puzzle mx-guide mx-guide--workflow" aria-label={title}>
+      <div className="mx-puzzle__head mx-guide__head"><h2>{title}</h2><button type="button" onClick={() => onSelection(null)} aria-label={tx.t('quartermaster.sync.close')}><X size={18} aria-hidden="true" /></button></div>
+      <ol className="mx-guide__steps">{steps.map((step) => {
+        const targets = stepTargets(guide, ex.cond, selection, step);
+        return <li key={step.id} style={{ '--c': stepColor(step.number) } as CSSProperties} className={step.stageIds.includes(entrance.stageId) && step.role !== 'outcome' ? 'is-focused' : ''} aria-current={step.stageIds.includes(entrance.stageId) && step.role !== 'outcome' ? 'step' : undefined}>
+          <b className="mx-guide__step-number" aria-hidden="true">{step.number}</b>
+          <div><p>{instruction(step)}</p>{links(targets, tx.t('maps.guides.workflow.showMap'))}</div>
+        </li>;
+      })}</ol>
+      {guide.presentation.pattern === 'staged-fuel' && <p className="mx-guide__note">{tx.t('maps.guides.portableOrder')}</p>}
+      {groups.length > 0 && <div className="mx-guide__group-legend" role="group" aria-label={tx.t('maps.guides.workflow.locations')}>
+        {groups.map((group) => {
+          const label = group.kind === 'item' ? group.itemName ?? guide.actions.find((a) => group.actionIds.includes(a.id) && a.itemName)?.itemName
+            : guide.actions.some((a) => group.actionIds.includes(a.id) && a.type === 'collect-fuel-cell') ? tx.t('maps.guides.fuelCellLocations')
+            : tx.tm('maps.guides.buttonGroup', { count: group.number });
+          if (!label) return null;
+          const targets = { locationIds: group.locationIds, entranceIds: [], poiIds: group.poiIds };
+          return <div key={group.id} style={{ '--c': stepColor(group.number) } as CSSProperties}>
+            {group.kind !== 'item' && <i aria-hidden="true" />}{links(targets, label)}
+          </div>;
+        })}
+      </div>}
     </section>;
   }
   return <section className="mx-puzzle mx-guide" aria-label={title}>

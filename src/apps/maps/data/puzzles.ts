@@ -34,7 +34,7 @@ export function genericSpawnerAllowed(map: MapData, cond: MapCondition, enabled:
 
 export interface GuidePin {
   action: import('./types').GuideAction; location: import('./types').GuideLocation;
-  stage: import('./types').GuideStage; color: string; order: number | null;
+  stage: import('./types').GuideStage; color: string; order: number | null; stepNumber: number | null; groupId: string | null; groupColor: string | null;
 }
 export const layoutColor = (guide: PuzzleGuide, layoutId?: string): string => layoutId
   ? PUZZLE_COLORS[Math.max(0, guide.layouts.findIndex((l) => l.id === layoutId)) % PUZZLE_COLORS.length] : PLAIN_PUZZLE_COLOR;
@@ -55,7 +55,15 @@ export function guidePins(map: MapData, cond: MapCondition, enabled: boolean, se
     return action.locations.filter((location) => available(location, cond) &&
       (!location.layoutId || guide.layouts.some((l) => l.id === location.layoutId && available(l, cond))) &&
       (!current.layoutId || !location.layoutId || location.layoutId === current.layoutId))
-      .map((location) => ({ action, stage, location, color: layoutColor(guide, location.layoutId), order: stage.activation === 'ordered' ? action.order ?? null : null }));
+       .map((location) => {
+        const step = visibleSteps(guide, cond, current.layoutId).find((s) => s.actionIds.includes(action.id) && s.role !== 'find-buttons');
+        const group = visibleGroups(guide, cond, current.layoutId).find((g) => g.locationIds.includes(location.id));
+        const color = location.layoutId ? layoutColor(guide, location.layoutId)
+          : guide.presentation?.palette === 'steps' || guide.presentation?.palette === 'steps-and-groups' ? stepColor(step?.number)
+          : group ? stepColor(group.number) : PLAIN_PUZZLE_COLOR;
+        return { action, stage, location, color, order: stage.activation === 'ordered' ? action.order ?? null : null,
+          stepNumber: step?.number ?? null, groupId: group?.id ?? null, groupColor: guide.presentation?.palette === 'steps-and-groups' && group ? stepColor(group.number) : null };
+      });
   });
 }
 /** Order cues only when a stage/layout has one verified location per numbered interaction. */
@@ -89,4 +97,43 @@ export function stageActionGroups(guide: PuzzleGuide, stage: import('./types').G
   }
   return groups.map((group) => ({ ...group, actions: stage.activation === 'ordered'
     ? [...group.actions].sort((a, b) => (a.order ?? Infinity) - (b.order ?? Infinity)) : group.actions }));
+}
+
+export const stepColor = (number?: number): string => number == null ? PLAIN_PUZZLE_COLOR : PUZZLE_COLORS[(number - 1) % PUZZLE_COLORS.length];
+export type GuideStep = import('./types').PuzzlePresentation['steps'][number];
+export type GuideGroup = import('./types').PuzzlePresentation['groups'][number];
+/** Resolve every semantic reference through the same gates as its real map member. */
+export function visibleSteps(guide: PuzzleGuide, cond: MapCondition, layoutId: string | null): GuideStep[] {
+  if (!available(guide, cond)) return [];
+  const stages = guide.stages.filter((s) => available(s, cond));
+  const locations = visibleLocations(guide, cond, layoutId);
+  const actions = guide.actions.filter((a) => available(a, cond) && stages.some((s) => s.id === a.stageId && s.actionIds.includes(a.id)) && (!a.locations.length || locations.some((l) => a.locations.some((v) => v.id === l.id))));
+  return (guide.presentation?.steps ?? []).flatMap((step) => {
+    const stageIds = step.stageIds.filter((id) => stages.some((s) => s.id === id));
+    if (!stageIds.length) return [];
+    return [{ ...step, stageIds, actionIds: step.actionIds.filter((id) => actions.some((a) => a.id === id)),
+      entranceIds: step.entranceIds.filter((id) => guide.entrances.some((e) => e.id === id && stageIds.includes(e.stageId) && available(e, cond))),
+      roomIds: step.roomIds.filter((id) => guide.rooms.some((r) => r.id === id && stageIds.includes(r.stageId))) }];
+  });
+}
+export function visibleLocations(guide: PuzzleGuide, cond: MapCondition, layoutId: string | null) {
+  if (!available(guide, cond)) return [];
+  return guide.actions.filter((a) => available(a, cond) && guide.stages.some((s) => s.id === a.stageId && s.actionIds.includes(a.id) && available(s, cond)))
+    .flatMap((a) => a.locations).filter((l) => available(l, cond) && (!layoutId || !l.layoutId || l.layoutId === layoutId) && (!l.layoutId || guide.layouts.some((v) => v.id === l.layoutId && available(v, cond))));
+}
+export function visibleGroups(guide: PuzzleGuide, cond: MapCondition, layoutId: string | null): GuideGroup[] {
+  const locations = visibleLocations(guide, cond, layoutId);
+  return (guide.presentation?.groups ?? []).filter((g) => available(g, cond)).flatMap((g) => {
+    const locationIds = g.locationIds.filter((id) => locations.some((l) => l.id === id));
+    return locationIds.length ? [{ ...g, locationIds, poiIds: [...new Set(locations.filter((l) => locationIds.includes(l.id)).flatMap((l) => l.poiIds ?? []))] }] : [];
+  });
+}
+export interface GuideTargets { locationIds: string[]; entranceIds: string[]; poiIds: string[] }
+export function stepTargets(guide: PuzzleGuide, cond: MapCondition, selection: GuideSelection, step: GuideStep): GuideTargets {
+  const locations = visibleLocations(guide, cond, selection.layoutId).filter((l) => guide.actions.some((a) => step.actionIds.includes(a.id) && a.locations.some((v) => v.id === l.id)));
+  return { locationIds: locations.map((l) => l.id), entranceIds: step.entranceIds, poiIds: [...new Set(locations.flatMap((l) => l.poiIds ?? []))] };
+}
+export function targetCoordinates(guide: PuzzleGuide, cond: MapCondition, selection: GuideSelection, targets: GuideTargets) {
+  return [...visibleLocations(guide, cond, selection.layoutId).filter((l) => targets.locationIds.includes(l.id)).map((l) => l.uv),
+    ...guide.entrances.filter((e) => targets.entranceIds.includes(e.id) && available(e, cond) && guide.stages.some((s) => s.id === e.stageId && available(s, cond))).map((e) => e.uv)];
 }

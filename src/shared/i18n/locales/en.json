@@ -1473,6 +1473,24 @@
         "pressButtons": "Press 4 buttons near the graffiti drawings, in this order.",
         "layoutEachRaid": "One of these button layouts is chosen each raid; find button 1 to start.",
         "buttonLayout": "Button {button} - {layout}"
+      },
+      "workflow": {
+        "findCount": "Find {count} active buttons. Coloured groups show possible locations.",
+        "findButtons": "Find the buttons at the marked locations.",
+        "pressAny": "Press the buttons in any order.",
+        "pressOrdered": "Press the buttons in the indicated order.",
+        "press": "Press the buttons.",
+        "printCodes": "Print all {count} security codes.",
+        "insertCodes": "Carry the codes to the marked consoles and insert each matching security code.",
+        "fuel": "Bring a fuel cell to the marked socket to open the next room.",
+        "open": "The doors open when the required steps are complete.",
+        "interact": "Use the marked interactions.",
+        "showMap": "Show locations on map",
+        "locations": "Puzzle locations",
+        "printer": "Security code printer",
+        "printerCandidates": "One of {count} possible printer locations.",
+        "possibleLocation": "Possible location in this raid.",
+        "findPressCount": "Find and press {count} buttons in any order."
       }
     }
   },

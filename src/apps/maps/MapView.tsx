@@ -3,8 +3,8 @@ import { useEffect, useImperativeHandle, useMemo, useRef, useState, type CSSProp
 import { Layers, Maximize, Minus, Plus, X } from 'lucide-react';
 import { THREAT, ZONE_COLORS, ZONES, enemyTiming, isFeature, lootZone, tableOptions } from './data/kinds';
 import type { Level } from './data/types';
-import { eligibleEntrances, guidePins, selectedGuide, resolveSelection, type GuideSelection } from './data/puzzles';
-import { GuidePanel, actionDescription, poolLabel } from './GuidePanel';
+import { eligibleEntrances, guidePins, selectedGuide, resolveSelection, targetCoordinates, type GuideSelection } from './data/puzzles';
+import { GuidePanel, guideActionTooltip } from './GuidePanel';
 import { radioKeys, radioTab } from './radio';
 import { MapEngine, buildHeat, heightCode, type Padding, type Pin, type TipState } from './engine/MapEngine';
 import type { Explorer } from './model';
@@ -102,7 +102,16 @@ export function MapView({ ex, handle, fitPadding }: { ex: Explorer; handle?: Ref
           )}
         </div>
       )}
-      {puzzlesVisible && <GuidePanel ex={ex} selection={selection} onSelection={setOpenedPuzzle} />}
+      {puzzlesVisible && <GuidePanel ex={ex} selection={selection} onSelection={setOpenedPuzzle}
+        onHighlight={(targets) => engine?.highlightGuide(targets)}
+        onFocus={(targets) => {
+          const guide = selectedGuide(map, ex.cond, prefs.puzzleDoors, selection);
+          if (!guide) return;
+          const points = targetCoordinates(guide, ex.cond, selection, targets);
+          const poi = map.pois.find((p) => p.ids.some((id) => targets.poiIds.includes(id)));
+          // Area geometry helps navigation only; exact verified devices remain highlighted.
+          engine?.focusUv(poi && targets.poiIds.length === 1 ? poi.outline.flat() : points, 0.025);
+        }} />}
     </div>
   );
 }
@@ -197,7 +206,7 @@ function Tooltip({ ex, tip, pinned, engine, opened }: { ex: Explorer; tip: TipSt
   } else if (target.t === 'action') {
     const guide = selectedGuide(map, ex.cond, ex.prefs.puzzleDoors, opened)!;
     const pin = guidePins(map, ex.cond, true, opened)[target.i];
-    const { action, location, stage } = pin;
+    const { action, location } = pin;
     const layout = guide.layouts.find((l) => l.id === location.layoutId);
     color = pin.color;
     if (guide.id === 'church' && action.type === 'press') {
@@ -205,17 +214,10 @@ function Tooltip({ ex, tip, pinned, engine, opened }: { ex: Explorer; tip: TipSt
       const layoutLabel = layout ? tx.t(`maps.guides.layouts.${layout.id}`) : '';
       title = tm('maps.guides.church.buttonLayout', { button: pin.order ?? action.order ?? 0, layout: layoutLabel === `maps.guides.layouts.${layout?.id}` ? layout?.label ?? '' : layoutLabel });
     } else {
-      const pool = guide.pools.find((p) => p.id === action.poolId);
-      kindLabel = `${guide.title} · ${stage.title}`;
-      title = action.label;
-      body = [
-        ...actionDescription(ex, guide, action, tx),
-        pin.order != null ? tm('maps.guides.order', { count: pin.order }) : null,
-        layout?.label ?? null,
-        pool ? poolLabel(guide, pool, tx) : null,
-        pool?.selection ? tm('maps.guides.activeSubset', { min: pool.selection.min, max: pool.selection.max }) : null,
-        location.level ? tm('maps.guides.approxHeight', { height: heightLine(location.level) ?? t('maps.guides.heightUnknown') }) : null,
-      ];
+      const content = guideActionTooltip(ex, guide, pin, tx);
+      kindLabel = guide.title;
+      title = content.title;
+      body = [...content.body, location.level ? tm('maps.guides.approxHeight', { height: heightLine(location.level) ?? t('maps.guides.heightUnknown') }) : null];
     }
   } else if (target.t === 'entrance') {
     const { guide, entrance } = eligibleEntrances(map, ex.cond)[target.i];

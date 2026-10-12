@@ -78,6 +78,40 @@ describe('guide canvas interactions', () => {
     harness.tap({ x, y });
     expect(tip).toHaveBeenLastCalledWith(expect.objectContaining({ touch: true, target: { t: 'action', i: 0 } }));
   });
+  it('mouse hover and touch highlight every alternative in the same source group', () => {
+    const { ex, harness } = setup();
+    const pooled: PuzzleGuide = { ...guide, actions: [{ ...guide.actions[0], poolId: 'fuel-pool', locations: [
+      { id: 'location', uv: [0.4, 0.4], z: 0, candidate: true },
+      { id: 'alternative', uv: [0.6, 0.6], z: 0, candidate: true },
+    ] }], presentation: { schemaVersion: 1, pattern: 'workflow', palette: 'groups', roomCount: 1,
+      steps: [{ id: 'stage', number: 1, role: 'interact', stageIds: ['stage'], actionIds: ['socket'], entranceIds: ['door'], roomIds: ['room'] }],
+      groups: [{ id: 'fuel-pool', kind: 'source', number: 1, actionIds: ['socket'], locationIds: ['location', 'alternative'], poiIds: [], poolId: 'fuel-pool', selection: null }] } };
+    engine.update({ ...ex, map: { ...ex.map, puzzleGuides: [pooled] } }, { canvas: null, order: [] }, {}, selection);
+    const draw = engine as unknown as { puzzlePin: (...args: unknown[]) => void; iconMarker: () => void; drawPuzzles: (ctx: CanvasRenderingContext2D, w: number, h: number) => void };
+    const markers = vi.spyOn(draw, 'puzzlePin').mockImplementation(() => {});
+    vi.spyOn(draw, 'iconMarker').mockImplementation(() => {});
+    const ctx = { save() {}, restore() {}, setLineDash() {} } as unknown as CanvasRenderingContext2D;
+    const [x, y] = harness.toScreen(0.4, 0.4);
+    harness.hoverAt(x, y);
+    draw.drawPuzzles(ctx, 1000, 1000);
+    expect(markers.mock.calls.map((args) => args[7])).toEqual([true, true]);
+    markers.mockClear();
+    harness.tap({ x, y });
+    draw.drawPuzzles(ctx, 1000, 1000);
+    expect(markers.mock.calls.map((args) => args[7])).toEqual([true, true]);
+  });
+  it('linked map highlights clear when the guide closes or the condition changes', () => {
+    const { ex } = setup();
+    engine.highlightGuide({ locationIds: ['location'], entranceIds: ['door'], poiIds: [] });
+    const getHighlight = () => (engine as unknown as { guideHighlight: unknown }).guideHighlight;
+    expect(getHighlight()).not.toBeNull();
+    engine.update(ex, { canvas: null, order: [] }, {}, null);
+    expect(getHighlight()).toBeNull();
+    engine.update(ex, { canvas: null, order: [] }, {}, selection);
+    engine.highlightGuide({ locationIds: ['location'], entranceIds: [], poiIds: [] });
+    engine.update({ ...ex, ci: 1 }, { canvas: null, order: [] }, {}, selection);
+    expect(getHighlight()).toBeNull();
+  });
   it('filter off clears touch and hover tooltips and re-enable shows entrances only', () => {
     const { tip, harness, ex } = setup(), [x, y] = harness.toScreen(0.4, 0.4);
     harness.tap({ x, y });

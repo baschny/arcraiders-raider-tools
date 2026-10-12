@@ -5,7 +5,7 @@
 import { THREAT, ZONE_COLORS, enemyIcon, isFeature, lootZone } from '../data/kinds';
 import { DATA_BASE, reportTileError, symbolUrl } from '../data/useMapData';
 import type { Level, MapData, PuzzleSymbol, UV } from '../data/types';
-import { eligibleEntrances, guideOwnsSpawner, guidePins, guideTrails, selectEntrance, symbolOf, toggleLayout, type GuideSelection } from '../data/puzzles';
+import { eligibleEntrances, guideOwnsSpawner, guidePins, guideTrails, selectEntrance, symbolOf, toggleLayout, type GuideSelection, type GuideTargets, stepColor, visibleSteps } from '../data/puzzles';
 import type { MapScore } from '../data/scoring';
 import { bbox, convexHull, inPoly, inRings, polyArea, ringsArea } from '../geometry';
 import type { Explorer } from '../model';
@@ -99,6 +99,7 @@ export class MapEngine {
   private tip: TipState | null = null;
   /** One session-only guide and entrance selection. */
   private activePuzzle: GuideSelection | null = null;
+  private guideHighlight: GuideTargets | null = null;
   private onPuzzle: (i: GuideSelection | null) => void;
   private tiles = new TileLayer(DATA_BASE, () => this.requestDraw(), reportTileError);
 
@@ -166,6 +167,7 @@ export class MapEngine {
     this.padding = padding;
     this.activePuzzle = activePuzzle;
     if (reset) {
+      this.guideHighlight = null;
       this.pin = null;
       this.hover = null;
       this.hideTip();
@@ -176,6 +178,11 @@ export class MapEngine {
     }
     if (refit) this.fit();
     else this.requestDraw();
+  }
+
+  highlightGuide(targets: GuideTargets | null) {
+    this.guideHighlight = targets;
+    this.requestDraw();
   }
 
   pinned() {
@@ -616,24 +623,30 @@ export class MapEngine {
     ctx.setLineDash([]);
     eligibleEntrances(this.ex.map, this.ex.cond).forEach(({ guide, entrance }, i) => {
       const [x, y] = this.toScreen(...entrance.uv);
-      this.iconMarker(ctx, x, y, 15 * k, 'bunker', guide.status === 'incomplete' ? '#d9a03e' : '#a98bc9', { hovered: this.hover?.t === 'entrance' && this.hover.i === i });
+      const step = this.activePuzzle?.guideId === guide.id ? visibleSteps(guide, this.ex.cond, this.activePuzzle.layoutId).find((s) => s.entranceIds.includes(entrance.id)) : null;
+      const highlighted = (this.hover?.t === 'entrance' && this.hover.i === i) || !!this.guideHighlight?.entranceIds.includes(entrance.id);
+      if (step && guide.presentation?.palette !== 'groups') this.puzzlePin(ctx, x, y, stepColor(step.number), k, step.number, undefined, highlighted);
+      else this.iconMarker(ctx, x, y, 15 * k, 'bunker', step ? stepColor(step.number) : '#a98bc9', { hovered: highlighted });
     });
+    const hoveredGroup = this.hover?.t === 'action' ? pins[this.hover.i]?.groupId : this.tip?.touch && this.tip.target.t === 'action' ? pins[this.tip.target.i]?.groupId : null;
     pins.forEach((pin, i) => {
       const [x, y] = this.toScreen(...pin.location.uv);
-      this.puzzlePin(ctx, x, y, pin.color, k, pin.order, symbolOf(this.ex.map, pin.action.symbol), this.hover?.t === 'action' && this.hover.i === i);
+      this.puzzlePin(ctx, x, y, pin.color, k, pin.order ?? (this.activePuzzle && this.ex.map.puzzleGuides?.find((g) => g.id === this.activePuzzle?.guideId)?.presentation?.palette !== 'groups' ? pin.stepNumber : null), symbolOf(this.ex.map, pin.action.symbol),
+        (this.hover?.t === 'action' && this.hover.i === i) || (!!hoveredGroup && pin.groupId === hoveredGroup) || !!this.guideHighlight?.locationIds.includes(pin.location.id), pin.groupColor);
     });
     ctx.restore();
   }
   /** Puzzle step marker: a numbered disc, or a sigil disc for an unnumbered step (S22 real sigil images). */
   private puzzlePin(ctx: CanvasRenderingContext2D, x: number, y: number, color: string, k: number,
-    n: number | null, sym: PuzzleSymbol | undefined, hovered: boolean) {
+    n: number | null, sym: PuzzleSymbol | undefined, hovered: boolean, groupColor: string | null = null) {
     const R = (n != null ? 11 : 7.5) * k;
     ctx.beginPath();
     ctx.arc(x, y, R, 0, Math.PI * 2);
     ctx.fillStyle = color;
     ctx.fill();
     ctx.lineWidth = hovered ? 2.4 : 1.2;
-    ctx.strokeStyle = hovered ? '#fff' : 'rgba(0,0,0,.7)';
+    ctx.strokeStyle = hovered ? '#fff' : groupColor ?? 'rgba(0,0,0,.7)';
+    if (groupColor && !hovered) ctx.lineWidth = 3;
     ctx.stroke();
     // The recoloured sigil image (S22), tinted like the game icons; a plain puzzle icon when the build has none.
     const dpr = window.devicePixelRatio || 1;
