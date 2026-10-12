@@ -43,6 +43,7 @@ export function GuidePanel({ ex, selection, onSelection }: { ex: Explorer; selec
   const symbols = [...new Set(guide.hints.filter((h) => stages.some((s) => s.id === h.stageId)).flatMap((h) => h.symbols))];
   if (guide.id === 'church') {
     const layoutName = (id: string) => local(`maps.guides.layouts.${id}`, layouts.find((l) => l.id === id)?.label ?? id);
+    const lightCount = guide.indicators.find((indicator) => indicator.stageId === entrance.stageId && typeof indicator.count === 'number')?.count;
     return <section className="mx-puzzle mx-guide mx-guide--church" aria-label={title}>
       <div className="mx-puzzle__head mx-guide__head"><h2>{local('maps.guides.church.title', 'Santa Sofia Church - Door puzzle')}</h2><button type="button" onClick={() => onSelection(null)} aria-label={tx.t('quartermaster.sync.close')}><X size={18} aria-hidden="true" /></button></div>
       <p className="mx-guide__rooms">{tx.tm('maps.guides.church.opensRooms', { count: guide.rooms.length })}</p>
@@ -56,7 +57,7 @@ export function GuidePanel({ ex, selection, onSelection }: { ex: Explorer; selec
       <div className="mx-guide__instructions">
         <p>{tx.t('maps.guides.church.pressButtons')}</p>
         <p>{tx.t('maps.guides.church.layoutEachRaid')}</p>
-        <p>{guide.indicators.some((i) => i.stageId === entrance.stageId) && tx.tm('maps.guides.lights', { count: guide.indicators.find((i) => i.stageId === entrance.stageId)?.count ?? 4 })}</p>
+        {lightCount != null && <p>{tx.tm('maps.guides.lights', { count: lightCount })}</p>}
       </div>
       <div className="mx-guide__layout-legend" role="group" aria-label={tx.t('maps.guides.layout')}>
         {layouts.map((layout) => <button key={layout.id} type="button" className={selection.layoutId === layout.id ? 'is-selected' : ''}

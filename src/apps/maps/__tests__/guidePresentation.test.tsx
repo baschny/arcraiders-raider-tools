@@ -123,6 +123,7 @@ describe('four representative guide workflows', () => {
   });
   it('does not infer indicator lights from stage activation requirements', () => {
     expect(render({ ...church, indicators: [] })).not.toContain('progress lights');
+    expect(render({ ...church, indicators: [{ id: 'unknown-lights', stageId: 'first', count: null }] })).not.toContain('progress lights');
   });
   it('Refuge retains 24 grouped candidates without numbers, trails or invented selection counts', () => {
     const pins = guidePins(mapOf(refuge), TINY_MAP.conditions[0], true, select(refuge));

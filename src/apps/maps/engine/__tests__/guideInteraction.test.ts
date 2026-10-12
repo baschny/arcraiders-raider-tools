@@ -4,7 +4,7 @@ import type { Explorer } from '../../model';
 import { DEFAULT_PREFS, parseState } from '../../state';
 import type { PuzzleGuide } from '../../data/types';
 import { TINY_MAP } from '../../data/__tests__/fixtures/tinyMap';
-import type { GuideSelection } from '../../data/puzzles';
+import { guidePins, type GuideSelection } from '../../data/puzzles';
 const guide: PuzzleGuide = {
   id: 'test', title: 'Guide', status: 'complete', missing: [],
   entrances: [{ id: 'door', roomId: 'room', stageId: 'stage', uv: [0.8, 0.8], z: 0, access: 'puzzle' }],
@@ -53,10 +53,22 @@ describe('guide canvas interactions', () => {
     engine.update(ex, { canvas: null, order: [] }, {}, current);
     const harness = engine as unknown as Harness;
     const tapAt = (uv: [number, number]) => { const [x, y] = harness.toScreen(...uv); harness.tap({ x, y }); sync(); };
+    const tooltipLocation = () => {
+      const shown = tip.mock.lastCall?.[0];
+      return shown?.target.t === 'action' ? guidePins(map, ex.cond, true, current)[shown.target.i]?.location.id : undefined;
+    };
     tapAt([0.2, 0.2]); expect(current?.layoutId).toBe('layout-1');
     expect(tip).toHaveBeenLastCalledWith(expect.objectContaining({ touch: true, target: { t: 'action', i: 0 } }));
+    expect(tooltipLocation()).toBe('one-location');
     tapAt([0.2, 0.2]); expect(current?.layoutId).toBeNull();
+    expect(tooltipLocation()).toBe('one-location');
+    vi.advanceTimersByTime(400);
     tapAt([0.3, 0.3]); expect(current?.layoutId).toBe('layout-2');
+    expect(tooltipLocation()).toBe('two-location');
+    expect(tip).toHaveBeenLastCalledWith(expect.objectContaining({ touch: true, target: { t: 'action', i: 0 } }));
+    tapAt([0.3, 0.3]); expect(current?.layoutId).toBeNull();
+    expect(tooltipLocation()).toBe('two-location');
+    expect(tip).toHaveBeenLastCalledWith(expect.objectContaining({ touch: true, target: { t: 'action', i: 1 } }));
   });
   it('plain socket/action pins have delayed hover and touch tooltips', () => {
     const { tip, harness } = setup(), [x, y] = harness.toScreen(0.4, 0.4);

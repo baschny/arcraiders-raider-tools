@@ -677,9 +677,26 @@ export class MapEngine {
   }
   private toggleActionLayout(target: Target): boolean {
     if (target.t !== 'action' || !this.activePuzzle) return false;
-    const pin = guidePins(this.ex.map, this.ex.cond, true, this.activePuzzle)[target.i];
+    const currentPins = guidePins(this.ex.map, this.ex.cond, true, this.activePuzzle);
+    const pin = currentPins[target.i];
     if (!pin?.location.layoutId) return false;
-    this.activePuzzle = toggleLayout(this.activePuzzle, pin.location.layoutId);
+    const locationId = pin.location.id;
+    const nextPuzzle = toggleLayout(this.activePuzzle, pin.location.layoutId);
+    const nextPins = guidePins(this.ex.map, this.ex.cond, true, nextPuzzle);
+    const nextIndex = nextPins.findIndex((nextPin) => nextPin.location.id === locationId);
+    if (nextIndex < 0) return false;
+    const reindex = (candidate: Target) => {
+      if (candidate.t !== 'action') return candidate;
+      const location = currentPins[candidate.i]?.location.id;
+      const index = location ? nextPins.findIndex((nextPin) => nextPin.location.id === location) : -1;
+      return index >= 0 ? { ...candidate, i: index } : candidate;
+    };
+    const nextHover = this.hover ? reindex(this.hover) : null;
+    const nextTip = this.tip ? { ...this.tip, target: reindex(this.tip.target) } : null;
+    target.i = nextIndex;
+    this.hover = nextHover;
+    this.tip = nextTip;
+    this.activePuzzle = nextPuzzle;
     this.onPuzzle(this.activePuzzle);
     this.requestDraw();
     return true;
