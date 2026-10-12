@@ -626,7 +626,7 @@ export class MapEngine {
       if (!guideEntranceVisible(guide, entrance.id, this.activePuzzle)) return;
       const [x, y] = this.toScreen(...entrance.uv);
       const step = this.activePuzzle?.guideId === guide.id ? visibleSteps(guide, this.ex.cond, this.activePuzzle.layoutId).find((s) => s.entranceIds.includes(entrance.id)) : null;
-      const highlighted = (this.hover?.t === 'entrance' && this.hover.i === i) || !!this.guideHighlight?.entranceIds.includes(entrance.id);
+      const highlighted = this.guideHighlight ? this.guideHighlight.entranceIds.includes(entrance.id) : this.hover?.t === 'entrance' && this.hover.i === i;
       if (step && ['code-delivery', 'staged-fuel', 'workflow'].includes(guide.presentation?.pattern ?? '')) this.puzzlePin(ctx, x, y, PLAIN_PUZZLE_COLOR, k, step.number, undefined, highlighted);
       else this.iconMarker(ctx, x, y, 15 * k, 'bunker', PLAIN_PUZZLE_COLOR, { hovered: highlighted, outline: false });
     });
@@ -634,20 +634,20 @@ export class MapEngine {
     pins.forEach((pin, i) => {
       const [x, y] = this.toScreen(...pin.location.uv);
       this.puzzlePin(ctx, x, y, pin.color, k, pin.order ?? (this.activePuzzle && ['code-delivery', 'staged-fuel', 'workflow'].includes(this.ex.map.puzzleGuides?.find((g) => g.id === this.activePuzzle?.guideId)?.presentation?.pattern ?? '') ? pin.stepNumber : null), symbolOf(this.ex.map, pin.action.symbol),
-        (this.hover?.t === 'action' && this.hover.i === i) || (!!hoveredGroup && pin.groupId === hoveredGroup) || !!this.guideHighlight?.locationIds.includes(pin.location.id));
+        this.guideHighlight ? this.guideHighlight.locationIds.includes(pin.location.id) : (this.hover?.t === 'action' && this.hover.i === i) || (!!hoveredGroup && pin.groupId === hoveredGroup));
     });
     ctx.restore();
   }
   /** Puzzle step marker: a numbered disc, or a sigil disc for an unnumbered step (S22 real sigil images). */
   private puzzlePin(ctx: CanvasRenderingContext2D, x: number, y: number, color: string, k: number,
     n: number | null, sym: PuzzleSymbol | undefined, hovered: boolean) {
-    const R = (n != null ? 11 : 7.5) * k;
+    const R = 7.5 * k;
     ctx.beginPath();
     ctx.arc(x, y, R, 0, Math.PI * 2);
     ctx.fillStyle = color;
     ctx.fill();
     if (hovered) {
-      ctx.lineWidth = 2.4;
+      ctx.lineWidth = 2;
       ctx.strokeStyle = '#fff';
       ctx.stroke();
     }
@@ -657,7 +657,7 @@ export class MapEngine {
       sym?.image ? tintedImage(symbolUrl(sym.image), tint, px) : tintedIcon('puzzle', tint, px);
     if (n != null) {
       ctx.fillStyle = '#0d0f11';
-      ctx.font = `700 ${Math.round(13 * k)}px Urbanist, "Segoe UI", sans-serif`;
+      ctx.font = `700 ${Math.round(10 * k)}px Urbanist, "Segoe UI", sans-serif`;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.fillText(String(n), x, y + 0.5);

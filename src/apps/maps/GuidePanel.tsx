@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'react';
 import { Eye, EyeOff, X } from 'lucide-react';
 import type { GuideAction, PuzzleGuide } from './data/types';
-import { available, layoutColor, selectedGuide, stageActionGroups, symbolOf, toggleLayout, visibleGroups, visibleSteps, groupColor, guidePins, toggleStep, stepEnabled, type GuidePin, type GuideTargets, type GuideSelection } from './data/puzzles';
+import { available, layoutColor, selectedGuide, stageActionGroups, symbolOf, toggleLayout, visibleGroups, visibleSteps, groupColor, guidePins, toggleStep, stepEnabled, stepTargets, guideEntranceVisible, type GuidePin, type GuideTargets, type GuideSelection } from './data/puzzles';
 import { symbolUrl } from './data/useMapData';
 import { GameIcon } from './components';
 import type { Explorer } from './model';
@@ -131,9 +131,14 @@ export function GuidePanel({ ex, selection, onSelection, onFocus, onHighlight }:
       <div className="mx-puzzle__head mx-guide__head"><h2>{title}</h2><button type="button" onClick={() => onSelection(null)} aria-label={tx.t('quartermaster.sync.close')}><X size={18} aria-hidden="true" /></button></div>
       <ol className="mx-guide__steps">{steps.map((step) => {
         const enabled = stepEnabled(selection, step.id);
+        const targets = stepTargets(guide, ex.cond, selection, step);
+        const highlight = enabled ? { ...targets, locationIds: targets.locationIds.filter((id) => pinIds.has(id)),
+          entranceIds: targets.entranceIds.filter((id) => guideEntranceVisible(guide, id, selection)) } : null;
         return <li key={step.id} className={step.stageIds.includes(entrance.stageId) && step.role !== 'outcome' ? 'is-focused' : ''} aria-current={step.stageIds.includes(entrance.stageId) && step.role !== 'outcome' ? 'step' : undefined}>
           <button type="button" className={`mx-guide__step-toggle${enabled ? '' : ' is-off'}`} aria-pressed={enabled}
             title={tx.tm(enabled ? 'maps.guides.workflow.hideStep' : 'maps.guides.workflow.showStep', { step: step.number })}
+            onMouseEnter={() => onHighlight?.(highlight)} onMouseMove={() => onHighlight?.(highlight)} onMouseLeave={() => onHighlight?.(null)}
+            onFocus={() => onHighlight?.(highlight)} onBlur={() => onHighlight?.(null)}
             onClick={() => { onHighlight?.(null); onSelection(toggleStep(selection, guide, step.id)); }}>
             <b className="mx-guide__step-number" aria-hidden="true">{step.number}</b>
             <span>{instruction(step)}</span>

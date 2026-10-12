@@ -65,6 +65,28 @@ describe('generated semantic workflow presentation', () => {
     clickStep(1); expect(pins()).toHaveLength(12);
     act(() => root.unmount()); vi.unstubAllGlobals();
   });
+  it('step hover/focus highlights only its visible pins and clears on leave, blur or disable', () => {
+    vi.stubGlobal('IS_REACT_ACT_ENVIRONMENT', true);
+    const container = document.createElement('div'), root = createRoot(container), highlight = vi.fn();
+    let current: import('../data/puzzles').GuideSelection = selection(gate);
+    const panel = () => act(() => root.render(<GuidePanel ex={exOf(gate)} selection={current} onSelection={(next) => { current = next!; }} onHighlight={highlight} />));
+    panel();
+    const button = () => container.querySelectorAll<HTMLButtonElement>('.mx-guide__step-toggle')[0];
+    act(() => button().dispatchEvent(new MouseEvent('mouseover', { bubbles: true })));
+    const locations = guidePins(mapOf(gate), cond, true, current).filter((pin) => pin.action.type === 'print').map((pin) => pin.location.id);
+    expect(highlight).toHaveBeenLastCalledWith(expect.objectContaining({ locationIds: locations, entranceIds: [] }));
+    act(() => button().dispatchEvent(new MouseEvent('mouseout', { bubbles: true })));
+    expect(highlight).toHaveBeenLastCalledWith(null);
+    act(() => button().dispatchEvent(new FocusEvent('focusin', { bubbles: true })));
+    expect(highlight).toHaveBeenLastCalledWith(expect.objectContaining({ locationIds: locations }));
+    act(() => button().dispatchEvent(new FocusEvent('focusout', { bubbles: true })));
+    expect(highlight).toHaveBeenLastCalledWith(null);
+    act(() => button().click()); panel();
+    act(() => button().dispatchEvent(new MouseEvent('mouseover', { bubbles: true })));
+    expect(highlight).toHaveBeenLastCalledWith(null);
+    expect(guidePins(mapOf(gate), cond, true, current).every((pin) => pin.action.type === 'insert-code')).toBe(true);
+    act(() => root.unmount()); vi.unstubAllGlobals();
+  });
   it('hiding outputs keeps the guide open, preserves other guides and resets on close/reopen', () => {
     const current = toggleStep(selection(gate), gate, 'open');
     expect(gate.entrances.every((entrance) => !guideEntranceVisible(gate, entrance.id, current))).toBe(true);

@@ -101,11 +101,16 @@ describe('guide canvas interactions', () => {
     draw.drawPuzzles(ctx, 1000, 1000);
     expect(markers.mock.calls.map((args) => args[7])).toEqual([false, true, true]);
     expect(markers.mock.calls[0][3]).toBe(PLAIN_PUZZLE_COLOR);
+    // A legend step highlight takes precedence over an old touched/hovered group.
+    markers.mockClear();
+    engine.highlightGuide({ locationIds: [], entranceIds: ['door'], poiIds: [] });
+    draw.drawPuzzles(ctx, 1000, 1000);
+    expect(markers.mock.calls.map((args) => args[7])).toEqual([true, false, false]);
   });
   it('pin borders appear only as a neutral hover highlight without changing the group fill', () => {
     setup();
     const fills: string[] = [];
-    const ctx = { fillStyle: '', strokeStyle: '', beginPath() {}, arc() {}, fill() { fills.push(this.fillStyle); }, stroke: vi.fn(), fillText() {} };
+    const ctx = { fillStyle: '', strokeStyle: '', beginPath() {}, arc: vi.fn(), fill() { fills.push(this.fillStyle); }, stroke: vi.fn(), fillText() {} };
     const draw = engine as unknown as { puzzlePin: (ctx: CanvasRenderingContext2D, x: number, y: number, color: string, k: number, n: number, symbol: undefined, hovered: boolean) => void };
     draw.puzzlePin(ctx as unknown as CanvasRenderingContext2D, 0, 0, '#e0604f', 1, 1, undefined, false);
     expect(ctx.stroke).not.toHaveBeenCalled();
@@ -113,6 +118,7 @@ describe('guide canvas interactions', () => {
     expect(ctx.stroke).toHaveBeenCalledOnce();
     expect(ctx.strokeStyle).toBe('#fff');
     expect(fills).toEqual(['#e0604f', '#e0604f']);
+    expect(ctx.arc.mock.calls.every((args) => Number(args[2]) <= 7.5)).toBe(true);
   });
   it('linked map highlights clear when the guide closes or the condition changes', () => {
     const { ex } = setup();
