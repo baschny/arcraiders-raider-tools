@@ -197,12 +197,12 @@ function SpotFilters({ ex }: { ex: Explorer }) {
           <button onClick={() => ex.set({ show: new Set() })} title={tx.t('maps.filters.hideAll')}><Minus size={12} />{tx.t('lootHelper.filters.none')}</button>
         </div>
       </div>
-      <div className="mx-cat">
+      {puzzleDoors > 0 && <div className="mx-cat">
         <FilterRow tx={tx} depth={0} strong sel={ex.prefs.puzzleDoors ? 'on' : 'off'}
           onToggle={() => ex.setPrefs({ puzzleDoors: !ex.prefs.puzzleDoors })}
-          icon={<GameIcon icon="bunker" size={15} className="mx-row__icon" />} label={tx.t('maps.guides.doors')}
+          icon={<GameIcon icon="bunker" size={15} className="mx-row__icon" />} label={tx.t('maps.guides.puzzle')}
           count={{ main: tx.num(puzzleDoors), title: tx.plural('maps.filters.count.spots', puzzleDoors) }} />
-      </div>
+      </div>}
       {CATEGORIES.filter((cat) => cat.key !== 'Puzzles').map((cat) => {
         const kinds = kindsHere(cat);
         if (!kinds.length) return null;

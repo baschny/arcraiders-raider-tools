@@ -88,7 +88,7 @@ export function MapView({ ex, handle, fitPadding }: { ex: Explorer; handle?: Ref
           ))}
         </div>
       )}
-      {((loot && !!score) || (prefs.zones && !(loot && score)) || puzzlesVisible) && (
+      {((loot && !!score) || (prefs.zones && !(loot && score))) && (
         <div className="mx-legend">
           {loot && score && (<>
             <span>{t('maps.legend.score')}</span>
@@ -100,9 +100,9 @@ export function MapView({ ex, handle, fitPadding }: { ex: Explorer; handle?: Ref
               {ZONES.map((z) => <span key={z}><b style={{ '--zone': `rgb(${ZONE_COLORS[z]})` } as CSSProperties} />{zone(z)}</span>)}
             </div>
           )}
-          {puzzlesVisible && <GuidePanel ex={ex} selection={selection} onSelection={setOpenedPuzzle} />}
         </div>
       )}
+      {puzzlesVisible && <GuidePanel ex={ex} selection={selection} onSelection={setOpenedPuzzle} />}
     </div>
   );
 }
@@ -202,20 +202,20 @@ function Tooltip({ ex, tip, pinned, engine, opened }: { ex: Explorer; tip: TipSt
     const layout = guide.layouts.find((l) => l.id === location.layoutId);
     color = pin.color;
     kindLabel = `${guide.title} · ${stage.title}`;
-    title = location.candidate ? t(action.type === 'collect-fuel-cell' ? 'maps.guides.possibleFuelCell' : action.type === 'press' ? 'maps.guides.possibleButton' : 'maps.guides.possibleLocation') : action.label;
+    title = action.label;
     body = [
       ...actionDescription(ex, guide, action, tx),
       pin.order != null ? tm('maps.guides.order', { count: pin.order }) : null,
       layout?.label ?? null,
       pool ? poolLabel(guide, pool, tx) : null,
-      pool?.selection ? tm('maps.guides.activeSubset', { min: pool.selection.min, max: pool.selection.max }) : location.candidate ? t('maps.guides.subsetUnknown') : null,
+      pool?.selection ? tm('maps.guides.activeSubset', { min: pool.selection.min, max: pool.selection.max }) : null,
       location.level ? tm('maps.guides.approxHeight', { height: heightLine(location.level) ?? t('maps.guides.heightUnknown') }) : null,
     ];
   } else if (target.t === 'entrance') {
     const { guide, entrance } = eligibleEntrances(map, ex.cond)[target.i];
     kindLabel = t('maps.guides.doors');
     title = guide.title;
-    body = [guide.status === 'incomplete' ? t('maps.guides.incomplete') : null, ...guide.missing, heightLine(entrance.level)];
+    body = [heightLine(entrance.level)];
     mechanics = [t(entrance.access === 'mixed' ? 'maps.guides.mixed' : 'maps.guides.puzzleAccess')];
     keys = entrance.access === 'mixed' && entrance.spawnerIndex != null ? ex.cls.spawnerKeys[entrance.spawnerIndex] : null;
     hint = t(opened?.entranceId === entrance.id ? 'maps.tooltip.clickPuzzleClose' : 'maps.tooltip.clickPuzzle');
