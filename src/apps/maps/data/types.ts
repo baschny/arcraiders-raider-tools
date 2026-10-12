@@ -202,7 +202,7 @@ export interface PuzzleSymbol {
 export interface GuideConditions { only?: string[]; not?: string[] }
 export interface GuideLocation {
   id: string; uv: UV; z: number; candidate: boolean;
-  layoutId?: string; conditions?: GuideConditions; spawnerIndex?: number;
+  layoutId?: string; conditions?: GuideConditions; spawnerIndex?: number; poiIds?: string[];
   /** Generator-derived ground-relative height; absent when no heightmap is available. */
   level?: Level;
 }
@@ -222,6 +222,13 @@ export interface GuideAction {
   itemSlug?: string; itemName?: string; inputItem?: string; outputItem?: string;
   conditions?: GuideConditions; locations: GuideLocation[];
 }
+export interface PuzzlePresentation {
+  schemaVersion: 1;
+  pattern: 'ordered-layouts' | 'button-groups' | 'code-delivery' | 'staged-fuel' | 'workflow';
+  palette: 'groups' | 'steps' | 'steps-and-groups'; roomCount: number;
+  steps: { id: string; number: number; role: 'ordered-buttons' | 'find-buttons' | 'activate-buttons' | 'print-codes' | 'deliver-codes' | 'deliver-fuel' | 'outcome' | 'interact'; stageIds: string[]; actionIds: string[]; entranceIds: string[]; roomIds: string[] }[];
+  groups: { id: string; kind: 'layout' | 'source' | 'item'; number: number; actionIds: string[]; locationIds: string[]; poiIds: string[]; layoutId?: string; label?: string; conditions?: GuideConditions; poolId?: string; selection?: { min: number; max: number } | null; itemSlug?: string; itemName?: string }[];
+}
 export interface PuzzleGuide {
   id: string; title: string; titleKey?: string; status: 'complete' | 'incomplete'; missing: string[];
   conditions?: GuideConditions; rooms: { id: string; stageId: string }[];
@@ -231,7 +238,7 @@ export interface PuzzleGuide {
   hints: { id: string; stageId: string; symbols: string[] }[];
   indicators: { id: string; stageId: string; count: number | null }[];
   evidence: { kind: 'extracted' | 'observed'; claim: string; version: string; reviewed: boolean }[];
-  ownedSpawnerIndices: number[];
+  ownedSpawnerIndices: number[]; presentation?: PuzzlePresentation;
 }
 
 /** A packed level instance spawner of the map (A47): the inventory the puzzle variants come from. */

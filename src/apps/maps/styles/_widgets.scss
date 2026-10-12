@@ -120,3 +120,18 @@
     cursor: pointer;
   }
 }
+
+.mx-guide__steps {
+  list-style: none; margin: 0; padding: 0; display: grid; gap: 14px;
+  > li { display: grid; grid-template-columns: 28px 1fr; gap: 10px; padding-left: 6px; border-left: 2px solid transparent; }
+  > li.is-focused { border-left-color: var(--c); }
+  p { margin: 0 0 4px; line-height: 1.45; }
+}
+.mx-guide__step-number { background: var(--c); color: #111; border-radius: 50%; width: 26px; height: 26px; display: grid; place-items: center; font-size: 15px; }
+.mx-guide__map-link { color: inherit; background: transparent; border: 0; padding: 6px 0; text-align: left; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; min-height: 36px; }
+.mx-guide__map-link:focus-visible { outline: 2px solid var(--c); outline-offset: 3px; }
+.mx-guide__group-legend { display: grid; gap: 4px; margin-top: 12px; border-top: 1px solid #40464c; padding-top: 8px;
+  > div { display: flex; align-items: center; gap: 9px; }
+  i { flex: 0 0 10px; height: 10px; border-radius: 50%; background: var(--c); }
+}
+.mx-guide__note { font-size: 13px; color: #aab1b8; line-height: 1.4; }
