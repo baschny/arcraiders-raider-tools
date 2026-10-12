@@ -1490,7 +1490,9 @@
         "printer": "Security code printer",
         "printerCandidates": "One of {count} possible printer locations.",
         "possibleLocation": "Possible location in this raid.",
-        "findPressCount": "Find and press {count} buttons in any order."
+        "findPressCount": "Find and press {count} buttons in any order.",
+        "insertCodesAt": "Carry the codes to {location} and insert each matching security code.",
+        "fuelAt": "Bring a fuel cell to the socket in {location} to open the next room."
       }
     }
   },

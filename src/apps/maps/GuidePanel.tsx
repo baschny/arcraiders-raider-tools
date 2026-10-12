@@ -32,6 +32,19 @@ export function actionDescription(ex: Explorer, guide: PuzzleGuide, action: Guid
   ];
 }
 
+/** Use only named volumes containing every verified destination, never a nearest-area guess. */
+export function guideDestination(ex: Explorer, guide: PuzzleGuide, actionIds: string[]): string | null {
+  const locations = guide.actions.filter((a) => actionIds.includes(a.id) && ['insert-code', 'insert-fuel-cell'].includes(a.type) && available(a, ex.cond))
+    .flatMap((a) => a.locations.filter((l) => available(l, ex.cond)));
+  if (!locations.length) return null;
+  const area = (rings: import('./data/types').UV[][]) => Math.abs(rings.reduce((sum, ring) => sum + ring.reduce((n, p, i) => {
+    const next = ring[(i + 1) % ring.length]; return n + p[0] * next[1] - next[0] * p[1];
+  }, 0), 0));
+  const poi = ex.map.pois.filter((p) => locations.every((l) => p.ids.some((id) => l.poiIds?.includes(id))))
+    .sort((a, b) => area(a.outline) - area(b.outline))[0];
+  return poi ? ex.names?.poi(poi) ?? poi.title : null;
+}
+
 /** One functional title and only the useful item/group/alternative information. */
 export function guideActionTooltip(ex: Explorer, guide: PuzzleGuide, pin: GuidePin, tx: MapText) {
   const { action, location } = pin;
@@ -94,8 +107,14 @@ export function GuidePanel({ ex, selection, onSelection, onFocus, onHighlight }:
       if (step.role === 'activate-buttons' && required != null && activation === 'unordered' && !steps.some((s) => s.role === 'find-buttons')) return tx.tm('maps.guides.workflow.findPressCount', { count: required });
       if (step.role === 'activate-buttons') return tx.t(activation === 'unordered' ? 'maps.guides.workflow.pressAny' : activation === 'ordered' ? 'maps.guides.workflow.pressOrdered' : 'maps.guides.workflow.press');
       if (step.role === 'print-codes') return tx.tm('maps.guides.workflow.printCodes', { count: step.actionIds.length });
-      if (step.role === 'deliver-codes') return tx.t('maps.guides.workflow.insertCodes');
-      if (step.role === 'deliver-fuel') return tx.t('maps.guides.workflow.fuel');
+      if (step.role === 'deliver-codes') {
+        const location = guideDestination(ex, guide, step.actionIds);
+        return location ? tx.tm('maps.guides.workflow.insertCodesAt', { location }) : tx.t('maps.guides.workflow.insertCodes');
+      }
+      if (step.role === 'deliver-fuel') {
+        const location = guideDestination(ex, guide, step.actionIds);
+        return location ? tx.tm('maps.guides.workflow.fuelAt', { location }) : tx.t('maps.guides.workflow.fuel');
+      }
       if (step.role === 'outcome') return tx.t('maps.guides.workflow.open');
       return guide.stages.find((stage) => step.stageIds.includes(stage.id))?.title ?? tx.t('maps.guides.workflow.interact');
     };
