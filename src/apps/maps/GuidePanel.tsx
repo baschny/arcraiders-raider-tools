@@ -42,7 +42,7 @@ export function GuidePanel({ ex, selection, onSelection }: { ex: Explorer; selec
   const layouts = guide.layouts.filter((l) => available(l, ex.cond));
   const symbols = [...new Set(guide.hints.filter((h) => stages.some((s) => s.id === h.stageId)).flatMap((h) => h.symbols))];
   return <section className="mx-puzzle mx-guide" aria-label={title}>
-    <div className="mx-guide__head"><h2>{title}</h2><button type="button" onClick={() => onSelection(null)} aria-label={tx.t('quartermaster.sync.close')}><X size={18} aria-hidden="true" /></button></div>
+    <div className="mx-puzzle__head mx-guide__head"><h2>{title}</h2><button type="button" onClick={() => onSelection(null)} aria-label={tx.t('quartermaster.sync.close')}><X size={18} aria-hidden="true" /></button></div>
     {layouts.length > 0 && <label className="mx-guide__layouts">{tx.t('maps.guides.layout')}
       <select value={selection.layoutId ?? ''} onChange={(e) => onSelection({ ...selection, layoutId: e.target.value || null })}>
         <option value="">{tx.t('maps.guides.allLayouts')}</option>
