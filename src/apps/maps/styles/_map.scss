@@ -291,3 +291,58 @@
   &__stage.is-focused { border-color: var(--mx-accent); background: rgba(255, 255, 255, .04); }
   &__detail { display: block; color: var(--mx-muted); }
 }
+
+.mx-guide--church {
+  .mx-guide__rooms { margin: 0; color: var(--mx-text); font-size: 14px; font-weight: 700; }
+  .mx-guide__graffiti {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2px;
+    padding: 8px 4px;
+    border: 1px solid var(--mx-line);
+    border-radius: 8px;
+    background: rgba(0, 0, 0, .22);
+  }
+  .mx-guide__graffiti-symbol {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 0;
+    min-width: 0;
+    height: clamp(56px, 9vw, 80px);
+    .game-icon { --gi-size: clamp(48px, 8vw, 64px); width: clamp(48px, 8vw, 64px); height: clamp(48px, 8vw, 64px); flex: 0 0 clamp(48px, 8vw, 64px); }
+    b { position: absolute; right: 2px; bottom: 0; color: var(--mx-text); font-size: 13px; }
+  }
+  .mx-guide__graffiti-arrow { color: var(--mx-muted); font-size: 15px; }
+  .mx-guide__instructions { color: var(--mx-text); font-size: 12px; line-height: 1.4; }
+  .mx-guide__instructions p { margin: 0; }
+  .mx-guide__layout-legend { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+  .mx-guide__layout-legend button {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    min-height: 38px;
+    padding: 6px 8px;
+    border: 1px solid var(--mx-line);
+    border-radius: 6px;
+    background: var(--mx-bg);
+    color: var(--mx-text);
+    text-align: left;
+    cursor: pointer;
+    &:hover, &.is-selected { border-color: var(--c); background: var(--mx-panel-2); }
+    &:focus-visible { outline: 2px solid var(--mx-accent); outline-offset: 2px; }
+    i { width: 13px; height: 13px; flex: 0 0 13px; border-radius: 3px; background: var(--c); box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .5); }
+  }
+}
+
+@media (max-width: 560px) {
+  .mx-guide--church {
+    top: auto;
+    right: 8px;
+    bottom: 8px;
+    width: min(330px, calc(100% - 16px));
+    max-height: min(64vh, calc(100% - 16px));
+  }
+}

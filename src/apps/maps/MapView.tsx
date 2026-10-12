@@ -198,19 +198,25 @@ function Tooltip({ ex, tip, pinned, engine, opened }: { ex: Explorer; tip: TipSt
     const guide = selectedGuide(map, ex.cond, ex.prefs.puzzleDoors, opened)!;
     const pin = guidePins(map, ex.cond, true, opened)[target.i];
     const { action, location, stage } = pin;
-    const pool = guide.pools.find((p) => p.id === action.poolId);
     const layout = guide.layouts.find((l) => l.id === location.layoutId);
     color = pin.color;
-    kindLabel = `${guide.title} · ${stage.title}`;
-    title = action.label;
-    body = [
-      ...actionDescription(ex, guide, action, tx),
-      pin.order != null ? tm('maps.guides.order', { count: pin.order }) : null,
-      layout?.label ?? null,
-      pool ? poolLabel(guide, pool, tx) : null,
-      pool?.selection ? tm('maps.guides.activeSubset', { min: pool.selection.min, max: pool.selection.max }) : null,
-      location.level ? tm('maps.guides.approxHeight', { height: heightLine(location.level) ?? t('maps.guides.heightUnknown') }) : null,
-    ];
+    if (guide.id === 'church' && action.type === 'press') {
+      kindLabel = t('maps.guides.church.title');
+      const layoutLabel = layout ? tx.t(`maps.guides.layouts.${layout.id}`) : '';
+      title = tm('maps.guides.church.buttonLayout', { button: pin.order ?? action.order ?? 0, layout: layoutLabel === `maps.guides.layouts.${layout?.id}` ? layout?.label ?? '' : layoutLabel });
+    } else {
+      const pool = guide.pools.find((p) => p.id === action.poolId);
+      kindLabel = `${guide.title} · ${stage.title}`;
+      title = action.label;
+      body = [
+        ...actionDescription(ex, guide, action, tx),
+        pin.order != null ? tm('maps.guides.order', { count: pin.order }) : null,
+        layout?.label ?? null,
+        pool ? poolLabel(guide, pool, tx) : null,
+        pool?.selection ? tm('maps.guides.activeSubset', { min: pool.selection.min, max: pool.selection.max }) : null,
+        location.level ? tm('maps.guides.approxHeight', { height: heightLine(location.level) ?? t('maps.guides.heightUnknown') }) : null,
+      ];
+    }
   } else if (target.t === 'entrance') {
     const { guide, entrance } = eligibleEntrances(map, ex.cond)[target.i];
     kindLabel = t('maps.guides.doors');
