@@ -129,19 +129,43 @@
   }
 }
 
-// Puzzle legend (S21): colour per layout, the set badge and the ordered sigil legend, inside the bottom-left panel.
+// Standalone guide panel, independent from the map's ordinary legend.
 .mx-puzzle {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  padding-top: 5px;
-  border-top: 1px solid var(--mx-line);
+  @extend %mx-float;
+  position: absolute;
+  z-index: 4;
+  top: 12px;
+  right: 56px;
+  width: min(390px, calc(100% - 80px));
+  max-height: min(72vh, calc(100% - 24px));
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: 12px;
+  color: var(--mx-muted);
+  font-size: 12px;
+  backdrop-filter: blur(8px);
 
   &__head {
-    font: 600 9.5px/1 ui-monospace, Menlo, monospace;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: var(--mx-accent);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    position: sticky;
+    top: -12px;
+    margin: -12px -12px 4px;
+    padding: 10px 12px;
+    background: var(--mx-panel-2);
+    border-bottom: 1px solid var(--mx-line);
+    color: var(--mx-text);
+    z-index: 1;
+
+    h2 { margin: 0; font-size: 15px; line-height: 1.25; }
+    button { display: grid; place-items: center; width: 44px; height: 44px; flex: 0 0 44px; border: 1px solid var(--mx-line); border-radius: 7px; background: transparent; color: var(--mx-text); cursor: pointer; }
+    button:hover { background: var(--mx-glass); }
+    button:focus-visible { outline: 2px solid var(--mx-accent); outline-offset: 2px; }
   }
 
   &__item { display: flex; flex-direction: column; gap: 2px; }
@@ -160,16 +184,6 @@
 
     i { width: 9px; height: 9px; border-radius: 2px; background: var(--c); box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .5); }
     em { color: var(--mx-muted); font-style: normal; font-size: 10.5px; }
-  }
-
-  &__badge {
-    align-self: flex-start;
-    margin-top: 1px;
-    padding: 2px 6px;
-    border-radius: 4px;
-    background: rgba(255, 255, 255, .07);
-    color: var(--mx-text);
-    font-size: 10.5px;
   }
 
   &__symbols {
@@ -265,15 +279,12 @@
   }
 }
 
-// Selected workflow remains scrollable on touch without covering the whole map.
-.mx-legend:has(.mx-guide) { max-width: min(360px, calc(100% - 24px)); max-height: min(58%, 560px); overflow: auto; }
+// Guide content stays readable inside the independent overlay.
 .mx-guide {
   gap: 8px;
   p { margin: 3px 0; }
   ul { margin: 4px 0; padding-left: 18px; }
   li + li { margin-top: 5px; }
-  &__head { display: flex; align-items: center; justify-content: space-between; gap: 12px; color: var(--mx-text); }
-  &__head button { padding: 2px 6px; }
   &__layouts { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
   &__layouts select { min-width: 120px; max-width: 220px; background: var(--mx-bg); color: var(--mx-text); }
   &__stage { border-left: 2px solid var(--mx-line); padding-left: 8px; }

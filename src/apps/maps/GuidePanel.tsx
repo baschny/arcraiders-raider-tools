@@ -1,4 +1,5 @@
 import type { CSSProperties } from 'react';
+import { X } from 'lucide-react';
 import type { GuideAction, PuzzleGuide } from './data/types';
 import { available, layoutColor, selectedGuide, stageActionGroups, symbolOf, type GuideSelection } from './data/puzzles';
 import { symbolUrl } from './data/useMapData';
@@ -41,9 +42,7 @@ export function GuidePanel({ ex, selection, onSelection }: { ex: Explorer; selec
   const layouts = guide.layouts.filter((l) => available(l, ex.cond));
   const symbols = [...new Set(guide.hints.filter((h) => stages.some((s) => s.id === h.stageId)).flatMap((h) => h.symbols))];
   return <section className="mx-puzzle mx-guide" aria-label={title}>
-    <div className="mx-guide__head"><strong>{title}</strong><button onClick={() => onSelection(null)} aria-label={tx.t('quartermaster.sync.close')}>×</button></div>
-    {guide.status === 'incomplete' && <><div className="mx-puzzle__badge">{tx.t('maps.guides.incomplete')}</div>
-      <ul>{guide.missing.map((missing, i) => <li key={i}>{local(`maps.guides.missing.${guide.id}.${i}`, missing)}</li>)}</ul></>}
+    <div className="mx-puzzle__head mx-guide__head"><h2>{title}</h2><button type="button" onClick={() => onSelection(null)} aria-label={tx.t('quartermaster.sync.close')}><X size={18} aria-hidden="true" /></button></div>
     {layouts.length > 0 && <label className="mx-guide__layouts">{tx.t('maps.guides.layout')}
       <select value={selection.layoutId ?? ''} onChange={(e) => onSelection({ ...selection, layoutId: e.target.value || null })}>
         <option value="">{tx.t('maps.guides.allLayouts')}</option>
@@ -70,16 +69,12 @@ export function GuidePanel({ ex, selection, onSelection }: { ex: Explorer; selec
           {actionDescription(ex, guide, action, tx).join(' · ')}
           <span className="mx-guide__detail">{local(`maps.guides.labels.${guide.id}.${action.id}`, action.label)}</span>
           {action.type === 'insert-fuel-cell' && <span className="mx-guide__detail">{tx.t('maps.guides.portableOrder')}</span>}
-          {guide.pools.filter((p) => p.actionId === action.id && (p.selection != null || action.locations.some((l) => l.candidate && available(l, ex.cond) && (layout ? l.layoutId === layout.id : !l.layoutId)))).map((pool) => <span key={pool.id} className="mx-guide__detail">
-            {poolLabel(guide, pool, tx)}: {pool.selection
-              ? tx.tm('maps.guides.activeSubset', { min: pool.selection.min, max: pool.selection.max }) : tx.t('maps.guides.subsetUnknown')}
-          </span>)}
+          {guide.pools.filter((pool) => pool.actionId === action.id && (pool.selection != null || action.locations.some((location) => location.candidate && available(location, ex.cond) && (layout ? location.layoutId === layout.id : !location.layoutId)))).map((pool) => <span key={pool.id} className="mx-guide__detail">{poolLabel(guide, pool, tx)}</span>)}
         </li>)}</ul>
         </div>)}
         {stage.outputs.length > 0 && <p>{tx.tm('maps.guides.outputs', { count: stage.outputs.length })}</p>}
         {guide.indicators.filter((i) => i.stageId === stage.id).map((i) => <p key={i.id}>{i.count != null ? tx.tm('maps.guides.lights', { count: i.count }) : tx.t('maps.guides.lightsUnknown')}</p>)}
       </section>;
     })}
-    {guide.evidence.length > 0 && <details><summary>{tx.t('maps.guides.evidence')}</summary>{guide.evidence.map((e, i) => <p key={i}>{tx.t(`maps.guides.evidenceKind.${e.kind}`)} · {e.version} · {e.claim}</p>)}</details>}
   </section>;
 }

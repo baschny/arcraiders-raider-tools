@@ -101,6 +101,14 @@ describe('four representative guide workflows', () => {
     root.innerHTML = render(exported, 'door', 'layout-3');
     expect(root.querySelectorAll('.mx-guide__action-group li')).toHaveLength(0);
   });
+  it('renders a titled standalone guide shell with an accessible close control and no discovery status', () => {
+    const html = render(refuge);
+    expect(html).toContain('<h2>Raider&#x27;s Refuge</h2>');
+    expect(html).toContain('aria-label="Close"');
+    expect(html).not.toContain('Guide incomplete');
+    expect(html).not.toContain('candidate totals differ');
+    expect(html).not.toContain('<details>');
+  });
   it('does not infer indicator lights from stage activation requirements', () => {
     expect(render({ ...church, indicators: [] })).not.toContain('progress lights');
   });
@@ -111,7 +119,7 @@ describe('four representative guide workflows', () => {
     expect(pins.every((p) => p.order == null && p.location.candidate)).toBe(true);
     expect(guideTrails(pins)).toEqual([]);
     const html = render(refuge);
-    expect(html).toContain('Guide incomplete'); expect(html).toContain('candidate totals differ'); expect(html).toContain('active selection count is unresolved');
+    expect(html).not.toContain('Guide incomplete'); expect(html).not.toContain('candidate totals differ'); expect(html).not.toContain('active selection count is unresolved');
     expect(html).not.toContain('%'); expect(html).not.toContain('source-0'); expect(html).toContain('Button group 1');
   });
   it('Locked Gate explains four separate code branches without inventing printer locations', () => {
@@ -122,7 +130,7 @@ describe('four representative guide workflows', () => {
     expect(guidePins(mapOf(gate), condition, true, select(gate))).toHaveLength(4);
     expect(html).toContain('Print the security code'); expect(html).toContain('Carry the item'); expect(html).toContain('matching security code');
     for (const action of gate.actions.filter((a) => a.type === 'print')) expect(html).toContain(action.itemName!.replace(/'/g, '&#x27;'));
-    expect(html).toContain('Reader locations unresolved');
+    expect(html).not.toContain('Reader locations unresolved');
   });
   it('Riven keeps both stages and all fuel-cell candidates visible from either entrance', () => {
     for (const entrance of riven.entrances) {
