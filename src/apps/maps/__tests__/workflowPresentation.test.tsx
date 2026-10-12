@@ -2,7 +2,7 @@ import { describe, expect, it, vi } from 'vitest';
 import { act } from 'react';
 import { createRoot } from 'react-dom/client';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { GuidePanel, guideActionTooltip } from '../GuidePanel';
+import { GuidePanel, guideActionTooltip, guideDestination } from '../GuidePanel';
 import type { Explorer } from '../model';
 import type { MapData, PuzzleGuide } from '../data/types';
 import { guidePins, guideTrails, visibleSteps, visibleGroups, stepTargets, targetCoordinates, stepColor } from '../data/puzzles';
@@ -38,6 +38,12 @@ describe('generated semantic workflow presentation', () => {
     expect((html.match(/Print all/g) ?? []).length).toBe(1);
     expect(html).toContain('Ancient Fort Security Code');
     expect(visibleSteps(gate, cond, null).map((s) => s.number)).toEqual([1, 2, 3]);
+  });
+  it('uses the actual containing Gate Control Room name rather than inventing an area', () => {
+    const ex = { ...exOf(gate), map: blue as unknown as MapData };
+    const step = gate.presentation!.steps.find((s) => s.role === 'deliver-codes')!;
+    expect(guideDestination(ex, gate, step.actionIds)).toBe('Gate Control Room');
+    expect(guideDestination(exOf(gate), gate, step.actionIds)).toBeNull();
   });
   it('keeps all 24 Refuge alternatives in distinct pools without claiming per-pool selection or activation order', () => {
     const pins = guidePins(mapOf(refuge), cond, true, selection(refuge));
