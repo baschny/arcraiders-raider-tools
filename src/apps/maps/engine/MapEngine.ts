@@ -5,7 +5,7 @@
 import { THREAT, ZONE_COLORS, enemyIcon, isFeature, lootZone } from '../data/kinds';
 import { DATA_BASE, reportTileError, symbolUrl } from '../data/useMapData';
 import type { Level, MapData, PuzzleSymbol, UV } from '../data/types';
-import { activeVariants, doorPuzzles, stepOrder, symbolOf, variantColors, visiblePuzzles } from '../data/puzzles';
+import { PLAIN_PUZZLE_COLOR, activeVariants, doorPuzzles, isRandomizedPool, plainPins, stepOrder, symbolOf, variantColors, visiblePuzzles } from '../data/puzzles';
 import type { MapScore } from '../data/scoring';
 import { bbox, convexHull, inPoly, inRings, polyArea, ringsArea } from '../geometry';
 import type { Explorer } from '../model';
@@ -611,8 +611,9 @@ export class MapEngine {
     for (const pi of visible) {
       const p = puzzles[pi];
       const variants = activeVariants(p, e.cond);
-      // Trail first, so the pins sit on top; only a sequence has an order.
-      if (p.kind === 'sequence') {
+      const randomized = isRandomizedPool(p);
+      // Trail first, so the pins sit on top; only an ordered sequence has one (a runtime-shuffled order has none).
+      if (p.kind === 'sequence' && !randomized) {
         for (const vi of variants) {
           const steps = stepOrder(p.variants[vi]);
           if (steps.length < 2) continue;
@@ -629,19 +630,28 @@ export class MapEngine {
         }
         ctx.setLineDash([]);
       }
-      const color0 = variants.length ? colors[pi][variants[0]] : '#b9c0c7';
+      const color0 = variants.length ? colors[pi][variants[0]] : PLAIN_PUZZLE_COLOR;
       if (p.relay) {
         const [x, y] = this.toScreen(p.relay.uv[0], p.relay.uv[1]);
         this.iconMarker(ctx, x, y, 12 * k, 'puzzle', color0);
       }
-      for (const vi of variants) {
-        const v = p.variants[vi], color = colors[pi][vi];
-        v.steps.forEach((s, si) => {
-          const [x, y] = this.toScreen(s.uv[0], s.uv[1]);
-          if (x < -20 || y < -20 || x > w + 20 || y > h + 20) return;
-          const hovered = this.hover?.t === 'step' && this.hover.p === pi && this.hover.v === vi && this.hover.s === si;
-          this.puzzlePin(ctx, x, y, color, k, p.kind === 'sequence' ? s.n : null, symbolOf(m, s.symbol), hovered);
-        });
+      if (!randomized && variants.length) {
+        for (const vi of variants) {
+          const v = p.variants[vi], color = colors[pi][vi];
+          v.steps.forEach((s, si) => {
+            const [x, y] = this.toScreen(s.uv[0], s.uv[1]);
+            if (x < -20 || y < -20 || x > w + 20 || y > h + 20) return;
+            const hovered = this.hover?.t === 'step' && this.hover.p === pi && this.hover.v === vi && this.hover.s === si;
+            this.puzzlePin(ctx, x, y, color, k, p.kind === 'sequence' ? s.n : null, symbolOf(m, s.symbol), hovered);
+          });
+        }
+      } else {
+        // A sink-only puzzle (no variants) or a runtime-shuffled pool: plain, unnumbered pins (its parts / pool).
+        for (const pin of plainPins(p)) {
+          const [x, y] = this.toScreen(pin.uv[0], pin.uv[1]);
+          if (x < -20 || y < -20 || x > w + 20 || y > h + 20) continue;
+          this.puzzlePin(ctx, x, y, color0, k, null, undefined, false);
+        }
       }
     }
     ctx.restore();

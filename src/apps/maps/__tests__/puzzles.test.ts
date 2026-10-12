@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import type { MapCondition, MapData, Puzzle, PuzzlePart, PuzzleVariant } from '../data/types';
 import {
-  PUZZLE_COLORS, activeVariants, doorPuzzles, doorSpawnerOf, stepOrder, symbolLabel, symbolOf, variantActive, variantColors, variantLabel, visiblePuzzles,
+  PUZZLE_COLORS, activeVariants, doorPuzzles, doorSpawnerOf, inputTotal, isRandomizedPool, plainPins, setBadge, stepOrder,
+  symbolLabel, symbolOf, variantActive, variantColors, variantLabel, visiblePuzzles,
 } from '../data/puzzles';
 
 const cond = (name: string): MapCondition => ({ key: name, name, category: 'major', live: true, layers: [] });
@@ -96,4 +97,67 @@ describe('visiblePuzzles', () => {
   it('shows all with the layer on', () => expect(visiblePuzzles(m, true, null)).toEqual([0, 1]));
   it('shows only the opened puzzle with the layer off', () => expect(visiblePuzzles(m, false, 1)).toEqual([1]));
   it('shows nothing otherwise', () => expect(visiblePuzzles(m, false, null)).toEqual([]));
+});
+
+const input = (uv: [number, number]) => ({ id: 'i', class: 'BP_DownloadInteractionProximityItem_C', cell: null, uv, z: 0 });
+const randomized = {
+  id: 'r', kind: 'sequence', system: 'puzzle', required: 8, randomized: true, door: null, keyRoom: null,
+  symbols: [], variants: [],
+  pool: [input([0.1, 0.1]), input([0.2, 0.2]), input([0.3, 0.3])],
+  parts: [{ role: 'relay', class: 'BP_PuzzleRelay_8_C', uv: [0, 0], z: 0 }],
+} as unknown as Puzzle;
+
+describe('isRandomizedPool', () => {
+  it('is true for a shuffled puzzle with a pool', () => expect(isRandomizedPool(randomized)).toBe(true));
+  it('is false without a pool', () => expect(isRandomizedPool({ ...randomized, pool: [] } as Puzzle)).toBe(false));
+  it('is false when the puzzle is not randomized', () => expect(isRandomizedPool({ ...randomized, randomized: false } as Puzzle)).toBe(false));
+});
+
+describe('plainPins / inputTotal', () => {
+  it('draws the randomized pool as unnumbered pins (no parts, no trail)', () => {
+    expect(plainPins(randomized).map((p) => p.uv)).toEqual([[0.1, 0.1], [0.2, 0.2], [0.3, 0.3]]);
+    expect(inputTotal(randomized)).toBe(3);
+  });
+  it('draws the parts of a puzzle with no variants', () => {
+    const sink = {
+      ...randomized, randomized: false, pool: undefined,
+      parts: [
+        { role: 'door', class: 'BP_InteractiveGate_TBG_C', uv: [0.5, 0.5], z: 0 },
+        { role: 'console', class: 'BP_UnlockConsole_LockedGate_C', uv: [0.51, 0.5], z: 0 },
+      ],
+    } as unknown as Puzzle;
+    expect(plainPins(sink).map((p) => p.uv)).toEqual([[0.5, 0.5], [0.51, 0.5]]);
+    expect(inputTotal(sink)).toBe(1); // the door it opens is not an input
+  });
+  it('draws no plain pins for a puzzle with variants (its steps are drawn instead)', () => {
+    expect(plainPins({ ...randomized, randomized: false, pool: undefined, variants: [variant('a')] } as unknown as Puzzle)).toEqual([]);
+  });
+  it('counts the shown variant\u2019s steps as inputs', () => {
+    const p = { variants: [variant('a', undefined, [1, 2, 3])], parts: [] } as unknown as Puzzle;
+    expect(inputTotal(p, [0])).toBe(3);
+  });
+});
+
+describe('setBadge', () => {
+  it('reads "any order" without a count when required is null', () =>
+    expect(setBadge({ required: null } as Puzzle, 4)).toEqual({ key: 'maps.puzzles.setBadgeAny' }));
+  it('keeps "requires N of M (any order)" when required is a number', () =>
+    expect(setBadge({ required: 3 } as Puzzle, 4)).toEqual({ key: 'maps.puzzles.setBadge', required: 3, total: 4 }));
+});
+
+describe('doorPuzzles with several puzzles sharing one door', () => {
+  it('picks the puzzle with the lowest id, deterministically', () => {
+    const part: PuzzlePart = { role: 'door', class: 'BP_InteractiveGate_TBG_C', uv: [0.5, 0.5], z: 0 };
+    const m = {
+      world: [0, 0, 162000, 162000],
+      spawnerClasses: ['BP_InteractiveGate_TBG | LockedDoor'],
+      spawners: [[0.5, 0.5, 0]],
+      puzzles: [
+        { id: 'z_relay', parts: [part] },
+        { id: 'a_console', parts: [part] },
+        { id: 'm_console', parts: [part] },
+      ],
+    } as unknown as MapData;
+    expect(doorPuzzles(m).get(0)).toBe(1); // 'a_console' sorts lowest
+  });
 });

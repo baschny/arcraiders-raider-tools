@@ -199,21 +199,25 @@ export interface PuzzleSymbol {
   image?: string;
 }
 
-/** One input of a puzzle variant (a button, dropzone, ...). */
-export interface PuzzleStep {
-  /** 1-based press order for a sequence, null otherwise. */
-  n: number | null;
+/** One input of a puzzle (a button, console, power station, ...) without an order. */
+export interface PuzzleInput {
   id: string;
   class: string;
   /** Streaming cell of the actor (null for level-instance content). */
   cell: string | null;
-  /** Sigil key (PuzzleSymbol.key) of the step, when it has one. */
-  symbol?: string;
   uv: UV;
   /** World height (cm). */
   z: number;
   /** Height above the estimated ground in dm (generator, from the heightmap); missing/null: unknown. */
   level?: Level;
+}
+
+/** One input of a puzzle variant (a button, dropzone, ...). */
+export interface PuzzleStep extends PuzzleInput {
+  /** 1-based press order for a sequence, null otherwise. */
+  n: number | null;
+  /** Sigil key (PuzzleSymbol.key) of the step, when it has one. */
+  symbol?: string;
 }
 
 /** A level placement of one puzzle (the alternatives a round picks from). */
@@ -243,8 +247,8 @@ export interface Puzzle {
   id: string;
   kind: PuzzleKind;
   system: string;
-  /** Step-light count of the door / inputs required. */
-  required: number;
+  /** Step-light count of the door / inputs required; null when the game does not encode a count. */
+  required: number | null;
   randomized: boolean;
   /** Actor id of the door it opens, null if none. */
   door: string | null;
@@ -253,6 +257,8 @@ export interface Puzzle {
   /** Sigil keys in legend order. */
   symbols: string[];
   variants: PuzzleVariant[];
+  /** Runtime-shuffled activator pool (A49): no order, `randomized`; missing for other puzzles. */
+  pool?: PuzzleInput[];
   parts: PuzzlePart[];
 }
 

@@ -1183,6 +1183,9 @@
       "unknown": "Puzzle",
       "step": "step {n} of {total}",
       "setBadge": "requires {required} of {total} (any order)",
+      "setBadgeAny": "any order",
+      "plainPins": "plain pins",
+      "randomized": "randomized order (reshuffled each round)",
       "symbol": "sigil {symbol}",
       "inactive": "not active under {condition}"
     },
@@ -1195,7 +1198,9 @@
       "zoneRadius": "Area of effect: radius {radius} m",
       "puzzleDoor": "No key — the door opens by solving a puzzle",
       "puzzleSequence": "Sequence puzzle: press the {n} buttons in the shown order",
-      "puzzleSet": "Set puzzle: all {required} inputs, any order"
+      "puzzleSet": "Set puzzle: all {required} inputs, any order",
+      "puzzleSetAny": "Set puzzle: all inputs, any order",
+      "puzzleRandomized": "Randomized puzzle: {n} inputs, the order is reshuffled each round"
     },
     "timing": {
       "noRespawn": "does not respawn after destroyed",

@@ -3,7 +3,7 @@ import { useEffect, useImperativeHandle, useMemo, useRef, useState, type CSSProp
 import { Layers, Maximize, Minus, Plus, X } from 'lucide-react';
 import { THREAT, ZONE_COLORS, ZONES, enemyTiming, isFeature, lootZone, tableOptions } from './data/kinds';
 import type { Level, PuzzleKind } from './data/types';
-import { activeVariants, doorPuzzles, stepOrder, symbolLabel, symbolOf, variantColors, variantLabel, visiblePuzzles } from './data/puzzles';
+import { PLAIN_PUZZLE_COLOR, activeVariants, doorPuzzles, inputTotal, isRandomizedPool, setBadge, stepOrder, symbolLabel, symbolOf, variantColors, variantLabel, visiblePuzzles } from './data/puzzles';
 import { symbolUrl } from './data/useMapData';
 import { GameIcon } from './components';
 import { radioKeys, radioTab } from './radio';
@@ -134,10 +134,17 @@ function PuzzleLegend({ ex, opened }: { ex: Explorer; opened: number | null }) {
       {visible.map((pi) => {
         const p = puzzles[pi];
         const variants = activeVariants(p, cond);
+        const hasVariants = p.variants.length > 0;
         return (
           <div key={pi} className="mx-puzzle__item">
             <div className="mx-puzzle__kind">{tx.t(PUZZLE_KIND_KEY[p.kind])}</div>
-            {!variants.length && <div className="mx-puzzle__inactive">{tx.tm('maps.puzzles.inactive', { condition: cond.name })}</div>}
+            {hasVariants && !variants.length && <div className="mx-puzzle__inactive">{tx.tm('maps.puzzles.inactive', { condition: cond.name })}</div>}
+            {!hasVariants && (
+              <div className="mx-puzzle__variant">
+                <i style={{ '--c': PLAIN_PUZZLE_COLOR } as CSSProperties} />
+                <span>{tx.t('maps.puzzles.plainPins')}</span>
+              </div>
+            )}
             {variants.map((vi) => (
               <div key={vi} className="mx-puzzle__variant">
                 <i style={{ '--c': colors[pi][vi] } as CSSProperties} />
@@ -145,11 +152,17 @@ function PuzzleLegend({ ex, opened }: { ex: Explorer; opened: number | null }) {
                 {p.variants[vi].chance != null && p.variants[vi].chance! < 1 && <em>{tx.pct(p.variants[vi].chance!)}</em>}
               </div>
             ))}
-            {p.kind === 'set' && variants.length > 0 && (
-              <div className="mx-puzzle__badge">
-                {tx.tm('maps.puzzles.setBadge', { required: tx.num(p.required), total: tx.num(p.variants[variants[0]].steps.length) })}
-              </div>
-            )}
+            {isRandomizedPool(p) && <div className="mx-puzzle__note">{tx.t('maps.puzzles.randomized')}</div>}
+            {p.kind === 'set' && (variants.length > 0 || !hasVariants) && (() => {
+              const badge = setBadge(p, inputTotal(p, variants));
+              return (
+                <div className="mx-puzzle__badge">
+                  {badge.key === 'maps.puzzles.setBadge'
+                    ? tx.tm(badge.key, { required: tx.num(badge.required), total: tx.num(badge.total) })
+                    : tx.t(badge.key)}
+                </div>
+              );
+            })()}
             {p.symbols.length > 0 && (
               <div className="mx-puzzle__symbols">
                 {p.symbols.map((key) => {
@@ -238,8 +251,10 @@ function Tooltip({ ex, tip, pinned, engine, opened }: { ex: Explorer; tip: TipSt
     const puzzle = dp != null ? map.puzzles![dp] : null;
     if (puzzle) {
       mechanics.push(t('maps.mechanics.puzzleDoor'));
-      if (puzzle.kind === 'sequence') mechanics.push(tm('maps.mechanics.puzzleSequence', { n: tx.num(puzzle.required) }));
-      else if (puzzle.kind === 'set') mechanics.push(tm('maps.mechanics.puzzleSet', { required: tx.num(puzzle.required), total: tx.num(puzzle.variants[0]?.steps.length ?? puzzle.required) }));
+      const inputs = inputTotal(puzzle, puzzle.variants.length ? [0] : []);
+      if (isRandomizedPool(puzzle)) mechanics.push(tm('maps.mechanics.puzzleRandomized', { n: tx.num(inputs) }));
+      else if (puzzle.kind === 'sequence') mechanics.push(tm('maps.mechanics.puzzleSequence', { n: tx.num(puzzle.required ?? inputs) }));
+      else if (puzzle.kind === 'set') mechanics.push(puzzle.required == null ? t('maps.mechanics.puzzleSetAny') : tm('maps.mechanics.puzzleSet', { required: tx.num(puzzle.required), total: tx.num(inputs) }));
     }
     const at = feature && map.spawnerPois[target.i] >= 0 ? names.poi(map.pois[map.spawnerPois[target.i]]) : null;
     const detail = tx.list(map.spawnerClasses[s[2]].split(' | ').filter((c) => !/^(Barricaded|Door|LockedDoor)$|^Key:/.test(c)).map(tx.className));
@@ -283,7 +298,7 @@ function Tooltip({ ex, tip, pinned, engine, opened }: { ex: Explorer; tip: TipSt
       step.n != null ? tm('maps.puzzles.step', { n: tx.num(n), total: tx.num(total) }) : null,
       step.symbol ? tm('maps.puzzles.symbol', { symbol: step.symbol }) : null,
       tx.className(step.class),
-      puzzle.kind === 'set' ? tm('maps.puzzles.setBadge', { required: tx.num(puzzle.required), total: tx.num(total) }) : null,
+      puzzle.kind === 'set' ? (puzzle.required == null ? t('maps.puzzles.setBadgeAny') : tm('maps.puzzles.setBadge', { required: tx.num(puzzle.required), total: tx.num(total) })) : null,
       world(step.uv[0], step.uv[1], step.z),
       heightLine(step.level),
     ];

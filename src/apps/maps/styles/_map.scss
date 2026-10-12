@@ -150,6 +150,8 @@
 
   &__inactive { color: var(--mx-muted); font-style: italic; }
 
+  &__note { color: var(--mx-muted); font-size: 10.5px; }
+
   &__variant {
     display: flex;
     align-items: center;
