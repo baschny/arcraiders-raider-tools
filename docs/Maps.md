@@ -74,11 +74,20 @@ build (env `EMBARK_API_DIR`, default the sibling `../embark-api`) and writes the
 | `sizes.json` | playable-area size of every map, measured by `scripts/lib/map-sizes.mjs` (the `/map-sizes` page) |
 | `map-strings.<locale>.json` | localized map strings, when the build has them |
 | `icons/<key>.png` | game UI icons (white on transparent, tinted in the browser) |
+| `symbols/<key>.webp` | recoloured puzzle sigils (white on transparent), one per `symbols[].key` of a map (S22) |
 | `tiles/<Texture>-<hash>/` | tile pyramids, cut from the full-size game textures (fallback: the build's 2048 px images) |
 
 The output is deterministic (same build, same bytes) and no file may exceed 5 MB. The public files hold no Embark asset
 ids and no internal names (`DA_...`): loot items are identified by their raider-tools slug only (see
 [Public form](#public-form)).
+
+**Puzzle sigils (S22).** The game ships the wall sigils as red decal masks (`T_Mural_<N>_X`, exported by
+`extract-all`); `scripts/lib/map-symbols.mjs` recolours them at generation time — the stroke coverage becomes the
+alpha channel, the strokes the graffiti cream — to `symbols/<key>.webp` (e.g. `mural-78`), and each map's
+`symbols[]` entries get the relative path as `image`. The page resolves a step's `symbol` key to that image
+(`data/puzzles.ts` `symbolOf`, `data/useMapData.ts` `symbolUrl`) and draws it like the other game icons (tinted in
+the browser); `maps.puzzles.symbol` shows its key in the tooltip. When the game export is not mounted the previous
+sigil output is kept, like the map icons.
 
 ### Public form
 
@@ -193,7 +202,7 @@ Not shown, on purpose:
 | `Bars.tsx`, `Sidebar.tsx`, `components.tsx`, `BottomSheet.tsx` | UI |
 | `MapView.tsx`, `engine/` | canvas: `MapEngine` (drawing, input), `tiles.ts`, `iconAtlas.ts` |
 | `data/` | loader, schema check, data types, spot kinds, scoring |
-| `scripts/generate-maps-data.mjs`, `scripts/lib/map-tiles.mjs`, `scripts/lib/area-outlines.mjs`, `scripts/lib/map-sizes.mjs` | data generation |
+| `scripts/generate-maps-data.mjs`, `scripts/lib/map-tiles.mjs`, `scripts/lib/area-outlines.mjs`, `scripts/lib/map-sizes.mjs`, `scripts/lib/map-symbols.mjs` | data generation |
 
 Imperative canvas code stays in `engine/` classes (the React Compiler lint forbids ref access during render).
 Unit tests live in `__tests__/` folders next to the code. Ideas for later: `plans/maps-integration.md`.

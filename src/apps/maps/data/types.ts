@@ -190,11 +190,13 @@ export interface QuestMarker {
   p?: number;
 }
 
-/** A puzzle sigil (S22 ships recoloured images; until then the page draws a placeholder icon). */
+/** A puzzle sigil (S22): `key` -> recoloured image (white on transparent, tinted in the browser). */
 export interface PuzzleSymbol {
   key: string;
   material?: string;
   texture?: string;
+  /** Path of the recoloured sigil under the map data base (`symbols/mural-78.webp`), when generated. */
+  image?: string;
 }
 
 /** One input of a puzzle variant (a button, dropzone, ...). */

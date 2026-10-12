@@ -3,13 +3,13 @@
 // and map features as game icons, ARC spawners with patrol paths, and the activity group of the hovered or
 // pinned spawner (ringed members + area hull). React feeds it the Explorer model; it reports tooltip targets.
 import { THREAT, ZONE_COLORS, enemyIcon, isFeature, lootZone } from '../data/kinds';
-import { DATA_BASE, reportTileError } from '../data/useMapData';
-import type { Level, MapData, UV } from '../data/types';
-import { activeVariants, doorPuzzles, stepOrder, variantColors, visiblePuzzles } from '../data/puzzles';
+import { DATA_BASE, reportTileError, symbolUrl } from '../data/useMapData';
+import type { Level, MapData, PuzzleSymbol, UV } from '../data/types';
+import { activeVariants, doorPuzzles, stepOrder, symbolOf, variantColors, visiblePuzzles } from '../data/puzzles';
 import type { MapScore } from '../data/scoring';
 import { bbox, convexHull, inPoly, inRings, polyArea, ringsArea } from '../geometry';
 import type { Explorer } from '../model';
-import { onIconsLoaded, tintedIcon } from './iconAtlas';
+import { onIconsLoaded, tintedIcon, tintedImage } from './iconAtlas';
 import { TileLayer } from './tiles';
 
 export type Target = {
@@ -596,7 +596,7 @@ export class MapEngine {
   // ---------------------------------------------------------------- puzzles (S21)
   /**
    * Puzzle overlay: per (visible, active) variant a colour, a dashed 1→2→… trail for a sequence and a pin per
-   * step (numbered for a sequence, a placeholder sigil badge when the step has a symbol). The relay is drawn in
+   * step (numbered for a sequence, a sigil badge when the step has a symbol). The relay is drawn in
    * the first active variant's colour. Drawn above the loot markers so a pin can be hovered.
    */
   private drawPuzzles(ctx: CanvasRenderingContext2D, w: number, h: number) {
@@ -640,16 +640,16 @@ export class MapEngine {
           const [x, y] = this.toScreen(s.uv[0], s.uv[1]);
           if (x < -20 || y < -20 || x > w + 20 || y > h + 20) return;
           const hovered = this.hover?.t === 'step' && this.hover.p === pi && this.hover.v === vi && this.hover.s === si;
-          this.puzzlePin(ctx, x, y, color, k, p.kind === 'sequence' ? s.n : null, p.kind === 'sequence' && !!s.symbol, hovered);
+          this.puzzlePin(ctx, x, y, color, k, p.kind === 'sequence' ? s.n : null, symbolOf(m, s.symbol), hovered);
         });
       }
     }
     ctx.restore();
   }
 
-  /** Puzzle step marker: a numbered disc, or a placeholder sigil disc for an unnumbered step. */
+  /** Puzzle step marker: a numbered disc, or a sigil disc for an unnumbered step (S22 real sigil images). */
   private puzzlePin(ctx: CanvasRenderingContext2D, x: number, y: number, color: string, k: number,
-    n: number | null, symbol: boolean, hovered: boolean) {
+    n: number | null, sym: PuzzleSymbol | undefined, hovered: boolean) {
     const R = (n != null ? 8.5 : 7.5) * k;
     ctx.beginPath();
     ctx.arc(x, y, R, 0, Math.PI * 2);
@@ -658,8 +658,10 @@ export class MapEngine {
     ctx.lineWidth = hovered ? 2.4 : 1.2;
     ctx.strokeStyle = hovered ? '#fff' : 'rgba(0,0,0,.7)';
     ctx.stroke();
-    // Placeholder icon until S22 ships the recoloured sigil images.
+    // The recoloured sigil image (S22), tinted like the game icons; a plain puzzle icon when the build has none.
     const dpr = window.devicePixelRatio || 1;
+    const sigil = (tint: string, px: number) =>
+      sym?.image ? tintedImage(symbolUrl(sym.image), tint, px) : tintedIcon('puzzle', tint, px);
     if (n != null) {
       ctx.fillStyle = '#0d0f11';
       ctx.font = `700 ${Math.round(10.5 * k)}px Urbanist, "Segoe UI", sans-serif`;
@@ -668,10 +670,10 @@ export class MapEngine {
       ctx.fillText(String(n), x, y + 0.5);
     } else {
       const px = R * 1.15;
-      const bmp = tintedIcon('puzzle', '#0d0f11', px * dpr);
+      const bmp = sigil('#0d0f11', px * dpr);
       if (bmp) ctx.drawImage(bmp, x - px / 2, y - px / 2, px, px);
     }
-    if (symbol) {
+    if (n != null && sym) {
       const bx = x + R * 0.8, by = y - R * 0.8, br = R * 0.62, px = br * 1.3;
       ctx.beginPath();
       ctx.arc(bx, by, br, 0, Math.PI * 2);
@@ -680,7 +682,7 @@ export class MapEngine {
       ctx.lineWidth = 1;
       ctx.strokeStyle = color;
       ctx.stroke();
-      const bmp = tintedIcon('puzzle', color, px * dpr);
+      const bmp = sigil(color, px * dpr);
       if (bmp) ctx.drawImage(bmp, bx - px / 2, by - px / 2, px, px);
     }
   }

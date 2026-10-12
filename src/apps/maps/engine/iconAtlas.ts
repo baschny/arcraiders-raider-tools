@@ -21,13 +21,24 @@ function image(key: string): HTMLImageElement | null {
   return img.complete && img.naturalWidth ? img : null;
 }
 
-export function tintedIcon(key: string, color: string, px: number): HTMLCanvasElement | null {
+/** An image by URL (e.g. a recoloured puzzle sigil); cached like the game icons and tinted the same way. */
+function imageByUrl(url: string): HTMLImageElement | null {
+  let img = images.get(url);
+  if (!img) {
+    img = new Image();
+    img.onload = () => listeners.forEach((fn) => fn());
+    img.src = url;
+    images.set(url, img);
+  }
+  return img.complete && img.naturalWidth ? img : null;
+}
+
+/** Tints any loaded bitmap by drawing it with source-in over a colour fill, cached per source, colour and size. */
+function tint(id: string, img: HTMLImageElement, color: string, px: number): HTMLCanvasElement {
   const size = Math.max(8, Math.ceil(px));
-  const id = `${key}|${color}|${size}`;
-  const cached = tinted.get(id);
+  const key = `${id}|${color}|${size}`;
+  const cached = tinted.get(key);
   if (cached) return cached;
-  const img = image(key);
-  if (!img) return null;
   const c = document.createElement('canvas');
   c.width = c.height = size;
   const ctx = c.getContext('2d')!;
@@ -36,6 +47,17 @@ export function tintedIcon(key: string, color: string, px: number): HTMLCanvasEl
   ctx.globalCompositeOperation = 'source-in';
   ctx.fillStyle = color;
   ctx.fillRect(0, 0, size, size);
-  tinted.set(id, c);
+  tinted.set(key, c);
   return c;
+}
+
+export function tintedIcon(key: string, color: string, px: number): HTMLCanvasElement | null {
+  const img = image(key);
+  return img ? tint(key, img, color, px) : null;
+}
+
+/** A white-on-transparent image by URL (a recoloured sigil), tinted to `color`. */
+export function tintedImage(url: string, color: string, px: number): HTMLCanvasElement | null {
+  const img = imageByUrl(url);
+  return img ? tint(url, img, color, px) : null;
 }

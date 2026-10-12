@@ -3,7 +3,8 @@ import { useEffect, useImperativeHandle, useMemo, useRef, useState, type CSSProp
 import { Layers, Maximize, Minus, Plus, X } from 'lucide-react';
 import { THREAT, ZONE_COLORS, ZONES, enemyTiming, isFeature, lootZone, tableOptions } from './data/kinds';
 import type { Level, PuzzleKind } from './data/types';
-import { activeVariants, doorPuzzles, stepOrder, symbolLabel, variantColors, variantLabel, visiblePuzzles } from './data/puzzles';
+import { activeVariants, doorPuzzles, stepOrder, symbolLabel, symbolOf, variantColors, variantLabel, visiblePuzzles } from './data/puzzles';
+import { symbolUrl } from './data/useMapData';
 import { GameIcon } from './components';
 import { radioKeys, radioTab } from './radio';
 import { MapEngine, buildHeat, heightCode, type Padding, type Pin, type TipState } from './engine/MapEngine';
@@ -118,8 +119,7 @@ export function MapView({ ex, handle, fitPadding }: { ex: Explorer; handle?: Ref
 
 /**
  * Colour legend of the shown puzzles: per puzzle its kind, the colour of every active variant ("Layout 3"),
- * a set badge ("requires 4 of 4 (any order)") and the ordered sigil legend. The placeholder sigil icon is
- * the puzzle icon until S22 ships the recoloured murals.
+ * a set badge ("requires 4 of 4 (any order)") and the ordered sigil legend (the recoloured mural images, S22).
  */
 function PuzzleLegend({ ex, opened }: { ex: Explorer; opened: number | null }) {
   const tx = useMapText();
@@ -151,8 +151,18 @@ function PuzzleLegend({ ex, opened }: { ex: Explorer; opened: number | null }) {
               </div>
             )}
             {p.symbols.length > 0 && (
-              <div className="mx-puzzle__symbols" title={tx.t('maps.puzzles.symbolPlaceholder')}>
-                {p.symbols.map((key) => <span key={key}><GameIcon icon="puzzle" size={13} />{symbolLabel(key)}</span>)}
+              <div className="mx-puzzle__symbols">
+                {p.symbols.map((key) => {
+                  const sym = symbolOf(map, key);
+                  return (
+                    <span key={key}>
+                      {sym?.image
+                        ? <GameIcon url={symbolUrl(sym.image)} color="#f5f0e6" size={14} />
+                        : <GameIcon icon="puzzle" size={13} />}
+                      {symbolLabel(key)}
+                    </span>
+                  );
+                })}
               </div>
             )}
           </div>

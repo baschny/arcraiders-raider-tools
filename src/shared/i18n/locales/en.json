@@ -1184,8 +1184,7 @@
       "step": "step {n} of {total}",
       "setBadge": "requires {required} of {total} (any order)",
       "symbol": "sigil {symbol}",
-      "inactive": "not active under {condition}",
-      "symbolPlaceholder": "Placeholder sigil icon (S22 adds the recoloured murals)"
+      "inactive": "not active under {condition}"
     },
     "mechanics": {
       "probeSite": "Potential ARC probe landing site",

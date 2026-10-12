@@ -9,9 +9,10 @@ import { iconUrl } from './data/useMapData';
 import { englishName } from './state';
 import { useMapText } from './text';
 
-/** A game UI icon, tinted via CSS mask. */
-export function GameIcon({ icon, color, size = 18, className }: { icon: string; color?: string; size?: number; className?: string }) {
-  const style = { '--gi-url': `url(${iconUrl(icon)})`, '--gi-size': `${size}px`, ...(color ? { '--gi-color': color } : {}) } as CSSProperties;
+/** A game UI icon or a generated sigil image, tinted via CSS mask. */
+export function GameIcon({ icon, url, color, size = 18, className }: { icon?: string; url?: string; color?: string; size?: number; className?: string }) {
+  const src = url ?? (icon ? iconUrl(icon) : '');
+  const style = { '--gi-url': `url(${src})`, '--gi-size': `${size}px`, ...(color ? { '--gi-color': color } : {}) } as CSSProperties;
   return <span className={`game-icon ${className ?? ''}`} style={style} aria-hidden />;
 }
 

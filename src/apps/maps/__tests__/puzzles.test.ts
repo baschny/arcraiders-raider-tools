@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import type { MapCondition, MapData, Puzzle, PuzzlePart, PuzzleVariant } from '../data/types';
 import {
-  PUZZLE_COLORS, activeVariants, doorPuzzles, doorSpawnerOf, stepOrder, symbolLabel, variantActive, variantColors, variantLabel, visiblePuzzles,
+  PUZZLE_COLORS, activeVariants, doorPuzzles, doorSpawnerOf, stepOrder, symbolLabel, symbolOf, variantActive, variantColors, variantLabel, visiblePuzzles,
 } from '../data/puzzles';
 
 const cond = (name: string): MapCondition => ({ key: name, name, category: 'major', live: true, layers: [] });
@@ -56,6 +56,14 @@ describe('variantColors', () => {
 
 describe('symbolLabel', () => {
   it('reads the trailing number', () => expect(symbolLabel('mural-81')).toBe('81'));
+});
+
+describe('symbolOf', () => {
+  const m = { symbols: [{ key: 'mural-78', image: 'symbols/mural-78.webp' }] } as unknown as MapData;
+  it('finds a sigil image by key', () => expect(symbolOf(m, 'mural-78')?.image).toBe('symbols/mural-78.webp'));
+  it('returns undefined for a key the map does not have', () => expect(symbolOf(m, 'mural-74')).toBeUndefined());
+  it('returns undefined without a key', () => expect(symbolOf(m, undefined)).toBeUndefined());
+  it('returns undefined for a map without symbols', () => expect(symbolOf({} as MapData, 'mural-78')).toBeUndefined());
 });
 
 const mapWithDoor = (): MapData => ({

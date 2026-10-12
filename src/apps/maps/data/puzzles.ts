@@ -45,6 +45,10 @@ export function variantLabel(variant: PuzzleVariant, index: number): string {
 /** Readable sigil label: the trailing number of its key ("mural-81" -> "81"). */
 export const symbolLabel = (key: string) => key.split('-').pop() ?? key;
 
+/** The sigil record of `key` (map.symbols), or undefined when the map has none (S22 image lookup). */
+export const symbolOf = (map: MapData, key: string | undefined) =>
+  key ? map.symbols?.find((s) => s.key === key) : undefined;
+
 /**
  * Index of the spawner that draws a puzzle's door pin: the spawner whose class set holds the door part's class
  * and whose uv is at the part's uv (they are the same actor). -1 when there is no such spawner.

@@ -17,6 +17,7 @@
 //   maps/<map>.json                one per map; area (POI) pieces replaced by merged outlines
 //   map-strings.<locale>.json      localized map strings, copied when the build has them (MAP-02)
 //   icons/<key>.png                game UI icons (white on transparent, tinted in the browser)
+//   symbols/<key>.webp             recoloured puzzle sigils (S22, scripts/lib/map-symbols.mjs)
 //   tiles/<Texture>-<hash>/        WebP tile pyramids of the map textures (scripts/lib/map-tiles.mjs)
 //
 // Map images are cut from the full-size game textures of the embark-api game export when it is available, else
@@ -28,6 +29,7 @@ import path from 'node:path';
 import { outlineRings } from './lib/area-outlines.mjs';
 import { loadHeights } from './lib/map-heights.mjs';
 import { computeSizes } from './lib/map-sizes.mjs';
+import { recolourMask, symbolOutputExists, symbolSourcePath } from './lib/map-symbols.mjs';
 import { findSource, sourceIndex, tilesHash, writeTiles } from './lib/map-tiles.mjs';
 
 const MAX_FILE_BYTES = 5 * 1024 * 1024;
@@ -170,6 +172,37 @@ for (const m of index.maps) {
 }
 writeJson('index.json', toPublicIndex(index));
 
+// ---- puzzle sigils (S22): the game's red mural decal masks recoloured to white-on-transparent WebP, one per
+// `symbols[].key` of a map (`symbols/mural-78.webp`). The map JSON carries the relative path as `symbol.image`;
+// the page resolves `key` -> image -> URL (data/puzzles.ts `symbolOf`, data/useMapData.ts `symbolUrl`).
+const symbolImages = new Map(); // symbol key -> Promise<string|null> (relative image path)
+const keptSymbols = [], missingSymbols = [];
+function symbolImage(sym) {
+  if (!sym.texture) return Promise.resolve(null);
+  if (!symbolImages.has(sym.key)) {
+    symbolImages.set(sym.key, (async () => {
+      const rel = `symbols/${sym.key}.webp`;
+      const source = symbolSourcePath(textures, sym.texture);
+      if (fs.existsSync(source)) {
+        const webp = await recolourMask(source);
+        if (webp) {
+          writeOut(rel, webp);
+          return rel;
+        }
+      }
+      // Not in the game export (not mounted, not exported): keep the previous output, like the map icons.
+      if (symbolOutputExists(out, sym.key)) {
+        written.add(rel);
+        keptSymbols.push(sym.texture);
+        return rel;
+      }
+      missingSymbols.push(sym.texture);
+      return null;
+    })());
+  }
+  return symbolImages.get(sym.key);
+}
+
 // ---- maps: area (POI) pieces are replaced by their merged outline (scripts/lib/area-outlines.mjs).
 const r4 = (x) => Math.round(x * 1e4) / 1e4;
 let pieces = 0, rings = 0;
@@ -194,10 +227,22 @@ for (const file of fs.readdirSync(path.join(build, 'maps')).filter((f) => f.ends
     else for (const p of map.puzzles) for (const v of p.variants ?? []) for (const s of v.steps ?? [])
       s.level = heights.level(map.world[0] + s.uv[0] * map.world[2], map.world[1] + s.uv[1] * map.world[3], s.z);
   }
+  // Sigil images: resolve every symbols[].key to its recoloured WebP (S22).
+  let sigils = 0;
+  for (const sym of map.symbols ?? []) {
+    const image = await symbolImage(sym);
+    if (image) {
+      sym.image = image;
+      sigils++;
+    }
+  }
+  if (sigils) console.log(`sigils ${map.map}: ${sigils} images`);
   allMaps.push(map);
   writeJson(`maps/${file}`, toPublicMap(map));
 }
 console.log(`area outlines: ${pieces} pieces -> ${rings} rings`);
+if (keptSymbols.length) console.warn(`WARNING: ${keptSymbols.length} sigils not in the game export, keeping the previous output.`);
+if (missingSymbols.length) console.warn(`WARNING: missing sigils (export them in embark-api with extract-all): ${missingSymbols.join(', ')}`);
 
 // ---- playable-area sizes of every map (scripts/lib/map-sizes.mjs), measured from the same build.
 const sizes = computeSizes(allMaps, index);
@@ -330,11 +375,11 @@ for (const dir of fs.readdirSync(out, { recursive: true }).map(String).sort().re
 
 // ---- size summary; no single file over 5 MB (git and the page's fetches stay reasonable)
 const mb = (n) => `${(n / 1e6).toFixed(1)} MB`;
-const groups = { json: { n: 0, bytes: 0 }, icons: { n: 0, bytes: 0 }, tiles: { n: 0, bytes: 0 } };
+const groups = { json: { n: 0, bytes: 0 }, symbols: { n: 0, bytes: 0 }, icons: { n: 0, bytes: 0 }, tiles: { n: 0, bytes: 0 } };
 const tooLarge = [];
 for (const f of files(out)) {
   const bytes = fs.statSync(path.join(out, f)).size;
-  const g = f.startsWith(`tiles${path.sep}`) ? 'tiles' : f.startsWith(`icons${path.sep}`) ? 'icons' : 'json';
+  const g = f.startsWith(`tiles${path.sep}`) ? 'tiles' : f.startsWith(`symbols${path.sep}`) ? 'symbols' : f.startsWith(`icons${path.sep}`) ? 'icons' : 'json';
   groups[g].n++;
   groups[g].bytes += bytes;
   if (bytes > MAX_FILE_BYTES) tooLarge.push(`${f} (${mb(bytes)})`);

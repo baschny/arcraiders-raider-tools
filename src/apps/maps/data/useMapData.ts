@@ -7,6 +7,8 @@ import type { MapData, MapIndex, MapSize, MapSizesData } from './types';
 
 export const DATA_BASE = '/data/map-data';
 export const iconUrl = (key: string) => `${DATA_BASE}/icons/${key}.png`;
+/** URL of a puzzle sigil image (`PuzzleSymbol.image`), recoloured white-on-transparent at generation (S22). */
+export const symbolUrl = (image: string) => `${DATA_BASE}/${image}`;
 
 /**
  * Why the map data could not be loaded: `network` (request failed, server error), `missing` (404, or not JSON: the
