@@ -226,7 +226,7 @@ export interface PuzzlePresentation {
   schemaVersion: 1;
   pattern: 'ordered-layouts' | 'button-groups' | 'code-delivery' | 'staged-fuel' | 'workflow';
   palette: 'groups' | 'steps' | 'steps-and-groups'; roomCount: number;
-  steps: { id: string; number: number; role: 'ordered-buttons' | 'find-buttons' | 'activate-buttons' | 'print-codes' | 'deliver-codes' | 'deliver-fuel' | 'outcome' | 'interact'; stageIds: string[]; actionIds: string[]; entranceIds: string[]; roomIds: string[] }[];
+  steps: { id: string; number: number; phase?: number; substep?: 'a' | 'b'; role: 'ordered-buttons' | 'find-buttons' | 'activate-buttons' | 'print-codes' | 'deliver-codes' | 'deliver-fuel' | 'outcome' | 'interact'; stageIds: string[]; actionIds: string[]; entranceIds: string[]; roomIds: string[] }[];
   groups: { id: string; kind: 'layout' | 'source' | 'item'; number: number; actionIds: string[]; locationIds: string[]; poiIds: string[]; layoutId?: string; label?: string; conditions?: GuideConditions; poolId?: string; selection?: { min: number; max: number } | null; itemSlug?: string; itemName?: string }[];
 }
 export interface PuzzleGuide {

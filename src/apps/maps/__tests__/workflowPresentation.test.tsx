@@ -56,13 +56,17 @@ describe('generated semantic workflow presentation', () => {
     const colours = pins().filter((pin) => pin.action.type === 'print').map((pin) => pin.color);
     const clickStep = (n: number) => { act(() => container.querySelectorAll<HTMLButtonElement>('.mx-guide__step-toggle')[n - 1].click()); panel(); };
     clickStep(2);
-    expect(pins()).toHaveLength(8); expect(pins().every((pin) => pin.action.type === 'print')).toBe(true);
-    expect(pins().map((pin) => pin.color)).toEqual(colours);
-    expect(container.querySelectorAll('.mx-guide__step-toggle[aria-pressed="false"]')).toHaveLength(1);
+    expect(pins()).toHaveLength(4); expect(pins().every((pin) => pin.action.type === 'insert-code')).toBe(true);
+    expect(container.querySelectorAll('.mx-guide__step-toggle[aria-pressed="true"]')).toHaveLength(1);
     expect(focus).not.toHaveBeenCalled();
-    clickStep(1); expect(pins()).toHaveLength(0);
-    clickStep(2); expect(pins()).toHaveLength(4); expect(pins().every((pin) => pin.action.type === 'insert-code')).toBe(true);
     clickStep(1); expect(pins()).toHaveLength(12);
+    clickStep(2); expect(pins()).toHaveLength(8); expect(pins().map((pin) => pin.color)).toEqual(colours);
+    clickStep(1); expect(pins()).toHaveLength(0);
+    clickStep(2); expect(pins()).toHaveLength(4);
+    clickStep(3); clickStep(1); // All enabled again: the next click isolates instead of hiding.
+    expect(container.querySelectorAll('.mx-guide__step-toggle[aria-pressed="true"]')).toHaveLength(3);
+    clickStep(1); expect(pins()).toHaveLength(8);
+    expect(container.querySelectorAll('.mx-guide__step-toggle[aria-pressed="true"]')).toHaveLength(1);
     act(() => root.unmount()); vi.unstubAllGlobals();
   });
   it('step hover/focus highlights only its visible pins and clears on leave, blur or disable', () => {
@@ -81,37 +85,61 @@ describe('generated semantic workflow presentation', () => {
     expect(highlight).toHaveBeenLastCalledWith(expect.objectContaining({ locationIds: locations }));
     act(() => button().dispatchEvent(new FocusEvent('focusout', { bubbles: true })));
     expect(highlight).toHaveBeenLastCalledWith(null);
-    act(() => button().click()); panel();
+    act(() => button().click()); panel(); // isolate first
+    act(() => button().click()); panel(); // hide the only active step
     act(() => button().dispatchEvent(new MouseEvent('mouseover', { bubbles: true })));
     expect(highlight).toHaveBeenLastCalledWith(null);
-    expect(guidePins(mapOf(gate), cond, true, current).every((pin) => pin.action.type === 'insert-code')).toBe(true);
+    expect(guidePins(mapOf(gate), cond, true, current)).toHaveLength(0);
     act(() => root.unmount()); vi.unstubAllGlobals();
   });
   it('hiding outputs keeps the guide open, preserves other guides and resets on close/reopen', () => {
-    const current = toggleStep(selection(gate), gate, 'open');
+    let current = toggleStep(selection(gate), gate, 'print');
+    current = toggleStep(current, gate, 'open');
+    current = toggleStep(current, gate, 'open');
     expect(gate.entrances.every((entrance) => !guideEntranceVisible(gate, entrance.id, current))).toBe(true);
     expect(guideEntranceVisible(refuge, refuge.entrances[0].id, current)).toBe(true);
     expect(resolveSelection(mapOf(gate), cond, true, current)).toBe(current);
-    expect(guidePins(mapOf(gate), cond, true, current)).toHaveLength(12);
+    expect(guidePins(mapOf(gate), cond, true, current)).toHaveLength(8);
     const entrance = eligibleEntrances(mapOf(gate), cond)[0];
     expect(selectEntrance(current, entrance)).toBeNull();
     const reopened = selectEntrance(null, entrance)!;
     expect(reopened.disabledStepIds).toBeUndefined();
     expect(guideEntranceVisible(gate, entrance.entrance.id, reopened)).toBe(true);
   });
-  it('shared find/press steps toggle together and Riven fuel visibility preserves the complete chain', () => {
+  it('shared button pins survive either instruction selection while Riven phases toggle independently', () => {
     let current = toggleStep(selection(refuge), refuge, 'find');
-    expect(current.disabledStepIds).toEqual(['find', 'press']);
-    expect(guidePins(mapOf(refuge), cond, true, current)).toHaveLength(0);
-    current = toggleStep(current, refuge, 'press');
+    expect(current.disabledStepIds).toEqual(['open', 'press']);
     expect(guidePins(mapOf(refuge), cond, true, current)).toHaveLength(24);
-    const fuelHidden = toggleStep(selection(riven), riven, 'fuel');
-    const pins = guidePins(mapOf(riven), cond, true, fuelHidden);
+    current = toggleStep(current, refuge, 'press');
+    current = toggleStep(current, refuge, 'find');
+    expect(guidePins(mapOf(refuge), cond, true, current)).toHaveLength(24);
+    current = toggleStep(current, refuge, 'press');
+    expect(guidePins(mapOf(refuge), cond, true, current)).toHaveLength(0);
+    const fuelOnly = toggleStep(selection(riven), riven, 'fuel');
+    expect(guidePins(mapOf(riven), cond, true, fuelOnly)).toHaveLength(22);
+    const buttonsOnly = toggleStep(toggleStep(fuelOnly, riven, 'fuel'), riven, 'buttons');
+    const pins = guidePins(mapOf(riven), cond, true, buttonsOnly);
     expect(pins).toHaveLength(20); expect(pins.every((pin) => pin.action.type === 'press')).toBe(true);
-    expect(visibleSteps(riven, cond, null)).toHaveLength(3);
-    const sameGuideOtherDoor = selectEntrance(fuelHidden, { guide: riven, entrance: riven.entrances[2] })!;
-    expect(sameGuideOtherDoor.disabledStepIds).toEqual(['fuel']);
+    expect(visibleSteps(riven, cond, null)).toHaveLength(4);
+    const sameGuideOtherDoor = selectEntrance(buttonsOnly, { guide: riven, entrance: riven.entrances[1] })!;
+    expect(sameGuideOtherDoor.disabledStepIds).toEqual(buttonsOnly.disabledStepIds);
     expect(resolveSelection(mapOf(riven), cond, false, sameGuideOtherDoor)).toBeNull();
+  });
+  it('nests Riven groups under 1a and 2a with independent door outcomes 1b and 2b', () => {
+    const html = renderToStaticMarkup(<GuidePanel ex={exOf(riven)} selection={selection(riven)} onSelection={() => {}} />);
+    const element = document.createElement('div'); element.innerHTML = html;
+    const rows = [...element.querySelectorAll('.mx-guide__steps > li')];
+    expect(rows.map((row) => row.querySelector('.mx-guide__step-number')!.textContent)).toEqual(['1a', '1b', '2a', '2b']);
+    expect(rows[0].querySelectorAll('.mx-guide__group-button')).toHaveLength(4);
+    expect(rows[1].querySelectorAll('.mx-guide__group-button')).toHaveLength(0);
+    expect(rows[2].querySelector('.mx-guide__group-button')!.textContent).toContain('Fuel-cell locations');
+    expect(element.querySelectorAll('a')).toHaveLength(0);
+    expect(html).not.toContain('This prerequisite'); expect(html).not.toContain('before or after');
+    const doorOnly = toggleStep(selection(riven), riven, 'button-room');
+    expect(guidePins(mapOf(riven), cond, true, doorOnly)).toHaveLength(0);
+    expect(riven.entrances.filter((entrance) => guideEntranceVisible(riven, entrance.id, doorOnly))).toHaveLength(2);
+    expect(riven.presentation!.steps.find((step) => step.id === 'button-room')!.actionIds).toEqual([]);
+    expect(guidePins(mapOf(riven), cond, true, selection(riven)).filter((pin) => pin.action.type === 'collect-fuel-cell').every((pin) => pin.stepLabel === '2a')).toBe(true);
   });
   it('uses the actual containing Gate Control Room name rather than inventing an area', () => {
     const ex = { ...exOf(gate), map: blue as unknown as MapData };
@@ -145,7 +173,7 @@ describe('generated semantic workflow presentation', () => {
       expect(new Set(pins.filter((p) => p.action.type === 'press').map((p) => p.color)).size).toBe(4);
       expect(pins.filter((p) => p.action.type === 'press').every((p) => p.order === null && p.stepNumber === 1)).toBe(true);
       const html = renderToStaticMarkup(<GuidePanel ex={exOf(riven)} selection={selection(riven, entrance.id)} onSelection={() => {}} />);
-      expect(html).toContain('Find and press 4 buttons'); expect(html).toContain('before or after opening the room');
+      expect(html).toContain('Find and press 4 buttons'); expect(html).not.toContain('before or after opening the room');
       expect(html).toContain('aria-current="step"');
       const fuelPins = pins.filter((pin) => ['collect-fuel-cell', 'insert-fuel-cell'].includes(pin.action.type));
       expect(fuelPins).toHaveLength(22);

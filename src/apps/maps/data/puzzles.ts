@@ -35,7 +35,7 @@ export function genericSpawnerAllowed(map: MapData, cond: MapCondition, enabled:
 
 export interface GuidePin {
   action: import('./types').GuideAction; location: import('./types').GuideLocation;
-  stage: import('./types').GuideStage; color: string; order: number | null; stepNumber: number | null; groupId: string | null;
+  stage: import('./types').GuideStage; color: string; order: number | null; stepNumber: number | null; stepLabel: string | null; groupId: string | null;
 }
 export const layoutColor = (guide: PuzzleGuide, layoutId?: string): string => layoutId
   ? PUZZLE_COLORS[Math.max(0, guide.layouts.findIndex((l) => l.id === layoutId)) % PUZZLE_COLORS.length] : PLAIN_PUZZLE_COLOR;
@@ -43,22 +43,21 @@ export const layoutColor = (guide: PuzzleGuide, layoutId?: string): string => la
 export function toggleLayout(selection: GuideSelection, layoutId: string): GuideSelection {
   return { ...selection, layoutId: selection.layoutId === layoutId ? null : layoutId };
 }
-/** Session-only map visibility, independent of activation/progress. Shared action steps toggle together. */
+/** From all enabled, the first click isolates one step. Partial selections toggle independently. */
 export const stepEnabled = (selection: GuideSelection, id: string) => !selection.disabledStepIds?.includes(id);
-export function toggleStep(selection: GuideSelection, guide: PuzzleGuide, id: string): GuideSelection {
-  const step = guide.presentation?.steps.find((s) => s.id === id);
-  if (!step) return selection;
-  const linked = guide.presentation!.steps.filter((s) => s.id === id || (step.actionIds.length > 0 &&
-    s.actionIds.length === step.actionIds.length && step.actionIds.every((action) => s.actionIds.includes(action)))).map((s) => s.id);
+export const stepLabel = (step: GuideStep) => step.phase && step.substep ? `${step.phase}${step.substep}` : String(step.number);
+export function toggleStep(selection: GuideSelection, guide: PuzzleGuide, id: string, steps: GuideStep[] = guide.presentation?.steps ?? []): GuideSelection {
+  if (!steps.some((s) => s.id === id)) return selection;
+  if (steps.every((s) => stepEnabled(selection, s.id))) return { ...selection,
+    disabledStepIds: (guide.presentation?.steps ?? []).filter((s) => s.id !== id).map((s) => s.id).sort() };
   const disabled = new Set(selection.disabledStepIds ?? []);
-  for (const stepId of linked) {
-    if (stepEnabled(selection, id)) disabled.add(stepId); else disabled.delete(stepId);
-  }
+  if (stepEnabled(selection, id)) disabled.add(id); else disabled.delete(id);
   return { ...selection, disabledStepIds: [...disabled].sort() };
 }
 export function guideEntranceVisible(guide: PuzzleGuide, entranceId: string, selection: GuideSelection | null): boolean {
   if (!selection || selection.guideId !== guide.id) return true;
-  return !(guide.presentation?.steps ?? []).some((s) => s.entranceIds.includes(entranceId) && !stepEnabled(selection, s.id));
+  const owners = (guide.presentation?.steps ?? []).filter((s) => s.entranceIds.includes(entranceId));
+  return !owners.length || owners.some((s) => stepEnabled(selection, s.id));
 }
 export function selectedGuide(map: MapData, cond: MapCondition, enabled: boolean, selection: GuideSelection | null): PuzzleGuide | null {
   const current = resolveSelection(map, cond, enabled, selection);
@@ -69,18 +68,19 @@ export function guidePins(map: MapData, cond: MapCondition, enabled: boolean, se
   if (!guide || !current) return [];
   return guide.actions.flatMap((action) => {
     const stage = guide.stages.find((s) => s.id === action.stageId && s.actionIds.includes(action.id));
-    if (!stage || !available(stage, cond) || !available(action, cond) ||
-      (guide.presentation?.steps ?? []).some((s) => s.actionIds.includes(action.id) && !stepEnabled(current, s.id))) return [];
+    const owners = (guide.presentation?.steps ?? []).filter((s) => s.actionIds.includes(action.id));
+    if (!stage || !available(stage, cond) || !available(action, cond) || (owners.length && !owners.some((s) => stepEnabled(current, s.id)))) return [];
     return action.locations.filter((location) => available(location, cond) &&
       (!location.layoutId || guide.layouts.some((l) => l.id === location.layoutId && available(l, cond))) &&
       (!current.layoutId || !location.layoutId || location.layoutId === current.layoutId))
        .map((location) => {
-        const step = visibleSteps(guide, cond, current.layoutId).find((s) => s.actionIds.includes(action.id) && s.role !== 'find-buttons');
+        const step = visibleSteps(guide, cond, current.layoutId).find((s) => s.actionIds.includes(action.id) && s.role !== 'find-buttons' && stepEnabled(current, s.id))
+          ?? visibleSteps(guide, cond, current.layoutId).find((s) => s.actionIds.includes(action.id) && stepEnabled(current, s.id));
         const group = visibleGroups(guide, cond, current.layoutId).find((g) => g.locationIds.includes(location.id));
         const color = location.layoutId ? layoutColor(guide, location.layoutId)
           : group ? groupColor(group.number) : PLAIN_PUZZLE_COLOR;
         return { action, stage, location, color, order: stage.activation === 'ordered' ? action.order ?? null : null,
-          stepNumber: step?.number ?? null, groupId: group?.id ?? null };
+          stepNumber: step?.number ?? null, stepLabel: step ? stepLabel(step) : null, groupId: group?.id ?? null };
       });
   });
 }

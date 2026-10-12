@@ -1431,7 +1431,6 @@
       "accessAfter": "Access after: {stages}",
       "required": "Required activations: {count}",
       "orderCues": "Dashed lines indicate activation order, not a walking route.",
-      "portableOrder": "This prerequisite grants socket access. The fuel cell may be collected before or after opening the room.",
       "activeSubset": "Active selections in this group: {min}–{max}",
       "subsetUnknown": "Candidate locations; active selection count is unresolved.",
       "outputs": "Opens {count} room or gate outputs",
@@ -1482,7 +1481,7 @@
         "press": "Press the buttons.",
         "printCodes": "Print all {count} security codes.",
         "insertCodes": "Carry the codes to the marked consoles and insert each matching security code.",
-        "fuel": "Bring a fuel cell to the marked socket to open the next room.",
+        "fuel": "Place a fuel cell in the marked socket.",
         "open": "The doors open when the required steps are complete.",
         "interact": "Use the marked interactions.",
         "locations": "Puzzle locations",
@@ -1491,9 +1490,11 @@
         "possibleLocation": "Possible location in this raid.",
         "findPressCount": "Find and press {count} buttons in any order.",
         "insertCodesAt": "Carry the codes to {location} and insert each matching security code.",
-        "fuelAt": "Bring a fuel cell to the socket in {location} to open the next room.",
+        "fuelAt": "Place a fuel cell in the socket in {location}.",
         "hideStep": "Hide locations for step {step}",
-        "showStep": "Show locations for step {step}"
+        "showStep": "Show locations for step {step}",
+        "roomUnlocked": "The door unlocks. Enter the room.",
+        "nextRoomUnlocked": "The next room unlocks."
       }
     }
   },

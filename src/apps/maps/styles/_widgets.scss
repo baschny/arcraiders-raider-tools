@@ -121,27 +121,37 @@
   }
 }
 
-.mx-guide__steps {
-  list-style: none; margin: 0; padding: 0; display: grid; gap: 14px;
-  > li { border-radius: 4px; }
-  > li.is-focused { background: #262b30; }
-  p { margin: 0 0 4px; line-height: 1.45; }
+// Compact workflow rows use the map's existing palette and shared typography.
+.mx-guide--workflow {
+  color: var(--mx-text);
+  .mx-puzzle__head h2 { font-size: 14px; }
+  .mx-puzzle__head > button { border: 0; }
+  .mx-guide__steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+  .mx-guide__steps > li { margin: 0; padding: 0; border-radius: 6px; }
+  .mx-guide__steps > li.is-new-phase { margin-top: 6px; padding-top: 8px; border-top: 1px solid var(--mx-line); }
+  .mx-guide__step-toggle {
+    display: grid; grid-template-columns: 26px 1fr 16px; align-items: center; gap: 8px;
+    width: 100%; min-height: 40px; padding: 7px 6px; border: 0; border-radius: 6px;
+    background: transparent; color: inherit; font: inherit; text-align: left; line-height: 1.4; cursor: pointer;
+    &.is-off { color: var(--mx-muted); }
+    &:hover { background: var(--mx-panel-2); }
+    &:focus-visible { outline: 2px solid var(--mx-accent); outline-offset: -2px; }
+  }
+  .mx-guide__step-number {
+    background: var(--mx-panel-2); color: var(--mx-muted); border-radius: 50%;
+    width: 25px; height: 25px; display: grid; place-items: center; font-size: 12px; font-weight: 700;
+  }
+  .mx-guide__step-toggle[aria-pressed="true"] .mx-guide__step-number { color: var(--mx-text); }
+  .is-focused > .mx-guide__step-toggle .mx-guide__step-number { background: var(--mx-line); }
+  .mx-guide__step-state { display: flex; color: var(--mx-muted); }
+  .mx-guide__group-legend { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; margin: 0 6px 6px 40px; }
+  .mx-guide__group-legend--items { grid-template-columns: 1fr; }
+  .mx-guide__group-button {
+    display: flex; align-items: center; gap: 6px; width: 100%; min-height: 30px; padding: 4px 7px;
+    border: 1px solid var(--mx-line); border-radius: 5px; background: var(--mx-bg);
+    color: var(--mx-muted); font: inherit; line-height: 1.35; text-align: left; text-decoration: none; cursor: pointer;
+    &:hover { color: var(--mx-text); background: var(--mx-panel-2); }
+    &:focus-visible { outline: 2px solid var(--mx-accent); outline-offset: -2px; }
+    i { flex: 0 0 8px; height: 8px; border-radius: 50%; background: var(--c); }
+  }
 }
-.mx-guide__step-number { background: #b9c0c7; color: #111; border-radius: 50%; width: 26px; height: 26px; display: grid; place-items: center; font-size: 15px; }
-.mx-guide__map-link { color: inherit; background: transparent; border: 0; padding: 6px 0; text-align: left; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; min-height: 36px; }
-.mx-guide__map-link:focus-visible { outline: 2px solid #e5e8eb; outline-offset: 3px; }
-.mx-guide__group-legend { display: grid; gap: 4px; margin-top: 12px; border-top: 1px solid #40464c; padding-top: 8px;
-  > div { display: flex; align-items: center; gap: 9px; }
-  i { flex: 0 0 10px; height: 10px; border-radius: 50%; background: var(--c); }
-}
-.mx-guide__note { font-size: 13px; color: #aab1b8; line-height: 1.4; }
-
-.mx-guide__step-toggle {
-  display: grid; grid-template-columns: 28px 1fr 18px; align-items: start; gap: 10px;
-  width: 100%; min-height: 44px; padding: 8px 6px; border: 0; border-radius: 4px;
-  background: transparent; color: inherit; text-align: left; line-height: 1.45; cursor: pointer;
-  &.is-off { opacity: .5; }
-  &:hover { background: #30363c; }
-  &:focus-visible { outline: 2px solid #e5e8eb; outline-offset: 2px; }
-}
-.mx-guide__step-state { padding-top: 5px; }

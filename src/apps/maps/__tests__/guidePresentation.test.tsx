@@ -150,7 +150,7 @@ describe('four representative guide workflows', () => {
       const pins = guidePins(mapOf(riven), TINY_MAP.conditions[0], true, select(riven, entrance.id));
       expect(pins).toHaveLength(23); expect(pins.filter((p) => p.location.candidate)).toHaveLength(21);
       const html = render(riven, entrance.id);
-      expect(html).toContain('Access after: First room'); expect(html).toContain('before or after opening the room');
+      expect(html).toContain('Access after: First room'); expect(html).not.toContain('before or after opening the room');
       expect(html).toContain('First room'); expect(html).toContain('Support Building');
       expect(html).toContain('aria-current="step"');
     }

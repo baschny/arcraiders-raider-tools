@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'react';
 import { Eye, EyeOff, X } from 'lucide-react';
 import type { GuideAction, PuzzleGuide } from './data/types';
-import { available, layoutColor, selectedGuide, stageActionGroups, symbolOf, toggleLayout, visibleGroups, visibleSteps, groupColor, guidePins, toggleStep, stepEnabled, stepTargets, guideEntranceVisible, type GuidePin, type GuideTargets, type GuideSelection } from './data/puzzles';
+import { available, layoutColor, selectedGuide, stageActionGroups, symbolOf, toggleLayout, visibleGroups, visibleSteps, groupColor, guidePins, toggleStep, stepEnabled, stepTargets, stepLabel, guideEntranceVisible, type GuidePin, type GuideTargets, type GuideSelection } from './data/puzzles';
 import { symbolUrl } from './data/useMapData';
 import { GameIcon } from './components';
 import type { Explorer } from './model';
@@ -120,45 +120,49 @@ export function GuidePanel({ ex, selection, onSelection, onFocus, onHighlight }:
         const location = guideDestination(ex, guide, step.actionIds);
         return location ? tx.tm('maps.guides.workflow.fuelAt', { location }) : tx.t('maps.guides.workflow.fuel');
       }
+      if (step.role === 'outcome' && step.phase) return tx.t(step.phase === 1 ? 'maps.guides.workflow.roomUnlocked' : 'maps.guides.workflow.nextRoomUnlocked');
       if (step.role === 'outcome') return tx.t('maps.guides.workflow.open');
       return guide.stages.find((stage) => step.stageIds.includes(stage.id))?.title ?? tx.t('maps.guides.workflow.interact');
     };
-    const links = (targets: GuideTargets, label: string, highlightGroup = false) => targets.locationIds.length + targets.entranceIds.length > 0 ? <button type="button" className="mx-guide__map-link"
-      onMouseEnter={() => onHighlight?.(highlightGroup ? targets : null)} onMouseLeave={() => onHighlight?.(null)} onFocus={() => onHighlight?.(highlightGroup ? targets : null)} onBlur={() => onHighlight?.(null)} onClick={() => { onHighlight?.(highlightGroup ? targets : null); onFocus?.(targets); }}>
-      {label}
+    const links = (targets: GuideTargets, label: string) => targets.locationIds.length + targets.entranceIds.length > 0 ? <button type="button" className="mx-guide__group-button"
+      onMouseEnter={() => onHighlight?.(targets)} onMouseLeave={() => onHighlight?.(null)} onFocus={() => onHighlight?.(targets)} onBlur={() => onHighlight?.(null)} onClick={() => { onHighlight?.(targets); onFocus?.(targets); }}>
+      <i aria-hidden="true" />{label}
     </button> : null;
     return <section className="mx-puzzle mx-guide mx-guide--workflow" aria-label={title}>
       <div className="mx-puzzle__head mx-guide__head"><h2>{title}</h2><button type="button" onClick={() => onSelection(null)} aria-label={tx.t('quartermaster.sync.close')}><X size={18} aria-hidden="true" /></button></div>
-      <ol className="mx-guide__steps">{steps.map((step) => {
+      <ol className="mx-guide__steps">{steps.map((step, index) => {
         const enabled = stepEnabled(selection, step.id);
         const targets = stepTargets(guide, ex.cond, selection, step);
         const highlight = enabled ? { ...targets, locationIds: targets.locationIds.filter((id) => pinIds.has(id)),
           entranceIds: targets.entranceIds.filter((id) => guideEntranceVisible(guide, id, selection)) } : null;
-        return <li key={step.id} className={step.stageIds.includes(entrance.stageId) && step.role !== 'outcome' ? 'is-focused' : ''} aria-current={step.stageIds.includes(entrance.stageId) && step.role !== 'outcome' ? 'step' : undefined}>
+        const nested = groups.filter((group) => steps.find((owner) => stepEnabled(selection, owner.id) && owner.actionIds.some((id) => group.actionIds.includes(id)))?.id === step.id);
+        const focused = step.stageIds.includes(entrance.stageId);
+        const newPhase = step.phase && index > 0 && steps[index - 1].phase !== step.phase;
+        return <li key={step.id} className={`${focused ? 'is-focused' : ''}${newPhase ? ' is-new-phase' : ''}`} aria-current={step.stageIds.includes(entrance.stageId) && step.role !== 'outcome' ? 'step' : undefined}>
           <button type="button" className={`mx-guide__step-toggle${enabled ? '' : ' is-off'}`} aria-pressed={enabled}
-            title={tx.tm(enabled ? 'maps.guides.workflow.hideStep' : 'maps.guides.workflow.showStep', { step: step.number })}
+            title={tx.tm(enabled ? 'maps.guides.workflow.hideStep' : 'maps.guides.workflow.showStep', { step: stepLabel(step) })}
             onMouseEnter={() => onHighlight?.(highlight)} onMouseMove={() => onHighlight?.(highlight)} onMouseLeave={() => onHighlight?.(null)}
             onFocus={() => onHighlight?.(highlight)} onBlur={() => onHighlight?.(null)}
-            onClick={() => { onHighlight?.(null); onSelection(toggleStep(selection, guide, step.id)); }}>
-            <b className="mx-guide__step-number" aria-hidden="true">{step.number}</b>
+            onClick={() => { onHighlight?.(null); onSelection(toggleStep(selection, guide, step.id, steps)); }}>
+            <b className="mx-guide__step-number" aria-hidden="true">{stepLabel(step)}</b>
             <span>{instruction(step)}</span>
             <span className="mx-guide__step-state" aria-hidden="true">{enabled ? <Eye size={15} /> : <EyeOff size={15} />}</span>
           </button>
+          {nested.length > 0 && <div className={`mx-guide__group-legend${nested.some((group) => group.kind === 'item') ? ' mx-guide__group-legend--items' : ''}`} role="group" aria-label={tx.t('maps.guides.workflow.locations')}>
+            {nested.map((group) => {
+              const label = group.kind === 'item' ? group.itemName ?? guide.actions.find((a) => group.actionIds.includes(a.id) && a.itemName)?.itemName
+                : guide.actions.some((a) => group.actionIds.includes(a.id) && a.type === 'collect-fuel-cell') ? tx.t('maps.guides.fuelCellLocations')
+                : tx.tm('maps.guides.buttonGroup', { count: group.number });
+              if (!label) return null;
+              const targets = { locationIds: group.locationIds, entranceIds: [], poiIds: group.poiIds };
+              return <div key={group.id} style={{ '--c': groupColor(group.number) } as CSSProperties}>
+                {links(targets, label)}
+              </div>;
+            })}
+          </div>}
         </li>;
       })}</ol>
-      {guide.presentation.pattern === 'staged-fuel' && <p className="mx-guide__note">{tx.t('maps.guides.portableOrder')}</p>}
-      {groups.length > 0 && <div className="mx-guide__group-legend" role="group" aria-label={tx.t('maps.guides.workflow.locations')}>
-        {groups.map((group) => {
-          const label = group.kind === 'item' ? group.itemName ?? guide.actions.find((a) => group.actionIds.includes(a.id) && a.itemName)?.itemName
-            : guide.actions.some((a) => group.actionIds.includes(a.id) && a.type === 'collect-fuel-cell') ? tx.t('maps.guides.fuelCellLocations')
-            : tx.tm('maps.guides.buttonGroup', { count: group.number });
-          if (!label) return null;
-          const targets = { locationIds: group.locationIds, entranceIds: [], poiIds: group.poiIds };
-          return <div key={group.id} style={{ '--c': groupColor(group.number) } as CSSProperties}>
-            <i aria-hidden="true" />{links(targets, label, true)}
-          </div>;
-        })}
-      </div>}
+
     </section>;
   }
   return <section className="mx-puzzle mx-guide" aria-label={title}>
@@ -188,7 +192,6 @@ export function GuidePanel({ ex, selection, onSelection, onFocus, onHighlight }:
           {stage.activation === 'ordered' && action.order != null && <b>{action.order}. </b>}
           {actionDescription(ex, guide, action, tx).join(' · ')}
           <span className="mx-guide__detail">{local(`maps.guides.labels.${guide.id}.${action.id}`, action.label)}</span>
-          {action.type === 'insert-fuel-cell' && <span className="mx-guide__detail">{tx.t('maps.guides.portableOrder')}</span>}
           {guide.pools.filter((pool) => pool.actionId === action.id && (pool.selection != null || action.locations.some((location) => location.candidate && available(location, ex.cond) && (layout ? location.layoutId === layout.id : !location.layoutId)))).map((pool) => <span key={pool.id} className="mx-guide__detail">{poolLabel(guide, pool, tx)}</span>)}
         </li>)}</ul>
         </div>)}
