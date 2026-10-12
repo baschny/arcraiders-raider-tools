@@ -1464,7 +1464,8 @@
       "fuelCell": "Fuel cell",
       "fuelCellLocations": "Fuel-cell locations",
       "buttonGroup": "Button group {count}",
-      "interactionGroup": "Interaction group {count}"
+      "interactionGroup": "Interaction group {count}",
+      "button": "Button {count}"
     }
   },
   "whatsNew": {

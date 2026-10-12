@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react';
 import type { GuideAction, PuzzleGuide } from './data/types';
-import { available, layoutColor, selectedGuide, symbolLabel, symbolOf, type GuideSelection } from './data/puzzles';
+import { available, layoutColor, selectedGuide, stageActionGroups, symbolLabel, symbolOf, type GuideSelection } from './data/puzzles';
 import { symbolUrl } from './data/useMapData';
 import { GameIcon } from './components';
 import type { Explorer } from './model';
@@ -17,6 +17,7 @@ export function guideItemName(ex: Explorer, guide: PuzzleGuide, item: string | u
 }
 export function poolLabel(guide: PuzzleGuide, pool: PuzzleGuide['pools'][number], tx: MapText): string {
   const action = guide.actions.find((a) => a.id === pool.actionId);
+  if (action?.type === 'press' && action.order != null && guide.stages.some((s) => s.id === action.stageId && s.activation === 'ordered')) return tx.tm('maps.guides.button', { count: action.order });
   return action?.type === 'collect-fuel-cell' ? tx.t('maps.guides.fuelCellLocations')
     : tx.tm(action?.type === 'press' ? 'maps.guides.buttonGroup' : 'maps.guides.interactionGroup', { count: guide.pools.indexOf(pool) + 1 });
 }
@@ -55,23 +56,26 @@ export function GuidePanel({ ex, selection, onSelection }: { ex: Explorer; selec
         <GameIcon {...(symbol?.image ? { url: symbolUrl(symbol.image) } : { icon: 'puzzle' })} color="#f5f0e6" size={18} />{symbolLabel(key)}</span>; })}
     </div>}
     {stages.map((stage) => {
-      const actions = guide.actions.filter((a) => a.stageId === stage.id && stage.actionIds.includes(a.id) && available(a, ex.cond));
+      const groups = stageActionGroups(guide, stage, ex.cond, selection.layoutId);
       const prerequisites = stage.prerequisites.map((id) => guide.stages.find((s) => s.id === id)?.title).filter((v): v is string => !!v);
       return <section key={stage.id} className={`mx-guide__stage ${stage.id === entrance.stageId ? 'is-focused' : ''}`} aria-current={stage.id === entrance.stageId ? 'step' : undefined}>
         <strong>{local(`maps.guides.stages.${guide.id}.${stage.id}`, stage.title)}</strong>
         {prerequisites.length > 0 && <p>{tx.tm('maps.guides.accessAfter', { stages: tx.list(prerequisites) })}</p>}
         <p>{tx.t(`maps.guides.activation.${stage.activation}`)}{stage.required != null && ` · ${tx.tm('maps.guides.required', { count: stage.required })}`}</p>
         {stage.activation === 'ordered' && <p>{tx.t('maps.guides.orderCues')}</p>}
-        <ul>{actions.map((action) => <li key={action.id}>
+        {groups.map(({ layout, actions }) => <div key={layout?.id ?? 'common'} className="mx-guide__action-group">
+          {layout && <strong className="mx-puzzle__variant"><i style={{ '--c': layoutColor(guide, layout.id) } as CSSProperties} />{local(`maps.guides.layouts.${layout.id}`, layout.label)}</strong>}
+          <ul>{actions.map((action) => <li key={action.id}>
           {stage.activation === 'ordered' && action.order != null && <b>{action.order}. </b>}
           {actionDescription(ex, guide, action, tx).join(' · ')}
           <span className="mx-guide__detail">{local(`maps.guides.labels.${guide.id}.${action.id}`, action.label)}</span>
           {action.type === 'insert-fuel-cell' && <span className="mx-guide__detail">{tx.t('maps.guides.portableOrder')}</span>}
-          {guide.pools.filter((p) => p.actionId === action.id).map((pool) => <span key={pool.id} className="mx-guide__detail">
+          {guide.pools.filter((p) => p.actionId === action.id && (p.selection != null || action.locations.some((l) => l.candidate && available(l, ex.cond) && (layout ? l.layoutId === layout.id : !l.layoutId)))).map((pool) => <span key={pool.id} className="mx-guide__detail">
             {poolLabel(guide, pool, tx)}: {pool.selection
               ? tx.tm('maps.guides.activeSubset', { min: pool.selection.min, max: pool.selection.max }) : tx.t('maps.guides.subsetUnknown')}
           </span>)}
         </li>)}</ul>
+        </div>)}
         {stage.outputs.length > 0 && <p>{tx.tm('maps.guides.outputs', { count: stage.outputs.length })}</p>}
         {guide.indicators.filter((i) => i.stageId === stage.id).map((i) => <p key={i.id}>{i.count != null ? tx.tm('maps.guides.lights', { count: i.count }) : tx.t('maps.guides.lightsUnknown')}</p>)}
       </section>;

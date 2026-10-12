@@ -72,6 +72,34 @@ describe('four representative guide workflows', () => {
     expect(html).toContain('78'); expect(html).toContain('81'); expect(html).toContain('76'); expect(html).toContain('74');
     expect(html).toContain('4 progress lights');
   });
+  it('groups the exported sixteen-action Church shape into four independently labelled sequences', () => {
+    const exported: PuzzleGuide = { ...church, actions: church.layouts.flatMap((layout) => church.actions.map((a) => ({
+      ...a, id: `${layout.id}:${a.id}`, label: `${layout.label} button ${a.order}`, poolId: `${layout.id}:${a.id}:pool`,
+      locations: a.locations.filter((l) => l.layoutId === layout.id),
+    }))) };
+    exported.stages = [{ ...church.stages[0], actionIds: exported.actions.map((a) => a.id) }];
+    exported.pools = exported.actions.map((a) => ({ id: a.poolId!, sourceId: 'opaque-source', actionId: a.id, selection: null }));
+    const root = document.createElement('div'); root.innerHTML = render(exported);
+    const groups = [...root.querySelectorAll('.mx-guide__action-group')];
+    expect(groups).toHaveLength(4);
+    groups.forEach((group, i) => {
+      expect(group.querySelector('strong')?.textContent).toBe(`Layout ${i + 1}`);
+      expect([...group.querySelectorAll('li > b')].map((e) => e.textContent)).toEqual(['1. ', '2. ', '3. ', '4. ']);
+      expect(group.querySelectorAll('li')).toHaveLength(4);
+    });
+    root.innerHTML = render(exported, 'door', 'layout-3');
+    expect(root.querySelectorAll('.mx-guide__action-group')).toHaveLength(1);
+    expect(root.querySelectorAll('.mx-guide__action-group li')).toHaveLength(4);
+    expect(root.textContent).toContain('Layout 3 button 1');
+    expect(root.textContent).not.toContain('Layout 1 button'); expect(root.textContent).not.toContain('Layout 4 button');
+    expect(root.textContent).not.toContain('Button group 16'); expect(root.textContent).not.toContain('active selection count is unresolved');
+    exported.actions.filter((a) => a.locations[0]?.layoutId === 'layout-3').forEach((a) => a.locations[0].conditions = { not: ['Normal'] });
+    root.innerHTML = render(exported, 'door', 'layout-3');
+    expect(root.querySelectorAll('.mx-guide__action-group li')).toHaveLength(0);
+  });
+  it('does not infer indicator lights from stage activation requirements', () => {
+    expect(render({ ...church, indicators: [] })).not.toContain('progress lights');
+  });
   it('Refuge retains 24 grouped candidates without numbers, trails or invented selection counts', () => {
     const pins = guidePins(mapOf(refuge), TINY_MAP.conditions[0], true, select(refuge));
     expect(pins).toHaveLength(24);

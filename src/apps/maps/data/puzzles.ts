@@ -69,3 +69,20 @@ export function guideTrails(pins: GuidePin[]): GuidePin[][] {
 export function guideOwnsSpawner(map: MapData, cond: MapCondition, enabled: boolean, selection: GuideSelection | null, i: number): boolean {
   return selectedGuide(map, cond, enabled, selection)?.ownedSpawnerIndices.includes(i) ?? false;
 }
+
+export interface GuideActionGroup { layout: PuzzleGuide['layouts'][number] | null; actions: import('./types').GuideAction[] }
+/** Instructions follow the same layout/location gates as map pins; unlocated transport remains logical. */
+export function stageActionGroups(guide: PuzzleGuide, stage: import('./types').GuideStage, cond: MapCondition, layoutId: string | null): GuideActionGroup[] {
+  if (!available(guide, cond) || !available(stage, cond)) return [];
+  const layouts = guide.layouts.filter((l) => available(l, cond) && (!layoutId || l.id === layoutId));
+  const actions = guide.actions.filter((a) => a.stageId === stage.id && stage.actionIds.includes(a.id) && available(a, cond));
+  const groups: GuideActionGroup[] = [];
+  const common = actions.filter((a) => !a.locations.length || a.locations.some((l) => !l.layoutId && available(l, cond)));
+  if (common.length) groups.push({ layout: null, actions: common });
+  for (const layout of layouts) {
+    const inLayout = actions.filter((a) => a.locations.some((l) => l.layoutId === layout.id && available(l, cond)));
+    if (inLayout.length) groups.push({ layout, actions: inLayout });
+  }
+  return groups.map((group) => ({ ...group, actions: stage.activation === 'ordered'
+    ? [...group.actions].sort((a, b) => (a.order ?? Infinity) - (b.order ?? Infinity)) : group.actions }));
+}
