@@ -190,6 +190,80 @@ export interface QuestMarker {
   p?: number;
 }
 
+/** A puzzle sigil (S22 ships recoloured images; until then the page draws a placeholder icon). */
+export interface PuzzleSymbol {
+  key: string;
+  material?: string;
+  texture?: string;
+}
+
+/** One input of a puzzle variant (a button, dropzone, ...). */
+export interface PuzzleStep {
+  /** 1-based press order for a sequence, null otherwise. */
+  n: number | null;
+  id: string;
+  class: string;
+  /** Streaming cell of the actor (null for level-instance content). */
+  cell: string | null;
+  /** Sigil key (PuzzleSymbol.key) of the step, when it has one. */
+  symbol?: string;
+  uv: UV;
+  /** World height (cm). */
+  z: number;
+  /** Height above the estimated ground in dm (generator, from the heightmap); missing/null: unknown. */
+  level?: Level;
+}
+
+/** A level placement of one puzzle (the alternatives a round picks from). */
+export interface PuzzleVariant {
+  /** Level-instance asset (`LI_ChurchPuzzleLayout1`) or relay id; null for a single placement. */
+  id: string | null;
+  spawner: string | null;
+  /** Active in a round with this chance (missing/null: unknown). */
+  chance: number | null;
+  /** Round conditions the variant exists under, by condition name; missing: always. */
+  conditions?: { only?: string[]; not?: string[] };
+  steps: PuzzleStep[];
+}
+
+/** A part of a puzzle (button, relay, door, symbol, ...). */
+export interface PuzzlePart {
+  role: string;
+  class: string;
+  uv: UV;
+  z: number;
+}
+
+export type PuzzleKind = 'sequence' | 'set' | 'timed' | 'unknown';
+
+/** A signal/legacy puzzle of the map features build (A47); shown on the map only when asked for (S21). */
+export interface Puzzle {
+  id: string;
+  kind: PuzzleKind;
+  system: string;
+  /** Step-light count of the door / inputs required. */
+  required: number;
+  randomized: boolean;
+  /** Actor id of the door it opens, null if none. */
+  door: string | null;
+  keyRoom: string | null;
+  relay?: PuzzlePart;
+  /** Sigil keys in legend order. */
+  symbols: string[];
+  variants: PuzzleVariant[];
+  parts: PuzzlePart[];
+}
+
+/** A packed level instance spawner of the map (A47): the inventory the puzzle variants come from. */
+export interface LevelInstance {
+  id: string;
+  asset: string;
+  uv: UV;
+  z: number;
+  yaw?: number;
+  selection?: { min: number; max: number; of: number; activity?: string };
+}
+
 /** Area label of the in-game map. */
 export interface MapArea {
   name: string;
@@ -262,6 +336,12 @@ export interface MapData {
   layers: MapLayer[] | null;
   /** Level per socket, spawner, enemy spawner and quest marker; map layer per POI. */
   levels: { sockets: Level[]; spawners: Level[]; enemies: Level[]; quests: Level[]; pois: number[] };
+  /** Puzzles of the map features build (A47); hidden until asked for (S21). Missing in older builds. */
+  puzzles?: Puzzle[];
+  /** Sigils of the map (key -> image, S22); missing in older builds. */
+  symbols?: PuzzleSymbol[];
+  /** Packed level instances of the map (A47). */
+  levelInstances?: LevelInstance[];
 }
 
 /**

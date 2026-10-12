@@ -2,7 +2,9 @@
 import { useEffect, useImperativeHandle, useMemo, useRef, useState, type CSSProperties, type Ref } from 'react';
 import { Layers, Maximize, Minus, Plus, X } from 'lucide-react';
 import { THREAT, ZONE_COLORS, ZONES, enemyTiming, isFeature, lootZone, tableOptions } from './data/kinds';
-import type { Level } from './data/types';
+import type { Level, PuzzleKind } from './data/types';
+import { activeVariants, doorPuzzles, stepOrder, symbolLabel, variantColors, variantLabel, visiblePuzzles } from './data/puzzles';
+import { GameIcon } from './components';
 import { radioKeys, radioTab } from './radio';
 import { MapEngine, buildHeat, heightCode, type Padding, type Pin, type TipState } from './engine/MapEngine';
 import type { Explorer } from './model';
@@ -13,25 +15,38 @@ export interface MapViewHandle {
   focusPoi: (i: number) => void;
 }
 
+/** UI label of a puzzle kind (literal keys, so the i18n audit sees them). */
+const PUZZLE_KIND_KEY: Record<PuzzleKind, string> = {
+  sequence: 'maps.puzzles.sequence',
+  set: 'maps.puzzles.set',
+  timed: 'maps.puzzles.timed',
+  unknown: 'maps.puzzles.unknown',
+};
+
 export function MapView({ ex, handle, fitPadding }: { ex: Explorer; handle?: Ref<MapViewHandle>; fitPadding?: Padding }) {
   const wrap = useRef<HTMLDivElement>(null);
   const canvas = useRef<HTMLCanvasElement>(null);
   const [engine, setEngine] = useState<MapEngine | null>(null);
   const [tip, setTip] = useState<TipState | null>(null);
+  /** Puzzle opened from its door pin (index into ex.map.puzzles). */
+  const [openedPuzzle, setOpenedPuzzle] = useState<number | null>(null);
   const [layersOpen, setLayersOpen] = useState(false);
   const layersToggle = useRef<HTMLButtonElement>(null);
   const { map, prefs, score, layer, socketVisible } = ex;
   const heat = useMemo(() => buildHeat(score, map, socketVisible), [score, map, socketVisible]);
   const loot = ex.state.mode === 'loot';
+  const puzzlesVisible = (map.puzzles?.length ?? 0) > 0 && (prefs.puzzles || openedPuzzle != null);
   const { t, tm, layer: layerName, zone } = useMapText();
 
   useEffect(() => {
-    const e = new MapEngine(wrap.current!, canvas.current!, setTip);
+    const e = new MapEngine(wrap.current!, canvas.current!, setTip, setOpenedPuzzle);
     setEngine(e);
     return () => e.destroy();
   }, []);
+  // A new map starts with no puzzle open.
+  useEffect(() => setOpenedPuzzle(null), [map]);
   useEffect(() => {
-    engine?.update(ex, heat, fitPadding);
+    engine?.update(ex, heat, fitPadding, openedPuzzle);
   });
   useImperativeHandle(handle, () => ({
     focusPoi: (i: number) => {
@@ -48,7 +63,7 @@ export function MapView({ ex, handle, fitPadding }: { ex: Explorer; handle?: Ref
     <div ref={wrap} className="mx-map">
       {/* The canvas is pointer-only; what it shows is listed (and keyboard operable) in the side bar. */}
       <canvas ref={canvas} role="img" aria-label={tm('maps.canvas.label', { map: ex.names.of(map) })} />
-      {tip && engine && <Tooltip ex={ex} tip={tip} pinned={engine.pinned()} engine={engine} />}
+      {tip && engine && <Tooltip ex={ex} tip={tip} pinned={engine.pinned()} engine={engine} opened={openedPuzzle} />}
       <div className="mx-zoom">
         <button onClick={() => engine?.zoomCenter(1.6)} title={t('maps.zoom.in')} aria-label={t('maps.zoom.in')}><Plus size={15} /></button>
         <button onClick={() => engine?.zoomCenter(1 / 1.6)} title={t('maps.zoom.out')} aria-label={t('maps.zoom.out')}><Minus size={15} /></button>
@@ -65,6 +80,7 @@ export function MapView({ ex, handle, fitPadding }: { ex: Explorer; handle?: Ref
         {layersOpen && (
           <div className="mx-layers__list">
             {loot && score && layerToggle('heat', t('maps.overlays.heat'))}
+            {loot && layerToggle('puzzles', t('maps.overlays.puzzles'), t('maps.overlays.puzzlesTitle'))}
             {layerToggle('height', t('maps.overlays.height'), t('maps.overlays.heightTitle'))}
             {layerToggle('pois', t('maps.overlays.pois'))}
             {layerToggle('zones', t('maps.overlays.zones'), t('maps.overlays.zonesTitle'))}
@@ -79,25 +95,76 @@ export function MapView({ ex, handle, fitPadding }: { ex: Explorer; handle?: Ref
           ))}
         </div>
       )}
-      {loot && score && (
+      {((loot && !!score) || (prefs.zones && !(loot && score)) || puzzlesVisible) && (
         <div className="mx-legend">
-          <span>{t('maps.legend.score')}</span>
-          <i />
-          <span className="mx-legend__ends"><span>{t('maps.legend.low')}</span><span>{t('maps.legend.high')}</span></span>
-        </div>
-      )}
-      {prefs.zones && !(loot && score) && (
-        <div className="mx-legend mx-legend--zones">
-          {ZONES.map((z) => <span key={z}><b style={{ '--zone': `rgb(${ZONE_COLORS[z]})` } as CSSProperties} />{zone(z)}</span>)}
+          {loot && score && (<>
+            <span>{t('maps.legend.score')}</span>
+            <i />
+            <span className="mx-legend__ends"><span>{t('maps.legend.low')}</span><span>{t('maps.legend.high')}</span></span>
+          </>)}
+          {prefs.zones && !(loot && score) && (
+            <div className="mx-legend__zones">
+              {ZONES.map((z) => <span key={z}><b style={{ '--zone': `rgb(${ZONE_COLORS[z]})` } as CSSProperties} />{zone(z)}</span>)}
+            </div>
+          )}
+          {puzzlesVisible && <PuzzleLegend ex={ex} opened={openedPuzzle} />}
         </div>
       )}
     </div>
   );
 }
 
+// ---------------------------------------------------------------- puzzles (S21)
+
+/**
+ * Colour legend of the shown puzzles: per puzzle its kind, the colour of every active variant ("Layout 3"),
+ * a set badge ("requires 4 of 4 (any order)") and the ordered sigil legend. The placeholder sigil icon is
+ * the puzzle icon until S22 ships the recoloured murals.
+ */
+function PuzzleLegend({ ex, opened }: { ex: Explorer; opened: number | null }) {
+  const tx = useMapText();
+  const { map, cond } = ex;
+  const puzzles = map.puzzles ?? [];
+  const visible = visiblePuzzles(map, ex.prefs.puzzles, opened);
+  if (!visible.length) return null;
+  const colors = variantColors(puzzles);
+  return (
+    <div className="mx-puzzle">
+      <div className="mx-puzzle__head">{tx.t('maps.puzzles.legend')}</div>
+      {visible.map((pi) => {
+        const p = puzzles[pi];
+        const variants = activeVariants(p, cond);
+        return (
+          <div key={pi} className="mx-puzzle__item">
+            <div className="mx-puzzle__kind">{tx.t(PUZZLE_KIND_KEY[p.kind])}</div>
+            {!variants.length && <div className="mx-puzzle__inactive">{tx.tm('maps.puzzles.inactive', { condition: cond.name })}</div>}
+            {variants.map((vi) => (
+              <div key={vi} className="mx-puzzle__variant">
+                <i style={{ '--c': colors[pi][vi] } as CSSProperties} />
+                <span>{variantLabel(p.variants[vi], vi)}</span>
+                {p.variants[vi].chance != null && p.variants[vi].chance! < 1 && <em>{tx.pct(p.variants[vi].chance!)}</em>}
+              </div>
+            ))}
+            {p.kind === 'set' && variants.length > 0 && (
+              <div className="mx-puzzle__badge">
+                {tx.tm('maps.puzzles.setBadge', { required: tx.num(p.required), total: tx.num(p.variants[variants[0]].steps.length) })}
+              </div>
+            )}
+            {p.symbols.length > 0 && (
+              <div className="mx-puzzle__symbols" title={tx.t('maps.puzzles.symbolPlaceholder')}>
+                {p.symbols.map((key) => <span key={key}><GameIcon icon="puzzle" size={13} />{symbolLabel(key)}</span>)}
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 // ---------------------------------------------------------------- tooltip
 
-function Tooltip({ ex, tip, pinned, engine }: { ex: Explorer; tip: TipState; pinned: Pin | null; engine: MapEngine }) {
+function Tooltip({ ex, tip, pinned, engine, opened }: { ex: Explorer; tip: TipState; pinned: Pin | null; engine: MapEngine; opened: number | null }) {
   const { target, x, y } = tip;
   const groupOf = (kind: 'spawner' | 'enemy', i: number) => engine.groupOf(kind, i);
   const ref = useRef<HTMLDivElement>(null);
@@ -110,6 +177,8 @@ function Tooltip({ ex, tip, pinned, engine }: { ex: Explorer; tip: TipState; pin
   const tx = useMapText();
   const { t, tm, plural } = tx;
   const { map, index, names } = ex;
+  // Spawner index -> puzzle index, for the door-pin mechanics and the "reveal" hint.
+  const doors = useMemo(() => doorPuzzles(map), [map]);
   const world = (u: number, v: number, z?: number) => {
     const [x0, y0, sx, sy] = map.world ?? [0, 0, 0, 0];
     return sx ? `${Math.round(x0 + u * sx)}, ${Math.round(y0 + v * sy)}${z != null ? `, ${z}` : ''}` : '';
@@ -154,6 +223,14 @@ function Tooltip({ ex, tip, pinned, engine }: { ex: Explorer; tip: TipState; pin
     mechanics = (shown.mechanics ?? []).map((mech) => tm(`maps.mechanics.${mech.key}`, mech.values ?? {}));
     const radius = map.spawnerRadius?.[target.i] ?? 0;
     if (radius > 0) mechanics.push(tm('maps.mechanics.zoneRadius', { radius: tx.num(Math.round(radius / 100)) }));
+    // A puzzle door: no key, opened by solving the puzzle (S21); the pin reveals it.
+    const dp = doors.get(target.i);
+    const puzzle = dp != null ? map.puzzles![dp] : null;
+    if (puzzle) {
+      mechanics.push(t('maps.mechanics.puzzleDoor'));
+      if (puzzle.kind === 'sequence') mechanics.push(tm('maps.mechanics.puzzleSequence', { n: tx.num(puzzle.required) }));
+      else if (puzzle.kind === 'set') mechanics.push(tm('maps.mechanics.puzzleSet', { required: tx.num(puzzle.required), total: tx.num(puzzle.variants[0]?.steps.length ?? puzzle.required) }));
+    }
     const at = feature && map.spawnerPois[target.i] >= 0 ? names.poi(map.pois[map.spawnerPois[target.i]]) : null;
     const detail = tx.list(map.spawnerClasses[s[2]].split(' | ').filter((c) => !/^(Barricaded|Door|LockedDoor)$|^Key:/.test(c)).map(tx.className));
     const p = ex.spawnP[target.i], g = groupOf('spawner', target.i);
@@ -166,6 +243,7 @@ function Tooltip({ ex, tip, pinned, engine }: { ex: Explorer; tip: TipState; pin
       world(s[0], s[1]),
     ];
     if (g) hint = pinHint(pinned?.t === 'spawner' && pinned.i === target.i);
+    if (puzzle) hint = t(opened === dp ? 'maps.tooltip.clickPuzzleClose' : 'maps.tooltip.clickPuzzle');
   } else if (target.t === 'enemy') {
     const s = map.enemySpawners[target.i], en = ex.enemyMatch(target.i);
     color = ex.state.enemies.size && en != null && en >= 0 ? ex.enemyColor(en) : THREAT;
@@ -181,6 +259,24 @@ function Tooltip({ ex, tip, pinned, engine }: { ex: Explorer; tip: TipState; pin
       heightLine(map.levels.enemies[target.i]),
     ];
     if (g) hint = pinHint(pinned?.t === 'enemy' && pinned.i === target.i);
+  } else if (target.t === 'step') {
+    const puzzle = map.puzzles![target.p!];
+    const variant = puzzle.variants[target.v!];
+    const step = variant.steps[target.s!];
+    const order = stepOrder(variant);
+    const total = order.length;
+    color = variantColors(map.puzzles!)[target.p!][target.v!];
+    kindLabel = `${tx.t(PUZZLE_KIND_KEY[puzzle.kind])} · ${variantLabel(variant, target.v!)}`;
+    title = step.symbol ? symbolLabel(step.symbol) : tx.className(step.class);
+    const n = step.n ?? order.indexOf(step) + 1;
+    body = [
+      step.n != null ? tm('maps.puzzles.step', { n: tx.num(n), total: tx.num(total) }) : null,
+      step.symbol ? tm('maps.puzzles.symbol', { symbol: step.symbol }) : null,
+      tx.className(step.class),
+      puzzle.kind === 'set' ? tm('maps.puzzles.setBadge', { required: tx.num(puzzle.required), total: tx.num(total) }) : null,
+      world(step.uv[0], step.uv[1], step.z),
+      heightLine(step.level),
+    ];
   } else {
     const p = map.pois[target.i], sc = ex.score?.pois[target.i], z = lootZone(p.threat, p.themes);
     kindLabel = t('maps.tooltip.area');

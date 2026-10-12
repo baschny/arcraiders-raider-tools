@@ -1123,7 +1123,9 @@
       "pois": "Areas & names",
       "zones": "Loot zones",
       "zonesTitle": "In-game loot zones: red = abundant, yellow = dense, grey = sparse.",
-      "bounds": "Playable area"
+      "bounds": "Playable area",
+      "puzzles": "Puzzles",
+      "puzzlesTitle": "Show the pins of every puzzle, colour-coded by layout. Puzzles without a door are reachable only here; otherwise click a puzzle door pin to open just that puzzle."
     },
     "layers": {
       "title": "Map layer: the in-game map switches when you enter these areas",
@@ -1169,7 +1171,21 @@
       "height": "≈ {height} m vs ground",
       "covered": "covered",
       "openSky": "open sky",
-      "noKey": "no key item (opens another way)"
+      "noKey": "no key item (opens another way)",
+      "clickPuzzle": "click to show the puzzle",
+      "clickPuzzleClose": "click to hide the puzzle"
+    },
+    "puzzles": {
+      "legend": "Puzzles",
+      "sequence": "Sequence puzzle",
+      "set": "Set puzzle",
+      "timed": "Timed puzzle",
+      "unknown": "Puzzle",
+      "step": "step {n} of {total}",
+      "setBadge": "requires {required} of {total} (any order)",
+      "symbol": "sigil {symbol}",
+      "inactive": "not active under {condition}",
+      "symbolPlaceholder": "Placeholder sigil icon (S22 adds the recoloured murals)"
     },
     "mechanics": {
       "probeSite": "Potential ARC probe landing site",
@@ -1177,7 +1193,10 @@
       "shelterOpen": "Emergency shelter: opens and lights up during a Flash Freeze",
       "zone": "Flash Freeze zone: raiders caught outside a shelter take cold damage",
       "zoneCadence": "Activates {min}–{max} times per round",
-      "zoneRadius": "Area of effect: radius {radius} m"
+      "zoneRadius": "Area of effect: radius {radius} m",
+      "puzzleDoor": "No key — the door opens by solving a puzzle",
+      "puzzleSequence": "Sequence puzzle: press the {n} buttons in the shown order",
+      "puzzleSet": "Set puzzle: all {required} inputs, any order"
     },
     "timing": {
       "noRespawn": "does not respawn after destroyed",

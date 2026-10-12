@@ -121,11 +121,62 @@
 
   &__ends { display: flex; justify-content: space-between; }
 
-  &--zones {
-    flex-direction: row;
+  &__zones {
+    display: flex;
     gap: 10px;
 
     b { display: inline-block; width: 9px; height: 9px; background: var(--zone); border-radius: 2px; margin-right: 5px; vertical-align: -1px; }
+  }
+}
+
+// Puzzle legend (S21): colour per layout, the set badge and the ordered sigil legend, inside the bottom-left panel.
+.mx-puzzle {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 5px;
+  border-top: 1px solid var(--mx-line);
+
+  &__head {
+    font: 600 9.5px/1 ui-monospace, Menlo, monospace;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--mx-accent);
+  }
+
+  &__item { display: flex; flex-direction: column; gap: 2px; }
+
+  &__kind { color: var(--mx-text); font-weight: 600; font-size: 11.5px; }
+
+  &__inactive { color: var(--mx-muted); font-style: italic; }
+
+  &__variant {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--mx-text);
+
+    i { width: 9px; height: 9px; border-radius: 2px; background: var(--c); box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .5); }
+    em { color: var(--mx-muted); font-style: normal; font-size: 10.5px; }
+  }
+
+  &__badge {
+    align-self: flex-start;
+    margin-top: 1px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, .07);
+    color: var(--mx-text);
+    font-size: 10.5px;
+  }
+
+  &__symbols {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 8px;
+    color: var(--mx-muted);
+
+    span { display: inline-flex; align-items: center; gap: 3px; }
   }
 }
 

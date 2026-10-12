@@ -26,6 +26,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { outlineRings } from './lib/area-outlines.mjs';
+import { loadHeights } from './lib/map-heights.mjs';
 import { computeSizes } from './lib/map-sizes.mjs';
 import { findSource, sourceIndex, tilesHash, writeTiles } from './lib/map-tiles.mjs';
 
@@ -44,6 +45,7 @@ const textures = path.join(extract, 'textures', 'PioneerGame', 'Content', 'Pione
 const out = path.join(root, 'public', 'data', 'map-data');
 const arcData = path.resolve(process.env.GAME_DATA_DIR || path.join(embarkApi, 'arc-data'));
 const build = path.join(arcData, 'derived', 'map-features'); // index.json, maps/*.json, map-strings.*.json
+const mapsDir = path.join(extract, 'maps'); // raw extract: heightmaps for the puzzle pin heights
 
 if (!fs.existsSync(embarkApi)) {
   console.error(`embark-api not found at ${embarkApi}.\nSet EMBARK_API_DIR to your embark-api checkout (default: the sibling directory ../embark-api).`);
@@ -183,6 +185,14 @@ for (const file of fs.readdirSync(path.join(build, 'maps')).filter((f) => f.ends
     rings += poi.outline.length;
     delete poi.polygons;
     delete poi.polyIds;
+  }
+  // puzzles[] / symbols[] / levelInstances[] pass through with the spread of toPublicMap. The build has no level
+  // for a puzzle step, so compute the same ground-relative hint as sockets and spawners from the heightmap.
+  if (map.puzzles?.length) {
+    const heights = loadHeights(mapsDir, map.map);
+    if (!heights) console.warn(`WARNING: ${map.map}: no heightmap, puzzle pins get no height hint`);
+    else for (const p of map.puzzles) for (const v of p.variants ?? []) for (const s of v.steps ?? [])
+      s.level = heights.level(map.world[0] + s.uv[0] * map.world[2], map.world[1] + s.uv[1] * map.world[3], s.z);
   }
   allMaps.push(map);
   writeJson(`maps/${file}`, toPublicMap(map));
