@@ -325,14 +325,15 @@
     gap: 7px;
     min-height: 38px;
     padding: 6px 8px;
-    border: 1px solid var(--mx-line);
+    border: 1px solid transparent;
     border-radius: 6px;
     background: var(--mx-bg);
     color: var(--mx-text);
     text-align: left;
     cursor: pointer;
-    &:hover, &.is-selected { border-color: var(--c); background: var(--mx-panel-2); }
-    &:focus-visible { outline: 2px solid var(--mx-accent); outline-offset: 2px; }
+    &:hover { border-color: #e5e8eb; background: var(--mx-panel-2); }
+    &.is-selected { background: var(--mx-panel-2); font-weight: 700; }
+    &:focus-visible { outline: 2px solid #e5e8eb; outline-offset: 2px; }
     i { width: 13px; height: 13px; flex: 0 0 13px; border-radius: 3px; background: var(--c); box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .5); }
   }
 }

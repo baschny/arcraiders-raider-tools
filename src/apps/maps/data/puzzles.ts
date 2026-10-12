@@ -34,7 +34,7 @@ export function genericSpawnerAllowed(map: MapData, cond: MapCondition, enabled:
 
 export interface GuidePin {
   action: import('./types').GuideAction; location: import('./types').GuideLocation;
-  stage: import('./types').GuideStage; color: string; order: number | null; stepNumber: number | null; groupId: string | null; groupColor: string | null;
+  stage: import('./types').GuideStage; color: string; order: number | null; stepNumber: number | null; groupId: string | null;
 }
 export const layoutColor = (guide: PuzzleGuide, layoutId?: string): string => layoutId
   ? PUZZLE_COLORS[Math.max(0, guide.layouts.findIndex((l) => l.id === layoutId)) % PUZZLE_COLORS.length] : PLAIN_PUZZLE_COLOR;
@@ -59,10 +59,9 @@ export function guidePins(map: MapData, cond: MapCondition, enabled: boolean, se
         const step = visibleSteps(guide, cond, current.layoutId).find((s) => s.actionIds.includes(action.id) && s.role !== 'find-buttons');
         const group = visibleGroups(guide, cond, current.layoutId).find((g) => g.locationIds.includes(location.id));
         const color = location.layoutId ? layoutColor(guide, location.layoutId)
-          : guide.presentation?.palette === 'steps' || guide.presentation?.palette === 'steps-and-groups' ? stepColor(step?.number)
-          : group ? stepColor(group.number) : PLAIN_PUZZLE_COLOR;
+          : group ? groupColor(group.number) : PLAIN_PUZZLE_COLOR;
         return { action, stage, location, color, order: stage.activation === 'ordered' ? action.order ?? null : null,
-          stepNumber: step?.number ?? null, groupId: group?.id ?? null, groupColor: guide.presentation?.palette === 'steps-and-groups' && group ? stepColor(group.number) : null };
+          stepNumber: step?.number ?? null, groupId: group?.id ?? null };
       });
   });
 }
@@ -99,7 +98,7 @@ export function stageActionGroups(guide: PuzzleGuide, stage: import('./types').G
     ? [...group.actions].sort((a, b) => (a.order ?? Infinity) - (b.order ?? Infinity)) : group.actions }));
 }
 
-export const stepColor = (number?: number): string => number == null ? PLAIN_PUZZLE_COLOR : PUZZLE_COLORS[(number - 1) % PUZZLE_COLORS.length];
+export const groupColor = (number?: number): string => number == null ? PLAIN_PUZZLE_COLOR : PUZZLE_COLORS[(number - 1) % PUZZLE_COLORS.length];
 export type GuideStep = import('./types').PuzzlePresentation['steps'][number];
 export type GuideGroup = import('./types').PuzzlePresentation['groups'][number];
 /** Resolve every semantic reference through the same gates as its real map member. */

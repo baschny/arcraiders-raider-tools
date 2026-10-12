@@ -5,7 +5,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { GuidePanel, guideActionTooltip, guideDestination } from '../GuidePanel';
 import type { Explorer } from '../model';
 import type { MapData, PuzzleGuide } from '../data/types';
-import { guidePins, guideTrails, visibleSteps, visibleGroups, stepTargets, targetCoordinates, stepColor } from '../data/puzzles';
+import { guidePins, guideTrails, visibleSteps, visibleGroups, stepTargets, targetCoordinates, groupColor } from '../data/puzzles';
 import { DEFAULT_PREFS } from '../state';
 import { TINY_MAP, TINY_INDEX } from '../data/__tests__/fixtures/tinyMap';
 import blue from '../../../../public/data/map-data/maps/TheBlueGate_01.json';
@@ -30,8 +30,13 @@ describe('generated semantic workflow presentation', () => {
     expect(pins.filter((p) => p.action.type === 'print')).toHaveLength(8);
     expect(pins.filter((p) => p.action.type === 'insert-code')).toHaveLength(4);
     expect(pins.filter((p) => p.action.type === 'carry')).toHaveLength(0);
-    expect(new Set(pins.filter((p) => p.action.type === 'print').map((p) => p.color))).toEqual(new Set([stepColor(1)]));
-    expect(new Set(pins.filter((p) => p.action.type === 'insert-code').map((p) => p.color))).toEqual(new Set([stepColor(2)]));
+    expect(new Set(pins.filter((p) => p.action.type === 'print').map((p) => p.color)).size).toBe(4);
+    for (const group of gate.presentation!.groups) {
+      const branch = pins.filter((pin) => pin.groupId === group.id);
+      expect(branch).toHaveLength(3);
+      expect(new Set(branch.map((pin) => pin.color))).toEqual(new Set([groupColor(group.number)]));
+      expect(new Set(branch.map((pin) => pin.stepNumber))).toEqual(new Set([1, 2]));
+    }
     const html = renderToStaticMarkup(<GuidePanel ex={exOf(gate)} selection={selection(gate)} onSelection={() => {}} />);
     expect(html).toContain('Print all 4 security codes.');
     expect(html).not.toContain('Guide incomplete'); expect(html).not.toContain('still needs verification');
@@ -68,11 +73,16 @@ describe('generated semantic workflow presentation', () => {
       const pins = guidePins(mapOf(riven), cond, true, selection(riven, entrance.id));
       expect(pins.filter((p) => p.action.type === 'press')).toHaveLength(20);
       expect(pins.filter((p) => p.action.type === 'collect-fuel-cell')).toHaveLength(21);
-      expect(new Set(pins.filter((p) => p.action.type === 'press').map((p) => p.groupColor)).size).toBe(4);
+      expect(new Set(pins.filter((p) => p.action.type === 'press').map((p) => p.color)).size).toBe(4);
       expect(pins.filter((p) => p.action.type === 'press').every((p) => p.order === null && p.stepNumber === 1)).toBe(true);
       const html = renderToStaticMarkup(<GuidePanel ex={exOf(riven)} selection={selection(riven, entrance.id)} onSelection={() => {}} />);
       expect(html).toContain('Find and press 4 buttons'); expect(html).toContain('before or after opening the room');
       expect(html).toContain('aria-current="step"');
+      const fuelPins = pins.filter((pin) => ['collect-fuel-cell', 'insert-fuel-cell'].includes(pin.action.type));
+      expect(fuelPins).toHaveLength(22);
+      expect(new Set(fuelPins.map((pin) => pin.color)).size).toBe(1);
+      const element = document.createElement('div'); element.innerHTML = html;
+      expect([...element.querySelectorAll('.mx-guide__steps > li')].every((step) => !step.getAttribute('style')?.includes('--c'))).toBe(true);
     }
   });
   it('keyboard focus and clicking a group pass exact verified locations and POIs to map navigation', () => {

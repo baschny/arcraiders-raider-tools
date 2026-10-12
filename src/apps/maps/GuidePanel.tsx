@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'react';
 import { X } from 'lucide-react';
 import type { GuideAction, PuzzleGuide } from './data/types';
-import { available, layoutColor, selectedGuide, stageActionGroups, symbolOf, toggleLayout, visibleGroups, visibleSteps, stepColor, stepTargets, type GuidePin, type GuideTargets, type GuideSelection } from './data/puzzles';
+import { available, layoutColor, selectedGuide, stageActionGroups, symbolOf, toggleLayout, visibleGroups, visibleSteps, groupColor, stepTargets, type GuidePin, type GuideTargets, type GuideSelection } from './data/puzzles';
 import { symbolUrl } from './data/useMapData';
 import { GameIcon } from './components';
 import type { Explorer } from './model';
@@ -118,15 +118,15 @@ export function GuidePanel({ ex, selection, onSelection, onFocus, onHighlight }:
       if (step.role === 'outcome') return tx.t('maps.guides.workflow.open');
       return guide.stages.find((stage) => step.stageIds.includes(stage.id))?.title ?? tx.t('maps.guides.workflow.interact');
     };
-    const links = (targets: GuideTargets, label: string) => targets.locationIds.length + targets.entranceIds.length > 0 ? <button type="button" className="mx-guide__map-link"
-      onMouseEnter={() => onHighlight?.(targets)} onMouseLeave={() => onHighlight?.(null)} onFocus={() => onHighlight?.(targets)} onBlur={() => onHighlight?.(null)} onClick={() => { onHighlight?.(targets); onFocus?.(targets); }}>
+    const links = (targets: GuideTargets, label: string, highlightGroup = false) => targets.locationIds.length + targets.entranceIds.length > 0 ? <button type="button" className="mx-guide__map-link"
+      onMouseEnter={() => onHighlight?.(highlightGroup ? targets : null)} onMouseLeave={() => onHighlight?.(null)} onFocus={() => onHighlight?.(highlightGroup ? targets : null)} onBlur={() => onHighlight?.(null)} onClick={() => { onHighlight?.(highlightGroup ? targets : null); onFocus?.(targets); }}>
       {label}
     </button> : null;
     return <section className="mx-puzzle mx-guide mx-guide--workflow" aria-label={title}>
       <div className="mx-puzzle__head mx-guide__head"><h2>{title}</h2><button type="button" onClick={() => onSelection(null)} aria-label={tx.t('quartermaster.sync.close')}><X size={18} aria-hidden="true" /></button></div>
       <ol className="mx-guide__steps">{steps.map((step) => {
         const targets = stepTargets(guide, ex.cond, selection, step);
-        return <li key={step.id} style={{ '--c': stepColor(step.number) } as CSSProperties} className={step.stageIds.includes(entrance.stageId) && step.role !== 'outcome' ? 'is-focused' : ''} aria-current={step.stageIds.includes(entrance.stageId) && step.role !== 'outcome' ? 'step' : undefined}>
+        return <li key={step.id} className={step.stageIds.includes(entrance.stageId) && step.role !== 'outcome' ? 'is-focused' : ''} aria-current={step.stageIds.includes(entrance.stageId) && step.role !== 'outcome' ? 'step' : undefined}>
           <b className="mx-guide__step-number" aria-hidden="true">{step.number}</b>
           <div><p>{instruction(step)}</p>{links(targets, tx.t('maps.guides.workflow.showMap'))}</div>
         </li>;
@@ -139,8 +139,8 @@ export function GuidePanel({ ex, selection, onSelection, onFocus, onHighlight }:
             : tx.tm('maps.guides.buttonGroup', { count: group.number });
           if (!label) return null;
           const targets = { locationIds: group.locationIds, entranceIds: [], poiIds: group.poiIds };
-          return <div key={group.id} style={{ '--c': stepColor(group.number) } as CSSProperties}>
-            {group.kind !== 'item' && <i aria-hidden="true" />}{links(targets, label)}
+          return <div key={group.id} style={{ '--c': groupColor(group.number) } as CSSProperties}>
+            <i aria-hidden="true" />{links(targets, label, true)}
           </div>;
         })}
       </div>}

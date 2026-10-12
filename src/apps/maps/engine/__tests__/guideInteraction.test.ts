@@ -4,7 +4,7 @@ import type { Explorer } from '../../model';
 import { DEFAULT_PREFS, parseState } from '../../state';
 import type { PuzzleGuide } from '../../data/types';
 import { TINY_MAP } from '../../data/__tests__/fixtures/tinyMap';
-import { guidePins, type GuideSelection } from '../../data/puzzles';
+import { guidePins, PLAIN_PUZZLE_COLOR, type GuideSelection } from '../../data/puzzles';
 const guide: PuzzleGuide = {
   id: 'test', title: 'Guide', status: 'complete', missing: [],
   entrances: [{ id: 'door', roomId: 'room', stageId: 'stage', uv: [0.8, 0.8], z: 0, access: 'puzzle' }],
@@ -94,11 +94,25 @@ describe('guide canvas interactions', () => {
     const [x, y] = harness.toScreen(0.4, 0.4);
     harness.hoverAt(x, y);
     draw.drawPuzzles(ctx, 1000, 1000);
-    expect(markers.mock.calls.map((args) => args[7])).toEqual([true, true]);
+    expect(markers.mock.calls.map((args) => args[7])).toEqual([false, true, true]);
+    expect(markers.mock.calls[0][3]).toBe(PLAIN_PUZZLE_COLOR);
     markers.mockClear();
     harness.tap({ x, y });
     draw.drawPuzzles(ctx, 1000, 1000);
-    expect(markers.mock.calls.map((args) => args[7])).toEqual([true, true]);
+    expect(markers.mock.calls.map((args) => args[7])).toEqual([false, true, true]);
+    expect(markers.mock.calls[0][3]).toBe(PLAIN_PUZZLE_COLOR);
+  });
+  it('pin borders appear only as a neutral hover highlight without changing the group fill', () => {
+    setup();
+    const fills: string[] = [];
+    const ctx = { fillStyle: '', strokeStyle: '', beginPath() {}, arc() {}, fill() { fills.push(this.fillStyle); }, stroke: vi.fn(), fillText() {} };
+    const draw = engine as unknown as { puzzlePin: (ctx: CanvasRenderingContext2D, x: number, y: number, color: string, k: number, n: number, symbol: undefined, hovered: boolean) => void };
+    draw.puzzlePin(ctx as unknown as CanvasRenderingContext2D, 0, 0, '#e0604f', 1, 1, undefined, false);
+    expect(ctx.stroke).not.toHaveBeenCalled();
+    draw.puzzlePin(ctx as unknown as CanvasRenderingContext2D, 0, 0, '#e0604f', 1, 2, undefined, true);
+    expect(ctx.stroke).toHaveBeenCalledOnce();
+    expect(ctx.strokeStyle).toBe('#fff');
+    expect(fills).toEqual(['#e0604f', '#e0604f']);
   });
   it('linked map highlights clear when the guide closes or the condition changes', () => {
     const { ex } = setup();
