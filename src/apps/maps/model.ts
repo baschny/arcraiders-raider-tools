@@ -1,5 +1,6 @@
 // Everything derived from the page state for the open map: scores, filter counts, visibility, enemy matching.
 // One object so that the sidebar, the bars and the map agree on what is shown.
+import { genericSpawnerAllowed } from './data/puzzles';
 import { useMemo } from 'react';
 import { useLocale } from '../../shared/context/LocaleContext';
 import type { Item, ItemsMap } from '../loot-helper/types/item';
@@ -119,19 +120,19 @@ export function useExplorer(index: MapIndex, map: MapData, state: MapState, set:
     });
     map.spawners.forEach((_, i) => {
       const p = spawnP[i];
-      if (!p || !onLayer('spawners', i) || !cls.spawnerKinds[i].length) return;
-      for (const [kind, sh] of cls.spawnerKinds[i]) {
+      if (!p || !onLayer('spawners', i) || !genericSpawnerAllowed(map, cond, prefs.puzzleDoors, i)) return;
+      for (const [kind, sh] of cls.spawnerKinds[i].filter(([k]) => k.cat !== 'Puzzles')) {
         bump(kind.key, false, p * sh);
         bump(kind.cat, false, p * sh, 0);
       }
-      new Set(cls.spawnerKinds[i].map(([kind]) => kind.cat)).forEach((cat) => bump(cat, false, 0));
+      new Set(cls.spawnerKinds[i].filter(([k]) => k.cat !== 'Puzzles').map(([kind]) => kind.cat)).forEach((cat) => bump(cat, false, 0));
     });
     // With an item and nothing picked: every socket leaf (container type, plant, ...) that can hold it here.
     const shown = state.show.size || !score
       ? state.show
       : new Set(KINDS.filter((x) => CATEGORIES.find((c) => c.key === x.cat)?.sockets).flatMap((x) => leavesOf(cls, x)).filter((l) => counts.get(l)?.hit));
     const socketVisible = (i: number) => shown.has(cls.socketLeaf[i]) && present(i) && onLayer('sockets', i) && (!score || score.sockets[i] > 0);
-    const spawnerKind = (i: number) => (spawnP[i] && onLayer('spawners', i) ? cls.spawnerKinds[i].find(([kind]) => shown.has(kind.key))?.[0] ?? null : null);
+    const spawnerKind = (i: number) => (spawnP[i] && onLayer('spawners', i) && genericSpawnerAllowed(map, cond, prefs.puzzleDoors, i) ? cls.spawnerKinds[i].find(([kind]) => kind.cat !== 'Puzzles' && shown.has(kind.key))?.[0] ?? null : null);
 
     // ARC enemies on the map: expected number of spawners that can produce each (sum of spawn chances).
     const byEnemy = new Map<number, { expected: number; spots: number }>();
@@ -162,7 +163,7 @@ export function useExplorer(index: MapIndex, map: MapData, state: MapState, set:
     };
     const enemyVisible = (i: number) => !!enemyP[i] && onLayer('enemies', i) && (!state.enemies.size || enemyMatch(i) !== -1);
     return { onLayer, counts, shown, socketVisible, spawnerKind, enemyRows, enemyColor, enemyMatch, enemyVisible };
-  }, [map, layer, cond, score, cls, spawnP, enemyP, state.show, state.enemies, index]);
+  }, [map, layer, cond, score, cls, spawnP, enemyP, state.show, state.enemies, index, prefs.puzzleDoors]);
 
   const note = useMemo(() => (lootItem ? itemNote(index, lootItem) : null), [index, lootItem]);
   return { index, map, state, set, prefs, setPrefs, names, areaLabels, lootable, item, lootIdx, lootItem, share, note, ci, cond, layer, cls, spawnP, enemyP, score, mapTotals, condTotals, ...derived };

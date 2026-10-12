@@ -195,7 +195,8 @@ function SpotFilters({ ex }: { ex: Explorer }) {
           <button onClick={() => ex.set({ show: new Set() })} title={tx.t('maps.filters.hideAll')}><Minus size={12} />{tx.t('lootHelper.filters.none')}</button>
         </div>
       </div>
-      {CATEGORIES.map((cat) => {
+      <label className="mx-row"><input type="checkbox" checked={ex.prefs.puzzleDoors} onChange={(e) => ex.setPrefs({ puzzleDoors: e.target.checked })} /> {tx.t('maps.guides.doors')}</label>
+      {CATEGORIES.filter((cat) => cat.key !== 'Puzzles').map((cat) => {
         const kinds = kindsHere(cat);
         if (!kinds.length) return null;
         const catLeaves = kinds.flatMap(leavesHere), open = openCats.has(cat.key);

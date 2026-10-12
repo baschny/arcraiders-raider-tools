@@ -157,6 +157,12 @@ describe('loadPrefs', () => {
     vi.restoreAllMocks();
   });
 
+  it('drops the obsolete global puzzle preference and never restores a guide selection', () => {
+    localStorage.setItem(PREFS_KEY, JSON.stringify({ puzzles: true, openedPuzzle: 0 }));
+    expect(loadPrefs().puzzleDoors).toBe(false);
+    expect(parse('show=PuzzleRelay,PuzzleButton,LockedDoor').show).toEqual(new Set(['LockedDoor']));
+  });
+
   it('uses the defaults without stored prefs', () => {
     expect(loadPrefs()).toEqual(DEFAULT_PREFS);
   });

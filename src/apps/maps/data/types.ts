@@ -199,67 +199,39 @@ export interface PuzzleSymbol {
   image?: string;
 }
 
-/** One input of a puzzle (a button, console, power station, ...) without an order. */
-export interface PuzzleInput {
-  id: string;
-  class: string;
-  /** Streaming cell of the actor (null for level-instance content). */
-  cell: string | null;
-  uv: UV;
-  /** World height (cm). */
-  z: number;
-  /** Height above the estimated ground in dm (generator, from the heightmap); missing/null: unknown. */
+export interface GuideConditions { only?: string[]; not?: string[] }
+export interface GuideLocation {
+  id: string; uv: UV; z: number; candidate: boolean;
+  layoutId?: string; conditions?: GuideConditions; spawnerIndex?: number;
+  /** Generator-derived ground-relative height; absent when no heightmap is available. */
   level?: Level;
 }
-
-/** One input of a puzzle variant (a button, dropzone, ...). */
-export interface PuzzleStep extends PuzzleInput {
-  /** 1-based press order for a sequence, null otherwise. */
-  n: number | null;
-  /** Sigil key (PuzzleSymbol.key) of the step, when it has one. */
-  symbol?: string;
+export interface GuideEntrance {
+  id: string; roomId: string; stageId: string; uv: UV; z: number;
+  access: 'puzzle' | 'mixed'; conditions?: GuideConditions; spawnerIndex?: number; level?: Level;
 }
-
-/** A level placement of one puzzle (the alternatives a round picks from). */
-export interface PuzzleVariant {
-  /** Level-instance asset (`LI_ChurchPuzzleLayout1`) or relay id; null for a single placement. */
-  id: string | null;
-  spawner: string | null;
-  /** Active in a round with this chance (missing/null: unknown). */
-  chance: number | null;
-  /** Round conditions the variant exists under, by condition name; missing: always. */
-  conditions?: { only?: string[]; not?: string[] };
-  steps: PuzzleStep[];
+export interface GuideStage {
+  id: string; title: string; prerequisites: string[];
+  activation: 'ordered' | 'unordered' | 'runtime-ordered' | 'unknown';
+  required: number | null; actionIds: string[]; outputs: string[]; conditions?: GuideConditions;
 }
-
-/** A part of a puzzle (button, relay, door, symbol, ...). */
-export interface PuzzlePart {
-  role: string;
-  class: string;
-  uv: UV;
-  z: number;
+export interface GuideAction {
+  id: string; stageId: string;
+  type: 'press' | 'print' | 'carry' | 'insert-code' | 'insert-fuel-cell' | 'collect-fuel-cell';
+  label: string; order?: number; symbol?: string; poolId?: string;
+  itemSlug?: string; itemName?: string; inputItem?: string; outputItem?: string;
+  conditions?: GuideConditions; locations: GuideLocation[];
 }
-
-export type PuzzleKind = 'sequence' | 'set' | 'timed' | 'unknown';
-
-/** A signal/legacy puzzle of the map features build (A47); shown on the map only when asked for (S21). */
-export interface Puzzle {
-  id: string;
-  kind: PuzzleKind;
-  system: string;
-  /** Step-light count of the door / inputs required; null when the game does not encode a count. */
-  required: number | null;
-  randomized: boolean;
-  /** Actor id of the door it opens, null if none. */
-  door: string | null;
-  keyRoom: string | null;
-  relay?: PuzzlePart;
-  /** Sigil keys in legend order. */
-  symbols: string[];
-  variants: PuzzleVariant[];
-  /** Runtime-shuffled activator pool (A49): no order, `randomized`; missing for other puzzles. */
-  pool?: PuzzleInput[];
-  parts: PuzzlePart[];
+export interface PuzzleGuide {
+  id: string; title: string; titleKey?: string; status: 'complete' | 'incomplete'; missing: string[];
+  conditions?: GuideConditions; rooms: { id: string; stageId: string }[];
+  entrances: GuideEntrance[]; stages: GuideStage[]; actions: GuideAction[];
+  layouts: { id: string; label: string; conditions?: GuideConditions }[];
+  pools: { id: string; sourceId: string; actionId: string; selection: { min: number; max: number } | null }[];
+  hints: { id: string; stageId: string; symbols: string[] }[];
+  indicators: { id: string; stageId: string; count: number | null }[];
+  evidence: { kind: 'extracted' | 'observed'; claim: string; version: string; reviewed: boolean }[];
+  ownedSpawnerIndices: number[];
 }
 
 /** A packed level instance spawner of the map (A47): the inventory the puzzle variants come from. */
@@ -345,7 +317,8 @@ export interface MapData {
   /** Level per socket, spawner, enemy spawner and quest marker; map layer per POI. */
   levels: { sockets: Level[]; spawners: Level[]; enemies: Level[]; quests: Level[]; pois: number[] };
   /** Puzzles of the map features build (A47); hidden until asked for (S21). Missing in older builds. */
-  puzzles?: Puzzle[];
+  puzzleSchemaVersion?: number;
+  puzzleGuides?: PuzzleGuide[];
   /** Sigils of the map (key -> image, S22); missing in older builds. */
   symbols?: PuzzleSymbol[];
   /** Packed level instances of the map (A47). */

@@ -219,13 +219,12 @@ for (const file of fs.readdirSync(path.join(build, 'maps')).filter((f) => f.ends
     delete poi.polygons;
     delete poi.polyIds;
   }
-  // puzzles[] / symbols[] / levelInstances[] pass through with the spread of toPublicMap. The build has no level
-  // for a puzzle step, so compute the same ground-relative hint as sockets and spawners from the heightmap.
-  if (map.puzzles?.length) {
+  // v2 guides pass through; height hints use the existing ground estimator, never guessed floor names.
+  if (map.puzzleSchemaVersion === 2 && map.puzzleGuides?.length) {
     const heights = loadHeights(mapsDir, map.map);
-    if (!heights) console.warn(`WARNING: ${map.map}: no heightmap, puzzle pins get no height hint`);
-    else for (const p of map.puzzles) for (const v of p.variants ?? []) for (const s of v.steps ?? [])
-      s.level = heights.level(map.world[0] + s.uv[0] * map.world[2], map.world[1] + s.uv[1] * map.world[3], s.z);
+    if (heights) for (const guide of map.puzzleGuides) for (const location of [
+      ...guide.entrances, ...guide.actions.flatMap((action) => action.locations),
+    ]) location.level = heights.level(map.world[0] + location.uv[0] * map.world[2], map.world[1] + location.uv[1] * map.world[3], location.z);
   }
   // Sigil images: resolve every symbols[].key to its recoloured WebP (S22).
   let sigils = 0;

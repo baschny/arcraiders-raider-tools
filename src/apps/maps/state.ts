@@ -7,6 +7,8 @@ import { getItemDisplayName } from '../loot-helper/utils/localization';
 import { hasLootItem } from './data/scoring';
 import type { MapData, MapIndex, MapIndexEntry } from './data/types';
 
+const OBSOLETE_PUZZLE_FILTERS = new Set(['PowerSocket', 'FuelCell', 'PuzzleButton', 'PuzzleRelay', 'CardReader', 'TubeTerminal', 'PuzzleDoor', 'HotelKey', 'Puzzles']);
+
 export type Mode = 'loot' | 'arc';
 
 export type { Patch as MapPatch };
@@ -58,7 +60,7 @@ export function parseState(params: URLSearchParams, map: string | null | undefin
     cond: params.get('cond') || 'Default',
     layer: index(params.get('layer')),
     item: params.get('item') || null,
-    show: new Set((params.get('show') ?? '').split(',').filter(Boolean)),
+    show: new Set((params.get('show') ?? '').split(',').filter((key) => key && !OBSOLETE_PUZZLE_FILTERS.has(key))),
     enemies: new Set((params.get('enemies') ?? '').split(',').map(index).filter((e) => e != null)),
   };
 }
@@ -127,12 +129,12 @@ export interface Prefs {
   pois: boolean;
   zones: boolean;
   bounds: boolean;
-  /** Show every puzzle of the map (S21); off: only the one opened from its door pin. */
-  puzzles: boolean;
+  /** Entrance filter only; guide selection is never persisted. */
+  puzzleDoors: boolean;
   /** Left bar expanded. */
   side: boolean;
 }
-export const DEFAULT_PREFS: Prefs = { heat: true, height: true, pois: true, zones: false, bounds: true, puzzles: false, side: true };
+export const DEFAULT_PREFS: Prefs = { heat: true, height: true, pois: true, zones: false, bounds: true, puzzleDoors: false, side: true };
 export const PREFS_KEY = 'raider-tools:maps-prefs';
 
 /** Stored prefs over the defaults; the default for every pref that is unreadable, corrupt or of the wrong type. */

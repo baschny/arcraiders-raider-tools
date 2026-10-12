@@ -3,22 +3,18 @@
 // and map features as game icons, ARC spawners with patrol paths, and the activity group of the hovered or
 // pinned spawner (ringed members + area hull). React feeds it the Explorer model; it reports tooltip targets.
 import { THREAT, ZONE_COLORS, enemyIcon, isFeature, lootZone } from '../data/kinds';
-import { DATA_BASE, reportTileError, symbolUrl } from '../data/useMapData';
-import type { Level, MapData, PuzzleSymbol, UV } from '../data/types';
-import { PLAIN_PUZZLE_COLOR, activeVariants, doorPuzzles, isRandomizedPool, plainPins, stepOrder, symbolOf, variantColors, visiblePuzzles } from '../data/puzzles';
+import { DATA_BASE, reportTileError } from '../data/useMapData';
+import type { Level, MapData, UV } from '../data/types';
+import { eligibleEntrances, selectEntrance, type GuideSelection } from '../data/puzzles';
 import type { MapScore } from '../data/scoring';
 import { bbox, convexHull, inPoly, inRings, polyArea, ringsArea } from '../geometry';
 import type { Explorer } from '../model';
-import { onIconsLoaded, tintedIcon, tintedImage } from './iconAtlas';
+import { onIconsLoaded, tintedIcon } from './iconAtlas';
 import { TileLayer } from './tiles';
 
 export type Target = {
-  t: 'socket' | 'spawner' | 'enemy' | 'poi' | 'step';
+  t: 'socket' | 'spawner' | 'enemy' | 'poi' | 'entrance';
   i: number;
-  /** Puzzle step target (t 'step'): puzzle, variant and step index. */
-  p?: number;
-  v?: number;
-  s?: number;
 };
 export type Pin = { t: 'spawner' | 'enemy'; i: number };
 /** Tooltip target at a position, with the map's size for keeping the tooltip inside; touch: opened by a tap. */
@@ -101,14 +97,12 @@ export class MapEngine {
   private onTip: (tip: TipState | null) => void;
   /** Last tooltip state reported to React. */
   private tip: TipState | null = null;
-  /** Puzzle opened from its door pin (index into MapData.puzzles), null none. */
-  private activePuzzle: number | null = null;
-  /** Door-pin spawner index -> puzzle index of the open map. */
-  private doorMap = new Map<number, number>();
-  private onPuzzle: (i: number | null) => void;
+  /** One session-only guide and entrance selection. */
+  private activePuzzle: GuideSelection | null = null;
+  private onPuzzle: (i: GuideSelection | null) => void;
   private tiles = new TileLayer(DATA_BASE, () => this.requestDraw(), reportTileError);
 
-  constructor(wrap: HTMLDivElement, canvas: HTMLCanvasElement, onTip: (tip: TipState | null) => void, onPuzzle: (i: number | null) => void = () => {}) {
+  constructor(wrap: HTMLDivElement, canvas: HTMLCanvasElement, onTip: (tip: TipState | null) => void, onPuzzle: (i: GuideSelection | null) => void = () => {}) {
     this.wrap = wrap;
     this.canvas = canvas;
     this.onPuzzle = onPuzzle;
@@ -153,16 +147,15 @@ export class MapEngine {
     this.cleanup.forEach((fn) => fn());
   }
 
-  update(ex: Explorer, heat: Heat, padding: Padding = {}, activePuzzle: number | null = null) {
+  update(ex: Explorer, heat: Heat, padding: Padding = {}, activePuzzle: GuideSelection | null = null) {
     const fresh = !this.ex || this.ex.map !== ex.map;
     // A reloaded copy of the same map (new tile folders after a deploy) keeps the view.
     const refit = !this.ex || this.ex.map.map !== ex.map.map;
-    const reset = fresh || this.ex.state.mode !== ex.state.mode || this.ex.ci !== ex.ci;
+    const reset = fresh || this.ex.state.mode !== ex.state.mode || this.ex.ci !== ex.ci || this.activePuzzle !== activePuzzle || this.ex.prefs.puzzleDoors !== ex.prefs.puzzleDoors;
     this.ex = ex;
     this.heat = heat;
     this.padding = padding;
     this.activePuzzle = activePuzzle;
-    if (fresh) this.doorMap = doorPuzzles(ex.map);
     if (reset) {
       this.pin = null;
       this.hover = null;
@@ -593,141 +586,30 @@ export class MapEngine {
     if (pinned != null) this.drawGroup(ctx, kind, this.groupMembers(kind, pinned), true);
   }
 
-  // ---------------------------------------------------------------- puzzles (S21)
-  /**
-   * Puzzle overlay: per (visible, active) variant a colour, a dashed 1→2→… trail for a sequence and a pin per
-   * step (numbered for a sequence, a sigil badge when the step has a symbol). The relay is drawn in
-   * the first active variant's colour. Drawn above the loot markers so a pin can be hovered.
-   */
-  private drawPuzzles(ctx: CanvasRenderingContext2D, w: number, h: number) {
-    const e = this.ex, m = e.map, puzzles = m.puzzles;
-    if (!puzzles?.length) return;
-    const visible = visiblePuzzles(m, e.prefs.puzzles, this.activePuzzle);
-    if (!visible.length) return;
-    const colors = variantColors(puzzles);
+  private drawPuzzles(ctx: CanvasRenderingContext2D, _w: number, _h: number) {
+    if (!this.ex.prefs.puzzleDoors) return;
     const k = this.markerScale();
-    ctx.save();
-    ctx.lineJoin = 'round';
-    for (const pi of visible) {
-      const p = puzzles[pi];
-      const variants = activeVariants(p, e.cond);
-      const randomized = isRandomizedPool(p);
-      // Trail first, so the pins sit on top; only an ordered sequence has one (a runtime-shuffled order has none).
-      if (p.kind === 'sequence' && !randomized) {
-        for (const vi of variants) {
-          const steps = stepOrder(p.variants[vi]);
-          if (steps.length < 2) continue;
-          ctx.setLineDash([5 * k, 4 * k]);
-          ctx.lineWidth = 2.2;
-          ctx.strokeStyle = colors[pi][vi];
-          ctx.beginPath();
-          steps.forEach((s, i) => {
-            const [x, y] = this.toScreen(s.uv[0], s.uv[1]);
-            if (i) ctx.lineTo(x, y);
-            else ctx.moveTo(x, y);
-          });
-          ctx.stroke();
-        }
-        ctx.setLineDash([]);
-      }
-      const color0 = variants.length ? colors[pi][variants[0]] : PLAIN_PUZZLE_COLOR;
-      if (p.relay) {
-        const [x, y] = this.toScreen(p.relay.uv[0], p.relay.uv[1]);
-        this.iconMarker(ctx, x, y, 12 * k, 'puzzle', color0);
-      }
-      if (!randomized && variants.length) {
-        for (const vi of variants) {
-          const v = p.variants[vi], color = colors[pi][vi];
-          v.steps.forEach((s, si) => {
-            const [x, y] = this.toScreen(s.uv[0], s.uv[1]);
-            if (x < -20 || y < -20 || x > w + 20 || y > h + 20) return;
-            const hovered = this.hover?.t === 'step' && this.hover.p === pi && this.hover.v === vi && this.hover.s === si;
-            this.puzzlePin(ctx, x, y, color, k, p.kind === 'sequence' ? s.n : null, symbolOf(m, s.symbol), hovered);
-          });
-        }
-      } else {
-        // A sink-only puzzle (no variants) or a runtime-shuffled pool: plain, unnumbered pins (its parts / pool).
-        for (const pin of plainPins(p)) {
-          const [x, y] = this.toScreen(pin.uv[0], pin.uv[1]);
-          if (x < -20 || y < -20 || x > w + 20 || y > h + 20) continue;
-          this.puzzlePin(ctx, x, y, color0, k, null, undefined, false);
-        }
-      }
-    }
-    ctx.restore();
+    eligibleEntrances(this.ex.map, this.ex.cond).forEach(({ guide, entrance }, i) => {
+      const [x, y] = this.toScreen(...entrance.uv);
+      this.iconMarker(ctx, x, y, 15 * k, 'bunker', guide.status === 'incomplete' ? '#d9a03e' : '#a98bc9', { hovered: this.hover?.t === 'entrance' && this.hover.i === i });
+    });
   }
-
-  /** Puzzle step marker: a numbered disc, or a sigil disc for an unnumbered step (S22 real sigil images). */
-  private puzzlePin(ctx: CanvasRenderingContext2D, x: number, y: number, color: string, k: number,
-    n: number | null, sym: PuzzleSymbol | undefined, hovered: boolean) {
-    const R = (n != null ? 8.5 : 7.5) * k;
-    ctx.beginPath();
-    ctx.arc(x, y, R, 0, Math.PI * 2);
-    ctx.fillStyle = color;
-    ctx.fill();
-    ctx.lineWidth = hovered ? 2.4 : 1.2;
-    ctx.strokeStyle = hovered ? '#fff' : 'rgba(0,0,0,.7)';
-    ctx.stroke();
-    // The recoloured sigil image (S22), tinted like the game icons; a plain puzzle icon when the build has none.
-    const dpr = window.devicePixelRatio || 1;
-    const sigil = (tint: string, px: number) =>
-      sym?.image ? tintedImage(symbolUrl(sym.image), tint, px) : tintedIcon('puzzle', tint, px);
-    if (n != null) {
-      ctx.fillStyle = '#0d0f11';
-      ctx.font = `700 ${Math.round(10.5 * k)}px Urbanist, "Segoe UI", sans-serif`;
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.fillText(String(n), x, y + 0.5);
-    } else {
-      const px = R * 1.15;
-      const bmp = sigil('#0d0f11', px * dpr);
-      if (bmp) ctx.drawImage(bmp, x - px / 2, y - px / 2, px, px);
-    }
-    if (n != null && sym) {
-      const bx = x + R * 0.8, by = y - R * 0.8, br = R * 0.62, px = br * 1.3;
-      ctx.beginPath();
-      ctx.arc(bx, by, br, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(18,22,26,.92)';
-      ctx.fill();
-      ctx.lineWidth = 1;
-      ctx.strokeStyle = color;
-      ctx.stroke();
-      const bmp = sigil(color, px * dpr);
-      if (bmp) ctx.drawImage(bmp, bx - px / 2, by - px / 2, px, px);
-    }
-  }
-
-  /** Puzzle step under the cursor (visible puzzles only), for hover and the tooltip. */
   private stepAt(mx: number, my: number, k: number): Target | null {
-    const e = this.ex, m = e.map, puzzles = m.puzzles;
-    if (!puzzles?.length) return null;
-    const visible = visiblePuzzles(m, e.prefs.puzzles, this.activePuzzle);
-    if (!visible.length) return null;
-    let best: Target | null = null, bestD = (10 * k) ** 2;
-    for (const pi of visible) {
-      for (const vi of activeVariants(puzzles[pi], e.cond)) {
-        puzzles[pi].variants[vi].steps.forEach((s, si) => {
-          const [x, y] = this.toScreen(s.uv[0], s.uv[1]);
-          const d = (x - mx) ** 2 + (y - my) ** 2;
-          if (d < bestD) {
-            bestD = d;
-            best = { t: 'step', i: pi, p: pi, v: vi, s: si };
-          }
-        });
-      }
-    }
+    if (!this.ex.prefs.puzzleDoors) return null;
+    let best: Target | null = null, distance = (12 * k) ** 2;
+    eligibleEntrances(this.ex.map, this.ex.cond).forEach(({ entrance }, i) => {
+      const [x, y] = this.toScreen(...entrance.uv), d = (x - mx) ** 2 + (y - my) ** 2;
+      if (d < distance) { distance = d; best = { t: 'entrance', i }; }
+    });
     return best;
   }
-
-  /** Toggling a puzzle from its door pin; keeps the clicked puzzle or closes the open one. */
   private toggleDoor(target: Target): boolean {
-    if (target.t !== 'spawner') return false;
-    const pi = this.doorMap.get(target.i);
-    if (pi == null) return false;
-    const next = this.activePuzzle === pi ? null : pi;
-    this.activePuzzle = next;
-    this.onPuzzle(next);
-    this.requestDraw();
+    if (target.t !== 'entrance' || !this.ex.prefs.puzzleDoors) return false;
+    const ref = eligibleEntrances(this.ex.map, this.ex.cond)[target.i];
+    if (!ref) return false;
+    this.activePuzzle = selectEntrance(this.activePuzzle, ref);
+    this.onPuzzle(this.activePuzzle);
+    this.dismissTip();
     return true;
   }
 
