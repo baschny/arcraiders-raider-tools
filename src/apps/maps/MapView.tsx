@@ -3,7 +3,7 @@ import { useEffect, useImperativeHandle, useMemo, useRef, useState, type CSSProp
 import { Layers, Maximize, Minus, Plus, X } from 'lucide-react';
 import { THREAT, ZONE_COLORS, ZONES, enemyTiming, isFeature, lootZone, tableOptions } from './data/kinds';
 import type { Level } from './data/types';
-import { eligibleEntrances, guidePins, selectedGuide, resolveSelection, targetCoordinates, type GuideSelection } from './data/puzzles';
+import { eligibleEntrances, guideEntranceVisible, guidePins, selectedGuide, resolveSelection, targetCoordinates, type GuideSelection } from './data/puzzles';
 import { GuidePanel, guideActionTooltip } from './GuidePanel';
 import { radioKeys, radioTab } from './radio';
 import { MapEngine, buildHeat, heightCode, type Padding, type Pin, type TipState } from './engine/MapEngine';
@@ -57,7 +57,7 @@ export function MapView({ ex, handle, fitPadding }: { ex: Explorer; handle?: Ref
     <div ref={wrap} className="mx-map">
       {/* The canvas is pointer-only; what it shows is listed (and keyboard operable) in the side bar. */}
       <canvas ref={canvas} role="img" aria-label={tm('maps.canvas.label', { map: ex.names.of(map) })} />
-      {tip && engine && (tip.target.t !== 'entrance' || (prefs.puzzleDoors && loot && !!eligibleEntrances(map, ex.cond)[tip.target.i])) && (tip.target.t !== 'action' || (prefs.puzzleDoors && loot && !!guidePins(map, ex.cond, true, selection)[tip.target.i])) && <Tooltip ex={ex} tip={tip} pinned={engine.pinned()} engine={engine} opened={selection} />}
+      {tip && engine && (tip.target.t !== 'entrance' || (prefs.puzzleDoors && loot && eligibleEntrances(map, ex.cond).some(({ guide, entrance }, i) => i === tip.target.i && guideEntranceVisible(guide, entrance.id, selection)))) && (tip.target.t !== 'action' || (prefs.puzzleDoors && loot && !!guidePins(map, ex.cond, true, selection)[tip.target.i])) && <Tooltip ex={ex} tip={tip} pinned={engine.pinned()} engine={engine} opened={selection} />}
       <div className="mx-zoom">
         <button onClick={() => engine?.zoomCenter(1.6)} title={t('maps.zoom.in')} aria-label={t('maps.zoom.in')}><Plus size={15} /></button>
         <button onClick={() => engine?.zoomCenter(1 / 1.6)} title={t('maps.zoom.out')} aria-label={t('maps.zoom.out')}><Minus size={15} /></button>

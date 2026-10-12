@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'react';
-import { X } from 'lucide-react';
+import { Eye, EyeOff, X } from 'lucide-react';
 import type { GuideAction, PuzzleGuide } from './data/types';
-import { available, layoutColor, selectedGuide, stageActionGroups, symbolOf, toggleLayout, visibleGroups, visibleSteps, groupColor, stepTargets, type GuidePin, type GuideTargets, type GuideSelection } from './data/puzzles';
+import { available, layoutColor, selectedGuide, stageActionGroups, symbolOf, toggleLayout, visibleGroups, visibleSteps, groupColor, guidePins, toggleStep, stepEnabled, type GuidePin, type GuideTargets, type GuideSelection } from './data/puzzles';
 import { symbolUrl } from './data/useMapData';
 import { GameIcon } from './components';
 import type { Explorer } from './model';
@@ -99,7 +99,12 @@ export function GuidePanel({ ex, selection, onSelection, onFocus, onHighlight }:
   }
   if (guide.presentation) {
     const steps = visibleSteps(guide, ex.cond, selection.layoutId);
-    const groups = visibleGroups(guide, ex.cond, selection.layoutId).filter((group) => group.kind !== 'layout');
+    const pins = guidePins(ex.map, ex.cond, ex.prefs.puzzleDoors, selection);
+    const pinIds = new Set(pins.map((pin) => pin.location.id));
+    const groups = visibleGroups(guide, ex.cond, selection.layoutId).filter((group) => group.kind !== 'layout')
+      .map((group) => ({ ...group, locationIds: group.locationIds.filter((id) => pinIds.has(id)),
+        poiIds: [...new Set(pins.filter((pin) => group.locationIds.includes(pin.location.id)).flatMap((pin) => pin.location.poiIds ?? []))] }))
+      .filter((group) => group.locationIds.length > 0);
     const instruction = (step: typeof steps[number]) => {
       const required = guide.stages.find((stage) => step.stageIds.includes(stage.id))?.required;
       const activation = guide.stages.find((stage) => step.stageIds.includes(stage.id))?.activation;
@@ -125,10 +130,15 @@ export function GuidePanel({ ex, selection, onSelection, onFocus, onHighlight }:
     return <section className="mx-puzzle mx-guide mx-guide--workflow" aria-label={title}>
       <div className="mx-puzzle__head mx-guide__head"><h2>{title}</h2><button type="button" onClick={() => onSelection(null)} aria-label={tx.t('quartermaster.sync.close')}><X size={18} aria-hidden="true" /></button></div>
       <ol className="mx-guide__steps">{steps.map((step) => {
-        const targets = stepTargets(guide, ex.cond, selection, step);
+        const enabled = stepEnabled(selection, step.id);
         return <li key={step.id} className={step.stageIds.includes(entrance.stageId) && step.role !== 'outcome' ? 'is-focused' : ''} aria-current={step.stageIds.includes(entrance.stageId) && step.role !== 'outcome' ? 'step' : undefined}>
-          <b className="mx-guide__step-number" aria-hidden="true">{step.number}</b>
-          <div><p>{instruction(step)}</p>{links(targets, tx.t('maps.guides.workflow.showMap'))}</div>
+          <button type="button" className={`mx-guide__step-toggle${enabled ? '' : ' is-off'}`} aria-pressed={enabled}
+            title={tx.tm(enabled ? 'maps.guides.workflow.hideStep' : 'maps.guides.workflow.showStep', { step: step.number })}
+            onClick={() => { onHighlight?.(null); onSelection(toggleStep(selection, guide, step.id)); }}>
+            <b className="mx-guide__step-number" aria-hidden="true">{step.number}</b>
+            <span>{instruction(step)}</span>
+            <span className="mx-guide__step-state" aria-hidden="true">{enabled ? <Eye size={15} /> : <EyeOff size={15} />}</span>
+          </button>
         </li>;
       })}</ol>
       {guide.presentation.pattern === 'staged-fuel' && <p className="mx-guide__note">{tx.t('maps.guides.portableOrder')}</p>}

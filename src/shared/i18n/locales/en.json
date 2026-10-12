@@ -1485,14 +1485,15 @@
         "fuel": "Bring a fuel cell to the marked socket to open the next room.",
         "open": "The doors open when the required steps are complete.",
         "interact": "Use the marked interactions.",
-        "showMap": "Show locations on map",
         "locations": "Puzzle locations",
         "printer": "Security code printer",
         "printerCandidates": "One of {count} possible printer locations.",
         "possibleLocation": "Possible location in this raid.",
         "findPressCount": "Find and press {count} buttons in any order.",
         "insertCodesAt": "Carry the codes to {location} and insert each matching security code.",
-        "fuelAt": "Bring a fuel cell to the socket in {location} to open the next room."
+        "fuelAt": "Bring a fuel cell to the socket in {location} to open the next room.",
+        "hideStep": "Hide locations for step {step}",
+        "showStep": "Show locations for step {step}"
       }
     }
   },

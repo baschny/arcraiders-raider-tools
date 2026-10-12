@@ -123,7 +123,7 @@
 
 .mx-guide__steps {
   list-style: none; margin: 0; padding: 0; display: grid; gap: 14px;
-  > li { display: grid; grid-template-columns: 28px 1fr; gap: 10px; padding: 6px; border-radius: 4px; }
+  > li { border-radius: 4px; }
   > li.is-focused { background: #262b30; }
   p { margin: 0 0 4px; line-height: 1.45; }
 }
@@ -135,3 +135,13 @@
   i { flex: 0 0 10px; height: 10px; border-radius: 50%; background: var(--c); }
 }
 .mx-guide__note { font-size: 13px; color: #aab1b8; line-height: 1.4; }
+
+.mx-guide__step-toggle {
+  display: grid; grid-template-columns: 28px 1fr 18px; align-items: start; gap: 10px;
+  width: 100%; min-height: 44px; padding: 8px 6px; border: 0; border-radius: 4px;
+  background: transparent; color: inherit; text-align: left; line-height: 1.45; cursor: pointer;
+  &.is-off { opacity: .5; }
+  &:hover { background: #30363c; }
+  &:focus-visible { outline: 2px solid #e5e8eb; outline-offset: 2px; }
+}
+.mx-guide__step-state { padding-top: 5px; }

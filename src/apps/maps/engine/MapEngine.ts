@@ -5,7 +5,7 @@
 import { THREAT, ZONE_COLORS, enemyIcon, isFeature, lootZone } from '../data/kinds';
 import { DATA_BASE, reportTileError, symbolUrl } from '../data/useMapData';
 import type { Level, MapData, PuzzleSymbol, UV } from '../data/types';
-import { eligibleEntrances, guideOwnsSpawner, guidePins, guideTrails, selectEntrance, symbolOf, toggleLayout, type GuideSelection, type GuideTargets, PLAIN_PUZZLE_COLOR, visibleSteps } from '../data/puzzles';
+import { eligibleEntrances, guideEntranceVisible, guideOwnsSpawner, guidePins, guideTrails, selectEntrance, symbolOf, toggleLayout, type GuideSelection, type GuideTargets, PLAIN_PUZZLE_COLOR, visibleSteps } from '../data/puzzles';
 import type { MapScore } from '../data/scoring';
 import { bbox, convexHull, inPoly, inRings, polyArea, ringsArea } from '../geometry';
 import type { Explorer } from '../model';
@@ -153,6 +153,7 @@ export class MapEngine {
     // A reloaded copy of the same map (new tile folders after a deploy) keeps the view.
     const refit = !this.ex || this.ex.map.map !== ex.map.map;
     const guideChanged = this.activePuzzle?.guideId !== activePuzzle?.guideId || this.activePuzzle?.entranceId !== activePuzzle?.entranceId;
+    const stepsChanged = JSON.stringify(this.activePuzzle?.disabledStepIds ?? []) !== JSON.stringify(activePuzzle?.disabledStepIds ?? []);
     const layoutChanged = this.activePuzzle?.layoutId !== activePuzzle?.layoutId;
     let preservedTip: TipState | null = null;
     if (!fresh && layoutChanged && !guideChanged && this.tip?.target.t === 'action') {
@@ -161,7 +162,7 @@ export class MapEngine {
       const nextIndex = oldPin ? nextPins.findIndex((pin) => pin.location.id === oldPin.location.id) : -1;
       if (nextIndex >= 0) preservedTip = { ...this.tip, target: { t: 'action', i: nextIndex } };
     }
-    const reset = fresh || this.ex.state.mode !== ex.state.mode || this.ex.ci !== ex.ci || guideChanged || this.ex.prefs.puzzleDoors !== ex.prefs.puzzleDoors || (layoutChanged && !preservedTip);
+    const reset = fresh || this.ex.state.mode !== ex.state.mode || this.ex.ci !== ex.ci || guideChanged || stepsChanged || this.ex.prefs.puzzleDoors !== ex.prefs.puzzleDoors || (layoutChanged && !preservedTip);
     this.ex = ex;
     this.heat = heat;
     this.padding = padding;
@@ -622,6 +623,7 @@ export class MapEngine {
     }
     ctx.setLineDash([]);
     eligibleEntrances(this.ex.map, this.ex.cond).forEach(({ guide, entrance }, i) => {
+      if (!guideEntranceVisible(guide, entrance.id, this.activePuzzle)) return;
       const [x, y] = this.toScreen(...entrance.uv);
       const step = this.activePuzzle?.guideId === guide.id ? visibleSteps(guide, this.ex.cond, this.activePuzzle.layoutId).find((s) => s.entranceIds.includes(entrance.id)) : null;
       const highlighted = (this.hover?.t === 'entrance' && this.hover.i === i) || !!this.guideHighlight?.entranceIds.includes(entrance.id);
@@ -669,7 +671,8 @@ export class MapEngine {
   private guideAt(mx: number, my: number, k: number): Target | null {
     if (!this.ex.prefs.puzzleDoors) return null;
     let best: Target | null = null, distance = (12 * k) ** 2;
-    eligibleEntrances(this.ex.map, this.ex.cond).forEach(({ entrance }, i) => {
+    eligibleEntrances(this.ex.map, this.ex.cond).forEach(({ guide, entrance }, i) => {
+      if (!guideEntranceVisible(guide, entrance.id, this.activePuzzle)) return;
       const [x, y] = this.toScreen(...entrance.uv), d = (x - mx) ** 2 + (y - my) ** 2;
       if (d < distance) { distance = d; best = { t: 'entrance', i }; }
     });

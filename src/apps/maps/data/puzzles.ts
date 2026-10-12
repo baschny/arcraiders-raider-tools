@@ -8,7 +8,7 @@ export const available = (element: { conditions?: GuideConditions }, cond: MapCo
   !element.conditions?.not?.includes(cond.name) && (!element.conditions?.only || element.conditions.only.includes(cond.name));
 export const guidesOf = (map: MapData): PuzzleGuide[] => map.puzzleSchemaVersion === 2 ? map.puzzleGuides ?? [] : [];
 export interface EntranceRef { guide: PuzzleGuide; entrance: GuideEntrance }
-export interface GuideSelection { guideId: string; entranceId: string; layoutId: string | null }
+export interface GuideSelection { guideId: string; entranceId: string; layoutId: string | null; disabledStepIds?: string[] }
 export function eligibleEntrances(map: MapData, cond: MapCondition): EntranceRef[] {
   return guidesOf(map).filter((g) => available(g, cond)).flatMap((guide) => guide.entrances
     .filter((e) => available(e, cond) && guide.stages.some((s) => s.id === e.stageId && available(s, cond)))
@@ -23,7 +23,8 @@ export function resolveSelection(map: MapData, cond: MapCondition, enabled: bool
 }
 export function selectEntrance(selection: GuideSelection | null, ref: EntranceRef): GuideSelection | null {
   if (selection?.guideId === ref.guide.id && selection.entranceId === ref.entrance.id) return null;
-  return { guideId: ref.guide.id, entranceId: ref.entrance.id, layoutId: selection?.guideId === ref.guide.id ? selection.layoutId : null };
+  return { guideId: ref.guide.id, entranceId: ref.entrance.id, layoutId: selection?.guideId === ref.guide.id ? selection.layoutId : null,
+    ...(selection?.guideId === ref.guide.id && selection.disabledStepIds?.length ? { disabledStepIds: selection.disabledStepIds } : {}) };
 }
 /** Only explicit identity references suppress duplicates; mixed access keeps its key route when hidden. */
 export function genericSpawnerAllowed(map: MapData, cond: MapCondition, enabled: boolean, i: number): boolean {
@@ -42,6 +43,23 @@ export const layoutColor = (guide: PuzzleGuide, layoutId?: string): string => la
 export function toggleLayout(selection: GuideSelection, layoutId: string): GuideSelection {
   return { ...selection, layoutId: selection.layoutId === layoutId ? null : layoutId };
 }
+/** Session-only map visibility, independent of activation/progress. Shared action steps toggle together. */
+export const stepEnabled = (selection: GuideSelection, id: string) => !selection.disabledStepIds?.includes(id);
+export function toggleStep(selection: GuideSelection, guide: PuzzleGuide, id: string): GuideSelection {
+  const step = guide.presentation?.steps.find((s) => s.id === id);
+  if (!step) return selection;
+  const linked = guide.presentation!.steps.filter((s) => s.id === id || (step.actionIds.length > 0 &&
+    s.actionIds.length === step.actionIds.length && step.actionIds.every((action) => s.actionIds.includes(action)))).map((s) => s.id);
+  const disabled = new Set(selection.disabledStepIds ?? []);
+  for (const stepId of linked) {
+    if (stepEnabled(selection, id)) disabled.add(stepId); else disabled.delete(stepId);
+  }
+  return { ...selection, disabledStepIds: [...disabled].sort() };
+}
+export function guideEntranceVisible(guide: PuzzleGuide, entranceId: string, selection: GuideSelection | null): boolean {
+  if (!selection || selection.guideId !== guide.id) return true;
+  return !(guide.presentation?.steps ?? []).some((s) => s.entranceIds.includes(entranceId) && !stepEnabled(selection, s.id));
+}
 export function selectedGuide(map: MapData, cond: MapCondition, enabled: boolean, selection: GuideSelection | null): PuzzleGuide | null {
   const current = resolveSelection(map, cond, enabled, selection);
   return current ? guidesOf(map).find((g) => g.id === current.guideId) ?? null : null;
@@ -51,7 +69,8 @@ export function guidePins(map: MapData, cond: MapCondition, enabled: boolean, se
   if (!guide || !current) return [];
   return guide.actions.flatMap((action) => {
     const stage = guide.stages.find((s) => s.id === action.stageId && s.actionIds.includes(action.id));
-    if (!stage || !available(stage, cond) || !available(action, cond)) return [];
+    if (!stage || !available(stage, cond) || !available(action, cond) ||
+      (guide.presentation?.steps ?? []).some((s) => s.actionIds.includes(action.id) && !stepEnabled(current, s.id))) return [];
     return action.locations.filter((location) => available(location, cond) &&
       (!location.layoutId || guide.layouts.some((l) => l.id === location.layoutId && available(l, cond))) &&
       (!current.layoutId || !location.layoutId || location.layoutId === current.layoutId))

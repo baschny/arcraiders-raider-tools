@@ -126,6 +126,22 @@ describe('guide canvas interactions', () => {
     engine.update({ ...ex, ci: 1 }, { canvas: null, order: [] }, {}, selection);
     expect(getHighlight()).toBeNull();
   });
+  it('step visibility changes clear tooltips and remove action/output hit targets until restored', () => {
+    const { tip, harness, ex } = setup();
+    const semantic: PuzzleGuide = { ...guide, presentation: { schemaVersion: 1, pattern: 'workflow', palette: 'groups', roomCount: 1,
+      steps: [{ id: 'step', number: 1, role: 'interact', stageIds: ['stage'], actionIds: ['socket'], entranceIds: ['door'], roomIds: ['room'] }], groups: [] } };
+    const next = { ...ex, map: { ...ex.map, puzzleGuides: [semantic] } };
+    engine.update(next, { canvas: null, order: [] }, {}, selection);
+    const [x, y] = harness.toScreen(0.4, 0.4), [dx, dy] = harness.toScreen(0.8, 0.8);
+    harness.tap({ x, y });
+    engine.update(next, { canvas: null, order: [] }, {}, { ...selection, disabledStepIds: ['step'] });
+    expect(tip).toHaveBeenLastCalledWith(null);
+    expect(harness.hitTest(x, y)).not.toEqual({ t: 'action', i: 0 });
+    expect(harness.hitTest(dx, dy)).not.toEqual({ t: 'entrance', i: 0 });
+    engine.update(next, { canvas: null, order: [] }, {}, selection);
+    expect(harness.hitTest(x, y)).toEqual({ t: 'action', i: 0 });
+    expect(harness.hitTest(dx, dy)).toEqual({ t: 'entrance', i: 0 });
+  });
   it('filter off clears touch and hover tooltips and re-enable shows entrances only', () => {
     const { tip, harness, ex } = setup(), [x, y] = harness.toScreen(0.4, 0.4);
     harness.tap({ x, y });
