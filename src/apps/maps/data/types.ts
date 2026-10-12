@@ -316,7 +316,7 @@ export interface MapData {
   layers: MapLayer[] | null;
   /** Level per socket, spawner, enemy spawner and quest marker; map layer per POI. */
   levels: { sockets: Level[]; spawners: Level[]; enemies: Level[]; quests: Level[]; pois: number[] };
-  /** Puzzles of the map features build (A47); hidden until asked for (S21). Missing in older builds. */
+  /** Separate public puzzle contract; maps without v2 never use legacy mechanism fragments. */
   puzzleSchemaVersion?: number;
   puzzleGuides?: PuzzleGuide[];
   /** Sigils of the map (key -> image, S22); missing in older builds. */

@@ -264,3 +264,19 @@
     &:hover { color: var(--mx-text); background: var(--mx-panel-2); }
   }
 }
+
+// Selected workflow remains scrollable on touch without covering the whole map.
+.mx-legend:has(.mx-guide) { max-width: min(360px, calc(100% - 24px)); max-height: min(58%, 560px); overflow: auto; }
+.mx-guide {
+  gap: 8px;
+  p { margin: 3px 0; }
+  ul { margin: 4px 0; padding-left: 18px; }
+  li + li { margin-top: 5px; }
+  &__head { display: flex; align-items: center; justify-content: space-between; gap: 12px; color: var(--mx-text); }
+  &__head button { padding: 2px 6px; }
+  &__layouts { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  &__layouts select { min-width: 120px; max-width: 220px; background: var(--mx-bg); color: var(--mx-text); }
+  &__stage { border-left: 2px solid var(--mx-line); padding-left: 8px; }
+  &__stage.is-focused { border-color: var(--mx-accent); background: rgba(255, 255, 255, .04); }
+  &__detail { display: block; color: var(--mx-muted); }
+}

@@ -1421,7 +1421,50 @@
       "doors": "Puzzle doors",
       "incomplete": "Guide incomplete",
       "puzzleAccess": "Opened through this puzzle.",
-      "mixed": "Puzzle and key access are both supported."
+      "mixed": "Puzzle and key access are both supported.",
+      "layout": "Layout",
+      "allLayouts": "All layouts",
+      "sigilOrder": "Graffiti activation order",
+      "requiresItem": "Requires {item}",
+      "producesItem": "Produces {item}",
+      "accessAfter": "Access after: {stages}",
+      "required": "Required activations: {count}",
+      "orderCues": "Dashed lines indicate activation order, not a walking route.",
+      "portableOrder": "This prerequisite grants socket access. The fuel cell may be collected before or after opening the room.",
+      "activeSubset": "Active selections in this group: {min}–{max}",
+      "subsetUnknown": "Candidate locations; active selection count is unresolved.",
+      "outputs": "Opens {count} room or gate outputs",
+      "lights": "{count} progress lights indicate activation progress.",
+      "lightsUnknown": "Progress lights indicate activation progress.",
+      "evidence": "Evidence",
+      "possibleButton": "Possible button location",
+      "possibleFuelCell": "Possible fuel-cell location",
+      "possibleLocation": "Possible interaction location",
+      "order": "Activation {count}",
+      "approxHeight": "Approximate height: {height}",
+      "heightUnknown": "Unknown",
+      "actions": {
+        "press": "Press the button",
+        "print": "Print the security code",
+        "carry": "Carry the item to its matching destination",
+        "insert-code": "Insert the matching security code",
+        "insert-fuel-cell": "Insert a fuel cell into the socket",
+        "collect-fuel-cell": "Collect a fuel cell"
+      },
+      "activation": {
+        "ordered": "Activate in the shown order",
+        "unordered": "Activate in any order",
+        "runtime-ordered": "Order changes each round; follow the in-game clues",
+        "unknown": "Activation order is unresolved"
+      },
+      "evidenceKind": {
+        "extracted": "Game-file evidence",
+        "observed": "Observed gameplay"
+      },
+      "fuelCell": "Fuel cell",
+      "fuelCellLocations": "Fuel-cell locations",
+      "buttonGroup": "Button group {count}",
+      "interactionGroup": "Interaction group {count}"
     }
   },
   "whatsNew": {

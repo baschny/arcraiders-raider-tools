@@ -3,7 +3,8 @@ import { useEffect, useImperativeHandle, useMemo, useRef, useState, type CSSProp
 import { Layers, Maximize, Minus, Plus, X } from 'lucide-react';
 import { THREAT, ZONE_COLORS, ZONES, enemyTiming, isFeature, lootZone, tableOptions } from './data/kinds';
 import type { Level } from './data/types';
-import { eligibleEntrances, resolveSelection, type GuideSelection } from './data/puzzles';
+import { eligibleEntrances, guidePins, selectedGuide, resolveSelection, type GuideSelection } from './data/puzzles';
+import { GuidePanel, actionDescription, poolLabel } from './GuidePanel';
 import { radioKeys, radioTab } from './radio';
 import { MapEngine, buildHeat, heightCode, type Padding, type Pin, type TipState } from './engine/MapEngine';
 import type { Explorer } from './model';
@@ -56,7 +57,7 @@ export function MapView({ ex, handle, fitPadding }: { ex: Explorer; handle?: Ref
     <div ref={wrap} className="mx-map">
       {/* The canvas is pointer-only; what it shows is listed (and keyboard operable) in the side bar. */}
       <canvas ref={canvas} role="img" aria-label={tm('maps.canvas.label', { map: ex.names.of(map) })} />
-      {tip && engine && (tip.target.t !== 'entrance' || (prefs.puzzleDoors && loot && !!eligibleEntrances(map, ex.cond)[tip.target.i])) && <Tooltip ex={ex} tip={tip} pinned={engine.pinned()} engine={engine} opened={selection} />}
+      {tip && engine && (tip.target.t !== 'entrance' || (prefs.puzzleDoors && loot && !!eligibleEntrances(map, ex.cond)[tip.target.i])) && (tip.target.t !== 'action' || (prefs.puzzleDoors && loot && !!guidePins(map, ex.cond, true, selection)[tip.target.i])) && <Tooltip ex={ex} tip={tip} pinned={engine.pinned()} engine={engine} opened={selection} />}
       <div className="mx-zoom">
         <button onClick={() => engine?.zoomCenter(1.6)} title={t('maps.zoom.in')} aria-label={t('maps.zoom.in')}><Plus size={15} /></button>
         <button onClick={() => engine?.zoomCenter(1 / 1.6)} title={t('maps.zoom.out')} aria-label={t('maps.zoom.out')}><Minus size={15} /></button>
@@ -99,7 +100,7 @@ export function MapView({ ex, handle, fitPadding }: { ex: Explorer; handle?: Ref
               {ZONES.map((z) => <span key={z}><b style={{ '--zone': `rgb(${ZONE_COLORS[z]})` } as CSSProperties} />{zone(z)}</span>)}
             </div>
           )}
-          {puzzlesVisible && <div className="mx-puzzle"><strong>{eligibleEntrances(map, ex.cond).find((r) => r.guide.id === selection.guideId)?.guide.title}</strong></div>}
+          {puzzlesVisible && <GuidePanel ex={ex} selection={selection} onSelection={setOpenedPuzzle} />}
         </div>
       )}
     </div>
@@ -193,6 +194,23 @@ function Tooltip({ ex, tip, pinned, engine, opened }: { ex: Explorer; tip: TipSt
       heightLine(map.levels.enemies[target.i]),
     ];
     if (g) hint = pinHint(pinned?.t === 'enemy' && pinned.i === target.i);
+  } else if (target.t === 'action') {
+    const guide = selectedGuide(map, ex.cond, ex.prefs.puzzleDoors, opened)!;
+    const pin = guidePins(map, ex.cond, true, opened)[target.i];
+    const { action, location, stage } = pin;
+    const pool = guide.pools.find((p) => p.id === action.poolId);
+    const layout = guide.layouts.find((l) => l.id === location.layoutId);
+    color = pin.color;
+    kindLabel = `${guide.title} · ${stage.title}`;
+    title = location.candidate ? t(action.type === 'collect-fuel-cell' ? 'maps.guides.possibleFuelCell' : action.type === 'press' ? 'maps.guides.possibleButton' : 'maps.guides.possibleLocation') : action.label;
+    body = [
+      ...actionDescription(ex, guide, action, tx),
+      pin.order != null ? tm('maps.guides.order', { count: pin.order }) : null,
+      layout?.label ?? null,
+      pool ? poolLabel(guide, pool, tx) : null,
+      pool?.selection ? tm('maps.guides.activeSubset', { min: pool.selection.min, max: pool.selection.max }) : location.candidate ? t('maps.guides.subsetUnknown') : null,
+      location.level ? tm('maps.guides.approxHeight', { height: heightLine(location.level) ?? t('maps.guides.heightUnknown') }) : null,
+    ];
   } else if (target.t === 'entrance') {
     const { guide, entrance } = eligibleEntrances(map, ex.cond)[target.i];
     kindLabel = t('maps.guides.doors');

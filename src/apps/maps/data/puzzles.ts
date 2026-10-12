@@ -31,3 +31,41 @@ export function genericSpawnerAllowed(map: MapData, cond: MapCondition, enabled:
     (e.spawnerIndex === i || (guide.ownedSpawnerIndices.includes(i) && /LockedRoomExploitPreventionArea/.test(map.spawnerClasses[map.spawners[i]?.[2]] ?? '')))
     && (enabled || e.access === 'puzzle'));
 }
+
+export interface GuidePin {
+  action: import('./types').GuideAction; location: import('./types').GuideLocation;
+  stage: import('./types').GuideStage; color: string; order: number | null;
+}
+export const layoutColor = (guide: PuzzleGuide, layoutId?: string): string => layoutId
+  ? PUZZLE_COLORS[Math.max(0, guide.layouts.findIndex((l) => l.id === layoutId)) % PUZZLE_COLORS.length] : PLAIN_PUZZLE_COLOR;
+export function selectedGuide(map: MapData, cond: MapCondition, enabled: boolean, selection: GuideSelection | null): PuzzleGuide | null {
+  const current = resolveSelection(map, cond, enabled, selection);
+  return current ? guidesOf(map).find((g) => g.id === current.guideId) ?? null : null;
+}
+export function guidePins(map: MapData, cond: MapCondition, enabled: boolean, selection: GuideSelection | null): GuidePin[] {
+  const current = resolveSelection(map, cond, enabled, selection), guide = selectedGuide(map, cond, enabled, current);
+  if (!guide || !current) return [];
+  return guide.actions.flatMap((action) => {
+    const stage = guide.stages.find((s) => s.id === action.stageId && s.actionIds.includes(action.id));
+    if (!stage || !available(stage, cond) || !available(action, cond)) return [];
+    return action.locations.filter((location) => available(location, cond) &&
+      (!location.layoutId || guide.layouts.some((l) => l.id === location.layoutId && available(l, cond))) &&
+      (!current.layoutId || !location.layoutId || location.layoutId === current.layoutId))
+      .map((location) => ({ action, stage, location, color: layoutColor(guide, location.layoutId), order: stage.activation === 'ordered' ? action.order ?? null : null }));
+  });
+}
+/** Order cues only when a stage/layout has one verified location per numbered interaction. */
+export function guideTrails(pins: GuidePin[]): GuidePin[][] {
+  const groups = new Map<string, GuidePin[]>();
+  for (const pin of pins) {
+    if (pin.order == null) continue;
+    const key = JSON.stringify([pin.stage.id, pin.location.layoutId ?? null]);
+    groups.set(key, [...groups.get(key) ?? [], pin]);
+  }
+  return [...groups.values()].filter((group) => group.length > 1 && new Set(group.map((p) => p.order)).size === group.length)
+    .map((group) => [...group].sort((a, b) => a.order! - b.order!));
+}
+/** Exclude only the selected guide's explicit mechanism identities; other key doors survive. */
+export function guideOwnsSpawner(map: MapData, cond: MapCondition, enabled: boolean, selection: GuideSelection | null, i: number): boolean {
+  return selectedGuide(map, cond, enabled, selection)?.ownedSpawnerIndices.includes(i) ?? false;
+}

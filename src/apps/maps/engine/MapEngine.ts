@@ -3,17 +3,17 @@
 // and map features as game icons, ARC spawners with patrol paths, and the activity group of the hovered or
 // pinned spawner (ringed members + area hull). React feeds it the Explorer model; it reports tooltip targets.
 import { THREAT, ZONE_COLORS, enemyIcon, isFeature, lootZone } from '../data/kinds';
-import { DATA_BASE, reportTileError } from '../data/useMapData';
-import type { Level, MapData, UV } from '../data/types';
-import { eligibleEntrances, selectEntrance, type GuideSelection } from '../data/puzzles';
+import { DATA_BASE, reportTileError, symbolUrl } from '../data/useMapData';
+import type { Level, MapData, PuzzleSymbol, UV } from '../data/types';
+import { eligibleEntrances, guideOwnsSpawner, guidePins, guideTrails, selectEntrance, symbolOf, type GuideSelection } from '../data/puzzles';
 import type { MapScore } from '../data/scoring';
 import { bbox, convexHull, inPoly, inRings, polyArea, ringsArea } from '../geometry';
 import type { Explorer } from '../model';
-import { onIconsLoaded, tintedIcon } from './iconAtlas';
+import { onIconsLoaded, tintedIcon, tintedImage } from './iconAtlas';
 import { TileLayer } from './tiles';
 
 export type Target = {
-  t: 'socket' | 'spawner' | 'enemy' | 'poi' | 'entrance';
+  t: 'socket' | 'spawner' | 'enemy' | 'poi' | 'entrance' | 'action';
   i: number;
 };
 export type Pin = { t: 'spawner' | 'enemy'; i: number };
@@ -379,7 +379,7 @@ export class MapEngine {
       let areaOrdinal = -1;
       m.spawners.forEach((s, i) => {
         const rad = m.spawnerRadius?.[i] ?? 0;
-        if (rad <= 0) return;
+        if (rad <= 0 || this.ownedSpawner(i)) return;
         areaOrdinal++; // stable per-disc colour, independent of which kinds are shown
         const kind = e.spawnerKind(i);
         if (!kind) return;
@@ -400,7 +400,7 @@ export class MapEngine {
       this.drawGroups(ctx, 'spawner');
       const drawSpawners = (features: boolean) => m.spawners.forEach((s, i) => {
         const kind = e.spawnerKind(i);
-        if (!kind || isFeature(kind) !== features) return;
+        if (!kind || isFeature(kind) !== features || this.ownedSpawner(i)) return;
         const p = e.spawnP[i], [x, y] = toScreen(s[0], s[1]);
         if (x < -20 || y < -20 || x > w + 20 || y > h + 20) return;
         const sz = (kind.major ? 15 : kind.small ? 10 : 12) * k * (features ? 1 : 0.8 + 0.2 * p);
@@ -586,20 +586,82 @@ export class MapEngine {
     if (pinned != null) this.drawGroup(ctx, kind, this.groupMembers(kind, pinned), true);
   }
 
+  private ownedSpawner(i: number): boolean {
+    return guideOwnsSpawner(this.ex.map, this.ex.cond, this.ex.prefs.puzzleDoors, this.activePuzzle, i);
+  }
   private drawPuzzles(ctx: CanvasRenderingContext2D, _w: number, _h: number) {
     if (!this.ex.prefs.puzzleDoors) return;
     const k = this.markerScale();
+    const pins = guidePins(this.ex.map, this.ex.cond, true, this.activePuzzle);
+    ctx.save();
+    for (const trail of guideTrails(pins)) {
+      ctx.setLineDash([5 * k, 4 * k]); ctx.lineWidth = 2; ctx.strokeStyle = trail[0].color;
+      ctx.beginPath();
+      trail.forEach((pin, i) => { const [x, y] = this.toScreen(...pin.location.uv); if (i) ctx.lineTo(x, y); else ctx.moveTo(x, y); });
+      ctx.stroke();
+    }
+    ctx.setLineDash([]);
     eligibleEntrances(this.ex.map, this.ex.cond).forEach(({ guide, entrance }, i) => {
       const [x, y] = this.toScreen(...entrance.uv);
       this.iconMarker(ctx, x, y, 15 * k, 'bunker', guide.status === 'incomplete' ? '#d9a03e' : '#a98bc9', { hovered: this.hover?.t === 'entrance' && this.hover.i === i });
     });
+    pins.forEach((pin, i) => {
+      const [x, y] = this.toScreen(...pin.location.uv);
+      this.puzzlePin(ctx, x, y, pin.color, k, pin.order, symbolOf(this.ex.map, pin.action.symbol), this.hover?.t === 'action' && this.hover.i === i);
+    });
+    ctx.restore();
   }
-  private stepAt(mx: number, my: number, k: number): Target | null {
+  /** Puzzle step marker: a numbered disc, or a sigil disc for an unnumbered step (S22 real sigil images). */
+  private puzzlePin(ctx: CanvasRenderingContext2D, x: number, y: number, color: string, k: number,
+    n: number | null, sym: PuzzleSymbol | undefined, hovered: boolean) {
+    const R = (n != null ? 8.5 : 7.5) * k;
+    ctx.beginPath();
+    ctx.arc(x, y, R, 0, Math.PI * 2);
+    ctx.fillStyle = color;
+    ctx.fill();
+    ctx.lineWidth = hovered ? 2.4 : 1.2;
+    ctx.strokeStyle = hovered ? '#fff' : 'rgba(0,0,0,.7)';
+    ctx.stroke();
+    // The recoloured sigil image (S22), tinted like the game icons; a plain puzzle icon when the build has none.
+    const dpr = window.devicePixelRatio || 1;
+    const sigil = (tint: string, px: number) =>
+      sym?.image ? tintedImage(symbolUrl(sym.image), tint, px) : tintedIcon('puzzle', tint, px);
+    if (n != null) {
+      ctx.fillStyle = '#0d0f11';
+      ctx.font = `700 ${Math.round(10.5 * k)}px Urbanist, "Segoe UI", sans-serif`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(String(n), x, y + 0.5);
+    } else {
+      const px = R * 1.15;
+      const bmp = sigil('#0d0f11', px * dpr);
+      if (bmp) ctx.drawImage(bmp, x - px / 2, y - px / 2, px, px);
+    }
+    if (n != null && sym) {
+      const bx = x + R * 0.8, by = y - R * 0.8, br = R * 0.62, px = br * 1.3;
+      ctx.beginPath();
+      ctx.arc(bx, by, br, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(18,22,26,.92)';
+      ctx.fill();
+      ctx.lineWidth = 1;
+      ctx.strokeStyle = color;
+      ctx.stroke();
+      const bmp = sigil(color, px * dpr);
+      if (bmp) ctx.drawImage(bmp, bx - px / 2, by - px / 2, px, px);
+    }
+  }
+
+  private guideAt(mx: number, my: number, k: number): Target | null {
     if (!this.ex.prefs.puzzleDoors) return null;
     let best: Target | null = null, distance = (12 * k) ** 2;
     eligibleEntrances(this.ex.map, this.ex.cond).forEach(({ entrance }, i) => {
       const [x, y] = this.toScreen(...entrance.uv), d = (x - mx) ** 2 + (y - my) ** 2;
       if (d < distance) { distance = d; best = { t: 'entrance', i }; }
+    });
+    // Action pins take priority over the entrance when their positions overlap.
+    guidePins(this.ex.map, this.ex.cond, true, this.activePuzzle).forEach((pin, i) => {
+      const [x, y] = this.toScreen(...pin.location.uv), d = (x - mx) ** 2 + (y - my) ** 2;
+      if (d <= distance) { distance = d; best = { t: 'action', i }; }
     });
     return best;
   }
@@ -637,9 +699,9 @@ export class MapEngine {
       const i = nearest(m.enemySpawners.length, (j) => e.enemyVisible(j), (j) => [m.enemySpawners[j][0], m.enemySpawners[j][1]], 11 * k);
       if (i != null) return { t: 'enemy', i };
     } else {
-      const step = this.stepAt(mx, my, k);
+      const step = this.guideAt(mx, my, k);
       if (step) return step;
-      const sp = nearest(m.spawners.length, (j) => !!e.spawnerKind(j), (j) => [m.spawners[j][0], m.spawners[j][1]], 10 * k);
+      const sp = nearest(m.spawners.length, (j) => !!e.spawnerKind(j) && !this.ownedSpawner(j), (j) => [m.spawners[j][0], m.spawners[j][1]], 10 * k);
       if (sp != null) return { t: 'spawner', i: sp };
       const so = nearest(m.sockets.length, (j) => e.socketVisible(j), (j) => [m.sockets[j][0], m.sockets[j][1]], 9);
       if (so != null) return { t: 'socket', i: so };
@@ -663,7 +725,7 @@ export class MapEngine {
     let area: number | null = null, areaD = Infinity;
     m.spawners.forEach((s, i) => {
       const r = m.spawnerRadius?.[i] ?? 0;
-      if (r <= 0 || !e.spawnerKind(i)) return;
+      if (r <= 0 || !e.spawnerKind(i) || this.ownedSpawner(i)) return;
       const d = Math.hypot(s[0] - uv[0], s[1] - uv[1]);
       if (d <= r / m.world[2] && d < areaD) {
         areaD = d;

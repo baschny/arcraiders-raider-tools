@@ -18,7 +18,7 @@ The Maps tool (`src/apps/maps/`) has two routes, switched by the tab bar in its 
   remembered per browser.
 - **Loot mode**: item search over the raider-tools items (Looting Helper goals as quick picks), the item's tags and
   loot table shares, spawn spot filters in categories (exits and spawns, containers, nature, raider containers, ARC
-  husks and wrecks, carryables and activities, puzzles and locked areas, map features; container kinds split into
+  husks and wrecks, carryables and activities, locked areas, map features; container kinds split into
   container types), the best areas, a heat map and score-colored spots.
 - **ARC mode**: the enemies of the map with the expected number of spawners that can produce each, multi-select
   with one color per enemy, patrol paths, each spawner drawn with the game ping icon of its most probable enemy
@@ -27,6 +27,23 @@ The Maps tool (`src/apps/maps/`) has two routes, switched by the tab bar in its 
   groups; a click pins, Esc unpins) and a tooltip (container tag, area and volume, world coordinates, height,
   tables, spawn chance, group, enemy groups and respawn timers). Height marks, loot zones, the playable area, map
   layers and area labels can be toggled.
+
+Puzzle doors are an off-by-default filter in Loot mode. They read only the separate version-2
+`puzzleGuides` contract. Clicking an entrance opens one complete workflow (or an explicitly
+incomplete guide with its missing facts); another entrance of the same guide focuses its stage.
+The panel keeps prerequisite and subsequent stages visible, with item production/transport/
+consumption, layout colours/selectors and shared sigils. Map actions appear only for that selected
+guide: every verified fixed or candidate location has hover and touch tooltips. Ordered stages
+have numbered pins and dashed order cues; unordered or runtime-shuffled actions have no fixed
+trail. Source groups preserve supported active-selection constraints without probabilities.
+Progress lights are explanatory text rather than map pins.
+
+Turning Puzzle doors off clears selection, layout, action pins, trails, legend and guide tooltips;
+re-enabling shows entrances only. Map and condition changes clear unavailable selections. Generic
+puzzle-device filters are removed, verified entrance duplicates use explicit spawner indexes, and
+real key doors keep their required items. Old data has no guide presentation and no legacy fallback.
+Generation preserves the guides and optionally adds ground-relative height estimates to their
+locations from the existing heightmap; it never infers actor membership or named floors.
 
 The map image is a WebP tile pyramid (512 px tiles); the page loads only the visible tiles of the level that
 matches the zoom. Markers are drawn on a Canvas 2D engine of our own (`src/apps/maps/engine/`, no map library: the

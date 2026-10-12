@@ -50,6 +50,11 @@ describe('v2 entrances and selection', () => {
     ]) expect(resolveSelection({ ...map, puzzleGuides: [gated] }, normal, true, first)).toBeNull();
     expect(resolveSelection(TINY_MAP, normal, true, first)).toBeNull();
   });
+  it('suppresses duplicate room volumes only with an exact owned identity', () => {
+    const volumeMap = { ...map, spawnerClasses: ['LockedRoomExploitPreventionArea'], spawners: [[0.9, 0.9, 0], [0.9, 0.9, 0], [0.9, 0.9, 0]] } as MapData;
+    expect(genericSpawnerAllowed(volumeMap, normal, false, 1)).toBe(false);
+    expect(genericSpawnerAllowed(volumeMap, normal, false, 0)).toBe(true);
+  });
   it('suppresses only explicitly referenced puzzle entrances and preserves actual keys/mixed routes', () => {
     expect(genericSpawnerAllowed(map, normal, false, 1)).toBe(false);
     expect(genericSpawnerAllowed(map, normal, false, 0)).toBe(true);
