@@ -69,7 +69,11 @@ describe('four representative guide workflows', () => {
     expect(narrowed).toHaveLength(4);
     const html = render(church);
     expect(html).toContain('All layouts'); expect(html).toContain('Layout 4'); expect(html).toContain('not a walking route');
-    expect(html).toContain('78'); expect(html).toContain('81'); expect(html).toContain('76'); expect(html).toContain('74');
+    const root = document.createElement('div'); root.innerHTML = html;
+    const legend = root.querySelector('.mx-puzzle__symbols')!;
+    expect([...legend.querySelectorAll(':scope > span')].map((e) => e.getAttribute('aria-label'))).toEqual(['Activation 1', 'Activation 2', 'Activation 3', 'Activation 4']);
+    expect(legend.textContent).not.toMatch(/78|81|76|74/);
+    expect(legend.textContent).toContain('1'); expect(legend.textContent).toContain('4');
     expect(html).toContain('4 progress lights');
   });
   it('groups the exported sixteen-action Church shape into four independently labelled sequences', () => {

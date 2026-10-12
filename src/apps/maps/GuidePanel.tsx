@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react';
 import type { GuideAction, PuzzleGuide } from './data/types';
-import { available, layoutColor, selectedGuide, stageActionGroups, symbolLabel, symbolOf, type GuideSelection } from './data/puzzles';
+import { available, layoutColor, selectedGuide, stageActionGroups, symbolOf, type GuideSelection } from './data/puzzles';
 import { symbolUrl } from './data/useMapData';
 import { GameIcon } from './components';
 import type { Explorer } from './model';
@@ -52,8 +52,8 @@ export function GuidePanel({ ex, selection, onSelection }: { ex: Explorer; selec
     </label>}
     {layouts.filter((l) => !selection.layoutId || l.id === selection.layoutId).map((l) => <div key={l.id} className="mx-puzzle__variant"><i style={{ '--c': layoutColor(guide, l.id) } as CSSProperties} />{local(`maps.guides.layouts.${l.id}`, l.label)}</div>)}
     {symbols.length > 0 && <div className="mx-puzzle__symbols" aria-label={tx.t('maps.guides.sigilOrder')}>
-      {symbols.map((key, i) => { const symbol = symbolOf(ex.map, key); return <span key={key}>{i > 0 && '→'}
-        <GameIcon {...(symbol?.image ? { url: symbolUrl(symbol.image) } : { icon: 'puzzle' })} color="#f5f0e6" size={18} />{symbolLabel(key)}</span>; })}
+      {symbols.map((key, i) => { const symbol = symbolOf(ex.map, key); return <span key={key} title={tx.tm('maps.guides.order', { count: i + 1 })} aria-label={tx.tm('maps.guides.order', { count: i + 1 })}>{i > 0 && '→'}
+        <GameIcon {...(symbol?.image ? { url: symbolUrl(symbol.image) } : { icon: 'puzzle' })} color="#f5f0e6" size={18} />{i + 1}</span>; })}
     </div>}
     {stages.map((stage) => {
       const groups = stageActionGroups(guide, stage, ex.cond, selection.layoutId);
