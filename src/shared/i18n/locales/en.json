@@ -1466,7 +1466,14 @@
       "fuelCellLocations": "Fuel-cell locations",
       "buttonGroup": "Button group {count}",
       "interactionGroup": "Interaction group {count}",
-      "button": "Button {count}"
+      "button": "Button {count}",
+      "church": {
+        "title": "Santa Sofia Church - Door puzzle",
+        "opensRooms": "Opens {count} room",
+        "pressButtons": "Press 4 buttons near the graffiti drawings, in this order.",
+        "layoutEachRaid": "One of these button layouts is chosen each raid; find button 1 to start.",
+        "buttonLayout": "Button {button} - {layout}"
+      }
     }
   },
   "whatsNew": {

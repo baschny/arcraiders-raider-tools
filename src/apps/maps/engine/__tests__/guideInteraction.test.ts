@@ -4,7 +4,7 @@ import type { Explorer } from '../../model';
 import { DEFAULT_PREFS, parseState } from '../../state';
 import type { PuzzleGuide } from '../../data/types';
 import { TINY_MAP } from '../../data/__tests__/fixtures/tinyMap';
-import type { GuideSelection } from '../../data/puzzles';
+import { guidePins, type GuideSelection } from '../../data/puzzles';
 const guide: PuzzleGuide = {
   id: 'test', title: 'Guide', status: 'complete', missing: [],
   entrances: [{ id: 'door', roomId: 'room', stageId: 'stage', uv: [0.8, 0.8], z: 0, access: 'puzzle' }],
@@ -33,6 +33,43 @@ function setup() {
   return { tip, choose, ex, harness: engine as unknown as Harness };
 }
 describe('guide canvas interactions', () => {
+  it('action pin taps isolate, restore, and switch Church layouts while keeping the tooltip', () => {
+    const church: PuzzleGuide = {
+      ...guide, id: 'church', layouts: [{ id: 'layout-1', label: 'Layout 1' }, { id: 'layout-2', label: 'Layout 2' }],
+      stages: [{ ...guide.stages[0], activation: 'ordered', actionIds: ['one', 'two'] }],
+      actions: [
+        { id: 'one', stageId: 'stage', type: 'press', label: 'Button 1', order: 1, locations: [{ id: 'one-location', uv: [0.2, 0.2], z: 0, candidate: false, layoutId: 'layout-1' }] },
+        { id: 'two', stageId: 'stage', type: 'press', label: 'Button 2', order: 2, locations: [{ id: 'two-location', uv: [0.3, 0.3], z: 0, candidate: false, layoutId: 'layout-2' }] },
+      ],
+    };
+    const tip = vi.fn<(state: TipState | null) => void>(), choose = vi.fn<(selection: GuideSelection | null) => void>();
+    const wrap = document.createElement('div'), canvas = document.createElement('canvas');
+    Object.defineProperties(wrap, { clientWidth: { value: 1000 }, clientHeight: { value: 1000 } });
+    engine = new MapEngine(wrap, canvas, tip, choose);
+    const map = { ...TINY_MAP, puzzleSchemaVersion: 2, puzzleGuides: [church] };
+    const ex = { map, state: parseState(new URLSearchParams(), 'tiny', 'tiny'), ci: 0, cond: map.conditions[0], prefs: { ...DEFAULT_PREFS, puzzleDoors: true }, spawnerKind: () => null, socketVisible: () => false, onLayer: () => true } as unknown as Explorer;
+    let current: GuideSelection | null = { guideId: 'church', entranceId: 'door', layoutId: null };
+    const sync = () => { current = choose.mock.lastCall?.[0] ?? current; engine.update(ex, { canvas: null, order: [] }, {}, current); };
+    engine.update(ex, { canvas: null, order: [] }, {}, current);
+    const harness = engine as unknown as Harness;
+    const tapAt = (uv: [number, number]) => { const [x, y] = harness.toScreen(...uv); harness.tap({ x, y }); sync(); };
+    const tooltipLocation = () => {
+      const shown = tip.mock.lastCall?.[0];
+      return shown?.target.t === 'action' ? guidePins(map, ex.cond, true, current)[shown.target.i]?.location.id : undefined;
+    };
+    tapAt([0.2, 0.2]); expect(current?.layoutId).toBe('layout-1');
+    expect(tip).toHaveBeenLastCalledWith(expect.objectContaining({ touch: true, target: { t: 'action', i: 0 } }));
+    expect(tooltipLocation()).toBe('one-location');
+    tapAt([0.2, 0.2]); expect(current?.layoutId).toBeNull();
+    expect(tooltipLocation()).toBe('one-location');
+    vi.advanceTimersByTime(400);
+    tapAt([0.3, 0.3]); expect(current?.layoutId).toBe('layout-2');
+    expect(tooltipLocation()).toBe('two-location');
+    expect(tip).toHaveBeenLastCalledWith(expect.objectContaining({ touch: true, target: { t: 'action', i: 0 } }));
+    tapAt([0.3, 0.3]); expect(current?.layoutId).toBeNull();
+    expect(tooltipLocation()).toBe('two-location');
+    expect(tip).toHaveBeenLastCalledWith(expect.objectContaining({ touch: true, target: { t: 'action', i: 1 } }));
+  });
   it('plain socket/action pins have delayed hover and touch tooltips', () => {
     const { tip, harness } = setup(), [x, y] = harness.toScreen(0.4, 0.4);
     expect(harness.hitTest(x, y)).toEqual({ t: 'action', i: 0 });
@@ -54,7 +91,7 @@ describe('guide canvas interactions', () => {
   });
   it('changing selected guide, condition, layout or map dismisses an existing action tooltip', () => {
     const { tip, harness, ex } = setup(), [x, y] = harness.toScreen(0.4, 0.4);
-    for (const next of [null, { ...selection, layoutId: 'other' }]) {
+    for (const next of [null, { ...selection, guideId: 'another-guide' }]) {
       engine.update(ex, { canvas: null, order: [] }, {}, selection);
       harness.hoverAt(x, y); vi.advanceTimersByTime(130);
       engine.update(ex, { canvas: null, order: [] }, {}, next);

@@ -1,4 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
+import { act } from 'react';
+import { createRoot } from 'react-dom/client';
 import { renderToStaticMarkup } from 'react-dom/server';
 import type { GuideAction, MapData, PuzzleGuide } from '../data/types';
 import type { Explorer } from '../model';
@@ -6,6 +8,7 @@ import { DEFAULT_PREFS } from '../state';
 import { TINY_MAP, TINY_INDEX } from '../data/__tests__/fixtures/tinyMap';
 import { available, guidePins, guideTrails, guideOwnsSpawner, resolveSelection } from '../data/puzzles';
 import { GuidePanel } from '../GuidePanel';
+import frozenTrail from '../../../../public/data/map-data/maps/FrozenTrail_01.json';
 import en from '../../../shared/i18n/locales/en.json';
 vi.mock('../text', async (original) => {
   const actual = await original<typeof import('../text')>();
@@ -33,6 +36,7 @@ const church: PuzzleGuide = {
   hints: [{ id: 'graffiti', stageId: 'first', symbols: ['mural-78', 'mural-81', 'mural-76', 'mural-74'] }],
   indicators: [{ id: 'lights', stageId: 'first', count: 4 }],
 };
+const exportedChurch = frozenTrail.puzzleGuides?.find((guide) => guide.id === 'church') as unknown as PuzzleGuide;
 const refuge: PuzzleGuide = {
   ...empty, id: 'refuge', title: "Raider's Refuge", status: 'incomplete', missing: ['Exported and observed candidate totals differ'],
   stages: [{ ...empty.stages[0], actionIds: ['p0', 'p1', 'p2', 'p3'] }],
@@ -59,6 +63,22 @@ const riven: PuzzleGuide = {
   ],
 };
 describe('four representative guide workflows', () => {
+  it('legend clicks isolate one layout, switch to another, and restore all layouts', () => {
+    vi.stubGlobal('IS_REACT_ACT_ENVIRONMENT', true);
+    const container = document.createElement('div'), root = createRoot(container);
+    let selection: ReturnType<typeof select> | null = select(church);
+    const renderPanel = () => act(() => root.render(<GuidePanel ex={exOf(church)} selection={selection!} onSelection={(next) => { selection = next; }} />));
+    renderPanel();
+    const choose = (n: number) => act(() => container.querySelectorAll<HTMLButtonElement>('.mx-guide__layout-legend button')[n - 1].click());
+    choose(1); expect(selection?.layoutId).toBe('layout-1');
+    renderPanel(); expect(container.querySelectorAll('[aria-pressed="true"]')).toHaveLength(1);
+    choose(3); expect(selection?.layoutId).toBe('layout-3');
+    renderPanel(); expect(container.querySelector('.is-selected')?.textContent).toBe('Layout 3');
+    choose(3); expect(selection?.layoutId).toBeNull();
+    renderPanel(); expect(container.querySelectorAll('[aria-pressed="true"]')).toHaveLength(0);
+    act(() => root.unmount());
+    vi.unstubAllGlobals();
+  });
   it('Church shows all colours, shared sigil sequence and actual ordered activation cues', () => {
     const pins = guidePins(mapOf(church), TINY_MAP.conditions[0], true, select(church));
     expect(pins).toHaveLength(16);
@@ -68,38 +88,30 @@ describe('four representative guide workflows', () => {
     const narrowed = guidePins(mapOf(church), TINY_MAP.conditions[0], true, select(church, 'door', 'layout-3'));
     expect(narrowed).toHaveLength(4);
     const html = render(church);
-    expect(html).toContain('All layouts'); expect(html).toContain('Layout 4'); expect(html).toContain('not a walking route');
+    expect(html).toContain('Layout 4'); expect(html).toContain('Press 4 buttons near the graffiti drawings, in this order.');
+    expect(html).not.toContain('<select'); expect(html).not.toContain('not a walking route');
     const root = document.createElement('div'); root.innerHTML = html;
-    const legend = root.querySelector('.mx-puzzle__symbols')!;
-    expect([...legend.querySelectorAll(':scope > span')].map((e) => e.getAttribute('aria-label'))).toEqual(['Activation 1', 'Activation 2', 'Activation 3', 'Activation 4']);
+    const legend = root.querySelector('.mx-guide__layout-legend')!;
+    expect(legend.querySelectorAll('button')).toHaveLength(4);
+    expect(legend.querySelectorAll('[aria-pressed="true"]')).toHaveLength(0);
     expect(legend.textContent).not.toMatch(/78|81|76|74/);
-    expect(legend.textContent).toContain('1'); expect(legend.textContent).toContain('4');
+    expect(legend.textContent).toContain('Layout 1'); expect(legend.textContent).toContain('Layout 4');
     expect(html).toContain('4 progress lights');
   });
-  it('groups the exported sixteen-action Church shape into four independently labelled sequences', () => {
-    const exported: PuzzleGuide = { ...church, actions: church.layouts.flatMap((layout) => church.actions.map((a) => ({
-      ...a, id: `${layout.id}:${a.id}`, label: `${layout.label} button ${a.order}`, poolId: `${layout.id}:${a.id}:pool`,
-      locations: a.locations.filter((l) => l.layoutId === layout.id),
-    }))) };
-    exported.stages = [{ ...church.stages[0], actionIds: exported.actions.map((a) => a.id) }];
-    exported.pools = exported.actions.map((a) => ({ id: a.poolId!, sourceId: 'opaque-source', actionId: a.id, selection: null }));
-    const root = document.createElement('div'); root.innerHTML = render(exported);
-    const groups = [...root.querySelectorAll('.mx-guide__action-group')];
-    expect(groups).toHaveLength(4);
-    groups.forEach((group, i) => {
-      expect(group.querySelector('strong')?.textContent).toBe(`Layout ${i + 1}`);
-      expect([...group.querySelectorAll('li > b')].map((e) => e.textContent)).toEqual(['1. ', '2. ', '3. ', '4. ']);
-      expect(group.querySelectorAll('li')).toHaveLength(4);
-    });
-    root.innerHTML = render(exported, 'door', 'layout-3');
-    expect(root.querySelectorAll('.mx-guide__action-group')).toHaveLength(1);
-    expect(root.querySelectorAll('.mx-guide__action-group li')).toHaveLength(4);
-    expect(root.textContent).toContain('Layout 3 button 1');
-    expect(root.textContent).not.toContain('Layout 1 button'); expect(root.textContent).not.toContain('Layout 4 button');
-    expect(root.textContent).not.toContain('Button group 16'); expect(root.textContent).not.toContain('active selection count is unresolved');
-    exported.actions.filter((a) => a.locations[0]?.layoutId === 'layout-3').forEach((a) => a.locations[0].conditions = { not: ['Normal'] });
-    root.innerHTML = render(exported, 'door', 'layout-3');
-    expect(root.querySelectorAll('.mx-guide__action-group li')).toHaveLength(0);
+  it('uses the committed generated Church guide with sixteen actions across four layouts', () => {
+    expect(exportedChurch.actions).toHaveLength(16);
+    expect(exportedChurch.layouts).toHaveLength(4);
+    expect(guidePins(mapOf(exportedChurch), TINY_MAP.conditions[0], true, select(exportedChurch))).toHaveLength(16);
+    for (const layout of exportedChurch.layouts) {
+      expect(guidePins(mapOf(exportedChurch), TINY_MAP.conditions[0], true, select(exportedChurch, undefined, layout.id))).toHaveLength(4);
+    }
+    const root = document.createElement('div'); root.innerHTML = render(exportedChurch);
+    expect(root.querySelectorAll('.mx-guide__layout-legend button')).toHaveLength(4);
+    expect(root.querySelectorAll('.mx-guide__action-group')).toHaveLength(0);
+    expect(root.querySelectorAll('.mx-guide__layout-legend button[aria-pressed="true"]')).toHaveLength(0);
+    const layoutId = exportedChurch.layouts[2].id, gated = structuredClone(exportedChurch);
+    gated.actions.filter((action) => action.locations[0]?.layoutId === layoutId).forEach((action) => { action.locations[0].conditions = { only: ['Night Raid'] }; });
+    expect(guidePins(mapOf(gated), TINY_MAP.conditions[0], true, select(gated, undefined, layoutId))).toHaveLength(0);
   });
   it('renders a titled standalone guide shell with an accessible close control and no discovery status', () => {
     const html = render(refuge);
@@ -111,6 +123,7 @@ describe('four representative guide workflows', () => {
   });
   it('does not infer indicator lights from stage activation requirements', () => {
     expect(render({ ...church, indicators: [] })).not.toContain('progress lights');
+    expect(render({ ...church, indicators: [{ id: 'unknown-lights', stageId: 'first', count: null }] })).not.toContain('progress lights');
   });
   it('Refuge retains 24 grouped candidates without numbers, trails or invented selection counts', () => {
     const pins = guidePins(mapOf(refuge), TINY_MAP.conditions[0], true, select(refuge));

@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'react';
 import { X } from 'lucide-react';
 import type { GuideAction, PuzzleGuide } from './data/types';
-import { available, layoutColor, selectedGuide, stageActionGroups, symbolOf, type GuideSelection } from './data/puzzles';
+import { available, layoutColor, selectedGuide, stageActionGroups, symbolOf, toggleLayout, type GuideSelection } from './data/puzzles';
 import { symbolUrl } from './data/useMapData';
 import { GameIcon } from './components';
 import type { Explorer } from './model';
@@ -41,6 +41,33 @@ export function GuidePanel({ ex, selection, onSelection }: { ex: Explorer; selec
   const stages = guide.stages.filter((s) => available(s, ex.cond));
   const layouts = guide.layouts.filter((l) => available(l, ex.cond));
   const symbols = [...new Set(guide.hints.filter((h) => stages.some((s) => s.id === h.stageId)).flatMap((h) => h.symbols))];
+  if (guide.id === 'church') {
+    const layoutName = (id: string) => local(`maps.guides.layouts.${id}`, layouts.find((l) => l.id === id)?.label ?? id);
+    const lightCount = guide.indicators.find((indicator) => indicator.stageId === entrance.stageId && typeof indicator.count === 'number')?.count;
+    return <section className="mx-puzzle mx-guide mx-guide--church" aria-label={title}>
+      <div className="mx-puzzle__head mx-guide__head"><h2>{local('maps.guides.church.title', 'Santa Sofia Church - Door puzzle')}</h2><button type="button" onClick={() => onSelection(null)} aria-label={tx.t('quartermaster.sync.close')}><X size={18} aria-hidden="true" /></button></div>
+      <p className="mx-guide__rooms">{tx.tm('maps.guides.church.opensRooms', { count: guide.rooms.length })}</p>
+      {symbols.length > 0 && <div className="mx-guide__graffiti" aria-label={tx.t('maps.guides.sigilOrder')}>
+        {symbols.map((key, i) => { const symbol = symbolOf(ex.map, key); return <div className="mx-guide__graffiti-symbol" key={key}>
+          {i > 0 && <span className="mx-guide__graffiti-arrow" aria-hidden="true">→</span>}
+          <GameIcon {...(symbol?.image ? { url: symbolUrl(symbol.image) } : { icon: 'puzzle' })} color="#f5f0e6" size={64} />
+          <b>{i + 1}</b>
+        </div>; })}
+      </div>}
+      <div className="mx-guide__instructions">
+        <p>{tx.t('maps.guides.church.pressButtons')}</p>
+        <p>{tx.t('maps.guides.church.layoutEachRaid')}</p>
+        {lightCount != null && <p>{tx.tm('maps.guides.lights', { count: lightCount })}</p>}
+      </div>
+      <div className="mx-guide__layout-legend" role="group" aria-label={tx.t('maps.guides.layout')}>
+        {layouts.map((layout) => <button key={layout.id} type="button" className={selection.layoutId === layout.id ? 'is-selected' : ''}
+          style={{ '--c': layoutColor(guide, layout.id) } as CSSProperties}
+          aria-pressed={selection.layoutId === layout.id} onClick={() => onSelection(toggleLayout(selection, layout.id))}>
+          <i style={{ '--c': layoutColor(guide, layout.id) } as CSSProperties} />{layoutName(layout.id)}
+        </button>)}
+      </div>
+    </section>;
+  }
   return <section className="mx-puzzle mx-guide" aria-label={title}>
     <div className="mx-puzzle__head mx-guide__head"><h2>{title}</h2><button type="button" onClick={() => onSelection(null)} aria-label={tx.t('quartermaster.sync.close')}><X size={18} aria-hidden="true" /></button></div>
     {layouts.length > 0 && <label className="mx-guide__layouts">{tx.t('maps.guides.layout')}

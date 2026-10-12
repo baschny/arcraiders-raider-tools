@@ -5,7 +5,7 @@
 import { THREAT, ZONE_COLORS, enemyIcon, isFeature, lootZone } from '../data/kinds';
 import { DATA_BASE, reportTileError, symbolUrl } from '../data/useMapData';
 import type { Level, MapData, PuzzleSymbol, UV } from '../data/types';
-import { eligibleEntrances, guideOwnsSpawner, guidePins, guideTrails, selectEntrance, symbolOf, type GuideSelection } from '../data/puzzles';
+import { eligibleEntrances, guideOwnsSpawner, guidePins, guideTrails, selectEntrance, symbolOf, toggleLayout, type GuideSelection } from '../data/puzzles';
 import type { MapScore } from '../data/scoring';
 import { bbox, convexHull, inPoly, inRings, polyArea, ringsArea } from '../geometry';
 import type { Explorer } from '../model';
@@ -151,7 +151,16 @@ export class MapEngine {
     const fresh = !this.ex || this.ex.map !== ex.map;
     // A reloaded copy of the same map (new tile folders after a deploy) keeps the view.
     const refit = !this.ex || this.ex.map.map !== ex.map.map;
-    const reset = fresh || this.ex.state.mode !== ex.state.mode || this.ex.ci !== ex.ci || this.activePuzzle !== activePuzzle || this.ex.prefs.puzzleDoors !== ex.prefs.puzzleDoors;
+    const guideChanged = this.activePuzzle?.guideId !== activePuzzle?.guideId || this.activePuzzle?.entranceId !== activePuzzle?.entranceId;
+    const layoutChanged = this.activePuzzle?.layoutId !== activePuzzle?.layoutId;
+    let preservedTip: TipState | null = null;
+    if (!fresh && layoutChanged && !guideChanged && this.tip?.target.t === 'action') {
+      const oldPin = guidePins(this.ex.map, this.ex.cond, true, this.activePuzzle)[this.tip.target.i];
+      const nextPins = guidePins(ex.map, ex.cond, true, activePuzzle);
+      const nextIndex = oldPin ? nextPins.findIndex((pin) => pin.location.id === oldPin.location.id) : -1;
+      if (nextIndex >= 0) preservedTip = { ...this.tip, target: { t: 'action', i: nextIndex } };
+    }
+    const reset = fresh || this.ex.state.mode !== ex.state.mode || this.ex.ci !== ex.ci || guideChanged || this.ex.prefs.puzzleDoors !== ex.prefs.puzzleDoors || (layoutChanged && !preservedTip);
     this.ex = ex;
     this.heat = heat;
     this.padding = padding;
@@ -160,6 +169,10 @@ export class MapEngine {
       this.pin = null;
       this.hover = null;
       this.hideTip();
+    } else if (preservedTip) {
+      this.hover = preservedTip.target;
+      this.tip = preservedTip;
+      this.onTip(preservedTip);
     }
     if (refit) this.fit();
     else this.requestDraw();
@@ -614,7 +627,7 @@ export class MapEngine {
   /** Puzzle step marker: a numbered disc, or a sigil disc for an unnumbered step (S22 real sigil images). */
   private puzzlePin(ctx: CanvasRenderingContext2D, x: number, y: number, color: string, k: number,
     n: number | null, sym: PuzzleSymbol | undefined, hovered: boolean) {
-    const R = (n != null ? 8.5 : 7.5) * k;
+    const R = (n != null ? 11 : 7.5) * k;
     ctx.beginPath();
     ctx.arc(x, y, R, 0, Math.PI * 2);
     ctx.fillStyle = color;
@@ -628,7 +641,7 @@ export class MapEngine {
       sym?.image ? tintedImage(symbolUrl(sym.image), tint, px) : tintedIcon('puzzle', tint, px);
     if (n != null) {
       ctx.fillStyle = '#0d0f11';
-      ctx.font = `700 ${Math.round(10.5 * k)}px Urbanist, "Segoe UI", sans-serif`;
+      ctx.font = `700 ${Math.round(13 * k)}px Urbanist, "Segoe UI", sans-serif`;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.fillText(String(n), x, y + 0.5);
@@ -636,18 +649,6 @@ export class MapEngine {
       const px = R * 1.15;
       const bmp = sigil('#0d0f11', px * dpr);
       if (bmp) ctx.drawImage(bmp, x - px / 2, y - px / 2, px, px);
-    }
-    if (n != null && sym) {
-      const bx = x + R * 0.8, by = y - R * 0.8, br = R * 0.62, px = br * 1.3;
-      ctx.beginPath();
-      ctx.arc(bx, by, br, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(18,22,26,.92)';
-      ctx.fill();
-      ctx.lineWidth = 1;
-      ctx.strokeStyle = color;
-      ctx.stroke();
-      const bmp = sigil(color, px * dpr);
-      if (bmp) ctx.drawImage(bmp, bx - px / 2, by - px / 2, px, px);
     }
   }
 
@@ -672,6 +673,32 @@ export class MapEngine {
     this.activePuzzle = selectEntrance(this.activePuzzle, ref);
     this.onPuzzle(this.activePuzzle);
     this.dismissTip();
+    return true;
+  }
+  private toggleActionLayout(target: Target): boolean {
+    if (target.t !== 'action' || !this.activePuzzle) return false;
+    const currentPins = guidePins(this.ex.map, this.ex.cond, true, this.activePuzzle);
+    const pin = currentPins[target.i];
+    if (!pin?.location.layoutId) return false;
+    const locationId = pin.location.id;
+    const nextPuzzle = toggleLayout(this.activePuzzle, pin.location.layoutId);
+    const nextPins = guidePins(this.ex.map, this.ex.cond, true, nextPuzzle);
+    const nextIndex = nextPins.findIndex((nextPin) => nextPin.location.id === locationId);
+    if (nextIndex < 0) return false;
+    const reindex = (candidate: Target) => {
+      if (candidate.t !== 'action') return candidate;
+      const location = currentPins[candidate.i]?.location.id;
+      const index = location ? nextPins.findIndex((nextPin) => nextPin.location.id === location) : -1;
+      return index >= 0 ? { ...candidate, i: index } : candidate;
+    };
+    const nextHover = this.hover ? reindex(this.hover) : null;
+    const nextTip = this.tip ? { ...this.tip, target: reindex(this.tip.target) } : null;
+    target.i = nextIndex;
+    this.hover = nextHover;
+    this.tip = nextTip;
+    this.activePuzzle = nextPuzzle;
+    this.onPuzzle(this.activePuzzle);
+    this.requestDraw();
     return true;
   }
 
@@ -782,6 +809,10 @@ export class MapEngine {
       }
       return;
     }
+    if (hv && this.toggleActionLayout(hv)) {
+      if (this.tipShown && this.tip) this.onTip({ ...this.tip, target: hv, ...this.local(e) });
+      return;
+    }
     // A click pins the hovered spawner's group (click again or on empty map: unpin).
     const target: Pin | null = hv && (hv.t === 'spawner' || hv.t === 'enemy') ? { t: hv.t, i: hv.i } : null;
     this.pin = target && !(this.pin?.t === target.t && this.pin.i === target.i) ? target : null;
@@ -884,15 +915,17 @@ export class MapEngine {
   }
   private tap({ x, y }: { x: number; y: number }) {
     const now = performance.now(), last = this.lastTap;
-    if (now - last.t < DOUBLE_TAP_MS && Math.hypot(x - last.x, y - last.y) < DOUBLE_TAP_PX) {
+    const target = this.hitTest(x, y);
+    const actionRepeat = target?.t === 'action' && this.hover?.t === 'action' && target.i === this.hover.i;
+    if (!actionRepeat && now - last.t < DOUBLE_TAP_MS && Math.hypot(x - last.x, y - last.y) < DOUBLE_TAP_PX) {
       this.lastTap = { t: 0, x: 0, y: 0 };
       this.zoomBy(2, x, y);
       return;
     }
     this.lastTap = { t: now, x, y };
-    const target = this.hitTest(x, y);
     // Like a click: tapping a door pin reveals/closes its puzzle, else pins the tapped spawner's group.
     const door = target ? this.toggleDoor(target) : false;
+    if (!door && target) this.toggleActionLayout(target);
     const pin: Pin | null = !door && target && (target.t === 'spawner' || target.t === 'enemy') ? { t: target.t, i: target.i } : null;
     if (!door) this.pin = pin && !(this.pin?.t === pin.t && this.pin.i === pin.i) ? pin : null;
     this.hover = target;

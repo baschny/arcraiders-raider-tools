@@ -38,6 +38,10 @@ export interface GuidePin {
 }
 export const layoutColor = (guide: PuzzleGuide, layoutId?: string): string => layoutId
   ? PUZZLE_COLORS[Math.max(0, guide.layouts.findIndex((l) => l.id === layoutId)) % PUZZLE_COLORS.length] : PLAIN_PUZZLE_COLOR;
+/** A shared toggle used by the legend and map pins: a second selection restores every layout. */
+export function toggleLayout(selection: GuideSelection, layoutId: string): GuideSelection {
+  return { ...selection, layoutId: selection.layoutId === layoutId ? null : layoutId };
+}
 export function selectedGuide(map: MapData, cond: MapCondition, enabled: boolean, selection: GuideSelection | null): PuzzleGuide | null {
   const current = resolveSelection(map, cond, enabled, selection);
   return current ? guidesOf(map).find((g) => g.id === current.guideId) ?? null : null;
