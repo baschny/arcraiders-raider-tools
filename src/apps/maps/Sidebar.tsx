@@ -7,6 +7,7 @@ import { lootStore, useStore } from '../../shared/state/stores';
 import { GameIcon, Help, ItemSearch } from './components';
 import type { Count, Explorer } from './model';
 import { useMapText, type MapText } from './text';
+import { eligibleEntrances } from './data/puzzles';
 
 const AREA_ICON: Record<string, string> = {
   Electrical: 'loot-electrical', Industrial: 'loot-industrial', Commercial: 'loot-commercial', Residential: 'loot-household',
@@ -183,6 +184,7 @@ function SpotFilters({ ex }: { ex: Explorer }) {
 
   const allLeaves = CATEGORIES.flatMap((cat) => kindsHere(cat).flatMap(leavesHere));
   const auto = item && !ex.state.show.size;
+  const puzzleDoors = eligibleEntrances(map, ex.cond).length;
 
   return (
     <section className="mx-sec mx-spots">
@@ -195,7 +197,12 @@ function SpotFilters({ ex }: { ex: Explorer }) {
           <button onClick={() => ex.set({ show: new Set() })} title={tx.t('maps.filters.hideAll')}><Minus size={12} />{tx.t('lootHelper.filters.none')}</button>
         </div>
       </div>
-      <label className="mx-row"><input type="checkbox" checked={ex.prefs.puzzleDoors} onChange={(e) => ex.setPrefs({ puzzleDoors: e.target.checked })} /> {tx.t('maps.guides.doors')}</label>
+      <div className="mx-cat">
+        <FilterRow tx={tx} depth={0} strong sel={ex.prefs.puzzleDoors ? 'on' : 'off'}
+          onToggle={() => ex.setPrefs({ puzzleDoors: !ex.prefs.puzzleDoors })}
+          icon={<GameIcon icon="bunker" size={15} className="mx-row__icon" />} label={tx.t('maps.guides.doors')}
+          count={{ main: tx.num(puzzleDoors), title: tx.plural('maps.filters.count.spots', puzzleDoors) }} />
+      </div>
       {CATEGORIES.filter((cat) => cat.key !== 'Puzzles').map((cat) => {
         const kinds = kindsHere(cat);
         if (!kinds.length) return null;
