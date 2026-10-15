@@ -8,7 +8,10 @@ import {
   WHATS_NEW_TAB_IDS,
   WHATS_NEW_VERSIONS,
   whatsNewPath,
+  type WhatsNewTab,
 } from '../../apps/whats-new/routing';
+import { UPDATE_SLUGS } from '../../apps/updates/releases.generated';
+import { UPDATES_PATH, updatePath } from '../../apps/updates/routing';
 import { DEFAULT_LOCALE, localizePath, type AppLocale } from '../i18n/localeCodes';
 
 export const SITE_URL = 'https://raider-tools.app';
@@ -68,16 +71,35 @@ export const SEO_PAGES: readonly SeoPage[] = [
       image: `whats-new-${tab}.jpg`,
     })),
   ),
-  // Paths the app redirects to a version's own page.
-  ...['/whats-new', ...WHATS_NEW_VERSIONS.map((version) => `/whats-new/${version}/${DEFAULT_WHATS_NEW_TAB}`)].map(
-    (path) => ({
-      path,
-      titleKey: `seo.whatsNew.${DEFAULT_WHATS_NEW_VERSION}.title`,
-      descriptionKey: `seo.whatsNew.${DEFAULT_WHATS_NEW_VERSION}.description`,
-      image: `whats-new-${DEFAULT_WHATS_NEW_VERSION}.jpg`,
-      canonicalPath: whatsNewPath(DEFAULT_WHATS_NEW_VERSION),
-    }),
-  ),
+  // Paths the app redirects to a guide page: the default tab's own segment, and the former
+  // `/whats-new/<version>[/<tab>]` URLs (the guide now lives under its release in /updates).
+  ...([
+    { path: '/whats-new', version: DEFAULT_WHATS_NEW_VERSION, tab: DEFAULT_WHATS_NEW_TAB },
+    ...WHATS_NEW_VERSIONS.flatMap((version) => [
+      { path: `${whatsNewPath(version)}/${DEFAULT_WHATS_NEW_TAB}`, version, tab: DEFAULT_WHATS_NEW_TAB },
+      ...WHATS_NEW_TAB_IDS.map((tab) => ({
+        path: tab === DEFAULT_WHATS_NEW_TAB ? `/whats-new/${version}` : `/whats-new/${version}/${tab}`,
+        version,
+        tab,
+      })),
+      { path: `/whats-new/${version}/${DEFAULT_WHATS_NEW_TAB}`, version, tab: DEFAULT_WHATS_NEW_TAB },
+    ]),
+  ] as { path: string; version: string; tab: WhatsNewTab }[]).map(({ path, version, tab }) => ({
+    path,
+    titleKey: tab === DEFAULT_WHATS_NEW_TAB ? `seo.whatsNew.${version}.title` : `whatsNew.intro.${tab}.title`,
+    descriptionKey: tab === DEFAULT_WHATS_NEW_TAB ? `seo.whatsNew.${version}.description` : `seo.whatsNew.${tab}`,
+    image: tab === DEFAULT_WHATS_NEW_TAB ? `whats-new-${version}.jpg` : `whats-new-${tab}.jpg`,
+    canonicalPath: whatsNewPath(version, tab),
+  })),
+  // Update changelog: the list and one page per release (slugs from scripts/generate-updates.ts).
+  // Preview image: the What's New "changes" image until the changelog has its own.
+  { path: UPDATES_PATH, titleKey: 'shared.tools.updates', descriptionKey: 'seo.updates', image: 'whats-new-changes.jpg' },
+  ...UPDATE_SLUGS.map((slug) => ({
+    path: updatePath(slug),
+    titleKey: 'shared.tools.updates',
+    descriptionKey: 'seo.updates',
+    image: 'whats-new-changes.jpg',
+  })),
 ];
 
 function normalizePath(pathname: string): string {

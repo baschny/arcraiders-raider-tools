@@ -22,7 +22,8 @@
       "amplified": "ARC Raiders 2.0 얼어붙은 산길의 증폭 무기 작동 방식: 총기 제작대를 업그레이드한 뒤 최대 레벨 무기를 증폭 무기로 바꾸세요.",
       "crafting": "ARC Raiders 2.0 얼어붙은 산길에서 새로 제작할 수 있는 것: 레이드 중 제작, 무기 스텐실, 엠퍼러 게이트웨이 열쇠.",
       "changes": "ARC Raiders 2.0 얼어붙은 산길에서 1.45 이후 바뀐 점: 제작법, 재활용, 상인 판매 품목, 보관함 크기."
-    }
+    },
+    "updates": "ARC Raiders 업데이트별 상세 변경 사항: 아이템 가치, 레시피, 상인 제안, 퀘스트, 맵별 전리품 예산, 패치 노트에 없는 변경까지."
   },
   "shared": {
     "language": "Language",
@@ -101,7 +102,8 @@
       "lootHelper": "루팅 도우미",
       "quartermaster": "병참 관리",
       "maps": "지도",
-      "whatsNew": "얼어붙은 산길 아이템"
+      "whatsNew": "얼어붙은 산길 아이템",
+      "updates": "게임 업데이트"
     }
   },
   "dashboard": {
@@ -124,7 +126,8 @@
       "quests": "인터랙티브 퀘스트 트리로 퀘스트 진행 상황을 추적합니다.",
       "lootHelper": "제작 체인을 시각화해 레이드 중 무엇을 루팅해야 하는지 판단할 수 있습니다.",
       "quartermaster": "보관함, 장비, 은신처 요구사항을 한 곳에서 계획합니다.",
-      "maps": "모든 지도와 맵 환경에서 아이템을 어디서 노획할 수 있는지, ARC 적이 어디에 나타나는지 찾아보세요."
+      "maps": "모든 지도와 맵 환경에서 아이템을 어디서 노획할 수 있는지, ARC 적이 어디에 나타나는지 찾아보세요.",
+      "updates": "모든 게임 업데이트를 자세히: 아이템, 레시피, 상인 판매 목록, 퀘스트, 노획물의 변경 사항과 패치 노트에 빠진 내용."
     }
   },
   "pages": {
@@ -1572,6 +1575,114 @@
     },
     "old-items": {
       "noLonger": "다음 용도에 더 이상 쓰이지 않음"
+    }
+  },
+  "updates": {
+    "title": "게임 업데이트",
+    "subtitle": "ARC Raiders 업데이트마다 게임 데이터가 어떻게 바뀌었는지 보여 줍니다. 가치, 레시피, 판매 목록, 퀘스트, 노획물을 게임 파일과 게임 서버에서 가져왔습니다.",
+    "loading": "업데이트 불러오는 중...",
+    "contents": "섹션",
+    "showAll": "전체 {n}개 보기",
+    "kinds": {
+      "major": "대규모 업데이트",
+      "minor": "업데이트",
+      "hotfix": "핫픽스",
+      "server": "서버 업데이트"
+    },
+    "sections": {
+      "highlights": "주요 내용",
+      "items": "신규 및 삭제된 아이템",
+      "itemValues": "아이템 가치",
+      "recipes": "레시피 및 연구",
+      "offers": "상인 판매 목록",
+      "quests": "퀘스트",
+      "projects": "프로젝트 및 원정",
+      "progression": "스킬",
+      "maps": "맵 및 모드",
+      "loot": "노획물",
+      "enemies": "적"
+    },
+    "ops": {
+      "added": "신규",
+      "removed": "삭제",
+      "changed": "변경"
+    },
+    "fields": {
+      "value": "판매 가치",
+      "recycle": "재활용 결과",
+      "scrap": "분해 결과",
+      "repairCost": "수리 비용",
+      "repairDurability": "수리 회복량",
+      "maxStack": "최대 중첩 수",
+      "weight": "무게",
+      "rarity": "희귀도",
+      "cost": "비용",
+      "rewards": "지급",
+      "requires": "필요",
+      "limit": "구매 제한",
+      "limitRefresh": "제한 초기화까지(초)",
+      "acceptRewards": "수락 시 보상",
+      "completeRewards": "보상",
+      "optionalRewards": "선택 보상",
+      "maps": "맵",
+      "budget": "레이드당 맵의 노획물",
+      "scenario": "모드",
+      "objective": "목표",
+      "objectiveAmount": "목표 수량",
+      "levelRewards": "레벨 보상"
+    },
+    "value": {
+      "changed": "변경됨",
+      "yes": "예",
+      "no": "아니요",
+      "all": "모든 맵"
+    },
+    "offer": {
+      "for": "교환 대가",
+      "scrapValue": "{value} 상당의 아이템",
+      "limit": "최대 {n}개",
+      "trader": "상인",
+      "window": "구매 가능 기간"
+    },
+    "quest": {
+      "giver": "의뢰인"
+    },
+    "before": "변경 전",
+    "now": "현재 ({title})",
+    "links": {
+      "patch-notes": "패치 노트",
+      "x": "X에서 보기",
+      "news": "뉴스"
+    },
+    "findings": {
+      "title": "패치 노트에 없는 내용",
+      "intro": "게임 데이터에는 나타나지만 패치 노트와 공지에는 언급되지 않은 내용입니다."
+    },
+    "guide": {
+      "title": "새 아이템 가이드에서 다룸",
+      "sub": "변경 {n}건, 용도와 함께 설명"
+    },
+    "guideLink": "{version} 새 아이템 자세히 보기",
+    "breadcrumb": "이동 경로",
+    "inDepth": "아이템 상세",
+    "guideCta": "새 아이템의 용도, 새로운 쓰임이 생긴 기존 아이템, 전초 기지, 연구, 증폭 무기를 정리했습니다.",
+    "skills": {
+      "added": "신규 스킬",
+      "removed": "삭제된 스킬"
+    },
+    "questsLink": "퀘스트 추적기에서 {version} 퀘스트 보기",
+    "lootIntro": "레이드가 시작될 때 컨테이너와 바닥에 배치되는 노획물의 총 가치입니다(맵의 고정 노획물 테이블 기준). 레이드 중 서버가 생성하는 동적 노획물(ARC 드롭, 다른 레이더 등)은 여기에 추가로 더해집니다.",
+    "recordType": {
+      "items": "아이템",
+      "itemValues": "아이템",
+      "recipes": "레시피",
+      "offers": "상인 판매 목록",
+      "quests": "퀘스트",
+      "projects": "프로젝트",
+      "progression": "스킬",
+      "maps": "맵",
+      "loot": "맵 노획물",
+      "enemies": "적"
     }
   }
 }

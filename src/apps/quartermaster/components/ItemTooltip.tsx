@@ -10,12 +10,17 @@ import { ItemIcon as SharedItemIcon } from '../../../shared/components/ItemIcon'
 import { getRarityClass } from '../../../shared/utils/rarity';
 import { usePrioritizedItems } from '../hooks/usePrioritizedItems';
 
+/**
+ * Without `plannerResult` the tooltip shows the item alone (catalog mode, used outside the
+ * Quartermaster, e.g. the update changelog): no owned count, priority star, craft conditions or
+ * planning column.
+ */
 interface ItemTooltipProps {
   item: PlannerItem;
   itemsMap: ItemsMap;
-  plannerResult: PlannerResult;
-  itemInsights: ItemInsightsMap;
-  ownedQuantity: number | null;
+  plannerResult?: PlannerResult;
+  itemInsights?: ItemInsightsMap;
+  ownedQuantity?: number | null;
   position: { x: number; y: number; maxHeight: number };
   visible: boolean;
   onMouseEnter?: () => void;
@@ -136,8 +141,8 @@ export function ItemTooltip({
   item,
   itemsMap,
   plannerResult,
-  itemInsights,
-  ownedQuantity,
+  itemInsights = {},
+  ownedQuantity = null,
   position,
   visible,
   onMouseEnter,
@@ -149,6 +154,7 @@ export function ItemTooltip({
   const { prioritizedSet, togglePrioritize } = usePrioritizedItems();
   if (!visible) return null;
 
+  const catalogMode = !plannerResult;
   const isPrioritized = prioritizedSet.has(item.id);
   const insight = getEmptyItemInsight(itemInsights, item.id);
   const hasRecipe = !!item.recipe && Object.keys(item.recipe).length > 0;
@@ -160,8 +166,8 @@ export function ItemTooltip({
   const hasLocations = !!item.foundIn && item.foundIn.length > 0;
   const ownedQuantityLabel = ownedQuantity === null ? '?' : ownedQuantity;
 
-  const missingByItemId = new Map(plannerResult.planRows.map((row) => [row.itemId, row.missing]));
-  const craftability = plannerResult.craftability?.[item.id];
+  const missingByItemId = new Map((plannerResult?.planRows ?? []).map((row) => [row.itemId, row.missing]));
+  const craftability = plannerResult?.craftability?.[item.id];
   const hasNeededLists = insight.finalListNeeds.length > 0;
   const getFinalNeedForTarget = (targetItemId: string, listId: string) => (
     itemInsights[targetItemId]?.finalListNeeds.find((need) => need.listId === listId) ?? null
@@ -285,12 +291,14 @@ export function ItemTooltip({
     >
       <div className="qm-item-tooltip__header">
         <SharedItemIcon itemId={item.id} name={item.name} icon={item.icon} rarity={item.rarity} showName={false} className="qm-item-tooltip__icon" />
-        <div className="qm-item-tooltip__have-pill">
-          <Backpack size={13} />
-          <span className={`qm-item-tooltip__have-pill-value ${ownedQuantity === null ? 'qm-item-tooltip__have-pill-value--unknown' : ''}`}>
-            {ownedQuantityLabel}
-          </span>
-        </div>
+        {!catalogMode && (
+          <div className="qm-item-tooltip__have-pill">
+            <Backpack size={13} />
+            <span className={`qm-item-tooltip__have-pill-value ${ownedQuantity === null ? 'qm-item-tooltip__have-pill-value--unknown' : ''}`}>
+              {ownedQuantityLabel}
+            </span>
+          </div>
+        )}
         <div className="qm-item-tooltip__title">
           <h3 className="qm-item-name">{item.name}</h3>
           <div className="qm-item-tooltip__badges">
@@ -303,22 +311,24 @@ export function ItemTooltip({
               </span>
             )}
           </div>
-          <button
-            type="button"
-            className={`qm-item-tooltip__priority-action ${isPrioritized ? 'qm-item-tooltip__priority-action--active' : ''}`}
-            title={isPrioritized
-              ? t('quartermaster.inRaid.prioritizeRemove')
-              : t('quartermaster.inRaid.prioritizeMark')}
-            aria-label={isPrioritized
-              ? t('quartermaster.inRaid.prioritizeRemove')
-              : t('quartermaster.inRaid.prioritizeMark')}
-            onClick={(event) => {
-              event.stopPropagation();
-              togglePrioritize(item.id);
-            }}
-          >
-            <Star size={14} fill={isPrioritized ? 'currentColor' : 'none'} strokeWidth={2} />
-          </button>
+          {!catalogMode && (
+            <button
+              type="button"
+              className={`qm-item-tooltip__priority-action ${isPrioritized ? 'qm-item-tooltip__priority-action--active' : ''}`}
+              title={isPrioritized
+                ? t('quartermaster.inRaid.prioritizeRemove')
+                : t('quartermaster.inRaid.prioritizeMark')}
+              aria-label={isPrioritized
+                ? t('quartermaster.inRaid.prioritizeRemove')
+                : t('quartermaster.inRaid.prioritizeMark')}
+              onClick={(event) => {
+                event.stopPropagation();
+                togglePrioritize(item.id);
+              }}
+            >
+              <Star size={14} fill={isPrioritized ? 'currentColor' : 'none'} strokeWidth={2} />
+            </button>
+          )}
         </div>
       </div>
 

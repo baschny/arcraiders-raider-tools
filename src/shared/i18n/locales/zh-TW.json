@@ -22,7 +22,8 @@
       "amplified": "ARC Raiders 2.0《冰凍小徑》增幅武器如何運作：先升級槍械站，再將滿級武器轉為增幅武器。",
       "crafting": "ARC Raiders 2.0《冰凍小徑》新的製作內容：劫掠中製作、武器貼膜，以及皇帝通道鑰匙。",
       "changes": "ARC Raiders 2.0《冰凍小徑》與 1.45 不同之處：配方、回收、商人庫存與儲藏箱大小。"
-    }
+    },
+    "updates": "逐一詳解 ARC Raiders 的每次更新：物品價值、配方、商人報價、任務、各地圖的戰利品預算，以及更新說明中未提及的改動。"
   },
   "shared": {
     "language": "Language",
@@ -101,7 +102,8 @@
       "lootHelper": "戰利品助手",
       "quartermaster": "軍需官",
       "maps": "地圖",
-      "whatsNew": "《冰凍小徑》物品"
+      "whatsNew": "《冰凍小徑》物品",
+      "updates": "遊戲更新"
     }
   },
   "dashboard": {
@@ -124,7 +126,8 @@
       "quests": "透過互動式任務樹追蹤你的任務進度。",
       "lootHelper": "視覺化製作鏈，幫助你在突襲中判斷該拾取什麼。",
       "quartermaster": "在同一個地方規劃倉庫、裝備與藏身處需求。",
-      "maps": "查詢每張地圖與地圖條件下，物品的搜刮地點和 ARC 敵人的出現位置。"
+      "maps": "查詢每張地圖與地圖條件下，物品的搜刮地點和 ARC 敵人的出現位置。",
+      "updates": "每次遊戲更新的詳細內容：物品、配方、商人報價、任務與搜刮品的變化，以及更新公告遺漏的部分。"
     }
   },
   "pages": {
@@ -1572,6 +1575,114 @@
     },
     "old-items": {
       "noLonger": "不再用於"
+    }
+  },
+  "updates": {
+    "title": "遊戲更新",
+    "subtitle": "ARC Raiders 每次更新中遊戲資料的變化：價值、配方、報價、任務與搜刮品，資料來自遊戲檔案與遊戲伺服器。",
+    "loading": "正在載入更新...",
+    "contents": "章節",
+    "showAll": "顯示全部 {n} 項",
+    "kinds": {
+      "major": "重大更新",
+      "minor": "更新",
+      "hotfix": "緊急修正",
+      "server": "伺服器更新"
+    },
+    "sections": {
+      "highlights": "重點",
+      "items": "新增與移除的物品",
+      "itemValues": "物品價值",
+      "recipes": "配方與研究",
+      "offers": "商人報價",
+      "quests": "任務",
+      "projects": "計畫與遠征",
+      "progression": "技能",
+      "maps": "地圖與模式",
+      "loot": "搜刮品",
+      "enemies": "敵人"
+    },
+    "ops": {
+      "added": "新增",
+      "removed": "移除",
+      "changed": "變更"
+    },
+    "fields": {
+      "value": "出售價值",
+      "recycle": "回收成",
+      "scrap": "拆解成",
+      "repairCost": "修理費用",
+      "repairDurability": "修理恢復量",
+      "maxStack": "堆疊上限",
+      "weight": "重量",
+      "rarity": "稀有度",
+      "cost": "費用",
+      "rewards": "獲得",
+      "requires": "需要",
+      "limit": "購買上限",
+      "limitRefresh": "上限重置時間（秒）",
+      "acceptRewards": "接受任務獎勵",
+      "completeRewards": "獎勵",
+      "optionalRewards": "選擇性獎勵",
+      "maps": "地圖",
+      "budget": "每場突襲的地圖搜刮品",
+      "scenario": "模式",
+      "objective": "目標",
+      "objectiveAmount": "目標數量",
+      "levelRewards": "等級獎勵"
+    },
+    "value": {
+      "changed": "已變更",
+      "yes": "是",
+      "no": "否",
+      "all": "所有地圖"
+    },
+    "offer": {
+      "for": "價格",
+      "scrapValue": "價值 {value} 的物品",
+      "limit": "最多 {n}",
+      "trader": "商人",
+      "window": "可購買時間"
+    },
+    "quest": {
+      "giver": "發布者"
+    },
+    "before": "變更前",
+    "now": "現在（{title}）",
+    "links": {
+      "patch-notes": "更新公告",
+      "x": "在 X 上查看",
+      "news": "新聞"
+    },
+    "findings": {
+      "title": "更新公告中未提及",
+      "intro": "遊戲資料中看得到，但更新公告與官方消息未提及的內容。"
+    },
+    "guide": {
+      "title": "見新物品指南",
+      "sub": "{n} 項變更，並說明其用途"
+    },
+    "guideLink": "{version} 新物品詳解",
+    "breadcrumb": "導覽路徑",
+    "inDepth": "物品詳解",
+    "guideCta": "每件新物品的用途、哪些舊物品有了新用途，以及哨站、研究與增幅武器。",
+    "skills": {
+      "added": "新技能",
+      "removed": "移除的技能"
+    },
+    "questsLink": "在任務追蹤器中查看 {version} 任務",
+    "lootIntro": "每場突襲開始時放置在容器內與地面上的搜刮品總價值，來自地圖的靜態搜刮品表。伺服器在突襲中生成的動態搜刮品（以及 ARC 掉落、其他掠手）不含在內，會額外疊加。",
+    "recordType": {
+      "items": "物品",
+      "itemValues": "物品",
+      "recipes": "配方",
+      "offers": "商人報價",
+      "quests": "任務",
+      "projects": "計畫",
+      "progression": "技能",
+      "maps": "地圖",
+      "loot": "地圖搜刮品",
+      "enemies": "敵人"
     }
   }
 }

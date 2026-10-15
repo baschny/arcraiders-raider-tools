@@ -1,0 +1,34 @@
+@use '../../../shared/styles/variables' as *;
+
+// Breadcrumb of the update pages and the What's New guide: Game updates › 2.0 Frozen Trail › …
+.up-breadcrumb {
+  margin: 0 0 24px;
+  padding: 8px 0 16px;
+  border-bottom: $border-width-thin solid $border-default;
+  font-size: $font-lg;
+
+  ol {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 6px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  a {
+    font-weight: 600;
+    color: $text-accent;
+  }
+
+  &__sep { color: $text-tertiary; }
+
+  [aria-current='page'] { color: $text-secondary; }
+}

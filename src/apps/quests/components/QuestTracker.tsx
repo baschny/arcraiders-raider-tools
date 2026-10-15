@@ -416,16 +416,18 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
 
   // "Filter <version>": show only quests of the newest version plus their direct
   // predecessors, so the new content and where it hooks in are easy to spot.
-  const [showNewOnly, setShowNewOnly] = useState(false);
+  // `?version=<v>` (linked from the update pages) opens the filter on that version.
+  const versionParam = searchParams.get('version');
+  const [showNewOnly, setShowNewOnly] = useState(versionParam != null);
   const newestVersion = useMemo(
-    () => quests.find((quest) => quest.isNew)?.addedIn ?? null,
-    [quests]
+    () => versionParam ?? quests.find((quest) => quest.isNew)?.addedIn ?? null,
+    [quests, versionParam]
   );
   const graphQuests = useMemo(() => {
     if (!showNewOnly || !newestVersion) return quests;
     const visibleIds = new Set<string>();
     quests.forEach((quest) => {
-      if (!quest.isNew) return;
+      if (quest.addedIn !== newestVersion) return;
       visibleIds.add(quest.id);
       quest.previousQuestIds.forEach((prevId) => visibleIds.add(prevId));
     });

@@ -22,7 +22,8 @@
       "amplified": "ARC Raiders 2.0《霜痕小径》增强武器如何运作：升级武器工作台，然后将满级武器转化为增强武器。",
       "crafting": "ARC Raiders 2.0《霜痕小径》新增的可制作内容：局内制作、武器贴花以及“帝王”通道导管钥匙。",
       "changes": "ARC Raiders 2.0《霜痕小径》相比 1.45 的变化：配方、回收、商人库存和储备箱大小。"
-    }
+    },
+    "updates": "逐一详解 ARC Raiders 的每次更新：物品价值、配方、商人报价、任务、各地图的战利品预算，以及补丁说明中未提及的改动。"
   },
   "shared": {
     "language": "语言",
@@ -101,7 +102,8 @@
       "lootHelper": "战利品助手",
       "quartermaster": "军需官",
       "maps": "地图",
-      "whatsNew": "《霜痕小径》物品"
+      "whatsNew": "《霜痕小径》物品",
+      "updates": "游戏更新"
     }
   },
   "dashboard": {
@@ -124,7 +126,8 @@
       "quests": "通过交互式任务树追踪你的任务进度。",
       "lootHelper": "可视化制作链，帮助你在对局中判断该拾取什么。",
       "quartermaster": "在一个页面中规划仓库、配装和藏身处需求。",
-      "maps": "查找每张地图及每种地图条件下可搜刮物品的位置，以及 ARC 敌人的刷新位置。"
+      "maps": "查找每张地图及每种地图条件下可搜刮物品的位置，以及 ARC 敌人的刷新位置。",
+      "updates": "每次游戏更新的详细内容：物品、配方、商人报价、任务和战利品的变化，以及更新公告中遗漏的部分。"
     }
   },
   "pages": {
@@ -1572,6 +1575,114 @@
     },
     "old-items": {
       "noLonger": "不再用于"
+    }
+  },
+  "updates": {
+    "title": "游戏更新",
+    "subtitle": "ARC Raiders 每次更新中游戏数据的变化：价值、配方、报价、任务和战利品，数据来自游戏文件和游戏服务器。",
+    "loading": "正在加载更新...",
+    "contents": "章节",
+    "showAll": "显示全部 {n} 项",
+    "kinds": {
+      "major": "重大更新",
+      "minor": "更新",
+      "hotfix": "热修复",
+      "server": "服务器更新"
+    },
+    "sections": {
+      "highlights": "亮点",
+      "items": "新增与移除的物品",
+      "itemValues": "物品价值",
+      "recipes": "配方与研究",
+      "offers": "商人报价",
+      "quests": "任务",
+      "projects": "计划与远征",
+      "progression": "技能",
+      "maps": "地图与模式",
+      "loot": "战利品",
+      "enemies": "敌人"
+    },
+    "ops": {
+      "added": "新增",
+      "removed": "移除",
+      "changed": "变更"
+    },
+    "fields": {
+      "value": "出售价值",
+      "recycle": "回收可得",
+      "scrap": "拆解可得",
+      "repairCost": "修理费用",
+      "repairDurability": "修理恢复量",
+      "maxStack": "堆叠上限",
+      "weight": "重量",
+      "rarity": "稀有度",
+      "cost": "费用",
+      "rewards": "获得",
+      "requires": "需要",
+      "limit": "购买上限",
+      "limitRefresh": "上限重置时间（秒）",
+      "acceptRewards": "接受任务奖励",
+      "completeRewards": "奖励",
+      "optionalRewards": "可选奖励",
+      "maps": "地图",
+      "budget": "每局地图战利品",
+      "scenario": "模式",
+      "objective": "目标",
+      "objectiveAmount": "目标数量",
+      "levelRewards": "等级奖励"
+    },
+    "value": {
+      "changed": "已变更",
+      "yes": "是",
+      "no": "否",
+      "all": "所有地图"
+    },
+    "offer": {
+      "for": "价格",
+      "scrapValue": "价值 {value} 的物品",
+      "limit": "最多 {n}",
+      "trader": "商人",
+      "window": "可购时间"
+    },
+    "quest": {
+      "giver": "发布者"
+    },
+    "before": "变更前",
+    "now": "现在（{title}）",
+    "links": {
+      "patch-notes": "更新公告",
+      "x": "在 X 上查看",
+      "news": "新闻"
+    },
+    "findings": {
+      "title": "更新公告中未提及",
+      "intro": "游戏数据中可见，但更新公告和官方通告未提及的内容。"
+    },
+    "guide": {
+      "title": "见新物品指南",
+      "sub": "{n} 项变更，并说明其用途"
+    },
+    "guideLink": "{version} 新物品详解",
+    "breadcrumb": "面包屑导航",
+    "inDepth": "物品详解",
+    "guideCta": "每件新物品的用途、哪些旧物品有了新用途，以及哨站、研究和增强武器。",
+    "skills": {
+      "added": "新技能",
+      "removed": "移除的技能"
+    },
+    "questsLink": "在任务追踪器中查看 {version} 任务",
+    "lootIntro": "每局开始时放置在容器内和地面上的战利品总价值，来自地图的静态战利品表。服务器在对局中生成的动态战利品（以及 ARC 掉落、其他奇袭者）不含在内，会额外叠加。",
+    "recordType": {
+      "items": "物品",
+      "itemValues": "物品",
+      "recipes": "配方",
+      "offers": "商人报价",
+      "quests": "任务",
+      "projects": "计划",
+      "progression": "技能",
+      "maps": "地图",
+      "loot": "地图战利品",
+      "enemies": "敌人"
     }
   }
 }

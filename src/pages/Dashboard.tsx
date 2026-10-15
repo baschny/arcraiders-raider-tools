@@ -1,11 +1,20 @@
 import { Link } from 'react-router-dom';
 import { Calendar, Calculator, ListTodo, Package, History, ClipboardList, Map as MapIcon, Sparkles } from 'lucide-react';
 import { trackNavigation } from '../shared/utils/analytics';
+import { DEFAULT_WHATS_NEW_VERSION, whatsNewPath } from '../apps/whats-new/routing';
+import { UPDATES_PATH } from '../apps/updates/routing';
 import { useLocale } from '../shared/context/LocaleContext';
 
 const TOOL_METADATA = {
+  updates: {
+    path: UPDATES_PATH,
+    icon: History,
+    nameKey: 'shared.tools.updates',
+    descriptionKey: 'dashboard.tools.updates',
+  },
+  // The What's New guide (in-depth page of the 2.0 release); kept for site changelog entries.
   'whats-new': {
-    path: '/whats-new/frozen-trail',
+    path: whatsNewPath(DEFAULT_WHATS_NEW_VERSION),
     icon: Sparkles,
     nameKey: 'shared.tools.whatsNew',
     cardNameKey: 'dashboard.whatsNew.title',
@@ -53,7 +62,7 @@ type ToolId = keyof typeof TOOL_METADATA;
 type ChangelogAppId = ToolId | 'all';
 
 const TOOLS: Array<(typeof TOOL_METADATA)[ToolId]> = [
-  TOOL_METADATA['whats-new'],
+  TOOL_METADATA.updates,
   TOOL_METADATA.schedule,
   TOOL_METADATA['craft-calculator'],
   TOOL_METADATA.quests,

@@ -22,7 +22,8 @@
       "amplified": "Jak działają wzmocnione bronie w ARC Raiders 2.0 Mroźny szlak: ulepsz Stację rusznikarską i zamień broń na maksymalnym poziomie we wzmocnioną.",
       "crafting": "Co nowego możesz wytwarzać w ARC Raiders 2.0 Mroźny szlak: wytwory używane podczas rajdu, szablony broni i klucz do Bramy cesarza.",
       "changes": "Co zmieniło się w ARC Raiders 2.0 Mroźny szlak od wersji 1.45: przepisy, przetwarzanie, asortyment handlarzy i rozmiary skrytek."
-    }
+    },
+    "updates": "Każda aktualizacja ARC Raiders w szczegółach: wartości przedmiotów, receptury, oferty handlarzy, zadania, budżety łupów na mapach i to, czego brakuje w opisie zmian."
   },
   "shared": {
     "language": "Language",
@@ -101,7 +102,8 @@
       "lootHelper": "Pomocnik łupu",
       "quartermaster": "Kwatermistrz",
       "maps": "Mapy",
-      "whatsNew": "Przedmioty w Mroźnym szlaku"
+      "whatsNew": "Przedmioty w Mroźnym szlaku",
+      "updates": "Aktualizacje gry"
     }
   },
   "dashboard": {
@@ -124,7 +126,8 @@
       "quests": "Śledź postępy zadań dzięki interaktywnemu drzewu zadań.",
       "lootHelper": "Wizualizuj łańcuchy craftingu, aby wiedzieć, co zbierać podczas rajdów.",
       "quartermaster": "Planuj schowek, wyposażenie i wymagania kryjówki w jednym miejscu.",
-      "maps": "Znajdź, gdzie zdobyć dany przedmiot i gdzie pojawiają się wrogie ARC na każdej mapie i w każdym warunku mapy."
+      "maps": "Znajdź, gdzie zdobyć dany przedmiot i gdzie pojawiają się wrogie ARC na każdej mapie i w każdym warunku mapy.",
+      "updates": "Każda aktualizacja w szczegółach: co zmieniło się w przedmiotach, recepturach, ofertach handlarzy, zadaniach i łupach oraz to, czego brakuje w opisach zmian."
     }
   },
   "pages": {
@@ -1572,6 +1575,114 @@
     },
     "old-items": {
       "noLonger": "Już nie używane do"
+    }
+  },
+  "updates": {
+    "title": "Aktualizacje gry",
+    "subtitle": "Co zmieniło się w danych gry z każdą aktualizacją ARC Raiders: wartości, receptury, oferty, zadania i łupy, na podstawie plików gry i serwerów gry.",
+    "loading": "Ładowanie aktualizacji...",
+    "contents": "Sekcje",
+    "showAll": "Pokaż wszystkie ({n})",
+    "kinds": {
+      "major": "Duża aktualizacja",
+      "minor": "Aktualizacja",
+      "hotfix": "Poprawka",
+      "server": "Aktualizacja serwera"
+    },
+    "sections": {
+      "highlights": "Najważniejsze",
+      "items": "Nowe i usunięte przedmioty",
+      "itemValues": "Wartości przedmiotów",
+      "recipes": "Receptury i badania",
+      "offers": "Oferty handlarzy",
+      "quests": "Zadania",
+      "projects": "Projekty i wyprawy",
+      "progression": "Umiejętności",
+      "maps": "Mapy i tryby",
+      "loot": "Łupy",
+      "enemies": "Wrogowie"
+    },
+    "ops": {
+      "added": "Nowe",
+      "removed": "Usunięte",
+      "changed": "Zmienione"
+    },
+    "fields": {
+      "value": "Wartość sprzedaży",
+      "recycle": "Przetwarzanie na",
+      "scrap": "Rozkład na",
+      "repairCost": "Koszt naprawy",
+      "repairDurability": "Naprawa przywraca",
+      "maxStack": "Rozmiar stosu",
+      "weight": "Waga",
+      "rarity": "Rzadkość",
+      "cost": "Koszt",
+      "rewards": "Daje",
+      "requires": "Wymaga",
+      "limit": "Limit zakupu",
+      "limitRefresh": "Limit odnawia się po (s)",
+      "acceptRewards": "Nagrody za przyjęcie",
+      "completeRewards": "Nagrody",
+      "optionalRewards": "Opcjonalne nagrody",
+      "maps": "Mapy",
+      "budget": "Łupy na mapie na rajd",
+      "scenario": "Tryb",
+      "objective": "Cel",
+      "objectiveAmount": "Wymagana liczba",
+      "levelRewards": "Nagrody za poziomy"
+    },
+    "value": {
+      "changed": "zmieniono",
+      "yes": "tak",
+      "no": "nie",
+      "all": "wszystkie mapy"
+    },
+    "offer": {
+      "for": "za",
+      "scrapValue": "przedmioty o wartości {value}",
+      "limit": "maks. {n}",
+      "trader": "Handlarz",
+      "window": "Dostępne"
+    },
+    "quest": {
+      "giver": "Zleca"
+    },
+    "before": "Przed",
+    "now": "Teraz ({title})",
+    "links": {
+      "patch-notes": "Opis zmian",
+      "x": "Na X",
+      "news": "Wiadomości"
+    },
+    "findings": {
+      "title": "Brak w opisie zmian",
+      "intro": "Co pokazują dane gry, a czego nie wspominają opisy zmian ani ogłoszenia."
+    },
+    "guide": {
+      "title": "Omówione w przewodniku Co nowego",
+      "sub": "Zmiany: {n}, wyjaśnione wraz z tym, do czego służą"
+    },
+    "guideLink": "Nowe przedmioty w {version} w szczegółach",
+    "breadcrumb": "Okruszki nawigacyjne",
+    "inDepth": "Przedmioty w szczegółach",
+    "guideCta": "Do czego służy każdy nowy przedmiot, które stare przedmioty zyskały nowe zastosowania, Posterunek, badania i bronie wzmocnione.",
+    "skills": {
+      "added": "Nowe umiejętności",
+      "removed": "Usunięte umiejętności"
+    },
+    "questsLink": "Pokaż zadania z {version} w narzędziu Śledzenie zadań",
+    "lootIntro": "Łączna wartość łupów rozmieszczonych w pojemnikach i na ziemi na początku rajdu, według statycznych tabel łupów mapy. Dynamiczne łupy generowane przez serwer w trakcie rajdu (oraz drop z ARC i łupy innych łupieżców) dochodzą do tego.",
+    "recordType": {
+      "items": "Przedmiot",
+      "itemValues": "Przedmiot",
+      "recipes": "Receptura",
+      "offers": "Oferta handlarza",
+      "quests": "Zadanie",
+      "projects": "Projekt",
+      "progression": "Umiejętność",
+      "maps": "Mapa",
+      "loot": "Łupy z mapy",
+      "enemies": "Wróg"
     }
   }
 }

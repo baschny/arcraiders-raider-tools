@@ -11,8 +11,8 @@ export interface ItemTileProps {
   /** Small line under the name, e.g. "2000 RP · L2". */
   sublabel?: string;
   selected?: boolean;
-  /** Makes the tile a button. */
-  onClick?: () => void;
+  /** Makes the tile a button (the event gives the tile element, e.g. to place an overlay). */
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   isBlueprint?: boolean;
   /** Omit the name line (the parent shows it elsewhere). */
   hideName?: boolean;

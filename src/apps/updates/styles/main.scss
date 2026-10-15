@@ -1,0 +1,835 @@
+@use '../../../shared/styles/variables' as *;
+// Item tiles are the What's New tiles; the item overlay is the Quartermaster item tooltip.
+@use '../../whats-new/styles/components';
+@use '../../quartermaster/styles/item-tooltip';
+@use 'breadcrumb';
+
+// What's New scale: spacing 8 / 16 / 24 / 40, body 16 px, section titles 22 px, page title 28 px.
+$up-s1: 8px;
+$up-s2: 16px;
+$up-s3: 24px;
+$up-s4: 40px;
+$up-max-width: 1120px;
+$up-green: #4caf50;
+$up-cols: minmax(140px, 0.7fr) minmax(0, 1.2fr) minmax(0, 1.2fr);
+
+.qm-item-name {
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.up-page {
+  max-width: $up-max-width;
+  padding: $up-s3 $up-s2 $up-s4 * 1.5;
+  font-size: $font-xl;
+  color: $text-primary;
+
+  &__header { margin-bottom: $up-s4; }
+
+  &__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: $up-s1 $up-s2;
+    margin: 0 0 $up-s1;
+    font-size: $font-lg;
+    color: $text-secondary;
+  }
+
+  &__major { color: $text-tertiary; }
+
+  &__title {
+    margin: 0 0 $up-s2;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  &__summary {
+    margin: 0;
+    max-width: 72ch;
+    font-size: $font-xl;
+    line-height: 1.55;
+    color: $text-secondary;
+  }
+
+  &__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $up-s3;
+    margin: $up-s2 0 0;
+    font-size: $font-lg;
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      color: $text-accent;
+    }
+  }
+}
+
+.up-kind {
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-size: $font-md;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: $bg-tertiary;
+
+  &--major { background: $action-gold; color: $bg-dark; }
+}
+
+.up-count {
+  margin-left: 6px;
+  font-size: $font-lg;
+  font-weight: 400;
+  color: $text-tertiary;
+}
+
+// ---- contents ------------------------------------------------------------------------------
+.up-toc {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $up-s1;
+  margin: 0 0 $up-s4;
+
+  &__link {
+    padding: 6px 14px;
+    border: $border-width-thin solid $border-default;
+    border-radius: 999px;
+    font-size: $font-lg;
+    color: $text-primary;
+    &:hover { border-color: $border-lighter; }
+  }
+}
+
+// ---- sections ------------------------------------------------------------------------------
+.up-section {
+  margin: 0 0 $up-s4 * 1.5;
+  scroll-margin-top: 64px;
+
+  &__title {
+    margin: 0 0 $up-s3;
+    font-size: 22px;
+    font-weight: 600;
+  }
+}
+
+.up-more {
+  margin-top: $up-s2;
+  padding: 8px 18px;
+  border: $border-width-thin solid $border-default;
+  border-radius: 8px;
+  background: $bg-secondary;
+  font-size: $font-lg;
+  color: $text-primary;
+  cursor: pointer;
+  &:hover { border-color: $border-lighter; }
+}
+
+// ---- highlights: equal rows, 48 px slot, text ----------------------------------------------
+.up-highlights {
+  display: grid;
+  gap: $up-s1;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.up-highlight {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  align-items: center;
+  gap: $up-s2;
+  min-height: 72px;
+  padding: $up-s1 $up-s2 $up-s1 $up-s1;
+  border-radius: 12px;
+  background: $bg-secondary;
+
+  // Item icon or glyph: the same 48 px square in every row.
+  &__slot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    justify-self: center;
+
+    .wn-tile {
+      width: 48px;
+      max-width: 48px;
+      padding: 0;
+      gap: 0;
+    }
+  }
+
+  &__glyph {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    background: color-mix(in srgb, #{$text-accent} 18%, transparent);
+    color: $text-accent;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  &__text {
+    font-size: $font-xl;
+    line-height: 1.4;
+  }
+
+  &__refs {
+    font-size: $font-lg;
+    color: $text-secondary;
+  }
+}
+
+// ---- records: a header line, then Field | Before → Now ---------------------------------------
+// One "ledger" per record. The value columns are capped so Before and Now sit close together;
+// Before is recessed (darker cell, muted text), a hairline with an arrow divides it from Now.
+$up-diff-cols: minmax(120px, 190px) minmax(0, 300px) 32px minmax(0, 300px);
+
+.up-records {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.up-record {
+  border: $border-width-thin solid $border-default;
+  border-radius: 10px;
+  background: $bg-secondary;
+  overflow: hidden;
+
+  &--added { border-left: 3px solid $up-green; }
+  &--removed { border-left: 3px solid #c46a6a; }
+
+  &__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 12px;
+    padding: 10px $up-s2;
+    background: rgba(255, 255, 255, 0.025);
+  }
+
+  // Muted type label after the name ("Quest", "Recipe"); pushed to the right edge.
+  &__type {
+    margin-left: auto;
+    font-size: $font-lg;
+    color: $text-secondary;
+  }
+}
+
+.up-subject {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 12px;
+  min-width: 0;
+
+  .wn-tile { padding: 0; }
+  .wn-tile--inline .wn-tile__name { font-size: $font-xl; font-weight: 600; }
+  .wn-tile--inline .wn-tile__amount { font-size: $font-xl; }
+
+  &__image {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    background: $bg-tertiary;
+    object-fit: contain;
+  }
+
+  &__name {
+    font-size: $font-xl;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+}
+
+// Status tag beside the name: sentence case, quiet for "Changed", coloured for new and removed.
+.up-op {
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: $font-md;
+  font-weight: 600;
+  line-height: 1.5;
+  white-space: nowrap;
+
+  &--added { background: rgba($up-green, 0.16); color: #8fdc9c; }
+  &--removed { background: rgba(220, 80, 80, 0.16); color: #f09a9a; }
+  &--changed { background: transparent; color: $text-tertiary; box-shadow: inset 0 0 0 1px $border-default; }
+}
+
+// In a record head the tag sits on its own line above the item, so icons and names start at the
+// card's left edge on every card; the type label stays at the right of the item line.
+.up-record__head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  row-gap: 8px;
+
+  > .up-op {
+    grid-column: 1 / -1;
+    justify-self: start;
+    padding: 0 8px;
+    font-size: $font-sm;
+    line-height: 18px;
+  }
+}
+
+.up-diff {
+  border-top: $border-width-thin solid $border-default;
+
+  &__row {
+    display: grid;
+    grid-template-columns: $up-diff-cols;
+    align-items: stretch;
+
+    // Row separators on the field and Now cells only: the dark Before column runs unbroken.
+    & + & > .up-diff__field,
+    & + & > .up-diff__now { border-top: $border-width-thin solid rgba(255, 255, 255, 0.05); }
+
+    &--head {
+      font-size: $font-md;
+      font-weight: 600;
+      color: $text-tertiary;
+
+      > * { padding-block: 6px; }
+      .up-diff__now { color: $text-accent; }
+    }
+  }
+
+  &__field {
+    align-self: center;
+    padding: 10px $up-s2;
+    font-size: $font-lg;
+    color: $text-secondary;
+  }
+
+  &__before,
+  &__now {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    padding: 8px 12px;
+  }
+
+  &__before {
+    background: rgba(0, 0, 0, 0.22);
+    color: $text-secondary;
+
+    .up-value { color: $text-secondary; font-weight: 600; }
+    .wn-tile { opacity: 0.75; }
+  }
+
+  &__arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.22) 50%, transparent 50%);
+    color: $text-tertiary;
+  }
+
+}
+
+.up-presence {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  margin: 0;
+  padding: 8px $up-s2 12px;
+  border-top: $border-width-thin solid $border-default;
+  list-style: none;
+
+  li {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: $font-lg;
+  }
+}
+
+// Content of a new offer or quest: label | value rows.
+.up-details {
+  display: grid;
+  border-top: $border-width-thin solid $border-default;
+}
+
+.up-detail {
+  display: grid;
+  grid-template-columns: minmax(120px, 190px) minmax(0, 1fr);
+  align-items: center;
+
+  & + & { border-top: $border-width-thin solid rgba(255, 255, 255, 0.04); }
+
+  &__label {
+    padding: 10px $up-s2;
+    font-size: $font-lg;
+    color: $text-secondary;
+  }
+
+  &__value { padding: 8px 12px; }
+}
+
+.up-value {
+  font-size: $font-2xl;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+
+  &--text { font-size: $font-xl; font-weight: 400; }
+  &--none { color: $text-tertiary; font-weight: 400; }
+}
+
+// Item lists: one tile per line, as the What's New needs lists.
+.up-tiles {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+
+  .wn-tile--inline { max-width: none; }
+  .wn-tile__amount, .wn-tile__name { font-size: $font-lg; }
+}
+
+// Markers against the other side: new in Now, gone since Before, amount changed.
+.up-tile {
+  &--added { box-shadow: inset 0 0 0 1px $up-green; }
+  &--removed { opacity: 0.5; .wn-tile__name { text-decoration: line-through; } }
+  &--changed .wn-tile__amount { color: $text-accent; }
+}
+
+.up-name {
+  font-size: $font-xl;
+
+  &--image {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-size: $font-lg;
+    text-align: center;
+  }
+
+  &__image {
+    border-radius: 8px;
+    background: $bg-tertiary;
+    object-fit: contain;
+  }
+
+  &__amount { font-weight: 700; }
+}
+
+// ---- new / removed items: tile grids ----------------------------------------------------------
+.up-grid-group {
+  margin-bottom: $up-s3;
+
+  &__title {
+    margin: 0 0 $up-s2;
+    font-size: $font-xl;
+    font-weight: 600;
+    color: $text-secondary;
+  }
+
+  &--removed .up-grid { opacity: 0.6; }
+}
+
+.up-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(112px, 1fr));
+  gap: $up-s2;
+  padding: $up-s2;
+  border-radius: 12px;
+  background: $bg-secondary;
+
+  .wn-tile--64 { max-width: none; }
+}
+
+// ---- list page ------------------------------------------------------------------------------
+.up-major {
+  margin: 0 0 $up-s4;
+
+  &__title {
+    margin: 0 0 $up-s2;
+    font-size: 22px;
+    font-weight: 600;
+  }
+}
+
+.up-list {
+  display: grid;
+  gap: $up-s2;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  // The card frame is the item: the release link fills it, the guide link of a major sits below.
+  &__item {
+    border: $border-width-thin solid $border-default;
+    border-radius: 12px;
+    background: $bg-secondary;
+    overflow: hidden;
+
+    &:has(.up-list__link:hover) { border-color: $border-lighter; }
+  }
+
+  &__link {
+    display: grid;
+    gap: $up-s1;
+    padding: $up-s2 $up-s3;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  &__guide {
+    display: flex;
+    align-items: center;
+    gap: $up-s1;
+    padding: 12px $up-s3;
+    border-top: $border-width-thin solid $border-default;
+    font-size: $font-lg;
+    font-weight: 600;
+    color: $text-accent;
+
+    &:hover { background: $bg-tertiary; }
+  }
+
+  &__title { font-size: $font-3xl; font-weight: 700; color: $text-primary; }
+  &__summary { font-size: $font-xl; line-height: 1.5; color: $text-secondary; }
+
+  &__counts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+}
+
+.up-chip {
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: $bg-tertiary;
+  font-size: $font-md;
+  color: $text-secondary;
+
+  strong { color: $text-primary; }
+}
+
+// ---- source links (patch notes, X) ----------------------------------------------------------
+.up-link {
+  font-weight: 600;
+
+
+  &__x { font-size: $font-xl; line-height: 1; }
+}
+
+// Relative change of a number on the Now side.
+.up-delta {
+  margin-left: $up-s1;
+  font-size: $font-lg;
+  font-weight: 700;
+
+  &--up { color: #7fd38f; }
+  &--down { color: #ef8a8a; }
+}
+
+.up-maplink {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
+  text-underline-offset: 3px;
+
+  &:hover { color: $text-accent; text-decoration-color: currentColor; }
+}
+
+// ---- skills: new and removed, compact ------------------------------------------------------
+.up-skills {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: $up-s3;
+  margin-bottom: $up-s2;
+
+  &__list {
+    display: grid;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-radius: 12px;
+    background: $bg-secondary;
+    overflow: hidden;
+  }
+
+  &__group--removed .up-skill { opacity: 0.6; }
+}
+
+.up-skill {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  align-items: center;
+  gap: $up-s2;
+  padding: 10px $up-s2;
+  border-bottom: $border-width-thin solid $bg-tertiary;
+
+  &__icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    background: $bg-tertiary;
+    object-fit: contain;
+  }
+
+  &__text { display: grid; gap: 2px; }
+
+  &__name { font-size: $font-xl; font-weight: 600; }
+  &__desc { font-size: $font-lg; line-height: 1.4; color: $text-secondary; }
+}
+
+.up-section__applink {
+  display: inline-flex;
+  align-items: center;
+  gap: $up-s1;
+  margin: 0 0 $up-s3;
+  padding: 8px 14px;
+  border: $border-width-thin solid $border-default;
+  border-radius: 8px;
+  background: $bg-secondary;
+  font-size: $font-lg;
+  font-weight: 600;
+  color: $text-accent;
+
+  &:hover { border-color: $text-accent; }
+}
+
+// ---- call to action: the in-depth guide of a major ------------------------------------------
+.up-cta {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: $up-s2;
+  margin: (-$up-s2) 0 $up-s4;
+  padding: $up-s2 $up-s3 $up-s2 $up-s2;
+  border: 1px solid color-mix(in srgb, #{$text-accent} 45%, transparent);
+  border-radius: 12px;
+  background: color-mix(in srgb, #{$text-accent} 10%, #{$bg-secondary});
+  color: $text-primary;
+
+  &:hover {
+    border-color: $text-accent;
+    color: $text-primary;
+    background: color-mix(in srgb, #{$text-accent} 16%, #{$bg-secondary});
+  }
+
+  &__glyph {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    background: color-mix(in srgb, #{$text-accent} 22%, transparent);
+    color: $text-accent;
+  }
+
+  &__text { display: flex; flex-direction: column; gap: 4px; }
+  &__title { font-size: $font-2xl; font-weight: 700; }
+  &__sub { font-size: $font-lg; line-height: 1.45; color: $text-secondary; }
+  &__arrow { color: $text-accent; }
+}
+
+// ---- findings: what the patch notes do not mention (this page's own information) ------------
+.up-section--findings {
+  .up-section__title {
+    display: flex;
+    align-items: center;
+    gap: $up-s1;
+    color: $action-gold;
+  }
+
+  .up-section__icon { flex: none; }
+}
+
+.up-section__intro {
+  margin: (-$up-s2) 0 $up-s2;
+  font-size: $font-lg;
+  color: $text-secondary;
+}
+
+.up-highlights--findings .up-highlight {
+  border-left: 4px solid $action-gold;
+  // The border takes 4 px of the padding, so the icons line up with the highlights above.
+  padding-left: $up-s1 - 4px;
+
+  .up-highlight__glyph {
+    background: color-mix(in srgb, #{$action-gold} 18%, transparent);
+    color: $action-gold;
+  }
+}
+
+.up-chip--findings {
+  background: color-mix(in srgb, #{$action-gold} 20%, transparent);
+  color: $action-gold;
+
+  strong { color: $action-gold; }
+}
+
+// ---- sections covered by the What's New guide ------------------------------------------------
+.up-guide {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: $up-s2;
+  padding: $up-s2;
+  border: $border-width-thin solid $border-default;
+  border-radius: 12px;
+  background: $bg-secondary;
+  color: $text-primary;
+
+  &:hover { border-color: $text-accent; color: $text-primary; }
+
+  &__text { display: flex; flex-direction: column; gap: 2px; }
+  &__title { font-size: $font-xl; font-weight: 600; }
+  &__sub { font-size: $font-lg; color: $text-secondary; }
+}
+
+// ---- trader cards: new offers grouped as the studio announces them --------------------------
+.up-trader {
+  border-radius: 12px;
+  background: $bg-secondary;
+  overflow: hidden;
+
+  &__head {
+    display: flex;
+    align-items: center;
+    gap: $up-s2;
+    padding: $up-s2;
+    border-bottom: $border-width-thin solid $border-default;
+  }
+
+  &__portrait {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: $bg-tertiary;
+
+    &--glyph {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $text-accent;
+    }
+  }
+
+  &__title { display: flex; flex-direction: column; gap: 2px; flex: 1; }
+  &__name { font-size: $font-2xl; font-weight: 700; }
+  &__period { font-size: $font-lg; color: $text-secondary; }
+
+  &__offers {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  }
+}
+
+.up-offer {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr) auto;
+  align-items: start;
+  gap: $up-s2;
+  padding: $up-s2;
+  border-bottom: $border-width-thin solid $bg-tertiary;
+
+  &__reward .wn-tile { padding: 0; }
+
+  &__glyph {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 8px;
+    background: $bg-tertiary;
+    color: $text-tertiary;
+  }
+
+  &__text { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+
+  &__name {
+    font-size: $font-xl;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  &__type {
+    font-size: $font-md;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: $text-tertiary;
+  }
+
+  &__cost {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 4px;
+  }
+
+  &__value { font-size: $font-lg; font-weight: 600; color: $text-secondary; }
+
+  &__limit {
+    padding: 2px 8px;
+    border-radius: 6px;
+    background: $bg-tertiary;
+    font-size: $font-md;
+    color: $text-secondary;
+    white-space: nowrap;
+  }
+
+  .up-tiles { gap: 2px; }
+}
+
+.up-accepts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+
+  &__item {
+    --item-icon-size: 32px;
+    --item-icon-padding: 2px;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+  }
+}
+
+// ---- mobile: subject above, Before | Now below ------------------------------------------------
+@media (max-width: $breakpoint-mobile) {
+  // Diff rows: the field on its own line, then Before → Now (smaller icons in the narrow cells).
+  .up-diff .wn-tile--inline { --item-icon-size: 32px; }
+  .up-diff .up-tiles .wn-tile__amount, .up-diff .up-tiles .wn-tile__name { font-size: $font-md; }
+
+  .up-diff__row {
+    grid-template-columns: minmax(0, 1fr) 28px minmax(0, 1fr);
+
+    > .up-diff__field { grid-column: 1 / -1; padding-bottom: 0; }
+    &--head > :first-child { display: none; }
+  }
+
+  .up-detail { grid-template-columns: minmax(0, 1fr); }
+  .up-detail__label { padding-bottom: 0; }
+
+  .up-highlight { grid-template-columns: 56px minmax(0, 1fr); gap: $up-s1; }
+
+}

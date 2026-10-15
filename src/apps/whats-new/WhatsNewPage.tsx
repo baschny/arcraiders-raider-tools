@@ -6,6 +6,8 @@ import { useWhatsNewData, type WhatsNewPageData } from './hooks/useWhatsNewData'
 import { TabBar } from './components';
 import { AmplifiedTab, ChangesTab, CraftingTab, NewItemsTab, OldItemsTab, OutpostTab, ResearchTab } from './tabs';
 import type { WhatsNewTab } from './tabConfig';
+import { releaseOfWhatsNew, type WhatsNewVersion } from './routing';
+import { Breadcrumb } from '../updates/components/Breadcrumb';
 
 const TAB_COMPONENTS: Record<WhatsNewTab, (props: { data: WhatsNewPageData }) => React.JSX.Element> = {
   'new-items': NewItemsTab,
@@ -18,7 +20,7 @@ const TAB_COMPONENTS: Record<WhatsNewTab, (props: { data: WhatsNewPageData }) =>
 };
 
 export interface WhatsNewPageProps {
-  version: string;
+  version: WhatsNewVersion;
   tab: WhatsNewTab;
 }
 
@@ -32,12 +34,14 @@ export function WhatsNewPage({ version, tab }: WhatsNewPageProps) {
     window.scrollTo({ top: 0 });
   }, [tab]);
 
+  const release = releaseOfWhatsNew(version);
   if (loading) return <LoadingSpinner message={t('whatsNew.loading')} />;
   if (error || !data) return <ErrorDisplay message={error ?? t('shared.errorPrefix')} />;
 
   const Tab = TAB_COMPONENTS[tab];
   return (
     <div className="wn-page" lang={locale} data-version={version} data-tab={tab}>
+      <Breadcrumb crumbs={[{ label: release.title, to: release.path }, { label: t('updates.inDepth') }]} />
       <header className="wn-page__header">
         <h1 className="wn-page__title">{t('whatsNew.title')}</h1>
         <p className="wn-page__subtitle">{t('whatsNew.subtitle')}</p>

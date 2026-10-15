@@ -22,7 +22,8 @@
       "amplified": "Comment fonctionnent les armes amplifiées dans ARC Raiders 2.0 Traînée gelée : améliorez l’armurier, puis transformez une arme de niveau maximum en arme amplifiée.",
       "crafting": "Ce que vous pouvez fabriquer de nouveau dans ARC Raiders 2.0 Traînée gelée : fabrications en partie, décorations d’armes et clé de la passerelle de l’Empereur.",
       "changes": "Ce qui a changé dans ARC Raiders 2.0 Traînée gelée depuis la 1.45 : recettes, recyclage, stocks des commerçants et tailles de réserve."
-    }
+    },
+    "updates": "Chaque mise à jour d'ARC Raiders en détail : valeurs des objets, recettes, offres des marchands, quêtes, budgets de butin par carte et ce que les notes de patch ne disent pas."
   },
   "shared": {
     "language": "Language",
@@ -101,7 +102,8 @@
       "lootHelper": "Assistant de loot",
       "quartermaster": "Intendant",
       "maps": "Cartes",
-      "whatsNew": "Objets de Traînée gelée"
+      "whatsNew": "Objets de Traînée gelée",
+      "updates": "Mises à jour du jeu"
     }
   },
   "dashboard": {
@@ -124,7 +126,8 @@
       "quests": "Suivez votre progression de quêtes avec un arbre de quêtes interactif.",
       "lootHelper": "Visualisez les chaînes de craft pour savoir quoi looter pendant les raids.",
       "quartermaster": "Planifiez votre réserve, votre équipement et les besoins de votre repaire au même endroit.",
-      "maps": "Trouvez où récupérer un objet et où apparaissent les ARC sur chaque carte et dans chaque condition de carte."
+      "maps": "Trouvez où récupérer un objet et où apparaissent les ARC sur chaque carte et dans chaque condition de carte.",
+      "updates": "Chaque mise à jour du jeu en détail : ce qui change dans les objets, recettes, offres des traders, quêtes et butin, et ce que les notes de mise à jour omettent."
     }
   },
   "pages": {
@@ -1572,6 +1575,114 @@
     },
     "old-items": {
       "noLonger": "N’est plus utilisé pour"
+    }
+  },
+  "updates": {
+    "title": "Mises à jour du jeu",
+    "subtitle": "Ce qui change dans les données du jeu à chaque mise à jour d’ARC Raiders : valeurs, recettes, offres, quêtes et butin, d’après les fichiers du jeu et les serveurs.",
+    "loading": "Chargement des mises à jour…",
+    "contents": "Sections",
+    "showAll": "Tout afficher ({n})",
+    "kinds": {
+      "major": "Mise à jour majeure",
+      "minor": "Mise à jour",
+      "hotfix": "Correctif urgent",
+      "server": "Mise à jour serveur"
+    },
+    "sections": {
+      "highlights": "À retenir",
+      "items": "Objets nouveaux et supprimés",
+      "itemValues": "Valeurs des objets",
+      "recipes": "Recettes et recherche",
+      "offers": "Offres des traders",
+      "quests": "Quêtes",
+      "projects": "Projets et expéditions",
+      "progression": "Compétences",
+      "maps": "Cartes et modes",
+      "loot": "Butin",
+      "enemies": "Ennemis"
+    },
+    "ops": {
+      "added": "Nouveau",
+      "removed": "Supprimé",
+      "changed": "Modifié"
+    },
+    "fields": {
+      "value": "Valeur de revente",
+      "recycle": "Recyclage en",
+      "scrap": "Récupération en",
+      "repairCost": "Coût de réparation",
+      "repairDurability": "Réparation restaure",
+      "maxStack": "Taille de pile",
+      "weight": "Poids",
+      "rarity": "Rareté",
+      "cost": "Coût",
+      "rewards": "Donne",
+      "requires": "Nécessite",
+      "limit": "Limite d’achat",
+      "limitRefresh": "La limite se réinitialise après (s)",
+      "acceptRewards": "Récompenses à l’acceptation",
+      "completeRewards": "Récompenses",
+      "optionalRewards": "Récompenses facultatives",
+      "maps": "Cartes",
+      "budget": "Butin sur la carte par raid",
+      "scenario": "Mode",
+      "objective": "Objectif",
+      "objectiveAmount": "Quantité à atteindre",
+      "levelRewards": "Récompenses de niveau"
+    },
+    "value": {
+      "changed": "modifié",
+      "yes": "oui",
+      "no": "non",
+      "all": "toutes les cartes"
+    },
+    "offer": {
+      "for": "contre",
+      "scrapValue": "objets d’une valeur de {value}",
+      "limit": "max. {n}",
+      "trader": "Trader",
+      "window": "Disponible"
+    },
+    "quest": {
+      "giver": "Donnée par"
+    },
+    "before": "Avant",
+    "now": "Maintenant ({title})",
+    "links": {
+      "patch-notes": "Notes de mise à jour",
+      "x": "Sur X",
+      "news": "Actualités"
+    },
+    "findings": {
+      "title": "Absent des notes de mise à jour",
+      "intro": "Ce que montrent les données du jeu et que les notes de mise à jour et les annonces ne mentionnent pas."
+    },
+    "guide": {
+      "title": "Détaillé dans le guide des nouveautés",
+      "sub": "{n} changements, expliqués avec leur utilité"
+    },
+    "guideLink": "Les nouveaux objets de la {version} en détail",
+    "breadcrumb": "Fil d’Ariane",
+    "inDepth": "Objets en détail",
+    "guideCta": "À quoi sert chaque nouvel objet, quels anciens objets ont de nouveaux usages, l’avant-poste, la recherche et les armes amplifiées.",
+    "skills": {
+      "added": "Nouvelles compétences",
+      "removed": "Compétences supprimées"
+    },
+    "questsLink": "Voir les quêtes de la {version} dans le suivi de quêtes",
+    "lootIntro": "Valeur totale du butin placé dans les conteneurs et au sol au début d’un raid, d’après les tables de butin statiques de la carte. Le butin dynamique généré par le serveur pendant le raid (ainsi que les drops d’ARC et des autres raiders) s’y ajoute.",
+    "recordType": {
+      "items": "Objet",
+      "itemValues": "Objet",
+      "recipes": "Recette",
+      "offers": "Offre de trader",
+      "quests": "Quête",
+      "projects": "Projet",
+      "progression": "Compétence",
+      "maps": "Carte",
+      "loot": "Butin de la carte",
+      "enemies": "Ennemi"
     }
   }
 }

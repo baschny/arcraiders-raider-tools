@@ -61,6 +61,12 @@ const QuartermasterApp = lazy(() =>
 const WhatsNewApp = lazy(() =>
   import('./apps/whats-new').then((m) => ({ default: m.WhatsNewApp }))
 );
+const LegacyWhatsNewRedirect = lazy(() =>
+  import('./apps/whats-new').then((m) => ({ default: m.LegacyWhatsNewRedirect }))
+);
+const UpdatesApp = lazy(() =>
+  import('./apps/updates').then((m) => ({ default: m.UpdatesApp }))
+);
 
 /**
  * The router of the current language: its basename is the language's URL prefix (`/de`), so app
@@ -81,7 +87,10 @@ function LocaleRouter() {
             <Route path="quartermaster" element={<QuartermasterApp />} />
             <Route path="maps/:mapSlug?" element={<MapsApp />} />
             <Route path="map-sizes" element={<MapSizesApp />} />
-            <Route path="whats-new/:version?/:tab?" element={<WhatsNewApp />} />
+            {/* The What's New guide is the in-depth page of its release; its former URLs redirect. */}
+            <Route path="whats-new/:version?/:tab?" element={<LegacyWhatsNewRedirect />} />
+            <Route path="updates/:release/details/:tab?" element={<WhatsNewApp />} />
+            <Route path="updates/:id?" element={<UpdatesApp />} />
             <Route path="profile" element={<Profile />}>
               <Route index element={<Navigate to="arctracker" replace />} />
               <Route path="arctracker" element={<ArcTrackerSection />} />

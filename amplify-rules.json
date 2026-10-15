@@ -1,0 +1,67 @@
+[
+  {
+    "source": "/whats-new",
+    "target": "/updates/2026-10-08-frozen-trail/details/",
+    "status": "301"
+  },
+  {
+    "source": "/whats-new/",
+    "target": "/updates/2026-10-08-frozen-trail/details/",
+    "status": "301"
+  },
+  {
+    "source": "/whats-new/frozen-trail",
+    "target": "/updates/2026-10-08-frozen-trail/details/",
+    "status": "301"
+  },
+  {
+    "source": "/whats-new/frozen-trail/",
+    "target": "/updates/2026-10-08-frozen-trail/details/",
+    "status": "301"
+  },
+  {
+    "source": "/whats-new/frozen-trail/<tab>",
+    "target": "/updates/2026-10-08-frozen-trail/details/<tab>/",
+    "status": "301"
+  },
+  {
+    "source": "/whats-new/frozen-trail/<tab>/",
+    "target": "/updates/2026-10-08-frozen-trail/details/<tab>/",
+    "status": "301"
+  },
+  {
+    "source": "/<lang>/whats-new",
+    "target": "/<lang>/updates/2026-10-08-frozen-trail/details/",
+    "status": "301"
+  },
+  {
+    "source": "/<lang>/whats-new/",
+    "target": "/<lang>/updates/2026-10-08-frozen-trail/details/",
+    "status": "301"
+  },
+  {
+    "source": "/<lang>/whats-new/frozen-trail",
+    "target": "/<lang>/updates/2026-10-08-frozen-trail/details/",
+    "status": "301"
+  },
+  {
+    "source": "/<lang>/whats-new/frozen-trail/",
+    "target": "/<lang>/updates/2026-10-08-frozen-trail/details/",
+    "status": "301"
+  },
+  {
+    "source": "/<lang>/whats-new/frozen-trail/<tab>",
+    "target": "/<lang>/updates/2026-10-08-frozen-trail/details/<tab>/",
+    "status": "301"
+  },
+  {
+    "source": "/<lang>/whats-new/frozen-trail/<tab>/",
+    "target": "/<lang>/updates/2026-10-08-frozen-trail/details/<tab>/",
+    "status": "301"
+  },
+  {
+    "source": "/<*>",
+    "target": "/index.html",
+    "status": "404-200"
+  }
+]

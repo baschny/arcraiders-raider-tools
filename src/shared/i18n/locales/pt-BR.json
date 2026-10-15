@@ -22,7 +22,8 @@
       "amplified": "Como funcionam as armas amplificadas em ARC Raiders 2.0 Trilha Congelada: aprimore o Armeiro e transforme uma arma de nível máximo em uma arma amplificada.",
       "crafting": "O que há de novo para fabricar em ARC Raiders 2.0 Trilha Congelada: fabricações durante a incursão, estampas de arma e a chave da Entrada de Imperador.",
       "changes": "O que mudou em ARC Raiders 2.0 Trilha Congelada desde a 1.45: receitas, reciclagem, estoque dos comerciantes e tamanhos de armazenamento."
-    }
+    },
+    "updates": "Cada atualização de ARC Raiders em detalhes: valores de itens, receitas, ofertas de comerciantes, missões, orçamentos de saque por mapa e o que as notas de atualização não contam."
   },
   "shared": {
     "language": "Idioma",
@@ -67,7 +68,8 @@
       "lootHelper": "Assistente de loot",
       "quartermaster": "Quartermaster",
       "maps": "Mapas",
-      "whatsNew": "Itens de Trilha Congelada"
+      "whatsNew": "Itens de Trilha Congelada",
+      "updates": "Atualizações do jogo"
     }
   },
   "dashboard": {
@@ -90,7 +92,8 @@
       "quests": "Acompanhe o progresso das suas missões com uma árvore interativa.",
       "lootHelper": "Visualize cadeias de crafting para saber o que pegar durante os raids.",
       "quartermaster": "Planeje seu baú, loadout e requisitos do hideout em um só lugar.",
-      "maps": "Descubra onde saquear um item e onde inimigos ARC surgem em cada mapa e condição de mapa."
+      "maps": "Descubra onde saquear um item e onde inimigos ARC surgem em cada mapa e condição de mapa.",
+      "updates": "Cada atualização do jogo em detalhes: o que mudou em itens, receitas, ofertas de comerciantes, missões e saque, e o que as notas de atualização deixam de fora."
     }
   },
   "pages": {
@@ -1195,6 +1198,114 @@
     },
     "old-items": {
       "noLonger": "Não é mais usado para"
+    }
+  },
+  "updates": {
+    "title": "Atualizações do jogo",
+    "subtitle": "O que mudou nos dados do jogo a cada atualização de ARC Raiders: valores, receitas, ofertas, missões e saque, a partir dos arquivos do jogo e dos servidores do jogo.",
+    "loading": "Carregando atualizações...",
+    "contents": "Seções",
+    "showAll": "Mostrar todos os {n}",
+    "kinds": {
+      "major": "Grande atualização",
+      "minor": "Atualização",
+      "hotfix": "Hotfix",
+      "server": "Atualização de servidor"
+    },
+    "sections": {
+      "highlights": "Destaques",
+      "items": "Itens novos e removidos",
+      "itemValues": "Valores dos itens",
+      "recipes": "Receitas e pesquisas",
+      "offers": "Ofertas de comerciantes",
+      "quests": "Missões",
+      "projects": "Projetos e expedições",
+      "progression": "Habilidades",
+      "maps": "Mapas e modos",
+      "loot": "Saque",
+      "enemies": "Inimigos"
+    },
+    "ops": {
+      "added": "Novo",
+      "removed": "Removido",
+      "changed": "Alterado"
+    },
+    "fields": {
+      "value": "Valor de venda",
+      "recycle": "Ao reciclar",
+      "scrap": "Desmonta para",
+      "repairCost": "Custo de conserto",
+      "repairDurability": "Conserto restaura",
+      "maxStack": "Tamanho da pilha",
+      "weight": "Peso",
+      "rarity": "Raridade",
+      "cost": "Custo",
+      "rewards": "Dá",
+      "requires": "Requer",
+      "limit": "Limite de compra",
+      "limitRefresh": "Limite reinicia após (s)",
+      "acceptRewards": "Recompensas ao aceitar",
+      "completeRewards": "Recompensas",
+      "optionalRewards": "Recompensas opcionais",
+      "maps": "Mapas",
+      "budget": "Saque no mapa por incursão",
+      "scenario": "Modo",
+      "objective": "Objetivo",
+      "objectiveAmount": "Quantidade do objetivo",
+      "levelRewards": "Recompensas de nível"
+    },
+    "value": {
+      "changed": "alterado",
+      "yes": "sim",
+      "no": "não",
+      "all": "todos os mapas"
+    },
+    "offer": {
+      "for": "por",
+      "scrapValue": "itens no valor de {value}",
+      "limit": "máx. {n}",
+      "trader": "Comerciante",
+      "window": "Disponível"
+    },
+    "quest": {
+      "giver": "Entregue por"
+    },
+    "before": "Antes",
+    "now": "Agora ({title})",
+    "links": {
+      "patch-notes": "Notas de atualização",
+      "x": "No X",
+      "news": "Notícias"
+    },
+    "findings": {
+      "title": "Fora das notas de atualização",
+      "intro": "O que os dados do jogo mostram e as notas de atualização e os comunicados não mencionam."
+    },
+    "guide": {
+      "title": "Abordado no guia de Novidades",
+      "sub": "{n} mudanças, explicadas com a sua finalidade"
+    },
+    "guideLink": "Itens novos na {version} em detalhes",
+    "breadcrumb": "Trilha de navegação",
+    "inDepth": "Itens em detalhes",
+    "guideCta": "Para que serve cada item novo, quais itens antigos ganharam novos usos, o Posto Avançado, as pesquisas e as armas Amplificadas.",
+    "skills": {
+      "added": "Habilidades novas",
+      "removed": "Habilidades removidas"
+    },
+    "questsLink": "Ver as missões da {version} no Rastreador de Missões",
+    "lootIntro": "Valor total do saque colocado em contêineres e no chão quando uma incursão começa, a partir das tabelas de saque estáticas do mapa. O saque dinâmico que o servidor gera durante uma incursão (e os drops de ARC e outros raiders) vem além disso.",
+    "recordType": {
+      "items": "Item",
+      "itemValues": "Item",
+      "recipes": "Receita",
+      "offers": "Oferta de comerciante",
+      "quests": "Missão",
+      "projects": "Projeto",
+      "progression": "Habilidade",
+      "maps": "Mapa",
+      "loot": "Saque do mapa",
+      "enemies": "Inimigo"
     }
   }
 }

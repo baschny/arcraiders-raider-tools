@@ -4,12 +4,12 @@ import {
   Calendar,
   ChevronDown,
   ClipboardList,
+  History,
   Map as MapIcon,
   Home,
   ListTodo,
   Menu,
   Package,
-  Sparkles,
 } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
 import { LoginButton } from './LoginButton';
@@ -17,7 +17,7 @@ import { useLocale } from '../context/LocaleContext';
 
 const TOOLS = [
   { path: '/', nameKey: 'app.name', icon: Home },
-  { path: '/whats-new', nameKey: 'shared.tools.whatsNew', icon: Sparkles },
+  { path: '/updates', nameKey: 'shared.tools.updates', icon: History },
   { path: '/schedule', nameKey: 'shared.tools.schedule', icon: Calendar },
   { path: '/craft-calculator', nameKey: 'shared.tools.craftCalculator', icon: Calculator },
   { path: '/quests', nameKey: 'shared.tools.quests', icon: ListTodo },

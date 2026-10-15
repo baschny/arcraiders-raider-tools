@@ -65,6 +65,8 @@ export interface CanonRecord {
 
 export interface CanonItem extends CanonRecord {
   id: number;
+  /** Name from official communication where the game text is a placeholder (arc-data overlay). */
+  officialName?: { en: string; source: string; since: string };
   baseId: number;
   quality: number;
   maxStack: number;
@@ -193,6 +195,12 @@ function readDirRecords<T>(dir: string): Map<number, T> {
     for (const [id, rec] of Object.entries(readJson<Record<string, T>>(path.join(dir, f)))) out.set(Number(id), rec);
   }
   return out;
+}
+
+/** Display name of an item: the official name where the game has a placeholder, else the game's. */
+export function displayNameOf(item: CanonItem | null | undefined): Localization | { en: string } | null {
+  if (!item) return null;
+  return item.officialName ? { en: item.officialName.en } : item.name ?? null;
 }
 
 export function loadArcData(dir: string = GAME_DATA_DIR): ArcData {

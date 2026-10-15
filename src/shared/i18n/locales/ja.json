@@ -22,7 +22,8 @@
       "amplified": "ARC Raiders 2.0「凍った道」の強化武器の仕組み：ガンスミスをアップグレードし、最大レベルの武器を強化武器にします。",
       "crafting": "ARC Raiders 2.0「凍った道」で新しく製作できるもの：レイド中の製作、武器デカール、エンペラーゲートウェイの鍵。",
       "changes": "ARC Raiders 2.0「凍った道」で 1.45 から変わった点：レシピ、リサイクル、トレーダーの在庫、保管庫のサイズ。"
-    }
+    },
+    "updates": "ARC Raidersの各アップデートの詳細：アイテムの価値、レシピ、トレーダーのオファー、クエスト、マップごとのルート予算、パッチノートに載っていない変更。"
   },
   "shared": {
     "language": "Language",
@@ -101,7 +102,8 @@
       "lootHelper": "ルートヘルパー",
       "quartermaster": "補給管理",
       "maps": "マップ",
-      "whatsNew": "凍った道のアイテム"
+      "whatsNew": "凍った道のアイテム",
+      "updates": "ゲームアップデート"
     }
   },
   "dashboard": {
@@ -124,7 +126,8 @@
       "quests": "インタラクティブなクエストツリーでクエスト進行を追跡します。",
       "lootHelper": "クラフトチェーンを可視化し、レイド中に何を拾うべきか判断できます。",
       "quartermaster": "スタッシュ、装備、隠れ家要件を一か所で管理できます。",
-      "maps": "すべてのマップとマップ条件で、アイテムをどこでルートできるか、ARC の敵がどこに出現するかを調べられます。"
+      "maps": "すべてのマップとマップ条件で、アイテムをどこでルートできるか、ARC の敵がどこに出現するかを調べられます。",
+      "updates": "ゲームアップデートを詳しく紹介：アイテム、レシピ、トレーダーのオファー、クエスト、ルートの変更点と、パッチノートに載っていない内容。"
     }
   },
   "pages": {
@@ -1572,6 +1575,114 @@
     },
     "old-items": {
       "noLonger": "もう使わない用途"
+    }
+  },
+  "updates": {
+    "title": "ゲームアップデート",
+    "subtitle": "ARC Raiders の各アップデートでゲームデータがどう変わったか。価値、レシピ、オファー、クエスト、ルートを、ゲームファイルとゲームサーバーから集めています。",
+    "loading": "アップデートを読み込み中...",
+    "contents": "セクション",
+    "showAll": "全 {n} 件を表示",
+    "kinds": {
+      "major": "大型アップデート",
+      "minor": "アップデート",
+      "hotfix": "ホットフィックス",
+      "server": "サーバーアップデート"
+    },
+    "sections": {
+      "highlights": "ハイライト",
+      "items": "新規・削除されたアイテム",
+      "itemValues": "アイテムの価値",
+      "recipes": "レシピと研究",
+      "offers": "トレーダーのオファー",
+      "quests": "クエスト",
+      "projects": "プロジェクトと遠征",
+      "progression": "スキル",
+      "maps": "マップとモード",
+      "loot": "ルート",
+      "enemies": "敵"
+    },
+    "ops": {
+      "added": "新規",
+      "removed": "削除",
+      "changed": "変更"
+    },
+    "fields": {
+      "value": "売却価値",
+      "recycle": "リサイクル後",
+      "scrap": "分解後",
+      "repairCost": "修理コスト",
+      "repairDurability": "修理回復量",
+      "maxStack": "スタック上限",
+      "weight": "重量",
+      "rarity": "レア度",
+      "cost": "コスト",
+      "rewards": "入手",
+      "requires": "必要",
+      "limit": "購入上限",
+      "limitRefresh": "上限リセットまで（秒）",
+      "acceptRewards": "受注時の報酬",
+      "completeRewards": "報酬",
+      "optionalRewards": "追加報酬",
+      "maps": "マップ",
+      "budget": "レイドごとのマップ上のルート",
+      "scenario": "モード",
+      "objective": "目的",
+      "objectiveAmount": "目的の数量",
+      "levelRewards": "レベル報酬"
+    },
+    "value": {
+      "changed": "変更あり",
+      "yes": "はい",
+      "no": "いいえ",
+      "all": "全マップ"
+    },
+    "offer": {
+      "for": "対価",
+      "scrapValue": "価値 {value} 相当のアイテム",
+      "limit": "最大 {n}",
+      "trader": "トレーダー",
+      "window": "提供期間"
+    },
+    "quest": {
+      "giver": "依頼者"
+    },
+    "before": "変更前",
+    "now": "変更後（{title}）",
+    "links": {
+      "patch-notes": "パッチノート",
+      "x": "X で見る",
+      "news": "ニュース"
+    },
+    "findings": {
+      "title": "パッチノートに載っていない変更",
+      "intro": "ゲームデータから分かるが、パッチノートや告知では触れられていない内容です。"
+    },
+    "guide": {
+      "title": "新アイテムガイドで解説",
+      "sub": "{n} 件の変更を、用途とともに解説"
+    },
+    "guideLink": "{version} の新アイテムを詳しく",
+    "breadcrumb": "パンくずリスト",
+    "inDepth": "アイテム詳細",
+    "guideCta": "新アイテムの用途、新しい使い道ができた既存アイテム、前哨基地、研究、強化武器をまとめています。",
+    "skills": {
+      "added": "新スキル",
+      "removed": "削除されたスキル"
+    },
+    "questsLink": "{version} のクエストをクエストトラッカーで見る",
+    "lootIntro": "レイド開始時にコンテナや地面に配置されるルートの合計価値です（マップの静的ルートテーブルより）。レイド中にサーバーが生成する動的ルート（ARC のドロップや他のレイダーのルートなど）は、これに加算されます。",
+    "recordType": {
+      "items": "アイテム",
+      "itemValues": "アイテム",
+      "recipes": "レシピ",
+      "offers": "トレーダーのオファー",
+      "quests": "クエスト",
+      "projects": "プロジェクト",
+      "progression": "スキル",
+      "maps": "マップ",
+      "loot": "マップのルート",
+      "enemies": "敵"
     }
   }
 }

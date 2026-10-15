@@ -22,7 +22,8 @@
       "amplified": "So funktionieren verstärkte Waffen in ARC Raiders 2.0 Überfrorener Pfad: Verbessere die Waffenstation und mache aus einer Waffe auf max. Stufe eine verstärkte Waffe.",
       "crafting": "Was du in ARC Raiders 2.0 Überfrorener Pfad neu herstellen kannst: Herstellung im Raid, Waffenschablonen und der Schlüssel zum Kaiser-Portal.",
       "changes": "Was sich in ARC Raiders 2.0 Überfrorener Pfad seit 1.45 geändert hat: Rezepte, Recycling, Händlerangebot und Lagergrößen."
-    }
+    },
+    "updates": "Jedes ARC Raiders Update im Detail: geänderte Item-Werte, Rezepte, Händlerangebote, Quests, Loot-Budgets pro Karte und was in den Patchnotes fehlt."
   },
   "shared": {
     "language": "Sprache",
@@ -101,7 +102,8 @@
       "lootHelper": "Loot-Helfer",
       "quartermaster": "Quartermaster",
       "maps": "Karten",
-      "whatsNew": "Gegenstände in Überfrorener Pfad"
+      "whatsNew": "Gegenstände in Überfrorener Pfad",
+      "updates": "Spiel-Updates"
     }
   },
   "dashboard": {
@@ -124,7 +126,8 @@
       "quests": "Verfolge deinen Questfortschritt mit einem interaktiven Questbaum.",
       "lootHelper": "Visualisiere Crafting-Ketten, um zu wissen, was du in Raids looten solltest.",
       "quartermaster": "Plane Lager, Ausrüstung und Hideout-Anforderungen an einem Ort.",
-      "maps": "Finde heraus, wo du einen Gegenstand looten kannst und wo ARC-Gegner auf jeder Karte und bei jeder Kartenbedingung auftauchen."
+      "maps": "Finde heraus, wo du einen Gegenstand looten kannst und wo ARC-Gegner auf jeder Karte und bei jeder Kartenbedingung auftauchen.",
+      "updates": "Jedes Spiel-Update im Detail: was sich bei Gegenständen, Rezepten, Händlerangeboten, Quests und Loot geändert hat und was die Patchnotes auslassen."
     }
   },
   "pages": {
@@ -1578,6 +1581,114 @@
     },
     "old-items": {
       "noLonger": "Nicht mehr verwendet für"
+    }
+  },
+  "updates": {
+    "title": "Spiel-Updates",
+    "subtitle": "Was sich mit jedem ARC-Raiders-Update in den Spieldaten geändert hat: Werte, Rezepte, Angebote, Quests und Loot, aus den Spieldateien und von den Spielservern.",
+    "loading": "Updates werden geladen...",
+    "contents": "Abschnitte",
+    "showAll": "Alle {n} anzeigen",
+    "kinds": {
+      "major": "Großes Update",
+      "minor": "Update",
+      "hotfix": "Hotfix",
+      "server": "Server-Update"
+    },
+    "sections": {
+      "highlights": "Highlights",
+      "items": "Neue und entfernte Gegenstände",
+      "itemValues": "Gegenstandswerte",
+      "recipes": "Rezepte und Forschung",
+      "offers": "Händlerangebote",
+      "quests": "Quests",
+      "projects": "Projekte und Expeditionen",
+      "progression": "Fertigkeiten",
+      "maps": "Karten und Modi",
+      "loot": "Loot",
+      "enemies": "Gegner"
+    },
+    "ops": {
+      "added": "Neu",
+      "removed": "Entfernt",
+      "changed": "Geändert"
+    },
+    "fields": {
+      "value": "Verkaufswert",
+      "recycle": "Wird recycelt zu",
+      "scrap": "Wird ausgeschlachtet zu",
+      "repairCost": "Reparaturkosten",
+      "repairDurability": "Reparatur stellt wieder her",
+      "maxStack": "Stapelgröße",
+      "weight": "Gewicht",
+      "rarity": "Seltenheit",
+      "cost": "Kosten",
+      "rewards": "Gibt",
+      "requires": "Erfordert",
+      "limit": "Kauflimit",
+      "limitRefresh": "Limit wird zurückgesetzt nach (s)",
+      "acceptRewards": "Belohnungen bei Annahme",
+      "completeRewards": "Belohnungen",
+      "optionalRewards": "Optionale Belohnungen",
+      "maps": "Karten",
+      "budget": "Loot auf der Karte pro Raid",
+      "scenario": "Modus",
+      "objective": "Ziel",
+      "objectiveAmount": "Zielmenge",
+      "levelRewards": "Stufenbelohnungen"
+    },
+    "value": {
+      "changed": "geändert",
+      "yes": "ja",
+      "no": "nein",
+      "all": "alle Karten"
+    },
+    "offer": {
+      "for": "für",
+      "scrapValue": "Gegenstände im Wert von {value}",
+      "limit": "max. {n}",
+      "trader": "Händler",
+      "window": "Verfügbar"
+    },
+    "quest": {
+      "giver": "Vergeben von"
+    },
+    "before": "Vorher",
+    "now": "Jetzt ({title})",
+    "links": {
+      "patch-notes": "Patchnotes",
+      "x": "Auf X",
+      "news": "News"
+    },
+    "findings": {
+      "title": "Nicht in den Patchnotes",
+      "intro": "Was die Spieldaten zeigen und Patchnotes und Ankündigungen nicht erwähnen."
+    },
+    "guide": {
+      "title": "Im Guide „Neue Gegenstände“ behandelt",
+      "sub": "{n} Änderungen, erklärt mit ihrem Zweck"
+    },
+    "guideLink": "Neue Gegenstände in {version} im Detail",
+    "breadcrumb": "Brotkrümelnavigation",
+    "inDepth": "Gegenstände im Detail",
+    "guideCta": "Wofür jeder neue Gegenstand da ist, welche alten Gegenstände neue Verwendungen bekamen, der Außenposten, Forschung und Verstärkte Waffen.",
+    "skills": {
+      "added": "Neue Fertigkeiten",
+      "removed": "Entfernte Fertigkeiten"
+    },
+    "questsLink": "Die {version}-Quests im Quest-Tracker anzeigen",
+    "lootIntro": "Gesamtwert des Loots, der beim Start eines Raids in Behältern und auf dem Boden liegt, aus den statischen Loot-Tabellen der Karte. Dynamischer Loot, den der Server während eines Raids erzeugt (sowie ARC-Drops und andere Raider), kommt noch dazu.",
+    "recordType": {
+      "items": "Gegenstand",
+      "itemValues": "Gegenstand",
+      "recipes": "Rezept",
+      "offers": "Händlerangebot",
+      "quests": "Quest",
+      "projects": "Projekt",
+      "progression": "Fertigkeit",
+      "maps": "Karte",
+      "loot": "Karten-Loot",
+      "enemies": "Gegner"
     }
   }
 }

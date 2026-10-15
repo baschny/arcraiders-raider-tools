@@ -97,16 +97,16 @@ describe('renderPageHtml', () => {
   });
 
   it('makes the version page the entry point of the update', () => {
-    const html = render('/whats-new/frozen-trail');
+    const html = render('/updates/2026-10-08-frozen-trail/details');
     expect(html).toContain("<title>Frozen Trail: what's new in ARC Raiders 2.0 | ARC Raiders Tools</title>");
-    expect(html).toContain('href="https://raider-tools.app/whats-new/frozen-trail/"');
+    expect(html).toContain('href="https://raider-tools.app/updates/2026-10-08-frozen-trail/details/"');
     expect(html).toContain('/images/og/whats-new-frozen-trail.jpg');
   });
 
   it('points the redirected what-is-new paths to the version page, without alternates', () => {
-    for (const path of ['/whats-new', '/whats-new/frozen-trail/new-items']) {
+    for (const path of ['/whats-new', '/whats-new/frozen-trail', '/whats-new/frozen-trail/new-items', '/updates/2026-10-08-frozen-trail/details/new-items']) {
       const html = render(path, 'fr');
-      expect(html).toContain('<link rel="canonical" href="https://raider-tools.app/fr/whats-new/frozen-trail/" />');
+      expect(html).toContain('<link rel="canonical" href="https://raider-tools.app/fr/updates/2026-10-08-frozen-trail/details/" />');
       expect(html).not.toContain('hreflang');
     }
   });
@@ -127,7 +127,7 @@ describe('sitemap and robots', () => {
     const sitemap = renderSitemap();
     expect(sitemap).toContain('<loc>https://raider-tools.app/</loc>');
     expect(sitemap).toContain('<loc>https://raider-tools.app/de/</loc>');
-    expect(sitemap).toContain('<loc>https://raider-tools.app/zh-TW/whats-new/frozen-trail/research/</loc>');
+    expect(sitemap).toContain('<loc>https://raider-tools.app/zh-TW/updates/2026-10-08-frozen-trail/details/research/</loc>');
     expect(sitemap).toContain('<xhtml:link rel="alternate" hreflang="ko-KR" href="https://raider-tools.app/ko-KR/maps/"/>');
     expect(sitemap).not.toContain('<loc>https://raider-tools.app/whats-new/</loc>');
     expect(sitemap).not.toContain('new-items');
@@ -145,6 +145,6 @@ describe('sitemap and robots', () => {
   it('writes nested routes to their own index.html', () => {
     expect(pageOutputFile(page('/'))).toBe('index.html');
     expect(pageOutputFile(page('/'), 'de')).toBe('de/index.html');
-    expect(pageOutputFile(page('/whats-new/frozen-trail/outpost'), 'pt-BR')).toBe('pt-BR/whats-new/frozen-trail/outpost/index.html');
+    expect(pageOutputFile(page('/updates/2026-10-08-frozen-trail/details/outpost'), 'pt-BR')).toBe('pt-BR/updates/2026-10-08-frozen-trail/details/outpost/index.html');
   });
 });

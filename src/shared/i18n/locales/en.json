@@ -22,7 +22,8 @@
       "amplified": "How Amplified weapons work in ARC Raiders 2.0 Frozen Trail: upgrade the Gunsmith, then turn a max-level weapon into an Amplified one.",
       "crafting": "What is new to craft in ARC Raiders 2.0 Frozen Trail: in-raid crafts, weapon stencils and the Emperor Gateway key.",
       "changes": "What changed in ARC Raiders 2.0 Frozen Trail since 1.45: recipes, recycling, trader stock and stash sizes."
-    }
+    },
+    "updates": "Every ARC Raiders game update in detail: changed item values, recipes, trader offers, quests, loot budgets per map, and what the patch notes left out."
   },
   "shared": {
     "language": "Language",
@@ -101,7 +102,8 @@
       "lootHelper": "Looting Helper",
       "quartermaster": "Quartermaster",
       "maps": "Maps",
-      "whatsNew": "Frozen Trail items"
+      "whatsNew": "Frozen Trail items",
+      "updates": "Game updates"
     }
   },
   "dashboard": {
@@ -124,7 +126,8 @@
       "quests": "Track your quest progress with an interactive quest tree.",
       "lootHelper": "Visualize crafting chains to know what to loot during raids.",
       "quartermaster": "Plan your stash, loadout, and hideout requirements in one place.",
-      "maps": "Find where to loot an item and where ARC enemies spawn on every map and map condition."
+      "maps": "Find where to loot an item and where ARC enemies spawn on every map and map condition.",
+      "updates": "Every game update in detail: what changed in items, recipes, trader offers, quests and loot, and what the patch notes leave out."
     }
   },
   "pages": {
@@ -1791,6 +1794,114 @@
     },
     "old-items": {
       "noLonger": "No longer used for"
+    }
+  },
+  "updates": {
+    "title": "Game updates",
+    "subtitle": "What changed in the game data with each ARC Raiders update: values, recipes, offers, quests and loot, from the game files and the game servers.",
+    "loading": "Loading updates...",
+    "contents": "Sections",
+    "showAll": "Show all {n}",
+    "kinds": {
+      "major": "Major update",
+      "minor": "Update",
+      "hotfix": "Hotfix",
+      "server": "Server update"
+    },
+    "sections": {
+      "highlights": "Highlights",
+      "items": "New and removed items",
+      "itemValues": "Item values",
+      "recipes": "Recipes and research",
+      "offers": "Trader offers",
+      "quests": "Quests",
+      "projects": "Projects and expeditions",
+      "progression": "Skills",
+      "maps": "Maps and modes",
+      "loot": "Loot",
+      "enemies": "Enemies"
+    },
+    "ops": {
+      "added": "New",
+      "removed": "Removed",
+      "changed": "Changed"
+    },
+    "fields": {
+      "value": "Sell value",
+      "recycle": "Recycles into",
+      "scrap": "Scraps into",
+      "repairCost": "Repair cost",
+      "repairDurability": "Repair restores",
+      "maxStack": "Stack size",
+      "weight": "Weight",
+      "rarity": "Rarity",
+      "cost": "Cost",
+      "rewards": "Gives",
+      "requires": "Requires",
+      "limit": "Purchase limit",
+      "limitRefresh": "Limit resets after (s)",
+      "acceptRewards": "Rewards on accept",
+      "completeRewards": "Rewards",
+      "optionalRewards": "Optional rewards",
+      "maps": "Maps",
+      "budget": "Loot on the map per raid",
+      "scenario": "Mode",
+      "objective": "Objective",
+      "objectiveAmount": "Objective amount",
+      "levelRewards": "Level rewards"
+    },
+    "value": {
+      "changed": "changed",
+      "yes": "yes",
+      "no": "no",
+      "all": "all maps"
+    },
+    "offer": {
+      "for": "for",
+      "scrapValue": "items worth {value}",
+      "limit": "max. {n}",
+      "trader": "Trader",
+      "window": "Available"
+    },
+    "quest": {
+      "giver": "Given by"
+    },
+    "before": "Before",
+    "now": "Now ({title})",
+    "links": {
+      "patch-notes": "Patch notes",
+      "x": "On X",
+      "news": "News"
+    },
+    "findings": {
+      "title": "Not in the patch notes",
+      "intro": "What the game data shows and the patch notes and announcements do not mention."
+    },
+    "guide": {
+      "title": "Covered in the What's New guide",
+      "sub": "{n} changes, explained with what they are for"
+    },
+    "guideLink": "New items in {version} in depth",
+    "breadcrumb": "Breadcrumb",
+    "inDepth": "Items in depth",
+    "guideCta": "What each new item is for, which old items got new uses, the Outpost, research and Amplified weapons.",
+    "skills": {
+      "added": "New skills",
+      "removed": "Removed skills"
+    },
+    "questsLink": "Show the {version} quests in the Quest Tracker",
+    "lootIntro": "Total value of the loot placed in containers and on the ground when a raid starts, from the map's static loot tables. Dynamic loot that the server generates during a raid (and ARC drops, other raiders) comes on top of it.",
+    "recordType": {
+      "items": "Item",
+      "itemValues": "Item",
+      "recipes": "Recipe",
+      "offers": "Trader offer",
+      "quests": "Quest",
+      "projects": "Project",
+      "progression": "Skill",
+      "maps": "Map",
+      "loot": "Map loot",
+      "enemies": "Enemy"
     }
   }
 }

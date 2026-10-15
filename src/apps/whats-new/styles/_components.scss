@@ -364,42 +364,77 @@ $green: #4caf50;
 }
 
 // ---- CompareRows --------------------------------------------------------------------------
+// One table: item | Before → Now. Before is recessed (darker cell, muted), a hairline with an
+// arrow divides it from Now; value columns are capped so both sides sit close together.
 .wn-compare {
-  --wn-compare-cols: minmax(120px, 0.8fr) minmax(0, 1.2fr) minmax(0, 1.2fr);
-  display: flex;
-  flex-direction: column;
-  gap: $wn-s2;
+  --wn-compare-cols: minmax(150px, 240px) minmax(0, 320px) 32px minmax(0, 320px);
+  border: $border-width-thin solid $border-default;
+  border-radius: 10px;
+  background: $bg-secondary;
+  overflow: hidden;
 
   &__head, &__row {
     display: grid;
     grid-template-columns: var(--wn-compare-cols);
-    gap: $wn-s3;
-    align-items: center;
+    align-items: stretch;
   }
 
   &__head {
-    padding: 0 $wn-s2;
-    font-size: $font-lg;
+    font-size: $font-md;
     font-weight: 600;
-    color: $text-secondary;
+    color: $text-tertiary;
+    border-bottom: $border-width-thin solid $border-default;
+
+    > * { padding: 8px 12px; }
   }
 
   &__col--hidden { visibility: hidden; }
+  &__col--before { background: rgba(0, 0, 0, 0.22); }
+
+  // Row separators on the item and Now cells only: the dark Before column runs unbroken.
+  &__row + &__row > &__item,
+  &__row + &__row > &__cell--now { border-top: $border-width-thin solid rgba(255, 255, 255, 0.05); }
 
   &__row {
-    padding: $wn-s2;
-    background: $bg-secondary;
-    border-radius: 12px;
-
-    &--removed { opacity: 0.5; }
-    &--added { box-shadow: inset 0 0 0 1px $green; }
+    &--removed { opacity: 0.55; }
+    &--added { box-shadow: inset 3px 0 0 $green; }
   }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+
+    .wn-tile { padding: 0; }
+    .wn-tile__name { font-size: $font-lg; font-weight: 600; }
+  }
+
+  &__cell {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    padding: 8px 12px;
+
+    &--before {
+      background: rgba(0, 0, 0, 0.22);
+      .wn-tile { opacity: 0.75; }
+    }
+  }
+
+  &__arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.22) 50%, transparent 50%);
+    color: $text-tertiary;
+  }
+
 
   &__costs {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     align-items: flex-start;
-    gap: $wn-s1;
+    gap: 4px;
   }
 
   &__cost {
@@ -408,6 +443,14 @@ $green: #4caf50;
   }
 
   &__none { color: $text-tertiary; }
+
+  @media (max-width: $breakpoint-mobile) {
+    --wn-compare-cols: minmax(0, 1fr) 28px minmax(0, 1fr);
+
+    &__head > :first-child { display: none; }
+    &__item { grid-column: 1 / -1; padding-bottom: 0; }
+    .wn-tile--inline { --item-icon-size: 32px; }
+  }
 }
 
 // ---- PurposeGroup -------------------------------------------------------------------------

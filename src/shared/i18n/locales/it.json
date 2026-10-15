@@ -22,7 +22,8 @@
       "amplified": "Come funzionano le armi amplificate in ARC Raiders 2.0 Sentiero gelido: migliora il Banco delle armi e trasforma un'arma al livello massimo in un'arma amplificata.",
       "crafting": "Cosa puoi creare di nuovo in ARC Raiders 2.0 Sentiero gelido: creazioni durante il raid, stencil per armi e la chiave del Varco dell'Imperatore.",
       "changes": "Cosa è cambiato in ARC Raiders 2.0 Sentiero gelido rispetto alla 1.45: ricette, riciclo, merce dei mercanti e dimensioni del deposito."
-    }
+    },
+    "updates": "Ogni aggiornamento di ARC Raiders nel dettaglio: valori degli oggetti, ricette, offerte dei mercanti, missioni, budget di bottino per mappa e ciò che le note della patch non dicono."
   },
   "shared": {
     "language": "Language",
@@ -101,7 +102,8 @@
       "lootHelper": "Assistente loot",
       "quartermaster": "Quartiermastro",
       "maps": "Mappe",
-      "whatsNew": "Oggetti di Sentiero gelido"
+      "whatsNew": "Oggetti di Sentiero gelido",
+      "updates": "Aggiornamenti del gioco"
     }
   },
   "dashboard": {
@@ -124,7 +126,8 @@
       "quests": "Tieni traccia dei progressi missione con un albero missioni interattivo.",
       "lootHelper": "Visualizza catene di crafting per sapere cosa raccogliere durante i raid.",
       "quartermaster": "Pianifica deposito, equipaggiamento e requisiti del rifugio in un unico posto.",
-      "maps": "Scopri dove trovare un oggetto e dove compaiono i nemici ARC su ogni mappa e in ogni condizione."
+      "maps": "Scopri dove trovare un oggetto e dove compaiono i nemici ARC su ogni mappa e in ogni condizione.",
+      "updates": "Ogni aggiornamento del gioco nel dettaglio: cosa è cambiato in oggetti, ricette, offerte dei mercanti, missioni e bottino, e cosa le note sulla patch omettono."
     }
   },
   "pages": {
@@ -1572,6 +1575,114 @@
     },
     "old-items": {
       "noLonger": "Non più usato per"
+    }
+  },
+  "updates": {
+    "title": "Aggiornamenti del gioco",
+    "subtitle": "Cosa è cambiato nei dati di gioco con ogni aggiornamento di ARC Raiders: valori, ricette, offerte, missioni e bottino, dai file di gioco e dai server.",
+    "loading": "Caricamento degli aggiornamenti...",
+    "contents": "Sezioni",
+    "showAll": "Mostra tutti ({n})",
+    "kinds": {
+      "major": "Aggiornamento importante",
+      "minor": "Aggiornamento",
+      "hotfix": "Hotfix",
+      "server": "Aggiornamento del server"
+    },
+    "sections": {
+      "highlights": "In evidenza",
+      "items": "Oggetti nuovi e rimossi",
+      "itemValues": "Valori degli oggetti",
+      "recipes": "Ricette e ricerca",
+      "offers": "Offerte dei mercanti",
+      "quests": "Missioni",
+      "projects": "Progetti e spedizioni",
+      "progression": "Abilità",
+      "maps": "Mappe e modalità",
+      "loot": "Bottino",
+      "enemies": "Nemici"
+    },
+    "ops": {
+      "added": "Nuovo",
+      "removed": "Rimosso",
+      "changed": "Modificato"
+    },
+    "fields": {
+      "value": "Valore di vendita",
+      "recycle": "Si può riciclare in:",
+      "scrap": "Trasforma in",
+      "repairCost": "Costo di riparazione",
+      "repairDurability": "La riparazione ripristina",
+      "maxStack": "Dimensione pila",
+      "weight": "Peso",
+      "rarity": "Rarità",
+      "cost": "Costo",
+      "rewards": "Dà",
+      "requires": "Richiede",
+      "limit": "Limite di acquisto",
+      "limitRefresh": "Il limite si azzera dopo (s)",
+      "acceptRewards": "Ricompense all'accettazione",
+      "completeRewards": "Ricompense",
+      "optionalRewards": "Ricompense facoltative",
+      "maps": "Mappe",
+      "budget": "Bottino sulla mappa per raid",
+      "scenario": "Modalità",
+      "objective": "Obiettivo",
+      "objectiveAmount": "Quantità obiettivo",
+      "levelRewards": "Ricompense di livello"
+    },
+    "value": {
+      "changed": "modificato",
+      "yes": "sì",
+      "no": "no",
+      "all": "tutte le mappe"
+    },
+    "offer": {
+      "for": "per",
+      "scrapValue": "oggetti dal valore di {value}",
+      "limit": "max. {n}",
+      "trader": "Mercante",
+      "window": "Disponibile"
+    },
+    "quest": {
+      "giver": "Assegnata da"
+    },
+    "before": "Prima",
+    "now": "Ora ({title})",
+    "links": {
+      "patch-notes": "Note sulla patch",
+      "x": "Su X",
+      "news": "Notizie"
+    },
+    "findings": {
+      "title": "Non nelle note sulla patch",
+      "intro": "Ciò che mostrano i dati di gioco e che le note sulla patch e gli annunci non menzionano."
+    },
+    "guide": {
+      "title": "Trattato nella guida alle novità",
+      "sub": "{n} modifiche, spiegate con la loro utilità"
+    },
+    "guideLink": "I nuovi oggetti della {version} nel dettaglio",
+    "breadcrumb": "Breadcrumb",
+    "inDepth": "Oggetti nel dettaglio",
+    "guideCta": "A cosa serve ogni nuovo oggetto, quali vecchi oggetti hanno nuovi usi, l'Avamposto, la ricerca e le armi amplificate.",
+    "skills": {
+      "added": "Nuove abilità",
+      "removed": "Abilità rimosse"
+    },
+    "questsLink": "Mostra le missioni della {version} nel Tracker missioni",
+    "lootIntro": "Valore totale del bottino collocato nei contenitori e a terra all'inizio di un raid, dalle tabelle di bottino statiche della mappa. Il bottino dinamico generato dal server durante il raid (e i drop di ARC e degli altri raider) si aggiunge a questo.",
+    "recordType": {
+      "items": "Oggetto",
+      "itemValues": "Oggetto",
+      "recipes": "Ricetta",
+      "offers": "Offerta del mercante",
+      "quests": "Missione",
+      "projects": "Progetto",
+      "progression": "Abilità",
+      "maps": "Mappa",
+      "loot": "Bottino della mappa",
+      "enemies": "Nemico"
     }
   }
 }

@@ -18,6 +18,7 @@ The project is organized as a collection of independent tools located in `src/ap
 - **loot-helper** - Crafting chain visualizer for optimal looting
 - **quartermaster** - Specification-driven inventory and loadout manager
 - **maps** - Interactive maps: where to loot an item and where ARC enemies spawn (see `docs/Maps.md`)
+- **updates** - Update changelog: what changed in the game data with each update, previous/next per release (data from `arc-data/releases/`, see embark-api `docs/Changelog-Design.md`)
 
 Each app is self-contained with its own components, utilities, types, and styles, but shares common infrastructure.
 
@@ -36,6 +37,7 @@ npm run generate:game-data        # public/data/game/ (site schema v2: structure
 npm run generate:item-icons       # public/images/items/, public/images/benches/
 npm run generate:server-mappings  # infra/lambda/data/game-mappings.json (Embark asset id → slug)
 npm run generate:schedule         # event schedule
+npm run generate:updates          # public/data/updates/ (update changelog) from arc-data/releases/
 ```
 
 `generate` runs game-data twice (before and after the icons, so items pick up new icon files).
@@ -61,6 +63,10 @@ plus `sitemap.xml` and `robots.txt`. When adding a public route, add it to `page
 texts in every locale file and run `npm run generate:og-images` (writes `public/images/og/*.jpg` and the
 app icons; commit them). Preview images are English for all languages.
 Response headers (CSP, caching) live in `customHttp.yml`; Amplify ignores headers in `amplify.yml`.
+Redirects and rewrites live in `amplify-rules.json` (all rules of the Amplify app, the SPA fallback last;
+Amplify replaces the whole list on every update). `scripts/amplify-rules.sh` shows the difference to the
+live app, `scripts/amplify-rules.sh apply` replaces it (profile `baschny`). When a page moves, add 301 rules
+for its old URLs (unprefixed and `/<lang>/`) and apply them after the deploy that contains the new page.
 
 Public data files contain slugs (items, quests, projects, maps, benches) or numeric offer/trader/skill ids as
 strings — never other Embark asset ids or internal asset names. Types of all

@@ -22,7 +22,8 @@
       "amplified": "ARC Raiders 2.0 Donmuş Patika'da Güçlendirilmiş silahlar nasıl çalışır: Silahçıyı yükselt, sonra maksimum seviyedeki bir silahı Güçlendirilmiş silaha çevir.",
       "crafting": "ARC Raiders 2.0 Donmuş Patika'da yeni neler üretebilirsin: baskın içi üretimler, silah çıkartmaları ve İmparator Ağ Geçidi anahtarı.",
       "changes": "ARC Raiders 2.0 Donmuş Patika'da 1.45'ten bu yana neler değişti: tarifler, geri dönüştürme, tüccar stokları ve zula boyutları."
-    }
+    },
+    "updates": "Her ARC Raiders güncellemesi ayrıntılı olarak: eşya değerleri, tarifler, tüccar teklifleri, görevler, harita başına ganimet bütçeleri ve yama notlarında olmayanlar."
   },
   "shared": {
     "language": "Language",
@@ -101,7 +102,8 @@
       "lootHelper": "Yağma Yardımcısı",
       "quartermaster": "Levazım",
       "maps": "Haritalar",
-      "whatsNew": "Donmuş Patika eşyaları"
+      "whatsNew": "Donmuş Patika eşyaları",
+      "updates": "Oyun güncellemeleri"
     }
   },
   "dashboard": {
@@ -124,7 +126,8 @@
       "quests": "Etkileşimli görev ağacı ile görev ilerlemeni takip et.",
       "lootHelper": "Craft zincirlerini görselleştirerek baskınlarda ne toplayacağını öğren.",
       "quartermaster": "Zulanı, teçhizatını ve sığınak gereksinimlerini tek bir yerde planla.",
-      "maps": "Her harita ve harita koşulunda bir eşyanın nerede yağmalanabileceğini ve ARC düşmanlarının nerede doğduğunu bul."
+      "maps": "Her harita ve harita koşulunda bir eşyanın nerede yağmalanabileceğini ve ARC düşmanlarının nerede doğduğunu bul.",
+      "updates": "Her oyun güncellemesi ayrıntılı: eşyalarda, tariflerde, tüccar tekliflerinde, görevlerde ve ganimette neyin değiştiği ve yama notlarının atladıkları."
     }
   },
   "pages": {
@@ -1572,6 +1575,114 @@
     },
     "old-items": {
       "noLonger": "Artık şunun için kullanılmıyor"
+    }
+  },
+  "updates": {
+    "title": "Oyun güncellemeleri",
+    "subtitle": "Her ARC Raiders güncellemesiyle oyun verilerinde neyin değiştiği: değerler, tarifler, teklifler, görevler ve ganimet; oyun dosyalarından ve oyun sunucularından.",
+    "loading": "Güncellemeler yükleniyor...",
+    "contents": "Bölümler",
+    "showAll": "Tümünü göster ({n})",
+    "kinds": {
+      "major": "Büyük güncelleme",
+      "minor": "Güncelleme",
+      "hotfix": "Acil yama",
+      "server": "Sunucu güncellemesi"
+    },
+    "sections": {
+      "highlights": "Öne çıkanlar",
+      "items": "Yeni ve kaldırılan eşyalar",
+      "itemValues": "Eşya değerleri",
+      "recipes": "Tarifler ve araştırma",
+      "offers": "Tüccar teklifleri",
+      "quests": "Görevler",
+      "projects": "Projeler ve seferler",
+      "progression": "Yetenekler",
+      "maps": "Haritalar ve modlar",
+      "loot": "Ganimet",
+      "enemies": "Düşmanlar"
+    },
+    "ops": {
+      "added": "Yeni",
+      "removed": "Kaldırıldı",
+      "changed": "Değişti"
+    },
+    "fields": {
+      "value": "Satış değeri",
+      "recycle": "Şuna geri dönüşür",
+      "scrap": "Şuna parçalanır",
+      "repairCost": "Tamir maliyeti",
+      "repairDurability": "Tamir şunu geri verir",
+      "maxStack": "Yığın boyutu",
+      "weight": "Ağırlık",
+      "rarity": "Nadirlik",
+      "cost": "Maliyet",
+      "rewards": "Verir",
+      "requires": "Gerektirir",
+      "limit": "Satın alma sınırı",
+      "limitRefresh": "Sınır sıfırlanma süresi (sn)",
+      "acceptRewards": "Kabul edince ödüller",
+      "completeRewards": "Ödüller",
+      "optionalRewards": "İsteğe bağlı ödüller",
+      "maps": "Haritalar",
+      "budget": "Raid başına haritadaki ganimet",
+      "scenario": "Mod",
+      "objective": "Hedef",
+      "objectiveAmount": "Hedef miktarı",
+      "levelRewards": "Seviye ödülleri"
+    },
+    "value": {
+      "changed": "değişti",
+      "yes": "evet",
+      "no": "hayır",
+      "all": "tüm haritalar"
+    },
+    "offer": {
+      "for": "karşılığı",
+      "scrapValue": "{value} değerinde eşyalar",
+      "limit": "en çok {n}",
+      "trader": "Tüccar",
+      "window": "Müsait"
+    },
+    "quest": {
+      "giver": "Veren"
+    },
+    "before": "Önce",
+    "now": "Şimdi ({title})",
+    "links": {
+      "patch-notes": "Yama notları",
+      "x": "X'te",
+      "news": "Haberler"
+    },
+    "findings": {
+      "title": "Yama notlarında yok",
+      "intro": "Oyun verilerinin gösterdiği, yama notlarında ve duyurularda ise geçmeyenler."
+    },
+    "guide": {
+      "title": "Yenilikler rehberinde ele alındı",
+      "sub": "{n} değişiklik, ne işe yaradıklarıyla birlikte açıklandı"
+    },
+    "guideLink": "{version} sürümündeki yeni eşyalar ayrıntılı",
+    "breadcrumb": "Gezinti yolu",
+    "inDepth": "Eşyalar ayrıntılı",
+    "guideCta": "Her yeni eşyanın ne işe yaradığı, hangi eski eşyaların yeni kullanım kazandığı, Karakol, araştırma ve Güçlendirilmiş silahlar.",
+    "skills": {
+      "added": "Yeni yetenekler",
+      "removed": "Kaldırılan yetenekler"
+    },
+    "questsLink": "{version} görevlerini Görev Takibi'nde göster",
+    "lootIntro": "Raid başlarken konteynerlere ve yere yerleştirilen ganimetin toplam değeri; haritanın statik ganimet tablolarından. Sunucunun raid sırasında ürettiği dinamik ganimet (ve ARC düşürdükleri, diğer raiderlar) bunun üstüne gelir.",
+    "recordType": {
+      "items": "Eşya",
+      "itemValues": "Eşya",
+      "recipes": "Tarif",
+      "offers": "Tüccar teklifi",
+      "quests": "Görev",
+      "projects": "Proje",
+      "progression": "Yetenek",
+      "maps": "Harita",
+      "loot": "Harita ganimeti",
+      "enemies": "Düşman"
     }
   }
 }
