@@ -1058,7 +1058,8 @@
       "pois": "Gebiete & Namen",
       "zones": "Beutezonen",
       "zonesTitle": "Beutezonen im Spiel: rot = reichlich, gelb = dicht, grau = spärlich.",
-      "bounds": "Spielbereich"
+      "bounds": "Spielbereich",
+      "frigateTitle": "Wo die ARC-Fregatte schweben kann (eine Runde nutzt eine Position), wo ihre ARC-Rückgewinner landen und wo ihre Frachtkapseln abgeworfen werden."
     },
     "layers": {
       "title": "Kartenebene: Die Karte im Spiel wechselt, wenn du diese Gebiete betrittst",
@@ -1286,6 +1287,23 @@
     },
     "guides": {
       "puzzle": "Rätsel"
+    },
+    "frigate": {
+      "pose": "Mögliche Fregatten-Position {n} von {count}",
+      "poseOnly": "Fregatten-Position",
+      "posePickOne": "Die Fregatte schwebt in jeder Runde hier",
+      "posePick": "In jeder Runde schwebt die Fregatte an einer dieser {count} Positionen",
+      "altitude": "Rumpfunterseite etwa {height} m über dem Boden",
+      "cargoInReachOne": "{count} Fracht-Abwurfstelle in Reichweite",
+      "cargoInReach": "{count} Fracht-Abwurfstellen in Reichweite",
+      "reclaimer": "ARC-Rückgewinner",
+      "reclaimerLift": "Landet unter der Fregatte und bringt Raider zu ihr hinauf",
+      "reclaimerZone": "Landet {inner}–{outer} m um den Boden unter dem Andockeingang der Fregatte",
+      "reclaimerMax": "Bis zu {count} gleichzeitig aktiv",
+      "forPose": "Für Fregatten-Position {n}",
+      "cargo": "Fracht-Abwurfstelle",
+      "cargoBody": "Hier können die Frachtkapseln der Fregatte landen",
+      "cargoPoses": "In Reichweite von Fregatten-Position {poses}"
     }
   },
   "whatsNew": {

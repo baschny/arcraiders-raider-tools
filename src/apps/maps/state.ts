@@ -129,12 +129,14 @@ export interface Prefs {
   pois: boolean;
   zones: boolean;
   bounds: boolean;
+  /** ARC Frigate layer (poses, Reclaimer landing rings, cargo sites) under the Frigate condition. */
+  frigate: boolean;
   /** Entrance filter only; guide selection is never persisted. */
   puzzleDoors: boolean;
   /** Left bar expanded. */
   side: boolean;
 }
-export const DEFAULT_PREFS: Prefs = { heat: true, height: true, pois: true, zones: false, bounds: true, puzzleDoors: false, side: true };
+export const DEFAULT_PREFS: Prefs = { heat: true, height: true, pois: true, zones: false, bounds: true, frigate: true, puzzleDoors: false, side: true };
 export const PREFS_KEY = 'raider-tools:maps-prefs';
 
 /** Stored prefs over the defaults; the default for every pref that is unreadable, corrupt or of the wrong type. */

@@ -23,6 +23,12 @@ The Maps tool (`src/apps/maps/`) has two routes, switched by the tab bar in its 
 - **ARC mode**: the enemies of the map with the expected number of spawners that can produce each, multi-select
   with one color per enemy, patrol paths, each spawner drawn as the game ping icon of its most probable enemy,
   large and without a shape around it (a ↻ badge: patrols).
+- **ARC Frigate** (under the ARC Frigate condition, both modes; Layers menu toggle, pref `frigate`): every place the
+  Frigate can hover (a round uses one, so the poses are numbered when a map has several) as its footprint with the
+  Frigate ping icon, the ARC Reclaimer landing ring below its docking entry (10–100 m around the ground point) and
+  the cargo drop sites. Hovering a pose or its ring highlights both and the cargo sites in its reach; tooltips give
+  the altitude, the ring and the pose numbers. Data: `frigate` of the map file (embark-api `docs/Map-Features.md`,
+  "ARC Frigate"); drawn by `drawFrigate` in `engine/MapEngine.ts`.
 - **On the map**: hovering or clicking a spot shows its activity group (members ringed; an area hull for local
   groups; a click pins, Esc unpins) and a tooltip (container tag, area and volume, world coordinates, height,
   tables, spawn chance, group, enemy groups and respawn timers). Height marks, loot zones, the playable area, map
@@ -202,7 +208,7 @@ params; default values are left out. `/maps` without a slug shows the Dam (`dam-
 | `enemies` | comma-separated enemy indexes filtered in ARC mode | none |
 
 Changing the map resets `cond` and `layer`. Display preferences (heat map, height marks, area labels, loot zones,
-playable area, left bar open) live in `localStorage` under `raider-tools:maps-prefs`; unreadable or invalid values
+playable area, ARC Frigate layer, left bar open) live in `localStorage` under `raider-tools:maps-prefs`; unreadable or invalid values
 fall back to the defaults. `/map-sizes` carries no state (there is nothing to share but the comparison itself).
 
 ## Scoring

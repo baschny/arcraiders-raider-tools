@@ -13,7 +13,8 @@ import { onIconsLoaded, tintedIcon, tintedImage } from './iconAtlas';
 import { TileLayer } from './tiles';
 
 export type Target = {
-  t: 'socket' | 'spawner' | 'enemy' | 'poi' | 'entrance' | 'action';
+  /** frigate / reclaimer: index into Frigate.poses; cargo: into Frigate.dropsites. */
+  t: 'socket' | 'spawner' | 'enemy' | 'poi' | 'entrance' | 'action' | 'frigate' | 'reclaimer' | 'cargo';
   i: number;
 };
 export type Pin = { t: 'spawner' | 'enemy'; i: number };
@@ -31,6 +32,11 @@ const MIN_S = 0.5, MAX_S = 40;
 const AREA_HUES = [205, 235, 265, 295, 175, 190, 220, 250, 280];
 /** Touch: movement (px) below which a touch still counts as a tap; double tap window (ms) and distance (px). */
 const TAP_SLOP = 8, DOUBLE_TAP_MS = 300, DOUBLE_TAP_PX = 30;
+/**
+ * ARC Frigate layer: footprints in magenta, Reclaimer landing rings in cyan (both apart from the red / yellow loot
+ * zones and the ARC red), cargo drop sites as light tiles. Also the tooltip accents.
+ */
+export const FRIGATE_RGB = '214,92,230', RECLAIMER_RGB = '64,206,222';
 const RAMP: [number, number, number][] = [[80, 160, 220], [90, 200, 190], [230, 215, 90], [235, 150, 60], [225, 80, 60]];
 function ramp(t: number, alpha = 1) {
   const x = Math.min(0.9999, Math.max(0, t)) * (RAMP.length - 1), i = Math.floor(x), f = x - i;
@@ -525,6 +531,8 @@ export class MapEngine {
       ctx.setLineDash([]);
     }
 
+    this.drawFrigate(ctx);
+
     const r = Math.max(2.4, Math.min(6, 2.2 * Math.sqrt(this.view.s)));
     const k = this.markerScale();
     const socketIcons = this.view.s >= SOCKET_ICON_ZOOM;
@@ -685,6 +693,90 @@ export class MapEngine {
     if (bmp) ctx.drawImage(bmp, x0, y0, px, px);
     if (o.patrols) patrolMark(ctx, x, y, glyphR(px));
     if (o.height) heightMark(ctx, x, y, glyphR(px), o.height, true);
+  }
+
+  /**
+   * ARC Frigate (under its condition): every pose the round can pick as a footprint with the Frigate's ping icon (numbered
+   * when there are several), the Reclaimer landing ring below its docking entry, and the cargo drop sites. Hovering a
+   * pose or its ring highlights both and the cargo sites in its reach.
+   */
+  private drawFrigate(ctx: CanvasRenderingContext2D) {
+    const f = this.ex?.frigate;
+    if (!f) return;
+    const m = this.ex!.map, S = this.base() * this.view.s, k = this.markerScale(), hv = this.hover;
+    const toScreen = (uv: UV) => this.toScreen(uv[0], uv[1]);
+    const active = hv && (hv.t === 'frigate' || hv.t === 'reclaimer') ? hv.i : null;
+    const reach = new Set(active != null ? f.poses[active].cargo : []);
+    ctx.save();
+    ctx.lineJoin = 'round';
+    f.poses.forEach((p, i) => {
+      const on = active === i;
+      ctx.beginPath();
+      for (const ring of p.outline) {
+        ring.forEach((uv, j) => {
+          const [x, y] = toScreen(uv);
+          if (j) ctx.lineTo(x, y);
+          else ctx.moveTo(x, y);
+        });
+        ctx.closePath();
+      }
+      ctx.fillStyle = `rgba(${FRIGATE_RGB},${on ? 0.34 : 0.17})`;
+      ctx.fill();
+      ctx.setLineDash(on ? [] : [7, 4]);
+      ctx.lineWidth = on ? 2.2 : 1.5;
+      ctx.strokeStyle = on ? '#ffffff' : `rgba(${FRIGATE_RGB},.95)`;
+      ctx.stroke();
+    });
+    ctx.setLineDash([]);
+    const outer = f.reclaimerRadius[1] ?? 0, inner = f.reclaimerRadius[0] ?? 0;
+    f.poses.forEach((p, i) => {
+      if (!p.reclaimers || !outer) return;
+      const on = active === i, [x, y] = toScreen(p.reclaimers), ro = (outer / (m.world?.[2] || 1)) * S, ri = (inner / (m.world?.[2] || 1)) * S;
+      ctx.beginPath();
+      ctx.arc(x, y, ro, 0, Math.PI * 2);
+      if (ri > 1) {
+        ctx.moveTo(x + ri, y);
+        ctx.arc(x, y, ri, 0, Math.PI * 2, true);
+      }
+      ctx.fillStyle = `rgba(${RECLAIMER_RGB},${on ? 0.3 : 0.14})`;
+      ctx.fill('evenodd');
+      ctx.lineWidth = on ? 2.2 : 1.5;
+      ctx.strokeStyle = on ? '#ffffff' : `rgba(${RECLAIMER_RGB},.95)`;
+      ctx.beginPath();
+      ctx.arc(x, y, ro, 0, Math.PI * 2);
+      ctx.stroke();
+      this.enemyGlyph(ctx, x, y, MARKER_SIZE.enemy * k * 0.8, 'e-reclaimer', `rgb(${RECLAIMER_RGB})`, { hovered: on });
+    });
+    f.dropsites.forEach((uv, j) => {
+      const [x, y] = toScreen(uv), R = 4.5 * k, hot = (hv?.t === 'cargo' && hv.i === j) || reach.has(j);
+      ctx.beginPath();
+      shapePath(ctx, 'tile', x, y, R);
+      ctx.lineWidth = 2.6;
+      ctx.strokeStyle = hot ? '#ffffff' : OUTLINE;
+      ctx.stroke();
+      ctx.fillStyle = hot ? `rgb(${FRIGATE_RGB})` : LIGHT;
+      ctx.fill();
+    });
+    f.poses.forEach((p, i) => {
+      const [x, y] = toScreen(p.uv), sz = MARKER_SIZE.enemy * k;
+      this.enemyGlyph(ctx, x, y, sz, 'e-frigate', `rgb(${FRIGATE_RGB})`, { hovered: active === i });
+      if (f.poses.length < 2) return;
+      // Pose number badge on the icon's upper right.
+      const b = Math.max(6, sz * 0.24), bx = x + glyphR(sz) + b * 0.4, by = y - glyphR(sz) - b * 0.2;
+      ctx.beginPath();
+      ctx.arc(bx, by, b, 0, Math.PI * 2);
+      ctx.fillStyle = DARK;
+      ctx.fill();
+      ctx.lineWidth = 1.2;
+      ctx.strokeStyle = `rgb(${FRIGATE_RGB})`;
+      ctx.stroke();
+      ctx.font = `700 ${Math.round(b * 1.3)}px Urbanist, "Segoe UI", sans-serif`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillStyle = LIGHT;
+      ctx.fillText(String(i + 1), bx, by + 0.5);
+    });
+    ctx.restore();
   }
 
   /** A plain loot dot (a small leaf for nature), dark-outlined; a chevron above / below marks its height. */
@@ -952,7 +1044,24 @@ export class MapEngine {
       const so = nearest(m.sockets.length, (j) => e.socketVisible(j), (j) => [m.sockets[j][0], m.sockets[j][1]], this.view.s >= SOCKET_ICON_ZOOM ? Math.max(9, MARKER_SIZE.socket * k * 0.6) : 9);
       if (so != null) return { t: 'socket', i: so };
     }
+    // ARC Frigate: cargo sites and the pose / Reclaimer icons as points, then the landing rings and footprints as areas.
+    const f = e.frigate;
+    if (f) {
+      const cargo = nearest(f.dropsites.length, () => true, (j) => f.dropsites[j], 9 * k);
+      if (cargo != null) return { t: 'cargo', i: cargo };
+      const pose = nearest(f.poses.length, () => true, (j) => f.poses[j].uv, 14 * k);
+      if (pose != null) return { t: 'frigate', i: pose };
+      const landing = nearest(f.poses.length, (j) => !!f.poses[j].reclaimers, (j) => f.poses[j].reclaimers!, 12 * k);
+      if (landing != null) return { t: 'reclaimer', i: landing };
+    }
     const uv = this.toUv(mx, my);
+    if (f) {
+      const outer = (f.reclaimerRadius[1] ?? 0) / (m.world?.[2] || 1);
+      const ring = f.poses.findIndex((p) => p.reclaimers && Math.hypot(p.reclaimers[0] - uv[0], p.reclaimers[1] - uv[1]) <= outer);
+      if (ring >= 0) return { t: 'reclaimer', i: ring };
+      const pose = f.poses.findIndex((p) => inRings(uv, p.outline));
+      if (pose >= 0) return { t: 'frigate', i: pose };
+    }
     if (m.bounds?.length && !m.bounds.some((poly) => inPoly(uv, poly))) return null;
     if (e.prefs.pois) {
       let poi: number | null = null, bestA = Infinity;
@@ -1004,7 +1113,7 @@ export class MapEngine {
         this.tipShown = true;
         this.onTip({ target, x: mx, y: my, ...this.size() });
         this.requestDraw();
-      }, target.t === 'poi' ? 700 : 120);
+      }, target.t === 'poi' ? 700 : target.t === 'frigate' || target.t === 'reclaimer' ? 300 : 120);
     } else if (this.tipShown) this.onTip({ target, x: mx, y: my, ...this.size() });
   }
 

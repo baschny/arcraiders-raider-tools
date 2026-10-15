@@ -8,7 +8,7 @@ import { CATEGORIES, enemyColor as enemyTypeColor, KINDS, classify, leavesOf, ta
 import { itemNote, itemShares, lootItemsFor, scoreMap, type ItemNote, type MapScore } from './data/scoring';
 import { mapNames, type MapNames } from './data/mapStrings';
 import { useMapStrings } from './data/useMapStrings';
-import type { LootItem, MapCondition, MapData, MapIndex } from './data/types';
+import type { Frigate, LootItem, MapCondition, MapData, MapIndex } from './data/types';
 import { useAllMaps } from './data/useMapData';
 import { condIndex, defaultLayer, useLootableItems, type MapPatch, type MapState, type Prefs } from './state';
 
@@ -45,6 +45,8 @@ export interface Explorer {
   note: ItemNote | null;
   ci: number;
   cond: MapCondition;
+  /** The ARC Frigate layer when the open condition is the Frigate's and the layer is switched on, else null. */
+  frigate: Frigate | null;
   layer: number | null;
   cls: MapClasses;
   spawnP: number[];
@@ -84,6 +86,7 @@ export function useExplorer(index: MapIndex, map: MapData, state: MapState, set:
   const ci = condIndex(map, state.cond);
   const cond = map.conditions[ci];
   const layer = map.layers ? (state.layer ?? defaultLayer(map)) : null;
+  const frigate = map.frigate && map.frigate.condition === cond.key && prefs.frigate ? map.frigate : null;
   const cls = classify(map);
   const spawnP = useMemo(() => map.spawnP[ci] ?? [], [map, ci]);
   const enemyP = useMemo(() => map.enemyP?.[ci] ?? [], [map, ci]);
@@ -166,5 +169,5 @@ export function useExplorer(index: MapIndex, map: MapData, state: MapState, set:
   }, [map, layer, cond, score, cls, spawnP, enemyP, state.show, state.enemies, index, prefs.puzzleDoors]);
 
   const note = useMemo(() => (lootItem ? itemNote(index, lootItem) : null), [index, lootItem]);
-  return { index, map, state, set, prefs, setPrefs, names, areaLabels, lootable, item, lootIdx, lootItem, share, note, ci, cond, layer, cls, spawnP, enemyP, score, mapTotals, condTotals, ...derived };
+  return { index, map, state, set, prefs, setPrefs, names, areaLabels, lootable, item, lootIdx, lootItem, share, note, ci, cond, frigate, layer, cls, spawnP, enemyP, score, mapTotals, condTotals, ...derived };
 }

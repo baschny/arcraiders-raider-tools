@@ -330,6 +330,36 @@ export interface MapData {
   symbols?: PuzzleSymbol[];
   /** Packed level instances of the map (A47). */
   levelInstances?: LevelInstance[];
+  /** ARC Frigate layer (maps with Frigate poses only); missing in older builds. */
+  frigate?: Frigate;
+}
+
+/** One place the ARC Frigate can hover; a round picks one of the map's poses. */
+export interface FrigatePose {
+  uv: UV;
+  /** Heading (degrees, 0 = +u). */
+  yaw: number;
+  /** Height of the hull's underside above the ground below its centre (m). */
+  altitude: number | null;
+  /** Footprint outline rings. */
+  outline: UV[][];
+  /** Ground point below the docking entry: the ARC Reclaimers land around it. */
+  reclaimers: UV | null;
+  /** Cargo drop sites (indexes into Frigate.dropsites) within reach of this pose. */
+  cargo: number[];
+}
+
+export interface Frigate {
+  /** Condition key the layer belongs to (the Frigate map condition). */
+  condition: string | null;
+  poses: FrigatePose[];
+  /** Where the Frigate's cargo pods can land. */
+  dropsites: UV[];
+  /** Reclaimer landing ring around FrigatePose.reclaimers: [inner, outer] radius in cm. */
+  reclaimerRadius: [number | null, number | null];
+  maxReclaimers: number | null;
+  /** The ARC Reclaimer's name (game string). */
+  reclaimer?: { name: string; nameKey?: string };
 }
 
 /**

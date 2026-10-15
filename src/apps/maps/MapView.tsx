@@ -6,7 +6,7 @@ import type { Level } from './data/types';
 import { eligibleEntrances, guideEntranceVisible, guidePins, selectedGuide, resolveSelection, targetCoordinates, type GuideSelection } from './data/puzzles';
 import { GuidePanel, guideActionTooltip } from './GuidePanel';
 import { radioKeys, radioTab } from './radio';
-import { MapEngine, buildHeat, heightCode, type Padding, type Pin, type TipState } from './engine/MapEngine';
+import { FRIGATE_RGB, MapEngine, RECLAIMER_RGB, buildHeat, heightCode, type Padding, type Pin, type TipState } from './engine/MapEngine';
 import type { Explorer } from './model';
 import type { Prefs } from './state';
 import { useMapText } from './text';
@@ -78,6 +78,7 @@ export function MapView({ ex, handle, fitPadding }: { ex: Explorer; handle?: Ref
             {layerToggle('pois', t('maps.overlays.pois'))}
             {layerToggle('zones', t('maps.overlays.zones'), t('maps.overlays.zonesTitle'))}
             {layerToggle('bounds', t('maps.overlays.bounds'))}
+            {map.frigate?.condition === ex.cond.key && layerToggle('frigate', ex.names.of(ex.cond), t('maps.overlays.frigateTitle'))}
           </div>
         )}
       </div>
@@ -218,6 +219,40 @@ function Tooltip({ ex, tip, pinned, engine, opened }: { ex: Explorer; tip: TipSt
       kindLabel = guide.title;
       title = content.title;
       body = [...content.body, location.level ? tm('maps.guides.approxHeight', { height: heightLine(location.level) ?? t('maps.guides.heightUnknown') }) : null];
+    }
+  } else if (target.t === 'frigate' || target.t === 'reclaimer' || target.t === 'cargo') {
+    const f = map.frigate!, n = f.poses.length;
+    kindLabel = names.of(ex.cond);
+    if (target.t === 'frigate') {
+      const p = f.poses[target.i];
+      color = `rgb(${FRIGATE_RGB})`;
+      title = n > 1 ? tm('maps.frigate.pose', { n: tx.num(target.i + 1), count: tx.num(n) }) : t('maps.frigate.poseOnly');
+      body = [
+        plural('maps.frigate.posePick', n),
+        p.altitude != null ? tm('maps.frigate.altitude', { height: tx.num(p.altitude) }) : null,
+        plural('maps.frigate.cargoInReach', p.cargo.length),
+        world(p.uv[0], p.uv[1]),
+      ];
+    } else if (target.t === 'reclaimer') {
+      const p = f.poses[target.i], [inner, outer] = f.reclaimerRadius;
+      color = `rgb(${RECLAIMER_RGB})`;
+      title = f.reclaimer ? names.of(f.reclaimer) : t('maps.frigate.reclaimer');
+      mechanics = [t('maps.frigate.reclaimerLift')];
+      body = [
+        inner != null && outer != null ? tm('maps.frigate.reclaimerZone', { inner: tx.num(Math.round(inner / 100)), outer: tx.num(Math.round(outer / 100)) }) : null,
+        f.maxReclaimers ? tm('maps.frigate.reclaimerMax', { count: tx.num(f.maxReclaimers) }) : null,
+        n > 1 ? tm('maps.frigate.forPose', { n: tx.num(target.i + 1) }) : null,
+        p.reclaimers ? world(p.reclaimers[0], p.reclaimers[1]) : null,
+      ];
+    } else {
+      const d = f.dropsites[target.i], poses = f.poses.flatMap((p, i) => (p.cargo.includes(target.i) ? [tx.num(i + 1)] : []));
+      color = '#f4f3ef';
+      title = t('maps.frigate.cargo');
+      mechanics = [t('maps.frigate.cargoBody')];
+      body = [
+        n > 1 && poses.length ? tm('maps.frigate.cargoPoses', { poses: tx.list(poses) }) : null,
+        world(d[0], d[1]),
+      ];
     }
   } else if (target.t === 'entrance') {
     const { guide, entrance } = eligibleEntrances(map, ex.cond)[target.i];
