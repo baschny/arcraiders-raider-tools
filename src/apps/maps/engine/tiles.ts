@@ -4,6 +4,37 @@
 import type { TileSet } from '../data/types';
 
 export const TILE = 512;
+/**
+ * Map toning: the maps range from dark (Blue Gate, median luminance about 42) to snow white (Pendola Pass, about 124),
+ * while the in-game map shows them at about 50-60. Each map's median moves STRENGTH of the way to TARGET, so the
+ * markers read the same everywhere.
+ */
+const TONE_TARGET = 60, TONE_STRENGTH = 0.6;
+
+/** How to tone a texture after drawing it: a black (`dark`) or white (`light`) veil of that opacity over its pixels. */
+export interface Tone { dark: number; light: number }
+
+/** Median luminance (0-255) of the opaque, non-black pixels of RGBA data; null with too few of them (empty layers). */
+export function medianLuminance(data: Uint8ClampedArray): number | null {
+  const hist = new Uint32Array(256);
+  let n = 0;
+  for (let i = 0; i < data.length; i += 4) {
+    if (data[i + 3] < 200) continue;
+    const l = Math.round(0.2126 * data[i] + 0.7152 * data[i + 1] + 0.0722 * data[i + 2]);
+    if (l < 8) continue; // the black void around indoor maps and underground layers
+    hist[l]++;
+    n++;
+  }
+  if (n < 500) return null;
+  for (let l = 0, acc = 0; l < 256; l++) if ((acc += hist[l]) >= n / 2) return l;
+  return null;
+}
+
+/** The veil that moves a texture's median luminance toward the shared target: darkens bright maps, lifts dark ones. */
+export function toneFor(median: number): Tone {
+  const target = median + TONE_STRENGTH * (TONE_TARGET - median);
+  return target < median ? { dark: 1 - target / median, light: 0 } : { dark: 0, light: (target - median) / (255 - median) };
+}
 /** A level may be up to this much softer than the screen before the next one loads. */
 const SLACK = 1.2;
 const MAX_TILES = 160;
@@ -36,6 +67,7 @@ export function tileRange(levels: number, ox: number, oy: number, S: number, w: 
 
 export class TileLayer {
   private cache = new Map<string, HTMLImageElement>();
+  private tones = new Map<string, Tone | null>();
   private base: string;
   private onLoad: () => void;
   private onError: () => void;
@@ -70,6 +102,26 @@ export class TileLayer {
     return img && img.complete && img.naturalWidth ? img : null;
   }
 
+  /** The texture's tone, measured once on its level-0 tile (null until it has loaded, or when it cannot be read). */
+  tone(set: TileSet): Tone | null {
+    if (this.tones.has(set.tiles)) return this.tones.get(set.tiles)!;
+    const img = this.get(set, 0, 0, 0, false);
+    if (!img) return null;
+    let tone: Tone | null = null;
+    try {
+      const c = document.createElement('canvas');
+      c.width = c.height = 128;
+      const ctx = c.getContext('2d', { willReadFrequently: true })!;
+      ctx.drawImage(img, 0, 0, 128, 128);
+      const median = medianLuminance(ctx.getImageData(0, 0, 128, 128).data);
+      tone = median == null ? null : toneFor(median);
+    } catch {
+      tone = null; // unreadable (e.g. a cross-origin tile without CORS): draw untoned
+    }
+    this.tones.set(set.tiles, tone);
+    return tone;
+  }
+
   private evict() {
     for (const [key, img] of this.cache) {
       if (this.cache.size <= MAX_TILES) break;
@@ -81,8 +133,9 @@ export class TileLayer {
   }
 
   /**
-   * Draw the texture at screen offset (ox, oy), S CSS px wide, into a w×h CSS px view. Draws in device pixels with
-   * rounded tile edges, so neighbouring tiles meet without seams.
+   * Draw the texture at screen offset (ox, oy), S CSS px wide, into a w×h CSS px view, toned (see `toneFor`). Draws in
+   * device pixels with rounded tile edges, so neighbouring tiles meet without seams. Must be the first thing drawn on
+   * the cleared canvas: the toning veils everything drawn so far.
    */
   draw(ctx: CanvasRenderingContext2D, set: TileSet, ox: number, oy: number, S: number, w: number, h: number, dpr: number) {
     const { z: target, ts, x0, x1, y0, y1 } = tileRange(set.levels, ox, oy, S, w, h, dpr);
@@ -109,6 +162,13 @@ export class TileLayer {
           break;
         }
       }
+    }
+    // Tone the texture (only where it was drawn: the canvas holds nothing else yet).
+    const tone = this.tone(set);
+    if (tone && (tone.dark || tone.light)) {
+      ctx.globalCompositeOperation = 'source-atop';
+      ctx.fillStyle = tone.dark ? `rgba(0,0,0,${tone.dark})` : `rgba(255,255,255,${tone.light})`;
+      ctx.fillRect(0, 0, px(w), px(h));
     }
     ctx.restore();
   }

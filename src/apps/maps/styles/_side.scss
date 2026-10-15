@@ -254,7 +254,10 @@
     color: var(--mx-text);
 
     .mx-row__icon { --gi-color: var(--mx-text); }
-    .mx-sw { border-color: var(--kind); .game-icon { --gi-color: var(--kind); } }
+    .mx-sw { --sw: var(--kind); --sw-icon: #15181e; }
+    .mx-sw--ring { --sw-icon: var(--kind); }
+    .mx-sw--tile { --sw: #f4f3ef; }
+    .mx-sw--gate { --sw: #f4f3ef; --sw-icon: #f4f3ef; }
   }
 
   &.is-dim .mx-row__main { opacity: .45; }
@@ -272,18 +275,49 @@
   &.dim { color: var(--mx-muted); }
 }
 
-// Kind icon disc
+// Kind swatch: the kind's map marker (kinds.ts markerStyle, MapEngine shapePath) at 18 px (kinds.ts SWATCH) with the
+// icon at the map's proportions (swatchIcon); muted while the kind is hidden. --sw is the shape colour, --sw-icon the icon colour.
 .mx-sw {
+  --sw: color-mix(in srgb, var(--kind) 45%, #3a3d40);
+  --sw-icon: #15181e;
+  position: relative;
   width: 18px;
   height: 18px;
   flex-shrink: 0;
-  border-radius: 50%;
   display: grid;
   place-items: center;
-  background: #15191c;
-  border: 1px solid color-mix(in srgb, var(--kind) 40%, transparent);
 
-  .game-icon { --gi-color: color-mix(in srgb, var(--kind) 55%, #555); }
+  // The shape is drawn behind the icon, so it can be rotated or clipped on its own.
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--sw);
+    border-radius: 50%;
+    box-shadow: 0 0 0 1.5px rgba(6, 8, 12, .7);
+  }
+  .game-icon { position: relative; --gi-color: var(--sw-icon); }
+
+  &--dot::before { border-radius: 50%; }
+  &--leaf::before { inset: 1px; border-radius: 50% 12%; }
+  &--diamond::before { inset: 1.4px; border-radius: 2.5px; transform: rotate(45deg); }
+  &--hex::before {
+    inset: -1px;
+    border-radius: 0;
+    box-shadow: none;
+    clip-path: polygon(50% 0, 93.3% 25%, 93.3% 75%, 50% 100%, 6.7% 75%, 6.7% 25%);
+  }
+  &--ring {
+    --sw-icon: color-mix(in srgb, var(--kind) 55%, #555);
+    &::before { background: #15191c; border: 1.4px solid var(--sw); }
+  }
+  &--tile::before, &--gate::before { inset: 1px; border-radius: 5px; box-shadow: 0 1px 3px rgba(0, 0, 0, .6); }
+  &--tile { --sw: #9c9b97; }
+  &--gate {
+    --sw: #8a8a88;
+    --sw-icon: #b8b8b4;
+    &::before { background: #15181e; border: 1.3px solid var(--sw); }
+  }
 }
 
 // ---- best areas
@@ -359,17 +393,15 @@
 
   &__name { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
+  // The bare ping icon, as on the map (MapEngine enemyGlyph).
   &__icon {
     width: 22px;
     height: 22px;
     flex-shrink: 0;
-    border-radius: 50%;
     display: grid;
     place-items: center;
-    background: #15191c;
-    border: 1px solid color-mix(in srgb, var(--kind) 45%, transparent);
 
-    .game-icon { --gi-color: color-mix(in srgb, var(--kind) 50%, #555); }
+    .game-icon { --gi-color: color-mix(in srgb, var(--kind) 50%, #555); filter: drop-shadow(0 0 1px #000); }
   }
 
   &.all &__icon .game-icon,

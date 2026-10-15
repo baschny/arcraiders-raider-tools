@@ -1030,7 +1030,7 @@
     "arc": {
       "title": "Nemici ARC · {condition}",
       "helpLabel": "Info sui generatori ARC",
-      "help": "Numero previsto di generatori che possono produrre ciascun nemico in questa condizione. Scegli dei nemici per mostrare solo i loro generatori e percorsi di pattuglia (più insieme, ognuno nel suo colore). I marcatori pieni pattugliano un percorso. Passa sopra un generatore per vedere il suo gruppo e i timer di rigenerazione; cliccalo per fissare il suo gruppo di comparsa.",
+      "help": "Numero previsto di generatori che possono produrre ciascun nemico in questa condizione. Scegli dei nemici per mostrare solo i loro generatori e percorsi di pattuglia (più insieme, ognuno nel suo colore). I marcatori con il simbolo ↻ pattugliano un percorso. Passa sopra un generatore per vedere il suo gruppo e i timer di rigenerazione; cliccalo per fissare il suo gruppo di comparsa.",
       "showAll": "Mostra tutti i nemici",
       "expectedOne": "~{expected} previsti per turno, su {count} generatore",
       "expected": "~{expected} previsti per turno, su {count} generatori",

@@ -1030,7 +1030,7 @@
     "arc": {
       "title": "Ennemis ARC · {condition}",
       "helpLabel": "À propos des générateurs ARC",
-      "help": "Nombre attendu de générateurs pouvant produire chaque ennemi dans cette condition. Choisissez des ennemis pour n’afficher que leurs générateurs et chemins de patrouille (plusieurs à la fois, chacun dans sa couleur). Les marqueurs pleins patrouillent sur un chemin. Survolez un générateur pour voir son groupe et ses délais de réapparition ; cliquez dessus pour épingler son groupe d’apparition.",
+      "help": "Nombre attendu de générateurs pouvant produire chaque ennemi dans cette condition. Choisissez des ennemis pour n’afficher que leurs générateurs et chemins de patrouille (plusieurs à la fois, chacun dans sa couleur). Les marqueurs avec le symbole ↻ patrouillent sur un chemin. Survolez un générateur pour voir son groupe et ses délais de réapparition ; cliquez dessus pour épingler son groupe d’apparition.",
       "showAll": "Afficher tous les ennemis",
       "expectedOne": "~{expected} attendu par manche, sur {count} générateur",
       "expected": "~{expected} attendus par manche, sur {count} générateurs",

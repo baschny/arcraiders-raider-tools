@@ -1036,7 +1036,7 @@
     "arc": {
       "title": "ARC-Gegner · {condition}",
       "helpLabel": "Über ARC-Spawner",
-      "help": "Erwartete Anzahl der Spawner, die jeden Gegner bei dieser Bedingung erzeugen können. Wähle Gegner aus, um nur ihre Spawner und Patrouillenwege zu zeigen (mehrere gleichzeitig, jeder in seiner Farbe). Gefüllte Markierungen patrouillieren einen Weg. Fahre über einen Spawner für seine Gruppe und Respawn-Zeiten; klicke ihn an, um seine Spawn-Gruppe festzuhalten.",
+      "help": "Erwartete Anzahl der Spawner, die jeden Gegner bei dieser Bedingung erzeugen können. Wähle Gegner aus, um nur ihre Spawner und Patrouillenwege zu zeigen (mehrere gleichzeitig, jeder in seiner Farbe). Markierungen mit einem ↻-Symbol patrouillieren einen Weg. Fahre über einen Spawner für seine Gruppe und Respawn-Zeiten; klicke ihn an, um seine Spawn-Gruppe festzuhalten.",
       "showAll": "Alle Gegner anzeigen",
       "expectedOne": "~{expected} pro Runde erwartet, von {count} Spawner",
       "expected": "~{expected} pro Runde erwartet, von {count} Spawnern",

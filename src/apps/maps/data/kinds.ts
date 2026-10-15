@@ -24,6 +24,8 @@ export interface SpotKind {
   spawned?: boolean;
   /** Rare and important: a slightly bigger marker, drawn on top. */
   major?: boolean;
+  /** Drawn like the in-game map's extraction markers: a white tile with a dark icon. */
+  tile?: boolean;
   small?: boolean;
   tag?: RegExp;
   rx?: RegExp;
@@ -37,14 +39,15 @@ export interface Mechanic {
   values?: Record<string, string | number>;
 }
 
+// In filter list order: the few important spots first, the many loot spots last.
 export const CATEGORIES: SpotCategory[] = [
   { key: 'Exits', icon: 'extract-hatch', feature: true },
-  { key: 'Containers', icon: 'loot-industrial', sockets: true },
-  { key: 'Nature', icon: 'loot-nature', sockets: true },
   { key: 'RaiderSpawns', icon: 'raider-cache', spawned: true },
   { key: 'ArcSpawns', icon: 'arc-wreckage', spawned: true },
-  { key: 'Puzzles', icon: 'puzzle', feature: true },
   { key: 'Features', icon: 'field-station', feature: true },
+  { key: 'Puzzles', icon: 'puzzle', feature: true },
+  { key: 'Nature', icon: 'loot-nature', sockets: true },
+  { key: 'Containers', icon: 'loot-industrial', sockets: true },
 ];
 
 const k = (cat: string, key: string, color: string, icon: string, extra: Partial<SpotKind> = {}): SpotKind =>
@@ -52,125 +55,127 @@ const k = (cat: string, key: string, color: string, icon: string, extra: Partial
 
 export const KINDS: SpotKind[] = [
   // Exits & spawns
-  k('Exits', 'ExtractMetro', '#5cc49c', 'extract-metro', { major: true, rx: /SalvageExtractionPoint_Metro/ }),
-  k('Exits', 'ExtractLift', '#5cc49c', 'extract-lift', { major: true, rx: /SalvageExtractionPoint_Elevator/ }),
-  k('Exits', 'ExtractFan', '#5cc49c', 'extract-fan', { major: true, rx: /SalvageExtractionPoint_Fan/ }),
+  k('Exits', 'ExtractMetro', '#f4f3ef', 'extract-metro', { major: true, tile: true, rx: /SalvageExtractionPoint_Metro/ }),
+  k('Exits', 'ExtractLift', '#f4f3ef', 'extract-lift', { major: true, tile: true, rx: /SalvageExtractionPoint_Elevator/ }),
+  k('Exits', 'ExtractFan', '#f4f3ef', 'extract-fan', { major: true, tile: true, rx: /SalvageExtractionPoint_Fan/ }),
   // Pendola Pass: a terminal that calls the gondola (placed by spawners; the ping uses the terminal icon).
-  k('Exits', 'ExtractGondola', '#5cc49c', 'terminal', { major: true, spawned: true, rx: /SalvageExtractionPoint_MultiProbe/ }),
-  // Pendola Pass: the landing sites of the gondolas the terminals call (embark-api docs/Map-Corrections.md).
-  k('Exits', 'ExtractGondolaLanding', '#5cc49c', 'extract-lift', { major: true, rx: /SalvageExtractionSpawnPoint_MultiProbe/ }),
-  k('Exits', 'Hatch', '#9bcf6a', 'extract-hatch', { major: true, rx: /SalvageExtractionPoint_Hatch|RaiderHatchMarker/ }),
-  k('Exits', 'StationEntrance', '#8fc9b4', 'metro-entrance', { rx: /MetroShutdownBarrier|StreetSign_Metro/ }),
-  k('Exits', 'PlayerStart', '#d9d4c7', 'player', { rx: /^PioneerPlayerStart$/ }),
+  k('Exits', 'ExtractGondola', '#f4f3ef', 'terminal', { major: true, tile: true, spawned: true, rx: /SalvageExtractionPoint_MultiProbe/ }),
+  // Pendola Pass: the landing sites of the gondolas the terminals call (embark-api docs/Map-Corrections.md). Not a tile:
+  // only the terminal has the game's extraction marker style, and the many sites would crowd the map.
+  k('Exits', 'ExtractGondolaLanding', '#c9cdd1', 'extract-lift', { rx: /SalvageExtractionSpawnPoint_MultiProbe/ }),
+  k('Exits', 'Hatch', '#f4f3ef', 'extract-hatch', { major: true, tile: true, rx: /SalvageExtractionPoint_Hatch|RaiderHatchMarker/ }),
+  k('Exits', 'StationEntrance', '#c9cdd1', 'metro-entrance', { rx: /MetroShutdownBarrier|StreetSign_Metro/ }),
+  k('Exits', 'PlayerStart', '#c9cdd1', 'player', { rx: /^PioneerPlayerStart$/ }),
   // Containers: socket container category (Socket.LootContainer.<Cat>.*), split further into container types
-  k('Containers', 'Electrical', '#d6b54a', 'loot-electrical'),
-  k('Containers', 'Industrial', '#cf8a52', 'loot-industrial'),
-  k('Containers', 'Mechanical', '#a98bc9', 'loot-mechanical'),
-  k('Containers', 'Tech', '#8e97d4', 'loot-tech'),
-  k('Containers', 'Commercial', '#5aaec4', 'loot-commercial'),
-  k('Containers', 'Residential', '#c98ba8', 'loot-household'),
-  k('Containers', 'Medical', '#cf6b63', 'loot-medical'),
-  k('Containers', 'Security', '#5bb594', 'loot-military'),
-  k('Containers', 'OldWorld', '#b89a74', 'loot-educational'),
-  k('Containers', 'Exodus', '#78bdb5', 'loot-exodus'),
-  k('Containers', 'ARC', '#c27cb3', 'loot-arc'),
-  k('Containers', 'Raider', '#d1a04c', 'loot-raider'),
-  k('Containers', 'Generic', '#a3a3a3', 'loot-household'),
-  k('Containers', 'OtherFixed', '#8f8f8f', 'loot-household'),
+  k('Containers', 'Electrical', '#ffd23f', 'loot-electrical'),
+  k('Containers', 'Industrial', '#ff8c3a', 'loot-industrial'),
+  k('Containers', 'Mechanical', '#b48cff', 'loot-mechanical'),
+  k('Containers', 'Tech', '#6f8cff', 'loot-tech'),
+  k('Containers', 'Commercial', '#2ec5e8', 'loot-commercial'),
+  k('Containers', 'Residential', '#ff8cc0', 'loot-household'),
+  k('Containers', 'Medical', '#ff5252', 'loot-medical'),
+  k('Containers', 'Security', '#2ee08a', 'loot-military'),
+  k('Containers', 'OldWorld', '#e0bd8f', 'loot-educational'),
+  k('Containers', 'Exodus', '#6ff5dd', 'loot-exodus'),
+  k('Containers', 'ARC', '#e86bff', 'loot-arc'),
+  k('Containers', 'Raider', '#ffb000', 'loot-raider'),
+  k('Containers', 'Generic', '#c8c8c8', 'loot-household'),
+  k('Containers', 'OtherFixed', '#a8a8a8', 'loot-household'),
   // Tagged Socket.LootContainer.Nature.WaterTank, but a regular container (not a plant).
-  k('Containers', 'WaterTank', '#6aa6c7', 'loot-commercial', { tag: /^Nature\.WaterTank/ }),
-  k('Containers', 'Ground', '#d9d6cf', 'pin', { small: true }),
+  k('Containers', 'WaterTank', '#8fd0ff', 'loot-commercial', { tag: /^Nature\.WaterTank/ }),
+  k('Containers', 'Ground', '#f4f1ea', 'pin', { small: true }),
   // Nature: a plant only ever gives its own item
-  k('Nature', 'Apricot', '#d9a05c', 'harvest', { tag: /^Nature\.Apricot/ }),
-  k('Nature', 'Lemon', '#d9cc5c', 'harvest', { tag: /^Nature\.Lemon/ }),
-  k('Nature', 'Olive', '#9cb35a', 'harvest', { tag: /^Nature\.Olive/ }),
-  k('Nature', 'NatureFruitBasket', '#d58a96', 'harvest', { tag: /^Nature\.FruitBasket/ }),
-  k('Nature', 'Mushroom', '#c9ab8a', 'loot-nature', { tag: /^Nature\.Mushroom/ }),
-  k('Nature', 'Agave', '#63b9a3', 'loot-nature', { tag: /^Nature\.Agave/ }),
-  k('Nature', 'Moss', '#6fb36f', 'loot-nature', { tag: /^Nature\.Moss/ }),
-  k('Nature', 'GreatMullein', '#d4c898', 'loot-nature', { tag: /^Nature\.GreatMullein/ }),
-  k('Nature', 'Candleberries', '#cf6f82', 'harvest', { tag: /^Nature\.Candleberr/ }),
-  k('Nature', 'Resin', '#c2944a', 'loot-nature', { tag: /^Nature\.Resin/ }),
-  k('Nature', 'BirdNest', '#ab8f74', 'loot-nature', { tag: /^Nature\.BirdNest/ }),
-  k('Nature', 'VolcanicRock', '#c9714f', 'loot-nature', { tag: /^Nature\.VolcanicRock/ }),
-  k('Nature', 'Roots', '#977354', 'loot-nature', { tag: /^Nature\.Roots/ }),
-  k('Nature', 'Fertilizer', '#9c86c9', 'loot-nature', { tag: /^Nature\.Fertilizer/ }),
-  k('Nature', 'SeedVault', '#78bdb5', 'terminal', { tag: /^Nature\.Seedvault/ }),
-  k('Nature', 'Seedbox', '#d6b54a', 'loot-nature', { tag: /^Nature\.Seedbox/ }),
+  k('Nature', 'Apricot', '#ffa336', 'harvest', { tag: /^Nature\.Apricot/ }),
+  k('Nature', 'Lemon', '#ffea36', 'harvest', { tag: /^Nature\.Lemon/ }),
+  k('Nature', 'Olive', '#b9dc56', 'harvest', { tag: /^Nature\.Olive/ }),
+  k('Nature', 'NatureFruitBasket', '#ef7084', 'harvest', { tag: /^Nature\.FruitBasket/ }),
+  k('Nature', 'Mushroom', '#e1ac72', 'loot-nature', { tag: /^Nature\.Mushroom/ }),
+  k('Nature', 'Agave', '#54deba', 'loot-nature', { tag: /^Nature\.Agave/ }),
+  k('Nature', 'Moss', '#5fd35f', 'loot-nature', { tag: /^Nature\.Moss/ }),
+  k('Nature', 'GreatMullein', '#ead582', 'loot-nature', { tag: /^Nature\.GreatMullein/ }),
+  k('Nature', 'Candleberries', '#f04e6e', 'harvest', { tag: /^Nature\.Candleberr/ }),
+  k('Nature', 'Resin', '#efad43', 'loot-nature', { tag: /^Nature\.Resin/ }),
+  k('Nature', 'BirdNest', '#ca9868', 'loot-nature', { tag: /^Nature\.BirdNest/ }),
+  k('Nature', 'VolcanicRock', '#f4713e', 'loot-nature', { tag: /^Nature\.VolcanicRock/ }),
+  k('Nature', 'Roots', '#cf9563', 'loot-nature', { tag: /^Nature\.Roots/ }),
+  k('Nature', 'Fertilizer', '#936ce3', 'loot-nature', { tag: /^Nature\.Fertilizer/ }),
+  k('Nature', 'SeedVault', '#5cd9ca', 'terminal', { tag: /^Nature\.Seedvault/ }),
+  k('Nature', 'Seedbox', '#ffcf33', 'loot-nature', { tag: /^Nature\.Seedbox/ }),
   // Ground-loot sockets Socket.Loot.Nature.Cactus are the Prickly Pear plant (docs/Map-Corrections.md C01).
-  k('Nature', 'PricklyPear', '#d98f6a', 'harvest', { tag: /^Nature\.Cactus/ }),
-  k('Nature', 'NatureMisc', '#a3a3a3', 'loot-nature', { tag: /^Nature\./ }),
+  k('Nature', 'PricklyPear', '#fd8346', 'harvest', { tag: /^Nature\.Cactus/ }),
+  // Snow piles: placed per round by spawners (not sockets), but harvested like plants.
+  k('Nature', 'Snowpile', '#dfe9f0', 'frost', { spawned: true, rx: /Snowpile/ }),
+  k('Nature', 'NatureMisc', '#c7c7c7', 'loot-nature', { tag: /^Nature\./ }),
   // Raider containers and caches (spawned)
-  k('RaiderSpawns', 'CacheStandard', '#b394d1', 'raider-cache', { major: true, rx: /RaiderCache_WA|NomadCache/ }),
-  k('RaiderSpawns', 'CacheSelfDestruct', '#c27cb3', 'raider-cache', { major: true, rx: /RaiderCacheSelfDestruct/ }),
-  k('RaiderSpawns', 'CacheFrozen', '#9fc4d6', 'raider-cache', { major: true, rx: /RaiderCacheSnow|RaiderCacheFrozenTrail/ }),
-  k('RaiderSpawns', 'CacheFirstWave', '#5bb594', 'raider-cache', { major: true, rx: /RaiderCacheFirstWave/ }),
-  k('RaiderSpawns', 'AmmoBox', '#d6b54a', 'ammo', { rx: /AmmoBox.*Dynamic$/ }),
-  k('RaiderSpawns', 'AmmoBoxHigh', '#d99a3e', 'ammo', { rx: /AmmoBox.*HighTier/ }),
-  k('RaiderSpawns', 'WeaponCase', '#cf8a52', 'loot-military', { rx: /WeaponCase.*Dynamic$/ }),
-  k('RaiderSpawns', 'WeaponCaseHigh', '#c96a4a', 'loot-military', { rx: /WeaponCase.*DynamicHigh/ }),
-  k('RaiderSpawns', 'MedicalBag', '#cf7a8f', 'loot-medical', { rx: /MedicalBag/ }),
-  k('RaiderSpawns', 'GrenadeTube', '#8fbf6a', 'attack', { rx: /GrenadeContainer/ }),
-  k('RaiderSpawns', 'Backpack', '#5aaec4', 'loot-raider', { rx: /Raider_Backpack/ }),
-  k('RaiderSpawns', 'WeaponsRack', '#8e97d4', 'loot-military', { rx: /WeaponsRack/ }),
-  k('RaiderSpawns', 'FruitBasket', '#d9cc5c', 'harvest', { rx: /FruitBasket_01_Dynamic$/ }),
-  k('RaiderSpawns', 'FruitBasketWinter', '#d9d6cf', 'harvest', { rx: /FruitBasket.*WinterEvent/ }),
+  k('RaiderSpawns', 'CacheStandard', '#b37de8', 'raider-cache', { major: true, rx: /RaiderCache_WA|NomadCache/ }),
+  k('RaiderSpawns', 'CacheSelfDestruct', '#dd61c3', 'raider-cache', { major: true, rx: /RaiderCacheSelfDestruct/ }),
+  k('RaiderSpawns', 'CacheFrozen', '#85c9ea', 'raider-cache', { major: true, rx: /RaiderCacheSnow|RaiderCacheFrozenTrail/ }),
+  k('RaiderSpawns', 'CacheFirstWave', '#55ddab', 'raider-cache', { major: true, rx: /RaiderCacheFirstWave/ }),
+  k('RaiderSpawns', 'AmmoBox', '#ffcf33', 'ammo', { rx: /AmmoBox.*Dynamic$/ }),
+  k('RaiderSpawns', 'AmmoBoxHigh', '#ffac33', 'ammo', { rx: /AmmoBox.*HighTier/ }),
+  k('RaiderSpawns', 'WeaponCase', '#f98f39', 'loot-military', { rx: /WeaponCase.*Dynamic$/ }),
+  k('RaiderSpawns', 'WeaponCaseHigh', '#f56b3d', 'loot-military', { rx: /WeaponCase.*DynamicHigh/ }),
+  k('RaiderSpawns', 'MedicalBag', '#ed5c80', 'loot-medical', { rx: /MedicalBag/ }),
+  k('RaiderSpawns', 'GrenadeTube', '#90e052', 'attack', { rx: /GrenadeContainer/ }),
+  k('RaiderSpawns', 'Backpack', '#47c9eb', 'loot-raider', { rx: /Raider_Backpack/ }),
+  k('RaiderSpawns', 'WeaponsRack', '#7584ed', 'loot-military', { rx: /WeaponsRack/ }),
+  k('RaiderSpawns', 'FruitBasket', '#ffea36', 'harvest', { rx: /FruitBasket_01_Dynamic$/ }),
+  k('RaiderSpawns', 'FruitBasketWinter', '#dfe9f0', 'harvest', { rx: /FruitBasket.*WinterEvent/ }),
   // ARC husks & wrecks. Husk sizes = enemy (small: Wasp, medium: Rocketeer); "Cargo ship" = ARC Courier.
-  k('ArcSpawns', 'WaspHusk', '#c27cb3', 'arc-wreckage', { rx: /ARCHusk_Small/ }),
-  k('ArcSpawns', 'WaspHuskStunning', '#d6a3cb', 'arc-wreckage', { rx: /StunningHuskSmall/ }),
-  k('ArcSpawns', 'RocketeerHusk', '#8e97d4', 'arc-wreckage', { rx: /ARCHusk_Medium/ }),
-  k('ArcSpawns', 'RocketeerHuskStunning', '#b4bae0', 'arc-wreckage', { rx: /StunningHuskMedium/ }),
-  k('ArcSpawns', 'DeforesterHusk', '#cf8a52', 'arc-wreckage', { major: true, rx: /DeforesterHusk/ }),
-  k('ArcSpawns', 'Probes', '#5aaec4', 'arc-probe', { major: true, rx: /ProbeCrashed/ }),
+  k('ArcSpawns', 'WaspHusk', '#dd61c3', 'arc-wreckage', { rx: /ARCHusk_Small/ }),
+  k('ArcSpawns', 'WaspHuskStunning', '#e887d3', 'arc-wreckage', { rx: /StunningHuskSmall/ }),
+  k('ArcSpawns', 'RocketeerHusk', '#7584ed', 'arc-wreckage', { rx: /ARCHusk_Medium/ }),
+  k('ArcSpawns', 'RocketeerHuskStunning', '#8492eb', 'arc-wreckage', { rx: /StunningHuskMedium/ }),
+  k('ArcSpawns', 'DeforesterHusk', '#f98f39', 'arc-wreckage', { major: true, rx: /DeforesterHusk/ }),
+  k('ArcSpawns', 'Probes', '#47c9eb', 'arc-probe', { major: true, rx: /ProbeCrashed/ }),
   // Potential ARC Probe landing sites (markers tagged ARCCargoDrop / ArcRaid; docs/Map-Corrections.md C02).
   // Cadence from DA_ARCProbeDrop_Normal/_HighTier (Min/MaxTimeBetweenDrops 190–240 s); unbreached probes depart,
   // a breached one stays.
-  k('ArcSpawns', 'ArcProbe', '#5aaec4', 'arc-probe', {
+  k('ArcSpawns', 'ArcProbe', '#47c9eb', 'arc-probe', {
     major: true, rx: /ArcProbeMarker/,
     mechanics: [{ key: 'probeSite' }, { key: 'probeCadence', values: { min: 3, max: 4 } }],
   }),
-  k('ArcSpawns', 'Couriers', '#78bdb5', 'payload', { major: true, rx: /CargoShip/ }),
+  k('ArcSpawns', 'Couriers', '#5cd9ca', 'payload', { major: true, rx: /CargoShip/ }),
   // Puzzles
-  k('Puzzles', 'PowerSocket', '#d6b54a', 'generator', { rx: /PowerStation|BatteryCharger|SignalDropzone|SignalMultiDropzone/ }),
-  k('Puzzles', 'FuelCell', '#d99a3e', 'fuel-cell', { rx: /Carry_FuelCell|CarryableBattery|MultiPowerRack/ }),
-  k('Puzzles', 'PuzzleButton', '#8fbf6a', 'puzzle', { rx: /PuzzleButton|SignalButton|SignalSwitch|PowerGeneratorSwitch|UnlockConsole/ }),
-  k('Puzzles', 'PuzzleRelay', '#5bb594', 'puzzle', { rx: /PuzzleRelay|SignalRelay/ }),
-  k('Puzzles', 'CardReader', '#5aaec4', 'terminal', { rx: /CardReader/ }),
-  k('Puzzles', 'TubeTerminal', '#c27cb3', 'terminal', { rx: /TubeRequestTerminal|TubeDeliveryStation/ }),
-  k('Puzzles', 'PuzzleDoor', '#a98bc9', 'bunker', { rx: /RandomizedSequencePuzzleDoor|RootCellar|InteractiveSecurityDoor|InteractiveGate_|EventBunker|LaunchTowerActivity|ElevatorDoor/ }),
-  k('Puzzles', 'HotelKey', '#d9cc5c', 'lock', { rx: /HotelKey|HotelPuzzle/ }),
+  k('Puzzles', 'PowerSocket', '#ffcf33', 'generator', { rx: /PowerStation|BatteryCharger|SignalDropzone|SignalMultiDropzone/ }),
+  k('Puzzles', 'FuelCell', '#ffac33', 'fuel-cell', { rx: /Carry_FuelCell|CarryableBattery|MultiPowerRack/ }),
+  k('Puzzles', 'PuzzleButton', '#90e052', 'puzzle', { rx: /PuzzleButton|SignalButton|SignalSwitch|PowerGeneratorSwitch|UnlockConsole/ }),
+  k('Puzzles', 'PuzzleRelay', '#55ddab', 'puzzle', { rx: /PuzzleRelay|SignalRelay/ }),
+  k('Puzzles', 'CardReader', '#47c9eb', 'terminal', { rx: /CardReader/ }),
+  k('Puzzles', 'TubeTerminal', '#dd61c3', 'terminal', { rx: /TubeRequestTerminal|TubeDeliveryStation/ }),
+  k('Puzzles', 'PuzzleDoor', '#a873e1', 'bunker', { rx: /RandomizedSequencePuzzleDoor|RootCellar|InteractiveSecurityDoor|InteractiveGate_|EventBunker|LaunchTowerActivity|ElevatorDoor/ }),
+  k('Puzzles', 'HotelKey', '#ffea36', 'lock', { rx: /HotelKey|HotelPuzzle/ }),
   // Map features: level actors (export-maps actors[]); classes picked in lib/derived/map-features.js.
-  k('Features', 'FieldDepot', '#d1a04c', 'field-station', { major: true, rx: /ColonySupplyStation/ }),
+  k('Features', 'FieldDepot', '#fdb335', 'field-station', { major: true, rx: /ColonySupplyStation/ }),
   // Interactable POIs: the androids on Stella Montis / Pendola Pass and the AED stations on Blue Gate
   // (embark-api docs/Map-Corrections.md).
-  k('Features', 'Android', '#78bdb5', 'terminal', { rx: /SM_Android/ }),
-  k('Features', 'AEDStation', '#cf6b63', 'loot-medical', { rx: /AEDStation/ }),
+  k('Features', 'Android', '#5cd9ca', 'terminal', { rx: /SM_Android/ }),
+  k('Features', 'AEDStation', '#f44c3e', 'loot-medical', { rx: /AEDStation/ }),
   // Pendola Pass emergency shelters (one marker per shelter, at the roof hatch) and their Frostbite ("Flash Freeze")
   // area of effect. Always active: they live in the base FrozenTrail_01_FlashFreeze data layer, not a round condition
   // (embark-api docs/Map-Corrections.md C04). Timings: BP_FlashFreeze (start 300–600 s, wait 250–500 s, 1–3 zones).
-  k('Features', 'EmergencyShelter', '#d9d6cf', 'frost', { rx: /FlashFreezeHatch/, mechanics: [{ key: 'shelterOpen' }] }),
-  k('Features', 'FlashFreeze', '#9fc4d6', 'frost', {
+  k('Features', 'EmergencyShelter', '#dfe9f0', 'frost', { rx: /FlashFreezeHatch/, mechanics: [{ key: 'shelterOpen' }] }),
+  k('Features', 'FlashFreeze', '#85c9ea', 'frost', {
     rx: /FlashFreezeArea/,
     mechanics: [{ key: 'zone' }, { key: 'zoneCadence', values: { min: 1, max: 3 } }],
   }),
   // Spawned per round: field crates (carried to a field depot), power cores, supply call stations (the supply drop
   // lands next to the station; no fixed drop spots in the level), snow piles.
-  k('Features', 'FieldCrates', '#d1a04c', 'field-crate', { major: true, spawned: true, rx: /Carryable_Object|ArcFieldCrate/ }),
-  k('Features', 'SupplyStation', '#5aaec4', 'supply-station', { major: true, spawned: true, rx: /SupplyCallStation/ }),
-  k('Features', 'PowerCores', '#78bdb5', 'fusion-core', { major: true, spawned: true, rx: /Husk_Small_PowerCore/ }),
-  k('Features', 'MetalDetector', '#d6b54a', 'metal-detector', { spawned: true, rx: /Pickup_MetalDetector/ }),
-  k('Features', 'Snowpile', '#d9d6cf', 'frost', { spawned: true, rx: /Snowpile/ }),
-  k('Features', 'Zipline', '#6aa6c7', 'transmitter', { rx: /ActivatableZipline/ }),
-  k('Features', 'Lift', '#8e97d4', 'enter-surface', { rx: /MovablePlatform_(MastLift|Cargo)/ }),
-  k('Features', 'Bridge', '#a98bc9', 'region', { rx: /MovablePlatform_SpillwayBridge/ }),
-  k('Features', 'BridgeSwitch', '#c98ba8', 'generator', { rx: /PowerSwitch_Breaker/ }),
+  k('Features', 'FieldCrates', '#fdb335', 'field-crate', { major: true, spawned: true, rx: /Carryable_Object|ArcFieldCrate/ }),
+  k('Features', 'SupplyStation', '#47c9eb', 'supply-station', { major: true, spawned: true, rx: /SupplyCallStation/ }),
+  k('Features', 'PowerCores', '#5cd9ca', 'fusion-core', { major: true, spawned: true, rx: /Husk_Small_PowerCore/ }),
+  k('Features', 'MetalDetector', '#ffcf33', 'metal-detector', { spawned: true, rx: /Pickup_MetalDetector/ }),
+  k('Features', 'Zipline', '#4ab0e8', 'transmitter', { rx: /ActivatableZipline/ }),
+  k('Features', 'Lift', '#7584ed', 'enter-surface', { rx: /MovablePlatform_(MastLift|Cargo)/ }),
+  k('Features', 'Bridge', '#a873e1', 'region', { rx: /MovablePlatform_SpillwayBridge/ }),
+  k('Features', 'BridgeSwitch', '#e173a6', 'generator', { rx: /PowerSwitch_Breaker/ }),
   // Doors: locked rooms (the exploit-prevention volume inside each key room) and locked doors, then ADoorBase start
   // state (export-maps `door`). Barricaded = bStartAsSealed (breach it to open).
-  k('Features', 'LockedRoom', '#d0605a', 'lock', { major: true, rx: /LockedRoomExploitPreventionArea/ }),
-  k('Features', 'LockedDoor', '#d98f8a', 'lock', { rx: /^LockedDoor$/ }),
-  k('Features', 'Barricaded', '#cf6b4f', 'door', { rx: /^Barricaded$/ }),
-  k('Features', 'Door', '#a68566', 'door', { small: true, rx: /^Door$/ }),
-  k('Features', 'Piano', '#b89a74', 'audio', { small: true, rx: /^BP_Piano$/ }),
+  k('Features', 'LockedRoom', '#f8443a', 'lock', { major: true, rx: /LockedRoomExploitPreventionArea/ }),
+  k('Features', 'LockedDoor', '#f4776f', 'lock', { rx: /^LockedDoor$/ }),
+  k('Features', 'Barricaded', '#fa6338', 'door', { rx: /^Barricaded$/ }),
+  k('Features', 'Door', '#cc9766', 'door', { small: true, rx: /^Door$/ }),
+  k('Features', 'Piano', '#d5a05d', 'audio', { small: true, rx: /^BP_Piano$/ }),
 ];
 
 export const KIND = new Map(KINDS.map((x) => [x.key, x]));
@@ -178,6 +183,33 @@ export const CATEGORY = new Map(CATEGORIES.map((x) => [x.key, x]));
 for (const kind of KINDS) if (!CATEGORY.has(kind.cat)) throw new Error(`kind ${kind.key}: unknown category ${kind.cat}`);
 export const kindsOf = (cat: string) => KINDS.filter((x) => x.cat === cat);
 export const isFeature = (kind: SpotKind) => !kind.spawned && !!CATEGORY.get(kind.cat)!.feature;
+
+/**
+ * How a kind is drawn, on the map and as its swatch in the filter list: one shape per filter category, so a category
+ * reads as one family; the kind's colour fills it and its game icon sits inside (rings: outlined, colour on dark).
+ * Importance shows only in size (`major`); markers are opaque (the spawn chance is in the tooltip and counts).
+ * - `tile` / `gate`: exits; extraction points like the in-game map (white tile, dark icon), the other exits and
+ *   spawns a dark tile with a light rim;
+ * - `dot`: loot containers;
+ * - `leaf`: nature (plants, snow piles);
+ * - `diamond`: raider containers;
+ * - `hex`: ARC husks and wrecks;
+ * - `ring`: map features and puzzle devices.
+ */
+export type MarkerStyle = 'tile' | 'gate' | 'dot' | 'leaf' | 'diamond' | 'hex' | 'ring';
+/**
+ * Icon size inside a marker, as a share of the marker size; the same for the map and the filter swatches (18 px: a
+ * 12 px icon in the round and square shapes, 10 px in the pointed ones, even sizes so the icon sits on whole pixels).
+ */
+export const ICON_SHARE: Record<MarkerStyle, number> = { ring: 0.66, dot: 0.66, tile: 0.66, gate: 0.66, leaf: 0.56, diamond: 0.56, hex: 0.56 };
+/** Swatch size in the filter list and the even icon size inside it. */
+export const SWATCH = 18;
+export const swatchIcon = (style: MarkerStyle) => 2 * Math.round((SWATCH * ICON_SHARE[style]) / 2);
+const CATEGORY_STYLE: Record<string, MarkerStyle> = { Containers: 'dot', Nature: 'leaf', RaiderSpawns: 'diamond', ArcSpawns: 'hex' };
+export function markerStyle(kind: SpotKind): MarkerStyle {
+  if (kind.cat === 'Exits') return kind.tile ? 'tile' : 'gate';
+  return CATEGORY_STYLE[kind.cat] ?? 'ring';
+}
 
 // ---------------------------------------------------------------- container types
 
@@ -375,9 +407,33 @@ export function enemyTiming(p: Record<string, number | boolean>): TimingRule[] {
 
 // ---------------------------------------------------------------- loot zones, conditions
 
+/** Game icon of an area's loot category (Poi.themes), as the in-game map shows them above the area name. */
+export const THEME_ICONS: Record<string, string> = {
+  Technological: 'loot-tech', Commercial: 'loot-commercial', Industrial: 'loot-industrial', Mechanical: 'loot-mechanical',
+  Electrical: 'loot-electrical', Medical: 'loot-medical', Security: 'loot-military', Exodus: 'loot-exodus', Residential: 'loot-household',
+  OldWorld: 'loot-educational', ARC: 'loot-arc', Nature: 'loot-nature', Raider: 'loot-raider',
+};
+
+const themeCache = new WeakMap<MapData, string[][]>();
+/** Loot categories of each area label (MapData.areas), from the POI of the same game string (or title); [] when none. */
+export function areaThemes(map: MapData): string[][] {
+  const cached = themeCache.get(map);
+  if (cached) return cached;
+  const byKey = new Map<string, string[]>(), byTitle = new Map<string, string[]>();
+  for (const p of map.pois) {
+    if (!p.themes.length) continue;
+    if (p.titleKey) byKey.set(p.titleKey, p.themes);
+    byTitle.set(p.title, p.themes);
+  }
+  const out = map.areas.map((a) => (a.nameKey ? byKey.get(a.nameKey) : undefined) ?? byTitle.get(a.name) ?? []);
+  themeCache.set(map, out);
+  return out;
+}
+
 export const lootZone = (threat: string | null, themes: string[]) =>
   threat === 'High' ? 'abundant' : threat === 'Medium' ? 'dense' : themes.length ? 'sparse' : null;
-export const ZONE_COLORS: Record<string, string> = { abundant: '214,92,78', dense: '214,181,74', sparse: '160,160,160' };
+// The in-game map's loot value outlines: red High, yellow Medium (sparse areas have none there).
+export const ZONE_COLORS: Record<string, string> = { abundant: '232,84,70', dense: '240,190,40', sparse: '160,160,160' };
 /** Loot zones in legend order (labels: maps.zones.<zone>). */
 export const ZONES = ['abundant', 'dense', 'sparse'] as const;
 

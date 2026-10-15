@@ -125,7 +125,9 @@
     display: flex;
     gap: 10px;
 
-    b { display: inline-block; width: 9px; height: 9px; background: var(--zone); border-radius: 2px; margin-right: 5px; vertical-align: -1px; }
+    // Outlines without fill, like the zones on the map; sparse areas faint.
+    b { display: inline-block; width: 10px; height: 10px; border: 2px solid var(--zone); border-radius: 2px; margin-right: 5px; vertical-align: -1px; box-sizing: border-box; }
+    b.sparse { border-width: 1px; opacity: .6; }
   }
 }
 

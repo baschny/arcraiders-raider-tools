@@ -2,7 +2,7 @@
 // filter). Every filter row works the same at every depth: the chevron opens it, the rest of the row switches it.
 import { useMemo, useState, type CSSProperties, type ReactNode } from 'react';
 import { Check, ChevronRight, Minus } from 'lucide-react';
-import { CATEGORIES, enemyIcon, kindsOf, leavesOf, lootZone, type SpotCategory, type SpotKind } from './data/kinds';
+import { CATEGORIES, enemyIcon, kindsOf, leavesOf, lootZone, markerStyle, swatchIcon, type SpotCategory, type SpotKind } from './data/kinds';
 import { lootStore, useStore } from '../../shared/state/stores';
 import { GameIcon, Help, ItemSearch } from './components';
 import type { Count, Explorer } from './model';
@@ -218,8 +218,8 @@ function SpotFilters({ ex }: { ex: Explorer }) {
               return (
                 <div key={kind.key}>
                   <FilterRow tx={tx} depth={1} sel={selOf(leaves)} color={kind.color} open={kindOpen} onOpen={types ? () => setOpenKinds(flip(openKinds, kind.key)) : undefined}
-                    onToggle={() => toggle(leaves)} icon={<span className="mx-sw"><GameIcon icon={kind.icon} size={12} /></span>} label={tx.kind(kind)}
-                    count={count(kc, spawned, !!cat.sockets)} dim={item && !!cat.sockets && !kc.hit} />
+                    onToggle={() => toggle(leaves)} icon={<span className={`mx-sw mx-sw--${markerStyle(kind)}`}><GameIcon icon={kind.icon} size={swatchIcon(markerStyle(kind))} /></span>} label={tx.kind(kind)}
+                    count={count(kc, spawned, !!cat.sockets && !kind.spawned)} dim={item && !!cat.sockets && !kc.hit} />
                   {types && kindOpen && leaves.map((l) => {
                     const lc = c(l);
                     return (
@@ -264,7 +264,7 @@ function ArcPanel({ ex }: { ex: Explorer }) {
           return (
             <button key={r.e} className={on ? 'on' : ''} style={{ '--kind': r.color } as CSSProperties} onClick={() => toggle(r.e)} role="checkbox" aria-checked={on}>
               <span className="mx-check">{on && <Check size={11} strokeWidth={3} />}</span>
-              <span className="mx-enemies__icon"><GameIcon icon={enemyIcon(name)} size={15} /></span>
+              <span className="mx-enemies__icon"><GameIcon icon={enemyIcon(name)} size={20} /></span>
               <span className="mx-enemies__name">{ex.names.enemy(r.e)}</span>
               <span className="mx-row__n" title={tx.plural('maps.arc.expected', r.spots, { expected: tx.exp(r.expected) })}>~{tx.exp(r.expected)}<small>/{tx.num(r.spots)}</small></span>
             </button>

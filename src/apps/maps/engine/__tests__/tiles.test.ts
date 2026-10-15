@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { TILE, tileRange } from '../tiles';
+import { TILE, medianLuminance, tileRange, toneFor } from '../tiles';
 
 // A level is picked once the screen needs more than 1.2× its resolution (SLACK): level z covers 512 · 2^z px.
 const level = (S: number, dpr = 1, levels = 3) => tileRange(levels, 0, 0, S, S, S, dpr).z;
@@ -59,5 +59,27 @@ describe('tileRange: visible tiles', () => {
   it('uses CSS px for the range, whatever the dpr', () => {
     // dpr 2 picks level 2 for a 1024 px wide texture: tiles of 256 CSS px.
     expect(tileRange(3, 0, 0, 1024, 300, 300, 2)).toMatchObject({ z: 2, n: 4, ts: 256, x0: 0, x1: 1, y0: 0, y1: 1 });
+  });
+});
+
+describe('map toning', () => {
+  const pixels = (...px: [number, number, number, number][]) => new Uint8ClampedArray(px.flatMap((p) => Array(1000).fill(p).flat()));
+
+  it('takes the median luminance of opaque, non-black pixels', () => {
+    expect(medianLuminance(pixels([100, 100, 100, 255], [0, 0, 0, 255], [255, 255, 255, 0]))).toBe(100);
+    expect(medianLuminance(pixels([50, 50, 50, 255], [150, 150, 150, 255], [160, 160, 160, 255]))).toBe(150);
+  });
+
+  it('has no median for empty layers', () => {
+    expect(medianLuminance(pixels([0, 0, 0, 255], [255, 255, 255, 0]))).toBeNull();
+  });
+
+  it('darkens bright maps and lifts dark ones toward the shared target', () => {
+    const snow = toneFor(124), dark = toneFor(42);
+    expect(snow.light).toBe(0);
+    expect(124 * (1 - snow.dark)).toBeCloseTo(124 + 0.6 * (60 - 124));
+    expect(dark.dark).toBe(0);
+    expect(42 * (1 - dark.light) + 255 * dark.light).toBeCloseTo(42 + 0.6 * (60 - 42));
+    expect(toneFor(60)).toEqual({ dark: 0, light: 0 });
   });
 });

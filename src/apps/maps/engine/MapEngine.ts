@@ -2,7 +2,7 @@
 // playable area, POIs and loot zones, item heat map, loot sockets as dots (icons when zoomed in), spawned spots
 // and map features as game icons, ARC spawners with patrol paths, and the activity group of the hovered or
 // pinned spawner (ringed members + area hull). React feeds it the Explorer model; it reports tooltip targets.
-import { THREAT, ZONE_COLORS, enemyIcon, isFeature, lootZone } from '../data/kinds';
+import { ICON_SHARE, THEME_ICONS, THREAT, ZONE_COLORS, areaThemes, enemyIcon, isFeature, lootZone, markerStyle, type MarkerStyle, type SpotKind } from '../data/kinds';
 import { DATA_BASE, reportTileError, symbolUrl } from '../data/useMapData';
 import type { Level, MapData, PuzzleSymbol, UV } from '../data/types';
 import { eligibleEntrances, guideEntranceVisible, guideOwnsSpawner, guidePins, guideTrails, selectEntrance, symbolOf, toggleLayout, type GuideSelection, type GuideTargets, PLAIN_PUZZLE_COLOR, visibleSteps, stepLabel } from '../data/puzzles';
@@ -69,6 +69,126 @@ export function buildHeat(score: MapScore | null, map: MapData, socketVisible: (
   }
   hctx.putImageData(img, 0, 0);
   return { canvas: c, order };
+}
+
+// ---------------------------------------------------------------- marker geometry
+/** Kinds drawn like loot dots (containers, nature), also when a spawner places them (snow piles). */
+const lootLike = (kind: SpotKind) => ['dot', 'leaf'].includes(markerStyle(kind));
+/** Loot spots drawn as icon markers when zoomed in (nature); container dots always stay dots. */
+const iconWhenZoomed = (kind: SpotKind) => !kind.small && markerStyle(kind) !== 'dot';
+//
+// Marker sizes follow the zoom: the view scale s is 1 when the map fits the view and up to MAX_S zoomed in. Markers grow
+// with s^0.4 (×1 at s ≤ 1, ×1.74 at 4, ×2.5 from 10 on), much slower than the map (×s), so they spread apart when
+// zooming in and their icons grow readable. Container dots stay small at every zoom (radius 2.2·√s, 2.4–6 px; there
+// are thousands, packed in buildings); nature spots turn into icon markers from SOCKET_ICON_ZOOM on. The base sizes (MARKER_SIZE, px at s ≤ 1) give the icon inside 7–12 px
+// even fully zoomed out, 18–30 px fully zoomed in.
+export const SOCKET_ICON_ZOOM = 4;
+export const MARKER_SIZE = { major: 19, normal: 16, small: 13, socket: 11, enemy: 28 };
+export const markerScaleAt = (s: number) => Math.min(2.5, Math.max(1, s ** 0.4));
+const LIGHT = '#f4f3ef', DARK = '#15181e', OUTLINE = 'rgba(6,8,12,.7)';
+
+/** A closed polygon with its corners rounded by r (arcTo: every corner alike, so the shape stays symmetric). */
+function roundedPolygon(ctx: CanvasRenderingContext2D, pts: [number, number][], r: number) {
+  const n = pts.length, [ax, ay] = pts[n - 1], [bx, by] = pts[0];
+  ctx.moveTo((ax + bx) / 2, (ay + by) / 2);
+  for (let i = 0; i < n; i++) ctx.arcTo(pts[i][0], pts[i][1], pts[(i + 1) % n][0], pts[(i + 1) % n][1], r);
+  ctx.closePath();
+}
+
+/** Adds the outline of a marker shape of half-size R at (x, y) to the current path (markers, highlights alike). */
+export function shapePath(ctx: CanvasRenderingContext2D, style: MarkerStyle, x: number, y: number, R: number) {
+  switch (style) {
+    case 'tile':
+    case 'gate': {
+      const h = R * 0.9;
+      ctx.roundRect(x - h, y - h, 2 * h, 2 * h, h * 0.4);
+      return;
+    }
+    case 'leaf': {
+      const h = R * 0.9;
+      ctx.roundRect(x - h, y - h, 2 * h, 2 * h, [h, h * 0.24, h, h * 0.24]);
+      return;
+    }
+    case 'diamond': {
+      const d = R * 1.2;
+      roundedPolygon(ctx, [[x, y - d], [x + d, y], [x, y + d], [x - d, y]], d * 0.2);
+      return;
+    }
+    case 'hex': {
+      const d = R * 1.1;
+      roundedPolygon(ctx, [0, 1, 2, 3, 4, 5].map((i) => {
+        const a = (Math.PI / 3) * i - Math.PI / 2;
+        return [x + d * Math.cos(a), y + d * Math.sin(a)] as [number, number];
+      }), d * 0.18);
+      return;
+    }
+    default:
+      ctx.moveTo(x + R, y);
+      ctx.arc(x, y, R, 0, Math.PI * 2);
+  }
+}
+
+/** Visible half-extent of a bare enemy glyph of size sz (the ping icons fill about 65 % of their image). */
+const glyphR = (sz: number) => sz * 0.34;
+const AROUND = [[1, 0], [-1, 0], [0, 1], [0, -1], [0.7, 0.7], [-0.7, 0.7], [0.7, -0.7], [-0.7, -0.7]];
+
+/** Patrol mark: a small dark badge with a white circular arrow on the marker's lower right. */
+function patrolMark(ctx: CanvasRenderingContext2D, x: number, y: number, R: number) {
+  const b = Math.max(3.8, R * 0.42), cx = x + R * 0.8, cy = y + R * 0.8, a = b * 0.5;
+  ctx.beginPath();
+  ctx.arc(cx, cy, b, 0, Math.PI * 2);
+  ctx.fillStyle = DARK;
+  ctx.fill();
+  ctx.lineWidth = 1;
+  ctx.strokeStyle = LIGHT;
+  ctx.stroke();
+  const end = Math.PI * 1.55;
+  ctx.beginPath();
+  ctx.arc(cx, cy, a, -Math.PI * 0.25, end);
+  ctx.lineWidth = Math.max(1.1, b * 0.24);
+  ctx.lineCap = 'round';
+  ctx.stroke();
+  // Arrowhead at the arc's end, pointing along it.
+  const ex = cx + a * Math.cos(end), ey = cy + a * Math.sin(end), h = b * 0.42;
+  ctx.beginPath();
+  ctx.moveTo(ex + h, ey);
+  ctx.lineTo(ex, ey - h * 0.9);
+  ctx.lineTo(ex - h * 0.15, ey + h * 0.6);
+  ctx.closePath();
+  ctx.fillStyle = LIGHT;
+  ctx.fill();
+}
+
+/**
+ * Height mark, the same on every shape: a small dark badge with a white chevron (up: above ground, down: below) on the
+ * marker's upper right. Plain loot dots get only the chevron, above or below the dot.
+ */
+function heightMark(ctx: CanvasRenderingContext2D, x: number, y: number, R: number, code: -1 | 1, badge: boolean) {
+  const b = badge ? Math.max(3.6, R * 0.42) : 2.6;
+  const cx = badge ? x + R * 0.8 : x, cy = badge ? y - R * 0.8 : y - code * (R + 3.2);
+  if (badge) {
+    ctx.beginPath();
+    ctx.arc(cx, cy, b, 0, Math.PI * 2);
+    ctx.fillStyle = DARK;
+    ctx.fill();
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = LIGHT;
+    ctx.stroke();
+  }
+  const w = b * (badge ? 0.5 : 1), t = b * (badge ? 0.28 : 0.55);
+  ctx.beginPath();
+  ctx.moveTo(cx - w, cy + code * t);
+  ctx.lineTo(cx, cy - code * t);
+  ctx.lineTo(cx + w, cy + code * t);
+  ctx.lineCap = ctx.lineJoin = 'round';
+  if (!badge) {
+    ctx.lineWidth = 3.4;
+    ctx.strokeStyle = OUTLINE;
+    ctx.stroke();
+  }
+  ctx.lineWidth = badge ? Math.max(1.2, b * 0.3) : 1.5;
+  ctx.strokeStyle = LIGHT;
+  ctx.stroke();
 }
 
 export class MapEngine {
@@ -215,7 +335,17 @@ export class MapEngine {
     return [(x - this.view.x) / b, (y - this.view.y) / b];
   }
   private markerScale() {
+    return markerScaleAt(this.view.s);
+  }
+  /** Puzzle pins keep their gentler growth (×1–1.5). */
+  private puzzleScale() {
     return Math.min(1.5, Math.max(1, Math.pow(this.view.s, 0.25)));
+  }
+  /** Size of a spawner's marker: by importance, zoom, and (spawned kinds) spawn chance; loot-like kinds as loot icons. */
+  private spawnerSize(kind: SpotKind, p: number) {
+    if (lootLike(kind)) return MARKER_SIZE.socket * this.markerScale();
+    const base = kind.major ? MARKER_SIZE.major : kind.small ? MARKER_SIZE.small : MARKER_SIZE.normal;
+    return base * this.markerScale() * (isFeature(kind) ? 1 : 0.85 + 0.15 * p);
   }
 
   requestDraw() {
@@ -350,7 +480,7 @@ export class MapEngine {
     if (P.pois || P.zones || hoverPoi != null) {
       ctx.save();
       if (bounds) ctx.clip(bounds);
-      ctx.lineWidth = 1.1;
+      ctx.lineJoin = 'round';
       m.pois.forEach((p, i) => {
         if (ringsArea(p.outline) > 0.04 && hoverPoi !== i) return;
         if (!e.onLayer('pois', i)) return;
@@ -368,17 +498,22 @@ export class MapEngine {
           });
           ctx.closePath();
         }
-        if (z) {
-          ctx.fillStyle = `rgba(${ZONE_COLORS[z]},.14)`;
-          ctx.fill('evenodd');
-        }
         if (hoverPoi === i) {
           ctx.fillStyle = 'rgba(255,255,255,.07)';
           ctx.fill('evenodd');
         }
-        ctx.lineWidth = hoverPoi === i ? 1.8 : 1.1;
-        ctx.strokeStyle = hoverPoi === i ? '#fff' : sc?.score ? ramp(dens, 0.8) : z ? `rgba(${ZONE_COLORS[z]},.7)` : 'rgba(230,227,220,.2)';
+        // Loot value like the in-game map: a strong red / yellow outline without fill, on a soft dark shadow so it
+        // reads on snow too; sparse areas only faintly.
+        const value = z && z !== 'sparse' && hoverPoi !== i && !sc?.score;
+        ctx.lineWidth = hoverPoi === i ? 1.8 : value ? 1.8 : 1.1;
+        ctx.strokeStyle = hoverPoi === i ? '#fff' : sc?.score ? ramp(dens, 0.8) : z ? `rgba(${ZONE_COLORS[z]},${value ? 0.95 : 0.5})` : 'rgba(230,227,220,.2)';
+        if (value) {
+          ctx.shadowColor = 'rgba(0,0,0,.65)';
+          ctx.shadowBlur = 3;
+        }
         ctx.stroke();
+        ctx.shadowColor = 'transparent';
+        ctx.shadowBlur = 0;
       });
       ctx.restore();
     }
@@ -392,10 +527,10 @@ export class MapEngine {
 
     const r = Math.max(2.4, Math.min(6, 2.2 * Math.sqrt(this.view.s)));
     const k = this.markerScale();
-    const socketIcons = this.view.s >= 4.5;
+    const socketIcons = this.view.s >= SOCKET_ICON_ZOOM;
     const hcode = (lv: Level | undefined) => (P.height ? heightCode(lv) : 0);
     if (isLoot) {
-      // Area-of-effect circles for spawners that carry a radius (e.g. the Pendola Flash Freeze zones): a soft disc
+      // Area-of-effect circles for spawners that carry a radius (e.g. the Pendola Flash Freeze zones): a faint disc
       // under the markers, in the kind's color.
       let areaOrdinal = -1;
       m.spawners.forEach((s, i) => {
@@ -412,50 +547,58 @@ export class MapEngine {
         const active = (hv?.t === 'spawner' && hv.i === i) || (this.pin?.t === 'spawner' && this.pin.i === i);
         ctx.beginPath();
         ctx.arc(x, y, rp, 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(${hue}, 70%, 50%, ${active ? 0.34 : 0.17})`;
+        ctx.fillStyle = `hsla(${hue}, 70%, 50%, ${active ? 0.3 : 0.07})`; // faint: the outline marks the zone
         ctx.fill();
         ctx.strokeStyle = active ? '#ffffff' : `hsla(${hue}, 90%, 60%, .95)`;
         ctx.lineWidth = active ? 2.2 : 1.5;
         ctx.stroke();
       });
       this.drawGroups(ctx, 'spawner');
-      const drawSpawners = (features: boolean) => m.spawners.forEach((s, i) => {
+      // Spawned spots under the loot dots; map features and exits on top.
+      const drawSpawners = (top: boolean) => m.spawners.forEach((s, i) => {
         const kind = e.spawnerKind(i);
-        if (!kind || isFeature(kind) !== features || this.ownedSpawner(i)) return;
+        if (!kind || (isFeature(kind) || kind.cat === 'Exits') !== top || this.ownedSpawner(i)) return;
         const p = e.spawnP[i], [x, y] = toScreen(s[0], s[1]);
         if (x < -20 || y < -20 || x > w + 20 || y > h + 20) return;
-        const sz = (kind.major ? 15 : kind.small ? 10 : 12) * k * (features ? 1 : 0.8 + 0.2 * p);
-        const grey = !!e.score && !features;
-        this.iconMarker(ctx, x, y, sz, kind.icon, grey ? '#8a8a8a' : kind.color, {
-          alpha: features ? (p >= 0.995 ? 1 : 0.55) : 0.5 + 0.5 * p,
+        const feature = isFeature(kind);
+        // With an item: spots whose contents are server-side turn grey (not scored).
+        const grey = !!e.score && !feature && kind.cat !== 'Exits';
+        // Spawned loot-like spots (snow piles) match the loot dots of their category: small until icon zoom.
+        if (lootLike(kind) && !(socketIcons && iconWhenZoomed(kind))) {
+          this.dot(ctx, x, y, r * 0.85, grey ? '#8a8a8a' : kind.color, hcode(m.levels.spawners[i]), markerStyle(kind));
+          return;
+        }
+        this.iconMarker(ctx, x, y, this.spawnerSize(kind, p), kind.icon, grey ? '#8a8a8a' : kind.color, {
           hovered: hv?.t === 'spawner' && hv.i === i,
           height: hcode(m.levels.spawners[i]),
-          filled: !!kind.major && !grey,
+          style: markerStyle(kind),
         });
       });
       drawSpawners(false);
+      const smallR = (kind: SpotKind) => r * (kind.small ? 0.6 : 0.85);
       if (e.score) {
         for (const i of this.heat.order) {
           const s = m.sockets[i], [x, y] = toScreen(s[0], s[1]), t = Math.sqrt(e.score.sockets[i] / e.score.max), kind = e.cls.socketKind[i];
-          this.dot(ctx, x, y, r * (kind.small ? 0.6 : 0.85) * (0.8 + 0.45 * t), ramp(t, 0.6 + 0.4 * t), hcode(m.levels.sockets[i]));
+          this.dot(ctx, x, y, smallR(kind) * (0.8 + 0.45 * t), ramp(t, 0.6 + 0.4 * t), hcode(m.levels.sockets[i]), markerStyle(kind));
         }
       } else {
         m.sockets.forEach((s, i) => {
           if (!e.socketVisible(i)) return;
           const [x, y] = toScreen(s[0], s[1]);
           if (x < -10 || y < -10 || x > w + 10 || y > h + 10) return;
-          const kind = e.cls.socketKind[i];
-          if (socketIcons && !kind.small) this.iconMarker(ctx, x, y, 11 * k, kind.icon, kind.color, { height: hcode(m.levels.sockets[i]) });
-          else this.dot(ctx, x, y, r * (kind.small ? 0.6 : 0.85), kind.color, hcode(m.levels.sockets[i]));
+          const kind = e.cls.socketKind[i], style = markerStyle(kind);
+          if (socketIcons && iconWhenZoomed(kind)) this.iconMarker(ctx, x, y, MARKER_SIZE.socket * k, kind.icon, kind.color, { height: hcode(m.levels.sockets[i]), style });
+          else this.dot(ctx, x, y, smallR(kind), kind.color, hcode(m.levels.sockets[i]), style);
         });
       }
       drawSpawners(true);
       if (hv?.t === 'socket') {
-        const s = m.sockets[hv.i], [x, y] = toScreen(s[0], s[1]);
+        const s = m.sockets[hv.i], [x, y] = toScreen(s[0], s[1]), kind = e.cls.socketKind[hv.i];
+        const R = socketIcons && iconWhenZoomed(kind) && !e.score ? (MARKER_SIZE.socket * k) / 2 : smallR(kind);
         ctx.beginPath();
-        ctx.arc(x, y, (socketIcons ? 6 * k : r) + 4, 0, Math.PI * 2);
+        shapePath(ctx, markerStyle(kind), x, y, R + 3);
         ctx.strokeStyle = '#fff';
-        ctx.lineWidth = 1.8;
+        ctx.lineWidth = 2;
         ctx.stroke();
       }
       this.drawPuzzles(ctx, w, h);
@@ -484,10 +627,11 @@ export class MapEngine {
         if (!e.enemyVisible(i)) return;
         const p = e.enemyP[i], [x, y] = toScreen(s[0], s[1]), en = e.enemyMatch(i);
         const name = en != null && en >= 0 ? e.index.enemies[en]?.name ?? '' : '';
-        const color = e.state.enemies.size && en != null && en >= 0 ? e.enemyColor(en) : THREAT;
-        // Patrolling spawners filled, stationary ones dark with a colored ring.
-        this.iconMarker(ctx, x, y, 13 * k * (0.8 + 0.35 * p), enemyIcon(name), color, {
-          filled: s[6].length > 0, hovered: hv?.t === 'enemy' && hv.i === i, height: hcode(m.levels.enemies[i]),
+        // Each enemy type in its own colour (the same as in the list), filtered or not; unknown spawners in red.
+        const color = en != null && en >= 0 ? e.enemyColor(en) : THREAT;
+        // The enemy's ping icon itself, outlined; patrolling spawners get a patrol badge.
+        this.enemyGlyph(ctx, x, y, MARKER_SIZE.enemy * k * (0.8 + 0.35 * p), enemyIcon(name), color, {
+          patrols: s[6].length > 0, hovered: hv?.t === 'enemy' && hv.i === i, height: hcode(m.levels.enemies[i]),
         });
       });
     }
@@ -496,6 +640,7 @@ export class MapEngine {
       ctx.font = '600 12px Urbanist, "Segoe UI", sans-serif';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
+      const themes = areaThemes(m), dpr = window.devicePixelRatio || 1, gs = 12, gap = 3;
       m.areas.forEach((a, i) => {
         if (this.view.s < (a.zoom >= 2 ? 1.8 : a.zoom >= 1 ? 1.2 : 0)) return;
         if (e.layer != null && (a.layer ?? 0) !== e.layer) return;
@@ -506,52 +651,105 @@ export class MapEngine {
         ctx.strokeText(label, x, y);
         ctx.fillStyle = '#f0ebe0';
         ctx.fillText(label, x, y);
+        // Loot categories of the area above its name, white game icons on a soft shadow (as on the in-game map).
+        const icons = themes[i].map((t) => THEME_ICONS[t]).filter(Boolean);
+        if (!icons.length) return;
+        ctx.save();
+        ctx.shadowColor = 'rgba(0,0,0,.9)';
+        ctx.shadowBlur = 3;
+        ctx.shadowOffsetY = 0.5;
+        const left = x - (icons.length * gs + (icons.length - 1) * gap) / 2;
+        icons.forEach((icon, n) => {
+          const bmp = tintedIcon(icon, '#ffffff', gs * dpr);
+          if (bmp) ctx.drawImage(bmp, left + n * (gs + gap), y - 9 - gs, gs, gs);
+        });
+        ctx.restore();
       });
     }
   }
 
-  /** Socket marker; height above / below ground pulls the circle into a pin pointing up / down. */
-  private dot(ctx: CanvasRenderingContext2D, x: number, y: number, rr: number, fill: string, code: -1 | 0 | 1) {
-    ctx.beginPath();
-    if (!code) ctx.arc(x, y, rr, 0, Math.PI * 2);
-    else {
-      const point = code > 0 ? -1 : 1, hh = Math.max(3.5, rr * 1.15), dist = rr + hh, theta = point < 0 ? -Math.PI / 2 : Math.PI / 2, a = Math.acos(rr / dist);
-      ctx.moveTo(x, y + point * dist);
-      ctx.arc(x, y, rr, theta + a, theta - a + Math.PI * 2);
-      ctx.closePath();
-    }
-    ctx.fillStyle = fill;
-    ctx.fill();
-    ctx.lineWidth = 0.8;
-    ctx.strokeStyle = 'rgba(0,0,0,.75)';
-    ctx.stroke();
+  /**
+   * An ARC enemy: its game ping icon in `color`, without a shape around it, traced with a dark outline (white when
+   * hovered) so it reads on snow and dark ground; the patrol and height badges on its corners.
+   */
+  private enemyGlyph(ctx: CanvasRenderingContext2D, x: number, y: number, sz: number, icon: string, color: string,
+    o: { patrols?: boolean; hovered?: boolean; height?: -1 | 0 | 1 }) {
+    const dpr = window.devicePixelRatio || 1, px = sz * (o.hovered ? 1.12 : 1), x0 = x - px / 2, y0 = y - px / 2;
+    const layer = (tint: string, d: number) => {
+      const bmp = tintedIcon(icon, tint, px * dpr);
+      if (bmp) for (const [dx, dy] of AROUND) ctx.drawImage(bmp, x0 + dx * d, y0 + dy * d, px, px);
+    };
+    if (o.hovered) layer('#ffffff', 2.8);
+    layer('#06080c', 1.4);
+    const bmp = tintedIcon(icon, color, px * dpr);
+    if (bmp) ctx.drawImage(bmp, x0, y0, px, px);
+    if (o.patrols) patrolMark(ctx, x, y, glyphR(px));
+    if (o.height) heightMark(ctx, x, y, glyphR(px), o.height, true);
   }
 
-  /** Game icon on a small disc: dark with a colored ring and icon, or filled (major kinds, patrolling enemies). */
+  /** A plain loot dot (a small leaf for nature), dark-outlined; a chevron above / below marks its height. */
+  private dot(ctx: CanvasRenderingContext2D, x: number, y: number, rr: number, fill: string, code: -1 | 0 | 1, style: MarkerStyle = 'dot') {
+    ctx.beginPath();
+    shapePath(ctx, style === 'leaf' ? 'leaf' : 'dot', x, y, style === 'leaf' ? rr * 1.2 : rr);
+    // A dark outline outside the shape (stroked first, the fill covers its inner half): readable on snow and on dark
+    // ground alike without shrinking it.
+    ctx.lineWidth = 2.6;
+    ctx.strokeStyle = OUTLINE;
+    ctx.stroke();
+    ctx.fillStyle = fill;
+    ctx.fill();
+    if (code) heightMark(ctx, x, y, rr, code, false);
+  }
+
+  /**
+   * A marker of size `sz` in one of the shared styles (kinds.ts `markerStyle`, see `shapePath`), the game icon inside:
+   * filled shapes in `color` with a dark icon and a dark outline; `ring` a dark disc with ring and icon in `color`
+   * (`filled`: a `color` disc); `tile` white with a dark icon; `gate` dark with a light rim and
+   * icon. Hovered: a white outline of the same shape around it.
+   */
   private iconMarker(ctx: CanvasRenderingContext2D, x: number, y: number, sz: number, icon: string, color: string,
-    o: { alpha?: number; hovered?: boolean; height?: -1 | 0 | 1; filled?: boolean; outline?: boolean } = {}) {
-    const R = (sz / 2) * (o.hovered ? 1.2 : 1);
+    o: { alpha?: number; hovered?: boolean; height?: -1 | 0 | 1; filled?: boolean; outline?: boolean; style?: MarkerStyle } = {}) {
+    const style = o.style ?? 'ring', R = sz / 2;
+    const outlined = style === 'ring' && !o.filled;
     ctx.globalAlpha = o.alpha ?? 1;
     ctx.beginPath();
-    ctx.arc(x, y, R, 0, Math.PI * 2);
-    ctx.fillStyle = o.filled ? color : 'rgba(18,22,26,.92)';
-    ctx.fill();
-    ctx.lineWidth = o.hovered ? 2 : 1.1;
-    ctx.strokeStyle = o.hovered ? '#fff' : o.filled ? 'rgba(0,0,0,.7)' : color;
-    if (o.hovered || o.outline !== false) ctx.stroke();
-    const px = R * 1.3, dpr = window.devicePixelRatio || 1;
-    const bmp = tintedIcon(icon, o.filled ? '#14181c' : color, px * dpr);
-    if (bmp) ctx.drawImage(bmp, x - px / 2, y - px / 2, px, px);
-    if (o.height) {
-      const ty = o.height > 0 ? y - R - 2.5 : y + R + 2.5, d = o.height;
-      ctx.beginPath();
-      ctx.moveTo(x - 3, ty + d * 1.5);
-      ctx.lineTo(x + 3, ty + d * 1.5);
-      ctx.lineTo(x, ty - d * 2.5);
-      ctx.closePath();
-      ctx.fillStyle = color;
+    shapePath(ctx, style, x, y, R);
+    if (style === 'tile' || style === 'gate') {
+      ctx.save();
+      ctx.shadowColor = 'rgba(0,0,0,.6)';
+      ctx.shadowBlur = 4;
+      ctx.shadowOffsetY = 1;
+      ctx.fillStyle = style === 'tile' ? LIGHT : 'rgba(18,22,26,.94)';
       ctx.fill();
+      ctx.restore();
+      ctx.lineWidth = style === 'tile' ? 1 : 1.3;
+      ctx.strokeStyle = style === 'tile' ? 'rgba(0,0,0,.55)' : LIGHT;
+      ctx.stroke();
+    } else {
+      if (o.outline !== false) {
+        ctx.lineWidth = 3.2;
+        ctx.strokeStyle = OUTLINE;
+        ctx.stroke();
+      }
+      ctx.fillStyle = outlined ? 'rgba(18,22,26,.92)' : color;
+      ctx.fill();
+      if (outlined && o.outline !== false) {
+        ctx.lineWidth = 1.4;
+        ctx.strokeStyle = color;
+        ctx.stroke();
+      }
     }
+    const px = sz * ICON_SHARE[style], dpr = window.devicePixelRatio || 1;
+    const bmp = tintedIcon(icon, style === 'gate' ? LIGHT : outlined ? color : DARK, px * dpr);
+    if (bmp) ctx.drawImage(bmp, x - px / 2, y - px / 2, px, px);
+    if (o.hovered) {
+      ctx.beginPath();
+      shapePath(ctx, style, x, y, R + 3);
+      ctx.lineWidth = 2;
+      ctx.strokeStyle = '#fff';
+      ctx.stroke();
+    }
+    if (o.height) heightMark(ctx, x, y, R, o.height, true);
     ctx.globalAlpha = 1;
   }
 
@@ -593,11 +791,15 @@ export class MapEngine {
     }
     ctx.strokeStyle = strong ? 'rgba(255,255,255,.9)' : 'rgba(255,255,255,.5)';
     ctx.lineWidth = strong ? 1.5 : 1.1;
-    for (const [x, y] of pts) {
+    // Each member outlined in its own marker's shape, just outside it.
+    members.forEach((j, n) => {
+      const [x, y] = pts[n];
+      const sk = kind === 'spawner' ? this.ex.spawnerKind(j) ?? this.ex.cls.spawnerKinds[j][0]?.[0] : null;
+      const R = sk ? this.spawnerSize(sk, this.ex.spawnP[j]) / 2 : glyphR(MARKER_SIZE.enemy * this.markerScale() * (0.8 + 0.35 * this.ex.enemyP[j]));
       ctx.beginPath();
-      ctx.arc(x, y, 10 * this.markerScale(), 0, Math.PI * 2);
+      shapePath(ctx, sk ? markerStyle(sk) : 'ring', x, y, R + 4);
       ctx.stroke();
-    }
+    });
     ctx.restore();
   }
   private drawGroups(ctx: CanvasRenderingContext2D, kind: 'spawner' | 'enemy') {
@@ -612,7 +814,7 @@ export class MapEngine {
   }
   private drawPuzzles(ctx: CanvasRenderingContext2D, _w: number, _h: number) {
     if (!this.ex.prefs.puzzleDoors) return;
-    const k = this.markerScale();
+    const k = this.puzzleScale();
     const pins = guidePins(this.ex.map, this.ex.cond, true, this.activePuzzle);
     ctx.save();
     for (const trail of guideTrails(pins)) {
@@ -740,14 +942,14 @@ export class MapEngine {
       return best;
     };
     if (e.state.mode === 'arc') {
-      const i = nearest(m.enemySpawners.length, (j) => e.enemyVisible(j), (j) => [m.enemySpawners[j][0], m.enemySpawners[j][1]], 11 * k);
+      const i = nearest(m.enemySpawners.length, (j) => e.enemyVisible(j), (j) => [m.enemySpawners[j][0], m.enemySpawners[j][1]], 12 * k);
       if (i != null) return { t: 'enemy', i };
     } else {
-      const step = this.guideAt(mx, my, k);
+      const step = this.guideAt(mx, my, this.puzzleScale());
       if (step) return step;
       const sp = nearest(m.spawners.length, (j) => !!e.spawnerKind(j) && !this.ownedSpawner(j), (j) => [m.spawners[j][0], m.spawners[j][1]], 10 * k);
       if (sp != null) return { t: 'spawner', i: sp };
-      const so = nearest(m.sockets.length, (j) => e.socketVisible(j), (j) => [m.sockets[j][0], m.sockets[j][1]], 9);
+      const so = nearest(m.sockets.length, (j) => e.socketVisible(j), (j) => [m.sockets[j][0], m.sockets[j][1]], this.view.s >= SOCKET_ICON_ZOOM ? Math.max(9, MARKER_SIZE.socket * k * 0.6) : 9);
       if (so != null) return { t: 'socket', i: so };
     }
     const uv = this.toUv(mx, my);

@@ -97,7 +97,7 @@ export function MapView({ ex, handle, fitPadding }: { ex: Explorer; handle?: Ref
           </>)}
           {prefs.zones && !(loot && score) && (
             <div className="mx-legend__zones">
-              {ZONES.map((z) => <span key={z}><b style={{ '--zone': `rgb(${ZONE_COLORS[z]})` } as CSSProperties} />{zone(z)}</span>)}
+              {ZONES.map((z) => <span key={z}><b className={z} style={{ '--zone': `rgb(${ZONE_COLORS[z]})` } as CSSProperties} />{zone(z)}</span>)}
             </div>
           )}
         </div>
@@ -190,7 +190,7 @@ function Tooltip({ ex, tip, pinned, engine, opened }: { ex: Explorer; tip: TipSt
     if (g) hint = pinHint(pinned?.t === 'spawner' && pinned.i === target.i);
   } else if (target.t === 'enemy') {
     const s = map.enemySpawners[target.i], en = ex.enemyMatch(target.i);
-    color = ex.state.enemies.size && en != null && en >= 0 ? ex.enemyColor(en) : THREAT;
+    color = en != null && en >= 0 ? ex.enemyColor(en) : THREAT;
     kindLabel = t('maps.tooltip.arcSpawner');
     title = s[4] ? s[4].replace(/^StaticWorld_/, '').replace(/_/g, ' ') : t('maps.tooltip.enemySpawner');
     options = tableOptions(index, s[4], names.enemy).slice(0, 8).map((o) => (o.missing ? { ...o, text: tm('maps.tooltip.tableNotExported', { table: o.text }) } : o));

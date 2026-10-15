@@ -1030,7 +1030,7 @@
     "arc": {
       "title": "Wrogie ARC · {condition}",
       "helpLabel": "O generatorach ARC",
-      "help": "Oczekiwana liczba generatorów, które mogą wytworzyć danego wroga w tym warunku. Wybierz wrogów, aby pokazać tylko ich generatory i ścieżki patrolu (kilku naraz, każdy w swoim kolorze). Wypełnione znaczniki patrolują ścieżkę. Najedź na generator, aby zobaczyć jego grupę i czasy odrodzenia; kliknij, aby przypiąć jego grupę pojawiania się.",
+      "help": "Oczekiwana liczba generatorów, które mogą wytworzyć danego wroga w tym warunku. Wybierz wrogów, aby pokazać tylko ich generatory i ścieżki patrolu (kilku naraz, każdy w swoim kolorze). Znaczniki z symbolem ↻ patrolują ścieżkę. Najedź na generator, aby zobaczyć jego grupę i czasy odrodzenia; kliknij, aby przypiąć jego grupę pojawiania się.",
       "showAll": "Pokaż wszystkich wrogów",
       "expectedOne": "~{expected} oczekiwane na rajd, z {count} generatora",
       "expected": "~{expected} oczekiwane na rajd, z {count} generatorów",

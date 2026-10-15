@@ -1030,7 +1030,7 @@
     "arc": {
       "title": "ARC düşmanları · {condition}",
       "helpLabel": "ARC doğurucular hakkında",
-      "help": "Bu koşulda her düşmanı üretebilecek doğurucuların beklenen sayısı. Yalnızca doğuracakları ve devriye yollarını görmek için düşman seç (aynı anda birkaçı, her biri kendi renginde). Dolu işaretçiler bir yol üzerinde devriye gezer. Grubunu ve yeniden doğuş zamanlayıcılarını görmek için bir doğurucunun üzerine gel; doğuş grubunu sabitlemek için tıkla.",
+      "help": "Bu koşulda her düşmanı üretebilecek doğurucuların beklenen sayısı. Yalnızca doğuracakları ve devriye yollarını görmek için düşman seç (aynı anda birkaçı, her biri kendi renginde). ↻ simgeli işaretçiler bir yol üzerinde devriye gezer. Grubunu ve yeniden doğuş zamanlayıcılarını görmek için bir doğurucunun üzerine gel; doğuş grubunu sabitlemek için tıkla.",
       "showAll": "Tüm düşmanları göster",
       "expectedOne": "Tur başına ~{expected} beklenir, {count} doğurucudan",
       "expected": "Tur başına ~{expected} beklenir, {count} doğurucudan",

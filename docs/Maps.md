@@ -21,12 +21,40 @@ The Maps tool (`src/apps/maps/`) has two routes, switched by the tab bar in its 
   husks and wrecks, carryables and activities, locked areas, map features; container kinds split into
   container types), the best areas, a heat map and score-colored spots.
 - **ARC mode**: the enemies of the map with the expected number of spawners that can produce each, multi-select
-  with one color per enemy, patrol paths, each spawner drawn with the game ping icon of its most probable enemy
-  (filled: patrols).
+  with one color per enemy, patrol paths, each spawner drawn as the game ping icon of its most probable enemy,
+  large and without a shape around it (a ↻ badge: patrols).
 - **On the map**: hovering or clicking a spot shows its activity group (members ringed; an area hull for local
   groups; a click pins, Esc unpins) and a tooltip (container tag, area and volume, world coordinates, height,
   tables, spawn chance, group, enemy groups and respawn timers). Height marks, loot zones, the playable area, map
   layers and area labels can be toggled.
+- **Markers**: one shape per filter category, so each group in the filter list reads as one family. The same shape is
+  used on the map, for the hover and group outlines, and as the swatch in the filter list (`markerStyle` in
+  `data/kinds.ts`, `shapePath` in `engine/MapEngine.ts`, `.mx-sw` in `styles/_side.scss`). The kind's colour fills the
+  shape (also the colour of its checkbox) and its game icon sits inside.
+  - Exits: tiles. Extraction points (`tile`) are white with a dark icon, like the in-game map. The other exits and
+    spawns are dark with a light rim.
+  - Containers: small dots with a dark outline, at every zoom (no icon: there are too many).
+  - Nature: leaves. Snow piles belong here too: they are spawned, but harvested like plants.
+  - Raider containers: diamonds.
+  - ARC husks & wrecks: hexagons.
+  - Map features and puzzle devices: rings (dark disc, colour ring and icon).
+
+  Importance shows in size (`major`); markers are fully opaque, the spawn chance is in the tooltip and the counts.
+  The icon takes the same share of the shape on the map and in the swatch (`ICON_SHARE`; 18 px swatches with even
+  icon sizes, so both sit on whole pixels). A height mark is a small dark badge with a white
+  chevron (up: above ground, down: below) on the marker's upper right; plain loot dots get the chevron alone.
+- **Marker size**: markers grow with the zoom as s^0.4 (×1 when the whole map fits, ×1.74 at 4×, ×2.5 from 10× on),
+  much slower than the map, so they spread apart and their icons grow readable. Container dots stay small at every zoom
+  (radius 2.2·√s, 2.4–6 px; there are thousands, packed in buildings); nature spots become icon markers from 4× zoom
+  (`SOCKET_ICON_ZOOM`). Base sizes are in `MARKER_SIZE`; puzzle pins
+  keep their own, gentler growth.
+
+  Loot zones are red (High) / yellow (Medium) outlines without fill, as in game, with sparse areas outlined only
+  faintly. Area labels carry the area's loot category icons above the name (`areaThemes`, `THEME_ICONS`).
+- **Map toning**: the textures range from dark (Blue Gate, median luminance about 42) to snow white (Pendola Pass,
+  about 124). The tile layer measures each texture's median on its level-0 tile and veils it toward a shared target
+  (`toneFor` in `engine/tiles.ts`), darkening bright maps and lifting dark ones. Nothing is baked into the tiles, so
+  there is no regeneration.
 
 Puzzle doors are an off-by-default filter in Loot mode. They read only the separate version-2
 `puzzleGuides` contract. Clicking an entrance opens one complete workflow (or an explicitly

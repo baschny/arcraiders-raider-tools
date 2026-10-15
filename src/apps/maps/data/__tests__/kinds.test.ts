@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { classify, enemyColor, KIND, leavesOf, tableEnemies, tableEnemyProbs } from '../kinds';
+import { areaThemes, classify, markerStyle, swatchIcon, enemyColor, KIND, KINDS, leavesOf, tableEnemies, tableEnemyProbs, THEME_ICONS } from '../kinds';
 import type { MapData } from '../types';
 import { TINY_INDEX, TINY_MAP } from './fixtures/tinyMap';
 
@@ -121,5 +121,61 @@ describe('tableEnemyProbs', () => {
 
   it('is cached per index and table', () => {
     expect(tableEnemyProbs(TINY_INDEX, 'A')).toBe(tableEnemyProbs(TINY_INDEX, 'A'));
+  });
+});
+
+describe('areaThemes', () => {
+  const map: MapData = {
+    ...TINY_MAP,
+    pois: [
+      { title: 'Depot', titleKey: 'ST/DEPOT', themes: ['Industrial', 'Security'], threat: 'High', ids: [], outline: [] },
+      { title: 'Garden', themes: ['Nature'], threat: null, ids: [], outline: [] },
+      { title: 'Empty', themes: [], threat: null, ids: [], outline: [] },
+    ],
+    areas: [
+      { name: 'Depot (renamed)', nameKey: 'ST/DEPOT', uv: [0, 0], zoom: 1, layer: 0 },
+      { name: 'Garden', uv: [0, 0], zoom: 1, layer: 0 },
+      { name: 'Empty', uv: [0, 0], zoom: 1, layer: 0 },
+      { name: 'Nowhere', uv: [0, 0], zoom: 1, layer: 0 },
+    ],
+  };
+
+  it('gives each area label the loot categories of its POI, by game string or else by title', () => {
+    expect(areaThemes(map)).toEqual([['Industrial', 'Security'], ['Nature'], [], []]);
+  });
+
+  it('has a loot icon for every loot category', () => {
+    for (const icon of Object.values(THEME_ICONS)) expect(icon).toMatch(/^loot-/);
+  });
+});
+
+describe('tile kinds', () => {
+  it('draws the extraction points as tiles, like the in-game map', () => {
+    expect(KINDS.filter((k) => k.tile).map((k) => k.key)).toEqual(['ExtractMetro', 'ExtractLift', 'ExtractFan', 'ExtractGondola', 'Hatch']);
+  });
+});
+
+describe('markerStyle', () => {
+  const style = (key: string) => markerStyle(KIND.get(key)!);
+
+  it('gives each filter category one shape (exits: extraction tiles and other exits)', () => {
+    expect([style('Hatch'), style('ExtractGondola')]).toEqual(['tile', 'tile']);
+    expect([style('ExtractGondolaLanding'), style('PlayerStart'), style('StationEntrance')]).toEqual(['gate', 'gate', 'gate']);
+    expect([style('Industrial'), style('Ground'), style('WaterTank')]).toEqual(['dot', 'dot', 'dot']);
+    expect([style('Lemon'), style('Snowpile')]).toEqual(['leaf', 'leaf']);
+    expect([style('AmmoBox'), style('CacheStandard')]).toEqual(['diamond', 'diamond']);
+    expect([style('WaspHusk'), style('Probes')]).toEqual(['hex', 'hex']);
+    expect([style('FieldDepot'), style('FieldCrates'), style('Door'), style('PuzzleButton')]).toEqual(['ring', 'ring', 'ring', 'ring']);
+  });
+
+  it('puts snow piles with nature, spawned per round', () => {
+    expect(KIND.get('Snowpile')).toMatchObject({ cat: 'Nature', spawned: true });
+  });
+});
+
+describe('swatchIcon', () => {
+  it('gives the swatch icons even sizes, so they sit on whole pixels in the 18 px swatch', () => {
+    expect([swatchIcon('dot'), swatchIcon('ring'), swatchIcon('tile')]).toEqual([12, 12, 12]);
+    expect([swatchIcon('diamond'), swatchIcon('leaf'), swatchIcon('hex')]).toEqual([10, 10, 10]);
   });
 });

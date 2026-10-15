@@ -1030,7 +1030,7 @@
     "arc": {
       "title": "Enemigos ARC · {condition}",
       "helpLabel": "Sobre los generadores ARC",
-      "help": "Número esperado de generadores que pueden producir cada enemigo en esta condición. Elige enemigos para mostrar solo sus generadores y rutas de patrulla (varios a la vez, cada uno en su color). Los marcadores rellenos patrullan una ruta. Pasa el ratón sobre un generador para ver su grupo y sus temporizadores de reaparición; haz clic en él para fijar su grupo de aparición.",
+      "help": "Número esperado de generadores que pueden producir cada enemigo en esta condición. Elige enemigos para mostrar solo sus generadores y rutas de patrulla (varios a la vez, cada uno en su color). Los marcadores con el símbolo ↻ patrullan una ruta. Pasa el ratón sobre un generador para ver su grupo y sus temporizadores de reaparición; haz clic en él para fijar su grupo de aparición.",
       "showAll": "Mostrar todos los enemigos",
       "expectedOne": "~{expected} esperado por ronda, de {count} generador",
       "expected": "~{expected} esperados por ronda, de {count} generadores",

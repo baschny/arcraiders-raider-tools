@@ -1104,7 +1104,7 @@
     "arc": {
       "title": "ARC enemies · {condition}",
       "helpLabel": "About ARC spawners",
-      "help": "Expected number of spawners that can produce each enemy in this condition. Pick enemies to show only their spawners and patrol paths (several at once, each in its color). Filled markers patrol a path. Hover a spawner for its group and respawn timers; click it to pin its spawn group.",
+      "help": "Expected number of spawners that can produce each enemy in this condition. Pick enemies to show only their spawners and patrol paths (several at once, each in its color). Markers with a ↻ badge patrol a path. Hover a spawner for its group and respawn timers; click it to pin its spawn group.",
       "showAll": "Show all enemies",
       "expectedOne": "~{expected} expected per round, of {count} spawner",
       "expected": "~{expected} expected per round, of {count} spawners",
