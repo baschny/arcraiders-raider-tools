@@ -22,7 +22,8 @@
       "amplified": "How Amplified weapons work in ARC Raiders 2.0 Frozen Trail: upgrade the Gunsmith, then turn a max-level weapon into an Amplified one.",
       "crafting": "What is new to craft in ARC Raiders 2.0 Frozen Trail: in-raid crafts, weapon stencils and the Emperor Gateway key.",
       "changes": "What changed in ARC Raiders 2.0 Frozen Trail since 1.45: recipes, recycling, trader stock and stash sizes."
-    }
+    },
+    "updates": "Every ARC Raiders game update in detail: changed item values, recipes, trader offers, quests, loot budgets per map, and what the patch notes left out."
   },
   "shared": {
     "language": "Language",
@@ -101,7 +102,8 @@
       "lootHelper": "루팅 도우미",
       "quartermaster": "병참 관리",
       "maps": "Maps",
-      "whatsNew": "Frozen Trail items"
+      "whatsNew": "Frozen Trail items",
+      "updates": "Game updates"
     }
   },
   "dashboard": {
@@ -124,7 +126,8 @@
       "quests": "인터랙티브 퀘스트 트리로 퀘스트 진행 상황을 추적합니다.",
       "lootHelper": "제작 체인을 시각화해 레이드 중 무엇을 루팅해야 하는지 판단할 수 있습니다.",
       "quartermaster": "보관함, 장비, 은신처 요구사항을 한 곳에서 계획합니다.",
-      "maps": "Find where to loot an item and where ARC enemies spawn on every map and map condition."
+      "maps": "Find where to loot an item and where ARC enemies spawn on every map and map condition.",
+      "updates": "Every game update in detail: what changed in items, recipes, trader offers, quests and loot, and what the patch notes leave out."
     }
   },
   "pages": {
@@ -1123,7 +1126,9 @@
       "pois": "Areas & names",
       "zones": "Loot zones",
       "zonesTitle": "In-game loot zones: red = abundant, yellow = dense, grey = sparse.",
-      "bounds": "Playable area"
+      "bounds": "Playable area",
+      "puzzles": "Puzzles",
+      "puzzlesTitle": "Show the pins of every puzzle, colour-coded by layout. Puzzles without a door are reachable only here; otherwise click a puzzle door pin to open just that puzzle."
     },
     "layers": {
       "title": "Map layer: the in-game map switches when you enter these areas",
@@ -1169,7 +1174,23 @@
       "height": "≈ {height} m vs ground",
       "covered": "covered",
       "openSky": "open sky",
-      "noKey": "no key item (opens another way)"
+      "noKey": "no key item (opens another way)",
+      "clickPuzzle": "click to show the puzzle",
+      "clickPuzzleClose": "click to hide the puzzle"
+    },
+    "puzzles": {
+      "legend": "Puzzles",
+      "sequence": "Sequence puzzle",
+      "set": "Set puzzle",
+      "timed": "Timed puzzle",
+      "unknown": "Puzzle",
+      "step": "step {n} of {total}",
+      "setBadge": "requires {required} of {total} (any order)",
+      "setBadgeAny": "any order",
+      "plainPins": "plain pins",
+      "randomized": "randomized order (reshuffled each round)",
+      "symbol": "sigil {symbol}",
+      "inactive": "not active under {condition}"
     },
     "mechanics": {
       "probeSite": "Potential ARC probe landing site",
@@ -1177,7 +1198,12 @@
       "shelterOpen": "Emergency shelter: opens and lights up during a Flash Freeze",
       "zone": "Flash Freeze zone: raiders caught outside a shelter take cold damage",
       "zoneCadence": "Activates {min}–{max} times per round",
-      "zoneRadius": "Area of effect: radius {radius} m"
+      "zoneRadius": "Area of effect: radius {radius} m",
+      "puzzleDoor": "No key — the door opens by solving a puzzle",
+      "puzzleSequence": "Sequence puzzle: press the {n} buttons in the shown order",
+      "puzzleSet": "Set puzzle: all {required} inputs, any order",
+      "puzzleSetAny": "Set puzzle: all inputs, any order",
+      "puzzleRandomized": "Randomized puzzle: {n} inputs, the order is reshuffled each round"
     },
     "timing": {
       "noRespawn": "does not respawn after destroyed",
@@ -1393,6 +1419,86 @@
       "colDiameter": "Diameter (m)",
       "colFill": "Fill",
       "footnote": "Stella Montis lies inside a mountain; its playable boundary reaches past its smaller map widget, so its fill reads above 100%."
+    },
+    "guides": {
+      "doors": "Puzzle doors",
+      "puzzle": "Puzzle",
+      "incomplete": "Guide incomplete",
+      "puzzleAccess": "Opened through this puzzle.",
+      "mixed": "Puzzle and key access are both supported.",
+      "layout": "Layout",
+      "allLayouts": "All layouts",
+      "sigilOrder": "Graffiti activation order",
+      "requiresItem": "Requires {item}",
+      "producesItem": "Produces {item}",
+      "accessAfter": "Access after: {stages}",
+      "required": "Required activations: {count}",
+      "orderCues": "Dashed lines indicate activation order, not a walking route.",
+      "activeSubset": "Active selections in this group: {min}–{max}",
+      "subsetUnknown": "Candidate locations; active selection count is unresolved.",
+      "outputs": "Opens {count} room or gate outputs",
+      "lights": "{count} progress lights indicate activation progress.",
+      "lightsUnknown": "Progress lights indicate activation progress.",
+      "evidence": "Evidence",
+      "possibleButton": "Possible button location",
+      "possibleFuelCell": "Possible fuel-cell location",
+      "possibleLocation": "Possible interaction location",
+      "order": "Activation {count}",
+      "approxHeight": "Approximate height: {height}",
+      "heightUnknown": "Unknown",
+      "actions": {
+        "press": "Press the button",
+        "print": "Print the security code",
+        "carry": "Carry the item to its matching destination",
+        "insert-code": "Insert the matching security code",
+        "insert-fuel-cell": "Insert a fuel cell into the socket",
+        "collect-fuel-cell": "Collect a fuel cell"
+      },
+      "activation": {
+        "ordered": "Activate in the shown order",
+        "unordered": "Activate in any order",
+        "runtime-ordered": "Order changes each round; follow the in-game clues",
+        "unknown": "Activation order is unresolved"
+      },
+      "evidenceKind": {
+        "extracted": "Game-file evidence",
+        "observed": "Observed gameplay"
+      },
+      "fuelCell": "Fuel cell",
+      "fuelCellLocations": "Fuel-cell locations",
+      "buttonGroup": "Button group {count}",
+      "interactionGroup": "Interaction group {count}",
+      "button": "Button {count}",
+      "church": {
+        "title": "Santa Sofia Church - Door puzzle",
+        "opensRooms": "Opens {count} room",
+        "pressButtons": "Press 4 buttons near the graffiti drawings, in this order.",
+        "layoutEachRaid": "One of these button layouts is chosen each raid; find button 1 to start.",
+        "buttonLayout": "Button {button} - {layout}"
+      },
+      "workflow": {
+        "findCount": "Find {count} active buttons. Coloured groups show possible locations.",
+        "findButtons": "Find the buttons at the marked locations.",
+        "pressAny": "Press the buttons in any order.",
+        "pressOrdered": "Press the buttons in the indicated order.",
+        "press": "Press the buttons.",
+        "printCodes": "Print all {count} security codes.",
+        "insertCodes": "Carry the codes to the marked consoles and insert each matching security code.",
+        "fuel": "Place a fuel cell in the marked socket.",
+        "open": "The doors open when the required steps are complete.",
+        "interact": "Use the marked interactions.",
+        "locations": "Puzzle locations",
+        "printer": "Security code printer",
+        "printerCandidates": "One of {count} possible printer locations.",
+        "possibleLocation": "Possible location in this raid.",
+        "findPressCount": "Find and press {count} buttons in any order.",
+        "insertCodesAt": "Carry the codes to {location} and insert each matching security code.",
+        "fuelAt": "Place a fuel cell in the socket in {location}.",
+        "hideStep": "Hide locations for step {step}",
+        "showStep": "Show locations for step {step}",
+        "roomUnlocked": "The door unlocks. Enter the room.",
+        "nextRoomUnlocked": "The next room unlocks."
+      }
     }
   },
   "whatsNew": {
@@ -1688,6 +1794,114 @@
     },
     "old-items": {
       "noLonger": "No longer used for"
+    }
+  },
+  "updates": {
+    "title": "Game updates",
+    "subtitle": "What changed in the game data with each ARC Raiders update: values, recipes, offers, quests and loot, from the game files and the game servers.",
+    "loading": "Loading updates...",
+    "contents": "Sections",
+    "showAll": "Show all {n}",
+    "kinds": {
+      "major": "Major update",
+      "minor": "Update",
+      "hotfix": "Hotfix",
+      "server": "Server update"
+    },
+    "sections": {
+      "highlights": "Highlights",
+      "items": "New and removed items",
+      "itemValues": "Item values",
+      "recipes": "Recipes and research",
+      "offers": "Trader offers",
+      "quests": "Quests",
+      "projects": "Projects and expeditions",
+      "progression": "Skills",
+      "maps": "Maps and modes",
+      "loot": "Loot",
+      "enemies": "Enemies"
+    },
+    "ops": {
+      "added": "New",
+      "removed": "Removed",
+      "changed": "Changed"
+    },
+    "fields": {
+      "value": "Sell value",
+      "recycle": "Recycles into",
+      "scrap": "Scraps into",
+      "repairCost": "Repair cost",
+      "repairDurability": "Repair restores",
+      "maxStack": "Stack size",
+      "weight": "Weight",
+      "rarity": "Rarity",
+      "cost": "Cost",
+      "rewards": "Gives",
+      "requires": "Requires",
+      "limit": "Purchase limit",
+      "limitRefresh": "Limit resets after (s)",
+      "acceptRewards": "Rewards on accept",
+      "completeRewards": "Rewards",
+      "optionalRewards": "Optional rewards",
+      "maps": "Maps",
+      "budget": "Loot on the map per raid",
+      "scenario": "Mode",
+      "objective": "Objective",
+      "objectiveAmount": "Objective amount",
+      "levelRewards": "Level rewards"
+    },
+    "value": {
+      "changed": "changed",
+      "yes": "yes",
+      "no": "no",
+      "all": "all maps"
+    },
+    "offer": {
+      "for": "for",
+      "scrapValue": "items worth {value}",
+      "limit": "max. {n}",
+      "trader": "Trader",
+      "window": "Available"
+    },
+    "quest": {
+      "giver": "Given by"
+    },
+    "before": "Before",
+    "now": "Now ({title})",
+    "links": {
+      "patch-notes": "Patch notes",
+      "x": "On X",
+      "news": "News"
+    },
+    "findings": {
+      "title": "Not in the patch notes",
+      "intro": "What the game data shows and the patch notes and announcements do not mention."
+    },
+    "guide": {
+      "title": "Covered in the What's New guide",
+      "sub": "{n} changes, explained with what they are for"
+    },
+    "guideLink": "New items in {version} in depth",
+    "breadcrumb": "Breadcrumb",
+    "inDepth": "Items in depth",
+    "guideCta": "What each new item is for, which old items got new uses, the Outpost, research and Amplified weapons.",
+    "skills": {
+      "added": "New skills",
+      "removed": "Removed skills"
+    },
+    "questsLink": "Show the {version} quests in the Quest Tracker",
+    "lootIntro": "Total value of the loot placed in containers and on the ground when a raid starts, from the map's static loot tables. Dynamic loot that the server generates during a raid (and ARC drops, other raiders) comes on top of it.",
+    "recordType": {
+      "items": "Item",
+      "itemValues": "Item",
+      "recipes": "Recipe",
+      "offers": "Trader offer",
+      "quests": "Quest",
+      "projects": "Project",
+      "progression": "Skill",
+      "maps": "Map",
+      "loot": "Map loot",
+      "enemies": "Enemy"
     }
   }
 }
