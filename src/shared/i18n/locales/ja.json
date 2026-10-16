@@ -1104,7 +1104,7 @@
     "arc": {
       "title": "ARC enemies · {condition}",
       "helpLabel": "About ARC spawners",
-      "help": "Expected number of spawners that can produce each enemy in this condition. Pick enemies to show only their spawners and patrol paths (several at once, each in its color). Filled markers patrol a path. Hover a spawner for its group and respawn timers; click it to pin its spawn group.",
+      "help": "Expected number of spawners that can produce each enemy in this condition. Pick enemies to show only their spawners and patrol paths (several at once, each in its color). Markers with a ↻ badge patrol a path. Hover a spawner for its group and respawn timers; click it to pin its spawn group.",
       "showAll": "Show all enemies",
       "expectedOne": "~{expected} expected per round, of {count} spawner",
       "expected": "~{expected} expected per round, of {count} spawners",
@@ -1127,6 +1127,7 @@
       "zones": "Loot zones",
       "zonesTitle": "In-game loot zones: red = abundant, yellow = dense, grey = sparse.",
       "bounds": "Playable area",
+      "frigateTitle": "Where the ARC Frigate can hover (a round uses one position), where its ARC Reclaimers land and where its cargo pods drop.",
       "puzzles": "Puzzles",
       "puzzlesTitle": "Show the pins of every puzzle, colour-coded by layout. Puzzles without a door are reachable only here; otherwise click a puzzle door pin to open just that puzzle."
     },
@@ -1499,6 +1500,23 @@
         "roomUnlocked": "The door unlocks. Enter the room.",
         "nextRoomUnlocked": "The next room unlocks."
       }
+    },
+    "frigate": {
+      "pose": "Possible Frigate position {n} of {count}",
+      "poseOnly": "Frigate position",
+      "posePickOne": "The Frigate hovers here every round",
+      "posePick": "Each round the Frigate hovers at one of these {count} positions",
+      "altitude": "Hull underside about {height} m above the ground",
+      "cargoInReachOne": "{count} cargo drop site in reach",
+      "cargoInReach": "{count} cargo drop sites in reach",
+      "reclaimer": "ARC Reclaimer",
+      "reclaimerLift": "Lands below the Frigate and lifts raiders up to it",
+      "reclaimerZone": "Lands {inner}–{outer} m around the ground below the Frigate's docking entry",
+      "reclaimerMax": "Up to {count} active at a time",
+      "forPose": "For Frigate position {n}",
+      "cargo": "Cargo drop site",
+      "cargoBody": "The Frigate's cargo pods can land here",
+      "cargoPoses": "In reach of Frigate position {poses}"
     }
   },
   "whatsNew": {
