@@ -72,7 +72,7 @@ describe('projects domain', () => {
 
   it('numbers expeditions by start order and appends the number to names', () => {
     const exp = (id: number, start: string, name = 'Expedition') => ({ id, kind: 'project', type: 'EXPEDITION', name: loc(name), start, phases: [] });
-    const win = (id: number, start: string) => ({ id, kind: 'expeditionWindow', type: null, start });
+    const win = (id: number, start: string) => ({ id, kind: 'season', type: null, expeditionWindow: { start } });
     const ctx = fakeCtx([exp(2, '2026-03-01'), exp(1, '2025-10-01'), win(8, '2026-03-01'), win(9, '2025-10-01')]);
     const { projects: out } = projects.build(ctx) as { projects: Record<string, Project> };
     const all = Object.values(out);

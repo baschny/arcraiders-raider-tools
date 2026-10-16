@@ -163,8 +163,10 @@ const module: DomainModule = {
   domain: 'projects',
   build(ctx) {
     const records = [...ctx.arc.file<CanonProject>('projects').values()];
-    // Expedition numbers by start order; the windows (one per expedition) serve as a consistency check.
-    const windows = records.filter((r) => r.kind === 'expeditionWindow');
+    // Expedition numbers by start order; the departure windows (one per expedition, a property of the
+    // season it closes) serve as a consistency check.
+    const windows = [...ctx.arc.file<CanonRecord & { expeditionWindow?: unknown }>('seasons').values()]
+      .filter((r) => r.kind === 'season' && r.expeditionWindow);
     const expeditions = records
       .filter((r) => r.kind === 'project' && r.type === 'EXPEDITION')
       .sort((a, b) => String(a.start).localeCompare(String(b.start)));
