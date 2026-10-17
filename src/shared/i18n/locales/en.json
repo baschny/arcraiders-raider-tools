@@ -442,7 +442,9 @@
       "locationMap": "on {map}",
       "other": "Hidden unlock",
       "hint": "Not a quest: the game unlocks the next quests once you've done this"
-    }
+    },
+    "sidebarMapFilter": "Filter by map",
+    "sidebarMapFilterAll": "All maps"
   },
   "lootHelper": {
     "loading": "Loading item data...",

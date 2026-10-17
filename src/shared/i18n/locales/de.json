@@ -398,7 +398,9 @@
       "locationMap": "auf {map}",
       "other": "Versteckte Freischaltung",
       "hint": "Keine Quest: Das Spiel schaltet die nächsten Quests frei, sobald du das erledigt hast"
-    }
+    },
+    "sidebarMapFilter": "Nach Karte filtern",
+    "sidebarMapFilterAll": "Alle Karten"
   },
   "lootHelper": {
     "loading": "Gegenstandsdaten werden geladen...",

@@ -2,7 +2,8 @@
 
 .blueprint-overlay {
   position: relative;
-  width: 320px;
+  flex: 0 1 240px;
+  min-width: 190px;
   max-width: 100%;
   z-index: 15;
 }
@@ -12,13 +13,13 @@
   display: flex;
   align-items: center;
   gap: $gap-sm;
-  min-height: 44px;
+  height: 38px;
   background: rgba(255, 255, 255, 0.05);
   color: $text-primary;
   border: $border-width-thin solid $border-light;
   border-radius: $radius-sm;
   cursor: pointer;
-  padding: 10px $spacing-md;
+  padding: 0 $spacing-md;
   font-size: $font-md;
   font-weight: 600;
 }
@@ -26,6 +27,7 @@
 .blueprint-overlay-toggle-label {
   flex: 1;
   text-align: left;
+  white-space: nowrap;
 }
 
 .blueprint-overlay-toggle-chevron {

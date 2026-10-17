@@ -1,4 +1,4 @@
-import { X } from 'lucide-react';
+import { Search, X } from 'lucide-react';
 import { useLocale } from '../../../shared/context/LocaleContext';
 import type { Quest } from '../types/quest';
 
@@ -25,10 +25,11 @@ export function QuestSearchOverlay({
   return (
     <div className={`quest-search-overlay ${hasQuery ? 'expanded' : ''}`}>
       <div className="quest-search-overlay-input-wrapper">
+        <Search size={16} className="quest-search-overlay-icon" aria-hidden="true" />
         <input
           type="text"
           className="quest-search-overlay-input"
-          placeholder={`🔍 ${t('quests.sidebarSearchPlaceholder')}`}
+          placeholder={t('quests.sidebarSearchPlaceholder')}
           value={searchQuery}
           onChange={onSearchChange}
           onKeyDown={onSearchKeyDown}

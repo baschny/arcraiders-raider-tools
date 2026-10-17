@@ -393,7 +393,9 @@
       "locationMap": "su {map}",
       "other": "Sblocco nascosto",
       "hint": "Non è una missione: il gioco sblocca le missioni successive una volta fatto questo"
-    }
+    },
+    "sidebarMapFilter": "Filtra per mappa",
+    "sidebarMapFilterAll": "Tutte le mappe"
   },
   "lootHelper": {
     "loading": "Loading item data...",

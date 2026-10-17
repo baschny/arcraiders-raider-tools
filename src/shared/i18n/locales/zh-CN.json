@@ -393,7 +393,9 @@
       "locationMap": "{map}",
       "other": "隐藏解锁条件",
       "hint": "不是任务：完成后游戏会解锁后续任务"
-    }
+    },
+    "sidebarMapFilter": "按地图筛选",
+    "sidebarMapFilterAll": "所有地图"
   },
   "lootHelper": {
     "loading": "正在加载物品数据...",

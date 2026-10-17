@@ -1117,6 +1117,20 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
                   onBlueprintClick={focusOnQuest}
                 />
               )}
+              {newestVersion && (
+                <button
+                  type="button"
+                  className={`quest-mode-toolbar__version-filter ${showNewOnly ? 'is-active' : ''}`}
+                  aria-pressed={showNewOnly}
+                  title={`Show only quests added in ${newestVersion} and their direct predecessors`}
+                  onClick={() => {
+                    fitAfterLayoutRef.current = true;
+                    setShowNewOnly((value) => !value);
+                  }}
+                >
+                  Filter {newestVersion}
+                </button>
+              )}
             </div>
             <div className="quest-mode-toolbar__right">
               <div className="quest-mode-toolbar__status">
@@ -1180,20 +1194,6 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
                   </span>
                 )}
               </div>
-              {newestVersion && (
-                <button
-                  type="button"
-                  className={`quest-mode-toolbar__version-filter ${showNewOnly ? 'is-active' : ''}`}
-                  aria-pressed={showNewOnly}
-                  title={`Show only quests added in ${newestVersion} and their direct predecessors`}
-                  onClick={() => {
-                    fitAfterLayoutRef.current = true;
-                    setShowNewOnly((value) => !value);
-                  }}
-                >
-                  Filter {newestVersion}
-                </button>
-              )}
               <div className="quest-mode-toolbar__switch" role="group" aria-label="Quest mode">
                 <button
                   type="button"

@@ -393,7 +393,9 @@
       "locationMap": "{map}",
       "other": "숨겨진 잠금 해제",
       "hint": "퀘스트가 아닙니다: 이것을 달성하면 게임이 다음 퀘스트를 잠금 해제합니다"
-    }
+    },
+    "sidebarMapFilter": "맵으로 필터",
+    "sidebarMapFilterAll": "모든 맵"
   },
   "lootHelper": {
     "loading": "Loading item data...",

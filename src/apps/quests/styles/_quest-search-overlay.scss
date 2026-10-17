@@ -2,7 +2,8 @@
 
 .quest-search-overlay {
   position: relative;
-  width: 280px;
+  flex: 0 1 280px;
+  min-width: 220px;
   max-width: 100%;
   z-index: 15;
 }
@@ -12,10 +13,19 @@
   padding: 0;
 }
 
+.quest-search-overlay-icon {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  color: $text-tertiary;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
 .quest-search-overlay-input {
   width: 100%;
-  min-height: 44px;
-  padding: 10px 42px 10px $spacing-md;
+  height: 38px;
+  padding: 0 42px 0 36px;
   background: rgba(255, 255, 255, 0.05);
   border: $border-width-thin solid $border-light;
   border-radius: $radius-sm;

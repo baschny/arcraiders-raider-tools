@@ -393,7 +393,9 @@
       "locationMap": "{map}",
       "other": "隠し解放条件",
       "hint": "クエストではありません: これを達成すると次のクエストが解放されます"
-    }
+    },
+    "sidebarMapFilter": "マップで絞り込む",
+    "sidebarMapFilterAll": "すべてのマップ"
   },
   "lootHelper": {
     "loading": "Loading item data...",

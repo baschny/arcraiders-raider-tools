@@ -393,7 +393,9 @@
       "locationMap": "sur {map}",
       "other": "Déblocage caché",
       "hint": "Pas une quête : le jeu débloque les quêtes suivantes une fois que c'est fait"
-    }
+    },
+    "sidebarMapFilter": "Filtrer par carte",
+    "sidebarMapFilterAll": "Toutes les cartes"
   },
   "lootHelper": {
     "loading": "Loading item data...",

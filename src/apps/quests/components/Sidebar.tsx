@@ -1,8 +1,9 @@
-import type { CSSProperties } from 'react';
-import { Map as MapIcon } from 'lucide-react';
+import { useMemo, useState, type CSSProperties } from 'react';
+import { ChevronDown, Map as MapIcon } from 'lucide-react';
 import type { Quest } from '../types/quest';
 import { useLocale } from '../../../shared/context/LocaleContext';
 import { getQuestMapIndicator } from '../utils/mapMeta';
+import { getLocalizedMapName } from '../utils/localization';
 
 interface SidebarProps {
   actualQuests: Quest[];
@@ -21,7 +22,19 @@ export function Sidebar({
   onQuestClick,
   onResetAll,
 }: SidebarProps) {
-  const { locale, t } = useLocale();
+  const { locale, t, compareText } = useLocale();
+  const [mapFilter, setMapFilter] = useState('');
+  // Maps of all quests (not only the available ones), so the list stays the same while playing.
+  const mapOptions = useMemo(() => {
+    const ids = new Set(actualQuests.flatMap((quest) => quest.map));
+    return [...ids]
+      .map((id) => ({ id, name: getLocalizedMapName(id, locale) }))
+      .sort((a, b) => compareText(a.name, b.name));
+  }, [actualQuests, locale, compareText]);
+  // "Any map" quests (no map) belong to every map.
+  const shownQuests = mapFilter
+    ? availableQuests.filter((quest) => quest.map.length === 0 || quest.map.includes(mapFilter))
+    : availableQuests;
   const totalQuests = actualQuests.length;
   const availableCount = availableQuests.length;
   const lockedCount = Math.max(totalQuests - completedCount - availableCount, 0);
@@ -83,7 +96,7 @@ export function Sidebar({
       </div>
 
       <div className="available-sidebar-header">
-        <span>⭐ {t('quests.sidebarAvailableHeader')}</span>
+        <span>{t('quests.sidebarAvailableHeader')}</span>
         {!readOnly && completedCount > 0 && (
           <button
             className="reset-all-button"
@@ -95,13 +108,31 @@ export function Sidebar({
         )}
       </div>
 
+      {mapOptions.length > 1 && (
+        <div className="sidebar-map-filter">
+          <select
+            value={mapFilter}
+            onChange={(event) => setMapFilter(event.target.value)}
+            aria-label={t('quests.sidebarMapFilter')}
+          >
+            <option value="">{t('quests.sidebarMapFilterAll')}</option>
+            {mapOptions.map((option) => (
+              <option key={option.id} value={option.id}>
+                {option.name}
+              </option>
+            ))}
+          </select>
+          <ChevronDown size={16} aria-hidden="true" />
+        </div>
+      )}
+
       <div className="available-quests-list available-quests-list--available">
-        {availableQuests.length === 0 ? (
+        {shownQuests.length === 0 ? (
           <div className="no-available-quests">
             {t('quests.sidebarNoAvailable')}
           </div>
         ) : (
-          availableQuests.map((quest) => {
+          shownQuests.map((quest) => {
             const mapIndicator = getQuestMapIndicator(quest.map, locale);
             const isSplit =
               mapIndicator?.segments &&

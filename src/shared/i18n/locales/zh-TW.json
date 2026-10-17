@@ -393,7 +393,9 @@
       "locationMap": "{map}",
       "other": "隱藏解鎖條件",
       "hint": "不是任務：完成後遊戲會解鎖後續任務"
-    }
+    },
+    "sidebarMapFilter": "依地圖篩選",
+    "sidebarMapFilterAll": "所有地圖"
   },
   "lootHelper": {
     "loading": "Loading item data...",

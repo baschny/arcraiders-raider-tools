@@ -393,7 +393,9 @@
       "locationMap": "карта: {map}",
       "other": "Скрытое открытие",
       "hint": "Это не задание: игра открывает следующие задания, когда вы это сделаете"
-    }
+    },
+    "sidebarMapFilter": "Фильтр по карте",
+    "sidebarMapFilterAll": "Все карты"
   },
   "lootHelper": {
     "loading": "Loading item data...",

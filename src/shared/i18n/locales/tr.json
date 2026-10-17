@@ -393,7 +393,9 @@
       "locationMap": "{map}",
       "other": "Gizli kilit açma",
       "hint": "Görev değil: bunu yaptığında oyun sonraki görevlerin kilidini açar"
-    }
+    },
+    "sidebarMapFilter": "Haritaya göre filtrele",
+    "sidebarMapFilterAll": "Tüm haritalar"
   },
   "lootHelper": {
     "loading": "Loading item data...",

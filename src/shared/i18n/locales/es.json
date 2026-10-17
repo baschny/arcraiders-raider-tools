@@ -393,7 +393,9 @@
       "locationMap": "en {map}",
       "other": "Desbloqueo oculto",
       "hint": "No es una misión: el juego desbloquea las siguientes misiones cuando lo hayas hecho"
-    }
+    },
+    "sidebarMapFilter": "Filtrar por mapa",
+    "sidebarMapFilterAll": "Todos los mapas"
   },
   "lootHelper": {
     "loading": "Loading item data...",

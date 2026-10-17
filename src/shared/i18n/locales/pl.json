@@ -393,7 +393,9 @@
       "locationMap": "mapa: {map}",
       "other": "Ukryte odblokowanie",
       "hint": "To nie zadanie: gra odblokowuje kolejne zadania, gdy to zrobisz"
-    }
+    },
+    "sidebarMapFilter": "Filtruj według mapy",
+    "sidebarMapFilterAll": "Wszystkie mapy"
   },
   "lootHelper": {
     "loading": "Loading item data...",
