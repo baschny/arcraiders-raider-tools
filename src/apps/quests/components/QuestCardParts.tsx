@@ -160,3 +160,15 @@ export function QuestExternalLinks({ quest, showExternalIcon = false }: { quest:
     </>
   );
 }
+
+/**
+ * The completion handle: an empty ring that turns into a green check. Used on the node and in
+ * the details, so both read as the same control.
+ */
+export function CompletionCircle({ completed }: { completed: boolean }) {
+  return (
+    <span className={`quest-completion-circle${completed ? ' is-done' : ''}`} aria-hidden="true">
+      <Check size={14} strokeWidth={3} />
+    </span>
+  );
+}

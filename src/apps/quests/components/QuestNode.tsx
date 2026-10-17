@@ -1,10 +1,9 @@
 import { useEffect, useRef } from 'react';
 import { Handle, Position } from 'reactflow';
-import { Check } from 'lucide-react';
 import type { QuestNodeData } from '../types/quest';
 import { useLocale } from '../../../shared/context/LocaleContext';
 import { doneLeafKeys, stepSummary } from '../utils/questSummary';
-import { BlueprintThumbs, MapChips, StatusBadge, StepBar, TraderPortrait } from './QuestCardParts';
+import { BlueprintThumbs, CompletionCircle, MapChips, StatusBadge, StepBar, TraderPortrait } from './QuestCardParts';
 
 const MAX_MAPS = 2;
 
@@ -65,13 +64,13 @@ export function QuestNode({ data }: { data: QuestNodeData }) {
           {isInteractive && (
             <button
               type="button"
-              className={`quest-node__toggle${completed ? ' is-done' : ''}`}
+              className="quest-node__toggle"
               onClick={handleToggle}
               title={t(completed ? 'quests.card.markNotDone' : 'quests.card.markDone')}
               aria-label={t(completed ? 'quests.card.markNotDone' : 'quests.card.markDone')}
               aria-pressed={completed}
             >
-              <Check size={14} strokeWidth={3} />
+              <CompletionCircle completed={completed} />
             </button>
           )}
         </span>

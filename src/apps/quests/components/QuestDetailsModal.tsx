@@ -1,13 +1,13 @@
 import { useEffect, useRef, type CSSProperties } from 'react';
 import { createPortal } from 'react-dom';
-import { CheckCircle2, ChevronRight, X } from 'lucide-react';
+import { ChevronRight, X } from 'lucide-react';
 import { useLocale } from '../../../shared/context/LocaleContext';
 import type { LinkedQuestObjectiveProgress } from '../../../shared/types/linkedQuests';
 import { isUnlockNode, type Quest } from '../types/quest';
 import type { QuestDisplayStatus } from '../utils/linkedProgress';
 import { getQuestMapIndicator } from '../utils/mapMeta';
 import { bringList, doneLeafKeys, otherRewardItems, stepSummary } from '../utils/questSummary';
-import { ItemTile, MapChips, QuestExternalLinks, StatusBadge, StepBar, TraderPortrait, XpValue } from './QuestCardParts';
+import { CompletionCircle, ItemTile, MapChips, QuestExternalLinks, StatusBadge, StepBar, TraderPortrait, XpValue } from './QuestCardParts';
 import { OneRoundBadge, QuestSteps } from './QuestSteps';
 
 interface QuestDetailsModalProps {
@@ -100,15 +100,18 @@ function DetailsHeader({ quest, status, objectiveProgress, onToggle, onClose }: 
         </div>
       </div>
       <div className="quest-details__actions">
+        <div className="quest-details__links">
+          <QuestExternalLinks quest={quest} showExternalIcon />
+          <button type="button" className="quest-card-btn quest-card-btn--icon" onClick={onClose} aria-label={t('quests.card.close')}>
+            <X size={18} />
+          </button>
+        </div>
         {onToggle && (
-          <button type="button" className={`quest-card-btn${completed ? '' : ' quest-card-btn--primary'}`} onClick={onToggle}>
-            <CheckCircle2 size={14} /> {t(completed ? 'quests.card.markNotDone' : 'quests.card.markDone')}
+          <button type="button" className="quest-details__done" onClick={onToggle} aria-pressed={completed}>
+            <CompletionCircle completed={completed} />
+            <span>{t(completed ? 'quests.card.markNotDone' : 'quests.card.markDone')}</span>
           </button>
         )}
-        <QuestExternalLinks quest={quest} showExternalIcon />
-        <button type="button" className="quest-card-btn quest-card-btn--icon" onClick={onClose} aria-label={t('quests.card.close')}>
-          <X size={18} />
-        </button>
       </div>
     </header>
   );

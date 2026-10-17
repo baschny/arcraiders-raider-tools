@@ -223,10 +223,60 @@ $xp: #c5a3ff;
 
 .quest-details__actions {
   display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  align-self: flex-start;
+  gap: 10px;
+}
+
+.quest-details__links {
+  display: flex;
   flex-wrap: wrap;
   align-items: center;
-  align-self: flex-start;
+  justify-content: flex-end;
   gap: 6px;
+}
+
+// Same circle as on the node, with its label.
+.quest-details__done {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 2px 4px;
+  border: 0;
+  background: none;
+  color: $text-light;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+
+  &:hover {
+    color: $text-primary;
+
+    .quest-completion-circle:not(.is-done) {
+      border-color: $status-completed;
+      color: rgba($status-completed, 0.6);
+    }
+  }
+}
+
+// Completion handle: an empty ring, a green check when done (node and details).
+.quest-completion-circle {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 26px;
+  height: 26px;
+  border: 2px solid $border-lighter;
+  border-radius: 50%;
+  color: transparent;
+  transition: $transition-default;
+
+  &.is-done {
+    border-color: $status-completed;
+    background: $status-completed;
+    color: #fff;
+  }
 }
 
 // Two columns: description and steps; before you go, rewards and quest chain.
