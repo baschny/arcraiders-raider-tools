@@ -46,7 +46,8 @@ export interface ObjectiveView {
   /** Atomic only: action type (VisitPOI, Interact, Photo, Deliver, …) and amount. */
   actionType?: string;
   amount?: number;
-  /** Atomic only: localized names of the maps the step is bound to. */
+  /** Atomic only: the maps the step is bound to (slugs) and their localized names. */
+  mapIds?: string[];
   mapNames?: string[];
   /** Atomic only: items to take into the round, hand in or find for this step. */
   items?: (QuestItemEntry & { role: StepItemRole })[];

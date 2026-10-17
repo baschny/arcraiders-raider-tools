@@ -20,7 +20,7 @@ import { Sidebar } from './Sidebar';
 import { ConfirmDialog } from './ConfirmDialog';
 import { QuestDetailsModal } from './QuestDetailsModal';
 import { isObjectiveSatisfied } from '../utils/objectiveTree';
-import { doneLeafKeys } from '../utils/questSummary';
+import { doneLeafKeys, openStepMapIds } from '../utils/questSummary';
 import { progressFromDone, toggleStep } from '../utils/stepProgress';
 import { migrateQuestIds } from '../data/questIdMigration';
 import { trackQuestMark } from '../../../shared/utils/analytics';
@@ -360,6 +360,12 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
       return keys?.length ? progressFromDone(quest.objectiveLeafKeys, new Set(keys)) : undefined;
     },
     [activeLinkedSnapshot, isLinkedMode, manualStepProgress]
+  );
+
+  /** Maps of a quest's open next steps (for the sidebar map filter); null = any map. */
+  const openMapsOf = useCallback(
+    (quest: Quest) => openStepMapIds(quest, doneLeafKeys(quest, objectiveProgressOf(quest), false)),
+    [objectiveProgressOf]
   );
 
   // Toggle quest completion. `steps`: the quest's done steps to save with the change (when the
@@ -1092,6 +1098,7 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
         <Sidebar
           actualQuests={actualQuests}
           availableQuests={availableQuests}
+          mapsOf={openMapsOf}
           completedCount={completedCount}
           readOnly={isLinkedMode}
           onQuestClick={focusOnQuest}

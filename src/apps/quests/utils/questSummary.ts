@@ -123,3 +123,21 @@ export function questWikiUrl(quest: Pick<Quest, 'name' | 'originalNameEn'>): str
 export function questArcTrackerUrl(quest: Pick<Quest, 'id'>): string {
   return `https://arctracker.io/quests/${quest.id.replaceAll('_', '-')}`;
 }
+
+/**
+ * Maps where the quest continues: the maps of its open next steps (available, not done, not
+ * optional). A step without a map of its own belongs to the quest's map when the quest has only
+ * one, else to all of the quest's maps. Null when the quest is not bound to a map (any map).
+ * Wires Crossed with its Blue Gate step done continues only on Spaceport and Buried City.
+ */
+export function openStepMapIds(quest: Pick<Quest, 'map' | 'objectiveTree'>, done: ReadonlySet<string>): string[] | null {
+  if (!quest.map.length) return null;
+  if (!quest.objectiveTree) return quest.map;
+  const states = evaluateObjectives(quest.objectiveTree, done);
+  const maps = new Set<string>();
+  for (const leaf of objectiveLeaves(quest.objectiveTree)) {
+    if (leaf.optional || done.has(leaf.key) || states.get(leaf.key)?.status !== 'active') continue;
+    for (const id of leaf.mapIds?.length ? leaf.mapIds : quest.map) maps.add(id);
+  }
+  return maps.size ? [...maps] : quest.map;
+}

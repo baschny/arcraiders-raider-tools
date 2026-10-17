@@ -106,7 +106,10 @@ export function buildObjectiveTree(
       if (a) {
         view.actionType = a.type;
         view.amount = a.amount;
-        if (a.mapIds?.length) view.mapNames = a.mapIds.map(resolve.mapName);
+        if (a.mapIds?.length) {
+          view.mapIds = a.mapIds;
+          view.mapNames = a.mapIds.map(resolve.mapName);
+        }
         if (a.interaction?.holdSeconds) view.holdSeconds = a.interaction.holdSeconds;
       }
       const prompt = prompts?.[node.key];

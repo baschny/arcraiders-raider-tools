@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import type { ObjectiveView, StepItemRole } from '../../types/quest';
-import { bringList, doneLeafKeys, otherRewardItems, questArcTrackerUrl, stepSummary, xpTier } from '../questSummary';
+import { bringList, doneLeafKeys, openStepMapIds, otherRewardItems, questArcTrackerUrl, stepSummary, xpTier } from '../questSummary';
 
 function leaf(key: string, extra: Partial<ObjectiveView> = {}): ObjectiveView {
   return { key, kind: 'atomic', text: key, oneRound: false, optional: false, hidden: false, children: [], ...extra };
@@ -113,5 +113,37 @@ describe('helpers', () => {
 
   it('links arctracker by the quest slug', () => {
     expect(questArcTrackerUrl({ id: 'after_rain_comes' })).toBe('https://arctracker.io/quests/after-rain-comes');
+  });
+});
+
+describe('openStepMapIds', () => {
+  // Wires Crossed: one step per map, any order.
+  const wires = {
+    map: ['buried-city', 'the-spaceport', 'blue-gate'],
+    objectiveTree: group('0', 'allOf', [
+      leaf('0.0', { mapIds: ['blue-gate'] }),
+      leaf('0.1', { mapIds: ['the-spaceport'] }),
+      leaf('0.2', { mapIds: ['buried-city'] }),
+    ]),
+  };
+
+  it('drops the maps of done steps', () => {
+    expect(openStepMapIds(wires, new Set())?.sort()).toEqual(['blue-gate', 'buried-city', 'the-spaceport']);
+    expect(openStepMapIds(wires, new Set(['0.0']))?.sort()).toEqual(['buried-city', 'the-spaceport']);
+  });
+
+  it('ignores locked later steps and lets map-less steps take the quest map', () => {
+    const chain = {
+      map: ['dam-battleground', 'stella-montis'],
+      objectiveTree: group('0', 'sequence', [leaf('0.0', { mapIds: ['dam-battleground'] }), leaf('0.1', { mapIds: ['stella-montis'] })]),
+    };
+    expect(openStepMapIds(chain, new Set())).toEqual(['dam-battleground']);
+    expect(openStepMapIds(chain, new Set(['0.0']))).toEqual(['stella-montis']);
+    const single = { map: ['blue-gate'], objectiveTree: group('0', 'sequence', [leaf('0.0'), leaf('0.1')]) };
+    expect(openStepMapIds(single, new Set(['0.0']))).toEqual(['blue-gate']);
+  });
+
+  it('returns null for quests on any map', () => {
+    expect(openStepMapIds({ map: [], objectiveTree: leaf('0') }, new Set())).toBeNull();
   });
 });

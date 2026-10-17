@@ -8,6 +8,8 @@ import { getLocalizedMapName } from '../utils/localization';
 interface SidebarProps {
   actualQuests: Quest[];
   availableQuests: Quest[];
+  /** Maps where a quest continues (its open next steps); null = any map. */
+  mapsOf: (quest: Quest) => string[] | null;
   completedCount: number;
   readOnly: boolean;
   onQuestClick: (questId: string) => void;
@@ -17,6 +19,7 @@ interface SidebarProps {
 export function Sidebar({
   actualQuests,
   availableQuests,
+  mapsOf,
   completedCount,
   readOnly,
   onQuestClick,
@@ -31,9 +34,13 @@ export function Sidebar({
       .map((id) => ({ id, name: getLocalizedMapName(id, locale) }))
       .sort((a, b) => compareText(a.name, b.name));
   }, [actualQuests, locale, compareText]);
-  // "Any map" quests (no map) belong to every map.
+  // By the maps of the open next steps, so done steps no longer count; "any map" quests show
+  // under every map.
   const shownQuests = mapFilter
-    ? availableQuests.filter((quest) => quest.map.length === 0 || quest.map.includes(mapFilter))
+    ? availableQuests.filter((quest) => {
+        const maps = mapsOf(quest);
+        return maps === null || maps.includes(mapFilter);
+      })
     : availableQuests;
   const totalQuests = actualQuests.length;
   const availableCount = availableQuests.length;
