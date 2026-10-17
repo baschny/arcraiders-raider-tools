@@ -3,7 +3,7 @@
 The Maps tool (`src/apps/maps/`) has two routes, switched by the tab bar in its header:
 
 - `/maps`, `/maps/<map slug>` (e.g. `/maps/pendola-pass`) — the ARC Raiders maps full-bleed with what the game files say about them: where an item can be looted and
-  where ARC enemies spawn, per map and map condition. It renders the map features build of embark-api
+  where ARC enemies spawn, per map and map condition, and where the steps of the Quest Tracker's quests are. It renders the map features build of embark-api
   (`arc-data/derived/map-features/`); the game-side background (loot handlers, spawners, transforms, map layers, what is
   server-only) is documented there in `docs/Map-Features.md`.
 - `/map-sizes` — the playable area of every map compared to scale (see [Map sizes](#map-sizes)).
@@ -23,6 +23,22 @@ The Maps tool (`src/apps/maps/`) has two routes, switched by the tab bar in its 
 - **ARC mode**: the enemies of the map with the expected number of spawners that can produce each, multi-select
   with one color per enemy, patrol paths, each spawner drawn as the game ping icon of its most probable enemy,
   large and without a shape around it (a ↻ badge: patrols).
+- **Quests mode**: the story quests of the Quest Tracker (data: `questSteps` of the map files, see below). The left bar
+  searches quests (name or trader) and offers the tracker's open quests (available or started, manual progress) as
+  quick picks, those with steps on the open map first. Each picked quest gets a colour (`QUEST_COLORS`, in the order
+  picked) and lists its steps numbered like the quest details (`stepLabels` in `quests/utils/objectiveTree.ts`); of a
+  route choice only the routes on the open map are listed. On the map, an area step ("reach …") is the area's outline
+  filled in the quest's colour, an object step (interact, photograph, a quest item) a disc with its step number; steps
+  at the same object share one disc ("2.1–2.4"), and steps that any of many places satisfy (any Android, any Raider
+  Hatch; more than 30 candidates) are small dots. Done steps, steps of a route not taken, and places on the other map
+  layer or absent under the open condition are faded. Hovering a step in the list rings its places; clicking it (or a
+  step's map chip in the details dialog) focuses them, switching map and layer when needed (`step` param). The map bar
+  counts the picked quests' located steps per map. The quest details dialog of the tracker opens from the list, with
+  the same step tracking (`useManualQuestProgress`: questsStore, manual mode; with a linked account the map shows no
+  progress). Not located: steps whose objects are spawned at runtime (ARC Probes and Couriers, supply drops, the
+  Deforester, the Frigate's parts) and steps without a place (deliver, obtain, kill anywhere).
+- **Quest Tracker → map**: the details dialog has a map button (the map where the quest continues) and a pin link on
+  every step with a map, both opening Quests mode (`questMapUrl` in `quests/utils/questSummary.ts`).
 - **ARC Frigate** (under the ARC Frigate condition, both modes; Layers menu toggle, pref `frigate`): every place the
   Frigate can hover (a round uses one, so the poses are numbered when a map has several) as its footprint with the
   Frigate ping icon, the ARC Reclaimer landing ring below its docking entry (10–100 m around the ground point) and
@@ -120,7 +136,7 @@ build (env `EMBARK_API_DIR`, default the sibling `../embark-api`) and writes the
 
 | Path | Content |
 | --- | --- |
-| `index.json` | map list, items (by slug), loot tables, enemies, quests, `schemaVersion`, `manifest`, `gameVersion`, `built` |
+| `index.json` | map list, items (by slug), loot tables, enemies, quests (slug and located steps per map slug), `schemaVersion`, `manifest`, `gameVersion`, `built` |
 | `maps/<map>.json` | one per map; area pieces replaced by merged outlines |
 | `sizes.json` | playable-area size of every map, measured by `scripts/lib/map-sizes.mjs` (the `/map-sizes` page) |
 | `map-strings.<locale>.json` | localized map strings, when the build has them |
@@ -143,14 +159,16 @@ sigil output is kept, like the map icons.
 ### Public form
 
 `toPublicIndex` and `toPublicMap` in `generate-maps-data.mjs` turn the build into the committed form (schemaVersion
-`PUBLIC_SCHEMA_VERSION`, currently 2):
+`PUBLIC_SCHEMA_VERSION`, currently 4):
 
 - `items[]`: `id` (Embark asset id) and `asset` (`DA_...`) are dropped; `slug` is required. Loot items without a slug
   are excluded (the generator logs the count and names), and the `tables` indexes are renumbered. A `name` that is
   only the asset name (no English name in the game files) is dropped too.
 - `enemies[]`: `key` (`DA_EnemyType_...`) is dropped.
-- `quests[]`: `id` and `prev` (Embark ids) and the objective `assets` are dropped; `maps/<map>.json` quest markers
-  lose `a` (quest assets) and `id` (level actor id). The page does not use any of them.
+- `quests[]`: `{ slug, maps }`, the story quests (raider-tools quest ids) with the number of located steps per map
+  slug. `maps/<map>.json` quest markers lose `a` (quest assets) and `id` (level actor id); `questSteps` (quest slug ->
+  step key -> `{ m: [marker index], any? }`, built by embark-api `lib/derived/quest-steps.js`) is kept as it is. Step
+  keys are the objective tree paths of the quest data (`0.2.1`), so the page joins them with the Quest Tracker's quests.
 - Not changed: the `manifest` (a Steam depot id, a build identifier) and `cls` (the spawned class names of quest
   markers).
 
@@ -200,12 +218,14 @@ params; default values are left out. `/maps` without a slug shows the Dam (`dam-
 
 | Param | Meaning | Default |
 | --- | --- | --- |
-| `mode` | `loot` or `arc` | `loot` |
+| `mode` | `loot`, `arc` or `quests` | `loot` |
 | `cond` | map condition key | `Default` (Normal) |
 | `layer` | map layer index | the map's default layer |
 | `item` | raider-tools item id (slug) | none |
 | `show` | comma-separated filter leaves shown in Loot mode | none |
 | `enemies` | comma-separated enemy indexes filtered in ARC mode | none |
+| `quests` | comma-separated quest slugs shown in Quests mode (their order sets the colours) | none |
+| `step` | focused quest step, `<quest slug>:<step key>` (links from the Quest Tracker) | none |
 
 Changing the map resets `cond` and `layer`. Display preferences (heat map, height marks, area labels, loot zones,
 playable area, ARC Frigate layer, left bar open) live in `localStorage` under `raider-tools:maps-prefs`; unreadable or invalid values
@@ -251,6 +271,7 @@ Not shown, on purpose:
 | `state.ts` | URL state, sanitizing, preferences |
 | `model.ts` | everything derived from the state for the open map: scores, filter counts, visibility, enemies |
 | `Bars.tsx`, `Sidebar.tsx`, `components.tsx`, `BottomSheet.tsx` | UI |
+| `QuestPanel.tsx`, `data/quests.ts` | Quests mode: quest picker, step list, details dialog; picked quests, pins, step counts |
 | `MapView.tsx`, `engine/` | canvas: `MapEngine` (drawing, input), `tiles.ts`, `iconAtlas.ts` |
 | `data/` | loader, schema check, data types, spot kinds, scoring |
 | `scripts/generate-maps-data.mjs`, `scripts/lib/map-tiles.mjs`, `scripts/lib/area-outlines.mjs`, `scripts/lib/map-sizes.mjs`, `scripts/lib/map-symbols.mjs` | data generation |

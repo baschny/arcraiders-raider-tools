@@ -383,7 +383,8 @@
       "granted": "Kabul edilince verilir",
       "chain": "Görev zinciri",
       "requires": "Gerektirir",
-      "unlocks": "Açar"
+      "unlocks": "Açar",
+      "showOnMap": "Haritada göster"
     },
     "unlock": {
       "kindLabel": "Kilit açma",
@@ -1037,7 +1038,8 @@
     },
     "modes": {
       "loot": "Yağma",
-      "label": "Mod"
+      "label": "Mod",
+      "quests": "Görevler"
     },
     "sidebar": {
       "hide": "Kenar çubuğunu gizle",
@@ -1127,6 +1129,32 @@
       "expectedOne": "Tur başına ~{expected} beklenir, {count} doğurucudan",
       "expected": "Tur başına ~{expected} beklenir, {count} doğurucudan",
       "empty": "Bu koşulda ARC doğurucusu yok."
+    },
+    "quests": {
+      "title": "Görev adımları",
+      "helpLabel": "Görev adımları hakkında",
+      "help": "Adımlarının nerede olduğunu görmek için Görev Takibi'nden görev seç: ulaşılması gereken bölgelerin sınırı çizilir; bulunacak, etkileşime girilecek veya fotoğrafı çekilecek nesneler görevin renginde, görev ayrıntılarındaki adımlar gibi numaralanmış işaretçilerdir. Birçok yerden herhangi birinde yapılabilen adımlar (herhangi bir Android, herhangi bir Raider Geçidi) küçük noktalardır. Yerlerini vurgulamak için listedeki bir adımın üzerine gel; oraya gitmek için tıkla. Bir adımı burada tamamlandı olarak işaretlemek Görev Takibi'ni günceller.",
+      "clear": "Temizle",
+      "clearTitle": "Tüm görevleri haritadan kaldır",
+      "loading": "Görevler yükleniyor…",
+      "searchPlaceholder": "Bir görev veya tüccar bul…",
+      "openQuests": "Açık görevlerin",
+      "stepsHere": "Bu haritada {count} adım",
+      "stepsHereOne": "Bu haritada {count} adım",
+      "otherMaps": "diğer haritalarda",
+      "linkedNote": "İlerlemen bağlı bir hesaptan geliyor: tamamlanan adımlar yalnızca Görev Takibi'nde gösterilir.",
+      "details": "Görev ayrıntıları",
+      "remove": "Haritadan kaldır",
+      "showStep": "Haritada göster",
+      "openTracker": "Görev Takibi'nde aç",
+      "stepDone": "Tamamlandı",
+      "stepNotNeeded": "Artık gerekmiyor (başka bir rota seçildi)",
+      "anyOf": "{count} yerden herhangi biri",
+      "anyOfOne": "{count} yerden herhangi biri",
+      "oneOf": "{count} yerden biri",
+      "oneOfOne": "{count} yerden biri",
+      "onlyUnder": "Yalnızca şu koşullarda: {conditions}",
+      "notUnder": "Şu koşullarda değil: {conditions}"
     },
     "canvas": {
       "label": "{map} haritası. Burada çizilen noktalar, bölgeler ve düşmanlar kenar çubuğunda listelenir."

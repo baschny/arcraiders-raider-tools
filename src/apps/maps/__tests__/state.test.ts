@@ -9,18 +9,26 @@ const parse = (q: string, map?: string) => parseState(new URLSearchParams(q), ma
 describe('parseState', () => {
   it('falls back to the defaults', () => {
     expect(parse('')).toEqual({
-      mode: 'loot', map: 'dam-battleground', cond: 'Default', setup: null, layer: null, item: null, show: new Set(), enemies: new Set(),
+      mode: 'loot', map: 'dam-battleground', cond: 'Default', setup: null, layer: null, item: null, show: new Set(), enemies: new Set(), quests: [], step: null,
     });
   });
 
   it('reads the map of the path and every param', () => {
     expect(parse('mode=arc&cond=Night&setup=2&layer=1&item=lemon&show=t:Industrial.Lockers,Lemon&enemies=3,0', 'the-spaceport')).toEqual({
       mode: 'arc', map: 'the-spaceport', cond: 'Night', setup: 2, layer: 1, item: 'lemon', show: new Set(['t:Industrial.Lockers', 'Lemon']), enemies: new Set([3, 0]),
+      quests: [], step: null,
     });
   });
 
+  it('reads the picked quests in order (without repeats) and the focused step', () => {
+    const s = parse('mode=quests&quests=water_troubles,,a_bad_feeling,water_troubles&step=water_troubles:0.2');
+    expect(s.mode).toBe('quests');
+    expect(s.quests).toEqual(['water_troubles', 'a_bad_feeling']);
+    expect(s.step).toBe('water_troubles:0.2');
+  });
+
   it('treats unknown modes as Loot and ignores empty list entries', () => {
-    const s = parse('mode=quests&show=,Lemon,,&enemies=,2,');
+    const s = parse('mode=puzzles&show=,Lemon,,&enemies=,2,');
     expect(s.mode).toBe('loot');
     expect(s.show).toEqual(new Set(['Lemon']));
     expect(s.enemies).toEqual(new Set([2]));
@@ -107,11 +115,19 @@ describe('sanitizeState', () => {
   it('drops unknown enemies', () => {
     expect(fix({ enemies: new Set([1, 7]) })).toEqual({ enemies: new Set([1]) });
   });
+
+  it('drops quests without located steps, and the focused step of a dropped quest', () => {
+    const withQuests = { ...index, quests: [{ slug: 'water_troubles', maps: { tiny: 2 } }] };
+    const fixQ = (s: Partial<MapState>) => sanitizeState({ ...base, ...s }, withQuests, TINY_MAP, items, 'dam-battleground');
+    expect(fixQ({ quests: ['water_troubles'], step: 'water_troubles:0.1' })).toBeNull();
+    expect(fixQ({ quests: ['gone', 'water_troubles'] })).toEqual({ quests: ['water_troubles'] });
+    expect(fixQ({ quests: ['gone'], step: 'gone:0' })).toEqual({ quests: [], step: null });
+  });
 });
 
 describe('serializeState', () => {
   const state: MapState = {
-    mode: 'loot', map: 'dam-battleground', cond: 'Default', setup: null, layer: null, item: null, show: new Set(), enemies: new Set(),
+    mode: 'loot', map: 'dam-battleground', cond: 'Default', setup: null, layer: null, item: null, show: new Set(), enemies: new Set(), quests: [], step: null,
   };
 
   it('writes no params for the default state (the map is in the path)', () => {
@@ -121,8 +137,10 @@ describe('serializeState', () => {
   it('round-trips through parseState', () => {
     const full: MapState = {
       mode: 'arc', map: 'stella-montis', cond: 'Night', setup: 3, layer: 0, item: 'wires', show: new Set(['Lemon', 't:Tech.Computer']), enemies: new Set([1, 4]),
+      quests: [], step: null,
     };
-    for (const s of [state, full, { ...state, layer: 0 }, { ...state, show: new Set(['Ground']) }]) {
+    const quests: MapState = { ...state, mode: 'quests', quests: ['b', 'a'], step: 'a:0.1' };
+    for (const s of [state, full, quests, { ...state, layer: 0 }, { ...state, show: new Set(['Ground']) }]) {
       expect(parseState(serializeState(s), s.map, 'dam-battleground')).toEqual(s);
     }
   });

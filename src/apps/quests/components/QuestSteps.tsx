@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, type CSSProperties } from 'react';
+import { createContext, useContext, useState, type CSSProperties, type ReactNode } from 'react';
 import {
   Bomb,
   Camera,
@@ -49,6 +49,7 @@ export function QuestSteps({
   done: doneKeys,
   onToggleStep,
   questMapIds = [],
+  renderStepMaps,
 }: {
   tree: ObjectiveView;
   leafKeys: string[];
@@ -59,11 +60,16 @@ export function QuestSteps({
   onToggleStep?: (key: string) => void;
   /** The quest's maps: a step on the quest's only map shows no map chip (it would repeat it). */
   questMapIds?: string[];
+  /**
+   * Replaces the map chips of a step (links to the map); `names` false when the chips would only repeat the quest's
+   * single map.
+   */
+  renderStepMaps?: (node: ObjectiveView, names: boolean) => ReactNode;
 }) {
   const { t } = useLocale();
   const byKey = progressByKey(leafKeys, progress);
   const done = doneKeys ?? new Set(completed ? leafKeys : leafKeys.filter((key) => byKey.get(key)?.completed));
-  const ctx: StepsContext = { states: evaluateObjectives(tree, done), done, progress: byKey, t, onToggleStep, questMapIds };
+  const ctx: StepsContext = { states: evaluateObjectives(tree, done), done, progress: byKey, t, onToggleStep, questMapIds, renderStepMaps };
   return (
     <Ctx.Provider value={ctx}>
       <div className="quest-steps">
@@ -90,6 +96,7 @@ interface StepsContext {
   t: (key: string) => string;
   onToggleStep?: (key: string) => void;
   questMapIds: string[];
+  renderStepMaps?: (node: ObjectiveView, names: boolean) => ReactNode;
 }
 
 const Ctx = createContext<StepsContext | null>(null);
@@ -182,7 +189,7 @@ function OptionalChip() {
 // atomic step
 
 function Leaf({ node, compact = false }: { node: ObjectiveView; compact?: boolean }) {
-  const { states, progress, t, onToggleStep, questMapIds } = useSteps();
+  const { states, progress, t, onToggleStep, questMapIds, renderStepMaps } = useSteps();
   const { status } = stateOf(node.key, states);
   const StatusIcon = STATUS_ICON[status];
   const ActionIcon = (node.actionType && ACTION_ICON[node.actionType]) || Circle;
@@ -239,11 +246,14 @@ function Leaf({ node, compact = false }: { node: ObjectiveView; compact?: boolea
           {Math.min(current, amount)}/{amount}
         </span>
       )}
-      {showStepMaps(node, questMapIds) && node.mapNames?.map((name) => (
-        <span key={name} className="quest-steps__chip quest-steps__chip--map">
-          {name}
-        </span>
-      ))}
+      {renderStepMaps
+        ? renderStepMaps(node, showStepMaps(node, questMapIds))
+        : showStepMaps(node, questMapIds) &&
+          node.mapNames?.map((name) => (
+            <span key={name} className="quest-steps__chip quest-steps__chip--map">
+              {name}
+            </span>
+          ))}
       {node.optional && <OptionalChip />}
       <HiddenChip node={node} />
       {node.oneRound && <OneRoundBadge />}

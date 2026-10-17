@@ -432,7 +432,8 @@
       "granted": "Handed out when accepted",
       "chain": "Quest chain",
       "requires": "Requires",
-      "unlocks": "Unlocks"
+      "unlocks": "Unlocks",
+      "showOnMap": "Show on the map"
     },
     "unlock": {
       "kindLabel": "Unlock",
@@ -1110,7 +1111,8 @@
     },
     "modes": {
       "loot": "Loot",
-      "label": "Mode"
+      "label": "Mode",
+      "quests": "Quests"
     },
     "sidebar": {
       "hide": "Hide the side bar",
@@ -1205,6 +1207,32 @@
       "expectedOne": "~{expected} expected per round, of {count} spawner",
       "expected": "~{expected} expected per round, of {count} spawners",
       "empty": "No ARC spawners in this condition."
+    },
+    "quests": {
+      "title": "Quest steps",
+      "helpLabel": "About quest steps",
+      "help": "Pick quests from the Quest Tracker to see where their steps are: areas to reach are outlined, objects to find, interact with or photograph are pins in the quest's colour, numbered like the steps in the quest details. Steps that can be done at any of many places (any Android, any Raider Hatch) are small dots. Hover a step in the list to light up its places, click it to go there. Marking a step done here updates the Quest Tracker.",
+      "clear": "Clear",
+      "clearTitle": "Remove all quests from the map",
+      "loading": "Loading quests…",
+      "searchPlaceholder": "Search a quest or trader…",
+      "openQuests": "Your open quests",
+      "stepsHere": "{count} steps on this map",
+      "stepsHereOne": "{count} step on this map",
+      "otherMaps": "on other maps",
+      "linkedNote": "Your progress comes from a linked account: done steps are shown in the Quest Tracker only.",
+      "details": "Quest details",
+      "remove": "Remove from the map",
+      "showStep": "Show on the map",
+      "openTracker": "Open in the Quest Tracker",
+      "stepDone": "Done",
+      "stepNotNeeded": "Not needed any more (another route was taken)",
+      "anyOf": "Any one of {count} places",
+      "anyOfOne": "Any one of {count} place",
+      "oneOf": "One of {count} places",
+      "oneOfOne": "One of {count} place",
+      "onlyUnder": "Only under {conditions}",
+      "notUnder": "Not under {conditions}"
     },
     "canvas": {
       "label": "Map of {map}. The spots, areas and enemies drawn here are listed in the side bar."

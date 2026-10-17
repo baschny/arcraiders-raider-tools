@@ -34,10 +34,11 @@ import { findSource, sourceIndex, tilesHash, writeTiles } from './lib/map-tiles.
 
 const MAX_FILE_BYTES = 5 * 1024 * 1024;
 /**
- * Format of the public files: items and references by slug only (see toPublicIndex), maps with their slug.
+ * Format of the public files: items and references by slug only (see toPublicIndex), maps with their slug (3), story
+ * quest steps per map (4: `questSteps`, index `quests` with the step count per map slug).
  * Client: MAP_SCHEMA_VERSION.
  */
-const PUBLIC_SCHEMA_VERSION = 3;
+const PUBLIC_SCHEMA_VERSION = 4;
 
 const root = path.resolve(import.meta.dirname, '..');
 const embarkApi = path.resolve(process.env.EMBARK_API_DIR || path.join(root, '..', 'embark-api'));
@@ -105,7 +106,8 @@ async function tileSet(image) {
 /**
  * The public form of index.json: no Embark asset ids and no internal names (DA_...). Loot items are referenced by
  * their raider-tools slug only; loot items without a slug are dropped (and the table indexes renumbered, entries
- * left without an item removed). Enemy keys, quest ids, prerequisite ids and quest assets are not used by the page.
+ * left without an item removed). Enemy keys are not used by the page. Quests are listed by their raider-tools slug with
+ * the number of located steps per map slug.
  */
 function toPublicIndex(index) {
   const remap = [];
@@ -137,14 +139,17 @@ function toPublicIndex(index) {
     items,
     tables,
     enemies: index.enemies.map(({ key, ...rest }) => rest),
-    quests: index.quests.map(({ id, prev, objectives, ...rest }) => ({
-      ...rest,
-      objectives: objectives.map(({ assets, ...objective }) => objective),
+    quests: index.quests.map(({ slug, maps }) => ({
+      slug,
+      maps: Object.fromEntries(Object.entries(maps).map(([map, n]) => [index.maps.find((m) => m.map === map)?.slug ?? map, n])),
     })),
   };
 }
 
-/** Public form of maps/<map>.json: quest markers without their quest assets and level actor id. */
+/**
+ * Public form of maps/<map>.json: quest markers without their quest assets and level actor id. `questSteps` (quest
+ * slug -> step key -> marker indexes) holds slugs and indexes only and is kept as it is.
+ */
 const toPublicMap = (map) => ({ ...map, quests: map.quests.map(({ a, id, ...marker }) => marker) });
 
 /**

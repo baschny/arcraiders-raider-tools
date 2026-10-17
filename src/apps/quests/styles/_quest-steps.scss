@@ -138,6 +138,14 @@ $steps-choice: #ffb74d;
   &--optional { border-color: rgba($steps-optional, 0.7); color: #b39ddb; }
   &--hidden { border-color: #555; color: $text-secondary; }
   &--round { border-color: rgba($steps-round, 0.6); background: rgba($steps-round, 0.14); color: #80cbc4; }
+  // A map chip that opens the step on the map.
+  &--link {
+    font: inherit;
+    font-size: 10.5px;
+    cursor: pointer;
+    text-decoration: none;
+    &:hover { border-color: #90caf9; color: #e3f2fd; }
+  }
 }
 
 // ---- items to bring

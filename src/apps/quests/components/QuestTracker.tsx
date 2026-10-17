@@ -19,6 +19,7 @@ import { QuestSearchOverlay } from './QuestSearchOverlay';
 import { Sidebar } from './Sidebar';
 import { ConfirmDialog } from './ConfirmDialog';
 import { QuestDetailsModal } from './QuestDetailsModal';
+import { QuestMapButton, StepMapLinks } from './QuestMapLinks';
 import { isObjectiveSatisfied } from '../utils/objectiveTree';
 import { doneLeafKeys, openStepMapIds } from '../utils/questSummary';
 import { progressFromDone, toggleStep } from '../utils/stepProgress';
@@ -1090,6 +1091,8 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
           onToggleStep={isLinkedMode ? undefined : (key) => toggleQuestStep(detailsQuest.id, key)}
           onOpenQuest={setDetailsQuestId}
           onClose={closeDetails}
+          headerAction={<QuestMapButton quest={detailsQuest} openMaps={openMapsOf(detailsQuest)} />}
+          renderStepMaps={(node, names) => <StepMapLinks quest={detailsQuest} node={node} names={names} />}
         />
       )}
       <div

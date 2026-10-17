@@ -349,3 +349,6 @@
     max-height: min(64vh, calc(100% - 16px));
   }
 }
+
+// Quests mode: a pin can carry several steps of a quest (one line each).
+.mx-tip--quest strong { white-space: pre-line; }

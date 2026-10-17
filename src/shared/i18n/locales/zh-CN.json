@@ -383,7 +383,8 @@
       "granted": "接受时发放",
       "chain": "任务链",
       "requires": "前置",
-      "unlocks": "解锁"
+      "unlocks": "解锁",
+      "showOnMap": "在地图上显示"
     },
     "unlock": {
       "kindLabel": "解锁条件",
@@ -1037,7 +1038,8 @@
     },
     "modes": {
       "loot": "战利品",
-      "label": "模式"
+      "label": "模式",
+      "quests": "任务"
     },
     "sidebar": {
       "hide": "隐藏侧边栏",
@@ -1127,6 +1129,32 @@
       "expectedOne": "每局预计约 {expected} 个，共 {count} 个刷怪器",
       "expected": "每局预计约 {expected} 个，共 {count} 个刷怪器",
       "empty": "此条件下没有 ARC 刷怪器。"
+    },
+    "quests": {
+      "title": "任务步骤",
+      "helpLabel": "关于任务步骤",
+      "help": "从任务追踪器中选择任务，即可查看其步骤所在的位置：需要抵达的区域以轮廓标出；需要寻找、交互或拍照的物体以任务颜色的图钉标示，编号与任务详情中的步骤一致。可在众多地点中任意一处完成的步骤（任意仿生人、任意奇袭者暗门）以小圆点表示。将鼠标悬停在列表中的步骤上可高亮其地点，点击即可前往。在此将步骤标记为完成会同步更新任务追踪器。",
+      "clear": "清除",
+      "clearTitle": "从地图上移除所有任务",
+      "loading": "正在加载任务…",
+      "searchPlaceholder": "查找任务或商人…",
+      "openQuests": "你未完成的任务",
+      "stepsHere": "此地图上有 {count} 个步骤",
+      "stepsHereOne": "此地图上有 {count} 个步骤",
+      "otherMaps": "在其他地图上",
+      "linkedNote": "你的进度来自已关联的账号：已完成的步骤只会显示在任务追踪器中。",
+      "details": "任务详情",
+      "remove": "从地图上移除",
+      "showStep": "在地图上显示",
+      "openTracker": "在任务追踪器中打开",
+      "stepDone": "已完成",
+      "stepNotNeeded": "不再需要（已选择其他路线）",
+      "anyOf": "{count} 个地点中任意一处",
+      "anyOfOne": "{count} 个地点中任意一处",
+      "oneOf": "{count} 个地点之一",
+      "oneOfOne": "{count} 个地点之一",
+      "onlyUnder": "仅限{conditions}",
+      "notUnder": "{conditions}时除外"
     },
     "canvas": {
       "label": "{map}地图。此处绘制的刷新点、区域和敌人均列在侧边栏中。"

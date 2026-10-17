@@ -319,7 +319,8 @@
       "granted": "Entregue ao aceitar",
       "chain": "Cadeia de missões",
       "requires": "Requer",
-      "unlocks": "Desbloqueia"
+      "unlocks": "Desbloqueia",
+      "showOnMap": "Mostrar no mapa"
     },
     "unlock": {
       "kindLabel": "Desbloqueio",
@@ -660,7 +661,8 @@
     },
     "modes": {
       "loot": "Saque",
-      "label": "Modo"
+      "label": "Modo",
+      "quests": "Missões"
     },
     "sidebar": {
       "hide": "Ocultar a barra lateral",
@@ -750,6 +752,32 @@
       "expectedOne": "~{expected} esperados por partida, de {count} gerador",
       "expected": "~{expected} esperados por partida, de {count} geradores",
       "empty": "Nenhum gerador ARC nesta condição."
+    },
+    "quests": {
+      "title": "Etapas de missão",
+      "helpLabel": "Sobre as etapas de missão",
+      "help": "Escolha missões no Rastreador de missões para ver onde ficam as etapas delas: áreas a alcançar aparecem contornadas, e objetos a encontrar, com que interagir ou a fotografar são marcadores na cor da missão, numerados como as etapas nos detalhes da missão. Etapas que podem ser feitas em qualquer um de vários lugares (qualquer Androide, qualquer Escotilha de Raider) são pontinhos. Passe o mouse sobre uma etapa da lista para destacar os lugares dela; clique para ir até lá. Marcar uma etapa como feita aqui atualiza o Rastreador de missões.",
+      "clear": "Limpar",
+      "clearTitle": "Remover todas as missões do mapa",
+      "loading": "Carregando missões…",
+      "searchPlaceholder": "Encontrar uma missão ou comerciante…",
+      "openQuests": "Suas missões em aberto",
+      "stepsHere": "{count} etapas neste mapa",
+      "stepsHereOne": "{count} etapa neste mapa",
+      "otherMaps": "em outros mapas",
+      "linkedNote": "Seu progresso vem de uma conta vinculada: as etapas feitas aparecem só no Rastreador de missões.",
+      "details": "Detalhes da missão",
+      "remove": "Remover do mapa",
+      "showStep": "Mostrar no mapa",
+      "openTracker": "Abrir no Rastreador de missões",
+      "stepDone": "Concluído",
+      "stepNotNeeded": "Não é mais necessária (outra rota foi escolhida)",
+      "anyOf": "Em qualquer um de {count} lugares",
+      "anyOfOne": "Em {count} lugar",
+      "oneOf": "Em um de {count} lugares",
+      "oneOfOne": "Em {count} lugar",
+      "onlyUnder": "Só durante {conditions}",
+      "notUnder": "Não durante {conditions}"
     },
     "canvas": {
       "label": "Mapa de {map}. Os pontos, áreas e inimigos desenhados aqui estão listados na barra lateral."

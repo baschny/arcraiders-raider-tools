@@ -383,7 +383,8 @@
       "granted": "接受時發放",
       "chain": "任務鏈",
       "requires": "前置",
-      "unlocks": "解鎖"
+      "unlocks": "解鎖",
+      "showOnMap": "在地圖上顯示"
     },
     "unlock": {
       "kindLabel": "解鎖條件",
@@ -1037,7 +1038,8 @@
     },
     "modes": {
       "loot": "搜刮",
-      "label": "模式"
+      "label": "模式",
+      "quests": "任務"
     },
     "sidebar": {
       "hide": "隱藏側邊欄",
@@ -1127,6 +1129,32 @@
       "expectedOne": "每回合預期約 ~{expected}（共 {count} 個生成器）",
       "expected": "每回合預期約 ~{expected}（共 {count} 個生成器）",
       "empty": "此條件下沒有 ARC 生成器。"
+    },
+    "quests": {
+      "title": "任務步驟",
+      "helpLabel": "關於任務步驟",
+      "help": "從任務追蹤器選擇任務，即可查看其步驟所在的位置：需要抵達的區域會以輪廓標出；需要尋找、互動或拍照的物體會以任務顏色的圖釘標示，編號與任務詳情中的步驟相同。可在眾多地點中任一處完成的步驟（任一仿生人、任一掠手出入口）以小圓點表示。將游標移到清單中的步驟上可醒目顯示其地點，點擊即可前往。在此將步驟標記為完成，也會同步更新任務追蹤器。",
+      "clear": "清除",
+      "clearTitle": "從地圖上移除所有任務",
+      "loading": "正在載入任務…",
+      "searchPlaceholder": "尋找任務或商人…",
+      "openQuests": "你未完成的任務",
+      "stepsHere": "此地圖上有 {count} 個步驟",
+      "stepsHereOne": "此地圖上有 {count} 個步驟",
+      "otherMaps": "在其他地圖上",
+      "linkedNote": "你的進度來自已連結的帳號：已完成的步驟只會顯示在任務追蹤器中。",
+      "details": "任務詳情",
+      "remove": "從地圖上移除",
+      "showStep": "在地圖上顯示",
+      "openTracker": "在任務追蹤器中開啟",
+      "stepDone": "已完成",
+      "stepNotNeeded": "不再需要（已選擇其他路線）",
+      "anyOf": "{count} 個地點中任一處",
+      "anyOfOne": "{count} 個地點中任一處",
+      "oneOf": "{count} 個地點之一",
+      "oneOfOne": "{count} 個地點之一",
+      "onlyUnder": "僅限{conditions}",
+      "notUnder": "{conditions}時除外"
     },
     "canvas": {
       "label": "{map}地圖。此處繪製的位置、區域與敵人都列在側邊欄中。"

@@ -142,3 +142,34 @@ export function hasSharedTail(node: ObjectiveView): boolean {
   const first = tailSig(branches[0]);
   return branches.every((b) => tailSig(b) === first);
 }
+
+/**
+ * Step numbers as the quest details show them, per node key ('2', or '2.1' in a numbered sequence inside step 2):
+ * the steps of a sequence count 1, 2, … (optional ones are not counted), a group passes its number on to its
+ * children, and a choice of places followed by the same steps (hasSharedTail) leaves the places unnumbered and
+ * counts the shared steps from 1. Nodes outside any sequence have no number.
+ */
+export function stepLabels(root: ObjectiveView): Map<string, string> {
+  const out = new Map<string, string>();
+  const join = (prefix: string | null, n: number) => (prefix ? `${prefix}.${n}` : String(n));
+  const numbered = (children: ObjectiveView[], prefix: string | null) => {
+    let n = 0;
+    for (const child of children) visit(child, child.optional ? prefix : join(prefix, ++n));
+  };
+  const visit = (node: ObjectiveView, label: string | null) => {
+    if (label) out.set(node.key, label);
+    if (node.kind === 'atomic') return;
+    if (hasSharedTail(node)) {
+      for (const branch of node.children) {
+        visit(branch.children[0], label);
+        numbered(branch.children.slice(1), label);
+      }
+    } else if (node.kind === 'sequence') {
+      numbered(node.children, label);
+    } else {
+      for (const child of node.children) visit(child, label);
+    }
+  };
+  visit(root, null);
+  return out;
+}

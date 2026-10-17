@@ -383,7 +383,8 @@
       "granted": "Se entrega al aceptar",
       "chain": "Cadena de encargos",
       "requires": "Requiere",
-      "unlocks": "Desbloquea"
+      "unlocks": "Desbloquea",
+      "showOnMap": "Mostrar en el mapa"
     },
     "unlock": {
       "kindLabel": "Desbloqueo",
@@ -1037,7 +1038,8 @@
     },
     "modes": {
       "loot": "Botín",
-      "label": "Modo"
+      "label": "Modo",
+      "quests": "Misiones"
     },
     "sidebar": {
       "hide": "Ocultar la barra lateral",
@@ -1127,6 +1129,32 @@
       "expectedOne": "~{expected} esperado por ronda, de {count} generador",
       "expected": "~{expected} esperados por ronda, de {count} generadores",
       "empty": "No hay generadores ARC en esta condición."
+    },
+    "quests": {
+      "title": "Pasos de misión",
+      "helpLabel": "Sobre los pasos de misión",
+      "help": "Elige misiones del Rastreador de misiones para ver dónde están sus pasos: las zonas a las que llegar aparecen delimitadas, y los objetos que encontrar, con los que interactuar o que fotografiar son marcadores del color de la misión, numerados como los pasos en los detalles de la misión. Los pasos que se pueden hacer en cualquiera de muchos lugares (cualquier Androide, cualquier Trampilla de Raider) son puntos pequeños. Pasa el ratón sobre un paso de la lista para resaltar sus lugares; haz clic en él para ir allí. Marcar aquí un paso como hecho actualiza el Rastreador de misiones.",
+      "clear": "Borrar",
+      "clearTitle": "Quitar todas las misiones del mapa",
+      "loading": "Cargando misiones…",
+      "searchPlaceholder": "Busca una misión o un comerciante…",
+      "openQuests": "Tus misiones abiertas",
+      "stepsHere": "{count} pasos en este mapa",
+      "stepsHereOne": "{count} paso en este mapa",
+      "otherMaps": "en otros mapas",
+      "linkedNote": "Tu progreso viene de una cuenta vinculada: los pasos hechos solo se muestran en el Rastreador de misiones.",
+      "details": "Detalles de la misión",
+      "remove": "Quitar del mapa",
+      "showStep": "Mostrar en el mapa",
+      "openTracker": "Abrir en el Rastreador de misiones",
+      "stepDone": "Hecho",
+      "stepNotNeeded": "Ya no es necesario (se eligió otra ruta)",
+      "anyOf": "En cualquiera de {count} lugares",
+      "anyOfOne": "En {count} lugar",
+      "oneOf": "En uno de {count} lugares",
+      "oneOfOne": "En {count} lugar",
+      "onlyUnder": "Solo durante {conditions}",
+      "notUnder": "No durante {conditions}"
     },
     "canvas": {
       "label": "Mapa de {map}. Los puntos, zonas y enemigos dibujados aquí aparecen en la barra lateral."

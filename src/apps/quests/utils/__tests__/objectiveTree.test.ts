@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import type { ObjectiveView } from '../../types/quest';
-import { evaluateObjectives, hasSharedTail, normalizeObjectiveTree, progressByKey } from '../objectiveTree';
+import { evaluateObjectives, hasSharedTail, normalizeObjectiveTree, progressByKey, stepLabels } from '../objectiveTree';
 
 function leaf(key: string, extra: Partial<ObjectiveView> = {}): ObjectiveView {
   return { key, kind: 'atomic', text: key, oneRound: false, optional: false, hidden: false, children: [], ...extra };
@@ -57,5 +57,35 @@ describe('progressByKey', () => {
     const p = { completed: true, currentAmount: 1, requiredAmount: 1 };
     expect(progressByKey(['0.0', '0.1'], [p, p]).get('0.1')).toBe(p);
     expect(progressByKey(['0.0', '0.1'], [p]).size).toBe(0);
+  });
+});
+
+describe('stepLabels', () => {
+  it('numbers sequence steps like the quest details, groups pass their number on', () => {
+    const tree = group('0', 'sequence', [
+      leaf('0.0'),
+      leaf('0.1', { optional: true }),
+      group('0.2', 'allOf', [leaf('0.2.0'), group('0.2.1', 'sequence', [leaf('0.2.1.0'), leaf('0.2.1.1')])]),
+    ]);
+    const labels = stepLabels(tree);
+    expect(labels.get('0')).toBeUndefined();
+    expect(labels.get('0.0')).toBe('1');
+    expect(labels.get('0.1')).toBeUndefined();
+    expect(labels.get('0.2.0')).toBe('2');
+    expect(labels.get('0.2.1.0')).toBe('2.1');
+    expect(labels.get('0.2.1.1')).toBe('2.2');
+  });
+
+  it('leaves the places of a shared-tail choice unnumbered and counts the shared steps', () => {
+    const branch = (k: string, place: string) =>
+      group(k, 'sequence', [leaf(`${k}.0`, { text: place }), leaf(`${k}.1`, { text: 'install' }), leaf(`${k}.2`, { text: 'return' })]);
+    const labels = stepLabels(group('0', 'anyOfExclusive', [branch('0.0', 'Dam'), branch('0.1', 'Spaceport')]));
+    expect(labels.get('0.0.0')).toBeUndefined();
+    expect(labels.get('0.1.1')).toBe('1');
+    expect(labels.get('0.1.2')).toBe('2');
+  });
+
+  it('gives no numbers outside sequences', () => {
+    expect(stepLabels(group('0', 'allOf', [leaf('0.0'), leaf('0.1')])).size).toBe(0);
   });
 });

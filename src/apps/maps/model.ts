@@ -11,6 +11,9 @@ import { useMapStrings } from './data/useMapStrings';
 import type { Frigate, LootItem, LootSetup, MapCondition, MapData, MapIndex } from './data/types';
 import { useAllMaps } from './data/useMapData';
 import { condIndex, defaultLayer, useLootableItems, type MapPatch, type MapState, type Prefs } from './state';
+import type { Quest } from '../quests/types/quest';
+import { useManualQuestProgress, type ManualQuestProgress } from '../quests/utils/useManualQuestProgress';
+import { pickQuests, questMapCounts, questPins, type PickedQuest, type QuestPin } from './data/quests';
 
 export interface Count {
   n: number;
@@ -74,9 +77,21 @@ export interface Explorer {
   /** Enemy a spawner is drawn as (most probable among the filtered ones), -1 none of the filtered, null unknown. */
   enemyMatch: (i: number) => number | null;
   enemyVisible: (i: number) => boolean;
+  /** Quests mode: the Quest Tracker's quests (null while loading or outside Quests mode). */
+  questCatalog: Quest[] | null;
+  questById: ReadonlyMap<string, Quest>;
+  /** The picked quests (state.quests) with their colours, step numbers and located steps on the open map. */
+  picked: PickedQuest[];
+  /** Their pins on the open map, in drawing order. */
+  questPins: QuestPin[];
+  /** Located steps of the picked quests per map slug (map bar), null without picks. */
+  questCounts: Map<string, number> | null;
+  /** The tracker's manual progress (read-only when the tracker uses a linked account). */
+  progress: ManualQuestProgress;
 }
 
-export function useExplorer(index: MapIndex, map: MapData, state: MapState, set: Explorer['set'], prefs: Prefs, setPrefs: Explorer['setPrefs'], items: ItemsMap | null): Explorer {
+export function useExplorer(index: MapIndex, map: MapData, state: MapState, set: Explorer['set'], prefs: Prefs, setPrefs: Explorer['setPrefs'], items: ItemsMap | null,
+  questCatalog: Quest[] | null = null): Explorer {
   const { locale, t } = useLocale();
   const strings = useMapStrings(locale);
   // The Normal condition has no game string.
@@ -181,5 +196,14 @@ export function useExplorer(index: MapIndex, map: MapData, state: MapState, set:
   }, [map, layer, cond, score, cls, spawnP, enemyP, state.show, state.enemies, index, prefs.puzzleDoors]);
 
   const note = useMemo(() => (lootItem ? itemNote(index, lootItem) : null), [index, lootItem]);
-  return { index, map, state, set, prefs, setPrefs, names, areaLabels, lootable, item, lootIdx, lootItem, share, note, ci, cond, lootSetups, lootSetup, zoneThreat, frigate, layer, cls, spawnP, enemyP, score, mapTotals, condTotals, ...derived };
+
+  const progress = useManualQuestProgress();
+  const questById = useMemo(() => new Map((questCatalog ?? []).map((q) => [q.id, q])), [questCatalog]);
+  const quests = state.mode === 'quests' ? state.quests : [];
+  const picked = pickQuests(map, quests, questById, progress.doneOf);
+  const questLayer = (marker: number) => layer == null || (map.levels.quests[marker]?.[0] ?? 0) === layer;
+  const pins = questPins(map, picked, cond, questLayer);
+  const questCounts = quests.length ? questMapCounts(index, quests) : null;
+  return { index, map, state, set, prefs, setPrefs, names, areaLabels, lootable, item, lootIdx, lootItem, share, note, ci, cond, lootSetups, lootSetup, zoneThreat, frigate, layer, cls, spawnP, enemyP, score, mapTotals, condTotals, ...derived,
+    questCatalog, questById, picked, questPins: pins, questCounts, progress };
 }

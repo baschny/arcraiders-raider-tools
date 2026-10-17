@@ -1,9 +1,9 @@
-import { useEffect, useRef, type CSSProperties } from 'react';
+import { useEffect, useRef, type CSSProperties, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 import { ChevronRight, X } from 'lucide-react';
 import { useLocale } from '../../../shared/context/LocaleContext';
 import type { LinkedQuestObjectiveProgress } from '../../../shared/types/linkedQuests';
-import { isUnlockNode, type Quest } from '../types/quest';
+import { isUnlockNode, type ObjectiveView, type Quest } from '../types/quest';
 import type { QuestDisplayStatus } from '../utils/linkedProgress';
 import { getQuestMapIndicator } from '../utils/mapMeta';
 import { bringList, doneLeafKeys, otherRewardItems, stepSummary } from '../utils/questSummary';
@@ -22,6 +22,10 @@ interface QuestDetailsModalProps {
   onToggleStep?: (key: string) => void;
   onOpenQuest: (questId: string) => void;
   onClose: () => void;
+  /** Extra header action (e.g. "Show on map"). */
+  headerAction?: ReactNode;
+  /** Map links of a step in place of its map chips (see QuestSteps). */
+  renderStepMaps?: (node: ObjectiveView, names: boolean) => ReactNode;
 }
 
 /**
@@ -73,7 +77,7 @@ export function QuestDetailsModal(props: QuestDetailsModalProps) {
   );
 }
 
-function DetailsHeader({ quest, status, objectiveProgress, onToggle, onClose }: QuestDetailsModalProps) {
+function DetailsHeader({ quest, status, objectiveProgress, onToggle, onClose, headerAction }: QuestDetailsModalProps) {
   const { locale, t, tm } = useLocale();
   const indicator = getQuestMapIndicator(quest.map, locale);
   const completed = status === 'completed';
@@ -101,6 +105,7 @@ function DetailsHeader({ quest, status, objectiveProgress, onToggle, onClose }: 
       </div>
       <div className="quest-details__actions">
         <div className="quest-details__links">
+          {headerAction}
           <QuestExternalLinks quest={quest} showExternalIcon />
           <button type="button" className="quest-card-btn quest-card-btn--icon" onClick={onClose} aria-label={t('quests.card.close')}>
             <X size={18} />
@@ -127,7 +132,7 @@ function Description({ quest }: { quest: Quest }) {
   );
 }
 
-function Steps({ quest, status, objectiveProgress, onToggleStep }: QuestDetailsModalProps) {
+function Steps({ quest, status, objectiveProgress, onToggleStep, renderStepMaps }: QuestDetailsModalProps) {
   const { t } = useLocale();
   if (!quest.objectiveTree) return null;
   return (
@@ -144,6 +149,7 @@ function Steps({ quest, status, objectiveProgress, onToggleStep }: QuestDetailsM
           done={doneLeafKeys(quest, objectiveProgress, status === 'completed')}
           onToggleStep={onToggleStep}
           questMapIds={quest.map}
+          renderStepMaps={renderStepMaps}
         />
       </div>
     </section>

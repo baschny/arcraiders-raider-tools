@@ -1,7 +1,8 @@
 // Imperative canvas engine for the map (originally ported from the embark-api map features UI): map texture,
 // playable area, POIs and loot zones, item heat map, loot sockets as dots (icons when zoomed in), spawned spots
 // and map features as game icons, ARC spawners with patrol paths, and the activity group of the hovered or
-// pinned spawner (ringed members + area hull). React feeds it the Explorer model; it reports tooltip targets.
+// pinned spawner (ringed members + area hull), and in Quests mode the steps of the picked quests (numbered pins and
+// area outlines in the quest's colour). React feeds it the Explorer model; it reports tooltip targets.
 import { ICON_SHARE, THEME_ICONS, THREAT, ZONE_COLORS, areaThemes, enemyIcon, isFeature, lootZone, markerStyle, type MarkerStyle, type SpotKind } from '../data/kinds';
 import { DATA_BASE, reportTileError, symbolUrl } from '../data/useMapData';
 import type { Level, MapData, PuzzleSymbol, UV } from '../data/types';
@@ -13,8 +14,8 @@ import { onIconsLoaded, tintedIcon, tintedImage } from './iconAtlas';
 import { TileLayer } from './tiles';
 
 export type Target = {
-  /** frigate / reclaimer: index into Frigate.poses; cargo: into Frigate.dropsites. */
-  t: 'socket' | 'spawner' | 'enemy' | 'poi' | 'entrance' | 'action' | 'frigate' | 'reclaimer' | 'cargo';
+  /** frigate / reclaimer: index into Frigate.poses; cargo: into Frigate.dropsites; quest: into Explorer.questPins. */
+  t: 'socket' | 'spawner' | 'enemy' | 'poi' | 'entrance' | 'action' | 'frigate' | 'reclaimer' | 'cargo' | 'quest';
   i: number;
 };
 export type Pin = { t: 'spawner' | 'enemy'; i: number };
@@ -226,6 +227,8 @@ export class MapEngine {
   /** One session-only guide and entrance selection. */
   private activePuzzle: GuideSelection | null = null;
   private guideHighlight: GuideTargets | null = null;
+  /** Quest step highlighted from the side bar (quest index into Explorer.picked, step key). */
+  private questHighlight: { q: number; key: string } | null = null;
   private onPuzzle: (i: GuideSelection | null) => void;
   private tiles = new TileLayer(DATA_BASE, () => this.requestDraw(), reportTileError);
 
@@ -288,7 +291,7 @@ export class MapEngine {
       const nextIndex = oldPin ? nextPins.findIndex((pin) => pin.location.id === oldPin.location.id) : -1;
       if (nextIndex >= 0) preservedTip = { ...this.tip, target: { t: 'action', i: nextIndex } };
     }
-    const reset = fresh || this.ex.state.mode !== ex.state.mode || this.ex.ci !== ex.ci || guideChanged || stepsChanged || this.ex.prefs.puzzleDoors !== ex.prefs.puzzleDoors || (layoutChanged && !preservedTip);
+    const reset = fresh || this.ex.state.mode !== ex.state.mode || this.ex.state.quests.join() !== ex.state.quests.join() || this.ex.ci !== ex.ci || guideChanged || stepsChanged || this.ex.prefs.puzzleDoors !== ex.prefs.puzzleDoors || (layoutChanged && !preservedTip);
     this.ex = ex;
     this.heat = heat;
     this.padding = padding;
@@ -305,6 +308,12 @@ export class MapEngine {
     }
     if (refit) this.fit();
     else this.requestDraw();
+  }
+
+  highlightQuestStep(step: { q: number; key: string } | null) {
+    if (this.questHighlight?.q === step?.q && this.questHighlight?.key === step?.key) return;
+    this.questHighlight = step;
+    this.requestDraw();
   }
 
   highlightGuide(targets: GuideTargets | null) {
@@ -452,7 +461,7 @@ export class MapEngine {
     const hv = this.hover;
     const toScreen = (u: number, v: number) => this.toScreen(u, v);
 
-    ctx.globalAlpha = isLoot && e.score ? 0.6 : 1;
+    ctx.globalAlpha = (isLoot && e.score) || (e.state.mode === 'quests' && e.picked.length) ? 0.7 : 1;
     this.tiles.draw(ctx, m.layers && e.layer != null ? m.layers[e.layer].image : m.image, ox, oy, S, w, h, dpr);
     ctx.globalAlpha = 1;
 
@@ -610,6 +619,8 @@ export class MapEngine {
         ctx.stroke();
       }
       this.drawPuzzles(ctx, w, h);
+    } else if (e.state.mode === 'quests') {
+      this.drawQuests(ctx, w, h);
     } else {
       // Patrol paths: of the hovered spawner, or of all shown spawners while enemies are filtered.
       ctx.lineWidth = 1.4;
@@ -932,6 +943,122 @@ export class MapEngine {
     });
     ctx.restore();
   }
+  /**
+   * Quests mode: area steps as outlines filled in the quest's colour, candidates of "any of them" steps as small dots,
+   * the other steps as discs with their step number (the quest icon when unnumbered). The hovered step, or the one
+   * highlighted from the side bar, is ringed at all its places; done or unavailable steps are faded.
+   */
+  private drawQuests(ctx: CanvasRenderingContext2D, w: number, h: number) {
+    const e = this.ex, m = e.map, pins = e.questPins, k = this.puzzleScale();
+    const hv = this.hover?.t === 'quest' ? pins[this.hover.i] : null;
+    const focused = e.state.step ? e.state.step.split(':') : null;
+    const fq = focused ? e.picked.findIndex((p) => p.slug === focused[0]) : -1;
+    const hl = this.questHighlight ?? (hv ? { q: hv.q, keys: hv.keys } : fq >= 0 ? { q: fq, key: focused![1] } : null);
+    const lit = (p: (typeof pins)[number]) => !!hl && p.q === hl.q && ('keys' in hl ? hl.keys.some((k) => p.keys.includes(k)) : p.keys.includes(hl.key));
+    const color = (p: (typeof pins)[number]) => e.picked[p.q]?.color ?? '#fff';
+    ctx.save();
+    ctx.lineJoin = 'round';
+    for (const p of pins) {
+      if (!p.area) continue;
+      const polys = m.quests[p.marker]?.polygons ?? [];
+      ctx.beginPath();
+      for (const poly of polys) {
+        poly.forEach(([u, v], j) => {
+          const [x, y] = this.toScreen(u, v);
+          if (j) ctx.lineTo(x, y);
+          else ctx.moveTo(x, y);
+        });
+        ctx.closePath();
+      }
+      ctx.globalAlpha = p.dim && !lit(p) ? 0.45 : 1;
+      ctx.fillStyle = `${color(p)}${lit(p) ? '55' : p.dim ? '14' : '30'}`;
+      ctx.fill('evenodd');
+      ctx.lineWidth = lit(p) ? 2.6 : 1.6;
+      ctx.strokeStyle = lit(p) ? '#ffffff' : color(p);
+      ctx.stroke();
+    }
+    const R = 7.5 * k;
+    for (const p of pins) {
+      if (p.area || !p.any) continue;
+      const [x, y] = this.toScreen(...m.quests[p.marker].uv);
+      if (x < -10 || y < -10 || x > w + 10 || y > h + 10) continue;
+      ctx.globalAlpha = p.dim && !lit(p) ? 0.4 : 1;
+      ctx.beginPath();
+      ctx.arc(x, y, R * (lit(p) ? 0.55 : 0.42), 0, Math.PI * 2);
+      ctx.fillStyle = color(p);
+      ctx.fill();
+      ctx.lineWidth = lit(p) ? 2 : 1.2;
+      ctx.strokeStyle = lit(p) ? '#ffffff' : OUTLINE;
+      ctx.stroke();
+    }
+    for (const p of pins) {
+      if (p.any) continue;
+      const [x, y] = this.toScreen(...m.quests[p.marker].uv);
+      if (x < -20 || y < -20 || x > w + 20 || y > h + 20) continue;
+      ctx.globalAlpha = p.dim && !lit(p) ? 0.45 : 1;
+      this.questPin(ctx, x, y, color(p), R, p.label, lit(p) || (hv === p));
+      const code = this.ex.prefs.height ? heightCode(m.levels.quests[p.marker]) : 0;
+      if (code) heightMark(ctx, x, y, R, code, true);
+    }
+    ctx.restore();
+  }
+  /** A quest step: a disc in the quest's colour with the step number, or the quest icon. */
+  private questPin(ctx: CanvasRenderingContext2D, x: number, y: number, color: string, R: number, label: string | null, lit: boolean) {
+    const r = R * (label && label.length > 2 ? 1.2 : 1);
+    ctx.beginPath();
+    ctx.arc(x, y, r, 0, Math.PI * 2);
+    ctx.fillStyle = color;
+    ctx.fill();
+    ctx.lineWidth = lit ? 2.4 : 1.4;
+    ctx.strokeStyle = lit ? '#ffffff' : OUTLINE;
+    ctx.stroke();
+    if (label) {
+      ctx.fillStyle = '#0d0f11';
+      ctx.font = `700 ${Math.round(R * (label.length > 2 ? 1.1 : 1.35))}px Urbanist, "Segoe UI", sans-serif`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(label, x, y + 0.5);
+    } else {
+      const dpr = window.devicePixelRatio || 1, px = R * 1.3;
+      const bmp = tintedIcon('quest', '#0d0f11', px * dpr);
+      if (bmp) ctx.drawImage(bmp, x - px / 2, y - px / 2, px, px);
+    }
+  }
+  /** Quest pin under the cursor: step discs and candidate dots (topmost first), then the smallest area around it. */
+  private questAt(mx: number, my: number): Target | null {
+    const e = this.ex, m = e.map, pins = e.questPins, R = 7.5 * this.puzzleScale();
+    let best: number | null = null, bestD = (R + 4) ** 2;
+    for (let i = pins.length - 1; i >= 0; i--) {
+      if (pins[i].any && pins[i].area) continue;
+      const [x, y] = this.toScreen(...m.quests[pins[i].marker].uv), d = (x - mx) ** 2 + (y - my) ** 2;
+      if (d < bestD) {
+        bestD = d;
+        best = i;
+      }
+    }
+    if (best != null) return { t: 'quest', i: best };
+    const uv = this.toUv(mx, my);
+    let area: number | null = null, areaA = Infinity;
+    pins.forEach((p, i) => {
+      const polys = p.area ? m.quests[p.marker]?.polygons ?? [] : [];
+      if (!polys.length || !inRings(uv, polys)) return;
+      const a = ringsArea(polys);
+      if (a < areaA) {
+        areaA = a;
+        area = i;
+      }
+    });
+    return area != null ? { t: 'quest', i: area } : null;
+  }
+  /** Map points of a quest step's markers (for focusing it). */
+  questStepPoints(q: number, key: string): UV[] {
+    const m = this.ex.map;
+    return this.ex.questPins.filter((p) => p.q === q && p.keys.includes(key)).flatMap((p) => {
+      const mk = m.quests[p.marker];
+      return mk.polygons?.length ? mk.polygons.flat() : [mk.uv];
+    });
+  }
+
   /** Puzzle step marker: a numbered disc, or a sigil disc for an unnumbered step (S22 real sigil images). */
   private puzzlePin(ctx: CanvasRenderingContext2D, x: number, y: number, color: string, k: number,
     n: number | string | null, sym: PuzzleSymbol | undefined, hovered: boolean) {
@@ -1033,7 +1160,10 @@ export class MapEngine {
       }
       return best;
     };
-    if (e.state.mode === 'arc') {
+    if (e.state.mode === 'quests') {
+      const quest = this.questAt(mx, my);
+      if (quest) return quest;
+    } else if (e.state.mode === 'arc') {
       const i = nearest(m.enemySpawners.length, (j) => e.enemyVisible(j), (j) => [m.enemySpawners[j][0], m.enemySpawners[j][1]], 12 * k);
       if (i != null) return { t: 'enemy', i };
     } else {

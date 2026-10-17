@@ -1,6 +1,6 @@
-// Map switcher, condition bar and loot setup bar (floating over the map), and the Loot / ARC mode switch (top of the
-// left bar).
-import { Crosshair, Package } from 'lucide-react';
+// Map switcher, condition bar and loot setup bar (floating over the map), and the Loot / ARC / Quests mode switch (top
+// of the left bar).
+import { Crosshair, Package, ScrollText } from 'lucide-react';
 import { ConditionImage } from './components';
 import { radioKeys, radioTab } from './radio';
 import type { Explorer } from './model';
@@ -11,16 +11,20 @@ export function MapBar({ ex }: { ex: Explorer }) {
   const tx = useMapText();
   const totals = ex.state.mode === 'loot' ? ex.mapTotals : null;
   const best = totals ? Math.max(...totals.values()) : 0;
+  // Quests mode: located steps of the picked quests per map.
+  const steps = ex.state.mode === 'quests' ? ex.questCounts : null;
   const name = ex.names.of;
   return (
     <div className="mx-mapbar" role="radiogroup" aria-label={tx.t('maps.mapBar.label')} onKeyDown={radioKeys}>
       {sortedMaps(ex.index).map((m) => {
         const sc = totals?.get(m.map);
+        const n = steps?.get(m.slug) ?? 0;
         return (
           <button key={m.map} {...radioTab(m.map === ex.map.map)} className={`${m.map === ex.map.map ? 'active' : ''} ${sc && sc === best ? 'best' : ''}`} onClick={() => ex.set({ map: m.slug })}
-            title={totals ? tx.tm('maps.mapBar.scoreTitle', { map: name(m), score: sc ? tx.score(sc) : '–' }) : name(m)}>
+            title={totals ? tx.tm('maps.mapBar.scoreTitle', { map: name(m), score: sc ? tx.score(sc) : '–' }) : steps ? `${name(m)} · ${tx.plural('maps.quests.stepsHere', n)}` : name(m)}>
             <span>{name(m)}</span>
             {totals && <small>{sc ? tx.score(sc) : '–'}</small>}
+            {steps && <small>{n ? tx.num(n) : '–'}</small>}
           </button>
         );
       })}
@@ -85,6 +89,7 @@ export function SetupBar({ ex }: { ex: Explorer }) {
 const MODES: { key: Mode; label: string; icon: typeof Package }[] = [
   { key: 'loot', label: 'maps.modes.loot', icon: Package },
   { key: 'arc', label: 'lootHelper.locations.arc', icon: Crosshair },
+  { key: 'quests', label: 'maps.modes.quests', icon: ScrollText },
 ];
 
 export function ModeSwitch({ ex }: { ex: Explorer }) {

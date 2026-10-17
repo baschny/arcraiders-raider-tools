@@ -1,10 +1,10 @@
-// Maps tool (docs/Maps.md). `/maps` renders the embark-api map features build (Loot and ARC modes) on a full-bleed map:
+// Maps tool (docs/Maps.md). `/maps` renders the embark-api map features build (Loot, ARC and Quests modes) on a full-bleed map:
 // map and condition switchers float at the top, the collapsible left bar holds the mode switch and the filters (on
 // phones: a bottom sheet). `/map-sizes` is the playable-area comparison (MapSizes.tsx), switched by MapsHeader.
 // Data: embark-api map features build, generated with npm run generate:maps (data/useMapData.ts). State lives in the
 // URL: /maps/<map slug>?<params> (state.ts).
 import { useEffect, useRef, useState } from 'react';
-import { Crosshair, Package, PanelLeftClose, PanelLeftOpen, RotateCw } from 'lucide-react';
+import { Crosshair, Package, PanelLeftClose, PanelLeftOpen, RotateCw, ScrollText } from 'lucide-react';
 import { useLocale } from '../../shared/context/LocaleContext';
 import { ItemIcon } from '../../shared/components/ItemIcon';
 import { LoadingSpinner } from '../../shared/components/LoadingSpinner';
@@ -23,6 +23,8 @@ import { BottomSheet } from './BottomSheet';
 import { useMobile } from './useMobile';
 import { ConditionBar, MapBar, ModeSwitch, SetupBar } from './Bars';
 import { mapEntry, sanitizeState, useMapState, usePrefs, type MapPatch, type MapState } from './state';
+import { useQuestCatalog } from '../quests/utils/useQuestCatalog';
+import type { Quest } from '../quests/types/quest';
 import './styles/main.scss';
 
 const DEFAULT_MAP = 'dam-battleground';
@@ -35,6 +37,10 @@ export function MapsApp() {
   useEffect(() => {
     loadAllItems(locale).then(setItems, (e) => console.error(e));
   }, [locale]);
+  // The Quest Tracker's quests, loaded once Quests mode is opened.
+  const [questsWanted, setQuestsWanted] = useState(urlState.mode === 'quests');
+  if (urlState.mode === 'quests' && !questsWanted) setQuestsWanted(true);
+  const { quests: questCatalog } = useQuestCatalog(locale, questsWanted);
   // URL values the data does not know: render with the defaults at once, then clean the URL.
   const preFix = index ? sanitizeState(urlState, index, null, items, DEFAULT_MAP) : null;
   const preState = preFix ? { ...urlState, ...preFix } : urlState;
@@ -52,7 +58,7 @@ export function MapsApp() {
   if (!index || !shown) return <LoadingSpinner />;
   // While the next map loads, the previous one stays (no spinner flash, keyboard focus stays in the map bar).
   const shownSlug = index.maps.find((m) => m.map === shown.map)?.slug ?? state.map;
-  return <Explorer index={index} map={shown} state={shown === map ? state : { ...state, map: shownSlug }} set={set} items={items} />;
+  return <Explorer index={index} map={shown} state={shown === map ? state : { ...state, map: shownSlug }} set={set} items={items} questCatalog={questCatalog} />;
 }
 
 /** Route `/map-sizes`: the same index load, then the size comparison (no map state). */
@@ -86,12 +92,15 @@ function LoadError({ error, mapName }: { error: MapLoadError; mapName: string | 
   );
 }
 
-function Explorer({ index, map, state, set, items }: { index: MapIndex; map: MapData; state: MapState; set: (p: MapPatch) => void; items: ItemsMap | null }) {
+function Explorer({ index, map, state, set, items, questCatalog }: {
+  index: MapIndex; map: MapData; state: MapState; set: (p: MapPatch) => void; items: ItemsMap | null; questCatalog: Quest[] | null;
+}) {
   const { t, itemName } = useMapText();
   const [prefs, setPrefs] = usePrefs();
-  const ex = useExplorer(index, map, state, set, prefs, setPrefs, items);
+  const ex = useExplorer(index, map, state, set, prefs, setPrefs, items, questCatalog);
   const mapView = useRef<MapViewHandle>(null);
   const focusPoi = (i: number) => mapView.current?.focusPoi(i);
+  const highlightStep = (step: { q: number; key: string } | null) => mapView.current?.highlightQuestStep(step);
   const open = prefs.side;
   const mobile = useMobile();
   const [sheet, setSheet] = useState(false);
@@ -123,7 +132,7 @@ function Explorer({ index, map, state, set, items }: { index: MapIndex; map: Map
               )}
             </>
           )}>
-            <Sidebar ex={ex} onFocusPoi={focusPoi} />
+            <Sidebar ex={ex} onFocusPoi={focusPoi} onHighlightStep={highlightStep} />
           </BottomSheet>
         ) : open ? (
           <div className="mx-area-side">
@@ -131,12 +140,12 @@ function Explorer({ index, map, state, set, items }: { index: MapIndex; map: Map
               <ModeSwitch ex={ex} />
               <button className="mx-side-toggle" onClick={() => setPrefs({ side: false })} title={t('maps.sidebar.hide')} aria-label={t('maps.sidebar.hide')}><PanelLeftClose size={16} /></button>
             </div>
-            <Sidebar ex={ex} onFocusPoi={focusPoi} />
+            <Sidebar ex={ex} onFocusPoi={focusPoi} onHighlightStep={highlightStep} />
           </div>
         ) : (
           <button className="mx-side-open" onClick={() => setPrefs({ side: true })} title={t('maps.sidebar.showFilters')} aria-label={t('maps.sidebar.showFilters')}>
             <PanelLeftOpen size={18} />
-            {state.mode === 'loot' ? <Package size={16} /> : <Crosshair size={16} />}
+            {state.mode === 'loot' ? <Package size={16} /> : state.mode === 'arc' ? <Crosshair size={16} /> : <ScrollText size={16} />}
           </button>
         )}
       </div>

@@ -388,7 +388,8 @@
       "granted": "Bei Annahme erhalten",
       "chain": "Questreihe",
       "requires": "Benötigt",
-      "unlocks": "Schaltet frei"
+      "unlocks": "Schaltet frei",
+      "showOnMap": "Auf der Karte zeigen"
     },
     "unlock": {
       "kindLabel": "Freischaltung",
@@ -1042,7 +1043,8 @@
     },
     "modes": {
       "loot": "Beute",
-      "label": "Modus"
+      "label": "Modus",
+      "quests": "Quests"
     },
     "sidebar": {
       "hide": "Seitenleiste ausblenden",
@@ -1137,6 +1139,32 @@
       "expectedOne": "~{expected} pro Runde erwartet, von {count} Spawner",
       "expected": "~{expected} pro Runde erwartet, von {count} Spawnern",
       "empty": "Keine ARC-Spawner bei dieser Bedingung."
+    },
+    "quests": {
+      "title": "Quest-Schritte",
+      "helpLabel": "Über Quest-Schritte",
+      "help": "Wähle Quests aus dem Quest-Tracker, um zu sehen, wo ihre Schritte liegen: Gebiete, die du erreichen musst, sind umrandet; Objekte zum Finden, Interagieren oder Fotografieren sind Markierungen in der Farbe der Quest, nummeriert wie die Schritte in den Quest-Details. Schritte, die an einem von vielen Orten erledigt werden können (jeder Android, jede Raider-Luke), sind kleine Punkte. Fahre über einen Schritt in der Liste, um seine Orte hervorzuheben; klicke ihn an, um dorthin zu springen. Markierst du hier einen Schritt als erledigt, wird der Quest-Tracker aktualisiert.",
+      "clear": "Leeren",
+      "clearTitle": "Alle Quests von der Karte entfernen",
+      "loading": "Quests werden geladen…",
+      "searchPlaceholder": "Quest oder Händler suchen…",
+      "openQuests": "Deine offenen Quests",
+      "stepsHere": "{count} Schritte auf dieser Karte",
+      "stepsHereOne": "{count} Schritt auf dieser Karte",
+      "otherMaps": "auf anderen Karten",
+      "linkedNote": "Dein Fortschritt stammt aus einem verknüpften Konto: Erledigte Schritte werden nur im Quest-Tracker angezeigt.",
+      "details": "Quest-Details",
+      "remove": "Von der Karte entfernen",
+      "showStep": "Auf der Karte zeigen",
+      "openTracker": "Im Quest-Tracker öffnen",
+      "stepDone": "Erledigt",
+      "stepNotNeeded": "Nicht mehr nötig (eine andere Route wurde gewählt)",
+      "anyOf": "An jedem von {count} Orten möglich",
+      "anyOfOne": "An {count} Ort möglich",
+      "oneOf": "An einem von {count} Orten",
+      "oneOfOne": "An {count} Ort",
+      "onlyUnder": "Nur bei {conditions}",
+      "notUnder": "Nicht bei {conditions}"
     },
     "canvas": {
       "label": "Karte von {map}. Die hier eingezeichneten Punkte, Gebiete und Gegner sind in der Seitenleiste aufgelistet."

@@ -10,9 +10,12 @@ import { FRIGATE_RGB, MapEngine, RECLAIMER_RGB, buildHeat, heightCode, type Padd
 import type { Explorer } from './model';
 import type { Prefs } from './state';
 import { useMapText } from './text';
+import { questLeaves } from './data/quests';
 
 export interface MapViewHandle {
   focusPoi: (i: number) => void;
+  /** Ring a quest step's places (side bar hover); null clears. */
+  highlightQuestStep: (step: { q: number; key: string } | null) => void;
 }
 
 export function MapView({ ex, handle, fitPadding }: { ex: Explorer; handle?: Ref<MapViewHandle>; fitPadding?: Padding }) {
@@ -47,7 +50,21 @@ export function MapView({ ex, handle, fitPadding }: { ex: Explorer; handle?: Ref
       if (map.layers && map.levels.pois[i] !== layer) ex.set({ layer: map.levels.pois[i] });
       engine?.focusUv(map.pois[i].outline.flat(), 0.02);
     },
+    highlightQuestStep: (step) => engine?.highlightQuestStep(step),
   }), [engine, map, layer, ex]);
+  // Quests mode: focus the step of the URL (a link from the Quest Tracker, a click in the side bar) once it is shown on
+  // this map, switching to its map layer when all its places are on the other one.
+  const focusedStep = useRef<string | null>(null);
+  const step = ex.state.mode === 'quests' ? ex.state.step : null;
+  const stepPins = step ? ex.questPins.filter((p) => p.keys.some((k) => `${ex.picked[p.q]?.slug}:${k}` === step)) : [];
+  useEffect(() => {
+    const id = step ? `${map.map}|${step}` : null;
+    if (!engine || !id || !stepPins.length || focusedStep.current === id) return;
+    focusedStep.current = id;
+    const layers = new Set(stepPins.map((p) => map.levels.quests[p.marker]?.[0] ?? 0));
+    if (map.layers && layer != null && !layers.has(layer) && layers.size === 1) ex.set({ layer: [...layers][0] });
+    engine.focusUv(engine.questStepPoints(stepPins[0].q, step!.slice(step!.indexOf(':') + 1)), 0.03);
+  });
 
   const layerToggle = (key: keyof Prefs, label: string, title?: string) => (
     <label title={title}><input type="checkbox" checked={prefs[key]} onChange={(e) => ex.setPrefs({ [key]: e.target.checked })} /> {label}</label>
@@ -220,6 +237,28 @@ function Tooltip({ ex, tip, pinned, engine, opened }: { ex: Explorer; tip: TipSt
       title = content.title;
       body = [...content.body, location.level ? tm('maps.guides.approxHeight', { height: heightLine(location.level) ?? t('maps.guides.heightUnknown') }) : null];
     }
+  } else if (target.t === 'quest') {
+    const pin = ex.questPins[target.i], picked = ex.picked[pin.q], mk = map.quests[pin.marker];
+    const leaves = picked.quest ? questLeaves(picked.quest).filter((l) => pin.keys.includes(l.key)) : [];
+    const count = picked.steps[pin.keys[0]]?.m.length ?? 1;
+    color = picked.color;
+    kindLabel = picked.quest?.name ?? picked.slug;
+    title = leaves.map((l) => `${picked.labels.get(l.key) ? `${picked.labels.get(l.key)}. ` : ''}${l.text ?? ''}`).join('\n');
+    for (const l of leaves) {
+      if (l.prompt) mechanics.push(`${l.prompt}${l.holdSeconds ? ` · ${tm('quests.steps.hold', { seconds: l.holdSeconds })}` : ''}`);
+    }
+    const status = (key: string) => picked.states.get(key)?.status;
+    const where = mk.title ? map.pois.find((p) => p.title === mk.title) : undefined;
+    body = [
+      pin.keys.every((k) => picked.done.has(k)) ? t('maps.quests.stepDone')
+        : pin.keys.every((k) => picked.done.has(k) || status(k) === 'closed' || status(k) === 'notNeeded') ? t('maps.quests.stepNotNeeded') : null,
+      mk.title ? (where ? names.poi(where) : mk.title) : null,
+      pin.any ? plural('maps.quests.anyOf', count) : count > 1 ? plural('maps.quests.oneOf', count) : null,
+      mk.p != null ? chance(mk.p) : null,
+      mk.only ? tm('maps.quests.onlyUnder', { conditions: tx.list(mk.only.map(names.condition)) }) : null,
+      mk.not ? tm('maps.quests.notUnder', { conditions: tx.list(mk.not.map(names.condition)) }) : null,
+      heightLine(map.levels.quests[pin.marker]),
+    ];
   } else if (target.t === 'frigate' || target.t === 'reclaimer' || target.t === 'cargo') {
     const f = map.frigate!, n = f.poses.length;
     kindLabel = names.of(ex.cond);

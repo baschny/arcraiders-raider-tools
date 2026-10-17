@@ -383,7 +383,8 @@
       "granted": "Otrzymywane przy przyjęciu",
       "chain": "Łańcuch zadań",
       "requires": "Wymaga",
-      "unlocks": "Odblokowuje"
+      "unlocks": "Odblokowuje",
+      "showOnMap": "Pokaż na mapie"
     },
     "unlock": {
       "kindLabel": "Odblokowanie",
@@ -1037,7 +1038,8 @@
     },
     "modes": {
       "loot": "Łupy",
-      "label": "Tryb"
+      "label": "Tryb",
+      "quests": "Zadania"
     },
     "sidebar": {
       "hide": "Ukryj pasek boczny",
@@ -1127,6 +1129,32 @@
       "expectedOne": "~{expected} oczekiwane na rajd, z {count} generatora",
       "expected": "~{expected} oczekiwane na rajd, z {count} generatorów",
       "empty": "Brak generatorów ARC w tym warunku."
+    },
+    "quests": {
+      "title": "Kroki zadań",
+      "helpLabel": "O krokach zadań",
+      "help": "Wybierz zadania ze Śledzenia zadań, aby zobaczyć, gdzie są ich kroki: obszary do osiągnięcia mają obrys, a obiekty do znalezienia, interakcji lub sfotografowania to znaczniki w kolorze zadania, ponumerowane jak kroki w szczegółach zadania. Kroki, które można wykonać w dowolnym z wielu miejsc (dowolny Android, dowolny Właz łupieżcy), są małymi kropkami. Najedź na krok na liście, aby podświetlić jego miejsca; kliknij, aby tam przejść. Oznaczenie tutaj kroku jako wykonanego aktualizuje Śledzenie zadań.",
+      "clear": "Wyczyść",
+      "clearTitle": "Usuń wszystkie zadania z mapy",
+      "loading": "Ładowanie zadań…",
+      "searchPlaceholder": "Znajdź zadanie lub handlarza…",
+      "openQuests": "Twoje otwarte zadania",
+      "stepsHere": "Kroki na tej mapie: {count}",
+      "stepsHereOne": "Kroki na tej mapie: {count}",
+      "otherMaps": "na innych mapach",
+      "linkedNote": "Twój postęp pochodzi z połączonego konta: wykonane kroki są widoczne tylko w Śledzeniu zadań.",
+      "details": "Szczegóły zadania",
+      "remove": "Usuń z mapy",
+      "showStep": "Pokaż na mapie",
+      "openTracker": "Otwórz w Śledzeniu zadań",
+      "stepDone": "Zrobione",
+      "stepNotNeeded": "Już niepotrzebne (wybrano inną trasę)",
+      "anyOf": "Dowolne z miejsc: {count}",
+      "anyOfOne": "Dowolne z miejsc: {count}",
+      "oneOf": "Jedno z miejsc: {count}",
+      "oneOfOne": "Jedno z miejsc: {count}",
+      "onlyUnder": "Tylko przy warunkach: {conditions}",
+      "notUnder": "Nie przy warunkach: {conditions}"
     },
     "canvas": {
       "label": "Mapa: {map}. Miejsca, obszary i wrogowie narysowani tutaj są wymienieni na pasku bocznym."

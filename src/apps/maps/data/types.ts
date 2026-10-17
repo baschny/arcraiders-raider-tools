@@ -68,18 +68,10 @@ export interface EnemyTable {
   byDifficulty?: Record<string, EnemyGroup[]>;
 }
 
-export interface QuestObjective {
-  text: string;
-  type: string | null;
-  amount?: number;
-}
-
-export interface Quest {
-  name: string;
-  owner: string;
-  cadence: string;
-  maps: string[];
-  objectives: QuestObjective[];
+/** A story quest (Quest Tracker quest, by its raider-tools slug) with the number of located steps per map slug. */
+export interface QuestMaps {
+  slug: string;
+  maps: Record<string, number>;
 }
 
 export interface MapIndex {
@@ -98,7 +90,8 @@ export interface MapIndex {
   enemyTables: Record<string, EnemyTable>;
   /** Container tag -> 'always' or the conditions (name -> excluded reason | null) whose data layer holds it. */
   containerConditions: Record<string, 'always' | Record<string, string | null>>;
-  quests: Quest[];
+  /** Story quests with located steps (see MapData.questSteps). */
+  quests: QuestMaps[];
   /** All conditions, offered and excluded (missing in older builds): look up the names used in `also` and item conditions. */
   conditions?: ConditionInfo[];
 }
@@ -187,8 +180,8 @@ export type EnemySpawner = [u: number, v: number, z: number, enemyClass: number,
 export type Level = [layer: number, height: number | null, covered: number];
 
 export interface QuestMarker {
-  /** Kind: quest area (outline), interactable or quest item spawn. */
-  k: 'area' | 'interact' | 'spawn';
+  /** Kind: quest area (outline), interactable, quest item spawn or photo target. */
+  k: 'area' | 'interact' | 'spawn' | 'photo';
   uv: UV;
   z: number;
   cls?: string;
@@ -201,6 +194,12 @@ export interface QuestMarker {
   not?: string[];
   /** Active in a round with this chance (missing: always). */
   p?: number;
+}
+
+/** The markers of a quest step; `any`: one of many candidates will do (any Android, any Raider Hatch). */
+export interface QuestStepMarkers {
+  m: number[];
+  any?: 1;
 }
 
 /** A puzzle sigil (S22): `key` -> recoloured image (white on transparent, tinted in the browser). */
@@ -334,6 +333,8 @@ export interface MapData {
   /** Activity group per enemy spawner. */
   enemyGroups: number[];
   quests: QuestMarker[];
+  /** Located steps of the story quests: quest slug -> step key ('0.2') -> its markers (indexes into `quests`). */
+  questSteps?: Record<string, Record<string, QuestStepMarkers>>;
   areas: MapArea[];
   layers: MapLayer[] | null;
   /** Level per socket, spawner, enemy spawner and quest marker; map layer per POI. */

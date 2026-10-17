@@ -7,15 +7,16 @@ decided or not built yet.
 ## Open points from the first version
 
 - Container type names are the raw tag parts (`Wrh`, `Rsr Machine M01`) and need a label map.
-- Quests mode (the embark-api map features page has one) needs more design work. The data is in the build: 264 of
-  276 quest objective assets are placed.
+- Quests mode covers the Quest Tracker's story quests. Trials (mastery) objectives and dailies are left out for now;
+  the build (embark-api `lib/derived/quest-steps.js`) would need them in `questSteps`. Steps on runtime-spawned
+  objects (ARC Probes, Couriers, supply drops, the Frigate's parts) have no place yet; the Frigate ones could point at
+  the Frigate poses.
 
 ## Integration with the other tools
 
 - Item detail (Looting Helper, Quartermaster, Craft Calculator): a "Where to find" link to
   `/maps?item=<slug>` (ticket MAP-12). Scoring already supports several items at once, so a Quartermaster shopping
   list could be one heat map.
-- Quest Tracker: quest objectives with locations link to the map (needs Quests mode).
 - Schedule: "Open map" from an event card with `cond=` set; the condition chips could mark the live ones.
 
 ## Hosting, if the data outgrows git
@@ -38,5 +39,5 @@ markers cannot handle 16k spots; MapLibre / deck.gl only if WebGL becomes necess
 
 ## Later phases
 
-- **Depth**: quests mode, enemies layer styling, a briefing tab, links from the other tools.
+- **Depth**: enemies layer styling, a briefing tab, links from the other tools.
 - **Personal / community**: saved state via `UserStateStore`, share links, optional crowdsourced finds.

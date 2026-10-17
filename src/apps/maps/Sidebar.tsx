@@ -8,6 +8,7 @@ import { GameIcon, Help, ItemSearch } from './components';
 import type { Count, Explorer } from './model';
 import { useMapText, type MapText } from './text';
 import { eligibleEntrances } from './data/puzzles';
+import { QuestPanel, type StepRef } from './QuestPanel';
 
 const AREA_ICON: Record<string, string> = {
   Electrical: 'loot-electrical', Industrial: 'loot-industrial', Commercial: 'loot-commercial', Residential: 'loot-household',
@@ -17,10 +18,10 @@ const AREA_ICON: Record<string, string> = {
 
 const ZERO: Count = { n: 0, hit: 0, exp: 0 };
 
-export function Sidebar({ ex, onFocusPoi }: { ex: Explorer; onFocusPoi: (i: number) => void }) {
+export function Sidebar({ ex, onFocusPoi, onHighlightStep }: { ex: Explorer; onFocusPoi: (i: number) => void; onHighlightStep: (step: StepRef | null) => void }) {
   return (
     <aside className="mx-side">
-      {ex.state.mode === 'loot' ? <LootPanel ex={ex} onFocusPoi={onFocusPoi} /> : <ArcPanel ex={ex} />}
+      {ex.state.mode === 'loot' ? <LootPanel ex={ex} onFocusPoi={onFocusPoi} /> : ex.state.mode === 'arc' ? <ArcPanel ex={ex} /> : <QuestPanel ex={ex} onHighlight={onHighlightStep} />}
     </aside>
   );
 }

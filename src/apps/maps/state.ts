@@ -9,7 +9,7 @@ import type { MapData, MapIndex, MapIndexEntry } from './data/types';
 
 const OBSOLETE_PUZZLE_FILTERS = new Set(['PowerSocket', 'FuelCell', 'PuzzleButton', 'PuzzleRelay', 'CardReader', 'TubeTerminal', 'PuzzleDoor', 'HotelKey', 'Puzzles']);
 
-export type Mode = 'loot' | 'arc';
+export type Mode = 'loot' | 'arc' | 'quests';
 
 export type { Patch as MapPatch };
 
@@ -28,6 +28,10 @@ export interface MapState {
   show: Set<string>;
   /** Enemy types filtered in ARC mode. */
   enemies: Set<number>;
+  /** Quests shown in Quests mode (slugs, in the order picked: it sets their colours). */
+  quests: string[];
+  /** Focused quest step, `<quest slug>:<step key>` (a link from the Quest Tracker). */
+  step: string | null;
 }
 
 type Patch = Partial<MapState> | ((s: MapState) => Partial<MapState>);
@@ -57,7 +61,7 @@ export const mapEntry = (index: MapIndex, slug: string): MapIndexEntry | undefin
  */
 export function parseState(params: URLSearchParams, map: string | null | undefined, defaultMap: string): MapState {
   return {
-    mode: params.get('mode') === 'arc' ? 'arc' : 'loot',
+    mode: params.get('mode') === 'arc' ? 'arc' : params.get('mode') === 'quests' ? 'quests' : 'loot',
     map: map || params.get('map') || defaultMap,
     cond: params.get('cond') || 'Default',
     setup: index(params.get('setup')) || null,
@@ -65,6 +69,8 @@ export function parseState(params: URLSearchParams, map: string | null | undefin
     item: params.get('item') || null,
     show: new Set((params.get('show') ?? '').split(',').filter((key) => key && !OBSOLETE_PUZZLE_FILTERS.has(key))),
     enemies: new Set((params.get('enemies') ?? '').split(',').map(index).filter((e) => e != null)),
+    quests: [...new Set((params.get('quests') ?? '').split(',').filter(Boolean))],
+    step: params.get('step') || null,
   };
 }
 
@@ -93,6 +99,9 @@ export function sanitizeState(state: MapState, index: MapIndex, map: MapData | n
   }
   if (state.item && items && !items[state.item]) fix.item = null;
   if ([...state.enemies].some((e) => !index.enemies[e])) fix.enemies = new Set([...state.enemies].filter((e) => index.enemies[e]));
+  const known = new Set(index.quests.map((q) => q.slug));
+  if (state.quests.some((q) => !known.has(q))) fix.quests = state.quests.filter((q) => known.has(q));
+  if (state.step && !(fix.quests ?? state.quests).includes(state.step.split(':')[0])) fix.step = null;
   return Object.keys(fix).length ? fix : null;
 }
 
@@ -106,6 +115,8 @@ export function serializeState(next: MapState): URLSearchParams {
   if (next.item) q.set('item', next.item);
   if (next.show.size) q.set('show', [...next.show].join(','));
   if (next.enemies.size) q.set('enemies', [...next.enemies].join(','));
+  if (next.quests.length) q.set('quests', next.quests.join(','));
+  if (next.step) q.set('step', next.step);
   return q;
 }
 

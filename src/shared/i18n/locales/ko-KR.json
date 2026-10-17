@@ -383,7 +383,8 @@
       "granted": "수락 시 지급",
       "chain": "퀘스트 흐름",
       "requires": "선행 조건",
-      "unlocks": "해금"
+      "unlocks": "해금",
+      "showOnMap": "맵에 표시"
     },
     "unlock": {
       "kindLabel": "잠금 해제",
@@ -1037,7 +1038,8 @@
     },
     "modes": {
       "loot": "노획",
-      "label": "모드"
+      "label": "모드",
+      "quests": "퀘스트"
     },
     "sidebar": {
       "hide": "사이드바 숨기기",
@@ -1127,6 +1129,32 @@
       "expectedOne": "라운드당 약 {expected}개 예상 (생성기 {count}개 중)",
       "expected": "라운드당 약 {expected}개 예상 (생성기 {count}개 중)",
       "empty": "이 환경에는 ARC 생성기가 없습니다."
+    },
+    "quests": {
+      "title": "퀘스트 단계",
+      "helpLabel": "퀘스트 단계 설명",
+      "help": "퀘스트 추적기에서 퀘스트를 선택하면 단계의 위치가 표시됩니다. 도달해야 하는 구역은 윤곽선으로, 찾거나 상호작용하거나 촬영할 대상은 퀘스트 색상의 핀으로 표시되며, 퀘스트 상세 정보의 단계와 같은 번호가 붙습니다. 여러 장소 중 아무 곳에서나 할 수 있는 단계(아무 안드로이드, 아무 레이더 해치)는 작은 점으로 표시됩니다. 목록의 단계에 마우스를 올리면 해당 장소가 강조되고, 클릭하면 그곳으로 이동합니다. 여기서 단계를 완료로 표시하면 퀘스트 추적기에도 반영됩니다.",
+      "clear": "지우기",
+      "clearTitle": "지도에서 모든 퀘스트 제거",
+      "loading": "퀘스트 불러오는 중…",
+      "searchPlaceholder": "퀘스트 또는 상인 찾기…",
+      "openQuests": "내 미완료 퀘스트",
+      "stepsHere": "이 지도에 {count}단계",
+      "stepsHereOne": "이 지도에 {count}단계",
+      "otherMaps": "다른 지도에 있음",
+      "linkedNote": "진행 상황은 연결된 계정에서 가져옵니다. 완료한 단계는 퀘스트 추적기에서만 표시됩니다.",
+      "details": "퀘스트 상세 정보",
+      "remove": "지도에서 제거",
+      "showStep": "지도에서 보기",
+      "openTracker": "퀘스트 추적기에서 열기",
+      "stepDone": "완료",
+      "stepNotNeeded": "더 이상 필요 없음 (다른 경로를 선택함)",
+      "anyOf": "{count}곳 중 아무 곳",
+      "anyOfOne": "{count}곳 중 아무 곳",
+      "oneOf": "{count}곳 중 한 곳",
+      "oneOfOne": "{count}곳 중 한 곳",
+      "onlyUnder": "{conditions}에서만",
+      "notUnder": "{conditions}에서는 없음"
     },
     "canvas": {
       "label": "{map} 지도. 여기 그려진 지점, 구역, 적은 사이드바에 나열되어 있습니다."

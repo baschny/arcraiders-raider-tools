@@ -407,3 +407,173 @@
   &.all &__icon .game-icon,
   button.on &__icon .game-icon { --gi-color: var(--kind); }
 }
+
+// ---------------------------------------------------------------- Quests mode (QuestPanel.tsx)
+.mx-qpicks {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  margin-top: 10px;
+
+  &__label { font-size: 11px; color: var(--mx-muted); margin-bottom: 3px; }
+
+  button {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 4px 6px;
+    border: 0;
+    border-radius: 6px;
+    background: none;
+    color: var(--mx-text);
+    font-size: 12.5px;
+    text-align: left;
+    cursor: pointer;
+
+    span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    small { flex-shrink: 0; color: var(--mx-muted); font-size: 11px; }
+    &:hover { background: rgba(255, 255, 255, .045); }
+    &.is-elsewhere { color: var(--mx-muted); }
+  }
+}
+
+.mx-quest {
+  --quest: var(--mx-accent);
+  border-left: 3px solid var(--quest);
+  padding-left: 9px;
+
+  &__head { display: flex; align-items: center; gap: 6px; }
+
+  &__swatch { width: 10px; height: 10px; border-radius: 50%; background: var(--quest); flex-shrink: 0; }
+
+  &__name {
+    flex: 1;
+    min-width: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--mx-text);
+    font: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: left;
+    cursor: pointer;
+
+    &:hover { color: var(--quest); }
+  }
+
+  &__btn {
+    display: inline-flex;
+    padding: 3px;
+    border: 0;
+    border-radius: 5px;
+    background: none;
+    color: var(--mx-muted);
+    cursor: pointer;
+
+    &:hover { color: var(--mx-text); background: var(--mx-panel-2); }
+  }
+
+  &__maps {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin: 6px 0 4px;
+
+    button {
+      padding: 1px 7px;
+      border: 1px solid var(--mx-line);
+      border-radius: 10px;
+      background: none;
+      color: var(--mx-muted);
+      font-size: 11px;
+      cursor: pointer;
+
+      small { color: var(--quest); font-weight: 700; }
+      &:hover { color: var(--mx-text); }
+      &.on { border-color: var(--quest); color: var(--mx-text); }
+    }
+  }
+
+  &__steps { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-direction: column; gap: 1px; }
+}
+
+.mx-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 3px 4px;
+  border-radius: 6px;
+  font-size: 12.5px;
+  line-height: 1.35;
+  color: var(--mx-muted);
+
+  &.is-here { color: var(--mx-text); }
+  &.is-here:hover, &.is-focused { background: rgba(255, 255, 255, .055); }
+  &--done, &--closed, &--notNeeded { opacity: .55; }
+  &--done .mx-step__text { text-decoration: line-through; text-decoration-color: rgba(255, 255, 255, .35); }
+
+  // The step number of the quest details, in a disc of the quest's colour (as on the map).
+  &__num {
+    flex-shrink: 0;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    border-radius: 9px;
+    background: var(--quest);
+    color: #0d0f11;
+    font-size: 10.5px;
+    font-weight: 800;
+    line-height: 18px;
+    text-align: center;
+
+    &.is-bullet { min-width: 8px; width: 8px; height: 8px; margin: 5px 5px 0; padding: 0; }
+  }
+  &:not(.is-here) &__num { background: var(--mx-line); color: var(--mx-muted); }
+  &:not(.is-here) &__num.is-bullet { background: var(--mx-line); }
+
+  &__check {
+    display: inline-flex;
+    flex-shrink: 0;
+    margin-top: 2px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--mx-muted);
+    cursor: pointer;
+
+    &[aria-checked='true'] { color: #7ed67f; }
+    &:hover { color: var(--mx-text); }
+  }
+
+  &__text {
+    flex: 1;
+    min-width: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+
+    em { color: var(--mx-muted); font-style: normal; }
+  }
+  button.mx-step__text { cursor: pointer; }
+
+  &__here { flex-shrink: 0; margin-top: 3px; color: var(--quest); }
+
+  &__map {
+    flex-shrink: 0;
+    padding: 0 6px;
+    border: 1px solid var(--mx-line);
+    border-radius: 9px;
+    background: none;
+    color: var(--mx-muted);
+    font-size: 10.5px;
+    line-height: 16px;
+    cursor: pointer;
+
+    &:hover { color: var(--mx-text); border-color: var(--quest); }
+  }
+}

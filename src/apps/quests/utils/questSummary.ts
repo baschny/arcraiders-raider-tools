@@ -141,3 +141,10 @@ export function openStepMapIds(quest: Pick<Quest, 'map' | 'objectiveTree'>, done
   }
   return maps.size ? [...maps] : quest.map;
 }
+
+/** Maps page of a quest in Quests mode, optionally focused on one step (prefix-free path, see LocaleRouter). */
+export function questMapUrl(questId: string, mapSlug: string, stepKey?: string): string {
+  const q = new URLSearchParams({ mode: 'quests', quests: questId });
+  if (stepKey) q.set('step', `${questId}:${stepKey}`);
+  return `/maps/${encodeURIComponent(mapSlug)}?${q.toString().replace(/%3A/g, ':')}`;
+}

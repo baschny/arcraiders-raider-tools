@@ -383,7 +383,8 @@
       "granted": "Consegnati all'accettazione",
       "chain": "Catena di missioni",
       "requires": "Richiede",
-      "unlocks": "Sblocca"
+      "unlocks": "Sblocca",
+      "showOnMap": "Mostra sulla mappa"
     },
     "unlock": {
       "kindLabel": "Sblocco",
@@ -1037,7 +1038,8 @@
     },
     "modes": {
       "loot": "Bottino",
-      "label": "Modalità"
+      "label": "Modalità",
+      "quests": "Missioni"
     },
     "sidebar": {
       "hide": "Nascondi la barra laterale",
@@ -1127,6 +1129,32 @@
       "expectedOne": "~{expected} previsti per turno, su {count} generatore",
       "expected": "~{expected} previsti per turno, su {count} generatori",
       "empty": "Nessun generatore ARC in questa condizione."
+    },
+    "quests": {
+      "title": "Passi delle missioni",
+      "helpLabel": "Info sui passi delle missioni",
+      "help": "Scegli delle missioni dal Tracker missioni per vedere dove si trovano i loro passi: le aree da raggiungere sono contornate, gli oggetti da trovare, con cui interagire o da fotografare sono marcatori nel colore della missione, numerati come i passi nei dettagli della missione. I passi che si possono fare in uno qualsiasi di molti luoghi (qualsiasi Androide, qualsiasi Botola del Raider) sono piccoli punti. Passa sopra un passo nell'elenco per evidenziarne i luoghi; cliccalo per andarci. Segnare qui un passo come fatto aggiorna il Tracker missioni.",
+      "clear": "Cancella",
+      "clearTitle": "Rimuovi tutte le missioni dalla mappa",
+      "loading": "Caricamento missioni…",
+      "searchPlaceholder": "Cerca una missione o un mercante…",
+      "openQuests": "Le tue missioni aperte",
+      "stepsHere": "{count} passi su questa mappa",
+      "stepsHereOne": "{count} passo su questa mappa",
+      "otherMaps": "su altre mappe",
+      "linkedNote": "I tuoi progressi provengono da un account collegato: i passi fatti sono mostrati solo nel Tracker missioni.",
+      "details": "Dettagli della missione",
+      "remove": "Rimuovi dalla mappa",
+      "showStep": "Mostra sulla mappa",
+      "openTracker": "Apri nel Tracker missioni",
+      "stepDone": "Fatto",
+      "stepNotNeeded": "Non più necessario (è stato scelto un altro percorso)",
+      "anyOf": "In uno qualsiasi di {count} luoghi",
+      "anyOfOne": "In {count} luogo",
+      "oneOf": "In uno di {count} luoghi",
+      "oneOfOne": "In {count} luogo",
+      "onlyUnder": "Solo durante {conditions}",
+      "notUnder": "Non durante {conditions}"
     },
     "canvas": {
       "label": "Mappa di {map}. I punti, le aree e i nemici disegnati qui sono elencati nella barra laterale."
