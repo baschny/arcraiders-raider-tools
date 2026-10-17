@@ -29,6 +29,8 @@ export interface Heat {
 }
 
 const MIN_S = 0.5, MAX_S = 40;
+/** Zoom factor of the + / − buttons. */
+export const ZOOM_STEP = 1.6;
 /** Distinct, high-contrast COLD hues for area-of-effect discs (the snowy terrain swallows pale colours); one per zone. */
 const AREA_HUES = [205, 235, 265, 295, 175, 190, 220, 250, 280];
 /** Touch: movement (px) below which a touch still counts as a tap; double tap window (ms) and distance (px). */
@@ -383,7 +385,10 @@ export class MapEngine {
     const [u0, v0, u1, v1] = bbox(pts);
     const { w, h } = this.size(), pad = { left: 16, right: 16, top: 16, bottom: 16, ...this.padding };
     const aw = Math.max(50, w - pad.left - pad.right), ah = Math.max(50, h - pad.top - pad.bottom);
-    const span = Math.max(u1 - u0, v1 - v0, minSpan) * 1.6;
+    // A single spot (no extent) stops one zoom step (ZOOM_STEP) further out, so its surroundings stay in view and the
+    // map texture is not magnified into a blur.
+    const point = u1 - u0 < 1e-6 && v1 - v0 < 1e-6;
+    const span = Math.max(u1 - u0, v1 - v0, minSpan) * 1.6 * (point ? ZOOM_STEP : 1);
     this.zoom.active = false;
     // Fit the span into the free area (beside the floating panels), centered there.
     this.view.s = Math.min(MAX_S, Math.max(MIN_S, Math.min(aw, ah) / this.base() / span));

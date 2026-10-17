@@ -6,7 +6,7 @@ import type { Level } from './data/types';
 import { eligibleEntrances, guideEntranceVisible, guidePins, selectedGuide, resolveSelection, targetCoordinates, type GuideSelection } from './data/puzzles';
 import { GuidePanel, guideActionTooltip } from './GuidePanel';
 import { radioKeys, radioTab } from './radio';
-import { FRIGATE_RGB, MapEngine, RECLAIMER_RGB, buildHeat, heightCode, type Padding, type Pin, type TipState } from './engine/MapEngine';
+import { FRIGATE_RGB, MapEngine, RECLAIMER_RGB, ZOOM_STEP, buildHeat, heightCode, type Padding, type Pin, type TipState } from './engine/MapEngine';
 import type { Explorer } from './model';
 import type { Prefs } from './state';
 import { useMapText } from './text';
@@ -76,8 +76,8 @@ export function MapView({ ex, handle, fitPadding }: { ex: Explorer; handle?: Ref
       <canvas ref={canvas} role="img" aria-label={tm('maps.canvas.label', { map: ex.names.of(map) })} />
       {tip && engine && (tip.target.t !== 'entrance' || (prefs.puzzleDoors && loot && eligibleEntrances(map, ex.cond).some(({ guide, entrance }, i) => i === tip.target.i && guideEntranceVisible(guide, entrance.id, selection)))) && (tip.target.t !== 'action' || (prefs.puzzleDoors && loot && !!guidePins(map, ex.cond, true, selection)[tip.target.i])) && <Tooltip ex={ex} tip={tip} pinned={engine.pinned()} engine={engine} opened={selection} />}
       <div className="mx-zoom">
-        <button onClick={() => engine?.zoomCenter(1.6)} title={t('maps.zoom.in')} aria-label={t('maps.zoom.in')}><Plus size={15} /></button>
-        <button onClick={() => engine?.zoomCenter(1 / 1.6)} title={t('maps.zoom.out')} aria-label={t('maps.zoom.out')}><Minus size={15} /></button>
+        <button onClick={() => engine?.zoomCenter(ZOOM_STEP)} title={t('maps.zoom.in')} aria-label={t('maps.zoom.in')}><Plus size={15} /></button>
+        <button onClick={() => engine?.zoomCenter(1 / ZOOM_STEP)} title={t('maps.zoom.out')} aria-label={t('maps.zoom.out')}><Minus size={15} /></button>
         <button onClick={() => engine?.fit()} title={t('maps.zoom.fit')} aria-label={t('maps.zoom.fit')}><Maximize size={14} /></button>
       </div>
       <div className={`mx-layers ${layersOpen ? 'open' : ''}`} onKeyDown={(e) => {
