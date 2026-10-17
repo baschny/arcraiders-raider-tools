@@ -109,6 +109,12 @@ $xp: #c5a3ff;
   gap: 3px;
 }
 
+// Blueprints: the blue grid with a blueprint-blue frame, as in the game.
+.quest-card-blueprints .item-icon__container,
+.quest-card-tile .item-icon--blueprint .item-icon__container {
+  border-color: $blueprint-border;
+}
+
 .quest-card-chip {
   display: inline-flex;
   align-items: center;

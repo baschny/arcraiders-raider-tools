@@ -75,7 +75,7 @@ export function XpValue({ xp, large = false }: { xp?: number; large?: boolean })
   );
 }
 
-export function BlueprintThumbs({ quest, size = 22 }: { quest: Quest; size?: number }) {
+export function BlueprintThumbs({ quest, size = 28 }: { quest: Quest; size?: number }) {
   const { tm } = useLocale();
   if (!quest.blueprintRewards.length) return null;
   return (
@@ -91,7 +91,8 @@ export function BlueprintThumbs({ quest, size = 22 }: { quest: Quest; size?: num
           icon={b.imageFilename}
           isBlueprint
           showName={false}
-          style={{ '--item-icon-size': `${size}px`, '--item-icon-padding': '1px' } as CSSProperties}
+          // Enough padding for the blue blueprint grid to show around the paper icon.
+          style={{ '--item-icon-size': `${size}px`, '--item-icon-padding': `${Math.round(size * 0.15)}px` } as CSSProperties}
         />
       ))}
     </span>
@@ -124,7 +125,7 @@ export function ItemTile({ item, size = 40, note, isBlueprint = false }: { item:
         rarity={item.rarity}
         isBlueprint={isBlueprint}
         showName={false}
-        style={{ '--item-icon-size': `${size}px`, '--item-icon-padding': '3px' } as CSSProperties}
+        style={{ '--item-icon-size': `${size}px`, '--item-icon-padding': isBlueprint ? `${Math.round(size * 0.15)}px` : '3px' } as CSSProperties}
       />
       <span className="quest-card-tile__label">
         <span className="quest-card-tile__name">
