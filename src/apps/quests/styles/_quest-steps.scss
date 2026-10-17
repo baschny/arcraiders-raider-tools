@@ -109,13 +109,12 @@ $steps-choice: #ffb74d;
   gap: 4px;
   margin: 3px 0 0;
   padding: 1px 6px;
-  border: 1px solid $border-light;
+  border: 1px solid $border-default;
   border-bottom-width: 2px;
   border-radius: 4px;
-  background: $bg-tertiary;
   font-size: 11.5px;
-  font-weight: 600;
-  color: $text-primary;
+  font-weight: 700;
+  color: $text-secondary;
   width: fit-content;
 }
 // Own line under the step text.
@@ -148,11 +147,8 @@ $steps-choice: #ffb74d;
   display: flex;
   flex-wrap: wrap;
   gap: 6px 14px;
-  margin: 4px 0 2px 40px;
-  padding: 6px 8px;
-  border: 1px solid $border-default;
-  border-radius: 6px;
-  background: rgba(0, 0, 0, 0.18);
+  // Plain row under the step text, aligned with it.
+  margin: 2px 0 2px 44px;
 }
 .quest-steps__bring-item { display: flex; align-items: center; gap: 8px; }
 .quest-steps__bring-label { display: flex; flex-direction: column; line-height: 1.25; }
@@ -216,12 +212,11 @@ $steps-choice: #ffb74d;
   padding: 8px 10px;
   border: 1px solid $border-default;
   border-radius: 6px;
-  background: rgba(0, 0, 0, 0.15);
 
   &--round { border-color: rgba($steps-round, 0.55); }
   &--optional { border-style: dashed; border-color: rgba($steps-optional, 0.6); }
   &--done { border-color: rgba($steps-done, 0.5); }
-  &--bare { padding: 0; border: none; background: none; }
+  &--bare, &--root { padding: 0; border: none; }
 }
 .quest-steps__group-header {
   display: flex;

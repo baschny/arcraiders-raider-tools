@@ -296,10 +296,11 @@ function StepsBody({ node, isRoot = false }: { node: ObjectiveView; isRoot?: boo
       </ol>
     );
   }
-  return isRoot ? <Group node={node} /> : <GroupBody node={node} />;
+  return isRoot ? <Group node={node} isRoot /> : <GroupBody node={node} />;
 }
 
-function Group({ node }: { node: ObjectiveView }) {
+/** A group box. The root group (the whole quest) gets no frame unless it is one-round or optional. */
+function Group({ node, isRoot = false }: { node: ObjectiveView; isRoot?: boolean }) {
   const { states, done, t } = useSteps();
   const { status } = stateOf(node.key, states);
   const header = node.kind !== 'sequence' || node.text || node.oneRound || node.optional;
@@ -312,6 +313,7 @@ function Group({ node }: { node: ObjectiveView }) {
         node.oneRound ? 'quest-steps__group--round' : '',
         node.optional ? 'quest-steps__group--optional' : '',
         isBareSequence(node) ? 'quest-steps__group--bare' : '',
+        isRoot && !node.oneRound && !node.optional ? 'quest-steps__group--root' : '',
       ]
         .filter(Boolean)
         .join(' ')}
@@ -320,7 +322,7 @@ function Group({ node }: { node: ObjectiveView }) {
         <div className="quest-steps__group-header">
           {node.text && <span className="quest-steps__group-title">{node.text}</span>}
           <span className="quest-steps__kind">{kindLabel(node, t)}</span>
-          {node.oneRound && <OneRoundBadge />}
+          {node.oneRound && !isRoot && <OneRoundBadge />}
           {node.optional && <OptionalChip />}
           <HiddenChip node={node} />
           <span className="quest-steps__counter">{groupCounter(node, done)}</span>
