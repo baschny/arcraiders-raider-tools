@@ -333,6 +333,7 @@ export async function loadQuestData(
       requiredItems: requiredItems.map((ri) => ({ itemId: ri.id, quantity: ri.quantity })),
       previousQuestIds,
       nextQuestIds,
+      ...(q.hidden && { hidden: true }),
     });
 
     fullQuests.push({

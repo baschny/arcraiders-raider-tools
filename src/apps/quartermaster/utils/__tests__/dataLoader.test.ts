@@ -8,6 +8,7 @@ import {
 import { resetGameDataCache } from '../../../../shared/gamedata/loader';
 import { resetItemCatalog } from '../../../../shared/gamedata/catalog';
 import { generateHideoutLists } from '../hideoutLists';
+import { generateQuestLists } from '../questLists';
 import { BENCH_ORDER, type ItemsMap } from '../../types/item';
 import type { HideoutModuleDefinition } from '../../types/hideout';
 import type { ProjectDefinition } from '../../types/project';
@@ -121,6 +122,16 @@ describe('quartermaster v2 data loader', () => {
     const q = quests.find((x) => x.id === 'belly_of_the_beast')!;
     expect(q.requiredItems).toContainEqual({ itemId: 'wires', quantity: 1 });
     expect(q.previousQuestIds.length + q.nextQuestIds.length).toBeGreaterThan(0);
+  });
+
+  it('keeps hidden unlock quests in the chain but generates no lists for them', () => {
+    const unlock = quests.find((x) => x.id === 'blue_gate_content_unlock')!;
+    expect(unlock.hidden).toBe(true);
+    expect(unlock.requiredItems).toContainEqual({ itemId: 'rounds_played', quantity: 18 });
+    const lists = generateQuestLists(quests, new Set(), items);
+    expect(lists.some((l) => l.id === 'quest_belly_of_the_beast')).toBe(true);
+    expect(lists.some((l) => l.id === 'quest_blue_gate_content_unlock')).toBe(false);
+    expect(lists.some((l) => l.items.some((i) => i.itemId === 'rounds_played'))).toBe(false);
   });
 
   // Realistic persisted quartermaster state written by the 1.x app (ids are plain slugs).

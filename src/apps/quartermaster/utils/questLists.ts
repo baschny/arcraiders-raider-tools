@@ -21,7 +21,7 @@ export function generateQuestLists(
 
   const lists: StoredList[] = [];
   for (const q of questDefs) {
-    if (completedQuestIds.has(q.id)) continue;
+    if (completedQuestIds.has(q.id) || q.hidden) continue;
 
     const filteredItems = q.requiredItems
       .filter(ri => {

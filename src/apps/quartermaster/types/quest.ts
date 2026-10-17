@@ -9,4 +9,6 @@ export interface QuestDefinition {
   requiredItems: QuestRequiredItem[];
   previousQuestIds: string[];
   nextQuestIds: string[];
+  /** Hidden content-unlock quest (never shown in the game): kept for the quest chain, never tracked. */
+  hidden?: boolean;
 }
