@@ -17,10 +17,6 @@ $new-quest-accent: #7fd8ff;
   transition: $transition-default;
   cursor: pointer;
 
-  &.read-only {
-    cursor: default;
-  }
-
   &--available,
   &--active {
     border-color: $status-available;
@@ -102,6 +98,31 @@ $new-quest-accent: #7fd8ff;
   align-items: center;
   gap: 6px;
   margin-left: auto;
+}
+
+// Completion toggle: an empty ring, a green check when done.
+.quest-node__toggle {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border: 2px solid $border-lighter;
+  border-radius: 50%;
+  background: transparent;
+  color: transparent;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $status-completed;
+    color: rgba($status-completed, 0.6);
+  }
+
+  &.is-done {
+    border-color: $status-completed;
+    background: $status-completed;
+    color: #fff;
+  }
 }
 
 .quest-node__side {

@@ -111,24 +111,6 @@ export function StepBar({ done, total }: { done: number; total: number }) {
   );
 }
 
-/** Small item icon with its amount in the corner. */
-export function MiniItem({ item, title }: { item: QuestItemEntry; title?: string }) {
-  const { formatNumber } = useLocale();
-  return (
-    <span className="quest-card-mini" title={title ?? `${formatNumber(item.quantity)}× ${item.name}`}>
-      <ItemIcon
-        itemId={item.id}
-        name={item.name}
-        icon={item.imageFilename}
-        rarity={item.rarity}
-        showName={false}
-        style={{ '--item-icon-size': '32px', '--item-icon-padding': '2px' } as CSSProperties}
-      />
-      {item.quantity > 1 && <span className="quest-card-mini__qty">{formatNumber(item.quantity)}</span>}
-    </span>
-  );
-}
-
 /** Item icon with amount, name and an optional note below the name. */
 export function ItemTile({ item, size = 40, note, isBlueprint = false }: { item: QuestItemEntry; size?: number; note?: ReactNode; isBlueprint?: boolean }) {
   const { formatNumber } = useLocale();
