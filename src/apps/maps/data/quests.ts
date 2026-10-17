@@ -3,7 +3,15 @@
 // quest (the same objective tree and step keys, numbered like the quest details).
 import type { ObjectiveView, Quest } from '../../quests/types/quest';
 import { evaluateObjectives, hasSharedTail, objectiveLeaves, stepLabels, type StepStatus } from '../../quests/utils/objectiveTree';
+import { ringsArea } from '../geometry';
 import type { MapCondition, MapData, MapIndex, QuestStepMarkers } from './types';
+
+/**
+ * Quest areas larger than this share of the map texture (UV²) are the whole map or most of it (the map's own volume,
+ * "Buried City"): the step can be done anywhere there, so it gets no outline. Unnamed volumes (no POI: the ARC
+ * Frigate's flight zones, cut into quarters on some maps) count from UNNAMED_WIDE on.
+ */
+export const MAP_WIDE = 0.25, UNNAMED_WIDE = 0.05;
 
 /** One colour per picked quest, in the order picked (distinct on dark and snowy maps). */
 export const QUEST_COLORS = ['#f5b83d', '#4fc3f7', '#ef6f9c', '#7ed67f', '#b693f5', '#ff8a4c', '#4ad6c4', '#e3e36a'];
@@ -19,8 +27,10 @@ export interface PickedQuest {
   done: ReadonlySet<string>;
   /** Step status per node key (done, active, locked, closed: another route was taken, notNeeded). */
   states: Map<string, { status: StepStatus }>;
-  /** Located steps on the open map: step key -> markers. */
+  /** Located steps on the open map: step key -> markers (without map-wide areas). */
   steps: Record<string, QuestStepMarkers>;
+  /** Steps that can be done anywhere on the open map (their only places are map-wide areas). */
+  anywhere: ReadonlySet<string>;
 }
 
 /**
@@ -51,11 +61,25 @@ export function markerUnderCondition(map: MapData, i: number, cond: MapCondition
   return true;
 }
 
+/** A quest area covering most of the map (MAP_WIDE, UNNAMED_WIDE). */
+export function isMapWide(map: MapData, i: number): boolean {
+  const mk = map.quests[i];
+  if (mk?.k !== 'area' || !mk.polygons?.length) return false;
+  return ringsArea(mk.polygons) > (mk.title ? MAP_WIDE : UNNAMED_WIDE);
+}
+
 export function pickQuests(map: MapData, slugs: string[], byId: ReadonlyMap<string, Quest>, doneOf: (q: Quest) => ReadonlySet<string>): PickedQuest[] {
   return slugs.map((slug, i) => {
     const quest = byId.get(slug) ?? null;
     const tree = quest?.objectiveTree ?? null;
     const done = quest ? doneOf(quest) : new Set<string>();
+    const steps: Record<string, QuestStepMarkers> = {};
+    const anywhere = new Set<string>();
+    for (const [key, entry] of Object.entries(map.questSteps?.[slug] ?? {})) {
+      const m = entry.m.filter((i) => !isMapWide(map, i));
+      if (m.length) steps[key] = { ...entry, m };
+      else anywhere.add(key);
+    }
     return {
       slug,
       quest,
@@ -63,7 +87,8 @@ export function pickQuests(map: MapData, slugs: string[], byId: ReadonlyMap<stri
       labels: tree ? stepLabels(tree) : new Map(),
       done,
       states: tree ? evaluateObjectives(tree, done) : new Map(),
-      steps: map.questSteps?.[slug] ?? {},
+      steps,
+      anywhere,
     };
   });
 }

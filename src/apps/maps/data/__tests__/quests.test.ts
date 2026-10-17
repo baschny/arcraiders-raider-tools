@@ -62,3 +62,18 @@ describe('questMapCounts', () => {
     expect([...questMapCounts(index, ['a', 'b'])]).toEqual([['x', 5], ['y', 1]]);
   });
 });
+
+describe('map-wide areas', () => {
+  it('turns steps whose only places cover most of the map into "anywhere on this map"', () => {
+    const wide: MapData = {
+      ...map,
+      quests: [...map.quests, marker('area', { polygons: [[[0, 0], [1, 0], [1, 1], [0, 1]]] })],
+      levels: { ...map.levels, quests: [...map.levels.quests, [0, null, 0]] },
+      questSteps: { q: { '0.0': { m: [4] }, '0.1': { m: [1, 4] } } },
+    };
+    const [p] = pickQuests(wide, ['q'], new Map([['q', quest('q', tree)]]), () => new Set());
+    expect([...p.anywhere]).toEqual(['0.0']);
+    expect(p.steps).toEqual({ '0.1': { m: [1] } });
+    expect(questPins(wide, [p], normal, () => true).map((pin) => pin.marker)).toEqual([1]);
+  });
+});

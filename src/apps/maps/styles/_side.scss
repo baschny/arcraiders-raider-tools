@@ -409,77 +409,150 @@
 }
 
 // ---------------------------------------------------------------- Quests mode (QuestPanel.tsx)
-.mx-qpicks {
+// Which quests the list shows: the quests of the open map, or the user's open quests.
+.mx-qlist-switch {
   display: flex;
-  flex-direction: column;
-  gap: 1px;
-  margin-top: 10px;
-
-  &__label { font-size: 11px; color: var(--mx-muted); margin-bottom: 3px; }
+  gap: 2px;
+  margin-top: 8px;
+  padding: 2px;
+  border-radius: 7px;
+  background: var(--mx-panel-2);
 
   button {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 8px;
-    padding: 4px 6px;
+    flex: 1;
+    padding: 5px 8px;
     border: 0;
-    border-radius: 6px;
+    border-radius: 5px;
     background: none;
-    color: var(--mx-text);
-    font-size: 12.5px;
-    text-align: left;
+    color: var(--mx-muted);
+    font-size: 12px;
+    font-weight: 600;
     cursor: pointer;
 
-    span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    small { flex-shrink: 0; color: var(--mx-muted); font-size: 11px; }
-    &:hover { background: rgba(255, 255, 255, .045); }
-    &.is-elsewhere { color: var(--mx-muted); }
+    &:hover { color: var(--mx-text); }
+    &.on { background: var(--mx-line); color: var(--mx-text); }
   }
 }
 
-.mx-quest {
-  --quest: var(--mx-accent);
-  border-left: 3px solid var(--quest);
-  padding-left: 9px;
+.mx-qlist {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 
-  &__head { display: flex; align-items: center; gap: 6px; }
+  &__label { font-size: 11px; color: var(--mx-muted); margin: 0 0 4px 2px; }
+}
 
-  &__swatch { width: 10px; height: 10px; border-radius: 50%; background: var(--quest); flex-shrink: 0; }
+// A quest of the list; shown on the map: a bar in its colour, its steps expand right below the name.
+.mx-qrow {
+  --quest: var(--mx-line);
+  border-radius: 7px;
+  border-left: 3px solid transparent;
+  transition: background .15s, border-color .15s;
 
-  &__name {
+  &.is-on { border-left-color: var(--quest); background: rgba(255, 255, 255, .03); }
+  &.is-elsewhere:not(.is-on) .mx-qrow__name { color: var(--mx-muted); }
+  &.is-done:not(.is-on) { opacity: .6; }
+
+  &__head {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 4px 6px 4px 5px;
+    border-radius: 7px;
+    &:hover { background: rgba(255, 255, 255, .045); }
+  }
+
+  // The checkbox in the quest's colour (as on the map).
+  &__check {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    padding: 0;
+    border: 1.5px solid #5d646c;
+    border-radius: 4px;
+    background: none;
+    color: #0d0f11;
+    cursor: pointer;
+
+    &:hover { border-color: #8d939a; }
+    .is-on & { background: var(--quest); border-color: var(--quest); }
+  }
+
+  &__title {
     flex: 1;
     min-width: 0;
+    display: flex;
+    flex-direction: column;
     padding: 0;
     border: 0;
     background: none;
     color: var(--mx-text);
     font: inherit;
-    font-size: 14px;
-    font-weight: 700;
     text-align: left;
     cursor: pointer;
-
-    &:hover { color: var(--quest); }
   }
 
-  &__btn {
-    display: inline-flex;
-    padding: 3px;
-    border: 0;
-    border-radius: 5px;
-    background: none;
+  &__name { font-size: 13px; font-weight: 600; line-height: 1.3; }
+  .is-on &__name { font-weight: 700; }
+
+  &__sub {
+    display: flex;
+    align-items: center;
+    gap: 4px;
     color: var(--mx-muted);
-    cursor: pointer;
+    font-size: 11px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
-    &:hover { color: var(--mx-text); background: var(--mx-panel-2); }
+    svg { flex-shrink: 0; color: #7ed67f; }
   }
 
+  &__chevron {
+    flex-shrink: 0;
+    color: var(--mx-muted);
+    transition: transform .2s ease;
+    pointer-events: none;
+  }
+  &.is-open &__chevron { transform: rotate(180deg); color: var(--quest); }
+
+  // Expands from 0 to the content's height (grid row 0fr -> 1fr).
+  &__body {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows .22s ease;
+  }
+  &.is-open &__body { grid-template-rows: 1fr; }
+  &__inner {
+    min-height: 0;
+    overflow: hidden;
+    padding: 0 6px 0 28px;
+    opacity: 0;
+    transition: opacity .18s ease, padding .22s ease;
+  }
+  &.is-open &__inner { padding-bottom: 8px; opacity: 1; }
+
+  &__details {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    margin-left: auto;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__body, &__inner, &__chevron { transition: none; }
+  }
+}
+
+.mx-quest {
   &__maps {
     display: flex;
     flex-wrap: wrap;
     gap: 4px;
-    margin: 6px 0 4px;
+    margin: 2px 0 4px;
 
     button {
       padding: 1px 7px;
@@ -562,6 +635,7 @@
   button.mx-step__text { cursor: pointer; }
 
   &__here { flex-shrink: 0; margin-top: 3px; color: var(--quest); }
+  &__anywhere { flex-shrink: 0; color: var(--mx-muted); font-size: 10.5px; line-height: 18px; white-space: nowrap; }
 
   &__map {
     flex-shrink: 0;

@@ -24,19 +24,25 @@ The Maps tool (`src/apps/maps/`) has two routes, switched by the tab bar in its 
   with one color per enemy, patrol paths, each spawner drawn as the game ping icon of its most probable enemy,
   large and without a shape around it (a ↻ badge: patrols).
 - **Quests mode**: the story quests of the Quest Tracker (data: `questSteps` of the map files, see below). The left bar
-  searches quests (name or trader) and offers the tracker's open quests (available or started, manual progress) as
-  quick picks, those with steps on the open map first. Each picked quest gets a colour (`QUEST_COLORS`, in the order
-  picked) and lists its steps numbered like the quest details (`stepLabels` in `quests/utils/objectiveTree.ts`); of a
-  route choice only the routes on the open map are listed. On the map, an area step ("reach …") is the area's outline
-  filled in the quest's colour, an object step (interact, photograph, a quest item) a disc with its step number; steps
-  at the same object share one disc ("2.1–2.4"), and steps that any of many places satisfy (any Android, any Raider
-  Hatch; more than 30 candidates) are small dots. Done steps, steps of a route not taken, and places on the other map
-  layer or absent under the open condition are faded. Hovering a step in the list rings its places; clicking it (or a
-  step's map chip in the details dialog) focuses them, switching map and layer when needed (`step` param). The map bar
-  counts the picked quests' located steps per map. The quest details dialog of the tracker opens from the list, with
-  the same step tracking (`useManualQuestProgress`: questsStore, manual mode; with a linked account the map shows no
-  progress). Not located: steps whose objects are spawned at runtime (ARC Probes and Couriers, supply drops, the
-  Deforester, the Frigate's parts) and steps without a place (deliver, obtain, kill anywhere).
+  lists quests: either the quests with steps **on this map** or **your open quests** (available or started, from the
+  tracker's progress), switched above the list; the choice is remembered per browser (`raider-tools:maps-quest-list`),
+  and visitors without any progress start on "on this map". The search box filters all quests with places (name or
+  trader). Each quest is a row: its check shows it on the map in its own colour (`QUEST_COLORS`, in the order shown),
+  and its steps open right below its name (clicking the name toggles them, with a short expand animation), numbered
+  like the quest details (`stepLabels` in `quests/utils/objectiveTree.ts`); of a route choice only the routes on the
+  open map are listed. Shown quests the current list does not contain are listed above it ("Shown on the map"). On
+  the map, an area step ("reach …") is the area's outline filled in the quest's colour, an object step (interact,
+  photograph, a quest item) a disc with its step number; steps at the same object share one disc ("2.1–2.4"), and
+  steps that any of many places satisfy (any Android, any Raider Hatch; more than 30 candidates) are small dots.
+  Areas covering most of the map (over a quarter of the map texture, or unnamed volumes over 5 %: the map's own
+  volume, the ARC Frigate's flight zones) are not drawn; their steps say "anywhere on this map" (`isMapWide` in
+  `data/quests.ts`). Done steps, steps of a route not taken, and places on the other map layer or absent under the
+  open condition are faded. Hovering a step in the list rings its places; clicking it (or a step's map chip in the
+  details dialog) focuses them, switching map and layer when needed (`step` param). The map bar counts the shown
+  quests' located steps per map. The quest details dialog of the tracker opens from the row, with the same step
+  tracking (`useQuestProgress`: the manual progress in questsStore; with a linked account the snapshot the tracker
+  last synced, read-only). Not located: steps whose objects are spawned at runtime (ARC Probes and Couriers, supply
+  drops, the Deforester, the Frigate's parts) and steps without a place (deliver, obtain, kill anywhere).
 - **Quest Tracker → map**: the details dialog has a map button (the map where the quest continues) and a pin link on
   every step with a map, both opening Quests mode (`questMapUrl` in `quests/utils/questSummary.ts`).
 - **ARC Frigate** (under the ARC Frigate condition, both modes; Layers menu toggle, pref `frigate`): every place the

@@ -12,7 +12,7 @@ import type { Frigate, LootItem, LootSetup, MapCondition, MapData, MapIndex } fr
 import { useAllMaps } from './data/useMapData';
 import { condIndex, defaultLayer, useLootableItems, type MapPatch, type MapState, type Prefs } from './state';
 import type { Quest } from '../quests/types/quest';
-import { useManualQuestProgress, type ManualQuestProgress } from '../quests/utils/useManualQuestProgress';
+import { useQuestProgress, type QuestProgress } from '../quests/utils/useQuestProgress';
 import { pickQuests, questMapCounts, questPins, type PickedQuest, type QuestPin } from './data/quests';
 
 export interface Count {
@@ -86,8 +86,8 @@ export interface Explorer {
   questPins: QuestPin[];
   /** Located steps of the picked quests per map slug (map bar), null without picks. */
   questCounts: Map<string, number> | null;
-  /** The tracker's manual progress (read-only when the tracker uses a linked account). */
-  progress: ManualQuestProgress;
+  /** The tracker's progress (manual, or the last synced snapshot of a linked account: read-only). */
+  progress: QuestProgress;
 }
 
 export function useExplorer(index: MapIndex, map: MapData, state: MapState, set: Explorer['set'], prefs: Prefs, setPrefs: Explorer['setPrefs'], items: ItemsMap | null,
@@ -197,7 +197,7 @@ export function useExplorer(index: MapIndex, map: MapData, state: MapState, set:
 
   const note = useMemo(() => (lootItem ? itemNote(index, lootItem) : null), [index, lootItem]);
 
-  const progress = useManualQuestProgress();
+  const progress = useQuestProgress(questCatalog);
   const questById = useMemo(() => new Map((questCatalog ?? []).map((q) => [q.id, q])), [questCatalog]);
   const quests = state.mode === 'quests' ? state.quests : [];
   const picked = pickQuests(map, quests, questById, progress.doneOf);
