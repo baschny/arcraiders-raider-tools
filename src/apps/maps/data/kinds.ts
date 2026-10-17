@@ -127,6 +127,9 @@ export const KINDS: SpotKind[] = [
   k('ArcSpawns', 'RocketeerHusk', '#7584ed', 'arc-wreckage', { rx: /ARCHusk_Medium/ }),
   k('ArcSpawns', 'RocketeerHuskStunning', '#8492eb', 'arc-wreckage', { rx: /StunningHuskMedium/ }),
   k('ArcSpawns', 'DeforesterHusk', '#f98f39', 'arc-wreckage', { major: true, rx: /DeforesterHusk/ }),
+  // Baron husks: fixed level actors (BP_Husk_BaronHead_WA; Spaceport, Dam, Blue Gate), breached for loot
+  // (embark-api docs/Map-Corrections.md C11).
+  k('ArcSpawns', 'BaronHusk', '#f56b3d', 'arc-wreckage', { major: true, rx: /Husk_BaronHead/ }),
   k('ArcSpawns', 'Probes', '#47c9eb', 'arc-probe', { major: true, rx: /ProbeCrashed/ }),
   // Potential ARC Probe landing sites (markers tagged ARCCargoDrop / ArcRaid; docs/Map-Corrections.md C02).
   // Cadence from DA_ARCProbeDrop_Normal/_HighTier (Min/MaxTimeBetweenDrops 190–240 s); unbreached probes depart,
