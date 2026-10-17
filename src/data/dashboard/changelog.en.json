@@ -2,6 +2,41 @@
   "locale": "en",
   "entries": [
     {
+      "date": "2026-10-17",
+      "apps": ["quests", "maps"],
+      "title": "Quest Tracker overhaul: every quest step in detail, following the same logic as in the game, and linked to the maps. The new Quests mode on the Maps shows where each step of your open quests takes place.",
+      "highlights": [
+        "Detailed quest steps",
+        "Quest logic like in the game",
+        "Quest steps on the maps"
+      ]
+    },
+    {
+      "date": "2026-10-17",
+      "apps": ["maps"],
+      "title": "Pendola Pass loot setups: pick one of the four setups and see which areas get abundant loot. Baron husks added to the maps."
+    },
+    {
+      "date": "2026-10-16",
+      "apps": ["maps"],
+      "title": "New map look with in-game style markers. The ARC Frigate condition now shows the Frigate's positions, the Reclaimer landing ring and the cargo drop sites."
+    },
+    {
+      "date": "2026-10-15",
+      "apps": ["updates"],
+      "title": "New page: Game updates. See what changed with every game update, including changes that are not in the patch notes."
+    },
+    {
+      "date": "2026-10-12",
+      "apps": ["maps"],
+      "title": "Puzzle guides on the Maps: step-by-step instructions for every puzzle door, shown right on the map."
+    },
+    {
+      "date": "2026-10-11",
+      "apps": ["all"],
+      "title": "Every language and every map now has its own link, so shared links open in the right language. New page: compare all map sizes side by side."
+    },
+    {
       "date": "2026-10-09",
       "apps": ["whats-new"],
       "title": "New page: New items in Frozen Trail. For everyone coming from 1.x: what each new item is for, which old items got new uses, how they feed the Outpost, research and Amplified weapons, and what changed in recipes, recycling, traders and the stash."
