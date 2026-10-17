@@ -48,6 +48,7 @@ export function QuestSteps({
   completed = false,
   done: doneKeys,
   onToggleStep,
+  questMapIds = [],
 }: {
   tree: ObjectiveView;
   leafKeys: string[];
@@ -56,11 +57,13 @@ export function QuestSteps({
   /** Done leaf keys; overrides `progress` and `completed`. */
   done?: ReadonlySet<string>;
   onToggleStep?: (key: string) => void;
+  /** The quest's maps: a step on the quest's only map shows no map chip (it would repeat it). */
+  questMapIds?: string[];
 }) {
   const { t } = useLocale();
   const byKey = progressByKey(leafKeys, progress);
   const done = doneKeys ?? new Set(completed ? leafKeys : leafKeys.filter((key) => byKey.get(key)?.completed));
-  const ctx: StepsContext = { states: evaluateObjectives(tree, done), done, progress: byKey, t, onToggleStep };
+  const ctx: StepsContext = { states: evaluateObjectives(tree, done), done, progress: byKey, t, onToggleStep, questMapIds };
   return (
     <Ctx.Provider value={ctx}>
       <div className="quest-steps">
@@ -86,6 +89,7 @@ interface StepsContext {
   progress: Map<string, LinkedQuestObjectiveProgress>;
   t: (key: string) => string;
   onToggleStep?: (key: string) => void;
+  questMapIds: string[];
 }
 
 const Ctx = createContext<StepsContext | null>(null);
@@ -148,6 +152,12 @@ function groupCounter(node: ObjectiveView, done: ReadonlySet<string>): string {
   return `${required.filter((c) => isObjectiveSatisfied(c, done)).length}/${required.length}`;
 }
 
+/** Map chips of a step, unless the quest is on that single map anyway. */
+function showStepMaps(node: ObjectiveView, questMapIds: string[]): boolean {
+  if (!node.mapIds?.length) return false;
+  return !(questMapIds.length === 1 && node.mapIds.every((id) => id === questMapIds[0]));
+}
+
 /** A sequence drawn without frame or header: just its numbered steps. */
 function isBareSequence(node: ObjectiveView): boolean {
   return node.kind === 'sequence' && !node.text && !node.oneRound && !node.optional;
@@ -172,7 +182,7 @@ function OptionalChip() {
 // atomic step
 
 function Leaf({ node, compact = false }: { node: ObjectiveView; compact?: boolean }) {
-  const { states, progress, t, onToggleStep } = useSteps();
+  const { states, progress, t, onToggleStep, questMapIds } = useSteps();
   const { status } = stateOf(node.key, states);
   const StatusIcon = STATUS_ICON[status];
   const ActionIcon = (node.actionType && ACTION_ICON[node.actionType]) || Circle;
@@ -229,7 +239,7 @@ function Leaf({ node, compact = false }: { node: ObjectiveView; compact?: boolea
           {Math.min(current, amount)}/{amount}
         </span>
       )}
-      {node.mapNames?.map((name) => (
+      {showStepMaps(node, questMapIds) && node.mapNames?.map((name) => (
         <span key={name} className="quest-steps__chip quest-steps__chip--map">
           {name}
         </span>

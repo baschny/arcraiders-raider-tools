@@ -109,6 +109,30 @@ describe('quests domain', () => {
     expect(out.raids_3.next).toEqual(['second']);
   });
 
+  it('takes a step map from its area, or from a world object on one map only', () => {
+    const steps = quest(50, 'Routes', {
+      objective: {
+        kind: 'ANY_OF_EXCLUSIVE',
+        name: null,
+        children: [
+          atomic('Area', { type: 'VisitPOI', amount: 1, mapIds: [], params: { POIVolume: '901' } }),
+          atomic('Object', { type: 'Interact', amount: 1, mapIds: [], params: { Target: '902' } }),
+          atomic('Generic', { type: 'Interact', amount: 1, mapIds: [], params: { Target: '903' } }),
+        ],
+      },
+    });
+    const c = fakeCtx([steps], {
+      '901': { pois: [{ mapId: 1000, poi: 'PioneerPointOfInterestVolume_A', title: 'Gondola' }] },
+      '902': { maps: [{ mapId: 1000, count: 1 }] },
+      '903': { maps: [{ mapId: 1000, count: 3 }, { mapId: 2000, count: 2 }] },
+    });
+    const built = quests.build(c).quests as Record<string, import('../../../src/shared/gamedata/types').Quest>;
+    const [area, object, generic] = built.routes.objective.children!;
+    expect(area.action?.mapIds).toEqual(['blue-gate']);
+    expect(object.action?.mapIds).toEqual(['blue-gate']);
+    expect(generic.action?.mapIds).toBeUndefined();
+  });
+
   it('names a location unlock by the place of its area', () => {
     const bunker = quest(40, 'Bunker trigger', {
       hidden: true,

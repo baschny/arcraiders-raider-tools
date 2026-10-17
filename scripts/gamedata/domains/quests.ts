@@ -35,6 +35,8 @@ interface CanonQuestTarget extends CanonRecord {
   interactions?: CanonInteraction[] | null;
   /** Named map locations whose volume is the target area. */
   pois?: { mapId: number; poi: string; title: string }[] | null;
+  /** Map actors of the target per map. */
+  maps?: { mapId: number; count: number }[] | null;
 }
 
 interface CanonQuest extends CanonRecord {
@@ -174,6 +176,13 @@ const module: DomainModule = {
     // Interact targets: prompt, hold time and item cost of the world object (the cost is not in
     // the objective's amount). Several setups (locked gates with a code each): only what they share.
     const questTargets = arc.file('quest-targets') as unknown as Map<string, CanonQuestTarget>;
+    const targetMapIds = (params: Record<string, string> | undefined): number[] => {
+      const area = params?.POIVolume ?? params?.POIVolumeFilter;
+      const areaMaps = [...new Set((questTargets.get(String(area))?.pois ?? []).map((p) => p.mapId))];
+      if (area && areaMaps.length) return areaMaps;
+      const objectMaps = [...new Set((questTargets.get(String(params?.Target))?.maps ?? []).map((m) => m.mapId))];
+      return objectMaps.length === 1 ? objectMaps : [];
+    };
     const interactionOf = (targetId: string): CanonInteraction | null => {
       const list = questTargets.get(targetId)?.interactions ?? [];
       if (!list.length) return null;
@@ -220,7 +229,10 @@ const module: DomainModule = {
             if (interaction.prompt?.en) ctx.text.add('quests', slug, ['prompts', key], interaction.prompt);
           }
         }
-        const maps = mapSlugs(a.mapIds, ctxName);
+        // The game names the map on some steps only; otherwise take it from the step's area (its
+        // named locations), or from its world object when that exists on one map only. Generic
+        // targets (any container, any enemy) stay without a map.
+        const maps = mapSlugs(a.mapIds?.length ? a.mapIds : targetMapIds(a.params), ctxName);
         if (maps.length) node.action.mapIds = maps;
       }
       const text = n.name?.en ? n.name : n.description?.en ? n.description : null;

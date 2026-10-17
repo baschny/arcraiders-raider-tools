@@ -143,6 +143,7 @@ function Steps({ quest, status, objectiveProgress, onToggleStep }: QuestDetailsM
           progress={objectiveProgress}
           done={doneLeafKeys(quest, objectiveProgress, status === 'completed')}
           onToggleStep={onToggleStep}
+          questMapIds={quest.map}
         />
       </div>
     </section>
