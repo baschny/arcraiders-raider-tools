@@ -17,6 +17,19 @@ export interface QuestsState {
     mode: 'manual' | 'linked';
     /** Set of manually completed quest IDs (serialized as an array). */
     manualCompletedQuestIds: string[];
+    /** Manually done quest steps: objective leaf keys per quest ID (absent when there are none). */
+    manualStepProgress?: Record<string, string[]>;
+}
+
+function stepProgressOf(raw: unknown): Record<string, string[]> | undefined {
+    if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return undefined;
+    const out: Record<string, string[]> = {};
+    for (const [questId, keys] of Object.entries(raw)) {
+        if (!Array.isArray(keys)) continue;
+        const valid = keys.filter((k): k is string => typeof k === 'string');
+        if (valid.length) out[questId] = valid;
+    }
+    return Object.keys(out).length ? out : undefined;
 }
 export const questsStore = new UserStateStore<QuestsState>({
     domain: 'quests',
@@ -33,9 +46,11 @@ export const questsStore = new UserStateStore<QuestsState>({
             : Array.isArray(legacy?.completedQuestIds)
                 ? legacy.completedQuestIds
                 : [];
+        const steps = stepProgressOf(r?.manualStepProgress);
         return {
             mode: r?.mode === 'linked' ? 'linked' : 'manual',
             manualCompletedQuestIds: migrateQuestIds(arr),
+            ...(steps ? { manualStepProgress: steps } : {}),
         };
     },
 });

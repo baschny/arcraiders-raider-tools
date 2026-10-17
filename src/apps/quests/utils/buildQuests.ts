@@ -12,8 +12,10 @@ import type {
   ObjectiveView,
   Quest,
   QuestItemEntry,
+  QuestUnlockView,
 } from '../types/quest';
 import { questLabel } from './labels';
+import { normalizeObjectiveTree } from './objectiveTree';
 
 /** Categories shown in the quest graph. research/daily/weekly/project/mastery are hidden. */
 export const VISIBLE_QUEST_CATEGORIES: ReadonlySet<QuestCategory> = new Set<QuestCategory>([
@@ -21,16 +23,6 @@ export const VISIBLE_QUEST_CATEGORIES: ReadonlySet<QuestCategory> = new Set<Ques
   'side',
 ]);
 
-/** Trader value of the synthetic map prerequisite nodes. */
-export const MAP_TRADER = 'Map';
-
-/**
- * Id of the map prerequisite node for a map slug. Matches the ids of the old synthetic nodes
- * (`map_dam_battleground`, `map_blue_gate`, `map_stella_montis`) so saved progress keeps working.
- */
-export function mapNodeId(mapId: string): string {
-  return `map_${mapId.replaceAll('-', '_')}`;
-}
 
 export interface BuildQuestsInput {
   quests: LoadedDomain<'quests'>;
@@ -57,16 +49,44 @@ function isBlueprint(item: CatalogItem | undefined): boolean {
   return !!item && (item.category === 'Recipe' || !!item.item.blueprintFor);
 }
 
-/** Visible objective tree (hidden nodes removed) with the localized texts. */
+/** Camera every Photo step needs (the quests hand out a Basic Camera). */
+const CAMERA_ITEM = 'basic_camera';
+
+export interface ObjectiveResolvers {
+  mapName: (mapId: string) => string;
+  item: (itemId: string, quantity: number) => QuestItemEntry;
+}
+
+/** Items to take into the round, hand in or find for an atomic step. */
+function stepItems(node: ObjectiveNode, resolve: ObjectiveResolvers): ObjectiveView['items'] {
+  const a = node.action;
+  if (!a) return undefined;
+  const out: NonNullable<ObjectiveView['items']> = [];
+  for (const r of a.interaction?.requiredItems ?? []) {
+    out.push({ ...resolve.item(r.itemId, r.quantity), role: r.consumed === false ? 'kept' : 'consumed' });
+  }
+  if (a.itemId && (a.type === 'Deliver' || a.type === 'Obtain')) {
+    out.push({ ...resolve.item(a.itemId, a.amount), role: a.type === 'Deliver' ? 'deliver' : 'obtain' });
+  }
+  if (a.type === 'Photo') out.push({ ...resolve.item(CAMERA_ITEM, 1), role: 'bring' });
+  return out.length ? out : undefined;
+}
+
+/**
+ * Objective tree with the localized texts, prompts, map names and items, normalized for display
+ * (`normalizeObjectiveTree`). Hidden nodes are kept. `leafKeys` lists every atomic leaf in tree
+ * order, the order of the linked progress objectives.
+ */
 export function buildObjectiveTree(
   root: ObjectiveNode,
   texts: Record<string, string> | undefined,
-): { tree: ObjectiveView | null; leafTexts: string[] } {
+  resolve: ObjectiveResolvers,
+  prompts?: Record<string, string>,
+): { tree: ObjectiveView | null; leafTexts: string[]; leafKeys: string[] } {
   const leafTexts: string[] = [];
-  let leafCounter = 0;
+  const leafKeys: string[] = [];
 
   const walk = (node: ObjectiveNode): ObjectiveView | null => {
-    if (node.hidden) return null;
     const text = texts?.[node.key] || undefined;
     const children = (node.children ?? []).map(walk).filter((c): c is ObjectiveView => !!c);
     const view: ObjectiveView = {
@@ -74,20 +94,34 @@ export function buildObjectiveTree(
       kind: node.kind,
       oneRound: !!node.oneRound,
       optional: !!node.optional,
+      hidden: !!node.hidden,
       children,
     };
     if (text) view.text = text;
     if (node.kind === 'nOf') view.requiredCount = node.requiredCount;
     if (node.kind === 'atomic') {
-      view.leafIndex = leafCounter++;
+      leafKeys.push(node.key);
       if (text) leafTexts.push(text);
-    } else if (children.length === 0 && !text) {
+      const a = node.action;
+      if (a) {
+        view.actionType = a.type;
+        view.amount = a.amount;
+        if (a.mapIds?.length) view.mapNames = a.mapIds.map(resolve.mapName);
+        if (a.interaction?.holdSeconds) view.holdSeconds = a.interaction.holdSeconds;
+      }
+      const prompt = prompts?.[node.key];
+      if (prompt) view.prompt = prompt;
+      const items = stepItems(node, resolve);
+      if (items) view.items = items;
+      if (!text) return null;
+    } else if (children.length === 0) {
       return null;
     }
     return view;
   };
 
-  return { tree: walk(root), leafTexts };
+  const tree = walk(root);
+  return { tree: tree && normalizeObjectiveTree(tree), leafTexts, leafKeys };
 }
 
 function collectDeliveries(node: ObjectiveNode, out: Map<string, number>): void {
@@ -108,30 +142,30 @@ export function buildQuests({ quests, maps, catalog, traderNames, locale }: Buil
     return (typeof text === 'string' && text) || maps.structure.maps[mapId]?.nameEn || mapId;
   };
 
+  // Hidden unlock quests the shown quests depend on (directly or through other unlocks).
+  const unlockIds = new Set<string>();
+  const queue = records.flatMap((q) => (q.requires ?? []).map((r) => r.questId));
+  while (queue.length) {
+    const id = queue.shift()!;
+    const record = quests.structure.quests[id];
+    if (!record?.unlock || unlockIds.has(id)) continue;
+    unlockIds.add(id);
+    queue.push(...(record.requires ?? []).map((r) => r.questId));
+  }
+  const inGraph = (id: string) => shown.has(id) || unlockIds.has(id);
+
+  const resolvers: ObjectiveResolvers = { mapName, item: (itemId, quantity) => toEntry({ itemId, quantity }, catalog) };
+
   const result: Quest[] = [];
-  const mapNodes = new Map<string, Quest>();
 
   for (const record of records) {
     const text = quests.text[record.id];
     const objectiveTexts = (text?.objectives ?? undefined) as Record<string, string> | undefined;
-    const { tree, leafTexts } = buildObjectiveTree(record.objective, objectiveTexts);
+    const prompts = (text?.prompts ?? undefined) as Record<string, string> | undefined;
+    const { tree, leafTexts, leafKeys } = buildObjectiveTree(record.objective, objectiveTexts, resolvers, prompts);
 
-    const previousQuestIds: string[] = [];
+    const previousQuestIds = (record.requires ?? []).map((r) => r.questId).filter(inGraph);
     const otherRequirements: string[] = [];
-    for (const req of record.requires ?? []) {
-      if (req.questId && shown.has(req.questId)) previousQuestIds.push(req.questId);
-      if (req.mapId) {
-        const id = mapNodeId(req.mapId);
-        previousQuestIds.push(id);
-        let node = mapNodes.get(id);
-        if (!node) {
-          node = createMapNode(id, req.mapId, mapName(req.mapId));
-          mapNodes.set(id, node);
-        }
-        node.nextQuestIds.push(record.id);
-      }
-      if (req.raids) otherRequirements.push(questLabel('raids', locale, { count: req.raids }));
-    }
 
     const deliveries = new Map<string, number>();
     collectDeliveries(record.objective, deliveries);
@@ -153,12 +187,13 @@ export function buildQuests({ quests, maps, catalog, traderNames, locale }: Buil
       trader: (record.traderId && (traderNames[record.traderId] ?? record.traderId)) || '',
       map: record.mapIds ?? [],
       previousQuestIds,
-      nextQuestIds: (record.next ?? []).filter((id) => shown.has(id)),
+      nextQuestIds: (record.next ?? []).filter(inGraph),
       hasBlueprint: blueprintRewards.length > 0,
       blueprintRewards,
       description: typeof text?.description === 'string' ? text.description : '',
       objectiveTree: tree,
       objectives: leafTexts,
+      objectiveLeafKeys: leafKeys,
       objectivesOneRound: !!tree?.oneRound,
       otherRequirements,
       grantedItems: (record.rewards?.accept ?? []).map((r) => toEntry(r, catalog)),
@@ -182,23 +217,65 @@ export function buildQuests({ quests, maps, catalog, traderNames, locale }: Buil
     quest.isNew = Boolean(newestVersion) && quest.addedIn === newestVersion;
   }
 
-  return [...mapNodes.values(), ...result];
+  const unlocks = [...unlockIds].map((id) =>
+    createUnlockNode(quests.structure.quests[id], quests.text[id], inGraph, mapName, locale),
+  );
+  return [...unlocks, ...result];
 }
 
-function createMapNode(id: string, mapId: string, name: string): Quest {
+/** Label of an unlock node, from its kind (the quest's own name is internal). */
+function unlockView(
+  record: QuestRecord,
+  text: LoadedDomain<'quests'>['text'][string] | undefined,
+  mapName: (mapId: string) => string,
+  locale: AppLocale,
+): QuestUnlockView {
+  const unlock = record.unlock!;
+  const objective = (text?.objectives as Record<string, string> | undefined)?.['0'];
+  switch (unlock.kind) {
+    case 'rounds':
+      return { kind: 'rounds', label: questLabel('unlockRounds', locale, { count: unlock.amount ?? 0 }) };
+    case 'level':
+      return { kind: 'level', label: questLabel('unlockLevel', locale, { level: unlock.amount ?? 0 }) };
+    case 'location': {
+      const place = typeof text?.place === 'string' ? text.place : '';
+      const maps = (unlock.mapIds ?? []).map(mapName).join(', ');
+      return {
+        kind: 'location',
+        label: place ? questLabel('unlockLocation', locale, { place }) : questLabel('unlockOther', locale),
+        ...(maps ? { detail: questLabel('unlockLocationMap', locale, { map: maps }) } : {}),
+      };
+    }
+    case 'damage':
+      return { kind: 'damage', label: objective || questLabel('unlockOther', locale) };
+    default:
+      return { kind: 'other', label: questLabel('unlockOther', locale) };
+  }
+}
+
+function createUnlockNode(
+  record: QuestRecord,
+  text: LoadedDomain<'quests'>['text'][string] | undefined,
+  inGraph: (id: string) => boolean,
+  mapName: (mapId: string) => string,
+  locale: AppLocale,
+): Quest {
+  const unlock = unlockView(record, text, mapName, locale);
   return {
-    id,
-    name,
-    category: 'map',
-    trader: MAP_TRADER,
-    map: [mapId],
-    previousQuestIds: [],
-    nextQuestIds: [],
+    id: record.id,
+    name: unlock.label,
+    category: 'unlock',
+    unlock,
+    trader: '',
+    map: record.unlock?.mapIds ?? [],
+    previousQuestIds: (record.requires ?? []).map((r) => r.questId).filter(inGraph),
+    nextQuestIds: (record.next ?? []).filter(inGraph),
     hasBlueprint: false,
     blueprintRewards: [],
     description: '',
     objectiveTree: null,
     objectives: [],
+    objectiveLeafKeys: [],
     objectivesOneRound: false,
     otherRequirements: [],
     grantedItems: [],

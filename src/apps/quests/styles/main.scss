@@ -2,7 +2,9 @@
 @use 'variables';
 @use 'base';
 @use 'quest-node';
-@use 'map-node';
+@use 'quest-card';
+@use 'quest-steps';
+@use 'unlock-node';
 @use 'blueprint-overlay';
 @use 'quest-search-overlay';
 @use 'sidebar';

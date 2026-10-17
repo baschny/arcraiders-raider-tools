@@ -1,0 +1,292 @@
+@use 'variables' as *;
+
+// Quest steps in the quest details (QuestSteps.tsx, rendered into document.body).
+
+$steps-done: $status-completed;
+$steps-active: $status-available;
+$steps-accent: $text-accent;
+$steps-round: #4db6ac;
+$steps-optional: #9575cd;
+$steps-choice: #ffb74d;
+
+.quest-steps {
+  font-size: 13px;
+  line-height: 1.35;
+  color: $text-primary;
+}
+
+// ---- step
+
+.quest-steps__leaf {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 3px 4px;
+  border-radius: 4px;
+
+  &--optional {
+    border: 1px dashed rgba($steps-optional, 0.6);
+    .quest-steps__text { color: $text-light; }
+  }
+  &--locked { opacity: 0.6; }
+  &--closed, &--notNeeded { opacity: 0.35; }
+  &--compact { padding: 2px 4px; }
+
+  &--done {
+    .quest-steps__text {
+      color: $text-secondary;
+      text-decoration: line-through;
+      text-decoration-color: rgba($steps-done, 0.6);
+    }
+    .quest-steps__prompt {
+      opacity: 0.5;
+      color: $text-secondary;
+      background: transparent;
+      text-decoration: line-through;
+    }
+    .quest-steps__bring {
+      opacity: 0.45;
+      .item-icon {
+        position: relative;
+        filter: grayscale(1);
+        &::after {
+          content: '';
+          position: absolute;
+          left: -2px;
+          right: -2px;
+          top: 50%;
+          height: 2px;
+          background: $text-secondary;
+          transform: rotate(-35deg);
+        }
+      }
+      .quest-steps__bring-name { text-decoration: line-through; color: $text-secondary; }
+      .quest-steps__bring-role { color: $text-secondary; }
+    }
+  }
+}
+
+.quest-steps__icon {
+  display: inline-flex;
+  flex: none;
+  margin-top: 1px;
+  cursor: help;
+  &--action { margin-top: 2px; color: $text-secondary; }
+}
+.quest-steps__status {
+  &--done { color: $steps-done; }
+  &--active { color: $steps-active; }
+  &--locked, &--closed, &--notNeeded { color: $text-tertiary; }
+}
+.quest-steps__text { flex: 1 1 180px; min-width: 0; }
+
+// Manual progress: the status icon is a checkbox, the text toggles too.
+.quest-steps__toggle {
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: none;
+  font: inherit;
+  cursor: pointer;
+  &:hover .quest-steps__status { color: $steps-done; }
+  &:focus-visible { outline: 2px solid $steps-accent; outline-offset: 1px; }
+}
+.quest-steps__leaf--editable {
+  > .quest-steps__text { cursor: pointer; }
+  &:hover { background: rgba(255, 255, 255, 0.04); }
+}
+.quest-steps__count {
+  margin-top: 1px;
+  font-size: 11px;
+  color: $text-secondary;
+  font-variant-numeric: tabular-nums;
+}
+
+.quest-steps__prompt {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin: 3px 0 0;
+  padding: 1px 6px;
+  border: 1px solid $border-light;
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  background: $bg-tertiary;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: $text-primary;
+  width: fit-content;
+}
+// Own line under the step text.
+.quest-steps__text .quest-steps__prompt { display: flex; }
+.quest-steps__hold { font-weight: 400; color: $text-secondary; }
+
+.quest-steps__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  margin-top: 1px;
+  padding: 1px 6px;
+  border: 1px solid $border-light;
+  border-radius: 999px;
+  font-size: 10.5px;
+  font-weight: 400;
+  color: $text-light;
+  white-space: nowrap;
+
+  &--map { border-color: #37474f; background: #263238; color: #90caf9; }
+  &--optional { border-color: rgba($steps-optional, 0.7); color: #b39ddb; }
+  &--hidden { border-color: #555; color: $text-secondary; }
+  &--round { border-color: rgba($steps-round, 0.6); background: rgba($steps-round, 0.14); color: #80cbc4; }
+}
+
+// ---- items to bring
+
+.quest-steps__bring {
+  flex-basis: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  margin: 4px 0 2px 40px;
+  padding: 6px 8px;
+  border: 1px solid $border-default;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.18);
+}
+.quest-steps__bring-item { display: flex; align-items: center; gap: 8px; }
+.quest-steps__bring-label { display: flex; flex-direction: column; line-height: 1.25; }
+.quest-steps__bring-name { font-size: 12.5px; font-weight: 600; color: $text-primary; }
+.quest-steps__bring-role {
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: $text-secondary;
+  &--consumed { color: #ff8a65; }
+  &--deliver { color: $steps-active; }
+}
+
+// ---- numbered steps (sequence)
+
+.quest-steps__timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.quest-steps__item {
+  position: relative;
+  display: flex;
+  gap: 8px;
+  padding-bottom: 8px;
+
+  &:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    left: 11px;
+    top: 24px;
+    bottom: 0;
+    width: 2px;
+    background: $border-default;
+  }
+  &--done:not(:last-child)::before { background: rgba($steps-done, 0.6); }
+}
+.quest-steps__list > li > .quest-steps__item { padding-bottom: 2px; }
+.quest-steps__num {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border: 2px solid $border-light;
+  border-radius: 50%;
+  background: $bg-tertiary;
+  font-size: 12px;
+  font-weight: 700;
+  color: $text-light;
+
+  .quest-steps__item--done > & { border-color: $steps-done; background: $status-completed-bg; color: $steps-done; }
+  .quest-steps__item--active > & { border-color: $steps-active; color: $steps-active; }
+  &--optional { border-style: dashed; border-color: $steps-optional; }
+}
+.quest-steps__content { flex: 1; min-width: 0; }
+
+// ---- groups
+
+.quest-steps__group {
+  padding: 8px 10px;
+  border: 1px solid $border-default;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.15);
+
+  &--round { border-color: rgba($steps-round, 0.55); }
+  &--optional { border-style: dashed; border-color: rgba($steps-optional, 0.6); }
+  &--done { border-color: rgba($steps-done, 0.5); }
+  &--bare { padding: 0; border: none; background: none; }
+}
+.quest-steps__group-header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+.quest-steps__group-title { font-size: 13px; font-weight: 600; }
+.quest-steps__kind {
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: $text-secondary;
+}
+.quest-steps__counter {
+  margin-left: auto;
+  font-size: 11px;
+  color: $text-secondary;
+  font-variant-numeric: tabular-nums;
+}
+
+.quest-steps__list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.quest-steps__or {
+  display: block;
+  margin: 1px 0;
+  font-size: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  color: $steps-accent;
+  &::before, &::after { content: ' — '; color: $border-light; }
+}
+
+.quest-steps__route {
+  border: 1px solid transparent;
+  border-radius: 4px;
+  &.is-selected { border-color: rgba($steps-accent, 0.5); background: rgba($steps-accent, 0.06); }
+  &.is-closed { opacity: 0.35; }
+}
+.quest-steps__routes-then {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 6px 0 4px;
+  font-size: 11px;
+  color: $text-secondary;
+}
+
+.quest-steps__tab-bar { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 6px; }
+.quest-steps__tab {
+  padding: 2px 8px;
+  border: 1px solid $border-light;
+  border-radius: 4px;
+  background: $bg-tertiary;
+  color: $text-light;
+  font-size: 11px;
+  cursor: pointer;
+  &.is-selected { border-color: $steps-accent; color: $steps-accent; }
+  &:disabled { opacity: 0.35; cursor: default; }
+  &.is-closed:not(.is-selected) { opacity: 0.55; text-decoration: line-through; }
+}

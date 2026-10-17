@@ -19,16 +19,6 @@ export function getLocalizedMapName(mapId: string, locale?: AppLocale): string {
   return mapNames[mapId] ?? mapId;
 }
 
-export function getLocalizedMapNodeName(
-  mapId: string | undefined,
-  fallbackName: string,
-  locale?: AppLocale,
-): string {
-  void locale;
-  if (!mapId) return fallbackName;
-  return mapNames[mapId] ?? fallbackName;
-}
-
 export function getQuestWikiName(quest: { name: string; originalNameEn?: string }): string {
   return quest.originalNameEn ?? quest.name;
 }

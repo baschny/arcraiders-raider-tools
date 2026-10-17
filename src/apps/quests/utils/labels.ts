@@ -3,17 +3,17 @@ import { getLocaleFallbackChain } from '../../../shared/i18n/config';
 import { getTranslationValue } from '../../../shared/i18n/translations';
 
 const KEYS = {
-  oneOf: 'quests.objectiveOneOf',
-  nOf: 'quests.objectiveNOf',
-  oneRound: 'quests.objectiveOneRound',
-  optional: 'quests.objectiveOptional',
   sideQuest: 'quests.sideQuestBadge',
-  raids: 'quests.requirementRaids',
+  unlockRounds: 'quests.unlock.rounds',
+  unlockLevel: 'quests.unlock.level',
+  unlockLocation: 'quests.unlock.location',
+  unlockLocationMap: 'quests.unlock.locationMap',
+  unlockOther: 'quests.unlock.other',
 } as const;
 
 type LabelKey = keyof typeof KEYS;
 
-/** Objective-tree strings from the shared locale files (usable outside React, e.g. in buildQuests). */
+/** Quest strings from the shared locale files (usable outside React, e.g. in buildQuests). */
 export function questLabel(
   key: LabelKey,
   locale: AppLocale,

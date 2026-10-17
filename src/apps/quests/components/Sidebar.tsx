@@ -1,52 +1,33 @@
-import { useState, type CSSProperties } from 'react';
-import { ChevronDown, ChevronUp, Map as MapIcon } from 'lucide-react';
+import type { CSSProperties } from 'react';
+import { Map as MapIcon } from 'lucide-react';
 import type { Quest } from '../types/quest';
 import { useLocale } from '../../../shared/context/LocaleContext';
-import { getLocalizedMapNodeName } from '../utils/localization';
 import { getQuestMapIndicator } from '../utils/mapMeta';
-
-interface MapNodeWithStatus extends Quest {
-  isCompleted: boolean;
-}
 
 interface SidebarProps {
   actualQuests: Quest[];
-  mapNodes: MapNodeWithStatus[];
   availableQuests: Quest[];
   completedCount: number;
   readOnly: boolean;
   onQuestClick: (questId: string) => void;
-  onMapToggle: (mapId: string) => void;
   onResetAll: () => void;
 }
 
 export function Sidebar({
   actualQuests,
-  mapNodes,
   availableQuests,
   completedCount,
   readOnly,
   onQuestClick,
-  onMapToggle,
   onResetAll,
 }: SidebarProps) {
-  const { locale, t, tm } = useLocale();
+  const { locale, t } = useLocale();
   const totalQuests = actualQuests.length;
   const availableCount = availableQuests.length;
   const lockedCount = Math.max(totalQuests - completedCount - availableCount, 0);
   const completedPercent = totalQuests > 0 ? (completedCount / totalQuests) * 100 : 0;
   const availablePercent = totalQuests > 0 ? (availableCount / totalQuests) * 100 : 0;
   const lockedPercent = totalQuests > 0 ? (lockedCount / totalQuests) * 100 : 0;
-  const allMapsUnlocked = mapNodes.length > 0 && mapNodes.every((m) => m.isCompleted);
-  const [mapsCollapsed, setMapsCollapsed] = useState<boolean>(allMapsUnlocked);
-  const [prevAllMapsUnlocked, setPrevAllMapsUnlocked] = useState<boolean>(allMapsUnlocked);
-
-  if (allMapsUnlocked && !prevAllMapsUnlocked) {
-    setPrevAllMapsUnlocked(true);
-    setMapsCollapsed(true);
-  } else if (!allMapsUnlocked && prevAllMapsUnlocked) {
-    setPrevAllMapsUnlocked(false);
-  }
   return (
     <div className="available-sidebar">
       <div
@@ -100,51 +81,6 @@ export function Sidebar({
           </div>
         </div>
       </div>
-
-      <button
-        type="button"
-        className="available-sidebar-header available-sidebar-header--toggle"
-        onClick={() => setMapsCollapsed((prev) => !prev)}
-        aria-expanded={!mapsCollapsed}
-      >
-        <span>
-          🗺️ {tm('quests.sidebarUnlockedMaps', {
-            completed: mapNodes.filter((m) => m.isCompleted).length,
-            total: mapNodes.length,
-          })}
-        </span>
-        {mapsCollapsed ? <ChevronDown size={18} /> : <ChevronUp size={18} />}
-      </button>
-
-      {!mapsCollapsed && (
-        <div className="available-quests-list available-quests-list--maps">
-          {mapNodes.map((mapNode) => (
-            <div
-              key={mapNode.id}
-              className={`available-quest-item ${mapNode.isCompleted ? 'completed' : ''} ${readOnly ? 'read-only' : ''}`}
-              onClick={() => {
-                if (mapNode.isCompleted || readOnly) {
-                  onQuestClick(mapNode.id);
-                  return;
-                }
-                onMapToggle(mapNode.id);
-              }}
-              title={
-                readOnly
-                  ? t('quests.sidebarViewMap')
-                  : mapNode.isCompleted
-                    ? t('quests.sidebarViewMap')
-                    : t('quests.sidebarUnlockMap')
-              }
-            >
-              <div className="available-quest-name">
-                {getLocalizedMapNodeName(mapNode.map[0], mapNode.name, locale)}
-              </div>
-              {mapNode.isCompleted && <span className="map-check">✓</span>}
-            </div>
-          ))}
-        </div>
-      )}
 
       <div className="available-sidebar-header">
         <span>⭐ {t('quests.sidebarAvailableHeader')}</span>

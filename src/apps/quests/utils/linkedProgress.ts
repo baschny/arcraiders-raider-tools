@@ -1,4 +1,4 @@
-import type { Quest } from '../types/quest';
+import { isUnlockNode, type Quest } from '../types/quest';
 import { isQuestAvailable } from './questHelpers';
 import type {
   LinkedQuestEntry,
@@ -21,10 +21,8 @@ export function buildLinkedCompletedQuestSet(
   if (!snapshot) return completed;
 
   for (const quest of quests) {
-    if (quest.trader === 'Map') {
-      if (isMapNodeUnlockedInLinkedMode(quest, quests, snapshot)) {
-        completed.add(quest.id);
-      }
+    if (isUnlockNode(quest)) {
+      if (isUnlockDoneInLinkedMode(quest, quests, snapshot)) completed.add(quest.id);
       continue;
     }
 
@@ -68,27 +66,22 @@ export function getObjectiveProgressSummary(entry: LinkedQuestEntry | undefined)
   };
 }
 
-function isMapNodeUnlockedInLinkedMode(
-  mapNode: Quest,
+/**
+ * An unlock node is done when the account reports its hidden quest as completed (Embark lists
+ * them), or when a quest it unlocks is already active or completed. ArcTracker has no hidden
+ * quests, so its unlock nodes count as done rather than locking the quests behind them.
+ */
+function isUnlockDoneInLinkedMode(
+  unlock: Quest,
   quests: Quest[],
   snapshot: LinkedQuestSnapshot,
 ): boolean {
-  if (snapshot.source === 'arctracker') {
-    // ArcTracker only exposes completed/incomplete quest state and does not
-    // provide enough information to model map unlock progression accurately.
-    // Keep map nodes visually available in linked ArcTracker mode rather than
-    // incorrectly locking them behind missing runtime data.
-    return true;
-  }
-
-  const descendantIds = collectDescendantIds(mapNode.id, quests);
-  for (const questId of descendantIds) {
-    const state = snapshot.questsById[questId]?.state;
-    if (state === 'completed' || state === 'active') {
-      return true;
-    }
-  }
-  return false;
+  if (snapshot.source === 'arctracker') return true;
+  if (snapshot.questsById[unlock.id]?.completed) return true;
+  return collectDescendantIds(unlock.id, quests).some((questId) => {
+    const entry = snapshot.questsById[questId];
+    return !!entry && (entry.completed || entry.state === 'active');
+  });
 }
 
 function collectDescendantIds(questId: string, quests: Quest[]): string[] {

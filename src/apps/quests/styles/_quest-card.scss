@@ -1,0 +1,436 @@
+@use 'variables' as *;
+
+// Quest building blocks (QuestCardParts.tsx), the hover card (QuestHoverCard.tsx) and the
+// details (QuestDetailsModal.tsx). Hover card and details render into document.body.
+
+$gold: $status-available;
+$accent: $text-accent;
+$round: #4db6ac;
+$xp: #c5a3ff;
+
+// ---- building blocks
+
+.quest-card-portrait {
+  display: grid;
+  flex: none;
+  place-items: center;
+  overflow: hidden;
+  border: 2px solid $border-light;
+  border-radius: $radius-circle;
+  background: $bg-tertiary;
+  color: #fff;
+  font-size: $font-md;
+  font-weight: 700;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &.trader-celeste { border-color: $trader-celeste-end; background: linear-gradient(135deg, $trader-celeste-start, $trader-celeste-end); }
+  &.trader-shani { border-color: $trader-shani-end; background: linear-gradient(135deg, $trader-shani-start, $trader-shani-end); }
+  &.trader-lance { border-color: $trader-lance-end; background: linear-gradient(135deg, $trader-lance-start, $trader-lance-end); }
+  &.trader-tianwen { border-color: $trader-tianwen-end; background: linear-gradient(135deg, $trader-tianwen-start, $trader-tianwen-end); }
+  &.trader-apollo { border-color: $trader-apollo-end; background: linear-gradient(135deg, $trader-apollo-start, $trader-apollo-end); }
+}
+
+.quest-card-maps {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  font-size: 10.5px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: $text-light;
+
+  &--any {
+    color: $text-secondary;
+  }
+}
+
+.quest-card-maps__map {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+
+  &::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 2px;
+    background: var(--map-accent, #9e9e9e);
+  }
+}
+
+.quest-card-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 1px 7px 1px 5px;
+  border-radius: 999px;
+  font-size: $font-base;
+  font-weight: 600;
+  white-space: nowrap;
+
+  &--lg { padding: 3px 10px 3px 8px; font-size: 12.5px; }
+  &--completed { background: rgba($status-completed, 0.16); color: #81c784; }
+  &--active { background: rgba($gold, 0.16); color: $gold; }
+  &--available { background: rgba($accent, 0.14); color: $accent; }
+  &--locked { background: rgba(255, 255, 255, 0.06); color: $text-secondary; }
+  &--unknown { background: rgba(255, 193, 7, 0.12); color: #ffca28; }
+}
+
+// XP as a value: more XP, brighter (no fill: it is not progress).
+.quest-card-xp {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 2px;
+  padding: 1px 7px;
+  border: 1px solid rgba($xp, 0.45);
+  border-radius: $radius-sm;
+  font-size: 11.5px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: $xp;
+
+  small { font-size: $font-xs; font-weight: 600; opacity: 0.8; }
+
+  &--t1 { opacity: 0.6; }
+  &--t2 { opacity: 0.75; }
+  &--t4 { background: rgba($xp, 0.12); }
+  &--t5 { border-color: $xp; background: rgba($xp, 0.22); }
+  &--lg { padding: 4px 12px; font-size: 20px; small { font-size: $font-md; } }
+}
+
+.quest-card-blueprints {
+  display: inline-flex;
+  gap: 3px;
+}
+
+.quest-card-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 1px 7px;
+  border: 1px solid $border-light;
+  border-radius: 999px;
+  font-size: 10.5px;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  white-space: nowrap;
+  color: $text-light;
+
+  &--round { border-color: rgba($round, 0.6); background: rgba($round, 0.14); color: #80cbc4; }
+  &--new { border-color: $accent; color: $accent; }
+}
+
+.quest-card-stepbar {
+  display: inline-flex;
+  gap: 2px;
+
+  span { width: 10px; height: 4px; border-radius: 2px; background: rgba(255, 255, 255, 0.15); }
+  .is-done { background: $gold; }
+}
+
+.quest-card-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border: 1px solid $border-light;
+  border-radius: 6px;
+  background: $bg-tertiary;
+  color: $text-primary;
+  font: inherit;
+  font-size: $font-md;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover { border-color: $border-lighter; background: $bg-quaternary; }
+  &--primary { border-color: rgba($accent, 0.6); background: rgba($accent, 0.14); color: $accent; }
+  &--icon { padding: 4px; border-color: transparent; background: transparent; }
+}
+
+.quest-card-mini {
+  position: relative;
+  display: inline-flex;
+}
+
+.quest-card-mini__qty {
+  position: absolute;
+  right: -3px;
+  bottom: -3px;
+  padding: 0 3px;
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.85);
+  font-size: $font-sm;
+  font-weight: 700;
+}
+
+.quest-card-tile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 150px;
+}
+
+.quest-card-tile__label { display: flex; flex-direction: column; line-height: 1.25; }
+.quest-card-tile__name { font-size: 12.5px; font-weight: 600; }
+.quest-card-tile__note { font-size: 10.5px; letter-spacing: 0.04em; text-transform: uppercase; color: $text-secondary; }
+
+// ---- hover card
+
+.quest-hover {
+  position: fixed;
+  z-index: 1500;
+  width: 310px;
+  overflow-y: auto;
+  padding: 10px 12px;
+  border: 1px solid $border-light;
+  border-radius: $radius-md;
+  background: #222;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
+  color: $text-primary;
+  font-size: 12.5px;
+  cursor: default;
+}
+
+.quest-hover__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.quest-hover__trader { font-weight: 600; color: $text-light; }
+
+.quest-hover__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10.5px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: $text-secondary;
+}
+
+.quest-hover__steps { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+
+.quest-hover__next {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 6px;
+  width: 100%;
+  margin: 6px 0 2px;
+  padding: 6px 8px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: rgba($gold, 0.07);
+  color: $text-primary;
+  font: inherit;
+  line-height: 1.35;
+  text-align: left;
+  cursor: pointer;
+
+  > svg { flex: none; margin-top: 2px; color: $gold; }
+  > span:nth-child(2) { flex: 1; min-width: 0; }
+  &:hover { border-color: rgba($gold, 0.5); background: rgba($gold, 0.12); }
+}
+
+.quest-hover__all {
+  display: inline-flex;
+  align-items: center;
+  margin-left: auto;
+  font-size: $font-base;
+  white-space: nowrap;
+  color: $accent;
+}
+
+.quest-hover__row { display: flex; flex-direction: column; gap: 4px; margin-top: 8px; }
+.quest-hover__icons { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; }
+.quest-hover__more { font-size: $font-base; color: $text-secondary; }
+
+.quest-hover__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid $border-default;
+}
+
+// ---- details
+
+.quest-details-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(2px);
+}
+
+.quest-details {
+  display: flex;
+  flex-direction: column;
+  width: min(1180px, 94vw);
+  height: min(860px, 90vh);
+  overflow: hidden;
+  border: 1px solid $border-light;
+  border-radius: $radius-lg;
+  background: $bg-primary;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  color: $text-primary;
+  outline: none;
+}
+
+.quest-details__header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 20px;
+  border-bottom: 1px solid $border-default;
+  background:
+    linear-gradient(90deg, rgba(20, 20, 20, 0.97) 35%, rgba(20, 20, 20, 0.75)),
+    var(--quest-details-bg, none) center / cover;
+
+  h2 { margin: 2px 0 6px; font-size: 24px; }
+}
+
+.quest-details__title { flex: 1; min-width: 0; }
+
+.quest-details__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  font-size: 12.5px;
+  color: $text-light;
+}
+
+.quest-details__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-self: flex-start;
+  gap: 6px;
+}
+
+// Two columns: description and steps; before you go, rewards and quest chain.
+.quest-details__body {
+  display: grid;
+  flex: 1;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  min-height: 0;
+}
+
+.quest-details__main { overflow-y: auto; padding: 18px 22px; }
+
+.quest-details__side {
+  overflow-y: auto;
+  padding: 18px;
+  border-left: 1px solid $border-default;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.quest-details__section {
+  margin-bottom: 20px;
+
+  h3 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 8px;
+    font-size: $font-md;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: $text-secondary;
+  }
+
+  h4 { margin: 12px 0 6px; font-size: 11.5px; font-weight: 600; color: $text-secondary; }
+}
+
+.quest-details__description {
+  margin: 0 0 18px;
+  padding: 10px 14px;
+  border: 1px solid $border-default;
+  border-radius: $radius-md;
+  background: rgba(255, 255, 255, 0.02);
+  font-size: $font-lg;
+  font-style: italic;
+  line-height: 1.5;
+  white-space: pre-line;
+  color: $text-light;
+
+  cite { display: block; margin-top: 6px; font-size: $font-md; font-style: normal; color: $text-secondary; }
+}
+
+.quest-details__steps {
+  .quest-steps { font-size: $font-lg; }
+  .quest-steps__text { flex-basis: 300px; }
+}
+
+.quest-details__tiles { display: flex; flex-wrap: wrap; gap: 10px 16px; }
+
+.quest-details__rewards-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.quest-details__chain { display: flex; flex-direction: column; gap: 4px; }
+
+// A quest of the chain, in the status colours of the nodes.
+.quest-details__chain-unlock {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 10px;
+  border: 1px dashed $border-light;
+  border-radius: 999px;
+  background: $bg-dark;
+  font-size: 12.5px;
+  small { color: $text-secondary; }
+  &.is-completed { border-style: solid; border-color: $status-completed-dark; background: rgba($status-completed-bg, 0.6); }
+  &.is-available, &.is-active { border-color: rgba($status-available, 0.7); }
+}
+.quest-details__chain-unlock-kind {
+  font-size: 9.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: $text-secondary;
+}
+
+.quest-details__chain-quest {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  border: 1px solid $border-default;
+  border-radius: 6px;
+  background: $bg-secondary;
+  color: $text-primary;
+  font: inherit;
+  font-size: 12.5px;
+  text-align: left;
+  cursor: pointer;
+
+  > span:not(.quest-card-portrait) { flex: 1; }
+  &:hover { border-color: $border-lighter; }
+  &.is-completed { border-color: $status-completed-dark; background: rgba($status-completed-bg, 0.6); }
+  &.is-active, &.is-available { border-color: rgba($gold, 0.7); }
+  &.is-locked, &.is-unknown { color: $text-light; }
+}
+
+@media (max-width: 860px) {
+  .quest-details__header { flex-wrap: wrap; }
+  .quest-details__body { display: block; overflow-y: auto; }
+  .quest-details__main, .quest-details__side { overflow: visible; }
+  .quest-details__side { border-top: 1px solid $border-default; border-left: none; }
+}

@@ -368,6 +368,13 @@ export type QuestCategory = 'main' | 'side' | 'research' | 'daily' | 'weekly' | 
 
 export type ObjectiveKind = 'atomic' | 'sequence' | 'allOf' | 'anyOf' | 'anyOfExclusive' | 'nOf';
 
+export interface ObjectiveInteraction {
+  /** Seconds the interaction key is held. */
+  holdSeconds?: number;
+  /** Items needed at the object; `consumed: false` = only checked, not taken. */
+  requiredItems?: { itemId: string; quantity: number; consumed?: false }[];
+}
+
 export interface ObjectiveNode {
   /** Index path within the quest, e.g. '0.2.1' (text lookup: `<questId>.objectives.<key>`). */
   key: string;
@@ -382,14 +389,29 @@ export interface ObjectiveNode {
     itemId?: string;
     targetId?: string;
     mapIds?: string[];
+    /**
+     * Interact targets: what the player does at the world object, when known. Its prompt ("Repair")
+     * is the text `<questId>.prompts.<key>`.
+     */
+    interaction?: ObjectiveInteraction;
   };
   children?: ObjectiveNode[];
 }
 
 export interface QuestRequirement {
-  questId?: string;
-  mapId?: string;
-  raids?: number;
+  questId: string;
+}
+
+/**
+ * A hidden quest the game uses only to unlock others (never shown in the game). Its label is
+ * built from the kind: rounds = play `amount` rounds, level = reach player level `amount`,
+ * location = enter the place named by the text `<questId>.place` on `mapIds`, damage = the
+ * objective text `<questId>.objectives.0`.
+ */
+export interface QuestUnlock {
+  kind: 'rounds' | 'level' | 'location' | 'damage' | 'other';
+  amount?: number;
+  mapIds?: string[];
 }
 
 export interface Quest {
@@ -403,6 +425,8 @@ export interface Quest {
   objective: ObjectiveNode;
   rewards?: { accept?: Reward[]; complete?: Reward[]; optionals?: Reward[]; xp?: number };
   hidden?: boolean;
+  /** Set on hidden quests that unlock other quests. */
+  unlock?: QuestUnlock;
   addedIn?: string;
 }
 

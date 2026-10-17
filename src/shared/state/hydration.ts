@@ -147,7 +147,8 @@ function anyLocalDataPresent(): boolean {
     const l = lootStore.get();
     const qm = quartermasterStore.get();
 
-    const hasQuests = q.mode !== 'manual' || q.manualCompletedQuestIds.length > 0;
+    const hasQuests = q.mode !== 'manual' || q.manualCompletedQuestIds.length > 0
+        || Object.keys(q.manualStepProgress ?? {}).length > 0;
     const hasLoot = (l.goalItems.length + l.disabledItems.length + l.stashItems.length
         + l.disabledStashItems.length) > 0
         || (l.enabledTypes !== null && l.enabledTypes.length > 0)
@@ -173,7 +174,8 @@ async function tryMigrateLocalToServer(): Promise<boolean> {
 
     const body: Record<string, { schemaVersion: number; data: unknown }> = {};
     const q = questsStore.get();
-    if (q.mode !== 'manual' || q.manualCompletedQuestIds.length > 0) {
+    if (q.mode !== 'manual' || q.manualCompletedQuestIds.length > 0
+        || Object.keys(q.manualStepProgress ?? {}).length > 0) {
         body.quests = { schemaVersion: questsStore.schemaVersion, data: q };
     }
     const l = lootStore.get();

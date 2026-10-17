@@ -11,13 +11,17 @@ import ReactFlow, {
 import type { Node, Edge, ReactFlowInstance, Viewport } from 'reactflow';
 import ELK from 'elkjs/lib/elk.bundled.js';
 import type { ElkNode } from 'elkjs/lib/elk.bundled.js';
-import type { Quest } from '../types/quest';
+import { isUnlockNode, type Quest } from '../types/quest';
 import { QuestNode } from './QuestNode';
-import { MapNode } from './MapNode';
+import { UnlockNode } from './UnlockNode';
 import { BlueprintRewardsOverlay } from './BlueprintRewardsOverlay';
 import { QuestSearchOverlay } from './QuestSearchOverlay';
 import { Sidebar } from './Sidebar';
 import { ConfirmDialog } from './ConfirmDialog';
+import { QuestDetailsModal } from './QuestDetailsModal';
+import { isObjectiveSatisfied } from '../utils/objectiveTree';
+import { doneLeafKeys } from '../utils/questSummary';
+import { progressFromDone, toggleStep } from '../utils/stepProgress';
 import { migrateQuestIds } from '../data/questIdMigration';
 import { trackQuestMark } from '../../../shared/utils/analytics';
 import { useCognitoAuth } from '../../../shared/context/CognitoAuthContext';
@@ -36,8 +40,8 @@ import { getMe } from '../../../shared/services/userApi';
 import type { LinkedQuestSnapshot } from '../../../shared/types/linkedQuests';
 import {
   buildLinkedCompletedQuestSet,
-  getObjectiveProgressSummary,
   getQuestDisplayStatus,
+  type QuestDisplayStatus,
 } from '../utils/linkedProgress';
 import {
   getAllDependents,
@@ -102,15 +106,27 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
     return new Set(migrateQuestIds(ids));
   }, []);
 
+  /**
+   * Saves the manually completed quests and, per quest in `stepChanges`, its done steps
+   * (null or [] drops the quest's step progress).
+   */
   const saveCompletedQuests = useCallback(
-    (next: Set<string>) => {
+    (next: Set<string>, stepChanges: Record<string, string[] | null> = {}) => {
+      const { manualStepProgress, ...state } = questsStore.get();
+      const steps = { ...manualStepProgress };
+      for (const [questId, keys] of Object.entries(stepChanges)) {
+        if (keys?.length) steps[questId] = keys;
+        else delete steps[questId];
+      }
       setQuestState({
-        ...questsStore.get(),
+        ...state,
         manualCompletedQuestIds: Array.from(next),
+        ...(Object.keys(steps).length ? { manualStepProgress: steps } : {}),
       });
     },
     [setQuestState]
   );
+  const manualStepProgress = questState.manualStepProgress;
 
   const setMode = useCallback(
     (mode: 'manual' | 'linked') => {
@@ -187,6 +203,8 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
     showMore: 0,
     onConfirm: () => {},
   });
+  // Quest shown in the details (double-click on a node, "Details" in its hover card).
+  const [detailsQuestId, setDetailsQuestId] = useState<string | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -301,7 +319,7 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
   const nodeTypes = useMemo(
     () => ({
       questNode: QuestNode,
-      mapNode: MapNode,
+      unlockNode: UnlockNode,
     }),
     []
   );
@@ -312,9 +330,42 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
     [completedQuests]
   );
 
-  // Toggle quest completion
+  const questStatus = useCallback(
+    (quest: Quest): QuestDisplayStatus =>
+      isLinkedMode
+        ? getQuestDisplayStatus({
+            quest,
+            linkedSnapshot: activeLinkedSnapshot,
+            linkedCompletedQuests: completedQuests,
+          })
+        : completedQuests.has(quest.id)
+          ? 'completed'
+          : isAvailable(quest)
+            ? manualStepProgress?.[quest.id]?.length
+              ? 'active'
+              : 'available'
+            : 'locked',
+    [activeLinkedSnapshot, completedQuests, isAvailable, isLinkedMode, manualStepProgress]
+  );
+
+  /** Step progress of a quest: from the linked account, or the manually done steps. */
+  const objectiveProgressOf = useCallback(
+    (quest: Quest) => {
+      if (isLinkedMode) {
+        return activeLinkedSnapshot?.source === 'embark'
+          ? activeLinkedSnapshot.questsById[quest.id]?.objectives
+          : undefined;
+      }
+      const keys = manualStepProgress?.[quest.id];
+      return keys?.length ? progressFromDone(quest.objectiveLeafKeys, new Set(keys)) : undefined;
+    },
+    [activeLinkedSnapshot, isLinkedMode, manualStepProgress]
+  );
+
+  // Toggle quest completion. `steps`: the quest's done steps to save with the change (when the
+  // change comes from marking a step); without, uncompleting drops the quest's step progress.
   const toggleQuest = useCallback(
-    (questId: string) => {
+    (questId: string, steps?: string[]) => {
       if (isLinkedMode) return;
       const prev = completedQuests;
       const quest = quests.find((q) => q.id === questId);
@@ -344,7 +395,10 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
               const newSet = readCompletedQuests();
               newSet.delete(questId);
               dependents.forEach((id) => newSet.delete(id));
-              saveCompletedQuests(newSet);
+              saveCompletedQuests(newSet, {
+                ...Object.fromEntries(Array.from(dependents, (id) => [id, null])),
+                [questId]: steps ?? null,
+              });
               // Track quest unmarking
               trackQuestMark(quest.name, questId, false);
               setConfirmDialog((prev) => ({ ...prev, isOpen: false }));
@@ -354,7 +408,7 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
           // No dependents, just uncomplete
           const newSet = new Set(prev);
           newSet.delete(questId);
-          saveCompletedQuests(newSet);
+          saveCompletedQuests(newSet, { [questId]: steps ?? null });
           // Track quest unmarking
           trackQuestMark(quest.name, questId, false);
         }
@@ -388,7 +442,7 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
               const newSet = readCompletedQuests();
               incompleteAll.forEach((id) => newSet.add(id));
               newSet.add(questId);
-              saveCompletedQuests(newSet);
+              saveCompletedQuests(newSet, steps ? { [questId]: steps } : {});
               // Track quest marking
               trackQuestMark(quest.name, questId, true);
               setConfirmDialog((prev) => ({ ...prev, isOpen: false }));
@@ -398,7 +452,7 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
           // All prerequisites complete, just complete this quest
           const newSet = new Set(prev);
           newSet.add(questId);
-          saveCompletedQuests(newSet);
+          saveCompletedQuests(newSet, steps ? { [questId]: steps } : {});
           // Track quest marking
           trackQuestMark(quest.name, questId, true);
         }
@@ -412,6 +466,28 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
       saveCompletedQuests,
       tm,
     ]
+  );
+
+  // Mark a step done / not done (manual mode). Completing the steps completes the quest,
+  // unmarking a needed step of a completed quest makes it incomplete again.
+  const toggleQuestStep = useCallback(
+    (questId: string, key: string) => {
+      if (isLinkedMode) return;
+      const quest = quests.find((q) => q.id === questId);
+      const tree = quest?.objectiveTree;
+      if (!quest || !tree) return;
+      const completed = completedQuests.has(questId);
+      const current = doneLeafKeys(quest, objectiveProgressOf(quest), completed);
+      const next = toggleStep(tree, current, key);
+      const keys = quest.objectiveLeafKeys.filter((k) => next.has(k));
+      const satisfied = next.size > 0 && isObjectiveSatisfied(tree, next);
+      if (satisfied === completed) {
+        saveCompletedQuests(new Set(completedQuests), { [questId]: keys });
+      } else {
+        toggleQuest(questId, keys);
+      }
+    },
+    [completedQuests, isLinkedMode, objectiveProgressOf, quests, saveCompletedQuests, toggleQuest]
   );
 
   // "Filter <version>": show only quests of the newest version plus their direct
@@ -464,8 +540,9 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
       },
       children: graphQuests.map((quest) => ({
         id: quest.id,
-        width: 300,
-        height: quest.trader === 'Map' ? 110 : 140,
+        // Unlock nodes take the same layout cell as quests, so they sit in the quest rows.
+        width: NODE_WIDTH,
+        height: 140,
       })),
       edges: graphQuests.flatMap((quest) =>
         quest.previousQuestIds.filter((prevId) => graphIds.has(prevId)).map((prevId) => ({
@@ -545,35 +622,20 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
     graphQuests.forEach((quest) => {
       const pos = elkPositions.get(quest.id);
       if (!pos) return;
-      const isMap = quest.trader === 'Map';
-      const status = isLinkedMode
-        ? getQuestDisplayStatus({
-            quest,
-            linkedSnapshot: activeLinkedSnapshot,
-            linkedCompletedQuests: completedQuests,
-          })
-        : completedQuests.has(quest.id)
-          ? 'completed'
-          : isAvailable(quest)
-            ? 'available'
-            : 'locked';
-      const linkedEntry = activeLinkedSnapshot?.source === 'embark'
-        ? activeLinkedSnapshot.questsById[quest.id]
-        : undefined;
+      const isUnlock = isUnlockNode(quest);
+      const status = questStatus(quest);
       flowNodes.push({
         id: quest.id,
-        type: isMap ? 'mapNode' : 'questNode',
+        type: isUnlock ? 'unlockNode' : 'questNode',
         position: { x: pos.x, y: pos.y },
         data: {
           quest,
-          isCompleted: completedQuests.has(quest.id),
-          isAvailable: status === 'available' || status === 'active',
           status,
           isInteractive: !isLinkedMode,
           isHighlighted: quest.id === highlightedQuestId,
-          objectiveSummary: linkedEntry ? getObjectiveProgressSummary(linkedEntry) : null,
-          objectiveProgress: linkedEntry?.objectives,
+          objectiveProgress: objectiveProgressOf(quest),
           onToggle: toggleQuest,
+          onOpenDetails: setDetailsQuestId,
         },
         draggable: false,
       });
@@ -584,17 +646,7 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
       quest.previousQuestIds.forEach((prevId) => {
         if (!graphIds.has(prevId)) return;
         const sourceCompleted = completedQuests.has(prevId);
-        const targetStatus = isLinkedMode
-          ? getQuestDisplayStatus({
-              quest,
-              linkedSnapshot: activeLinkedSnapshot,
-              linkedCompletedQuests: completedQuests,
-            })
-          : completedQuests.has(quest.id)
-            ? 'completed'
-            : isAvailable(quest)
-              ? 'available'
-              : 'locked';
+        const targetStatus = questStatus(quest);
         const targetCompleted = targetStatus === 'completed';
         const targetAvailable = targetStatus === 'available' || targetStatus === 'active';
 
@@ -664,10 +716,10 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
     return { nodes: flowNodes, edges: flowEdges };
   }, [
     elkPositions,
-    activeLinkedSnapshot,
     completedQuests,
-    isAvailable,
     isLinkedMode,
+    objectiveProgressOf,
+    questStatus,
     toggleQuest,
     highlightedQuestId,
     graphQuests,
@@ -731,10 +783,7 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
   }, [reactFlowInstance, flowNodes, searchParams, setSearchParams]);
 
   // Filter out map nodes for statistics
-  const actualQuests = quests.filter((q) => q.trader !== 'Map');
-  const mapNodes = quests
-    .filter((q) => q.trader === 'Map')
-    .map((q) => ({ ...q, isCompleted: completedQuests.has(q.id) }));
+  const actualQuests = quests.filter((q) => !isUnlockNode(q));
   const availableQuests = actualQuests.filter((quest) => {
     if (isLinkedMode) {
       return getQuestDisplayStatus({
@@ -756,7 +805,10 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
     const questById = new Map(quests.map((quest) => [quest.id, quest]));
     return new Map(
       nodes
-        .filter((node) => questById.get(node.id)?.trader !== 'Map')
+        .filter((node) => {
+          const quest = questById.get(node.id);
+          return !!quest && !isUnlockNode(quest);
+        })
         .sort((a, b) =>
           a.position.y === b.position.y
             ? a.position.x - b.position.x
@@ -803,6 +855,20 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
     [actualQuests, blueprintCompletionById, compareText, questProgressionOrder]
   );
 
+  const questById = useMemo(() => new Map(quests.map((quest) => [quest.id, quest])), [quests]);
+  const detailsQuest = detailsQuestId ? questById.get(detailsQuestId) : undefined;
+  const statusOfQuestId = useCallback(
+    (questId: string): QuestDisplayStatus => {
+      const quest = questById.get(questId);
+      return quest ? questStatus(quest) : 'unknown';
+    },
+    [questById, questStatus]
+  );
+  // A confirmation on top of the details takes Escape and the outside click itself.
+  const closeDetails = useCallback(() => {
+    if (!confirmDialog.isOpen) setDetailsQuestId(null);
+  }, [confirmDialog.isOpen]);
+
   // Filter quests by search query
   const searchResults = useMemo(() => {
     if (!searchQuery.trim()) return [];
@@ -840,7 +906,10 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
       questList: completedQuestsList.slice(0, 5),
       showMore: completedQuestsList.length > 5 ? completedQuestsList.length - 5 : 0,
       onConfirm: () => {
-        saveCompletedQuests(new Set());
+        saveCompletedQuests(
+          new Set(),
+          Object.fromEntries(Object.keys(questsStore.get().manualStepProgress ?? {}).map((id) => [id, null]))
+        );
         setConfirmDialog((prev) => ({ ...prev, isOpen: false }));
       },
     });
@@ -1004,17 +1073,28 @@ export function QuestTracker({ quests }: QuestTrackerProps) {
         onConfirm={confirmDialog.onConfirm}
         onCancel={() => setConfirmDialog((prev) => ({ ...prev, isOpen: false }))}
       />
+      {detailsQuest && (
+        <QuestDetailsModal
+          quest={detailsQuest}
+          status={questStatus(detailsQuest)}
+          objectiveProgress={objectiveProgressOf(detailsQuest)}
+          questById={questById}
+          statusOf={statusOfQuestId}
+          onToggle={isLinkedMode ? undefined : () => toggleQuest(detailsQuest.id)}
+          onToggleStep={isLinkedMode ? undefined : (key) => toggleQuestStep(detailsQuest.id, key)}
+          onOpenQuest={setDetailsQuestId}
+          onClose={closeDetails}
+        />
+      )}
       <div
         className={`quest-tracker-container ${isLinkedMode ? 'quest-tracker-container--linked' : 'quest-tracker-container--manual'} ${shouldDimLinkedTree ? 'quest-tracker-container--disabled' : ''}`}
       >
         <Sidebar
           actualQuests={actualQuests}
-          mapNodes={mapNodes}
           availableQuests={availableQuests}
           completedCount={completedCount}
           readOnly={isLinkedMode}
           onQuestClick={focusOnQuest}
-          onMapToggle={toggleQuest}
           onResetAll={handleResetAll}
         />
 

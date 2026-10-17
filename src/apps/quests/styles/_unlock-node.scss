@@ -1,0 +1,106 @@
+@use 'variables' as *;
+
+// Unlock node in the graph (UnlockNode.tsx): a hidden unlock of the game as a dashed pill.
+// Same status colours as the quest nodes: yellow = can be done now, green = done, dark = locked.
+
+// Same width as a quest node; the pill is centred in it and the cell lets clicks through.
+.unlock-node-cell {
+  display: flex;
+  justify-content: center;
+  width: $node-width;
+  pointer-events: none;
+}
+
+.unlock-node {
+  position: relative;
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 240px;
+  min-height: 64px;
+  padding: 8px 16px 8px 10px;
+  border: 2px dashed $border-light;
+  border-radius: 999px;
+  background: $bg-dark;
+  box-shadow: $shadow-default;
+  cursor: pointer;
+
+  &.read-only {
+    cursor: default;
+  }
+
+  &--available,
+  &--active {
+    border-color: $status-available;
+    box-shadow: $shadow-available;
+
+    .unlock-node__icon {
+      border-color: $status-available;
+      color: $status-available;
+    }
+  }
+
+  &--completed {
+    border-style: solid;
+    border-color: $status-completed-dark;
+    background: $status-completed-bg;
+
+    .unlock-node__icon {
+      border-color: $status-completed;
+      color: $status-completed;
+    }
+
+    .unlock-node__label {
+      color: $map-node-text-completed;
+    }
+  }
+
+  &--locked .unlock-node__text {
+    opacity: 0.75;
+  }
+
+  &.highlighted {
+    animation: highlightPulse $transition-highlight;
+  }
+}
+
+.unlock-node__icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 2px solid $border-light;
+  border-radius: 50%;
+  background: $bg-secondary;
+  color: $text-light;
+}
+
+.unlock-node__text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 1.25;
+}
+
+.unlock-node__kind {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 9.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: $text-secondary;
+}
+
+.unlock-node__label {
+  font-size: 13px;
+  font-weight: 700;
+  color: $text-primary;
+}
+
+.unlock-node__detail {
+  font-size: 11px;
+  color: $text-secondary;
+}

@@ -1,9 +1,9 @@
-import type { ObjectiveKind, ObjectiveNode, Quest, QuestCategory, QuestRequirement } from '../../../src/shared/gamedata/types';
-import type { CanonRecord, CanonRewardPackage, Localization } from '../arcData';
+import type { ObjectiveKind, ObjectiveNode, Quest, QuestCategory, QuestRequirement, QuestUnlock } from '../../../src/shared/gamedata/types';
+import { LOCALES, type CanonRecord, type CanonRewardPackage, type Localization } from '../arcData';
 import type { GenContext } from '../context';
 import type { DomainModule } from './types';
 
-/** Tracking item of the "Rounds Played" level group (631648175); quests gated by it become `raids`. */
+/** Tracking item of the "Rounds Played" level group (631648175). */
 const ROUNDS_PLAYED_ITEM = -1869396984;
 
 interface CanonAction {
@@ -23,6 +23,18 @@ interface CanonNode {
   description?: Localization | null;
   action?: CanonAction | null;
   children?: CanonNode[] | null;
+}
+
+interface CanonInteraction {
+  prompt?: Localization | null;
+  holdSeconds?: number | null;
+  requiredItems?: { id: number; amount: number; consumed?: boolean }[] | null;
+}
+
+interface CanonQuestTarget extends CanonRecord {
+  interactions?: CanonInteraction[] | null;
+  /** Named map locations whose volume is the target area. */
+  pois?: { mapId: number; poi: string; title: string }[] | null;
 }
 
 interface CanonQuest extends CanonRecord {
@@ -86,7 +98,6 @@ const module: DomainModule = {
     const canon = arc.file('quests') as unknown as Map<string, CanonQuest>;
     const workbench = arc.constants.owners.workbenchGenerator;
     const xpId = arc.constants.currencies.xp;
-    const overlay = arc.json<Record<string, { requiresMaps?: (number | string)[] }>>('overlay/quest.json') ?? {};
 
     const prereqsOf = (q: CanonQuest): string[] => (q.requires ?? []).map((r) => String(r.quest));
     const rounds = new Map<string, number>();
@@ -160,6 +171,21 @@ const module: DomainModule = {
       return null;
     };
 
+    // Interact targets: prompt, hold time and item cost of the world object (the cost is not in
+    // the objective's amount). Several setups (locked gates with a code each): only what they share.
+    const questTargets = arc.file('quest-targets') as unknown as Map<string, CanonQuestTarget>;
+    const interactionOf = (targetId: string): CanonInteraction | null => {
+      const list = questTargets.get(targetId)?.interactions ?? [];
+      if (!list.length) return null;
+      const [first, ...rest] = list;
+      const same = (a: unknown, b: unknown) => JSON.stringify(a ?? null) === JSON.stringify(b ?? null);
+      return {
+        prompt: rest.every((i) => same(i.prompt?.en, first.prompt?.en)) ? first.prompt : null,
+        holdSeconds: rest.every((i) => i.holdSeconds === first.holdSeconds) ? first.holdSeconds : null,
+        requiredItems: rest.every((i) => same(i.requiredItems, first.requiredItems)) ? first.requiredItems : null,
+      };
+    };
+
     // --- objective tree -------------------------------------------------------------------
     const buildNode = (n: CanonNode, key: string, slug: string): ObjectiveNode => {
       const node: ObjectiveNode = { key, kind: KIND[n.kind] ?? 'allOf' };
@@ -181,6 +207,18 @@ const module: DomainModule = {
         if (target != null) {
           const t = targetSlug(a.type, target, ctxName);
           if (t) node.action.targetId = t;
+          const interaction = a.type === 'Interact' ? interactionOf(target) : null;
+          if (interaction) {
+            const out: NonNullable<NonNullable<ObjectiveNode['action']>['interaction']> = {};
+            if (interaction.holdSeconds) out.holdSeconds = interaction.holdSeconds;
+            const items = (interaction.requiredItems ?? []).flatMap((r) => {
+              const itemId = ctx.itemRef(r.id, `${ctxName} interaction`);
+              return itemId ? [{ itemId, quantity: r.amount, ...(r.consumed === false ? { consumed: false as const } : {}) }] : [];
+            });
+            if (items.length) out.requiredItems = items;
+            if (Object.keys(out).length) node.action.interaction = out;
+            if (interaction.prompt?.en) ctx.text.add('quests', slug, ['prompts', key], interaction.prompt);
+          }
         }
         const maps = mapSlugs(a.mapIds, ctxName);
         if (maps.length) node.action.mapIds = maps;
@@ -192,6 +230,63 @@ const module: DomainModule = {
     };
 
     // --- quests ---------------------------------------------------------------------------
+    // --- unlocks ---------------------------------------------------------------------------
+    // Hidden quests that other quests require: the game's unlock triggers (rounds played, player
+    // level, entering a place, damaging an enemy). Their names are internal; the site builds the
+    // label from the kind, plus the localized place name for location unlocks.
+    const unlockers = new Set<string>();
+    for (const q of canon.values()) for (const pre of prereqsOf(q)) if (canon.get(pre)?.hidden) unlockers.add(pre);
+    const levelOfItem = new Map<number, number>();
+    for (const g of arc.file('level-groups').values()) {
+      if (Number(g.trackingItemId) !== xpId) continue;
+      for (const lvl of (g.levels as { level: number; reward?: CanonRewardPackage }[]) ?? []) {
+        for (const r of lvl.reward?.items ?? []) levelOfItem.set(r.id, lvl.level);
+      }
+    }
+    const placeName = (volumeId: string): Localization | null => {
+      const poi = questTargets.get(volumeId)?.pois?.[0];
+      if (!poi) return null;
+      const featureId = poi.poi.replace(/^PioneerPointOfInterestVolume_/, 'POI_');
+      const titleKey = mapFeaturePoiKeys().get(featureId);
+      const out: Record<string, string> = { en: poi.title };
+      if (titleKey) {
+        for (const locale of LOCALES) {
+          const strings = locale === 'en' ? null : arc.json<Record<string, string>>(`derived/map-features/map-strings.${locale}.json`);
+          if (strings?.[titleKey]) out[locale] = strings[titleKey];
+        }
+      }
+      return out as unknown as Localization;
+    };
+    let poiKeys: Map<string, string> | null = null;
+    const mapFeaturePoiKeys = (): Map<string, string> => {
+      if (poiKeys) return poiKeys;
+      poiKeys = new Map();
+      const index = arc.json<{ maps: { file: string }[] }>('derived/map-features/index.json');
+      for (const m of index?.maps ?? []) {
+        const map = arc.json<{ pois?: { titleKey?: string; ids?: string[] }[] }>(`derived/map-features/${m.file}`);
+        for (const p of map?.pois ?? []) for (const id of p.ids ?? []) if (p.titleKey) poiKeys.set(id, p.titleKey);
+      }
+      return poiKeys;
+    };
+    const unlockOf = (key: string, q: CanonQuest, slug: string): QuestUnlock => {
+      const amount = rounds.get(key);
+      if (amount != null) return { kind: 'rounds', amount };
+      const leaves = atomics(q.objective);
+      const a = leaves.length === 1 ? leaves[0].action : null;
+      const level = a?.type === 'Obtain' ? levelOfItem.get(Number(a.params?.Item)) : undefined;
+      if (level != null) return { kind: 'level', amount: level };
+      if (a?.type === 'VisitPOI' && a.params?.POIVolume) {
+        const place = placeName(a.params.POIVolume);
+        if (place) ctx.text.add('quests', slug, 'place', place);
+        else report.add('quests:unlockPlaceWithoutName', `${slug} ${a.params.POIVolume}`);
+        const mapIds = mapSlugs(a.mapIds, `${slug} unlock`);
+        return { kind: 'location', ...(mapIds.length ? { mapIds } : {}) };
+      }
+      if (a?.type === 'Damage') return { kind: 'damage' };
+      report.add('quests:unlockOther', slug);
+      return { kind: 'other' };
+    };
+
     const quests: Record<string, Quest> = {};
     const nextOf = new Map<string, Set<string>>();
 
@@ -200,13 +295,7 @@ const module: DomainModule = {
       if (!slug) continue;
 
       const requires: QuestRequirement[] = [];
-      let raids = 0;
       for (const pre of prereqsOf(q)) {
-        const r = rounds.get(pre);
-        if (r != null) {
-          raids = Math.max(raids, r);
-          continue;
-        }
         const preSlug = slugByKey.get(pre);
         if (!preSlug) {
           report.add('quests:droppedPrerequisite', `${pre} of ${slug}`);
@@ -217,8 +306,7 @@ const module: DomainModule = {
         set.add(slug);
         nextOf.set(preSlug, set);
       }
-      for (const mapId of mapSlugs(overlay[key]?.requiresMaps, `${slug} requiresMaps`)) requires.push({ mapId });
-      if (raids) requires.push({ raids });
+      const unlock = q.hidden && unlockers.has(key) ? unlockOf(key, q, slug) : null;
 
       const withoutXp = (pkg: CanonRewardPackage | undefined): CanonRewardPackage => ({
         items: (pkg?.items ?? []).filter((i) => i.id !== xpId),
@@ -248,6 +336,7 @@ const module: DomainModule = {
           ...(xp ? { xp } : {}),
         },
         ...(q.hidden ? { hidden: true } : {}),
+        ...(unlock ? { unlock } : {}),
         ...(q.addedIn ? { addedIn: q.addedIn } : {}),
       };
       ctx.text.add('quests', slug, 'name', q.name);

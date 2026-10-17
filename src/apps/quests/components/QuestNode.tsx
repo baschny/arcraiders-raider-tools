@@ -1,246 +1,131 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Handle, Position } from 'reactflow';
 import type { QuestNodeData } from '../types/quest';
-import { TRADER_IMAGES } from '../data/static-data';
-import { formatWikiLink, getTraderClass } from '../utils/helpers';
 import { useLocale } from '../../../shared/context/LocaleContext';
 import { useHoverIntent } from '../../../shared/hooks/useHoverIntent';
-import {
-  getLocalizedMapName,
-  getQuestWikiName,
-} from '../utils/localization';
-import { QuestTooltip } from './QuestTooltip';
-import { questLabel } from '../utils/labels';
+import { doneLeafKeys, stepSummary } from '../utils/questSummary';
+import { BlueprintThumbs, MapChips, StatusBadge, StepBar, TraderPortrait, XpValue } from './QuestCardParts';
+import { QuestHoverCard } from './QuestHoverCard';
 
-const TOOLTIP_ESTIMATED_WIDTH = 440;
-const TOOLTIP_ESTIMATED_HEIGHT = 520;
-const TOOLTIP_MARGIN = 12;
-// XP at which the XP pill is fully filled (highest quest reward in 2.0)
-const XP_FULL_SCALE = 10000;
+const HOVER_ESTIMATED_WIDTH = 320;
+const HOVER_ESTIMATED_HEIGHT = 380;
+const HOVER_MARGIN = 12;
+/** A click waits this long for a second click before it toggles the quest (double-click opens the details). */
+const DOUBLE_CLICK_MS = 250;
+const MAX_MAPS = 2;
 
 export function QuestNode({ data }: { data: QuestNodeData }) {
-  const { locale, t } = useLocale();
-  const {
-    quest,
-    isCompleted,
-    isAvailable,
-    status,
-    isInteractive,
-    isHighlighted,
-    objectiveSummary,
-    objectiveProgress,
-    onToggle,
-  } = data;
+  const { t, tm } = useLocale();
+  const { quest, status, isInteractive, isHighlighted, objectiveProgress, onToggle, onOpenDetails } = data;
   const { ref: hoverRef, isHovered, handlers } = useHoverIntent<HTMLDivElement>({
     delayShow: 400,
     delayHide: 120,
   });
-  const [tooltipPosition, setTooltipPosition] = useState({
-    x: 0,
-    y: 0,
-    maxHeight: TOOLTIP_ESTIMATED_HEIGHT,
-  });
+  const closeHover = handlers.close;
+  const [hoverPosition, setHoverPosition] = useState({ x: 0, y: 0, maxHeight: HOVER_ESTIMATED_HEIGHT });
+  const clickTimer = useRef<number | undefined>(undefined);
 
-  const updateTooltipPosition = useCallback(() => {
+  const updateHoverPosition = useCallback(() => {
     const element = hoverRef.current;
     if (!element) return;
-
     const rect = element.getBoundingClientRect();
-    const viewportWidth = window.innerWidth;
-    const viewportHeight = window.innerHeight;
-
     let x = rect.right + 10;
     let y = rect.top;
-
-    if (x + TOOLTIP_ESTIMATED_WIDTH > viewportWidth - TOOLTIP_MARGIN) {
-      x = rect.left - TOOLTIP_ESTIMATED_WIDTH - 10;
-    }
-    if (x < TOOLTIP_MARGIN) {
-      x = TOOLTIP_MARGIN;
-    }
-
-    if (y + TOOLTIP_ESTIMATED_HEIGHT > viewportHeight - TOOLTIP_MARGIN) {
-      y = viewportHeight - TOOLTIP_ESTIMATED_HEIGHT - TOOLTIP_MARGIN;
-    }
-    if (y < TOOLTIP_MARGIN) {
-      y = TOOLTIP_MARGIN;
-    }
-
-    const maxHeight = Math.max(260, viewportHeight - y - TOOLTIP_MARGIN);
-    setTooltipPosition({ x, y, maxHeight });
+    if (x + HOVER_ESTIMATED_WIDTH > window.innerWidth - HOVER_MARGIN) x = rect.left - HOVER_ESTIMATED_WIDTH - 10;
+    if (x < HOVER_MARGIN) x = HOVER_MARGIN;
+    if (y + HOVER_ESTIMATED_HEIGHT > window.innerHeight - HOVER_MARGIN) y = window.innerHeight - HOVER_ESTIMATED_HEIGHT - HOVER_MARGIN;
+    if (y < HOVER_MARGIN) y = HOVER_MARGIN;
+    setHoverPosition({ x, y, maxHeight: Math.max(260, window.innerHeight - y - HOVER_MARGIN) });
   }, [hoverRef]);
 
   useEffect(() => {
     if (!isHovered) return;
-    const frameId = window.requestAnimationFrame(() => {
-      updateTooltipPosition();
-    });
-
-    const onViewportChange = () => updateTooltipPosition();
-    window.addEventListener('resize', onViewportChange);
-    window.addEventListener('scroll', onViewportChange, true);
+    const frameId = window.requestAnimationFrame(updateHoverPosition);
+    window.addEventListener('resize', updateHoverPosition);
+    window.addEventListener('scroll', updateHoverPosition, true);
     return () => {
       window.cancelAnimationFrame(frameId);
-      window.removeEventListener('resize', onViewportChange);
-      window.removeEventListener('scroll', onViewportChange, true);
+      window.removeEventListener('resize', updateHoverPosition);
+      window.removeEventListener('scroll', updateHoverPosition, true);
     };
-  }, [isHovered, updateTooltipPosition]);
-  const hasBlueprintReward = quest.hasBlueprint;
-  const xp = quest.xp ?? 0;
-  const blueprintRewardTooltip =
-    quest.blueprintRewards.length > 0
-      ? t('quests.rewardsList').replace(
-          '{rewards}',
-          quest.blueprintRewards.map((reward) => reward.name).join(', ')
-        )
-      : t('quests.rewardsBlueprint');
+  }, [isHovered, updateHoverPosition]);
 
-  const traderClass = getTraderClass(quest.trader);
+  const openDetails = useCallback(() => {
+    window.clearTimeout(clickTimer.current);
+    closeHover();
+    onOpenDetails(quest.id);
+  }, [closeHover, onOpenDetails, quest.id]);
+
+  // Native listener: the double-click must not reach React Flow's pane, which would zoom in.
+  useEffect(() => {
+    const element = hoverRef.current;
+    if (!element) return;
+    const onDoubleClick = (event: MouseEvent) => {
+      event.stopPropagation();
+      openDetails();
+    };
+    element.addEventListener('dblclick', onDoubleClick);
+    return () => element.removeEventListener('dblclick', onDoubleClick);
+  }, [hoverRef, openDetails]);
+
+  useEffect(() => () => window.clearTimeout(clickTimer.current), []);
+
+  const handleClick = (event: React.MouseEvent) => {
+    event.stopPropagation();
+    if (!isInteractive || event.detail > 1) return;
+    window.clearTimeout(clickTimer.current);
+    clickTimer.current = window.setTimeout(() => onToggle(quest.id), DOUBLE_CLICK_MS);
+  };
+
+  const summary = status === 'active' ? stepSummary(quest, doneLeafKeys(quest, objectiveProgress, false)) : null;
   const nodeClass = [
     'quest-node',
-    hasBlueprintReward ? 'has-blueprint' : '',
-    quest.isNew ? 'is-new' : '',
-    isCompleted ? 'completed' : '',
-    isAvailable ? 'available' : '',
-    status === 'active' ? 'active' : '',
-    status === 'unknown' ? 'unknown' : '',
+    `quest-node--${status}`,
     isInteractive ? '' : 'read-only',
     isHighlighted ? 'highlighted' : '',
   ]
     .filter(Boolean)
     .join(' ');
-  const traderImage = TRADER_IMAGES[quest.trader];
-  const traderLabel = quest.trader;
-
-  const handleClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (!isInteractive) return;
-    onToggle(quest.id);
-  };
 
   return (
     <div
       className={nodeClass}
-      onClick={isInteractive ? handleClick : undefined}
+      onClick={handleClick}
       ref={hoverRef}
       aria-disabled={!isInteractive}
     >
       <Handle type="target" position={Position.Top} id="target-top" />
       {quest.isNew && (
-        <div className="new-badge" title={`New in ${quest.addedIn}`}>
-          NEW {quest.addedIn}
+        <div className="quest-node__new" title={tm('quests.card.newTitle', { version: quest.addedIn ?? '' })}>
+          {tm('quests.card.newBadge', { version: quest.addedIn ?? '' })}
         </div>
       )}
-      {quest.category === 'side' && (
-        <div className="side-badge">{questLabel('sideQuest', locale)}</div>
-      )}
-      {hasBlueprintReward && (
-        <div className="blueprint-badge" title={blueprintRewardTooltip}>
-          📜 BP
-        </div>
-      )}
-      <div className="quest-node-header">
-        <div className={`trader-icon ${traderClass}`} title={traderLabel}>
-          {traderImage ? (
-            <img
-              src={traderImage}
-              alt={traderLabel}
-              style={{
-                width: '100%',
-                height: '100%',
-                borderRadius: '50%',
-                objectFit: 'cover',
-              }}
-            />
-          ) : (
-            quest.trader
-              .split(' ')
-              .map((w) => w[0])
-              .join('')
-          )}
-        </div>
-          <div className="quest-info">
-            {((quest.map && quest.map.length > 0) || xp > 0) && (
-              <div className="quest-meta-row">
-                <div className="quest-map-info">
-                  {(quest.map ?? []).map((mapId) => getLocalizedMapName(mapId, locale)).join(', ')}
-                </div>
-                {xp > 0 && (
-                  <div
-                    className="quest-xp"
-                    style={{ '--xp-fill': `${Math.min(100, (xp / XP_FULL_SCALE) * 100)}%` } as React.CSSProperties}
-                    title={`${xp.toLocaleString(locale)} XP`}
-                  >
-                    +{xp.toLocaleString(locale)} XP
-                  </div>
-                )}
-              </div>
-            )}
-            <div className="quest-name">{quest.name}</div>
+      <div className="quest-node__top">
+        <TraderPortrait trader={quest.trader} />
+        <div className="quest-node__head">
+          <MapChips mapIds={quest.map} max={MAX_MAPS} />
+          <div className="quest-node__name">{quest.name}</div>
         </div>
       </div>
-
-      <div className="quest-node-footer">
-        <div className="quest-status">
-          <span className="status-icon">
-            {status === 'completed'
-              ? '✓'
-              : status === 'active' || status === 'available'
-                ? '⭐'
-                : status === 'unknown'
-                  ? '❔'
-                  : '🔒'}
-          </span>
-          <span>
-            {status === 'completed'
-              ? t('quests.statusCompleted')
-              : status === 'active'
-                ? t('quests.statusActive')
-                : status === 'available'
-                  ? t('quests.statusAvailable')
-                  : status === 'unknown'
-                    ? t('quests.statusUnknown')
-                    : t('quests.statusLocked')}
-          </span>
-        </div>
-        {objectiveSummary && status === 'active' && (
-          <div className="quest-status-summary">
-            {t('quests.objectiveSummary')
-              .replace('{completed}', String(objectiveSummary.completed))
-              .replace('{total}', String(objectiveSummary.total))}
-          </div>
-        )}
-        <div className="quest-actions">
-          <a
-            href={'https://arcraiders.wiki/wiki/' + formatWikiLink(getQuestWikiName(quest))}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="quest-action-btn"
-            onClick={(e) => e.stopPropagation()}
-            title={t('quests.wikiTitle')}
-          >
-            📖 {t('quests.wikiLabel')}
-          </a>
-          <a
-            href={`https://arctracker.io/quests/${quest.id.replaceAll('_', '-')}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="quest-action-btn"
-            onClick={(e) => e.stopPropagation()}
-            title={t('quests.arcTrackerTitle')}
-          >
-            🛰️ {t('quests.arcTrackerLabel')}
-          </a>
-        </div>
+      <div className="quest-node__bottom">
+        <StatusBadge status={status} />
+        {summary && <StepBar done={summary.done} total={summary.required} />}
+        {quest.category === 'side' && <span className="quest-node__side">{t('quests.card.side')}</span>}
+        <span className="quest-node__rewards">
+          <BlueprintThumbs quest={quest} />
+          <XpValue xp={quest.xp} />
+        </span>
       </div>
       <Handle type="source" position={Position.Bottom} id="source-bottom" />
       <Handle type="source" position={Position.Left} id="source-left" />
       <Handle type="source" position={Position.Right} id="source-right" />
-      <QuestTooltip
+      <QuestHoverCard
         quest={quest}
-        position={tooltipPosition}
+        status={status}
+        position={hoverPosition}
         visible={isHovered}
         objectiveProgress={objectiveProgress}
+        onOpenDetails={openDetails}
         onMouseEnter={handlers.onMouseEnter}
         onMouseLeave={handlers.onMouseLeave}
         onContextMenu={handlers.onContextMenu}

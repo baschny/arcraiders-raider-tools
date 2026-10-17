@@ -1,64 +1,56 @@
 @use 'variables' as *;
 
-/* Custom Quest Node Styles */
+// Quest node in the graph (QuestNode.tsx): trader, maps, name, status, step bar, reward hints.
+// Border with glow: yellow = can be done now, green = completed, dark = not available yet.
+
+$new-quest-accent: #7fd8ff;
+
 .quest-node {
-  padding: $spacing-lg;
-  border-radius: $radius-md;
-  background: $bg-secondary;
-  border: $border-width-default solid $border-default;
+  position: relative;
   width: $node-width;
   max-width: $node-width;
+  padding: 10px 12px 9px;
+  border: $border-width-default solid $border-default;
+  border-radius: $radius-md;
+  background: $bg-secondary;
   box-shadow: $shadow-default;
   transition: $transition-default;
+  cursor: pointer;
 
-  &:hover {
-    cursor: pointer;
-  }
-
-  &.read-only:hover {
+  &.read-only {
     cursor: default;
   }
 
-  &.available {
+  &--available,
+  &--active {
     border-color: $status-available;
-    border-width: $border-width-thick;
     box-shadow: $shadow-available;
   }
 
-  &.completed {
-    background: $status-completed-bg;
+  &--active {
+    box-shadow: 0 0 0 1px rgba($status-available, 0.45), $shadow-available;
+  }
+
+  &--completed {
     border-color: $status-completed-dark;
-    border-width: $border-width-thick;
+    background: $status-completed-bg;
     opacity: 0.85;
 
-    .quest-name {
+    .quest-node__name {
       color: $map-node-text-completed;
     }
   }
-  &.has-blueprint {
-    border-color: $blueprint-border;
-    box-shadow: $shadow-default, $shadow-blueprint;
+
+  &--locked .quest-node__top {
+    opacity: 0.75;
   }
 
-  &.has-blueprint.available {
-    box-shadow: $shadow-available, $shadow-blueprint;
-  }
-
-  &.has-blueprint.completed {
-    box-shadow: $shadow-blueprint;
+  &--unknown {
+    border-color: rgba(255, 193, 7, 0.55);
   }
 
   &.highlighted {
     animation: highlightPulse $transition-highlight;
-  }
-
-  &.active {
-    border-color: rgba($status-available, 0.9);
-    box-shadow: 0 0 0 1px rgba($status-available, 0.45), $shadow-available;
-  }
-
-  &.unknown {
-    border-color: rgba(255, 193, 7, 0.55);
   }
 }
 
@@ -72,255 +64,67 @@
   }
 }
 
-.quest-node-header {
-  display: flex;
-  align-items: flex-start;
-  gap: $gap-md;
-  margin-bottom: $spacing-md;
-  padding-bottom: 10px;
-  border-bottom: $border-width-thin solid $border-default;
-}
-
-.trader-icon {
-  width: $trader-icon-size;
-  height: $trader-icon-size;
-  border-radius: $radius-circle;
+.quest-node__top {
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  font-size: $font-3xl;
-  color: white;
-  flex-shrink: 0;
-  overflow: hidden;
-  border: $border-width-thin solid rgba(255, 255, 255, 0.1);
-
-  img {
-    width: 100%;
-    height: 100%;
-    border-radius: $radius-circle;
-    object-fit: cover;
-  }
+  gap: 10px;
 }
 
-.trader-celeste {
-  background: linear-gradient(135deg, $trader-celeste-start, $trader-celeste-end);
-}
-
-.trader-shani {
-  background: linear-gradient(135deg, $trader-shani-start, $trader-shani-end);
-}
-
-.trader-lance {
-  background: linear-gradient(135deg, $trader-lance-start, $trader-lance-end);
-}
-
-.trader-tianwen {
-  background: linear-gradient(135deg, $trader-tianwen-start, $trader-tianwen-end);
-}
-
-.trader-apollo {
-  background: linear-gradient(135deg, $trader-apollo-start, $trader-apollo-end);
-}
-
-.trader-map {
-  background: linear-gradient(135deg, $trader-map-start, $trader-map-end);
-}
-
-.quest-info {
-  flex: 1;
+.quest-node__head {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
   min-width: 0;
 }
 
-.quest-name {
+.quest-node__name {
+  display: -webkit-box;
+  overflow: hidden;
   font-family: 'Urbanist', sans-serif;
-  font-size: $font-2xl;
-  font-weight: bold;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.2;
   color: $text-primary;
-  line-height: 1.4;
-  word-wrap: break-word;
   overflow-wrap: break-word;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
-.quest-map-info {
-  font-size: $font-sm;
-  font-weight: bold;
-  color: $text-secondary;
-  text-transform: uppercase;
-  margin-bottom: 2px;
-  letter-spacing: 0.5px;
-}
-
-.quest-node-footer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 10px;
-  gap: $gap-sm;
-}
-
-.quest-status {
+.quest-node__bottom {
   display: flex;
   align-items: center;
-  gap: $gap-xs;
-  font-size: $font-md;
-  color: $text-secondary;
+  gap: 6px;
+  margin-top: 9px;
 }
 
-.status-icon {
-  font-size: $font-xl;
-}
-
-.quest-actions {
-  display: flex;
-  gap: $gap-xs;
+.quest-node__rewards {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   margin-left: auto;
 }
 
-.quest-status-summary {
+.quest-node__side {
   font-size: $font-sm;
-  color: $text-accent;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: $text-secondary;
 }
 
-.quest-action-btn {
-  background: $bg-tertiary;
-  border: $border-width-thin solid $border-light;
-  border-radius: $radius-sm;
-  padding: $spacing-xs $spacing-sm;
-  font-size: $font-base;
-  color: $text-primary;
-  cursor: pointer;
-  text-decoration: none;
-  transition: $transition-default;
-
-  &:hover {
-    background: $bg-quaternary;
-    border-color: $border-lighter;
-  }
-}
-
-.blueprint-badge {
-  position: absolute;
-  top: $spacing-sm;
-  right: $spacing-sm;
-  background: 
-    repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 4px,
-      $blueprint-grid 4px,
-      $blueprint-grid 5px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      transparent,
-      transparent 4px,
-      $blueprint-grid 4px,
-      $blueprint-grid 5px
-    ),
-    linear-gradient(135deg, $blueprint-bg-start, $blueprint-bg-end);
-  border: $border-width-thin solid $blueprint-border;
-  border-radius: 3px;
-  padding: 3px $gap-xs;
-  font-size: $font-xs;
-  font-weight: bold;
-  color: $blueprint-text;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
-  box-shadow: $shadow-badge, inset 0 1px 1px rgba(100, 150, 200, 0.1);
-  letter-spacing: 0.5px;
-}
-
-// Quests introduced in the newest game version (quest.isNew)
-$new-quest-accent: #7fd8ff;
-
-.quest-node.is-new {
-  border-color: rgba($new-quest-accent, 0.85);
-  box-shadow: 0 0 0 1px rgba($new-quest-accent, 0.35), 0 0 14px rgba($new-quest-accent, 0.35), $shadow-default;
-}
-
-.new-badge {
+// "NEW <version>" on the top border (quest.isNew)
+.quest-node__new {
   position: absolute;
   top: -10px;
-  left: $spacing-sm;
-  padding: 2px $gap-xs;
+  left: 10px;
+  padding: 1px 6px;
+  border: $border-width-thin solid rgba($new-quest-accent, 0.9);
   border-radius: 3px;
   background: linear-gradient(135deg, #1f6f99, #2fa3d6);
-  border: $border-width-thin solid rgba($new-quest-accent, 0.9);
+  box-shadow: $shadow-badge;
   color: #fff;
-  font-size: $font-xs;
-  font-weight: bold;
+  font-size: 9.5px;
+  font-weight: 800;
   letter-spacing: 0.5px;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
-  box-shadow: $shadow-badge;
   pointer-events: none;
-}
-
-// Map line with the XP reward pill on the right
-.quest-meta-row {
-  display: flex;
-  align-items: flex-start;
-  gap: $gap-xs;
-  margin-bottom: 2px;
-
-  .quest-map-info {
-    flex: 1;
-    min-width: 0;
-    margin-bottom: 0;
-  }
-}
-
-// XP pill; the amber fill shows the reward relative to the largest quest XP
-$xp-accent: #ffc857;
-
-.quest-xp {
-  flex-shrink: 0;
-  padding: 1px 6px;
-  border-radius: 999px;
-  border: $border-width-thin solid rgba($xp-accent, 0.6);
-  background: linear-gradient(
-    90deg,
-    rgba($xp-accent, 0.35) 0,
-    rgba($xp-accent, 0.35) var(--xp-fill, 0%),
-    rgba($xp-accent, 0.06) var(--xp-fill, 0%)
-  );
-  color: $xp-accent;
-  font-size: $font-xs;
-  font-weight: bold;
-  letter-spacing: 0.3px;
-  white-space: nowrap;
-}
-
-.side-badge {
-  position: absolute;
-  top: -10px;
-  right: $spacing-sm;
-  padding: 2px $gap-xs;
-  border-radius: 3px;
-  background: rgba(120, 130, 150, 0.9);
-  color: #fff;
-  font-size: $font-xs;
-  font-weight: bold;
-  letter-spacing: 0.5px;
-  pointer-events: none;
-}
-
-// Objective tree additions in the quest tooltip (rendered into document.body)
-.quest-tooltip__objectives--nested {
-  margin-top: 4px;
-  padding-left: 14px;
-  border-left: 2px solid rgba(255, 255, 255, 0.15);
-}
-
-.quest-tooltip__badge {
-  margin-left: 6px;
-
-  &--choice {
-    background: rgba(255, 193, 7, 0.2);
-    color: #ffc107;
-  }
-}
-
-.quest-tooltip__objectives .is-optional > span:first-child {
-  font-style: italic;
 }

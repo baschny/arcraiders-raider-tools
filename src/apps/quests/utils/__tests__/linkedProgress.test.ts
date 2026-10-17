@@ -13,6 +13,7 @@ const base = {
   description: '',
   objectiveTree: null,
   objectives: [],
+  objectiveLeafKeys: [],
   objectivesOneRound: false,
   otherRequirements: [],
   grantedItems: [],
@@ -24,11 +25,12 @@ const base = {
 const TEST_QUESTS: Quest[] = [
   {
     ...base,
-    id: 'map_dam_battleground',
-    name: 'Dam Battlegrounds',
-    category: 'map',
-    trader: 'Map',
-    map: ['dam-battleground'],
+    id: 'blue_gate_content_unlock',
+    name: 'Play 18 rounds',
+    category: 'unlock',
+    unlock: { kind: 'rounds', label: 'Play 18 rounds' },
+    trader: '',
+    map: [],
     previousQuestIds: [],
     nextQuestIds: ['picking_up_the_pieces'],
   },
@@ -38,7 +40,7 @@ const TEST_QUESTS: Quest[] = [
     name: 'Picking Up The Pieces',
     trader: 'Shani',
     map: ['dam-battleground'],
-    previousQuestIds: ['map_dam_battleground'],
+    previousQuestIds: ['blue_gate_content_unlock'],
     nextQuestIds: ['cold_storage'],
   },
   {
@@ -53,7 +55,7 @@ const TEST_QUESTS: Quest[] = [
 ];
 
 describe('linked quest progress helpers', () => {
-  it('treats map nodes as unlocked in ArcTracker linked mode', () => {
+  it('treats unlock nodes as done in ArcTracker linked mode', () => {
     const completed = buildLinkedCompletedQuestSet(TEST_QUESTS, {
       source: 'arctracker',
       syncedAt: '2026-05-25T10:00:00.000Z',
@@ -64,7 +66,7 @@ describe('linked quest progress helpers', () => {
       },
     });
 
-    expect(completed.has('map_dam_battleground')).toBe(true);
+    expect(completed.has('blue_gate_content_unlock')).toBe(true);
     expect(getQuestDisplayStatus({
       quest: TEST_QUESTS[1],
       linkedSnapshot: {
@@ -106,5 +108,19 @@ describe('linked quest progress helpers', () => {
       completed: 1,
       total: 2,
     });
+  });
+
+  it('takes an unlock node from the Embark state of its hidden quest', () => {
+    const snapshot = (unlockState: 'completed' | 'active') => ({
+      source: 'embark' as const,
+      syncedAt: '2026-05-25T10:00:00.000Z',
+      cachedAt: 1,
+      questsById: {
+        blue_gate_content_unlock: { state: unlockState, completed: unlockState === 'completed' },
+        picking_up_the_pieces: { state: 'locked' as const, completed: false },
+      },
+    });
+    expect(buildLinkedCompletedQuestSet(TEST_QUESTS, snapshot('completed')).has('blue_gate_content_unlock')).toBe(true);
+    expect(buildLinkedCompletedQuestSet(TEST_QUESTS, snapshot('active')).has('blue_gate_content_unlock')).toBe(false);
   });
 });

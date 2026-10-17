@@ -31,14 +31,15 @@ function quest(id: number, name: string, over: Record<string, unknown> = {}) {
 
 const req = (...ids: number[]) => ids.map((quest) => ({ quest, state: 'COMPLETED' }));
 
-function fakeCtx(list: Record<string, unknown>[]): GenContext {
+function fakeCtx(list: Record<string, unknown>[], targets: Record<string, unknown> = {}): GenContext {
   const canon = new Map(list.map((q) => [String(q.id), q]));
   const items = new Map<number, unknown>([[5, { id: 5, name: loc('Trader') }], [WORKBENCH, { id: WORKBENCH, name: loc('Workbench') }]]);
   const report = new Report();
   const ctx = {
     arc: {
       constants: { owners: { workbenchGenerator: WORKBENCH }, currencies: { xp: XP } },
-      file: (name: string) => (name === 'quests' ? canon : new Map([['77', { name: loc('Wasp') }]])),
+      file: (name: string) =>
+        name === 'quests' ? canon : name === 'quest-targets' ? new Map(Object.entries(targets)) : new Map([['77', { name: loc('Wasp') }]]),
       json: () => ({ '3': { requiresMaps: [1000] } }),
       items,
     },
@@ -97,12 +98,28 @@ describe('quests domain', () => {
     expect(out.first.traderId).toBe('5');
   });
 
-  it('builds requires with raids and map prerequisites, and next', () => {
-    expect(out.second.requires).toEqual([{ questId: 'first' }, { raids: 3 }]);
-    expect(out.mapped.requires).toEqual([{ questId: 'second' }, { mapId: 'blue-gate' }]);
+  it('keeps hidden unlock quests as prerequisites, marks their kind, and builds next', () => {
+    expect(out.second.requires).toEqual([{ questId: 'first' }, { questId: 'raids_3' }]);
+    expect(out.mapped.requires).toEqual([{ questId: 'second' }]);
     expect(out.second.mapIds).toEqual(['blue-gate']);
+    expect(out.raids_3.unlock).toEqual({ kind: 'rounds', amount: 3 });
+    expect(out.trigger.unlock).toEqual({ kind: 'other' });
+    expect(out.first.unlock).toBeUndefined();
     expect(out.first.next).toEqual(['second']);
-    expect(out.raids_3.next).toEqual([]);
+    expect(out.raids_3.next).toEqual(['second']);
+  });
+
+  it('names a location unlock by the place of its area', () => {
+    const bunker = quest(40, 'Bunker trigger', {
+      hidden: true,
+      objective: { kind: 'ALL_OF', name: null, children: [atomic(null, { type: 'VisitPOI', amount: 1, mapIds: [1000], params: { POIVolume: '900' } })] },
+    });
+    const c = fakeCtx([bunker, quest(41, 'Nomads', { requires: req(40) })], {
+      '900': { pois: [{ mapId: 1000, poi: 'PioneerPointOfInterestVolume_UAID_1', title: 'Bunker Interior' }] },
+    });
+    const built = quests.build(c).quests as Record<string, import('../../../src/shared/gamedata/types').Quest>;
+    expect(built.bunker_trigger.unlock).toEqual({ kind: 'location', mapIds: ['blue-gate'] });
+    expect(c.text.en('quests', 'bunker_trigger', 'place')).toBe('Bunker Interior');
   });
 
   it('builds the objective tree with stable keys and resolved actions', () => {
@@ -120,5 +137,30 @@ describe('quests domain', () => {
 
   it('separates xp from rewards', () => {
     expect(out.first.rewards).toEqual({ complete: [{ itemId: 'bolt', quantity: 2 }], xp: 100 });
+  });
+
+  it('adds the interaction of an Interact target (prompt, hold time, required items)', () => {
+    const repair = { prompt: loc('Repair'), holdSeconds: 2, requiredItems: [{ id: 1, amount: 5, consumed: true }], maps: [] };
+    const gate = (code: number) => ({ prompt: loc('Enter Code'), holdSeconds: 1, requiredItems: [{ id: code, amount: 1, consumed: false }], maps: [] });
+    const objective = {
+      kind: 'SEQUENCE',
+      name: null,
+      children: [
+        atomic('Repair the panels', { type: 'Interact', amount: 1, mapIds: [], params: { Target: '500' } }),
+        atomic('Open the gate', { type: 'Interact', amount: 1, mapIds: [], params: { Target: '600' } }),
+      ],
+    };
+    const ctx = fakeCtx([quest(30, 'Fix', { objective })], {
+      '500': { interactions: [repair] },
+      '600': { interactions: [gate(1), gate(2)] },
+    });
+    const out = quests.build(ctx) as { quests: Record<string, { objective: { children: { action: unknown }[] } }> };
+    const [fix, open] = out.quests.fix.objective.children;
+    expect(fix.action).toMatchObject({ interaction: { holdSeconds: 2, requiredItems: [{ itemId: 'bolt', quantity: 5 }] } });
+    // Several setups: only what they share (prompt, hold time), not the differing codes.
+    expect(open.action).toMatchObject({ interaction: { holdSeconds: 1 } });
+    expect((open.action as { interaction: Record<string, unknown> }).interaction.requiredItems).toBeUndefined();
+    expect(ctx.text.en('quests', 'fix', ['prompts', '0.0'])).toBe('Repair');
+    expect(ctx.text.en('quests', 'fix', ['prompts', '0.1'])).toBe('Enter Code');
   });
 });
