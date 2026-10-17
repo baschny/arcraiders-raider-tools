@@ -21,7 +21,7 @@ import { MapsHeader } from './MapsHeader';
 import { Sidebar } from './Sidebar';
 import { BottomSheet } from './BottomSheet';
 import { useMobile } from './useMobile';
-import { ConditionBar, MapBar, ModeSwitch } from './Bars';
+import { ConditionBar, MapBar, ModeSwitch, SetupBar } from './Bars';
 import { mapEntry, sanitizeState, useMapState, usePrefs, type MapPatch, type MapState } from './state';
 import './styles/main.scss';
 
@@ -109,6 +109,7 @@ function Explorer({ index, map, state, set, items }: { index: MapIndex; map: Map
         <div className="mx-area-top">
           <MapBar ex={ex} />
           <ConditionBar ex={ex} />
+          <SetupBar ex={ex} />
         </div>
         {mobile ? (
           <BottomSheet open={sheet} onOpenChange={setSheet} head={(

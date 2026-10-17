@@ -18,6 +18,8 @@ export interface MapState {
   /** Map slug. */
   map: string;
   cond: string;
+  /** Loot setup (1-based, MapData.lootSetups); null: dynamic zones at their base level. */
+  setup: number | null;
   /** Map layer; null: the map's default (the one with most sockets). */
   layer: number | null;
   /** raider-tools item id. */
@@ -58,6 +60,7 @@ export function parseState(params: URLSearchParams, map: string | null | undefin
     mode: params.get('mode') === 'arc' ? 'arc' : 'loot',
     map: map || params.get('map') || defaultMap,
     cond: params.get('cond') || 'Default',
+    setup: index(params.get('setup')) || null,
     layer: index(params.get('layer')),
     item: params.get('item') || null,
     show: new Set((params.get('show') ?? '').split(',').filter((key) => key && !OBSOLETE_PUZZLE_FILTERS.has(key))),
@@ -77,13 +80,15 @@ export function sanitizeState(state: MapState, index: MapIndex, map: MapData | n
   const legacy = entry ? undefined : index.maps.find((m) => m.map === state.map);
   if (legacy) {
     // Same map: keep its condition and layer.
-    Object.assign(fix, { map: legacy.slug, cond: state.cond, layer: state.layer });
+    Object.assign(fix, { map: legacy.slug, cond: state.cond, layer: state.layer, setup: state.setup });
   } else if (!entry && index.maps.length) {
     fix.map = mapEntry(index, defaultMap) ? defaultMap : sortedMaps(index)[0].slug;
     fix.cond = 'Default';
     fix.layer = null;
+    fix.setup = null;
   } else if (map && entry && map.map === entry.map) {
     if (state.cond !== 'Default' && !map.conditions.some((c) => c.key === state.cond)) fix.cond = 'Default';
+    if (state.setup != null && !map.lootSetups?.[state.setup - 1]) fix.setup = null;
     if (state.layer != null && !(map.layers && state.layer < map.layers.length)) fix.layer = null;
   }
   if (state.item && items && !items[state.item]) fix.item = null;
@@ -96,6 +101,7 @@ export function serializeState(next: MapState): URLSearchParams {
   const q = new URLSearchParams();
   if (next.mode !== 'loot') q.set('mode', next.mode);
   if (next.cond !== 'Default') q.set('cond', next.cond);
+  if (next.setup != null) q.set('setup', String(next.setup));
   if (next.layer != null) q.set('layer', String(next.layer));
   if (next.item) q.set('item', next.item);
   if (next.show.size) q.set('show', [...next.show].join(','));
@@ -115,7 +121,7 @@ export function useMapState(defaultMap: string): [MapState, (p: Patch) => void] 
     const cur = parseState(new URLSearchParams(window.location.search), pathMap(window.location.pathname), defaultMap);
     const patch = typeof p === 'function' ? p(cur) : p;
     // Another map starts on its default layer and condition, unless the patch sets them.
-    const reset = patch.map && patch.map !== cur.map ? { layer: null, cond: 'Default' } : {};
+    const reset = patch.map && patch.map !== cur.map ? { layer: null, cond: 'Default', setup: null } : {};
     const next = { ...cur, ...reset, ...patch };
     const q = serializeState(next).toString();
     navigate(`${mapPath(next.map)}${q ? `?${q}` : ''}`, { replace: true });

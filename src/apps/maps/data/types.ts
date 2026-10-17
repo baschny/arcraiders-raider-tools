@@ -136,11 +136,24 @@ export interface LootHandler {
   pools: { value: number; tables: { t: string; x?: number; c: number[] }[] }[];
 }
 
+/** A loot setup: the threat level it gives dynamic zones ([poi index, 'High' | 'Medium']) under the listed conditions. */
+export interface LootSetup {
+  name: string;
+  /** Chance per raid. */
+  chance: number;
+  /** Condition indexes the setups roll under (others leave the zones at their base level). */
+  conditions: number[];
+  zones: [number, string][];
+}
+
 export interface Poi {
   title: string;
   titleKey?: string;
   themes: string[];
+  /** Base threat level (loot zone). */
   threat: string | null;
+  /** 2.0 dynamic threat (Pendola): a loot setup (MapData.lootSetups) raises it per raid; `threat` is the base level. */
+  dynamic?: boolean;
   ids: string[];
   /** Merged outline of the area's pieces: outer rings and holes (even-odd), from the sync step. */
   outline: UV[][];
@@ -300,6 +313,8 @@ export interface MapData {
   /** Container tags without Socket.LootContainer. (Socket container). */
   containers: string[];
   pois: Poi[];
+  /** Loot setups (2.0, Pendola): one is rolled per raid and raises dynamic zones; absent on other maps. */
+  lootSetups?: LootSetup[];
   sockets: Socket[];
   /** Classes of a spawner class set, "A | B" (a spawn picks one). */
   spawnerClasses: string[];

@@ -490,7 +490,7 @@ export class MapEngine {
       m.pois.forEach((p, i) => {
         if (ringsArea(p.outline) > 0.04 && hoverPoi !== i) return;
         if (!e.onLayer('pois', i)) return;
-        const z = P.zones ? lootZone(p.threat, p.themes) : null;
+        const z = P.zones ? lootZone(e.zoneThreat[i], p.themes) : null;
         if (!P.pois && !z && hoverPoi !== i) return;
         const sc = isLoot ? e.score?.pois[i] : undefined;
         const dens = sc && sc.sockets && e.score!.max > 0 ? Math.sqrt(sc.score / sc.sockets / e.score!.max) : 0;

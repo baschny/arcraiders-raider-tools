@@ -1063,6 +1063,11 @@
       "sameAsNormal": "+ {count} gleich wie {normal}",
       "label": "Kartenbedingung"
     },
+    "setupBar": {
+      "label": "Beute-Setup",
+      "help": "Jeder Raid auf dieser Karte würfelt eines dieser Beute-Setups aus, das einige Gebiete auf reichlich oder dichte Beute anhebt. Wähle das, was deine Karte im Spiel zeigt; ein zweiter Klick zeigt wieder die Grundstufen.",
+      "title": "Beute-Setup {n} ({chance} pro Raid) — reichlich Beute: {zones}"
+    },
     "help": {
       "label": "Hilfe"
     },

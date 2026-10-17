@@ -86,7 +86,7 @@ function LootPanel({ ex, onFocusPoi }: { ex: Explorer; onFocusPoi: (i: number) =
           </div>
           <div className="mx-best">
             {best.map((r) => {
-              const z = lootZone(r.p.threat, r.p.themes);
+              const z = lootZone(ex.zoneThreat[r.i], r.p.themes);
               return (
                 <button key={r.i} onClick={() => onFocusPoi(r.i)}>
                   <span className="mx-best__top"><b>{ex.names.poi(r.p)}</b><em>{tx.score(r.score)}</em></span>

@@ -8,7 +8,7 @@ import { CATEGORIES, enemyColor as enemyTypeColor, KINDS, classify, leavesOf, ta
 import { itemNote, itemShares, lootItemsFor, scoreMap, type ItemNote, type MapScore } from './data/scoring';
 import { mapNames, type MapNames } from './data/mapStrings';
 import { useMapStrings } from './data/useMapStrings';
-import type { Frigate, LootItem, MapCondition, MapData, MapIndex } from './data/types';
+import type { Frigate, LootItem, LootSetup, MapCondition, MapData, MapIndex } from './data/types';
 import { useAllMaps } from './data/useMapData';
 import { condIndex, defaultLayer, useLootableItems, type MapPatch, type MapState, type Prefs } from './state';
 
@@ -45,6 +45,12 @@ export interface Explorer {
   note: ItemNote | null;
   ci: number;
   cond: MapCondition;
+  /** Loot setups rolled under the open condition (empty: none on this map or condition). */
+  lootSetups: LootSetup[];
+  /** The picked loot setup when it rolls under the open condition, else null. */
+  lootSetup: LootSetup | null;
+  /** Threat level per POI: the picked loot setup's for dynamic zones, else the base level. */
+  zoneThreat: (string | null)[];
   /** The ARC Frigate layer when the open condition is the Frigate's and the layer is switched on, else null. */
   frigate: Frigate | null;
   layer: number | null;
@@ -91,6 +97,12 @@ export function useExplorer(index: MapIndex, map: MapData, state: MapState, set:
   const spawnP = useMemo(() => map.spawnP[ci] ?? [], [map, ci]);
   const enemyP = useMemo(() => map.enemyP?.[ci] ?? [], [map, ci]);
   const loot = state.mode === 'loot';
+  const lootSetups = useMemo(() => (map.lootSetups ?? []).filter((s) => s.conditions.includes(ci)), [map, ci]);
+  const lootSetup = state.setup != null && lootSetups.includes(map.lootSetups?.[state.setup - 1] as LootSetup) ? map.lootSetups![state.setup - 1] : null;
+  const zoneThreat = useMemo(() => {
+    const raised = new Map(lootSetup?.zones ?? []);
+    return map.pois.map((p, i) => (p.dynamic ? raised.get(i) ?? p.threat : p.threat));
+  }, [map, lootSetup]);
 
   const score = useMemo(() => (loot && share ? scoreMap(index, map, lootIdx, ci, share) : null), [loot, share, index, map, lootIdx, ci]);
   const mapTotals = useMemo(() => (share && allMaps ? new Map(allMaps.map((m) => [m.map, scoreMap(index, m, lootIdx, 0, share).total])) : null),
@@ -169,5 +181,5 @@ export function useExplorer(index: MapIndex, map: MapData, state: MapState, set:
   }, [map, layer, cond, score, cls, spawnP, enemyP, state.show, state.enemies, index, prefs.puzzleDoors]);
 
   const note = useMemo(() => (lootItem ? itemNote(index, lootItem) : null), [index, lootItem]);
-  return { index, map, state, set, prefs, setPrefs, names, areaLabels, lootable, item, lootIdx, lootItem, share, note, ci, cond, frigate, layer, cls, spawnP, enemyP, score, mapTotals, condTotals, ...derived };
+  return { index, map, state, set, prefs, setPrefs, names, areaLabels, lootable, item, lootIdx, lootItem, share, note, ci, cond, lootSetups, lootSetup, zoneThreat, frigate, layer, cls, spawnP, enemyP, score, mapTotals, condTotals, ...derived };
 }

@@ -163,6 +163,21 @@
   }
 }
 
+// Loot setup picker: the condition bar's look, with a leading label.
+.mx-setups {
+  align-items: center;
+
+  .mx-setups__label {
+    padding: 0 6px 0 8px;
+    font-size: 11.5px;
+    color: var(--mx-muted);
+    white-space: nowrap;
+    cursor: help;
+  }
+
+  button { min-width: 28px; justify-content: center; }
+}
+
 .mx-also {
   align-self: center;
   padding: 0 8px;

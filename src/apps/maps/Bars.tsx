@@ -1,4 +1,5 @@
-// Map switcher and condition bar (floating over the map), and the Loot / ARC mode switch (top of the left bar).
+// Map switcher, condition bar and loot setup bar (floating over the map), and the Loot / ARC mode switch (top of the
+// left bar).
 import { Crosshair, Package } from 'lucide-react';
 import { ConditionImage } from './components';
 import { radioKeys, radioTab } from './radio';
@@ -47,6 +48,36 @@ export function ConditionBar({ ex }: { ex: Explorer }) {
         );
       })}
       {also && <span className="mx-also" title={tx.list(also)}>{tx.tm('maps.conditionBar.sameAsNormal', { count: tx.num(also.length), normal: names.condition('Normal') })}</span>}
+    </div>
+  );
+}
+
+/**
+ * Loot setup picker (2.0, Pendola): each raid rolls one setup that raises the dynamic loot zones. None picked: the
+ * zones show their base level (Low); picking the one the in-game map shows draws its zones. A second click unpicks it.
+ */
+export function SetupBar({ ex }: { ex: Explorer }) {
+  const tx = useMapText();
+  const { map, lootSetups, lootSetup, names } = ex;
+  if (ex.state.mode !== 'loot' || !lootSetups.length) return null;
+  const all = map.lootSetups ?? [];
+  return (
+    <div className="mx-conds mx-setups" role="group" aria-label={tx.t('maps.setupBar.label')}>
+      <span className="mx-setups__label" title={tx.t('maps.setupBar.help')}>{tx.t('maps.setupBar.label')}</span>
+      {lootSetups.map((s) => {
+        const n = all.indexOf(s) + 1, on = s === lootSetup;
+        const high = s.zones.filter(([, th]) => th === 'High').map(([i]) => names.poi(map.pois[i]));
+        return (
+          <button key={s.name} aria-pressed={on} className={on ? 'on' : ''}
+            title={tx.tm('maps.setupBar.title', { n: tx.num(n), chance: tx.pct(s.chance), zones: tx.list(high) })}
+            onClick={() => {
+              ex.set({ setup: on ? null : n });
+              if (!on && !ex.prefs.zones) ex.setPrefs({ zones: true });
+            }}>
+            <span>{tx.num(n)}</span>
+          </button>
+        );
+      })}
     </div>
   );
 }

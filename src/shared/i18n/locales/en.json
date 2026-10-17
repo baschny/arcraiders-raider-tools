@@ -1131,6 +1131,11 @@
       "sameAsNormal": "+ {count} same as {normal}",
       "label": "Map condition"
     },
+    "setupBar": {
+      "label": "Loot setup",
+      "help": "Each raid on this map rolls one of these loot setups, which raises some areas to abundant or dense loot. Pick the one your in-game map shows; click it again to see the base levels.",
+      "title": "Loot setup {n} ({chance} per raid) — abundant loot: {zones}"
+    },
     "help": {
       "label": "Help"
     },
@@ -1295,7 +1300,8 @@
       "puzzleSequence": "Sequence puzzle: press the {n} buttons in the shown order",
       "puzzleSet": "Set puzzle: all {required} inputs, any order",
       "puzzleSetAny": "Set puzzle: all inputs, any order",
-      "puzzleRandomized": "Randomized puzzle: {n} inputs, the order is reshuffled each round"
+      "puzzleRandomized": "Randomized puzzle: {n} inputs, the order is reshuffled each round",
+      "dynamicZone": "Loot level changes per raid: abundant in {high} of {count} loot setups, otherwise dense"
     },
     "timing": {
       "noRespawn": "does not respawn after destroyed",

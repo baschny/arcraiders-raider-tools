@@ -263,9 +263,14 @@ function Tooltip({ ex, tip, pinned, engine, opened }: { ex: Explorer; tip: TipSt
     keys = entrance.access === 'mixed' && entrance.spawnerIndex != null ? ex.cls.spawnerKeys[entrance.spawnerIndex] : null;
     hint = t(opened?.entranceId === entrance.id ? 'maps.tooltip.clickPuzzleClose' : 'maps.tooltip.clickPuzzle');
   } else {
-    const p = map.pois[target.i], sc = ex.score?.pois[target.i], z = lootZone(p.threat, p.themes);
+    const p = map.pois[target.i], sc = ex.score?.pois[target.i], z = lootZone(ex.zoneThreat[target.i], p.themes);
     kindLabel = t('maps.tooltip.area');
     title = names.poi(p);
+    // Dynamic loot zone (Pendola): its level is rolled per raid by a loot setup.
+    if (p.dynamic && ex.lootSetups.length) {
+      const high = ex.lootSetups.filter((s) => s.zones.some(([i, th]) => i === target.i && th === 'High')).length;
+      mechanics = [tm('maps.mechanics.dynamicZone', { high: tx.num(high), count: tx.num(ex.lootSetups.length) })];
+    }
     body = [
       p.ids.join(', '),
       sc ? `${tm('maps.tooltip.score', { score: tx.score(sc.score) })} · ${plural('maps.best.spots', sc.sockets, { hits: tx.num(sc.hits) })}` : null,
